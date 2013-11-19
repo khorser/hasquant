@@ -12,63 +12,48 @@ import QuantLib.Time.Unit
 
 test_YearsMonthsAlgebra :: IO ()
 test_YearsMonthsAlgebra  = do
-  oneYear <- period 1 Years
-  sixMonths <- period 6 Months
-  threeMonths <- period 3 Months
-  nineMonths <- period 9 Months
+  let oneYear = (1, Years)
+      sixMonths = (6, Months)
+      threeMonths = (3, Months)
+      nineMonths = (9, Months)
+      twelveMonths = (12, Months)
 
-  od4 <- dividePeriod oneYear 4
-  let (Right od4b) = periodsEQ od4 threeMonths
-  assertBool od4b
+      od4 = dividePeriod' oneYear 4
+  assertEqual od4 (Right threeMonths)
 
-  od2 <- dividePeriod oneYear 2
-  let (Right od2b) = periodsEQ od2 sixMonths
-  assertBool od2b
+  let od2 = dividePeriod' oneYear 2
+  assertEqual od2 (Right sixMonths)
 
-  a36 <- addPeriods threeMonths sixMonths
-  let (Right a36b) = periodsEQ a36 nineMonths
-  assertBool a36b
+  let a36 = addPeriods' threeMonths sixMonths
+  assertEqual a36 (Right nineMonths)
 
-  a3612 <- addPeriods a36 oneYear
-  assertEqual (units a3612) Months
-  assertEqual (periodLength a3612) 21
+  let a3612 = a36 >>= (`addPeriods'` oneYear)
+  assertEqual a3612 (Right (21, Months))
 
-  twelveMonths <- period 12 Months
-  assertEqual (units twelveMonths) Months
-  assertEqual (periodLength twelveMonths) 12
-
-  twelveMonthsN <- normalize twelveMonths
-  assertEqual (units twelveMonthsN) Years
-  assertEqual (periodLength twelveMonthsN) 1
+  let twelveMonthsN = normalize' twelveMonths
+  assertEqual twelveMonthsN (Right oneYear)
 
 test_WeekDaysAlgebra :: IO ()
 test_WeekDaysAlgebra = do
-  twoWeeks <- period 2 Weeks
-  oneWeek <- period 1 Weeks
-  threeDays <- period 3 Days
-  oneDay <- period 1 Days
+  let twoWeeks = (2, Weeks)
+      oneWeek = (1, Weeks)
+      threeDays = (3, Days)
+      oneDay = (1, Days)
 
-  t2 <- dividePeriod twoWeeks 2
-  let (Right t2b) = periodsEQ t2 oneWeek
-  assertBool t2b
-  t7 <- dividePeriod oneWeek 7
-  let (Right t7b) = periodsEQ t7 oneDay
-  assertBool t7b
+      t2 = dividePeriod' twoWeeks 2
+  assertEqual t2 (Right oneWeek)
 
-  s1 <- addPeriods threeDays oneDay
-  assertEqual (units s1) Days
-  assertEqual (periodLength s1) 4
+  let t7 = dividePeriod' oneWeek 7
+  assertEqual t7 (Right oneDay)
 
-  s2 <- addPeriods s1 oneWeek
-  assertEqual (units s2) Days
-  assertEqual (periodLength s2) 11
+  let s1 = addPeriods' threeDays oneDay
+  assertEqual s1 (Right (4, Days))
 
-  sevenDays <- period 7 Days
-  assertEqual (units sevenDays) Days
-  assertEqual (periodLength sevenDays) 7
+  let s2 = s1 >>= (`addPeriods'` oneWeek)
+  assertEqual s2 (Right (11, Days))
 
-  sevenDaysN <- normalize sevenDays
-  assertEqual (units sevenDaysN) Weeks
-  assertEqual (periodLength sevenDaysN) 1
+  let sevenDays = (7, Days)
+      sevenDaysN = normalize' sevenDays
+  assertEqual sevenDaysN (Right (1, Weeks))
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

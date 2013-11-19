@@ -13,12 +13,16 @@ module QuantLib.Time.Period
   , units
   , periodLength
   , addPeriods
+  , addPeriods'
   , subtractPeriods
   , dividePeriod
+  , dividePeriod'
 
   , periodsEQ
   , periodsLT
+  , periodsLT'
   , normalize
+  , normalize'
   )
 where
 
@@ -46,9 +50,9 @@ period = $(ffiCall 'period) c_period
 fromFrequency :: F.Frequency -> IO Period
 fromFrequency = $(ffiCall 'fromFrequency) c_fromFrequency
 
-marshalPeriod :: (Ptr CInt -> Ptr CString -> IO CInt)
+unmarshalPeriod :: (Ptr CInt -> Ptr CString -> IO CInt)
   -> Either String (Int, Unit)
-marshalPeriod f = purifyExceptions (getIntPair f)
+unmarshalPeriod f = purifyExceptions (getIntPair f)
   >>= \(p1, p2) -> return (p1, fromQlEnum (show ''Unit) p2)
 
 foreign import ccall safe "ql.h qlPeriodFromFrequency1"
@@ -56,7 +60,7 @@ foreign import ccall safe "ql.h qlPeriodFromFrequency1"
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
 fromFrequency' :: F.Frequency -> Either String (Int, Unit)
-fromFrequency' f = marshalPeriod (c_fromFrequency' $ toQlEnum (show ''F.Frequency) f)
+fromFrequency' f = unmarshalPeriod (c_fromFrequency' $ toQlEnum (show ''F.Frequency) f)
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
 toFrequency :: Period -> Either String F.Frequency
@@ -100,6 +104,15 @@ addPeriods = $(ffiCall 'addPeriods) c_addPeriods
 foreign import ccall safe "ql.h qlPeriodAdd"
   c_addPeriods :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
 
+marshalPeriod :: (CInt -> CInt -> a) -> (Int, Unit) -> a
+marshalPeriod f (n, u) = f (fromIntegral n) (toQlEnum (show ''Unit) u)
+
+addPeriods' :: (Int, Unit) -> (Int, Unit) -> Either String (Int, Unit)
+addPeriods' p1 p2 = unmarshalPeriod (marshalPeriod (marshalPeriod c_addPeriods' p1) p2)
+
+foreign import ccall safe "ql.h qlPeriodAdd1"
+  c_addPeriods' :: CInt -> CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
+
 subtractPeriods :: Period -> Period -> IO Period
 subtractPeriods = $(ffiCall 'subtractPeriods) c_subtractPeriods
 
@@ -111,6 +124,12 @@ dividePeriod = $(ffiCall 'dividePeriod) c_dividePeriod
 
 foreign import ccall safe "ql.h qlPeriodDivide"
   c_dividePeriod :: Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CPeriod)
+
+dividePeriod' :: (Int, Unit) -> Int -> Either String (Int, Unit)
+dividePeriod' p n = unmarshalPeriod $ marshalPeriod c_dividePeriod' p (fromIntegral n)
+
+foreign import ccall safe "ql.h qlPeriodDivide1"
+  c_dividePeriod' :: CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
 periodsEQ :: Period -> Period -> Either String Bool
 periodsEQ = $(ffiCallPureX 'periodsEQ) c_periodsEQ
@@ -124,10 +143,22 @@ periodsLT = $(ffiCallPureX 'periodsLT) c_periodsLT
 foreign import ccall safe "ql.h qlPeriodsLT"
   c_periodsLT :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO CInt
 
+periodsLT' :: (Int, Unit) -> (Int, Unit) -> Either String Bool
+periodsLT' = $(ffiCallPureX 'periodsLT') c_periodsLT'
+
+foreign import ccall safe "ql.h qlPeriodsLT1"
+  c_periodsLT' :: CInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CInt
+
 normalize :: Period -> IO Period
 normalize = $(ffiCall 'normalize) c_normalize
 
 foreign import ccall safe "ql.h qlPeriodNormalize"
   c_normalize :: Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
+
+normalize' :: (Int, Unit) -> Either String (Int, Unit)
+normalize' p = unmarshalPeriod (marshalPeriod c_normalize' p)
+
+foreign import ccall safe "ql.h qlPeriodNormalize1"
+  c_normalize' :: CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

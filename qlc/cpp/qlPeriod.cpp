@@ -94,11 +94,31 @@ Period* qlPeriodSubtract(Period *p1, Period *p2, char **e) {
   }
 }
 
+int qlPeriodAdd1(int n1, int u1, int n2, int u2, int *u, char **e) {
+  try {
+    Period p = Period(n1, (TimeUnit)u1) + Period(n2, (TimeUnit)u2);
+    *u = p.units();
+    return p.length();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 Period* qlPeriodDivide(Period *p1, int n, char **e) {
   try {
     return ret(new Period(*p1/n));
   } catch (std::exception& er) {
     return handleException<Period*>(e, er);
+  }
+}
+
+int qlPeriodDivide1(int n1, int u1, int n, int *u, char **e) {
+  try {
+    Period p = Period(n1, (TimeUnit)u1)/n;
+    *u = p.units();
+    return p.length();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
   }
 }
 
@@ -113,6 +133,17 @@ Period* qlPeriodNormalize(Period *p1, char **e) {
   }
 }
 
+int qlPeriodNormalize1(int n1, int u1, int *u, char **e) {
+  try {
+    Period p(n1, (TimeUnit)u1);
+    p.normalize();
+    *u = p.units();
+    return p.length();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 int DLLEXPORT qlPeriodsEQ(Period *p1, Period *p2, char **e) {
   try {
     return *p1 == *p2;
@@ -124,6 +155,16 @@ int DLLEXPORT qlPeriodsEQ(Period *p1, Period *p2, char **e) {
 int DLLEXPORT qlPeriodsLT(Period *p1, Period *p2, char **e) {
   try {
     return *p1 < *p2;
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int DLLEXPORT qlPeriodsLT1(int n1, int u1, int n2, int u2, char **e) {
+  try {
+    Period p1(n1, (TimeUnit)u1);
+    Period p2(n2, (TimeUnit)u2);
+    return p1 < p2;
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

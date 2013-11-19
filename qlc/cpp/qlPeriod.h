@@ -32,6 +32,11 @@ extern "C" {
   int DLLEXPORT qlPeriodsEQ(Period *p1, Period *p2, char **e);
   int DLLEXPORT qlPeriodsLT(Period *p1, Period *p2, char **e);
   Period* DLLEXPORT qlPeriodNormalize(Period *p1, char **e);
+
+  int DLLEXPORT qlPeriodAdd1(int, int, int, int, int *, char **e);
+  int DLLEXPORT qlPeriodDivide1(int, int, int n, int *, char **e);
+  int DLLEXPORT qlPeriodNormalize1(int, int, int *, char **e);
+  int DLLEXPORT qlPeriodsLT1(int, int, int, int, char **e);
 #ifdef __cplusplus
 }
 #endif
