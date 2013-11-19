@@ -22,9 +22,6 @@ extern "C" {
   void DLLEXPORT qlFreePeriod(Period *period);
   int DLLEXPORT qlPeriodParserParse1(char* str, int *, char **e);
 
-  int DLLEXPORT qlPeriodUnits(Period *p);
-  int DLLEXPORT qlPeriodLength(Period *p);
-
   int DLLEXPORT qlPeriodAdd1(int, int, int, int, int *, char **e);
   int DLLEXPORT qlPeriodDivide1(int, int, int n, int *, char **e);
   int DLLEXPORT qlPeriodNormalize1(int, int, int *, char **e);

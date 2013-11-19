@@ -9,8 +9,6 @@ module QuantLib.Time.Period
   , toFrequency'
   , parse'
 
-  , units
-  , periodLength
   , addPeriods'
   , dividePeriod'
 
@@ -20,6 +18,7 @@ module QuantLib.Time.Period
 where
 
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Period
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -42,11 +41,6 @@ period = $(ffiCall 'period) c_period
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
 fromFrequency :: F.Frequency -> IO Period
 fromFrequency = $(ffiCall 'fromFrequency) c_fromFrequency
-
-unmarshalPeriod :: (Ptr CInt -> Ptr CString -> IO CInt)
-  -> Either String (Int, Unit)
-unmarshalPeriod f = purifyExceptions (getIntPair f)
-  >>= \(p1, p2) -> return (p1, fromQlEnum (show ''Unit) p2)
 
 foreign import ccall safe "ql.h qlPeriodFromFrequency1"
   c_fromFrequency' :: CInt -> Ptr CInt -> Ptr CString -> IO CInt
@@ -72,21 +66,6 @@ parse' s = purifyExceptions (withCString s (getIntPair . c_parse'))
 
 foreign import ccall safe "ql.h qlPeriodParserParse1"
   c_parse' :: CString -> Ptr CInt -> Ptr CString -> IO CInt
-
-units :: Period -> Unit
-units = $(ffiCallPure 'units) c_units
-
-foreign import ccall safe "ql.h qlPeriodUnits"
-  c_units :: Ptr CPeriod -> IO CInt
-
-periodLength :: Period -> Int
-periodLength = $(ffiCallPure 'periodLength) c_periodLength
-
-foreign import ccall safe "ql.h qlPeriodLength"
-  c_periodLength :: Ptr CPeriod -> IO CInt
-
-marshalPeriod :: (CInt -> CInt -> a) -> (Int, Unit) -> a
-marshalPeriod f (n, u) = f (fromIntegral n) (toQlEnum (show ''Unit) u)
 
 addPeriods' :: (Int, Unit) -> (Int, Unit) -> Either String (Int, Unit)
 addPeriods' p1 p2 = unmarshalPeriod (marshalPeriod (marshalPeriod c_addPeriods' p1) p2)

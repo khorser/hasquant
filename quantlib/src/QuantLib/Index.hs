@@ -15,9 +15,11 @@ module QuantLib.Index
 where
 
 import QuantLib.Internal.Date
+import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Time.Unit
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlIndexAddFixing"
@@ -89,11 +91,11 @@ fixingDays = $(ffiCallPure 'fixingDays) c_fixingDays
 foreign import ccall safe "ql.h qlInterestRateIndexFixingDays"
   c_fixingDays :: Ptr CInterestRateIndex -> IO CUInt
 
-tenor :: InterestRateIndex
-  -> IO Period
-tenor = $(ffiCall 'tenor) c_tenor
+tenor :: InterestRateIndex -> Either String (Int, Unit)
+tenor o = purifyExceptions (withObject o (getIntPair . c_tenor))
+  >>= \(n, u) -> return (n, fromQlEnum (show ''Unit) u)
 
 foreign import ccall safe "ql.h qlInterestRateIndexTenor"
-  c_tenor :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CPeriod)
+  c_tenor :: Ptr CInterestRateIndex -> Ptr CInt -> Ptr CString -> IO CInt
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

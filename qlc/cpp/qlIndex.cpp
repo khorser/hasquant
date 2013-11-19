@@ -151,11 +151,13 @@ DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e) {
 unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o) {
   return (*arg(o))->fixingDays();
 }
-Period* qlInterestRateIndexTenor(QlInterestRateIndex* o, char **e) {
+int qlInterestRateIndexTenor(QlInterestRateIndex* o, int *u, char **e) {
   try {
-    return alloc(new Period((*arg(o))->tenor()));
+    const Period& p = (*arg(o))->tenor();
+    *u = p.units();
+    return p.length();
   } catch (std::exception& er) {
-    return handleException<Period*>(e, er);
+    return handleException<int>(e, er);
   }
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

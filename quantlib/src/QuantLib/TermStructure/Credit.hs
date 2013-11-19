@@ -36,7 +36,8 @@ import QuantLib.Internal.Utils
 import QuantLib.TermStructure.Trait
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.DateGenerationRule
-import QuantLib.Time.Frequency
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 
@@ -112,7 +113,7 @@ foreign import ccall safe "ql.h qlInterpolatedSurvivalProbabilityCurve"
   c_interpolatedSurvivalProbabilityCurve :: CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
 spreadCdsHelper :: Quote -- ^runningSpread
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Int -- ^settlementDays
   -> Calendar -- ^calendar
   -> Frequency -- ^frequency
@@ -127,12 +128,12 @@ spreadCdsHelper :: Quote -- ^runningSpread
 spreadCdsHelper = $(ffiCall 'spreadCdsHelper) c_spreadCdsHelper
 
 foreign import ccall safe "ql.h qlSpreadCdsHelper"
-  c_spreadCdsHelper :: Ptr CQuote -> Ptr CPeriod -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
+  c_spreadCdsHelper :: Ptr CQuote -> CInt -> CInt -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
 
 -- |the upfront must be quoted in fractional units.
 upfrontCdsHelper :: Quote -- ^upfront
   -> Double -- ^runningSpread
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Int -- ^settlementDays
   -> Calendar -- ^calendar
   -> Frequency -- ^frequency
@@ -148,7 +149,7 @@ upfrontCdsHelper :: Quote -- ^upfront
 upfrontCdsHelper = $(ffiCall 'upfrontCdsHelper) c_upfrontCdsHelper
 
 foreign import ccall safe "ql.h qlUpfrontCdsHelper"
-  c_upfrontCdsHelper :: Ptr CQuote -> CDouble -> Ptr CPeriod -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CUInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
+  c_upfrontCdsHelper :: Ptr CQuote -> CDouble -> CInt -> CInt -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CUInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
 
 piecewiseDefaultCurve :: Day -- ^referenceDate
   -> [DefaultProbabilityHelper] -- ^instruments

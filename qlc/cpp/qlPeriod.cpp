@@ -62,14 +62,6 @@ int qlPeriodParserParse1(char* str, int* u, char **e) {
   }
 }
 
-int qlPeriodUnits(Period *p) {
-  return p->units();
-}
-
-int qlPeriodLength(Period *p) {
-  return p->length();
-}
-
 int qlPeriodAdd1(int n1, int u1, int n2, int u2, int *u, char **e) {
   try {
     Period p = Period(n1, (TimeUnit)u1) + Period(n2, (TimeUnit)u2);

@@ -55,7 +55,8 @@ run = do
   instruments <- mapM
     (\t -> do
       q <- simpleQuote quotedSpread >>= asQuote
-      spreadCdsHelper q t 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True) tenors
+      spreadCdsHelper q (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
+      [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
 

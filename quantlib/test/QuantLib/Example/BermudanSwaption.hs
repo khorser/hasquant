@@ -29,7 +29,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
@@ -154,8 +153,8 @@ run = do
           vol <- simpleQuote (swaptionVols!!k) >>= asQuote
           index6mRI <- asInterestRateIndex index6m
           dc <- dayCounter index6mRI
-          tenr <- tenor index6mRI
-          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!j, Years) vol index6m (periodLength tenr, units tenr) dc dc ts RelativePriceError
+          let (Right tenr) = tenor index6mRI
+          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!j, Years) vol index6m tenr dc dc ts RelativePriceError
           tms <- Model.times h
           return (h, tms)
 
