@@ -8,6 +8,7 @@ module QuantLib.Time.Period
   , toFrequency
   , toFrequency'
   , parse
+  , parse'
 
   , units
   , periodLength
@@ -45,13 +46,17 @@ period = $(ffiCall 'period) c_period
 fromFrequency :: F.Frequency -> IO Period
 fromFrequency = $(ffiCall 'fromFrequency) c_fromFrequency
 
+marshalPeriod :: (Ptr CInt -> Ptr CString -> IO CInt)
+  -> Either String (Int, Unit)
+marshalPeriod f = purifyExceptions (getIntPair f)
+  >>= \(p1, p2) -> return (p1, fromQlEnum (show ''Unit) p2)
+
 foreign import ccall safe "ql.h qlPeriodFromFrequency1"
   c_fromFrequency' :: CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
 fromFrequency' :: F.Frequency -> Either String (Int, Unit)
-fromFrequency' f = p >>= \(p1, p2) -> return (p1, fromQlEnum (show ''Unit) p2)
-  where p = purifyExceptions $ getIntPair (c_fromFrequency' $ toQlEnum (show ''F.Frequency) f)
+fromFrequency' f = marshalPeriod (c_fromFrequency' $ toQlEnum (show ''F.Frequency) f)
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
 toFrequency :: Period -> Either String F.Frequency
@@ -69,6 +74,13 @@ parse = $(ffiCall 'parse) c_parse
 
 foreign import ccall safe "ql.h qlPeriodParserParse"
   c_parse :: CString -> Ptr CString -> IO (Ptr CPeriod)
+
+parse' :: String -> Either String (Int, Unit)
+parse' s = purifyExceptions (withCString s (getIntPair . c_parse'))
+  >>= \(n, u) -> return (n, fromQlEnum (show ''Unit) u)
+
+foreign import ccall safe "ql.h qlPeriodParserParse1"
+  c_parse' :: CString -> Ptr CInt -> Ptr CString -> IO CInt
 
 units :: Period -> Unit
 units = $(ffiCallPure 'units) c_units

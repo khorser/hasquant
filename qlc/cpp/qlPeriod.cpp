@@ -60,6 +60,16 @@ Period* qlPeriodParserParse(char* str, char **e) {
   }
 }
 
+int qlPeriodParserParse1(char* str, int* u, char **e) {
+  try {
+    const Period &p = (PeriodParser::parse(std::string(arg(str))));
+    *u = p.units();
+    return p.length();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 int qlPeriodUnits(Period *p) {
   return p->units();
 }
