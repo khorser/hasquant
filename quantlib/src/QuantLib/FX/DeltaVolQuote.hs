@@ -5,7 +5,7 @@ module QuantLib.FX.DeltaVolQuote
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 data AtmType = AtmNull | AtmSpot | AtmFwd | AtmDeltaNeutral
   | AtmVegaMax | AtmGammaMax | AtmPutCall50

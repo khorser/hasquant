@@ -5,7 +5,7 @@ module QuantLib.Method.FdmScheme
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum, QLLitEnum)
 
 data FdmScheme = FDCrankNicolson | FDExplicitEuler | FDImplicitEuler 
   deriving (Show, Eq)

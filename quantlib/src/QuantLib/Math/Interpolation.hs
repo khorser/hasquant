@@ -6,7 +6,7 @@ module QuantLib.Math.Interpolation
 
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLLitEnum)
 
 -- bool indicates if the approximation is monotonic
 data Approximation = NaturalSpline Bool | Parabolic Bool | Kruger

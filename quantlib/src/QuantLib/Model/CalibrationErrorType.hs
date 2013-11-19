@@ -4,7 +4,7 @@ module QuantLib.Model.CalibrationErrorType
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 data CalibrationErrorType =
     RelativePriceError | PriceError | ImpliedVolError

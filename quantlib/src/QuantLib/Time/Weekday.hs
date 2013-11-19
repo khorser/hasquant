@@ -4,7 +4,7 @@ module QuantLib.Time.Weekday
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 instance QLEnum Weekday
 

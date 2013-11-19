@@ -60,7 +60,7 @@ module QuantLib.TermStructure.Yield
   )
 where
 
-import QuantLib.Compounding
+import QuantLib.Compounding(Compounding)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -69,7 +69,7 @@ import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Frequency(Frequency)
-import QuantLib.Time.Unit
+import QuantLib.Time.Unit(Unit)
 import QuantLib.TermStructure.Trait(Trait)
 
 foreign import ccall safe "ql.h qlDepositRateHelper"

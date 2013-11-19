@@ -75,6 +75,7 @@ getting rebuilt when qlaux.h changes
 Allocate named objects without attaching finalizers to them. This way we can live without IO
 for Calendar/DayCounter/Currency. And then we can define Read instance for them
 
+Introduce a QuantLib monad? It would be possible to change holidays only on entering into it? 
 
 Separate data types for amount, vol, rate, period length etc
 

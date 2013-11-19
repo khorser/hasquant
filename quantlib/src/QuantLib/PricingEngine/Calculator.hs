@@ -45,7 +45,7 @@ module QuantLib.PricingEngine.Calculator
   )
 where
 
-import QuantLib.Instrument.OptionType
+import QuantLib.Instrument.OptionType(OptionType)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils

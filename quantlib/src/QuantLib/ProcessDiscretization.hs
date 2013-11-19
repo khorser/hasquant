@@ -8,7 +8,7 @@ module QuantLib.ProcessDiscretization
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLLitEnum, QLEnum)
 
 data ProcessDiscretization = EulerDiscretization -- ^Euler discretization for stochastic processes
   | EndEulerDiscretization -- ^Euler end-point discretization for stochastic processes

@@ -4,7 +4,7 @@ module QuantLib.PricingEngine.Parameter
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 data ComplexLogFormula = Gatheral | BranchCorrection
   deriving (Show, Eq, Enum, Bounded)

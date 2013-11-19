@@ -69,7 +69,7 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
-import QuantLib.Time.Month
+import QuantLib.Time.Month(Month(..))
 import QuantLib.Time.Unit(Unit)
 import QuantLib.Time.Weekday(Weekday)
 

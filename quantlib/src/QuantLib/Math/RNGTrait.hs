@@ -4,7 +4,7 @@ module QuantLib.Math.RNGTrait
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLLitEnum)
 
 data RNGTrait = PseudoRandom | PoissonPseudoRandom | LowDiscrepancy | Ziggurat
   deriving (Show, Eq)

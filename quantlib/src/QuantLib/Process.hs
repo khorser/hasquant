@@ -37,7 +37,9 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.ProcessDiscretization
+import QuantLib.ProcessDiscretization(ProcessDiscretization,
+  ExtendedDiscretization, HestonProcessDiscretization,
+  GJRGARCHProcessDiscretization, HybridHestonHullWhiteProcessDiscretization)
 import QuantLib.Types
 
 blackProcess :: Quote -- ^x0

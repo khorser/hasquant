@@ -33,9 +33,9 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.TermStructure.Trait
-import QuantLib.Time.BusinessDayConvention
-import QuantLib.Time.DateGenerationRule
+import QuantLib.TermStructure.Trait(ProbabilityTrait)
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.Frequency(Frequency)
 import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
@@ -156,7 +156,7 @@ piecewiseDefaultCurve :: Day -- ^referenceDate
   -> DayCounter -- ^dayCounter
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Double -- ^accuracy
-  -> ProbabiltyTrait
+  -> ProbabilityTrait
   -> Interpolation -- ^i
   -> IO DefaultProbabilityTermStructure
 piecewiseDefaultCurve = $(ffiCall 'piecewiseDefaultCurve) c_piecewiseDefaultCurve
@@ -170,7 +170,7 @@ piecewiseDefaultCurve' :: Word -- ^settlementDays
   -> DayCounter -- ^dayCounter
   -> [(Quote, Day)] -- ^jumps, ^jumpDates
   -> Double -- ^accuracy
-  -> ProbabiltyTrait
+  -> ProbabilityTrait
   -> Interpolation -- ^i
   -> IO DefaultProbabilityTermStructure
 piecewiseDefaultCurve' = $(ffiCall 'piecewiseDefaultCurve') c_piecewiseDefaultCurve'

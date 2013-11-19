@@ -90,9 +90,9 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.JointCalendarRule
+import QuantLib.Time.JointCalendarRule(JointCalendarRule)
 import QuantLib.Time.Unit(Unit)
-import QuantLib.Time.Weekday
+import QuantLib.Time.Weekday(Weekday)
 
 foreign import ccall safe "ql.h qlCalendarAdjust"
   c_adjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate

@@ -62,7 +62,7 @@ import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
-import QuantLib.TermStructure.Trait
+import QuantLib.TermStructure.Trait(BlackVarSurfaceExtrapolation)
 
 foreign import ccall safe "ql.h qlConstantOptionletVol1"
   c_constantOptionletVolatility' :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote

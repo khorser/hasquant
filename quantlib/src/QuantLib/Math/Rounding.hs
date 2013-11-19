@@ -10,7 +10,7 @@ where
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Math.RoundingType
+import QuantLib.Math.RoundingType(RoundingType)
 import QuantLib.Types
 
 -- |default instance

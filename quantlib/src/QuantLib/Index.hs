@@ -15,11 +15,11 @@ module QuantLib.Index
 where
 
 import QuantLib.Internal.Date
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(fromQlEnum)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Time.Unit
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlIndexAddFixing"

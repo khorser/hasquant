@@ -47,9 +47,9 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Model.CalibrationErrorType
-import QuantLib.Time.Frequency
-import QuantLib.Time.Unit
+import QuantLib.Model.CalibrationErrorType(CalibrationErrorType)
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 batesModel :: BatesProcess -- ^process

@@ -56,12 +56,12 @@ import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Date
-import QuantLib.SettlementType
-import QuantLib.Time.BusinessDayConvention
+import QuantLib.SettlementType(SettlementType)
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Types
-import QuantLib.Instrument.BMASwapType
-import QuantLib.Instrument.VanillaSwapType
-import QuantLib.Instrument.OvernightIndexedSwapType
+import QuantLib.Instrument.BMASwapType(BMASwapType)
+import QuantLib.Instrument.VanillaSwapType(VanillaSwapType)
+import QuantLib.Instrument.OvernightIndexedSwapType(OvernightIndexedSwapType)
 
 -- |Multi leg constructor.
 swap' :: [(Leg, Bool)] -- ^(legs, payer)

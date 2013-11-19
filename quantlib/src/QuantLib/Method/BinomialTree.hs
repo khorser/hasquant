@@ -4,7 +4,7 @@ module QuantLib.Method.BinomialTree
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLLitEnum)
 
 data BinomialTree = JarrowRudd | CoxRossRubinstein | AdditiveEQPBinomialTree
   | Trigeorgis | Tian | LeisenReimer | Joshi4 

@@ -90,7 +90,7 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Unit
+import QuantLib.Time.Unit(Unit(..))
 
 foreign import ccall safe "ql.h qlIborIndex"
   c_iborIndex :: CString -> CInt -> CInt -> CUInt -> Ptr CCurrency

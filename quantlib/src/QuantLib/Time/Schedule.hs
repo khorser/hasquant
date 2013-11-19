@@ -19,7 +19,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
-import QuantLib.Time.Unit
+import QuantLib.Time.Unit(Unit)
 
 foreign import ccall safe "ql.h qlSchedule"
   c_schedule :: CDate -> CDate -> CInt -> CInt -> Ptr CCalendar

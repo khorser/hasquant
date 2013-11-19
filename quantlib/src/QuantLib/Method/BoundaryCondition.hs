@@ -4,7 +4,7 @@ module QuantLib.Method.BoundaryCondition
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 -- |Possible enhancements: Generalize for n-dimensional conditions
 data BoundaryConditionSide = BoundaryConditionNone | BoundaryConditionUpper

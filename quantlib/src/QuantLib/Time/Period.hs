@@ -14,9 +14,7 @@ where
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Period
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Types
 import qualified QuantLib.Time.Frequency as F(Frequency)
 import QuantLib.Time.Unit(Unit)
 

@@ -6,7 +6,7 @@ module QuantLib.Internal.Period
   )
 where 
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(fromQlEnum, toQlEnum)
 import QuantLib.Internal.Utils
 import QuantLib.Time.Unit(Unit)
 

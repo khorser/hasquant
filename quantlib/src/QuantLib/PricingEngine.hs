@@ -93,11 +93,11 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Syntax
-import QuantLib.Math.RNGTrait
-import QuantLib.Method.BinomialTree
-import QuantLib.Method.FdmScheme
-import QuantLib.Method.LsmBasisSystemPolynomType
-import QuantLib.Time.Unit
+import QuantLib.Math.RNGTrait(RNGTrait)
+import QuantLib.Method.BinomialTree(BinomialTree)
+import QuantLib.Method.FdmScheme(FdmScheme)
+import QuantLib.Method.LsmBasisSystemPolynomType(LsmBasisSystemPolynomType)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlDiscountingBondEngine"

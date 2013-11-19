@@ -67,15 +67,15 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Storable(peek)
 
 
-import QuantLib.Time.BusinessDayConvention
-import QuantLib.CashFlow.DurationType
-import QuantLib.Compounding
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.CashFlow.DurationType(DurationType)
+import QuantLib.Compounding(Compounding)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Time.Frequency
-import QuantLib.Time.Unit
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlLeg"

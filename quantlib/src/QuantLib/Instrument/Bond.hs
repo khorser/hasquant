@@ -73,8 +73,7 @@ where
 
 import Data.Functor((<$>))
 
-import QuantLib.Compounding
-import QuantLib.Time.Frequency
+import QuantLib.Compounding(Compounding)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -82,8 +81,9 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
-import QuantLib.Time.Unit
-import QuantLib.CashFlow.DurationType
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
+import QuantLib.CashFlow.DurationType(DurationType)
 
 foreign import ccall safe "ql.h qlBond"
   c_bond :: CUInt -> Ptr CCalendar -> CDate -> Ptr CLeg -> Ptr CString
