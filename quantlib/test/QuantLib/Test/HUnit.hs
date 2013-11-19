@@ -421,9 +421,7 @@ test_FixedBond = do
   assertEqual True True
 
 test_Frequency :: IO ()
-test_Frequency = do
-  p <- Period.period 1 Unit.Months
-  assertEqual (Right Frequency.Monthly) (Period.toFrequency p)
+test_Frequency = assertEqual (Right Frequency.Monthly) (Period.toFrequency (1, Unit.Months))
 
 test_TruncateSchedule :: IO ()
 test_TruncateSchedule = do

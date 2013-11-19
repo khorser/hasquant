@@ -110,8 +110,8 @@ run = do
       fixDC <- thirty360European
       floatDC <- actual360
       eu6m <- euribor6M $ Just f
-      let (Right fixP) = fromFrequency' Annual
-          (Right floatP) = fromFrequency' Semiannual
+      let (Right fixP) = fromFrequency Annual
+          (Right floatP) = fromFrequency Semiannual
       cal <- target
       let maturity = addGregorianYearsClip 5 settle
       fixSched <- schedule (Just settle) maturity fixP

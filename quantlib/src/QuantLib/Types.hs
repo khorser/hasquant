@@ -145,7 +145,6 @@ module QuantLib.Types
   -- time
   , Calendar
   , DayCounter
-  , Period
   , Schedule
   , YearFraction
 
@@ -564,8 +563,6 @@ instance Show DayCounter where
 instance Eq DayCounter where
   (==) x y = name x == name y
 
--- |A Period (length + TimeUnit) implementing a limited algebra
-type Period = ForeignPtr CPeriod
 -- |Payment schedule
 type Schedule = ForeignPtr CSchedule
 

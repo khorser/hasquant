@@ -110,6 +110,6 @@ prop_ScheduleDates dates = monadicIO $ do
 prop_FrequencyFromPeriodFromFrequency :: Frequency -> Property
 prop_FrequencyFromPeriodFromFrequency freq =
   freq /= OtherFrequency
-  ==> either (const False) (==freq) (Period.fromFrequency' freq >>= Period.toFrequency')
+  ==> either (const False) (==freq) (Period.fromFrequency freq >>= Period.toFrequency)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -33,7 +33,6 @@ namespace QuantLib {
   class Forward;
   class FixedRateBondForward;
   class ForwardRateAgreement;
-  class Period;
   class DayCounter;
   class Calendar;
   class Schedule;
@@ -60,7 +59,6 @@ using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
 using QuantLib::FixedRateBondForward;
 using QuantLib::ForwardRateAgreement;
-using QuantLib::Period;
 using QuantLib::DayCounter;
 using QuantLib::Calendar;
 using QuantLib::Schedule;
@@ -153,7 +151,6 @@ template <> class objClassName<QlIborIndex *> { public: static const char *name(
 template <> class objClassName<IborIndex *> { public: static const char *name() { return "IborIndex"; } };
 template <> class objClassName<QlIndex *> { public: static const char *name() { return "QlIndex"; } };
 template <> class objClassName<Index *> { public: static const char *name() { return "Index"; } };
-template <> class objClassName<Period *> { public: static const char *name() { return "Period"; } };
 template <> class objClassName<PricingEngine *> { public: static const char *name() { return "PricingEngine"; } };
 template <> class objClassName<DiscountingBondEngine *> { public: static const char *name() { return "DiscountingBondEngine"; } };
 template <> class objClassName<QlPricingEngine *> { public: static const char *name() { return "QlPricingEngine"; } };

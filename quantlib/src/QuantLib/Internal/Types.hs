@@ -142,7 +142,6 @@ module QuantLib.Internal.Types
   -- time
   , CCalendar
   , CDayCounter
-  , CPeriod
   , CSchedule
 
   -- common
@@ -1231,7 +1230,6 @@ foreign import ccall safe "ql.h qlCallableBondVolatilityStructureAsTermStructure
 -- time
 data CCalendar
 data CDayCounter
-data CPeriod
 data CSchedule
 
 instance Finalizable CCalendar where
@@ -1259,11 +1257,6 @@ foreign import ccall safe "ql.h qlDayCounter"
   c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
 foreign import ccall safe "ql.h qlDayCounterName"
   c_dayCounterName :: Ptr CDayCounter -> IO CString
-
-instance Finalizable CPeriod where
-  finalize = p_freePeriod
-foreign import ccall safe "ql.h &qlFreePeriod"
-  p_freePeriod :: FunPtr (Ptr CPeriod -> IO ())
 
 instance Finalizable CSchedule where
   finalize = p_freeSchedule

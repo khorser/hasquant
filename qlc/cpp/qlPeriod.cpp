@@ -6,22 +6,6 @@
 
 using namespace QuantLib;
 
-Period *qlPeriod(int n, int u, char **e) {
-  try {
-    return alloc(new Period(n, (TimeUnit) u));
-  } catch (std::exception& er) {
-    return handleException<Period *>(e, er);
-  }
-}
-
-Period *qlPeriodFromFrequency(int freq, char **e) {
-  try {
-    return alloc(new Period((Frequency) freq));
-  } catch (std::exception& er) {
-    return handleException<Period *>(e, er);
-  }
-}
-
 int qlPeriodFromFrequency1(int freq, int *u, char **e) {
   try {
     Period p((Frequency) freq);
@@ -38,18 +22,6 @@ int qlPeriodToFrequency1(int l, int u, char **e) {
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
-}
-
-int qlPeriodToFrequency(Period *period, char **e) {
-  try {
-    return arg(period)->frequency();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
-}
-
-void  qlFreePeriod(Period *period) {
-  del(period);
 }
 
 int qlPeriodParserParse1(char* str, int* u, char **e) {
