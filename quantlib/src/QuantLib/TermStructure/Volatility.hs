@@ -60,6 +60,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.TermStructure.Trait
 
 foreign import ccall safe "ql.h qlConstantOptionletVol1"
@@ -135,30 +136,30 @@ foreign import ccall safe "ql.h qlConstantSwaptionVolatility"
 -- |returns the Black variance for a given option date and swap tenor
 blackVarianceForPeriod' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
 blackVarianceForPeriod' = $(ffiCallX 'blackVarianceForPeriod') c_blackVarianceForPeriod'
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance1"
-  c_blackVarianceForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_blackVarianceForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> CInt -> CInt -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option time and swap tenor
 blackVarianceForPeriod :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
 blackVarianceForPeriod = $(ffiCallX 'blackVarianceForPeriod) c_blackVarianceForPeriod
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance2"
-  c_blackVarianceForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_blackVarianceForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CInt -> CInt -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option tenor and swap length
 blackVarianceForTenor :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
+  -> (Int, Unit) -- ^optionTenor
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
@@ -166,7 +167,7 @@ blackVarianceForTenor :: SwaptionVolatilityStructure
 blackVarianceForTenor = $(ffiCallX 'blackVarianceForTenor) c_blackVarianceForTenor
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance3"
-  c_blackVarianceForTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_blackVarianceForTenor :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option date and swap length
 blackVariance' :: SwaptionVolatilityStructure
@@ -194,15 +195,15 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance5"
 
 -- |returns the Black variance for a given option tenor and swap tenor
 blackVarianceForPeriods :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^optionTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
 blackVarianceForPeriods = $(ffiCallX 'blackVarianceForPeriods) c_blackVarianceForPeriods
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance"
-  c_blackVarianceForPeriods :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_blackVarianceForPeriods :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> CInt -> CInt -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |the largest swapLength for which the term structure can return vols
 maxSwapLength :: SwaptionVolatilityStructure
@@ -223,35 +224,35 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapTenor"
 -- |returns the smile for a given option date and swap tenor
 smileSectionForPeriod' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Bool -- ^extr
   -> IO SmileSection
 smileSectionForPeriod' = $(ffiCall 'smileSectionForPeriod') c_smileSectionForPeriod'
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection1"
-  c_smileSectionForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+  c_smileSectionForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 
 -- |returns the smile for a given option time and swap tenor
 smileSectionForPeriod :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Bool -- ^extr
   -> IO SmileSection
 smileSectionForPeriod = $(ffiCall 'smileSectionForPeriod) c_smileSectionForPeriod
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection2"
-  c_smileSectionForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+  c_smileSectionForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 
 -- |returns the smile for a given option tenor and swap length
 smileSectionForTenor :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
+  -> (Int, Unit) -- ^optionTenor
   -> YearFraction -- ^swapLength
   -> Bool -- ^extr
   -> IO SmileSection
 smileSectionForTenor = $(ffiCall 'smileSectionForTenor) c_smileSectionForTenor
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection3"
-  c_smileSectionForTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+  c_smileSectionForTenor :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 
 -- |returns the smile for a given option date and swap length
 smileSection' :: SwaptionVolatilityStructure
@@ -277,14 +278,14 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection5"
 
 -- |returns the smile for a given option tenor and swap tenor
 smileSectionForPeriods :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^optionTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Bool -- ^extr
   -> IO SmileSection
 smileSectionForPeriods = $(ffiCall 'smileSectionForPeriods) c_smileSectionForPeriods
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection"
-  c_smileSectionForPeriods :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+  c_smileSectionForPeriods :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 
 -- |implements the conversion between swap dates and swap (time) length
 swapLength' :: SwaptionVolatilityStructure
@@ -298,40 +299,40 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSwapLength1"
 
 -- |implements the conversion between swap tenor and swap (time) length
 swapLength :: SwaptionVolatilityStructure
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> IO YearFraction
 swapLength = $(ffiCallX 'swapLength) c_swapLength
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSwapLength"
-  c_swapLength :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CString -> IO CYearFraction
+  c_swapLength :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> Ptr CString -> IO CYearFraction
 
 -- |returns the volatility for a given option date and swap tenor
 volatilityForPeriod' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
 volatilityForPeriod' = $(ffiCallX 'volatilityForPeriod') c_volatilityForPeriod'
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility1"
-  c_volatilityForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_volatilityForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> CInt -> CInt -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option time and swap tenor
 volatilityForPeriod :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
 volatilityForPeriod = $(ffiCallX 'volatilityForPeriod) c_volatilityForPeriod
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility2"
-  c_volatilityForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_volatilityForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CInt -> CInt -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option tenor and swap length
 volatilityForTenor :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
+  -> (Int, Unit) -- ^optionTenor
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
@@ -339,7 +340,7 @@ volatilityForTenor :: SwaptionVolatilityStructure
 volatilityForTenor = $(ffiCallX 'volatilityForTenor) c_volatilityForTenor
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility3"
-  c_volatilityForTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_volatilityForTenor :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option date and swap length
 volatilityForTenor' :: SwaptionVolatilityStructure
@@ -367,41 +368,41 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility5"
 
 -- |returns the volatility for a given option tenor and swap tenor
 volatilityForPeriods :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
-  -> Period -- ^swapTenor
+  -> (Int, Unit) -- ^optionTenor
+  -> (Int, Unit) -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
 volatilityForPeriods = $(ffiCallX 'volatilityForPeriods) c_volatilityForPeriods
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility"
-  c_volatilityForPeriods :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+  c_volatilityForPeriods :: Ptr CSwaptionVolatilityStructure -> CInt -> CInt -> CInt -> CInt -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |fixed reference date, floating market data
 capFloorTermVolCurve' :: Day -- ^settlementDate
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^bdc
-  -> [Period] -- ^optionTenors
+  -> [(Int, Unit)] -- ^optionTenors
   -> [Quote] -- ^vols
   -> DayCounter -- ^dc
   -> IO VolatilityTermStructure
 capFloorTermVolCurve' = $(ffiCall 'capFloorTermVolCurve') c_capFloorTermVolCurve'
 
 foreign import ccall safe "ql.h qlCapFloorTermVolCurve1"
-  c_capFloorTermVolCurve' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
+  c_capFloorTermVolCurve' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr CInt -> Ptr CInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
 
 -- |floating reference date, floating market data
 capFloorTermVolCurve :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^bdc
-  -> [Period] -- ^optionTenors
+  -> [(Int, Unit)] -- ^optionTenors
   -> [Quote] -- ^vols
   -> DayCounter -- ^dc
   -> IO VolatilityTermStructure
 capFloorTermVolCurve = $(ffiCall 'capFloorTermVolCurve) c_capFloorTermVolCurve
 
 foreign import ccall safe "ql.h qlCapFloorTermVolCurve"
-  c_capFloorTermVolCurve :: CUInt -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
+  c_capFloorTermVolCurve :: CUInt -> Ptr CCalendar -> CInt -> CUInt -> Ptr CInt -> Ptr CInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
 
 -- |fixed reference date, floating market data
 constantCapFloorTermVolatility' :: Day -- ^referenceDate
@@ -509,7 +510,7 @@ foreign import ccall safe "ql.h qlBlackVarianceSurface"
 capFloorTermVolSurface :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^bdc
-  -> [Period] -- ^optionTenors
+  -> [(Int, Unit)] -- ^optionTenors
   -> [Double] -- ^strikes
   -> Matrix Quote -- ^volatilities
   -> DayCounter -- ^dc
@@ -517,13 +518,13 @@ capFloorTermVolSurface :: Word -- ^settlementDays
 capFloorTermVolSurface = $(ffiCall 'capFloorTermVolSurface) c_capFloorTermVolSurface
 
 foreign import ccall safe "ql.h qlCapFloorTermVolSurface"
-  c_capFloorTermVolSurface :: CUInt -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
+  c_capFloorTermVolSurface :: CUInt -> Ptr CCalendar -> CInt -> CUInt -> Ptr CInt -> Ptr CInt -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
 
 -- |fixed reference date, floating market data
 capFloorTermVolSurface' :: Day -- ^settlementDate
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^bdc
-  -> [Period] -- ^optionTenors
+  -> [(Int, Unit)] -- ^optionTenors
   -> [Double] -- ^strikes
   -> Matrix Quote -- ^volatilities
   -> DayCounter -- ^dc
@@ -531,7 +532,7 @@ capFloorTermVolSurface' :: Day -- ^settlementDate
 capFloorTermVolSurface' = $(ffiCall 'capFloorTermVolSurface') c_capFloorTermVolSurface'
 
 foreign import ccall safe "ql.h qlCapFloorTermVolSurface1"
-  c_capFloorTermVolSurface' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
+  c_capFloorTermVolSurface' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr CInt -> Ptr CInt -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
 
 callableBondConstantVolatility' :: Word -- ^settlementDays
   -> Calendar

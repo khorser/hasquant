@@ -396,6 +396,10 @@ genFfiCall extra aa r = do
       [|withObjects (map fst $v) (\n os -> withDoubles (map snd $v)
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
+    genFfiCallImpl ((ListA2 IntN (EnumN n), v):as) c_call =
+      [|withArrayULenT ((fromIntegral :: Int -> CInt) . fst) $v (\nn ns -> withArrayULenT (toQlEnum $(stringE $ show n) . snd) $v
+        (\_ es -> $(genFfiCallImpl as [|$c_call nn ns es|])))|]
+
     genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
       error $ show t ++ " Not supported yet"
 

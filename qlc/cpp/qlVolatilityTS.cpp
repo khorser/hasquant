@@ -45,14 +45,14 @@ void qlFreeSmileSection(QlSmileSection *o) { del(o); }
 
 QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {
-    return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), (*arg(dayCounter))))));
+    return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
   } catch (std::exception& er) {
     return handleException<QlBlackVolTermStructure*>(e, er);
   }
 }
 QlBlackVolTermStructure* qlBlackConstantVol(int referenceDate, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {
-    return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), Handle<Quote>(*arg(volatility)), (*arg(dayCounter))))));
+    return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
   } catch (std::exception& er) {
     return handleException<QlBlackVolTermStructure*>(e, er);
   }
@@ -78,23 +78,23 @@ QlSwaptionVolatilityStructure* qlConstantSwaptionVolatility(unsigned settlementD
     return handleException<QlSwaptionVolatilityStructure*>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureBlackVariance1(QlSwaptionVolatilityStructure* o, int optionDate, Period* swapTenor, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureBlackVariance1(QlSwaptionVolatilityStructure* o, int optionDate, int n, int u, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->blackVariance(Date(optionDate), *arg(swapTenor), strike, extrapolate);
+    return (*arg(o))->blackVariance(Date(optionDate), Period(n, (TimeUnit)u), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureBlackVariance2(QlSwaptionVolatilityStructure* o, double optionTime, Period* swapTenor, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureBlackVariance2(QlSwaptionVolatilityStructure* o, double optionTime, int n, int u, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->blackVariance(optionTime, *arg(swapTenor), strike, extrapolate);
+    return (*arg(o))->blackVariance(optionTime, Period(n, (TimeUnit)u), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureBlackVariance3(QlSwaptionVolatilityStructure* o, Period* optionTenor, double swapLength, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureBlackVariance3(QlSwaptionVolatilityStructure* o, int n, int u, double swapLength, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->blackVariance(*arg(optionTenor), swapLength, strike, extrapolate);
+    return (*arg(o))->blackVariance(Period(n, (TimeUnit)u), swapLength, strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -113,9 +113,9 @@ double qlSwaptionVolatilityStructureBlackVariance5(QlSwaptionVolatilityStructure
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureBlackVariance(QlSwaptionVolatilityStructure* o, Period* optionTenor, Period* swapTenor, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureBlackVariance(QlSwaptionVolatilityStructure* o, int n, int u, int n1, int u1, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->blackVariance(*arg(optionTenor), *arg(swapTenor), strike, extrapolate);
+    return (*arg(o))->blackVariance(Period(n, (TimeUnit)u), Period(n1, (TimeUnit)u1), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -134,30 +134,30 @@ Period* qlSwaptionVolatilityStructureMaxSwapTenor(QlSwaptionVolatilityStructure*
     return handleException<Period*>(e, er);
   }
 }
-QlSmileSection* qlSwaptionVolatilityStructureSmileSection1(QlSwaptionVolatilityStructure* o, int optionDate, Period* swapTenor, int extr, char **e) {
+QlSmileSection* qlSwaptionVolatilityStructureSmileSection1(QlSwaptionVolatilityStructure* o, int optionDate, int n, int u, int extr, char **e) {
   try {
-    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), *arg(swapTenor), extr))));
+    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), Period(n, (TimeUnit)u), extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
 }
-QlSmileSection* qlSwaptionVolatilityStructureSmileSection2(QlSwaptionVolatilityStructure* o, double optionTime, Period* swapTenor, int extr, char **e) {
+QlSmileSection* qlSwaptionVolatilityStructureSmileSection2(QlSwaptionVolatilityStructure* o, double optionTime, int n, int u, int extr, char **e) {
   try {
     // declared but not implemented in Swaption TS for some reason:
     //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, *arg(swapTenor), extr))));
     SwaptionVolatilityStructure *ts = arg(o)->get();
-    Time length = ts->swapLength(*arg(swapTenor));
+    Time length = ts->swapLength(Period(n, (TimeUnit)u));
     return ret(new QlSmileSection(alloc(ts->smileSection(optionTime, length, extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
 }
-QlSmileSection* qlSwaptionVolatilityStructureSmileSection3(QlSwaptionVolatilityStructure* o, Period* optionTenor, double swapLength, int extr, char **e) {
+QlSmileSection* qlSwaptionVolatilityStructureSmileSection3(QlSwaptionVolatilityStructure* o, int n, int u, double swapLength, int extr, char **e) {
   try {
     // declared but not implemented in Swaption TS for some reason:
     //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(*arg(optionTenor), swapLength, extr))));
     SwaptionVolatilityStructure *ts = arg(o)->get();
-    Date optionDate = ts->optionDateFromTenor(*arg(optionTenor));
+    Date optionDate = ts->optionDateFromTenor(Period(n, (TimeUnit)u));
     Time optionTime = ts->timeFromReference(optionDate);
     return ret(new QlSmileSection(alloc(ts->smileSection(optionTime, swapLength, extr))));
   } catch (std::exception& er) {
@@ -183,9 +183,9 @@ QlSmileSection* qlSwaptionVolatilityStructureSmileSection5(QlSwaptionVolatilityS
     return handleException<QlSmileSection*>(e, er);
   }
 }
-QlSmileSection* qlSwaptionVolatilityStructureSmileSection(QlSwaptionVolatilityStructure* o, Period* optionTenor, Period* swapTenor, int extr, char **e) {
+QlSmileSection* qlSwaptionVolatilityStructureSmileSection(QlSwaptionVolatilityStructure* o, int n, int u, int n1, int u1, int extr, char **e) {
   try {
-    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(*arg(optionTenor), *arg(swapTenor), extr))));
+    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Period(n, (TimeUnit)u), Period(n1, (TimeUnit)u1), extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
@@ -197,30 +197,30 @@ double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureSwapLength(QlSwaptionVolatilityStructure* o, Period* swapTenor, char **e) {
+double qlSwaptionVolatilityStructureSwapLength(QlSwaptionVolatilityStructure* o, int n, int u, char **e) {
   try {
-    return (*arg(o))->swapLength(*arg(swapTenor));
+    return (*arg(o))->swapLength(Period(n, (TimeUnit)u));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureVolatility1(QlSwaptionVolatilityStructure* o, int optionDate, Period* swapTenor, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureVolatility1(QlSwaptionVolatilityStructure* o, int optionDate, int n, int u, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->volatility(Date(optionDate), *arg(swapTenor), strike, extrapolate);
+    return (*arg(o))->volatility(Date(optionDate), Period(n, (TimeUnit)u), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureVolatility2(QlSwaptionVolatilityStructure* o, double optionTime, Period* swapTenor, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureVolatility2(QlSwaptionVolatilityStructure* o, double optionTime, int n, int u, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->volatility(optionTime, *arg(swapTenor), strike, extrapolate);
+    return (*arg(o))->volatility(optionTime, Period(n, (TimeUnit)u), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureVolatility3(QlSwaptionVolatilityStructure* o, Period* optionTenor, double swapLength, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureVolatility3(QlSwaptionVolatilityStructure* o, int n, int u, double swapLength, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->volatility(*arg(optionTenor), swapLength, strike, extrapolate);
+    return (*arg(o))->volatility(Period(n, (TimeUnit)u), swapLength, strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -239,23 +239,29 @@ double qlSwaptionVolatilityStructureVolatility5(QlSwaptionVolatilityStructure* o
     return handleException<double>(e, er);
   }
 }
-double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o, Period* optionTenor, Period* swapTenor, double strike, int extrapolate, char **e) {
+double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o, int n, int u, int n1, int u1, double strike, int extrapolate, char **e) {
   try {
-    return (*arg(o))->volatility(*arg(optionTenor), *arg(swapTenor), strike, extrapolate);
+    return (*arg(o))->volatility(Period(n, (TimeUnit)u), Period(n1, (TimeUnit)u1), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
-QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
-    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), qlBuildHandleVector(vols, volsLen), *arg(dc)))));
+    std::vector<Period> periods;
+    for (unsigned i = 0; i < l; ++i)
+      periods.push_back(Period(n[i], (TimeUnit)u[i]));
+    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, periods, qlBuildHandleVector(vols, volsLen), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlVolatilityTermStructure*>(e, er);
   }
 }
-QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
-    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), qlBuildHandleVector(vols, volsLen), *arg(dc)))));
+    std::vector<Period> periods;
+    for (unsigned i = 0; i < l; ++i)
+      periods.push_back(Period(n[i], (TimeUnit)u[i]));
+    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, periods, qlBuildHandleVector(vols, volsLen), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlVolatilityTermStructure*>(e, er);
   }
@@ -394,17 +400,23 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
   }
 }
 
-QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
+QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {
-    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
+    std::vector<Period> periods;
+    for (unsigned i = 0; i < l; ++i)
+      periods.push_back(Period(n[i], (TimeUnit)u[i]));
+    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, periods, std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlCapFloorTermVolSurface*>(e, er);
   }
 }
 
-QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
+QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {
-    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
+    std::vector<Period> periods;
+    for (unsigned i = 0; i < l; ++i)
+      periods.push_back(Period(n[i], (TimeUnit)u[i]));
+    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, periods, std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlCapFloorTermVolSurface*>(e, er);
   }
