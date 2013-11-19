@@ -7,21 +7,14 @@ module QuantLib.Time.Period
 
   , toFrequency
   , toFrequency'
-  , parse
   , parse'
 
   , units
   , periodLength
-  , addPeriods
   , addPeriods'
-  , subtractPeriods
-  , dividePeriod
   , dividePeriod'
 
-  , periodsEQ
-  , periodsLT
   , periodsLT'
-  , normalize
   , normalize'
   )
 where
@@ -73,12 +66,6 @@ foreign import ccall safe "ql.h qlPeriodToFrequency1"
 toFrequency' :: (Int, Unit) -> Either String F.Frequency
 toFrequency' = $(ffiCallPureX 'toFrequency') c_toFrequency'
 
-parse :: String -> IO Period
-parse = $(ffiCall 'parse) c_parse
-
-foreign import ccall safe "ql.h qlPeriodParserParse"
-  c_parse :: CString -> Ptr CString -> IO (Ptr CPeriod)
-
 parse' :: String -> Either String (Int, Unit)
 parse' s = purifyExceptions (withCString s (getIntPair . c_parse'))
   >>= \(n, u) -> return (n, fromQlEnum (show ''Unit) u)
@@ -98,12 +85,6 @@ periodLength = $(ffiCallPure 'periodLength) c_periodLength
 foreign import ccall safe "ql.h qlPeriodLength"
   c_periodLength :: Ptr CPeriod -> IO CInt
 
-addPeriods :: Period -> Period -> IO Period
-addPeriods = $(ffiCall 'addPeriods) c_addPeriods
-
-foreign import ccall safe "ql.h qlPeriodAdd"
-  c_addPeriods :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
-
 marshalPeriod :: (CInt -> CInt -> a) -> (Int, Unit) -> a
 marshalPeriod f (n, u) = f (fromIntegral n) (toQlEnum (show ''Unit) u)
 
@@ -113,47 +94,17 @@ addPeriods' p1 p2 = unmarshalPeriod (marshalPeriod (marshalPeriod c_addPeriods' 
 foreign import ccall safe "ql.h qlPeriodAdd1"
   c_addPeriods' :: CInt -> CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
-subtractPeriods :: Period -> Period -> IO Period
-subtractPeriods = $(ffiCall 'subtractPeriods) c_subtractPeriods
-
-foreign import ccall safe "ql.h qlPeriodSubtract"
-  c_subtractPeriods :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
-
-dividePeriod :: Period -> Int -> IO Period
-dividePeriod = $(ffiCall 'dividePeriod) c_dividePeriod
-
-foreign import ccall safe "ql.h qlPeriodDivide"
-  c_dividePeriod :: Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CPeriod)
-
 dividePeriod' :: (Int, Unit) -> Int -> Either String (Int, Unit)
 dividePeriod' p n = unmarshalPeriod $ marshalPeriod c_dividePeriod' p (fromIntegral n)
 
 foreign import ccall safe "ql.h qlPeriodDivide1"
   c_dividePeriod' :: CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
-periodsEQ :: Period -> Period -> Either String Bool
-periodsEQ = $(ffiCallPureX 'periodsEQ) c_periodsEQ
-
-foreign import ccall safe "ql.h qlPeriodsEQ"
-  c_periodsEQ :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO CInt
-
-periodsLT :: Period -> Period -> Either String Bool
-periodsLT = $(ffiCallPureX 'periodsLT) c_periodsLT
-
-foreign import ccall safe "ql.h qlPeriodsLT"
-  c_periodsLT :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO CInt
-
 periodsLT' :: (Int, Unit) -> (Int, Unit) -> Either String Bool
 periodsLT' = $(ffiCallPureX 'periodsLT') c_periodsLT'
 
 foreign import ccall safe "ql.h qlPeriodsLT1"
   c_periodsLT' :: CInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CInt
-
-normalize :: Period -> IO Period
-normalize = $(ffiCall 'normalize) c_normalize
-
-foreign import ccall safe "ql.h qlPeriodNormalize"
-  c_normalize :: Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
 
 normalize' :: (Int, Unit) -> Either String (Int, Unit)
 normalize' p = unmarshalPeriod (marshalPeriod c_normalize' p)
