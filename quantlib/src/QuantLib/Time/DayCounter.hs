@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell,MultiParamTypeClasses #-}
 module QuantLib.Time.DayCounter
   (
     actual365Fixed
@@ -26,11 +26,14 @@ module QuantLib.Time.DayCounter
 
   , dayCount
   , yearFraction
+
+  , DayCounterE
   )
 
 where
 
 import QuantLib.Internal.Date
+import QuantLib.Internal.Enum(QLObjEnum)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -103,5 +106,13 @@ yearFraction = $(ffiCallPureX 'yearFraction) c_yearFraction
 
 foreign import ccall safe "ql.h qlDayCounterYearFraction"
   c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CYearFraction
+
+data DayCounterE = Actual365Fixed | Actual360
+  deriving (Show, Eq, Enum, Bounded)
+
+--instance QLObjEnum DayCounterE CDayCounter where
+--  enumToObject Actual365Fixed = actual365Fixed
+--  enumToObject Actual360 = actual360
+--  objectToEnum = undefined
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

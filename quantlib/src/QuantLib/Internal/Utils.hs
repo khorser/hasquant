@@ -109,7 +109,7 @@ foreign import ccall safe "ql.h qlFreeDoubles"
 foreign import ccall safe "ql.h qlFreePointerArray"
   c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
--- get a function that returns an array of a
+-- get a function that returns an array of a's
 -- with the number of items returned via the first argument
 getArray :: (CArrayable a) => (Ptr CUInt -> IO (Ptr a)) -> IO [a]
 getArray f =
@@ -170,7 +170,6 @@ purifyExceptions :: IO a -> Either String a
 purifyExceptions f = unsafePerformIO $
   catch (Right <$> f)
         (\(e :: Error) -> return $ Left (message e))
-
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
