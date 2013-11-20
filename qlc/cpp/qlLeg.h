@@ -63,9 +63,7 @@ extern "C" {
   void DLLEXPORT qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e);
   void DLLEXPORT qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e);
 
-  void DLLEXPORT qlFreeCoupon(QlCoupon *o);
-  QlCoupon **DLLEXPORT qlLegCoupons(Leg *leg, unsigned *len, char **e);
-  int DLLEXPORT qlCouponAccrualStartDate(QlCoupon* o, char **e);
+  int* DLLEXPORT qlCouponAccrualStartDates(Leg* o, unsigned *len, char **e);
 
   void DLLEXPORT qlFreeDividend(QlDividend *o);
   QlDividend* DLLEXPORT qlFixedDividend(double amount, int date, char **e);

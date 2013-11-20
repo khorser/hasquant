@@ -364,38 +364,22 @@ void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPr
   }
 }
 
-void qlFreeCoupon(QlCoupon *o) { del(o); }
-
-QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
-  *len = leg->size();
-  QlCoupon **coupons = 0;
+int* qlCouponAccrualStartDates(Leg* o, unsigned *len, char **e) {
+  int* dates = 0;
   try {
-    coupons = reinterpret_cast<QlCoupon **>(qlAllocatePointerArray(*len));
-    unsigned i;
-    for (i = 0; i < leg->size(); ++i) {
-      QlCoupon c = boost::dynamic_pointer_cast<Coupon>((*leg)[i]);
+    dates = qlAllocateInts(o->size());
+    *len = o->size();
+    for (unsigned i = 0; i < o->size(); ++i) {
+      boost::shared_ptr<Coupon> c = boost::dynamic_pointer_cast<Coupon>((*o)[i]);
       if (c)
-        coupons[i] = new QlCoupon(c);
+        dates[i] = (c->accrualStartDate()).serialNumber();
       else
-        break;
+        QL_FAIL("Cash flow #" << i << " is not a coupon");
     }
-    if (i < leg->size()) {
-      for (unsigned j = 0; j < i; ++j)
-        delete coupons[j];
-      QL_FAIL("Not all cash flows are coupons");
-    }
-    return coupons;
+    return dates;
   } catch (std::exception& er) {
-    qlFreePointerArray(reinterpret_cast<void **>(coupons));
-    return handleException<QlCoupon **>(e, er);
-  }
-}
-
-int qlCouponAccrualStartDate(QlCoupon* o, char **e) {
-  try {
-    return ((*arg(o))->accrualStartDate()).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
+    qlFreeInts(dates);
+    return handleException<int*>(e, er);
   }
 }
 

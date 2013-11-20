@@ -808,11 +808,6 @@ template <> class objClassName<FdmSchemeDesc *> { public: static const char *nam
 namespace QuantLib {class TimeGrid;} using QuantLib::TimeGrid;
 template <> class objClassName<TimeGrid *> { public: static const char *name() { return "TimeGrid"; } };
 
-namespace QuantLib {class Coupon;} using QuantLib::Coupon;
-typedef boost::shared_ptr<Coupon> QlCoupon;
-template <> class objClassName<Coupon *> { public: static const char *name() { return "Coupon"; } };
-template <> class objClassName<QlCoupon *> { public: static const char *name() { return "QlCoupon"; } };
-
 // DefaultProbabilityHelper is a typedef so we cannot use forward declaration
 #ifdef quantlib_default_probability_helpers_hpp
 using QuantLib::DefaultProbabilityHelper;

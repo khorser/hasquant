@@ -100,7 +100,7 @@ run = do
   atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
 
-  bermudanDates <- fixedLeg swp >>= Leg.coupons >>= mapM Leg.accrualStartDate'
+  bermudanDates <- fixedLeg swp >>= Leg.couponAccrualStartDates
   ex <- bermudanExercise bermudanDates False >>= asExercise
   atmSwaption <- swaption atmSwap ex Physical >>= asOption >>= asInstrument
 
