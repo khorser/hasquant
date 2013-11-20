@@ -34,8 +34,7 @@ extern "C" {
   int DLLEXPORT qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e);
   int DLLEXPORT qlIMMNextDate(int d, int mainCycle);
 
-  int DLLEXPORT qlAddPeriod(int d, Period *p, char **e);
-  int DLLEXPORT qlSubtractPeriod(int d, Period *p, char **e);
+  int DLLEXPORT qlAddPeriod(int d, int, int, char **e);
 
   void DLLEXPORT qlECBAddDate(int d, char **e);
   char* DLLEXPORT qlECBCode(int ecbDate, char **e);

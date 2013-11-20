@@ -29,7 +29,7 @@ extern "C" {
     int payConv, double redemption, int issue, Calendar *payCal,
     char **e);
   QlFixedRateBond *DLLEXPORT qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
-    int start, int maturity, Period *tenor, unsigned cLen, double *coupons,
+    int start, int maturity, int, int, unsigned cLen, double *coupons,
     DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
     int issue, int stub, int rule, int eom, Calendar *payCal, char **e);
   QlFixedRateBond *DLLEXPORT qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,

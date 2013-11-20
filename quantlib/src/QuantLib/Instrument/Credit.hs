@@ -25,13 +25,12 @@ module QuantLib.Instrument.Credit
 
 where
 
-import QuantLib.Credit.ProtectionSide
-import QuantLib.Time.BusinessDayConvention
-
+import QuantLib.Credit.ProtectionSide(ProtectionSide)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Date
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Types
 
 -- |Claim on a notional

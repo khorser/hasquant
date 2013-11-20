@@ -90,17 +90,16 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Period(period)
-import QuantLib.Time.Unit
+import QuantLib.Time.Unit(Unit(..))
 
 foreign import ccall safe "ql.h qlIborIndex"
-  c_iborIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
+  c_iborIndex :: CString -> CInt -> CInt -> CUInt -> Ptr CCurrency
     -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter
     -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CIborIndex)
 
 -- | QuantLibXL: qlIborIndex
 iborIndex :: String -- ^familyName
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
   -> Currency -- ^currency
   -> Calendar -- ^fixingCalendar
@@ -112,7 +111,7 @@ iborIndex :: String -- ^familyName
 iborIndex = $(ffiCall 'iborIndex) c_iborIndex
 
 foreign import ccall safe "ql.h qlLibor"
-  c_libor :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
+  c_libor :: CString -> CInt -> CInt -> CUInt -> Ptr CCurrency
     -> Ptr CCalendar -> Ptr CDayCounter -> Ptr CYieldTermStructure
     -> Ptr CString -> IO (Ptr CIborIndex)
 
@@ -120,7 +119,7 @@ foreign import ccall safe "ql.h qlLibor"
 -- LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
 -- QuantLibXL: qlLibor
 libor :: String -- ^familyName
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
   -> Currency -- ^currency
   -> Calendar -- ^financialCenterCalendar
@@ -159,7 +158,7 @@ overnightIndex :: String -- ^familyName
 overnightIndex = $(ffiCall 'overnightIndex) c_overnightIndex
 
 foreign import ccall safe "ql.h qlCreateIbor"
-  c_createIbor :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure
+  c_createIbor :: CString -> CInt -> CInt -> Ptr CYieldTermStructure
     -> Ptr CString -> IO (Ptr CIborIndex)
 foreign import ccall safe "ql.h qlCreateIborON"
   c_createIborON :: CString -> Ptr CYieldTermStructure -> Ptr CString
@@ -168,7 +167,7 @@ foreign import ccall safe "ql.h qlCreateDailyTenorIbor"
   c_createDailyTenorLibor :: CString -> CUInt -> Ptr CYieldTermStructure
     -> Ptr CString -> IO (Ptr CIborIndex)
 
-createIbor :: String -> Period -> Maybe YieldTermStructure -> IO IborIndex
+createIbor :: String -> (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 createIbor = $(ffiCall 'createIbor) c_createIbor
 
 createIborON :: String -> Maybe YieldTermStructure -> IO IborIndex
@@ -180,36 +179,36 @@ createDailyTenorLibor = $(ffiCall 'createDailyTenorLibor) c_createDailyTenorLibo
 
 -- |Euribor index
 -- Euribor rate fixed by the ECB./Warning/ This is the rate fixed by the ECB. Use EurLibor if you're interested in the London fixing by BBA. QuantLibXL: qlEuribor
-euribor :: Period -- ^tenor
+euribor :: (Int, Unit) -- ^tenor
   -> Maybe YieldTermStructure -> IO IborIndex
 euribor = createIbor "Euribor"
 
 -- |Actual/365 Euribor index.
 -- Euribor rate adjusted for the mismatch between the actual/360 convention used for Euribor and the actual/365 convention previously used by a few pre-EUR currencies. QuantLibXL: qlEuribor365
-euribor365 :: Period -> Maybe YieldTermStructure -> IO IborIndex
+euribor365 :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 euribor365 = createIbor "Euribor365"
 
 -- |AUD LIBOR rate
 -- Australian Dollar LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
-audLibor :: Period -- ^tenor
+audLibor :: (Int, Unit) -- ^tenor
   -> Maybe YieldTermStructure -> IO IborIndex
 audLibor = createIbor "AUDLibor"
 
 -- |CAD LIBOR rate
 -- Canadian Dollar LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>. /Warning/ This is the rate fixed in London by BBA. Use CDOR if you're interested in the Canadian fixing by IDA.
-cadLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+cadLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 cadLibor = createIbor "CADLibor"
 
 -- |Overnight CAD Libor index
 cadLiborON :: Maybe YieldTermStructure -> IO IborIndex
 cadLiborON = createIborON "CADLiborON"
 
-cdor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+cdor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 cdor = createIbor "Cdor"
 
 -- |CHF LIBOR rate
 -- Swiss Franc LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>. /Warning/ This is the rate fixed in London by BBA. Use ZIBOR if you're interested in the Zurich fixing.
-chfLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+chfLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 chfLibor = createIbor "CHFLibor"
 
 -- |one day deposit BBA CHF LIBOR indexes
@@ -219,7 +218,7 @@ dailyTenorCHFLibor = createDailyTenorLibor "DailyTenorCHFLibor"
 
 -- |DKK LIBOR rate
 --  Danish Krona LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
-dkkLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+dkkLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 dkkLibor = createIbor "DKKLibor"
 
 foreign import ccall safe "ql.h qlCreateONIndex"
@@ -239,7 +238,7 @@ sonia = createONIndex "Sonia"
 
 -- |all BBA EUR LIBOR indexes but the O\/N
 -- Euro LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>. /Warning/ This is the rate fixed in London by BBA. Use Euribor if you're interested in the fixing by the ECB.
-eurLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+eurLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 eurLibor = createIbor "EURLibor"
 
 -- |one day deposit BBA EUR LIBOR indexes
@@ -250,7 +249,7 @@ dailyTenorEURLibor = createDailyTenorLibor "DailyTenorEURLibor"
 
 -- |GBP LIBOR rate
 -- Pound Sterling LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>
-gbpLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+gbpLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 gbpLibor = createIbor "GBPLibor"
 
 -- |base class for the one day deposit BBA GBP LIBOR indexes
@@ -262,12 +261,12 @@ dailyTenorGBPLibor = createDailyTenorLibor "DailyTenorGBPLibor"
 gbpLiborON :: Maybe YieldTermStructure -> IO IborIndex
 gbpLiborON = createIborON "GBPLiborON"
 
-jibar :: Period -> Maybe YieldTermStructure -> IO IborIndex
+jibar :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 jibar = createIbor "Jibar"
 
 -- |JPY LIBOR rate
 -- Japanese Yen LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>. /Warning/ This is the rate fixed in London by BBA. Use TIBOR if you're interested in the Tokio fixing.
-jpyLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+jpyLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 jpyLibor = createIbor "JPYLibor"
 
 -- |one day deposit BBA JPY LIBOR indexes
@@ -277,27 +276,27 @@ dailyTenorJPYLibor = createDailyTenorLibor "DailyTenorJPYLibor"
 
 -- |NZD LIBOR rate
 -- New Zealand Dollar LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
-nzdLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+nzdLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 nzdLibor = createIbor "NZDLibor"
 
 -- |SEK LIBOR rate
 -- Sweden Krone LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
-sekLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+sekLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 sekLibor = createIbor "SEKLibor"
 
 -- |JPY TIBOR index
 -- Tokyo Interbank Offered Rate.WarningThis is the rate fixed in Tokio by JBA. Use JPYLibor if you're interested in the London fixing by BBA.Possible enhancementscheck settlement days and end-of-month adjustment.
-tibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+tibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 tibor = createIbor "Tibor"
 
 -- |TRY LIBOR rate
 -- TRY LIBOR fixed by TBA. See <http://www.trlibor.org/trlibor/english/default.asp> Possible enhancementscheck end-of-month adjustment.
-trLibor  :: Period -> Maybe YieldTermStructure -> IO IborIndex
+trLibor  :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 trLibor = createIbor "TRLibor"
 
 -- |USD LIBOR rate
 -- US Dollar LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
-usdLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+usdLibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 usdLibor = createIbor "USDLibor"
 
 dailyTenorUSDLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
@@ -313,11 +312,11 @@ usdLiborON = createIborON "USDLiborON"
 
 -- |CHF ZIBOR rate
 -- Zurich Interbank Offered Rate.WarningThis is the rate fixed in Zurich by BBA. Use CHFLibor if you're interested in the London fixing by BBA.Possible enhancementscheck settlement days, end-of-month adjustment, and day-count convention.
-zibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+zibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 zibor = createIbor "Zibor"
 
-makeIbor :: (Period -> Maybe YieldTermStructure -> IO IborIndex) -> Int -> Unit -> Maybe YieldTermStructure -> IO IborIndex
-makeIbor f i u ts = period i u >>= flip f ts
+makeIbor :: ((Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex) -> Int -> Unit -> Maybe YieldTermStructure -> IO IborIndex
+makeIbor f i u = f (i, u)
 
 -- |1-week Euribor index
 euriborSW :: Maybe YieldTermStructure -> IO IborIndex

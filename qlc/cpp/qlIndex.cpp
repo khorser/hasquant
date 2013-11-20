@@ -22,7 +22,7 @@ void qlFreeIndex(QlIndex *i) {
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
-typedef EnumObjectInfo3<SwapIndex, Period&, YieldTermStructureHandle&, YieldTermStructureHandle&> SwapIndexInfo;
+typedef EnumObjectInfo3<SwapIndex, const Period&, YieldTermStructureHandle&, YieldTermStructureHandle&> SwapIndexInfo;
 static const SwapIndexInfo swapIndexInfo [] = {
   {"ChfLiborSwapIsdaFix", &SwapIndexInfo::makeObject<ChfLiborSwapIsdaFix>},
   {"EurLiborSwapIfrFix", &SwapIndexInfo::makeObject<EurLiborSwapIfrFix>},
@@ -38,7 +38,7 @@ static const SwapIndexInfo swapIndexInfo [] = {
   {"UsdLiborSwapIsdaFixPm", &SwapIndexInfo::makeObject<UsdLiborSwapIsdaFixPm>}
 };
 
-QlSwapIndex* qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
+QlSwapIndex* qlCreateLiborSwapIndex(char *name, int l, int u, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
   try {
     const SwapIndexInfo *last = LAST(swapIndexInfo);
     const SwapIndexInfo *found =
@@ -46,7 +46,7 @@ QlSwapIndex* qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStruct
     if (found != last) {
       YieldTermStructureHandle ts1 = qlNullableHandle(h1);
       YieldTermStructureHandle ts2 = qlNullableHandle(h2);
-      return ret(new QlSwapIndex(alloc(found->make(*arg(tenor), ts1, ts2))));
+      return ret(new QlSwapIndex(alloc(found->make(Period(l, (TimeUnit)u), ts1, ts2))));
     }
     else
       QL_FAIL("Unknown Swap Index " << name);
@@ -75,23 +75,23 @@ QlBMAIndex* qlBMAIndex(QlYieldTermStructure* h, char **e) {
   }
 }
 
-QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e) {
+QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, int l, int u, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e) {
   try {
-    return ret(new QlOvernightIndexedSwapIndex(alloc(new OvernightIndexedSwapIndex(std::string(arg(familyName)), *arg(tenor), settlementDays, *arg(currency), *arg(overnightIndex)))));
+    return ret(new QlOvernightIndexedSwapIndex(alloc(new OvernightIndexedSwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(overnightIndex)))));
   } catch (std::exception& er) {
     return handleException<QlOvernightIndexedSwapIndex*>(e, er);
   }
 }
-QlSwapIndex* qlSwapIndex1(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e) {
+QlSwapIndex* qlSwapIndex1(char* familyName, int l, int u, unsigned settlementDays, Currency* currency, Calendar* calendar, int fl, int fu, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e) {
   try {
-    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), *arg(tenor), settlementDays, *arg(currency), *arg(calendar), *arg(fixedLegTenor), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex), Handle<YieldTermStructure>(*arg(discountingTermStructure))))));
+    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(calendar), Period(fl, (TimeUnit)fu), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex), Handle<YieldTermStructure>(*arg(discountingTermStructure))))));
   } catch (std::exception& er) {
     return handleException<QlSwapIndex*>(e, er);
   }
 }
-QlSwapIndex* qlSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e) {
+QlSwapIndex* qlSwapIndex(char* familyName, int l, int u, unsigned settlementDays, Currency* currency, Calendar* calendar, int fl, int fu, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e) {
   try {
-    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), *arg(tenor), settlementDays, *arg(currency), *arg(calendar), *arg(fixedLegTenor), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex)))));
+    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(calendar), Period(fl, (TimeUnit)fu), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex)))));
   } catch (std::exception& er) {
     return handleException<QlSwapIndex*>(e, er);
   }
@@ -151,11 +151,13 @@ DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e) {
 unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o) {
   return (*arg(o))->fixingDays();
 }
-Period* qlInterestRateIndexTenor(QlInterestRateIndex* o, char **e) {
+int qlInterestRateIndexTenor(QlInterestRateIndex* o, int *u, char **e) {
   try {
-    return alloc(new Period((*arg(o))->tenor()));
+    const Period& p = (*arg(o))->tenor();
+    *u = p.units();
+    return p.length();
   } catch (std::exception& er) {
-    return handleException<Period*>(e, er);
+    return handleException<int>(e, er);
   }
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

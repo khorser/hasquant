@@ -364,38 +364,18 @@ void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPr
   }
 }
 
-void qlFreeCoupon(QlCoupon *o) { del(o); }
-
-QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
-  *len = leg->size();
-  QlCoupon **coupons = 0;
+int* qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, char **e) {
+  int* dates = 0;
   try {
-    coupons = reinterpret_cast<QlCoupon **>(qlAllocatePointerArray(*len));
-    unsigned i;
-    for (i = 0; i < leg->size(); ++i) {
-      QlCoupon c = boost::dynamic_pointer_cast<Coupon>((*leg)[i]);
-      if (c)
-        coupons[i] = new QlCoupon(c);
-      else
-        break;
+    dates = qlAllocateInts(o->size());
+    *len = o->size();
+    for (unsigned i = 0; i < o->size(); ++i) {
+      dates[i] = ((*o)[i]->accrualStartDate()).serialNumber();
     }
-    if (i < leg->size()) {
-      for (unsigned j = 0; j < i; ++j)
-        delete coupons[j];
-      QL_FAIL("Not all cash flows are coupons");
-    }
-    return coupons;
+    return dates;
   } catch (std::exception& er) {
-    qlFreePointerArray(reinterpret_cast<void **>(coupons));
-    return handleException<QlCoupon **>(e, er);
-  }
-}
-
-int qlCouponAccrualStartDate(QlCoupon* o, char **e) {
-  try {
-    return ((*arg(o))->accrualStartDate()).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
+    qlFreeInts(dates);
+    return handleException<int*>(e, er);
   }
 }
 
@@ -457,15 +437,41 @@ Leg* qlOvernightLeg(Schedule* schedule, QlOvernightIndex* overnightIndex, unsign
     return handleException<Leg*>(e, er);
   }
 }
-Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, Period* observationTenor, int observationConvention, char **e) {
+Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, int l, int u, int observationConvention, char **e) {
   try {
     return alloc(new Leg(RangeAccrualLeg(*arg(schedule), *arg(index)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
             .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<unsigned>(fixingDays, fixingDays+fixingDaysLen))
             .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen)).
             withLowerTriggers(std::vector<double>(lowerTriggers, lowerTriggers+lowerTriggersLen)).withUpperTriggers(std::vector<double>(upperTriggers, upperTriggers+upperTriggersLen))
-            .withObservationTenor(*arg(observationTenor)).withObservationConvention((BusinessDayConvention)observationConvention)));
+            .withObservationTenor(Period(l, (TimeUnit)u)).withObservationConvention((BusinessDayConvention)observationConvention)));
   } catch (std::exception& er) {
     return handleException<Leg*>(e, er);
   }
 }
+
+void qlFreeCouponLeg(CouponLeg *o) { del(o); }
+
+Leg* qlCouponLegAsLeg(CouponLeg *o) {
+  Leg *l = new Leg();
+  std::copy(o->begin(), o->end(), l->begin());
+  return alloc(l);
+}
+
+CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
+  CouponLeg *cl = 0;
+  try {
+    cl = new CouponLeg();
+    for (unsigned i = 0; i < o->size(); ++i) {
+      boost::shared_ptr<Coupon> c = boost::dynamic_pointer_cast<Coupon>((*o)[i]);
+      if (c)
+        cl->push_back(c);
+      else
+        QL_FAIL("Cash flow #" << i << " is not a coupon");
+    }
+    return alloc(cl);
+  } catch (std::exception& er) {
+    return handleException(e, er, cl);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

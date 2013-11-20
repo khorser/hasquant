@@ -47,8 +47,8 @@ module QuantLib.CashFlow.Leg
   , yieldValueBasisPoint
   , zSpread
 
-  , coupons
-  , accrualStartDate'
+  , toCouponLeg
+  , couponAccrualStartDates
 
   , fixedDividend
   , fractionalDividend'
@@ -62,19 +62,21 @@ module QuantLib.CashFlow.Leg
   )
 where
 
+import Control.Applicative((<$>))
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Storable(peek)
 
 
-import QuantLib.Time.BusinessDayConvention
-import QuantLib.CashFlow.DurationType
-import QuantLib.Compounding
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.CashFlow.DurationType(DurationType)
+import QuantLib.Compounding(Compounding)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Time.Frequency
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlLeg"
@@ -573,19 +575,13 @@ zSpread = $(ffiCallX 'zSpread) c_zSpread
 foreign import ccall safe "ql.h qlCashFlowsZSpread"
   c_zSpread :: Ptr CLeg -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
 
-coupons :: Leg -> IO [Coupon]
-coupons l = getObjectArrayX l c_coupons
+-- |start of the accrual periods for a coupon leg
+couponAccrualStartDates :: CouponLeg -> IO [Day]
+couponAccrualStartDates l = map fromQlDate <$>
+  withObject l (getArrayX . c_couponAccrualStartDates)
 
-foreign import ccall safe "ql.h qlLegCoupons"
-  c_coupons :: Ptr CLeg -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr CCoupon))
-
--- |start of the accrual period
-accrualStartDate' :: Coupon
-  -> IO Day
-accrualStartDate' = $(ffiCallX 'accrualStartDate') c_accrualStartDate'
-
-foreign import ccall safe "ql.h qlCouponAccrualStartDate"
-  c_accrualStartDate' :: Ptr CCoupon -> Ptr CString -> IO CDate
+foreign import ccall safe "ql.h qlCouponAccrualStartDates"
+  c_couponAccrualStartDates :: Ptr CCouponLeg -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
 
 fixedDividend :: Double -- ^amount
   -> Day -- ^date
@@ -678,12 +674,20 @@ rangeAccrualLeg :: Schedule -- ^schedule
   -> [Double] -- ^spreads
   -> [Double] -- ^lowerTriggers
   -> [Double] -- ^upperTriggers
-  -> Period -- ^observationTenor
+  -> (Int, Unit) -- ^observationTenor
   -> BusinessDayConvention -- ^observationConvention
   -> IO Leg
 rangeAccrualLeg = $(ffiCall 'rangeAccrualLeg) c_rangeAccrualLeg
 
 foreign import ccall safe "ql.h qlRangeAccrualLeg"
-  c_rangeAccrualLeg :: Ptr CSchedule -> Ptr CIborIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CLeg)
+  c_rangeAccrualLeg :: Ptr CSchedule -> Ptr CIborIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CLeg)
+
+-- |try to downcast leg to a coupon leg
+-- don't blame me, it's how QuantLib works
+toCouponLeg :: Leg -> IO CouponLeg
+toCouponLeg = $(ffiCall 'toCouponLeg) c_toCouponLeg
+
+foreign import ccall safe "ql.h qlLegToCouponLeg"
+  c_toCouponLeg :: Ptr CLeg -> Ptr CString -> IO (Ptr CCouponLeg)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

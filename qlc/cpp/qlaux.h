@@ -33,7 +33,6 @@ namespace QuantLib {
   class Forward;
   class FixedRateBondForward;
   class ForwardRateAgreement;
-  class Period;
   class DayCounter;
   class Calendar;
   class Schedule;
@@ -50,6 +49,7 @@ namespace QuantLib {
   class Index;
   class FloatingRateCouponPricer;
   class OptionletVolatilityStructure;
+  class Coupon;
 }
 
 using QuantLib::Handle;
@@ -60,7 +60,6 @@ using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
 using QuantLib::FixedRateBondForward;
 using QuantLib::ForwardRateAgreement;
-using QuantLib::Period;
 using QuantLib::DayCounter;
 using QuantLib::Calendar;
 using QuantLib::Schedule;
@@ -77,6 +76,7 @@ using QuantLib::IborIndex;
 using QuantLib::Index;
 using QuantLib::FloatingRateCouponPricer;
 using QuantLib::OptionletVolatilityStructure;
+using QuantLib::Coupon;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -153,7 +153,6 @@ template <> class objClassName<QlIborIndex *> { public: static const char *name(
 template <> class objClassName<IborIndex *> { public: static const char *name() { return "IborIndex"; } };
 template <> class objClassName<QlIndex *> { public: static const char *name() { return "QlIndex"; } };
 template <> class objClassName<Index *> { public: static const char *name() { return "Index"; } };
-template <> class objClassName<Period *> { public: static const char *name() { return "Period"; } };
 template <> class objClassName<PricingEngine *> { public: static const char *name() { return "PricingEngine"; } };
 template <> class objClassName<DiscountingBondEngine *> { public: static const char *name() { return "DiscountingBondEngine"; } };
 template <> class objClassName<QlPricingEngine *> { public: static const char *name() { return "QlPricingEngine"; } };
@@ -811,11 +810,6 @@ template <> class objClassName<FdmSchemeDesc *> { public: static const char *nam
 namespace QuantLib {class TimeGrid;} using QuantLib::TimeGrid;
 template <> class objClassName<TimeGrid *> { public: static const char *name() { return "TimeGrid"; } };
 
-namespace QuantLib {class Coupon;} using QuantLib::Coupon;
-typedef boost::shared_ptr<Coupon> QlCoupon;
-template <> class objClassName<Coupon *> { public: static const char *name() { return "Coupon"; } };
-template <> class objClassName<QlCoupon *> { public: static const char *name() { return "QlCoupon"; } };
-
 // DefaultProbabilityHelper is a typedef so we cannot use forward declaration
 #ifdef quantlib_default_probability_helpers_hpp
 using QuantLib::DefaultProbabilityHelper;
@@ -853,5 +847,8 @@ namespace QuantLib {class CallableBondVolatilityStructure;} using QuantLib::Call
 typedef boost::shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
 template <> class objClassName<CallableBondVolatilityStructure *> { public: static const char *name() { return "CallableBondVolatilityStructure"; } };
 template <> class objClassName<QlCallableBondVolatilityStructure *> { public: static const char *name() { return "QlCallableBondVolatilityStructure"; } };
+
+typedef std::vector<boost::shared_ptr<Coupon> > CouponLeg;
+template <> class objClassName<CouponLeg *> { public: static const char *name() { return "CouponLeg"; } };
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

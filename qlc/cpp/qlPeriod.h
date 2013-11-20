@@ -13,22 +13,15 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  Period *DLLEXPORT qlPeriod(int n, int u, char **e);
-  Period *DLLEXPORT qlPeriodFromFrequency(int freq, char **e);
-  int DLLEXPORT qlPeriodToFrequency(Period *period, char **e);
+  int DLLEXPORT qlPeriodFromFrequency1(int freq, int *, char **e);
+  int DLLEXPORT qlPeriodToFrequency1(int l, int u, char **e);
 
-  void DLLEXPORT qlFreePeriod(Period *period);
-  Period* DLLEXPORT qlPeriodParserParse(char* str, char **e);
+  int DLLEXPORT qlPeriodParserParse1(char* str, int *, char **e);
 
-  int DLLEXPORT qlPeriodUnits(Period *p);
-  int DLLEXPORT qlPeriodLength(Period *p);
-
-  Period* DLLEXPORT qlPeriodAdd(Period *p1, Period *p2, char **e);
-  Period* DLLEXPORT qlPeriodSubtract(Period *p1, Period *p2, char **e);
-  Period* DLLEXPORT qlPeriodDivide(Period *p1, int n, char **e);
-  int DLLEXPORT qlPeriodsEQ(Period *p1, Period *p2, char **e);
-  int DLLEXPORT qlPeriodsLT(Period *p1, Period *p2, char **e);
-  Period* DLLEXPORT qlPeriodNormalize(Period *p1, char **e);
+  int DLLEXPORT qlPeriodAdd1(int, int, int, int, int *, char **e);
+  int DLLEXPORT qlPeriodDivide1(int, int, int n, int *, char **e);
+  int DLLEXPORT qlPeriodNormalize1(int, int, int *, char **e);
+  int DLLEXPORT qlPeriodsLT1(int, int, int, int, char **e);
 #ifdef __cplusplus
 }
 #endif

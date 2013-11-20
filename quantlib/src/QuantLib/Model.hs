@@ -47,8 +47,9 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Model.CalibrationErrorType
-import QuantLib.Time.Frequency
+import QuantLib.Model.CalibrationErrorType(CalibrationErrorType)
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 batesModel :: BatesProcess -- ^process
@@ -234,7 +235,7 @@ calibrate = $(ffiCallX 'calibrate) c_calibrate
 foreign import ccall safe "ql.h qlCalibratedModelCalibrate"
   c_calibrate :: Ptr CCalibratedModel -> CUInt -> Ptr (Ptr CCalibrationHelper) -> Ptr CDouble -> Ptr COptimizationMethod -> Ptr CEndCriteria -> Ptr CConstraint -> Ptr CString -> IO ()
 
-capHelper :: Period -- ^length
+capHelper :: (Int, Unit) -- ^length
   -> Quote -- ^volatility
   -> IborIndex -- ^index
   -> Frequency -- ^fixedLegFrequency
@@ -246,9 +247,9 @@ capHelper :: Period -- ^length
 capHelper = $(ffiCall 'capHelper) c_capHelper
 
 foreign import ccall safe "ql.h qlCapHelper"
-  c_capHelper :: Ptr CPeriod -> Ptr CQuote -> Ptr CIborIndex -> CInt -> Ptr CDayCounter -> CInt -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
+  c_capHelper :: CInt -> CInt -> Ptr CQuote -> Ptr CIborIndex -> CInt -> Ptr CDayCounter -> CInt -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
 
-hestonModelHelper :: Period -- ^maturity
+hestonModelHelper :: (Int, Unit) -- ^maturity
   -> Calendar -- ^calendar
   -> Double -- ^s0
   -> Double -- ^strikePrice
@@ -260,14 +261,14 @@ hestonModelHelper :: Period -- ^maturity
 hestonModelHelper = $(ffiCall 'hestonModelHelper) c_hestonModelHelper
 
 foreign import ccall safe "ql.h qlHestonModelHelper"
-  c_hestonModelHelper :: Ptr CPeriod -> Ptr CCalendar -> CDouble -> CDouble -> Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
+  c_hestonModelHelper :: CInt -> CInt -> Ptr CCalendar -> CDouble -> CDouble -> Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
 
 -- TODO git version of QuantLib features more parameters and two mode SwaptionHelper constructors
-swaptionHelper :: Period -- ^maturity
-  -> Period -- ^length
+swaptionHelper :: (Int, Unit) -- ^maturity
+  -> (Int, Unit) -- ^length
   -> Quote -- ^volatility
   -> IborIndex -- ^index
-  -> Period -- ^fixedLegTenor
+  -> (Int, Unit) -- ^fixedLegTenor
   -> DayCounter -- ^fixedLegDayCounter
   -> DayCounter -- ^floatingLegDayCounter
   -> YieldTermStructure -- ^termStructure
@@ -276,7 +277,7 @@ swaptionHelper :: Period -- ^maturity
 swaptionHelper = $(ffiCall 'swaptionHelper) c_swaptionHelper
 
 foreign import ccall safe "ql.h qlSwaptionHelper"
-  c_swaptionHelper :: Ptr CPeriod -> Ptr CPeriod -> Ptr CQuote -> Ptr CIborIndex -> Ptr CPeriod -> Ptr CDayCounter -> Ptr CDayCounter -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
+  c_swaptionHelper :: CInt -> CInt -> CInt -> CInt -> Ptr CQuote -> Ptr CIborIndex -> CInt -> CInt -> Ptr CDayCounter -> Ptr CDayCounter -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
 
 times :: CalibrationHelper -> IO [Double]
 times x =

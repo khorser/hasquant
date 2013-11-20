@@ -94,17 +94,9 @@ int qlIMMNextDate(int d, int mainCycle) {
     return IMM::nextDate(Date(d), mainCycle).serialNumber();
 }
 
-int qlAddPeriod(int d, Period *p, char **e) {
+int qlAddPeriod(int d, int n, int u, char **e) {
   try {
-    return (Date(d)+*arg(p)).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
-}
-
-int qlSubtractPeriod(int d, Period *p, char **e) {
-  try {
-    return (Date(d)-*arg(p)).serialNumber();
+    return (Date(d) + Period(n, (TimeUnit)u)).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

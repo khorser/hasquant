@@ -38,8 +38,8 @@ module QuantLib.Instrument.Option
   )
 where
 
-import QuantLib.Instrument.AverageType
-import QuantLib.Instrument.BarrierType
+import QuantLib.Instrument.AverageType(AverageType)
+import QuantLib.Instrument.BarrierType(BarrierType)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types

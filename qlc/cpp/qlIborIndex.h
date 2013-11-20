@@ -13,10 +13,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
+  QlIborIndex *DLLEXPORT qlIborIndex(char *name, int, int, unsigned settlDays,
     Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
     QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *DLLEXPORT qlLibor(char *name, Period *tenor, unsigned settlDays,
+  QlIborIndex *DLLEXPORT qlLibor(char *name, int, int, unsigned settlDays,
     Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd,
     char **e);
   QlIborIndex *DLLEXPORT qlDailyTenorLibor(char *name, unsigned settlDays,
@@ -24,7 +24,7 @@ extern "C" {
     QlYieldTermStructure *fwd, char **e);
   QlOvernightIndex *DLLEXPORT qlOvernightIndex(char *name, unsigned settlDays, Currency *cur,
     Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *DLLEXPORT qlCreateIbor(char *name, Period *tenor,
+  QlIborIndex *DLLEXPORT qlCreateIbor(char *name, int, int,
     QlYieldTermStructure *fwd, char **e);
   QlIborIndex *DLLEXPORT qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e);
   QlOvernightIndex *DLLEXPORT qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e);

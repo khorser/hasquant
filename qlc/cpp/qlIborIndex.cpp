@@ -6,11 +6,11 @@
 
 using namespace QuantLib;
 
-QlIborIndex *qlIborIndex(char *name, Period *period, unsigned settlDays,
+QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays,
   Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
   QlYieldTermStructure *fwd, char **e) {
   try {
-    return ret(new QlIborIndex(alloc(new IborIndex(name, *arg(period),
+    return ret(new QlIborIndex(alloc(new IborIndex(name, Period(l, (TimeUnit)u),
 	  settlDays, *arg(ccy), *arg(cal), (BusinessDayConvention) conv,
 	  eom, *arg(dayCount), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {
@@ -22,11 +22,11 @@ void qlFreeIborIndex(QlIborIndex *i) {
   del(i);
 }
 
-QlIborIndex *qlLibor(char *name, Period *tenor, unsigned settlDays,
+QlIborIndex *qlLibor(char *name, int l, int u, unsigned settlDays,
     Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd,
     char **e) {
   try {
-    return ret(new QlIborIndex(alloc(new Libor(name, *arg(tenor), settlDays,
+    return ret(new QlIborIndex(alloc(new Libor(name, Period(l, (TimeUnit)u), settlDays,
 	      *arg(ccy), *arg(cal), *arg(dc), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
@@ -56,7 +56,7 @@ QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
-typedef EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> IborInfo;
+typedef EnumObjectInfo2<IborIndex, const Period&, YieldTermStructureHandle&> IborInfo;
 static const IborInfo iborInfo [] = {
   {"Euribor",	  &IborInfo::makeObject<Euribor>},
   {"Euribor365",  &IborInfo::makeObject<Euribor365>},
@@ -77,7 +77,7 @@ static const IborInfo iborInfo [] = {
   {"Zibor",	  &IborInfo::makeObject<Zibor>}
 };
 
-QlIborIndex *qlCreateIbor(char *name, Period *tenor,
+QlIborIndex *qlCreateIbor(char *name, int l, int u,
     QlYieldTermStructure *fwd, char **e) {
   try {
     const IborInfo *last = LAST(iborInfo);
@@ -85,7 +85,7 @@ QlIborIndex *qlCreateIbor(char *name, Period *tenor,
       std::find_if(iborInfo, last, IborInfo::Cmp(name));
     if (found != last) {
       YieldTermStructureHandle ts = qlNullableHandle(fwd);
-      IborIndex *i = found->make(*arg(tenor), ts);
+      IborIndex *i = found->make(Period(l, (TimeUnit)u), ts);
       return ret(new QlIborIndex(alloc(i)));
     }
     else

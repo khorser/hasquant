@@ -8,8 +8,8 @@ module QuantLib.Types
 
   -- cashflows
   , Leg
+  , CouponLeg
   , FloatingRateCouponPricer
-  , Coupon
   , Dividend
 
   -- currency
@@ -145,7 +145,6 @@ module QuantLib.Types
   -- time
   , Calendar
   , DayCounter
-  , Period
   , Schedule
   , YearFraction
 
@@ -226,8 +225,8 @@ objectMatrix rows cols d =
 
 -- cashflows
 type Leg = ForeignPtr CLeg
+type CouponLeg = ForeignPtr CCouponLeg
 type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
-type Coupon = ForeignPtr CCoupon
 type Dividend = ForeignPtr CDividend
 
 -- currencies
@@ -564,8 +563,6 @@ instance Show DayCounter where
 instance Eq DayCounter where
   (==) x y = name x == name y
 
--- |A Period (length + TimeUnit) implementing a limited algebra
-type Period = ForeignPtr CPeriod
 -- |Payment schedule
 type Schedule = ForeignPtr CSchedule
 

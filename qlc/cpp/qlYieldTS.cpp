@@ -10,12 +10,12 @@ using namespace QuantLib;
 
 template <> class objClassName<FittedBondDiscountCurve::FittingMethod *> { public: static const char *name() { return "FittedBondDiscountCurve::FittingMethod"; } };
 
-QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
+QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
     return ret(new QlRateHelper(new DepositRateHelper(
 	    Handle<Quote>(*arg(quote)),
-	    *arg(period),
+	    Period(l, (TimeUnit)u),
 	    fixDays,
 	    *arg(calendar),
 	    (BusinessDayConvention) conv,
@@ -159,15 +159,15 @@ double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, ch
   }
 }
 
-QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
-  int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
+QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int freq,
+  int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int fl, int fu,
   QlYieldTermStructure *ts, char **e) {
   try {
     return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
-	    *arg(t), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv,
+	    Period(l, (TimeUnit)u), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv,
 	    *arg(dc), *arg(i),
             s ? Handle<Quote>(*arg(s)) : Handle<Quote>(),
-            fwdStart ? *arg(fwdStart) : 0 * Days,
+            Period(fl, (TimeUnit)fu),
 	    ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>())));
   } catch (std::exception& er) {
     return handleException<QlSwapRateHelper *>(e, er);
@@ -202,9 +202,9 @@ try {
   }
 }
 
-InterestRate* qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, Period* p, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
+InterestRate* qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, int l, int u, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
   try {
-    return ret(new InterestRate((*arg(o))->forwardRate(Date(d), *arg(p), *arg(resultDayCounter), (Compounding)comp, (Frequency)freq, extrapolate)));
+    return ret(new InterestRate((*arg(o))->forwardRate(Date(d), Period(l, (TimeUnit)u), *arg(resultDayCounter), (Compounding)comp, (Frequency)freq, extrapolate)));
   } catch (std::exception& er) {
     return handleException<InterestRate*>(e, er);
   }
@@ -341,16 +341,16 @@ QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e) {
     return handleException<QlBondHelper*>(e, er);
   }
 }
-QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, Period* tenor, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
+QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
   try {
-    return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, *arg(tenor), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
+    return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
   } catch (std::exception& er) {
     return handleException<QlOISRateHelper*>(e, er);
   }
 }
-QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, Period* fwdStart, QlYieldTermStructure* discountingCurve, char **e) {
+QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int fl, int fu, QlYieldTermStructure* discountingCurve, char **e) {
   try {
-    return ret(new QlSwapRateHelper(alloc(new SwapRateHelper(Handle<Quote>(*arg(rate)), *arg(swapIndex), qlNullableHandle(arg(spread)), *arg(fwdStart), qlNullableHandle(arg(discountingCurve))))));
+    return ret(new QlSwapRateHelper(alloc(new SwapRateHelper(Handle<Quote>(*arg(rate)), *arg(swapIndex), qlNullableHandle(arg(spread)), Period(fl, (TimeUnit)fu), qlNullableHandle(arg(discountingCurve))))));
   } catch (std::exception& er) {
     return handleException<QlSwapRateHelper*>(e, er);
   }
@@ -372,21 +372,16 @@ QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQu
   }
 }
 
-QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, Period* tenor, unsigned settlementDays, Calendar* calendar, Period* bmaPeriod, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e) {
+QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int tl, int tu, unsigned settlementDays, Calendar* calendar, int bl, int bu, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e) {
   try {
-    return ret(new QlRateHelper(alloc(new BMASwapRateHelper(Handle<Quote>(*arg(liborFraction)), *arg(tenor), settlementDays, *arg(calendar), *arg(bmaPeriod), (BusinessDayConvention)bmaConvention, *arg(bmaDayCount), *arg(bmaIndex), *arg(index)))));
+    return ret(new QlRateHelper(alloc(new BMASwapRateHelper(Handle<Quote>(*arg(liborFraction)), Period(tl, (TimeUnit)tu), settlementDays, *arg(calendar), Period(bl, (TimeUnit)bu), (BusinessDayConvention)bmaConvention, *arg(bmaDayCount), *arg(bmaIndex), *arg(index)))));
   } catch (std::exception& er) {
     return handleException<QlRateHelper*>(e, er);
   }
 }
 QlRateHelper* qlDatedOISRateHelper(int startDate, int endDate, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
   try {
-    return ret(new QlRateHelper(alloc(new DatedOISRateHelper(Date(startDate), Date(endDate), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex)
-#if QL_HEX_VERSION >= 0x010201f0
-// version 1.2.1 or newer
-              , qlNullableHandle(arg(discountingCurve))
-#endif
-              ))));
+    return ret(new QlRateHelper(alloc(new DatedOISRateHelper(Date(startDate), Date(endDate), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
   } catch (std::exception& er) {
     return handleException<QlRateHelper*>(e, er);
   }
@@ -405,16 +400,16 @@ QlRateHelper* qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborInde
     return handleException<QlRateHelper*>(e, er);
   }
 }
-QlRateHelper* qlFraRateHelper2(QlQuote* rate, Period* periodToStart, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e) {
+QlRateHelper* qlFraRateHelper2(QlQuote* rate, int l, int u, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e) {
   try {
-    return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), *arg(periodToStart), lengthInMonths, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter)))));
+    return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), Period(l, (TimeUnit)u), lengthInMonths, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter)))));
   } catch (std::exception& er) {
     return handleException<QlRateHelper*>(e, er);
   }
 }
-QlRateHelper* qlFraRateHelper3(QlQuote* rate, Period* periodToStart, QlIborIndex* iborIndex, char **e) {
+QlRateHelper* qlFraRateHelper3(QlQuote* rate, int l, int u, QlIborIndex* iborIndex, char **e) {
   try {
-    return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), *arg(periodToStart), *arg(iborIndex)))));
+    return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), Period(l, (TimeUnit)u), *arg(iborIndex)))));
   } catch (std::exception& er) {
     return handleException<QlRateHelper*>(e, er);
   }

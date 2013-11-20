@@ -29,7 +29,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
@@ -61,10 +60,8 @@ run = do
   index6m <- euribor6M $ Just ts
   start <- advance cal settl 1 Years floatConv False
   maturity <- advance cal start 5 Years floatConv False
-  fixedPeriod <- fromFrequency fixedFreq
-  floatPeriod <- fromFrequency floatFreq
-  fixedSchedule <- schedule (Just start) maturity fixedPeriod cal fixedConv fixedConv Forward False Nothing Nothing
-  floatSchedule <- schedule (Just start) maturity floatPeriod cal floatConv floatConv Forward False Nothing Nothing
+  fixedSchedule <- schedule (Just start) maturity (1, Years) cal fixedConv fixedConv Forward False Nothing Nothing
+  floatSchedule <- schedule (Just start) maturity (6, Months) cal floatConv floatConv Forward False Nothing Nothing
   floatDC <- asInterestRateIndex index6m >>= dayCounter
   swp <- vanillaSwap swapType 1000.0 fixedSchedule dummyFixRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
@@ -103,7 +100,7 @@ run = do
   atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
 
-  bermudanDates <- fixedLeg swp >>= Leg.coupons >>= mapM Leg.accrualStartDate'
+  bermudanDates <- fixedLeg swp >>= Leg.toCouponLeg >>= Leg.couponAccrualStartDates
   ex <- bermudanExercise bermudanDates False >>= asExercise
   atmSwaption <- swaption atmSwap ex Physical >>= asOption >>= asInstrument
 
@@ -145,23 +142,19 @@ run = do
           0.1149, 0.1112, 0.1070, 0.1010, 0.0957,
           0.1047, 0.1021, 0.0980, 0.0951, 0.1270,
           0.1000, 0.0950, 0.0900, 0.1230, 0.1160]
-        fixedFreq = Annual
         fixedConv = Unadjusted
         floatConv = ModifiedFollowing
-        floatFreq = Semiannual
         dummyFixRate = 0.03
         swapType = Payer
 
         createHelpers index6m ts i = do
           let j = numCols - i - 1
               k = i * numCols + j
-          maturity <- period (i+1) Years
           vol <- simpleQuote (swaptionVols!!k) >>= asQuote
-          len <- period (swapLengths!!j) Years
           index6mRI <- asInterestRateIndex index6m
           dc <- dayCounter index6mRI
-          tenr <- tenor index6mRI
-          h <- Model.swaptionHelper maturity len vol index6m tenr dc dc ts RelativePriceError
+          let (Right tenr) = tenor index6mRI
+          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!j, Years) vol index6m tenr dc dc ts RelativePriceError
           tms <- Model.times h
           return (h, tms)
 

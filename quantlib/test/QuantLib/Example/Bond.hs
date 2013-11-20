@@ -34,7 +34,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
@@ -77,11 +76,6 @@ run = do
   actual360dc <- actual360
   thirty360Europeandc <- thirty360European
 
-  p1d <- period 1 Days
-  p3m <- period 3 Months
-  pq <- fromFrequency Quarterly
-  p6m <- fromFrequency Semiannual
-
   targetCal <- target
   nyseCal <- unitedStatesNYSE
   usGovBondCal <- unitedStatesGovernmentBond
@@ -96,11 +90,10 @@ run = do
   setEvaluationDate (Just todaysDate)
   discDepoHelpers <- mapM
     (\(q, p) -> do
-      ten <- period p Months
       rate <- simpleQuote q >>= asQuote
       depositRateHelper
         rate
-        ten
+        (p, Months)
         fixDays
         targetCal
         ModifiedFollowing
@@ -110,7 +103,7 @@ run = do
   quotes <- mapM (simpleQuote >=> asQuote) marketQuotes
   discBondHelpers <- mapM
     (\(q, c, i, m) -> do
-      s <- schedule i m p6m usGovBondCal Unadjusted
+      s <- schedule i m (6, Months) usGovBondCal Unadjusted
              Unadjusted Backward False Nothing Nothing
       fixedRateBondHelper q settlementDays 100.0 s [c]
             actActBond Unadjusted redemption i >>= asRateHelper)
@@ -134,7 +127,7 @@ run = do
   -- Fixed 4.5% US Treasury Note
   fixedSchedule <- schedule (Just (15 `may` 2007))
                                      (15 `may` 2017)
-                                     p6m
+                                     (6, Months) 
                                      usGovBondCal
                                      Unadjusted
                                      Unadjusted
@@ -159,10 +152,9 @@ run = do
                                116.92
                                (Just $ 15 `august` 2003)
   depoLiborHelpers <-
-    mapM (\(q, (n, u)) ->
+    mapM (\(q, p) ->
       do
         quote <- simpleQuote q >>= asQuote
-        p <- period n u
         depositRateHelper quote p fixDays targetCal
                                        ModifiedFollowing
                                        True actual360dc) $
@@ -174,9 +166,8 @@ run = do
     mapM (\(q, n) ->
       do
         quote <- simpleQuote q >>= asQuote
-        p <- period n Years
-        swapRateHelper' quote p targetCal Annual Unadjusted
-                              thirty360Europeandc eur6M Nothing (Just p1d) Nothing >>= asRateHelper) $
+        swapRateHelper' quote (n, Years) targetCal Annual Unadjusted
+                              thirty360Europeandc eur6M Nothing (1, Days) Nothing >>= asRateHelper) $
           zip liborSwapQuotes liborSwapTerms
 
   fwdCurve <- piecewiseYieldCurve
@@ -188,12 +179,12 @@ run = do
                 Discount
                 LogLinear
 
-  usd3m <- usdLibor p3m (Just fwdCurve)
+  usd3m <- usdLibor (3, Months) (Just fwdCurve)
   asInterestRateIndex usd3m >>= asIndex >>= (\i -> addFixing i (fromGregorian 2008 07 17) 0.0278625 False)
 
   floatSchedule <- schedule (Just $ fromGregorian 2005 10 21)
                                      (fromGregorian 2010 10 21)
-                                     pq
+                                     (3, Months)
                                      nyseCal
                                      Unadjusted
                                      Unadjusted

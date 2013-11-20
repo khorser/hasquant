@@ -17,13 +17,13 @@ Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,
   }
 }
 
-Schedule *qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
+Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal,
     int conv, int termConv, int rule, int eom, int first, int nextToLast,
     char **e) {
   try {
     return alloc(new Schedule(qlNullableDate(eff),
 			    Date(term),
-			    *arg(tenor),
+			    Period(l, (TimeUnit)u),
 			    *arg(cal),
 			    (BusinessDayConvention) conv,
 			    (BusinessDayConvention) termConv,

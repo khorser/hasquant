@@ -10,10 +10,10 @@ module QuantLib.CashFlow.CouponPricer
   )
 where
 
-import QuantLib.TermStructure.Trait
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.TermStructure.Trait(YieldCurveModel)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlBlackIborCouponPricer"

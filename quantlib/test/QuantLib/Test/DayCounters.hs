@@ -12,7 +12,6 @@ import QuantLib.Settings
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.DayCounter
-import QuantLib.Time.Period
 import QuantLib.Time.Unit
 import QuantLib.Types
 
@@ -52,8 +51,7 @@ checkCounter :: DayCounter -> [Day] -> [(Int, Unit)] -> [Double] -> IO ()
 checkCounter dc days periods expected = keepingSettings' $
   mapM_ (\d -> do
     calculated <- mapM (\p -> do
-      pp <- uncurry period p
-      let (Right end) = addPeriod d pp
+      let (Right end) = addPeriod d p
       return $ yearFraction dc d end Nothing Nothing)
       periods
     let diffs = zipWith (-) (rights calculated) expected

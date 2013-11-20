@@ -60,7 +60,7 @@ module QuantLib.TermStructure.Yield
   )
 where
 
-import QuantLib.Compounding
+import QuantLib.Compounding(Compounding)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -69,10 +69,11 @@ import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Unit(Unit)
 import QuantLib.TermStructure.Trait(Trait)
 
 foreign import ccall safe "ql.h qlDepositRateHelper"
-  c_depositRateHelper :: Ptr CQuote -> Ptr CPeriod -> CUInt -> Ptr CCalendar
+  c_depositRateHelper :: Ptr CQuote -> CInt -> CInt -> CUInt -> Ptr CCalendar
     -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
 foreign import ccall safe "ql.h qlFixedRateBondHelper"
   c_fixedRateBondHelper :: Ptr CQuote -> CUInt -> CDouble -> Ptr CSchedule
@@ -85,7 +86,7 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
 
 -- |QuantLibXL: qlDepositRateHelper2
 depositRateHelper :: Quote -- ^rate
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Word -- ^fixingDays
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^convention
@@ -147,20 +148,20 @@ discount' :: YieldTermStructure
 discount' = $(ffiCallX 'discount') c_discount'
 
 foreign import ccall safe "ql.h qlSwapRateHelper1"
-  c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
-    -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CQuote -> Ptr CPeriod
+  c_swapRateHelper' :: Ptr CQuote -> CInt -> CInt -> Ptr CCalendar -> CInt
+    -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CQuote -> CInt -> CInt
     -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapRateHelper)
 
 -- |QuantLibXL: qlSwapRateHelper2
 swapRateHelper' :: Quote -- ^rate
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Calendar -- ^calendar
   -> Frequency -- ^fixedFrequency
   -> BusinessDayConvention -- ^fixedConvention
   -> DayCounter -- ^fixedDayCount
   -> IborIndex -- ^iborIndex
   -> Maybe Quote -- ^spread
-  -> Maybe Period -- ^fwdStart
+  -> (Int, Unit) -- ^fwdStart
   -> Maybe YieldTermStructure -- ^discountingCurve
   -> IO SwapRateHelper
 swapRateHelper' = $(ffiCall 'swapRateHelper') c_swapRateHelper'
@@ -204,7 +205,7 @@ foreign import ccall safe "ql.h qlYieldTermStructureZeroRate"
 -- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
 forwardRateForPeriod :: YieldTermStructure
   -> Day -- ^d
-  -> Period -- ^p
+  -> (Int, Unit) -- ^p
   -> DayCounter -- ^resultDayCounter
   -> Compounding -- ^comp
   -> Frequency -- ^freq
@@ -213,7 +214,7 @@ forwardRateForPeriod :: YieldTermStructure
 forwardRateForPeriod = $(ffiCall 'forwardRateForPeriod) c_forwardRateForPeriod
 
 foreign import ccall safe "ql.h qlYieldTermStructureForwardRate1"
-  c_forwardRateForPeriod :: Ptr CYieldTermStructure -> CDate -> Ptr CPeriod -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
+  c_forwardRateForPeriod :: Ptr CYieldTermStructure -> CDate -> CInt -> CInt -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
 
 -- |The resulting interest rate has the required day-counting rule.
 forwardRate' :: YieldTermStructure
@@ -401,7 +402,7 @@ foreign import ccall safe "ql.h qlBondHelper"
   c_bondHelper :: Ptr CQuote -> Ptr CBond -> Ptr CString -> IO (Ptr CBondHelper)
 
 oisRateHelper :: Word -- ^settlementDays
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Quote -- ^fixedRate
   -> OvernightIndex -- ^overnightIndex
   -> Maybe YieldTermStructure -- ^discountingCurve
@@ -409,18 +410,18 @@ oisRateHelper :: Word -- ^settlementDays
 oisRateHelper = $(ffiCall 'oisRateHelper) c_oisRateHelper
 
 foreign import ccall safe "ql.h qlOISRateHelper"
-  c_oisRateHelper :: CUInt -> Ptr CPeriod -> Ptr CQuote -> Ptr COvernightIndex -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr COISRateHelper)
+  c_oisRateHelper :: CUInt -> CInt -> CInt -> Ptr CQuote -> Ptr COvernightIndex -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr COISRateHelper)
 
 swapRateHelper :: Quote -- ^rate
   -> SwapIndex -- ^swapIndex
   -> Maybe Quote -- ^spread
-  -> Period -- ^fwdStart
+  -> (Int, Unit) -- ^fwdStart
   -> Maybe YieldTermStructure -- ^discountingCurve
   -> IO SwapRateHelper
 swapRateHelper = $(ffiCall 'swapRateHelper) c_swapRateHelper
 
 foreign import ccall safe "ql.h qlSwapRateHelper"
-  c_swapRateHelper :: Ptr CQuote -> Ptr CSwapIndex -> Ptr CQuote -> Ptr CPeriod -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapRateHelper)
+  c_swapRateHelper :: Ptr CQuote -> Ptr CSwapIndex -> Ptr CQuote -> CInt -> CInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapRateHelper)
 
 forwardSpreadedTermStructure :: YieldTermStructure
   -> Quote -- ^spread
@@ -442,10 +443,10 @@ foreign import ccall safe "ql.h qlZeroSpreadedTermStructure"
   c_zeroSpreadedTermStructure :: Ptr CYieldTermStructure -> Ptr CQuote -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
 bmaSwapRateHelper :: Quote -- ^liborFraction
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> Period -- ^bmaPeriod
+  -> (Int, Unit) -- ^bmaPeriod
   -> BusinessDayConvention -- ^bmaConvention
   -> DayCounter -- ^bmaDayCount
   -> BMAIndex -- ^bmaIndex
@@ -454,7 +455,7 @@ bmaSwapRateHelper :: Quote -- ^liborFraction
 bmaSwapRateHelper = $(ffiCall 'bmaSwapRateHelper) c_bmaSwapRateHelper
 
 foreign import ccall safe "ql.h qlBMASwapRateHelper"
-  c_bmaSwapRateHelper :: Ptr CQuote -> Ptr CPeriod -> CUInt -> Ptr CCalendar -> Ptr CPeriod -> CInt -> Ptr CDayCounter -> Ptr CBMAIndex -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
+  c_bmaSwapRateHelper :: Ptr CQuote -> CInt -> CInt -> CUInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> Ptr CBMAIndex -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
 
 datedOISRateHelper :: Day -- ^startDate
   -> Day -- ^endDate
@@ -485,7 +486,7 @@ foreign import ccall safe "ql.h qlFraRateHelper1"
   c_fraIborRateHelper' :: Ptr CQuote -> CUInt -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
 
 fraRateHelper' :: Quote -- ^rate
-  -> Period -- ^periodToStart
+  -> (Int, Unit) -- ^periodToStart
   -> Word -- ^lengthInMonths
   -> Word -- ^fixingDays
   -> Calendar -- ^calendar
@@ -496,16 +497,16 @@ fraRateHelper' :: Quote -- ^rate
 fraRateHelper' = $(ffiCall 'fraRateHelper') c_fraRateHelper'
 
 foreign import ccall safe "ql.h qlFraRateHelper2"
-  c_fraRateHelper' :: Ptr CQuote -> Ptr CPeriod -> CUInt -> CUInt -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
+  c_fraRateHelper' :: Ptr CQuote -> CInt -> CInt -> CUInt -> CUInt -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
 
 fraIborRateHelper :: Quote -- ^rate
-  -> Period -- ^periodToStart
+  -> (Int, Unit) -- ^periodToStart
   -> IborIndex -- ^iborIndex
   -> IO RateHelper
 fraIborRateHelper = $(ffiCall 'fraIborRateHelper) c_fraIborRateHelper
 
 foreign import ccall safe "ql.h qlFraRateHelper3"
-  c_fraIborRateHelper :: Ptr CQuote -> Ptr CPeriod -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
+  c_fraIborRateHelper :: Ptr CQuote -> CInt -> CInt -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
 
 futuresRateHelper' :: Quote -- ^price
   -> Day -- ^immStartDate

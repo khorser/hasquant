@@ -42,6 +42,9 @@ instance Arbitrary InvalidDay where
     where minD = toModifiedJulianDay minDate
           maxD = toModifiedJulianDay maxDate
 
+instance Arbitrary Frequency where
+  arbitrary = arbitraryBoundedEnum
+
 setAndGetEvaluationDate :: Day -> IO Day
 setAndGetEvaluationDate d = do
   Settings.setEvaluationDate (Just d)
@@ -104,14 +107,9 @@ prop_ScheduleDates dates = monadicIO $ do
   s <- run $ Schedule.scheduleFromDays (map validDay dates) c BusinessDayConvention.Unadjusted
   assert $ map validDay dates == Schedule.dates s
 
-instance Arbitrary Frequency where
-  arbitrary = arbitraryBoundedEnum
-
 prop_FrequencyFromPeriodFromFrequency :: Frequency -> Property
 prop_FrequencyFromPeriodFromFrequency freq =
   freq /= OtherFrequency
-  ==> monadicIO $ do
-    p <- run $ Period.fromFrequency freq
-    assert $ Period.toFrequency p == Right freq
+  ==> either (const False) (==freq) (Period.fromFrequency freq >>= Period.toFrequency)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

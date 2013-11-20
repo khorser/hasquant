@@ -5,8 +5,8 @@ module QuantLib.Internal.Types
 
   -- cashflow
   , CLeg
+  , CCouponLeg
   , CFloatingRateCouponPricer
-  , CCoupon
   , CDividend
 
   -- currency
@@ -142,7 +142,6 @@ module QuantLib.Internal.Types
   -- time
   , CCalendar
   , CDayCounter
-  , CPeriod
   , CSchedule
 
   -- common
@@ -164,19 +163,22 @@ instance Finalizable CLeg where
 foreign import ccall safe "ql.h &qlFreeLeg"
   p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
+data CCouponLeg
+instance Finalizable CCouponLeg where
+  finalize = p_freeCouponLeg
+foreign import ccall safe "ql.h &qlFreeCouponLeg"
+  p_freeCouponLeg :: FunPtr (Ptr CCouponLeg -> IO ())
+instance Upcastable CCouponLeg CLeg where
+  c_upcast = c_CouponLegAsLeg
+foreign import ccall safe "ql.h qlCouponLegAsLeg"
+  c_CouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
+
 data CFloatingRateCouponPricer
 
 instance Finalizable CFloatingRateCouponPricer where
   finalize = p_freeFloatingCouponPricer
 foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
   p_freeFloatingCouponPricer :: FunPtr (Ptr CFloatingRateCouponPricer -> IO ())
-
-data CCoupon
-
-instance Finalizable CCoupon where
-  finalize = p_freeCoupon
-foreign import ccall safe "ql.h &qlFreeCoupon"
-  p_freeCoupon :: FunPtr (Ptr CCoupon -> IO ())
 
 data CDividend
 instance Finalizable CDividend where
@@ -1231,7 +1233,6 @@ foreign import ccall safe "ql.h qlCallableBondVolatilityStructureAsTermStructure
 -- time
 data CCalendar
 data CDayCounter
-data CPeriod
 data CSchedule
 
 instance Finalizable CCalendar where
@@ -1259,11 +1260,6 @@ foreign import ccall safe "ql.h qlDayCounter"
   c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
 foreign import ccall safe "ql.h qlDayCounterName"
   c_dayCounterName :: Ptr CDayCounter -> IO CString
-
-instance Finalizable CPeriod where
-  finalize = p_freePeriod
-foreign import ccall safe "ql.h &qlFreePeriod"
-  p_freePeriod :: FunPtr (Ptr CPeriod -> IO ())
 
 instance Finalizable CSchedule where
   finalize = p_freeSchedule

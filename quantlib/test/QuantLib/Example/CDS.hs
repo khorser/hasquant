@@ -27,7 +27,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
@@ -48,14 +47,14 @@ run = do
   flatRate <- simpleQuote 0.01 >>= asQuote
   dc <- actual365Fixed
   ts <- flatForward tod flatRate dc Continuous Annual
-  tenors <- mapM (`period` Months) [3, 6, 12, 24]
-  let mat = rights $ map (addPeriod tod) tenors
+  let mat = rights $ map (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months))
   maturities <- mapM (\d -> adjust cal d Following) mat
 
   instruments <- mapM
     (\t -> do
       q <- simpleQuote quotedSpread >>= asQuote
-      spreadCdsHelper q t 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True) tenors
+      spreadCdsHelper q (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
+      [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
 
@@ -64,9 +63,8 @@ run = do
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
   claim <- faceValueClaim
 
-  pQ <- fromFrequency Quarterly
   sched <- forM maturities
-    $ \m -> schedule (Just tod) m pQ cal Following Unadjusted TwentiethIMM False Nothing Nothing
+    $ \m -> schedule (Just tod) m (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing claim
 

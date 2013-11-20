@@ -24,7 +24,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Instances
@@ -41,8 +40,7 @@ run = do
   setEvaluationDate $ Just tod
   dc <- simple
 
-  p <- period bondSettleDays Days
-  bondSettle <- advance' cal tod p Following False
+  bondSettle <- advance' cal tod (bondSettleDays, Days) Following False
   putStrLn $ "Bond settlement date: " ++ show bondSettle
   cleanQuotes <- mapM simpleQuote cleanPrices
 
@@ -111,8 +109,7 @@ run = do
     step1 tod dc cal bondSettle cleanQuotes = do
       helpers <- mapM (\(q, l, c) -> do
         mat <- advance cal bondSettle l Years Following False
-        bondPeriod <- fromFrequency Annual
-        s <- schedule (Just bondSettle) mat bondPeriod cal
+        s <- schedule (Just bondSettle) mat (1, Years) cal
           ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
         qq <- asQuote q

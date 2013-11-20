@@ -4,7 +4,7 @@ module QuantLib.Math.HistogramAlgorithm
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 data HistogramAlgorithm = None | Sturges | FD | Scott
   deriving (Show, Eq, Enum, Bounded)

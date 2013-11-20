@@ -345,11 +345,10 @@ test_BondStatics = do
 test_FixedBondWithSchedule :: IO ()
 test_FixedBondWithSchedule = do
   c <- Calendar.russia
-  tenor <- Period.period 1 Unit.Months
   s <- Schedule.schedule
     (Just $ fromGregorian 2012 12 20)
     (fromGregorian 2013 12 21)
-    tenor
+    (1, Unit.Months)
     c
     BusinessDayConvention.Following
     BusinessDayConvention.Unadjusted
@@ -373,7 +372,6 @@ test_FixedBondWithSchedule = do
 test_FixedBondWithCalendars :: IO ()
 test_FixedBondWithCalendars = do
   c <- Calendar.russia
-  tenor <- Period.period 1 Unit.Months
   cnt <- DayCounter.actual365Fixed
   _ <- Bond.fixedRateBond
     1
@@ -381,7 +379,7 @@ test_FixedBondWithCalendars = do
     100
     (fromGregorian 2012 12 20)
     (fromGregorian 2013 12 21)
-    tenor
+    (1, Unit.Months)
     [0.12]
     cnt
     BusinessDayConvention.Following
@@ -400,11 +398,10 @@ test_FixedBond = do
   r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
   r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
   cal <- Calendar.russia
-  tenor <- Period.period 6 Unit.Months
   s <- Schedule.schedule
     (Just (fromGregorian 2012 12 20))
     (fromGregorian 2013 12 21)
-    tenor
+    (6, Unit.Months)
     cal
     BusinessDayConvention.Following
     BusinessDayConvention.Unadjusted
@@ -424,18 +421,15 @@ test_FixedBond = do
   assertEqual True True
 
 test_Frequency :: IO ()
-test_Frequency = do
-  p <- Period.period 1 Unit.Months
-  assertEqual (Right Frequency.Monthly) (Period.toFrequency p)
+test_Frequency = assertEqual (Right Frequency.Monthly) (Period.toFrequency (1, Unit.Months))
 
 test_TruncateSchedule :: IO ()
 test_TruncateSchedule = do
-  tenor <- Period.period 1 Unit.Months
   cal <- Calendar.russia
   s <- Schedule.schedule
     (Just $ 20 `december` 2012)
     (21 `december` 2013)
-    tenor
+    (1, Unit.Months)
     cal
     BusinessDayConvention.Following
     BusinessDayConvention.Unadjusted

@@ -4,7 +4,7 @@ module QuantLib.MoneyConversionType
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 data MoneyConversionType = MoneyNoConversion -- ^do not perform conversions
   | MoneyBaseCurrencyConversion -- ^convert both operands to the base currency before converting

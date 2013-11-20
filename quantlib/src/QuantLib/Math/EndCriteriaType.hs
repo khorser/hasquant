@@ -4,7 +4,7 @@ module QuantLib.Math.EndCriteriaType
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Enum(QLEnum)
 
 data EndCriteriaType = None | MaxIterations | StationaryPoint
   | StationaryFunctionValue | StationaryFunctionAccuracy | ZeroGradientNorm

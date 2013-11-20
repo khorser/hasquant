@@ -44,14 +44,14 @@ module QuantLib.Instrument
   )
 where
 
-import QuantLib.ExerciseType
-import QuantLib.Instrument.CallabilityType
-import QuantLib.Instrument.OptionType
+import QuantLib.ExerciseType(ExerciseType)
+import QuantLib.Instrument.CallabilityType(CallabilityType, CallabilityPriceType)
+import QuantLib.Instrument.OptionType(OptionType)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.PositionType
+import QuantLib.PositionType(PositionType)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlInstrumentNPV"
