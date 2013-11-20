@@ -63,7 +63,7 @@ extern "C" {
   void DLLEXPORT qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e);
   void DLLEXPORT qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e);
 
-  int* DLLEXPORT qlCouponAccrualStartDates(Leg* o, unsigned *len, char **e);
+  int* DLLEXPORT qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, char **e);
 
   void DLLEXPORT qlFreeDividend(QlDividend *o);
   QlDividend* DLLEXPORT qlFixedDividend(double amount, int date, char **e);
@@ -75,6 +75,10 @@ extern "C" {
   Leg* DLLEXPORT qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e);
   Leg* DLLEXPORT qlOvernightLeg(Schedule* schedule, QlOvernightIndex* overnightIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
   Leg* DLLEXPORT qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, int, int, int observationConvention, char **e);
+
+  void DLLEXPORT qlFreeCouponLeg(CouponLeg *o);
+  Leg* DLLEXPORT qlCouponLegAsLeg(CouponLeg *o);
+  CouponLeg* DLLEXPORT qlLegToCouponLeg(Leg *o, char **e);
 #ifdef __cplusplus
 }
 #endif

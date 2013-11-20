@@ -8,6 +8,7 @@ module QuantLib.Types
 
   -- cashflows
   , Leg
+  , CouponLeg
   , FloatingRateCouponPricer
   , Dividend
 
@@ -224,6 +225,7 @@ objectMatrix rows cols d =
 
 -- cashflows
 type Leg = ForeignPtr CLeg
+type CouponLeg = ForeignPtr CCouponLeg
 type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
 type Dividend = ForeignPtr CDividend
 

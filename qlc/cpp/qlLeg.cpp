@@ -364,17 +364,13 @@ void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPr
   }
 }
 
-int* qlCouponAccrualStartDates(Leg* o, unsigned *len, char **e) {
+int* qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, char **e) {
   int* dates = 0;
   try {
     dates = qlAllocateInts(o->size());
     *len = o->size();
     for (unsigned i = 0; i < o->size(); ++i) {
-      boost::shared_ptr<Coupon> c = boost::dynamic_pointer_cast<Coupon>((*o)[i]);
-      if (c)
-        dates[i] = (c->accrualStartDate()).serialNumber();
-      else
-        QL_FAIL("Cash flow #" << i << " is not a coupon");
+      dates[i] = ((*o)[i]->accrualStartDate()).serialNumber();
     }
     return dates;
   } catch (std::exception& er) {
@@ -452,4 +448,30 @@ Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notional
     return handleException<Leg*>(e, er);
   }
 }
+
+void qlFreeCouponLeg(CouponLeg *o) { del(o); }
+
+Leg* qlCouponLegAsLeg(CouponLeg *o) {
+  Leg *l = new Leg();
+  std::copy(o->begin(), o->end(), l->begin());
+  return alloc(l);
+}
+
+CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
+  CouponLeg *cl = 0;
+  try {
+    cl = new CouponLeg();
+    for (unsigned i = 0; i < o->size(); ++i) {
+      boost::shared_ptr<Coupon> c = boost::dynamic_pointer_cast<Coupon>((*o)[i]);
+      if (c)
+        cl->push_back(c);
+      else
+        QL_FAIL("Cash flow #" << i << " is not a coupon");
+    }
+    return alloc(cl);
+  } catch (std::exception& er) {
+    return handleException(e, er, cl);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

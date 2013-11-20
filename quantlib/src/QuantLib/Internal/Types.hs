@@ -5,6 +5,7 @@ module QuantLib.Internal.Types
 
   -- cashflow
   , CLeg
+  , CCouponLeg
   , CFloatingRateCouponPricer
   , CDividend
 
@@ -161,6 +162,16 @@ instance Finalizable CLeg where
   finalize = p_freeLeg
 foreign import ccall safe "ql.h &qlFreeLeg"
   p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
+
+data CCouponLeg
+instance Finalizable CCouponLeg where
+  finalize = p_freeCouponLeg
+foreign import ccall safe "ql.h &qlFreeCouponLeg"
+  p_freeCouponLeg :: FunPtr (Ptr CCouponLeg -> IO ())
+instance Upcastable CCouponLeg CLeg where
+  c_upcast = c_CouponLegAsLeg
+foreign import ccall safe "ql.h qlCouponLegAsLeg"
+  c_CouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
 
 data CFloatingRateCouponPricer
 

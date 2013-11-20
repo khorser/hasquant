@@ -49,6 +49,7 @@ namespace QuantLib {
   class Index;
   class FloatingRateCouponPricer;
   class OptionletVolatilityStructure;
+  class Coupon;
 }
 
 using QuantLib::Handle;
@@ -75,6 +76,7 @@ using QuantLib::IborIndex;
 using QuantLib::Index;
 using QuantLib::FloatingRateCouponPricer;
 using QuantLib::OptionletVolatilityStructure;
+using QuantLib::Coupon;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -845,5 +847,8 @@ namespace QuantLib {class CallableBondVolatilityStructure;} using QuantLib::Call
 typedef boost::shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
 template <> class objClassName<CallableBondVolatilityStructure *> { public: static const char *name() { return "CallableBondVolatilityStructure"; } };
 template <> class objClassName<QlCallableBondVolatilityStructure *> { public: static const char *name() { return "QlCallableBondVolatilityStructure"; } };
+
+typedef std::vector<boost::shared_ptr<Coupon> > CouponLeg;
+template <> class objClassName<CouponLeg *> { public: static const char *name() { return "CouponLeg"; } };
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
