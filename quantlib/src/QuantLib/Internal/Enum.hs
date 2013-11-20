@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Enum
   (
     QLEnum
@@ -7,6 +8,8 @@ module QuantLib.Internal.Enum
   , withLitEnum
   , withOptLitEnum
   , values
+
+  , QLObjEnum(..)
   )
 where
 
@@ -28,6 +31,7 @@ values ename = if null vals
 
 -- when declaring new QLEnum/QLLitEnum instances, add them into Internal.Enum too!
 class (Enum a, Show a) => QLEnum a
+-- no Enum constraint on QLLitEnum because some have constructors with arguments
 class (Show a) => QLLitEnum a -- enum passed literally as a string to QL
 
 toQlEnum :: (QLEnum a) => String -> a -> CInt
@@ -50,5 +54,9 @@ withLitEnum = withCString . show
 
 withOptLitEnum :: (QLLitEnum a) => Maybe a -> (CString -> IO b) -> IO b
 withOptLitEnum = maybeWith withLitEnum
+
+-- enum representing a QuantLib C++ object
+class (Enum a, Show a) => QLObjEnum a o where
+  withObjEnum :: a -> (o -> IO b) -> IO b
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
