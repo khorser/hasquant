@@ -22,7 +22,7 @@ module QuantLib.Time.DayCounter
   , dayCount
   , yearFraction
 
-  , DayCounterE
+--  , DayCounterE
   )
 
 where
@@ -102,31 +102,31 @@ yearFraction = $(ffiCallPureX 'yearFraction) c_yearFraction
 foreign import ccall safe "ql.h qlDayCounterYearFraction"
   c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CYearFraction
 
-data DayCounterE = Actual365Fixed | One | ActualActualISMA | ActualActualBond
-  | ActualActualISDA | ActualActualHistorical | ActualActualAct365
-  | ActualActualAFB | ActualActualEuro | Actual360 | Thirty360USA
-  | Thirty360BondBasis | Thirty360European | Thirty360EurobondBasis
-  | Thirty360Italian | Simple | Business252 Calendar
-  deriving (Show, Eq)
-
-instance QLObjEnum DayCounterE CDayCounter where
-  enumToObject Actual365Fixed = actual365Fixed
-  enumToObject One = one
-  enumToObject ActualActualISMA = actualActualISMA
-  enumToObject ActualActualBond = actualActualBond
-  enumToObject ActualActualISDA = actualActualISDA
-  enumToObject ActualActualHistorical = actualActualHistorical
-  enumToObject ActualActualAct365 = actualActualAct365
-  enumToObject ActualActualAFB = actualActualAFB
-  enumToObject ActualActualEuro = actualActualEuro
-  enumToObject Actual360 = actual360
-  enumToObject Thirty360USA = thirty360USA
-  enumToObject Thirty360BondBasis = thirty360BondBasis
-  enumToObject Thirty360European = thirty360European
-  enumToObject Thirty360EurobondBasis = thirty360EurobondBasis
-  enumToObject Thirty360Italian = thirty360Italian
-  enumToObject Simple = simple
-  enumToObject (Business252 c) = business252 c
-  objectToEnum = undefined
+--data DayCounterE = Actual365Fixed | One | ActualActualISMA | ActualActualBond
+--  | ActualActualISDA | ActualActualHistorical | ActualActualAct365
+--  | ActualActualAFB | ActualActualEuro | Actual360 | Thirty360USA
+--  | Thirty360BondBasis | Thirty360European | Thirty360EurobondBasis
+--  | Thirty360Italian | Simple | Business252 Calendar
+--  deriving (Show, Eq)
+--
+--instance QLObjEnum DayCounterE CDayCounter where
+--  enumToObject Actual365Fixed = actual365Fixed
+--  enumToObject One = one
+--  enumToObject ActualActualISMA = actualActualISMA
+--  enumToObject ActualActualBond = actualActualBond
+--  enumToObject ActualActualISDA = actualActualISDA
+--  enumToObject ActualActualHistorical = actualActualHistorical
+--  enumToObject ActualActualAct365 = actualActualAct365
+--  enumToObject ActualActualAFB = actualActualAFB
+--  enumToObject ActualActualEuro = actualActualEuro
+--  enumToObject Actual360 = actual360
+--  enumToObject Thirty360USA = thirty360USA
+--  enumToObject Thirty360BondBasis = thirty360BondBasis
+--  enumToObject Thirty360European = thirty360European
+--  enumToObject Thirty360EurobondBasis = thirty360EurobondBasis
+--  enumToObject Thirty360Italian = thirty360Italian
+--  enumToObject Simple = simple
+--  enumToObject (Business252 c) = business252 c
+--  objectToEnum = undefined
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

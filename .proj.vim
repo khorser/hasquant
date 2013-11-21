@@ -15,7 +15,7 @@ NeoComplCacheEnable
 
 function g:NecoghcExtraBrowseOptions(mod)
   if a:mod =~ '^QuantLib'
-    return ['-g', expand('-L$PROJECT_ROOT/hasquant/quantlib/src/QuantLib'), '-g', '-lql', '-L']
+    return ['-g', expand('-L$PROJECT_ROOT/hasquant/quantlib/src/QuantLib'), '-g', '-lql']
   else
     return []
   endif
