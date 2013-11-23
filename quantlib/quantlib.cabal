@@ -107,6 +107,7 @@ Library
             , time >= 1.4
             , template-haskell
             , qlc == 0.1.0
+            , transformers >= 0.2
 
   Default-Language:  Haskell2010
   Hs-source-dirs: src

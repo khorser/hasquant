@@ -28,7 +28,7 @@ module QuantLib.Time.DayCounter
 where
 
 import QuantLib.Internal.Date
-import QuantLib.Internal.Enum(QLObjEnum(..))
+--import QuantLib.Internal.Enum(QLObjEnum(..))
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils

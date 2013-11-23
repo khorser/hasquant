@@ -25,6 +25,8 @@ module QuantLib.Internal.Utils
   , CStaticInt(..)
   , withArrayULen
   , withArrayULenT
+  , ioToQl
+  , QL
 
   -- re-exporting some popular stuff
   , Word
@@ -42,6 +44,7 @@ import Prelude hiding(catch)
 #endif
 
 import Control.Exception(throw, catch)
+import Data.Functor.Identity(Identity)
 import Data.Functor((<$>))
 import Data.Word(Word)
 
@@ -205,5 +208,10 @@ class (Finalizable a, Finalizable b) => Upcastable a b where
 
 upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
 upcast x = withObject x c_upcast >>= newForeignPtr finalize
+
+newtype QL a = QL (Identity a) deriving (Monad)
+
+ioToQl :: IO a -> QL a
+ioToQl = return . unsafePerformIO
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
