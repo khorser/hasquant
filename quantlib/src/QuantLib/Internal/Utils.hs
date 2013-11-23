@@ -1,9 +1,10 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,ScopedTypeVariables,FlexibleContexts,CPP #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts,CPP #-}
 module QuantLib.Internal.Utils
   (
     signalError
   , unmarshalExceptions
   , purifyExceptions
+  , convertExceptions
 
   , Finalizable(..)
   , Upcastable(..)
@@ -171,8 +172,10 @@ unmarshalExceptions f =
 
 purifyExceptions :: IO a -> Either String a
 purifyExceptions f = unsafePerformIO $
-  catch (Right <$> f)
-        (\(e :: Error) -> return $ Left (message e))
+  (Right <$> f) `catch` (return . Left . message)
+
+convertExceptions :: IO a -> IO (Either String a)
+convertExceptions f = (Right <$> f) `catch` (return . Left . message)
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
