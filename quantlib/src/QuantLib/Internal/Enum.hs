@@ -5,6 +5,8 @@ module QuantLib.Internal.Enum
   , toQlEnum
   , fromQlEnum
   , QLLitEnum
+  , withEnum
+  , getEnum
   , withLitEnum
   , withOptLitEnum
   , values
@@ -15,7 +17,6 @@ module QuantLib.Internal.Enum
 where
 
 import Data.List(elemIndex)
-import System.IO.Unsafe(unsafePerformIO)
 import Foreign.Marshal.Utils(maybeWith)
 
 import QuantLib.Internal.Utils
@@ -23,32 +24,38 @@ import QuantLib.Internal.Utils
 foreign import ccall safe "ql.h qlEnumerationValue"
   c_values :: CString -> Ptr CUInt -> IO (Ptr CStaticInt)
 
-values :: String -> [CInt]
-values ename = if null vals
-                 then signalError ("Unknown enumeration: " ++ ename)
-                 else map getStaticInt vals
-  where vals = unsafePerformIO $
-                withCString ename (getArray . c_values)
+values :: String -> IO [CInt]
+values ename = do
+  v <- withCString ename (getArray . c_values)
+  if null v
+     then signalErrorIO ("Unknown enumeration: " ++ ename)
+     else mapM (return . getStaticInt) v
 
 -- when declaring new QLEnum/QLLitEnum instances, add them into Internal.Enum too!
 class (Enum a, Show a) => QLEnum a
 -- no Enum constraint on QLLitEnum because some have constructors with arguments
 class (Show a) => QLLitEnum a -- enum passed literally as a string to QL
 
-toQlEnum :: (QLEnum a) => String -> a -> CInt
-toQlEnum typename x =
+toQlEnum :: (QLEnum a) => String -> a -> IO CInt
+toQlEnum typename x = do
+  let index = fromEnum x
+  vals <- values typename
   if index >= length vals
-    then signalError $ "Constructor " ++ show x ++ " is not found"
-    else vals !! index
-  where
-    index = fromEnum x
-    vals = values typename
+    then signalErrorIO $ "Constructor " ++ show x ++ " is not found"
+    else return $ vals !! index
 
-fromQlEnum :: (QLEnum a) => String -> CInt -> a
-fromQlEnum typename x =
-  maybe (signalError $ "Unknown enumeration code: " ++ show x)
-    toEnum
-    (elemIndex x $ values typename)
+fromQlEnum :: (QLEnum a) => String -> CInt -> IO a
+fromQlEnum typename x = do
+  v <- values typename
+  maybe (signalErrorIO $ "Unknown enumeration code: " ++ show x)
+    (return . toEnum)
+    (elemIndex x v)
+
+withEnum :: (QLEnum a) => String -> a -> (CInt -> IO b) -> IO b
+withEnum n e f = toQlEnum n e >>= f
+
+getEnum :: (QLEnum a) => String -> IO CInt -> IO a
+getEnum n x = x >>= fromQlEnum n
 
 withLitEnum :: (QLLitEnum a) => a -> (CString -> IO b) -> IO b
 withLitEnum = withCString . show

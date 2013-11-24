@@ -216,8 +216,10 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapLength"
 
 -- |the largest length for which the term structure can return vols
 maxSwapTenor :: SwaptionVolatilityStructure -> Either String (Int, Unit)
-maxSwapTenor o = purifyExceptions (withObject o (getIntPair . c_maxSwapTenor))
-  >>= \(n, u) -> return (n, fromQlEnum (show ''Unit) u)
+maxSwapTenor o = purifyExceptions $ do
+  (n, u) <- withObject o (getIntPair . c_maxSwapTenor)
+  e <- fromQlEnum (show ''Unit) u
+  return (n, e)
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapTenor"
   c_maxSwapTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CInt -> Ptr CString -> IO CInt

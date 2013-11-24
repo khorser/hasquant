@@ -46,7 +46,7 @@ run = do
   eu3mRI <- asInterestRateIndex eu3m
   fraCalendar <- asIndex eu3mRI >>= fixingCalendar
   let fixDays = fixingDays eu3mRI
-      convention = Ibor.businessDayConvention eu3m
+      (Right convention) = Ibor.businessDayConvention eu3m
       eom = Ibor.endOfMonth eu3m
   settleDate <- advance fraCalendar todaysDate (fromIntegral fixDays) Days Following False
 

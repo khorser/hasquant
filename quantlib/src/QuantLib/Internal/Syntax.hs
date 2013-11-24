@@ -327,7 +327,7 @@ genFfiCall extra aa r = do
       [|withCString $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((EnumA n, v):as) c_call =
-      genFfiCallImpl as [|$c_call (toQlEnum $(stringE $ show n) $v)|]
+      [|withEnum $(stringE $ show n) $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((LitEnumA, v):as) c_call =
       [|withLitEnum $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
@@ -373,7 +373,7 @@ genFfiCall extra aa r = do
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA (EnumN n), v):as) c_call =
-      [|withArrayULenT (toQlEnum $(stringE $ show n)) $v
+      [|withArrayULenTIO (toQlEnum $(stringE $ show n)) $v
         (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
@@ -397,14 +397,14 @@ genFfiCall extra aa r = do
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
     genFfiCallImpl ((ListA2 IntN (EnumN n), v):as) c_call =
-      [|withArrayULenT ((fromIntegral :: Int -> CInt) . fst) $v (\nn ns -> withArrayULenT (toQlEnum $(stringE $ show n) . snd) $v
+      [|withArrayULenT ((fromIntegral :: Int -> CInt) . fst) $v (\nn ns -> withArrayULenTIO (toQlEnum $(stringE $ show n) . snd) $v
         (\_ es -> $(genFfiCallImpl as [|$c_call nn ns es|])))|]
 
     genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
       error $ show t ++ " Not supported yet"
 
     genFfiCallImpl ((PairA IntN (EnumN n), v):as) c_call =
-      genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) (fst $v)) (toQlEnum $(stringE $ show n) (snd $v))|]
+      [|withEnum $(stringE $ show n) (snd $v) (\e -> $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) (fst $v)) e|]))|]
 
     genFfiCallImpl ((t@(PairA _ _), _v):_as) _c_call =
       error $ show t ++ " Not supported yet"
@@ -412,8 +412,10 @@ genFfiCall extra aa r = do
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
 unmarshal (IORV StringR) = [|getString|]
+unmarshal (IORV (EnumR n)) = [|getEnum $(stringE $ show n)|]
 unmarshal (IORV r) = [|liftM $(unmarshalA r)|]
 unmarshal (EitherRV StringR) = [|getString|]
+unmarshal (EitherRV (EnumR n)) = [|getEnum $(stringE $ show n)|]
 unmarshal (EitherRV r) = [|liftM $(unmarshalA r)|]
 
 unmarshalA :: AtomicRet -> ExpQ
@@ -423,11 +425,11 @@ unmarshalA DayR    = [|fromQlDate|]
 unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshalA YearFractionR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
-unmarshalA (EnumR n) = [|fromQlEnum $(stringE $ show n)|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- this case is handled separately in finalCCall
 unmarshalA UnitR   = [|id|]
 unmarshalA DayListR = [|map fromQlDate|]
+unmarshalA (EnumR _) = error "Enum unmarshalling needs IO"
 unmarshalA StringR = error "String unmarshalling needs IO"
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

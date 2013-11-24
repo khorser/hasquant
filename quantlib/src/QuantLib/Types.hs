@@ -211,17 +211,17 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 
 -- do something more interesting using type system
-realMatrix :: Word -> Word -> [Double] -> Matrix Double
+realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
 realMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
-    then signalError "Dimensions do not match with the length of data passed"
-    else Matrix rows cols d
+    then Left "Dimensions do not match with the length of data passed"
+    else Right $ Matrix rows cols d
 
-objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Matrix (ForeignPtr a)
+objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Either String (Matrix (ForeignPtr a))
 objectMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
-    then signalError "Dimensions do not match with the length of data passed"
-    else Matrix rows cols d
+    then Left "Dimensions do not match with the length of data passed"
+    else Right $ Matrix rows cols d
 
 -- cashflows
 type Leg = ForeignPtr CLeg

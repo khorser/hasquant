@@ -92,7 +92,7 @@ maxDate = fromQlDate c_maxDateSerialNumber
 weekday :: Day -> Either String Weekday
 weekday x = purifyExceptions $ do
   d <- toQlDate x
-  return $ fromQlEnum (show ''Weekday) $ c_weekday d
+  fromQlEnum (show ''Weekday) $ c_weekday d
 
 foreign import ccall safe "ql.h qlWeekday"
   c_weekday :: CInt -> CInt
@@ -187,7 +187,8 @@ nextWeekday :: Day -- ^d
   -> Either String Day
 nextWeekday d w = purifyExceptions $ do
   dd <- toQlDate d
-  return $ fromQlDate $ c_nextWeekday dd (toQlEnum (show $ ''Weekday) w)
+  ww <- toQlEnum (show $ ''Weekday) w
+  return $ fromQlDate $ c_nextWeekday dd ww
 
 foreign import ccall safe "ql.h qlDateNextWeekday"
   c_nextWeekday :: CDate -> CInt -> CDate
@@ -199,10 +200,10 @@ nthWeekday :: Word -- ^n
   -> Month -- ^m
   -> Int -- ^y
   -> Day
-nthWeekday = $(ffiCall 'nthWeekday) c_nthWeekday
+nthWeekday = $(ffiCallPure 'nthWeekday) c_nthWeekday
 
 foreign import ccall safe "ql.h qlDateNthWeekday"
-  c_nthWeekday :: CUInt -> CInt -> CInt -> CInt -> CDate
+  c_nthWeekday :: CUInt -> CInt -> CInt -> CInt -> IO CDate
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
 immCode :: Day -- ^immDate

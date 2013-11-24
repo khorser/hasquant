@@ -91,8 +91,10 @@ foreign import ccall safe "ql.h qlInterestRateIndexFixingDays"
   c_fixingDays :: Ptr CInterestRateIndex -> IO CUInt
 
 tenor :: InterestRateIndex -> Either String (Int, Unit)
-tenor o = purifyExceptions (withObject o (getIntPair . c_tenor))
-  >>= \(n, u) -> return (n, fromQlEnum (show ''Unit) u)
+tenor o = purifyExceptions $ do
+  (n, u) <- withObject o (getIntPair . c_tenor)
+  e <- fromQlEnum (show ''Unit) u
+  return (n, e)
 
 foreign import ccall safe "ql.h qlInterestRateIndexTenor"
   c_tenor :: Ptr CInterestRateIndex -> Ptr CInt -> Ptr CString -> IO CInt

@@ -1,8 +1,7 @@
 {-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts,CPP #-}
 module QuantLib.Internal.Utils
   (
-    signalError
-  , signalErrorIO
+    signalErrorIO
   , unmarshalExceptions
   , purifyExceptions
   , convertExceptions
@@ -46,7 +45,7 @@ where
 import Prelude hiding(catch)
 #endif
 
-import Control.Exception(throw, throwIO, catch)
+import Control.Exception(throwIO, catch)
 import Data.Functor.Identity(Identity)
 import Data.Functor((<$>))
 import Data.Word(Word)
@@ -66,9 +65,6 @@ import QuantLib.Error(Error(Error), message)
 
 signalErrorIO :: String -> IO a
 signalErrorIO = throwIO . Error
-
-signalError :: String -> a
-signalError = throw . Error
 
 withArrayULen :: Storable a => [a] -> (CUInt -> Ptr a -> IO b) -> IO b
 withArrayULen x f = withArrayLen x (f . fromIntegral)

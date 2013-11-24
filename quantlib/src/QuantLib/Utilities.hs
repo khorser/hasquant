@@ -29,10 +29,12 @@ boostVersion = unsafePerformIO $ peekCString c_boostVersion
 
 -- |check that enumerations are marshalled consistently
 -- (for use in internal unit tests)
-checkEnums :: [(String, Bool)]
-checkEnums = map checkEnum $(qlEnumsInfo)
+checkEnums :: IO [(String, Bool)]
+checkEnums = mapM checkEnum $(qlEnumsInfo)
   where
-    checkEnum :: (String, Integer) -> (String, Bool)
-    checkEnum (n, l) = (n, length (values n) == fromIntegral l)
+    checkEnum :: (String, Integer) -> IO (String, Bool)
+    checkEnum (n, l) = do
+      v <- values n
+      return (n, length v == fromIntegral l)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

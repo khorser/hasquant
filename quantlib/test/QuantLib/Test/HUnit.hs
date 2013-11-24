@@ -447,8 +447,7 @@ test_TruncateSchedule = do
               (Schedule.dates truncated)
 
 test_Enums :: IO ()
-test_Enums = mapM_
-  (\(n, l) -> assertBoolVerbose ("Error checking " ++ n ++ " length") l)
-  checkEnums
+test_Enums = checkEnums >>= 
+  mapM_ (\(n, l) -> assertBoolVerbose ("Error checking " ++ n ++ " length") l)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
