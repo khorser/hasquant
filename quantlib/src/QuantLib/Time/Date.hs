@@ -77,15 +77,15 @@ import QuantLib.Time.Weekday(Weekday)
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
 
--- |returns TRUE if the given date's year is leap. QuantLibXL: qlDateIsLeap
+-- |returns TRUE if the given date's year is leap
 isLeap :: Day -> Bool
 isLeap = isLeapYear . year
 
--- |earliest allowed date in QuantLib. QuantLibXL: qlDateMinDate
+-- |earliest allowed date in QuantLib
 minDate :: Day
 minDate = fromQlDate c_minDateSerialNumber
 
--- |latest date allowed in QuantLib. QuantLibXL: qlDateMaxDate
+-- |latest date allowed in QuantLib
 maxDate :: Day
 maxDate = fromQlDate c_maxDateSerialNumber
 

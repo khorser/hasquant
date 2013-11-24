@@ -27,7 +27,7 @@ foreign import ccall safe "ql.h qlIndexAddFixing"
 
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
--- Adds fixings for the given InterestRateIndex object. QuantLibXL: qlIndexAddFixings
+-- Adds fixings for the given InterestRateIndex object
 addFixing :: Index
   -> Day -- ^fixingDate
   -> Double -- ^fixing

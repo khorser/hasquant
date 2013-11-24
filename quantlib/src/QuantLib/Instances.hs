@@ -351,7 +351,7 @@ class (Finalizable a) => Priceable a where
   c_setPricingEngine :: Ptr a -> Ptr CPricingEngine -> Ptr CString -> IO ()
 
 -- |set the pricing engine to be used.
--- Sets a new pricing engine to the given Instrument. QuantLibXL: qlInstrumentSetPricingEngine
+-- Sets a new pricing engine to the given Instrument
 setPricingEngine :: (Priceable a) => ForeignPtr a -> PricingEngine -> IO ()
 setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
 

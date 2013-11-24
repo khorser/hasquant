@@ -28,7 +28,7 @@ foreign import ccall safe "ql.h qlInterestRate"
   c_interestRate :: CDouble -> Ptr CDayCounter -> CInt -> CInt
     -> Ptr CString -> IO (Ptr CInterestRate)
 
--- |Standard constructor. QuantLibXL: qlInterestRate
+-- |Standard constructor
 interestRate :: Double -- ^r
   -> DayCounter -- ^dc
   -> Compounding -- ^comp

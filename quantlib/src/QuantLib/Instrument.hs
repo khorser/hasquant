@@ -57,7 +57,7 @@ import QuantLib.Types
 foreign import ccall safe "ql.h qlInstrumentNPV"
   c_npv :: Ptr CInstrument -> Ptr CString -> IO CDouble
 
--- |Returns the net present value of the given Instrument. QuantLibXL: qlInstrumentNPV
+-- |Returns the net present value of the given Instrument
 npv :: Instrument -> IO Double
 npv = $(ffiCallX 'npv) c_npv
 

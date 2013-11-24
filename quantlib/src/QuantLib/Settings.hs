@@ -36,23 +36,23 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
   c_setEnforceTodaysHistoricFixings :: CInt -> IO ()
 
 -- |returns the current value of the Evaluation Date:
--- the date at which pricing is to be performed. QuantLibXL: qlSettingsEvaluationDate
+-- the date at which pricing is to be performed
 evaluationDate :: IO Day
 evaluationDate = $(ffiCall 'evaluationDate) c_evaluationDate
 
--- |sets the value of the Evaluation Date. QuantLibXL: qlSettingsSetEvaluationDate
+-- |sets the value of the Evaluation Date
 -- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
 setEvaluationDate :: Maybe Day -> IO ()
 setEvaluationDate = $(ffiCallX 'setEvaluationDate) c_setEvaluationDate
 
 -- |returns the current value of the boolean which enforce the usage of historic
--- fixings for today's date. QuantLibXL: qlSettingsEnforceTodaysHistoricFixings
+-- fixings for today's date
 enforceTodaysHistoricFixings :: IO Bool
 enforceTodaysHistoricFixings =
   $(ffiCall 'enforceTodaysHistoricFixings) c_enforceTodaysHistoricFixings
 
 -- |sets the value of the boolean which enforce the usage of historic fixings
--- for today's date. QuantLibXL: qlSettingsSetEnforceTodaysHistoricFixings
+-- for today's date
 setEnforceTodaysHistoricFixings :: Bool -> IO ()
 setEnforceTodaysHistoricFixings =
   $(ffiCall 'setEnforceTodaysHistoricFixings) c_setEnforceTodaysHistoricFixings

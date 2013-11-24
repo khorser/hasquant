@@ -99,14 +99,14 @@ foreign import ccall safe "ql.h qlCalendarAdjust"
 foreign import ccall safe "ql.h qlCalendarAdvance"
   c_advance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
 
--- |Adjusts a non-business day to the appropriate near business day with respect to the given convention. QuantLibXL: qlCalendarAdjust
+-- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
 adjust :: Calendar
   -> Day
   -> BusinessDayConvention
   -> IO Day
 adjust = $(ffiCall 'adjust) c_adjust
 
--- |Advances the given date of the given number of business days and returns the result. QuantLibXL: qlCalendarAdvance
+-- |Advances the given date of the given number of business days and returns the result
 advance :: Calendar
   -> Day
   -> Int

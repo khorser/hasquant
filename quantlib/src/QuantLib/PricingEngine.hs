@@ -104,7 +104,6 @@ foreign import ccall safe "ql.h qlDiscountingBondEngine"
   c_discountingBondEngine :: Ptr CYieldTermStructure -> CInt -> Ptr CString
     -> IO (Ptr CPricingEngine)
 
--- |QuantLibXL: qlBondEngine
 discountingBondEngine :: YieldTermStructure -- ^discountCurve
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> IO PricingEngine

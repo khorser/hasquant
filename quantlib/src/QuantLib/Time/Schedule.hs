@@ -30,7 +30,6 @@ foreign import ccall safe "ql.h qlScheduleUntil"
 foreign import ccall safe "ql.h qlScheduleDates"
   c_dates :: Ptr CSchedule -> Ptr CUInt -> IO (Ptr CDate)
 
--- | QuantLibXL: qlSchedule
 schedule :: Maybe Day -- ^effectiveDate
   -> Day -- ^terminationDate
   -> (Int, Unit) -- ^tenor
@@ -44,14 +43,13 @@ schedule :: Maybe Day -- ^effectiveDate
   -> IO Schedule
 schedule = $(ffiCall 'schedule) c_schedule
 
--- | QuantLibXL: qlScheduleFromDateVector
 scheduleFromDays :: [Day]
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^convention
   -> IO Schedule
 scheduleFromDays = $(ffiCall 'scheduleFromDays) c_scheduleFromDays
 
--- |truncated schedule. QuantLibXL: qlScheduleTruncated
+-- |truncated schedule
 -- DO NOT call this on schedules created with 'scheduleFromDays'
 -- because result.isRegular_.pop_back() in QuantLib's Schedule::until
 -- is called on empty isRegular_ causing unspecified behaviour including
@@ -63,7 +61,7 @@ until :: Schedule
   -> IO Schedule
 until = $(ffiCall 'until) c_until
 
--- |returns the dates for the given Schedule object. QuantLibXL: qlScheduleDates
+-- |returns the dates for the given Schedule object
 dates :: Schedule -> [Day]
 dates = $(ffiCallPure 'dates) c_dates
 

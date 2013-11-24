@@ -97,7 +97,6 @@ foreign import ccall safe "ql.h qlIborIndex"
     -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter
     -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CIborIndex)
 
--- | QuantLibXL: qlIborIndex
 iborIndex :: String -- ^familyName
   -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
@@ -117,7 +116,6 @@ foreign import ccall safe "ql.h qlLibor"
 
 -- |all BBA LIBOR indexes but the EUR, O\/N, and S\/N ones
 -- LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
--- QuantLibXL: qlLibor
 libor :: String -- ^familyName
   -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
@@ -147,7 +145,6 @@ foreign import ccall safe "ql.h qlOvernightIndex"
     -> Ptr CDayCounter -> Ptr CYieldTermStructure -> Ptr CString
     -> IO (Ptr COvernightIndex)
 
--- |QuantLibXL: qlOvernightIndex
 overnightIndex :: String -- ^familyName
   -> Word -- ^settlementDays
   -> Currency -- ^currency
@@ -178,13 +175,13 @@ createDailyTenorLibor :: String -> Word -> Maybe YieldTermStructure
 createDailyTenorLibor = $(ffiCall 'createDailyTenorLibor) c_createDailyTenorLibor
 
 -- |Euribor index
--- Euribor rate fixed by the ECB./Warning/ This is the rate fixed by the ECB. Use EurLibor if you're interested in the London fixing by BBA. QuantLibXL: qlEuribor
+-- Euribor rate fixed by the ECB./Warning/ This is the rate fixed by the ECB. Use EurLibor if you're interested in the London fixing by BBA
 euribor :: (Int, Unit) -- ^tenor
   -> Maybe YieldTermStructure -> IO IborIndex
 euribor = createIbor "Euribor"
 
 -- |Actual/365 Euribor index.
--- Euribor rate adjusted for the mismatch between the actual/360 convention used for Euribor and the actual/365 convention previously used by a few pre-EUR currencies. QuantLibXL: qlEuribor365
+-- Euribor rate adjusted for the mismatch between the actual/360 convention used for Euribor and the actual/365 convention previously used by a few pre-EUR currencies
 euribor365 :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 euribor365 = createIbor "Euribor365"
 
@@ -228,11 +225,11 @@ foreign import ccall safe "ql.h qlCreateONIndex"
 createONIndex :: String -> Maybe YieldTermStructure -> IO OvernightIndex
 createONIndex = $(ffiCall 'createONIndex) c_createONIndex
 
--- |Eonia (Euro Overnight Index Average) rate fixed by the ECB. QuantLibXL: qlEonia
+-- |Eonia (Euro Overnight Index Average) rate fixed by the ECB
 eonia :: Maybe YieldTermStructure -> IO OvernightIndex
 eonia = createONIndex "Eonia"
 
--- |Sonia (Sterling Overnight Index Average) rate. QuantLibXL: qlSonia
+-- |Sonia (Sterling Overnight Index Average) rate
 sonia :: Maybe YieldTermStructure -> IO OvernightIndex
 sonia = createONIndex "Sonia"
 
@@ -495,10 +492,10 @@ eurLibor1Y :: Maybe YieldTermStructure -> IO IborIndex
 eurLibor1Y = makeIbor eurLibor 1 Years
 
 businessDayConvention :: IborIndex -> Either String BusinessDayConvention
-businessDayConvention = $(ffiCallPureX 'businessDayConvention) c_businessDayConvention
+businessDayConvention = $(ffiCallPureX2 'businessDayConvention) c_businessDayConvention
 
 foreign import ccall safe "ql.h qlIborIndexBusinessDayConvention"
-  c_businessDayConvention :: Ptr CIborIndex -> Ptr CString -> IO CInt
+  c_businessDayConvention :: Ptr CIborIndex -> IO CInt
 
 endOfMonth :: IborIndex
   -> Bool

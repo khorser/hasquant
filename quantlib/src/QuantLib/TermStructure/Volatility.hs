@@ -68,7 +68,7 @@ foreign import ccall safe "ql.h qlConstantOptionletVol1"
   c_constantOptionletVolatility' :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote
     -> Ptr CDayCounter -> Ptr CString -> IO (Ptr COptionletVolatilityStructure)
 
--- |Constant caplet volatility, no time-strike dependence. QuantLibXL: qlConstantOptionletVolatility
+-- |Constant caplet volatility, no time-strike dependence
 -- floating reference date, floating market data
 constantOptionletVolatility' :: Word -- ^settlementDays
  -> Calendar -- ^cal

@@ -84,7 +84,6 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
     -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble
     -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
--- |QuantLibXL: qlDepositRateHelper2
 depositRateHelper :: Quote -- ^rate
   -> (Int, Unit) -- ^tenor
   -> Word -- ^fixingDays
@@ -95,7 +94,6 @@ depositRateHelper :: Quote -- ^rate
   -> IO RateHelper
 depositRateHelper = $(ffiCall 'depositRateHelper) c_depositRateHelper
 
--- |QuantLibXL: qlFixedRateBondHelper
 fixedRateBondHelper :: Quote -- ^cleanPrice
   -> Word -- ^settlementDays
   -> Double -- ^faceAmount
@@ -124,7 +122,6 @@ piecewiseYieldCurve = $(ffiCall 'piecewiseYieldCurve) c_piecewiseYieldCurve
 foreign import ccall safe "ql.h qlPiecewiseYieldCurve1"
   c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CRateHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
--- |QuantLibXL: qlPiecewiseYieldCurve
 piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [RateHelper] -- ^instruments
@@ -136,7 +133,7 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
   -> IO YieldTermStructure
 piecewiseYieldCurve' = $(ffiCall 'piecewiseYieldCurve') c_piecewiseYieldCurve'
 
--- |Returns a discount factor from the given YieldTermStructure object. QuantLibXL: qlYieldTSDiscount
+-- |Returns a discount factor from the given YieldTermStructure object
 discount' :: YieldTermStructure
   -> Day -- ^d
   -> Bool -- ^extrapolate
@@ -148,7 +145,6 @@ foreign import ccall safe "ql.h qlSwapRateHelper1"
     -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CQuote -> CInt -> CInt
     -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapRateHelper)
 
--- |QuantLibXL: qlSwapRateHelper2
 swapRateHelper' :: Quote -- ^rate
   -> (Int, Unit) -- ^tenor
   -> Calendar -- ^calendar

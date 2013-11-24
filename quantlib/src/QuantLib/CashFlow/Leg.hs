@@ -84,12 +84,11 @@ foreign import ccall safe "ql.h qlLeg"
 foreign import ccall safe "ql.h qlLegStartDate"
   c_startDate :: Ptr CLeg -> Ptr CString -> IO CDate
 
--- | QuantLibXL: qlLeg
 leg :: [(Double, Day)] -- ^amounts and dates
   -> IO Leg
 leg = $(ffiCall 'leg) c_leg
 
--- |Returns the start (i.e. first accrual) date for the given Leg. QuantLibXL: qlLegStartDate
+-- |Returns the start (i.e. first accrual) date for the given Leg
 startDate :: Leg -> Either String Day
 startDate = $(ffiCallPureX 'startDate) c_startDate
 

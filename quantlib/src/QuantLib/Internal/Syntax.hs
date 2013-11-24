@@ -5,6 +5,7 @@ module QuantLib.Internal.Syntax
   , ffiCallPure
   , ffiCallX
   , ffiCallPureX
+  , ffiCallPureX2
 
   , qlEnumsInfo
   )
@@ -230,6 +231,7 @@ parseSignature t@(AppT _ _) = do
 parseSignature t = fail $ "Unsupported signature: " ++ show t
 
 data IOAction = Straight | Pure | Unmarshal | Purify
+  | PurifyPure -- ^purify exceptions from a call that does not raise exceptions (so their only source is FFI infrastructure)
   deriving (Show, Eq)
 
 ffiCall :: Name -> ExpQ
@@ -243,6 +245,9 @@ ffiCallX hn = ffiCallImpl hn Unmarshal
 
 ffiCallPureX :: Name -> ExpQ
 ffiCallPureX hn = ffiCallImpl hn Purify
+
+ffiCallPureX2 :: Name -> ExpQ
+ffiCallPureX2 hn = ffiCallImpl hn PurifyPure
 
 ffiCallImpl :: Name -> IOAction -> ExpQ
 ffiCallImpl hFun extra = reify hFun >>= f
@@ -258,6 +263,7 @@ genFfiCall extra aa r = do
   where
     call varNames cFunName Pure   = [|unsafePerformIO $(nakedCall varNames cFunName)|]
     call varNames cFunName Purify = [|purifyExceptions $(nakedCall varNames cFunName)|]
+    call varNames cFunName PurifyPure = [|purifyExceptions $(nakedCall varNames cFunName)|]
     call varNames cFunName _      = [|$(nakedCall varNames cFunName)|]
 
     ret :: RetVal
@@ -268,6 +274,7 @@ genFfiCall extra aa r = do
         (IORV _, Straight) -> r
         (IORV _, Unmarshal) -> r
         (EitherRV _, Purify) -> r
+        (EitherRV _, PurifyPure) -> r
         _ -> error $ "Return type " ++ show r ++ " is incompatible with call type " ++ show extra
 
     finalCCall :: ExpQ -> ExpQ
@@ -283,6 +290,7 @@ genFfiCall extra aa r = do
     postCall Pure = [|id|]
     postCall Unmarshal = [|unmarshalExceptions|]
     postCall Purify = [|unmarshalExceptions|]
+    postCall PurifyPure = [|id|]
 
     nakedCall :: [Name] -> Name -> ExpQ
     nakedCall varNames cFunName = genFfiCallImpl (zip aa (map varE varNames)) (varE cFunName)
