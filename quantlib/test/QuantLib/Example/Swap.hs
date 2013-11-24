@@ -62,10 +62,10 @@ run = do
     TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip fraQuotes fraTerms
 
-  let imm1 = nextIMMDate settleDate True
+  let (Right imm1) = nextIMMDate settleDate True
       imms = foldl nextIMM [imm1] (replicate (length futPrices-1) 1)
       nextIMM :: [Day] -> Integer -> [Day]
-      nextIMM l inc = l ++ [nextIMMDate (addDays inc $ last l) True]
+      nextIMM l inc = l ++ [either (const $ 1 `january` 2000) id (nextIMMDate (addDays inc $ last l) True)]
 
   futHelpers <- mapM (\(q, imm) ->
     TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing) $

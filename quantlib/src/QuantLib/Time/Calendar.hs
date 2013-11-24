@@ -345,7 +345,10 @@ holidays :: Calendar -- ^calendar
 holidays c from to w =
   map fromQlDate <$>
     withObject c
-      (\cc -> getArrayX $ c_holidayList cc (toQlDate from) (toQlDate to) (fromBool w))
+      (\cc -> do
+        f <- toQlDate from
+        t <- toQlDate to
+        getArrayX $ c_holidayList cc f t (fromBool w))
 
 foreign import ccall safe "ql.h qlCalendarHolidayList"
   c_holidayList :: Ptr CCalendar -> CDate -> CDate -> CInt -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)

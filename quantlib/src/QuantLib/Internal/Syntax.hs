@@ -315,10 +315,10 @@ genFfiCall extra aa r = do
       genFfiCallImpl as [|$c_call (maybe (fromIntegral nullInteger) (fromIntegral :: Word -> CUInt) $v)|]
 
     genFfiCallImpl ((DayA, v):as) c_call =
-      genFfiCallImpl as [|$c_call (toQlDate $v)|]
+      [|withDay $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((OptDayA, v):as) c_call =
-      genFfiCallImpl as [|$c_call (toQlDate $v)|]
+      [|withDay $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((YearFractionA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((realToFrac :: Double -> CDouble) $v)|]

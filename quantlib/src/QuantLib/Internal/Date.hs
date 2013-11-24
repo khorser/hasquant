@@ -7,6 +7,7 @@ module QuantLib.Internal.Date
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , isValid
+  , withDay
   , withDays
   , fromQlDate
   , toQlDate
@@ -39,28 +40,30 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
                                     (fromIntegral c_minMonth)
                                     (fromIntegral c_minDay)
 
-toQlDateUnsafe :: Day -> CDate
-toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
+toQlDateNoCheck :: Day -> CDate
+toQlDateNoCheck x = fromIntegral $ toModifiedJulianDay x - qlStart
+
+withDay :: (QLDate a) => a -> (CDate -> IO b) -> IO b
+withDay x f = toQlDate x >>= f
 
 withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
-withDays = withArrayULenT toQlDate
+withDays = withArrayULenTIO toQlDate
 
 class QLDate a where
   isValid :: a -> Bool
-  toQlDate :: a -> CDate
+  toQlDate :: a -> IO CDate
   fromQlDate :: CDate -> a
 
 instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
-                where num = toQlDateUnsafe x
-  -- return Either instead?
-  toQlDate x | isValid x = fromIntegral $ toModifiedJulianDay x - qlStart
-                         | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
+                where num = toQlDateNoCheck x
+  toQlDate x | isValid x = return $ fromIntegral (toModifiedJulianDay x - qlStart)
+             | otherwise = signalErrorIO ("Invalid QuantLib date: " ++ show x)
   fromQlDate p = ModifiedJulianDay $ fromIntegral p + qlStart
 
 instance QLDate (Maybe Day) where
   isValid = maybe True isValid
-  toQlDate = maybe 0 toQlDate
+  toQlDate = maybe (return 0) toQlDate
   fromQlDate 0 = Nothing
   fromQlDate x = Just $ fromQlDate x
 

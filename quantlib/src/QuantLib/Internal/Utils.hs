@@ -27,6 +27,7 @@ module QuantLib.Internal.Utils
   , CStaticInt(..)
   , withArrayULen
   , withArrayULenT
+  , withArrayULenTIO
   , ioToQl
   , QL
 
@@ -74,6 +75,9 @@ withArrayULen x f = withArrayLen x (f . fromIntegral)
 
 withArrayULenT :: Storable b => (a -> b) -> [a] -> (CUInt -> Ptr b -> IO c) -> IO c
 withArrayULenT t x = withArrayULen (map t x)
+
+withArrayULenTIO :: Storable b => (a -> IO b) -> [a] -> (CUInt -> Ptr b -> IO c) -> IO c
+withArrayULenTIO t x f = mapM t x >>= (`withArrayULen` f)
 
 withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr

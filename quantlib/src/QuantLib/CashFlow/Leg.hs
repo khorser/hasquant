@@ -127,7 +127,8 @@ cashFlows l inc d =
     \pam -> alloca $
       \pdt -> alloca $
         \pocc -> do
-          num <- unmarshalExceptions $ c_legCashFlows ll (maybe (-1) fromBool inc) (toQlDate d) pam pdt pocc
+          dd <- toQlDate d
+          num <- unmarshalExceptions $ c_legCashFlows ll (maybe (-1) fromBool inc) dd pam pdt pocc
           am <- peek pam >>= buildArray num
           dt <- peek pdt >>= buildArray num
           occ <- peek pocc >>= buildArray num
@@ -456,7 +457,9 @@ npvbps l y i s n =
     \yy -> alloca $
       \pnpv -> alloca $
         \pbps -> do
-          unmarshalExceptions $ c_npvbps ll yy (fromBool i) (toQlDate s) (toQlDate n) pnpv pbps
+          ss <- toQlDate s
+          nn <- toQlDate n
+          unmarshalExceptions $ c_npvbps ll yy (fromBool i) ss nn pnpv pbps
           npv <- peek pnpv
           bps <- peek pbps
           return (realToFrac npv, realToFrac bps)

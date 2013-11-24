@@ -41,10 +41,13 @@ test_ECBDates = keepingSettings' $ do
 test_IMMDatesLongRunning :: IO ()
 test_IMMDatesLongRunning = keepingSettings' $ do
   mapM_ (\d -> do
-    let imm = nextIMMDate d False
+    let (Right imm) = nextIMMDate d False
+        (Right isImm) = isIMMDate imm False
+        (Right n) = nextIMMDate d True
+
     assertBool (imm > d)
-    assertBool (isIMMdate imm False)
-    assertBool (imm <= nextIMMDate d True)
+    assertBool isImm
+    assertBool (imm <= n)
     let (Right code) = immCode imm
     let (Right dd) = immDate code d
     assertEqual dd imm
