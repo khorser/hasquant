@@ -97,7 +97,6 @@ Library
   Other-modules:
                 QuantLib.Internal.Date
               , QuantLib.Internal.Enum
-              , QuantLib.Internal.Period
               , QuantLib.Internal.Syntax
               , QuantLib.Internal.Types
               , QuantLib.Internal.Utils
