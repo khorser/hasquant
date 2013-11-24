@@ -91,6 +91,9 @@ maxDate = fromQlDate c_maxDateSerialNumber
 weekday :: Day -> Weekday
 weekday x = fromQlEnum (show ''Weekday) $ c_weekday (toQlDate x)
 
+foreign import ccall safe "ql.h qlWeekday"
+  c_weekday :: CInt -> CInt
+
 month :: Day -> Month
 month x = let (_, m, _) = toGregorian x in
               case m of

@@ -22,9 +22,7 @@ import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.Unit(Unit)
 
 foreign import ccall safe "ql.h qlSchedule"
-  c_schedule :: CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
-    -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString
-    -> IO (Ptr CSchedule)
+  c_schedule :: CDate -> CDate -> CInt -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlSchedule1"
   c_scheduleFromDays :: CUInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleUntil"

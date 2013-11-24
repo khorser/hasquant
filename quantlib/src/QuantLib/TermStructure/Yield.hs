@@ -109,8 +109,7 @@ fixedRateBondHelper :: Quote -- ^cleanPrice
 fixedRateBondHelper = $(ffiCall 'fixedRateBondHelper) c_fixedRateBondHelper
 
 foreign import ccall safe "ql.h qlYieldTSDiscount"
-  c_discount' :: Ptr CYieldTermStructure -> CDate -> CInt
-    -> Ptr CString -> IO CDouble
+  c_discount' :: Ptr CYieldTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
 
 piecewiseYieldCurve :: Day -- ^referenceDate
   -> [RateHelper] -- ^instruments
@@ -123,10 +122,7 @@ piecewiseYieldCurve :: Day -- ^referenceDate
 piecewiseYieldCurve = $(ffiCall 'piecewiseYieldCurve) c_piecewiseYieldCurve
 
 foreign import ccall safe "ql.h qlPiecewiseYieldCurve1"
-  c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt
-    -> Ptr (Ptr CRateHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote)
-    -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString
-    -> IO (Ptr CYieldTermStructure)
+  c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CRateHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
 -- |QuantLibXL: qlPiecewiseYieldCurve
 piecewiseYieldCurve' :: Word -- ^settlementDays

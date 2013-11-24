@@ -2,6 +2,7 @@
 module QuantLib.Internal.Utils
   (
     signalError
+  , signalErrorIO
   , unmarshalExceptions
   , purifyExceptions
   , convertExceptions
@@ -44,7 +45,7 @@ where
 import Prelude hiding(catch)
 #endif
 
-import Control.Exception(throw, catch)
+import Control.Exception(throw, throwIO, catch)
 import Data.Functor.Identity(Identity)
 import Data.Functor((<$>))
 import Data.Word(Word)
@@ -61,6 +62,9 @@ import Foreign.Storable(Storable(..), peek)
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Error(Error(Error), message)
+
+signalErrorIO :: String -> IO a
+signalErrorIO = throwIO . Error
 
 signalError :: String -> a
 signalError = throw . Error
@@ -167,7 +171,7 @@ unmarshalExceptions f =
        then do
          err <- peekCString msg
          c_freeString msg
-         signalError err
+         signalErrorIO err
        else return r
 
 purifyExceptions :: IO a -> Either String a
@@ -186,7 +190,7 @@ construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
 construct f = do
   o <- unmarshalExceptions f
   if o == nullPtr
-    then signalError "Foreign code did not signal an error but returned null pointer"
+    then signalErrorIO "Foreign code did not signal an error but returned null pointer"
     else newForeignPtr finalize o
 
 class Finalizable a => NamedSingleton a where

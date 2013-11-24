@@ -8,7 +8,6 @@ module QuantLib.Internal.Date
   , c_minDateSerialNumber
   , isValid
   , withDays
-  , c_weekday
   , fromQlDate
   , toQlDate
   )
@@ -31,9 +30,6 @@ foreign import ccall safe "ql.h qlMinMonth"
   c_minMonth :: CInt
 foreign import ccall safe "ql.h qlMinDay"
   c_minDay :: CInt
-
-foreign import ccall safe "ql.h qlWeekday"
-  c_weekday :: CInt -> CInt
 
 -- |Julian day of the QuantLib zero date
 qlStart :: Integer

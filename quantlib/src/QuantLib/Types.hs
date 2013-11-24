@@ -214,13 +214,13 @@ import QuantLib.Internal.Utils
 realMatrix :: Word -> Word -> [Double] -> Matrix Double
 realMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
-    then signalError "Dimensions do not match with data passed"
+    then signalError "Dimensions do not match with the length of data passed"
     else Matrix rows cols d
 
 objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Matrix (ForeignPtr a)
 objectMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
-    then signalError "Dimensions do not match with data passed"
+    then signalError "Dimensions do not match with the length of data passed"
     else Matrix rows cols d
 
 -- cashflows

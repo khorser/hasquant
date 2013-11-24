@@ -114,8 +114,7 @@ previousCashFlows :: Leg
 previousCashFlows = $(ffiCall 'previousCashFlows) c_previousCashFlows
 
 foreign import ccall safe "ql.h qlLegCashFlows"
-  c_legCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr (Ptr CDouble)
-    -> Ptr (Ptr CDate) -> Ptr (Ptr CInt) -> Ptr CString -> IO CUInt
+  c_legCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr (Ptr CDouble) -> Ptr (Ptr CDate) -> Ptr (Ptr CInt) -> Ptr CString -> IO CUInt
 
 -- |return cash flows together with an indicator whether they occurred as of /settlementDate/
 cashFlows :: Leg

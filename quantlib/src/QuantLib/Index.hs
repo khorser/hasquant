@@ -23,8 +23,7 @@ import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlIndexAddFixing"
-  c_addFixing :: Ptr CIndex -> CDate -> CDouble -> CInt -> Ptr CString
-    -> IO ()
+  c_addFixing :: Ptr CIndex -> CDate -> CDouble -> CInt -> Ptr CString -> IO ()
 
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
