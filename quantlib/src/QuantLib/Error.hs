@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Error
   (
-    Error(..)
+    QLError(..)
   )
 where
 
@@ -9,7 +9,7 @@ import Control.Exception(Exception, IOException)
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 
-data Error = CPlusPlusException String
+data QLError = CPlusPlusException String
   | DateConversion Day
   | NullPointerReturned
   | UnknownEnum String
@@ -18,6 +18,6 @@ data Error = CPlusPlusException String
   | IoException IOException
   deriving (Typeable, Show)
 
-instance Exception Error
+instance Exception QLError
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

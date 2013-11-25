@@ -176,7 +176,7 @@ purifyExceptions = unsafePerformIO . convertExceptions
 
 convertExceptions :: IO a -> IO (Either String a)
 convertExceptions f = (Right <$> f) `catch` (return . Left . showE)
-  where showE :: Error -> String
+  where showE :: QLError -> String
         showE = show
 
 class Finalizable a where
