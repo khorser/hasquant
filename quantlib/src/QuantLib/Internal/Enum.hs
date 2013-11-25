@@ -19,6 +19,7 @@ where
 import Data.List(elemIndex)
 import Foreign.Marshal.Utils(maybeWith)
 
+import QuantLib.Error
 import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlEnumerationValue"
@@ -28,7 +29,7 @@ values :: String -> IO [CInt]
 values ename = do
   v <- withCString ename (getArray . c_values)
   if null v
-     then signalErrorIO ("Unknown enumeration: " ++ ename)
+     then throwIO $ UnknownEnum ename
      else mapM (return . getStaticInt) v
 
 -- when declaring new QLEnum/QLLitEnum instances, add them into Internal.Enum too!
@@ -41,13 +42,13 @@ toQlEnum typename x = do
   let index = fromEnum x
   vals <- values typename
   if index >= length vals
-    then signalErrorIO $ "Constructor " ++ show x ++ " is not found"
+    then throwIO $ EnumConversion (show x)
     else return $ vals !! index
 
 fromQlEnum :: (QLEnum a) => String -> CInt -> IO a
 fromQlEnum typename x = do
   v <- values typename
-  maybe (signalErrorIO $ "Unknown enumeration code: " ++ show x)
+  maybe (throwIO $ CEnumConversion (fromIntegral x))
     (return . toEnum)
     (elemIndex x v)
 

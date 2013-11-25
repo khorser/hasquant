@@ -5,10 +5,18 @@ module QuantLib.Error
   )
 where
 
-import Control.Exception(Exception)
+import Control.Exception(Exception, IOException)
+import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 
-data Error = Error{message::String} deriving (Typeable, Show)
+data Error = CPlusPlusException {message::String} 
+  | DateConversionError Day
+  | NullPointerReturned
+  | UnknownEnum String
+  | EnumConversion String -- TODO pass actual enum
+  | CEnumConversion Int
+  | IoException IOException
+  deriving (Typeable, Show)
 
 instance Exception Error
 

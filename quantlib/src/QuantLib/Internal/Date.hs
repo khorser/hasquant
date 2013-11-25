@@ -16,6 +16,7 @@ where
 
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
+import QuantLib.Error
 import QuantLib.Internal.Utils
 
 type CDate = CInt
@@ -58,7 +59,7 @@ instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
                 where num = toQlDateNoCheck x
   toQlDate x | isValid x = return $ fromIntegral (toModifiedJulianDay x - qlStart)
-             | otherwise = signalErrorIO ("Invalid QuantLib date: " ++ show x)
+             | otherwise = throwIO $ DateConversionError x
   fromQlDate p = ModifiedJulianDay $ fromIntegral p + qlStart
 
 instance QLDate (Maybe Day) where

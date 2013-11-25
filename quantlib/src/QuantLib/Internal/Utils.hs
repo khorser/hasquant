@@ -1,8 +1,7 @@
 {-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts,CPP #-}
 module QuantLib.Internal.Utils
   (
-    signalErrorIO
-  , unmarshalExceptions
+    unmarshalExceptions
   , purifyExceptions
   , convertExceptions
 
@@ -37,6 +36,7 @@ module QuantLib.Internal.Utils
   , CString
   , Ptr, FunPtr
   , ForeignPtr
+  , throwIO
   )
 
 where
@@ -61,10 +61,7 @@ import Foreign.Storable(Storable(..), peek)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Error(Error(Error), message)
-
-signalErrorIO :: String -> IO a
-signalErrorIO = throwIO . Error
+import QuantLib.Error
 
 withArrayULen :: Storable a => [a] -> (CUInt -> Ptr a -> IO b) -> IO b
 withArrayULen x f = withArrayLen x (f . fromIntegral)
@@ -171,7 +168,7 @@ unmarshalExceptions f =
        then do
          err <- peekCString msg
          c_freeString msg
-         signalErrorIO err
+         throwIO $ CPlusPlusException err
        else return r
 
 purifyExceptions :: IO a -> Either String a
@@ -190,7 +187,7 @@ construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
 construct f = do
   o <- unmarshalExceptions f
   if o == nullPtr
-    then signalErrorIO "Foreign code did not signal an error but returned null pointer"
+    then throwIO NullPointerReturned
     else newForeignPtr finalize o
 
 class Finalizable a => NamedSingleton a where
