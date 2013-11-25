@@ -59,7 +59,7 @@ instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
                 where num = toQlDateNoCheck x
   toQlDate x | isValid x = return $ fromIntegral (toModifiedJulianDay x - qlStart)
-             | otherwise = throwIO $ DateConversionError x
+             | otherwise = throwIO $ DateConversion x
   fromQlDate p = ModifiedJulianDay $ fromIntegral p + qlStart
 
 instance QLDate (Maybe Day) where

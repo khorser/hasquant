@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
-{-# LANGUAGE ScopedTypeVariables,CPP #-}
+{-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Test.QuickCheck(htf_thisModulesTests, today)
 
@@ -52,9 +52,10 @@ setAndGetEvaluationDate d = do
 
 setAndGetEvaluationDateWithExceptions :: Day -> IO Day
 setAndGetEvaluationDateWithExceptions d = do
-  catch (Settings.setEvaluationDate (Just d))
-    (\(_ :: Error.Error) -> return ())
+  Settings.setEvaluationDate (Just d) `catch` ign
   Settings.evaluationDate
+  where ign :: Error.Error -> IO ()
+        ign _ = return ()
 
 prop_ValidDate :: ValidDay -> Bool
 prop_ValidDate (ValidDay d) = isValid d

@@ -172,11 +172,12 @@ unmarshalExceptions f =
        else return r
 
 purifyExceptions :: IO a -> Either String a
-purifyExceptions f = unsafePerformIO $
-  (Right <$> f) `catch` (return . Left . message)
+purifyExceptions = unsafePerformIO . convertExceptions
 
 convertExceptions :: IO a -> IO (Either String a)
-convertExceptions f = (Right <$> f) `catch` (return . Left . message)
+convertExceptions f = (Right <$> f) `catch` (return . Left . showE)
+  where showE :: Error -> String
+        showE = show
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())

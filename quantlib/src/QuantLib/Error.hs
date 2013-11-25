@@ -9,12 +9,12 @@ import Control.Exception(Exception, IOException)
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 
-data Error = CPlusPlusException {message::String} 
-  | DateConversionError Day
+data Error = CPlusPlusException String
+  | DateConversion Day
   | NullPointerReturned
   | UnknownEnum String
-  | EnumConversion String -- TODO pass actual enum
-  | CEnumConversion Int
+  | EnumConversion String String
+  | CEnumConversion String Int
   | IoException IOException
   deriving (Typeable, Show)
 

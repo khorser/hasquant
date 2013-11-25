@@ -42,13 +42,13 @@ toQlEnum typename x = do
   let index = fromEnum x
   vals <- values typename
   if index >= length vals
-    then throwIO $ EnumConversion (show x)
+    then throwIO $ EnumConversion typename (show x)
     else return $ vals !! index
 
 fromQlEnum :: (QLEnum a) => String -> CInt -> IO a
 fromQlEnum typename x = do
   v <- values typename
-  maybe (throwIO $ CEnumConversion (fromIntegral x))
+  maybe (throwIO $ CEnumConversion typename (fromIntegral x))
     (return . toEnum)
     (elemIndex x v)
 
