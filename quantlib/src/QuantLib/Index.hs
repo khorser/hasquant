@@ -14,6 +14,7 @@ module QuantLib.Index
   )
 where
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum(fromQlEnum)
 import QuantLib.Internal.Syntax
@@ -90,7 +91,7 @@ fixingDays = $(ffiCallPure 'fixingDays) c_fixingDays
 foreign import ccall safe "ql.h qlInterestRateIndexFixingDays"
   c_fixingDays :: Ptr CInterestRateIndex -> IO CUInt
 
-tenor :: InterestRateIndex -> Either String (Int, Unit)
+tenor :: InterestRateIndex -> Either QLError (Int, Unit)
 tenor o = purifyExceptions $ do
   (n, u) <- withObject o (getIntPair . c_tenor)
   e <- fromQlEnum (show ''Unit) u

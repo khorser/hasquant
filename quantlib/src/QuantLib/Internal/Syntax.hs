@@ -17,6 +17,7 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Types
@@ -211,7 +212,7 @@ compToRetVal :: Type -> Q RetVal
 compToRetVal (AppT (ConT n1) t2)
   | n1 == ''IO = IORV <$> compArgToRetVal t2
 compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2)
-  | (n1, n2) == (''Either, ''String) = EitherRV <$> compArgToRetVal t2
+  | (n1, n2) == (''Either, ''QLError) = EitherRV <$> compArgToRetVal t2
 compToRetVal t = AtomicRV <$> compArgToRetVal t
 
 -- use WriterT to clean up this mess?

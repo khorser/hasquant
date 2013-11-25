@@ -85,6 +85,7 @@ module QuantLib.Index.Ibor
   )
 where
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -491,7 +492,7 @@ eurLibor11M = makeIbor eurLibor 11 Months
 eurLibor1Y :: Maybe YieldTermStructure -> IO IborIndex
 eurLibor1Y = makeIbor eurLibor 1 Years
 
-businessDayConvention :: IborIndex -> Either String BusinessDayConvention
+businessDayConvention :: IborIndex -> Either QLError BusinessDayConvention
 businessDayConvention = $(ffiCallPureX2 'businessDayConvention) c_businessDayConvention
 
 foreign import ccall safe "ql.h qlIborIndexBusinessDayConvention"

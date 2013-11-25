@@ -11,6 +11,7 @@ module QuantLib.Time.Period
   )
 where
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
@@ -27,7 +28,7 @@ foreign import ccall safe "ql.h qlPeriodFromFrequency1"
   c_fromFrequency :: CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
-fromFrequency :: F.Frequency -> Either String (Int, Unit)
+fromFrequency :: F.Frequency -> Either QLError (Int, Unit)
 fromFrequency f = purifyExceptions $ do
   e <- toQlEnum (show ''F.Frequency) f
   unmarshalPeriod $ c_fromFrequency e
@@ -36,16 +37,16 @@ foreign import ccall safe "ql.h qlPeriodToFrequency1"
   c_toFrequency :: CInt -> CInt -> Ptr CString -> IO CInt
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
-toFrequency :: (Int, Unit) -> Either String F.Frequency
+toFrequency :: (Int, Unit) -> Either QLError F.Frequency
 toFrequency = $(ffiCallPureX 'toFrequency) c_toFrequency
 
-parse :: String -> Either String (Int, Unit)
+parse :: String -> Either QLError (Int, Unit)
 parse s = purifyExceptions $ withCString s (unmarshalPeriod . c_parse)
 
 foreign import ccall safe "ql.h qlPeriodParserParse1"
   c_parse :: CString -> Ptr CInt -> Ptr CString -> IO CInt
 
-addPeriods :: (Int, Unit) -> (Int, Unit) -> Either String (Int, Unit)
+addPeriods :: (Int, Unit) -> (Int, Unit) -> Either QLError (Int, Unit)
 addPeriods (n1, u1) (n2, u2) = purifyExceptions $ do
   e1 <- toQlEnum (show ''Unit) u1
   e2 <- toQlEnum (show ''Unit) u2
@@ -54,7 +55,7 @@ addPeriods (n1, u1) (n2, u2) = purifyExceptions $ do
 foreign import ccall safe "ql.h qlPeriodAdd1"
   c_addPeriods :: CInt -> CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
-dividePeriod :: (Int, Unit) -> Int -> Either String (Int, Unit)
+dividePeriod :: (Int, Unit) -> Int -> Either QLError (Int, Unit)
 dividePeriod (n1, u1) n = purifyExceptions $ do
   e1 <- toQlEnum (show ''Unit) u1
   unmarshalPeriod $ c_dividePeriod (fromIntegral n1) e1 (fromIntegral n)
@@ -62,13 +63,13 @@ dividePeriod (n1, u1) n = purifyExceptions $ do
 foreign import ccall safe "ql.h qlPeriodDivide1"
   c_dividePeriod :: CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
-periodsLT :: (Int, Unit) -> (Int, Unit) -> Either String Bool
+periodsLT :: (Int, Unit) -> (Int, Unit) -> Either QLError Bool
 periodsLT = $(ffiCallPureX 'periodsLT) c_periodsLT
 
 foreign import ccall safe "ql.h qlPeriodsLT1"
   c_periodsLT :: CInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CInt
 
-normalize :: (Int, Unit) -> Either String (Int, Unit)
+normalize :: (Int, Unit) -> Either QLError (Int, Unit)
 normalize (n1, u1) = purifyExceptions $ do
   e1 <- toQlEnum (show ''Unit) u1
   unmarshalPeriod $ c_normalize (fromIntegral n1) e1

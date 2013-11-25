@@ -66,6 +66,7 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import Foreign.Marshal.Utils(fromBool, toBool)
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
@@ -89,7 +90,7 @@ minDate = fromQlDate c_minDateSerialNumber
 maxDate :: Day
 maxDate = fromQlDate c_maxDateSerialNumber
 
-weekday :: Day -> Either String Weekday
+weekday :: Day -> Either QLError Weekday
 weekday x = purifyExceptions $ do
   d <- toQlDate x
   fromQlEnum (show ''Weekday) $ c_weekday d
@@ -158,21 +159,21 @@ today = do
   return $ localDay $ utcToLocalTime tz now
 
 -- |One-based (Jan 1st = 1)
-dayOfYear :: Day -> Either String Int
+dayOfYear :: Day -> Either QLError Int
 dayOfYear x = purifyExceptions $ fromIntegral <$> c_dayOfYear <$> toQlDate x
 
 foreign import ccall safe "ql.h qlDateDayOfYear"
   c_dayOfYear :: CDate -> CInt
 
 -- |last day of the month to which the given date belongs
-endOfMonth :: Day -> Either String Day
+endOfMonth :: Day -> Either QLError Day
 endOfMonth x = purifyExceptions $ fromQlDate <$> c_endOfMonth <$> toQlDate x
 
 foreign import ccall safe "ql.h qlDateEndOfMonth"
   c_endOfMonth :: CDate -> CDate
 
 -- |whether a date is the last day of its month
-isEndOfMonth :: Day -> Either String Bool
+isEndOfMonth :: Day -> Either QLError Bool
 isEndOfMonth x = purifyExceptions $ toBool <$> do
   dd <- toQlDate x
   return $ c_isEndOfMonth dd
@@ -184,7 +185,7 @@ foreign import ccall safe "ql.h qlDateIsEndOfMonth"
 -- E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
 nextWeekday :: Day -- ^d
   -> Weekday -- ^w
-  -> Either String Day
+  -> Either QLError Day
 nextWeekday d w = purifyExceptions $ do
   dd <- toQlDate d
   ww <- toQlEnum (show $ ''Weekday) w
@@ -207,7 +208,7 @@ foreign import ccall safe "ql.h qlDateNthWeekday"
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
 immCode :: Day -- ^immDate
-  -> Either String String
+  -> Either QLError String
 immCode = $(ffiCallPureX 'immCode) c_immCode
 
 foreign import ccall safe "ql.h qlIMMCode"
@@ -216,7 +217,7 @@ foreign import ccall safe "ql.h qlIMMCode"
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
 immDate :: String -- ^immCode
   -> Day -- ^referenceDate
-  -> Either String Day
+  -> Either QLError Day
 immDate = $(ffiCallPureX 'immDate) c_immDate
 
 foreign import ccall safe "ql.h qlIMMDate"
@@ -234,7 +235,7 @@ foreign import ccall safe "ql.h qlIMMIsIMMcode"
 -- |returns whether or not the given date is an IMM date
 isIMMDate :: Day -- ^d
   -> Bool -- ^mainCycle
-  -> Either String Bool
+  -> Either QLError Bool
 isIMMDate d b = purifyExceptions $ do
   dd <- toQlDate d
   return $ toBool $ c_isIMMDate dd (fromBool b)
@@ -247,7 +248,7 @@ foreign import ccall safe "ql.h qlIMMIsIMMdate"
 nextIMMCode' :: String -- ^immCode
   -> Bool -- ^mainCycle
   -> Day -- ^referenceDate
-  -> Either String String
+  -> Either QLError String
 nextIMMCode' = $(ffiCallPureX 'nextIMMCode') c_nextIMMCode'
 
 foreign import ccall safe "ql.h qlIMMNextCode1"
@@ -268,7 +269,7 @@ foreign import ccall safe "ql.h qlIMMNextCode"
 nextIMMDate' :: String -- ^immCode
   -> Bool -- ^mainCycle
   -> Day -- ^referenceDate
-  -> Either String Day
+  -> Either QLError Day
 nextIMMDate' = $(ffiCallPureX 'nextIMMDate') c_nextIMMDate'
 
 foreign import ccall safe "ql.h qlIMMNextDate1"
@@ -278,7 +279,7 @@ foreign import ccall safe "ql.h qlIMMNextDate1"
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMDate :: Day -- ^d
   -> Bool -- ^mainCycle
-  -> Either String Day
+  -> Either QLError Day
 nextIMMDate d b = purifyExceptions $ do
   dd <- toQlDate d
   return $ fromQlDate $ c_nextIMMDate dd (fromBool b)
@@ -286,7 +287,7 @@ nextIMMDate d b = purifyExceptions $ do
 foreign import ccall safe "ql.h qlIMMNextDate"
   c_nextIMMDate :: CDate -> CInt -> CDate
 
-addPeriod :: Day -> (Int, Unit) -> Either String Day
+addPeriod :: Day -> (Int, Unit) -> Either QLError Day
 addPeriod = $(ffiCallPureX 'addPeriod) c_addPeriod
 
 foreign import ccall safe "ql.h qlAddPeriod"

@@ -68,13 +68,14 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Storable(peek)
 
 
-import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.CashFlow.DurationType(DurationType)
 import QuantLib.Compounding(Compounding)
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Frequency(Frequency)
 import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
@@ -89,7 +90,7 @@ leg :: [(Double, Day)] -- ^amounts and dates
 leg = $(ffiCall 'leg) c_leg
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
-startDate :: Leg -> Either String Day
+startDate :: Leg -> Either QLError Day
 startDate = $(ffiCallPureX 'startDate) c_startDate
 
 foreign import ccall safe "ql.h qlNextCashFlows"
@@ -343,7 +344,7 @@ foreign import ccall safe "ql.h qlCashFlowsIsExpired"
   c_isExpired :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CInt
 
 maturityDate :: Leg -- ^leg
-  -> Either String Day
+  -> Either QLError Day
 maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlCashFlowsMaturityDate"

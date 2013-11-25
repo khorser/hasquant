@@ -1,9 +1,8 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts,CPP #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts #-}
 module QuantLib.Internal.Utils
   (
     unmarshalExceptions
   , purifyExceptions
-  , convertExceptions
 
   , Finalizable(..)
   , Upcastable(..)
@@ -41,11 +40,7 @@ module QuantLib.Internal.Utils
 
 where
 
-#if __GLASGOW_HASKELL__ < 706
-import Prelude hiding(catch)
-#endif
-
-import Control.Exception(throwIO, catch)
+import Control.Exception(throwIO, catches, Handler(Handler))
 import Data.Functor.Identity(Identity)
 import Data.Functor((<$>))
 import Data.Word(Word)
@@ -171,13 +166,11 @@ unmarshalExceptions f =
          throwIO $ CPlusPlusException err
        else return r
 
-purifyExceptions :: IO a -> Either String a
-purifyExceptions = unsafePerformIO . convertExceptions
-
-convertExceptions :: IO a -> IO (Either String a)
-convertExceptions f = (Right <$> f) `catch` (return . Left . showE)
-  where showE :: QLError -> String
-        showE = show
+purifyExceptions :: IO a -> Either QLError a
+purifyExceptions f = unsafePerformIO $
+  (Right <$> f)
+  `catches` [Handler (return . Left), -- catch QLException
+             Handler (return . Left . IoException)] -- wrap IOException
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())

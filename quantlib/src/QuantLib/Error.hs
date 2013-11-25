@@ -15,8 +15,9 @@ data QLError = CPlusPlusException String
   | UnknownEnum String
   | EnumConversion String String
   | CEnumConversion String Int
+  | IncorrectSize
   | IoException IOException
-  deriving (Typeable, Show)
+  deriving (Typeable, Show, Eq)
 
 instance Exception QLError
 

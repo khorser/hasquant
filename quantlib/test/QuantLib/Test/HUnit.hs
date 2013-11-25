@@ -16,6 +16,7 @@ import Control.Monad(void)
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
+import QuantLib.Error
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.InterestRate as InterestRate
 import qualified QuantLib.Settings as Settings
@@ -283,7 +284,7 @@ test_LeapYears = assertEqual
 test_EmptyLegStart :: IO ()
 test_EmptyLegStart = do
   l <- Leg.leg []
-  let (Left m) = Leg.startDate l
+  let (Left (CPlusPlusException m)) = Leg.startDate l
   assertBool (not $ null m)
 
 test_SingleLegToday :: IO ()

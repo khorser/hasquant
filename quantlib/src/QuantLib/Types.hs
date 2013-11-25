@@ -207,20 +207,21 @@ module QuantLib.Types
   )
 where
 
+import QuantLib.Error
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 
 -- do something more interesting using type system
-realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
+realMatrix :: Word -> Word -> [Double] -> Either QLError (Matrix Double)
 realMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
-    then Left "Dimensions do not match with the length of data passed"
+    then Left IncorrectSize
     else Right $ Matrix rows cols d
 
-objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Either String (Matrix (ForeignPtr a))
+objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Either QLError (Matrix (ForeignPtr a))
 objectMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
-    then Left "Dimensions do not match with the length of data passed"
+    then Left IncorrectSize
     else Right $ Matrix rows cols d
 
 -- cashflows

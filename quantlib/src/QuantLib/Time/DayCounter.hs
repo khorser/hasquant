@@ -27,6 +27,7 @@ module QuantLib.Time.DayCounter
 
 where
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 --import QuantLib.Internal.Enum(QLObjEnum(..))
 import QuantLib.Internal.Syntax
@@ -96,7 +97,7 @@ yearFraction :: DayCounter
   -> Day
   -> Maybe Day -- ^refPeriodStart
   -> Maybe Day -- ^refPeriodEnd
-  -> Either String YearFraction
+  -> Either QLError YearFraction
 yearFraction = $(ffiCallPureX 'yearFraction) c_yearFraction
 
 foreign import ccall safe "ql.h qlDayCounterYearFraction"

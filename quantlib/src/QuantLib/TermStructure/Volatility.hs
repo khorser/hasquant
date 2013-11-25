@@ -53,6 +53,7 @@ module QuantLib.TermStructure.Volatility
   )
 where
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
@@ -215,7 +216,7 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapLength"
   c_maxSwapLength :: Ptr CSwaptionVolatilityStructure -> Ptr CString -> IO CYearFraction
 
 -- |the largest length for which the term structure can return vols
-maxSwapTenor :: SwaptionVolatilityStructure -> Either String (Int, Unit)
+maxSwapTenor :: SwaptionVolatilityStructure -> Either QLError (Int, Unit)
 maxSwapTenor o = purifyExceptions $ do
   (n, u) <- withObject o (getIntPair . c_maxSwapTenor)
   e <- fromQlEnum (show ''Unit) u

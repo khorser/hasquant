@@ -17,6 +17,7 @@ module QuantLib.InterestRate
 where
 
 import QuantLib.Compounding(Compounding)
+import QuantLib.Error(QLError)
 import QuantLib.Time.Frequency(Frequency)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
@@ -43,7 +44,7 @@ compoundFactor' :: InterestRate
   -> Day -- ^d2
   -> Day -- ^refStart
   -> Day -- ^refEnd
-  -> Either String Double
+  -> Either QLError Double
 compoundFactor' = $(ffiCallPureX 'compoundFactor') c_compoundFactor'
 
 foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
@@ -53,7 +54,7 @@ foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t. /Warning/ Time must be measured using InterestRate's own day counter.
 compoundFactor :: InterestRate
   -> YearFraction -- ^t
-  -> Either String Double
+  -> Either QLError Double
 compoundFactor = $(ffiCallPureX 'compoundFactor) c_compoundFactor
 
 foreign import ccall safe "ql.h qlInterestRateCompoundFactor"
@@ -65,7 +66,7 @@ discountFactor' :: InterestRate
   -> Day -- ^d2
   -> Day -- ^refStart
   -> Day -- ^refEnd
-  -> Either String Double
+  -> Either QLError Double
 discountFactor' = $(ffiCallPureX 'discountFactor') c_discountFactor'
 
 foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
@@ -75,7 +76,7 @@ foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
 -- /Warning/ Time must be measured using InterestRate's own day counter.
 discountFactor :: InterestRate
   -> YearFraction -- ^t
-  -> Either String Double
+  -> Either QLError Double
 discountFactor = $(ffiCallPureX 'discountFactor) c_discountFactor
 
 foreign import ccall safe "ql.h qlInterestRateDiscountFactor"

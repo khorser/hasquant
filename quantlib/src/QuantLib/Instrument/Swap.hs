@@ -52,6 +52,7 @@ module QuantLib.Instrument.Swap
 
 where
 
+import QuantLib.Error(QLError)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -144,7 +145,7 @@ legNPV = $(ffiCallX 'legNPV) c_legNPV
 foreign import ccall safe "ql.h qlSwapLegNPV"
   c_legNPV :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
 
-maturityDate :: Swap -> Either String (Maybe Day)
+maturityDate :: Swap -> Either QLError (Maybe Day)
 maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlSwapMaturityDate"
@@ -156,7 +157,7 @@ npvDateDiscount = $(ffiCallX 'npvDateDiscount) c_npvDateDiscount
 foreign import ccall safe "ql.h qlSwapNpvDateDiscount"
   c_npvDateDiscount :: Ptr CSwap -> Ptr CString -> IO CDouble
 
-startDate :: Swap -> Either String (Maybe Day)
+startDate :: Swap -> Either QLError (Maybe Day)
 startDate = $(ffiCallPureX 'startDate) c_startDate
 
 foreign import ccall safe "ql.h qlSwapStartDate"
