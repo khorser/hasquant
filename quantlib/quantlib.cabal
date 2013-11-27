@@ -27,7 +27,6 @@ Library
               , QuantLib.Credit.ProtectionSide
               , QuantLib.Credit.Seniority
               , QuantLib.Currency
-              , QuantLib.Error
               , QuantLib.ExerciseType
               , QuantLib.FX.DeltaVolQuote
               , QuantLib.Index

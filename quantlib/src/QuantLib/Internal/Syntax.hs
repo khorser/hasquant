@@ -17,7 +17,6 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Types

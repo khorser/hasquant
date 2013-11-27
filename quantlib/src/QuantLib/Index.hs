@@ -14,7 +14,6 @@ module QuantLib.Index
   )
 where
 
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum(fromQlEnum)
 import QuantLib.Internal.Syntax

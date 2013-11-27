@@ -204,10 +204,11 @@ module QuantLib.Types
   , nullInteger
   , nullReal
   , qlEpsilon
+
+  , QLError(..)
   )
 where
 
-import QuantLib.Error
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 

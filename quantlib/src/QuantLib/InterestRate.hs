@@ -17,7 +17,6 @@ module QuantLib.InterestRate
 where
 
 import QuantLib.Compounding(Compounding)
-import QuantLib.Error(QLError)
 import QuantLib.Time.Frequency(Frequency)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax

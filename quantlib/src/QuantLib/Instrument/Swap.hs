@@ -52,7 +52,6 @@ module QuantLib.Instrument.Swap
 
 where
 
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils

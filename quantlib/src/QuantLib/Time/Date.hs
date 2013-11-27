@@ -66,7 +66,6 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import Foreign.Marshal.Utils(fromBool, toBool)
 
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax

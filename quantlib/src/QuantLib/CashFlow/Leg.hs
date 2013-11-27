@@ -70,7 +70,6 @@ import Foreign.Storable(peek)
 
 import QuantLib.CashFlow.DurationType(DurationType)
 import QuantLib.Compounding(Compounding)
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types

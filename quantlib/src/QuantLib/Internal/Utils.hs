@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,FlexibleContexts,DeriveDataTypeable #-}
 module QuantLib.Internal.Utils
   (
     unmarshalExceptions
@@ -27,6 +27,7 @@ module QuantLib.Internal.Utils
   , withArrayULenTIO
   , ioToQl
   , QL
+  , QLError(..)
 
   -- re-exporting some popular stuff
   , Word
@@ -40,9 +41,11 @@ module QuantLib.Internal.Utils
 
 where
 
-import Control.Exception(throwIO, catches, Handler(Handler))
+import Control.Exception(throwIO, catches, Exception, IOException, Handler(Handler))
 import Data.Functor.Identity(Identity)
 import Data.Functor((<$>))
+import Data.Time.Calendar(Day)
+import Data.Typeable(Typeable)
 import Data.Word(Word)
 
 import Foreign.C.String
@@ -55,8 +58,6 @@ import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr)
 import Foreign.Storable(Storable(..), peek)
 
 import System.IO.Unsafe(unsafePerformIO)
-
-import QuantLib.Error
 
 withArrayULen :: Storable a => [a] -> (CUInt -> Ptr a -> IO b) -> IO b
 withArrayULen x f = withArrayLen x (f . fromIntegral)
@@ -211,5 +212,17 @@ newtype QL a = QL (Identity a) deriving (Monad)
 
 ioToQl :: IO a -> QL a
 ioToQl = return . unsafePerformIO
+
+data QLError = CPlusPlusException String
+  | DateConversion Day
+  | NullPointerReturned
+  | UnknownEnum String
+  | EnumConversion String String
+  | CEnumConversion String Int
+  | IncorrectSize
+  | IoException IOException
+  deriving (Typeable, Show, Eq)
+
+instance Exception QLError
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -11,7 +11,6 @@ module QuantLib.Time.Period
   )
 where
 
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils

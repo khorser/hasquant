@@ -16,7 +16,6 @@ where
 
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
-import QuantLib.Error
 import QuantLib.Internal.Utils
 
 type CDate = CInt

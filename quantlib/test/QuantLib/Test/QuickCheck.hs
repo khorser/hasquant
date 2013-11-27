@@ -16,7 +16,6 @@ import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
 import Test.QuickCheck.Monadic
 
 import qualified QuantLib.CashFlow.Leg as Leg
-import QuantLib.Error
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
@@ -54,7 +53,7 @@ setAndGetEvaluationDateWithExceptions :: Day -> IO Day
 setAndGetEvaluationDateWithExceptions d = do
   Settings.setEvaluationDate (Just d) `catch` ign
   Settings.evaluationDate
-  where ign :: QLError -> IO ()
+  where ign :: Types.QLError -> IO ()
         ign _ = return ()
 
 prop_ValidDate :: ValidDay -> Bool

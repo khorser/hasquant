@@ -53,7 +53,6 @@ module QuantLib.TermStructure.Volatility
   )
 where
 
-import QuantLib.Error(QLError)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax

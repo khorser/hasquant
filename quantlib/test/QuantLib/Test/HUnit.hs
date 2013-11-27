@@ -16,7 +16,6 @@ import Control.Monad(void)
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
-import QuantLib.Error
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.InterestRate as InterestRate
 import qualified QuantLib.Settings as Settings
@@ -29,6 +28,7 @@ import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
+import QuantLib.Types(QLError(..))
 import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
