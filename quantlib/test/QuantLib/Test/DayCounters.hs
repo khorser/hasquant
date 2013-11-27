@@ -5,7 +5,6 @@ where
 
 import Test.Framework
 
-import Data.Either
 import Data.Time.Calendar
 
 import QuantLib.Settings
@@ -21,7 +20,7 @@ test_ActualActual :: IO ()
 test_ActualActual = keepingSettings' $
   mapM_ (\(c, s, e, rs, re, t) -> do
     dc <- c
-    let (Right f) = yearFraction dc s e rs re
+    f <- yearFraction dc s e rs re
     assertBool (abs(t - f) <= 1.0e-10))
     testCases
   where testCases = [
@@ -52,9 +51,9 @@ checkCounter dc days periods expected = keepingSettings' $
   mapM_ (\d -> do
     calculated <- mapM (\p -> do
       let (Right end) = addPeriod d p
-      return $ yearFraction dc d end Nothing Nothing)
+      yearFraction dc d end Nothing Nothing)
       periods
-    let diffs = zipWith (-) (rights calculated) expected
+    let diffs = zipWith (-) calculated expected
     assertBool (all (\x -> abs x < 1.0e-12) diffs))
     days
 
@@ -78,7 +77,7 @@ test_Business252 :: IO ()
 test_Business252 = keepingSettings' $ do
   dc <- brazilSettlement >>= business252
 
-  let fractions = rights $ map (\(s, e) -> yearFraction dc s e Nothing Nothing)
+  fractions <- mapM (\(s, e) -> yearFraction dc s e Nothing Nothing)
                 (zip days (tail days))
   let diffs = zipWith (-) fractions expected
   assertBool (all (\x -> abs x < 1.0e-12) diffs)

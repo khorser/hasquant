@@ -96,8 +96,8 @@ yearFraction :: DayCounter
   -> Day
   -> Maybe Day -- ^refPeriodStart
   -> Maybe Day -- ^refPeriodEnd
-  -> Either QLError YearFraction
-yearFraction = $(ffiCallPureX 'yearFraction) c_yearFraction
+  -> IO YearFraction -- IO because DayCounter might refer to a calendar
+yearFraction = $(ffiCallX 'yearFraction) c_yearFraction
 
 foreign import ccall safe "ql.h qlDayCounterYearFraction"
   c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CYearFraction
