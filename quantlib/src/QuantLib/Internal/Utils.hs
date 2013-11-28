@@ -27,6 +27,7 @@ module QuantLib.Internal.Utils
   , withArrayULenTIO
   , ioToQl
   , QL
+  , runQL
   , QLError(..)
 
   -- re-exporting some popular stuff
@@ -42,7 +43,7 @@ module QuantLib.Internal.Utils
 where
 
 import Control.Exception(throwIO, catches, Exception, IOException, Handler(Handler))
-import Data.Functor.Identity(Identity)
+import Control.Monad.Trans.Reader(Reader, runReader)
 import Data.Functor((<$>))
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
@@ -208,7 +209,12 @@ class (Finalizable a, Finalizable b) => Upcastable a b where
 upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
 upcast x = withObject x c_upcast >>= newForeignPtr finalize
 
-newtype QL a = QL (Identity a) deriving (Monad)
+data QLState -- = QLState
+
+newtype QL a = QL (Reader QLState a) deriving (Monad)
+
+runQL :: QL a -> QLState -> a
+runQL (QL r) x = runReader r x
 
 ioToQl :: IO a -> QL a
 ioToQl = return . unsafePerformIO
