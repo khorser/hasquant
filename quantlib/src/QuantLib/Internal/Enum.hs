@@ -19,7 +19,7 @@ where
 import Data.List(elemIndex)
 import Foreign.Marshal.Utils(maybeWith)
 
-import QuantLib.Internal.Types(Finalizable, QLError(UnknownEnum, EnumConversion, CEnumConversion), CStaticInt(..))
+import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlEnumerationValue"

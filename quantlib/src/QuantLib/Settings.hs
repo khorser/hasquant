@@ -23,7 +23,7 @@ import System.Mem(performGC)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Utils
+import QuantLib.Internal.Types
 
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"

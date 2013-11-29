@@ -14,7 +14,6 @@ where
 import Prelude hiding(floor)
 
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Utils
 import QuantLib.Internal.Types
 import QuantLib.Types
 

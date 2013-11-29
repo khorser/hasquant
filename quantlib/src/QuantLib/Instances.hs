@@ -35,7 +35,6 @@ where
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
-import QuantLib.Internal.Utils
 import QuantLib.Types
 
 -- classes

@@ -50,7 +50,6 @@ import QuantLib.Instrument.OptionType(OptionType)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Date
 import QuantLib.Internal.Types
-import QuantLib.Internal.Utils
 import QuantLib.PositionType(PositionType)
 import QuantLib.Types
 

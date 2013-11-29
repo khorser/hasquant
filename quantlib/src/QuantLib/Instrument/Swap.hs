@@ -54,7 +54,6 @@ where
 
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
-import QuantLib.Internal.Utils
 import QuantLib.Internal.Date
 import QuantLib.SettlementType(SettlementType)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)

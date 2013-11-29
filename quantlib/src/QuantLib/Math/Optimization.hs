@@ -15,7 +15,6 @@ module QuantLib.Math.Optimization
 where
 
 import QuantLib.Internal.Types
-import QuantLib.Internal.Utils
 import QuantLib.Internal.Syntax
 import QuantLib.Types
 

@@ -10,6 +10,14 @@ module QuantLib.Internal.Types
   , CStaticInt(..)
   , CArrayable(..)
 
+  -- re-exporting some popular types
+  , Word
+  , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
+  , CString
+  , Ptr, FunPtr
+  , ForeignPtr
+  , Storable
+
   , Matrix(..)
 
   -- cashflow
@@ -168,9 +176,10 @@ import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 import Data.Word(Word)
 import Foreign.C.String(CString)
-import Foreign.C.Types(CInt, CDouble)
+import Foreign.C.Types(CInt(CInt), CDouble(CDouble), CUInt(CUInt))
+import Foreign.ForeignPtr(ForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr, castPtr)
-import Foreign.Storable(Storable(..))
+import Foreign.Storable(Storable)
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())

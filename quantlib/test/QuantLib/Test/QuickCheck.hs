@@ -1,5 +1,4 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
-{-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Test.QuickCheck(htf_thisModulesTests, today)
 
@@ -8,9 +7,6 @@ where
 import Test.Framework
 
 import Control.Exception(catch)
-#if __GLASGOW_HASKELL__ < 706
-import Prelude hiding(catch)
-#endif
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
 
 import Test.QuickCheck.Monadic
@@ -51,7 +47,7 @@ setAndGetEvaluationDate d = do
 
 setAndGetEvaluationDateWithExceptions :: Day -> IO Day
 setAndGetEvaluationDateWithExceptions d = do
-  Settings.setEvaluationDate (Just d) `catch` ign
+  Settings.setEvaluationDate (Just d) `Control.Exception.catch` ign -- use fully qualified name to avoid annoyances with GHC < 7.6
   Settings.evaluationDate
   where ign :: Types.QLError -> IO ()
         ign _ = return ()

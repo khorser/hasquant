@@ -24,32 +24,26 @@ module QuantLib.Internal.Utils
   , ioToQl
 
   -- re-exporting some popular stuff
-  , Word
-  , withCString
-  , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
-  , CString
-  , Ptr, FunPtr
-  , ForeignPtr
   , throwIO
+  , withCString
   )
 
 where
 
 import Control.Exception(throwIO, catches, Handler(Handler))
 import Data.Functor((<$>))
-import Data.Word(Word)
 
-import Foreign.C.String
+import Foreign.C.String(peekCString, withCString)
 import Foreign.C.Types
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
+import Foreign.ForeignPtr(newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Marshal.Utils(with, maybeWith, withMany)
-import Foreign.Ptr(nullPtr, Ptr, FunPtr)
-import Foreign.Storable(Storable, peek)
+import Foreign.Ptr(nullPtr)
+import Foreign.Storable(peek)
 
 import System.IO.Unsafe(unsafePerformIO)
-import QuantLib.Internal.Types(Finalizable(..), Upcastable(..), NamedSingleton(..), QLError(..), QL, CArrayable(..))
+import QuantLib.Internal.Types
 
 withArrayULen :: Storable a => [a] -> (CUInt -> Ptr a -> IO b) -> IO b
 withArrayULen x f = withArrayLen x (f . fromIntegral)

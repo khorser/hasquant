@@ -21,7 +21,6 @@ import QuantLib.Instrument.OptionType(OptionType)
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Date(Day, CDate)
 import QuantLib.Internal.Types
-import QuantLib.Internal.Utils
 import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 

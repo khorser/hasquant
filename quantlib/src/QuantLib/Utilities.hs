@@ -12,7 +12,7 @@ import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Enum(values)
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Utils
+import QuantLib.Internal.Types
 
 foreign import ccall safe "ql.h qlVersion"
   c_version :: CString

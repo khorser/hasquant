@@ -69,7 +69,7 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Types(QLError)
+import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Time.Month(Month(..))
 import QuantLib.Time.Unit(Unit)

@@ -64,7 +64,6 @@ import QuantLib.Compounding(Compounding)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
-import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
