@@ -1,4 +1,3 @@
 #!/bin/sh
 # compile C++ files
-mkdir cpp 2>/dev/null
 make -f M so EXTRA="-fPIC $*"

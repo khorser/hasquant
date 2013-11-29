@@ -35,7 +35,7 @@ main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook 
 -- TODO: Does not currently create the build output directory.
 myBuildHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -> IO ()
 myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
-  -- Extract the custom fields customFieldsPD where field name is x-cpp-dll-sources
+  -- Extract the custom fields customFieldsPD where field name is x-dll-sources
   let
     lib = fromJust (library pkgDescr)
     libBi = libBuildInfo lib
@@ -53,7 +53,7 @@ myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
     gcc = fromJust (lookupProgram (simpleProgram "gcc") progs)
     ver = (pkgVersion . package) pkgDescr
     instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
-  -- Compile C/C++ sources - output directory is dist/build/src/cpp
+  -- Compile C/C++ sources - output directory is dist/build/src/cbits
   putStrLn "Building qlc"
   objs <- mapM (compileCxx gcc ccOpts incDirs bldDir) dllSrcs
   -- Link C/C++ sources as a DLL - output directory is dist/build

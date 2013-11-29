@@ -15,40 +15,40 @@ Tested-With:  GHC==7.4.2, GHC==7.6.2
 Build-type:   Custom
 
 Extra-source-files:
-              cpp/qlBond.cpp
-              cpp/qlCalendar.cpp
-              cpp/qlCouponPricer.cpp
-              cpp/qlCredit.cpp
-              cpp/qlCurrency.cpp
-              cpp/qlDate.cpp
-              cpp/qlDayCounter.cpp
-              cpp/qlDefaultTS.cpp
-              cpp/qlEnumerations.cpp
-              cpp/qlForward.cpp
-              cpp/qlIborIndex.cpp
-              cpp/qlIndex.cpp
-              cpp/qlInstrument.cpp
-              cpp/qlInterestRate.cpp
-              cpp/qlLeg.cpp
-              cpp/qlMath.cpp
-              cpp/qlMethod.cpp
-              cpp/qlModel.cpp
-              cpp/qlOption.cpp
-              cpp/qlPeriod.cpp
-              cpp/qlPricingEngine.cpp
-              cpp/qlPricingEngineAux.cpp
-              cpp/qlProcess.cpp
-              cpp/qlQuote.cpp
-              cpp/qlSchedule.cpp
-              cpp/qlSettings.cpp
-              cpp/qlSwap.cpp
-              cpp/qlUtilities.cpp
-              cpp/qlVolatilityTS.cpp
-              cpp/qlYieldTS.cpp
-              cpp/qlTSAux.cpp
-              cpp/qlaux.h
-              cpp/qlTSAux.h
-              cpp/qlPricingEngineAux.h
+              cbits/qlBond.cpp
+              cbits/qlCalendar.cpp
+              cbits/qlCouponPricer.cpp
+              cbits/qlCredit.cpp
+              cbits/qlCurrency.cpp
+              cbits/qlDate.cpp
+              cbits/qlDayCounter.cpp
+              cbits/qlDefaultTS.cpp
+              cbits/qlEnumerations.cpp
+              cbits/qlForward.cpp
+              cbits/qlIborIndex.cpp
+              cbits/qlIndex.cpp
+              cbits/qlInstrument.cpp
+              cbits/qlInterestRate.cpp
+              cbits/qlLeg.cpp
+              cbits/qlMath.cpp
+              cbits/qlMethod.cpp
+              cbits/qlModel.cpp
+              cbits/qlOption.cpp
+              cbits/qlPeriod.cpp
+              cbits/qlPricingEngine.cpp
+              cbits/qlPricingEngineAux.cpp
+              cbits/qlProcess.cpp
+              cbits/qlQuote.cpp
+              cbits/qlSchedule.cpp
+              cbits/qlSettings.cpp
+              cbits/qlSwap.cpp
+              cbits/qlUtilities.cpp
+              cbits/qlVolatilityTS.cpp
+              cbits/qlYieldTS.cpp
+              cbits/qlTSAux.cpp
+              cbits/qlaux.h
+              cbits/qlTSAux.h
+              cbits/qlPricingEngineAux.h
 
 -- a hack to allow use of quantlib with `cabal-dev ghci'
 -- since I can't be bothered whose shortcoming it is: cabal-install or cabal-dev
@@ -58,7 +58,7 @@ Flag addSelfDep
   Default: False
 
 Library
-  Include-Dirs: cpp
+  Include-Dirs: cbits
   Install-Includes: ql.h
                     qlBond.h
                     qlCalendar.h
@@ -92,37 +92,37 @@ Library
   Build-Depends: base >= 4.5 && < 5
 
   X-Dll-Sources:
-              cpp/qlBond.cpp
-              cpp/qlCalendar.cpp
-              cpp/qlCredit.cpp
-              cpp/qlCouponPricer.cpp
-              cpp/qlCurrency.cpp
-              cpp/qlDate.cpp
-              cpp/qlDayCounter.cpp
-              cpp/qlDefaultTS.cpp
-              cpp/qlEnumerations.cpp
-              cpp/qlForward.cpp
-              cpp/qlIborIndex.cpp
-              cpp/qlIndex.cpp
-              cpp/qlInstrument.cpp
-              cpp/qlInterestRate.cpp
-              cpp/qlLeg.cpp
-              cpp/qlMath.cpp
-              cpp/qlMethod.cpp
-              cpp/qlModel.cpp
-              cpp/qlOption.cpp
-              cpp/qlPeriod.cpp
-              cpp/qlPricingEngine.cpp
-              cpp/qlPricingEngineAux.cpp
-              cpp/qlProcess.cpp
-              cpp/qlQuote.cpp
-              cpp/qlSchedule.cpp
-              cpp/qlSettings.cpp
-              cpp/qlSwap.cpp
-              cpp/qlUtilities.cpp
-              cpp/qlVolatilityTS.cpp
-              cpp/qlYieldTS.cpp
-              cpp/qlTSAux.cpp
+              cbits/qlBond.cpp
+              cbits/qlCalendar.cpp
+              cbits/qlCredit.cpp
+              cbits/qlCouponPricer.cpp
+              cbits/qlCurrency.cpp
+              cbits/qlDate.cpp
+              cbits/qlDayCounter.cpp
+              cbits/qlDefaultTS.cpp
+              cbits/qlEnumerations.cpp
+              cbits/qlForward.cpp
+              cbits/qlIborIndex.cpp
+              cbits/qlIndex.cpp
+              cbits/qlInstrument.cpp
+              cbits/qlInterestRate.cpp
+              cbits/qlLeg.cpp
+              cbits/qlMath.cpp
+              cbits/qlMethod.cpp
+              cbits/qlModel.cpp
+              cbits/qlOption.cpp
+              cbits/qlPeriod.cpp
+              cbits/qlPricingEngine.cpp
+              cbits/qlPricingEngineAux.cpp
+              cbits/qlProcess.cpp
+              cbits/qlQuote.cpp
+              cbits/qlSchedule.cpp
+              cbits/qlSettings.cpp
+              cbits/qlSwap.cpp
+              cbits/qlUtilities.cpp
+              cbits/qlVolatilityTS.cpp
+              cbits/qlYieldTS.cpp
+              cbits/qlTSAux.cpp
 
   X-Dll-Name: qlc
   X-Dll-Extra-Libraries: QuantLib
