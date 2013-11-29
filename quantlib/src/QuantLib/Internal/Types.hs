@@ -1,7 +1,16 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,DeriveDataTypeable #-}
 module QuantLib.Internal.Types
   (
-    Matrix(..)
+    Finalizable(..)
+  , Upcastable(..)
+  , NamedSingleton(..)
+  , QL
+  , runQL
+  , QLError(..)
+  , CStaticInt(..)
+  , CArrayable(..)
+
+  , Matrix(..)
 
   -- cashflow
   , CLeg
@@ -153,7 +162,65 @@ module QuantLib.Internal.Types
   )
 where
 
-import QuantLib.Internal.Utils
+import Control.Exception(Exception, IOException)
+import Control.Monad.Trans.Reader(Reader, runReader)
+import Data.Time.Calendar(Day)
+import Data.Typeable(Typeable)
+import Data.Word(Word)
+import Foreign.C.String(CString)
+import Foreign.C.Types(CInt, CDouble)
+import Foreign.Ptr(Ptr, FunPtr, castPtr)
+import Foreign.Storable(Storable(..))
+
+class Finalizable a where
+  finalize :: FunPtr (Ptr a -> IO ())
+
+class (Finalizable a, Finalizable b) => Upcastable a b where
+  c_upcast :: Ptr a -> IO (Ptr b)
+
+class Finalizable a => NamedSingleton a where
+  c_construct :: CString -> Ptr CString -> IO (Ptr a)
+  c_name :: Ptr a -> IO CString
+
+data QLState -- = QLState
+
+newtype QL a = QL (Reader QLState a) deriving (Monad)
+
+runQL :: QL a -> QLState -> a
+runQL (QL r) x = runReader r x
+
+data QLError = CPlusPlusException String
+  | DateConversion Day
+  | NullPointerReturned
+  | UnknownEnum String
+  | EnumConversion String String
+  | CEnumConversion String Int
+  | IncorrectSize
+  | IoException IOException
+  deriving (Typeable, Show, Eq)
+
+instance Exception QLError
+
+newtype CStaticInt = CStaticInt{getStaticInt::CInt} deriving (Eq, Show, Storable)
+
+class (Storable a) => CArrayable a where
+  freeArray :: Ptr a -> IO ()
+
+instance CArrayable CInt where
+  freeArray = c_freeInts
+instance CArrayable CDouble where
+  freeArray = c_freeDoubles
+instance CArrayable CStaticInt where
+  freeArray = const $ return ()
+instance CArrayable (Ptr a) where
+  freeArray = c_freePointerArray . castPtr
+
+foreign import ccall safe "ql.h qlFreeInts"
+  c_freeInts :: Ptr CInt -> IO ()
+foreign import ccall safe "ql.h qlFreeDoubles"
+  c_freeDoubles :: Ptr CDouble -> IO ()
+foreign import ccall safe "ql.h qlFreePointerArray"
+  c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
 -- cashflows
 data CLeg
