@@ -102,7 +102,7 @@ Library
   Ghc-options:-Wall
   Build-depends:
               base >= 4.5 && < 5
-            , time >= 1.4
+            , time
             , template-haskell
             , qlc == 0.1.0
             , transformers >= 0.2

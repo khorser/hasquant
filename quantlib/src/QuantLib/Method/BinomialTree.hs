@@ -7,7 +7,7 @@ where
 import QuantLib.Internal.Enum(QLLitEnum)
 
 data BinomialTree = JarrowRudd | CoxRossRubinstein | AdditiveEQPBinomialTree
-  | Trigeorgis | Tian | LeisenReimer | Joshi4 
+  | Trigeorgis | Tian | LeisenReimer | Joshi4
   | ExtendedJarrowRudd | ExtendedCoxRossRubinstein
   | ExtendedAdditiveEQPBinomialTree | ExtendedTrigeorgis | ExtendedTian
   | ExtendedLeisenReimer | ExtendedJoshi4

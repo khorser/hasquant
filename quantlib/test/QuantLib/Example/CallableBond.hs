@@ -59,7 +59,7 @@ run = do
   , yieldsR = ys
   }
   where tod = 16 `october` 2007
-        
+
         buildSchedule :: [Day] -> Int -> IO [Day]
         buildSchedule a@(d:_) _i = do
           cal <- nullCalendar

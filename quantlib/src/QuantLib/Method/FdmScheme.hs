@@ -7,7 +7,7 @@ where
 
 import QuantLib.Internal.Enum(QLEnum, QLLitEnum)
 
-data FdmScheme = FDCrankNicolson | FDExplicitEuler | FDImplicitEuler 
+data FdmScheme = FDCrankNicolson | FDExplicitEuler | FDImplicitEuler
   deriving (Show, Eq)
 instance QLLitEnum FdmScheme
 

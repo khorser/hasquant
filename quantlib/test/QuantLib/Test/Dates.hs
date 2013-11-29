@@ -51,7 +51,7 @@ test_IMMDatesLongRunning = keepingSettings' $ do
     let (Right code) = immCode imm
     let (Right dd) = immDate code d
     assertEqual dd imm
-    
+
     mapM_ (\i -> do
       let (Right immd) = immDate i d
       assertBool (immd >= d))

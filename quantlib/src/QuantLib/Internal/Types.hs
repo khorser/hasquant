@@ -196,7 +196,7 @@ data QLState -- = QLState
 newtype QL a = QL (Reader QLState a) deriving (Monad)
 
 runQL :: QL a -> QLState -> a
-runQL (QL r) x = runReader r x
+runQL (QL r) = runReader r
 
 data QLError = CPlusPlusException String
   | DateConversion Day

@@ -61,7 +61,7 @@ test_Simple :: IO ()
 test_Simple = do
   dc <- simple
   checkCounter dc
-    [1 `january` 2002 .. 31 `december` 2005] 
+    [1 `january` 2002 .. 31 `december` 2005]
     [(3, Months), (6, Months), (1, Years)]
     [0.25, 0.5, 1.0]
 
@@ -81,7 +81,7 @@ test_Business252 = keepingSettings' $ do
                 (zip days (tail days))
   let diffs = zipWith (-) fractions expected
   assertBool (all (\x -> abs x < 1.0e-12) diffs)
-  
+
   where days = [1 `february` 2002,
                 4 `february` 2002,
                 16 `may` 2003,

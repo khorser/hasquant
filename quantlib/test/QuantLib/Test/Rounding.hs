@@ -54,7 +54,7 @@ testRounding rt x prec expected = do
   r <- rounding' prec rt 5
   let rounded = applyRounding r x
   assertClose rounded expected
-    
+
 testData :: [(Double, Int, Double, Double, Double, Double, Double)]
 testData =
   [(  0.86313513, 5,  0.86314,  0.86314,  0.86313,  0.86314,  0.86313 ),

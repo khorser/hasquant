@@ -34,9 +34,6 @@ void qlSettingsSetIncludeTodaysCashFlows(int x) {
   Settings::instance().includeTodaysCashFlows() = qlOptBool(x);
 }
 
-void qlSettingsAnchorEvaluationDate() {
-  Settings::instance().anchorEvaluationDate();
-}
 int qlSettingsIncludeReferenceDateEvents() {
   return Settings::instance().includeReferenceDateEvents();
 }

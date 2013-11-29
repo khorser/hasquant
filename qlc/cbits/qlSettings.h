@@ -19,7 +19,6 @@ extern "C" {
   void DLLEXPORT qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int DLLEXPORT qlSettingsIncludeTodaysCashFlows();
   void DLLEXPORT qlSettingsSetIncludeTodaysCashFlows(int x);
-  void DLLEXPORT qlSettingsAnchorEvaluationDate();
   int DLLEXPORT qlSettingsIncludeReferenceDateEvents();
   void DLLEXPORT qlSettingsSetIncludeReferenceDateEvents(int x0);
   void *DLLEXPORT qlSavedSettings();

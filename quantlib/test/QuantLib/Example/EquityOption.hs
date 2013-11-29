@@ -54,7 +54,7 @@ run = do
   riskFreeQ <- simpleQuote riskFreeRate >>= asQuote
   ts <- flatForward settl riskFreeQ dc Continuous Annual
   divQ <- simpleQuote dividend >>= asQuote
-  divTS <- flatForward settl divQ dc Continuous Annual 
+  divTS <- flatForward settl divQ dc Continuous Annual
   volQ <- simpleQuote vol >>= asQuote
   volTS <- blackConstantVol settl cal volQ dc
   payoff <- plainVanillaPayoff optType strike >>= asStrikedTypePayoff
@@ -106,7 +106,7 @@ run = do
   mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
   setPricingEngine europeanInst mceEng
   mcE <- npv europeanInst
-  
+
   mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
   setPricingEngine europeanInst mceEng2
   mcE2 <- npv europeanInst

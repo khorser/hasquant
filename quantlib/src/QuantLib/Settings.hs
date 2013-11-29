@@ -8,7 +8,6 @@ module QuantLib.Settings
   , setEnforceTodaysHistoricFixings
   , includeTodaysCashFlows
   , setIncludeTodaysCashFlows
-  , anchorEvaluationDate
   , includeReferenceDateEvents
   , setIncludeReferenceDateEvents
 
@@ -73,13 +72,6 @@ setIncludeTodaysCashFlows = $(ffiCall 'setIncludeTodaysCashFlows) c_setIncludeTo
 
 foreign import ccall safe "ql.h qlSettingsSetIncludeTodaysCashFlows"
   c_setIncludeTodaysCashFlows :: CInt -> IO ()
-
--- |Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to Date::todaysDate(); if an evaluation date other than Date() was already set, it has no effect.
-anchorEvaluationDate :: IO ()
-anchorEvaluationDate = $(ffiCall 'anchorEvaluationDate) c_anchorEvaluationDate
-
-foreign import ccall safe "ql.h qlSettingsAnchorEvaluationDate"
-  c_anchorEvaluationDate :: IO ()
 
 -- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
 includeReferenceDateEvents :: IO Bool

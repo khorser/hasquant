@@ -1,4 +1,5 @@
 {-# LANGUAGE FlexibleContexts #-}
+{-# OPTIONS_GHC -fno-cse -fno-full-laziness #-} -- for the sake of unsafePerformIO
 module QuantLib.Internal.Utils
   (
     unmarshalExceptions
@@ -22,6 +23,7 @@ module QuantLib.Internal.Utils
   , withArrayULenT
   , withArrayULenTIO
   , ioToQl
+  , stripIO
 
   -- re-exporting some popular stuff
   , throwIO
@@ -133,6 +135,7 @@ unmarshalExceptions f =
          throwIO $ CPlusPlusException err
        else return r
 
+{-# NOINLINE purifyExceptions #-}
 purifyExceptions :: IO a -> Either QLError a
 purifyExceptions f = unsafePerformIO $
   (Right <$> f)
@@ -152,8 +155,12 @@ construct f = do
 constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
+{-# NOINLINE stripIO #-}
+stripIO :: IO a -> a
+stripIO = unsafePerformIO
+
 name :: NamedSingleton a => ForeignPtr a -> String
-name c = unsafePerformIO $
+name c = stripIO $
           withForeignPtr c
             (\cc -> do
               n <- c_name cc
@@ -164,7 +171,7 @@ name c = unsafePerformIO $
 upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
 upcast x = withObject x c_upcast >>= newForeignPtr finalize
 
-ioToQl :: IO a -> QL a
-ioToQl = return . unsafePerformIO
+ioToQl :: IO a -> QL (Either QLError a)
+ioToQl = return . purifyExceptions
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

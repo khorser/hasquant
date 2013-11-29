@@ -1,3 +1,3 @@
 #!/bin/sh
 mkdir obj 2>/dev/null
-ghc $* -outputdir obj -hide-package qlc -hide-package quantlib -Wall -o T *.hs */*.hs ../../test/QuantLib/Test/*.hs ../../test/QuantLib/Example/*.hs ../../test/QuantLib/MainTest.hs -lql -L. -pgml g++ -optl-Wl,-rpath,.
+ghc $* -DINTERNAL_TEST=1 -outputdir obj -hide-package qlc -hide-package quantlib -Wall -o T *.hs */*.hs ../../test/QuantLib/Test/Internal/*.hs ../../test/QuantLib/Test/*.hs ../../test/QuantLib/Example/*.hs ../../test/QuantLib/MainTest.hs -lql -L. -pgml g++ -optl-Wl,-rpath,.

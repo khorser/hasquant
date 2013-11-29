@@ -90,7 +90,7 @@ checkInclusion l n x = do
     let (_, _, o) = cfs !! n
     assertEqual expected (not o))
     x
-  
+
 checkNPV :: Leg -> InterestRate -> Bool -> Double -> IO ()
 checkNPV l r includeRef expected = do
   tod <- evaluationDate

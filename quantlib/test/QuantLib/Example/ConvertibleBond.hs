@@ -113,8 +113,8 @@ run = do
         putPricesV = [105.0]
 
         priceBonds eu am p b = do
-          eng1 <- binomialConvertibleEngine b p timeSteps 
-          eng2 <- binomialConvertibleEngine b p timeSteps 
+          eng1 <- binomialConvertibleEngine b p timeSteps
+          eng2 <- binomialConvertibleEngine b p timeSteps
           setPricingEngine eu eng1
           setPricingEngine am eng2
           mapM npv [eu, am]

@@ -127,7 +127,7 @@ run = do
   -- Fixed 4.5% US Treasury Note
   fixedSchedule <- schedule (Just (15 `may` 2007))
                                      (15 `may` 2017)
-                                     (6, Months) 
+                                     (6, Months)
                                      usGovBondCal
                                      Unadjusted
                                      Unadjusted
