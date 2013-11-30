@@ -1,1 +1,0 @@
-g++ -O3 -I%DEVLIBS%\QuantLib-1.3 -I%DEVLIBS%\boost_1_53_0 t.cpp -o t -lQuantLib -static -L%DEVLIBS%\QuantLib-1.3\ql\bin\15b474156460f41fe64f8ba9fcb070b1

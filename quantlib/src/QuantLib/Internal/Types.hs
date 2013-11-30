@@ -4,6 +4,7 @@ module QuantLib.Internal.Types
     Finalizable(..)
   , Upcastable(..)
   , NamedSingleton(..)
+  , QLT
   , QL
   , runQL
   , QLError(..)
@@ -170,8 +171,12 @@ module QuantLib.Internal.Types
   )
 where
 
+import Control.Applicative
 import Control.Exception(Exception, IOException)
-import Control.Monad.Trans.Reader(Reader, runReader)
+import Data.Functor.Identity
+import Control.Monad.Trans.Reader
+import Control.Monad.Trans.Class(MonadTrans)
+import Control.Monad.IO.Class(MonadIO)
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 import Data.Word(Word)
@@ -193,7 +198,9 @@ class Finalizable a => NamedSingleton a where
 
 data QLState -- = QLState
 
-newtype QL a = QL (Reader QLState a) deriving (Monad)
+newtype QLT r m a = QL (ReaderT r m a) deriving (Monad, MonadTrans, MonadIO, Applicative, Alternative, Functor)
+
+type QL a = QLT QLState Identity a
 
 runQL :: QL a -> QLState -> a
 runQL (QL r) = runReader r
