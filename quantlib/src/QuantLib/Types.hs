@@ -1,4 +1,6 @@
-{-# LANGUAGE FlexibleContexts,FlexibleInstances,OverlappingInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE OverlappingInstances #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-} -- for Show and Eq instances of named singletons
 module QuantLib.Types
   (

@@ -1,4 +1,5 @@
-{-# LANGUAGE TemplateHaskell,MultiParamTypeClasses #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Time.DayCounter
   (
     actual365Fixed

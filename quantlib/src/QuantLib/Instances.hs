@@ -1,4 +1,6 @@
-{-# LANGUAGE FlexibleContexts,TypeFamilies, TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE TypeFamilies #-}
 module QuantLib.Instances
   (
     underlying

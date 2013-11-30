@@ -1,10 +1,13 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,DeriveDataTypeable #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Internal.Types
   (
     Finalizable(..)
   , Upcastable(..)
   , NamedSingleton(..)
   , QLT
+  , runQLT
   , QL
   , QLSettings(..)
   , runQL
@@ -206,8 +209,8 @@ data QLSettings = QLSettings {
 newtype QLT m a = QLT (ReaderT QLSettings m a)
   deriving (Monad, MonadTrans, MonadIO, Applicative, Alternative, Functor)
 
---runQLT :: QLT m a -> m a
---runQLT (QLT r) = runReaderT r
+runQLT :: QLT m a -> QLSettings -> m a
+runQLT (QLT r) = runReaderT r
 
 type QL a = QLT Identity a
 
