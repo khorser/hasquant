@@ -6,6 +6,7 @@ module QuantLib.Internal.Types
   , NamedSingleton(..)
   , QLT
   , QL
+  , QLSettings(..)
   , runQL
   , QLError(..)
   , CStaticInt(..)
@@ -196,14 +197,22 @@ class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-data QLState -- = QLState
+data QLSettings = QLSettings {
+    evaluationDate :: Day
+  , enforceTodaysHistoricFixings :: Bool
+  , includeTodaysCashFlows :: Bool
+  , includeReferenceDateEvents :: Bool}
 
-newtype QLT r m a = QL (ReaderT r m a) deriving (Monad, MonadTrans, MonadIO, Applicative, Alternative, Functor)
+newtype QLT m a = QLT (ReaderT QLSettings m a)
+  deriving (Monad, MonadTrans, MonadIO, Applicative, Alternative, Functor)
 
-type QL a = QLT QLState Identity a
+--runQLT :: QLT m a -> m a
+--runQLT (QLT r) = runReaderT r
 
-runQL :: QL a -> QLState -> a
-runQL (QL r) = runReader r
+type QL a = QLT Identity a
+
+runQL :: QL a -> QLSettings -> a
+runQL (QLT r) = runReader r
 
 data QLError = CPlusPlusException String
   | DateConversion Day
