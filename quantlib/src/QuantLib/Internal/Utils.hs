@@ -135,8 +135,8 @@ unmarshalExceptions f =
          throwIO $ CPlusPlusException err
        else return r
 
-{-# NOINLINE purifyExceptions #-}
 purifyExceptions :: IO a -> Either QLError a
+{-# NOINLINE purifyExceptions #-}
 purifyExceptions f = unsafePerformIO $
   (Right <$> f)
   `catches` [Handler (return . Left), -- catch QLException
@@ -155,8 +155,8 @@ construct f = do
 constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
-{-# NOINLINE stripIO #-}
 stripIO :: IO a -> a
+{-# NOINLINE stripIO #-}
 stripIO = unsafePerformIO
 
 name :: NamedSingleton a => ForeignPtr a -> String

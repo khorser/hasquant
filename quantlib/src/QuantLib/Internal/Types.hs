@@ -9,8 +9,9 @@ module QuantLib.Internal.Types
   , QLT
   , runQLT
   , QL
-  , QLSettings(..)
   , runQL
+  , QLEitherT
+  , QLSettings(..)
   , QLError(..)
   , CStaticInt(..)
   , CArrayable(..)
@@ -178,6 +179,7 @@ where
 import Control.Applicative
 import Control.Exception(Exception, IOException)
 import Data.Functor.Identity
+import Control.Monad.Trans.Either
 import Control.Monad.Trans.Reader
 import Control.Monad.Trans.Class(MonadTrans)
 import Control.Monad.IO.Class(MonadIO)
@@ -212,10 +214,12 @@ newtype QLT m a = QLT (ReaderT QLSettings m a)
 runQLT :: QLT m a -> QLSettings -> m a
 runQLT (QLT r) = runReaderT r
 
-type QL a = QLT Identity a
+type QL = QLT Identity
 
 runQL :: QL a -> QLSettings -> a
 runQL (QLT r) = runReader r
+
+type QLEitherT m = EitherT QLError (QLT m)
 
 data QLError = CPlusPlusException String
   | DateConversion Day
