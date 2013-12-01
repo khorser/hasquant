@@ -9,6 +9,8 @@ import Test.Framework
 import QuantLib.Internal.Enum(values)
 import QuantLib.Internal.Syntax
 
+{-# ANN module "HLint: ignore Use camelCase" #-}
+
 -- |check that enumerations are marshalled consistently
 checkEnums :: IO [(String, Bool)]
 checkEnums = mapM checkEnum $(qlEnumsInfo)
