@@ -11,6 +11,7 @@ module QuantLib.Internal.Types
   , QL
   , runQL
   , QLEitherT
+  , QLEither
   , QLSettings(..)
   , QLError(..)
   , CStaticInt(..)
@@ -220,6 +221,7 @@ runQL :: QL a -> QLSettings -> a
 runQL (QLT r) = runReader r
 
 type QLEitherT m = EitherT QLError (QLT m)
+type QLEither = QLEitherT Identity
 
 data QLError = CPlusPlusException String
   | DateConversion Day
