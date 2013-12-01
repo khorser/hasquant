@@ -1,5 +1,4 @@
 {-# LANGUAGE TemplateHaskell #-}
-{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.CashFlow.Leg
   (
     leg
@@ -459,9 +458,9 @@ npvbps l y i s n =
           ss <- toQlDate s
           nn <- toQlDate n
           unmarshalExceptions $ c_npvbps ll yy (fromBool i) ss nn pnpv pbps
-          npv <- peek pnpv
-          bps <- peek pbps
-          return (realToFrac npv, realToFrac bps)
+          npvRes <- peek pnpv
+          bpsRes <- peek pbps
+          return (realToFrac npvRes, realToFrac bpsRes)
 
 foreign import ccall safe "ql.h qlCashFlowsNpvbps"
   c_npvbps :: Ptr CLeg -> Ptr CYieldTermStructure -> CInt -> CDate -> CDate -> Ptr CDouble -> Ptr CDouble -> Ptr CString -> IO ()

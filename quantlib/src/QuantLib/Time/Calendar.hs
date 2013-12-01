@@ -1,5 +1,4 @@
 {-# LANGUAGE TemplateHaskell #-}
-{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 -- |/NB/ Calendars in QuantLib are sort of singletons: if you add a holiday to
 -- QuantLib::Russia, it will be added to all instances of the calendar.
 -- QuantLib considers calendars equal if their names match.

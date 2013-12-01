@@ -1,5 +1,4 @@
 {-# LANGUAGE TemplateHaskell #-}
-{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Currency
   (
     ars
