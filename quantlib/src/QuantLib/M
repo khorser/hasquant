@@ -1,8 +1,8 @@
-QLCSRC=../../../qlc/cbits
+QLC_SRC=../../../qlc/cbits
 
-SRC=$(wildcard ../../../qlc/cbits/ql*.cpp)
+SRC=$(wildcard $(QLC_SRC)/ql*.cpp)
 
-OBJ=$(subst ../../../qlc/cbits,cobj,$(SRC:.cpp=.o))
+OBJ=$(subst $(QLC_SRC),cobj,$(SRC:.cpp=.o))
 
 CFLAGS=-Wall -Wextra -pedantic
 
@@ -15,21 +15,21 @@ libql.dll: $(OBJ)
 libql.so: $(OBJ)
 	g++ --shared -o libql.so $(OBJ) -lQuantLib $(EXTRA)
 
-cobj/qlPricingEngineAux.o: $(QLCSRC)/qlPricingEngineAux.cpp $(QLCSRC)/qlPricingEngineAux.h | cobj
-	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlPricingEngineAux.o $(QLCSRC)/qlPricingEngineAux.cpp
+cobj/qlPricingEngineAux.o: $(QLC_SRC)/qlPricingEngineAux.cpp $(QLC_SRC)/qlPricingEngineAux.h | cobj
+	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlPricingEngineAux.o $(QLC_SRC)/qlPricingEngineAux.cpp
 
-cobj/qlTSAux.o: $(QLCSRC)/qlTSAux.cpp $(QLCSRC)/qlTSAux.h | cobj
-	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlTSAux.o $(QLCSRC)/qlTSAux.cpp
+cobj/qlTSAux.o: $(QLC_SRC)/qlTSAux.cpp $(QLC_SRC)/qlTSAux.h | cobj
+	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlTSAux.o $(QLC_SRC)/qlTSAux.cpp
 
-cobj/qlPricingEngine.o: $(QLCSRC)/qlPricingEngine.cpp $(QLCSRC)/qlaux.h $(QLCSRC)/qlPricingEngine.h $(QLCSRC)/qlPricingEngineAux.h | cobj
+cobj/qlPricingEngine.o: $(QLC_SRC)/qlPricingEngine.cpp $(QLC_SRC)/qlaux.h $(QLC_SRC)/qlPricingEngine.h $(QLC_SRC)/qlPricingEngineAux.h | cobj
 
-cobj/qlDefaultTS.o: $(QLCSRC)/qlDefaultTS.cpp $(QLCSRC)/qlaux.h $(QLCSRC)/qlDefaultTS.h $(QLCSRC)/qlTSAux.h | cobj
+cobj/qlDefaultTS.o: $(QLC_SRC)/qlDefaultTS.cpp $(QLC_SRC)/qlaux.h $(QLC_SRC)/qlDefaultTS.h $(QLC_SRC)/qlTSAux.h | cobj
 
-cobj/qlVolatilityTS.o: $(QLCSRC)/qlVolatilityTS.cpp $(QLCSRC)/qlaux.h $(QLCSRC)/qlVolatilityTS.h $(QLCSRC)/qlTSAux.h | cobj
+cobj/qlVolatilityTS.o: $(QLC_SRC)/qlVolatilityTS.cpp $(QLC_SRC)/qlaux.h $(QLC_SRC)/qlVolatilityTS.h $(QLC_SRC)/qlTSAux.h | cobj
 
-cobj/qlYieldTS.o: $(QLCSRC)/qlYieldTS.cpp $(QLCSRC)/qlaux.h $(QLCSRC)/qlYieldTS.h $(QLCSRC)/qlTSAux.h | cobj
+cobj/qlYieldTS.o: $(QLC_SRC)/qlYieldTS.cpp $(QLC_SRC)/qlaux.h $(QLC_SRC)/qlYieldTS.h $(QLC_SRC)/qlTSAux.h | cobj
 
-cobj/%.o: $(QLCSRC)/%.cpp $(QLCSRC)/qlaux.h $(QLCSRC)/%.h | cobj
+cobj/%.o: $(QLC_SRC)/%.cpp $(QLC_SRC)/qlaux.h $(QLC_SRC)/%.h | cobj
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o $@ $<
 
 # vim: set ft=make:
