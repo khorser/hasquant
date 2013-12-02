@@ -101,7 +101,7 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
 data Cond m a b = a :== b | (a -> Bool) :-> b | (a -> m Bool) :=> b | (a -> m Bool) :~> (a -> b) | (a -> m Bool) :> (a -> m b)
 
 -- A generalization of if/case/...
--- Introduce (applicative?) infix ||-like operators?
+-- Introduce (applicative/alternative?) infix ||-like operators?
 cond :: (Monad m, Eq a, Show a, Show b) => [Cond m a b] -> a -> m b
 cond as n = cond' as []
   where cond' [] tried = error $ "Exhausted all alternatives while parsing " ++ show n ++ ": " ++ show (reverse tried)
