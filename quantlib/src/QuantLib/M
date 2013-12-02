@@ -1,47 +1,19 @@
-OBJS=cobj/qlBond.o \
-	cobj/qlCalendar.o \
-	cobj/qlCouponPricer.o \
-	cobj/qlCurrency.o \
-	cobj/qlCredit.o \
-	cobj/qlDate.o \
-	cobj/qlDayCounter.o \
-	cobj/qlDefaultTS.o \
-	cobj/qlEnumerations.o \
-	cobj/qlForward.o \
-	cobj/qlIborIndex.o \
-	cobj/qlIndex.o \
-	cobj/qlInstrument.o \
-	cobj/qlInterestRate.o \
-	cobj/qlLeg.o \
-	cobj/qlMath.o \
-	cobj/qlMethod.o \
-	cobj/qlModel.o \
-	cobj/qlOption.o \
-	cobj/qlPeriod.o \
-	cobj/qlPricingEngine.o \
-	cobj/qlPricingEngineAux.o \
-	cobj/qlProcess.o \
-	cobj/qlQuote.o \
-	cobj/qlSchedule.o \
-	cobj/qlSettings.o \
-	cobj/qlSwap.o \
-	cobj/qlUtilities.o \
-	cobj/qlVolatilityTS.o \
-	cobj/qlYieldTS.o \
-	cobj/qlTSAux.o
-
 QLCSRC=../../../qlc/cbits
+
+SRC=$(wildcard ../../../qlc/cbits/ql*.cpp)
+
+OBJ=$(subst ../../../qlc/cbits,cobj,$(SRC:.cpp=.o))
 
 CFLAGS=-Wall -Wextra -pedantic
 
 cobj:
 	mkdir cobj
 
-libql.dll: $(OBJS)
-	g++ --shared -o libql.dll $(OBJS) -static-libstdc++ -static-libgcc -Wl,--output-def,cobj/libql.def,--out-implib,cobj/libql.a -lQuantLib $(EXTRA)
+libql.dll: $(OBJ)
+	g++ --shared -o libql.dll $(OBJ) -static-libstdc++ -static-libgcc -Wl,--output-def,cobj/libql.def,--out-implib,cobj/libql.a -lQuantLib $(EXTRA)
 
-libql.so: $(OBJS)
-	g++ --shared -o libql.so $(OBJS) -lQuantLib $(EXTRA)
+libql.so: $(OBJ)
+	g++ --shared -o libql.so $(OBJ) -lQuantLib $(EXTRA)
 
 cobj/qlPricingEngineAux.o: $(QLCSRC)/qlPricingEngineAux.cpp $(QLCSRC)/qlPricingEngineAux.h | cobj
 	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlPricingEngineAux.o $(QLCSRC)/qlPricingEngineAux.cpp
