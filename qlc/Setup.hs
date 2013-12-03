@@ -6,11 +6,11 @@ import Control.Monad (when)
 import Data.List (intercalate)
 import Data.Maybe (fromJust)
 import Distribution.PackageDescription
-import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, pkgVersion, versionBranch, Version, UserHooks, instHook, buildHook, confHook)
+import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, pkgVersion, versionBranch, Version, UserHooks, instHook, buildHook)
 import Distribution.Simple.InstallDirs (InstallDirs(..))
-import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, withPrograms, buildDir, absoluteInstallDirs, localPkgDescr)
+import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, withPrograms, buildDir, absoluteInstallDirs)
 import Distribution.Simple.Program (ConfiguredProgram (..), lookupProgram, runProgram, simpleProgram)
-import Distribution.Simple.Setup (BuildFlags, InstallFlags, CopyDest(..), fromFlag, installVerbosity, ConfigFlags, configConfigurationsFlags)
+import Distribution.Simple.Setup (BuildFlags, InstallFlags, CopyDest(..), fromFlag, installVerbosity)
 import Distribution.Simple.Utils (installOrdinaryFile)
 import Distribution.System (OS (..), buildOS)
 import Distribution.Verbosity (verbose)
@@ -22,7 +22,7 @@ import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileNam
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 main :: IO ()
-main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook = myInstHook, confHook = myConfHook }
+main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook = myInstHook }
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -37,8 +37,7 @@ myBuildHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -
 myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
   -- Extract the custom fields customFieldsPD where field name is x-dll-sources
   let
-    lib = fromJust (library pkgDescr)
-    libBi = libBuildInfo lib
+    libBi = libBuildInfo $ fromJust (library pkgDescr)
     customBi = customFieldsBI libBi
     dllName = fromJust (lookup "x-dll-name" customBi)
     dllSrcs = (lines . fromJust) (lookup "x-dll-sources" customBi)
@@ -208,10 +207,8 @@ myInstHook pkgDescr localBldInfo userHooks instFlags = do
   let bldDir = buildDir localBldInfo
 
       ver = (pkgVersion . package) pkgDescr
-      lib = fromJust (library pkgDescr)
-      libBi = libBuildInfo lib
-      customBi = customFieldsBI libBi
-      dllName = fromJust (lookup "x-dll-name" customBi)
+      libBi = libBuildInfo $ fromJust (library pkgDescr)
+      dllName = fromJust (lookup "x-dll-name" $ customFieldsBI libBi)
       libName = sharedLibName ver dllName
 
       instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
@@ -222,33 +219,5 @@ myInstHook pkgDescr localBldInfo userHooks instFlags = do
                           (bldDir </> staticLibName dllName)
                           (instLibDir </> staticLibName dllName)
   ldconfig instLibDir
-
-myConfHook :: (GenericPackageDescription, HookedBuildInfo) -> ConfigFlags -> IO LocalBuildInfo
-myConfHook (pkg0, pbi) flags = do
-  lbi <- confHook simpleUserHooks (pkg0, pbi) flags
-  let
-    configFlags = configConfigurationsFlags flags
-    (Just selfDep) = lookup (FlagName "addselfdep") configFlags
-
-  if selfDep
-    then return $ buildInfoMod lbi
-    else return lbi
-
-  where
-    buildInfoMod lbi = let
-      instLibDir = libdir $ absoluteInstallDirs (packageDescription pkg0) lbi NoCopyDest
-      lpd       = localPkgDescr lbi
-      lib       = fromJust (library lpd)
-      libbi     = libBuildInfo lib
-
-      libbi' = libbi
-        { extraLibDirs = extraLibDirs libbi ++ [instLibDir]
-        , extraLibs    = extraLibs    libbi ++ ["qlc"]
-        , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ instLibDir]
-        }
-
-      lib' = lib { libBuildInfo = libbi' }
-      lpd' = lpd { library = Just lib' }
-      in lbi { localPkgDescr = lpd' }
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
