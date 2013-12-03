@@ -1,6 +1,0 @@
-# update dependencies in a cabal sandbox
-# requires Cabal >= 1.18 installed either globally or in .cabal
-# cabal-git sandbox init
-# cabal-git sandbox add-source ../qlc
-cabal-git install --dependencies-only
-cp ../qlc/dist/dist-sandbox-*/build/libqlc.so* .cabal-sandbox/lib/x86_64-linux-ghc-7.6.3/qlc-0.1.0/libqlc.so

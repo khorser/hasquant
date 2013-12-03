@@ -26,6 +26,9 @@ main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook 
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+customField :: PackageDescription -> String -> Maybe String
+customField d n = lookup n $ customFieldsBI (libBuildInfo $ fromJust (library d))
+
 -- TODO use quantlib-config output on Unix
 
 -- | Extend the standard build hook to build a shared library for qlc - this will statically link
@@ -37,16 +40,12 @@ myBuildHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -
 myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
   -- Extract the custom fields customFieldsPD where field name is x-dll-sources
   let
+    dllName = fromJust (customField pkgDescr "x-dll-name")
+    dllSrcs = (lines . fromJust) (customField pkgDescr "x-dll-sources")
+    dllLibs = (lines . fromJust) (customField pkgDescr "x-dll-extra-libraries")
     libBi = libBuildInfo $ fromJust (library pkgDescr)
-    customBi = customFieldsBI libBi
-    dllName = fromJust (lookup "x-dll-name" customBi)
-    dllSrcs = (lines . fromJust) (lookup "x-dll-sources" customBi)
-    dllLibs = (lines . fromJust) (lookup "x-dll-extra-libraries" customBi)
-    ccOpts = ccOptions libBi
-    ldOpts = ldOptions libBi
-    incDirs = includeDirs libBi
-    libDirs = extraLibDirs libBi
-    libs = extraLibs libBi
+    [ccOpts, ldOpts, incDirs, libDirs, libs] =
+      map ($ libBi) [ccOptions, ldOptions, includeDirs, extraLibDirs, extraLibs]
     bldDir = buildDir localBldInfo
     progs = withPrograms localBldInfo
     gcc = fromJust (lookupProgram (simpleProgram "gcc") progs)
@@ -205,10 +204,8 @@ myInstHook pkgDescr localBldInfo userHooks instFlags = do
 
   -- Copy shared library
   let bldDir = buildDir localBldInfo
-
       ver = (pkgVersion . package) pkgDescr
-      libBi = libBuildInfo $ fromJust (library pkgDescr)
-      dllName = fromJust (lookup "x-dll-name" $ customFieldsBI libBi)
+      dllName = fromJust (customField pkgDescr "x-dll-name")
       libName = sharedLibName ver dllName
 
       instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
