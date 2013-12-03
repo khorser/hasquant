@@ -2,22 +2,22 @@
 
 -- configure AND build on Windows with something like:
 -- cabal configure --with-gcc=g++ --extra-include-dirs=<QuantLib-incpath> --extra-include-dirs=<boost-incpath> --extra-lib-dirs=<QuantLib-libpath>
-import Control.Monad (when)
+import Control.Monad (unless, when, void)
 import Data.List (intercalate)
 import Data.Maybe (fromJust)
 import Distribution.PackageDescription
 import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, pkgVersion, versionBranch, Version, UserHooks, instHook, buildHook)
 import Distribution.Simple.InstallDirs (InstallDirs(..))
 import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, withPrograms, buildDir, absoluteInstallDirs)
-import Distribution.Simple.Program (ConfiguredProgram (..), lookupProgram, runProgram, simpleProgram)
+import Distribution.Simple.Program (ConfiguredProgram(..), lookupProgram, runProgram, simpleProgram)
 import Distribution.Simple.Setup (BuildFlags, InstallFlags, CopyDest(..), fromFlag, installVerbosity)
 import Distribution.Simple.Utils (installOrdinaryFile)
-import Distribution.System (OS (..), buildOS)
+import Distribution.System (OS(..), buildOS)
 import Distribution.Verbosity (verbose)
 import System.Cmd (system)
 import System.Directory (createDirectoryIfMissing, doesFileExist, getModificationTime)
-import System.Exit (ExitCode (..))
-import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileName, addExtension)
+import System.Exit (ExitCode(..))
+import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileName, addExtension, normalise)
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -27,7 +27,7 @@ main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 customField :: PackageDescription -> String -> Maybe String
-customField d n = lookup n $ customFieldsBI (libBuildInfo $ fromJust (library d))
+customField d n = maybe Nothing (lookup n . customFieldsBI . libBuildInfo) (library d) 
 
 -- TODO use quantlib-config output on Unix
 
@@ -62,10 +62,7 @@ myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
 
 -- | Return any compiler options required to support shared library creation
 osCompileOpts :: [String] -- ^ Platform-specific compile options
-osCompileOpts = case buildOS of
-  Windows -> []
-  OSX -> ["-fPIC"]
-  _ -> ["-fPIC"]
+osCompileOpts = if buildOS == Windows then [] else  ["-fPIC"]
 
 sharedLibName :: Version -- ^ Version information to be used for Unix shared libraries
               -> String -- ^ Name of the shared library
@@ -74,13 +71,14 @@ sharedLibName ver basename = case buildOS of
   Windows -> addExtension basename ".dll"
   OSX -> "lib" ++ addExtension basename ".dylib"
   _ -> "lib" ++ basename ++ ".so." ++ fullVer
-    where
-      fullVer = (intercalate "." . map show . versionBranch) ver
+  where
+    fullVer = (intercalate "." . map show . versionBranch) ver
 
 staticLibName :: String -> String
-staticLibName basename = case buildOS of
-  Windows -> "lib" ++ addExtension basename ".a"
-  _ -> error "No static libs required on this platform"
+staticLibName basename =
+  if buildOS == Windows
+    then "lib" ++ addExtension basename ".a"
+    else error "No static libs required on this platform"
 
 -- | Return any linker options required to support shared library creation
 linkCxxOpts :: Version -- ^ Version information to be used for Unix shared libraries
@@ -112,8 +110,8 @@ compileCxx :: ConfiguredProgram -- ^ Program used to perform C/C++ compilation (
            -> IO FilePath -- ^ Path to generated object code
 compileCxx gcc opts incls outPath cxxSrc = do
   let includes' = map ("-I" ++) incls
-      outPath' = normalisePath outPath
-      cxxSrc' = normalisePath cxxSrc
+      outPath' = normalise outPath
+      cxxSrc' = normalise cxxSrc
       outFile = outPath' </> dropFileName cxxSrc </> replaceExtension (takeFileName cxxSrc) ".o"
       out = ["-c", cxxSrc', "-o", outFile, "-DDLLSOURCE"]
       opts' = opts ++ osCompileOpts
@@ -150,52 +148,26 @@ linkSharedLib :: ConfiguredProgram -- ^ Program used to perform linking
               -> IO ()
 linkSharedLib gcc opts libDirs libs objs ver outDir dllName dllPath = do
   let
-    libDirs' = map (\d -> "-L" ++ normalisePath d) libDirs
-    outDir' = normalisePath outDir
+    libDirs' = map (\d -> "-L" ++ normalise d) libDirs
+    outDir' = normalise outDir
     opts' = opts ++ linkCxxOpts ver outDir' dllName dllPath
-    objs' = map normalisePath objs
+    objs' = map normalise objs
     libs' =  map ("-l" ++) libs ++ (
       if buildOS == Windows
         then ["-static-libstdc++", "-static-libgcc"]
         else ["-lstdc++"])
-  runProgram verbose gcc (opts' ++ objs' ++ libDirs' ++ libs')
-  return ()
-
--- | The 'normalise' implementation in System.FilePath does not meet the requirements of
--- calling and/or running external programs on Windows particularly well as it does not
--- normalise the '/' character to '\\'. The problem is that some MinGW programs do not
--- like to see paths with a mixture of '/' and '\\'. Sine we are calling out to these,
--- we require a stricter normalisation.
-normalisePath :: FilePath -> FilePath
-normalisePath = case buildOS of
-  Windows -> dosifyFilePath
-  _ -> unixifyFilePath
-
--- | Replace a character in a String with some other character
-replace :: Char -- ^ Character to replace
-        -> Char -- ^ Character with which to replace
-        -> String -- ^ String in which to replace
-        -> String -- ^ Transformed string
-replace old new = map replace'
-  where replace' el = if el == old then new else el
-
-unixifyFilePath :: FilePath -> FilePath
-unixifyFilePath = replace '\\' '/'
-dosifyFilePath :: FilePath -> FilePath
-dosifyFilePath = replace '/' '\\'
+  void $ runProgram verbose gcc (opts' ++ objs' ++ libDirs' ++ libs')
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- | Run ldconfig in `path` and return a list of all the links which were created
 ldconfig :: FilePath -> IO ()
-ldconfig path = case buildOS of
-  Windows -> return ()
-  OSX -> return ()
-  _ -> do
-    ldExitCode <- system ("/sbin/ldconfig -n " ++ path)
-    case ldExitCode of
-        ExitSuccess -> return ()
-        _ -> error "Couldn't execute ldconfig, ensure it is on your path"
+ldconfig path = unless (buildOS `elem` [Windows, OSX]) runLdConfig
+  where
+    runLdConfig = do
+      ldExitCode <- system ("/sbin/ldconfig -n " ++ path)
+      unless (ldExitCode == ExitSuccess) $
+        error "Couldn't execute ldconfig, ensure it is on your path"
 
 myInstHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> InstallFlags -> IO ()
 myInstHook pkgDescr localBldInfo userHooks instFlags = do
@@ -207,7 +179,6 @@ myInstHook pkgDescr localBldInfo userHooks instFlags = do
       ver = (pkgVersion . package) pkgDescr
       dllName = fromJust (customField pkgDescr "x-dll-name")
       libName = sharedLibName ver dllName
-
       instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
 
   installOrdinaryFile (fromFlag (installVerbosity instFlags)) (bldDir </> libName) (instLibDir </> libName)
