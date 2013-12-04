@@ -2,6 +2,7 @@
 
 -- configure AND build on Windows with something like:
 -- cabal configure --with-gcc=g++ --extra-include-dirs=<QuantLib-incpath> --extra-include-dirs=<boost-incpath> --extra-lib-dirs=<QuantLib-libpath>
+import Control.Applicative((<$>))
 import Control.Monad (unless, when, void)
 import Data.List (intercalate)
 import Data.Maybe (fromJust)
@@ -15,9 +16,9 @@ import Distribution.Simple.Utils (installOrdinaryFile)
 import Distribution.System (OS(..), buildOS)
 import Distribution.Verbosity (verbose)
 import System.Cmd (system)
-import System.Directory (createDirectoryIfMissing, doesFileExist, getModificationTime)
+import System.Directory (canonicalizePath, createDirectoryIfMissing, doesFileExist, getModificationTime)
 import System.Exit (ExitCode(..))
-import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileName, addExtension, normalise)
+import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileName, addExtension)
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -40,16 +41,15 @@ myBuildHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -
 myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
   -- Extract the custom fields customFieldsPD where field name is x-dll-sources
   let
-    dllName = fromJust (customField pkgDescr "x-dll-name")
-    dllSrcs = (lines . fromJust) (customField pkgDescr "x-dll-sources")
-    dllLibs = (lines . fromJust) (customField pkgDescr "x-dll-extra-libraries")
+    dllName = fromJust $ customField pkgDescr "x-dll-name"
+    dllSrcs = lines (fromJust $ customField pkgDescr "x-dll-sources")
+    dllLibs = lines (fromJust $ customField pkgDescr "x-dll-extra-libraries")
     libBi = libBuildInfo $ fromJust (library pkgDescr)
     [ccOpts, ldOpts, incDirs, libDirs, libs] =
       map ($ libBi) [ccOptions, ldOptions, includeDirs, extraLibDirs, extraLibs]
     bldDir = buildDir localBldInfo
-    progs = withPrograms localBldInfo
-    gcc = fromJust (lookupProgram (simpleProgram "gcc") progs)
-    ver = (pkgVersion . package) pkgDescr
+    gcc = fromJust (lookupProgram (simpleProgram "gcc") $ withPrograms localBldInfo)
+    ver = pkgVersion $ package pkgDescr
     instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
   -- Compile C/C++ sources - output directory is dist/build/src/cbits
   putStrLn "Building qlc"
@@ -99,6 +99,11 @@ linkCxxOpts ver outDir basename basepath = case buildOS of
               "-Wl,-soname,lib" ++ basename ++ ".so",
               "-o", outDir </> sharedLibName ver basename]
 
+prefixPaths :: String -> [FilePath] -> IO [FilePath]
+prefixPaths pfx p = do
+  pp <- mapM canonicalizePath p
+  return $ map (pfx ++) pp
+
 -- | Compile a single source file using the configured gcc, if the object file does not yet
 -- exist, or is older than the source file.
 -- TODO: Does not do dependency resolution properly
@@ -109,11 +114,12 @@ compileCxx :: ConfiguredProgram -- ^ Program used to perform C/C++ compilation (
            -> FilePath -- ^ Path to source file
            -> IO FilePath -- ^ Path to generated object code
 compileCxx gcc opts incls outPath cxxSrc = do
-  let includes' = map ("-I" ++) incls
-      outPath' = normalise outPath
-      cxxSrc' = normalise cxxSrc
-      outFile = outPath' </> dropFileName cxxSrc </> replaceExtension (takeFileName cxxSrc) ".o"
-      out = ["-c", cxxSrc', "-o", outFile, "-DDLLSOURCE"]
+  includes' <- prefixPaths "-I" incls
+  let outDir = outPath </> dropFileName cxxSrc
+  cxxSrc' <- canonicalizePath cxxSrc
+  createDirectoryIfMissing True outDir
+  outFile <- canonicalizePath $ outDir </> replaceExtension (takeFileName cxxSrc) ".o"
+  let out = ["-c", cxxSrc', "-o", outFile, "-DDLLSOURCE"]
       opts' = opts ++ osCompileOpts
   doIt <- needsCompiling cxxSrc outFile
   when doIt $ createDirectoryIfMissing True (dropFileName outFile) >>
@@ -147,15 +153,14 @@ linkSharedLib :: ConfiguredProgram -- ^ Program used to perform linking
               -> String -- ^ Absolute path of the shared library
               -> IO ()
 linkSharedLib gcc opts libDirs libs objs ver outDir dllName dllPath = do
-  let
-    libDirs' = map (\d -> "-L" ++ normalise d) libDirs
-    outDir' = normalise outDir
-    opts' = opts ++ linkCxxOpts ver outDir' dllName dllPath
-    objs' = map normalise objs
-    libs' =  map ("-l" ++) libs ++ (
-      if buildOS == Windows
-        then ["-static-libstdc++", "-static-libgcc"]
-        else ["-lstdc++"])
+  libDirs' <- prefixPaths "-L" libDirs
+  outDir' <- canonicalizePath outDir
+  let opts' = opts ++ linkCxxOpts ver outDir' dllName dllPath
+  objs' <- mapM canonicalizePath objs
+  let libs' =  map ("-l" ++) libs ++ (
+        if buildOS == Windows
+          then ["-static-libstdc++", "-static-libgcc"]
+          else ["-lstdc++"])
   void $ runProgram verbose gcc (opts' ++ objs' ++ libDirs' ++ libs')
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
