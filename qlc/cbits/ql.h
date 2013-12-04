@@ -16,6 +16,8 @@
 #include "qlInstrument.h"
 #include "qlInterestRate.h"
 #include "qlLeg.h"
+#include "qlMath.h"
+#include "qlMethod.h"
 #include "qlModel.h"
 #include "qlOption.h"
 #include "qlPeriod.h"
@@ -28,6 +30,5 @@
 #include "qlUtilities.h"
 #include "qlVolatilityTS.h"
 #include "qlYieldTS.h"
-#include "qlYieldTSAux.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
