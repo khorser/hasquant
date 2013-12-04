@@ -16,9 +16,9 @@ import Distribution.Simple.Utils (installOrdinaryFile)
 import Distribution.System (OS(..), buildOS)
 import Distribution.Verbosity (verbose)
 import System.Cmd (system)
-import System.Directory (canonicalizePath, createDirectoryIfMissing, doesFileExist, getModificationTime)
+import System.Directory (createDirectoryIfMissing, doesFileExist, getModificationTime)
 import System.Exit (ExitCode(..))
-import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileName, addExtension)
+import System.FilePath ((</>), replaceExtension, takeFileName, dropFileName, addExtension, normalise)
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -99,10 +99,8 @@ linkCxxOpts ver outDir basename basepath = case buildOS of
               "-Wl,-soname,lib" ++ basename ++ ".so",
               "-o", outDir </> sharedLibName ver basename]
 
-prefixPaths :: String -> [FilePath] -> IO [FilePath]
-prefixPaths pfx p = do
-  pp <- mapM canonicalizePath p
-  return $ map (pfx ++) pp
+prefixPaths :: String -> [FilePath] -> [FilePath]
+prefixPaths pfx = map ((pfx ++) . normalise)
 
 -- | Compile a single source file using the configured gcc, if the object file does not yet
 -- exist, or is older than the source file.
@@ -114,16 +112,17 @@ compileCxx :: ConfiguredProgram -- ^ Program used to perform C/C++ compilation (
            -> FilePath -- ^ Path to source file
            -> IO FilePath -- ^ Path to generated object code
 compileCxx gcc opts incls outPath cxxSrc = do
-  includes' <- prefixPaths "-I" incls
-  let outDir = outPath </> dropFileName cxxSrc
-  cxxSrc' <- canonicalizePath cxxSrc
-  createDirectoryIfMissing True outDir
-  outFile <- canonicalizePath $ outDir </> replaceExtension (takeFileName cxxSrc) ".o"
-  let out = ["-c", cxxSrc', "-o", outFile, "-DDLLSOURCE"]
+  let includes' = prefixPaths "-I" incls
+      outDir = outPath </> dropFileName cxxSrc
+      cxxSrc' = normalise cxxSrc
+      outFile  = normalise $ outDir </> replaceExtension (takeFileName cxxSrc) ".o"
+      out = ["-c", cxxSrc', "-o", outFile, "-DDLLSOURCE"]
       opts' = opts ++ osCompileOpts
+  createDirectoryIfMissing True outDir
   doIt <- needsCompiling cxxSrc outFile
-  when doIt $ createDirectoryIfMissing True (dropFileName outFile) >>
-               runProgram verbose gcc (includes' ++ opts' ++ out)
+  when doIt $
+    createDirectoryIfMissing True (dropFileName outFile) >>
+      runProgram verbose gcc (includes' ++ opts' ++ out)
   return outFile
 
 -- | Return True if obj does not exist or is older than src.
@@ -137,7 +136,7 @@ needsCompiling src obj = do
     then do
       mtimeSrc <- getModificationTime src
       mtimeObj <- getModificationTime obj
-      return (mtimeObj < mtimeSrc)
+      return $ mtimeObj < mtimeSrc
     else
       return True
 
@@ -153,11 +152,11 @@ linkSharedLib :: ConfiguredProgram -- ^ Program used to perform linking
               -> String -- ^ Absolute path of the shared library
               -> IO ()
 linkSharedLib gcc opts libDirs libs objs ver outDir dllName dllPath = do
-  libDirs' <- prefixPaths "-L" libDirs
-  outDir' <- canonicalizePath outDir
-  let opts' = opts ++ linkCxxOpts ver outDir' dllName dllPath
-  objs' <- mapM canonicalizePath objs
-  let libs' =  map ("-l" ++) libs ++ (
+  let libDirs' = prefixPaths "-L" libDirs
+      outDir' = normalise outDir
+      opts' = opts ++ linkCxxOpts ver outDir' dllName dllPath
+      objs' = normalise <$> objs
+      libs' =  prefixPaths "-l" libs ++ (
         if buildOS == Windows
           then ["-static-libstdc++", "-static-libgcc"]
           else ["-lstdc++"])
