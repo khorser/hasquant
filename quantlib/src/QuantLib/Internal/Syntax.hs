@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 module QuantLib.Internal.Syntax
   (
     ffiCall
@@ -11,7 +12,8 @@ module QuantLib.Internal.Syntax
   )
 where
 
-import Control.Applicative((<$>), (<*>))
+import Control.Applicative(Applicative, (<$>), (<*>))
+import Control.Error
 import Control.Monad(liftM)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
@@ -98,18 +100,36 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
-data Cond m a b = a :== b | (a -> Bool) :-> b | (a -> m Bool) :=> b | (a -> m Bool) :~> (a -> b) | (a -> m Bool) :> (a -> m b)
+data Cond m a b = a :== b
+  | (a -> Bool) :-> b
+  | (a -> m Bool) :=> b
+  | (a -> m Bool) :~> (a -> b)
 
 -- A generalization of if/case/...
--- Introduce (applicative/alternative?) infix ||-like operators?
-cond :: (Monad m, Eq a, Show a, Show b) => [Cond m a b] -> a -> m b
-cond as n = cond' as []
-  where cond' [] tried = error $ "Exhausted all alternatives while parsing " ++ show n ++ ": " ++ show (reverse tried)
-        cond' ((p :== r) : xs) tried = if p == n then return r else cond' xs (show r:tried)
-        cond' ((p :-> r) : xs) tried = if p n then return r else cond' xs (show r:tried)
-        cond' ((p :=> r) : xs) tried = p n >>= \m -> if m then return r else cond' xs (show r:tried)
-        cond' ((p :~> r) : xs) tried = p n >>= \m -> if m then return (r n) else cond' xs (show (r n):tried)
-        cond' ((p :> r) : xs) tried = p n >>= \m -> if m then r n else cond' xs ("nested":tried)
+-- we could use Writer to accumulate failed cases but success monad is so cute
+cond :: forall a m r. (Applicative m, Monad m, Eq a, Show r) => [Cond m a r] -> a -> m r
+cond cs a = eitherT
+  (fail . ("Exhausted all supported alternatives while parsing FFI call, cases inspected: " ++) . show)
+  (return . id)
+  (runEitherRT runConditions)
+  where runConditions :: EitherRT r m [String]
+        runConditions = mapM (testCase a) cs
+
+testCase :: forall m a r. (Applicative m, Monad m, Eq a, Show r) => a -> Cond m a r -> EitherRT r m String
+testCase v c = EitherRT $ applyCase v c !? showCond v c
+  where
+    showCond :: (Show b) => a -> Cond m a b -> String
+    showCond _ (_ :== r) = show r
+    showCond _ (_ :-> r) = show r
+    showCond _ (_ :=> r) = show r
+    showCond x (_ :~> r) = show (r x)
+
+    applyCase :: a -> Cond m a r -> m (Maybe r)
+    applyCase n (p :== r) | p == n = return $ Just r
+    applyCase n (p :-> r) | p n = return $ Just r
+    applyCase n (p :=> r) = p n >>= \b -> return $ if b then Just r else Nothing
+    applyCase n (p :~> r) = p n >>= \b -> return $ if b then Just $ r n else Nothing
+    applyCase _ _ = return Nothing
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
