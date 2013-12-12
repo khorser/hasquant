@@ -115,6 +115,9 @@ cond cs a = eitherT
   where runConditions :: EitherRT r m [String]
         runConditions = mapM (testCase a) cs
 
+toMaybeM :: (Monad m) => r -> Bool -> m (Maybe r)
+toMaybeM r x = return $ if x then Just r else Nothing
+
 testCase :: forall m a r. (Applicative m, Monad m, Eq a, Show r) => a -> Cond m a r -> EitherRT r m String
 testCase v c = EitherRT $ applyCase v c !? showCond v c
   where
@@ -123,9 +126,6 @@ testCase v c = EitherRT $ applyCase v c !? showCond v c
     applyCase n (p :-> r) = toMaybeM r (p n)
     applyCase n (p :=> r) = p n >>= toMaybeM r
     applyCase n (p :~> r) = p n >>= toMaybeM (r n)
-
-    toMaybeM :: r -> Bool -> m (Maybe r)
-    toMaybeM r x = return $ if x then Just r else Nothing
 
     showCond :: (Show b) => a -> Cond m a b -> String
     showCond _ (_ :== r) = show r
