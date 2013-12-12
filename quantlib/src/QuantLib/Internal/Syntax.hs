@@ -118,18 +118,20 @@ cond cs a = eitherT
 testCase :: forall m a r. (Applicative m, Monad m, Eq a, Show r) => a -> Cond m a r -> EitherRT r m String
 testCase v c = EitherRT $ applyCase v c !? showCond v c
   where
+    applyCase :: a -> Cond m a r -> m (Maybe r)
+    applyCase n (p :== r) = toMaybeM r (p == n)
+    applyCase n (p :-> r) = toMaybeM r (p n)
+    applyCase n (p :=> r) = p n >>= toMaybeM r
+    applyCase n (p :~> r) = p n >>= toMaybeM (r n)
+
+    toMaybeM :: r -> Bool -> m (Maybe r)
+    toMaybeM r x = return $ if x then Just r else Nothing
+
     showCond :: (Show b) => a -> Cond m a b -> String
     showCond _ (_ :== r) = show r
     showCond _ (_ :-> r) = show r
     showCond _ (_ :=> r) = show r
     showCond x (_ :~> r) = show (r x)
-
-    applyCase :: a -> Cond m a r -> m (Maybe r)
-    applyCase n (p :== r) | p == n = return $ Just r
-    applyCase n (p :-> r) | p n = return $ Just r
-    applyCase n (p :=> r) = p n >>= \b -> return $ if b then Just r else Nothing
-    applyCase n (p :~> r) = p n >>= \b -> return $ if b then Just $ r n else Nothing
-    applyCase _ _ = return Nothing
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
