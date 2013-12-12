@@ -107,7 +107,8 @@ Library
             , qlc == 0.1.0
             , transformers >= 0.2 && < 0.4
             , errors >= 1.4 && < 1.5
-            , either -- let the 'errors' package decide
+            -- let the 'errors' package decide
+            , either
 
   Default-Language:  Haskell2010
   Hs-source-dirs: src
