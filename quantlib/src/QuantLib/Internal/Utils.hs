@@ -34,6 +34,7 @@ where
 
 import Control.Error
 import Control.Exception(throwIO, catches, Handler(Handler))
+import Control.Monad(join)
 import Data.Functor((<$>))
 
 import Foreign.C.String(peekCString, withCString)
@@ -138,15 +139,15 @@ unmarshalExceptions f =
 
 purifyExceptions :: IO a -> Either QLError a
 {-# NOINLINE purifyExceptions #-}
-purifyExceptions f = unsafePerformIO $ catchQL f
-
-catchQL :: IO a -> IO (Either QLError a)
-catchQL f = (Right <$> f)
-  `catches` [Handler (return . Left), -- catch QLException
+purifyExceptions f = unsafePerformIO $ join <$> catchSync (catchQL f)
+  where
+    catchQL :: IO a -> IO (Either QLError a)
+    catchQL g = (Right <$> g)
+      `catches` [Handler (return . Left), -- catch QLException
              Handler (return . Left . IoException)] -- wrap IOException
 
-catchSync :: IO a -> IO (Either QLError a)
-catchSync f = fmapL SyncException <$> runEitherT (syncIO f)
+    catchSync :: IO a -> IO (Either QLError a)
+    catchSync g = fmapL SyncException <$> runEitherT (syncIO g)
 
 -- |Run a C function returning a new object that needs a finalizer.
 -- The function might signal an error
