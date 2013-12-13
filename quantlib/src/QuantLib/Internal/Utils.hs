@@ -143,7 +143,7 @@ purifyExceptions f = unsafePerformIO $ join <$> catchSync (catchQL f)
   where
     catchQL :: IO a -> IO (Either QLError a)
     catchQL g = (Right <$> g)
-      `catches` [Handler (return . Left), -- catch QLException
+      `catches` [Handler (return . Left), -- catch QLError
              Handler (return . Left . IoException)] -- wrap IOException
 
     catchSync :: IO a -> IO (Either QLError a)
