@@ -32,6 +32,7 @@ module QuantLib.Internal.Utils
 
 where
 
+import Control.Error
 import Control.Exception(throwIO, catches, Handler(Handler))
 import Data.Functor((<$>))
 
@@ -130,17 +131,22 @@ unmarshalExceptions f =
      msg <- peek errptr
      if msg /= nullPtr
        then do
-         err <- peekCString msg
+         e <- peekCString msg
          c_freeString msg
-         throwIO $ CPlusPlusException err
+         throwIO $ CPlusPlusException e
        else return r
 
 purifyExceptions :: IO a -> Either QLError a
 {-# NOINLINE purifyExceptions #-}
-purifyExceptions f = unsafePerformIO $
-  (Right <$> f)
+purifyExceptions f = unsafePerformIO $ catchQL f
+
+catchQL :: IO a -> IO (Either QLError a)
+catchQL f = (Right <$> f)
   `catches` [Handler (return . Left), -- catch QLException
              Handler (return . Left . IoException)] -- wrap IOException
+
+catchSync :: IO a -> IO (Either QLError a)
+catchSync f = fmapL SyncException <$> runEitherT (syncIO f)
 
 -- |Run a C function returning a new object that needs a finalizer.
 -- The function might signal an error

@@ -178,7 +178,7 @@ module QuantLib.Internal.Types
 where
 
 import Control.Applicative
-import Control.Exception(Exception, IOException)
+import Control.Exception(Exception, IOException, SomeException)
 import Data.Functor.Identity
 import Control.Monad.Trans.Either
 import Control.Monad.Trans.Reader
@@ -231,7 +231,8 @@ data QLError = CPlusPlusException String
   | CEnumConversion String Int
   | IncorrectSize
   | IoException IOException
-  deriving (Typeable, Show, Eq)
+  | SyncException SomeException
+  deriving (Typeable, Show)
 
 instance Exception QLError
 

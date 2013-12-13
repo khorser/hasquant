@@ -18,20 +18,20 @@ test_YearsMonthsAlgebra  = do
       nineMonths = (9, Months)
       twelveMonths = (12, Months)
 
-      od4 = dividePeriod oneYear 4
-  assertEqual od4 (Right threeMonths)
+      (Right od4) = dividePeriod oneYear 4
+  assertEqual od4 threeMonths
 
-  let od2 = dividePeriod oneYear 2
-  assertEqual od2 (Right sixMonths)
+  let (Right od2) = dividePeriod oneYear 2
+  assertEqual od2 sixMonths
 
-  let a36 = addPeriods threeMonths sixMonths
-  assertEqual a36 (Right nineMonths)
+  let (Right a36) = addPeriods threeMonths sixMonths
+  assertEqual a36 nineMonths
 
-  let a3612 = a36 >>= (`addPeriods` oneYear)
-  assertEqual a3612 (Right (21, Months))
+  let (Right a3612) = addPeriods a36 oneYear
+  assertEqual a3612 (21, Months)
 
-  let twelveMonthsN = normalize twelveMonths
-  assertEqual twelveMonthsN (Right oneYear)
+  let (Right twelveMonthsN) = normalize twelveMonths
+  assertEqual twelveMonthsN oneYear
 
 test_WeekDaysAlgebra :: IO ()
 test_WeekDaysAlgebra = do
@@ -40,20 +40,20 @@ test_WeekDaysAlgebra = do
       threeDays = (3, Days)
       oneDay = (1, Days)
 
-      t2 = dividePeriod twoWeeks 2
-  assertEqual t2 (Right oneWeek)
+      (Right t2) = dividePeriod twoWeeks 2
+  assertEqual t2 oneWeek
 
-  let t7 = dividePeriod oneWeek 7
-  assertEqual t7 (Right oneDay)
+  let (Right t7) = dividePeriod oneWeek 7
+  assertEqual t7 oneDay
 
-  let s1 = addPeriods threeDays oneDay
-  assertEqual s1 (Right (4, Days))
+  let (Right s1) = addPeriods threeDays oneDay
+  assertEqual s1 (4, Days)
 
-  let s2 = s1 >>= (`addPeriods` oneWeek)
-  assertEqual s2 (Right (11, Days))
+  let (Right s2) = addPeriods s1 oneWeek
+  assertEqual s2 (11, Days)
 
   let sevenDays = (7, Days)
-      sevenDaysN = normalize sevenDays
-  assertEqual sevenDaysN (Right (1, Weeks))
+      (Right sevenDaysN) = normalize sevenDays
+  assertEqual sevenDaysN (1, Weeks)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
