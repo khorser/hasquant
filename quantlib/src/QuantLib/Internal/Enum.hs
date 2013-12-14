@@ -10,9 +10,6 @@ module QuantLib.Internal.Enum
   , withLitEnum
   , withOptLitEnum
   , values
-
-  , QLObjEnum(..)
-  , withObjEnum
   )
 where
 
@@ -63,13 +60,5 @@ withLitEnum = withCString . show
 
 withOptLitEnum :: (QLLitEnum a) => Maybe a -> (CString -> IO b) -> IO b
 withOptLitEnum = maybeWith withLitEnum
-
--- enum representing a QuantLib C++ object
-class (Finalizable o) => QLObjEnum e o where
-  enumToObject :: e -> IO (ForeignPtr o)
-  objectToEnum :: o -> e
-
-withObjEnum :: (QLObjEnum a o) => a -> (Ptr o -> IO b) -> IO b
-withObjEnum x f = enumToObject x >>= (`withObject` f)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

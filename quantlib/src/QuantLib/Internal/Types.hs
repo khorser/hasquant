@@ -6,13 +6,13 @@ module QuantLib.Internal.Types
     Finalizable(..)
   , Upcastable(..)
   , NamedSingleton(..)
-  , QLT
-  , runQLT
-  , QL
-  , runQL
-  , QLEitherT
-  , QLEither
-  , QLSettings(..)
+--  , QLT
+--  , runQLT
+--  , QL
+--  , runQL
+--  , QLEitherT
+--  , QLEither
+--  , QLSettings(..)
   , QLError(..)
   , CStaticInt(..)
   , CArrayable(..)
@@ -177,13 +177,13 @@ module QuantLib.Internal.Types
   )
 where
 
-import Control.Applicative
+--import Control.Applicative
 import Control.Exception(Exception, IOException, SomeException)
-import Data.Functor.Identity
-import Control.Monad.Trans.Either
-import Control.Monad.Trans.Reader
-import Control.Monad.Trans.Class(MonadTrans)
-import Control.Monad.IO.Class(MonadIO)
+--import Data.Functor.Identity
+--import Control.Monad.Trans.Either
+--import Control.Monad.Trans.Reader
+--import Control.Monad.Trans.Class(MonadTrans)
+--import Control.Monad.IO.Class(MonadIO)
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 import Data.Word(Word)
@@ -203,25 +203,25 @@ class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-data QLSettings = QLSettings {
-    evaluationDate :: Day
-  , enforceTodaysHistoricFixings :: Bool
-  , includeTodaysCashFlows :: Bool
-  , includeReferenceDateEvents :: Bool}
-
-newtype QLT m a = QLT (ReaderT QLSettings m a)
-  deriving (Monad, MonadTrans, MonadIO, Applicative, Alternative, Functor)
-
-runQLT :: QLT m a -> QLSettings -> m a
-runQLT (QLT r) = runReaderT r
-
-type QL = QLT Identity
-
-runQL :: QL a -> QLSettings -> a
-runQL (QLT r) = runReader r
-
-type QLEitherT m = EitherT QLError (QLT m)
-type QLEither = QLEitherT Identity
+--data QLSettings = QLSettings {
+--    evaluationDate :: Day
+--  , enforceTodaysHistoricFixings :: Bool
+--  , includeTodaysCashFlows :: Bool
+--  , includeReferenceDateEvents :: Bool}
+--
+--newtype QLT m a = QLT (ReaderT QLSettings m a)
+--  deriving (Monad, MonadTrans, MonadIO, Applicative, Alternative, Functor)
+--
+--runQLT :: QLT m a -> QLSettings -> m a
+--runQLT (QLT r) = runReaderT r
+--
+--type QL = QLT Identity
+--
+--runQL :: QL a -> QLSettings -> a
+--runQL (QLT r) = runReader r
+--
+--type QLEitherT m = EitherT QLError (QLT m)
+--type QLEither = QLEitherT Identity
 
 data QLError = CPlusPlusException String
   | DateConversion Day

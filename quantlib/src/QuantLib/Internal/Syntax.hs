@@ -15,6 +15,7 @@ where
 import Control.Applicative(Applicative, (<$>), (<*>))
 import Control.Error
 import Control.Monad(liftM)
+import Control.Monad.Trans.Reader
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 
@@ -141,6 +142,17 @@ casePredM p r = casePredApp p (const r)
 
 casePredApp :: (Monad m) => (a -> m Bool) -> (a -> r) -> a -> m (Maybe r)
 casePredApp p fr x = p x >>= toMaybeM (fr x)
+
+-- constructed condition has the type Q (Either String (Reader a))
+-- Reader is to chain functions returning Eithers
+caseEqT :: (Applicative m, Monad m, Eq a, Show a) => a -> r -> ReaderT a (EitherT String m) r
+caseEqT y r = ReaderT (\x -> caseEq y r x !? show x)
+
+--in1 :: Q (Either String (Reader Name TopArg))
+--in1 = return (Right (reader (const IntA)))
+
+--f :: Name -> Q (Either String TopArg)
+--f = runReaderT (caseEqT ''Word WordA)
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum

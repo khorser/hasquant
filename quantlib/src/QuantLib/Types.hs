@@ -207,8 +207,8 @@ module QuantLib.Types
   , nullReal
   , qlEpsilon
 
-  , QL
-  , runQL
+--  , QL
+--  , runQL
   , QLError(..)
   )
 where

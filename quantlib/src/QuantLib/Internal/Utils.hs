@@ -22,7 +22,7 @@ module QuantLib.Internal.Utils
   , withArrayULen
   , withArrayULenT
   , withArrayULenTIO
-  , ioToQl
+--  , ioToQl
   , stripIO
   , toMaybeM
 
@@ -180,8 +180,8 @@ name c = stripIO $
 upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
 upcast x = withObject x c_upcast >>= newForeignPtr finalize
 
-ioToQl :: IO a -> QL (Either QLError a)
-ioToQl = return . purifyExceptions
+--ioToQl :: IO a -> QL (Either QLError a)
+--ioToQl = return . purifyExceptions
 
 toMaybeM :: (Monad m) => r -> Bool -> m (Maybe r)
 toMaybeM r x = return $ if x then Just r else Nothing
