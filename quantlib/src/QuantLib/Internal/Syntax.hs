@@ -1,5 +1,4 @@
 {-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 module QuantLib.Internal.Syntax
   (
     ffiCall
@@ -15,7 +14,6 @@ where
 import Control.Applicative(Applicative, (<$>), (<*>))
 import Control.Error
 import Control.Monad(liftM)
---import Control.Monad.Trans.Reader
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 
@@ -101,24 +99,24 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
-caseEq :: (Applicative m, Monad m, Eq a, Show r) => a -> r -> a -> EitherRT r m String
-caseEq y = casePred (==y)
-casePred :: (Applicative m, Monad m, Show r) => (a -> Bool) -> r -> a -> EitherRT r m String
-casePred p = casePredM (return . p)
-casePredM :: (Applicative m, Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherRT r m String
-casePredM p r = casePredApp p (const r)
-casePredApp :: (Applicative m, Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherRT r m String
-casePredApp p fr x = EitherRT $ EitherT (p x >>= \b -> return $ if b then Right (fr x) else Left $ show (fr x))
+(?>) :: (Applicative m, Monad m, Eq a, Show r) => a -> r -> a -> EitherRT r m String
+(?>) y = (?->) (==y)
+(?->) :: (Applicative m, Monad m, Show r) => (a -> Bool) -> r -> a -> EitherRT r m String
+(?->) p = (?=>) (return . p)
+(?=>) :: (Applicative m, Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherRT r m String
+(?=>) p r = (?=->) p (const r)
+(?=->) :: (Applicative m, Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherRT r m String
+(?=->) p fr x = EitherRT $ EitherT $
+  p x >>= \b -> return $ if b then Right (fr x) else Left $ show (fr x)
 
 -- A generalization of if/case/...
 -- we could use Writer to accumulate failed cases but success monad is so cute
-cond :: forall a m r. (Applicative m, Monad m, Eq a, Show r) => [a -> EitherRT r m String] -> a -> m r
+-- TODO introduce compinators instead of passing a list
+cond :: (Applicative m, Monad m, Eq a, Show r) => [a -> EitherRT r m String] -> a -> m r
 cond cs a = eitherT
   (fail . ("Exhausted all supported alternatives while parsing FFI call, cases inspected: " ++) . show)
   (return . id)
-  (runEitherRT runConditions)
-  where runConditions :: EitherRT r m [String]
-        runConditions = mapM ($ a) cs
+  (runEitherRT $ mapM ($ a) cs)
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
@@ -135,42 +133,42 @@ isForeignPtr n = f <$> reify n
 
 nameToTop :: Name -> Q TopArg
 nameToTop = cond [
-    caseEq ''Int IntA
-  , caseEq ''Word WordA
-  , caseEq ''Day DayA
-  , caseEq ''Bool BoolA
-  , caseEq ''String StringA
-  , caseEq ''Double DoubleA
-  , caseEq ''YearFraction YearFractionA]
+    ''Int     ?> IntA
+  , ''Word    ?> WordA
+  , ''Day     ?> DayA
+  , ''Bool    ?> BoolA
+  , ''String  ?> StringA
+  , ''Double  ?> DoubleA
+  , ''YearFraction ?> YearFractionA]
 
 nestedNameToTop :: Name -> Q NestedArg
 nestedNameToTop = cond [
-    caseEq ''Day DayN
-  , caseEq ''Double DoubleN
-  , caseEq ''Bool BoolN
-  , caseEq ''YearFraction YearFractionN
-  , caseEq ''Word WordN
-  , caseEq ''Int IntN
-  , casePredApp isEnum EnumN
-  , casePredM isForeignPtr ForeignPtrN]
+    ''Day     ?> DayN
+  , ''Double  ?> DoubleN
+  , ''Bool    ?> BoolN
+  , ''YearFraction ?> YearFractionN
+  , ''Word    ?> WordN
+  , ''Int     ?> IntN
+  , isEnum    ?=-> EnumN
+  , isForeignPtr ?=> ForeignPtrN]
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = nameToTop n
 topArgType (ConT n) = cond [
-    casePredApp isEnum EnumA
-  , casePredM isLitEnum LitEnumA
-  , casePredM isForeignPtr ForeignPtrA] n
+    isEnum    ?=-> EnumA
+  , isLitEnum ?=> LitEnumA
+  , isForeignPtr ?=> ForeignPtrA] n
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType :: Name -> Q TopArg
     maybeType = cond [
-        caseEq ''Day OptDayA
-      , caseEq ''Bool OptBoolA
-      , caseEq ''Int OptIntA
-      , caseEq ''Double OptDoubleA
-      , caseEq ''Word OptWordA
-      , casePredM isLitEnum OptLitEnumA
-      , casePredM isForeignPtr OptForeignPtrA]
+        ''Day   ?> OptDayA
+      , ''Bool  ?> OptBoolA
+      , ''Int   ?> OptIntA
+      , ''Double?> OptDoubleA
+      , ''Word  ?> OptWordA
+      , isLitEnum ?=> OptLitEnumA
+      , isForeignPtr ?=> OptForeignPtrA]
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -179,8 +177,8 @@ topArgType (AppT
             (ConT n2))) =
               ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = cond [
-    caseEq ''Double MatrixDoubleA
-  , casePredM isForeignPtr MatrixForeignPtrA] n
+    ''Double ?> MatrixDoubleA
+  , isForeignPtr ?=> MatrixForeignPtrA] n
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
   PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
@@ -196,15 +194,15 @@ data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal = cond [
-    caseEq ''Int IntR
-  , caseEq ''Word WordR
-  , caseEq ''Day DayR
-  , caseEq ''Double DoubleR
-  , caseEq ''Bool BoolR
-  , caseEq ''YearFraction YearFractionR
-  , caseEq ''String StringR
-  , casePredApp isEnum EnumR
-  , casePredM isForeignPtr ForeignPtrR]
+    ''Int   ?> IntR
+  , ''Word  ?> WordR
+  , ''Day   ?> DayR
+  , ''Double?> DoubleR
+  , ''Bool  ?> BoolR
+  , ''YearFraction ?> YearFractionR
+  , ''String?> StringR
+  , isEnum  ?=-> EnumR
+  , isForeignPtr ?=> ForeignPtrR]
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
