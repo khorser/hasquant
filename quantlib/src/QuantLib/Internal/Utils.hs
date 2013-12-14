@@ -24,7 +24,6 @@ module QuantLib.Internal.Utils
   , withArrayULenTIO
 --  , ioToQl
   , stripIO
-  , toMaybeM
 
   -- re-exporting some popular stuff
   , throwIO
@@ -182,8 +181,5 @@ upcast x = withObject x c_upcast >>= newForeignPtr finalize
 
 --ioToQl :: IO a -> QL (Either QLError a)
 --ioToQl = return . purifyExceptions
-
-toMaybeM :: (Monad m) => r -> Bool -> m (Maybe r)
-toMaybeM r x = return $ if x then Just r else Nothing
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
