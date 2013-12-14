@@ -127,8 +127,8 @@ isLitEnum n = elem n <$> qlEnums ''QLLitEnum
 isForeignPtr :: Name -> Q Bool
 isForeignPtr n = f <$> reify n
   where
-    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) | p == ''ForeignPtr = True
-    f (TyConI (DataD [] p _ _ _)) | p == ''ForeignPtr = True
+    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) = p == ''ForeignPtr
+    f (TyConI (DataD [] p _ _ _)) = p == ''ForeignPtr
     f _ = False
 
 nameToTop :: Name -> Q TopArg
