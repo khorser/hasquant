@@ -24,6 +24,7 @@ module QuantLib.Internal.Utils
   , withArrayULenTIO
   , ioToQl
   , stripIO
+  , toMaybeM
 
   -- re-exporting some popular stuff
   , throwIO
@@ -162,6 +163,7 @@ construct f = do
 constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
+-- XXX is this (NOINLINE and OPTIONS_GHC on top) enough to avoid inlining of unsafePerformIO?
 stripIO :: IO a -> a
 {-# NOINLINE stripIO #-}
 stripIO = unsafePerformIO
@@ -180,5 +182,8 @@ upcast x = withObject x c_upcast >>= newForeignPtr finalize
 
 ioToQl :: IO a -> QL (Either QLError a)
 ioToQl = return . purifyExceptions
+
+toMaybeM :: (Monad m) => r -> Bool -> m (Maybe r)
+toMaybeM r x = return $ if x then Just r else Nothing
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

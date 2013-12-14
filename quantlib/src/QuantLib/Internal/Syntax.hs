@@ -115,9 +115,6 @@ cond cs a = eitherT
   where runConditions :: EitherRT r m [String]
         runConditions = mapM (testCase a) cs
 
-toMaybeM :: (Monad m) => r -> Bool -> m (Maybe r)
-toMaybeM r x = return $ if x then Just r else Nothing
-
 testCase :: forall m a r. (Applicative m, Monad m, Eq a, Show r) => a -> Cond m a r -> EitherRT r m String
 testCase v c = EitherRT $ applyCase v c !? showCond v c
   where
@@ -132,6 +129,18 @@ testCase v c = EitherRT $ applyCase v c !? showCond v c
     showCond _ (_ :-> r) = show r
     showCond _ (_ :=> r) = show r
     showCond x (_ :~> r) = show (r x)
+
+caseEq :: (Monad m, Eq a) => a -> r -> a -> m (Maybe r)
+caseEq y = casePred (==y)
+
+casePred :: (Monad m) => (a -> Bool) -> r -> a -> m (Maybe r)
+casePred p = casePredM (return . p)
+
+casePredM :: (Monad m) => (a -> m Bool) -> r -> a -> m (Maybe r)
+casePredM p r = casePredApp p (const r)
+
+casePredApp :: (Monad m) => (a -> m Bool) -> (a -> r) -> a -> m (Maybe r)
+casePredApp p fr x = p x >>= toMaybeM (fr x)
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
