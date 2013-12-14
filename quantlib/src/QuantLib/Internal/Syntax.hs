@@ -99,20 +99,20 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
-(?>) :: (Applicative m, Monad m, Eq a, Show r) => a -> r -> a -> EitherRT r m String
+(?>) :: (Monad m, Show r, Eq a) => a -> r -> a -> EitherRT r m String
 (?>) y = (?->) (==y)
-(?->) :: (Applicative m, Monad m, Show r) => (a -> Bool) -> r -> a -> EitherRT r m String
+(?->) :: (Monad m, Show r) => (a -> Bool) -> r -> a -> EitherRT r m String
 (?->) p = (?=>) (return . p)
-(?=>) :: (Applicative m, Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherRT r m String
+(?=>) :: (Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherRT r m String
 (?=>) p r = (?=->) p (const r)
-(?=->) :: (Applicative m, Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherRT r m String
+(?=->) :: (Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherRT r m String
 (?=->) p fr x = EitherRT $ EitherT $
   p x >>= \b -> return $ if b then Right (fr x) else Left $ show (fr x)
 
 -- A generalization of if/case/...
 -- we could use Writer to accumulate failed cases but success monad is so cute
 -- TODO introduce compinators instead of passing a list
-cond :: (Applicative m, Monad m, Eq a, Show r) => [a -> EitherRT r m String] -> a -> m r
+cond :: (Monad m, Eq a, Show r) => [a -> EitherRT r m String] -> a -> m r
 cond cs a = eitherT
   (fail . ("Exhausted all supported alternatives while parsing FFI call, cases inspected: " ++) . show)
   (return . id)
