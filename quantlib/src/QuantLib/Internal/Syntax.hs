@@ -115,7 +115,7 @@ infixl 3 <||>
 
 -- A generalization of if/case/...
 runCond :: (Monad m) => (a -> EitherT [String] m r) -> a -> m r
-runCond f x = eitherT 
+runCond f x = eitherT
   (fail . ("Exhausted all supported alternatives while parsing FFI call, cases inspected: " ++) . show)
   (return . id)
   (f x)
@@ -448,4 +448,73 @@ unmarshalA DayListR = [|map fromQlDate|]
 unmarshalA (EnumR _) = error "Enum unmarshalling needs IO"
 unmarshalA StringR = error "String unmarshalling needs IO"
 
+{-
+XXX replace TH with applicative style for FFI argument marshalling? See
+
+A handy little consequence of the Cont monad
+Cale Gibbard	Fri, 01 Feb 2008 00:08:57 +0000 (UTC)
+Hello,
+
+Today on #haskell, resiak was asking about a clean way to write the
+function which allocates an array of CStrings using withCString and
+withArray0 to produce a new with* style function. I came up with the
+following:
+
+nest :: [(r -> a) -> a] -> ([r] -> a) -> a
+nest xs = runCont (sequence (map Cont xs))
+
+withCStringArray0 :: [String] -> (Ptr CString -> IO a) -> IO a
+withCStringArray0 strings act = nest (map withCString strings)
+                                     (\rs -> withArray0 nullPtr rs act)
+
+Originally, I'd written nest without using the Cont monad, which was a
+bit of a mess by comparison, then noticed that its type was quite
+suggestive.
+
+Clearly, it would be more generally useful whenever you have a bunch
+of with-style functions for managing the allocation of resources, and
+would like to turn them into a single with-style function providing a
+list of the acquired resources.
+
+ChrisK	Fri, 01 Feb 2008 09:17:29 +0000 (UTC)
+The "bit of a mess" that comes from avoiding monads is (my version):
+
+> import Foreign.Marshal.Array(withArray0)
+> import Foreign.Ptr(nullPtr,Ptr)
+> import Foreign.C.String(withCString,CString)
+
+This uses withCString in order of the supplied strings, and a difference list
+([CString]->[CString]) initialized by "id" to assemble the [CString].  This is
+the laziest way to proceed.
+
+> acquireInOrder :: [String] -> (Ptr CString -> IO a) -> IO a
+> acquireInOrder strings act > foldr (\s cs'io'a ->
+>         (\cs ->
+>           withCString s (\c -> cs'io'a (cs . (c:))
+>                         )
+>         )
+>       )
+>       (\cs ->
+>          withArray0 nullPtr (cs []) act
+>       )
+>       strings
+>       id
+
+This uses in withCString in reversed order of the supplied strings, and normal
+list ([CString]) initialized by "[]" to assemble the [CString].  This is not as
+lazy since it needs to go to the end of the supplied list for the first IO action.
+
+> acquireInRerverseOrder :: [String] -> (Ptr CString -> IO a) -> IO a
+> acquireInRerverseOrder strings act >   foldl (\cs'io'a s ->
+>           (\cs ->
+>             withCString s (\c -> cs'io'a (c:cs)
+>                           )
+>           )
+>         )
+>         (\cs ->
+>            withArray0 nullPtr cs act
+>         )
+>         strings
+>         []
+-}
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

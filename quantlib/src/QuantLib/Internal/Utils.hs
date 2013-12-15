@@ -22,7 +22,6 @@ module QuantLib.Internal.Utils
   , withArrayULen
   , withArrayULenT
   , withArrayULenTIO
---  , ioToQl
   , stripIO
 
   -- re-exporting some popular stuff
@@ -158,7 +157,6 @@ construct f = do
     then throwIO NullPointerReturned
     else newForeignPtr finalize o
 
--- XXX ???Create non-finalizable objects and then we won't have to use the IO monad
 constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
@@ -178,8 +176,5 @@ name c = stripIO $
 
 upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
 upcast x = withObject x c_upcast >>= newForeignPtr finalize
-
---ioToQl :: IO a -> QL (Either QLError a)
---ioToQl = return . purifyExceptions
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
