@@ -16,6 +16,7 @@ import Control.Monad(liftM)
 import Control.Monad.Trans.Either
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
+import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
@@ -269,7 +270,9 @@ genFfiCall extra aa r = do
   cFunName <- newName "fun"
   lamE (map varP (cFunName : varNames)) [|$(call varNames cFunName extra)|]
   where
-    call varNames cFunName Pure   = [|stripIO $(nakedCall varNames cFunName)|]
+    -- shall we also add -fno-cse -fno-full-laziness for all files where we use ffiCallPure?
+    -- somehow check we added NOINLINE for all functions that use ffiCallPure?
+    call varNames cFunName Pure   = [|unsafePerformIO $(nakedCall varNames cFunName)|]
     call varNames cFunName Purify = [|purifyExceptions $(nakedCall varNames cFunName)|]
     call varNames cFunName PurifyPure = [|purifyExceptions $(nakedCall varNames cFunName)|]
     call varNames cFunName _      = [|$(nakedCall varNames cFunName)|]

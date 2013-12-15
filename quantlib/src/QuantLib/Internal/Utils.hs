@@ -22,7 +22,6 @@ module QuantLib.Internal.Utils
   , withArrayULen
   , withArrayULenT
   , withArrayULenTIO
-  , stripIO
 
   -- re-exporting some popular stuff
   , throwIO
@@ -160,13 +159,9 @@ construct f = do
 constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
--- XXX is this (NOINLINE and OPTIONS_GHC on top) enough to avoid inlining of unsafePerformIO?
-stripIO :: IO a -> a
-{-# NOINLINE stripIO #-}
-stripIO = unsafePerformIO
-
 name :: NamedSingleton a => ForeignPtr a -> String
-name c = stripIO $
+{-# NOINLINE name #-}
+name c = unsafePerformIO $
           withForeignPtr c
             (\cc -> do
               n <- c_name cc

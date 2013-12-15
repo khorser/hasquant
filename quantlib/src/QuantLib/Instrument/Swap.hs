@@ -143,6 +143,7 @@ foreign import ccall safe "ql.h qlSwapLegNPV"
   c_legNPV :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
 
 maturityDate :: Swap -> Either QLError (Maybe Day)
+{-# NOINLINE maturityDate #-}
 maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlSwapMaturityDate"
@@ -155,6 +156,7 @@ foreign import ccall safe "ql.h qlSwapNpvDateDiscount"
   c_npvDateDiscount :: Ptr CSwap -> Ptr CString -> IO CDouble
 
 startDate :: Swap -> Either QLError (Maybe Day)
+{-# NOINLINE startDate #-}
 startDate = $(ffiCallPureX 'startDate) c_startDate
 
 foreign import ccall safe "ql.h qlSwapStartDate"

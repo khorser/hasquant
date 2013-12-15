@@ -209,6 +209,7 @@ foreign import ccall safe "ql.h qlDateNthWeekday"
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
 immCode :: Day -- ^immDate
   -> Either QLError String
+{-# NOINLINE immCode #-}
 immCode = $(ffiCallPureX 'immCode) c_immCode
 
 foreign import ccall safe "ql.h qlIMMCode"
@@ -218,6 +219,7 @@ foreign import ccall safe "ql.h qlIMMCode"
 immDate :: String -- ^immCode
   -> Day -- ^referenceDate
   -> Either QLError Day
+{-# NOINLINE immDate #-}
 immDate = $(ffiCallPureX 'immDate) c_immDate
 
 foreign import ccall safe "ql.h qlIMMDate"
@@ -249,6 +251,7 @@ nextIMMCode' :: String -- ^immCode
   -> Bool -- ^mainCycle
   -> Day -- ^referenceDate
   -> Either QLError String
+{-# NOINLINE nextIMMCode' #-}
 nextIMMCode' = $(ffiCallPureX 'nextIMMCode') c_nextIMMCode'
 
 foreign import ccall safe "ql.h qlIMMNextCode1"
@@ -270,6 +273,7 @@ nextIMMDate' :: String -- ^immCode
   -> Bool -- ^mainCycle
   -> Day -- ^referenceDate
   -> Either QLError Day
+{-# NOINLINE nextIMMDate' #-}
 nextIMMDate' = $(ffiCallPureX 'nextIMMDate') c_nextIMMDate'
 
 foreign import ccall safe "ql.h qlIMMNextDate1"
@@ -288,6 +292,7 @@ foreign import ccall safe "ql.h qlIMMNextDate"
   c_nextIMMDate :: CDate -> CInt -> CDate
 
 addPeriod :: Day -> (Int, Unit) -> Either QLError Day
+{-# NOINLINE addPeriod #-}
 addPeriod = $(ffiCallPureX 'addPeriod) c_addPeriod
 
 foreign import ccall safe "ql.h qlAddPeriod"

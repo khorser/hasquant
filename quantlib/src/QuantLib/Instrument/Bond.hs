@@ -257,6 +257,7 @@ foreign import ccall safe "ql.h qlBondDirtyPrice1"
 nextCashFlowDate :: Bond
   -> Day -- ^d
   -> Either QLError (Maybe Day)
+{-# NOINLINE nextCashFlowDate #-}
 nextCashFlowDate = $(ffiCallPureX 'nextCashFlowDate) c_nextCashFlowDate
 
 foreign import ccall safe "ql.h qlBondNextCashFlowDate"
@@ -274,6 +275,7 @@ foreign import ccall safe "ql.h qlBondNextCouponRate"
 notional :: Bond
   -> Day -- ^d
   -> Either QLError Double
+{-# NOINLINE notional #-}
 notional = $(ffiCallPureX 'notional) c_notional
 
 foreign import ccall safe "ql.h qlBondNotional"
@@ -282,6 +284,7 @@ foreign import ccall safe "ql.h qlBondNotional"
 previousCashFlowDate :: Bond
   -> Day -- ^d
   -> Either QLError (Maybe Day)
+{-# NOINLINE previousCashFlowDate #-}
 previousCashFlowDate = $(ffiCallPureX 'previousCashFlowDate) c_previousCashFlowDate
 
 foreign import ccall safe "ql.h qlBondPreviousCashFlowDate"
@@ -334,6 +337,7 @@ foreign import ccall safe "ql.h qlBondYield1"
 isTradable :: Bond
   -> Day -- ^d
   -> Either QLError Bool
+{-# NOINLINE isTradable #-}
 isTradable = $(ffiCallPureX 'isTradable) c_isTradable
 
 foreign import ccall safe "ql.h qlBondIsTradable"
@@ -363,6 +367,7 @@ foreign import ccall safe "ql.h qlBondRedemptions"
 settlementDate :: Bond
   -> Day -- ^d
   -> Either QLError Day
+{-# NOINLINE settlementDate #-}
 settlementDate = $(ffiCallPureX 'settlementDate) c_settlementDate
 
 foreign import ccall safe "ql.h qlBondSettlementDate"
@@ -377,6 +382,7 @@ foreign import ccall safe "ql.h qlBondStartDate"
 accrualDays :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError Int
+{-# NOINLINE accrualDays #-}
 accrualDays = $(ffiCallPureX 'accrualDays) c_accrualDays
 
 foreign import ccall safe "ql.h qlBondFunctionsAccrualDays"
@@ -385,6 +391,7 @@ foreign import ccall safe "ql.h qlBondFunctionsAccrualDays"
 accrualEndDate :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError (Maybe Day)
+{-# NOINLINE accrualEndDate #-}
 accrualEndDate = $(ffiCallPureX 'accrualEndDate) c_accrualEndDate
 
 foreign import ccall safe "ql.h qlBondFunctionsAccrualEndDate"
@@ -393,6 +400,7 @@ foreign import ccall safe "ql.h qlBondFunctionsAccrualEndDate"
 accrualPeriod :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError YearFraction
+{-# NOINLINE accrualPeriod #-}
 accrualPeriod = $(ffiCallPureX 'accrualPeriod) c_accrualPeriod
 
 foreign import ccall safe "ql.h qlBondFunctionsAccrualPeriod"
@@ -401,6 +409,7 @@ foreign import ccall safe "ql.h qlBondFunctionsAccrualPeriod"
 accrualStartDate :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError (Maybe Day)
+{-# NOINLINE accrualStartDate #-}
 accrualStartDate = $(ffiCallPureX 'accrualStartDate) c_accrualStartDate
 
 foreign import ccall safe "ql.h qlBondFunctionsAccrualStartDate"
@@ -409,6 +418,7 @@ foreign import ccall safe "ql.h qlBondFunctionsAccrualStartDate"
 accruedDays :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError Int
+{-# NOINLINE accruedDays #-}
 accruedDays = $(ffiCallPureX 'accruedDays) c_accruedDays
 
 foreign import ccall safe "ql.h qlBondFunctionsAccruedDays"
@@ -417,6 +427,7 @@ foreign import ccall safe "ql.h qlBondFunctionsAccruedDays"
 accruedPeriod :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError YearFraction
+{-# NOINLINE accruedPeriod #-}
 accruedPeriod = $(ffiCallPureX 'accruedPeriod) c_accruedPeriod
 
 foreign import ccall safe "ql.h qlBondFunctionsAccruedPeriod"
@@ -577,6 +588,7 @@ foreign import ccall safe "ql.h qlBondFunctionsPreviousCashFlowAmount"
 referencePeriodEnd :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError (Maybe Day)
+{-# NOINLINE referencePeriodEnd #-}
 referencePeriodEnd = $(ffiCallPureX 'referencePeriodEnd) c_referencePeriodEnd
 
 foreign import ccall safe "ql.h qlBondFunctionsReferencePeriodEnd"
@@ -585,6 +597,7 @@ foreign import ccall safe "ql.h qlBondFunctionsReferencePeriodEnd"
 referencePeriodStart :: Bond -- ^bond
   -> Day -- ^settlementDate
   -> Either QLError (Maybe Day)
+{-# NOINLINE referencePeriodStart #-}
 referencePeriodStart = $(ffiCallPureX 'referencePeriodStart) c_referencePeriodStart
 
 foreign import ccall safe "ql.h qlBondFunctionsReferencePeriodStart"

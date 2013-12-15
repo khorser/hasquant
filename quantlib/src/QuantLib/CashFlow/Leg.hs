@@ -89,6 +89,7 @@ leg = $(ffiCall 'leg) c_leg
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
 startDate :: Leg -> Either QLError Day
+{-# NOINLINE startDate #-}
 startDate = $(ffiCallPureX 'startDate) c_startDate
 
 foreign import ccall safe "ql.h qlNextCashFlows"
@@ -343,6 +344,7 @@ foreign import ccall safe "ql.h qlCashFlowsIsExpired"
 
 maturityDate :: Leg -- ^leg
   -> Either QLError Day
+{-# NOINLINE maturityDate #-}
 maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlCashFlowsMaturityDate"

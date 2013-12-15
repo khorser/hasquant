@@ -42,6 +42,7 @@ compoundFactor' :: InterestRate
   -> Day -- ^refStart
   -> Day -- ^refEnd
   -> Either QLError Double
+{-# NOINLINE compoundFactor' #-}
 compoundFactor' = $(ffiCallPureX 'compoundFactor') c_compoundFactor'
 
 foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
@@ -52,6 +53,7 @@ foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
 compoundFactor :: InterestRate
   -> YearFraction -- ^t
   -> Either QLError Double
+{-# NOINLINE compoundFactor #-}
 compoundFactor = $(ffiCallPureX 'compoundFactor) c_compoundFactor
 
 foreign import ccall safe "ql.h qlInterestRateCompoundFactor"
@@ -64,6 +66,7 @@ discountFactor' :: InterestRate
   -> Day -- ^refStart
   -> Day -- ^refEnd
   -> Either QLError Double
+{-# NOINLINE discountFactor' #-}
 discountFactor' = $(ffiCallPureX 'discountFactor') c_discountFactor'
 
 foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
@@ -74,6 +77,7 @@ foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
 discountFactor :: InterestRate
   -> YearFraction -- ^t
   -> Either QLError Double
+{-# NOINLINE discountFactor #-}
 discountFactor = $(ffiCallPureX 'discountFactor) c_discountFactor
 
 foreign import ccall safe "ql.h qlInterestRateDiscountFactor"

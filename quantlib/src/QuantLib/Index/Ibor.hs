@@ -490,6 +490,7 @@ eurLibor1Y :: Maybe YieldTermStructure -> IO IborIndex
 eurLibor1Y = makeIbor eurLibor 1 Years
 
 businessDayConvention :: IborIndex -> Either QLError BusinessDayConvention
+{-# NOINLINE businessDayConvention #-}
 businessDayConvention = $(ffiCallPureX2 'businessDayConvention) c_businessDayConvention
 
 foreign import ccall safe "ql.h qlIborIndexBusinessDayConvention"

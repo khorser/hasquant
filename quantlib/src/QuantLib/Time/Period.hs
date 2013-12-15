@@ -38,6 +38,7 @@ foreign import ccall safe "ql.h qlPeriodToFrequency1"
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
 toFrequency :: (Int, Unit) -> Either QLError F.Frequency
+{-# NOINLINE toFrequency #-}
 toFrequency = $(ffiCallPureX 'toFrequency) c_toFrequency
 
 parse :: String -> Either QLError (Int, Unit)
@@ -64,6 +65,7 @@ foreign import ccall safe "ql.h qlPeriodDivide1"
   c_dividePeriod :: CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
 periodsLT :: (Int, Unit) -> (Int, Unit) -> Either QLError Bool
+{-# NOINLINE periodsLT #-}
 periodsLT = $(ffiCallPureX 'periodsLT) c_periodsLT
 
 foreign import ccall safe "ql.h qlPeriodsLT1"
