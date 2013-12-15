@@ -99,22 +99,26 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
+(?>) :: (Monad m, Show r, Eq a) => a -> r -> a -> EitherT [String] m r
+(?>) y = (?->) (==y)
+(?->) :: (Monad m, Show r) => (a -> Bool) -> r -> a -> EitherT [String] m r
+(?->) p = (?=>) (return . p)
+(?=>) :: (Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherT [String] m r
+(?=>) p r = (?=->) p (const r)
+(?=->) :: (Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherT [String] m r
+(?=->) p fr x = EitherT $
+  p x >>= \b -> return $ if b then Right (fr x) else Left [show (fr x)]
+
+(<||>) :: (Alternative f) => (a -> f r) -> (a -> f r) -> a -> f r
+(<||>) f1 f2 x = f1 x <|> f2 x
+infixl 3 <||>
+
 -- A generalization of if/case/...
--- TODO avoid passing explicit argument
-runCond :: (Monad m) => EitherT [String] m r -> m r
-runCond = eitherT 
+runCond :: (Monad m) => (a -> EitherT [String] m r) -> a -> m r
+runCond f x = eitherT 
   (fail . ("Exhausted all supported alternatives while parsing FFI call, cases inspected: " ++) . show)
   (return . id)
-
-(?>+) :: (Monad m, Show r, Eq a) => a -> r -> a -> EitherT [String] m r
-(?>+) y = (?->+) (==y)
-(?->+) :: (Monad m, Show r) => (a -> Bool) -> r -> a -> EitherT [String] m r
-(?->+) p = (?=>+) (return . p)
-(?=>+) :: (Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherT [String] m r
-(?=>+) p r = (?=->+) p (const r)
-(?=->+) :: (Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherT [String] m r
-(?=->+) p fr x = EitherT $
-  p x >>= \b -> return $ if b then Right (fr x) else Left [show (fr x)]
+  (f x)
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
@@ -130,43 +134,43 @@ isForeignPtr n = f <$> reify n
     f _ = False
 
 nameToTop :: Name -> Q TopArg
-nameToTop x = runCond $
-      (''Int     ?>+ IntA) x
-  <|> (''Word    ?>+ WordA) x
-  <|> (''Day     ?>+ DayA) x
-  <|> (''Bool    ?>+ BoolA) x
-  <|> (''String  ?>+ StringA) x
-  <|> (''Double  ?>+ DoubleA) x
-  <|> (''YearFraction ?>+ YearFractionA) x
+nameToTop = runCond $
+       ''Int     ?> IntA
+  <||> ''Word    ?> WordA
+  <||> ''Day     ?> DayA
+  <||> ''Bool    ?> BoolA
+  <||> ''String  ?> StringA
+  <||> ''Double  ?> DoubleA
+  <||> ''YearFraction ?> YearFractionA
 
 nestedNameToTop :: Name -> Q NestedArg
-nestedNameToTop x = runCond $
-      (''Day     ?>+ DayN) x
-  <|> (''Double  ?>+ DoubleN) x
-  <|> (''Bool    ?>+ BoolN) x
-  <|> (''YearFraction ?>+ YearFractionN) x
-  <|> (''Word    ?>+ WordN) x
-  <|> (''Int     ?>+ IntN) x
-  <|> (isEnum    ?=->+ EnumN) x
-  <|> (isForeignPtr ?=>+ ForeignPtrN) x
+nestedNameToTop = runCond $
+       ''Day     ?> DayN
+  <||> ''Double  ?> DoubleN
+  <||> ''Bool    ?> BoolN
+  <||> ''YearFraction ?> YearFractionN
+  <||> ''Word    ?> WordN
+  <||> ''Int     ?> IntN
+  <||> isEnum    ?=-> EnumN
+  <||> isForeignPtr ?=> ForeignPtrN
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = nameToTop n
-topArgType (ConT n) = runCond $
-      (isEnum    ?=->+ EnumA) n
-  <|> (isLitEnum ?=>+ LitEnumA) n
-  <|> (isForeignPtr ?=>+ ForeignPtrA) n
+topArgType (ConT n) = runCond (
+       isEnum    ?=-> EnumA
+  <||> isLitEnum ?=> LitEnumA
+  <||> isForeignPtr ?=> ForeignPtrA) n
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType :: Name -> Q TopArg
-    maybeType x = runCond $
-          (''Day   ?>+ OptDayA) x
-      <|> (''Bool  ?>+ OptBoolA) x
-      <|> (''Int   ?>+ OptIntA) x
-      <|> (''Double?>+ OptDoubleA) x
-      <|> (''Word  ?>+ OptWordA) x
-      <|> (isLitEnum ?=>+ OptLitEnumA) x
-      <|> (isForeignPtr ?=>+ OptForeignPtrA) x
+    maybeType = runCond $
+           ''Day   ?> OptDayA
+      <||> ''Bool  ?> OptBoolA
+      <||> ''Int   ?> OptIntA
+      <||> ''Double?> OptDoubleA
+      <||> ''Word  ?> OptWordA
+      <||> isLitEnum ?=> OptLitEnumA
+      <||> isForeignPtr ?=> OptForeignPtrA
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -174,9 +178,9 @@ topArgType (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
-topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond $
-      (''Double ?>+ MatrixDoubleA) n
-  <|> (isForeignPtr ?=>+ MatrixForeignPtrA) n
+topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond (
+       ''Double ?> MatrixDoubleA
+  <||> isForeignPtr ?=> MatrixForeignPtrA) n
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
   PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
@@ -191,16 +195,16 @@ data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
 nameToRetVal :: Name -> Q AtomicRet
-nameToRetVal x = runCond $
-      (''Int   ?>+ IntR) x
-  <|> (''Word  ?>+ WordR) x
-  <|> (''Day   ?>+ DayR) x
-  <|> (''Double?>+ DoubleR) x
-  <|> (''Bool  ?>+ BoolR) x
-  <|> (''YearFraction ?>+ YearFractionR) x
-  <|> (''String?>+ StringR) x
-  <|> (isEnum  ?=->+ EnumR) x
-  <|> (isForeignPtr ?=>+ ForeignPtrR) x
+nameToRetVal = runCond $
+       ''Int   ?> IntR
+  <||> ''Word  ?> WordR
+  <||> ''Day   ?> DayR
+  <||> ''Double?> DoubleR
+  <||> ''Bool  ?> BoolR
+  <||> ''YearFraction ?> YearFractionR
+  <||> ''String?> StringR
+  <||> isEnum  ?=-> EnumR
+  <||> isForeignPtr ?=> ForeignPtrR
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
