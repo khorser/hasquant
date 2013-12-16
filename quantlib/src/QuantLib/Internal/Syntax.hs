@@ -270,8 +270,8 @@ genFfiCall extra aa r = do
   cFunName <- newName "fun"
   lamE (map varP (cFunName : varNames)) [|$(call varNames cFunName extra)|]
   where
-    -- shall we also add -fno-cse -fno-full-laziness for all files where we use ffiCallPure?
-    -- somehow check we added NOINLINE for all functions that use ffiCallPure?
+    -- functions created with ffiCallPure should have NOINLINE and should be compiled with -fno-cse -fno-full-laziness
+    -- shall we do the same for purifying calls?
     call varNames cFunName Pure   = [|unsafePerformIO $(nakedCall varNames cFunName)|]
     call varNames cFunName Purify = [|purifyExceptions $(nakedCall varNames cFunName)|]
     call varNames cFunName PurifyPure = [|purifyExceptions $(nakedCall varNames cFunName)|]

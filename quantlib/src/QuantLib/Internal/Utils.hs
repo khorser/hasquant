@@ -1,5 +1,5 @@
 {-# LANGUAGE FlexibleContexts #-}
-{-# OPTIONS_GHC -fno-cse -fno-full-laziness #-} -- for the sake of unsafePerformIO
+{-# OPTIONS_GHC -fno-cse -fno-full-laziness #-} -- for unsafePerformIO
 module QuantLib.Internal.Utils
   (
     unmarshalExceptions

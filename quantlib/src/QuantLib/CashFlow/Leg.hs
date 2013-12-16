@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-cse -fno-full-laziness #-} -- for unsafePerformIO
 module QuantLib.CashFlow.Leg
   (
     leg
