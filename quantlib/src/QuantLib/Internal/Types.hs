@@ -10,13 +10,13 @@ module QuantLib.Internal.Types
   , QLError(..)
   , CStaticInt(..)
   , CArrayable(..)
+  , Object(..)
 
   -- re-exporting some popular types
   , Word
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
-  , ForeignPtr
   , Storable
 
   , Matrix(..)
@@ -190,6 +190,8 @@ class (Finalizable a, Finalizable b) => Upcastable a b where
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
+
+newtype Object a = Object{ptr :: ForeignPtr a}
 
 --data QLSettings = QLSettings {
 --    evaluationDate :: Day

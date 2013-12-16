@@ -221,59 +221,59 @@ realMatrix rows cols d =
     then Left IncorrectSize
     else Right $ Matrix rows cols d
 
-objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Either QLError (Matrix (ForeignPtr a))
+objectMatrix :: (Finalizable a) => Word -> Word -> [Object a] -> Either QLError (Matrix (Object a))
 objectMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
     then Left IncorrectSize
     else Right $ Matrix rows cols d
 
 -- cashflows
-type Leg = ForeignPtr CLeg
-type CouponLeg = ForeignPtr CCouponLeg
-type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
-type Dividend = ForeignPtr CDividend
+type Leg = Object CLeg
+type CouponLeg = Object CCouponLeg
+type FloatingRateCouponPricer = Object CFloatingRateCouponPricer
+type Dividend = Object CDividend
 
 -- currencies
-type Currency = ForeignPtr CCurrency
+type Currency = Object CCurrency
 instance Show Currency where
   show = name
 instance Eq Currency where
   (==) x y = name x == name y
 
-type Rounding = ForeignPtr CRounding
+type Rounding = Object CRounding
 -- indexes
-type Index = ForeignPtr CIndex
-type InterestRateIndex = ForeignPtr CInterestRateIndex
+type Index = Object CIndex
+type InterestRateIndex = Object CInterestRateIndex
 
 -- |Inter-Bank-Offered-Rate indexes (e.g. Libor, etc.)
-type IborIndex = ForeignPtr CIborIndex
+type IborIndex = Object CIborIndex
 
-asInterestRateIndex :: (Upcastable a CInterestRateIndex) => ForeignPtr a -> IO InterestRateIndex
+asInterestRateIndex :: (Upcastable a CInterestRateIndex) => Object a -> IO InterestRateIndex
 asInterestRateIndex = upcast
 
-asIndex :: (Upcastable a CIndex) => ForeignPtr a -> IO Index
+asIndex :: (Upcastable a CIndex) => Object a -> IO Index
 asIndex = upcast
 
-type SwapIndex = ForeignPtr CSwapIndex
-type OvernightIndex = ForeignPtr COvernightIndex
-type OvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex
-type BMAIndex = ForeignPtr CBMAIndex
+type SwapIndex = Object CSwapIndex
+type OvernightIndex = Object COvernightIndex
+type OvernightIndexedSwapIndex = Object COvernightIndexedSwapIndex
+type BMAIndex = Object CBMAIndex
 
-asIborIndex :: (Upcastable a CIborIndex) => ForeignPtr a -> IO IborIndex
+asIborIndex :: (Upcastable a CIborIndex) => Object a -> IO IborIndex
 asIborIndex = upcast
 
-asSwapIndex :: (Upcastable a CSwapIndex) => ForeignPtr a -> IO SwapIndex
+asSwapIndex :: (Upcastable a CSwapIndex) => Object a -> IO SwapIndex
 asSwapIndex = upcast
 
 -- instruments
-type Instrument = ForeignPtr CInstrument
+type Instrument = Object CInstrument
 -- |Base bond type.
 -- /Warning/ Most methods assume that the cash flows are stored sorted by date, the redemption(s) being after any cash flow at the same date. In particular, if there's one single redemption, it must be the last cash flow,Tests price\/yield calculations are cross-checked for consistency.price/yield calculations are checked against known good values.
-type Bond = ForeignPtr CBond
+type Bond = Object CBond
 -- |fixed-rate bond
-type FixedRateBond = ForeignPtr CFixedRateBond
+type FixedRateBond = Object CFixedRateBond
 -- |base forward type
-type Forward = ForeignPtr CForward
+type Forward = Object CForward
 -- |Forward contract on a fixed-rate bond
 -- 1. valueDate refers to the settlement date of the bond forward
 --   contract.  maturityDate is the delivery (or repurchase)
@@ -295,7 +295,7 @@ type Forward = ForeignPtr CForward
 --       payment) associated with the underlying bond falling
 --       between the settlementDate and the deliveryDate. (Note
 --       the two different discount curves used in b. and c.)
-type FixedRateBondForward = ForeignPtr CFixedRateBondForward
+type FixedRateBondForward = Object CFixedRateBondForward
 
 -- |1. Unlike the forward contract conventions on carryable
 --    financial assets (stocks, bonds, commodities), the
@@ -320,268 +320,268 @@ type FixedRateBondForward = ForeignPtr CFixedRateBondForward
 -- 5. If forward rate is desired/unknown, it can be obtained via
 --    forwardRate(). In this case, the strike variable in the
 --    constructor is irrelevant and will be ignored.
-type ForwardRateAgreement = ForeignPtr CForwardRateAgreement
+type ForwardRateAgreement = Object CForwardRateAgreement
 
 -- 'as' casting style composes poorly with functions accepting
 -- several arguments with the first being a Bond
 -- XXX use applicative style?
-asBond :: (Upcastable a CBond) => ForeignPtr a -> IO Bond
+asBond :: (Upcastable a CBond) => Object a -> IO Bond
 asBond = upcast
 
-asInstrument :: (Upcastable a CInstrument) => ForeignPtr a -> IO Instrument
+asInstrument :: (Upcastable a CInstrument) => Object a -> IO Instrument
 asInstrument = upcast
 
-asForward :: (Upcastable a CForward) => ForeignPtr a -> IO Forward
+asForward :: (Upcastable a CForward) => Object a -> IO Forward
 asForward = upcast
 
-type Swap = ForeignPtr CSwap
-type VanillaSwap = ForeignPtr CVanillaSwap
-type BMASwap = ForeignPtr CBMASwap
-type OvernightIndexedSwap = ForeignPtr COvernightIndexedSwap
-type AssetSwap = ForeignPtr CAssetSwap
+type Swap = Object CSwap
+type VanillaSwap = Object CVanillaSwap
+type BMASwap = Object CBMASwap
+type OvernightIndexedSwap = Object COvernightIndexedSwap
+type AssetSwap = Object CAssetSwap
 
-asSwap :: (Upcastable a CSwap) => ForeignPtr a -> IO Swap
+asSwap :: (Upcastable a CSwap) => Object a -> IO Swap
 asSwap = upcast
 
-type Payoff = ForeignPtr CPayoff
-type BasketPayoff = ForeignPtr CBasketPayoff
-type StrikedTypePayoff = ForeignPtr CStrikedTypePayoff
-type TypePayoff = ForeignPtr CTypePayoff
-type PercentageStrikePayoff = ForeignPtr CPercentageStrikePayoff
-type PlainVanillaPayoff = ForeignPtr CPlainVanillaPayoff
+type Payoff = Object CPayoff
+type BasketPayoff = Object CBasketPayoff
+type StrikedTypePayoff = Object CStrikedTypePayoff
+type TypePayoff = Object CTypePayoff
+type PercentageStrikePayoff = Object CPercentageStrikePayoff
+type PlainVanillaPayoff = Object CPlainVanillaPayoff
 
-asPayoff :: (Upcastable a CPayoff) => ForeignPtr a -> IO Payoff
+asPayoff :: (Upcastable a CPayoff) => Object a -> IO Payoff
 asPayoff = upcast
 
-asTypePayoff :: (Upcastable a CTypePayoff) => ForeignPtr a -> IO TypePayoff
+asTypePayoff :: (Upcastable a CTypePayoff) => Object a -> IO TypePayoff
 asTypePayoff = upcast
 
-asStrikedTypePayoff :: (Upcastable a CStrikedTypePayoff) => ForeignPtr a -> IO StrikedTypePayoff
+asStrikedTypePayoff :: (Upcastable a CStrikedTypePayoff) => Object a -> IO StrikedTypePayoff
 asStrikedTypePayoff = upcast
 
-type AmericanExercise = ForeignPtr CAmericanExercise
-type BermudanExercise = ForeignPtr CBermudanExercise
-type EuropeanExercise = ForeignPtr CEuropeanExercise
-type Exercise = ForeignPtr CExercise
+type AmericanExercise = Object CAmericanExercise
+type BermudanExercise = Object CBermudanExercise
+type EuropeanExercise = Object CEuropeanExercise
+type Exercise = Object CExercise
 
-asExercise :: (Upcastable a CExercise) => ForeignPtr a -> IO Exercise
+asExercise :: (Upcastable a CExercise) => Object a -> IO Exercise
 asExercise = upcast
 
-asBermudanExercise :: (Upcastable a CBermudanExercise) => ForeignPtr a -> IO BermudanExercise
+asBermudanExercise :: (Upcastable a CBermudanExercise) => Object a -> IO BermudanExercise
 asBermudanExercise = upcast
 
-type BarrierOption = ForeignPtr CBarrierOption
-type CdsOption = ForeignPtr CCdsOption
-type CreditDefaultSwap = ForeignPtr CCreditDefaultSwap
-type DividendVanillaOption = ForeignPtr CDividendVanillaOption
-type ForwardVanillaOption = ForeignPtr CForwardVanillaOption
-type MargrabeOption = ForeignPtr CMargrabeOption
-type MultiAssetOption = ForeignPtr CMultiAssetOption
-type OneAssetOption = ForeignPtr COneAssetOption
-type Option = ForeignPtr COption
-type QuantoVanillaOption = ForeignPtr CQuantoVanillaOption
-type Swaption = ForeignPtr CSwaption
-type SwingExercise = ForeignPtr CSwingExercise
-type VanillaOption = ForeignPtr CVanillaOption
-type Claim = ForeignPtr CClaim
+type BarrierOption = Object CBarrierOption
+type CdsOption = Object CCdsOption
+type CreditDefaultSwap = Object CCreditDefaultSwap
+type DividendVanillaOption = Object CDividendVanillaOption
+type ForwardVanillaOption = Object CForwardVanillaOption
+type MargrabeOption = Object CMargrabeOption
+type MultiAssetOption = Object CMultiAssetOption
+type OneAssetOption = Object COneAssetOption
+type Option = Object COption
+type QuantoVanillaOption = Object CQuantoVanillaOption
+type Swaption = Object CSwaption
+type SwingExercise = Object CSwingExercise
+type VanillaOption = Object CVanillaOption
+type Claim = Object CClaim
 
-asOption :: (Upcastable a COption) => ForeignPtr a -> IO Option
+asOption :: (Upcastable a COption) => Object a -> IO Option
 asOption = upcast
 
-asMultiAssetOption :: (Upcastable a CMultiAssetOption) => ForeignPtr a -> IO MultiAssetOption
+asMultiAssetOption :: (Upcastable a CMultiAssetOption) => Object a -> IO MultiAssetOption
 asMultiAssetOption = upcast
 
-asOneAssetOption :: (Upcastable a COneAssetOption) => ForeignPtr a -> IO OneAssetOption
+asOneAssetOption :: (Upcastable a COneAssetOption) => Object a -> IO OneAssetOption
 asOneAssetOption = upcast
 
-asBarrierOption :: (Upcastable a CBarrierOption) => ForeignPtr a -> IO BarrierOption
+asBarrierOption :: (Upcastable a CBarrierOption) => Object a -> IO BarrierOption
 asBarrierOption = upcast
 
-asForwardVanillaOption :: (Upcastable a CForwardVanillaOption) => ForeignPtr a -> IO ForwardVanillaOption
+asForwardVanillaOption :: (Upcastable a CForwardVanillaOption) => Object a -> IO ForwardVanillaOption
 asForwardVanillaOption = upcast
 
-asVanillaOption :: (Upcastable a CVanillaOption) => ForeignPtr a -> IO VanillaOption
+asVanillaOption :: (Upcastable a CVanillaOption) => Object a -> IO VanillaOption
 asVanillaOption = upcast
 
-type QuantoBarrierOption = ForeignPtr CQuantoBarrierOption
-type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
+type QuantoBarrierOption = Object CQuantoBarrierOption
+type QuantoForwardVanillaOption = Object CQuantoForwardVanillaOption
 
-type CapFloor = ForeignPtr CCapFloor
+type CapFloor = Object CCapFloor
 
-type Callability = ForeignPtr CCallability
-type CallabilityPrice = ForeignPtr CCallabilityPrice
+type Callability = Object CCallability
+type CallabilityPrice = Object CCallabilityPrice
 
-type CallableBond = ForeignPtr CCallableBond
-type ConvertibleBond = ForeignPtr CConvertibleBond
+type CallableBond = Object CCallableBond
+type ConvertibleBond = Object CConvertibleBond
 
 -- math
-type Constraint = ForeignPtr CConstraint
-type OptimizationMethod = ForeignPtr COptimizationMethod
-type EndCriteria = ForeignPtr CEndCriteria
+type Constraint = Object CConstraint
+type OptimizationMethod = Object COptimizationMethod
+type EndCriteria = Object CEndCriteria
 
 -- method
-type FdmSchemeDesc = ForeignPtr CFdmSchemeDesc
+type FdmSchemeDesc = Object CFdmSchemeDesc
 
 -- models
-type GJRGARCHModel = ForeignPtr CGJRGARCHModel
-type HestonModel = ForeignPtr CHestonModel
-type BatesModel = ForeignPtr CBatesModel
-type PiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel
-type ShortRateModel = ForeignPtr CShortRateModel
-type AffineModel = ForeignPtr CAffineModel
-type OneFactorAffineModel = ForeignPtr COneFactorAffineModel
-type LiborForwardModel = ForeignPtr CLiborForwardModel
-type HullWhite = ForeignPtr CHullWhite
-type CalibrationHelper = ForeignPtr CCalibrationHelper
+type GJRGARCHModel = Object CGJRGARCHModel
+type HestonModel = Object CHestonModel
+type BatesModel = Object CBatesModel
+type PiecewiseTimeDependentHestonModel = Object CPiecewiseTimeDependentHestonModel
+type ShortRateModel = Object CShortRateModel
+type AffineModel = Object CAffineModel
+type OneFactorAffineModel = Object COneFactorAffineModel
+type LiborForwardModel = Object CLiborForwardModel
+type HullWhite = Object CHullWhite
+type CalibrationHelper = Object CCalibrationHelper
 
-type CalibratedModel = ForeignPtr CCalibratedModel
+type CalibratedModel = Object CCalibratedModel
 
-type G2 = ForeignPtr CG2
+type G2 = Object CG2
 
-asAffineModel :: (Upcastable a CAffineModel) => ForeignPtr a -> IO AffineModel
+asAffineModel :: (Upcastable a CAffineModel) => Object a -> IO AffineModel
 asAffineModel = upcast
 
-asOneFactorAffineModel :: (Upcastable a COneFactorAffineModel) => ForeignPtr a -> IO OneFactorAffineModel
+asOneFactorAffineModel :: (Upcastable a COneFactorAffineModel) => Object a -> IO OneFactorAffineModel
 asOneFactorAffineModel = upcast
 
-asShortRateModel :: (Upcastable a CShortRateModel) => ForeignPtr a -> IO ShortRateModel
+asShortRateModel :: (Upcastable a CShortRateModel) => Object a -> IO ShortRateModel
 asShortRateModel = upcast
 
-asCalibratedModel :: (Upcastable a CCalibratedModel) => ForeignPtr a -> IO CalibratedModel
+asCalibratedModel :: (Upcastable a CCalibratedModel) => Object a -> IO CalibratedModel
 asCalibratedModel = upcast
 
-type BatesDetJumpModel = ForeignPtr CBatesDetJumpModel
-type BatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel
-type BatesDoubleExpModel = ForeignPtr CBatesDoubleExpModel
+type BatesDetJumpModel = Object CBatesDetJumpModel
+type BatesDoubleExpDetJumpModel = Object CBatesDoubleExpDetJumpModel
+type BatesDoubleExpModel = Object CBatesDoubleExpModel
 
-asBatesDoubleExpModel :: (Upcastable a CBatesDoubleExpModel) => ForeignPtr a -> IO BatesDoubleExpModel
+asBatesDoubleExpModel :: (Upcastable a CBatesDoubleExpModel) => Object a -> IO BatesDoubleExpModel
 asBatesDoubleExpModel = upcast
 
-asBatesModel :: (Upcastable a CBatesModel) => ForeignPtr a -> IO BatesModel
+asBatesModel :: (Upcastable a CBatesModel) => Object a -> IO BatesModel
 asBatesModel = upcast
 
-asHestonModel :: (Upcastable a CHestonModel) => ForeignPtr a -> IO HestonModel
+asHestonModel :: (Upcastable a CHestonModel) => Object a -> IO HestonModel
 asHestonModel = upcast
 
-type LmCorrelationModel = ForeignPtr CLmCorrelationModel
-type LmVolatilityModel = ForeignPtr CLmVolatilityModel
+type LmCorrelationModel = Object CLmCorrelationModel
+type LmVolatilityModel = Object CLmVolatilityModel
 
 -- pricingengines
-type PricingEngine = ForeignPtr CPricingEngine
-type BlackCalculator = ForeignPtr CBlackCalculator
-type BlackScholesCalculator = ForeignPtr CBlackScholesCalculator
+type PricingEngine = Object CPricingEngine
+type BlackCalculator = Object CBlackCalculator
+type BlackScholesCalculator = Object CBlackScholesCalculator
 
-asBlackCalculator :: (Upcastable a CBlackCalculator) => ForeignPtr a -> IO BlackCalculator
+asBlackCalculator :: (Upcastable a CBlackCalculator) => Object a -> IO BlackCalculator
 asBlackCalculator = upcast
 
 -- processes
-type StochasticProcess1D = ForeignPtr CStochasticProcess1D
-type BlackProcess = ForeignPtr CBlackProcess
-type GeneralizedBlackScholesProcess = ForeignPtr CGeneralizedBlackScholesProcess
-type StochasticProcess = ForeignPtr CStochasticProcess
+type StochasticProcess1D = Object CStochasticProcess1D
+type BlackProcess = Object CBlackProcess
+type GeneralizedBlackScholesProcess = Object CGeneralizedBlackScholesProcess
+type StochasticProcess = Object CStochasticProcess
 
-asStochasticProcess :: (Upcastable a CStochasticProcess) => ForeignPtr a -> IO StochasticProcess
+asStochasticProcess :: (Upcastable a CStochasticProcess) => Object a -> IO StochasticProcess
 asStochasticProcess = upcast
 
-asStochasticProcess1D :: (Upcastable a CStochasticProcess1D) => ForeignPtr a -> IO StochasticProcess1D
+asStochasticProcess1D :: (Upcastable a CStochasticProcess1D) => Object a -> IO StochasticProcess1D
 asStochasticProcess1D = upcast
 
-asGeneralizedBlackScholesProcess :: (Upcastable a CGeneralizedBlackScholesProcess) => ForeignPtr a -> IO GeneralizedBlackScholesProcess
+asGeneralizedBlackScholesProcess :: (Upcastable a CGeneralizedBlackScholesProcess) => Object a -> IO GeneralizedBlackScholesProcess
 asGeneralizedBlackScholesProcess = upcast
 
-asHestonProcess :: (Upcastable a CHestonProcess) => ForeignPtr a -> IO HestonProcess
+asHestonProcess :: (Upcastable a CHestonProcess) => Object a -> IO HestonProcess
 asHestonProcess = upcast
 
-type ExtOUWithJumpsProcess = ForeignPtr CExtOUWithJumpsProcess
-type ExtendedOrnsteinUhlenbeckProcess = ForeignPtr CExtendedOrnsteinUhlenbeckProcess
-type GJRGARCHProcess = ForeignPtr CGJRGARCHProcess
-type HestonProcess = ForeignPtr CHestonProcess
-type BatesProcess = ForeignPtr CBatesProcess
-type HybridHestonHullWhiteProcess = ForeignPtr CHybridHestonHullWhiteProcess
-type KlugeExtOUProcess = ForeignPtr CKlugeExtOUProcess
-type LiborForwardModelProcess = ForeignPtr CLiborForwardModelProcess
-type StochasticProcessArray = ForeignPtr CStochasticProcessArray
-type VarianceGammaProcess = ForeignPtr CVarianceGammaProcess
-type Merton76Process = ForeignPtr CMerton76Process
-type HullWhiteProcess = ForeignPtr CHullWhiteProcess
-type HullWhiteForwardProcess = ForeignPtr CHullWhiteForwardProcess
+type ExtOUWithJumpsProcess = Object CExtOUWithJumpsProcess
+type ExtendedOrnsteinUhlenbeckProcess = Object CExtendedOrnsteinUhlenbeckProcess
+type GJRGARCHProcess = Object CGJRGARCHProcess
+type HestonProcess = Object CHestonProcess
+type BatesProcess = Object CBatesProcess
+type HybridHestonHullWhiteProcess = Object CHybridHestonHullWhiteProcess
+type KlugeExtOUProcess = Object CKlugeExtOUProcess
+type LiborForwardModelProcess = Object CLiborForwardModelProcess
+type StochasticProcessArray = Object CStochasticProcessArray
+type VarianceGammaProcess = Object CVarianceGammaProcess
+type Merton76Process = Object CMerton76Process
+type HullWhiteProcess = Object CHullWhiteProcess
+type HullWhiteForwardProcess = Object CHullWhiteForwardProcess
 
 -- termstructures
-type RateHelper = ForeignPtr CRateHelper
-type YieldTermStructure = ForeignPtr CYieldTermStructure
-type VolTermStructure = ForeignPtr CVolTermStructure
-type OptionletVolatilityStructure = ForeignPtr COptionletVolatilityStructure
+type RateHelper = Object CRateHelper
+type YieldTermStructure = Object CYieldTermStructure
+type VolTermStructure = Object CVolTermStructure
+type OptionletVolatilityStructure = Object COptionletVolatilityStructure
 
-type BondHelper = ForeignPtr CBondHelper
-type SwapRateHelper = ForeignPtr CSwapRateHelper
-type OISRateHelper = ForeignPtr COISRateHelper
+type BondHelper = Object CBondHelper
+type SwapRateHelper = Object CSwapRateHelper
+type OISRateHelper = Object COISRateHelper
 
-asRateHelper :: (Upcastable a CRateHelper) => ForeignPtr a -> IO RateHelper
+asRateHelper :: (Upcastable a CRateHelper) => Object a -> IO RateHelper
 asRateHelper = upcast
 
-type FittedBondDiscountCurveFittingMethod = ForeignPtr CFittedBondDiscountCurveFittingMethod
+type FittedBondDiscountCurveFittingMethod = Object CFittedBondDiscountCurveFittingMethod
 
-type FittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve
+type FittedBondDiscountCurve = Object CFittedBondDiscountCurve
 
-asYieldTermStructure :: (Upcastable a CYieldTermStructure) => ForeignPtr a -> IO YieldTermStructure
+asYieldTermStructure :: (Upcastable a CYieldTermStructure) => Object a -> IO YieldTermStructure
 asYieldTermStructure = upcast
 
-type TermStructure = ForeignPtr CTermStructure
+type TermStructure = Object CTermStructure
 
-asTermStructure :: (Upcastable a CTermStructure) => ForeignPtr a -> IO TermStructure
+asTermStructure :: (Upcastable a CTermStructure) => Object a -> IO TermStructure
 asTermStructure = upcast
 
-type BlackVolTermStructure = ForeignPtr CBlackVolTermStructure
-type VolatilityTermStructure = ForeignPtr CVolatilityTermStructure
+type BlackVolTermStructure = Object CBlackVolTermStructure
+type VolatilityTermStructure = Object CVolatilityTermStructure
 
-asVolatilityTermStructure :: (Upcastable a CVolatilityTermStructure) => ForeignPtr a -> IO VolatilityTermStructure
+asVolatilityTermStructure :: (Upcastable a CVolatilityTermStructure) => Object a -> IO VolatilityTermStructure
 asVolatilityTermStructure = upcast
 
-type DefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure
-type SwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure
-type SmileSection = ForeignPtr CSmileSection
+type DefaultProbabilityTermStructure = Object CDefaultProbabilityTermStructure
+type SwaptionVolatilityStructure = Object CSwaptionVolatilityStructure
+type SmileSection = Object CSmileSection
 
-type CapFloorTermVolSurface = ForeignPtr CCapFloorTermVolSurface
-type LocalVolTermStructure = ForeignPtr CLocalVolTermStructure
+type CapFloorTermVolSurface = Object CCapFloorTermVolSurface
+type LocalVolTermStructure = Object CLocalVolTermStructure
 
-type BlackVarianceCurve = ForeignPtr CBlackVarianceCurve
+type BlackVarianceCurve = Object CBlackVarianceCurve
 
-asBlackVolTermStructure :: (Upcastable a CBlackVolTermStructure) => ForeignPtr a -> IO BlackVolTermStructure
+asBlackVolTermStructure :: (Upcastable a CBlackVolTermStructure) => Object a -> IO BlackVolTermStructure
 asBlackVolTermStructure = upcast
 
-type DefaultProbabilityHelper = ForeignPtr CDefaultProbabilityHelper
+type DefaultProbabilityHelper = Object CDefaultProbabilityHelper
 
-type CallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStructure
+type CallableBondVolatilityStructure = Object CCallableBondVolatilityStructure
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days
-type Calendar = ForeignPtr CCalendar
+type Calendar = Object CCalendar
 instance Show Calendar where
   show = name
 instance Eq Calendar where
   (==) x y = name x == name y
 
-type DayCounter = ForeignPtr CDayCounter
+type DayCounter = Object CDayCounter
 instance Show DayCounter where
   show = name
 instance Eq DayCounter where
   (==) x y = name x == name y
 
 -- |Payment schedule
-type Schedule = ForeignPtr CSchedule
+type Schedule = Object CSchedule
 
 type YearFraction = Double
 
 -- common
-type InterestRate = ForeignPtr CInterestRate
+type InterestRate = Object CInterestRate
 -- |Market observable
-type Quote = ForeignPtr CQuote
-type SimpleQuote = ForeignPtr CSimpleQuote
+type Quote = Object CQuote
+type SimpleQuote = Object CSimpleQuote
 
-asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
+asQuote :: (Upcastable a CQuote) => Object a -> IO Quote
 asQuote = upcast
 
-type TimeGrid = ForeignPtr CTimeGrid
+type TimeGrid = Object CTimeGrid
 
 foreign import ccall safe "ql.h qlNullInteger"
   nullInteger :: CInt

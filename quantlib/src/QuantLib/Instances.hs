@@ -42,12 +42,12 @@ import QuantLib.Types
 -- classes
 -- we could use MultiParamTypeClass+FunctionalDependencies to ensure uniqueness here
 -- I hope to use more TypeFamilies features to make HasUnderlying (and maybe even upcast)
--- operate on ForeignPtr level rather than C-types
+-- operate on Object level rather than C-types
 class (Finalizable a, Finalizable (Underlying a)) => HasUnderlying a where
   type Underlying a :: *
   c_underlying :: Ptr a -> Ptr CString -> IO (Ptr (Underlying a))
 
-underlying :: (HasUnderlying a) => ForeignPtr a -> IO (ForeignPtr (Underlying a))
+underlying :: (HasUnderlying a) => Object a -> IO (Object (Underlying a))
 underlying = $(ffiCall 'underlying) c_underlying
 
 instance HasUnderlying CBondHelper where
@@ -84,7 +84,7 @@ instance HasDateDependentUnderlying COvernightIndexedSwapIndex where
 foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexUnderlyingSwap"
   c_oisIndexSwap :: Ptr COvernightIndexedSwapIndex -> CDate -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
 
-dateDepUnderlying :: (HasDateDependentUnderlying a) => ForeignPtr a -> Day -> IO (ForeignPtr (DateDependentUnderlying a))
+dateDepUnderlying :: (HasDateDependentUnderlying a) => Object a -> Day -> IO (Object (DateDependentUnderlying a))
 dateDepUnderlying = $(ffiCall 'dateDepUnderlying) c_dateDepUnderlying
 
 class (Finalizable a) => SwapWithFixedLeg a where
@@ -99,16 +99,16 @@ instance SwapWithFixedLeg CVanillaSwap where
   c_fixedLegBPS = c_vanillaSwapFixedLegBPS
   c_fixedLegNPV = c_vanillaSwapFixedLegNPV
 
-fairRate :: (SwapWithFixedLeg a) => ForeignPtr a -> IO Double
+fairRate :: (SwapWithFixedLeg a) => Object a -> IO Double
 fairRate = $(ffiCallX 'fairRate) c_fairRate
 
-fixedLeg :: (SwapWithFixedLeg a) => ForeignPtr a -> IO Leg
+fixedLeg :: (SwapWithFixedLeg a) => Object a -> IO Leg
 fixedLeg = $(ffiCall 'fixedLeg) c_fixedLeg
 
-fixedLegBPS :: (SwapWithFixedLeg a) => ForeignPtr a -> IO Double
+fixedLegBPS :: (SwapWithFixedLeg a) => Object a -> IO Double
 fixedLegBPS = $(ffiCallX 'fixedLegBPS) c_fixedLegBPS
 
-fixedLegNPV :: (SwapWithFixedLeg a) => ForeignPtr a -> IO Double
+fixedLegNPV :: (SwapWithFixedLeg a) => Object a -> IO Double
 fixedLegNPV = $(ffiCallX 'fixedLegNPV) c_fixedLegNPV
 
 foreign import ccall safe "ql.h qlVanillaSwapFairRate"
@@ -138,7 +138,7 @@ foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLegNPV"
 class (Finalizable a) => SwapWithSpread a where
   c_fairSpread :: Ptr a -> Ptr CString -> IO CDouble
 
-fairSpread :: (SwapWithSpread a) => ForeignPtr a -> IO Double
+fairSpread :: (SwapWithSpread a) => Object a -> IO Double
 fairSpread = $(ffiCallX 'fairSpread) c_fairSpread
 
 instance SwapWithSpread CVanillaSwap where
@@ -167,13 +167,13 @@ class (Finalizable a) => SwapWithFloatingLeg a where
   c_floatingLegBPS :: Ptr a -> Ptr CString -> IO CDouble
   c_floatingLegNPV :: Ptr a -> Ptr CString -> IO CDouble
 
-floatingLeg :: (SwapWithFloatingLeg a) => ForeignPtr a -> IO Leg
+floatingLeg :: (SwapWithFloatingLeg a) => Object a -> IO Leg
 floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg
 
-floatingLegBPS :: (SwapWithFloatingLeg a) => ForeignPtr a -> IO Double
+floatingLegBPS :: (SwapWithFloatingLeg a) => Object a -> IO Double
 floatingLegBPS = $(ffiCallX 'floatingLegBPS) c_floatingLegBPS
 
-floatingLegNPV :: (SwapWithFloatingLeg a) => ForeignPtr a -> IO Double
+floatingLegNPV :: (SwapWithFloatingLeg a) => Object a -> IO Double
 floatingLegNPV = $(ffiCallX 'floatingLegNPV) c_floatingLegNPV
 
 instance SwapWithFloatingLeg CVanillaSwap where
@@ -208,22 +208,22 @@ class (Finalizable a) => OptionWithGreeks a where
   c_vega :: Ptr a -> Ptr CString -> IO CDouble
   c_dividendRho :: Ptr a -> Ptr CString -> IO CDouble
 
-delta :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+delta :: (OptionWithGreeks a) => Object a -> IO Double
 delta = $(ffiCallX 'delta) c_delta
 
-gamma :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+gamma :: (OptionWithGreeks a) => Object a -> IO Double
 gamma = $(ffiCallX 'gamma) c_gamma
 
-rho :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+rho :: (OptionWithGreeks a) => Object a -> IO Double
 rho = $(ffiCallX 'rho) c_rho
 
-theta :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+theta :: (OptionWithGreeks a) => Object a -> IO Double
 theta = $(ffiCallX 'theta) c_theta
 
-vega :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+vega :: (OptionWithGreeks a) => Object a -> IO Double
 vega = $(ffiCallX 'vega) c_vega
 
-dividendRho :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+dividendRho :: (OptionWithGreeks a) => Object a -> IO Double
 dividendRho = $(ffiCallX 'dividendRho) c_dividendRho
 
 instance OptionWithGreeks CMultiAssetOption where
@@ -273,13 +273,13 @@ class (Finalizable a) => QuantoOption a where
   c_qvega :: Ptr a -> Ptr CString -> IO CDouble
   c_qlambda :: Ptr a -> Ptr CString -> IO CDouble
 
-qrho :: (QuantoOption a) => ForeignPtr a -> IO Double
+qrho :: (QuantoOption a) => Object a -> IO Double
 qrho = $(ffiCallX 'qrho) c_qrho
 
-qvega :: (QuantoOption a) => ForeignPtr a -> IO Double
+qvega :: (QuantoOption a) => Object a -> IO Double
 qvega = $(ffiCallX 'qvega) c_qvega
 
-qlambda :: (QuantoOption a) => ForeignPtr a -> IO Double
+qlambda :: (QuantoOption a) => Object a -> IO Double
 qlambda = $(ffiCallX 'qlambda) c_qlambda
 
 instance QuantoOption CQuantoBarrierOption where
@@ -322,7 +322,7 @@ class (Finalizable a) => VolatileOption a where
   c_impliedVolatility :: Ptr a -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |/Warning/ currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)Warningoptions with a gamma that changes sign (e.g., binary options) have values that are not monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options.
-impliedVolatility :: (VolatileOption a) => ForeignPtr a
+impliedVolatility :: (VolatileOption a) => Object a
   -> Double -- ^price
   -> GeneralizedBlackScholesProcess -- ^process
   -> Double -- ^accuracy
@@ -353,7 +353,7 @@ class (Finalizable a) => Priceable a where
 
 -- |set the pricing engine to be used.
 -- Sets a new pricing engine to the given Instrument
-setPricingEngine :: (Priceable a) => ForeignPtr a -> PricingEngine -> IO ()
+setPricingEngine :: (Priceable a) => Object a -> PricingEngine -> IO ()
 setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
 
 instance Priceable CInstrument where

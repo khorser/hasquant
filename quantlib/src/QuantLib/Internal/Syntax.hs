@@ -66,18 +66,18 @@ import QuantLib.Math.Interpolation()
 import QuantLib.ProcessDiscretization()
 import QuantLib.TermStructure.Trait() -- QLLitEnum and QLEnum
 
-data NestedArg = DayN | IntN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
+data NestedArg = DayN | IntN | DoubleN | WordN | ObjectN | EnumN Name | BoolN | YearFractionN
   deriving (Show, Eq)
 
 -- XXX use SYB/Uniplate to traverse with comfort?
 -- XXX use GADTs to make the structure conform to the handled cases
 -- also I don't the logic duplicated for IntA/IntN etc
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
-  | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA | OptIntA | OptWordA | OptDoubleA
+  | OptDayA | ObjectA | OptObjectA | OptBoolA | OptIntA | OptWordA | OptDoubleA
   | ListA NestedArg
   | ListA2 NestedArg NestedArg -- a list of tuples
   | PairA NestedArg NestedArg
-  | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA | MatrixForeignPtrA
+  | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA | MatrixObjectA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
@@ -127,51 +127,51 @@ isEnum n = elem n <$> qlEnums ''QLEnum
 isLitEnum :: Name -> Q Bool
 isLitEnum n = elem n <$> qlEnums ''QLLitEnum
 
-isForeignPtr :: Name -> Q Bool
-isForeignPtr n = f <$> reify n
+isObject :: Name -> Q Bool
+isObject n = f <$> reify n
   where
-    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) = p == ''ForeignPtr
-    f (TyConI (DataD [] p _ _ _)) = p == ''ForeignPtr
+    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) = p == ''Object
+    f (TyConI (NewtypeD [] p _ _ _)) = p == ''Object
     f _ = False
 
 nameToTop :: Name -> Q TopArg
 nameToTop = runCond $
-       ''Int     ?> IntA
-  <||> ''Word    ?> WordA
-  <||> ''Day     ?> DayA
-  <||> ''Bool    ?> BoolA
-  <||> ''String  ?> StringA
-  <||> ''Double  ?> DoubleA
+       ''Int    ?> IntA
+  <||> ''Word   ?> WordA
+  <||> ''Day    ?> DayA
+  <||> ''Bool   ?> BoolA
+  <||> ''String ?> StringA
+  <||> ''Double ?> DoubleA
   <||> ''YearFraction ?> YearFractionA
 
 nestedNameToTop :: Name -> Q NestedArg
 nestedNameToTop = runCond $
-       ''Day     ?> DayN
-  <||> ''Double  ?> DoubleN
-  <||> ''Bool    ?> BoolN
+       ''Day    ?> DayN
+  <||> ''Double ?> DoubleN
+  <||> ''Bool   ?> BoolN
   <||> ''YearFraction ?> YearFractionN
-  <||> ''Word    ?> WordN
-  <||> ''Int     ?> IntN
-  <||> isEnum    ?=-> EnumN
-  <||> isForeignPtr ?=> ForeignPtrN
+  <||> ''Word   ?> WordN
+  <||> ''Int    ?> IntN
+  <||> isEnum   ?=-> EnumN
+  <||> isObject ?=> ObjectN
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = nameToTop n
 topArgType (ConT n) = runCond (
-       isEnum    ?=-> EnumA
-  <||> isLitEnum ?=> LitEnumA
-  <||> isForeignPtr ?=> ForeignPtrA) n
+       isEnum   ?=-> EnumA
+  <||> isLitEnum?=> LitEnumA
+  <||> isObject ?=> ObjectA) n
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType :: Name -> Q TopArg
     maybeType = runCond $
-           ''Day   ?> OptDayA
-      <||> ''Bool  ?> OptBoolA
-      <||> ''Int   ?> OptIntA
-      <||> ''Double?> OptDoubleA
-      <||> ''Word  ?> OptWordA
-      <||> isLitEnum ?=> OptLitEnumA
-      <||> isForeignPtr ?=> OptForeignPtrA
+           ''Day    ?> OptDayA
+      <||> ''Bool   ?> OptBoolA
+      <||> ''Int    ?> OptIntA
+      <||> ''Double ?> OptDoubleA
+      <||> ''Word   ?> OptWordA
+      <||> isLitEnum?=> OptLitEnumA
+      <||> isObject ?=> OptObjectA
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -181,14 +181,14 @@ topArgType (AppT
               ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond (
        ''Double ?> MatrixDoubleA
-  <||> isForeignPtr ?=> MatrixForeignPtrA) n
-topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
+  <||> isObject ?=> MatrixObjectA) n
+topArgType (AppT c@(ConT m) (VarT _)) | m == ''Object = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
   PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
-  | EnumR Name | OptDayR | ForeignPtrR | UnitR
+  | EnumR Name | OptDayR | ObjectR | UnitR
   | DayListR | YearFractionR | StringR
   deriving (Show, Eq)
 
@@ -197,21 +197,21 @@ data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal = runCond $
-       ''Int   ?> IntR
-  <||> ''Word  ?> WordR
-  <||> ''Day   ?> DayR
-  <||> ''Double?> DoubleR
-  <||> ''Bool  ?> BoolR
+       ''Int    ?> IntR
+  <||> ''Word   ?> WordR
+  <||> ''Day    ?> DayR
+  <||> ''Double ?> DoubleR
+  <||> ''Bool   ?> BoolR
   <||> ''YearFraction ?> YearFractionR
-  <||> ''String?> StringR
-  <||> isEnum  ?=-> EnumR
-  <||> isForeignPtr ?=> ForeignPtrR
+  <||> ''String ?> StringR
+  <||> isEnum   ?=-> EnumR
+  <||> isObject ?=> ObjectR
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
   return OptDayR
 compArgToRetVal (AppT ListT (ConT n)) | n == ''Day = return DayListR
-compArgToRetVal (AppT (ConT n) _) | n == ''ForeignPtr = return ForeignPtrR
+compArgToRetVal (AppT (ConT n) _) | n == ''Object = return ObjectR
 compArgToRetVal (ConT n) = nameToRetVal n
 compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
@@ -291,8 +291,8 @@ genFfiCall extra aa r = do
     finalCCall :: ExpQ -> ExpQ
     finalCCall c_call =
       case r of
-        (AtomicRV ForeignPtrR) -> error "IO is required to return ForeignPtr"
-        (IORV ForeignPtrR) -> [|construct $(appE (postCall extra) c_call)|]
+        (AtomicRV ObjectR) -> error "IO is required to return Object"
+        (IORV ObjectR) -> [|construct $(appE (postCall extra) c_call)|]
         -- last argument is a pointer to the length of the returned array
         (AtomicRV DayListR) -> [|getArray $(appE (postCall extra) c_call)|]
         _ -> appE (postCall extra) c_call
@@ -354,24 +354,24 @@ genFfiCall extra aa r = do
     genFfiCallImpl ((OptLitEnumA, v):as) c_call =
       [|withOptLitEnum $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl ((ForeignPtrA, v):as) c_call =
+    genFfiCallImpl ((ObjectA, v):as) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl ((OptForeignPtrA, v):as) c_call =
+    genFfiCallImpl ((OptObjectA, v):as) c_call =
       [|maybeWithObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((MatrixDoubleA, v):as) c_call =
       [|withDoubles (matrixData $v) (\_ y -> $(genFfiCallImpl as
         [|$c_call ((fromIntegral::Word->CUInt) $ matrixRows $v) ((fromIntegral::Word->CUInt) $ matrixColumns $v) y |]))|]
 
-    genFfiCallImpl ((MatrixForeignPtrA, v):as) c_call =
+    genFfiCallImpl ((MatrixObjectA, v):as) c_call =
       [|withObjects (matrixData $v) (\_ y -> $(genFfiCallImpl as
         [|$c_call ((fromIntegral::Word->CUInt) $ matrixRows $v) ((fromIntegral::Word->CUInt) $ matrixColumns $v) y |]))|]
 
     genFfiCallImpl ((ListA DoubleN, v):as) c_call =
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl ((ListA ForeignPtrN, v):as) c_call =
+    genFfiCallImpl ((ListA ObjectN, v):as) c_call =
       [|withObjects $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA DayN, v):as) c_call =
@@ -399,11 +399,11 @@ genFfiCall extra aa r = do
       [|withDoubles (map fst $v) (\n ams -> withDays (map snd $v)
         (\_ ds -> $(genFfiCallImpl as [|$c_call n ams ds|])))|]
 
-    genFfiCallImpl ((ListA2 ForeignPtrN DayN, v):as) c_call =
+    genFfiCallImpl ((ListA2 ObjectN DayN, v):as) c_call =
       [|withObjects (map fst $v) (\n os -> withDays (map snd $v)
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
-    genFfiCallImpl ((ListA2 ForeignPtrN BoolN, v):as) c_call =
+    genFfiCallImpl ((ListA2 ObjectN BoolN, v):as) c_call =
       [|withObjects (map fst $v) (\n os -> withArrayULenT (fromBool . snd) $v
         (\_ bs -> $(genFfiCallImpl as [|$c_call n os bs|])))|]
 
@@ -411,7 +411,7 @@ genFfiCall extra aa r = do
       [|withDays (map fst $v) (\n ds -> withArrayULenT ((fromIntegral :: Word -> CUInt) . snd) $v
         (\_ ws -> $(genFfiCallImpl as [|$c_call n ds ws|])))|]
 
-    genFfiCallImpl ((ListA2 ForeignPtrN DoubleN, v):as) c_call =
+    genFfiCallImpl ((ListA2 ObjectN DoubleN, v):as) c_call =
       [|withObjects (map fst $v) (\n os -> withDoubles (map snd $v)
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
@@ -445,7 +445,7 @@ unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshalA YearFractionR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
 unmarshalA OptDayR = [|fromQlDate|]
-unmarshalA ForeignPtrR = [|id|] -- this case is handled separately in finalCCall
+unmarshalA ObjectR = [|id|] -- this case is handled separately in finalCCall
 unmarshalA UnitR   = [|id|]
 unmarshalA DayListR = [|map fromQlDate|]
 unmarshalA (EnumR _) = error "Enum unmarshalling needs IO"
@@ -453,9 +453,13 @@ unmarshalA StringR = error "String unmarshalling needs IO"
 
 {-
 XXX replace TH with applicative style for FFI argument marshalling? See
+http://www.haskell.org/pipermail/haskell-cafe/2008-February/038963.html:
 
 A handy little consequence of the Cont monad
-Cale Gibbard	Fri, 01 Feb 2008 00:08:57 +0000 (UTC)
+
+Cale Gibbard cgibbard at gmail.com 
+Fri Feb 1 00:09:28 EST 2008
+
 Hello,
 
 Today on #haskell, resiak was asking about a clean way to write the
@@ -479,7 +483,11 @@ of with-style functions for managing the allocation of resources, and
 would like to turn them into a single with-style function providing a
 list of the acquired resources.
 
-ChrisK	Fri, 01 Feb 2008 09:17:29 +0000 (UTC)
+------------------------------------------------------------------------
+
+ChrisK haskell at list.mightyreason.com 
+Fri Feb 1 09:18:05 EST 2008
+
 The "bit of a mess" that comes from avoiding monads is (my version):
 
 > import Foreign.Marshal.Array(withArray0)
@@ -519,5 +527,81 @@ lazy since it needs to go to the end of the supplied list for the first IO actio
 >         )
 >         strings
 >         []
+
+------------------------------------------------------------------------
+
+Conor McBride conor at strictlypositive.org 
+Fri Feb 1 17:29:02 EST 2008
+
+Folks
+
+On 1 Feb 2008, at 22:19, Lennart Augustsson wrote:
+
+> It's a matter of taste.  I prefer the function composition in this  
+> case.
+> It reads nicely as a pipeline.
+>
+>   -- Lennart
+>
+
+Dan L :
+
+
+> On Fri, Feb 1, 2008 at 9:48 PM, Dan Licata <drl at cs.cmu.edu> wrote:
+> Not to start a flame war or religious debate, but I don't think that
+> eta-expansions should be considered bad style.
+
+Cale:
+
+> > > nest :: [(r -> a) -> a] -> ([r] -> a) -> a
+> > > nest xs = runCont (sequence (map Cont xs))
+> >
+
+Derek:
+
+> > This is what you write after all that time on #haskell?
+> >
+> > nest = runCont . sequence . map Cont
+
+Pardon my voodoo (apologies to libraries readers,
+but here we go again, slightly updated).
+
+With these useful general purpose goodies...
+
+ > module Newtype where
+
+ > import Data.Monoid
+
+ > class Newtype p u | p -> u where
+ >   unpack :: p -> u
+
+ > instance Newtype p u => Newtype (a -> p) (a -> u) where
+ >   unpack = (unpack .)
+
+ > op :: Newtype p u => (u -> p) -> p -> u
+ > op _ p = unpack p
+
+ > wrap :: Newtype p u => (x -> y) ->(y -> p) -> x -> u
+ > wrap pack f = unpack . f . pack
+
+ > ala ::  Newtype p' u' => (u -> p) ->
+ >         ((a -> p) -> b -> p') ->
+ >         (a -> u) -> b -> u'
+ > ala pack hitWith = wrap (pack .) hitWith
+
+...and the suitable Newtype instance for Cont, I
+get to write...
+
+   nest = ala Cont traverse id
+
+..separating the newtype encoding from what's really
+going on, fusing the map with the sequence, and
+generalizing to any old Traversable structure.
+
+Third-order: it's a whole other order.
+
+Conor
+
 -}
+
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

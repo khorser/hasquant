@@ -32,7 +32,7 @@ where
 
 import Control.Error
 import Control.Exception(throwIO, catches, Handler(Handler))
-import Control.Monad(join)
+import Control.Monad(join, liftM)
 import Data.Functor((<$>))
 
 import Foreign.C.String(peekCString, withCString)
@@ -56,13 +56,13 @@ withArrayULenT t x = withArrayULen (map t x)
 withArrayULenTIO :: Storable b => (a -> IO b) -> [a] -> (CUInt -> Ptr b -> IO c) -> IO c
 withArrayULenTIO t x f = mapM t x >>= (`withArrayULen` f)
 
-withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
-withObject = withForeignPtr
+withObject :: Object a -> (Ptr a -> IO b) -> IO b
+withObject = withForeignPtr . ptr
 
-maybeWithObject :: Maybe (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+maybeWithObject :: Maybe (Object a) -> (Ptr a -> IO b) -> IO b
 maybeWithObject = maybeWith withObject
 
-withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
+withObjects :: [Object a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 withObjects xs f = withMany withObject xs (`withArrayULen` f)
 
 withDoubles :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
@@ -106,10 +106,10 @@ buildArray n p = do
   return x
 
 -- invoke object method returning a list of objects
-getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => ForeignPtr b
+getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => Object b
   -> (Ptr b -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr a)))
-  -> IO [ForeignPtr a]
-getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (newForeignPtr finalize)
+  -> IO [Object a]
+getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (liftM Object . newForeignPtr finalize)
 
 -- invoke a function producing an integral pair,
 -- first one returning, the second returning by pointer
@@ -149,27 +149,27 @@ purifyExceptions f = unsafePerformIO $ join <$> catchSync (catchQL f)
 
 -- |Run a C function returning a new object that needs a finalizer.
 -- The function might signal an error
-construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
+construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (Object a)
 construct f = do
   o <- unmarshalExceptions f
   if o == nullPtr
     then throwIO NullPointerReturned
-    else newForeignPtr finalize o
+    else Object <$> newForeignPtr finalize o
 
-constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
+constructNamed :: NamedSingleton a => String -> IO (Object a)
 constructNamed n = withCString n $ construct . c_construct
 
-name :: NamedSingleton a => ForeignPtr a -> String
+name :: NamedSingleton a => Object a -> String
 {-# NOINLINE name #-}
 name c = unsafePerformIO $
-          withForeignPtr c
+          withObject c
             (\cc -> do
               n <- c_name cc
               str <- peekCString n
               c_freeString n
               return str)
 
-upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
-upcast x = withObject x c_upcast >>= newForeignPtr finalize
+upcast :: (Upcastable a b) => Object a -> IO (Object b)
+upcast x = withObject x c_upcast >>= liftM Object . newForeignPtr finalize
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
