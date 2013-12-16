@@ -100,14 +100,14 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
-(?>) :: (Monad m, Show r, Eq a) => a -> r -> a -> EitherT [String] m r
-(?>) y = (?->) (==y)
-(?->) :: (Monad m, Show r) => (a -> Bool) -> r -> a -> EitherT [String] m r
-(?->) p = (?=>) (return . p)
-(?=>) :: (Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherT [String] m r
-(?=>) p r = (?=->) p (const r)
-(?=->) :: (Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherT [String] m r
-(?=->) p fr x = EitherT $
+(==?) :: (Monad m, Show r, Eq a) => a -> r -> a -> EitherT [String] m r
+(==?) y = (->?) (==y)
+(->?) :: (Monad m, Show r) => (a -> Bool) -> r -> a -> EitherT [String] m r
+(->?) p = (=>?) (return . p)
+(=>?) :: (Monad m, Show r) => (a -> m Bool) -> r -> a -> EitherT [String] m r
+(=>?) p r = (=>?->) p (const r)
+(=>?->) :: (Monad m, Show r) => (a -> m Bool) -> (a -> r) -> a -> EitherT [String] m r
+(=>?->) p fr x = EitherT $
   p x >>= \b -> return $ if b then Right (fr x) else Left [show (fr x)]
 
 (<||>) :: (Alternative f) => (a -> f r) -> (a -> f r) -> a -> f r
@@ -115,11 +115,13 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
 infixl 3 <||>
 
 -- A generalization of if/case/...
-runCond :: (Monad m) => (a -> EitherT [String] m r) -> a -> m r
+runCond :: (Monad m, Show a) => (a -> EitherT [String] m r) -> a -> m r
 runCond f x = eitherT
-  (fail . ("Exhausted all supported alternatives while parsing FFI call, cases inspected: " ++) . show)
+  (fail . msg)
   (return . id)
   (f x)
+  where
+    msg e = "Error parsing " ++ show x ++ ", cases checked: " ++ show e
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
@@ -136,42 +138,42 @@ isObject n = f <$> reify n
 
 nameToTop :: Name -> Q TopArg
 nameToTop = runCond $
-       ''Int    ?> IntA
-  <||> ''Word   ?> WordA
-  <||> ''Day    ?> DayA
-  <||> ''Bool   ?> BoolA
-  <||> ''String ?> StringA
-  <||> ''Double ?> DoubleA
-  <||> ''YearFraction ?> YearFractionA
+       ''Int    ==? IntA
+  <||> ''Word   ==? WordA
+  <||> ''Day    ==? DayA
+  <||> ''Bool   ==? BoolA
+  <||> ''String ==? StringA
+  <||> ''Double ==? DoubleA
+  <||> ''YearFraction ==? YearFractionA
 
 nestedNameToTop :: Name -> Q NestedArg
 nestedNameToTop = runCond $
-       ''Day    ?> DayN
-  <||> ''Double ?> DoubleN
-  <||> ''Bool   ?> BoolN
-  <||> ''YearFraction ?> YearFractionN
-  <||> ''Word   ?> WordN
-  <||> ''Int    ?> IntN
-  <||> isEnum   ?=-> EnumN
-  <||> isObject ?=> ObjectN
+       ''Day    ==? DayN
+  <||> ''Double ==? DoubleN
+  <||> ''Bool   ==? BoolN
+  <||> ''YearFraction ==? YearFractionN
+  <||> ''Word   ==? WordN
+  <||> ''Int    ==? IntN
+  <||> isEnum   =>?-> EnumN
+  <||> isObject =>? ObjectN
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = nameToTop n
 topArgType (ConT n) = runCond (
-       isEnum   ?=-> EnumA
-  <||> isLitEnum?=> LitEnumA
-  <||> isObject ?=> ObjectA) n
+       isEnum   =>?-> EnumA
+  <||> isLitEnum=>? LitEnumA
+  <||> isObject =>? ObjectA) n
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType :: Name -> Q TopArg
     maybeType = runCond $
-           ''Day    ?> OptDayA
-      <||> ''Bool   ?> OptBoolA
-      <||> ''Int    ?> OptIntA
-      <||> ''Double ?> OptDoubleA
-      <||> ''Word   ?> OptWordA
-      <||> isLitEnum?=> OptLitEnumA
-      <||> isObject ?=> OptObjectA
+           ''Day    ==? OptDayA
+      <||> ''Bool   ==? OptBoolA
+      <||> ''Int    ==? OptIntA
+      <||> ''Double ==? OptDoubleA
+      <||> ''Word   ==? OptWordA
+      <||> isLitEnum=>? OptLitEnumA
+      <||> isObject =>? OptObjectA
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -180,8 +182,8 @@ topArgType (AppT
             (ConT n2))) =
               ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond (
-       ''Double ?> MatrixDoubleA
-  <||> isObject ?=> MatrixObjectA) n
+       ''Double ==? MatrixDoubleA
+  <||> isObject =>? MatrixObjectA) n
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''Object = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
   PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
@@ -197,15 +199,15 @@ data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal = runCond $
-       ''Int    ?> IntR
-  <||> ''Word   ?> WordR
-  <||> ''Day    ?> DayR
-  <||> ''Double ?> DoubleR
-  <||> ''Bool   ?> BoolR
-  <||> ''YearFraction ?> YearFractionR
-  <||> ''String ?> StringR
-  <||> isEnum   ?=-> EnumR
-  <||> isObject ?=> ObjectR
+       ''Int    ==? IntR
+  <||> ''Word   ==? WordR
+  <||> ''Day    ==? DayR
+  <||> ''Double ==? DoubleR
+  <||> ''Bool   ==? BoolR
+  <||> ''YearFraction ==? YearFractionR
+  <||> ''String ==? StringR
+  <||> isEnum   =>?-> EnumR
+  <||> isObject =>? ObjectR
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
