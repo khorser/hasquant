@@ -33,6 +33,7 @@ extern "C" {
 
   int* DLLEXPORT qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, char **e);
   void DLLEXPORT qlFreeCalendar(Calendar *calendar);
+  Calendar* DLLEXPORT qlCloneCalendar(Calendar *calendar, char *name, char **e);
 #ifdef __cplusplus
 }
 #endif
