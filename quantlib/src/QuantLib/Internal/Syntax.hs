@@ -451,8 +451,9 @@ unmarshalA (EnumR _) = error "Enum unmarshalling needs IO"
 unmarshalA StringR = error "String unmarshalling needs IO"
 
 {-
-XXX replace TH with applicative style for FFI argument marshalling? See
-http://www.haskell.org/pipermail/haskell-cafe/2008-February/038963.html:
+XXX replace TH with applicative style for FFI argument marshalling? See:
+
+http://www.haskell.org/pipermail/haskell-cafe/2008-February/038963.html
 
 A handy little consequence of the Cont monad
 
@@ -483,6 +484,8 @@ would like to turn them into a single with-style function providing a
 list of the acquired resources.
 
 ------------------------------------------------------------------------
+
+http://www.haskell.org/pipermail/haskell-cafe/2008-February/038978.html
 
 ChrisK haskell at list.mightyreason.com 
 Fri Feb 1 09:18:05 EST 2008
@@ -528,6 +531,8 @@ lazy since it needs to go to the end of the supplied list for the first IO actio
 >         []
 
 ------------------------------------------------------------------------
+
+http://www.haskell.org/pipermail/haskell-cafe/2008-February/039007.html
 
 Conor McBride conor at strictlypositive.org 
 Fri Feb 1 17:29:02 EST 2008
