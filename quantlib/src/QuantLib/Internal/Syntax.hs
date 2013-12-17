@@ -116,10 +116,7 @@ infixl 3 <||>
 
 -- A generalization of if/case/...
 runCond :: (Monad m, Show a) => (a -> EitherT [String] m r) -> a -> m r
-runCond f x = eitherT
-  (fail . msg)
-  (return . id)
-  (f x)
+runCond f x = eitherT (fail . msg) return (f x)
   where
     msg e = "Error parsing " ++ show x ++ ", cases checked: " ++ show e
 
