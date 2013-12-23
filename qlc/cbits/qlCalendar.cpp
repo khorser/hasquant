@@ -244,34 +244,4 @@ int* qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeek
   }
 }
 
-// undoing what QuantLib developers did, unsingletoning Calendar implementations
-class CloneCalendar : public Calendar {
-  private:
-    class CloneImpl : public Calendar::Impl {
-      public:
-        CloneImpl(const boost::shared_ptr<Calendar::Impl> impl, const std::string& name)
-          : impl_(impl), name_(name) { }
-        std::string name() const { return name_; }
-        virtual bool isBusinessDay(const Date& d) const { return impl_->isBusinessDay(d); }
-        virtual bool isWeekend(Weekday w) const { return impl_->isWeekend(w); }
-
-        boost::shared_ptr<Calendar::Impl> impl_;
-        std::string name_;
-    };
-  public:
-    CloneCalendar(const Calendar& orig, const std::string& name) {
-      // HACK: accessing protected member!
-      boost::shared_ptr<Calendar::Impl> impl (new CloneImpl(orig.*(&CloneCalendar::impl_), name));
-      impl_ = impl;
-    }
-};
-
-Calendar* DLLEXPORT qlCloneCalendar(Calendar *calendar, char *name, char **e) {
-  try {
-    return alloc(new CloneCalendar(*arg(calendar), name));
-  } catch (std::exception& er) {
-    return handleException<Calendar*>(e, er);
-  }
-}
-
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

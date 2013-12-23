@@ -105,11 +105,12 @@ Library
             , time
             , template-haskell
             , qlc == 0.1.0
-            , transformers >= 0.2 && < 0.4
             -- first version that defines syncIO
-            , errors >= 1.4.2 && < 1.5
+            , errors >= 1.4.2
             -- first version containing Alternative for EitherT
             , either >= 3.3
+            -- let either and errors agree on the version
+            , transformers
 
   Default-Language:  Haskell2010
   Hs-source-dirs: src
