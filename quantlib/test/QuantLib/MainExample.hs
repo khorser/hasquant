@@ -73,7 +73,12 @@ main = do
   printSwapIterationResult si2
 
   putStrLn "\n*** FittedBondCurve Example ***"
-  void $ keepingSettings' BondCurveExample.run
+  (BondCurveExample.Result s r1 r2 r3 r4) <- keepingSettings' BondCurveExample.run
+  putStrLn $ "Bond settlement date: " ++ show s
+  printBondCurveInfo r1
+  printBondCurveInfo r2
+  printBondCurveInfo r3
+  printBondCurveInfo r4
 
   putStrLn "\n*** Replication Example ***"
   (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
@@ -189,5 +194,15 @@ main = do
       void $ printf mf m
       mapM_ (printf vf) v
       putStrLn ""
+
+    printBondCurveInfo :: BondCurveExample.Rate -> IO ()
+    printBondCurveInfo (BondCurveExample.Rate date iter tenors rates) = do
+      void $ printf "Reference date: %s, iterations: " $ show date
+      forM_ iter (printf "%d ")
+      putStrLn ""
+      forM_ (zip tenors rates) (\(t, r) -> do
+        void $ printf "Tenor %5.2fY: " t
+        forM_ r (printf "%.3f ")
+        putStrLn "")
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

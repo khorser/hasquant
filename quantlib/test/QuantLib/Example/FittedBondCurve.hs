@@ -1,13 +1,13 @@
 module QuantLib.Example.FittedBondCurve
   (
     Result(..)
+  , Rate(..)
   , run
   )
 where
 
-import Control.Monad(void, forM_, (>=>))
+import Control.Monad(forM)
 import Data.Time.Calendar
-import Text.Printf
 
 import qualified QuantLib.CashFlow.Leg as CF
 import QuantLib.CashFlow.DurationType
@@ -29,8 +29,15 @@ import QuantLib.Time.Unit
 import QuantLib.Instances
 import QuantLib.Types
 
-data Result = Result { cleanPriceR :: Double
+data Result = Result { bondSettleR :: Day
+  , rates1R :: Rate
+  , rates2R :: Rate
+  , rates3R :: Rate
+  , rates4R :: Rate
   } deriving Show
+
+data Rate = Rate{refDateR :: Day, numIterR :: [Int], tenorsR :: [YearFraction], ratesR :: [[Double]]}
+  deriving Show
 
 run :: IO Result
 run = do
@@ -41,18 +48,17 @@ run = do
   dc <- simple
 
   bondSettle <- advance' cal tod (bondSettleDays, Days) Following False
-  putStrLn $ "Bond settlement date: " ++ show bondSettle
   cleanQuotes <- mapM simpleQuote cleanPrices
 
-  (iA, iB) <- step1 tod dc cal bondSettle cleanQuotes
-                >>= \(ts0, instrA, instrB, curves) ->
-                  step2 tod dc cal ts0 instrA instrB curves >> return (drop 1 instrA, drop 1 instrB)
+  (rates1, ts0, instrA, instrB, curves) <- step1 tod dc cal bondSettle cleanQuotes
+  rates2 <- step2 tod dc cal ts0 instrA instrB curves
+  let (iA, iB) = (drop 1 instrA, drop 1 instrB)
 
   newtod <- advance cal tod 24 Months ModifiedFollowing False
   setEvaluationDate $ Just newtod
   newBondSettle <- advance cal newtod bondSettleDays Days Following False
 
-  (ts00, curves) <- step3 newtod dc cal newBondSettle iA iB
+  (rates3, ts00, curves3) <- step3 newtod dc cal newBondSettle iA iB
   mapM_ (\(price, q, i) -> do
       b <- underlying i
       ytm <- yieldFromCleanPrice' b price dc Compounded Annual newtod 1e-10 100 0.05
@@ -60,9 +66,9 @@ run = do
       let dp = -dur * price * 5 / 10000
       setValue q (price + dp)) $
         zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA
-  printRates ts00 dc newBondSettle newtod curves iA
+  rates4 <- getRates ts00 dc newBondSettle newtod curves3 iA
 
-  return $ Result 5.6
+  return Result{bondSettleR = bondSettle, rates1R = rates1, rates2R = rates2, rates3R = rates3, rates4R = rates4}
   where
     bondSettleDays = 0
     curveSettleDays = 0
@@ -75,7 +81,7 @@ run = do
     tolerance = 1e-10
     maxEvals = 5000
 
-    parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO ()
+    parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO Double
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- yearFraction dc d1 d2 Nothing Nothing
@@ -84,27 +90,26 @@ run = do
                 zip (init ds) (drop 1 ds)
       df1 <- TS.discount' ts (head ds) False
       df2 <- TS.discount' ts (last ds) False
-      printf "%.3f " $ 100.0 * (df1 - df2) / sum dfs
+      return $ 100.0 * (df1 - df2) / sum dfs
 
-    printRates ts0 dc bondSettle tod curves instrA = do
+    getRates ts0 dc bondSettle tod curves instrA = do
       refDate <- asTermStructure ts0 >>= TS.referenceDate
-      void $ printf "Reference date: %s, iterations: " $ show refDate
-      forM_ curves (TS.numberOfIterations >=> printf "%d ")
-      putStrLn ""
+      numIter <- forM curves TS.numberOfIterations
 
-      forM_ instrA $
+      r <- forM instrA $
         \h -> do
           bcfs <- underlying h >>= cashFlows
           cfs <- CF.cashFlows bcfs (Just False) (Just bondSettle)
           let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           m <- yearFraction dc tod (last ds) Nothing Nothing
-          void $ printf "Tenor %5.2fY: " m
-          parRate ts0 (bondSettle:ds) dc
-          forM_ curves $
+          r1 <- parRate ts0 (bondSettle:ds) dc
+          r2 <- forM curves $
             \c -> do
               ts <- asYieldTermStructure c
               parRate ts (bondSettle:ds) dc
-          putStrLn ""
+          return (m, r1:r2)
+      let (tenors, rates) = unzip r
+      return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rates}
 
     step1 tod dc cal bondSettle cleanQuotes = do
       helpers <- mapM (\(q, l, c) -> do
@@ -133,15 +138,15 @@ run = do
       curves <- mapM
           (\f -> TS.fittedBondDiscountCurve' curveSettleDays cal instrA dc f tolerance maxEvals [] 1.0)
           fittings
-      printRates ts0 dc bondSettle tod curves instrA
-      return (ts0, instrA, instrB, curves)
+      rates <- getRates ts0 dc bondSettle tod curves instrA
+      return (rates, ts0, instrA, instrB, curves)
 
     step2 tod dc cal ts0 instrA _ curves = do
       newtoday <- advance cal tod 23 Months ModifiedFollowing False
       setEvaluationDate $ Just newtoday
       bondSettle <- advance cal newtoday bondSettleDays Days Following False
 
-      printRates ts0 dc bondSettle newtoday curves instrA
+      getRates ts0 dc bondSettle newtoday curves instrA
 
 
     step3 tod dc cal bondSettle iA iB = do
@@ -157,8 +162,8 @@ run = do
       curves <- mapM
           (\f -> TS.fittedBondDiscountCurve' curveSettleDays cal iA dc f tolerance maxEvals [] 1.0)
           fittings
-      printRates ts00 dc bondSettle tod curves iA
-      return (ts00, curves)
+      rates <- getRates ts00 dc bondSettle tod curves iA
+      return (rates, ts00, curves)
 
 {- QuantLib FittedBond example output for version 1.2.1 built with -O3
 
