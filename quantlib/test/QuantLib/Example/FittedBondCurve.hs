@@ -66,7 +66,7 @@ run = do
       let dp = -dur * price * 5 / 10000
       setValue q (price + dp)) $
         zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA
-  rates4 <- getRates ts00 dc newBondSettle newtod curves3 iA
+  rates4 <- rates ts00 dc newBondSettle newtod curves3 iA
 
   return Result{bondSettleR = bondSettle, rates1R = rates1, rates2R = rates2, rates3R = rates3, rates4R = rates4}
   where
@@ -92,7 +92,7 @@ run = do
       df2 <- TS.discount' ts (last ds) False
       return $ 100.0 * (df1 - df2) / sum dfs
 
-    getRates ts0 dc bondSettle tod curves instrA = do
+    rates ts0 dc bondSettle tod curves instrA = do
       refDate <- asTermStructure ts0 >>= TS.referenceDate
       numIter <- forM curves TS.numberOfIterations
 
@@ -108,8 +108,8 @@ run = do
               ts <- asYieldTermStructure c
               parRate ts (bondSettle:ds) dc
           return (m, r1:r2)
-      let (tenors, rates) = unzip r
-      return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rates}
+      let (tenors, rs) = unzip r
+      return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rs}
 
     step1 tod dc cal bondSettle cleanQuotes = do
       helpers <- mapM (\(q, l, c) -> do
@@ -138,15 +138,15 @@ run = do
       curves <- mapM
           (\f -> TS.fittedBondDiscountCurve' curveSettleDays cal instrA dc f tolerance maxEvals [] 1.0)
           fittings
-      rates <- getRates ts0 dc bondSettle tod curves instrA
-      return (rates, ts0, instrA, instrB, curves)
+      rs <- rates ts0 dc bondSettle tod curves instrA
+      return (rs, ts0, instrA, instrB, curves)
 
     step2 tod dc cal ts0 instrA _ curves = do
       newtoday <- advance cal tod 23 Months ModifiedFollowing False
       setEvaluationDate $ Just newtoday
       bondSettle <- advance cal newtoday bondSettleDays Days Following False
 
-      getRates ts0 dc bondSettle newtoday curves instrA
+      rates ts0 dc bondSettle newtoday curves instrA
 
 
     step3 tod dc cal bondSettle iA iB = do
@@ -162,8 +162,8 @@ run = do
       curves <- mapM
           (\f -> TS.fittedBondDiscountCurve' curveSettleDays cal iA dc f tolerance maxEvals [] 1.0)
           fittings
-      rates <- getRates ts00 dc bondSettle tod curves iA
-      return (rates, ts00, curves)
+      rs <- rates ts00 dc bondSettle tod curves iA
+      return (rs, ts00, curves)
 
 {- QuantLib FittedBond example output for version 1.2.1 built with -O3
 
