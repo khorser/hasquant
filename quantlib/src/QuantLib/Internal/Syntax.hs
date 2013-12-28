@@ -129,8 +129,9 @@ isLitEnum n = elem n <$> qlEnums ''QLLitEnum
 isObject :: Name -> Q Bool
 isObject n = f <$> reify n
   where
-    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) = p == ''Object
-    f (TyConI (NewtypeD [] p _ _ _)) = p == ''Object
+    f (TyConI (TySynD _ _ (AppT (ConT p) (ConT _)))) = p == ''Object
+    f (TyConI (TySynD _ _ (AppT (AppT (ConT p) _) (ConT _)))) = p == ''Object
+    f (TyConI (NewtypeD _ p _ _ _)) = p == ''Object
     f _ = False
 
 nameToTop :: Name -> Q TopArg
@@ -154,6 +155,16 @@ nestedNameToTop = runCond $
   isEnum   =>?-> EnumN <||>
   isObject =>? ObjectN
 
+maybeType :: Name -> Q TopArg
+maybeType = runCond $
+  ''Day    ==? OptDayA <||>
+  ''Bool   ==? OptBoolA <||>
+  ''Int    ==? OptIntA <||>
+  ''Double ==? OptDoubleA <||>
+  ''Word   ==? OptWordA <||>
+  isLitEnum=>? OptLitEnumA <||>
+  isObject =>? OptObjectA
+
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = nameToTop n
 topArgType (ConT n) = runCond (
@@ -161,16 +172,7 @@ topArgType (ConT n) = runCond (
   isLitEnum=>? LitEnumA <||>
   isObject =>? ObjectA) n
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
-  where
-    maybeType :: Name -> Q TopArg
-    maybeType = runCond $
-      ''Day    ==? OptDayA <||>
-      ''Bool   ==? OptBoolA <||>
-      ''Int    ==? OptIntA <||>
-      ''Double ==? OptDoubleA <||>
-      ''Word   ==? OptWordA <||>
-      isLitEnum=>? OptLitEnumA <||>
-      isObject =>? OptObjectA
+topArgType (AppT (ConT m) (AppT (ConT n) _)) | m == ''Maybe = maybeType n
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -181,7 +183,7 @@ topArgType (AppT
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond (
   ''Double ==? MatrixDoubleA <||>
   isObject =>? MatrixObjectA) n
-topArgType (AppT c@(ConT m) (VarT _)) | m == ''Object = topArgType c
+topArgType (AppT c@(ConT _) (VarT _)) = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
   PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
