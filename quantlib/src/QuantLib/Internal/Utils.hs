@@ -155,7 +155,7 @@ mkQLE = EitherT . QL . getExceptions
 runQLE :: QLE s a -> IO a
 runQLE f = do
   rr <- runQL $ runEitherT f
-  either (\l -> throwIO l) return rr
+  either throwIO return rr
 
 purifyExceptions :: IO a -> Either QLError a
 {-# NOINLINE purifyExceptions #-}

@@ -68,7 +68,7 @@ test_JointCalendars = runQLE $ do
     c1234h <- jointCalendar4 c1 c2 c3 c4 JoinHolidays
     c1234b <- jointCalendar4 c1 c2 c3 c4 JoinBusinessDays
 
-    tod <- liftIO $ today
+    tod <- liftIO today
     mapM_ (\d -> do
       b1 <- isBusinessDay c1 d
       b2 <- isBusinessDay c2 d

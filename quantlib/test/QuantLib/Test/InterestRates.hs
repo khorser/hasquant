@@ -27,7 +27,7 @@ test_Conversions = keepingSettings' $
   where
     testCase :: (Double, Compounding, Frequency, YearFraction, Compounding, Frequency, Double, Int) -> IO ()
     testCase (r, comp, freq, t, comp2, freq2, expected, prec) = runQLE $ do
-      d1 <- liftIO $ today
+      d1 <- liftIO today
       dc <- actual360
       ir <- interestRate r dc comp freq
       let d2 = addDays (truncate $ 360 * t + 0.5) d1

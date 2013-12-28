@@ -7,7 +7,6 @@ where
 import Test.Framework
 
 import Control.Error
-import Control.Exception(catch)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
 
 import Test.QuickCheck.Monadic

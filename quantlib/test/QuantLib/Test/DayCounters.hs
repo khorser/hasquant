@@ -18,7 +18,7 @@ import QuantLib.Types
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_ActualActual :: IO ()
-test_ActualActual = keepingSettings' $ runQLE $ do
+test_ActualActual = keepingSettings' $ runQLE $
   mapM_ (\(c, s, e, rs, re, t) -> do
     dc <- c
     f <- yearFraction dc s e rs re

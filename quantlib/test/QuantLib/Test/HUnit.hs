@@ -240,7 +240,7 @@ test_CallableBond = do
 test_EvalDate :: IO ()
 test_EvalDate = runQLE $ do
   t1 <- Settings.evaluationDate
-  t2 <- liftIO $ today
+  t2 <- liftIO today
   liftIO $ assertEqual t1 t2
 
 test_NullEvalDate :: IO ()
@@ -248,7 +248,7 @@ test_NullEvalDate = runQLE $ do
   Settings.setEvaluationDate (Just $ december 29 2012)
   t0 <- Settings.evaluationDate
   liftIO $ assertEqual t0 (fromGregorian 2012 12 29)
-  t2 <- liftIO $ today
+  t2 <- liftIO today
   Settings.setEvaluationDate Nothing
   t1 <- Settings.evaluationDate
   liftIO $ assertEqual t1 t2
@@ -285,21 +285,21 @@ test_EmptyLegStart = runQLE $ do
 
 test_SingleLegToday :: IO ()
 test_SingleLegToday = runQLE $ do
-  t <- liftIO $ today
+  t <- liftIO today
   l <- Leg.leg [(100, t)]
   let (Right sd) = Leg.startDate l
   liftIO $ assertEqual sd t
 
 test_TwoLegsUnsorted :: IO ()
 test_TwoLegsUnsorted = runQLE $ do
-  t <- liftIO $ today
+  t <- liftIO today
   l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
   let (Right sd) = Leg.startDate l
   liftIO $ assertEqual sd (addDays (-10) t)
 
 test_ThreeLegsSorted :: IO ()
 test_ThreeLegsSorted = runQLE $ do
-  t <- liftIO $ today
+  t <- liftIO today
   l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
   let (Right sd) = Leg.startDate l
   liftIO $ assertEqual sd (addDays (-10) t)

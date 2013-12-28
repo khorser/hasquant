@@ -107,7 +107,7 @@ test_ZSpreaded = keepingSettings' $ runQLE $ do
 setup :: QLE s (Calendar s, Word, YieldTermStructure s)
 setup = do
   calendar <- target
-  d <- liftIO $ today
+  d <- liftIO today
   today' <- adjust calendar d Following
   setEvaluationDate (Just today')
   settlement <- advance calendar today' (fromIntegral settlementDays) Days Following False

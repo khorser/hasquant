@@ -43,7 +43,7 @@ data Rate = Rate{refDateR :: Day, numIterR :: [Int], tenorsR :: [YearFraction], 
 run :: IO Result
 run = runQLE $ do
   cal <- nullCalendar
-  tod1 <- liftIO $ today
+  tod1 <- liftIO today
   tod <- adjust cal tod1 Following
   setEvaluationDate $ Just tod
   dc <- simple

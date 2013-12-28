@@ -32,7 +32,7 @@ import QuantLib.Types
 
 test_Settings :: IO ()
 test_Settings = keepingSettings' $ runQLE $ do
-  tod <- liftIO $ today
+  tod <- liftIO today
   setEvaluationDate (Just tod)
   l <- leg (zip (repeat 1.0) [tod .. addDays 2 tod])
 
