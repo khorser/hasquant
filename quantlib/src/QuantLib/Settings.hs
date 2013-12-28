@@ -35,23 +35,23 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
 
 -- |returns the current value of the Evaluation Date:
 -- the date at which pricing is to be performed
-evaluationDate :: IO Day
+evaluationDate :: QLE s Day
 evaluationDate = $(ffiCall 'evaluationDate) c_evaluationDate
 
 -- |sets the value of the Evaluation Date
 -- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
-setEvaluationDate :: Maybe Day -> IO ()
+setEvaluationDate :: Maybe Day -> QLE s ()
 setEvaluationDate = $(ffiCallX 'setEvaluationDate) c_setEvaluationDate
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date
-enforceTodaysHistoricFixings :: IO Bool
+enforceTodaysHistoricFixings :: QLE s Bool
 enforceTodaysHistoricFixings =
   $(ffiCall 'enforceTodaysHistoricFixings) c_enforceTodaysHistoricFixings
 
 -- |sets the value of the boolean which enforce the usage of historic fixings
 -- for today's date
-setEnforceTodaysHistoricFixings :: Bool -> IO ()
+setEnforceTodaysHistoricFixings :: Bool -> QLE s ()
 setEnforceTodaysHistoricFixings =
   $(ffiCall 'setEnforceTodaysHistoricFixings) c_setEnforceTodaysHistoricFixings
 
@@ -66,20 +66,20 @@ includeTodaysCashFlows = do
 foreign import ccall safe "ql.h qlSettingsIncludeTodaysCashFlows"
   c_includeTodaysCashFlows ::  IO CInt
 
-setIncludeTodaysCashFlows :: Maybe Bool -> IO ()
+setIncludeTodaysCashFlows :: Maybe Bool -> QLE s ()
 setIncludeTodaysCashFlows = $(ffiCall 'setIncludeTodaysCashFlows) c_setIncludeTodaysCashFlows
 
 foreign import ccall safe "ql.h qlSettingsSetIncludeTodaysCashFlows"
   c_setIncludeTodaysCashFlows :: CInt -> IO ()
 
 -- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
-includeReferenceDateEvents :: IO Bool
+includeReferenceDateEvents :: QLE s Bool
 includeReferenceDateEvents = $(ffiCall 'includeReferenceDateEvents) c_includeReferenceDateEvents
 
 foreign import ccall safe "ql.h qlSettingsIncludeReferenceDateEvents"
   c_includeReferenceDateEvents :: IO CInt
 
-setIncludeReferenceDateEvents :: Bool -> IO ()
+setIncludeReferenceDateEvents :: Bool -> QLE s ()
 setIncludeReferenceDateEvents = $(ffiCall 'setIncludeReferenceDateEvents) c_setIncludeReferenceDateEvents
 
 foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateEvents"

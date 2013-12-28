@@ -16,7 +16,7 @@ import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Types
 
-cap :: Leg -- ^floatingLeg
+cap :: Leg s -- ^floatingLeg
   -> [Double] -- ^exerciseRates
   -> QLE s (CapFloor s)
 cap = $(ffiCall 'cap) c_cap
@@ -24,7 +24,7 @@ cap = $(ffiCall 'cap) c_cap
 foreign import ccall safe "ql.h qlCap"
   c_cap :: Ptr CLeg -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CCapFloor)
 
-collar :: Leg -- ^floatingLeg
+collar :: Leg s -- ^floatingLeg
   -> [Double] -- ^capRates
   -> [Double] -- ^floorRates
   -> QLE s (CapFloor s)
@@ -33,7 +33,7 @@ collar = $(ffiCall 'collar) c_collar
 foreign import ccall safe "ql.h qlCollar"
   c_collar :: Ptr CLeg -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CCapFloor)
 
-floor :: Leg -- ^floatingLeg
+floor :: Leg s -- ^floatingLeg
   -> [Double] -- ^exerciseRates
   -> QLE s (CapFloor s)
 floor = $(ffiCall 'floor) c_floor
@@ -41,8 +41,8 @@ floor = $(ffiCall 'floor) c_floor
 foreign import ccall safe "ql.h qlFloor"
   c_floor :: Ptr CLeg -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CCapFloor)
 
-atmRate :: CapFloor
-  -> YieldTermStructure -- ^discountCurve
+atmRate :: CapFloor s
+  -> YieldTermStructure s -- ^discountCurve
   -> QLE s Double
 atmRate = $(ffiCallX 'atmRate) c_atmRate
 
@@ -50,9 +50,9 @@ foreign import ccall safe "ql.h qlCapFloorAtmRate"
   c_atmRate :: Ptr CCapFloor -> Ptr CYieldTermStructure -> Ptr CString -> IO CDouble
 
 -- |implied term volatility
-impliedVolatility :: CapFloor
+impliedVolatility :: CapFloor s
   -> Double -- ^price
-  -> YieldTermStructure -- ^disc
+  -> YieldTermStructure s -- ^disc
   -> Double -- ^guess
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
@@ -65,7 +65,7 @@ foreign import ccall safe "ql.h qlCapFloorImpliedVolatility"
   c_impliedVolatility :: Ptr CCapFloor -> CDouble -> Ptr CYieldTermStructure -> CDouble -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
-optionlet :: CapFloor
+optionlet :: CapFloor s
   -> Word -- ^n
   -> QLE s (CapFloor s)
 optionlet = $(ffiCall 'optionlet) c_optionlet

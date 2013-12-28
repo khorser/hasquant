@@ -31,7 +31,7 @@ forwardRateAgreement :: Day -- ^valueDate
   -> Double -- ^strikeForwardRate
   -> Double -- ^notionalAmount
   -> IborIndex -- ^index
-  -> Maybe YieldTermStructure -- ^discountCurve
+  -> Maybe (YieldTermStructure s) -- ^discountCurve
   -> QLE s (ForwardRateAgreement s)
 forwardRateAgreement = $(ffiCall 'forwardRateAgreement) c_forwardRateAgreement
 
@@ -48,8 +48,8 @@ fixedRateBondForward :: Day -- ^valueDate
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^businessDayConvention
   -> FixedRateBond -- ^fixedCouponBond
-  -> Maybe YieldTermStructure -- ^discountCurve
-  -> Maybe YieldTermStructure -- ^incomeDiscountCurve
+  -> Maybe (YieldTermStructure s) -- ^discountCurve
+  -> Maybe (YieldTermStructure s) -- ^incomeDiscountCurve
   -> QLE s (FixedRateBondForward s)
 fixedRateBondForward = $(ffiCall 'fixedRateBondForward) c_fixedRateBondForward
 

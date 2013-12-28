@@ -99,14 +99,14 @@ foreign import ccall safe "ql.h qlCalendarAdvance"
   c_advance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
-adjust :: Calendar
+adjust :: Calendar s
   -> Day
   -> BusinessDayConvention
   -> QLE s Day
 adjust = $(ffiCall 'adjust) c_adjust
 
 -- |Advances the given date of the given number of business days and returns the result
-advance :: Calendar
+advance :: Calendar s
   -> Day
   -> Int
   -> Unit
@@ -117,58 +117,58 @@ advance = $(ffiCall 'advance) c_advance
 
 -- |Calendar for reproducing theoretical calculations.
 -- This calendar has no holidays. It ensures that dates at whole-month distances have the same day of month.
-nullCalendar            :: IO Calendar
-target                  :: IO Calendar -- ^TARGET calendar
-argentinaMerval         :: IO Calendar -- ^Argentinian calendar: Buenos Aires stock exchange
-australia               :: IO Calendar -- ^Australian calendar
-brazilSettlement        :: IO Calendar -- ^Brazilian calendar: generic settlement
-brazilExchange          :: IO Calendar -- ^Brazilian calendar: BOVESPA
-canadaSettlement        :: IO Calendar -- ^Canadian calendar: generic settlement
-canadaTSX               :: IO Calendar -- ^Canadian calendar: Toronto stock exchange
-china                   :: IO Calendar -- ^Chinese calendar
-czechRepublicPSE        :: IO Calendar -- ^Czech calendar: Prague stock exchange
-denmark                 :: IO Calendar -- ^Danish calendar
-finland                 :: IO Calendar -- ^Finnish calendar
-germanyEurex            :: IO Calendar -- ^German calendar: Eurex
-germanyFrankfurtStockExchange :: IO Calendar -- ^German calendar: Frankfurt stock-exchange
-germanySettlement       :: IO Calendar -- ^German calendar: generic settlement
-germanyXetra            :: IO Calendar -- ^German calendar: Xetra
-hongKongHKEx            :: IO Calendar -- ^Hong Kong calendar: Hong Kong stock exchange
-hungary                 :: IO Calendar -- ^Hungarian calendar
-icelandICEX             :: IO Calendar -- ^Icelandic calendar: Iceland stock exchange.
-indiaNSE                :: IO Calendar -- ^Indian calendar: National Stock Exchange.
-indonesiaBEJ            :: IO Calendar -- ^Indonesian calendar: Jakarta stock exchange (merged into IDX)
-indonesiaJSX            :: IO Calendar -- ^Indonesian calendar: Jakarta stock exchange (merged into IDX)
-indonesiaIDX            :: IO Calendar -- ^Indonesian calendar: Indonesia stock exchange
-italyExchange           :: IO Calendar -- ^Italian calendar: Milan stock-exchange
-italySettlement         :: IO Calendar -- ^Italian calendar: generic settlement
-japan                   :: IO Calendar -- ^Japanese calendar
-mexicoBMV               :: IO Calendar -- ^Mexican calendar: Mexican stock exchange
-newZealand              :: IO Calendar -- ^New Zealand calendar
-norway                  :: IO Calendar -- ^Norwegian calendar
-poland                  :: IO Calendar -- ^Polish calendar
-russia                  :: IO Calendar -- ^Russian calendar
-saudiArabiaTadawul      :: IO Calendar -- ^Saudi Arabian calendar: Tadawul financial market
-singaporeSGX            :: IO Calendar -- ^Singapore calendar: Singapore exchange.
-slovakiaBSSE            :: IO Calendar -- ^Slovak calendars: Bratislava stock exchange
-southAfrica             :: IO Calendar -- ^South-African calendar
-southKoreaKRX           :: IO Calendar -- ^South Korean calendar: KRX
-southKoreaSettlement    :: IO Calendar -- ^South Korean calendar: public holidays
-sweden                  :: IO Calendar -- ^Swedish calendar
-switzerland             :: IO Calendar -- ^Swiss calendar
-taiwanTSEC              :: IO Calendar -- ^Taiwanese calendar: Taiwan stock exchange
-turkey                  :: IO Calendar -- ^Turkish calendar
-ukraineUSE              :: IO Calendar -- ^Ukrainian calendar: Ukrainian stock exchange
-unitedKingdomExchange   :: IO Calendar -- ^United Kingdom calendar: London stock-exchange
-unitedKingdomMetals     :: IO Calendar -- ^United Kingdom calendar: London metal exchange
-unitedKingdomSettlement :: IO Calendar -- ^United Kingdom calendar: generic settlement
-unitedStatesGovernmentBond:: IO Calendar -- ^United States calendar: government-bond
-unitedStatesNERC        :: IO Calendar -- ^United States calendar: off-peak days for NERC
-unitedStatesNYSE        :: IO Calendar -- ^United States calendar: New York stock exchange
-unitedStatesSettlement  :: IO Calendar -- ^United States calendar: generic settlement
+nullCalendar            :: QLE s (Calendar s)
+target                  :: QLE s (Calendar s) -- ^TARGET calendar
+argentinaMerval         :: QLE s (Calendar s) -- ^Argentinian calendar: Buenos Aires stock exchange
+australia               :: QLE s (Calendar s) -- ^Australian calendar
+brazilSettlement        :: QLE s (Calendar s) -- ^Brazilian calendar: generic settlement
+brazilExchange          :: QLE s (Calendar s) -- ^Brazilian calendar: BOVESPA
+canadaSettlement        :: QLE s (Calendar s) -- ^Canadian calendar: generic settlement
+canadaTSX               :: QLE s (Calendar s) -- ^Canadian calendar: Toronto stock exchange
+china                   :: QLE s (Calendar s) -- ^Chinese calendar
+czechRepublicPSE        :: QLE s (Calendar s) -- ^Czech calendar: Prague stock exchange
+denmark                 :: QLE s (Calendar s) -- ^Danish calendar
+finland                 :: QLE s (Calendar s) -- ^Finnish calendar
+germanyEurex            :: QLE s (Calendar s) -- ^German calendar: Eurex
+germanyFrankfurtStockExchange :: QLE s (Calendar s) -- ^German calendar: Frankfurt stock-exchange
+germanySettlement       :: QLE s (Calendar s) -- ^German calendar: generic settlement
+germanyXetra            :: QLE s (Calendar s) -- ^German calendar: Xetra
+hongKongHKEx            :: QLE s (Calendar s) -- ^Hong Kong calendar: Hong Kong stock exchange
+hungary                 :: QLE s (Calendar s) -- ^Hungarian calendar
+icelandICEX             :: QLE s (Calendar s) -- ^Icelandic calendar: Iceland stock exchange.
+indiaNSE                :: QLE s (Calendar s) -- ^Indian calendar: National Stock Exchange.
+indonesiaBEJ            :: QLE s (Calendar s) -- ^Indonesian calendar: Jakarta stock exchange (merged into IDX)
+indonesiaJSX            :: QLE s (Calendar s) -- ^Indonesian calendar: Jakarta stock exchange (merged into IDX)
+indonesiaIDX            :: QLE s (Calendar s) -- ^Indonesian calendar: Indonesia stock exchange
+italyExchange           :: QLE s (Calendar s) -- ^Italian calendar: Milan stock-exchange
+italySettlement         :: QLE s (Calendar s) -- ^Italian calendar: generic settlement
+japan                   :: QLE s (Calendar s) -- ^Japanese calendar
+mexicoBMV               :: QLE s (Calendar s) -- ^Mexican calendar: Mexican stock exchange
+newZealand              :: QLE s (Calendar s) -- ^New Zealand calendar
+norway                  :: QLE s (Calendar s) -- ^Norwegian calendar
+poland                  :: QLE s (Calendar s) -- ^Polish calendar
+russia                  :: QLE s (Calendar s) -- ^Russian calendar
+saudiArabiaTadawul      :: QLE s (Calendar s) -- ^Saudi Arabian calendar: Tadawul financial market
+singaporeSGX            :: QLE s (Calendar s) -- ^Singapore calendar: Singapore exchange.
+slovakiaBSSE            :: QLE s (Calendar s) -- ^Slovak calendars: Bratislava stock exchange
+southAfrica             :: QLE s (Calendar s) -- ^South-African calendar
+southKoreaKRX           :: QLE s (Calendar s) -- ^South Korean calendar: KRX
+southKoreaSettlement    :: QLE s (Calendar s) -- ^South Korean calendar: public holidays
+sweden                  :: QLE s (Calendar s) -- ^Swedish calendar
+switzerland             :: QLE s (Calendar s) -- ^Swiss calendar
+taiwanTSEC              :: QLE s (Calendar s) -- ^Taiwanese calendar: Taiwan stock exchange
+turkey                  :: QLE s (Calendar s) -- ^Turkish calendar
+ukraineUSE              :: QLE s (Calendar s) -- ^Ukrainian calendar: Ukrainian stock exchange
+unitedKingdomExchange   :: QLE s (Calendar s) -- ^United Kingdom calendar: London stock-exchange
+unitedKingdomMetals     :: QLE s (Calendar s) -- ^United Kingdom calendar: London metal exchange
+unitedKingdomSettlement :: QLE s (Calendar s) -- ^United Kingdom calendar: generic settlement
+unitedStatesGovernmentBond:: QLE s (Calendar s) -- ^United States calendar: government-bond
+unitedStatesNERC        :: QLE s (Calendar s) -- ^United States calendar: off-peak days for NERC
+unitedStatesNYSE        :: QLE s (Calendar s) -- ^United States calendar: New York stock exchange
+unitedStatesSettlement  :: QLE s (Calendar s) -- ^United States calendar: generic settlement
 -- |Weekends-only calendar.
 -- This calendar has no bank holidays except for weekends (Saturdays and Sundays) as required by ISDA for calculating conventional CDS spreads.
-weekendsOnly            :: IO Calendar
+weekendsOnly            :: QLE s (Calendar s)
 
 nullCalendar            = constructNamed "NullCalendar"
 target                  = constructNamed "TARGET"
@@ -222,14 +222,14 @@ unitedStatesSettlement  = constructNamed "UnitedStates::Settlement"
 weekendsOnly            = constructNamed "WeekendsOnly"
 
 -- |Adds a date to the set of holidays for the given calendar.
-addHoliday :: Calendar -> Day -> IO ()
+addHoliday :: Calendar s -> Day -> QLE s ()
 addHoliday = $(ffiCallX 'addHoliday) c_addHoliday
 
 foreign import ccall safe "ql.h qlCalendarAddHoliday"
   c_addHoliday :: Ptr CCalendar -> CDate -> Ptr CString -> IO ()
 
 -- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
-advance' :: Calendar
+advance' :: Calendar s
   -> Day -- ^date
   -> (Int, Unit) -- ^period
   -> BusinessDayConvention -- ^convention
@@ -241,7 +241,7 @@ foreign import ccall safe "ql.h qlCalendarAdvance1"
   c_advance' :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CDate
 
 -- |Calculates the number of business days between two given dates and returns the result.
-businessDaysBetween :: Calendar
+businessDaysBetween :: Calendar s
   -> Day -- ^from
   -> Day -- ^to
   -> Bool -- ^includeFirst
@@ -253,7 +253,7 @@ foreign import ccall safe "ql.h qlCalendarBusinessDaysBetween"
   c_businessDaysBetween :: Ptr CCalendar -> CDate -> CDate -> CInt -> CInt -> Ptr CString -> IO CInt
 
 -- |last business day of the month to which the given date belongs
-endOfMonth :: Calendar
+endOfMonth :: Calendar s
   -> Day -- ^d
   -> QLE s Day
 endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
@@ -262,7 +262,7 @@ foreign import ccall safe "ql.h qlCalendarEndOfMonth"
   c_endOfMonth :: Ptr CCalendar -> CDate -> Ptr CString -> IO CDate
 
 -- |Returns true iff the date is a business day for the given market.
-isBusinessDay :: Calendar
+isBusinessDay :: Calendar s
   -> Day -- ^d
   -> QLE s Bool
 isBusinessDay = $(ffiCallX 'isBusinessDay) c_isBusinessDay
@@ -271,7 +271,7 @@ foreign import ccall safe "ql.h qlCalendarIsBusinessDay"
   c_isBusinessDay :: Ptr CCalendar -> CDate -> Ptr CString -> IO CInt
 
 -- |Returns true iff the date is last business day for the month in given market.
-isEndOfMonth :: Calendar
+isEndOfMonth :: Calendar s
   -> Day -- ^d
   -> QLE s Bool
 isEndOfMonth = $(ffiCallX 'isEndOfMonth) c_isEndOfMonth
@@ -280,7 +280,7 @@ foreign import ccall safe "ql.h qlCalendarIsEndOfMonth"
   c_isEndOfMonth :: Ptr CCalendar -> CDate -> Ptr CString -> IO CInt
 
 -- |Returns true iff the date is a holiday for the given market.
-isHoliday :: Calendar
+isHoliday :: Calendar s
   -> Day -- ^d
   -> QLE s Bool
 isHoliday = $(ffiCallX 'isHoliday) c_isHoliday
@@ -289,7 +289,7 @@ foreign import ccall safe "ql.h qlCalendarIsHoliday"
   c_isHoliday :: Ptr CCalendar -> CDate -> Ptr CString -> IO CInt
 
 -- |Returns true iff the weekday is part of the weekend for the given market.
-isWeekend :: Calendar
+isWeekend :: Calendar s
   -> Weekday -- ^w
   -> QLE s Bool
 isWeekend = $(ffiCallX 'isWeekend) c_isWeekend
@@ -298,9 +298,7 @@ foreign import ccall safe "ql.h qlCalendarIsWeekend"
   c_isWeekend :: Ptr CCalendar -> CInt -> Ptr CString -> IO CInt
 
 -- |Removes a date from the set of holidays for the given calendar.
-removeHoliday :: Calendar
-  -> Day
-  -> IO ()
+removeHoliday :: Calendar s -> Day -> QLE s ()
 removeHoliday = $(ffiCallX 'removeHoliday) c_removeHoliday
 
 foreign import ccall safe "ql.h qlCalendarRemoveHoliday"
@@ -309,39 +307,39 @@ foreign import ccall safe "ql.h qlCalendarRemoveHoliday"
 -- |/Warning/ different bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal.
 bespokeCalendar :: String -- ^name
   -> [Weekday] -- ^weekends
-  -> IO Calendar
+  -> QLE s (Calendar s)
 bespokeCalendar = $(ffiCall 'bespokeCalendar) c_bespokeCalendar
 
 foreign import ccall safe "ql.h qlBespokeCalendar"
   c_bespokeCalendar :: CString -> CUInt -> Ptr CInt -> Ptr CString -> IO (Ptr CCalendar)
 
-jointCalendar3 :: Calendar -> Calendar -> Calendar -> JointCalendarRule
-  -> IO Calendar
+jointCalendar3 :: Calendar s -> Calendar s -> Calendar s -> JointCalendarRule
+  -> QLE s (Calendar s)
 jointCalendar3 = $(ffiCall 'jointCalendar3) c_jointCalendar3
 
 foreign import ccall safe "ql.h qlJointCalendar3"
   c_jointCalendar3 :: Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
 
-jointCalendar4 :: Calendar -> Calendar -> Calendar
-  -> Calendar -> JointCalendarRule -> IO Calendar
+jointCalendar4 :: Calendar s -> Calendar s -> Calendar s
+  -> Calendar s -> JointCalendarRule -> QLE s (Calendar s)
 jointCalendar4 = $(ffiCall 'jointCalendar4) c_jointCalendar4
 
 foreign import ccall safe "ql.h qlJointCalendar4"
   c_jointCalendar4 :: Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
 
-jointCalendar2 :: Calendar -> Calendar -> JointCalendarRule -> IO Calendar
+jointCalendar2 :: Calendar s -> Calendar s -> JointCalendarRule -> QLE s (Calendar s)
 jointCalendar2 = $(ffiCall 'jointCalendar2) c_jointCalendar2
 
 foreign import ccall safe "ql.h qlJointCalendar2"
   c_jointCalendar2 :: Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
 
 -- |Returns the holidays between two dates.
-holidays :: Calendar -- ^calendar
+holidays :: Calendar s -- ^calendar
   -> Day -- ^from
   -> Day -- ^to
   -> Bool -- ^includeWeekEnds
-  -> IO [Day]
-holidays c from to w =
+  -> QLE s [Day]
+holidays c from to w = mkQLE $
   map fromQlDate <$>
     withObject c
       (\cc -> do

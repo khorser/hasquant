@@ -14,7 +14,7 @@ import QuantLib.Types
 
 -- |default instance
 -- Instances built through this constructor don't perform any rounding.
-rounding :: QLE s Rounding
+rounding :: QLE s (Rounding s)
 rounding = $(ffiCall 'rounding) c_rounding
 
 foreign import ccall safe "ql.h qlRounding"
@@ -23,13 +23,13 @@ foreign import ccall safe "ql.h qlRounding"
 rounding' :: Int -- ^precision
   -> RoundingType -- ^type
   -> Int -- ^digit
-  -> QLE s Rounding
+  -> QLE s (Rounding s)
 rounding' = $(ffiCall 'rounding') c_rounding'
 
 foreign import ccall safe "ql.h qlRounding1"
   c_rounding' :: CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CRounding)
 
-applyRounding :: Rounding -> Double -> Double
+applyRounding :: Rounding s -> Double -> Double
 applyRounding = $(ffiCallPure 'applyRounding) c_applyRounding
 
 foreign import ccall safe "ql.h qlRound"

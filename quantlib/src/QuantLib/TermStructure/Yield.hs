@@ -152,7 +152,7 @@ swapRateHelper' :: Quote -- ^rate
   -> IborIndex -- ^iborIndex
   -> Maybe Quote -- ^spread
   -> (Int, Unit) -- ^fwdStart
-  -> Maybe YieldTermStructure -- ^discountingCurve
+  -> Maybe (YieldTermStructure s) -- ^discountingCurve
   -> QLE s (SwapRateHelper s)
 swapRateHelper' = $(ffiCall 'swapRateHelper') c_swapRateHelper'
 
@@ -395,7 +395,7 @@ oisRateHelper :: Word -- ^settlementDays
   -> (Int, Unit) -- ^tenor
   -> Quote -- ^fixedRate
   -> OvernightIndex -- ^overnightIndex
-  -> Maybe YieldTermStructure -- ^discountingCurve
+  -> Maybe (YieldTermStructure s) -- ^discountingCurve
   -> QLE s (OISRateHelper s)
 oisRateHelper = $(ffiCall 'oisRateHelper) c_oisRateHelper
 
@@ -406,7 +406,7 @@ swapRateHelper :: Quote -- ^rate
   -> SwapIndex -- ^swapIndex
   -> Maybe Quote -- ^spread
   -> (Int, Unit) -- ^fwdStart
-  -> Maybe YieldTermStructure -- ^discountingCurve
+  -> Maybe (YieldTermStructure s) -- ^discountingCurve
   -> QLE s (SwapRateHelper s)
 swapRateHelper = $(ffiCall 'swapRateHelper) c_swapRateHelper
 
@@ -451,7 +451,7 @@ datedOISRateHelper :: Day -- ^startDate
   -> Day -- ^endDate
   -> Quote -- ^fixedRate
   -> OvernightIndex -- ^overnightIndex
-  -> Maybe YieldTermStructure -- ^discountingCurve
+  -> Maybe (YieldTermStructure s) -- ^discountingCurve
   -> QLE s (RateHelper s)
 datedOISRateHelper = $(ffiCall 'datedOISRateHelper) c_datedOISRateHelper
 

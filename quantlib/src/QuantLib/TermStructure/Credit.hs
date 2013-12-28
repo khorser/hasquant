@@ -39,8 +39,8 @@ import QuantLib.Time.Unit(Unit)
 import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 
-factorSpreadedHazardRateCurve :: DefaultProbabilityTermStructure -- ^originalCurve
-  -> Quote -- ^spread
+factorSpreadedHazardRateCurve :: DefaultProbabilityTermStructure s -- ^originalCurve
+  -> Quote s -- ^spread
   -> QLE s (DefaultProbabilityTermStructure s)
 factorSpreadedHazardRateCurve = $(ffiCall 'factorSpreadedHazardRateCurve) c_factorSpreadedHazardRateCurve
 
@@ -48,9 +48,9 @@ foreign import ccall safe "ql.h qlFactorSpreadedHazardRateCurve"
   c_factorSpreadedHazardRateCurve :: Ptr CDefaultProbabilityTermStructure -> Ptr CQuote -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
 flatHazardRate' :: Word -- ^settlementDays
-  -> Calendar -- ^calendar
-  -> Quote -- ^hazardRate
-  -> DayCounter
+  -> Calendar s -- ^calendar
+  -> Quote s -- ^hazardRate
+  -> DayCounter s
   -> QLE s (DefaultProbabilityTermStructure s)
 flatHazardRate' = $(ffiCall 'flatHazardRate') c_flatHazardRate'
 
@@ -58,16 +58,16 @@ foreign import ccall safe "ql.h qlFlatHazardRate1"
   c_flatHazardRate' :: CUInt -> Ptr CCalendar -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
 flatHazardRate :: Day -- ^referenceDate
-  -> Quote -- ^hazardRate
-  -> DayCounter
+  -> Quote s -- ^hazardRate
+  -> DayCounter s
   -> QLE s (DefaultProbabilityTermStructure s)
 flatHazardRate = $(ffiCall 'flatHazardRate) c_flatHazardRate
 
 foreign import ccall safe "ql.h qlFlatHazardRate"
   c_flatHazardRate :: CDate -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
-spreadedHazardRateCurve :: DefaultProbabilityTermStructure -- ^originalCurve
-  -> Quote -- ^spread
+spreadedHazardRateCurve :: DefaultProbabilityTermStructure s -- ^originalCurve
+  -> Quote s -- ^spread
   -> QLE s (DefaultProbabilityTermStructure s)
 spreadedHazardRateCurve = $(ffiCall 'spreadedHazardRateCurve) c_spreadedHazardRateCurve
 
@@ -76,9 +76,9 @@ foreign import ccall safe "ql.h qlSpreadedHazardRateCurve"
 
 interpolatedDefaultDensityCurve :: [Day] -- ^dates
   -> [Double] -- ^densities
-  -> DayCounter -- ^dayCounter
-  -> Calendar -- ^calendar
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> DayCounter s -- ^dayCounter
+  -> Calendar s -- ^calendar
+  -> [(Quote s, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> QLE s (DefaultProbabilityTermStructure s)
 interpolatedDefaultDensityCurve = $(ffiCall 'interpolatedDefaultDensityCurve) c_interpolatedDefaultDensityCurve
@@ -88,9 +88,9 @@ foreign import ccall safe "ql.h qlInterpolatedDefaultDensityCurve"
 
 interpolatedHazardRateCurve :: [Day] -- ^dates
   -> [Double] -- ^hazardRates
-  -> DayCounter -- ^dayCounter
-  -> Calendar -- ^cal
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> DayCounter s -- ^dayCounter
+  -> Calendar s -- ^cal
+  -> [(Quote s, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> QLE s (DefaultProbabilityTermStructure s)
 interpolatedHazardRateCurve = $(ffiCall 'interpolatedHazardRateCurve) c_interpolatedHazardRateCurve
@@ -100,9 +100,9 @@ foreign import ccall safe "ql.h qlInterpolatedHazardRateCurve"
 
 interpolatedSurvivalProbabilityCurve :: [Day] -- ^dates
   -> [Double] -- ^probabilities
-  -> DayCounter -- ^dayCounter
-  -> Calendar -- ^calendar
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> DayCounter s -- ^dayCounter
+  -> Calendar s -- ^calendar
+  -> [(Quote s, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> QLE s (DefaultProbabilityTermStructure s)
 interpolatedSurvivalProbabilityCurve = $(ffiCall 'interpolatedSurvivalProbabilityCurve) c_interpolatedSurvivalProbabilityCurve
@@ -110,16 +110,16 @@ interpolatedSurvivalProbabilityCurve = $(ffiCall 'interpolatedSurvivalProbabilit
 foreign import ccall safe "ql.h qlInterpolatedSurvivalProbabilityCurve"
   c_interpolatedSurvivalProbabilityCurve :: CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
-spreadCdsHelper :: Quote -- ^runningSpread
+spreadCdsHelper :: Quote s -- ^runningSpread
   -> (Int, Unit) -- ^tenor
   -> Int -- ^settlementDays
-  -> Calendar -- ^calendar
+  -> Calendar s -- ^calendar
   -> Frequency -- ^frequency
   -> BusinessDayConvention -- ^paymentConvention
   -> DateGenerationRule -- ^rule
-  -> DayCounter -- ^dayCounter
+  -> DayCounter s -- ^dayCounter
   -> Double -- ^recoveryRate
-  -> YieldTermStructure -- ^discountCurve
+  -> YieldTermStructure s -- ^discountCurve
   -> Bool -- ^settlesAccrual
   -> Bool -- ^paysAtDefaultTime
   -> QLE s (DefaultProbabilityHelper s)
@@ -129,17 +129,17 @@ foreign import ccall safe "ql.h qlSpreadCdsHelper"
   c_spreadCdsHelper :: Ptr CQuote -> CInt -> CInt -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
 
 -- |the upfront must be quoted in fractional units.
-upfrontCdsHelper :: Quote -- ^upfront
+upfrontCdsHelper :: Quote s -- ^upfront
   -> Double -- ^runningSpread
   -> (Int, Unit) -- ^tenor
   -> Int -- ^settlementDays
-  -> Calendar -- ^calendar
+  -> Calendar s -- ^calendar
   -> Frequency -- ^frequency
   -> BusinessDayConvention -- ^paymentConvention
   -> DateGenerationRule -- ^rule
-  -> DayCounter -- ^dayCounter
+  -> DayCounter s -- ^dayCounter
   -> Double -- ^recoveryRate
-  -> YieldTermStructure -- ^discountCurve
+  -> YieldTermStructure s -- ^discountCurve
   -> Word -- ^upfrontSettlementDays
   -> Bool -- ^settlesAccrual
   -> Bool -- ^paysAtDefaultTime
@@ -150,9 +150,9 @@ foreign import ccall safe "ql.h qlUpfrontCdsHelper"
   c_upfrontCdsHelper :: Ptr CQuote -> CDouble -> CInt -> CInt -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CUInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
 
 piecewiseDefaultCurve :: Day -- ^referenceDate
-  -> [DefaultProbabilityHelper] -- ^instruments
-  -> DayCounter -- ^dayCounter
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> [DefaultProbabilityHelper s] -- ^instruments
+  -> DayCounter s -- ^dayCounter
+  -> [(Quote s, Day)] -- ^jumps, jumpDates
   -> Double -- ^accuracy
   -> ProbabilityTrait
   -> Interpolation -- ^i
@@ -163,10 +163,10 @@ foreign import ccall safe "ql.h qlPiecewiseDefaultCurve"
   c_piecewiseDefaultCurve :: CDate -> CUInt -> Ptr (Ptr CDefaultProbabilityHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
 piecewiseDefaultCurve' :: Word -- ^settlementDays
-  -> Calendar -- ^calendar
-  -> [DefaultProbabilityHelper] -- ^instruments
-  -> DayCounter -- ^dayCounter
-  -> [(Quote, Day)] -- ^jumps, ^jumpDates
+  -> Calendar s -- ^calendar
+  -> [DefaultProbabilityHelper s] -- ^instruments
+  -> DayCounter s -- ^dayCounter
+  -> [(Quote s, Day)] -- ^jumps, ^jumpDates
   -> Double -- ^accuracy
   -> ProbabilityTrait
   -> Interpolation -- ^i
@@ -176,7 +176,7 @@ piecewiseDefaultCurve' = $(ffiCall 'piecewiseDefaultCurve') c_piecewiseDefaultCu
 foreign import ccall safe "ql.h qlPiecewiseDefaultCurve1"
   c_piecewiseDefaultCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CDefaultProbabilityHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
-defaultDensity' :: DefaultProbabilityTermStructure
+defaultDensity' :: DefaultProbabilityTermStructure s
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -185,7 +185,7 @@ defaultDensity' = $(ffiCallX 'defaultDensity') c_defaultDensity'
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity1"
   c_defaultDensity' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
 
-defaultDensity :: DefaultProbabilityTermStructure
+defaultDensity :: DefaultProbabilityTermStructure s
   -> Day -- ^d
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -195,7 +195,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity"
   c_defaultDensity :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-defaultProbability' :: DefaultProbabilityTermStructure
+defaultProbability' :: DefaultProbabilityTermStructure s
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -205,7 +205,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbabil
   c_defaultProbability' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
 
 -- |probability of default between two given dates
-defaultProbabilityBetween :: DefaultProbabilityTermStructure
+defaultProbabilityBetween :: DefaultProbabilityTermStructure s
   -> Day
   -> Day
   -> Bool -- ^extrapolate
@@ -216,7 +216,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbabil
   c_defaultProbabilityBetween :: Ptr CDefaultProbabilityTermStructure -> CDate -> CDate -> CInt -> Ptr CString -> IO CDouble
 
 -- |probability of default between two given times
-defaultProbabilityBetween' :: DefaultProbabilityTermStructure
+defaultProbabilityBetween' :: DefaultProbabilityTermStructure s
   -> YearFraction
   -> YearFraction
   -> Bool -- ^extrapo
@@ -226,7 +226,7 @@ defaultProbabilityBetween' = $(ffiCallX 'defaultProbabilityBetween') c_defaultPr
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability3"
   c_defaultProbabilityBetween' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
 
-defaultProbability :: DefaultProbabilityTermStructure
+defaultProbability :: DefaultProbabilityTermStructure s
   -> Day -- ^d
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -235,7 +235,7 @@ defaultProbability = $(ffiCallX 'defaultProbability) c_defaultProbability
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability"
   c_defaultProbability :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
 
-hazardRate' :: DefaultProbabilityTermStructure
+hazardRate' :: DefaultProbabilityTermStructure s
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -244,7 +244,7 @@ hazardRate' = $(ffiCallX 'hazardRate') c_hazardRate'
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate1"
   c_hazardRate' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
 
-hazardRate :: DefaultProbabilityTermStructure
+hazardRate :: DefaultProbabilityTermStructure s
   -> Day -- ^d
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -254,7 +254,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate"
   c_hazardRate :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-survivalProbability' :: DefaultProbabilityTermStructure
+survivalProbability' :: DefaultProbabilityTermStructure s
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
   -> QLE s Double
@@ -263,7 +263,7 @@ survivalProbability' = $(ffiCallX 'survivalProbability') c_survivalProbability'
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureSurvivalProbability1"
   c_survivalProbability' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
 
-survivalProbability :: DefaultProbabilityTermStructure
+survivalProbability :: DefaultProbabilityTermStructure s
   -> Day -- ^d
   -> Bool -- ^extrapolate
   -> QLE s Double

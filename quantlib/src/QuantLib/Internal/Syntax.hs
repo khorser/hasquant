@@ -186,6 +186,9 @@ topArgType (AppT ListT (AppT (AppT (TupleT 2) (AppT (ConT n1) _)) (ConT n2))) =
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond (
   ''Double ==? MatrixDoubleA <||>
   isObject =>? MatrixObjectA) n
+topArgType (AppT (ConT m) (AppT (ConT n) _)) | m == ''Matrix = runCond (
+  ''Double ==? MatrixDoubleA <||>
+  isObject =>? MatrixObjectA) n
 topArgType (AppT c@(ConT _) (VarT _)) = topArgType c
 topArgType (AppT (AppT c@(ConT o) _) _) | o == ''Object = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =

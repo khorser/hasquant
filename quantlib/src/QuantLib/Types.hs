@@ -208,6 +208,9 @@ module QuantLib.Types
   , qlEpsilon
 
   , QLError(..)
+  , QL(..)
+  , QLE
+  , runQLE
   )
 where
 

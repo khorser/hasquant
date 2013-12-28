@@ -300,7 +300,7 @@ foreign import ccall safe "ql.h qlAddPeriod"
   c_addPeriod :: CDate -> CInt -> CInt -> Ptr CString -> IO CDate
 
 addECBDate :: Day -- ^d
-  -> IO ()
+  -> QLE s ()
 addECBDate = $(ffiCallX 'addECBDate) c_addECBDate
 
 foreign import ccall safe "ql.h qlECBAddDate"
@@ -308,7 +308,7 @@ foreign import ccall safe "ql.h qlECBAddDate"
 
 -- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).WarningIt raises an exception if the input date is not an ECB date
 ecbCode :: Day -- ^ecbDate
-  -> IO String
+  -> QLE s String
 ecbCode = $(ffiCallX 'ecbCode) c_ecbCode
 
 foreign import ccall safe "ql.h qlECBCode"
@@ -317,7 +317,7 @@ foreign import ccall safe "ql.h qlECBCode"
 -- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
 ecbDate' :: String -- ^ecbCode
   -> Maybe Day -- ^referenceDate
-  -> IO Day
+  -> QLE s Day
 ecbDate' = $(ffiCallX 'ecbDate') c_ecbDate'
 
 foreign import ccall safe "ql.h qlECBDate1"
@@ -326,7 +326,7 @@ foreign import ccall safe "ql.h qlECBDate1"
 -- |maintenance period start date in the given month/year
 ecbDate :: Month -- ^m
   -> Int -- ^y
-  -> IO Day
+  -> QLE s Day
 ecbDate = $(ffiCallX 'ecbDate) c_ecbDate
 
 foreign import ccall safe "ql.h qlECBDate"
@@ -334,7 +334,7 @@ foreign import ccall safe "ql.h qlECBDate"
 
 -- |returns whether or not the given string is an ECB code
 isECBCode :: String -- ^in
-  -> IO Bool
+  -> QLE s Bool
 isECBCode = $(ffiCallX 'isECBCode) c_isECBCode
 
 foreign import ccall safe "ql.h qlECBIsECBcode"
@@ -342,7 +342,7 @@ foreign import ccall safe "ql.h qlECBIsECBcode"
 
 -- |returns whether or not the given date is a maintenance period start date
 isECBDate :: Day -- ^d
-  -> IO Bool
+  -> QLE s Bool
 isECBDate = $(ffiCallX 'isECBDate) c_isECBDate
 
 foreign import ccall safe "ql.h qlECBIsECBdate"
@@ -356,7 +356,7 @@ foreign import ccall safe "ql.h qlECBKnownDates"
 
 -- |next ECB code following the given code
 nextECBCode' :: String -- ^ecbCode
-  -> IO String
+  -> QLE s String
 nextECBCode' = $(ffiCallX 'nextECBCode') c_nextECBCode'
 
 foreign import ccall safe "ql.h qlECBNextCode1"
@@ -364,7 +364,7 @@ foreign import ccall safe "ql.h qlECBNextCode1"
 
 -- |next ECB code following the given date
 nextECBCode :: Maybe Day -- ^d
-  -> IO String
+  -> QLE s String
 nextECBCode = $(ffiCallX 'nextECBCode) c_nextECBCode
 
 foreign import ccall safe "ql.h qlECBNextCode"
@@ -373,7 +373,7 @@ foreign import ccall safe "ql.h qlECBNextCode"
 -- |next maintenance period start date following the given ECB code
 nextECBDate' :: String -- ^ecbCode
   -> Maybe Day -- ^referenceDate
-  -> IO Day
+  -> QLE s Day
 nextECBDate' = $(ffiCallX 'nextECBDate') c_nextECBDate'
 
 foreign import ccall safe "ql.h qlECBNextDate1"
@@ -381,7 +381,7 @@ foreign import ccall safe "ql.h qlECBNextDate1"
 
 -- |next maintenance period start date following the given date
 nextECBDate :: Maybe Day -- ^d
-  -> IO Day
+  -> QLE s Day
 nextECBDate = $(ffiCallX 'nextECBDate) c_nextECBDate
 
 foreign import ccall safe "ql.h qlECBNextDate"
@@ -390,8 +390,8 @@ foreign import ccall safe "ql.h qlECBNextDate"
 -- |next maintenance period start dates following the given code
 nextECBDates' :: String -- ^ecbCode
   -> Maybe Day -- ^referenceDate
-  -> IO [Day]
-nextECBDates' c d = map fromQlDate <$>
+  -> QLE s [Day]
+nextECBDates' c d = mkQLE $ map fromQlDate <$>
   withCString c (\s -> withDay d (getArrayX . c_nextECBDates' s))
 
 foreign import ccall safe "ql.h qlECBNextDates1"
@@ -399,8 +399,8 @@ foreign import ccall safe "ql.h qlECBNextDates1"
 
 -- |next maintenance period start dates following the given date
 nextECBDates :: Maybe Day -- ^d
-  -> IO [Day]
-nextECBDates d = map fromQlDate <$> do
+  -> QLE s [Day]
+nextECBDates d = mkQLE $ map fromQlDate <$> do
   dd <- toQlDate d
   getArrayX $ c_nextECBDates dd
 
@@ -408,7 +408,7 @@ foreign import ccall safe "ql.h qlECBNextDates"
   c_nextECBDates :: CDate -> Ptr CUInt -> Ptr CString -> IO(Ptr CDate)
 
 removeECBDate :: Day -- ^d
-  -> IO ()
+  -> QLE s ()
 removeECBDate = $(ffiCallX 'removeECBDate) c_removeECBDate
 
 foreign import ccall safe "ql.h qlECBRemoveDate"

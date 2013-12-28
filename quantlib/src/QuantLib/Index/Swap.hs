@@ -26,72 +26,72 @@ import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
 
 chfLiborSwapIsdaFix :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 chfLiborSwapIsdaFix = createLiborSwapIndex "ChfLiborSwapIsdaFix"
 
 eurLiborSwapIfrFix :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 eurLiborSwapIfrFix = createLiborSwapIndex "EurLiborSwapIfrFix"
 
 eurLiborSwapIsdaFixA :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 eurLiborSwapIsdaFixA = createLiborSwapIndex "EurLiborSwapIsdaFixA"
 
 eurLiborSwapIsdaFixB :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 eurLiborSwapIsdaFixB = createLiborSwapIndex "EurLiborSwapIsdaFixB"
 
 gbpLiborSwapIsdaFix :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 gbpLiborSwapIsdaFix = createLiborSwapIndex "GbpLiborSwapIsdaFix"
 
 jpyLiborSwapIsdaFixAm :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 jpyLiborSwapIsdaFixAm = createLiborSwapIndex "JpyLiborSwapIsdaFixAm"
 
 jpyLiborSwapIsdaFixPm :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 jpyLiborSwapIsdaFixPm = createLiborSwapIndex "JpyLiborSwapIsdaFixPm"
 
 usdLiborSwapIsdaFixAm :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 usdLiborSwapIsdaFixAm = createLiborSwapIndex "UsdLiborSwapIsdaFixAm"
 
 usdLiborSwapIsdaFixPm :: (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 usdLiborSwapIsdaFixPm = createLiborSwapIndex "UsdLiborSwapIsdaFixPm"
 
-euriborSwapIfrFix :: (Int, Unit) -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> QLE s (SwapIndex s)
+euriborSwapIfrFix :: (Int, Unit) -> Maybe (YieldTermStructure s) -> Maybe (YieldTermStructure s) -> QLE s (SwapIndex s)
 euriborSwapIfrFix = createLiborSwapIndex "EuriborSwapIfrFix"
 
-euriborSwapIsdaFixA :: (Int, Unit) -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> QLE s (SwapIndex s)
+euriborSwapIsdaFixA :: (Int, Unit) -> Maybe (YieldTermStructure s) -> Maybe (YieldTermStructure s) -> QLE s (SwapIndex s)
 euriborSwapIsdaFixA = createLiborSwapIndex "EuriborSwapIsdaFixA"
 
-euriborSwapIsdaFixB :: (Int, Unit) -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> QLE s (SwapIndex s)
+euriborSwapIsdaFixB :: (Int, Unit) -> Maybe (YieldTermStructure s) -> Maybe (YieldTermStructure s) -> QLE s (SwapIndex s)
 euriborSwapIsdaFixB = createLiborSwapIndex "EuriborSwapIsdaFixB"
 
 createLiborSwapIndex :: String
   -> (Int, Unit) -- ^tenor
-  -> Maybe YieldTermStructure -- ^forwarding
-  -> Maybe YieldTermStructure -- ^discounting
+  -> Maybe (YieldTermStructure s) -- ^forwarding
+  -> Maybe (YieldTermStructure s) -- ^discounting
   -> QLE s (SwapIndex s)
 createLiborSwapIndex = $(ffiCall 'createLiborSwapIndex) c_createLiborSwapIndex
 
@@ -101,8 +101,8 @@ foreign import ccall safe "ql.h qlCreateLiborSwapIndex"
 overnightIndexedSwapIndex :: String -- ^familyName
   -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
-  -> Currency -- ^currency
-  -> OvernightIndex -- ^overnightIndex
+  -> Currency s -- ^currency
+  -> OvernightIndex s -- ^overnightIndex
   -> QLE s (OvernightIndexedSwapIndex s)
 overnightIndexedSwapIndex = $(ffiCall 'overnightIndexedSwapIndex) c_overnightIndexedSwapIndex
 
@@ -112,12 +112,12 @@ foreign import ccall safe "ql.h qlOvernightIndexedSwapIndex"
 swapIndex :: String -- ^familyName
   -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
-  -> Currency -- ^currency
-  -> Calendar -- ^calendar
+  -> Currency s -- ^currency
+  -> Calendar s -- ^calendar
   -> (Int, Unit) -- ^fixedLegTenor
   -> BusinessDayConvention -- ^fixedLegConvention
-  -> DayCounter -- ^fixedLegDayCounter
-  -> IborIndex -- ^iborIndex
+  -> DayCounter s -- ^fixedLegDayCounter
+  -> IborIndex s -- ^iborIndex
   -> QLE s (SwapIndex s)
 swapIndex = $(ffiCall 'swapIndex) c_swapIndex
 
@@ -127,13 +127,13 @@ foreign import ccall safe "ql.h qlSwapIndex"
 swapIndex' :: String -- ^familyName
   -> (Int, Unit) -- ^tenor
   -> Word -- ^settlementDays
-  -> Currency -- ^currency
-  -> Calendar -- ^calendar
+  -> Currency s -- ^currency
+  -> Calendar s -- ^calendar
   -> (Int, Unit) -- ^fixedLegTenor
   -> BusinessDayConvention -- ^fixedLegConvention
-  -> DayCounter -- ^fixedLegDayCounter
-  -> IborIndex -- ^iborIndex
-  -> YieldTermStructure -- ^discountingTermStructure
+  -> DayCounter s -- ^fixedLegDayCounter
+  -> IborIndex s -- ^iborIndex
+  -> YieldTermStructure s -- ^discountingTermStructure
   -> QLE s (SwapIndex s)
 swapIndex' = $(ffiCall 'swapIndex') c_swapIndex'
 

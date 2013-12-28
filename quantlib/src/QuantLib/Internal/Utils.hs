@@ -6,6 +6,7 @@ module QuantLib.Internal.Utils
   , getExceptions
   , purifyExceptions
   , mkQLE
+  , runQLE
 
   , upcast
   , construct
@@ -150,6 +151,11 @@ getExceptions f = join <$> catchSync (catchQL f)
 
 mkQLE :: IO a -> QLE s a
 mkQLE = EitherT . QL . getExceptions
+
+runQLE :: QLE s a -> IO a
+runQLE f = do
+  rr <- runQL $ runEitherT f
+  either (\l -> throwIO l) return rr
 
 purifyExceptions :: IO a -> Either QLError a
 {-# NOINLINE purifyExceptions #-}

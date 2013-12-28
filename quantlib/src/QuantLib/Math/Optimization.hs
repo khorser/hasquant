@@ -25,8 +25,8 @@ boundaryConstraint = $(ffiCall 'boundaryConstraint) c_boundaryConstraint
 foreign import ccall safe "ql.h qlBoundaryConstraint"
   c_boundaryConstraint :: CDouble -> CDouble -> Ptr CString -> IO (Ptr CConstraint)
 
-compositeConstraint :: Constraint -- ^c1
-  -> Constraint -- ^c2
+compositeConstraint :: Constraint s -- ^c1
+  -> Constraint s -- ^c2
   -> QLE s (Constraint s)
 compositeConstraint = $(ffiCall 'compositeConstraint) c_compositeConstraint
 

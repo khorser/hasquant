@@ -39,7 +39,7 @@ foreign import ccall safe "ql.h qlFaceValueClaim"
   c_faceValueClaim :: Ptr CString -> IO (Ptr CClaim)
 
 -- |Claim on the notional of a reference security, including accrual
-faceValueAccrualClaim :: Bond -- ^referenceSecurity
+faceValueAccrualClaim :: Bond s -- ^referenceSecurity
   -> QLE s (Claim s)
 faceValueAccrualClaim = $(ffiCall 'faceValueAccrualClaim) c_faceValueAccrualClaim
 
@@ -51,13 +51,13 @@ foreign import ccall safe "ql.h qlFaceValueAccrualClaim"
 creditDefaultSwap :: ProtectionSide -- ^side
   -> Double -- ^notional
   -> Double -- ^spread
-  -> Schedule -- ^schedule
+  -> Schedule s -- ^schedule
   -> BusinessDayConvention -- ^paymentConvention
-  -> DayCounter -- ^dayCounter
+  -> DayCounter s -- ^dayCounter
   -> Bool -- ^settlesAccrual
   -> Bool -- ^paysAtDefaultTime
   -> Maybe Day -- ^protectionStart
-  -> Claim
+  -> Claim s
   -> QLE s (CreditDefaultSwap s)
 creditDefaultSwap = $(ffiCall 'creditDefaultSwap) c_creditDefaultSwap
 
@@ -70,28 +70,28 @@ creditDefaultSwap' :: ProtectionSide -- ^side
   -> Double -- ^notional
   -> Double -- ^upfront
   -> Double -- ^spread
-  -> Schedule -- ^schedule
+  -> Schedule s -- ^schedule
   -> BusinessDayConvention -- ^paymentConvention
-  -> DayCounter -- ^dayCounter
+  -> DayCounter s -- ^dayCounter
   -> Bool -- ^settlesAccrual
   -> Bool -- ^paysAtDefaultTime
   -> Maybe Day -- ^protectionStart
   -> Maybe Day -- ^upfrontDate
-  -> Claim
+  -> Claim s
   -> QLE s (CreditDefaultSwap s)
 creditDefaultSwap' = $(ffiCall 'creditDefaultSwap') c_creditDefaultSwap'
 
 foreign import ccall safe "ql.h qlCreditDefaultSwap1"
   c_creditDefaultSwap' :: CInt -> CDouble -> CDouble -> CDouble -> Ptr CSchedule -> CInt -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDate -> Ptr CClaim -> Ptr CString -> IO (Ptr CCreditDefaultSwap)
 
-atmRate :: CdsOption -> QLE Double
+atmRate :: CdsOption s -> QLE s Double
 atmRate = $(ffiCallX 'atmRate) c_atmRate
 
 foreign import ccall safe "ql.h qlCdsOptionAtmRate"
   c_atmRate :: Ptr CCdsOption -> Ptr CString -> IO CDouble
 
-cdsOption :: CreditDefaultSwap -- ^swap
-  -> Exercise -- ^exercise
+cdsOption :: CreditDefaultSwap s -- ^swap
+  -> Exercise s -- ^exercise
   -> Bool -- ^knocksOut
   -> QLE s (CdsOption s)
 cdsOption = $(ffiCall 'cdsOption) c_cdsOption
@@ -99,10 +99,10 @@ cdsOption = $(ffiCall 'cdsOption) c_cdsOption
 foreign import ccall safe "ql.h qlCdsOption"
   c_cdsOption :: Ptr CCreditDefaultSwap -> Ptr CExercise -> CInt -> Ptr CString -> IO (Ptr CCdsOption)
 
-impliedVolatility :: CdsOption
+impliedVolatility :: CdsOption s
   -> Double -- ^price
-  -> YieldTermStructure -- ^termStructure
-  -> DefaultProbabilityTermStructure
+  -> YieldTermStructure s -- ^termStructure
+  -> DefaultProbabilityTermStructure s
   -> Double -- ^recoveryRate
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
@@ -114,7 +114,7 @@ impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
 foreign import ccall safe "ql.h qlCdsOptionImpliedVolatility"
   c_impliedVolatility :: Ptr CCdsOption -> CDouble -> Ptr CYieldTermStructure -> Ptr CDefaultProbabilityTermStructure -> CDouble -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
-riskyAnnuity :: CdsOption -> QLE s Double
+riskyAnnuity :: CdsOption s -> QLE s Double
 riskyAnnuity = $(ffiCallX 'riskyAnnuity) c_riskyAnnuity
 
 foreign import ccall safe "ql.h qlCdsOptionRiskyAnnuity"
@@ -183,15 +183,13 @@ impliedHazardRate = $(ffiCallX 'impliedHazardRate) c_impliedHazardRate
 foreign import ccall safe "ql.h qlCreditDefaultSwapImpliedHazardRate"
   c_impliedHazardRate :: Ptr CCreditDefaultSwap -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
-upfrontBPS :: CreditDefaultSwap
-  -> QLE s Double
+upfrontBPS :: CreditDefaultSwap s -> QLE s Double
 upfrontBPS = $(ffiCallX 'upfrontBPS) c_upfrontBPS
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapUpfrontBPS"
   c_upfrontBPS :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
 
-upfrontNPV :: CreditDefaultSwap
-  -> QLE s Double
+upfrontNPV :: CreditDefaultSwap s -> QLE s Double
 upfrontNPV = $(ffiCallX 'upfrontNPV) c_upfrontNPV
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapUpfrontNPV"
