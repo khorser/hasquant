@@ -5,38 +5,40 @@ where
 
 import Test.Framework
 
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 import Data.Time.Format()
 
 import QuantLib.Settings
 import QuantLib.Time.Date
+import QuantLib.Types
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_ECBDates :: IO ()
-test_ECBDates = keepingSettings' $ do
+test_ECBDates = keepingSettings' $ runQLE $ do
   knownDates <- knownECBDates
-  assertBool (not $ null knownDates)
+  liftIO $ assertBool (not $ null knownDates)
   knownDates' <- nextECBDates (Just minDate)
-  assertEqual knownDates knownDates'
+  liftIO $ assertEqual knownDates knownDates'
   mapM_ (\(d, p) -> do
     i <- isECBDate d
-    assertBool i
+    liftIO $ assertBool i
     let d1 = addDays (-1) d
     i1 <- isECBDate d1
-    assertBool (not i1)
+    liftIO $ assertBool (not i1)
     n <- nextECBDate (Just d1)
-    assertEqual d n
+    liftIO $ assertEqual d n
     dd <- nextECBDate (Just p)
-    assertEqual d dd)
+    liftIO $ assertEqual d dd)
     (zip knownDates (minDate:knownDates))
   let h = head knownDates
   removeECBDate h
   i <- isECBDate h
-  assertBool (not i)
+  liftIO $ assertBool (not i)
   addECBDate h
   i1 <- isECBDate h
-  assertBool i1
+  liftIO $ assertBool i1
 
 test_IMMDatesLongRunning :: IO ()
 test_IMMDatesLongRunning = keepingSettings' $ do

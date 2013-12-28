@@ -348,8 +348,8 @@ isECBDate = $(ffiCallX 'isECBDate) c_isECBDate
 foreign import ccall safe "ql.h qlECBIsECBdate"
   c_isECBDate :: CDate -> Ptr CString -> IO CInt
 
-knownECBDates :: IO [Day]
-knownECBDates = map fromQlDate <$> getArrayX c_knownECBDates
+knownECBDates :: QLE s [Day]
+knownECBDates = mkQLE $ map fromQlDate <$> getArrayX c_knownECBDates
 
 foreign import ccall safe "ql.h qlECBKnownDates"
   c_knownECBDates :: Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
@@ -405,7 +405,7 @@ nextECBDates d = mkQLE $ map fromQlDate <$> do
   getArrayX $ c_nextECBDates dd
 
 foreign import ccall safe "ql.h qlECBNextDates"
-  c_nextECBDates :: CDate -> Ptr CUInt -> Ptr CString -> IO(Ptr CDate)
+  c_nextECBDates :: CDate -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
 
 removeECBDate :: Day -- ^d
   -> QLE s ()

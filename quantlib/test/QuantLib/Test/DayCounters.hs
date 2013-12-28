@@ -5,6 +5,7 @@ where
 
 import Test.Framework
 
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 
 import QuantLib.Settings
@@ -17,11 +18,11 @@ import QuantLib.Types
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_ActualActual :: IO ()
-test_ActualActual = keepingSettings' $
+test_ActualActual = keepingSettings' $ runQLE $ do
   mapM_ (\(c, s, e, rs, re, t) -> do
     dc <- c
     f <- yearFraction dc s e rs re
-    assertBool (abs(t - f) <= 1.0e-10))
+    liftIO $ assertBool (abs(t - f) <= 1.0e-10))
     testCases
   where testCases = [
           (actualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
@@ -46,41 +47,41 @@ test_ActualActual = keepingSettings' $
           (actualActualISMA, 30 `january` 2000, 30 `june` 2000, Just $ 30 `january` 2000, Just $ 30 `july` 2000, 0.417582417582),
           (actualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
 
-checkCounter :: DayCounter -> [Day] -> [(Int, Unit)] -> [Double] -> IO ()
-checkCounter dc days periods expected = keepingSettings' $
+checkCounter :: DayCounter s -> [Day] -> [(Int, Unit)] -> [Double] -> IO ()
+checkCounter dc days periods expected = keepingSettings' $ runQLE $
   mapM_ (\d -> do
     calculated <- mapM (\p -> do
       let (Right end) = addPeriod d p
       yearFraction dc d end Nothing Nothing)
       periods
     let diffs = zipWith (-) calculated expected
-    assertBool (all (\x -> abs x < 1.0e-12) diffs))
+    liftIO $ assertBool (all (\x -> abs x < 1.0e-12) diffs))
     days
 
 test_Simple :: IO ()
-test_Simple = do
+test_Simple = runQLE $ do
   dc <- simple
-  checkCounter dc
+  liftIO $ checkCounter dc
     [1 `january` 2002 .. 31 `december` 2005]
     [(3, Months), (6, Months), (1, Years)]
     [0.25, 0.5, 1.0]
 
 test_One :: IO ()
-test_One = keepingSettings' $ do
+test_One = keepingSettings' $ runQLE $ do
   dc <- one
-  checkCounter dc
+  liftIO $ checkCounter dc
     [1 `january` 2004 .. 31 `december` 2004]
     [(3, Months), (6, Months), (1, Years)]
     [1.0, 1.0, 1.0]
 
 test_Business252 :: IO ()
-test_Business252 = keepingSettings' $ do
+test_Business252 = keepingSettings' $ runQLE $ do
   dc <- brazilSettlement >>= business252
 
   fractions <- mapM (\(s, e) -> yearFraction dc s e Nothing Nothing)
                 (zip days (tail days))
   let diffs = zipWith (-) fractions expected
-  assertBool (all (\x -> abs x < 1.0e-12) diffs)
+  liftIO $ assertBool (all (\x -> abs x < 1.0e-12) diffs)
 
   where days = [1 `february` 2002,
                 4 `february` 2002,

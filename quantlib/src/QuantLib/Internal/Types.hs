@@ -176,6 +176,7 @@ where
 import Control.Applicative
 import Control.Exception(Exception, IOException, SomeException)
 import Control.Monad.Trans.Either(EitherT)
+import Control.Monad.IO.Class
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 import Data.Word(Word)
@@ -218,7 +219,7 @@ data QLError = CPlusPlusException String
 instance Exception QLError
 
 newtype QL s a = QL {runQL :: IO a}
-  deriving (Monad, Functor, Applicative)
+  deriving (Monad, MonadIO, Functor, Applicative) -- is MonadIO instance ok?
 
 type QLE s a = EitherT QLError (QL s) a
 

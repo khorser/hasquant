@@ -78,18 +78,18 @@ thirty360European  = constructNamed "30/360 (European)"
 -- |Business\/252 day count convention.
 foreign import ccall safe "ql.h qlDayCounterBusiness252"
   c_business252 :: Ptr CCalendar -> Ptr CString -> IO (Ptr CDayCounter)
-business252     :: Calendar -> QLE s (DayCounter s)
+business252     :: Calendar s -> QLE s (DayCounter s)
 business252 = $(ffiCall 'business252) c_business252
 
 -- |Returns the number of days between two dates.
-dayCount :: DayCounter -> Day -> Day -> Int
+dayCount :: DayCounter s -> Day -> Day -> Int
 dayCount = $(ffiCallPure 'dayCount) c_dayCount
 
 foreign import ccall safe "ql.h qlDayCounterDayCount"
   c_dayCount :: Ptr CDayCounter -> CDate -> CDate -> IO CInt
 
 -- |Returns the period between two dates as a fraction of year.
-yearFraction :: DayCounter
+yearFraction :: DayCounter s
   -> Day
   -> Day
   -> Maybe Day -- ^refPeriodStart

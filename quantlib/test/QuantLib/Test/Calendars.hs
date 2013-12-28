@@ -5,90 +5,97 @@ where
 
 import Test.Framework
 
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.JointCalendarRule
 import QuantLib.Time.Weekday
+import QuantLib.Types
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_ModifiedCalendars :: IO ()
 test_ModifiedCalendars = do
-  c1 <- target
-  c2 <- unitedStatesNYSE
-  let d1 = 1 `may` 2004
-      d2 = 26 `april` 2004
-  h1 <- isHoliday c1 d1
-  b1 <- isBusinessDay c1 d2
-  h2 <- isHoliday c2 d1
-  b2 <- isBusinessDay c2 d2
+  (h1, b1, h2, b2, h1', b1', h3, b3, h1'', b1'') <- runQLE $ do
+    c1 <- target
+    c2 <- unitedStatesNYSE
+    let d1 = 1 `may` 2004
+        d2 = 26 `april` 2004
+    h1 <- isHoliday c1 d1
+    b1 <- isBusinessDay c1 d2
+    h2 <- isHoliday c2 d1
+    b2 <- isBusinessDay c2 d2
+
+    removeHoliday c1 d1
+    addHoliday c1 d2
+    h1' <- isHoliday c1 d1
+    b1' <- isBusinessDay c1 d2
+
+    c3 <- target
+    h3 <- isHoliday c3 d1
+    b3 <- isBusinessDay c3 d2
+
+    removeHoliday c1 d2
+    addHoliday c1 d1
+    h1'' <- isHoliday c1 d1
+    b1'' <- isBusinessDay c1 d2
+    return (h1, b1, h2, b2, h1', b1', h3, b3, h1'', b1'')
+
   assertBool h1
   assertBool b1
   assertBool h2
   assertBool b2
-
-  removeHoliday c1 d1
-  addHoliday c1 d2
-  h1' <- isHoliday c1 d1
-  b1' <- isBusinessDay c1 d2
   assertBool (not h1')
   assertBool (not b1')
-
-  c3 <- target
-  h3 <- isHoliday c3 d1
-  b3 <- isBusinessDay c3 d2
   assertBool (not h3)
   assertBool (not b3)
-
-  removeHoliday c1 d2
-  addHoliday c1 d1
-  h1'' <- isHoliday c1 d1
-  b1'' <- isBusinessDay c1 d2
   assertBool h1''
   assertBool b1''
 
 test_JointCalendars :: IO ()
-test_JointCalendars = do
-  c1 <- target
-  c2 <- unitedKingdomExchange
-  c3 <- unitedStatesNYSE
-  c4 <- japan
+test_JointCalendars = runQLE $ do
+    c1 <- target
+    c2 <- unitedKingdomExchange
+    c3 <- unitedStatesNYSE
+    c4 <- japan
 
-  c12h <- jointCalendar2 c1 c2 JoinHolidays
-  c12b <- jointCalendar2 c1 c2 JoinBusinessDays
-  c123h <- jointCalendar3 c1 c2 c3 JoinHolidays
-  c123b <- jointCalendar3 c1 c2 c3 JoinBusinessDays
-  c1234h <- jointCalendar4 c1 c2 c3 c4 JoinHolidays
-  c1234b <- jointCalendar4 c1 c2 c3 c4 JoinBusinessDays
+    c12h <- jointCalendar2 c1 c2 JoinHolidays
+    c12b <- jointCalendar2 c1 c2 JoinBusinessDays
+    c123h <- jointCalendar3 c1 c2 c3 JoinHolidays
+    c123b <- jointCalendar3 c1 c2 c3 JoinBusinessDays
+    c1234h <- jointCalendar4 c1 c2 c3 c4 JoinHolidays
+    c1234b <- jointCalendar4 c1 c2 c3 c4 JoinBusinessDays
 
-  tod <- today
-  mapM_ (\d -> do
-    b1 <- isBusinessDay c1 d
-    b2 <- isBusinessDay c2 d
-    b3 <- isBusinessDay c3 d
-    b4 <- isBusinessDay c4 d
+    tod <- liftIO $ today
+    mapM_ (\d -> do
+      b1 <- isBusinessDay c1 d
+      b2 <- isBusinessDay c2 d
+      b3 <- isBusinessDay c3 d
+      b4 <- isBusinessDay c4 d
 
-    c12hb <- isBusinessDay c12h d
-    c12bb <- isBusinessDay c12b d
-    c123hb <- isBusinessDay c123h d
-    c123bb <- isBusinessDay c123b d
-    c1234hb <- isBusinessDay c1234h d
-    c1234bb <- isBusinessDay c1234b d
+      c12hb <- isBusinessDay c12h d
+      c12bb <- isBusinessDay c12b d
+      c123hb <- isBusinessDay c123h d
+      c123bb <- isBusinessDay c123b d
+      c1234hb <- isBusinessDay c1234h d
+      c1234bb <- isBusinessDay c1234b d
 
-    assertEqual (b1 && b2) c12hb
-    assertEqual (b1 || b2) c12bb
-    assertEqual (b1 && b2 && b3) c123hb
-    assertEqual (b1 || b2 || b3) c123bb
-    assertEqual (b1 && b2 && b3 && b4) c1234hb
-    assertEqual (b1 || b2 || b3 || b4) c1234bb)
-    [tod .. addGregorianYearsClip 1 tod]
+      liftIO $ do
+        assertEqual (b1 && b2) c12hb
+        assertEqual (b1 || b2) c12bb
+        assertEqual (b1 && b2 && b3) c123hb
+        assertEqual (b1 || b2 || b3) c123bb
+        assertEqual (b1 && b2 && b3 && b4) c1234hb
+        assertEqual (b1 || b2 || b3 || b4) c1234bb)
+      [tod .. addGregorianYearsClip 1 tod]
 
 test_USSettlement :: IO ()
 test_USSettlement = do
-  cal <- unitedStatesSettlement
-  h <- holidays cal (1 `january` 2004) (31 `december` 2005) False
+  h <- runQLE $ do
+    cal <- unitedStatesSettlement
+    holidays cal (1 `january` 2004) (31 `december` 2005) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -115,8 +122,9 @@ test_USSettlement = do
 
 test_USGovernmentBondMarket :: IO ()
 test_USGovernmentBondMarket = do
-  cal <- unitedStatesGovernmentBond
-  h <- holidays cal (1 `january` 2004) (31 `december` 2004) False
+  h <- runQLE $ do
+    cal <- unitedStatesGovernmentBond
+    holidays cal (1 `january` 2004) (31 `december` 2004) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -133,13 +141,13 @@ test_USGovernmentBondMarket = do
       24 `december` 2004]
 
 test_USNewYorkStockExchange :: IO ()
-test_USNewYorkStockExchange = do
+test_USNewYorkStockExchange = runQLE $ do
   cal <- unitedStatesNYSE
   h <- holidays cal (1 `january` 2004) (31 `december` 2006) False
-  assertEqual expectedHol h
+  liftIO $ assertEqual expectedHol h
   mapM_ (\d -> do
     b <- isHoliday cal d
-    assertBool b) histClose
+    liftIO $ assertBool b) histClose
   where
     expectedHol = [
       1 `january` 2004,
@@ -203,8 +211,9 @@ test_USNewYorkStockExchange = do
 
 test_TARGET :: IO ()
 test_TARGET = do
-  cal <- target
-  h <- holidays cal (1 `january` 1999) (31 `december` 2006) False
+  h <- runQLE $ do
+    cal <- target
+    holidays cal (1 `january` 1999) (31 `december` 2006) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -255,8 +264,9 @@ test_TARGET = do
 
 test_GermanyFrankfurt :: IO ()
 test_GermanyFrankfurt = do
-  cal <- germanyFrankfurtStockExchange
-  h <- holidays cal (1 `january` 2003) (31 `december` 2004) False
+  h <- runQLE $ do
+    cal <- germanyFrankfurtStockExchange
+    holidays cal (1 `january` 2003) (31 `december` 2004) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -277,8 +287,9 @@ test_GermanyFrankfurt = do
 
 test_GermanyEurex :: IO ()
 test_GermanyEurex = do
-  cal <- germanyEurex
-  h <- holidays cal (1 `january` 2003) (31 `december` 2004) False
+  h <- runQLE $ do
+    cal <- germanyEurex
+    holidays cal (1 `january` 2003) (31 `december` 2004) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -299,8 +310,9 @@ test_GermanyEurex = do
 
 test_GermanyXetra :: IO ()
 test_GermanyXetra = do
-  cal <- germanyXetra
-  h <- holidays cal (1 `january` 2003) (31 `december` 2004) False
+  h <- runQLE $ do
+    cal <- germanyXetra
+    holidays cal (1 `january` 2003) (31 `december` 2004) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -322,8 +334,9 @@ test_GermanyXetra = do
 
 test_UKSettlement :: IO ()
 test_UKSettlement = do
-  cal <- unitedKingdomSettlement
-  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  h <- runQLE $ do
+    cal <- unitedKingdomSettlement
+    holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -366,8 +379,9 @@ test_UKSettlement = do
 
 test_UKExchange :: IO ()
 test_UKExchange = do
-  cal <- unitedKingdomExchange
-  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  h <- runQLE $ do
+    cal <- unitedKingdomExchange
+    holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -410,8 +424,9 @@ test_UKExchange = do
 
 test_UKMetals :: IO ()
 test_UKMetals = do
-  cal <- unitedKingdomMetals
-  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  h <- runQLE $ do
+    cal <- unitedKingdomMetals
+    holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -454,8 +469,9 @@ test_UKMetals = do
 
 test_ItalyExchange :: IO ()
 test_ItalyExchange = do
-  cal <- italyExchange
-  h <- holidays cal (1 `january` 2002) (31 `december` 2004) False
+  h <- runQLE $ do
+    cal <- italyExchange
+    holidays cal (1 `january` 2002) (31 `december` 2004) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -487,8 +503,9 @@ test_ItalyExchange = do
 
 test_Brazil :: IO ()
 test_Brazil = do
-  cal <- brazilSettlement
-  h <- holidays cal (1 `january` 2005) (31 `december` 2006) False
+  h <- runQLE $ do
+    cal <- brazilSettlement
+    holidays cal (1 `january` 2005) (31 `december` 2006) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -516,8 +533,9 @@ test_Brazil = do
 
 test_SouthKoreanSettlement :: IO ()
 test_SouthKoreanSettlement = do
-  cal <- southKoreaSettlement
-  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  h <- runQLE $ do
+    cal <- southKoreaSettlement
+    holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -576,8 +594,9 @@ test_SouthKoreanSettlement = do
 
 test_KoreaStockExchange :: IO ()
 test_KoreaStockExchange = do
-  cal <- southKoreaKRX
-  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  h <- runQLE $ do
+    cal <- southKoreaKRX
+    holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
   where
     expectedHol = [
@@ -638,20 +657,20 @@ test_KoreaStockExchange = do
       31 `december` 2007]
 
 test_EndOfMonth :: IO ()
-test_EndOfMonth = do
+test_EndOfMonth = runQLE $ do
   cal <- target
   mapM_ (\d -> do
     eom <- QuantLib.Time.Calendar.endOfMonth cal d
     b <- QuantLib.Time.Calendar.isEndOfMonth cal eom
-    assertBool b)
+    liftIO $ assertBool b)
     [minDate .. addGregorianMonthsClip (-2) maxDate]
 
 test_BusinessDaysBetween :: IO ()
-test_BusinessDaysBetween = do
+test_BusinessDaysBetween = runQLE $ do
   cal <- brazilSettlement
   mapM_ (\(d1, d2, e) -> do
     b <- businessDaysBetween cal d1 d2 True False
-    assertEqual b e)
+    liftIO $ assertEqual b e)
     (zip3 testDates (tail testDates) expected)
   where
     testDates = [
@@ -681,7 +700,7 @@ test_BusinessDaysBetween = do
         51]
 
 test_BespokeCalendars :: IO ()
-test_BespokeCalendars = do
+test_BespokeCalendars = runQLE $ do
   let testDate1 = 4 `october` 2008
       testDate2 = 5 `october` 2008
       testDate3 = 6 `october` 2008
@@ -691,28 +710,28 @@ test_BespokeCalendars = do
   a12 <- isBusinessDay a1 testDate2
   a13 <- isBusinessDay a1 testDate3
   a14 <- isBusinessDay a1 testDate4
-  assertBool $ a11 && a12 && a13 && a14
+  liftIO $ assertBool $ a11 && a12 && a13 && a14
 
   a2 <- bespokeCalendar "a2" [Sunday]
   a21 <- isBusinessDay a2 testDate1
   a22 <- isBusinessDay a2 testDate2
   a23 <- isBusinessDay a2 testDate3
   a24 <- isBusinessDay a2 testDate4
-  assertBool $ a21 && a23 && a24
-  assertBool (not a22)
+  liftIO $ assertBool $ a21 && a23 && a24
+  liftIO $ assertBool (not a22)
 
   a11' <- isBusinessDay a1 testDate1
   a12' <- isBusinessDay a1 testDate2
   a13' <- isBusinessDay a1 testDate3
   a14' <- isBusinessDay a1 testDate4
-  assertBool $ a11' && a12' && a13' && a14'
+  liftIO $ assertBool $ a11' && a12' && a13' && a14'
 
   addHoliday a2 testDate3
   a21' <- isBusinessDay a2 testDate1
   a22' <- isBusinessDay a2 testDate2
   a23' <- isBusinessDay a2 testDate3
   a24' <- isBusinessDay a2 testDate4
-  assertBool $ a21' && a24'
-  assertBool $ not a22' && not a23'
+  liftIO $ assertBool $ a21' && a24'
+  liftIO $ assertBool $ not a22' && not a23'
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

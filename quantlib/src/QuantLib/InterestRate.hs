@@ -29,7 +29,7 @@ foreign import ccall safe "ql.h qlInterestRate"
 
 -- |Standard constructor
 interestRate :: Double -- ^r
-  -> DayCounter -- ^dc
+  -> DayCounter s -- ^dc
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> QLE s (InterestRate s)
@@ -37,7 +37,7 @@ interestRate = $(ffiCall 'interestRate) c_interestRate
 
 -- |compound factor implied by the rate compounded between two dates
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
-compoundFactor' :: InterestRate
+compoundFactor' :: InterestRate s
   -> Day -- ^d1
   -> Day -- ^d2
   -> Day -- ^refStart
@@ -51,7 +51,7 @@ foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
 
 -- |compound factor implied by the rate compounded at time t.
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t. /Warning/ Time must be measured using InterestRate's own day counter.
-compoundFactor :: InterestRate
+compoundFactor :: InterestRate s
   -> YearFraction -- ^t
   -> Either QLError Double
 {-# NOINLINE compoundFactor #-}
@@ -61,7 +61,7 @@ foreign import ccall safe "ql.h qlInterestRateCompoundFactor"
   c_compoundFactor :: Ptr CInterestRate -> CYearFraction -> Ptr CString -> IO CDouble
 
 -- |discount factor implied by the rate compounded between two dates
-discountFactor' :: InterestRate
+discountFactor' :: InterestRate s
   -> Day -- ^d1
   -> Day -- ^d2
   -> Day -- ^refStart
@@ -75,7 +75,7 @@ foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
 
 -- |discount factor implied by the rate compounded at time t.
 -- /Warning/ Time must be measured using InterestRate's own day counter.
-discountFactor :: InterestRate
+discountFactor :: InterestRate s
   -> YearFraction -- ^t
   -> Either QLError Double
 {-# NOINLINE discountFactor #-}
@@ -86,8 +86,8 @@ foreign import ccall safe "ql.h qlInterestRateDiscountFactor"
 
 -- |equivalent rate for a compounding period between two dates
 -- The resulting rate is calculated taking the required day-counting rule into account.
-equivalentRate' :: InterestRate
-  -> DayCounter -- ^resultDC
+equivalentRate' :: InterestRate s
+  -> DayCounter s -- ^resultDC
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Day -- ^d1
@@ -102,7 +102,7 @@ foreign import ccall safe "ql.h qlInterestRateEquivalentRate1"
 
 -- |equivalent interest rate for a compounding period t.
 -- The resulting InterestRate shares the same implicit day-counting rule of the original InterestRate instance. /Warning/ Time must be measured using the InterestRate's own day counter.
-equivalentRate :: InterestRate
+equivalentRate :: InterestRate s
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> YearFraction -- ^t
@@ -114,9 +114,9 @@ foreign import ccall safe "ql.h qlInterestRateEquivalentRate"
 
 -- |implied rate for a given compound factor between two dates.
 -- The resulting rate is calculated taking the required day-counting rule into account.
-impliedRate' :: InterestRate
+impliedRate' :: InterestRate s
   -> Double -- ^compound
-  -> DayCounter -- ^resultDC
+  -> DayCounter s -- ^resultDC
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Day -- ^d1
@@ -131,9 +131,9 @@ foreign import ccall safe "ql.h qlInterestRateImpliedRate1"
 
 -- |implied interest rate for a given compound factor at a given time.
 -- The resulting InterestRate has the day-counter provided as input. /Warning/ Time must be measured using the day-counter provided as input.
-impliedRate :: InterestRate
+impliedRate :: InterestRate s
   -> Double -- ^compound
-  -> DayCounter -- ^resultDC
+  -> DayCounter s -- ^resultDC
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> YearFraction -- ^t
@@ -143,7 +143,7 @@ impliedRate = $(ffiCall 'impliedRate) c_impliedRate
 foreign import ccall safe "ql.h qlInterestRateImpliedRate"
   c_impliedRate :: Ptr CInterestRate -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CYearFraction -> Ptr CString -> IO (Ptr CInterestRate)
 
-rate :: InterestRate -> Double
+rate :: InterestRate s -> Double
 rate = $(ffiCallPure 'rate) c_rate
 
 foreign import ccall safe "ql.h qlInterestRateRate"
