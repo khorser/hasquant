@@ -23,6 +23,7 @@ import System.Mem(performGC)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types hiding(evaluationDate, includeTodaysCashFlows, enforceTodaysHistoricFixings, includeReferenceDateEvents)
+import QuantLib.Internal.Utils(mkQLE)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
   c_evaluationDate :: IO CDate
@@ -56,8 +57,8 @@ setEnforceTodaysHistoricFixings =
   $(ffiCall 'setEnforceTodaysHistoricFixings) c_setEnforceTodaysHistoricFixings
 
 -- easier to code it by hand than update Internal.Syntax
-includeTodaysCashFlows :: IO (Maybe Bool)
-includeTodaysCashFlows = do
+includeTodaysCashFlows :: QLE s (Maybe Bool)
+includeTodaysCashFlows = mkQLE $ do
   v <- c_includeTodaysCashFlows
   return $ if v == -1
             then Nothing
