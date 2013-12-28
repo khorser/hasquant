@@ -120,8 +120,8 @@ foreign import ccall safe "ql.h qlLegCashFlows"
 cashFlows :: Leg s
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
-  -> IO [(Double, Day, Bool)] -- ^amount, date, hasOccurred
-cashFlows l inc d =
+  -> QLE s [(Double, Day, Bool)] -- ^amount, date, hasOccurred
+cashFlows l inc d = mkQLE $
   withObject l $
   \ll -> alloca $
     \pam -> alloca $
@@ -160,7 +160,7 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualDays"
 accrualEndDate :: Leg s -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
-  -> IO (Maybe Day)
+  -> QLE s (Maybe Day)
 accrualEndDate = $(ffiCallX 'accrualEndDate) c_accrualEndDate
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualEndDate"
@@ -178,7 +178,7 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualPeriod"
 accrualStartDate :: Leg s -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlDate
-  -> IO (Maybe Day)
+  -> QLE s (Maybe Day)
 accrualStartDate = $(ffiCallX 'accrualStartDate) c_accrualStartDate
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualStartDate"
@@ -363,7 +363,7 @@ foreign import ccall safe "ql.h qlCashFlowsNextCashFlowAmount"
 nextCashFlowDate :: Leg s -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
-  -> IO (Maybe Day)
+  -> QLE s (Maybe Day)
 nextCashFlowDate = $(ffiCallX 'nextCashFlowDate) c_nextCashFlowDate
 
 foreign import ccall safe "ql.h qlCashFlowsNextCashFlowDate"
@@ -451,8 +451,8 @@ npvbps :: Leg s -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO (Double, Double) -- ^(npv, bps)
-npvbps l y i s n =
+  -> QLE s (Double, Double) -- ^(npv, bps)
+npvbps l y i s n = mkQLE $
   withObject l $
   \ll -> withObject y $
     \yy -> alloca $
@@ -480,7 +480,7 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowAmount"
 previousCashFlowDate :: Leg s -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
-  -> IO (Maybe Day)
+  -> QLE s (Maybe Day)
 previousCashFlowDate = $(ffiCallX 'previousCashFlowDate) c_previousCashFlowDate
 
 foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowDate"
@@ -498,7 +498,7 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCouponRate"
 referencePeriodEnd :: Leg s -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlDate
-  -> IO (Maybe Day)
+  -> QLE s (Maybe Day)
 referencePeriodEnd = $(ffiCallX 'referencePeriodEnd) c_referencePeriodEnd
 
 foreign import ccall safe "ql.h qlCashFlowsReferencePeriodEnd"
@@ -579,8 +579,8 @@ foreign import ccall safe "ql.h qlCashFlowsZSpread"
   c_zSpread :: Ptr CLeg -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
 
 -- |start of the accrual periods for a coupon leg
-couponAccrualStartDates :: CouponLeg s -> IO [Day]
-couponAccrualStartDates l = map fromQlDate <$>
+couponAccrualStartDates :: CouponLeg s -> QLE s [Day]
+couponAccrualStartDates l = mkQLE $ map fromQlDate <$>
   withObject l (getArrayX . c_couponAccrualStartDates)
 
 foreign import ccall safe "ql.h qlCouponAccrualStartDates"

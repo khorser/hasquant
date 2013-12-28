@@ -40,7 +40,7 @@ data IterationResult = IterationResult { fwdRateR :: Double
 data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
-run = do
+run = runQLE $ do
   setEvaluationDate $ Just todaysDate
   eu3m <- Ibor.euribor3M Nothing
   eu3mRI <- asInterestRateIndex eu3m

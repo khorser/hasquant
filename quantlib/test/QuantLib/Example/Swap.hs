@@ -42,7 +42,7 @@ data IterationResult = IterationResult {spotSwap :: SwapResult, forwardSwap :: S
 data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
-run = do
+run = runQLE $ do
   cal <- target
   settleDate <- adjust cal settleDate1 Following
   advance cal settleDate (-fixingDays) Days Following False >>= setEvaluationDate . Just
@@ -105,7 +105,7 @@ run = do
     fraTerms = [(3, 6), (6, 9), (6, 12)]
     swapYears = [2, 3, 5, 10, 15]
 
-    valuateSwap :: Day -> YieldTermStructure -> YieldTermStructure -> IO IterationResult
+    valuateSwap :: Day -> YieldTermStructure s -> YieldTermStructure s -> QLE s IterationResult
     valuateSwap settle d f = do
       fixDC <- thirty360European
       floatDC <- actual360

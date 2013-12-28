@@ -35,7 +35,7 @@ data Result = Result
   }
 
 run :: IO Result
-run = do
+run = runQLE $ do
   setEvaluationDate $ Just tod
   bbdc <- actualActualBond
   q <- simpleQuote 0.055 >>= asQuote
@@ -60,7 +60,7 @@ run = do
   }
   where tod = 16 `october` 2007
 
-        buildSchedule :: [Day] -> Int -> IO [Day]
+        buildSchedule :: [Day] -> Int -> QLE s [Day]
         buildSchedule a@(d:_) _i = do
           cal <- nullCalendar
           n <- advance cal d 3 Months Following False

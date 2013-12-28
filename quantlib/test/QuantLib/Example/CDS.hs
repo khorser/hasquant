@@ -40,7 +40,7 @@ data Result = Result
   }
 
 run :: IO Result
-run = do
+run = runQLE $ do
   cal <- target
   tod <- adjust cal (15 `may` 2007) Following
   setEvaluationDate $ Just tod

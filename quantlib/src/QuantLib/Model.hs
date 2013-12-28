@@ -314,8 +314,8 @@ foreign import ccall safe "ql.h qlTimeGrid3"
 
 -- |Returns array of arguments on which calibration is done.
 params :: CalibratedModel s
-  -> IO [Double]
-params x = map realToFrac <$> withObject x (getArrayX . c_params)
+  -> QLE s [Double]
+params x = mkQLE $ map realToFrac <$> withObject x (getArrayX . c_params)
 
 foreign import ccall safe "ql.h qlCalibratedModelParams"
   c_params :: Ptr CCalibratedModel -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)

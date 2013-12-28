@@ -5,6 +5,7 @@ where
 
 import Test.Framework
 
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 
 import QuantLib.Compounding
@@ -25,27 +26,27 @@ test_Conversions = keepingSettings' $
 
   where
     testCase :: (Double, Compounding, Frequency, YearFraction, Compounding, Frequency, Double, Int) -> IO ()
-    testCase (r, comp, freq, t, comp2, freq2, expected, prec) = do
-      d1 <- today
+    testCase (r, comp, freq, t, comp2, freq2, expected, prec) = runQLE $ do
+      d1 <- liftIO $ today
       dc <- actual360
       ir <- interestRate r dc comp freq
       let d2 = addDays (truncate $ 360 * t + 0.5) d1
           (Right compoundf) = compoundFactor' ir d1 d2 d1 d2
           (Right disc) = discountFactor' ir d1 d2 d1 d2
-      assertBool $ abs (disc - 1.0/compoundf) <= 1.0e-15
+      liftIO $ assertBool $ abs (disc - 1.0/compoundf) <= 1.0e-15
       ir2 <- equivalentRate' ir dc comp freq d1 d2 d1 d2
-      assertBool $ abs (rate ir - rate ir2) <= 1.0e-15
+      liftIO $ assertBool $ abs (rate ir - rate ir2) <= 1.0e-15
 
       ir3 <- equivalentRate' ir dc comp2 freq2 d1 d2 d1 d2
       expectedIR <- interestRate expected dc comp2 freq2
 
       roundingPrecision <- rounding' prec Closest 5
       let r3 = applyRounding roundingPrecision (rate ir3)
-      assertBool $ abs(r3 - rate expectedIR) <= 1.0e-17
+      liftIO $ assertBool $ abs(r3 - rate expectedIR) <= 1.0e-17
 
       ir3' <- equivalentRate' ir dc comp2 freq2 d1 d2 d1 d2
       let r3' = applyRounding roundingPrecision (rate ir3')
-      assertBool $ abs(r3' - expected) <= 1.0e-17
+      liftIO $ assertBool $ abs(r3' - expected) <= 1.0e-17
       return ()
 
     cases=[

@@ -8,6 +8,7 @@ import Test.HUnit.Lang
 import Data.Time.Calendar(fromGregorian, addDays)
 import Control.Arrow((&&&))
 import Control.Monad(void)
+import Control.Monad.IO.Class
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
@@ -24,7 +25,7 @@ import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
-import QuantLib.Types(QLError(..))
+import QuantLib.Types(QLError(..), runQLE)
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
@@ -237,33 +238,33 @@ test_CallableBond = do
   subAssert $ assertListsAreClose id ys [5.48, 5.67, 6.49, 7.85, 10.64] 1.0e-2
 
 test_EvalDate :: IO ()
-test_EvalDate = do
+test_EvalDate = runQLE $ do
   t1 <- Settings.evaluationDate
-  t2 <- today
-  assertEqual t1 t2
+  t2 <- liftIO $ today
+  liftIO $ assertEqual t1 t2
 
 test_NullEvalDate :: IO ()
-test_NullEvalDate = do
+test_NullEvalDate = runQLE $ do
   Settings.setEvaluationDate (Just $ december 29 2012)
   t0 <- Settings.evaluationDate
-  assertEqual t0 (fromGregorian 2012 12 29)
-  t2 <- today
+  liftIO $ assertEqual t0 (fromGregorian 2012 12 29)
+  t2 <- liftIO $ today
   Settings.setEvaluationDate Nothing
   t1 <- Settings.evaluationDate
-  assertEqual t1 t2
+  liftIO $ assertEqual t1 t2
 
 test_DefaultTodaysHistFixings :: IO ()
-test_DefaultTodaysHistFixings = do
+test_DefaultTodaysHistFixings = runQLE $ do
   e1 <- Settings.enforceTodaysHistoricFixings
-  assertEqual e1 False
+  liftIO $ assertEqual e1 False
 
 test_SetTodaysHistFixings :: IO ()
-test_SetTodaysHistFixings = do
+test_SetTodaysHistFixings = runQLE $ do
   e0 <- Settings.enforceTodaysHistoricFixings
   Settings.setEnforceTodaysHistoricFixings True
   e1 <- Settings.enforceTodaysHistoricFixings
   Settings.setEnforceTodaysHistoricFixings e0
-  assertEqual e1 True
+  liftIO $ assertEqual e1 True
 
 test_MinDate :: IO ()
 test_MinDate = assertEqual minDate (fromGregorian 1901 01 01)
@@ -277,43 +278,43 @@ test_LeapYears = assertEqual
                   (map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5])
 
 test_EmptyLegStart :: IO ()
-test_EmptyLegStart = do
+test_EmptyLegStart = runQLE $ do
   l <- Leg.leg []
   let (Left (CPlusPlusException m)) = Leg.startDate l
-  assertBool (not $ null m)
+  liftIO $ assertBool (not $ null m)
 
 test_SingleLegToday :: IO ()
-test_SingleLegToday = do
-  t <- today
+test_SingleLegToday = runQLE $ do
+  t <- liftIO $ today
   l <- Leg.leg [(100, t)]
   let (Right sd) = Leg.startDate l
-  assertEqual sd t
+  liftIO $ assertEqual sd t
 
 test_TwoLegsUnsorted :: IO ()
-test_TwoLegsUnsorted = do
-  t <- today
+test_TwoLegsUnsorted = runQLE $ do
+  t <- liftIO $ today
   l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
   let (Right sd) = Leg.startDate l
-  assertEqual sd (addDays (-10) t)
+  liftIO $ assertEqual sd (addDays (-10) t)
 
 test_ThreeLegsSorted :: IO ()
-test_ThreeLegsSorted = do
-  t <- today
+test_ThreeLegsSorted = runQLE $ do
+  t <- liftIO $ today
   l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
   let (Right sd) = Leg.startDate l
-  assertEqual sd (addDays (-10) t)
+  liftIO $ assertEqual sd (addDays (-10) t)
 
 test_CalAdjust :: IO ()
-test_CalAdjust = do
+test_CalAdjust = runQLE $ do
   c <- Calendar.russia
   a <- Calendar.adjust
           c
           (fromGregorian 2012 12 22)
           BusinessDayConvention.Preceding
-  assertEqual (fromGregorian 2012 12 21) a
+  liftIO $ assertEqual (fromGregorian 2012 12 21) a
 
 test_CalAdvance :: IO ()
-test_CalAdvance = do
+test_CalAdvance = runQLE $ do
   c <- Calendar.russia
   a <- Calendar.advance
         c
@@ -322,24 +323,24 @@ test_CalAdvance = do
         Unit.Months
         BusinessDayConvention.Preceding
         False
-  assertEqual (fromGregorian 2013 01 18) a
+  liftIO $ assertEqual (fromGregorian 2013 01 18) a
 
 test_Currency :: IO ()
-test_Currency = do
+test_Currency = runQLE $ do
   c <- Currency.gbp
-  assertEqual "British pound sterling" (show c)
+  liftIO $ assertEqual "British pound sterling" (show c)
 
 test_BondStatics :: IO ()
-test_BondStatics = do
+test_BondStatics = runQLE $ do
   c <- Calendar.unitedKingdomSettlement
   l <- Leg.leg [(1000, fromGregorian 2013 1 1)]
   b <- Bond.bond' 2 c 1000 m i l
-  assertEqual m (Bond.maturityDate b)
+  liftIO $ assertEqual m (Bond.maturityDate b)
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
 
 test_FixedBondWithSchedule :: IO ()
-test_FixedBondWithSchedule = do
+test_FixedBondWithSchedule = runQLE $ do
   c <- Calendar.russia
   s <- Schedule.schedule
     (Just $ fromGregorian 2012 12 20)
@@ -363,10 +364,10 @@ test_FixedBondWithSchedule = do
         100
         (Just $ fromGregorian 2012 10 11)
         c
-  assertEqual True True
+  liftIO $ assertEqual True True
 
 test_FixedBondWithCalendars :: IO ()
-test_FixedBondWithCalendars = do
+test_FixedBondWithCalendars = runQLE $ do
   c <- Calendar.russia
   cnt <- DayCounter.actual365Fixed
   _ <- Bond.fixedRateBond
@@ -386,10 +387,10 @@ test_FixedBondWithCalendars = do
     DateGenerationRule.Forward
     False
     c
-  assertEqual True True
+  liftIO $ assertEqual True True
 
 test_FixedBond :: IO ()
-test_FixedBond = do
+test_FixedBond = runQLE $ do
   dc <- DayCounter.actual365Fixed
   r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
   r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
@@ -414,15 +415,15 @@ test_FixedBond = do
           100
           (Just (fromGregorian 2012 12 21))
           cal
-  assertEqual True True
+  liftIO $ assertEqual True True
 
 test_Frequency :: IO ()
-test_Frequency = do
+test_Frequency = runQLE $ do
   let (Right f) = Period.toFrequency (1, Unit.Months)
-  assertEqual Frequency.Monthly f
+  liftIO $ assertEqual Frequency.Monthly f
 
 test_TruncateSchedule :: IO ()
-test_TruncateSchedule = do
+test_TruncateSchedule = runQLE $ do
   cal <- Calendar.russia
   s <- Schedule.schedule
     (Just $ 20 `december` 2012)
@@ -436,7 +437,7 @@ test_TruncateSchedule = do
     (Just $ 21 `december` 2012)
     (Just $ 21 `december` 2013)
   truncated <- Schedule.until s (15 `april` 2013)
-  assertEqual [fromGregorian 2012 12 20,
+  liftIO $ assertEqual [fromGregorian 2012 12 20,
                fromGregorian 2012 12 21,
                fromGregorian 2013 01 21,
                fromGregorian 2013 02 21,

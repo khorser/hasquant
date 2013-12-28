@@ -225,9 +225,13 @@ compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
+compToRetVal (AppT (AppT (ConT n1) _) t2@(AppT (ConT n2) _))
+  | (n1, n2) == (''QLE, ''Maybe) = IORV <$> compArgToRetVal t2 -- messy...
 compToRetVal (AppT (AppT (ConT n1) _) (AppT t2 _))
   | n1 == ''QLE = IORV <$> compArgToRetVal t2
-compToRetVal (AppT (AppT (ConT n1) _) t2)
+compToRetVal (AppT (AppT (ConT n1) _) t2@(ConT _))
+  | n1 == ''QLE = IORV <$> compArgToRetVal t2
+compToRetVal (AppT (AppT (ConT n1) _) t2@(TupleT 0))
   | n1 == ''QLE = IORV <$> compArgToRetVal t2
 compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2)
   | (n1, n2) == (''Either, ''QLError) = EitherRV <$> compArgToRetVal t2

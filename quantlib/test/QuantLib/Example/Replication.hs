@@ -34,7 +34,7 @@ data Result = Result
   } deriving Show
 
 run :: IO Result
-run = do
+run = runQLE $ do
   setEvaluationDate $ Just tod
   under <- simpleQuote (head underlyingValues)
   underlyingQuote <- asQuote under

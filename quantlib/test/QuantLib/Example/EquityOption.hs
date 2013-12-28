@@ -43,7 +43,7 @@ data Result = Result
   }
 
 run :: IO Result
-run = do
+run = runQLE $ do
   setEvaluationDate $ Just tod
   cal <- target
   dc <- actual365Fixed

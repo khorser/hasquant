@@ -6,6 +6,7 @@ where
 import Test.Framework
 
 import Control.Monad(void)
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 
 import QuantLib.CashFlow.Leg
@@ -30,8 +31,8 @@ import QuantLib.Types
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_Settings :: IO ()
-test_Settings = keepingSettings' $ do
-  tod <- today
+test_Settings = keepingSettings' $ runQLE $ do
+  tod <- liftIO $ today
   setEvaluationDate (Just tod)
   l <- leg (zip (repeat 1.0) [tod .. addDays 2 tod])
 
@@ -82,24 +83,24 @@ test_Settings = keepingSettings' $ do
       checkInclusion l 1 [(0, True), (1, True), (2, False)]
       checkInclusion l 2 [(1, True), (2, True), (3, False)]
 
-checkInclusion :: Leg -> Int -> [(Int, Bool)] -> IO ()
+checkInclusion :: Leg s -> Int -> [(Int, Bool)] -> QLE s ()
 checkInclusion l n x = do
   tod <- evaluationDate
   mapM_ (\(days, expected) -> do
     cfs <- cashFlows l Nothing (Just $ addDays (fromIntegral days) tod)
     let (_, _, o) = cfs !! n
-    assertEqual expected (not o))
+    liftIO $ assertEqual expected (not o))
     x
 
-checkNPV :: Leg -> InterestRate -> Bool -> Double -> IO ()
+checkNPV :: Leg s -> InterestRate s -> Bool -> Double -> QLE s ()
 checkNPV l r includeRef expected = do
   tod <- evaluationDate
   v <- npvFromYield' l r includeRef (Just tod) (Just tod)
-  assertBool $ abs(v - expected) <= 1.0e-6
+  liftIO $ assertBool $ abs(v - expected) <= 1.0e-6
 
 -- dynamic cast of coupon in Black pricer
 test_AccessViolation :: IO ()
-test_AccessViolation = keepingSettings' $ do
+test_AccessViolation = keepingSettings' $ runQLE $ do
   setEvaluationDate (Just $ 7 `april` 2010)
   cal <- target
   dc <- actual365Fixed
@@ -114,10 +115,10 @@ test_AccessViolation = keepingSettings' $ do
   cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
   setCouponPricer cpns pricer
   void $ nextCashFlowAmount cpns True Nothing
-  assertBool True
+  liftIO $ assertBool True
 
 test_DefaultSettlementDate :: IO ()
-test_DefaultSettlementDate = do
+test_DefaultSettlementDate = runQLE $ do
   tod <- evaluationDate
   cal <- target
   sch <- schedule (Just $ addGregorianMonthsClip (-2) tod) (addGregorianMonthsClip 4 tod) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
@@ -125,10 +126,10 @@ test_DefaultSettlementDate = do
   cpn <- interestRate 0.03 dc Simple Annual
   l <- fixedRateLeg sch [100.0] [cpn] Following dc cal
   accP <- accruedPeriod l False Nothing
-  assertBool $ accP /= 0
+  liftIO $ assertBool $ accP /= 0
   accD <- accruedDays l False Nothing
-  assertBool $ accD /= 0
+  liftIO $ assertBool $ accD /= 0
   accA <- accruedAmount l False Nothing
-  assertBool $ accA /= 0
+  liftIO $ assertBool $ accA /= 0
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -7,6 +7,7 @@ import Test.Framework
 import Test.HUnit.Lang
 
 import Control.Applicative((<$>))
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 import Data.Word
 
@@ -42,7 +43,7 @@ close x1 x2 =
         tolerance = 42 * qlEpsilon
 
 test_ReferenceChange :: IO ()
-test_ReferenceChange = keepingSettings' $ do
+test_ReferenceChange = keepingSettings' $ runQLE $ do
   (_calendar, settlementDays, _ts) <- setup
   flatRate <- simpleQuote 0.03
   calendar <- nullCalendar
@@ -55,11 +56,11 @@ test_ReferenceChange = keepingSettings' $ do
   setEvaluationDate (Just $ addDays 30 tod)
   calculated <- mapM (\d -> discount' ts (addDays (30+d) tod) False) days
 
-  mapM_ (\(x1, x2) -> subAssert $ assertClose x1 x2) (zip expected calculated)
+  mapM_ (\(x1, x2) -> liftIO $ subAssert $ assertClose x1 x2) (zip expected calculated)
   where days = [10, 30, 60, 120, 360, 720]
 
 test_Implied :: IO ()
-test_Implied = keepingSettings' $ do
+test_Implied = keepingSettings' $ runQLE $ do
   (calendar, settlementDays, ts) <- setup
   tod <- evaluationDate
   let newToday = addGregorianYearsClip 3 tod
@@ -70,11 +71,11 @@ test_Implied = keepingSettings' $ do
   dsc <- discount' ts testDate False
   impliedDiscount <- discount' implied testDate False
 
-  assertBool $ dsc - baseDiscount * impliedDiscount <= tolerance
+  liftIO $ assertBool $ dsc - baseDiscount * impliedDiscount <= tolerance
   where tolerance = 1.0e-10
 
 test_FSpreaded :: IO ()
-test_FSpreaded = keepingSettings' $ do
+test_FSpreaded = keepingSettings' $ runQLE $ do
   (_calendar, _settlementDays, ts) <- setup
   me <- simpleQuote 0.01 >>= asQuote
   val <- value me
@@ -85,11 +86,11 @@ test_FSpreaded = keepingSettings' $ do
   forward <- rate <$> forwardRate' ts testDate testDate actual360dc Continuous NoFrequency False
   spreadedForward <- rate <$> forwardRate' spreaded testDate testDate actual360dc Continuous NoFrequency False
 
-  assertBool $ forward - (spreadedForward - val) <= tolerance
+  liftIO $ assertBool $ forward - (spreadedForward - val) <= tolerance
   where tolerance = 1.0e-10
 
 test_ZSpreaded :: IO ()
-test_ZSpreaded = keepingSettings' $ do
+test_ZSpreaded = keepingSettings' $ runQLE $ do
   (_calendar, _settlementDays, ts) <- setup
   q <- simpleQuote 0.01 >>= asQuote
   val <- value q
@@ -100,13 +101,13 @@ test_ZSpreaded = keepingSettings' $ do
   zero <- rate <$> zeroRate' ts testDate actual360dc Continuous NoFrequency False
   spreadedZero <- rate <$> zeroRate' spreaded testDate actual360dc Continuous NoFrequency False
 
-  assertBool $ zero - (spreadedZero - val) <= tolerance
+  liftIO $ assertBool $ zero - (spreadedZero - val) <= tolerance
   where tolerance = 1.0e-10
 
-setup :: IO (Calendar, Word, YieldTermStructure)
+setup :: QLE s (Calendar s, Word, YieldTermStructure s)
 setup = do
   calendar <- target
-  d <- today
+  d <- liftIO $ today
   today' <- adjust calendar d Following
   setEvaluationDate (Just today')
   settlement <- advance calendar today' (fromIntegral settlementDays) Days Following False

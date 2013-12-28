@@ -7,6 +7,7 @@ module QuantLib.Example.FittedBondCurve
 where
 
 import Control.Monad(forM)
+import Control.Monad.IO.Class
 import Data.Time.Calendar
 
 import qualified QuantLib.CashFlow.Leg as CF
@@ -40,9 +41,9 @@ data Rate = Rate{refDateR :: Day, numIterR :: [Int], tenorsR :: [YearFraction], 
   deriving Show
 
 run :: IO Result
-run = do
+run = runQLE $ do
   cal <- nullCalendar
-  tod1 <- today
+  tod1 <- liftIO $ today
   tod <- adjust cal tod1 Following
   setEvaluationDate $ Just tod
   dc <- simple
@@ -81,7 +82,7 @@ run = do
     tolerance = 1e-10
     maxEvals = 5000
 
-    parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO Double
+    parRate :: YieldTermStructure s -> [Day] -> DayCounter s -> QLE s Double
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- yearFraction dc d1 d2 Nothing Nothing
