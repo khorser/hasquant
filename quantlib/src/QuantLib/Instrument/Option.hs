@@ -49,7 +49,7 @@ barrierOption :: BarrierType -- ^barrierType
   -> Double -- ^rebate
   -> StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO BarrierOption
+  -> QLE s (BarrierOption s)
 barrierOption = $(ffiCall 'barrierOption) c_barrierOption
 
 foreign import ccall safe "ql.h qlBarrierOption"
@@ -59,7 +59,7 @@ dividendVanillaOption :: StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
   -> [Day] -- ^dividendDates
   -> [Double] -- ^dividends
-  -> IO DividendVanillaOption
+  -> QLE s (DividendVanillaOption s)
 dividendVanillaOption = $(ffiCall 'dividendVanillaOption) c_dividendVanillaOption
 
 foreign import ccall safe "ql.h qlDividendVanillaOption"
@@ -69,31 +69,31 @@ forwardVanillaOption :: Double -- ^moneyness
   -> Day -- ^resetDate
   -> StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO ForwardVanillaOption
+  -> QLE s (ForwardVanillaOption s)
 forwardVanillaOption = $(ffiCall 'forwardVanillaOption) c_forwardVanillaOption
 
 foreign import ccall safe "ql.h qlForwardVanillaOption"
   c_forwardVanillaOption :: CDouble -> CDate -> Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CForwardVanillaOption)
 
-delta1 :: MargrabeOption -> IO Double
+delta1 :: MargrabeOption -> QLE s Double
 delta1 = $(ffiCallX 'delta1) c_delta1
 
 foreign import ccall safe "ql.h qlMargrabeOptionDelta1"
   c_delta1 :: Ptr CMargrabeOption -> Ptr CString -> IO CDouble
 
-delta2 :: MargrabeOption -> IO Double
+delta2 :: MargrabeOption -> QLE s Double
 delta2 = $(ffiCallX 'delta2) c_delta2
 
 foreign import ccall safe "ql.h qlMargrabeOptionDelta2"
   c_delta2 :: Ptr CMargrabeOption -> Ptr CString -> IO CDouble
 
-gamma1 :: MargrabeOption -> IO Double
+gamma1 :: MargrabeOption -> QLE s Double
 gamma1 = $(ffiCallX 'gamma1) c_gamma1
 
 foreign import ccall safe "ql.h qlMargrabeOptionGamma1"
   c_gamma1 :: Ptr CMargrabeOption -> Ptr CString -> IO CDouble
 
-gamma2 :: MargrabeOption -> IO Double
+gamma2 :: MargrabeOption -> QLE s Double
 gamma2 = $(ffiCallX 'gamma2) c_gamma2
 
 foreign import ccall safe "ql.h qlMargrabeOptionGamma2"
@@ -102,32 +102,32 @@ foreign import ccall safe "ql.h qlMargrabeOptionGamma2"
 margrabeOption :: Int -- ^Q1
   -> Int -- ^Q2
   -> Exercise
-  -> IO MargrabeOption
+  -> QLE s (MargrabeOption s)
 margrabeOption = $(ffiCall 'margrabeOption) c_margrabeOption
 
 foreign import ccall safe "ql.h qlMargrabeOption"
   c_margrabeOption :: CInt -> CInt -> Ptr CExercise -> Ptr CString -> IO (Ptr CMargrabeOption)
 
-multiAssetOption :: Payoff -> Exercise -> IO MultiAssetOption
+multiAssetOption :: Payoff -> Exercise -> QLE s (MultiAssetOption s)
 multiAssetOption = $(ffiCall 'multiAssetOption) c_multiAssetOption
 
 foreign import ccall safe "ql.h qlMultiAssetOption"
   c_multiAssetOption :: Ptr CPayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CMultiAssetOption)
 
-deltaForward :: OneAssetOption -> IO Double
+deltaForward :: OneAssetOption -> QLE s Double
 deltaForward = $(ffiCallX 'deltaForward) c_deltaForward
 
 foreign import ccall safe "ql.h qlOneAssetOptionDeltaForward"
   c_deltaForward :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
-elasticity :: OneAssetOption -> IO Double
+elasticity :: OneAssetOption -> QLE s Double
 elasticity = $(ffiCallX 'elasticity) c_elasticity
 
 foreign import ccall safe "ql.h qlOneAssetOptionElasticity"
   c_elasticity :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
 itmCashProbability :: OneAssetOption
-  -> IO Double
+  -> QLE s Double
 itmCashProbability = $(ffiCallX 'itmCashProbability) c_itmCashProbability
 
 foreign import ccall safe "ql.h qlOneAssetOptionItmCashProbability"
@@ -139,13 +139,13 @@ oneAssetOption = $(ffiCall 'oneAssetOption) c_oneAssetOption
 foreign import ccall safe "ql.h qlOneAssetOption"
   c_oneAssetOption :: Ptr CPayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr COneAssetOption)
 
-strikeSensitivity :: OneAssetOption -> IO Double
+strikeSensitivity :: OneAssetOption -> QLE s Double
 strikeSensitivity = $(ffiCallX 'strikeSensitivity) c_strikeSensitivity
 
 foreign import ccall safe "ql.h qlOneAssetOptionStrikeSensitivity"
   c_strikeSensitivity :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
-thetaPerDay :: OneAssetOption -> IO Double
+thetaPerDay :: OneAssetOption -> QLE s Double
 thetaPerDay = $(ffiCallX 'thetaPerDay) c_thetaPerDay
 
 foreign import ccall safe "ql.h qlOneAssetOptionThetaPerDay"
@@ -156,7 +156,7 @@ quantoBarrierOption :: BarrierType -- ^barrierType
   -> Double -- ^rebate
   -> StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO QuantoBarrierOption
+  -> QLE s (QuantoBarrierOption s)
 quantoBarrierOption = $(ffiCall 'quantoBarrierOption) c_quantoBarrierOption
 
 foreign import ccall safe "ql.h qlQuantoBarrierOption"
@@ -166,19 +166,19 @@ quantoForwardVanillaOption :: Double -- ^moneyness
   -> Day -- ^resetDate
   -> StrikedTypePayoff
   -> Exercise
-  -> IO QuantoForwardVanillaOption
+  -> QLE s (QuantoForwardVanillaOption s)
 quantoForwardVanillaOption = $(ffiCall 'quantoForwardVanillaOption) c_quantoForwardVanillaOption
 
 foreign import ccall safe "ql.h qlQuantoForwardVanillaOption"
   c_quantoForwardVanillaOption :: CDouble -> CDate -> Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CQuantoForwardVanillaOption)
 
-quantoVanillaOption :: StrikedTypePayoff -> Exercise -> IO QuantoVanillaOption
+quantoVanillaOption :: StrikedTypePayoff -> Exercise -> QLE s (QuantoVanillaOption s)
 quantoVanillaOption = $(ffiCall 'quantoVanillaOption) c_quantoVanillaOption
 
 foreign import ccall safe "ql.h qlQuantoVanillaOption"
   c_quantoVanillaOption :: Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CQuantoVanillaOption)
 
-vanillaOption :: StrikedTypePayoff -> Exercise -> IO VanillaOption
+vanillaOption :: StrikedTypePayoff -> Exercise -> QLE s (VanillaOption s)
 vanillaOption = $(ffiCall 'vanillaOption) c_vanillaOption
 
 foreign import ccall safe "ql.h qlVanillaOption"
@@ -191,13 +191,13 @@ dividendBarrierOption :: BarrierType -- ^barrierType
   -> Exercise -- ^exercise
   -> [Day] -- ^dividendDates
   -> [Double] -- ^dividends
-  -> IO BarrierOption
+  -> QLE s (BarrierOption s)
 dividendBarrierOption = $(ffiCall 'dividendBarrierOption) c_dividendBarrierOption
 
 foreign import ccall safe "ql.h qlDividendBarrierOption"
   c_dividendBarrierOption :: CInt -> CDouble -> CDouble -> Ptr CStrikedTypePayoff -> Ptr CExercise -> CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CBarrierOption)
 
-basketOption :: BasketPayoff -> Exercise -> IO MultiAssetOption
+basketOption :: BasketPayoff -> Exercise -> QLE s (MultiAssetOption s)
 basketOption = $(ffiCall 'basketOption) c_basketOption
 
 foreign import ccall safe "ql.h qlBasketOption"
@@ -205,7 +205,7 @@ foreign import ccall safe "ql.h qlBasketOption"
 
 himalayaOption :: [Day] -- ^fixingDates
   -> Double -- ^strike
-  -> IO MultiAssetOption
+  -> QLE s (MultiAssetOption s)
 himalayaOption = $(ffiCall 'himalayaOption) c_himalayaOption
 
 foreign import ccall safe "ql.h qlHimalayaOption"
@@ -214,7 +214,7 @@ foreign import ccall safe "ql.h qlHimalayaOption"
 pagodaOption :: [Day] -- ^fixingDates
   -> Double -- ^roof
   -> Double -- ^fraction
-  -> IO MultiAssetOption
+  -> QLE s (MultiAssetOption s)
 pagodaOption = $(ffiCall 'pagodaOption) c_pagodaOption
 
 foreign import ccall safe "ql.h qlPagodaOption"
@@ -222,7 +222,7 @@ foreign import ccall safe "ql.h qlPagodaOption"
 
 spreadOption :: PlainVanillaPayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO MultiAssetOption
+  -> QLE s (MultiAssetOption s)
 spreadOption = $(ffiCall 'spreadOption) c_spreadOption
 
 foreign import ccall safe "ql.h qlSpreadOption"
@@ -231,7 +231,7 @@ foreign import ccall safe "ql.h qlSpreadOption"
 cliquetOption :: PercentageStrikePayoff
   -> EuropeanExercise -- ^maturity
   -> [Day] -- ^resetDates
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 cliquetOption = $(ffiCall 'cliquetOption) c_cliquetOption
 
 foreign import ccall safe "ql.h qlCliquetOption"
@@ -240,7 +240,7 @@ foreign import ccall safe "ql.h qlCliquetOption"
 continuousAveragingAsianOption :: AverageType -- ^averageType
   -> StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 continuousAveragingAsianOption = $(ffiCall 'continuousAveragingAsianOption) c_continuousAveragingAsianOption
 
 foreign import ccall safe "ql.h qlContinuousAveragingAsianOption"
@@ -249,7 +249,7 @@ foreign import ccall safe "ql.h qlContinuousAveragingAsianOption"
 continuousFixedLookbackOption :: Double -- ^currentMinmax
   -> StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 continuousFixedLookbackOption = $(ffiCall 'continuousFixedLookbackOption) c_continuousFixedLookbackOption
 
 foreign import ccall safe "ql.h qlContinuousFixedLookbackOption"
@@ -258,7 +258,7 @@ foreign import ccall safe "ql.h qlContinuousFixedLookbackOption"
 continuousFloatingLookbackOption :: Double -- ^currentMinmax
   -> TypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 continuousFloatingLookbackOption = $(ffiCall 'continuousFloatingLookbackOption) c_continuousFloatingLookbackOption
 
 foreign import ccall safe "ql.h qlContinuousFloatingLookbackOption"
@@ -270,7 +270,7 @@ discreteAveragingAsianOption :: AverageType -- ^averageType
   -> [Day] -- ^fixingDates
   -> StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 discreteAveragingAsianOption = $(ffiCall 'discreteAveragingAsianOption) c_discreteAveragingAsianOption
 
 foreign import ccall safe "ql.h qlDiscreteAveragingAsianOption"
@@ -280,7 +280,7 @@ vanillaStorageOption :: BermudanExercise -- ^ex
   -> Double -- ^capacity
   -> Double -- ^load
   -> Double -- ^changeRate
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 vanillaStorageOption = $(ffiCall 'vanillaStorageOption) c_vanillaStorageOption
 
 foreign import ccall safe "ql.h qlVanillaStorageOption"
@@ -290,13 +290,13 @@ vanillaSwingOption :: StrikedTypePayoff -- ^payoff
   -> SwingExercise -- ^ex
   -> Word -- ^minExerciseRights
   -> Word -- ^maxExerciseRights
-  -> IO OneAssetOption
+  -> QLE s (OneAssetOption s)
 vanillaSwingOption = $(ffiCall 'vanillaSwingOption) c_vanillaSwingOption
 
 foreign import ccall safe "ql.h qlVanillaSwingOption"
   c_vanillaSwingOption :: Ptr CStrikedTypePayoff -> Ptr CSwingExercise -> CUInt -> CUInt -> Ptr CString -> IO (Ptr COneAssetOption)
 
-europeanOption :: StrikedTypePayoff -> Exercise -> IO VanillaOption
+europeanOption :: StrikedTypePayoff -> Exercise -> QLE s (VanillaOption s)
 europeanOption = $(ffiCall 'europeanOption) c_europeanOption
 
 foreign import ccall safe "ql.h qlEuropeanOption"

@@ -19,7 +19,7 @@ import QuantLib.Types
 
 boundaryConstraint :: Double -- ^low
   -> Double -- ^high
-  -> IO Constraint
+  -> QLE s (Constraint s)
 boundaryConstraint = $(ffiCall 'boundaryConstraint) c_boundaryConstraint
 
 foreign import ccall safe "ql.h qlBoundaryConstraint"
@@ -27,19 +27,19 @@ foreign import ccall safe "ql.h qlBoundaryConstraint"
 
 compositeConstraint :: Constraint -- ^c1
   -> Constraint -- ^c2
-  -> IO Constraint
+  -> QLE s (Constraint s)
 compositeConstraint = $(ffiCall 'compositeConstraint) c_compositeConstraint
 
 foreign import ccall safe "ql.h qlCompositeConstraint"
   c_compositeConstraint :: Ptr CConstraint -> Ptr CConstraint -> Ptr CString -> IO (Ptr CConstraint)
 
-noConstraint :: IO Constraint
+noConstraint :: QLE s (Constraint s)
 noConstraint = $(ffiCall 'noConstraint) c_noConstraint
 
 foreign import ccall safe "ql.h qlNoConstraint"
   c_noConstraint :: Ptr CString -> IO (Ptr CConstraint)
 
-positiveConstraint :: IO Constraint
+positiveConstraint :: QLE s (Constraint s)
 positiveConstraint = $(ffiCall 'positiveConstraint) c_positiveConstraint
 
 foreign import ccall safe "ql.h qlPositiveConstraint"
@@ -48,7 +48,7 @@ foreign import ccall safe "ql.h qlPositiveConstraint"
 levenbergMarquardt :: Double -- ^epsfcn
   -> Double -- ^xtol
   -> Double -- ^gtol
-  -> IO OptimizationMethod
+  -> QLE s (OptimizationMethod s)
 levenbergMarquardt = $(ffiCall 'levenbergMarquardt) c_levenbergMarquardt
 
 foreign import ccall safe "ql.h qlLevenbergMarquardt"
@@ -56,7 +56,7 @@ foreign import ccall safe "ql.h qlLevenbergMarquardt"
 
 -- |Constructor taking as input the characteristic length
 simplex :: Double -- ^lambda
-  -> IO OptimizationMethod
+  -> QLE s (OptimizationMethod s)
 simplex = $(ffiCall 'simplex) c_simplex
 
 foreign import ccall safe "ql.h qlSimplex"
@@ -68,7 +68,7 @@ endCriteria :: Word -- ^maxIterations
   -> Double -- ^rootEpsilon
   -> Double -- ^functionEpsilon
   -> Double -- ^gradientNormEpsilon
-  -> IO EndCriteria
+  -> QLE s (EndCriteria s)
 endCriteria = $(ffiCall 'endCriteria) c_endCriteria
 
 foreign import ccall safe "ql.h qlEndCriteria"

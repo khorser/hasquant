@@ -18,7 +18,7 @@ import QuantLib.Types
 
 cap :: Leg -- ^floatingLeg
   -> [Double] -- ^exerciseRates
-  -> IO CapFloor
+  -> QLE s (CapFloor s)
 cap = $(ffiCall 'cap) c_cap
 
 foreign import ccall safe "ql.h qlCap"
@@ -27,7 +27,7 @@ foreign import ccall safe "ql.h qlCap"
 collar :: Leg -- ^floatingLeg
   -> [Double] -- ^capRates
   -> [Double] -- ^floorRates
-  -> IO CapFloor
+  -> QLE s (CapFloor s)
 collar = $(ffiCall 'collar) c_collar
 
 foreign import ccall safe "ql.h qlCollar"
@@ -35,7 +35,7 @@ foreign import ccall safe "ql.h qlCollar"
 
 floor :: Leg -- ^floatingLeg
   -> [Double] -- ^exerciseRates
-  -> IO CapFloor
+  -> QLE s (CapFloor s)
 floor = $(ffiCall 'floor) c_floor
 
 foreign import ccall safe "ql.h qlFloor"
@@ -43,7 +43,7 @@ foreign import ccall safe "ql.h qlFloor"
 
 atmRate :: CapFloor
   -> YieldTermStructure -- ^discountCurve
-  -> IO Double
+  -> QLE s Double
 atmRate = $(ffiCallX 'atmRate) c_atmRate
 
 foreign import ccall safe "ql.h qlCapFloorAtmRate"
@@ -58,7 +58,7 @@ impliedVolatility :: CapFloor
   -> Word -- ^maxEvaluations
   -> Double -- ^minVol
   -> Double -- ^maxVol
-  -> IO Double
+  -> QLE s Double
 impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
 
 foreign import ccall safe "ql.h qlCapFloorImpliedVolatility"
@@ -67,7 +67,7 @@ foreign import ccall safe "ql.h qlCapFloorImpliedVolatility"
 -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
 optionlet :: CapFloor
   -> Word -- ^n
-  -> IO CapFloor
+  -> QLE s (CapFloor s)
 optionlet = $(ffiCall 'optionlet) c_optionlet
 
 foreign import ccall safe "ql.h qlCapFloorOptionlet"

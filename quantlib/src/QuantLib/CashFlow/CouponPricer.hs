@@ -19,41 +19,41 @@ foreign import ccall safe "ql.h qlBlackIborCouponPricer"
     -> IO (Ptr CFloatingRateCouponPricer)
 
 -- |Black-formula pricer for capped/floored Ibor coupons
-blackIborCouponPricer :: OptionletVolatilityStructure -> IO FloatingRateCouponPricer
+blackIborCouponPricer :: OptionletVolatilityStructure s -> QLE s (FloatingRateCouponPricer s)
 blackIborCouponPricer = $(ffiCall 'blackIborCouponPricer) c_blackIborCouponPricer
 
-setCouponPricer :: Leg -- ^leg
-  -> FloatingRateCouponPricer
-  -> IO ()
+setCouponPricer :: Leg s -- ^leg
+  -> FloatingRateCouponPricer s
+  -> QLE s ()
 setCouponPricer = $(ffiCallX 'setCouponPricer) c_setCouponPricer
 
 foreign import ccall safe "ql.h qlQuantLibSetCouponPricer"
   c_setCouponPricer :: Ptr CLeg -> Ptr CFloatingRateCouponPricer -> Ptr CString -> IO ()
 
-setCouponPricers :: Leg -- ^leg
-  -> [FloatingRateCouponPricer]
-  -> IO ()
+setCouponPricers :: Leg s -- ^leg
+  -> [FloatingRateCouponPricer s]
+  -> QLE s ()
 setCouponPricers = $(ffiCallX 'setCouponPricers) c_setCouponPricers
 
 foreign import ccall safe "ql.h qlQuantLibSetCouponPricers"
   c_setCouponPricers :: Ptr CLeg -> CUInt -> Ptr (Ptr CFloatingRateCouponPricer) -> Ptr CString -> IO ()
 
-analyticHaganPricer :: SwaptionVolatilityStructure -- ^swaptionVol
+analyticHaganPricer :: SwaptionVolatilityStructure s -- ^swaptionVol
   -> YieldCurveModel -- ^modelOfYieldCurve
-  -> Quote -- ^meanReversion
-  -> IO FloatingRateCouponPricer
+  -> Quote s -- ^meanReversion
+  -> QLE s (FloatingRateCouponPricer s)
 analyticHaganPricer = $(ffiCall 'analyticHaganPricer) c_analyticHaganPricer
 
 foreign import ccall safe "ql.h qlAnalyticHaganPricer"
   c_analyticHaganPricer :: Ptr CSwaptionVolatilityStructure -> CInt -> Ptr CQuote -> Ptr CString -> IO (Ptr CFloatingRateCouponPricer)
 
-numericHaganPricer :: SwaptionVolatilityStructure -- ^swaptionVol
+numericHaganPricer :: SwaptionVolatilityStructure s -- ^swaptionVol
   -> YieldCurveModel -- ^modelOfYieldCurve
-  -> Quote -- ^meanReversion
+  -> Quote s -- ^meanReversion
   -> Double -- ^lowerLimit
   -> Double -- ^upperLimit
   -> Double -- ^precision
-  -> IO FloatingRateCouponPricer
+  -> QLE s (FloatingRateCouponPricer s)
 numericHaganPricer = $(ffiCall 'numericHaganPricer) c_numericHaganPricer
 
 foreign import ccall safe "ql.h qlNumericHaganPricer"

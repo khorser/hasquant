@@ -22,7 +22,7 @@ import System.Mem(performGC)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Types -- hiding(evaluationDate, includeTodaysCashFlows, enforceTodaysHistoricFixings, includeReferenceDateEvents)
+import QuantLib.Internal.Types hiding(evaluationDate, includeTodaysCashFlows, enforceTodaysHistoricFixings, includeReferenceDateEvents)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
   c_evaluationDate :: IO CDate

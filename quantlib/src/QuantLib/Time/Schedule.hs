@@ -38,13 +38,13 @@ schedule :: Maybe Day -- ^effectiveDate
   -> Bool -- ^endOfMonth
   -> Maybe Day -- ^firstDate
   -> Maybe Day -- ^nextToLastDate
-  -> IO Schedule
+  -> QLE s (Schedule s)
 schedule = $(ffiCall 'schedule) c_schedule
 
 scheduleFromDays :: [Day]
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^convention
-  -> IO Schedule
+  -> QLE s (Schedule s)
 scheduleFromDays = $(ffiCall 'scheduleFromDays) c_scheduleFromDays
 
 -- |truncated schedule
@@ -56,7 +56,7 @@ scheduleFromDays = $(ffiCall 'scheduleFromDays) c_scheduleFromDays
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
 until :: Schedule
   -> Day -- ^truncationDate
-  -> IO Schedule
+  -> QLE s (Schedule s)
 until = $(ffiCall 'until) c_until
 
 -- |returns the dates for the given Schedule object

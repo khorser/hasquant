@@ -28,69 +28,69 @@ foreign import ccall safe "ql.h qlIndexAddFixing"
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
 -- Adds fixings for the given InterestRateIndex object
-addFixing :: Index
+addFixing :: Index s
   -> Day -- ^fixingDate
   -> Double -- ^fixing
   -> Bool -- ^forceOverwrite
-  -> IO ()
+  -> QLE s ()
 addFixing = $(ffiCallX 'addFixing) c_addFixing
 
-bmaIndex :: Maybe YieldTermStructure -- ^h
-  -> IO BMAIndex
+bmaIndex :: Maybe (YieldTermStructure s) -- ^h
+  -> QLE s (BMAIndex s)
 bmaIndex = $(ffiCall 'bmaIndex) c_bmaIndex
 
 foreign import ccall safe "ql.h qlBMAIndex"
   c_bmaIndex :: Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CBMAIndex)
 
 -- |This method returns a schedule of fixing dates between start and end.
-fixingSchedule :: BMAIndex
+fixingSchedule :: BMAIndex s
   -> Day -- ^start
   -> Day -- ^end
-  -> IO Schedule
+  -> QLE s (Schedule s)
 fixingSchedule = $(ffiCall 'fixingSchedule) c_fixingSchedule
 
 foreign import ccall safe "ql.h qlBMAIndexFixingSchedule"
   c_fixingSchedule :: Ptr CBMAIndex -> CDate -> CDate -> Ptr CString -> IO (Ptr CSchedule)
 
 -- |It can be overridden to implement particular conventions.
-forecastFixing :: InterestRateIndex
+forecastFixing :: InterestRateIndex s
   -> Day -- ^fixingDate
-  -> IO Double
+  -> QLE s Double
 forecastFixing = $(ffiCallX 'forecastFixing) c_forecastFixing
 
 foreign import ccall safe "ql.h qlInterestRateIndexForecastFixing"
   c_forecastFixing :: Ptr CInterestRateIndex -> CDate -> Ptr CString -> IO CDouble
 
 -- |returns the calendar defining valid fixing dates
-fixingCalendar :: Index
-  -> IO Calendar
+fixingCalendar :: Index s
+  -> QLE s (Calendar s)
 fixingCalendar = $(ffiCall 'fixingCalendar) c_fixingCalendar
 
 foreign import ccall safe "ql.h qlIndexFixingCalendar"
   c_fixingCalendar :: Ptr CIndex -> Ptr CString -> IO (Ptr CCalendar)
 
-currency :: InterestRateIndex
-  -> IO Currency
+currency :: InterestRateIndex s
+  -> QLE s (Currency s)
 currency = $(ffiCall 'currency) c_currency
 
 foreign import ccall safe "ql.h qlInterestRateIndexCurrency"
   c_currency :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CCurrency)
 
-dayCounter :: InterestRateIndex
-  -> IO DayCounter
+dayCounter :: InterestRateIndex s
+  -> QLE s (DayCounter s)
 dayCounter = $(ffiCall 'dayCounter) c_dayCounter
 
 foreign import ccall safe "ql.h qlInterestRateIndexDayCounter"
   c_dayCounter :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CDayCounter)
 
-fixingDays :: InterestRateIndex
+fixingDays :: InterestRateIndex s
   -> Word
 fixingDays = $(ffiCallPure 'fixingDays) c_fixingDays
 
 foreign import ccall safe "ql.h qlInterestRateIndexFixingDays"
   c_fixingDays :: Ptr CInterestRateIndex -> IO CUInt
 
-tenor :: InterestRateIndex -> Either QLError (Int, Unit)
+tenor :: InterestRateIndex s -> Either QLError (Int, Unit)
 tenor o = purifyExceptions $ do
   (n, u) <- withObject o (getIntPair . c_tenor)
   e <- fromQlEnum (show ''Unit) u

@@ -3,7 +3,9 @@
 module QuantLib.Internal.Utils
   (
     unmarshalExceptions
+  , getExceptions
   , purifyExceptions
+  , mkQLE
 
   , upcast
   , construct
@@ -56,13 +58,13 @@ withArrayULenT t x = withArrayULen (map t x)
 withArrayULenTIO :: Storable b => (a -> IO b) -> [a] -> (CUInt -> Ptr b -> IO c) -> IO c
 withArrayULenTIO t x f = mapM t x >>= (`withArrayULen` f)
 
-withObject :: Object a -> (Ptr a -> IO b) -> IO b
+withObject :: Object s a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr . ptr
 
-maybeWithObject :: Maybe (Object a) -> (Ptr a -> IO b) -> IO b
+maybeWithObject :: Maybe (Object s a) -> (Ptr a -> IO b) -> IO b
 maybeWithObject = maybeWith withObject
 
-withObjects :: [Object a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
+withObjects :: [Object s a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 withObjects xs f = withMany withObject xs (`withArrayULen` f)
 
 withDoubles :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
@@ -106,9 +108,9 @@ buildArray n p = do
   return x
 
 -- invoke object method returning a list of objects
-getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => Object b
+getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => Object s b
   -> (Ptr b -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr a)))
-  -> IO [Object a]
+  -> IO [Object s a]
 getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (liftM Object . newForeignPtr finalize)
 
 -- invoke a function producing an integral pair,
@@ -135,9 +137,8 @@ unmarshalExceptions f =
          throwIO $ CPlusPlusException e
        else return r
 
-purifyExceptions :: IO a -> Either QLError a
-{-# NOINLINE purifyExceptions #-}
-purifyExceptions f = unsafePerformIO $ join <$> catchSync (catchQL f)
+getExceptions :: IO a -> IO (Either QLError a)
+getExceptions f = join <$> catchSync (catchQL f)
   where
     catchQL :: IO a -> IO (Either QLError a)
     catchQL g = (Right <$> g)
@@ -147,29 +148,36 @@ purifyExceptions f = unsafePerformIO $ join <$> catchSync (catchQL f)
     catchSync :: IO a -> IO (Either QLError a)
     catchSync g = fmapL SyncException <$> runEitherT (syncIO g)
 
+mkQLE :: IO a -> QLE s a
+mkQLE = EitherT . QL . getExceptions
+
+purifyExceptions :: IO a -> Either QLError a
+{-# NOINLINE purifyExceptions #-}
+purifyExceptions = unsafePerformIO . getExceptions
+
 -- |Run a C function returning a new object that needs a finalizer.
 -- The function might signal an error
-construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (Object a)
+construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (Object s a)
 construct f = do
   o <- unmarshalExceptions f
   if o == nullPtr
     then throwIO NullPointerReturned
     else Object <$> newForeignPtr finalize o
 
-constructNamed :: NamedSingleton a => String -> IO (Object a)
-constructNamed n = withCString n $ construct . c_construct
+constructNamed :: NamedSingleton a => String -> QLE s (Object s a)
+constructNamed n = mkQLE $ withCString n $ construct . c_construct
 
-name :: NamedSingleton a => Object a -> String
+name :: NamedSingleton a => Object s a -> String
 {-# NOINLINE name #-}
 name c = unsafePerformIO $
-          withObject c
-            (\cc -> do
+          withObject c $
+            \cc -> do
               n <- c_name cc
               str <- peekCString n
               c_freeString n
-              return str)
+              return str
 
-upcast :: (Upcastable a b) => Object a -> IO (Object b)
-upcast x = withObject x c_upcast >>= liftM Object . newForeignPtr finalize
+upcast :: (Upcastable a b) => Object s a -> QLE s (Object s b)
+upcast x = mkQLE $ withObject x c_upcast >>= liftM Object . newForeignPtr finalize
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

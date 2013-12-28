@@ -41,7 +41,7 @@ import QuantLib.Math.Interpolation(Interpolation)
 
 factorSpreadedHazardRateCurve :: DefaultProbabilityTermStructure -- ^originalCurve
   -> Quote -- ^spread
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 factorSpreadedHazardRateCurve = $(ffiCall 'factorSpreadedHazardRateCurve) c_factorSpreadedHazardRateCurve
 
 foreign import ccall safe "ql.h qlFactorSpreadedHazardRateCurve"
@@ -51,7 +51,7 @@ flatHazardRate' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> Quote -- ^hazardRate
   -> DayCounter
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 flatHazardRate' = $(ffiCall 'flatHazardRate') c_flatHazardRate'
 
 foreign import ccall safe "ql.h qlFlatHazardRate1"
@@ -60,7 +60,7 @@ foreign import ccall safe "ql.h qlFlatHazardRate1"
 flatHazardRate :: Day -- ^referenceDate
   -> Quote -- ^hazardRate
   -> DayCounter
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 flatHazardRate = $(ffiCall 'flatHazardRate) c_flatHazardRate
 
 foreign import ccall safe "ql.h qlFlatHazardRate"
@@ -68,7 +68,7 @@ foreign import ccall safe "ql.h qlFlatHazardRate"
 
 spreadedHazardRateCurve :: DefaultProbabilityTermStructure -- ^originalCurve
   -> Quote -- ^spread
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 spreadedHazardRateCurve = $(ffiCall 'spreadedHazardRateCurve) c_spreadedHazardRateCurve
 
 foreign import ccall safe "ql.h qlSpreadedHazardRateCurve"
@@ -80,7 +80,7 @@ interpolatedDefaultDensityCurve :: [Day] -- ^dates
   -> Calendar -- ^calendar
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 interpolatedDefaultDensityCurve = $(ffiCall 'interpolatedDefaultDensityCurve) c_interpolatedDefaultDensityCurve
 
 foreign import ccall safe "ql.h qlInterpolatedDefaultDensityCurve"
@@ -92,7 +92,7 @@ interpolatedHazardRateCurve :: [Day] -- ^dates
   -> Calendar -- ^cal
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 interpolatedHazardRateCurve = $(ffiCall 'interpolatedHazardRateCurve) c_interpolatedHazardRateCurve
 
 foreign import ccall safe "ql.h qlInterpolatedHazardRateCurve"
@@ -104,7 +104,7 @@ interpolatedSurvivalProbabilityCurve :: [Day] -- ^dates
   -> Calendar -- ^calendar
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 interpolatedSurvivalProbabilityCurve = $(ffiCall 'interpolatedSurvivalProbabilityCurve) c_interpolatedSurvivalProbabilityCurve
 
 foreign import ccall safe "ql.h qlInterpolatedSurvivalProbabilityCurve"
@@ -122,7 +122,7 @@ spreadCdsHelper :: Quote -- ^runningSpread
   -> YieldTermStructure -- ^discountCurve
   -> Bool -- ^settlesAccrual
   -> Bool -- ^paysAtDefaultTime
-  -> IO DefaultProbabilityHelper
+  -> QLE s (DefaultProbabilityHelper s)
 spreadCdsHelper = $(ffiCall 'spreadCdsHelper) c_spreadCdsHelper
 
 foreign import ccall safe "ql.h qlSpreadCdsHelper"
@@ -143,7 +143,7 @@ upfrontCdsHelper :: Quote -- ^upfront
   -> Word -- ^upfrontSettlementDays
   -> Bool -- ^settlesAccrual
   -> Bool -- ^paysAtDefaultTime
-  -> IO DefaultProbabilityHelper
+  -> QLE s (DefaultProbabilityHelper s)
 upfrontCdsHelper = $(ffiCall 'upfrontCdsHelper) c_upfrontCdsHelper
 
 foreign import ccall safe "ql.h qlUpfrontCdsHelper"
@@ -156,7 +156,7 @@ piecewiseDefaultCurve :: Day -- ^referenceDate
   -> Double -- ^accuracy
   -> ProbabilityTrait
   -> Interpolation -- ^i
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 piecewiseDefaultCurve = $(ffiCall 'piecewiseDefaultCurve) c_piecewiseDefaultCurve
 
 foreign import ccall safe "ql.h qlPiecewiseDefaultCurve"
@@ -170,7 +170,7 @@ piecewiseDefaultCurve' :: Word -- ^settlementDays
   -> Double -- ^accuracy
   -> ProbabilityTrait
   -> Interpolation -- ^i
-  -> IO DefaultProbabilityTermStructure
+  -> QLE s (DefaultProbabilityTermStructure s)
 piecewiseDefaultCurve' = $(ffiCall 'piecewiseDefaultCurve') c_piecewiseDefaultCurve'
 
 foreign import ccall safe "ql.h qlPiecewiseDefaultCurve1"
@@ -179,7 +179,7 @@ foreign import ccall safe "ql.h qlPiecewiseDefaultCurve1"
 defaultDensity' :: DefaultProbabilityTermStructure
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 defaultDensity' = $(ffiCallX 'defaultDensity') c_defaultDensity'
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity1"
@@ -188,7 +188,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity1
 defaultDensity :: DefaultProbabilityTermStructure
   -> Day -- ^d
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 defaultDensity = $(ffiCallX 'defaultDensity) c_defaultDensity
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity"
@@ -198,7 +198,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity"
 defaultProbability' :: DefaultProbabilityTermStructure
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 defaultProbability' = $(ffiCallX 'defaultProbability') c_defaultProbability'
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability1"
@@ -209,7 +209,7 @@ defaultProbabilityBetween :: DefaultProbabilityTermStructure
   -> Day
   -> Day
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 defaultProbabilityBetween = $(ffiCallX 'defaultProbabilityBetween) c_defaultProbabilityBetween
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability2"
@@ -220,7 +220,7 @@ defaultProbabilityBetween' :: DefaultProbabilityTermStructure
   -> YearFraction
   -> YearFraction
   -> Bool -- ^extrapo
-  -> IO Double
+  -> QLE s Double
 defaultProbabilityBetween' = $(ffiCallX 'defaultProbabilityBetween') c_defaultProbabilityBetween'
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability3"
@@ -229,7 +229,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbabil
 defaultProbability :: DefaultProbabilityTermStructure
   -> Day -- ^d
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 defaultProbability = $(ffiCallX 'defaultProbability) c_defaultProbability
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability"
@@ -238,7 +238,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbabil
 hazardRate' :: DefaultProbabilityTermStructure
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 hazardRate' = $(ffiCallX 'hazardRate') c_hazardRate'
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate1"
@@ -247,7 +247,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate1"
 hazardRate :: DefaultProbabilityTermStructure
   -> Day -- ^d
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 hazardRate = $(ffiCallX 'hazardRate) c_hazardRate
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate"
@@ -257,7 +257,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate"
 survivalProbability' :: DefaultProbabilityTermStructure
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 survivalProbability' = $(ffiCallX 'survivalProbability') c_survivalProbability'
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureSurvivalProbability1"
@@ -266,7 +266,7 @@ foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureSurvivalProbabi
 survivalProbability :: DefaultProbabilityTermStructure
   -> Day -- ^d
   -> Bool -- ^extrapolate
-  -> IO Double
+  -> QLE s Double
 survivalProbability = $(ffiCallX 'survivalProbability) c_survivalProbability
 
 foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureSurvivalProbability"

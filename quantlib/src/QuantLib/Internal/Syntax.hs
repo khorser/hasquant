@@ -174,16 +174,20 @@ topArgType (ConT n) = runCond (
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
 topArgType (AppT (ConT m) (AppT (ConT n) _)) | m == ''Maybe = maybeType n
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
+topArgType (AppT ListT (AppT (ConT n) _)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
           (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
+topArgType (AppT ListT (AppT (AppT (TupleT 2) (AppT (ConT n1) _)) (ConT n2))) =
+              ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = runCond (
   ''Double ==? MatrixDoubleA <||>
   isObject =>? MatrixObjectA) n
 topArgType (AppT c@(ConT _) (VarT _)) = topArgType c
+topArgType (AppT (AppT c@(ConT o) _) _) | o == ''Object = topArgType c
 topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
   PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
@@ -218,8 +222,10 @@ compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
-compToRetVal (AppT (ConT n1) t2)
-  | n1 == ''IO = IORV <$> compArgToRetVal t2
+compToRetVal (AppT (AppT (ConT n1) _) (AppT t2 _))
+  | n1 == ''QLE = IORV <$> compArgToRetVal t2
+compToRetVal (AppT (AppT (ConT n1) _) t2)
+  | n1 == ''QLE = IORV <$> compArgToRetVal t2
 compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2)
   | (n1, n2) == (''Either, ''QLError) = EitherRV <$> compArgToRetVal t2
 compToRetVal t = AtomicRV <$> compArgToRetVal t
@@ -273,10 +279,13 @@ genFfiCall extra aa r = do
   where
     -- functions created with ffiCallPure should have NOINLINE and should be compiled with -fno-cse -fno-full-laziness
     -- shall we do the same for purifying calls?
+    call :: [Name] -> Name -> IOAction -> ExpQ
     call varNames cFunName Pure   = [|unsafePerformIO $(nakedCall varNames cFunName)|]
     call varNames cFunName Purify = [|purifyExceptions $(nakedCall varNames cFunName)|]
     call varNames cFunName PurifyPure = [|purifyExceptions $(nakedCall varNames cFunName)|]
-    call varNames cFunName _      = [|$(nakedCall varNames cFunName)|]
+    call varNames cFunName _      = case (r, extra) of
+      (IORV _, _) -> [|mkQLE $(nakedCall varNames cFunName)|]
+      _ -> [|$(nakedCall varNames cFunName)|]
 
     ret :: RetVal
     ret =
@@ -298,6 +307,7 @@ genFfiCall extra aa r = do
         (AtomicRV DayListR) -> [|getArray $(appE (postCall extra) c_call)|]
         _ -> appE (postCall extra) c_call
 
+    postCall :: IOAction -> ExpQ
     postCall Straight = [|id|]
     postCall Pure = [|id|]
     postCall Unmarshal = [|unmarshalExceptions|]
@@ -308,6 +318,7 @@ genFfiCall extra aa r = do
     nakedCall varNames cFunName = genFfiCallImpl (zip aa (map varE varNames)) (varE cFunName)
 
     genFfiCallImpl :: [(TopArg, ExpQ)] -> ExpQ -> ExpQ
+
     genFfiCallImpl [] c_call = [|$(unmarshal ret) ($(finalCCall c_call))|]
 
     genFfiCallImpl ((IntA, v):as) c_call =

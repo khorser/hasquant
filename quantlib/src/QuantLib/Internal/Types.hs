@@ -6,11 +6,13 @@ module QuantLib.Internal.Types
     Finalizable(..)
   , Upcastable(..)
   , NamedSingleton(..)
---  , QLSettings(..)
+  , QLSettings(..)
   , QLError(..)
   , CStaticInt(..)
   , CArrayable(..)
   , Object(..)
+  , QL(..)
+  , QLE
 
   -- re-exporting some popular types
   , Word
@@ -171,7 +173,9 @@ module QuantLib.Internal.Types
   )
 where
 
+import Control.Applicative
 import Control.Exception(Exception, IOException, SomeException)
+import Control.Monad.Trans.Either(EitherT)
 import Data.Time.Calendar(Day)
 import Data.Typeable(Typeable)
 import Data.Word(Word)
@@ -191,13 +195,13 @@ class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-newtype Object a = Object{ptr :: ForeignPtr a}
+newtype Object s a = Object{ptr :: ForeignPtr a}
 
---data QLSettings = QLSettings {
---    evaluationDate :: Day
---  , enforceTodaysHistoricFixings :: Bool
---  , includeTodaysCashFlows :: Bool
---  , includeReferenceDateEvents :: Bool}
+data QLSettings = QLSettings {
+    evaluationDate :: Day
+  , enforceTodaysHistoricFixings :: Bool
+  , includeTodaysCashFlows :: Bool
+  , includeReferenceDateEvents :: Bool}
 
 data QLError = CPlusPlusException String
   | DateConversion Day
@@ -208,9 +212,15 @@ data QLError = CPlusPlusException String
   | IncorrectSize
   | IoException IOException
   | SyncException SomeException
+  | InitException QLError
   deriving (Typeable, Show)
 
 instance Exception QLError
+
+newtype QL s a = QL {runQL :: IO a}
+  deriving (Monad, Functor, Applicative)
+
+type QLE s a = EitherT QLError (QL s) a
 
 newtype CStaticInt = CStaticInt{getStaticInt::CInt} deriving (Eq, Show, Storable)
 

@@ -64,7 +64,7 @@ import QuantLib.Instrument.OvernightIndexedSwapType(OvernightIndexedSwapType)
 
 -- |Multi leg constructor.
 swap' :: [(Leg, Bool)] -- ^(legs, payer)
-  -> IO Swap
+  -> QLE s (Swap s)
 swap' = $(ffiCall 'swap') c_swap'
 
 foreign import ccall safe "ql.h qlSwap1"
@@ -80,7 +80,7 @@ bmaSwap :: BMASwapType -- ^type
   -> Schedule -- ^bmaSchedule
   -> BMAIndex -- ^bmaIndex
   -> DayCounter -- ^bmaDayCount
-  -> IO BMASwap
+  -> QLE s (BMASwap s)
 bmaSwap = $(ffiCall 'bmaSwap) c_bmaSwap
 
 foreign import ccall safe "ql.h qlBMASwap"
@@ -96,7 +96,7 @@ vanillaSwap :: VanillaSwapType -- ^type
   -> Double -- ^spread
   -> DayCounter -- ^floatingDayCount
   -> BusinessDayConvention -- ^paymentConvention
-  -> IO VanillaSwap
+  -> QLE s (VanillaSwap s)
 vanillaSwap = $(ffiCall 'vanillaSwap) c_vanillaSwap
 
 foreign import ccall safe "ql.h qlVanillaSwap"
@@ -105,7 +105,7 @@ foreign import ccall safe "ql.h qlVanillaSwap"
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 swap :: Leg -- ^firstLeg
   -> Leg -- ^secondLeg
-  -> IO Swap
+  -> QLE s (Swap s)
 swap = $(ffiCall 'swap) c_swap
 
 foreign import ccall safe "ql.h qlSwap"
@@ -113,7 +113,7 @@ foreign import ccall safe "ql.h qlSwap"
 
 endDiscounts :: Swap
   -> Word -- ^j
-  -> IO Double
+  -> QLE s Double
 endDiscounts = $(ffiCallX 'endDiscounts) c_endDiscounts
 
 foreign import ccall safe "ql.h qlSwapEndDiscounts"
@@ -121,7 +121,7 @@ foreign import ccall safe "ql.h qlSwapEndDiscounts"
 
 leg :: Swap
   -> Word -- ^j
-  -> IO Leg
+  -> QLE s (Leg s)
 leg = $(ffiCall 'leg) c_leg
 
 foreign import ccall safe "ql.h qlSwapLeg"
@@ -129,7 +129,7 @@ foreign import ccall safe "ql.h qlSwapLeg"
 
 legBPS :: Swap
   -> Word -- ^j
-  -> IO Double
+  -> QLE s Double
 legBPS = $(ffiCallX 'legBPS) c_legBPS
 
 foreign import ccall safe "ql.h qlSwapLegBPS"
@@ -137,7 +137,7 @@ foreign import ccall safe "ql.h qlSwapLegBPS"
 
 legNPV :: Swap
   -> Word -- ^j
-  -> IO Double
+  -> QLE s Double
 legNPV = $(ffiCallX 'legNPV) c_legNPV
 
 foreign import ccall safe "ql.h qlSwapLegNPV"
@@ -150,7 +150,7 @@ maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 foreign import ccall safe "ql.h qlSwapMaturityDate"
   c_maturityDate :: Ptr CSwap -> Ptr CString -> IO CDate
 
-npvDateDiscount :: Swap -> IO Double
+npvDateDiscount :: Swap -> QLE s Double
 npvDateDiscount = $(ffiCallX 'npvDateDiscount) c_npvDateDiscount
 
 foreign import ccall safe "ql.h qlSwapNpvDateDiscount"
@@ -165,61 +165,61 @@ foreign import ccall safe "ql.h qlSwapStartDate"
 
 startDiscounts :: Swap
   -> Word -- ^j
-  -> IO Double
+  -> QLE s Double
 startDiscounts = $(ffiCallX 'startDiscounts) c_startDiscounts
 
 foreign import ccall safe "ql.h qlSwapStartDiscounts"
   c_startDiscounts :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
 
-bmaLeg :: BMASwap -> IO Leg
+bmaLeg :: BMASwap -> QLE s (Leg s)
 bmaLeg = $(ffiCall 'bmaLeg) c_bmaLeg
 
 foreign import ccall safe "ql.h qlBMASwapBmaLeg"
   c_bmaLeg :: Ptr CBMASwap -> Ptr CString -> IO (Ptr CLeg)
 
-bmaLegBPS :: BMASwap -> IO Double
+bmaLegBPS :: BMASwap -> QLE s Double
 bmaLegBPS = $(ffiCallX 'bmaLegBPS) c_bmaLegBPS
 
 foreign import ccall safe "ql.h qlBMASwapBmaLegBPS"
   c_bmaLegBPS :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
-bmaLegNPV :: BMASwap -> IO Double
+bmaLegNPV :: BMASwap -> QLE s Double
 bmaLegNPV = $(ffiCallX 'bmaLegNPV) c_bmaLegNPV
 
 foreign import ccall safe "ql.h qlBMASwapBmaLegNPV"
   c_bmaLegNPV :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
-fairLiborFraction :: BMASwap -> IO Double
+fairLiborFraction :: BMASwap -> QLE s Double
 fairLiborFraction = $(ffiCallX 'fairLiborFraction) c_fairLiborFraction
 
 foreign import ccall safe "ql.h qlBMASwapFairLiborFraction"
   c_fairLiborFraction :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
-fairLiborSpread :: BMASwap -> IO Double
+fairLiborSpread :: BMASwap -> QLE s Double
 fairLiborSpread = $(ffiCallX 'fairLiborSpread) c_fairLiborSpread
 
 foreign import ccall safe "ql.h qlBMASwapFairLiborSpread"
   c_fairLiborSpread :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
-liborFraction :: BMASwap -> IO Double
+liborFraction :: BMASwap -> QLE s Double
 liborFraction = $(ffiCallX 'liborFraction) c_liborFraction
 
 foreign import ccall safe "ql.h qlBMASwapLiborFraction"
   c_liborFraction :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
-liborLeg :: BMASwap -> IO Leg
+liborLeg :: BMASwap -> QLE s (Leg s)
 liborLeg = $(ffiCall 'liborLeg) c_liborLeg
 
 foreign import ccall safe "ql.h qlBMASwapLiborLeg"
   c_liborLeg :: Ptr CBMASwap -> Ptr CString -> IO (Ptr CLeg)
 
-liborLegBPS :: BMASwap -> IO Double
+liborLegBPS :: BMASwap -> QLE s Double
 liborLegBPS = $(ffiCallX 'liborLegBPS) c_liborLegBPS
 
 foreign import ccall safe "ql.h qlBMASwapLiborLegBPS"
   c_liborLegBPS :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
-liborLegNPV :: BMASwap -> IO Double
+liborLegNPV :: BMASwap -> QLE s Double
 liborLegNPV = $(ffiCallX 'liborLegNPV) c_liborLegNPV
 
 foreign import ccall safe "ql.h qlBMASwapLiborLegNPV"
@@ -234,7 +234,7 @@ impliedVolatility :: Swaption
   -> Word -- ^maxEvaluations
   -> Double -- ^minVol
   -> Double -- ^maxVol
-  -> IO Double
+  -> QLE s Double
 impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
 
 foreign import ccall safe "ql.h qlSwaptionImpliedVolatility"
@@ -243,7 +243,7 @@ foreign import ccall safe "ql.h qlSwaptionImpliedVolatility"
 swaption :: VanillaSwap -- ^swap
   -> Exercise -- ^exercise
   -> SettlementType -- ^delivery
-  -> IO Swaption
+  -> QLE s (Swaption s)
 swaption = $(ffiCall 'swaption) c_swaption
 
 foreign import ccall safe "ql.h qlSwaption"
@@ -260,7 +260,7 @@ assetSwap' :: Bool -- ^parAssetSwap
   -> DayCounter -- ^floatingDayCount
   -> Maybe Day -- ^dealMaturity
   -> Bool -- ^payBondCoupon
-  -> IO AssetSwap
+  -> QLE s (AssetSwap s)
 assetSwap' = $(ffiCall 'assetSwap') c_assetSwap'
 
 foreign import ccall safe "ql.h qlAssetSwap1"
@@ -274,49 +274,49 @@ assetSwap :: Bool -- ^payBondCoupon
   -> Schedule -- ^floatSchedule
   -> DayCounter -- ^floatingDayCount
   -> Bool -- ^parAssetSwap
-  -> IO AssetSwap
+  -> QLE s (AssetSwap s)
 assetSwap = $(ffiCall 'assetSwap) c_assetSwap
 
 foreign import ccall safe "ql.h qlAssetSwap"
   c_assetSwap :: CInt -> Ptr CBond -> CDouble -> Ptr CIborIndex -> CDouble -> Ptr CSchedule -> Ptr CDayCounter -> CInt -> Ptr CString -> IO (Ptr CAssetSwap)
 
-bondLeg :: AssetSwap -> IO Leg
+bondLeg :: AssetSwap -> QLE s (Leg s)
 bondLeg = $(ffiCall 'bondLeg) c_bondLeg
 
 foreign import ccall safe "ql.h qlAssetSwapBondLeg"
   c_bondLeg :: Ptr CAssetSwap -> Ptr CString -> IO (Ptr CLeg)
 
-cleanPrice :: AssetSwap -> IO Double
+cleanPrice :: AssetSwap -> QLE s Double
 cleanPrice = $(ffiCallX 'cleanPrice) c_cleanPrice
 
 foreign import ccall safe "ql.h qlAssetSwapCleanPrice"
   c_cleanPrice :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
-fairCleanPrice :: AssetSwap -> IO Double
+fairCleanPrice :: AssetSwap -> QLE s Double
 fairCleanPrice = $(ffiCallX 'fairCleanPrice) c_fairCleanPrice
 
 foreign import ccall safe "ql.h qlAssetSwapFairCleanPrice"
   c_fairCleanPrice :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
-fairNonParRepayment :: AssetSwap -> IO Double
+fairNonParRepayment :: AssetSwap -> QLE s Double
 fairNonParRepayment = $(ffiCallX 'fairNonParRepayment) c_fairNonParRepayment
 
 foreign import ccall safe "ql.h qlAssetSwapFairNonParRepayment"
   c_fairNonParRepayment :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
-nonParRepayment :: AssetSwap -> IO Double
+nonParRepayment :: AssetSwap -> QLE s Double
 nonParRepayment = $(ffiCallX 'nonParRepayment) c_nonParRepayment
 
 foreign import ccall safe "ql.h qlAssetSwapNonParRepayment"
   c_nonParRepayment :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
-parSwap :: AssetSwap -> IO Bool
+parSwap :: AssetSwap -> QLE s Bool
 parSwap = $(ffiCallX 'parSwap) c_parSwap
 
 foreign import ccall safe "ql.h qlAssetSwapParSwap"
   c_parSwap :: Ptr CAssetSwap -> Ptr CString -> IO CInt
 
-payBondCoupon :: AssetSwap -> IO Bool
+payBondCoupon :: AssetSwap -> QLE s Bool
 payBondCoupon = $(ffiCallX 'payBondCoupon) c_payBondCoupon
 
 foreign import ccall safe "ql.h qlAssetSwapPayBondCoupon"
@@ -330,7 +330,7 @@ overnightIndexedSwap :: OvernightIndexedSwapType -- ^type
   -> DayCounter -- ^fixedDC
   -> OvernightIndex -- ^overnightIndex
   -> Double -- ^spread
-  -> IO OvernightIndexedSwap
+  -> QLE s (OvernightIndexedSwap s)
 overnightIndexedSwap = $(ffiCall 'overnightIndexedSwap) c_overnightIndexedSwap
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwap"
@@ -343,25 +343,25 @@ overnightIndexedSwap' :: OvernightIndexedSwapType -- ^type
   -> DayCounter -- ^fixedDC
   -> OvernightIndex -- ^overnightIndex
   -> Double -- ^spread
-  -> IO OvernightIndexedSwap
+  -> QLE s (OvernightIndexedSwap s)
 overnightIndexedSwap' = $(ffiCall 'overnightIndexedSwap') c_overnightIndexedSwap'
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwap1"
   c_overnightIndexedSwap' :: CInt -> CUInt -> Ptr CDouble -> Ptr CSchedule -> CDouble -> Ptr CDayCounter -> Ptr COvernightIndex -> CDouble -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
 
-overnightLeg :: OvernightIndexedSwap -> IO Leg
+overnightLeg :: OvernightIndexedSwap -> QLE s (Leg s)
 overnightLeg = $(ffiCall 'overnightLeg) c_overnightLeg
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapOvernightLeg"
   c_overnightLeg :: Ptr COvernightIndexedSwap -> Ptr CString -> IO (Ptr CLeg)
 
-overnightLegBPS :: OvernightIndexedSwap -> IO Double
+overnightLegBPS :: OvernightIndexedSwap -> QLE s Double
 overnightLegBPS = $(ffiCallX 'overnightLegBPS) c_overnightLegBPS
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapOvernightLegBPS"
   c_overnightLegBPS :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
 
-overnightLegNPV :: OvernightIndexedSwap -> IO Double
+overnightLegNPV :: OvernightIndexedSwap -> QLE s Double
 overnightLegNPV = $(ffiCallX 'overnightLegNPV) c_overnightLegNPV
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapOvernightLegNPV"

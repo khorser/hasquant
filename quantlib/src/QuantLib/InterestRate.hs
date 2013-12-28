@@ -32,7 +32,7 @@ interestRate :: Double -- ^r
   -> DayCounter -- ^dc
   -> Compounding -- ^comp
   -> Frequency -- ^freq
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 interestRate = $(ffiCall 'interestRate) c_interestRate
 
 -- |compound factor implied by the rate compounded between two dates
@@ -94,7 +94,7 @@ equivalentRate' :: InterestRate
   -> Day -- ^d2
   -> Day -- ^refStart
   -> Day -- ^refEnd
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 equivalentRate' = $(ffiCall 'equivalentRate') c_equivalentRate'
 
 foreign import ccall safe "ql.h qlInterestRateEquivalentRate1"
@@ -106,7 +106,7 @@ equivalentRate :: InterestRate
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> YearFraction -- ^t
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 equivalentRate = $(ffiCall 'equivalentRate) c_equivalentRate
 
 foreign import ccall safe "ql.h qlInterestRateEquivalentRate"
@@ -123,7 +123,7 @@ impliedRate' :: InterestRate
   -> Day -- ^d2
   -> Day -- ^refStart
   -> Day -- ^refEnd
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 impliedRate' = $(ffiCall 'impliedRate') c_impliedRate'
 
 foreign import ccall safe "ql.h qlInterestRateImpliedRate1"
@@ -137,7 +137,7 @@ impliedRate :: InterestRate
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> YearFraction -- ^t
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 impliedRate = $(ffiCall 'impliedRate) c_impliedRate
 
 foreign import ccall safe "ql.h qlInterestRateImpliedRate"

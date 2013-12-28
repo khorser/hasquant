@@ -102,7 +102,7 @@ foreign import ccall safe "ql.h qlCalendarAdvance"
 adjust :: Calendar
   -> Day
   -> BusinessDayConvention
-  -> IO Day
+  -> QLE s Day
 adjust = $(ffiCall 'adjust) c_adjust
 
 -- |Advances the given date of the given number of business days and returns the result
@@ -112,7 +112,7 @@ advance :: Calendar
   -> Unit
   -> BusinessDayConvention
   -> Bool -- ^endOfMonth
-  -> IO Day
+  -> QLE s Day
 advance = $(ffiCall 'advance) c_advance
 
 -- |Calendar for reproducing theoretical calculations.
@@ -234,7 +234,7 @@ advance' :: Calendar
   -> (Int, Unit) -- ^period
   -> BusinessDayConvention -- ^convention
   -> Bool -- ^endOfMonth
-  -> IO Day
+  -> QLE s Day
 advance' = $(ffiCallX 'advance') c_advance'
 
 foreign import ccall safe "ql.h qlCalendarAdvance1"
@@ -246,7 +246,7 @@ businessDaysBetween :: Calendar
   -> Day -- ^to
   -> Bool -- ^includeFirst
   -> Bool -- ^includeLast
-  -> IO Int
+  -> QLE s Int
 businessDaysBetween = $(ffiCallX 'businessDaysBetween) c_businessDaysBetween
 
 foreign import ccall safe "ql.h qlCalendarBusinessDaysBetween"
@@ -255,7 +255,7 @@ foreign import ccall safe "ql.h qlCalendarBusinessDaysBetween"
 -- |last business day of the month to which the given date belongs
 endOfMonth :: Calendar
   -> Day -- ^d
-  -> IO Day
+  -> QLE s Day
 endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
 
 foreign import ccall safe "ql.h qlCalendarEndOfMonth"
@@ -264,7 +264,7 @@ foreign import ccall safe "ql.h qlCalendarEndOfMonth"
 -- |Returns true iff the date is a business day for the given market.
 isBusinessDay :: Calendar
   -> Day -- ^d
-  -> IO Bool
+  -> QLE s Bool
 isBusinessDay = $(ffiCallX 'isBusinessDay) c_isBusinessDay
 
 foreign import ccall safe "ql.h qlCalendarIsBusinessDay"
@@ -273,7 +273,7 @@ foreign import ccall safe "ql.h qlCalendarIsBusinessDay"
 -- |Returns true iff the date is last business day for the month in given market.
 isEndOfMonth :: Calendar
   -> Day -- ^d
-  -> IO Bool
+  -> QLE s Bool
 isEndOfMonth = $(ffiCallX 'isEndOfMonth) c_isEndOfMonth
 
 foreign import ccall safe "ql.h qlCalendarIsEndOfMonth"
@@ -282,7 +282,7 @@ foreign import ccall safe "ql.h qlCalendarIsEndOfMonth"
 -- |Returns true iff the date is a holiday for the given market.
 isHoliday :: Calendar
   -> Day -- ^d
-  -> IO Bool
+  -> QLE s Bool
 isHoliday = $(ffiCallX 'isHoliday) c_isHoliday
 
 foreign import ccall safe "ql.h qlCalendarIsHoliday"
@@ -291,7 +291,7 @@ foreign import ccall safe "ql.h qlCalendarIsHoliday"
 -- |Returns true iff the weekday is part of the weekend for the given market.
 isWeekend :: Calendar
   -> Weekday -- ^w
-  -> IO Bool
+  -> QLE s Bool
 isWeekend = $(ffiCallX 'isWeekend) c_isWeekend
 
 foreign import ccall safe "ql.h qlCalendarIsWeekend"

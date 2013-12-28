@@ -83,72 +83,72 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
-ars :: IO Currency -- ^Argentinian peso
-ats :: IO Currency -- ^Austrian shilling
-aud :: IO Currency -- ^Australian dollar
-bdt :: IO Currency -- ^Bangladesh taka
-bef :: IO Currency -- ^Belgian franc
-bgl :: IO Currency -- ^Bulgarian lev
-brl :: IO Currency -- ^Brazilian real
-byr :: IO Currency -- ^Belarussian ruble
-cad :: IO Currency -- ^Canadian dollar
-chf :: IO Currency -- ^Swiss franc
-clp :: IO Currency -- ^Chilean peso
-cny :: IO Currency -- ^Chinese yuan
-cop :: IO Currency -- ^Colombian peso
-cyp :: IO Currency -- ^Cyprus pound
-czk :: IO Currency -- ^Czech koruna
-dem :: IO Currency -- ^Deutsche mark
-dkk :: IO Currency -- ^Danish krone
-eek :: IO Currency -- ^Estonian kroon
-esp :: IO Currency -- ^Spanish peseta
-eur :: IO Currency -- ^European Euro
-fim :: IO Currency -- ^Finnish markka
-frf :: IO Currency -- ^French franc
-gbp :: IO Currency -- ^British pound sterling
-grd :: IO Currency -- ^Greek drachma
-hkd :: IO Currency -- ^Honk Kong dollar
-huf :: IO Currency -- ^Hungarian forint
-iep :: IO Currency -- ^Irish punt
-ils :: IO Currency -- ^Israeli shekel
-inr :: IO Currency -- ^Indian rupee
-iqd :: IO Currency -- ^Iraqi dinar
-irr :: IO Currency -- ^Iranian rial
-isk :: IO Currency -- ^Icelandic krona
-itl :: IO Currency -- ^Italian lira
-jpy :: IO Currency -- ^Japanese yen
-krw :: IO Currency -- ^South-Korean won
-kwd :: IO Currency -- ^Kuwaiti dinar
-ltl :: IO Currency -- ^Lithuanian litas
-luf :: IO Currency -- ^Luxembourg franc
-lvl :: IO Currency -- ^Latvian lat
-mtl :: IO Currency -- ^Maltese lira
-mxn :: IO Currency -- ^Mexican peso
-nlg :: IO Currency -- ^Dutch guilder
-nok :: IO Currency -- ^Norwegian krone
-npr :: IO Currency -- ^Nepal rupee
-nzd :: IO Currency -- ^New Zealand dollar
-peh :: IO Currency -- ^Peruvian sol
-pei :: IO Currency -- ^Peruvian inti
-pen :: IO Currency -- ^Peruvian nuevo sol
-pkr :: IO Currency -- ^Pakistani rupee
-pln :: IO Currency -- ^Polish zloty
-pte :: IO Currency -- ^Portuguese escudo
-rol :: IO Currency -- ^Romanian leu
-ron :: IO Currency -- ^Romanian new leu
-sar :: IO Currency -- ^Saudi riyal
-sek :: IO Currency -- ^Swedish krona
-sgd :: IO Currency -- ^Singapore dollar
-sit :: IO Currency -- ^Slovenian tolar
-skk :: IO Currency -- ^Slovak koruna
-thb :: IO Currency -- ^Thai baht
-trl :: IO Currency -- ^Turkish lira
-try :: IO Currency -- ^New Turkish lira
-ttd :: IO Currency -- ^Trinidad & Tobago dollar
-twd :: IO Currency -- ^Taiwan dollar
-usd :: IO Currency -- ^U.S. dollar
-veb :: IO Currency -- ^Venezuelan bolivar
-zar :: IO Currency -- ^South-African rand
+ars :: QLE s (Currency s) -- ^Argentinian peso
+ats :: QLE s (Currency s) -- ^Austrian shilling
+aud :: QLE s (Currency s) -- ^Australian dollar
+bdt :: QLE s (Currency s) -- ^Bangladesh taka
+bef :: QLE s (Currency s) -- ^Belgian franc
+bgl :: QLE s (Currency s) -- ^Bulgarian lev
+brl :: QLE s (Currency s) -- ^Brazilian real
+byr :: QLE s (Currency s) -- ^Belarussian ruble
+cad :: QLE s (Currency s) -- ^Canadian dollar
+chf :: QLE s (Currency s) -- ^Swiss franc
+clp :: QLE s (Currency s) -- ^Chilean peso
+cny :: QLE s (Currency s) -- ^Chinese yuan
+cop :: QLE s (Currency s) -- ^Colombian peso
+cyp :: QLE s (Currency s) -- ^Cyprus pound
+czk :: QLE s (Currency s) -- ^Czech koruna
+dem :: QLE s (Currency s) -- ^Deutsche mark
+dkk :: QLE s (Currency s) -- ^Danish krone
+eek :: QLE s (Currency s) -- ^Estonian kroon
+esp :: QLE s (Currency s) -- ^Spanish peseta
+eur :: QLE s (Currency s) -- ^European Euro
+fim :: QLE s (Currency s) -- ^Finnish markka
+frf :: QLE s (Currency s) -- ^French franc
+gbp :: QLE s (Currency s) -- ^British pound sterling
+grd :: QLE s (Currency s) -- ^Greek drachma
+hkd :: QLE s (Currency s) -- ^Honk Kong dollar
+huf :: QLE s (Currency s) -- ^Hungarian forint
+iep :: QLE s (Currency s) -- ^Irish punt
+ils :: QLE s (Currency s) -- ^Israeli shekel
+inr :: QLE s (Currency s) -- ^Indian rupee
+iqd :: QLE s (Currency s) -- ^Iraqi dinar
+irr :: QLE s (Currency s) -- ^Iranian rial
+isk :: QLE s (Currency s) -- ^Icelandic krona
+itl :: QLE s (Currency s) -- ^Italian lira
+jpy :: QLE s (Currency s) -- ^Japanese yen
+krw :: QLE s (Currency s) -- ^South-Korean won
+kwd :: QLE s (Currency s) -- ^Kuwaiti dinar
+ltl :: QLE s (Currency s) -- ^Lithuanian litas
+luf :: QLE s (Currency s) -- ^Luxembourg franc
+lvl :: QLE s (Currency s) -- ^Latvian lat
+mtl :: QLE s (Currency s) -- ^Maltese lira
+mxn :: QLE s (Currency s) -- ^Mexican peso
+nlg :: QLE s (Currency s) -- ^Dutch guilder
+nok :: QLE s (Currency s) -- ^Norwegian krone
+npr :: QLE s (Currency s) -- ^Nepal rupee
+nzd :: QLE s (Currency s) -- ^New Zealand dollar
+peh :: QLE s (Currency s) -- ^Peruvian sol
+pei :: QLE s (Currency s) -- ^Peruvian inti
+pen :: QLE s (Currency s) -- ^Peruvian nuevo sol
+pkr :: QLE s (Currency s) -- ^Pakistani rupee
+pln :: QLE s (Currency s) -- ^Polish zloty
+pte :: QLE s (Currency s) -- ^Portuguese escudo
+rol :: QLE s (Currency s) -- ^Romanian leu
+ron :: QLE s (Currency s) -- ^Romanian new leu
+sar :: QLE s (Currency s) -- ^Saudi riyal
+sek :: QLE s (Currency s) -- ^Swedish krona
+sgd :: QLE s (Currency s) -- ^Singapore dollar
+sit :: QLE s (Currency s) -- ^Slovenian tolar
+skk :: QLE s (Currency s) -- ^Slovak koruna
+thb :: QLE s (Currency s) -- ^Thai baht
+trl :: QLE s (Currency s) -- ^Turkish lira
+try :: QLE s (Currency s) -- ^New Turkish lira
+ttd :: QLE s (Currency s) -- ^Trinidad & Tobago dollar
+twd :: QLE s (Currency s) -- ^Taiwan dollar
+usd :: QLE s (Currency s) -- ^U.S. dollar
+veb :: QLE s (Currency s) -- ^Venezuelan bolivar
+zar :: QLE s (Currency s) -- ^South-African rand
 
 ars = constructNamed "ARS"
 ats = constructNamed "ATS"
@@ -218,7 +218,7 @@ veb = constructNamed "VEB"
 zar = constructNamed "ZAR"
 
 -- |ISO 4217 three-letter code, e.g, "USD".
-code :: Currency -> String
+code :: Currency s -> String
 code = $(ffiCallPure 'code) c_code
 
 foreign import ccall safe "ql.h qlCurrencyCode"
@@ -226,35 +226,35 @@ foreign import ccall safe "ql.h qlCurrencyCode"
 
 -- |output format
 -- The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
-format :: Currency -> String
+format :: Currency s -> String
 format = $(ffiCallPure 'format) c_format
 
 foreign import ccall safe "ql.h qlCurrencyFormat"
   c_format :: Ptr CCurrency -> IO CString
 
 -- |number of fractionary parts in a unit, e.g, 100
-fractionsPerUnit :: Currency -> Int
+fractionsPerUnit :: Currency s -> Int
 fractionsPerUnit = $(ffiCallPure 'fractionsPerUnit) c_fractionsPerUnit
 
 foreign import ccall safe "ql.h qlCurrencyFractionsPerUnit"
   c_fractionsPerUnit :: Ptr CCurrency -> IO CInt
 
 -- |fraction symbol, e.g, "¢"
-fractionSymbol :: Currency -> String
+fractionSymbol :: Currency s -> String
 fractionSymbol = $(ffiCallPure 'fractionSymbol) c_fractionSymbol
 
 foreign import ccall safe "ql.h qlCurrencyFractionSymbol"
   c_fractionSymbol :: Ptr CCurrency -> IO CString
 
 -- |ISO 4217 numeric code, e.g, "840".
-numericCode :: Currency -> Int
+numericCode :: Currency s -> Int
 numericCode = $(ffiCallPure 'numericCode) c_numericCode
 
 foreign import ccall safe "ql.h qlCurrencyNumericCode"
   c_numericCode :: Ptr CCurrency -> IO CInt
 
 -- |symbol, e.g, "$"
-symbol :: Currency -> String
+symbol :: Currency s -> String
 symbol = $(ffiCallPure 'symbol) c_symbol
 
 foreign import ccall safe "ql.h qlCurrencySymbol"
@@ -267,10 +267,10 @@ currency :: String -- ^name
   -> String -- ^symbol
   -> String -- ^fractionSymbol
   -> Int -- ^fractionsPerUnit
-  -> Maybe Rounding -- ^rounding
+  -> Maybe (Rounding s) -- ^rounding
   -> String -- ^formatString
-  -> Maybe Currency -- ^triangulationCurrency
-  -> IO Currency
+  -> Maybe (Currency s) -- ^triangulationCurrency
+  -> QLE s (Currency s)
 currency = $(ffiCall 'currency) c_currency
 
 foreign import ccall safe "ql.h qlCreateCurrency"

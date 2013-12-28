@@ -32,7 +32,7 @@ forwardRateAgreement :: Day -- ^valueDate
   -> Double -- ^notionalAmount
   -> IborIndex -- ^index
   -> Maybe YieldTermStructure -- ^discountCurve
-  -> IO ForwardRateAgreement
+  -> QLE s (ForwardRateAgreement s)
 forwardRateAgreement = $(ffiCall 'forwardRateAgreement) c_forwardRateAgreement
 
 foreign import ccall safe "ql.h qlForwardRateAgreement"
@@ -50,21 +50,21 @@ fixedRateBondForward :: Day -- ^valueDate
   -> FixedRateBond -- ^fixedCouponBond
   -> Maybe YieldTermStructure -- ^discountCurve
   -> Maybe YieldTermStructure -- ^incomeDiscountCurve
-  -> IO FixedRateBondForward
+  -> QLE s (FixedRateBondForward s)
 fixedRateBondForward = $(ffiCall 'fixedRateBondForward) c_fixedRateBondForward
 
 foreign import ccall safe "ql.h qlFixedRateBondForward"
   c_fixedRateBondForward :: CDate -> CDate -> CInt -> CDouble -> CUInt -> Ptr CDayCounter -> Ptr CCalendar -> CInt -> Ptr CFixedRateBond -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CFixedRateBondForward)
 
 -- |(dirty) forward bond price minus accrued on bond at delivery
-cleanForwardPrice :: FixedRateBondForward -> IO Double
+cleanForwardPrice :: FixedRateBondForward -> QLE s Double
 cleanForwardPrice = $(ffiCallX 'cleanForwardPrice) c_cleanForwardPrice
 
 foreign import ccall safe "ql.h qlFixedRateBondForwardCleanForwardPrice"
   c_cleanForwardPrice :: Ptr CFixedRateBondForward -> Ptr CString -> IO CDouble
 
 -- |(dirty) forward bond price
-forwardPrice :: FixedRateBondForward -> IO Double
+forwardPrice :: FixedRateBondForward -> QLE s Double
 forwardPrice = $(ffiCallX 'forwardPrice) c_forwardPrice
 
 foreign import ccall safe "ql.h qlFixedRateBondForwardForwardPrice"
@@ -72,7 +72,7 @@ foreign import ccall safe "ql.h qlFixedRateBondForwardForwardPrice"
 
 -- |forward value/price of underlying, discounting income/dividends
 -- if this is a bond forward price, is must be a dirty forward price.
-forwardValue :: Forward -> IO Double
+forwardValue :: Forward -> QLE s Double
 forwardValue = $(ffiCallX 'forwardValue) c_forwardValue
 
 foreign import ccall safe "ql.h qlForwardForwardValue"
@@ -85,13 +85,13 @@ impliedYield :: Forward
   -> Day -- ^settlementDate
   -> Compounding -- ^compoundingConvention
   -> DayCounter -- ^dayCounter
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 impliedYield = $(ffiCall 'impliedYield) c_impliedYield
 
 foreign import ccall safe "ql.h qlForwardImpliedYield"
   c_impliedYield :: Ptr CForward -> CDouble -> CDouble -> CDate -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CInterestRate)
 
-settlementDate :: Forward -> IO Day
+settlementDate :: Forward -> QLE s Day
 settlementDate = $(ffiCallX 'settlementDate) c_settlementDate
 
 foreign import ccall safe "ql.h qlForwardSettlementDate"
@@ -100,14 +100,14 @@ foreign import ccall safe "ql.h qlForwardSettlementDate"
 -- |NPV of income/dividends/storage-costs etc. of underlying instrument.
 spotIncome :: Forward
   -> YieldTermStructure -- ^incomeDiscountCurve
-  -> IO Double
+  -> QLE s Double
 spotIncome = $(ffiCallX 'spotIncome) c_spotIncome
 
 foreign import ccall safe "ql.h qlForwardSpotIncome"
   c_spotIncome :: Ptr CForward -> Ptr CYieldTermStructure -> Ptr CString -> IO CDouble
 
 -- |returns spot value/price of an underlying financial instrument
-spotValue :: Forward -> IO Double
+spotValue :: Forward -> QLE s Double
 spotValue = $(ffiCallX 'spotValue) c_spotValue
 
 foreign import ccall safe "ql.h qlForwardSpotValue"
@@ -115,7 +115,7 @@ foreign import ccall safe "ql.h qlForwardSpotValue"
 
 -- |Returns the relevant forward rate associated with the FRA term.
 forwardRate :: ForwardRateAgreement
-  -> IO InterestRate
+  -> QLE s (InterestRate s)
 forwardRate = $(ffiCall 'forwardRate) c_forwardRate
 
 foreign import ccall safe "ql.h qlForwardRateAgreementForwardRate"

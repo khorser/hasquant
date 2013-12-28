@@ -32,7 +32,7 @@ import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Types
 
 -- |Claim on a notional
-faceValueClaim :: IO Claim
+faceValueClaim :: QLE s (Claim s)
 faceValueClaim = $(ffiCall 'faceValueClaim) c_faceValueClaim
 
 foreign import ccall safe "ql.h qlFaceValueClaim"
@@ -40,7 +40,7 @@ foreign import ccall safe "ql.h qlFaceValueClaim"
 
 -- |Claim on the notional of a reference security, including accrual
 faceValueAccrualClaim :: Bond -- ^referenceSecurity
-  -> IO Claim
+  -> QLE s (Claim s)
 faceValueAccrualClaim = $(ffiCall 'faceValueAccrualClaim) c_faceValueAccrualClaim
 
 foreign import ccall safe "ql.h qlFaceValueAccrualClaim"
@@ -58,7 +58,7 @@ creditDefaultSwap :: ProtectionSide -- ^side
   -> Bool -- ^paysAtDefaultTime
   -> Maybe Day -- ^protectionStart
   -> Claim
-  -> IO CreditDefaultSwap
+  -> QLE s (CreditDefaultSwap s)
 creditDefaultSwap = $(ffiCall 'creditDefaultSwap) c_creditDefaultSwap
 
 foreign import ccall safe "ql.h qlCreditDefaultSwap"
@@ -78,13 +78,13 @@ creditDefaultSwap' :: ProtectionSide -- ^side
   -> Maybe Day -- ^protectionStart
   -> Maybe Day -- ^upfrontDate
   -> Claim
-  -> IO CreditDefaultSwap
+  -> QLE s (CreditDefaultSwap s)
 creditDefaultSwap' = $(ffiCall 'creditDefaultSwap') c_creditDefaultSwap'
 
 foreign import ccall safe "ql.h qlCreditDefaultSwap1"
   c_creditDefaultSwap' :: CInt -> CDouble -> CDouble -> CDouble -> Ptr CSchedule -> CInt -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDate -> Ptr CClaim -> Ptr CString -> IO (Ptr CCreditDefaultSwap)
 
-atmRate :: CdsOption -> IO Double
+atmRate :: CdsOption -> QLE Double
 atmRate = $(ffiCallX 'atmRate) c_atmRate
 
 foreign import ccall safe "ql.h qlCdsOptionAtmRate"
@@ -93,7 +93,7 @@ foreign import ccall safe "ql.h qlCdsOptionAtmRate"
 cdsOption :: CreditDefaultSwap -- ^swap
   -> Exercise -- ^exercise
   -> Bool -- ^knocksOut
-  -> IO CdsOption
+  -> QLE s (CdsOption s)
 cdsOption = $(ffiCall 'cdsOption) c_cdsOption
 
 foreign import ccall safe "ql.h qlCdsOption"
@@ -108,13 +108,13 @@ impliedVolatility :: CdsOption
   -> Word -- ^maxEvaluations
   -> Double -- ^minVol
   -> Double -- ^maxVol
-  -> IO Double
+  -> QLE s Double
 impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
 
 foreign import ccall safe "ql.h qlCdsOptionImpliedVolatility"
   c_impliedVolatility :: Ptr CCdsOption -> CDouble -> Ptr CYieldTermStructure -> Ptr CDefaultProbabilityTermStructure -> CDouble -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
-riskyAnnuity :: CdsOption -> IO Double
+riskyAnnuity :: CdsOption -> QLE s Double
 riskyAnnuity = $(ffiCallX 'riskyAnnuity) c_riskyAnnuity
 
 foreign import ccall safe "ql.h qlCdsOptionRiskyAnnuity"
@@ -122,48 +122,48 @@ foreign import ccall safe "ql.h qlCdsOptionRiskyAnnuity"
 
 -- |Conventional/standard upfront-to-spread conversion.
 -- Under a standard ISDA model and a set of standardised instrument characteristics, it is the running only quoted spread that will make a CDS contract have an NPV of 0 when quoted for that running only spread. Refer to: "ISDA Standard CDS converter specification." May 2009.The conventional recovery rate to apply in the calculation is as specified by ISDA, not necessarily equal to the market-quoted one. It is typically 0.4 for SeniorSec and 0.2 for subordinate.The conversion employs a flat hazard rate. As a result, you will not recover the market quotes.This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably: The calendar should have no bank holidays, just weekends.The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.Convention should be Following for yield curve and contract cashflows.The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3.
-conventionalSpread :: CreditDefaultSwap
+conventionalSpread :: CreditDefaultSwap s
   -> Double -- ^conventionalRecovery
-  -> YieldTermStructure -- ^discountCurve
-  -> DayCounter -- ^dayCounter
-  -> IO Double
+  -> YieldTermStructure s -- ^discountCurve
+  -> DayCounter s -- ^dayCounter
+  -> QLE s Double
 conventionalSpread = $(ffiCallX 'conventionalSpread) c_conventionalSpread
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapConventionalSpread"
   c_conventionalSpread :: Ptr CCreditDefaultSwap -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> Ptr CString -> IO CDouble
 
 -- |Returns the variation of the fixed-leg value given a one-basis-point change in the running spread.
-couponLegBPS :: CreditDefaultSwap
-  -> IO Double
+couponLegBPS :: CreditDefaultSwap s
+  -> QLE s Double
 couponLegBPS = $(ffiCallX 'couponLegBPS) c_couponLegBPS
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapCouponLegBPS"
   c_couponLegBPS :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
 
-couponLegNPV :: CreditDefaultSwap
-  -> IO Double
+couponLegNPV :: CreditDefaultSwap s
+  -> QLE s Double
 couponLegNPV = $(ffiCallX 'couponLegNPV) c_couponLegNPV
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapCouponLegNPV"
   c_couponLegNPV :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
 
-coupons :: CreditDefaultSwap
-  -> IO Leg
+coupons :: CreditDefaultSwap s
+  -> QLE s (Leg s)
 coupons = $(ffiCall 'coupons) c_coupons
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapCoupons"
   c_coupons :: Ptr CCreditDefaultSwap -> Ptr CString -> IO (Ptr CLeg)
 
-defaultLegNPV :: CreditDefaultSwap
-  -> IO Double
+defaultLegNPV :: CreditDefaultSwap s
+  -> QLE s Double
 defaultLegNPV = $(ffiCallX 'defaultLegNPV) c_defaultLegNPV
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapDefaultLegNPV"
   c_defaultLegNPV :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
 
 -- |Returns the upfront spread that, given the running spread and the quoted recovery rate, will make the instrument have an NPV of 0.
-fairUpfront :: CreditDefaultSwap
-  -> IO Double
+fairUpfront :: CreditDefaultSwap s
+  -> QLE s Double
 fairUpfront = $(ffiCallX 'fairUpfront) c_fairUpfront
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapFairUpfront"
@@ -171,27 +171,27 @@ foreign import ccall safe "ql.h qlCreditDefaultSwapFairUpfront"
 
 -- |Implied hazard rate calculation.
 -- This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably: The calendar should have no bank holidays, just weekends.The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.Convention should be Following for yield curve and contract cashflows.The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3.
-impliedHazardRate :: CreditDefaultSwap
+impliedHazardRate :: CreditDefaultSwap s
   -> Double -- ^targetNPV
-  -> YieldTermStructure -- ^discountCurve
-  -> DayCounter -- ^dayCounter
+  -> YieldTermStructure s -- ^discountCurve
+  -> DayCounter s -- ^dayCounter
   -> Double -- ^recoveryRate
   -> Double -- ^accuracy
-  -> IO Double
+  -> QLE s Double
 impliedHazardRate = $(ffiCallX 'impliedHazardRate) c_impliedHazardRate
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapImpliedHazardRate"
   c_impliedHazardRate :: Ptr CCreditDefaultSwap -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 upfrontBPS :: CreditDefaultSwap
-  -> IO Double
+  -> QLE s Double
 upfrontBPS = $(ffiCallX 'upfrontBPS) c_upfrontBPS
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapUpfrontBPS"
   c_upfrontBPS :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
 
 upfrontNPV :: CreditDefaultSwap
-  -> IO Double
+  -> QLE s Double
 upfrontNPV = $(ffiCallX 'upfrontNPV) c_upfrontNPV
 
 foreign import ccall safe "ql.h qlCreditDefaultSwapUpfrontNPV"

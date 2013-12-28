@@ -56,31 +56,31 @@ foreign import ccall safe "ql.h qlInstrumentNPV"
   c_npv :: Ptr CInstrument -> Ptr CString -> IO CDouble
 
 -- |Returns the net present value of the given Instrument
-npv :: Instrument -> IO Double
+npv :: Instrument s -> QLE s Double
 npv = $(ffiCallX 'npv) c_npv
 
 -- |returns the error estimate on the NPV when available.
-errorEstimate :: Instrument -> IO Double
+errorEstimate :: Instrument s -> QLE s Double
 errorEstimate = $(ffiCallX 'errorEstimate) c_errorEstimate
 
 foreign import ccall safe "ql.h qlInstrumentErrorEstimate"
   c_errorEstimate :: Ptr CInstrument -> Ptr CString -> IO CDouble
 
 -- |returns whether the instrument might have value greater than zero.
-isExpired :: Instrument -> IO Bool
+isExpired :: Instrument s -> QLE s Bool
 isExpired = $(ffiCallX 'isExpired) c_isExpired
 
 foreign import ccall safe "ql.h qlInstrumentIsExpired"
   c_isExpired :: Ptr CInstrument -> Ptr CString -> IO CInt
 
 -- |returns the date the net present value refers to.
-valuationDate :: Instrument -> IO Day
+valuationDate :: Instrument s -> QLE s Day
 valuationDate = $(ffiCallX 'valuationDate) c_valuationDate
 
 foreign import ccall safe "ql.h qlInstrumentValuationDate"
   c_valuationDate :: Ptr CInstrument -> Ptr CString -> IO CDate
 
-composite :: [(Instrument, Double)] -> IO Instrument
+composite :: [(Instrument s, Double)] -> QLE s (Instrument s)
 composite = $(ffiCall 'composite) c_composite
 
 foreign import ccall safe "ql.h qlCompositeInstrument"
@@ -88,15 +88,15 @@ foreign import ccall safe "ql.h qlCompositeInstrument"
 
 assetOrNothingPayoff :: OptionType -- ^type
   -> Double -- ^strike
-  -> IO StrikedTypePayoff
+  -> QLE s (StrikedTypePayoff s)
 assetOrNothingPayoff = $(ffiCall 'assetOrNothingPayoff) c_assetOrNothingPayoff
 
 foreign import ccall safe "ql.h qlAssetOrNothingPayoff"
   c_assetOrNothingPayoff :: CInt -> CDouble -> Ptr CString -> IO (Ptr CStrikedTypePayoff)
 
-averageBasketPayoff :: Payoff -- ^p
+averageBasketPayoff :: Payoff s -- ^p
   -> Word -- ^n
-  -> IO BasketPayoff
+  -> QLE s (BasketPayoff s)
 averageBasketPayoff = $(ffiCall 'averageBasketPayoff) c_averageBasketPayoff
 
 foreign import ccall safe "ql.h qlAverageBasketPayoff"
@@ -105,7 +105,7 @@ foreign import ccall safe "ql.h qlAverageBasketPayoff"
 cashOrNothingPayoff :: OptionType -- ^type
   -> Double -- ^strike
   -> Double -- ^cashPayoff
-  -> IO StrikedTypePayoff
+  -> QLE s (StrikedTypePayoff s)
 cashOrNothingPayoff = $(ffiCall 'cashOrNothingPayoff) c_cashOrNothingPayoff
 
 foreign import ccall safe "ql.h qlCashOrNothingPayoff"
@@ -122,14 +122,14 @@ doubleStickyRatchetPayoff :: Double -- ^type1
   -> Double -- ^initialValue1
   -> Double -- ^initialValue2
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 doubleStickyRatchetPayoff = $(ffiCall 'doubleStickyRatchetPayoff) c_doubleStickyRatchetPayoff
 
 foreign import ccall safe "ql.h qlDoubleStickyRatchetPayoff"
   c_doubleStickyRatchetPayoff :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CPayoff)
 
 floatingTypePayoff :: OptionType -- ^type
-  -> IO TypePayoff
+  -> QLE s (TypePayoff s)
 floatingTypePayoff = $(ffiCall 'floatingTypePayoff) c_floatingTypePayoff
 
 foreign import ccall safe "ql.h qlFloatingTypePayoff"
@@ -137,7 +137,7 @@ foreign import ccall safe "ql.h qlFloatingTypePayoff"
 
 forwardTypePayoff :: PositionType -- ^type
   -> Double -- ^strike
-  -> IO Payoff
+  -> QLE s (Payoff s)
 forwardTypePayoff = $(ffiCall 'forwardTypePayoff) c_forwardTypePayoff
 
 foreign import ccall safe "ql.h qlForwardTypePayoff"
@@ -146,21 +146,21 @@ foreign import ccall safe "ql.h qlForwardTypePayoff"
 gapPayoff :: OptionType -- ^type
   -> Double -- ^strike
   -> Double -- ^secondStrike
-  -> IO StrikedTypePayoff
+  -> QLE s (StrikedTypePayoff s)
 gapPayoff = $(ffiCall 'gapPayoff) c_gapPayoff
 
 foreign import ccall safe "ql.h qlGapPayoff"
   c_gapPayoff :: CInt -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CStrikedTypePayoff)
 
-maxBasketPayoff :: Payoff -- ^p
-  -> IO BasketPayoff
+maxBasketPayoff :: Payoff s -- ^p
+  -> QLE s (BasketPayoff s)
 maxBasketPayoff = $(ffiCall 'maxBasketPayoff) c_maxBasketPayoff
 
 foreign import ccall safe "ql.h qlMaxBasketPayoff"
   c_maxBasketPayoff :: Ptr CPayoff -> Ptr CString -> IO (Ptr CBasketPayoff)
 
-minBasketPayoff :: Payoff -- ^p
-  -> IO BasketPayoff
+minBasketPayoff :: Payoff s -- ^p
+  -> QLE s (BasketPayoff s)
 minBasketPayoff = $(ffiCall 'minBasketPayoff) c_minBasketPayoff
 
 foreign import ccall safe "ql.h qlMinBasketPayoff"
@@ -168,7 +168,7 @@ foreign import ccall safe "ql.h qlMinBasketPayoff"
 
 percentageStrikePayoff :: OptionType -- ^type
   -> Double -- ^moneyness
-  -> IO PercentageStrikePayoff
+  -> QLE s (PercentageStrikePayoff s)
 percentageStrikePayoff = $(ffiCall 'percentageStrikePayoff) c_percentageStrikePayoff
 
 foreign import ccall safe "ql.h qlPercentageStrikePayoff"
@@ -176,7 +176,7 @@ foreign import ccall safe "ql.h qlPercentageStrikePayoff"
 
 plainVanillaPayoff :: OptionType -- ^type
   -> Double -- ^strike
-  -> IO PlainVanillaPayoff
+  -> QLE s (PlainVanillaPayoff s)
 plainVanillaPayoff = $(ffiCall 'plainVanillaPayoff) c_plainVanillaPayoff
 
 foreign import ccall safe "ql.h qlPlainVanillaPayoff"
@@ -191,7 +191,7 @@ ratchetMaxPayoff :: Double -- ^gearing1
   -> Double -- ^initialValue1
   -> Double -- ^initialValue2
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 ratchetMaxPayoff = $(ffiCall 'ratchetMaxPayoff) c_ratchetMaxPayoff
 
 foreign import ccall safe "ql.h qlRatchetMaxPayoff"
@@ -206,7 +206,7 @@ ratchetMinPayoff :: Double -- ^gearing1
   -> Double -- ^initialValue1
   -> Double -- ^initialValue2
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 ratchetMinPayoff = $(ffiCall 'ratchetMinPayoff) c_ratchetMinPayoff
 
 foreign import ccall safe "ql.h qlRatchetMinPayoff"
@@ -218,14 +218,14 @@ ratchetPayoff :: Double -- ^gearing1
   -> Double -- ^spread2
   -> Double -- ^initialValue
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 ratchetPayoff = $(ffiCall 'ratchetPayoff) c_ratchetPayoff
 
 foreign import ccall safe "ql.h qlRatchetPayoff"
   c_ratchetPayoff :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CPayoff)
 
-spreadBasketPayoff :: Payoff -- ^p
-  -> IO BasketPayoff
+spreadBasketPayoff :: Payoff s -- ^p
+  -> QLE s (BasketPayoff s)
 spreadBasketPayoff = $(ffiCall 'spreadBasketPayoff) c_spreadBasketPayoff
 
 foreign import ccall safe "ql.h qlSpreadBasketPayoff"
@@ -240,7 +240,7 @@ stickyMaxPayoff :: Double -- ^gearing1
   -> Double -- ^initialValue1
   -> Double -- ^initialValue2
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 stickyMaxPayoff = $(ffiCall 'stickyMaxPayoff) c_stickyMaxPayoff
 
 foreign import ccall safe "ql.h qlStickyMaxPayoff"
@@ -255,7 +255,7 @@ stickyMinPayoff :: Double -- ^gearing1
   -> Double -- ^initialValue1
   -> Double -- ^initialValue2
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 stickyMinPayoff = $(ffiCall 'stickyMinPayoff) c_stickyMinPayoff
 
 foreign import ccall safe "ql.h qlStickyMinPayoff"
@@ -267,7 +267,7 @@ stickyPayoff :: Double -- ^gearing1
   -> Double -- ^spread2
   -> Double -- ^initialValue
   -> Double -- ^accrualFactor
-  -> IO Payoff
+  -> QLE s (Payoff s)
 stickyPayoff = $(ffiCall 'stickyPayoff) c_stickyPayoff
 
 foreign import ccall safe "ql.h qlStickyPayoff"
@@ -275,7 +275,7 @@ foreign import ccall safe "ql.h qlStickyPayoff"
 
 superFundPayoff :: Double -- ^strike
   -> Double -- ^secondStrike
-  -> IO StrikedTypePayoff
+  -> QLE s (StrikedTypePayoff s)
 superFundPayoff = $(ffiCall 'superFundPayoff) c_superFundPayoff
 
 foreign import ccall safe "ql.h qlSuperFundPayoff"
@@ -284,7 +284,7 @@ foreign import ccall safe "ql.h qlSuperFundPayoff"
 superSharePayoff :: Double -- ^strike
   -> Double -- ^secondStrike
   -> Double -- ^cashPayoff
-  -> IO StrikedTypePayoff
+  -> QLE s (StrikedTypePayoff s)
 superSharePayoff = $(ffiCall 'superSharePayoff) c_superSharePayoff
 
 foreign import ccall safe "ql.h qlSuperSharePayoff"
@@ -293,7 +293,7 @@ foreign import ccall safe "ql.h qlSuperSharePayoff"
 americanExercise :: Day -- ^earliestDate
   -> Day -- ^latestDate
   -> Bool -- ^payoffAtExpiry
-  -> IO AmericanExercise
+  -> QLE s (AmericanExercise s)
 americanExercise = $(ffiCall 'americanExercise) c_americanExercise
 
 foreign import ccall safe "ql.h qlAmericanExercise"
@@ -301,7 +301,7 @@ foreign import ccall safe "ql.h qlAmericanExercise"
 
 americanExercise' :: Day -- ^latestDate
   -> Bool -- ^payoffAtExpiry
-  -> IO AmericanExercise
+  -> QLE s (AmericanExercise s)
 americanExercise' = $(ffiCall 'americanExercise') c_americanExercise'
 
 foreign import ccall safe "ql.h qlAmericanExercise1"
@@ -309,7 +309,7 @@ foreign import ccall safe "ql.h qlAmericanExercise1"
 
 bermudanExercise :: [Day] -- ^dates
   -> Bool -- ^payoffAtExpiry
-  -> IO BermudanExercise
+  -> QLE s (BermudanExercise s)
 bermudanExercise = $(ffiCall 'bermudanExercise) c_bermudanExercise
 
 foreign import ccall safe "ql.h qlBermudanExercise"
@@ -317,36 +317,36 @@ foreign import ccall safe "ql.h qlBermudanExercise"
 
 earlyExercise :: ExerciseType -- ^type
   -> Bool -- ^payoffAtExpiry
-  -> IO Exercise
+  -> QLE s (Exercise s)
 earlyExercise = $(ffiCall 'earlyExercise) c_earlyExercise
 
 foreign import ccall safe "ql.h qlEarlyExercise"
   c_earlyExercise :: CInt -> CInt -> Ptr CString -> IO (Ptr CExercise)
 
 exercise :: ExerciseType -- ^type
-  -> IO Exercise
+  -> QLE s (Exercise s)
 exercise = $(ffiCall 'exercise) c_exercise
 
 foreign import ccall safe "ql.h qlExercise"
   c_exercise :: CInt -> Ptr CString -> IO (Ptr CExercise)
 
 europeanExercise :: Day -- ^date
-  -> IO EuropeanExercise
+  -> QLE s (EuropeanExercise s)
 europeanExercise = $(ffiCall 'europeanExercise) c_europeanExercise
 
 foreign import ccall safe "ql.h qlEuropeanExercise"
   c_europeanExercise :: CDate -> Ptr CString -> IO (Ptr CEuropeanExercise)
 
-averageBasketPayoff' :: Payoff -- ^p
+averageBasketPayoff' :: Payoff s -- ^p
   -> [Double] -- ^a
-  -> IO BasketPayoff
+  -> QLE s (BasketPayoff s)
 averageBasketPayoff' = $(ffiCall 'averageBasketPayoff') c_averageBasketPayoff'
 
 foreign import ccall safe "ql.h qlAverageBasketPayoff1"
   c_averageBasketPayoff' :: Ptr CPayoff -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CBasketPayoff)
 
 swingExercise :: [(Day, Word)] -- ^(dates, seconds)
-  -> IO SwingExercise
+  -> QLE s (SwingExercise s)
 swingExercise = $(ffiCall 'swingExercise) c_swingExercise
 
 foreign import ccall safe "ql.h qlSwingExercise"
@@ -355,7 +355,7 @@ foreign import ccall safe "ql.h qlSwingExercise"
 swingExercise' :: Day -- ^from
   -> Day -- ^to
   -> Word -- ^stepSizeSecs
-  -> IO SwingExercise
+  -> QLE s (SwingExercise s)
 swingExercise' = $(ffiCall 'swingExercise') c_swingExercise'
 
 foreign import ccall safe "ql.h qlSwingExercise1"
@@ -363,16 +363,16 @@ foreign import ccall safe "ql.h qlSwingExercise1"
 
 callabilityPrice :: Double -- ^amount
   -> CallabilityPriceType -- ^type
-  -> IO CallabilityPrice
+  -> QLE s (CallabilityPrice s)
 callabilityPrice = $(ffiCall 'callabilityPrice) c_callabilityPrice
 
 foreign import ccall safe "ql.h qlCallabilityPrice"
   c_callabilityPrice :: CDouble -> CInt -> Ptr CString -> IO (Ptr CCallabilityPrice)
 
-callability :: CallabilityPrice -- ^price
+callability :: CallabilityPrice s -- ^price
   -> CallabilityType -- ^type
   -> Day -- ^date
-  -> IO Callability
+  -> QLE s (Callability s)
 callability = $(ffiCall 'callability) c_callability
 
 foreign import ccall safe "ql.h qlCallability"
