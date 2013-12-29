@@ -290,8 +290,8 @@ genFfiCall extra aa r = do
     call varNames cFunName Pure   = [|unsafePerformIO $(nakedCall varNames cFunName)|]
     call varNames cFunName Purify = [|purifyExceptions $(nakedCall varNames cFunName)|]
     call varNames cFunName PurifyPure = [|purifyExceptions $(nakedCall varNames cFunName)|]
-    call varNames cFunName _      = case (r, extra) of
-      (IORV _, _) -> [|mkQLE $(nakedCall varNames cFunName)|]
+    call varNames cFunName _ = case r of
+      (IORV _) -> [|mkQLE $(nakedCall varNames cFunName)|]
       _ -> [|$(nakedCall varNames cFunName)|]
 
     ret :: RetVal
