@@ -20,49 +20,49 @@ import QuantLib.Types
 fdmSchemeDesc :: FdmSchemeType -- ^type
   -> Double -- ^theta
   -> Double -- ^mu
-  -> QLE s (FdmSchemeDesc s)
+  -> QLE s FdmSchemeDesc
 fdmSchemeDesc = $(ffiCall 'fdmSchemeDesc) c_fdmSchemeDesc
 
 foreign import ccall safe "ql.h qlFdmSchemeDesc"
   c_fdmSchemeDesc :: CInt -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-craigSneyd :: QLE s (FdmSchemeDesc s)
+craigSneyd :: QLE s FdmSchemeDesc
 craigSneyd = $(ffiCall 'craigSneyd) c_craigSneyd
 
 foreign import ccall safe "ql.h qlFdmSchemeDescCraigSneyd"
   c_craigSneyd :: Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-douglas :: QLE s (FdmSchemeDesc s)
+douglas :: QLE s FdmSchemeDesc
 douglas = $(ffiCall 'douglas) c_douglas
 
 foreign import ccall safe "ql.h qlFdmSchemeDescDouglas"
   c_douglas ::  Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-explicitEuler :: QLE s (FdmSchemeDesc s)
+explicitEuler :: QLE s FdmSchemeDesc
 explicitEuler = $(ffiCall 'explicitEuler) c_explicitEuler
 
 foreign import ccall safe "ql.h qlFdmSchemeDescExplicitEuler"
   c_explicitEuler :: Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-hundsdorfer :: QLE s (FdmSchemeDesc s)
+hundsdorfer :: QLE s FdmSchemeDesc
 hundsdorfer = $(ffiCall 'hundsdorfer) c_hundsdorfer
 
 foreign import ccall safe "ql.h qlFdmSchemeDescHundsdorfer"
   c_hundsdorfer :: Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-implicitEuler :: QLE s (FdmSchemeDesc s)
+implicitEuler :: QLE s FdmSchemeDesc
 implicitEuler = $(ffiCall 'implicitEuler) c_implicitEuler
 
 foreign import ccall safe "ql.h qlFdmSchemeDescImplicitEuler"
   c_implicitEuler :: Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-modifiedCraigSneyd :: QLE s (FdmSchemeDesc s)
+modifiedCraigSneyd :: QLE s FdmSchemeDesc
 modifiedCraigSneyd = $(ffiCall 'modifiedCraigSneyd) c_modifiedCraigSneyd
 
 foreign import ccall safe "ql.h qlFdmSchemeDescModifiedCraigSneyd"
   c_modifiedCraigSneyd :: Ptr CString -> IO (Ptr CFdmSchemeDesc)
 
-modifiedHundsdorfer :: QLE s (FdmSchemeDesc s)
+modifiedHundsdorfer :: QLE s FdmSchemeDesc
 modifiedHundsdorfer = $(ffiCall 'modifiedHundsdorfer) c_modifiedHundsdorfer
 
 foreign import ccall safe "ql.h qlFdmSchemeDescModifiedHundsdorfer"

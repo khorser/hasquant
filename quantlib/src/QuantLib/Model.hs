@@ -225,9 +225,9 @@ foreign import ccall safe "ql.h qlLiborForwardModel"
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel s
   -> [(CalibrationHelper s, Double)] -- ^(instruments, weights)
-  -> OptimizationMethod s -- ^method
-  -> EndCriteria s -- ^endCriteria
-  -> Maybe (Constraint s) -- ^constraint
+  -> OptimizationMethod -- ^method
+  -> EndCriteria -- ^endCriteria
+  -> Maybe Constraint -- ^constraint
   -> QLE s ()
 calibrate = $(ffiCallX 'calibrate) c_calibrate
 
@@ -287,7 +287,7 @@ foreign import ccall safe "ql.h qlCalibrationHelperTimes"
 -- |Regularly spaced time-grid.
 timeGrid :: YearFraction -- ^end
   -> Word -- ^steps
-  -> QLE s (TimeGrid s)
+  -> QLE s TimeGrid
 timeGrid = $(ffiCall 'timeGrid) c_timeGrid
 
 foreign import ccall safe "ql.h qlTimeGrid1"
@@ -296,7 +296,7 @@ foreign import ccall safe "ql.h qlTimeGrid1"
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. No additional points are added.
 timeGridFromList :: [Double]
-  -> QLE s (TimeGrid s)
+  -> QLE s TimeGrid
 timeGridFromList = $(ffiCall 'timeGridFromList) c_timeGridFromList
 
 foreign import ccall safe "ql.h qlTimeGrid2"
@@ -306,7 +306,7 @@ foreign import ccall safe "ql.h qlTimeGrid2"
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
 timeGridFromList' :: [Double]
   -> Word -- ^steps
-  -> QLE s (TimeGrid s)
+  -> QLE s TimeGrid
 timeGridFromList' = $(ffiCall 'timeGridFromList') c_timeGridFromList'
 
 foreign import ccall safe "ql.h qlTimeGrid3"

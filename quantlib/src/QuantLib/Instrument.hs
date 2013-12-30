@@ -363,16 +363,16 @@ foreign import ccall safe "ql.h qlSwingExercise1"
 
 callabilityPrice :: Double -- ^amount
   -> CallabilityPriceType -- ^type
-  -> QLE s (CallabilityPrice s)
+  -> QLE s CallabilityPrice
 callabilityPrice = $(ffiCall 'callabilityPrice) c_callabilityPrice
 
 foreign import ccall safe "ql.h qlCallabilityPrice"
   c_callabilityPrice :: CDouble -> CInt -> Ptr CString -> IO (Ptr CCallabilityPrice)
 
-callability :: CallabilityPrice s -- ^price
+callability :: CallabilityPrice -- ^price
   -> CallabilityType -- ^type
   -> Day -- ^date
-  -> QLE s (Callability s)
+  -> QLE s Callability
 callability = $(ffiCall 'callability) c_callability
 
 foreign import ccall safe "ql.h qlCallability"

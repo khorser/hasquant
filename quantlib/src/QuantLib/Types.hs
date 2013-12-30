@@ -230,6 +230,8 @@ objectMatrix rows cols d =
     then Left IncorrectSize
     else Right $ Matrix rows cols d
 
+data NoState
+
 -- cashflows
 type Leg s = Object s CLeg
 type CouponLeg s = Object s CCouponLeg
@@ -411,19 +413,19 @@ type QuantoForwardVanillaOption s = Object s CQuantoForwardVanillaOption
 
 type CapFloor s = Object s CCapFloor
 
-type Callability s = Object s CCallability
-type CallabilityPrice s = Object s CCallabilityPrice
+type Callability = Object NoState CCallability
+type CallabilityPrice = Object NoState CCallabilityPrice
 
 type CallableBond s = Object s CCallableBond
 type ConvertibleBond s = Object s CConvertibleBond
 
 -- math
-type Constraint s = Object s CConstraint
-type OptimizationMethod s = Object s COptimizationMethod
-type EndCriteria s = Object s CEndCriteria
+type Constraint = Object NoState CConstraint
+type OptimizationMethod = Object NoState COptimizationMethod
+type EndCriteria = Object NoState CEndCriteria
 
 -- method
-type FdmSchemeDesc s = Object s CFdmSchemeDesc
+type FdmSchemeDesc = Object NoState CFdmSchemeDesc
 
 -- models
 type GJRGARCHModel s = Object s CGJRGARCHModel
@@ -584,7 +586,7 @@ type SimpleQuote s = Object s CSimpleQuote
 asQuote :: (Upcastable a CQuote) => Object s a -> QLE s (Quote s)
 asQuote = upcast
 
-type TimeGrid s = Object s CTimeGrid
+type TimeGrid = Object NoState CTimeGrid
 
 foreign import ccall safe "ql.h qlNullInteger"
   nullInteger :: CInt

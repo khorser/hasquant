@@ -19,27 +19,27 @@ import QuantLib.Types
 
 boundaryConstraint :: Double -- ^low
   -> Double -- ^high
-  -> QLE s (Constraint s)
+  -> QLE s Constraint
 boundaryConstraint = $(ffiCall 'boundaryConstraint) c_boundaryConstraint
 
 foreign import ccall safe "ql.h qlBoundaryConstraint"
   c_boundaryConstraint :: CDouble -> CDouble -> Ptr CString -> IO (Ptr CConstraint)
 
-compositeConstraint :: Constraint s -- ^c1
-  -> Constraint s -- ^c2
-  -> QLE s (Constraint s)
+compositeConstraint :: Constraint -- ^c1
+  -> Constraint -- ^c2
+  -> QLE s Constraint
 compositeConstraint = $(ffiCall 'compositeConstraint) c_compositeConstraint
 
 foreign import ccall safe "ql.h qlCompositeConstraint"
   c_compositeConstraint :: Ptr CConstraint -> Ptr CConstraint -> Ptr CString -> IO (Ptr CConstraint)
 
-noConstraint :: QLE s (Constraint s)
+noConstraint :: QLE s Constraint
 noConstraint = $(ffiCall 'noConstraint) c_noConstraint
 
 foreign import ccall safe "ql.h qlNoConstraint"
   c_noConstraint :: Ptr CString -> IO (Ptr CConstraint)
 
-positiveConstraint :: QLE s (Constraint s)
+positiveConstraint :: QLE s Constraint
 positiveConstraint = $(ffiCall 'positiveConstraint) c_positiveConstraint
 
 foreign import ccall safe "ql.h qlPositiveConstraint"
@@ -48,7 +48,7 @@ foreign import ccall safe "ql.h qlPositiveConstraint"
 levenbergMarquardt :: Double -- ^epsfcn
   -> Double -- ^xtol
   -> Double -- ^gtol
-  -> QLE s (OptimizationMethod s)
+  -> QLE s OptimizationMethod
 levenbergMarquardt = $(ffiCall 'levenbergMarquardt) c_levenbergMarquardt
 
 foreign import ccall safe "ql.h qlLevenbergMarquardt"
@@ -56,7 +56,7 @@ foreign import ccall safe "ql.h qlLevenbergMarquardt"
 
 -- |Constructor taking as input the characteristic length
 simplex :: Double -- ^lambda
-  -> QLE s (OptimizationMethod s)
+  -> QLE s OptimizationMethod
 simplex = $(ffiCall 'simplex) c_simplex
 
 foreign import ccall safe "ql.h qlSimplex"
@@ -68,7 +68,7 @@ endCriteria :: Word -- ^maxIterations
   -> Double -- ^rootEpsilon
   -> Double -- ^functionEpsilon
   -> Double -- ^gradientNormEpsilon
-  -> QLE s (EndCriteria s)
+  -> QLE s EndCriteria
 endCriteria = $(ffiCall 'endCriteria) c_endCriteria
 
 foreign import ccall safe "ql.h qlEndCriteria"

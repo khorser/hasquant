@@ -705,7 +705,7 @@ callableFixedRateBond :: Word -- ^settlementDays
   -> BusinessDayConvention -- ^paymentConvention
   -> Double -- ^redemption
   -> Maybe Day -- ^issueDate
-  -> [Callability s] -- ^putCallSchedule
+  -> [Callability] -- ^putCallSchedule
   -> QLE s (CallableBond s)
 callableFixedRateBond = $(ffiCall 'callableFixedRateBond) c_callableFixedRateBond
 
@@ -720,7 +720,7 @@ callableZeroCouponBond :: Word -- ^settlementDays
   -> BusinessDayConvention -- ^paymentConvention
   -> Double -- ^redemption
   -> Maybe Day -- ^issueDate
-  -> [Callability s] -- ^putCallSchedule
+  -> [Callability] -- ^putCallSchedule
   -> QLE s (CallableBond s)
 callableZeroCouponBond = $(ffiCall 'callableZeroCouponBond) c_callableZeroCouponBond
 
@@ -730,7 +730,7 @@ foreign import ccall safe "ql.h qlCallableZeroCouponBond"
 convertibleFixedCouponBond :: Exercise s -- ^exercise
   -> Double -- ^conversionRatio
   -> [Dividend s] -- ^dividends
-  -> [Callability s] -- ^callability
+  -> [Callability] -- ^callability
   -> Quote s -- ^creditSpread
   -> Day -- ^issueDate
   -> Word -- ^settlementDays
@@ -747,7 +747,7 @@ foreign import ccall safe "ql.h qlConvertibleFixedCouponBond"
 convertibleFloatingRateBond :: Exercise s -- ^exercise
   -> Double -- ^conversionRatio
   -> [Dividend s] -- ^dividends
-  -> [Callability s] -- ^callability
+  -> [Callability] -- ^callability
   -> Quote s -- ^creditSpread
   -> Day -- ^issueDate
   -> Word -- ^settlementDays
@@ -766,7 +766,7 @@ foreign import ccall safe "ql.h qlConvertibleFloatingRateBond"
 convertibleZeroCouponBond :: Exercise s -- ^exercise
   -> Double -- ^conversionRatio
   -> [Dividend s] -- ^dividends
-  -> [Callability s] -- ^callability
+  -> [Callability] -- ^callability
   -> Quote s -- ^creditSpread
   -> Day -- ^issueDate
   -> Word -- ^settlementDays
@@ -780,10 +780,10 @@ foreign import ccall safe "ql.h qlConvertibleZeroCouponBond"
   c_convertibleZeroCouponBond :: Ptr CExercise -> CDouble -> CUInt -> Ptr (Ptr CDividend) -> CUInt -> Ptr (Ptr CCallability) -> Ptr CQuote -> CDate -> CUInt -> Ptr CDayCounter -> Ptr CSchedule -> CDouble -> Ptr CString -> IO (Ptr CConvertibleBond)
 
 -- |callability leaving to the holder the possibility to convert
-softCallability :: CallabilityPrice s
+softCallability :: CallabilityPrice
   -> Day
   -> Double -- ^trigger
-  -> QLE s (Callability s)
+  -> QLE s Callability
 softCallability = $(ffiCall 'softCallability) c_softCallability
 
 foreign import ccall safe "ql.h qlSoftCallability"

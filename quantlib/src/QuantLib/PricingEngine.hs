@@ -509,7 +509,7 @@ foreign import ccall safe "ql.h qlLfmSwaptionEngine"
   c_lfmSwaptionEngine :: Ptr CLiborForwardModel -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 treeCapFloorEngine' :: ShortRateModel s -- ^model
-  -> TimeGrid s -- ^timeGrid
+  -> TimeGrid -- ^timeGrid
   -> Maybe (YieldTermStructure s) -- ^termStructure
   -> QLE s (PricingEngine s)
 treeCapFloorEngine' = $(ffiCall 'treeCapFloorEngine') c_treeCapFloorEngine'
@@ -518,7 +518,7 @@ foreign import ccall safe "ql.h qlTreeCapFloorEngine1"
   c_treeCapFloorEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 treeSwaptionEngine' :: ShortRateModel s
-  -> TimeGrid s -- ^timeGrid
+  -> TimeGrid -- ^timeGrid
   -> Maybe (YieldTermStructure s) -- ^termStructure
   -> QLE s (PricingEngine s)
 treeSwaptionEngine' = $(ffiCall 'treeSwaptionEngine') c_treeSwaptionEngine'
@@ -527,7 +527,7 @@ foreign import ccall safe "ql.h qlTreeSwaptionEngine1"
   c_treeSwaptionEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 treeVanillaSwapEngine' :: ShortRateModel s
-  -> TimeGrid s -- ^timeGrid
+  -> TimeGrid -- ^timeGrid
   -> Maybe (YieldTermStructure s) -- ^termStructure
   -> QLE s (PricingEngine s)
 treeVanillaSwapEngine' = $(ffiCall 'treeVanillaSwapEngine') c_treeVanillaSwapEngine'
@@ -541,7 +541,7 @@ fdG2SwaptionEngine :: G2 s
   -> Word -- yGrid
   -> Word -- dampingSpecs
   -> Double -- invEps
-  -> FdmSchemeDesc s
+  -> FdmSchemeDesc
   -> QLE s (PricingEngine s)
 fdG2SwaptionEngine = $(ffiCall 'fdG2SwaptionEngine) c_fdG2SwaptionEngine
 
@@ -553,7 +553,7 @@ fdHullWhiteSwaptionEngine :: HullWhite s
   -> Word -- xGrid
   -> Word -- dampingSpecs
   -> Double -- invEps
-  -> FdmSchemeDesc s
+  -> FdmSchemeDesc
   -> QLE s (PricingEngine s)
 fdHullWhiteSwaptionEngine = $(ffiCall 'fdHullWhiteSwaptionEngine) c_fdHullWhiteSwaptionEngine
 
@@ -851,7 +851,7 @@ foreign import ccall safe "ql.h qlBlackCallableZeroCouponBondEngine"
   c_blackCallableZeroCouponBondEngine :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 treeCallableFixedRateBondEngine' :: ShortRateModel s
-  -> TimeGrid s -- ^timeGrid
+  -> TimeGrid -- ^timeGrid
   -> Maybe (YieldTermStructure s) -- ^termStructure
   -> QLE s (PricingEngine s)
 treeCallableFixedRateBondEngine' = $(ffiCall 'treeCallableFixedRateBondEngine') c_treeCallableFixedRateBondEngine'
@@ -869,7 +869,7 @@ foreign import ccall safe "ql.h qlTreeCallableFixedRateBondEngine"
   c_treeCallableFixedRateBondEngine :: Ptr CShortRateModel -> CUInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 treeCallableZeroCouponBondEngine' :: ShortRateModel s -- ^model
-  -> TimeGrid s -- ^timeGrid
+  -> TimeGrid -- ^timeGrid
   -> Maybe (YieldTermStructure s) -- ^termStructure
   -> QLE s (PricingEngine s)
 treeCallableZeroCouponBondEngine' = $(ffiCall 'treeCallableZeroCouponBondEngine') c_treeCallableZeroCouponBondEngine'
