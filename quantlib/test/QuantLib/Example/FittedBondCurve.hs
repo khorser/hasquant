@@ -41,7 +41,7 @@ data Rate = Rate{refDateR :: Day, numIterR :: [Int], tenorsR :: [YearFraction], 
   deriving Show
 
 run :: IO Result
-run = runQLE $ do
+run = runQLE' $ do
   cal <- nullCalendar
   tod1 <- liftIO today
   tod <- adjust cal tod1 Following

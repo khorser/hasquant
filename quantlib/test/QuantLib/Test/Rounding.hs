@@ -51,7 +51,7 @@ test_Ceiling =
 
 testRounding :: RoundingType -> Double -> Int -> Double -> IO ()
 testRounding rt x prec expected = do
-  rounded <- runQLE $ do
+  rounded <- runQLE' $ do
     r <- rounding' prec rt 5
     return (applyRounding r x)
   assertClose rounded expected

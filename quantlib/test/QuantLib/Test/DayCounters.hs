@@ -18,7 +18,7 @@ import QuantLib.Types
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_ActualActual :: IO ()
-test_ActualActual = keepingSettings' $ runQLE $
+test_ActualActual = keepingSettings' $ runQLE' $
   mapM_ (\(c, s, e, rs, re, t) -> do
     dc <- c
     f <- yearFraction dc s e rs re
@@ -48,7 +48,7 @@ test_ActualActual = keepingSettings' $ runQLE $
           (actualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
 
 checkCounter :: DayCounter s -> [Day] -> [(Int, Unit)] -> [Double] -> IO ()
-checkCounter dc days periods expected = keepingSettings' $ runQLE $
+checkCounter dc days periods expected = keepingSettings' $ runQLE' $
   mapM_ (\d -> do
     calculated <- mapM (\p -> do
       let (Right end) = addPeriod d p
@@ -59,7 +59,7 @@ checkCounter dc days periods expected = keepingSettings' $ runQLE $
     days
 
 test_Simple :: IO ()
-test_Simple = runQLE $ do
+test_Simple = runQLE' $ do
   dc <- simple
   liftIO $ checkCounter dc
     [1 `january` 2002 .. 31 `december` 2005]
@@ -67,7 +67,7 @@ test_Simple = runQLE $ do
     [0.25, 0.5, 1.0]
 
 test_One :: IO ()
-test_One = keepingSettings' $ runQLE $ do
+test_One = keepingSettings' $ runQLE' $ do
   dc <- one
   liftIO $ checkCounter dc
     [1 `january` 2004 .. 31 `december` 2004]
@@ -75,7 +75,7 @@ test_One = keepingSettings' $ runQLE $ do
     [1.0, 1.0, 1.0]
 
 test_Business252 :: IO ()
-test_Business252 = keepingSettings' $ runQLE $ do
+test_Business252 = keepingSettings' $ runQLE' $ do
   dc <- brazilSettlement >>= business252
 
   fractions <- mapM (\(s, e) -> yearFraction dc s e Nothing Nothing)

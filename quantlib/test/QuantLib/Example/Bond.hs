@@ -69,7 +69,7 @@ listToTriple l w = error $ "Not a 3 element list: " ++ show l ++ " (" ++ w ++ ")
 infixl 4 <-*>
 
 run :: IO Result
-run = runQLE $ do
+run = runQLE' $ do
   actual365Fixeddc <- actual365Fixed
   actActBond <- actualActualBond
   actActISDA <- actualActualISDA

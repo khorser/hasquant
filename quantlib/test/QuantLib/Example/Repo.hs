@@ -44,7 +44,7 @@ data Result = Result
   } deriving Show
 
 run :: IO Result
-run = runQLE $ do
+run = runQLE' $ do
   repoDayCountConvention <- actual360
   bondCalendar <- nullCalendar
   bondDayCountConvention <- thirty360BondBasis

@@ -43,7 +43,7 @@ close x1 x2 =
         tolerance = 42 * qlEpsilon
 
 test_ReferenceChange :: IO ()
-test_ReferenceChange = keepingSettings' $ runQLE $ do
+test_ReferenceChange = keepingSettings' $ runQLE' $ do
   (_calendar, settlementDays, _ts) <- setup
   flatRate <- simpleQuote 0.03
   calendar <- nullCalendar
@@ -60,7 +60,7 @@ test_ReferenceChange = keepingSettings' $ runQLE $ do
   where days = [10, 30, 60, 120, 360, 720]
 
 test_Implied :: IO ()
-test_Implied = keepingSettings' $ runQLE $ do
+test_Implied = keepingSettings' $ runQLE' $ do
   (calendar, settlementDays, ts) <- setup
   tod <- evaluationDate
   let newToday = addGregorianYearsClip 3 tod
@@ -75,7 +75,7 @@ test_Implied = keepingSettings' $ runQLE $ do
   where tolerance = 1.0e-10
 
 test_FSpreaded :: IO ()
-test_FSpreaded = keepingSettings' $ runQLE $ do
+test_FSpreaded = keepingSettings' $ runQLE' $ do
   (_calendar, _settlementDays, ts) <- setup
   me <- simpleQuote 0.01 >>= asQuote
   val <- value me
@@ -90,7 +90,7 @@ test_FSpreaded = keepingSettings' $ runQLE $ do
   where tolerance = 1.0e-10
 
 test_ZSpreaded :: IO ()
-test_ZSpreaded = keepingSettings' $ runQLE $ do
+test_ZSpreaded = keepingSettings' $ runQLE' $ do
   (_calendar, _settlementDays, ts) <- setup
   q <- simpleQuote 0.01 >>= asQuote
   val <- value q

@@ -50,7 +50,7 @@ data Result = Result
   }
 
 run :: IO Result
-run = runQLE $ do
+run = runQLE' $ do
   cal <- target
   setEvaluationDate $ Just tod
   flatRate <- simpleQuote 0.04875825 >>= asQuote

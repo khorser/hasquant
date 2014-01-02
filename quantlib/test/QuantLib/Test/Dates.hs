@@ -16,7 +16,7 @@ import QuantLib.Types
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_ECBDates :: IO ()
-test_ECBDates = keepingSettings' $ runQLE $ do
+test_ECBDates = keepingSettings' $ runQLE' $ do
   knownDates <- knownECBDates
   liftIO $ assertBool (not $ null knownDates)
   knownDates' <- nextECBDates (Just minDate)

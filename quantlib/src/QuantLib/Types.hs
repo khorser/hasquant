@@ -210,7 +210,7 @@ module QuantLib.Types
   , QLError(..)
   , QL(..)
   , QLE
-  , runQLE
+  , runQLE'
   )
 where
 

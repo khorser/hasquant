@@ -26,7 +26,7 @@ test_Conversions = keepingSettings' $
 
   where
     testCase :: (Double, Compounding, Frequency, YearFraction, Compounding, Frequency, Double, Int) -> IO ()
-    testCase (r, comp, freq, t, comp2, freq2, expected, prec) = runQLE $ do
+    testCase (r, comp, freq, t, comp2, freq2, expected, prec) = runQLE' $ do
       d1 <- liftIO today
       dc <- actual360
       ir <- interestRate r dc comp freq

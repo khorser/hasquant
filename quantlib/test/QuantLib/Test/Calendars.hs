@@ -18,7 +18,7 @@ import QuantLib.Types
 
 test_ModifiedCalendars :: IO ()
 test_ModifiedCalendars = do
-  (h1, b1, h2, b2, h1', b1', h3, b3, h1'', b1'') <- runQLE $ do
+  (h1, b1, h2, b2, h1', b1', h3, b3, h1'', b1'') <- runQLE' $ do
     c1 <- target
     c2 <- unitedStatesNYSE
     let d1 = 1 `may` 2004
@@ -55,7 +55,7 @@ test_ModifiedCalendars = do
   assertBool b1''
 
 test_JointCalendars :: IO ()
-test_JointCalendars = runQLE $ do
+test_JointCalendars = runQLE' $ do
     c1 <- target
     c2 <- unitedKingdomExchange
     c3 <- unitedStatesNYSE
@@ -93,7 +93,7 @@ test_JointCalendars = runQLE $ do
 
 test_USSettlement :: IO ()
 test_USSettlement = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- unitedStatesSettlement
     holidays cal (1 `january` 2004) (31 `december` 2005) False
   assertEqual expectedHol h
@@ -122,7 +122,7 @@ test_USSettlement = do
 
 test_USGovernmentBondMarket :: IO ()
 test_USGovernmentBondMarket = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- unitedStatesGovernmentBond
     holidays cal (1 `january` 2004) (31 `december` 2004) False
   assertEqual expectedHol h
@@ -141,7 +141,7 @@ test_USGovernmentBondMarket = do
       24 `december` 2004]
 
 test_USNewYorkStockExchange :: IO ()
-test_USNewYorkStockExchange = runQLE $ do
+test_USNewYorkStockExchange = runQLE' $ do
   cal <- unitedStatesNYSE
   h <- holidays cal (1 `january` 2004) (31 `december` 2006) False
   liftIO $ assertEqual expectedHol h
@@ -211,7 +211,7 @@ test_USNewYorkStockExchange = runQLE $ do
 
 test_TARGET :: IO ()
 test_TARGET = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- target
     holidays cal (1 `january` 1999) (31 `december` 2006) False
   assertEqual expectedHol h
@@ -264,7 +264,7 @@ test_TARGET = do
 
 test_GermanyFrankfurt :: IO ()
 test_GermanyFrankfurt = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- germanyFrankfurtStockExchange
     holidays cal (1 `january` 2003) (31 `december` 2004) False
   assertEqual expectedHol h
@@ -287,7 +287,7 @@ test_GermanyFrankfurt = do
 
 test_GermanyEurex :: IO ()
 test_GermanyEurex = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- germanyEurex
     holidays cal (1 `january` 2003) (31 `december` 2004) False
   assertEqual expectedHol h
@@ -310,7 +310,7 @@ test_GermanyEurex = do
 
 test_GermanyXetra :: IO ()
 test_GermanyXetra = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- germanyXetra
     holidays cal (1 `january` 2003) (31 `december` 2004) False
   assertEqual expectedHol h
@@ -334,7 +334,7 @@ test_GermanyXetra = do
 
 test_UKSettlement :: IO ()
 test_UKSettlement = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- unitedKingdomSettlement
     holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
@@ -379,7 +379,7 @@ test_UKSettlement = do
 
 test_UKExchange :: IO ()
 test_UKExchange = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- unitedKingdomExchange
     holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
@@ -424,7 +424,7 @@ test_UKExchange = do
 
 test_UKMetals :: IO ()
 test_UKMetals = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- unitedKingdomMetals
     holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
@@ -469,7 +469,7 @@ test_UKMetals = do
 
 test_ItalyExchange :: IO ()
 test_ItalyExchange = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- italyExchange
     holidays cal (1 `january` 2002) (31 `december` 2004) False
   assertEqual expectedHol h
@@ -503,7 +503,7 @@ test_ItalyExchange = do
 
 test_Brazil :: IO ()
 test_Brazil = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- brazilSettlement
     holidays cal (1 `january` 2005) (31 `december` 2006) False
   assertEqual expectedHol h
@@ -533,7 +533,7 @@ test_Brazil = do
 
 test_SouthKoreanSettlement :: IO ()
 test_SouthKoreanSettlement = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- southKoreaSettlement
     holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
@@ -594,7 +594,7 @@ test_SouthKoreanSettlement = do
 
 test_KoreaStockExchange :: IO ()
 test_KoreaStockExchange = do
-  h <- runQLE $ do
+  h <- runQLE' $ do
     cal <- southKoreaKRX
     holidays cal (1 `january` 2004) (31 `december` 2007) False
   assertEqual expectedHol h
@@ -657,7 +657,7 @@ test_KoreaStockExchange = do
       31 `december` 2007]
 
 test_EndOfMonth :: IO ()
-test_EndOfMonth = runQLE $ do
+test_EndOfMonth = runQLE' $ do
   cal <- target
   mapM_ (\d -> do
     eom <- QuantLib.Time.Calendar.endOfMonth cal d
@@ -666,7 +666,7 @@ test_EndOfMonth = runQLE $ do
     [minDate .. addGregorianMonthsClip (-2) maxDate]
 
 test_BusinessDaysBetween :: IO ()
-test_BusinessDaysBetween = runQLE $ do
+test_BusinessDaysBetween = runQLE' $ do
   cal <- brazilSettlement
   mapM_ (\(d1, d2, e) -> do
     b <- businessDaysBetween cal d1 d2 True False
@@ -700,7 +700,7 @@ test_BusinessDaysBetween = runQLE $ do
         51]
 
 test_BespokeCalendars :: IO ()
-test_BespokeCalendars = runQLE $ do
+test_BespokeCalendars = runQLE' $ do
   let testDate1 = 4 `october` 2008
       testDate2 = 5 `october` 2008
       testDate3 = 6 `october` 2008

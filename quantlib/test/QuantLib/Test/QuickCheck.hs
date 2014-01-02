@@ -41,12 +41,12 @@ instance Arbitrary Frequency where
   arbitrary = arbitraryBoundedEnum
 
 setAndGetEvaluationDate :: Day -> IO Day
-setAndGetEvaluationDate d = Types.runQLE $ do
+setAndGetEvaluationDate d = Types.runQLE' $ do
   Settings.setEvaluationDate (Just d)
   Settings.evaluationDate
 
 setAndGetEvaluationDateWithExceptions :: Day -> IO Day
-setAndGetEvaluationDateWithExceptions d = Types.runQLE $ do
+setAndGetEvaluationDateWithExceptions d = Types.runQLE' $ do
   Settings.setEvaluationDate (Just d) `catchT` ign -- use fully qualified name to avoid annoyances with GHC < 7.6
   Settings.evaluationDate
   where ign :: Types.QLError -> Types.QLE s ()
@@ -67,14 +67,14 @@ prop_ValidEvaluationDate = monadicIO $ do
 prop_InvalidEvaluationDate :: InvalidDay -> Property
 prop_InvalidEvaluationDate (InvalidDay d) = monadicIO $ do
   t <- run today
-  _ <- run $ Types.runQLE $ Settings.setEvaluationDate (Just t)
+  _ <- run $ Types.runQLE' $ Settings.setEvaluationDate (Just t)
   -- TODO use assertThrowsIO
   d2 <- run $ setAndGetEvaluationDateWithExceptions d
   assert $ t == d2
 
 prop_SingleLegStartDate :: (Double, ValidDay) -> Property
 prop_SingleLegStartDate (a, ValidDay d) = monadicIO $ do
-  sd <- run $ Types.runQLE $ do
+  sd <- run $ Types.runQLE' $ do
     l <- Leg.leg [(a, d)]
     let (Right sd) = Leg.startDate l
     return sd
@@ -84,7 +84,7 @@ prop_LegStartDate :: [(Double, ValidDay)] -> Property
 prop_LegStartDate flows =
   not (null flows)
   ==> monadicIO $ do
-    sd <- run $ Types.runQLE $ do
+    sd <- run $ Types.runQLE' $ do
       l <- Leg.leg f
       let (Right sd) = Leg.startDate l
       return sd
@@ -97,14 +97,14 @@ prop_QuoteValue :: Double -> Property
 prop_QuoteValue val =
   val > 0
   ==> monadicIO $ do
-    v <- run $ Types.runQLE $ do
+    v <- run $ Types.runQLE' $ do
       q <- Quote.simpleQuote val >>= Types.asQuote
       Quote.value q
     assert $ v == val
 
 prop_ScheduleDates :: [ValidDay] -> Property
 prop_ScheduleDates dates = monadicIO $ do
-  s <- run $ Types.runQLE $ do
+  s <- run $ Types.runQLE' $ do
     c <- Calendar.russia
     s <- Schedule.scheduleFromDays (map validDay dates) c BusinessDayConvention.Unadjusted
     return $ Schedule.dates s

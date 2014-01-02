@@ -31,7 +31,7 @@ import QuantLib.Types
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_Settings :: IO ()
-test_Settings = keepingSettings' $ runQLE $ do
+test_Settings = keepingSettings' $ runQLE' $ do
   tod <- liftIO today
   setEvaluationDate (Just tod)
   l <- leg (zip (repeat 1.0) [tod .. addDays 2 tod])
@@ -100,7 +100,7 @@ checkNPV l r includeRef expected = do
 
 -- dynamic cast of coupon in Black pricer
 test_AccessViolation :: IO ()
-test_AccessViolation = keepingSettings' $ runQLE $ do
+test_AccessViolation = keepingSettings' $ runQLE' $ do
   setEvaluationDate (Just $ 7 `april` 2010)
   cal <- target
   dc <- actual365Fixed
@@ -118,7 +118,7 @@ test_AccessViolation = keepingSettings' $ runQLE $ do
   liftIO $ assertBool True
 
 test_DefaultSettlementDate :: IO ()
-test_DefaultSettlementDate = runQLE $ do
+test_DefaultSettlementDate = runQLE' $ do
   tod <- evaluationDate
   cal <- target
   sch <- schedule (Just $ addGregorianMonthsClip (-2) tod) (addGregorianMonthsClip 4 tod) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing

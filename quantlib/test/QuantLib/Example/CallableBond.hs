@@ -35,7 +35,7 @@ data Result = Result
   }
 
 run :: IO Result
-run = runQLE $ do
+run = runQLE' $ do
   setEvaluationDate $ Just tod
   bbdc <- actualActualBond
   q <- simpleQuote 0.055 >>= asQuote

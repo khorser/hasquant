@@ -42,7 +42,7 @@ data IterationResult = IterationResult {spotSwap :: SwapResult, forwardSwap :: S
 data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
-run = runQLE $ do
+run = runQLE' $ do
   cal <- target
   settleDate <- adjust cal settleDate1 Following
   advance cal settleDate (-fixingDays) Days Following False >>= setEvaluationDate . Just
