@@ -13,6 +13,9 @@ module QuantLib.Settings
 
   , keepingSettings
   , keepingSettings'
+
+  , c_savedSettings
+  , c_freeSavedSettings
   )
 where
 
@@ -100,7 +103,6 @@ data CSavedSettings
 
 foreign import ccall safe "ql.h qlSavedSettings"
   c_savedSettings :: IO (Ptr CSavedSettings)
-
 foreign import ccall safe "ql.h qlFreeSavedSettings"
   c_freeSavedSettings :: Ptr CSavedSettings -> IO ()
 

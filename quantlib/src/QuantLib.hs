@@ -17,6 +17,7 @@ import Data.Time.Calendar(Day)
 
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Settings
 import QuantLib.Time.Calendar
 import QuantLib.Types
 
@@ -32,7 +33,7 @@ data CalendarSetup = forall s. CalendarSetup {
 data QLSettings = QLSettings {
     evaluationDate :: Day
   , enforceTodaysHistoricFixings :: Bool
-  , includeTodaysCashFlows :: Bool
+  , includeTodaysCashFlows :: Maybe Bool
   , includeReferenceDateEvents :: Bool
   , calendars :: [CalendarSetup]
   }
@@ -58,13 +59,14 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
     {-# INLINE liftInit #-}
     liftInit = EitherT . WriterT . liftM transformEither . getIO
 
-    --runSetup :: (QLE s (Setup s), Setup s -> Int -> QLE s (), Int) -> QLE s Finaliser
-    --runSetup (st, action, arg) = st >>= \s ->
-    --  action s arg >> return (Finaliser $ cleanup1 s)
-
-    --runSetup2 :: Int -> QLE s Finaliser
-    --runSetup2 arg = setup >>= \s ->
-    --  setup1 s arg >> return (Finaliser $ cleanup1 s)
+    setupGlobalSettings :: Day -> Bool -> Maybe Bool -> Bool -> QLE s Finaliser
+    setupGlobalSettings evalDate todFixings todFlows todEvents = do
+      st <- mkQLE c_savedSettings
+      setEvaluationDate (Just evalDate)
+      setEnforceTodaysHistoricFixings todFixings
+      setIncludeTodaysCashFlows todFlows
+      setIncludeReferenceDateEvents todEvents
+      return (Finaliser $ EitherT $ QL (liftM Right $ c_freeSavedSettings st))
 
     setupCalendar :: CalendarSetup -> QLE s Finaliser
     setupCalendar cs = case cs of
@@ -80,16 +82,17 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
       putStrLn "Executing enter section"
       -- execute initialisers sequentially accumulating finalisers until first error
       case s of
-        (QLSettings _ _ _ _ cs) -> runWriterT $ runEitherT $
-          --mapM liftInit (runSetup2 a:map runSetup actions)
-          mapM liftInit (map setupCalendar cs)
+        (QLSettings evalDate todFixings todFlows todEvents cals) -> runWriterT $ runEitherT $
+          mapM liftInit $
+            setupGlobalSettings evalDate todFixings todFlows todEvents
+            : map setupCalendar cals
 
     exec (Right _, _) = getIO x
     exec (Left e, _) = return $ Left $ InitException e
 
     leave :: (Either QLError [()], [Finaliser]) -> IO ()
-    leave (Right _, f) = putStrLn "Entering finalizer" >> runFinalisers f >> performGC
-    leave (Left e, f) = putStrLn ("Exception during initialisation: " ++ show e) >> runFinalisers f >> performGC
+    leave (Right _, f) = putStrLn "Entering finalizer" >> performGC >> runFinalisers f >> performGC
+    leave (Left e, f) = putStrLn ("Exception during initialisation: " ++ show e) >> performGC >> runFinalisers f >> performGC
 
     -- run finalisers ignoring errors
     runFinalisers :: [Finaliser] -> IO ()
