@@ -11,8 +11,9 @@ where
 
 import Control.Error
 import Control.Exception(bracket)
-import Control.Monad(liftM, void)
+import Control.Monad(unless, liftM, filterM, void)
 import Control.Monad.Trans.Writer
+import Data.List(intersect)
 import Data.Time.Calendar(Day)
 
 import QuantLib.Internal.Types
@@ -26,8 +27,8 @@ import System.Mem(performGC)
 
 data CalendarSetup = forall s. CalendarSetup {
     calendar :: QLE s (Calendar s)
-  , add :: [Day]
-  , remove :: [Day]
+  , extraHolidays :: [Day]
+  , extraBusinessDays :: [Day]
   }
 
 data QLSettings = QLSettings {
@@ -71,29 +72,29 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
 
     setupCalendar :: CalendarSetup -> QLE s Finaliser
     setupCalendar cs = case cs of
-      (CalendarSetup c a r) -> do
+      (CalendarSetup c h b) -> do
         cal <- replaceState c
-        -- TODO check the day is not a holiday already
-        mapM_ (addHoliday cal) a
-        mapM_ (removeHoliday cal) r
-        return (Finaliser $ mapM_ (addHoliday cal) r >> mapM_ (removeHoliday cal) a)
+        unless (null $ intersect h b) $
+          throwT $ ConflictingHolidays $ show cal
+        hol <- filterM (isBusinessDay cal) h
+        bus <- filterM (isHoliday cal) b
+        mapM_ (addHoliday cal) hol
+        mapM_ (removeHoliday cal) bus
+        return (Finaliser $ mapM_ (addHoliday cal) bus >> mapM_ (removeHoliday cal) hol)
 
     enter :: IO (Either QLError [()], [Finaliser])
-    enter = do
-      putStrLn "Executing enter section"
+    enter = case s of
+      (QLSettings evalDate todFixings todFlows todEvents cals) -> runWriterT $ runEitherT $
       -- execute initialisers sequentially accumulating finalisers until first error
-      case s of
-        (QLSettings evalDate todFixings todFlows todEvents cals) -> runWriterT $ runEitherT $
-          mapM liftInit $
-            setupGlobalSettings evalDate todFixings todFlows todEvents
-            : map setupCalendar cals
+        mapM liftInit $
+          setupGlobalSettings evalDate todFixings todFlows todEvents
+          : map setupCalendar cals
 
     exec (Right _, _) = getIO x
     exec (Left e, _) = return $ Left $ InitException e
 
     leave :: (Either QLError [()], [Finaliser]) -> IO ()
-    leave (Right _, f) = putStrLn "Entering finalizer" >> performGC >> runFinalisers f >> performGC
-    leave (Left e, f) = putStrLn ("Exception during initialisation: " ++ show e) >> performGC >> runFinalisers f >> performGC
+    leave (_, f) = performGC >> runFinalisers f >> performGC
 
     -- run finalisers ignoring errors
     runFinalisers :: [Finaliser] -> IO ()

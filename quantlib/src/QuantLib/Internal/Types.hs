@@ -198,6 +198,7 @@ class Finalizable a => NamedSingleton a where
 newtype Object s a = Object{ptr :: ForeignPtr a}
 
 data QLError = CPlusPlusException String
+  | ConflictingHolidays String
   | DateConversion Day
   | NullPointerReturned
   | UnknownEnum String
