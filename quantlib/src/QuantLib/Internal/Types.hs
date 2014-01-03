@@ -1,12 +1,11 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Types
   (
     Finalizable(..)
   , Upcastable(..)
   , NamedSingleton(..)
-  , QLSettings(..)
   , QLError(..)
   , CStaticInt(..)
   , CArrayable(..)
@@ -198,12 +197,6 @@ class Finalizable a => NamedSingleton a where
 
 newtype Object s a = Object{ptr :: ForeignPtr a}
 
-data QLSettings = QLSettings {
-    evaluationDate :: Day
-  , enforceTodaysHistoricFixings :: Bool
-  , includeTodaysCashFlows :: Bool
-  , includeReferenceDateEvents :: Bool}
-
 data QLError = CPlusPlusException String
   | DateConversion Day
   | NullPointerReturned
@@ -221,7 +214,7 @@ instance Exception QLError
 newtype QL s a = QL {runQL :: IO a}
   deriving (Monad, MonadIO, Functor, Applicative) -- is MonadIO instance ok?
 
-type QLE s a = EitherT QLError (QL s) a
+type QLE s = EitherT QLError (QL s)
 
 newtype CStaticInt = CStaticInt{getStaticInt::CInt} deriving (Eq, Show, Storable)
 

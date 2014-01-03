@@ -1,6 +1,4 @@
-{-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE RankNTypes #-}
 {-# OPTIONS_GHC -fno-cse -fno-full-laziness #-} -- for unsafePerformIO
 module QuantLib.Internal.Utils
   (
@@ -9,7 +7,6 @@ module QuantLib.Internal.Utils
   , purifyExceptions
   , mkQLE
   , runQLE'
-  , runQLE
 
   , upcast
   , construct
@@ -29,6 +26,9 @@ module QuantLib.Internal.Utils
   , withArrayULenT
   , withArrayULenTIO
 
+  , replaceState
+  , getIO
+
   -- re-exporting some popular stuff
   , throwIO
   , withCString
@@ -37,9 +37,8 @@ module QuantLib.Internal.Utils
 where
 
 import Control.Error
-import Control.Exception(throwIO, catches, bracket, Handler(Handler))
-import Control.Monad(join, liftM, void)
-import Control.Monad.Trans.Writer
+import Control.Exception(throwIO, catches, Handler(Handler))
+import Control.Monad(join, liftM)
 import Data.Functor((<$>))
 
 import Foreign.C.String(peekCString, withCString)
@@ -52,7 +51,6 @@ import Foreign.Ptr(nullPtr)
 import Foreign.Storable(peek)
 
 import System.IO.Unsafe(unsafePerformIO)
-import System.Mem(performGC)
 
 import QuantLib.Internal.Types
 
@@ -192,58 +190,14 @@ name c = unsafePerformIO $
 upcast :: (Upcastable a b) => Object s a -> QLE s (Object s b)
 upcast x = mkQLE $ withObject x c_upcast >>= liftM Object . newForeignPtr finalize
 
--- initialisation state: (Either Error [()], finalisers-list)
-data CSetup
-type Setup s = Object s CSetup
-
-type InitMonad = EitherT QLError (WriterT [Finaliser] IO) ()
-
-data Finaliser = forall s. Finaliser (QLE s ())
-
 getIO :: QLE s a -> IO (Either QLError a)
 {-# INLINE getIO #-}
 getIO = runQL . runEitherT
 
--- transform Either for use with the Writer
-transformEither :: Either e w -> (Either e (), [w])
-transformEither = either (\l -> (Left l, [])) (\r -> (Right (), [r]))
-
--- mimicking ST
-runQLE :: QLSettings -> (forall s. QLE s a) -> Either QLError a
-{-# NOINLINE runQLE #-}
-runQLE ms x = unsafePerformIO $ bracket enter leave exec
-  where
-    liftInit :: QLE s Finaliser -> InitMonad
-    {-# INLINE liftInit #-}
-    liftInit = EitherT . WriterT . liftM transformEither . getIO
-
-    --runSetup :: (QLE s (Setup s), Setup s -> Int -> QLE s (), Int) -> QLE s Finaliser
-    --runSetup (st, action, arg) = st >>= \s ->
-    --  action s arg >> return (Finaliser $ cleanup1 s)
-
-    ---- using internally created setup object
-    --runSetup2 :: Int -> QLE s Finaliser
-    --runSetup2 arg = setup >>= \s ->
-    --  setup1 s arg >> return (Finaliser $ cleanup1 s)
-
-    enter :: IO (Either QLError [()], [Finaliser])
-    enter = do
-      undefined
-    --  putStrLn "Executing enter section"
-    --  -- execute initialisers sequentially accumulating finalisers until first error
-    --  case ms of
-    --    (QLSettings a actions) -> runWriterT $ runEitherT $
-    --      mapM liftInit (runSetup2 a:map runSetup actions)
-
-    exec (Right _, _) = getIO x
-    exec (Left e, _) = return $ Left $ InitException e
-
-    leave :: (Either QLError [()], [Finaliser]) -> IO ()
-    leave (Right _, f) = putStrLn "Entering finalizer" >> runFinalisers f >> performGC
-    leave (Left e, f) = putStrLn ("Exception during initialisation: " ++ show e) >> runFinalisers f >> performGC
-
-    -- run finalisers ignoring errors
-    runFinalisers :: [Finaliser] -> IO ()
-    runFinalisers = mapM_ (\(Finaliser fin) -> runQL $ void $ runEitherT fin)
+replaceState :: QLE s (Object s a) -> QLE s1 (Object s1 a)
+{-# INLINE replaceState #-}
+replaceState o = EitherT $ QL $ do
+  x <- getIO o
+  return $ fmapR (Object . ptr) x
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
