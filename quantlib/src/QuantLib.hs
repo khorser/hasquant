@@ -6,9 +6,13 @@ module QuantLib
   , QLSettings(..)
   , CalendarSetup(..)
   , QLError(..)
+  
+  , defaultSettings
+  , todaySettings
   )
 where
 
+import Control.Applicative((<$>))
 import Control.Error
 import Control.Exception(bracket)
 import Control.Monad(unless, liftM, filterM, void)
@@ -20,6 +24,7 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Settings
 import QuantLib.Time.Calendar
+import QuantLib.Time.Date
 import QuantLib.Types
 
 import System.IO.Unsafe(unsafePerformIO)
@@ -68,7 +73,7 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
         setEnforceTodaysHistoricFixings todFixings
         setIncludeTodaysCashFlows todFlows
         setIncludeReferenceDateEvents todEvents
-      return (Finaliser $ EitherT $ QL (liftM Right $ c_freeSavedSettings st))
+      return (Finaliser $ EitherT $ QL (Right <$> c_freeSavedSettings st))
 
     setupCalendar :: CalendarSetup -> QLE s Finaliser
     setupCalendar cs = case cs of
@@ -95,9 +100,14 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
 
     leave :: (Either QLError [()], [Finaliser]) -> IO ()
     leave (_, f) = performGC >> runFinalisers f >> performGC
+      where
+        -- run finalisers ignoring errors
+        runFinalisers = mapM_ (\(Finaliser fin) -> runQL $ void $ runEitherT fin)
 
-    -- run finalisers ignoring errors
-    runFinalisers :: [Finaliser] -> IO ()
-    runFinalisers = mapM_ (\(Finaliser fin) -> runQL $ void $ runEitherT fin)
+defaultSettings :: Day -> QLSettings
+defaultSettings d = QLSettings d False Nothing False []
+
+todaySettings :: IO QLSettings
+todaySettings = defaultSettings <$> today
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
