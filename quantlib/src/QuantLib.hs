@@ -62,10 +62,11 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
     setupGlobalSettings :: Day -> Bool -> Maybe Bool -> Bool -> QLE s Finaliser
     setupGlobalSettings evalDate todFixings todFlows todEvents = do
       st <- mkQLE c_savedSettings
-      setEvaluationDate (Just evalDate)
-      setEnforceTodaysHistoricFixings todFixings
-      setIncludeTodaysCashFlows todFlows
-      setIncludeReferenceDateEvents todEvents
+      handleT (\e -> mkQLE (c_freeSavedSettings st) >> throwT e) $ do
+        setEvaluationDate (Just evalDate)
+        setEnforceTodaysHistoricFixings todFixings
+        setIncludeTodaysCashFlows todFlows
+        setIncludeReferenceDateEvents todEvents
       return (Finaliser $ EitherT $ QL (liftM Right $ c_freeSavedSettings st))
 
     setupCalendar :: CalendarSetup -> QLE s Finaliser
