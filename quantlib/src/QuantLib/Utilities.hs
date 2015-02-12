@@ -16,10 +16,12 @@ foreign import ccall safe "ql.h qlBoostVersion"
   c_boostVersion :: CString
 
 -- |returns the version number of QuantLib
+{-# NOINLINE version #-}
 version :: String
 version = unsafePerformIO $ peekCString c_version
 
 -- |returns the version number of Boost
+{-# NOINLINE boostVersion #-}
 boostVersion :: String
 boostVersion = unsafePerformIO $ peekCString c_boostVersion
 

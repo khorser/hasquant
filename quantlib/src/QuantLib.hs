@@ -15,7 +15,7 @@ where
 import Control.Applicative((<$>))
 import Control.Error
 import Control.Exception(bracket)
-import Control.Monad(unless, liftM, filterM, void)
+import Control.Monad(unless, filterM, void)
 import Control.Monad.Trans.Writer
 import Data.List(intersect)
 import Data.Time.Calendar(Day)
@@ -44,10 +44,7 @@ data QLSettings = QLSettings {
   , calendars :: [CalendarSetup]
   }
 
--- initialisation state: (Either Error [()], finalisers-list)
---data CSetup
---type Setup s = Object s CSetup
-
+-- initialisation state is (Either QLError [()], [Finaliser])
 type InitMonad = EitherT QLError (WriterT [Finaliser] IO) ()
 
 data Finaliser = forall s. Finaliser (QLE s ())
@@ -63,7 +60,7 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
   where
     liftInit :: QLE s Finaliser -> InitMonad
     {-# INLINE liftInit #-}
-    liftInit = EitherT . WriterT . liftM transformEither . getIO
+    liftInit = EitherT . WriterT . fmap transformEither . getIO
 
     setupGlobalSettings :: Day -> Bool -> Maybe Bool -> Bool -> QLE s Finaliser
     setupGlobalSettings evalDate todFixings todFlows todEvents = do
@@ -73,7 +70,7 @@ runQLE s x = unsafePerformIO $ bracket enter leave exec
         setEnforceTodaysHistoricFixings todFixings
         setIncludeTodaysCashFlows todFlows
         setIncludeReferenceDateEvents todEvents
-      return (Finaliser $ EitherT $ QL (Right <$> c_freeSavedSettings st))
+      return (Finaliser $ EitherT $ QL $ Right <$> c_freeSavedSettings st)
 
     setupCalendar :: CalendarSetup -> QLE s Finaliser
     setupCalendar cs = case cs of

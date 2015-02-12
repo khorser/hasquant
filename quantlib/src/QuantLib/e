@@ -1,3 +1,3 @@
 #!/bin/sh
 mkdir obj 2>/dev/null
-ghc -outputdir obj -hide-package qlc -hide-package quantlib -Wall -o E *.hs */*.hs ../../test/QuantLib/Example/*.hs ../../test/QuantLib/MainExample.hs -lql -L. -optl-Wl,-rpath,. -pgml g++
+ghc -outputdir obj -hide-package qlc -hide-package quantlib -Wall -o E *.hs ../*.hs */*.hs ../../test/QuantLib/Example/*.hs ../../test/QuantLib/MainExample.hs -lql -L. -optl-Wl,-rpath,. -pgml g++

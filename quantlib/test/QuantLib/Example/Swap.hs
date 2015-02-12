@@ -10,6 +10,8 @@ where
 import Control.Monad(void, forM, (>=>))
 import Data.Time.Calendar
 
+import QuantLib
+
 import QuantLib.Math.Interpolation
 import QuantLib.Index.Ibor
 import QuantLib.Instrument
@@ -30,7 +32,6 @@ import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Instances
 import QuantLib.Types
-import QuantLib.Settings
 
 data SwapResult = SwapResult { spotNpvR :: Double
                               , spotFairSpreadR :: Double
@@ -41,8 +42,8 @@ data IterationResult = IterationResult {spotSwap :: SwapResult, forwardSwap :: S
 
 data Result = Result [IterationResult] [IterationResult] deriving Show
 
-run :: IO Result
-run = runQLE' $ do
+run :: Result
+run = runQLE (defaultSettings {evaluationDate = settleDate1}) $ do
   cal <- target
   settleDate <- adjust cal settleDate1 Following
   advance cal settleDate (-fixingDays) Days Following False >>= setEvaluationDate . Just

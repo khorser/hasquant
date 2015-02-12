@@ -38,7 +38,7 @@ where
 
 import Control.Error
 import Control.Exception(throwIO, catches, Handler(Handler))
-import Control.Monad(join, liftM)
+import Control.Monad(join)
 import Data.Functor((<$>))
 
 import Foreign.C.String(peekCString, withCString)
@@ -116,7 +116,7 @@ buildArray n p = do
 getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => Object s b
   -> (Ptr b -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr a)))
   -> IO [Object s a]
-getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (liftM Object . newForeignPtr finalize)
+getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (fmap Object . newForeignPtr finalize)
 
 -- invoke a function producing an integral pair,
 -- first one returning, the second returning by pointer
@@ -188,7 +188,7 @@ name c = unsafePerformIO $
               return str
 
 upcast :: (Upcastable a b) => Object s a -> QLE s (Object s b)
-upcast x = mkQLE $ withObject x c_upcast >>= liftM Object . newForeignPtr finalize
+upcast x = mkQLE $ withObject x c_upcast >>= fmap Object . newForeignPtr finalize
 
 getIO :: QLE s a -> IO (Either QLError a)
 {-# INLINE getIO #-}
