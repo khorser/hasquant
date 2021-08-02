@@ -1,1 +1,5 @@
 cobj
+obj
+*.chi
+*.chs.h
+*.hi
