@@ -11,7 +11,7 @@ cobj:
 	mkdir cobj
 
 cobj/libql.a: $(OBJ)
-	ar cr cobj/libql.dll $(OBJ)
+	ar cr cobj/libql.a $(OBJ)
 
 cobj/qlPricingEngineAux.o: ../cbits/qlPricingEngineAux.cpp ../cbits/qlPricingEngineAux.h | cobj
 	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlPricingEngineAux.o ../cbits/qlPricingEngineAux.cpp

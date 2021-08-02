@@ -1,0 +1,52 @@
+#include <ql/settings.hpp>
+
+#include "qlaux.h"
+#include "qlSettings.h"
+
+using namespace QuantLib;
+
+int qlSettingsEvaluationDate() {
+  Date d = Settings::instance().evaluationDate();
+  return d.serialNumber();
+}
+
+int qlSettingsEnforceTodaysHistoricFixings() {
+  return Settings::instance().enforcesTodaysHistoricFixings();
+}
+
+void qlSettingsSetEvaluationDate(int x, char **e) {
+  try {
+    Settings::instance().evaluationDate() = qlNullableDate(x);
+  } catch (std::exception& er) {
+    handleException<void *>(e, er);
+  }
+}
+
+void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
+  Settings::instance().enforcesTodaysHistoricFixings() = x;
+}
+
+int qlSettingsIncludeTodaysCashFlows() {
+  return qlOptBool(Settings::instance().includeTodaysCashFlows());
+}
+
+void qlSettingsSetIncludeTodaysCashFlows(int x) {
+  Settings::instance().includeTodaysCashFlows() = qlOptBool(x);
+}
+
+int qlSettingsIncludeReferenceDateEvents() {
+  return Settings::instance().includeReferenceDateEvents();
+}
+void qlSettingsSetIncludeReferenceDateEvents(int x0) {
+  Settings::instance().includeReferenceDateEvents() = x0;
+}
+
+void *qlSavedSettings() {
+  return new SavedSettings();
+}
+
+void qlFreeSavedSettings(void *settings) {
+  delete (SavedSettings *)settings;
+}
+
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
