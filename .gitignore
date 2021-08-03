@@ -3,3 +3,9 @@ obj
 *.chi
 *.chs.h
 *.hi
+*.o
+Main
+Main.hs
+QuantLib/Time/Date.hs
+QuantLib/Utilities.hs
+_*.hs
