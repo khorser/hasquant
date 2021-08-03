@@ -3,16 +3,18 @@ module QuantLib.Utilities
     version
   , boostVersion
   -- marshalling helpers
-  , calloca
+  , preErrorCheck
   , errorCheck
   , freeString
+  , marshalBool'
+  , unmarshalBool'
   )
 where
 
 import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
-import Foreign.Marshal.Utils(with)
+import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek)
 
 import Control.Exception(throwIO)
@@ -39,7 +41,14 @@ errorCheck p = do
       throwIO $ CPlusPlusException e)
 
 -- like alloca but initializes the allocated pointer with zero
-calloca :: (Ptr (Ptr a) -> IO b) -> IO b
-calloca = with nullPtr
+preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
+preErrorCheck = with nullPtr
+
+marshalBool' :: Maybe Bool -> CInt
+marshalBool' Nothing = -1
+marshalBool' (Just x) = fromBool x
+
+unmarshalBool' :: CInt -> Maybe Bool
+unmarshalBool' x = if x == -1 then Nothing else Just $ toBool x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
