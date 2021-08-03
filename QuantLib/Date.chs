@@ -38,8 +38,8 @@ module QuantLib.Date
 
   , marshalDay'
   , unmarshalDay'
-{-
-    endOfMonth
+
+  , endOfMonth
   , isEndOfMonth
   , nextWeekday
   , nthWeekday
@@ -53,6 +53,7 @@ module QuantLib.Date
   , nextIMMDate
   , nextIMMDate'
 
+{-
   , addPeriod
 
   , addECBDate
@@ -79,6 +80,8 @@ import QuantLib.Types(Error(DateConversion))
 import Foreign.C.Types(CInt)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
+
+import QuantLib.Utility
 
 #include "ql.h"
 
@@ -206,135 +209,57 @@ today = do
 -- |One-based (Jan 1st = 1)
 {#fun qlDateDayOfYear as dayOfYear {marshalDay* `Day'} -> `Int' #}
 
-{-
 -- |last day of the month to which the given date belongs
-endOfMonth :: Day -> Either QLError Day
-endOfMonth x = purifyExceptions $ fromQlDate <$> c_endOfMonth <$> toQlDate x
-
-foreign import ccall safe "ql.h qlDateEndOfMonth"
-  c_endOfMonth :: CDate -> CDate
+{#fun qlDateEndOfMonth as endOfMonth {marshalDay* `Day'} -> `Day' unmarshalDay #}
 
 -- |whether a date is the last day of its month
-isEndOfMonth :: Day -> Either QLError Bool
-isEndOfMonth x = purifyExceptions $ toBool <$> do
-  dd <- toQlDate x
-  return $ c_isEndOfMonth dd
-
-foreign import ccall safe "ql.h qlDateIsEndOfMonth"
-  c_isEndOfMonth :: CDate -> CInt
+{#fun qlDateIsEndOfMonth as isEndOfMonth {marshalDay* `Day'} -> `Bool' #}
 
 -- |next given weekday following or equal to the given date
 -- E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
-nextWeekday :: Day -- ^d
-  -> Weekday -- ^w
-  -> Either QLError Day
-nextWeekday d w = purifyExceptions $ do
-  dd <- toQlDate d
-  ww <- toQlEnum (show $ ''Weekday) w
-  return $ fromQlDate $ c_nextWeekday dd ww
-
-foreign import ccall safe "ql.h qlDateNextWeekday"
-  c_nextWeekday :: CDate -> CInt -> CDate
+{#fun qlDateNextWeekday as nextWeekday {marshalDay* `Day', `Weekday'} -> `Day' unmarshalDay #}
 
 -- |n-th given weekday in the given month and year
 -- E.g., the 4th Thursday of March, 1998 was March 26th, 1998.see http://www.cpearson.com/excel/DateTimeWS.htm
-nthWeekday :: Word -- ^n
-  -> Weekday -- ^w
-  -> Month -- ^m
-  -> Int -- ^y
-  -> Day
-nthWeekday = $(ffiCallPure 'nthWeekday) c_nthWeekday
-
-foreign import ccall safe "ql.h qlDateNthWeekday"
-  c_nthWeekday :: CUInt -> CInt -> CInt -> CInt -> IO CDate
+{#fun qlDateNthWeekday as nthWeekday {fromIntegral `Word', `Weekday', `Month', `Int'} -> `Day' unmarshalDay #}
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
-immCode :: Day -- ^immDate
-  -> Either QLError String
-immCode = $(ffiCallPureX 'immCode) c_immCode
-
-foreign import ccall safe "ql.h qlIMMCode"
-  c_immCode :: CDate -> Ptr CString -> IO CString
+{#fun qlIMMCode as immCode {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
 
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
-immDate :: String -- ^immCode
-  -> Day -- ^referenceDate
-  -> Either QLError Day
-immDate = $(ffiCallPureX 'immDate) c_immDate
+{#fun qlIMMDate as immDate {`String', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
-foreign import ccall safe "ql.h qlIMMDate"
-  c_immDate :: CString -> CDate -> Ptr CString -> IO CDate
+-- |returns whether or not the given string is an IMM code, immCode -> mainCycle -> bool
+{#fun pure qlIMMIsIMMcode as isIMMCode {`String', `Bool'} -> `Bool' #}
 
--- |returns whether or not the given string is an IMM code
-isIMMCode ::String -- ^in
-  -> Bool -- ^mainCycle
-  -> Bool
-isIMMCode = $(ffiCallPure 'isIMMCode) c_isIMMCode
-
-foreign import ccall safe "ql.h qlIMMIsIMMcode"
-  c_isIMMCode :: CString -> CInt -> IO CInt
-
--- |returns whether or not the given date is an IMM date
-isIMMDate :: Day -- ^d
-  -> Bool -- ^mainCycle
-  -> Either QLError Bool
-isIMMDate d b = purifyExceptions $ do
-  dd <- toQlDate d
-  return $ toBool $ c_isIMMDate dd (fromBool b)
-
-foreign import ccall safe "ql.h qlIMMIsIMMdate"
-  c_isIMMDate :: CDate -> CInt -> CInt
+-- |returns whether or not the given date is an IMM date -> mainCycle -> bool
+{#fun qlIMMIsIMMdate as isIMMDate {marshalDay* `Day', `Bool'} -> `Bool' #}
 
 -- |next IMM code following the given code
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-nextIMMCode' :: String -- ^immCode
-  -> Bool -- ^mainCycle
-  -> Day -- ^referenceDate
-  -> Either QLError String
-nextIMMCode' = $(ffiCallPureX 'nextIMMCode') c_nextIMMCode'
-
-foreign import ccall safe "ql.h qlIMMNextCode1"
-  c_nextIMMCode' :: CString -> CInt -> CDate -> Ptr CString -> IO CString
+{#fun qlIMMNextCode1 as nextIMMCode' {`String', `Bool', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-nextIMMCode :: Day -- ^d
-  -> Bool -- ^mainCycle
-  -> String
-nextIMMCode = $(ffiCallPure 'nextIMMCode) c_nextIMMCode
-
-foreign import ccall safe "ql.h qlIMMNextCode"
-  c_nextIMMCode :: CDate -> CInt -> IO CString
+{#fun qlIMMNextCode as nextIMMCode {marshalDay* `Day', `Bool'} -> `String' #}
 
 -- |next IMM date following the given IMM code
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-nextIMMDate' :: String -- ^immCode
-  -> Bool -- ^mainCycle
-  -> Day -- ^referenceDate
-  -> Either QLError Day
-nextIMMDate' = $(ffiCallPureX 'nextIMMDate') c_nextIMMDate'
-
-foreign import ccall safe "ql.h qlIMMNextDate1"
-  c_nextIMMDate' :: CString -> CInt -> CDate -> Ptr CString -> IO CDate
+{#fun qlIMMNextDate1 as nextIMMDate' {`String', `Bool', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
 -- |next IMM date following the given date
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-nextIMMDate :: Day -- ^d
-  -> Bool -- ^mainCycle
-  -> Either QLError Day
-nextIMMDate d b = purifyExceptions $ do
-  dd <- toQlDate d
-  return $ fromQlDate $ c_nextIMMDate dd (fromBool b)
+{#fun qlIMMNextDate as nextIMMDate {marshalDay* `Day', `Bool'} -> `Day' unmarshalDay #}
 
-foreign import ccall safe "ql.h qlIMMNextDate"
-  c_nextIMMDate :: CDate -> CInt -> CDate
-
+{-
 addPeriod :: Day -> (Int, Unit) -> Either QLError Day
 addPeriod = $(ffiCallPureX 'addPeriod) c_addPeriod
 
 foreign import ccall safe "ql.h qlAddPeriod"
   c_addPeriod :: CDate -> CInt -> CInt -> Ptr CString -> IO CDate
+-}
 
+{-
 addECBDate :: Day -- ^d
   -> IO ()
 addECBDate = $(ffiCallX 'addECBDate) c_addECBDate
