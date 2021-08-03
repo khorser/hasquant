@@ -1,8 +1,8 @@
-module QuantLib.Internal.Types
+module QuantLib.Types
   (
     Error(..)
 --  , QLSettings(..)
-  -- re-exporting some popular types
+  -- re-export some popular types
   )
 where
 
@@ -15,9 +15,7 @@ import Data.Time.Calendar(Day)
 --  , includeTodaysCashFlows :: Bool
 --  , includeReferenceDateEvents :: Bool}
 
-data Error = CPlusPlusException String
-  | DateConversion Day
-  deriving (Show)
+data Error = CPlusPlusException String | DateConversion Day deriving Show
 
 instance Exception Error
 
