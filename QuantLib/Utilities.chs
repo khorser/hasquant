@@ -2,10 +2,16 @@ module QuantLib.Utilities
   (
     version
   , boostVersion
+
+  , nullInteger
+  , nullReal
+  , epsilon
+
   -- marshalling helpers
   , preErrorCheck
   , errorCheck
   , freeString
+
   , marshalBool'
   , unmarshalBool'
   )
@@ -50,5 +56,11 @@ marshalBool' (Just x) = fromBool x
 
 unmarshalBool' :: CInt -> Maybe Bool
 unmarshalBool' x = if x == -1 then Nothing else Just $ toBool x
+
+{#fun pure qlNullInteger as nullInteger {} -> `Int' #}
+
+{#fun pure qlNullReal as nullReal {} -> `Double' #}
+
+{#fun pure qlEpsilon as epsilon {} -> `Double' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
