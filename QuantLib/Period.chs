@@ -1,18 +1,29 @@
 module QuantLib.Period
   (
-{-
     fromFrequency
+{-
   , toFrequency
   , parse
   , addPeriods
   , dividePeriod
   , periodsLT
   , normalize
-
-  ,-} TimeUnit(..)
+-}
+  , TimeUnit(..)
   , Frequency(..)
+  , marshalPeriod
+  , unmarshalPeriod
   )
 where
+
+import Foreign.C.Types(CInt)
+import Foreign.Ptr(Ptr)
+import Foreign.Storable(peek)
+import Foreign.Marshal.Alloc(alloca)
+
+import Control.Monad(liftM)
+
+import QuantLib.Utility
 
 #include "ql.h"
 
@@ -22,28 +33,15 @@ where
 
 {#enum Frequency {} deriving(Show, Eq) #}
 
-{-
-unmarshalPeriod :: (Ptr CInt -> Ptr CString -> IO CInt) -> IO (Int, Unit)
-unmarshalPeriod f = do
-  (p1, p2) <- getIntPair f
-  e <- fromQlEnum (show ''Unit) p2
-  return (p1, e)
-
-foreign import ccall safe "ql.h qlPeriodFromFrequency1"
-  c_fromFrequency :: CInt -> Ptr CInt -> Ptr CString -> IO CInt
+unitOut :: Ptr CInt -> IO TimeUnit
+unitOut x = peek x >>= return . toEnum . fromIntegral
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
-fromFrequency :: F.Frequency -> Either QLError (Int, Unit)
-fromFrequency f = purifyExceptions $ do
-  e <- toQlEnum (show ''F.Frequency) f
-  unmarshalPeriod $ c_fromFrequency e
+{#fun qlPeriodFromFrequency1 as fromFrequency {`Frequency', alloca- `TimeUnit' unitOut*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
-foreign import ccall safe "ql.h qlPeriodToFrequency1"
-  c_toFrequency :: CInt -> CInt -> Ptr CString -> IO CInt
-
+{-
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
 toFrequency :: (Int, Unit) -> Either QLError F.Frequency
-{-# NOINLINE toFrequency #-}
 toFrequency = $(ffiCallPureX 'toFrequency) c_toFrequency
 
 parse :: String -> Either QLError (Int, Unit)
@@ -70,7 +68,6 @@ foreign import ccall safe "ql.h qlPeriodDivide1"
   c_dividePeriod :: CInt -> CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 
 periodsLT :: (Int, Unit) -> (Int, Unit) -> Either QLError Bool
-{-# NOINLINE periodsLT #-}
 periodsLT = $(ffiCallPureX 'periodsLT) c_periodsLT
 
 foreign import ccall safe "ql.h qlPeriodsLT1"
@@ -84,5 +81,11 @@ normalize (n1, u1) = purifyExceptions $ do
 foreign import ccall safe "ql.h qlPeriodNormalize1"
   c_normalize :: CInt -> CInt -> Ptr CInt -> Ptr CString -> IO CInt
 -}
+
+marshalPeriod :: (Int, TimeUnit) -> (CInt, CInt)
+marshalPeriod (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
+
+unmarshalPeriod :: (CInt, CInt) -> (Int, TimeUnit)
+unmarshalPeriod (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -14,6 +14,7 @@ module QuantLib.Utility
 
   , marshalBool'
   , unmarshalBool'
+  , deallocateString
   )
 where
 
@@ -22,10 +23,8 @@ import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek)
-
 import Control.Exception(throwIO)
 import Control.Monad(when)
-
 import QuantLib.Types(Error(CPlusPlusException))
 
 #include "ql.h"
@@ -56,6 +55,12 @@ marshalBool' (Just x) = fromBool x
 
 unmarshalBool' :: CInt -> Maybe Bool
 unmarshalBool' x = if x == -1 then Nothing else Just $ toBool x
+
+deallocateString :: CString -> IO String
+deallocateString x = do
+  s <- peekCString x
+  freeString x
+  return s
 
 {#fun pure qlNullInteger as nullInteger {} -> `Int' #}
 

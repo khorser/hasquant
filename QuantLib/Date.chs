@@ -53,9 +53,9 @@ module QuantLib.Date
   , nextIMMDate
   , nextIMMDate'
 
-{-
   , addPeriod
 
+{-
   , addECBDate
   , ecbCode
   , ecbDate'
@@ -82,6 +82,7 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
 import QuantLib.Utility
+import QuantLib.Period
 
 #include "ql.h"
 
@@ -224,7 +225,7 @@ today = do
 {#fun qlDateNthWeekday as nthWeekday {fromIntegral `Word', `Weekday', `Month', `Int'} -> `Day' unmarshalDay #}
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
-{#fun qlIMMCode as immCode {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
+{#fun qlIMMCode as immCode {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' deallocateString* #}
 
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
 {#fun qlIMMDate as immDate {`String', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
@@ -237,11 +238,11 @@ today = do
 
 -- |next IMM code following the given code
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode1 as nextIMMCode' {`String', `Bool', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
+{#fun qlIMMNextCode1 as nextIMMCode' {`String', `Bool', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' deallocateString* #}
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode as nextIMMCode {marshalDay* `Day', `Bool'} -> `String' #}
+{#fun qlIMMNextCode as nextIMMCode {marshalDay* `Day', `Bool'} -> `String' deallocateString* #}
 
 -- |next IMM date following the given IMM code
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
@@ -251,13 +252,7 @@ today = do
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 {#fun qlIMMNextDate as nextIMMDate {marshalDay* `Day', `Bool'} -> `Day' unmarshalDay #}
 
-{-
-addPeriod :: Day -> (Int, Unit) -> Either QLError Day
-addPeriod = $(ffiCallPureX 'addPeriod) c_addPeriod
-
-foreign import ccall safe "ql.h qlAddPeriod"
-  c_addPeriod :: CDate -> CInt -> CInt -> Ptr CString -> IO CDate
--}
+{#fun qlAddPeriod as addPeriod {marshalDay* `Day', marshalPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
 {-
 addECBDate :: Day -- ^d
