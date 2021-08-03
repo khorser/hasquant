@@ -1,4 +1,4 @@
-module QuantLib.Utilities
+module QuantLib.Utility
   (
     version
   , boostVersion

@@ -6,7 +6,8 @@ obj
 *.o
 Main
 Main.hs
-QuantLib/Time/Date.hs
-QuantLib/Utilities.hs
+QuantLib/Date.hs
+QuantLib/Period.hs
+QuantLib/Utility.hs
 QuantLib/Settings.hs
 _*.hs

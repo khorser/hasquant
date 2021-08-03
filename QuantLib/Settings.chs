@@ -22,8 +22,8 @@ import System.Mem(performGC)
 
 import Control.Exception(bracket)
 
-import QuantLib.Time.Date
-import QuantLib.Utilities
+import QuantLib.Date
+import QuantLib.Utility
 
 #include "ql.h"
 
