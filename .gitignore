@@ -8,4 +8,5 @@ Main
 Main.hs
 QuantLib/Time/Date.hs
 QuantLib/Utilities.hs
+QuantLib/Settings.hs
 _*.hs

@@ -28,6 +28,12 @@ module QuantLib.Time.Date
   , december
 
   , dayOfYear
+
+  , marshalDay
+  , unmarshalDay
+
+  , marshalDay'
+  , unmarshalDay'
   )
 where
 
@@ -130,10 +136,24 @@ minDate = fromSerial minDateSerialNumber
 maxDate :: Day
 maxDate = fromSerial maxDateSerialNumber
 
-marshalDate :: Day -> (CInt -> IO a) -> IO a
-marshalDate x f = toSerial x >>= f . fromIntegral
+marshalDay :: Day -> (CInt -> IO a) -> IO a
+marshalDay x f = toSerial x >>= f . fromIntegral
 
-{#fun qlWeekday as weekday {marshalDate* `Day'} -> `Weekday' #}
+unmarshalDay :: CInt -> Day
+unmarshalDay = fromSerial . fromIntegral
+
+marshalDay' :: Maybe Day -> (CInt -> IO a) -> IO a
+marshalDay' Nothing f = f 0
+marshalDay' (Just x) f = marshalDay x f
+
+unmarshalDay' :: Int -> Maybe Day
+unmarshalDay' 0 = Nothing
+unmarshalDay' x = Just $ fromSerial x
+
+--withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
+--withDays = withArrayULenTIO toSerial
+
+{#fun qlWeekday as weekday {marshalDay* `Day'} -> `Weekday' #}
 
 today :: IO Day
 today = do
@@ -141,6 +161,6 @@ today = do
   tz <- getTimeZone now
   return $ localDay $ utcToLocalTime tz now
 
-{#fun qlDateDayOfYear as dayOfYear {marshalDate* `Day'} -> `Int' #}
+{#fun qlDateDayOfYear as dayOfYear {marshalDay* `Day'} -> `Int' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
