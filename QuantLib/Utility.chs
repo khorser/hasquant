@@ -14,7 +14,9 @@ module QuantLib.Utility
 
   , marshalBool'
   , unmarshalBool'
-  , deallocateString
+  , unmarshalDynamicString
+  , unmarshalEnumByRef
+  , minEnumByRef
   )
 where
 
@@ -22,7 +24,9 @@ import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
-import Foreign.Storable(peek)
+import Foreign.Storable(peek, poke, Storable)
+import Foreign.Marshal.Alloc(alloca)
+
 import Control.Exception(throwIO)
 import Control.Monad(when)
 import QuantLib.Types(Error(CPlusPlusException))
@@ -56,16 +60,23 @@ marshalBool' (Just x) = fromBool x
 unmarshalBool' :: CInt -> Maybe Bool
 unmarshalBool' x = if x == -1 then Nothing else Just $ toBool x
 
-deallocateString :: CString -> IO String
-deallocateString x = do
-  s <- peekCString x
-  freeString x
-  return s
+throughOne :: (Monad m) => a -> (a -> m b) -> (a -> m d) -> m b
+throughOne x f g = do {v <- f x; _ <- g x; return v}
+
+unmarshalDynamicString :: CString -> IO String
+unmarshalDynamicString x = throughOne x peekCString freeString
 
 {#fun pure qlNullInteger as nullInteger {} -> `Int' #}
 
 {#fun pure qlNullReal as nullReal {} -> `Double' #}
 
 {#fun pure qlEpsilon as epsilon {} -> `Double' #}
+
+unmarshalEnumByRef :: (Enum a) => Ptr CInt -> IO a
+unmarshalEnumByRef x = peek x >>= return . toEnum . fromIntegral
+
+-- initialize pointer to a enum with a valid value before passing it to the function
+minEnumByRef :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
+minEnumByRef f = alloca $ \x -> poke x minBound >> f x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

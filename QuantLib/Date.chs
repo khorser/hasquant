@@ -82,21 +82,21 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
 import QuantLib.Utility
-import QuantLib.Period
+import QuantLib.Period(marshalPeriod, TimeUnit)
 
 #include "ql.h"
 
 #include "qlEnum.h"
 
-{#enum Month {} deriving(Show, Eq) #}
+{#enum Month {} deriving(Show, Eq, Bounded) #}
 
-{#enum Weekday {} deriving(Show, Eq) #}
+{#enum Weekday {} deriving(Show, Eq, Bounded) #}
 
-{#enum BusinessDayConvention {} deriving(Show, Eq) #}
+{#enum BusinessDayConvention {} deriving(Show, Eq, Bounded) #}
 
-{#enum Rule as DateGenerationRule {} deriving(Show, Eq) #}
+{#enum Rule as DateGenerationRule {} deriving(Show, Eq, Bounded) #}
 
-{#enum ImmMonth {} deriving(Show, Eq) #}
+{#enum ImmMonth {} deriving(Show, Eq, Bounded) #}
 
 {#fun pure qlMinYear as minYear {} -> `Int' #}
 
@@ -225,7 +225,7 @@ today = do
 {#fun qlDateNthWeekday as nthWeekday {fromIntegral `Word', `Weekday', `Month', `Int'} -> `Day' unmarshalDay #}
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
-{#fun qlIMMCode as immCode {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' deallocateString* #}
+{#fun qlIMMCode as immCode {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' unmarshalDynamicString* #}
 
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
 {#fun qlIMMDate as immDate {`String', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
@@ -238,11 +238,11 @@ today = do
 
 -- |next IMM code following the given code
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode1 as nextIMMCode' {`String', `Bool', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' deallocateString* #}
+{#fun qlIMMNextCode1 as nextIMMCode' {`String', `Bool', marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' unmarshalDynamicString* #}
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode as nextIMMCode {marshalDay* `Day', `Bool'} -> `String' deallocateString* #}
+{#fun qlIMMNextCode as nextIMMCode {marshalDay* `Day', `Bool'} -> `String' unmarshalDynamicString* #}
 
 -- |next IMM date following the given IMM code
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
@@ -254,95 +254,44 @@ today = do
 
 {#fun qlAddPeriod as addPeriod {marshalDay* `Day', marshalPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
-{-
-addECBDate :: Day -- ^d
-  -> IO ()
-addECBDate = $(ffiCallX 'addECBDate) c_addECBDate
+{#fun qlECBAddDate as addECBDate {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 
-foreign import ccall safe "ql.h qlECBAddDate"
-  c_addECBDate :: CDate -> Ptr CString -> IO ()
-
--- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).WarningIt raises an exception if the input date is not an ECB date
-ecbCode :: Day -- ^ecbDate
-  -> IO String
-ecbCode = $(ffiCallX 'ecbCode) c_ecbCode
-
-foreign import ccall safe "ql.h qlECBCode"
-  c_ecbCode :: CDate -> Ptr CString -> IO CString
+-- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).Warning It raises an exception if the input date is not an ECB date
+{#fun qlECBCode as ecbCode {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' unmarshalDynamicString* #}
 
 -- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
-ecbDate' :: String -- ^ecbCode
-  -> Maybe Day -- ^referenceDate
-  -> IO Day
-ecbDate' = $(ffiCallX 'ecbDate') c_ecbDate'
-
-foreign import ccall safe "ql.h qlECBDate1"
-  c_ecbDate' :: CString -> CDate -> Ptr CString -> IO CDate
+{#fun qlECBDate1 as ecbDate' {`String', marshalDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
 -- |maintenance period start date in the given month/year
-ecbDate :: Month -- ^m
-  -> Int -- ^y
-  -> IO Day
-ecbDate = $(ffiCallX 'ecbDate) c_ecbDate
-
-foreign import ccall safe "ql.h qlECBDate"
-  c_ecbDate :: CInt -> CInt -> Ptr CString -> IO CDate
+{#fun qlECBDate as ecbDate {`Month', `Int', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
 -- |returns whether or not the given string is an ECB code
-isECBCode :: String -- ^in
-  -> IO Bool
-isECBCode = $(ffiCallX 'isECBCode) c_isECBCode
-
-foreign import ccall safe "ql.h qlECBIsECBcode"
-  c_isECBCode :: CString -> Ptr CString -> IO CInt
+{#fun qlECBIsECBcode as isECBCode {`String', preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
 -- |returns whether or not the given date is a maintenance period start date
-isECBDate :: Day -- ^d
-  -> IO Bool
-isECBDate = $(ffiCallX 'isECBDate) c_isECBDate
+{#fun qlECBIsECBdate as isECBDate {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
-foreign import ccall safe "ql.h qlECBIsECBdate"
-  c_isECBDate :: CDate -> Ptr CString -> IO CInt
-
+{-
 knownECBDates :: IO [Day]
 knownECBDates = map fromQlDate <$> getArrayX c_knownECBDates
 
 foreign import ccall safe "ql.h qlECBKnownDates"
   c_knownECBDates :: Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
+-}
 
 -- |next ECB code following the given code
-nextECBCode' :: String -- ^ecbCode
-  -> IO String
-nextECBCode' = $(ffiCallX 'nextECBCode') c_nextECBCode'
-
-foreign import ccall safe "ql.h qlECBNextCode1"
-  c_nextECBCode' :: CString -> Ptr CString -> IO CString
+{#fun qlECBNextCode1 as nextECBCode' {`String', preErrorCheck- `String' errorCheck*-} -> `String' #}
 
 -- |next ECB code following the given date
-nextECBCode :: Maybe Day -- ^d
-  -> IO String
-nextECBCode = $(ffiCallX 'nextECBCode) c_nextECBCode
-
-foreign import ccall safe "ql.h qlECBNextCode"
-  c_nextECBCode :: CDate -> Ptr CString -> IO CString
+{#fun qlECBNextCode as nextECBCode {marshalDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
 
 -- |next maintenance period start date following the given ECB code
-nextECBDate' :: String -- ^ecbCode
-  -> Maybe Day -- ^referenceDate
-  -> IO Day
-nextECBDate' = $(ffiCallX 'nextECBDate') c_nextECBDate'
-
-foreign import ccall safe "ql.h qlECBNextDate1"
-  c_nextECBDate' :: CString -> CDate -> Ptr CString -> IO CDate
+{#fun qlECBNextDate1 as nextECBDate'{`String', marshalDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
 -- |next maintenance period start date following the given date
-nextECBDate :: Maybe Day -- ^d
-  -> IO Day
-nextECBDate = $(ffiCallX 'nextECBDate) c_nextECBDate
+{#fun qlECBNextDate as nextECBDate {marshalDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' unmarshalDay #}
 
-foreign import ccall safe "ql.h qlECBNextDate"
-  c_nextECBDate :: CDate -> Ptr CString -> IO CDate
-
+{-
 -- |next maintenance period start dates following the given code
 nextECBDates' :: String -- ^ecbCode
   -> Maybe Day -- ^referenceDate
@@ -362,13 +311,8 @@ nextECBDates d = map fromQlDate <$> do
 
 foreign import ccall safe "ql.h qlECBNextDates"
   c_nextECBDates :: CDate -> Ptr CUInt -> Ptr CString -> IO(Ptr CDate)
-
-removeECBDate :: Day -- ^d
-  -> IO ()
-removeECBDate = $(ffiCallX 'removeECBDate) c_removeECBDate
-
-foreign import ccall safe "ql.h qlECBRemoveDate"
-  c_removeECBDate :: CDate -> Ptr CString -> IO ()
 -}
+
+{#fun qlECBRemoveDate as removeECBDate {marshalDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
