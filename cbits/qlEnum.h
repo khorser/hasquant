@@ -1,4 +1,4 @@
-//ql/time/weekday.hpp
+// time/weekday.hpp
 enum Weekday { Sunday    = 1,
   Monday    = 2,
   Tuesday   = 3,
@@ -15,7 +15,7 @@ enum Weekday { Sunday    = 1,
   Sat = 7
 };
 
-//ql/time/date.hpp
+// time/date.hpp
 enum Month { January   = 1,
   February  = 2,
   March     = 3,
@@ -41,7 +41,7 @@ enum Month { January   = 1,
   Dec = 12
 };
 
-//ql/time/businessdayconvention.hpp
+// time/businessdayconvention.hpp
 enum BusinessDayConvention {
   // ISDA
   Following,                   /*!< Choose the first business day after
@@ -73,7 +73,7 @@ enum BusinessDayConvention {
                                  to following business day. */
 };
 
-//ql/time/dategenerationrule.hpp
+// time/dategenerationrule.hpp
 enum Rule {
   Backward,       /*!< Backward from termination date to
                     effective date. */
@@ -102,7 +102,7 @@ enum Rule {
                      December 20th, 2015.  */
 };
 
-//ql/time/timeunit.hpp
+// time/timeunit.hpp
 enum TimeUnit { Days,
   Weeks,
   Months,
@@ -114,7 +114,7 @@ enum TimeUnit { Days,
   Microseconds
 };
 
-//ql/time/frequency.hpp
+// time/frequency.hpp
 enum Frequency { NoFrequency = -1,     //!< null frequency
   Once = 0,             //!< only once, e.g., a zero-coupon
   Annual = 1,           //!< once a year
@@ -130,11 +130,199 @@ enum Frequency { NoFrequency = -1,     //!< null frequency
   OtherFrequency = 999  //!< some other unknown frequency
 };
 
-//ql/time/imm.hpp, renamed Month to ImmMonth
+// time/imm.hpp
 enum ImmMonth { F =  1, G =  2, H =  3,
   J =  4, K =  5, M =  6,
   N =  7, Q =  8, U =  9,
   V = 10, X = 11, Z = 12 };
 
+// cashflows/duration.hpp
+enum DurationType { Simple, Macaulay, Modified };
+
+// time/calendars/jointcalendar.hpp
+enum JointCalendarRule { JoinHolidays,    /*!< A date is a holiday
+                                            for the joint calendar
+                                            if it is a holiday
+                                            for any of the given
+                                            calendars */
+  JoinBusinessDays /*!< A date is a business day
+                     for the joint calendar
+                     if it is a business day
+                     for any of the given
+                     calendars */
+};
+
+// prices.hpp
+enum PriceType {
+  Bid,          /*!< Bid price. */
+  Ask,          /*!< Ask price. */
+  Last,         /*!< Last price. */
+  Close,        /*!< Close price. */
+  Mid,          /*!< Mid price, calculated as the arithmetic
+                  average of bid and ask prices. */
+  MidEquivalent, /*!< Mid equivalent price, calculated as
+                   a) the arithmetic average of bid and ask prices
+                   when both are available; b) either the bid or the
+                   ask price if any of them is available;
+                   c) the last price; or d) the close price. */
+  MidSafe       /*!< Safe Mid price, returns the mid price only if
+                  both bid and ask are available. */
+};
+
+// prices.hpp
+enum IntervalPriceType { Open, Close, High, Low };
+
+// experimental/fx/deltavolquote.hpp
+enum DeltaType {
+  Spot,        // Spot Delta, e.g. usual Black Scholes delta
+  Fwd,         // Forward Delta
+  PaSpot,      // Premium Adjusted Spot Delta
+  PaFwd        // Premium Adjusted Forward Delta
+};
+
+// experimental/fx/deltavolquote.hpp
+enum AtmType {
+  AtmNull,         // Default, if not an atm quote
+  AtmSpot,         // K=S_0
+  AtmFwd,          // K=F
+  AtmDeltaNeutral, // Call Delta = Put Delta
+  AtmVegaMax,      // K such that Vega is Maximum
+  AtmGammaMax,     // K such that Gamma is Maximum
+  AtmPutCall50     // K such that Call Delta=0.50 (only for Fwd Delta)
+};
+
+// models/calibrationhelper.hpp
+enum CalibrationErrorType {
+  RelativePriceError, PriceError, ImpliedVolError};
+
+// cashflows/duration.hpp
+enum DurationType { Simple, Macaulay, Modified };
+
+// money.hpp
+enum MoneyConversionType {
+  NoConversion,           /*!< do not perform conversions */
+  BaseCurrencyConversion, /*!< convert both operands to
+                            the base currency before
+                            converting */
+  AutomatedConversion     /*!< return the result in the
+                            currency of the first
+                            operand */
+};
+
+// exercise.hpp
+enum ExerciseType { American, Bermudan, European };
+
+// position.hpp
+enum PositionType { Long, Short };
+
+// instruments/swaption.hpp
+enum SettlementType { Physical, Cash };
+
+// instruments/swaption.hpp
+enum SettlementMethod {
+  PhysicalOTC,
+  PhysicalCleared,
+  CollateralizedCashPrice,
+  ParYieldCurve
+};
+
+// instruments/callabilityschedule.hpp
+enum CallabilityType { Call, Put };
+
+// instruments/bond.hpp
+enum BondPriceType { Dirty, Clean };
+
+// option.hpp
+enum OptionType { Put = -1, Call = 1 };
+
+// instruments/barriertype.hpp
+enum BarrierType { DownIn, UpIn, DownOut, UpOut };
+
+// instruments/swap.hpp
+enum SwapType { Receiver = -1, Payer = 1 };
+
+// compounding.hpp
+enum Compounding { Simple = 0,          //!< \f$ 1+rt \f$
+  Compounded = 1,      //!< \f$ (1+r)^t \f$
+  Continuous = 2,      //!< \f$ e^{rt} \f$
+  SimpleThenCompounded, //!< Simple up to the first period then Compounded
+  CompoundedThenSimple //!< Compounded up to the first period then Simple
+};
+
+// instruments/averagetype.hpp
+enum AverageType { Arithmetic, Geometric };
+
+// cashflows/rateaveraging.hpp
+enum RateAveragingType {
+  Simple,  /*!< Under the simple convention the amount of
+             interest is calculated by applying the
+             sub-rate to the principal, and the payment
+             due at the end of the period is the sum of
+             those amounts. */
+  Compound /*!< Under the compound convention, the
+             additional amount of interest owed each
+             period is calculated by applying the rate
+             both to the principal and the accumulated
+             unpaid interest. */
+};
+
+// instruments/creditdefaultswap.hpp
+enum PricingModel {
+  Midpoint,
+  ISDA
+};
+
+// default.hpp
+enum ProtectionSide { Buyer, Seller };
+
+// experimental/credit/defaulttype.hpp
+enum Seniority {
+  SecDom = 0,
+  SnrFor,
+  SubLT2,
+  JrSubT2,
+  PrefT1,
+  // Unassigned value, allows for default RR quote
+  NoSeniority,
+  // markit parlance
+  SeniorSec     = SecDom,
+  SeniorUnSec   = SnrFor,
+  SubTier1      = PrefT1,
+  SubUpperTier2 = JrSubT2,
+  SubLoweTier2  = SubLT2
+};
+
+// experimental/credit/defaulttype.hpp
+enum AtomicDefaultType {
+  // Includes one of the restructuring cases
+  Restructuring = 0,
+  Bankruptcy,
+  FailureToPay,
+  RepudiationMoratorium,
+  Acceleration,
+  Default,
+  // synonyms
+  ObligationAcceleration = Acceleration,
+  ObligationDefault = Default,
+  CrossDefault = Default,
+  // Other non-isda
+  Downgrade,   // Non-ISDA, not in FpML
+  MergerEvent  // Non-ISDA, not in FpML
+};
+
+
+// experimental/credit/defaulttype.hpp
+enum RestructuringType {
+  NoRestructuring = 0,
+  ModifiedRestructuring,
+  ModifiedModifiedRestructuring,
+  FullRestructuring,
+  AnyRestructuring,
+  // Markit notation:
+  XR = NoRestructuring,
+  MR = ModifiedRestructuring,
+  MM = ModifiedModifiedRestructuring,
+  CR = FullRestructuring
+};
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

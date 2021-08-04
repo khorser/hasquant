@@ -1,15 +1,14 @@
 module QuantLib.Types
   (
     Error(..)
---  , QLSettings(..)
-  -- re-export some popular types
+--  , Settings(..)
   )
 where
 
 import Control.Exception(Exception)
 import Data.Time.Calendar(Day)
 
---data QLSettings = QLSettings {
+--data Settings = Settings {
 --    evaluationDate :: Day
 --  , enforceTodaysHistoricFixings :: Bool
 --  , includeTodaysCashFlows :: Bool

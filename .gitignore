@@ -10,4 +10,10 @@ QuantLib/Date.hs
 QuantLib/Period.hs
 QuantLib/Utility.hs
 QuantLib/Settings.hs
+QuantLib/Instrument.hs
+QuantLib/CashFlow/Leg.hs
+QuantLib/Model.hs
+QuantLib/Calendar.hs
+QuantLib/Currency.hs
+QuantLib/Quote.hs
 _*.hs
