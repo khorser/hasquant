@@ -73,10 +73,7 @@ module QuantLib.Date
 where
 
 import Foreign.C.Types(CInt, CUInt)
-import Foreign.Ptr(Ptr, nullPtr)
-import Foreign.Marshal.Array(peekArray)
-import Foreign.Marshal.Utils(with)
-import Foreign.Storable(peek)
+import Foreign.Ptr(Ptr)
 
 import Control.Exception(throwIO)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, toGregorian, isLeapYear, fromGregorian)
@@ -271,22 +268,10 @@ today = do
 -- |returns whether or not the given date is a maintenance period start date
 {#fun qlECBIsECBdate as isECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
-preDays :: ((Ptr CUInt, Ptr (Ptr CInt)) -> IO a) -> IO a
-preDays f = with 0 $
-  \x -> with nullPtr $
-    \y -> f (x, y)
+peekDayArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
+peekDayArray = peekIntArray (fromSerial . fromIntegral)
 
-foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
-
-peekDays :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
-peekDays pl pp = do
-  l <- peek pl
-  p <- peek pp
-  a <- peekArray (fromIntegral l) p
-  c_freeInts p
-  return $ map (fromSerial . fromIntegral) a
-
-{#fun qlECBKnownDates as knownECBDates {preDays- `[Day]'& peekDays*, preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlECBKnownDates as knownECBDates {preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- |next ECB code following the given code
 {#fun qlECBNextCode1 as nextECBCode' {`String', preErrorCheck- `String' errorCheck*-} -> `String' #}
@@ -301,9 +286,9 @@ peekDays pl pp = do
 {#fun qlECBNextDate as nextECBDate {fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
 -- |next maintenance period start dates following the given code
-{#fun qlECBNextDates1 as nextECBDates' {`String', fromDay'* `Maybe Day', preDays- `[Day]'& peekDays*, preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlECBNextDates1 as nextECBDates' {`String', fromDay'* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
-{#fun qlECBNextDates as nextECBDates {fromDay'* `Maybe Day', preDays- `[Day]'& peekDays*, preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlECBNextDates as nextECBDates {fromDay'* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 {#fun qlECBRemoveDate as removeECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 

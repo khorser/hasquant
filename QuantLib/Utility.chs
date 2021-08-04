@@ -16,12 +16,15 @@ module QuantLib.Utility
   , peekDynString
   , peekEnum
   , preEnum
+  , preArray
+  , peekIntArray
   )
 where
 
 import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.Marshal.Array(peekArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
 
@@ -83,8 +86,17 @@ foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
 foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
-preIntArray = undefined
+preArray :: ((Ptr CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+preArray f = with 0 $
+  \x -> with nullPtr $
+    \y -> f (x, y)
 
-peekIntArray = undefined
+peekIntArray :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
+peekIntArray f pl pp = do
+  l <- peek pl
+  p <- peek pp
+  a <- peekArray (fromIntegral l) p
+  c_freeInts p
+  return $ map f a
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
