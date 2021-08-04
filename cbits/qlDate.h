@@ -30,13 +30,13 @@ extern "C" {
   int qlECBDate(int m, int y, char **e);
   int qlECBIsECBcode(char* in, char **e);
   int qlECBIsECBdate(int d, char **e);
-  int* qlECBKnownDates(unsigned *count, char **e);
+  void qlECBKnownDates(unsigned *count, int **ds, char **e);
   char* qlECBNextCode1(char* ecbCode, char **e);
   char* qlECBNextCode(int d, char **e);
   int qlECBNextDate1(char* ecbCode, int referenceDate, char **e);
   int qlECBNextDate(int d, char **e);
-  int* qlECBNextDates(int d, unsigned *count, char **e);
-  int* qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, char **e);
+  void qlECBNextDates(int d, unsigned *count, int **ds, char **e);
+  void qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, int **ds, char **e);
   void qlECBRemoveDate(int d, char **e);
 #ifdef __cplusplus
 }

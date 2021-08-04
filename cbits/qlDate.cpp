@@ -144,16 +144,15 @@ int qlECBIsECBdate(int d, char **e) {
     return handleException<int>(e, er);
   }
 }
-int* qlECBKnownDates(unsigned *count, char **e) {
+void qlECBKnownDates(unsigned *count, int **ds, char **e) {
   try {
     const std::set<Date> &dates = ECB::knownDates();
     *count = dates.size();
-    int *days = qlAllocateInts(*count);
-    std::transform(dates.begin(), dates.end(), days,
+    *ds = qlAllocateInts(*count);
+    std::transform(dates.begin(), dates.end(), *ds,
         std::mem_fun_ref(&Date::serialNumber));
-    return days;
   } catch (std::exception& er) {
-    return handleException<int*>(e, er);
+    (void)handleException<int>(e, er);
   }
 }
 char* qlECBNextCode1(char* ecbCode, char **e) {
@@ -184,28 +183,26 @@ int qlECBNextDate(int d, char **e) {
     return handleException<int>(e, er);
   }
 }
-int* qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, char **e) {
+void qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, int **ds, char **e) {
   try {
     const std::vector<Date> &dates = ECB::nextDates(ecbCode, qlNullableDate(referenceDate));
     *count = dates.size();
-    int *days = qlAllocateInts(*count);
-    std::transform(dates.begin(), dates.end(), days,
+    *ds = qlAllocateInts(*count);
+    std::transform(dates.begin(), dates.end(), *ds,
         std::mem_fun_ref(&Date::serialNumber));
-    return days;
   } catch (std::exception& er) {
-    return handleException<int*>(e, er);
+    (void)handleException<int*>(e, er);
   }
 }
-int* qlECBNextDates(int d, unsigned *count, char **e) {
+void qlECBNextDates(int d, unsigned *count, int **ds, char **e) {
   try {
     const std::vector<Date> &dates = ECB::nextDates(qlNullableDate(d));
     *count = dates.size();
-    int *days = qlAllocateInts(*count);
-    std::transform(dates.begin(), dates.end(), days,
+    *ds = qlAllocateInts(*count);
+    std::transform(dates.begin(), dates.end(), *ds,
         std::mem_fun_ref(&Date::serialNumber));
-    return days;
   } catch (std::exception& er) {
-    return handleException<int*>(e, er);
+    (void)handleException<int*>(e, er);
   }
 }
 void qlECBRemoveDate(int d, char **e) {

@@ -6,10 +6,10 @@ extern "C" {
 
   int qlPeriodParserParse1(char* str, int *u, char **e);
 
-  int qlPeriodAdd1(int, int u, int, int u, int *u, char **e);
-  int qlPeriodDivide1(int, int u, int n, int *u, char **e);
-  int qlPeriodNormalize1(int, int, int *, char **e);
-  int qlPeriodsLT1(int, int, int, int, char **e);
+  int qlPeriodAdd1(int, int u1, int, int u2, int *u, char **e);
+  int qlPeriodDivide1(int, int u1, int n2, int *u, char **e);
+  int qlPeriodNormalize1(int, int u, int *, char **e);
+  int qlPeriodsLT1(int, int u1, int, int u2, char **e);
 #ifdef __cplusplus
 }
 #endif
