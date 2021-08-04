@@ -16,8 +16,6 @@ module QuantLib.Utility
   , peekDynString
   , peekEnum
   , preEnum
-  , preNum
-  , marshalIntArray
   )
 where
 
@@ -85,7 +83,8 @@ foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
 foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
-marshalIntArray :: Ptr CInt -> IO (Ptr CInt)
-marshalIntArray = undefined
+preIntArray = undefined
+
+peekIntArray = undefined
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

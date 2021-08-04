@@ -61,19 +61,22 @@ module QuantLib.Date
   , ecbDate
   , isECBCode
   , isECBDate
---  , knownECBDates
+  , knownECBDates
   , nextECBCode'
   , nextECBCode
   , nextECBDate'
   , nextECBDate
---  , nextECBDates'
---  , nextECBDates
+  , nextECBDates'
+  , nextECBDates
   , removeECBDate
   )
 where
 
-import Foreign.C.Types(CInt)
-import Foreign.Ptr(Ptr)
+import Foreign.C.Types(CInt, CUInt)
+import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.Marshal.Array(peekArray)
+import Foreign.Marshal.Utils(with)
+import Foreign.Storable(peek)
 
 import Control.Exception(throwIO)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, toGregorian, isLeapYear, fromGregorian)
@@ -196,9 +199,6 @@ toDay' :: Int -> Maybe Day
 toDay' 0 = Nothing
 toDay' x = Just $ fromSerial x
 
---withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
---withDays = withArrayULenTIO toSerial
-
 {#fun qlWeekday as weekday {fromDay* `Day'} -> `Weekday' #}
 
 today :: IO Day
@@ -271,14 +271,22 @@ today = do
 -- |returns whether or not the given date is a maintenance period start date
 {#fun qlECBIsECBdate as isECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
---{#fun qlECBKnownDates as knownECBDates {preNum- `Int' peek, preErrorCheck- `String' errorCheck*-} -> `Ptr CInt' marshalIntArray* #}
-{-
-knownECBDates :: IO [Day]
-knownECBDates = map fromQlDate <$> getArrayX c_knownECBDates
+preDays :: ((Ptr CUInt, Ptr (Ptr CInt)) -> IO a) -> IO a
+preDays f = with 0 $
+  \x -> with nullPtr $
+    \y -> f (x, y)
 
-foreign import ccall safe "ql.h qlECBKnownDates"
-  c_knownECBDates :: Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
--}
+foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
+
+peekDays :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
+peekDays pl pp = do
+  l <- peek pl
+  p <- peek pp
+  a <- peekArray (fromIntegral l) p
+  c_freeInts p
+  return $ map (fromSerial . fromIntegral) a
+
+{#fun qlECBKnownDates as knownECBDates {preDays- `[Day]'& peekDays*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- |next ECB code following the given code
 {#fun qlECBNextCode1 as nextECBCode' {`String', preErrorCheck- `String' errorCheck*-} -> `String' #}
@@ -292,27 +300,10 @@ foreign import ccall safe "ql.h qlECBKnownDates"
 -- |next maintenance period start date following the given date
 {#fun qlECBNextDate as nextECBDate {fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
-{-
 -- |next maintenance period start dates following the given code
-nextECBDates' :: String -- ^ecbCode
-  -> Maybe Day -- ^referenceDate
-  -> IO [Day]
-nextECBDates' c d = map fromQlDate <$>
-  withCString c (\s -> withDay d (getArrayX . c_nextECBDates' s))
+{#fun qlECBNextDates1 as nextECBDates' {`String', fromDay'* `Maybe Day', preDays- `[Day]'& peekDays*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
-foreign import ccall safe "ql.h qlECBNextDates1"
-  c_nextECBDates' :: CString -> CDate -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
-
--- |next maintenance period start dates following the given date
-nextECBDates :: Maybe Day -- ^d
-  -> IO [Day]
-nextECBDates d = map fromQlDate <$> do
-  dd <- toQlDate d
-  getArrayX $ c_nextECBDates dd
-
-foreign import ccall safe "ql.h qlECBNextDates"
-  c_nextECBDates :: CDate -> Ptr CUInt -> Ptr CString -> IO(Ptr CDate)
--}
+{#fun qlECBNextDates as nextECBDates {fromDay'* `Maybe Day', preDays- `[Day]'& peekDays*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 {#fun qlECBRemoveDate as removeECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 
