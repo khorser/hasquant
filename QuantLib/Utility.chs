@@ -10,7 +10,6 @@ module QuantLib.Utility
   -- marshalling helpers
   , preErrorCheck
   , errorCheck
-  , freeString
 
   , marshalBool'
   , unmarshalBool'
@@ -37,8 +36,6 @@ import QuantLib.Types(Error(CPlusPlusException))
 
 {#fun pure qlBoostVersion as boostVersion {} -> `String' #}
 
-{#fun qlFreeString as freeString {`CString'} -> `()' #}
-
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
   a <- peek p
@@ -46,7 +43,7 @@ errorCheck p = do
     (a /= nullPtr)
     (do
       e <- peekCString a
-      freeString a
+      c_freeString a
       throwIO $ CPlusPlusException e)
 
 -- like alloca but initializes the allocated pointer with zero
@@ -64,7 +61,7 @@ throughOne :: (Monad m) => a -> (a -> m b) -> (a -> m d) -> m b
 throughOne x f g = do {v <- f x; _ <- g x; return v}
 
 unmarshalDynamicString :: CString -> IO String
-unmarshalDynamicString x = throughOne x peekCString freeString
+unmarshalDynamicString x = throughOne x peekCString c_freeString
 
 {#fun pure qlNullInteger as nullInteger {} -> `Int' #}
 
@@ -78,5 +75,10 @@ unmarshalEnumByRef x = peek x >>= return . toEnum . fromIntegral
 -- initialize pointer to a enum with a valid value before passing it to the function
 minEnumByRef :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
 minEnumByRef f = alloca $ \x -> poke x minBound >> f x
+
+foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
+foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
+foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
+foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

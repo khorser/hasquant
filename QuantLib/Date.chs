@@ -55,22 +55,20 @@ module QuantLib.Date
 
   , addPeriod
 
-{-
   , addECBDate
   , ecbCode
   , ecbDate'
   , ecbDate
   , isECBCode
   , isECBDate
-  , knownECBDates
+--  , knownECBDates
   , nextECBCode'
   , nextECBCode
   , nextECBDate'
   , nextECBDate
-  , nextECBDates'
-  , nextECBDates
+--  , nextECBDates'
+--  , nextECBDates
   , removeECBDate
--}
   )
 where
 
