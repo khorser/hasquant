@@ -11,11 +11,13 @@ module QuantLib.Utility
   , preErrorCheck
   , errorCheck
 
-  , marshalBool'
-  , unmarshalBool'
-  , unmarshalDynamicString
-  , unmarshalEnumByRef
-  , minEnumByRef
+  , fromBool'
+  , toBool'
+  , peekDynString
+  , peekEnum
+  , preEnum
+  , preNum
+  , marshalIntArray
   )
 where
 
@@ -23,8 +25,7 @@ import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
-import Foreign.Storable(peek, poke, Storable)
-import Foreign.Marshal.Alloc(alloca)
+import Foreign.Storable(peek, Storable)
 
 import Control.Exception(throwIO)
 import Control.Monad(when)
@@ -50,18 +51,18 @@ errorCheck p = do
 preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
 preErrorCheck = with nullPtr
 
-marshalBool' :: Maybe Bool -> CInt
-marshalBool' Nothing = -1
-marshalBool' (Just x) = fromBool x
+fromBool' :: Maybe Bool -> CInt
+fromBool' Nothing = -1
+fromBool' (Just x) = fromBool x
 
-unmarshalBool' :: CInt -> Maybe Bool
-unmarshalBool' x = if x == -1 then Nothing else Just $ toBool x
+toBool' :: CInt -> Maybe Bool
+toBool' x = if x == -1 then Nothing else Just $ toBool x
 
 throughOne :: (Monad m) => a -> (a -> m b) -> (a -> m d) -> m b
 throughOne x f g = do {v <- f x; _ <- g x; return v}
 
-unmarshalDynamicString :: CString -> IO String
-unmarshalDynamicString x = throughOne x peekCString c_freeString
+peekDynString :: CString -> IO String
+peekDynString x = throughOne x peekCString c_freeString
 
 {#fun pure qlNullInteger as nullInteger {} -> `Int' #}
 
@@ -69,16 +70,22 @@ unmarshalDynamicString x = throughOne x peekCString c_freeString
 
 {#fun pure qlEpsilon as epsilon {} -> `Double' #}
 
-unmarshalEnumByRef :: (Enum a) => Ptr CInt -> IO a
-unmarshalEnumByRef x = peek x >>= return . toEnum . fromIntegral
+peekEnum :: (Enum a) => Ptr CInt -> IO a
+peekEnum x = peek x >>= return . toEnum . fromIntegral
 
 -- initialize pointer to a enum with a valid value before passing it to the function
-minEnumByRef :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
-minEnumByRef f = alloca $ \x -> poke x minBound >> f x
+preEnum :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
+preEnum = with minBound
+
+preNum :: (Storable a, Num a) => (Ptr a -> IO b) -> IO b
+preNum = with 0
 
 foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
 foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
+
+marshalIntArray :: Ptr CInt -> IO (Ptr CInt)
+marshalIntArray = undefined
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
