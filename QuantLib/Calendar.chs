@@ -1,4 +1,4 @@
-module QuantLib.Calenar
+module QuantLib.Calendar
   (
    JointCalendarRule(..)
   )
