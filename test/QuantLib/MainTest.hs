@@ -6,14 +6,41 @@ import Test.QuickCheck
 import Test.QuickCheck.Monadic as Q
 
 import Data.Time.Calendar
+import Control.Exception(catch)
 
 import QuantLib.Date
 import QuantLib.Utility
-import QuantLib.Settings as Settings
+import QuantLib.Types
+import qualified QuantLib.Settings as Settings
 import QuantLib.Period as Period
 
-instance Arbitrary Frequency where
+instance Arbitrary Period.Frequency where
   arbitrary = elements [NoFrequency .. (pred OtherFrequency)]
+
+newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
+newtype InvalidDay = InvalidDay {invalidDay::Day} deriving (Show, Eq)
+
+instance Arbitrary ValidDay where
+  arbitrary = do
+    d <- elements [(toModifiedJulianDay minDate) .. (toModifiedJulianDay maxDate)]
+    return $ ValidDay (ModifiedJulianDay d)
+
+instance Arbitrary InvalidDay where
+  arbitrary = do
+    d <- elements $ [minD-500 .. minD-1] ++ [maxD+1 .. maxD+500]
+    return $ InvalidDay (ModifiedJulianDay d)
+    where minD = toModifiedJulianDay minDate
+          maxD = toModifiedJulianDay maxDate
+
+setAndGetEvaluationDate :: Day -> IO Day
+setAndGetEvaluationDate d = Settings.setEvaluationDate (Just d) >> Settings.evaluationDate
+
+setAndGetEvaluationDateWithExceptions :: Day -> IO Day
+setAndGetEvaluationDateWithExceptions d = do
+  Settings.setEvaluationDate (Just d) `catch` ign
+  Settings.evaluationDate
+  where ign :: Error -> IO ()
+        ign _ = return ()
 
 main :: IO ()
 main = do
@@ -37,6 +64,19 @@ main = do
           t2 <- today
           Settings.setEvaluationDate Nothing
           Settings.evaluationDate `shouldReturn` t2
+        prop "randomized valid evaluation date" $ do
+          monadicIO $ do
+            d1 <- pick arbitrary
+            d2 <- run $ setAndGetEvaluationDate (validDay d1)
+            Q.assert $ validDay d1 == d2
+        prop "randomized invalid evaluation date" $ do
+          monadicIO $ do
+            t <- run today
+            _ <- run $ Settings.setEvaluationDate (Just t)
+            d <- pick arbitrary
+            d2 <- run $ setAndGetEvaluationDateWithExceptions (invalidDay d)
+            Q.assert $ t == d2
+
       describe "enforce todays historic fixings" $ do
         it "default" $ do
           Settings.enforceTodaysHistoricFixings `shouldReturn` False
@@ -88,9 +128,7 @@ main = do
         (Period.add (3, Months) (6, Months)) `shouldReturn` (9, Months)
       it "9m + 1y" $ do
         (Period.add (9, Months) (1, Years)) `shouldReturn` (21, Months)
-      --it "normalize 7d" $ do
-      --  (Period.normalize (7, Days)) `shouldReturn` (1, Weeks)
-      it "normalize 12m" $ do
+      it "normalize 12m" $ do -- as of now, QuantLib normalizes only months to years
         (Period.normalize (12, Months)) `shouldReturn` (1, Years)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
