@@ -18,8 +18,8 @@ import QuantLib.Period as Period
 instance Arbitrary Period.Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
 
-newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
-newtype InvalidDay = InvalidDay {invalidDay::Day} deriving (Show, Eq)
+newtype ValidDay = ValidDay Day deriving (Show, Eq)
+newtype InvalidDay = InvalidDay Day deriving (Show, Eq)
 
 instance Arbitrary ValidDay where
   arbitrary = do
@@ -32,16 +32,6 @@ instance Arbitrary InvalidDay where
     return $ InvalidDay (ModifiedJulianDay d)
     where minD = toModifiedJulianDay minDate
           maxD = toModifiedJulianDay maxDate
-
-setAndGetEvaluationDate :: Day -> IO Day
-setAndGetEvaluationDate d = Settings.setEvaluationDate (Just d) >> Settings.evaluationDate
-
-setAndGetEvaluationDateWithExceptions :: Day -> IO Day
-setAndGetEvaluationDateWithExceptions d = do
-  Settings.setEvaluationDate (Just d) `catch` ign
-  Settings.evaluationDate
-  where ign :: Error -> IO ()
-        ign _ = return ()
 
 main :: IO ()
 main = do
@@ -67,16 +57,15 @@ main = do
           Settings.evaluationDate `shouldReturn` t2
         prop "randomized valid evaluation date" $ do
           monadicIO $ do
-            d1 <- pick arbitrary
-            d2 <- run $ setAndGetEvaluationDate (validDay d1)
-            Q.assert $ validDay d1 == d2
+            ValidDay d1 <- pick arbitrary
+            run $ (Settings.setEvaluationDate (Just d1) >> Settings.evaluationDate) `shouldReturn` d1
         prop "randomized invalid evaluation date" $ do
           monadicIO $ do
             t <- run today
-            _ <- run $ Settings.setEvaluationDate (Just t)
-            d <- pick arbitrary
-            d2 <- run $ setAndGetEvaluationDateWithExceptions (invalidDay d)
-            Q.assert $ t == d2
+            run $ Settings.setEvaluationDate (Just t)
+            (InvalidDay d) <- pick arbitrary
+            run $ (Settings.setEvaluationDate (Just d)) `shouldThrow` (== DateConversion d)
+            run $ Settings.evaluationDate `shouldReturn` t
 
       describe "enforce todays historic fixings" $ do
         it "default" $ do
@@ -124,7 +113,7 @@ main = do
           isECBDate h `shouldReturn` False
           addECBDate h
           isECBDate h `shouldReturn` True
-      it "IMM dates (long running)" $ do
+      it "IMM dates (LONG)" $ do
         let immCodes = [
                 "F0", "G0", "H0", "J0", "K0", "M0", "N0", "Q0", "U0", "V0", "X0", "Z0",
                 "F1", "G1", "H1", "J1", "K1", "M1", "N1", "Q1", "U1", "V1", "X1", "Z1",
