@@ -1,5 +1,9 @@
 import Test.Hspec
+import Test.Hspec.QuickCheck
+
 import Test.HUnit
+import Test.QuickCheck
+import Test.QuickCheck.Monadic as Q
 
 import Data.Time.Calendar
 
@@ -8,6 +12,9 @@ import QuantLib.Utility
 import QuantLib.Settings as Settings
 import QuantLib.Period as Period
 
+instance Arbitrary Frequency where
+  arbitrary = elements [NoFrequency .. (pred OtherFrequency)]
+
 main :: IO ()
 main = do
   putStrLn ">>>"
@@ -15,7 +22,9 @@ main = do
   tod <- today
   w <- weekday tod
   putStrLn $ "Today is " ++ show w
+
   hspec $ do
+
     describe "settings" $ do
       describe "evaluaton date" $ do
         it "default is today" $ do
@@ -58,6 +67,11 @@ main = do
     describe "frequencies and periods" $ do
       it "frequency to period" $ do
         (Period.toFrequency (1, Months)) `shouldReturn` Monthly
+      prop "randomized frequency->period->frequency conversion" $
+        \freq ->
+          monadicIO $ do
+            freq2 <- run $ (Period.fromFrequency freq >>= Period.toFrequency)
+            Q.assert $ freq == freq2
       it "2w/2" $ do
         (Period.divide (2, Weeks) 2) `shouldReturn` (1, Weeks)
       it "1w/1" $ do

@@ -4,7 +4,7 @@ cabal-version:       >=1.10
 
 name:                hasquant
 version:             0.1.0.0
--- synopsis:
+synopsis:            Bindings to QuantLib
 -- description:
 -- bug-reports:
 -- license:
@@ -12,7 +12,7 @@ version:             0.1.0.0
 author:              Sergey Khorev
 maintainer:          sergey.khorev@gmail.com
 -- copyright:
--- category:
+category:            Finance
 build-type:          Simple
 extra-source-files:  cbits
 
@@ -29,6 +29,7 @@ library
   default-language:    Haskell2010
   c-sources:           cbits/qlDate.cpp cbits/qlPeriod.cpp cbits/qlSettings.cpp cbits/qlUtilities.cpp
   include-dirs:        cbits
+  -- TODO need a proper way to add -dynamic flag when building a shared object
   ghc-options:         -dynamic -pgml g++
   extra-libraries:     QuantLib
 --  includes:          qlaux.h qlDate.h qlEnum.h ql.h qlPeriod.h qlSettings.h qlUtilities.h
@@ -94,6 +95,7 @@ test-suite hasquant_test
             , hspec
             , HUnit
             , hasquant
+            , QuickCheck
   Default-Language: Haskell2010
   Hs-source-dirs:   test
 
