@@ -7,6 +7,7 @@ import Test.QuickCheck.Monadic as Q
 
 import Data.Time.Calendar
 import Control.Exception(catch)
+import Data.List(delete)
 
 import QuantLib.Date
 import QuantLib.Utility
@@ -15,7 +16,7 @@ import qualified QuantLib.Settings as Settings
 import QuantLib.Period as Period
 
 instance Arbitrary Period.Frequency where
-  arbitrary = elements [NoFrequency .. pred OtherFrequency]
+  arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
 
 newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
 newtype InvalidDay = InvalidDay {invalidDay::Day} deriving (Show, Eq)
@@ -108,7 +109,7 @@ main = do
       it "known ECB dates" $ do
         Settings.keepingSettings' $ do
           knownDates <- knownECBDates
-          null knownDates `shouldBe` False
+          knownDates `shouldSatisfy` (not . null)
           knownDates' <- nextECBDates (Just minDate)
           knownDates `shouldBe` knownDates'
           mapM_ (\(d, p) -> do
@@ -140,13 +141,13 @@ main = do
             imm <- nextIMMDate d False
             isIMMDate imm False `shouldReturn` True
             n <- nextIMMDate d True
-            imm > d `shouldBe` True
-            imm <= n `shouldBe` True
+            imm `shouldSatisfy` (> d)
+            imm `shouldSatisfy` (<= n)
             code <- immCode imm
             immDate code d `shouldReturn` imm
             mapM_ (\i -> do
               immd <- immDate i d
-              immd >= d `shouldBe` True)
+              immd `shouldSatisfy` (>= d))
               $ take 40 immCodes)
             [minDate .. (addGregorianMonthsClip (-121) maxDate)]
 
