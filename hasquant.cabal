@@ -16,16 +16,85 @@ maintainer:          sergey.khorev@gmail.com
 build-type:          Simple
 extra-source-files:  cbits
 
+flag buildExample
+  Default: False
+
 library
   exposed-modules:     QuantLib.Instrument, QuantLib.Calendar, QuantLib.Types, QuantLib.Model, QuantLib.Settings, QuantLib.Period, QuantLib.Date, QuantLib.Utility, QuantLib.CashFlow.Leg, QuantLib.Quote
   -- other-modules:
   -- other-extensions:
-  build-depends:       base >=4.14 && <4.15, time
+  build-depends:       base >=4.14 && <5.0, time
   -- hs-source-dirs:
   build-tools:         chs
   default-language:    Haskell2010
-  c-sources:	       cbits/qlDate.cpp cbits/qlPeriod.cpp cbits/qlSettings.cpp cbits/qlUtilities.cpp
+  c-sources:           cbits/qlDate.cpp cbits/qlPeriod.cpp cbits/qlSettings.cpp cbits/qlUtilities.cpp
   include-dirs:        cbits
   ghc-options:         -dynamic -pgml g++
   extra-libraries:     QuantLib
---  includes:	       qlaux.h qlDate.h qlEnum.h ql.h qlPeriod.h qlSettings.h qlUtilities.h
+--  includes:          qlaux.h qlDate.h qlEnum.h ql.h qlPeriod.h qlSettings.h qlUtilities.h
+
+executable Example
+  if flag(buildExample)
+    buildable: True
+  else
+    buildable: False
+
+  main-Is:    QuantLib/MainExample.hs
+  other-modules:
+--              QuantLib.Example.Bond
+--            , QuantLib.Example.BermudanSwaption
+--            , QuantLib.Example.CallableBond
+--            , QuantLib.Example.CDS
+--            , QuantLib.Example.ConvertibleBond
+--            , QuantLib.Example.EquityOption
+--            , QuantLib.Example.FittedBondCurve
+--            , QuantLib.Example.FRA
+--            , QuantLib.Example.Replication
+--            , QuantLib.Example.Repo
+--            , QuantLib.Example.Swap
+  ghc-options:         -dynamic -pgml g++
+--  -Wall
+  build-depends:
+              base >= 4.14 && < 5.0
+            , time
+            , hasquant
+  default-language: Haskell2010
+  hs-source-dirs:   test
+
+test-suite Test
+  Type:       exitcode-stdio-1.0
+  Main-Is:    QuantLib/MainTest.hs
+  Other-modules:
+--                QuantLib.Test.HUnit
+--              , QuantLib.Test.QuickCheck
+--              , QuantLib.Test.CashFlows
+--              , QuantLib.Test.Dates
+--              , QuantLib.Test.DayCounters
+--              , QuantLib.Test.InterestRates
+--              , QuantLib.Test.Period
+--              , QuantLib.Test.Rounding
+--              , QuantLib.Test.TermStructures
+--              , QuantLib.Test.Schedule
+--              , QuantLib.Example.Bond
+--              , QuantLib.Example.BermudanSwaption
+--              , QuantLib.Example.CallableBond
+--              , QuantLib.Example.CDS
+--              , QuantLib.Example.ConvertibleBond
+--              , QuantLib.Example.EquityOption
+--              , QuantLib.Example.FittedBondCurve
+--              , QuantLib.Example.FRA
+--              , QuantLib.Example.Replication
+--              , QuantLib.Example.Repo
+--              , QuantLib.Example.Swap
+  ghc-options:         -dynamic -pgml g++
+--  -Wall
+  Build-Depends:
+              base >= 4.14 && < 5.0
+            , time
+            , hspec
+            , HUnit
+            , hasquant
+  Default-Language: Haskell2010
+  Hs-source-dirs:   test
+
+-- vim: set et:

@@ -1,4 +1,4 @@
-# Makefile for cbits
+# Makefile for cbits, mostly for local quick tests
 SRC=$(wildcard ../cbits/ql*.cpp)
 
 OBJ=$(subst ../cbits,cobj,$(SRC:.cpp=.o))
