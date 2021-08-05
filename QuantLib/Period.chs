@@ -5,7 +5,7 @@ module QuantLib.Period
   , parse
   , add
   , divide
-  , lt 
+  , lessThan
   , normalize
   , TimeUnit(..)
   , Frequency(..)
@@ -42,7 +42,7 @@ add = addPeriod
 {#fun qlPeriodDivide1 as divide {fromPeriod `Int, TimeUnit'&, `Int', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
 -- less than
-{#fun qlPeriodsLT1 as lt {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Bool' #}
+{#fun qlPeriodsLT1 as lessThan {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
 {#fun qlPeriodNormalize1 as normalize {fromPeriod `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 

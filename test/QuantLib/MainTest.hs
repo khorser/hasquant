@@ -15,14 +15,14 @@ import qualified QuantLib.Settings as Settings
 import QuantLib.Period as Period
 
 instance Arbitrary Period.Frequency where
-  arbitrary = elements [NoFrequency .. (pred OtherFrequency)]
+  arbitrary = elements [NoFrequency .. pred OtherFrequency]
 
 newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
 newtype InvalidDay = InvalidDay {invalidDay::Day} deriving (Show, Eq)
 
 instance Arbitrary ValidDay where
   arbitrary = do
-    d <- elements [(toModifiedJulianDay minDate) .. (toModifiedJulianDay maxDate)]
+    d <- elements [toModifiedJulianDay minDate .. toModifiedJulianDay maxDate]
     return $ ValidDay (ModifiedJulianDay d)
 
 instance Arbitrary InvalidDay where
@@ -59,7 +59,7 @@ main = do
           today `shouldReturn` t1
         it "set" $ do
           Settings.setEvaluationDate (Just $ december 29 2012)
-          Settings.evaluationDate `shouldReturn` (fromGregorian 2012 12 29)
+          Settings.evaluationDate `shouldReturn` fromGregorian 2012 12 29
         it "reset to default" $ do
           t2 <- today
           Settings.setEvaluationDate Nothing
@@ -94,41 +94,41 @@ main = do
           Settings.setIncludeTodaysCashFlows $ Just True
           e0 <- Settings.includeTodaysCashFlows
           Settings.setIncludeTodaysCashFlows save
-          e0 `shouldBe` (Just True)
+          e0 `shouldBe` Just True
 
     describe "dates" $ do
       it "min" $ do
-        minDate `shouldBe` (fromGregorian 1901 01 01)
+        minDate `shouldBe` fromGregorian 1901 01 01
       it "max" $ do
-        maxDate `shouldBe` (fromGregorian 2199 12 31)
+        maxDate `shouldBe` fromGregorian 2199 12 31
       it "leap years" $ do
-        [False, True, False] `shouldBe` (map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5])
+        [False, True, False] `shouldBe` map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
 
     describe "frequencies and periods" $ do
       it "frequency to period" $ do
-        (Period.toFrequency (1, Months)) `shouldReturn` Monthly
+        Period.toFrequency (1, Months) `shouldReturn` Monthly
       prop "randomized frequency->period->frequency conversion" $
         \freq ->
           monadicIO $ do
-            freq2 <- run $ (Period.fromFrequency freq >>= Period.toFrequency)
+            freq2 <- run $ Period.fromFrequency freq >>= Period.toFrequency
             Q.assert $ freq == freq2
       it "2w/2" $ do
-        (Period.divide (2, Weeks) 2) `shouldReturn` (1, Weeks)
+        Period.divide (2, Weeks) 2 `shouldReturn` (1, Weeks)
       it "1w/1" $ do
-        (Period.divide (1, Weeks) 7) `shouldReturn` (1, Days)
+        Period.divide (1, Weeks) 7 `shouldReturn` (1, Days)
       it "1y/4" $ do
-        (Period.divide (1, Years) 4) `shouldReturn` (3, Months)
+        Period.divide (1, Years) 4 `shouldReturn` (3, Months)
       it "1y/2" $ do
-        (Period.divide (1, Years) 2) `shouldReturn` (6, Months)
+        (1, Years) `Period.divide` 2 `shouldReturn` (6, Months)
       it "3d + 1d" $ do
-        (Period.add (3, Days) (1, Days)) `shouldReturn` (4, Days)
+        (3, Days) `Period.add` (1, Days) `shouldReturn` (4, Days)
       it "4d + 1w" $ do
-        (Period.add (4, Days) (1, Weeks)) `shouldReturn` (11, Days)
+        Period.add (4, Days) (1, Weeks) `shouldReturn` (11, Days)
       it "3m + 6m" $ do
-        (Period.add (3, Months) (6, Months)) `shouldReturn` (9, Months)
+        Period.add (3, Months) (6, Months) `shouldReturn` (9, Months)
       it "9m + 1y" $ do
-        (Period.add (9, Months) (1, Years)) `shouldReturn` (21, Months)
+        Period.add (9, Months) (1, Years) `shouldReturn` (21, Months)
       it "normalize 12m" $ do -- as of now, QuantLib normalizes only months to years
-        (Period.normalize (12, Months)) `shouldReturn` (1, Years)
+        Period.normalize (12, Months) `shouldReturn` (1, Years)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
