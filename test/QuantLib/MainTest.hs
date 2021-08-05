@@ -17,45 +17,41 @@ main = do
   w <- weekday tod
   putStrLn $ "Today is " ++ show w
   hspec $ do
-    describe "evaluaton date" $ do
-      it "default is today" $ do
-        t1 <- evaluationDate
-        t2 <- today
-        t1 @?= t2
-      it "set" $ do
-        setEvaluationDate (Just $ december 29 2012)
-        t0 <- evaluationDate
-        t0 `shouldBe` (fromGregorian 2012 12 29)
-      it "reset to default" $ do
-        t2 <- today
-        setEvaluationDate Nothing
-        t1 <- evaluationDate
-        t1 `shouldBe` t2
-
     describe "settings" $ do
-      it "default enforce todays historic fixings" $ do
-        e1 <- enforceTodaysHistoricFixings
-        e1 `shouldBe` False
-      it "set enforce todays historic fixings to true" $ do
-        save <- enforceTodaysHistoricFixings
-        setEnforceTodaysHistoricFixings True
-        e1 <- enforceTodaysHistoricFixings
-        setEnforceTodaysHistoricFixings save
-        e1 `shouldBe` True
-      it "default include todays cash flows" $ do
-        e <- includeTodaysCashFlows
-        e `shouldBe` Nothing
-      it "set include todays cash flows" $ do
-        save <- includeTodaysCashFlows
-        setIncludeTodaysCashFlows $ Just True
-        e0 <- includeTodaysCashFlows
-        setIncludeTodaysCashFlows Nothing
-        e0 `shouldBe` (Just True)
+      describe "evaluaton date" $ do
+        it "default is today" $ do
+          t1 <- evaluationDate
+          today `shouldReturn` t1
+        it "set" $ do
+          setEvaluationDate (Just $ december 29 2012)
+          evaluationDate `shouldReturn` (fromGregorian 2012 12 29)
+        it "reset to default" $ do
+          t2 <- today
+          setEvaluationDate Nothing
+          evaluationDate `shouldReturn` t2
+      describe "enforce todays historic fixings" $ do
+        it "default" $ do
+          enforceTodaysHistoricFixings `shouldReturn` False
+        it "set to true" $ do
+          save <- enforceTodaysHistoricFixings
+          setEnforceTodaysHistoricFixings True
+          e1 <- enforceTodaysHistoricFixings
+          setEnforceTodaysHistoricFixings save
+          e1 `shouldBe` True
+      describe "include todays cash flows" $ do
+        it "default" $ do
+          includeTodaysCashFlows `shouldReturn` Nothing
+        it "set to true" $ do
+          save <- includeTodaysCashFlows
+          setIncludeTodaysCashFlows $ Just True
+          e0 <- includeTodaysCashFlows
+          setIncludeTodaysCashFlows Nothing
+          e0 `shouldBe` (Just True)
 
     describe "dates" $ do
-      it "min date" $ do
+      it "min" $ do
         minDate `shouldBe` (fromGregorian 1901 01 01)
-      it "max date" $ do
+      it "max" $ do
         maxDate `shouldBe` (fromGregorian 2199 12 31)
       it "leap years" $ do
         [False, True, False] `shouldBe` (map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5])
