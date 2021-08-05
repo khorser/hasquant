@@ -18,3 +18,5 @@ QuantLib/Currency.hs
 QuantLib/Quote.hs
 _*.hs
 dist-newstyle
+cabal.project.local
+cabal.project.local~
