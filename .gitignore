@@ -17,3 +17,4 @@ QuantLib/Calendar.hs
 QuantLib/Currency.hs
 QuantLib/Quote.hs
 _*.hs
+dist-newstyle

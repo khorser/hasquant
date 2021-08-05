@@ -26,5 +26,6 @@ library
   default-language:    Haskell2010
   c-sources:	       cbits/qlDate.cpp cbits/qlPeriod.cpp cbits/qlSettings.cpp cbits/qlUtilities.cpp
   include-dirs:        cbits
-  ghc-options:         -dynamic
+  ghc-options:         -dynamic -pgml g++
+  extra-libraries:     QuantLib
 --  includes:	       qlaux.h qlDate.h qlEnum.h ql.h qlPeriod.h qlSettings.h qlUtilities.h
