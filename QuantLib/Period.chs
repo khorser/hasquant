@@ -3,9 +3,9 @@ module QuantLib.Period
     fromFrequency
   , toFrequency
   , parse
-  , addPeriod
-  , dividePeriod
-  , periodLT
+  , add
+  , divide
+  , lt 
   , normalize
   , TimeUnit(..)
   , Frequency(..)
@@ -30,15 +30,19 @@ import QuantLib.Utility
 {#fun qlPeriodFromFrequency1 as fromFrequency {`Frequency', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
-{#fun qlPeriodToFrequency1 as toFrequency {`Int', `TimeUnit', preErrorCheck- `String' errorCheck*-} -> `Frequency' #}
+{#fun qlPeriodToFrequency1 as toFrequency {fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Frequency' #}
 
 {#fun qlPeriodParserParse1 as parse {`String', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
 {#fun qlPeriodAdd1 as addPeriod {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #} 
 
-{#fun qlPeriodDivide1 as dividePeriod {fromPeriod `Int, TimeUnit'&, `Int', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
+add :: (Int, TimeUnit) -> (Int, TimeUnit) -> IO (Int, TimeUnit)
+add = addPeriod
 
-{#fun qlPeriodsLT1 as periodLT {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Bool' #}
+{#fun qlPeriodDivide1 as divide {fromPeriod `Int, TimeUnit'&, `Int', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
+
+-- less than
+{#fun qlPeriodsLT1 as lt {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
 {#fun qlPeriodNormalize1 as normalize {fromPeriod `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
