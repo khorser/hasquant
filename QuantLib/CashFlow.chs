@@ -1,4 +1,4 @@
-module QuantLib.CashFlow.Leg
+module QuantLib.CashFlow
   (
      DurationType(..)
    , RateAveragingType

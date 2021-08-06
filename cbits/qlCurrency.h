@@ -11,7 +11,7 @@ extern "C" {
   char* qlCurrencyFractionSymbol(Currency* o);
   int qlCurrencyNumericCode(Currency* o);
   char* qlCurrencySymbol(Currency* o);
-//  Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
+  Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
 #ifdef __cplusplus
 }
 #endif

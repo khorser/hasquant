@@ -103,29 +103,29 @@ char* qlCurrencyFractionSymbol(Currency* o) { return DUP(arg(o)->fractionSymbol(
 int qlCurrencyNumericCode(Currency* o) { return arg(o)->numericCode(); }
 char* qlCurrencySymbol(Currency* o) { return DUP(arg(o)->symbol().c_str()); }
 
-//class CustomCurrency : public Currency {
-//public:
-//  CustomCurrency(const char* name, const char* code, int numericCode,
-//      const char* symbol, const char* fractionSymbol, int fractionsPerUnit,
-//      Rounding* rounding, const char* formatString,
-//      Currency* triangulationCurrency) {
-//    boost::shared_ptr<Data> data(new Data(name, code, numericCode,
-//          symbol, fractionSymbol, fractionsPerUnit,
-//          rounding ? *rounding : Rounding(),
-//          formatString,
-//          triangulationCurrency ? *triangulationCurrency : Currency()));
-//    data_ = data;
-//  }
-//};
+class CustomCurrency : public Currency {
+public:
+  CustomCurrency(const char* name, const char* code, int numericCode,
+      const char* symbol, const char* fractionSymbol, int fractionsPerUnit,
+      Rounding* rounding, const char* formatString,
+      Currency* triangulationCurrency) {
+    ext::shared_ptr<Data> data(new Data(name, code, numericCode,
+          symbol, fractionSymbol, fractionsPerUnit,
+          rounding ? *rounding : Rounding(),
+          formatString,
+          triangulationCurrency ? *triangulationCurrency : Currency()));
+    data_ = data;
+  }
+};
 
-//Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e) {
-//  try {
-//    return alloc(new CustomCurrency(arg(name), arg(code), numericCode,
-//          arg(symbol), arg(fractionSymbol), fractionsPerUnit,
-//          rounding, arg(formatString), triangulationCurrency));
-//  } catch (std::exception& er) {
-//    return handleException<Currency*>(e, er);
-//  }
-//}
+Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e) {
+  try {
+    return alloc(new CustomCurrency(arg(name), arg(code), numericCode,
+          arg(symbol), arg(fractionSymbol), fractionsPerUnit,
+          rounding, arg(formatString), triangulationCurrency));
+  } catch (std::exception& er) {
+    return handleException<Currency*>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
