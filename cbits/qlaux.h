@@ -4,6 +4,7 @@
 #include <vector>
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
+#include <boost/shared_ptr.hpp>
 
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
