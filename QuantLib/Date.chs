@@ -84,9 +84,10 @@ import QuantLib.Types(Error(DateConversion))
 import QuantLib.Utility
 import QuantLib.Period(fromPeriod, TimeUnit)
 
+#include "qlTypesC2HS.h"
 #include "ql.h"
 
-#include "qlEnum.h"
+#include "qlEnumC2HS.h"
 
 {#enum Month {} deriving(Show, Eq, Bounded) #}
 

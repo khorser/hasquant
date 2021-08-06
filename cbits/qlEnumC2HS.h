@@ -1,3 +1,4 @@
+// This file should only by used in C2HS, enums below are extracted from QuantLib headers
 // time/weekday.hpp
 enum Weekday { Sunday    = 1,
   Monday    = 2,

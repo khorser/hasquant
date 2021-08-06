@@ -8,7 +8,8 @@ module QuantLib.Quote
 
   where
 
-#include "qlEnum.h"
+#include "qlTypesC2HS.h"
+#include "qlEnumC2HS.h"
 
 {#enum PriceType {} deriving(Show, Eq, Bounded) #}
 

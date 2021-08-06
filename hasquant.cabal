@@ -27,12 +27,75 @@ library
   -- hs-source-dirs:
   build-tools:         chs
   default-language:    Haskell2010
-  c-sources:           cbits/qlDate.cpp cbits/qlPeriod.cpp cbits/qlSettings.cpp cbits/qlUtilities.cpp
+  c-sources:           cbits/qlBond.cpp
+                    , cbits/qlCalendar.cpp
+                    , cbits/qlCouponPricer.cpp
+                    , cbits/qlCredit.cpp
+                    , cbits/qlCurrency.cpp
+                    , cbits/qlDate.cpp
+                    , cbits/qlDayCounter.cpp
+                    , cbits/qlDefaultTS.cpp
+                    , cbits/qlForward.cpp
+                    , cbits/qlIborIndex.cpp
+                    , cbits/qlIndex.cpp
+                    , cbits/qlInstrument.cpp
+                    , cbits/qlInterestRate.cpp
+                    , cbits/qlLeg.cpp
+                    , cbits/qlMath.cpp
+                    , cbits/qlMethod.cpp
+                    , cbits/qlModel.cpp
+                    , cbits/qlOption.cpp
+                    , cbits/qlPeriod.cpp
+                    , cbits/qlPricingEngineAux.cpp
+                    , cbits/qlPricingEngine.cpp
+                    , cbits/qlProcess.cpp
+                    , cbits/qlQuote.cpp
+                    , cbits/qlSchedule.cpp
+                    , cbits/qlSettings.cpp
+                    , cbits/qlSwap.cpp
+                    , cbits/qlTSAux.cpp
+                    , cbits/qlUtilities.cpp
+                    , cbits/qlVolatilityTS.cpp
+                    , cbits/qlYieldTS.cpp
+
   include-dirs:        cbits
-  -- TODO need a proper way to add -dynamic flag when building a shared object
+  -- TODO find a proper way to add -dynamic flag when building a shared object
   ghc-options:         -dynamic -pgml g++
   extra-libraries:     QuantLib
---  includes:          qlaux.h qlDate.h qlEnum.h ql.h qlPeriod.h qlSettings.h qlUtilities.h
+--  includes:         cbits/qlaux.h
+--                    , cbits/qlBond.h
+--                    , cbits/qlCalendar.h
+--                    , cbits/qlCouponPricer.h
+--                    , cbits/qlCredit.h
+--                    , cbits/qlCurrency.h
+--                    , cbits/qlDate.h
+--                    , cbits/qlDayCounter.h
+--                    , cbits/qlDefaultTS.h
+--                    , cbits/qlEnumC2HS.h
+--                    , cbits/qlForward.h
+--                    , cbits/ql.h
+--                    , cbits/qlIborIndex.h
+--                    , cbits/qlIndex.h
+--                    , cbits/qlInstrument.h
+--                    , cbits/qlInterestRate.h
+--                    , cbits/qlLeg.h
+--                    , cbits/qlMath.h
+--                    , cbits/qlMethod.h
+--                    , cbits/qlModel.h
+--                    , cbits/qlOption.h
+--                    , cbits/qlPeriod.h
+--                    , cbits/qlPricingEngineAux.h
+--                    , cbits/qlPricingEngine.h
+--                    , cbits/qlProcess.h
+--                    , cbits/qlQuote.h
+--                    , cbits/qlSchedule.h
+--                    , cbits/qlSettings.h
+--                    , cbits/qlSwap.h
+--                    , cbits/qlTSAux.h
+--                    , cbits/qlTypesC2HS.h
+--                    , cbits/qlUtilities.h
+--                    , cbits/qlVolatilityTS.h
+--                    , cbits/qlYieldTS.h
 
 executable hasquant_example
   if flag(buildExample)
@@ -40,7 +103,7 @@ executable hasquant_example
   else
     buildable: False
 
-  main-Is:    QuantLib/MainExample.hs
+  main-is:    QuantLib/MainExample.hs
   other-modules:
 --              QuantLib.Example.Bond
 --            , QuantLib.Example.BermudanSwaption

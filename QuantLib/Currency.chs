@@ -4,7 +4,8 @@ module QuantLib.Currency
   )
   where
 
-#include "qlEnum.h"
+#include "qlTypesC2HS.h"
+#include "qlEnumC2HS.h"
 
 {#enum MoneyConversionType {} deriving(Show, Eq, Bounded) #}
 

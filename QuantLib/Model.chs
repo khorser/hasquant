@@ -4,7 +4,8 @@ module QuantLib.Model
   )
   where
 
-#include "qlEnum.h"
+#include "qlTypesC2HS.h"
+#include "qlEnumC2HS.h"
 
 {#enum CalibrationErrorType {} deriving(Show, Eq, Bounded) #}
 

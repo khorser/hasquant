@@ -25,6 +25,7 @@ import Control.Exception(bracket)
 import QuantLib.Date
 import QuantLib.Utility
 
+#include "qlTypesC2HS.h"
 #include "ql.h"
 
 -- |returns the current value of the Evaluation Date:

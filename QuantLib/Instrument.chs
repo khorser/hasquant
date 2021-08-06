@@ -17,7 +17,8 @@ module QuantLib.Instrument
   )
   where
 
-#include "qlEnum.h"
+#include "qlTypesC2HS.h"
+#include "qlEnumC2HS.h"
 
 {#enum ExerciseType {} deriving(Show, Eq, Bounded) #}
 

@@ -4,7 +4,8 @@ module QuantLib.Calendar
   )
   where
 
-#include "qlEnum.h"
+#include "qlTypesC2HS.h"
+#include "qlEnumC2HS.h"
 
 {#enum JointCalendarRule {} deriving(Show, Eq, Bounded) #}
 

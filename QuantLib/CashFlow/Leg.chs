@@ -6,7 +6,7 @@ module QuantLib.CashFlow.Leg
 
   where
 
-#include "qlEnum.h"
+#include "qlEnumC2HS.h"
 
 {#enum DurationType {} deriving(Show, Eq, Bounded) #}
 

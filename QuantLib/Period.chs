@@ -18,9 +18,10 @@ import Foreign.C.Types(CInt)
 
 import QuantLib.Utility
 
+#include "qlTypesC2HS.h"
 #include "ql.h"
 
-#include "qlEnum.h"
+#include "qlEnumC2HS.h"
 
 {#enum TimeUnit {} deriving(Show, Eq, Bounded) #}
 
