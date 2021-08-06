@@ -1,3 +1,5 @@
+module Main
+  where
 import Test.Hspec
 import Test.Hspec.QuickCheck
 
@@ -11,7 +13,7 @@ import Data.List(delete)
 
 import QuantLib.Date
 import QuantLib.Utility
-import QuantLib.Types
+import QuantLib.Type
 import qualified QuantLib.Settings as Settings
 import QuantLib.Period as Period
 

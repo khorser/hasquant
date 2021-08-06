@@ -1,4 +1,4 @@
-module QuantLib.Types
+module QuantLib.Type
   (
     Error(..)
 --  , Settings(..)

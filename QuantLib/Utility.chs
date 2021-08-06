@@ -30,7 +30,7 @@ import Foreign.Storable(peek, Storable)
 
 import Control.Exception(throwIO)
 import Control.Monad(when)
-import QuantLib.Types(Error(CPlusPlusException))
+import QuantLib.Type(Error(CPlusPlusException))
 
 #include "qlTypesC2HS.h"
 #include "ql.h"

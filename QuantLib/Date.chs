@@ -80,7 +80,7 @@ import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, toGregori
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
-import QuantLib.Types(Error(DateConversion))
+import QuantLib.Type(Error(DateConversion))
 import QuantLib.Utility
 import QuantLib.Period(fromPeriod, TimeUnit)
 
