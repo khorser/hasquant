@@ -1,7 +1,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  Calendar *qlCalendar(const char *name, char **e);
+  Calendar *qlCalendar(int country, int market, char **e);
   const char *qlCalendarName(Calendar *calendar);
   int qlCalendarAdjust(Calendar *c, int date, int conv);
   int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
@@ -25,4 +25,4 @@ extern "C" {
 }
 #endif
 
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
+/* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

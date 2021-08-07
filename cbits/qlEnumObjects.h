@@ -1,3 +1,4 @@
+// should match with the order in qlCurrency.cpp
 enum Ccy {ARS = 0
   , ATS
   , AUD
@@ -80,5 +81,53 @@ enum Ccy {ARS = 0
   , ZAR
   , ZEC
 };
+
+// should match with the order in qlCalendar.cpp
+enum CalendarCountry {
+  CountryArgentina = 0
+  , CountryAustralia
+  , CountryAustria
+  , CountryBotswana
+  , CountryBrazil
+  , CountryCanada
+  , CountryChina
+  , CountryCzechRepublic
+  , CountryDenmark
+  , CountryFinland
+  , CountryFrance
+  , CountryGermany
+  , CountryHongKong
+  , CountryHungary
+  , CountryIceland
+  , CountryIndia
+  , CountryIndonesia
+  , CountryIsrael
+  , CountryItaly
+  , CountryJapan
+  , CountryMexico
+  , CountryNewZealand
+  , CountryNorway
+  , CountryNullCalendar
+  , CountryPoland
+  , CountryRomania
+  , CountryRussia
+  , CountrySaudiArabia
+  , CountrySingapore
+  , CountrySlovakia
+  , CountrySouthAfrica
+  , CountrySouthKorea
+  , CountrySweden
+  , CountrySwitzerland
+  , CountryTaiwan
+  , CountryTARGET
+  , CountryThailand
+  , CountryTurkey
+  , CountryUkraine
+  , CountryUnitedKingdom
+  , CountryUnitedStates
+  , CountryWeekendsOnly
+};
+
+#define NO_MARKET -100;
 
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

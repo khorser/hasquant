@@ -350,4 +350,20 @@ enum RoundingType {
              and round down rules */
 };
 
+// enums values should match with those in ql/time/calendars/*.hpp
+enum AustriaMarket { AustriaSettlement, AustriaExchange };
+enum BrazilMarket { BrazilSettlement, BrazilExchange };
+enum CanadaMarket { CanadaSettlement, CanadaTSX };
+enum ChinaMarket { ChinaSSE, ChinaIB };
+enum FranceMarket { FranceSettlement, FranceExchange };
+enum GermanyMarket { GermanySettlement, GermanyFrankfurtStockExchange, GermanyXetra, GermanyEurex, GermanyEuwax };
+enum IndonesiaMarket { IndonesiaBEJ, IndonesiaJSX, IndonesiaIDX };
+enum IsraelMarket { IsraelSettlement, IsraelTASE };
+enum ItalyMarket { ItalySettlement, ItalyExchange };
+enum RomaniaMarket { RomaniaPublic, RomaniaBVB };
+enum RussiaMarket { RussiaSettlement, RussiaMOEX };
+enum SouthKoreaMarket { SouthKoreaSettlement, SouthKoreaKRX };
+enum UnitedKingdomMarket { UnitedKingdomSettlement, UnitedKingdomExchange, UnitedKingdomMetals };
+enum UnitedStatesMarket { UnitedStatesSettlement, UnitedStatesNYSE, UnitedStatesGovernmentBond, UnitedStatesNERC, UnitedStatesLiborImpact, UnitedStatesUnitedStatesFederalReserve };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

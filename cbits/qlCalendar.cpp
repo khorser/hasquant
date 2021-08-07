@@ -6,96 +6,58 @@
 
 using namespace QuantLib;
 
-// I could have stored a closure instead of int (lambda or an extra object) but this seems overkill here
-// for an alternative solution see qlDayCounter.cpp
-struct CalendarObjectInfo {
-  const char *name;
-  Calendar *(*make)(int x);
-  int market;
+typedef Calendar *(*makeCalendar)(int market);
 
-  class Cmp {
-  public:
-    Cmp(const char *n) : n_(n) {}
-    bool operator()(const CalendarObjectInfo &i) {
-      return !strcmp(i.name, n_);
-    }
-  private:
-    const char *n_;
-  };
-
-  template <class A>
-  static Calendar *makeObject(int x1) {
-    return new A((typename A::Market) x1);
-  }
-
-  template <class A>
-  static Calendar *makeDefaultObject(int) { //ignoring the argument
-    return new A();
-  }
+static const makeCalendar calendars[] = {
+  [](int){ return (Calendar *)new Argentina(); }
+  , [](int){ return (Calendar *)new Australia(); }
+  , [](int market){ return (Calendar *)new Austria((Austria::Market) market); }
+  , [](int){ return (Calendar *)new Botswana(); }
+  , [](int market){ return (Calendar *)new Brazil((Brazil::Market) market); }
+  , [](int market){ return (Calendar *)new Canada((Canada::Market) market); }
+  , [](int market){ return (Calendar *)new China((China::Market) market); }
+  , [](int){ return (Calendar *)new CzechRepublic(); }
+  , [](int){ return (Calendar *)new Denmark(); }
+  , [](int){ return (Calendar *)new Finland(); }
+  , [](int market){ return (Calendar *)new France((France::Market) market); }
+  , [](int market){ return (Calendar *)new Germany((Germany::Market) market); }
+  , [](int){ return (Calendar *)new HongKong(); }
+  , [](int){ return (Calendar *)new Hungary(); }
+  , [](int){ return (Calendar *)new Iceland(); }
+  , [](int){ return (Calendar *)new India(); }
+  , [](int market){ return (Calendar *)new Indonesia((Indonesia::Market) market); }
+  , [](int market){ return (Calendar *)new Israel((Israel::Market) market); }
+  , [](int market){ return (Calendar *)new Italy((Italy::Market) market); }
+  , [](int){ return (Calendar *)new Japan(); }
+  , [](int){ return (Calendar *)new Mexico(); }
+  , [](int){ return (Calendar *)new NewZealand(); }
+  , [](int){ return (Calendar *)new Norway(); }
+  , [](int){ return (Calendar *)new NullCalendar(); }
+  , [](int){ return (Calendar *)new Poland(); }
+  , [](int market){ return (Calendar *)new Romania((Romania::Market) market); }
+  , [](int market){ return (Calendar *)new Russia((Russia::Market) market); }
+  , [](int){ return (Calendar *)new SaudiArabia(); }
+  , [](int){ return (Calendar *)new Singapore(); }
+  , [](int){ return (Calendar *)new Slovakia(); }
+  , [](int){ return (Calendar *)new SouthAfrica(); }
+  , [](int market){ return (Calendar *)new SouthKorea((SouthKorea::Market) market); }
+  , [](int){ return (Calendar *)new Sweden(); }
+  , [](int){ return (Calendar *)new Switzerland(); }
+  , [](int){ return (Calendar *)new Taiwan(); }
+  , [](int){ return (Calendar *)new TARGET(); }
+  , [](int){ return (Calendar *)new Thailand(); }
+  , [](int){ return (Calendar *)new Turkey(); }
+  , [](int){ return (Calendar *)new Ukraine(); }
+  , [](int market){ return (Calendar *)new UnitedKingdom((UnitedKingdom::Market) market); }
+  , [](int market){ return (Calendar *)new UnitedStates((UnitedStates::Market) market); }
+  , [](int){ return (Calendar *)new WeekendsOnly(); }
 };
 
-typedef CalendarObjectInfo CalendarInfo;
-static const CalendarInfo calendarInfo[] = {
-  {"NullCalendar",                &CalendarInfo::makeDefaultObject<NullCalendar>, 0},
-  {"TARGET",                      &CalendarInfo::makeDefaultObject<TARGET>, 0},
-  {"Argentina::Merval",           &CalendarInfo::makeObject<Argentina>, Argentina::Merval},
-  {"Australia",                   &CalendarInfo::makeDefaultObject<Australia>, 0},
-  {"Brazil::Settlement",          &CalendarInfo::makeObject<Brazil>, Brazil::Settlement},
-  {"Brazil::Exchange",            &CalendarInfo::makeObject<Brazil>, Brazil::Exchange},
-  {"Canada::Settlement",          &CalendarInfo::makeObject<Canada>, Canada::Settlement},
-  {"Canada::TSX",                 &CalendarInfo::makeObject<Canada>, Canada::TSX},
-  {"China",                       &CalendarInfo::makeDefaultObject<China>, 0},
-  {"CzechRepublic::PSE",          &CalendarInfo::makeObject<CzechRepublic>, CzechRepublic::PSE},
-  {"Denmark",                     &CalendarInfo::makeDefaultObject<Denmark>, 0},
-  {"Finland",                     &CalendarInfo::makeDefaultObject<Finland>, 0},
-  {"Germany::Eurex",              &CalendarInfo::makeObject<Germany>, Germany::Eurex},
-  {"Germany::FrankfurtStockExchange", &CalendarInfo::makeObject<Germany>, Germany::FrankfurtStockExchange},
-  {"Germany::Settlement",         &CalendarInfo::makeObject<Germany>, Germany::Settlement},
-  {"Germany::Xetra",              &CalendarInfo::makeObject<Germany>, Germany::Xetra},
-  {"HongKong::HKEx",              &CalendarInfo::makeObject<HongKong>, HongKong::HKEx},
-  {"Hungary",                     &CalendarInfo::makeDefaultObject<Hungary>, 0},
-  {"Iceland::ICEX",               &CalendarInfo::makeObject<Iceland>, Iceland::ICEX},
-  {"India::NSE",                  &CalendarInfo::makeObject<India>, India::NSE},
-  {"Indonesia::BEJ",              &CalendarInfo::makeObject<Indonesia>, Indonesia::BEJ},
-  {"Indonesia::JSX",              &CalendarInfo::makeObject<Indonesia>, Indonesia::JSX},
-  {"Indonesia::IDX",              &CalendarInfo::makeObject<Indonesia>, Indonesia::IDX},
-  {"Italy::Exchange",             &CalendarInfo::makeObject<Italy>, Italy::Exchange},
-  {"Italy::Settlement",           &CalendarInfo::makeObject<Italy>, Italy::Settlement},
-  {"Japan",                       &CalendarInfo::makeDefaultObject<Japan>, 0},
-  {"Mexico::BMV",                 &CalendarInfo::makeObject<Mexico>, Mexico::BMV},
-  {"NewZealand",                  &CalendarInfo::makeDefaultObject<NewZealand>, 0},
-  {"Norway",                      &CalendarInfo::makeDefaultObject<Norway>, 0},
-  {"Poland",                      &CalendarInfo::makeDefaultObject<Poland>, 0},
-  {"Russia",                      &CalendarInfo::makeDefaultObject<Russia>, 0},
-  {"SaudiArabia::Tadawul",        &CalendarInfo::makeObject<SaudiArabia>, SaudiArabia::Tadawul},
-  {"Singapore::SGX",              &CalendarInfo::makeObject<Singapore>, Singapore::SGX},
-  {"Slovakia::BSSE",              &CalendarInfo::makeObject<Slovakia>, Slovakia::BSSE},
-  {"SouthAfrica",                 &CalendarInfo::makeDefaultObject<SouthAfrica>, 0},
-  {"SouthKorea::KRX",             &CalendarInfo::makeObject<SouthKorea>, SouthKorea::KRX},
-  {"SouthKorea::Settlement",      &CalendarInfo::makeObject<SouthKorea>, SouthKorea::Settlement},
-  {"Sweden",                      &CalendarInfo::makeDefaultObject<Sweden>, 0},
-  {"Switzerland",                 &CalendarInfo::makeDefaultObject<Switzerland>, 0},
-  {"Taiwan::TSEC",                &CalendarInfo::makeObject<Taiwan>, Taiwan::TSEC},
-  {"Turkey",                      &CalendarInfo::makeDefaultObject<Turkey>, 0},
-  {"Ukraine::USE",                &CalendarInfo::makeObject<Ukraine>, Ukraine::USE},
-  {"UnitedKingdom::Exchange",     &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Exchange},
-  {"UnitedKingdom::Metals",       &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Metals},
-  {"UnitedKingdom::Settlement",   &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Settlement},
-  {"UnitedStates::GovernmentBond",&CalendarInfo::makeObject<UnitedStates>, UnitedStates::GovernmentBond},
-  {"UnitedStates::NERC",          &CalendarInfo::makeObject<UnitedStates>, UnitedStates::NERC},
-  {"UnitedStates::NYSE",          &CalendarInfo::makeObject<UnitedStates>, UnitedStates::NYSE},
-  {"UnitedStates::Settlement",    &CalendarInfo::makeObject<UnitedStates>, UnitedStates::Settlement},
-  {"WeekendsOnly",                &CalendarInfo::makeDefaultObject<WeekendsOnly>, 0},
-};
-
-Calendar *qlCalendar(const char *name, char **e) {
+Calendar *qlCalendar(int country, int market, char **e) {
   try {
-    const CalendarInfo *last = LAST(calendarInfo);
-    const CalendarInfo *found = std::find_if(calendarInfo, last, CalendarInfo::Cmp(name));
-    if (found != last)
-      return alloc(found->make(found->market));
-    else
-      QL_FAIL("Calendar not found " << name);
+    if (country < 0 || country >= (int)LENGTH(calendars))
+      QL_FAIL("Invalid country index " << country);
+    return alloc(calendars[country](market));
   } catch (std::exception& er) {
     return handleException<Calendar *>(e, er);
   }
