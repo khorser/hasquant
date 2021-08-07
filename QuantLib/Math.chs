@@ -1,12 +1,14 @@
 module QuantLib.Math
   (
     RoundingType(..)
+  , Rounding(..)
   , rounding
   , rounding'
   , applyRounding
   )
 where
 
+import QuantLib.Type
 import QuantLib.Utility
 
 #include "qlTypesC2HS.h"
@@ -17,6 +19,9 @@ import QuantLib.Utility
 {#enum RoundingType {} deriving (Show, Eq, Bounded) #}
 
 {#pointer *Rounding foreign finalizer qlFreeRounding newtype #}
+
+instance ForeignObject Rounding where
+  withObject = withRounding
 
 {#fun qlRounding as rounding {preErrorCheck- `String' errorCheck*-} -> `Rounding' #}
 

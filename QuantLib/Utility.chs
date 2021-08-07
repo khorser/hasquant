@@ -18,19 +18,21 @@ module QuantLib.Utility
   , preEnum
   , preArray
   , peekIntArray
+  , withMaybeObject
   )
 where
 
 import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
-import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.Ptr(Ptr, nullPtr, castPtr)
+import Foreign.ForeignPtr(withForeignPtr, ForeignPtr)
 import Foreign.Marshal.Array(peekArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
 
 import Control.Exception(throwIO)
 import Control.Monad(when)
-import QuantLib.Type(Error(CPlusPlusException))
+import QuantLib.Type
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -99,5 +101,9 @@ peekIntArray f pl pp = do
   a <- peekArray (fromIntegral l) p
   c_freeInts p
   return $ map f a
+
+withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
+withMaybeObject Nothing f = f nullPtr
+withMaybeObject (Just x) f = withObject x f
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
