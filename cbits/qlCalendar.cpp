@@ -6,7 +6,6 @@
 
 using namespace QuantLib;
 
-// extended version of EnumObjectInfo1
 // I could have stored a closure instead of int (lambda or an extra object) but this seems overkill here
 // for an alternative solution see qlDayCounter.cpp
 struct CalendarObjectInfo {
@@ -231,17 +230,17 @@ Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
   }
 }
 
-//int* qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, char **e) {
-//  try {
-//    const std::vector<Date> dates = Calendar::holidayList(*arg(calendar), Date(from), Date(to), includeWeekEnds);
-//    *len = dates.size();
-//    int *days = qlAllocateInts(*len);
-//    for (size_t i = 0; i < dates.size(); ++i)
-//      days[i] = dates[i].serialNumber();
-//    return days;
-//  } catch (std::exception& er) {
-//    return handleException<int*>(e, er);
-//  }
-//}
+int* qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, char **e) {
+  try {
+    const std::vector<Date> dates = arg(calendar)->holidayList(Date(from), Date(to), includeWeekEnds);
+    *len = dates.size();
+    int *days = qlAllocateInts(*len);
+    for (size_t i = 0; i < dates.size(); ++i)
+      days[i] = dates[i].serialNumber();
+    return days;
+  } catch (std::exception& er) {
+    return handleException<int*>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

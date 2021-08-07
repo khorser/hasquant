@@ -11,6 +11,27 @@ DayCounter *makeDayCounter() {
   return new T(conv);
 }
 
+template <class T>
+struct EnumObjectInfo {
+  const char *const name;
+  T *(* const make)();
+
+  class Cmp {
+  public:
+    Cmp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo<T> &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+  };
+
+  template <class A>
+  static T *makeObject() {
+    return new A();
+  }
+};
+
 typedef EnumObjectInfo<DayCounter> DayCounterInfo;
 static const DayCounterInfo dayCounterInfo[] = {
   {"Actual/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},

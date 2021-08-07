@@ -56,6 +56,48 @@ void qlFreeIborIndex(QlIborIndex *i) {
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
+template <class T, class T1>
+struct EnumObjectInfo1 {
+  const char *name;
+  T *(*make)(T1 x);
+
+  class Cmp {
+  public:
+    Cmp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo1<T, T1> &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+  };
+
+  template <class A>
+  static T *makeObject(T1 x1) {
+    return new A(x1);
+  }
+};
+
+template <class T, class T1, class T2>
+struct EnumObjectInfo2 {
+  const char *name;
+  T *(*make)(T1 x1, T2 x2);
+
+  class Cmp {
+  public:
+    Cmp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo2<T, T1, T2> &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+  };
+
+  template <class A>
+  static T *makeObject(T1 x1, T2 x2) {
+    return new A(x1, x2);
+  }
+};
+
 typedef EnumObjectInfo2<IborIndex, const Period&, YieldTermStructureHandle&> IborInfo;
 static const IborInfo iborInfo [] = {
   {"Euribor",	  &IborInfo::makeObject<Euribor>},
