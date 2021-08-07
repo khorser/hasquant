@@ -1,7 +1,7 @@
 module QuantLib.Math
   (
     RoundingType(..)
-  , Rounding(..)
+  , Rounding
   , rounding
   , rounding'
   , applyRounding
