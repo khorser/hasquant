@@ -9,48 +9,48 @@ using namespace QuantLib;
 typedef Calendar *(*makeCalendar)(int market);
 
 static const makeCalendar calendars[] = {
-  [](int){ return (Calendar *)new Argentina(); }
-  , [](int){ return (Calendar *)new Australia(); }
-  , [](int market){ return (Calendar *)new Austria((Austria::Market) market); }
-  , [](int){ return (Calendar *)new Botswana(); }
-  , [](int market){ return (Calendar *)new Brazil((Brazil::Market) market); }
-  , [](int market){ return (Calendar *)new Canada((Canada::Market) market); }
-  , [](int market){ return (Calendar *)new China((China::Market) market); }
-  , [](int){ return (Calendar *)new CzechRepublic(); }
-  , [](int){ return (Calendar *)new Denmark(); }
-  , [](int){ return (Calendar *)new Finland(); }
-  , [](int market){ return (Calendar *)new France((France::Market) market); }
-  , [](int market){ return (Calendar *)new Germany((Germany::Market) market); }
-  , [](int){ return (Calendar *)new HongKong(); }
-  , [](int){ return (Calendar *)new Hungary(); }
-  , [](int){ return (Calendar *)new Iceland(); }
-  , [](int){ return (Calendar *)new India(); }
-  , [](int market){ return (Calendar *)new Indonesia((Indonesia::Market) market); }
-  , [](int market){ return (Calendar *)new Israel((Israel::Market) market); }
-  , [](int market){ return (Calendar *)new Italy((Italy::Market) market); }
-  , [](int){ return (Calendar *)new Japan(); }
-  , [](int){ return (Calendar *)new Mexico(); }
-  , [](int){ return (Calendar *)new NewZealand(); }
-  , [](int){ return (Calendar *)new Norway(); }
-  , [](int){ return (Calendar *)new NullCalendar(); }
-  , [](int){ return (Calendar *)new Poland(); }
-  , [](int market){ return (Calendar *)new Romania((Romania::Market) market); }
-  , [](int market){ return (Calendar *)new Russia((Russia::Market) market); }
-  , [](int){ return (Calendar *)new SaudiArabia(); }
-  , [](int){ return (Calendar *)new Singapore(); }
-  , [](int){ return (Calendar *)new Slovakia(); }
-  , [](int){ return (Calendar *)new SouthAfrica(); }
-  , [](int market){ return (Calendar *)new SouthKorea((SouthKorea::Market) market); }
-  , [](int){ return (Calendar *)new Sweden(); }
-  , [](int){ return (Calendar *)new Switzerland(); }
-  , [](int){ return (Calendar *)new Taiwan(); }
-  , [](int){ return (Calendar *)new TARGET(); }
-  , [](int){ return (Calendar *)new Thailand(); }
-  , [](int){ return (Calendar *)new Turkey(); }
-  , [](int){ return (Calendar *)new Ukraine(); }
-  , [](int market){ return (Calendar *)new UnitedKingdom((UnitedKingdom::Market) market); }
-  , [](int market){ return (Calendar *)new UnitedStates((UnitedStates::Market) market); }
-  , [](int){ return (Calendar *)new WeekendsOnly(); }
+  [](int){ return static_cast<Calendar *>(new Argentina()); }
+  , [](int){ return static_cast<Calendar *>(new Australia()); }
+  , [](int market){ return static_cast<Calendar *>(new Austria((Austria::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new Botswana()); }
+  , [](int market){ return static_cast<Calendar *>(new Brazil((Brazil::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new Canada((Canada::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new China((China::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new CzechRepublic()); }
+  , [](int){ return static_cast<Calendar *>(new Denmark()); }
+  , [](int){ return static_cast<Calendar *>(new Finland()); }
+  , [](int market){ return static_cast<Calendar *>(new France((France::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new Germany((Germany::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new HongKong()); }
+  , [](int){ return static_cast<Calendar *>(new Hungary()); }
+  , [](int){ return static_cast<Calendar *>(new Iceland()); }
+  , [](int){ return static_cast<Calendar *>(new India()); }
+  , [](int market){ return static_cast<Calendar *>(new Indonesia((Indonesia::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new Israel((Israel::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new Italy((Italy::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new Japan()); }
+  , [](int){ return static_cast<Calendar *>(new Mexico()); }
+  , [](int){ return static_cast<Calendar *>(new NewZealand()); }
+  , [](int){ return static_cast<Calendar *>(new Norway()); }
+  , [](int){ return static_cast<Calendar *>(new NullCalendar()); }
+  , [](int){ return static_cast<Calendar *>(new Poland()); }
+  , [](int market){ return static_cast<Calendar *>(new Romania((Romania::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new Russia((Russia::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new SaudiArabia()); }
+  , [](int){ return static_cast<Calendar *>(new Singapore()); }
+  , [](int){ return static_cast<Calendar *>(new Slovakia()); }
+  , [](int){ return static_cast<Calendar *>(new SouthAfrica()); }
+  , [](int market){ return static_cast<Calendar *>(new SouthKorea((SouthKorea::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new Sweden()); }
+  , [](int){ return static_cast<Calendar *>(new Switzerland()); }
+  , [](int){ return static_cast<Calendar *>(new Taiwan()); }
+  , [](int){ return static_cast<Calendar *>(new TARGET()); }
+  , [](int){ return static_cast<Calendar *>(new Thailand()); }
+  , [](int){ return static_cast<Calendar *>(new Turkey()); }
+  , [](int){ return static_cast<Calendar *>(new Ukraine()); }
+  , [](int market){ return static_cast<Calendar *>(new UnitedKingdom((UnitedKingdom::Market) market)); }
+  , [](int market){ return static_cast<Calendar *>(new UnitedStates((UnitedStates::Market) market)); }
+  , [](int){ return static_cast<Calendar *>(new WeekendsOnly()); }
 };
 
 Calendar *qlCalendar(int country, int market, char **e) {
@@ -192,16 +192,15 @@ Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
   }
 }
 
-int* qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, char **e) {
+void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, int **days, char **e) {
   try {
     const std::vector<Date> dates = arg(calendar)->holidayList(Date(from), Date(to), includeWeekEnds);
     *len = dates.size();
-    int *days = qlAllocateInts(*len);
+    *days = qlAllocateInts(*len);
     for (size_t i = 0; i < dates.size(); ++i)
-      days[i] = dates[i].serialNumber();
-    return days;
+      *days[i] = dates[i].serialNumber();
   } catch (std::exception& er) {
-    return handleException<int*>(e, er);
+    (void)handleException<int*>(e, er);
   }
 }
 
