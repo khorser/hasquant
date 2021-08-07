@@ -5,85 +5,97 @@
 
 using namespace QuantLib;
 
-typedef EnumObjectInfo<Currency> CurrencyInfo;
-static const CurrencyInfo currencyInfo[] = {
-  {"EUR", &CurrencyInfo::makeObject<EURCurrency>},
-  {"ARS", &CurrencyInfo::makeObject<ARSCurrency>},
-  {"ATS", &CurrencyInfo::makeObject<ATSCurrency>},
-  {"AUD", &CurrencyInfo::makeObject<AUDCurrency>},
-  {"BDT", &CurrencyInfo::makeObject<BDTCurrency>},
-  {"BEF", &CurrencyInfo::makeObject<BEFCurrency>},
-  {"BGL", &CurrencyInfo::makeObject<BGLCurrency>},
-  {"BRL", &CurrencyInfo::makeObject<BRLCurrency>},
-  {"BYR", &CurrencyInfo::makeObject<BYRCurrency>},
-  {"CAD", &CurrencyInfo::makeObject<CADCurrency>},
-  {"CHF", &CurrencyInfo::makeObject<CHFCurrency>},
-  {"CLP", &CurrencyInfo::makeObject<CLPCurrency>},
-  {"CNY", &CurrencyInfo::makeObject<CNYCurrency>},
-  {"COP", &CurrencyInfo::makeObject<COPCurrency>},
-  {"CYP", &CurrencyInfo::makeObject<CYPCurrency>},
-  {"CZK", &CurrencyInfo::makeObject<CZKCurrency>},
-  {"DEM", &CurrencyInfo::makeObject<DEMCurrency>},
-  {"DKK", &CurrencyInfo::makeObject<DKKCurrency>},
-  {"EEK", &CurrencyInfo::makeObject<EEKCurrency>},
-  {"ESP", &CurrencyInfo::makeObject<ESPCurrency>},
-  {"FIM", &CurrencyInfo::makeObject<FIMCurrency>},
-  {"FRF", &CurrencyInfo::makeObject<FRFCurrency>},
-  {"GBP", &CurrencyInfo::makeObject<GBPCurrency>},
-  {"GRD", &CurrencyInfo::makeObject<GRDCurrency>},
-  {"HKD", &CurrencyInfo::makeObject<HKDCurrency>},
-  {"HUF", &CurrencyInfo::makeObject<HUFCurrency>},
-  {"IEP", &CurrencyInfo::makeObject<IEPCurrency>},
-  {"ILS", &CurrencyInfo::makeObject<ILSCurrency>},
-  {"INR", &CurrencyInfo::makeObject<INRCurrency>},
-  {"IQD", &CurrencyInfo::makeObject<IQDCurrency>},
-  {"IRR", &CurrencyInfo::makeObject<IRRCurrency>},
-  {"ISK", &CurrencyInfo::makeObject<ISKCurrency>},
-  {"ITL", &CurrencyInfo::makeObject<ITLCurrency>},
-  {"JPY", &CurrencyInfo::makeObject<JPYCurrency>},
-  {"KRW", &CurrencyInfo::makeObject<KRWCurrency>},
-  {"KWD", &CurrencyInfo::makeObject<KWDCurrency>},
-  {"LTL", &CurrencyInfo::makeObject<LTLCurrency>},
-  {"LUF", &CurrencyInfo::makeObject<LUFCurrency>},
-  {"LVL", &CurrencyInfo::makeObject<LVLCurrency>},
-  {"MTL", &CurrencyInfo::makeObject<MTLCurrency>},
-  {"MXN", &CurrencyInfo::makeObject<MXNCurrency>},
-  {"NLG", &CurrencyInfo::makeObject<NLGCurrency>},
-  {"NOK", &CurrencyInfo::makeObject<NOKCurrency>},
-  {"NPR", &CurrencyInfo::makeObject<NPRCurrency>},
-  {"NZD", &CurrencyInfo::makeObject<NZDCurrency>},
-  {"PEH", &CurrencyInfo::makeObject<PEHCurrency>},
-  {"PEI", &CurrencyInfo::makeObject<PEICurrency>},
-  {"PEN", &CurrencyInfo::makeObject<PEICurrency>},
-  {"PKR", &CurrencyInfo::makeObject<PKRCurrency>},
-  {"PLN", &CurrencyInfo::makeObject<PLNCurrency>},
-  {"PTE", &CurrencyInfo::makeObject<PTECurrency>},
-  {"ROL", &CurrencyInfo::makeObject<ROLCurrency>},
-  {"RON", &CurrencyInfo::makeObject<RONCurrency>},
-  {"SAR", &CurrencyInfo::makeObject<SARCurrency>},
-  {"SEK", &CurrencyInfo::makeObject<SEKCurrency>},
-  {"SGD", &CurrencyInfo::makeObject<SGDCurrency>},
-  {"SIT", &CurrencyInfo::makeObject<SITCurrency>},
-  {"SKK", &CurrencyInfo::makeObject<SKKCurrency>},
-  {"THB", &CurrencyInfo::makeObject<THBCurrency>},
-  {"TRL", &CurrencyInfo::makeObject<TRLCurrency>},
-  {"TRY", &CurrencyInfo::makeObject<TRYCurrency>},
-  {"TTD", &CurrencyInfo::makeObject<TTDCurrency>},
-  {"TWD", &CurrencyInfo::makeObject<TWDCurrency>},
-  {"USD", &CurrencyInfo::makeObject<USDCurrency>},
-  {"VEB", &CurrencyInfo::makeObject<VEBCurrency>},
-  {"ZAR", &CurrencyInfo::makeObject<ZARCurrency>}
+typedef Currency *(*makeCcy)();
+
+// should match the order in qlEnumObjects.h
+static const makeCcy ccys[] = {[](){ return (Currency *)new ARSCurrency(); }
+  , [](){ return (Currency *)new ATSCurrency(); }
+  , [](){ return (Currency *)new AUDCurrency(); }
+  , [](){ return (Currency *)new BCHCurrency(); }
+  , [](){ return (Currency *)new BDTCurrency(); }
+  , [](){ return (Currency *)new BEFCurrency(); }
+  , [](){ return (Currency *)new BGLCurrency(); }
+  , [](){ return (Currency *)new BRLCurrency(); }
+  , [](){ return (Currency *)new BTCCurrency(); }
+  , [](){ return (Currency *)new BYRCurrency(); }
+  , [](){ return (Currency *)new CADCurrency(); }
+  , [](){ return (Currency *)new CHFCurrency(); }
+  , [](){ return (Currency *)new CLPCurrency(); }
+  , [](){ return (Currency *)new CNYCurrency(); }
+  , [](){ return (Currency *)new COPCurrency(); }
+  , [](){ return (Currency *)new CYPCurrency(); }
+  , [](){ return (Currency *)new CZKCurrency(); }
+  , [](){ return (Currency *)new DASHCurrency(); }
+  , [](){ return (Currency *)new DEMCurrency(); }
+  , [](){ return (Currency *)new DKKCurrency(); }
+  , [](){ return (Currency *)new EEKCurrency(); }
+  , [](){ return (Currency *)new ESPCurrency(); }
+  , [](){ return (Currency *)new ETCCurrency(); }
+  , [](){ return (Currency *)new ETHCurrency(); }
+  , [](){ return (Currency *)new EURCurrency(); }
+  , [](){ return (Currency *)new FIMCurrency(); }
+  , [](){ return (Currency *)new FRFCurrency(); }
+  , [](){ return (Currency *)new GBPCurrency(); }
+  , [](){ return (Currency *)new GRDCurrency(); }
+  , [](){ return (Currency *)new HKDCurrency(); }
+  , [](){ return (Currency *)new HUFCurrency(); }
+  , [](){ return (Currency *)new IDRCurrency(); }
+  , [](){ return (Currency *)new IEPCurrency(); }
+  , [](){ return (Currency *)new ILSCurrency(); }
+  , [](){ return (Currency *)new INRCurrency(); }
+  , [](){ return (Currency *)new IQDCurrency(); }
+  , [](){ return (Currency *)new IRRCurrency(); }
+  , [](){ return (Currency *)new ISKCurrency(); }
+  , [](){ return (Currency *)new ITLCurrency(); }
+  , [](){ return (Currency *)new JPYCurrency(); }
+  , [](){ return (Currency *)new KRWCurrency(); }
+  , [](){ return (Currency *)new KWDCurrency(); }
+  , [](){ return (Currency *)new KZTCurrency(); }
+  , [](){ return (Currency *)new LTCCurrency(); }
+  , [](){ return (Currency *)new LTLCurrency(); }
+  , [](){ return (Currency *)new LUFCurrency(); }
+  , [](){ return (Currency *)new LVLCurrency(); }
+  , [](){ return (Currency *)new MTLCurrency(); }
+  , [](){ return (Currency *)new MXNCurrency(); }
+  , [](){ return (Currency *)new MYRCurrency(); }
+  , [](){ return (Currency *)new NGNCurrency(); }
+  , [](){ return (Currency *)new NLGCurrency(); }
+  , [](){ return (Currency *)new NOKCurrency(); }
+  , [](){ return (Currency *)new NPRCurrency(); }
+  , [](){ return (Currency *)new NZDCurrency(); }
+  , [](){ return (Currency *)new PEHCurrency(); }
+  , [](){ return (Currency *)new PEICurrency(); }
+  , [](){ return (Currency *)new PENCurrency(); }
+  , [](){ return (Currency *)new PKRCurrency(); }
+  , [](){ return (Currency *)new PLNCurrency(); }
+  , [](){ return (Currency *)new PTECurrency(); }
+  , [](){ return (Currency *)new ROLCurrency(); }
+  , [](){ return (Currency *)new RONCurrency(); }
+  , [](){ return (Currency *)new RUBCurrency(); }
+  , [](){ return (Currency *)new SARCurrency(); }
+  , [](){ return (Currency *)new SEKCurrency(); }
+  , [](){ return (Currency *)new SGDCurrency(); }
+  , [](){ return (Currency *)new SITCurrency(); }
+  , [](){ return (Currency *)new SKKCurrency(); }
+  , [](){ return (Currency *)new THBCurrency(); }
+  , [](){ return (Currency *)new TRLCurrency(); }
+  , [](){ return (Currency *)new TRYCurrency(); }
+  , [](){ return (Currency *)new TTDCurrency(); }
+  , [](){ return (Currency *)new TWDCurrency(); }
+  , [](){ return (Currency *)new UAHCurrency(); }
+  , [](){ return (Currency *)new USDCurrency(); }
+  , [](){ return (Currency *)new VEBCurrency(); }
+  , [](){ return (Currency *)new VNDCurrency(); }
+  , [](){ return (Currency *)new XRPCurrency(); }
+  , [](){ return (Currency *)new ZARCurrency(); }
+  , [](){ return (Currency *)new ZECCurrency(); }
 };
 
-Currency *qlCurrency(const char *name, char **e) {
-  // use enumerations instead?
+Currency *qlCurrency(int ccy, char **e) {
   try {
-    const CurrencyInfo *last = LAST(currencyInfo);
-    const CurrencyInfo *found = std::find_if(currencyInfo, last, CurrencyInfo::Cmp(name));
-    if (found != last)
-      return alloc(found->make());
-    else
-      QL_FAIL("Currency not found " << name);
+    if (ccy < 0 || ccy >= (int)LENGTH(ccys))
+      QL_FAIL("Invalid currency index " << ccy);
+    return alloc(ccys[ccy]());
   } catch (std::exception& er) {
     return handleException<Currency *>(e, er);
   }

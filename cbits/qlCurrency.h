@@ -1,7 +1,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  Currency *qlCurrency(const char *name, char **e);
+  Currency *qlCurrency(int ccy, char **e);
   const char *qlCurrencyName(Currency *currency);
 
   void qlFreeCurrency(Currency *currency);

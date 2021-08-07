@@ -30,4 +30,4 @@
 #include "qlVolatilityTS.h"
 #include "qlYieldTS.h"
 
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
+/* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */
