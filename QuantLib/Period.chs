@@ -9,8 +9,6 @@ module QuantLib.Period
   , normalize
   , TimeUnit(..)
   , Frequency(..)
-  , fromPeriod
-  , toPeriod
   )
 where
 
@@ -31,26 +29,20 @@ import QuantLib.Utility
 {#fun qlPeriodFromFrequency1 as fromFrequency {`Frequency', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
-{#fun qlPeriodToFrequency1 as toFrequency {fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Frequency' #}
+{#fun qlPeriodToFrequency1 as toFrequency {fromEnumQuantity `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Frequency' #}
 
 {#fun qlPeriodParserParse1 as parse {`String', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
-{#fun qlPeriodAdd1 as addPeriod {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #} 
+{#fun qlPeriodAdd1 as addPeriod {fromEnumQuantity `Int, TimeUnit'&, fromEnumQuantity `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #} 
 
 add :: (Int, TimeUnit) -> (Int, TimeUnit) -> IO (Int, TimeUnit)
 add = addPeriod
 
-{#fun qlPeriodDivide1 as divide {fromPeriod `Int, TimeUnit'&, `Int', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
+{#fun qlPeriodDivide1 as divide {fromEnumQuantity `Int, TimeUnit'&, `Int', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
 -- less than
-{#fun qlPeriodsLT1 as lessThan {fromPeriod `Int, TimeUnit'&, fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Bool' #}
+{#fun qlPeriodsLT1 as lessThan {fromEnumQuantity `Int, TimeUnit'&, fromEnumQuantity `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
-{#fun qlPeriodNormalize1 as normalize {fromPeriod `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
-
-fromPeriod :: (Int, TimeUnit) -> (CInt, CInt)
-fromPeriod (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
-
-toPeriod :: (CInt, CInt) -> (Int, TimeUnit)
-toPeriod (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
+{#fun qlPeriodNormalize1 as normalize {fromEnumQuantity `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

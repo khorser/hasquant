@@ -20,6 +20,8 @@ module QuantLib.Utility
   , peekIntArray
   , withMaybeObject
   , withEnumArray
+  , fromEnumQuantity
+  , toEnumQuantity
   )
 where
 
@@ -109,5 +111,11 @@ peekIntArray f pl pp = do
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
 withMaybeObject Nothing f = f nullPtr
 withMaybeObject (Just x) f = withObject x f
+
+fromEnumQuantity :: (Enum a) => (Int, a) -> (CInt, CInt)
+fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
+
+toEnumQuantity :: (Enum a) => (CInt, CInt) -> (Int, a)
+toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

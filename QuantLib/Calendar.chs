@@ -207,7 +207,7 @@ calendar x = qlCalendar (country x) (market x)
 {#fun qlCalendarAddHoliday as addHoliday {`Calendar', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
-{#fun qlCalendarAdvance1 as advance' {`Calendar', fromDay* `Day', fromPeriod `Int, TimeUnit'&, `BusinessDayConvention', `Bool', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
+{#fun qlCalendarAdvance1 as advance' {`Calendar', fromDay* `Day', fromEnumQuantity `Int, TimeUnit'&, `BusinessDayConvention', `Bool', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
 -- |Calculates the number of business days between two given dates and returns the result.
 {#fun qlCalendarBusinessDaysBetween as businessDaysBetween {`Calendar', fromDay* `Day', fromDay* `Day', `Bool', `Bool', preErrorCheck- `String' errorCheck*-} -> `Int' #}

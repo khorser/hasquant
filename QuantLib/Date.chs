@@ -82,7 +82,7 @@ import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
 import QuantLib.Type(Error(DateConversion))
 import QuantLib.Utility
-import QuantLib.Period(fromPeriod, TimeUnit)
+import QuantLib.Period(TimeUnit)
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -250,7 +250,7 @@ today = do
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 {#fun qlIMMNextDate as nextIMMDate {fromDay* `Day', `Bool'} -> `Day' toDay #}
 
-{#fun qlAddPeriod as addPeriod {fromDay* `Day', fromPeriod `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
+{#fun qlAddPeriod as addPeriod {fromDay* `Day', fromEnumQuantity `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
 {#fun qlECBAddDate as addECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 
