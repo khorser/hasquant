@@ -86,26 +86,26 @@ using QuantLib::Coupon;
 // the containers each time we call QuantLib
 // To make things more complex, I added wrapper classes used when tracing
 // is activated to track that objects are really destroyed, yes, I'm paranoid
-typedef boost::shared_ptr<Quote> QlQuote;
-typedef boost::shared_ptr<YieldTermStructure> QlYieldTermStructure;
-typedef boost::shared_ptr<PricingEngine> QlPricingEngine;
-typedef boost::shared_ptr<IborIndex> QlIborIndex;
-typedef boost::shared_ptr<Index> QlIndex;
-typedef boost::shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
-typedef boost::shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
-typedef boost::shared_ptr<Instrument> QlInstrument;
-typedef boost::shared_ptr<Bond> QlBond;
-typedef boost::shared_ptr<FixedRateBond> QlFixedRateBond;
-typedef boost::shared_ptr<Forward> QlForward;
-typedef boost::shared_ptr<FixedRateBondForward> QlFixedRateBondForward;
-typedef boost::shared_ptr<ForwardRateAgreement> QlForwardRateAgreement;
+typedef QuantLib::ext::shared_ptr<Quote> QlQuote;
+typedef QuantLib::ext::shared_ptr<YieldTermStructure> QlYieldTermStructure;
+typedef QuantLib::ext::shared_ptr<PricingEngine> QlPricingEngine;
+typedef QuantLib::ext::shared_ptr<IborIndex> QlIborIndex;
+typedef QuantLib::ext::shared_ptr<Index> QlIndex;
+typedef QuantLib::ext::shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
+typedef QuantLib::ext::shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
+typedef QuantLib::ext::shared_ptr<Instrument> QlInstrument;
+typedef QuantLib::ext::shared_ptr<Bond> QlBond;
+typedef QuantLib::ext::shared_ptr<FixedRateBond> QlFixedRateBond;
+typedef QuantLib::ext::shared_ptr<Forward> QlForward;
+typedef QuantLib::ext::shared_ptr<FixedRateBondForward> QlFixedRateBondForward;
+typedef QuantLib::ext::shared_ptr<ForwardRateAgreement> QlForwardRateAgreement;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
 // to save some time on compilation
 #ifdef quantlib_ratehelpers_hpp
 using QuantLib::RateHelper;
-typedef boost::shared_ptr<RateHelper> QlRateHelper;
+typedef QuantLib::ext::shared_ptr<RateHelper> QlRateHelper;
 #endif
 
 #ifdef quantlib_cash_flow_hpp
@@ -206,7 +206,7 @@ boost::optional<bool> qlOptBool(int b);
 int qlOptBool(boost::optional<bool> b);
 
 template <class T>
-Handle<T> qlNullableHandle(boost::shared_ptr<T> *p) {
+Handle<T> qlNullableHandle(QuantLib::ext::shared_ptr<T> *p) {
   return p
     ? Handle<T>(*(arg(p)))
     : Handle<T>();
@@ -225,7 +225,7 @@ std::vector<T> qlBuildVector(T **vals, size_t len) {
 }
 
 template <class T>
-std::vector<Handle<T> > qlBuildHandleVector(boost::shared_ptr<T> **vals, size_t len) {
+std::vector<Handle<T> > qlBuildHandleVector(QuantLib::ext::shared_ptr<T> **vals, size_t len) {
   std::vector<Handle<T> > r;
   for (size_t i = 0; i < len; ++i) {
     r.push_back(Handle<T>(*vals[i]));
@@ -234,7 +234,7 @@ std::vector<Handle<T> > qlBuildHandleVector(boost::shared_ptr<T> **vals, size_t 
 }
 
 template <class T>
-std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(boost::shared_ptr<T> **vals, size_t rows, size_t cols) {
+std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(QuantLib::ext::shared_ptr<T> **vals, size_t rows, size_t cols) {
   std::vector< std::vector<Handle<T> > > r;
   for (size_t i = 0; i < rows; ++i) {
     std::vector<Handle<T> > row;
@@ -273,77 +273,77 @@ T traceval(const char *text, T val) {
 #define LAST(a) (a + sizeof(a)/sizeof(a[0]))
 
 namespace QuantLib {class Swap;} using QuantLib::Swap;
-typedef boost::shared_ptr<Swap> QlSwap;
+typedef QuantLib::ext::shared_ptr<Swap> QlSwap;
 template <> class objClassName<Swap *> { public: static const char *name() { return "Swap"; } };
 template <> class objClassName<QlSwap *> { public: static const char *name() { return "QlSwap"; } };
 
 namespace QuantLib {class VanillaSwap;} using QuantLib::VanillaSwap;
-typedef boost::shared_ptr<VanillaSwap> QlVanillaSwap;
+typedef QuantLib::ext::shared_ptr<VanillaSwap> QlVanillaSwap;
 template <> class objClassName<VanillaSwap *> { public: static const char *name() { return "VanillaSwap"; } };
 template <> class objClassName<QlVanillaSwap *> { public: static const char *name() { return "QlVanillaSwap"; } };
 
 namespace QuantLib {class InterestRateIndex;} using QuantLib::InterestRateIndex;
-typedef boost::shared_ptr<InterestRateIndex> QlInterestRateIndex;
+typedef QuantLib::ext::shared_ptr<InterestRateIndex> QlInterestRateIndex;
 template <> class objClassName<InterestRateIndex *> { public: static const char *name() { return "InterestRateIndex"; } };
 template <> class objClassName<QlInterestRateIndex *> { public: static const char *name() { return "QlInterestRateIndex"; } };
 
 namespace QuantLib {class SwapIndex;} using QuantLib::SwapIndex;
-typedef boost::shared_ptr<SwapIndex> QlSwapIndex;
+typedef QuantLib::ext::shared_ptr<SwapIndex> QlSwapIndex;
 template <> class objClassName<SwapIndex *> { public: static const char *name() { return "SwapIndex"; } };
 template <> class objClassName<QlSwapIndex *> { public: static const char *name() { return "QlSwapIndex"; } };
 
 namespace QuantLib {class SimpleQuote;} using QuantLib::SimpleQuote;
-typedef boost::shared_ptr<SimpleQuote> QlSimpleQuote;
+typedef QuantLib::ext::shared_ptr<SimpleQuote> QlSimpleQuote;
 template <> class objClassName<SimpleQuote *> { public: static const char *name() { return "SimpleQuote"; } };
 template <> class objClassName<QlSimpleQuote *> { public: static const char *name() { return "QlSimpleQuote"; } };
 
 namespace QuantLib {class OvernightIndex;} using QuantLib::OvernightIndex;
-typedef boost::shared_ptr<OvernightIndex> QlOvernightIndex;
+typedef QuantLib::ext::shared_ptr<OvernightIndex> QlOvernightIndex;
 template <> class objClassName<OvernightIndex *> { public: static const char *name() { return "OvernightIndex"; } };
 template <> class objClassName<QlOvernightIndex *> { public: static const char *name() { return "QlOvernightIndex"; } };
 
 namespace QuantLib {class OvernightIndexedSwapIndex;} using QuantLib::OvernightIndexedSwapIndex;
-typedef boost::shared_ptr<OvernightIndexedSwapIndex> QlOvernightIndexedSwapIndex;
+typedef QuantLib::ext::shared_ptr<OvernightIndexedSwapIndex> QlOvernightIndexedSwapIndex;
 template <> class objClassName<OvernightIndexedSwapIndex *> { public: static const char *name() { return "OvernightIndexedSwapIndex"; } };
 template <> class objClassName<QlOvernightIndexedSwapIndex *> { public: static const char *name() { return "QlOvernightIndexedSwapIndex"; } };
 
 namespace QuantLib {class BMAIndex;} using QuantLib::BMAIndex;
-typedef boost::shared_ptr<BMAIndex> QlBMAIndex;
+typedef QuantLib::ext::shared_ptr<BMAIndex> QlBMAIndex;
 template <> class objClassName<BMAIndex *> { public: static const char *name() { return "BMAIndex"; } };
 template <> class objClassName<QlBMAIndex *> { public: static const char *name() { return "QlBMAIndex"; } };
 
 namespace QuantLib {class BMASwap;} using QuantLib::BMASwap;
-typedef boost::shared_ptr<BMASwap> QlBMASwap;
+typedef QuantLib::ext::shared_ptr<BMASwap> QlBMASwap;
 template <> class objClassName<BMASwap *> { public: static const char *name() { return "BMASwap"; } };
 template <> class objClassName<QlBMASwap *> { public: static const char *name() { return "QlBMASwap"; } };
 
 namespace QuantLib {class OvernightIndexedSwap;} using QuantLib::OvernightIndexedSwap;
-typedef boost::shared_ptr<OvernightIndexedSwap> QlOvernightIndexedSwap;
+typedef QuantLib::ext::shared_ptr<OvernightIndexedSwap> QlOvernightIndexedSwap;
 template <> class objClassName<OvernightIndexedSwap *> { public: static const char *name() { return "OvernightIndexedSwap"; } };
 template <> class objClassName<QlOvernightIndexedSwap *> { public: static const char *name() { return "QlOvernightIndexedSwap"; } };
 
 namespace QuantLib {class BondHelper;} using QuantLib::BondHelper;
-typedef boost::shared_ptr<BondHelper> QlBondHelper;
+typedef QuantLib::ext::shared_ptr<BondHelper> QlBondHelper;
 template <> class objClassName<BondHelper *> { public: static const char *name() { return "BondHelper"; } };
 template <> class objClassName<QlBondHelper *> { public: static const char *name() { return "QlBondHelper"; } };
 
 namespace QuantLib {class FittedBondDiscountCurve;} using QuantLib::FittedBondDiscountCurve;
-typedef boost::shared_ptr<FittedBondDiscountCurve> QlFittedBondDiscountCurve;
+typedef QuantLib::ext::shared_ptr<FittedBondDiscountCurve> QlFittedBondDiscountCurve;
 template <> class objClassName<FittedBondDiscountCurve *> { public: static const char *name() { return "FittedBondDiscountCurve"; } };
 template <> class objClassName<QlFittedBondDiscountCurve *> { public: static const char *name() { return "QlFittedBondDiscountCurve"; } };
 
 namespace QuantLib {class SwapRateHelper;} using QuantLib::SwapRateHelper;
-typedef boost::shared_ptr<SwapRateHelper> QlSwapRateHelper;
+typedef QuantLib::ext::shared_ptr<SwapRateHelper> QlSwapRateHelper;
 template <> class objClassName<SwapRateHelper *> { public: static const char *name() { return "SwapRateHelper"; } };
 template <> class objClassName<QlSwapRateHelper *> { public: static const char *name() { return "QlSwapRateHelper"; } };
 
 namespace QuantLib {class AssetSwap;} using QuantLib::AssetSwap;
-typedef boost::shared_ptr<AssetSwap> QlAssetSwap;
+typedef QuantLib::ext::shared_ptr<AssetSwap> QlAssetSwap;
 template <> class objClassName<AssetSwap *> { public: static const char *name() { return "AssetSwap"; } };
 template <> class objClassName<QlAssetSwap *> { public: static const char *name() { return "QlAssetSwap"; } };
 
 namespace QuantLib {class OISRateHelper;} using QuantLib::OISRateHelper;
-typedef boost::shared_ptr<OISRateHelper> QlOISRateHelper;
+typedef QuantLib::ext::shared_ptr<OISRateHelper> QlOISRateHelper;
 template <> class objClassName<OISRateHelper *> { public: static const char *name() { return "OISRateHelper"; } };
 template <> class objClassName<QlOISRateHelper *> { public: static const char *name() { return "QlOISRateHelper"; } };
 
@@ -351,339 +351,339 @@ namespace QuantLib {class Rounding;} using QuantLib::Rounding;
 template <> class objClassName<Rounding *> { public: static const char *name() { return "Rounding"; } };
 
 namespace QuantLib {class TermStructure;} using QuantLib::TermStructure;
-typedef boost::shared_ptr<TermStructure> QlTermStructure;
+typedef QuantLib::ext::shared_ptr<TermStructure> QlTermStructure;
 template <> class objClassName<TermStructure *> { public: static const char *name() { return "TermStructure"; } };
 template <> class objClassName<QlTermStructure *> { public: static const char *name() { return "QlTermStructure"; } };
 
 namespace QuantLib {class BasketPayoff;} using QuantLib::BasketPayoff;
-typedef boost::shared_ptr<BasketPayoff> QlBasketPayoff;
+typedef QuantLib::ext::shared_ptr<BasketPayoff> QlBasketPayoff;
 template <> class objClassName<BasketPayoff *> { public: static const char *name() { return "BasketPayoff"; } };
 template <> class objClassName<QlBasketPayoff *> { public: static const char *name() { return "QlBasketPayoff"; } };
 
 namespace QuantLib {class Payoff;} using QuantLib::Payoff;
-typedef boost::shared_ptr<Payoff> QlPayoff;
+typedef QuantLib::ext::shared_ptr<Payoff> QlPayoff;
 template <> class objClassName<Payoff *> { public: static const char *name() { return "Payoff"; } };
 template <> class objClassName<QlPayoff *> { public: static const char *name() { return "QlPayoff"; } };
 
 namespace QuantLib {class StrikedTypePayoff;} using QuantLib::StrikedTypePayoff;
-typedef boost::shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
+typedef QuantLib::ext::shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
 template <> class objClassName<StrikedTypePayoff *> { public: static const char *name() { return "StrikedTypePayoff"; } };
 template <> class objClassName<QlStrikedTypePayoff *> { public: static const char *name() { return "QlStrikedTypePayoff"; } };
 
 namespace QuantLib {class TypePayoff;} using QuantLib::TypePayoff;
-typedef boost::shared_ptr<TypePayoff> QlTypePayoff;
+typedef QuantLib::ext::shared_ptr<TypePayoff> QlTypePayoff;
 template <> class objClassName<TypePayoff *> { public: static const char *name() { return "TypePayoff"; } };
 template <> class objClassName<QlTypePayoff *> { public: static const char *name() { return "QlTypePayoff"; } };
 
 namespace QuantLib {class PercentageStrikePayoff;} using QuantLib::PercentageStrikePayoff;
-typedef boost::shared_ptr<PercentageStrikePayoff> QlPercentageStrikePayoff;
+typedef QuantLib::ext::shared_ptr<PercentageStrikePayoff> QlPercentageStrikePayoff;
 template <> class objClassName<PercentageStrikePayoff *> { public: static const char *name() { return "PercentageStrikePayoff"; } };
 template <> class objClassName<QlPercentageStrikePayoff *> { public: static const char *name() { return "QlPercentageStrikePayoff"; } };
 
 namespace QuantLib {class PlainVanillaPayoff;} using QuantLib::PlainVanillaPayoff;
-typedef boost::shared_ptr<PlainVanillaPayoff> QlPlainVanillaPayoff;
+typedef QuantLib::ext::shared_ptr<PlainVanillaPayoff> QlPlainVanillaPayoff;
 template <> class objClassName<PlainVanillaPayoff *> { public: static const char *name() { return "PlainVanillaPayoff"; } };
 template <> class objClassName<QlPlainVanillaPayoff *> { public: static const char *name() { return "QlPlainVanillaPayoff"; } };
 
 namespace QuantLib {class AmericanExercise;} using QuantLib::AmericanExercise;
-typedef boost::shared_ptr<AmericanExercise> QlAmericanExercise;
+typedef QuantLib::ext::shared_ptr<AmericanExercise> QlAmericanExercise;
 template <> class objClassName<AmericanExercise *> { public: static const char *name() { return "AmericanExercise"; } };
 template <> class objClassName<QlAmericanExercise *> { public: static const char *name() { return "QlAmericanExercise"; } };
 
 namespace QuantLib {class BermudanExercise;} using QuantLib::BermudanExercise;
-typedef boost::shared_ptr<BermudanExercise> QlBermudanExercise;
+typedef QuantLib::ext::shared_ptr<BermudanExercise> QlBermudanExercise;
 template <> class objClassName<BermudanExercise *> { public: static const char *name() { return "BermudanExercise"; } };
 template <> class objClassName<QlBermudanExercise *> { public: static const char *name() { return "QlBermudanExercise"; } };
 
 namespace QuantLib {class EuropeanExercise;} using QuantLib::EuropeanExercise;
-typedef boost::shared_ptr<EuropeanExercise> QlEuropeanExercise;
+typedef QuantLib::ext::shared_ptr<EuropeanExercise> QlEuropeanExercise;
 template <> class objClassName<EuropeanExercise *> { public: static const char *name() { return "EuropeanExercise"; } };
 template <> class objClassName<QlEuropeanExercise *> { public: static const char *name() { return "QlEuropeanExercise"; } };
 
 namespace QuantLib {class Exercise;} using QuantLib::Exercise;
-typedef boost::shared_ptr<Exercise> QlExercise;
+typedef QuantLib::ext::shared_ptr<Exercise> QlExercise;
 template <> class objClassName<Exercise *> { public: static const char *name() { return "Exercise"; } };
 template <> class objClassName<QlExercise *> { public: static const char *name() { return "QlExercise"; } };
 
 namespace QuantLib {class BlackProcess;} using QuantLib::BlackProcess;
-typedef boost::shared_ptr<BlackProcess> QlBlackProcess;
+typedef QuantLib::ext::shared_ptr<BlackProcess> QlBlackProcess;
 template <> class objClassName<BlackProcess *> { public: static const char *name() { return "BlackProcess"; } };
 template <> class objClassName<QlBlackProcess *> { public: static const char *name() { return "QlBlackProcess"; } };
 
 namespace QuantLib {class GeneralizedBlackScholesProcess;} using QuantLib::GeneralizedBlackScholesProcess;
-typedef boost::shared_ptr<GeneralizedBlackScholesProcess> QlGeneralizedBlackScholesProcess;
+typedef QuantLib::ext::shared_ptr<GeneralizedBlackScholesProcess> QlGeneralizedBlackScholesProcess;
 template <> class objClassName<GeneralizedBlackScholesProcess *> { public: static const char *name() { return "GeneralizedBlackScholesProcess"; } };
 template <> class objClassName<QlGeneralizedBlackScholesProcess *> { public: static const char *name() { return "QlGeneralizedBlackScholesProcess"; } };
 
 namespace QuantLib {class StochasticProcess;} using QuantLib::StochasticProcess;
-typedef boost::shared_ptr<StochasticProcess> QlStochasticProcess;
+typedef QuantLib::ext::shared_ptr<StochasticProcess> QlStochasticProcess;
 template <> class objClassName<StochasticProcess *> { public: static const char *name() { return "StochasticProcess"; } };
 template <> class objClassName<QlStochasticProcess *> { public: static const char *name() { return "QlStochasticProcess"; } };
 
 namespace QuantLib {class StochasticProcess1D;} using QuantLib::StochasticProcess1D;
-typedef boost::shared_ptr<StochasticProcess1D> QlStochasticProcess1D;
+typedef QuantLib::ext::shared_ptr<StochasticProcess1D> QlStochasticProcess1D;
 template <> class objClassName<StochasticProcess1D *> { public: static const char *name() { return "StochasticProcess1D"; } };
 template <> class objClassName<QlStochasticProcess1D *> { public: static const char *name() { return "QlStochasticProcess1D"; } };
 
 namespace QuantLib {class BlackVolTermStructure;} using QuantLib::BlackVolTermStructure;
-typedef boost::shared_ptr<BlackVolTermStructure> QlBlackVolTermStructure;
+typedef QuantLib::ext::shared_ptr<BlackVolTermStructure> QlBlackVolTermStructure;
 template <> class objClassName<BlackVolTermStructure *> { public: static const char *name() { return "BlackVolTermStructure"; } };
 template <> class objClassName<QlBlackVolTermStructure *> { public: static const char *name() { return "QlBlackVolTermStructure"; } };
 
 namespace QuantLib {class VolatilityTermStructure;} using QuantLib::VolatilityTermStructure;
-typedef boost::shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
+typedef QuantLib::ext::shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
 template <> class objClassName<VolatilityTermStructure *> { public: static const char *name() { return "VolatilityTermStructure"; } };
 template <> class objClassName<QlVolatilityTermStructure *> { public: static const char *name() { return "QlVolatilityTermStructure"; } };
 
 namespace QuantLib {class BarrierOption;} using QuantLib::BarrierOption;
-typedef boost::shared_ptr<BarrierOption> QlBarrierOption;
+typedef QuantLib::ext::shared_ptr<BarrierOption> QlBarrierOption;
 template <> class objClassName<BarrierOption *> { public: static const char *name() { return "BarrierOption"; } };
 template <> class objClassName<QlBarrierOption *> { public: static const char *name() { return "QlBarrierOption"; } };
 
 namespace QuantLib {class CdsOption;} using QuantLib::CdsOption;
-typedef boost::shared_ptr<CdsOption> QlCdsOption;
+typedef QuantLib::ext::shared_ptr<CdsOption> QlCdsOption;
 template <> class objClassName<CdsOption *> { public: static const char *name() { return "CdsOption"; } };
 template <> class objClassName<QlCdsOption *> { public: static const char *name() { return "QlCdsOption"; } };
 
 namespace QuantLib {class CreditDefaultSwap;} using QuantLib::CreditDefaultSwap;
-typedef boost::shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
+typedef QuantLib::ext::shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
 template <> class objClassName<CreditDefaultSwap *> { public: static const char *name() { return "CreditDefaultSwap"; } };
 template <> class objClassName<QlCreditDefaultSwap *> { public: static const char *name() { return "QlCreditDefaultSwap"; } };
 
 namespace QuantLib {class DividendVanillaOption;} using QuantLib::DividendVanillaOption;
-typedef boost::shared_ptr<DividendVanillaOption> QlDividendVanillaOption;
+typedef QuantLib::ext::shared_ptr<DividendVanillaOption> QlDividendVanillaOption;
 template <> class objClassName<DividendVanillaOption *> { public: static const char *name() { return "DividendVanillaOption"; } };
 template <> class objClassName<QlDividendVanillaOption *> { public: static const char *name() { return "QlDividendVanillaOption"; } };
 
 namespace QuantLib {class ForwardVanillaOption;} using QuantLib::ForwardVanillaOption;
-typedef boost::shared_ptr<ForwardVanillaOption> QlForwardVanillaOption;
+typedef QuantLib::ext::shared_ptr<ForwardVanillaOption> QlForwardVanillaOption;
 template <> class objClassName<ForwardVanillaOption *> { public: static const char *name() { return "ForwardVanillaOption"; } };
 template <> class objClassName<QlForwardVanillaOption *> { public: static const char *name() { return "QlForwardVanillaOption"; } };
 
 namespace QuantLib {class MargrabeOption;} using QuantLib::MargrabeOption;
-typedef boost::shared_ptr<MargrabeOption> QlMargrabeOption;
+typedef QuantLib::ext::shared_ptr<MargrabeOption> QlMargrabeOption;
 template <> class objClassName<MargrabeOption *> { public: static const char *name() { return "MargrabeOption"; } };
 template <> class objClassName<QlMargrabeOption *> { public: static const char *name() { return "QlMargrabeOption"; } };
 
 namespace QuantLib {class MultiAssetOption;} using QuantLib::MultiAssetOption;
-typedef boost::shared_ptr<MultiAssetOption> QlMultiAssetOption;
+typedef QuantLib::ext::shared_ptr<MultiAssetOption> QlMultiAssetOption;
 template <> class objClassName<MultiAssetOption *> { public: static const char *name() { return "MultiAssetOption"; } };
 template <> class objClassName<QlMultiAssetOption *> { public: static const char *name() { return "QlMultiAssetOption"; } };
 
 namespace QuantLib {class OneAssetOption;} using QuantLib::OneAssetOption;
-typedef boost::shared_ptr<OneAssetOption> QlOneAssetOption;
+typedef QuantLib::ext::shared_ptr<OneAssetOption> QlOneAssetOption;
 template <> class objClassName<OneAssetOption *> { public: static const char *name() { return "OneAssetOption"; } };
 template <> class objClassName<QlOneAssetOption *> { public: static const char *name() { return "QlOneAssetOption"; } };
 
 namespace QuantLib {class Option;} using QuantLib::Option;
-typedef boost::shared_ptr<Option> QlOption;
+typedef QuantLib::ext::shared_ptr<Option> QlOption;
 template <> class objClassName<Option *> { public: static const char *name() { return "Option"; } };
 template <> class objClassName<QlOption *> { public: static const char *name() { return "QlOption"; } };
 
 namespace QuantLib {class QuantoVanillaOption;} using QuantLib::QuantoVanillaOption;
-typedef boost::shared_ptr<QuantoVanillaOption> QlQuantoVanillaOption;
+typedef QuantLib::ext::shared_ptr<QuantoVanillaOption> QlQuantoVanillaOption;
 template <> class objClassName<QuantoVanillaOption *> { public: static const char *name() { return "QuantoVanillaOption"; } };
 template <> class objClassName<QlQuantoVanillaOption *> { public: static const char *name() { return "QlQuantoVanillaOption"; } };
 
 namespace QuantLib {class Swaption;} using QuantLib::Swaption;
-typedef boost::shared_ptr<Swaption> QlSwaption;
+typedef QuantLib::ext::shared_ptr<Swaption> QlSwaption;
 template <> class objClassName<Swaption *> { public: static const char *name() { return "Swaption"; } };
 template <> class objClassName<QlSwaption *> { public: static const char *name() { return "QlSwaption"; } };
 
 namespace QuantLib {class SwingExercise;} using QuantLib::SwingExercise;
-typedef boost::shared_ptr<SwingExercise> QlSwingExercise;
+typedef QuantLib::ext::shared_ptr<SwingExercise> QlSwingExercise;
 template <> class objClassName<SwingExercise *> { public: static const char *name() { return "SwingExercise"; } };
 template <> class objClassName<QlSwingExercise *> { public: static const char *name() { return "QlSwingExercise"; } };
 
 namespace QuantLib {class VanillaOption;} using QuantLib::VanillaOption;
-typedef boost::shared_ptr<VanillaOption> QlVanillaOption;
+typedef QuantLib::ext::shared_ptr<VanillaOption> QlVanillaOption;
 template <> class objClassName<VanillaOption *> { public: static const char *name() { return "VanillaOption"; } };
 template <> class objClassName<QlVanillaOption *> { public: static const char *name() { return "QlVanillaOption"; } };
 
 namespace QuantLib {class Claim;} using QuantLib::Claim;
-typedef boost::shared_ptr<Claim> QlClaim;
+typedef QuantLib::ext::shared_ptr<Claim> QlClaim;
 template <> class objClassName<Claim *> { public: static const char *name() { return "Claim"; } };
 template <> class objClassName<QlClaim *> { public: static const char *name() { return "QlClaim"; } };
 
 namespace QuantLib {class DefaultProbabilityTermStructure;} using QuantLib::DefaultProbabilityTermStructure;
-typedef boost::shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityTermStructure;
+typedef QuantLib::ext::shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityTermStructure;
 template <> class objClassName<DefaultProbabilityTermStructure *> { public: static const char *name() { return "DefaultProbabilityTermStructure"; } };
 template <> class objClassName<QlDefaultProbabilityTermStructure *> { public: static const char *name() { return "QlDefaultProbabilityTermStructure"; } };
 
 namespace QuantLib {class SwaptionVolatilityStructure;} using QuantLib::SwaptionVolatilityStructure;
-typedef boost::shared_ptr<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
+typedef QuantLib::ext::shared_ptr<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
 template <> class objClassName<SwaptionVolatilityStructure *> { public: static const char *name() { return "SwaptionVolatilityStructure"; } };
 template <> class objClassName<QlSwaptionVolatilityStructure *> { public: static const char *name() { return "QlSwaptionVolatilityStructure"; } };
 
 namespace QuantLib {class SmileSection;} using QuantLib::SmileSection;
-typedef boost::shared_ptr<SmileSection> QlSmileSection;
+typedef QuantLib::ext::shared_ptr<SmileSection> QlSmileSection;
 template <> class objClassName<SmileSection *> { public: static const char *name() { return "SmileSection"; } };
 template <> class objClassName<QlSmileSection *> { public: static const char *name() { return "QlSmileSection"; } };
 
 namespace QuantLib {class QuantoBarrierOption;} using QuantLib::QuantoBarrierOption;
-typedef boost::shared_ptr<QuantoBarrierOption> QlQuantoBarrierOption;
+typedef QuantLib::ext::shared_ptr<QuantoBarrierOption> QlQuantoBarrierOption;
 template <> class objClassName<QuantoBarrierOption *> { public: static const char *name() { return "QuantoBarrierOption"; } };
 template <> class objClassName<QlQuantoBarrierOption *> { public: static const char *name() { return "QlQuantoBarrierOption"; } };
 
 namespace QuantLib {class QuantoForwardVanillaOption;} using QuantLib::QuantoForwardVanillaOption;
-typedef boost::shared_ptr<QuantoForwardVanillaOption> QlQuantoForwardVanillaOption;
+typedef QuantLib::ext::shared_ptr<QuantoForwardVanillaOption> QlQuantoForwardVanillaOption;
 template <> class objClassName<QuantoForwardVanillaOption *> { public: static const char *name() { return "QuantoForwardVanillaOption"; } };
 template <> class objClassName<QlQuantoForwardVanillaOption *> { public: static const char *name() { return "QlQuantoForwardVanillaOption"; } };
 
 namespace QuantLib {class BlackCalculator;} using QuantLib::BlackCalculator;
-typedef boost::shared_ptr<BlackCalculator> QlBlackCalculator;
+typedef QuantLib::ext::shared_ptr<BlackCalculator> QlBlackCalculator;
 template <> class objClassName<BlackCalculator *> { public: static const char *name() { return "BlackCalculator"; } };
 template <> class objClassName<QlBlackCalculator *> { public: static const char *name() { return "QlBlackCalculator"; } };
 
 namespace QuantLib {class BlackScholesCalculator;} using QuantLib::BlackScholesCalculator;
-typedef boost::shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
+typedef QuantLib::ext::shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
 template <> class objClassName<BlackScholesCalculator *> { public: static const char *name() { return "BlackScholesCalculator"; } };
 template <> class objClassName<QlBlackScholesCalculator *> { public: static const char *name() { return "QlBlackScholesCalculator"; } };
 
 // processes
 namespace QuantLib {class ExtOUWithJumpsProcess;} using QuantLib::ExtOUWithJumpsProcess;
-typedef boost::shared_ptr<ExtOUWithJumpsProcess> QlExtOUWithJumpsProcess;
+typedef QuantLib::ext::shared_ptr<ExtOUWithJumpsProcess> QlExtOUWithJumpsProcess;
 template <> class objClassName<ExtOUWithJumpsProcess *> { public: static const char *name() { return "ExtOUWithJumpsProcess"; } };
 template <> class objClassName<QlExtOUWithJumpsProcess *> { public: static const char *name() { return "QlExtOUWithJumpsProcess"; } };
 
 namespace QuantLib {class GJRGARCHProcess;} using QuantLib::GJRGARCHProcess;
-typedef boost::shared_ptr<GJRGARCHProcess> QlGJRGARCHProcess;
+typedef QuantLib::ext::shared_ptr<GJRGARCHProcess> QlGJRGARCHProcess;
 template <> class objClassName<GJRGARCHProcess *> { public: static const char *name() { return "GJRGARCHProcess"; } };
 template <> class objClassName<QlGJRGARCHProcess *> { public: static const char *name() { return "QlGJRGARCHProcess"; } };
 
 namespace QuantLib {class HestonProcess;} using QuantLib::HestonProcess;
-typedef boost::shared_ptr<HestonProcess> QlHestonProcess;
+typedef QuantLib::ext::shared_ptr<HestonProcess> QlHestonProcess;
 template <> class objClassName<HestonProcess *> { public: static const char *name() { return "HestonProcess"; } };
 template <> class objClassName<QlHestonProcess *> { public: static const char *name() { return "QlHestonProcess"; } };
 
 namespace QuantLib {class BatesProcess;} using QuantLib::BatesProcess;
-typedef boost::shared_ptr<BatesProcess> QlBatesProcess;
+typedef QuantLib::ext::shared_ptr<BatesProcess> QlBatesProcess;
 template <> class objClassName<BatesProcess *> { public: static const char *name() { return "BatesProcess"; } };
 template <> class objClassName<QlBatesProcess *> { public: static const char *name() { return "QlBatesProcess"; } };
 
 namespace QuantLib {class HybridHestonHullWhiteProcess;} using QuantLib::HybridHestonHullWhiteProcess;
-typedef boost::shared_ptr<HybridHestonHullWhiteProcess> QlHybridHestonHullWhiteProcess;
+typedef QuantLib::ext::shared_ptr<HybridHestonHullWhiteProcess> QlHybridHestonHullWhiteProcess;
 template <> class objClassName<HybridHestonHullWhiteProcess *> { public: static const char *name() { return "HybridHestonHullWhiteProcess"; } };
 template <> class objClassName<QlHybridHestonHullWhiteProcess *> { public: static const char *name() { return "QlHybridHestonHullWhiteProcess"; } };
 
 namespace QuantLib {class KlugeExtOUProcess;} using QuantLib::KlugeExtOUProcess;
-typedef boost::shared_ptr<KlugeExtOUProcess> QlKlugeExtOUProcess;
+typedef QuantLib::ext::shared_ptr<KlugeExtOUProcess> QlKlugeExtOUProcess;
 template <> class objClassName<KlugeExtOUProcess *> { public: static const char *name() { return "KlugeExtOUProcess"; } };
 template <> class objClassName<QlKlugeExtOUProcess *> { public: static const char *name() { return "QlKlugeExtOUProcess"; } };
 
 namespace QuantLib {class LiborForwardModelProcess;} using QuantLib::LiborForwardModelProcess;
-typedef boost::shared_ptr<LiborForwardModelProcess> QlLiborForwardModelProcess;
+typedef QuantLib::ext::shared_ptr<LiborForwardModelProcess> QlLiborForwardModelProcess;
 template <> class objClassName<LiborForwardModelProcess *> { public: static const char *name() { return "LiborForwardModelProcess"; } };
 template <> class objClassName<QlLiborForwardModelProcess *> { public: static const char *name() { return "QlLiborForwardModelProcess"; } };
 
 namespace QuantLib {class StochasticProcessArray;} using QuantLib::StochasticProcessArray;
-typedef boost::shared_ptr<StochasticProcessArray> QlStochasticProcessArray;
+typedef QuantLib::ext::shared_ptr<StochasticProcessArray> QlStochasticProcessArray;
 template <> class objClassName<StochasticProcessArray *> { public: static const char *name() { return "StochasticProcessArray"; } };
 template <> class objClassName<QlStochasticProcessArray *> { public: static const char *name() { return "QlStochasticProcessArray"; } };
 
 namespace QuantLib {class VarianceGammaProcess;} using QuantLib::VarianceGammaProcess;
-typedef boost::shared_ptr<VarianceGammaProcess> QlVarianceGammaProcess;
+typedef QuantLib::ext::shared_ptr<VarianceGammaProcess> QlVarianceGammaProcess;
 template <> class objClassName<VarianceGammaProcess *> { public: static const char *name() { return "VarianceGammaProcess"; } };
 template <> class objClassName<QlVarianceGammaProcess *> { public: static const char *name() { return "QlVarianceGammaProcess"; } };
 
 namespace QuantLib {class Merton76Process;} using QuantLib::Merton76Process;
-typedef boost::shared_ptr<Merton76Process> QlMerton76Process;
+typedef QuantLib::ext::shared_ptr<Merton76Process> QlMerton76Process;
 template <> class objClassName<Merton76Process *> { public: static const char *name() { return "Merton76Process"; } };
 template <> class objClassName<QlMerton76Process *> { public: static const char *name() { return "QlMerton76Process"; } };
 
 namespace QuantLib {class HullWhiteProcess;} using QuantLib::HullWhiteProcess;
-typedef boost::shared_ptr<HullWhiteProcess> QlHullWhiteProcess;
+typedef QuantLib::ext::shared_ptr<HullWhiteProcess> QlHullWhiteProcess;
 template <> class objClassName<HullWhiteProcess *> { public: static const char *name() { return "HullWhiteProcess"; } };
 template <> class objClassName<QlHullWhiteProcess *> { public: static const char *name() { return "QlHullWhiteProcess"; } };
 
 namespace QuantLib {class HullWhiteForwardProcess;} using QuantLib::HullWhiteForwardProcess;
-typedef boost::shared_ptr<HullWhiteForwardProcess> QlHullWhiteForwardProcess;
+typedef QuantLib::ext::shared_ptr<HullWhiteForwardProcess> QlHullWhiteForwardProcess;
 template <> class objClassName<HullWhiteForwardProcess *> { public: static const char *name() { return "HullWhiteForwardProcess"; } };
 template <> class objClassName<QlHullWhiteForwardProcess *> { public: static const char *name() { return "QlHullWhiteForwardProcess"; } };
 
 namespace QuantLib {class ExtendedOrnsteinUhlenbeckProcess;} using QuantLib::ExtendedOrnsteinUhlenbeckProcess;
-typedef boost::shared_ptr<ExtendedOrnsteinUhlenbeckProcess> QlExtendedOrnsteinUhlenbeckProcess;
+typedef QuantLib::ext::shared_ptr<ExtendedOrnsteinUhlenbeckProcess> QlExtendedOrnsteinUhlenbeckProcess;
 template <> class objClassName<ExtendedOrnsteinUhlenbeckProcess *> { public: static const char *name() { return "ExtendedOrnsteinUhlenbeckProcess"; } };
 template <> class objClassName<QlExtendedOrnsteinUhlenbeckProcess *> { public: static const char *name() { return "QlExtendedOrnsteinUhlenbeckProcess"; } };
 
 // models
 namespace QuantLib {class CalibratedModel;} using QuantLib::CalibratedModel;
-typedef boost::shared_ptr<CalibratedModel> QlCalibratedModel;
+typedef QuantLib::ext::shared_ptr<CalibratedModel> QlCalibratedModel;
 template <> class objClassName<CalibratedModel *> { public: static const char *name() { return "CalibratedModel"; } };
 template <> class objClassName<QlCalibratedModel *> { public: static const char *name() { return "QlCalibratedModel"; } };
 
 namespace QuantLib {class G2;} using QuantLib::G2;
-typedef boost::shared_ptr<G2> QlG2;
+typedef QuantLib::ext::shared_ptr<G2> QlG2;
 template <> class objClassName<G2 *> { public: static const char *name() { return "G2"; } };
 template <> class objClassName<QlG2 *> { public: static const char *name() { return "QlG2"; } };
 
 namespace QuantLib {class LmCorrelationModel;} using QuantLib::LmCorrelationModel;
-typedef boost::shared_ptr<LmCorrelationModel> QlLmCorrelationModel;
+typedef QuantLib::ext::shared_ptr<LmCorrelationModel> QlLmCorrelationModel;
 template <> class objClassName<LmCorrelationModel *> { public: static const char *name() { return "LmCorrelationModel"; } };
 template <> class objClassName<QlLmCorrelationModel *> { public: static const char *name() { return "QlLmCorrelationModel"; } };
 
 namespace QuantLib {class LmVolatilityModel;} using QuantLib::LmVolatilityModel;
-typedef boost::shared_ptr<LmVolatilityModel> QlLmVolatilityModel;
+typedef QuantLib::ext::shared_ptr<LmVolatilityModel> QlLmVolatilityModel;
 template <> class objClassName<LmVolatilityModel *> { public: static const char *name() { return "LmVolatilityModel"; } };
 template <> class objClassName<QlLmVolatilityModel *> { public: static const char *name() { return "QlLmVolatilityModel"; } };
 
 namespace QuantLib {class BatesDetJumpModel;} using QuantLib::BatesDetJumpModel;
-typedef boost::shared_ptr<BatesDetJumpModel> QlBatesDetJumpModel;
+typedef QuantLib::ext::shared_ptr<BatesDetJumpModel> QlBatesDetJumpModel;
 template <> class objClassName<BatesDetJumpModel *> { public: static const char *name() { return "BatesDetJumpModel"; } };
 template <> class objClassName<QlBatesDetJumpModel *> { public: static const char *name() { return "QlBatesDetJumpModel"; } };
 
 namespace QuantLib {class BatesDoubleExpDetJumpModel;} using QuantLib::BatesDoubleExpDetJumpModel;
-typedef boost::shared_ptr<BatesDoubleExpDetJumpModel> QlBatesDoubleExpDetJumpModel;
+typedef QuantLib::ext::shared_ptr<BatesDoubleExpDetJumpModel> QlBatesDoubleExpDetJumpModel;
 template <> class objClassName<BatesDoubleExpDetJumpModel *> { public: static const char *name() { return "BatesDoubleExpDetJumpModel"; } };
 template <> class objClassName<QlBatesDoubleExpDetJumpModel *> { public: static const char *name() { return "QlBatesDoubleExpDetJumpModel"; } };
 
 namespace QuantLib {class BatesDoubleExpModel;} using QuantLib::BatesDoubleExpModel;
-typedef boost::shared_ptr<BatesDoubleExpModel> QlBatesDoubleExpModel;
+typedef QuantLib::ext::shared_ptr<BatesDoubleExpModel> QlBatesDoubleExpModel;
 template <> class objClassName<BatesDoubleExpModel *> { public: static const char *name() { return "BatesDoubleExpModel"; } };
 template <> class objClassName<QlBatesDoubleExpModel *> { public: static const char *name() { return "QlBatesDoubleExpModel"; } };
 
 namespace QuantLib {class GJRGARCHModel;} using QuantLib::GJRGARCHModel;
-typedef boost::shared_ptr<GJRGARCHModel> QlGJRGARCHModel;
+typedef QuantLib::ext::shared_ptr<GJRGARCHModel> QlGJRGARCHModel;
 template <> class objClassName<GJRGARCHModel *> { public: static const char *name() { return "GJRGARCHModel"; } };
 template <> class objClassName<QlGJRGARCHModel *> { public: static const char *name() { return "QlGJRGARCHModel"; } };
 
 namespace QuantLib {class HestonModel;} using QuantLib::HestonModel;
-typedef boost::shared_ptr<HestonModel> QlHestonModel;
+typedef QuantLib::ext::shared_ptr<HestonModel> QlHestonModel;
 template <> class objClassName<HestonModel *> { public: static const char *name() { return "HestonModel"; } };
 template <> class objClassName<QlHestonModel *> { public: static const char *name() { return "QlHestonModel"; } };
 
 namespace QuantLib {class BatesModel;} using QuantLib::BatesModel;
-typedef boost::shared_ptr<BatesModel> QlBatesModel;
+typedef QuantLib::ext::shared_ptr<BatesModel> QlBatesModel;
 template <> class objClassName<BatesModel *> { public: static const char *name() { return "BatesModel"; } };
 template <> class objClassName<QlBatesModel *> { public: static const char *name() { return "QlBatesModel"; } };
 
 namespace QuantLib {class PiecewiseTimeDependentHestonModel;} using QuantLib::PiecewiseTimeDependentHestonModel;
-typedef boost::shared_ptr<PiecewiseTimeDependentHestonModel> QlPiecewiseTimeDependentHestonModel;
+typedef QuantLib::ext::shared_ptr<PiecewiseTimeDependentHestonModel> QlPiecewiseTimeDependentHestonModel;
 template <> class objClassName<PiecewiseTimeDependentHestonModel *> { public: static const char *name() { return "PiecewiseTimeDependentHestonModel"; } };
 template <> class objClassName<QlPiecewiseTimeDependentHestonModel *> { public: static const char *name() { return "QlPiecewiseTimeDependentHestonModel"; } };
 
 namespace QuantLib {class ShortRateModel;} using QuantLib::ShortRateModel;
-typedef boost::shared_ptr<ShortRateModel> QlShortRateModel;
+typedef QuantLib::ext::shared_ptr<ShortRateModel> QlShortRateModel;
 template <> class objClassName<ShortRateModel *> { public: static const char *name() { return "ShortRateModel"; } };
 template <> class objClassName<QlShortRateModel *> { public: static const char *name() { return "QlShortRateModel"; } };
 
 namespace QuantLib {class AffineModel;} using QuantLib::AffineModel;
-typedef boost::shared_ptr<AffineModel> QlAffineModel;
+typedef QuantLib::ext::shared_ptr<AffineModel> QlAffineModel;
 template <> class objClassName<AffineModel *> { public: static const char *name() { return "AffineModel"; } };
 template <> class objClassName<QlAffineModel *> { public: static const char *name() { return "QlAffineModel"; } };
 
 namespace QuantLib {class OneFactorAffineModel;} using QuantLib::OneFactorAffineModel;
-typedef boost::shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
+typedef QuantLib::ext::shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
 template <> class objClassName<OneFactorAffineModel *> { public: static const char *name() { return "OneFactorAffineModel"; } };
 template <> class objClassName<QlOneFactorAffineModel *> { public: static const char *name() { return "QlOneFactorAffineModel"; } };
 
 namespace QuantLib {class LiborForwardModel;} using QuantLib::LiborForwardModel;
-typedef boost::shared_ptr<LiborForwardModel> QlLiborForwardModel;
+typedef QuantLib::ext::shared_ptr<LiborForwardModel> QlLiborForwardModel;
 template <> class objClassName<LiborForwardModel *> { public: static const char *name() { return "LiborForwardModel"; } };
 template <> class objClassName<QlLiborForwardModel *> { public: static const char *name() { return "QlLiborForwardModel"; } };
 
 namespace QuantLib {class HullWhite;} using QuantLib::HullWhite;
-typedef boost::shared_ptr<HullWhite> QlHullWhite;
+typedef QuantLib::ext::shared_ptr<HullWhite> QlHullWhite;
 template <> class objClassName<HullWhite *> { public: static const char *name() { return "HullWhite"; } };
 template <> class objClassName<QlHullWhite *> { public: static const char *name() { return "QlHullWhite"; } };
 
@@ -694,30 +694,36 @@ namespace QuantLib {class OptimizationMethod;} using QuantLib::OptimizationMetho
 template <> class objClassName<OptimizationMethod *> { public: static const char *name() { return "OptimizationMethod"; } };
 
 namespace QuantLib {class CalibrationHelper;} using QuantLib::CalibrationHelper;
-typedef boost::shared_ptr<CalibrationHelper> QlCalibrationHelper;
+typedef QuantLib::ext::shared_ptr<CalibrationHelper> QlCalibrationHelper;
 template <> class objClassName<CalibrationHelper *> { public: static const char *name() { return "CalibrationHelper"; } };
 template <> class objClassName<QlCalibrationHelper *> { public: static const char *name() { return "QlCalibrationHelper"; } };
 
+namespace QuantLib {class BlackCalibrationHelper;} using QuantLib::BlackCalibrationHelper;
+typedef QuantLib::ext::shared_ptr<BlackCalibrationHelper> QlBlackCalibrationHelper;
+template <> class objClassName<BlackCalibrationHelper *> { public: static const char *name() { return "BlackCalibrationHelper"; } };
+template <> class objClassName<QlBlackCalibrationHelper *> { public: static const char *name() { return "QlBlackCalibrationHelper"; } };
+
+namespace QuantLib {class EndCriteria;} using QuantLib::EndCriteria;
 namespace QuantLib {class EndCriteria;} using QuantLib::EndCriteria;
 template <> class objClassName<EndCriteria *> { public: static const char *name() { return "EndCriteria"; } };
 
 namespace QuantLib {class CapFloor;} using QuantLib::CapFloor;
-typedef boost::shared_ptr<CapFloor> QlCapFloor;
+typedef QuantLib::ext::shared_ptr<CapFloor> QlCapFloor;
 template <> class objClassName<CapFloor *> { public: static const char *name() { return "CapFloor"; } };
 template <> class objClassName<QlCapFloor *> { public: static const char *name() { return "QlCapFloor"; } };
 
 namespace QuantLib {class CapFloorTermVolSurface;} using QuantLib::CapFloorTermVolSurface;
-typedef boost::shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
+typedef QuantLib::ext::shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
 template <> class objClassName<CapFloorTermVolSurface *> { public: static const char *name() { return "CapFloorTermVolSurface"; } };
 template <> class objClassName<QlCapFloorTermVolSurface *> { public: static const char *name() { return "QlCapFloorTermVolSurface"; } };
 
 namespace QuantLib {class LocalVolTermStructure;} using QuantLib::LocalVolTermStructure;
-typedef boost::shared_ptr<LocalVolTermStructure> QlLocalVolTermStructure;
+typedef QuantLib::ext::shared_ptr<LocalVolTermStructure> QlLocalVolTermStructure;
 template <> class objClassName<LocalVolTermStructure *> { public: static const char *name() { return "LocalVolTermStructure"; } };
 template <> class objClassName<QlLocalVolTermStructure *> { public: static const char *name() { return "QlLocalVolTermStructure"; } };
 
 namespace QuantLib {class BlackVarianceCurve;} using QuantLib::BlackVarianceCurve;
-typedef boost::shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
+typedef QuantLib::ext::shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
 template <> class objClassName<BlackVarianceCurve *> { public: static const char *name() { return "BlackVarianceCurve"; } };
 template <> class objClassName<QlBlackVarianceCurve *> { public: static const char *name() { return "QlBlackVarianceCurve"; } };
 
@@ -730,18 +736,18 @@ template <> class objClassName<TimeGrid *> { public: static const char *name() {
 // DefaultProbabilityHelper is a typedef so we cannot use forward declaration
 #ifdef quantlib_default_probability_helpers_hpp
 using QuantLib::DefaultProbabilityHelper;
-typedef boost::shared_ptr<DefaultProbabilityHelper> QlDefaultProbabilityHelper;
+typedef QuantLib::ext::shared_ptr<DefaultProbabilityHelper> QlDefaultProbabilityHelper;
 template <> class objClassName<DefaultProbabilityHelper *> { public: static const char *name() { return "DefaultProbabilityHelper"; } };
 template <> class objClassName<QlDefaultProbabilityHelper *> { public: static const char *name() { return "QlDefaultProbabilityHelper"; } };
 #endif
 
 namespace QuantLib {class Dividend;} using QuantLib::Dividend;
-typedef boost::shared_ptr<Dividend> QlDividend;
+typedef std::shared_ptr<Dividend> QlDividend;
 template <> class objClassName<Dividend *> { public: static const char *name() { return "Dividend"; } };
 template <> class objClassName<QlDividend *> { public: static const char *name() { return "QlDividend"; } };
 
 namespace QuantLib {class Callability;} using QuantLib::Callability;
-typedef boost::shared_ptr<Callability> QlCallability;
+typedef QuantLib::ext::shared_ptr<Callability> QlCallability;
 template <> class objClassName<Callability *> { public: static const char *name() { return "Callability"; } };
 template <> class objClassName<QlCallability *> { public: static const char *name() { return "QlCallability"; } };
 
@@ -751,21 +757,21 @@ template <> class objClassName<Bond::Price *> { public: static const char *name(
 #endif
 
 namespace QuantLib {class CallableBond;} using QuantLib::CallableBond;
-typedef boost::shared_ptr<CallableBond> QlCallableBond;
+typedef QuantLib::ext::shared_ptr<CallableBond> QlCallableBond;
 template <> class objClassName<CallableBond *> { public: static const char *name() { return "CallableBond"; } };
 template <> class objClassName<QlCallableBond *> { public: static const char *name() { return "QlCallableBond"; } };
 
 namespace QuantLib {class ConvertibleBond;} using QuantLib::ConvertibleBond;
-typedef boost::shared_ptr<ConvertibleBond> QlConvertibleBond;
+typedef QuantLib::ext::shared_ptr<ConvertibleBond> QlConvertibleBond;
 template <> class objClassName<ConvertibleBond *> { public: static const char *name() { return "ConvertibleBond"; } };
 template <> class objClassName<QlConvertibleBond *> { public: static const char *name() { return "QlConvertibleBond"; } };
 
 namespace QuantLib {class CallableBondVolatilityStructure;} using QuantLib::CallableBondVolatilityStructure;
-typedef boost::shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
+typedef QuantLib::ext::shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
 template <> class objClassName<CallableBondVolatilityStructure *> { public: static const char *name() { return "CallableBondVolatilityStructure"; } };
 template <> class objClassName<QlCallableBondVolatilityStructure *> { public: static const char *name() { return "QlCallableBondVolatilityStructure"; } };
 
-typedef std::vector<boost::shared_ptr<Coupon> > CouponLeg;
+typedef std::vector<std::shared_ptr<Coupon> > CouponLeg;
 template <> class objClassName<CouponLeg *> { public: static const char *name() { return "CouponLeg"; } };
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

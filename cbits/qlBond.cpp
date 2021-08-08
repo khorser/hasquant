@@ -142,23 +142,23 @@ QlBond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
   }
 }
 
-//QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
-//  QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
-//  unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
-//  unsigned nCaps, double *caps, unsigned nFloors, double *floors,
-//  int inArrears, double redemption, int issue, char **e) {
-//  try {
-//    std::vector<Real> gs(gearings, gearings+nGearings);
-//    std::vector<Spread> sps(spreads, spreads+nSpreads);
-//    std::vector<Rate> cs(caps, caps+nCaps);
-//    std::vector<Rate> fs(floors, floors+nFloors);
-//    return ret(new QlBond(alloc(new FloatingRateBond(settlDays, face, *arg(sched),
-//	  *arg(index), *arg(dc), (BusinessDayConvention) payConv, fixDays, gs,
-//	  sps, cs, fs, inArrears, redemption, qlNullableDate(issue)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBond *>(e, er);
-//  }
-//}
+QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
+  QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
+  unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
+  unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+  int inArrears, double redemption, int issue, char **e) {
+  try {
+    std::vector<Real> gs(gearings, gearings+nGearings);
+    std::vector<Spread> sps(spreads, spreads+nSpreads);
+    std::vector<Rate> cs(caps, caps+nCaps);
+    std::vector<Rate> fs(floors, floors+nFloors);
+    return ret(new QlBond(alloc(new FloatingRateBond(settlDays, face, *arg(sched),
+	  *arg(index), *arg(dc), (BusinessDayConvention) payConv, fixDays, gs,
+	  sps, cs, fs, inArrears, redemption, qlNullableDate(issue)))));
+  } catch (std::exception& er) {
+    return handleException<QlBond *>(e, er);
+  }
+}
 
 double* qlBondNotionals(QlBond* o, unsigned *len, char **e) {
   try {
@@ -398,13 +398,13 @@ double qlBondFunctionsCleanPrice2(QlBond* bond, QlYieldTermStructure* discountCu
     return handleException<double>(e, er);
   }
 }
-//double qlBondFunctionsCleanPrice3(QlBond* bond, QlYieldTermStructure* discount, double zSpread, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
-//  try {
-//    return BondFunctions::cleanPrice(**arg(bond), *arg(discount), zSpread, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
-//  } catch (std::exception& er) {
-//    return handleException<double>(e, er);
-//  }
-//}
+double qlBondFunctionsCleanPrice3(QlBond* bond, QlYieldTermStructure* discount, double zSpread, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
+  try {
+    return BondFunctions::cleanPrice(**arg(bond), *arg(discount), zSpread, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 double qlBondFunctionsCleanPrice4(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
   try {
     return BondFunctions::cleanPrice(**arg(bond), *arg(yield), Date(settlementDate));
@@ -489,21 +489,21 @@ double qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, in
     return handleException<double>(e, er);
   }
 }
-//double qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
-//  try {
-//    return BondFunctions::zSpread(**arg(bond), cleanPrice, *arg(x2), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
-//  } catch (std::exception& er) {
-//    return handleException<double>(e, er);
-//  }
-//}
+double qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
+  try {
+    return BondFunctions::zSpread(**arg(bond), cleanPrice, *arg(x2), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 
-//QlBond* qlFloatingRateBond1(unsigned settlementDays, double faceAmount, int startDate, int maturityDate, int couponFrequency, Calendar* calendar, QlIborIndex* iborIndex, DayCounter* accrualDayCounter, int accrualConvention, int paymentConvention, unsigned fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, double redemption, int issueDate, int stubDate, int rule, int endOfMonth, char **e) {
-//  try {
-//    return ret(new QlBond(alloc(new FloatingRateBond(settlementDays, faceAmount, Date(startDate), Date(maturityDate), (Frequency)couponFrequency, *arg(calendar), *arg(iborIndex), *arg(accrualDayCounter), (BusinessDayConvention)accrualConvention, (BusinessDayConvention)paymentConvention, fixingDays, std::vector<double>(gearings, gearings+gearingsLen), std::vector<double>(spreads, spreads+spreadsLen), std::vector<double>(caps, caps+capsLen), std::vector<double>(floors, floors+floorsLen), inArrears, redemption, qlNullableDate(issueDate), qlNullableDate(stubDate), (DateGeneration::Rule)rule, endOfMonth))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBond*>(e, er);
-//  }
-//}
+QlBond* qlFloatingRateBond1(unsigned settlementDays, double faceAmount, int startDate, int maturityDate, int couponFrequency, Calendar* calendar, QlIborIndex* iborIndex, DayCounter* accrualDayCounter, int accrualConvention, int paymentConvention, unsigned fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, double redemption, int issueDate, int stubDate, int rule, int endOfMonth, char **e) {
+  try {
+    return ret(new QlBond(alloc(new FloatingRateBond(settlementDays, faceAmount, Date(startDate), Date(maturityDate), (Frequency)couponFrequency, *arg(calendar), *arg(iborIndex), *arg(accrualDayCounter), (BusinessDayConvention)accrualConvention, (BusinessDayConvention)paymentConvention, fixingDays, std::vector<double>(gearings, gearings+gearingsLen), std::vector<double>(spreads, spreads+spreadsLen), std::vector<double>(caps, caps+capsLen), std::vector<double>(floors, floors+floorsLen), inArrears, redemption, qlNullableDate(issueDate), qlNullableDate(stubDate), (DateGeneration::Rule)rule, endOfMonth))));
+  } catch (std::exception& er) {
+    return handleException<QlBond*>(e, er);
+  }
+}
 
 double qlBondCleanPrice(QlBond* o, char **e) {
   try {
@@ -526,48 +526,48 @@ QlBond* qlCallableBondAsBond(QlCallableBond *o) { return ret(new QlBond(*arg(o))
 void qlFreeConvertibleBond(QlConvertibleBond *o) { del(o); }
 QlBond* qlConvertibleBondAsBond(QlConvertibleBond *o) { return ret(new QlBond(*arg(o))); }
 
-//QlCallableBond* qlCallableFixedRateBond(unsigned settlementDays, double faceAmount, Schedule* schedule, unsigned couponsLen, double* coupons, DayCounter* accrualDayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
-//  try {
-//    return ret(new QlCallableBond(alloc(new CallableFixedRateBond(settlementDays, faceAmount, *arg(schedule), std::vector<double>(coupons, coupons+couponsLen), *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlCallableBond*>(e, er);
-//  }
-//}
-//QlCallableBond* qlCallableZeroCouponBond(unsigned settlementDays, double faceAmount, Calendar* calendar, int maturityDate, DayCounter* dayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
-//  try {
-//    return ret(new QlCallableBond(alloc(new CallableZeroCouponBond(settlementDays, faceAmount, *arg(calendar), Date(maturityDate), *arg(dayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlCallableBond*>(e, er);
-//  }
-//}
-//QlConvertibleBond* qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
-//  try {
-//    return ret(new QlConvertibleBond(alloc(new ConvertibleFixedCouponBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, std::vector<double>(coupons, coupons+couponsLen), *arg(dayCounter), *arg(schedule), redemption))));
-//  } catch (std::exception& er) {
-//    return handleException<QlConvertibleBond*>(e, er);
-//  }
-//}
-//QlConvertibleBond* qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
-//  try {
-//    return ret(new QlConvertibleBond(alloc(new ConvertibleFloatingRateBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, (*arg(index)), fixingDays, std::vector<double>(spreads, spreads+spreadsLen), *arg(dayCounter), *arg(schedule), redemption))));
-//  } catch (std::exception& er) {
-//    return handleException<QlConvertibleBond*>(e, er);
-//  }
-//}
-//QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
-//  try {
-//    return ret(new QlConvertibleBond(alloc(new ConvertibleZeroCouponBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, *arg(dayCounter), *arg(schedule), redemption))));
-//  } catch (std::exception& er) {
-//    return handleException<QlConvertibleBond*>(e, er);
-//  }
-//}
-//
-//QlCallability* qlSoftCallability(QlCallabilityPrice* price, int date, double trigger, char **e) {
-//  try {
-//    return ret(new QlCallability(alloc(new SoftCallability(*arg(price), Date(date), trigger))));
-//  } catch (std::exception& er) {
-//    return handleException<QlCallability*>(e, er);
-//  }
-//}
+QlCallableBond* qlCallableFixedRateBond(unsigned settlementDays, double faceAmount, Schedule* schedule, unsigned couponsLen, double* coupons, DayCounter* accrualDayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
+  try {
+    return ret(new QlCallableBond(alloc(new CallableFixedRateBond(settlementDays, faceAmount, *arg(schedule), std::vector<double>(coupons, coupons+couponsLen), *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCallableBond*>(e, er);
+  }
+}
+QlCallableBond* qlCallableZeroCouponBond(unsigned settlementDays, double faceAmount, Calendar* calendar, int maturityDate, DayCounter* dayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
+  try {
+    return ret(new QlCallableBond(alloc(new CallableZeroCouponBond(settlementDays, faceAmount, *arg(calendar), Date(maturityDate), *arg(dayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCallableBond*>(e, er);
+  }
+}
+QlConvertibleBond* qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
+  try {
+    return ret(new QlConvertibleBond(alloc(new ConvertibleFixedCouponBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, std::vector<double>(coupons, coupons+couponsLen), *arg(dayCounter), *arg(schedule), redemption))));
+  } catch (std::exception& er) {
+    return handleException<QlConvertibleBond*>(e, er);
+  }
+}
+QlConvertibleBond* qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
+  try {
+    return ret(new QlConvertibleBond(alloc(new ConvertibleFloatingRateBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, (*arg(index)), fixingDays, std::vector<double>(spreads, spreads+spreadsLen), *arg(dayCounter), *arg(schedule), redemption))));
+  } catch (std::exception& er) {
+    return handleException<QlConvertibleBond*>(e, er);
+  }
+}
+QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
+  try {
+    return ret(new QlConvertibleBond(alloc(new ConvertibleZeroCouponBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, *arg(dayCounter), *arg(schedule), redemption))));
+  } catch (std::exception& er) {
+    return handleException<QlConvertibleBond*>(e, er);
+  }
+}
+
+QlCallability* qlSoftCallability(QlBondPrice* price, int date, double trigger, char **e) {
+  try {
+    return ret(new QlCallability(alloc(new SoftCallability(*arg(price), Date(date), trigger))));
+  } catch (std::exception& er) {
+    return handleException<QlCallability*>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

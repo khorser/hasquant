@@ -22,31 +22,31 @@ double qlInstrumentNPV(QlInstrument *instr, char **e) {
   }
 }
 
-//void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
-//  char **e) {
-//  try {
-//    (*arg(instr))->setPricingEngine(*arg(eng));
-//  } catch (std::exception& er) {
-//    (void)handleException<int>(e, er);
-//  }
-//}
+void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
+  char **e) {
+  try {
+    (*arg(instr))->setPricingEngine(*arg(eng));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
 
 void qlFreeInstrument(QlInstrument *instr) {
   del(instr);
 }
 
-//QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e) {
-//  CompositeInstrument *ci = 0;
-//  try {
-//    ci = new CompositeInstrument();
-//    for (unsigned i = 0; i < instrLen; ++i)
-//        ci->add(*(instrs[i]), coeff[i]);
-//    return ret(new QlInstrument(alloc(ci)));
-//  } catch (std::exception& er) {
-//    delete ci;
-//    return handleException<QlInstrument*>(e, er);
-//  }
-//}
+QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e) {
+  CompositeInstrument *ci = 0;
+  try {
+    ci = new CompositeInstrument();
+    for (unsigned i = 0; i < instrLen; ++i)
+        ci->add(*(instrs[i]), coeff[i]);
+    return ret(new QlInstrument(alloc(ci)));
+  } catch (std::exception& er) {
+    delete ci;
+    return handleException<QlInstrument*>(e, er);
+  }
+}
 
 double qlInstrumentErrorEstimate(QlInstrument* o, char **e) {
   try {
@@ -94,20 +94,20 @@ QlStrikedTypePayoff* qlAssetOrNothingPayoff(int type, double strike, char **e) {
     return handleException<QlStrikedTypePayoff*>(e, er);
   }
 }
-//QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e) {
-//  try {
-//    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff(*arg(p), n))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBasketPayoff*>(e, er);
-//  }
-//}
-//QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e) {
-//  try {
-//    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff(*arg(p), Array(a, a+aLen)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBasketPayoff*>(e, er);
-//  }
-//}
+QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff(*arg(p), n))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
+QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff(*arg(p), Array(a, a+aLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
 QlStrikedTypePayoff* qlCashOrNothingPayoff(int type, double strike, double cashPayoff, char **e) {
   try {
     return ret(new QlStrikedTypePayoff(alloc(new CashOrNothingPayoff((Option::Type)type, strike, cashPayoff))));
@@ -143,20 +143,20 @@ QlStrikedTypePayoff* qlGapPayoff(int type, double strike, double secondStrike, c
     return handleException<QlStrikedTypePayoff*>(e, er);
   }
 }
-//QlBasketPayoff* qlMaxBasketPayoff(QlPayoff* p, char **e) {
-//  try {
-//    return ret(new QlBasketPayoff(alloc(new MaxBasketPayoff(*arg(p)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBasketPayoff*>(e, er);
-//  }
-//}
-//QlBasketPayoff* qlMinBasketPayoff(QlPayoff* p, char **e) {
-//  try {
-//    return ret(new QlBasketPayoff(alloc(new MinBasketPayoff(*arg(p)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBasketPayoff*>(e, er);
-//  }
-//}
+QlBasketPayoff* qlMaxBasketPayoff(QlPayoff* p, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new MaxBasketPayoff(*arg(p)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
+QlBasketPayoff* qlMinBasketPayoff(QlPayoff* p, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new MinBasketPayoff(*arg(p)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
 QlPercentageStrikePayoff* qlPercentageStrikePayoff(int type, double moneyness, char **e) {
   try {
     return ret(new QlPercentageStrikePayoff(alloc(new PercentageStrikePayoff((Option::Type)type, moneyness))));
@@ -192,13 +192,13 @@ QlPayoff* qlRatchetPayoff(double gearing1, double gearing2, double spread1, doub
     return handleException<QlPayoff*>(e, er);
   }
 }
-//QlBasketPayoff* qlSpreadBasketPayoff(QlPayoff* p, char **e) {
-//  try {
-//    return ret(new QlBasketPayoff(alloc(new SpreadBasketPayoff(*arg(p)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBasketPayoff*>(e, er);
-//  }
-//}
+QlBasketPayoff* qlSpreadBasketPayoff(QlPayoff* p, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new SpreadBasketPayoff(*arg(p)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
 QlPayoff* qlStickyMaxPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e) {
   try {
     return ret(new QlPayoff(alloc(new StickyMaxPayoff(gearing1, gearing2, gearing3, spread1, spread2, spread3, initialValue1, initialValue2, accrualFactor))));

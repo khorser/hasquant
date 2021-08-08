@@ -14,14 +14,14 @@ extern "C" {
   QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o);
   QlBMAIndex* qlBMAIndex(QlYieldTermStructure* h, char **e);
 
-//  QlSwapIndex* qlCreateLiborSwapIndex(char *name, int, int, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
-//  QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
-//  QlSwapIndex* qlSwapIndex1(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
-//  QlSwapIndex* qlSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);
+  QlSwapIndex* qlCreateLiborSwapIndex(char *name, int, int, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
+  QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
+  QlSwapIndex* qlSwapIndex1(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
+  QlSwapIndex* qlSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);
 
-//  Schedule* qlBMAIndexFixingSchedule(QlBMAIndex* o, int start, int end, char **e);
-//  QlOvernightIndexedSwap* qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);
-//  QlVanillaSwap* qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e);
+  Schedule* qlBMAIndexFixingSchedule(QlBMAIndex* o, int start, int end, char **e);
+  QlOvernightIndexedSwap* qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);
+  QlVanillaSwap* qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e);
   double qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e);
   Calendar* qlIndexFixingCalendar(QlIndex* o, char **e);
   Currency* qlInterestRateIndexCurrency(QlInterestRateIndex* o, char **e);

@@ -1,11 +1,11 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-//  void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
-//    char **e);
+  void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
+    char **e);
   double qlInstrumentNPV(QlInstrument *instr, char **e);
   void qlFreeInstrument(QlInstrument *instr);
-//  QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e);
+  QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e);
   double qlInstrumentErrorEstimate(QlInstrument* o, char **e);
   int qlInstrumentIsExpired(QlInstrument* o, char **e);
   int qlInstrumentValuationDate(QlInstrument* o, char **e);
@@ -22,21 +22,21 @@ extern "C" {
   QlStrikedTypePayoff* qlPlainVanillaPayoffAsStrikedTypePayoff(QlPlainVanillaPayoff *o);
 
   QlStrikedTypePayoff* qlAssetOrNothingPayoff(int type, double strike, char **e);
-//  QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e);
-//  QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e);
+  QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e);
+  QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e);
   QlStrikedTypePayoff* qlCashOrNothingPayoff(int type, double strike, double cashPayoff, char **e);
   QlPayoff* qlDoubleStickyRatchetPayoff(double type1, double type2, double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e);
   QlTypePayoff* qlFloatingTypePayoff(int type, char **e);
   QlPayoff* qlForwardTypePayoff(int type, double strike, char **e);
   QlStrikedTypePayoff* qlGapPayoff(int type, double strike, double secondStrike, char **e);
-//  QlBasketPayoff* qlMaxBasketPayoff(QlPayoff* p, char **e);
-//  QlBasketPayoff* qlMinBasketPayoff(QlPayoff* p, char **e);
+  QlBasketPayoff* qlMaxBasketPayoff(QlPayoff* p, char **e);
+  QlBasketPayoff* qlMinBasketPayoff(QlPayoff* p, char **e);
   QlPercentageStrikePayoff* qlPercentageStrikePayoff(int type, double moneyness, char **e);
   QlPlainVanillaPayoff* qlPlainVanillaPayoff(int type, double strike, char **e);
   QlPayoff* qlRatchetMaxPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e);
   QlPayoff* qlRatchetMinPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e);
   QlPayoff* qlRatchetPayoff(double gearing1, double gearing2, double spread1, double spread2, double initialValue, double accrualFactor, char **e);
-//  QlBasketPayoff* qlSpreadBasketPayoff(QlPayoff* p, char **e);
+  QlBasketPayoff* qlSpreadBasketPayoff(QlPayoff* p, char **e);
   QlPayoff* qlStickyMaxPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e);
   QlPayoff* qlStickyMinPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e);
   QlPayoff* qlStickyPayoff(double gearing1, double gearing2, double spread1, double spread2, double initialValue, double accrualFactor, char **e);
@@ -65,8 +65,8 @@ extern "C" {
   QlCapFloor* qlCollar(Leg* floatingLeg, unsigned capRatesLen, double* capRates, unsigned floorRatesLen, double* floorRates, char **e);
   QlCapFloor* qlFloor(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e);
   double qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e);
-//  double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
-//  QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
+  double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
 
   void qlFreeCallability(QlCallability *o);
   void qlFreeCallabilityPrice(QlBondPrice *o);

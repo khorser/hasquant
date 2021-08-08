@@ -32,42 +32,42 @@ QlSwap* qlSwap1(unsigned legsLen, Leg** legs, int *payer, char **e) {
 void qlFreeAssetSwap(QlAssetSwap *o) { del(o); }
 QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o) { return ret(new QlSwap(*arg(o))); }
 
-//QlAssetSwap* qlAssetSwap1(int parAssetSwap, QlBond* bond, double bondCleanPrice, double nonParRepayment, double gearing, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int dealMaturity, int payBondCoupon, char **e) {
-//  try {
-//    return ret(new QlAssetSwap(alloc(new AssetSwap(parAssetSwap, *arg(bond), bondCleanPrice, nonParRepayment, gearing, *arg(iborIndex), spread, *arg(floatingDayCount), qlNullableDate(dealMaturity), payBondCoupon))));
-//  } catch (std::exception& er) {
-//    return handleException<QlAssetSwap*>(e, er);
-//  }
-//}
-//QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, char **e) {
-//  try {
-//    return ret(new QlAssetSwap(alloc(new AssetSwap(payBondCoupon, *arg(bond), bondCleanPrice, *arg(iborIndex), spread, *arg(floatSchedule), *arg(floatingDayCount), parAssetSwap))));
-//  } catch (std::exception& er) {
-//    return handleException<QlAssetSwap*>(e, er);
-//  }
-//}
-//QlBMASwap* qlBMASwap(int type, double nominal, Schedule* liborSchedule, double liborFraction, double liborSpread, QlIborIndex* liborIndex, DayCounter* liborDayCount, Schedule* bmaSchedule, QlBMAIndex* bmaIndex, DayCounter* bmaDayCount, char **e) {
-//  try {
-//    return ret(new QlBMASwap(alloc(new BMASwap((BMASwap::Type)type, nominal, *arg(liborSchedule), liborFraction, liborSpread, *arg(liborIndex), *arg(liborDayCount), *arg(bmaSchedule), *arg(bmaIndex), *arg(bmaDayCount)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlBMASwap*>(e, er);
-//  }
-//}
-//QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, char **e) {
-//  try {
-//    return ret(new QlVanillaSwap(alloc(new VanillaSwap((VanillaSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(floatSchedule), *arg(iborIndex), spread, *arg(floatingDayCount), (BusinessDayConvention)paymentConvention))));
-//  } catch (std::exception& er) {
-//    return handleException<QlVanillaSwap*>(e, er);
-//  }
-//}
-//
-//QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {
-//  try {
-//    return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlSwap*>(e, er);
-//  }
-//}
+QlAssetSwap* qlAssetSwap1(int parAssetSwap, QlBond* bond, double bondCleanPrice, double nonParRepayment, double gearing, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int dealMaturity, int payBondCoupon, char **e) {
+  try {
+    return ret(new QlAssetSwap(alloc(new AssetSwap(parAssetSwap, *arg(bond), bondCleanPrice, nonParRepayment, gearing, *arg(iborIndex), spread, *arg(floatingDayCount), qlNullableDate(dealMaturity), payBondCoupon))));
+  } catch (std::exception& er) {
+    return handleException<QlAssetSwap*>(e, er);
+  }
+}
+QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, char **e) {
+  try {
+    return ret(new QlAssetSwap(alloc(new AssetSwap(payBondCoupon, *arg(bond), bondCleanPrice, *arg(iborIndex), spread, *arg(floatSchedule), *arg(floatingDayCount), parAssetSwap))));
+  } catch (std::exception& er) {
+    return handleException<QlAssetSwap*>(e, er);
+  }
+}
+QlBMASwap* qlBMASwap(int type, double nominal, Schedule* liborSchedule, double liborFraction, double liborSpread, QlIborIndex* liborIndex, DayCounter* liborDayCount, Schedule* bmaSchedule, QlBMAIndex* bmaIndex, DayCounter* bmaDayCount, char **e) {
+  try {
+    return ret(new QlBMASwap(alloc(new BMASwap((BMASwap::Type)type, nominal, *arg(liborSchedule), liborFraction, liborSpread, *arg(liborIndex), *arg(liborDayCount), *arg(bmaSchedule), *arg(bmaIndex), *arg(bmaDayCount)))));
+  } catch (std::exception& er) {
+    return handleException<QlBMASwap*>(e, er);
+  }
+}
+QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, char **e) {
+  try {
+    return ret(new QlVanillaSwap(alloc(new VanillaSwap((VanillaSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(floatSchedule), *arg(iborIndex), spread, *arg(floatingDayCount), (BusinessDayConvention)paymentConvention))));
+  } catch (std::exception& er) {
+    return handleException<QlVanillaSwap*>(e, er);
+  }
+}
+
+QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {
+  try {
+    return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));
+  } catch (std::exception& er) {
+    return handleException<QlSwap*>(e, er);
+  }
+}
 
 double qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e) {
   try {
@@ -182,28 +182,28 @@ double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e) {
   }
 }
 
-//QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e) {
-//  try {
-//    return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, nominal, *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread))));
-//  } catch (std::exception& er) {
-//    return handleException<QlOvernightIndexedSwap*>(e, er);
-//  }
-//}
-//
-//QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e) {
-//  try {
-//    return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread))));
-//  } catch (std::exception& er) {
-//    return handleException<QlOvernightIndexedSwap*>(e, er);
-//  }
-//}
-//Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e) {
-//  try {
-//    return ret(new Leg((*arg(o))->bondLeg()));
-//  } catch (std::exception& er) {
-//    return handleException<Leg*>(e, er);
-//  }
-//}
+QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e) {
+  try {
+    return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, nominal, *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread))));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndexedSwap*>(e, er);
+  }
+}
+
+QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e) {
+  try {
+    return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread))));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndexedSwap*>(e, er);
+  }
+}
+Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->bondLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
 double qlAssetSwapCleanPrice(QlAssetSwap* o, char **e) {
   try {
     return (*arg(o))->cleanPrice();

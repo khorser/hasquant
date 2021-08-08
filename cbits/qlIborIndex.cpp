@@ -119,23 +119,23 @@ static const IborInfo iborInfo [] = {
   {"Zibor",	  &IborInfo::makeObject<Zibor>}
 };
 
-//QlIborIndex *qlCreateIbor(char *name, int l, int u,
-//    QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    const IborInfo *last = LAST(iborInfo);
-//    const IborInfo *found =
-//      std::find_if(iborInfo, last, IborInfo::Cmp(name));
-//    if (found != last) {
-//      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-//      IborIndex *i = found->make(Period(l, (TimeUnit)u), ts);
-//      return ret(new QlIborIndex(alloc(i)));
-//    }
-//    else
-//      QL_FAIL("Unknown Ibor " << name);
-//  } catch (std::exception& er) {
-//    return handleException<QlIborIndex *>(e, er);
-//  }
-//}
+QlIborIndex *qlCreateIbor(char *name, int l, int u,
+    QlYieldTermStructure *fwd, char **e) {
+  try {
+    const IborInfo *last = LAST(iborInfo);
+    const IborInfo *found =
+      std::find_if(iborInfo, last, IborInfo::Cmp(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      IborIndex *i = found->make(Period(l, (TimeUnit)u), ts);
+      return ret(new QlIborIndex(alloc(i)));
+    }
+    else
+      QL_FAIL("Unknown Ibor " << name);
+  } catch (std::exception& er) {
+    return handleException<QlIborIndex *>(e, er);
+  }
+}
 
 
 typedef EnumObjectInfo1<OvernightIndex, YieldTermStructureHandle&> OnIndexInfo;
@@ -144,22 +144,22 @@ static const OnIndexInfo onIndexInfo [] = {
   {"Sonia",	  &OnIndexInfo::makeObject<Sonia>},
 };
 
-//QlOvernightIndex *qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    const OnIndexInfo *last = LAST(onIndexInfo);
-//    const OnIndexInfo *found =
-//      std::find_if(onIndexInfo, last, OnIndexInfo::Cmp(name));
-//    if (found != last) {
-//      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-//      OvernightIndex *i = found->make(ts);
-//      return ret(new QlOvernightIndex(alloc(i)));
-//    }
-//    else
-//      QL_FAIL("Unknown ON Index " << name);
-//  } catch (std::exception& er) {
-//    return handleException<QlOvernightIndex *>(e, er);
-//  }
-//}
+QlOvernightIndex *qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e) {
+  try {
+    const OnIndexInfo *last = LAST(onIndexInfo);
+    const OnIndexInfo *found =
+      std::find_if(onIndexInfo, last, OnIndexInfo::Cmp(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      OvernightIndex *i = found->make(ts);
+      return ret(new QlOvernightIndex(alloc(i)));
+    }
+    else
+      QL_FAIL("Unknown ON Index " << name);
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndex *>(e, er);
+  }
+}
 
 typedef EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> OnIborInfo;
 static const OnIborInfo onIborInfo [] = {
@@ -169,22 +169,22 @@ static const OnIborInfo onIborInfo [] = {
   {"EURLiborON",  &OnIborInfo::makeObject<EURLiborON>},
 };
 
-//QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    const OnIborInfo *last = LAST(onIborInfo);
-//    const OnIborInfo *found =
-//      std::find_if(onIborInfo, last, OnIborInfo::Cmp(name));
-//    if (found != last) {
-//      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-//      IborIndex *i = found->make(ts);
-//      return ret(new QlIborIndex(alloc(i)));
-//    }
-//    else
-//      QL_FAIL("Unknown ON Ibor " << name);
-//  } catch (std::exception& er) {
-//    return handleException<QlIborIndex *>(e, er);
-//  }
-//}
+QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
+  try {
+    const OnIborInfo *last = LAST(onIborInfo);
+    const OnIborInfo *found =
+      std::find_if(onIborInfo, last, OnIborInfo::Cmp(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      IborIndex *i = found->make(ts);
+      return ret(new QlIborIndex(alloc(i)));
+    }
+    else
+      QL_FAIL("Unknown ON Ibor " << name);
+  } catch (std::exception& er) {
+    return handleException<QlIborIndex *>(e, er);
+  }
+}
 
 typedef EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> DailyIborInfo;
 static const DailyIborInfo dailyIborInfo [] = {
@@ -195,23 +195,23 @@ static const DailyIborInfo dailyIborInfo [] = {
   {"DailyTenorUSDLibor", &DailyIborInfo::makeObject<DailyTenorUSDLibor>},
 };
 
-//QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
-//    QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    const DailyIborInfo *last = LAST(dailyIborInfo);
-//    const DailyIborInfo *found =
-//      std::find_if(dailyIborInfo, last, DailyIborInfo::Cmp(name));
-//    if (found != last) {
-//      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-//      IborIndex *i = found->make(settlDays, ts);
-//      return ret(new QlIborIndex(alloc(i)));
-//    }
-//    else
-//      QL_FAIL("Unknown Daily Tenor Ibor " << name);
-//  } catch (std::exception& er) {
-//    return handleException<QlIborIndex *>(e, er);
-//  }
-//}
+QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
+    QlYieldTermStructure *fwd, char **e) {
+  try {
+    const DailyIborInfo *last = LAST(dailyIborInfo);
+    const DailyIborInfo *found =
+      std::find_if(dailyIborInfo, last, DailyIborInfo::Cmp(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      IborIndex *i = found->make(settlDays, ts);
+      return ret(new QlIborIndex(alloc(i)));
+    }
+    else
+      QL_FAIL("Unknown Daily Tenor Ibor " << name);
+  } catch (std::exception& er) {
+    return handleException<QlIborIndex *>(e, er);
+  }
+}
 
 QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
 
