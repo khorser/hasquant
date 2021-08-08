@@ -20,7 +20,7 @@ data Error = CPlusPlusException String | DateConversion Day deriving (Show, Eq)
 
 instance Exception Error
 
--- this somewhat leaks the abstraction
+-- this leaks the abstraction to some degree...
 class ForeignObject a where
   withObject :: a -> (Ptr a -> IO b) -> IO b
 

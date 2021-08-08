@@ -69,11 +69,13 @@ module QuantLib.Date
   , fromMaybeDay
   , toMaybeDay
   , peekDayArray
+  , withDayArray
   )
 where
 
 import Foreign.C.Types(CInt, CUInt)
 import Foreign.Ptr(Ptr)
+import Foreign.Marshal.Array(withArray)
 
 import Control.Exception(throwIO)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, toGregorian, isLeapYear, fromGregorian)
@@ -292,5 +294,10 @@ peekDayArray = peekIntArray (fromSerial . fromIntegral)
 {#fun qlECBNextDates as nextECBDates {fromMaybeDay* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 {#fun qlECBRemoveDate as removeECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
+
+withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
+withDayArray x f = do
+  xs <- mapM toSerial x
+  withArray (map fromIntegral xs) (\xs -> f (fromIntegral $ length x, xs))
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

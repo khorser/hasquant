@@ -9,13 +9,22 @@ module QuantLib.Schedule
   , dayCounter
   , days
   , years
+
+  , Schedule
+  , schedule
+  , fromDates
+  , until
+  , dates
   )
 
 where
 
+import Prelude hiding(until)
+
 import QuantLib.Type
 import QuantLib.Date
 import QuantLib.Utility
+import QuantLib.Period(TimeUnit)
 {#import QuantLib.Calendar #}(Calendar)
 
 #include "qlTypesC2HS.h"
@@ -81,5 +90,25 @@ dayCounter x = qlDayCounter (dayCounterType x) (convention x)
 
 -- |Returns the period between two dates as a fraction of year.
 {#fun qlDayCounterYearFraction as years {`DayCounter', fromDay* `Day', fromDay* `Day', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Double' #}
+
+{#pointer *Schedule foreign finalizer qlFreeSchedule newtype #}
+
+instance ForeignObject Schedule where
+  withObject = withSchedule
+
+{#fun qlSchedule as schedule {fromMaybeDay* `Maybe Day', fromDay* `Day', fromEnumQuantity `(Int, TimeUnit)'&, withObject *`Calendar',
+  `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule',
+  `Bool', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' #}
+
+-- TODO add other parameters, provide a more user-friendly way to build schedules
+{#fun qlSchedule1 as fromDates {withDayArray* `[Day]'&, withObject* `Calendar', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Schedule' #}
+
+-- |truncated schedule
+-- XXX Introduce another Schedule type with restricted interface?
+-- moreover, a fixed rate bond can be constructed from a full schedule only!
+{#fun qlScheduleUntil as until {`Schedule', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' #}
+
+-- |returns the dates for the given Schedule object
+{#fun qlScheduleDates as dates {`Schedule', preArray- `[Day]'& peekDayArray*} -> `()' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

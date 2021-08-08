@@ -44,13 +44,12 @@ Schedule *qlScheduleUntil(Schedule *sched, int date, char **e) {
   }
 }
 
-int *qlScheduleDates(Schedule *sched, unsigned *count) {
+void qlScheduleDates(Schedule *sched, unsigned *count, int **days) {
   const std::vector<Date> &dates = arg(sched)->dates();
   *count = dates.size();
-  int *days = qlAllocateInts(*count);
-  std::transform(dates.begin(), dates.end(), days,
-      std::mem_fun_ref(&Date::serialNumber));
-  return days;
+  *days = qlAllocateInts(*count);
+  for (size_t i = 0; i < dates.size(); ++i)
+    (*days)[i] = dates[i].serialNumber();
 }
 
 void qlFreeSchedule(Schedule *s) {

@@ -7,7 +7,7 @@ extern "C" {
   Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,
     char **e);
   Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
-  int *qlScheduleDates(Schedule *sched, unsigned *count);
+  void qlScheduleDates(Schedule *sched, unsigned *count, int **days);
 
   void qlFreeSchedule(Schedule *s);
 #ifdef __cplusplus
