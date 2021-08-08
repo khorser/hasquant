@@ -742,7 +742,7 @@ template <> class objClassName<QlDefaultProbabilityHelper *> { public: static co
 #endif
 
 namespace QuantLib {class Dividend;} using QuantLib::Dividend;
-typedef std::shared_ptr<Dividend> QlDividend;
+typedef QuantLib::ext::shared_ptr<Dividend> QlDividend;
 template <> class objClassName<Dividend *> { public: static const char *name() { return "Dividend"; } };
 template <> class objClassName<QlDividend *> { public: static const char *name() { return "QlDividend"; } };
 
@@ -771,7 +771,7 @@ typedef QuantLib::ext::shared_ptr<CallableBondVolatilityStructure> QlCallableBon
 template <> class objClassName<CallableBondVolatilityStructure *> { public: static const char *name() { return "CallableBondVolatilityStructure"; } };
 template <> class objClassName<QlCallableBondVolatilityStructure *> { public: static const char *name() { return "QlCallableBondVolatilityStructure"; } };
 
-typedef std::vector<std::shared_ptr<Coupon> > CouponLeg;
+typedef std::vector<QuantLib::ext::shared_ptr<Coupon> > CouponLeg;
 template <> class objClassName<CouponLeg *> { public: static const char *name() { return "CouponLeg"; } };
 
 #ifdef quantlib_fitted_bond_discount_curve_hpp

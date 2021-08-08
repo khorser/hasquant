@@ -461,7 +461,7 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   try {
     cl = new CouponLeg();
     for (unsigned i = 0; i < o->size(); ++i) {
-      std::shared_ptr<Coupon> c = std::dynamic_pointer_cast<Coupon>((*o)[i]);
+      ext::shared_ptr<Coupon> c = ext::dynamic_pointer_cast<Coupon>((*o)[i]);
       if (c)
         cl->push_back(c);
       else
