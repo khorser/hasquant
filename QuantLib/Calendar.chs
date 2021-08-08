@@ -16,6 +16,8 @@ module QuantLib.Calendar
   , SouthKoreaMarket(..)
   , UnitedKingdomMarket(..)
   , UnitedStatesMarket(..)
+
+  , Calendar
   , calendar
   , adjust
   , advance
@@ -85,7 +87,7 @@ data CalendarConstructor = Argentina
   | Mexico
   | NewZealand
   | Norway
-  | NullCalendar
+  | Null
   | Poland
   | Romania RomaniaMarket
   | Russia RussiaMarket
@@ -134,7 +136,7 @@ country Japan = CountryJapan
 country Mexico = CountryMexico
 country NewZealand = CountryNewZealand
 country Norway = CountryNorway
-country NullCalendar = CountryNullCalendar
+country Null = CountryNull
 country Poland = CountryPoland
 country (Romania _) = CountryRomania
 country (Russia _) = CountryRussia
@@ -170,7 +172,7 @@ market (Russia x) = fromEnum x
 market (SouthKorea x) = fromEnum x
 market (UnitedKingdom x) = fromEnum x
 market (UnitedStates x) = fromEnum x
-market _ = {#const NO_MARKET #}
+market _ = {#const NO_ENUM #}
 
 {#pointer *Calendar foreign finalizer qlFreeCalendar newtype #}
 
@@ -179,14 +181,11 @@ instance ForeignObject Calendar where
   
 {#fun pure qlCalendarName {`Calendar'} -> `String' peekDynString* #}
 
-instance Named Calendar where
-  name = qlCalendarName
-
 instance Show Calendar where
-  show = name
+  show = qlCalendarName
 
 instance Eq Calendar where
-  x == y = name x == name y
+  x == y = show x == show y
 
 {#fun qlCalendar {`CalendarCountry', `Int', preErrorCheck- `String' errorCheck*-} -> `Calendar' #}
 

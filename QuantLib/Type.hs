@@ -2,7 +2,6 @@ module QuantLib.Type
   (
     Error(..)
 --  , Settings(..)
-  , Named(..)
   , ForeignObject(..)
   )
 where
@@ -20,9 +19,6 @@ import Data.Time.Calendar(Day)
 data Error = CPlusPlusException String | DateConversion Day deriving (Show, Eq)
 
 instance Exception Error
-
-class Named a where
-  name :: a -> String
 
 -- this somewhat leaks the abstraction
 class ForeignObject a where

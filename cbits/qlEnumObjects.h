@@ -107,7 +107,7 @@ enum CalendarCountry {
   , CountryMexico
   , CountryNewZealand
   , CountryNorway
-  , CountryNullCalendar
+  , CountryNull
   , CountryPoland
   , CountryRomania
   , CountryRussia
@@ -128,6 +128,17 @@ enum CalendarCountry {
   , CountryWeekendsOnly
 };
 
-#define NO_MARKET -100;
+enum DayCounterType {
+  DayCounterActual360 = 0
+  , DayCounterActual364
+  , DayCounterActual365Fixed
+  , DayCounterActualActual
+  , DayCounterOneDayCounter
+  , DayCounterSimpleDayCounter
+  , DayCounterThirty360
+  , DayCounterThirty365
+};
+
+#define NO_ENUM -100;
 
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

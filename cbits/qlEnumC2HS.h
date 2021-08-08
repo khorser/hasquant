@@ -366,4 +366,9 @@ enum SouthKoreaMarket { SouthKoreaSettlement, SouthKoreaKRX };
 enum UnitedKingdomMarket { UnitedKingdomSettlement, UnitedKingdomExchange, UnitedKingdomMetals };
 enum UnitedStatesMarket { UnitedStatesSettlement, UnitedStatesNYSE, UnitedStatesGovernmentBond, UnitedStatesNERC, UnitedStatesLiborImpact, UnitedStatesUnitedStatesFederalReserve };
 
+// enums values should match with those in ql/time/daycounters/*.hpp
+enum ActualActualConvention { ActualActualISMA, ActualActualBond, ActualActualISDA, ActualActualHistorical, ActualActualActual365, ActualActualAFB, ActualActualEuro };
+enum Thirty360Convention { Thirty360USA, Thirty360BondBasis, Thirty360European, Thirty360EurobondBasis, Thirty360Italian, Thirty360German, Thirty360ISMA, Thirty360ISDA, Thirty360NASD };
+enum Actual365FixedConvention { Actual365FixedStandard, Actual365FixedCanadian, Actual365FixedNoLeap };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

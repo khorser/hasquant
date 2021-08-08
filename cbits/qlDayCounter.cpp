@@ -5,66 +5,24 @@
 
 using namespace QuantLib;
 
-// for an alternative approach see qlCalendar.cpp
-template <class T, typename T::Convention conv>
-DayCounter *makeDayCounter() {
-  return new T(conv);
-}
+typedef DayCounter *(*makeDayCounter)(int convention);
 
-template <class T>
-struct EnumObjectInfo {
-  const char *const name;
-  T *(* const make)();
-
-  class Cmp {
-  public:
-    Cmp(const char *n) : n_(n) {}
-    bool operator()(const EnumObjectInfo<T> &i) {
-      return !strcmp(i.name, n_);
-    }
-  private:
-    const char *n_;
-  };
-
-  template <class A>
-  static T *makeObject() {
-    return new A();
-  }
+static const makeDayCounter dayCounters[] = {
+  [](int) { return static_cast<DayCounter *>(new Actual360()); }
+  , [](int) { return static_cast<DayCounter *>(new Actual364()); }
+  , [](int conv) { return static_cast<DayCounter *>(new Actual365Fixed((Actual365Fixed::Convention) conv)); }
+  , [](int conv) { return static_cast<DayCounter *>(new ActualActual((ActualActual::Convention) conv)); }
+  , [](int) { return static_cast<DayCounter *>(new OneDayCounter()); }
+  , [](int) { return static_cast<DayCounter *>(new SimpleDayCounter()); }
+  , [](int conv) { return static_cast<DayCounter *>(new Thirty360((Thirty360::Convention) conv)); }
+  , [](int) { return static_cast<DayCounter *>(new Thirty365()); }
 };
 
-typedef EnumObjectInfo<DayCounter> DayCounterInfo;
-static const DayCounterInfo dayCounterInfo[] = {
-  {"Actual/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
-
-  {"1/1", &DayCounterInfo::makeObject<OneDayCounter>},
-
-  {"Actual/Actual (ISMA)", &makeDayCounter<ActualActual, ActualActual::ISMA>},
-  {"Actual/Actual (Bond)", &makeDayCounter<ActualActual, ActualActual::Bond>},
-  {"Actual/Actual (ISDA)", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"Actual/Actual (Historical)", &makeDayCounter<ActualActual, ActualActual::Historical>},
-  {"Actual/Actual (Actual365)", &makeDayCounter<ActualActual, ActualActual::Actual365>},
-  {"Actual/Actual (AFB)", &makeDayCounter<ActualActual, ActualActual::AFB>},
-  {"Actual/Actual (Euro)", &makeDayCounter<ActualActual, ActualActual::Euro>},
-
-  {"Actual/360", &DayCounterInfo::makeObject<Actual360>},
-
-  {"30/360 (USA)", &makeDayCounter<Thirty360, Thirty360::USA>},
-  {"30/360 (Bond Basis)", &makeDayCounter<Thirty360, Thirty360::BondBasis>},
-  {"30/360 (European)", &makeDayCounter<Thirty360, Thirty360::European>},
-  {"30/360 (Eurobond Basis)", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
-  {"30/360 (Italian)", &makeDayCounter<Thirty360, Thirty360::Italian>},
-
-  {"Simple", &DayCounterInfo::makeObject<SimpleDayCounter>},
-};
-
-DayCounter *qlDayCounter(const char *name, char **e) {
+DayCounter *qlDayCounter(int type, int convention, char **e) {
   try {
-    const DayCounterInfo *last = LAST(dayCounterInfo);
-    const DayCounterInfo *found = std::find_if(dayCounterInfo, last, DayCounterInfo::Cmp(name));
-    if (found != last)
-      return alloc(found->make());
-    else
-      QL_FAIL("DayCounter not found " << name);
+    if (type < 0 || type >= (int)LENGTH(dayCounters))
+      QL_FAIL("Invalid DayCounter type " << type);
+    return alloc(dayCounters[type](convention));
   } catch (std::exception& er) {
     return handleException<DayCounter *>(e, er);
   }

@@ -1,7 +1,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  DayCounter *qlDayCounter(const char *name, char **e);
+  DayCounter *qlDayCounter(int type, int convention, char **e);
   DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e);
   const char *qlDayCounterName(DayCounter *counter);
   int qlDayCounterDayCount(DayCounter* o, int x0, int x1);
