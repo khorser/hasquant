@@ -236,6 +236,7 @@ PricingEngine* qlMCPerformanceEngine1Aux(const char *rngtrait, const ext::shared
     QL_FAIL("Unknown RNG "<< rngtrait);
 }
 
+// TODO migrate to FdBlackScholesVanillaEngine
 //PricingEngine* qlFDAmericanEngineAux(const char *fdscheme, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
 //    if (!strcmp(fdscheme, "FDCrankNicolson"))
 //      return new FDAmericanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
