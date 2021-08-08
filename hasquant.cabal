@@ -71,8 +71,7 @@ library
                     , cbits/qlYieldTS.cpp
 
   include-dirs:        cbits
-  -- TODO find a proper way to add -dynamic flag when building a shared object
-  ghc-options:         -dynamic -pgml g++
+  ghc-options:         -pgml g++
   extra-libraries:     QuantLib
 --  includes:         cbits/qlaux.h
 --                    , cbits/qlBond.h
@@ -128,7 +127,7 @@ executable hasquant_example
 --            , QuantLib.Example.Replication
 --            , QuantLib.Example.Repo
 --            , QuantLib.Example.Swap
-  ghc-options:         -dynamic -pgml g++
+  ghc-options:         -pgml g++
 --  -Wall
   build-depends:
               base >= 4.14 && < 5.0
@@ -162,7 +161,7 @@ test-suite hasquant_test
 --              , QuantLib.Example.Replication
 --              , QuantLib.Example.Repo
 --              , QuantLib.Example.Swap
-  ghc-options:         -dynamic -pgml g++
+  ghc-options:         -pgml g++
 --  -Wall
   Build-Depends:
               base >= 4.14 && < 5.0

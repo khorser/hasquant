@@ -8,7 +8,6 @@
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/dividend.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "qlaux.h"
 #include "qlLeg.h"

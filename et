@@ -1,1 +1,1 @@
-cabal configure -f buildExample --enable-tests --disable-documentation && cabal build
+cabal configure -f buildExample --enable-tests --disable-documentation --ghc-options=-dynamic && cabal build
