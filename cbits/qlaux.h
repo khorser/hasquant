@@ -774,4 +774,9 @@ template <> class objClassName<QlCallableBondVolatilityStructure *> { public: st
 typedef std::vector<std::shared_ptr<Coupon> > CouponLeg;
 template <> class objClassName<CouponLeg *> { public: static const char *name() { return "CouponLeg"; } };
 
+#ifdef quantlib_fitted_bond_discount_curve_hpp
+typedef FittedBondDiscountCurve::FittingMethod FittedBondDiscountCurveFittingMethod;
+template <> class objClassName<FittedBondDiscountCurveFittingMethod *> { public: static const char *name() { return "FittedBondDiscountCurveFittingMethod"; } };
+#endif
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

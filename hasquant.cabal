@@ -20,19 +20,19 @@ flag buildExample
   Default: False
 
 library
-  exposed-modules:     QuantLib.Instrument
-                    , QuantLib.Calendar
-                    , QuantLib.Type
-                    , QuantLib.Model
-                    , QuantLib.Settings
-                    , QuantLib.Period
-                    , QuantLib.Date
+  exposed-modules:  QuantLib.Type
                     , QuantLib.Utility
-                    , QuantLib.CashFlow
-                    , QuantLib.Quote
                     , QuantLib.Math
                     , QuantLib.Currency
+                    , QuantLib.Period
+                    , QuantLib.Date
+                    , QuantLib.Calendar
                     , QuantLib.Schedule
+                    , QuantLib.Settings
+                    , QuantLib.CashFlow
+                    , QuantLib.Instrument
+                    , QuantLib.Model
+                    , QuantLib.Quote
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.14 && <5.0, time

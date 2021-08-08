@@ -8,8 +8,6 @@
 
 using namespace QuantLib;
 
-template <> class objClassName<FittedBondDiscountCurve::FittingMethod *> { public: static const char *name() { return "FittedBondDiscountCurve::FittingMethod"; } };
-
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
@@ -191,7 +189,7 @@ try {
   }
 }
 
-void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurve::FittingMethod *o) { del(o); }
+void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o) { del(o); }
 
 // generated functions
 InterestRate* qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
@@ -253,43 +251,43 @@ QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned mo
 void qlFreeBondHelper(QlBondHelper *o) { del(o); }
 QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) { return ret(new QlRateHelper(*arg(o))); }
 
-FittedBondDiscountCurve::FittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, char **e) {
+FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, char **e) {
   try {
     return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero));
   } catch (std::exception& er) {
-    return handleException<FittedBondDiscountCurve::FittingMethod*>(e, er);
+    return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);
   }
 }
 
-FittedBondDiscountCurve::FittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e) {
+FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e) {
   try {
     return alloc(new ExponentialSplinesFitting(constrainAtZero));
   } catch (std::exception& er) {
-    return handleException<FittedBondDiscountCurve::FittingMethod*>(e, er);
+    return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);
   }
 }
 
-FittedBondDiscountCurve::FittingMethod* qlNelsonSiegelFitting(char **e) {
+FittedBondDiscountCurveFittingMethod* qlNelsonSiegelFitting(char **e) {
   try {
     return alloc(new NelsonSiegelFitting());
   } catch (std::exception& er) {
-    return handleException<FittedBondDiscountCurve::FittingMethod*>(e, er);
+    return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);
   }
 }
 
-FittedBondDiscountCurve::FittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e) {
+FittedBondDiscountCurveFittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e) {
   try {
     return alloc(new SimplePolynomialFitting(degree, constrainAtZero));
   } catch (std::exception& er) {
-    return handleException<FittedBondDiscountCurve::FittingMethod*>(e, er);
+    return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);
   }
 }
 
-FittedBondDiscountCurve::FittingMethod* qlSvenssonFitting(char **e) {
+FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(char **e) {
   try {
     return alloc(new SvenssonFitting());
   } catch (std::exception& er) {
-    return handleException<FittedBondDiscountCurve::FittingMethod*>(e, er);
+    return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);
   }
 }
 
@@ -301,7 +299,7 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Ca
   }
 }
 
-QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e) {
+QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurveFittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e) {
   try {
     return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(Date(referenceDate), qlBuildVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));
   } catch (std::exception& er) {

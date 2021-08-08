@@ -66,14 +66,14 @@ extern "C" {
   QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen,
     double *yields, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
     QlQuote **quotes, int *dates, char *interpolator, char **e);
-  void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurve::FittingMethod *o);
-  FittedBondDiscountCurve::FittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, char **e);
-  FittedBondDiscountCurve::FittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e);
-  FittedBondDiscountCurve::FittingMethod* qlNelsonSiegelFitting(char **e);
-  FittedBondDiscountCurve::FittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e);
-  FittedBondDiscountCurve::FittingMethod* qlSvenssonFitting(char **e);
-  QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e);
-  QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e);
+  void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o);
+  FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, char **e);
+  FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e);
+  FittedBondDiscountCurveFittingMethod* qlNelsonSiegelFitting(char **e);
+  FittedBondDiscountCurveFittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e);
+  FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(char **e);
+  QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurveFittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e);
+  QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurveFittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e);
 
   void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o);
   QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o);
