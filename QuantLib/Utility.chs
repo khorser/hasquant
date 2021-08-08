@@ -11,14 +11,15 @@ module QuantLib.Utility
   , preErrorCheck
   , errorCheck
 
-  , fromBool'
-  , toBool'
+  , fromMaybeBool
+  , toMaybeBool
   , peekDynString
   , peekEnum
   , preEnum
   , preArray
   , peekIntArray
   , withMaybeObject
+  , withEnumArray
   )
 where
 
@@ -26,7 +27,7 @@ import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
 import Foreign.ForeignPtr(withForeignPtr, ForeignPtr)
-import Foreign.Marshal.Array(peekArray)
+import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
 
@@ -55,12 +56,12 @@ errorCheck p = do
 preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
 preErrorCheck = with nullPtr
 
-fromBool' :: Maybe Bool -> CInt
-fromBool' Nothing = -1
-fromBool' (Just x) = fromBool x
+fromMaybeBool :: Maybe Bool -> CInt
+fromMaybeBool Nothing = -1
+fromMaybeBool (Just x) = fromBool x
 
-toBool' :: CInt -> Maybe Bool
-toBool' x = if x == -1 then Nothing else Just $ toBool x
+toMaybeBool :: CInt -> Maybe Bool
+toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
 
 throughOne :: (Monad m) => a -> (a -> m b) -> (a -> m d) -> m b
 throughOne x f g = do {v <- f x; _ <- g x; return v}
@@ -88,6 +89,9 @@ foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
 foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
+
+withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
+withEnumArray x f = withArray (map (fromIntegral . fromEnum) x) (\xs -> f (fromIntegral $ length x, xs))
 
 preArray :: ((Ptr CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 preArray f = with 0 $

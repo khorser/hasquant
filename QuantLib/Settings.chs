@@ -34,7 +34,7 @@ import QuantLib.Utility
 
 -- |sets the value of the Evaluation Date
 -- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
-{#fun qlSettingsSetEvaluationDate as setEvaluationDate {fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlSettingsSetEvaluationDate as setEvaluationDate {fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date
@@ -44,9 +44,9 @@ import QuantLib.Utility
 -- for today's date
 {#fun qlSettingsSetEnforceTodaysHistoricFixings as setEnforceTodaysHistoricFixings {`Bool'} -> `()' #}
 
-{#fun qlSettingsIncludeTodaysCashFlows as includeTodaysCashFlows {} -> `Maybe Bool' toBool' #}
+{#fun qlSettingsIncludeTodaysCashFlows as includeTodaysCashFlows {} -> `Maybe Bool' toMaybeBool #}
 
-{#fun qlSettingsSetIncludeTodaysCashFlows as setIncludeTodaysCashFlows {fromBool' `Maybe Bool'} -> `()' #}
+{#fun qlSettingsSetIncludeTodaysCashFlows as setIncludeTodaysCashFlows {fromMaybeBool `Maybe Bool'} -> `()' #}
 
 -- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
 {#fun qlSettingsIncludeReferenceDateEvents as includeReferenceDateEvents {} -> `Bool' #}

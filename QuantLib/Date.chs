@@ -33,12 +33,6 @@ module QuantLib.Date
 
   , dayOfYear
 
-  , fromDay
-  , toDay
-
-  , fromDay'
-  , toDay'
-
   , endOfMonth
   , isEndOfMonth
   , nextWeekday
@@ -69,6 +63,12 @@ module QuantLib.Date
   , nextECBDates'
   , nextECBDates
   , removeECBDate
+  -- marshaling
+  , fromDay
+  , toDay
+  , fromMaybeDay
+  , toMaybeDay
+  , peekDayArray
   )
 where
 
@@ -189,13 +189,13 @@ fromDay x f = toSerial x >>= f . fromIntegral
 toDay :: CInt -> Day
 toDay = fromSerial . fromIntegral
 
-fromDay' :: Maybe Day -> (CInt -> IO a) -> IO a
-fromDay' Nothing f = f 0
-fromDay' (Just x) f = fromDay x f
+fromMaybeDay :: Maybe Day -> (CInt -> IO a) -> IO a
+fromMaybeDay Nothing f = f 0
+fromMaybeDay (Just x) f = fromDay x f
 
-toDay' :: Int -> Maybe Day
-toDay' 0 = Nothing
-toDay' x = Just $ fromSerial x
+toMaybeDay :: Int -> Maybe Day
+toMaybeDay 0 = Nothing
+toMaybeDay x = Just $ fromSerial x
 
 {#fun qlWeekday as weekday {fromDay* `Day'} -> `Weekday' #}
 
@@ -258,7 +258,7 @@ today = do
 {#fun qlECBCode as ecbCode {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `String' peekDynString* #}
 
 -- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
-{#fun qlECBDate1 as ecbDate' {`String', fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
+{#fun qlECBDate1 as ecbDate' {`String', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
 -- |maintenance period start date in the given month/year
 {#fun qlECBDate as ecbDate {`Month', `Int', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
@@ -278,18 +278,18 @@ peekDayArray = peekIntArray (fromSerial . fromIntegral)
 {#fun qlECBNextCode1 as nextECBCode' {`String', preErrorCheck- `String' errorCheck*-} -> `String' #}
 
 -- |next ECB code following the given date
-{#fun qlECBNextCode as nextECBCode {fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
+{#fun qlECBNextCode as nextECBCode {fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `String' #}
 
 -- |next maintenance period start date following the given ECB code
-{#fun qlECBNextDate1 as nextECBDate'{`String', fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
+{#fun qlECBNextDate1 as nextECBDate'{`String', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
 -- |next maintenance period start date following the given date
-{#fun qlECBNextDate as nextECBDate {fromDay'* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
+{#fun qlECBNextDate as nextECBDate {fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Day' toDay #}
 
 -- |next maintenance period start dates following the given code
-{#fun qlECBNextDates1 as nextECBDates' {`String', fromDay'* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlECBNextDates1 as nextECBDates' {`String', fromMaybeDay* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
-{#fun qlECBNextDates as nextECBDates {fromDay'* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlECBNextDates as nextECBDates {fromMaybeDay* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 {#fun qlECBRemoveDate as removeECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
 

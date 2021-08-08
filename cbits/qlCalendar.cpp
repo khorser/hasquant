@@ -198,7 +198,7 @@ void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeek
     *len = dates.size();
     *days = qlAllocateInts(*len);
     for (size_t i = 0; i < dates.size(); ++i)
-      *days[i] = dates[i].serialNumber();
+      (*days)[i] = dates[i].serialNumber();
   } catch (std::exception& er) {
     (void)handleException<int*>(e, er);
   }

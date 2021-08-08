@@ -15,8 +15,7 @@ module QuantLib.Currency
   where
 
 import QuantLib.Utility
-import QuantLib.Math(Rounding)
-{#import QuantLib.Math#}
+{#import QuantLib.Math #}
 import QuantLib.Type
 
 #include "qlTypesC2HS.h"
