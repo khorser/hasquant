@@ -55,8 +55,9 @@ data DayCounterConstructor =
   | Actual365Fixed Actual365FixedConvention
   | ActualActual ActualActualConvention -- TODO add the second (Schedule) argument
   | Business252 Calendar
-  | OneDayCounter
-  | SimpleDayCounter | Thirty360 Thirty360Convention
+  | One
+  | Simple
+  | Thirty360 Thirty360Convention
   | Thirty365
  deriving (Show, Eq)
 
@@ -65,8 +66,8 @@ dayCounterType Actual360 = DayCounterActual360
 dayCounterType Actual364 = DayCounterActual364
 dayCounterType (Actual365Fixed _) = DayCounterActual365Fixed
 dayCounterType (ActualActual _) = DayCounterActualActual
-dayCounterType OneDayCounter = DayCounterOneDayCounter
-dayCounterType SimpleDayCounter = DayCounterSimpleDayCounter
+dayCounterType One = DayCounterOneDayCounter
+dayCounterType Simple = DayCounterSimpleDayCounter
 dayCounterType (Thirty360 _) = DayCounterThirty360
 dayCounterType Thirty365 = DayCounterThirty365
 dayCounterType x = error $ "Internal error: no type for Day Counter " ++ (show x)
