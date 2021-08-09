@@ -298,6 +298,6 @@ peekDayArray = peekIntArray (fromSerial . fromIntegral)
 withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withDayArray x f = do
   xs <- mapM toSerial x
-  withArray (map fromIntegral xs) (\xs -> f (fromIntegral $ length x, xs))
+  withArray (map fromIntegral xs) (\xx -> f (fromIntegral $ length x, xx))
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

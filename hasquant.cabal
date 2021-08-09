@@ -71,8 +71,8 @@ library
                     , cbits/qlYieldTS.cpp
 
   include-dirs:        cbits
-  ghc-options:         -pgml g++
-  extra-libraries:     QuantLib
+  ghc-options:         -Wall
+  extra-libraries:     QuantLib stdc++
 --  includes:         cbits/qlaux.h
 --                    , cbits/qlBond.h
 --                    , cbits/qlCalendar.h
@@ -127,8 +127,7 @@ executable hasquant_example
 --            , QuantLib.Example.Replication
 --            , QuantLib.Example.Repo
 --            , QuantLib.Example.Swap
-  ghc-options:         -pgml g++
---  -Wall
+  ghc-options:         -Wall
   build-depends:
               base >= 4.14 && < 5.0
             , time
@@ -161,8 +160,7 @@ test-suite hasquant_test
 --              , QuantLib.Example.Replication
 --              , QuantLib.Example.Repo
 --              , QuantLib.Example.Swap
-  ghc-options:         -pgml g++
---  -Wall
+  ghc-options:         -Wall
   Build-Depends:
               base >= 4.14 && < 5.0
             , time

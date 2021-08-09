@@ -15,7 +15,6 @@ module QuantLib.Settings
   )
 where
 
-import Foreign.Marshal.Utils(toBool)
 import Foreign.Ptr(Ptr)
 
 import System.Mem(performGC)

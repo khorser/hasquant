@@ -16,6 +16,7 @@ module QuantLib.Utility
   , peekDynString
   , peekEnum
   , preEnum
+  , preNum
   , preArray
   , peekIntArray
   , withMaybeObject
@@ -27,8 +28,7 @@ where
 
 import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
-import Foreign.Ptr(Ptr, nullPtr, castPtr)
-import Foreign.ForeignPtr(withForeignPtr, ForeignPtr)
+import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
@@ -89,8 +89,8 @@ preNum = with 0
 
 foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
-foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
-foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
+--foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
+--foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
 withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withEnumArray x f = withArray (map (fromIntegral . fromEnum) x) (\xs -> f (fromIntegral $ length x, xs))

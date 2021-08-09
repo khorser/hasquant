@@ -1,14 +1,13 @@
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module Main
   where
 import Test.Hspec
 import Test.Hspec.QuickCheck
 
-import Test.HUnit
 import Test.QuickCheck
 import Test.QuickCheck.Monadic as Q
 
 import Data.Time.Calendar
-import Control.Exception(catch)
 import Data.List(delete)
 
 import QuantLib.Date

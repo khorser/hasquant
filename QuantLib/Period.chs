@@ -12,8 +12,6 @@ module QuantLib.Period
   )
 where
 
-import Foreign.C.Types(CInt)
-
 import QuantLib.Utility
 
 #include "qlTypesC2HS.h"
