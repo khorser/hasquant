@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Main
   where
+
 import Test.Hspec
 import Test.Hspec.QuickCheck
 
@@ -171,15 +172,7 @@ main = do
       it "normalize 12m" $ do -- as of now, QuantLib normalizes only months to years
         Period.normalize (12, Months) `shouldReturn` (1, Years)
 
-    describe "calendars and schedules" $ do
-      it "adjust" $ do
-        c <- calendar $ Russia RussiaSettlement
-        a <- adjust c (fromGregorian 2012 12 22) Preceding
-        a `shouldBe` (fromGregorian 2012 12 21)
-      it "advance" $ do
-        c <- calendar $ Russia RussiaSettlement
-        a <- advance c (fromGregorian 2012 12 20) 1 Months Preceding False
-        a `shouldBe` (fromGregorian 2013 01 18)
+    describe "schedule" $ do
       it "truncate" $ do
         cal <- calendar $ Russia RussiaSettlement
         s <- Schedule.schedule (Just $ 20 `december` 2012) (21 `december` 2013) (1, Months) cal
@@ -200,6 +193,34 @@ main = do
             s <- run $ Schedule.fromDates (map validDay dates) c Unadjusted
             run $ Schedule.dates s `shouldReturn` map validDay dates
 
+      it "daily" $
+        Settings.keepingSettings' $ do
+          let startDate = 17 `january` 2012
+          cal <- calendar $ TARGET
+          (Schedule.schedule (Just startDate) (addDays 7 startDate) (1, Days) cal Following Following Backward False Nothing Nothing >>= Schedule.dates)
+            `shouldReturn` [17 `january` 2012, 18 `january` 2012, 19 `january` 2012, 20 `january` 2012, 23 `january` 2012, 24 `january` 2012]
+      it "end date with EoM adjustment" $
+        Settings.keepingSettings' $ do
+          cal <- calendar $ Japan
+          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Forward True Nothing Nothing >>= Schedule.dates)
+            `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 29 `june` 2012]
+          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Unadjusted Forward True Nothing Nothing >>= Schedule.dates)
+            `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 15 `june` 2012]
+      it "dates past end date with EoM adjustment" $
+        Settings.keepingSettings' $ do
+          cal <- calendar TARGET
+          (Schedule.schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Forward True Nothing Nothing >>= Schedule.dates)
+            `shouldReturn` [31 `march` 2013, 31 `march` 2014, 30 `march` 2015]
+
+    describe "calendars" $ do
+      it "adjust" $ do
+        c <- calendar $ Russia RussiaSettlement
+        a <- adjust c (fromGregorian 2012 12 22) Preceding
+        a `shouldBe` (fromGregorian 2012 12 21)
+      it "advance" $ do
+        c <- calendar $ Russia RussiaSettlement
+        a <- advance c (fromGregorian 2012 12 20) 1 Months Preceding False
+        a `shouldBe` (fromGregorian 2013 01 18)
       it "modifying" $ do
         c1 <- calendar TARGET
         c2 <- calendar $ UnitedStates UnitedStatesNYSE
