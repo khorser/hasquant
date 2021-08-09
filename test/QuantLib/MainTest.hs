@@ -823,6 +823,16 @@ main = do
         (show c) `shouldBe` "British pound sterling"
 
     describe "day counter" $ do
+      let checkCounter :: Schedule.DayCounter -> [Day] -> [(Int, TimeUnit)] -> [Double] -> IO ()
+          checkCounter dc days periods expected = Settings.keepingSettings' $
+            mapM_ (\d -> do
+              calculated <- mapM (\p -> do
+                end <- addPeriod d p
+                Schedule.years dc d end Nothing Nothing)
+                periods
+              let diffs = zipWith (-) calculated expected
+              all ((1.0e-12 >) . abs) diffs `shouldBe` True)
+              days
       it "Actual/Actual" $
         Settings.keepingSettings' $
           mapM_ (\(c, s, e, rs, re, t) -> do
@@ -853,25 +863,17 @@ main = do
 
       it "simple" $ do
         dc <- Schedule.dayCounter Schedule.Simple
-        Settings.keepingSettings' $
-          mapM_ (\d -> do
-            calculated <- mapM (\p -> do
-                                  end <- addPeriod d p
-                                  Schedule.years dc d end Nothing Nothing) [(3, Months), (6, Months), (1, Years)]
-            let diffs = zipWith (-) calculated [0.25, 0.5, 1.0]
-            (all (\x -> abs x < 1.0e-12) diffs) `shouldBe` True)
-            [1 `january` 2002 .. 31 `december` 2005]
+        checkCounter dc
+          [1 `january` 2002 .. 31 `december` 2005]
+          [(3, Months), (6, Months), (1, Years)]
+          [0.25, 0.5, 1.0]
     
       it "one" $ do
         dc <- Schedule.dayCounter Schedule.One
-        Settings.keepingSettings' $
-          mapM_ (\d -> do
-            calculated <- mapM (\p -> do
-                                  end <- addPeriod d p
-                                  Schedule.years dc d end Nothing Nothing) [(3, Months), (6, Months), (1, Years)]
-            let diffs = zipWith (-) calculated [1.0, 1.0, 1.0]
-            (all (\x -> abs x < 1.0e-12) diffs) `shouldBe` True)
-            [1 `january` 2004 .. 31 `december` 2004]
+        checkCounter dc
+          [1 `january` 2004 .. 31 `december` 2004]
+          [(3, Months), (6, Months), (1, Years)]
+          [1.0, 1.0, 1.0]
 
       it "Business 252" $
         Settings.keepingSettings' $ do
@@ -904,9 +906,9 @@ main = do
                         0.912698412698,
                         2.214285714286,
                         6.84126984127]
-          dc <- (calendar $ Brazil BrazilSettlement) >>= (Schedule.dayCounter . Schedule.Business252)
+          dc <- (calendar $ Brazil BrazilSettlement) >>= Schedule.dayCounter . Schedule.Business252
           fractions <- mapM (\(s, e) -> Schedule.years dc s e Nothing Nothing) (zip days (tail days))
           let diffs = zipWith (-) fractions expected
-          (all (\x -> abs x < 1.0e-12) diffs) `shouldBe` True
+          all ((1.0e-12 >) . abs) diffs `shouldBe` True
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
