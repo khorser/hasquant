@@ -15,11 +15,14 @@ import QuantLib.Utility
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
 import QuantLib.Period as Period
+import QuantLib.Calendar
+import QuantLib.Currency(currency, Ccy(..))
+import qualified QuantLib.Schedule as Schedule
 
 instance Arbitrary Period.Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
 
-newtype ValidDay = ValidDay Day deriving (Show, Eq)
+newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
 newtype InvalidDay = InvalidDay Day deriving (Show, Eq)
 
 instance Arbitrary ValidDay where
@@ -167,5 +170,40 @@ main = do
         Period.add (9, Months) (1, Years) `shouldReturn` (21, Months)
       it "normalize 12m" $ do -- as of now, QuantLib normalizes only months to years
         Period.normalize (12, Months) `shouldReturn` (1, Years)
+
+    describe "calendars and schedules" $ do
+      it "adjust" $ do
+        c <- calendar $ Russia RussiaSettlement
+        a <- adjust c (fromGregorian 2012 12 22) Preceding
+        a `shouldBe` (fromGregorian 2012 12 21)
+      it "advance" $ do
+        c <- calendar $ Russia RussiaSettlement
+        a <- advance c (fromGregorian 2012 12 20) 1 Months Preceding False
+        a `shouldBe` (fromGregorian 2013 01 18)
+      it "truncate" $ do
+        cal <- calendar $ Russia RussiaSettlement
+        s <- Schedule.schedule (Just $ 20 `december` 2012) (21 `december` 2013) (1, Months) cal
+          Following Unadjusted Forward
+          False (Just $ 21 `december` 2012) (Just $ 21 `december` 2013)
+        truncated <- Schedule.until s (15 `april` 2013)
+        ds <- Schedule.dates truncated
+        ds `shouldBe` [fromGregorian 2012 12 20,
+               fromGregorian 2012 12 21,
+               fromGregorian 2013 01 21,
+               fromGregorian 2013 02 21,
+               fromGregorian 2013 03 21,
+               fromGregorian 2013 04 15]
+      prop "generate from valid days" $ do
+        \dates ->
+          monadicIO $ do
+            c <- run $ calendar $ Russia RussiaSettlement
+            s <- run $ Schedule.fromDates (map validDay dates) c Unadjusted
+            run $ Schedule.dates s `shouldReturn` map validDay dates
+
+    describe "currency" $ do
+      it "GBP name" $ do
+        c <- currency GBP
+        (show c) `shouldBe` "British pound sterling"
+
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
