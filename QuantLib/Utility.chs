@@ -35,6 +35,7 @@ import Foreign.Storable(peek, Storable)
 
 import Control.Exception(throwIO)
 import Control.Monad(when)
+
 import QuantLib.Type
 
 #include "qlTypesC2HS.h"
@@ -49,27 +50,20 @@ errorCheck p = do
   a <- peek p
   when
     (a /= nullPtr)
-    (do
-      e <- peekCString a
-      c_freeString a
-      throwIO $ CPlusPlusException e)
+    ((peekCString a <* c_freeString a) >>= throwIO . CPlusPlusException)
 
 -- like alloca but initializes the allocated pointer with zero
 preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
 preErrorCheck = with nullPtr
 
 fromMaybeBool :: Maybe Bool -> CInt
-fromMaybeBool Nothing = -1
-fromMaybeBool (Just x) = fromBool x
+fromMaybeBool x = maybe (-1) fromBool x
 
 toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
 
-throughOne :: (Monad m) => a -> (a -> m b) -> (a -> m d) -> m b
-throughOne x f g = do {v <- f x; _ <- g x; return v}
-
 peekDynString :: CString -> IO String
-peekDynString x = throughOne x peekCString c_freeString
+peekDynString x = peekCString x <* c_freeString x
 
 {#fun pure qlNullInteger as nullInteger {} -> `Int' #}
 
@@ -104,9 +98,7 @@ peekIntArray :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
 peekIntArray f pl pp = do
   l <- peek pl
   p <- peek pp
-  a <- peekArray (fromIntegral l) p
-  c_freeInts p
-  return $ map f a
+  map f <$> peekArray (fromIntegral l) p <* c_freeInts p
 
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
 withMaybeObject Nothing f = f nullPtr
