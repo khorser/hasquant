@@ -57,7 +57,7 @@ preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
 preErrorCheck = with nullPtr
 
 fromMaybeBool :: Maybe Bool -> CInt
-fromMaybeBool x = maybe (-1) fromBool x
+fromMaybeBool = maybe (-1) fromBool
 
 toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x

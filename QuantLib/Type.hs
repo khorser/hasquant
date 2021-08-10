@@ -16,7 +16,10 @@ import Data.Time.Calendar(Day)
 --  , includeTodaysCashFlows :: Bool
 --  , includeReferenceDateEvents :: Bool}
 
-data Error = CPlusPlusException String | DateConversion Day deriving (Show, Eq)
+data Error = CPlusPlusException String
+          | DateConversion Day
+          | EnumConversion String
+          deriving (Show, Eq)
 
 instance Exception Error
 

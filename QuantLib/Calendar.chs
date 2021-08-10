@@ -36,6 +36,7 @@ module QuantLib.Calendar
 
 import QuantLib.Type
 import QuantLib.Utility
+import Control.Exception(throwIO)
 {#import QuantLib.Date #}(Day, fromDay, toDay, BusinessDayConvention, Weekday, peekDayArray)
 {#import QuantLib.Period #}
 
@@ -112,50 +113,51 @@ data CalendarConstructor = Argentina
   | Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
   deriving (Show, Eq)
 
-country :: CalendarConstructor -> CalendarCountry
-country Argentina = CountryArgentina
-country Australia = CountryAustralia
-country (Austria _) = CountryAustria
-country Botswana = CountryBotswana
-country (Brazil _) = CountryBrazil
-country (Canada _) = CountryCanada
-country (China _) = CountryChina
-country CzechRepublic = CountryCzechRepublic
-country Denmark = CountryDenmark
-country Finland = CountryFinland
-country (France _) = CountryFrance
-country (Germany _) = CountryGermany
-country HongKong = CountryHongKong
-country Hungary = CountryHungary
-country Iceland = CountryIceland
-country India = CountryIndia
-country (Indonesia _) = CountryIndonesia
-country (Israel _) = CountryIsrael
-country (Italy _) = CountryItaly
-country Japan = CountryJapan
-country Mexico = CountryMexico
-country NewZealand = CountryNewZealand
-country Norway = CountryNorway
-country Null = CountryNull
-country Poland = CountryPoland
-country (Romania _) = CountryRomania
-country (Russia _) = CountryRussia
-country SaudiArabia = CountrySaudiArabia
-country Singapore = CountrySingapore
-country Slovakia = CountrySlovakia
-country SouthAfrica = CountrySouthAfrica
-country (SouthKorea _) = CountrySouthKorea
-country Sweden = CountrySweden
-country Switzerland = CountrySwitzerland
-country Taiwan = CountryTaiwan
-country TARGET = CountryTARGET
-country Thailand = CountryThailand
-country Turkey = CountryTurkey
-country Ukraine = CountryUkraine
-country (UnitedKingdom _) = CountryUnitedKingdom
-country (UnitedStates _) = CountryUnitedStates
-country WeekendsOnly = CountryWeekendsOnly
-country x = error ("Internal error: no country defined for calendar " ++ (show x))
+country :: CalendarConstructor -> IO CalendarCountry
+country Argentina = return CountryArgentina
+country Australia = return CountryAustralia
+country (Austria _) = return CountryAustria
+country Botswana = return CountryBotswana
+country (Brazil _) = return CountryBrazil
+country (Canada _) = return CountryCanada
+country (China _) = return CountryChina
+country CzechRepublic = return CountryCzechRepublic
+country Denmark = return CountryDenmark
+country Finland = return CountryFinland
+country (France _) = return CountryFrance
+country (Germany _) = return CountryGermany
+country HongKong = return CountryHongKong
+country Hungary = return CountryHungary
+country Iceland = return CountryIceland
+country India = return CountryIndia
+country (Indonesia _) = return CountryIndonesia
+country (Israel _) = return CountryIsrael
+country (Italy _) = return CountryItaly
+country Japan = return CountryJapan
+country Mexico = return CountryMexico
+country NewZealand = return CountryNewZealand
+country Norway = return CountryNorway
+country Null = return CountryNull
+country Poland = return CountryPoland
+country (Romania _) = return CountryRomania
+country (Russia _) = return CountryRussia
+country SaudiArabia = return CountrySaudiArabia
+country Singapore = return CountrySingapore
+country Slovakia = return CountrySlovakia
+country SouthAfrica = return CountrySouthAfrica
+country (SouthKorea _) = return CountrySouthKorea
+country Sweden = return CountrySweden
+country Switzerland = return CountrySwitzerland
+country Taiwan = return CountryTaiwan
+country TARGET = return CountryTARGET
+country Thailand = return CountryThailand
+country Turkey = return CountryTurkey
+country Ukraine = return CountryUkraine
+country (UnitedKingdom _) = return CountryUnitedKingdom
+country (UnitedStates _) = return CountryUnitedStates
+country WeekendsOnly = return CountryWeekendsOnly
+-- deliberately not defining country for Joint and Bespoke constructors
+country x = throwIO $ EnumConversion $ "No country defined for calendar " ++ show x
 
 market :: CalendarConstructor -> Int
 market (Austria x) = fromEnum x
@@ -194,7 +196,7 @@ calendar (Bespoke n w) = qlBespokeCalendar n w
 calendar (Joint2 c1 c2 r) = qlJointCalendar2 c1 c2 r
 calendar (Joint3 c1 c2 c3 r) = qlJointCalendar3 c1 c2 c3 r
 calendar (Joint4 c1 c2 c3 c4 r) = qlJointCalendar4 c1 c2 c3 c4 r
-calendar x = qlCalendar (country x) (market x)
+calendar x = country x >>= flip qlCalendar (market x)
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
 {#fun qlCalendarAdjust as adjust {`Calendar', fromDay* `Day', `BusinessDayConvention'} -> `Day' toDay #}

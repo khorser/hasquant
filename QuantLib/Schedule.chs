@@ -20,6 +20,7 @@ module QuantLib.Schedule
 where
 
 import Prelude hiding(until)
+import Control.Exception(throwIO)
 
 import QuantLib.Type
 import QuantLib.Date
@@ -61,16 +62,16 @@ data DayCounterConstructor =
   | Thirty365
  deriving (Show, Eq)
 
-dayCounterType :: DayCounterConstructor -> DayCounterType
-dayCounterType Actual360 = DayCounterActual360
-dayCounterType Actual364 = DayCounterActual364
-dayCounterType (Actual365Fixed _) = DayCounterActual365Fixed
-dayCounterType (ActualActual _) = DayCounterActualActual
-dayCounterType One = DayCounterOneDayCounter
-dayCounterType Simple = DayCounterSimpleDayCounter
-dayCounterType (Thirty360 _) = DayCounterThirty360
-dayCounterType Thirty365 = DayCounterThirty365
-dayCounterType x = error $ "Internal error: no type for Day Counter " ++ (show x)
+dayCounterType :: DayCounterConstructor -> IO DayCounterType
+dayCounterType Actual360 = return DayCounterActual360
+dayCounterType Actual364 = return DayCounterActual364
+dayCounterType (Actual365Fixed _) = return DayCounterActual365Fixed
+dayCounterType (ActualActual _) = return DayCounterActualActual
+dayCounterType One = return DayCounterOneDayCounter
+dayCounterType Simple = return DayCounterSimpleDayCounter
+dayCounterType (Thirty360 _) = return DayCounterThirty360
+dayCounterType Thirty365 = return DayCounterThirty365
+dayCounterType x = throwIO $ EnumConversion $ "No type for Day Counter " ++ show x
 
 convention :: DayCounterConstructor -> Int
 convention (Actual365Fixed x) = fromEnum x
@@ -84,7 +85,7 @@ convention _ = {#const NO_ENUM #}
 
 dayCounter :: DayCounterConstructor -> IO DayCounter
 dayCounter (Business252 x) = qlDayCounterBusiness252 x
-dayCounter x = qlDayCounter (dayCounterType x) (convention x)
+dayCounter x = dayCounterType x >>= flip qlDayCounter (convention x)
 
 -- |Returns the number of days between two dates.
 {#fun qlDayCounterDayCount as days {`DayCounter', fromDay* `Day', fromDay* `Day'} -> `Int' #}
