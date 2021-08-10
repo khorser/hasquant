@@ -70,7 +70,7 @@ main = do
             t <- run today
             run $ Settings.setEvaluationDate (Just t)
             (InvalidDay d) <- pick arbitrary
-            run $ (Settings.setEvaluationDate (Just d)) `shouldThrow` (== DateConversion d)
+            run $ Settings.setEvaluationDate (Just d) `shouldThrow` (== DateConversion d)
             run $ Settings.evaluationDate `shouldReturn` t
 
       describe "enforce todays historic fixings" $ do
@@ -100,7 +100,7 @@ main = do
       it "leap years" $ do
         [False, True, False] `shouldBe` map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
       it "read ISO date" $ do
-        Settings.keepingSettings' $ (read "2006-01-15") `shouldBe` (15 `january` 2006)
+        Settings.keepingSettings' $ read "2006-01-15" `shouldBe` january 15 2006
       it "known ECB dates" $ do
         Settings.keepingSettings' $ do
           knownDates <- knownECBDates
@@ -197,12 +197,12 @@ main = do
       it "daily" $
         Settings.keepingSettings' $ do
           let startDate = 17 `january` 2012
-          cal <- calendar $ TARGET
+          cal <- calendar TARGET
           (Schedule.schedule (Just startDate) (addDays 7 startDate) (1, Days) cal Following Following Backward False Nothing Nothing >>= Schedule.dates)
             `shouldReturn` [17 `january` 2012, 18 `january` 2012, 19 `january` 2012, 20 `january` 2012, 23 `january` 2012, 24 `january` 2012]
       it "end date with EoM adjustment" $
         Settings.keepingSettings' $ do
-          cal <- calendar $ Japan
+          cal <- calendar Japan
           (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Forward True Nothing Nothing >>= Schedule.dates)
             `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 29 `june` 2012]
           (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Unadjusted Forward True Nothing Nothing >>= Schedule.dates)
@@ -217,11 +217,11 @@ main = do
       it "adjust" $ do
         c <- calendar $ Russia RussiaSettlement
         a <- adjust c (fromGregorian 2012 12 22) Preceding
-        a `shouldBe` (fromGregorian 2012 12 21)
+        a `shouldBe` fromGregorian 2012 12 21
       it "advance" $ do
         c <- calendar $ Russia RussiaSettlement
         a <- advance c (fromGregorian 2012 12 20) 1 Months Preceding False
-        a `shouldBe` (fromGregorian 2013 01 18)
+        a `shouldBe` fromGregorian 2013 01 18
       it "modifying" $ do
         c1 <- calendar TARGET
         c2 <- calendar $ UnitedStates UnitedStatesNYSE
@@ -821,7 +821,7 @@ main = do
     describe "currency" $ do
       it "GBP name" $ do
         c <- currency GBP
-        (show c) `shouldBe` "British pound sterling"
+        show c `shouldBe` "British pound sterling"
 
     describe "day counter" $ do
       let checkCounter :: Schedule.DayCounter -> [Day] -> [(Int, TimeUnit)] -> [Double] -> IO ()
@@ -907,7 +907,7 @@ main = do
                         0.912698412698,
                         2.214285714286,
                         6.84126984127]
-          dc <- (calendar $ Brazil BrazilSettlement) >>= Schedule.dayCounter . Schedule.Business252
+          dc <- calendar (Brazil BrazilSettlement) >>= Schedule.dayCounter . Schedule.Business252
           fractions <- mapM (\(s, e) -> Schedule.years dc s e Nothing Nothing) (zip days (tail days))
           let diffs = zipWith (-) fractions expected
           all ((1.0e-12 >) . abs) diffs `shouldBe` True
@@ -946,7 +946,7 @@ main = do
           testRounding :: RoundingType -> Double -> Int -> Double -> IO ()
           testRounding rt x prec expected = do
             r <- rounding' prec rt 5
-            applyRounding r x `shouldSatisfy` (areClose expected)
+            applyRounding r x `shouldSatisfy` areClose expected
       it "closest" $
         mapM_ (\(x, p, x1, _x2, _x3, _x4, _x5) -> testRounding Closest x p x1) testData
       it "up" $
