@@ -27,6 +27,6 @@ instance ForeignObject Rounding where
 
 {#fun qlRounding1 as rounding' {`Int', `RoundingType', `Int', preErrorCheck- `String' errorCheck*-} -> `Rounding' #}
 
-{#fun qlRound as applyRounding {`Rounding', `Double'} -> `Double' #}
+{#fun pure qlRound as applyRounding {`Rounding', `Double'} -> `Double' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
