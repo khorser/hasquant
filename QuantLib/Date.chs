@@ -1,9 +1,6 @@
 module QuantLib.Date
   (
     Day
-  , isValid
-  , fromSerial
-  , toSerial
   , minDate
   , maxDate
   , today
@@ -63,27 +60,14 @@ module QuantLib.Date
   , nextECBDates'
   , nextECBDates
   , removeECBDate
-  -- marshaling
-  , fromDay
-  , toDay
-  , fromMaybeDay
-  , toMaybeDay
-  , peekDayArray
-  , withDayArray
   )
 where
 
-import Foreign.C.Types(CInt, CUInt)
-import Foreign.Ptr(Ptr)
-import Foreign.Marshal.Array(withArray)
-
-import Control.Exception(throwIO)
-import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, toGregorian, isLeapYear, fromGregorian)
+import Data.Time.Calendar(Day, toGregorian, isLeapYear, fromGregorian)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
-import QuantLib.Type(Error(DateConversion))
-import QuantLib.Utility
+import QuantLib.Internal
 import QuantLib.Period(TimeUnit)
 
 #include "qlTypesC2HS.h"
@@ -100,35 +84,6 @@ import QuantLib.Period(TimeUnit)
 {#enum Rule as DateGenerationRule {} deriving(Show, Eq, Bounded) #}
 
 {#enum ImmMonth {} deriving(Show, Eq, Bounded) #}
-
-{#fun pure qlMinYear as minYear {} -> `Int' #}
-
-{#fun pure qlMinMonth as minMonth {} -> `Int' #}
-
-{#fun pure qlMinDay as minDay {} -> `Int' #}
-
-{#fun pure qlMinDateSerialNumber as minDateSerialNumber {} -> `Int' #}
-
-{#fun pure qlMaxDateSerialNumber as maxDateSerialNumber {} -> `Int' #}
-
--- |Julian day of the QuantLib zero date
-qlStart :: Int
-qlStart = minDateJulianDays - minDateSerialNumber
-  where minDateJulianDays = toModifiedJulianDay' $ fromGregorian (fromIntegral minYear) (fromIntegral minMonth) (fromIntegral minDay)
-
-toModifiedJulianDay' :: Day -> Int
-toModifiedJulianDay' = fromIntegral . toModifiedJulianDay
-
-fromSerial :: Int -> Day
-fromSerial x = ModifiedJulianDay $ fromIntegral (x + qlStart)
-
-isValid :: Day -> Bool
-isValid x = s >= minDateSerialNumber && s <= maxDateSerialNumber
-  where s = toModifiedJulianDay' x - qlStart
-
-toSerial :: Day -> IO Int
-toSerial x | isValid x = return $ toModifiedJulianDay' x - qlStart
-           | otherwise = throwIO $ DateConversion x
 
 year :: Day -> Int
 year x = fromIntegral y where (y, _, _) = toGregorian x
@@ -176,28 +131,6 @@ november d y = fromGregorian (fromIntegral y) 11 d
 
 december :: Int -> Int -> Day
 december d y = fromGregorian (fromIntegral y) 12 d
-
--- |earliest allowed date in QuantLib
-minDate :: Day
-minDate = fromSerial minDateSerialNumber
-
--- |latest date allowed in QuantLib
-maxDate :: Day
-maxDate = fromSerial maxDateSerialNumber
-
-fromDay :: Day -> (CInt -> IO a) -> IO a
-fromDay x f = toSerial x >>= f . fromIntegral
-
-toDay :: CInt -> Day
-toDay = fromSerial . fromIntegral
-
-fromMaybeDay :: Maybe Day -> (CInt -> IO a) -> IO a
-fromMaybeDay Nothing f = f 0
-fromMaybeDay (Just x) f = fromDay x f
-
-toMaybeDay :: Int -> Maybe Day
-toMaybeDay 0 = Nothing
-toMaybeDay x = Just $ fromSerial x
 
 {#fun qlWeekday as weekday {fromDay* `Day'} -> `Weekday' #}
 
@@ -271,9 +204,6 @@ today = do
 -- |returns whether or not the given date is a maintenance period start date
 {#fun qlECBIsECBdate as isECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Bool' #}
 
-peekDayArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
-peekDayArray = peekIntArray (fromSerial . fromIntegral)
-
 {#fun qlECBKnownDates as knownECBDates {preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- |next ECB code following the given code
@@ -294,10 +224,5 @@ peekDayArray = peekIntArray (fromSerial . fromIntegral)
 {#fun qlECBNextDates as nextECBDates {fromMaybeDay* `Maybe Day', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 {#fun qlECBRemoveDate as removeECBDate {fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()' #}
-
-withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
-withDayArray x f = do
-  xs <- mapM toSerial x
-  withArray (map fromIntegral xs) (\xx -> f (fromIntegral $ length x, xx))
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

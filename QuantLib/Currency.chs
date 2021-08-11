@@ -14,9 +14,8 @@ module QuantLib.Currency
   )
   where
 
-import QuantLib.Utility
+import QuantLib.Internal
 {#import QuantLib.Math #}
-import QuantLib.Type
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

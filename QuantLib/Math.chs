@@ -8,8 +8,7 @@ module QuantLib.Math
   )
 where
 
-import QuantLib.Type
-import QuantLib.Utility
+import QuantLib.Internal
 
 #include "qlTypesC2HS.h"
 #include "ql.h"

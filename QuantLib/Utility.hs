@@ -6,126 +6,39 @@ module QuantLib.Utility
   , nullInteger
   , nullReal
   , epsilon
-
-  -- marshalling helpers
-  , preErrorCheck
-  , errorCheck
-
-  , fromMaybeBool
-  , toMaybeBool
-  , peekDynString
-  , peekEnum
-  , preEnum
-  , preNum
-  , preArray
-  , peekIntArray
-  , withMaybeObject
-  , withEnumArray
-  , fromEnumQuantity
-  , toEnumQuantity
   )
 where
 
 import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
-import Foreign.Ptr(Ptr, nullPtr)
-import Foreign.Marshal.Array(peekArray, withArray)
-import Foreign.Marshal.Utils(with, toBool, fromBool)
-import Foreign.Storable(peek, Storable)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import Control.Exception(throwIO)
-import Control.Monad(when)
+foreign import ccall safe "ql.h qlVersion" qlVersion :: IO CString
 
-import Data.Functor
+foreign import ccall safe "ql.h qlBoostVersion" qlBoostVersion :: IO CString
 
-import QuantLib.Type
+foreign import ccall safe "ql.h qlNullInteger" qlNullInteger :: CInt
 
-foreign import ccall safe "QuantLib/Utility.chs.h qlVersion" c_version :: IO (Ptr CChar)
+foreign import ccall safe "ql.h qlNullReal" qlNullReal :: CDouble
 
-foreign import ccall safe "QuantLib/Utility.chs.h qlBoostVersion" c_boostVersion :: IO (Ptr CChar)
-
-foreign import ccall safe "QuantLib/Utility.chs.h qlNullInteger" c_nullInteger :: CInt
-
-foreign import ccall safe "QuantLib/Utility.chs.h qlNullReal" c_nullReal :: CDouble
-
-foreign import ccall safe "QuantLib/Utility.chs.h qlEpsilon" c_epsilon :: CDouble
+foreign import ccall safe "ql.h qlEpsilon" qlEpsilon :: CDouble
 
 {-# NOINLINE version #-}
 version :: String
-version = unsafePerformIO $ c_version >>= peekCString
+version = unsafePerformIO $ qlVersion >>= peekCString
 
 {-# NOINLINE boostVersion #-}
 boostVersion :: String
-boostVersion = unsafePerformIO $ c_boostVersion >>= peekCString
+boostVersion = unsafePerformIO $ qlBoostVersion >>= peekCString
 
 nullInteger :: Int
-nullInteger = fromIntegral c_nullInteger
+nullInteger = fromIntegral qlNullInteger
 
 nullReal :: Double
-nullReal = realToFrac c_nullReal
+nullReal = realToFrac qlNullReal
 
 epsilon :: Double
-epsilon = realToFrac c_epsilon
-
-errorCheck :: Ptr CString -> IO ()
-errorCheck p = do
-  a <- peek p
-  when
-    (a /= nullPtr)
-    ((peekCString a <* c_freeString a) >>= throwIO . CPlusPlusException)
-
--- like alloca but initializes the allocated pointer with zero
-preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
-preErrorCheck = with nullPtr
-
-fromMaybeBool :: Maybe Bool -> CInt
-fromMaybeBool = maybe (-1) fromBool
-
-toMaybeBool :: CInt -> Maybe Bool
-toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
-
-peekDynString :: CString -> IO String
-peekDynString x = peekCString x <* c_freeString x
-
-peekEnum :: (Enum a) => Ptr CInt -> IO a
-peekEnum x = peek x <&> (toEnum . fromIntegral)
-
--- initialize pointer to a enum with a valid value before passing it to the function
-preEnum :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
-preEnum = with minBound
-
-preNum :: (Storable a, Num a) => (Ptr a -> IO b) -> IO b
-preNum = with 0
-
-foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
-foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
---foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
---foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
-
-withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
-withEnumArray x f = withArray (map (fromIntegral . fromEnum) x) (\xs -> f (fromIntegral $ length x, xs))
-
-preArray :: ((Ptr CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-preArray f = with 0 $
-  \x -> with nullPtr $
-    \y -> f (x, y)
-
-peekIntArray :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
-peekIntArray f pl pp = do
-  l <- peek pl
-  p <- peek pp
-  map f <$> peekArray (fromIntegral l) p <* c_freeInts p
-
-withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
-withMaybeObject Nothing f = f nullPtr
-withMaybeObject (Just x) f = withObject x f
-
-fromEnumQuantity :: (Enum a) => (Int, a) -> (CInt, CInt)
-fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
-
-toEnumQuantity :: (Enum a) => (CInt, CInt) -> (Int, a)
-toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
+epsilon = realToFrac qlEpsilon
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

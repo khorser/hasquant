@@ -24,7 +24,7 @@ import Control.Exception(throwIO)
 
 import QuantLib.Type
 import QuantLib.Date
-import QuantLib.Utility
+import QuantLib.Internal
 import QuantLib.Period(TimeUnit)
 {#import QuantLib.Calendar #}(Calendar)
 

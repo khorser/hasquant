@@ -33,7 +33,7 @@ library
                     , QuantLib.Instrument
                     , QuantLib.Model
                     , QuantLib.Quote
-  -- other-modules:
+  other-modules:    QuantLib.Internal
   -- other-extensions:
   build-depends:       base >=4.12 && <5.0, time
   -- hs-source-dirs:
