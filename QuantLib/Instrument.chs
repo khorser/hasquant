@@ -9,7 +9,6 @@ module QuantLib.Instrument
    , OptionType(..)
    , BarrierType(..)
    , SwapType(..)
-   , Compounding(..)
    , AverageType(..)
    , ProtectionSide(..)
    , Seniority(..)
@@ -37,8 +36,6 @@ module QuantLib.Instrument
 {#enum BarrierType {} deriving(Show, Eq, Bounded) #}
 
 {#enum SwapType {} deriving(Show, Eq, Bounded) #}
-
-{#enum Compounding {} deriving(Show, Eq, Bounded) #}
 
 {#enum AverageType {} deriving(Show, Eq, Bounded) #}
 

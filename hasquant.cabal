@@ -26,6 +26,7 @@ library
                     , QuantLib.Calendar
                     , QuantLib.Schedule
                     , QuantLib.Settings
+                    , QuantLib.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument
                     , QuantLib.Model
