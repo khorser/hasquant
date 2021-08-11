@@ -1,8 +1,11 @@
 module QuantLib.Internal
   (
-    minDate
+    Day -- reexport for simplicity
+  , minDate
   , maxDate
+
   -- marshalling helpers
+  , alloca
   , preErrorCheck
   , errorCheck
 
@@ -10,12 +13,16 @@ module QuantLib.Internal
   , toMaybeBool
   , peekDynString
   , peekEnum
+  , peekDouble
   , preEnum
   , preNum
   , preArray
-  , peekIntArray
   , withMaybeObject
   , withEnumArray
+  , withIntArray
+  , withDoubleArray
+  , withObjectArray
+  , withDayPtr
   , fromEnumQuantity
   , toEnumQuantity
 
@@ -24,7 +31,9 @@ module QuantLib.Internal
   , fromMaybeDay
   , toMaybeDay
   , peekDayArray
+  , peekBoolArray
   , withDayArray
+  , peekDoubleArray
 
   , isValid
   , toSerial
@@ -39,6 +48,7 @@ import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
+import Foreign.Marshal.Alloc(alloca)
 
 import Control.Exception(throwIO)
 import Control.Monad(when)
@@ -46,6 +56,9 @@ import Data.Functor
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
 import QuantLib.Type
+
+class ForeignObject a where
+  withObject :: a -> (Ptr a -> IO b) -> IO b
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
@@ -70,6 +83,9 @@ peekDynString x = peekCString x <* c_freeString x
 peekEnum :: (Enum a) => Ptr CInt -> IO a
 peekEnum x = peek x <&> (toEnum . fromIntegral)
 
+peekDouble :: Ptr CDouble -> IO Double
+peekDouble x = realToFrac <$> peek x
+
 -- initialize pointer to a enum with a valid value before passing it to the function
 preEnum :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
 preEnum = with minBound
@@ -79,11 +95,29 @@ preNum = with 0
 
 foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
---foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
+foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
 --foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
+withLArray :: (Storable b) => (a -> b) -> [a] -> ((CUInt, Ptr b) -> IO c) -> IO c
+withLArray c x f = withArray (map c x) (\xs -> f (fromIntegral $ length x, xs))
+
 withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
-withEnumArray x f = withArray (map (fromIntegral . fromEnum) x) (\xs -> f (fromIntegral $ length x, xs))
+withEnumArray = withLArray (fromIntegral . fromEnum)
+
+withObjectArray :: (ForeignObject a) => [a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withObjectArray x f = undefined
+
+withIntArray :: (Integral a, Num n, Storable n) => [a] -> ((CUInt, Ptr n) -> IO b) -> IO b
+withIntArray = withLArray fromIntegral
+
+withDoubleArray :: [Double] -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
+withDoubleArray = withLArray realToFrac
+
+withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
+withDayArray x f = mapM toSerial x >>= (`withArray` (\xx -> f (fromIntegral $ length x, xx)))
+
+withDayPtr :: [Day] -> (Ptr CInt -> IO a) -> IO a
+withDayPtr x f = mapM toSerial x >>= (`withArray` f)
 
 preArray :: ((Ptr CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 preArray f = with 0 $
@@ -95,6 +129,18 @@ peekIntArray f pl pp = do
   l <- peek pl
   p <- peek pp
   map f <$> peekArray (fromIntegral l) p <* c_freeInts p
+
+peekBoolArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Bool]
+peekBoolArray = peekIntArray toBool
+
+peekDayArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
+peekDayArray = peekIntArray fromSerial
+
+peekDoubleArray :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO [Double]
+peekDoubleArray pl pp = do
+  l <- peek pl
+  p <- peek pp
+  map realToFrac <$> peekArray (fromIntegral l) p <* c_freeDoubles p
 
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
 withMaybeObject x f = maybe (f nullPtr) (`withObject` f) x
@@ -147,14 +193,6 @@ toMaybeDay :: CInt -> Maybe Day
 toMaybeDay 0 = Nothing
 toMaybeDay x = Just $ fromSerial x
 
-withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
-withDayArray x f = do
-  xs <- mapM toSerial x
-  withArray xs (\xx -> f (fromIntegral $ length x, xx))
-
-peekDayArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
-peekDayArray = peekIntArray fromSerial
-
 -- |earliest allowed date in QuantLib
 minDate :: Day
 minDate = fromSerial qlMinDateSerialNumber
@@ -162,9 +200,5 @@ minDate = fromSerial qlMinDateSerialNumber
 -- |latest date allowed in QuantLib
 maxDate :: Day
 maxDate = fromSerial qlMaxDateSerialNumber
-
--- this leaks the abstraction to some degree...
-class ForeignObject a where
-  withObject :: a -> (Ptr a -> IO b) -> IO b
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

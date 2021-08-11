@@ -37,7 +37,7 @@ module QuantLib.Calendar
 import QuantLib.Type
 import QuantLib.Internal
 import Control.Exception(throwIO)
-{#import QuantLib.Date #}(Day, BusinessDayConvention, Weekday)
+{#import QuantLib.Date #}(BusinessDayConvention, Weekday)
 {#import QuantLib.Period #}
 
 #include "qlTypesC2HS.h"

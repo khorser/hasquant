@@ -62,8 +62,8 @@ Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlemen
   }
 }
 
-unsigned qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
-    double **amount, int **date, int **hasOccurred, char **e) {
+void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
+   unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e) {
   *amount = 0; *date = 0; *hasOccurred = 0;
   try {
     const Leg& l = *arg(leg);
@@ -75,13 +75,12 @@ unsigned qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlement
       (*date)[i] = l[i]->date().serialNumber();
       (*hasOccurred)[i] = l[i]->hasOccurred(qlNullableDate(settlementDate), qlOptBool(includeSettlementDateFlows));
     }
-    return l.size();
+    *al = l.size(); *dl = l.size(); *hl = l.size();
   } catch (std::exception& er) {
     qlFreeDoubles(*amount);
     qlFreeInts(*date);
     qlFreeInts(*hasOccurred);
     *e = DUP(er.what());
-    return 0;
   }
 }
 
@@ -362,18 +361,17 @@ void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPr
   }
 }
 
-int* qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, char **e) {
+void qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, int **days, char **e) {
   int* dates = 0;
   try {
-    dates = qlAllocateInts(o->size());
+    *days = qlAllocateInts(o->size());
     *len = o->size();
     for (unsigned i = 0; i < o->size(); ++i) {
-      dates[i] = ((*o)[i]->accrualStartDate()).serialNumber();
+      (*days)[i] = ((*o)[i]->accrualStartDate()).serialNumber();
     }
-    return dates;
   } catch (std::exception& er) {
     qlFreeInts(dates);
-    return handleException<int*>(e, er);
+    handleException<int*>(e, er);
   }
 }
 

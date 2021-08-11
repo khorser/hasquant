@@ -27,6 +27,8 @@ library
                     , QuantLib.Schedule
                     , QuantLib.Settings
                     , QuantLib.InterestRate
+                    , QuantLib.YieldTermStructure
+                    , QuantLib.Index
                     , QuantLib.CashFlow
                     , QuantLib.Instrument
                     , QuantLib.Model

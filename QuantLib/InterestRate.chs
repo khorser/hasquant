@@ -3,6 +3,7 @@ module QuantLib.InterestRate
 
     Compounding(..)
 
+  , InterestRate
   , interestRate
   , compoundFactor
   , compoundFactor'
@@ -17,7 +18,6 @@ module QuantLib.InterestRate
   where
 
 import QuantLib.Internal
-import QuantLib.Date
 {#import QuantLib.Period #}(Frequency)
 {#import QuantLib.Schedule #}(DayCounter)
 

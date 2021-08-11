@@ -7,8 +7,8 @@ extern "C" {
   void qlFreeLeg(Leg *leg);
   Leg *qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
   Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
-  unsigned qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
-    double **amount, int **date, int **hasOccurred, char **e);
+  void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
+    unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e);
 
   double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   int qlCashFlowsAccrualDays(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
@@ -51,7 +51,7 @@ extern "C" {
   void qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e);
   void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e);
 
-  int* qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, char **e);
+  void qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, int **days, char **e);
 
   void qlFreeDividend(QlDividend *o);
   QlDividend* qlFixedDividend(double amount, int date, char **e);

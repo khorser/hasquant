@@ -63,7 +63,7 @@ module QuantLib.Date
   )
 where
 
-import Data.Time.Calendar(Day, toGregorian, isLeapYear, fromGregorian)
+import Data.Time.Calendar(toGregorian, isLeapYear, fromGregorian)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
