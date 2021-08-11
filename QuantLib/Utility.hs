@@ -33,17 +33,41 @@ import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
 
+import System.IO.Unsafe(unsafePerformIO)
+
 import Control.Exception(throwIO)
 import Control.Monad(when)
 
+import Data.Functor
+
 import QuantLib.Type
 
-#include "qlTypesC2HS.h"
-#include "ql.h"
+foreign import ccall safe "QuantLib/Utility.chs.h qlVersion" c_version :: IO (Ptr CChar)
 
-{#fun pure qlVersion as version {} -> `String' #}
+foreign import ccall safe "QuantLib/Utility.chs.h qlBoostVersion" c_boostVersion :: IO (Ptr CChar)
 
-{#fun pure qlBoostVersion as boostVersion {} -> `String' #}
+foreign import ccall safe "QuantLib/Utility.chs.h qlNullInteger" c_nullInteger :: CInt
+
+foreign import ccall safe "QuantLib/Utility.chs.h qlNullReal" c_nullReal :: CDouble
+
+foreign import ccall safe "QuantLib/Utility.chs.h qlEpsilon" c_epsilon :: CDouble
+
+{-# NOINLINE version #-}
+version :: String
+version = unsafePerformIO $ c_version >>= peekCString
+
+{-# NOINLINE boostVersion #-}
+boostVersion :: String
+boostVersion = unsafePerformIO $ c_boostVersion >>= peekCString
+
+nullInteger :: Int
+nullInteger = fromIntegral c_nullInteger
+
+nullReal :: Double
+nullReal = realToFrac c_nullReal
+
+epsilon :: Double
+epsilon = realToFrac c_epsilon
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
@@ -65,14 +89,8 @@ toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
 peekDynString :: CString -> IO String
 peekDynString x = peekCString x <* c_freeString x
 
-{#fun pure qlNullInteger as nullInteger {} -> `Int' #}
-
-{#fun pure qlNullReal as nullReal {} -> `Double' #}
-
-{#fun pure qlEpsilon as epsilon {} -> `Double' #}
-
 peekEnum :: (Enum a) => Ptr CInt -> IO a
-peekEnum x = peek x >>= return . toEnum . fromIntegral
+peekEnum x = peek x <&> (toEnum . fromIntegral)
 
 -- initialize pointer to a enum with a valid value before passing it to the function
 preEnum :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b
