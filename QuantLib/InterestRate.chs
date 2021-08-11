@@ -66,6 +66,6 @@ instance ForeignObject InterestRate where
 -- The resulting InterestRate has the day-counter provided as input. /Warning/ Time must be measured using the day-counter provided as input.
 {#fun qlInterestRateImpliedRate as impliedRate {`InterestRate', `Double', withObject* `DayCounter', `Compounding', `Frequency', `Double', preErrorCheck- `String' errorCheck*-} -> `InterestRate' #}
 
-{#fun qlInterestRateRate as rate {`InterestRate'} -> `Double' #}
+{#fun pure qlInterestRateRate as rate {`InterestRate'} -> `Double' #}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
