@@ -15,8 +15,6 @@ module QuantLib.Settings
   )
 where
 
-import Foreign.Ptr(Ptr)
-
 import System.Mem(performGC)
 
 import Control.Exception(bracket)
@@ -52,18 +50,14 @@ import QuantLib.Internal
 
 {#fun qlSettingsSetIncludeReferenceDateEvents as setIncludeReferenceDateEvents {`Bool'} -> `()' #}
 
-{#fun qlSavedSettings as savedSettings {} -> `Ptr ()' #}
-
-{#fun qlFreeSavedSettings as freeSavedSettings {`Ptr ()'} -> `()' #}
-
 -- |brackets to restore settings once action has completed or raised an exception
 keepingSettings :: IO b -> IO b
-keepingSettings = bracket savedSettings freeSavedSettings . const
+keepingSettings = bracket qlSavedSettings qlFreeSavedSettings . const
 -- SavedSettings destructor suppresses all exceptions
 
 -- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
 -- garbage collection is run to avoid problems with market data objects watching evaluation date
 keepingSettings' :: IO b -> IO b
-keepingSettings' = bracket savedSettings (\s -> performGC >> freeSavedSettings s) . const
+keepingSettings' = bracket qlSavedSettings (\s -> performGC >> qlFreeSavedSettings s) . const
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

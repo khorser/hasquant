@@ -5,7 +5,7 @@ module QuantLib.Internal
   , maxDate
 
   -- marshalling helpers
-  , alloca
+  , prePtr
   , preErrorCheck
   , errorCheck
 
@@ -39,6 +39,8 @@ module QuantLib.Internal
   , toSerial
   , fromSerial
   , ForeignObject(..)
+  , qlSavedSettings
+  , qlFreeSavedSettings
   )
 where
 
@@ -46,7 +48,7 @@ import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
-import Foreign.Marshal.Utils(with, toBool, fromBool)
+import Foreign.Marshal.Utils(with, toBool, fromBool{-, withMany-})
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
@@ -65,7 +67,7 @@ errorCheck p = do
   a <- peek p
   when
     (a /= nullPtr)
-    ((peekCString a <* c_freeString a) >>= throwIO . CPlusPlusException)
+    ((peekCString a <* qlFreeString a) >>= throwIO . CPlusPlusException)
 
 -- like alloca but initializes the allocated pointer with zero
 preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
@@ -78,7 +80,7 @@ toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
 
 peekDynString :: CString -> IO String
-peekDynString x = peekCString x <* c_freeString x
+peekDynString x = peekCString x <* qlFreeString x
 
 peekEnum :: (Enum a) => Ptr CInt -> IO a
 peekEnum x = peek x <&> (toEnum . fromIntegral)
@@ -93,10 +95,13 @@ preEnum = with minBound
 preNum :: (Storable a, Num a) => (Ptr a -> IO b) -> IO b
 preNum = with 0
 
-foreign import ccall safe "ql.h qlFreeString" c_freeString :: CString -> IO ()
-foreign import ccall safe "ql.h qlFreeInts" c_freeInts :: Ptr CInt -> IO ()
-foreign import ccall safe "ql.h qlFreeDoubles" c_freeDoubles :: Ptr CDouble -> IO ()
---foreign import ccall safe "ql.h qlFreePointerArray" c_freePointerArray :: Ptr (Ptr ()) -> IO ()
+foreign import ccall safe "ql.h qlFreeString" qlFreeString :: CString -> IO ()
+foreign import ccall safe "ql.h qlFreeInts" qlFreeInts :: Ptr CInt -> IO ()
+foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> IO ()
+--foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
+foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
+foreign import ccall safe "ql.h qlFreeSavedSettings" qlFreeSavedSettings :: Ptr () -> IO ()
+
 
 withLArray :: (Storable b) => (a -> b) -> [a] -> ((CUInt, Ptr b) -> IO c) -> IO c
 withLArray c x f = withArray (map c x) (\xs -> f (fromIntegral $ length x, xs))
@@ -105,7 +110,11 @@ withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withEnumArray = withLArray (fromIntegral . fromEnum)
 
 withObjectArray :: (ForeignObject a) => [a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withObjectArray x f = undefined
+withObjectArray = undefined
+--withObjectArray x f = withMany withObject x ff
+--  where ff :: [Ptr a] -> IO b
+--        ff = undefined
+--  --(\xs -> f (fromIntegral $ length x, xs))
 
 withIntArray :: (Integral a, Num n, Storable n) => [a] -> ((CUInt, Ptr n) -> IO b) -> IO b
 withIntArray = withLArray fromIntegral
@@ -119,6 +128,9 @@ withDayArray x f = mapM toSerial x >>= (`withArray` (\xx -> f (fromIntegral $ le
 withDayPtr :: [Day] -> (Ptr CInt -> IO a) -> IO a
 withDayPtr x f = mapM toSerial x >>= (`withArray` f)
 
+prePtr :: (Storable a) => (Ptr a -> IO b) -> IO b
+prePtr = alloca
+
 preArray :: ((Ptr CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 preArray f = with 0 $
   \x -> with nullPtr $
@@ -128,7 +140,7 @@ peekIntArray :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
 peekIntArray f pl pp = do
   l <- peek pl
   p <- peek pp
-  map f <$> peekArray (fromIntegral l) p <* c_freeInts p
+  map f <$> peekArray (fromIntegral l) p <* qlFreeInts p
 
 peekBoolArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Bool]
 peekBoolArray = peekIntArray toBool
@@ -140,7 +152,7 @@ peekDoubleArray :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO [Double]
 peekDoubleArray pl pp = do
   l <- peek pl
   p <- peek pp
-  map realToFrac <$> peekArray (fromIntegral l) p <* c_freeDoubles p
+  map realToFrac <$> peekArray (fromIntegral l) p <* qlFreeDoubles p
 
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
 withMaybeObject x f = maybe (f nullPtr) (`withObject` f) x
@@ -152,13 +164,9 @@ toEnumQuantity :: (Enum a) => (CInt, CInt) -> (Int, a)
 toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
 
 foreign import ccall safe "ql.h qlMinYear" qlMinYear :: CInt
-
 foreign import ccall safe "ql.h qlMinMonth" qlMinMonth :: CInt
-
 foreign import ccall safe "ql.h qlMinDay" qlMinDay :: CInt
-
 foreign import ccall safe "ql.h qlMinDateSerialNumber" qlMinDateSerialNumber :: CInt
-
 foreign import ccall safe "ql.h qlMaxDateSerialNumber" qlMaxDateSerialNumber :: CInt
 
 -- |Julian day of the QuantLib zero date

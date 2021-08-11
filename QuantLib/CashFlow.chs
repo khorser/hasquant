@@ -200,7 +200,7 @@ cashFlows l i d = do
 
 -- |NPV and BPS of the cash flows.
 -- The NPV and BPS of the cash flows calculated together for performance reason
-{#fun qlCashFlowsNpvbps as npvbps {`Leg', withObject* `YieldTermStructure', `Bool', fromDay* `Day', fromDay* `Day', alloca- `Double' peekDouble*, alloca- `Double' peekDouble*, preErrorCheck- `String' errorCheck*-} -> `()' #}
+{#fun qlCashFlowsNpvbps as npvbps {`Leg', withObject* `YieldTermStructure', `Bool', fromDay* `Day', fromDay* `Day', prePtr- `Double' peekDouble*, prePtr- `Double' peekDouble*, preErrorCheck- `String' errorCheck*-} -> `()' #}
 
 -- |implied Z-spread.
 {#fun qlCashFlowsZSpread as zSpread {`Leg', `Double', withObject* `YieldTermStructure', withObject* `DayCounter', `Compounding', `Frequency', `Bool', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', `Double', fromIntegral `Word', `Double', preErrorCheck- `String' errorCheck*-} -> `Double' #}
