@@ -97,8 +97,7 @@ peekIntArray f pl pp = do
   map f <$> peekArray (fromIntegral l) p <* c_freeInts p
 
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
-withMaybeObject Nothing f = f nullPtr
-withMaybeObject (Just x) f = withObject x f
+withMaybeObject x f = maybe (f nullPtr) (`withObject` f) x
 
 fromEnumQuantity :: (Enum a) => (Int, a) -> (CInt, CInt)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
@@ -142,8 +141,7 @@ toDay :: CInt -> Day
 toDay = fromSerial
 
 fromMaybeDay :: Maybe Day -> (CInt -> IO a) -> IO a
-fromMaybeDay Nothing f = f 0
-fromMaybeDay (Just x) f = fromDay x f
+fromMaybeDay x f = maybe (f 0) (`fromDay` f) x
 
 toMaybeDay :: CInt -> Maybe Day
 toMaybeDay 0 = Nothing
