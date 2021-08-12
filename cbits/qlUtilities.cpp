@@ -32,6 +32,10 @@ void qlFreeInts(int *p) {
   delete[] p;
 }
 
+void qlFreeUInts(unsigned *p) {
+  delete[] p;
+}
+
 double *qlAllocateDoubles(size_t size) {
   return new double[size];
 }

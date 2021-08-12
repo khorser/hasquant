@@ -3,8 +3,6 @@ module QuantLib.Utility
     version
   , boostVersion
 
-  , nullInteger
-  , nullReal
   , epsilon
   )
 where
@@ -18,10 +16,6 @@ foreign import ccall safe "ql.h qlVersion" qlVersion :: IO CString
 
 foreign import ccall safe "ql.h qlBoostVersion" qlBoostVersion :: IO CString
 
-foreign import ccall safe "ql.h qlNullInteger" qlNullInteger :: CInt
-
-foreign import ccall safe "ql.h qlNullReal" qlNullReal :: CDouble
-
 foreign import ccall safe "ql.h qlEpsilon" qlEpsilon :: CDouble
 
 {-# NOINLINE version #-}
@@ -31,12 +25,6 @@ version = unsafePerformIO $ qlVersion >>= peekCString
 {-# NOINLINE boostVersion #-}
 boostVersion :: String
 boostVersion = unsafePerformIO $ qlBoostVersion >>= peekCString
-
-nullInteger :: Int
-nullInteger = fromIntegral qlNullInteger
-
-nullReal :: Double
-nullReal = realToFrac qlNullReal
 
 epsilon :: Double
 epsilon = realToFrac qlEpsilon

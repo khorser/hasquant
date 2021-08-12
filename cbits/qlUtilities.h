@@ -6,6 +6,7 @@ extern "C" {
 
   void qlFreeString(char *p);
   void qlFreeInts(int *p);
+  void qlFreeUInts(unsigned *p);
   void qlFreeDoubles(double *p);
   void qlFreePointerArray(void **p);
   int qlNullInteger();

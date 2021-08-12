@@ -29,6 +29,7 @@ module QuantLib.Internal
   , fromDay
   , toDay
   , fromMaybeDay
+  , fromMaybeInt
   , toMaybeDay
   , peekDayArray
   , peekBoolArray
@@ -41,6 +42,9 @@ module QuantLib.Internal
   , ForeignObject(..)
   , qlSavedSettings
   , qlFreeSavedSettings
+  , fromMaybeDouble
+  , peekIntArray
+  , peekUIntArray
   )
 where
 
@@ -54,7 +58,7 @@ import Foreign.Marshal.Alloc(alloca)
 
 import Control.Exception(throwIO)
 import Control.Monad(when)
-import Data.Functor
+import Data.Functor((<&>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
 import QuantLib.Type
@@ -75,6 +79,15 @@ preErrorCheck = with nullPtr
 
 fromMaybeBool :: Maybe Bool -> CInt
 fromMaybeBool = maybe (-1) fromBool
+
+foreign import ccall safe "ql.h qlNullInteger" qlNullInteger :: CInt
+foreign import ccall safe "ql.h qlNullReal" qlNullReal :: CDouble
+
+fromMaybeInt :: (Integral a, Integral b, Storable b) => Maybe a -> b
+fromMaybeInt = maybe (fromIntegral qlNullInteger) fromIntegral
+
+fromMaybeDouble :: Maybe Double -> CDouble
+fromMaybeDouble = maybe (realToFrac qlNullReal) realToFrac
 
 toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
@@ -97,6 +110,7 @@ preNum = with 0
 
 foreign import ccall safe "ql.h qlFreeString" qlFreeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts" qlFreeInts :: Ptr CInt -> IO ()
+foreign import ccall safe "ql.h qlFreeUInts" qlFreeUInts :: Ptr CUInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> IO ()
 --foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
 foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
@@ -131,17 +145,26 @@ preArray f = with 0 $
   \x -> with nullPtr $
     \y -> f (x, y)
 
-peekIntArray :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
-peekIntArray f pl pp = do
+peekIntArray' :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
+peekIntArray' f pl pp = do
   l <- peek pl
   p <- peek pp
   map f <$> peekArray (fromIntegral l) p <* qlFreeInts p
 
+peekUIntArray :: Ptr CUInt -> Ptr (Ptr CUInt) -> IO [Word]
+peekUIntArray pl pp = do
+  l <- peek pl
+  p <- peek pp
+  map fromIntegral <$> peekArray (fromIntegral l) p <* qlFreeUInts p
+
+peekIntArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Int]
+peekIntArray = peekIntArray' fromIntegral
+
 peekBoolArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Bool]
-peekBoolArray = peekIntArray toBool
+peekBoolArray = peekIntArray' toBool
 
 peekDayArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
-peekDayArray = peekIntArray fromSerial
+peekDayArray = peekIntArray' fromSerial
 
 peekDoubleArray :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO [Double]
 peekDoubleArray pl pp = do
