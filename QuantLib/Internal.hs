@@ -48,7 +48,7 @@ import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
-import Foreign.Marshal.Utils(with, toBool, fromBool{-, withMany-})
+import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
@@ -102,19 +102,14 @@ foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> I
 foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
 foreign import ccall safe "ql.h qlFreeSavedSettings" qlFreeSavedSettings :: Ptr () -> IO ()
 
-
 withLArray :: (Storable b) => (a -> b) -> [a] -> ((CUInt, Ptr b) -> IO c) -> IO c
-withLArray c x f = withArray (map c x) (\xs -> f (fromIntegral $ length x, xs))
+withLArray c x f = withArray (map c x) (\px -> f (fromIntegral $ length x, px))
 
 withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withEnumArray = withLArray (fromIntegral . fromEnum)
 
 withObjectArray :: (ForeignObject a) => [a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withObjectArray = undefined
---withObjectArray x f = withMany withObject x ff
---  where ff :: [Ptr a] -> IO b
---        ff = undefined
---  --(\xs -> f (fromIntegral $ length x, xs))
+withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 withIntArray :: (Integral a, Num n, Storable n) => [a] -> ((CUInt, Ptr n) -> IO b) -> IO b
 withIntArray = withLArray fromIntegral
@@ -123,7 +118,7 @@ withDoubleArray :: [Double] -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
 withDoubleArray = withLArray realToFrac
 
 withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
-withDayArray x f = mapM toSerial x >>= (`withArray` (\xx -> f (fromIntegral $ length x, xx)))
+withDayArray x f = mapM toSerial x >>= (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 withDayPtr :: [Day] -> (Ptr CInt -> IO a) -> IO a
 withDayPtr x f = mapM toSerial x >>= (`withArray` f)
