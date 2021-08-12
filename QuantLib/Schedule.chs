@@ -5,12 +5,12 @@ module QuantLib.Schedule
   , Actual365FixedConvention(..)
   , DayCounterConstructor(..)
 
-  , DayCounter
+  , DayCounter(..)
   , dayCounter
   , days
   , years
 
-  , Schedule
+  , Schedule(..)
   , schedule
   , fromDates
   , until

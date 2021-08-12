@@ -17,7 +17,7 @@ module QuantLib.Calendar
   , UnitedKingdomMarket(..)
   , UnitedStatesMarket(..)
 
-  , Calendar
+  , Calendar(..)
   , calendar
   , adjust
   , advance

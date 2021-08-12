@@ -2,7 +2,7 @@ module QuantLib.Currency
   (
    MoneyConversionType(..)
   , Ccy(..)
-  , Currency
+  , Currency(..)
   , currency
   , currency'
   , code

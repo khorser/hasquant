@@ -20,6 +20,8 @@ import {-# SOURCE #-} QuantLib.InterestRateIndex
 -- if you put all pointer declarations in a separate module ch2s will not attach finalizers to foreign ptrs
 -- created in other modules so we must do something about it
 -- on the other hand I don't want to create extra modules to workaround the issue with cyclic dependencies
+-- at the same time I anyway had to provide custom foreign ptr unmarshaller
+-- for some types (e.g. see the same InterestRateIndex returning Calendars etc)
 {#pointer *QlIborIndex as IborIndex foreign finalizer qlFreeIborIndex newtype nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign finalizer qlFreeYieldTermStructure newtype#}

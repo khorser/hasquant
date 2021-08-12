@@ -45,6 +45,7 @@ module QuantLib.Internal
   , fromMaybeDouble
   , peekIntArray
   , peekUIntArray
+  , peekObject
   )
 where
 
@@ -55,9 +56,10 @@ import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
+import Foreign.ForeignPtr(FinalizerPtr)
 
 import Control.Exception(throwIO)
-import Control.Monad(when)
+import Control.Monad(when, (>=>))
 import Data.Functor((<&>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
@@ -65,6 +67,7 @@ import QuantLib.Type
 
 class ForeignObject a where
   withObject :: a -> (Ptr a -> IO b) -> IO b
+  finalizer :: FinalizerPtr a
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
@@ -226,5 +229,9 @@ minDate = fromSerial qlMinDateSerialNumber
 -- |latest date allowed in QuantLib
 maxDate :: Day
 maxDate = fromSerial qlMaxDateSerialNumber
+
+peekObject :: (ForeignObject a) => Ptr a -> IO a
+peekObject = undefined
+--peekObject = newForeignPtr finalizer >=> (return . constructor)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
