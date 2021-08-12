@@ -17,6 +17,7 @@ flag buildExample
   Default: False
 
 library
+-- the order is important as it defines the order of preprocessing modules with c2hs
   exposed-modules:  QuantLib.Type
                     , QuantLib.Utility
                     , QuantLib.Math
@@ -27,12 +28,12 @@ library
                     , QuantLib.Schedule
                     , QuantLib.Settings
                     , QuantLib.InterestRate
+                    , QuantLib.Quote
                     , QuantLib.YieldTermStructure
-                    , QuantLib.Index
+                    , QuantLib.InterestRateIndex
                     , QuantLib.CashFlow
                     , QuantLib.Instrument
                     , QuantLib.Model
-                    , QuantLib.Quote
   other-modules:    QuantLib.Internal
   -- other-extensions:
   build-depends:    base >=4.12 && <5.0

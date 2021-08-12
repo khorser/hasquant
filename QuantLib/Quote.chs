@@ -1,6 +1,7 @@
 module QuantLib.Quote
   (
-     PriceType(..)
+     Quote
+   , PriceType(..)
    , IntervalPriceType(..)
    , AtmType(..)
    , DeltaType(..)
@@ -8,8 +9,17 @@ module QuantLib.Quote
 
   where
 
+import QuantLib.Internal
+
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
+
+#include "ql.h"
+
+{#pointer *QlQuote as Quote foreign finalizer qlFreeQuote newtype #}
+
+instance ForeignObject Quote where
+  withObject = withQuote
 
 {#enum PriceType {} deriving(Show, Eq, Bounded) #}
 

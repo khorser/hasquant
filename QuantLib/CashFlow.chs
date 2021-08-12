@@ -73,7 +73,7 @@ import QuantLib.Internal
 import QuantLib.Date(BusinessDayConvention)
 
 {#import QuantLib.YieldTermStructure #}(YieldTermStructure)
-{#import QuantLib.Index #}(BMAIndex, OvernightIndex, IborIndex)
+{#import QuantLib.InterestRateIndex #}(BMAIndex, OvernightIndex, IborIndex)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

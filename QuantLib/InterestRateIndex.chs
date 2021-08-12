@@ -1,18 +1,25 @@
-module QuantLib.Index
+module QuantLib.InterestRateIndex
   (
-    BMAIndex
+    InterestRateIndex
+  , BMAIndex
   , OvernightIndex
   , IborIndex
   )
   where
 
 import QuantLib.Internal
+{#import QuantLib.YieldTermStructure #}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#pointer *QlInterestRateIndex as InterestRateIndex foreign finalizer qlFreeInterestRateIndex newtype #}
+
+instance ForeignObject InterestRateIndex where
+  withObject = withInterestRateIndex
 
 {#pointer *QlBMAIndex as BMAIndex foreign finalizer qlFreeBMAIndex newtype #}
 
