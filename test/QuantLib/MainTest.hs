@@ -1107,6 +1107,31 @@ main = do
         accA <- accruedAmount l False Nothing
         accA `shouldSatisfy` (/= 0)
 
+      it "empty leg start" $ do
+        (leg [] >>= startDate) `shouldThrow` (\(CPlusPlusException  m) -> not $ null m)
+
+      it "single leg today" $ do
+        (leg [(100, tod)] >>= startDate) `shouldReturn` tod
+
+      it "two legs unsorted" $ do
+        (leg [(100, tod), (-1000, addDays (-10) tod)] >>= startDate) `shouldReturn` addDays (-10) tod
+
+      it "three legs sorted" $do
+        (leg [(100, tod), (1000, addDays (-10) tod), (-2000, addDays 10 tod)] >>= startDate) `shouldReturn` addDays (-10) tod
+
+      prop "random single let start date" $
+        \(a, ValidDay d) -> monadicIO $ do
+          run $ (leg [(a, d)] >>= startDate) `shouldReturn` d
+
+      prop "start date should be minimal" $
+        \flows ->
+          not (null flows)
+            ==> monadicIO $ do
+              let (a, d) = unzip (flows :: [(Double, ValidDay)])
+                  ds = map validDay d
+                  f = zip a ds
+              run $ (leg f >>= startDate) `shouldReturn` minimum ds
+
 {- include once pricers are implemented
 -- dynamic cast of coupon in Black pricer
 test_AccessViolation :: IO ()
