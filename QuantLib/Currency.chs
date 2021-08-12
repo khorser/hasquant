@@ -15,7 +15,7 @@ module QuantLib.Currency
   where
 
 import QuantLib.Internal
-{#import QuantLib.Math #}
+{#import QuantLib.Math#}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -23,34 +23,34 @@ import QuantLib.Internal
 
 #include "ql.h"
 
-{#enum MoneyConversionType {} deriving(Show, Eq, Bounded) #}
+{#enum MoneyConversionType {} deriving(Show, Eq, Bounded)#}
 
-{#enum Ccy {} deriving(Show, Eq, Bounded) #}
+{#enum Ccy {} deriving(Show, Eq, Bounded)#}
 
-{#pointer *Currency foreign finalizer qlFreeCurrency newtype #}
+{#pointer *Currency foreign finalizer qlFreeCurrency newtype#}
 
 instance ForeignObject Currency where
   withObject = withCurrency
   
-{#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString* #}
+{#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString*#}
 
 instance Show Currency where
   show = qlCurrencyName
 
-{#fun qlCurrency as currency {`Ccy', preErrorCheck- `String' errorCheck*-} -> `Currency' #}
+{#fun qlCurrency as currency {`Ccy', preErrorCheck- `String' errorCheck*-} -> `Currency'#}
 
-{#fun pure qlCurrencyCode as code {`Currency'} -> `String' peekDynString* #}
+{#fun pure qlCurrencyCode as code {`Currency'} -> `String' peekDynString*#}
 
-{#fun pure qlCurrencyFormat as format {`Currency'} -> `String' peekDynString* #}
+{#fun pure qlCurrencyFormat as format {`Currency'} -> `String' peekDynString*#}
 
-{#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit {`Currency'} -> `Int' #}
+{#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit {`Currency'} -> `Int'#}
 
-{#fun pure qlCurrencyFractionSymbol as fractionSymbol {`Currency'} -> `String' #}
+{#fun pure qlCurrencyFractionSymbol as fractionSymbol {`Currency'} -> `String'#}
 
-{#fun pure qlCurrencyNumericCode as code' {`Currency'} -> `Int' #}
+{#fun pure qlCurrencyNumericCode as code' {`Currency'} -> `Int'#}
 
-{#fun pure qlCurrencySymbol as symbol {`Currency'} -> `String' #}
+{#fun pure qlCurrencySymbol as symbol {`Currency'} -> `String'#}
 
-{#fun qlCreateCurrency as currency' {`String' , `String' , `Int' , `String' , `String' , `Int' , withMaybeObject* `Maybe Rounding', `String', withMaybeObject* `Maybe Currency', preErrorCheck- `String' errorCheck*-} -> `Currency' #}
+{#fun qlCreateCurrency as currency' {`String' , `String' , `Int' , `String' , `String' , `Int' , withMaybeObject* `Maybe Rounding', `String', withMaybeObject* `Maybe Currency', preErrorCheck- `String' errorCheck*-} -> `Currency'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

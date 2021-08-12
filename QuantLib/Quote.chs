@@ -16,17 +16,17 @@ import QuantLib.Internal
 
 #include "ql.h"
 
-{#pointer *QlQuote as Quote foreign finalizer qlFreeQuote newtype #}
+{#pointer *QlQuote as Quote foreign finalizer qlFreeQuote newtype#}
 
 instance ForeignObject Quote where
   withObject = withQuote
 
-{#enum PriceType {} deriving(Show, Eq, Bounded) #}
+{#enum PriceType {} deriving(Show, Eq, Bounded)#}
 
-{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq, Bounded) #}
+{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq, Bounded)#}
 
-{#enum AtmType {} deriving(Show, Eq, Bounded) #}
+{#enum AtmType {} deriving(Show, Eq, Bounded)#}
 
-{#enum DeltaType {} deriving(Show, Eq, Bounded) #}
+{#enum DeltaType {} deriving(Show, Eq, Bounded)#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
