@@ -45,11 +45,11 @@ instance ForeignObject DayCounter where
 instance Show DayCounter where
   show = qlDayCounterName
 
-{#enum ActualActualConvention {} deriving(Show, Eq, Bounded)#}
-{#enum Thirty360Convention {} deriving(Show, Eq, Bounded)#}
-{#enum Actual365FixedConvention {} deriving(Show, Eq, Bounded)#}
+{#enum ActualActualConvention {} deriving(Show, Eq)#}
+{#enum Thirty360Convention {} deriving(Show, Eq)#}
+{#enum Actual365FixedConvention {} deriving(Show, Eq)#}
 
-{#enum DayCounterType {} deriving(Show, Eq, Bounded)#}
+{#enum DayCounterType {} deriving(Show, Eq)#}
 
 data DayCounterConstructor = 
   Actual360

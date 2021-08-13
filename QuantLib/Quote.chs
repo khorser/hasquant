@@ -22,12 +22,12 @@ instance ForeignObject Quote where
   withObject = withQuote
   peekObject = newForeignPtr qlFreeQuote >=> return . Quote
 
-{#enum PriceType {} deriving(Show, Eq, Bounded)#}
+{#enum PriceType {} deriving(Show, Eq)#}
 
-{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq, Bounded)#}
+{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq)#}
 
-{#enum AtmType {} deriving(Show, Eq, Bounded)#}
+{#enum AtmType {} deriving(Show, Eq)#}
 
-{#enum DeltaType {} deriving(Show, Eq, Bounded)#}
+{#enum DeltaType {} deriving(Show, Eq)#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

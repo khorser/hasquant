@@ -99,9 +99,9 @@ instance ForeignObject Dividend where
   withObject = withDividend
   peekObject = newForeignPtr qlFreeDividend >=> return . Dividend
   
-{#enum DurationType {} deriving(Show, Eq, Bounded)#}
+{#enum DurationType {} deriving(Show, Eq)#}
 
-{#enum RateAveragingType {} add prefix="Averaging" deriving(Show, Eq, Bounded)#}
+{#enum RateAveragingType {} add prefix="Averaging" deriving(Show, Eq)#}
 
 {#fun qlLeg {withDoubleArray* `[Double]'&, withDayPtr* `[Day]', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 

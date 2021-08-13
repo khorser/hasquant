@@ -26,7 +26,7 @@ import QuantLib.Internal
 
 #include "ql.h"
 
-{#enum Compounding {} deriving(Show, Eq, Bounded)#}
+{#enum Compounding {} deriving(Show, Eq)#}
 
 {#pointer *InterestRate foreign finalizer qlFreeInterestRate newtype#}
 

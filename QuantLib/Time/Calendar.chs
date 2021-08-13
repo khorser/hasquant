@@ -46,24 +46,24 @@ import Control.Exception(throwIO)
 
 #include "ql.h"
 
-{#enum JointCalendarRule {} deriving(Show, Eq, Bounded)#}
+{#enum JointCalendarRule {} deriving(Show, Eq)#}
 
-{#enum CalendarCountry {} deriving(Show, Eq, Bounded)#}
+{#enum CalendarCountry {} deriving(Show, Eq)#}
 
-{#enum AustriaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum BrazilMarket {} deriving(Show, Eq, Bounded)#}
-{#enum CanadaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum ChinaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum FranceMarket {} deriving(Show, Eq, Bounded)#}
-{#enum GermanyMarket {} deriving(Show, Eq, Bounded)#}
-{#enum IndonesiaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum IsraelMarket {} deriving(Show, Eq, Bounded)#}
-{#enum ItalyMarket {} deriving(Show, Eq, Bounded)#}
-{#enum RomaniaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum RussiaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum SouthKoreaMarket {} deriving(Show, Eq, Bounded)#}
-{#enum UnitedKingdomMarket {} deriving(Show, Eq, Bounded)#}
-{#enum UnitedStatesMarket {} deriving(Show, Eq, Bounded)#}
+{#enum AustriaMarket {} deriving(Show, Eq)#}
+{#enum BrazilMarket {} deriving(Show, Eq)#}
+{#enum CanadaMarket {} deriving(Show, Eq)#}
+{#enum ChinaMarket {} deriving(Show, Eq)#}
+{#enum FranceMarket {} deriving(Show, Eq)#}
+{#enum GermanyMarket {} deriving(Show, Eq)#}
+{#enum IndonesiaMarket {} deriving(Show, Eq)#}
+{#enum IsraelMarket {} deriving(Show, Eq)#}
+{#enum ItalyMarket {} deriving(Show, Eq)#}
+{#enum RomaniaMarket {} deriving(Show, Eq)#}
+{#enum RussiaMarket {} deriving(Show, Eq)#}
+{#enum SouthKoreaMarket {} deriving(Show, Eq)#}
+{#enum UnitedKingdomMarket {} deriving(Show, Eq)#}
+{#enum UnitedStatesMarket {} deriving(Show, Eq)#}
 
 data CalendarConstructor = Argentina
   | Australia

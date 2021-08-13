@@ -15,7 +15,7 @@ import QuantLib.Internal
 
 #include "qlEnumC2HS.h"
 
-{#enum RoundingType {} deriving (Show, Eq, Bounded)#}
+{#enum RoundingType {} deriving (Show, Eq)#}
 
 {#pointer *Rounding foreign finalizer qlFreeRounding newtype#}
 

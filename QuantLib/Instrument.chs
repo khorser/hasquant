@@ -19,34 +19,34 @@ module QuantLib.Instrument
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 
-{#enum ExerciseType {} deriving(Show, Eq, Bounded)#}
+{#enum ExerciseType {} deriving(Show, Eq)#}
 
-{#enum PositionType {} deriving(Show, Eq, Bounded)#}
+{#enum PositionType {} deriving(Show, Eq)#}
 
-{#enum SettlementType {} deriving(Show, Eq, Bounded)#}
+{#enum SettlementType {} deriving(Show, Eq)#}
 
-{#enum CallabilityType {} add prefix="Callability" deriving(Show, Eq, Bounded)#}
+{#enum CallabilityType {} add prefix="Callability" deriving(Show, Eq)#}
 
-{#enum SettlementMethod {} deriving(Show, Eq, Bounded)#}
+{#enum SettlementMethod {} deriving(Show, Eq)#}
 
-{#enum BondPriceType {} deriving(Show, Eq, Bounded)#}
+{#enum BondPriceType {} deriving(Show, Eq)#}
 
-{#enum OptionType {} deriving(Show, Eq, Bounded)#}
+{#enum OptionType {} deriving(Show, Eq)#}
 
-{#enum BarrierType {} deriving(Show, Eq, Bounded)#}
+{#enum BarrierType {} deriving(Show, Eq)#}
 
-{#enum SwapType {} deriving(Show, Eq, Bounded)#}
+{#enum SwapType {} deriving(Show, Eq)#}
 
-{#enum AverageType {} deriving(Show, Eq, Bounded)#}
+{#enum AverageType {} deriving(Show, Eq)#}
 
-{#enum ProtectionSide {} deriving(Show, Eq, Bounded)#}
+{#enum ProtectionSide {} deriving(Show, Eq)#}
 
-{#enum Seniority {} deriving(Show, Eq, Bounded)#}
+{#enum Seniority {} deriving(Show, Eq)#}
 
-{#enum PricingModel {} deriving(Show, Eq, Bounded)#}
+{#enum PricingModel {} deriving(Show, Eq)#}
 
-{#enum RestructuringType {} deriving(Show, Eq, Bounded)#}
+{#enum RestructuringType {} deriving(Show, Eq)#}
 
-{#enum AtomicDefaultType {} deriving(Show, Eq, Bounded)#}
+{#enum AtomicDefaultType {} deriving(Show, Eq)#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

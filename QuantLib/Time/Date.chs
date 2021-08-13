@@ -75,15 +75,15 @@ import QuantLib.Time.Period(TimeUnit)
 
 #include "qlEnumC2HS.h"
 
-{#enum Month {} deriving(Show, Eq, Bounded)#}
+{#enum Month {} deriving(Show, Eq, Bounded, Ord)#}
 
-{#enum Weekday {} deriving(Show, Eq, Bounded)#}
+{#enum Weekday {} deriving(Show, Eq, Bounded, Ord)#}
 
-{#enum BusinessDayConvention {} deriving(Show, Eq, Bounded)#}
+{#enum BusinessDayConvention {} deriving(Show, Eq)#}
 
-{#enum Rule as DateGenerationRule {} deriving(Show, Eq, Bounded)#}
+{#enum Rule as DateGenerationRule {} deriving(Show, Eq)#}
 
-{#enum ImmMonth {} deriving(Show, Eq, Bounded)#}
+{#enum ImmMonth {} deriving(Show, Eq, Bounded, Ord)#}
 
 year :: Day -> Int
 year x = fromIntegral y where (y, _, _) = toGregorian x

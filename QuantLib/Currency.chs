@@ -23,9 +23,9 @@ import QuantLib.Internal
 
 #include "ql.h"
 
-{#enum MoneyConversionType {} deriving(Show, Eq, Bounded)#}
+{#enum MoneyConversionType {} deriving(Show, Eq)#}
 
-{#enum Ccy {} deriving(Show, Eq, Bounded)#}
+{#enum Ccy {} deriving(Show, Eq)#}
 
 {#pointer *Currency foreign finalizer qlFreeCurrency newtype#}
 
