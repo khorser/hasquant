@@ -8,7 +8,7 @@ module QuantLib.Index
   where
 
 import QuantLib.Internal
-{#import QuantLib.Calendar#}(Calendar)
+{#import QuantLib.Time.Calendar#}(Calendar)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

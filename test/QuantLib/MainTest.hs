@@ -11,14 +11,14 @@ import Test.QuickCheck.Monadic as Q
 import Data.Time.Calendar
 import Data.List(delete)
 
-import QuantLib.Date as Date
+import QuantLib.Time.Date as Date
 import QuantLib.Utility
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
-import QuantLib.Period as Period
-import QuantLib.Calendar as Calendar
+import QuantLib.Time.Period as Period
+import QuantLib.Time.Calendar as Calendar
 import QuantLib.Currency(currency, Ccy(..))
-import qualified QuantLib.Schedule as Schedule
+import qualified QuantLib.Time.Schedule as Schedule
 import QuantLib.Math
 import qualified QuantLib.InterestRate as IR
 import QuantLib.CashFlow

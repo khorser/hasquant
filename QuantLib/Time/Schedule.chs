@@ -1,4 +1,4 @@
-module QuantLib.Schedule
+module QuantLib.Time.Schedule
   (
     ActualActualConvention(..)
   , Thirty360Convention(..)
@@ -23,10 +23,10 @@ import Prelude hiding(until)
 import Control.Exception(throwIO)
 
 import QuantLib.Type
-import QuantLib.Date
+import QuantLib.Time.Date
 import QuantLib.Internal
-import QuantLib.Period(TimeUnit)
-{#import QuantLib.Calendar#}(Calendar)
+import QuantLib.Time.Period(TimeUnit)
+{#import QuantLib.Time.Calendar#}(Calendar)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

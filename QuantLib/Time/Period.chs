@@ -1,4 +1,4 @@
-module QuantLib.Period
+module QuantLib.Time.Period
   (
     fromFrequency
   , toFrequency

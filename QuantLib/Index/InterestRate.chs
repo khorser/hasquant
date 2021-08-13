@@ -28,9 +28,9 @@ module QuantLib.Index.InterestRate
 import QuantLib.Internal
 {#import QuantLib.YieldTermStructure#}
 {#import QuantLib.Index#}(Index)
-{#import QuantLib.Schedule#}(Schedule, DayCounter)
+{#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
 {#import QuantLib.Currency#}(Currency)
-{#import QuantLib.Period#}(TimeUnit)
+{#import QuantLib.Time.Period#}(TimeUnit)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

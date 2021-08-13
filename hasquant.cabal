@@ -22,10 +22,10 @@ library
                     , QuantLib.Utility
                     , QuantLib.Math
                     , QuantLib.Currency
-                    , QuantLib.Period
-                    , QuantLib.Date
-                    , QuantLib.Calendar
-                    , QuantLib.Schedule
+                    , QuantLib.Time.Period
+                    , QuantLib.Time.Date
+                    , QuantLib.Time.Calendar
+                    , QuantLib.Time.Schedule
                     , QuantLib.Settings
                     , QuantLib.InterestRate
                     , QuantLib.Quote

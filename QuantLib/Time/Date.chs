@@ -1,4 +1,4 @@
-module QuantLib.Date
+module QuantLib.Time.Date
   (
     Day
   , minDate
@@ -68,7 +68,7 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
 import QuantLib.Internal
-import QuantLib.Period(TimeUnit)
+import QuantLib.Time.Period(TimeUnit)
 
 #include "qlTypesC2HS.h"
 #include "ql.h"

@@ -19,7 +19,7 @@ import System.Mem(performGC)
 
 import Control.Exception(bracket)
 
-import QuantLib.Date
+import QuantLib.Time.Date
 import QuantLib.Internal
 
 #include "qlTypesC2HS.h"

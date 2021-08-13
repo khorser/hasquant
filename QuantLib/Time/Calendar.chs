@@ -1,4 +1,4 @@
-module QuantLib.Calendar
+module QuantLib.Time.Calendar
   (
     JointCalendarRule(..)
   , CalendarConstructor(..)
@@ -37,8 +37,8 @@ module QuantLib.Calendar
 import QuantLib.Type
 import QuantLib.Internal
 import Control.Exception(throwIO)
-{#import QuantLib.Date#}(BusinessDayConvention, Weekday)
-{#import QuantLib.Period#}
+{#import QuantLib.Time.Date#}(BusinessDayConvention, Weekday)
+{#import QuantLib.Time.Period#}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
