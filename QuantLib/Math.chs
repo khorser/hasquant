@@ -9,6 +9,8 @@ module QuantLib.Math
 where
 
 import QuantLib.Internal
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -21,6 +23,7 @@ import QuantLib.Internal
 
 instance ForeignObject Rounding where
   withObject = withRounding
+  peekObject = newForeignPtr qlFreeRounding >=> return . Rounding
 
 {#fun qlRounding as rounding {preErrorCheck- `String' errorCheck*-} -> `Rounding'#}
 

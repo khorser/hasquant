@@ -27,6 +27,8 @@ import QuantLib.Date
 import QuantLib.Internal
 import QuantLib.Period(TimeUnit)
 {#import QuantLib.Calendar#}(Calendar)
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -38,6 +40,7 @@ import QuantLib.Period(TimeUnit)
 
 instance ForeignObject DayCounter where
   withObject = withDayCounter
+  peekObject = newForeignPtr qlFreeDayCounter >=> return . DayCounter
   
 {#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
 
@@ -97,6 +100,7 @@ dayCounter x = dayCounterType x >>= flip qlDayCounter (convention x)
 
 instance ForeignObject Schedule where
   withObject = withSchedule
+  peekObject = newForeignPtr qlFreeSchedule >=> return . Schedule
 
 {#fun qlSchedule as schedule {fromMaybeDay* `Maybe Day', fromDay* `Day', fromEnumQuantity `(Int, TimeUnit)'&, withObject *`Calendar',
   `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule',

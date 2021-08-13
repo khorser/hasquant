@@ -71,6 +71,8 @@ import QuantLib.Internal
 {#import QuantLib.Calendar#}(Calendar)
 {#import QuantLib.Period#}(Frequency, TimeUnit)
 import QuantLib.Date(BusinessDayConvention)
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 
 {#import QuantLib.YieldTermStructure#}(YieldTermStructure)
 {#import QuantLib.InterestRateIndex#}(BMAIndex, OvernightIndex, IborIndex)
@@ -85,16 +87,19 @@ import QuantLib.Date(BusinessDayConvention)
 
 instance ForeignObject Leg where
   withObject = withLeg
+  peekObject = newForeignPtr qlFreeLeg >=> return . Leg
   
 {#pointer *CouponLeg foreign finalizer qlFreeCouponLeg newtype#}
 
 instance ForeignObject CouponLeg where
   withObject = withCouponLeg
+  peekObject = newForeignPtr qlFreeCouponLeg >=> return . CouponLeg
   
 {#pointer *QlDividend as Dividend foreign finalizer qlFreeDividend newtype#}
 
 instance ForeignObject Dividend where
   withObject = withDividend
+  peekObject = newForeignPtr qlFreeDividend >=> return . Dividend
   
 {#enum DurationType {} deriving(Show, Eq, Bounded)#}
 

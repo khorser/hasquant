@@ -1,6 +1,6 @@
 module QuantLib.Calendar
   (
-   JointCalendarRule(..)
+    JointCalendarRule(..)
   , CalendarConstructor(..)
   , AustriaMarket(..)
   , BrazilMarket(..)
@@ -17,7 +17,7 @@ module QuantLib.Calendar
   , UnitedKingdomMarket(..)
   , UnitedStatesMarket(..)
 
-  , Calendar(..)
+  , Calendar
   , calendar
   , adjust
   , advance
@@ -37,6 +37,8 @@ module QuantLib.Calendar
 import QuantLib.Type
 import QuantLib.Internal
 import Control.Exception(throwIO)
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 {#import QuantLib.Date#}(BusinessDayConvention, Weekday)
 {#import QuantLib.Period#}
 
@@ -180,6 +182,7 @@ market _ = {#const NO_ENUM#}
 
 instance ForeignObject Calendar where
   withObject = withCalendar
+  peekObject = newForeignPtr qlFreeCalendar >=> return . Calendar
   
 {#fun pure qlCalendarName {`Calendar'} -> `String' peekDynString*#}
 

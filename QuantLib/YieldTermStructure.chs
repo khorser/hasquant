@@ -9,6 +9,8 @@ module QuantLib.YieldTermStructure
 import QuantLib.Internal
 {#import QuantLib.Quote#}
 import {-# SOURCE #-} QuantLib.InterestRateIndex
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -17,22 +19,22 @@ import {-# SOURCE #-} QuantLib.InterestRateIndex
 #include "ql.h"
 
 -- breaking recursive dependencies with InterestRateIndex module
--- if you put all pointer declarations in a separate module ch2s will not attach finalizers to foreign ptrs
--- created in other modules so we must do something about it
--- on the other hand I don't want to create extra modules to workaround the issue with cyclic dependencies
--- at the same time I anyway had to provide custom foreign ptr unmarshaller
--- for some types (e.g. see the same InterestRateIndex returning Calendars etc)
-{#pointer *QlIborIndex as IborIndex foreign finalizer qlFreeIborIndex newtype nocode#}
+-- if you put all pointer declarations in a separate module
+-- ch2s will not attach finalizers to foreign ptrs in other modules
+-- I don't want to create extra modules just to workaround the issue with cyclic dependencies and this will not help with finalizers anyway
+{#pointer *QlIborIndex as IborIndex foreign newtype nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign finalizer qlFreeYieldTermStructure newtype#}
 
 instance ForeignObject YieldTermStructure where
   withObject = withYieldTermStructure
+  peekObject = newForeignPtr qlFreeYieldTermStructure >=> return . YieldTermStructure
 
 {#pointer *QlRateHelper as RateHelper foreign finalizer qlFreeRateHelper newtype#}
 
 instance ForeignObject RateHelper where
   withObject = withRateHelper
+  peekObject = newForeignPtr qlFreeRateHelper >=> return . RateHelper
 
 {#fun qlDepositRateHelper1 as depositRateHelper' {withObject* `Quote', withObject* `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 

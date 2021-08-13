@@ -15,6 +15,8 @@ module QuantLib.Currency
   where
 
 import QuantLib.Internal
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 {#import QuantLib.Math#}
 
 #include "qlTypesC2HS.h"
@@ -31,6 +33,7 @@ import QuantLib.Internal
 
 instance ForeignObject Currency where
   withObject = withCurrency
+  peekObject = newForeignPtr qlFreeCurrency >=> return . Currency
   
 {#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString*#}
 

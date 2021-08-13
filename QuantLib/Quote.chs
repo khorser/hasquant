@@ -10,6 +10,8 @@ module QuantLib.Quote
   where
 
 import QuantLib.Internal
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -20,6 +22,7 @@ import QuantLib.Internal
 
 instance ForeignObject Quote where
   withObject = withQuote
+  peekObject = newForeignPtr qlFreeQuote >=> return . Quote
 
 {#enum PriceType {} deriving(Show, Eq, Bounded)#}
 

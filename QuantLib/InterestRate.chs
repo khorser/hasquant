@@ -20,6 +20,8 @@ module QuantLib.InterestRate
 import QuantLib.Internal
 {#import QuantLib.Period#}(Frequency)
 {#import QuantLib.Schedule#}(DayCounter)
+import Foreign.ForeignPtr(newForeignPtr)
+import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -32,6 +34,7 @@ import QuantLib.Internal
 
 instance ForeignObject InterestRate where
   withObject = withInterestRate
+  peekObject = newForeignPtr qlFreeInterestRate >=> return . InterestRate
 
 {#fun qlInterestRate as interestRate {`Double', withObject* `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
 
