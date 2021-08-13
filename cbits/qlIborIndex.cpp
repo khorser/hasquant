@@ -153,7 +153,7 @@ static const makeONIndex onIndices[] = {
 QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e) {
   try {
     if (index < 0 || index >= (int)LENGTH(onIndices))
-      QL_FAIL("Invalid ON index index" << index);
+      QL_FAIL("Invalid O/N index index" << index);
     YieldTermStructureHandle ts = qlNullableHandle(fwd);
     OvernightIndex *i = onIndices[index](ts);
     return ret(new QlOvernightIndex(alloc(i)));
