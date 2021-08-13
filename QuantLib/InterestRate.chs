@@ -20,8 +20,6 @@ module QuantLib.InterestRate
 import QuantLib.Internal
 {#import QuantLib.Period#}(Frequency)
 {#import QuantLib.Schedule#}(DayCounter)
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

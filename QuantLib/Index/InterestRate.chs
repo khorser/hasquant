@@ -7,7 +7,6 @@ module QuantLib.Index.InterestRate
   , SwapIndex
   , OvernightIndexedSwapIndex
 
-  , asIndex
   , bmaIndex
 
   , fixingSchedule
@@ -16,16 +15,21 @@ module QuantLib.Index.InterestRate
   , dayCounter
   , fixingDays
   , tenor
+
+  , asIndex
+  , bmaIndexAsInterestRateIndex
+  , swapIndexAsInterestRateIndex
+  , overnightIndexedSwapIndexAsSwapIndex
+  , iborIndexAsInterestRateIndex
+  , overnightIndexAsIborIndex
   )
   where
 
 import QuantLib.Internal
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 {#import QuantLib.YieldTermStructure#}
 {#import QuantLib.Index#}(Index)
-{#import QuantLib.Schedule#}(Schedule(..), DayCounter(..))
-{#import QuantLib.Currency#}(Currency(..))
+{#import QuantLib.Schedule#}(Schedule, DayCounter)
+{#import QuantLib.Currency#}(Currency)
 {#import QuantLib.Period#}(TimeUnit)
 
 #include "qlTypesC2HS.h"
@@ -88,4 +92,13 @@ instance ForeignObject OvernightIndexedSwapIndex where
 
 {#fun qlInterestRateIndexAsIndex as asIndex {`InterestRateIndex'} -> `Index' peekObject*#}
 
+{#fun qlBMAIndexAsInterestRateIndex as bmaIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
+
+{#fun qlSwapIndexAsInterestRateIndex as swapIndexAsInterestRateIndex {`SwapIndex'} -> `InterestRateIndex'#}
+
+{#fun qlOvernightIndexedSwapIndexAsSwapIndex as overnightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
+
+{#fun qlIborIndexAsInterestRateIndex as iborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
+
+{#fun qlOvernightIndexAsIborIndex as overnightIndexAsIborIndex {`OvernightIndex'} -> `IborIndex'#}
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

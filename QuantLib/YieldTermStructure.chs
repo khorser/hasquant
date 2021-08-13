@@ -7,10 +7,8 @@ module QuantLib.YieldTermStructure
   where
 
 import QuantLib.Internal
-{#import QuantLib.Quote#}
+{#import QuantLib.Quote#}(Quote)
 import {-# SOURCE #-} QuantLib.Index.InterestRate
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

@@ -2,7 +2,7 @@ module QuantLib.Currency
   (
    MoneyConversionType(..)
   , Ccy(..)
-  , Currency(..)
+  , Currency
   , currency
   , currency'
   , code
@@ -15,8 +15,6 @@ module QuantLib.Currency
   where
 
 import QuantLib.Internal
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 {#import QuantLib.Math#}
 
 #include "qlTypesC2HS.h"

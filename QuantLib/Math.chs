@@ -9,8 +9,6 @@ module QuantLib.Math
 where
 
 import QuantLib.Internal
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "ql.h"

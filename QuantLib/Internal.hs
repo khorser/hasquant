@@ -45,6 +45,10 @@ module QuantLib.Internal
   , fromMaybeDouble
   , peekIntArray
   , peekUIntArray
+
+  -- reexport some useful stuff
+  , newForeignPtr
+  , (>=>)
   )
 where
 
@@ -56,8 +60,9 @@ import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
+import Foreign.ForeignPtr(newForeignPtr)
 import Control.Exception(throwIO)
-import Control.Monad(when)
+import Control.Monad(when, (>=>))
 import Data.Functor((<&>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 

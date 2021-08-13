@@ -5,12 +5,12 @@ module QuantLib.Schedule
   , Actual365FixedConvention(..)
   , DayCounterConstructor(..)
 
-  , DayCounter(..)
+  , DayCounter
   , dayCounter
   , days
   , years
 
-  , Schedule(..)
+  , Schedule
   , schedule
   , fromDates
   , until
@@ -27,8 +27,6 @@ import QuantLib.Date
 import QuantLib.Internal
 import QuantLib.Period(TimeUnit)
 {#import QuantLib.Calendar#}(Calendar)
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

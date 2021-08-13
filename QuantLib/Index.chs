@@ -8,8 +8,6 @@ module QuantLib.Index
   where
 
 import QuantLib.Internal
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 {#import QuantLib.Calendar#}(Calendar)
 
 #include "qlTypesC2HS.h"

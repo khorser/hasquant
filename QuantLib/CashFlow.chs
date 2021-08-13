@@ -71,8 +71,6 @@ import QuantLib.Internal
 {#import QuantLib.Calendar#}(Calendar)
 {#import QuantLib.Period#}(Frequency, TimeUnit)
 import QuantLib.Date(BusinessDayConvention)
-import Foreign.ForeignPtr(newForeignPtr)
-import Control.Monad((>=>))
 
 {#import QuantLib.YieldTermStructure#}(YieldTermStructure)
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIndex, IborIndex)
