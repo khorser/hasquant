@@ -336,20 +336,20 @@ double qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, cha
     return handleException<double>(e, er);
   }
 }
-//double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
-//  try {
-//    return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(disc)), guess, accuracy, maxEvaluations, minVol, maxVol);
-//  } catch (std::exception& er) {
-//    return handleException<double>(e, er);
-//  }
-//}
-//QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
-//  try {
-//    return ret(new QlCapFloor(alloc((*arg(o))->optionlet(n))));
-//  } catch (std::exception& er) {
-//    return handleException<QlCapFloor*>(e, er);
-//  }
-//}
+double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {
+    return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(disc)), guess, accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
+  try {
+    return ret(new QlCapFloor(alloc((*arg(o))->optionlet(n))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloor*>(e, er);
+  }
+}
 
 void qlFreeCallability(QlCallability *o) { del(o); }
 void qlFreeBondPrice(QlBondPrice *o) { del(o); }

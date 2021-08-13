@@ -4,6 +4,8 @@ module QuantLib.InterestRateIndex
   , BMAIndex
   , OvernightIndex
   , IborIndex
+  , SwapIndex
+  , OvernightIndexedSwapIndex
 
   , addFixing
   , bmaIndex
@@ -62,6 +64,18 @@ instance ForeignObject OvernightIndex where
 instance ForeignObject IborIndex where
   withObject = withIborIndex
   peekObject = newForeignPtr qlFreeIborIndex >=> return . IborIndex
+
+{#pointer *QlSwapIndex as SwapIndex foreign finalizer qlFreeSwapIndex newtype#}
+
+instance ForeignObject SwapIndex where
+  withObject = withSwapIndex
+  peekObject = newForeignPtr qlFreeSwapIndex >=> return . SwapIndex
+
+{#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign finalizer qlFreeOvernightIndexedSwapIndex newtype#}
+
+instance ForeignObject OvernightIndexedSwapIndex where
+  withObject = withOvernightIndexedSwapIndex
+  peekObject = newForeignPtr qlFreeOvernightIndexedSwapIndex >=> return . OvernightIndexedSwapIndex
 
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.

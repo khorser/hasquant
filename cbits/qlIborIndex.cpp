@@ -6,53 +6,53 @@
 
 using namespace QuantLib;
 
-//QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays,
-//  Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
-//  QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    return ret(new QlIborIndex(alloc(new IborIndex(name, Period(l, (TimeUnit)u),
-//	  settlDays, *arg(ccy), *arg(cal), (BusinessDayConvention) conv,
-//	  eom, *arg(dayCount), qlNullableHandle(fwd)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlIborIndex *>(e, er);
-//  }
-//}
+QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays,
+  Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
+  QlYieldTermStructure *fwd, char **e) {
+  try {
+    return ret(new QlIborIndex(alloc(new IborIndex(name, Period(l, (TimeUnit)u),
+	  settlDays, *arg(ccy), *arg(cal), (BusinessDayConvention) conv,
+	  eom, *arg(dayCount), qlNullableHandle(fwd)))));
+  } catch (std::exception& er) {
+    return handleException<QlIborIndex *>(e, er);
+  }
+}
 
 void qlFreeIborIndex(QlIborIndex *i) {
   del(i);
 }
 
-//QlIborIndex *qlLibor(char *name, int l, int u, unsigned settlDays,
-//    Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd,
-//    char **e) {
-//  try {
-//    return ret(new QlIborIndex(alloc(new Libor(name, Period(l, (TimeUnit)u), settlDays,
-//	      *arg(ccy), *arg(cal), *arg(dc), qlNullableHandle(fwd)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlIborIndex *>(e, er);
-//  }
-//}
+QlIborIndex *qlLibor(char *name, int l, int u, unsigned settlDays,
+    Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd,
+    char **e) {
+  try {
+    return ret(new QlIborIndex(alloc(new Libor(name, Period(l, (TimeUnit)u), settlDays,
+	      *arg(ccy), *arg(cal), *arg(dc), qlNullableHandle(fwd)))));
+  } catch (std::exception& er) {
+    return handleException<QlIborIndex *>(e, er);
+  }
+}
 
-//QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
-//    Currency *ccy, Calendar *cal, DayCounter *dc,
-//    QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    return ret(new QlIborIndex(alloc(new DailyTenorLibor(name, settlDays,
-//	      *arg(ccy), *arg(cal), *arg(dc), qlNullableHandle(fwd)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlIborIndex *>(e, er);
-//  }
-//}
+QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
+    Currency *ccy, Calendar *cal, DayCounter *dc,
+    QlYieldTermStructure *fwd, char **e) {
+  try {
+    return ret(new QlIborIndex(alloc(new DailyTenorLibor(name, settlDays,
+	      *arg(ccy), *arg(cal), *arg(dc), qlNullableHandle(fwd)))));
+  } catch (std::exception& er) {
+    return handleException<QlIborIndex *>(e, er);
+  }
+}
 
-//QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
-//    Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e) {
-//  try {
-//    return ret(new QlOvernightIndex(alloc(new OvernightIndex(name, settlDays,
-//	      *arg(ccy), *arg(cal), *arg(dayCount), qlNullableHandle(fwd)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlOvernightIndex *>(e, er);
-//  }
-//}
+QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
+    Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e) {
+  try {
+    return ret(new QlOvernightIndex(alloc(new OvernightIndex(name, settlDays,
+	      *arg(ccy), *arg(cal), *arg(dayCount), qlNullableHandle(fwd)))));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndex *>(e, er);
+  }
+}
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 

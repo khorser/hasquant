@@ -267,13 +267,13 @@ double qlOneAssetOptionItmCashProbability(QlOneAssetOption* o, char **e) {
     return handleException<double>(e, er);
   }
 }
-//QlOneAssetOption* qlOneAssetOption(QlPayoff* x0, QlExercise* x1, char **e) {
-//  try {
-//    return ret(new QlOneAssetOption(alloc(new OneAssetOption(*arg(x0), (*arg(x1))))));
-//  } catch (std::exception& er) {
-//    return handleException<QlOneAssetOption*>(e, er);
-//  }
-//}
+QlOneAssetOption* qlOneAssetOption(QlPayoff* x0, QlExercise* x1, char **e) {
+  try {
+    return ret(new QlOneAssetOption(alloc(new OneAssetOption(*arg(x0), (*arg(x1))))));
+  } catch (std::exception& er) {
+    return handleException<QlOneAssetOption*>(e, er);
+  }
+}
 double qlOneAssetOptionRho(QlOneAssetOption* o, char **e) {
   try {
     return (*arg(o))->rho();
@@ -323,13 +323,13 @@ double qlQuantoBarrierOptionQrho(QlQuantoBarrierOption* o, char **e) {
     return handleException<double>(e, er);
   }
 }
-//QlQuantoBarrierOption* qlQuantoBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
-//  try {
-//    return ret(new QlQuantoBarrierOption(alloc(new QuantoBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
-//  } catch (std::exception& er) {
-//    return handleException<QlQuantoBarrierOption*>(e, er);
-//  }
-//}
+QlQuantoBarrierOption* qlQuantoBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {
+    return ret(new QlQuantoBarrierOption(alloc(new QuantoBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
+  } catch (std::exception& er) {
+    return handleException<QlQuantoBarrierOption*>(e, er);
+  }
+}
 double qlQuantoBarrierOptionQvega(QlQuantoBarrierOption* o, char **e) {
   try {
     return (*arg(o))->qvega();
@@ -351,13 +351,13 @@ double qlQuantoForwardVanillaOptionQrho(QlQuantoForwardVanillaOption* o, char **
     return handleException<double>(e, er);
   }
 }
-//QlQuantoForwardVanillaOption* qlQuantoForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* x2, QlExercise* x3, char **e) {
-//  try {
-//    return ret(new QlQuantoForwardVanillaOption(alloc(new QuantoForwardVanillaOption(moneyness, Date(resetDate), *arg(x2), *arg(x3)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlQuantoForwardVanillaOption*>(e, er);
-//  }
-//}
+QlQuantoForwardVanillaOption* qlQuantoForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* x2, QlExercise* x3, char **e) {
+  try {
+    return ret(new QlQuantoForwardVanillaOption(alloc(new QuantoForwardVanillaOption(moneyness, Date(resetDate), *arg(x2), *arg(x3)))));
+  } catch (std::exception& er) {
+    return handleException<QlQuantoForwardVanillaOption*>(e, er);
+  }
+}
 double qlQuantoForwardVanillaOptionQvega(QlQuantoForwardVanillaOption* o, char **e) {
   try {
     return (*arg(o))->qvega();
