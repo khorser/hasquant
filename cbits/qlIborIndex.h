@@ -15,7 +15,7 @@ extern "C" {
   QlIborIndex *qlCreateIbor(char *name, int, int,
     QlYieldTermStructure *fwd, char **e);
   QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e);
-  QlOvernightIndex *qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e);
+  QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e);
   QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
     QlYieldTermStructure *fwd, char **e);
 

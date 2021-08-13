@@ -22,6 +22,9 @@ module QuantLib.Index.InterestRate
   , overnightIndexedSwapIndexAsSwapIndex
   , iborIndexAsInterestRateIndex
   , overnightIndexAsIborIndex
+
+  , OvernightIndexType(..)
+  , overnightIndex
   )
   where
 
@@ -101,4 +104,9 @@ instance ForeignObject OvernightIndexedSwapIndex where
 {#fun qlIborIndexAsInterestRateIndex as iborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
 
 {#fun qlOvernightIndexAsIborIndex as overnightIndexAsIborIndex {`OvernightIndex'} -> `IborIndex'#}
+
+{#enum OvernightIndexType {} deriving (Show, Eq)#}
+
+{#fun qlCreateONIndex as overnightIndex {`OvernightIndexType', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `OvernightIndex'#}
+
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -1,3 +1,4 @@
+// Enumerations to be mapped to specific QuantLib classes
 // should match with the order in qlCurrency.cpp
 enum Ccy {ARS = 0
   , ATS
@@ -140,5 +141,15 @@ enum DayCounterType {
 };
 
 #define NO_ENUM -100;
+
+enum OvernightIndexType {
+    Aonia = 0
+    , Eonia
+    , Estr
+    , FedFunds
+    , Nzocr
+    , Sofr
+    , Sonia
+};
 
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

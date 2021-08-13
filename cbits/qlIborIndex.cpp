@@ -137,25 +137,26 @@ QlIborIndex *qlCreateIbor(char *name, int l, int u,
   }
 }
 
+typedef OvernightIndex *(*makeONIndex)(const YieldTermStructureHandle &ts);
 
-typedef EnumObjectInfo1<OvernightIndex, YieldTermStructureHandle&> OnIndexInfo;
-static const OnIndexInfo onIndexInfo [] = {
-  {"Eonia",	  &OnIndexInfo::makeObject<Eonia>},
-  {"Sonia",	  &OnIndexInfo::makeObject<Sonia>},
+// should match the order in qlEnumObjects.h
+static const makeONIndex onIndices[] = {
+    [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Aonia(ts)); }
+  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Eonia(ts)); }
+  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Estr(ts)); }
+  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new FedFunds(ts)); }
+  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Nzocr(ts)); }
+  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Sofr(ts)); }
+  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Sonia(ts)); }
 };
 
-QlOvernightIndex *qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e) {
+QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e) {
   try {
-    const OnIndexInfo *last = LAST(onIndexInfo);
-    const OnIndexInfo *found =
-      std::find_if(onIndexInfo, last, OnIndexInfo::Cmp(name));
-    if (found != last) {
-      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-      OvernightIndex *i = found->make(ts);
-      return ret(new QlOvernightIndex(alloc(i)));
-    }
-    else
-      QL_FAIL("Unknown ON Index " << name);
+    if (index < 0 || index >= (int)LENGTH(onIndices))
+      QL_FAIL("Invalid ON index index" << index);
+    YieldTermStructureHandle ts = qlNullableHandle(fwd);
+    OvernightIndex *i = onIndices[index](ts);
+    return ret(new QlOvernightIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlOvernightIndex *>(e, er);
   }

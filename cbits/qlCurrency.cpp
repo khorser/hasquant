@@ -8,8 +8,8 @@ using namespace QuantLib;
 typedef Currency *(*makeCcy)();
 
 // should match the order in qlEnumObjects.h
-static const makeCcy ccys[] = {[](){
-    return static_cast<Currency *>(new ARSCurrency()); }
+static const makeCcy ccys[] = {
+    [](){ return static_cast<Currency *>(new ARSCurrency()); }
   , [](){ return static_cast<Currency *>(new ATSCurrency()); }
   , [](){ return static_cast<Currency *>(new AUDCurrency()); }
   , [](){ return static_cast<Currency *>(new BCHCurrency()); }
