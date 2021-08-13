@@ -75,7 +75,7 @@ import Foreign.ForeignPtr(newForeignPtr)
 import Control.Monad((>=>))
 
 {#import QuantLib.YieldTermStructure#}(YieldTermStructure)
-{#import QuantLib.InterestRateIndex#}(BMAIndex, OvernightIndex, IborIndex)
+{#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIndex, IborIndex)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

@@ -8,7 +8,7 @@ module QuantLib.YieldTermStructure
 
 import QuantLib.Internal
 {#import QuantLib.Quote#}
-import {-# SOURCE #-} QuantLib.InterestRateIndex
+import {-# SOURCE #-} QuantLib.Index.InterestRate
 import Foreign.ForeignPtr(newForeignPtr)
 import Control.Monad((>=>))
 

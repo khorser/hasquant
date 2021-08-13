@@ -30,7 +30,8 @@ library
                     , QuantLib.InterestRate
                     , QuantLib.Quote
                     , QuantLib.YieldTermStructure
-                    , QuantLib.InterestRateIndex
+                    , QuantLib.Index
+                    , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument
                     , QuantLib.Model

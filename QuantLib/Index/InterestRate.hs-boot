@@ -1,4 +1,4 @@
-module QuantLib.InterestRateIndex
+module QuantLib.Index.InterestRate
   (
     InterestRateIndex
 --  , BMAIndex
