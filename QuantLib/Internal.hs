@@ -182,10 +182,10 @@ peekDoubleArray pl pp = do
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
 withMaybeObject x f = maybe (f nullPtr) (`withObject` f) x
 
-fromEnumQuantity :: (Enum a) => (Int, a) -> (CInt, CInt)
+fromEnumQuantity :: (Enum a, Integral b, Integral c, Storable c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
 
-toEnumQuantity :: (Enum a) => (CInt, CInt) -> (Int, a)
+toEnumQuantity :: (Enum a, Integral c, Storable c, Integral b) => (CInt, c) -> (b, a)
 toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
 
 foreign import ccall safe "ql.h qlMinYear" qlMinYear :: CInt

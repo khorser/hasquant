@@ -22,6 +22,10 @@ instance ForeignObject Index where
   withObject = withIndex
   peekObject = newForeignPtr qlFreeIndex >=> return . Index
 
+{#fun pure qlIndexName {`Index'} -> `String'#}
+
+instance Show Index where show = qlIndexName
+
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
 -- Adds fixings for the given InterestRateIndex object

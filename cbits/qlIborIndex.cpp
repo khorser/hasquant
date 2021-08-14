@@ -56,82 +56,53 @@ QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
-template <class T, class T1>
-struct EnumObjectInfo1 {
-  const char *name;
-  T *(*make)(T1 x);
+typedef IborIndex *(*makeIborIndex)(int l, int u, const YieldTermStructureHandle& ts);
 
-  class Cmp {
-  public:
-    Cmp(const char *n) : n_(n) {}
-    bool operator()(const EnumObjectInfo1<T, T1> &i) {
-      return !strcmp(i.name, n_);
-    }
-  private:
-    const char *n_;
-  };
-
-  template <class A>
-  static T *makeObject(T1 x1) {
-    return new A(x1);
-  }
+static const makeIborIndex iborIndices[] = {
+    [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Cdor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new EURLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new AUDLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new CADLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new CHFLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DKKLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new GBPLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new JPYLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts)); }
+  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts)); }
+  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts)); }
+  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts)); }
+  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts)); }
+  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new CADLiborON(ts)); }
+  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new EURLiborON(ts)); }
+  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new GBPLiborON(ts)); }
+  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new USDLiborON(ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Mosprime(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Pribor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Robor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Shibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new THBFIX(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new TRLibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts)); }
+  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts)); }
 };
 
-template <class T, class T1, class T2>
-struct EnumObjectInfo2 {
-  const char *name;
-  T *(*make)(T1 x1, T2 x2);
-
-  class Cmp {
-  public:
-    Cmp(const char *n) : n_(n) {}
-    bool operator()(const EnumObjectInfo2<T, T1, T2> &i) {
-      return !strcmp(i.name, n_);
-    }
-  private:
-    const char *n_;
-  };
-
-  template <class A>
-  static T *makeObject(T1 x1, T2 x2) {
-    return new A(x1, x2);
-  }
-};
-
-typedef EnumObjectInfo2<IborIndex, const Period&, YieldTermStructureHandle&> IborInfo;
-static const IborInfo iborInfo [] = {
-  {"Euribor",	  &IborInfo::makeObject<Euribor>},
-  {"Euribor365",  &IborInfo::makeObject<Euribor365>},
-  {"AUDLibor",	  &IborInfo::makeObject<AUDLibor>},
-  {"CADLibor",	  &IborInfo::makeObject<CADLibor>},
-  {"Cdor",	  &IborInfo::makeObject<Cdor>},
-  {"CHFLibor",	  &IborInfo::makeObject<CHFLibor>},
-  {"DKKLibor",	  &IborInfo::makeObject<DKKLibor>},
-  {"EURLibor",	  &IborInfo::makeObject<EURLibor>},
-  {"GBPLibor",	  &IborInfo::makeObject<GBPLibor>},
-  {"Jibar",	  &IborInfo::makeObject<Jibar>},
-  {"JPYLibor",	  &IborInfo::makeObject<JPYLibor>},
-  {"NZDLibor",	  &IborInfo::makeObject<NZDLibor>},
-  {"SEKLibor",	  &IborInfo::makeObject<SEKLibor>},
-  {"Tibor",	  &IborInfo::makeObject<Tibor>},
-  {"TRLibor",	  &IborInfo::makeObject<TRLibor>},
-  {"USDLibor",	  &IborInfo::makeObject<USDLibor>},
-  {"Zibor",	  &IborInfo::makeObject<Zibor>}
-};
-
-QlIborIndex *qlCreateIbor(char *name, int l, int u,
-    QlYieldTermStructure *fwd, char **e) {
+QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {
   try {
-    const IborInfo *last = LAST(iborInfo);
-    const IborInfo *found =
-      std::find_if(iborInfo, last, IborInfo::Cmp(name));
-    if (found != last) {
-      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-      IborIndex *i = found->make(Period(l, (TimeUnit)u), ts);
-      return ret(new QlIborIndex(alloc(i)));
-    }
-    else
-      QL_FAIL("Unknown Ibor " << name);
+    if (index < 0 || index >= (int)LENGTH(iborIndices))
+      QL_FAIL("Invalid IBOR index index" << index);
+    YieldTermStructureHandle ts = qlNullableHandle(fwd);
+    IborIndex *i = iborIndices[index](l, u, ts);
+    return ret(new QlIborIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
@@ -159,58 +130,6 @@ QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e
     return ret(new QlOvernightIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlOvernightIndex *>(e, er);
-  }
-}
-
-typedef EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> OnIborInfo;
-static const OnIborInfo onIborInfo [] = {
-  {"CADLiborON",  &OnIborInfo::makeObject<CADLiborON>},
-  {"GBPLiborON",  &OnIborInfo::makeObject<GBPLiborON>},
-  {"USDLiborON",  &OnIborInfo::makeObject<USDLiborON>},
-  {"EURLiborON",  &OnIborInfo::makeObject<EURLiborON>},
-};
-
-QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
-  try {
-    const OnIborInfo *last = LAST(onIborInfo);
-    const OnIborInfo *found =
-      std::find_if(onIborInfo, last, OnIborInfo::Cmp(name));
-    if (found != last) {
-      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-      IborIndex *i = found->make(ts);
-      return ret(new QlIborIndex(alloc(i)));
-    }
-    else
-      QL_FAIL("Unknown ON Ibor " << name);
-  } catch (std::exception& er) {
-    return handleException<QlIborIndex *>(e, er);
-  }
-}
-
-typedef EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> DailyIborInfo;
-static const DailyIborInfo dailyIborInfo [] = {
-  {"DailyTenorCHFLibor", &DailyIborInfo::makeObject<DailyTenorCHFLibor>},
-  {"DailyTenorEURLibor", &DailyIborInfo::makeObject<DailyTenorEURLibor>},
-  {"DailyTenorGBPLibor", &DailyIborInfo::makeObject<DailyTenorGBPLibor>},
-  {"DailyTenorJPYLibor", &DailyIborInfo::makeObject<DailyTenorJPYLibor>},
-  {"DailyTenorUSDLibor", &DailyIborInfo::makeObject<DailyTenorUSDLibor>},
-};
-
-QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
-    QlYieldTermStructure *fwd, char **e) {
-  try {
-    const DailyIborInfo *last = LAST(dailyIborInfo);
-    const DailyIborInfo *found =
-      std::find_if(dailyIborInfo, last, DailyIborInfo::Cmp(name));
-    if (found != last) {
-      YieldTermStructureHandle ts = qlNullableHandle(fwd);
-      IborIndex *i = found->make(settlDays, ts);
-      return ret(new QlIborIndex(alloc(i)));
-    }
-    else
-      QL_FAIL("Unknown Daily Tenor Ibor " << name);
-  } catch (std::exception& er) {
-    return handleException<QlIborIndex *>(e, er);
   }
 }
 

@@ -35,8 +35,8 @@ instance ForeignObject Currency where
   
 {#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString*#}
 
-instance Show Currency where
-  show = qlCurrencyName
+instance Show Currency where show = qlCurrencyName
+instance Eq Currency where x == y = show x == show y
 
 {#fun qlCurrency as currency {`Ccy', preErrorCheck- `String' errorCheck*-} -> `Currency'#}
 

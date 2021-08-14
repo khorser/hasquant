@@ -184,11 +184,8 @@ instance ForeignObject Calendar where
   
 {#fun pure qlCalendarName {`Calendar'} -> `String' peekDynString*#}
 
-instance Show Calendar where
-  show = qlCalendarName
-
-instance Eq Calendar where
-  x == y = show x == show y
+instance Show Calendar where show = qlCalendarName
+instance Eq Calendar where x == y = show x == show y
 
 {#fun qlCalendar {`CalendarCountry', `Int', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 

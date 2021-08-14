@@ -10,14 +10,12 @@ extern "C" {
   QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
     Currency *ccy, Calendar *cal, DayCounter *dayCount,
     QlYieldTermStructure *fwd, char **e);
+
   QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *cur,
     Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *qlCreateIbor(char *name, int, int,
-    QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e);
+
+  QlIborIndex *qlCreateIbor(int, int, int, QlYieldTermStructure *fwd, char **e);
   QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
-    QlYieldTermStructure *fwd, char **e);
 
   void qlFreeIborIndex(QlIborIndex *i);
   QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o);

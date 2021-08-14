@@ -158,4 +158,10 @@ int qlInterestRateIndexTenor(QlInterestRateIndex* o, int *u, char **e) {
     return handleException<int>(e, er);
   }
 }
+
+const char* qlIndexName(QlIndex *index) {
+  std::string name = (*arg(index))->name();
+  return DUP(name.c_str());
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

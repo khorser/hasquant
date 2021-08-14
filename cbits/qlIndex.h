@@ -28,6 +28,7 @@ extern "C" {
   DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e);
   unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o);
   int qlInterestRateIndexTenor(QlInterestRateIndex* o, int *, char **e);
+  const char* qlIndexName(QlIndex *index);
 #ifdef __cplusplus
 }
 #endif

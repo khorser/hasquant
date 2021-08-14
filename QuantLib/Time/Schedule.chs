@@ -42,8 +42,8 @@ instance ForeignObject DayCounter where
   
 {#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
 
-instance Show DayCounter where
-  show = qlDayCounterName
+instance Show DayCounter where show = qlDayCounterName
+instance Eq DayCounter where x == y = show x == show y
 
 {#enum ActualActualConvention {} deriving(Show, Eq)#}
 {#enum Thirty360Convention {} deriving(Show, Eq)#}

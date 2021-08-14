@@ -167,4 +167,42 @@ enum LiborSwapIndexType {
   , UsdLiborSwapIsdaFixPm
 };
 
+enum IborIndexType {
+  IborBbsw = 0
+  , IborBibor
+  , IborBkbm
+  , IborCdor
+  , IborEurLibor
+  , IborAudLibor
+  , IborCadLibor
+  , IborChfLibor
+  , IborDkkLibor
+  , IborGbpLibor
+  , IborJpyLibor
+  , IborNzdLibor
+  , IborSekLibor
+  , IborUsdLibor
+  , IborEurDailyTenorLibor
+  , IborChfDailyTenorLibor
+  , IborGbpDailyTenorLibor
+  , IborJpyDailyTenorLibor
+  , IborUsdDailyTenorLibor
+  , IborCadLiborON
+  , IborEurLiborON
+  , IborGbpLiborON
+  , IborUsdLiborON
+  , IborEuribor
+  , IborEuribor365
+  , IborJibar
+  , IborMosprime
+  , IborPribor
+  , IborRobor
+  , IborShibor
+  , IborTHBFIX
+  , IborTRLibor
+  , IborTibor
+  , IborWibor
+  , IborZibor
+};
+
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */
