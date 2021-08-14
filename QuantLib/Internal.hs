@@ -62,7 +62,6 @@ import Foreign.Marshal.Alloc(alloca)
 import Foreign.ForeignPtr(newForeignPtr)
 import Control.Exception(throwIO)
 import Control.Monad(when, (>=>))
-import Data.Functor((<&>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
 import QuantLib.Type
@@ -102,6 +101,11 @@ toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
 
 peekDynString :: CString -> IO String
 peekDynString x = peekCString x <* qlFreeString x
+
+(<&>) :: Functor f => f a -> (a -> b) -> f b
+as <&> f = f <$> as
+
+infixl 1 <&>
 
 peekEnum :: (Enum a) => Ptr CInt -> IO a
 peekEnum x = peek x <&> (toEnum . fromIntegral)
