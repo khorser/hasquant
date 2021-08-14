@@ -14,7 +14,7 @@ extern "C" {
   QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o);
   QlBMAIndex* qlBMAIndex(QlYieldTermStructure* h, char **e);
 
-  QlSwapIndex* qlCreateLiborSwapIndex(char *name, int, int, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
+  QlSwapIndex* qlCreateLiborSwapIndex(int, int, int, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
   QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
   QlSwapIndex* qlSwapIndex1(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
   QlSwapIndex* qlSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);

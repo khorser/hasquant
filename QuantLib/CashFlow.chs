@@ -73,7 +73,7 @@ import QuantLib.Internal
 import QuantLib.Time.Date(BusinessDayConvention)
 
 {#import QuantLib.YieldTermStructure#}(YieldTermStructure)
-{#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIndex, IborIndex)
+{#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -243,7 +243,7 @@ cashFlows l i d = do
 
 {#fun qlIborLeg as iborLeg {withObject* `Schedule', withObject* `IborIndex', withDoubleArray* `[Double]'&, withObject* `DayCounter', `BusinessDayConvention', withIntArray* `[Word]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Bool', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
-{#fun qlOvernightLeg as overnightLeg {withObject* `Schedule', withObject* `OvernightIndex', withDoubleArray* `[Double]'&, withObject* `DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
+{#fun qlOvernightLeg as overnightLeg {withObject* `Schedule', withObject* `OvernightIborIndex', withDoubleArray* `[Double]'&, withObject* `DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
 {#fun qlRangeAccrualLeg as rangeAccrualLeg {withObject* `Schedule', withObject* `IborIndex', withDoubleArray* `[Double]'&, withObject* `DayCounter', `BusinessDayConvention', withIntArray* `[Word]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 

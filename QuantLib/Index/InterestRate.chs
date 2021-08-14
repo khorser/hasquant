@@ -2,7 +2,7 @@ module QuantLib.Index.InterestRate
   (
     InterestRateIndex
   , BMAIndex
-  , OvernightIndex
+  , OvernightIborIndex
   , IborIndex
   , SwapIndex
   , OvernightIndexedSwapIndex
@@ -21,10 +21,17 @@ module QuantLib.Index.InterestRate
   , swapIndexAsInterestRateIndex
   , overnightIndexedSwapIndexAsSwapIndex
   , iborIndexAsInterestRateIndex
-  , overnightIndexAsIborIndex
+  , overnightIborIndexAsIborIndex
 
-  , OvernightIndexType(..)
-  , overnightIndex
+  , OvernightIborIndexType(..)
+  , overnightIborIndex
+
+  , LiborSwapIndexType(..)
+  , liborSwapIndex
+
+  , overnightIndexedSwapIndex
+  , swapIndex
+  , swapIndex'
   )
   where
 
@@ -34,6 +41,8 @@ import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
 {#import QuantLib.Currency#}(Currency)
 {#import QuantLib.Time.Period#}(TimeUnit)
+{#import QuantLib.Time.Calendar#}(Calendar)
+{#import QuantLib.Time.Date#}(BusinessDayConvention)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -53,11 +62,11 @@ instance ForeignObject BMAIndex where
   withObject = withBMAIndex
   peekObject = newForeignPtr qlFreeBMAIndex >=> return . BMAIndex
 
-{#pointer *QlOvernightIndex as OvernightIndex foreign finalizer qlFreeOvernightIndex newtype#}
+{#pointer *QlOvernightIndex as OvernightIborIndex foreign finalizer qlFreeOvernightIndex newtype#}
 
-instance ForeignObject OvernightIndex where
-  withObject = withOvernightIndex
-  peekObject = newForeignPtr qlFreeOvernightIndex >=> return . OvernightIndex
+instance ForeignObject OvernightIborIndex where
+  withObject = withOvernightIborIndex
+  peekObject = newForeignPtr qlFreeOvernightIndex >=> return . OvernightIborIndex
 
 {#pointer *QlIborIndex as IborIndex foreign finalizer qlFreeIborIndex newtype#}
 
@@ -103,10 +112,20 @@ instance ForeignObject OvernightIndexedSwapIndex where
 
 {#fun qlIborIndexAsInterestRateIndex as iborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
 
-{#fun qlOvernightIndexAsIborIndex as overnightIndexAsIborIndex {`OvernightIndex'} -> `IborIndex'#}
+{#fun qlOvernightIndexAsIborIndex as overnightIborIndexAsIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
 
-{#enum OvernightIndexType {} deriving (Show, Eq)#}
+{#enum OvernightIborIndexType {} deriving (Show, Eq)#}
 
-{#fun qlCreateONIndex as overnightIndex {`OvernightIndexType', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `OvernightIndex'#}
+{#fun qlCreateONIndex as overnightIborIndex {`OvernightIborIndexType', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `OvernightIborIndex'#}
+
+{#enum LiborSwapIndexType {} deriving (Show, Eq)#}
+
+{#fun qlCreateLiborSwapIndex as liborSwapIndex {`LiborSwapIndexType', fromEnumQuantity `(Int, TimeUnit)'&, withMaybeObject* `Maybe YieldTermStructure', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `SwapIndex'#}
+
+{#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex {`String', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', withObject* `Currency', `OvernightIborIndex', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwapIndex'#}
+
+{#fun qlSwapIndex as swapIndex {`String', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', withObject* `Currency', withObject* `Calendar', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', withObject* `DayCounter', `IborIndex', preErrorCheck- `String' errorCheck*-} -> `SwapIndex'#}
+
+{#fun qlSwapIndex1 as swapIndex' {`String', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', withObject* `Currency', withObject* `Calendar', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', withObject* `DayCounter', `IborIndex', withObject* `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `SwapIndex'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

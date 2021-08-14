@@ -22,55 +22,32 @@ void qlFreeIndex(QlIndex *i) {
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
-template <class T, class T1, class T2, class T3>
-struct EnumObjectInfo3 {
-  const char *name;
-  T *(*make)(T1 x1, T2 x2, T3 x3);
+typedef SwapIndex *(*makeSwapIndex)(const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2);
 
-  class Cmp {
-  public:
-    Cmp(const char *n) : n_(n) {}
-    bool operator()(const EnumObjectInfo3<T, T1, T2, T3> &i) {
-      return !strcmp(i.name, n_);
-    }
-  private:
-    const char *n_;
-  };
-
-  template <class A>
-  static T *makeObject(T1 x1, T2 x2, T3 x3) {
-    return new A(x1, x2, x3);
-  }
+// should match the order in qlEnumObjects.h
+static const makeSwapIndex swapIndices[] = {
+    [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixA(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixB(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EuriborSwapIfrFix(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EuriborSwapIsdaFixA(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EuriborSwapIsdaFixB(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new GbpLiborSwapIsdaFix(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixAm(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixPm(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixAm(p, h1, h2)); }
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixPm(p, h1, h2)); }
 };
 
-typedef EnumObjectInfo3<SwapIndex, const Period&, YieldTermStructureHandle&, YieldTermStructureHandle&> SwapIndexInfo;
-static const SwapIndexInfo swapIndexInfo [] = {
-  {"ChfLiborSwapIsdaFix", &SwapIndexInfo::makeObject<ChfLiborSwapIsdaFix>},
-  {"EurLiborSwapIfrFix", &SwapIndexInfo::makeObject<EurLiborSwapIfrFix>},
-  {"EurLiborSwapIsdaFixA", &SwapIndexInfo::makeObject<EurLiborSwapIsdaFixA>},
-  {"EurLiborSwapIsdaFixB", &SwapIndexInfo::makeObject<EurLiborSwapIsdaFixB>},
-  {"EuriborSwapIfrFix", &SwapIndexInfo::makeObject<EuriborSwapIfrFix>},
-  {"EuriborSwapIsdaFixA", &SwapIndexInfo::makeObject<EuriborSwapIsdaFixA>},
-  {"EuriborSwapIsdaFixB", &SwapIndexInfo::makeObject<EuriborSwapIsdaFixB>},
-  {"GbpLiborSwapIsdaFix", &SwapIndexInfo::makeObject<GbpLiborSwapIsdaFix>},
-  {"JpyLiborSwapIsdaFixAm", &SwapIndexInfo::makeObject<JpyLiborSwapIsdaFixAm>},
-  {"JpyLiborSwapIsdaFixPm", &SwapIndexInfo::makeObject<JpyLiborSwapIsdaFixPm>},
-  {"UsdLiborSwapIsdaFixAm", &SwapIndexInfo::makeObject<UsdLiborSwapIsdaFixAm>},
-  {"UsdLiborSwapIsdaFixPm", &SwapIndexInfo::makeObject<UsdLiborSwapIsdaFixPm>}
-};
-
-QlSwapIndex* qlCreateLiborSwapIndex(char *name, int l, int u, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
+QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
   try {
-    const SwapIndexInfo *last = LAST(swapIndexInfo);
-    const SwapIndexInfo *found =
-      std::find_if(swapIndexInfo, last, SwapIndexInfo::Cmp(name));
-    if (found != last) {
-      YieldTermStructureHandle ts1 = qlNullableHandle(h1);
-      YieldTermStructureHandle ts2 = qlNullableHandle(h2);
-      return ret(new QlSwapIndex(alloc(found->make(Period(l, (TimeUnit)u), ts1, ts2))));
-    }
-    else
-      QL_FAIL("Unknown Swap Index " << name);
+    if (index < 0 || index >= (int)LENGTH(swapIndices))
+      QL_FAIL("Invalid swap index index" << index);
+    YieldTermStructureHandle ts1 = qlNullableHandle(h1);
+    YieldTermStructureHandle ts2 = qlNullableHandle(h2);
+    SwapIndex *i = swapIndices[index](Period(l, (TimeUnit)u), ts1, ts2);
+    return ret(new QlSwapIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlSwapIndex*>(e, er);
   }

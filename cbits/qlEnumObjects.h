@@ -142,14 +142,29 @@ enum DayCounterType {
 
 #define NO_ENUM -100;
 
-enum OvernightIndexType {
-    Aonia = 0
-    , Eonia
-    , Estr
-    , FedFunds
-    , Nzocr
-    , Sofr
-    , Sonia
+enum OvernightIborIndexType {
+  Aonia = 0
+  , Eonia
+  , Estr
+  , FedFunds
+  , Nzocr
+  , Sofr
+  , Sonia
+};
+
+enum LiborSwapIndexType {
+  ChfLiborSwapIsdaFix = 0
+  , EurLiborSwapIfrFix
+  , EurLiborSwapIsdaFixA
+  , EurLiborSwapIsdaFixB
+  , EuriborSwapIfrFix
+  , EuriborSwapIsdaFixA
+  , EuriborSwapIsdaFixB
+  , GbpLiborSwapIsdaFix
+  , JpyLiborSwapIsdaFixAm
+  , JpyLiborSwapIsdaFixPm
+  , UsdLiborSwapIsdaFixAm
+  , UsdLiborSwapIsdaFixPm
 };
 
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

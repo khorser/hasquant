@@ -29,11 +29,11 @@ library
                     , QuantLib.Settings
                     , QuantLib.InterestRate
                     , QuantLib.Index
+                    , QuantLib.Instrument
                     , QuantLib.Quote
                     , QuantLib.YieldTermStructure
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
-                    , QuantLib.Instrument
                     , QuantLib.Instrument.Swap
                     , QuantLib.Model
   other-modules:    QuantLib.Internal
