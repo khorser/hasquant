@@ -36,7 +36,6 @@ module QuantLib.Internal
   , withDayArray
   , peekDoubleArray
 
-  , isValid
   , toSerial
   , fromSerial
   , ForeignObject(..)
@@ -206,12 +205,12 @@ toModifiedJulianDay' = fromIntegral . toModifiedJulianDay
 fromSerial :: CInt -> Day
 fromSerial x = ModifiedJulianDay $ fromIntegral (x + qlStart)
 
-isValid :: Day -> Bool
-isValid x = s >= qlMinDateSerialNumber && s <= qlMaxDateSerialNumber
+dayIsValid :: Day -> Bool
+dayIsValid x = s >= qlMinDateSerialNumber && s <= qlMaxDateSerialNumber
   where s = toModifiedJulianDay' x - qlStart
 
 toSerial :: Day -> IO CInt
-toSerial x | isValid x = return $ toModifiedJulianDay' x - qlStart
+toSerial x | dayIsValid x = return $ toModifiedJulianDay' x - qlStart
            | otherwise = throwIO $ DateConversion x
 
 fromDay :: Day -> (CInt -> IO a) -> IO a

@@ -22,13 +22,13 @@ import qualified QuantLib.Time.Schedule as Schedule
 import QuantLib.Math
 import qualified QuantLib.InterestRate as IR
 import QuantLib.CashFlow
+import qualified QuantLib.Quote as Quote
 
 instance Arbitrary Period.Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
 
 newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
-newtype InvalidDay = InvalidDay Day deriving (Show, Eq)
-
+newtype InvalidDay = InvalidDay Day deriving (Show, Eq) 
 instance Arbitrary ValidDay where
   arbitrary = do
     d <- elements [toModifiedJulianDay minDate .. toModifiedJulianDay maxDate]
@@ -1131,6 +1131,12 @@ main = do
                   ds = map validDay d
                   f = zip a ds
               run $ (leg f >>= startDate) `shouldReturn` minimum ds
+
+    describe "Quote value" $ do
+      prop "quote value" $ 
+        \val ->
+          val > 0
+            ==> monadicIO $ do run $ (Quote.simpleQuote val >>= Quote.asQuote >>= Quote.value) `shouldReturn` val
 
 {- include once pricers are implemented
 -- dynamic cast of coupon in Black pricer
