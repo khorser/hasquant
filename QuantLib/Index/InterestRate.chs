@@ -35,6 +35,9 @@ module QuantLib.Index.InterestRate
 
   , IborConstructor(..)
   , iborIndex
+  , overnightIndex
+  , businessDayConvention
+  , endOfMonth
   )
   where
 
@@ -272,5 +275,11 @@ iborIndex c ts = do
 {#fun qlDailyTenorLibor {`String', fromIntegral `Word', withObject* `Currency', withObject* `Calendar', withObject* `DayCounter', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `IborIndex'#}
 
 {#fun qlCreateIbor {`IborIndexType', fromEnumQuantity `(Word, TimeUnit)'&, withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `IborIndex'#}
+
+{#fun qlOvernightIndex as overnightIndex {`String', fromIntegral `Word', withObject* `Currency', withObject* `Calendar', withObject* `DayCounter', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `OvernightIborIndex'#}
+
+{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention {`IborIndex'} -> `BusinessDayConvention'#}
+
+{#fun pure qlIborIndexEndOfMonth as endOfMonth {`IborIndex'} -> `Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
