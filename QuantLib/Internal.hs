@@ -67,10 +67,11 @@ import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGrego
 
 import QuantLib.Type
 
+class ForeignObject a where
+-- I don't want to expose withT functions
+  withObject :: a -> (Ptr a -> IO b) -> IO b
 -- ch2s will not attach finalizers to foreign ptrs declared in other modules
 -- so let's add more boilerplate and declare the unmarshaller outselves
-class ForeignObject a where
-  withObject :: a -> (Ptr a -> IO b) -> IO b
   peekObject :: Ptr a -> IO a
 
 errorCheck :: Ptr CString -> IO ()

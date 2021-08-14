@@ -24,7 +24,7 @@ typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
 typedef SwapIndex *(*makeSwapIndex)(const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2);
 
-// should match the order in qlEnumObjects.h
+// must match with the order of qlEnumObjects.h:LiborSwapIndexType
 static const makeSwapIndex swapIndices[] = {
     [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2)); }
   , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2)); }

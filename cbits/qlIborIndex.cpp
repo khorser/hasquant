@@ -58,6 +58,7 @@ typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
 typedef IborIndex *(*makeIborIndex)(int l, int u, const YieldTermStructureHandle& ts);
 
+// must match with the order of qlEnumObjects:IborIndexType
 static const makeIborIndex iborIndices[] = {
     [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts)); }
   , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts)); }
@@ -110,7 +111,7 @@ QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, ch
 
 typedef OvernightIndex *(*makeONIndex)(const YieldTermStructureHandle &ts);
 
-// should match the order in qlEnumObjects.h
+// should match the order of qlEnumObjects.h:OvernightIborIndexType
 static const makeONIndex onIndices[] = {
     [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Aonia(ts)); }
   , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Eonia(ts)); }

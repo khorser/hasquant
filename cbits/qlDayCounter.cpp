@@ -7,6 +7,7 @@ using namespace QuantLib;
 
 typedef DayCounter *(*makeDayCounter)(int convention);
 
+// must match with the order of qlEnumObjects.h:DayCounterType
 static const makeDayCounter dayCounters[] = {
   [](int) { return static_cast<DayCounter *>(new Actual360()); }
   , [](int) { return static_cast<DayCounter *>(new Actual364()); }

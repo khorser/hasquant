@@ -8,6 +8,7 @@ using namespace QuantLib;
 
 typedef Calendar *(*makeCalendar)(int market);
 
+// must match with the order of qlEnumObjects.h:CalendarCountry
 static const makeCalendar calendars[] = {
   [](int){ return static_cast<Calendar *>(new Argentina()); }
   , [](int){ return static_cast<Calendar *>(new Australia()); }

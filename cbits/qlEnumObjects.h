@@ -1,5 +1,5 @@
 // Enumerations to be mapped to specific QuantLib classes
-// should match with the order in qlCurrency.cpp
+// must match with the order of qlCurrency.cpp:ccys
 enum Ccy {ARS = 0
   , ATS
   , AUD
@@ -83,7 +83,7 @@ enum Ccy {ARS = 0
   , ZEC
 };
 
-// should match with the order in qlCalendar.cpp
+// should match with the order of qlCalendar.cpp:calendars
 enum CalendarCountry {
   CountryArgentina = 0
   , CountryAustralia
@@ -129,6 +129,7 @@ enum CalendarCountry {
   , CountryWeekendsOnly
 };
 
+// should match with the order of qlDayCounter.cpp:dayCounters
 enum DayCounterType {
   DayCounterActual360 = 0
   , DayCounterActual364
@@ -142,6 +143,7 @@ enum DayCounterType {
 
 #define NO_ENUM -100;
 
+// must match with the order of qlIborIndex.cpp:onIndices
 enum OvernightIborIndexType {
   Aonia = 0
   , Eonia
@@ -152,6 +154,7 @@ enum OvernightIborIndexType {
   , Sonia
 };
 
+// must match with the order of qlIndex.cpp:swapIndices
 enum LiborSwapIndexType {
   ChfLiborSwapIsdaFix = 0
   , EurLiborSwapIfrFix
@@ -167,6 +170,7 @@ enum LiborSwapIndexType {
   , UsdLiborSwapIsdaFixPm
 };
 
+// must match with the order of qlIborIndex.cpp:iborIndices
 enum IborIndexType {
   IborBbsw = 0
   , IborBibor
