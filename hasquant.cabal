@@ -38,6 +38,9 @@ library
                     , QuantLib.CashFlow
                     , QuantLib.Instrument.Swap
                     , QuantLib.Model
+                    , QuantLib.CreditTermStructure
+                    , QuantLib.VolatilityTermStructure
+                    , QuantLib.Process
   other-modules:    QuantLib.Internal
   -- other-extensions:
   build-depends:    base >=4.11 && <5.0

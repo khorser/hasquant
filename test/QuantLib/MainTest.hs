@@ -179,7 +179,7 @@ main = do
       it "truncate" $ do
         cal <- calendar $ Russia RussiaSettlement
         s <- Schedule.schedule (Just $ 20 `december` 2012) (21 `december` 2013) (1, Months) cal
-          Following Unadjusted Forward
+          Following Unadjusted Schedule.Forward
           False (Just $ 21 `december` 2012) (Just $ 21 `december` 2013)
         truncated <- Schedule.until s (15 `april` 2013)
         ds <- Schedule.dates truncated
@@ -200,19 +200,19 @@ main = do
         Settings.keepingSettings' $ do
           let startD = 17 `january` 2012
           cal <- calendar TARGET
-          (Schedule.schedule (Just startD) (addDays 7 startD) (1, Days) cal Following Following Backward False Nothing Nothing >>= Schedule.dates)
+          (Schedule.schedule (Just startD) (addDays 7 startD) (1, Days) cal Following Following Schedule.Backward False Nothing Nothing >>= Schedule.dates)
             `shouldReturn` [17 `january` 2012, 18 `january` 2012, 19 `january` 2012, 20 `january` 2012, 23 `january` 2012, 24 `january` 2012]
       it "end date with EoM adjustment" $
         Settings.keepingSettings' $ do
           cal <- calendar Japan
-          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Forward True Nothing Nothing >>= Schedule.dates)
+          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Schedule.Forward True Nothing Nothing >>= Schedule.dates)
             `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 29 `june` 2012]
-          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Unadjusted Forward True Nothing Nothing >>= Schedule.dates)
+          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Unadjusted Schedule.Forward True Nothing Nothing >>= Schedule.dates)
             `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 15 `june` 2012]
       it "dates past end date with EoM adjustment" $
         Settings.keepingSettings' $ do
           cal <- calendar TARGET
-          (Schedule.schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Forward True Nothing Nothing >>= Schedule.dates)
+          (Schedule.schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Schedule.Forward True Nothing Nothing >>= Schedule.dates)
             `shouldReturn` [31 `march` 2013, 31 `march` 2014, 30 `march` 2015]
 
     describe "calendars" $ do
@@ -1096,7 +1096,7 @@ main = do
       it "fixed rate leg as of default settlement date" $ do
         td <- Settings.evaluationDate
         cal <- calendar TARGET
-        sch <- Schedule.schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+        sch <- Schedule.schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Schedule.Backward False Nothing Nothing
         dc <- Schedule.dayCounter Schedule.Actual360
         cpn <- IR.interestRate 0.03 dc IR.Simple Annual
         l <- fixedRateLeg sch [100.0] [cpn] Following dc cal
@@ -1152,7 +1152,7 @@ test_AccessViolation = keepingSettings' $ do
   let p = (3, Months)
   index3m <- usdLibor p (Just ts)
   pricer <- blackIborCouponPricer vol
-  sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
+  sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Schedule.Backward False Nothing Nothing
   cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
   setCouponPricer cpns pricer
   void $ nextCashFlowAmount cpns True Nothing

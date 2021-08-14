@@ -36,4 +36,6 @@ instance ForeignObject RateHelper where
 
 {#fun qlDepositRateHelper1 as depositRateHelper' {withObject* `Quote', withObject* `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
+{#enum CurveTrait {} deriving(Show, Eq)#}
+
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

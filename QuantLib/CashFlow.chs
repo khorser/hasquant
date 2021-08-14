@@ -62,15 +62,15 @@ module QuantLib.CashFlow
   , iborLeg
   , overnightLeg
   , rangeAccrualLeg
+  , YieldCurveModel(..)
   )
   where
 
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(InterestRate, Compounding)
 {#import QuantLib.Time.Schedule#}(DayCounter, Schedule)
-{#import QuantLib.Time.Calendar#}(Calendar)
+{#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 {#import QuantLib.Time.Period#}(Frequency, TimeUnit)
-import QuantLib.Time.Date(BusinessDayConvention)
 
 {#import QuantLib.YieldTermStructure#}(YieldTermStructure)
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
@@ -250,5 +250,7 @@ cashFlows l i d = do
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as toCouponLeg {`Leg', preErrorCheck- `String' errorCheck*-} -> `CouponLeg'#}
+
+{#enum YieldCurveModel {} deriving(Show, Eq)#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

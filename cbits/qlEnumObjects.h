@@ -209,4 +209,51 @@ enum IborIndexType {
   , IborZibor
 };
 
+enum RngTrait {
+  PseudoRandom = 0
+  , PoissonPseudoRandom
+  , LowDiscrepancy
+  , Ziggurat
+};
+
+enum BinomialTree {
+  JarrowRudd = 0
+  , CoxRossRubinstein
+  , AdditiveEQPBinomialTree
+  , Trigeorgis
+  , Tian
+  , LeisenReimer
+  , Joshi4
+  , ExtendedJarrowRudd
+  , ExtendedCoxRossRubinstein
+  , ExtendedAdditiveEQPBinomialTree
+  , ExtendedTrigeorgis
+  , ExtendedTian
+  , ExtendedLeisenReimer
+  , ExtendedJoshi4
+};
+
+enum FdmScheme {
+  CrankNicolson = 0
+  , ExplicitEuler
+  , ImplicitEuler
+};
+
+enum ProcessDiscretization {
+  EulerDiscretization = 0
+  , EndEulerDiscretization
+};
+
+enum CurveTrait {
+  Discount
+  , ZeroYield
+  , ForwardRate
+};
+
+enum ProbabilityTrait {
+  SurvivalProbability = 0
+  , HazardRate
+  , DefaultDensity
+};
+
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

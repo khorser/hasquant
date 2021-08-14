@@ -11,8 +11,6 @@ module QuantLib.Time.Date
 
   , Month(..)
   , Weekday(..)
-  , BusinessDayConvention(..)
-  , DateGenerationRule(..)
   , ImmMonth(..)
 
   , january
@@ -78,10 +76,6 @@ import QuantLib.Time.Period(TimeUnit)
 {#enum Month {} deriving(Show, Eq, Bounded, Ord)#}
 
 {#enum Weekday {} deriving(Show, Eq, Bounded, Ord)#}
-
-{#enum BusinessDayConvention {} deriving(Show, Eq)#}
-
-{#enum Rule as DateGenerationRule {} deriving(Show, Eq)#}
 
 {#enum ImmMonth {} deriving(Show, Eq, Bounded, Ord)#}
 

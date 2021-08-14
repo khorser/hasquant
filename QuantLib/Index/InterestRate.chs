@@ -49,8 +49,7 @@ import Control.Exception(throwIO)
 {#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
 {#import QuantLib.Currency#}(Currency)
 {#import QuantLib.Time.Period#}(TimeUnit(..))
-{#import QuantLib.Time.Calendar#}(Calendar)
-{#import QuantLib.Time.Date#}(BusinessDayConvention)
+{#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

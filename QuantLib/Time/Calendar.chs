@@ -31,13 +31,14 @@ module QuantLib.Time.Calendar
   , isWeekend
   , removeHoliday
   , holidays
+  , BusinessDayConvention(..)
   )
   where
 
 import QuantLib.Type
 import QuantLib.Internal
 import Control.Exception(throwIO)
-{#import QuantLib.Time.Date#}(BusinessDayConvention, Weekday)
+{#import QuantLib.Time.Date#}(Weekday)
 {#import QuantLib.Time.Period#}
 
 #include "qlTypesC2HS.h"
@@ -47,6 +48,8 @@ import Control.Exception(throwIO)
 #include "ql.h"
 
 {#enum JointCalendarRule {} deriving(Show, Eq)#}
+
+{#enum BusinessDayConvention {} deriving(Show, Eq)#}
 
 {#enum CalendarCountry {} deriving(Show, Eq)#}
 

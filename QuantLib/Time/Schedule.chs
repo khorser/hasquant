@@ -15,6 +15,7 @@ module QuantLib.Time.Schedule
   , fromDates
   , until
   , dates
+  , DateGenerationRule(..)
   )
 
 where
@@ -26,7 +27,7 @@ import QuantLib.Type
 import QuantLib.Time.Date
 import QuantLib.Internal
 import QuantLib.Time.Period(TimeUnit)
-{#import QuantLib.Time.Calendar#}(Calendar)
+{#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -48,6 +49,8 @@ instance Eq DayCounter where x == y = show x == show y
 {#enum ActualActualConvention {} deriving(Show, Eq)#}
 {#enum Thirty360Convention {} deriving(Show, Eq)#}
 {#enum Actual365FixedConvention {} deriving(Show, Eq)#}
+
+{#enum DateGenerationRule {} deriving(Show, Eq)#}
 
 {#enum DayCounterType {} deriving(Show, Eq)#}
 

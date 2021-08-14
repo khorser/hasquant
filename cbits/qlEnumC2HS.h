@@ -75,7 +75,7 @@ enum BusinessDayConvention {
 };
 
 // time/dategenerationrule.hpp
-enum Rule {
+enum DateGenerationRule {
   Backward,       /*!< Backward from termination date to
                     effective date. */
   Forward,        /*!< Forward from effective date to
@@ -370,5 +370,92 @@ enum UnitedStatesMarket { UnitedStatesSettlement, UnitedStatesNYSE, UnitedStates
 enum ActualActualConvention { ActualActualISMA, ActualActualBond, ActualActualISDA, ActualActualHistorical, ActualActualActual365, ActualActualAFB, ActualActualEuro };
 enum Thirty360Convention { Thirty360USA, Thirty360BondBasis, Thirty360European, Thirty360EurobondBasis, Thirty360Italian, Thirty360German, Thirty360ISMA, Thirty360ISDA, Thirty360NASD };
 enum Actual365FixedConvention { Actual365FixedStandard, Actual365FixedCanadian, Actual365FixedNoLeap };
+
+// math/optimization/endcriteria.hpp
+enum EndCriteriaType {EndNone,
+  MaxIterations,
+  StationaryPoint,
+  StationaryFunctionValue,
+  StationaryFunctionAccuracy,
+  ZeroGradientNorm,
+  Unknown
+};
+
+// math/statistics/histogram.hpp
+enum HistogramAlgorithm { HistogramNone, Sturges, FD, Scott };
+
+// methods/finitedifferences/boundarycondition.hpp
+enum BoundaryConditionSide { BoundaryNone, Upper, Lower };
+
+// methods/finitedifferences/solvers/fdmbackwardsolver.hpp
+enum FdmSchemeType { HundsdorferType, DouglasType,
+ CraigSneydType, ModifiedCraigSneydType, 
+ ImplicitEulerType, ExplicitEulerType,
+ MethodOfLinesType, TrBDF2Type,
+ CrankNicolsonType };
+
+// methods/montecarlo/lsmbasissystem.hpp
+enum PolynomType { Monomial, Laguerre, Hermite, Hyperbolic,
+  Legendre, Chebyshev, Chebyshev2nd };
+
+// pricingengines/vanilla/analytichestonengine.hpp
+enum ComplexLogFormula {
+  // Gatheral form of characteristic function w/o control variate
+  Gatheral,
+  // old branch correction form of the characteristic function w/o control variate
+  BranchCorrection,
+  // Gatheral form with Andersen-Piterbarg control variate
+  AndersenPiterbarg,
+  // same as AndersenPiterbarg, but a slightly better control variate
+  AndersenPiterbargOptCV,
+  // Gatheral form with asymptotic expansion of the characteristic function as control variate
+  // https://hpcquantlib.wordpress.com/2020/08/30/a-novel-control-variate-for-the-heston-model
+  AsymptoticChF,
+  // auto selection of best control variate algorithm from above
+  OptimalCV
+};
+
+// experimental/processes/extendedblackscholesprocess.hpp
+enum ExtendedBlackScholesMertonProcessDiscretization { ExtendedBSMEuler, Milstein, PredictorCorrector };
+
+// processes/hestonprocess.hpp
+enum HestonProcessDiscretization { HestonPartialTruncation,
+  HestonFullTruncation,
+  HestonReflection,
+  NonCentralChiSquareVariance,
+  QuadraticExponential,
+  QuadraticExponentialMartingale,
+  BroadieKayaExactSchemeLobatto,
+  BroadieKayaExactSchemeLaguerre,
+  BroadieKayaExactSchemeTrapezoidal
+};
+
+// processes/gjrgarchprocess.hpp
+enum GJRGARCHProcessDiscretization { GJRGARCHPartialTruncation, GJRGARCHFullTruncation,
+  GJRGARCHReflection};
+
+// processes/hybridhestonhullwhiteprocess.hpp
+enum HybridHestonHullWhiteProcessDiscretization { HybridHestonHullWhiteEuler, BSMHullWhite };
+
+// cashflows/conundrumpricer.hpp
+enum YieldCurveModel { Standard,
+  ExactYield,
+  ParallelShifts,
+  NonParallelShifts
+};
+
+// termstructures/volatility/swaption/cmsmarketcalibration.hpp
+enum CmsMarketCalibrationType {OnSpread, OnPrice, OnForwardCmsPrice };
+
+// termstructures/volatility/equityfx/blackvariancesurface.hp
+enum BlackVarianceSurfaceExtrapolation {
+  BlackVarianceSurfaceConstantExtrapolation,
+  BlackVarianceSurfaceInterpolatorDefaultExtrapolation
+};
+
+// experimental/volatility/extendedblackvariancesurface.hpp
+enum ExtendedBlackVarianceSurfaceExtrapolation { 
+  ExtendedBlackVarianceSurfaceConstantExtrapolation,
+  ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation };
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
