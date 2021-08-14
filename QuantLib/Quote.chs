@@ -39,13 +39,11 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#pointer *QlSwapIndex as SwapIndex foreign newtype nocode#}
 
 {#pointer *QlQuote as Quote foreign finalizer qlFreeQuote newtype#}
-
 instance ForeignObject Quote where
   withObject = withQuote
   peekObject = newForeignPtr qlFreeQuote >=> return . Quote
 
 {#pointer *QlSimpleQuote as SimpleQuote foreign finalizer qlFreeSimpleQuote newtype#}
-
 instance ForeignObject SimpleQuote where
   withObject = withSimpleQuote
   peekObject = newForeignPtr qlFreeSimpleQuote >=> return . SimpleQuote

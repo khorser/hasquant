@@ -1,4 +1,4 @@
-module QuantLib.CreditTermStructure
+module QuantLib.TermStructure.Credit
   (
     ProbabilityTrait(..)
   )

@@ -28,15 +28,13 @@ import QuantLib.Internal
 {#enum Ccy {} deriving(Show, Eq)#}
 
 {#pointer *Currency foreign finalizer qlFreeCurrency newtype#}
-
 instance ForeignObject Currency where
   withObject = withCurrency
   peekObject = newForeignPtr qlFreeCurrency >=> return . Currency
-  
-{#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString*#}
-
 instance Show Currency where show = qlCurrencyName
 instance Eq Currency where x == y = show x == show y
+  
+{#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString*#}
 
 {#fun qlCurrency as currency {`Ccy', preErrorCheck- `String' errorCheck*-} -> `Currency'#}
 

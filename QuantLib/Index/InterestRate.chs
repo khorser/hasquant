@@ -44,7 +44,7 @@ module QuantLib.Index.InterestRate
 import QuantLib.Internal
 import QuantLib.Type
 import Control.Exception(throwIO)
-{#import QuantLib.YieldTermStructure#}
+{#import QuantLib.TermStructure.Yield#}
 {#import QuantLib.Index#}(Index)
 {#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
 {#import QuantLib.Currency#}(Currency)
@@ -58,37 +58,31 @@ import Control.Exception(throwIO)
 #include "ql.h"
 
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign finalizer qlFreeInterestRateIndex newtype#}
-
 instance ForeignObject InterestRateIndex where
   withObject = withInterestRateIndex
   peekObject = newForeignPtr qlFreeInterestRateIndex >=> return . InterestRateIndex
 
 {#pointer *QlBMAIndex as BMAIndex foreign finalizer qlFreeBMAIndex newtype#}
-
 instance ForeignObject BMAIndex where
   withObject = withBMAIndex
   peekObject = newForeignPtr qlFreeBMAIndex >=> return . BMAIndex
 
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign finalizer qlFreeOvernightIndex newtype#}
-
 instance ForeignObject OvernightIborIndex where
   withObject = withOvernightIborIndex
   peekObject = newForeignPtr qlFreeOvernightIndex >=> return . OvernightIborIndex
 
 {#pointer *QlIborIndex as IborIndex foreign finalizer qlFreeIborIndex newtype#}
-
 instance ForeignObject IborIndex where
   withObject = withIborIndex
   peekObject = newForeignPtr qlFreeIborIndex >=> return . IborIndex
 
 {#pointer *QlSwapIndex as SwapIndex foreign finalizer qlFreeSwapIndex newtype#}
-
 instance ForeignObject SwapIndex where
   withObject = withSwapIndex
   peekObject = newForeignPtr qlFreeSwapIndex >=> return . SwapIndex
 
 {#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign finalizer qlFreeOvernightIndexedSwapIndex newtype#}
-
 instance ForeignObject OvernightIndexedSwapIndex where
   withObject = withOvernightIndexedSwapIndex
   peekObject = newForeignPtr qlFreeOvernightIndexedSwapIndex >=> return . OvernightIndexedSwapIndex

@@ -72,7 +72,7 @@ import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 {#import QuantLib.Time.Period#}(Frequency, TimeUnit)
 
-{#import QuantLib.YieldTermStructure#}(YieldTermStructure)
+{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
 
 #include "qlTypesC2HS.h"
@@ -82,19 +82,16 @@ import QuantLib.Internal
 #include "ql.h"
 
 {#pointer *Leg foreign finalizer qlFreeLeg newtype#}
-
 instance ForeignObject Leg where
   withObject = withLeg
   peekObject = newForeignPtr qlFreeLeg >=> return . Leg
   
 {#pointer *CouponLeg foreign finalizer qlFreeCouponLeg newtype#}
-
 instance ForeignObject CouponLeg where
   withObject = withCouponLeg
   peekObject = newForeignPtr qlFreeCouponLeg >=> return . CouponLeg
   
 {#pointer *QlDividend as Dividend foreign finalizer qlFreeDividend newtype#}
-
 instance ForeignObject Dividend where
   withObject = withDividend
   peekObject = newForeignPtr qlFreeDividend >=> return . Dividend

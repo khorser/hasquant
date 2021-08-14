@@ -32,14 +32,16 @@ library
                     , QuantLib.InterestRate
                     , QuantLib.Index
                     , QuantLib.Instrument
+                    , QuantLib.Instrument.Bond
                     , QuantLib.Quote
-                    , QuantLib.YieldTermStructure
+                    , QuantLib.TermStructure
+                    , QuantLib.TermStructure.Credit
+                    , QuantLib.TermStructure.Volatility
+                    , QuantLib.TermStructure.Yield
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument.Swap
                     , QuantLib.Model
-                    , QuantLib.CreditTermStructure
-                    , QuantLib.VolatilityTermStructure
                     , QuantLib.Process
   other-modules:    QuantLib.Internal
   -- other-extensions:

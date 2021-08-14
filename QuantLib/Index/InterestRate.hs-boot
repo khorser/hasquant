@@ -3,6 +3,8 @@ module QuantLib.Index.InterestRate
     InterestRateIndex
   , IborIndex
   , SwapIndex
+  , OvernightIborIndex
+  , BMAIndex
   )
   where
 
@@ -18,5 +20,11 @@ instance ForeignObject IborIndex
 
 newtype SwapIndex = SwapIndex (ForeignPtr SwapIndex)
 instance ForeignObject SwapIndex
+
+newtype OvernightIborIndex = OvernightIborIndex (ForeignPtr OvernightIborIndex)
+instance ForeignObject OvernightIborIndex
+
+newtype BMAIndex = BMAIndex (ForeignPtr BMAIndex)
+instance ForeignObject BMAIndex
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

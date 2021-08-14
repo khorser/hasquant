@@ -180,15 +180,13 @@ market (UnitedStates x) = fromEnum x
 market _ = {#const NO_ENUM#}
 
 {#pointer *Calendar foreign finalizer qlFreeCalendar newtype#}
-
 instance ForeignObject Calendar where
   withObject = withCalendar
   peekObject = newForeignPtr qlFreeCalendar >=> return . Calendar
-  
-{#fun pure qlCalendarName {`Calendar'} -> `String' peekDynString*#}
-
 instance Show Calendar where show = qlCalendarName
 instance Eq Calendar where x == y = show x == show y
+  
+{#fun pure qlCalendarName {`Calendar'} -> `String' peekDynString*#}
 
 {#fun qlCalendar {`CalendarCountry', `Int', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 

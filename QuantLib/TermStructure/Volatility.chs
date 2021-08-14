@@ -1,4 +1,4 @@
-module QuantLib.VolatilityTermStructure
+module QuantLib.TermStructure.Volatility
   (
     BlackVarianceSurfaceExtrapolation
   , ExtendedBlackVarianceSurfaceExtrapolation

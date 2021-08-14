@@ -36,15 +36,13 @@ import QuantLib.Time.Period(TimeUnit)
 #include "ql.h"
 
 {#pointer *DayCounter foreign finalizer qlFreeDayCounter newtype#}
-
 instance ForeignObject DayCounter where
   withObject = withDayCounter
   peekObject = newForeignPtr qlFreeDayCounter >=> return . DayCounter
-  
-{#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
-
 instance Show DayCounter where show = qlDayCounterName
 instance Eq DayCounter where x == y = show x == show y
+  
+{#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
 
 {#enum ActualActualConvention {} deriving(Show, Eq)#}
 {#enum Thirty360Convention {} deriving(Show, Eq)#}
@@ -98,7 +96,6 @@ dayCounter x = dayCounterType x >>= flip qlDayCounter (convention x)
 {#fun qlDayCounterYearFraction as years {`DayCounter', fromDay* `Day', fromDay* `Day', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#pointer *Schedule foreign finalizer qlFreeSchedule newtype#}
-
 instance ForeignObject Schedule where
   withObject = withSchedule
   peekObject = newForeignPtr qlFreeSchedule >=> return . Schedule

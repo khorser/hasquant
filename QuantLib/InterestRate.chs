@@ -29,7 +29,6 @@ import QuantLib.Internal
 {#enum Compounding {} deriving(Show, Eq)#}
 
 {#pointer *InterestRate foreign finalizer qlFreeInterestRate newtype#}
-
 instance ForeignObject InterestRate where
   withObject = withInterestRate
   peekObject = newForeignPtr qlFreeInterestRate >=> return . InterestRate

@@ -32,7 +32,6 @@ import QuantLib.Internal
 {#enum RoundingType {} deriving (Show, Eq)#}
 
 {#pointer *Rounding foreign finalizer qlFreeRounding newtype#}
-
 instance ForeignObject Rounding where
   withObject = withRounding
   peekObject = newForeignPtr qlFreeRounding >=> return . Rounding
