@@ -9,12 +9,12 @@ extern "C" {
     DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
     QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-    QlQuote **quotes, int *dates, char *trait,
-    char *interpolator, char **e);
+    QlQuote **quotes, int *dates, int trait,
+    int interpolator, int approximator, int approximatorArg, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
     unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-    QlQuote **quotes, int *dates, char *trait,
-    char *interpolator, char **e);
+    QlQuote **quotes, int *dates, int trait,
+    int interpolator, int approximator, int approximatorArg, char **e);
   QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int, int, Calendar *cal, int freq,
     int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int, int,
     QlYieldTermStructure *ts, char **e);
@@ -59,13 +59,13 @@ extern "C" {
 
   QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen,
     double *dfs, int *dfsDates, DayCounter *dayCount, Calendar *cal,
-    unsigned quoteLen, QlQuote **quotes, int *dates, char *interpolator, char **e);
+    unsigned quoteLen, QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
   QlYieldTermStructure *qlInterpolatedForwardCurve(unsigned fwdLen,
     double *fwds, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
-    QlQuote **quotes, int *dates, char *interpolator, char **e);
+    QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
   QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen,
     double *yields, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
-    QlQuote **quotes, int *dates, char *interpolator, char **e);
+    QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
   void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o);
   FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, char **e);
   FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e);

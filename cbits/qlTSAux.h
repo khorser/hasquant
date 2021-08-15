@@ -13,7 +13,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
   const QuantLib::DayCounter& dayCount,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  const char *trait, const char *interpolator);
+  int trait, int interpolator, int approximator, int approximatorArg);
 
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   unsigned settl, const QuantLib::Calendar &cal,
@@ -21,7 +21,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   const QuantLib::DayCounter& dayCount,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  const char *trait, const char *interpolator);
+  int trait, int interpolator, int approximator, int approximatorArg);
 
 QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const std::vector<QuantLib::Date>& dates,
@@ -30,7 +30,7 @@ QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const QuantLib::Calendar& cal,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  const char *interpolator);
+  int interpolator, int approximator, int approximatorArg);
 
 QuantLib::YieldTermStructure *qlInterpolatedForwardCurveAux(
   const std::vector<QuantLib::Date>& dates,
@@ -39,7 +39,7 @@ QuantLib::YieldTermStructure *qlInterpolatedForwardCurveAux(
   const QuantLib::Calendar& cal,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  const char *interpolator);
+  int interpolator, int approximator, int approximatorArg);
 
 QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
   const std::vector<QuantLib::Date>& dates,
@@ -48,7 +48,7 @@ QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
   const QuantLib::Calendar& cal,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  const char *interpolator);
+  int interpolator, int approximator, int approximatorArg);
 
 // some credit stuff
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(

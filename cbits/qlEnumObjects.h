@@ -244,10 +244,27 @@ enum ProcessDiscretization {
   , EndEulerDiscretization
 };
 
-enum CurveTrait {
+enum BootstrapTrait {
   Discount
   , ZeroYield
   , ForwardRate
+};
+
+enum InterpolationType {
+  BackwardFlat
+  , ForwardFlat
+  , Linear
+  , LogLinear
+  , Cubic
+  , LogCubic
+  , Abcd
+};
+
+enum ApproximationType {
+  NaturalSpline
+  , Parabolic
+  , Kruger
+  , FritschButland
 };
 
 enum ProbabilityTrait {

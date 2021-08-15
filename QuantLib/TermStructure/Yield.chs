@@ -7,7 +7,7 @@ module QuantLib.TermStructure.Yield
   , OISRateHelper
   , FittedBondDiscountCurve
 
-  , CurveTrait(..)
+  , BootstrapTrait(..)
   , depositRateHelper'
   , depositRateHelper
   , fixedRateBondHelper
@@ -49,6 +49,8 @@ module QuantLib.TermStructure.Yield
   , driftTermStructure
   , piecewiseZeroSpreadedTermStructure
   , quantoTermStructure
+  , minimumCostValue
+  , numberOfIterations
   )
   where
 
@@ -110,7 +112,7 @@ instance ForeignObject FittedBondDiscountCurve where
   withObject = withFittedBondDiscountCurve
   peekObject = newForeignPtr qlFreeFittedBondDiscountCurve >=> return . FittedBondDiscountCurve
 
-{#enum CurveTrait {} deriving(Show, Eq)#}
+{#enum BootstrapTrait {} deriving(Show, Eq)#}
 
 {#fun qlDepositRateHelper1 as depositRateHelper' {withObject* `Quote', withObject* `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
@@ -197,10 +199,141 @@ piecewiseZeroSpreadedTermStructure :: YieldTermStructure
   -> Frequency
   -> DayCounter
   -> IO YieldTermStructure
-piecewiseZeroSpreadedTermStructure ts sp c f dc = qlPiecewiseZeroSpreadedTermStructure ts q d c f dc where (q, d) = unzip sp
+piecewiseZeroSpreadedTermStructure ts = uncurry (qlPiecewiseZeroSpreadedTermStructure ts) . unzip
 
 {#fun qlPiecewiseZeroSpreadedTermStructure {`YieldTermStructure', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Compounding', `Frequency', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 {#fun qlQuantoTermStructure as quantoTermStructure {`YieldTermStructure', `YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', `Double', withObject* `BlackVolTermStructure', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+
+{-
+piecewiseYieldCurve :: Day -- ^referenceDate
+  -> [RateHelper] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Quote, Day)] -- ^jumps and jumpDates
+  -> Double -- ^accuracy
+  -> Trait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+piecewiseYieldCurve = $(ffiCall 'piecewiseYieldCurve) c_piecewiseYieldCurve
+
+foreign import ccall safe "ql.h qlPiecewiseYieldCurve1"
+  c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CRateHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+piecewiseYieldCurve' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [RateHelper] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Quote, Day)] -- ^jumps and jumpDates
+  -> Double -- ^accuracy
+  -> Trait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+piecewiseYieldCurve' = $(ffiCall 'piecewiseYieldCurve') c_piecewiseYieldCurve'
+
+interpolatedDiscountCurve :: [(Double, Day)] -- ^dates, dfs
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedDiscountCurve = $(ffiCall 'interpolatedDiscountCurve) c_interpolatedDiscountCurve
+
+foreign import ccall safe "ql.h qlInterpolatedDiscountCurve"
+  c_interpolatedDiscountCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+interpolatedForwardCurve :: [(Double, Day)] -- ^dates, forwards
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedForwardCurve = $(ffiCall 'interpolatedForwardCurve) c_interpolatedForwardCurve
+
+foreign import ccall safe "ql.h qlInterpolatedForwardCurve"
+  c_interpolatedForwardCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+interpolatedZeroCurve :: [(Double, Day)] -- ^dates, yields
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedZeroCurve = $(ffiCall 'interpolatedZeroCurve) c_interpolatedZeroCurve
+
+foreign import ccall safe "ql.h qlInterpolatedZeroCurve"
+  c_interpolatedZeroCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+cubicBSplinesFitting :: [YearFraction] -- ^knotVector
+  -> Bool -- ^constrainAtZero
+  -> IO FittedBondDiscountCurveFittingMethod
+cubicBSplinesFitting = $(ffiCall 'cubicBSplinesFitting) c_cubicBSplinesFitting
+
+foreign import ccall safe "ql.h qlCubicBSplinesFitting"
+  c_cubicBSplinesFitting :: CUInt -> Ptr CYearFraction -> CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+exponentialSplinesFitting :: Bool -- ^constrainAtZero
+  -> IO FittedBondDiscountCurveFittingMethod
+exponentialSplinesFitting = $(ffiCall 'exponentialSplinesFitting) c_exponentialSplinesFitting
+
+foreign import ccall safe "ql.h qlExponentialSplinesFitting"
+  c_exponentialSplinesFitting :: CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+nelsonSiegelFitting :: IO FittedBondDiscountCurveFittingMethod
+nelsonSiegelFitting = $(ffiCall 'nelsonSiegelFitting) c_nelsonSiegelFitting
+
+foreign import ccall safe "ql.h qlNelsonSiegelFitting"
+  c_nelsonSiegelFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+simplePolynomialFitting :: Word -- ^degree
+  -> Bool -- ^constrainAtZero
+  -> IO FittedBondDiscountCurveFittingMethod
+simplePolynomialFitting = $(ffiCall 'simplePolynomialFitting) c_simplePolynomialFitting
+
+foreign import ccall safe "ql.h qlSimplePolynomialFitting"
+  c_simplePolynomialFitting :: CUInt -> CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+svenssonFitting :: IO FittedBondDiscountCurveFittingMethod
+svenssonFitting = $(ffiCall 'svenssonFitting) c_svenssonFitting
+
+foreign import ccall safe "ql.h qlSvenssonFitting"
+  c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+-- |reference date based on current evaluation date
+fittedBondDiscountCurve' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [BondHelper] -- ^bonds
+  -> DayCounter -- ^dayCounter
+  -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> [Double] -- ^guess
+  -> Double -- ^simplexLambda
+  -> IO FittedBondDiscountCurve
+fittedBondDiscountCurve' = $(ffiCall 'fittedBondDiscountCurve') c_fittedBondDiscountCurve'
+
+foreign import ccall safe "ql.h qlFittedBondDiscountCurve"
+  c_fittedBondDiscountCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+
+-- |curve reference date fixed for life of curve
+fittedBondDiscountCurve :: Day -- ^referenceDate
+  -> [BondHelper] -- ^bonds
+  -> DayCounter -- ^dayCounter
+  -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> [Double] -- ^guess
+  -> Double -- ^simplexLambda
+  -> IO FittedBondDiscountCurve
+fittedBondDiscountCurve = $(ffiCall 'fittedBondDiscountCurve) c_fittedBondDiscountCurve
+
+foreign import ccall safe "ql.h qlFittedBondDiscountCurve1"
+  c_fittedBondDiscountCurve :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+-}
+
+-- |final value of cost function after optimization
+{#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |final number of iterations used in the optimization problem
+{#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Int'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
