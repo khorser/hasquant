@@ -33,12 +33,12 @@ library
                     , QuantLib.InterestRate
                     , QuantLib.Index
                     , QuantLib.Instrument
-                    , QuantLib.Instrument.Bond
                     , QuantLib.Quote
-                    , QuantLib.Instrument.Swap
                     , QuantLib.TermStructure
                     , QuantLib.TermStructure.Credit
                     , QuantLib.TermStructure.Yield
+                    , QuantLib.Instrument.Bond
+                    , QuantLib.Instrument.Swap
                     , QuantLib.TermStructure.Volatility
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow

@@ -9,11 +9,14 @@ module QuantLib.Instrument.Swap
 
   , asInstrument
   , asSwap
+
+  , impliedVolatility
   )
   where
 
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
+{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -62,5 +65,8 @@ instance ForeignObject OvernightIndexedSwap where
   peekObject = newForeignPtr qlFreeOvernightIndexedSwap >=> return . OvernightIndexedSwap
 {#fun qlOvernightIndexedSwapAsSwap {`OvernightIndexedSwap'} -> `Swap'#}
 instance IsSwap OvernightIndexedSwap where asSwap = qlOvernightIndexedSwapAsSwap
+
+-- |implied volatility
+{#fun qlSwaptionImpliedVolatility as impliedVolatility {`Swaption', `Double', withObject* `YieldTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

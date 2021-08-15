@@ -7,10 +7,13 @@ module QuantLib.Instrument.Bond
 
   , asInstrument
   , asBond
+
+  , atmRate
   )
   where
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
+{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -48,5 +51,7 @@ instance ForeignObject ConvertibleBond where
   peekObject = newForeignPtr qlFreeConvertibleBond >=> return . ConvertibleBond
 {#fun qlConvertibleBondAsBond {`ConvertibleBond'} -> `Bond'#}
 instance IsBond ConvertibleBond where asBond = qlConvertibleBondAsBond
+
+{#fun qlBondFunctionsAtmRate as atmRate {`Bond', withObject* `YieldTermStructure', fromDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

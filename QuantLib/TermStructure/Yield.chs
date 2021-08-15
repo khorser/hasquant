@@ -74,10 +74,10 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
 {#import QuantLib.TermStructure#}
 {#import QuantLib.InterestRate#}
-{#import QuantLib.Instrument.Bond#}(Bond)
+import {-# SOURCE #-} QuantLib.Instrument.Bond(Bond)
 import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
 import QuantLib.Math(Interpolation)
-{#import QuantLib.Instrument.Swap#}(VanillaSwap, OvernightIndexedSwap)
+import {-# SOURCE #-} QuantLib.Instrument.Swap(VanillaSwap, OvernightIndexedSwap)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -95,6 +95,10 @@ import QuantLib.Math(Interpolation)
 {#pointer *QlSwapIndex as SwapIndex foreign newtype nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign newtype nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign newtype nocode#}
+{#pointer *QlBond as Bond foreign newtype nocode#}
+{#pointer *QlSwap as Swap foreign newtype nocode#}
+{#pointer *QlVanillaSwap as VanillaSwap foreign newtype nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign newtype nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign finalizer qlFreeYieldTermStructure newtype#}
 instance ForeignObject YieldTermStructure where
