@@ -13,6 +13,10 @@
 #include "qlaux.h"
 #include "qlVolatilityTS.h"
 
+namespace hasquant {
+#include "qlEnumObjects.h"
+}
+
 using namespace QuantLib;
 
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(
@@ -337,49 +341,67 @@ QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* orig
 
 // move into qlTSAux?
 template <class T>
-void setInterpolation(T* o, const char *interpolator) {
-  if (!strcmp(interpolator, "BackwardFlat"))
+void setInterpolation(T* o, int interpolator, int approximator, int approximatorArg) {
+  switch (interpolator) {
+  case hasquant::BackwardFlat:
     o->setInterpolation(BackwardFlat());
-  else if (!strcmp(interpolator, "ForwardFlat"))
+    break;
+  case hasquant::ForwardFlat:
     o->setInterpolation(ForwardFlat());
-  else if (!strcmp(interpolator, "Linear"))
+    break;
+  case hasquant::Linear:
     o->setInterpolation(Linear());
-  else if (!strcmp(interpolator, "LogLinear"))
+    break;
+  case hasquant::LogLinear:
     o->setInterpolation(LogLinear());
-  else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
-    o->setInterpolation(Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-  else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
-    o->setInterpolation(Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-  else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
-    o->setInterpolation(LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-  else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
-    o->setInterpolation(LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-  else if (!strcmp(interpolator, "Cubic Kruger"))
-    o->setInterpolation(Cubic(CubicInterpolation::Kruger));
-  else if (!strcmp(interpolator, "LogCubic Kruger"))
-    o->setInterpolation(LogCubic(CubicInterpolation::Kruger));
-  else if (!strcmp(interpolator, "Cubic FritschButland"))
-    o->setInterpolation(Cubic(CubicInterpolation::FritschButland));
-  else if (!strcmp(interpolator, "LogCubic FritschButland"))
-    o->setInterpolation(LogCubic(CubicInterpolation::FritschButland));
-  else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
-    o->setInterpolation(Cubic(CubicInterpolation::Parabolic, false));
-  else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
-    o->setInterpolation(Cubic(CubicInterpolation::Parabolic, true));
-  else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
-    o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, false));
-  else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
-    o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, true));
-  else
+    break;
+  case hasquant::Cubic:
+    switch (approximator) {
+    case hasquant::NaturalSpline:
+      o->setInterpolation(Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+      break;
+    case hasquant::Kruger:
+      o->setInterpolation(Cubic(CubicInterpolation::Kruger));
+      break;
+    case hasquant::FritschButland:
+      o->setInterpolation(Cubic(CubicInterpolation::FritschButland));
+      break;
+    case hasquant::Parabolic:
+      o->setInterpolation(Cubic(CubicInterpolation::Parabolic, approximatorArg));
+      break;
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+    break;
+  case hasquant::LogCubic:
+    switch(approximator) {
+    case hasquant::NaturalSpline:
+      o->setInterpolation(LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+      break;
+    case hasquant::Kruger:
+      o->setInterpolation(LogCubic(CubicInterpolation::Kruger));
+      break;
+    case hasquant::FritschButland:
+      o->setInterpolation(LogCubic(CubicInterpolation::FritschButland));
+      break;
+    case hasquant::Parabolic:
+      o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, approximatorArg));
+      break;
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+    break;
+  default:
     QL_FAIL("Unsupported interpolation " << interpolator);
+  }
 }
 
-QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, char *interpolation, char **e) {
+QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e) {
   BlackVarianceCurve *c = 0;
   try {
     c = new BlackVarianceCurve(Date(referenceDate), qlDateVector(datesLen, dates), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance);
-    if (interpolation)
-      setInterpolation(c, interpolation);
+    if (interpolator != QL_NULL_INTEGER)
+      setInterpolation(c, interpolator, approximator, approximatorArg);
     return ret(new QlBlackVarianceCurve(alloc(c)));
   } catch (std::exception& er) {
     delete c;
@@ -387,7 +409,7 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
   }
 }
 
-QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, char *interpolation*/, char **e) {
+QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, int interpolator, int approximator, int approximatorArg*/, char **e) {
   BlackVarianceSurface *s = 0;
   try {
     s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(datesLen, dates), std::vector<double>(strikes, strikes+strikesLen), qlBuildMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);

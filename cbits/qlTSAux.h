@@ -58,7 +58,7 @@ QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
             const QuantLib::Calendar& calendar,
             const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
             const std::vector<QuantLib::Date>& jumpDates,
-            const char *interpolator);
+            int interpolator, int approximator, int approximatorArg);
 
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedHazardRateCurveAux(
             const std::vector<QuantLib::Date>& dates,
@@ -67,7 +67,7 @@ QuantLib::DefaultProbabilityTermStructure *qlInterpolatedHazardRateCurveAux(
             const QuantLib::Calendar& cal,
             const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
             const std::vector<QuantLib::Date>& jumpDates,
-            const char *interpolator);
+            int interpolator, int approximator, int approximatorArg);
 
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurveAux(
             const std::vector<QuantLib::Date>& dates,
@@ -76,19 +76,19 @@ QuantLib::DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurv
             const QuantLib::Calendar& calendar,
             const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
             const std::vector<QuantLib::Date>& jumpDates,
-            const char *interpolator);
+            int interpolator, int approximator, int approximatorArg);
 
 QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const QuantLib::Date &referenceDate,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
-    const char* trait, const char *interpolator);
+    int trait,int interpolator, int approximator, int approximatorArg);
 
 QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
     const QuantLib::Calendar& calendar,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
-    const char* trait, const char *interpolator);
+    int trait,int interpolator, int approximator, int approximatorArg);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
