@@ -5,7 +5,10 @@ module QuantLib.TermStructure.Yield
   , RateHelper
   , SwapRateHelper
   , OISRateHelper
+  , FittingMethod
   , FittedBondDiscountCurve
+  , fittedBondDiscountCurve
+  , fittedBondDiscountCurve'
 
   , BootstrapTrait(..)
   , depositRateHelper'
@@ -55,6 +58,10 @@ module QuantLib.TermStructure.Yield
   , interpolatedZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
+
+  , helperBond
+  , helperSwap
+  , helperOIS
   )
   where
 
@@ -70,6 +77,7 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#import QuantLib.Instrument.Bond#}(Bond)
 import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
 import QuantLib.Math(Interpolation)
+{#import QuantLib.Instrument.Swap#}(VanillaSwap, OvernightIndexedSwap)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -117,6 +125,11 @@ instance ForeignObject OISRateHelper where
 instance ForeignObject FittedBondDiscountCurve where
   withObject = withFittedBondDiscountCurve
   peekObject = newForeignPtr qlFreeFittedBondDiscountCurve >=> return . FittedBondDiscountCurve
+
+{#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
+instance ForeignObject FittingMethodObject where
+  withObject = withFittingMethodObject
+  peekObject = newForeignPtr qlFreeFittedBondDiscountCurveFittingMethod >=> return . FittingMethodObject
 
 {#enum BootstrapTrait {} deriving(Show, Eq)#}
 
@@ -288,78 +301,71 @@ interpolatedZeroCurve r dc c qd i = qlInterpolatedZeroCurve rs rd dc c qs ds i' 
 
 {#fun qlInterpolatedZeroCurve {withDoubleArray* `[Double]'&, withDayArray* `[Day]'&, withObject* `DayCounter', withObject* `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
-{-
-cubicBSplinesFitting :: [YearFraction] -- ^knotVector
-  -> Bool -- ^constrainAtZero
-  -> IO FittedBondDiscountCurveFittingMethod
-cubicBSplinesFitting = $(ffiCall 'cubicBSplinesFitting) c_cubicBSplinesFitting
+data FittingMethod =
+  CubicSplies
+    [Double] -- ^knotVector (year fraction)
+    Bool -- ^constrainAtZero
+  | ExponentialSplines Bool
+  | NelsonSiegel
+  | SimplePolynomial
+    Word -- ^degree
+    Bool -- ^constrainAtZero
+  | Svensson
+  deriving (Show, Eq)
 
-foreign import ccall safe "ql.h qlCubicBSplinesFitting"
-  c_cubicBSplinesFitting :: CUInt -> Ptr CYearFraction -> CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+fittingMethod :: FittingMethod -> IO FittingMethodObject
+fittingMethod (CubicSplies k c) = qlCubicBSplinesFitting k c
+fittingMethod (ExponentialSplines c) = qlExponentialSplinesFitting c
+fittingMethod NelsonSiegel = qlNelsonSiegelFitting
+fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
+fittingMethod Svensson = qlSvenssonFitting
 
-exponentialSplinesFitting :: Bool -- ^constrainAtZero
-  -> IO FittedBondDiscountCurveFittingMethod
-exponentialSplinesFitting = $(ffiCall 'exponentialSplinesFitting) c_exponentialSplinesFitting
-
-foreign import ccall safe "ql.h qlExponentialSplinesFitting"
-  c_exponentialSplinesFitting :: CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
-
-nelsonSiegelFitting :: IO FittedBondDiscountCurveFittingMethod
-nelsonSiegelFitting = $(ffiCall 'nelsonSiegelFitting) c_nelsonSiegelFitting
-
-foreign import ccall safe "ql.h qlNelsonSiegelFitting"
-  c_nelsonSiegelFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
-
-simplePolynomialFitting :: Word -- ^degree
-  -> Bool -- ^constrainAtZero
-  -> IO FittedBondDiscountCurveFittingMethod
-simplePolynomialFitting = $(ffiCall 'simplePolynomialFitting) c_simplePolynomialFitting
-
-foreign import ccall safe "ql.h qlSimplePolynomialFitting"
-  c_simplePolynomialFitting :: CUInt -> CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
-
-svenssonFitting :: IO FittedBondDiscountCurveFittingMethod
-svenssonFitting = $(ffiCall 'svenssonFitting) c_svenssonFitting
-
-foreign import ccall safe "ql.h qlSvenssonFitting"
-  c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+{#fun qlCubicBSplinesFitting {withDoubleArray* `[Double]'&, `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlExponentialSplinesFitting {`Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlNelsonSiegelFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlSimplePolynomialFitting {fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlSvenssonFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
 
 -- |reference date based on current evaluation date
 fittedBondDiscountCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [BondHelper] -- ^bonds
   -> DayCounter -- ^dayCounter
-  -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
+  -> FittingMethod -- ^fittingMethod
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
   -> [Double] -- ^guess
   -> Double -- ^simplexLambda
   -> IO FittedBondDiscountCurve
-fittedBondDiscountCurve' = $(ffiCall 'fittedBondDiscountCurve') c_fittedBondDiscountCurve'
-
-foreign import ccall safe "ql.h qlFittedBondDiscountCurve"
-  c_fittedBondDiscountCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+fittedBondDiscountCurve' se c h dc fm a m g l = do {fmo <- fittingMethod fm; qlFittedBondDiscountCurve se c h dc fmo a m g l}
 
 -- |curve reference date fixed for life of curve
 fittedBondDiscountCurve :: Day -- ^referenceDate
   -> [BondHelper] -- ^bonds
   -> DayCounter -- ^dayCounter
-  -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
+  -> FittingMethod -- ^fittingMethod
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
   -> [Double] -- ^guess
   -> Double -- ^simplexLambda
   -> IO FittedBondDiscountCurve
-fittedBondDiscountCurve = $(ffiCall 'fittedBondDiscountCurve) c_fittedBondDiscountCurve
+fittedBondDiscountCurve d h dc fm a m g l = do {fmo <- fittingMethod fm; qlFittedBondDiscountCurve1 d h dc fmo a m g l}
 
-foreign import ccall safe "ql.h qlFittedBondDiscountCurve1"
-  c_fittedBondDiscountCurve :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
--}
+{#fun qlFittedBondDiscountCurve {fromIntegral `Word', withObject* `Calendar', withObjectArray* `[BondHelper]'&, withObject* `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
+
+{#fun qlFittedBondDiscountCurve1 {fromDay* `Day', withObjectArray* `[BondHelper]'&, withObject* `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
 
 -- |final value of cost function after optimization
 {#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |final number of iterations used in the optimization problem
 {#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Int'#}
+
+-- TODO introduce a type class for all underlyings
+{#fun qlBondHelperBond as helperBond {`BondHelper', preErrorCheck- `String' errorCheck*-} -> `Bond' peekObject*#}
+
+{#fun qlSwapRateHelperSwap as helperSwap {`SwapRateHelper', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap' peekObject*#}
+
+{#fun qlOISRateHelperSwap as helperOIS {`OISRateHelper', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap' peekObject*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
