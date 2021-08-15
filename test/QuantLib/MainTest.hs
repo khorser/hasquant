@@ -23,6 +23,8 @@ import QuantLib.Math
 import qualified QuantLib.InterestRate as IR
 import QuantLib.CashFlow
 import qualified QuantLib.Quote as Quote
+import QuantLib.TermStructure.Yield hiding(maxDate)
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 
 instance Arbitrary Period.Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
@@ -40,6 +42,13 @@ instance Arbitrary InvalidDay where
     return $ InvalidDay (ModifiedJulianDay d)
     where minD = toModifiedJulianDay minDate
           maxD = toModifiedJulianDay maxDate
+
+-- literal translation of close from ql/math/comparison.hpp
+areClose :: Double -> Double -> Bool
+areClose x1 x2 = x1 == x2
+            || x1 * x2 == 0 && diff < epsilon * epsilon
+            || diff <= epsilon * abs x1 && diff <= epsilon * abs x2
+            where diff = abs(x1 - x2)
 
 main :: IO ()
 main = do
@@ -915,14 +924,7 @@ main = do
           all ((1.0e-12 >) . abs) diffs `shouldBe` True
 
     describe "rounding" $ do
-      -- literal translation of close from ql/math/comparison.hpp
-      let areClose :: Double -> Double -> Bool
-          areClose x1 x2 =
-            x1 == x2
-            || x1 * x2 == 0 && diff < epsilon * epsilon
-            || diff <= epsilon * abs x1 && diff <= epsilon * abs x2
-            where diff = abs(x1 - x2)
-          testData :: [(Double, Int, Double, Double, Double, Double, Double)]
+      let testData :: [(Double, Int, Double, Double, Double, Double, Double)]
           testData =
             [(  0.86313513, 5,  0.86314,  0.86314,  0.86313,  0.86314,  0.86313 ),
              (  0.86313,    5,  0.86313,  0.86313,  0.86313,  0.86313,  0.86313 ),
@@ -977,8 +979,7 @@ main = do
                     (0.0700, IR.Compounded,        Bimonthly,  1.0/6,     IR.Simple,            Annual, 0.0700, 4),
                     (0.0800,     IR.Simple,           Annual,  1.0/6, IR.Compounded,         Bimonthly, 0.0800, 4),
                     (0.0900, IR.Compounded,          Monthly, 1.0/12,     IR.Simple,            Annual, 0.0900, 4),
-                    (0.1000,     IR.Simple,           Annual, 1.0/12, IR.Compounded,           Monthly, 0.1000, 4),
-                    (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,            Annual, 0.0300, 4),
+                    (0.1000,     IR.Simple,           Annual, 1.0/12, IR.Compounded,           Monthly, 0.1000, 4), (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,            Annual, 0.0300, 4),
                     (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,        Semiannual, 0.0300, 4),
                     (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,         Quarterly, 0.0300, 4),
                     (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.50,               IR.Simple,            Annual, 0.0300, 4),
@@ -1158,5 +1159,100 @@ test_AccessViolation = keepingSettings' $ do
   void $ nextCashFlowAmount cpns True Nothing
   assertBool True
 -}
+
+    describe "yield term structure" $ do
+      let setup :: IO (Calendar, Word, YieldTermStructure)
+          setup = do
+            let settlementDays = 2
+                depositData = [
+                  ( 1, Months, 4.581),
+                  ( 2, Months, 4.573 ),
+                  ( 3, Months, 4.557 ),
+                  ( 6, Months, 4.496 ),
+                  ( 9, Months, 4.490 )]
+                swapData = [
+                  ( 1, Years, 4.54 ),
+                  ( 5, Years, 4.99 ),
+                  (10, Years, 5.47 ),
+                  (20, Years, 5.89 ),
+                  (30, Years, 5.96 )]
+            cal <- calendar TARGET
+            d <- today
+            today' <- adjust cal d Following
+            Settings.setEvaluationDate (Just today')
+            settlement <- advance cal today' (fromIntegral settlementDays) Days Following False
+            actual360dc <- Schedule.dayCounter Schedule.Actual360
+            deposits <- mapM
+              (\(n, u, r) -> do
+                q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
+                depositRateHelper q (n, u) settlementDays cal ModifiedFollowing True actual360dc)
+              depositData
+            ccy <- currency EUR
+            thirty360dc <- Schedule.dayCounter $ Schedule.Thirty360 Schedule.Thirty360BondBasis
+            index <- iborIndex (Ibor "dummy" (6, Months) settlementDays ccy cal ModifiedFollowing False actual360dc) Nothing
+            swaps <- mapM
+              (\(n, u, r) -> do
+                q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
+                swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= swapRateHelperAsRateHelper)
+              swapData
+          
+            ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear
+            return (cal, settlementDays, ts)
+      it "referenceChange" $ do
+        let days = [10, 30, 60, 120, 360, 720]
+        (_calendar, settlementDays, _ts) <- setup
+        flatRate <- Quote.simpleQuote 0.03
+        cal <- calendar Null
+        flatQuote <- Quote.asQuote flatRate
+        actual360dc <- Schedule.dayCounter Schedule.Actual360
+        ts <- flatForward' settlementDays cal flatQuote actual360dc IR.Continuous Annual
+        td <- Settings.evaluationDate
+
+        expected <- mapM (\d -> discount' ts (addDays d td) False) days
+        Settings.setEvaluationDate (Just $ addDays 30 td)
+        calculated <- mapM (\d -> discount' ts (addDays (30+d) td) False) days
+
+        mapM_ (\(x1, x2) -> x1 `shouldSatisfy` areClose x2) (zip expected calculated)
+
+      it "implied" $
+        Settings.keepingSettings' $ do
+          (cal, settlementDays, ts) <- setup
+          td <- Settings.evaluationDate
+          let newToday = addGregorianYearsClip 3 td
+          newSettlement <- advance cal newToday (fromIntegral settlementDays) Days Following False
+          let testDate = addGregorianYearsClip 5 newSettlement
+          implied <- impliedTermStructure ts newSettlement
+          baseDiscount <- discount' ts newSettlement False
+          dsc <- discount' ts testDate False
+          impliedDiscount <- discount' implied testDate False
+
+          (dsc - baseDiscount * impliedDiscount) `shouldSatisfy` (<= 1.0e-10)
+
+      it "fwd spreaded" $
+        Settings.keepingSettings' $ do
+          (_calendar, _settlementDays, ts) <- setup
+          me <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          val <- Quote.value me
+          spreaded <- forwardSpreadedTermStructure ts me
+          refDate <- asTermStructure ts >>= referenceDate
+          let testDate = addGregorianYearsClip 5 refDate
+          actual360dc <- Schedule.dayCounter Schedule.Actual360
+          forward <- IR.rate <$> forwardRate' ts testDate testDate actual360dc IR.Continuous NoFrequency False
+          spreadedForward <- IR.rate <$> forwardRate' spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
+
+          (forward - (spreadedForward - val)) `shouldSatisfy` (<= 1.0e-10)
+      it "z-spreaded" $
+        Settings.keepingSettings' $ do
+          (_calendar, _settlementDays, ts) <- setup
+          q <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          val <- Quote.value q
+          actual360dc <- Schedule.dayCounter Schedule.Actual360
+          spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency actual360dc
+          refDate <- asTermStructure ts >>= referenceDate
+          let testDate = addGregorianYearsClip 5 refDate
+          zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False
+          spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
+
+          (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
