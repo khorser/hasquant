@@ -51,10 +51,17 @@ module QuantLib.TermStructure.Yield
   , quantoTermStructure
   , minimumCostValue
   , numberOfIterations
+
+  , piecewiseYieldCurve
+  , piecewiseYieldCurve'
+  , interpolatedZeroCurve
+  , interpolatedForwardCurve
+  , interpolatedDiscountCurve
   )
   where
 
 import QuantLib.Internal hiding (maxDate)
+import QuantLib.Enum
 {#import QuantLib.Quote#}(Quote)
 import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#import QuantLib.Time.Period#}(TimeUnit, Frequency)
@@ -64,6 +71,7 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#import QuantLib.InterestRate#}
 {#import QuantLib.Instrument.Bond#}(Bond)
 import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
+import QuantLib.Math(Interpolation)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -205,30 +213,32 @@ piecewiseZeroSpreadedTermStructure ts = uncurry (qlPiecewiseZeroSpreadedTermStru
 
 {#fun qlQuantoTermStructure as quantoTermStructure {`YieldTermStructure', `YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', `Double', withObject* `BlackVolTermStructure', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
-{-
 piecewiseYieldCurve :: Day -- ^referenceDate
   -> [RateHelper] -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Quote, Day)] -- ^jumps and jumpDates
-  -> Double -- ^accuracy
-  -> Trait -- ^bootstrap trait
+  -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-piecewiseYieldCurve = $(ffiCall 'piecewiseYieldCurve) c_piecewiseYieldCurve
+piecewiseYieldCurve d r dc qd t i = qlPiecewiseYieldCurve d r dc qs ds t i' a aa
+  where (qs, ds) = unzip qd
+        (i', (a, aa)) = qlInterpolation i
 
-foreign import ccall safe "ql.h qlPiecewiseYieldCurve1"
-  c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CRateHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+{#fun qlPiecewiseYieldCurve {fromDay* `Day', withObjectArray* `[RateHelper]'&, withObject* `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `BootstrapTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [RateHelper] -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Quote, Day)] -- ^jumps and jumpDates
-  -> Double -- ^accuracy
-  -> Trait -- ^bootstrap trait
+  -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-piecewiseYieldCurve' = $(ffiCall 'piecewiseYieldCurve') c_piecewiseYieldCurve'
+piecewiseYieldCurve' s cal r dc qd t i = qlPiecewiseYieldCurve1 s cal r dc qs ds t i' a aa
+  where (qs, ds) = unzip qd
+        (i', (a, aa)) = qlInterpolation i
+
+{#fun qlPiecewiseYieldCurve1 {fromIntegral `Word', withObject* `Calendar', withObjectArray* `[RateHelper]'&, withObject* `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `BootstrapTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 interpolatedDiscountCurve :: [(Double, Day)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter
@@ -236,10 +246,12 @@ interpolatedDiscountCurve :: [(Double, Day)] -- ^dates, dfs
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-interpolatedDiscountCurve = $(ffiCall 'interpolatedDiscountCurve) c_interpolatedDiscountCurve
+interpolatedDiscountCurve r dc c qd i = qlInterpolatedDiscountCurve rs rd dc c qs ds i' a aa
+  where (rs, rd) = unzip r
+        (qs, ds) = unzip qd
+        (i', (a, aa)) = qlInterpolation i
 
-foreign import ccall safe "ql.h qlInterpolatedDiscountCurve"
-  c_interpolatedDiscountCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+{#fun qlInterpolatedDiscountCurve {withDoubleArray* `[Double]'&, withDayArray* `[Day]'&, withObject* `DayCounter', withObject* `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 interpolatedForwardCurve :: [(Double, Day)] -- ^dates, forwards
   -> DayCounter -- ^dayCounter
@@ -247,10 +259,12 @@ interpolatedForwardCurve :: [(Double, Day)] -- ^dates, forwards
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-interpolatedForwardCurve = $(ffiCall 'interpolatedForwardCurve) c_interpolatedForwardCurve
+interpolatedForwardCurve r dc c qd i = qlInterpolatedForwardCurve rs rd dc c qs ds i' a aa
+  where (rs, rd) = unzip r
+        (qs, ds) = unzip qd
+        (i', (a, aa)) = qlInterpolation i
 
-foreign import ccall safe "ql.h qlInterpolatedForwardCurve"
-  c_interpolatedForwardCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+{#fun qlInterpolatedForwardCurve {withDoubleArray* `[Double]'&, withDayArray* `[Day]'&, withObject* `DayCounter', withObject* `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 interpolatedZeroCurve :: [(Double, Day)] -- ^dates, yields
   -> DayCounter -- ^dayCounter
@@ -258,11 +272,14 @@ interpolatedZeroCurve :: [(Double, Day)] -- ^dates, yields
   -> [(Quote, Day)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-interpolatedZeroCurve = $(ffiCall 'interpolatedZeroCurve) c_interpolatedZeroCurve
+interpolatedZeroCurve r dc c qd i = qlInterpolatedZeroCurve rs rd dc c qs ds i' a aa
+  where (rs, rd) = unzip r
+        (qs, ds) = unzip qd
+        (i', (a, aa)) = qlInterpolation i
 
-foreign import ccall safe "ql.h qlInterpolatedZeroCurve"
-  c_interpolatedZeroCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+{#fun qlInterpolatedZeroCurve {withDoubleArray* `[Double]'&, withDayArray* `[Day]'&, withObject* `DayCounter', withObject* `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
+{-
 cubicBSplinesFitting :: [YearFraction] -- ^knotVector
   -> Bool -- ^constrainAtZero
   -> IO FittedBondDiscountCurveFittingMethod

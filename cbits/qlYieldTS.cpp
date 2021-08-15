@@ -50,7 +50,7 @@ void qlFreeRateHelper(QlRateHelper *helper) {
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, int *dates, int trait,
+  QlQuote **quotes, unsigned datesLen, int *dates, int trait,
   int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     std::vector<ext::shared_ptr<RateHelper> > instr;
@@ -58,10 +58,10 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
     std::vector<Date> jumpDates;
     for (unsigned i = 0; i < rateLen; ++i)
       instr.push_back(*arg(ratehelpers[i]));
-    for (unsigned i = 0; i < quoteLen; ++i) {
+    for (unsigned i = 0; i < quoteLen; ++i)
       jumps.push_back(Handle<Quote>(*arg(quotes[i])));
+    for (unsigned i = 0; i < datesLen; ++i)
       jumpDates.push_back(Date(dates[i]));
-    }
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux(Date(date),
       instr, *arg(dayCount), jumps, jumpDates, trait, interpolator, approximator, approximatorArg);
     // TODO free ts if allocation below fails
@@ -81,20 +81,20 @@ typedef YieldTermStructure *(*curveBuilder)(
   int interpolator, int approximator, int approximatorArg);
 
 QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,
-  unsigned rateLen, double *rates, int *rateDates,
+  unsigned rateLen, double *rates, unsigned rateDatesLen, int *rateDates,
   DayCounter *dayCount, Calendar *cal,
-  unsigned quoteLen, QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     std::vector<Date> rds;
     std::vector<double> rs(rates, rates+rateLen);
     std::vector<Handle<Quote> > jumps;
     std::vector<Date> jumpDates;
-    for (unsigned i = 0; i < rateLen; ++i)
+    for (unsigned i = 0; i < rateDatesLen; ++i)
       rds.push_back(Date(rateDates[i]));
-    for (unsigned i = 0; i < quoteLen; ++i) {
+    for (unsigned i = 0; i < quoteLen; ++i)
       jumps.push_back(Handle<Quote>(*arg(quotes[i])));
+    for (unsigned i = 0; i < datesLen; ++i)
       jumpDates.push_back(Date(dates[i]));
-    }
     YieldTermStructure *ts = builder(rds,
       rs, *arg(dayCount), *arg(cal), jumps, jumpDates, interpolator, approximator, approximatorArg);
     return ret(new QlYieldTermStructure(alloc(ts)));
@@ -104,29 +104,29 @@ QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,
 }
 
 QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen,
-  double *dfs, int *dfsDates, DayCounter *dayCount, Calendar *cal,
-  unsigned quoteLen, QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
-  return qlInterpolatedCurve(&qlInterpolatedDiscountCurveAux, dfsLen, dfs, dfsDates,
-    dayCount, cal, quoteLen, quotes, dates, interpolator, approximator, approximatorArg, e);
+  double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
+  unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  return qlInterpolatedCurve(&qlInterpolatedDiscountCurveAux, dfsLen, dfs, dfdatesLen, dfsDates,
+    dayCount, cal, quoteLen, quotes, datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
 
 QlYieldTermStructure *qlInterpolatedForwardCurve(unsigned fwdLen,
-  double *fwds, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
-  QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
-  return qlInterpolatedCurve(&qlInterpolatedForwardCurveAux, fwdLen, fwds, fwdDates,
-    dayCount, cal, quoteLen, quotes, dates, interpolator, approximator, approximatorArg, e);
+  double *fwds, unsigned fwddatesLen, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  return qlInterpolatedCurve(&qlInterpolatedForwardCurveAux, fwdLen, fwds, fwddatesLen, fwdDates,
+    dayCount, cal, quoteLen, quotes, datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
 
 QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen,
-  double *yields, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
-  QlQuote **quotes, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
-  return qlInterpolatedCurve(&qlInterpolatedZeroCurveAux, yieldLen, yields, yieldDates,
-    dayCount, cal, quoteLen, quotes, dates, interpolator, approximator, approximatorArg, e);
+  double *yields, unsigned ydatesLen, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  return qlInterpolatedCurve(&qlInterpolatedZeroCurveAux, yieldLen, yields, ydatesLen, yieldDates,
+    dayCount, cal, quoteLen, quotes,  datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
 
 QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
   unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, int *dates, int trait,
+  QlQuote **quotes, unsigned datesLen, int *dates, int trait,
   int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     std::vector<ext::shared_ptr<RateHelper> > instr;
@@ -134,10 +134,10 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
     std::vector<Date> jumpDates;
     for (unsigned i = 0; i < rateLen; ++i)
       instr.push_back(*arg(ratehelpers[i]));
-    for (unsigned i = 0; i < quoteLen; ++i) {
+    for (unsigned i = 0; i < quoteLen; ++i)
       jumps.push_back(Handle<Quote>(*arg(quotes[i])));
+    for (unsigned i = 0; i < datesLen; ++i)
       jumpDates.push_back(Date(dates[i]));
-    }
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal),
       instr, *arg(dayCount), jumps, jumpDates, trait, interpolator, approximator, approximatorArg);
     return ret(new QlYieldTermStructure(alloc(ts)));

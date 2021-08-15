@@ -6,10 +6,10 @@ module QuantLib.Math
   , rounding'
   , applyRounding
 
-  , EndCriteriaType
-  , HistogramAlgorithm
-  , Approximation
-  , Interpolation
+  , EndCriteriaType(..)
+  , HistogramAlgorithm(..)
+  , Approximation(..)
+  , Interpolation(..)
   , RngTrait(..)
   , BinomialTree(..)
   , BoundaryConditionSide(..)
