@@ -40,11 +40,9 @@ module QuantLib.TermStructure.Yield
   , maxDate
   , impliedTermStructure
 
-  , asTermStructure
   , asYieldTermStructure
-  , swapRateHelperAsRateHelper
-  , oisRateHelperAsRateHelper
-  , bondHelperAsRateHelper
+  , asTermStructure
+  , asRateHelper
 
   , driftTermStructure
   , piecewiseZeroSpreadedTermStructure
@@ -67,7 +65,7 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#import QuantLib.Time.Period#}(TimeUnit, Frequency)
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 {#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
-{#import QuantLib.TermStructure#}(TermStructure)
+{#import QuantLib.TermStructure#}
 {#import QuantLib.InterestRate#}
 {#import QuantLib.Instrument.Bond#}(Bond)
 import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
@@ -193,11 +191,22 @@ instance ForeignObject FittedBondDiscountCurve where
 
 {#fun qlImpliedTermStructure as impliedTermStructure {`YieldTermStructure', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
-{#fun qlYieldTermStructureAsTermStructure as asTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
+{#fun qlYieldTermStructureAsTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
+instance IsTermStructure YieldTermStructure where asTermStructure = qlYieldTermStructureAsTermStructure
+
 {#fun qlFittedBondDiscountCurveAsYieldTermStructure as asYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
-{#fun qlSwapRateHelperAsRateHelper as swapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
-{#fun qlBondHelperAsRateHelper as bondHelperAsRateHelper {`BondHelper'} -> `RateHelper'#}
-{#fun qlOISRateHelperAsRateHelper as oisRateHelperAsRateHelper {`OISRateHelper'} -> `RateHelper'#}
+
+class IsRateHelper a where
+  asRateHelper :: a -> IO RateHelper
+
+{#fun qlSwapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
+instance IsRateHelper SwapRateHelper where asRateHelper = qlSwapRateHelperAsRateHelper
+
+{#fun qlBondHelperAsRateHelper {`BondHelper'} -> `RateHelper'#}
+instance IsRateHelper BondHelper where asRateHelper = qlBondHelperAsRateHelper
+
+{#fun qlOISRateHelperAsRateHelper {`OISRateHelper'} -> `RateHelper'#}
+instance IsRateHelper OISRateHelper where asRateHelper = qlOISRateHelperAsRateHelper 
 
 {#fun qlDriftTermStructure as driftTermStructure {`YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 

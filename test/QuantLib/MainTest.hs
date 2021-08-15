@@ -1193,7 +1193,7 @@ test_AccessViolation = keepingSettings' $ do
             swaps <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
-                swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= swapRateHelperAsRateHelper)
+                swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= asRateHelper)
               swapData
           
             ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear

@@ -14,21 +14,15 @@ module QuantLib.TermStructure.Volatility
   , TermStructure
   , VolatilityTermStructure
 
-  , optionletVolatilityStructureAsVolatilityTermStructure
-  , volatilityTermStructureAsTermStructure
-  , blackVolTermStructureAsVolatilityTermStructure
-  , swaptionVolatilityStructureAsVolatilityTermStructure
-  , capFloorTermVolSurfaceAsVolatilityTermStructure
-  , localVolTermStructureAsVolatilityTermStructure
-  , blackVarianceCurveAsBlackVolTermStructure
-  , callableBondVolatilityStructureAsTermStructure
+  , asVolatilityTermStructure
+  , asBlackVolTermStructure
 
   , localVolSurface
   )
   where
 
 import QuantLib.Internal
-{#import QuantLib.TermStructure#}(TermStructure)
+{#import QuantLib.TermStructure#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.Quote#}(Quote)
 
@@ -85,14 +79,31 @@ instance ForeignObject VolatilityTermStructure where
 
 {#enum ExtendedBlackVarianceSurfaceExtrapolation {} deriving(Show, Eq)#}
 
-{#fun qlOptionletVolatilityStructureAsVolatilityTermStructure as optionletVolatilityStructureAsVolatilityTermStructure {`OptionletVolatilityStructure'} -> `VolatilityTermStructure'#}
-{#fun qlVolatilityTermStructureAsTermStructure as volatilityTermStructureAsTermStructure {`VolatilityTermStructure'} -> `TermStructure' peekObject*#}
-{#fun qlBlackVolTermStructureAsVolatilityTermStructure as blackVolTermStructureAsVolatilityTermStructure {`BlackVolTermStructure'} -> `VolatilityTermStructure'#}
-{#fun qlSwaptionVolatilityStructureAsVolatilityTermStructure as swaptionVolatilityStructureAsVolatilityTermStructure {`SwaptionVolatilityStructure'} -> `VolatilityTermStructure'#}
-{#fun qlCapFloorTermVolSurfaceAsVolatilityTermStructure as capFloorTermVolSurfaceAsVolatilityTermStructure {`CapFloorTermVolSurface'} -> `VolatilityTermStructure'#}
-{#fun qlLocalVolTermStructureAsVolatilityTermStructure as localVolTermStructureAsVolatilityTermStructure {`LocalVolTermStructure'} -> `VolatilityTermStructure'#}
-{#fun qlBlackVarianceCurveAsBlackVolTermStructure as blackVarianceCurveAsBlackVolTermStructure {`BlackVarianceCurve'} -> `BlackVolTermStructure'#}
-{#fun qlCallableBondVolatilityStructureAsTermStructure as callableBondVolatilityStructureAsTermStructure {`CallableBondVolatilityStructure'} -> `TermStructure' peekObject*#}
+class IsVolatilityTermStructure a where
+  asVolatilityTermStructure :: a -> IO VolatilityTermStructure
+
+{#fun qlOptionletVolatilityStructureAsVolatilityTermStructure {`OptionletVolatilityStructure'} -> `VolatilityTermStructure'#}
+instance IsVolatilityTermStructure OptionletVolatilityStructure where asVolatilityTermStructure = qlOptionletVolatilityStructureAsVolatilityTermStructure
+
+{#fun qlVolatilityTermStructureAsTermStructure {`VolatilityTermStructure'} -> `TermStructure' peekObject*#}
+instance IsTermStructure VolatilityTermStructure where asTermStructure = qlVolatilityTermStructureAsTermStructure
+
+{#fun qlBlackVolTermStructureAsVolatilityTermStructure {`BlackVolTermStructure'} -> `VolatilityTermStructure'#}
+instance IsVolatilityTermStructure BlackVolTermStructure where asVolatilityTermStructure = qlBlackVolTermStructureAsVolatilityTermStructure
+
+{#fun qlSwaptionVolatilityStructureAsVolatilityTermStructure {`SwaptionVolatilityStructure'} -> `VolatilityTermStructure'#}
+instance IsVolatilityTermStructure SwaptionVolatilityStructure where asVolatilityTermStructure = qlSwaptionVolatilityStructureAsVolatilityTermStructure
+
+{#fun qlCapFloorTermVolSurfaceAsVolatilityTermStructure {`CapFloorTermVolSurface'} -> `VolatilityTermStructure'#}
+instance IsVolatilityTermStructure CapFloorTermVolSurface where asVolatilityTermStructure = qlCapFloorTermVolSurfaceAsVolatilityTermStructure
+
+{#fun qlLocalVolTermStructureAsVolatilityTermStructure {`LocalVolTermStructure'} -> `VolatilityTermStructure'#}
+instance IsVolatilityTermStructure LocalVolTermStructure where asVolatilityTermStructure = qlLocalVolTermStructureAsVolatilityTermStructure
+
+{#fun qlBlackVarianceCurveAsBlackVolTermStructure as asBlackVolTermStructure {`BlackVarianceCurve'} -> `BlackVolTermStructure'#}
+
+{#fun qlCallableBondVolatilityStructureAsTermStructure {`CallableBondVolatilityStructure'} -> `TermStructure' peekObject*#}
+instance IsTermStructure CallableBondVolatilityStructure where asTermStructure = qlCallableBondVolatilityStructureAsTermStructure;
 
 {#fun qlLocalVolSurface as localVolSurface {`BlackVolTermStructure', withObject* `YieldTermStructure', withObject* `YieldTermStructure', withObject* `Quote', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
 

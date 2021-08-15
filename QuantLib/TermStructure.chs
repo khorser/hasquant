@@ -1,6 +1,7 @@
 module QuantLib.TermStructure
   (
     TermStructure
+  , IsTermStructure(..)
   )
   where
 import QuantLib.Internal
@@ -15,5 +16,8 @@ import QuantLib.Internal
 instance ForeignObject TermStructure where
   withObject = withTermStructure
   peekObject = newForeignPtr qlFreeTermStructure >=> return . TermStructure
+
+class IsTermStructure a where
+  asTermStructure :: a -> IO TermStructure
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

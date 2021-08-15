@@ -17,11 +17,9 @@ module QuantLib.Index.InterestRate
   , tenor
 
   , asIndex
-  , bmaIndexAsInterestRateIndex
-  , swapIndexAsInterestRateIndex
-  , overnightIndexedSwapIndexAsSwapIndex
-  , iborIndexAsInterestRateIndex
-  , overnightIborIndexAsIborIndex
+  , asInterestRateIndex
+  , asIborIndex
+  , asSwapIndex
 
   , OvernightIborIndexType(..)
   , overnightIborIndex
@@ -105,15 +103,21 @@ instance ForeignObject OvernightIndexedSwapIndex where
 
 {#fun qlInterestRateIndexAsIndex as asIndex {`InterestRateIndex'} -> `Index' peekObject*#}
 
-{#fun qlBMAIndexAsInterestRateIndex as bmaIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
+class IsInterestRateIndex a where
+  asInterestRateIndex :: a -> IO InterestRateIndex
 
-{#fun qlSwapIndexAsInterestRateIndex as swapIndexAsInterestRateIndex {`SwapIndex'} -> `InterestRateIndex'#}
+{#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
+instance IsInterestRateIndex BMAIndex where asInterestRateIndex = qlBMAIndexAsInterestRateIndex
 
-{#fun qlOvernightIndexedSwapIndexAsSwapIndex as overnightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
+{#fun qlSwapIndexAsInterestRateIndex {`SwapIndex'} -> `InterestRateIndex'#}
+instance IsInterestRateIndex SwapIndex where asInterestRateIndex = qlSwapIndexAsInterestRateIndex
 
-{#fun qlIborIndexAsInterestRateIndex as iborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
+{#fun qlOvernightIndexedSwapIndexAsSwapIndex as asSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
 
-{#fun qlOvernightIndexAsIborIndex as overnightIborIndexAsIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
+{#fun qlIborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
+instance IsInterestRateIndex IborIndex where asInterestRateIndex = qlIborIndexAsInterestRateIndex
+
+{#fun qlOvernightIndexAsIborIndex as asIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
 
 {#enum OvernightIborIndexType {} deriving (Show, Eq)#}
 
