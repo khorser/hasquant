@@ -103,8 +103,7 @@ instance ForeignObject OvernightIndexedSwapIndex where
 
 {#fun qlInterestRateIndexAsIndex as asIndex {`InterestRateIndex'} -> `Index' peekObject*#}
 
-class IsInterestRateIndex a where
-  asInterestRateIndex :: a -> IO InterestRateIndex
+class IsInterestRateIndex a where asInterestRateIndex :: a -> IO InterestRateIndex
 
 {#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
 instance IsInterestRateIndex BMAIndex where asInterestRateIndex = qlBMAIndexAsInterestRateIndex

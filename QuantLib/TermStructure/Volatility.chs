@@ -79,8 +79,7 @@ instance ForeignObject VolatilityTermStructure where
 
 {#enum ExtendedBlackVarianceSurfaceExtrapolation {} deriving(Show, Eq)#}
 
-class IsVolatilityTermStructure a where
-  asVolatilityTermStructure :: a -> IO VolatilityTermStructure
+class IsVolatilityTermStructure a where asVolatilityTermStructure :: a -> IO VolatilityTermStructure
 
 {#fun qlOptionletVolatilityStructureAsVolatilityTermStructure {`OptionletVolatilityStructure'} -> `VolatilityTermStructure'#}
 instance IsVolatilityTermStructure OptionletVolatilityStructure where asVolatilityTermStructure = qlOptionletVolatilityStructureAsVolatilityTermStructure

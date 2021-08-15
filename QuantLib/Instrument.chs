@@ -13,11 +13,18 @@ module QuantLib.Instrument
    , ProtectionSide(..)
    , Seniority(..)
    , PricingModel(..)
+
+   , Instrument
+   , IsInstrument(..)
   )
   where
 
+import QuantLib.Internal
+
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
+
+#include "ql.h"
 
 {#enum ExerciseType {} deriving(Show, Eq)#}
 
@@ -48,5 +55,12 @@ module QuantLib.Instrument
 {#enum RestructuringType {} deriving(Show, Eq)#}
 
 {#enum AtomicDefaultType {} deriving(Show, Eq)#}
+
+{#pointer *QlInstrument as Instrument foreign finalizer qlFreeInstrument newtype#}
+instance ForeignObject Instrument where
+  withObject = withInstrument
+  peekObject = newForeignPtr qlFreeInstrument >=> return . Instrument
+
+class IsInstrument a where asInstrument :: a -> IO Instrument
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

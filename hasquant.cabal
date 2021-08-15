@@ -35,13 +35,13 @@ library
                     , QuantLib.Instrument
                     , QuantLib.Instrument.Bond
                     , QuantLib.Quote
+                    , QuantLib.Instrument.Swap
                     , QuantLib.TermStructure
                     , QuantLib.TermStructure.Credit
                     , QuantLib.TermStructure.Yield
                     , QuantLib.TermStructure.Volatility
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
-                    , QuantLib.Instrument.Swap
                     , QuantLib.Model
                     , QuantLib.Process
   other-modules:    QuantLib.Internal

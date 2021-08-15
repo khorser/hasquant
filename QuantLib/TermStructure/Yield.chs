@@ -209,8 +209,7 @@ instance IsTermStructure YieldTermStructure where asTermStructure = qlYieldTermS
 
 {#fun qlFittedBondDiscountCurveAsYieldTermStructure as asYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
 
-class IsRateHelper a where
-  asRateHelper :: a -> IO RateHelper
+class IsRateHelper a where asRateHelper :: a -> IO RateHelper
 
 {#fun qlSwapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
 instance IsRateHelper SwapRateHelper where asRateHelper = qlSwapRateHelperAsRateHelper
