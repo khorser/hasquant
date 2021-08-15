@@ -12,8 +12,7 @@ maintainer:         sergey.khorev@gmail.com
 category:           Finance
 build-type:         Simple
 -- extra-source-files:  cbits
--- stackage lts-18.5 (GHC-8.10.4). also tested with lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3), lts-12.14 (ghc-8.4.3)
--- also works with lts-6.35 (ghc-7.10.3) without extra warning flags: -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+-- stackage lts-18.5 (GHC-8.10.4). also tested with lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3), lts-12.14 (ghc-8.4.3), lts-6.35 (ghc-7.10.3), lts-7.24 (ghc-8.0.1), lts-11.22 (ghc-8.2.2)
 -- tested-with:        GHC==8.10
 
 flag buildExample
@@ -87,7 +86,11 @@ library
   cc-options:        -Wall -Wextra -pedantic
 
   include-dirs:     cbits
-  ghc-options:      -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  if impl(ghc >= 8.0)
+    ghc-options:      -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  else
+    ghc-options:      -Wall
+
   extra-libraries:  QuantLib stdc++
 --  includes:         cbits/qlaux.h
 --                    , cbits/qlBond.h
