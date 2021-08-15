@@ -90,11 +90,11 @@ fromMaybeBool = maybe (-1) fromBool
 foreign import ccall safe "ql.h qlNullInteger" qlNullInteger :: CInt
 foreign import ccall safe "ql.h qlNullReal" qlNullReal :: CDouble
 
-fromMaybeInt :: (Integral a, Integral b, Storable b) => Maybe a -> b
+fromMaybeInt :: (Integral a, Integral b) => Maybe a -> b
 fromMaybeInt = maybe (fromIntegral qlNullInteger) fromIntegral
 
 fromMaybeDouble :: Maybe Double -> CDouble
-fromMaybeDouble = maybe (realToFrac qlNullReal) realToFrac
+fromMaybeDouble = maybe qlNullReal realToFrac
 
 toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
@@ -182,10 +182,10 @@ peekDoubleArray pl pp = do
 withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
 withMaybeObject x f = maybe (f nullPtr) (`withObject` f) x
 
-fromEnumQuantity :: (Enum a, Integral b, Integral c, Storable c) => (b, a) -> (CInt, c)
+fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
 
-toEnumQuantity :: (Enum a, Integral c, Storable c, Integral b) => (CInt, c) -> (b, a)
+toEnumQuantity :: (Enum a, Integral c, Integral b) => (CInt, c) -> (b, a)
 toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
 
 foreign import ccall safe "ql.h qlMinYear" qlMinYear :: CInt
