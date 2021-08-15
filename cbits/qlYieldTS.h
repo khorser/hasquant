@@ -88,7 +88,7 @@ extern "C" {
   QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
   QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);
   QlYieldTermStructure* qlDriftTermStructure(QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlBlackVolTermStructure* blackVolTS, char **e);
-  QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, int* dates, int comp, int freq, DayCounter* dc, char **e);
+  QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, DayCounter* dc, char **e);
   QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e);
 #ifdef __cplusplus
 }

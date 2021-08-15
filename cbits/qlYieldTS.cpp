@@ -496,9 +496,9 @@ QlYieldTermStructure* qlDriftTermStructure(QlYieldTermStructure* riskFreeTS, QlY
     return handleException<QlYieldTermStructure*>(e, er);
   }
 }
-QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, int* dates, int comp, int freq, DayCounter* dc, char **e) {
+QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, DayCounter* dc, char **e) {
   try {
-    return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlBuildHandleVector(spreads, spreadsLen), qlDateVector(spreadsLen, dates), (Compounding)comp, (Frequency)freq, *arg(dc)))));
+    return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlBuildHandleVector(spreads, spreadsLen), qlDateVector(datesLen, dates), (Compounding)comp, (Frequency)freq, *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlYieldTermStructure*>(e, er);
   }

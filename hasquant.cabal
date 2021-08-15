@@ -36,8 +36,8 @@ library
                     , QuantLib.Quote
                     , QuantLib.TermStructure
                     , QuantLib.TermStructure.Credit
-                    , QuantLib.TermStructure.Volatility
                     , QuantLib.TermStructure.Yield
+                    , QuantLib.TermStructure.Volatility
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument.Swap
@@ -151,27 +151,6 @@ test-suite hasquant_test
   Type:             exitcode-stdio-1.0
   Main-Is:          QuantLib/MainTest.hs
   Other-modules:
--- QuantLib.Test.HUnit
---              , QuantLib.Test.QuickCheck
---              , QuantLib.Test.CashFlows
---              , QuantLib.Test.Dates
---              , QuantLib.Test.DayCounters
---              , QuantLib.Test.InterestRates
---              , QuantLib.Test.Period
---              , QuantLib.Test.Rounding
---              , QuantLib.Test.TermStructures
---              , QuantLib.Test.Schedule
---              , QuantLib.Example.Bond
---              , QuantLib.Example.BermudanSwaption
---              , QuantLib.Example.CallableBond
---              , QuantLib.Example.CDS
---              , QuantLib.Example.ConvertibleBond
---              , QuantLib.Example.EquityOption
---              , QuantLib.Example.FittedBondCurve
---              , QuantLib.Example.FRA
---              , QuantLib.Example.Replication
---              , QuantLib.Example.Repo
---              , QuantLib.Example.Swap
   ghc-options:      -Wall
   Build-Depends:    base >= 4.8 && < 5.0
                     , time

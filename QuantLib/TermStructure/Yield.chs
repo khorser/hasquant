@@ -5,6 +5,7 @@ module QuantLib.TermStructure.Yield
   , RateHelper
   , SwapRateHelper
   , OISRateHelper
+  , FittedBondDiscountCurve
 
   , CurveTrait(..)
   , depositRateHelper'
@@ -38,6 +39,16 @@ module QuantLib.TermStructure.Yield
   , referenceDate
   , maxDate
   , impliedTermStructure
+
+  , asTermStructure
+  , asYieldTermStructure
+  , swapRateHelperAsRateHelper
+  , oisRateHelperAsRateHelper
+  , bondHelperAsRateHelper
+
+  , driftTermStructure
+  , piecewiseZeroSpreadedTermStructure
+  , quantoTermStructure
   )
   where
 
@@ -50,6 +61,7 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#import QuantLib.TermStructure#}(TermStructure)
 {#import QuantLib.InterestRate#}
 {#import QuantLib.Instrument.Bond#}(Bond)
+import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -57,7 +69,7 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 
 #include "ql.h"
 
--- breaking recursive dependencies with InterestRateIndex module
+-- breaking recursive dependencies with Index.InterestRate TermStructure.Volatilitiy modules
 -- if you put all pointer declarations in a separate module
 -- ch2s will not attach finalizers to foreign ptrs in other modules
 -- I don't want to create extra modules just to workaround the issue with cyclic dependencies and this will not help with finalizers anyway
@@ -65,6 +77,8 @@ import {-# SOURCE #-} QuantLib.Index.InterestRate
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign newtype nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign newtype nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign newtype nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign newtype nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign newtype nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign finalizer qlFreeYieldTermStructure newtype#}
 instance ForeignObject YieldTermStructure where
@@ -90,6 +104,11 @@ instance ForeignObject SwapRateHelper where
 instance ForeignObject OISRateHelper where
   withObject = withOISRateHelper
   peekObject = newForeignPtr qlFreeOISRateHelper >=> return . OISRateHelper
+
+{#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign finalizer qlFreeFittedBondDiscountCurve newtype#}
+instance ForeignObject FittedBondDiscountCurve where
+  withObject = withFittedBondDiscountCurve
+  peekObject = newForeignPtr qlFreeFittedBondDiscountCurve >=> return . FittedBondDiscountCurve
 
 {#enum CurveTrait {} deriving(Show, Eq)#}
 
@@ -163,5 +182,25 @@ instance ForeignObject OISRateHelper where
 {#fun qlTermStructureMaxDate as maxDate {withObject* `TermStructure', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}
 
 {#fun qlImpliedTermStructure as impliedTermStructure {`YieldTermStructure', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+
+{#fun qlYieldTermStructureAsTermStructure as asTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
+{#fun qlFittedBondDiscountCurveAsYieldTermStructure as asYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
+{#fun qlSwapRateHelperAsRateHelper as swapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
+{#fun qlBondHelperAsRateHelper as bondHelperAsRateHelper {`BondHelper'} -> `RateHelper'#}
+{#fun qlOISRateHelperAsRateHelper as oisRateHelperAsRateHelper {`OISRateHelper'} -> `RateHelper'#}
+
+{#fun qlDriftTermStructure as driftTermStructure {`YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+
+piecewiseZeroSpreadedTermStructure :: YieldTermStructure
+  -> [(Quote, Day)]  -- ^spreads, ^dates
+  -> Compounding
+  -> Frequency
+  -> DayCounter
+  -> IO YieldTermStructure
+piecewiseZeroSpreadedTermStructure ts sp c f dc = qlPiecewiseZeroSpreadedTermStructure ts q d c f dc where (q, d) = unzip sp
+
+{#fun qlPiecewiseZeroSpreadedTermStructure {`YieldTermStructure', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Compounding', `Frequency', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+
+{#fun qlQuantoTermStructure as quantoTermStructure {`YieldTermStructure', `YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', `Double', withObject* `BlackVolTermStructure', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
