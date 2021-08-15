@@ -25,6 +25,7 @@ import QuantLib.CashFlow
 import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield hiding(maxDate)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
+import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 
 instance Arbitrary Period.Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
@@ -1133,32 +1134,29 @@ main = do
                   f = zip a ds
               run $ (leg f >>= startDate) `shouldReturn` minimum ds
 
+      it "check for SEGFAULTing regression with dynamic cast of coupon in Black pricer" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just $ 7 `april` 2010)
+          cal <- calendar TARGET
+          dc <- Schedule.dayCounter $ Schedule.Actual365Fixed Schedule.Actual365FixedStandard
+          q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
+          ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
+          v <- Quote.simpleQuote 0.10 >>= Quote.asQuote
+          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc
+          let p = (3, Months)
+          index3m <- iborIndex (UsdLibor p) (Just ts)
+          pricer <- blackIborCouponPricer vol
+          sch <- Schedule.schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Schedule.Backward False Nothing Nothing
+          cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
+          setCouponPricer cpns pricer
+          ret <- nextCashFlowAmount cpns True Nothing
+          ret `shouldSatisfy` \_ -> True
+
     describe "Quote value" $ do
       prop "quote value" $ 
         \val ->
           val > 0
             ==> monadicIO $ do run $ (Quote.simpleQuote val >>= Quote.asQuote >>= Quote.value) `shouldReturn` val
-
-{- include once pricers are implemented
--- dynamic cast of coupon in Black pricer
-test_AccessViolation :: IO ()
-test_AccessViolation = keepingSettings' $ do
-  setEvaluationDate (Just $ 7 `april` 2010)
-  cal <- target
-  dc <- actual365Fixed
-  q <- simpleQuote 0.04875825 >>= asQuote
-  ts <- flatForward (9 `april` 2010) q dc Continuous Annual
-  v <- simpleQuote 0.10 >>= asQuote
-  vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc
-  let p = (3, Months)
-  index3m <- usdLibor p (Just ts)
-  pricer <- blackIborCouponPricer vol
-  sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Schedule.Backward False Nothing Nothing
-  cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
-  setCouponPricer cpns pricer
-  void $ nextCashFlowAmount cpns True Nothing
-  assertBool True
--}
 
     describe "yield term structure" $ do
       let setup :: IO (Calendar, Word, YieldTermStructure)

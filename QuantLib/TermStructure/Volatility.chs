@@ -18,6 +18,8 @@ module QuantLib.TermStructure.Volatility
   , asBlackVolTermStructure
 
   , localVolSurface
+  , constantOptionletVolatility
+  , constantOptionletVolatility'
   )
   where
 
@@ -25,6 +27,8 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.Quote#}(Quote)
+{#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
+{#import QuantLib.Time.Schedule#}(DayCounter)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -105,5 +109,12 @@ instance IsVolatilityTermStructure LocalVolTermStructure where asVolatilityTermS
 instance IsTermStructure CallableBondVolatilityStructure where asTermStructure = qlCallableBondVolatilityStructureAsTermStructure;
 
 {#fun qlLocalVolSurface as localVolSurface {`BlackVolTermStructure', withObject* `YieldTermStructure', withObject* `YieldTermStructure', withObject* `Quote', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
+
+-- |Constant caplet volatility, no time-strike dependence
+-- floating reference date, floating market data
+{#fun qlConstantOptionletVol1 as constantOptionletVolatility' {fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', withObject* `Quote', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `OptionletVolatilityStructure'#}
+
+-- |fixed reference date, floating market data
+{#fun qlConstantOptionletVolatility as constantOptionletVolatility {fromDay* `Day', withObject* `Calendar', `BusinessDayConvention', withObject* `Quote', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `OptionletVolatilityStructure'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

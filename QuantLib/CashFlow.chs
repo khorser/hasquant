@@ -2,6 +2,7 @@ module QuantLib.CashFlow
   (
     Leg
   , CouponLeg
+  , asLeg
   , Dividend
   , DurationType(..)
   , RateAveragingType(..)
@@ -50,7 +51,7 @@ module QuantLib.CashFlow
   , yieldValueBasisPoint
   , zSpread
 
-  , toCouponLeg
+  , asCouponLeg
   , couponAccrualStartDates
 
   , fixedDividend
@@ -63,6 +64,13 @@ module QuantLib.CashFlow
   , overnightLeg
   , rangeAccrualLeg
   , YieldCurveModel(..)
+
+  , FloatingRateCouponPricer
+  , blackIborCouponPricer
+  , setCouponPricer
+  , setCouponPricers
+  , analyticHaganPricer
+  , numericHaganPricer
   )
   where
 
@@ -74,6 +82,8 @@ import QuantLib.Internal
 
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
+{#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure)
+{#import QuantLib.Quote#}(Quote)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -122,9 +132,7 @@ cashFlows :: Leg
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
   -> IO [(Double, Day, Bool)] -- ^amount, date, hasOccurred
-cashFlows l i d = do
-  (as, ds, hs) <- qlLegCashFlows l i d
-  return $ zip3 as ds hs
+cashFlows l i d = do {(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds hs}
 
 -- |Cash-flow duration.
 -- The simple duration of a string of cash flows is defined as \[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \] where $ c_i $ is the amount of the $ i $-th cash flow, $ t_i $ is its payment time, and $ B(t_i) $ is the corresponding discount according to the passed yield.The modified duration is defined as \[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.The Macaulay duration is defined for a compounded IRR as \[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \] where $ y $ is the IRR and $ N $ is the number of cash flows per year.
@@ -246,8 +254,26 @@ cashFlows l i d = do
 
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works
-{#fun qlLegToCouponLeg as toCouponLeg {`Leg', preErrorCheck- `String' errorCheck*-} -> `CouponLeg'#}
+{#fun qlLegToCouponLeg as asCouponLeg {`Leg', preErrorCheck- `String' errorCheck*-} -> `CouponLeg'#}
+
+{#fun qlCouponLegAsLeg as asLeg{`CouponLeg'} -> `Leg'#}
 
 {#enum YieldCurveModel {} deriving(Show, Eq)#}
+
+{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign finalizer qlFreeFloatingCouponPricer newtype#}
+instance ForeignObject FloatingRateCouponPricer where
+  withObject = withFloatingRateCouponPricer
+  peekObject = newForeignPtr qlFreeFloatingCouponPricer >=> return . FloatingRateCouponPricer
+  
+-- |Black-formula pricer for capped/floored Ibor coupons
+{#fun qlBlackIborCouponPricer as blackIborCouponPricer {withObject* `OptionletVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
+
+{#fun qlQuantLibSetCouponPricer as setCouponPricer {`Leg', `FloatingRateCouponPricer', preErrorCheck- `String' errorCheck*-} -> `()'#}
+
+{#fun qlQuantLibSetCouponPricers as setCouponPricers {`Leg', withObjectArray* `[FloatingRateCouponPricer]'&, preErrorCheck- `String' errorCheck*-} -> `()'#}
+
+{#fun qlAnalyticHaganPricer as analyticHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withObject* `Quote', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
+
+{#fun qlNumericHaganPricer as numericHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withObject* `Quote', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

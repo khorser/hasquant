@@ -100,7 +100,7 @@ instance ForeignObject Schedule where
   withObject = withSchedule
   peekObject = newForeignPtr qlFreeSchedule >=> return . Schedule
 
-{#fun qlSchedule as schedule {fromMaybeDay* `Maybe Day', fromDay* `Day', fromEnumQuantity `(Int, TimeUnit)'&, withObject *`Calendar',
+{#fun qlSchedule as schedule {fromMaybeDay* `Maybe Day', fromDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withObject *`Calendar',
   `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule',
   `Bool', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
 
