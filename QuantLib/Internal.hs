@@ -47,6 +47,7 @@ module QuantLib.Internal
   , Matrix(..)
   , realMatrix
   , objectMatrix
+  , qlNullInteger
 
   -- reexport some useful stuff
   , newForeignPtr

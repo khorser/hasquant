@@ -38,8 +38,8 @@ extern "C" {
   double qlSwaptionVolatilityStructureVolatility4(QlSwaptionVolatilityStructure* o, int optionDate, double swapLength, double strike, int extrapolate, char **e);
   double qlSwaptionVolatilityStructureVolatility5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, double strike, int extrapolate, char **e);
   double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o, int, int, int, int, double strike, int extrapolate, char **e);
-  QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned, int*, int*, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e);
-  QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned, int*, int*, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e);
+  QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e);
+  QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e);
   QlVolatilityTermStructure* qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e);
   QlVolatilityTermStructure* qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e);
   QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e);

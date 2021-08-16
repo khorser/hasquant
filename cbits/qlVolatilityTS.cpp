@@ -252,8 +252,9 @@ double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o,
     return handleException<double>(e, er);
   }
 }
-QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
+    // the length of units array is unused
     std::vector<Period> periods;
     for (unsigned i = 0; i < l; ++i)
       periods.push_back(Period(n[i], (TimeUnit)u[i]));
@@ -262,8 +263,9 @@ QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar*
     return handleException<QlVolatilityTermStructure*>(e, er);
   }
 }
-QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
+    // the length of units array is unused
     std::vector<Period> periods;
     for (unsigned i = 0; i < l; ++i)
       periods.push_back(Period(n[i], (TimeUnit)u[i]));

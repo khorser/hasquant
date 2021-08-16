@@ -2,9 +2,11 @@
 module QuantLib.Enum
   (
     qlInterpolation
+  , qlInterpolation'
   )
 where
 
+import QuantLib.Internal
 import QuantLib.Math(Approximation(..), Interpolation(..))
 import Foreign.Marshal.Utils(fromBool)
 
@@ -32,5 +34,9 @@ qlInterpolation LogLinear = (fromEnum InterpolationLogLinear, (0, 0))
 qlInterpolation (Cubic x) = (fromEnum InterpolationCubic, qlApproximation x)
 qlInterpolation (LogCubic x) = (fromEnum InterpolationLogCubic, qlApproximation x)
 qlInterpolation Abcd = (fromEnum InterpolationAbcd, (0, 0))
+
+qlInterpolation' :: Maybe Interpolation -> (Int, (Int, Int))
+qlInterpolation' Nothing = (fromIntegral qlNullInteger, (fromIntegral qlNullInteger, fromIntegral qlNullInteger))
+qlInterpolation' (Just i) = qlInterpolation i
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
