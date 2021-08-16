@@ -1,6 +1,6 @@
 cabal-version:      >=1.10
 name:               hasquant
-version:            0.1.0.0
+version:            0.2.0.0
 synopsis:           Bindings to QuantLib
 -- description:
 -- bug-reports:
@@ -36,8 +36,8 @@ library
                     , QuantLib.Instrument
                     , QuantLib.Quote
                     , QuantLib.TermStructure
-                    , QuantLib.TermStructure.Credit
                     , QuantLib.TermStructure.Yield
+                    , QuantLib.TermStructure.Credit
                     , QuantLib.Instrument.Bond
                     , QuantLib.Instrument.Swap
                     , QuantLib.TermStructure.Volatility
@@ -52,8 +52,11 @@ library
                     , time
   -- hs-source-dirs:
   build-tools:      c2hs
-  -- some versions of c2hs didn't like line markers like "# 0" in generated .i files, let's skip them
-  cpp-options:      -P
+
+  if impl(ghc < 8.10)
+    -- some versions of c2hs didn't like line markers like "# 0" in generated .i files. Guarding with impl because current ghcide seems to be confused by the flag while everything else works just fine
+    cpp-options:      -P
+
   default-language: Haskell2010
   c-sources:        cbits/qlBond.cpp
                     , cbits/qlCalendar.cpp

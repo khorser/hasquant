@@ -40,23 +40,23 @@ QlDefaultProbabilityTermStructure* qlSpreadedHazardRateCurve(QlDefaultProbabilit
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
 }
-QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
+QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), interpolator, approximator, approximatorArg))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
 }
-QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
+QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedHazardRateCurveAux(qlDateVector(datesLen, dates), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), interpolator, approximator, approximatorArg))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedHazardRateCurveAux(qlDateVector(datesLen, dates), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
 }
-QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
+QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), interpolator, approximator, approximatorArg))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
@@ -79,18 +79,18 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
   }
 }
 
-QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), trait, interpolator, approximator, approximatorArg);
+    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), trait, interpolator, approximator, approximatorArg);
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
 }
 
-QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), trait, interpolator, approximator, approximatorArg);
+    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), trait, interpolator, approximator, approximatorArg);
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
