@@ -18,6 +18,10 @@ module QuantLib.Math
   , PolynomType(..)
   , ComplexLogFormula(..)
   , CmsMarketCalibrationType(..)
+
+  , Matrix
+  , realMatrix
+  , objectMatrix
   )
 where
 

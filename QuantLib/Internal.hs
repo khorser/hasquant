@@ -44,6 +44,9 @@ module QuantLib.Internal
   , fromMaybeDouble
   , peekIntArray
   , peekUIntArray
+  , Matrix(..)
+  , realMatrix
+  , objectMatrix
 
   -- reexport some useful stuff
   , newForeignPtr
@@ -233,5 +236,21 @@ minDate = fromSerial qlMinDateSerialNumber
 -- |latest date allowed in QuantLib
 maxDate :: Day
 maxDate = fromSerial qlMaxDateSerialNumber
+
+data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
+  deriving (Eq, Show)
+
+-- do something more interesting using type system
+realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
+realMatrix rows cols d =
+  if rows * cols /= fromIntegral (length d)
+    then Left "Data length does not match with dimensions"
+    else Right $ Matrix rows cols d
+
+objectMatrix :: (ForeignObject a) => Word -> Word -> [a] -> Either String (Matrix a)
+objectMatrix rows cols d =
+  if rows * cols /= fromIntegral (length d)
+    then Left "Data length does not match with dimensions"
+    else Right $ Matrix rows cols d
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
