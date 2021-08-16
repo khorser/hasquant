@@ -59,6 +59,9 @@ module QuantLib.TermStructure.Volatility
   , capFloorTermVolCurve
   , capFloorTermVolCurve'
   , blackVarianceCurve
+  , capFloorTermVolSurface
+  , capFloorTermVolSurface'
+  , blackVarianceSurface
   )
   where
 
@@ -255,16 +258,16 @@ instance IsTermStructure CallableBondVolatilityStructure where asTermStructure =
 {#fun qlImpliedVolTermStructure as impliedVolTermStructure {`BlackVolTermStructure', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
 
 -- |fixed reference date, floating market data
-capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Int, TimeUnit, Quote)] -> DayCounter -> IO VolatilityTermStructure
-capFloorTermVolCurve' d c bd ntq dc = qlCapFloorTermVolCurve1 d c bd n t q dc where (n, t, q) = unzip3 ntq
+capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, Quote)] -> DayCounter -> IO VolatilityTermStructure
+capFloorTermVolCurve' d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 ntq
 
-{#fun qlCapFloorTermVolCurve1 {fromDay* `Day', withObject* `Calendar', `BusinessDayConvention', withIntArray* `[Int]'&, withEnumArray* `[TimeUnit]'&, withObjectArray* `[Quote]'&, withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
+{#fun qlCapFloorTermVolCurve1 {fromDay* `Day', withObject* `Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withObjectArray* `[Quote]'&, withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
 -- |floating reference date, floating market data
-capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Int, TimeUnit, Quote)] -> DayCounter -> IO VolatilityTermStructure
-capFloorTermVolCurve d c bd ntq dc = qlCapFloorTermVolCurve d c bd n t q dc where (n, t, q) = unzip3 ntq
+capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, Quote)] -> DayCounter -> IO VolatilityTermStructure
+capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 ntq
 
-{#fun qlCapFloorTermVolCurve {fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', withIntArray* `[Int]'&, withEnumArray* `[TimeUnit]'&, withObjectArray* `[Quote]'&, withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
+{#fun qlCapFloorTermVolCurve {fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withObjectArray* `[Quote]'&, withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
 blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -> Maybe Interpolation -> IO BlackVarianceCurve
 blackVarianceCurve d dq dc f i = qlBlackVarianceCurve d dd q dc f i1 i2 i3
@@ -273,37 +276,21 @@ blackVarianceCurve d dq dc f i = qlBlackVarianceCurve d dd q dc f i1 i2 i3
 
 {#fun qlBlackVarianceCurve {fromDay* `Day' , withDayArray* `[Day]'& , withDoubleArray* `[Double]'& , withObject* `DayCounter' , `Bool' , `Int', `Int', `Int' , preErrorCheck- `String' errorCheck*-} -> `BlackVarianceCurve'#}
  
--- {#fun qlBlackVarianceSurface as 
--- blackVarianceSurface {fromDay* `Day'
--- , withObject* `Calendar'
--- , `[Day]'
--- , `[Double]'
--- , `Matrix Double'
--- , withObject* `DayCounter'
--- , `BlackVarSurfaceExtrapolation'
--- , `BlackVarSurfaceExtrapolation'
--- , preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
--- 
--- -- |floating reference date, floating market data
--- {#fun qlCapFloorTermVolSurface as 
--- capFloorTermVolSurface {fromIntegral `Word'
--- , withObject* `Calendar'
--- , `BusinessDayConvention'
--- , `[(Int, Unit)]'
--- , `[Double]'
--- , `Matrix Quote'
--- , withObject* `DayCounter'
--- , preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
--- 
--- -- |fixed reference date, floating market data
--- {#fun qlCapFloorTermVolSurface1 as 
--- capFloorTermVolSurface' {fromDay* `Day'
--- , withObject* `Calendar'
--- , `BusinessDayConvention'
--- , `[(Int, Unit)]'
--- , `[Double]'
--- , `Matrix Quote'
--- , withObject* `DayCounter'
--- , preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
+blackVarianceSurface :: Day -> Calendar -> [Day] -> [Double] -> Matrix Double -> DayCounter -> BlackVarianceSurfaceExtrapolation -> BlackVarianceSurfaceExtrapolation -> IO BlackVolTermStructure
+blackVarianceSurface d c ds s m = qlBlackVarianceSurface d c ds s (matrixRows m) (matrixColumns m) (matrixData m)
+
+{#fun qlBlackVarianceSurface {fromDay* `Day', withObject* `Calendar', withDayArray* `[Day]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withDoubleArrayRaw* `[Double]', withObject* `DayCounter', `BlackVarianceSurfaceExtrapolation', `BlackVarianceSurfaceExtrapolation', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
+ 
+-- |floating reference date, floating market data
+capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -> [Double] -> Matrix Quote -> DayCounter -> IO CapFloorTermVolSurface
+capFloorTermVolSurface d c bd t s m = qlCapFloorTermVolSurface d c bd pl pu s (matrixRows m) (matrixColumns m) (matrixData m) where (pl, pu) = unzip t
+
+{#fun qlCapFloorTermVolSurface {fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withObjectArrayRaw* `[Quote]', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
+ 
+-- |fixed reference date, floating market data
+capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -> [Double] -> Matrix Quote -> DayCounter -> IO CapFloorTermVolSurface
+capFloorTermVolSurface' d c bd t s m = qlCapFloorTermVolSurface1 d c bd pl pu s (matrixRows m) (matrixColumns m) (matrixData m) where (pl, pu) = unzip t
+
+{#fun qlCapFloorTermVolSurface1 {fromDay* `Day', withObject* `Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withObjectArrayRaw* `[Quote]', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -21,7 +21,9 @@ module QuantLib.Internal
   , withEnumArray
   , withIntArray
   , withDoubleArray
+  , withDoubleArrayRaw
   , withObjectArray
+  , withObjectArrayRaw
   , withDayPtr
   , fromEnumQuantity
   , toEnumQuantity
@@ -136,11 +138,18 @@ withEnumArray = withLArray (fromIntegral . fromEnum)
 withObjectArray :: (ForeignObject a) => [a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
+-- pass length somewhere else
+withObjectArrayRaw :: (ForeignObject a) => [a] -> (Ptr (Ptr a) -> IO b) -> IO b
+withObjectArrayRaw x f = withMany withObject x (`withArray` f)
+
 withIntArray :: (Integral a, Num n, Storable n) => [a] -> ((CUInt, Ptr n) -> IO b) -> IO b
 withIntArray = withLArray fromIntegral
 
 withDoubleArray :: [Double] -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
 withDoubleArray = withLArray realToFrac
+
+withDoubleArrayRaw :: [Double] -> (Ptr CDouble -> IO b) -> IO b
+withDoubleArrayRaw x = withArray (map realToFrac x)
 
 withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withDayArray x f = mapM toSerial x >>= (`withArray` (\px -> f (fromIntegral $ length x, px)))
@@ -248,7 +257,7 @@ realMatrix rows cols d =
     then Left "Data length does not match with dimensions"
     else Right $ Matrix rows cols d
 
-objectMatrix :: (ForeignObject a) => Word -> Word -> [a] -> Either String (Matrix a)
+objectMatrix :: Word -> Word -> [a] -> Either String (Matrix a)
 objectMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
     then Left "Data length does not match with dimensions"

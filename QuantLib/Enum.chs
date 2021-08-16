@@ -36,7 +36,7 @@ qlInterpolation (LogCubic x) = (fromEnum InterpolationLogCubic, qlApproximation 
 qlInterpolation Abcd = (fromEnum InterpolationAbcd, (0, 0))
 
 qlInterpolation' :: Maybe Interpolation -> (Int, (Int, Int))
-qlInterpolation' Nothing = (fromIntegral qlNullInteger, (fromIntegral qlNullInteger, fromIntegral qlNullInteger))
+qlInterpolation' Nothing = (fromIntegral qlNullInteger, (0, 0))
 qlInterpolation' (Just i) = qlInterpolation i
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
