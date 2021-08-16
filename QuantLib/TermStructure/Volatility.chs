@@ -64,8 +64,7 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.Quote#}(Quote)
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
-{#import QuantLib.Time.Schedule#}(DayCounter)
-{#import QuantLib.Time.Period#}(TimeUnit)
+{#import QuantLib.Time.Schedule#}(TimeUnit, DayCounter)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

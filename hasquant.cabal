@@ -18,13 +18,15 @@ build-type:         Simple
 flag buildExample
   Default: False
 
+flag trackAllocations
+  Default: False
+
 library
 -- the order is important as it defines the order of preprocessing modules with c2hs
   exposed-modules:  QuantLib.Type
                     , QuantLib.Utility
                     , QuantLib.Math
                     , QuantLib.Currency
-                    , QuantLib.Time.Period
                     , QuantLib.Time.Date
                     , QuantLib.Time.Calendar
                     , QuantLib.Time.Schedule
@@ -83,9 +85,13 @@ library
                     , cbits/qlUtilities.cpp
                     , cbits/qlVolatilityTS.cpp
                     , cbits/qlYieldTS.cpp
-  cc-options:        -Wall -Wextra -pedantic
+  if flag(trackAllocations)
+    cc-options:        -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
+  else
+    cc-options:        -Wall -Wextra -pedantic
 
   include-dirs:     cbits
+
   if impl(ghc >= 8.0)
     ghc-options:      -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   else
@@ -167,4 +173,4 @@ test-suite hasquant_test
   Default-Language: Haskell2010
   Hs-source-dirs:   test
 
--- vim: set et:
+-- vim: set et ts=8 sts=2 sw=2:

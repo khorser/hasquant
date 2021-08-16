@@ -18,8 +18,7 @@ module QuantLib.InterestRate
   where
 
 import QuantLib.Internal
-{#import QuantLib.Time.Period#}(Frequency)
-{#import QuantLib.Time.Schedule#}(DayCounter)
+{#import QuantLib.Time.Schedule#}(Frequency, DayCounter)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

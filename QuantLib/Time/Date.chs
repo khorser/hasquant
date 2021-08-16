@@ -66,7 +66,7 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
 import QuantLib.Internal
-import QuantLib.Time.Period(TimeUnit)
+import {-# SOURCE #-} QuantLib.Time.Schedule(TimeUnit)
 
 #include "qlTypesC2HS.h"
 #include "ql.h"

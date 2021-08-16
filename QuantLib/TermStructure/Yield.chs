@@ -69,9 +69,8 @@ import QuantLib.Internal hiding (maxDate)
 import QuantLib.Enum
 {#import QuantLib.Quote#}(Quote)
 import {-# SOURCE #-} QuantLib.Index.InterestRate
-{#import QuantLib.Time.Period#}(TimeUnit, Frequency)
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
-{#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
+{#import QuantLib.Time.Schedule#}(TimeUnit, Frequency, Schedule, DayCounter)
 {#import QuantLib.TermStructure#}
 {#import QuantLib.InterestRate#}
 import {-# SOURCE #-} QuantLib.Instrument.Bond(Bond)

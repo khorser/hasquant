@@ -76,9 +76,8 @@ module QuantLib.CashFlow
 
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(InterestRate, Compounding)
-{#import QuantLib.Time.Schedule#}(DayCounter, Schedule)
+{#import QuantLib.Time.Schedule#}(DayCounter, Schedule, Frequency, TimeUnit)
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
-{#import QuantLib.Time.Period#}(Frequency, TimeUnit)
 
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)

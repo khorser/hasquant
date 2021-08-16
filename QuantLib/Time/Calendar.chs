@@ -39,7 +39,7 @@ import QuantLib.Type
 import QuantLib.Internal
 import Control.Exception(throwIO)
 {#import QuantLib.Time.Date#}(Weekday)
-{#import QuantLib.Time.Period#}
+import {-# SOURCE #-} QuantLib.Time.Schedule(TimeUnit)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -201,7 +201,7 @@ calendar x = country x >>= flip qlCalendar (market x)
 {#fun qlCalendarAdjust as adjust {`Calendar', fromDay* `Day', `BusinessDayConvention'} -> `Day' toDay#}
 
 -- |Advances the given date of the given number of business days and returns the result
-{#fun qlCalendarAdvance as advance {`Calendar', fromDay* `Day', `Int', `TimeUnit', `BusinessDayConvention', `Bool'} -> `Day' toDay#}
+{#fun qlCalendarAdvance as advance {`Calendar', fromDay* `Day', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', `Bool'} -> `Day' toDay#}
 
 -- |Adds a date to the set of holidays for the given calendar.
 {#fun qlCalendarAddHoliday as addHoliday {`Calendar', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `()'#}

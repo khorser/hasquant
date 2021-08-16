@@ -2,6 +2,8 @@
 module Main
   where
 
+import Prelude hiding(until)
+
 import Test.Hspec
 import Test.Hspec.QuickCheck
 
@@ -15,19 +17,18 @@ import QuantLib.Time.Date as Date
 import QuantLib.Utility
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
-import QuantLib.Time.Period as Period
 import QuantLib.Time.Calendar as Calendar
 import QuantLib.Currency(currency, Ccy(..))
-import qualified QuantLib.Time.Schedule as Schedule
+import QuantLib.Time.Schedule
 import QuantLib.Math
 import qualified QuantLib.InterestRate as IR
-import QuantLib.CashFlow
+import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield hiding(maxDate)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 
-instance Arbitrary Period.Frequency where
+instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
 
 newtype ValidDay = ValidDay {validDay::Day} deriving (Show, Eq)
@@ -160,39 +161,39 @@ main = do
 
     describe "frequencies and periods" $ do
       it "frequency to period" $ do
-        Period.toFrequency (1, Months) `shouldReturn` Monthly
+        toFrequency (1, Months) `shouldReturn` Monthly
       prop "randomized frequency->period->frequency conversion" $
         \freq ->
           monadicIO $ do
-            freq2 <- run $ Period.fromFrequency freq >>= Period.toFrequency
+            freq2 <- run $ fromFrequency freq >>= toFrequency
             Q.assert $ freq == freq2
       it "2w/2" $ do
-        Period.divide (2, Weeks) 2 `shouldReturn` (1, Weeks)
+        divide (2, Weeks) 2 `shouldReturn` (1, Weeks)
       it "1w/1" $ do
-        Period.divide (1, Weeks) 7 `shouldReturn` (1, Days)
+        divide (1, Weeks) 7 `shouldReturn` (1, Days)
       it "1y/4" $ do
-        Period.divide (1, Years) 4 `shouldReturn` (3, Months)
+        divide (1, Years) 4 `shouldReturn` (3, Months)
       it "1y/2" $ do
-        (1, Years) `Period.divide` 2 `shouldReturn` (6, Months)
+        (1, Years) `divide` 2 `shouldReturn` (6, Months)
       it "3d + 1d" $ do
-        (3, Days) `Period.add` (1, Days) `shouldReturn` (4, Days)
+        (3, Days) `add` (1, Days) `shouldReturn` (4, Days)
       it "4d + 1w" $ do
-        Period.add (4, Days) (1, Weeks) `shouldReturn` (11, Days)
+        add (4, Days) (1, Weeks) `shouldReturn` (11, Days)
       it "3m + 6m" $ do
-        Period.add (3, Months) (6, Months) `shouldReturn` (9, Months)
+        add (3, Months) (6, Months) `shouldReturn` (9, Months)
       it "9m + 1y" $ do
-        Period.add (9, Months) (1, Years) `shouldReturn` (21, Months)
+        add (9, Months) (1, Years) `shouldReturn` (21, Months)
       it "normalize 12m" $ do -- as of now, QuantLib normalizes only months to years
-        Period.normalize (12, Months) `shouldReturn` (1, Years)
+        normalize (12, Months) `shouldReturn` (1, Years)
 
     describe "schedule" $ do
       it "truncate" $ do
         cal <- calendar $ Russia RussiaSettlement
-        s <- Schedule.schedule (Just $ 20 `december` 2012) (21 `december` 2013) (1, Months) cal
-          Following Unadjusted Schedule.Forward
+        s <- schedule (Just $ 20 `december` 2012) (21 `december` 2013) (1, Months) cal
+          Following Unadjusted Forward
           False (Just $ 21 `december` 2012) (Just $ 21 `december` 2013)
-        truncated <- Schedule.until s (15 `april` 2013)
-        ds <- Schedule.dates truncated
+        truncated <- until s (15 `april` 2013)
+        ds <- dates truncated
         ds `shouldBe` [fromGregorian 2012 12 20,
                fromGregorian 2012 12 21,
                fromGregorian 2013 01 21,
@@ -200,29 +201,29 @@ main = do
                fromGregorian 2013 03 21,
                fromGregorian 2013 04 15]
       prop "generate from valid days" $ do
-        \dates ->
+        \ds ->
           monadicIO $ do
             c <- run $ calendar $ Russia RussiaSettlement
-            s <- run $ Schedule.fromDates (map validDay dates) c Unadjusted
-            run $ Schedule.dates s `shouldReturn` map validDay dates
+            s <- run $ fromDates (map validDay ds) c Unadjusted
+            run $ dates s `shouldReturn` map validDay ds
 
       it "daily" $
         Settings.keepingSettings' $ do
           let startD = 17 `january` 2012
           cal <- calendar TARGET
-          (Schedule.schedule (Just startD) (addDays 7 startD) (1, Days) cal Following Following Schedule.Backward False Nothing Nothing >>= Schedule.dates)
+          (schedule (Just startD) (addDays 7 startD) (1, Days) cal Following Following Backward False Nothing Nothing >>= dates)
             `shouldReturn` [17 `january` 2012, 18 `january` 2012, 19 `january` 2012, 20 `january` 2012, 23 `january` 2012, 24 `january` 2012]
       it "end date with EoM adjustment" $
         Settings.keepingSettings' $ do
           cal <- calendar Japan
-          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Schedule.Forward True Nothing Nothing >>= Schedule.dates)
+          (schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Forward True Nothing Nothing >>= dates)
             `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 29 `june` 2012]
-          (Schedule.schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Unadjusted Schedule.Forward True Nothing Nothing >>= Schedule.dates)
+          (schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Unadjusted Forward True Nothing Nothing >>= dates)
             `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 15 `june` 2012]
       it "dates past end date with EoM adjustment" $
         Settings.keepingSettings' $ do
           cal <- calendar TARGET
-          (Schedule.schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Schedule.Forward True Nothing Nothing >>= Schedule.dates)
+          (schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Forward True Nothing Nothing >>= dates)
             `shouldReturn` [31 `march` 2013, 31 `march` 2014, 30 `march` 2015]
 
     describe "calendars" $ do
@@ -232,7 +233,7 @@ main = do
         a `shouldBe` fromGregorian 2012 12 21
       it "advance" $ do
         c <- calendar $ Russia RussiaSettlement
-        a <- advance c (fromGregorian 2012 12 20) 1 Months Preceding False
+        a <- advance c (fromGregorian 2012 12 20) (1, Months) Preceding False
         a `shouldBe` fromGregorian 2013 01 18
       it "modifying" $ do
         c1 <- calendar TARGET
@@ -836,53 +837,53 @@ main = do
         show c `shouldBe` "British pound sterling"
 
     describe "day counter" $ do
-      let checkCounter :: Schedule.DayCounter -> [Day] -> [(Int, TimeUnit)] -> [Double] -> IO ()
-          checkCounter dc days periods expected = Settings.keepingSettings' $
+      let checkCounter :: DayCounter -> [Day] -> [(Int, TimeUnit)] -> [Double] -> IO ()
+          checkCounter dc ds periods expected = Settings.keepingSettings' $
             mapM_ (\d -> do
               calculated <- mapM (\p -> do
                 end <- addPeriod d p
-                Schedule.years dc d end Nothing Nothing)
+                years dc d end Nothing Nothing)
                 periods
               let diffs = zipWith (-) calculated expected
               all ((1.0e-12 >) . abs) diffs `shouldBe` True)
-              days
+              ds
       it "Actual/Actual" $
         Settings.keepingSettings' $
           mapM_ (\(c, s, e, rs, re, t) -> do
-                    dc <- Schedule.dayCounter c
-                    f <- Schedule.years dc s e rs re
+                    dc <- dayCounter c
+                    f <- years dc s e rs re
                     abs(t - f) `shouldSatisfy` (<= 1.0e-10))
-            [(Schedule.ActualActual Schedule.ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 1 `november` 2003, 1 `may` 2004, Just $ 1 `november` 2003, Just $ 1 `may` 2004, 0.500000000000),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497267759563),
-              (Schedule.ActualActual Schedule.ActualActualISDA, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 1 `february` 1999, 1 `july` 1999, Just $ 1 `july` 1998, Just $ 1 `july` 1999, 0.410958904110),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
-              (Schedule.ActualActual Schedule.ActualActualISDA, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.001377348600),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 1 `july` 1999, 1 `july` 2000, Just $ 1 `july` 1999, Just $ 1 `july` 2000, 1.000000000000),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.000000000000),
-              (Schedule.ActualActual Schedule.ActualActualISDA, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 15 `august` 2002, 15 `july` 2003, Just $ 15 `january` 2003, Just $ 15 `july` 2003, 0.915760869565),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
-              (Schedule.ActualActual Schedule.ActualActualISDA, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504004790778),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 15 `july` 2003, 15 `january` 2004, Just $ 15 `july` 2003, Just $ 15 `january` 2004, 0.500000000000),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504109589041),
-              (Schedule.ActualActual Schedule.ActualActualISDA, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.503892506924),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 30 `july` 1999, 30 `january` 2000, Just $ 30 `july` 1999, Just $ 30 `january` 2000, 0.500000000000),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.504109589041),
-              (Schedule.ActualActual Schedule.ActualActualISDA, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.415300546448),
-              (Schedule.ActualActual Schedule.ActualActualISMA, 30 `january` 2000, 30 `june` 2000, Just $ 30 `january` 2000, Just $ 30 `july` 2000, 0.417582417582),
-              (Schedule.ActualActual Schedule.ActualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
+            [(ActualActual ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
+              (ActualActual ActualActualISMA, 1 `november` 2003, 1 `may` 2004, Just $ 1 `november` 2003, Just $ 1 `may` 2004, 0.500000000000),
+              (ActualActual ActualActualAFB, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497267759563),
+              (ActualActual ActualActualISDA, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
+              (ActualActual ActualActualISMA, 1 `february` 1999, 1 `july` 1999, Just $ 1 `july` 1998, Just $ 1 `july` 1999, 0.410958904110),
+              (ActualActual ActualActualAFB, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
+              (ActualActual ActualActualISDA, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.001377348600),
+              (ActualActual ActualActualISMA, 1 `july` 1999, 1 `july` 2000, Just $ 1 `july` 1999, Just $ 1 `july` 2000, 1.000000000000),
+              (ActualActual ActualActualAFB, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.000000000000),
+              (ActualActual ActualActualISDA, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
+              (ActualActual ActualActualISMA, 15 `august` 2002, 15 `july` 2003, Just $ 15 `january` 2003, Just $ 15 `july` 2003, 0.915760869565),
+              (ActualActual ActualActualAFB, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
+              (ActualActual ActualActualISDA, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504004790778),
+              (ActualActual ActualActualISMA, 15 `july` 2003, 15 `january` 2004, Just $ 15 `july` 2003, Just $ 15 `january` 2004, 0.500000000000),
+              (ActualActual ActualActualAFB, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504109589041),
+              (ActualActual ActualActualISDA, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.503892506924),
+              (ActualActual ActualActualISMA, 30 `july` 1999, 30 `january` 2000, Just $ 30 `july` 1999, Just $ 30 `january` 2000, 0.500000000000),
+              (ActualActual ActualActualAFB, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.504109589041),
+              (ActualActual ActualActualISDA, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.415300546448),
+              (ActualActual ActualActualISMA, 30 `january` 2000, 30 `june` 2000, Just $ 30 `january` 2000, Just $ 30 `july` 2000, 0.417582417582),
+              (ActualActual ActualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
 
       it "simple" $ do
-        dc <- Schedule.dayCounter Schedule.Simple
+        dc <- dayCounter Simple
         checkCounter dc
           [1 `january` 2002 .. 31 `december` 2005]
           [(3, Months), (6, Months), (1, Years)]
           [0.25, 0.5, 1.0]
     
       it "one" $ do
-        dc <- Schedule.dayCounter Schedule.One
+        dc <- dayCounter One
         checkCounter dc
           [1 `january` 2004 .. 31 `december` 2004]
           [(3, Months), (6, Months), (1, Years)]
@@ -890,7 +891,7 @@ main = do
 
       it "Business 252" $
         Settings.keepingSettings' $ do
-          let days = [1 `february` 2002,
+          let ds = [1 `february` 2002,
                         4 `february` 2002,
                         16 `may` 2003,
                         17 `december` 2003,
@@ -919,8 +920,8 @@ main = do
                         0.912698412698,
                         2.214285714286,
                         6.84126984127]
-          dc <- calendar (Brazil BrazilSettlement) >>= Schedule.dayCounter . Schedule.Business252
-          fractions <- mapM (\(s, e) -> Schedule.years dc s e Nothing Nothing) (zip days (tail days))
+          dc <- calendar (Brazil BrazilSettlement) >>= dayCounter . Business252
+          fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip ds (tail ds))
           let diffs = zipWith (-) fractions expected
           all ((1.0e-12 >) . abs) diffs `shouldBe` True
 
@@ -999,7 +1000,7 @@ main = do
       let testCase :: (Double, IR.Compounding, Frequency, Double, IR.Compounding, Frequency, Double, Int) -> IO ()
           testCase (r, comp, freq, t, comp2, freq2, expected, prec) = do
             d1 <- today
-            dc <- Schedule.dayCounter Schedule.Actual360
+            dc <- dayCounter Actual360
             ir <- IR.interestRate r dc comp freq
             let d2 = addDays (truncate $ 360 * t + 0.5) d1
             compoundf <- IR.compoundFactor' ir d1 d2 d1 d2
@@ -1023,18 +1024,18 @@ main = do
         Settings.keepingSettings' $ mapM_ testCase cases
 
     describe "cash flow leg" $ do
-      let checkInclusion :: Leg -> Int -> [(Int, Bool)] -> IO ()
+      let checkInclusion :: CF.Leg -> Int -> [(Int, Bool)] -> IO ()
           checkInclusion l n x = do
             td <- Settings.evaluationDate
-            mapM_ (\(days, expected) -> do
-              cfs <- cashFlows l Nothing (Just $ addDays (fromIntegral days) td)
+            mapM_ (\(ds, expected) -> do
+              cfs <- CF.cashFlows l Nothing (Just $ addDays (fromIntegral ds) td)
               let (_, _, o) = cfs !! n
               expected `shouldBe` not o) x
 
-          checkNPV :: Leg -> IR.InterestRate -> Bool -> Double -> IO ()
+          checkNPV :: CF.Leg -> IR.InterestRate -> Bool -> Double -> IO ()
           checkNPV l r includeRef expected = do
             td <- Settings.evaluationDate
-            v <- npvFromYield' l r includeRef (Just td) (Just td)
+            v <- CF.npvFromYield' l r includeRef (Just td) (Just td)
             abs(v - expected) `shouldSatisfy` (<= 1.0e-6)
 
       it "misc variants of settings" $
@@ -1050,7 +1051,7 @@ main = do
                 checkInclusion l 2 [(1, True), (2, True), (3, False)]
           td <- today
           Settings.setEvaluationDate (Just td)
-          l <- leg (zip (repeat 1.0) [td .. addDays 2 td])
+          l <- CF.leg (zip (repeat 1.0) [td .. addDays 2 td])
 
           Settings.setIncludeReferenceDateEvents False
           Settings.setIncludeTodaysCashFlows Nothing
@@ -1084,7 +1085,7 @@ main = do
           checkInclusion l 1 [(0, True), (1, True), (2, False)]
           checkInclusion l 2 [(1, True), (2, True), (3, False)]
         
-          dc <- Schedule.dayCounter $ Schedule.Actual365Fixed Schedule.Actual365FixedStandard
+          dc <- dayCounter $ Actual365Fixed Actual365FixedStandard
           noDisc <- IR.interestRate 0.0 dc IR.Continuous Annual
         
           Settings.setIncludeTodaysCashFlows Nothing
@@ -1098,32 +1099,32 @@ main = do
       it "fixed rate leg as of default settlement date" $ do
         td <- Settings.evaluationDate
         cal <- calendar TARGET
-        sch <- Schedule.schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Schedule.Backward False Nothing Nothing
-        dc <- Schedule.dayCounter Schedule.Actual360
+        sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+        dc <- dayCounter Actual360
         cpn <- IR.interestRate 0.03 dc IR.Simple Annual
-        l <- fixedRateLeg sch [100.0] [cpn] Following dc cal
-        accP <- accruedPeriod l False Nothing
+        l <- CF.fixedRateLeg sch [100.0] [cpn] Following dc cal
+        accP <- CF.accruedPeriod l False Nothing
         accP `shouldSatisfy` (/= 0)
-        accD <- accruedDays l False Nothing
+        accD <- CF.accruedDays l False Nothing
         accD `shouldSatisfy` (/= 0)
-        accA <- accruedAmount l False Nothing
+        accA <- CF.accruedAmount l False Nothing
         accA `shouldSatisfy` (/= 0)
 
       it "empty leg start" $ do
-        (leg [] >>= startDate) `shouldThrow` (\(CPlusPlusException  m) -> not $ null m)
+        (CF.leg [] >>= CF.startDate) `shouldThrow` (\(CPlusPlusException  m) -> not $ null m)
 
       it "single leg today" $ do
-        (leg [(100, tod)] >>= startDate) `shouldReturn` tod
+        (CF.leg [(100, tod)] >>= CF.startDate) `shouldReturn` tod
 
       it "two legs unsorted" $ do
-        (leg [(100, tod), (-1000, addDays (-10) tod)] >>= startDate) `shouldReturn` addDays (-10) tod
+        (CF.leg [(100, tod), (-1000, addDays (-10) tod)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
 
       it "three legs sorted" $do
-        (leg [(100, tod), (1000, addDays (-10) tod), (-2000, addDays 10 tod)] >>= startDate) `shouldReturn` addDays (-10) tod
+        (CF.leg [(100, tod), (1000, addDays (-10) tod), (-2000, addDays 10 tod)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
 
       prop "random single let start date" $
         \(a, ValidDay d) -> monadicIO $ do
-          run $ (leg [(a, d)] >>= startDate) `shouldReturn` d
+          run $ (CF.leg [(a, d)] >>= CF.startDate) `shouldReturn` d
 
       prop "start date should be minimal" $
         \flows ->
@@ -1132,24 +1133,24 @@ main = do
               let (a, d) = unzip (flows :: [(Double, ValidDay)])
                   ds = map validDay d
                   f = zip a ds
-              run $ (leg f >>= startDate) `shouldReturn` minimum ds
+              run $ (CF.leg f >>= CF.startDate) `shouldReturn` minimum ds
 
-      it "check for SEGFAULTing regression with dynamic cast of coupon in Black pricer" $
+      it "check for segfaulting regression with dynamic cast of coupon in Black pricer" $
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just $ 7 `april` 2010)
           cal <- calendar TARGET
-          dc <- Schedule.dayCounter $ Schedule.Actual365Fixed Schedule.Actual365FixedStandard
+          dc <- dayCounter $ Actual365Fixed Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10 >>= Quote.asQuote
           vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
-          pricer <- blackIborCouponPricer vol
-          sch <- Schedule.schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Schedule.Backward False Nothing Nothing
-          cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
-          setCouponPricer cpns pricer
-          ret <- nextCashFlowAmount cpns True Nothing
+          pricer <- CF.blackIborCouponPricer vol
+          sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
+          cpns <- CF.iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
+          CF.setCouponPricer cpns pricer
+          ret <- CF.nextCashFlowAmount cpns True Nothing
           ret `shouldSatisfy` \_ -> True
 
     describe "Quote value" $ do
@@ -1178,15 +1179,15 @@ main = do
             d <- today
             today' <- adjust cal d Following
             Settings.setEvaluationDate (Just today')
-            settlement <- advance cal today' (fromIntegral settlementDays) Days Following False
-            actual360dc <- Schedule.dayCounter Schedule.Actual360
+            settlement <- advance cal today' (fromIntegral settlementDays, Days) Following False
+            actual360dc <- dayCounter Actual360
             deposits <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
                 depositRateHelper q (n, u) settlementDays cal ModifiedFollowing True actual360dc)
               depositData
             ccy <- currency EUR
-            thirty360dc <- Schedule.dayCounter $ Schedule.Thirty360 Schedule.Thirty360BondBasis
+            thirty360dc <- dayCounter $ Thirty360 Thirty360BondBasis
             index <- iborIndex (Ibor "dummy" (6, Months) settlementDays ccy cal ModifiedFollowing False actual360dc) Nothing
             swaps <- mapM
               (\(n, u, r) -> do
@@ -1197,18 +1198,18 @@ main = do
             ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear
             return (cal, settlementDays, ts)
       it "referenceChange" $ do
-        let days = [10, 30, 60, 120, 360, 720]
+        let ds = [10, 30, 60, 120, 360, 720]
         (_calendar, settlementDays, _ts) <- setup
         flatRate <- Quote.simpleQuote 0.03
         cal <- calendar Null
         flatQuote <- Quote.asQuote flatRate
-        actual360dc <- Schedule.dayCounter Schedule.Actual360
+        actual360dc <- dayCounter Actual360
         ts <- flatForward' settlementDays cal flatQuote actual360dc IR.Continuous Annual
         td <- Settings.evaluationDate
 
-        expected <- mapM (\d -> discount' ts (addDays d td) False) days
+        expected <- mapM (\d -> discount' ts (addDays d td) False) ds
         Settings.setEvaluationDate (Just $ addDays 30 td)
-        calculated <- mapM (\d -> discount' ts (addDays (30+d) td) False) days
+        calculated <- mapM (\d -> discount' ts (addDays (30+d) td) False) ds
 
         mapM_ (\(x1, x2) -> x1 `shouldSatisfy` areClose x2) (zip expected calculated)
 
@@ -1217,7 +1218,7 @@ main = do
           (cal, settlementDays, ts) <- setup
           td <- Settings.evaluationDate
           let newToday = addGregorianYearsClip 3 td
-          newSettlement <- advance cal newToday (fromIntegral settlementDays) Days Following False
+          newSettlement <- advance cal newToday (fromIntegral settlementDays, Days) Following False
           let testDate = addGregorianYearsClip 5 newSettlement
           implied <- impliedTermStructure ts newSettlement
           baseDiscount <- discount' ts newSettlement False
@@ -1234,7 +1235,7 @@ main = do
           spreaded <- forwardSpreadedTermStructure ts me
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
-          actual360dc <- Schedule.dayCounter Schedule.Actual360
+          actual360dc <- dayCounter Actual360
           forward <- IR.rate <$> forwardRate' ts testDate testDate actual360dc IR.Continuous NoFrequency False
           spreadedForward <- IR.rate <$> forwardRate' spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
 
@@ -1244,7 +1245,7 @@ main = do
           (_calendar, _settlementDays, ts) <- setup
           q <- Quote.simpleQuote 0.01 >>= Quote.asQuote
           val <- Quote.value q
-          actual360dc <- Schedule.dayCounter Schedule.Actual360
+          actual360dc <- dayCounter Actual360
           spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency actual360dc
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
