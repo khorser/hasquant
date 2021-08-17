@@ -178,7 +178,7 @@ instance ForeignObject FittingMethodObject where
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 {#fun qlBondHelper as bondHelper {`Quote', withObject* `Bond', preErrorCheck- `String' errorCheck*-} -> `BondHelper'#}
 
-{#fun qlOISRateHelper as oisRateHelper {fromIntegral `Word', fromEnumQuantity `(Int, TimeUnit)'&, `Quote', withObject* `OvernightIborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `OISRateHelper'#}
+{#fun qlOISRateHelper as oisRateHelper {fromIntegral `Word', fromEnumQuantity `(Int, TimeUnit)'&, `Quote', `OvernightIborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `OISRateHelper'#}
 
 {#fun qlSwapRateHelper as swapRateHelper {`Quote', `SwapIndex', withMaybeObject* `Maybe Quote', fromEnumQuantity `(Int, TimeUnit)'&, withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `SwapRateHelper'#}
 
@@ -186,9 +186,9 @@ instance ForeignObject FittingMethodObject where
 
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure {`YieldTermStructure', `Quote', `Compounding', `Frequency', `DayCounter', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
-{#fun qlBMASwapRateHelper as bmaSwapRateHelper {`Quote', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', `Calendar', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', `DayCounter', withObject* `BMAIndex', `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
+{#fun qlBMASwapRateHelper as bmaSwapRateHelper {`Quote', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', `Calendar', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', `DayCounter', `BMAIndex', `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
-{#fun qlDatedOISRateHelper as datedOISRateHelper {withDay* `Day', withDay* `Day', `Quote', withObject* `OvernightIborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
+{#fun qlDatedOISRateHelper as datedOISRateHelper {withDay* `Day', withDay* `Day', `Quote', `OvernightIborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
 {#fun qlFraRateHelper1 as fraIborRateHelper' {`Quote', fromIntegral `Word', `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 

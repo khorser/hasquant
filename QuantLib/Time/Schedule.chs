@@ -37,6 +37,7 @@ import QuantLib.Type
 import QuantLib.Time.Date
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
+import QuantLib.Internal.Calendar
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -92,7 +93,7 @@ convention _ = {#const NO_ENUM#}
 
 {#fun qlDayCounter {`DayCounterType', `Int', preErrorCheck- `String' errorCheck*-} -> `DayCounter'#}
 
-{#fun qlDayCounterBusiness252 {withObject* `Calendar', preErrorCheck- `String' errorCheck*-}-> `DayCounter'#}
+{#fun qlDayCounterBusiness252 {`Calendar', preErrorCheck- `String' errorCheck*-}-> `DayCounter'#}
 
 dayCounter :: DayCounterConstructor -> IO DayCounter
 dayCounter (Business252 x) = qlDayCounterBusiness252 x
@@ -114,7 +115,7 @@ instance ForeignObject Schedule where
   `Bool', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
 
 -- TODO add other parameters, provide a more user-friendly way to build schedules
-{#fun qlSchedule1 as fromDates {withDayArray* `[Day]'&, withObject* `Calendar', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
+{#fun qlSchedule1 as fromDates {withDayArray* `[Day]'&, `Calendar', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
 
 -- |truncated schedule
 -- XXX Introduce another Schedule type with restricted interface?

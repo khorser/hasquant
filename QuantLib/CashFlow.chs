@@ -85,6 +85,7 @@ import QuantLib.Internal.Calendar
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
+import QuantLib.Internal.Index
 {#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure)
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
@@ -246,15 +247,15 @@ cashFlows l i d = do {(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds 
 
 {#fun qlFractionalDividend as fractionalDividend {`Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'#}
 
-{#fun qlAverageBMALeg as averageBMALeg {`Schedule', withObject* `BMAIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
+{#fun qlAverageBMALeg as averageBMALeg {`Schedule', `BMAIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
 {#fun qlFixedRateLeg as fixedRateLeg {`Schedule', withDoubleArray* `[Double]'&, withObjectArray* `[InterestRate]'&, `BusinessDayConvention', `DayCounter', `Calendar', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
-{#fun qlIborLeg as iborLeg {`Schedule', withObject* `IborIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withIntArray* `[Word]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Bool', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
+{#fun qlIborLeg as iborLeg {`Schedule', `IborIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withIntArray* `[Word]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Bool', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
-{#fun qlOvernightLeg as overnightLeg {`Schedule', withObject* `OvernightIborIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
+{#fun qlOvernightLeg as overnightLeg {`Schedule', `OvernightIborIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
-{#fun qlRangeAccrualLeg as rangeAccrualLeg {`Schedule', withObject* `IborIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withIntArray* `[Word]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
+{#fun qlRangeAccrualLeg as rangeAccrualLeg {`Schedule', `IborIndex', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', withIntArray* `[Word]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works
