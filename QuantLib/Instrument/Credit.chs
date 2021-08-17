@@ -1,11 +1,9 @@
 module QuantLib.Instrument.Credit
   (
     CreditDefaultSwap
-  , Claim
   , ProtectionSide(..)
+  , Claim(..)
 
-  , faceValueClaim
-  , faceValueAccrualClaim
   , creditDefaultSwap
   , creditDefaultSwap'
 
@@ -44,6 +42,8 @@ import QuantLib.Internal.Schedule
 
 #include "ql.h"
 
+data Claim = FaceValue | FaceValueAccrual Bond
+
 {#enum ProtectionSide {} deriving(Show, Eq)#}
 
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign finalizer qlFreeCreditDefaultSwap newtype#}
@@ -52,26 +52,34 @@ instance ForeignObject CreditDefaultSwap where
   peekObject = newForeignPtr qlFreeCreditDefaultSwap >=> return . CreditDefaultSwap
 instance IsInstrument CreditDefaultSwap where asInstrument = qlCreditDefaultSwapAsInstrument
 
-{#pointer *QlClaim as Claim foreign finalizer qlFreeClaim newtype#}
-instance ForeignObject Claim where
-  withObject = withClaim
-  peekObject = newForeignPtr qlFreeClaim >=> return . Claim
+{#pointer *QlClaim foreign finalizer qlFreeClaim newtype#}
+instance ForeignObject QlClaim where
+  withObject = withQlClaim
+  peekObject = newForeignPtr qlFreeClaim >=> return . QlClaim
 
 {#fun qlCreditDefaultSwapAsInstrument {`CreditDefaultSwap'} -> `Instrument' peekObject*#}
 
 -- |Claim on a notional
-{#fun qlFaceValueClaim as faceValueClaim {preErrorCheck- `String' errorCheck*-} -> `Claim'#}
+{#fun qlFaceValueClaim {preErrorCheck- `String' errorCheck*-} -> `QlClaim'#}
 
 -- |Claim on the notional of a reference security, including accrual
-{#fun qlFaceValueAccrualClaim as faceValueAccrualClaim {withObject* `Bond', preErrorCheck- `String' errorCheck*-} -> `Claim'#}
+{#fun qlFaceValueAccrualClaim {withObject* `Bond', preErrorCheck- `String' errorCheck*-} -> `QlClaim'#}
+
+qlClaim :: Claim -> IO QlClaim
+qlClaim FaceValue = qlFaceValueClaim
+qlClaim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
 
 -- |CDS quoted as running-spread only.
 -- side Whether the protection is bought or sold. notional Notional value spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract.
-{#fun qlCreditDefaultSwap as creditDefaultSwap {`ProtectionSide', `Double', `Double', `Schedule', `BusinessDayConvention', `DayCounter', `Bool', `Bool', withMaybeDay* `Maybe Day', `Claim', preErrorCheck- `String' errorCheck*-} -> `CreditDefaultSwap'#}
+creditDefaultSwap :: ProtectionSide -> Double -> Double -> Schedule -> BusinessDayConvention -> DayCounter -> Bool -> Bool -> Maybe Day -> Claim -> IO CreditDefaultSwap
+creditDefaultSwap ps d1 d2 s bd dc b1 b2 d c = qlClaim c >>= qlCreditDefaultSwap ps d1 d2 s bd dc b1 b2 d
+{#fun qlCreditDefaultSwap {`ProtectionSide', `Double', `Double', `Schedule', `BusinessDayConvention', `DayCounter', `Bool', `Bool', withMaybeDay* `Maybe Day', `QlClaim', preErrorCheck- `String' errorCheck*-} -> `CreditDefaultSwap'#}
 
 -- |CDS quoted as upfront and running spread.
 -- side Whether the protection is bought or sold. notional Notional value upfront Upfront in fractional units. spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract. upfrontDate Settlement date for the upfront payment.
-{#fun qlCreditDefaultSwap1 as creditDefaultSwap' {`ProtectionSide', `Double', `Double', `Double', `Schedule', `BusinessDayConvention', `DayCounter', `Bool', `Bool', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `Claim', preErrorCheck- `String' errorCheck*-} -> `CreditDefaultSwap'#}
+creditDefaultSwap' :: ProtectionSide -> Double -> Double -> Double -> Schedule -> BusinessDayConvention -> DayCounter -> Bool -> Bool -> Maybe Day -> Maybe Day -> Claim -> IO CreditDefaultSwap
+creditDefaultSwap' ps d1 d2 d3 s bd dc b1 b2 ds1 ds2 c = qlClaim c >>= qlCreditDefaultSwap1 ps d1 d2 d3 s bd dc b1 b2 ds1 ds2
+{#fun qlCreditDefaultSwap1 {`ProtectionSide', `Double', `Double', `Double', `Schedule', `BusinessDayConvention', `DayCounter', `Bool', `Bool', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `QlClaim', preErrorCheck- `String' errorCheck*-} -> `CreditDefaultSwap'#}
 
 {#fun qlCdsOptionAtmRate as atmRate {withObject* `CdsOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
