@@ -69,9 +69,7 @@ extern "C" {
   QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
 
   void qlFreeCallability(QlCallability *o);
-  void qlFreeCallabilityPrice(QlBondPrice *o);
-  QlBondPrice* qlBondPrice(double amount, int type, char **e);
-  QlCallability* qlCallability(QlBondPrice* price, int type, int date, char **e);
+  QlCallability* qlCallability(double price, int priceType, int type, int date, char **e);
 #ifdef __cplusplus
 }
 #endif

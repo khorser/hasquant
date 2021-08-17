@@ -16,6 +16,8 @@ module QuantLib.Instrument
 
    , Instrument
    , IsInstrument(..)
+   , Callability
+   , Exercise
   )
   where
 
@@ -62,5 +64,15 @@ instance ForeignObject Instrument where
   peekObject = newForeignPtr qlFreeInstrument >=> return . Instrument
 
 class IsInstrument a where asInstrument :: a -> IO Instrument
+
+{#pointer *QlCallability as Callability foreign finalizer qlFreeCallability newtype#}
+instance ForeignObject Callability where
+  withObject = withCallability
+  peekObject = newForeignPtr qlFreeCallability >=> return . Callability
+
+{#pointer *QlExercise as Exercise foreign finalizer qlFreeExercise newtype#}
+instance ForeignObject Exercise where
+  withObject = withExercise
+  peekObject = newForeignPtr qlFreeExercise >=> return . Exercise
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

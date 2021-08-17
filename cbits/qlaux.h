@@ -750,11 +750,6 @@ typedef QuantLib::ext::shared_ptr<Callability> QlCallability;
 template <> class objClassName<Callability *> { public: static const char *name() { return "Callability"; } };
 template <> class objClassName<QlCallability *> { public: static const char *name() { return "QlCallability"; } };
 
-#ifdef quantlib_callability_schedule_hpp
-typedef Bond::Price QlBondPrice;
-template <> class objClassName<Bond::Price *> { public: static const char *name() { return "BondPrice"; } };
-#endif
-
 namespace QuantLib {class CallableBond;} using QuantLib::CallableBond;
 typedef QuantLib::ext::shared_ptr<CallableBond> QlCallableBond;
 template <> class objClassName<CallableBond *> { public: static const char *name() { return "CallableBond"; } };

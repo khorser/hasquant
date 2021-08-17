@@ -160,15 +160,14 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   }
 }
 
-double* qlBondNotionals(QlBond* o, unsigned *len, char **e) {
+void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e) {
   try {
     const std::vector<double> notionals = (*arg(o))->notionals();
     *len = notionals.size();
-    double *ns = qlAllocateDoubles(*len);
-    std::copy(notionals.begin(), notionals.end(), ns);
-    return ns;
+    *ns = qlAllocateDoubles(*len);
+    std::copy(notionals.begin(), notionals.end(), *ns);
   } catch (std::exception& er) {
-    return handleException<double*>(e, er);
+    (void)handleException<double*>(e, er);
   }
 }
 
@@ -562,9 +561,10 @@ QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conv
   }
 }
 
-QlCallability* qlSoftCallability(QlBondPrice* price, int date, double trigger, char **e) {
+QlCallability* qlSoftCallability(double price, int priceType, int date, double trigger, char **e) {
   try {
-    return ret(new QlCallability(alloc(new SoftCallability(*arg(price), Date(date), trigger))));
+    Bond::Price p(price, (Bond::Price::Type)priceType);
+    return ret(new QlCallability(alloc(new SoftCallability(p, Date(date), trigger))));
   } catch (std::exception& er) {
     return handleException<QlCallability*>(e, er);
   }

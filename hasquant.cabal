@@ -38,11 +38,11 @@ library
                     , QuantLib.TermStructure
                     , QuantLib.TermStructure.Yield
                     , QuantLib.TermStructure.Credit
-                    , QuantLib.Instrument.Bond
                     , QuantLib.Instrument.Swap
                     , QuantLib.TermStructure.Volatility
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
+                    , QuantLib.Instrument.Bond
                     , QuantLib.Model
                     , QuantLib.Process
   other-modules:    QuantLib.Internal

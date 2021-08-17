@@ -352,19 +352,11 @@ QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
 }
 
 void qlFreeCallability(QlCallability *o) { del(o); }
-void qlFreeBondPrice(QlBondPrice *o) { del(o); }
 
-QlBondPrice* qlBondPrice(double amount, int type, char **e) {
+QlCallability* qlCallability(double price, int priceType, int type, int date, char **e) {
   try {
-    return ret(new Bond::Price(amount, (Bond::Price::Type)type));
-  } catch (std::exception& er) {
-    return handleException<QlBondPrice*>(e, er);
-  }
-}
-
-QlCallability* qlCallability(QlBondPrice* price, int type, int date, char **e) {
-  try {
-    return ret(new QlCallability(alloc(new Callability(*arg(price), (Callability::Type)type, Date(date)))));
+    Bond::Price p(price, (Bond::Price::Type)priceType);
+    return ret(new QlCallability(alloc(new Callability(p, (Callability::Type)type, Date(date)))));
   } catch (std::exception& er) {
     return handleException<QlCallability*>(e, er);
   }

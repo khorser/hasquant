@@ -50,7 +50,7 @@ extern "C" {
   double qlBondSettlementValue(QlBond* o, char **e);
   double qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e);
   int qlBondIsTradable(QlBond* o, int d, char **e);
-  double* qlBondNotionals(QlBond* o, unsigned *len, char **e);
+  void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e);
 
   int qlBondFunctionsAccrualDays(QlBond* bond, int settlementDate, char **e);
   int qlBondFunctionsAccrualEndDate(QlBond* bond, int settlementDate, char **e);
@@ -92,7 +92,7 @@ extern "C" {
   QlConvertibleBond* qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
   QlConvertibleBond* qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
   QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
-  QlCallability* qlSoftCallability(QlBondPrice* price, int date, double trigger, char **e);
+  QlCallability* qlSoftCallability(double price, int priceType, int date, double trigger, char **e);
 #ifdef __cplusplus
 }
 #endif

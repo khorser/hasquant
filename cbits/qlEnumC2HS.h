@@ -231,7 +231,7 @@ enum SettlementMethod {
 enum CallabilityType { Call, Put };
 
 // instruments/bond.hpp
-enum BondPriceType { Dirty, Clean };
+enum PriceType { Dirty, Clean };
 
 // option.hpp
 enum OptionType { Put = -1, Call = 1 };
