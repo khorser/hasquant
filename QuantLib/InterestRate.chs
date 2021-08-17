@@ -19,6 +19,7 @@ module QuantLib.InterestRate
 
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency, DayCounter)
+import QuantLib.Internal.Schedule
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -32,7 +33,7 @@ instance ForeignObject InterestRate where
   withObject = withInterestRate
   peekObject = newForeignPtr qlFreeInterestRate >=> return . InterestRate
 
-{#fun qlInterestRate as interestRate {`Double', withObject* `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
+{#fun qlInterestRate as interestRate {`Double', `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
 
 -- |compound factor implied by the rate compounded between two dates
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
@@ -51,7 +52,7 @@ instance ForeignObject InterestRate where
 
 -- |equivalent rate for a compounding period between two dates
 -- The resulting rate is calculated taking the required day-counting rule into account.
-{#fun qlInterestRateEquivalentRate1 as equivalentRate' {`InterestRate', withObject* `DayCounter', `Compounding', `Frequency', withDay* `Day', withDay* `Day', withDay* `Day', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
+{#fun qlInterestRateEquivalentRate1 as equivalentRate' {`InterestRate', `DayCounter', `Compounding', `Frequency', withDay* `Day', withDay* `Day', withDay* `Day', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
 
 -- |equivalent interest rate for a compounding period t.
 -- The resulting InterestRate shares the same implicit day-counting rule of the original InterestRate instance. /Warning/ Time must be measured using the InterestRate's own day counter.
@@ -59,11 +60,11 @@ instance ForeignObject InterestRate where
 
 -- |implied rate for a given compound factor between two dates.
 -- The resulting rate is calculated taking the required day-counting rule into account.
-{#fun qlInterestRateImpliedRate1 as impliedRate' {`InterestRate', `Double', withObject* `DayCounter', `Compounding', `Frequency', withDay* `Day', withDay* `Day', withDay* `Day', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
+{#fun qlInterestRateImpliedRate1 as impliedRate' {`InterestRate', `Double', `DayCounter', `Compounding', `Frequency', withDay* `Day', withDay* `Day', withDay* `Day', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
 
 -- |implied interest rate for a given compound factor at a given time.
 -- The resulting InterestRate has the day-counter provided as input. /Warning/ Time must be measured using the day-counter provided as input.
-{#fun qlInterestRateImpliedRate as impliedRate {`InterestRate', `Double', withObject* `DayCounter', `Compounding', `Frequency', `Double', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
+{#fun qlInterestRateImpliedRate as impliedRate {`InterestRate', `Double', `DayCounter', `Compounding', `Frequency', `Double', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
 
 {#fun pure qlInterestRateRate as rate {`InterestRate'} -> `Double'#}
 

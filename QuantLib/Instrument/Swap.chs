@@ -18,6 +18,7 @@ module QuantLib.Instrument.Swap
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
+import QuantLib.Internal.TermStructure
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -70,6 +71,6 @@ instance ForeignObject OvernightIndexedSwap where
 instance IsSwap OvernightIndexedSwap where asSwap = qlOvernightIndexedSwapAsSwap
 
 -- |implied volatility
-{#fun qlSwaptionImpliedVolatility as impliedVolatility {`Swaption', `Double', withObject* `YieldTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlSwaptionImpliedVolatility as impliedVolatility {`Swaption', `Double', `YieldTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

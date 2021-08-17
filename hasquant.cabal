@@ -48,6 +48,15 @@ library
                     , QuantLib.Process
   other-modules:    QuantLib.Internal
                     , QuantLib.Enum
+                    , QuantLib.Internal.Calendar
+                    , QuantLib.Internal.Schedule
+                    , QuantLib.Internal.CashFlow
+                    , QuantLib.Internal.Index
+                    , QuantLib.Internal.Instrument
+                    , QuantLib.Internal.InterestRate
+                    , QuantLib.Internal.Quote
+                    , QuantLib.Internal.TermStructure
+                    , QuantLib.Internal.Currency
   -- other-extensions:
   build-depends:    base >=4.8 && <5.0
                     , time

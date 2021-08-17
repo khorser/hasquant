@@ -29,6 +29,7 @@ import QuantLib.Internal
 {#import QuantLib.Index#}(Index)
 {#import QuantLib.Instrument#}(OptionType)
 import {-# SOURCE #-} QuantLib.Index.InterestRate
+import QuantLib.Internal.Index
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -70,17 +71,17 @@ instance ForeignObject SimpleQuote where
 
 {#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote {`Quote', `Quote' , `Quote' , `Double' , `Double' , `Double' , fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlForwardSwapQuote as forwardSwapQuote {withObject* `SwapIndex', `Quote', fromEnumQuantity `(Int, TimeUnit)'&, preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlForwardSwapQuote as forwardSwapQuote {`SwapIndex', `Quote', fromEnumQuantity `(Int, TimeUnit)'&, preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlForwardValueQuote as forwardValueQuote {withObject* `Index', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlForwardValueQuote as forwardValueQuote {`Index', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote' {withObject* `IborIndex', `String' , `Quote' , `Quote' , `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote' {`IborIndex', `String' , `Quote' , `Quote' , `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote {withObject* `IborIndex', withDay* `Day', `Quote', `Quote', `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote {`IborIndex', withDay* `Day', `Quote', `Quote', `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
 {#fun qlImpliedStdDevQuote as impliedStdDevQuote {`OptionType', `Quote' , `Quote' , `Double' , `Double' , `Double' , fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlLastFixingQuote as lastFixingQuote {withObject* `Index', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlLastFixingQuote as lastFixingQuote {`Index', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
 -- |returns true if the Quote holds a valid value
 {#fun qlQuoteIsValid as isValid {`Quote', preErrorCheck- `String' errorCheck*-} -> `Bool'#}
