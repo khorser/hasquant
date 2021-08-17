@@ -60,30 +60,30 @@ instance ForeignObject DefaultProbabilityHelper where
 
 {#fun qlFlatHazardRate1 as flatHazardRate' {fromIntegral `Word', withObject* `Calendar', withObject* `Quote', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
-{#fun qlFlatHazardRate as flatHazardRate {fromDay* `Day', withObject* `Quote', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
+{#fun qlFlatHazardRate as flatHazardRate {withDay* `Day', withObject* `Quote', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 {#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve {`DefaultProbabilityTermStructure', withObject* `Quote', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
-{#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability {`DefaultProbabilityTermStructure' , fromDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability {`DefaultProbabilityTermStructure' , withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRate' {`DefaultProbabilityTermStructure', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlDefaultProbabilityTermStructureHazardRate as hazardRate {`DefaultProbabilityTermStructure', fromDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDefaultProbabilityTermStructureHazardRate as hazardRate {`DefaultProbabilityTermStructure', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
 {#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbability' {`DefaultProbabilityTermStructure', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlDefaultProbabilityTermStructureSurvivalProbability as survivalProbability {`DefaultProbabilityTermStructure', fromDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDefaultProbabilityTermStructureSurvivalProbability as survivalProbability {`DefaultProbabilityTermStructure', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensity' {`DefaultProbabilityTermStructure', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlDefaultProbabilityTermStructureDefaultDensity as defaultDensity {`DefaultProbabilityTermStructure', fromDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDefaultProbabilityTermStructureDefaultDensity as defaultDensity {`DefaultProbabilityTermStructure', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
 {#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbability' {`DefaultProbabilityTermStructure', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |probability of default between two given dates
-{#fun qlDefaultProbabilityTermStructureDefaultProbability2 as defaultProbabilityBetween {`DefaultProbabilityTermStructure', fromDay* `Day', fromDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDefaultProbabilityTermStructureDefaultProbability2 as defaultProbabilityBetween {`DefaultProbabilityTermStructure', withDay* `Day', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |probability of default between two given times
 {#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetween' {`DefaultProbabilityTermStructure', `Double', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
@@ -115,7 +115,7 @@ piecewiseDefaultCurve :: Day -> [DefaultProbabilityHelper] -> DayCounter -> [(Qu
 piecewiseDefaultCurve d h dc q t i = qlPiecewiseDefaultCurve d h dc qq qd t i1 i2 i3 where
   (qq, qd) = unzip q
   (i1, (i2, i3)) = qlInterpolation i
-{#fun qlPiecewiseDefaultCurve {fromDay* `Day', withObjectArray* `[DefaultProbabilityHelper]'&, withObject* `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `ProbabilityTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
+{#fun qlPiecewiseDefaultCurve {withDay* `Day', withObjectArray* `[DefaultProbabilityHelper]'&, withObject* `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `ProbabilityTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 piecewiseDefaultCurve' :: Word -> Calendar -> [DefaultProbabilityHelper] -> DayCounter -> [(Quote, Day)] -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
 piecewiseDefaultCurve' d c h dc q t i = qlPiecewiseDefaultCurve1 d c h dc qq qd t i1 i2 i3 where

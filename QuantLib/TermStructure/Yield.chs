@@ -140,25 +140,25 @@ instance ForeignObject FittingMethodObject where
 
 {#fun qlDepositRateHelper as depositRateHelper {withObject* `Quote', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', `Bool', withObject* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
-{#fun qlFixedRateBondHelper as fixedRateBondHelper {withObject* `Quote', fromIntegral `Word', `Double', withObject* `Schedule', withDoubleArray* `[Double]'&, withObject* `DayCounter', `BusinessDayConvention', `Double', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `BondHelper'#}
+{#fun qlFixedRateBondHelper as fixedRateBondHelper {withObject* `Quote', fromIntegral `Word', `Double', withObject* `Schedule', withDoubleArray* `[Double]'&, withObject* `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `BondHelper'#}
 
 -- |Returns a discount factor from the given YieldTermStructure object
-{#fun qlYieldTSDiscount as discount' {`YieldTermStructure', fromDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlYieldTSDiscount as discount' {`YieldTermStructure', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlSwapRateHelper1 as swapRateHelper' {withObject* `Quote', fromEnumQuantity `(Int, TimeUnit)'&, withObject* `Calendar', `Frequency', `BusinessDayConvention', withObject* `DayCounter', withObject* `IborIndex', withMaybeObject* `Maybe Quote', fromEnumQuantity `(Int, TimeUnit)'&, withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `SwapRateHelper'#}
 
-{#fun qlFlatForward as flatForward {fromDay* `Day', withObject* `Quote', withObject* `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+{#fun qlFlatForward as flatForward {withDay* `Day', withObject* `Quote', withObject* `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 {#fun qlFlatForward1 as flatForward' {fromIntegral `Word', withObject* `Calendar', withObject* `Quote', withObject* `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 -- |The resulting interest rate has the required daycounting rule.
-{#fun qlYieldTermStructureZeroRate as zeroRate' {`YieldTermStructure', fromDay* `Day', withObject* `DayCounter', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
+{#fun qlYieldTermStructureZeroRate as zeroRate' {`YieldTermStructure', withDay* `Day', withObject* `DayCounter', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
 
 -- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
-{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod {`YieldTermStructure', fromDay* `Day', fromEnumQuantity `(Int, TimeUnit)'&, withObject* `DayCounter', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
+{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod {`YieldTermStructure', withDay* `Day', fromEnumQuantity `(Int, TimeUnit)'&, withObject* `DayCounter', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
 
 -- |The resulting interest rate has the required day-counting rule.
-{#fun qlYieldTermStructureForwardRate as forwardRate' {`YieldTermStructure', fromDay* `Day', fromDay* `Day', withObject* `DayCounter', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
+{#fun qlYieldTermStructureForwardRate as forwardRate' {`YieldTermStructure', withDay* `Day', withDay* `Day', withObject* `DayCounter', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
 {#fun qlYieldTermStructureForwardRate2 as forwardRate {`YieldTermStructure', `Double', `Double', `Compounding', `Frequency', `Bool', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
@@ -184,7 +184,7 @@ instance ForeignObject FittingMethodObject where
 
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper {withObject* `Quote', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', withObject* `Calendar', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', withObject* `DayCounter', withObject* `BMAIndex', withObject* `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
-{#fun qlDatedOISRateHelper as datedOISRateHelper {fromDay* `Day', fromDay* `Day', withObject* `Quote', withObject* `OvernightIborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
+{#fun qlDatedOISRateHelper as datedOISRateHelper {withDay* `Day', withDay* `Day', withObject* `Quote', withObject* `OvernightIborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
 {#fun qlFraRateHelper1 as fraIborRateHelper' {withObject* `Quote', fromIntegral `Word', withObject* `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
@@ -192,11 +192,11 @@ instance ForeignObject FittingMethodObject where
 
 {#fun qlFraRateHelper3 as fraIborRateHelper {withObject* `Quote', fromEnumQuantity `(Int, TimeUnit)'&, withObject* `IborIndex', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
-{#fun qlFuturesRateHelper1 as futuresRateHelper' {withObject* `Quote', fromDay* `Day', fromDay* `Day', withObject* `DayCounter', withMaybeObject* `Maybe Quote', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
+{#fun qlFuturesRateHelper1 as futuresRateHelper' {withObject* `Quote', withDay* `Day', withDay* `Day', withObject* `DayCounter', withMaybeObject* `Maybe Quote', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
-{#fun qlFuturesRateHelper2 as futuresIborRateHelper {withObject* `Quote', fromDay* `Day', withObject* `IborIndex', withMaybeObject* `Maybe Quote', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
+{#fun qlFuturesRateHelper2 as futuresIborRateHelper {withObject* `Quote', withDay* `Day', withObject* `IborIndex', withMaybeObject* `Maybe Quote', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
-{#fun qlFuturesRateHelper as futuresRateHelper {withObject* `Quote', fromDay* `Day', fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', `Bool', withObject* `DayCounter', withMaybeObject* `Maybe Quote', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
+{#fun qlFuturesRateHelper as futuresRateHelper {withObject* `Quote', withDay* `Day', fromIntegral `Word', withObject* `Calendar', `BusinessDayConvention', `Bool', withObject* `DayCounter', withMaybeObject* `Maybe Quote', preErrorCheck- `String' errorCheck*-} -> `RateHelper'#}
 
 {#fun qlRateHelperImpliedQuote as impliedQuote {`RateHelper', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
@@ -205,7 +205,7 @@ instance ForeignObject FittingMethodObject where
 
 {#fun qlTermStructureMaxDate as maxDate {withObject* `TermStructure', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}
 
-{#fun qlImpliedTermStructure as impliedTermStructure {`YieldTermStructure', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+{#fun qlImpliedTermStructure as impliedTermStructure {`YieldTermStructure', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 {#fun qlYieldTermStructureAsTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
 instance IsTermStructure YieldTermStructure where asTermStructure = qlYieldTermStructureAsTermStructure
@@ -248,7 +248,7 @@ piecewiseYieldCurve d r dc qd t i = qlPiecewiseYieldCurve d r dc qs ds t i' a aa
   where (qs, ds) = unzip qd
         (i', (a, aa)) = qlInterpolation i
 
-{#fun qlPiecewiseYieldCurve {fromDay* `Day', withObjectArray* `[RateHelper]'&, withObject* `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `BootstrapTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
+{#fun qlPiecewiseYieldCurve {withDay* `Day', withObjectArray* `[RateHelper]'&, withObject* `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `BootstrapTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
@@ -355,7 +355,7 @@ fittedBondDiscountCurve d h dc fm a m g l = do {fmo <- fittingMethod fm; qlFitte
 
 {#fun qlFittedBondDiscountCurve {fromIntegral `Word', withObject* `Calendar', withObjectArray* `[BondHelper]'&, withObject* `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
 
-{#fun qlFittedBondDiscountCurve1 {fromDay* `Day', withObjectArray* `[BondHelper]'&, withObject* `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
+{#fun qlFittedBondDiscountCurve1 {withDay* `Day', withObjectArray* `[BondHelper]'&, withObject* `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
 
 -- |final value of cost function after optimization
 {#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Double'#}

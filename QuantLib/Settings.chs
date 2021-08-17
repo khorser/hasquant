@@ -31,7 +31,7 @@ import QuantLib.Internal
 
 -- |sets the value of the Evaluation Date
 -- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
-{#fun qlSettingsSetEvaluationDate as setEvaluationDate {fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `()'#}
+{#fun qlSettingsSetEvaluationDate as setEvaluationDate {withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `()'#}
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date

@@ -28,9 +28,9 @@ module QuantLib.Internal
   , fromEnumQuantity
   , toEnumQuantity
 
-  , fromDay
+  , withDay
   , toDay
-  , fromMaybeDay
+  , withMaybeDay
   , fromMaybeInt
   , toMaybeDay
   , peekDayArray
@@ -226,14 +226,14 @@ toSerial :: Day -> IO CInt
 toSerial x | dayIsValid x = return $ toModifiedJulianDay' x - qlStart
            | otherwise = throwIO $ DateConversion x
 
-fromDay :: Day -> (CInt -> IO a) -> IO a
-fromDay x f = toSerial x >>= f
+withDay :: Day -> (CInt -> IO a) -> IO a
+withDay x f = toSerial x >>= f
 
 toDay :: CInt -> Day
 toDay = fromSerial
 
-fromMaybeDay :: Maybe Day -> (CInt -> IO a) -> IO a
-fromMaybeDay x f = maybe (f 0) (`fromDay` f) x
+withMaybeDay :: Maybe Day -> (CInt -> IO a) -> IO a
+withMaybeDay x f = maybe (f 0) (`withDay` f) x
 
 toMaybeDay :: CInt -> Maybe Day
 toMaybeDay 0 = Nothing

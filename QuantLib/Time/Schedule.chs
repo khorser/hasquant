@@ -99,19 +99,19 @@ dayCounter (Business252 x) = qlDayCounterBusiness252 x
 dayCounter x = dayCounterType x >>= flip qlDayCounter (convention x)
 
 -- |Returns the number of days between two dates.
-{#fun qlDayCounterDayCount as days {`DayCounter', fromDay* `Day', fromDay* `Day'} -> `Int'#}
+{#fun qlDayCounterDayCount as days {`DayCounter', withDay* `Day', withDay* `Day'} -> `Int'#}
 
 -- |Returns the period between two dates as a fraction of year.
-{#fun qlDayCounterYearFraction as years {`DayCounter', fromDay* `Day', fromDay* `Day', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDayCounterYearFraction as years {`DayCounter', withDay* `Day', withDay* `Day', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#pointer *Schedule foreign finalizer qlFreeSchedule newtype#}
 instance ForeignObject Schedule where
   withObject = withSchedule
   peekObject = newForeignPtr qlFreeSchedule >=> return . Schedule
 
-{#fun qlSchedule as schedule {fromMaybeDay* `Maybe Day', fromDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withObject *`Calendar',
+{#fun qlSchedule as schedule {withMaybeDay* `Maybe Day', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withObject *`Calendar',
   `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule',
-  `Bool', fromMaybeDay* `Maybe Day', fromMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
+  `Bool', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
 
 -- TODO add other parameters, provide a more user-friendly way to build schedules
 {#fun qlSchedule1 as fromDates {withDayArray* `[Day]'&, withObject* `Calendar', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
@@ -119,7 +119,7 @@ instance ForeignObject Schedule where
 -- |truncated schedule
 -- XXX Introduce another Schedule type with restricted interface?
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
-{#fun qlScheduleUntil as until {`Schedule', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
+{#fun qlScheduleUntil as until {`Schedule', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule'#}
 
 -- |returns the dates for the given Schedule object
 {#fun qlScheduleDates as dates {`Schedule', preArray- `[Day]'& peekDayArray*} -> `()'#}

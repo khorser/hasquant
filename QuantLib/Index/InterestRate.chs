@@ -87,10 +87,10 @@ instance ForeignObject OvernightIndexedSwapIndex where
 {#fun qlBMAIndex as bmaIndex {withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `BMAIndex' peekObject*#}
 
 -- |This method returns a schedule of fixing dates between start and end.
-{#fun qlBMAIndexFixingSchedule as fixingSchedule {`BMAIndex', fromDay* `Day', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekObject*#}
+{#fun qlBMAIndexFixingSchedule as fixingSchedule {`BMAIndex', withDay* `Day', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekObject*#}
 
 -- |It can be overridden to implement particular conventions.
-{#fun qlInterestRateIndexForecastFixing as forecastFixing {`InterestRateIndex', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlInterestRateIndexForecastFixing as forecastFixing {`InterestRateIndex', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlInterestRateIndexCurrency as currency {`InterestRateIndex', preErrorCheck- `String' errorCheck*-} -> `Currency' peekObject*#}
 

@@ -27,7 +27,7 @@ instance Show Index where show = qlIndexName
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
 -- Adds fixings for the given InterestRateIndex object
-{#fun qlIndexAddFixing as addFixing {`Index', fromDay* `Day', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `()'#}
+{#fun qlIndexAddFixing as addFixing {`Index', withDay* `Day', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `()'#}
 
 -- |returns the calendar defining valid fixing dates
 {#fun qlIndexFixingCalendar as fixingCalendar {`Index', preErrorCheck- `String' errorCheck*-} -> `Calendar' peekObject*#}

@@ -72,11 +72,11 @@ instance ForeignObject SimpleQuote where
 
 {#fun qlForwardSwapQuote as forwardSwapQuote {withObject* `SwapIndex', `Quote', fromEnumQuantity `(Int, TimeUnit)'&, preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlForwardValueQuote as forwardValueQuote {withObject* `Index', fromDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlForwardValueQuote as forwardValueQuote {withObject* `Index', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
 {#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote' {withObject* `IborIndex', `String' , `Quote' , `Quote' , `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote {withObject* `IborIndex', fromDay* `Day', `Quote', `Quote', `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote {withObject* `IborIndex', withDay* `Day', `Quote', `Quote', `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
 {#fun qlImpliedStdDevQuote as impliedStdDevQuote {`OptionType', `Quote' , `Quote' , `Double' , `Double' , `Double' , fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
