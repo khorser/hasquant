@@ -46,6 +46,8 @@ library
                     , QuantLib.Instrument.Bond
                     , QuantLib.Model
                     , QuantLib.Process
+                    , QuantLib.Instrument.Credit
+
   other-modules:    QuantLib.Internal
                     , QuantLib.Enum
                     , QuantLib.Internal.Calendar

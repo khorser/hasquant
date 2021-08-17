@@ -7,7 +7,6 @@ module QuantLib.Instrument
   , OptionType(..)
   , BarrierType(..)
   , AverageType(..)
-  , ProtectionSide(..)
   , Seniority(..)
   , PricingModel(..)
 
@@ -38,8 +37,6 @@ import QuantLib.Internal
 {#enum BarrierType {} deriving(Show, Eq)#}
 
 {#enum AverageType {} deriving(Show, Eq)#}
-
-{#enum ProtectionSide {} deriving(Show, Eq)#}
 
 {#enum Seniority {} deriving(Show, Eq)#}
 
