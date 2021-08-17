@@ -11,6 +11,7 @@ module QuantLib.Instrument.Swap
   , asSwap
 
   , impliedVolatility
+  , SwapType(..)
   )
   where
 
@@ -23,6 +24,8 @@ import QuantLib.Internal
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#enum SwapType {} deriving(Show, Eq)#}
 
 {#pointer *QlSwaption as Swaption foreign finalizer qlFreeSwaption newtype#}
 instance ForeignObject Swaption where

@@ -1,23 +1,20 @@
 module QuantLib.Instrument
   (
-     ExerciseType(..)
-   , PositionType(..)
-   , SettlementType(..)
-   , SettlementMethod(..)
-   , CallabilityType(..)
-   , BondPriceType(..)
-   , OptionType(..)
-   , BarrierType(..)
-   , SwapType(..)
-   , AverageType(..)
-   , ProtectionSide(..)
-   , Seniority(..)
-   , PricingModel(..)
+    PositionType(..)
+  , SettlementType(..)
+  , SettlementMethod(..)
+  , CallabilityType(..)
+  , OptionType(..)
+  , BarrierType(..)
+  , AverageType(..)
+  , ProtectionSide(..)
+  , Seniority(..)
+  , PricingModel(..)
 
-   , Instrument
-   , IsInstrument(..)
-   , Callability
-   , Exercise
+  , Instrument
+  , IsInstrument(..)
+  , Callability
+  , Exercise
   )
   where
 
@@ -28,8 +25,6 @@ import QuantLib.Internal
 
 #include "ql.h"
 
-{#enum ExerciseType {} deriving(Show, Eq)#}
-
 {#enum PositionType {} deriving(Show, Eq)#}
 
 {#enum SettlementType {} deriving(Show, Eq)#}
@@ -38,13 +33,9 @@ import QuantLib.Internal
 
 {#enum SettlementMethod {} deriving(Show, Eq)#}
 
-{#enum BondPriceType {} deriving(Show, Eq)#}
-
 {#enum OptionType {} deriving(Show, Eq)#}
 
 {#enum BarrierType {} deriving(Show, Eq)#}
-
-{#enum SwapType {} deriving(Show, Eq)#}
 
 {#enum AverageType {} deriving(Show, Eq)#}
 
