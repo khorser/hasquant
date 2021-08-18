@@ -13,6 +13,7 @@ module QuantLib.Internal.Enum
   , QlSwingExercise
 
   , Exercise(..)
+  , ExerciseType(..)
   , withQlExercise
   , asExercise
   , exercise

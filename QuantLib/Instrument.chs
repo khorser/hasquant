@@ -13,11 +13,20 @@ module QuantLib.Instrument
   , Instrument
   , IsInstrument(..)
   , Callability
-  , Exercise
+
+  , Exercise(..)
+  , ExerciseType(..)
+
+  , npv
+  , errorEstimate
+  , isExpired
+  , valuationDate
+  , composite
   )
   where
 
 import QuantLib.Internal
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -58,9 +67,20 @@ instance ForeignObject Callability where
   withObject = withCallability
   peekObject = newForeignPtr qlFreeCallability >=> return . Callability
 
-{#pointer *QlExercise as Exercise foreign finalizer qlFreeExercise newtype#}
-instance ForeignObject Exercise where
-  withObject = withExercise
-  peekObject = newForeignPtr qlFreeExercise >=> return . Exercise
+-- |Returns the net present value of the given Instrument
+{#fun qlInstrumentNPV as npv {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |returns the error estimate on the NPV when available.
+{#fun qlInstrumentErrorEstimate as errorEstimate {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |returns whether the instrument might have value greater than zero.
+{#fun qlInstrumentIsExpired as isExpired {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Bool'#}
+
+-- |returns the date the net present value refers to.
+{#fun qlInstrumentValuationDate as valuationDate {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}
+
+composite :: [(Instrument, Double)] -> IO Instrument
+composite iw = qlCompositeInstrument i w where (i, w) = unzip iw
+{#fun qlCompositeInstrument {withObjectArray* `[Instrument]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Instrument'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

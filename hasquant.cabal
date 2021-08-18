@@ -54,7 +54,6 @@ library
                     , QuantLib.Internal.Schedule
                     , QuantLib.Internal.CashFlow
                     , QuantLib.Internal.Index
-                    , QuantLib.Internal.Instrument
                     , QuantLib.Internal.InterestRate
                     , QuantLib.Internal.Quote
                     , QuantLib.Internal.TermStructure

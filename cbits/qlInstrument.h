@@ -5,7 +5,7 @@ extern "C" {
     char **e);
   double qlInstrumentNPV(QlInstrument *instr, char **e);
   void qlFreeInstrument(QlInstrument *instr);
-  QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e);
+  QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, unsigned cLen, double *coeff, char **e);
   double qlInstrumentErrorEstimate(QlInstrument* o, char **e);
   int qlInstrumentIsExpired(QlInstrument* o, char **e);
   int qlInstrumentValuationDate(QlInstrument* o, char **e);

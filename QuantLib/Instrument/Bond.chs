@@ -80,7 +80,6 @@ module QuantLib.Instrument.Bond
   where
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
-import QuantLib.Internal.Instrument
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
@@ -95,6 +94,7 @@ import QuantLib.Internal.InterestRate
 import QuantLib.Internal.Index
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -279,11 +279,19 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 
 {#fun qlCallableZeroCouponBond as callableZeroCouponBond {fromIntegral `Word', `Double', `Calendar', withDay* `Day', `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withObjectArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
 
-{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {`Exercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {`Exercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+convertibleFixedCouponBond :: Exercise -> Double -> [Dividend] -> [Callability] -> Quote -> Day -> Word -> [Double] -> DayCounter -> Schedule -> Double -> IO ConvertibleBond
+convertibleFixedCouponBond e d di ca q da w dd dc s d2 = do {ee<-exercise e; qlConvertibleFixedCouponBond ee d di ca q da w dd dc s d2}
+{#fun qlConvertibleFixedCouponBond {`QlExercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {`Exercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+convertibleFloatingRateBond :: Exercise -> Double -> [Dividend] -> [Callability] -> Quote -> Day -> Word -> IborIndex -> Word -> [Double] -> DayCounter -> Schedule -> Double -> IO ConvertibleBond
+convertibleFloatingRateBond e d di ca q da w i w2 dd dc s d3 = do {ee<-exercise e; qlConvertibleFloatingRateBond ee d di ca q da w i w2 dd dc s d3}
+{#fun qlConvertibleFloatingRateBond {`QlExercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+
+convertibleZeroCouponBond :: Exercise -> Double -> [Dividend] -> [Callability] -> Quote -> Day -> Word -> DayCounter -> Schedule -> Double -> IO ConvertibleBond
+convertibleZeroCouponBond e d di ca q da w dc s d2 = do {ee<-exercise e; qlConvertibleZeroCouponBond ee d di ca q da w dc s d2}
+{#fun qlConvertibleZeroCouponBond {`QlExercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability as softCallability {`Double', `PriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `Callability' peekObject*#}

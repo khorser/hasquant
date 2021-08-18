@@ -27,7 +27,7 @@ module QuantLib.Instrument.Credit
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.Instrument.Bond#}(Bond)
-import QuantLib.Internal.Instrument
+import QuantLib.Internal.Enum
 {#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
 import QuantLib.Internal.Schedule
 {#import QuantLib.CashFlow#}(Leg)
@@ -83,7 +83,10 @@ creditDefaultSwap' ps d1 d2 d3 s bd dc b1 b2 ds1 ds2 c = qlClaim c >>= qlCreditD
 
 {#fun qlCdsOptionAtmRate as atmRate {withObject* `CdsOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlCdsOption as cdsOption {`CreditDefaultSwap', `Exercise', `Bool', preErrorCheck- `String' errorCheck*-} -> `CdsOption' peekObject*#}
+{#pointer *QlExercise foreign newtype nocode#}
+cdsOption :: CreditDefaultSwap -> Exercise -> Bool -> IO CdsOption
+cdsOption s e b = do {ee<-exercise e; qlCdsOption s ee b}
+{#fun qlCdsOption {`CreditDefaultSwap', `QlExercise', `Bool', preErrorCheck- `String' errorCheck*-} -> `CdsOption' peekObject*#}
 
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility {withObject* `CdsOption', `Double', withObject* `YieldTermStructure', withObject* `DefaultProbabilityTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 

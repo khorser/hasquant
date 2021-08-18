@@ -35,9 +35,10 @@ void qlFreeInstrument(QlInstrument *instr) {
   del(instr);
 }
 
-QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e) {
+QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, unsigned, double *coeff, char **e) {
   CompositeInstrument *ci = 0;
   try {
+    // coeff len is unused
     ci = new CompositeInstrument();
     for (unsigned i = 0; i < instrLen; ++i)
         ci->add(*(instrs[i]), coeff[i]);

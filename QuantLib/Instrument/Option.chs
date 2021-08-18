@@ -1,7 +1,6 @@
 module QuantLib.Instrument.Option
   (
-    ExerciseType(..)
-  , Option
+    Option
   , CdsOption
   , asOption
   )
@@ -15,8 +14,6 @@ module QuantLib.Instrument.Option
 
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
-
-{#enum ExerciseType {} deriving(Show, Eq)#}
 
 {#pointer *QlOption as Option foreign finalizer qlFreeOption newtype#}
 instance ForeignObject Option where
