@@ -102,8 +102,6 @@ import QuantLib.Internal.Enum
 
 #include "ql.h"
 
-{#enum PriceType {} deriving(Eq, Show)#}
-
 {#pointer *QlBond as Bond foreign finalizer qlFreeBond newtype#}
 instance ForeignObject Bond where
   withObject = withBond

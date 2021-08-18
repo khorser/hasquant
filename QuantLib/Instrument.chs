@@ -33,15 +33,11 @@ import QuantLib.Internal.Enum
 
 #include "ql.h"
 
-{#enum PositionType {} deriving(Show, Eq)#}
-
 {#enum SettlementType {} deriving(Show, Eq)#}
 
 {#enum CallabilityType {} add prefix="Callability" deriving(Show, Eq)#}
 
 {#enum SettlementMethod {} deriving(Show, Eq)#}
-
-{#enum OptionType {} deriving(Show, Eq)#}
 
 {#enum BarrierType {} deriving(Show, Eq)#}
 
