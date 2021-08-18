@@ -57,8 +57,10 @@ extern "C" {
   QlEuropeanExercise* qlEuropeanExercise(int date, char **e);
 
   QlAmericanExercise* qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e);
-  QlSwingExercise* qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e);
+  QlSwingExercise* qlSwingExercise(unsigned datesLen, int* dates, unsigned secLen, unsigned* seconds, char **e);
   QlSwingExercise* qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e);
+  QlExercise* qlSwingExerciseAsExercise(QlSwingExercise *o);
+
   void qlFreeCapFloor(QlCapFloor *o);
   QlInstrument* qlCapFloorAsInstrument(QlCapFloor *o);
   QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e);

@@ -20,3 +20,5 @@ withOvernightIborIndex = withObject
 
 withBMAIndex :: BMAIndex -> (Ptr BMAIndex -> IO b) -> IO b
 withBMAIndex = withObject
+
+-- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -75,8 +75,7 @@ import QuantLib.Internal.Quote
 import QuantLib.Internal.Calendar
 {#import QuantLib.Time.Schedule#}(TimeUnit, DayCounter)
 import QuantLib.Internal.Schedule
-import QuantLib.Enum
-import QuantLib.Math(Interpolation)
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

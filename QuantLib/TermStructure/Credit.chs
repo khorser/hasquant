@@ -42,8 +42,7 @@ import QuantLib.Internal.Schedule
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
 {#import QuantLib.TermStructure#}
-import QuantLib.Math(Interpolation)
-import QuantLib.Enum
+import QuantLib.Internal.Enum
 
 {#enum ProbabilityTrait {} deriving(Show, Eq)#}
 

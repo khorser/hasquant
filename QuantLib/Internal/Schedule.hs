@@ -10,3 +10,5 @@ withSchedule = withObject
 
 withDayCounter :: DayCounter -> (Ptr DayCounter -> IO b) -> IO b
 withDayCounter = withObject
+
+-- vim: set ff=unix ts=8 sts=2 sw=2 et:

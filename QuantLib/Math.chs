@@ -8,8 +8,10 @@ module QuantLib.Math
 
   , EndCriteriaType(..)
   , HistogramAlgorithm(..)
+
   , Approximation(..)
   , Interpolation(..)
+
   , RngTrait(..)
   , BinomialTree(..)
   , BoundaryConditionSide(..)
@@ -26,6 +28,7 @@ module QuantLib.Math
 where
 
 import QuantLib.Internal
+import QuantLib.Internal.Enum(Approximation(..), Interpolation(..))
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -49,23 +52,6 @@ instance ForeignObject Rounding where
 {#enum EndCriteriaType {} deriving(Show, Eq)#}
 
 {#enum HistogramAlgorithm {} deriving(Show, Eq)#}
-
-data Approximation =
-  NaturalSpline Bool
-  | Parabolic Bool
-  | Kruger
-  | FritschButland
-  deriving (Show, Eq)
-
-data Interpolation =
-  BackwardFlat
-  | ForwardFlat
-  | Linear
-  | LogLinear
-  | Cubic Approximation
-  | LogCubic Approximation
-  | Abcd
-  deriving (Show, Eq)
 
 {#enum RngTrait {} deriving(Show, Eq)#}
 

@@ -49,7 +49,7 @@ library
                     , QuantLib.Instrument.Credit
 
   other-modules:    QuantLib.Internal
-                    , QuantLib.Enum
+                    , QuantLib.Internal.Enum
                     , QuantLib.Internal.Calendar
                     , QuantLib.Internal.Schedule
                     , QuantLib.Internal.CashFlow

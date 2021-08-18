@@ -66,7 +66,7 @@ module QuantLib.TermStructure.Yield
   where
 
 import QuantLib.Internal hiding (maxDate)
-import QuantLib.Enum
+import QuantLib.Internal.Enum
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
 import {-# SOURCE #-} QuantLib.Index.InterestRate
@@ -79,7 +79,6 @@ import QuantLib.Internal.Schedule
 {#import QuantLib.InterestRate#}
 import {-# SOURCE #-} QuantLib.Instrument.Bond(Bond)
 import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
-import QuantLib.Math(Interpolation)
 import {-# SOURCE #-} QuantLib.Instrument.Swap(VanillaSwap, OvernightIndexedSwap)
 
 #include "qlTypesC2HS.h"

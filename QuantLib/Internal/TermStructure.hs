@@ -11,3 +11,5 @@ withTermStructure = withObject
 
 withYieldTermStructure :: YieldTermStructure -> (Ptr YieldTermStructure -> IO b) -> IO b
 withYieldTermStructure = withObject
+
+-- vim: set ff=unix ts=8 sts=2 sw=2 et:
