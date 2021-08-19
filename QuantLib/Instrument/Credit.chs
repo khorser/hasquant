@@ -84,9 +84,7 @@ creditDefaultSwap' ps d1 d2 d3 s bd dc b1 b2 ds1 ds2 c = qlClaim c >>= qlCreditD
 {#fun qlCdsOptionAtmRate as atmRate {withObject* `CdsOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#pointer *QlExercise foreign newtype nocode#}
-cdsOption :: CreditDefaultSwap -> Exercise -> Bool -> IO CdsOption
-cdsOption s e b = do {ee<-exercise e; qlCdsOption s ee b}
-{#fun qlCdsOption {`CreditDefaultSwap', `QlExercise', `Bool', preErrorCheck- `String' errorCheck*-} -> `CdsOption' peekObject*#}
+{#fun qlCdsOption as cdsOption {`CreditDefaultSwap', withEnumObject* `Exercise', `Bool', preErrorCheck- `String' errorCheck*-} -> `CdsOption' peekObject*#}
 
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility {withObject* `CdsOption', `Double', withObject* `YieldTermStructure', withObject* `DefaultProbabilityTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 

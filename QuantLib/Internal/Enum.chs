@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
 -- internal utilities to convert special enums
 module QuantLib.Internal.Enum
   (
@@ -15,7 +16,6 @@ module QuantLib.Internal.Enum
   , ExerciseType(..)
   , Exercise(..)
   , withQlExercise
-  , exercise
 
   , OptionType(..)
   , PositionType(..)
@@ -25,10 +25,12 @@ module QuantLib.Internal.Enum
 
   --, Callability(..)
   -- , withQlCallability
+  , EnumObject(..)
   )
 where
 
 import QuantLib.Internal
+import Foreign.Ptr(Ptr)
 import Foreign.Marshal.Utils(fromBool)
 
 #include "qlTypesC2HS.h"
@@ -76,6 +78,9 @@ data Interpolation =
   | LogCubic Approximation
   | Abcd
   deriving (Show, Eq)
+
+class (ForeignObject b) => EnumObject a b | b -> a where
+  withEnumObject :: a -> (Ptr b -> IO c) -> IO c
 
 {#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
 instance ForeignObject QlExercise where
@@ -151,6 +156,8 @@ exercise (VanillaExercise t) = qlExercise t
 exercise (EuropeanExercise d) = qlEuropeanExercise d >>= asQlExercise
 exercise (SwingListExercise ds) = qlSwingExercise d s >>= asQlExercise where (d, s) = unzip ds
 exercise (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s >>= asQlExercise
+
+instance EnumObject Exercise QlExercise where withEnumObject x f = exercise x >>= (`withObject` f)
 
 {#enum OptionType {} deriving (Show, Eq)#}
 
