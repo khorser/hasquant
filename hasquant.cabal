@@ -40,6 +40,7 @@ library
                     , QuantLib.TermStructure.Yield
                     , QuantLib.TermStructure.Credit
                     , QuantLib.Instrument.Swap
+                    , QuantLib.Instrument.CapFloor
                     , QuantLib.TermStructure.Volatility
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
