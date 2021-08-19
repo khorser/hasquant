@@ -14,7 +14,9 @@ module QuantLib.Internal.Enum
   , OptionType(..)
   , PositionType(..)
   , PriceType(..)
+
   , Payoff(..)
+  , QlPayoff
 
   , CallabilityType(..)
   , Callability(..)
@@ -281,6 +283,7 @@ instance ForeignObject QlPayoff where
 class IsQlPayoff a where
   asQlPayoff :: a -> IO QlPayoff
 
+-- TODO check if we really neeed this hieratchy
 {#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
 instance ForeignObject QlBasketPayoff where
   withObject = withQlBasketPayoff
@@ -320,6 +323,53 @@ instance ForeignObject QlPlainVanillaPayoff where
   finalizer = qlFreePlainVanillaPayoff
 {#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff x = qlPlainVanillaPayoffAsStrikedTypePayoff x >>= asQlPayoff
+
+{#fun qlAssetOrNothingPayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
+{#fun qlAverageBasketPayoff {`QlPayoff', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
+{#fun qlCashOrNothingPayoff {`OptionType', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
+{#fun qlDoubleStickyRatchetPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlFloatingTypePayoff {`OptionType', preErrorCheck- `String' errorCheck*-} -> `QlTypePayoff'#}
+{#fun qlForwardTypePayoff {`PositionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlGapPayoff {`OptionType', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
+{#fun qlMaxBasketPayoff {`QlPayoff', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
+{#fun qlMinBasketPayoff {`QlPayoff', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
+{#fun qlPercentageStrikePayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPercentageStrikePayoff'#}
+{#fun qlPlainVanillaPayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPlainVanillaPayoff'#}
+{#fun qlRatchetMaxPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlRatchetMinPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlRatchetPayoff {`Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlSpreadBasketPayoff {`QlPayoff', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
+{#fun qlStickyMaxPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlStickyMinPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlStickyPayoff {`Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
+{#fun qlSuperFundPayoff {`Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
+{#fun qlSuperSharePayoff {`Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
+{#fun qlAverageBasketPayoff1 {`QlPayoff', withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
+
+instance EnumObject Payoff QlPayoff where constructObject = payoff
+
+payoff :: Payoff -> IO QlPayoff
+payoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s >>= asQlPayoff
+payoff (AverageBasket p n) = payoff p >>= (`qlAverageBasketPayoff` n) >>= asQlPayoff
+payoff (AverageBasketMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a) >>= asQlPayoff
+payoff (CashOrNothing t s c) = qlCashOrNothingPayoff t s c >>= asQlPayoff
+payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
+payoff (FloatingType t) = qlFloatingTypePayoff t >>= asQlPayoff
+payoff (ForwardType t s) = qlForwardTypePayoff t s
+payoff (Gap t s ss) = qlGapPayoff t s ss >>= asQlPayoff
+payoff (MaxBasket p) = payoff p >>= qlMaxBasketPayoff >>= asQlPayoff
+payoff (MinBasket p) = payoff p >>= qlMinBasketPayoff >>= asQlPayoff
+payoff (PercentageStrike t m) = qlPercentageStrikePayoff t m >>= asQlPayoff
+payoff (PlainVanilla t s) = qlPlainVanillaPayoff t s >>= asQlPayoff
+payoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
+payoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
+payoff (Ratchet g1 g2 s1 s2 i a) = qlRatchetPayoff g1 g2 s1 s2 i a
+payoff (SpreadBasket p) = payoff p >>= qlSpreadBasketPayoff >>= asQlPayoff
+payoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
+payoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
+payoff (Sticky g1 g2 s1 s2 i a) = qlStickyPayoff g1 g2 s1 s2 i a
+payoff (SuperFund s ss) = qlSuperFundPayoff s ss >>= asQlPayoff
+payoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c >>= asQlPayoff
 
 data Callability =
   Soft
