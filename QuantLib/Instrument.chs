@@ -70,7 +70,7 @@ class IsInstrument a where asInstrument :: a -> IO Instrument
 {#fun qlInstrumentValuationDate as valuationDate {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}
 
 composite :: [(Instrument, Double)] -> IO Instrument
-composite iw = qlCompositeInstrument i w where (i, w) = unzip iw
+composite = (uncurry qlCompositeInstrument) . unzip
 {#fun qlCompositeInstrument {withObjectArray* `[Instrument]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Instrument'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

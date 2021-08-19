@@ -21,6 +21,7 @@ module QuantLib.Internal
   , withMaybeObject
   , withEnumArray
   , withIntArray
+  , withBoolArray
   , withDoubleArray
   , withDoubleArrayRaw
   , withObjectArray
@@ -147,6 +148,9 @@ withObjectArrayRaw x f = withMany withObject x (`withArray` f)
 
 withIntArray :: (Integral a, Num n, Storable n) => [a] -> ((CUInt, Ptr n) -> IO b) -> IO b
 withIntArray = withLArray fromIntegral
+
+withBoolArray :: [Bool] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
+withBoolArray = withLArray fromBool
 
 withDoubleArray :: [Double] -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
 withDoubleArray = withLArray realToFrac

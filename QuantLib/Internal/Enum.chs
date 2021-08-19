@@ -154,7 +154,7 @@ exercise (BermudanExercise d p) = qlBermudanExercise d p >>= asQlExercise
 exercise (EarlyExercise t p) = qlEarlyExercise t p
 exercise (VanillaExercise t) = qlExercise t
 exercise (EuropeanExercise d) = qlEuropeanExercise d >>= asQlExercise
-exercise (SwingListExercise ds) = qlSwingExercise d s >>= asQlExercise where (d, s) = unzip ds
+exercise (SwingListExercise ds) = uncurry qlSwingExercise (unzip ds) >>= asQlExercise
 exercise (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s >>= asQlExercise
 
 instance EnumObject Exercise QlExercise where toObject = exercise

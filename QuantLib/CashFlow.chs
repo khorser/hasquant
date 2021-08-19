@@ -122,7 +122,7 @@ instance ForeignObject Dividend where
 
 leg :: [(Double, Day)] -- ^amounts and dates
   -> IO Leg
-leg x = qlLeg ns ds where (ns, ds) = unzip x
+leg = (uncurry qlLeg) . unzip
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
 {#fun qlLegStartDate as startDate {`Leg', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}

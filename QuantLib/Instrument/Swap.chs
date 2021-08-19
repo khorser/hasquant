@@ -12,6 +12,8 @@ module QuantLib.Instrument.Swap
 
   , impliedVolatility
   , SwapType(..)
+
+  , swap'
   )
   where
 
@@ -19,6 +21,7 @@ import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
+{#import QuantLib.CashFlow#}(Leg)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -78,5 +81,11 @@ instance IsSwap OvernightIndexedSwap where asSwap = qlOvernightIndexedSwapAsSwap
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility {`Swaption', `Double', `YieldTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Multi leg constructor.
+swap' :: [(Leg, Bool)] -- ^(legs, payer)
+  -> IO Swap
+swap' = (uncurry qlSwap1) . unzip
+{#fun qlSwap1 {withObjectArray* `[Leg]'&, withBoolArray* `[Bool]'&, preErrorCheck- `String' errorCheck*-} -> `Swap'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
