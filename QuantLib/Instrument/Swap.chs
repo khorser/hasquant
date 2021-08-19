@@ -14,6 +14,50 @@ module QuantLib.Instrument.Swap
   , SwapType(..)
 
   , swap'
+  , swap
+  , bmaSwap
+  , vanillaSwap
+
+  , endDiscounts
+  , leg
+  , legBPS
+  , legNPV
+  , maturityDate
+  , npvDateDiscount
+  , startDate
+  , startDiscounts
+
+  , bmaLeg
+  , bmaLegBPS
+  , bmaLegNPV
+  , fairLiborFraction
+  , fairLiborSpread
+  , liborFraction
+  , liborLeg
+  , liborLegBPS
+  , liborLegNPV
+
+  , swaption
+
+  -- AssetSwap
+  , assetSwap
+  , assetSwap'
+
+  , bondLeg
+  , cleanPrice
+  , fairCleanPrice
+  , fairNonParRepayment
+  , nonParRepayment
+  , parSwap
+  , payBondCoupon
+
+  -- OvernightIndexedSwap
+  , overnightIndexedSwap
+  , overnightIndexedSwap'
+
+  , overnightLeg
+  , overnightLegBPS
+  , overnightLegNPV
   )
   where
 
@@ -22,6 +66,14 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
 {#import QuantLib.CashFlow#}(Leg)
+{#import QuantLib.Index.InterestRate#}(IborIndex, BMAIndex, OvernightIborIndex)
+{#import QuantLib.Time.Schedule#}(Schedule, DayCounter)
+{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+import QuantLib.Internal.CashFlow
+import QuantLib.Internal.Schedule
+import QuantLib.Internal.Index
+import QuantLib.Internal.Enum
+{#import QuantLib.Instrument.Bond#}(Bond)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -87,5 +139,78 @@ swap' :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
 swap' = (uncurry qlSwap1) . unzip
 {#fun qlSwap1 {withObjectArray* `[Leg]'&, withBoolArray* `[Bool]'&, preErrorCheck- `String' errorCheck*-} -> `Swap'#}
+
+{#fun qlBMASwap as bmaSwap {`SwapType', `Double', `Schedule', `Double', `Double', `IborIndex', `DayCounter', `Schedule', `BMAIndex', `DayCounter', preErrorCheck- `String' errorCheck*-} -> `BMASwap'#}
+
+{#fun qlVanillaSwap as vanillaSwap {`SwapType', `Double', `Schedule', `Double', `DayCounter', `Schedule', `IborIndex', `Double', `DayCounter', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap'#}
+
+-- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
+{#fun qlSwap as swap {`Leg', `Leg', preErrorCheck- `String' errorCheck*-} -> `Swap'#}
+
+{#fun qlSwapEndDiscounts as endDiscounts {`Swap', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlSwapLeg as leg {`Swap', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+
+{#fun qlSwapLegBPS as legBPS {`Swap', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlSwapLegNPV as legNPV {`Swap', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlSwapStartDiscounts as startDiscounts {`Swap', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlSwaption as swaption {`VanillaSwap', withEnumObject* `Exercise', `SettlementType', preErrorCheck- `String' errorCheck*-} -> `Swaption'#}
+
+-- AssetSwap
+{#fun qlAssetSwap1 as assetSwap' {`Bool', withObject* `Bond', `Double', `Double', `Double', `IborIndex', `Double', `DayCounter', withMaybeDay* `Maybe Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `AssetSwap'#}
+
+{#fun qlAssetSwap as assetSwap {`Bool', withObject* `Bond', `Double', `IborIndex', `Double', `Schedule', `DayCounter', `Bool', preErrorCheck- `String' errorCheck*-} -> `AssetSwap'#}
+
+-- OvernightIndexedSwap
+{#fun qlOvernightIndexedSwap as overnightIndexedSwap {`SwapType', `Double', `Schedule', `Double', `DayCounter', `OvernightIborIndex', `Double', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap'#}
+
+{#fun qlOvernightIndexedSwap1 as overnightIndexedSwap' {`SwapType', withDoubleArray* `[Double]'&, `Schedule', `Double', `DayCounter', `OvernightIborIndex', `Double', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap'#}
+
+{#fun qlSwapMaturityDate as maturityDate {`Swap', preErrorCheck- `String' errorCheck*-} -> `(Maybe Day)' toMaybeDay#}
+
+{#fun qlSwapStartDate as startDate {`Swap', preErrorCheck- `String' errorCheck*-} -> `(Maybe Day)' toMaybeDay#}
+
+{#fun qlSwapNpvDateDiscount as npvDateDiscount {`Swap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapBmaLeg as bmaLeg {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+
+{#fun qlBMASwapBmaLegBPS as bmaLegBPS {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapBmaLegNPV as bmaLegNPV {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapFairLiborFraction as fairLiborFraction {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapFairLiborSpread as fairLiborSpread {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapLiborFraction as liborFraction {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapLiborLeg as liborLeg {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+
+{#fun qlBMASwapLiborLegBPS as liborLegBPS {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBMASwapLiborLegNPV as liborLegNPV {`BMASwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlAssetSwapBondLeg as bondLeg {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+
+{#fun qlAssetSwapCleanPrice as cleanPrice {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlAssetSwapFairCleanPrice as fairCleanPrice {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlAssetSwapFairNonParRepayment as fairNonParRepayment {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlAssetSwapNonParRepayment as nonParRepayment {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlAssetSwapParSwap as parSwap {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Bool'#}
+
+{#fun qlAssetSwapPayBondCoupon as payBondCoupon {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Bool'#}
+
+{#fun qlOvernightIndexedSwapOvernightLeg as overnightLeg {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+
+{#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
