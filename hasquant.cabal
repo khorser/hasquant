@@ -44,6 +44,7 @@ library
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument.Bond
+                    , QuantLib.Instrument.Forward
                     , QuantLib.Model
                     , QuantLib.Process
                     , QuantLib.Instrument.Credit

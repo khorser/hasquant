@@ -157,7 +157,7 @@ exercise (EuropeanExercise d) = qlEuropeanExercise d >>= asQlExercise
 exercise (SwingListExercise ds) = qlSwingExercise d s >>= asQlExercise where (d, s) = unzip ds
 exercise (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s >>= asQlExercise
 
-instance EnumObject Exercise QlExercise where constructObject = exercise
+instance EnumObject Exercise QlExercise where toObject = exercise
 
 {#enum OptionType {} deriving (Show, Eq)#}
 
@@ -346,7 +346,7 @@ instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff x = qlPlainVanillaPayo
 {#fun qlSuperSharePayoff {`Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
 {#fun qlAverageBasketPayoff1 {`QlPayoff', withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
 
-instance EnumObject Payoff QlPayoff where constructObject = payoff
+instance EnumObject Payoff QlPayoff where toObject = payoff
 
 payoff :: Payoff -> IO QlPayoff
 payoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s >>= asQlPayoff
@@ -395,7 +395,7 @@ callability :: Callability -> IO QlCallability
 callability (Soft p t d tg) = qlSoftCallability p t d tg
 callability (Callability p t ct d) = qlCallability p t ct d
 
-instance EnumObject Callability QlCallability where constructObject = callability
+instance EnumObject Callability QlCallability where toObject = callability
 
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability {`Double', `PriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
@@ -409,7 +409,7 @@ instance ForeignObject FittingMethodObject where
   constructor = FittingMethodObject
   finalizer = qlFreeFittedBondDiscountCurveFittingMethod
 
-instance EnumObject FittingMethod FittingMethodObject where constructObject = fittingMethod
+instance EnumObject FittingMethod FittingMethodObject where toObject = fittingMethod
 
 data FittingMethod =
   CubicSplies
