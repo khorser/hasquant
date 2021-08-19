@@ -5,7 +5,7 @@ module QuantLib.TermStructure.Yield
   , RateHelper
   , SwapRateHelper
   , OISRateHelper
-  , FittingMethod
+  , FittingMethod(..)
   , FittedBondDiscountCurve
   , fittedBondDiscountCurve
   , fittedBondDiscountCurve'
@@ -137,12 +137,6 @@ instance ForeignObject FittedBondDiscountCurve where
   withObject = withFittedBondDiscountCurve
   constructor = FittedBondDiscountCurve
   finalizer = qlFreeFittedBondDiscountCurve
-
-{#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
-instance ForeignObject FittingMethodObject where
-  withObject = withFittingMethodObject
-  constructor = FittingMethodObject
-  finalizer = qlFreeFittedBondDiscountCurveFittingMethod
 
 {#enum BootstrapTrait {} deriving(Show, Eq)#}
 
@@ -313,59 +307,13 @@ interpolatedZeroCurve r dc c qd i = qlInterpolatedZeroCurve rs rd dc c qs ds i' 
 
 {#fun qlInterpolatedZeroCurve {withDoubleArray* `[Double]'&, withDayArray* `[Day]'&, `DayCounter', `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
-data FittingMethod =
-  CubicSplies
-    [Double] -- ^knotVector (year fraction)
-    Bool -- ^constrainAtZero
-  | ExponentialSplines Bool
-  | NelsonSiegel
-  | SimplePolynomial
-    Word -- ^degree
-    Bool -- ^constrainAtZero
-  | Svensson
-  deriving (Show, Eq)
-
-fittingMethod :: FittingMethod -> IO FittingMethodObject
-fittingMethod (CubicSplies k c) = qlCubicBSplinesFitting k c
-fittingMethod (ExponentialSplines c) = qlExponentialSplinesFitting c
-fittingMethod NelsonSiegel = qlNelsonSiegelFitting
-fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
-fittingMethod Svensson = qlSvenssonFitting
-
-{#fun qlCubicBSplinesFitting {withDoubleArray* `[Double]'&, `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlExponentialSplinesFitting {`Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlNelsonSiegelFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlSimplePolynomialFitting {fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlSvenssonFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign newtype nocode#}
 
 -- |reference date based on current evaluation date
-fittedBondDiscountCurve' :: Word -- ^settlementDays
-  -> Calendar -- ^calendar
-  -> [BondHelper] -- ^bonds
-  -> DayCounter -- ^dayCounter
-  -> FittingMethod -- ^fittingMethod
-  -> Double -- ^accuracy
-  -> Word -- ^maxEvaluations
-  -> [Double] -- ^guess
-  -> Double -- ^simplexLambda
-  -> IO FittedBondDiscountCurve
-fittedBondDiscountCurve' se c h dc fm a m g l = do {fmo <- fittingMethod fm; qlFittedBondDiscountCurve se c h dc fmo a m g l}
+{#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve {fromIntegral `Word', `Calendar', withObjectArray* `[BondHelper]'&, `DayCounter', withEnumObject* `FittingMethod', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
 
 -- |curve reference date fixed for life of curve
-fittedBondDiscountCurve :: Day -- ^referenceDate
-  -> [BondHelper] -- ^bonds
-  -> DayCounter -- ^dayCounter
-  -> FittingMethod -- ^fittingMethod
-  -> Double -- ^accuracy
-  -> Word -- ^maxEvaluations
-  -> [Double] -- ^guess
-  -> Double -- ^simplexLambda
-  -> IO FittedBondDiscountCurve
-fittedBondDiscountCurve d h dc fm a m g l = do {fmo <- fittingMethod fm; qlFittedBondDiscountCurve1 d h dc fmo a m g l}
-
-{#fun qlFittedBondDiscountCurve {fromIntegral `Word', `Calendar', withObjectArray* `[BondHelper]'&, `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
-
-{#fun qlFittedBondDiscountCurve1 {withDay* `Day', withObjectArray* `[BondHelper]'&, `DayCounter', `FittingMethodObject', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
+{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve' {withDay* `Day', withObjectArray* `[BondHelper]'&, `DayCounter', withEnumObject* `FittingMethod', `Double', fromIntegral `Word', withDoubleArray* `[Double]'&, `Double', preErrorCheck- `String' errorCheck*-} -> `FittedBondDiscountCurve'#}
 
 -- |final value of cost function after optimization
 {#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Double'#}

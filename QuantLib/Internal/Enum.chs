@@ -1,5 +1,5 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
--- internal utilities to convert special enums
+-- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to exposure so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
     qlInterpolation
@@ -19,6 +19,9 @@ module QuantLib.Internal.Enum
   , CallabilityType(..)
   , Callability(..)
   , QlCallability
+
+  , FittingMethod(..)
+  , FittingMethodObject
   )
 where
 
@@ -152,7 +155,7 @@ exercise (EuropeanExercise d) = qlEuropeanExercise d >>= asQlExercise
 exercise (SwingListExercise ds) = qlSwingExercise d s >>= asQlExercise where (d, s) = unzip ds
 exercise (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s >>= asQlExercise
 
-instance EnumObject Exercise QlExercise where withEnumObject x f = exercise x >>= (`withObject` f)
+instance EnumObject Exercise QlExercise where constructObject = exercise
 
 {#enum OptionType {} deriving (Show, Eq)#}
 
@@ -342,11 +345,45 @@ callability :: Callability -> IO QlCallability
 callability (Soft p t d tg) = qlSoftCallability p t d tg
 callability (Callability p t ct d) = qlCallability p t ct d
 
-instance EnumObject Callability QlCallability where withEnumObject x f = callability x >>= (`withObject` f)
+instance EnumObject Callability QlCallability where constructObject = callability
 
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability {`Double', `PriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
 
 {#fun qlCallability {`Double', `PriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
+
+{#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
+
+instance ForeignObject FittingMethodObject where
+  withObject = withFittingMethodObject
+  constructor = FittingMethodObject
+  finalizer = qlFreeFittedBondDiscountCurveFittingMethod
+
+instance EnumObject FittingMethod FittingMethodObject where constructObject = fittingMethod
+
+data FittingMethod =
+  CubicSplies
+    [Double] -- ^knotVector (year fraction)
+    Bool -- ^constrainAtZero
+  | ExponentialSplines Bool
+  | NelsonSiegel
+  | SimplePolynomial
+    Word -- ^degree
+    Bool -- ^constrainAtZero
+  | Svensson
+  deriving (Show, Eq)
+
+fittingMethod :: FittingMethod -> IO FittingMethodObject
+fittingMethod (CubicSplies k c) = qlCubicBSplinesFitting k c
+fittingMethod (ExponentialSplines c) = qlExponentialSplinesFitting c
+fittingMethod NelsonSiegel = qlNelsonSiegelFitting
+fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
+fittingMethod Svensson = qlSvenssonFitting
+
+{#fun qlCubicBSplinesFitting {withDoubleArray* `[Double]'&, `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlExponentialSplinesFitting {`Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlNelsonSiegelFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlSimplePolynomialFitting {fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlSvenssonFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

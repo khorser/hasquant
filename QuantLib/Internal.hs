@@ -268,7 +268,9 @@ objectMatrix rows cols d =
 
 -- TODO use type families
 class (ForeignObject b) => EnumObject a b | b -> a where
+  constructObject :: a -> IO b
   withEnumObject :: a -> (Ptr b -> IO c) -> IO c
+  withEnumObject x f = constructObject x >>= (`withObject` f)
 
 withEnumObjectArray :: (EnumObject a b) => [a] -> ((CUInt, Ptr (Ptr b)) -> IO c) -> IO c
 withEnumObjectArray x f = withMany withEnumObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
