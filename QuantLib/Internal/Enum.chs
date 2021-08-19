@@ -27,8 +27,9 @@ module QuantLib.Internal.Enum
   )
 where
 
-import QuantLib.Internal
+import Control.Monad((>=>))
 import Foreign.Marshal.Utils(fromBool)
+import QuantLib.Internal
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -146,6 +147,8 @@ data Exercise =
 {#fun qlSwingExercise {withDayArray* `[Day]'&, withIntArray* `[Word]'&, preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
 
 {#fun qlSwingExercise1 {withDay* `Day', withDay* `Day', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
+
+--{#NOTUSED fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
 
 exercise :: Exercise -> IO QlExercise
 exercise (AmericanExercise Nothing d p) = qlAmericanExercise1 d p >>= asQlExercise
@@ -306,7 +309,7 @@ instance ForeignObject QlStrikedTypePayoff where
   constructor = QlStrikedTypePayoff
   finalizer = qlFreeStrikedTypePayoff
 {#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} -> `QlTypePayoff'#}
-instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff x = qlStrikedTypePayoffAsTypePayoff x >>= asQlPayoff
+instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff = qlStrikedTypePayoffAsTypePayoff >=> asQlPayoff
 
 {#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
 instance ForeignObject QlPercentageStrikePayoff where
@@ -314,7 +317,7 @@ instance ForeignObject QlPercentageStrikePayoff where
   constructor = QlPercentageStrikePayoff
   finalizer = qlFreePercentageStrikePayoff
 {#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} -> `QlStrikedTypePayoff'#}
-instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff x = qlPercentageStrikePayoffAsStrikedTypePayoff x >>= asQlPayoff
+instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff = qlPercentageStrikePayoffAsStrikedTypePayoff >=> asQlPayoff
 
 {#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
 instance ForeignObject QlPlainVanillaPayoff where
@@ -322,7 +325,7 @@ instance ForeignObject QlPlainVanillaPayoff where
   constructor = QlPlainVanillaPayoff
   finalizer = qlFreePlainVanillaPayoff
 {#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
-instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff x = qlPlainVanillaPayoffAsStrikedTypePayoff x >>= asQlPayoff
+instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoffAsStrikedTypePayoff >=> asQlPayoff
 
 {#fun qlAssetOrNothingPayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
 {#fun qlAverageBasketPayoff {`QlPayoff', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}

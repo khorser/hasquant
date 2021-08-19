@@ -74,6 +74,7 @@ import QuantLib.Internal.Schedule
 import QuantLib.Internal.Index
 import QuantLib.Internal.Enum
 {#import QuantLib.Instrument.Bond#}(Bond)
+{#import QuantLib.Instrument.Option#}(Option, IsOption(..))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -88,6 +89,8 @@ instance ForeignObject Swaption where
   withObject = withSwaption
   constructor = Swaption
   finalizer = qlFreeSwaption
+{#fun qlSwaptionAsOption {`Swaption'} -> `Option' peekObject*#}
+instance IsOption Swaption where asOption = qlSwaptionAsOption
 
 {#pointer *QlSwap as Swap foreign finalizer qlFreeSwap newtype#}
 instance ForeignObject Swap where
