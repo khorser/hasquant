@@ -49,13 +49,15 @@ data Claim = FaceValue | FaceValueAccrual Bond
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign finalizer qlFreeCreditDefaultSwap newtype#}
 instance ForeignObject CreditDefaultSwap where
   withObject = withCreditDefaultSwap
-  peekObject = newForeignPtr qlFreeCreditDefaultSwap >=> return . CreditDefaultSwap
+  constructor = CreditDefaultSwap
+  finalizer=qlFreeCreditDefaultSwap
 instance IsInstrument CreditDefaultSwap where asInstrument = qlCreditDefaultSwapAsInstrument
 
 {#pointer *QlClaim foreign finalizer qlFreeClaim newtype#}
 instance ForeignObject QlClaim where
   withObject = withQlClaim
-  peekObject = newForeignPtr qlFreeClaim >=> return . QlClaim
+  constructor = QlClaim
+  finalizer=qlFreeClaim
 
 {#fun qlCreditDefaultSwapAsInstrument {`CreditDefaultSwap'} -> `Instrument' peekObject*#}
 

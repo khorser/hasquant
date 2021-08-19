@@ -30,7 +30,8 @@ import QuantLib.Internal
 {#pointer *Currency foreign finalizer qlFreeCurrency newtype#}
 instance ForeignObject Currency where
   withObject = withCurrency
-  peekObject = newForeignPtr qlFreeCurrency >=> return . Currency
+  constructor = Currency
+  finalizer = qlFreeCurrency
 instance Show Currency where show = qlCurrencyName
 instance Eq Currency where x == y = show x == show y
   

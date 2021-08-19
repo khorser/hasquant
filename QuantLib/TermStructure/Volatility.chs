@@ -85,46 +85,55 @@ import QuantLib.Internal.Enum
 {#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign finalizer qlFreeBlackVarianceCurve newtype#}
 instance ForeignObject BlackVarianceCurve where
   withObject = withBlackVarianceCurve
-  peekObject = newForeignPtr qlFreeBlackVarianceCurve >=> return . BlackVarianceCurve
+  constructor = BlackVarianceCurve
+  finalizer=qlFreeBlackVarianceCurve
 
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign finalizer qlFreeBlackVolTermStructure newtype#}
 instance ForeignObject BlackVolTermStructure where
   withObject = withBlackVolTermStructure
-  peekObject = newForeignPtr qlFreeBlackVolTermStructure >=> return . BlackVolTermStructure
+  constructor = BlackVolTermStructure
+  finalizer=qlFreeBlackVolTermStructure
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign finalizer qlFreeCallableBondVolatilityStructure newtype#}
 instance ForeignObject CallableBondVolatilityStructure where
   withObject = withCallableBondVolatilityStructure
-  peekObject = newForeignPtr qlFreeCallableBondVolatilityStructure >=> return . CallableBondVolatilityStructure
+  constructor = CallableBondVolatilityStructure
+  finalizer=qlFreeCallableBondVolatilityStructure
 
 {#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign finalizer qlFreeCapFloorTermVolSurface newtype#}
 instance ForeignObject CapFloorTermVolSurface where
   withObject = withCapFloorTermVolSurface
-  peekObject = newForeignPtr qlFreeCapFloorTermVolSurface >=> return . CapFloorTermVolSurface
+  constructor = CapFloorTermVolSurface
+  finalizer=qlFreeCapFloorTermVolSurface
 
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign finalizer qlFreeLocalVolTermStructure newtype#}
 instance ForeignObject LocalVolTermStructure where
   withObject = withLocalVolTermStructure
-  peekObject = newForeignPtr qlFreeLocalVolTermStructure >=> return . LocalVolTermStructure
+  constructor = LocalVolTermStructure
+  finalizer=qlFreeLocalVolTermStructure
 
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign finalizer qlFreeOptionletVolatilityStructure newtype#}
 instance ForeignObject OptionletVolatilityStructure where
   withObject = withOptionletVolatilityStructure
-  peekObject = newForeignPtr qlFreeOptionletVolatilityStructure >=> return . OptionletVolatilityStructure
+  constructor = OptionletVolatilityStructure
+  finalizer=qlFreeOptionletVolatilityStructure
 
 {#pointer *QlSmileSection as SmileSection foreign finalizer qlFreeSmileSection newtype#}
 instance ForeignObject SmileSection where
   withObject = withSmileSection
-  peekObject = newForeignPtr qlFreeSmileSection >=> return . SmileSection
+  constructor = SmileSection
+  finalizer=qlFreeSmileSection
 
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign finalizer qlFreeSwaptionVolatilityStructure newtype#}
 instance ForeignObject SwaptionVolatilityStructure where
   withObject = withSwaptionVolatilityStructure
-  peekObject = newForeignPtr qlFreeSwaptionVolatilityStructure >=> return . SwaptionVolatilityStructure
+  constructor = SwaptionVolatilityStructure
+  finalizer=qlFreeSwaptionVolatilityStructure
 
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign finalizer qlFreeVolatilityTermStructure newtype#}
 instance ForeignObject VolatilityTermStructure where
   withObject = withVolatilityTermStructure
-  peekObject = newForeignPtr qlFreeVolatilityTermStructure >=> return . VolatilityTermStructure
+  constructor = VolatilityTermStructure
+  finalizer=qlFreeVolatilityTermStructure
 
 {#enum BlackVarianceSurfaceExtrapolation {} deriving(Show, Eq)#}
 

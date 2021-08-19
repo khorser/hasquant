@@ -182,7 +182,8 @@ market _ = {#const NO_ENUM#}
 {#pointer *Calendar foreign finalizer qlFreeCalendar newtype#}
 instance ForeignObject Calendar where
   withObject = withCalendar
-  peekObject = newForeignPtr qlFreeCalendar >=> return . Calendar
+  constructor = Calendar
+  finalizer = qlFreeCalendar
 instance Show Calendar where show = qlCalendarName
 instance Eq Calendar where x == y = show x == show y
   

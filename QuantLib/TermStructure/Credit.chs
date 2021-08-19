@@ -49,13 +49,15 @@ import QuantLib.Internal.Enum
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign finalizer qlFreeDefaultProbabilityTermStructure newtype#}
 instance ForeignObject DefaultProbabilityTermStructure where
   withObject = withDefaultProbabilityTermStructure
-  peekObject = newForeignPtr qlFreeDefaultProbabilityTermStructure >=> return . DefaultProbabilityTermStructure
+  constructor = DefaultProbabilityTermStructure
+  finalizer=qlFreeDefaultProbabilityTermStructure
 instance IsTermStructure DefaultProbabilityTermStructure where asTermStructure = qlDefaultProbabilityTermStructureAsTermStructure
 
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign finalizer qlFreeDefaultProbabilityHelper newtype#}
 instance ForeignObject DefaultProbabilityHelper where
   withObject = withDefaultProbabilityHelper
-  peekObject = newForeignPtr qlFreeDefaultProbabilityHelper >=> return . DefaultProbabilityHelper
+  constructor = DefaultProbabilityHelper
+  finalizer=qlFreeDefaultProbabilityHelper
 
 {#fun qlDefaultProbabilityTermStructureAsTermStructure {`DefaultProbabilityTermStructure'} -> `TermStructure' peekObject*#}
 

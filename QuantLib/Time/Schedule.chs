@@ -48,7 +48,8 @@ import QuantLib.Internal.Calendar
 {#pointer *DayCounter foreign finalizer qlFreeDayCounter newtype#}
 instance ForeignObject DayCounter where
   withObject = withDayCounter
-  peekObject = newForeignPtr qlFreeDayCounter >=> return . DayCounter
+  constructor = DayCounter
+  finalizer = qlFreeDayCounter
 instance Show DayCounter where show = qlDayCounterName
 instance Eq DayCounter where x == y = show x == show y
   
@@ -108,7 +109,8 @@ dayCounter x = dayCounterType x >>= flip qlDayCounter (convention x)
 {#pointer *Schedule foreign finalizer qlFreeSchedule newtype#}
 instance ForeignObject Schedule where
   withObject = withSchedule
-  peekObject = newForeignPtr qlFreeSchedule >=> return . Schedule
+  constructor = Schedule
+  finalizer = qlFreeSchedule
 
 {#fun qlSchedule as schedule {withMaybeDay* `Maybe Day', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withObject *`Calendar',
   `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule',

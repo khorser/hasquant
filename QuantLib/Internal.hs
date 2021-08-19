@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
 module QuantLib.Internal
   (
     Day -- reexport for simplicity
@@ -27,6 +28,7 @@ module QuantLib.Internal
   , withDayPtr
   , fromEnumQuantity
   , toEnumQuantity
+  , fromEnumC
 
   , withDay
   , toDay
@@ -41,6 +43,8 @@ module QuantLib.Internal
   , toSerial
   , fromSerial
   , ForeignObject(..)
+  , EnumObject(..)
+  , withEnumObjectArray
   , qlSavedSettings
   , qlFreeSavedSettings
   , fromMaybeDouble
@@ -50,10 +54,6 @@ module QuantLib.Internal
   , realMatrix
   , objectMatrix
   , qlNullInteger
-
-  -- reexport some useful stuff
-  , newForeignPtr
-  , (>=>)
   )
 where
 
@@ -65,7 +65,7 @@ import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
-import Foreign.ForeignPtr(newForeignPtr)
+import Foreign.ForeignPtr(newForeignPtr, ForeignPtr, FinalizerPtr)
 import Control.Exception(throwIO)
 import Control.Monad(when, (>=>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
@@ -75,9 +75,12 @@ import QuantLib.Type
 class ForeignObject a where
 -- I don't want to expose withT functions
   withObject :: a -> (Ptr a -> IO b) -> IO b
+  constructor :: ForeignPtr a -> a
+  finalizer :: FinalizerPtr a
 -- ch2s will not attach finalizers to foreign ptrs declared in other modules
 -- so let's add more boilerplate and declare the unmarshaller outselves
   peekObject :: Ptr a -> IO a
+  peekObject = newForeignPtr finalizer >=> return . constructor
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
@@ -262,5 +265,16 @@ objectMatrix rows cols d =
   if rows * cols /= fromIntegral (length d)
     then Left "Data length does not match with dimensions"
     else Right $ Matrix rows cols d
+
+-- TODO use type families
+class (ForeignObject b) => EnumObject a b | b -> a where
+  withEnumObject :: a -> (Ptr b -> IO c) -> IO c
+
+withEnumObjectArray :: (EnumObject a b) => [a] -> ((CUInt, Ptr (Ptr b)) -> IO c) -> IO c
+withEnumObjectArray x f = withMany withEnumObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
+fromEnumC :: (Enum a, Integral b) => a -> b
+fromEnumC = fromIntegral . fromEnum
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

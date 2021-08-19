@@ -105,37 +105,44 @@ import {-# SOURCE #-} QuantLib.Instrument.Swap(VanillaSwap, OvernightIndexedSwap
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign finalizer qlFreeYieldTermStructure newtype#}
 instance ForeignObject YieldTermStructure where
   withObject = withYieldTermStructure
-  peekObject = newForeignPtr qlFreeYieldTermStructure >=> return . YieldTermStructure
+  constructor = YieldTermStructure
+  finalizer = qlFreeYieldTermStructure
 
 {#pointer *QlRateHelper as RateHelper foreign finalizer qlFreeRateHelper newtype#}
 instance ForeignObject RateHelper where
   withObject = withRateHelper
-  peekObject = newForeignPtr qlFreeRateHelper >=> return . RateHelper
+  constructor = RateHelper
+  finalizer = qlFreeRateHelper
 
 {#pointer *QlBondHelper as BondHelper foreign finalizer qlFreeBondHelper newtype#}
 instance ForeignObject BondHelper where
   withObject = withBondHelper
-  peekObject = newForeignPtr qlFreeBondHelper >=> return . BondHelper
+  constructor = BondHelper
+  finalizer = qlFreeBondHelper
 
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign finalizer qlFreeSwapRateHelper newtype#}
 instance ForeignObject SwapRateHelper where
   withObject = withSwapRateHelper
-  peekObject = newForeignPtr qlFreeSwapRateHelper >=> return . SwapRateHelper
+  constructor = SwapRateHelper
+  finalizer = qlFreeSwapRateHelper
 
 {#pointer *QlOISRateHelper as OISRateHelper foreign finalizer qlFreeOISRateHelper newtype#}
 instance ForeignObject OISRateHelper where
   withObject = withOISRateHelper
-  peekObject = newForeignPtr qlFreeOISRateHelper >=> return . OISRateHelper
+  constructor = OISRateHelper
+  finalizer = qlFreeOISRateHelper
 
 {#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign finalizer qlFreeFittedBondDiscountCurve newtype#}
 instance ForeignObject FittedBondDiscountCurve where
   withObject = withFittedBondDiscountCurve
-  peekObject = newForeignPtr qlFreeFittedBondDiscountCurve >=> return . FittedBondDiscountCurve
+  constructor = FittedBondDiscountCurve
+  finalizer = qlFreeFittedBondDiscountCurve
 
 {#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
 instance ForeignObject FittingMethodObject where
   withObject = withFittingMethodObject
-  peekObject = newForeignPtr qlFreeFittedBondDiscountCurveFittingMethod >=> return . FittingMethodObject
+  constructor = FittingMethodObject
+  finalizer = qlFreeFittedBondDiscountCurveFittingMethod
 
 {#enum BootstrapTrait {} deriving(Show, Eq)#}
 

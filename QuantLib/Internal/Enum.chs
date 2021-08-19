@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 -- internal utilities to convert special enums
 module QuantLib.Internal.Enum
   (
@@ -7,30 +7,22 @@ module QuantLib.Internal.Enum
   , Approximation(..)
   , Interpolation(..)
 
-  , QlExercise
-  , QlAmericanExercise
-  , QlBermudanExercise
-  , QlEuropeanExercise
-  , QlSwingExercise
-
   , ExerciseType(..)
   , Exercise(..)
-  , withQlExercise
+  , QlExercise
 
   , OptionType(..)
   , PositionType(..)
   , PriceType(..)
   , Payoff(..)
-  , withQlPayoff
 
-  --, Callability(..)
-  -- , withQlCallability
-  , EnumObject(..)
+  , CallabilityType(..)
+  , Callability(..)
+  , QlCallability
   )
 where
 
 import QuantLib.Internal
-import Foreign.Ptr(Ptr)
 import Foreign.Marshal.Utils(fromBool)
 
 #include "qlTypesC2HS.h"
@@ -79,42 +71,45 @@ data Interpolation =
   | Abcd
   deriving (Show, Eq)
 
-class (ForeignObject b) => EnumObject a b | b -> a where
-  withEnumObject :: a -> (Ptr b -> IO c) -> IO c
-
 {#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
 instance ForeignObject QlExercise where
   withObject = withQlExercise
-  peekObject = newForeignPtr qlFreeExercise >=> return . QlExercise
+  constructor = QlExercise
+  finalizer = qlFreeExercise
 
 class IsQlExercise a where
   asQlExercise :: a -> IO QlExercise
 
+-- TODO check if we really need this hierarchy
 {#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
 instance ForeignObject QlEuropeanExercise where
   withObject = withQlEuropeanExercise
-  peekObject = newForeignPtr qlFreeEuropeanExercise >=> return . QlEuropeanExercise
+  constructor = QlEuropeanExercise
+  finalizer = qlFreeEuropeanExercise
 {#fun qlEuropeanExerciseAsExercise {`QlEuropeanExercise'} -> `QlExercise'#}
 instance IsQlExercise QlEuropeanExercise where asQlExercise = qlEuropeanExerciseAsExercise
 
 {#pointer *QlAmericanExercise foreign finalizer qlFreeAmericanExercise newtype#}
 instance ForeignObject QlAmericanExercise where
   withObject = withQlAmericanExercise
-  peekObject = newForeignPtr qlFreeAmericanExercise >=> return . QlAmericanExercise
+  constructor = QlAmericanExercise
+  finalizer = qlFreeAmericanExercise
 {#fun qlAmericanExerciseAsExercise {`QlAmericanExercise'} -> `QlExercise'#}
 instance IsQlExercise QlAmericanExercise where asQlExercise = qlAmericanExerciseAsExercise
 
 {#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
 instance ForeignObject QlSwingExercise where
   withObject = withQlSwingExercise
-  peekObject = newForeignPtr qlFreeSwingExercise >=> return . QlSwingExercise
+  constructor = QlSwingExercise
+  finalizer = qlFreeSwingExercise
 {#fun qlSwingExerciseAsExercise {`QlSwingExercise'} -> `QlExercise'#}
 instance IsQlExercise QlSwingExercise where asQlExercise = qlSwingExerciseAsExercise
 
 {#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
 instance ForeignObject QlBermudanExercise where
   withObject = withQlBermudanExercise
-  peekObject = newForeignPtr qlFreeBermudanExercise >=> return . QlBermudanExercise
+  constructor = QlBermudanExercise
+  finalizer = qlFreeBermudanExercise
 {#fun qlBermudanExerciseAsExercise {`QlBermudanExercise'} -> `QlExercise'#}
 instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
 
@@ -274,6 +269,55 @@ data Payoff =
       Double -- ^secondStrike
       Double -- ^cashPayoff
 
+{#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
+instance ForeignObject QlPayoff where
+  withObject = withQlPayoff
+  constructor = QlPayoff
+  finalizer = qlFreePayoff
+
+class IsQlPayoff a where
+  asQlPayoff :: a -> IO QlPayoff
+
+{#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
+instance ForeignObject QlBasketPayoff where
+  withObject = withQlBasketPayoff
+  constructor = QlBasketPayoff
+  finalizer = qlFreeBasketPayoff
+{#fun qlBasketPayoffAsPayoff {`QlBasketPayoff'} -> `QlPayoff'#}
+instance IsQlPayoff QlBasketPayoff where asQlPayoff = qlBasketPayoffAsPayoff
+
+{#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
+instance ForeignObject QlTypePayoff where
+  withObject = withQlTypePayoff
+  constructor = QlTypePayoff
+  finalizer = qlFreeTypePayoff
+{#fun qlTypePayoffAsPayoff {`QlTypePayoff'} -> `QlPayoff'#}
+instance IsQlPayoff QlTypePayoff where asQlPayoff = qlTypePayoffAsPayoff
+
+{#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
+instance ForeignObject QlStrikedTypePayoff where
+  withObject = withQlStrikedTypePayoff
+  constructor = QlStrikedTypePayoff
+  finalizer = qlFreeStrikedTypePayoff
+{#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} -> `QlTypePayoff'#}
+instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff x = qlStrikedTypePayoffAsTypePayoff x >>= asQlPayoff
+
+{#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
+instance ForeignObject QlPercentageStrikePayoff where
+  withObject = withQlPercentageStrikePayoff
+  constructor = QlPercentageStrikePayoff
+  finalizer = qlFreePercentageStrikePayoff
+{#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} -> `QlStrikedTypePayoff'#}
+instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff x = qlPercentageStrikePayoffAsStrikedTypePayoff x >>= asQlPayoff
+
+{#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
+instance ForeignObject QlPlainVanillaPayoff where
+  withObject = withQlPlainVanillaPayoff
+  constructor = QlPlainVanillaPayoff
+  finalizer = qlFreePlainVanillaPayoff
+{#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
+instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff x = qlPlainVanillaPayoffAsStrikedTypePayoff x >>= asQlPayoff
+
 data Callability =
   Soft
     Double -- ^price
@@ -283,49 +327,26 @@ data Callability =
   | Callability
       Double
       PriceType
+      CallabilityType
       Day
 
-{#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
-instance ForeignObject QlPayoff where
-  withObject = withQlPayoff
-  peekObject = newForeignPtr qlFreePayoff >=> return . QlPayoff
+{#enum CallabilityType {} add prefix="Callability" deriving(Show, Eq)#}
 
-class IsQlPayoff a where
-  asQlPayoff :: a -> IO QlPayoff
+{#pointer *QlCallability foreign finalizer qlFreeCallability newtype#}
+instance ForeignObject QlCallability where
+  withObject = withQlCallability
+  constructor = QlCallability
+  finalizer = qlFreeCallability
 
-{#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
-instance ForeignObject QlBasketPayoff where
-  withObject = withQlBasketPayoff
-  peekObject = newForeignPtr qlFreeBasketPayoff >=> return . QlBasketPayoff
-{#fun qlBasketPayoffAsPayoff {`QlBasketPayoff'} -> `QlPayoff'#}
-instance IsQlPayoff QlBasketPayoff where asQlPayoff = qlBasketPayoffAsPayoff
+callability :: Callability -> IO QlCallability
+callability (Soft p t d tg) = qlSoftCallability p t d tg
+callability (Callability p t ct d) = qlCallability p t ct d
 
-{#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
-instance ForeignObject QlTypePayoff where
-  withObject = withQlTypePayoff
-  peekObject = newForeignPtr qlFreeTypePayoff >=> return . QlTypePayoff
-{#fun qlTypePayoffAsPayoff {`QlTypePayoff'} -> `QlPayoff'#}
-instance IsQlPayoff QlTypePayoff where asQlPayoff = qlTypePayoffAsPayoff
+instance EnumObject Callability QlCallability where withEnumObject x f = callability x >>= (`withObject` f)
 
-{#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
-instance ForeignObject QlStrikedTypePayoff where
-  withObject = withQlStrikedTypePayoff
-  peekObject = newForeignPtr qlFreeStrikedTypePayoff >=> return . QlStrikedTypePayoff
-{#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} -> `QlTypePayoff'#}
-instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff x = qlStrikedTypePayoffAsTypePayoff x >>= asQlPayoff
+-- |callability leaving to the holder the possibility to convert
+{#fun qlSoftCallability {`Double', `PriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
 
-{#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
-instance ForeignObject QlPercentageStrikePayoff where
-  withObject = withQlPercentageStrikePayoff
-  peekObject = newForeignPtr qlFreePercentageStrikePayoff >=> return . QlPercentageStrikePayoff
-{#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} -> `QlStrikedTypePayoff'#}
-instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff x = qlPercentageStrikePayoffAsStrikedTypePayoff x >>= asQlPayoff
-
-{#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
-instance ForeignObject QlPlainVanillaPayoff where
-  withObject = withQlPlainVanillaPayoff
-  peekObject = newForeignPtr qlFreePlainVanillaPayoff >=> return . QlPlainVanillaPayoff
-{#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
-instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff x = qlPlainVanillaPayoffAsStrikedTypePayoff x >>= asQlPayoff
+{#fun qlCallability {`Double', `PriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

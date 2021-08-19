@@ -18,7 +18,8 @@ import QuantLib.Internal
 {#pointer *QlOption as Option foreign finalizer qlFreeOption newtype#}
 instance ForeignObject Option where
   withObject = withOption
-  peekObject = newForeignPtr qlFreeOption >=> return . Option
+  constructor = Option
+  finalizer = qlFreeOption
 instance IsInstrument Option where asInstrument = qlOptionAsInstrument
 {#fun qlOptionAsInstrument {`Option'} -> `Instrument' peekObject*#}
 
@@ -28,7 +29,8 @@ class IsOption a where
 {#pointer *QlCdsOption as CdsOption foreign finalizer qlFreeCdsOption newtype#}
 instance ForeignObject CdsOption where
   withObject = withCdsOption
-  peekObject = newForeignPtr qlFreeCdsOption >=> return . CdsOption
+  constructor = CdsOption
+  finalizer = qlFreeCdsOption
 instance IsOption CdsOption where asOption = qlCdsOptionAsOption
 {#fun qlCdsOptionAsOption {`CdsOption'} -> `Option'#}
 

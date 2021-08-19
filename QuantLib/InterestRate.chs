@@ -31,7 +31,8 @@ import QuantLib.Internal.Schedule
 {#pointer *InterestRate foreign finalizer qlFreeInterestRate newtype#}
 instance ForeignObject InterestRate where
   withObject = withInterestRate
-  peekObject = newForeignPtr qlFreeInterestRate >=> return . InterestRate
+  constructor = InterestRate
+  finalizer = qlFreeInterestRate
 
 {#fun qlInterestRate as interestRate {`Double', `DayCounter', `Compounding', `Frequency', preErrorCheck- `String' errorCheck*-} -> `InterestRate'#}
 

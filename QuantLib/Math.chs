@@ -41,7 +41,8 @@ import QuantLib.Internal.Enum(Approximation(..), Interpolation(..))
 {#pointer *Rounding foreign finalizer qlFreeRounding newtype#}
 instance ForeignObject Rounding where
   withObject = withRounding
-  peekObject = newForeignPtr qlFreeRounding >=> return . Rounding
+  constructor = Rounding
+  finalizer = qlFreeRounding
 
 {#fun qlRounding as rounding {preErrorCheck- `String' errorCheck*-} -> `Rounding'#}
 

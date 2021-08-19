@@ -75,7 +75,6 @@ module QuantLib.Instrument.Bond
   , convertibleFixedCouponBond
   , convertibleFloatingRateBond
   , convertibleZeroCouponBond
-  , softCallability
   )
   where
 import QuantLib.Internal
@@ -105,7 +104,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlBond as Bond foreign finalizer qlFreeBond newtype#}
 instance ForeignObject Bond where
   withObject = withBond
-  peekObject = newForeignPtr qlFreeBond >=> return . Bond
+  constructor = Bond
+  finalizer=qlFreeBond
 
 {#fun qlBondAsInstrument {`Bond'} -> `Instrument' peekObject*#}
 instance IsInstrument Bond where asInstrument = qlBondAsInstrument
@@ -115,21 +115,24 @@ class IsBond a where asBond :: a -> IO Bond
 {#pointer *QlFixedRateBond as FixedRateBond foreign finalizer qlFreeFixedRateBond newtype#}
 instance ForeignObject FixedRateBond where
   withObject = withFixedRateBond
-  peekObject = newForeignPtr qlFreeFixedRateBond >=> return . FixedRateBond
+  constructor = FixedRateBond
+  finalizer=qlFreeFixedRateBond
 {#fun qlFixedRateBondAsBond {`FixedRateBond'} -> `Bond'#}
 instance IsBond FixedRateBond where asBond = qlFixedRateBondAsBond
 
 {#pointer *QlCallableBond as CallableBond foreign finalizer qlFreeCallableBond newtype#}
 instance ForeignObject CallableBond where
   withObject = withCallableBond
-  peekObject = newForeignPtr qlFreeCallableBond >=> return . CallableBond
+  constructor = CallableBond
+  finalizer=qlFreeCallableBond
 {#fun qlCallableBondAsBond {`CallableBond'} -> `Bond'#}
 instance IsBond CallableBond where asBond = qlCallableBondAsBond
 
 {#pointer *QlConvertibleBond as ConvertibleBond foreign finalizer qlFreeConvertibleBond newtype#}
 instance ForeignObject ConvertibleBond where
   withObject = withConvertibleBond
-  peekObject = newForeignPtr qlFreeConvertibleBond >=> return . ConvertibleBond
+  constructor = ConvertibleBond
+  finalizer=qlFreeConvertibleBond
 {#fun qlConvertibleBondAsBond {`ConvertibleBond'} -> `Bond'#}
 instance IsBond ConvertibleBond where asBond = qlConvertibleBondAsBond
 
@@ -273,19 +276,18 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 -- The default bond settlement is used for calculation. /Warning/ the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
 {#fun qlBondDirtyPrice as currentDirtyPrice {`Bond', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlCallableFixedRateBond as callableFixedRateBond {fromIntegral `Word', `Double', `Schedule', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withObjectArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
+{#pointer *QlCallability foreign newtype nocode#}
 
-{#fun qlCallableZeroCouponBond as callableZeroCouponBond {fromIntegral `Word', `Double', `Calendar', withDay* `Day', `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withObjectArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
+{#fun qlCallableFixedRateBond as callableFixedRateBond {fromIntegral `Word', `Double', `Schedule', withDoubleArray* `[Double]'&, `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withEnumObjectArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
+
+{#fun qlCallableZeroCouponBond as callableZeroCouponBond {fromIntegral `Word', `Double', `Calendar', withDay* `Day', `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withEnumObjectArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
 
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
-
--- |callability leaving to the holder the possibility to convert
-{#fun qlSoftCallability as softCallability {`Double', `PriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `Callability' peekObject*#}
+{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `DayCounter', `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -12,7 +12,7 @@ module QuantLib.Instrument
 
   , Instrument
   , IsInstrument(..)
-  , Callability
+  , Callability(..)
 
   , Exercise(..)
   , ExerciseType(..)
@@ -35,8 +35,6 @@ import QuantLib.Internal.Enum
 
 {#enum SettlementType {} deriving(Show, Eq)#}
 
-{#enum CallabilityType {} add prefix="Callability" deriving(Show, Eq)#}
-
 {#enum SettlementMethod {} deriving(Show, Eq)#}
 
 {#enum BarrierType {} deriving(Show, Eq)#}
@@ -54,14 +52,10 @@ import QuantLib.Internal.Enum
 {#pointer *QlInstrument as Instrument foreign finalizer qlFreeInstrument newtype#}
 instance ForeignObject Instrument where
   withObject = withInstrument
-  peekObject = newForeignPtr qlFreeInstrument >=> return . Instrument
+  constructor = Instrument
+  finalizer = qlFreeInstrument
 
 class IsInstrument a where asInstrument :: a -> IO Instrument
-
-{#pointer *QlCallability as Callability foreign finalizer qlFreeCallability newtype#}
-instance ForeignObject Callability where
-  withObject = withCallability
-  peekObject = newForeignPtr qlFreeCallability >=> return . Callability
 
 -- |Returns the net present value of the given Instrument
 {#fun qlInstrumentNPV as npv {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Double'#}

@@ -99,17 +99,20 @@ import QuantLib.Internal.Quote
 {#pointer *Leg foreign finalizer qlFreeLeg newtype#}
 instance ForeignObject Leg where
   withObject = withLeg
-  peekObject = newForeignPtr qlFreeLeg >=> return . Leg
+  constructor = Leg
+  finalizer = qlFreeLeg
   
 {#pointer *CouponLeg foreign finalizer qlFreeCouponLeg newtype#}
 instance ForeignObject CouponLeg where
   withObject = withCouponLeg
-  peekObject = newForeignPtr qlFreeCouponLeg >=> return . CouponLeg
+  constructor = CouponLeg
+  finalizer = qlFreeCouponLeg
   
 {#pointer *QlDividend as Dividend foreign finalizer qlFreeDividend newtype#}
 instance ForeignObject Dividend where
   withObject = withDividend
-  peekObject = newForeignPtr qlFreeDividend >=> return . Dividend
+  constructor = Dividend
+  finalizer = qlFreeDividend
   
 {#enum DurationType {} deriving(Show, Eq)#}
 
@@ -268,7 +271,8 @@ cashFlows l i d = do {(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds 
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign finalizer qlFreeFloatingCouponPricer newtype#}
 instance ForeignObject FloatingRateCouponPricer where
   withObject = withFloatingRateCouponPricer
-  peekObject = newForeignPtr qlFreeFloatingCouponPricer >=> return . FloatingRateCouponPricer
+  constructor = FloatingRateCouponPricer
+  finalizer = qlFreeFloatingCouponPricer
   
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer {withObject* `OptionletVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}

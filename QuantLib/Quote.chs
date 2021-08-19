@@ -27,9 +27,9 @@ module QuantLib.Quote
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(TimeUnit)
 {#import QuantLib.Index#}(Index)
-{#import QuantLib.Instrument#}(OptionType)
 import {-# SOURCE #-} QuantLib.Index.InterestRate
 import QuantLib.Internal.Index
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -42,14 +42,14 @@ import QuantLib.Internal.Index
 {#pointer *QlQuote as Quote foreign finalizer qlFreeQuote newtype#}
 instance ForeignObject Quote where
   withObject = withQuote
-  peekObject = newForeignPtr qlFreeQuote >=> return . Quote
+  constructor = Quote
+  finalizer = qlFreeQuote
 
 {#pointer *QlSimpleQuote as SimpleQuote foreign finalizer qlFreeSimpleQuote newtype#}
 instance ForeignObject SimpleQuote where
   withObject = withSimpleQuote
-  peekObject = newForeignPtr qlFreeSimpleQuote >=> return . SimpleQuote
-
-{#enum PriceType {} deriving(Show, Eq)#}
+  constructor = SimpleQuote
+  finalizer = qlFreeSimpleQuote
 
 {#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq)#}
 
@@ -79,7 +79,7 @@ instance ForeignObject SimpleQuote where
 
 {#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote {`IborIndex', withDay* `Day', `Quote', `Quote', `Quote', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
-{#fun qlImpliedStdDevQuote as impliedStdDevQuote {`OptionType', `Quote' , `Quote' , `Double' , `Double' , `Double' , fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
+{#fun qlImpliedStdDevQuote as impliedStdDevQuote {fromEnumC `OptionType', `Quote' , `Quote' , `Double' , `Double' , `Double' , fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 
 {#fun qlLastFixingQuote as lastFixingQuote {`Index', preErrorCheck- `String' errorCheck*-} -> `Quote'#}
 

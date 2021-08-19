@@ -19,7 +19,8 @@ import QuantLib.Internal
 {#pointer *QlIndex as Index foreign finalizer qlFreeIndex newtype#}
 instance ForeignObject Index where
   withObject = withIndex
-  peekObject = newForeignPtr qlFreeIndex >=> return . Index
+  constructor = Index
+  finalizer = qlFreeIndex
 instance Show Index where show = qlIndexName
 
 {#fun pure qlIndexName {`Index'} -> `String'#}

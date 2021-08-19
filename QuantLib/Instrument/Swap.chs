@@ -31,12 +31,14 @@ import QuantLib.Internal.TermStructure
 {#pointer *QlSwaption as Swaption foreign finalizer qlFreeSwaption newtype#}
 instance ForeignObject Swaption where
   withObject = withSwaption
-  peekObject = newForeignPtr qlFreeSwaption >=> return . Swaption
+  constructor = Swaption
+  finalizer = qlFreeSwaption
 
 {#pointer *QlSwap as Swap foreign finalizer qlFreeSwap newtype#}
 instance ForeignObject Swap where
   withObject = withSwap
-  peekObject = newForeignPtr qlFreeSwap >=> return . Swap
+  constructor = Swap
+  finalizer = qlFreeSwap
 {#fun qlSwapAsInstrument {`Swap'} -> `Instrument' peekObject*#}
 instance IsInstrument Swap where asInstrument = qlSwapAsInstrument
 
@@ -45,28 +47,32 @@ class IsSwap a where asSwap :: a -> IO Swap
 {#pointer *QlVanillaSwap as VanillaSwap foreign finalizer qlFreeVanillaSwap newtype#}
 instance ForeignObject VanillaSwap where
   withObject = withVanillaSwap
-  peekObject = newForeignPtr qlFreeVanillaSwap >=> return . VanillaSwap
+  constructor = VanillaSwap
+  finalizer = qlFreeVanillaSwap
 {#fun qlVanillaSwapAsSwap {`VanillaSwap'} -> `Swap'#}
 instance IsSwap VanillaSwap where asSwap = qlVanillaSwapAsSwap
 
 {#pointer *QlAssetSwap as AssetSwap foreign finalizer qlFreeAssetSwap newtype#}
 instance ForeignObject AssetSwap where
   withObject = withAssetSwap
-  peekObject = newForeignPtr qlFreeAssetSwap >=> return . AssetSwap
+  constructor = AssetSwap
+  finalizer = qlFreeAssetSwap
 {#fun qlAssetSwapAsSwap {`AssetSwap'} -> `Swap'#}
 instance IsSwap AssetSwap where asSwap = qlAssetSwapAsSwap
 
 {#pointer *QlBMASwap as BMASwap foreign finalizer qlFreeBMASwap newtype#}
 instance ForeignObject BMASwap where
   withObject = withBMASwap
-  peekObject = newForeignPtr qlFreeBMASwap >=> return . BMASwap
+  constructor = BMASwap
+  finalizer = qlFreeBMASwap
 {#fun qlBMASwapAsSwap {`BMASwap'} -> `Swap'#}
 instance IsSwap BMASwap where asSwap = qlBMASwapAsSwap
 
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign finalizer qlFreeOvernightIndexedSwap newtype#}
 instance ForeignObject OvernightIndexedSwap where
   withObject = withOvernightIndexedSwap
-  peekObject = newForeignPtr qlFreeOvernightIndexedSwap >=> return . OvernightIndexedSwap
+  constructor = OvernightIndexedSwap
+  finalizer = qlFreeOvernightIndexedSwap
 {#fun qlOvernightIndexedSwapAsSwap {`OvernightIndexedSwap'} -> `Swap'#}
 instance IsSwap OvernightIndexedSwap where asSwap = qlOvernightIndexedSwapAsSwap
 

@@ -61,32 +61,38 @@ import QuantLib.Internal.Calendar
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign finalizer qlFreeInterestRateIndex newtype#}
 instance ForeignObject InterestRateIndex where
   withObject = withInterestRateIndex
-  peekObject = newForeignPtr qlFreeInterestRateIndex >=> return . InterestRateIndex
+  constructor = InterestRateIndex
+  finalizer=qlFreeInterestRateIndex
 
 {#pointer *QlBMAIndex as BMAIndex foreign finalizer qlFreeBMAIndex newtype#}
 instance ForeignObject BMAIndex where
   withObject = withBMAIndex
-  peekObject = newForeignPtr qlFreeBMAIndex >=> return . BMAIndex
+  constructor = BMAIndex
+  finalizer=qlFreeBMAIndex
 
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign finalizer qlFreeOvernightIndex newtype#}
 instance ForeignObject OvernightIborIndex where
   withObject = withOvernightIborIndex
-  peekObject = newForeignPtr qlFreeOvernightIndex >=> return . OvernightIborIndex
+  constructor = OvernightIborIndex
+  finalizer=qlFreeOvernightIndex
 
 {#pointer *QlIborIndex as IborIndex foreign finalizer qlFreeIborIndex newtype#}
 instance ForeignObject IborIndex where
   withObject = withIborIndex
-  peekObject = newForeignPtr qlFreeIborIndex >=> return . IborIndex
+  constructor = IborIndex
+  finalizer=qlFreeIborIndex
 
 {#pointer *QlSwapIndex as SwapIndex foreign finalizer qlFreeSwapIndex newtype#}
 instance ForeignObject SwapIndex where
   withObject = withSwapIndex
-  peekObject = newForeignPtr qlFreeSwapIndex >=> return . SwapIndex
+  constructor = SwapIndex
+  finalizer=qlFreeSwapIndex
 
 {#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign finalizer qlFreeOvernightIndexedSwapIndex newtype#}
 instance ForeignObject OvernightIndexedSwapIndex where
   withObject = withOvernightIndexedSwapIndex
-  peekObject = newForeignPtr qlFreeOvernightIndexedSwapIndex >=> return . OvernightIndexedSwapIndex
+  constructor = OvernightIndexedSwapIndex
+  finalizer=qlFreeOvernightIndexedSwapIndex
 
 {#fun qlBMAIndex as bmaIndex {withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `BMAIndex' peekObject*#}
 

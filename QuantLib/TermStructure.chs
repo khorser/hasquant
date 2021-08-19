@@ -15,7 +15,8 @@ import QuantLib.Internal
 {#pointer *QlTermStructure as TermStructure foreign finalizer qlFreeTermStructure newtype#}
 instance ForeignObject TermStructure where
   withObject = withTermStructure
-  peekObject = newForeignPtr qlFreeTermStructure >=> return . TermStructure
+  constructor = TermStructure
+  finalizer = qlFreeTermStructure
 
 class IsTermStructure a where
   asTermStructure :: a -> IO TermStructure
