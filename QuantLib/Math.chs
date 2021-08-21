@@ -27,6 +27,8 @@ module QuantLib.Math
   , Matrix
   , realMatrix
   , objectMatrix
+
+  , TimeGrid
   )
 where
 
@@ -76,5 +78,11 @@ instance ForeignObject Rounding where
 {#enum HybridHestonHullWhiteProcessDiscretization {} deriving(Show, Eq)#}
 
 {#enum CmsMarketCalibrationType {} deriving(Show, Eq)#}
+
+{#pointer *TimeGrid foreign finalizer qlFreeTimeGrid newtype#}
+instance ForeignObject TimeGrid where
+  withObject = withTimeGrid
+  constructor = TimeGrid
+  finalizer = qlFreeTimeGrid
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

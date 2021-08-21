@@ -49,6 +49,7 @@ library
                     , QuantLib.Model
                     , QuantLib.Process
                     , QuantLib.Instrument.Credit
+                    , QuantLib.PricingEngine
 
   other-modules:    QuantLib.Internal
                     , QuantLib.Internal.Enum
