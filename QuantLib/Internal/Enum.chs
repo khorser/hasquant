@@ -31,6 +31,8 @@ module QuantLib.Internal.Enum
   , QlPayoff
   , BasketPayoff(..)
   , QlBasketPayoff
+  , TypePayoff(..)
+  , QlTypePayoff(..)
 
   , CallabilityType(..)
   , Callability(..)
@@ -230,6 +232,14 @@ strikedPayoff (PlainVanilla p) = toObject p >>= qlPlainVanillaPayoffAsStrikedTyp
 strikedPayoff (SuperFund s ss) = qlSuperFundPayoff s ss
 strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
 
+data TypePayoff =
+  Striked StrikedPayoff
+  | Floating
+      OptionType -- ^type
+instance EnumObject TypePayoff QlTypePayoff where
+  toObject (Striked p) = toObject p >>= qlStrikedTypePayoffAsTypePayoff
+  toObject (Floating t) = qlFloatingTypePayoff t
+
 data BasketPayoff =
     Average
       Payoff -- ^p
@@ -264,8 +274,6 @@ data Payoff =
       Double -- ^initialValue1
       Double -- ^initialValue2
       Double -- ^accrualFactor
-  | FloatingType
-      OptionType -- ^type
   | ForwardType
       PositionType -- ^type
       Double -- ^strike
@@ -323,7 +331,7 @@ data Payoff =
       Double -- ^spread2
       Double -- ^initialValue
       Double -- ^accrualFactor
-  | Striked StrikedPayoff
+  | Type TypePayoff
   | Basket BasketPayoff
 
 {#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
@@ -401,7 +409,6 @@ instance EnumObject Payoff QlPayoff where toObject = payoff
 
 payoff :: Payoff -> IO QlPayoff
 payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
-payoff (FloatingType t) = qlFloatingTypePayoff t >>= asQlPayoff
 payoff (ForwardType t s) = qlForwardTypePayoff t s
 payoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
@@ -409,7 +416,7 @@ payoff (Ratchet g1 g2 s1 s2 i a) = qlRatchetPayoff g1 g2 s1 s2 i a
 payoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (Sticky g1 g2 s1 s2 i a) = qlStickyPayoff g1 g2 s1 s2 i a
-payoff (Striked s) = toObject s >>= asQlPayoff
+payoff (Type s) = toObject s >>= asQlPayoff
 payoff (Basket b) = toObject b >>= asQlPayoff
 
 data Callability =
