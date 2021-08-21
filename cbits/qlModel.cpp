@@ -181,10 +181,10 @@ QlShortRateModel* qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel 
 void qlFreeCalibrationHelper(QlCalibrationHelper *o) { del(o); }
 void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) { del(o); }
 
-void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
+void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
   try {
     Constraint c(constraint ? *arg(constraint) : Constraint());
-    (*arg(o))->calibrate(qlBuildVector(x1, x1Len), *arg(method), *arg(endCriteria), c, std::vector<double>(weights, weights+x1Len));
+    (*arg(o))->calibrate(qlBuildVector(x1, x1Len), *arg(method), *arg(endCriteria), c, std::vector<double>(weights, weights+wLen));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }
@@ -218,28 +218,26 @@ QlBlackCalibrationHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote
   }
 }
 
-double* qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, char **e) {
+void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, double **ts, char **e) {
   try {
     std::list<double> times;
     (*arg(o))->addTimesTo(times);
     *len = times.size();
-    double *ts = qlAllocateDoubles(*len);
-    std::copy(times.begin(), times.end(), ts);
-    return ts;
+    *ts = qlAllocateDoubles(*len);
+    std::copy(times.begin(), times.end(), *ts);
   } catch (std::exception& er) {
-    return handleException<double*>(e, er);
+    handleException<double*>(e, er);
   }
 }
 
-double* qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, char **e) {
+void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, char **e) {
   try {
     Disposable<Array> params = (*arg(o))->params();
     *len = params.size();
-    double *ps = qlAllocateDoubles(*len);
-    std::copy(params.begin(), params.end(), ps);
-    return ps;
+    *ps = qlAllocateDoubles(*len);
+    std::copy(params.begin(), params.end(), *ps);
   } catch (std::exception& er) {
-    return handleException<double*>(e, er);
+    handleException<double*>(e, er);
   }
 }
 double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, char **e) {
@@ -277,5 +275,7 @@ double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, char **e)
     return handleException<double>(e, er);
   }
 }
+
+QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) { return ret(new QlCalibrationHelper(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

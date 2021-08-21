@@ -30,6 +30,7 @@ module QuantLib.Internal
   , fromEnumQuantity
   , toEnumQuantity
   , fromEnumC
+  , withMaybeEnumObject
 
   , withDay
   , toDay
@@ -278,6 +279,9 @@ class (ForeignObject b) => EnumObject a b | a -> b where
 
 withEnumObjectArray :: (EnumObject a b) => [a] -> ((CUInt, Ptr (Ptr b)) -> IO c) -> IO c
 withEnumObjectArray x f = withMany withEnumObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+withMaybeEnumObject :: (EnumObject a b) => Maybe a -> (Ptr b -> IO c) -> IO c
+withMaybeEnumObject x f = maybe (f nullPtr) (`withEnumObject` f) x
 
 -- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
 fromEnumC :: (Enum a, Integral b) => a -> b

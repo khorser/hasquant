@@ -29,6 +29,9 @@ module QuantLib.Math
   , objectMatrix
 
   , TimeGrid
+  , timeGrid
+  , timeGridFromList
+  , timeGridFromList'
   )
 where
 
@@ -84,5 +87,16 @@ instance ForeignObject TimeGrid where
   withObject = withTimeGrid
   constructor = TimeGrid
   finalizer = qlFreeTimeGrid
+
+-- |Regularly spaced time-grid.
+{#fun qlTimeGrid1 as timeGrid {`Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `TimeGrid'#}
+
+-- |Time grid with mandatory time points.
+-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
+{#fun qlTimeGrid2 as timeGridFromList {withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `TimeGrid'#}
+
+-- |Time grid with mandatory time points.
+-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+{#fun qlTimeGrid3 as timeGridFromList' {withDoubleArray* `[Double]'&, fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `TimeGrid'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

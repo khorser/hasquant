@@ -56,15 +56,16 @@ extern "C" {
 
   void qlFreeCalibrationHelper(QlCalibrationHelper *o);
   void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o);
-  void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e);
+  QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o);
+  void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e);
 
   void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, char **e);
   QlBlackCalibrationHelper* qlCapHelper(int, int, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e);
   QlBlackCalibrationHelper* qlHestonModelHelper(int, int, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
   QlBlackCalibrationHelper* qlSwaptionHelper(int, int, int, int, QlQuote* volatility, QlIborIndex* index, int, int, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e);
-  double* qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, char **e);
+  void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, double **ts, char **e);
 
-  double* qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, char **e);
+  void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, char **e);
   double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, char **e);
   double qlBlackCalibrationHelperCalibrationError(QlBlackCalibrationHelper* o, char **e);
   double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
