@@ -39,12 +39,12 @@ library
                     , QuantLib.TermStructure
                     , QuantLib.TermStructure.Yield
                     , QuantLib.TermStructure.Credit
-                    , QuantLib.Instrument.Swap
-                    , QuantLib.Instrument.CapFloor
                     , QuantLib.TermStructure.Volatility
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument.Bond
+                    , QuantLib.Instrument.Swap
+                    , QuantLib.Instrument.CapFloor
                     , QuantLib.Instrument.Forward
                     , QuantLib.Model
                     , QuantLib.Process

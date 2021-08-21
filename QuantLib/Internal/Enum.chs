@@ -10,6 +10,12 @@ module QuantLib.Internal.Enum
   , ExerciseType(..)
   , Exercise(..)
   , QlExercise
+  , EuropeanExercise(..)
+  , BermudanExercise(..)
+  , QlEuropeanExercise
+  , QlBermudanExercise
+  , SwingExercise(..)
+  , QlSwingExercise
 
   , OptionType(..)
   , PositionType(..)
@@ -23,6 +29,8 @@ module QuantLib.Internal.Enum
   , QlStrikedTypePayoff
   , Payoff(..)
   , QlPayoff
+  , BasketPayoff(..)
+  , QlBasketPayoff
 
   , CallabilityType(..)
   , Callability(..)
@@ -124,46 +132,53 @@ instance ForeignObject QlBermudanExercise where
 {#fun qlBermudanExerciseAsExercise {`QlBermudanExercise'} -> `QlExercise'#}
 instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
 
-{#enum ExerciseType {} deriving (Show, Eq)#}
+
+data EuropeanExercise = EuropeanExercise Day
+instance EnumObject EuropeanExercise QlEuropeanExercise where toObject (EuropeanExercise d) = qlEuropeanExercise d
+
+data SwingExercise = 
+    SwingListExercise [(Day, Word)] -- ^(dates, seconds)
+    | SwingIntervalExercise Day Day Word -- ^stepSizeSecs
+instance EnumObject SwingExercise QlSwingExercise where
+  toObject (SwingListExercise ds) = uncurry qlSwingExercise (unzip ds)
+  toObject (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s
+
+data BermudanExercise =
+    BermudanExercise [Day] Bool
+    | Swing SwingExercise
+instance EnumObject BermudanExercise QlBermudanExercise where
+  toObject (BermudanExercise d p) = qlBermudanExercise d p
+  toObject (Swing e) = toObject e >>= qlSwingExerciseAsBermudanExercise
+
+{#enum ExerciseType {} add prefix = "ExerciseType" deriving (Show, Eq)#}
+
 data Exercise =
     AmericanExercise
       (Maybe Day) -- ^earliestDate
       Day -- ^latestDate
       Bool -- ^paoffAtExpiry
-    | BermudanExercise [Day] Bool
-    | EarlyExercise ExerciseType Bool
-    | VanillaExercise ExerciseType
-    | EuropeanExercise Day
-    | SwingListExercise [(Day, Word)] -- ^(dates, seconds)
-    | SwingIntervalExercise Day Day Word -- ^stepSizeSecs
+    | Early ExerciseType Bool
+    | Vanilla ExerciseType
+    | European EuropeanExercise
+    | Bermudan BermudanExercise
 
 {#fun qlExercise {`ExerciseType', preErrorCheck- `String' errorCheck*-} -> `QlExercise'#}
-
 {#fun qlAmericanExercise {withDay* `Day', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `QlAmericanExercise'#}
-
 {#fun qlAmericanExercise1 {withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `QlAmericanExercise'#}
-
 {#fun qlBermudanExercise {withDayArray* `[Day]'&, `Bool', preErrorCheck- `String' errorCheck*-} -> `QlBermudanExercise'#}
-
 {#fun qlEarlyExercise {`ExerciseType', `Bool', preErrorCheck- `String' errorCheck*-} -> `QlExercise'#}
-
 {#fun qlEuropeanExercise {withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlEuropeanExercise'#}
-
 {#fun qlSwingExercise {withDayArray* `[Day]'&, withIntArray* `[Word]'&, preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
-
 {#fun qlSwingExercise1 {withDay* `Day', withDay* `Day', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
-
 {#fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
 
 exercise :: Exercise -> IO QlExercise
 exercise (AmericanExercise Nothing d p) = qlAmericanExercise1 d p >>= asQlExercise
 exercise (AmericanExercise (Just d0) d p) = qlAmericanExercise d0 d p >>= asQlExercise
-exercise (BermudanExercise d p) = qlBermudanExercise d p >>= asQlExercise
-exercise (EarlyExercise t p) = qlEarlyExercise t p
-exercise (VanillaExercise t) = qlExercise t
-exercise (EuropeanExercise d) = qlEuropeanExercise d >>= asQlExercise
-exercise (SwingListExercise ds) = uncurry qlSwingExercise (unzip ds) >>= asQlExercise
-exercise (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s >>= asQlExercise
+exercise (Early t p) = qlEarlyExercise t p
+exercise (Vanilla t) = qlExercise t
+exercise (European e) = toObject e >>= asQlExercise
+exercise (Bermudan e) = toObject e >>= asQlExercise
 
 instance EnumObject Exercise QlExercise where toObject = exercise
 
@@ -215,14 +230,29 @@ strikedPayoff (PlainVanilla p) = toObject p >>= qlPlainVanillaPayoffAsStrikedTyp
 strikedPayoff (SuperFund s ss) = qlSuperFundPayoff s ss
 strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
 
-data Payoff =
-    AverageBasket
+data BasketPayoff =
+    Average
       Payoff -- ^p
       Word -- ^n
-  | AverageBasketMultiple
+  | AverageMultiple
       Payoff -- ^p
       [Double] -- ^a
-  | DoubleStickyRatchet
+  | Max
+      Payoff -- ^p
+  | Min
+      Payoff -- ^p
+  | Spread
+      Payoff -- ^p
+instance EnumObject BasketPayoff QlBasketPayoff where toObject = basketPayoff
+
+basketPayoff (Average p n) = payoff p >>= (`qlAverageBasketPayoff` n)
+basketPayoff (AverageMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a)
+basketPayoff (Max p) = payoff p >>= qlMaxBasketPayoff
+basketPayoff (Min p) = payoff p >>= qlMinBasketPayoff
+basketPayoff (Spread p) = payoff p >>= qlSpreadBasketPayoff
+
+data Payoff =
+    DoubleStickyRatchet
       Double -- ^type1
       Double -- ^type2
       Double -- ^gearing1
@@ -239,10 +269,6 @@ data Payoff =
   | ForwardType
       PositionType -- ^type
       Double -- ^strike
-  | MaxBasket
-      Payoff -- ^p
-  | MinBasket
-      Payoff -- ^p
   | RatchetMax
       Double -- ^gearing1
       Double -- ^gearing2
@@ -270,8 +296,6 @@ data Payoff =
       Double -- ^spread2
       Double -- ^initialValue
       Double -- ^accrualFactor
-  | SpreadBasket
-      Payoff -- ^p
   | StickyMax
       Double -- ^gearing1
       Double -- ^gearing2
@@ -300,6 +324,7 @@ data Payoff =
       Double -- ^initialValue
       Double -- ^accrualFactor
   | Striked StrikedPayoff
+  | Basket BasketPayoff
 
 {#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
 instance ForeignObject QlPayoff where
@@ -375,21 +400,17 @@ instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoff
 instance EnumObject Payoff QlPayoff where toObject = payoff
 
 payoff :: Payoff -> IO QlPayoff
-payoff (AverageBasket p n) = payoff p >>= (`qlAverageBasketPayoff` n) >>= asQlPayoff
-payoff (AverageBasketMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a) >>= asQlPayoff
 payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (FloatingType t) = qlFloatingTypePayoff t >>= asQlPayoff
 payoff (ForwardType t s) = qlForwardTypePayoff t s
-payoff (MaxBasket p) = payoff p >>= qlMaxBasketPayoff >>= asQlPayoff
-payoff (MinBasket p) = payoff p >>= qlMinBasketPayoff >>= asQlPayoff
 payoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (Ratchet g1 g2 s1 s2 i a) = qlRatchetPayoff g1 g2 s1 s2 i a
-payoff (SpreadBasket p) = payoff p >>= qlSpreadBasketPayoff >>= asQlPayoff
 payoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (Sticky g1 g2 s1 s2 i a) = qlStickyPayoff g1 g2 s1 s2 i a
 payoff (Striked s) = toObject s >>= asQlPayoff
+payoff (Basket b) = toObject b >>= asQlPayoff
 
 data Callability =
   Soft

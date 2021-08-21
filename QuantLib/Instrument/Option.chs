@@ -13,6 +13,21 @@ module QuantLib.Instrument.Option
   , QuantoForwardVanillaOption
   , QuantoVanillaOption
   , VanillaOption
+
+  , ExerciseType(..)
+  , Exercise(..)
+  , EuropeanExercise(..)
+  , BermudanExercise(..)
+  , SwingExercise(..)
+
+  , OptionType(..)
+  , PositionType(..)
+
+  , StrikedPayoff(..)
+  , PlainVanillaPayoff(..)
+  , PercentageStrikePayoff(..)
+  , BasketPayoff(..)
+  , Payoff(..)
   )
   where
 
@@ -25,6 +40,7 @@ module QuantLib.Instrument.Option
 import QuantLib.Internal
 import Control.Monad((>=>))
 {#import QuantLib.Instrument#}
+import QuantLib.Internal.Enum
 
 {#pointer *QlOption as Option foreign finalizer qlFreeOption newtype#}
 instance ForeignObject Option where
