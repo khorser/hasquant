@@ -40,6 +40,10 @@ module QuantLib.Internal.Enum
 
   , FittingMethod(..)
   , FittingMethodObject
+
+  , FdmSchemeType(..)
+  , FdmScheme(..)
+  , FdmSchemeDesc
   )
 where
 
@@ -451,7 +455,6 @@ instance EnumObject Callability QlCallability where toObject = callability
 {#fun qlCallability {`Double', `PriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
 
 {#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
-
 instance ForeignObject FittingMethodObject where
   withObject = withFittingMethodObject
   constructor = FittingMethodObject
@@ -483,5 +486,47 @@ fittingMethod Svensson = qlSvenssonFitting
 {#fun qlNelsonSiegelFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
 {#fun qlSimplePolynomialFitting {fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
 {#fun qlSvenssonFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+
+{#enum FdmSchemeType {} deriving(Show, Eq)#}
+
+data FdmScheme = 
+  FdmScheme
+    FdmSchemeType -- ^type
+    Double -- ^theta
+    Double -- ^mu
+  | CraigSneyd
+  | Douglas
+  | ExplicitEuler
+  | Hundsdorfer
+  | ImplicitEuler
+  | ModifiedCraigSneyd
+  | ModifiedHundsdorfer
+ 
+{#pointer *FdmSchemeDesc foreign finalizer qlFreeFdmSchemeDesc newtype#}
+instance ForeignObject FdmSchemeDesc where
+  withObject = withFdmSchemeDesc
+  constructor = FdmSchemeDesc
+  finalizer = qlFreeFdmSchemeDesc
+
+{#fun qlFdmSchemeDesc {`FdmSchemeType', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescCraigSneyd {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescDouglas {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescExplicitEuler {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescHundsdorfer {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescImplicitEuler {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescModifiedCraigSneyd {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescModifiedHundsdorfer {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+
+fdmScheme :: FdmScheme -> IO FdmSchemeDesc
+fdmScheme (FdmScheme t th mu) = qlFdmSchemeDesc t th mu
+fdmScheme CraigSneyd = qlFdmSchemeDescCraigSneyd
+fdmScheme Douglas = qlFdmSchemeDescDouglas
+fdmScheme ExplicitEuler = qlFdmSchemeDescExplicitEuler
+fdmScheme Hundsdorfer = qlFdmSchemeDescHundsdorfer
+fdmScheme ImplicitEuler = qlFdmSchemeDescImplicitEuler
+fdmScheme ModifiedCraigSneyd = qlFdmSchemeDescModifiedCraigSneyd
+fdmScheme ModifiedHundsdorfer = qlFdmSchemeDescModifiedHundsdorfer
+
+instance EnumObject FdmScheme FdmSchemeDesc where toObject = fdmScheme
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

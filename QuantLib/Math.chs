@@ -28,7 +28,7 @@ module QuantLib.Math
 where
 
 import QuantLib.Internal
-import QuantLib.Internal.Enum(Approximation(..), Interpolation(..))
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -59,10 +59,6 @@ instance ForeignObject Rounding where
 {#enum BinomialTree {} deriving(Show, Eq)#}
 
 {#enum BoundaryConditionSide {} deriving(Show, Eq)#}
-
-{#enum FdmSchemeType {} deriving(Show, Eq)#}
-
-{#enum FdmScheme {} deriving(Show, Eq)#}
 
 {#enum PolynomType {} deriving(Show, Eq)#}
 

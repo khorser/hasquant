@@ -233,12 +233,6 @@ enum BinomialTree {
   , ExtendedJoshi4
 };
 
-enum FdmScheme {
-  CrankNicolson = 0
-  , ExplicitEuler
-  , ImplicitEuler
-};
-
 enum ProcessDiscretization {
   EulerDiscretization = 0
   , EndEulerDiscretization
