@@ -46,8 +46,8 @@ library
                     , QuantLib.Instrument.Swap
                     , QuantLib.Instrument.CapFloor
                     , QuantLib.Instrument.Forward
-                    , QuantLib.Model
                     , QuantLib.Process
+                    , QuantLib.Model
                     , QuantLib.Instrument.Credit
                     , QuantLib.PricingEngine
 
