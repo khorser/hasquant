@@ -90,6 +90,47 @@ module QuantLib.PricingEngine
   , treeCallableFixedRateBondEngine
   , treeCallableZeroCouponBondEngine'
   , treeCallableZeroCouponBondEngine
+
+  , alpha
+  , beta
+  , blackCalculator'
+  , blackCalculator
+  , blackDelta
+  , deltaForward
+  , dividendRho
+  , blackElasticity
+  , elasticityForward
+  , blackGamma
+  , gammaForward
+  , itmAssetProbability
+  , itmCashProbability
+  , rho
+  , strikeSensitivity
+  , blackTheta
+  , blackThetaPerDay
+  , value
+  , vega
+  , blackScholesCalculator'
+  , blackScholesCalculator
+  , blackScholesDelta
+  , blackScholesElasticity
+  , blackScholesGamma
+  , blackScholesTheta
+  , blackScholesThetaPerDay
+  , blackFormula'
+  , blackFormula
+  , blackCashItmProbability'
+  , blackCashItmProbability
+  , blackImpliedStdDev'
+  , blackImpliedStdDev
+  , blackImpliedStdDevApproximation'
+  , blackImpliedStdDevApproximation
+  , blackStdDevDerivative'
+  , blackStdDevDerivative
+  , blackVolDerivative
+  , bachelierBlackFormula'
+  , bachelierBlackFormula
+  , defaultThetaPerDay
   )
   where
 
@@ -103,13 +144,14 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure, CallableBondVolatilityStructure)
 {#import QuantLib.TermStructure.Credit#}(DefaultProbabilityTermStructure)
 import QuantLib.Internal.TermStructure
-{#import QuantLib.Process#}
+{#import QuantLib.Process#}(GeneralizedBlackScholesProcess, HestonProcess, BlackProcess, HybridHestonHullWhiteProcess, VarianceGammaProcess, HestonProcess, Merton76Process, GJRGARCHProcess)
 {#import QuantLib.Model#}
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
 {#import QuantLib.Time.Schedule#}(DayCounter, TimeUnit)
 import QuantLib.Internal.Schedule
 {#import QuantLib.Math#}
+{#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity)
 import QuantLib.Internal.Enum
 
 {#pointer *QlPricingEngine as PricingEngine foreign finalizer qlFreePricingEngine newtype#}
@@ -300,5 +342,120 @@ instance ForeignObject BlackScholesCalculator where
 {#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine' {withObject* `ShortRateModel', withObject* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngine {withObject* `ShortRateModel', fromIntegral `Word', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+
+{#fun qlBlackCalculatorAlpha as alpha {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBlackCalculatorBeta as beta {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBlackCalculator1 as blackCalculator' {fromEnumC `OptionType', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `BlackCalculator'#}
+
+{#pointer *QlStrikedTypePayoff foreign newtype nocode#}
+{#fun qlBlackCalculator as blackCalculator {withEnumObject* `StrikedPayoff', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `BlackCalculator'#}
+
+-- |Sensitivity to change in the underlying spot price.
+{#fun qlBlackCalculatorDelta as blackDelta {`BlackCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to change in the underlying forward price.
+{#fun qlBlackCalculatorDeltaForward as deltaForward {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to dividend/growth rate.
+{#fun qlBlackCalculatorDividendRho as dividendRho {`BlackCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity in percent to a percent change in the underlying spot price.
+{#fun qlBlackCalculatorElasticity as blackElasticity {`BlackCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity in percent to a percent change in the underlying forward price.
+{#fun qlBlackCalculatorElasticityForward as elasticityForward {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Second order derivative with respect to change in the underlying spot price.
+{#fun qlBlackCalculatorGamma as blackGamma {`BlackCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Second order derivative with respect to change in the underlying forward price.
+{#fun qlBlackCalculatorGammaForward as gammaForward {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
+{#fun qlBlackCalculatorItmAssetProbability as itmAssetProbability {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Probability of being in the money in the bond martingale measure, i.e. N(d2). It is a risk-neutral probability, not the real world one.
+{#fun qlBlackCalculatorItmCashProbability as itmCashProbability {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to discounting rate.
+{#fun qlBlackCalculatorRho as rho {`BlackCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to strike.
+{#fun qlBlackCalculatorStrikeSensitivity as strikeSensitivity {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to time to maturity.
+{#fun qlBlackCalculatorTheta as blackTheta {`BlackCalculator', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to time to maturity per day, assuming 365 day per year.
+{#fun qlBlackCalculatorThetaPerDay as blackThetaPerDay {`BlackCalculator', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBlackCalculatorValue as value {`BlackCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to volatility.
+{#fun qlBlackCalculatorVega as vega {`BlackCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlBlackScholesCalculator1 as blackScholesCalculator' {fromEnumC `OptionType', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `BlackScholesCalculator'#}
+
+{#fun qlBlackScholesCalculator as blackScholesCalculator {withEnumObject* `StrikedPayoff', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `BlackScholesCalculator'#}
+
+-- |Sensitivity to change in the underlying spot price.
+{#fun qlBlackScholesCalculatorDelta as blackScholesDelta {`BlackScholesCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity in percent to a percent change in the underlying spot price.
+{#fun qlBlackScholesCalculatorElasticity as blackScholesElasticity {`BlackScholesCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Second order derivative with respect to change in the underlying spot price.
+{#fun qlBlackScholesCalculatorGamma as blackScholesGamma {`BlackScholesCalculator', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+-- |Sensitivity to time to maturity.
+{#fun qlBlackScholesCalculatorTheta as blackScholesTheta {`BlackScholesCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Sensitivity to time to maturity per day (assuming 365 day in a year).
+{#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay {`BlackScholesCalculator', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBlackFormula1 as blackFormula' {withEnumObject* `PlainVanillaPayoff', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBlackFormula as blackFormula {fromEnumC `OptionType', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#pointer *QlPlainVanillaPayoff foreign newtype nocode#}
+
+-- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBlackFormulaCashItmProbability1 as blackCashItmProbability' {withEnumObject *`PlainVanillaPayoff', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBlackFormulaCashItmProbability as blackCashItmProbability {fromEnumC `OptionType', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBlackFormulaImpliedStdDev1 as blackImpliedStdDev' {withEnumObject *`PlainVanillaPayoff', `Double', `Double', `Double', `Double', `Double', `Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBlackFormulaImpliedStdDev as blackImpliedStdDev {fromEnumC `OptionType', `Double', `Double', `Double', `Double', `Double', `Double', `Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
+{#fun qlQuantLibBlackFormulaImpliedStdDevApproximation1 as blackImpliedStdDevApproximation' {withEnumObject *`PlainVanillaPayoff', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
+{#fun qlQuantLibBlackFormulaImpliedStdDevApproximation as blackImpliedStdDevApproximation {fromEnumC `OptionType', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
+{#fun qlQuantLibBlackFormulaStdDevDerivative1 as blackStdDevDerivative' {withEnumObject *`PlainVanillaPayoff', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
+{#fun qlQuantLibBlackFormulaStdDevDerivative as blackStdDevDerivative {`Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black 1976 formula for derivative with respect to implied vol, this is basically the vega, but if you want 1% change multiply by 1%
+{#fun qlQuantLibBlackFormulaVolDerivative as blackVolDerivative {`Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBachelierBlackFormula1 as bachelierBlackFormula' {withEnumObject *`PlainVanillaPayoff', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
+{#fun qlQuantLibBachelierBlackFormula as bachelierBlackFormula {fromEnumC `OptionType', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+-- |default theta-per-day calculation
+{#fun qlQuantLibDefaultThetaPerDay as defaultThetaPerDay {`Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
