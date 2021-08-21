@@ -18,6 +18,14 @@ module QuantLib.Model
   , LmCorrelationModel
   , LmVolatilityModel
   , CalibrationHelper
+
+  , asAffineModel
+  , asCalibratedModel
+  , asHestonModel
+  , asShortRateModel
+  , asOneFactorAfficeModel
+  , asBatesModel
+  , asBatesDoubleExpModel
   )
   where
 
@@ -134,5 +142,37 @@ instance ForeignObject CalibrationHelper where
   constructor = CalibrationHelper
   finalizer = qlFreeCalibrationHelper
 
+class IsAffineModel a where asAffineModel :: a -> IO AffineModel
+class IsCalibratedModel a where asCalibratedModel :: a -> IO CalibratedModel
+class IsHestonModel a where asHestonModel :: a -> IO HestonModel
+class IsShortRateModel a where asShortRateModel :: a -> IO ShortRateModel
+
+{#fun qlOneFactorAffineModelAsAffineModel {`OneFactorAffineModel'} -> `AffineModel'#}
+instance IsAffineModel OneFactorAffineModel where asAffineModel = qlOneFactorAffineModelAsAffineModel
+{#fun qlLiborForwardModelAsAffineModel {`LiborForwardModel'} -> `AffineModel'#}
+instance IsAffineModel LiborForwardModel where asAffineModel = qlLiborForwardModelAsAffineModel
+{#fun qlHullWhiteAsOneFactorAffineModel as asOneFactorAfficeModel{`HullWhite'} -> `OneFactorAffineModel'#}
+{#fun qlG2AsAffineModel {`G2'} -> `AffineModel'#}
+instance IsAffineModel G2 where asAffineModel = qlG2AsAffineModel
+{#fun qlG2AsShortRateModel {`G2'} -> `ShortRateModel'#}
+instance IsShortRateModel G2 where asShortRateModel = qlG2AsShortRateModel
+{#fun qlBatesDetJumpModelAsBatesModel as asBatesModel{`BatesDetJumpModel'} -> `BatesModel'#}
+{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel as asBatesDoubleExpModel {`BatesDoubleExpDetJumpModel'} -> `BatesDoubleExpModel'#}
+{#fun qlBatesDoubleExpModelAsHestonModel {`BatesDoubleExpModel'} -> `HestonModel'#}
+instance IsHestonModel BatesDoubleExpModel where asHestonModel = qlBatesDoubleExpModelAsHestonModel
+{#fun qlGJRGARCHModelAsCalibratedModel {`GJRGARCHModel'} -> `CalibratedModel'#}
+instance IsCalibratedModel GJRGARCHModel where asCalibratedModel = qlGJRGARCHModelAsCalibratedModel
+{#fun qlHestonModelAsCalibratedModel {`HestonModel'} -> `CalibratedModel'#}
+instance IsCalibratedModel HestonModel where asCalibratedModel = qlHestonModelAsCalibratedModel
+{#fun qlBatesModelAsHestonModel {`BatesModel'} -> `HestonModel'#}
+instance IsHestonModel BatesModel where asHestonModel = qlBatesModelAsHestonModel
+{#fun qlLiborForwardModelAsCalibratedModel {`LiborForwardModel'} -> `CalibratedModel'#}
+instance IsCalibratedModel LiborForwardModel where asCalibratedModel = qlLiborForwardModelAsCalibratedModel
+{#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel {`PiecewiseTimeDependentHestonModel'} -> `CalibratedModel'#}
+instance IsCalibratedModel PiecewiseTimeDependentHestonModel where asCalibratedModel = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
+{#fun qlShortRateModelAsCalibratedModel {`ShortRateModel'} -> `CalibratedModel'#}
+instance IsCalibratedModel ShortRateModel where asCalibratedModel = qlShortRateModelAsCalibratedModel
+{#fun qlOneFactorAffineModelAsShortRateModel {`OneFactorAffineModel'} -> `ShortRateModel'#}
+instance IsShortRateModel OneFactorAffineModel where asShortRateModel = qlOneFactorAffineModelAsShortRateModel
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

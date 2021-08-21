@@ -3,6 +3,8 @@ module QuantLib.PricingEngine
     PricingEngine
   , BlackCalculator
   , BlackScholesCalculator
+
+  , asBlackCalculator
   )
   where
 
@@ -30,5 +32,6 @@ instance ForeignObject BlackScholesCalculator where
   withObject = withBlackScholesCalculator
   constructor = BlackScholesCalculator
   finalizer = qlFreeBlackScholesCalculator
+{#fun qlBlackScholesCalculatorAsBlackCalculator as asBlackCalculator {`BlackScholesCalculator'} -> `BlackCalculator'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

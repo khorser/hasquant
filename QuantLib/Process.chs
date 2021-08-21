@@ -23,6 +23,10 @@ module QuantLib.Process
   , Merton76Process
   , HullWhiteProcess
   , HullWhiteForwardProcess
+
+  , asStochasticProcess
+  , asGeneralizedBlackScholesProcess
+  , asHestonProcess
   )
   where
 
@@ -144,5 +148,26 @@ instance ForeignObject HullWhiteForwardProcess where
   withObject = withHullWhiteForwardProcess
   constructor = HullWhiteForwardProcess
   finalizer = qlFreeHullWhiteForwardProcess
+
+class IsStochasticProcess a where asStochasticProcess :: a -> IO StochasticProcess
+
+{#fun qlBlackProcessAsGeneralizedBlackScholesProcess as asGeneralizedBlackScholesProcess {`BlackProcess'} -> `GeneralizedBlackScholesProcess'#}
+{#fun qlStochasticProcess1DAsStochasticProcess {`StochasticProcess1D'} -> `StochasticProcess'#}
+instance IsStochasticProcess StochasticProcess1D where asStochasticProcess = qlStochasticProcess1DAsStochasticProcess
+{#fun qlExtOUWithJumpsProcessAsStochasticProcess {`ExtOUWithJumpsProcess'} -> `StochasticProcess'#}
+instance IsStochasticProcess ExtOUWithJumpsProcess where asStochasticProcess = qlExtOUWithJumpsProcessAsStochasticProcess
+{#fun qlGJRGARCHProcessAsStochasticProcess {`GJRGARCHProcess'} -> `StochasticProcess'#}
+instance IsStochasticProcess GJRGARCHProcess where asStochasticProcess = qlGJRGARCHProcessAsStochasticProcess
+{#fun qlHestonProcessAsStochasticProcess {`HestonProcess'} -> `StochasticProcess'#}
+instance IsStochasticProcess HestonProcess where asStochasticProcess = qlHestonProcessAsStochasticProcess
+{#fun qlBatesProcessAsHestonProcess as asHestonProcess {`BatesProcess'} -> `HestonProcess'#}
+{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess {`HybridHestonHullWhiteProcess'} -> `StochasticProcess'#}
+instance IsStochasticProcess HybridHestonHullWhiteProcess where asStochasticProcess = qlHybridHestonHullWhiteProcessAsStochasticProcess
+{#fun qlKlugeExtOUProcessAsStochasticProcess {`KlugeExtOUProcess'} -> `StochasticProcess'#}
+instance IsStochasticProcess KlugeExtOUProcess where asStochasticProcess = qlKlugeExtOUProcessAsStochasticProcess
+{#fun qlLiborForwardModelProcessAsStochasticProcess {`LiborForwardModelProcess'} -> `StochasticProcess'#}
+instance IsStochasticProcess LiborForwardModelProcess where asStochasticProcess = qlLiborForwardModelProcessAsStochasticProcess
+{#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
+instance IsStochasticProcess StochasticProcessArray where asStochasticProcess = qlStochasticProcessArrayAsStochasticProcess
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
