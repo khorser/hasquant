@@ -44,6 +44,13 @@ module QuantLib.Internal.Enum
   , FdmSchemeType(..)
   , FdmScheme(..)
   , FdmSchemeDesc
+
+  , Constraint(..)
+  , QlConstraint
+  , OptimizationMethod(..)
+  , QlOptimizationMethod
+  , EndCriteria(..)
+  , QlEndCriteria
   )
 where
 
@@ -528,5 +535,69 @@ fdmScheme ModifiedCraigSneyd = qlFdmSchemeDescModifiedCraigSneyd
 fdmScheme ModifiedHundsdorfer = qlFdmSchemeDescModifiedHundsdorfer
 
 instance EnumObject FdmScheme FdmSchemeDesc where toObject = fdmScheme
+
+{#pointer *Constraint as QlConstraint foreign finalizer qlFreeConstraint newtype#}
+instance ForeignObject QlConstraint where
+  withObject = withQlConstraint
+  constructor = QlConstraint
+  finalizer = qlFreeConstraint
+instance EnumObject Constraint QlConstraint where toObject = constraint
+
+data Constraint =
+  Boundary
+    Double -- ^low
+    Double -- ^high
+  | Composite
+    Constraint -- ^c1
+    Constraint -- ^c2
+  | NoConstraint
+  | PositiveConstraint
+
+constraint :: Constraint -> IO QlConstraint
+constraint (Boundary l h) = qlBoundaryConstraint l h
+constraint (Composite c1 c2) = qlCompositeConstraint c1 c2
+constraint NoConstraint = qlNoConstraint
+constraint PositiveConstraint = qlPositiveConstraint
+
+{#fun qlBoundaryConstraint {`Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
+{#fun qlCompositeConstraint {withEnumObject* `Constraint', withEnumObject* `Constraint', preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
+{#fun qlNoConstraint {preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
+{#fun qlPositiveConstraint {preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
+
+{#pointer *OptimizationMethod as QlOptimizationMethod foreign finalizer qlFreeOptimizationMethod newtype#}
+instance ForeignObject QlOptimizationMethod where
+  withObject = withQlOptimizationMethod
+  constructor = QlOptimizationMethod
+  finalizer = qlFreeOptimizationMethod
+
+data OptimizationMethod =
+  LevenbergMarquardt
+    Double -- ^epsfcn
+    Double -- ^xtol
+    Double -- ^gtol
+  | Simplex
+    Double -- ^lambda, characteristic length
+
+instance EnumObject OptimizationMethod QlOptimizationMethod where
+  toObject (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
+  toObject (Simplex l) = qlSimplex l
+{#fun qlLevenbergMarquardt {`Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlOptimizationMethod'#}
+{#fun qlSimplex {`Double', preErrorCheck- `String' errorCheck*-} -> `QlOptimizationMethod'#}
+
+data EndCriteria = 
+  EndCriteria
+    Word -- ^maxIterations
+    Word -- ^maxStationaryStateIterations
+    Double -- ^rootEpsilon
+    Double -- ^functionEpsilon
+    Double -- ^gradientNormEpsilon
+
+{#pointer *EndCriteria as QlEndCriteria foreign finalizer qlFreeEndCriteria newtype#}
+instance ForeignObject QlEndCriteria where
+  withObject = withQlEndCriteria
+  constructor = QlEndCriteria
+  finalizer = qlFreeEndCriteria
+instance EnumObject EndCriteria QlEndCriteria where toObject (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
+{#fun qlEndCriteria {fromIntegral `Word', fromIntegral `Word', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlEndCriteria'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

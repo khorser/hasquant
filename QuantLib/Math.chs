@@ -20,6 +20,9 @@ module QuantLib.Math
   , PolynomType(..)
   , ComplexLogFormula(..)
   , CmsMarketCalibrationType(..)
+  , EndCriteria(..)
+  , OptimizationMethod(..)
+  , Constraint(..)
 
   , Matrix
   , realMatrix
