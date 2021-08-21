@@ -15,6 +15,12 @@ module QuantLib.Internal.Enum
   , PositionType(..)
   , PriceType(..)
 
+  , StrikedPayoff(..)
+  , PlainVanillaPayoff(..)
+  , PercentageStrikePayoff(..)
+  , QlPlainVanillaPayoff
+  , QlPercentageStrikePayoff
+  , QlStrikedTypePayoff
   , Payoff(..)
   , QlPayoff
 
@@ -86,7 +92,6 @@ instance ForeignObject QlExercise where
 class IsQlExercise a where
   asQlExercise :: a -> IO QlExercise
 
--- TODO check if we really need this hierarchy
 {#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
 instance ForeignObject QlEuropeanExercise where
   withObject = withQlEuropeanExercise
@@ -148,7 +153,7 @@ data Exercise =
 
 {#fun qlSwingExercise1 {withDay* `Day', withDay* `Day', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
 
---{#NOTUSED fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
+{#fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
 
 exercise :: Exercise -> IO QlExercise
 exercise (AmericanExercise Nothing d p) = qlAmericanExercise1 d p >>= asQlExercise
@@ -168,20 +173,55 @@ instance EnumObject Exercise QlExercise where toObject = exercise
 
 {#enum PriceType {} deriving (Show, Eq)#}
 
-data Payoff =
+data PercentageStrikePayoff = PercentageStrikePayoff
+      OptionType -- ^type
+      Double -- ^moneyness
+instance EnumObject PercentageStrikePayoff QlPercentageStrikePayoff where toObject (PercentageStrikePayoff t m) = qlPercentageStrikePayoff t m
+
+data PlainVanillaPayoff = PlainVanillaPayoff
+      OptionType -- ^type
+      Double -- ^strike
+instance EnumObject PlainVanillaPayoff QlPlainVanillaPayoff where toObject (PlainVanillaPayoff t s) = qlPlainVanillaPayoff t s
+
+data StrikedPayoff =
   AssetOrNothing
     OptionType -- ^type
     Double -- ^strike
-  | AverageBasket
+  | CashOrNothing
+      OptionType -- ^type
+      Double -- ^strike
+      Double -- ^cashPayoff
+  | Gap
+      OptionType -- ^type
+      Double -- ^strike
+      Double -- ^secondStrike
+  | PercentageStrike PercentageStrikePayoff
+  | PlainVanilla PlainVanillaPayoff
+  | SuperFund
+      Double -- ^strike
+      Double -- ^secondStrike
+  | SuperSharePayoff
+      Double -- ^strike
+      Double -- ^secondStrike
+      Double -- ^cashPayoff
+instance EnumObject StrikedPayoff QlStrikedTypePayoff where toObject = strikedPayoff
+
+strikedPayoff :: StrikedPayoff -> IO QlStrikedTypePayoff
+strikedPayoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s
+strikedPayoff (CashOrNothing t s c) = qlCashOrNothingPayoff t s c
+strikedPayoff (Gap t s ss) = qlGapPayoff t s ss
+strikedPayoff (PercentageStrike p) = toObject p >>= qlPercentageStrikePayoffAsStrikedTypePayoff
+strikedPayoff (PlainVanilla p) = toObject p >>= qlPlainVanillaPayoffAsStrikedTypePayoff
+strikedPayoff (SuperFund s ss) = qlSuperFundPayoff s ss
+strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
+
+data Payoff =
+    AverageBasket
       Payoff -- ^p
       Word -- ^n
   | AverageBasketMultiple
       Payoff -- ^p
       [Double] -- ^a
-  | CashOrNothing
-      OptionType -- ^type
-      Double -- ^strike
-      Double -- ^cashPayoff
   | DoubleStickyRatchet
       Double -- ^type1
       Double -- ^type2
@@ -199,20 +239,10 @@ data Payoff =
   | ForwardType
       PositionType -- ^type
       Double -- ^strike
-  | Gap
-      OptionType -- ^type
-      Double -- ^strike
-      Double -- ^secondStrike
   | MaxBasket
       Payoff -- ^p
   | MinBasket
       Payoff -- ^p
-  | PercentageStrike
-      OptionType -- ^type
-      Double -- ^moneyness
-  | PlainVanilla
-      OptionType -- ^type
-      Double -- ^strike
   | RatchetMax
       Double -- ^gearing1
       Double -- ^gearing2
@@ -269,13 +299,7 @@ data Payoff =
       Double -- ^spread2
       Double -- ^initialValue
       Double -- ^accrualFactor
-  | SuperFund
-      Double -- ^strike
-      Double -- ^secondStrike
-  | SuperSharePayoff
-      Double -- ^strike
-      Double -- ^secondStrike
-      Double -- ^cashPayoff
+  | Striked StrikedPayoff
 
 {#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
 instance ForeignObject QlPayoff where
@@ -286,7 +310,6 @@ instance ForeignObject QlPayoff where
 class IsQlPayoff a where
   asQlPayoff :: a -> IO QlPayoff
 
--- TODO check if we really neeed this hieratchy
 {#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
 instance ForeignObject QlBasketPayoff where
   withObject = withQlBasketPayoff
@@ -352,18 +375,13 @@ instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoff
 instance EnumObject Payoff QlPayoff where toObject = payoff
 
 payoff :: Payoff -> IO QlPayoff
-payoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s >>= asQlPayoff
 payoff (AverageBasket p n) = payoff p >>= (`qlAverageBasketPayoff` n) >>= asQlPayoff
 payoff (AverageBasketMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a) >>= asQlPayoff
-payoff (CashOrNothing t s c) = qlCashOrNothingPayoff t s c >>= asQlPayoff
 payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (FloatingType t) = qlFloatingTypePayoff t >>= asQlPayoff
 payoff (ForwardType t s) = qlForwardTypePayoff t s
-payoff (Gap t s ss) = qlGapPayoff t s ss >>= asQlPayoff
 payoff (MaxBasket p) = payoff p >>= qlMaxBasketPayoff >>= asQlPayoff
 payoff (MinBasket p) = payoff p >>= qlMinBasketPayoff >>= asQlPayoff
-payoff (PercentageStrike t m) = qlPercentageStrikePayoff t m >>= asQlPayoff
-payoff (PlainVanilla t s) = qlPlainVanillaPayoff t s >>= asQlPayoff
 payoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (Ratchet g1 g2 s1 s2 i a) = qlRatchetPayoff g1 g2 s1 s2 i a
@@ -371,8 +389,7 @@ payoff (SpreadBasket p) = payoff p >>= qlSpreadBasketPayoff >>= asQlPayoff
 payoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (Sticky g1 g2 s1 s2 i a) = qlStickyPayoff g1 g2 s1 s2 i a
-payoff (SuperFund s ss) = qlSuperFundPayoff s ss >>= asQlPayoff
-payoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c >>= asQlPayoff
+payoff (Striked s) = toObject s >>= asQlPayoff
 
 data Callability =
   Soft

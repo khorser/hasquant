@@ -271,7 +271,7 @@ objectMatrix rows cols d =
     else Right $ Matrix rows cols d
 
 -- TODO use type families
-class (ForeignObject b) => EnumObject a b | b -> a where
+class (ForeignObject b) => EnumObject a b | a -> b where
   toObject :: a -> IO b
   withEnumObject :: a -> (Ptr b -> IO c) -> IO c
   withEnumObject x f = toObject x >>= (`withObject` f)
