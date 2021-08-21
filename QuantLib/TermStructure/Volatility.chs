@@ -68,7 +68,7 @@ module QuantLib.TermStructure.Volatility
 import QuantLib.Internal
 {#import QuantLib.TermStructure#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
-import QuantLib.Internal.TermStructure
+import QuantLib.Internal.TermStructure(withYieldTermStructure)
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)

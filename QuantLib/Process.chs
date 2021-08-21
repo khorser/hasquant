@@ -27,6 +27,35 @@ module QuantLib.Process
   , asStochasticProcess
   , asGeneralizedBlackScholesProcess
   , asHestonProcess
+
+  , blackProcess
+  , blackScholesMertonProcess
+  , blackScholesProcess
+  , extendedBlackScholesMertonProcess
+  , garmanKohlagenProcess
+  , generalizedBlackScholesProcess
+  , squareRootProcess
+  , vegaStressedBlackScholesProcess
+
+  , batesProcess
+  , extOUWithJumpsProcess
+  , g2ForwardProcess
+  , g2Process
+  , gemanRoncoroniProcess
+  , geometricBrownianMotionProcess
+  , gjrGARCHProcess
+  , hestonProcess
+  , hullWhiteForwardProcess
+  , hullWhiteProcess
+  , hybridHestonHullWhiteProcess
+  , klugeExtOUProcess
+  , liborForwardModelProcess
+  , merton76Process
+  , ornsteinUhlenbeckProcess
+  , varianceGammaProcess
+  , stochasticProcessArray
+
+  , blackScholesTheta
   )
   where
 
@@ -36,6 +65,13 @@ module QuantLib.Process
 #include "qlEnumObjects.h"
 
 import QuantLib.Internal
+{#import QuantLib.Quote#}(Quote)
+import QuantLib.Internal.Quote
+{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
+{#import QuantLib.TermStructure.Volatility#}(BlackVolTermStructure)
+import QuantLib.Internal.TermStructure
+{#import QuantLib.Index.InterestRate#}
+import QuantLib.Internal.Index
 
 {#enum ProcessDiscretization {} deriving(Show,Eq)#}
 
@@ -169,5 +205,60 @@ instance IsStochasticProcess KlugeExtOUProcess where asStochasticProcess = qlKlu
 instance IsStochasticProcess LiborForwardModelProcess where asStochasticProcess = qlLiborForwardModelProcessAsStochasticProcess
 {#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
 instance IsStochasticProcess StochasticProcessArray where asStochasticProcess = qlStochasticProcessArrayAsStochasticProcess
+
+{#fun qlBlackProcess as blackProcess {`Quote', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `BlackProcess'#}
+
+{#fun qlBlackScholesMertonProcess as blackScholesMertonProcess {`Quote', `YieldTermStructure', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GeneralizedBlackScholesProcess'#}
+
+{#fun qlBlackScholesProcess as blackScholesProcess {`Quote', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GeneralizedBlackScholesProcess'#}
+
+{#fun qlExtendedBlackScholesMertonProcess as extendedBlackScholesMertonProcess {`Quote', `YieldTermStructure', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', `ExtendedBlackScholesMertonProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GeneralizedBlackScholesProcess'#}
+
+{#fun qlGarmanKohlagenProcess as garmanKohlagenProcess {`Quote', `YieldTermStructure', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GeneralizedBlackScholesProcess'#}
+
+{#fun qlGeneralizedBlackScholesProcess as generalizedBlackScholesProcess {`Quote', `YieldTermStructure', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GeneralizedBlackScholesProcess'#}
+
+{#fun qlSquareRootProcess as squareRootProcess {`Double', `Double', `Double', `Double', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `StochasticProcess1D'#}
+
+{#fun qlVegaStressedBlackScholesProcess as vegaStressedBlackScholesProcess {`Quote', `YieldTermStructure', `YieldTermStructure', `BlackVolTermStructure', `Double', `Double', `Double', `Double', `Double', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GeneralizedBlackScholesProcess'#}
+
+{#fun qlBatesProcess as batesProcess {`YieldTermStructure', `YieldTermStructure', `Quote', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `HestonProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `BatesProcess'#}
+
+{#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess {`ExtendedOrnsteinUhlenbeckProcess', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `ExtOUWithJumpsProcess'#}
+
+{#fun qlG2ForwardProcess as g2ForwardProcess {`Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `StochasticProcess'#}
+
+{#fun qlG2Process as g2Process {`Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `StochasticProcess'#}
+
+{#fun qlGemanRoncoroniProcess as gemanRoncoroniProcess {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `StochasticProcess1D'#}
+
+{#fun qlGeometricBrownianMotionProcess as geometricBrownianMotionProcess {`Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `StochasticProcess1D'#}
+
+{#fun qlGJRGARCHProcess as gjrGARCHProcess {`YieldTermStructure', `YieldTermStructure', `Quote', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `GJRGARCHProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `GJRGARCHProcess'#}
+
+{#fun qlHestonProcess as hestonProcess {`YieldTermStructure', `YieldTermStructure', `Quote', `Double', `Double', `Double', `Double', `Double', `HestonProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `HestonProcess'#}
+
+{#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess {`YieldTermStructure', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `HullWhiteForwardProcess'#}
+
+{#fun qlHullWhiteProcess as hullWhiteProcess {`YieldTermStructure', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `HullWhiteProcess'#}
+
+{#fun qlHybridHestonHullWhiteProcess as hybridHestonHullWhiteProcess {`HestonProcess', `HullWhiteForwardProcess', `Double', `HybridHestonHullWhiteProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `HybridHestonHullWhiteProcess'#}
+
+{#fun qlKlugeExtOUProcess as klugeExtOUProcess {`Double', `ExtOUWithJumpsProcess', `ExtendedOrnsteinUhlenbeckProcess', preErrorCheck- `String' errorCheck*-} -> `KlugeExtOUProcess'#}
+
+{#fun qlLiborForwardModelProcess as liborForwardModelProcess {fromIntegral `Word', `IborIndex', preErrorCheck- `String' errorCheck*-} -> `LiborForwardModelProcess'#}
+
+{#fun qlMerton76Process as merton76Process {`Quote', `YieldTermStructure', `YieldTermStructure', `BlackVolTermStructure', `Quote', `Quote', `Quote', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `Merton76Process'#}
+
+{#fun qlOrnsteinUhlenbeckProcess as ornsteinUhlenbeckProcess {`Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `StochasticProcess1D'#}
+
+{#fun qlVarianceGammaProcess as varianceGammaProcess {`Quote', `YieldTermStructure', `YieldTermStructure', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `VarianceGammaProcess'#}
+
+stochasticProcessArray :: [StochasticProcess1D] -> Matrix Double -> IO StochasticProcessArray
+stochasticProcessArray a (Matrix mr mc md) = qlStochasticProcessArray a mr mc md
+{#fun qlStochasticProcessArray {withObjectArray* `[StochasticProcess1D]'&, fromIntegral `Word', fromIntegral `Word', withDoubleArrayRaw* `[Double]', preErrorCheck- `String' errorCheck*-} -> `StochasticProcessArray'#}
+
+-- |default theta calculation for Black-Scholes options
+{#fun qlQuantLibBlackScholesTheta as blackScholesTheta {`GeneralizedBlackScholesProcess', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

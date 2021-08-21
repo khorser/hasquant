@@ -1,8 +1,9 @@
-module QuantLib.Internal.TermStructure(withTermStructure, withYieldTermStructure) where
+module QuantLib.Internal.TermStructure(withTermStructure, withYieldTermStructure, withBlackVolTermStructure) where
 
 import Foreign.Ptr(Ptr)
 import QuantLib.TermStructure(TermStructure)
 import QuantLib.TermStructure.Yield(YieldTermStructure)
+import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
 import QuantLib.Internal(ForeignObject(withObject))
 
 -- i didn't want to expose withT functions so here we go with more boilerplate
@@ -11,5 +12,8 @@ withTermStructure = withObject
 
 withYieldTermStructure :: YieldTermStructure -> (Ptr YieldTermStructure -> IO b) -> IO b
 withYieldTermStructure = withObject
+
+withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr BlackVolTermStructure -> IO b) -> IO b
+withBlackVolTermStructure = withObject
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
