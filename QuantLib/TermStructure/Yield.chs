@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure
@@ -59,9 +60,7 @@ module QuantLib.TermStructure.Yield
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
 
-  , helperBond
-  , helperSwap
-  , helperOIS
+  , underlying
   )
   where
 
@@ -321,11 +320,15 @@ interpolatedZeroCurve r dc c qd i = qlInterpolatedZeroCurve rs rd dc c qs ds i' 
 -- |final number of iterations used in the optimization problem
 {#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations {`FittedBondDiscountCurve', preErrorCheck- `String' errorCheck*-} -> `Int'#}
 
--- TODO introduce a type class for all underlyings
-{#fun qlBondHelperBond as helperBond {`BondHelper', preErrorCheck- `String' errorCheck*-} -> `Bond' peekObject*#}
+class HelperUnderlying a b | a -> b where underlying :: a -> IO b
 
-{#fun qlSwapRateHelperSwap as helperSwap {`SwapRateHelper', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap' peekObject*#}
+instance HelperUnderlying BondHelper Bond where underlying = qlBondHelperBond
+{#fun qlBondHelperBond {`BondHelper', preErrorCheck- `String' errorCheck*-} -> `Bond' peekObject*#}
 
-{#fun qlOISRateHelperSwap as helperOIS {`OISRateHelper', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap' peekObject*#}
+instance HelperUnderlying SwapRateHelper VanillaSwap where underlying = qlSwapRateHelperSwap
+{#fun qlSwapRateHelperSwap {`SwapRateHelper', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap' peekObject*#}
+
+instance HelperUnderlying OISRateHelper OvernightIndexedSwap where underlying = qlOISRateHelperSwap
+{#fun qlOISRateHelperSwap {`OISRateHelper', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap' peekObject*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -25,6 +25,7 @@ module QuantLib.Process
   , HullWhiteForwardProcess
 
   , asStochasticProcess
+  , asStochasticProcess1D
   , asGeneralizedBlackScholesProcess
   , asHestonProcess
 
@@ -205,6 +206,20 @@ instance IsStochasticProcess KlugeExtOUProcess where asStochasticProcess = qlKlu
 instance IsStochasticProcess LiborForwardModelProcess where asStochasticProcess = qlLiborForwardModelProcessAsStochasticProcess
 {#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
 instance IsStochasticProcess StochasticProcessArray where asStochasticProcess = qlStochasticProcessArrayAsStochasticProcess
+
+class IsStochasticProcess1D a where asStochasticProcess1D :: a -> IO StochasticProcess1D
+{#fun qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D {`ExtendedOrnsteinUhlenbeckProcess'} -> `StochasticProcess1D'#}
+instance IsStochasticProcess1D ExtendedOrnsteinUhlenbeckProcess where asStochasticProcess1D = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
+{#fun qlGeneralizedBlackScholesProcessAsStochasticProcess1D {`GeneralizedBlackScholesProcess'} -> `StochasticProcess1D'#}
+instance IsStochasticProcess1D GeneralizedBlackScholesProcess where asStochasticProcess1D = qlGeneralizedBlackScholesProcessAsStochasticProcess1D
+{#fun qlHullWhiteForwardProcessAsStochasticProcess1D {`HullWhiteForwardProcess'} -> `StochasticProcess1D'#}
+instance IsStochasticProcess1D HullWhiteForwardProcess where asStochasticProcess1D = qlHullWhiteForwardProcessAsStochasticProcess1D
+{#fun qlHullWhiteProcessAsStochasticProcess1D {`HullWhiteProcess'} -> `StochasticProcess1D'#}
+instance IsStochasticProcess1D HullWhiteProcess where asStochasticProcess1D = qlHullWhiteProcessAsStochasticProcess1D
+{#fun qlMerton76ProcessAsStochasticProcess1D {`Merton76Process'} -> `StochasticProcess1D'#}
+instance IsStochasticProcess1D Merton76Process where asStochasticProcess1D = qlMerton76ProcessAsStochasticProcess1D
+{#fun qlVarianceGammaProcessAsStochasticProcess1D {`VarianceGammaProcess'} -> `StochasticProcess1D'#}
+instance IsStochasticProcess1D VarianceGammaProcess where asStochasticProcess1D = qlVarianceGammaProcessAsStochasticProcess1D
 
 {#fun qlBlackProcess as blackProcess {`Quote', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `BlackProcess'#}
 

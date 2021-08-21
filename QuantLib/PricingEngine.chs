@@ -131,6 +131,8 @@ module QuantLib.PricingEngine
   , bachelierBlackFormula'
   , bachelierBlackFormula
   , defaultThetaPerDay
+
+  , setPricingEngine
   )
   where
 
@@ -151,6 +153,7 @@ import QuantLib.Internal.Quote
 {#import QuantLib.Time.Schedule#}(DayCounter, TimeUnit)
 import QuantLib.Internal.Schedule
 {#import QuantLib.Math#}
+{#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity)
 import QuantLib.Internal.Enum
 
@@ -457,5 +460,13 @@ instance ForeignObject BlackScholesCalculator where
 
 -- |default theta-per-day calculation
 {#fun qlQuantLibDefaultThetaPerDay as defaultThetaPerDay {`Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+class Priceable a where setPricingEngine :: a -> PricingEngine -> IO ()
+
+instance Priceable BlackCalibrationHelper where setPricingEngine = qlBlackCalibrationHelperSetPricingEngine
+{#fun qlBlackCalibrationHelperSetPricingEngine {withObject* `BlackCalibrationHelper', `PricingEngine', preErrorCheck- `String' errorCheck*-} -> `()'#}
+
+instance Priceable Instrument where setPricingEngine = qlInstrumentSetPricingEngine
+{#fun qlInstrumentSetPricingEngine {withObject* `Instrument', `PricingEngine', preErrorCheck- `String' errorCheck*-} -> `()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

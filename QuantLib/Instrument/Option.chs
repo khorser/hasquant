@@ -1,7 +1,7 @@
 module QuantLib.Instrument.Option
   (
     Option
-  , IsOption(..)
+  , asOption
   , CdsOption
   , BarrierOption
   , DividendVanillaOption

@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
 module QuantLib.Index.InterestRate
   (
     InterestRateIndex
@@ -36,13 +37,15 @@ module QuantLib.Index.InterestRate
   , overnightIndex
   , businessDayConvention
   , endOfMonth
+
+  , underlying
   )
   where
 
 import QuantLib.Internal
 import QuantLib.Type
 import Control.Exception(throwIO)
-{#import QuantLib.TermStructure.Yield#}
+{#import QuantLib.TermStructure.Yield#} hiding (underlying)
 import QuantLib.Internal.TermStructure
 {#import QuantLib.Index#}(Index)
 {#import QuantLib.Time.Schedule#}(TimeUnit(..), Schedule, DayCounter)
@@ -51,6 +54,7 @@ import QuantLib.Internal.Schedule
 import QuantLib.Internal.Currency
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 import QuantLib.Internal.Calendar
+import {-# SOURCE #-} QuantLib.Instrument.Swap(VanillaSwap, OvernightIndexedSwap)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -286,5 +290,12 @@ iborIndex c ts = do
 {#fun pure qlIborIndexBusinessDayConvention as businessDayConvention {`IborIndex'} -> `BusinessDayConvention'#}
 
 {#fun pure qlIborIndexEndOfMonth as endOfMonth {`IborIndex'} -> `Bool'#}
+
+class HasUnderlying a b | a -> b where underlying :: a -> Day -> IO b
+
+instance HasUnderlying OvernightIndexedSwapIndex OvernightIndexedSwap where underlying = qlOvernightIndexedSwapIndexUnderlyingSwap
+{#fun qlOvernightIndexedSwapIndexUnderlyingSwap {`OvernightIndexedSwapIndex', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap' peekObject*#}
+instance HasUnderlying SwapIndex VanillaSwap where underlying = qlSwapIndexUnderlyingSwap
+{#fun qlSwapIndexUnderlyingSwap {`SwapIndex', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap' peekObject*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
