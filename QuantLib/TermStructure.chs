@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.TermStructure
   (
     TermStructure
@@ -21,7 +21,7 @@ instance ForeignObject TermStructure where
   constructor = TermStructure
   finalizer = qlFreeTermStructure
 
-asTermStructure :: (Derives a TermStructure) => a -> IO TermStructure
+asTermStructure :: (a `Derives` TermStructure) => a -> IO TermStructure
 asTermStructure = cast
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

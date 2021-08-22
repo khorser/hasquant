@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Quote
   (
      Quote
@@ -59,8 +59,8 @@ instance ForeignObject SimpleQuote where
 
 {#enum DeltaType {} deriving(Show, Eq)#}
 
-instance Derives SimpleQuote Quote where cast = qlSimpleQuoteAsQuote
-asQuote :: (Derives a Quote) => a -> IO Quote
+instance SimpleQuote `Derives` Quote where cast = qlSimpleQuoteAsQuote
+asQuote :: (a `Derives` Quote) => a -> IO Quote
 asQuote = cast
 
 {#fun qlSimpleQuoteAsQuote {`SimpleQuote'} -> `Quote'#}

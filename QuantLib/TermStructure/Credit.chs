@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses, TypeOperators #-}
 module QuantLib.TermStructure.Credit
   (
     ProbabilityTrait(..)
@@ -53,7 +53,7 @@ instance ForeignObject DefaultProbabilityTermStructure where
   withObject = withDefaultProbabilityTermStructure
   constructor = DefaultProbabilityTermStructure
   finalizer=qlFreeDefaultProbabilityTermStructure
-instance Derives DefaultProbabilityTermStructure TermStructure where cast = qlDefaultProbabilityTermStructureAsTermStructure
+instance DefaultProbabilityTermStructure `Derives` TermStructure where cast = qlDefaultProbabilityTermStructureAsTermStructure
 
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign finalizer qlFreeDefaultProbabilityHelper newtype#}
 instance ForeignObject DefaultProbabilityHelper where

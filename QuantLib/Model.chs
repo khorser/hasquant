@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, FlexibleContexts, TypeOperators #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances, FunctionalDependencies, FlexibleContexts, TypeOperators #-}
 module QuantLib.Model
   (
    CalibrationErrorType(..)
@@ -62,6 +62,8 @@ module QuantLib.Model
   , impliedVolatility
   , marketValue
   , modelValue
+
+  , SecondBase(..)
   )
   where
 
@@ -203,10 +205,13 @@ asCalibrationHelper :: (a `Derives` CalibrationHelper) => a -> IO CalibrationHel
 asCalibrationHelper = cast
 
 -- multiple inheritance... not sure if we need that cast to AffineModel at all
-class Derives2 a b | a -> b where cast2 :: a -> IO b
+newtype SecondBase a = SecondBase a
+instance (SecondBase OneFactorAffineModel) `Derives` AffineModel where cast (SecondBase x) = qlOneFactorAffineModelAsAffineModel x
+instance (SecondBase LiborForwardModel) `Derives` AffineModel where cast (SecondBase x) = qlLiborForwardModelAsAffineModel x
+instance (SecondBase G2) `Derives` AffineModel where cast (SecondBase x) = qlG2AsAffineModel x
 
-asAffineModel :: (a `Derives2` AffineModel) => a -> IO AffineModel
-asAffineModel = cast2
+asAffineModel :: (a `Derives` AffineModel) => a -> IO AffineModel
+asAffineModel = cast
 asCalibratedModel :: (a `Derives` CalibratedModel) => a -> IO CalibratedModel
 asCalibratedModel = cast
 asHestonModel :: (a `Derives` HestonModel) => a -> IO HestonModel
@@ -221,13 +226,10 @@ asBatesDoubleExpModel :: (a `Derives` BatesDoubleExpModel) => a -> IO BatesDoubl
 asBatesDoubleExpModel = cast
 
 {#fun qlOneFactorAffineModelAsAffineModel {`OneFactorAffineModel'} -> `AffineModel'#}
-instance OneFactorAffineModel `Derives2` AffineModel where cast2 = qlOneFactorAffineModelAsAffineModel
 {#fun qlLiborForwardModelAsAffineModel {`LiborForwardModel'} -> `AffineModel'#}
-instance LiborForwardModel `Derives2` AffineModel where cast2 = qlLiborForwardModelAsAffineModel
 instance HullWhite `Derives` OneFactorAffineModel where cast = qlHullWhiteAsOneFactorAffineModel
 {#fun qlHullWhiteAsOneFactorAffineModel {`HullWhite'} -> `OneFactorAffineModel'#}
 {#fun qlG2AsAffineModel {`G2'} -> `AffineModel'#}
-instance G2 `Derives2` AffineModel where cast2 = qlG2AsAffineModel
 {#fun qlG2AsShortRateModel {`G2'} -> `ShortRateModel'#}
 instance G2 `Derives` ShortRateModel where cast = qlG2AsShortRateModel
 instance BatesDetJumpModel `Derives` BatesModel where cast = qlBatesDetJumpModelAsBatesModel
