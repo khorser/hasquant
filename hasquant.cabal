@@ -189,4 +189,7 @@ test-suite hasquant_test
   Default-Language: Haskell2010
   Hs-source-dirs:   test
 
+  other-modules:    QuantLib.Example.FRA
+                    , QuantLib.Example.Bond
+
 -- vim: set et ts=8 sts=2 sw=2:

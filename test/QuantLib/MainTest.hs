@@ -28,6 +28,9 @@ import QuantLib.TermStructure.Yield hiding(maxDate)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 
+import qualified QuantLib.Example.Bond as BondExample
+import qualified QuantLib.Example.FRA as FRAExample
+
 instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
 
@@ -51,6 +54,12 @@ areClose x1 x2 = x1 == x2
             || x1 * x2 == 0 && diff < epsilon * epsilon
             || diff <= epsilon * abs x1 && diff <= epsilon * abs x2
             where diff = abs(x1 - x2)
+
+closePrec :: Double -> Double -> Double -> Bool
+closePrec r p x = abs (x - r) < p
+
+listClose :: (a -> Double) -> [Double] -> Double -> [a] -> Bool
+listClose f x1 e x2 = all (\(x, y) -> abs(x - f y) < e) (zip x1 x2)
 
 main :: IO ()
 main = do
@@ -881,7 +890,7 @@ main = do
           [1 `january` 2002 .. 31 `december` 2005]
           [(3, Months), (6, Months), (1, Years)]
           [0.25, 0.5, 1.0]
-    
+
       it "one" $ do
         dc <- dayCounter One
         checkCounter dc
@@ -1056,7 +1065,7 @@ main = do
           Settings.setIncludeReferenceDateEvents False
           Settings.setIncludeTodaysCashFlows Nothing
           cases12 l
-        
+
           -- 2)
           Settings.setIncludeReferenceDateEvents False
           Settings.setIncludeTodaysCashFlows (Just False)
@@ -1065,12 +1074,12 @@ main = do
           Settings.setIncludeReferenceDateEvents True
           Settings.setIncludeTodaysCashFlows Nothing
           cases34 l
-        
+
           -- 4)
           Settings.setIncludeReferenceDateEvents True
           Settings.setIncludeTodaysCashFlows $ Just True
           cases34 l
-        
+
           -- 5)
           Settings.setIncludeReferenceDateEvents True
           Settings.setIncludeTodaysCashFlows $ Just False
@@ -1084,14 +1093,14 @@ main = do
           checkInclusion l 0 [(0, False), (1, False)]
           checkInclusion l 1 [(0, True), (1, True), (2, False)]
           checkInclusion l 2 [(1, True), (2, True), (3, False)]
-        
+
           dc <- dayCounter $ Actual365Fixed Actual365FixedStandard
           noDisc <- IR.interestRate 0.0 dc IR.Continuous Annual
-        
+
           Settings.setIncludeTodaysCashFlows Nothing
           checkNPV l noDisc False 2.0
           checkNPV l noDisc True 3.0
-        
+
           Settings.setIncludeTodaysCashFlows $ Just False
           checkNPV l noDisc False 2.0
           checkNPV l noDisc True 2.0
@@ -1151,7 +1160,7 @@ main = do
           cpns <- CF.iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
           CF.setCouponPricer cpns pricer
           ret <- CF.nextCashFlowAmount cpns True Nothing
-          ret `shouldSatisfy` \_ -> True
+          ret `shouldSatisfy` const True
 
     describe "Quote value" $ do
       prop "quote value" $ 
@@ -1194,7 +1203,7 @@ main = do
                 q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
                 swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= asRateHelper)
               swapData
-          
+
             ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear
             return (cal, settlementDays, ts)
       it "referenceChange" $ do
@@ -1253,5 +1262,76 @@ main = do
           spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
+    describe "Bond Example" $
+      it "check values"  $ do
+        r <- Settings.keepingSettings' BondExample.run
+        let (fixnpv, znpv, fnpv) = BondExample.npvR r
+            (fixy, zy, fy) = BondExample.yieldR r
+            (fixclean, zclean, fclean) = BondExample.cleanPriceR r
+            (fixdirty, zdirty, fdirty) = BondExample.dirtyPriceR r
+            (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmountR r
+            (fixprev, fprev) = BondExample.previousCoupon r
+            (fixnext, fnext) = BondExample.nextCoupon r
+            (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
+            cleanFromYield = BondExample.cleanPriceFromYieldR r
+            yieldFromClean = BondExample.yieldFromCleanPriceR r
+            tradable = BondExample.tradable r
+
+        fixnpv `shouldSatisfy` closePrec 107.6682891 1e-7
+        znpv `shouldSatisfy` closePrec 100.9221782 1e-7
+        fnpv `shouldSatisfy` closePrec 102.3593146 1e-7
+        fixy `shouldSatisfy` closePrec 0.0364756 1e-7
+        zy `shouldSatisfy` closePrec 0.0300006 1e-7
+        fy `shouldSatisfy` closePrec 0.0220096 1e-7
+
+        fixclean `shouldSatisfy` closePrec 106.1275283 1e-7
+        zclean `shouldSatisfy` closePrec 100.9221782 1e-7
+        fclean `shouldSatisfy` closePrec 101.7972017 1e-7
+        fixdirty `shouldSatisfy` closePrec 107.6682891 1e-7
+        zdirty `shouldSatisfy` closePrec 100.9221782 1e-7
+        fdirty `shouldSatisfy` closePrec 102.3593146 1e-7
+        fixaccrual `shouldSatisfy` closePrec 1.5407609 1e-7
+        zaccrual `shouldSatisfy` closePrec 0.0 1e-7
+        faccrual `shouldSatisfy` closePrec 0.5621129 1e-7
+        fixprev `shouldSatisfy` closePrec 0.045 1e-7
+        fprev `shouldSatisfy` closePrec 0.0288625 1e-7
+        fixnext `shouldSatisfy` closePrec 0.045 1e-7
+        fnext `shouldSatisfy` closePrec 0.0342984 1e-7
+
+        fixnextD `shouldBe` fromGregorian 2008 11 17
+        znextD `shouldBe` fromGregorian 2013 08 15
+        fnextD `shouldBe` fromGregorian 2008 10 21
+        cleanFromYield `shouldSatisfy` closePrec 101.79720 1e-5 -- because of difference in QL versions?
+        yieldFromClean `shouldSatisfy` closePrec 0.0220096 1e-7
+
+        tradable `shouldBe` (True, True, False)
+    describe "FRA Example" $
+      it "check values" $ do
+        (FRAExample.Result it1 it2) <- Settings.keepingSettings' FRAExample.run
+        let
+          fwdRates1   = [3.0e-2, 3.1e-2, 3.2e-2, 3.3e-2, 3.4e-2]
+          spots1      = [99.73470, 99.49489, 99.23917, 98.41684, 97.60271]
+          fwdValues1  = [100.76667, 100.79222, 100.83556, 100.84333, 100.85944]
+          implYields1 = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
+          zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
+        it1 `shouldSatisfy` listClose FRAExample.fwdRateR fwdRates1 1.0e-5
+        it1 `shouldSatisfy` listClose FRAExample.spotR spots1 1.0e-5
+        it1 `shouldSatisfy` listClose FRAExample.fwdValueR fwdValues1 1.0e-5
+        it1 `shouldSatisfy` listClose FRAExample.implYieldR implYields1 1.0e-5
+        it1 `shouldSatisfy` listClose FRAExample.zRateR zRates1 1.0e-5
+        it1 `shouldSatisfy` listClose FRAExample.npvR (repeat 0.0) 1.0e-5
+        let
+          fwdRates2   = [4.0e-2, 4.1e-2, 4.2e-2, 4.3e-2, 4.4e-2]
+          spots2      = [99.64687, 99.32793, 98.98812, 97.91433, 96.86156]
+          fwdValues2  = [101.02222, 101.04778, 101.09667, 101.09889, 101.11222]
+          implYields2 = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21173e-2, 4.29299e-2]
+          zRates2     = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21174e-2, 4.29299e-2]
+          npvs2       = [0.25208, 0.25121, 0.25567, 0.24751, 0.24215]
+        it2 `shouldSatisfy` listClose FRAExample.fwdRateR fwdRates2 1.0e-5
+        it2 `shouldSatisfy` listClose FRAExample.spotR spots2 1.0e-5
+        it2 `shouldSatisfy` listClose FRAExample.fwdValueR fwdValues2 1.0e-5
+        it2 `shouldSatisfy` listClose FRAExample.implYieldR implYields2 1.0e-5
+        it2 `shouldSatisfy` listClose FRAExample.zRateR zRates2 1.0e-5
+        it2 `shouldSatisfy` listClose FRAExample.npvR npvs2 1.0e-5
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
