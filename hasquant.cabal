@@ -158,7 +158,7 @@ executable hasquant_example
 
   main-is:          QuantLib/MainExample.hs
   other-modules:    QuantLib.Example.FRA
--- QuantLib.Example.Bond
+                    , QuantLib.Example.Bond
 --            , QuantLib.Example.BermudanSwaption
 --            , QuantLib.Example.CallableBond
 --            , QuantLib.Example.CDS
