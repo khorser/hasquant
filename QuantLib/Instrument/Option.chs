@@ -63,6 +63,10 @@ module QuantLib.Instrument.Option
   , vanillaStorageOption
   , vanillaSwingOption
   , europeanOption
+
+  , VolatileOption(..)
+  , QuantoOption(..)
+  , OptionOnAsset(..)
   )
   where
 
@@ -76,6 +80,7 @@ import QuantLib.Internal
 import Control.Monad((>=>))
 {#import QuantLib.Instrument#}
 import QuantLib.Internal.Enum
+{#import QuantLib.Process#}(GeneralizedBlackScholesProcess)
 
 {#pointer *QlOption as Option foreign finalizer qlFreeOption newtype#}
 instance ForeignObject Option where
@@ -261,5 +266,100 @@ dividendBarrierOption bt d1 d2 p e dv = uncurry (qlDividendBarrierOption bt d1 d
 {#fun qlVanillaSwingOption as vanillaSwingOption {withEnumObject* `StrikedPayoff', withEnumObject* `SwingExercise', fromIntegral `Word', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `OneAssetOption'#}
 
 {#fun qlEuropeanOption as europeanOption {withEnumObject* `StrikedPayoff', withEnumObject* `Exercise', preErrorCheck- `String' errorCheck*-} -> `VanillaOption'#}
+
+class OptionOnAsset a where
+  delta :: a -> IO Double
+  gamma :: a -> IO Double
+  rho :: a -> IO Double
+  theta :: a -> IO Double
+  vega :: a -> IO Double
+  dividendRho :: a -> IO Double
+
+
+instance OptionOnAsset MultiAssetOption where
+  delta = qlMultiAssetOptionDelta
+  gamma = qlMultiAssetOptionGamma
+  rho = qlMultiAssetOptionRho
+  theta = qlMultiAssetOptionTheta
+  vega = qlMultiAssetOptionVega
+  dividendRho = qlMultiAssetOptionDividendRho
+
+instance OptionOnAsset OneAssetOption where
+  delta = qlOneAssetOptionDelta
+  gamma = qlOneAssetOptionGamma
+  rho = qlOneAssetOptionRho
+  theta = qlOneAssetOptionTheta
+  vega = qlOneAssetOptionVega
+  dividendRho = qlOneAssetOptionDividendRho
+
+{#fun qlMultiAssetOptionDelta {`MultiAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlMultiAssetOptionDividendRho {`MultiAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlMultiAssetOptionGamma {`MultiAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlMultiAssetOptionRho {`MultiAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlMultiAssetOptionTheta {`MultiAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlMultiAssetOptionVega {`MultiAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlOneAssetOptionDelta {`OneAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOneAssetOptionDividendRho {`OneAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOneAssetOptionGamma {`OneAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOneAssetOptionRho {`OneAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOneAssetOptionTheta {`OneAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOneAssetOptionVega {`OneAssetOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+class QuantoOption a where
+  qrho :: a -> IO Double
+  qvega :: a -> IO Double
+  qlambda :: a -> IO Double
+
+instance QuantoOption QuantoBarrierOption where
+  qrho = qlQuantoBarrierOptionQrho
+  qvega = qlQuantoBarrierOptionQvega
+  qlambda = qlQuantoBarrierOptionQlambda
+
+instance QuantoOption QuantoForwardVanillaOption where
+  qrho = qlQuantoForwardVanillaOptionQrho
+  qvega = qlQuantoForwardVanillaOptionQvega
+  qlambda = qlQuantoForwardVanillaOptionQlambda
+
+instance QuantoOption QuantoVanillaOption where
+  qrho = qlQuantoVanillaOptionQrho
+  qvega = qlQuantoVanillaOptionQvega
+  qlambda = qlQuantoVanillaOptionQlambda
+
+class VolatileOption a where
+-- |/Warning/ currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)Warningoptions with a gamma that changes sign (e.g., binary options) have values that are not monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options.
+  impliedVolatility :: a 
+    -> Double -- ^price
+    -> GeneralizedBlackScholesProcess -- ^process
+    -> Double -- ^accuracy
+    -> Word -- ^maxEvaluations
+    -> Double -- ^minVol
+    -> Double -- ^maxVol
+    -> IO Double
+
+instance VolatileOption DividendVanillaOption where
+  impliedVolatility = qlDividendVanillaOptionImpliedVolatility
+
+instance VolatileOption VanillaOption where
+  impliedVolatility = qlVanillaOptionImpliedVolatility
+
+instance VolatileOption BarrierOption where
+  impliedVolatility = qlBarrierOptionImpliedVolatility
+
+{#fun qlQuantoBarrierOptionQrho {`QuantoBarrierOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlQuantoBarrierOptionQvega {`QuantoBarrierOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlQuantoBarrierOptionQlambda {`QuantoBarrierOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlQuantoForwardVanillaOptionQrho {`QuantoForwardVanillaOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlQuantoForwardVanillaOptionQvega {`QuantoForwardVanillaOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlQuantoForwardVanillaOptionQlambda {`QuantoForwardVanillaOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlQuantoVanillaOptionQrho {`QuantoVanillaOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlQuantoVanillaOptionQvega {`QuantoVanillaOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlQuantoVanillaOptionQlambda {`QuantoVanillaOption', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+{#fun qlDividendVanillaOptionImpliedVolatility {`DividendVanillaOption', `Double', withObject* `GeneralizedBlackScholesProcess', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlVanillaOptionImpliedVolatility {`VanillaOption', `Double', withObject* `GeneralizedBlackScholesProcess', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBarrierOptionImpliedVolatility {`BarrierOption', `Double', withObject* `GeneralizedBlackScholesProcess', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

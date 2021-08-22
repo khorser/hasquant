@@ -34,7 +34,6 @@ library
                     , QuantLib.InterestRate
                     , QuantLib.Index
                     , QuantLib.Instrument
-                    , QuantLib.Instrument.Option
                     , QuantLib.Quote
                     , QuantLib.TermStructure
                     , QuantLib.TermStructure.Yield
@@ -43,12 +42,13 @@ library
                     , QuantLib.Index.InterestRate
                     , QuantLib.CashFlow
                     , QuantLib.Instrument.Bond
-                    , QuantLib.Instrument.Swap
                     , QuantLib.Instrument.CapFloor
                     , QuantLib.Instrument.Forward
                     , QuantLib.Process
+                    , QuantLib.Instrument.Option
                     , QuantLib.Model
                     , QuantLib.Instrument.Credit
+                    , QuantLib.Instrument.Swap
                     , QuantLib.PricingEngine
 
   other-modules:    QuantLib.Internal

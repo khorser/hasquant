@@ -154,7 +154,7 @@ import QuantLib.Internal.Quote
 import QuantLib.Internal.Schedule
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument#}(Instrument)
-{#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity)
+{#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
 import QuantLib.Internal.Enum
 
 {#pointer *QlPricingEngine as PricingEngine foreign finalizer qlFreePricingEngine newtype#}

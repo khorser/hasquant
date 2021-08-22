@@ -59,6 +59,10 @@ module QuantLib.Instrument.Swap
   , overnightLeg
   , overnightLegBPS
   , overnightLegNPV
+
+  , HasFixedLeg(..)
+  , HasFloatingLeg(..)
+  , HasSpread(..)
   )
   where
 
@@ -76,6 +80,7 @@ import QuantLib.Internal.Index
 import QuantLib.Internal.Enum
 {#import QuantLib.Instrument.Bond#}(Bond)
 {#import QuantLib.Instrument.Option#}(Option)
+{#import QuantLib.Instrument.Credit#}(CreditDefaultSwap)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -215,5 +220,65 @@ swap' = (uncurry qlSwap1) . unzip
 {#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+
+class HasFixedLeg a where
+  fairRate :: a -> IO Double
+  fixedLeg :: a -> IO Leg
+  fixedLegBPS :: a -> IO Double
+  fixedLegNPV :: a -> IO Double
+instance HasFixedLeg OvernightIndexedSwap where
+  fairRate = qlOvernightIndexedSwapFairRate
+  fixedLeg = qlOvernightIndexedSwapFixedLeg
+  fixedLegBPS = qlOvernightIndexedSwapFixedLegBPS
+  fixedLegNPV = qlOvernightIndexedSwapFixedLegNPV
+instance HasFixedLeg VanillaSwap where
+  fairRate = qlVanillaSwapFairRate
+  fixedLeg = qlVanillaSwapFixedLeg
+  fixedLegBPS = qlVanillaSwapFixedLegBPS
+  fixedLegNPV = qlVanillaSwapFixedLegNPV
+
+class HasSpread a where
+  fairSpread :: a -> IO Double
+instance HasSpread VanillaSwap where
+  fairSpread = qlVanillaSwapFairSpread
+instance HasSpread OvernightIndexedSwap where
+  fairSpread = qlOvernightIndexedSwapFairSpread
+instance HasSpread AssetSwap where
+  fairSpread = qlAssetSwapFairSpread
+instance HasSpread CreditDefaultSwap where
+  fairSpread = qlCreditDefaultSwapFairSpread
+
+class HasFloatingLeg a where
+  floatingLeg :: a -> IO Leg
+  floatingLegBPS :: a -> IO Double
+  floatingLegNPV :: a -> IO Double
+instance HasFloatingLeg VanillaSwap where
+  floatingLeg = qlVanillaSwapFloatingLeg
+  floatingLegBPS = qlVanillaSwapFloatingLegBPS
+  floatingLegNPV = qlVanillaSwapFloatingLegNPV
+instance HasFloatingLeg AssetSwap where
+  floatingLeg = qlAssetSwapFloatingLeg
+  floatingLegBPS = qlAssetSwapFloatingLegBPS
+  floatingLegNPV = qlAssetSwapFloatingLegNPV
+
+{#fun qlVanillaSwapFairSpread {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlAssetSwapFairSpread {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlVanillaSwapFairRate {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlVanillaSwapFixedLeg {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+{#fun qlVanillaSwapFixedLegBPS {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlVanillaSwapFixedLegNPV {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOvernightIndexedSwapFairRate {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOvernightIndexedSwapFixedLeg {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+{#fun qlOvernightIndexedSwapFixedLegBPS {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOvernightIndexedSwapFixedLegNPV {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlOvernightIndexedSwapFairSpread {`OvernightIndexedSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+-- |Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.This calculation does not take any upfront into account, even if one was given.
+{#fun qlCreditDefaultSwapFairSpread {withObject* `CreditDefaultSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlVanillaSwapFloatingLeg {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+{#fun qlVanillaSwapFloatingLegBPS {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlVanillaSwapFloatingLegNPV {`VanillaSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlAssetSwapFloatingLeg {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Leg' peekObject*#}
+{#fun qlAssetSwapFloatingLegBPS {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlAssetSwapFloatingLegNPV {`AssetSwap', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
