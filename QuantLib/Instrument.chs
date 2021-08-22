@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Instrument
   (
     PositionType(..)
@@ -57,7 +57,7 @@ instance ForeignObject Instrument where
   constructor = Instrument
   finalizer = qlFreeInstrument
 
-asInstrument :: (Derives a Instrument) => a -> IO Instrument
+asInstrument :: (a `Derives` Instrument) => a -> IO Instrument
 asInstrument = cast
 
 -- |Returns the net present value of the given Instrument
