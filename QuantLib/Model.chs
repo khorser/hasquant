@@ -63,7 +63,7 @@ module QuantLib.Model
   , marketValue
   , modelValue
 
-  , SecondBase(..)
+  , AffineModelDescendant(..)
   )
   where
 
@@ -205,10 +205,10 @@ asCalibrationHelper :: (a `Derives` CalibrationHelper) => a -> IO CalibrationHel
 asCalibrationHelper = cast
 
 -- multiple inheritance... not sure if we need that cast to AffineModel at all
-newtype SecondBase a = SecondBase a
-instance (SecondBase OneFactorAffineModel) `Derives` AffineModel where cast (SecondBase x) = qlOneFactorAffineModelAsAffineModel x
-instance (SecondBase LiborForwardModel) `Derives` AffineModel where cast (SecondBase x) = qlLiborForwardModelAsAffineModel x
-instance (SecondBase G2) `Derives` AffineModel where cast (SecondBase x) = qlG2AsAffineModel x
+newtype AffineModelDescendant a = AffineModelDescendant a
+instance (AffineModelDescendant OneFactorAffineModel) `Derives` AffineModel where cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
+instance (AffineModelDescendant LiborForwardModel) `Derives` AffineModel where cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
+instance (AffineModelDescendant G2) `Derives` AffineModel where cast (AffineModelDescendant x) = qlG2AsAffineModel x
 
 asAffineModel :: (a `Derives` AffineModel) => a -> IO AffineModel
 asAffineModel = cast
