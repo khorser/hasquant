@@ -157,7 +157,7 @@ executable hasquant_example
     buildable: False
 
   main-is:          QuantLib/MainExample.hs
-  other-modules: 
+  other-modules:    QuantLib.Example.FRA
 -- QuantLib.Example.Bond
 --            , QuantLib.Example.BermudanSwaption
 --            , QuantLib.Example.CallableBond
@@ -165,7 +165,6 @@ executable hasquant_example
 --            , QuantLib.Example.ConvertibleBond
 --            , QuantLib.Example.EquityOption
 --            , QuantLib.Example.FittedBondCurve
---            , QuantLib.Example.FRA
 --            , QuantLib.Example.Replication
 --            , QuantLib.Example.Repo
 --            , QuantLib.Example.Swap
@@ -179,7 +178,7 @@ executable hasquant_example
 test-suite hasquant_test
   Type:             exitcode-stdio-1.0
   Main-Is:          QuantLib/MainTest.hs
-  Other-modules:
+  Other-modules:    QuantLib.Example.FRA
   ghc-options:      -Wall
   Build-Depends:    base >= 4.8 && < 5.0
                     , time

@@ -1,44 +1,37 @@
 module Main
 where
 
---import QuantLib.Utilities
---main = putStrLn version >> putStrLn boostVersion
+import Control.Monad(forM_)
+import QuantLib.Settings
+import QuantLib.Time.Date
+import QuantLib.Utility
+import Text.Printf
 
---import Control.Exception
---import QuantLib.Types
---main = throwIO (CPlusPlusException "qqq")  `catch` \e -> putStrLn ("Caught " ++ show (e :: Error))
+import qualified QuantLib.Example.FRA as FRA
 
---import Data.Time.Calendar
---import QuantLib.Time.Date
---main = do
---  let x = fromGregorian 2021 8 3
---  w <- weekday x
---  putStrLn (show w)
---  putStrLn (show minDate)
---  d <- dayOfYear x
---  putStrLn (show d)
-
---import QuantLib.Settings
---import QuantLib.Date
---
---main = do
---  setEvaluationDate $ Just (1 `january` 2021)
---  vd <- evaluationDate
---  setEvaluationDate Nothing
---  vd <- evaluationDate
---  putStrLn (show vd)
-
---import QuantLib.Date
---import QuantLib.Period
---main = do
---  p <- fromFrequency Weekly
---  x <- immDate "H4" (20 `march` 2013)
---  putStrLn $ show p
-
-import QuantLib.Date
-import Control.Monad(liftM)
-
+main :: IO ()
 main = do
-  ds <- knownECBDates
-  let x = map show ds
-  mapM_ putStrLn x
+  putStrLn $ "QuantLib version " ++ version
+     ++ ", Boost " ++ boostVersion
+  t <- today
+  wd <- weekday t
+  putStrLn $ "Today is " ++ show wd
+
+  putStrLn "\n*** FRA Example ***"
+  (FRA.Result i1 i2) <- keepingSettings' FRA.run
+  printFraIterationResult i1
+  putStrLn "* After 100bp shift *"
+  printFraIterationResult i2
+
+  putStrLn "\nDONE"
+
+  where
+    printFraIterationResult :: [FRA.IterationResult] -> IO ()
+    printFraIterationResult rs = forM_ rs $ \r ->
+      printf "Fwd rate: %.5f Spt val: %.5f Fwd val: %.5f Impl yld: %.5f Mkt zrate: %.5f NPV: %.5f\n"
+        (FRA.fwdRateR r)
+        (FRA.spotR r)
+        (FRA.fwdValueR r)
+        (FRA.implYieldR r)
+        (FRA.zRateR r)
+        (FRA.npvR r)

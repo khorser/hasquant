@@ -1,0 +1,1 @@
+stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example
