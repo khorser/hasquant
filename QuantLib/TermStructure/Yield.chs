@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, FlexibleContexts #-}
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure
@@ -65,6 +65,7 @@ module QuantLib.TermStructure.Yield
   where
 
 import QuantLib.Internal hiding (maxDate)
+import QuantLib.Type
 import QuantLib.Internal.Enum
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
@@ -210,21 +211,25 @@ instance ForeignObject FittedBondDiscountCurve where
 
 {#fun qlImpliedTermStructure as impliedTermStructure {`YieldTermStructure', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
+instance Derives YieldTermStructure TermStructure where cast = qlYieldTermStructureAsTermStructure
+instance Derives FittedBondDiscountCurve YieldTermStructure where cast = qlFittedBondDiscountCurveAsYieldTermStructure
 {#fun qlYieldTermStructureAsTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
-instance IsTermStructure YieldTermStructure where asTermStructure = qlYieldTermStructureAsTermStructure
+{#fun qlFittedBondDiscountCurveAsYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
 
-{#fun qlFittedBondDiscountCurveAsYieldTermStructure as asYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
-
-class IsRateHelper a where asRateHelper :: a -> IO RateHelper
+asYieldTermStructure :: (Derives a YieldTermStructure) => a -> IO YieldTermStructure
+asYieldTermStructure = cast
 
 {#fun qlSwapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
-instance IsRateHelper SwapRateHelper where asRateHelper = qlSwapRateHelperAsRateHelper
+instance Derives SwapRateHelper RateHelper where cast = qlSwapRateHelperAsRateHelper
 
 {#fun qlBondHelperAsRateHelper {`BondHelper'} -> `RateHelper'#}
-instance IsRateHelper BondHelper where asRateHelper = qlBondHelperAsRateHelper
+instance Derives BondHelper RateHelper where cast = qlBondHelperAsRateHelper
 
 {#fun qlOISRateHelperAsRateHelper {`OISRateHelper'} -> `RateHelper'#}
-instance IsRateHelper OISRateHelper where asRateHelper = qlOISRateHelperAsRateHelper 
+instance Derives OISRateHelper RateHelper where cast = qlOISRateHelperAsRateHelper 
+
+asRateHelper :: (Derives a RateHelper) => a -> IO RateHelper
+asRateHelper = cast
 
 {#fun qlDriftTermStructure as driftTermStructure {`YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 

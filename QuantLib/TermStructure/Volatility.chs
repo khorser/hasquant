@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
 module QuantLib.TermStructure.Volatility
   (
     BlackVarianceSurfaceExtrapolation
@@ -65,6 +66,7 @@ module QuantLib.TermStructure.Volatility
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.TermStructure#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
@@ -139,30 +141,36 @@ instance ForeignObject VolatilityTermStructure where
 
 {#enum ExtendedBlackVarianceSurfaceExtrapolation {} deriving(Show, Eq)#}
 
-class IsVolatilityTermStructure a where asVolatilityTermStructure :: a -> IO VolatilityTermStructure
+asVolatilityTermStructure :: (Derives a VolatilityTermStructure) => a -> IO VolatilityTermStructure
+asVolatilityTermStructure = cast
 
 {#fun qlOptionletVolatilityStructureAsVolatilityTermStructure {`OptionletVolatilityStructure'} -> `VolatilityTermStructure'#}
-instance IsVolatilityTermStructure OptionletVolatilityStructure where asVolatilityTermStructure = qlOptionletVolatilityStructureAsVolatilityTermStructure
+instance Derives OptionletVolatilityStructure VolatilityTermStructure where cast = qlOptionletVolatilityStructureAsVolatilityTermStructure
 
 {#fun qlVolatilityTermStructureAsTermStructure {`VolatilityTermStructure'} -> `TermStructure' peekObject*#}
-instance IsTermStructure VolatilityTermStructure where asTermStructure = qlVolatilityTermStructureAsTermStructure
+instance Derives VolatilityTermStructure TermStructure where cast = qlVolatilityTermStructureAsTermStructure
 
 {#fun qlBlackVolTermStructureAsVolatilityTermStructure {`BlackVolTermStructure'} -> `VolatilityTermStructure'#}
-instance IsVolatilityTermStructure BlackVolTermStructure where asVolatilityTermStructure = qlBlackVolTermStructureAsVolatilityTermStructure
+instance Derives BlackVolTermStructure VolatilityTermStructure where cast = qlBlackVolTermStructureAsVolatilityTermStructure
 
 {#fun qlSwaptionVolatilityStructureAsVolatilityTermStructure {`SwaptionVolatilityStructure'} -> `VolatilityTermStructure'#}
-instance IsVolatilityTermStructure SwaptionVolatilityStructure where asVolatilityTermStructure = qlSwaptionVolatilityStructureAsVolatilityTermStructure
+instance Derives SwaptionVolatilityStructure VolatilityTermStructure where cast = qlSwaptionVolatilityStructureAsVolatilityTermStructure
 
 {#fun qlCapFloorTermVolSurfaceAsVolatilityTermStructure {`CapFloorTermVolSurface'} -> `VolatilityTermStructure'#}
-instance IsVolatilityTermStructure CapFloorTermVolSurface where asVolatilityTermStructure = qlCapFloorTermVolSurfaceAsVolatilityTermStructure
+instance Derives CapFloorTermVolSurface VolatilityTermStructure where cast = qlCapFloorTermVolSurfaceAsVolatilityTermStructure
 
 {#fun qlLocalVolTermStructureAsVolatilityTermStructure {`LocalVolTermStructure'} -> `VolatilityTermStructure'#}
-instance IsVolatilityTermStructure LocalVolTermStructure where asVolatilityTermStructure = qlLocalVolTermStructureAsVolatilityTermStructure
+instance Derives LocalVolTermStructure VolatilityTermStructure where cast = qlLocalVolTermStructureAsVolatilityTermStructure
 
-{#fun qlBlackVarianceCurveAsBlackVolTermStructure as asBlackVolTermStructure {`BlackVarianceCurve'} -> `BlackVolTermStructure'#}
+{#fun qlBlackVarianceCurveAsBlackVolTermStructure {`BlackVarianceCurve'} -> `BlackVolTermStructure'#}
 
 {#fun qlCallableBondVolatilityStructureAsTermStructure {`CallableBondVolatilityStructure'} -> `TermStructure' peekObject*#}
-instance IsTermStructure CallableBondVolatilityStructure where asTermStructure = qlCallableBondVolatilityStructureAsTermStructure;
+instance Derives CallableBondVolatilityStructure TermStructure where cast = qlCallableBondVolatilityStructureAsTermStructure;
+
+instance Derives BlackVarianceCurve BlackVolTermStructure where cast = qlBlackVarianceCurveAsBlackVolTermStructure
+
+asBlackVolTermStructure :: (Derives a BlackVolTermStructure) => a -> IO BlackVolTermStructure
+asBlackVolTermStructure = cast
 
 {#fun qlLocalVolSurface as localVolSurface {`BlackVolTermStructure', `YieldTermStructure', `YieldTermStructure', `Quote', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
 

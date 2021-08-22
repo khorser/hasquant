@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators, FunctionalDependencies #-}
 module QuantLib.Index.InterestRate
   (
     InterestRateIndex
@@ -17,7 +17,6 @@ module QuantLib.Index.InterestRate
   , fixingDays
   , tenor
 
-  , asIndex
   , asInterestRateIndex
   , asIborIndex
   , asSwapIndex
@@ -114,22 +113,33 @@ instance ForeignObject OvernightIndexedSwapIndex where
 
 {#fun qlInterestRateIndexTenor as tenor {`InterestRateIndex', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int'#}
 
-{#fun qlInterestRateIndexAsIndex as asIndex {`InterestRateIndex'} -> `Index' peekObject*#}
+{#fun qlInterestRateIndexAsIndex {`InterestRateIndex'} -> `Index' peekObject*#}
+instance InterestRateIndex `Derives` Index where cast = qlInterestRateIndexAsIndex
 
-class IsInterestRateIndex a where asInterestRateIndex :: a -> IO InterestRateIndex
+asInterestRateIndex :: (a `Derives` InterestRateIndex) => a -> IO InterestRateIndex
+asInterestRateIndex = cast
 
 {#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
-instance IsInterestRateIndex BMAIndex where asInterestRateIndex = qlBMAIndexAsInterestRateIndex
+instance BMAIndex `Derives` InterestRateIndex where cast = qlBMAIndexAsInterestRateIndex
 
 {#fun qlSwapIndexAsInterestRateIndex {`SwapIndex'} -> `InterestRateIndex'#}
-instance IsInterestRateIndex SwapIndex where asInterestRateIndex = qlSwapIndexAsInterestRateIndex
+instance SwapIndex `Derives` InterestRateIndex where cast = qlSwapIndexAsInterestRateIndex
 
-{#fun qlOvernightIndexedSwapIndexAsSwapIndex as asSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
+asSwapIndex :: (a `Derives` OvernightIndexedSwapIndex) => a -> IO OvernightIndexedSwapIndex
+asSwapIndex = cast
+
+instance OvernightIndexedSwapIndex `Derives` SwapIndex where cast = qlOvernightIndexedSwapIndexAsSwapIndex
+{#fun qlOvernightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
 
 {#fun qlIborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
-instance IsInterestRateIndex IborIndex where asInterestRateIndex = qlIborIndexAsInterestRateIndex
+instance IborIndex `Derives` InterestRateIndex where cast = qlIborIndexAsInterestRateIndex
 
-{#fun qlOvernightIndexAsIborIndex as asIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
+asIborIndex :: (a `Derives` IborIndex) => a -> IO IborIndex
+asIborIndex = cast
+
+instance OvernightIborIndex `Derives` IborIndex where cast = qlOvernightIndexAsIborIndex
+
+{#fun qlOvernightIndexAsIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
 
 {#enum OvernightIborIndexType {} deriving (Show, Eq)#}
 

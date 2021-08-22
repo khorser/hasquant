@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Instrument.Forward
   (
     Forward
@@ -20,6 +21,7 @@ module QuantLib.Instrument.Forward
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
@@ -46,9 +48,10 @@ instance ForeignObject Forward where
   finalizer=qlFreeForward
 
 {#fun qlForwardAsInstrument {`Forward'} -> `Instrument' peekObject*#}
-instance IsInstrument Forward where asInstrument = qlForwardAsInstrument
+instance Forward `Derives` Instrument where cast = qlForwardAsInstrument
 
-class IsForward a where asForward :: a -> IO Forward
+asForward :: (a `Derives` Forward) => a -> IO Forward
+asForward = cast
 
 {#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign finalizer qlFreeForwardRateAgreement newtype#}
 instance ForeignObject ForwardRateAgreement where
@@ -57,7 +60,7 @@ instance ForeignObject ForwardRateAgreement where
   finalizer=qlFreeForwardRateAgreement
 
 {#fun qlForwardRateAgreementAsForward {`ForwardRateAgreement'} -> `Forward'#}
-instance IsForward ForwardRateAgreement where asForward = qlForwardRateAgreementAsForward
+instance ForwardRateAgreement `Derives` Forward where cast = qlForwardRateAgreementAsForward
 
 {#pointer *QlFixedRateBondForward as FixedRateBondForward foreign finalizer qlFreeFixedRateBondForward newtype#}
 instance ForeignObject FixedRateBondForward where
@@ -66,7 +69,7 @@ instance ForeignObject FixedRateBondForward where
   finalizer=qlFreeFixedRateBondForward
 
 {#fun qlFixedRateBondForwardAsForward {`FixedRateBondForward'} -> `Forward'#}
-instance IsForward FixedRateBondForward where asForward = qlFixedRateBondForwardAsForward
+instance FixedRateBondForward `Derives` Forward where cast = qlFixedRateBondForwardAsForward
 
 {#fun qlForwardRateAgreement as forwardRateAgreement {withDay* `Day', withDay* `Day', fromEnumC `PositionType', `Double', `Double', `IborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `ForwardRateAgreement'#}
 

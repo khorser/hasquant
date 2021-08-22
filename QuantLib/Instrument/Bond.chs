@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Instrument.Bond
   (
     Bond
@@ -5,7 +6,6 @@ module QuantLib.Instrument.Bond
   , ConvertibleBond
   , CallableBond
 
-  , asInstrument
   , asBond
 
   , PriceType(..)
@@ -77,6 +77,8 @@ module QuantLib.Instrument.Bond
   , convertibleZeroCouponBond
   )
   where
+
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
@@ -108,9 +110,10 @@ instance ForeignObject Bond where
   finalizer=qlFreeBond
 
 {#fun qlBondAsInstrument {`Bond'} -> `Instrument' peekObject*#}
-instance IsInstrument Bond where asInstrument = qlBondAsInstrument
+instance Bond `Derives` Instrument where cast = qlBondAsInstrument
 
-class IsBond a where asBond :: a -> IO Bond
+asBond :: (a `Derives` Bond) => a -> IO Bond
+asBond = cast
 
 {#pointer *QlFixedRateBond as FixedRateBond foreign finalizer qlFreeFixedRateBond newtype#}
 instance ForeignObject FixedRateBond where
@@ -118,7 +121,7 @@ instance ForeignObject FixedRateBond where
   constructor = FixedRateBond
   finalizer=qlFreeFixedRateBond
 {#fun qlFixedRateBondAsBond {`FixedRateBond'} -> `Bond'#}
-instance IsBond FixedRateBond where asBond = qlFixedRateBondAsBond
+instance FixedRateBond `Derives` Bond where cast = qlFixedRateBondAsBond
 
 {#pointer *QlCallableBond as CallableBond foreign finalizer qlFreeCallableBond newtype#}
 instance ForeignObject CallableBond where
@@ -126,7 +129,7 @@ instance ForeignObject CallableBond where
   constructor = CallableBond
   finalizer=qlFreeCallableBond
 {#fun qlCallableBondAsBond {`CallableBond'} -> `Bond'#}
-instance IsBond CallableBond where asBond = qlCallableBondAsBond
+instance CallableBond `Derives` Bond where cast = qlCallableBondAsBond
 
 {#pointer *QlConvertibleBond as ConvertibleBond foreign finalizer qlFreeConvertibleBond newtype#}
 instance ForeignObject ConvertibleBond where
@@ -134,7 +137,7 @@ instance ForeignObject ConvertibleBond where
   constructor = ConvertibleBond
   finalizer=qlFreeConvertibleBond
 {#fun qlConvertibleBondAsBond {`ConvertibleBond'} -> `Bond'#}
-instance IsBond ConvertibleBond where asBond = qlConvertibleBondAsBond
+instance ConvertibleBond `Derives` Bond where cast = qlConvertibleBondAsBond
 
 {#fun qlBondFunctionsAtmRate as atmRate {`Bond', `YieldTermStructure', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 

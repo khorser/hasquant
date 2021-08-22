@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, FlexibleContexts, TypeOperators #-}
 module QuantLib.Model
   (
    CalibrationErrorType(..)
@@ -25,7 +26,7 @@ module QuantLib.Model
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
-  , asOneFactorAfficeModel
+  , asOneFactorAffineModel
   , asBatesModel
   , asBatesDoubleExpModel
 
@@ -71,6 +72,7 @@ module QuantLib.Model
 
 #include "ql.h"
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Process#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
@@ -194,40 +196,60 @@ instance ForeignObject BlackCalibrationHelper where
   withObject = withBlackCalibrationHelper
   constructor = BlackCalibrationHelper
   finalizer = qlFreeBlackCalibrationHelper
-{#fun qlBlackCalibrationHelperAsCalibrationHelper as asCalibrationHelper {`BlackCalibrationHelper'} -> `CalibrationHelper'#}
+{#fun qlBlackCalibrationHelperAsCalibrationHelper {`BlackCalibrationHelper'} -> `CalibrationHelper'#}
+instance BlackCalibrationHelper `Derives` CalibrationHelper where cast = qlBlackCalibrationHelperAsCalibrationHelper
 
-class IsAffineModel a where asAffineModel :: a -> IO AffineModel
-class IsCalibratedModel a where asCalibratedModel :: a -> IO CalibratedModel
-class IsHestonModel a where asHestonModel :: a -> IO HestonModel
-class IsShortRateModel a where asShortRateModel :: a -> IO ShortRateModel
+asCalibrationHelper :: (a `Derives` CalibrationHelper) => a -> IO CalibrationHelper
+asCalibrationHelper = cast
+
+-- multiple inheritance... not sure if we need that cast to AffineModel at all
+class Derives2 a b | a -> b where cast2 :: a -> IO b
+
+asAffineModel :: (a `Derives2` AffineModel) => a -> IO AffineModel
+asAffineModel = cast2
+asCalibratedModel :: (a `Derives` CalibratedModel) => a -> IO CalibratedModel
+asCalibratedModel = cast
+asHestonModel :: (a `Derives` HestonModel) => a -> IO HestonModel
+asHestonModel = cast
+asShortRateModel :: (a `Derives` ShortRateModel) => a -> IO ShortRateModel
+asShortRateModel = cast
+asOneFactorAffineModel :: (a `Derives` OneFactorAffineModel) => a -> IO OneFactorAffineModel
+asOneFactorAffineModel = cast
+asBatesModel :: (a `Derives` BatesModel) => a -> IO BatesModel
+asBatesModel = cast
+asBatesDoubleExpModel :: (a `Derives` BatesDoubleExpModel) => a -> IO BatesDoubleExpModel
+asBatesDoubleExpModel = cast
 
 {#fun qlOneFactorAffineModelAsAffineModel {`OneFactorAffineModel'} -> `AffineModel'#}
-instance IsAffineModel OneFactorAffineModel where asAffineModel = qlOneFactorAffineModelAsAffineModel
+instance OneFactorAffineModel `Derives2` AffineModel where cast2 = qlOneFactorAffineModelAsAffineModel
 {#fun qlLiborForwardModelAsAffineModel {`LiborForwardModel'} -> `AffineModel'#}
-instance IsAffineModel LiborForwardModel where asAffineModel = qlLiborForwardModelAsAffineModel
-{#fun qlHullWhiteAsOneFactorAffineModel as asOneFactorAfficeModel{`HullWhite'} -> `OneFactorAffineModel'#}
+instance LiborForwardModel `Derives2` AffineModel where cast2 = qlLiborForwardModelAsAffineModel
+instance HullWhite `Derives` OneFactorAffineModel where cast = qlHullWhiteAsOneFactorAffineModel
+{#fun qlHullWhiteAsOneFactorAffineModel {`HullWhite'} -> `OneFactorAffineModel'#}
 {#fun qlG2AsAffineModel {`G2'} -> `AffineModel'#}
-instance IsAffineModel G2 where asAffineModel = qlG2AsAffineModel
+instance G2 `Derives2` AffineModel where cast2 = qlG2AsAffineModel
 {#fun qlG2AsShortRateModel {`G2'} -> `ShortRateModel'#}
-instance IsShortRateModel G2 where asShortRateModel = qlG2AsShortRateModel
-{#fun qlBatesDetJumpModelAsBatesModel as asBatesModel{`BatesDetJumpModel'} -> `BatesModel'#}
-{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel as asBatesDoubleExpModel {`BatesDoubleExpDetJumpModel'} -> `BatesDoubleExpModel'#}
+instance G2 `Derives` ShortRateModel where cast = qlG2AsShortRateModel
+instance BatesDetJumpModel `Derives` BatesModel where cast = qlBatesDetJumpModelAsBatesModel
+{#fun qlBatesDetJumpModelAsBatesModel {`BatesDetJumpModel'} -> `BatesModel'#}
+instance BatesDoubleExpDetJumpModel `Derives` BatesDoubleExpModel where cast = qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
+{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel {`BatesDoubleExpDetJumpModel'} -> `BatesDoubleExpModel'#}
 {#fun qlBatesDoubleExpModelAsHestonModel {`BatesDoubleExpModel'} -> `HestonModel'#}
-instance IsHestonModel BatesDoubleExpModel where asHestonModel = qlBatesDoubleExpModelAsHestonModel
+instance BatesDoubleExpModel `Derives` HestonModel where cast = qlBatesDoubleExpModelAsHestonModel
 {#fun qlGJRGARCHModelAsCalibratedModel {`GJRGARCHModel'} -> `CalibratedModel'#}
-instance IsCalibratedModel GJRGARCHModel where asCalibratedModel = qlGJRGARCHModelAsCalibratedModel
+instance GJRGARCHModel `Derives` CalibratedModel where cast = qlGJRGARCHModelAsCalibratedModel
 {#fun qlHestonModelAsCalibratedModel {`HestonModel'} -> `CalibratedModel'#}
-instance IsCalibratedModel HestonModel where asCalibratedModel = qlHestonModelAsCalibratedModel
+instance HestonModel `Derives` CalibratedModel where cast = qlHestonModelAsCalibratedModel
 {#fun qlBatesModelAsHestonModel {`BatesModel'} -> `HestonModel'#}
-instance IsHestonModel BatesModel where asHestonModel = qlBatesModelAsHestonModel
+instance BatesModel `Derives` HestonModel where cast = qlBatesModelAsHestonModel
 {#fun qlLiborForwardModelAsCalibratedModel {`LiborForwardModel'} -> `CalibratedModel'#}
-instance IsCalibratedModel LiborForwardModel where asCalibratedModel = qlLiborForwardModelAsCalibratedModel
+instance LiborForwardModel `Derives` CalibratedModel where cast = qlLiborForwardModelAsCalibratedModel
 {#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel {`PiecewiseTimeDependentHestonModel'} -> `CalibratedModel'#}
-instance IsCalibratedModel PiecewiseTimeDependentHestonModel where asCalibratedModel = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
+instance PiecewiseTimeDependentHestonModel `Derives` CalibratedModel where cast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
 {#fun qlShortRateModelAsCalibratedModel {`ShortRateModel'} -> `CalibratedModel'#}
-instance IsCalibratedModel ShortRateModel where asCalibratedModel = qlShortRateModelAsCalibratedModel
+instance ShortRateModel `Derives` CalibratedModel where cast = qlShortRateModelAsCalibratedModel
 {#fun qlOneFactorAffineModelAsShortRateModel {`OneFactorAffineModel'} -> `ShortRateModel'#}
-instance IsShortRateModel OneFactorAffineModel where asShortRateModel = qlOneFactorAffineModelAsShortRateModel
+instance OneFactorAffineModel `Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
 
 {#fun qlBatesModel as batesModel {withObject* `BatesProcess', preErrorCheck- `String' errorCheck*-} -> `BatesModel'#}
 

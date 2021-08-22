@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.PricingEngine
   (
     PricingEngine
@@ -136,6 +137,7 @@ module QuantLib.PricingEngine
   )
   where
 
+import QuantLib.Type
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "ql.h"
@@ -174,7 +176,10 @@ instance ForeignObject BlackScholesCalculator where
   withObject = withBlackScholesCalculator
   constructor = BlackScholesCalculator
   finalizer = qlFreeBlackScholesCalculator
-{#fun qlBlackScholesCalculatorAsBlackCalculator as asBlackCalculator {`BlackScholesCalculator'} -> `BlackCalculator'#}
+asBlackCalculator :: (a `Derives` BlackCalculator) => a -> IO BlackCalculator
+asBlackCalculator = cast
+instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackScholesCalculatorAsBlackCalculator
+{#fun qlBlackScholesCalculatorAsBlackCalculator {`BlackScholesCalculator'} -> `BlackCalculator'#}
 
 {#fun qlDiscountingBondEngine as discountingBondEngine {`YieldTermStructure', fromMaybeBool `Maybe Bool', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 

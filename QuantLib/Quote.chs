@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
 module QuantLib.Quote
   (
      Quote
@@ -25,6 +26,7 @@ module QuantLib.Quote
   where
 
 import QuantLib.Internal
+import QuantLib.Type
 {#import QuantLib.Time.Schedule#}(TimeUnit)
 {#import QuantLib.Index#}(Index)
 import {-# SOURCE #-} QuantLib.Index.InterestRate
@@ -57,7 +59,11 @@ instance ForeignObject SimpleQuote where
 
 {#enum DeltaType {} deriving(Show, Eq)#}
 
-{#fun qlSimpleQuoteAsQuote as asQuote {`SimpleQuote'} -> `Quote'#}
+instance Derives SimpleQuote Quote where cast = qlSimpleQuoteAsQuote
+asQuote :: (Derives a Quote) => a -> IO Quote
+asQuote = cast
+
+{#fun qlSimpleQuoteAsQuote {`SimpleQuote'} -> `Quote'#}
 
 -- |market element returning a stored value
 {#fun qlSimpleQuote as simpleQuote {`Double', preErrorCheck- `String' errorCheck*-} -> `SimpleQuote'#}

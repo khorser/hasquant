@@ -1,14 +1,13 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Instrument.Swap
   (
     Swaption
-  , asOption
   , Swap
   , VanillaSwap
   , AssetSwap
   , OvernightIndexedSwap
   , BMASwap
 
-  , asInstrument
   , asSwap
 
   , impliedVolatility
@@ -66,6 +65,7 @@ module QuantLib.Instrument.Swap
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
@@ -95,7 +95,8 @@ instance ForeignObject Swaption where
   withObject = withSwaption
   constructor = Swaption
   finalizer = qlFreeSwaption
-{#fun qlSwaptionAsOption as asOption {`Swaption'} -> `Option' peekObject*#}
+{#fun qlSwaptionAsOption {`Swaption'} -> `Option' peekObject*#}
+instance Swaption `Derives` Option where cast = qlSwaptionAsOption
 
 {#pointer *QlSwap as Swap foreign finalizer qlFreeSwap newtype#}
 instance ForeignObject Swap where
@@ -103,9 +104,10 @@ instance ForeignObject Swap where
   constructor = Swap
   finalizer = qlFreeSwap
 {#fun qlSwapAsInstrument {`Swap'} -> `Instrument' peekObject*#}
-instance IsInstrument Swap where asInstrument = qlSwapAsInstrument
+instance Swap `Derives` Instrument where cast = qlSwapAsInstrument
 
-class IsSwap a where asSwap :: a -> IO Swap
+asSwap:: (a `Derives` Swap) => a -> IO Swap
+asSwap = cast
 
 {#pointer *QlVanillaSwap as VanillaSwap foreign finalizer qlFreeVanillaSwap newtype#}
 instance ForeignObject VanillaSwap where
@@ -113,7 +115,7 @@ instance ForeignObject VanillaSwap where
   constructor = VanillaSwap
   finalizer = qlFreeVanillaSwap
 {#fun qlVanillaSwapAsSwap {`VanillaSwap'} -> `Swap'#}
-instance IsSwap VanillaSwap where asSwap = qlVanillaSwapAsSwap
+instance VanillaSwap `Derives` Swap where cast = qlVanillaSwapAsSwap
 
 {#pointer *QlAssetSwap as AssetSwap foreign finalizer qlFreeAssetSwap newtype#}
 instance ForeignObject AssetSwap where
@@ -121,7 +123,7 @@ instance ForeignObject AssetSwap where
   constructor = AssetSwap
   finalizer = qlFreeAssetSwap
 {#fun qlAssetSwapAsSwap {`AssetSwap'} -> `Swap'#}
-instance IsSwap AssetSwap where asSwap = qlAssetSwapAsSwap
+instance AssetSwap `Derives` Swap where cast = qlAssetSwapAsSwap
 
 {#pointer *QlBMASwap as BMASwap foreign finalizer qlFreeBMASwap newtype#}
 instance ForeignObject BMASwap where
@@ -129,7 +131,7 @@ instance ForeignObject BMASwap where
   constructor = BMASwap
   finalizer = qlFreeBMASwap
 {#fun qlBMASwapAsSwap {`BMASwap'} -> `Swap'#}
-instance IsSwap BMASwap where asSwap = qlBMASwapAsSwap
+instance BMASwap `Derives` Swap where cast = qlBMASwapAsSwap
 
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign finalizer qlFreeOvernightIndexedSwap newtype#}
 instance ForeignObject OvernightIndexedSwap where
@@ -137,7 +139,7 @@ instance ForeignObject OvernightIndexedSwap where
   constructor = OvernightIndexedSwap
   finalizer = qlFreeOvernightIndexedSwap
 {#fun qlOvernightIndexedSwapAsSwap {`OvernightIndexedSwap'} -> `Swap'#}
-instance IsSwap OvernightIndexedSwap where asSwap = qlOvernightIndexedSwapAsSwap
+instance OvernightIndexedSwap `Derives` Swap where cast = qlOvernightIndexedSwapAsSwap
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility {`Swaption', `Double', `YieldTermStructure', `Double', `Double', fromIntegral `Word', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}

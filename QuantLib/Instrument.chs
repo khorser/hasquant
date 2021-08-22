@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
 module QuantLib.Instrument
   (
     PositionType(..)
@@ -11,7 +12,7 @@ module QuantLib.Instrument
   , PricingModel(..)
 
   , Instrument
-  , IsInstrument(..)
+  , asInstrument
   , Callability(..)
 
   , Exercise(..)
@@ -25,6 +26,7 @@ module QuantLib.Instrument
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.Internal.Enum
 
@@ -55,7 +57,8 @@ instance ForeignObject Instrument where
   constructor = Instrument
   finalizer = qlFreeInstrument
 
-class IsInstrument a where asInstrument :: a -> IO Instrument
+asInstrument :: (Derives a Instrument) => a -> IO Instrument
+asInstrument = cast
 
 -- |Returns the net present value of the given Instrument
 {#fun qlInstrumentNPV as npv {`Instrument', preErrorCheck- `String' errorCheck*-} -> `Double'#}

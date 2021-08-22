@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.CashFlow
   (
     Leg
@@ -74,6 +75,7 @@ module QuantLib.CashFlow
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(InterestRate, Compounding)
 import QuantLib.Internal.InterestRate
@@ -264,7 +266,10 @@ cashFlows l i d = do {(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds 
 -- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as asCouponLeg {`Leg', preErrorCheck- `String' errorCheck*-} -> `CouponLeg'#}
 
-{#fun qlCouponLegAsLeg as asLeg{`CouponLeg'} -> `Leg'#}
+asLeg :: (a `Derives` Leg) => a -> IO Leg
+asLeg = cast
+instance CouponLeg `Derives` Leg where cast = qlCouponLegAsLeg
+{#fun qlCouponLegAsLeg {`CouponLeg'} -> `Leg'#}
 
 {#enum YieldCurveModel {} deriving(Show, Eq)#}
 

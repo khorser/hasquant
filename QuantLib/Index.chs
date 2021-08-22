@@ -1,12 +1,15 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Index
   (
     Index
 
   , addFixing
   , fixingCalendar
+  , asIndex
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(Calendar)
 
@@ -32,5 +35,8 @@ instance Show Index where show = qlIndexName
 
 -- |returns the calendar defining valid fixing dates
 {#fun qlIndexFixingCalendar as fixingCalendar {`Index', preErrorCheck- `String' errorCheck*-} -> `Calendar' peekObject*#}
+
+asIndex :: (a `Derives` Index) => a -> IO Index
+asIndex = cast
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

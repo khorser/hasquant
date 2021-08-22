@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Process
   (
     ProcessDiscretization(..)
@@ -65,6 +66,7 @@ module QuantLib.Process
 #include "ql.h"
 #include "qlEnumObjects.h"
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
@@ -186,40 +188,53 @@ instance ForeignObject HullWhiteForwardProcess where
   constructor = HullWhiteForwardProcess
   finalizer = qlFreeHullWhiteForwardProcess
 
-class IsStochasticProcess a where asStochasticProcess :: a -> IO StochasticProcess
+asStochasticProcess :: (a `Derives` StochasticProcess) => a -> IO StochasticProcess
+asStochasticProcess = cast
 
-{#fun qlBlackProcessAsGeneralizedBlackScholesProcess as asGeneralizedBlackScholesProcess {`BlackProcess'} -> `GeneralizedBlackScholesProcess'#}
+asStochasticProcess1D :: (a `Derives` StochasticProcess) => a -> IO StochasticProcess
+asStochasticProcess1D = cast
+
+instance BlackProcess `Derives` GeneralizedBlackScholesProcess where cast = qlBlackProcessAsGeneralizedBlackScholesProcess
+
+asGeneralizedBlackScholesProcess :: (a `Derives` GeneralizedBlackScholesProcess) => a -> IO GeneralizedBlackScholesProcess
+asGeneralizedBlackScholesProcess = cast
+
+{#fun qlBlackProcessAsGeneralizedBlackScholesProcess {`BlackProcess'} -> `GeneralizedBlackScholesProcess'#}
 {#fun qlStochasticProcess1DAsStochasticProcess {`StochasticProcess1D'} -> `StochasticProcess'#}
-instance IsStochasticProcess StochasticProcess1D where asStochasticProcess = qlStochasticProcess1DAsStochasticProcess
+instance StochasticProcess1D `Derives` StochasticProcess where cast = qlStochasticProcess1DAsStochasticProcess
 {#fun qlExtOUWithJumpsProcessAsStochasticProcess {`ExtOUWithJumpsProcess'} -> `StochasticProcess'#}
-instance IsStochasticProcess ExtOUWithJumpsProcess where asStochasticProcess = qlExtOUWithJumpsProcessAsStochasticProcess
+instance ExtOUWithJumpsProcess `Derives` StochasticProcess where cast = qlExtOUWithJumpsProcessAsStochasticProcess
 {#fun qlGJRGARCHProcessAsStochasticProcess {`GJRGARCHProcess'} -> `StochasticProcess'#}
-instance IsStochasticProcess GJRGARCHProcess where asStochasticProcess = qlGJRGARCHProcessAsStochasticProcess
+instance GJRGARCHProcess `Derives` StochasticProcess where cast = qlGJRGARCHProcessAsStochasticProcess
 {#fun qlHestonProcessAsStochasticProcess {`HestonProcess'} -> `StochasticProcess'#}
-instance IsStochasticProcess HestonProcess where asStochasticProcess = qlHestonProcessAsStochasticProcess
-{#fun qlBatesProcessAsHestonProcess as asHestonProcess {`BatesProcess'} -> `HestonProcess'#}
-{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess {`HybridHestonHullWhiteProcess'} -> `StochasticProcess'#}
-instance IsStochasticProcess HybridHestonHullWhiteProcess where asStochasticProcess = qlHybridHestonHullWhiteProcessAsStochasticProcess
-{#fun qlKlugeExtOUProcessAsStochasticProcess {`KlugeExtOUProcess'} -> `StochasticProcess'#}
-instance IsStochasticProcess KlugeExtOUProcess where asStochasticProcess = qlKlugeExtOUProcessAsStochasticProcess
-{#fun qlLiborForwardModelProcessAsStochasticProcess {`LiborForwardModelProcess'} -> `StochasticProcess'#}
-instance IsStochasticProcess LiborForwardModelProcess where asStochasticProcess = qlLiborForwardModelProcessAsStochasticProcess
-{#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
-instance IsStochasticProcess StochasticProcessArray where asStochasticProcess = qlStochasticProcessArrayAsStochasticProcess
+instance HestonProcess `Derives` StochasticProcess where cast = qlHestonProcessAsStochasticProcess
 
-class IsStochasticProcess1D a where asStochasticProcess1D :: a -> IO StochasticProcess1D
+instance BatesProcess `Derives` HestonProcess where cast = qlBatesProcessAsHestonProcess
+asHestonProcess :: (a `Derives` HestonProcess) => a -> IO HestonProcess
+asHestonProcess = cast
+
+{#fun qlBatesProcessAsHestonProcess {`BatesProcess'} -> `HestonProcess'#}
+{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess {`HybridHestonHullWhiteProcess'} -> `StochasticProcess'#}
+instance HybridHestonHullWhiteProcess `Derives` StochasticProcess where cast = qlHybridHestonHullWhiteProcessAsStochasticProcess
+{#fun qlKlugeExtOUProcessAsStochasticProcess {`KlugeExtOUProcess'} -> `StochasticProcess'#}
+instance KlugeExtOUProcess `Derives` StochasticProcess where cast = qlKlugeExtOUProcessAsStochasticProcess
+{#fun qlLiborForwardModelProcessAsStochasticProcess {`LiborForwardModelProcess'} -> `StochasticProcess'#}
+instance LiborForwardModelProcess `Derives` StochasticProcess where cast = qlLiborForwardModelProcessAsStochasticProcess
+{#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
+instance StochasticProcessArray `Derives` StochasticProcess where cast = qlStochasticProcessArrayAsStochasticProcess
+
 {#fun qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D {`ExtendedOrnsteinUhlenbeckProcess'} -> `StochasticProcess1D'#}
-instance IsStochasticProcess1D ExtendedOrnsteinUhlenbeckProcess where asStochasticProcess1D = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
+instance ExtendedOrnsteinUhlenbeckProcess `Derives` StochasticProcess1D where cast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
 {#fun qlGeneralizedBlackScholesProcessAsStochasticProcess1D {`GeneralizedBlackScholesProcess'} -> `StochasticProcess1D'#}
-instance IsStochasticProcess1D GeneralizedBlackScholesProcess where asStochasticProcess1D = qlGeneralizedBlackScholesProcessAsStochasticProcess1D
+instance GeneralizedBlackScholesProcess `Derives` StochasticProcess1D where cast = qlGeneralizedBlackScholesProcessAsStochasticProcess1D
 {#fun qlHullWhiteForwardProcessAsStochasticProcess1D {`HullWhiteForwardProcess'} -> `StochasticProcess1D'#}
-instance IsStochasticProcess1D HullWhiteForwardProcess where asStochasticProcess1D = qlHullWhiteForwardProcessAsStochasticProcess1D
+instance HullWhiteForwardProcess `Derives` StochasticProcess1D where cast = qlHullWhiteForwardProcessAsStochasticProcess1D
 {#fun qlHullWhiteProcessAsStochasticProcess1D {`HullWhiteProcess'} -> `StochasticProcess1D'#}
-instance IsStochasticProcess1D HullWhiteProcess where asStochasticProcess1D = qlHullWhiteProcessAsStochasticProcess1D
+instance HullWhiteProcess `Derives` StochasticProcess1D where cast = qlHullWhiteProcessAsStochasticProcess1D
 {#fun qlMerton76ProcessAsStochasticProcess1D {`Merton76Process'} -> `StochasticProcess1D'#}
-instance IsStochasticProcess1D Merton76Process where asStochasticProcess1D = qlMerton76ProcessAsStochasticProcess1D
+instance Merton76Process `Derives` StochasticProcess1D where cast = qlMerton76ProcessAsStochasticProcess1D
 {#fun qlVarianceGammaProcessAsStochasticProcess1D {`VarianceGammaProcess'} -> `StochasticProcess1D'#}
-instance IsStochasticProcess1D VarianceGammaProcess where asStochasticProcess1D = qlVarianceGammaProcessAsStochasticProcess1D
+instance VarianceGammaProcess `Derives` StochasticProcess1D where cast = qlVarianceGammaProcessAsStochasticProcess1D
 
 {#fun qlBlackProcess as blackProcess {`Quote', `YieldTermStructure', `BlackVolTermStructure', `ProcessDiscretization', preErrorCheck- `String' errorCheck*-} -> `BlackProcess'#}
 

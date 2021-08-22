@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, TypeOperators #-}
 module QuantLib.Instrument.CapFloor
   (
     CapFloor
@@ -12,6 +13,7 @@ module QuantLib.Instrument.CapFloor
 
 import Prelude hiding(floor)
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
@@ -31,7 +33,7 @@ instance ForeignObject CapFloor where
   constructor = CapFloor
   finalizer = qlFreeCapFloor
 {#fun qlCapFloorAsInstrument {`CapFloor'} -> `Instrument' peekObject*#}
-instance IsInstrument CapFloor where asInstrument = qlCapFloorAsInstrument
+instance CapFloor `Derives` Instrument where cast = qlCapFloorAsInstrument
 
 {#fun qlCap as cap {`Leg', withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `CapFloor'#}
 

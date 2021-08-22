@@ -1,9 +1,12 @@
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts #-}
 module QuantLib.TermStructure
   (
     TermStructure
-  , IsTermStructure(..)
+  , asTermStructure
   )
   where
+
+import QuantLib.Type
 import QuantLib.Internal
 
 #include "qlTypesC2HS.h"
@@ -18,7 +21,7 @@ instance ForeignObject TermStructure where
   constructor = TermStructure
   finalizer = qlFreeTermStructure
 
-class IsTermStructure a where
-  asTermStructure :: a -> IO TermStructure
+asTermStructure :: (Derives a TermStructure) => a -> IO TermStructure
+asTermStructure = cast
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

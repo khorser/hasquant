@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses, TypeOperators #-}
 module QuantLib.Instrument.Credit
   (
     CreditDefaultSwap
@@ -24,6 +25,7 @@ module QuantLib.Instrument.Credit
   )
   where
 
+import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.Instrument.Bond#}(Bond)
@@ -51,7 +53,7 @@ instance ForeignObject CreditDefaultSwap where
   withObject = withCreditDefaultSwap
   constructor = CreditDefaultSwap
   finalizer=qlFreeCreditDefaultSwap
-instance IsInstrument CreditDefaultSwap where asInstrument = qlCreditDefaultSwapAsInstrument
+instance CreditDefaultSwap `Derives` Instrument where cast = qlCreditDefaultSwapAsInstrument
 
 {#pointer *QlClaim foreign finalizer qlFreeClaim newtype#}
 instance ForeignObject QlClaim where
