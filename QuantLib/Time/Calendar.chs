@@ -53,20 +53,20 @@ import {-# SOURCE #-} QuantLib.Time.Schedule(TimeUnit)
 
 {#enum CalendarCountry {} deriving(Show, Eq)#}
 
-{#enum AustriaMarket {} deriving(Show, Eq)#}
-{#enum BrazilMarket {} deriving(Show, Eq)#}
-{#enum CanadaMarket {} deriving(Show, Eq)#}
-{#enum ChinaMarket {} deriving(Show, Eq)#}
-{#enum FranceMarket {} deriving(Show, Eq)#}
-{#enum GermanyMarket {} deriving(Show, Eq)#}
-{#enum IndonesiaMarket {} deriving(Show, Eq)#}
-{#enum IsraelMarket {} deriving(Show, Eq)#}
-{#enum ItalyMarket {} deriving(Show, Eq)#}
-{#enum RomaniaMarket {} deriving(Show, Eq)#}
-{#enum RussiaMarket {} deriving(Show, Eq)#}
-{#enum SouthKoreaMarket {} deriving(Show, Eq)#}
-{#enum UnitedKingdomMarket {} deriving(Show, Eq)#}
-{#enum UnitedStatesMarket {} deriving(Show, Eq)#}
+{#enum AustriaMarket {} add prefix = "Austria" deriving(Show, Eq)#}
+{#enum BrazilMarket {} add prefix = "Brazil" deriving(Show, Eq)#}
+{#enum CanadaMarket {} add prefix = "Canada" deriving(Show, Eq)#}
+{#enum ChinaMarket {} add prefix = "China" deriving(Show, Eq)#}
+{#enum FranceMarket {} add prefix= "France" deriving(Show, Eq)#}
+{#enum GermanyMarket {} add prefix = "Germany" deriving(Show, Eq)#}
+{#enum IndonesiaMarket {} add prefix = "Indonesia" deriving(Show, Eq)#}
+{#enum IsraelMarket {} add prefix = "Israel" deriving(Show, Eq)#}
+{#enum ItalyMarket {} add prefix = "Italy" deriving(Show, Eq)#}
+{#enum RomaniaMarket {} add prefix = "Romania" deriving(Show, Eq)#}
+{#enum RussiaMarket {} add prefix = "Russia" deriving(Show, Eq)#}
+{#enum SouthKoreaMarket {} add prefix = "SouthKorea" deriving(Show, Eq)#}
+{#enum UnitedKingdomMarket {} add prefix = "UnitedKingdom" deriving(Show, Eq)#}
+{#enum UnitedStatesMarket {} add prefix = "UnitedStates" deriving(Show, Eq)#}
 
 data CalendarConstructor = Argentina
   | Australia

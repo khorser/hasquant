@@ -101,33 +101,28 @@ instance ForeignObject DefaultProbabilityHelper where
 {#fun qlUpfrontCdsHelper as upfrontCdsHelper {`Quote', `Double', fromEnumQuantity `(Word, TimeUnit)'&, `Int', `Calendar', `Frequency', `BusinessDayConvention', `DateGenerationRule', `DayCounter', `Double', `YieldTermStructure', fromIntegral `Word', `Bool', `Bool', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityHelper'#}
 
 interpolatedDefaultDensityCurve :: [Day] -> [Double] -> DayCounter -> Calendar -> [(Quote, Day)] -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedDefaultDensityCurve d dens dc c q i = qlInterpolatedDefaultDensityCurve d dens dc c qq qd i1 i2 i3 where
+interpolatedDefaultDensityCurve d dens dc c q i = uncurry' (qlInterpolatedDefaultDensityCurve d dens dc c qq qd) (qlInterpolation i) where
   (qq, qd) = unzip q
-  (i1, (i2, i3)) = qlInterpolation i
 {#fun qlInterpolatedDefaultDensityCurve {withDayArray* `[Day]'&, withDoubleArray* `[Double]'&, `DayCounter', `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 interpolatedHazardRateCurve :: [Day] -> [Double] -> DayCounter -> Calendar -> [(Quote, Day)] -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedHazardRateCurve d dens dc c q i = qlInterpolatedHazardRateCurve d dens dc c qq qd i1 i2 i3 where
+interpolatedHazardRateCurve d dens dc c q i = uncurry' (qlInterpolatedHazardRateCurve d dens dc c qq qd) (qlInterpolation i)  where
   (qq, qd) = unzip q
-  (i1, (i2, i3)) = qlInterpolation i
 {#fun qlInterpolatedHazardRateCurve {withDayArray* `[Day]'&, withDoubleArray* `[Double]'&, `DayCounter', `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 interpolatedSurvivalProbabilityCurve :: [Day] -> [Double] -> DayCounter -> Calendar -> [(Quote, Day)] -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedSurvivalProbabilityCurve d dens dc c q i = qlInterpolatedSurvivalProbabilityCurve d dens dc c qq qd i1 i2 i3 where
+interpolatedSurvivalProbabilityCurve d dens dc c q i = uncurry' (qlInterpolatedSurvivalProbabilityCurve d dens dc c qq qd) (qlInterpolation i) where
   (qq, qd) = unzip q
-  (i1, (i2, i3)) = qlInterpolation i
 {#fun qlInterpolatedSurvivalProbabilityCurve {withDayArray* `[Day]'&, withDoubleArray* `[Double]'&, `DayCounter', `Calendar', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 piecewiseDefaultCurve :: Day -> [DefaultProbabilityHelper] -> DayCounter -> [(Quote, Day)] -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve d h dc q t i = qlPiecewiseDefaultCurve d h dc qq qd t i1 i2 i3 where
+piecewiseDefaultCurve d h dc q t i = uncurry' (qlPiecewiseDefaultCurve d h dc qq qd t) (qlInterpolation i) where
   (qq, qd) = unzip q
-  (i1, (i2, i3)) = qlInterpolation i
 {#fun qlPiecewiseDefaultCurve {withDay* `Day', withObjectArray* `[DefaultProbabilityHelper]'&, `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `ProbabilityTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 piecewiseDefaultCurve' :: Word -> Calendar -> [DefaultProbabilityHelper] -> DayCounter -> [(Quote, Day)] -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve' d c h dc q t i = qlPiecewiseDefaultCurve1 d c h dc qq qd t i1 i2 i3 where
+piecewiseDefaultCurve' d c h dc q t i = uncurry' (qlPiecewiseDefaultCurve1 d c h dc qq qd t) (qlInterpolation i) where
   (qq, qd) = unzip q
-  (i1, (i2, i3)) = qlInterpolation i
 {#fun qlPiecewiseDefaultCurve1 {fromIntegral `Word', `Calendar', withObjectArray* `[DefaultProbabilityHelper]'&, `DayCounter', withObjectArray* `[Quote]'&, withDayArray* `[Day]'&, `ProbabilityTrait', `Int', `Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DefaultProbabilityTermStructure'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

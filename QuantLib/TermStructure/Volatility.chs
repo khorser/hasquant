@@ -290,9 +290,8 @@ capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, 
 {#fun qlCapFloorTermVolCurve {fromIntegral `Word', `Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withObjectArray* `[Quote]'&, `DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
 blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -> Maybe Interpolation -> IO BlackVarianceCurve
-blackVarianceCurve d dq dc f i = qlBlackVarianceCurve d dd q dc f i1 i2 i3
+blackVarianceCurve d dq dc f i = uncurry' (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i)
   where (dd, q) = unzip dq
-        (i1, (i2, i3)) = qlInterpolation' i
 
 {#fun qlBlackVarianceCurve {withDay* `Day' , withDayArray* `[Day]'& , withDoubleArray* `[Double]'& , `DayCounter' , `Bool' , `Int', `Int', `Int' , preErrorCheck- `String' errorCheck*-} -> `BlackVarianceCurve'#}
  

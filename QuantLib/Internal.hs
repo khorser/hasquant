@@ -56,6 +56,8 @@ module QuantLib.Internal
   , realMatrix
   , objectMatrix
   , qlNullInteger
+
+  , uncurry'
   )
 where
 
@@ -286,5 +288,8 @@ withMaybeEnumObject x f = maybe (f nullPtr) (`withEnumObject` f) x
 -- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
 fromEnumC :: (Enum a, Integral b) => a -> b
 fromEnumC = fromIntegral . fromEnum
+
+uncurry' :: (a -> b -> c -> d) -> (a, (b, c)) -> d
+uncurry' f (x, (y, z)) = f x y z
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

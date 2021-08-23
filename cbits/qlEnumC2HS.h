@@ -351,25 +351,25 @@ enum RoundingType {
 };
 
 // enums values should match with those in ql/time/calendars/*.hpp
-enum AustriaMarket { AustriaSettlement, AustriaExchange };
-enum BrazilMarket { BrazilSettlement, BrazilExchange };
-enum CanadaMarket { CanadaSettlement, CanadaTSX };
-enum ChinaMarket { ChinaSSE, ChinaIB };
-enum FranceMarket { FranceSettlement, FranceExchange };
-enum GermanyMarket { GermanySettlement, GermanyFrankfurtStockExchange, GermanyXetra, GermanyEurex, GermanyEuwax };
-enum IndonesiaMarket { IndonesiaBEJ, IndonesiaJSX, IndonesiaIDX };
-enum IsraelMarket { IsraelSettlement, IsraelTASE };
-enum ItalyMarket { ItalySettlement, ItalyExchange };
-enum RomaniaMarket { RomaniaPublic, RomaniaBVB };
-enum RussiaMarket { RussiaSettlement, RussiaMOEX };
-enum SouthKoreaMarket { SouthKoreaSettlement, SouthKoreaKRX };
-enum UnitedKingdomMarket { UnitedKingdomSettlement, UnitedKingdomExchange, UnitedKingdomMetals };
-enum UnitedStatesMarket { UnitedStatesSettlement, UnitedStatesNYSE, UnitedStatesGovernmentBond, UnitedStatesNERC, UnitedStatesLiborImpact, UnitedStatesUnitedStatesFederalReserve };
+enum AustriaMarket { Settlement, Exchange };
+enum BrazilMarket { Settlement, Exchange };
+enum CanadaMarket { Settlement, TSX };
+enum ChinaMarket { SSE, IB };
+enum FranceMarket { Settlement, Exchange };
+enum GermanyMarket { Settlement, FrankfurtStockExchange, Xetra, Eurex, Euwax };
+enum IndonesiaMarket { BEJ, JSX, IDX };
+enum IsraelMarket { Settlement, TASE };
+enum ItalyMarket { Settlement, Exchange };
+enum RomaniaMarket { Public, BVB };
+enum RussiaMarket { Settlement, MOEX };
+enum SouthKoreaMarket { Settlement, KRX };
+enum UnitedKingdomMarket { Settlement, Exchange, Metals };
+enum UnitedStatesMarket { Settlement, NYSE, GovernmentBond, NERC, LiborImpact, FederalReserve };
 
 // enums values should match with those in ql/time/daycounters/*.hpp
-enum ActualActualConvention { ActualActualISMA, ActualActualBond, ActualActualISDA, ActualActualHistorical, ActualActualActual365, ActualActualAFB, ActualActualEuro };
-enum Thirty360Convention { Thirty360USA, Thirty360BondBasis, Thirty360European, Thirty360EurobondBasis, Thirty360Italian, Thirty360German, Thirty360ISMA, Thirty360ISDA, Thirty360NASD };
-enum Actual365FixedConvention { Actual365FixedStandard, Actual365FixedCanadian, Actual365FixedNoLeap };
+enum ActualActualConvention { ISMA, Bond, ISDA, Historical, Actual365, AFB, Euro };
+enum Thirty360Convention { USA, BondBasis, European, EurobondBasis, Italian, German, ISMA, ISDA, NASD };
+enum Actual365FixedConvention { Standard, Canadian, NoLeap };
 
 // math/optimization/endcriteria.hpp
 enum EndCriteriaType {EndNone,

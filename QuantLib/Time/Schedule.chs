@@ -55,9 +55,9 @@ instance Eq DayCounter where x == y = show x == show y
   
 {#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
 
-{#enum ActualActualConvention {} deriving(Show, Eq)#}
-{#enum Thirty360Convention {} deriving(Show, Eq)#}
-{#enum Actual365FixedConvention {} deriving(Show, Eq)#}
+{#enum ActualActualConvention {} add prefix = "ActualActual" deriving(Show, Eq)#}
+{#enum Thirty360Convention {} add prefix = "Thirty360" deriving(Show, Eq)#}
+{#enum Actual365FixedConvention {} add prefix = "Actual365Fixed" deriving(Show, Eq)#}
 
 {#enum DateGenerationRule {} deriving(Show, Eq)#}
 
