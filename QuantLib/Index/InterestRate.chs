@@ -155,7 +155,7 @@ instance OvernightIborIndex `Derives` IborIndex where cast = qlOvernightIndexAsI
 
 {#fun qlSwapIndex1 as swapIndex' {`String', fromEnumQuantity `(Int, TimeUnit)'&, fromIntegral `Word', `Currency', `Calendar', fromEnumQuantity `(Int, TimeUnit)'&, `BusinessDayConvention', `DayCounter', `IborIndex', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `SwapIndex'#}
 
-{#enum IborIndexType {} deriving (Show, Eq)#}
+{#enum IborIndexType {} add prefix = "Ibor" deriving (Show, Eq)#}
 
 data IborConstructor =
     Bbsw (Word, TimeUnit)

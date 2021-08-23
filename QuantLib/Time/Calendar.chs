@@ -51,7 +51,7 @@ import {-# SOURCE #-} QuantLib.Time.Schedule(TimeUnit)
 
 {#enum BusinessDayConvention {} deriving(Show, Eq)#}
 
-{#enum CalendarCountry {} deriving(Show, Eq)#}
+{#enum CalendarCountry {} add prefix = "Country" deriving(Show, Eq)#}
 
 {#enum AustriaMarket {} add prefix = "Austria" deriving(Show, Eq)#}
 {#enum BrazilMarket {} add prefix = "Brazil" deriving(Show, Eq)#}

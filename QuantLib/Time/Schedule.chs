@@ -61,7 +61,7 @@ instance Eq DayCounter where x == y = show x == show y
 
 {#enum DateGenerationRule {} deriving(Show, Eq)#}
 
-{#enum DayCounterType {} deriving(Show, Eq)#}
+{#enum DayCounterType {} add prefix = "DayCounter" deriving(Show, Eq)#}
 
 data DayCounterConstructor = 
   Actual360

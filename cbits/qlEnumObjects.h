@@ -85,60 +85,60 @@ enum Ccy {ARS = 0
 
 // should match with the order of qlCalendar.cpp:calendars
 enum CalendarCountry {
-  CountryArgentina = 0
-  , CountryAustralia
-  , CountryAustria
-  , CountryBotswana
-  , CountryBrazil
-  , CountryCanada
-  , CountryChina
-  , CountryCzechRepublic
-  , CountryDenmark
-  , CountryFinland
-  , CountryFrance
-  , CountryGermany
-  , CountryHongKong
-  , CountryHungary
-  , CountryIceland
-  , CountryIndia
-  , CountryIndonesia
-  , CountryIsrael
-  , CountryItaly
-  , CountryJapan
-  , CountryMexico
-  , CountryNewZealand
-  , CountryNorway
-  , CountryNull
-  , CountryPoland
-  , CountryRomania
-  , CountryRussia
-  , CountrySaudiArabia
-  , CountrySingapore
-  , CountrySlovakia
-  , CountrySouthAfrica
-  , CountrySouthKorea
-  , CountrySweden
-  , CountrySwitzerland
-  , CountryTaiwan
-  , CountryTARGET
-  , CountryThailand
-  , CountryTurkey
-  , CountryUkraine
-  , CountryUnitedKingdom
-  , CountryUnitedStates
-  , CountryWeekendsOnly
+  Argentina = 0
+  , Australia
+  , Austria
+  , Botswana
+  , Brazil
+  , Canada
+  , China
+  , CzechRepublic
+  , Denmark
+  , Finland
+  , France
+  , Germany
+  , HongKong
+  , Hungary
+  , Iceland
+  , India
+  , Indonesia
+  , Israel
+  , Italy
+  , Japan
+  , Mexico
+  , NewZealand
+  , Norway
+  , Null
+  , Poland
+  , Romania
+  , Russia
+  , SaudiArabia
+  , Singapore
+  , Slovakia
+  , SouthAfrica
+  , SouthKorea
+  , Sweden
+  , Switzerland
+  , Taiwan
+  , TARGET
+  , Thailand
+  , Turkey
+  , Ukraine
+  , UnitedKingdom
+  , UnitedStates
+  , WeekendsOnly
 };
 
 // should match with the order of qlDayCounter.cpp:dayCounters
 enum DayCounterType {
-  DayCounterActual360 = 0
-  , DayCounterActual364
-  , DayCounterActual365Fixed
-  , DayCounterActualActual
-  , DayCounterOneDayCounter
-  , DayCounterSimpleDayCounter
-  , DayCounterThirty360
-  , DayCounterThirty365
+  Actual360 = 0
+  , Actual364
+  , Actual365Fixed
+  , ActualActual
+  , OneDayCounter
+  , SimpleDayCounter
+  , Thirty360
+  , Thirty365
 };
 
 #define NO_ENUM -100;
@@ -172,41 +172,41 @@ enum LiborSwapIndexType {
 
 // must match with the order of qlIborIndex.cpp:iborIndices
 enum IborIndexType {
-  IborBbsw = 0
-  , IborBibor
-  , IborBkbm
-  , IborCdor
-  , IborEurLibor
-  , IborAudLibor
-  , IborCadLibor
-  , IborChfLibor
-  , IborDkkLibor
-  , IborGbpLibor
-  , IborJpyLibor
-  , IborNzdLibor
-  , IborSekLibor
-  , IborUsdLibor
-  , IborEurDailyTenorLibor
-  , IborChfDailyTenorLibor
-  , IborGbpDailyTenorLibor
-  , IborJpyDailyTenorLibor
-  , IborUsdDailyTenorLibor
-  , IborCadLiborON
-  , IborEurLiborON
-  , IborGbpLiborON
-  , IborUsdLiborON
-  , IborEuribor
-  , IborEuribor365
-  , IborJibar
-  , IborMosprime
-  , IborPribor
-  , IborRobor
-  , IborShibor
-  , IborTHBFIX
-  , IborTRLibor
-  , IborTibor
-  , IborWibor
-  , IborZibor
+  Bbsw = 0
+  , Bibor
+  , Bkbm
+  , Cdor
+  , EurLibor
+  , AudLibor
+  , CadLibor
+  , ChfLibor
+  , DkkLibor
+  , GbpLibor
+  , JpyLibor
+  , NzdLibor
+  , SekLibor
+  , UsdLibor
+  , EurDailyTenorLibor
+  , ChfDailyTenorLibor
+  , GbpDailyTenorLibor
+  , JpyDailyTenorLibor
+  , UsdDailyTenorLibor
+  , CadLiborON
+  , EurLiborON
+  , GbpLiborON
+  , UsdLiborON
+  , Euribor
+  , Euribor365
+  , Jibar
+  , Mosprime
+  , Pribor
+  , Robor
+  , Shibor
+  , THBFIX
+  , TRLibor
+  , Tibor
+  , Wibor
+  , Zibor
 };
 
 enum RngTrait {
