@@ -33,6 +33,7 @@ import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
+import qualified QuantLib.Example.Repo as RepoExample
 
 instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
@@ -63,6 +64,9 @@ closePrec r p x = abs (x - r) < p
 
 listClose :: (a -> Double) -> [Double] -> Double -> [a] -> Bool
 listClose f x1 e x2 = all (\(x, y) -> abs(x - f y) < e) (zip x1 x2)
+
+recordMemberClose :: (a -> Double) -> Double -> Double -> a -> Bool
+recordMemberClose f x2 e x1 = abs(f x1 - x2) < e
 
 main :: IO ()
 main = do
@@ -1368,5 +1372,20 @@ main = do
         fwds2  `shouldSatisfy` listClose SwapExample.spotNpvR fwdNpvs2 1.0e-5
         fwds2  `shouldSatisfy` listClose SwapExample.spotFairSpreadR fwdFairSpreads2 1.0e-5
         fwds2  `shouldSatisfy` listClose SwapExample.spotFairRateR fwdFairRates2 1.0e-5
+
+    describe "Repo" $
+      it "check values" $ do 
+        r <- Settings.keepingSettings' RepoExample.run
+        r `shouldSatisfy` recordMemberClose RepoExample.cleanPriceR 89.9769362 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.dirtyPriceR 93.2880473 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.accruedAmountSettlement 3.3111111 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.accruedAmountDelivery 3.3333333 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.spotIncomeR 3.9834025 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.fwdIncomeR 4.0846473 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.npvR (-0.00002806598) 1e-11
+        r `shouldSatisfy` recordMemberClose RepoExample.cleanForwardPriceR 88.2411379 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.forwardPriceR 91.5744712 1e-7
+        r `shouldSatisfy` recordMemberClose RepoExample.impliedYieldR 0.050000633 1e-9
+        r `shouldSatisfy` recordMemberClose RepoExample.zeroRateR 0.05 1e-7
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

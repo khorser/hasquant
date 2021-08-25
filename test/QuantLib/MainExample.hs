@@ -10,6 +10,7 @@ import Text.Printf
 import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
 import qualified QuantLib.Example.Swap as SwapExample
+import qualified QuantLib.Example.Repo as RepoExample
 
 main :: IO ()
 main = do
@@ -34,6 +35,21 @@ main = do
   putStrLn $ "Tradable: " ++ show (Bond.tradable br)
   putStrLn $ "CashFlows: NPV: " ++ show (Bond.cfnpvR br) ++ ", NPV_BPS: " ++ show (Bond.cfnpvbpsR br)
   putStrLn $ "BPS: " ++ show (Bond.bpsR br)
+
+  putStrLn "\n*** Repo Example ***"
+  rr <- keepingSettings' RepoExample.run
+  putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
+  putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
+  putStrLn $ "Underlying bond accrued at settlement: " ++ show (RepoExample.accruedAmountSettlement rr)
+  putStrLn $ "Underlying bond accrued at delivery:   " ++ show (RepoExample.accruedAmountDelivery rr)
+  putStrLn $ "Underlying bond spot income: " ++ show (RepoExample.spotIncomeR rr)
+  putStrLn $ "Underlying bond fwd income:  " ++ show (RepoExample.fwdIncomeR rr)
+  putStrLn $ "Repo strike: " ++ show (RepoExample.strike rr)
+  putStrLn $ "Repo NPV:    " ++ show (RepoExample.npvR rr)
+  putStrLn $ "Repo clean forward price: " ++ show (RepoExample.cleanForwardPriceR rr)
+  putStrLn $ "Repo dirty forward price: " ++ show (RepoExample.forwardPriceR rr)
+  putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
+  putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
 
   putStrLn "\n*** FRA Example ***"
   (FRA.Result i1 i2) <- keepingSettings' FRA.run
