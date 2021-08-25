@@ -23,11 +23,11 @@ stripPrefix :: String -> String
 stripPrefix x = if length res < 2
                    then error "Error splitting " ++ x
                    else res !! 1
-                     where res = splitOn "_" x
+                     where res = splitOn "__" x
 
 -- merge a set of enums into a big one providing a function to map values back to ordinal numbers of original enums
--- e.g. for mainEnum data CalendarCountry = Country_Australia | Country_UnitedStated,
--- subEnum suffix "Market" and UnitedStatesMarket = UnitedStates_NYSE | UnitedStates_Settlement
+-- e.g. for mainEnum data CalendarCountry = Country__Australia | Country__UnitedStated,
+-- subEnum suffix "Market" and UnitedStatesMarket = UnitedStates__NYSE | UnitedStates__Settlement
 -- NB I use prefixes separated from the main entry with underscore, in final enum they are stripped off
 -- the function will build Australia | UnitedStatesNYSE | UnitedStatesSettlement
 -- initially I constructed calendars with Australia | ...| UnitedStates UnitedStatesMarket where UnitedStatesMarket = NYSE | Settlement
@@ -36,25 +36,28 @@ stripPrefix x = if length res < 2
 mergeEnums :: String -> String -> Name -> String -> Name -> [Name] -> DecsQ
 mergeEnums resName mapper mainEnum subSuffix extra deriv = do
   mainValues <- map fst <$> getConstructors mainEnum
-  -- allValues contains all required information (mainName, sub Name, []), the third member will hold arguments for extra constructors
-  allValues <- concat <$> mapM (\d -> do
+  -- (mainName, sub Name, []), the third member will hold arguments for extra constructors
+  mergedValues <- concat <$> mapM (\d -> do
     vals <- getConstructors' (stripPrefix (nameBase d) ++ subSuffix)
     return $ if null vals then [(d, Nothing, [])] else zip3 (repeat d) (map Just vals) (repeat [])) mainValues
 
-  es <- map (\(n, as) -> (n, Nothing, as)) <$> getConstructors extra
-  sig <- sigD mapperName [t|$(conT resNameType) -> (Int, Int)|]
+  extraConstructors <- map (\(con, args) -> (con, Nothing, args)) <$> getConstructors extra
 
-  caseClauses <- mapM (\(x, y, _) -> clause [conP (concatNames x y) []] (normalB [|(fromEnum $(conE x), $(secondVal y))|]) []) allValues
+  caseClauses <- mapM (\(mainVal, subVal, _) -> clause [conP (concatNames mainVal subVal) []] (normalB [|(fromEnum $(conE mainVal), $(enumVal subVal))|]) []) mergedValues
   defaultClause <- clause [[p|_|]] (normalB [|error "Internal error: mapper called on an non-enumerable data constructor, probably, an exta one"|]) []
- 
-  return [DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (allValues ++ es)) [DerivClause Nothing (map ConT deriv)]
-            , sig, FunD mapperName (caseClauses ++ [defaultClause])]
+
+  let dataDecl = DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (mergedValues ++ extraConstructors)) [DerivClause Nothing (map ConT deriv)]
+  mapperSignature <- sigD mapperName [t|$(conT resNameType) -> (Int, Int)|]
+  let mapperBody = FunD mapperName (caseClauses ++ [defaultClause])
+
+  return [dataDecl, mapperSignature, mapperBody]
+
   where concatNames :: Name -> Maybe Name -> Name
         concatNames x y = mkName (stripPrefix (nameBase x) ++ maybe "" (stripPrefix . nameBase) y)
         resNameType = mkName resName
         mapperName = mkName mapper
-        secondVal :: Maybe Name -> ExpQ
-        secondVal Nothing = [|0|]
-        secondVal (Just n) = [|fromEnum $(conE n)|]
+        enumVal :: Maybe Name -> ExpQ
+        enumVal Nothing = [|0|]
+        enumVal (Just n) = [|fromEnum $(conE n)|]
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

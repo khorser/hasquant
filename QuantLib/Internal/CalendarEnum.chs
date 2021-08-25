@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 -- suppress warnings about unused Extra_ constructors
-{-# OPTIONS_GHC -w #-}
+{-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Internal.CalendarEnum
   (
     mapCalendar
@@ -18,45 +18,45 @@ module QuantLib.Internal.CalendarEnum
 
 import QuantLib.Internal.Syntax
 import {-# SOURCE #-} QuantLib.Time.Calendar
-import {-# SOURCE #-} QuantLib.Time.Schedule
+--import {-# SOURCE #-} QuantLib.Time.Schedule
 import QuantLib.Time.Date(Weekday)
 
 {#enum JointCalendarRule {} deriving(Show, Eq)#}
 
-{#enum CalendarCountry {} add prefix = "Country_" deriving(Show, Eq)#}
+{#enum CalendarCountry {} add prefix = "Country__" deriving(Show, Eq)#}
 
-{#enum AustriaMarket {} add prefix = "Austria_" deriving(Show, Eq)#}
-{#enum BrazilMarket {} add prefix = "Brazil_" deriving(Show, Eq)#}
-{#enum CanadaMarket {} add prefix = "Canada_" deriving(Show, Eq)#}
-{#enum ChinaMarket {} add prefix = "China_" deriving(Show, Eq)#}
-{#enum FranceMarket {} add prefix= "France_" deriving(Show, Eq)#}
-{#enum GermanyMarket {} add prefix = "Germany_" deriving(Show, Eq)#}
-{#enum IndonesiaMarket {} add prefix = "Indonesia_" deriving(Show, Eq)#}
-{#enum IsraelMarket {} add prefix = "Israel_" deriving(Show, Eq)#}
-{#enum ItalyMarket {} add prefix = "Italy_" deriving(Show, Eq)#}
-{#enum RomaniaMarket {} add prefix = "Romania_" deriving(Show, Eq)#}
-{#enum RussiaMarket {} add prefix = "Russia_" deriving(Show, Eq)#}
-{#enum SouthKoreaMarket {} add prefix = "SouthKorea_" deriving(Show, Eq)#}
-{#enum UnitedKingdomMarket {} add prefix = "UnitedKingdom_" deriving(Show, Eq)#}
-{#enum UnitedStatesMarket {} add prefix = "UnitedStates_" deriving(Show, Eq)#}
+{#enum AustriaMarket {} add prefix = "Austria__" deriving(Show, Eq)#}
+{#enum BrazilMarket {} add prefix = "Brazil__" deriving(Show, Eq)#}
+{#enum CanadaMarket {} add prefix = "Canada__" deriving(Show, Eq)#}
+{#enum ChinaMarket {} add prefix = "China__" deriving(Show, Eq)#}
+{#enum FranceMarket {} add prefix= "France__" deriving(Show, Eq)#}
+{#enum GermanyMarket {} add prefix = "Germany__" deriving(Show, Eq)#}
+{#enum IndonesiaMarket {} add prefix = "Indonesia__" deriving(Show, Eq)#}
+{#enum IsraelMarket {} add prefix = "Israel__" deriving(Show, Eq)#}
+{#enum ItalyMarket {} add prefix = "Italy__" deriving(Show, Eq)#}
+{#enum RomaniaMarket {} add prefix = "Romania__" deriving(Show, Eq)#}
+{#enum RussiaMarket {} add prefix = "Russia__" deriving(Show, Eq)#}
+{#enum SouthKoreaMarket {} add prefix = "SouthKorea__" deriving(Show, Eq)#}
+{#enum UnitedKingdomMarket {} add prefix = "UnitedKingdom__" deriving(Show, Eq)#}
+{#enum UnitedStatesMarket {} add prefix = "UnitedStates__" deriving(Show, Eq)#}
 
 data CalendarExtra =
-   Extra_Bespoke String [Weekday]
-  | Extra_Joint2 Calendar Calendar JointCalendarRule
-  | Extra_Joint3 Calendar Calendar Calendar JointCalendarRule
-  | Extra_Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
+   Extra__Bespoke String [Weekday]
+  | Extra__Joint2 Calendar Calendar JointCalendarRule
+  | Extra__Joint3 Calendar Calendar Calendar JointCalendarRule
+  | Extra__Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
 
 $(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra [''Show, ''Eq])
   
-{#enum DayCounterType {} add prefix = "DayCounter_" deriving(Show, Eq)#}
+{#enum DayCounterType {} add prefix = "DayCounter__" deriving(Show, Eq)#}
 
-{#enum ActualActualConvention {} add prefix = "ActualActual_" deriving(Show, Eq)#}
-{#enum Thirty360Convention {} add prefix = "Thirty360_" deriving(Show, Eq)#}
-{#enum Actual365FixedConvention {} add prefix = "Actual365Fixed_" deriving(Show, Eq)#}
+{#enum ActualActualConvention {} add prefix = "ActualActual__" deriving(Show, Eq)#}
+{#enum Thirty360Convention {} add prefix = "Thirty360__" deriving(Show, Eq)#}
+{#enum Actual365FixedConvention {} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}
 
 -- TODO add the second (Schedule) argument to Actua/Actual constructor
 
-data DayCounterExtra = Extra_Business252 Calendar
+data DayCounterExtra = Extra__Business252 Calendar
 
 $(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra [''Show, ''Eq])
 
