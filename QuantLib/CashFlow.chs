@@ -103,19 +103,19 @@ instance ForeignObject Leg where
   withObject = withLeg
   constructor = Leg
   finalizer = qlFreeLeg
-  
+
 {#pointer *CouponLeg foreign finalizer qlFreeCouponLeg newtype#}
 instance ForeignObject CouponLeg where
   withObject = withCouponLeg
   constructor = CouponLeg
   finalizer = qlFreeCouponLeg
-  
+
 {#pointer *QlDividend as Dividend foreign finalizer qlFreeDividend newtype#}
 instance ForeignObject Dividend where
   withObject = withDividend
   constructor = Dividend
   finalizer = qlFreeDividend
-  
+
 {#enum DurationType {} deriving(Show, Eq)#}
 
 {#enum RateAveragingType {} add prefix="Averaging" deriving(Show, Eq)#}
@@ -278,7 +278,7 @@ instance ForeignObject FloatingRateCouponPricer where
   withObject = withFloatingRateCouponPricer
   constructor = FloatingRateCouponPricer
   finalizer = qlFreeFloatingCouponPricer
-  
+
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer {withObject* `OptionletVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
 

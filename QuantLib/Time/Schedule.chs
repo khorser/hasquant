@@ -47,7 +47,7 @@ instance ForeignObject DayCounter where
   finalizer = qlFreeDayCounter
 instance Show DayCounter where show = qlDayCounterName
 instance Eq DayCounter where x == y = show x == show y
-  
+
 {#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
 
 {#enum DateGenerationRule {} deriving(Show, Eq)#}

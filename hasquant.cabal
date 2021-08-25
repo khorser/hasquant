@@ -12,7 +12,8 @@ maintainer:         sergey.khorev@gmail.com
 category:           Finance
 build-type:         Simple
 -- extra-source-files:  cbits
--- stackage lts-18.5 (GHC-8.10.4). also tested with lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3), lts-12.14 (ghc-8.4.3), lts-6.35 (ghc-7.10.3), lts-7.24 (ghc-8.0.1), lts-11.22 (ghc-8.2.2)
+-- stackage lts-18.5 (GHC-8.10.4). also tested with lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3), lts-12.14 (ghc-8.4.3), lts-11.22 (ghc-8.2.2)
+-- used to work with lts-6.35 (ghc-7.10.3), lts-7.24 (ghc-8.0.1) until I started using Template Haskell with DataD signature changed in 8.2
 -- tested-with:        GHC==8.10
 
 flag buildExample
@@ -64,7 +65,7 @@ library
                     , QuantLib.Internal.Syntax
                     , QuantLib.Internal.CalendarEnum
   -- other-extensions:
-  build-depends:    base >=4.8 && <5.0
+  build-depends:    base >=4.10 && <5.0
                     , time
                     , template-haskell
                     , split
@@ -112,47 +113,8 @@ library
     cc-options:        -Wall -Wextra -pedantic
 
   include-dirs:     cbits
-
-  if impl(ghc >= 8.0)
-    ghc-options:      -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
-  else
-    ghc-options:      -Wall
-
+  ghc-options:      -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   extra-libraries:  QuantLib stdc++
---  includes:         cbits/qlaux.h
---                    , cbits/qlBond.h
---                    , cbits/qlCalendar.h
---                    , cbits/qlCouponPricer.h
---                    , cbits/qlCredit.h
---                    , cbits/qlCurrency.h
---                    , cbits/qlDate.h
---                    , cbits/qlDayCounter.h
---                    , cbits/qlDefaultTS.h
---                    , cbits/qlEnumC2HS.h
---                    , cbits/qlForward.h
---                    , cbits/ql.h
---                    , cbits/qlIborIndex.h
---                    , cbits/qlIndex.h
---                    , cbits/qlInstrument.h
---                    , cbits/qlInterestRate.h
---                    , cbits/qlLeg.h
---                    , cbits/qlMath.h
---                    , cbits/qlMethod.h
---                    , cbits/qlModel.h
---                    , cbits/qlOption.h
---                    , cbits/qlPeriod.h
---                    , cbits/qlPricingEngineAux.h
---                    , cbits/qlPricingEngine.h
---                    , cbits/qlProcess.h
---                    , cbits/qlQuote.h
---                    , cbits/qlSchedule.h
---                    , cbits/qlSettings.h
---                    , cbits/qlSwap.h
---                    , cbits/qlTSAux.h
---                    , cbits/qlTypesC2HS.h
---                    , cbits/qlUtilities.h
---                    , cbits/qlVolatilityTS.h
---                    , cbits/qlYieldTS.h
 
 executable hasquant_example
   if flag(buildExample)
@@ -173,27 +135,25 @@ executable hasquant_example
 --            , QuantLib.Example.Repo
 --            , QuantLib.Example.Swap
   ghc-options:      -Wall
-  build-depends:    base >= 4.8 && < 5.0
+  build-depends:    base >= 4.10 && < 5.0
                     , time
                     , hasquant
   default-language: Haskell2010
   hs-source-dirs:   test
 
 test-suite hasquant_test
-  Type:             exitcode-stdio-1.0
-  Main-Is:          QuantLib/MainTest.hs
-  Other-modules:    QuantLib.Example.FRA
+  type:             exitcode-stdio-1.0
+  main-is:          QuantLib/MainTest.hs
+  other-modules:    QuantLib.Example.FRA
+                    , QuantLib.Example.Bond
   ghc-options:      -Wall
-  Build-Depends:    base >= 4.8 && < 5.0
+  build-depends:    base >= 4.10 && < 5.0
                     , time
                     , hspec
                     , HUnit
                     , QuickCheck
                     , hasquant
-  Default-Language: Haskell2010
-  Hs-source-dirs:   test
-
-  other-modules:    QuantLib.Example.FRA
-                    , QuantLib.Example.Bond
+  default-language: Haskell2010
+  hs-source-dirs:   test
 
 -- vim: set et ts=8 sts=2 sw=2:

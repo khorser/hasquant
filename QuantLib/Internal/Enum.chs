@@ -508,7 +508,7 @@ data FdmScheme =
   | ImplicitEuler
   | ModifiedCraigSneyd
   | ModifiedHundsdorfer
- 
+
 {#pointer *FdmSchemeDesc foreign finalizer qlFreeFdmSchemeDesc newtype#}
 instance ForeignObject FdmSchemeDesc where
   withObject = withFdmSchemeDesc

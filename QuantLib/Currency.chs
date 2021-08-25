@@ -34,7 +34,7 @@ instance ForeignObject Currency where
   finalizer = qlFreeCurrency
 instance Show Currency where show = qlCurrencyName
 instance Eq Currency where x == y = show x == show y
-  
+
 {#fun pure qlCurrencyName {`Currency'} -> `String' peekDynString*#}
 
 {#fun qlCurrency as currency {`Ccy', preErrorCheck- `String' errorCheck*-} -> `Currency'#}

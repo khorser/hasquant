@@ -47,7 +47,7 @@ data CalendarExtra =
   | Extra__Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
 
 $(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra [''Show, ''Eq])
-  
+
 {#enum DayCounterType {} add prefix = "DayCounter__" deriving(Show, Eq)#}
 
 {#enum ActualActualConvention {} add prefix = "ActualActual__" deriving(Show, Eq)#}

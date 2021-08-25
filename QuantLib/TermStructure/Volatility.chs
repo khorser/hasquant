@@ -294,18 +294,18 @@ blackVarianceCurve d dq dc f i = uncurry' (qlBlackVarianceCurve d dd q dc f) (ql
   where (dd, q) = unzip dq
 
 {#fun qlBlackVarianceCurve {withDay* `Day' , withDayArray* `[Day]'& , withDoubleArray* `[Double]'& , `DayCounter' , `Bool' , `Int', `Int', `Int' , preErrorCheck- `String' errorCheck*-} -> `BlackVarianceCurve'#}
- 
+
 blackVarianceSurface :: Day -> Calendar -> [Day] -> [Double] -> Matrix Double -> DayCounter -> BlackVarianceSurfaceExtrapolation -> BlackVarianceSurfaceExtrapolation -> IO BlackVolTermStructure
 blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
 
 {#fun qlBlackVarianceSurface {withDay* `Day', `Calendar', withDayArray* `[Day]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withDoubleArrayRaw* `[Double]', `DayCounter', `BlackVarianceSurfaceExtrapolation', `BlackVarianceSurfaceExtrapolation', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
- 
+
 -- |floating reference date, floating market data
 capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -> [Double] -> Matrix Quote -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface d c bd pl pu s mr mc md where (pl, pu) = unzip t
 
 {#fun qlCapFloorTermVolSurface {fromIntegral `Word', `Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withObjectArrayRaw* `[Quote]', `DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
- 
+
 -- |fixed reference date, floating market data
 capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -> [Double] -> Matrix Quote -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface' d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t

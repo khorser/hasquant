@@ -18,7 +18,7 @@ getConstructors x = do
 -- try to get constructors for a type d. return empty list if not found
 getConstructors' :: String -> Q [Name]
 getConstructors' d = lookupTypeName d >>= maybe (return []) (getConstructors >=> (return . map fst))
-  
+
 stripPrefix :: String -> String
 stripPrefix x = if length res < 2
                    then error "Error splitting " ++ x
@@ -36,8 +36,8 @@ stripPrefix x = if length res < 2
 mergeEnums :: String -> String -> Name -> String -> Name -> [Name] -> DecsQ
 mergeEnums resName mapper mainEnum subSuffix extra deriv = do
   mainValues <- map fst <$> getConstructors mainEnum
-  -- (mainName, sub Name, []), the third member will hold arguments for extra constructors
-  mergedValues <- concat <$> mapM (\d -> do
+
+  mergedValues <- concat <$> mapM (\d -> do -- (mainName, subName, []), the third member will hold arguments for extra constructors
     vals <- getConstructors' (stripPrefix (nameBase d) ++ subSuffix)
     return $ if null vals then [(d, Nothing, [])] else zip3 (repeat d) (map Just vals) (repeat [])) mainValues
 
