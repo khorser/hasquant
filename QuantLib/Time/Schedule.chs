@@ -92,12 +92,12 @@ instance ForeignObject Schedule where
 {#enum Frequency {} deriving(Show, Eq, Bounded)#}
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
-{#fun qlPeriodFromFrequency1 as fromFrequency {`Frequency', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int'#}
+{#fun qlPeriodFromFrequency1 as fromFrequency {`Frequency', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Word' fromIntegral#}
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
-{#fun qlPeriodToFrequency1 as toFrequency {fromEnumQuantity `Int, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Frequency'#}
+{#fun qlPeriodToFrequency1 as toFrequency {fromEnumQuantity `Word, TimeUnit'&, preErrorCheck- `String' errorCheck*-} -> `Frequency'#}
 
-{#fun qlPeriodParserParse1 as parse {`String', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int'#}
+{#fun qlPeriodParserParse1 as parse {`String', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Word' fromIntegral#}
 
 {#fun qlPeriodAdd1 as addPeriods {fromEnumQuantity `Int, TimeUnit'&, fromEnumQuantity `Int, TimeUnit'&, preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int'#} 
 

@@ -13,6 +13,8 @@ import Test.QuickCheck.Monadic as Q
 import Data.Time.Calendar
 import Data.List(delete)
 
+import Control.Arrow((&&&))
+
 import QuantLib.Time.Date as Date
 import QuantLib.Utility
 import QuantLib.Type
@@ -30,6 +32,7 @@ import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.FRA as FRAExample
+import qualified QuantLib.Example.Swap as SwapExample
 
 instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
@@ -1333,5 +1336,37 @@ main = do
         it2 `shouldSatisfy` listClose FRAExample.implYieldR implYields2 1.0e-5
         it2 `shouldSatisfy` listClose FRAExample.zRateR zRates2 1.0e-5
         it2 `shouldSatisfy` listClose FRAExample.npvR npvs2 1.0e-5
+
+    describe "Swap example" $
+      it "check values" $ do
+        (SwapExample.Result it1 it2) <- Settings.keepingSettings' SwapExample.run
+        let
+          spotNpvs1         = [19065.88091, 19076.13635, 19056.02274]
+          spotFairSpreads1  = [-4.19298e-3, -4.19258e-3, -4.19271e-3]
+          spotFairRates1    = [4.43e-2, 4.43e-2, 4.43e-2]
+          fwdNpvs1          = [40049.45742, 40092.78967, 37238.92028]
+          fwdFairSpreads1   = [-9.23115e-3, -9.23433e-3, -8.58372e-3]
+          fwdFairRates1     = [4.94794e-2, 4.94846e-2, 4.88132e-2]
+          (spots1, fwds1)   = unzip $ map (SwapExample.spotSwap &&& SwapExample.forwardSwap) it1
+        spots1 `shouldSatisfy` listClose SwapExample.spotNpvR spotNpvs1 1.0e-5
+        spots1 `shouldSatisfy` listClose SwapExample.spotFairSpreadR spotFairSpreads1 1.0e-5
+        spots1 `shouldSatisfy` listClose SwapExample.spotFairRateR spotFairRates1 1.0e-5
+        fwds1  `shouldSatisfy` listClose SwapExample.spotNpvR fwdNpvs1 1.0e-5
+        fwds1  `shouldSatisfy` listClose SwapExample.spotFairSpreadR fwdFairSpreads1 1.0e-5
+        fwds1  `shouldSatisfy` listClose SwapExample.spotFairRateR fwdFairRates1 1.0e-5
+        let
+          spotNpvs2         = [26539.06205, 26553.33709, 26525.34]
+          spotFairSpreads2  = [-5.84826e-3, -5.84770e-3, -5.84788e-3]
+          spotFairRates2    = [4.6e-2, 4.6e-2, 4.6e-2]
+          fwdNpvs2          = [45736.03965, 45782.39565, 42922.59585]
+          fwdFairSpreads2   = [-1.05779e-2, -1.05808e-2, -9.92761e-3]
+          fwdFairRates2     = [5.08660e-2, 5.08713e-2, 5.01964e-2]
+          (spots2, fwds2)   = unzip $ map (SwapExample.spotSwap &&& SwapExample.forwardSwap) it2
+        spots2 `shouldSatisfy` listClose SwapExample.spotNpvR spotNpvs2 1.0e-5
+        spots2 `shouldSatisfy` listClose SwapExample.spotFairSpreadR spotFairSpreads2 1.0e-5
+        spots2 `shouldSatisfy` listClose SwapExample.spotFairRateR spotFairRates2 1.0e-5
+        fwds2  `shouldSatisfy` listClose SwapExample.spotNpvR fwdNpvs2 1.0e-5
+        fwds2  `shouldSatisfy` listClose SwapExample.spotFairSpreadR fwdFairSpreads2 1.0e-5
+        fwds2  `shouldSatisfy` listClose SwapExample.spotFairRateR fwdFairRates2 1.0e-5
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

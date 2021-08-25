@@ -9,6 +9,7 @@ import Text.Printf
 
 import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
+import qualified QuantLib.Example.Swap as SwapExample
 
 main :: IO ()
 main = do
@@ -40,6 +41,12 @@ main = do
   putStrLn "* After 100bp shift *"
   printFraIterationResult i2
 
+  putStrLn "\n*** Swap Example ***"
+  (SwapExample.Result si1 si2) <- keepingSettings' SwapExample.run
+  printSwapIterationResult si1
+  putStrLn "***Updating market data***"
+  printSwapIterationResult si2
+
   putStrLn "\nDONE"
 
   where
@@ -52,3 +59,14 @@ main = do
         (FRA.implYieldR r)
         (FRA.zRateR r)
         (FRA.npvR r)
+
+    printSwapIterationResult :: [SwapExample.IterationResult] -> IO ()
+    printSwapIterationResult rs = forM_ rs $ \r -> do
+      printSwapResult "Spt" $ SwapExample.spotSwap r
+      printSwapResult "Fwd" $ SwapExample.forwardSwap r
+
+    printSwapResult :: String -> SwapExample.SwapResult -> IO ()
+    printSwapResult t r =
+      printf "%s Swap: NPV: %.5f Far spread: %.5f Fair rate: %.5f\n"
+        t (SwapExample.spotNpvR r) (SwapExample.spotFairSpreadR r) (SwapExample.spotFairRateR r)
+
