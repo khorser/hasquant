@@ -197,7 +197,7 @@ main = do
 
     describe "schedule" $ do
       it "truncate" $ do
-        cal <- calendar $ Russia RussiaSettlement
+        cal <- calendar RussiaSettlement
         s <- schedule (Just $ 20 `december` 2012) (21 `december` 2013) (1, Months) cal
           Following Unadjusted Forward
           False (Just $ 21 `december` 2012) (Just $ 21 `december` 2013)
@@ -212,7 +212,7 @@ main = do
       prop "generate from valid days" $ do
         \ds ->
           monadicIO $ do
-            c <- run $ calendar $ Russia RussiaSettlement
+            c <- run $ calendar RussiaSettlement
             s <- run $ fromDates (map validDay ds) c Unadjusted
             run $ dates s `shouldReturn` map validDay ds
 
@@ -237,16 +237,16 @@ main = do
 
     describe "calendars" $ do
       it "adjust" $ do
-        c <- calendar $ Russia RussiaSettlement
+        c <- calendar RussiaSettlement
         a <- adjust c (fromGregorian 2012 12 22) Preceding
         a `shouldBe` fromGregorian 2012 12 21
       it "advance" $ do
-        c <- calendar $ Russia RussiaSettlement
+        c <- calendar RussiaSettlement
         a <- advance c (fromGregorian 2012 12 20) (1, Months) Preceding False
         a `shouldBe` fromGregorian 2013 01 18
       it "modifying" $ do
         c1 <- calendar TARGET
-        c2 <- calendar $ UnitedStates UnitedStatesNYSE
+        c2 <- calendar UnitedStatesNYSE
         let d1 = may 1 2004
             d2 = april 26 2004
         isHoliday c1 d1 `shouldReturn` True
@@ -270,8 +270,8 @@ main = do
 
       it "joint calendars" $ do
         c1 <- calendar TARGET
-        c2 <- calendar $ UnitedKingdom UnitedKingdomExchange
-        c3 <- calendar $ UnitedStates UnitedStatesNYSE
+        c2 <- calendar UnitedKingdomExchange
+        c3 <- calendar UnitedStatesNYSE
         c4 <- calendar Japan
 
         c12h <- calendar $ Joint2 c1 c2 JoinHolidays
@@ -303,7 +303,7 @@ main = do
           [tod .. addGregorianYearsClip 1 tod]
 
       it "US Settlement" $ do
-        cal <- calendar $ UnitedStates UnitedStatesSettlement
+        cal <- calendar UnitedStatesSettlement
         holidays cal (1 `january` 2004) (31 `december` 2005) False
           `shouldReturn` [1 `january` 2004,
                           19 `january` 2004,
@@ -327,7 +327,7 @@ main = do
                           26 `december` 2005]
 
       it "US Government Bond Market" $ do
-        cal <- calendar $ UnitedStates UnitedStatesGovernmentBond
+        cal <- calendar UnitedStatesGovernmentBond
         holidays cal (1 `january` 2004) (31 `december` 2004) False
           `shouldReturn` [1 `january` 2004,
                           19 `january` 2004,
@@ -343,7 +343,7 @@ main = do
                           24 `december` 2004]
 
       it "US NYSE" $ do
-        cal <- calendar $ UnitedStates UnitedStatesNYSE
+        cal <- calendar UnitedStatesNYSE
         holidays cal (1 `january` 2004) (31 `december` 2006) False
           `shouldReturn` [1 `january` 2004,
                             19 `january` 2004,
@@ -445,7 +445,7 @@ main = do
                           26 `december` 2006]
 
       it "Germany Frankfurt" $ do
-        cal <- calendar $ Germany GermanyFrankfurtStockExchange
+        cal <- calendar GermanyFrankfurtStockExchange
         holidays cal (1 `january` 2003) (31 `december` 2004) False
           `shouldReturn` [1 `january` 2003,
                           18 `april` 2003,
@@ -460,7 +460,7 @@ main = do
                           24 `december` 2004]
 
       it "Germany EUREX" $ do
-        cal <- calendar $ Germany GermanyEurex
+        cal <- calendar GermanyEurex
         holidays cal (1 `january` 2003) (31 `december` 2004) False
           `shouldReturn` [1 `january` 2003,
                           18 `april` 2003,
@@ -477,7 +477,7 @@ main = do
                           31 `december` 2004]
 
       it "XETRA" $ do
-        cal <- calendar $ Germany GermanyXetra
+        cal <- calendar GermanyXetra
         holidays cal (1 `january` 2003) (31 `december` 2004) False
           `shouldReturn` [1 `january` 2003,
                             18 `april` 2003,
@@ -492,7 +492,7 @@ main = do
                             12 `april` 2004,
                             24 `december` 2004]
       it "UK Settlement" $ do
-        cal <- calendar $ UnitedKingdom UnitedKingdomSettlement
+        cal <- calendar UnitedKingdomSettlement
         holidays cal (1 `january` 2004) (31 `december` 2007) False
           `shouldReturn` [1 `january` 2004,
                           9 `april` 2004,
@@ -531,7 +531,7 @@ main = do
                           26 `december` 2007]
 
       it "UK Exchange" $ do
-        cal <- calendar $ UnitedKingdom UnitedKingdomExchange
+        cal <- calendar UnitedKingdomExchange
         holidays cal (1 `january` 2004) (31 `december` 2007) False
           `shouldReturn` [1 `january` 2004,
                           9 `april` 2004,
@@ -570,7 +570,7 @@ main = do
                           26 `december` 2007]
 
       it "UK Metals" $ do
-        cal <- calendar $ UnitedKingdom UnitedKingdomMetals
+        cal <- calendar UnitedKingdomMetals
         holidays cal (1 `january` 2004) (31 `december` 2007) False
           `shouldReturn` [1 `january` 2004,
                             9 `april` 2004,
@@ -609,7 +609,7 @@ main = do
                             26 `december` 2007]
 
       it "Italy Exchange" $ do
-        cal <- calendar $ Italy ItalyExchange
+        cal <- calendar ItalyExchange
         holidays cal (1 `january` 2002) (31 `december` 2004) False
           `shouldReturn` [1 `january` 2002,
                           29 `march` 2002,
@@ -638,7 +638,7 @@ main = do
                           31 `december` 2004]
 
       it "Brazil Settlement" $ do
-        cal <- calendar $ Brazil BrazilSettlement
+        cal <- calendar BrazilSettlement
         holidays cal (1 `january` 2005) (31 `december` 2006) False
           `shouldReturn` [7 `february` 2005,
                           8 `february` 2005,
@@ -663,7 +663,7 @@ main = do
                           25 `december` 2006]
 
       it "South Korean Settlement" $ do
-        cal <- calendar $ SouthKorea SouthKoreaSettlement
+        cal <- calendar SouthKoreaSettlement
         holidays cal (1 `january` 2004) (31 `december` 2007) False
           `shouldReturn` [1 `january` 2004,
                           21 `january` 2004,
@@ -718,7 +718,7 @@ main = do
                           25 `december` 2007]
 
       it "Korea Stock Exchange" $ do
-        cal <- calendar $ SouthKorea SouthKoreaKRX
+        cal <- calendar SouthKoreaKRX
         holidays cal (1 `january` 2004) (31 `december` 2007) False
           `shouldReturn` [1 `january` 2004,
                           21 `january` 2004,
@@ -784,7 +784,7 @@ main = do
           [minDate .. addGregorianMonthsClip (-2) maxDate]
 
       it "Business days between" $ do
-        cal <- calendar $ Brazil BrazilSettlement
+        cal <- calendar BrazilSettlement
         let testDates = [1 `february` 2002,
                           4 `february` 2002,
                           16 `may` 2003,
@@ -862,27 +862,27 @@ main = do
                     dc <- dayCounter c
                     f <- years dc s e rs re
                     abs(t - f) `shouldSatisfy` (<= 1.0e-10))
-            [(ActualActual ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
-              (ActualActual ActualActualISMA, 1 `november` 2003, 1 `may` 2004, Just $ 1 `november` 2003, Just $ 1 `may` 2004, 0.500000000000),
-              (ActualActual ActualActualAFB, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497267759563),
-              (ActualActual ActualActualISDA, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
-              (ActualActual ActualActualISMA, 1 `february` 1999, 1 `july` 1999, Just $ 1 `july` 1998, Just $ 1 `july` 1999, 0.410958904110),
-              (ActualActual ActualActualAFB, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
-              (ActualActual ActualActualISDA, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.001377348600),
-              (ActualActual ActualActualISMA, 1 `july` 1999, 1 `july` 2000, Just $ 1 `july` 1999, Just $ 1 `july` 2000, 1.000000000000),
-              (ActualActual ActualActualAFB, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.000000000000),
-              (ActualActual ActualActualISDA, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
-              (ActualActual ActualActualISMA, 15 `august` 2002, 15 `july` 2003, Just $ 15 `january` 2003, Just $ 15 `july` 2003, 0.915760869565),
-              (ActualActual ActualActualAFB, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
-              (ActualActual ActualActualISDA, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504004790778),
-              (ActualActual ActualActualISMA, 15 `july` 2003, 15 `january` 2004, Just $ 15 `july` 2003, Just $ 15 `january` 2004, 0.500000000000),
-              (ActualActual ActualActualAFB, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504109589041),
-              (ActualActual ActualActualISDA, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.503892506924),
-              (ActualActual ActualActualISMA, 30 `july` 1999, 30 `january` 2000, Just $ 30 `july` 1999, Just $ 30 `january` 2000, 0.500000000000),
-              (ActualActual ActualActualAFB, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.504109589041),
-              (ActualActual ActualActualISDA, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.415300546448),
-              (ActualActual ActualActualISMA, 30 `january` 2000, 30 `june` 2000, Just $ 30 `january` 2000, Just $ 30 `july` 2000, 0.417582417582),
-              (ActualActual ActualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
+            [(ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
+              (ActualActualISMA, 1 `november` 2003, 1 `may` 2004, Just $ 1 `november` 2003, Just $ 1 `may` 2004, 0.500000000000),
+              (ActualActualAFB, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497267759563),
+              (ActualActualISDA, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
+              (ActualActualISMA, 1 `february` 1999, 1 `july` 1999, Just $ 1 `july` 1998, Just $ 1 `july` 1999, 0.410958904110),
+              (ActualActualAFB, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
+              (ActualActualISDA, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.001377348600),
+              (ActualActualISMA, 1 `july` 1999, 1 `july` 2000, Just $ 1 `july` 1999, Just $ 1 `july` 2000, 1.000000000000),
+              (ActualActualAFB, 1 `july` 1999, 1 `july` 2000, Nothing, Nothing, 1.000000000000),
+              (ActualActualISDA, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
+              (ActualActualISMA, 15 `august` 2002, 15 `july` 2003, Just $ 15 `january` 2003, Just $ 15 `july` 2003, 0.915760869565),
+              (ActualActualAFB, 15 `august` 2002, 15 `july` 2003, Nothing, Nothing, 0.915068493151),
+              (ActualActualISDA, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504004790778),
+              (ActualActualISMA, 15 `july` 2003, 15 `january` 2004, Just $ 15 `july` 2003, Just $ 15 `january` 2004, 0.500000000000),
+              (ActualActualAFB, 15 `july` 2003, 15 `january` 2004, Nothing, Nothing, 0.504109589041),
+              (ActualActualISDA, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.503892506924),
+              (ActualActualISMA, 30 `july` 1999, 30 `january` 2000, Just $ 30 `july` 1999, Just $ 30 `january` 2000, 0.500000000000),
+              (ActualActualAFB, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.504109589041),
+              (ActualActualISDA, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.415300546448),
+              (ActualActualISMA, 30 `january` 2000, 30 `june` 2000, Just $ 30 `january` 2000, Just $ 30 `july` 2000, 0.417582417582),
+              (ActualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
 
       it "simple" $ do
         dc <- dayCounter Simple
@@ -929,7 +929,7 @@ main = do
                         0.912698412698,
                         2.214285714286,
                         6.84126984127]
-          dc <- calendar (Brazil BrazilSettlement) >>= dayCounter . Business252
+          dc <- calendar BrazilSettlement >>= dayCounter . Business252
           fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip ds (tail ds))
           let diffs = zipWith (-) fractions expected
           all ((1.0e-12 >) . abs) diffs `shouldBe` True
@@ -1094,7 +1094,7 @@ main = do
           checkInclusion l 1 [(0, True), (1, True), (2, False)]
           checkInclusion l 2 [(1, True), (2, True), (3, False)]
 
-          dc <- dayCounter $ Actual365Fixed Actual365FixedStandard
+          dc <- dayCounter Actual365FixedStandard
           noDisc <- IR.interestRate 0.0 dc IR.Continuous Annual
 
           Settings.setIncludeTodaysCashFlows Nothing
@@ -1148,7 +1148,7 @@ main = do
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just $ 7 `april` 2010)
           cal <- calendar TARGET
-          dc <- dayCounter $ Actual365Fixed Actual365FixedStandard
+          dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10 >>= Quote.asQuote
@@ -1196,7 +1196,7 @@ main = do
                 depositRateHelper q (n, u) settlementDays cal ModifiedFollowing True actual360dc)
               depositData
             ccy <- currency EUR
-            thirty360dc <- dayCounter $ Thirty360 Thirty360BondBasis
+            thirty360dc <- dayCounter Thirty360BondBasis
             index <- iborIndex (Ibor "dummy" (6, Months) settlementDays ccy cal ModifiedFollowing False actual360dc) Nothing
             swaps <- mapM
               (\(n, u, r) -> do

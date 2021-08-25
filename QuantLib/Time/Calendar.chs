@@ -2,20 +2,6 @@ module QuantLib.Time.Calendar
   (
     JointCalendarRule(..)
   , CalendarConstructor(..)
-  , AustriaMarket(..)
-  , BrazilMarket(..)
-  , CanadaMarket(..)
-  , ChinaMarket(..)
-  , FranceMarket(..)
-  , GermanyMarket(..)
-  , IndonesiaMarket(..)
-  , IsraelMarket(..)
-  , ItalyMarket(..)
-  , RomaniaMarket(..)
-  , RussiaMarket(..)
-  , SouthKoreaMarket(..)
-  , UnitedKingdomMarket(..)
-  , UnitedStatesMarket(..)
 
   , Calendar
   , calendar
@@ -35,149 +21,16 @@ module QuantLib.Time.Calendar
   )
   where
 
-import QuantLib.Type
 import QuantLib.Internal
-import Control.Exception(throwIO)
 {#import QuantLib.Time.Date#}(Weekday)
 import {-# SOURCE #-} QuantLib.Time.Schedule(TimeUnit)
+import QuantLib.Internal.CalendarEnum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
-
-{#enum JointCalendarRule {} deriving(Show, Eq)#}
-
-{#enum BusinessDayConvention {} deriving(Show, Eq)#}
-
-{#enum CalendarCountry {} add prefix = "Country" deriving(Show, Eq)#}
-
-{#enum AustriaMarket {} add prefix = "Austria" deriving(Show, Eq)#}
-{#enum BrazilMarket {} add prefix = "Brazil" deriving(Show, Eq)#}
-{#enum CanadaMarket {} add prefix = "Canada" deriving(Show, Eq)#}
-{#enum ChinaMarket {} add prefix = "China" deriving(Show, Eq)#}
-{#enum FranceMarket {} add prefix= "France" deriving(Show, Eq)#}
-{#enum GermanyMarket {} add prefix = "Germany" deriving(Show, Eq)#}
-{#enum IndonesiaMarket {} add prefix = "Indonesia" deriving(Show, Eq)#}
-{#enum IsraelMarket {} add prefix = "Israel" deriving(Show, Eq)#}
-{#enum ItalyMarket {} add prefix = "Italy" deriving(Show, Eq)#}
-{#enum RomaniaMarket {} add prefix = "Romania" deriving(Show, Eq)#}
-{#enum RussiaMarket {} add prefix = "Russia" deriving(Show, Eq)#}
-{#enum SouthKoreaMarket {} add prefix = "SouthKorea" deriving(Show, Eq)#}
-{#enum UnitedKingdomMarket {} add prefix = "UnitedKingdom" deriving(Show, Eq)#}
-{#enum UnitedStatesMarket {} add prefix = "UnitedStates" deriving(Show, Eq)#}
-
-data CalendarConstructor = Argentina
-  | Australia
-  | Austria AustriaMarket
-  | Botswana
-  | Brazil BrazilMarket
-  | Canada CanadaMarket
-  | China ChinaMarket
-  | CzechRepublic
-  | Denmark
-  | Finland
-  | France FranceMarket
-  | Germany GermanyMarket
-  | HongKong
-  | Hungary
-  | Iceland
-  | India
-  | Indonesia IndonesiaMarket
-  | Israel IsraelMarket
-  | Italy ItalyMarket
-  | Japan
-  | Mexico
-  | NewZealand
-  | Norway
-  | Null
-  | Poland
-  | Romania RomaniaMarket
-  | Russia RussiaMarket
-  | SaudiArabia
-  | Singapore
-  | Slovakia
-  | SouthAfrica
-  | SouthKorea SouthKoreaMarket
-  | Sweden
-  | Switzerland
-  | Taiwan
-  | TARGET
-  | Thailand
-  | Turkey
-  | Ukraine
-  | UnitedKingdom UnitedKingdomMarket
-  | UnitedStates UnitedStatesMarket
-  | WeekendsOnly
-  | Bespoke String [Weekday]
-  | Joint2 Calendar Calendar JointCalendarRule
-  | Joint3 Calendar Calendar Calendar JointCalendarRule
-  | Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
-  deriving (Show, Eq)
-
-country :: CalendarConstructor -> IO CalendarCountry
-country Argentina = return CountryArgentina
-country Australia = return CountryAustralia
-country (Austria _) = return CountryAustria
-country Botswana = return CountryBotswana
-country (Brazil _) = return CountryBrazil
-country (Canada _) = return CountryCanada
-country (China _) = return CountryChina
-country CzechRepublic = return CountryCzechRepublic
-country Denmark = return CountryDenmark
-country Finland = return CountryFinland
-country (France _) = return CountryFrance
-country (Germany _) = return CountryGermany
-country HongKong = return CountryHongKong
-country Hungary = return CountryHungary
-country Iceland = return CountryIceland
-country India = return CountryIndia
-country (Indonesia _) = return CountryIndonesia
-country (Israel _) = return CountryIsrael
-country (Italy _) = return CountryItaly
-country Japan = return CountryJapan
-country Mexico = return CountryMexico
-country NewZealand = return CountryNewZealand
-country Norway = return CountryNorway
-country Null = return CountryNull
-country Poland = return CountryPoland
-country (Romania _) = return CountryRomania
-country (Russia _) = return CountryRussia
-country SaudiArabia = return CountrySaudiArabia
-country Singapore = return CountrySingapore
-country Slovakia = return CountrySlovakia
-country SouthAfrica = return CountrySouthAfrica
-country (SouthKorea _) = return CountrySouthKorea
-country Sweden = return CountrySweden
-country Switzerland = return CountrySwitzerland
-country Taiwan = return CountryTaiwan
-country TARGET = return CountryTARGET
-country Thailand = return CountryThailand
-country Turkey = return CountryTurkey
-country Ukraine = return CountryUkraine
-country (UnitedKingdom _) = return CountryUnitedKingdom
-country (UnitedStates _) = return CountryUnitedStates
-country WeekendsOnly = return CountryWeekendsOnly
--- deliberately not defining country for Joint and Bespoke constructors
-country x = throwIO $ EnumConversion $ "No country defined for calendar " ++ show x
-
-market :: CalendarConstructor -> Int
-market (Austria x) = fromEnum x
-market (Brazil x) = fromEnum x
-market (Canada x) = fromEnum x
-market (China x) = fromEnum x
-market (France x) = fromEnum x
-market (Germany x) = fromEnum x
-market (Indonesia x) = fromEnum x
-market (Israel x) = fromEnum x
-market (Italy x) = fromEnum x
-market (Romania x) = fromEnum x
-market (Russia x) = fromEnum x
-market (SouthKorea x) = fromEnum x
-market (UnitedKingdom x) = fromEnum x
-market (UnitedStates x) = fromEnum x
-market _ = {#const NO_ENUM#}
 
 {#pointer *Calendar foreign finalizer qlFreeCalendar newtype#}
 instance ForeignObject Calendar where
@@ -186,17 +39,19 @@ instance ForeignObject Calendar where
   finalizer = qlFreeCalendar
 instance Show Calendar where show = qlCalendarName
 instance Eq Calendar where x == y = show x == show y
-  
+
+{#enum BusinessDayConvention {} deriving(Show, Eq)#}
+
 {#fun pure qlCalendarName {`Calendar'} -> `String' peekDynString*#}
 
-{#fun qlCalendar {`CalendarCountry', `Int', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
+{#fun qlCalendar {`Int', `Int', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 
 calendar :: CalendarConstructor -> IO Calendar
 calendar (Bespoke n w) = qlBespokeCalendar n w
 calendar (Joint2 c1 c2 r) = qlJointCalendar2 c1 c2 r
 calendar (Joint3 c1 c2 c3 r) = qlJointCalendar3 c1 c2 c3 r
 calendar (Joint4 c1 c2 c3 c4 r) = qlJointCalendar4 c1 c2 c3 c4 r
-calendar x = country x >>= flip qlCalendar (market x)
+calendar x = uncurry qlCalendar $ mapCalendar x
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
 {#fun qlCalendarAdjust as adjust {`Calendar', withDay* `Day', `BusinessDayConvention'} -> `Day' toDay#}
@@ -233,11 +88,11 @@ calendar x = country x >>= flip qlCalendar (market x)
 
 {#fun qlBespokeCalendar {`String', withEnumArray* `[Weekday]'&, preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 
-{#fun qlJointCalendar3 {`Calendar', `Calendar', `Calendar', `JointCalendarRule', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
+{#fun qlJointCalendar3 {`Calendar', `Calendar', `Calendar', fromEnumC `JointCalendarRule', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 
-{#fun qlJointCalendar2 {`Calendar', `Calendar', `JointCalendarRule', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
+{#fun qlJointCalendar2 {`Calendar', `Calendar', fromEnumC `JointCalendarRule', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 
-{#fun qlJointCalendar4 {`Calendar', `Calendar', `Calendar', `Calendar', `JointCalendarRule', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
+{#fun qlJointCalendar4 {`Calendar', `Calendar', `Calendar', `Calendar', fromEnumC `JointCalendarRule', preErrorCheck- `String' errorCheck*-} -> `Calendar'#}
 
 -- |Returns the holidays between two dates.
 {#fun qlCalendarHolidayList as holidays {`Calendar', withDay* `Day', withDay* `Day', `Bool', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()'#}

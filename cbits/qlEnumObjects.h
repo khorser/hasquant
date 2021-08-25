@@ -135,8 +135,8 @@ enum DayCounterType {
   , Actual364
   , Actual365Fixed
   , ActualActual
-  , OneDayCounter
-  , SimpleDayCounter
+  , One
+  , Simple
   , Thirty360
   , Thirty365
 };

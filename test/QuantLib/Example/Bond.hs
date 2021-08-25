@@ -54,15 +54,15 @@ listToTriple l w = error $ "Not a 3 element list: " ++ show l ++ " (" ++ w ++ ")
 
 run :: IO Result
 run = do
-  actual365Fixeddc <- dayCounter (Actual365Fixed Actual365FixedStandard)
-  actActBond <- dayCounter $ ActualActual ActualActualBond
-  actActISDA <- dayCounter $ ActualActual ActualActualISDA
+  actual365Fixeddc <- dayCounter Actual365FixedStandard
+  actActBond <- dayCounter ActualActualBond
+  actActISDA <- dayCounter ActualActualISDA
   actual360dc <- dayCounter Actual360
-  thirty360Europeandc <- dayCounter (Thirty360 Thirty360European)
+  thirty360Europeandc <- dayCounter Thirty360European
 
   targetCal <- calendar TARGET
-  nyseCal <- calendar (UnitedStates UnitedStatesNYSE)
-  usGovBondCal <- calendar (UnitedStates UnitedStatesGovernmentBond)
+  nyseCal <- calendar UnitedStatesNYSE
+  usGovBondCal <- calendar UnitedStatesGovernmentBond
 
   settlDate <- adjust targetCal (18 `september` 2008) Following
   todaysDate <- advance targetCal

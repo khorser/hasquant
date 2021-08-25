@@ -1,10 +1,6 @@
 module QuantLib.Time.Schedule
   (
-    ActualActualConvention(..)
-  , Thirty360Convention(..)
-  , Actual365FixedConvention(..)
-  , DayCounterConstructor(..)
-
+    DayCounterConstructor(..)
   , DayCounter
   , dayCounter
   , days
@@ -31,13 +27,12 @@ module QuantLib.Time.Schedule
 where
 
 import Prelude hiding(until)
-import Control.Exception(throwIO)
 
-import QuantLib.Type
 import QuantLib.Time.Date
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
 import QuantLib.Internal.Calendar
+import QuantLib.Internal.CalendarEnum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -55,50 +50,15 @@ instance Eq DayCounter where x == y = show x == show y
   
 {#fun pure qlDayCounterName {`DayCounter'} -> `String' peekDynString*#}
 
-{#enum ActualActualConvention {} add prefix = "ActualActual" deriving(Show, Eq)#}
-{#enum Thirty360Convention {} add prefix = "Thirty360" deriving(Show, Eq)#}
-{#enum Actual365FixedConvention {} add prefix = "Actual365Fixed" deriving(Show, Eq)#}
-
 {#enum DateGenerationRule {} deriving(Show, Eq)#}
 
-{#enum DayCounterType {} add prefix = "DayCounter" deriving(Show, Eq)#}
-
-data DayCounterConstructor = 
-  Actual360
-  | Actual364
-  | Actual365Fixed Actual365FixedConvention
-  | ActualActual ActualActualConvention -- TODO add the second (Schedule) argument
-  | Business252 Calendar
-  | One
-  | Simple
-  | Thirty360 Thirty360Convention
-  | Thirty365
- deriving (Show, Eq)
-
-dayCounterType :: DayCounterConstructor -> IO DayCounterType
-dayCounterType Actual360 = return DayCounterActual360
-dayCounterType Actual364 = return DayCounterActual364
-dayCounterType (Actual365Fixed _) = return DayCounterActual365Fixed
-dayCounterType (ActualActual _) = return DayCounterActualActual
-dayCounterType One = return DayCounterOneDayCounter
-dayCounterType Simple = return DayCounterSimpleDayCounter
-dayCounterType (Thirty360 _) = return DayCounterThirty360
-dayCounterType Thirty365 = return DayCounterThirty365
-dayCounterType x = throwIO $ EnumConversion $ "No type for Day Counter " ++ show x
-
-convention :: DayCounterConstructor -> Int
-convention (Actual365Fixed x) = fromEnum x
-convention (ActualActual x) = fromEnum x
-convention (Thirty360 x) = fromEnum x
-convention _ = {#const NO_ENUM#}
-
-{#fun qlDayCounter {`DayCounterType', `Int', preErrorCheck- `String' errorCheck*-} -> `DayCounter'#}
+{#fun qlDayCounter {`Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DayCounter'#}
 
 {#fun qlDayCounterBusiness252 {`Calendar', preErrorCheck- `String' errorCheck*-}-> `DayCounter'#}
 
 dayCounter :: DayCounterConstructor -> IO DayCounter
 dayCounter (Business252 x) = qlDayCounterBusiness252 x
-dayCounter x = dayCounterType x >>= flip qlDayCounter (convention x)
+dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 
 -- |Returns the number of days between two dates.
 {#fun qlDayCounterDayCount as days {`DayCounter', withDay* `Day', withDay* `Day'} -> `Int'#}

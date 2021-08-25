@@ -61,9 +61,13 @@ library
                     , QuantLib.Internal.Quote
                     , QuantLib.Internal.TermStructure
                     , QuantLib.Internal.Currency
+                    , QuantLib.Internal.Syntax
+                    , QuantLib.Internal.CalendarEnum
   -- other-extensions:
   build-depends:    base >=4.8 && <5.0
                     , time
+                    , template-haskell
+                    , split
   -- hs-source-dirs:
   build-tools:      c2hs
 

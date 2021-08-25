@@ -14,7 +14,7 @@ import QuantLib.Instrument
 import QuantLib.Instrument.Forward(forwardRateAgreement, asForward, forwardValue, spotValue, impliedYield, forwardRate)
 import QuantLib.Time.Date(may)
 import QuantLib.Time.Calendar(BusinessDayConvention(..), advance)
-import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..), ActualActualConvention(..), Frequency(..))
+import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..), Frequency(..))
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Quote
 import QuantLib.Settings
@@ -51,7 +51,7 @@ run = do
     (\(q, t, p) -> fraRateHelper q t p (fromIntegral fixDays) fraCalendar convention eom fraDayCounter) $
     zip3 fraQuotes starts periods
 
-  tsdc <- dayCounter $ ActualActual ActualActualISDA
+  tsdc <- dayCounter ActualActualISDA
   fraTS <- piecewiseYieldCurve settleDate fraInstruments tsdc [] Discount LogLinear
 
   it1 <- valuateFRA convention fraDayCounter settleDate fraTS
