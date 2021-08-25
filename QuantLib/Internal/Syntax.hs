@@ -40,20 +40,21 @@ mergeEnums resName mapper mainEnum subSuffix extra deriv = do
   allValues <- concat <$> mapM (\d -> do
     vals <- getConstructors' (stripPrefix (nameBase d) ++ subSuffix)
     return $ if null vals then [(d, Nothing, [])] else zip3 (repeat d) (map Just vals) (repeat [])) mainValues
-  e <- getConstructors extra
-  let es :: [(Name, Maybe Name, [BangType])]
-      es = map (\(n, as) -> (n, Nothing, as)) e
-  let clauses = map (\(x, y, _) -> makeClause x y) allValues ++ [defaultClause]
+
+  es <- map (\(n, as) -> (n, Nothing, as)) <$> getConstructors extra
+  sig <- sigD mapperName [t|$(conT resNameType) -> (Int, Int)|]
+
+  caseClauses <- mapM (\(x, y, _) -> clause [conP (concatNames x y) []] (normalB [|(fromEnum $(conE x), $(secondVal y))|]) []) allValues
+  defaultClause <- clause [[p|_|]] (normalB [|error "Internal error: mapper called on an non-enumerable data constructor, probably, an exta one"|]) []
  
   return [DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (allValues ++ es)) [DerivClause Nothing (map ConT deriv)]
-            , SigD mapperName (AppT (AppT ArrowT (ConT resNameType)) (AppT (AppT (TupleT 2) (ConT ''Int)) (ConT ''Int)))
-            , FunD mapperName clauses
-            ]
+            , sig, FunD mapperName (caseClauses ++ [defaultClause])]
   where concatNames :: Name -> Maybe Name -> Name
         concatNames x y = mkName (stripPrefix (nameBase x) ++ maybe "" (stripPrefix . nameBase) y)
         resNameType = mkName resName
         mapperName = mkName mapper
-        makeClause x y = Clause [ConP (concatNames x y) []] (NormalB (TupE [Just (AppE (VarE 'fromEnum) (ConE x)), Just (maybe (LitE (IntegerL 0)) (AppE (VarE 'fromEnum) . ConE) y)])) []
-        defaultClause = Clause [WildP] (NormalB (AppE (VarE 'error) (LitE (StringL "Internal error: mapper called on an non-enumerable data constructor, probably, an exta one")))) []
+        secondVal :: Maybe Name -> ExpQ
+        secondVal Nothing = [|0|]
+        secondVal (Just n) = [|fromEnum $(conE n)|]
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
