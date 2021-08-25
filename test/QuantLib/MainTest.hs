@@ -29,6 +29,7 @@ import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield hiding(maxDate)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
+import qualified QuantLib.Instrument.Bond as B
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.FRA as FRAExample
@@ -64,9 +65,6 @@ closePrec r p x = abs (x - r) < p
 
 listClose :: (a -> Double) -> [Double] -> Double -> [a] -> Bool
 listClose f x1 e x2 = all (\(x, y) -> abs(x - f y) < e) (zip x1 x2)
-
-recordMemberClose :: (a -> Double) -> Double -> Double -> a -> Bool
-recordMemberClose f x2 e x1 = abs(f x1 - x2) < e
 
 main :: IO ()
 main = do
@@ -1310,8 +1308,15 @@ main = do
         fnextD `shouldBe` fromGregorian 2008 10 21
         cleanFromYield `shouldSatisfy` closePrec 101.79720 1e-5 -- because of difference in QL versions?
         yieldFromClean `shouldSatisfy` closePrec 0.0220096 1e-7
-
         tradable `shouldBe` (True, True, False)
+
+    describe "some more bonds" $
+      it "some statics" $ do
+        c <- calendar UnitedKingdomSettlement
+        l <- CF.leg [(1000, fromGregorian 2013 1 1)]
+        b <- B.bond' 2 c 1000 (Just (fromGregorian 2013 1 1)) (Just (fromGregorian 2012 1 1)) l
+        B.maturityDate b `shouldBe` (Just (fromGregorian 2013 1 1))
+
     describe "FRA Example" $
       it "check values" $ do
         (FRAExample.Result it1 it2) <- Settings.keepingSettings' FRAExample.run
@@ -1376,16 +1381,16 @@ main = do
     describe "Repo" $
       it "check values" $ do 
         r <- Settings.keepingSettings' RepoExample.run
-        r `shouldSatisfy` recordMemberClose RepoExample.cleanPriceR 89.9769362 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.dirtyPriceR 93.2880473 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.accruedAmountSettlement 3.3111111 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.accruedAmountDelivery 3.3333333 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.spotIncomeR 3.9834025 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.fwdIncomeR 4.0846473 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.npvR (-0.00002806598) 1e-11
-        r `shouldSatisfy` recordMemberClose RepoExample.cleanForwardPriceR 88.2411379 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.forwardPriceR 91.5744712 1e-7
-        r `shouldSatisfy` recordMemberClose RepoExample.impliedYieldR 0.050000633 1e-9
-        r `shouldSatisfy` recordMemberClose RepoExample.zeroRateR 0.05 1e-7
+        RepoExample.cleanPriceR r `shouldSatisfy` closePrec 89.9769362 1e-7
+        RepoExample.dirtyPriceR r `shouldSatisfy` closePrec 93.2880473 1e-7
+        RepoExample.accruedAmountSettlement r `shouldSatisfy` closePrec 3.3111111 1e-7
+        RepoExample.accruedAmountDelivery r `shouldSatisfy` closePrec 3.3333333 1e-7
+        RepoExample.spotIncomeR r `shouldSatisfy` closePrec 3.9834025 1e-7
+        RepoExample.fwdIncomeR r `shouldSatisfy` closePrec 4.0846473 1e-7
+        RepoExample.npvR r `shouldSatisfy` closePrec (-0.00002806598) 1e-11
+        RepoExample.cleanForwardPriceR r `shouldSatisfy` closePrec 88.2411379 1e-7
+        RepoExample.forwardPriceR r `shouldSatisfy` closePrec 91.5744712 1e-7
+        RepoExample.impliedYieldR r `shouldSatisfy` closePrec 0.050000633 1e-9
+        RepoExample.zeroRateR r `shouldSatisfy` closePrec 0.05 1e-7
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
