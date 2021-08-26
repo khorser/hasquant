@@ -1,7 +1,7 @@
 module Main
 where
 
-import Control.Monad(forM_)
+import Control.Monad(forM_, void)
 import QuantLib.Settings
 import QuantLib.Time.Date
 import QuantLib.Utility
@@ -11,6 +11,7 @@ import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.Repo as RepoExample
+import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 
 main :: IO ()
 main = do
@@ -63,6 +64,14 @@ main = do
   putStrLn "***Updating market data***"
   printSwapIterationResult si2
 
+  putStrLn "\n*** FittedBondCurve Example ***"
+  (BondCurveExample.Result s r1 r2 r3 r4) <- keepingSettings' BondCurveExample.run
+  putStrLn $ "Bond settlement date: " ++ show s
+  printBondCurveInfo r1
+  printBondCurveInfo r2
+  printBondCurveInfo r3
+  printBondCurveInfo r4
+
   putStrLn "\nDONE"
 
   where
@@ -85,4 +94,15 @@ main = do
     printSwapResult t r =
       printf "%s Swap: NPV: %.5f Far spread: %.5f Fair rate: %.5f\n"
         t (SwapExample.spotNpvR r) (SwapExample.spotFairSpreadR r) (SwapExample.spotFairRateR r)
+
+    printBondCurveInfo :: BondCurveExample.Rate -> IO ()
+    printBondCurveInfo (BondCurveExample.Rate date iter tenors rates) = do
+      void $ printf "Reference date: %s, iterations: " $ show date
+      forM_ iter (printf "%d ")
+      putStrLn ""
+      forM_ (zip tenors rates) (\(t, r) -> do
+        void $ printf "Tenor %5.2fY: " t
+        forM_ r (printf "%.3f ")
+        putStrLn "")
+      putStrLn ""
 

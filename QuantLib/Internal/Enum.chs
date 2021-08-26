@@ -470,7 +470,7 @@ instance ForeignObject FittingMethodObject where
 instance EnumObject FittingMethod FittingMethodObject where toObject = fittingMethod
 
 data FittingMethod =
-  CubicSplies
+  CubicBSplines
     [Double] -- ^knotVector (year fraction)
     Bool -- ^constrainAtZero
   | ExponentialSplines Bool
@@ -482,7 +482,7 @@ data FittingMethod =
   deriving (Show, Eq)
 
 fittingMethod :: FittingMethod -> IO FittingMethodObject
-fittingMethod (CubicSplies k c) = qlCubicBSplinesFitting k c
+fittingMethod (CubicBSplines k c) = qlCubicBSplinesFitting k c
 fittingMethod (ExponentialSplines c) = qlExponentialSplinesFitting c
 fittingMethod NelsonSiegel = qlNelsonSiegelFitting
 fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c

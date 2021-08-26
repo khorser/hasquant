@@ -127,12 +127,12 @@ executable hasquant_example
                     , QuantLib.Example.Bond
                     , QuantLib.Example.Repo
                     , QuantLib.Example.Swap
+                    , QuantLib.Example.FittedBondCurve
 --            , QuantLib.Example.BermudanSwaption
 --            , QuantLib.Example.CallableBond
 --            , QuantLib.Example.CDS
 --            , QuantLib.Example.ConvertibleBond
 --            , QuantLib.Example.EquityOption
---            , QuantLib.Example.FittedBondCurve
 --            , QuantLib.Example.Replication
   ghc-options:      -Wall
   build-depends:    base >= 4.10 && < 5.0

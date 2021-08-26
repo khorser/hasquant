@@ -64,7 +64,7 @@ closePrec :: Double -> Double -> Double -> Bool
 closePrec r p x = abs (x - r) < p
 
 listClose :: (a -> Double) -> [Double] -> Double -> [a] -> Bool
-listClose f x1 e x2 = all (\(x, y) -> abs(x - f y) < e) (zip x1 x2)
+listClose f x1 e x2 = (length x1 == length x2) && all (\(x, y) -> abs(x - f y) < e) (zip x1 x2)
 
 main :: IO ()
 main = do
@@ -131,7 +131,7 @@ main = do
       it "known ECB dates" $ do
         Settings.keepingSettings' $ do
           knownDates <- knownECBDates
-          knownDates `shouldSatisfy` (not . null)
+          knownDates `shouldNotSatisfy` null
           knownDates' <- nextECBDates (Just minDate)
           knownDates `shouldBe` knownDates'
           mapM_ (\(d, p) -> do
@@ -1044,7 +1044,7 @@ main = do
             mapM_ (\(ds, expected) -> do
               cfs <- CF.cashFlows l Nothing (Just $ addDays (fromIntegral ds) td)
               let (_, _, o) = cfs !! n
-              expected `shouldBe` not o) x
+              expected `shouldNotBe` o) x
 
           checkNPV :: CF.Leg -> IR.InterestRate -> Bool -> Double -> IO ()
           checkNPV l r includeRef expected = do
@@ -1331,7 +1331,7 @@ main = do
         it1 `shouldSatisfy` listClose FRAExample.fwdValueR fwdValues1 1.0e-5
         it1 `shouldSatisfy` listClose FRAExample.implYieldR implYields1 1.0e-5
         it1 `shouldSatisfy` listClose FRAExample.zRateR zRates1 1.0e-5
-        it1 `shouldSatisfy` listClose FRAExample.npvR (repeat 0.0) 1.0e-5
+        it1 `shouldSatisfy` listClose FRAExample.npvR (replicate (length it1) 0.0) 1.0e-5
         let
           fwdRates2   = [4.0e-2, 4.1e-2, 4.2e-2, 4.3e-2, 4.4e-2]
           spots2      = [99.64687, 99.32793, 98.98812, 97.91433, 96.86156]
