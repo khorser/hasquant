@@ -8,7 +8,7 @@ module QuantLib.Instrument.Bond
 
   , asBond
 
-  , PriceType(..)
+  , BondPriceType(..)
 
   , bond
   , bond'

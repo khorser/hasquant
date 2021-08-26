@@ -57,6 +57,8 @@ instance ForeignObject SimpleQuote where
 
 {#enum AtmType {} deriving(Show, Eq)#}
 
+{#enum PriceType {} deriving(Show, Eq)#}
+
 {#enum DeltaType {} deriving(Show, Eq)#}
 
 instance SimpleQuote `Derives` Quote where cast = qlSimpleQuoteAsQuote

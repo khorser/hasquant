@@ -131,12 +131,12 @@ executable hasquant_example
                     , QuantLib.Example.Repo
                     , QuantLib.Example.Swap
                     , QuantLib.Example.FittedBondCurve
---            , QuantLib.Example.BermudanSwaption
---            , QuantLib.Example.CallableBond
---            , QuantLib.Example.CDS
---            , QuantLib.Example.ConvertibleBond
---            , QuantLib.Example.EquityOption
---            , QuantLib.Example.Replication
+                    , QuantLib.Example.CDS
+                    , QuantLib.Example.BermudanSwaption
+                    , QuantLib.Example.Replication
+                    , QuantLib.Example.CallableBond
+                    , QuantLib.Example.ConvertibleBond
+                    , QuantLib.Example.EquityOption
   ghc-options:      -Wall
   build-depends:    base >= 4.9 && < 5.0
                     , time

@@ -19,7 +19,7 @@ module QuantLib.Internal.Enum
 
   , OptionType(..)
   , PositionType(..)
-  , PriceType(..)
+  , BondPriceType(..)
 
   , StrikedPayoff(..)
   , PlainVanillaPayoff(..)
@@ -199,7 +199,7 @@ instance EnumObject Exercise QlExercise where toObject = exercise
 
 {#enum PositionType {} deriving (Show, Eq)#}
 
-{#enum PriceType {} deriving (Show, Eq)#}
+{#enum BondPriceType {} deriving (Show, Eq)#}
 
 data PercentageStrikePayoff = PercentageStrikePayoff
       OptionType -- ^type
@@ -433,12 +433,12 @@ payoff (Basket b) = toObject b >>= asQlPayoff
 data Callability =
   Soft
     Double -- ^price
-    PriceType
+    BondPriceType
     Day
     Double -- ^trigger
   | Callability
       Double
-      PriceType
+      BondPriceType
       CallabilityType
       Day
 
@@ -457,9 +457,9 @@ callability (Callability p t ct d) = qlCallability p t ct d
 instance EnumObject Callability QlCallability where toObject = callability
 
 -- |callability leaving to the holder the possibility to convert
-{#fun qlSoftCallability {`Double', `PriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
+{#fun qlSoftCallability {`Double', `BondPriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
 
-{#fun qlCallability {`Double', `PriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
+{#fun qlCallability {`Double', `BondPriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
 
 {#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
 instance ForeignObject FittingMethodObject where

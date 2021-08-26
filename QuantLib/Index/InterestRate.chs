@@ -111,7 +111,7 @@ instance ForeignObject OvernightIndexedSwapIndex where
 
 {#fun pure qlInterestRateIndexFixingDays as fixingDays {`InterestRateIndex'} -> `Word' fromIntegral#}
 
-{#fun qlInterestRateIndexTenor as tenor {`InterestRateIndex', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Int'#}
+{#fun qlInterestRateIndexTenor as tenor {`InterestRateIndex', preEnum- `TimeUnit' peekEnum*, preErrorCheck- `String' errorCheck*-} -> `Word' fromIntegral#}
 
 {#fun qlInterestRateIndexAsIndex {`InterestRateIndex'} -> `Index' peekObject*#}
 instance InterestRateIndex `Derives` Index where cast = qlInterestRateIndexAsIndex

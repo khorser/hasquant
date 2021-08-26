@@ -3,6 +3,7 @@ module QuantLib.Instrument.Option
   (
     Option
   , asOption
+  , asOneAssetOption
   , CdsOption
   , BarrierOption
   , DividendVanillaOption
@@ -95,6 +96,9 @@ instance Option `Derives` Instrument where cast = qlOptionAsInstrument
 asOption :: (a `Derives` Option) => a -> IO Option
 asOption = cast
 
+asOneAssetOption :: (a `Derives` OneAssetOption) => a -> IO OneAssetOption
+asOneAssetOption = cast
+
 {#pointer *QlCdsOption as CdsOption foreign finalizer qlFreeCdsOption newtype#}
 instance ForeignObject CdsOption where
   withObject = withCdsOption
@@ -168,28 +172,28 @@ instance ForeignObject VanillaOption where
   finalizer = qlFreeVanillaOption
 
 {#fun qlBarrierOptionAsOneAssetOption {`BarrierOption'} -> `OneAssetOption'#}
-instance BarrierOption `Derives` Option where cast = qlBarrierOptionAsOneAssetOption >=> asOption
+instance BarrierOption `Derives` OneAssetOption where cast = qlBarrierOptionAsOneAssetOption
 
 {#fun qlDividendVanillaOptionAsOneAssetOption {`DividendVanillaOption'} -> `OneAssetOption'#}
-instance DividendVanillaOption `Derives` Option where cast = qlDividendVanillaOptionAsOneAssetOption >=> asOption
+instance DividendVanillaOption `Derives` OneAssetOption where cast = qlDividendVanillaOptionAsOneAssetOption
 
 {#fun qlForwardVanillaOptionAsOneAssetOption {`ForwardVanillaOption'} -> `OneAssetOption'#}
-instance ForwardVanillaOption `Derives` Option where cast = qlForwardVanillaOptionAsOneAssetOption >=> asOption
+instance ForwardVanillaOption `Derives` OneAssetOption where cast = qlForwardVanillaOptionAsOneAssetOption
 
 {#fun qlQuantoVanillaOptionAsOneAssetOption {`QuantoVanillaOption'} -> `OneAssetOption'#}
-instance QuantoVanillaOption `Derives` Option where cast = qlQuantoVanillaOptionAsOneAssetOption >=> asOption
+instance QuantoVanillaOption `Derives` OneAssetOption where cast = qlQuantoVanillaOptionAsOneAssetOption
 
 {#fun qlVanillaOptionAsOneAssetOption {`VanillaOption'} -> `OneAssetOption'#}
-instance VanillaOption `Derives` Option where cast = qlVanillaOptionAsOneAssetOption >=> asOption
+instance VanillaOption `Derives` OneAssetOption where cast = qlVanillaOptionAsOneAssetOption
 
 {#fun qlQuantoBarrierOptionAsBarrierOption {`QuantoBarrierOption'} -> `BarrierOption'#}
-instance QuantoBarrierOption `Derives` Option where cast = qlQuantoBarrierOptionAsBarrierOption >=> asOption
+instance QuantoBarrierOption `Derives` Option where cast = qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
 
 {#fun qlMargrabeOptionAsMultiAssetOption {`MargrabeOption'} -> `MultiAssetOption'#}
-instance MargrabeOption `Derives` Option where cast = qlMargrabeOptionAsMultiAssetOption >=> asOption
+instance MargrabeOption `Derives` MultiAssetOption where cast = qlMargrabeOptionAsMultiAssetOption
 
 {#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption {`QuantoForwardVanillaOption'} -> `ForwardVanillaOption'#}
-instance QuantoForwardVanillaOption `Derives` Option where cast = qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOption
+instance QuantoForwardVanillaOption `Derives` Option where cast = qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
 
 -- some necessary boilerplate
 {#pointer *QlPayoff foreign newtype nocode#}

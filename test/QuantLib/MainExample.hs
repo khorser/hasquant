@@ -6,12 +6,19 @@ import QuantLib.Settings
 import QuantLib.Time.Date
 import QuantLib.Utility
 import Text.Printf
+import Data.List
 
 import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
+import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
+import qualified QuantLib.Example.CallableBond as CallableBondExample
+import qualified QuantLib.Example.CDS as CDSExample
+import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
+import qualified QuantLib.Example.EquityOption as EquityOptionExample
+import qualified QuantLib.Example.Replication as ReplicationExample
 
 main :: IO ()
 main = do
@@ -72,6 +79,81 @@ main = do
   printBondCurveInfo r3
   printBondCurveInfo r4
 
+  putStrLn "\n*** Replication Example ***"
+  (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
+  void $ printf "%20s %19s %19s %19s %19s\n" "NPV of" "Analytic" "12-day replication" "26-day replication" "52-day replication"
+  printDLine "%20s" "Initial" "%20.6f" npvInit
+  printDLine "%20s" "Out of the money""%20.6f"  npvOut
+  printDLine "%20s" "In the money" "%20.6f" npvIn
+
+  putStrLn "\n*** BermudanSwaption Example ***"
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' BermudanSwaptionExample.run
+  void $ printf "%25s %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x2" "4x2" "5x1"
+  printDLine "%25s" "G2" "%9.5f" g2v
+  printDLine "%25s" "Hull-White" "%9.5f" hwv
+  printDLine "%25s" "Numerical" "%9.5f" hw2v
+  printDLine "%25s" "Black-Karasinski" "%9.5f" bkv
+  putStrLn ""
+  printDoubles "G2 params (a, sigma, b, beta, eta, rho)" g2p
+  printDoubles "HW params (a, sigma)" hwp
+  printDoubles "Num HW params (a, sigma)" hw2p
+  printDoubles "BK params (a, sigma)" bkp
+  putStrLn ""
+  void $ printf "%15s %13s %13s %13s %13s %13s %13s %13s\n" "NPV of" "G2(tree)" "G2(fdm)" "HW(tree)" "HW(fdm)" "HW(num, tree)" "HW(num, fdm)" "BK"
+  printDLine "%15s" "ATM Swaption" "%14.4f" npvA
+  printDLine "%15s" "OTM Swaption" "%14.4f" npvO
+  printDLine "%15s" "ITM Swaption" "%14.4f" npvI
+
+  putStrLn "\n*** Equity Option Example ***"
+  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int {-fd-} mc) <- EquityOptionExample.run
+  void $ printf "%30s   %9s %9s %9s\n" "NPV of" "European" "Bermudan" "American"
+  printEquityOptNPVs "Black-Sholes" (analyticEuro ++ [0, 0])
+  printEquityOptNPVs "Heston semi-analytic" (analyticHeston ++ [0, 0])
+  printEquityOptNPVs "Bates semi-analytic" (bates ++ [0, 0])
+  printEquityOptNPVs "Barone-Adesi/Whaley" ([0, 0] ++ baw)
+  printEquityOptNPVs "Bjerksund/Stensland" ([0, 0] ++ bjs)
+  printEquityOptNPVs "Integral" (int ++ [0, 0])
+  --printEquityOptNPVs "Finite differences" fd
+  mapM_ (uncurry printEquityOptNPVs)
+    (zip
+      ["Binomial Jarrow-Rudd",
+        "Binomial Cox-Ross-Rubinstein",
+        "Additive equiprobabilities",
+        "Binomial Trigeorgis",
+        "Binomial Tian",
+        "Binomial Leisen-Reimer",
+        "Binomial Joshi"]
+      bin)
+  printEquityOptNPVs "MC (crude)" (head mc : [0, 0])
+  printEquityOptNPVs "QMC (Sobol)" ((mc!!1): [0, 0])
+  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [last mc])
+
+  putStrLn "\n*** CDS Example ***"
+  (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
+  printDoubles "Survival probabilities (1Y, 2Y)" probs
+  void $ printf "%15s %15s %15s %15s %15s\n" "" "3M" "6M" "1Y" "2Y"
+  printDLine "%15s" "Fair spread" "%16.6f" fairSpread
+  printDLine "%15s" "NPV" "%16.5e" npv
+  printDLine "%15s" "Default leg NPV" "%16.2f" defNpv
+  printDLine "%15s" "Coupon leg NPV" "%16.2f" cpnNpv
+
+  putStrLn "\n*** Callable Bond Example ***"
+  (CallableBondExample.Result ps ys) <- keepingSettings' CallableBondExample.run
+  void $ printf "%5s   %10s %10s %10s %10s %10s\n" "" "sigma=0.0" "sigma=1.0" "sigma=3.0" "sigma=6.0" "sigma=12.0"
+  printDLine "%5s" "Price" "%11.2f" ps
+  printDLine "%5s" "Yield" "%11.2f" ys
+
+  putStrLn "\n*** Convertible Bond Example ***"
+  (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- keepingSettings' ConvertibleBondExample.run
+  void $ printf "%30s %10s %10s\n" "NPV for Tree" "European" "American"
+  printDLine "%30s" "Jarrow-Rudd" "%11.6f" jr
+  printDLine "%30s" "Cox-Ross-Rubinstein" "%11.6f" crr
+  printDLine "%30s" "Additive equiprobabilities" "%11.6f" ad
+  printDLine "%30s" "Trigeorgis" "%11.6f" tr
+  printDLine "%30s" "Tian" "%11.6f" ti
+  printDLine "%30s" "Leisen-Reimer" "%11.6f" lr
+  printDLine "%30s" "Joshi" "%11.6f" j
+
   putStrLn "\nDONE"
 
   where
@@ -104,5 +186,22 @@ main = do
         void $ printf "Tenor %5.2fY: " t
         forM_ r (printf "%.3f ")
         putStrLn "")
+      putStrLn ""
+
+    printEquityOptNPVs :: String -> [Double] -> IO ()
+    printEquityOptNPVs m v = do
+      void $ printf "%30s: " m
+      mapM_ (\vv -> if vv == 0.0
+                      then printf " %9s" "N/A"
+                      else printf " %9.6f" vv) v
+      putStrLn ""
+
+    printDoubles :: String -> [Double] -> IO ()
+    printDoubles m l = printf "%s: %s\n" m (intercalate ", " $ map (printf "%8.6f") l)
+
+    printDLine :: String -> String -> String -> [Double] -> IO ()
+    printDLine mf m vf v = do
+      void $ printf mf m
+      mapM_ (printf vf) v
       putStrLn ""
 
