@@ -33,8 +33,8 @@ stripPrefix x = if length res < 2
 -- initially I constructed calendars with Australia | ...| UnitedStates UnitedStatesMarket where UnitedStatesMarket = NYSE | Settlement
 -- but too many country calendars contain Settlement and UnitedStates UnitedStatesSettlement 
 -- (or Actual365Fixed Actual365FixedStandard) looks really awful
-mergeEnums :: String -> String -> Name -> String -> Name -> [Name] -> DecsQ
-mergeEnums resName mapper mainEnum subSuffix extra deriv = do
+mergeEnums :: String -> String -> Name -> String -> Name -> DecsQ
+mergeEnums resName mapper mainEnum subSuffix extra = do
   mainValues <- map fst <$> getConstructors mainEnum
 
   mergedValues <- concat <$> mapM (\d -> do -- (mainName, subName, []), the third member will hold arguments for extra constructors
@@ -46,7 +46,7 @@ mergeEnums resName mapper mainEnum subSuffix extra deriv = do
   caseClauses <- mapM (\(mainVal, subVal, _) -> clause [conP (concatNames mainVal subVal) []] (normalB [|(fromEnum $(conE mainVal), $(enumVal subVal))|]) []) mergedValues
   defaultClause <- clause [[p|_|]] (normalB [|error "Internal error: mapper called on an non-enumerable data constructor, probably, an exta one"|]) []
 
-  let dataDecl = DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (mergedValues ++ extraConstructors)) [DerivClause Nothing (map ConT deriv)]
+  let dataDecl = DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (mergedValues ++ extraConstructors)) []
   mapperSignature <- sigD mapperName [t|$(conT resNameType) -> (Int, Int)|]
   let mapperBody = FunD mapperName (caseClauses ++ [defaultClause])
 

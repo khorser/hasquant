@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell, StandaloneDeriving #-}
 -- suppress warnings about unused Extra_ constructors
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Internal.CalendarEnum
@@ -46,7 +46,10 @@ data CalendarExtra =
   | Extra__Joint3 Calendar Calendar Calendar JointCalendarRule
   | Extra__Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
 
-$(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra [''Show, ''Eq])
+$(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra)
+
+deriving instance Show CalendarConstructor
+deriving instance Eq CalendarConstructor
 
 {#enum DayCounterType {} add prefix = "DayCounter__" deriving(Show, Eq)#}
 
@@ -58,6 +61,9 @@ $(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''Ca
 
 data DayCounterExtra = Extra__Business252 Calendar
 
-$(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra [''Show, ''Eq])
+$(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
+
+deriving instance Show DayCounterConstructor
+deriving instance Eq DayCounterConstructor
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
