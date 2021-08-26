@@ -151,6 +151,12 @@ test-suite hasquant_test
                     , QuantLib.Example.Bond
                     , QuantLib.Example.Repo
                     , QuantLib.Example.Swap
+                    , QuantLib.Example.CDS
+                    , QuantLib.Example.BermudanSwaption
+                    , QuantLib.Example.Replication
+                    , QuantLib.Example.CallableBond
+                    , QuantLib.Example.ConvertibleBond
+                    , QuantLib.Example.EquityOption
   ghc-options:      -Wall
   build-depends:    base >= 4.9 && < 5.0
                     , time
