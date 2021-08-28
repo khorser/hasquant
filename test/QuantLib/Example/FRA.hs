@@ -34,7 +34,7 @@ data Result = Result [IterationResult] [IterationResult] deriving Show
 run :: IO Result
 run = do
   setEvaluationDate $ Just todaysDate
-  eu3m <- I.iborIndex (I.Euribor (3, Months)) Nothing
+  eu3m <- I.iborIndex I.Euribor3M Nothing
   eu3mRI <- I.asInterestRateIndex eu3m
   fraCalendar <- asIndex eu3mRI >>= fixingCalendar
   let fixDays = I.fixingDays eu3mRI
@@ -70,7 +70,7 @@ run = do
     bpsShift = 0.01
 
     valuateFRA convention dc settle ts = do
-      eu3m <- I.iborIndex (I.Euribor (3, Months)) (Just ts)
+      eu3m <- I.iborIndex I.Euribor3M (Just ts)
       fraCalendar <- I.asInterestRateIndex eu3m >>= asIndex >>= fixingCalendar
       dates <- forM starts $
         \months -> do

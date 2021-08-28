@@ -45,7 +45,7 @@ run = do
   dc365 <- dayCounter Actual365FixedStandard
   ts <- flatForward settl flatRate dc365 Continuous Annual
   fixedDC <- dayCounter Thirty360European
-  index6m <- IRI.iborIndex (IRI.Euribor (6, Months)) (Just ts)
+  index6m <- IRI.iborIndex IRI.Euribor6M (Just ts)
   start <- advance cal settl (1, Years) floatConv False
   maturity <- advance cal start (5, Years) floatConv False
   fixedSchedule <- schedule (Just start) maturity (1, Years) cal fixedConv fixedConv Forward False Nothing Nothing

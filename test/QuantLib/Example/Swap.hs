@@ -64,7 +64,7 @@ run = do
       zip futQuotes imms
 
   swFixedDC <- dayCounter Thirty360European
-  eu6m <- IR.iborIndex (IR.Euribor (6, Months)) Nothing
+  eu6m <- IR.iborIndex IR.Euribor6M Nothing
   swapHelpers <- mapM (\(q, y) ->
     TS.swapRateHelper' q (y, Years) cal Annual Unadjusted swFixedDC eu6m Nothing (0, Days) Nothing >>= TS.asRateHelper) $
       zip swapQuotes swapYears
@@ -100,7 +100,7 @@ run = do
     valuateSwap settle d f = do
       fixDC <- dayCounter Thirty360European
       floatDC <- dayCounter Actual360
-      eu6m <- IR.iborIndex (IR.Euribor (6, Months)) (Just f)
+      eu6m <- IR.iborIndex IR.Euribor6M (Just f)
       fixP <- fromFrequency Annual
       floatP <- fromFrequency Semiannual
       cal <- calendar TARGET

@@ -142,7 +142,7 @@ run = do
                                        True actual360dc) $
           zip liborDepoQuotes liborDepoTerms
 
-  eur6M <- I.iborIndex (I.Euribor (6, Months)) Nothing
+  eur6M <- I.iborIndex I.Euribor6M Nothing
 
   swapLiborHelpers <-
     mapM (\(q, n) ->

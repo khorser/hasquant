@@ -157,6 +157,7 @@ instance OvernightIborIndex `Derives` IborIndex where cast = qlOvernightIndexAsI
 
 {#enum IborIndexType {} add prefix = "Ibor" deriving (Show, Eq)#}
 
+-- |for some indices without a dedicated overnight constructor you can use (0, Days) tenor
 data IborConstructor =
     Bbsw (Word, TimeUnit)
     | Bibor (Word, TimeUnit)
@@ -201,6 +202,75 @@ data IborConstructor =
     | Ibor String (Word, TimeUnit) Word Currency Calendar BusinessDayConvention Bool DayCounter
     | Libor String (Word, TimeUnit) Word Currency Calendar DayCounter
     | DailyTenorLibor String Word Currency Calendar DayCounter
+    -- convenience shortcuts
+    | Bbsw1M
+    | Bbsw2M
+    | Bbsw3M
+    | Bbsw4M
+    | Bbsw5M
+    | Bbsw6M
+
+    | BiborSW
+    | Bibor1M
+    | Bibor2M
+    | Bibor3M
+    | Bibor6M
+    | Bibor9M
+    | Bibor1Y
+
+    | Bkbm1M
+    | Bkbm2M
+    | Bkbm3M
+    | Bkbm4M
+    | Bkbm5M
+    | Bkbm6M
+
+    | EuriborSW
+    | Euribor2W
+    | Euribor3W
+    | Euribor1M
+    | Euribor2M
+    | Euribor3M
+    | Euribor4M
+    | Euribor5M
+    | Euribor6M
+    | Euribor7M
+    | Euribor8M
+    | Euribor9M
+    | Euribor10M
+    | Euribor11M
+    | Euribor1Y
+
+    | Euribor365_SW
+    | Euribor365_2W
+    | Euribor365_3W
+    | Euribor365_1M
+    | Euribor365_2M
+    | Euribor365_3M
+    | Euribor365_4M
+    | Euribor365_5M
+    | Euribor365_6M
+    | Euribor365_7M
+    | Euribor365_8M
+    | Euribor365_9M
+    | Euribor365_10M
+    | Euribor365_11M
+    | Euribor365_1Y
+
+    | EurLiborSW
+    | EurLibor2W
+    | EurLibor1M
+    | EurLibor2M
+    | EurLibor3M
+    | EurLibor4M
+    | EurLibor5M
+    | EurLibor6M
+    | EurLibor7M
+    | EurLibor8M
+    | EurLibor9M
+    | EurLibor10M
+    | EurLibor11M
+    | EurLibor1Y
     deriving (Show, Eq)
 
 iborIndexType :: IborConstructor -> IO IborIndexType
@@ -283,6 +353,69 @@ iborIndex :: IborConstructor -> Maybe YieldTermStructure -> IO IborIndex
 iborIndex (Ibor n p s cr ca bd b dc) ts = qlIborIndex n p s cr ca bd b dc ts
 iborIndex (Libor n p s cr ca dc) ts = qlLibor n p s cr ca dc ts
 iborIndex (DailyTenorLibor n c cr ca dc) ts = qlDailyTenorLibor n c cr ca dc ts
+iborIndex Bbsw1M ts = iborIndex (Bbsw (1, Months)) ts
+iborIndex Bbsw2M ts = iborIndex (Bbsw (2, Months)) ts
+iborIndex Bbsw3M ts = iborIndex (Bbsw (3, Months)) ts
+iborIndex Bbsw4M ts = iborIndex (Bbsw (4, Months)) ts
+iborIndex Bbsw5M ts = iborIndex (Bbsw (5, Months)) ts
+iborIndex Bbsw6M ts = iborIndex (Bbsw (6, Months)) ts
+iborIndex BiborSW ts = iborIndex (Bibor (1, Weeks)) ts
+iborIndex Bibor1M ts = iborIndex (Bibor (1, Months)) ts
+iborIndex Bibor2M ts = iborIndex (Bibor (2, Months)) ts
+iborIndex Bibor3M ts = iborIndex (Bibor (3, Months)) ts
+iborIndex Bibor6M ts = iborIndex (Bibor (6, Months)) ts
+iborIndex Bibor9M ts = iborIndex (Bibor (9, Months)) ts
+iborIndex Bibor1Y ts = iborIndex (Bibor (1, Years)) ts
+iborIndex Bkbm1M ts = iborIndex (Bkbm (1, Months)) ts
+iborIndex Bkbm2M ts = iborIndex (Bkbm (2, Months)) ts
+iborIndex Bkbm3M ts = iborIndex (Bkbm (3, Months)) ts
+iborIndex Bkbm4M ts = iborIndex (Bkbm (4, Months)) ts
+iborIndex Bkbm5M ts = iborIndex (Bkbm (5, Months)) ts
+iborIndex Bkbm6M ts = iborIndex (Bkbm (6, Months)) ts
+iborIndex EuriborSW ts = iborIndex (Euribor (1, Weeks)) ts
+iborIndex Euribor2W ts = iborIndex (Euribor (2, Weeks)) ts
+iborIndex Euribor3W ts = iborIndex (Euribor (3, Weeks)) ts
+iborIndex Euribor1M ts = iborIndex (Euribor (1, Months)) ts
+iborIndex Euribor2M ts = iborIndex (Euribor (2, Months)) ts
+iborIndex Euribor3M ts = iborIndex (Euribor (3, Months)) ts
+iborIndex Euribor4M ts = iborIndex (Euribor (4, Months)) ts
+iborIndex Euribor5M ts = iborIndex (Euribor (5, Months)) ts
+iborIndex Euribor6M ts = iborIndex (Euribor (6, Months)) ts
+iborIndex Euribor7M ts = iborIndex (Euribor (7, Months)) ts
+iborIndex Euribor8M ts = iborIndex (Euribor (8, Months)) ts
+iborIndex Euribor9M ts = iborIndex (Euribor (9, Months)) ts
+iborIndex Euribor10M ts = iborIndex (Euribor (10, Months)) ts
+iborIndex Euribor11M ts = iborIndex (Euribor (11, Months)) ts
+iborIndex Euribor1Y ts = iborIndex (Euribor (1, Years)) ts
+iborIndex Euribor365_SW ts = iborIndex (Euribor (365, Weeks)) ts
+iborIndex Euribor365_2W ts = iborIndex (Euribor365 (2, Weeks)) ts
+iborIndex Euribor365_3W ts = iborIndex (Euribor365 (3, Weeks)) ts
+iborIndex Euribor365_1M ts = iborIndex (Euribor365 (1, Months)) ts
+iborIndex Euribor365_2M ts = iborIndex (Euribor365 (2, Months)) ts
+iborIndex Euribor365_3M ts = iborIndex (Euribor365 (3, Months)) ts
+iborIndex Euribor365_4M ts = iborIndex (Euribor365 (4, Months)) ts
+iborIndex Euribor365_5M ts = iborIndex (Euribor365 (5, Months)) ts
+iborIndex Euribor365_6M ts = iborIndex (Euribor365 (6, Months)) ts
+iborIndex Euribor365_7M ts = iborIndex (Euribor365 (7, Months)) ts
+iborIndex Euribor365_8M ts = iborIndex (Euribor365 (8, Months)) ts
+iborIndex Euribor365_9M ts = iborIndex (Euribor365 (9, Months)) ts
+iborIndex Euribor365_10M ts = iborIndex (Euribor365 (10, Months)) ts
+iborIndex Euribor365_11M ts = iborIndex (Euribor365 (11, Months)) ts
+iborIndex Euribor365_1Y ts = iborIndex (Euribor365 (1, Years)) ts
+iborIndex EurLiborSW ts = iborIndex (EurLibor (1, Weeks)) ts
+iborIndex EurLibor2W ts = iborIndex (EurLibor (2, Weeks)) ts
+iborIndex EurLibor1M ts = iborIndex (EurLibor (1, Months)) ts
+iborIndex EurLibor2M ts = iborIndex (EurLibor (2, Months)) ts
+iborIndex EurLibor3M ts = iborIndex (EurLibor (3, Months)) ts
+iborIndex EurLibor4M ts = iborIndex (EurLibor (4, Months)) ts
+iborIndex EurLibor5M ts = iborIndex (EurLibor (5, Months)) ts
+iborIndex EurLibor6M ts = iborIndex (EurLibor (6, Months)) ts
+iborIndex EurLibor7M ts = iborIndex (EurLibor (7, Months)) ts
+iborIndex EurLibor8M ts = iborIndex (EurLibor (8, Months)) ts
+iborIndex EurLibor9M ts = iborIndex (EurLibor (9, Months)) ts
+iborIndex EurLibor10M ts = iborIndex (EurLibor (10, Months)) ts
+iborIndex EurLibor11M ts = iborIndex (EurLibor (11, Months)) ts
+iborIndex EurLibor1Y ts = iborIndex (EurLibor (1, Years)) ts
 iborIndex c ts = do
   t <- iborIndexType c
   qlCreateIbor t (iborIndexTenor c) ts
