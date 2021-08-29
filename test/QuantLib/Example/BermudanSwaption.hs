@@ -142,7 +142,7 @@ run = do
           index6mRI <- IRI.asInterestRateIndex index6m
           dc <- IRI.dayCounter index6mRI
           tenr <- IRI.tenor index6mRI
-          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!(fromIntegral j), Years) vol index6m tenr dc dc ts Model.RelativePriceError
+          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) vol index6m tenr dc dc ts Model.RelativePriceError
           tms <- Model.times h
           return (h, tms)
 

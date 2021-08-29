@@ -48,8 +48,8 @@ run = do
 
   let callPrices = map (`Soft` Clean) callPricesV
       putPrices = map (`Callability` Clean) putPricesV
-      callability1 = map (\(pp, y) -> pp (schedDates!!y) 1.20) (zip callPrices callLength)
-      callability2 = map (\(pp, y) -> pp CallabilityPut (schedDates!!y)) (zip putPrices putLength)
+      callability1 = zipWith (curry (\(pp, y) -> pp (schedDates!!y) 1.20)) callPrices callLength
+      callability2 = zipWith (curry (\(pp, y) -> pp CallabilityPut (schedDates!!y))) putPrices putLength
   let callabilities = callability1 ++ callability2
 
   let divDates = [d | m <- [6, 12 .. 1000], let d = addGregorianMonthsClip m tod, d < exec]
