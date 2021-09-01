@@ -30,8 +30,8 @@ run :: IO Result
 run = do
   setEvaluationDate $ Just tod
   bbdc <- dayCounter ActualActualBond
-  q <- simpleQuote 0.055 >>= asQuote
-  flatRate <- flatForward tod q bbdc Compounded Semiannual
+  q <- simpleQuote 0.055
+  flatRate <- flatForward tod (asQuote q) bbdc Compounded Semiannual
 
   callDates <- reverse <$> foldM buildSchedule [15 `september` 2006] [1 .. 23]
   let callSchedule = map (Callability 100.0 Clean CallabilityCall) callDates

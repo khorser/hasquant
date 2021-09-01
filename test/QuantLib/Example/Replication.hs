@@ -31,9 +31,9 @@ run :: IO Result
 run = do
   setEvaluationDate $ Just tod
   under <- simpleQuote (head underlyingValues)
-  underlyingQuote <- asQuote under
-  riskFreeRate <- simpleQuote 0.04 >>= asQuote
-  vol <- simpleQuote 0.20 >>= asQuote
+  let underlyingQuote = asQuote under
+  riskFreeRate <- asQuote <$> simpleQuote 0.04
+  vol <- asQuote <$> simpleQuote 0.20
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
   flatRate <- flatForward' 0 cal riskFreeRate dc Continuous Annual

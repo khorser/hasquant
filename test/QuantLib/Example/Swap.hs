@@ -37,11 +37,14 @@ run = do
   settleDate <- adjust cal settleDate1 Following
   advance cal settleDate (-fixingDays, Days) Following False >>= setEvaluationDate . Just
 
-  depoQuotes <- forM depoRates $ simpleQuote >=> asQuote
-  fraQuotes <- forM fraRates $ simpleQuote >=> asQuote
-  futQuotes <- forM futPrices $ simpleQuote >=> asQuote
+  depoQuotes' <- forM depoRates simpleQuote
+  let depoQuotes = map asQuote depoQuotes'
+  fraQuotes' <- forM fraRates simpleQuote
+  let fraQuotes = map asQuote fraQuotes'
+  futQuotes' <- forM futPrices simpleQuote
+  let futQuotes = map asQuote futQuotes'
   swapSimpleQuotes <- forM swapRates simpleQuote
-  swapQuotes <- mapM asQuote swapSimpleQuotes
+  let swapQuotes = map asQuote swapSimpleQuotes
 
   depoDC <- dayCounter Actual360
 

@@ -35,15 +35,15 @@ run = do
   cal <- calendar TARGET
   tod <- adjust cal (15 `may` 2007) Following
   setEvaluationDate $ Just tod
-  flatRate <- simpleQuote 0.01 >>= asQuote
+  flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
-  ts <- flatForward tod flatRate dc Continuous Annual
+  ts <- flatForward tod (asQuote flatRate) dc Continuous Annual
   mat <- mapM (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months))
   maturities <- mapM (\d -> adjust cal d Following) mat
 
   instruments <- mapM
     (\t -> do
-      q <- simpleQuote quotedSpread >>= asQuote
+      q <- asQuote <$> simpleQuote quotedSpread
       spreadCdsHelper q (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
       [3, 6, 12, 24]
 

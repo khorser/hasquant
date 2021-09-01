@@ -58,7 +58,6 @@ library
                     , QuantLib.Internal.CashFlow
                     , QuantLib.Internal.Index
                     , QuantLib.Internal.InterestRate
-                    , QuantLib.Internal.Quote
                     , QuantLib.Internal.TermStructure
                     , QuantLib.Internal.Syntax
                     , QuantLib.Internal.CalendarEnum

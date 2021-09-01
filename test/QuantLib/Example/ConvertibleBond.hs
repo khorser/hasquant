@@ -56,23 +56,23 @@ run = do
   dividends <- mapM (CF.fixedDividend 1.0) divDates
   dc <- dayCounter Actual365FixedStandard
 
-  underQ <- simpleQuote under >>= asQuote
-  riskFreeQ <- simpleQuote riskFreeRate >>= asQuote
-  divQ <- simpleQuote dividendYield >>= asQuote
-  volQ <- simpleQuote vol >>= asQuote
-  creditSpreadQ <- simpleQuote spreadRate >>= asQuote
+  underQ <- simpleQuote under
+  riskFreeQ <- simpleQuote riskFreeRate
+  divQ <- simpleQuote dividendYield
+  volQ <- simpleQuote vol
+  creditSpreadQ <- simpleQuote spreadRate
 
-  ts <- flatForward settl riskFreeQ dc Continuous Annual
-  dts <- flatForward settl divQ dc Continuous Annual
-  vts <- blackConstantVol settl cal volQ dc
+  ts <- flatForward settl (asQuote riskFreeQ) dc Continuous Annual
+  dts <- flatForward settl (asQuote divQ) dc Continuous Annual
+  vts <- blackConstantVol settl cal (asQuote volQ) dc
 
-  bsmProc <- blackScholesMertonProcess underQ dts ts vts EulerDiscretization
+  bsmProc <- blackScholesMertonProcess (asQuote underQ) dts ts vts EulerDiscretization
 
   let euEx = European $ EuropeanExercise exec
       amEx = AmericanExercise (Just settl) exec False
-  euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities creditSpreadQ
+  euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities (asQuote creditSpreadQ)
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
-  amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
+  amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities (asQuote creditSpreadQ)
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
 
   [jr, crr, ad, tr, ti, lr, j] <- mapM

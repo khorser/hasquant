@@ -1159,9 +1159,9 @@ main = do
           Settings.setEvaluationDate (Just $ 7 `april` 2010)
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
-          q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
+          q <- Quote.asQuote <$> Quote.simpleQuote 0.04875825
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
-          v <- Quote.simpleQuote 0.10 >>= Quote.asQuote
+          v <- Quote.asQuote <$> Quote.simpleQuote 0.10
           vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
@@ -1176,7 +1176,7 @@ main = do
       prop "quote value" $ 
         \val ->
           val > 0
-            ==> monadicIO $ do run $ (Quote.simpleQuote val >>= Quote.asQuote >>= Quote.value) `shouldReturn` val
+            ==> monadicIO $ do run $ (Quote.simpleQuote val >>= \q -> Quote.value (Quote.asQuote q)) `shouldReturn` val
 
     describe "yield term structure" $ do
       let setup :: IO (Calendar, Word, YieldTermStructure)
@@ -1202,7 +1202,7 @@ main = do
             actual360dc <- dayCounter Actual360
             deposits <- mapM
               (\(n, u, r) -> do
-                q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
+                q <- Quote.asQuote <$> Quote.simpleQuote (r/100)
                 depositRateHelper q (n, u) settlementDays cal ModifiedFollowing True actual360dc)
               depositData
             ccy <- currency EUR
@@ -1210,7 +1210,7 @@ main = do
             index <- iborIndex (Ibor "dummy" (6, Months) settlementDays ccy cal ModifiedFollowing False actual360dc) Nothing
             swaps <- mapM
               (\(n, u, r) -> do
-                q <- Quote.simpleQuote (r/100) >>= Quote.asQuote
+                q <- Quote.asQuote <$> Quote.simpleQuote (r/100)
                 swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= asRateHelper)
               swapData
 
@@ -1221,7 +1221,7 @@ main = do
         (_calendar, settlementDays, _ts) <- setup
         flatRate <- Quote.simpleQuote 0.03
         cal <- calendar Null
-        flatQuote <- Quote.asQuote flatRate
+        let flatQuote = Quote.asQuote flatRate
         actual360dc <- dayCounter Actual360
         ts <- flatForward' settlementDays cal flatQuote actual360dc IR.Continuous Annual
         td <- Settings.evaluationDate
@@ -1249,7 +1249,7 @@ main = do
       it "fwd spreaded" $
         Settings.keepingSettings' $ do
           (_calendar, _settlementDays, ts) <- setup
-          me <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          me <- Quote.asQuote <$> Quote.simpleQuote 0.01
           val <- Quote.value me
           spreaded <- forwardSpreadedTermStructure ts me
           refDate <- asTermStructure ts >>= referenceDate
@@ -1262,7 +1262,7 @@ main = do
       it "z-spreaded" $
         Settings.keepingSettings' $ do
           (_calendar, _settlementDays, ts) <- setup
-          q <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          q <- Quote.asQuote <$> Quote.simpleQuote 0.01
           val <- Quote.value q
           actual360dc <- dayCounter Actual360
           spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency actual360dc

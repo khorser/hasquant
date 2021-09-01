@@ -92,8 +92,6 @@ import QuantLib.Internal.CashFlow
 import QuantLib.Internal.InterestRate
 {#import QuantLib.Index.InterestRate#}(IborIndex)
 import QuantLib.Internal.Index
-{#import QuantLib.Quote#}(Quote)
-import QuantLib.Internal.Quote
 import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
@@ -101,6 +99,8 @@ import QuantLib.Internal.Enum
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 
 {#pointer *QlBond as Bond foreign finalizer qlFreeBond newtype#}
 instance ForeignObject Bond where
@@ -286,10 +286,10 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, withComplexType *`Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, withComplexType *`Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, `Quote', withDay* `Day', fromIntegral `Word', withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withEnumObjectArray* `[Callability]'&, withComplexType *`Quote', withDay* `Day', fromIntegral `Word', withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

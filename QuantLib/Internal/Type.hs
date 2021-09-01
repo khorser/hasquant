@@ -17,6 +17,20 @@ module QuantLib.Internal.Type
   , withSimpleType
   , withMaybeSimpleType
 
+  , CQuote
+  , Quote
+  , asQuote
+  , peekQuote
+  , CSimpleQuote
+  , SimpleQuote
+  , peekSimpleQuote
+
+  , withComplexType
+  , withComplexArray
+  , withComplexArrayRaw
+  , withMaybeComplexType
+  , withQuote
+
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -46,7 +60,9 @@ import Foreign.C.Types
 import Foreign.C.String
 import QuantLib.Internal
 
+import Foreign.Marshal.Array(withArray)
 import System.IO.Unsafe(unsafePerformIO)
+import Foreign.Marshal.Utils(withMany)
 
 data CCalendar
 data CCurrency
@@ -114,8 +130,64 @@ instance Show DayCounter where show = showSimpleType dayCounterMeta
 instance Eq DayCounter where x == y = show x == show y
 
 
---data Meta2 a b = Meta2 {_finalizer :: FinalizerPtr a, _upcast :: Ptr a -> IO (Ptr b)}
---
+data Meta2 a b = Meta2 {_finalizer :: FinalizerPtr a, _upcast :: Ptr a -> IO (Ptr b)}
+data ComplexType a b = PlainPtr (ForeignPtr a) (Meta2 a b) | CastPtr (IO (ForeignPtr a)) (Meta2 a b)
+
+peekComplexType :: Meta2 a b -> Ptr a -> IO (ComplexType a b)
+peekComplexType m@(Meta2 f _) p = do { pp <- newForeignPtr f p; return $ PlainPtr pp m}
+
+createCast :: Meta2 b c -> ComplexType a b -> ComplexType b c
+createCast m@(Meta2 f _) o = CastPtr (case o of
+  (PlainPtr p (Meta2 _ k)) -> withPtr k p
+  (CastPtr p (Meta2 _ k)) -> p >>= withPtr k) m
+  where withPtr k p = withForeignPtr p (k >=> newForeignPtr f)
+
+resolveCast :: ComplexType a b -> IO (ForeignPtr a)
+resolveCast (PlainPtr p _) = return p
+resolveCast (CastPtr p _) = p
+
+withComplexType :: ComplexType a b -> (Ptr a -> IO c) -> IO c
+withComplexType p f = resolveCast p >>= (`withForeignPtr` f)
+
+data CQuote
+data CSimpleQuote
+
+type Quote = ComplexType CQuote ()
+type SimpleQuote = ComplexType CSimpleQuote CQuote
+
+quoteMeta :: Meta2 CQuote ()
+quoteMeta = Meta2 qlFreeQuote undefined
+
+simpleQuoteMeta :: Meta2 CSimpleQuote CQuote
+simpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
+
+peekQuote :: Ptr CQuote -> IO Quote
+peekQuote = peekComplexType quoteMeta
+
+peekSimpleQuote :: Ptr CSimpleQuote -> IO SimpleQuote
+peekSimpleQuote = peekComplexType simpleQuoteMeta
+
+foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
+foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
+
+foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
+
+asQuote :: ComplexType a CQuote -> Quote
+asQuote = createCast quoteMeta
+
+withComplexArray :: [ComplexType a c] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withComplexArray x f = withMany withComplexType x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+-- pass length somewhere else
+withComplexArrayRaw :: [ComplexType a c] -> (Ptr (Ptr a) -> IO b) -> IO b
+withComplexArrayRaw x f = withMany withComplexType x (`withArray` f)
+
+withMaybeComplexType :: Maybe (ComplexType a c) -> (Ptr a -> IO b) -> IO b
+withMaybeComplexType x f = maybe (f nullPtr) (`withComplexType` f) x
+
+withQuote :: Quote -> (Ptr CQuote -> IO b) -> IO b
+withQuote = withComplexType
+
 --bondMeta :: Meta2 CBond ()
 --bondMeta = Meta2 qlFreeBond undefined
 --
@@ -125,7 +197,6 @@ instance Eq DayCounter where x == y = show x == show y
 --floatingRateBondMeta :: Meta2 CFloatingRateBond CBond
 --floatingRateBondMeta = Meta2 qlFreeFloatingRateBond qlFloatingRateBondAsBond
 --
---data ComplexType a b = PlainPtr (ForeignPtr a) (Meta2 a b) | CastPtr (IO (ForeignPtr a)) (Meta2 a b)
 --
 --data CBond
 --data CFixedRateBond
@@ -134,9 +205,6 @@ instance Eq DayCounter where x == y = show x == show y
 --type Bond = ComplexType CBond ()
 --type FixedRateBond = ComplexType CFixedRateBond CBond
 --type FloatingRateBond = ComplexType CFloatingRateBond CBond
---
---peekComplexType :: Meta2 a b -> Ptr a -> IO (ComplexType a b)
---peekComplexType m@(Meta2 f _) p = do { pp <- newForeignPtr f p; return $ PlainPtr pp m}
 --
 --peekBond :: Ptr CBond -> IO Bond
 --peekBond = peekComplexType bondMeta
@@ -147,24 +215,11 @@ instance Eq DayCounter where x == y = show x == show y
 --peekFloatingRateBond :: Ptr CFloatingRateBond -> IO FloatingRateBond
 --peekFloatingRateBond = peekComplexType floatingRateBondMeta
 --
---createCast :: Meta2 b c -> ComplexType a b -> ComplexType b c
---createCast m@(Meta2 f _) o = CastPtr (case o of
---  (PlainPtr p (Meta2 _ k)) -> withPtr k p
---  (CastPtr p (Meta2 _ k)) -> p >>= withPtr k) m
---  where withPtr k p = withForeignPtr p (k >=> newForeignPtr f)
---
 --fixedRateBondAsBond :: FixedRateBond -> Bond
 --fixedRateBondAsBond = asBond
 --
 --floatingRateBondAsBond :: FloatingRateBond -> Bond
 --floatingRateBondAsBond = asBond
---
---resolveCast :: ComplexType a b -> IO (ForeignPtr a)
---resolveCast (PlainPtr p _) = return p
---resolveCast (CastPtr p _) = p
---
---withComplexType :: ComplexType a b -> (Ptr a -> IO c) -> IO c
---withComplexType p f = resolveCast p >>= (`withForeignPtr` f)
 --
 --withBond :: Bond -> (Ptr CBond -> IO b) -> IO b
 --withBond = withComplexType

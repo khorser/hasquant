@@ -150,14 +150,14 @@ import QuantLib.Internal
 import QuantLib.Internal.TermStructure
 {#import QuantLib.Process#}(GeneralizedBlackScholesProcess, HestonProcess, BlackProcess, HybridHestonHullWhiteProcess, VarianceGammaProcess, HestonProcess, Merton76Process, GJRGARCHProcess)
 {#import QuantLib.Model#}
-{#import QuantLib.Quote#}(Quote)
-import QuantLib.Internal.Quote
 {#import QuantLib.Time.Schedule#}(TimeUnit)
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
 import QuantLib.Internal.Enum
+
+{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 
 {#pointer *QlPricingEngine as PricingEngine foreign finalizer qlFreePricingEngine newtype#}
 instance ForeignObject PricingEngine where
@@ -209,9 +209,9 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 
 {#fun qlBlackCapFloorEngine1 as blackCapFloorEngine' {`YieldTermStructure', `OptionletVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBlackCapFloorEngine as blackCapFloorEngine {`YieldTermStructure', `Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCapFloorEngine as blackCapFloorEngine {`YieldTermStructure', withComplexType *`Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBlackSwaptionEngine as blackSwaptionEngine {`YieldTermStructure', `Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackSwaptionEngine as blackSwaptionEngine {`YieldTermStructure', withComplexType *`Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlBlackSwaptionEngine1 as blackSwaptionEngine' {`YieldTermStructure', `SwaptionVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
@@ -335,13 +335,13 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 {#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine' {withObject* `CallableBondVolatilityStructure', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine {`Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine {withComplexType *`Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngine' {withObject* `CallableBondVolatilityStructure', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine {`Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine {withComplexType *`Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine' {withObject* `ShortRateModel', withObject* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 

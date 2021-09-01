@@ -88,14 +88,14 @@ import QuantLib.Internal.TermStructure
 {#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
 import QuantLib.Internal.Index
 {#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure)
-{#import QuantLib.Quote#}(Quote)
-import QuantLib.Internal.Quote
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 
 {#pointer *Leg foreign finalizer qlFreeLeg newtype#}
 instance ForeignObject Leg where
@@ -285,8 +285,8 @@ instance ForeignObject FloatingRateCouponPricer where
 
 {#fun qlQuantLibSetCouponPricers as setCouponPricers {`Leg', withObjectArray* `[FloatingRateCouponPricer]'&, preErrorCheck- `String' errorCheck*-} -> `()'#}
 
-{#fun qlAnalyticHaganPricer as analyticHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', `Quote', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
+{#fun qlAnalyticHaganPricer as analyticHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withComplexType *`Quote', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
 
-{#fun qlNumericHaganPricer as numericHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', `Quote', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
+{#fun qlNumericHaganPricer as numericHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withComplexType *`Quote', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
