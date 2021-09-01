@@ -79,10 +79,8 @@ import QuantLib.Internal
 {#import QuantLib.Process#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
-{#import QuantLib.Time.Schedule#}(TimeUnit, DayCounter, Frequency)
-import QuantLib.Internal.Schedule
-{#import QuantLib.Time.Calendar#}(Calendar)
-import QuantLib.Internal.Calendar
+{#import QuantLib.Time.Schedule#}(TimeUnit, Frequency)
+import QuantLib.Internal.Type
 {#import QuantLib.Quote#}
 import QuantLib.Internal.Quote
 {#import QuantLib.Index.InterestRate#}
@@ -301,12 +299,12 @@ calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -> OptimizationMet
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
 {#fun qlCalibratedModelCalibrate {`CalibratedModel', withObjectArray* `[CalibrationHelper]'&, withDoubleArray* `[Double]'&, withEnumObject* `OptimizationMethod', withEnumObject* `EndCriteria', withMaybeEnumObject* `Maybe Constraint', preErrorCheck- `String' errorCheck*-} -> `()'#}
 
-{#fun qlCapHelper as capHelper {fromEnumQuantity `(Word, TimeUnit)'&, `Quote', `IborIndex', `Frequency', `DayCounter', `Bool', `YieldTermStructure', `CalibrationErrorType', preErrorCheck- `String' errorCheck*-} -> `BlackCalibrationHelper'#}
+{#fun qlCapHelper as capHelper {fromEnumQuantity `(Word, TimeUnit)'&, `Quote', `IborIndex', `Frequency', withSimpleType* `DayCounter', `Bool', `YieldTermStructure', `CalibrationErrorType', preErrorCheck- `String' errorCheck*-} -> `BlackCalibrationHelper'#}
 
-{#fun qlHestonModelHelper as hestonModelHelper {fromEnumQuantity `(Word, TimeUnit)'&, `Calendar', `Double', `Double', `Quote', `YieldTermStructure', `YieldTermStructure', `CalibrationErrorType', preErrorCheck- `String' errorCheck*-} -> `BlackCalibrationHelper'#}
+{#fun qlHestonModelHelper as hestonModelHelper {fromEnumQuantity `(Word, TimeUnit)'&, withSimpleType* `Calendar', `Double', `Double', `Quote', `YieldTermStructure', `YieldTermStructure', `CalibrationErrorType', preErrorCheck- `String' errorCheck*-} -> `BlackCalibrationHelper'#}
 
 -- TODO add more parameters and more SwaptionHelper constructors
-{#fun qlSwaptionHelper as swaptionHelper {fromEnumQuantity `(Word, TimeUnit)'&, fromEnumQuantity `(Word, TimeUnit)'&, `Quote', `IborIndex', fromEnumQuantity `(Word, TimeUnit)'&, `DayCounter', `DayCounter', `YieldTermStructure', `CalibrationErrorType', preErrorCheck- `String' errorCheck*-} -> `BlackCalibrationHelper'#}
+{#fun qlSwaptionHelper as swaptionHelper {fromEnumQuantity `(Word, TimeUnit)'&, fromEnumQuantity `(Word, TimeUnit)'&, `Quote', `IborIndex', fromEnumQuantity `(Word, TimeUnit)'&, withSimpleType* `DayCounter', withSimpleType* `DayCounter', `YieldTermStructure', `CalibrationErrorType', preErrorCheck- `String' errorCheck*-} -> `BlackCalibrationHelper'#}
 
 {#fun qlBlackCalibrationHelperTimes as times {`BlackCalibrationHelper', preArray- `[Double]'& peekDoubleArray*, preErrorCheck- `String' errorCheck*-} -> `()'#}
 

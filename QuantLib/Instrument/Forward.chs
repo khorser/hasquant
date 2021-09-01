@@ -24,13 +24,11 @@ module QuantLib.Instrument.Forward
 import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
-{#import QuantLib.Time.Calendar#}(Calendar, BusinessDayConvention)
-{#import QuantLib.Time.Schedule#}(DayCounter)
+{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 {#import QuantLib.Index.InterestRate#}(IborIndex)
 {#import QuantLib.Instrument.Bond#}(FixedRateBond)
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
-import QuantLib.Internal.Schedule
-import QuantLib.Internal.Calendar
+import QuantLib.Internal.Type
 import QuantLib.Internal.Index
 {#import QuantLib.InterestRate#}
 import QuantLib.Internal.TermStructure
@@ -74,7 +72,7 @@ instance FixedRateBondForward `Derives` Forward where cast = qlFixedRateBondForw
 {#fun qlForwardRateAgreement as forwardRateAgreement {withDay* `Day', withDay* `Day', fromEnumC `PositionType', `Double', `Double', `IborIndex', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `ForwardRateAgreement'#}
 
 -- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
-{#fun qlFixedRateBondForward as fixedRateBondForward {withDay* `Day', withDay* `Day', fromEnumC `PositionType', `Double', fromIntegral `Word', `DayCounter', `Calendar', `BusinessDayConvention', withObject* `FixedRateBond', withMaybeObject* `Maybe YieldTermStructure', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `FixedRateBondForward'#}
+{#fun qlFixedRateBondForward as fixedRateBondForward {withDay* `Day', withDay* `Day', fromEnumC `PositionType', `Double', fromIntegral `Word', withSimpleType* `DayCounter', withSimpleType* `Calendar', `BusinessDayConvention', withObject* `FixedRateBond', withMaybeObject* `Maybe YieldTermStructure', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `FixedRateBondForward'#}
 
 -- |(dirty) forward bond price minus accrued on bond at delivery
 {#fun qlFixedRateBondForwardCleanForwardPrice as cleanForwardPrice {`FixedRateBondForward', preErrorCheck- `String' errorCheck*-} -> `Double'#}
@@ -87,7 +85,7 @@ instance FixedRateBondForward `Derives` Forward where cast = qlFixedRateBondForw
 {#fun qlForwardForwardValue as forwardValue {`Forward', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t>0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
-{#fun qlForwardImpliedYield as impliedYield {`Forward', `Double', `Double', withDay* `Day', `Compounding', `DayCounter', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
+{#fun qlForwardImpliedYield as impliedYield {`Forward', `Double', `Double', withDay* `Day', `Compounding', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
 
 {#fun qlForwardSettlementDate as settlementDate {`Forward', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}
 

@@ -55,16 +55,14 @@ library
 
   other-modules:    QuantLib.Internal
                     , QuantLib.Internal.Enum
-                    , QuantLib.Internal.Calendar
-                    , QuantLib.Internal.Schedule
                     , QuantLib.Internal.CashFlow
                     , QuantLib.Internal.Index
                     , QuantLib.Internal.InterestRate
                     , QuantLib.Internal.Quote
                     , QuantLib.Internal.TermStructure
-                    , QuantLib.Internal.Currency
                     , QuantLib.Internal.Syntax
                     , QuantLib.Internal.CalendarEnum
+                    , QuantLib.Internal.Type
   -- other-extensions:
   build-depends:    base >=4.9 && <5.0
                     , time

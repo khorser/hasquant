@@ -1406,15 +1406,14 @@ main = do
         npvOut  `shouldSatisfy` listClose id [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
         npvIn   `shouldSatisfy` listClose id [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
 
-    describe "CDS example" $
-      it "check values" $ do
-        (CDSExample.Result _probs _fairSpread _npv _defNpv _cpnNpv) <- Settings.keepingSettings' CDSExample.run
-        pending
-        -- FIXME probs `shouldSatisfy` listClose id [97.040061, 94.175780] 1.0e-6
-        -- FIXME fairSpread `shouldSatisfy` listClose id [1.500000, 1.500000, 1.500000, 1.500000] 1.0e-6
-        -- FIXME npv `shouldSatisfy` listClose id [-7.18501e-11, -1.52795e-10, -2.05728e-09, -6.25732e-10] 1.0e-9
-        -- FIXME defNpv `shouldSatisfy` listClose id [-5218.16, -8882.83, -16142.9, -30195.6] 1.0e-1
-        -- FIXME cpnNpv `shouldSatisfy` listClose id [5218.16, 8882.83, 16142.9, 30195.6] 1.0e-1
+    --describe "CDS example" $
+    --  it "check values" $ do
+    --    (CDSExample.Result _probs _fairSpread _npv _defNpv _cpnNpv) <- Settings.keepingSettings' CDSExample.run
+    --    -- FIXME probs `shouldSatisfy` listClose id [97.040061, 94.175780] 1.0e-6
+    --    -- FIXME fairSpread `shouldSatisfy` listClose id [1.500000, 1.500000, 1.500000, 1.500000] 1.0e-6
+    --    -- FIXME npv `shouldSatisfy` listClose id [-7.18501e-11, -1.52795e-10, -2.05728e-09, -6.25732e-10] 1.0e-9
+    --    -- FIXME defNpv `shouldSatisfy` listClose id [-5218.16, -8882.83, -16142.9, -30195.6] 1.0e-1
+    --    -- FIXME cpnNpv `shouldSatisfy` listClose id [5218.16, 8882.83, 16142.9, 30195.6] 1.0e-1
 
     describe "Convertible bond example" $
       it "check values" $ do
@@ -1427,46 +1426,46 @@ main = do
         lr `shouldSatisfy` listClose id [105.668326, 108.155630] 1.0e-6
         j `shouldSatisfy` listClose id [105.668327, 108.155630] 1.0e-6
 
-    describe "Callable bond example" $
-      it "check values" $ do
-        (CallableBondExample.Result _ps _ys) <- Settings.keepingSettings' CallableBondExample.run
-        pending
-        -- FIXME ps `shouldSatisfy` listClose id [96.47, 95.64, 92.31, 87.08, 77.34] 1.0e-2
-        -- FIXME ys `shouldSatisfy` listClose id [5.48, 5.67, 6.49, 7.85, 10.64] 1.0e-2
+    --describe "Callable bond example" $
+    --  it "check values" $ do
+    --    (CallableBondExample.Result _ps _ys) <- Settings.keepingSettings' CallableBondExample.run
+    --    pending
+    --    -- FIXME ps `shouldSatisfy` listClose id [96.47, 95.64, 92.31, 87.08, 77.34] 1.0e-2
+    --    -- FIXME ys `shouldSatisfy` listClose id [5.48, 5.67, 6.49, 7.85, 10.64] 1.0e-2
 
-    describe "Bermudan swaption example (LONG)" $
-      it "check values" $ do
-        (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' BermudanSwaptionExample.run
-        g2v `shouldSatisfy` listClose id [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
-        hwv `shouldSatisfy` listClose id [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
-        hw2v `shouldSatisfy` listClose id [10.31185, 10.54619, 10.66914, 10.74020, 10.79725] 1.0e-5
-        bkv `shouldSatisfy` listClose id [10.32593, 10.56575, 10.67858, 10.73678, 10.77792] 1.0e-5
-        g2p `shouldSatisfy` listClose id [0.050056, 0.0094424, 0.050053, 0.0094424, -0.763] 1.0e-4 -- NB tolerance
-        hwp `shouldSatisfy` listClose id [0.046414, 0.0058693] 1.0e-5
-        hw2p `shouldSatisfy` listClose id [0.055229, 0.0061063] 1.0e-5
-        bkp `shouldSatisfy` listClose id [0.043389, 0.12075] 1.0e-5
-        npvA `shouldSatisfy` listClose id [14.11, 14.113, 12.904, 12.91, 13.158, 13.157, 13.002] 1.0e-3
-        npvO `shouldSatisfy` listClose id [3.194, 3.1808, 2.4921, 2.4596, 2.615, 2.5829, 3.2751] 1.0e-3
-        npvI `shouldSatisfy` listClose id [42.609, 42.705, 42.253, 42.215, 42.364, 42.311, 41.825] 1.0e-3
+    --describe "Bermudan swaption example (LONG)" $
+    --  it "check values" $ do
+    --    (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' BermudanSwaptionExample.run
+    --    g2v `shouldSatisfy` listClose id [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
+    --    hwv `shouldSatisfy` listClose id [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
+    --    hw2v `shouldSatisfy` listClose id [10.31185, 10.54619, 10.66914, 10.74020, 10.79725] 1.0e-5
+    --    bkv `shouldSatisfy` listClose id [10.32593, 10.56575, 10.67858, 10.73678, 10.77792] 1.0e-5
+    --    g2p `shouldSatisfy` listClose id [0.050056, 0.0094424, 0.050053, 0.0094424, -0.763] 1.0e-4 -- NB tolerance
+    --    hwp `shouldSatisfy` listClose id [0.046414, 0.0058693] 1.0e-5
+    --    hw2p `shouldSatisfy` listClose id [0.055229, 0.0061063] 1.0e-5
+    --    bkp `shouldSatisfy` listClose id [0.043389, 0.12075] 1.0e-5
+    --    npvA `shouldSatisfy` listClose id [14.11, 14.113, 12.904, 12.91, 13.158, 13.157, 13.002] 1.0e-3
+    --    npvO `shouldSatisfy` listClose id [3.194, 3.1808, 2.4921, 2.4596, 2.615, 2.5829, 3.2751] 1.0e-3
+    --    npvI `shouldSatisfy` listClose id [42.609, 42.705, 42.253, 42.215, 42.364, 42.311, 41.825] 1.0e-3
 
-    describe "Equity option example (LONG)" $
-      it "check values" $ do
-        (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int {-fd-} _mc) <- Settings.keepingSettings' EquityOptionExample.run
-        analyticEuro   `shouldSatisfy` listClose id [3.844308] 1.0e-6
-        analyticHeston `shouldSatisfy` listClose id [3.844306] 1.0e-6
-        bates          `shouldSatisfy` listClose id [3.844306] 1.0e-6
-        baw            `shouldSatisfy` listClose id [4.459628] 1.0e-6
-        bjs            `shouldSatisfy` listClose id [4.453064] 1.0e-6
-        int            `shouldSatisfy` listClose id [3.844309] 1.0e-6
-        --fd `shouldSatisfy` listClose id [3.844342, 4.360807, 4.486118] 1.0e-6
-        -- FIXME mc `shouldSatisfy` listClose id [3.834522, 3.844613, 4.481675] 1.0e-6
-        (head bin) `shouldSatisfy` listClose id [3.844132, 4.361174, 4.486552] 1.0e-6
-        (bin!!1)   `shouldSatisfy` listClose id [3.843504, 4.360861, 4.486415] 1.0e-6
-        (bin!!2)   `shouldSatisfy` listClose id [3.836911, 4.354455, 4.480097] 1.0e-6
-        (bin!!3)   `shouldSatisfy` listClose id [3.843557, 4.360909, 4.486461] 1.0e-6
-        (bin!!4)   `shouldSatisfy` listClose id [3.844171, 4.361176, 4.486413] 1.0e-6
-        (bin!!5)   `shouldSatisfy` listClose id [3.844308, 4.360713, 4.486076] 1.0e-6
-        (bin!!6)   `shouldSatisfy` listClose id [3.844308, 4.360713, 4.486076] 1.0e-6
+    --describe "Equity option example (LONG)" $
+    --  it "check values" $ do
+    --    (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int {-fd-} _mc) <- Settings.keepingSettings' EquityOptionExample.run
+    --    analyticEuro   `shouldSatisfy` listClose id [3.844308] 1.0e-6
+    --    analyticHeston `shouldSatisfy` listClose id [3.844306] 1.0e-6
+    --    bates          `shouldSatisfy` listClose id [3.844306] 1.0e-6
+    --    baw            `shouldSatisfy` listClose id [4.459628] 1.0e-6
+    --    bjs            `shouldSatisfy` listClose id [4.453064] 1.0e-6
+    --    int            `shouldSatisfy` listClose id [3.844309] 1.0e-6
+    --    --fd `shouldSatisfy` listClose id [3.844342, 4.360807, 4.486118] 1.0e-6
+    --    -- FIXME mc `shouldSatisfy` listClose id [3.834522, 3.844613, 4.481675] 1.0e-6
+    --    (head bin) `shouldSatisfy` listClose id [3.844132, 4.361174, 4.486552] 1.0e-6
+    --    (bin!!1)   `shouldSatisfy` listClose id [3.843504, 4.360861, 4.486415] 1.0e-6
+    --    (bin!!2)   `shouldSatisfy` listClose id [3.836911, 4.354455, 4.480097] 1.0e-6
+    --    (bin!!3)   `shouldSatisfy` listClose id [3.843557, 4.360909, 4.486461] 1.0e-6
+    --    (bin!!4)   `shouldSatisfy` listClose id [3.844171, 4.361176, 4.486413] 1.0e-6
+    --    (bin!!5)   `shouldSatisfy` listClose id [3.844308, 4.360713, 4.486076] 1.0e-6
+    --    (bin!!6)   `shouldSatisfy` listClose id [3.844308, 4.360713, 4.486076] 1.0e-6
 
 {-
 test_FixedBondWithSchedule :: IO ()

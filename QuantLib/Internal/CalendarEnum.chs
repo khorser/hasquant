@@ -17,7 +17,7 @@ module QuantLib.Internal.CalendarEnum
 #include "qlEnumObjects.h"
 
 import QuantLib.Internal.Syntax
-import {-# SOURCE #-} QuantLib.Time.Calendar
+import QuantLib.Internal.Type
 --import {-# SOURCE #-} QuantLib.Time.Schedule
 import QuantLib.Time.Date(Weekday)
 

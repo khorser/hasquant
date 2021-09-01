@@ -152,8 +152,8 @@ import QuantLib.Internal.TermStructure
 {#import QuantLib.Model#}
 {#import QuantLib.Quote#}(Quote)
 import QuantLib.Internal.Quote
-{#import QuantLib.Time.Schedule#}(DayCounter, TimeUnit)
-import QuantLib.Internal.Schedule
+{#import QuantLib.Time.Schedule#}(TimeUnit)
+import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
@@ -209,9 +209,9 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 
 {#fun qlBlackCapFloorEngine1 as blackCapFloorEngine' {`YieldTermStructure', `OptionletVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBlackCapFloorEngine as blackCapFloorEngine {`YieldTermStructure', `Quote', `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCapFloorEngine as blackCapFloorEngine {`YieldTermStructure', `Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBlackSwaptionEngine as blackSwaptionEngine {`YieldTermStructure', `Quote', `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackSwaptionEngine as blackSwaptionEngine {`YieldTermStructure', `Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlBlackSwaptionEngine1 as blackSwaptionEngine' {`YieldTermStructure', `SwaptionVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 

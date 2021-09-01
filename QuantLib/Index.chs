@@ -11,13 +11,15 @@ module QuantLib.Index
 
 import QuantLib.Type
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(Calendar)
+import QuantLib.Internal.Type
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#pointer *Calendar foreign -> CCalendar nocode#}
 
 {#pointer *QlIndex as Index foreign finalizer qlFreeIndex newtype#}
 instance ForeignObject Index where
@@ -34,7 +36,7 @@ instance Show Index where show = qlIndexName
 {#fun qlIndexAddFixing as addFixing {`Index', withDay* `Day', `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `()'#}
 
 -- |returns the calendar defining valid fixing dates
-{#fun qlIndexFixingCalendar as fixingCalendar {`Index', preErrorCheck- `String' errorCheck*-} -> `Calendar' peekObject*#}
+{#fun qlIndexFixingCalendar as fixingCalendar {`Index', preErrorCheck- `String' errorCheck*-} -> `Calendar' peekCalendar*#}
 
 asIndex :: (a `Derives` Index) => a -> IO Index
 asIndex = cast
