@@ -71,7 +71,7 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure(withYieldTermStructure)
-{#import QuantLib.Quote#}(Quote)
+{#import QuantLib.Quote#}()
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(TimeUnit)

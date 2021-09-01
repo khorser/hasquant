@@ -35,6 +35,7 @@ where
 
 import QuantLib.Internal
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Type
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -62,21 +63,17 @@ import QuantLib.Internal.Enum
 
 {#enum CmsMarketCalibrationType {} deriving(Show, Eq)#}
 
-{#pointer *TimeGrid foreign finalizer qlFreeTimeGrid newtype#}
-instance ForeignObject TimeGrid where
-  withObject = withTimeGrid
-  constructor = TimeGrid
-  finalizer = qlFreeTimeGrid
+{#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 
 -- |Regularly spaced time-grid.
-{#fun qlTimeGrid1 as timeGrid {`Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `TimeGrid'#}
+{#fun qlTimeGrid1 as timeGrid {`Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `TimeGrid' peekTimeGrid*#}
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. No additional points are added.
-{#fun qlTimeGrid2 as timeGridFromList {withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `TimeGrid'#}
+{#fun qlTimeGrid2 as timeGridFromList {withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `TimeGrid' peekTimeGrid*#}
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-{#fun qlTimeGrid3 as timeGridFromList' {withDoubleArray* `[Double]'&, fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `TimeGrid'#}
+{#fun qlTimeGrid3 as timeGridFromList' {withDoubleArray* `[Double]'&, fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `TimeGrid' peekTimeGrid*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

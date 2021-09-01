@@ -7,7 +7,7 @@ module QuantLib.Example.Swap
   )
 where
 
-import Control.Monad(void, forM, foldM, (>=>))
+import Control.Monad(void, forM, foldM)
 import Data.Time.Calendar
 
 import QuantLib.Math

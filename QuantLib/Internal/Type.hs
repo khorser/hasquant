@@ -28,8 +28,23 @@ module QuantLib.Internal.Type
   , withComplexType
   , withComplexArray
   , withComplexArrayRaw
+  , withSimpleArray
   , withMaybeComplexType
-  , withQuote
+
+  , InterestRate
+  , CInterestRate
+  , peekInterestRate
+  , TimeGrid
+  , CTimeGrid
+  , peekTimeGrid
+  , QlClaim
+  , CQlClaim
+  , peekClaim
+  , CQlCallability
+  , QlCallability
+  , peekCallability
+
+  , SimpleType(..)
 
 --  , CBond
 --  , Bond
@@ -68,6 +83,10 @@ data CCalendar
 data CCurrency
 data CDayCounter
 data CSchedule
+data CQlCallability
+data CQlClaim
+data CTimeGrid
+data CInterestRate
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 data Meta a = Meta {_fin :: FinalizerPtr a, _show :: Ptr a -> IO CString}
@@ -75,6 +94,10 @@ type Calendar = SimpleType CCalendar
 type Currency = SimpleType CCurrency
 type DayCounter = SimpleType CDayCounter
 type Schedule = SimpleType CSchedule
+type InterestRate = SimpleType CInterestRate
+type TimeGrid = SimpleType CTimeGrid
+type QlClaim = SimpleType CQlClaim
+type QlCallability = SimpleType CQlCallability
 
 calendarMeta :: Meta CCalendar
 calendarMeta = Meta qlFreeCalendar c_qlCalendarName
@@ -87,6 +110,18 @@ dayCounterMeta = Meta qlFreeDayCounter c_qlDayCounterName
 
 scheduleMeta :: Meta CSchedule
 scheduleMeta = Meta qlFreeSchedule undefined
+
+callabilityMeta :: Meta CQlCallability
+callabilityMeta = Meta qlFreeCallability undefined
+
+claimMeta :: Meta CQlClaim
+claimMeta = Meta qlFreeClaim undefined
+
+timeGridMeta :: Meta CTimeGrid
+timeGridMeta = Meta qlFreeTimeGrid undefined
+
+interestRateMeta :: Meta CInterestRate
+interestRateMeta = Meta qlFreeInterestRate undefined
 
 peekSimpleType :: Meta a -> Ptr a -> IO (SimpleType a)
 peekSimpleType (Meta f _) = newForeignPtr f >=> return . SimpleType
@@ -103,6 +138,18 @@ peekDayCounter = peekSimpleType dayCounterMeta
 peekCurrency :: Ptr CCurrency -> IO Currency
 peekCurrency = peekSimpleType currencyMeta
 
+peekCallability :: Ptr CQlCallability -> IO QlCallability
+peekCallability = peekSimpleType callabilityMeta
+
+peekClaim :: Ptr CQlClaim -> IO QlClaim
+peekClaim = peekSimpleType claimMeta
+
+peekInterestRate :: Ptr CInterestRate -> IO InterestRate
+peekInterestRate = peekSimpleType interestRateMeta
+
+peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
+peekTimeGrid = peekSimpleType timeGridMeta
+
 withSimpleType :: SimpleType a -> (Ptr a -> IO b) -> IO b
 withSimpleType = withForeignPtr . ptr
 
@@ -113,6 +160,10 @@ foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCale
 foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
 foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSchedule
 foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr CDayCounter
+foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid
+foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerPtr CInterestRate
+foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
+foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
 
 showSimpleType :: Meta a -> SimpleType a -> String
 showSimpleType (Meta _ s) x = unsafePerformIO $ withSimpleType x (s >=> peekDynString)
@@ -175,6 +226,9 @@ foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Pt
 asQuote :: ComplexType a CQuote -> Quote
 asQuote = createCast quoteMeta
 
+withSimpleArray :: [SimpleType a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withSimpleArray x f = withMany withSimpleType x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
 withComplexArray :: [ComplexType a c] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withComplexArray x f = withMany withComplexType x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
@@ -184,9 +238,6 @@ withComplexArrayRaw x f = withMany withComplexType x (`withArray` f)
 
 withMaybeComplexType :: Maybe (ComplexType a c) -> (Ptr a -> IO b) -> IO b
 withMaybeComplexType x f = maybe (f nullPtr) (`withComplexType` f) x
-
-withQuote :: Quote -> (Ptr CQuote -> IO b) -> IO b
-withQuote = withComplexType
 
 --bondMeta :: Meta2 CBond ()
 --bondMeta = Meta2 qlFreeBond undefined

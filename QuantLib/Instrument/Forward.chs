@@ -85,7 +85,7 @@ instance FixedRateBondForward `Derives` Forward where cast = qlFixedRateBondForw
 {#fun qlForwardForwardValue as forwardValue {`Forward', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t>0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
-{#fun qlForwardImpliedYield as impliedYield {`Forward', `Double', `Double', withDay* `Day', `Compounding', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
+{#fun qlForwardImpliedYield as impliedYield {`Forward', `Double', `Double', withDay* `Day', `Compounding', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekInterestRate*#}
 
 {#fun qlForwardSettlementDate as settlementDate {`Forward', preErrorCheck- `String' errorCheck*-} -> `Day' toDay#}
 
@@ -96,6 +96,6 @@ instance FixedRateBondForward `Derives` Forward where cast = qlFixedRateBondForw
 {#fun qlForwardSpotValue as spotValue {`Forward', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |Returns the relevant forward rate associated with the FRA term.
-{#fun qlForwardRateAgreementForwardRate as forwardRate {`ForwardRateAgreement', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekObject*#}
+{#fun qlForwardRateAgreementForwardRate as forwardRate {`ForwardRateAgreement', preErrorCheck- `String' errorCheck*-} -> `InterestRate' peekInterestRate*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

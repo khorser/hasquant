@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to exposure so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
@@ -55,12 +55,19 @@ module QuantLib.Internal.Enum
   , QlRounding
   , RoundingType(..)
   , Rounding(..)
+
+  , withCallability
+  , withCallabilityArray
   )
 where
 
 import Control.Monad((>=>))
-import Foreign.Marshal.Utils(fromBool)
+import Foreign.Marshal.Utils(fromBool, withMany)
+import Foreign.Marshal.Array(withArray)
 import QuantLib.Internal
+import QuantLib.Internal.Type
+import Foreign.Ptr
+import Foreign.C.Types
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -448,22 +455,33 @@ data Callability =
 
 {#enum CallabilityType {} add prefix="Callability" deriving(Show, Eq)#}
 
-{#pointer *QlCallability foreign finalizer qlFreeCallability newtype#}
-instance ForeignObject QlCallability where
-  withObject = withQlCallability
-  constructor = QlCallability
-  finalizer = qlFreeCallability
+{#pointer *QlCallability foreign -> CQlCallability nocode#}
 
 callability :: Callability -> IO QlCallability
 callability (Soft p t d tg) = qlSoftCallability p t d tg
 callability (Callability p t ct d) = qlCallability p t ct d
 
-instance EnumObject Callability QlCallability where toObject = callability
+newtype EnumMeta a b = EnumMeta (a -> IO (SimpleType b)) 
+
+withEnumType :: EnumMeta a b -> a -> (Ptr b -> IO c) -> IO c
+withEnumType (EnumMeta t) x f = t x >>= (`withSimpleType` f)
+
+withEnumTypeArray :: EnumMeta a b -> [a] -> ((CUInt, Ptr (Ptr b)) -> IO c) -> IO c
+withEnumTypeArray m x f = withMany (withEnumType m) x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+callabilityMeta :: EnumMeta Callability CQlCallability
+callabilityMeta = EnumMeta callability
+
+withCallability :: Callability -> (Ptr CQlCallability -> IO a) -> IO a
+withCallability = withEnumType callabilityMeta
+
+withCallabilityArray :: [Callability] -> ((CUInt, Ptr (Ptr CQlCallability)) -> IO c) -> IO c
+withCallabilityArray = withEnumTypeArray callabilityMeta
 
 -- |callability leaving to the holder the possibility to convert
-{#fun qlSoftCallability {`Double', `BondPriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
+{#fun qlSoftCallability {`Double', `BondPriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability' peekCallability*#}
 
-{#fun qlCallability {`Double', `BondPriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability'#}
+{#fun qlCallability {`Double', `BondPriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability' peekCallability*#}
 
 {#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
 instance ForeignObject FittingMethodObject where
