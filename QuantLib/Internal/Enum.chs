@@ -51,6 +51,10 @@ module QuantLib.Internal.Enum
   , QlOptimizationMethod
   , EndCriteria(..)
   , QlEndCriteria
+
+  , QlRounding
+  , RoundingType(..)
+  , Rounding(..)
   )
 where
 
@@ -599,5 +603,25 @@ instance ForeignObject QlEndCriteria where
   finalizer = qlFreeEndCriteria
 instance EnumObject EndCriteria QlEndCriteria where toObject (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
 {#fun qlEndCriteria {fromIntegral `Word', fromIntegral `Word', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlEndCriteria'#}
+
+{#enum RoundingType {} deriving (Show, Eq)#}
+{#pointer *Rounding as QlRounding foreign finalizer qlFreeRounding newtype#}
+instance ForeignObject QlRounding where
+  withObject = withQlRounding
+  constructor = QlRounding
+  finalizer = qlFreeRounding
+
+data Rounding = NoRounding
+  | Rounding
+    Int -- ^precision
+    RoundingType
+    Int -- ^digit
+  deriving (Show, Eq)
+instance EnumObject Rounding QlRounding where
+  toObject NoRounding = qlRounding
+  toObject (Rounding p t d) = qlRounding1 p t d
+
+{#fun qlRounding {preErrorCheck- `String' errorCheck*-} -> `QlRounding'#}
+{#fun qlRounding1 {`Int', `RoundingType', `Int', preErrorCheck- `String' errorCheck*-} -> `QlRounding'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

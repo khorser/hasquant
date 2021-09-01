@@ -15,14 +15,16 @@ module QuantLib.Currency
   where
 
 import QuantLib.Internal
-{#import QuantLib.Math#}
 import QuantLib.Internal.Type
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#pointer *Rounding as QlRounding foreign newtype nocode#}
 
 {#enum MoneyConversionType {} deriving(Show, Eq)#}
 
@@ -44,6 +46,6 @@ import QuantLib.Internal.Type
 
 {#fun pure qlCurrencySymbol as symbol {withSimpleType* `Currency'} -> `String'#}
 
-{#fun qlCreateCurrency as currency' {`String' , `String' , `Int' , `String' , `String' , `Int' , withMaybeObject* `Maybe Rounding', `String', withMaybeSimpleType* `Maybe Currency', preErrorCheck- `String' errorCheck*-} -> `Currency' peekCurrency*#}
+{#fun qlCreateCurrency as currency' {`String' , `String' , `Int' , `String' , `String' , `Int' , withMaybeEnumObject* `Maybe Rounding', `String', withMaybeSimpleType* `Maybe Currency', preErrorCheck- `String' errorCheck*-} -> `Currency' peekCurrency*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -1,9 +1,7 @@
 module QuantLib.Math
   (
     RoundingType(..)
-  , Rounding
-  , rounding
-  , rounding'
+  , Rounding(..)
   , applyRounding
 
   , EndCriteriaType(..)
@@ -44,19 +42,9 @@ import QuantLib.Internal.Enum
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
-{#enum RoundingType {} deriving (Show, Eq)#}
+{#pointer *Rounding as QlRounding foreign newtype nocode#}
 
-{#pointer *Rounding foreign finalizer qlFreeRounding newtype#}
-instance ForeignObject Rounding where
-  withObject = withRounding
-  constructor = Rounding
-  finalizer = qlFreeRounding
-
-{#fun qlRounding as rounding {preErrorCheck- `String' errorCheck*-} -> `Rounding'#}
-
-{#fun qlRounding1 as rounding' {`Int', `RoundingType', `Int', preErrorCheck- `String' errorCheck*-} -> `Rounding'#}
-
-{#fun pure qlRound as applyRounding {`Rounding', `Double'} -> `Double'#}
+{#fun pure qlRound as applyRounding {withEnumObject* `Rounding', `Double'} -> `Double'#}
 
 {#enum EndCriteriaType {} deriving(Show, Eq)#}
 
