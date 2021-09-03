@@ -46,6 +46,14 @@ module QuantLib.Internal.Type
 
   , SimpleType(..)
 
+  , withCalendar
+  , withCurrency
+  , withMaybeCurrency
+  , withDayCounter
+  , withSchedule
+  , withInterestRate
+  , withInterestRateArray
+  , withTimeGrid
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -90,12 +98,13 @@ data CInterestRate
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 data Meta a = Meta {_fin :: FinalizerPtr a, _show :: Ptr a -> IO CString}
-type Calendar = SimpleType CCalendar
-type Currency = SimpleType CCurrency
-type DayCounter = SimpleType CDayCounter
-type Schedule = SimpleType CSchedule
-type InterestRate = SimpleType CInterestRate
-type TimeGrid = SimpleType CTimeGrid
+newtype Calendar = Calendar {unCalendar :: SimpleType CCalendar}
+newtype Currency = Currency {unCurrency :: SimpleType CCurrency}
+newtype DayCounter = DayCounter {unDayCounter :: SimpleType CDayCounter}
+newtype Schedule = Schedule {unSchedule :: SimpleType CSchedule}
+newtype InterestRate = InterestRate {unInterestRate :: SimpleType CInterestRate}
+newtype TimeGrid = TimeGrid {unTimeGrid :: SimpleType CTimeGrid}
+-- special cases: those types will be represented as enums so no need to wrap them
 type QlClaim = SimpleType CQlClaim
 type QlCallability = SimpleType CQlCallability
 
@@ -127,34 +136,37 @@ peekSimpleType :: Meta a -> Ptr a -> IO (SimpleType a)
 peekSimpleType (Meta f _) = newForeignPtr f >=> return . SimpleType
 
 peekCalendar :: Ptr CCalendar -> IO Calendar
-peekCalendar = peekSimpleType calendarMeta
+peekCalendar = peekSimpleType calendarMeta >=> return . Calendar
 
 peekSchedule :: Ptr CSchedule -> IO Schedule
-peekSchedule = peekSimpleType scheduleMeta
+peekSchedule = peekSimpleType scheduleMeta >=> return . Schedule
 
 peekDayCounter :: Ptr CDayCounter -> IO DayCounter
-peekDayCounter = peekSimpleType dayCounterMeta
+peekDayCounter = peekSimpleType dayCounterMeta >=> return . DayCounter
 
 peekCurrency :: Ptr CCurrency -> IO Currency
-peekCurrency = peekSimpleType currencyMeta
+peekCurrency = peekSimpleType currencyMeta >=> return . Currency
 
-peekCallability :: Ptr CQlCallability -> IO QlCallability
+peekCallability :: Ptr CQlCallability -> IO (SimpleType CQlCallability)
 peekCallability = peekSimpleType callabilityMeta
 
-peekClaim :: Ptr CQlClaim -> IO QlClaim
+peekClaim :: Ptr CQlClaim -> IO (SimpleType CQlClaim)
 peekClaim = peekSimpleType claimMeta
 
 peekInterestRate :: Ptr CInterestRate -> IO InterestRate
-peekInterestRate = peekSimpleType interestRateMeta
+peekInterestRate = peekSimpleType interestRateMeta >=> return . InterestRate
 
 peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
-peekTimeGrid = peekSimpleType timeGridMeta
+peekTimeGrid = peekSimpleType timeGridMeta >=> return . TimeGrid
 
 withSimpleType :: SimpleType a -> (Ptr a -> IO b) -> IO b
 withSimpleType = withForeignPtr . ptr
 
 withMaybeSimpleType :: Maybe (SimpleType a) -> (Ptr a -> IO b) -> IO b
 withMaybeSimpleType x f = maybe (f nullPtr) (`withSimpleType` f) x
+
+withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
+withMaybeCurrency x = withMaybeSimpleType (fmap unCurrency x)
 
 foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCalendar
 foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
@@ -169,17 +181,36 @@ showSimpleType :: Meta a -> SimpleType a -> String
 showSimpleType (Meta _ s) x = unsafePerformIO $ withSimpleType x (s >=> peekDynString)
 
 foreign import ccall safe "ql.h qlCalendarName" c_qlCalendarName :: Ptr CCalendar -> IO (Ptr CChar)
-instance Show Calendar where show = showSimpleType calendarMeta
+instance Show Calendar where show x = showSimpleType calendarMeta (unCalendar x)
 instance Eq Calendar where x == y = show x == show y
 
 foreign import ccall safe "ql.h qlCurrencyName" c_qlCurrencyName :: Ptr CCurrency -> IO (Ptr CChar)
-instance Show Currency where show = showSimpleType currencyMeta
+instance Show Currency where show x = showSimpleType currencyMeta (unCurrency x)
 instance Eq Currency where x == y = show x == show y
 
 foreign import ccall safe "ql.h qlDayCounterName" c_qlDayCounterName :: Ptr CDayCounter -> IO (Ptr CChar)
-instance Show DayCounter where show = showSimpleType dayCounterMeta
+instance Show DayCounter where show x = showSimpleType dayCounterMeta (unDayCounter x)
 instance Eq DayCounter where x == y = show x == show y
 
+withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
+withCalendar = withSimpleType . unCalendar
+
+withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
+withCurrency = withSimpleType . unCurrency
+
+withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
+withDayCounter = withSimpleType . unDayCounter
+
+withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
+withSchedule = withSimpleType . unSchedule
+
+withInterestRate :: InterestRate -> (Ptr CInterestRate -> IO b) -> IO b
+withInterestRate = withSimpleType . unInterestRate
+
+withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
+withTimeGrid = withSimpleType . unTimeGrid
+
+-- class hierarchies
 
 data Meta2 a b = Meta2 {_finalizer :: FinalizerPtr a, _upcast :: Ptr a -> IO (Ptr b)}
 data ComplexType a b = PlainPtr (ForeignPtr a) (Meta2 a b) | CastPtr (IO (ForeignPtr a)) (Meta2 a b)
@@ -228,6 +259,9 @@ asQuote = createCast quoteMeta
 
 withSimpleArray :: [SimpleType a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withSimpleArray x f = withMany withSimpleType x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
+withInterestRateArray x f = withMany withInterestRate x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 withComplexArray :: [ComplexType a c] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withComplexArray x f = withMany withComplexType x (`withArray` (\px -> f (fromIntegral $ length x, px)))

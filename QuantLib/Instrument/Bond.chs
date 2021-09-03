@@ -143,41 +143,41 @@ instance ConvertibleBond `Derives` Bond where cast = qlConvertibleBondAsBond
 
 -- |constructor for amortizing or non-amortizing bonds.
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
-{#fun qlBond as bond {fromIntegral `Word', withSimpleType* `Calendar', withMaybeDay* `Maybe Day', `Leg', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
+{#fun qlBond as bond {fromIntegral `Word', withCalendar*`Calendar', withMaybeDay* `Maybe Day', `Leg', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
 
 -- |old constructor for non amortizing bonds.
 -- /Warning/ The last passed cash flow must be the bond redemption. No other cash flow can have a date later than the redemption date.
-{#fun qlBond1 as bond' {fromIntegral `Word', withSimpleType* `Calendar', `Double', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `Leg', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
+{#fun qlBond1 as bond' {fromIntegral `Word', withCalendar*`Calendar', `Double', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `Leg', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
 
 -- |Returns the maturity date of the bond
 {#fun pure qlBondMaturityDate as maturityDate {`Bond'} -> `Maybe Day' toMaybeDay#}
 
 -- |simple annual compounding coupon rates
-{#fun qlFixedRateBond2 as fixedRateBondFromSchedule {fromIntegral `Word', `Double', withSimpleType* `Schedule', withSimpleArray* `[InterestRate]'&, `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withSimpleType* `Calendar', preErrorCheck- `String' errorCheck*-} -> `FixedRateBond'#}
+{#fun qlFixedRateBond2 as fixedRateBondFromSchedule {fromIntegral `Word', `Double', withSchedule*`Schedule', withInterestRateArray*`[InterestRate]'&, `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withCalendar*`Calendar', preErrorCheck- `String' errorCheck*-} -> `FixedRateBond'#}
 
 -- |simple annual compounding coupon rates with internal schedule calculation
-{#fun qlFixedRateBond1 as fixedRateBond {fromIntegral `Word', withSimpleType* `Calendar', `Double', withDay* `Day', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', `BusinessDayConvention', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `DateGenerationRule', `Bool', withSimpleType* `Calendar', preErrorCheck- `String' errorCheck*-} -> `FixedRateBond'#}
+{#fun qlFixedRateBond1 as fixedRateBond {fromIntegral `Word', withCalendar*`Calendar', `Double', withDay* `Day', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', `BusinessDayConvention', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `DateGenerationRule', `Bool', withCalendar*`Calendar', preErrorCheck- `String' errorCheck*-} -> `FixedRateBond'#}
 
 -- |generic compounding and frequency InterestRate coupons
-{#fun qlFixedRateBond as fixedRateBondFromSchedule' {fromIntegral `Word', `Double', withSimpleType* `Schedule', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withSimpleType* `Calendar', preErrorCheck- `String' errorCheck*-} -> `FixedRateBond'#}
+{#fun qlFixedRateBond as fixedRateBondFromSchedule' {fromIntegral `Word', `Double', withSchedule*`Schedule', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withCalendar*`Calendar', preErrorCheck- `String' errorCheck*-} -> `FixedRateBond'#}
 
 -- |zero-coupon bond
-{#fun qlZeroCouponBond as zeroCouponBond {fromIntegral `Word', withSimpleType* `Calendar', `Double', withDay* `Day', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
+{#fun qlZeroCouponBond as zeroCouponBond {fromIntegral `Word', withCalendar*`Calendar', `Double', withDay* `Day', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
 
 -- |floating-rate bond (possibly capped and/or floored)
-{#fun qlFloatingRateBond as floatingRateBond {fromIntegral `Word', `Double', withSimpleType* `Schedule', `IborIndex', withSimpleType* `DayCounter', `BusinessDayConvention', fromIntegral `Word', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Double', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
+{#fun qlFloatingRateBond as floatingRateBond {fromIntegral `Word', `Double', withSchedule*`Schedule', `IborIndex', withDayCounter*`DayCounter', `BusinessDayConvention', fromIntegral `Word', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Double', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
 
 -- |theoretical bond yield
-{#fun qlBondYield as yield {`Bond', withSimpleType* `DayCounter', `Compounding', `Frequency', `Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondYield as yield {`Bond', withDayCounter*`DayCounter', `Compounding', `Frequency', `Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |accrued amount at a given date
 {#fun qlBondAccruedAmount as accruedAmount {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |clean price given a yield and settlement date
-{#fun qlBondCleanPrice1 as cleanPriceFromYield {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondCleanPrice1 as cleanPriceFromYield {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |dirty price given a yield and settlement date
-{#fun qlBondDirtyPrice1 as dirtyPriceFromYield {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondDirtyPrice1 as dirtyPriceFromYield {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlBondNextCashFlowDate as 
 nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Maybe Day' toMaybeDay#}
@@ -202,7 +202,7 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 {#fun qlBondSettlementValue as settlementValue {`Bond', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 -- |yield given a (clean) price and settlement date
-{#fun qlBondYield1 as yieldFromCleanPrice {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', `Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondYield1 as yieldFromCleanPrice {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', `Double', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlBondIsTradable as isTradable {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Bool'#}
 
@@ -230,29 +230,29 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 
 {#fun qlBondFunctionsAccruedPeriod as accruedPeriod {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsBasisPointValue1 as basisPointValue {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsBasisPointValue1 as basisPointValue {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsBasisPointValue as basisPointValue' {`Bond', withSimpleType* `InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsBasisPointValue as basisPointValue' {`Bond', withInterestRate*`InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsBps1 as bpsFromYield' {`Bond', withSimpleType* `InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsBps1 as bpsFromYield' {`Bond', withInterestRate*`InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsBps2 as bpsFromYield {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsBps2 as bpsFromYield {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlBondFunctionsBps as bps {`Bond', `YieldTermStructure', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlBondFunctionsCleanPrice2 as cleanPrice {`Bond', `YieldTermStructure', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsCleanPrice3 as cleanPrice' {`Bond', `YieldTermStructure', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsCleanPrice3 as cleanPrice' {`Bond', `YieldTermStructure', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield' {`Bond', withSimpleType* `InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield' {`Bond', withInterestRate*`InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsConvexity1 as convexity {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsConvexity1 as convexity {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsConvexity as convexity' {`Bond', withSimpleType* `InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsConvexity as convexity' {`Bond', withInterestRate*`InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsDuration1 as duration {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', `DurationType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsDuration1 as duration {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', `DurationType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsDuration as duration' {`Bond', withSimpleType* `InterestRate', `DurationType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsDuration as duration' {`Bond', withInterestRate*`InterestRate', `DurationType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
 {#fun qlBondFunctionsNextCashFlowAmount as nextCashFlowAmount {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
@@ -262,15 +262,15 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 
 {#fun qlBondFunctionsReferencePeriodStart as referencePeriodStart {`Bond' , withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Maybe Day' toMaybeDay#}
 
-{#fun qlBondFunctionsYield2 as yieldFromCleanPrice' {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', `Double', fromIntegral `Word', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsYield2 as yieldFromCleanPrice' {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', `Double', fromIntegral `Word', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsYieldValueBasisPoint1 as yieldValueBasisPoint {`Bond', `Double', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsYieldValueBasisPoint1 as yieldValueBasisPoint {`Bond', `Double', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint' {`Bond', withSimpleType* `InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint' {`Bond', withInterestRate*`InterestRate', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlBondFunctionsZSpread as zSpread {`Bond', `Double', `YieldTermStructure', withSimpleType* `DayCounter', `Compounding', `Frequency', withDay* `Day', `Double', fromIntegral `Word', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlBondFunctionsZSpread as zSpread {`Bond', `Double', `YieldTermStructure', withDayCounter*`DayCounter', `Compounding', `Frequency', withDay* `Day', `Double', fromIntegral `Word', `Double', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlFloatingRateBond1 as floatingRateBond' {fromIntegral `Word', `Double', withDay* `Day', withDay* `Day', `Frequency', withSimpleType* `Calendar', `IborIndex', withSimpleType* `DayCounter', `BusinessDayConvention', `BusinessDayConvention', fromIntegral `Word', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Double', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `DateGenerationRule', `Bool', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
+{#fun qlFloatingRateBond1 as floatingRateBond' {fromIntegral `Word', `Double', withDay* `Day', withDay* `Day', `Frequency', withCalendar*`Calendar', `IborIndex', withDayCounter*`DayCounter', `BusinessDayConvention', `BusinessDayConvention', fromIntegral `Word', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, `Bool', `Double', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', `DateGenerationRule', `Bool', preErrorCheck- `String' errorCheck*-} -> `Bond'#}
 
 -- |theoretical clean price for the current evaluation date and term structure
 {#fun qlBondCleanPrice as currentCleanPrice {`Bond', preErrorCheck- `String' errorCheck*-} -> `Double'#}
@@ -279,16 +279,16 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 -- The default bond settlement is used for calculation. /Warning/ the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
 {#fun qlBondDirtyPrice as currentDirtyPrice {`Bond', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlCallableFixedRateBond as callableFixedRateBond {fromIntegral `Word', `Double', withSimpleType* `Schedule', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withCallabilityArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
+{#fun qlCallableFixedRateBond as callableFixedRateBond {fromIntegral `Word', `Double', withSchedule*`Schedule', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withCallabilityArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
 
-{#fun qlCallableZeroCouponBond as callableZeroCouponBond {fromIntegral `Word', `Double', withSimpleType* `Calendar', withDay* `Day', withSimpleType* `DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withCallabilityArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
+{#fun qlCallableZeroCouponBond as callableZeroCouponBond {fromIntegral `Word', `Double', withCalendar*`Calendar', withDay* `Day', withDayCounter*`DayCounter', `BusinessDayConvention', `Double', withMaybeDay* `Maybe Day', withCallabilityArray* `[Callability]'&, preErrorCheck- `String' errorCheck*-} -> `CallableBond'#}
 
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType *`Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType* `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType *`Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType* `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType *`Quote', withDay* `Day', fromIntegral `Word', withSimpleType* `DayCounter', withSimpleType* `Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withObjectArray* `[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType* `Quote', withDay* `Day', fromIntegral `Word', withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

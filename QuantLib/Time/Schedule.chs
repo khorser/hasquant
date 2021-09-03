@@ -47,30 +47,30 @@ import QuantLib.Internal.CalendarEnum
 
 {#fun qlDayCounter {`Int', `Int', preErrorCheck- `String' errorCheck*-} -> `DayCounter' peekDayCounter*#}
 
-{#fun qlDayCounterBusiness252 {withSimpleType* `Calendar', preErrorCheck- `String' errorCheck*-}-> `DayCounter' peekDayCounter*#}
+{#fun qlDayCounterBusiness252 {withCalendar*`Calendar', preErrorCheck- `String' errorCheck*-}-> `DayCounter' peekDayCounter*#}
 
 dayCounter :: DayCounterConstructor -> IO DayCounter
 dayCounter (Business252 x) = qlDayCounterBusiness252 x
 dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 
 -- |Returns the number of days between two dates.
-{#fun qlDayCounterDayCount as days {withSimpleType* `DayCounter', withDay* `Day', withDay* `Day'} -> `Int'#}
+{#fun qlDayCounterDayCount as days {withDayCounter*`DayCounter', withDay* `Day', withDay* `Day'} -> `Int'#}
 
 -- |Returns the period between two dates as a fraction of year.
-{#fun qlDayCounterYearFraction as years {withSimpleType* `DayCounter', withDay* `Day', withDay* `Day', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
+{#fun qlDayCounterYearFraction as years {withDayCounter*`DayCounter', withDay* `Day', withDay* `Day', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlSchedule as schedule {withMaybeDay* `Maybe Day', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withSimpleType* `Calendar', `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule', `Bool', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekSchedule*#}
+{#fun qlSchedule as schedule {withMaybeDay* `Maybe Day', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, withCalendar*`Calendar', `BusinessDayConvention', `BusinessDayConvention', `DateGenerationRule', `Bool', withMaybeDay* `Maybe Day', withMaybeDay* `Maybe Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekSchedule*#}
 
 -- TODO add other parameters, provide a more user-friendly way to build schedules
-{#fun qlSchedule1 as fromDates {withDayArray* `[Day]'&, withSimpleType* `Calendar', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekSchedule*#}
+{#fun qlSchedule1 as fromDates {withDayArray* `[Day]'&, withCalendar*`Calendar', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekSchedule*#}
 
 -- |truncated schedule
 -- XXX Introduce another Schedule type with restricted interface?
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
-{#fun qlScheduleUntil as until {withSimpleType* `Schedule', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekSchedule*#}
+{#fun qlScheduleUntil as until {withSchedule*`Schedule', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Schedule' peekSchedule*#}
 
 -- |returns the dates for the given Schedule object
-{#fun qlScheduleDates as dates {withSimpleType* `Schedule', preArray- `[Day]'& peekDayArray*} -> `()'#}
+{#fun qlScheduleDates as dates {withSchedule*`Schedule', preArray- `[Day]'& peekDayArray*} -> `()'#}
 
 {#enum TimeUnit {} deriving(Show, Eq, Bounded)#}
 

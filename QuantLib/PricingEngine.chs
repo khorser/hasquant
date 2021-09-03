@@ -209,9 +209,9 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 
 {#fun qlBlackCapFloorEngine1 as blackCapFloorEngine' {`YieldTermStructure', `OptionletVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBlackCapFloorEngine as blackCapFloorEngine {`YieldTermStructure', withComplexType *`Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCapFloorEngine as blackCapFloorEngine {`YieldTermStructure', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBlackSwaptionEngine as blackSwaptionEngine {`YieldTermStructure', withComplexType *`Quote', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackSwaptionEngine as blackSwaptionEngine {`YieldTermStructure', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlBlackSwaptionEngine1 as blackSwaptionEngine' {`YieldTermStructure', `SwaptionVolatilityStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
@@ -283,11 +283,11 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 
 {#fun qlLfmSwaptionEngine as lfmSwaptionEngine {withObject* `LiborForwardModel', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlTreeCapFloorEngine1 as treeCapFloorEngine' {withObject* `ShortRateModel', withSimpleType* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlTreeCapFloorEngine1 as treeCapFloorEngine' {withObject* `ShortRateModel', withTimeGrid*`TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlTreeSwaptionEngine1 as treeSwaptionEngine' {withObject* `ShortRateModel', withSimpleType* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlTreeSwaptionEngine1 as treeSwaptionEngine' {withObject* `ShortRateModel', withTimeGrid*`TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine' {withObject* `ShortRateModel', withSimpleType* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine' {withObject* `ShortRateModel', withTimeGrid*`TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#pointer *FdmSchemeDesc foreign newtype nocode#}
 {#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine {withObject* `G2', fromIntegral `Word', fromIntegral `Word', fromIntegral `Word', fromIntegral `Word', `Double', withEnumObject* `FdmScheme', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
@@ -335,19 +335,19 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 {#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine' {withObject* `CallableBondVolatilityStructure', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine {withComplexType *`Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine {withComplexType* `Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngine' {withObject* `CallableBondVolatilityStructure', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine {withComplexType *`Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine {withComplexType* `Quote', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine' {withObject* `ShortRateModel', withSimpleType* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine' {withObject* `ShortRateModel', withTimeGrid*`TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlTreeCallableFixedRateBondEngine as treeCallableFixedRateBondEngine {withObject* `ShortRateModel', fromIntegral `Word', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine' {withObject* `ShortRateModel', withSimpleType* `TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine' {withObject* `ShortRateModel', withTimeGrid*`TimeGrid', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngine {withObject* `ShortRateModel', fromIntegral `Word', withMaybeObject* `Maybe YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 

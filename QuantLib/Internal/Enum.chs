@@ -457,7 +457,7 @@ data Callability =
 
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 
-callability :: Callability -> IO QlCallability
+callability :: Callability -> IO (SimpleType CQlCallability)
 callability (Soft p t d tg) = qlSoftCallability p t d tg
 callability (Callability p t ct d) = qlCallability p t ct d
 

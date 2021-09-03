@@ -34,18 +34,18 @@ import QuantLib.Internal.Enum
 
 {#fun qlCurrency as currency {`Ccy', preErrorCheck- `String' errorCheck*-} -> `Currency' peekCurrency*#}
 
-{#fun pure qlCurrencyCode as code {withSimpleType* `Currency'} -> `String' peekDynString*#}
+{#fun pure qlCurrencyCode as code {withCurrency*`Currency'} -> `String' peekDynString*#}
 
-{#fun pure qlCurrencyFormat as format {withSimpleType* `Currency'} -> `String' peekDynString*#}
+{#fun pure qlCurrencyFormat as format {withCurrency*`Currency'} -> `String' peekDynString*#}
 
-{#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit {withSimpleType* `Currency'} -> `Int'#}
+{#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit {withCurrency*`Currency'} -> `Int'#}
 
-{#fun pure qlCurrencyFractionSymbol as fractionSymbol {withSimpleType* `Currency'} -> `String'#}
+{#fun pure qlCurrencyFractionSymbol as fractionSymbol {withCurrency*`Currency'} -> `String'#}
 
-{#fun pure qlCurrencyNumericCode as code' {withSimpleType* `Currency'} -> `Int'#}
+{#fun pure qlCurrencyNumericCode as code' {withCurrency*`Currency'} -> `Int'#}
 
-{#fun pure qlCurrencySymbol as symbol {withSimpleType* `Currency'} -> `String'#}
+{#fun pure qlCurrencySymbol as symbol {withCurrency*`Currency'} -> `String'#}
 
-{#fun qlCreateCurrency as currency' {`String' , `String' , `Int' , `String' , `String' , `Int' , withMaybeEnumObject* `Maybe Rounding', `String', withMaybeSimpleType* `Maybe Currency', preErrorCheck- `String' errorCheck*-} -> `Currency' peekCurrency*#}
+{#fun qlCreateCurrency as currency' {`String' , `String' , `Int' , `String' , `String' , `Int' , withMaybeEnumObject* `Maybe Rounding', `String', withMaybeCurrency*`Maybe Currency', preErrorCheck- `String' errorCheck*-} -> `Currency' peekCurrency*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

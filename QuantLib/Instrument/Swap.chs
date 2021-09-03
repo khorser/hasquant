@@ -149,9 +149,9 @@ swap' :: [(Leg, Bool)] -- ^(legs, payer)
 swap' = (uncurry qlSwap1) . unzip
 {#fun qlSwap1 {withObjectArray* `[Leg]'&, withBoolArray* `[Bool]'&, preErrorCheck- `String' errorCheck*-} -> `Swap'#}
 
-{#fun qlBMASwap as bmaSwap {`SwapType', `Double', withSimpleType* `Schedule', `Double', `Double', `IborIndex', withSimpleType* `DayCounter', withSimpleType* `Schedule', `BMAIndex', withSimpleType* `DayCounter', preErrorCheck- `String' errorCheck*-} -> `BMASwap'#}
+{#fun qlBMASwap as bmaSwap {`SwapType', `Double', withSchedule*`Schedule', `Double', `Double', `IborIndex', withDayCounter*`DayCounter', withSchedule*`Schedule', `BMAIndex', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `BMASwap'#}
 
-{#fun qlVanillaSwap as vanillaSwap {`SwapType', `Double', withSimpleType* `Schedule', `Double', withSimpleType* `DayCounter', withSimpleType* `Schedule', `IborIndex', `Double', withSimpleType* `DayCounter', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap'#}
+{#fun qlVanillaSwap as vanillaSwap {`SwapType', `Double', withSchedule*`Schedule', `Double', withDayCounter*`DayCounter', withSchedule*`Schedule', `IborIndex', `Double', withDayCounter*`DayCounter', `BusinessDayConvention', preErrorCheck- `String' errorCheck*-} -> `VanillaSwap'#}
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap {`Leg', `Leg', preErrorCheck- `String' errorCheck*-} -> `Swap'#}
@@ -169,14 +169,14 @@ swap' = (uncurry qlSwap1) . unzip
 {#fun qlSwaption as swaption {`VanillaSwap', withEnumObject* `Exercise', `SettlementType', preErrorCheck- `String' errorCheck*-} -> `Swaption'#}
 
 -- AssetSwap
-{#fun qlAssetSwap1 as assetSwap' {`Bool', withObject* `Bond', `Double', `Double', `Double', `IborIndex', `Double', withSimpleType* `DayCounter', withMaybeDay* `Maybe Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `AssetSwap'#}
+{#fun qlAssetSwap1 as assetSwap' {`Bool', withObject* `Bond', `Double', `Double', `Double', `IborIndex', `Double', withDayCounter*`DayCounter', withMaybeDay* `Maybe Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `AssetSwap'#}
 
-{#fun qlAssetSwap as assetSwap {`Bool', withObject* `Bond', `Double', `IborIndex', `Double', withSimpleType* `Schedule', withSimpleType* `DayCounter', `Bool', preErrorCheck- `String' errorCheck*-} -> `AssetSwap'#}
+{#fun qlAssetSwap as assetSwap {`Bool', withObject* `Bond', `Double', `IborIndex', `Double', withSchedule*`Schedule', withDayCounter*`DayCounter', `Bool', preErrorCheck- `String' errorCheck*-} -> `AssetSwap'#}
 
 -- OvernightIndexedSwap
-{#fun qlOvernightIndexedSwap as overnightIndexedSwap {`SwapType', `Double', withSimpleType* `Schedule', `Double', withSimpleType* `DayCounter', `OvernightIborIndex', `Double', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap'#}
+{#fun qlOvernightIndexedSwap as overnightIndexedSwap {`SwapType', `Double', withSchedule*`Schedule', `Double', withDayCounter*`DayCounter', `OvernightIborIndex', `Double', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap'#}
 
-{#fun qlOvernightIndexedSwap1 as overnightIndexedSwap' {`SwapType', withDoubleArray* `[Double]'&, withSimpleType* `Schedule', `Double', withSimpleType* `DayCounter', `OvernightIborIndex', `Double', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap'#}
+{#fun qlOvernightIndexedSwap1 as overnightIndexedSwap' {`SwapType', withDoubleArray* `[Double]'&, withSchedule*`Schedule', `Double', withDayCounter*`DayCounter', `OvernightIborIndex', `Double', preErrorCheck- `String' errorCheck*-} -> `OvernightIndexedSwap'#}
 
 {#fun qlSwapMaturityDate as maturityDate {`Swap', preErrorCheck- `String' errorCheck*-} -> `(Maybe Day)' toMaybeDay#}
 

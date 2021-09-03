@@ -232,3 +232,97 @@ instance LiborForwardModel `Derives` CalibratedModel where cast = qlLiborForward
 instance PiecewiseTimeDependentHestonModel `Derives` CalibratedModel where cast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
 instance ShortRateModel `Derives` CalibratedModel where cast = qlShortRateModelAsCalibratedModel
 instance OneFactorAffineModel `Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
+
+----
+
+{#fun qlBlackProcessAsGeneralizedBlackScholesProcess {`BlackProcess'} -> `GeneralizedBlackScholesProcess'#}
+{#fun qlStochasticProcess1DAsStochasticProcess {`StochasticProcess1D'} -> `StochasticProcess'#}
+{#fun qlExtOUWithJumpsProcessAsStochasticProcess {`ExtOUWithJumpsProcess'} -> `StochasticProcess'#}
+k{#fun qlGJRGARCHProcessAsStochasticProcess {`GJRGARCHProcess'} -> `StochasticProcess'#}
+{#fun qlHestonProcessAsStochasticProcess {`HestonProcess'} -> `StochasticProcess'#}
+{#fun qlBatesProcessAsHestonProcess {`BatesProcess'} -> `HestonProcess'#}
+{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess {`HybridHestonHullWhiteProcess'} -> `StochasticProcess'#}
+{#fun qlKlugeExtOUProcessAsStochasticProcess {`KlugeExtOUProcess'} -> `StochasticProcess'#}
+{#fun qlLiborForwardModelProcessAsStochasticProcess {`LiborForwardModelProcess'} -> `StochasticProcess'#}
+{#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
+{#fun qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D {`ExtendedOrnsteinUhlenbeckProcess'} -> `StochasticProcess1D'#}
+{#fun qlGeneralizedBlackScholesProcessAsStochasticProcess1D {`GeneralizedBlackScholesProcess'} -> `StochasticProcess1D'#}
+{#fun qlHullWhiteForwardProcessAsStochasticProcess1D {`HullWhiteForwardProcess'} -> `StochasticProcess1D'#}
+{#fun qlHullWhiteProcessAsStochasticProcess1D {`HullWhiteProcess'} -> `StochasticProcess1D'#}
+{#fun qlMerton76ProcessAsStochasticProcess1D {`Merton76Process'} -> `StochasticProcess1D'#}
+{#fun qlVarianceGammaProcessAsStochasticProcess1D {`VarianceGammaProcess'} -> `StochasticProcess1D'#}
+{#fun qlCouponLegAsLeg {`CouponLeg'} -> `Leg'#}
+{#fun qlEuropeanExerciseAsExercise {`QlEuropeanExercise'} -> `QlExercise'#}
+{#fun qlAmericanExerciseAsExercise {`QlAmericanExercise'} -> `QlExercise'#}
+{#fun qlSwingExerciseAsExercise {`QlSwingExercise'} -> `QlExercise'#}
+{#fun qlBermudanExerciseAsExercise {`QlBermudanExercise'} -> `QlExercise'#}
+{#fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
+{#fun qlBasketPayoffAsPayoff {`QlBasketPayoff'} -> `QlPayoff'#}
+{#fun qlTypePayoffAsPayoff {`QlTypePayoff'} -> `QlPayoff'#}
+{#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} -> `QlTypePayoff'#}
+{#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} -> `QlStrikedTypePayoff'#}
+{#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
+{#fun qlBlackScholesCalculatorAsBlackCalculator {`BlackScholesCalculator'} -> `BlackCalculator'#}
+{#fun qlForwardAsInstrument {`Forward'} -> `Instrument' peekObject*#}
+{#fun qlForwardRateAgreementAsForward {`ForwardRateAgreement'} -> `Forward'#}
+{#fun qlFixedRateBondForwardAsForward {`FixedRateBondForward'} -> `Forward'#}
+{#fun qlOptionAsInstrument {`Option'} -> `Instrument' peekObject*#}
+{#fun qlCdsOptionAsOption {`CdsOption'} -> `Option'#}
+{#fun qlMultiAssetOptionAsOption {`MultiAssetOption'} -> `Option'#}
+{#fun qlOneAssetOptionAsOption {`OneAssetOption'} -> `Option'#}
+{#fun qlBarrierOptionAsOneAssetOption {`BarrierOption'} -> `OneAssetOption'#}
+{#fun qlDividendVanillaOptionAsOneAssetOption {`DividendVanillaOption'} -> `OneAssetOption'#}
+{#fun qlForwardVanillaOptionAsOneAssetOption {`ForwardVanillaOption'} -> `OneAssetOption'#}
+{#fun qlQuantoVanillaOptionAsOneAssetOption {`QuantoVanillaOption'} -> `OneAssetOption'#}
+{#fun qlVanillaOptionAsOneAssetOption {`VanillaOption'} -> `OneAssetOption'#}
+{#fun qlQuantoBarrierOptionAsBarrierOption {`QuantoBarrierOption'} -> `BarrierOption'#}
+{#fun qlMargrabeOptionAsMultiAssetOption {`MargrabeOption'} -> `MultiAssetOption'#}
+{#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption {`QuantoForwardVanillaOption'} -> `ForwardVanillaOption'#}
+{#fun qlSwaptionAsOption {`Swaption'} -> `Option' peekObject*#}
+{#fun qlSwapAsInstrument {`Swap'} -> `Instrument' peekObject*#}
+{#fun qlVanillaSwapAsSwap {`VanillaSwap'} -> `Swap'#}
+{#fun qlAssetSwapAsSwap {`AssetSwap'} -> `Swap'#}
+{#fun qlBMASwapAsSwap {`BMASwap'} -> `Swap'#}
+{#fun qlOvernightIndexedSwapAsSwap {`OvernightIndexedSwap'} -> `Swap'#}
+{#fun qlCreditDefaultSwapAsInstrument {`CreditDefaultSwap'} -> `Instrument' peekObject*#}
+{#fun qlCapFloorAsInstrument {`CapFloor'} -> `Instrument' peekObject*#}
+{#fun qlBondAsInstrument {`Bond'} -> `Instrument' peekObject*#}
+{#fun qlFixedRateBondAsBond {`FixedRateBond'} -> `Bond'#}
+{#fun qlCallableBondAsBond {`CallableBond'} -> `Bond'#}
+{#fun qlConvertibleBondAsBond {`ConvertibleBond'} -> `Bond'#}
+{#fun qlYieldTermStructureAsTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
+{#fun qlFittedBondDiscountCurveAsYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
+{#fun qlSwapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
+{#fun qlBondHelperAsRateHelper {`BondHelper'} -> `RateHelper'#}
+{#fun qlOISRateHelperAsRateHelper {`OISRateHelper'} -> `RateHelper'#}
+{#fun qlOptionletVolatilityStructureAsVolatilityTermStructure {`OptionletVolatilityStructure'} -> `VolatilityTermStructure'#}
+{#fun qlVolatilityTermStructureAsTermStructure {`VolatilityTermStructure'} -> `TermStructure' peekObject*#}
+{#fun qlBlackVolTermStructureAsVolatilityTermStructure {`BlackVolTermStructure'} -> `VolatilityTermStructure'#}
+{#fun qlSwaptionVolatilityStructureAsVolatilityTermStructure {`SwaptionVolatilityStructure'} -> `VolatilityTermStructure'#}
+{#fun qlCapFloorTermVolSurfaceAsVolatilityTermStructure {`CapFloorTermVolSurface'} -> `VolatilityTermStructure'#}
+{#fun qlLocalVolTermStructureAsVolatilityTermStructure {`LocalVolTermStructure'} -> `VolatilityTermStructure'#}
+{#fun qlBlackVarianceCurveAsBlackVolTermStructure {`BlackVarianceCurve'} -> `BlackVolTermStructure'#}
+{#fun qlCallableBondVolatilityStructureAsTermStructure {`CallableBondVolatilityStructure'} -> `TermStructure' peekObject*#}
+{#fun qlDefaultProbabilityTermStructureAsTermStructure {`DefaultProbabilityTermStructure'} -> `TermStructure' peekObject*#}
+{#fun qlInterestRateIndexAsIndex {`InterestRateIndex'} -> `Index' peekObject*#}
+{#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
+{#fun qlSwapIndexAsInterestRateIndex {`SwapIndex'} -> `InterestRateIndex'#}
+{#fun qlOvernightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
+{#fun qlIborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
+{#fun qlOvernightIndexAsIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
+{#fun qlBlackCalibrationHelperAsCalibrationHelper {`BlackCalibrationHelper'} -> `CalibrationHelper'#}
+{#fun qlOneFactorAffineModelAsAffineModel {`OneFactorAffineModel'} -> `AffineModel'#}
+{#fun qlLiborForwardModelAsAffineModel {`LiborForwardModel'} -> `AffineModel'#}
+{#fun qlHullWhiteAsOneFactorAffineModel {`HullWhite'} -> `OneFactorAffineModel'#}
+{#fun qlG2AsAffineModel {`G2'} -> `AffineModel'#}
+{#fun qlG2AsShortRateModel {`G2'} -> `ShortRateModel'#}
+{#fun qlBatesDetJumpModelAsBatesModel {`BatesDetJumpModel'} -> `BatesModel'#}
+{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel {`BatesDoubleExpDetJumpModel'} -> `BatesDoubleExpModel'#}
+{#fun qlBatesDoubleExpModelAsHestonModel {`BatesDoubleExpModel'} -> `HestonModel'#}
+{#fun qlGJRGARCHModelAsCalibratedModel {`GJRGARCHModel'} -> `CalibratedModel'#}
+{#fun qlHestonModelAsCalibratedModel {`HestonModel'} -> `CalibratedModel'#}
+{#fun qlBatesModelAsHestonModel {`BatesModel'} -> `HestonModel'#}
+{#fun qlLiborForwardModelAsCalibratedModel {`LiborForwardModel'} -> `CalibratedModel'#}
+{#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel {`PiecewiseTimeDependentHestonModel'} -> `CalibratedModel'#}
+{#fun qlShortRateModelAsCalibratedModel {`ShortRateModel'} -> `CalibratedModel'#}
+{#fun qlOneFactorAffineModelAsShortRateModel {`OneFactorAffineModel'} -> `ShortRateModel'#}
