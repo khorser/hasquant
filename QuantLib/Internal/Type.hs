@@ -54,6 +54,12 @@ module QuantLib.Internal.Type
   , withInterestRate
   , withInterestRateArray
   , withTimeGrid
+
+  , CDividend
+  , Dividend
+  , withDividend
+  , withDividendArray
+  , peekDividend
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -95,15 +101,17 @@ data CQlCallability
 data CQlClaim
 data CTimeGrid
 data CInterestRate
+data CDividend
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 data Meta a = Meta {_fin :: FinalizerPtr a, _show :: Ptr a -> IO CString}
-newtype Calendar = Calendar {unCalendar :: SimpleType CCalendar}
-newtype Currency = Currency {unCurrency :: SimpleType CCurrency}
-newtype DayCounter = DayCounter {unDayCounter :: SimpleType CDayCounter}
-newtype Schedule = Schedule {unSchedule :: SimpleType CSchedule}
-newtype InterestRate = InterestRate {unInterestRate :: SimpleType CInterestRate}
-newtype TimeGrid = TimeGrid {unTimeGrid :: SimpleType CTimeGrid}
+newtype Calendar = Calendar {getCCalendar :: SimpleType CCalendar}
+newtype Currency = Currency {getCCurrency :: SimpleType CCurrency}
+newtype DayCounter = DayCounter {getCDayCounter :: SimpleType CDayCounter}
+newtype Schedule = Schedule {getCSchedule :: SimpleType CSchedule}
+newtype InterestRate = InterestRate {getCInterestRate :: SimpleType CInterestRate}
+newtype TimeGrid = TimeGrid {getCTimeGrid :: SimpleType CTimeGrid}
+newtype Dividend = Dividend {getCDividend :: SimpleType CDividend}
 -- special cases: those types will be represented as enums so no need to wrap them
 type QlClaim = SimpleType CQlClaim
 type QlCallability = SimpleType CQlCallability
@@ -132,6 +140,9 @@ timeGridMeta = Meta qlFreeTimeGrid undefined
 interestRateMeta :: Meta CInterestRate
 interestRateMeta = Meta qlFreeInterestRate undefined
 
+dividendMeta :: Meta CDividend
+dividendMeta = Meta qlFreeDividend undefined
+
 peekSimpleType :: Meta a -> Ptr a -> IO (SimpleType a)
 peekSimpleType (Meta f _) = newForeignPtr f >=> return . SimpleType
 
@@ -156,6 +167,9 @@ peekClaim = peekSimpleType claimMeta
 peekInterestRate :: Ptr CInterestRate -> IO InterestRate
 peekInterestRate = peekSimpleType interestRateMeta >=> return . InterestRate
 
+peekDividend :: Ptr CDividend -> IO Dividend
+peekDividend = peekSimpleType dividendMeta >=> return . Dividend
+
 peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
 peekTimeGrid = peekSimpleType timeGridMeta >=> return . TimeGrid
 
@@ -166,7 +180,7 @@ withMaybeSimpleType :: Maybe (SimpleType a) -> (Ptr a -> IO b) -> IO b
 withMaybeSimpleType x f = maybe (f nullPtr) (`withSimpleType` f) x
 
 withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
-withMaybeCurrency x = withMaybeSimpleType (fmap unCurrency x)
+withMaybeCurrency x = withMaybeSimpleType (fmap getCCurrency x)
 
 foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCalendar
 foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
@@ -174,6 +188,7 @@ foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSche
 foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr CDayCounter
 foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid
 foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerPtr CInterestRate
+foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
 foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
 foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
 
@@ -181,34 +196,37 @@ showSimpleType :: Meta a -> SimpleType a -> String
 showSimpleType (Meta _ s) x = unsafePerformIO $ withSimpleType x (s >=> peekDynString)
 
 foreign import ccall safe "ql.h qlCalendarName" c_qlCalendarName :: Ptr CCalendar -> IO (Ptr CChar)
-instance Show Calendar where show x = showSimpleType calendarMeta (unCalendar x)
+instance Show Calendar where show x = showSimpleType calendarMeta (getCCalendar x)
 instance Eq Calendar where x == y = show x == show y
 
 foreign import ccall safe "ql.h qlCurrencyName" c_qlCurrencyName :: Ptr CCurrency -> IO (Ptr CChar)
-instance Show Currency where show x = showSimpleType currencyMeta (unCurrency x)
+instance Show Currency where show x = showSimpleType currencyMeta (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
 
 foreign import ccall safe "ql.h qlDayCounterName" c_qlDayCounterName :: Ptr CDayCounter -> IO (Ptr CChar)
-instance Show DayCounter where show x = showSimpleType dayCounterMeta (unDayCounter x)
+instance Show DayCounter where show x = showSimpleType dayCounterMeta (getCDayCounter x)
 instance Eq DayCounter where x == y = show x == show y
 
 withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
-withCalendar = withSimpleType . unCalendar
+withCalendar = withSimpleType . getCCalendar
 
 withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
-withCurrency = withSimpleType . unCurrency
+withCurrency = withSimpleType . getCCurrency
 
 withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
-withDayCounter = withSimpleType . unDayCounter
+withDayCounter = withSimpleType . getCDayCounter
 
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
-withSchedule = withSimpleType . unSchedule
+withSchedule = withSimpleType . getCSchedule
 
 withInterestRate :: InterestRate -> (Ptr CInterestRate -> IO b) -> IO b
-withInterestRate = withSimpleType . unInterestRate
+withInterestRate = withSimpleType . getCInterestRate
+
+withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
+withDividend = withSimpleType . getCDividend
 
 withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
-withTimeGrid = withSimpleType . unTimeGrid
+withTimeGrid = withSimpleType . getCTimeGrid
 
 -- class hierarchies
 
@@ -262,6 +280,9 @@ withSimpleArray x f = withMany withSimpleType x (`withArray` (\px -> f (fromInte
 
 withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
 withInterestRateArray x f = withMany withInterestRate x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
+withDividendArray x f = withMany withDividend x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 withComplexArray :: [ComplexType a c] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withComplexArray x f = withMany withComplexType x (`withArray` (\px -> f (fromIntegral $ length x, px)))

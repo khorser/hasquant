@@ -96,6 +96,7 @@ import QuantLib.Internal.Index
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
+{#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 
 {#pointer *Leg foreign finalizer qlFreeLeg newtype#}
 instance ForeignObject Leg where
@@ -108,12 +109,6 @@ instance ForeignObject CouponLeg where
   withObject = withCouponLeg
   constructor = CouponLeg
   finalizer = qlFreeCouponLeg
-
-{#pointer *QlDividend as Dividend foreign finalizer qlFreeDividend newtype#}
-instance ForeignObject Dividend where
-  withObject = withDividend
-  constructor = Dividend
-  finalizer = qlFreeDividend
 
 {#enum DurationType {} deriving(Show, Eq)#}
 
@@ -245,11 +240,11 @@ cashFlows l i d = do {(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds 
 -- |start of the accrual periods for a coupon leg
 {#fun qlCouponAccrualStartDates as couponAccrualStartDates {`CouponLeg', preArray- `[Day]'& peekDayArray*, preErrorCheck- `String' errorCheck*-} -> `()'#}
 
-{#fun qlFixedDividend as fixedDividend {`Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'#}
+{#fun qlFixedDividend as fixedDividend {`Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'peekDividend*#}
 
-{#fun qlFractionalDividend1 as fractionalDividend' {`Double', `Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'#}
+{#fun qlFractionalDividend1 as fractionalDividend' {`Double', `Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'peekDividend*#}
 
-{#fun qlFractionalDividend as fractionalDividend {`Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'#}
+{#fun qlFractionalDividend as fractionalDividend {`Double', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `Dividend'peekDividend*#}
 
 {#fun qlAverageBMALeg as averageBMALeg {withSchedule*`Schedule', `BMAIndex', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', `BusinessDayConvention', withDoubleArray* `[Double]'&, withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `Leg'#}
 

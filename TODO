@@ -1,18 +1,17 @@
-Move claim into Internal/Enum
+Move Claim into Internal/Enum once Bond is ready
 
 Don't require show for simple types
 
 -- foreign types
-
-Leg | qlFreeLeg
-CouponLeg | qlFreeCouponLeg
-QlDividend as Dividend | qlFreeDividend
 
 Constraint as QlConstraint | qlFreeConstraint
 EndCriteria as QlEndCriteria | qlFreeEndCriteria
 FdmSchemeDesc | qlFreeFdmSchemeDesc
 FittedBondDiscountCurveFittingMethod as FittingMethodObject | qlFreeFittedBondDiscountCurveFittingMethod
 OptimizationMethod as QlOptimizationMethod | qlFreeOptimizationMethod
+
+Leg | qlFreeLeg
+CouponLeg | qlFreeCouponLeg
 
 QlPayoff | qlFreePayoff
 QlPercentageStrikePayoff | qlFreePercentageStrikePayoff
@@ -21,10 +20,144 @@ QlBasketPayoff | qlFreeBasketPayoff
 QlStrikedTypePayoff | qlFreeStrikedTypePayoff
 QlTypePayoff | qlFreeTypePayoff
 
+Payoff =
+    DoubleStickyRatchet
+      Double -- ^type1
+      Double -- ^type2
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^gearing3
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^spread3
+      Double -- ^initialValue1
+      Double -- ^initialValue2
+      Double -- ^accrualFactor
+  | ForwardType
+      PositionType -- ^type
+      Double -- ^strike
+  | RatchetMax
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^gearing3
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^spread3
+      Double -- ^initialValue1
+      Double -- ^initialValue2
+      Double -- ^accrualFactor
+  | RatchetMin
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^gearing3
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^spread3
+      Double -- ^initialValue1
+      Double -- ^initialValue2
+      Double -- ^accrualFactor
+  | Ratchet
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^initialValue
+      Double -- ^accrualFactor
+  | StickyMax
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^gearing3
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^spread3
+      Double -- ^initialValue1
+      Double -- ^initialValue2
+      Double -- ^accrualFactor
+  | StickyMin
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^gearing3
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^spread3
+      Double -- ^initialValue1
+      Double -- ^initialValue2
+      Double -- ^accrualFactor
+  | Sticky
+      Double -- ^gearing1
+      Double -- ^gearing2
+      Double -- ^spread1
+      Double -- ^spread2
+      Double -- ^initialValue
+      Double -- ^accrualFactor
+  | Type TypePayoff
+  | Basket BasketPayoff
+>TypePayoff =
+  Striked StrikedPayoff
+  | Floating
+      OptionType -- ^type
+>>StrikedPayoff =
+  AssetOrNothing
+    OptionType -- ^type
+    Double -- ^strike
+  | CashOrNothing
+      OptionType -- ^type
+      Double -- ^strike
+      Double -- ^cashPayoff
+  | Gap
+      OptionType -- ^type
+      Double -- ^strike
+      Double -- ^secondStrike
+  | PercentageStrike PercentageStrikePayoff
+  | PlainVanilla PlainVanillaPayoff
+  | SuperFund
+      Double -- ^strike
+      Double -- ^secondStrike
+  | SuperSharePayoff
+      Double -- ^strike
+      Double -- ^secondStrike
+      Double -- ^cashPayoff
+>>>PercentageStrikePayoff = PercentageStrikePayoff
+      OptionType -- ^type
+      Double -- ^moneyness
+>>>PlainVanillaPayoff = PlainVanillaPayoff
+      OptionType -- ^type
+      Double -- ^strike
+>BasketPayoff =
+    Average
+      Payoff -- ^p
+      Word -- ^n
+  | AverageMultiple
+      Payoff -- ^p
+      [Double] -- ^a
+  | Max
+      Payoff -- ^p
+  | Min
+      Payoff -- ^p
+  | Spread
+      Payoff -- ^p
+
+Exercise =
+    AmericanExercise
+      (Maybe Day) -- ^earliestDate
+      Day -- ^latestDate
+      Bool -- ^paoffAtExpiry
+    | Early ExerciseType Bool
+    | Vanilla ExerciseType
+    | European EuropeanExercise
+    | Bermudan BermudanExercise
+>EuropeanExercise = EuropeanExercise Day
+>BermudanExercise =
+    BermudanExercise [Day] Bool
+    | Swing SwingExercise
+>>SwingExercise = 
+    SwingListExercise [(Day, Word)] -- ^(dates, seconds)
+    | SwingIntervalExercise Day Day Word -- ^stepSizeSecs
+
 QlExercise | qlFreeExercise
+QlAmericanExercise | qlFreeAmericanExercise
 QlEuropeanExercise | qlFreeEuropeanExercise
 QlBermudanExercise | qlFreeBermudanExercise
-QlAmericanExercise | qlFreeAmericanExercise
 QlSwingExercise | qlFreeSwingExercise
 
 QlAffineModel as AffineModel | qlFreeAffineModel
@@ -122,207 +255,108 @@ QlYieldTermStructure as YieldTermStructure | qlFreeYieldTermStructure
 
 ---
 
-asInstrument :: (a `Derives` Instrument) => a -> IO Instrument
-asStochasticProcess :: (a `Derives` StochasticProcess) => a -> IO StochasticProcess
-asStochasticProcess1D :: (a `Derives` StochasticProcess) => a -> IO StochasticProcess
-instance BlackProcess `Derives` GeneralizedBlackScholesProcess where cast = qlBlackProcessAsGeneralizedBlackScholesProcess
-asGeneralizedBlackScholesProcess :: (a `Derives` GeneralizedBlackScholesProcess) => a -> IO GeneralizedBlackScholesProcess
-instance StochasticProcess1D `Derives` StochasticProcess where cast = qlStochasticProcess1DAsStochasticProcess
-instance ExtOUWithJumpsProcess `Derives` StochasticProcess where cast = qlExtOUWithJumpsProcessAsStochasticProcess
-instance GJRGARCHProcess `Derives` StochasticProcess where cast = qlGJRGARCHProcessAsStochasticProcess
-instance HestonProcess `Derives` StochasticProcess where cast = qlHestonProcessAsStochasticProcess
-instance BatesProcess `Derives` HestonProcess where cast = qlBatesProcessAsHestonProcess
-asHestonProcess :: (a `Derives` HestonProcess) => a -> IO HestonProcess
-instance HybridHestonHullWhiteProcess `Derives` StochasticProcess where cast = qlHybridHestonHullWhiteProcessAsStochasticProcess
-instance KlugeExtOUProcess `Derives` StochasticProcess where cast = qlKlugeExtOUProcessAsStochasticProcess
-instance LiborForwardModelProcess `Derives` StochasticProcess where cast = qlLiborForwardModelProcessAsStochasticProcess
-instance StochasticProcessArray `Derives` StochasticProcess where cast = qlStochasticProcessArrayAsStochasticProcess
-instance ExtendedOrnsteinUhlenbeckProcess `Derives` StochasticProcess1D where cast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
-instance GeneralizedBlackScholesProcess `Derives` StochasticProcess1D where cast = qlGeneralizedBlackScholesProcessAsStochasticProcess1D
-instance HullWhiteForwardProcess `Derives` StochasticProcess1D where cast = qlHullWhiteForwardProcessAsStochasticProcess1D
-instance HullWhiteProcess `Derives` StochasticProcess1D where cast = qlHullWhiteProcessAsStochasticProcess1D
-instance Merton76Process `Derives` StochasticProcess1D where cast = qlMerton76ProcessAsStochasticProcess1D
-instance VarianceGammaProcess `Derives` StochasticProcess1D where cast = qlVarianceGammaProcessAsStochasticProcess1D
-asLeg :: (a `Derives` Leg) => a -> IO Leg
-instance CouponLeg `Derives` Leg where cast = qlCouponLegAsLeg
-asTermStructure :: (a `Derives` TermStructure) => a -> IO TermStructure
-asIndex :: (a `Derives` Index) => a -> IO Index
-asBlackCalculator :: (a `Derives` BlackCalculator) => a -> IO BlackCalculator
-instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackScholesCalculatorAsBlackCalculator
-instance Forward `Derives` Instrument where cast = qlForwardAsInstrument
-asForward :: (a `Derives` Forward) => a -> IO Forward
-instance ForwardRateAgreement `Derives` Forward where cast = qlForwardRateAgreementAsForward
-instance FixedRateBondForward `Derives` Forward where cast = qlFixedRateBondForwardAsForward
-instance Option `Derives` Instrument where cast = qlOptionAsInstrument
-asOption :: (a `Derives` Option) => a -> IO Option
-asOneAssetOption :: (a `Derives` OneAssetOption) => a -> IO OneAssetOption
-instance CdsOption `Derives` Option where cast = qlCdsOptionAsOption
-instance MultiAssetOption `Derives` Option where cast = qlMultiAssetOptionAsOption
-instance OneAssetOption `Derives` Option where cast = qlOneAssetOptionAsOption
-instance BarrierOption `Derives` OneAssetOption where cast = qlBarrierOptionAsOneAssetOption
-instance DividendVanillaOption `Derives` OneAssetOption where cast = qlDividendVanillaOptionAsOneAssetOption
-instance ForwardVanillaOption `Derives` OneAssetOption where cast = qlForwardVanillaOptionAsOneAssetOption
-instance QuantoVanillaOption `Derives` OneAssetOption where cast = qlQuantoVanillaOptionAsOneAssetOption
-instance VanillaOption `Derives` OneAssetOption where cast = qlVanillaOptionAsOneAssetOption
-instance QuantoBarrierOption `Derives` Option where cast = qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
-instance MargrabeOption `Derives` MultiAssetOption where cast = qlMargrabeOptionAsMultiAssetOption
-instance QuantoForwardVanillaOption `Derives` Option where cast = qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
-instance Swaption `Derives` Option where cast = qlSwaptionAsOption
-instance Swap `Derives` Instrument where cast = qlSwapAsInstrument
-asSwap:: (a `Derives` Swap) => a -> IO Swap
-instance VanillaSwap `Derives` Swap where cast = qlVanillaSwapAsSwap
-instance AssetSwap `Derives` Swap where cast = qlAssetSwapAsSwap
-instance BMASwap `Derives` Swap where cast = qlBMASwapAsSwap
-instance OvernightIndexedSwap `Derives` Swap where cast = qlOvernightIndexedSwapAsSwap
-instance CreditDefaultSwap `Derives` Instrument where cast = qlCreditDefaultSwapAsInstrument
-instance CapFloor `Derives` Instrument where cast = qlCapFloorAsInstrument
-instance Bond `Derives` Instrument where cast = qlBondAsInstrument
-asBond :: (a `Derives` Bond) => a -> IO Bond
-instance FixedRateBond `Derives` Bond where cast = qlFixedRateBondAsBond
-instance CallableBond `Derives` Bond where cast = qlCallableBondAsBond
-instance ConvertibleBond `Derives` Bond where cast = qlConvertibleBondAsBond
-instance YieldTermStructure `Derives` TermStructure where cast = qlYieldTermStructureAsTermStructure
-instance FittedBondDiscountCurve `Derives` YieldTermStructure where cast = qlFittedBondDiscountCurveAsYieldTermStructure
-asYieldTermStructure :: (a `Derives` YieldTermStructure) => a -> IO YieldTermStructure
-instance SwapRateHelper `Derives` RateHelper where cast = qlSwapRateHelperAsRateHelper
-instance BondHelper `Derives` RateHelper where cast = qlBondHelperAsRateHelper
-instance OISRateHelper `Derives` RateHelper where cast = qlOISRateHelperAsRateHelper 
-asRateHelper :: (a `Derives` RateHelper) => a -> IO RateHelper
-asVolatilityTermStructure :: (a `Derives` VolatilityTermStructure) => a -> IO VolatilityTermStructure
-instance OptionletVolatilityStructure `Derives` VolatilityTermStructure where cast = qlOptionletVolatilityStructureAsVolatilityTermStructure
-instance VolatilityTermStructure `Derives` TermStructure where cast = qlVolatilityTermStructureAsTermStructure
-instance BlackVolTermStructure `Derives` VolatilityTermStructure where cast = qlBlackVolTermStructureAsVolatilityTermStructure
-instance SwaptionVolatilityStructure `Derives` VolatilityTermStructure where cast = qlSwaptionVolatilityStructureAsVolatilityTermStructure
-instance CapFloorTermVolSurface `Derives` VolatilityTermStructure where cast = qlCapFloorTermVolSurfaceAsVolatilityTermStructure
-instance LocalVolTermStructure `Derives` VolatilityTermStructure where cast = qlLocalVolTermStructureAsVolatilityTermStructure
-instance CallableBondVolatilityStructure `Derives` TermStructure where cast = qlCallableBondVolatilityStructureAsTermStructure;
-instance BlackVarianceCurve `Derives` BlackVolTermStructure where cast = qlBlackVarianceCurveAsBlackVolTermStructure
-asBlackVolTermStructure :: (a `Derives` BlackVolTermStructure) => a -> IO BlackVolTermStructure
-instance DefaultProbabilityTermStructure `Derives` TermStructure where cast = qlDefaultProbabilityTermStructureAsTermStructure
-instance InterestRateIndex `Derives` Index where cast = qlInterestRateIndexAsIndex
-asInterestRateIndex :: (a `Derives` InterestRateIndex) => a -> IO InterestRateIndex
-instance BMAIndex `Derives` InterestRateIndex where cast = qlBMAIndexAsInterestRateIndex
-instance SwapIndex `Derives` InterestRateIndex where cast = qlSwapIndexAsInterestRateIndex
-asSwapIndex :: (a `Derives` OvernightIndexedSwapIndex) => a -> IO OvernightIndexedSwapIndex
-instance OvernightIndexedSwapIndex `Derives` SwapIndex where cast = qlOvernightIndexedSwapIndexAsSwapIndex
-instance IborIndex `Derives` InterestRateIndex where cast = qlIborIndexAsInterestRateIndex
-asIborIndex :: (a `Derives` IborIndex) => a -> IO IborIndex
-instance OvernightIborIndex `Derives` IborIndex where cast = qlOvernightIndexAsIborIndex
-instance BlackCalibrationHelper `Derives` CalibrationHelper where cast = qlBlackCalibrationHelperAsCalibrationHelper
-asCalibrationHelper :: (a `Derives` CalibrationHelper) => a -> IO CalibrationHelper
-instance (AffineModelDescendant OneFactorAffineModel) `Derives` AffineModel where cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
-instance (AffineModelDescendant LiborForwardModel) `Derives` AffineModel where cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
-instance (AffineModelDescendant G2) `Derives` AffineModel where cast (AffineModelDescendant x) = qlG2AsAffineModel x
-asAffineModel :: (a `Derives` AffineModel) => a -> IO AffineModel
-asCalibratedModel :: (a `Derives` CalibratedModel) => a -> IO CalibratedModel
-asHestonModel :: (a `Derives` HestonModel) => a -> IO HestonModel
-asShortRateModel :: (a `Derives` ShortRateModel) => a -> IO ShortRateModel
-asOneFactorAffineModel :: (a `Derives` OneFactorAffineModel) => a -> IO OneFactorAffineModel
-asBatesModel :: (a `Derives` BatesModel) => a -> IO BatesModel
-asBatesDoubleExpModel :: (a `Derives` BatesDoubleExpModel) => a -> IO BatesDoubleExpModel
-instance HullWhite `Derives` OneFactorAffineModel where cast = qlHullWhiteAsOneFactorAffineModel
-instance G2 `Derives` ShortRateModel where cast = qlG2AsShortRateModel
-instance BatesDetJumpModel `Derives` BatesModel where cast = qlBatesDetJumpModelAsBatesModel
-instance BatesDoubleExpDetJumpModel `Derives` BatesDoubleExpModel where cast = qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
-instance BatesDoubleExpModel `Derives` HestonModel where cast = qlBatesDoubleExpModelAsHestonModel
-instance GJRGARCHModel `Derives` CalibratedModel where cast = qlGJRGARCHModelAsCalibratedModel
-instance HestonModel `Derives` CalibratedModel where cast = qlHestonModelAsCalibratedModel
-instance BatesModel `Derives` HestonModel where cast = qlBatesModelAsHestonModel
-instance LiborForwardModel `Derives` CalibratedModel where cast = qlLiborForwardModelAsCalibratedModel
-instance PiecewiseTimeDependentHestonModel `Derives` CalibratedModel where cast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
-instance ShortRateModel `Derives` CalibratedModel where cast = qlShortRateModelAsCalibratedModel
-instance OneFactorAffineModel `Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
+"a:" means an abstract class, i.e. interface only
 
-----
+Leg
+    CouponLeg : Leg | qlCouponLegAsLeg
+    alse there is a tryCast Leg -> CouponLeg
 
-{#fun qlBlackProcessAsGeneralizedBlackScholesProcess {`BlackProcess'} -> `GeneralizedBlackScholesProcess'#}
-{#fun qlStochasticProcess1DAsStochasticProcess {`StochasticProcess1D'} -> `StochasticProcess'#}
-{#fun qlExtOUWithJumpsProcessAsStochasticProcess {`ExtOUWithJumpsProcess'} -> `StochasticProcess'#}
-k{#fun qlGJRGARCHProcessAsStochasticProcess {`GJRGARCHProcess'} -> `StochasticProcess'#}
-{#fun qlHestonProcessAsStochasticProcess {`HestonProcess'} -> `StochasticProcess'#}
-{#fun qlBatesProcessAsHestonProcess {`BatesProcess'} -> `HestonProcess'#}
-{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess {`HybridHestonHullWhiteProcess'} -> `StochasticProcess'#}
-{#fun qlKlugeExtOUProcessAsStochasticProcess {`KlugeExtOUProcess'} -> `StochasticProcess'#}
-{#fun qlLiborForwardModelProcessAsStochasticProcess {`LiborForwardModelProcess'} -> `StochasticProcess'#}
-{#fun qlStochasticProcessArrayAsStochasticProcess {`StochasticProcessArray'} -> `StochasticProcess'#}
-{#fun qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D {`ExtendedOrnsteinUhlenbeckProcess'} -> `StochasticProcess1D'#}
-{#fun qlGeneralizedBlackScholesProcessAsStochasticProcess1D {`GeneralizedBlackScholesProcess'} -> `StochasticProcess1D'#}
-{#fun qlHullWhiteForwardProcessAsStochasticProcess1D {`HullWhiteForwardProcess'} -> `StochasticProcess1D'#}
-{#fun qlHullWhiteProcessAsStochasticProcess1D {`HullWhiteProcess'} -> `StochasticProcess1D'#}
-{#fun qlMerton76ProcessAsStochasticProcess1D {`Merton76Process'} -> `StochasticProcess1D'#}
-{#fun qlVarianceGammaProcessAsStochasticProcess1D {`VarianceGammaProcess'} -> `StochasticProcess1D'#}
-{#fun qlCouponLegAsLeg {`CouponLeg'} -> `Leg'#}
-{#fun qlEuropeanExerciseAsExercise {`QlEuropeanExercise'} -> `QlExercise'#}
-{#fun qlAmericanExerciseAsExercise {`QlAmericanExercise'} -> `QlExercise'#}
-{#fun qlSwingExerciseAsExercise {`QlSwingExercise'} -> `QlExercise'#}
-{#fun qlBermudanExerciseAsExercise {`QlBermudanExercise'} -> `QlExercise'#}
-{#fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
-{#fun qlBasketPayoffAsPayoff {`QlBasketPayoff'} -> `QlPayoff'#}
-{#fun qlTypePayoffAsPayoff {`QlTypePayoff'} -> `QlPayoff'#}
-{#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} -> `QlTypePayoff'#}
-{#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} -> `QlStrikedTypePayoff'#}
-{#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
-{#fun qlBlackScholesCalculatorAsBlackCalculator {`BlackScholesCalculator'} -> `BlackCalculator'#}
-{#fun qlForwardAsInstrument {`Forward'} -> `Instrument' peekObject*#}
-{#fun qlForwardRateAgreementAsForward {`ForwardRateAgreement'} -> `Forward'#}
-{#fun qlFixedRateBondForwardAsForward {`FixedRateBondForward'} -> `Forward'#}
-{#fun qlOptionAsInstrument {`Option'} -> `Instrument' peekObject*#}
-{#fun qlCdsOptionAsOption {`CdsOption'} -> `Option'#}
-{#fun qlMultiAssetOptionAsOption {`MultiAssetOption'} -> `Option'#}
-{#fun qlOneAssetOptionAsOption {`OneAssetOption'} -> `Option'#}
-{#fun qlBarrierOptionAsOneAssetOption {`BarrierOption'} -> `OneAssetOption'#}
-{#fun qlDividendVanillaOptionAsOneAssetOption {`DividendVanillaOption'} -> `OneAssetOption'#}
-{#fun qlForwardVanillaOptionAsOneAssetOption {`ForwardVanillaOption'} -> `OneAssetOption'#}
-{#fun qlQuantoVanillaOptionAsOneAssetOption {`QuantoVanillaOption'} -> `OneAssetOption'#}
-{#fun qlVanillaOptionAsOneAssetOption {`VanillaOption'} -> `OneAssetOption'#}
-{#fun qlQuantoBarrierOptionAsBarrierOption {`QuantoBarrierOption'} -> `BarrierOption'#}
-{#fun qlMargrabeOptionAsMultiAssetOption {`MargrabeOption'} -> `MultiAssetOption'#}
-{#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption {`QuantoForwardVanillaOption'} -> `ForwardVanillaOption'#}
-{#fun qlSwaptionAsOption {`Swaption'} -> `Option' peekObject*#}
-{#fun qlSwapAsInstrument {`Swap'} -> `Instrument' peekObject*#}
-{#fun qlVanillaSwapAsSwap {`VanillaSwap'} -> `Swap'#}
-{#fun qlAssetSwapAsSwap {`AssetSwap'} -> `Swap'#}
-{#fun qlBMASwapAsSwap {`BMASwap'} -> `Swap'#}
-{#fun qlOvernightIndexedSwapAsSwap {`OvernightIndexedSwap'} -> `Swap'#}
-{#fun qlCreditDefaultSwapAsInstrument {`CreditDefaultSwap'} -> `Instrument' peekObject*#}
-{#fun qlCapFloorAsInstrument {`CapFloor'} -> `Instrument' peekObject*#}
-{#fun qlBondAsInstrument {`Bond'} -> `Instrument' peekObject*#}
-{#fun qlFixedRateBondAsBond {`FixedRateBond'} -> `Bond'#}
-{#fun qlCallableBondAsBond {`CallableBond'} -> `Bond'#}
-{#fun qlConvertibleBondAsBond {`ConvertibleBond'} -> `Bond'#}
-{#fun qlYieldTermStructureAsTermStructure {`YieldTermStructure'} -> `TermStructure' peekObject*#}
-{#fun qlFittedBondDiscountCurveAsYieldTermStructure {`FittedBondDiscountCurve'} -> `YieldTermStructure'#}
-{#fun qlSwapRateHelperAsRateHelper {`SwapRateHelper'} -> `RateHelper'#}
-{#fun qlBondHelperAsRateHelper {`BondHelper'} -> `RateHelper'#}
-{#fun qlOISRateHelperAsRateHelper {`OISRateHelper'} -> `RateHelper'#}
-{#fun qlOptionletVolatilityStructureAsVolatilityTermStructure {`OptionletVolatilityStructure'} -> `VolatilityTermStructure'#}
-{#fun qlVolatilityTermStructureAsTermStructure {`VolatilityTermStructure'} -> `TermStructure' peekObject*#}
-{#fun qlBlackVolTermStructureAsVolatilityTermStructure {`BlackVolTermStructure'} -> `VolatilityTermStructure'#}
-{#fun qlSwaptionVolatilityStructureAsVolatilityTermStructure {`SwaptionVolatilityStructure'} -> `VolatilityTermStructure'#}
-{#fun qlCapFloorTermVolSurfaceAsVolatilityTermStructure {`CapFloorTermVolSurface'} -> `VolatilityTermStructure'#}
-{#fun qlLocalVolTermStructureAsVolatilityTermStructure {`LocalVolTermStructure'} -> `VolatilityTermStructure'#}
-{#fun qlBlackVarianceCurveAsBlackVolTermStructure {`BlackVarianceCurve'} -> `BlackVolTermStructure'#}
-{#fun qlCallableBondVolatilityStructureAsTermStructure {`CallableBondVolatilityStructure'} -> `TermStructure' peekObject*#}
-{#fun qlDefaultProbabilityTermStructureAsTermStructure {`DefaultProbabilityTermStructure'} -> `TermStructure' peekObject*#}
-{#fun qlInterestRateIndexAsIndex {`InterestRateIndex'} -> `Index' peekObject*#}
-{#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'} -> `InterestRateIndex'#}
-{#fun qlSwapIndexAsInterestRateIndex {`SwapIndex'} -> `InterestRateIndex'#}
-{#fun qlOvernightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'} -> `SwapIndex'#}
-{#fun qlIborIndexAsInterestRateIndex {`IborIndex'} -> `InterestRateIndex'#}
-{#fun qlOvernightIndexAsIborIndex {`OvernightIborIndex'} -> `IborIndex'#}
-{#fun qlBlackCalibrationHelperAsCalibrationHelper {`BlackCalibrationHelper'} -> `CalibrationHelper'#}
-{#fun qlOneFactorAffineModelAsAffineModel {`OneFactorAffineModel'} -> `AffineModel'#}
-{#fun qlLiborForwardModelAsAffineModel {`LiborForwardModel'} -> `AffineModel'#}
-{#fun qlHullWhiteAsOneFactorAffineModel {`HullWhite'} -> `OneFactorAffineModel'#}
-{#fun qlG2AsAffineModel {`G2'} -> `AffineModel'#}
-{#fun qlG2AsShortRateModel {`G2'} -> `ShortRateModel'#}
-{#fun qlBatesDetJumpModelAsBatesModel {`BatesDetJumpModel'} -> `BatesModel'#}
-{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel {`BatesDoubleExpDetJumpModel'} -> `BatesDoubleExpModel'#}
-{#fun qlBatesDoubleExpModelAsHestonModel {`BatesDoubleExpModel'} -> `HestonModel'#}
-{#fun qlGJRGARCHModelAsCalibratedModel {`GJRGARCHModel'} -> `CalibratedModel'#}
-{#fun qlHestonModelAsCalibratedModel {`HestonModel'} -> `CalibratedModel'#}
-{#fun qlBatesModelAsHestonModel {`BatesModel'} -> `HestonModel'#}
-{#fun qlLiborForwardModelAsCalibratedModel {`LiborForwardModel'} -> `CalibratedModel'#}
-{#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel {`PiecewiseTimeDependentHestonModel'} -> `CalibratedModel'#}
-{#fun qlShortRateModelAsCalibratedModel {`ShortRateModel'} -> `CalibratedModel'#}
-{#fun qlOneFactorAffineModelAsShortRateModel {`OneFactorAffineModel'} -> `ShortRateModel'#}
+a:Instrument
+    a:Forward : Instrument | qlForwardAsInstrument
+	ForwardRateAgreement : Forward | qlForwardRateAgreementAsForward
+	FixedRateBondForward : Forward | qlFixedRateBondForwardAsForward
+    a:Option : Instrument | qlOptionAsInstrument
+	CdsOption : Option | qlCdsOptionAsOption
+	MultiAssetOption : Option | qlMultiAssetOptionAsOption
+	    MargrabeOption : MultiAssetOption | qlMargrabeOptionAsMultiAssetOption
+	OneAssetOption : Option | qlOneAssetOptionAsOption
+	    BarrierOption : OneAssetOption | qlBarrierOptionAsOneAssetOption
+	    DividendVanillaOption : OneAssetOption | qlDividendVanillaOptionAsOneAssetOption
+	    ForwardVanillaOption : OneAssetOption | qlForwardVanillaOptionAsOneAssetOption
+	    QuantoVanillaOption : OneAssetOption | qlQuantoVanillaOptionAsOneAssetOption
+	    VanillaOption : OneAssetOption | qlVanillaOptionAsOneAssetOption
+	QuantoBarrierOption : Option | qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
+	QuantoForwardVanillaOption : Option | qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
+	Swaption : Option | qlSwaptionAsOption
+    a:Swap : Instrument | qlSwapAsInstrument
+	VanillaSwap : Swap | qlVanillaSwapAsSwap
+	AssetSwap : Swap | qlAssetSwapAsSwap
+	BMASwap : Swap | qlBMASwapAsSwap
+	OvernightIndexedSwap : Swap | qlOvernightIndexedSwapAsSwap
+    CreditDefaultSwap : Instrument | qlCreditDefaultSwapAsInstrument
+    CapFloor : Instrument | qlCapFloorAsInstrument
+    Bond : Instrument | qlBondAsInstrument
+	ConvertibleBond : Bond | qlConvertibleBondAsBond
+    	FixedRateBond : Bond | qlFixedRateBondAsBond
+	CallableBond : Bond | qlCallableBondAsBond
+
+a:Index
+    a:InterestRateIndex : Index | qlInterestRateIndexAsIndex
+	BMAIndex : InterestRateIndex | qlBMAIndexAsInterestRateIndex
+    	SwapIndex : InterestRateIndex | qlSwapIndexAsInterestRateIndex
+	    OvernightIndexedSwapIndex : SwapIndex | qlOvernightIndexedSwapIndexAsSwapIndex
+	IborIndex : InterestRateIndex | qlIborIndexAsInterestRateIndex
+	    OvernightIborIndex : IborIndex | qlOvernightIndexAsIborIndex
+
+RateHelper
+    SwapRateHelper : RateHelper | qlSwapRateHelperAsRateHelper
+    BondHelper : RateHelper | qlBondHelperAsRateHelper
+    OISRateHelper : RateHelper | qlOISRateHelperAsRateHelper 
+
+a:CalibrationHelper
+    BlackCalibrationHelper : CalibrationHelper | qlBlackCalibrationHelperAsCalibrationHelper
+
+a:TermStructure
+    YieldTermStructure : TermStructure | qlYieldTermStructureAsTermStructure
+	FittedBondDiscountCurve : YieldTermStructure | qlFittedBondDiscountCurveAsYieldTermStructure
+    VolatilityTermStructure : TermStructure | qlVolatilityTermStructureAsTermStructure
+	OptionletVolatilityStructure : VolatilityTermStructure | qlOptionletVolatilityStructureAsVolatilityTermStructure
+	BlackVolTermStructure : VolatilityTermStructure | qlBlackVolTermStructureAsVolatilityTermStructure
+	    BlackVarianceCurve : BlackVolTermStructure | qlBlackVarianceCurveAsBlackVolTermStructure
+	SwaptionVolatilityStructure : VolatilityTermStructure | qlSwaptionVolatilityStructureAsVolatilityTermStructure
+	CapFloorTermVolSurface : VolatilityTermStructure | qlCapFloorTermVolSurfaceAsVolatilityTermStructure
+	LocalVolTermStructure : VolatilityTermStructure | qlLocalVolTermStructureAsVolatilityTermStructure
+    CallableBondVolatilityStructure : TermStructure | qlCallableBondVolatilityStructureAsTermStructure;
+    DefaultProbabilityTermStructure : TermStructure | qlDefaultProbabilityTermStructureAsTermStructure
+
+BlackCalculator
+    BlackScholesCalculator : BlackCalculator | qlBlackScholesCalculatorAsBlackCalculator
+
+
+StochasticProcess
+    StochasticProcess1D : StochasticProcess | qlStochasticProcess1DAsStochasticProcess
+	ExtendedOrnsteinUhlenbeckProcess : StochasticProcess1D | qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
+	GeneralizedBlackScholesProcess : StochasticProcess1D | qlGeneralizedBlackScholesProcessAsStochasticProcess1D
+	    BlackProcess : GeneralizedBlackScholesProcess | qlBlackProcessAsGeneralizedBlackScholesProcess
+	HullWhiteForwardProcess : StochasticProcess1D | qlHullWhiteForwardProcessAsStochasticProcess1D
+	HullWhiteProcess : StochasticProcess1D | qlHullWhiteProcessAsStochasticProcess1D
+	Merton76Process : StochasticProcess1D | qlMerton76ProcessAsStochasticProcess1D
+	VarianceGammaProcess : StochasticProcess1D | qlVarianceGammaProcessAsStochasticProcess1D
+    ExtOUWithJumpsProcess : StochasticProcess | qlExtOUWithJumpsProcessAsStochasticProcess
+    GJRGARCHProcess : StochasticProcess | qlGJRGARCHProcessAsStochasticProcess
+    HestonProcess : StochasticProcess | qlHestonProcessAsStochasticProcess
+	BatesProcess : HestonProcess | qlBatesProcessAsHestonProcess
+    HybridHestonHullWhiteProcess : StochasticProcess | qlHybridHestonHullWhiteProcessAsStochasticProcess
+    KlugeExtOUProcess : StochasticProcess | qlKlugeExtOUProcessAsStochasticProcess
+    LiborForwardModelProcess : StochasticProcess | qlLiborForwardModelProcessAsStochasticProcess
+    StochasticProcessArray : StochasticProcess | qlStochasticProcessArrayAsStochasticProcess
+
+CalibratedModel
+    ShortRateModel : CalibratedModel | qlShortRateModelAsCalibratedModel
+	OneFactorAffineModel : ShortRateModel | qlOneFactorAffineModelAsShortRateModel
+	    HullWhite : OneFactorAffineModel | qlHullWhiteAsOneFactorAffineModel
+	G2 : ShortRateModel | qlG2AsShortRateModel
+    LiborForwardModel : CalibratedModel | qlLiborForwardModelAsCalibratedModel
+    PiecewiseTimeDependentHestonModel : CalibratedModel | qlPiecewiseTimeDependentHestonModelAsCalibratedModel
+    HestonModel : CalibratedModel | qlHestonModelAsCalibratedModel
+	BatesDoubleExpModel : HestonModel | qlBatesDoubleExpModelAsHestonModel
+	    BatesDoubleExpDetJumpModel : BatesDoubleExpModel | qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
+	BatesModel : HestonModel | qlBatesModelAsHestonModel
+	    BatesDetJumpModel : BatesModel | qlBatesDetJumpModelAsBatesModel
+    GJRGARCHModel : CalibratedModel | qlGJRGARCHModelAsCalibratedModel
+
+a:AffineModel
+    (AffineModelDescendant OneFactorAffineModel) : AffineModel | cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
+    (AffineModelDescendant LiborForwardModel) : AffineModel | cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
+    (AffineModelDescendant G2) : AffineModel | cast (AffineModelDescendant x) = qlG2AsAffineModel x
+
