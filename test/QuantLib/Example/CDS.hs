@@ -37,13 +37,13 @@ run = do
   setEvaluationDate $ Just tod
   flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
-  ts <- flatForward tod (asQuote flatRate) dc Continuous Annual
+  ts <- flatForward tod flatRate dc Continuous Annual
   mat <- mapM (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months))
   maturities <- mapM (\d -> adjust cal d Following) mat
 
   instruments <- mapM
     (\t -> do
-      q <- asQuote <$> simpleQuote quotedSpread
+      q <- simpleQuote quotedSpread
       spreadCdsHelper q (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
       [3, 6, 12, 24]
 

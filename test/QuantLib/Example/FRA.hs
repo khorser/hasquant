@@ -42,8 +42,7 @@ run = do
       eom = I.endOfMonth eu3m
   settleDate <- advance fraCalendar todaysDate (fromIntegral fixDays, Days) Following False
 
-  simpleFraQuotes <- mapM simpleQuote quotes
-  let fraQuotes = map asQuote simpleFraQuotes
+  fraQuotes <- mapM simpleQuote quotes
 
   fraDayCounter <- I.dayCounter eu3mRI
 
@@ -55,7 +54,7 @@ run = do
   fraTS <- piecewiseYieldCurve settleDate fraInstruments tsdc [] Discount LogLinear
 
   it1 <- valuateFRA convention fraDayCounter settleDate fraTS
-  forM_ simpleFraQuotes $ \sq -> value (asQuote sq) >>= \v -> setValue sq (v + bpsShift)
+  forM_ fraQuotes $ \sq -> value sq >>= \v -> setValue sq (v + bpsShift)
   it2 <- valuateFRA convention fraDayCounter settleDate fraTS
 
   return $ Result it1 it2

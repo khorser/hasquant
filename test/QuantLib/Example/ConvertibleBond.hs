@@ -62,17 +62,17 @@ run = do
   volQ <- simpleQuote vol
   creditSpreadQ <- simpleQuote spreadRate
 
-  ts <- flatForward settl (asQuote riskFreeQ) dc Continuous Annual
-  dts <- flatForward settl (asQuote divQ) dc Continuous Annual
-  vts <- blackConstantVol settl cal (asQuote volQ) dc
+  ts <- flatForward settl riskFreeQ dc Continuous Annual
+  dts <- flatForward settl divQ dc Continuous Annual
+  vts <- blackConstantVol settl cal volQ dc
 
-  bsmProc <- blackScholesMertonProcess (asQuote underQ) dts ts vts EulerDiscretization
+  bsmProc <- blackScholesMertonProcess underQ dts ts vts EulerDiscretization
 
   let euEx = European $ EuropeanExercise exec
       amEx = AmericanExercise (Just settl) exec False
-  euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities (asQuote creditSpreadQ)
+  euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities creditSpreadQ
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
-  amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities (asQuote creditSpreadQ)
+  amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
 
   [jr, crr, ad, tr, ti, lr, j] <- mapM

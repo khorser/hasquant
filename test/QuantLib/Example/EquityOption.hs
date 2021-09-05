@@ -42,12 +42,12 @@ run = do
   let europeanEx = European $ EuropeanExercise maturity
       bermudanEx = Bermudan $ BermudanExercise exDates False
       americanEx = AmericanExercise Nothing maturity False
-  underQ <- asQuote <$> simpleQuote under
-  riskFreeQ <- asQuote <$> simpleQuote riskFreeRate
+  underQ <- simpleQuote under
+  riskFreeQ <- simpleQuote riskFreeRate
   ts <- flatForward settl riskFreeQ dc Continuous Annual
-  divQ <- asQuote <$> simpleQuote dividend
+  divQ <- simpleQuote dividend
   divTS <- flatForward settl divQ dc Continuous Annual
-  volQ <- asQuote <$> simpleQuote vol
+  volQ <- simpleQuote vol
   volTS <- blackConstantVol settl cal volQ dc
   let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization

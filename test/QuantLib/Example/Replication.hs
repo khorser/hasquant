@@ -30,10 +30,9 @@ data Result = Result
 run :: IO Result
 run = do
   setEvaluationDate $ Just tod
-  under <- simpleQuote (head underlyingValues)
-  let underlyingQuote = asQuote under
-  riskFreeRate <- asQuote <$> simpleQuote 0.04
-  vol <- asQuote <$> simpleQuote 0.20
+  underlyingQuote <- simpleQuote (head underlyingValues)
+  riskFreeRate <- simpleQuote 0.04
+  vol <- simpleQuote 0.20
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
   flatRate <- flatForward' 0 cal riskFreeRate dc Continuous Annual
@@ -53,17 +52,17 @@ run = do
   put2 <- europeanOption (PlainVanilla $ PlainVanillaPayoff Put barrier) ex >>= asOneAssetOption >>= asOption >>= asInstrument
   setPricingEngine put2 europeanEngine
   let p = [(put1, 1), (digitalPut, barrier-strike), (put2, -1)]
-  portfolio1 <- foldM (addInstrument europeanEngine under) p
+  portfolio1 <- foldM (addInstrument europeanEngine underlyingQuote) p
     (zip maturities1 killDates1) >>= composite
-  portfolio2 <- foldM (addInstrument europeanEngine under) p
+  portfolio2 <- foldM (addInstrument europeanEngine underlyingQuote) p
     (zip maturities2 killDates2) >>= composite
-  portfolio3 <- foldM (addInstrument europeanEngine under) p
+  portfolio3 <- foldM (addInstrument europeanEngine underlyingQuote) p
     (zip maturities3 killDates3) >>= composite
 
   setEvaluationDate $ Just tod
 
   [npv1, npv2, npv3] <- mapM
-    (\v -> setValue under v
+    (\v -> setValue underlyingQuote v
       >> mapM npv [refInstrument, portfolio1, portfolio2, portfolio3])
     underlyingValues
 
@@ -91,17 +90,17 @@ run = do
         killDates3 = map (\i -> addDays ((i-1)*7) tod) i3
 
 
-        addInstrument engine under pp (m, k) = do
-          (p, r) <- nextComponent engine under pp m k
+        addInstrument engine underlyingQuote pp (m, k) = do
+          (p, r) <- nextComponent engine underlyingQuote pp m k
           return $ (p, r) : pp
 
-        nextComponent engine under p innerMaturity killDate = do
+        nextComponent engine underlyingQuote p innerMaturity killDate = do
           let innerExercise = European $ EuropeanExercise innerMaturity
           let innerPayoff = PlainVanilla $ PlainVanillaPayoff Put barrier
           putn <- europeanOption innerPayoff innerExercise >>= asOneAssetOption >>= asOption >>= asInstrument
           setPricingEngine putn engine
           setEvaluationDate $ Just killDate
-          void $ setValue under barrier
+          void $ setValue underlyingQuote barrier
           portfolioValue <- composite p >>= npv
           putValue <- npv putn
           return (putn, -portfolioValue / putValue)

@@ -73,7 +73,7 @@ run = do
   setEvaluationDate (Just todaysDate)
   discDepoHelpers <- mapM
     (\(q, p) -> do
-      r <- asQuote <$> simpleQuote q
+      r <- simpleQuote q
       depositRateHelper
         r
         (p, Months)
@@ -83,8 +83,7 @@ run = do
         True
         actual365Fixeddc)
     $ zip zcQuotes zcTenors
-  quotes' <- mapM simpleQuote marketQuotes
-  let quotes = map asQuote quotes'
+  quotes <- mapM simpleQuote marketQuotes
   discBondHelpers <- mapM
     (\(q, c, i, m) -> do
       s <- schedule i m (6, Months) usGovBondCal Unadjusted
@@ -137,7 +136,7 @@ run = do
   depoLiborHelpers <-
     mapM (\(q, p) ->
       do
-        quote <- asQuote <$> simpleQuote q
+        quote <- simpleQuote q
         depositRateHelper quote p fixDays targetCal
                                        ModifiedFollowing
                                        True actual360dc) $
@@ -148,7 +147,7 @@ run = do
   swapLiborHelpers <-
     mapM (\(q, n) ->
       do
-        quote <- asQuote <$> simpleQuote q
+        quote <- simpleQuote q
         swapRateHelper' quote (n, Years) targetCal Annual Unadjusted
                               thirty360Europeandc eur6M Nothing (1, Days) Nothing >>= asRateHelper) $
           zip liborSwapQuotes liborSwapTerms
@@ -190,7 +189,7 @@ run = do
                                    (Just $ fromGregorian 2005 10 21)
   volval <- simpleQuote 0
   vol <- constantOptionletVolatility'
-          settlementDays targetCal ModifiedFollowing (asQuote volval) actual365Fixeddc
+          settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
   cf <- cashFlows floater
   CF.blackIborCouponPricer vol >>= CF.setCouponPricer cf
 

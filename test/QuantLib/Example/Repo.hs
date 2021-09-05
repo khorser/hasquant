@@ -40,8 +40,7 @@ run = do
   bondCalendar <- calendar Null
   bondDayCountConvention <- dayCounter Thirty360BondBasis
   setEvaluationDate $ Just repoSettlementDate
-  bondSimpleQuote <- simpleQuote 0.01
-  let bondQuote = asQuote bondSimpleQuote
+  bondQuote <- simpleQuote 0.01
   bondCurve <- flatForward repoSettlementDate bondQuote bondDayCountConvention IR.Compounded bondCouponFrequency
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
@@ -53,8 +52,8 @@ run = do
   -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
   i <- asInstrument b
   discountingBondEngine bondCurve Nothing >>= setPricingEngine i
-  void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondSimpleQuote
-  repoQuote <- asQuote <$> simpleQuote repoRate
+  void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
+  repoQuote <- simpleQuote repoRate
   repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
     repoCompounding repoCompoundFreq
   bondFwd <- fixedRateBondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike

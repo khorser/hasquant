@@ -61,13 +61,13 @@ instance ForeignObject DefaultProbabilityHelper where
 
 {#fun qlDefaultProbabilityTermStructureAsTermStructure {`DefaultProbabilityTermStructure'} ->`TermStructure'peekObject*#}
 
-{#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve {`DefaultProbabilityTermStructure', withQuote*`Quote', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve {`DefaultProbabilityTermStructure', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
-{#fun qlFlatHazardRate1 as flatHazardRate' {fromIntegral`Word', withCalendar*`Calendar', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlFlatHazardRate1 as flatHazardRate' {fromIntegral`Word', withCalendar*`Calendar', withQuote*`GenQuote a', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
-{#fun qlFlatHazardRate as flatHazardRate {withDay*`Day', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlFlatHazardRate as flatHazardRate {withDay*`Day', withQuote*`GenQuote a', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
-{#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve {`DefaultProbabilityTermStructure', withQuote*`Quote', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve {`DefaultProbabilityTermStructure', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
 {#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability {`DefaultProbabilityTermStructure' , withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-} ->`Double'#}
 
@@ -93,34 +93,34 @@ instance ForeignObject DefaultProbabilityHelper where
 -- |probability of default between two given times
 {#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetween' {`DefaultProbabilityTermStructure',`Double',`Double',`Bool', preErrorCheck-`String'errorCheck*-} ->`Double'#}
 
-{#fun qlSpreadCdsHelper as spreadCdsHelper {withQuote*`Quote', fromEnumQuantity`(Word, TimeUnit)'&,`Int', withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule', withDayCounter*`DayCounter',`Double',`YieldTermStructure',`Bool',`Bool', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityHelper'#}
+{#fun qlSpreadCdsHelper as spreadCdsHelper {withQuote*`GenQuote a', fromEnumQuantity`(Word, TimeUnit)'&,`Int', withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule', withDayCounter*`DayCounter',`Double',`YieldTermStructure',`Bool',`Bool', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityHelper'#}
 
 -- |the upfront must be quoted in fractional units.
-{#fun qlUpfrontCdsHelper as upfrontCdsHelper {withQuote*`Quote',`Double', fromEnumQuantity`(Word, TimeUnit)'&,`Int', withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule', withDayCounter*`DayCounter',`Double',`YieldTermStructure', fromIntegral`Word',`Bool',`Bool', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityHelper'#}
+{#fun qlUpfrontCdsHelper as upfrontCdsHelper {withQuote*`GenQuote a',`Double', fromEnumQuantity`(Word, TimeUnit)'&,`Int', withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule', withDayCounter*`DayCounter',`Double',`YieldTermStructure', fromIntegral`Word',`Bool',`Bool', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityHelper'#}
 
 interpolatedDefaultDensityCurve :: [Day] -> [Double] -> DayCounter -> Calendar -> [(Quote, Day)] -> Interpolation -> IO DefaultProbabilityTermStructure
 interpolatedDefaultDensityCurve d dens dc c q i = uncurry' (qlInterpolatedDefaultDensityCurve d dens dc c qq qd) (qlInterpolation i) where
   (qq, qd) = unzip q
-{#fun qlInterpolatedDefaultDensityCurve {withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[Quote]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlInterpolatedDefaultDensityCurve {withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[GenQuote a]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
 interpolatedHazardRateCurve :: [Day] -> [Double] -> DayCounter -> Calendar -> [(Quote, Day)] -> Interpolation -> IO DefaultProbabilityTermStructure
 interpolatedHazardRateCurve d dens dc c q i = uncurry' (qlInterpolatedHazardRateCurve d dens dc c qq qd) (qlInterpolation i)  where
   (qq, qd) = unzip q
-{#fun qlInterpolatedHazardRateCurve {withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[Quote]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlInterpolatedHazardRateCurve {withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[GenQuote a]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
 interpolatedSurvivalProbabilityCurve :: [Day] -> [Double] -> DayCounter -> Calendar -> [(Quote, Day)] -> Interpolation -> IO DefaultProbabilityTermStructure
 interpolatedSurvivalProbabilityCurve d dens dc c q i = uncurry' (qlInterpolatedSurvivalProbabilityCurve d dens dc c qq qd) (qlInterpolation i) where
   (qq, qd) = unzip q
-{#fun qlInterpolatedSurvivalProbabilityCurve {withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[Quote]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlInterpolatedSurvivalProbabilityCurve {withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[GenQuote a]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
 piecewiseDefaultCurve :: Day -> [DefaultProbabilityHelper] -> DayCounter -> [(Quote, Day)] -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
 piecewiseDefaultCurve d h dc q t i = uncurry' (qlPiecewiseDefaultCurve d h dc qq qd t) (qlInterpolation i) where
   (qq, qd) = unzip q
-{#fun qlPiecewiseDefaultCurve {withDay*`Day', withObjectArray*`[DefaultProbabilityHelper]'&, withDayCounter*`DayCounter', withQuoteArray*`[Quote]'&, withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlPiecewiseDefaultCurve {withDay*`Day', withObjectArray*`[DefaultProbabilityHelper]'&, withDayCounter*`DayCounter', withQuoteArray*`[GenQuote a]'&, withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
 piecewiseDefaultCurve' :: Word -> Calendar -> [DefaultProbabilityHelper] -> DayCounter -> [(Quote, Day)] -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
 piecewiseDefaultCurve' d c h dc q t i = uncurry' (qlPiecewiseDefaultCurve1 d c h dc qq qd t) (qlInterpolation i) where
   (qq, qd) = unzip q
-{#fun qlPiecewiseDefaultCurve1 {fromIntegral`Word', withCalendar*`Calendar', withObjectArray*`[DefaultProbabilityHelper]'&, withDayCounter*`DayCounter', withQuoteArray*`[Quote]'&, withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
+{#fun qlPiecewiseDefaultCurve1 {fromIntegral`Word', withCalendar*`Calendar', withObjectArray*`[DefaultProbabilityHelper]'&, withDayCounter*`DayCounter', withQuoteArray*`[GenQuote a]'&, withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-} ->`DefaultProbabilityTermStructure'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -41,7 +41,7 @@ run :: IO Result
 run = do
   cal <- calendar TARGET
   setEvaluationDate $ Just tod
-  flatRate <- asQuote <$> simpleQuote 0.04875825
+  flatRate <- simpleQuote 0.04875825 >>= asQuote -- just to test that explicit casting works
   dc365 <- dayCounter Actual365FixedStandard
   ts <- flatForward settl flatRate dc365 Continuous Annual
   fixedDC <- dayCounter Thirty360European
@@ -142,7 +142,7 @@ run = do
           index6mRI <- IRI.asInterestRateIndex index6m
           dc <- IRI.dayCounter index6mRI
           tenr <- IRI.tenor index6mRI
-          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) (asQuote vol) index6m tenr dc dc ts Model.RelativePriceError
+          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) vol index6m tenr dc dc ts Model.RelativePriceError
           tms <- Model.times h
           return (h, tms)
 
