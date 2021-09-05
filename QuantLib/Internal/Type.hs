@@ -311,7 +311,11 @@ foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Pt
 --withMaybeQuote :: Maybe Quote -> (Ptr CQuote -> IO b) -> IO b
 --withMaybeQuote = withMaybeComplexType getQuote
 
-data GenQuote a = GenQuote (ForeignPtr a) (Meta2 a CQuote)
+--data GenQuote a = GenQuote (ForeignPtr a) (Meta2 a CQuote)
+
+data GenObject c a = GenObject (ForeignPtr a) (Meta2 a c)
+
+newtype GenQuote a = GenQuote (GenObject CQuote a)
 
 type Quote = GenQuote CQuote
 type SimpleQuote = GenQuote CSimpleQuote
@@ -323,19 +327,19 @@ genSimpleQuoteMeta :: Meta2 CSimpleQuote CQuote
 genSimpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
 
 asQuote :: GenQuote a -> IO (GenQuote CQuote)
-asQuote (GenQuote p (Meta2 _ k)) = withForeignPtr p (\qq -> GenQuote <$> (k qq >>= newForeignPtr (_finalizer genQuoteMeta)) <*> return genQuoteMeta)
+asQuote (GenQuote (GenObject p (Meta2 _ k))) = withForeignPtr p (\qq -> GenQuote <$> (GenObject <$> (k qq >>= newForeignPtr (_finalizer genQuoteMeta)) <*> return genQuoteMeta))
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
-withQuote (GenQuote p (Meta2 _ k)) ff = withForeignPtr p (k >=> ff)
+withQuote (GenQuote (GenObject p (Meta2 _ k))) ff = withForeignPtr p (k >=> ff)
 
 withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
-withSimpleQuote (GenQuote p _ ) = withForeignPtr p
+withSimpleQuote (GenQuote (GenObject p _ )) = withForeignPtr p
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> newForeignPtr (_finalizer genQuoteMeta) p <*> return genQuoteMeta
+peekQuote p = GenQuote <$> (GenObject <$> newForeignPtr (_finalizer genQuoteMeta) p <*> return genQuoteMeta)
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> newForeignPtr (_finalizer genSimpleQuoteMeta) p <*> return genSimpleQuoteMeta
+peekSimpleQuote p = GenQuote <$> (GenObject <$> newForeignPtr (_finalizer genSimpleQuoteMeta) p <*> return genSimpleQuoteMeta)
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
 withQuoteArray x f = withMany withQuote x (`withArray` (\px -> f (fromIntegral $ length x, px)))
