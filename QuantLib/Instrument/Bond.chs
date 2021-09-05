@@ -86,8 +86,7 @@ import QuantLib.Internal.TermStructure
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(TimeUnit, DateGenerationRule, Frequency)
-{#import QuantLib.CashFlow#}(Leg, DurationType)
-import QuantLib.Internal.CashFlow
+{#import QuantLib.CashFlow#}(DurationType)
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.Index.InterestRate#}(IborIndex)
 import QuantLib.Internal.Index
@@ -99,6 +98,7 @@ import QuantLib.Internal.Enum
 
 #include "ql.h"
 
+{#pointer *Leg foreign -> CLeg nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
@@ -143,11 +143,11 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 
 -- |constructor for amortizing or non-amortizing bonds.
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
-{#fun qlBond as bond {fromIntegral`Word', withCalendar*`Calendar', withMaybeDay*`Maybe Day',`Leg', preErrorCheck-`String'errorCheck*-} ->`Bond'#}
+{#fun qlBond as bond {fromIntegral`Word', withCalendar*`Calendar', withMaybeDay*`Maybe Day', withLeg*`GenLeg a', preErrorCheck-`String'errorCheck*-} ->`Bond'#}
 
 -- |old constructor for non amortizing bonds.
 -- /Warning/ The last passed cash flow must be the bond redemption. No other cash flow can have a date later than the redemption date.
-{#fun qlBond1 as bond' {fromIntegral`Word', withCalendar*`Calendar',`Double', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`Leg', preErrorCheck-`String'errorCheck*-} ->`Bond'#}
+{#fun qlBond1 as bond' {fromIntegral`Word', withCalendar*`Calendar',`Double', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', withLeg*`GenLeg a', preErrorCheck-`String'errorCheck*-} ->`Bond'#}
 
 -- |Returns the maturity date of the bond
 {#fun pure qlBondMaturityDate as maturityDate {`Bond'} ->`Maybe Day' toMaybeDay#}
@@ -209,10 +209,10 @@ nextCashFlowDate {`Bond', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`
 {#fun qlBondNotionals as notionals {`Bond', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-} ->`()'#}
 
 -- |returns all the cashflows, including the redemptions.
-{#fun qlBondCashflows as cashFlows {`Bond', preErrorCheck-`String'errorCheck*-} ->`Leg'peekObject*#}
+{#fun qlBondCashflows as cashFlows {`Bond', preErrorCheck-`String'errorCheck*-} ->`Leg'peekLeg*#}
 
 -- |returns just the redemption flows (not interest payments)
-{#fun qlBondRedemptions as redemptions {`Bond', preErrorCheck-`String'errorCheck*-} ->`Leg'peekObject*#}
+{#fun qlBondRedemptions as redemptions {`Bond', preErrorCheck-`String'errorCheck*-} ->`Leg'peekLeg*#}
 
 {#fun qlBondSettlementDate as settlementDate {`Bond', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`Day' toDay#}
 

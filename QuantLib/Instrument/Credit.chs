@@ -31,7 +31,6 @@ import QuantLib.Internal
 {#import QuantLib.Instrument.Bond#}(Bond)
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
-{#import QuantLib.CashFlow#}(Leg)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 {#import QuantLib.TermStructure.Credit#}(DefaultProbabilityTermStructure)
@@ -98,7 +97,7 @@ creditDefaultSwap' ps d1 d2 d3 s bd dc b1 b2 ds1 ds2 c = qlClaim c >>= qlCreditD
 
 {#fun qlCreditDefaultSwapCouponLegNPV as couponLegNPV {`CreditDefaultSwap', preErrorCheck-`String'errorCheck*-} ->`Double'#}
 
-{#fun qlCreditDefaultSwapCoupons as coupons {`CreditDefaultSwap', preErrorCheck-`String'errorCheck*-} ->`Leg'peekObject*#}
+{#fun qlCreditDefaultSwapCoupons as coupons {`CreditDefaultSwap', preErrorCheck-`String'errorCheck*-} ->`Leg'peekLeg*#}
 
 {#fun qlCreditDefaultSwapDefaultLegNPV as defaultLegNPV {`CreditDefaultSwap', preErrorCheck-`String'errorCheck*-} ->`Double'#}
 

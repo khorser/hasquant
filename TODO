@@ -255,10 +255,6 @@ QlYieldTermStructure as YieldTermStructure | qlFreeYieldTermStructure
 
 "a:" means an abstract class, i.e. interface only
 
-Leg
-    CouponLeg : Leg | qlCouponLegAsLeg
-    alse there is a tryCast Leg -> CouponLeg
-
 a:Instrument
     a:Forward : Instrument | qlForwardAsInstrument
 	ForwardRateAgreement : Forward | qlForwardRateAgreementAsForward

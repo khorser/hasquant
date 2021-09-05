@@ -1319,7 +1319,7 @@ main = do
         c <- calendar UnitedKingdomSettlement
         l <- CF.leg [(1000, fromGregorian 2013 1 1)]
         b <- B.bond' 2 c 1000 (Just (fromGregorian 2013 1 1)) (Just (fromGregorian 2012 1 1)) l
-        B.maturityDate b `shouldBe` (Just (fromGregorian 2013 1 1))
+        B.maturityDate b `shouldBe` Just (fromGregorian 2013 1 1)
 
     describe "FRA Example" $
       it "check values" $ do

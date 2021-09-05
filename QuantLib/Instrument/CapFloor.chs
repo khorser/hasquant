@@ -15,17 +15,18 @@ import Prelude hiding(floor)
 
 import QuantLib.Type
 import QuantLib.Internal
+import QuantLib.Internal.Type
 {#import QuantLib.Instrument#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
-{#import QuantLib.CashFlow#}(Leg)
-import QuantLib.Internal.CashFlow
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+{#pointer *Leg foreign -> CLeg nocode#}
 
 {#pointer *QlCapFloor as CapFloor foreign finalizer qlFreeCapFloor newtype#}
 instance ForeignObject CapFloor where
@@ -35,11 +36,11 @@ instance ForeignObject CapFloor where
 {#fun qlCapFloorAsInstrument {`CapFloor'} ->`Instrument'peekObject*#}
 instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
 
-{#fun qlCap as cap {`Leg', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`CapFloor'#}
+{#fun qlCap as cap {withLeg*`GenLeg a', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`CapFloor'#}
 
-{#fun qlCollar as collar {`Leg', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`CapFloor'#}
+{#fun qlCollar as collar {withLeg*`GenLeg a', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`CapFloor'#}
 
-{#fun qlFloor as floor {`Leg', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`CapFloor'#}
+{#fun qlFloor as floor {withLeg*`GenLeg a', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`CapFloor'#}
 
 {#fun qlCapFloorAtmRate as atmRate {`CapFloor',`YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`Double'#}
 

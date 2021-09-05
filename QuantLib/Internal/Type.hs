@@ -60,7 +60,19 @@ module QuantLib.Internal.Type
   , withQuoteArrayRaw
   , withMaybeQuote
 
-  , GenQuote(..)
+  , GenQuote
+
+  , withLeg
+  , withCouponLeg
+  , peekLeg
+  , peekCouponLeg
+  , Leg
+  , CLeg
+  , CouponLeg
+  , CCouponLeg
+  , asLeg
+  , GenLeg
+  , withLegArray
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -305,6 +317,39 @@ withQuoteArrayRaw x = withGenArrayRaw (map getQuote x)
 
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
 withMaybeQuote x = withGenMaybe (getQuote <$> x)
+
+data CLeg
+data CCouponLeg
+newtype GenLeg a = GenLeg {getLeg :: GenObject CLeg a}
+type Leg = GenLeg CLeg
+type CouponLeg = GenLeg CCouponLeg
+foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg
+foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg
+foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
+
+genLegMeta :: Meta2 CLeg CLeg
+genLegMeta = Meta2 qlFreeLeg return
+
+genCouponLegMeta :: Meta2 CCouponLeg CLeg
+genCouponLegMeta = Meta2 qlFreeCouponLeg qlCouponLegAsLeg
+
+asLeg :: GenLeg a -> IO (GenLeg CLeg)
+asLeg (GenLeg q) = GenLeg <$> asGenObject genLegMeta q
+
+withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
+withLeg = withGenObject . getLeg
+
+withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
+withCouponLeg = withSubObject . getLeg
+
+peekLeg :: Ptr CLeg -> IO (GenLeg CLeg)
+peekLeg p = GenLeg <$> peekGenObject genLegMeta p
+
+peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
+peekCouponLeg p = GenLeg <$> peekSubObject genCouponLegMeta p
+
+withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
+withLegArray x = withGenArray (map getLeg x)
 
 --bondMeta :: Meta2 CBond ()
 --bondMeta = Meta2 qlFreeBond undefined
