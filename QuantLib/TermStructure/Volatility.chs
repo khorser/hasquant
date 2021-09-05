@@ -170,24 +170,24 @@ instance BlackVarianceCurve `Derives` BlackVolTermStructure where cast = qlBlack
 asBlackVolTermStructure :: (a `Derives` BlackVolTermStructure) => a -> IO BlackVolTermStructure
 asBlackVolTermStructure = cast
 
-{#fun qlLocalVolSurface as localVolSurface {`BlackVolTermStructure', `YieldTermStructure', `YieldTermStructure', withComplexType* `Quote', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
+{#fun qlLocalVolSurface as localVolSurface {`BlackVolTermStructure', `YieldTermStructure', `YieldTermStructure', withQuote*`Quote', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
 
 -- |Constant caplet volatility, no time-strike dependence
 -- floating reference date, floating market data
-{#fun qlConstantOptionletVol1 as constantOptionletVolatility' {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `OptionletVolatilityStructure'#}
+{#fun qlConstantOptionletVol1 as constantOptionletVolatility' {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `OptionletVolatilityStructure'#}
 
 -- |fixed reference date, floating market data
-{#fun qlConstantOptionletVolatility as constantOptionletVolatility {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `OptionletVolatilityStructure'#}
+{#fun qlConstantOptionletVolatility as constantOptionletVolatility {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `OptionletVolatilityStructure'#}
 
-{#fun qlBlackConstantVol1 as blackConstantVol' {fromIntegral `Word', withCalendar*`Calendar', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
+{#fun qlBlackConstantVol1 as blackConstantVol' {fromIntegral `Word', withCalendar*`Calendar', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
 
-{#fun qlBlackConstantVol as blackConstantVol {withDay* `Day', withCalendar*`Calendar', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
+{#fun qlBlackConstantVol as blackConstantVol {withDay* `Day', withCalendar*`Calendar', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `BlackVolTermStructure'#}
 
 -- |fixed reference date, floating market data
-{#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatility' {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `SwaptionVolatilityStructure'#}
+{#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatility' {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `SwaptionVolatilityStructure'#}
 
 -- |floating reference date, floating market data
-{#fun qlConstantSwaptionVolatility as constantSwaptionVolatility {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `SwaptionVolatilityStructure'#}
+{#fun qlConstantSwaptionVolatility as constantSwaptionVolatility {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `SwaptionVolatilityStructure'#}
 
 -- |returns the Black variance for a given option date and swap tenor
 {#fun qlSwaptionVolatilityStructureBlackVariance1 as blackVarianceForPeriod' {`SwaptionVolatilityStructure', withDay* `Day', fromEnumQuantity `(Word, TimeUnit)'&, `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
@@ -255,21 +255,21 @@ asBlackVolTermStructure = cast
 -- |returns the volatility for a given option tenor and swap tenor
 {#fun qlSwaptionVolatilityStructureVolatility as volatilityForPeriods {`SwaptionVolatilityStructure', fromEnumQuantity `(Word, TimeUnit)'&, fromEnumQuantity `(Word, TimeUnit)'&, `Double', `Bool', preErrorCheck- `String' errorCheck*-} -> `Double'#}
 
-{#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatility' {fromIntegral `Word', withCalendar*`Calendar', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CallableBondVolatilityStructure'#}
+{#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatility' {fromIntegral `Word', withCalendar*`Calendar', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CallableBondVolatilityStructure'#}
 
-{#fun qlCallableBondConstantVolatility as callableBondConstantVolatility {withDay* `Day', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CallableBondVolatilityStructure'#}
+{#fun qlCallableBondConstantVolatility as callableBondConstantVolatility {withDay* `Day', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CallableBondVolatilityStructure'#}
 
 -- |fixed reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility' {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
+{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility' {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
 -- |floating reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
+{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
-{#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility {`SwaptionVolatilityStructure' , withComplexType* `Quote' , preErrorCheck- `String' errorCheck*-} -> `SwaptionVolatilityStructure'#}
+{#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility {`SwaptionVolatilityStructure' , withQuote*`Quote' , preErrorCheck- `String' errorCheck*-} -> `SwaptionVolatilityStructure'#}
 
-{#fun qlLocalConstantVol1 as localConstantVol' {fromIntegral `Word', withCalendar*`Calendar', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
+{#fun qlLocalConstantVol1 as localConstantVol' {fromIntegral `Word', withCalendar*`Calendar', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
 
-{#fun qlLocalConstantVol as localConstantVol {withDay* `Day', withComplexType* `Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
+{#fun qlLocalConstantVol as localConstantVol {withDay* `Day', withQuote*`Quote', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
 
 {#fun qlLocalVolCurve as localVolCurve {`BlackVarianceCurve', preErrorCheck- `String' errorCheck*-} -> `LocalVolTermStructure'#}
 
@@ -279,13 +279,13 @@ asBlackVolTermStructure = cast
 capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, Quote)] -> DayCounter -> IO VolatilityTermStructure
 capFloorTermVolCurve' d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 ntq
 
-{#fun qlCapFloorTermVolCurve1 {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withComplexArray* `[Quote]'&, withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
+{#fun qlCapFloorTermVolCurve1 {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withQuoteArray*`[Quote]'&, withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
 -- |floating reference date, floating market data
 capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, Quote)] -> DayCounter -> IO VolatilityTermStructure
 capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 ntq
 
-{#fun qlCapFloorTermVolCurve {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withComplexArray* `[Quote]'&, withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
+{#fun qlCapFloorTermVolCurve {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withQuoteArray*`[Quote]'&, withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `VolatilityTermStructure'#}
 
 blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -> Maybe Interpolation -> IO BlackVarianceCurve
 blackVarianceCurve d dq dc f i = uncurry' (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i)
@@ -302,12 +302,12 @@ blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds 
 capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -> [Double] -> Matrix Quote -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface d c bd pl pu s mr mc md where (pl, pu) = unzip t
 
-{#fun qlCapFloorTermVolSurface {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withComplexArrayRaw* `[Quote]', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
+{#fun qlCapFloorTermVolSurface {fromIntegral `Word', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withQuoteArrayRaw*`[Quote]', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
 
 -- |fixed reference date, floating market data
 capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -> [Double] -> Matrix Quote -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface' d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t
 
-{#fun qlCapFloorTermVolSurface1 {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withComplexArrayRaw* `[Quote]', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
+{#fun qlCapFloorTermVolSurface1 {withDay* `Day', withCalendar*`Calendar', `BusinessDayConvention', withIntArray* `[Word]'&, withEnumArray* `[TimeUnit]'&, withDoubleArray* `[Double]'&, fromIntegral `Word', fromIntegral `Word', withQuoteArrayRaw*`[Quote]', withDayCounter*`DayCounter', preErrorCheck- `String' errorCheck*-} -> `CapFloorTermVolSurface'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

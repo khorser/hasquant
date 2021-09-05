@@ -15,7 +15,7 @@ module QuantLib.Internal.Type
   , peekDayCounter
 
   , withSimpleType
-  , withMaybeSimpleType
+  --, withMaybeSimpleType
 
   , CQuote
   , Quote
@@ -24,12 +24,6 @@ module QuantLib.Internal.Type
   , CSimpleQuote
   , SimpleQuote
   , peekSimpleQuote
-
-  , withComplexType
-  , withComplexArray
-  , withComplexArrayRaw
-  , withSimpleArray
-  , withMaybeComplexType
 
   , InterestRate
   , CInterestRate
@@ -60,6 +54,12 @@ module QuantLib.Internal.Type
   , withDividend
   , withDividendArray
   , peekDividend
+
+  , withQuote
+  , withSimpleQuote
+  , withQuoteArray
+  , withQuoteArrayRaw
+  , withMaybeQuote
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -180,7 +180,7 @@ withMaybeSimpleType :: Maybe (SimpleType a) -> (Ptr a -> IO b) -> IO b
 withMaybeSimpleType x f = maybe (f nullPtr) (`withSimpleType` f) x
 
 withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
-withMaybeCurrency x = withMaybeSimpleType (fmap getCCurrency x)
+withMaybeCurrency = withMaybeSimpleType . (getCCurrency <$>)
 
 foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCalendar
 foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
@@ -228,6 +228,15 @@ withDividend = withSimpleType . getCDividend
 withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
 withTimeGrid = withSimpleType . getCTimeGrid
 
+withSimpleArray :: (t -> SimpleType a) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withSimpleArray c x f = withMany withSimpleType (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
+withInterestRateArray = withSimpleArray getCInterestRate
+
+withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
+withDividendArray = withSimpleArray getCDividend
+
 -- class hierarchies
 
 data Meta2 a b = Meta2 {_finalizer :: FinalizerPtr a, _upcast :: Ptr a -> IO (Ptr b)}
@@ -249,50 +258,57 @@ resolveCast (CastPtr p _) = p
 withComplexType :: ComplexType a b -> (Ptr a -> IO c) -> IO c
 withComplexType p f = resolveCast p >>= (`withForeignPtr` f)
 
+-- put the first argument in meta
+withComplexArray :: (t -> ComplexType a c) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withComplexArray c x f = withMany withComplexType (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+withComplexArrayRaw :: (t -> ComplexType a c) -> [t] -> (Ptr (Ptr a) -> IO b) -> IO b
+withComplexArrayRaw c x f = withMany withComplexType (map c x) (`withArray` f)
+
+withMaybeComplexType :: (t -> ComplexType a c) -> Maybe t -> (Ptr a -> IO b) -> IO b
+withMaybeComplexType c x f = maybe (f nullPtr) (`withComplexType` f) (c <$> x)
+
 data CQuote
 data CSimpleQuote
 
-type Quote = ComplexType CQuote ()
-type SimpleQuote = ComplexType CSimpleQuote CQuote
+newtype Quote = Quote {getQuote :: ComplexType CQuote CQuote}
+newtype SimpleQuote = SimpleQuote {getSimpleQuote :: ComplexType CSimpleQuote CQuote}
 
-quoteMeta :: Meta2 CQuote ()
-quoteMeta = Meta2 qlFreeQuote undefined
+quoteMeta :: Meta2 CQuote CQuote
+quoteMeta = Meta2 qlFreeQuote return
 
 simpleQuoteMeta :: Meta2 CSimpleQuote CQuote
 simpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
 
 peekQuote :: Ptr CQuote -> IO Quote
-peekQuote = peekComplexType quoteMeta
+peekQuote x = Quote <$> peekComplexType quoteMeta x
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO SimpleQuote
-peekSimpleQuote = peekComplexType simpleQuoteMeta
+peekSimpleQuote x = SimpleQuote <$> peekComplexType simpleQuoteMeta x
 
 foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
 foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
 
 foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 
-asQuote :: ComplexType a CQuote -> Quote
-asQuote = createCast quoteMeta
+-- won't scale if Quote has multiple subclasses
+asQuote :: SimpleQuote -> Quote
+asQuote x = Quote (createCast quoteMeta (getSimpleQuote x))
 
-withSimpleArray :: [SimpleType a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withSimpleArray x f = withMany withSimpleType x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withQuote :: Quote -> (Ptr CQuote -> IO c) -> IO c
+withQuote p = withComplexType (getQuote p)
 
-withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
-withInterestRateArray x f = withMany withInterestRate x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withSimpleQuote :: SimpleQuote -> (Ptr CSimpleQuote -> IO c) -> IO c
+withSimpleQuote p = withComplexType (getSimpleQuote p)
 
-withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
-withDividendArray x f = withMany withDividend x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withQuoteArray :: [Quote] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
+withQuoteArray = withComplexArray getQuote
 
-withComplexArray :: [ComplexType a c] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withComplexArray x f = withMany withComplexType x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withQuoteArrayRaw :: [Quote] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
+withQuoteArrayRaw = withComplexArrayRaw getQuote
 
--- pass length somewhere else
-withComplexArrayRaw :: [ComplexType a c] -> (Ptr (Ptr a) -> IO b) -> IO b
-withComplexArrayRaw x f = withMany withComplexType x (`withArray` f)
-
-withMaybeComplexType :: Maybe (ComplexType a c) -> (Ptr a -> IO b) -> IO b
-withMaybeComplexType x f = maybe (f nullPtr) (`withComplexType` f) x
+withMaybeQuote :: Maybe Quote -> (Ptr CQuote -> IO b) -> IO b
+withMaybeQuote = withMaybeComplexType getQuote
 
 --bondMeta :: Meta2 CBond ()
 --bondMeta = Meta2 qlFreeBond undefined

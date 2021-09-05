@@ -285,10 +285,10 @@ nextCashFlowDate {`Bond', withDay* `Day', preErrorCheck- `String' errorCheck*-} 
 
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withDividendArray*`[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType* `Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond {withEnumObject* `Exercise', `Double', withDividendArray*`[Dividend]'&, withCallabilityArray* `[Callability]'&, withQuote*`Quote', withDay* `Day', fromIntegral `Word', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withDividendArray*`[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType* `Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond {withEnumObject* `Exercise', `Double', withDividendArray*`[Dividend]'&, withCallabilityArray* `[Callability]'&, withQuote*`Quote', withDay* `Day', fromIntegral `Word', `IborIndex', fromIntegral `Word', withDoubleArray* `[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
-{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withDividendArray*`[Dividend]'&, withCallabilityArray* `[Callability]'&, withComplexType* `Quote', withDay* `Day', fromIntegral `Word', withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
+{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond {withEnumObject* `Exercise', `Double', withDividendArray*`[Dividend]'&, withCallabilityArray* `[Callability]'&, withQuote*`Quote', withDay* `Day', fromIntegral `Word', withDayCounter*`DayCounter', withSchedule*`Schedule', `Double', preErrorCheck- `String' errorCheck*-} -> `ConvertibleBond'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

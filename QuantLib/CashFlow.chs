@@ -280,8 +280,8 @@ instance ForeignObject FloatingRateCouponPricer where
 
 {#fun qlQuantLibSetCouponPricers as setCouponPricers {`Leg', withObjectArray* `[FloatingRateCouponPricer]'&, preErrorCheck- `String' errorCheck*-} -> `()'#}
 
-{#fun qlAnalyticHaganPricer as analyticHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withComplexType* `Quote', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
+{#fun qlAnalyticHaganPricer as analyticHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withQuote*`Quote', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
 
-{#fun qlNumericHaganPricer as numericHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withComplexType* `Quote', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
+{#fun qlNumericHaganPricer as numericHaganPricer {withObject* `SwaptionVolatilityStructure', `YieldCurveModel', withQuote*`Quote', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FloatingRateCouponPricer'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
