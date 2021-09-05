@@ -238,87 +238,43 @@ withInterestRateArray = withSimpleArray getCInterestRate
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
 withDividendArray = withSimpleArray getCDividend
 
--- class hierarchies
-
+---- class hierarchies
 data Meta2 a b = Meta2 {_finalizer :: FinalizerPtr a, _upcast :: Ptr a -> IO (Ptr b)}
---data ComplexType a b = PlainPtr (ForeignPtr a) (Meta2 a b) | CastPtr (IO (ForeignPtr a)) (Meta2 a b)
---
---peekComplexType :: Meta2 a b -> Ptr a -> IO (ComplexType a b)
---peekComplexType m@(Meta2 f _) p = do { pp <- newForeignPtr f p; return $ PlainPtr pp m}
---
---createCast :: Meta2 b c -> ComplexType a b -> ComplexType b c
---createCast m@(Meta2 f _) o = CastPtr (case o of
---  (PlainPtr p (Meta2 _ k)) -> withPtr k p
---  (CastPtr p (Meta2 _ k)) -> p >>= withPtr k) m
---  where withPtr k p = withForeignPtr p (k >=> newForeignPtr f)
---
---resolveCast :: ComplexType a b -> IO (ForeignPtr a)
---resolveCast (PlainPtr p _) = return p
---resolveCast (CastPtr p _) = p
---
---withComplexType :: ComplexType a b -> (Ptr a -> IO c) -> IO c
---withComplexType p f = resolveCast p >>= (`withForeignPtr` f)
---
----- put the first argument in meta
---withComplexArray :: (t -> ComplexType a c) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
---withComplexArray c x f = withMany withComplexType (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
---
---withComplexArrayRaw :: (t -> ComplexType a c) -> [t] -> (Ptr (Ptr a) -> IO b) -> IO b
---withComplexArrayRaw c x f = withMany withComplexType (map c x) (`withArray` f)
---
---withMaybeComplexType :: (t -> ComplexType a c) -> Maybe t -> (Ptr a -> IO b) -> IO b
---withMaybeComplexType c x f = maybe (f nullPtr) (`withComplexType` f) (c <$> x)
+data GenObject c a = GenObject {getObject :: ForeignPtr a, _getMeta :: Meta2 a c}
 
+asGenObject :: Meta2 c c -> GenObject c a -> IO (GenObject c c)
+asGenObject m (GenObject p (Meta2 _ k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_finalizer m)) <*> return m)
+
+withGenObject :: GenObject c a -> (Ptr c -> IO b) -> IO b
+withGenObject (GenObject p (Meta2 _ k)) ff = withForeignPtr p (k >=> ff)
+
+withSubObject :: GenObject c a -> (Ptr a -> IO b) -> IO b
+withSubObject = withForeignPtr . getObject
+
+peekGenObject :: Meta2 c c -> Ptr c -> IO (GenObject c c)
+peekGenObject m p = GenObject <$> newForeignPtr (_finalizer m) p <*> return m
+
+peekSubObject :: Meta2 a c -> Ptr a -> IO (GenObject c a)
+peekSubObject m p = GenObject <$> newForeignPtr (_finalizer m) p <*> return m
+
+withGenArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr c)) -> IO b) -> IO b
+withGenArray x f = withMany withGenObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+withGenArrayRaw :: [GenObject c a] -> (Ptr (Ptr c) -> IO b) -> IO b -- pass an array without length
+withGenArrayRaw x f = withMany withGenObject x (`withArray` f)
+
+withGenMaybe :: Maybe (GenObject c a) -> (Ptr c -> IO b) -> IO b
+withGenMaybe x f = maybe (f nullPtr) (`withGenObject` f) x
+
+---- instantiations
 data CQuote
 data CSimpleQuote
-
---newtype Quote = Quote {getQuote :: ComplexType CQuote CQuote}
---newtype SimpleQuote = SimpleQuote {getSimpleQuote :: ComplexType CSimpleQuote CQuote}
---
---quoteMeta :: Meta2 CQuote CQuote
---quoteMeta = Meta2 qlFreeQuote return
---
---simpleQuoteMeta :: Meta2 CSimpleQuote CQuote
---simpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
---
---peekQuote :: Ptr CQuote -> IO Quote
---peekQuote x = Quote <$> peekComplexType quoteMeta x
---
---peekSimpleQuote :: Ptr CSimpleQuote -> IO SimpleQuote
---peekSimpleQuote x = SimpleQuote <$> peekComplexType simpleQuoteMeta x
-
-foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
-foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
-
-foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
-
----- won't scale if Quote has multiple subclasses
---asQuote :: SimpleQuote -> Quote
---asQuote x = Quote (createCast quoteMeta (getSimpleQuote x))
---
---withQuote :: Quote -> (Ptr CQuote -> IO c) -> IO c
---withQuote p = withComplexType (getQuote p)
---
---withSimpleQuote :: SimpleQuote -> (Ptr CSimpleQuote -> IO c) -> IO c
---withSimpleQuote p = withComplexType (getSimpleQuote p)
---
---withQuoteArray :: [Quote] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
---withQuoteArray = withComplexArray getQuote
---
---withQuoteArrayRaw :: [Quote] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
---withQuoteArrayRaw = withComplexArrayRaw getQuote
---
---withMaybeQuote :: Maybe Quote -> (Ptr CQuote -> IO b) -> IO b
---withMaybeQuote = withMaybeComplexType getQuote
-
---data GenQuote a = GenQuote (ForeignPtr a) (Meta2 a CQuote)
-
-data GenObject c a = GenObject (ForeignPtr a) (Meta2 a c)
-
-newtype GenQuote a = GenQuote (GenObject CQuote a)
-
+newtype GenQuote a = GenQuote {getQuote :: GenObject CQuote a}
 type Quote = GenQuote CQuote
 type SimpleQuote = GenQuote CSimpleQuote
+foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
+foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
+foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 
 genQuoteMeta :: Meta2 CQuote CQuote
 genQuoteMeta = Meta2 qlFreeQuote return
@@ -327,28 +283,28 @@ genSimpleQuoteMeta :: Meta2 CSimpleQuote CQuote
 genSimpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
 
 asQuote :: GenQuote a -> IO (GenQuote CQuote)
-asQuote (GenQuote (GenObject p (Meta2 _ k))) = withForeignPtr p (\qq -> GenQuote <$> (GenObject <$> (k qq >>= newForeignPtr (_finalizer genQuoteMeta)) <*> return genQuoteMeta))
+asQuote (GenQuote q) = GenQuote <$> asGenObject genQuoteMeta q
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
-withQuote (GenQuote (GenObject p (Meta2 _ k))) ff = withForeignPtr p (k >=> ff)
+withQuote = withGenObject . getQuote
 
 withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
-withSimpleQuote (GenQuote (GenObject p _ )) = withForeignPtr p
+withSimpleQuote = withSubObject . getQuote
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> (GenObject <$> newForeignPtr (_finalizer genQuoteMeta) p <*> return genQuoteMeta)
+peekQuote p = GenQuote <$> peekGenObject genQuoteMeta p
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> (GenObject <$> newForeignPtr (_finalizer genSimpleQuoteMeta) p <*> return genSimpleQuoteMeta)
+peekSimpleQuote p = GenQuote <$> peekSubObject genSimpleQuoteMeta p
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
-withQuoteArray x f = withMany withQuote x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withQuoteArray x = withGenArray (map getQuote x)
 
 withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
-withQuoteArrayRaw x f = withMany withQuote x (`withArray` f )
+withQuoteArrayRaw x = withGenArrayRaw (map getQuote x)
 
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
-withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
+withMaybeQuote x = withGenMaybe (getQuote <$> x)
 
 --bondMeta :: Meta2 CBond ()
 --bondMeta = Meta2 qlFreeBond undefined
