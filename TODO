@@ -1,7 +1,5 @@
 Move Claim into Internal/Enum once Bond is ready
 
-Don't require show for simple types
-
 -- foreign types
 
 Constraint as QlConstraint | qlFreeConstraint

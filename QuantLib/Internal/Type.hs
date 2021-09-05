@@ -105,7 +105,7 @@ data CInterestRate
 data CDividend
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
-data Meta a = Meta {_fin :: FinalizerPtr a, _show :: Ptr a -> IO CString}
+newtype Meta a = Meta {_fin :: FinalizerPtr a}
 newtype Calendar = Calendar {getCCalendar :: SimpleType CCalendar}
 newtype Currency = Currency {getCCurrency :: SimpleType CCurrency}
 newtype DayCounter = DayCounter {getCDayCounter :: SimpleType CDayCounter}
@@ -118,34 +118,34 @@ type QlClaim = SimpleType CQlClaim
 type QlCallability = SimpleType CQlCallability
 
 calendarMeta :: Meta CCalendar
-calendarMeta = Meta qlFreeCalendar c_qlCalendarName
+calendarMeta = Meta qlFreeCalendar
 
 currencyMeta :: Meta CCurrency
-currencyMeta = Meta qlFreeCurrency c_qlCurrencyName
+currencyMeta = Meta qlFreeCurrency
 
 dayCounterMeta :: Meta CDayCounter
-dayCounterMeta = Meta qlFreeDayCounter c_qlDayCounterName
+dayCounterMeta = Meta qlFreeDayCounter
 
 scheduleMeta :: Meta CSchedule
-scheduleMeta = Meta qlFreeSchedule undefined
+scheduleMeta = Meta qlFreeSchedule
 
 callabilityMeta :: Meta CQlCallability
-callabilityMeta = Meta qlFreeCallability undefined
+callabilityMeta = Meta qlFreeCallability
 
 claimMeta :: Meta CQlClaim
-claimMeta = Meta qlFreeClaim undefined
+claimMeta = Meta qlFreeClaim
 
 timeGridMeta :: Meta CTimeGrid
-timeGridMeta = Meta qlFreeTimeGrid undefined
+timeGridMeta = Meta qlFreeTimeGrid
 
 interestRateMeta :: Meta CInterestRate
-interestRateMeta = Meta qlFreeInterestRate undefined
+interestRateMeta = Meta qlFreeInterestRate
 
 dividendMeta :: Meta CDividend
-dividendMeta = Meta qlFreeDividend undefined
+dividendMeta = Meta qlFreeDividend
 
 peekSimpleType :: Meta a -> Ptr a -> IO (SimpleType a)
-peekSimpleType (Meta f _) = newForeignPtr f >=> return . SimpleType
+peekSimpleType (Meta f) = newForeignPtr f >=> return . SimpleType
 
 peekCalendar :: Ptr CCalendar -> IO Calendar
 peekCalendar = peekSimpleType calendarMeta >=> return . Calendar
@@ -193,19 +193,19 @@ foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDivi
 foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
 foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
 
-showSimpleType :: Meta a -> SimpleType a -> String
-showSimpleType (Meta _ s) x = unsafePerformIO $ withSimpleType x (s >=> peekDynString)
+showSimpleType :: (Ptr a -> IO CString) -> SimpleType a -> String
+showSimpleType f x = unsafePerformIO $ withSimpleType x (f >=> peekDynString)
 
-foreign import ccall safe "ql.h qlCalendarName" c_qlCalendarName :: Ptr CCalendar -> IO (Ptr CChar)
-instance Show Calendar where show x = showSimpleType calendarMeta (getCCalendar x)
+foreign import ccall safe "ql.h qlCalendarName" qlCalendarName :: Ptr CCalendar -> IO CString
+instance Show Calendar where show x = showSimpleType qlCalendarName (getCCalendar x)
 instance Eq Calendar where x == y = show x == show y
 
-foreign import ccall safe "ql.h qlCurrencyName" c_qlCurrencyName :: Ptr CCurrency -> IO (Ptr CChar)
-instance Show Currency where show x = showSimpleType currencyMeta (getCCurrency x)
+foreign import ccall safe "ql.h qlCurrencyName" qlCurrencyName :: Ptr CCurrency -> IO CString
+instance Show Currency where show x = showSimpleType qlCurrencyName (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
 
-foreign import ccall safe "ql.h qlDayCounterName" c_qlDayCounterName :: Ptr CDayCounter -> IO (Ptr CChar)
-instance Show DayCounter where show x = showSimpleType dayCounterMeta (getCDayCounter x)
+foreign import ccall safe "ql.h qlDayCounterName" qlDayCounterName :: Ptr CDayCounter -> IO CString
+instance Show DayCounter where show x = showSimpleType qlDayCounterName (getCDayCounter x)
 instance Eq DayCounter where x == y = show x == show y
 
 withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
