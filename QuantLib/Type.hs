@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE FunctionalDependencies #-}
 module QuantLib.Type
   (
     Error(..)

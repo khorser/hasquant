@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE FunctionalDependencies #-}
 module QuantLib.Internal
   (
     Day -- reexport for simplicity
