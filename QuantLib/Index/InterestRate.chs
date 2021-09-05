@@ -96,41 +96,41 @@ instance ForeignObject OvernightIndexedSwapIndex where
   constructor = OvernightIndexedSwapIndex
   finalizer=qlFreeOvernightIndexedSwapIndex
 
-{#fun qlBMAIndex as bmaIndex {withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`BMAIndex'peekObject*#}
+{#fun qlBMAIndex as bmaIndex {withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekObject*#}
 
 -- |This method returns a schedule of fixing dates between start and end.
-{#fun qlBMAIndexFixingSchedule as fixingSchedule {`BMAIndex', withDay*`Day', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`Schedule'peekSchedule*#}
+{#fun qlBMAIndexFixingSchedule as fixingSchedule {`BMAIndex', withDay*`Day', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 
 -- |It can be overridden to implement particular conventions.
-{#fun qlInterestRateIndexForecastFixing as forecastFixing {`InterestRateIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`Double'#}
+{#fun qlInterestRateIndexForecastFixing as forecastFixing {`InterestRateIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlInterestRateIndexCurrency as currency {`InterestRateIndex', preErrorCheck-`String'errorCheck*-} ->`Currency'peekCurrency*#}
+{#fun qlInterestRateIndexCurrency as currency {`InterestRateIndex', preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
-{#fun qlInterestRateIndexDayCounter as dayCounter {`InterestRateIndex', preErrorCheck-`String'errorCheck*-} ->`DayCounter'peekDayCounter*#}
+{#fun qlInterestRateIndexDayCounter as dayCounter {`InterestRateIndex', preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
 
-{#fun pure qlInterestRateIndexFixingDays as fixingDays {`InterestRateIndex'} ->`Word' fromIntegral#}
+{#fun pure qlInterestRateIndexFixingDays as fixingDays {`InterestRateIndex'}->`Word'fromIntegral#}
 
-{#fun qlInterestRateIndexTenor as tenor {`InterestRateIndex', preEnum-`TimeUnit'peekEnum*, preErrorCheck-`String'errorCheck*-} ->`Word' fromIntegral#}
+{#fun qlInterestRateIndexTenor as tenor {`InterestRateIndex', preEnum-`TimeUnit'peekEnum*, preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
 
-{#fun qlInterestRateIndexAsIndex {`InterestRateIndex'} ->`Index'peekObject*#}
+{#fun qlInterestRateIndexAsIndex {`InterestRateIndex'}->`Index'peekObject*#}
 instance InterestRateIndex`Derives` Index where cast = qlInterestRateIndexAsIndex
 
 asInterestRateIndex :: (a`Derives` InterestRateIndex) => a -> IO InterestRateIndex
 asInterestRateIndex = cast
 
-{#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'} ->`InterestRateIndex'#}
+{#fun qlBMAIndexAsInterestRateIndex {`BMAIndex'}->`InterestRateIndex'#}
 instance BMAIndex`Derives` InterestRateIndex where cast = qlBMAIndexAsInterestRateIndex
 
-{#fun qlSwapIndexAsInterestRateIndex {`SwapIndex'} ->`InterestRateIndex'#}
+{#fun qlSwapIndexAsInterestRateIndex {`SwapIndex'}->`InterestRateIndex'#}
 instance SwapIndex`Derives` InterestRateIndex where cast = qlSwapIndexAsInterestRateIndex
 
 asSwapIndex :: (a`Derives` OvernightIndexedSwapIndex) => a -> IO OvernightIndexedSwapIndex
 asSwapIndex = cast
 
 instance OvernightIndexedSwapIndex`Derives` SwapIndex where cast = qlOvernightIndexedSwapIndexAsSwapIndex
-{#fun qlOvernightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'} ->`SwapIndex'#}
+{#fun qlOvernightIndexedSwapIndexAsSwapIndex {`OvernightIndexedSwapIndex'}->`SwapIndex'#}
 
-{#fun qlIborIndexAsInterestRateIndex {`IborIndex'} ->`InterestRateIndex'#}
+{#fun qlIborIndexAsInterestRateIndex {`IborIndex'}->`InterestRateIndex'#}
 instance IborIndex`Derives` InterestRateIndex where cast = qlIborIndexAsInterestRateIndex
 
 asIborIndex :: (a`Derives` IborIndex) => a -> IO IborIndex
@@ -138,21 +138,21 @@ asIborIndex = cast
 
 instance OvernightIborIndex`Derives` IborIndex where cast = qlOvernightIndexAsIborIndex
 
-{#fun qlOvernightIndexAsIborIndex {`OvernightIborIndex'} ->`IborIndex'#}
+{#fun qlOvernightIndexAsIborIndex {`OvernightIborIndex'}->`IborIndex'#}
 
 {#enum OvernightIborIndexType {} deriving (Show, Eq)#}
 
-{#fun qlCreateONIndex as overnightIborIndex {`OvernightIborIndexType', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`OvernightIborIndex'#}
+{#fun qlCreateONIndex as overnightIborIndex {`OvernightIborIndexType', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'#}
 
 {#enum LiborSwapIndexType {} deriving (Show, Eq)#}
 
-{#fun qlCreateLiborSwapIndex as liborSwapIndex {`LiborSwapIndexType', fromEnumQuantity`(Int, TimeUnit)'&, withMaybeObject*`Maybe YieldTermStructure', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`SwapIndex'#}
+{#fun qlCreateLiborSwapIndex as liborSwapIndex {`LiborSwapIndexType', fromEnumQuantity`(Int, TimeUnit)'&, withMaybeObject*`Maybe YieldTermStructure', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`SwapIndex'#}
 
-{#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex {`String', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency',`OvernightIborIndex', preErrorCheck-`String'errorCheck*-} ->`OvernightIndexedSwapIndex'#}
+{#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex {`String', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency',`OvernightIborIndex', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwapIndex'#}
 
-{#fun qlSwapIndex as swapIndex {`String', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', withDayCounter*`DayCounter',`IborIndex', preErrorCheck-`String'errorCheck*-} ->`SwapIndex'#}
+{#fun qlSwapIndex as swapIndex {`String', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', withDayCounter*`DayCounter',`IborIndex', preErrorCheck-`String'errorCheck*-}->`SwapIndex'#}
 
-{#fun qlSwapIndex1 as swapIndex' {`String', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', withDayCounter*`DayCounter',`IborIndex',`YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`SwapIndex'#}
+{#fun qlSwapIndex1 as swapIndex' {`String', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', withDayCounter*`DayCounter',`IborIndex',`YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`SwapIndex'#}
 
 {#enum IborIndexType {} add prefix = "Ibor" deriving (Show, Eq)#}
 
@@ -419,25 +419,25 @@ iborIndex c ts = do
   t <- iborIndexType c
   qlCreateIbor t (iborIndexTenor c) ts
 
-{#fun qlIborIndex {`String', fromEnumQuantity`(Word, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar',`BusinessDayConvention',`Bool', withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`IborIndex'#}
+{#fun qlIborIndex {`String', fromEnumQuantity`(Word, TimeUnit)'&, fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar',`BusinessDayConvention',`Bool', withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`IborIndex'#}
 
-{#fun qlLibor {`String',fromEnumQuantity`(Word, TimeUnit)'&,fromIntegral`Word',withCurrency*`Currency', withCalendar*`Calendar',withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`IborIndex'#}
+{#fun qlLibor {`String',fromEnumQuantity`(Word, TimeUnit)'&,fromIntegral`Word',withCurrency*`Currency', withCalendar*`Calendar',withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`IborIndex'#}
 
-{#fun qlDailyTenorLibor {`String', fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`IborIndex'#}
+{#fun qlDailyTenorLibor {`String', fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`IborIndex'#}
 
-{#fun qlCreateIbor {`IborIndexType', fromEnumQuantity`(Word, TimeUnit)'&, withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`IborIndex'#}
+{#fun qlCreateIbor {`IborIndexType', fromEnumQuantity`(Word, TimeUnit)'&, withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`IborIndex'#}
 
-{#fun qlOvernightIndex as overnightIndex {`String', fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-} ->`OvernightIborIndex'#}
+{#fun qlOvernightIndex as overnightIndex {`String', fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', withDayCounter*`DayCounter', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'#}
 
-{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention {`IborIndex'} ->`BusinessDayConvention'#}
+{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention {`IborIndex'}->`BusinessDayConvention'#}
 
-{#fun pure qlIborIndexEndOfMonth as endOfMonth {`IborIndex'} ->`Bool'#}
+{#fun pure qlIborIndexEndOfMonth as endOfMonth {`IborIndex'}->`Bool'#}
 
 class HasUnderlying a b | a -> b where underlying :: a -> Day -> IO b
 
 instance HasUnderlying OvernightIndexedSwapIndex OvernightIndexedSwap where underlying = qlOvernightIndexedSwapIndexUnderlyingSwap
-{#fun qlOvernightIndexedSwapIndexUnderlyingSwap {`OvernightIndexedSwapIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`OvernightIndexedSwap'peekObject*#}
+{#fun qlOvernightIndexedSwapIndexUnderlyingSwap {`OvernightIndexedSwapIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekObject*#}
 instance HasUnderlying SwapIndex VanillaSwap where underlying = qlSwapIndexUnderlyingSwap
-{#fun qlSwapIndexUnderlyingSwap {`SwapIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`VanillaSwap'peekObject*#}
+{#fun qlSwapIndexUnderlyingSwap {`SwapIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekObject*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
