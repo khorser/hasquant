@@ -60,12 +60,7 @@ module QuantLib.Internal.Type
   , withQuoteArrayRaw
   , withMaybeQuote
 
-  , withGenQuote
-  , withGenSimpleQuote
-  , peekGenQuote
-  , peekGenSimpleQuote
   , GenQuote(..)
-  , asGenQuote
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -321,44 +316,35 @@ data GenQuote a = GenQuote (ForeignPtr a) (Meta2 a CQuote)
 type Quote = GenQuote CQuote
 type SimpleQuote = GenQuote CSimpleQuote
 
-withQuote = withGenQuote
-withSimpleQuote = withGenSimpleQuote
-peekQuote = peekGenQuote
-peekSimpleQuote = peekGenSimpleQuote
-withQuoteArray = withGenQuoteArray
-withMaybeQuote = withMaybeGenQuote
-withQuoteArrayRaw = withGenQuoteArrayRaw
-asQuote = asGenQuote
-
 genQuoteMeta :: Meta2 CQuote CQuote
 genQuoteMeta = Meta2 qlFreeQuote return
 
 genSimpleQuoteMeta :: Meta2 CSimpleQuote CQuote
 genSimpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
 
-asGenQuote :: GenQuote a -> IO (GenQuote CQuote)
-asGenQuote (GenQuote p (Meta2 _ k)) = withForeignPtr p (\qq -> GenQuote <$> (k qq >>= newForeignPtr (_finalizer genQuoteMeta)) <*> return genQuoteMeta)
+asQuote :: GenQuote a -> IO (GenQuote CQuote)
+asQuote (GenQuote p (Meta2 _ k)) = withForeignPtr p (\qq -> GenQuote <$> (k qq >>= newForeignPtr (_finalizer genQuoteMeta)) <*> return genQuoteMeta)
 
-withGenQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
-withGenQuote (GenQuote p (Meta2 _ k)) ff = withForeignPtr p (k >=> ff)
+withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
+withQuote (GenQuote p (Meta2 _ k)) ff = withForeignPtr p (k >=> ff)
 
-withGenSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
-withGenSimpleQuote (GenQuote p _ ) = withForeignPtr p
+withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
+withSimpleQuote (GenQuote p _ ) = withForeignPtr p
 
-peekGenQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekGenQuote p = GenQuote <$> newForeignPtr (_finalizer genQuoteMeta) p <*> return genQuoteMeta
+peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
+peekQuote p = GenQuote <$> newForeignPtr (_finalizer genQuoteMeta) p <*> return genQuoteMeta
 
-peekGenSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekGenSimpleQuote p = GenQuote <$> newForeignPtr (_finalizer genSimpleQuoteMeta) p <*> return genSimpleQuoteMeta
+peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
+peekSimpleQuote p = GenQuote <$> newForeignPtr (_finalizer genSimpleQuoteMeta) p <*> return genSimpleQuoteMeta
 
-withGenQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
-withGenQuoteArray x f = withMany withGenQuote x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
+withQuoteArray x f = withMany withQuote x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
-withGenQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
-withGenQuoteArrayRaw x f = withMany withGenQuote x (`withArray` f )
+withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
+withQuoteArrayRaw x f = withMany withQuote x (`withArray` f )
 
-withMaybeGenQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
-withMaybeGenQuote x f = maybe (f nullPtr) (`withGenQuote` f) x
+withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
+withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
 
 --bondMeta :: Meta2 CBond ()
 --bondMeta = Meta2 qlFreeBond undefined
