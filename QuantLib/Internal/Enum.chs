@@ -129,7 +129,7 @@ instance ForeignObject QlEuropeanExercise where
   withObject = withQlEuropeanExercise
   constructor = QlEuropeanExercise
   finalizer = qlFreeEuropeanExercise
-{#fun qlEuropeanExerciseAsExercise {`QlEuropeanExercise'} -> `QlExercise'#}
+{#fun qlEuropeanExerciseAsExercise {`QlEuropeanExercise'} ->`QlExercise'#}
 instance IsQlExercise QlEuropeanExercise where asQlExercise = qlEuropeanExerciseAsExercise
 
 {#pointer *QlAmericanExercise foreign finalizer qlFreeAmericanExercise newtype#}
@@ -137,7 +137,7 @@ instance ForeignObject QlAmericanExercise where
   withObject = withQlAmericanExercise
   constructor = QlAmericanExercise
   finalizer = qlFreeAmericanExercise
-{#fun qlAmericanExerciseAsExercise {`QlAmericanExercise'} -> `QlExercise'#}
+{#fun qlAmericanExerciseAsExercise {`QlAmericanExercise'} ->`QlExercise'#}
 instance IsQlExercise QlAmericanExercise where asQlExercise = qlAmericanExerciseAsExercise
 
 {#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
@@ -145,7 +145,7 @@ instance ForeignObject QlSwingExercise where
   withObject = withQlSwingExercise
   constructor = QlSwingExercise
   finalizer = qlFreeSwingExercise
-{#fun qlSwingExerciseAsExercise {`QlSwingExercise'} -> `QlExercise'#}
+{#fun qlSwingExerciseAsExercise {`QlSwingExercise'} ->`QlExercise'#}
 instance IsQlExercise QlSwingExercise where asQlExercise = qlSwingExerciseAsExercise
 
 {#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
@@ -153,7 +153,7 @@ instance ForeignObject QlBermudanExercise where
   withObject = withQlBermudanExercise
   constructor = QlBermudanExercise
   finalizer = qlFreeBermudanExercise
-{#fun qlBermudanExerciseAsExercise {`QlBermudanExercise'} -> `QlExercise'#}
+{#fun qlBermudanExerciseAsExercise {`QlBermudanExercise'} ->`QlExercise'#}
 instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
 
 
@@ -186,15 +186,15 @@ data Exercise =
     | European EuropeanExercise
     | Bermudan BermudanExercise
 
-{#fun qlExercise {`ExerciseType', preErrorCheck- `String' errorCheck*-} -> `QlExercise'#}
-{#fun qlAmericanExercise {withDay* `Day', withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `QlAmericanExercise'#}
-{#fun qlAmericanExercise1 {withDay* `Day', `Bool', preErrorCheck- `String' errorCheck*-} -> `QlAmericanExercise'#}
-{#fun qlBermudanExercise {withDayArray* `[Day]'&, `Bool', preErrorCheck- `String' errorCheck*-} -> `QlBermudanExercise'#}
-{#fun qlEarlyExercise {`ExerciseType', `Bool', preErrorCheck- `String' errorCheck*-} -> `QlExercise'#}
-{#fun qlEuropeanExercise {withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlEuropeanExercise'#}
-{#fun qlSwingExercise {withDayArray* `[Day]'&, withIntArray* `[Word]'&, preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
-{#fun qlSwingExercise1 {withDay* `Day', withDay* `Day', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlSwingExercise'#}
-{#fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} -> `QlBermudanExercise'#}
+{#fun qlExercise {`ExerciseType', preErrorCheck-`String'errorCheck*-} ->`QlExercise'#}
+{#fun qlAmericanExercise {withDay*`Day', withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-} ->`QlAmericanExercise'#}
+{#fun qlAmericanExercise1 {withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-} ->`QlAmericanExercise'#}
+{#fun qlBermudanExercise {withDayArray*`[Day]'&,`Bool', preErrorCheck-`String'errorCheck*-} ->`QlBermudanExercise'#}
+{#fun qlEarlyExercise {`ExerciseType',`Bool', preErrorCheck-`String'errorCheck*-} ->`QlExercise'#}
+{#fun qlEuropeanExercise {withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`QlEuropeanExercise'#}
+{#fun qlSwingExercise {withDayArray*`[Day]'&, withIntArray*`[Word]'&, preErrorCheck-`String'errorCheck*-} ->`QlSwingExercise'#}
+{#fun qlSwingExercise1 {withDay*`Day', withDay*`Day', fromIntegral`Word', preErrorCheck-`String'errorCheck*-} ->`QlSwingExercise'#}
+{#fun qlSwingExerciseAsBermudanExercise {`QlSwingExercise'} ->`QlBermudanExercise'#}
 
 exercise :: Exercise -> IO QlExercise
 exercise (AmericanExercise Nothing d p) = qlAmericanExercise1 d p >>= asQlExercise
@@ -370,7 +370,7 @@ instance ForeignObject QlBasketPayoff where
   withObject = withQlBasketPayoff
   constructor = QlBasketPayoff
   finalizer = qlFreeBasketPayoff
-{#fun qlBasketPayoffAsPayoff {`QlBasketPayoff'} -> `QlPayoff'#}
+{#fun qlBasketPayoffAsPayoff {`QlBasketPayoff'} ->`QlPayoff'#}
 instance IsQlPayoff QlBasketPayoff where asQlPayoff = qlBasketPayoffAsPayoff
 
 {#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
@@ -378,7 +378,7 @@ instance ForeignObject QlTypePayoff where
   withObject = withQlTypePayoff
   constructor = QlTypePayoff
   finalizer = qlFreeTypePayoff
-{#fun qlTypePayoffAsPayoff {`QlTypePayoff'} -> `QlPayoff'#}
+{#fun qlTypePayoffAsPayoff {`QlTypePayoff'} ->`QlPayoff'#}
 instance IsQlPayoff QlTypePayoff where asQlPayoff = qlTypePayoffAsPayoff
 
 {#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
@@ -386,7 +386,7 @@ instance ForeignObject QlStrikedTypePayoff where
   withObject = withQlStrikedTypePayoff
   constructor = QlStrikedTypePayoff
   finalizer = qlFreeStrikedTypePayoff
-{#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} -> `QlTypePayoff'#}
+{#fun qlStrikedTypePayoffAsTypePayoff {`QlStrikedTypePayoff'} ->`QlTypePayoff'#}
 instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff = qlStrikedTypePayoffAsTypePayoff >=> asQlPayoff
 
 {#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
@@ -394,7 +394,7 @@ instance ForeignObject QlPercentageStrikePayoff where
   withObject = withQlPercentageStrikePayoff
   constructor = QlPercentageStrikePayoff
   finalizer = qlFreePercentageStrikePayoff
-{#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} -> `QlStrikedTypePayoff'#}
+{#fun qlPercentageStrikePayoffAsStrikedTypePayoff {`QlPercentageStrikePayoff'} ->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff = qlPercentageStrikePayoffAsStrikedTypePayoff >=> asQlPayoff
 
 {#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
@@ -402,30 +402,30 @@ instance ForeignObject QlPlainVanillaPayoff where
   withObject = withQlPlainVanillaPayoff
   constructor = QlPlainVanillaPayoff
   finalizer = qlFreePlainVanillaPayoff
-{#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} -> `QlStrikedTypePayoff'#}
+{#fun qlPlainVanillaPayoffAsStrikedTypePayoff {`QlPlainVanillaPayoff'} ->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoffAsStrikedTypePayoff >=> asQlPayoff
 
-{#fun qlAssetOrNothingPayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
-{#fun qlAverageBasketPayoff {`QlPayoff', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
-{#fun qlCashOrNothingPayoff {`OptionType', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
-{#fun qlDoubleStickyRatchetPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlFloatingTypePayoff {`OptionType', preErrorCheck- `String' errorCheck*-} -> `QlTypePayoff'#}
-{#fun qlForwardTypePayoff {`PositionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlGapPayoff {`OptionType', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
-{#fun qlMaxBasketPayoff {`QlPayoff', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
-{#fun qlMinBasketPayoff {`QlPayoff', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
-{#fun qlPercentageStrikePayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPercentageStrikePayoff'#}
-{#fun qlPlainVanillaPayoff {`OptionType', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPlainVanillaPayoff'#}
-{#fun qlRatchetMaxPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlRatchetMinPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlRatchetPayoff {`Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlSpreadBasketPayoff {`QlPayoff', preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
-{#fun qlStickyMaxPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlStickyMinPayoff {`Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlStickyPayoff {`Double', `Double', `Double', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlPayoff'#}
-{#fun qlSuperFundPayoff {`Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
-{#fun qlSuperSharePayoff {`Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlStrikedTypePayoff'#}
-{#fun qlAverageBasketPayoff1 {`QlPayoff', withDoubleArray* `[Double]'&, preErrorCheck- `String' errorCheck*-} -> `QlBasketPayoff'#}
+{#fun qlAssetOrNothingPayoff {`OptionType',`Double', preErrorCheck-`String'errorCheck*-} ->`QlStrikedTypePayoff'#}
+{#fun qlAverageBasketPayoff {`QlPayoff', fromIntegral`Word', preErrorCheck-`String'errorCheck*-} ->`QlBasketPayoff'#}
+{#fun qlCashOrNothingPayoff {`OptionType',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlStrikedTypePayoff'#}
+{#fun qlDoubleStickyRatchetPayoff {`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlFloatingTypePayoff {`OptionType', preErrorCheck-`String'errorCheck*-} ->`QlTypePayoff'#}
+{#fun qlForwardTypePayoff {`PositionType',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlGapPayoff {`OptionType',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlStrikedTypePayoff'#}
+{#fun qlMaxBasketPayoff {`QlPayoff', preErrorCheck-`String'errorCheck*-} ->`QlBasketPayoff'#}
+{#fun qlMinBasketPayoff {`QlPayoff', preErrorCheck-`String'errorCheck*-} ->`QlBasketPayoff'#}
+{#fun qlPercentageStrikePayoff {`OptionType',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPercentageStrikePayoff'#}
+{#fun qlPlainVanillaPayoff {`OptionType',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPlainVanillaPayoff'#}
+{#fun qlRatchetMaxPayoff {`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlRatchetMinPayoff {`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlRatchetPayoff {`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlSpreadBasketPayoff {`QlPayoff', preErrorCheck-`String'errorCheck*-} ->`QlBasketPayoff'#}
+{#fun qlStickyMaxPayoff {`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlStickyMinPayoff {`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlStickyPayoff {`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlPayoff'#}
+{#fun qlSuperFundPayoff {`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlStrikedTypePayoff'#}
+{#fun qlSuperSharePayoff {`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlStrikedTypePayoff'#}
+{#fun qlAverageBasketPayoff1 {`QlPayoff', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-} ->`QlBasketPayoff'#}
 
 instance EnumObject Payoff QlPayoff where toObject = payoff
 
@@ -479,9 +479,9 @@ withCallabilityArray :: [Callability] -> ((CUInt, Ptr (Ptr CQlCallability)) -> I
 withCallabilityArray = withEnumTypeArray callabilityMeta
 
 -- |callability leaving to the holder the possibility to convert
-{#fun qlSoftCallability {`Double', `BondPriceType', withDay* `Day', `Double', preErrorCheck- `String' errorCheck*-} -> `QlCallability' peekCallability*#}
+{#fun qlSoftCallability {`Double',`BondPriceType', withDay*`Day',`Double', preErrorCheck-`String'errorCheck*-} ->`QlCallability'peekCallability*#}
 
-{#fun qlCallability {`Double', `BondPriceType', `CallabilityType', withDay* `Day', preErrorCheck- `String' errorCheck*-} -> `QlCallability' peekCallability*#}
+{#fun qlCallability {`Double',`BondPriceType',`CallabilityType', withDay*`Day', preErrorCheck-`String'errorCheck*-} ->`QlCallability'peekCallability*#}
 
 {#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
 instance ForeignObject FittingMethodObject where
@@ -510,11 +510,11 @@ fittingMethod NelsonSiegel = qlNelsonSiegelFitting
 fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
 fittingMethod Svensson = qlSvenssonFitting
 
-{#fun qlCubicBSplinesFitting {withDoubleArray* `[Double]'&, `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlExponentialSplinesFitting {`Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlNelsonSiegelFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlSimplePolynomialFitting {fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
-{#fun qlSvenssonFitting {preErrorCheck- `String' errorCheck*-} -> `FittingMethodObject'#}
+{#fun qlCubicBSplinesFitting {withDoubleArray*`[Double]'&,`Bool', preErrorCheck-`String'errorCheck*-} ->`FittingMethodObject'#}
+{#fun qlExponentialSplinesFitting {`Bool', preErrorCheck-`String'errorCheck*-} ->`FittingMethodObject'#}
+{#fun qlNelsonSiegelFitting {preErrorCheck-`String'errorCheck*-} ->`FittingMethodObject'#}
+{#fun qlSimplePolynomialFitting {fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-} ->`FittingMethodObject'#}
+{#fun qlSvenssonFitting {preErrorCheck-`String'errorCheck*-} ->`FittingMethodObject'#}
 
 {#enum FdmSchemeType {} deriving(Show, Eq)#}
 
@@ -537,14 +537,14 @@ instance ForeignObject FdmSchemeDesc where
   constructor = FdmSchemeDesc
   finalizer = qlFreeFdmSchemeDesc
 
-{#fun qlFdmSchemeDesc {`FdmSchemeType', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescCraigSneyd {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescDouglas {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescExplicitEuler {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescHundsdorfer {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescImplicitEuler {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescModifiedCraigSneyd {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescModifiedHundsdorfer {preErrorCheck- `String' errorCheck*-} -> `FdmSchemeDesc'#}
+{#fun qlFdmSchemeDesc {`FdmSchemeType',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescCraigSneyd {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescDouglas {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescExplicitEuler {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescHundsdorfer {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescImplicitEuler {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescModifiedCraigSneyd {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
+{#fun qlFdmSchemeDescModifiedHundsdorfer {preErrorCheck-`String'errorCheck*-} ->`FdmSchemeDesc'#}
 
 fdmScheme :: FdmScheme -> IO FdmSchemeDesc
 fdmScheme (FdmScheme t th mu) = qlFdmSchemeDesc t th mu
@@ -581,10 +581,10 @@ constraint (Composite c1 c2) = qlCompositeConstraint c1 c2
 constraint NoConstraint = qlNoConstraint
 constraint PositiveConstraint = qlPositiveConstraint
 
-{#fun qlBoundaryConstraint {`Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
-{#fun qlCompositeConstraint {withEnumObject* `Constraint', withEnumObject* `Constraint', preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
-{#fun qlNoConstraint {preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
-{#fun qlPositiveConstraint {preErrorCheck- `String' errorCheck*-} -> `QlConstraint'#}
+{#fun qlBoundaryConstraint {`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlConstraint'#}
+{#fun qlCompositeConstraint {withEnumObject*`Constraint', withEnumObject*`Constraint', preErrorCheck-`String'errorCheck*-} ->`QlConstraint'#}
+{#fun qlNoConstraint {preErrorCheck-`String'errorCheck*-} ->`QlConstraint'#}
+{#fun qlPositiveConstraint {preErrorCheck-`String'errorCheck*-} ->`QlConstraint'#}
 
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign finalizer qlFreeOptimizationMethod newtype#}
 instance ForeignObject QlOptimizationMethod where
@@ -603,8 +603,8 @@ data OptimizationMethod =
 instance EnumObject OptimizationMethod QlOptimizationMethod where
   toObject (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
   toObject (Simplex l) = qlSimplex l
-{#fun qlLevenbergMarquardt {`Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlOptimizationMethod'#}
-{#fun qlSimplex {`Double', preErrorCheck- `String' errorCheck*-} -> `QlOptimizationMethod'#}
+{#fun qlLevenbergMarquardt {`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlOptimizationMethod'#}
+{#fun qlSimplex {`Double', preErrorCheck-`String'errorCheck*-} ->`QlOptimizationMethod'#}
 
 data EndCriteria = 
   EndCriteria
@@ -620,7 +620,7 @@ instance ForeignObject QlEndCriteria where
   constructor = QlEndCriteria
   finalizer = qlFreeEndCriteria
 instance EnumObject EndCriteria QlEndCriteria where toObject (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
-{#fun qlEndCriteria {fromIntegral `Word', fromIntegral `Word', `Double', `Double', `Double', preErrorCheck- `String' errorCheck*-} -> `QlEndCriteria'#}
+{#fun qlEndCriteria {fromIntegral`Word', fromIntegral`Word',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-} ->`QlEndCriteria'#}
 
 {#enum RoundingType {} deriving (Show, Eq)#}
 {#pointer *Rounding as QlRounding foreign finalizer qlFreeRounding newtype#}
@@ -639,7 +639,7 @@ instance EnumObject Rounding QlRounding where
   toObject NoRounding = qlRounding
   toObject (Rounding p t d) = qlRounding1 p t d
 
-{#fun qlRounding {preErrorCheck- `String' errorCheck*-} -> `QlRounding'#}
-{#fun qlRounding1 {`Int', `RoundingType', `Int', preErrorCheck- `String' errorCheck*-} -> `QlRounding'#}
+{#fun qlRounding {preErrorCheck-`String'errorCheck*-} ->`QlRounding'#}
+{#fun qlRounding1 {`Int',`RoundingType',`Int', preErrorCheck-`String'errorCheck*-} ->`QlRounding'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
