@@ -291,7 +291,7 @@ blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -> Maybe Inte
 blackVarianceCurve d dq dc f i = uncurry' (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i)
   where (dd, q) = unzip dq
 
-{#fun qlBlackVarianceCurve {withDay*`Day' , withDayArray*`[Day]'& , withDoubleArray*`[Double]'& , withDayCounter*`DayCounter' ,`Bool' ,`Int',`Int',`Int' , preErrorCheck-`String'errorCheck*-} ->`BlackVarianceCurve'#}
+{#fun qlBlackVarianceCurve {withDay*`Day' , withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', `Bool', `Int', `Int', `Int', preErrorCheck-`String'errorCheck*-} ->`BlackVarianceCurve'#}
 
 blackVarianceSurface :: Day -> Calendar -> [Day] -> [Double] -> Matrix Double -> DayCounter -> BlackVarianceSurfaceExtrapolation -> BlackVarianceSurfaceExtrapolation -> IO BlackVolTermStructure
 blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
