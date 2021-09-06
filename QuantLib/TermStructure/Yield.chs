@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, FlexibleContexts, TypeOperators #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, FlexibleContexts, TypeOperators, FlexibleInstances #-}
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure
@@ -60,7 +60,7 @@ module QuantLib.TermStructure.Yield
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
 
-  -- , underlying
+  , underlying
   )
   where
 
@@ -76,6 +76,7 @@ import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(TimeUnit, Frequency)
 {#import QuantLib.TermStructure#}
 import {-# SOURCE #-} QuantLib.Instrument.Bond(Bond)
+import {-# SOURCE #-} QuantLib.Instrument.Swap(VanillaSwap, OvernightIndexedSwap)
 import {-# SOURCE #-} QuantLib.TermStructure.Volatility(BlackVolTermStructure)
 
 #include "qlTypesC2HS.h"
@@ -287,15 +288,15 @@ interpolatedZeroCurve r dc c qd i = uncurry' (qlInterpolatedZeroCurve rs rd dc c
 {#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations {`FittedBondDiscountCurve', preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 -- XXX
---class HelperUnderlying a b | a -> b where underlying :: a -> IO b
---
---instance HelperUnderlying BondHelper Bond where underlying = qlBondHelperBond
---{#fun qlBondHelperBond {`BondHelper', preErrorCheck-`String'errorCheck*-}->`Bond'peekObject*#}
---
---instance HelperUnderlying SwapRateHelper VanillaSwap where underlying = qlSwapRateHelperSwap
---{#fun qlSwapRateHelperSwap {`SwapRateHelper', preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekObject*#}
---
---instance HelperUnderlying OISRateHelper OvernightIndexedSwap where underlying = qlOISRateHelperSwap
---{#fun qlOISRateHelperSwap {`OISRateHelper', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekObject*#}
+class HelperUnderlying a b | a -> b where underlying :: a -> IO b
+
+instance HelperUnderlying BondHelper Bond where underlying = qlBondHelperBond
+{#fun qlBondHelperBond {withBondHelper*`BondHelper', preErrorCheck-`String'errorCheck*-}->`Bond'peekObject*#}
+
+instance HelperUnderlying SwapRateHelper VanillaSwap where underlying = qlSwapRateHelperSwap
+{#fun qlSwapRateHelperSwap {withSwapRateHelper*`SwapRateHelper', preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekObject*#}
+
+instance HelperUnderlying OISRateHelper OvernightIndexedSwap where underlying = qlOISRateHelperSwap
+{#fun qlOISRateHelperSwap {withOISRateHelper*`OISRateHelper', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekObject*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

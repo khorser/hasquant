@@ -166,18 +166,13 @@ QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel | qlFreeBatesDoubleEx
 QlBatesDoubleExpModel as BatesDoubleExpModel | qlFreeBatesDoubleExpModel
 QlBatesModel as BatesModel | qlFreeBatesModel
 QlBatesProcess as BatesProcess | qlFreeBatesProcess
-QlBlackCalculator as BlackCalculator | qlFreeBlackCalculator
-QlBlackCalibrationHelper as BlackCalibrationHelper | qlFreeBlackCalibrationHelper
 QlBlackProcess as BlackProcess | qlFreeBlackProcess
-QlBlackScholesCalculator as BlackScholesCalculator | qlFreeBlackScholesCalculator
 QlBlackVarianceCurve as BlackVarianceCurve | qlFreeBlackVarianceCurve
 QlBlackVolTermStructure as BlackVolTermStructure | qlFreeBlackVolTermStructure
 QlBMAIndex as BMAIndex | qlFreeBMAIndex
 QlBMASwap as BMASwap | qlFreeBMASwap
 QlBond as Bond | qlFreeBond
-QlBondHelper as BondHelper | qlFreeBondHelper
 QlCalibratedModel as CalibratedModel | qlFreeCalibratedModel
-QlCalibrationHelper as CalibrationHelper | qlFreeCalibrationHelper
 QlCallableBond as CallableBond | qlFreeCallableBond
 QlCallableBondVolatilityStructure as CallableBondVolatilityStructure | qlFreeCallableBondVolatilityStructure
 QlCapFloor as CapFloor | qlFreeCapFloor
@@ -185,7 +180,6 @@ QlCapFloorTermVolSurface as CapFloorTermVolSurface | qlFreeCapFloorTermVolSurfac
 QlCdsOption as CdsOption | qlFreeCdsOption
 QlConvertibleBond as ConvertibleBond | qlFreeConvertibleBond
 QlCreditDefaultSwap as CreditDefaultSwap | qlFreeCreditDefaultSwap
-QlDefaultProbabilityHelper as DefaultProbabilityHelper | qlFreeDefaultProbabilityHelper
 QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure | qlFreeDefaultProbabilityTermStructure
 QlDividendVanillaOption as DividendVanillaOption | qlFreeDividendVanillaOption
 QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess | qlFreeExtendedOrnsteinUhlenbeckProcess
@@ -220,7 +214,6 @@ QlLocalVolTermStructure as LocalVolTermStructure | qlFreeLocalVolTermStructure
 QlMargrabeOption as MargrabeOption | qlFreeMargrabeOption
 QlMerton76Process as Merton76Process | qlFreeMerton76Process
 QlMultiAssetOption as MultiAssetOption | qlFreeMultiAssetOption
-QlOISRateHelper as OISRateHelper | qlFreeOISRateHelper
 QlOneAssetOption as OneAssetOption | qlFreeOneAssetOption
 QlOneFactorAffineModel as OneFactorAffineModel | qlFreeOneFactorAffineModel
 QlOption as Option | qlFreeOption
@@ -233,7 +226,6 @@ QlPricingEngine as PricingEngine | qlFreePricingEngine
 QlQuantoBarrierOption as QuantoBarrierOption | qlFreeQuantoBarrierOption
 QlQuantoForwardVanillaOption as QuantoForwardVanillaOption | qlFreeQuantoForwardVanillaOption
 QlQuantoVanillaOption as QuantoVanillaOption | qlFreeQuantoVanillaOption
-QlRateHelper as RateHelper | qlFreeRateHelper
 QlShortRateModel as ShortRateModel | qlFreeShortRateModel
 QlSmileSection as SmileSection | qlFreeSmileSection
 QlStochasticProcess1D as StochasticProcess1D | qlFreeStochasticProcess1D
@@ -241,7 +233,6 @@ QlStochasticProcessArray as StochasticProcessArray | qlFreeStochasticProcessArra
 QlStochasticProcess as StochasticProcess | qlFreeStochasticProcess
 QlSwap as Swap | qlFreeSwap
 QlSwapIndex as SwapIndex | qlFreeSwapIndex
-QlSwapRateHelper as SwapRateHelper | qlFreeSwapRateHelper
 QlSwaption as Swaption | qlFreeSwaption
 QlSwaptionVolatilityStructure as SwaptionVolatilityStructure | qlFreeSwaptionVolatilityStructure
 QlTermStructure as TermStructure | qlFreeTermStructure
@@ -341,4 +332,3 @@ a:AffineModel
     (AffineModelDescendant OneFactorAffineModel) : AffineModel | cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
     (AffineModelDescendant LiborForwardModel) : AffineModel | cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
     (AffineModelDescendant G2) : AffineModel | cast (AffineModelDescendant x) = qlG2AsAffineModel x
-
