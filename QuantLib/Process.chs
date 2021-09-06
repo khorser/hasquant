@@ -279,7 +279,7 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
 
 {#fun qlLiborForwardModelProcess as liborForwardModelProcess {fromIntegral`Word',`IborIndex', preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'#}
 
-{#fun qlMerton76Process as merton76Process {withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure', withQuote*`GenQuote a', withQuote*`GenQuote a', withQuote*`GenQuote a',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`Merton76Process'#}
+{#fun qlMerton76Process as merton76Process {withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure', withQuote*`GenQuote b', withQuote*`GenQuote c', withQuote*`GenQuote d',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`Merton76Process'#}
 
 {#fun qlOrnsteinUhlenbeckProcess as ornsteinUhlenbeckProcess {`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'#}
 
