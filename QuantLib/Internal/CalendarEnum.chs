@@ -18,27 +18,27 @@ module QuantLib.Internal.CalendarEnum
 
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Type
---import {-# SOURCE #-} QuantLib.Time.Schedule
+--import{-# SOURCE #-} QuantLib.Time.Schedule
 import QuantLib.Time.Date(Weekday)
 
-{#enum JointCalendarRule {} deriving(Show, Eq)#}
+{#enum JointCalendarRule{} deriving(Show, Eq)#}
 
-{#enum CalendarCountry {} add prefix = "Country__" deriving(Show, Eq)#}
+{#enum CalendarCountry{} add prefix = "Country__" deriving(Show, Eq)#}
 
-{#enum AustriaMarket {} add prefix = "Austria__" deriving(Show, Eq)#}
-{#enum BrazilMarket {} add prefix = "Brazil__" deriving(Show, Eq)#}
-{#enum CanadaMarket {} add prefix = "Canada__" deriving(Show, Eq)#}
-{#enum ChinaMarket {} add prefix = "China__" deriving(Show, Eq)#}
-{#enum FranceMarket {} add prefix= "France__" deriving(Show, Eq)#}
-{#enum GermanyMarket {} add prefix = "Germany__" deriving(Show, Eq)#}
-{#enum IndonesiaMarket {} add prefix = "Indonesia__" deriving(Show, Eq)#}
-{#enum IsraelMarket {} add prefix = "Israel__" deriving(Show, Eq)#}
-{#enum ItalyMarket {} add prefix = "Italy__" deriving(Show, Eq)#}
-{#enum RomaniaMarket {} add prefix = "Romania__" deriving(Show, Eq)#}
-{#enum RussiaMarket {} add prefix = "Russia__" deriving(Show, Eq)#}
-{#enum SouthKoreaMarket {} add prefix = "SouthKorea__" deriving(Show, Eq)#}
-{#enum UnitedKingdomMarket {} add prefix = "UnitedKingdom__" deriving(Show, Eq)#}
-{#enum UnitedStatesMarket {} add prefix = "UnitedStates__" deriving(Show, Eq)#}
+{#enum AustriaMarket{} add prefix = "Austria__" deriving(Show, Eq)#}
+{#enum BrazilMarket{} add prefix = "Brazil__" deriving(Show, Eq)#}
+{#enum CanadaMarket{} add prefix = "Canada__" deriving(Show, Eq)#}
+{#enum ChinaMarket{} add prefix = "China__" deriving(Show, Eq)#}
+{#enum FranceMarket{} add prefix= "France__" deriving(Show, Eq)#}
+{#enum GermanyMarket{} add prefix = "Germany__" deriving(Show, Eq)#}
+{#enum IndonesiaMarket{} add prefix = "Indonesia__" deriving(Show, Eq)#}
+{#enum IsraelMarket{} add prefix = "Israel__" deriving(Show, Eq)#}
+{#enum ItalyMarket{} add prefix = "Italy__" deriving(Show, Eq)#}
+{#enum RomaniaMarket{} add prefix = "Romania__" deriving(Show, Eq)#}
+{#enum RussiaMarket{} add prefix = "Russia__" deriving(Show, Eq)#}
+{#enum SouthKoreaMarket{} add prefix = "SouthKorea__" deriving(Show, Eq)#}
+{#enum UnitedKingdomMarket{} add prefix = "UnitedKingdom__" deriving(Show, Eq)#}
+{#enum UnitedStatesMarket{} add prefix = "UnitedStates__" deriving(Show, Eq)#}
 
 data CalendarExtra =
    Extra__Bespoke String [Weekday]
@@ -51,11 +51,11 @@ $(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''Ca
 deriving instance Show CalendarConstructor
 deriving instance Eq CalendarConstructor
 
-{#enum DayCounterType {} add prefix = "DayCounter__" deriving(Show, Eq)#}
+{#enum DayCounterType{} add prefix = "DayCounter__" deriving(Show, Eq)#}
 
-{#enum ActualActualConvention {} add prefix = "ActualActual__" deriving(Show, Eq)#}
-{#enum Thirty360Convention {} add prefix = "Thirty360__" deriving(Show, Eq)#}
-{#enum Actual365FixedConvention {} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}
+{#enum ActualActualConvention{} add prefix = "ActualActual__" deriving(Show, Eq)#}
+{#enum Thirty360Convention{} add prefix = "Thirty360__" deriving(Show, Eq)#}
+{#enum Actual365FixedConvention{} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}
 
 -- TODO add the second (Schedule) argument to Actua/Actual constructor
 

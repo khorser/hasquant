@@ -368,6 +368,8 @@ quoteMetaConv = MetaConv return
 simpleQuoteMetaConv :: MetaConv CSimpleQuote CQuote
 simpleQuoteMetaConv = MetaConv qlSimpleQuoteAsQuote
 
+-- Haskell does not allow function arguments like [forall a.GenQuote a]
+-- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO (GenQuote CQuote)
 asQuote (GenQuote q) = GenQuote <$> asGenObject quoteMeta quoteMetaConv q
 

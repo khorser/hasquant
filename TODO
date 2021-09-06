@@ -8,9 +8,6 @@ FdmSchemeDesc | qlFreeFdmSchemeDesc
 FittedBondDiscountCurveFittingMethod as FittingMethodObject | qlFreeFittedBondDiscountCurveFittingMethod
 OptimizationMethod as QlOptimizationMethod | qlFreeOptimizationMethod
 
-Leg | qlFreeLeg
-CouponLeg | qlFreeCouponLeg
-
 QlPayoff | qlFreePayoff
 QlPercentageStrikePayoff | qlFreePercentageStrikePayoff
 QlPlainVanillaPayoff | qlFreePlainVanillaPayoff

@@ -91,7 +91,7 @@ instance ForeignObject Option where
   constructor = Option
   finalizer = qlFreeOption
 instance Option`Derives` Instrument where cast = qlOptionAsInstrument
-{#fun qlOptionAsInstrument {`Option'}->`Instrument'peekObject*#}
+{#fun qlOptionAsInstrument{`Option'}->`Instrument'peekObject*#}
 
 asOption :: (a`Derives` Option) => a -> IO Option
 asOption = cast
@@ -105,7 +105,7 @@ instance ForeignObject CdsOption where
   constructor = CdsOption
   finalizer = qlFreeCdsOption
 instance CdsOption`Derives` Option where cast = qlCdsOptionAsOption
-{#fun qlCdsOptionAsOption {`CdsOption'}->`Option'#}
+{#fun qlCdsOptionAsOption{`CdsOption'}->`Option'#}
 
 {#pointer *QlBarrierOption as BarrierOption foreign finalizer qlFreeBarrierOption newtype#}
 instance ForeignObject BarrierOption where
@@ -136,7 +136,7 @@ instance ForeignObject MultiAssetOption where
   withObject = withMultiAssetOption
   constructor = MultiAssetOption
   finalizer = qlFreeMultiAssetOption
-{#fun qlMultiAssetOptionAsOption {`MultiAssetOption'}->`Option'#}
+{#fun qlMultiAssetOptionAsOption{`MultiAssetOption'}->`Option'#}
 instance MultiAssetOption`Derives` Option where cast = qlMultiAssetOptionAsOption
 
 {#pointer *QlOneAssetOption as OneAssetOption foreign finalizer qlFreeOneAssetOption newtype#}
@@ -144,7 +144,7 @@ instance ForeignObject OneAssetOption where
   withObject = withOneAssetOption
   constructor = OneAssetOption
   finalizer = qlFreeOneAssetOption
-{#fun qlOneAssetOptionAsOption {`OneAssetOption'}->`Option'#}
+{#fun qlOneAssetOptionAsOption{`OneAssetOption'}->`Option'#}
 instance OneAssetOption`Derives` Option where cast = qlOneAssetOptionAsOption
 
 {#pointer *QlQuantoBarrierOption as QuantoBarrierOption foreign finalizer qlFreeQuantoBarrierOption newtype#}
@@ -171,28 +171,28 @@ instance ForeignObject VanillaOption where
   constructor = VanillaOption
   finalizer = qlFreeVanillaOption
 
-{#fun qlBarrierOptionAsOneAssetOption {`BarrierOption'}->`OneAssetOption'#}
+{#fun qlBarrierOptionAsOneAssetOption{`BarrierOption'}->`OneAssetOption'#}
 instance BarrierOption`Derives` OneAssetOption where cast = qlBarrierOptionAsOneAssetOption
 
-{#fun qlDividendVanillaOptionAsOneAssetOption {`DividendVanillaOption'}->`OneAssetOption'#}
+{#fun qlDividendVanillaOptionAsOneAssetOption{`DividendVanillaOption'}->`OneAssetOption'#}
 instance DividendVanillaOption`Derives` OneAssetOption where cast = qlDividendVanillaOptionAsOneAssetOption
 
-{#fun qlForwardVanillaOptionAsOneAssetOption {`ForwardVanillaOption'}->`OneAssetOption'#}
+{#fun qlForwardVanillaOptionAsOneAssetOption{`ForwardVanillaOption'}->`OneAssetOption'#}
 instance ForwardVanillaOption`Derives` OneAssetOption where cast = qlForwardVanillaOptionAsOneAssetOption
 
-{#fun qlQuantoVanillaOptionAsOneAssetOption {`QuantoVanillaOption'}->`OneAssetOption'#}
+{#fun qlQuantoVanillaOptionAsOneAssetOption{`QuantoVanillaOption'}->`OneAssetOption'#}
 instance QuantoVanillaOption`Derives` OneAssetOption where cast = qlQuantoVanillaOptionAsOneAssetOption
 
-{#fun qlVanillaOptionAsOneAssetOption {`VanillaOption'}->`OneAssetOption'#}
+{#fun qlVanillaOptionAsOneAssetOption{`VanillaOption'}->`OneAssetOption'#}
 instance VanillaOption`Derives` OneAssetOption where cast = qlVanillaOptionAsOneAssetOption
 
-{#fun qlQuantoBarrierOptionAsBarrierOption {`QuantoBarrierOption'}->`BarrierOption'#}
+{#fun qlQuantoBarrierOptionAsBarrierOption{`QuantoBarrierOption'}->`BarrierOption'#}
 instance QuantoBarrierOption`Derives` Option where cast = qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
 
-{#fun qlMargrabeOptionAsMultiAssetOption {`MargrabeOption'}->`MultiAssetOption'#}
+{#fun qlMargrabeOptionAsMultiAssetOption{`MargrabeOption'}->`MultiAssetOption'#}
 instance MargrabeOption`Derives` MultiAssetOption where cast = qlMargrabeOptionAsMultiAssetOption
 
-{#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption {`QuantoForwardVanillaOption'}->`ForwardVanillaOption'#}
+{#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption{`QuantoForwardVanillaOption'}->`ForwardVanillaOption'#}
 instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
 
 -- some necessary boilerplate
@@ -207,71 +207,71 @@ instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForward
 {#pointer *QlSwingExercise foreign newtype nocode#}
 {#pointer *QlBermudanExercise foreign newtype nocode#}
 
-{#fun qlQuantoForwardVanillaOption as quantoForwardVanillaOption {`Double', withDay*`Day', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`QuantoForwardVanillaOption'#}
+{#fun qlQuantoForwardVanillaOption as quantoForwardVanillaOption{`Double', withDay*`Day', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`QuantoForwardVanillaOption'#}
 
-{#fun qlQuantoVanillaOption as quantoVanillaOption {withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`QuantoVanillaOption'#}
+{#fun qlQuantoVanillaOption as quantoVanillaOption{withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`QuantoVanillaOption'#}
 
-{#fun qlVanillaOption as vanillaOption {withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`VanillaOption'#}
+{#fun qlVanillaOption as vanillaOption{withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`VanillaOption'#}
 
-{#fun qlBarrierOption as barrierOption {`BarrierType',`Double',`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`BarrierOption'#}
+{#fun qlBarrierOption as barrierOption{`BarrierType',`Double',`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`BarrierOption'#}
 
-{#fun qlDividendVanillaOption as dividendVanillaOption {withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`DividendVanillaOption'#}
+{#fun qlDividendVanillaOption as dividendVanillaOption{withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`DividendVanillaOption'#}
 
-{#fun qlForwardVanillaOption as forwardVanillaOption {`Double', withDay*`Day', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'#}
+{#fun qlForwardVanillaOption as forwardVanillaOption{`Double', withDay*`Day', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'#}
 
-{#fun qlMargrabeOptionDelta1 as delta1 {`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionDelta1 as delta1{`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlMargrabeOptionDelta2 as delta2 {`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionDelta2 as delta2{`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlMargrabeOptionGamma1 as gamma1 {`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionGamma1 as gamma1{`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlMargrabeOptionGamma2 as gamma2 {`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionGamma2 as gamma2{`MargrabeOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOptionDeltaForward as deltaForward {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionDeltaForward as deltaForward{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOptionElasticity as elasticity {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionElasticity as elasticity{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOptionStrikeSensitivity as strikeSensitivity {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionStrikeSensitivity as strikeSensitivity{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOptionThetaPerDay as thetaPerDay {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionThetaPerDay as thetaPerDay{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlMargrabeOption as margrabeOption {`Int',`Int', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MargrabeOption'#}
+{#fun qlMargrabeOption as margrabeOption{`Int',`Int', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MargrabeOption'#}
 
-{#fun qlMultiAssetOption as multiAssetOption {withEnumObject*`Payoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
+{#fun qlMultiAssetOption as multiAssetOption{withEnumObject*`Payoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
 
-{#fun qlOneAssetOptionItmCashProbability as itmCashProbability {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionItmCashProbability as itmCashProbability{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOption as oneAssetOption {withEnumObject*`Payoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlOneAssetOption as oneAssetOption{withEnumObject*`Payoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlQuantoBarrierOption as quantoBarrierOption {`BarrierType',`Double',`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'#}
+{#fun qlQuantoBarrierOption as quantoBarrierOption{`BarrierType',`Double',`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'#}
 
 dividendBarrierOption :: BarrierType -> Double -> Double -> StrikedPayoff -> Exercise -> [(Day, Double)] -> IO BarrierOption
 dividendBarrierOption bt d1 d2 p e dv = uncurry (qlDividendBarrierOption bt d1 d2 p e) (unzip dv)
-{#fun qlDividendBarrierOption {`BarrierType',`Double',`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`BarrierOption'#}
+{#fun qlDividendBarrierOption{`BarrierType',`Double',`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`BarrierOption'#}
 
-{#fun qlBasketOption as basketOption {withEnumObject*`BasketPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
+{#fun qlBasketOption as basketOption{withEnumObject*`BasketPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
 
-{#fun qlHimalayaOption as himalayaOption {withDayArray*`[Day]'&,`Double', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
+{#fun qlHimalayaOption as himalayaOption{withDayArray*`[Day]'&,`Double', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
 
-{#fun qlPagodaOption as pagodaOption {withDayArray*`[Day]'&,`Double',`Double', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
+{#fun qlPagodaOption as pagodaOption{withDayArray*`[Day]'&,`Double',`Double', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
 
-{#fun qlSpreadOption as spreadOption {withEnumObject*`PlainVanillaPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
+{#fun qlSpreadOption as spreadOption{withEnumObject*`PlainVanillaPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'#}
 
-{#fun qlCliquetOption as cliquetOption {withEnumObject*`PercentageStrikePayoff', withEnumObject*`EuropeanExercise', withDayArray*`[Day]'&, preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlCliquetOption as cliquetOption{withEnumObject*`PercentageStrikePayoff', withEnumObject*`EuropeanExercise', withDayArray*`[Day]'&, preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlContinuousAveragingAsianOption as continuousAveragingAsianOption {`AverageType', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlContinuousAveragingAsianOption as continuousAveragingAsianOption{`AverageType', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlContinuousFixedLookbackOption as continuousFixedLookbackOption {`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlContinuousFixedLookbackOption as continuousFixedLookbackOption{`Double', withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlContinuousFloatingLookbackOption as continuousFloatingLookbackOption {`Double', withEnumObject*`TypePayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlContinuousFloatingLookbackOption as continuousFloatingLookbackOption{`Double', withEnumObject*`TypePayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlDiscreteAveragingAsianOption as discreteAveragingAsianOption {`AverageType',`Double', fromIntegral`Word', withDayArray*`[Day]'&, withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlDiscreteAveragingAsianOption as discreteAveragingAsianOption{`AverageType',`Double', fromIntegral`Word', withDayArray*`[Day]'&, withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlVanillaStorageOption as vanillaStorageOption {withEnumObject*`BermudanExercise',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlVanillaStorageOption as vanillaStorageOption{withEnumObject*`BermudanExercise',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlVanillaSwingOption as vanillaSwingOption {withEnumObject*`StrikedPayoff', withEnumObject*`SwingExercise', fromIntegral`Word', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
+{#fun qlVanillaSwingOption as vanillaSwingOption{withEnumObject*`StrikedPayoff', withEnumObject*`SwingExercise', fromIntegral`Word', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`OneAssetOption'#}
 
-{#fun qlEuropeanOption as europeanOption {withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`VanillaOption'#}
+{#fun qlEuropeanOption as europeanOption{withEnumObject*`StrikedPayoff', withEnumObject*`Exercise', preErrorCheck-`String'errorCheck*-}->`VanillaOption'#}
 
 class OptionOnAsset a where
   delta :: a -> IO Double
@@ -298,19 +298,19 @@ instance OptionOnAsset OneAssetOption where
   vega = qlOneAssetOptionVega
   dividendRho = qlOneAssetOptionDividendRho
 
-{#fun qlMultiAssetOptionDelta {`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionDividendRho {`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionGamma {`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionRho {`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionTheta {`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionVega {`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionDelta{`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionDividendRho{`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionGamma{`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionRho{`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionTheta{`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionVega{`MultiAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOptionDelta {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionDividendRho {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionGamma {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionRho {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionTheta {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionVega {`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionDelta{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionDividendRho{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionGamma{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionRho{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionTheta{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionVega{`OneAssetOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 class QuantoOption a where
   qrho :: a -> IO Double
@@ -352,20 +352,20 @@ instance VolatileOption VanillaOption where
 instance VolatileOption BarrierOption where
   impliedVolatility = qlBarrierOptionImpliedVolatility
 
-{#fun qlQuantoBarrierOptionQrho {`QuantoBarrierOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlQuantoBarrierOptionQvega {`QuantoBarrierOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlQuantoBarrierOptionQlambda {`QuantoBarrierOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoBarrierOptionQrho{`QuantoBarrierOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoBarrierOptionQvega{`QuantoBarrierOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoBarrierOptionQlambda{`QuantoBarrierOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlQuantoForwardVanillaOptionQrho {`QuantoForwardVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlQuantoForwardVanillaOptionQvega {`QuantoForwardVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlQuantoForwardVanillaOptionQlambda {`QuantoForwardVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoForwardVanillaOptionQrho{`QuantoForwardVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoForwardVanillaOptionQvega{`QuantoForwardVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoForwardVanillaOptionQlambda{`QuantoForwardVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlQuantoVanillaOptionQrho {`QuantoVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlQuantoVanillaOptionQvega {`QuantoVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlQuantoVanillaOptionQlambda {`QuantoVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoVanillaOptionQrho{`QuantoVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoVanillaOptionQvega{`QuantoVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantoVanillaOptionQlambda{`QuantoVanillaOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlDividendVanillaOptionImpliedVolatility {`DividendVanillaOption',`Double', withObject*`GeneralizedBlackScholesProcess',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaOptionImpliedVolatility {`VanillaOption',`Double', withObject*`GeneralizedBlackScholesProcess',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlBarrierOptionImpliedVolatility {`BarrierOption',`Double', withObject*`GeneralizedBlackScholesProcess',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDividendVanillaOptionImpliedVolatility{`DividendVanillaOption',`Double', withObject*`GeneralizedBlackScholesProcess',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaOptionImpliedVolatility{`VanillaOption',`Double', withObject*`GeneralizedBlackScholesProcess',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBarrierOptionImpliedVolatility{`BarrierOption',`Double', withObject*`GeneralizedBlackScholesProcess',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
