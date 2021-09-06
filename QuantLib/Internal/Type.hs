@@ -54,6 +54,12 @@ module QuantLib.Internal.Type
   , withDividendArray
   , peekDividend
 
+  , CDefaultProbabilityHelper
+  , DefaultProbabilityHelper
+  , withDefaultProbabilityHelper
+  , withDefaultProbabilityHelperArray
+  , peekDefaultProbabilityHelper
+
   , withQuote
   , withSimpleQuote
   , withQuoteArray
@@ -73,6 +79,49 @@ module QuantLib.Internal.Type
   , asLeg
   , GenLeg
   , withLegArray
+
+  , CRateHelper
+  , CSwapRateHelper
+  , CBondHelper
+  , COISRateHelper
+  , CCalibrationHelper
+  , CBlackCalibrationHelper
+  , CBlackCalculator
+  , CBlackScholesCalculator
+  , RateHelper
+  , SwapRateHelper
+  , BondHelper
+  , OISRateHelper
+  , CalibrationHelper
+  , BlackCalibrationHelper
+  , BlackCalculator
+  , BlackScholesCalculator
+  , GenRateHelper
+  , GenCalibrationHelper
+  , GenBlackCalculator
+  , peekRateHelper
+  , peekSwapRateHelper
+  , peekBondHelper
+  , peekOISRateHelper
+  , peekCalibrationHelper
+  , peekBlackCalibrationHelper
+  , withRateHelper
+  , withSwapRateHelper
+  , withBondHelper
+  , withOISRateHelper
+  , withCalibrationHelper
+  , withBlackCalibrationHelper
+  , asRateHelper
+  , asCalibrationHelper
+  , peekBlackCalculator
+  , peekBlackScholesCalculator
+  , withBlackCalculator
+  , withBlackScholesCalculator
+  , asBlackCalculator
+  , withRateHelperArray
+  , withBondHelperArray
+  , withCalibrationHelperArray
+
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -115,6 +164,7 @@ data CQlClaim
 data CTimeGrid
 data CInterestRate
 data CDividend
+data CDefaultProbabilityHelper
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 newtype Meta a = Meta {_fin :: FinalizerPtr a}
@@ -125,6 +175,7 @@ newtype Schedule = Schedule {getCSchedule :: SimpleType CSchedule}
 newtype InterestRate = InterestRate {getCInterestRate :: SimpleType CInterestRate}
 newtype TimeGrid = TimeGrid {getCTimeGrid :: SimpleType CTimeGrid}
 newtype Dividend = Dividend {getCDividend :: SimpleType CDividend}
+newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: SimpleType CDefaultProbabilityHelper}
 -- special cases: those types will be represented as enums so no need to wrap them
 type QlClaim = SimpleType CQlClaim
 type QlCallability = SimpleType CQlCallability
@@ -156,6 +207,9 @@ interestRateMeta = Meta qlFreeInterestRate
 dividendMeta :: Meta CDividend
 dividendMeta = Meta qlFreeDividend
 
+defaultProbabilityHelperMeta :: Meta CDefaultProbabilityHelper
+defaultProbabilityHelperMeta = Meta qlFreeDefaultProbabilityHelper
+
 peekSimpleType :: Meta a -> Ptr a -> IO (SimpleType a)
 peekSimpleType (Meta f) = newForeignPtr f >=> return . SimpleType
 
@@ -183,6 +237,9 @@ peekInterestRate = peekSimpleType interestRateMeta >=> return . InterestRate
 peekDividend :: Ptr CDividend -> IO Dividend
 peekDividend = peekSimpleType dividendMeta >=> return . Dividend
 
+peekDefaultProbabilityHelper :: Ptr CDefaultProbabilityHelper -> IO DefaultProbabilityHelper
+peekDefaultProbabilityHelper = peekSimpleType defaultProbabilityHelperMeta >=> return . DefaultProbabilityHelper
+
 peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
 peekTimeGrid = peekSimpleType timeGridMeta >=> return . TimeGrid
 
@@ -201,6 +258,7 @@ foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSche
 foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr CDayCounter
 foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid
 foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerPtr CInterestRate
+foreign import ccall "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabilityHelper :: FinalizerPtr CDefaultProbabilityHelper
 foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
 foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
 foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
@@ -235,6 +293,9 @@ withSchedule = withSimpleType . getCSchedule
 withInterestRate :: InterestRate -> (Ptr CInterestRate -> IO b) -> IO b
 withInterestRate = withSimpleType . getCInterestRate
 
+withDefaultProbabilityHelper :: DefaultProbabilityHelper -> (Ptr CDefaultProbabilityHelper -> IO b) -> IO b
+withDefaultProbabilityHelper = withSimpleType . getCDefaultProbabilityHelper
+
 withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
 withDividend = withSimpleType . getCDividend
 
@@ -246,6 +307,9 @@ withSimpleArray c x f = withMany withSimpleType (map c x) (`withArray` (\px -> f
 
 withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
 withInterestRateArray = withSimpleArray getCInterestRate
+
+withDefaultProbabilityHelperArray :: [DefaultProbabilityHelper] -> ((CUInt, Ptr (Ptr CDefaultProbabilityHelper)) -> IO b) -> IO b
+withDefaultProbabilityHelperArray = withSimpleArray getCDefaultProbabilityHelper
 
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
 withDividendArray = withSimpleArray getCDividend
@@ -273,6 +337,9 @@ peekSubObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
 withGenArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr c)) -> IO b) -> IO b
 withGenArray x f = withMany withGenObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
+withSubArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withSubArray x f = withMany withSubObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
 withGenArrayRaw :: [GenObject c a] -> (Ptr (Ptr c) -> IO b) -> IO b -- pass an array without length
 withGenArrayRaw x f = withMany withGenObject x (`withArray` f)
 
@@ -289,20 +356,20 @@ foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
 foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
 foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 
-genQuoteMeta :: Meta CQuote
-genQuoteMeta = Meta qlFreeQuote
+quoteMeta :: Meta CQuote
+quoteMeta = Meta qlFreeQuote
 
-genSimpleQuoteMeta :: Meta CSimpleQuote
-genSimpleQuoteMeta = Meta qlFreeSimpleQuote
+simpleQuoteMeta :: Meta CSimpleQuote
+simpleQuoteMeta = Meta qlFreeSimpleQuote
 
-genQuoteMetaConv :: MetaConv CQuote CQuote
-genQuoteMetaConv = MetaConv return
+quoteMetaConv :: MetaConv CQuote CQuote
+quoteMetaConv = MetaConv return
 
-genSimpleQuoteMetaConv :: MetaConv CSimpleQuote CQuote
-genSimpleQuoteMetaConv = MetaConv qlSimpleQuoteAsQuote
+simpleQuoteMetaConv :: MetaConv CSimpleQuote CQuote
+simpleQuoteMetaConv = MetaConv qlSimpleQuoteAsQuote
 
 asQuote :: GenQuote a -> IO (GenQuote CQuote)
-asQuote (GenQuote q) = GenQuote <$> asGenObject genQuoteMeta genQuoteMetaConv q
+asQuote (GenQuote q) = GenQuote <$> asGenObject quoteMeta quoteMetaConv q
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
 withQuote = withGenObject . getQuote
@@ -311,10 +378,10 @@ withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 withSimpleQuote = withSubObject . getQuote
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekGenObject genQuoteMeta genQuoteMetaConv p
+peekQuote p = GenQuote <$> peekGenObject quoteMeta quoteMetaConv p
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> peekSubObject genSimpleQuoteMeta genSimpleQuoteMetaConv p
+peekSimpleQuote p = GenQuote <$> peekSubObject simpleQuoteMeta simpleQuoteMetaConv p
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
 withQuoteArray x = withGenArray (map getQuote x)
@@ -334,20 +401,20 @@ foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg
 foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg
 foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
 
-genLegMeta :: Meta CLeg
-genLegMeta = Meta qlFreeLeg
+legMeta :: Meta CLeg
+legMeta = Meta qlFreeLeg
 
-genCouponLegMeta :: Meta CCouponLeg
-genCouponLegMeta = Meta qlFreeCouponLeg
+couponLegMeta :: Meta CCouponLeg
+couponLegMeta = Meta qlFreeCouponLeg
 
-genLegMetaConv :: MetaConv CLeg CLeg
-genLegMetaConv = MetaConv return
+legMetaConv :: MetaConv CLeg CLeg
+legMetaConv = MetaConv return
 
-genCouponLegMetaConv :: MetaConv CCouponLeg CLeg
-genCouponLegMetaConv = MetaConv qlCouponLegAsLeg
+couponLegMetaConv :: MetaConv CCouponLeg CLeg
+couponLegMetaConv = MetaConv qlCouponLegAsLeg
 
 asLeg :: GenLeg a -> IO (GenLeg CLeg)
-asLeg (GenLeg q) = GenLeg <$> asGenObject genLegMeta genLegMetaConv q
+asLeg (GenLeg q) = GenLeg <$> asGenObject legMeta legMetaConv q
 
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
 withLeg = withGenObject . getLeg
@@ -356,13 +423,160 @@ withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
 withCouponLeg = withSubObject . getLeg
 
 peekLeg :: Ptr CLeg -> IO (GenLeg CLeg)
-peekLeg p = GenLeg <$> peekGenObject genLegMeta genLegMetaConv p
+peekLeg p = GenLeg <$> peekGenObject legMeta legMetaConv p
 
 peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
-peekCouponLeg p = GenLeg <$> peekSubObject genCouponLegMeta genCouponLegMetaConv p
+peekCouponLeg p = GenLeg <$> peekSubObject couponLegMeta couponLegMetaConv p
 
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
 withLegArray x = withGenArray (map getLeg x)
+
+data CRateHelper
+data CSwapRateHelper
+data CBondHelper
+data COISRateHelper
+data CCalibrationHelper
+data CBlackCalibrationHelper
+data CBlackCalculator
+data CBlackScholesCalculator
+newtype GenRateHelper a = GenRateHelper {getRateHelper :: GenObject CRateHelper a}
+newtype GenCalibrationHelper a = GenCalibrationHelper {getCalibrationHelper :: GenObject CCalibrationHelper a}
+newtype GenBlackCalculator a = GenBlackCalculator {getBlackCalculator :: GenObject CBlackCalculator a}
+type RateHelper = GenRateHelper CRateHelper
+type SwapRateHelper = GenRateHelper CSwapRateHelper
+type BondHelper = GenRateHelper CBondHelper
+type OISRateHelper = GenRateHelper COISRateHelper
+type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
+type BlackCalibrationHelper = GenCalibrationHelper CBlackCalibrationHelper
+type BlackCalculator = GenBlackCalculator CBlackCalculator
+type BlackScholesCalculator = GenBlackCalculator CBlackScholesCalculator
+foreign import ccall "ql.h &qlFreeRateHelper" qlFreeRateHelper :: FinalizerPtr CRateHelper
+foreign import ccall "ql.h &qlFreeBondHelper" qlFreeBondHelper :: FinalizerPtr CBondHelper
+foreign import ccall "ql.h &qlFreeSwapRateHelper" qlFreeSwapRateHelper :: FinalizerPtr CSwapRateHelper
+foreign import ccall "ql.h &qlFreeOISRateHelper" qlFreeOISRateHelper :: FinalizerPtr COISRateHelper
+foreign import ccall safe "ql.h qlSwapRateHelperAsRateHelper" qlSwapRateHelperAsRateHelper :: Ptr CSwapRateHelper -> IO (Ptr CRateHelper)
+foreign import ccall safe "ql.h qlBondHelperAsRateHelper" qlBondHelperAsRateHelper :: Ptr CBondHelper -> IO (Ptr CRateHelper)
+foreign import ccall safe "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper -> IO (Ptr CRateHelper)
+foreign import ccall "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper
+foreign import ccall "ql.h &qlFreeBondHelper" qlFreeBlackCalibrationHelper :: FinalizerPtr CBlackCalibrationHelper
+foreign import ccall safe "ql.h qlBlackCalibrationHelperAsCalibrationHelper" qlBlackCalibrationHelperAsCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (Ptr CCalibrationHelper)
+foreign import ccall "ql.h &qlFreeBlackCalculator" qlFreeBlackCalculator :: FinalizerPtr CBlackCalculator
+foreign import ccall "ql.h &qlFreeBlackScholesCalculator" qlFreeBlackScholesCalculator :: FinalizerPtr CBlackScholesCalculator
+foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
+
+rateHelperMeta :: Meta CRateHelper
+rateHelperMeta = Meta qlFreeRateHelper
+
+bondHelperMeta :: Meta CBondHelper
+bondHelperMeta = Meta qlFreeBondHelper
+
+swapRateHelperMeta :: Meta CSwapRateHelper
+swapRateHelperMeta = Meta qlFreeSwapRateHelper
+
+oisRateHelperMeta :: Meta COISRateHelper
+oisRateHelperMeta = Meta qlFreeOISRateHelper
+
+rateHelperMetaConv :: MetaConv CRateHelper CRateHelper
+rateHelperMetaConv = MetaConv return
+
+bondHelperMetaConv :: MetaConv CBondHelper CRateHelper
+bondHelperMetaConv = MetaConv qlBondHelperAsRateHelper
+
+swapRateHelperMetaConv :: MetaConv CSwapRateHelper CRateHelper
+swapRateHelperMetaConv = MetaConv qlSwapRateHelperAsRateHelper
+
+oisRateHelperMetaConv :: MetaConv COISRateHelper CRateHelper
+oisRateHelperMetaConv = MetaConv qlOISRateHelperAsRateHelper
+
+asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
+asRateHelper (GenRateHelper q) = GenRateHelper <$> asGenObject rateHelperMeta rateHelperMetaConv q
+
+withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
+withRateHelper = withGenObject . getRateHelper
+
+peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
+peekRateHelper p = GenRateHelper <$> peekGenObject rateHelperMeta rateHelperMetaConv p
+
+withBondHelper :: GenRateHelper CBondHelper -> (Ptr CBondHelper-> IO b) -> IO b
+withBondHelper = withSubObject . getRateHelper
+
+peekBondHelper :: Ptr CBondHelper -> IO (GenRateHelper CBondHelper)
+peekBondHelper p = GenRateHelper <$> peekSubObject bondHelperMeta bondHelperMetaConv p
+
+withSwapRateHelper :: GenRateHelper CSwapRateHelper -> (Ptr CSwapRateHelper-> IO b) -> IO b
+withSwapRateHelper = withSubObject . getRateHelper
+
+peekSwapRateHelper :: Ptr CSwapRateHelper -> IO (GenRateHelper CSwapRateHelper)
+peekSwapRateHelper p = GenRateHelper <$> peekSubObject swapRateHelperMeta swapRateHelperMetaConv p
+
+withOISRateHelper :: GenRateHelper COISRateHelper -> (Ptr COISRateHelper-> IO b) -> IO b
+withOISRateHelper = withSubObject . getRateHelper
+
+peekOISRateHelper :: Ptr COISRateHelper -> IO (GenRateHelper COISRateHelper)
+peekOISRateHelper p = GenRateHelper <$> peekSubObject oisRateHelperMeta oisRateHelperMetaConv p
+
+calibrationHelperMeta :: Meta CCalibrationHelper
+calibrationHelperMeta = Meta qlFreeCalibrationHelper
+
+blackCalibrationHelperMeta :: Meta CBlackCalibrationHelper
+blackCalibrationHelperMeta = Meta qlFreeBlackCalibrationHelper
+
+calibrationHelperMetaConv :: MetaConv CCalibrationHelper CCalibrationHelper
+calibrationHelperMetaConv = MetaConv return
+
+blackCalibrationHelperMetaConv :: MetaConv CBlackCalibrationHelper CCalibrationHelper
+blackCalibrationHelperMetaConv = MetaConv qlBlackCalibrationHelperAsCalibrationHelper
+
+asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
+asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asGenObject calibrationHelperMeta calibrationHelperMetaConv q
+
+withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
+withCalibrationHelper = withGenObject . getCalibrationHelper
+
+peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
+peekCalibrationHelper p = GenCalibrationHelper <$> peekGenObject calibrationHelperMeta calibrationHelperMetaConv p
+
+withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
+withBlackCalibrationHelper = withSubObject . getCalibrationHelper
+
+peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (GenCalibrationHelper CBlackCalibrationHelper)
+peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekSubObject blackCalibrationHelperMeta blackCalibrationHelperMetaConv p
+
+blackCalculatorMeta :: Meta CBlackCalculator
+blackCalculatorMeta = Meta qlFreeBlackCalculator
+
+blackScholesCalculatorMeta :: Meta CBlackScholesCalculator
+blackScholesCalculatorMeta = Meta qlFreeBlackScholesCalculator
+
+blackCalculatorMetaConv :: MetaConv CBlackCalculator CBlackCalculator
+blackCalculatorMetaConv = MetaConv return
+
+blackScholesCalculatorMetaConv :: MetaConv CBlackScholesCalculator CBlackCalculator
+blackScholesCalculatorMetaConv = MetaConv qlBlackScholesCalculatorAsBlackCalculator
+
+asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
+asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asGenObject blackCalculatorMeta blackCalculatorMetaConv q
+
+withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
+withBlackCalculator = withGenObject . getBlackCalculator
+
+peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
+peekBlackCalculator p = GenBlackCalculator <$> peekGenObject blackCalculatorMeta blackCalculatorMetaConv p
+
+withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
+withBlackScholesCalculator = withSubObject . getBlackCalculator
+
+peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalculator CBlackScholesCalculator)
+peekBlackScholesCalculator p = GenBlackCalculator <$> peekSubObject blackScholesCalculatorMeta blackScholesCalculatorMetaConv p
+
+withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
+withRateHelperArray x = withGenArray (map getRateHelper x)
+
+withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper)) -> IO b) -> IO b
+withBondHelperArray x = withSubArray (map getRateHelper x)
+
+withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
+withCalibrationHelperArray x = withGenArray (map getCalibrationHelper x)
 
 --bondMeta :: MetaConv CBond ()
 --bondMeta = MetaConv qlFreeBond undefined

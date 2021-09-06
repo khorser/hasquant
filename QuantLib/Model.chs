@@ -185,22 +185,8 @@ instance ForeignObject LmVolatilityModel where
   constructor = LmVolatilityModel
   finalizer = qlFreeLmVolatilityModel
 
-{#pointer *QlCalibrationHelper as CalibrationHelper foreign finalizer qlFreeCalibrationHelper newtype#}
-instance ForeignObject CalibrationHelper where
-  withObject = withCalibrationHelper
-  constructor = CalibrationHelper
-  finalizer = qlFreeCalibrationHelper
-
-{#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign finalizer qlFreeBlackCalibrationHelper newtype#}
-instance ForeignObject BlackCalibrationHelper where
-  withObject = withBlackCalibrationHelper
-  constructor = BlackCalibrationHelper
-  finalizer = qlFreeBlackCalibrationHelper
-{#fun qlBlackCalibrationHelperAsCalibrationHelper {`BlackCalibrationHelper'}->`CalibrationHelper'#}
-instance BlackCalibrationHelper`Derives` CalibrationHelper where cast = qlBlackCalibrationHelperAsCalibrationHelper
-
-asCalibrationHelper :: (a`Derives` CalibrationHelper) => a -> IO CalibrationHelper
-asCalibrationHelper = cast
+{#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper nocode#}
+{#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper nocode#}
 
 -- multiple inheritance... not sure if we need that cast to AffineModel at all
 newtype AffineModelDescendant a = AffineModelDescendant a
@@ -297,33 +283,33 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -> OptimizationMethod -> EndCriteria -> Maybe Constraint -> IO ()
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
-{#fun qlCalibratedModelCalibrate {`CalibratedModel', withObjectArray*`[CalibrationHelper]'&, withDoubleArray*`[Double]'&, withEnumObject*`OptimizationMethod', withEnumObject*`EndCriteria', withMaybeEnumObject*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelCalibrate {`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withEnumObject*`OptimizationMethod', withEnumObject*`EndCriteria', withMaybeEnumObject*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlCapHelper as capHelper {fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex',`Frequency', withDayCounter*`DayCounter',`Bool',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'#}
+{#fun qlCapHelper as capHelper {fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex',`Frequency', withDayCounter*`DayCounter',`Bool',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
-{#fun qlHestonModelHelper as hestonModelHelper {fromEnumQuantity`(Word, TimeUnit)'&, withCalendar*`Calendar',`Double',`Double', withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'#}
+{#fun qlHestonModelHelper as hestonModelHelper {fromEnumQuantity`(Word, TimeUnit)'&, withCalendar*`Calendar',`Double',`Double', withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 -- TODO add more parameters and more SwaptionHelper constructors
-{#fun qlSwaptionHelper as swaptionHelper {fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'#}
+{#fun qlSwaptionHelper as swaptionHelper {fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
-{#fun qlBlackCalibrationHelperTimes as times {`BlackCalibrationHelper', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperTimes as times {withBlackCalibrationHelper*`BlackCalibrationHelper', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params {`CalibratedModel', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black price given a volatility.
-{#fun qlBlackCalibrationHelperBlackPrice as blackPrice {`BlackCalibrationHelper',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperBlackPrice as blackPrice {withBlackCalibrationHelper*`BlackCalibrationHelper',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the error resulting from the model valuation
-{#fun qlBlackCalibrationHelperCalibrationError as calibrationError {`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperCalibrationError as calibrationError {withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black volatility implied by the model.
-{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility {`BlackCalibrationHelper',`Double',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility {withBlackCalibrationHelper*`BlackCalibrationHelper',`Double',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the actual price of the instrument (from volatility)
-{#fun qlBlackCalibrationHelperMarketValue as marketValue {`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperMarketValue as marketValue {withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the price of the instrument according to the model
-{#fun qlBlackCalibrationHelperModelValue as modelValue {`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperModelValue as modelValue {withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

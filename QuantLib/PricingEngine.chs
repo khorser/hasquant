@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators, FlexibleInstances #-}
 module QuantLib.PricingEngine
   (
     PricingEngine
@@ -137,7 +137,6 @@ module QuantLib.PricingEngine
   )
   where
 
-import QuantLib.Type
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "ql.h"
@@ -148,12 +147,12 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure, CallableBondVolatilityStructure)
 {#import QuantLib.TermStructure.Credit#}(DefaultProbabilityTermStructure)
 import QuantLib.Internal.TermStructure
+{#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Process#}(GeneralizedBlackScholesProcess, HestonProcess, BlackProcess, HybridHestonHullWhiteProcess, VarianceGammaProcess, HestonProcess, Merton76Process, GJRGARCHProcess)
 {#import QuantLib.Model#}
 {#import QuantLib.Time.Schedule#}(TimeUnit)
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
-{#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
 import QuantLib.Internal.Enum
 
@@ -165,21 +164,8 @@ instance ForeignObject PricingEngine where
   constructor = PricingEngine
   finalizer = qlFreePricingEngine
 
-{#pointer *QlBlackCalculator as BlackCalculator foreign finalizer qlFreeBlackCalculator newtype#}
-instance ForeignObject BlackCalculator where
-  withObject = withBlackCalculator
-  constructor = BlackCalculator
-  finalizer = qlFreeBlackCalculator
-
-{#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign finalizer qlFreeBlackScholesCalculator newtype#}
-instance ForeignObject BlackScholesCalculator where
-  withObject = withBlackScholesCalculator
-  constructor = BlackScholesCalculator
-  finalizer = qlFreeBlackScholesCalculator
-asBlackCalculator :: (a`Derives` BlackCalculator) => a -> IO BlackCalculator
-asBlackCalculator = cast
-instance BlackScholesCalculator`Derives` BlackCalculator where cast = qlBlackScholesCalculatorAsBlackCalculator
-{#fun qlBlackScholesCalculatorAsBlackCalculator {`BlackScholesCalculator'}->`BlackCalculator'#}
+{#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator nocode#}
+{#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator nocode#}
 
 {#fun qlDiscountingBondEngine as discountingBondEngine {`YieldTermStructure', fromMaybeBool`Maybe Bool', preErrorCheck-`String'errorCheck*-}->`PricingEngine'#}
 
@@ -351,76 +337,76 @@ instance BlackScholesCalculator`Derives` BlackCalculator where cast = qlBlackSch
 
 {#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngine {withObject*`ShortRateModel', fromIntegral`Word', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`PricingEngine'#}
 
-{#fun qlBlackCalculatorAlpha as alpha {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorAlpha as alpha {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBlackCalculatorBeta as beta {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorBeta as beta {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBlackCalculator1 as blackCalculator' {fromEnumC`OptionType',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackCalculator'#}
+{#fun qlBlackCalculator1 as blackCalculator' {fromEnumC`OptionType',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackCalculator'peekBlackCalculator*#}
 
 {#pointer *QlStrikedTypePayoff foreign newtype nocode#}
-{#fun qlBlackCalculator as blackCalculator {withEnumObject*`StrikedPayoff',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackCalculator'#}
+{#fun qlBlackCalculator as blackCalculator {withEnumObject*`StrikedPayoff',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackCalculator'peekBlackCalculator*#}
 
 -- |Sensitivity to change in the underlying spot price.
-{#fun qlBlackCalculatorDelta as blackDelta {`BlackCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorDelta as blackDelta {withBlackCalculator*`GenBlackCalculator a',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to change in the underlying forward price.
-{#fun qlBlackCalculatorDeltaForward as deltaForward {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorDeltaForward as deltaForward {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to dividend/growth rate.
-{#fun qlBlackCalculatorDividendRho as dividendRho {`BlackCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorDividendRho as dividendRho {withBlackCalculator*`GenBlackCalculator a',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity in percent to a percent change in the underlying spot price.
-{#fun qlBlackCalculatorElasticity as blackElasticity {`BlackCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorElasticity as blackElasticity {withBlackCalculator*`GenBlackCalculator a',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity in percent to a percent change in the underlying forward price.
-{#fun qlBlackCalculatorElasticityForward as elasticityForward {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorElasticityForward as elasticityForward {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Second order derivative with respect to change in the underlying spot price.
-{#fun qlBlackCalculatorGamma as blackGamma {`BlackCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorGamma as blackGamma {withBlackCalculator*`GenBlackCalculator a',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Second order derivative with respect to change in the underlying forward price.
-{#fun qlBlackCalculatorGammaForward as gammaForward {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorGammaForward as gammaForward {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
-{#fun qlBlackCalculatorItmAssetProbability as itmAssetProbability {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorItmAssetProbability as itmAssetProbability {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Probability of being in the money in the bond martingale measure, i.e. N(d2). It is a risk-neutral probability, not the real world one.
-{#fun qlBlackCalculatorItmCashProbability as itmCashProbability {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorItmCashProbability as itmCashProbability {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to discounting rate.
-{#fun qlBlackCalculatorRho as rho {`BlackCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorRho as rho {withBlackCalculator*`GenBlackCalculator a',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to strike.
-{#fun qlBlackCalculatorStrikeSensitivity as strikeSensitivity {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorStrikeSensitivity as strikeSensitivity {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to time to maturity.
-{#fun qlBlackCalculatorTheta as blackTheta {`BlackCalculator',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorTheta as blackTheta {withBlackCalculator*`GenBlackCalculator a',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to time to maturity per day, assuming 365 day per year.
-{#fun qlBlackCalculatorThetaPerDay as blackThetaPerDay {`BlackCalculator',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorThetaPerDay as blackThetaPerDay {withBlackCalculator*`GenBlackCalculator a',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBlackCalculatorValue as value {`BlackCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorValue as value {withBlackCalculator*`GenBlackCalculator a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to volatility.
-{#fun qlBlackCalculatorVega as vega {`BlackCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalculatorVega as vega {withBlackCalculator*`GenBlackCalculator a',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBlackScholesCalculator1 as blackScholesCalculator' {fromEnumC`OptionType',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'#}
+{#fun qlBlackScholesCalculator1 as blackScholesCalculator' {fromEnumC`OptionType',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'peekBlackScholesCalculator*#}
 
-{#fun qlBlackScholesCalculator as blackScholesCalculator {withEnumObject*`StrikedPayoff',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'#}
+{#fun qlBlackScholesCalculator as blackScholesCalculator {withEnumObject*`StrikedPayoff',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'peekBlackScholesCalculator*#}
 
 -- |Sensitivity to change in the underlying spot price.
-{#fun qlBlackScholesCalculatorDelta as blackScholesDelta {`BlackScholesCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorDelta as blackScholesDelta {withBlackScholesCalculator*`BlackScholesCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity in percent to a percent change in the underlying spot price.
-{#fun qlBlackScholesCalculatorElasticity as blackScholesElasticity {`BlackScholesCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorElasticity as blackScholesElasticity {withBlackScholesCalculator*`BlackScholesCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Second order derivative with respect to change in the underlying spot price.
-{#fun qlBlackScholesCalculatorGamma as blackScholesGamma {`BlackScholesCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorGamma as blackScholesGamma {withBlackScholesCalculator*`BlackScholesCalculator', preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to time to maturity.
-{#fun qlBlackScholesCalculatorTheta as blackScholesTheta {`BlackScholesCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorTheta as blackScholesTheta {withBlackScholesCalculator*`BlackScholesCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity to time to maturity per day (assuming 365 day in a year).
-{#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay {`BlackScholesCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay {withBlackScholesCalculator*`BlackScholesCalculator',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormula1 as blackFormula' {withEnumObject*`PlainVanillaPayoff',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -466,10 +452,11 @@ instance BlackScholesCalculator`Derives` BlackCalculator where cast = qlBlackSch
 -- |default theta-per-day calculation
 {#fun qlQuantLibDefaultThetaPerDay as defaultThetaPerDay {`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- XXX
 class Priceable a where setPricingEngine :: a -> PricingEngine -> IO ()
 
 instance Priceable BlackCalibrationHelper where setPricingEngine = qlBlackCalibrationHelperSetPricingEngine
-{#fun qlBlackCalibrationHelperSetPricingEngine {withObject*`BlackCalibrationHelper',`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperSetPricingEngine {withBlackCalibrationHelper*`BlackCalibrationHelper',`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}
 
 instance Priceable Instrument where setPricingEngine = qlInstrumentSetPricingEngine
 {#fun qlInstrumentSetPricingEngine {withObject*`Instrument',`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}

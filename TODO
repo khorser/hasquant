@@ -292,14 +292,6 @@ a:Index
 	IborIndex : InterestRateIndex | qlIborIndexAsInterestRateIndex
 	    OvernightIborIndex : IborIndex | qlOvernightIndexAsIborIndex
 
-RateHelper
-    SwapRateHelper : RateHelper | qlSwapRateHelperAsRateHelper
-    BondHelper : RateHelper | qlBondHelperAsRateHelper
-    OISRateHelper : RateHelper | qlOISRateHelperAsRateHelper 
-
-a:CalibrationHelper
-    BlackCalibrationHelper : CalibrationHelper | qlBlackCalibrationHelperAsCalibrationHelper
-
 a:TermStructure
     YieldTermStructure : TermStructure | qlYieldTermStructureAsTermStructure
 	FittedBondDiscountCurve : YieldTermStructure | qlFittedBondDiscountCurveAsYieldTermStructure
@@ -312,10 +304,6 @@ a:TermStructure
 	LocalVolTermStructure : VolatilityTermStructure | qlLocalVolTermStructureAsVolatilityTermStructure
     CallableBondVolatilityStructure : TermStructure | qlCallableBondVolatilityStructureAsTermStructure;
     DefaultProbabilityTermStructure : TermStructure | qlDefaultProbabilityTermStructureAsTermStructure
-
-BlackCalculator
-    BlackScholesCalculator : BlackCalculator | qlBlackScholesCalculatorAsBlackCalculator
-
 
 StochasticProcess
     StochasticProcess1D : StochasticProcess | qlStochasticProcess1DAsStochasticProcess
