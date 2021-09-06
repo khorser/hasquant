@@ -251,23 +251,24 @@ withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO 
 withDividendArray = withSimpleArray getCDividend
 
 ---- class hierarchies
-data Meta2 a b = Meta2 {_finalizer :: FinalizerPtr a, _upcast :: Ptr a -> IO (Ptr b)}
-data GenObject c a = GenObject {getObject :: ForeignPtr a, _getMeta :: Meta2 a c}
+newtype MetaConv a b = MetaConv {_upcast :: Ptr a -> IO (Ptr b)}
+-- we can infer upcast just from two types so actually we don't need to drag it around with the cast function
+data GenObject b a = GenObject {getObject :: ForeignPtr a, _getMeta :: MetaConv a b}
 
-asGenObject :: Meta2 c c -> GenObject c a -> IO (GenObject c c)
-asGenObject m (GenObject p (Meta2 _ k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_finalizer m)) <*> return m)
+asGenObject :: Meta c -> MetaConv c c -> GenObject c a -> IO (GenObject c c)
+asGenObject m0 m (GenObject p (MetaConv k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
 
 withGenObject :: GenObject c a -> (Ptr c -> IO b) -> IO b
-withGenObject (GenObject p (Meta2 _ k)) ff = withForeignPtr p (k >=> ff)
+withGenObject (GenObject p (MetaConv k)) ff = withForeignPtr p (k >=> ff)
 
 withSubObject :: GenObject c a -> (Ptr a -> IO b) -> IO b
 withSubObject = withForeignPtr . getObject
 
-peekGenObject :: Meta2 c c -> Ptr c -> IO (GenObject c c)
-peekGenObject m p = GenObject <$> newForeignPtr (_finalizer m) p <*> return m
+peekGenObject :: Meta c -> MetaConv c c -> Ptr c -> IO (GenObject c c)
+peekGenObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
 
-peekSubObject :: Meta2 a c -> Ptr a -> IO (GenObject c a)
-peekSubObject m p = GenObject <$> newForeignPtr (_finalizer m) p <*> return m
+peekSubObject :: Meta a -> MetaConv a c -> Ptr a -> IO (GenObject c a)
+peekSubObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
 
 withGenArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr c)) -> IO b) -> IO b
 withGenArray x f = withMany withGenObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
@@ -288,14 +289,20 @@ foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
 foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
 foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 
-genQuoteMeta :: Meta2 CQuote CQuote
-genQuoteMeta = Meta2 qlFreeQuote return
+genQuoteMeta :: Meta CQuote
+genQuoteMeta = Meta qlFreeQuote
 
-genSimpleQuoteMeta :: Meta2 CSimpleQuote CQuote
-genSimpleQuoteMeta = Meta2 qlFreeSimpleQuote qlSimpleQuoteAsQuote
+genSimpleQuoteMeta :: Meta CSimpleQuote
+genSimpleQuoteMeta = Meta qlFreeSimpleQuote
+
+genQuoteMetaConv :: MetaConv CQuote CQuote
+genQuoteMetaConv = MetaConv return
+
+genSimpleQuoteMetaConv :: MetaConv CSimpleQuote CQuote
+genSimpleQuoteMetaConv = MetaConv qlSimpleQuoteAsQuote
 
 asQuote :: GenQuote a -> IO (GenQuote CQuote)
-asQuote (GenQuote q) = GenQuote <$> asGenObject genQuoteMeta q
+asQuote (GenQuote q) = GenQuote <$> asGenObject genQuoteMeta genQuoteMetaConv q
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
 withQuote = withGenObject . getQuote
@@ -304,10 +311,10 @@ withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 withSimpleQuote = withSubObject . getQuote
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekGenObject genQuoteMeta p
+peekQuote p = GenQuote <$> peekGenObject genQuoteMeta genQuoteMetaConv p
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> peekSubObject genSimpleQuoteMeta p
+peekSimpleQuote p = GenQuote <$> peekSubObject genSimpleQuoteMeta genSimpleQuoteMetaConv p
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
 withQuoteArray x = withGenArray (map getQuote x)
@@ -327,14 +334,20 @@ foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg
 foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg
 foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
 
-genLegMeta :: Meta2 CLeg CLeg
-genLegMeta = Meta2 qlFreeLeg return
+genLegMeta :: Meta CLeg
+genLegMeta = Meta qlFreeLeg
 
-genCouponLegMeta :: Meta2 CCouponLeg CLeg
-genCouponLegMeta = Meta2 qlFreeCouponLeg qlCouponLegAsLeg
+genCouponLegMeta :: Meta CCouponLeg
+genCouponLegMeta = Meta qlFreeCouponLeg
+
+genLegMetaConv :: MetaConv CLeg CLeg
+genLegMetaConv = MetaConv return
+
+genCouponLegMetaConv :: MetaConv CCouponLeg CLeg
+genCouponLegMetaConv = MetaConv qlCouponLegAsLeg
 
 asLeg :: GenLeg a -> IO (GenLeg CLeg)
-asLeg (GenLeg q) = GenLeg <$> asGenObject genLegMeta q
+asLeg (GenLeg q) = GenLeg <$> asGenObject genLegMeta genLegMetaConv q
 
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
 withLeg = withGenObject . getLeg
@@ -343,22 +356,22 @@ withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
 withCouponLeg = withSubObject . getLeg
 
 peekLeg :: Ptr CLeg -> IO (GenLeg CLeg)
-peekLeg p = GenLeg <$> peekGenObject genLegMeta p
+peekLeg p = GenLeg <$> peekGenObject genLegMeta genLegMetaConv p
 
 peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
-peekCouponLeg p = GenLeg <$> peekSubObject genCouponLegMeta p
+peekCouponLeg p = GenLeg <$> peekSubObject genCouponLegMeta genCouponLegMetaConv p
 
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
 withLegArray x = withGenArray (map getLeg x)
 
---bondMeta :: Meta2 CBond ()
---bondMeta = Meta2 qlFreeBond undefined
+--bondMeta :: MetaConv CBond ()
+--bondMeta = MetaConv qlFreeBond undefined
 --
---fixedRateBondMeta :: Meta2 CFixedRateBond CBond
---fixedRateBondMeta = Meta2 qlFreeFixedRateBond qlFixedRateBondAsBond
+--fixedRateBondMeta :: MetaConv CFixedRateBond CBond
+--fixedRateBondMeta = MetaConv qlFreeFixedRateBond qlFixedRateBondAsBond
 --
---floatingRateBondMeta :: Meta2 CFloatingRateBond CBond
---floatingRateBondMeta = Meta2 qlFreeFloatingRateBond qlFloatingRateBondAsBond
+--floatingRateBondMeta :: MetaConv CFloatingRateBond CBond
+--floatingRateBondMeta = MetaConv qlFreeFloatingRateBond qlFloatingRateBondAsBond
 --
 --
 --data CBond
