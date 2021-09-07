@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.CashFlow
   (
     Leg
@@ -252,21 +251,17 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds h
 
 {#enum YieldCurveModel{} deriving(Show, Eq)#}
 
-{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign finalizer qlFreeFloatingCouponPricer newtype#}
-instance ForeignObject FloatingRateCouponPricer where
-  withObject = withFloatingRateCouponPricer
-  constructor = FloatingRateCouponPricer
-  finalizer = qlFreeFloatingCouponPricer
+{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
-{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withObject*`OptionletVolatilityStructure', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'#}
+{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withObject*`OptionletVolatilityStructure', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
-{#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',`FloatingRateCouponPricer', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',withFloatingRateCouponPricer*`FloatingRateCouponPricer', preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a', withObjectArray*`[FloatingRateCouponPricer]'&, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a', withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&, preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlAnalyticHaganPricer as analyticHaganPricer{withObject*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'#}
+{#fun qlAnalyticHaganPricer as analyticHaganPricer{withObject*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
-{#fun qlNumericHaganPricer as numericHaganPricer{withObject*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'#}
+{#fun qlNumericHaganPricer as numericHaganPricer{withObject*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

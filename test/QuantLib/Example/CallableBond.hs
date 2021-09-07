@@ -59,7 +59,7 @@ run = do
         priceBond ts dc b sigma = do
           hw <- hullWhite ts 0.03 sigma >>= asOneFactorAffineModel >>= asShortRateModel
           engine <- treeCallableFixedRateBondEngine hw 40 Nothing
-          asInstrument b >>= (`setPricingEngine` engine)
+          asInstrument b >>= (`QuantLib.Instrument.setPricingEngine` engine)
           cp <- currentCleanPrice b
           y <- yield b dc Compounded Quarterly 1.0e-8 1000
           return (cp, 100 * y)

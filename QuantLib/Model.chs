@@ -64,6 +64,7 @@ module QuantLib.Model
   , modelValue
 
   , AffineModelDescendant(..)
+  , setPricingEngine
   )
   where
 
@@ -86,6 +87,7 @@ import QuantLib.Internal.Index
 import QuantLib.Internal.Enum
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 
 {#enum CalibrationErrorType{} deriving(Show, Eq)#}
 
@@ -311,5 +313,7 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
 
 -- |returns the price of the instrument according to the model
 {#fun qlBlackCalibrationHelperModelValue as modelValue{withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

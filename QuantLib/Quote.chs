@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Quote
   (
      Quote

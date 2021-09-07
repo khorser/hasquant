@@ -1,7 +1,10 @@
 Move Claim into Internal/Enum once Bond is ready
 
--- foreign types
+-- make into enums
+QlLmCorrelationModel as LmCorrelationModel | qlFreeLmCorrelationModel
+QlLmVolatilityModel as LmVolatilityModel | qlFreeLmVolatilityModel
 
+-- enums
 Constraint as QlConstraint | qlFreeConstraint
 EndCriteria as QlEndCriteria | qlFreeEndCriteria
 FdmSchemeDesc | qlFreeFdmSchemeDesc
@@ -155,92 +158,7 @@ QlEuropeanExercise | qlFreeEuropeanExercise
 QlBermudanExercise | qlFreeBermudanExercise
 QlSwingExercise | qlFreeSwingExercise
 
-QlAffineModel as AffineModel | qlFreeAffineModel
-QlAssetSwap as AssetSwap | qlFreeAssetSwap
-QlBarrierOption as BarrierOption | qlFreeBarrierOption
-QlBatesDetJumpModel as BatesDetJumpModel | qlFreeBatesDetJumpModel
-QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel | qlFreeBatesDoubleExpDetJumpModel
-QlBatesDoubleExpModel as BatesDoubleExpModel | qlFreeBatesDoubleExpModel
-QlBatesModel as BatesModel | qlFreeBatesModel
-QlBatesProcess as BatesProcess | qlFreeBatesProcess
-QlBlackProcess as BlackProcess | qlFreeBlackProcess
-QlBlackVarianceCurve as BlackVarianceCurve | qlFreeBlackVarianceCurve
-QlBlackVolTermStructure as BlackVolTermStructure | qlFreeBlackVolTermStructure
-QlBMAIndex as BMAIndex | qlFreeBMAIndex
-QlBMASwap as BMASwap | qlFreeBMASwap
-QlBond as Bond | qlFreeBond
-QlCalibratedModel as CalibratedModel | qlFreeCalibratedModel
-QlCallableBond as CallableBond | qlFreeCallableBond
-QlCallableBondVolatilityStructure as CallableBondVolatilityStructure | qlFreeCallableBondVolatilityStructure
-QlCapFloor as CapFloor | qlFreeCapFloor
-QlCapFloorTermVolSurface as CapFloorTermVolSurface | qlFreeCapFloorTermVolSurface
-QlCdsOption as CdsOption | qlFreeCdsOption
-QlConvertibleBond as ConvertibleBond | qlFreeConvertibleBond
-QlCreditDefaultSwap as CreditDefaultSwap | qlFreeCreditDefaultSwap
-QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure | qlFreeDefaultProbabilityTermStructure
-QlDividendVanillaOption as DividendVanillaOption | qlFreeDividendVanillaOption
-QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess | qlFreeExtendedOrnsteinUhlenbeckProcess
-QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess | qlFreeExtOUWithJumpsProcess
-QlFittedBondDiscountCurve as FittedBondDiscountCurve | qlFreeFittedBondDiscountCurve
-QlFixedRateBond as FixedRateBond | qlFreeFixedRateBond
-QlFixedRateBondForward as FixedRateBondForward | qlFreeFixedRateBondForward
-QlFloatingRateCouponPricer as FloatingRateCouponPricer | qlFreeFloatingCouponPricer
-QlForward as Forward | qlFreeForward
-QlForwardRateAgreement as ForwardRateAgreement | qlFreeForwardRateAgreement
-QlForwardVanillaOption as ForwardVanillaOption | qlFreeForwardVanillaOption
-QlG2 as G2 | qlFreeG2
-QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess | qlFreeGeneralizedBlackScholesProcess
-QlGJRGARCHModel as GJRGARCHModel | qlFreeGJRGARCHModel
-QlGJRGARCHProcess as GJRGARCHProcess | qlFreeGJRGARCHProcess
-QlHestonModel as HestonModel | qlFreeHestonModel
-QlHestonProcess as HestonProcess | qlFreeHestonProcess
-QlHullWhite as HullWhite | qlFreeHullWhite
-QlHullWhiteForwardProcess as HullWhiteForwardProcess | qlFreeHullWhiteForwardProcess
-QlHullWhiteProcess as HullWhiteProcess | qlFreeHullWhiteProcess
-QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess | qlFreeHybridHestonHullWhiteProcess
-QlIborIndex as IborIndex | qlFreeIborIndex
-QlIndex as Index | qlFreeIndex
-QlInstrument as Instrument | qlFreeInstrument
-QlInterestRateIndex as InterestRateIndex | qlFreeInterestRateIndex
-QlKlugeExtOUProcess as KlugeExtOUProcess | qlFreeKlugeExtOUProcess
-QlLiborForwardModel as LiborForwardModel | qlFreeLiborForwardModel
-QlLiborForwardModelProcess as LiborForwardModelProcess | qlFreeLiborForwardModelProcess
-QlLmCorrelationModel as LmCorrelationModel | qlFreeLmCorrelationModel
-QlLmVolatilityModel as LmVolatilityModel | qlFreeLmVolatilityModel
-QlLocalVolTermStructure as LocalVolTermStructure | qlFreeLocalVolTermStructure
-QlMargrabeOption as MargrabeOption | qlFreeMargrabeOption
-QlMerton76Process as Merton76Process | qlFreeMerton76Process
-QlMultiAssetOption as MultiAssetOption | qlFreeMultiAssetOption
-QlOneAssetOption as OneAssetOption | qlFreeOneAssetOption
-QlOneFactorAffineModel as OneFactorAffineModel | qlFreeOneFactorAffineModel
-QlOption as Option | qlFreeOption
-QlOptionletVolatilityStructure as OptionletVolatilityStructure | qlFreeOptionletVolatilityStructure
-QlOvernightIndex as OvernightIborIndex | qlFreeOvernightIndex
-QlOvernightIndexedSwap as OvernightIndexedSwap | qlFreeOvernightIndexedSwap
-QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex | qlFreeOvernightIndexedSwapIndex
-QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel | qlFreePiecewiseTimeDependentHestonModel
-QlPricingEngine as PricingEngine | qlFreePricingEngine
-QlQuantoBarrierOption as QuantoBarrierOption | qlFreeQuantoBarrierOption
-QlQuantoForwardVanillaOption as QuantoForwardVanillaOption | qlFreeQuantoForwardVanillaOption
-QlQuantoVanillaOption as QuantoVanillaOption | qlFreeQuantoVanillaOption
-QlShortRateModel as ShortRateModel | qlFreeShortRateModel
-QlSmileSection as SmileSection | qlFreeSmileSection
-QlStochasticProcess1D as StochasticProcess1D | qlFreeStochasticProcess1D
-QlStochasticProcessArray as StochasticProcessArray | qlFreeStochasticProcessArray
-QlStochasticProcess as StochasticProcess | qlFreeStochasticProcess
-QlSwap as Swap | qlFreeSwap
-QlSwapIndex as SwapIndex | qlFreeSwapIndex
-QlSwaption as Swaption | qlFreeSwaption
-QlSwaptionVolatilityStructure as SwaptionVolatilityStructure | qlFreeSwaptionVolatilityStructure
-QlTermStructure as TermStructure | qlFreeTermStructure
-QlVanillaOption as VanillaOption | qlFreeVanillaOption
-QlVanillaSwap as VanillaSwap | qlFreeVanillaSwap
-QlVarianceGammaProcess as VarianceGammaProcess | qlFreeVarianceGammaProcess
-QlVolatilityTermStructure as VolatilityTermStructure | qlFreeVolatilityTermStructure
-QlYieldTermStructure as YieldTermStructure | qlFreeYieldTermStructure
-
 ---
-
 "a:" means an abstract class, i.e. interface only
 
 a:Instrument
@@ -329,3 +247,83 @@ a:AffineModel
     (AffineModelDescendant OneFactorAffineModel) : AffineModel | cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
     (AffineModelDescendant LiborForwardModel) : AffineModel | cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
     (AffineModelDescendant G2) : AffineModel | cast (AffineModelDescendant x) = qlG2AsAffineModel x
+---
+
+QlAffineModel as AffineModel | qlFreeAffineModel
+QlAssetSwap as AssetSwap | qlFreeAssetSwap
+QlBarrierOption as BarrierOption | qlFreeBarrierOption
+QlBatesDetJumpModel as BatesDetJumpModel | qlFreeBatesDetJumpModel
+QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel | qlFreeBatesDoubleExpDetJumpModel
+QlBatesDoubleExpModel as BatesDoubleExpModel | qlFreeBatesDoubleExpModel
+QlBatesModel as BatesModel | qlFreeBatesModel
+QlBatesProcess as BatesProcess | qlFreeBatesProcess
+QlBlackProcess as BlackProcess | qlFreeBlackProcess
+QlBlackVarianceCurve as BlackVarianceCurve | qlFreeBlackVarianceCurve
+QlBlackVolTermStructure as BlackVolTermStructure | qlFreeBlackVolTermStructure
+QlBMAIndex as BMAIndex | qlFreeBMAIndex
+QlBMASwap as BMASwap | qlFreeBMASwap
+QlBond as Bond | qlFreeBond
+QlCalibratedModel as CalibratedModel | qlFreeCalibratedModel
+QlCallableBond as CallableBond | qlFreeCallableBond
+QlCallableBondVolatilityStructure as CallableBondVolatilityStructure | qlFreeCallableBondVolatilityStructure
+QlCapFloor as CapFloor | qlFreeCapFloor
+QlCapFloorTermVolSurface as CapFloorTermVolSurface | qlFreeCapFloorTermVolSurface
+QlCdsOption as CdsOption | qlFreeCdsOption
+QlConvertibleBond as ConvertibleBond | qlFreeConvertibleBond
+QlCreditDefaultSwap as CreditDefaultSwap | qlFreeCreditDefaultSwap
+QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure | qlFreeDefaultProbabilityTermStructure
+QlDividendVanillaOption as DividendVanillaOption | qlFreeDividendVanillaOption
+QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess | qlFreeExtendedOrnsteinUhlenbeckProcess
+QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess | qlFreeExtOUWithJumpsProcess
+QlFittedBondDiscountCurve as FittedBondDiscountCurve | qlFreeFittedBondDiscountCurve
+QlFixedRateBond as FixedRateBond | qlFreeFixedRateBond
+QlFixedRateBondForward as FixedRateBondForward | qlFreeFixedRateBondForward
+QlForward as Forward | qlFreeForward
+QlForwardRateAgreement as ForwardRateAgreement | qlFreeForwardRateAgreement
+QlForwardVanillaOption as ForwardVanillaOption | qlFreeForwardVanillaOption
+QlG2 as G2 | qlFreeG2
+QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess | qlFreeGeneralizedBlackScholesProcess
+QlGJRGARCHModel as GJRGARCHModel | qlFreeGJRGARCHModel
+QlGJRGARCHProcess as GJRGARCHProcess | qlFreeGJRGARCHProcess
+QlHestonModel as HestonModel | qlFreeHestonModel
+QlHestonProcess as HestonProcess | qlFreeHestonProcess
+QlHullWhite as HullWhite | qlFreeHullWhite
+QlHullWhiteForwardProcess as HullWhiteForwardProcess | qlFreeHullWhiteForwardProcess
+QlHullWhiteProcess as HullWhiteProcess | qlFreeHullWhiteProcess
+QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess | qlFreeHybridHestonHullWhiteProcess
+QlIborIndex as IborIndex | qlFreeIborIndex
+QlIndex as Index | qlFreeIndex
+QlInstrument as Instrument | qlFreeInstrument
+QlInterestRateIndex as InterestRateIndex | qlFreeInterestRateIndex
+QlKlugeExtOUProcess as KlugeExtOUProcess | qlFreeKlugeExtOUProcess
+QlLiborForwardModel as LiborForwardModel | qlFreeLiborForwardModel
+QlLiborForwardModelProcess as LiborForwardModelProcess | qlFreeLiborForwardModelProcess
+QlLocalVolTermStructure as LocalVolTermStructure | qlFreeLocalVolTermStructure
+QlMargrabeOption as MargrabeOption | qlFreeMargrabeOption
+QlMerton76Process as Merton76Process | qlFreeMerton76Process
+QlMultiAssetOption as MultiAssetOption | qlFreeMultiAssetOption
+QlOneAssetOption as OneAssetOption | qlFreeOneAssetOption
+QlOneFactorAffineModel as OneFactorAffineModel | qlFreeOneFactorAffineModel
+QlOption as Option | qlFreeOption
+QlOptionletVolatilityStructure as OptionletVolatilityStructure | qlFreeOptionletVolatilityStructure
+QlOvernightIndex as OvernightIborIndex | qlFreeOvernightIndex
+QlOvernightIndexedSwap as OvernightIndexedSwap | qlFreeOvernightIndexedSwap
+QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex | qlFreeOvernightIndexedSwapIndex
+QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel | qlFreePiecewiseTimeDependentHestonModel
+QlQuantoBarrierOption as QuantoBarrierOption | qlFreeQuantoBarrierOption
+QlQuantoForwardVanillaOption as QuantoForwardVanillaOption | qlFreeQuantoForwardVanillaOption
+QlQuantoVanillaOption as QuantoVanillaOption | qlFreeQuantoVanillaOption
+QlShortRateModel as ShortRateModel | qlFreeShortRateModel
+QlStochasticProcess1D as StochasticProcess1D | qlFreeStochasticProcess1D
+QlStochasticProcessArray as StochasticProcessArray | qlFreeStochasticProcessArray
+QlStochasticProcess as StochasticProcess | qlFreeStochasticProcess
+QlSwap as Swap | qlFreeSwap
+QlSwapIndex as SwapIndex | qlFreeSwapIndex
+QlSwaption as Swaption | qlFreeSwaption
+QlSwaptionVolatilityStructure as SwaptionVolatilityStructure | qlFreeSwaptionVolatilityStructure
+QlTermStructure as TermStructure | qlFreeTermStructure
+QlVanillaOption as VanillaOption | qlFreeVanillaOption
+QlVanillaSwap as VanillaSwap | qlFreeVanillaSwap
+QlVarianceGammaProcess as VarianceGammaProcess | qlFreeVarianceGammaProcess
+QlVolatilityTermStructure as VolatilityTermStructure | qlFreeVolatilityTermStructure
+QlYieldTermStructure as YieldTermStructure | qlFreeYieldTermStructure

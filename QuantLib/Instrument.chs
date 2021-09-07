@@ -23,11 +23,13 @@ module QuantLib.Instrument
   , isExpired
   , valuationDate
   , composite
+  , setPricingEngine
   )
   where
 
 import QuantLib.Type
 import QuantLib.Internal
+import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
@@ -50,6 +52,8 @@ import QuantLib.Internal.Enum
 {#enum RestructuringType{} deriving(Show, Eq)#}
 
 {#enum AtomicDefaultType{} deriving(Show, Eq)#}
+
+{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 
 {#pointer *QlInstrument as Instrument foreign finalizer qlFreeInstrument newtype#}
 instance ForeignObject Instrument where
@@ -75,5 +79,7 @@ asInstrument = cast
 composite :: [(Instrument, Double)] -> IO Instrument
 composite = (uncurry qlCompositeInstrument) . unzip
 {#fun qlCompositeInstrument{withObjectArray*`[Instrument]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Instrument'#}
+
+{#fun qlInstrumentSetPricingEngine as setPricingEngine{withObject*`Instrument',withPricingEngine*`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

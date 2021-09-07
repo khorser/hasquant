@@ -60,27 +60,27 @@ run = do
   grid <- timeGridFromList' (concat tms) 30
 
   modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
-  forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= setPricingEngine s)
+  forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= Model.setPricingEngine s)
   modelG2' <- Model.asShortRateModel modelG2 >>= Model.asCalibratedModel
   g2v <- calibrateModel modelG2' swaptions
   g2p <- Model.params modelG2'
 
   modelHW <- Model.hullWhite ts 0.1 0.01
   modelHWo <- Model.asOneFactorAffineModel modelHW
-  forM_ swaptions (\s -> jamshidianSwaptionEngine modelHWo Nothing >>= setPricingEngine s)
+  forM_ swaptions (\s -> jamshidianSwaptionEngine modelHWo Nothing >>= Model.setPricingEngine s)
   modelHW' <- Model.asShortRateModel modelHWo >>= Model.asCalibratedModel
   hwv <- calibrateModel modelHW' swaptions
   hwp <- Model.params modelHW'
 
   modelHW2 <- Model.hullWhite ts 0.1 0.01
   modelHW2s <- Model.asOneFactorAffineModel modelHW2 >>= Model.asShortRateModel
-  forM_ swaptions (\s -> treeSwaptionEngine' modelHW2s grid Nothing>>= setPricingEngine s)
+  forM_ swaptions (\s -> treeSwaptionEngine' modelHW2s grid Nothing>>= Model.setPricingEngine s)
   modelHW2' <- Model.asCalibratedModel modelHW2s
   hw2v <- calibrateModel modelHW2' swaptions
   hw2p <- Model.params modelHW2'
 
   modelBK <- Model.blackKarasinski ts 0.1 0.1
-  forM_ swaptions (\s -> treeSwaptionEngine' modelBK grid Nothing>>= setPricingEngine s)
+  forM_ swaptions (\s -> treeSwaptionEngine' modelBK grid Nothing>>= Model.setPricingEngine s)
   modelBK' <- Model.asCalibratedModel modelBK
   bkv <- calibrateModel modelBK' swaptions
   bkp <- Model.params modelBK'

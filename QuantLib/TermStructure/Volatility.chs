@@ -117,11 +117,7 @@ instance ForeignObject OptionletVolatilityStructure where
   constructor = OptionletVolatilityStructure
   finalizer=qlFreeOptionletVolatilityStructure
 
-{#pointer *QlSmileSection as SmileSection foreign finalizer qlFreeSmileSection newtype#}
-instance ForeignObject SmileSection where
-  withObject = withSmileSection
-  constructor = SmileSection
-  finalizer=qlFreeSmileSection
+{#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign finalizer qlFreeSwaptionVolatilityStructure newtype#}
 instance ForeignObject SwaptionVolatilityStructure where
@@ -214,22 +210,22 @@ asBlackVolTermStructure = cast
 {#fun qlSwaptionVolatilityStructureMaxSwapTenor as maxSwapTenor{`SwaptionVolatilityStructure', preEnum-`TimeUnit'peekEnum*, preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 -- |returns the smile for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{`SwaptionVolatilityStructure', withDay*`Day', fromEnumQuantity`(Word, TimeUnit)'&,`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'#}
+{#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{`SwaptionVolatilityStructure', withDay*`Day', fromEnumQuantity`(Word, TimeUnit)'&,`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{`SwaptionVolatilityStructure',`Double', fromEnumQuantity`(Word, TimeUnit)'&,`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'#}
+{#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{`SwaptionVolatilityStructure',`Double', fromEnumQuantity`(Word, TimeUnit)'&,`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{`SwaptionVolatilityStructure', fromEnumQuantity`(Word, TimeUnit)'&,`Double',`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'#}
+{#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{`SwaptionVolatilityStructure', fromEnumQuantity`(Word, TimeUnit)'&,`Double',`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{`SwaptionVolatilityStructure', withDay*`Day',`Double',`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'#}
+{#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{`SwaptionVolatilityStructure', withDay*`Day',`Double',`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{`SwaptionVolatilityStructure',`Double',`Double',`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'#}
+{#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{`SwaptionVolatilityStructure',`Double',`Double',`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{`SwaptionVolatilityStructure', fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&,`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'#}
+{#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{`SwaptionVolatilityStructure', fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&,`Bool', preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{`SwaptionVolatilityStructure', withDay*`Day', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Double'#}

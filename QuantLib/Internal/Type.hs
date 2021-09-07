@@ -122,6 +122,19 @@ module QuantLib.Internal.Type
   , withBondHelperArray
   , withCalibrationHelperArray
 
+  , CSmileSection
+  , SmileSection
+  , withSmileSection
+  , peekSmileSection
+  , CPricingEngine
+  , PricingEngine
+  , withPricingEngine
+  , peekPricingEngine
+  , CFloatingRateCouponPricer
+  , FloatingRateCouponPricer
+  , withFloatingRateCouponPricer
+  , peekFloatingRateCouponPricer
+  , withFloatingRateCouponPricerArray
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -164,6 +177,9 @@ data CQlClaim
 data CTimeGrid
 data CInterestRate
 data CDividend
+data CSmileSection
+data CPricingEngine
+data CFloatingRateCouponPricer
 data CDefaultProbabilityHelper
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
@@ -175,6 +191,9 @@ newtype Schedule = Schedule {getCSchedule :: SimpleType CSchedule}
 newtype InterestRate = InterestRate {getCInterestRate :: SimpleType CInterestRate}
 newtype TimeGrid = TimeGrid {getCTimeGrid :: SimpleType CTimeGrid}
 newtype Dividend = Dividend {getCDividend :: SimpleType CDividend}
+newtype SmileSection = SmileSection {getCSmileSection :: SimpleType CSmileSection}
+newtype PricingEngine = PricingEngine {getCPricingEngine :: SimpleType CPricingEngine}
+newtype FloatingRateCouponPricer = FloatingRateCouponPricer {getCFloatingRateCouponPricer :: SimpleType CFloatingRateCouponPricer}
 newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: SimpleType CDefaultProbabilityHelper}
 -- special cases: those types will be represented as enums so no need to wrap them
 type QlClaim = SimpleType CQlClaim
@@ -207,6 +226,15 @@ interestRateMeta = Meta qlFreeInterestRate
 dividendMeta :: Meta CDividend
 dividendMeta = Meta qlFreeDividend
 
+floatingRateCouponPricerMeta :: Meta CFloatingRateCouponPricer
+floatingRateCouponPricerMeta = Meta qlFreeFloatingRateCouponPricer
+
+pricingEngineMeta :: Meta CPricingEngine
+pricingEngineMeta = Meta qlFreePricingEngine
+
+smileSectionMeta :: Meta CSmileSection
+smileSectionMeta = Meta qlFreeSmileSection
+
 defaultProbabilityHelperMeta :: Meta CDefaultProbabilityHelper
 defaultProbabilityHelperMeta = Meta qlFreeDefaultProbabilityHelper
 
@@ -237,6 +265,15 @@ peekInterestRate = peekSimpleType interestRateMeta >=> return . InterestRate
 peekDividend :: Ptr CDividend -> IO Dividend
 peekDividend = peekSimpleType dividendMeta >=> return . Dividend
 
+peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer -> IO FloatingRateCouponPricer
+peekFloatingRateCouponPricer = peekSimpleType floatingRateCouponPricerMeta >=> return . FloatingRateCouponPricer
+
+peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
+peekPricingEngine = peekSimpleType pricingEngineMeta >=> return . PricingEngine
+
+peekSmileSection :: Ptr CSmileSection -> IO SmileSection
+peekSmileSection = peekSimpleType smileSectionMeta >=> return . SmileSection
+
 peekDefaultProbabilityHelper :: Ptr CDefaultProbabilityHelper -> IO DefaultProbabilityHelper
 peekDefaultProbabilityHelper = peekSimpleType defaultProbabilityHelperMeta >=> return . DefaultProbabilityHelper
 
@@ -262,6 +299,9 @@ foreign import ccall "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabi
 foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
 foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
 foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
+foreign import ccall "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerPtr CSmileSection
+foreign import ccall "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
+foreign import ccall "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer
 
 showSimpleType :: (Ptr a -> IO CString) -> SimpleType a -> String
 showSimpleType f x = unsafePerformIO $ withSimpleType x (f >=> peekDynString)
@@ -299,6 +339,15 @@ withDefaultProbabilityHelper = withSimpleType . getCDefaultProbabilityHelper
 withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
 withDividend = withSimpleType . getCDividend
 
+withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
+withFloatingRateCouponPricer = withSimpleType . getCFloatingRateCouponPricer
+
+withSmileSection :: SmileSection -> (Ptr CSmileSection -> IO b) -> IO b
+withSmileSection = withSimpleType . getCSmileSection
+
+withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
+withPricingEngine = withSimpleType . getCPricingEngine
+
 withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
 withTimeGrid = withSimpleType . getCTimeGrid
 
@@ -313,6 +362,9 @@ withDefaultProbabilityHelperArray = withSimpleArray getCDefaultProbabilityHelper
 
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
 withDividendArray = withSimpleArray getCDividend
+
+withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer)) -> IO b) -> IO b
+withFloatingRateCouponPricerArray = withSimpleArray getCFloatingRateCouponPricer
 
 ---- class hierarchies
 newtype MetaConv a b = MetaConv {_upcast :: Ptr a -> IO (Ptr b)}

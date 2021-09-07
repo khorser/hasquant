@@ -59,31 +59,31 @@ run = do
   bermudanInst <- asOneAssetOption bermudanOpt >>= asOption >>= asInstrument
 
   euroEng <- analyticEuropeanEngine bsmProc
-  setPricingEngine europeanInst euroEng
+  QuantLib.Instrument.setPricingEngine europeanInst euroEng
   analyticEuro <- npv europeanInst
 
   hestonProc <- hestonProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
   hestonMod <- hestonModel hestonProc
   hestonEng <- analyticHestonEngine' hestonMod 144
-  setPricingEngine europeanInst hestonEng
+  QuantLib.Instrument.setPricingEngine europeanInst hestonEng
   analyticHeston <- npv europeanInst
 
   batesProc <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation
   batesMod <- batesModel batesProc
   batesEng <- batesEngine batesMod 144
-  setPricingEngine europeanInst batesEng
+  QuantLib.Instrument.setPricingEngine europeanInst batesEng
   bates <- npv europeanInst
 
   bawEng <- baroneAdesiWhaleyApproximationEngine bsmProc
-  setPricingEngine americanInst bawEng
+  QuantLib.Instrument.setPricingEngine americanInst bawEng
   baw <- npv americanInst
 
   bsEng <- bjerksundStenslandApproximationEngine bsmProc
-  setPricingEngine americanInst bsEng
+  QuantLib.Instrument.setPricingEngine americanInst bsEng
   bjs <- npv americanInst
 
   iEng <- integralEngine bsmProc
-  setPricingEngine europeanInst iEng
+  QuantLib.Instrument.setPricingEngine europeanInst iEng
   int <- npv europeanInst
 
   --fd <- mapM (\(f, i) -> do
@@ -96,15 +96,15 @@ run = do
             [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
   mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
-  setPricingEngine europeanInst mceEng
+  QuantLib.Instrument.setPricingEngine europeanInst mceEng
   mcE <- npv europeanInst
 
   mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
-  setPricingEngine europeanInst mceEng2
+  QuantLib.Instrument.setPricingEngine europeanInst mceEng2
   mcE2 <- npv europeanInst
 
   mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096)
-  setPricingEngine americanInst mcaEng
+  QuantLib.Instrument.setPricingEngine americanInst mcaEng
   mcA <- npv americanInst
 
   return Result {
@@ -133,6 +133,6 @@ run = do
 
         binomialPrice proc inst tree = do
           eng <- binomialVanillaEngine tree proc timeSteps
-          mapM (\i -> setPricingEngine i eng >> npv i) inst
+          mapM (\i -> QuantLib.Instrument.setPricingEngine i eng >> npv i) inst
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
