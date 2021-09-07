@@ -39,18 +39,24 @@ module QuantLib.Internal.Enum
   , QlCallability
 
   , FittingMethod(..)
-  , FittingMethodObject
+  , QlFittedBondDiscountCurveFittingMethod
+  , withFittedBondDiscountCurveFittingMethod
 
   , FdmSchemeType(..)
   , FdmScheme(..)
-  , FdmSchemeDesc
+  , QlFdmSchemeDesc
+  , withFdmSchemeDesc
 
   , Constraint(..)
   , QlConstraint
+  , withConstraint
+  , withMaybeConstraint
   , OptimizationMethod(..)
   , QlOptimizationMethod
+  , withOptimizationMethod
   , EndCriteria(..)
   , QlEndCriteria
+  , withEndCriteria
 
   , QlRounding
   , RoundingType(..)
@@ -456,6 +462,11 @@ data Callability =
 {#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
 
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
+{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
+{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
+{#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 
 callability :: Callability -> IO (SimpleType CQlCallability)
 callability (Soft p t d tg) = qlSoftCallability p t d tg
@@ -465,6 +476,9 @@ newtype EnumMeta a b = EnumMeta (a -> IO (SimpleType b))
 
 withEnumType :: EnumMeta a b -> a -> (Ptr b -> IO c) -> IO c
 withEnumType (EnumMeta t) x f = t x >>= (`withSimpleType` f)
+
+withMaybeEnumType :: EnumMeta a b -> Maybe a -> (Ptr b -> IO c) -> IO c
+withMaybeEnumType (EnumMeta t) x f = maybe (f nullPtr) (\xx -> t xx >>= (`withSimpleType` f)) x
 
 withEnumTypeArray :: EnumMeta a b -> [a] -> ((CUInt, Ptr (Ptr b)) -> IO c) -> IO c
 withEnumTypeArray m x f = withMany (withEnumType m) x (`withArray` (\px -> f (fromIntegral $ length x, px)))
@@ -478,18 +492,43 @@ withCallability = withEnumType callabilityMeta
 withCallabilityArray :: [Callability] -> ((CUInt, Ptr (Ptr CQlCallability)) -> IO c) -> IO c
 withCallabilityArray = withEnumTypeArray callabilityMeta
 
+constraintMeta :: EnumMeta Constraint CConstraint
+constraintMeta = EnumMeta constraint
+
+withMaybeConstraint :: Maybe Constraint -> (Ptr CConstraint -> IO a) -> IO a
+withMaybeConstraint = withMaybeEnumType constraintMeta
+
+withConstraint :: Constraint -> (Ptr CConstraint -> IO a) -> IO a
+withConstraint = withEnumType constraintMeta
+
+fittedBondDiscountFittingMethodMeta :: EnumMeta FittingMethod CFittedBondDiscountCurveFittingMethod
+fittedBondDiscountFittingMethodMeta = EnumMeta fittingMethod
+
+withFittedBondDiscountCurveFittingMethod :: FittingMethod -> (Ptr CFittedBondDiscountCurveFittingMethod -> IO a) -> IO a
+withFittedBondDiscountCurveFittingMethod = withEnumType fittedBondDiscountFittingMethodMeta
+
+endCriteriaMeta :: EnumMeta EndCriteria CEndCriteria
+endCriteriaMeta = EnumMeta endCriteria
+
+withEndCriteria :: EndCriteria -> (Ptr CEndCriteria -> IO a) -> IO a
+withEndCriteria = withEnumType endCriteriaMeta
+
+fdmSchemeDescMeta :: EnumMeta FdmScheme CFdmSchemeDesc
+fdmSchemeDescMeta = EnumMeta fdmScheme
+
+withFdmSchemeDesc :: FdmScheme -> (Ptr CFdmSchemeDesc -> IO a) -> IO a
+withFdmSchemeDesc = withEnumType fdmSchemeDescMeta
+
+optimizationMethodMeta :: EnumMeta OptimizationMethod COptimizationMethod
+optimizationMethodMeta = EnumMeta optimizationMethod
+
+withOptimizationMethod :: OptimizationMethod -> (Ptr COptimizationMethod -> IO a) -> IO a
+withOptimizationMethod = withEnumType optimizationMethodMeta
+
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability{`Double',`BondPriceType', withDay*`Day',`Double', preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 
 {#fun qlCallability{`Double',`BondPriceType',`CallabilityType', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
-
-{#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign finalizer qlFreeFittedBondDiscountCurveFittingMethod newtype#}
-instance ForeignObject FittingMethodObject where
-  withObject = withFittingMethodObject
-  constructor = FittingMethodObject
-  finalizer = qlFreeFittedBondDiscountCurveFittingMethod
-
-instance EnumObject FittingMethod FittingMethodObject where toObject = fittingMethod
 
 data FittingMethod =
   CubicBSplines
@@ -503,18 +542,18 @@ data FittingMethod =
   | Svensson
   deriving (Show, Eq)
 
-fittingMethod :: FittingMethod -> IO FittingMethodObject
+fittingMethod :: FittingMethod -> IO QlFittedBondDiscountCurveFittingMethod
 fittingMethod (CubicBSplines k c) = qlCubicBSplinesFitting k c
 fittingMethod (ExponentialSplines c) = qlExponentialSplinesFitting c
 fittingMethod NelsonSiegel = qlNelsonSiegelFitting
 fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
 fittingMethod Svensson = qlSvenssonFitting
 
-{#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool', preErrorCheck-`String'errorCheck*-}->`FittingMethodObject'#}
-{#fun qlExponentialSplinesFitting{`Bool', preErrorCheck-`String'errorCheck*-}->`FittingMethodObject'#}
-{#fun qlNelsonSiegelFitting{preErrorCheck-`String'errorCheck*-}->`FittingMethodObject'#}
-{#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-}->`FittingMethodObject'#}
-{#fun qlSvenssonFitting{preErrorCheck-`String'errorCheck*-}->`FittingMethodObject'#}
+{#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool', preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlExponentialSplinesFitting{`Bool', preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlNelsonSiegelFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlSvenssonFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 
 {#enum FdmSchemeType{} deriving(Show, Eq)#}
 
@@ -531,22 +570,16 @@ data FdmScheme =
   | ModifiedCraigSneyd
   | ModifiedHundsdorfer
 
-{#pointer *FdmSchemeDesc foreign finalizer qlFreeFdmSchemeDesc newtype#}
-instance ForeignObject FdmSchemeDesc where
-  withObject = withFdmSchemeDesc
-  constructor = FdmSchemeDesc
-  finalizer = qlFreeFdmSchemeDesc
+{#fun qlFdmSchemeDesc{`FdmSchemeType',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescDouglas{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescExplicitEuler{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescHundsdorfer{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescImplicitEuler{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescModifiedCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescModifiedHundsdorfer{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 
-{#fun qlFdmSchemeDesc{`FdmSchemeType',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescCraigSneyd{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescDouglas{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescExplicitEuler{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescHundsdorfer{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescImplicitEuler{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescModifiedCraigSneyd{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-{#fun qlFdmSchemeDescModifiedHundsdorfer{preErrorCheck-`String'errorCheck*-}->`FdmSchemeDesc'#}
-
-fdmScheme :: FdmScheme -> IO FdmSchemeDesc
+fdmScheme :: FdmScheme -> IO QlFdmSchemeDesc
 fdmScheme (FdmScheme t th mu) = qlFdmSchemeDesc t th mu
 fdmScheme CraigSneyd = qlFdmSchemeDescCraigSneyd
 fdmScheme Douglas = qlFdmSchemeDescDouglas
@@ -555,15 +588,6 @@ fdmScheme Hundsdorfer = qlFdmSchemeDescHundsdorfer
 fdmScheme ImplicitEuler = qlFdmSchemeDescImplicitEuler
 fdmScheme ModifiedCraigSneyd = qlFdmSchemeDescModifiedCraigSneyd
 fdmScheme ModifiedHundsdorfer = qlFdmSchemeDescModifiedHundsdorfer
-
-instance EnumObject FdmScheme FdmSchemeDesc where toObject = fdmScheme
-
-{#pointer *Constraint as QlConstraint foreign finalizer qlFreeConstraint newtype#}
-instance ForeignObject QlConstraint where
-  withObject = withQlConstraint
-  constructor = QlConstraint
-  finalizer = qlFreeConstraint
-instance EnumObject Constraint QlConstraint where toObject = constraint
 
 data Constraint =
   Boundary
@@ -581,16 +605,10 @@ constraint (Composite c1 c2) = qlCompositeConstraint c1 c2
 constraint NoConstraint = qlNoConstraint
 constraint PositiveConstraint = qlPositiveConstraint
 
-{#fun qlBoundaryConstraint{`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlConstraint'#}
-{#fun qlCompositeConstraint{withEnumObject*`Constraint', withEnumObject*`Constraint', preErrorCheck-`String'errorCheck*-}->`QlConstraint'#}
-{#fun qlNoConstraint{preErrorCheck-`String'errorCheck*-}->`QlConstraint'#}
-{#fun qlPositiveConstraint{preErrorCheck-`String'errorCheck*-}->`QlConstraint'#}
-
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign finalizer qlFreeOptimizationMethod newtype#}
-instance ForeignObject QlOptimizationMethod where
-  withObject = withQlOptimizationMethod
-  constructor = QlOptimizationMethod
-  finalizer = qlFreeOptimizationMethod
+{#fun qlBoundaryConstraint{`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
+{#fun qlCompositeConstraint{withConstraint*`Constraint', withConstraint*`Constraint', preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
+{#fun qlNoConstraint{preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
+{#fun qlPositiveConstraint{preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
 
 data OptimizationMethod =
   LevenbergMarquardt
@@ -600,11 +618,11 @@ data OptimizationMethod =
   | Simplex
     Double -- ^lambda, characteristic length
 
-instance EnumObject OptimizationMethod QlOptimizationMethod where
-  toObject (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
-  toObject (Simplex l) = qlSimplex l
-{#fun qlLevenbergMarquardt{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'#}
-{#fun qlSimplex{`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'#}
+optimizationMethod :: OptimizationMethod -> IO QlOptimizationMethod
+optimizationMethod (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
+optimizationMethod (Simplex l) = qlSimplex l
+{#fun qlLevenbergMarquardt{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
+{#fun qlSimplex{`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
 
 data EndCriteria = 
   EndCriteria
@@ -614,13 +632,9 @@ data EndCriteria =
     Double -- ^functionEpsilon
     Double -- ^gradientNormEpsilon
 
-{#pointer *EndCriteria as QlEndCriteria foreign finalizer qlFreeEndCriteria newtype#}
-instance ForeignObject QlEndCriteria where
-  withObject = withQlEndCriteria
-  constructor = QlEndCriteria
-  finalizer = qlFreeEndCriteria
-instance EnumObject EndCriteria QlEndCriteria where toObject (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
-{#fun qlEndCriteria{fromIntegral`Word', fromIntegral`Word',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'#}
+endCriteria :: EndCriteria -> IO QlEndCriteria
+endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
+{#fun qlEndCriteria{fromIntegral`Word', fromIntegral`Word',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'peekEndCriteria*#}
 
 {#enum RoundingType{} deriving (Show, Eq)#}
 {#pointer *Rounding as QlRounding foreign finalizer qlFreeRounding newtype#}

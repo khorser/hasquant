@@ -144,7 +144,6 @@ import QuantLib.Internal
 {#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure, CallableBondVolatilityStructure)
 {#import QuantLib.TermStructure.Credit#}(DefaultProbabilityTermStructure)
 import QuantLib.Internal.TermStructure
-{#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Process#}(GeneralizedBlackScholesProcess, HestonProcess, BlackProcess, HybridHestonHullWhiteProcess, VarianceGammaProcess, HestonProcess, Merton76Process, GJRGARCHProcess)
 {#import QuantLib.Model#}
 {#import QuantLib.Time.Schedule#}(TimeUnit)
@@ -267,10 +266,10 @@ import QuantLib.Internal.Enum
 
 {#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine'{withObject*`ShortRateModel', withTimeGrid*`TimeGrid', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#pointer *FdmSchemeDesc foreign newtype nocode#}
-{#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withObject*`G2', fromIntegral`Word', fromIntegral`Word', fromIntegral`Word', fromIntegral`Word',`Double', withEnumObject*`FdmScheme', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
+{#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withObject*`G2', fromIntegral`Word', fromIntegral`Word', fromIntegral`Word', fromIntegral`Word',`Double', withFdmSchemeDesc*`FdmScheme', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlFdHullWhiteSwaptionEngine as fdHullWhiteSwaptionEngine{withObject*`HullWhite', fromIntegral`Word', fromIntegral`Word', fromIntegral`Word',`Double', withEnumObject*`FdmScheme', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHullWhiteSwaptionEngine as fdHullWhiteSwaptionEngine{withObject*`HullWhite', fromIntegral`Word', fromIntegral`Word', fromIntegral`Word',`Double', withFdmSchemeDesc*`FdmScheme', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |/NB/ C++ classes Monte Carlo engines are additionally parameterised via statistic template argument
 -- Functions below use default value of Statistics

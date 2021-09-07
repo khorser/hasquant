@@ -273,13 +273,12 @@ interpolatedZeroCurve r dc c qd i = uncurry' (qlInterpolatedZeroCurve rs rd dc c
 
 {#fun qlInterpolatedZeroCurve{withDoubleArray*`[Double]'&, withDayArray*`[Day]'&, withDayCounter*`DayCounter', withCalendar*`Calendar', withQuoteArray*`[GenQuote a]'&, withDayArray*`[Day]'&,`Int',`Int',`Int', preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'#}
 
-{#pointer *FittedBondDiscountCurveFittingMethod as FittingMethodObject foreign newtype nocode#}
-
+{#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 -- |reference date based on current evaluation date
-{#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve{fromIntegral`Word', withCalendar*`Calendar', withBondHelperArray*`[BondHelper]'&, withDayCounter*`DayCounter', withEnumObject*`FittingMethod',`Double', fromIntegral`Word', withDoubleArray*`[Double]'&,`Double', preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'#}
+{#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve{fromIntegral`Word', withCalendar*`Calendar', withBondHelperArray*`[BondHelper]'&, withDayCounter*`DayCounter', withFittedBondDiscountCurveFittingMethod*`FittingMethod',`Double', fromIntegral`Word', withDoubleArray*`[Double]'&,`Double', preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'#}
 
 -- |curve reference date fixed for life of curve
-{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve'{withDay*`Day', withBondHelperArray*`[BondHelper]'&, withDayCounter*`DayCounter', withEnumObject*`FittingMethod',`Double', fromIntegral`Word', withDoubleArray*`[Double]'&,`Double', preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'#}
+{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve'{withDay*`Day', withBondHelperArray*`[BondHelper]'&, withDayCounter*`DayCounter', withFittedBondDiscountCurveFittingMethod*`FittingMethod',`Double', fromIntegral`Word', withDoubleArray*`[Double]'&,`Double', preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'#}
 
 -- |final value of cost function after optimization
 {#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue{`FittedBondDiscountCurve', preErrorCheck-`String'errorCheck*-}->`Double'#}

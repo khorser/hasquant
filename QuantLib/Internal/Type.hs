@@ -135,6 +135,23 @@ module QuantLib.Internal.Type
   , withFloatingRateCouponPricer
   , peekFloatingRateCouponPricer
   , withFloatingRateCouponPricerArray
+
+  , QlOptimizationMethod
+  , COptimizationMethod
+  , peekOptimizationMethod
+  , QlFdmSchemeDesc
+  , CFdmSchemeDesc
+  , peekFdmSchemeDesc
+  , QlFittedBondDiscountCurveFittingMethod
+  , CFittedBondDiscountCurveFittingMethod
+  , peekFittedBondDiscountCurveFittingMethod
+  , QlEndCriteria
+  , CEndCriteria
+  , peekEndCriteria
+  , QlConstraint
+  , CConstraint
+  , peekConstraint
+
 --  , CBond
 --  , Bond
 --  , CFixedRateBond
@@ -181,6 +198,11 @@ data CSmileSection
 data CPricingEngine
 data CFloatingRateCouponPricer
 data CDefaultProbabilityHelper
+data CConstraint
+data CEndCriteria
+data CFdmSchemeDesc
+data CFittedBondDiscountCurveFittingMethod
+data COptimizationMethod
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 newtype Meta a = Meta {_fin :: FinalizerPtr a}
@@ -198,6 +220,11 @@ newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabil
 -- special cases: those types will be represented as enums so no need to wrap them
 type QlClaim = SimpleType CQlClaim
 type QlCallability = SimpleType CQlCallability
+type QlConstraint = SimpleType CConstraint
+type QlEndCriteria = SimpleType CEndCriteria
+type QlFdmSchemeDesc = SimpleType CFdmSchemeDesc
+type QlFittedBondDiscountCurveFittingMethod = SimpleType CFittedBondDiscountCurveFittingMethod
+type QlOptimizationMethod = SimpleType COptimizationMethod
 
 calendarMeta :: Meta CCalendar
 calendarMeta = Meta qlFreeCalendar
@@ -216,6 +243,21 @@ callabilityMeta = Meta qlFreeCallability
 
 claimMeta :: Meta CQlClaim
 claimMeta = Meta qlFreeClaim
+
+optimizationMethodMeta :: Meta COptimizationMethod
+optimizationMethodMeta = Meta qlFreeOptimizationMethod
+
+fittedBondDiscountCurveFittingMethodMeta :: Meta CFittedBondDiscountCurveFittingMethod
+fittedBondDiscountCurveFittingMethodMeta = Meta qlFreeFittedBondDiscountCurveFittingMethod
+
+fdmSchemeDescMeta :: Meta CFdmSchemeDesc
+fdmSchemeDescMeta = Meta qlFreeFdmSchemeDesc
+
+endCritetiaMeta :: Meta CEndCriteria
+endCritetiaMeta = Meta qlFreeEndCriteria
+
+constraintMeta :: Meta CConstraint
+constraintMeta = Meta qlFreeConstraint
 
 timeGridMeta :: Meta CTimeGrid
 timeGridMeta = Meta qlFreeTimeGrid
@@ -258,6 +300,21 @@ peekCallability = peekSimpleType callabilityMeta
 
 peekClaim :: Ptr CQlClaim -> IO (SimpleType CQlClaim)
 peekClaim = peekSimpleType claimMeta
+
+peekConstraint :: Ptr CConstraint -> IO (SimpleType CConstraint)
+peekConstraint = peekSimpleType constraintMeta
+
+peekEndCriteria :: Ptr CEndCriteria -> IO (SimpleType CEndCriteria)
+peekEndCriteria = peekSimpleType endCritetiaMeta
+
+peekFittedBondDiscountCurveFittingMethod :: Ptr CFittedBondDiscountCurveFittingMethod -> IO (SimpleType CFittedBondDiscountCurveFittingMethod)
+peekFittedBondDiscountCurveFittingMethod = peekSimpleType fittedBondDiscountCurveFittingMethodMeta
+
+peekFdmSchemeDesc :: Ptr CFdmSchemeDesc -> IO (SimpleType CFdmSchemeDesc)
+peekFdmSchemeDesc = peekSimpleType fdmSchemeDescMeta
+
+peekOptimizationMethod :: Ptr COptimizationMethod -> IO (SimpleType COptimizationMethod)
+peekOptimizationMethod = peekSimpleType optimizationMethodMeta
 
 peekInterestRate :: Ptr CInterestRate -> IO InterestRate
 peekInterestRate = peekSimpleType interestRateMeta >=> return . InterestRate
@@ -302,6 +359,11 @@ foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
 foreign import ccall "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerPtr CSmileSection
 foreign import ccall "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
 foreign import ccall "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer
+foreign import ccall "ql.h &qlFreeConstraint" qlFreeConstraint :: FinalizerPtr CConstraint
+foreign import ccall "ql.h &qlFreeEndCriteria" qlFreeEndCriteria :: FinalizerPtr CEndCriteria
+foreign import ccall "ql.h &qlFreeFdmSchemeDesc" qlFreeFdmSchemeDesc :: FinalizerPtr CFdmSchemeDesc
+foreign import ccall "ql.h &qlFreeFittedBondDiscountCurveFittingMethod" qlFreeFittedBondDiscountCurveFittingMethod :: FinalizerPtr CFittedBondDiscountCurveFittingMethod
+foreign import ccall "ql.h &qlFreeOptimizationMethod" qlFreeOptimizationMethod :: FinalizerPtr COptimizationMethod
 
 showSimpleType :: (Ptr a -> IO CString) -> SimpleType a -> String
 showSimpleType f x = unsafePerformIO $ withSimpleType x (f >=> peekDynString)

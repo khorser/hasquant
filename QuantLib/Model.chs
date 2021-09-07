@@ -278,14 +278,14 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 
 {#fun qlLiborForwardModel as liborForwardModel{withObject*`LiborForwardModelProcess',`LmVolatilityModel',`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'#}
 
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign newtype nocode#}
-{#pointer *EndCriteria as QlEndCriteria foreign newtype nocode#}
-{#pointer *Constraint as QlConstraint foreign newtype nocode#}
+{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -> OptimizationMethod -> EndCriteria -> Maybe Constraint -> IO ()
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
-{#fun qlCalibratedModelCalibrate{`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withEnumObject*`OptimizationMethod', withEnumObject*`EndCriteria', withMaybeEnumObject*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelCalibrate{`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withOptimizationMethod*`OptimizationMethod', withEndCriteria*`EndCriteria', withMaybeConstraint*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlCapHelper as capHelper{fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex',`Frequency', withDayCounter*`DayCounter',`Bool',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 

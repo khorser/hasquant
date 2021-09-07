@@ -5,12 +5,6 @@ QlLmCorrelationModel as LmCorrelationModel | qlFreeLmCorrelationModel
 QlLmVolatilityModel as LmVolatilityModel | qlFreeLmVolatilityModel
 
 -- enums
-Constraint as QlConstraint | qlFreeConstraint
-EndCriteria as QlEndCriteria | qlFreeEndCriteria
-FdmSchemeDesc | qlFreeFdmSchemeDesc
-FittedBondDiscountCurveFittingMethod as FittingMethodObject | qlFreeFittedBondDiscountCurveFittingMethod
-OptimizationMethod as QlOptimizationMethod | qlFreeOptimizationMethod
-
 QlPayoff | qlFreePayoff
 QlPercentageStrikePayoff | qlFreePercentageStrikePayoff
 QlPlainVanillaPayoff | qlFreePlainVanillaPayoff
