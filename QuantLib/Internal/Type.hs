@@ -154,6 +154,12 @@ module QuantLib.Internal.Type
   , QlRounding
   , CRounding
   , peekRounding
+  , QlLmVolatilityModel
+  , CLmVolatilityModel
+  , peekLmVolatilityModel
+  , QlLmCorrelationModel
+  , CLmCorrelationModel
+  , peekLmCorrelationModel
 
 --  , CBond
 --  , Bond
@@ -207,6 +213,8 @@ data CFdmSchemeDesc
 data CFittedBondDiscountCurveFittingMethod
 data COptimizationMethod
 data CRounding
+data CLmVolatilityModel
+data CLmCorrelationModel
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 newtype Meta a = Meta {_fin :: FinalizerPtr a}
@@ -230,6 +238,8 @@ type QlFdmSchemeDesc = SimpleType CFdmSchemeDesc
 type QlFittedBondDiscountCurveFittingMethod = SimpleType CFittedBondDiscountCurveFittingMethod
 type QlOptimizationMethod = SimpleType COptimizationMethod
 type QlRounding = SimpleType CRounding
+type QlLmCorrelationModel = SimpleType CLmCorrelationModel
+type QlLmVolatilityModel = SimpleType CLmVolatilityModel
 
 calendarMeta :: Meta CCalendar
 calendarMeta = Meta qlFreeCalendar
@@ -263,6 +273,12 @@ endCritetiaMeta = Meta qlFreeEndCriteria
 
 constraintMeta :: Meta CConstraint
 constraintMeta = Meta qlFreeConstraint
+
+lmCorrelationModelMeta :: Meta CLmCorrelationModel
+lmCorrelationModelMeta = Meta qlFreeLmCorrelationModel
+
+lmVolatilityModelMeta :: Meta CLmVolatilityModel
+lmVolatilityModelMeta = Meta qlFreeLmVolatilityModel
 
 timeGridMeta :: Meta CTimeGrid
 timeGridMeta = Meta qlFreeTimeGrid
@@ -314,6 +330,12 @@ peekRounding = peekSimpleType roundingMeta
 
 peekConstraint :: Ptr CConstraint -> IO (SimpleType CConstraint)
 peekConstraint = peekSimpleType constraintMeta
+
+peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (SimpleType CLmVolatilityModel)
+peekLmVolatilityModel = peekSimpleType lmVolatilityModelMeta
+
+peekLmCorrelationModel :: Ptr CLmCorrelationModel -> IO (SimpleType CLmCorrelationModel)
+peekLmCorrelationModel = peekSimpleType lmCorrelationModelMeta
 
 peekEndCriteria :: Ptr CEndCriteria -> IO (SimpleType CEndCriteria)
 peekEndCriteria = peekSimpleType endCritetiaMeta
@@ -376,6 +398,8 @@ foreign import ccall "ql.h &qlFreeFdmSchemeDesc" qlFreeFdmSchemeDesc :: Finalize
 foreign import ccall "ql.h &qlFreeFittedBondDiscountCurveFittingMethod" qlFreeFittedBondDiscountCurveFittingMethod :: FinalizerPtr CFittedBondDiscountCurveFittingMethod
 foreign import ccall "ql.h &qlFreeOptimizationMethod" qlFreeOptimizationMethod :: FinalizerPtr COptimizationMethod
 foreign import ccall "ql.h &qlFreeRounding" qlFreeRounding :: FinalizerPtr CRounding
+foreign import ccall "ql.h &qlFreeLmVolatilityModel" qlFreeLmVolatilityModel :: FinalizerPtr CLmVolatilityModel
+foreign import ccall "ql.h &qlFreeLmCorrelationModel" qlFreeLmCorrelationModel :: FinalizerPtr CLmCorrelationModel
 
 showSimpleType :: (Ptr a -> IO CString) -> SimpleType a -> String
 showSimpleType f x = unsafePerformIO $ withSimpleType x (f >=> peekDynString)

@@ -66,6 +66,13 @@ module QuantLib.Internal.Enum
 
   , withCallability
   , withCallabilityArray
+
+  , QlLmVolatilityModel
+  , LmVolatilityModel(..)
+  , QlLmCorrelationModel
+  , LmCorrelationModel(..)
+  , withLmCorrelationModel
+  , withLmVolatilityModel
   )
 where
 
@@ -664,5 +671,56 @@ rounding (Rounding p t d) = qlRounding1 p t d
 
 {#fun qlRounding{preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
 {#fun qlRounding1{`Int',`RoundingType',`Int', preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
+
+{#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
+{#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
+
+data LmCorrelationModel = ConstWrapperCorrelation LmCorrelationModel
+  | ExponentialCorrelation Word -- ^size
+    Double -- ^rho
+  | LinearExponentialCorrelation Word -- ^size
+    Double -- ^rho
+    Double -- ^beta
+    Word -- ^factors
+  deriving (Show, Eq)
+
+{#fun qlLmConstWrapperCorrelationModel{withSimpleType*`QlLmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+{#fun qlLmExponentialCorrelationModel{fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+{#fun qlLmLinearExponentialCorrelationModel{fromIntegral`Word',`Double',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+
+correlationModel :: LmCorrelationModel -> IO QlLmCorrelationModel
+correlationModel (ConstWrapperCorrelation m) = correlationModel m >>= qlLmConstWrapperCorrelationModel
+correlationModel (ExponentialCorrelation s r) = qlLmExponentialCorrelationModel s r
+correlationModel (LinearExponentialCorrelation s r b f) = qlLmLinearExponentialCorrelationModel s r b f
+
+correlationModelMeta :: EnumMeta LmCorrelationModel CLmCorrelationModel
+correlationModelMeta = EnumMeta correlationModel
+
+withLmCorrelationModel :: LmCorrelationModel -> (Ptr CLmCorrelationModel -> IO a) -> IO a
+withLmCorrelationModel = withEnumType correlationModelMeta
+
+data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
+  | FixedVolatility [Double] [Double]
+  | LinearExponentialVolatility [Double] -- ^fixing times
+    Double -- ^a
+    Double -- ^b
+    Double -- ^c
+    Double -- ^d
+  deriving (Show, Eq)
+
+{#fun qlLmConstWrapperVolatilityModel{withSimpleType*`QlLmVolatilityModel', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+{#fun qlLmFixedVolatilityModel{withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+{#fun qlLmLinearExponentialVolatilityModel{withDoubleArray*`[Double]'&,`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+
+volatilityModel :: LmVolatilityModel -> IO QlLmVolatilityModel
+volatilityModel (ConstWrapperVolatility m) = volatilityModel m >>= qlLmConstWrapperVolatilityModel
+volatilityModel (FixedVolatility d1 d2) = qlLmFixedVolatilityModel d1 d2
+volatilityModel (LinearExponentialVolatility s a b c d) = qlLmLinearExponentialVolatilityModel s a b c d
+
+volatilityModelMeta :: EnumMeta LmVolatilityModel CLmVolatilityModel
+volatilityModelMeta = EnumMeta volatilityModel
+
+withLmVolatilityModel :: LmVolatilityModel -> (Ptr CLmVolatilityModel -> IO a) -> IO a
+withLmVolatilityModel = withEnumType volatilityModelMeta
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

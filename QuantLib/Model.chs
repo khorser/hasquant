@@ -16,8 +16,8 @@ module QuantLib.Model
   , BatesDetJumpModel
   , BatesDoubleExpDetJumpModel
   , BatesDoubleExpModel
-  , LmCorrelationModel
-  , LmVolatilityModel
+  , LmCorrelationModel(..)
+  , LmVolatilityModel(..)
   , CalibrationHelper
   , BlackCalibrationHelper
   , asCalibrationHelper
@@ -42,12 +42,6 @@ module QuantLib.Model
   , hullWhite
   , varianceGammaModel
   , vasicek
-  , lmConstWrapperCorrelationModel
-  , lmConstWrapperVolatilityModel
-  , lmExponentialCorrelationModel
-  , lmFixedVolatilityModel
-  , lmLinearExponentialCorrelationModel
-  , lmLinearExponentialVolatilityModel
   , liborForwardModel
 
   , calibrate
@@ -175,18 +169,6 @@ instance ForeignObject BatesDoubleExpModel where
   constructor = BatesDoubleExpModel
   finalizer = qlFreeBatesDoubleExpModel
 
-{#pointer *QlLmCorrelationModel as LmCorrelationModel foreign finalizer qlFreeLmCorrelationModel newtype#}
-instance ForeignObject LmCorrelationModel where
-  withObject = withLmCorrelationModel
-  constructor = LmCorrelationModel
-  finalizer = qlFreeLmCorrelationModel
-
-{#pointer *QlLmVolatilityModel as LmVolatilityModel foreign finalizer qlFreeLmVolatilityModel newtype#}
-instance ForeignObject LmVolatilityModel where
-  withObject = withLmVolatilityModel
-  constructor = LmVolatilityModel
-  finalizer = qlFreeLmVolatilityModel
-
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper nocode#}
 
@@ -264,19 +246,10 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 
 {#fun qlVasicek as vasicek{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'#}
 
-{#fun qlLmConstWrapperCorrelationModel as lmConstWrapperCorrelationModel{`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LmCorrelationModel'#}
+{#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
+{#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
-{#fun qlLmConstWrapperVolatilityModel as lmConstWrapperVolatilityModel{`LmVolatilityModel', preErrorCheck-`String'errorCheck*-}->`LmVolatilityModel'#}
-
-{#fun qlLmExponentialCorrelationModel as lmExponentialCorrelationModel{fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`LmCorrelationModel'#}
-
-{#fun qlLmFixedVolatilityModel as lmFixedVolatilityModel{withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`LmVolatilityModel'#}
-
-{#fun qlLmLinearExponentialCorrelationModel as lmLinearExponentialCorrelationModel{fromIntegral`Word',`Double',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`LmCorrelationModel'#}
-
-{#fun qlLmLinearExponentialVolatilityModel as lmLinearExponentialVolatilityModel{withDoubleArray*`[Double]'&,`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`LmVolatilityModel'#}
-
-{#fun qlLiborForwardModel as liborForwardModel{withObject*`LiborForwardModelProcess',`LmVolatilityModel',`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'#}
+{#fun qlLiborForwardModel as liborForwardModel{withObject*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'#}
 
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
