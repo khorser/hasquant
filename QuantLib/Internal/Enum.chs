@@ -73,6 +73,10 @@ module QuantLib.Internal.Enum
   , LmCorrelationModel(..)
   , withLmCorrelationModel
   , withLmVolatilityModel
+
+  -- remove these two exports once QlClaim migrated here
+  , EnumMeta(..)
+  , withEnumType
   )
 where
 
