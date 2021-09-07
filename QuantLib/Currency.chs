@@ -31,6 +31,7 @@ import QuantLib.Internal.Enum
 {#enum Ccy{} deriving(Show, Eq)#}
 
 {#pointer *Currency foreign -> CCurrency nocode#}
+{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 
 {#fun qlCurrency as currency{`Ccy', preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
@@ -46,6 +47,6 @@ import QuantLib.Internal.Enum
 
 {#fun pure qlCurrencySymbol as symbol{withCurrency*`Currency'}->`String'#}
 
-{#fun qlCreateCurrency as currency'{`String',`String',`Int',`String',`String',`Int', withMaybeEnumObject*`Maybe Rounding',`String', withMaybeCurrency*`Maybe Currency', preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+{#fun qlCreateCurrency as currency'{`String',`String',`Int',`String',`String',`Int', withMaybeRounding*`Maybe Rounding',`String', withMaybeCurrency*`Maybe Currency', preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

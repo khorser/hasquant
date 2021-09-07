@@ -43,9 +43,9 @@ import QuantLib.Internal.Type
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
-{#pointer *Rounding as QlRounding foreign newtype nocode#}
+{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 
-{#fun pure qlRound as applyRounding{withEnumObject*`Rounding',`Double'}->`Double'#}
+{#fun pure qlRound as applyRounding{withRounding*`Rounding',`Double'}->`Double'#}
 
 {#enum EndCriteriaType{} deriving(Show, Eq)#}
 

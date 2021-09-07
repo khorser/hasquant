@@ -151,6 +151,9 @@ module QuantLib.Internal.Type
   , QlConstraint
   , CConstraint
   , peekConstraint
+  , QlRounding
+  , CRounding
+  , peekRounding
 
 --  , CBond
 --  , Bond
@@ -203,6 +206,7 @@ data CEndCriteria
 data CFdmSchemeDesc
 data CFittedBondDiscountCurveFittingMethod
 data COptimizationMethod
+data CRounding
 
 newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
 newtype Meta a = Meta {_fin :: FinalizerPtr a}
@@ -225,6 +229,7 @@ type QlEndCriteria = SimpleType CEndCriteria
 type QlFdmSchemeDesc = SimpleType CFdmSchemeDesc
 type QlFittedBondDiscountCurveFittingMethod = SimpleType CFittedBondDiscountCurveFittingMethod
 type QlOptimizationMethod = SimpleType COptimizationMethod
+type QlRounding = SimpleType CRounding
 
 calendarMeta :: Meta CCalendar
 calendarMeta = Meta qlFreeCalendar
@@ -268,6 +273,9 @@ interestRateMeta = Meta qlFreeInterestRate
 dividendMeta :: Meta CDividend
 dividendMeta = Meta qlFreeDividend
 
+roundingMeta :: Meta CRounding
+roundingMeta = Meta qlFreeRounding
+
 floatingRateCouponPricerMeta :: Meta CFloatingRateCouponPricer
 floatingRateCouponPricerMeta = Meta qlFreeFloatingRateCouponPricer
 
@@ -300,6 +308,9 @@ peekCallability = peekSimpleType callabilityMeta
 
 peekClaim :: Ptr CQlClaim -> IO (SimpleType CQlClaim)
 peekClaim = peekSimpleType claimMeta
+
+peekRounding :: Ptr CRounding -> IO (SimpleType CRounding)
+peekRounding = peekSimpleType roundingMeta
 
 peekConstraint :: Ptr CConstraint -> IO (SimpleType CConstraint)
 peekConstraint = peekSimpleType constraintMeta
@@ -364,6 +375,7 @@ foreign import ccall "ql.h &qlFreeEndCriteria" qlFreeEndCriteria :: FinalizerPtr
 foreign import ccall "ql.h &qlFreeFdmSchemeDesc" qlFreeFdmSchemeDesc :: FinalizerPtr CFdmSchemeDesc
 foreign import ccall "ql.h &qlFreeFittedBondDiscountCurveFittingMethod" qlFreeFittedBondDiscountCurveFittingMethod :: FinalizerPtr CFittedBondDiscountCurveFittingMethod
 foreign import ccall "ql.h &qlFreeOptimizationMethod" qlFreeOptimizationMethod :: FinalizerPtr COptimizationMethod
+foreign import ccall "ql.h &qlFreeRounding" qlFreeRounding :: FinalizerPtr CRounding
 
 showSimpleType :: (Ptr a -> IO CString) -> SimpleType a -> String
 showSimpleType f x = unsafePerformIO $ withSimpleType x (f >=> peekDynString)

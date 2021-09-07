@@ -61,6 +61,8 @@ module QuantLib.Internal.Enum
   , QlRounding
   , RoundingType(..)
   , Rounding(..)
+  , withRounding
+  , withMaybeRounding
 
   , withCallability
   , withCallabilityArray
@@ -495,11 +497,20 @@ withCallabilityArray = withEnumTypeArray callabilityMeta
 constraintMeta :: EnumMeta Constraint CConstraint
 constraintMeta = EnumMeta constraint
 
+roundingMeta :: EnumMeta Rounding CRounding
+roundingMeta = EnumMeta rounding
+
 withMaybeConstraint :: Maybe Constraint -> (Ptr CConstraint -> IO a) -> IO a
 withMaybeConstraint = withMaybeEnumType constraintMeta
 
+withMaybeRounding :: Maybe Rounding -> (Ptr CRounding -> IO a) -> IO a
+withMaybeRounding = withMaybeEnumType roundingMeta
+
 withConstraint :: Constraint -> (Ptr CConstraint -> IO a) -> IO a
 withConstraint = withEnumType constraintMeta
+
+withRounding :: Rounding -> (Ptr CRounding -> IO a) -> IO a
+withRounding = withEnumType roundingMeta
 
 fittedBondDiscountFittingMethodMeta :: EnumMeta FittingMethod CFittedBondDiscountCurveFittingMethod
 fittedBondDiscountFittingMethodMeta = EnumMeta fittingMethod
@@ -636,12 +647,9 @@ endCriteria :: EndCriteria -> IO QlEndCriteria
 endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
 {#fun qlEndCriteria{fromIntegral`Word', fromIntegral`Word',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'peekEndCriteria*#}
 
+{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
+
 {#enum RoundingType{} deriving (Show, Eq)#}
-{#pointer *Rounding as QlRounding foreign finalizer qlFreeRounding newtype#}
-instance ForeignObject QlRounding where
-  withObject = withQlRounding
-  constructor = QlRounding
-  finalizer = qlFreeRounding
 
 data Rounding = NoRounding
   | Rounding
@@ -649,11 +657,12 @@ data Rounding = NoRounding
     RoundingType
     Int -- ^digit
   deriving (Show, Eq)
-instance EnumObject Rounding QlRounding where
-  toObject NoRounding = qlRounding
-  toObject (Rounding p t d) = qlRounding1 p t d
 
-{#fun qlRounding{preErrorCheck-`String'errorCheck*-}->`QlRounding'#}
-{#fun qlRounding1{`Int',`RoundingType',`Int', preErrorCheck-`String'errorCheck*-}->`QlRounding'#}
+rounding :: Rounding -> IO QlRounding
+rounding NoRounding = qlRounding
+rounding (Rounding p t d) = qlRounding1 p t d
+
+{#fun qlRounding{preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
+{#fun qlRounding1{`Int',`RoundingType',`Int', preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
