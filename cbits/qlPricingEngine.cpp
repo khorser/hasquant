@@ -837,27 +837,13 @@ QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProc
   }
 }
 
-//QlPricingEngine* qlFDAmericanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
-//  try {
-//    return ret(new QlPricingEngine(alloc(qlFDAmericanEngineAux(fdscheme, *arg(process), timeSteps, gridPoints, timeDependent))));
-//  } catch (std::exception& er) {
-//    return handleException<QlPricingEngine*>(e, er);
-//  }
-//}
-//QlPricingEngine* qlFDBermudanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
-//  try {
-//    return ret(new QlPricingEngine(alloc(qlFDBermudanEngineAux(fdscheme, *arg(process), timeSteps, gridPoints, timeDependent))));
-//  } catch (std::exception& er) {
-//    return handleException<QlPricingEngine*>(e, er);
-//  }
-//}
-//QlPricingEngine* qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
-//  try {
-//    return ret(new QlPricingEngine(alloc(qlFDEuropeanEngineAux(fdscheme, *arg(process), timeSteps, gridPoints, timeDependent))));
-//  } catch (std::exception& er) {
-//    return handleException<QlPricingEngine*>(e, er);
-//  }
-//}
+QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(qlFdBlackScholesVanillaEngineAux(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme)))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
 
 QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
   try {

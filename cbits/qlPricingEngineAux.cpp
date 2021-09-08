@@ -7,6 +7,7 @@
 #include <ql/experimental/math/zigguratrng.hpp>
 #include <ql/methods/finitedifferences/expliciteuler.hpp>
 #include <ql/methods/finitedifferences/impliciteuler.hpp>
+#include <ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp>
 
 #include "qlPricingEngineAux.h"
 
@@ -255,36 +256,8 @@ PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const ext::shared_ptr<Gen
   QL_FAIL("Unknown RNG "<< rngtrait);
 }
 
-// TODO migrate to FdBlackScholesVanillaEngine
-//PricingEngine* qlFDAmericanEngineAux(const char *fdscheme, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
-//  case hasquant::FDCrankNicolson:
-//      return new FDAmericanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
-//  case hasquant::FDExplicitEuler:
-//      return new FDAmericanEngine<ExplicitEuler>(process, timeSteps, gridPoints, timeDependent);
-//  case hasquant::FDImplicitEuler:
-//      return new FDAmericanEngine<ImplicitEuler>(process, timeSteps, gridPoints, timeDependent);
-//    else
-//      QL_FAIL("Unknown FD Scheme "<< fdscheme);
-//}
-//PricingEngine* qlFDBermudanEngineAux(const char *fdscheme, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
-//  case hasquant::FDCrankNicolson:
-//      return new FDBermudanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
-//  case hasquant::FDExplicitEuler:
-//      return new FDBermudanEngine<ExplicitEuler>(process, timeSteps, gridPoints, timeDependent);
-//  case hasquant::FDImplicitEuler:
-//      return new FDBermudanEngine<ImplicitEuler>(process, timeSteps, gridPoints, timeDependent);
-//    else
-//      QL_FAIL("Unknown FD Scheme "<< fdscheme);
-//}
-//PricingEngine* qlFDEuropeanEngineAux(const char *fdscheme, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
-//  case hasquant::FDCrankNicolson:
-//      return new FDEuropeanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
-//  case hasquant::FDExplicitEuler:
-//      return new FDEuropeanEngine<ExplicitEuler>(process, timeSteps, gridPoints, timeDependent);
-//  case hasquant::FDImplicitEuler:
-//      return new FDEuropeanEngine<ImplicitEuler>(process, timeSteps, gridPoints, timeDependent);
-//    else
-//      QL_FAIL("Unknown FD Scheme "<< fdscheme);
-//}
+PricingEngine* qlFdBlackScholesVanillaEngineAux(const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme) {
+  return new FdBlackScholesVanillaEngine(process, tGrid, xGrid, dampingSteps, fdScheme);
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

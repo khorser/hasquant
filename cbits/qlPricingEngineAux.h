@@ -15,8 +15,6 @@ QuantLib::PricingEngine* qlMCEuropeanHestonEngine1Aux(int rngtrait, const QuantL
 QuantLib::PricingEngine* qlMCHullWhiteCapFloorEngine1Aux(int rngtrait, QuantLib::ext::shared_ptr<QuantLib::HullWhite> model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);
 QuantLib::PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const QuantLib::ext::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);
 
-//QuantLib::PricingEngine* qlFDAmericanEngineAux(const char *fdscheme, const QuantLib::ext::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent);
-//QuantLib::PricingEngine* qlFDBermudanEngineAux(const char *fdscheme, const QuantLib::ext::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent);
-//QuantLib::PricingEngine* qlFDEuropeanEngineAux(const char *fdscheme, const QuantLib::ext::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent);
+QuantLib::PricingEngine* qlFdBlackScholesVanillaEngineAux(const QuantLib::ext::shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const QuantLib::FdmSchemeDesc &fdScheme);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

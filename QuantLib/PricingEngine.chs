@@ -77,9 +77,7 @@ module QuantLib.PricingEngine
   , fdG2SwaptionEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
-  --, fdAmericanEngine
-  --, fdBermudanEngine
-  --, fdEuropeanEngine
+  , fdBlackScholesVanillaEngine
 
   , binomialConvertibleEngine
   , blackCallableFixedRateBondEngine'
@@ -300,10 +298,7 @@ import QuantLib.Internal.Enum
 
 {#fun qlBinomialVanillaEngine as binomialVanillaEngine{`BinomialTree', withObject*`GeneralizedBlackScholesProcess', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- removed from QuanLib. TODO: add binding to new functionality
---{#fun qlFDAmericanEngine as fdAmericanEngine {`FdmScheme', withObject*`GeneralizedBlackScholesProcess', fromIntegral`Word', fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
---{#fun qlFDBermudanEngine as fdBermudanEngine {`FdmScheme', withObject*`GeneralizedBlackScholesProcess', fromIntegral`Word', fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
---{#fun qlFDEuropeanEngine as fdEuropeanEngine {`FdmScheme', withObject*`GeneralizedBlackScholesProcess', fromIntegral`Word', fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdBlackScholesVanillaEngine as fdBlackScholesVanillaEngine{withObject*`GeneralizedBlackScholesProcess', fromIntegral`Word', fromIntegral`Word',fromIntegral`Word', withFdmSchemeDesc*`FdmScheme', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlBinomialConvertibleEngine as binomialConvertibleEngine{`BinomialTree', withObject*`GeneralizedBlackScholesProcess', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
