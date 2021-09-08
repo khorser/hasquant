@@ -105,7 +105,7 @@ main = do
   printDLine "%15s" "ITM Swaption" "%14.4f" npvI
 
   putStrLn "\n*** Equity Option Example ***"
-  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int {-fd-} mc) <- EquityOptionExample.run
+  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- EquityOptionExample.run
   void $ printf "%30s   %9s %9s %9s\n" "NPV of" "European" "Bermudan" "American"
   printEquityOptNPVs "Black-Sholes" (analyticEuro ++ [0, 0])
   printEquityOptNPVs "Heston semi-analytic" (analyticHeston ++ [0, 0])
@@ -113,7 +113,7 @@ main = do
   printEquityOptNPVs "Barone-Adesi/Whaley" ([0, 0] ++ baw)
   printEquityOptNPVs "Bjerksund/Stensland" ([0, 0] ++ bjs)
   printEquityOptNPVs "Integral" (int ++ [0, 0])
-  --printEquityOptNPVs "Finite differences" fd
+  printEquityOptNPVs "Finite differences" fd
   mapM_ (uncurry printEquityOptNPVs)
     (zip
       ["Binomial Jarrow-Rudd",

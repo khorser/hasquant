@@ -30,7 +30,7 @@ data Result = Result
   , bjsR :: [Double]
   , binR :: [[Double]]
   , intR :: [Double]
-  --, fdR :: [Double]
+  , fdR :: [Double]
   , mcR :: [Double]
   }
 
@@ -86,11 +86,11 @@ run = do
   QuantLib.Instrument.setPricingEngine europeanInst iEng
   int <- npv europeanInst
 
-  --fd <- mapM (\(f, i) -> do
-  --  eng <- f FDCrankNicolson bsmProc 801 800 False
-  --  setPricingEngine i eng
-  --  npv i)
-  --  (zip [fdEuropeanEngine, fdBermudanEngine, fdAmericanEngine] [europeanInst, bermudanInst, americanInst])
+  fd <- mapM (\i -> do
+    eng <- fdBlackScholesVanillaEngine bsmProc 801 800 0 Douglas
+    QuantLib.Instrument.setPricingEngine i eng
+    npv i)
+    [europeanInst, bermudanInst, americanInst]
 
   bin <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
             [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
@@ -115,7 +115,7 @@ run = do
   , bjsR = [bjs]
   , binR = bin
   , intR = [int]
-  --, fdR = fd
+  , fdR = fd
   , mcR = [mcE, mcE2, mcA]
   }
   where tod = 15 `may` 1998
