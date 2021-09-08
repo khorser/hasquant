@@ -25,7 +25,6 @@ module QuantLib.Quote
   where
 
 import QuantLib.Internal
-{#import QuantLib.Time.Schedule#}(TimeUnit)
 {#import QuantLib.Index#}(Index)
 import{-# SOURCE #-} QuantLib.Index.InterestRate
 import QuantLib.Internal.Index

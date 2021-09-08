@@ -18,7 +18,6 @@ module QuantLib.Internal.CalendarEnum
 
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Type
---import{-# SOURCE #-} QuantLib.Time.Schedule
 import QuantLib.Time.Date(Weekday)
 
 {#enum JointCalendarRule{} deriving(Show, Eq)#}
