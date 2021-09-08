@@ -58,20 +58,13 @@ QlG2* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b
     return handleException<QlG2*>(e, er);
   }
 }
-QlShortRateModel* qlGeneralizedHullWhite1(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e) {
+QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e) {
   try {
     return ret(new QlShortRateModel(alloc(new GeneralizedHullWhite(Handle<YieldTermStructure>(*arg(yieldtermStructure)), qlDateVector(speedstructureLen, speedstructure), qlDateVector(volstructureLen, volstructure), std::vector<double>(speed, speed+speedLen), std::vector<double>(vol, vol+volLen)))));
   } catch (std::exception& er) {
     return handleException<QlShortRateModel*>(e, er);
   }
 }
-//QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, char **e) {
-//  try {
-//    return ret(new QlShortRateModel(alloc(new GeneralizedHullWhite(Handle<YieldTermStructure>(*arg(yieldtermStructure)), qlDateVector(speedstructureLen, speedstructure), qlDateVector(volstructureLen, volstructure)))));
-//  } catch (std::exception& er) {
-//    return handleException<QlShortRateModel*>(e, er);
-//  }
-//}
 QlGJRGARCHModel* qlGJRGARCHModel(QlGJRGARCHProcess* process, char **e) {
   try {
     return ret(new QlGJRGARCHModel(alloc(new GJRGARCHModel(*arg(process)))));

@@ -35,8 +35,7 @@ module QuantLib.Model
   , coxIngersollRoss
   , extendedCoxIngersollRoss
   , g2
-  , generalizedHullWhite'
---  , generalizedHullWhite
+  , generalizedHullWhite
   , gJRGARCHModel
   , hestonModel
   , hullWhite
@@ -231,10 +230,7 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 
 {#fun qlG2 as g2{`YieldTermStructure',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`G2'#}
 
-{#fun qlGeneralizedHullWhite1 as generalizedHullWhite'{`YieldTermStructure', withDayArray*`[Day]'&, withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`ShortRateModel'#}
-
--- TODO fix cbits compilation
---{#fun qlGeneralizedHullWhite as generalizedHullWhite{`YieldTermStructure', withDayArray*`[Day]'&, withDayArray*`[Day]'&, preErrorCheck-`String'errorCheck*-}->`ShortRateModel'#}
+{#fun qlGeneralizedHullWhite as generalizedHullWhite{`YieldTermStructure', withDayArray*`[Day]'&, withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`ShortRateModel'#}
 
 {#fun qlGJRGARCHModel as gJRGARCHModel{withObject*`GJRGARCHProcess', preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'#}
 

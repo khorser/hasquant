@@ -19,8 +19,7 @@ extern "C" {
   QlOneFactorAffineModel* qlCoxIngersollRoss(double r0, double theta, double k, double sigma, char **e);
   QlOneFactorAffineModel* qlExtendedCoxIngersollRoss(QlYieldTermStructure* termStructure, double theta, double k, double sigma, double x0, char **e);
   QlG2* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e);
-  QlShortRateModel* qlGeneralizedHullWhite1(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e);
-//  QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, char **e);
+  QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e);
   QlGJRGARCHModel* qlGJRGARCHModel(QlGJRGARCHProcess* process, char **e);
   QlHestonModel* qlHestonModel(QlHestonProcess* process, char **e);
   QlHullWhite* qlHullWhite(QlYieldTermStructure* termStructure, double a, double sigma, char **e);
