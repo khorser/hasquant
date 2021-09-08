@@ -74,6 +74,8 @@ module QuantLib.Internal.Enum
   , withLmCorrelationModel
   , withLmVolatilityModel
 
+  , TimeUnit(..)
+
   -- remove these two exports once QlClaim migrated here
   , EnumMeta(..)
   , withEnumType
@@ -93,6 +95,9 @@ import Foreign.C.Types
 
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
+
+-- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
+{#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
 
 {#enum ApproximationType{} add prefix="Approximation" deriving(Show, Eq)#}
 

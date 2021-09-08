@@ -74,7 +74,6 @@ import QuantLib.Internal.TermStructure(withYieldTermStructure)
 {#import QuantLib.Quote#}()
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(TimeUnit)
 import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"

@@ -73,7 +73,7 @@ import QuantLib.Internal.Index
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(TimeUnit, Frequency)
+{#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.TermStructure#}
 import{-# SOURCE #-} QuantLib.Instrument.Bond(Bond)
 import{-# SOURCE #-} QuantLib.Instrument.Swap(VanillaSwap, OvernightIndexedSwap)

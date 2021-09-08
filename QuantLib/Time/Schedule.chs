@@ -32,6 +32,7 @@ import QuantLib.Time.Date
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
+import QuantLib.Internal.Enum(TimeUnit(..))
 import QuantLib.Internal.CalendarEnum
 
 #include "qlTypesC2HS.h"
@@ -71,8 +72,6 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 
 -- |returns the dates for the given Schedule object
 {#fun qlScheduleDates as dates{withSchedule*`Schedule', preArray-`[Day]'&peekDayArray*}->`()'#}
-
-{#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
 
 {#enum Frequency{} deriving(Show, Eq, Bounded)#}
 

@@ -74,7 +74,7 @@ import QuantLib.Internal
 {#import QuantLib.Process#}
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
-{#import QuantLib.Time.Schedule#}(TimeUnit, Frequency)
+{#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Type
 {#import QuantLib.Index.InterestRate#}
 import QuantLib.Internal.Index

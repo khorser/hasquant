@@ -38,7 +38,7 @@ import QuantLib.Internal
 {#import QuantLib.Quote#}()
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency, TimeUnit)
+{#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
 {#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.TermStructure
 {#import QuantLib.TermStructure#}

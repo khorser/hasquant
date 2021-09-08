@@ -146,7 +146,6 @@ import QuantLib.Internal
 import QuantLib.Internal.TermStructure
 {#import QuantLib.Process#}(GeneralizedBlackScholesProcess, HestonProcess, BlackProcess, HybridHestonHullWhiteProcess, VarianceGammaProcess, HestonProcess, Merton76Process, GJRGARCHProcess)
 {#import QuantLib.Model#}
-{#import QuantLib.Time.Schedule#}(TimeUnit)
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)

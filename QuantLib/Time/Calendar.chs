@@ -24,7 +24,7 @@ module QuantLib.Time.Calendar
 import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Date#}(Weekday)
-import{-# SOURCE #-} QuantLib.Time.Schedule(TimeUnit)
+import QuantLib.Internal.Enum(TimeUnit)
 import QuantLib.Internal.CalendarEnum
 
 #include "qlTypesC2HS.h"
