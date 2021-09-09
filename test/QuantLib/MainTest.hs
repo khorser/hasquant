@@ -1448,14 +1448,14 @@ main = do
 
     --describe "Equity option example (LONG)" $
     --  it "check values" $ do
-    --    (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int {-fd-} _mc) <- Settings.keepingSettings' EquityOptionExample.run
+    --    (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd _mc) <- Settings.keepingSettings' EquityOptionExample.run
     --    analyticEuro   `shouldSatisfy` listClose id [3.844308] 1.0e-6
     --    analyticHeston `shouldSatisfy` listClose id [3.844306] 1.0e-6
     --    bates          `shouldSatisfy` listClose id [3.844306] 1.0e-6
     --    baw            `shouldSatisfy` listClose id [4.459628] 1.0e-6
     --    bjs            `shouldSatisfy` listClose id [4.453064] 1.0e-6
     --    int            `shouldSatisfy` listClose id [3.844309] 1.0e-6
-    --    --fd `shouldSatisfy` listClose id [3.844342, 4.360807, 4.486118] 1.0e-6
+    --    fd `shouldSatisfy` listClose id [3.844342, 4.360807, 4.486118] 1.0e-6
     --    -- FIXME mc `shouldSatisfy` listClose id [3.834522, 3.844613, 4.481675] 1.0e-6
     --    (head bin) `shouldSatisfy` listClose id [3.844132, 4.361174, 4.486552] 1.0e-6
     --    (bin!!1)   `shouldSatisfy` listClose id [3.843504, 4.360861, 4.486415] 1.0e-6

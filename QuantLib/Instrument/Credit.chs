@@ -84,7 +84,7 @@ claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
 {#fun qlCdsOptionAtmRate as atmRate{withObject*`CdsOption', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#pointer *QlExercise foreign newtype nocode#}
-{#fun qlCdsOption as cdsOption{`CreditDefaultSwap', withEnumObject*`Exercise',`Bool', preErrorCheck-`String'errorCheck*-}->`CdsOption'peekObject*#}
+{#fun qlCdsOption as cdsOption{`CreditDefaultSwap', withExercise*`Exercise',`Bool', preErrorCheck-`String'errorCheck*-}->`CdsOption'peekObject*#}
 
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility{withObject*`CdsOption',`Double', withObject*`YieldTermStructure', withObject*`DefaultProbabilityTermStructure',`Double',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 

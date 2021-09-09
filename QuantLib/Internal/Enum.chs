@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to exposure so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
@@ -75,6 +74,17 @@ module QuantLib.Internal.Enum
   , withLmVolatilityModel
 
   , TimeUnit(..)
+
+  , withEuropeanExercise
+  , withSwingExercise
+  , withBermudanExercise
+  , withExercise
+  , withPercentageStrikePayoff
+  , withPlainVanillaPayoff
+  , withStrikedPayoff
+  , withTypePayoff
+  , withBasketPayoff
+  , withPayoff
 
   -- remove these two exports once QlClaim migrated here
   , EnumMeta(..)
@@ -182,21 +192,14 @@ instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExercise
 
 
 data EuropeanExercise = EuropeanExercise Day
-instance EnumObject EuropeanExercise QlEuropeanExercise where toObject (EuropeanExercise d) = qlEuropeanExercise d
 
 data SwingExercise = 
     SwingListExercise [(Day, Word)] -- ^(dates, seconds)
     | SwingIntervalExercise Day Day Word -- ^stepSizeSecs
-instance EnumObject SwingExercise QlSwingExercise where
-  toObject (SwingListExercise ds) = uncurry qlSwingExercise (unzip ds)
-  toObject (SwingIntervalExercise d1 d2 s) = qlSwingExercise1 d1 d2 s
 
 data BermudanExercise =
     BermudanExercise [Day] Bool
     | Swing SwingExercise
-instance EnumObject BermudanExercise QlBermudanExercise where
-  toObject (BermudanExercise d p) = qlBermudanExercise d p
-  toObject (Swing e) = toObject e >>= qlSwingExerciseAsBermudanExercise
 
 {#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
 
@@ -225,10 +228,8 @@ exercise (AmericanExercise Nothing d p) = qlAmericanExercise1 d p >>= asQlExerci
 exercise (AmericanExercise (Just d0) d p) = qlAmericanExercise d0 d p >>= asQlExercise
 exercise (Early t p) = qlEarlyExercise t p
 exercise (Vanilla t) = qlExercise t
-exercise (European e) = toObject e >>= asQlExercise
-exercise (Bermudan e) = toObject e >>= asQlExercise
-
-instance EnumObject Exercise QlExercise where toObject = exercise
+exercise (European e) = getMeta' europeanExerciseMeta e >>= asQlExercise
+exercise (Bermudan e) = getMeta' bermudanExerciseMeta e >>= asQlExercise
 
 {#enum OptionType{} deriving (Show, Eq)#}
 
@@ -239,12 +240,10 @@ instance EnumObject Exercise QlExercise where toObject = exercise
 data PercentageStrikePayoff = PercentageStrikePayoff
       OptionType -- ^type
       Double -- ^moneyness
-instance EnumObject PercentageStrikePayoff QlPercentageStrikePayoff where toObject (PercentageStrikePayoff t m) = qlPercentageStrikePayoff t m
 
 data PlainVanillaPayoff = PlainVanillaPayoff
       OptionType -- ^type
       Double -- ^strike
-instance EnumObject PlainVanillaPayoff QlPlainVanillaPayoff where toObject (PlainVanillaPayoff t s) = qlPlainVanillaPayoff t s
 
 data StrikedPayoff =
   AssetOrNothing
@@ -267,14 +266,13 @@ data StrikedPayoff =
       Double -- ^strike
       Double -- ^secondStrike
       Double -- ^cashPayoff
-instance EnumObject StrikedPayoff QlStrikedTypePayoff where toObject = strikedPayoff
 
 strikedPayoff :: StrikedPayoff -> IO QlStrikedTypePayoff
 strikedPayoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s
 strikedPayoff (CashOrNothing t s c) = qlCashOrNothingPayoff t s c
 strikedPayoff (Gap t s ss) = qlGapPayoff t s ss
-strikedPayoff (PercentageStrike p) = toObject p >>= qlPercentageStrikePayoffAsStrikedTypePayoff
-strikedPayoff (PlainVanilla p) = toObject p >>= qlPlainVanillaPayoffAsStrikedTypePayoff
+strikedPayoff (PercentageStrike p) = getMeta' percentageStrikePayoffMeta p >>= qlPercentageStrikePayoffAsStrikedTypePayoff
+strikedPayoff (PlainVanilla p) = getMeta' plainVanillaPayoffMeta p >>= qlPlainVanillaPayoffAsStrikedTypePayoff
 strikedPayoff (SuperFund s ss) = qlSuperFundPayoff s ss
 strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
 
@@ -282,9 +280,6 @@ data TypePayoff =
   Striked StrikedPayoff
   | Floating
       OptionType -- ^type
-instance EnumObject TypePayoff QlTypePayoff where
-  toObject (Striked p) = toObject p >>= qlStrikedTypePayoffAsTypePayoff
-  toObject (Floating t) = qlFloatingTypePayoff t
 
 data BasketPayoff =
     Average
@@ -299,7 +294,6 @@ data BasketPayoff =
       Payoff -- ^p
   | Spread
       Payoff -- ^p
-instance EnumObject BasketPayoff QlBasketPayoff where toObject = basketPayoff
 
 basketPayoff (Average p n) = payoff p >>= (`qlAverageBasketPayoff` n)
 basketPayoff (AverageMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a)
@@ -451,8 +445,6 @@ instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoff
 {#fun qlSuperSharePayoff{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
 {#fun qlAverageBasketPayoff1{`QlPayoff', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
 
-instance EnumObject Payoff QlPayoff where toObject = payoff
-
 payoff :: Payoff -> IO QlPayoff
 payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (ForwardType t s) = qlForwardTypePayoff t s
@@ -462,8 +454,8 @@ payoff (Ratchet g1 g2 s1 s2 i a) = qlRatchetPayoff g1 g2 s1 s2 i a
 payoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
 payoff (Sticky g1 g2 s1 s2 i a) = qlStickyPayoff g1 g2 s1 s2 i a
-payoff (Type s) = toObject s >>= asQlPayoff
-payoff (Basket b) = toObject b >>= asQlPayoff
+payoff (Type s) = getMeta' typedPayoffMeta s >>= asQlPayoff
+payoff (Basket b) = getMeta' basketPayoffMeta b >>= asQlPayoff
 
 data Callability =
   Soft
@@ -490,7 +482,7 @@ callability :: Callability -> IO (SimpleType CQlCallability)
 callability (Soft p t d tg) = qlSoftCallability p t d tg
 callability (Callability p t ct d) = qlCallability p t ct d
 
-newtype EnumMeta a b = EnumMeta (a -> IO (SimpleType b)) 
+newtype EnumMeta a b = EnumMeta (a -> IO (SimpleType b))
 
 withEnumType :: EnumMeta a b -> a -> (Ptr b -> IO c) -> IO c
 withEnumType (EnumMeta t) x f = t x >>= (`withSimpleType` f)
@@ -551,6 +543,77 @@ optimizationMethodMeta = EnumMeta optimizationMethod
 
 withOptimizationMethod :: OptimizationMethod -> (Ptr COptimizationMethod -> IO a) -> IO a
 withOptimizationMethod = withEnumType optimizationMethodMeta
+
+-- temp solution just to get rid of the EnumObject multiparam type class
+newtype EnumMeta' a b = EnumMeta' {getMeta' :: a -> IO b}
+withEnumType' :: (ForeignObject b) => EnumMeta' a b -> a -> (Ptr b -> IO c) -> IO c
+withEnumType' (EnumMeta' t) x f = t x >>= (`withObject` f)
+
+europeanExerciseMeta :: EnumMeta' EuropeanExercise QlEuropeanExercise
+europeanExerciseMeta = EnumMeta' (\(EuropeanExercise d) -> qlEuropeanExercise d)
+
+swingExerciseMeta :: EnumMeta' SwingExercise QlSwingExercise 
+swingExerciseMeta = EnumMeta' (\x -> case x of
+  SwingListExercise ds -> uncurry qlSwingExercise (unzip ds)
+  SwingIntervalExercise d1 d2 s -> qlSwingExercise1 d1 d2 s)
+
+bermudanExerciseMeta :: EnumMeta' BermudanExercise QlBermudanExercise
+bermudanExerciseMeta = EnumMeta' (\x -> case x of
+  BermudanExercise d p -> qlBermudanExercise d p
+  Swing e -> getMeta' swingExerciseMeta e >>= qlSwingExerciseAsBermudanExercise)
+
+exerciseMeta :: EnumMeta' Exercise QlExercise
+exerciseMeta = EnumMeta' exercise
+
+percentageStrikePayoffMeta :: EnumMeta' PercentageStrikePayoff QlPercentageStrikePayoff
+percentageStrikePayoffMeta = EnumMeta' (\(PercentageStrikePayoff t m) -> qlPercentageStrikePayoff t m)
+
+plainVanillaPayoffMeta :: EnumMeta' PlainVanillaPayoff QlPlainVanillaPayoff
+plainVanillaPayoffMeta = EnumMeta' (\(PlainVanillaPayoff t s) -> qlPlainVanillaPayoff t s)
+
+strikedPayoffMeta :: EnumMeta' StrikedPayoff QlStrikedTypePayoff
+strikedPayoffMeta = EnumMeta' strikedPayoff
+
+typedPayoffMeta :: EnumMeta' TypePayoff QlTypePayoff
+typedPayoffMeta = EnumMeta' (\x -> case x of
+  Striked p -> getMeta' strikedPayoffMeta p >>= qlStrikedTypePayoffAsTypePayoff
+  Floating t -> qlFloatingTypePayoff t)
+
+basketPayoffMeta :: EnumMeta' BasketPayoff QlBasketPayoff
+basketPayoffMeta = EnumMeta' basketPayoff
+
+payoffMeta :: EnumMeta' Payoff QlPayoff
+payoffMeta = EnumMeta' payoff
+
+withEuropeanExercise :: EuropeanExercise -> (Ptr QlEuropeanExercise -> IO a) -> IO a
+withEuropeanExercise = withEnumType' europeanExerciseMeta
+
+withSwingExercise :: SwingExercise -> (Ptr QlSwingExercise -> IO a) -> IO a
+withSwingExercise = withEnumType' swingExerciseMeta 
+
+withBermudanExercise :: BermudanExercise -> (Ptr QlBermudanExercise -> IO a) -> IO a
+withBermudanExercise = withEnumType' bermudanExerciseMeta
+
+withExercise :: Exercise -> (Ptr QlExercise -> IO a) -> IO a
+withExercise = withEnumType' exerciseMeta
+
+withPercentageStrikePayoff :: PercentageStrikePayoff -> (Ptr QlPercentageStrikePayoff -> IO a) -> IO a
+withPercentageStrikePayoff = withEnumType' percentageStrikePayoffMeta
+
+withPlainVanillaPayoff :: PlainVanillaPayoff -> (Ptr QlPlainVanillaPayoff -> IO a) -> IO a
+withPlainVanillaPayoff = withEnumType' plainVanillaPayoffMeta
+
+withStrikedPayoff :: StrikedPayoff -> (Ptr QlStrikedTypePayoff -> IO a) -> IO a
+withStrikedPayoff = withEnumType' strikedPayoffMeta
+
+withTypePayoff :: TypePayoff -> (Ptr QlTypePayoff -> IO a) -> IO a
+withTypePayoff = withEnumType' typedPayoffMeta
+
+withBasketPayoff :: BasketPayoff -> (Ptr QlBasketPayoff -> IO a) -> IO a
+withBasketPayoff = withEnumType' basketPayoffMeta
+
+withPayoff :: Payoff -> (Ptr QlPayoff -> IO a) -> IO a
+withPayoff = withEnumType' payoffMeta
 
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability{`Double',`BondPriceType', withDay*`Day',`Double', preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}

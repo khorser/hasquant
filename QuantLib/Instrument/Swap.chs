@@ -166,7 +166,7 @@ swap' = (uncurry qlSwap1) . unzip
 
 {#fun qlSwapStartDiscounts as startDiscounts{`Swap', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwaption as swaption{`VanillaSwap', withEnumObject*`Exercise',`SettlementType', preErrorCheck-`String'errorCheck*-}->`Swaption'#}
+{#fun qlSwaption as swaption{`VanillaSwap', withExercise*`Exercise',`SettlementType', preErrorCheck-`String'errorCheck*-}->`Swaption'#}
 
 -- AssetSwap
 {#fun qlAssetSwap1 as assetSwap'{`Bool', withObject*`Bond',`Double',`Double',`Double',`IborIndex',`Double', withDayCounter*`DayCounter', withMaybeDay*`Maybe Day',`Bool', preErrorCheck-`String'errorCheck*-}->`AssetSwap'#}
