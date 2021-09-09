@@ -179,8 +179,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 -- |dirty price given a yield and settlement date
 {#fun qlBondDirtyPrice1 as dirtyPriceFromYield{`Bond',`Double', withDayCounter*`DayCounter',`Compounding',`Frequency', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBondNextCashFlowDate as 
-nextCashFlowDate{`Bond', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
+{#fun qlBondNextCashFlowDate as nextCashFlowDate{`Bond', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
 
 -- |Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.The current bond settlement is used if no date is given.
 {#fun qlBondNextCouponRate as nextCouponRate{`Bond', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Double'#}

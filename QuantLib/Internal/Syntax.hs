@@ -31,7 +31,7 @@ stripPrefix x = if length res < 2
 -- NB I use prefixes separated from the main entry with underscore, in final enum they are stripped off
 -- the function will build Australia | UnitedStatesNYSE | UnitedStatesSettlement
 -- initially I constructed calendars with Australia | ...| UnitedStates UnitedStatesMarket where UnitedStatesMarket = NYSE | Settlement
--- but too many country calendars contain Settlement and UnitedStates UnitedStatesSettlement 
+-- but too many country calendars contain Settlement and UnitedStates UnitedStatesSettlement
 -- (or Actual365Fixed Actual365FixedStandard) looks really awful
 mergeEnums :: String -> String -> Name -> String -> Name -> DecsQ
 mergeEnums resName mapper mainEnum subSuffix extra = do

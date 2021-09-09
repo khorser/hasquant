@@ -83,7 +83,7 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 
 {#fun qlPeriodParserParse1 as parse{`String', preEnum-`TimeUnit'peekEnum*, preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
 
-{#fun qlPeriodAdd1 as addPeriods{fromEnumQuantity`Int, TimeUnit'&, fromEnumQuantity`Int, TimeUnit'&, preEnum-`TimeUnit'peekEnum*, preErrorCheck-`String'errorCheck*-}->`Int'#} 
+{#fun qlPeriodAdd1 as addPeriods{fromEnumQuantity`Int, TimeUnit'&, fromEnumQuantity`Int, TimeUnit'&, preEnum-`TimeUnit'peekEnum*, preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 add :: (Int, TimeUnit) -> (Int, TimeUnit) -> IO (Int, TimeUnit)
 add = addPeriods

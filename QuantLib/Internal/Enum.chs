@@ -193,7 +193,7 @@ instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExercise
 
 data EuropeanExercise = EuropeanExercise Day
 
-data SwingExercise = 
+data SwingExercise =
     SwingListExercise [(Day, Word)] -- ^(dates, seconds)
     | SwingIntervalExercise Day Day Word -- ^stepSizeSecs
 
@@ -552,7 +552,7 @@ withEnumType' (EnumMeta' t) x f = t x >>= (`withObject` f)
 europeanExerciseMeta :: EnumMeta' EuropeanExercise QlEuropeanExercise
 europeanExerciseMeta = EnumMeta' (\(EuropeanExercise d) -> qlEuropeanExercise d)
 
-swingExerciseMeta :: EnumMeta' SwingExercise QlSwingExercise 
+swingExerciseMeta :: EnumMeta' SwingExercise QlSwingExercise
 swingExerciseMeta = EnumMeta' (\x -> case x of
   SwingListExercise ds -> uncurry qlSwingExercise (unzip ds)
   SwingIntervalExercise d1 d2 s -> qlSwingExercise1 d1 d2 s)
@@ -589,7 +589,7 @@ withEuropeanExercise :: EuropeanExercise -> (Ptr QlEuropeanExercise -> IO a) -> 
 withEuropeanExercise = withEnumType' europeanExerciseMeta
 
 withSwingExercise :: SwingExercise -> (Ptr QlSwingExercise -> IO a) -> IO a
-withSwingExercise = withEnumType' swingExerciseMeta 
+withSwingExercise = withEnumType' swingExerciseMeta
 
 withBermudanExercise :: BermudanExercise -> (Ptr QlBermudanExercise -> IO a) -> IO a
 withBermudanExercise = withEnumType' bermudanExerciseMeta
@@ -647,7 +647,7 @@ fittingMethod Svensson = qlSvenssonFitting
 
 {#enum FdmSchemeType{} deriving(Show, Eq)#}
 
-data FdmScheme = 
+data FdmScheme =
   FdmScheme
     FdmSchemeType -- ^type
     Double -- ^theta
@@ -714,7 +714,7 @@ optimizationMethod (Simplex l) = qlSimplex l
 {#fun qlLevenbergMarquardt{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
 {#fun qlSimplex{`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
 
-data EndCriteria = 
+data EndCriteria =
   EndCriteria
     Word -- ^maxIterations
     Word -- ^maxStationaryStateIterations
