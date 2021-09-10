@@ -70,103 +70,44 @@ module QuantLib.Model
 
 import QuantLib.Type
 import QuantLib.Internal
-{#import QuantLib.Process#}
-{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
-import QuantLib.Internal.TermStructure
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Type
-{#import QuantLib.Index.InterestRate#}
-import QuantLib.Internal.Index
 import QuantLib.Internal.Enum
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
 
 {#enum CalibrationErrorType{} deriving(Show, Eq)#}
 
-{#pointer *QlGJRGARCHModel as GJRGARCHModel foreign finalizer qlFreeGJRGARCHModel newtype#}
-instance ForeignObject GJRGARCHModel where
-  withObject = withGJRGARCHModel
-  constructor = GJRGARCHModel
-  finalizer = qlFreeGJRGARCHModel
+{#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel nocode#}
 
-{#pointer *QlHestonModel as HestonModel foreign finalizer qlFreeHestonModel newtype#}
-instance ForeignObject HestonModel where
-  withObject = withHestonModel
-  constructor = HestonModel
-  finalizer = qlFreeHestonModel
+{#pointer *QlHestonModel as HestonModel foreign -> CHestonModel nocode#}
 
-{#pointer *QlBatesModel as BatesModel foreign finalizer qlFreeBatesModel newtype#}
-instance ForeignObject BatesModel where
-  withObject = withBatesModel
-  constructor = BatesModel
-  finalizer = qlFreeBatesModel
+{#pointer *QlBatesModel as BatesModel foreign -> CBatesModel nocode#}
 
-{#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign finalizer qlFreePiecewiseTimeDependentHestonModel newtype#}
-instance ForeignObject PiecewiseTimeDependentHestonModel where
-  withObject = withPiecewiseTimeDependentHestonModel
-  constructor = PiecewiseTimeDependentHestonModel
-  finalizer = qlFreePiecewiseTimeDependentHestonModel
+{#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel nocode#}
 
-{#pointer *QlShortRateModel as ShortRateModel foreign finalizer qlFreeShortRateModel newtype#}
-instance ForeignObject ShortRateModel where
-  withObject = withShortRateModel
-  constructor = ShortRateModel
-  finalizer = qlFreeShortRateModel
+{#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel nocode#}
 
-{#pointer *QlAffineModel as AffineModel foreign finalizer qlFreeAffineModel newtype#}
-instance ForeignObject AffineModel where
-  withObject = withAffineModel
-  constructor = AffineModel
-  finalizer = qlFreeAffineModel
+{#pointer *QlAffineModel as AffineModel foreign -> CAffineModel nocode#}
 
-{#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign finalizer qlFreeOneFactorAffineModel newtype#}
-instance ForeignObject OneFactorAffineModel where
-  withObject = withOneFactorAffineModel
-  constructor = OneFactorAffineModel
-  finalizer = qlFreeOneFactorAffineModel
+{#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel nocode#}
 
-{#pointer *QlLiborForwardModel as LiborForwardModel foreign finalizer qlFreeLiborForwardModel newtype#}
-instance ForeignObject LiborForwardModel where
-  withObject = withLiborForwardModel
-  constructor = LiborForwardModel
-  finalizer = qlFreeLiborForwardModel
+{#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel nocode#}
 
-{#pointer *QlHullWhite as HullWhite foreign finalizer qlFreeHullWhite newtype#}
-instance ForeignObject HullWhite where
-  withObject = withHullWhite
-  constructor = HullWhite
-  finalizer = qlFreeHullWhite
+{#pointer *QlHullWhite as HullWhite foreign -> CHullWhite nocode#}
 
-{#pointer *QlCalibratedModel as CalibratedModel foreign finalizer qlFreeCalibratedModel newtype#}
-instance ForeignObject CalibratedModel where
-  withObject = withCalibratedModel
-  constructor = CalibratedModel
-  finalizer = qlFreeCalibratedModel
+{#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel nocode#}
 
-{#pointer *QlG2 as G2 foreign finalizer qlFreeG2 newtype#}
-instance ForeignObject G2 where
-  withObject = withG2
-  constructor = G2
-  finalizer = qlFreeG2
+{#pointer *QlG2 as G2 foreign -> CG2 nocode#}
 
-{#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign finalizer qlFreeBatesDetJumpModel newtype#}
-instance ForeignObject BatesDetJumpModel where
-  withObject = withBatesDetJumpModel
-  constructor = BatesDetJumpModel
-  finalizer = qlFreeBatesDetJumpModel
+{#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel nocode#}
 
-{#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign finalizer qlFreeBatesDoubleExpDetJumpModel newtype#}
-instance ForeignObject BatesDoubleExpDetJumpModel where
-  withObject = withBatesDoubleExpDetJumpModel
-  constructor = BatesDoubleExpDetJumpModel
-  finalizer = qlFreeBatesDoubleExpDetJumpModel
+{#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel nocode#}
 
-{#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign finalizer qlFreeBatesDoubleExpModel newtype#}
-instance ForeignObject BatesDoubleExpModel where
-  withObject = withBatesDoubleExpModel
-  constructor = BatesDoubleExpModel
-  finalizer = qlFreeBatesDoubleExpModel
+{#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel nocode#}
 
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper nocode#}
@@ -192,60 +133,78 @@ asBatesModel = cast
 asBatesDoubleExpModel :: (a`Derives` BatesDoubleExpModel) => a -> IO BatesDoubleExpModel
 asBatesDoubleExpModel = cast
 
-{#fun qlOneFactorAffineModelAsAffineModel{`OneFactorAffineModel'}->`AffineModel'#}
-{#fun qlLiborForwardModelAsAffineModel{`LiborForwardModel'}->`AffineModel'#}
+{#fun qlOneFactorAffineModelAsAffineModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`AffineModel'peekAffineModel*#}
+{#fun qlLiborForwardModelAsAffineModel{withLiborForwardModel*`LiborForwardModel'}->`AffineModel'peekAffineModel*#}
 instance HullWhite`Derives` OneFactorAffineModel where cast = qlHullWhiteAsOneFactorAffineModel
-{#fun qlHullWhiteAsOneFactorAffineModel{`HullWhite'}->`OneFactorAffineModel'#}
-{#fun qlG2AsAffineModel{`G2'}->`AffineModel'#}
-{#fun qlG2AsShortRateModel{`G2'}->`ShortRateModel'#}
+{#fun qlHullWhiteAsOneFactorAffineModel{withHullWhite*`HullWhite'}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+{#fun qlG2AsAffineModel{withG2*`G2'}->`AffineModel'peekAffineModel*#}
+{#fun qlG2AsShortRateModel{withG2*`G2'}->`ShortRateModel'peekShortRateModel*#}
 instance G2`Derives` ShortRateModel where cast = qlG2AsShortRateModel
 instance BatesDetJumpModel`Derives` BatesModel where cast = qlBatesDetJumpModelAsBatesModel
-{#fun qlBatesDetJumpModelAsBatesModel{`BatesDetJumpModel'}->`BatesModel'#}
+{#fun qlBatesDetJumpModelAsBatesModel{withBatesDetJumpModel*`BatesDetJumpModel'}->`BatesModel'peekBatesModel*#}
 instance BatesDoubleExpDetJumpModel`Derives` BatesDoubleExpModel where cast = qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
-{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel{`BatesDoubleExpDetJumpModel'}->`BatesDoubleExpModel'#}
-{#fun qlBatesDoubleExpModelAsHestonModel{`BatesDoubleExpModel'}->`HestonModel'#}
+{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel'}->`BatesDoubleExpModel'peekBatesDoubleExpModel*#}
+{#fun qlBatesDoubleExpModelAsHestonModel{withBatesDoubleExpModel*`BatesDoubleExpModel'}->`HestonModel'peekHestonModel*#}
 instance BatesDoubleExpModel`Derives` HestonModel where cast = qlBatesDoubleExpModelAsHestonModel
-{#fun qlGJRGARCHModelAsCalibratedModel{`GJRGARCHModel'}->`CalibratedModel'#}
+{#fun qlGJRGARCHModelAsCalibratedModel{withGJRGARCHModel*`GJRGARCHModel'}->`CalibratedModel'peekCalibratedModel*#}
 instance GJRGARCHModel`Derives` CalibratedModel where cast = qlGJRGARCHModelAsCalibratedModel
-{#fun qlHestonModelAsCalibratedModel{`HestonModel'}->`CalibratedModel'#}
+{#fun qlHestonModelAsCalibratedModel{withHestonModel*`HestonModel'}->`CalibratedModel'peekCalibratedModel*#}
 instance HestonModel`Derives` CalibratedModel where cast = qlHestonModelAsCalibratedModel
-{#fun qlBatesModelAsHestonModel{`BatesModel'}->`HestonModel'#}
+{#fun qlBatesModelAsHestonModel{withBatesModel*`BatesModel'}->`HestonModel'peekHestonModel*#}
 instance BatesModel`Derives` HestonModel where cast = qlBatesModelAsHestonModel
-{#fun qlLiborForwardModelAsCalibratedModel{`LiborForwardModel'}->`CalibratedModel'#}
+{#fun qlLiborForwardModelAsCalibratedModel{withLiborForwardModel*`LiborForwardModel'}->`CalibratedModel'peekCalibratedModel*#}
 instance LiborForwardModel`Derives` CalibratedModel where cast = qlLiborForwardModelAsCalibratedModel
-{#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel{`PiecewiseTimeDependentHestonModel'}->`CalibratedModel'#}
+{#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel{withPiecewiseTimeDependentHestonModel*`PiecewiseTimeDependentHestonModel'}->`CalibratedModel'peekCalibratedModel*#}
 instance PiecewiseTimeDependentHestonModel`Derives` CalibratedModel where cast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
-{#fun qlShortRateModelAsCalibratedModel{`ShortRateModel'}->`CalibratedModel'#}
+{#fun qlShortRateModelAsCalibratedModel{withShortRateModel*`ShortRateModel'}->`CalibratedModel'peekCalibratedModel*#}
 instance ShortRateModel`Derives` CalibratedModel where cast = qlShortRateModelAsCalibratedModel
-{#fun qlOneFactorAffineModelAsShortRateModel{`OneFactorAffineModel'}->`ShortRateModel'#}
+{#fun qlOneFactorAffineModelAsShortRateModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`ShortRateModel'peekShortRateModel*#}
 instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
 
-{#fun qlBatesModel as batesModel{withObject*`BatesProcess', preErrorCheck-`String'errorCheck*-}->`BatesModel'#}
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess nocode#}
+{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D nocode#}
+{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
+{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess nocode#}
+{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess nocode#}
+{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess nocode#}
+{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess nocode#}
+{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess nocode#}
+{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess nocode#}
+{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess nocode#}
+{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess nocode#}
+{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess nocode#}
+{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray nocode#}
+{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess nocode#}
+{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process nocode#}
+{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess nocode#}
+{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
 
-{#fun qlBlackKarasinski as blackKarasinski{`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`ShortRateModel'#}
+{#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess', preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 
-{#fun qlCoxIngersollRoss as coxIngersollRoss{`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'#}
+{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 
-{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{`YieldTermStructure',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'#}
+{#fun qlCoxIngersollRoss as coxIngersollRoss{`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
-{#fun qlG2 as g2{`YieldTermStructure',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`G2'#}
+{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
-{#fun qlGeneralizedHullWhite as generalizedHullWhite{`YieldTermStructure', withDayArray*`[Day]'&, withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`ShortRateModel'#}
+{#fun qlG2 as g2{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
 
-{#fun qlGJRGARCHModel as gJRGARCHModel{withObject*`GJRGARCHProcess', preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'#}
+{#fun qlGeneralizedHullWhite as generalizedHullWhite{withYieldTermStructure*`YieldTermStructure', withDayArray*`[Day]'&, withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 
-{#fun qlHestonModel as hestonModel{withObject*`HestonProcess', preErrorCheck-`String'errorCheck*-}->`HestonModel'#}
+{#fun qlGJRGARCHModel as gJRGARCHModel{withGJRGARCHProcess*`GJRGARCHProcess', preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
 
-{#fun qlHullWhite as hullWhite{`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhite'#}
+{#fun qlHestonModel as hestonModel{withHestonProcess*`HestonProcess', preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
 
-{#fun qlVarianceGammaModel as varianceGammaModel{withObject*`VarianceGammaProcess', preErrorCheck-`String'errorCheck*-}->`CalibratedModel'#}
+{#fun qlHullWhite as hullWhite{withYieldTermStructure*`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
 
-{#fun qlVasicek as vasicek{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'#}
+{#fun qlVarianceGammaModel as varianceGammaModel{withVarianceGammaProcess*`VarianceGammaProcess', preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
+
+{#fun qlVasicek as vasicek{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
-{#fun qlLiborForwardModel as liborForwardModel{withObject*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'#}
+{#fun qlLiborForwardModel as liborForwardModel{withLiborForwardModelProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
@@ -254,19 +213,19 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -> OptimizationMethod -> EndCriteria -> Maybe Constraint -> IO ()
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
-{#fun qlCalibratedModelCalibrate{`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withOptimizationMethod*`OptimizationMethod', withEndCriteria*`EndCriteria', withMaybeConstraint*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelCalibrate{withCalibratedModel*`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withOptimizationMethod*`OptimizationMethod', withEndCriteria*`EndCriteria', withMaybeConstraint*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlCapHelper as capHelper{fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex',`Frequency', withDayCounter*`DayCounter',`Bool',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlCapHelper as capHelper{fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`IborIndex',`Frequency', withDayCounter*`DayCounter',`Bool',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
-{#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word, TimeUnit)'&, withCalendar*`Calendar',`Double',`Double', withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word, TimeUnit)'&, withCalendar*`Calendar',`Double',`Double', withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 -- TODO add more parameters and more SwaptionHelper constructors
-{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',`IborIndex', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`IborIndex', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 {#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`BlackCalibrationHelper', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Returns array of arguments on which calibration is done.
-{#fun qlCalibratedModelParams as params{`CalibratedModel', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelParams as params{withCalibratedModel*`CalibratedModel', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black price given a volatility.
 {#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}

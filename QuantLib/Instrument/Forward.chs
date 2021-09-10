@@ -25,13 +25,8 @@ import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
-{#import QuantLib.Index.InterestRate#}(IborIndex)
-{#import QuantLib.Instrument.Bond#}(FixedRateBond)
-{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Index
 {#import QuantLib.InterestRate#}
-import QuantLib.Internal.TermStructure
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -39,63 +34,54 @@ import QuantLib.Internal.TermStructure
 
 #include "ql.h"
 
-{#pointer *QlForward as Forward foreign finalizer qlFreeForward newtype#}
-instance ForeignObject Forward where
-  withObject = withForward
-  constructor = Forward
-  finalizer=qlFreeForward
+{#pointer *QlForward as Forward foreign -> CForward nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond nocode#}
 
-{#fun qlForwardAsInstrument{`Forward'}->`Instrument'peekObject*#}
+{#fun qlForwardAsInstrument{withForward*`Forward'}->`Instrument'peekInstrument*#}
 instance Forward`Derives` Instrument where cast = qlForwardAsInstrument
 
 asForward :: (a`Derives` Forward) => a -> IO Forward
 asForward = cast
 
-{#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign finalizer qlFreeForwardRateAgreement newtype#}
-instance ForeignObject ForwardRateAgreement where
-  withObject = withForwardRateAgreement
-  constructor = ForwardRateAgreement
-  finalizer=qlFreeForwardRateAgreement
+{#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign -> CForwardRateAgreement nocode#}
 
-{#fun qlForwardRateAgreementAsForward{`ForwardRateAgreement'}->`Forward'#}
+{#fun qlForwardRateAgreementAsForward{withForwardRateAgreement*`ForwardRateAgreement'}->`Forward'peekForward*#}
 instance ForwardRateAgreement`Derives` Forward where cast = qlForwardRateAgreementAsForward
 
-{#pointer *QlFixedRateBondForward as FixedRateBondForward foreign finalizer qlFreeFixedRateBondForward newtype#}
-instance ForeignObject FixedRateBondForward where
-  withObject = withFixedRateBondForward
-  constructor = FixedRateBondForward
-  finalizer=qlFreeFixedRateBondForward
+{#pointer *QlFixedRateBondForward as FixedRateBondForward foreign -> CFixedRateBondForward nocode#}
 
-{#fun qlFixedRateBondForwardAsForward{`FixedRateBondForward'}->`Forward'#}
+{#fun qlFixedRateBondForwardAsForward{withFixedRateBondForward*`FixedRateBondForward'}->`Forward'peekForward*#}
 instance FixedRateBondForward`Derives` Forward where cast = qlFixedRateBondForwardAsForward
 
-{#fun qlForwardRateAgreement as forwardRateAgreement{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double',`Double',`IborIndex', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'#}
+{#fun qlForwardRateAgreement as forwardRateAgreement{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double',`Double',withIborIndex*`IborIndex', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'peekForwardRateAgreement*#}
 
 -- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
-{#fun qlFixedRateBondForward as fixedRateBondForward{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double', fromIntegral`Word', withDayCounter*`DayCounter', withCalendar*`Calendar',`BusinessDayConvention', withObject*`FixedRateBond', withMaybeObject*`Maybe YieldTermStructure', withMaybeObject*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`FixedRateBondForward'#}
+{#fun qlFixedRateBondForward as fixedRateBondForward{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double', fromIntegral`Word', withDayCounter*`DayCounter', withCalendar*`Calendar',`BusinessDayConvention', withFixedRateBond*`FixedRateBond', withMaybeYieldTermStructure*`Maybe YieldTermStructure', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`FixedRateBondForward'peekFixedRateBondForward*#}
 
 -- |(dirty) forward bond price minus accrued on bond at delivery
-{#fun qlFixedRateBondForwardCleanForwardPrice as cleanForwardPrice{`FixedRateBondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedRateBondForwardCleanForwardPrice as cleanForwardPrice{withFixedRateBondForward*`FixedRateBondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |(dirty) forward bond price
-{#fun qlFixedRateBondForwardForwardPrice as forwardPrice{`FixedRateBondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedRateBondForwardForwardPrice as forwardPrice{withFixedRateBondForward*`FixedRateBondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |forward value/price of underlying, discounting income/dividends
 -- if this is a bond forward price, is must be a dirty forward price.
-{#fun qlForwardForwardValue as forwardValue{`Forward', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardForwardValue as forwardValue{withForward*`Forward', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t>0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
-{#fun qlForwardImpliedYield as impliedYield{`Forward',`Double',`Double', withDay*`Day',`Compounding', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlForwardImpliedYield as impliedYield{withForward*`Forward',`Double',`Double', withDay*`Day',`Compounding', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
-{#fun qlForwardSettlementDate as settlementDate{`Forward', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlForwardSettlementDate as settlementDate{withForward*`Forward', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |NPV of income/dividends/storage-costs etc. of underlying instrument.
-{#fun qlForwardSpotIncome as spotIncome{`Forward',`YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardSpotIncome as spotIncome{withForward*`Forward',withYieldTermStructure*`YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns spot value/price of an underlying financial instrument
-{#fun qlForwardSpotValue as spotValue{`Forward', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardSpotValue as spotValue{withForward*`Forward', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns the relevant forward rate associated with the FRA term.
-{#fun qlForwardRateAgreementForwardRate as forwardRate{`ForwardRateAgreement', preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlForwardRateAgreementForwardRate as forwardRate{withForwardRateAgreement*`ForwardRateAgreement', preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

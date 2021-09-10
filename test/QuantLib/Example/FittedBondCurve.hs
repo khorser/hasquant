@@ -15,6 +15,7 @@ import QuantLib.Instrument.Bond
 import QuantLib.Math
 import QuantLib.Quote
 import QuantLib.Settings
+import QuantLib.TermStructure
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -85,7 +86,7 @@ run = do
 
     rates :: TS.YieldTermStructure -> DayCounter -> Day -> Day -> [TS.FittedBondDiscountCurve] -> [TS.BondHelper] -> IO Rate
     rates ts0 dc bondSettle tod curves instrA = do
-      refDate <- TS.asTermStructure ts0 >>= TS.referenceDate
+      refDate <- asTermStructure ts0 >>= referenceDate
       numIter <- forM curves TS.numberOfIterations
 
       r <- forM instrA $

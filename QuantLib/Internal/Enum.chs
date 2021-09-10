@@ -1,3 +1,4 @@
+{-# LANGUAGE RankNTypes #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to exposure so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
@@ -150,43 +151,23 @@ data Interpolation =
   deriving (Show, Eq)
 
 {#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
-instance ForeignObject QlExercise where
-  withObject = withQlExercise
-  constructor = QlExercise
-  finalizer = qlFreeExercise
 
 class IsQlExercise a where
   asQlExercise :: a -> IO QlExercise
 
 {#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
-instance ForeignObject QlEuropeanExercise where
-  withObject = withQlEuropeanExercise
-  constructor = QlEuropeanExercise
-  finalizer = qlFreeEuropeanExercise
 {#fun qlEuropeanExerciseAsExercise{`QlEuropeanExercise'}->`QlExercise'#}
 instance IsQlExercise QlEuropeanExercise where asQlExercise = qlEuropeanExerciseAsExercise
 
 {#pointer *QlAmericanExercise foreign finalizer qlFreeAmericanExercise newtype#}
-instance ForeignObject QlAmericanExercise where
-  withObject = withQlAmericanExercise
-  constructor = QlAmericanExercise
-  finalizer = qlFreeAmericanExercise
 {#fun qlAmericanExerciseAsExercise{`QlAmericanExercise'}->`QlExercise'#}
 instance IsQlExercise QlAmericanExercise where asQlExercise = qlAmericanExerciseAsExercise
 
 {#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
-instance ForeignObject QlSwingExercise where
-  withObject = withQlSwingExercise
-  constructor = QlSwingExercise
-  finalizer = qlFreeSwingExercise
 {#fun qlSwingExerciseAsExercise{`QlSwingExercise'}->`QlExercise'#}
 instance IsQlExercise QlSwingExercise where asQlExercise = qlSwingExerciseAsExercise
 
 {#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
-instance ForeignObject QlBermudanExercise where
-  withObject = withQlBermudanExercise
-  constructor = QlBermudanExercise
-  finalizer = qlFreeBermudanExercise
 {#fun qlBermudanExerciseAsExercise{`QlBermudanExercise'}->`QlExercise'#}
 instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
 
@@ -375,51 +356,27 @@ data Payoff =
   | Basket BasketPayoff
 
 {#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
-instance ForeignObject QlPayoff where
-  withObject = withQlPayoff
-  constructor = QlPayoff
-  finalizer = qlFreePayoff
 
 class IsQlPayoff a where
   asQlPayoff :: a -> IO QlPayoff
 
 {#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
-instance ForeignObject QlBasketPayoff where
-  withObject = withQlBasketPayoff
-  constructor = QlBasketPayoff
-  finalizer = qlFreeBasketPayoff
 {#fun qlBasketPayoffAsPayoff{`QlBasketPayoff'}->`QlPayoff'#}
 instance IsQlPayoff QlBasketPayoff where asQlPayoff = qlBasketPayoffAsPayoff
 
 {#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
-instance ForeignObject QlTypePayoff where
-  withObject = withQlTypePayoff
-  constructor = QlTypePayoff
-  finalizer = qlFreeTypePayoff
 {#fun qlTypePayoffAsPayoff{`QlTypePayoff'}->`QlPayoff'#}
 instance IsQlPayoff QlTypePayoff where asQlPayoff = qlTypePayoffAsPayoff
 
 {#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
-instance ForeignObject QlStrikedTypePayoff where
-  withObject = withQlStrikedTypePayoff
-  constructor = QlStrikedTypePayoff
-  finalizer = qlFreeStrikedTypePayoff
 {#fun qlStrikedTypePayoffAsTypePayoff{`QlStrikedTypePayoff'}->`QlTypePayoff'#}
 instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff = qlStrikedTypePayoffAsTypePayoff >=> asQlPayoff
 
 {#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
-instance ForeignObject QlPercentageStrikePayoff where
-  withObject = withQlPercentageStrikePayoff
-  constructor = QlPercentageStrikePayoff
-  finalizer = qlFreePercentageStrikePayoff
 {#fun qlPercentageStrikePayoffAsStrikedTypePayoff{`QlPercentageStrikePayoff'}->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff = qlPercentageStrikePayoffAsStrikedTypePayoff >=> asQlPayoff
 
 {#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
-instance ForeignObject QlPlainVanillaPayoff where
-  withObject = withQlPlainVanillaPayoff
-  constructor = QlPlainVanillaPayoff
-  finalizer = qlFreePlainVanillaPayoff
 {#fun qlPlainVanillaPayoffAsStrikedTypePayoff{`QlPlainVanillaPayoff'}->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoffAsStrikedTypePayoff >=> asQlPayoff
 
@@ -545,45 +502,45 @@ withOptimizationMethod :: OptimizationMethod -> (Ptr COptimizationMethod -> IO a
 withOptimizationMethod = withEnumType optimizationMethodMeta
 
 -- temp solution just to get rid of the EnumObject multiparam type class
-newtype EnumMeta' a b = EnumMeta' {getMeta' :: a -> IO b}
-withEnumType' :: (ForeignObject b) => EnumMeta' a b -> a -> (Ptr b -> IO c) -> IO c
-withEnumType' (EnumMeta' t) x f = t x >>= (`withObject` f)
+data EnumMeta' a b = EnumMeta' {getMeta' :: a -> IO b, with :: forall c. b -> (Ptr b -> IO c) -> IO c}
+withEnumType' :: EnumMeta' a b -> a -> (Ptr b -> IO c) -> IO c
+withEnumType' t x f = getMeta' t x >>= \y -> with t y f
 
 europeanExerciseMeta :: EnumMeta' EuropeanExercise QlEuropeanExercise
-europeanExerciseMeta = EnumMeta' (\(EuropeanExercise d) -> qlEuropeanExercise d)
+europeanExerciseMeta = EnumMeta' (\(EuropeanExercise d) -> qlEuropeanExercise d) withQlEuropeanExercise
 
 swingExerciseMeta :: EnumMeta' SwingExercise QlSwingExercise
 swingExerciseMeta = EnumMeta' (\x -> case x of
   SwingListExercise ds -> uncurry qlSwingExercise (unzip ds)
-  SwingIntervalExercise d1 d2 s -> qlSwingExercise1 d1 d2 s)
+  SwingIntervalExercise d1 d2 s -> qlSwingExercise1 d1 d2 s) withQlSwingExercise
 
 bermudanExerciseMeta :: EnumMeta' BermudanExercise QlBermudanExercise
 bermudanExerciseMeta = EnumMeta' (\x -> case x of
   BermudanExercise d p -> qlBermudanExercise d p
-  Swing e -> getMeta' swingExerciseMeta e >>= qlSwingExerciseAsBermudanExercise)
+  Swing e -> getMeta' swingExerciseMeta e >>= qlSwingExerciseAsBermudanExercise) withQlBermudanExercise
 
 exerciseMeta :: EnumMeta' Exercise QlExercise
-exerciseMeta = EnumMeta' exercise
+exerciseMeta = EnumMeta' exercise withQlExercise
 
 percentageStrikePayoffMeta :: EnumMeta' PercentageStrikePayoff QlPercentageStrikePayoff
-percentageStrikePayoffMeta = EnumMeta' (\(PercentageStrikePayoff t m) -> qlPercentageStrikePayoff t m)
+percentageStrikePayoffMeta = EnumMeta' (\(PercentageStrikePayoff t m) -> qlPercentageStrikePayoff t m) withQlPercentageStrikePayoff
 
 plainVanillaPayoffMeta :: EnumMeta' PlainVanillaPayoff QlPlainVanillaPayoff
-plainVanillaPayoffMeta = EnumMeta' (\(PlainVanillaPayoff t s) -> qlPlainVanillaPayoff t s)
+plainVanillaPayoffMeta = EnumMeta' (\(PlainVanillaPayoff t s) -> qlPlainVanillaPayoff t s) withQlPlainVanillaPayoff
 
 strikedPayoffMeta :: EnumMeta' StrikedPayoff QlStrikedTypePayoff
-strikedPayoffMeta = EnumMeta' strikedPayoff
+strikedPayoffMeta = EnumMeta' strikedPayoff withQlStrikedTypePayoff
 
 typedPayoffMeta :: EnumMeta' TypePayoff QlTypePayoff
 typedPayoffMeta = EnumMeta' (\x -> case x of
   Striked p -> getMeta' strikedPayoffMeta p >>= qlStrikedTypePayoffAsTypePayoff
-  Floating t -> qlFloatingTypePayoff t)
+  Floating t -> qlFloatingTypePayoff t) withQlTypePayoff
 
 basketPayoffMeta :: EnumMeta' BasketPayoff QlBasketPayoff
-basketPayoffMeta = EnumMeta' basketPayoff
+basketPayoffMeta = EnumMeta' basketPayoff withQlBasketPayoff
 
 payoffMeta :: EnumMeta' Payoff QlPayoff
-payoffMeta = EnumMeta' payoff
+payoffMeta = EnumMeta' payoff withQlPayoff
 
 withEuropeanExercise :: EuropeanExercise -> (Ptr QlEuropeanExercise -> IO a) -> IO a
 withEuropeanExercise = withEnumType' europeanExerciseMeta

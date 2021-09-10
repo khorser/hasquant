@@ -26,7 +26,8 @@ import QuantLib.Math
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Quote as Quote
-import QuantLib.TermStructure.Yield hiding(maxDate)
+import QuantLib.TermStructure.Yield
+import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 import qualified QuantLib.Instrument.Bond as B

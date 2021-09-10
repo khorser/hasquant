@@ -69,13 +69,11 @@ module QuantLib.Process
 import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.Internal.Type
-{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
-{#import QuantLib.TermStructure.Volatility#}(BlackVolTermStructure)
-import QuantLib.Internal.TermStructure
-{#import QuantLib.Index.InterestRate#}
-import QuantLib.Internal.Index
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
 
 {#enum ProcessDiscretization{} deriving(Show,Eq)#}
 
@@ -87,107 +85,39 @@ import QuantLib.Internal.Index
 
 {#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq)#}
 
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign finalizer qlFreeGeneralizedBlackScholesProcess newtype#}
-instance ForeignObject GeneralizedBlackScholesProcess where
-  withObject = withGeneralizedBlackScholesProcess
-  constructor = GeneralizedBlackScholesProcess
-  finalizer = qlFreeGeneralizedBlackScholesProcess
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess nocode#}
 
-{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign finalizer qlFreeStochasticProcess1D newtype#}
-instance ForeignObject StochasticProcess1D where
-  withObject = withStochasticProcess1D
-  constructor = StochasticProcess1D
-  finalizer = qlFreeStochasticProcess1D
+{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D nocode#}
 
-{#pointer *QlStochasticProcess as StochasticProcess foreign finalizer qlFreeStochasticProcess newtype#}
-instance ForeignObject StochasticProcess where
-  withObject = withStochasticProcess
-  constructor = StochasticProcess
-  finalizer = qlFreeStochasticProcess
+{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
 
-{#pointer *QlBlackProcess as BlackProcess foreign finalizer qlFreeBlackProcess newtype#}
-instance ForeignObject BlackProcess where
-  withObject = withBlackProcess
-  constructor = BlackProcess
-  finalizer = qlFreeBlackProcess
+{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess nocode#}
 
-{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign finalizer qlFreeExtOUWithJumpsProcess newtype#}
-instance ForeignObject ExtOUWithJumpsProcess where
-  withObject = withExtOUWithJumpsProcess
-  constructor = ExtOUWithJumpsProcess
-  finalizer = qlFreeExtOUWithJumpsProcess
+{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess nocode#}
 
-{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign finalizer qlFreeExtendedOrnsteinUhlenbeckProcess newtype#}
-instance ForeignObject ExtendedOrnsteinUhlenbeckProcess where
-  withObject = withExtendedOrnsteinUhlenbeckProcess
-  constructor = ExtendedOrnsteinUhlenbeckProcess
-  finalizer = qlFreeExtendedOrnsteinUhlenbeckProcess
+{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess nocode#}
 
-{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign finalizer qlFreeGJRGARCHProcess newtype#}
-instance ForeignObject GJRGARCHProcess where
-  withObject = withGJRGARCHProcess
-  constructor = GJRGARCHProcess
-  finalizer = qlFreeGJRGARCHProcess
+{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess nocode#}
 
-{#pointer *QlHestonProcess as HestonProcess foreign finalizer qlFreeHestonProcess newtype#}
-instance ForeignObject HestonProcess where
-  withObject = withHestonProcess
-  constructor = HestonProcess
-  finalizer = qlFreeHestonProcess
+{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess nocode#}
 
-{#pointer *QlBatesProcess as BatesProcess foreign finalizer qlFreeBatesProcess newtype#}
-instance ForeignObject BatesProcess where
-  withObject = withBatesProcess
-  constructor = BatesProcess
-  finalizer = qlFreeBatesProcess
+{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess nocode#}
 
-{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign finalizer qlFreeHybridHestonHullWhiteProcess newtype#}
-instance ForeignObject HybridHestonHullWhiteProcess where
-  withObject = withHybridHestonHullWhiteProcess
-  constructor = HybridHestonHullWhiteProcess
-  finalizer = qlFreeHybridHestonHullWhiteProcess
+{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess nocode#}
 
-{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign finalizer qlFreeKlugeExtOUProcess newtype#}
-instance ForeignObject KlugeExtOUProcess where
-  withObject = withKlugeExtOUProcess
-  constructor = KlugeExtOUProcess
-  finalizer = qlFreeKlugeExtOUProcess
+{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess nocode#}
 
-{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign finalizer qlFreeLiborForwardModelProcess newtype#}
-instance ForeignObject LiborForwardModelProcess where
-  withObject = withLiborForwardModelProcess
-  constructor = LiborForwardModelProcess
-  finalizer = qlFreeLiborForwardModelProcess
+{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess nocode#}
 
-{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign finalizer qlFreeStochasticProcessArray newtype#}
-instance ForeignObject StochasticProcessArray where
-  withObject = withStochasticProcessArray
-  constructor = StochasticProcessArray
-  finalizer = qlFreeStochasticProcessArray
+{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray nocode#}
 
-{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign finalizer qlFreeVarianceGammaProcess newtype#}
-instance ForeignObject VarianceGammaProcess where
-  withObject = withVarianceGammaProcess
-  constructor = VarianceGammaProcess
-  finalizer = qlFreeVarianceGammaProcess
+{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess nocode#}
 
-{#pointer *QlMerton76Process as Merton76Process foreign finalizer qlFreeMerton76Process newtype#}
-instance ForeignObject Merton76Process where
-  withObject = withMerton76Process
-  constructor = Merton76Process
-  finalizer = qlFreeMerton76Process
+{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process nocode#}
 
-{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign finalizer qlFreeHullWhiteProcess newtype#}
-instance ForeignObject HullWhiteProcess where
-  withObject = withHullWhiteProcess
-  constructor = HullWhiteProcess
-  finalizer = qlFreeHullWhiteProcess
+{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess nocode#}
 
-{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign finalizer qlFreeHullWhiteForwardProcess newtype#}
-instance ForeignObject HullWhiteForwardProcess where
-  withObject = withHullWhiteForwardProcess
-  constructor = HullWhiteForwardProcess
-  finalizer = qlFreeHullWhiteForwardProcess
+{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
 
 asStochasticProcess :: (a`Derives` StochasticProcess) => a -> IO StochasticProcess
 asStochasticProcess = cast
@@ -200,96 +130,96 @@ instance BlackProcess`Derives` GeneralizedBlackScholesProcess where cast = qlBla
 asGeneralizedBlackScholesProcess :: (a`Derives` GeneralizedBlackScholesProcess) => a -> IO GeneralizedBlackScholesProcess
 asGeneralizedBlackScholesProcess = cast
 
-{#fun qlBlackProcessAsGeneralizedBlackScholesProcess{`BlackProcess'}->`GeneralizedBlackScholesProcess'#}
-{#fun qlStochasticProcess1DAsStochasticProcess{`StochasticProcess1D'}->`StochasticProcess'#}
+{#fun qlBlackProcessAsGeneralizedBlackScholesProcess{withBlackProcess*`BlackProcess'}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+{#fun qlStochasticProcess1DAsStochasticProcess{withStochasticProcess1D*`StochasticProcess1D'}->`StochasticProcess'peekStochasticProcess*#}
 instance StochasticProcess1D`Derives` StochasticProcess where cast = qlStochasticProcess1DAsStochasticProcess
-{#fun qlExtOUWithJumpsProcessAsStochasticProcess{`ExtOUWithJumpsProcess'}->`StochasticProcess'#}
+{#fun qlExtOUWithJumpsProcessAsStochasticProcess{withExtOUWithJumpsProcess*`ExtOUWithJumpsProcess'}->`StochasticProcess'peekStochasticProcess*#}
 instance ExtOUWithJumpsProcess`Derives` StochasticProcess where cast = qlExtOUWithJumpsProcessAsStochasticProcess
-{#fun qlGJRGARCHProcessAsStochasticProcess{`GJRGARCHProcess'}->`StochasticProcess'#}
+{#fun qlGJRGARCHProcessAsStochasticProcess{withGJRGARCHProcess*`GJRGARCHProcess'}->`StochasticProcess'peekStochasticProcess*#}
 instance GJRGARCHProcess`Derives` StochasticProcess where cast = qlGJRGARCHProcessAsStochasticProcess
-{#fun qlHestonProcessAsStochasticProcess{`HestonProcess'}->`StochasticProcess'#}
+{#fun qlHestonProcessAsStochasticProcess{withHestonProcess*`HestonProcess'}->`StochasticProcess'peekStochasticProcess*#}
 instance HestonProcess`Derives` StochasticProcess where cast = qlHestonProcessAsStochasticProcess
 
 instance BatesProcess`Derives` HestonProcess where cast = qlBatesProcessAsHestonProcess
 asHestonProcess :: (a`Derives` HestonProcess) => a -> IO HestonProcess
 asHestonProcess = cast
 
-{#fun qlBatesProcessAsHestonProcess{`BatesProcess'}->`HestonProcess'#}
-{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess{`HybridHestonHullWhiteProcess'}->`StochasticProcess'#}
+{#fun qlBatesProcessAsHestonProcess{withBatesProcess*`BatesProcess'}->`HestonProcess'peekHestonProcess*#}
+{#fun qlHybridHestonHullWhiteProcessAsStochasticProcess{withHybridHestonHullWhiteProcess*`HybridHestonHullWhiteProcess'}->`StochasticProcess'peekStochasticProcess*#}
 instance HybridHestonHullWhiteProcess`Derives` StochasticProcess where cast = qlHybridHestonHullWhiteProcessAsStochasticProcess
-{#fun qlKlugeExtOUProcessAsStochasticProcess{`KlugeExtOUProcess'}->`StochasticProcess'#}
+{#fun qlKlugeExtOUProcessAsStochasticProcess{withKlugeExtOUProcess*`KlugeExtOUProcess'}->`StochasticProcess'peekStochasticProcess*#}
 instance KlugeExtOUProcess`Derives` StochasticProcess where cast = qlKlugeExtOUProcessAsStochasticProcess
-{#fun qlLiborForwardModelProcessAsStochasticProcess{`LiborForwardModelProcess'}->`StochasticProcess'#}
+{#fun qlLiborForwardModelProcessAsStochasticProcess{withLiborForwardModelProcess*`LiborForwardModelProcess'}->`StochasticProcess'peekStochasticProcess*#}
 instance LiborForwardModelProcess`Derives` StochasticProcess where cast = qlLiborForwardModelProcessAsStochasticProcess
-{#fun qlStochasticProcessArrayAsStochasticProcess{`StochasticProcessArray'}->`StochasticProcess'#}
+{#fun qlStochasticProcessArrayAsStochasticProcess{withStochasticProcessArray*`StochasticProcessArray'}->`StochasticProcess'peekStochasticProcess*#}
 instance StochasticProcessArray`Derives` StochasticProcess where cast = qlStochasticProcessArrayAsStochasticProcess
 
-{#fun qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D{`ExtendedOrnsteinUhlenbeckProcess'}->`StochasticProcess1D'#}
+{#fun qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D{withExtendedOrnsteinUhlenbeckProcess*`ExtendedOrnsteinUhlenbeckProcess'}->`StochasticProcess1D'peekStochasticProcess1D*#}
 instance ExtendedOrnsteinUhlenbeckProcess`Derives` StochasticProcess1D where cast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
-{#fun qlGeneralizedBlackScholesProcessAsStochasticProcess1D{`GeneralizedBlackScholesProcess'}->`StochasticProcess1D'#}
+{#fun qlGeneralizedBlackScholesProcessAsStochasticProcess1D{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'}->`StochasticProcess1D'peekStochasticProcess1D*#}
 instance GeneralizedBlackScholesProcess`Derives` StochasticProcess1D where cast = qlGeneralizedBlackScholesProcessAsStochasticProcess1D
-{#fun qlHullWhiteForwardProcessAsStochasticProcess1D{`HullWhiteForwardProcess'}->`StochasticProcess1D'#}
+{#fun qlHullWhiteForwardProcessAsStochasticProcess1D{withHullWhiteForwardProcess*`HullWhiteForwardProcess'}->`StochasticProcess1D'peekStochasticProcess1D*#}
 instance HullWhiteForwardProcess`Derives` StochasticProcess1D where cast = qlHullWhiteForwardProcessAsStochasticProcess1D
-{#fun qlHullWhiteProcessAsStochasticProcess1D{`HullWhiteProcess'}->`StochasticProcess1D'#}
+{#fun qlHullWhiteProcessAsStochasticProcess1D{withHullWhiteProcess*`HullWhiteProcess'}->`StochasticProcess1D'peekStochasticProcess1D*#}
 instance HullWhiteProcess`Derives` StochasticProcess1D where cast = qlHullWhiteProcessAsStochasticProcess1D
-{#fun qlMerton76ProcessAsStochasticProcess1D{`Merton76Process'}->`StochasticProcess1D'#}
+{#fun qlMerton76ProcessAsStochasticProcess1D{withMerton76Process*`Merton76Process'}->`StochasticProcess1D'peekStochasticProcess1D*#}
 instance Merton76Process`Derives` StochasticProcess1D where cast = qlMerton76ProcessAsStochasticProcess1D
-{#fun qlVarianceGammaProcessAsStochasticProcess1D{`VarianceGammaProcess'}->`StochasticProcess1D'#}
+{#fun qlVarianceGammaProcessAsStochasticProcess1D{withVarianceGammaProcess*`VarianceGammaProcess'}->`StochasticProcess1D'peekStochasticProcess1D*#}
 instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarianceGammaProcessAsStochasticProcess1D
 
-{#fun qlBlackProcess as blackProcess{withQuote*`GenQuote a',`YieldTermStructure',`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`BlackProcess'#}
+{#fun qlBlackProcess as blackProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`BlackProcess'peekBlackProcess*#}
 
-{#fun qlBlackScholesMertonProcess as blackScholesMertonProcess{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'#}
+{#fun qlBlackScholesMertonProcess as blackScholesMertonProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
-{#fun qlBlackScholesProcess as blackScholesProcess{withQuote*`GenQuote a',`YieldTermStructure',`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'#}
+{#fun qlBlackScholesProcess as blackScholesProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
-{#fun qlExtendedBlackScholesMertonProcess as extendedBlackScholesMertonProcess{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure',`ProcessDiscretization',`ExtendedBlackScholesMertonProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'#}
+{#fun qlExtendedBlackScholesMertonProcess as extendedBlackScholesMertonProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`ProcessDiscretization',`ExtendedBlackScholesMertonProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
-{#fun qlGarmanKohlagenProcess as garmanKohlagenProcess{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'#}
+{#fun qlGarmanKohlagenProcess as garmanKohlagenProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
-{#fun qlGeneralizedBlackScholesProcess as generalizedBlackScholesProcess{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'#}
+{#fun qlGeneralizedBlackScholesProcess as generalizedBlackScholesProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
-{#fun qlSquareRootProcess as squareRootProcess{`Double',`Double',`Double',`Double',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'#}
+{#fun qlSquareRootProcess as squareRootProcess{`Double',`Double',`Double',`Double',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 
-{#fun qlVegaStressedBlackScholesProcess as vegaStressedBlackScholesProcess{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure',`Double',`Double',`Double',`Double',`Double',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'#}
+{#fun qlVegaStressedBlackScholesProcess as vegaStressedBlackScholesProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`Double',`Double',`Double',`Double',`Double',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
-{#fun qlBatesProcess as batesProcess{`YieldTermStructure',`YieldTermStructure', withQuote*`GenQuote a',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`HestonProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`BatesProcess'#}
+{#fun qlBatesProcess as batesProcess{withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure', withQuote*`GenQuote a',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`HestonProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`BatesProcess'peekBatesProcess*#}
 
-{#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess{`ExtendedOrnsteinUhlenbeckProcess',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`ExtOUWithJumpsProcess'#}
+{#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess{withExtendedOrnsteinUhlenbeckProcess*`ExtendedOrnsteinUhlenbeckProcess',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`ExtOUWithJumpsProcess'peekExtOUWithJumpsProcess*#}
 
-{#fun qlG2ForwardProcess as g2ForwardProcess{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess'#}
+{#fun qlG2ForwardProcess as g2ForwardProcess{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
 
-{#fun qlG2Process as g2Process{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess'#}
+{#fun qlG2Process as g2Process{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
 
-{#fun qlGemanRoncoroniProcess as gemanRoncoroniProcess{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'#}
+{#fun qlGemanRoncoroniProcess as gemanRoncoroniProcess{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 
-{#fun qlGeometricBrownianMotionProcess as geometricBrownianMotionProcess{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'#}
+{#fun qlGeometricBrownianMotionProcess as geometricBrownianMotionProcess{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 
-{#fun qlGJRGARCHProcess as gjrGARCHProcess{`YieldTermStructure',`YieldTermStructure', withQuote*`GenQuote a',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`GJRGARCHProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GJRGARCHProcess'#}
+{#fun qlGJRGARCHProcess as gjrGARCHProcess{withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure', withQuote*`GenQuote a',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`GJRGARCHProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`GJRGARCHProcess'peekGJRGARCHProcess*#}
 
-{#fun qlHestonProcess as hestonProcess{`YieldTermStructure',`YieldTermStructure', withQuote*`GenQuote a',`Double',`Double',`Double',`Double',`Double',`HestonProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`HestonProcess'#}
+{#fun qlHestonProcess as hestonProcess{withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure', withQuote*`GenQuote a',`Double',`Double',`Double',`Double',`Double',`HestonProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`HestonProcess'peekHestonProcess*#}
 
-{#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess{`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhiteForwardProcess'#}
+{#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess{withYieldTermStructure*`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhiteForwardProcess'peekHullWhiteForwardProcess*#}
 
-{#fun qlHullWhiteProcess as hullWhiteProcess{`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhiteProcess'#}
+{#fun qlHullWhiteProcess as hullWhiteProcess{withYieldTermStructure*`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhiteProcess'peekHullWhiteProcess*#}
 
-{#fun qlHybridHestonHullWhiteProcess as hybridHestonHullWhiteProcess{`HestonProcess',`HullWhiteForwardProcess',`Double',`HybridHestonHullWhiteProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'#}
+{#fun qlHybridHestonHullWhiteProcess as hybridHestonHullWhiteProcess{withHestonProcess*`HestonProcess',withHullWhiteForwardProcess*`HullWhiteForwardProcess',`Double',`HybridHestonHullWhiteProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'peekHybridHestonHullWhiteProcess*#}
 
-{#fun qlKlugeExtOUProcess as klugeExtOUProcess{`Double',`ExtOUWithJumpsProcess',`ExtendedOrnsteinUhlenbeckProcess', preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'#}
+{#fun qlKlugeExtOUProcess as klugeExtOUProcess{`Double',withExtOUWithJumpsProcess*`ExtOUWithJumpsProcess',withExtendedOrnsteinUhlenbeckProcess*`ExtendedOrnsteinUhlenbeckProcess', preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
 
-{#fun qlLiborForwardModelProcess as liborForwardModelProcess{fromIntegral`Word',`IborIndex', preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'#}
+{#fun qlLiborForwardModelProcess as liborForwardModelProcess{fromIntegral`Word',withIborIndex*`IborIndex', preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'peekLiborForwardModelProcess*#}
 
-{#fun qlMerton76Process as merton76Process{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`BlackVolTermStructure', withQuote*`GenQuote b', withQuote*`GenQuote c', withQuote*`GenQuote d',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`Merton76Process'#}
+{#fun qlMerton76Process as merton76Process{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure', withQuote*`GenQuote b', withQuote*`GenQuote c', withQuote*`GenQuote d',`ProcessDiscretization', preErrorCheck-`String'errorCheck*-}->`Merton76Process'peekMerton76Process*#}
 
-{#fun qlOrnsteinUhlenbeckProcess as ornsteinUhlenbeckProcess{`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'#}
+{#fun qlOrnsteinUhlenbeckProcess as ornsteinUhlenbeckProcess{`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 
-{#fun qlVarianceGammaProcess as varianceGammaProcess{withQuote*`GenQuote a',`YieldTermStructure',`YieldTermStructure',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`VarianceGammaProcess'#}
+{#fun qlVarianceGammaProcess as varianceGammaProcess{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`VarianceGammaProcess'peekVarianceGammaProcess*#}
 
 stochasticProcessArray :: [StochasticProcess1D] -> Matrix Double -> IO StochasticProcessArray
 stochasticProcessArray a (Matrix mr mc md) = qlStochasticProcessArray a mr mc md
-{#fun qlStochasticProcessArray{withObjectArray*`[StochasticProcess1D]'&, fromIntegral`Word', fromIntegral`Word', withDoubleArrayRaw*`[Double]', preErrorCheck-`String'errorCheck*-}->`StochasticProcessArray'#}
+{#fun qlStochasticProcessArray{withStochasticProcess1DArray*`[StochasticProcess1D]'&, fromIntegral`Word', fromIntegral`Word', withDoubleArrayRaw*`[Double]', preErrorCheck-`String'errorCheck*-}->`StochasticProcessArray'peekStochasticProcessArray*#}
 
 -- |default theta calculation for Black-Scholes options
-{#fun qlQuantLibBlackScholesTheta as blackScholesTheta{`GeneralizedBlackScholesProcess',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuantLibBlackScholesTheta as blackScholesTheta{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

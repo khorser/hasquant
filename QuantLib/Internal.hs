@@ -1,4 +1,3 @@
-{-# LANGUAGE FunctionalDependencies #-}
 module QuantLib.Internal
   (
     Day -- reexport for simplicity
@@ -18,14 +17,11 @@ module QuantLib.Internal
   , preEnum
   , preNum
   , preArray
-  , withMaybeObject
   , withEnumArray
   , withIntArray
   , withBoolArray
   , withDoubleArray
   , withDoubleArrayRaw
-  , withObjectArray
-  , withObjectArrayRaw
   , withDayPtr
   , fromEnumQuantity
   , toEnumQuantity
@@ -43,7 +39,6 @@ module QuantLib.Internal
 
   , toSerial
   , fromSerial
-  , ForeignObject(..)
   , qlSavedSettings
   , qlFreeSavedSettings
   , fromMaybeDouble
@@ -62,26 +57,15 @@ import Foreign.C.Types
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
-import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
+import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
-import Foreign.ForeignPtr(newForeignPtr, ForeignPtr, FinalizerPtr)
 import Control.Exception(throwIO)
-import Control.Monad(when, (>=>))
+import Control.Monad(when)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
 import QuantLib.Type
-
-class ForeignObject a where
--- I don't want to expose withT functions
-  withObject :: a -> (Ptr a -> IO b) -> IO b
-  constructor :: ForeignPtr a -> a
-  finalizer :: FinalizerPtr a
--- ch2s will not attach finalizers to foreign ptrs declared in other modules
--- so let's add more boilerplate and declare the unmarshaller outselves
-  peekObject :: Ptr a -> IO a
-  peekObject = newForeignPtr finalizer >=> return . constructor
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
@@ -139,13 +123,6 @@ withLArray c x f = withArray (map c x) (\px -> f (fromIntegral $ length x, px))
 withEnumArray :: (Enum a) => [a] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withEnumArray = withLArray (fromIntegral . fromEnum)
 
-withObjectArray :: (ForeignObject a) => [a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-
--- pass length somewhere else
-withObjectArrayRaw :: (ForeignObject a) => [a] -> (Ptr (Ptr a) -> IO b) -> IO b
-withObjectArrayRaw x f = withMany withObject x (`withArray` f)
-
 withIntArray :: (Integral a, Num n, Storable n) => [a] -> ((CUInt, Ptr n) -> IO b) -> IO b
 withIntArray = withLArray fromIntegral
 
@@ -198,9 +175,6 @@ peekDoubleArray pl pp = do
   l <- peek pl
   p <- peek pp
   map realToFrac <$> peekArray (fromIntegral l) p <* qlFreeDoubles p
-
-withMaybeObject :: (ForeignObject a) => Maybe a -> (Ptr a -> IO b) -> IO b
-withMaybeObject x f = maybe (f nullPtr) (`withObject` f) x
 
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)

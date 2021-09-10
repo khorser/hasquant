@@ -17,6 +17,7 @@ import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import qualified QuantLib.TermStructure.Yield as TS
+import QuantLib.TermStructure
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -117,7 +118,7 @@ run = do
         cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
       fwd1Y5Y <- vanillaSwap Payer 1000000 fwdFixS 0.04 fixDC
         fwdFloatS eu6m 0.0 floatDC ModifiedFollowing
-      refDate <- TS.asTermStructure d >>= TS.referenceDate
+      refDate <- asTermStructure d >>= referenceDate
       pricer <- discountingSwapEngine d (Just False) (Just refDate) (Just refDate)
 
       spotInstr <- asSwap spot5Y >>= asInstrument

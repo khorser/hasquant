@@ -80,12 +80,6 @@ import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 
-{#import QuantLib.TermStructure.Yield#}(YieldTermStructure)
-import QuantLib.Internal.TermStructure
-{#import QuantLib.Index.InterestRate#}(BMAIndex, OvernightIborIndex, IborIndex)
-import QuantLib.Internal.Index
-{#import QuantLib.TermStructure.Volatility#}(OptionletVolatilityStructure, SwaptionVolatilityStructure)
-
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
@@ -98,6 +92,12 @@ import QuantLib.Internal.Index
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex nocode#}
+{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure nocode#}
+{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure nocode#}
 
 {#enum DurationType{} deriving(Show, Eq)#}
 
@@ -185,26 +185,26 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds h
 
 -- |At-the-money rate of the cash flows.
 -- The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector's NPV is used instead.
-{#fun qlCashFlowsAtmRate as atmRate{withLeg*`GenLeg a',`YieldTermStructure',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCashFlowsAtmRate as atmRate{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
-{#fun qlCashFlowsBps as bps{withLeg*`GenLeg a',`YieldTermStructure',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCashFlowsBps as bps{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
-{#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg a',`YieldTermStructure',`Double', withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Double', withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the cash flows.
 -- The NPV is the sum of the cash flows, each discounted according to the given term structure.
-{#fun qlCashFlowsNpv as npv{withLeg*`GenLeg a',`YieldTermStructure',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCashFlowsNpv as npv{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV and BPS of the cash flows.
 -- The NPV and BPS of the cash flows calculated together for performance reason
-{#fun qlCashFlowsNpvbps as npvbps{withLeg*`GenLeg a',`YieldTermStructure',`Bool', withDay*`Day', withDay*`Day', prePtr-`Double'peekDouble*, prePtr-`Double'peekDouble*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCashFlowsNpvbps as npvbps{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool', withDay*`Day', withDay*`Day', prePtr-`Double'peekDouble*, prePtr-`Double'peekDouble*, preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |implied Z-spread.
-{#fun qlCashFlowsZSpread as zSpread{withLeg*`GenLeg a',`Double',`YieldTermStructure', withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`Double', fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCashFlowsZSpread as zSpread{withLeg*`GenLeg a',`Double',withYieldTermStructure*`YieldTermStructure', withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`Double', fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlCashFlowsPreviousCashFlowAmount as previousCashFlowAmount{withLeg*`GenLeg a',`Bool', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -235,15 +235,15 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds h
 
 {#fun qlFractionalDividend as fractionalDividend{`Double', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
 
-{#fun qlAverageBMALeg as averageBMALeg{withSchedule*`Schedule',`BMAIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlAverageBMALeg as averageBMALeg{withSchedule*`Schedule',withBMAIndex*`BMAIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 {#fun qlFixedRateLeg as fixedRateLeg{withSchedule*`Schedule', withDoubleArray*`[Double]'&, withInterestRateArray*`[InterestRate]'&,`BusinessDayConvention', withDayCounter*`DayCounter', withCalendar*`Calendar', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlIborLeg as iborLeg{withSchedule*`Schedule',`IborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Bool', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlIborLeg as iborLeg{withSchedule*`Schedule',withIborIndex*`IborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Bool', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlOvernightLeg as overnightLeg{withSchedule*`Schedule',`OvernightIborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlOvernightLeg as overnightLeg{withSchedule*`Schedule',withOvernightIborIndex*`OvernightIborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlRangeAccrualLeg as rangeAccrualLeg{withSchedule*`Schedule',`IborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlRangeAccrualLeg as rangeAccrualLeg{withSchedule*`Schedule',withIborIndex*`IborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works
@@ -254,14 +254,14 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds h
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
-{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withObject*`OptionletVolatilityStructure', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`OptionletVolatilityStructure', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',withFloatingRateCouponPricer*`FloatingRateCouponPricer', preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a', withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&, preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlAnalyticHaganPricer as analyticHaganPricer{withObject*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlAnalyticHaganPricer as analyticHaganPricer{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
-{#fun qlNumericHaganPricer as numericHaganPricer{withObject*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlNumericHaganPricer as numericHaganPricer{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',`YieldCurveModel', withQuote*`GenQuote a',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -56,8 +56,6 @@ library
 
   other-modules:    QuantLib.Internal
                     , QuantLib.Internal.Enum
-                    , QuantLib.Internal.Index
-                    , QuantLib.Internal.TermStructure
                     , QuantLib.Internal.Syntax
                     , QuantLib.Internal.CalendarEnum
                     , QuantLib.Internal.Type
