@@ -38,8 +38,6 @@ import Foreign.Ptr(Ptr)
 
 #include "ql.h"
 
-data Claim = FaceValue | FaceValueAccrual Bond
-
 {#enum ProtectionSide{} deriving(Show, Eq)#}
 
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap nocode#}
@@ -57,21 +55,6 @@ instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapA
 {#fun qlCreditDefaultSwapAsInstrument{withCreditDefaultSwap*`CreditDefaultSwap'}->`Instrument'peekInstrument*#}
 
 {#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
-
-claimMeta :: EnumMeta Claim CQlClaim
-claimMeta = EnumMeta claim
-
-withClaim :: Claim -> (Ptr CQlClaim -> IO a) -> IO a
-withClaim = withEnumType claimMeta
-
-claim :: Claim -> IO QlClaim
-claim FaceValue = qlFaceValueClaim
-claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
-
--- |Claim on a notional
-{#fun qlFaceValueClaim{preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
--- |Claim on the notional of a reference security, including accrual
-{#fun qlFaceValueAccrualClaim{withBond*`Bond', preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 
 -- |CDS quoted as running-spread only.
 -- side Whether the protection is bought or sold. notional Notional value spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract.

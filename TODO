@@ -1,5 +1,3 @@
-Move Claim into Internal/Enum once Bond is ready
-
 -- enums
 QlPayoff | qlFreePayoff
 QlPercentageStrikePayoff | qlFreePercentageStrikePayoff
@@ -148,7 +146,7 @@ QlEuropeanExercise | qlFreeEuropeanExercise
 QlBermudanExercise | qlFreeBermudanExercise
 QlSwingExercise | qlFreeSwingExercise
 
----
+-- hierarchies
 "a:" means an abstract class, i.e. interface only
 
 a:Instrument

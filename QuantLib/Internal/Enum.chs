@@ -38,6 +38,10 @@ module QuantLib.Internal.Enum
   , Callability(..)
   , QlCallability
 
+  , Claim(..)
+  , QlClaim
+  , withClaim
+
   , FittingMethod(..)
   , QlFittedBondDiscountCurveFittingMethod
   , withFittedBondDiscountCurveFittingMethod
@@ -751,5 +755,24 @@ volatilityModelMeta = EnumMeta volatilityModel
 
 withLmVolatilityModel :: LmVolatilityModel -> (Ptr CLmVolatilityModel -> IO a) -> IO a
 withLmVolatilityModel = withEnumType volatilityModelMeta
+
+{#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
+{#pointer *QlBond as Bond foreign -> CBond nocode#}
+
+data Claim = FaceValue | FaceValueAccrual Bond
+claimMeta :: EnumMeta Claim CQlClaim
+claimMeta = EnumMeta claim
+
+withClaim :: Claim -> (Ptr CQlClaim -> IO a) -> IO a
+withClaim = withEnumType claimMeta
+
+claim :: Claim -> IO QlClaim
+claim FaceValue = qlFaceValueClaim
+claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
+
+-- |Claim on a notional
+{#fun qlFaceValueClaim{preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
+-- |Claim on the notional of a reference security, including accrual
+{#fun qlFaceValueAccrualClaim{withBond*`Bond', preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
