@@ -40,10 +40,10 @@ import QuantLib.Time.Date(Weekday)
 {#enum UnitedStatesMarket{} add prefix = "UnitedStates__" deriving(Show, Eq)#}
 
 data CalendarExtra =
-   Extra__Bespoke String [Weekday]
-  | Extra__Joint2 Calendar Calendar JointCalendarRule
-  | Extra__Joint3 Calendar Calendar Calendar JointCalendarRule
-  | Extra__Joint4 Calendar Calendar Calendar Calendar JointCalendarRule
+   Extra__Bespoke !String ![Weekday]
+  | Extra__Joint2 !Calendar !Calendar !JointCalendarRule
+  | Extra__Joint3 !Calendar !Calendar !Calendar !JointCalendarRule
+  | Extra__Joint4 !Calendar !Calendar !Calendar !Calendar !JointCalendarRule
 
 $(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra)
 
@@ -58,7 +58,7 @@ deriving instance Eq CalendarConstructor
 
 -- TODO add the second (Schedule) argument to Actua/Actual constructor
 
-data DayCounterExtra = Extra__Business252 Calendar
+data DayCounterExtra = Extra__Business252 !Calendar
 
 $(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
 

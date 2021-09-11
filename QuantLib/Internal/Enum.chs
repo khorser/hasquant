@@ -138,8 +138,8 @@ qlInterpolation' Nothing = (fromIntegral qlNullInteger, (0, 0))
 qlInterpolation' (Just i) = qlInterpolation i
 
 data Approximation =
-  NaturalSpline Bool
-  | Parabolic Bool
+  NaturalSpline !Bool
+  | Parabolic !Bool
   | Kruger
   | FritschButland
   deriving (Show, Eq)
@@ -149,8 +149,8 @@ data Interpolation =
   | ForwardFlat
   | Linear
   | LogLinear
-  | Cubic Approximation
-  | LogCubic Approximation
+  | Cubic !Approximation
+  | LogCubic !Approximation
   | Abcd
   deriving (Show, Eq)
 
@@ -179,24 +179,24 @@ instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExercise
 data EuropeanExercise = EuropeanExercise Day
 
 data SwingExercise =
-    SwingListExercise [(Day, Word)] -- ^(dates, seconds)
-    | SwingIntervalExercise Day Day Word -- ^stepSizeSecs
+    SwingListExercise ![(Day, Word)] -- ^(dates, seconds)
+    | SwingIntervalExercise !Day !Day !Word -- ^stepSizeSecs
 
 data BermudanExercise =
-    BermudanExercise [Day] Bool
+    BermudanExercise ![Day] !Bool
     | Swing SwingExercise
 
 {#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
 
 data Exercise =
     AmericanExercise
-      (Maybe Day) -- ^earliestDate
-      Day -- ^latestDate
-      Bool -- ^paoffAtExpiry
-    | Early ExerciseType Bool
-    | Vanilla ExerciseType
-    | European EuropeanExercise
-    | Bermudan BermudanExercise
+      !(Maybe Day) -- ^earliestDate
+      !Day -- ^latestDate
+      !Bool -- ^paoffAtExpiry
+    | Early !ExerciseType !Bool
+    | Vanilla !ExerciseType
+    | European !EuropeanExercise
+    | Bermudan !BermudanExercise
 
 {#fun qlExercise{`ExerciseType', preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
 {#fun qlAmericanExercise{withDay*`Day', withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
@@ -223,34 +223,34 @@ exercise (Bermudan e) = getMeta' bermudanExerciseMeta e >>= asQlExercise
 {#enum BondPriceType{} deriving (Show, Eq)#}
 
 data PercentageStrikePayoff = PercentageStrikePayoff
-      OptionType -- ^type
-      Double -- ^moneyness
+      !OptionType -- ^type
+      !Double -- ^moneyness
 
 data PlainVanillaPayoff = PlainVanillaPayoff
-      OptionType -- ^type
-      Double -- ^strike
+      !OptionType -- ^type
+      !Double -- ^strike
 
 data StrikedPayoff =
   AssetOrNothing
-    OptionType -- ^type
-    Double -- ^strike
+    !OptionType -- ^type
+    !Double -- ^strike
   | CashOrNothing
-      OptionType -- ^type
-      Double -- ^strike
-      Double -- ^cashPayoff
+      !OptionType -- ^type
+      !Double -- ^strike
+      !Double -- ^cashPayoff
   | Gap
-      OptionType -- ^type
-      Double -- ^strike
-      Double -- ^secondStrike
-  | PercentageStrike PercentageStrikePayoff
-  | PlainVanilla PlainVanillaPayoff
+      !OptionType -- ^type
+      !Double -- ^strike
+      !Double -- ^secondStrike
+  | PercentageStrike !PercentageStrikePayoff
+  | PlainVanilla !PlainVanillaPayoff
   | SuperFund
-      Double -- ^strike
-      Double -- ^secondStrike
+      !Double -- ^strike
+      !Double -- ^secondStrike
   | SuperSharePayoff
-      Double -- ^strike
-      Double -- ^secondStrike
-      Double -- ^cashPayoff
+      !Double -- ^strike
+      !Double -- ^secondStrike
+      !Double -- ^cashPayoff
 
 strikedPayoff :: StrikedPayoff -> IO QlStrikedTypePayoff
 strikedPayoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s
@@ -261,24 +261,22 @@ strikedPayoff (PlainVanilla p) = getMeta' plainVanillaPayoffMeta p >>= qlPlainVa
 strikedPayoff (SuperFund s ss) = qlSuperFundPayoff s ss
 strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
 
-data TypePayoff =
-  Striked StrikedPayoff
-  | Floating
-      OptionType -- ^type
+data TypePayoff = Striked !StrikedPayoff
+  | Floating !OptionType -- ^type
 
 data BasketPayoff =
     Average
-      Payoff -- ^p
-      Word -- ^n
+      !Payoff -- ^p
+      !Word -- ^n
   | AverageMultiple
-      Payoff -- ^p
-      [Double] -- ^a
+      !Payoff -- ^p
+      ![Double] -- ^a
   | Max
-      Payoff -- ^p
+      !Payoff -- ^p
   | Min
-      Payoff -- ^p
+      !Payoff -- ^p
   | Spread
-      Payoff -- ^p
+      !Payoff -- ^p
 
 basketPayoff (Average p n) = payoff p >>= (`qlAverageBasketPayoff` n)
 basketPayoff (AverageMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a)
@@ -288,76 +286,76 @@ basketPayoff (Spread p) = payoff p >>= qlSpreadBasketPayoff
 
 data Payoff =
     DoubleStickyRatchet
-      Double -- ^type1
-      Double -- ^type2
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^gearing3
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^spread3
-      Double -- ^initialValue1
-      Double -- ^initialValue2
-      Double -- ^accrualFactor
+      !Double -- ^type1
+      !Double -- ^type2
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^gearing3
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^spread3
+      !Double -- ^initialValue1
+      !Double -- ^initialValue2
+      !Double -- ^accrualFactor
   | ForwardType
-      PositionType -- ^type
-      Double -- ^strike
+      !PositionType -- ^type
+      !Double -- ^strike
   | RatchetMax
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^gearing3
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^spread3
-      Double -- ^initialValue1
-      Double -- ^initialValue2
-      Double -- ^accrualFactor
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^gearing3
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^spread3
+      !Double -- ^initialValue1
+      !Double -- ^initialValue2
+      !Double -- ^accrualFactor
   | RatchetMin
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^gearing3
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^spread3
-      Double -- ^initialValue1
-      Double -- ^initialValue2
-      Double -- ^accrualFactor
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^gearing3
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^spread3
+      !Double -- ^initialValue1
+      !Double -- ^initialValue2
+      !Double -- ^accrualFactor
   | Ratchet
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^initialValue
-      Double -- ^accrualFactor
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^initialValue
+      !Double -- ^accrualFactor
   | StickyMax
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^gearing3
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^spread3
-      Double -- ^initialValue1
-      Double -- ^initialValue2
-      Double -- ^accrualFactor
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^gearing3
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^spread3
+      !Double -- ^initialValue1
+      !Double -- ^initialValue2
+      !Double -- ^accrualFactor
   | StickyMin
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^gearing3
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^spread3
-      Double -- ^initialValue1
-      Double -- ^initialValue2
-      Double -- ^accrualFactor
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^gearing3
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^spread3
+      !Double -- ^initialValue1
+      !Double -- ^initialValue2
+      !Double -- ^accrualFactor
   | Sticky
-      Double -- ^gearing1
-      Double -- ^gearing2
-      Double -- ^spread1
-      Double -- ^spread2
-      Double -- ^initialValue
-      Double -- ^accrualFactor
-  | Type TypePayoff
-  | Basket BasketPayoff
+      !Double -- ^gearing1
+      !Double -- ^gearing2
+      !Double -- ^spread1
+      !Double -- ^spread2
+      !Double -- ^initialValue
+      !Double -- ^accrualFactor
+  | Type !TypePayoff
+  | Basket !BasketPayoff
 
 {#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
 
@@ -420,15 +418,15 @@ payoff (Basket b) = getMeta' basketPayoffMeta b >>= asQlPayoff
 
 data Callability =
   Soft
-    Double -- ^price
-    BondPriceType
-    Day
-    Double -- ^trigger
+    !Double -- ^price
+    !BondPriceType
+    !Day
+    !Double -- ^trigger
   | Callability
-      Double
-      BondPriceType
-      CallabilityType
-      Day
+      !Double
+      !BondPriceType
+      !CallabilityType
+      !Day
 
 {#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
 
@@ -506,7 +504,7 @@ withOptimizationMethod :: OptimizationMethod -> (Ptr COptimizationMethod -> IO a
 withOptimizationMethod = withEnumType optimizationMethodMeta
 
 -- temp solution just to get rid of the EnumObject multiparam type class
-data EnumMeta' a b = EnumMeta' {getMeta' :: a -> IO b, with :: forall c. b -> (Ptr b -> IO c) -> IO c}
+data EnumMeta' a b = EnumMeta' {getMeta' :: !(a -> IO b), with :: !(forall c. b -> (Ptr b -> IO c) -> IO c)}
 withEnumType' :: EnumMeta' a b -> a -> (Ptr b -> IO c) -> IO c
 withEnumType' t x f = getMeta' t x >>= \y -> with t y f
 
@@ -583,13 +581,13 @@ withPayoff = withEnumType' payoffMeta
 
 data FittingMethod =
   CubicBSplines
-    [Double] -- ^knotVector (year fraction)
-    Bool -- ^constrainAtZero
-  | ExponentialSplines Bool
+    ![Double] -- ^knotVector (year fraction)
+    !Bool -- ^constrainAtZero
+  | ExponentialSplines !Bool
   | NelsonSiegel
   | SimplePolynomial
-    Word -- ^degree
-    Bool -- ^constrainAtZero
+    !Word -- ^degree
+    !Bool -- ^constrainAtZero
   | Svensson
   deriving (Show, Eq)
 
@@ -610,9 +608,9 @@ fittingMethod Svensson = qlSvenssonFitting
 
 data FdmScheme =
   FdmScheme
-    FdmSchemeType -- ^type
-    Double -- ^theta
-    Double -- ^mu
+    !FdmSchemeType -- ^type
+    !Double -- ^theta
+    !Double -- ^mu
   | CraigSneyd
   | Douglas
   | ExplicitEuler
@@ -642,11 +640,11 @@ fdmScheme ModifiedHundsdorfer = qlFdmSchemeDescModifiedHundsdorfer
 
 data Constraint =
   Boundary
-    Double -- ^low
-    Double -- ^high
+    !Double -- ^low
+    !Double -- ^high
   | Composite
-    Constraint -- ^c1
-    Constraint -- ^c2
+    !Constraint -- ^c1
+    !Constraint -- ^c2
   | NoConstraint
   | PositiveConstraint
 
@@ -663,11 +661,10 @@ constraint PositiveConstraint = qlPositiveConstraint
 
 data OptimizationMethod =
   LevenbergMarquardt
-    Double -- ^epsfcn
-    Double -- ^xtol
-    Double -- ^gtol
-  | Simplex
-    Double -- ^lambda, characteristic length
+    !Double -- ^epsfcn
+    !Double -- ^xtol
+    !Double -- ^gtol
+  | Simplex !Double -- ^lambda, characteristic length
 
 optimizationMethod :: OptimizationMethod -> IO QlOptimizationMethod
 optimizationMethod (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
@@ -677,11 +674,11 @@ optimizationMethod (Simplex l) = qlSimplex l
 
 data EndCriteria =
   EndCriteria
-    Word -- ^maxIterations
-    Word -- ^maxStationaryStateIterations
-    Double -- ^rootEpsilon
-    Double -- ^functionEpsilon
-    Double -- ^gradientNormEpsilon
+    !Word -- ^maxIterations
+    !Word -- ^maxStationaryStateIterations
+    !Double -- ^rootEpsilon
+    !Double -- ^functionEpsilon
+    !Double -- ^gradientNormEpsilon
 
 endCriteria :: EndCriteria -> IO QlEndCriteria
 endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
@@ -693,9 +690,9 @@ endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
 
 data Rounding = NoRounding
   | Rounding
-    Int -- ^precision
-    RoundingType
-    Int -- ^digit
+    !Int -- ^precision
+    !RoundingType
+    !Int -- ^digit
   deriving (Show, Eq)
 
 rounding :: Rounding -> IO QlRounding
@@ -710,11 +707,11 @@ rounding (Rounding p t d) = qlRounding1 p t d
 
 data LmCorrelationModel = ConstWrapperCorrelation LmCorrelationModel
   | ExponentialCorrelation Word -- ^size
-    Double -- ^rho
+    !Double -- ^rho
   | LinearExponentialCorrelation Word -- ^size
-    Double -- ^rho
-    Double -- ^beta
-    Word -- ^factors
+    !Double -- ^rho
+    !Double -- ^beta
+    !Word -- ^factors
   deriving (Show, Eq)
 
 {#fun qlLmConstWrapperCorrelationModel{withSimpleType*`QlLmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
@@ -733,12 +730,12 @@ withLmCorrelationModel :: LmCorrelationModel -> (Ptr CLmCorrelationModel -> IO a
 withLmCorrelationModel = withEnumType correlationModelMeta
 
 data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
-  | FixedVolatility [Double] [Double]
-  | LinearExponentialVolatility [Double] -- ^fixing times
-    Double -- ^a
-    Double -- ^b
-    Double -- ^c
-    Double -- ^d
+  | FixedVolatility ![Double] ![Double]
+  | LinearExponentialVolatility ![Double] -- ^fixing times
+    !Double -- ^a
+    !Double -- ^b
+    !Double -- ^c
+    !Double -- ^d
   deriving (Show, Eq)
 
 {#fun qlLmConstWrapperVolatilityModel{withSimpleType*`QlLmVolatilityModel', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}

@@ -765,7 +765,7 @@ withFloatingRateCouponPricerArray = withSimpleArray getCFloatingRateCouponPricer
 ---- class hierarchies
 newtype MetaConv a b = MetaConv {_upcast :: Ptr a -> IO (Ptr b)}
 -- we can infer upcast just from two types so actually we don't need to drag it around with the cast function
-data GenObject b a = GenObject {getObject :: ForeignPtr a, _getMeta :: MetaConv a b}
+data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(MetaConv a b)}
 
 asGenObject :: Meta c -> MetaConv c c -> GenObject c a -> IO (GenObject c c)
 asGenObject m0 m (GenObject p (MetaConv k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
