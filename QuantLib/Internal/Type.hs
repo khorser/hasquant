@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleInstances, RankNTypes #-}
 module QuantLib.Internal.Type
 (
     CCalendar
@@ -763,23 +763,24 @@ withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr 
 withFloatingRateCouponPricerArray = withSimpleArray getCFloatingRateCouponPricer
 
 ---- class hierarchies
-newtype MetaConv a b = MetaConv {_upcast :: Ptr a -> IO (Ptr b)}
+newtype Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b)}
 -- we can infer upcast just from two types so actually we don't need to drag it around with the cast function
-data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(MetaConv a b)}
+data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a b)}
+-- data GenObject2 b a = GenObject2 !(ForeignPtr a) !(Upcast a b) | GenObject2' !(GenObject a) !(Upcast a b)
 
-asGenObject :: Meta c -> MetaConv c c -> GenObject c a -> IO (GenObject c c)
-asGenObject m0 m (GenObject p (MetaConv k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
+asGenObject :: Meta c -> Upcast c c -> GenObject c a -> IO (GenObject c c)
+asGenObject m0 m (GenObject p (Upcast k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
 
 withGenObject :: GenObject c a -> (Ptr c -> IO b) -> IO b
-withGenObject (GenObject p (MetaConv k)) ff = withForeignPtr p (k >=> ff)
+withGenObject (GenObject p (Upcast k)) ff = withForeignPtr p (k >=> ff)
 
 withSubObject :: GenObject c a -> (Ptr a -> IO b) -> IO b
 withSubObject = withForeignPtr . getObject
 
-peekGenObject :: Meta c -> MetaConv c c -> Ptr c -> IO (GenObject c c)
+peekGenObject :: Meta c -> Upcast c c -> Ptr c -> IO (GenObject c c)
 peekGenObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
 
-peekSubObject :: Meta a -> MetaConv a c -> Ptr a -> IO (GenObject c a)
+peekSubObject :: Meta a -> Upcast a c -> Ptr a -> IO (GenObject c a)
 peekSubObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
 
 withGenArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr c)) -> IO b) -> IO b
@@ -810,16 +811,16 @@ quoteMeta = Meta qlFreeQuote
 simpleQuoteMeta :: Meta CSimpleQuote
 simpleQuoteMeta = Meta qlFreeSimpleQuote
 
-quoteMetaConv :: MetaConv CQuote CQuote
-quoteMetaConv = MetaConv return
+quoteUpcast :: Upcast CQuote CQuote
+quoteUpcast = Upcast return
 
-simpleQuoteMetaConv :: MetaConv CSimpleQuote CQuote
-simpleQuoteMetaConv = MetaConv qlSimpleQuoteAsQuote
+simpleQuoteUpcast :: Upcast CSimpleQuote CQuote
+simpleQuoteUpcast = Upcast qlSimpleQuoteAsQuote
 
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
-asQuote :: GenQuote a -> IO (GenQuote CQuote)
-asQuote (GenQuote q) = GenQuote <$> asGenObject quoteMeta quoteMetaConv q
+asQuote :: GenQuote a -> IO Quote
+asQuote (GenQuote q) = GenQuote <$> asGenObject quoteMeta quoteUpcast q
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
 withQuote = withGenObject . getQuote
@@ -828,10 +829,10 @@ withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 withSimpleQuote = withSubObject . getQuote
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekGenObject quoteMeta quoteMetaConv p
+peekQuote p = GenQuote <$> peekGenObject quoteMeta quoteUpcast p
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> peekSubObject simpleQuoteMeta simpleQuoteMetaConv p
+peekSimpleQuote p = GenQuote <$> peekSubObject simpleQuoteMeta simpleQuoteUpcast p
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
 withQuoteArray x = withGenArray (map getQuote x)
@@ -857,14 +858,14 @@ legMeta = Meta qlFreeLeg
 couponLegMeta :: Meta CCouponLeg
 couponLegMeta = Meta qlFreeCouponLeg
 
-legMetaConv :: MetaConv CLeg CLeg
-legMetaConv = MetaConv return
+legUpcast :: Upcast CLeg CLeg
+legUpcast = Upcast return
 
-couponLegMetaConv :: MetaConv CCouponLeg CLeg
-couponLegMetaConv = MetaConv qlCouponLegAsLeg
+couponLegUpcast :: Upcast CCouponLeg CLeg
+couponLegUpcast = Upcast qlCouponLegAsLeg
 
-asLeg :: GenLeg a -> IO (GenLeg CLeg)
-asLeg (GenLeg q) = GenLeg <$> asGenObject legMeta legMetaConv q
+asLeg :: GenLeg a -> IO Leg
+asLeg (GenLeg q) = GenLeg <$> asGenObject legMeta legUpcast q
 
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
 withLeg = withGenObject . getLeg
@@ -872,11 +873,11 @@ withLeg = withGenObject . getLeg
 withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
 withCouponLeg = withSubObject . getLeg
 
-peekLeg :: Ptr CLeg -> IO (GenLeg CLeg)
-peekLeg p = GenLeg <$> peekGenObject legMeta legMetaConv p
+peekLeg :: Ptr CLeg -> IO Leg
+peekLeg p = GenLeg <$> peekGenObject legMeta legUpcast p
 
 peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
-peekCouponLeg p = GenLeg <$> peekSubObject couponLegMeta couponLegMetaConv p
+peekCouponLeg p = GenLeg <$> peekSubObject couponLegMeta couponLegUpcast p
 
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
 withLegArray x = withGenArray (map getLeg x)
@@ -926,44 +927,44 @@ swapRateHelperMeta = Meta qlFreeSwapRateHelper
 oisRateHelperMeta :: Meta COISRateHelper
 oisRateHelperMeta = Meta qlFreeOISRateHelper
 
-rateHelperMetaConv :: MetaConv CRateHelper CRateHelper
-rateHelperMetaConv = MetaConv return
+rateHelperUpcast :: Upcast CRateHelper CRateHelper
+rateHelperUpcast = Upcast return
 
-bondHelperMetaConv :: MetaConv CBondHelper CRateHelper
-bondHelperMetaConv = MetaConv qlBondHelperAsRateHelper
+bondHelperUpcast :: Upcast CBondHelper CRateHelper
+bondHelperUpcast = Upcast qlBondHelperAsRateHelper
 
-swapRateHelperMetaConv :: MetaConv CSwapRateHelper CRateHelper
-swapRateHelperMetaConv = MetaConv qlSwapRateHelperAsRateHelper
+swapRateHelperUpcast :: Upcast CSwapRateHelper CRateHelper
+swapRateHelperUpcast = Upcast qlSwapRateHelperAsRateHelper
 
-oisRateHelperMetaConv :: MetaConv COISRateHelper CRateHelper
-oisRateHelperMetaConv = MetaConv qlOISRateHelperAsRateHelper
+oisRateHelperUpcast :: Upcast COISRateHelper CRateHelper
+oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper
 
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
-asRateHelper (GenRateHelper q) = GenRateHelper <$> asGenObject rateHelperMeta rateHelperMetaConv q
+asRateHelper (GenRateHelper q) = GenRateHelper <$> asGenObject rateHelperMeta rateHelperUpcast q
 
 withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
 withRateHelper = withGenObject . getRateHelper
 
 peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
-peekRateHelper p = GenRateHelper <$> peekGenObject rateHelperMeta rateHelperMetaConv p
+peekRateHelper p = GenRateHelper <$> peekGenObject rateHelperMeta rateHelperUpcast p
 
 withBondHelper :: GenRateHelper CBondHelper -> (Ptr CBondHelper-> IO b) -> IO b
 withBondHelper = withSubObject . getRateHelper
 
 peekBondHelper :: Ptr CBondHelper -> IO (GenRateHelper CBondHelper)
-peekBondHelper p = GenRateHelper <$> peekSubObject bondHelperMeta bondHelperMetaConv p
+peekBondHelper p = GenRateHelper <$> peekSubObject bondHelperMeta bondHelperUpcast p
 
 withSwapRateHelper :: GenRateHelper CSwapRateHelper -> (Ptr CSwapRateHelper-> IO b) -> IO b
 withSwapRateHelper = withSubObject . getRateHelper
 
 peekSwapRateHelper :: Ptr CSwapRateHelper -> IO (GenRateHelper CSwapRateHelper)
-peekSwapRateHelper p = GenRateHelper <$> peekSubObject swapRateHelperMeta swapRateHelperMetaConv p
+peekSwapRateHelper p = GenRateHelper <$> peekSubObject swapRateHelperMeta swapRateHelperUpcast p
 
 withOISRateHelper :: GenRateHelper COISRateHelper -> (Ptr COISRateHelper-> IO b) -> IO b
 withOISRateHelper = withSubObject . getRateHelper
 
 peekOISRateHelper :: Ptr COISRateHelper -> IO (GenRateHelper COISRateHelper)
-peekOISRateHelper p = GenRateHelper <$> peekSubObject oisRateHelperMeta oisRateHelperMetaConv p
+peekOISRateHelper p = GenRateHelper <$> peekSubObject oisRateHelperMeta oisRateHelperUpcast p
 
 calibrationHelperMeta :: Meta CCalibrationHelper
 calibrationHelperMeta = Meta qlFreeCalibrationHelper
@@ -971,26 +972,26 @@ calibrationHelperMeta = Meta qlFreeCalibrationHelper
 blackCalibrationHelperMeta :: Meta CBlackCalibrationHelper
 blackCalibrationHelperMeta = Meta qlFreeBlackCalibrationHelper
 
-calibrationHelperMetaConv :: MetaConv CCalibrationHelper CCalibrationHelper
-calibrationHelperMetaConv = MetaConv return
+calibrationHelperUpcast :: Upcast CCalibrationHelper CCalibrationHelper
+calibrationHelperUpcast = Upcast return
 
-blackCalibrationHelperMetaConv :: MetaConv CBlackCalibrationHelper CCalibrationHelper
-blackCalibrationHelperMetaConv = MetaConv qlBlackCalibrationHelperAsCalibrationHelper
+blackCalibrationHelperUpcast :: Upcast CBlackCalibrationHelper CCalibrationHelper
+blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper
 
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
-asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asGenObject calibrationHelperMeta calibrationHelperMetaConv q
+asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asGenObject calibrationHelperMeta calibrationHelperUpcast q
 
 withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
 withCalibrationHelper = withGenObject . getCalibrationHelper
 
 peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
-peekCalibrationHelper p = GenCalibrationHelper <$> peekGenObject calibrationHelperMeta calibrationHelperMetaConv p
+peekCalibrationHelper p = GenCalibrationHelper <$> peekGenObject calibrationHelperMeta calibrationHelperUpcast p
 
 withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
 withBlackCalibrationHelper = withSubObject . getCalibrationHelper
 
 peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (GenCalibrationHelper CBlackCalibrationHelper)
-peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekSubObject blackCalibrationHelperMeta blackCalibrationHelperMetaConv p
+peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekSubObject blackCalibrationHelperMeta blackCalibrationHelperUpcast p
 
 blackCalculatorMeta :: Meta CBlackCalculator
 blackCalculatorMeta = Meta qlFreeBlackCalculator
@@ -998,26 +999,26 @@ blackCalculatorMeta = Meta qlFreeBlackCalculator
 blackScholesCalculatorMeta :: Meta CBlackScholesCalculator
 blackScholesCalculatorMeta = Meta qlFreeBlackScholesCalculator
 
-blackCalculatorMetaConv :: MetaConv CBlackCalculator CBlackCalculator
-blackCalculatorMetaConv = MetaConv return
+blackCalculatorUpcast :: Upcast CBlackCalculator CBlackCalculator
+blackCalculatorUpcast = Upcast return
 
-blackScholesCalculatorMetaConv :: MetaConv CBlackScholesCalculator CBlackCalculator
-blackScholesCalculatorMetaConv = MetaConv qlBlackScholesCalculatorAsBlackCalculator
+blackScholesCalculatorUpcast :: Upcast CBlackScholesCalculator CBlackCalculator
+blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator
 
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
-asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asGenObject blackCalculatorMeta blackCalculatorMetaConv q
+asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asGenObject blackCalculatorMeta blackCalculatorUpcast q
 
 withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
 withBlackCalculator = withGenObject . getBlackCalculator
 
 peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
-peekBlackCalculator p = GenBlackCalculator <$> peekGenObject blackCalculatorMeta blackCalculatorMetaConv p
+peekBlackCalculator p = GenBlackCalculator <$> peekGenObject blackCalculatorMeta blackCalculatorUpcast p
 
 withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
 withBlackScholesCalculator = withSubObject . getBlackCalculator
 
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalculator CBlackScholesCalculator)
-peekBlackScholesCalculator p = GenBlackCalculator <$> peekSubObject blackScholesCalculatorMeta blackScholesCalculatorMetaConv p
+peekBlackScholesCalculator p = GenBlackCalculator <$> peekSubObject blackScholesCalculatorMeta blackScholesCalculatorUpcast p
 
 withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
 withRateHelperArray x = withGenArray (map getRateHelper x)
@@ -1027,68 +1028,6 @@ withBondHelperArray x = withSubArray (map getRateHelper x)
 
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
 withCalibrationHelperArray x = withGenArray (map getCalibrationHelper x)
-
---bondMeta :: MetaConv CBond ()
---bondMeta = MetaConv qlFreeBond undefined
---
---fixedRateBondMeta :: MetaConv CFixedRateBond CBond
---fixedRateBondMeta = MetaConv qlFreeFixedRateBond qlFixedRateBondAsBond
---
---floatingRateBondMeta :: MetaConv CFloatingRateBond CBond
---floatingRateBondMeta = MetaConv qlFreeFloatingRateBond qlFloatingRateBondAsBond
---
---
---data CBond
---data CFixedRateBond
---data CFloatingRateBond
---
---type Bond = ComplexType CBond ()
---type FixedRateBond = ComplexType CFixedRateBond CBond
---type FloatingRateBond = ComplexType CFloatingRateBond CBond
---
---peekBond :: Ptr CBond -> IO Bond
---peekBond = peekComplexType bondMeta
---
---peekFixedRateBond :: Ptr CFixedRateBond -> IO FixedRateBond
---peekFixedRateBond = peekComplexType fixedRateBondMeta
---
---peekFloatingRateBond :: Ptr CFloatingRateBond -> IO FloatingRateBond
---peekFloatingRateBond = peekComplexType floatingRateBondMeta
---
---fixedRateBondAsBond :: FixedRateBond -> Bond
---fixedRateBondAsBond = asBond
---
---floatingRateBondAsBond :: FloatingRateBond -> Bond
---floatingRateBondAsBond = asBond
---
---withBond :: Bond -> (Ptr CBond -> IO b) -> IO b
---withBond = withComplexType
---
---withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond -> IO b) -> IO b
---withFixedRateBond = withComplexType
---
---withFloatingRateBond :: FloatingRateBond -> (Ptr CFloatingRateBond -> IO b) -> IO b
---withFloatingRateBond = withComplexType
---
---asBond :: ComplexType a CBond -> Bond
---asBond = createCast bondMeta
---
---foreign import ccall "QuantLib/Instrument/Bond.chs.h &qlFreeBond"
---  qlFreeBond :: FinalizerPtr CBond
---
---foreign import ccall "QuantLib/Instrument/Bond.chs.h &qlFreeFixedRateBond"
---  qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond
---
---foreign import ccall "QuantLib/Instrument/Bond.chs.h &qlFreeFloatingRateBond"
---  qlFreeFloatingRateBond :: FinalizerPtr CFloatingRateBond
---
---foreign import ccall safe "QuantLib/Instrument/Bond.chs.h qlFixedRateBondAsBond"
---  qlFixedRateBondAsBond :: Ptr CFixedRateBond -> IO (Ptr CBond)
---
---foreign import ccall safe "QuantLib/Instrument/Bond.chs.h qlFloatingRateBondAsBond"
---  qlFloatingRateBondAsBond :: Ptr CFloatingRateBond -> IO (Ptr CBond)
-
-------
 
 -- temporary storage before hierarchies are migrated off type classes
 
@@ -1804,5 +1743,129 @@ withMaybeYieldTermStructure = withMaybeSimpleType . (getCYieldTermStructure <$>)
 
 withStochasticProcess1DArray :: [StochasticProcess1D] -> ((CUInt, Ptr (Ptr CStochasticProcess1D)) -> IO b) -> IO b
 withStochasticProcess1DArray = withSimpleArray getCStochasticProcess1D
+
+foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex -> IO (Ptr CIndex)
+foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRateIndex :: Ptr CBMAIndex -> IO (Ptr CInterestRateIndex)
+foreign import ccall "ql.h qlSwapIndexAsInterestRateIndex" qlSwapIndexAsInterestRateIndex :: Ptr CSwapIndex -> IO (Ptr CInterestRateIndex)
+foreign import ccall "ql.h qlOvernightIndexedSwapIndexAsSwapIndex" qlOvernightIndexedSwapIndexAsSwapIndex :: Ptr COvernightIndexedSwapIndex -> IO (Ptr CSwapIndex)
+foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterestRateIndex :: Ptr CIborIndex -> IO (Ptr CInterestRateIndex)
+foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex -> IO (Ptr CIborIndex)
+
+indexUpcast :: Upcast CIndex CIndex
+indexUpcast = Upcast return
+
+interestRateIndexUpcast :: Upcast CInterestRateIndex CIndex
+interestRateIndexUpcast = Upcast qlInterestRateIndexAsIndex
+
+bmaIndexUpcast :: Upcast CBMAIndex CInterestRateIndex
+bmaIndexUpcast = Upcast qlBMAIndexAsInterestRateIndex
+
+iborIndexUpcast :: Upcast CIborIndex CInterestRateIndex
+iborIndexUpcast = Upcast qlIborIndexAsInterestRateIndex
+
+swapIndexUpcast :: Upcast CSwapIndex CInterestRateIndex
+swapIndexUpcast = Upcast qlSwapIndexAsInterestRateIndex
+
+overnightIndexUpcast :: Upcast COvernightIndex CIborIndex
+overnightIndexUpcast = Upcast qlOvernightIndexAsIborIndex
+
+overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex CSwapIndex
+overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex
+
+data GenIndex a = GenIndex !a !(forall b. a -> (Ptr CIndex -> IO b) -> IO b)
+data NestedInterestRateIndex a = NestedInterestRateIndex !a !(forall b. a -> (Ptr CInterestRateIndex -> IO b) -> IO b)
+data NestedIborIndex a = NestedIborIndex !a !(forall b. a -> (Ptr CIborIndex -> IO b) -> IO b)
+data NestedSwapIndex a = NestedSwapIndex !a !(forall b. a -> (Ptr CSwapIndex -> IO b) -> IO b)
+
+type GenInterestRateIndex a = GenIndex (NestedInterestRateIndex a)
+type GenIborIndex a = GenIndex (NestedInterestRateIndex (NestedIborIndex a))
+type GenSwapIndex a = GenIndex (NestedInterestRateIndex (NestedSwapIndex a))
+
+type Index_ = GenIndex (ForeignPtr CIndex)
+type InterestRateIndex_ = GenIndex (ForeignPtr CInterestRateIndex)
+type IborIndex_ = GenIborIndex (ForeignPtr CIborIndex)
+type SwapIndex_ = GenSwapIndex (ForeignPtr CSwapIndex)
+type BMAIndex_ = GenInterestRateIndex (ForeignPtr CBMAIndex)
+type OvernightIborIndex_ = GenIborIndex (ForeignPtr COvernightIndex)
+type OvernightIndexedSwapIndex_ = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
+
+withIndex_ :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
+withIndex_ (GenIndex x w) = w x
+
+withInterestRateIndex_ :: GenInterestRateIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
+withInterestRateIndex_ (GenIndex (NestedInterestRateIndex x w) _) = w x 
+
+withBMAIndex_ :: BMAIndex_ -> (Ptr CBMAIndex -> IO b) -> IO b
+withBMAIndex_ (GenIndex (NestedInterestRateIndex x _) _) = withForeignPtr x
+
+peekBMAIndex_ :: Ptr CBMAIndex -> IO BMAIndex_
+peekBMAIndex_ x = do
+  p <- newForeignPtr qlFreeBMAIndex x
+  return $ GenIndex (NestedInterestRateIndex p withNestedBMAIndex) withNestedInterestRateIndex
+  where
+    withNestedBMAIndex :: ForeignPtr CBMAIndex -> (Ptr CInterestRateIndex -> IO b) -> IO b
+    withNestedBMAIndex p f = withForeignPtr p (qlBMAIndexAsInterestRateIndex >=> f)
+
+withNestedInterestRateIndex :: NestedInterestRateIndex a -> (Ptr CIndex -> IO b) -> IO b
+withNestedInterestRateIndex (NestedInterestRateIndex p w) f = w p (qlInterestRateIndexAsIndex >=> f) 
+
+withIborIndex_ :: GenIborIndex a -> (Ptr CIborIndex -> IO b) -> IO b
+withIborIndex_ (GenIndex (NestedInterestRateIndex (NestedIborIndex x w) _) _) = w x
+
+withSwapIndex_ :: GenSwapIndex a -> (Ptr CSwapIndex -> IO b) -> IO b
+withSwapIndex_ (GenIndex (NestedInterestRateIndex (NestedSwapIndex x w) _) _) = w x
+
+withOvernightIborIndex_ :: OvernightIborIndex_ -> (Ptr COvernightIndex -> IO b) -> IO b
+withOvernightIborIndex_ (GenIndex (NestedInterestRateIndex (NestedIborIndex x _) _) _) = withForeignPtr x
+
+withOvernightIndexedSwapIndex_ :: OvernightIndexedSwapIndex_ -> (Ptr COvernightIndexedSwapIndex -> IO b) -> IO b
+withOvernightIndexedSwapIndex_ (GenIndex (NestedInterestRateIndex (NestedSwapIndex x _) _) _) = withForeignPtr x
+
+peekSwapIndex_ :: Ptr CSwapIndex -> IO SwapIndex_
+peekSwapIndex_ x = do
+  p <- newForeignPtr qlFreeSwapIndex x
+  return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex p withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex
+
+withNestedSwapIndex :: NestedSwapIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
+withNestedSwapIndex (NestedSwapIndex p w) f = w p (qlSwapIndexAsInterestRateIndex >=> f)
+
+peekOvernightIndexedSwapIndex_ :: Ptr COvernightIndexedSwapIndex -> IO OvernightIndexedSwapIndex_
+peekOvernightIndexedSwapIndex_ x = do
+  p <- newForeignPtr qlFreeOvernightIndexedSwapIndex x
+  return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex p withNestedOvernightIndexedSwapIndex) withNestedSwapIndex) withNestedInterestRateIndex
+  where
+    withNestedOvernightIndexedSwapIndex :: ForeignPtr COvernightIndexedSwapIndex -> (Ptr CSwapIndex -> IO b) -> IO b
+    withNestedOvernightIndexedSwapIndex p f = withForeignPtr p (qlOvernightIndexedSwapIndexAsSwapIndex >=> f)
+
+peekIborIndex_ :: Ptr CIborIndex -> IO IborIndex_
+peekIborIndex_ x = do
+  p <- newForeignPtr qlFreeIborIndex x
+  return $ GenIndex (NestedInterestRateIndex (NestedIborIndex p withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex
+
+withNestedIborIndex :: NestedIborIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
+withNestedIborIndex (NestedIborIndex p w) f = w p (qlIborIndexAsInterestRateIndex >=> f)
+
+peekOvernightIborIndex_ :: Ptr COvernightIndex -> IO OvernightIborIndex_
+peekOvernightIborIndex_ x = do
+  p <- newForeignPtr qlFreeOvernightIborIndex x
+  return $ GenIndex (NestedInterestRateIndex (NestedIborIndex p withNestedOvernightIndex) withNestedIborIndex) withNestedInterestRateIndex
+  where
+    withNestedOvernightIndex :: ForeignPtr COvernightIndex -> (Ptr CIborIndex -> IO b) -> IO b
+    withNestedOvernightIndex p f = withForeignPtr p (qlOvernightIndexAsIborIndex >=> f)
+
+asIndex_ :: GenIndex a -> IO Index_
+asIndex_ (GenIndex x w) = w x (\p -> do {fp <- newForeignPtr qlFreeIndex p; return $ GenIndex fp withForeignPtr})
+
+asInterestRateIndex_ :: GenInterestRateIndex a -> IO InterestRateIndex_
+asInterestRateIndex_ (GenIndex (NestedInterestRateIndex x w) _) = w x (\p -> do {fp <- newForeignPtr qlFreeInterestRateIndex p; return $ GenIndex fp withNestedInterestRateIndexAsIndex})
+  where
+    withNestedInterestRateIndexAsIndex :: ForeignPtr CInterestRateIndex -> (Ptr CIndex -> IO b) -> IO b
+    withNestedInterestRateIndexAsIndex p f = withForeignPtr p (qlInterestRateIndexAsIndex >=> f)
+
+asIborIndex_ :: GenIborIndex a -> IO IborIndex_
+asIborIndex_ (GenIndex (NestedInterestRateIndex (NestedIborIndex x w) _) _) = w x (\p -> do {fp <- newForeignPtr qlFreeIborIndex p; return $ GenIndex (NestedInterestRateIndex (NestedIborIndex fp withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex})
+
+asSwapIndex_ :: GenSwapIndex a -> IO SwapIndex_
+asSwapIndex_ (GenIndex (NestedInterestRateIndex (NestedSwapIndex x w) _) _) = w x (\p -> do {fp <- newForeignPtr qlFreeSwapIndex p; return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex fp withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex})
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
