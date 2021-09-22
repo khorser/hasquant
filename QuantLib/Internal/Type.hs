@@ -339,7 +339,6 @@ module QuantLib.Internal.Type
   , withOvernightIborIndex
   , Index
   , CIndex
-  , peekIndex
   , withIndex
   , Instrument
   , CInstrument
@@ -347,7 +346,6 @@ module QuantLib.Internal.Type
   , withInstrument
   , InterestRateIndex
   , CInterestRateIndex
-  , peekInterestRateIndex
   , withInterestRateIndex
   , KlugeExtOUProcess
   , CKlugeExtOUProcess
@@ -477,6 +475,16 @@ module QuantLib.Internal.Type
   , withInstrumentArray
   , withMaybeYieldTermStructure
   , withStochasticProcess1DArray
+
+  , asIndex
+  , asInterestRateIndex
+  , asIborIndex
+  , asSwapIndex
+
+  , GenInterestRateIndex
+  , GenIndex
+  , GenIborIndex
+  , GenSwapIndex
 )
   where
 
@@ -1120,13 +1128,8 @@ peekBlackVolTermStructure = peekSimpleType blackVolTermStructureMeta >=> return 
 withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr CBlackVolTermStructure -> IO b) -> IO b
 withBlackVolTermStructure = withSimpleType . getCBlackVolTermStructure
 data CBMAIndex
-newtype BMAIndex = BMAIndex {getCBMAIndex :: SimpleType CBMAIndex}
 bMAIndexMeta :: Meta CBMAIndex
 bMAIndexMeta = Meta qlFreeBMAIndex
-peekBMAIndex :: Ptr CBMAIndex -> IO BMAIndex
-peekBMAIndex = peekSimpleType bMAIndexMeta >=> return . BMAIndex
-withBMAIndex :: BMAIndex -> (Ptr CBMAIndex -> IO b) -> IO b
-withBMAIndex = withSimpleType . getCBMAIndex
 data CBMASwap
 newtype BMASwap = BMASwap {getCBMASwap :: SimpleType CBMASwap}
 bMASwapMeta :: Meta CBMASwap
@@ -1368,29 +1371,14 @@ peekHybridHestonHullWhiteProcess = peekSimpleType hybridHestonHullWhiteProcessMe
 withHybridHestonHullWhiteProcess :: HybridHestonHullWhiteProcess -> (Ptr CHybridHestonHullWhiteProcess -> IO b) -> IO b
 withHybridHestonHullWhiteProcess = withSimpleType . getCHybridHestonHullWhiteProcess
 data COvernightIndex
-newtype OvernightIborIndex = OvernightIborIndex {getCOvernightIndex :: SimpleType COvernightIndex}
 overnightIborIndexMeta :: Meta COvernightIndex
 overnightIborIndexMeta = Meta qlFreeOvernightIborIndex
-peekOvernightIborIndex :: Ptr COvernightIndex -> IO OvernightIborIndex
-peekOvernightIborIndex = peekSimpleType overnightIborIndexMeta >=> return . OvernightIborIndex
-withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex -> IO b) -> IO b
-withOvernightIborIndex = withSimpleType . getCOvernightIndex
 data CIborIndex
-newtype IborIndex = IborIndex {getCIborIndex :: SimpleType CIborIndex}
 iborIndexMeta :: Meta CIborIndex
 iborIndexMeta = Meta qlFreeIborIndex
-peekIborIndex :: Ptr CIborIndex -> IO IborIndex
-peekIborIndex = peekSimpleType iborIndexMeta >=> return . IborIndex
-withIborIndex :: IborIndex -> (Ptr CIborIndex -> IO b) -> IO b
-withIborIndex = withSimpleType . getCIborIndex
 data CIndex
-newtype Index = Index {getCIndex :: SimpleType CIndex}
 indexMeta :: Meta CIndex
 indexMeta = Meta qlFreeIndex
-peekIndex :: Ptr CIndex -> IO Index
-peekIndex = peekSimpleType indexMeta >=> return . Index
-withIndex :: Index -> (Ptr CIndex -> IO b) -> IO b
-withIndex = withSimpleType . getCIndex
 data CInstrument
 newtype Instrument = Instrument {getCInstrument :: SimpleType CInstrument}
 instrumentMeta :: Meta CInstrument
@@ -1400,13 +1388,8 @@ peekInstrument = peekSimpleType instrumentMeta >=> return . Instrument
 withInstrument :: Instrument -> (Ptr CInstrument -> IO b) -> IO b
 withInstrument = withSimpleType . getCInstrument
 data CInterestRateIndex
-newtype InterestRateIndex = InterestRateIndex {getCInterestRateIndex :: SimpleType CInterestRateIndex}
 interestRateIndexMeta :: Meta CInterestRateIndex
 interestRateIndexMeta = Meta qlFreeInterestRateIndex
-peekInterestRateIndex :: Ptr CInterestRateIndex -> IO InterestRateIndex
-peekInterestRateIndex = peekSimpleType interestRateIndexMeta >=> return . InterestRateIndex
-withInterestRateIndex :: InterestRateIndex -> (Ptr CInterestRateIndex -> IO b) -> IO b
-withInterestRateIndex = withSimpleType . getCInterestRateIndex
 data CKlugeExtOUProcess
 newtype KlugeExtOUProcess = KlugeExtOUProcess {getCKlugeExtOUProcess :: SimpleType CKlugeExtOUProcess}
 klugeExtOUProcessMeta :: Meta CKlugeExtOUProcess
@@ -1504,13 +1487,8 @@ peekOvernightIndexedSwap = peekSimpleType overnightIndexedSwapMeta >=> return . 
 withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap -> IO b) -> IO b
 withOvernightIndexedSwap = withSimpleType . getCOvernightIndexedSwap
 data COvernightIndexedSwapIndex
-newtype OvernightIndexedSwapIndex = OvernightIndexedSwapIndex {getCOvernightIndexedSwapIndex :: SimpleType COvernightIndexedSwapIndex}
 overnightIndexedSwapIndexMeta :: Meta COvernightIndexedSwapIndex
 overnightIndexedSwapIndexMeta = Meta qlFreeOvernightIndexedSwapIndex
-peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex -> IO OvernightIndexedSwapIndex
-peekOvernightIndexedSwapIndex = peekSimpleType overnightIndexedSwapIndexMeta >=> return . OvernightIndexedSwapIndex
-withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex -> IO b) -> IO b
-withOvernightIndexedSwapIndex = withSimpleType . getCOvernightIndexedSwapIndex
 data CPiecewiseTimeDependentHestonModel
 newtype PiecewiseTimeDependentHestonModel = PiecewiseTimeDependentHestonModel {getCPiecewiseTimeDependentHestonModel :: SimpleType CPiecewiseTimeDependentHestonModel}
 piecewiseTimeDependentHestonModelMeta :: Meta CPiecewiseTimeDependentHestonModel
@@ -1584,13 +1562,8 @@ peekSwap = peekSimpleType swapMeta >=> return . Swap
 withSwap :: Swap -> (Ptr CSwap -> IO b) -> IO b
 withSwap = withSimpleType . getCSwap
 data CSwapIndex
-newtype SwapIndex = SwapIndex {getCSwapIndex :: SimpleType CSwapIndex}
 swapIndexMeta :: Meta CSwapIndex
 swapIndexMeta = Meta qlFreeSwapIndex
-peekSwapIndex :: Ptr CSwapIndex -> IO SwapIndex
-peekSwapIndex = peekSimpleType swapIndexMeta >=> return . SwapIndex
-withSwapIndex :: SwapIndex -> (Ptr CSwapIndex -> IO b) -> IO b
-withSwapIndex = withSimpleType . getCSwapIndex
 data CSwaption
 newtype Swaption = Swaption {getCSwaption :: SimpleType CSwaption}
 swaptionMeta :: Meta CSwaption
@@ -1781,25 +1754,25 @@ type GenInterestRateIndex a = GenIndex (NestedInterestRateIndex a)
 type GenIborIndex a = GenIndex (NestedInterestRateIndex (NestedIborIndex a))
 type GenSwapIndex a = GenIndex (NestedInterestRateIndex (NestedSwapIndex a))
 
-type Index_ = GenIndex (ForeignPtr CIndex)
-type InterestRateIndex_ = GenIndex (ForeignPtr CInterestRateIndex)
-type IborIndex_ = GenIborIndex (ForeignPtr CIborIndex)
-type SwapIndex_ = GenSwapIndex (ForeignPtr CSwapIndex)
-type BMAIndex_ = GenInterestRateIndex (ForeignPtr CBMAIndex)
-type OvernightIborIndex_ = GenIborIndex (ForeignPtr COvernightIndex)
-type OvernightIndexedSwapIndex_ = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
+type Index = GenIndex (ForeignPtr CIndex)
+type InterestRateIndex = GenIndex (ForeignPtr CInterestRateIndex)
+type IborIndex = GenIborIndex (ForeignPtr CIborIndex)
+type SwapIndex = GenSwapIndex (ForeignPtr CSwapIndex)
+type BMAIndex = GenInterestRateIndex (ForeignPtr CBMAIndex)
+type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
+type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
 
-withIndex_ :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
-withIndex_ (GenIndex x w) = w x
+withIndex :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
+withIndex (GenIndex x w) = w x
 
-withInterestRateIndex_ :: GenInterestRateIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
-withInterestRateIndex_ (GenIndex (NestedInterestRateIndex x w) _) = w x 
+withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
+withInterestRateIndex (GenIndex (NestedInterestRateIndex x w) _) = w x 
 
-withBMAIndex_ :: BMAIndex_ -> (Ptr CBMAIndex -> IO b) -> IO b
-withBMAIndex_ (GenIndex (NestedInterestRateIndex x _) _) = withForeignPtr x
+withBMAIndex :: BMAIndex -> (Ptr CBMAIndex -> IO b) -> IO b
+withBMAIndex (GenIndex (NestedInterestRateIndex x _) _) = withForeignPtr x
 
-peekBMAIndex_ :: Ptr CBMAIndex -> IO BMAIndex_
-peekBMAIndex_ x = do
+peekBMAIndex :: Ptr CBMAIndex -> IO BMAIndex
+peekBMAIndex x = do
   p <- newForeignPtr qlFreeBMAIndex x
   return $ GenIndex (NestedInterestRateIndex p withNestedBMAIndex) withNestedInterestRateIndex
   where
@@ -1809,63 +1782,63 @@ peekBMAIndex_ x = do
 withNestedInterestRateIndex :: NestedInterestRateIndex a -> (Ptr CIndex -> IO b) -> IO b
 withNestedInterestRateIndex (NestedInterestRateIndex p w) f = w p (qlInterestRateIndexAsIndex >=> f) 
 
-withIborIndex_ :: GenIborIndex a -> (Ptr CIborIndex -> IO b) -> IO b
-withIborIndex_ (GenIndex (NestedInterestRateIndex (NestedIborIndex x w) _) _) = w x
+withIborIndex :: GenIborIndex a -> (Ptr CIborIndex -> IO b) -> IO b
+withIborIndex (GenIndex (NestedInterestRateIndex (NestedIborIndex x w) _) _) = w x
 
-withSwapIndex_ :: GenSwapIndex a -> (Ptr CSwapIndex -> IO b) -> IO b
-withSwapIndex_ (GenIndex (NestedInterestRateIndex (NestedSwapIndex x w) _) _) = w x
+withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex -> IO b) -> IO b
+withSwapIndex (GenIndex (NestedInterestRateIndex (NestedSwapIndex x w) _) _) = w x
 
-withOvernightIborIndex_ :: OvernightIborIndex_ -> (Ptr COvernightIndex -> IO b) -> IO b
-withOvernightIborIndex_ (GenIndex (NestedInterestRateIndex (NestedIborIndex x _) _) _) = withForeignPtr x
+withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex -> IO b) -> IO b
+withOvernightIborIndex (GenIndex (NestedInterestRateIndex (NestedIborIndex x _) _) _) = withForeignPtr x
 
-withOvernightIndexedSwapIndex_ :: OvernightIndexedSwapIndex_ -> (Ptr COvernightIndexedSwapIndex -> IO b) -> IO b
-withOvernightIndexedSwapIndex_ (GenIndex (NestedInterestRateIndex (NestedSwapIndex x _) _) _) = withForeignPtr x
+withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex -> IO b) -> IO b
+withOvernightIndexedSwapIndex (GenIndex (NestedInterestRateIndex (NestedSwapIndex x _) _) _) = withForeignPtr x
 
-peekSwapIndex_ :: Ptr CSwapIndex -> IO SwapIndex_
-peekSwapIndex_ x = do
+peekSwapIndex :: Ptr CSwapIndex -> IO SwapIndex
+peekSwapIndex x = do
   p <- newForeignPtr qlFreeSwapIndex x
   return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex p withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex
 
 withNestedSwapIndex :: NestedSwapIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
 withNestedSwapIndex (NestedSwapIndex p w) f = w p (qlSwapIndexAsInterestRateIndex >=> f)
 
-peekOvernightIndexedSwapIndex_ :: Ptr COvernightIndexedSwapIndex -> IO OvernightIndexedSwapIndex_
-peekOvernightIndexedSwapIndex_ x = do
+peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex -> IO OvernightIndexedSwapIndex
+peekOvernightIndexedSwapIndex x = do
   p <- newForeignPtr qlFreeOvernightIndexedSwapIndex x
   return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex p withNestedOvernightIndexedSwapIndex) withNestedSwapIndex) withNestedInterestRateIndex
   where
     withNestedOvernightIndexedSwapIndex :: ForeignPtr COvernightIndexedSwapIndex -> (Ptr CSwapIndex -> IO b) -> IO b
     withNestedOvernightIndexedSwapIndex p f = withForeignPtr p (qlOvernightIndexedSwapIndexAsSwapIndex >=> f)
 
-peekIborIndex_ :: Ptr CIborIndex -> IO IborIndex_
-peekIborIndex_ x = do
+peekIborIndex :: Ptr CIborIndex -> IO IborIndex
+peekIborIndex x = do
   p <- newForeignPtr qlFreeIborIndex x
   return $ GenIndex (NestedInterestRateIndex (NestedIborIndex p withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex
 
 withNestedIborIndex :: NestedIborIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
 withNestedIborIndex (NestedIborIndex p w) f = w p (qlIborIndexAsInterestRateIndex >=> f)
 
-peekOvernightIborIndex_ :: Ptr COvernightIndex -> IO OvernightIborIndex_
-peekOvernightIborIndex_ x = do
+peekOvernightIborIndex :: Ptr COvernightIndex -> IO OvernightIborIndex
+peekOvernightIborIndex x = do
   p <- newForeignPtr qlFreeOvernightIborIndex x
   return $ GenIndex (NestedInterestRateIndex (NestedIborIndex p withNestedOvernightIndex) withNestedIborIndex) withNestedInterestRateIndex
   where
     withNestedOvernightIndex :: ForeignPtr COvernightIndex -> (Ptr CIborIndex -> IO b) -> IO b
     withNestedOvernightIndex p f = withForeignPtr p (qlOvernightIndexAsIborIndex >=> f)
 
-asIndex_ :: GenIndex a -> IO Index_
-asIndex_ (GenIndex x w) = w x (\p -> do {fp <- newForeignPtr qlFreeIndex p; return $ GenIndex fp withForeignPtr})
+asIndex :: GenIndex a -> IO Index
+asIndex (GenIndex x w) = w x (\p -> do {fp <- newForeignPtr qlFreeIndex p; return $ GenIndex fp withForeignPtr})
 
-asInterestRateIndex_ :: GenInterestRateIndex a -> IO InterestRateIndex_
-asInterestRateIndex_ (GenIndex (NestedInterestRateIndex x w) _) = w x (\p -> do {fp <- newForeignPtr qlFreeInterestRateIndex p; return $ GenIndex fp withNestedInterestRateIndexAsIndex})
+asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
+asInterestRateIndex (GenIndex (NestedInterestRateIndex x w) _) = w x (\p -> do {fp <- newForeignPtr qlFreeInterestRateIndex p; return $ GenIndex fp withNestedInterestRateIndexAsIndex})
   where
     withNestedInterestRateIndexAsIndex :: ForeignPtr CInterestRateIndex -> (Ptr CIndex -> IO b) -> IO b
     withNestedInterestRateIndexAsIndex p f = withForeignPtr p (qlInterestRateIndexAsIndex >=> f)
 
-asIborIndex_ :: GenIborIndex a -> IO IborIndex_
-asIborIndex_ (GenIndex (NestedInterestRateIndex (NestedIborIndex x w) _) _) = w x (\p -> do {fp <- newForeignPtr qlFreeIborIndex p; return $ GenIndex (NestedInterestRateIndex (NestedIborIndex fp withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex})
+asIborIndex :: GenIborIndex a -> IO IborIndex
+asIborIndex (GenIndex (NestedInterestRateIndex (NestedIborIndex x w) _) _) = w x (\p -> do {fp <- newForeignPtr qlFreeIborIndex p; return $ GenIndex (NestedInterestRateIndex (NestedIborIndex fp withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex})
 
-asSwapIndex_ :: GenSwapIndex a -> IO SwapIndex_
-asSwapIndex_ (GenIndex (NestedInterestRateIndex (NestedSwapIndex x w) _) _) = w x (\p -> do {fp <- newForeignPtr qlFreeSwapIndex p; return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex fp withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex})
+asSwapIndex :: GenSwapIndex a -> IO SwapIndex
+asSwapIndex (GenIndex (NestedInterestRateIndex (NestedSwapIndex x w) _) _) = w x (\p -> do {fp <- newForeignPtr qlFreeSwapIndex p; return $ GenIndex (NestedInterestRateIndex (NestedSwapIndex fp withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex})
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

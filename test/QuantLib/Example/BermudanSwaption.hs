@@ -50,7 +50,7 @@ run = do
   maturity <- advance cal start (5, Years) floatConv False
   fixedSchedule <- schedule (Just start) maturity (1, Years) cal fixedConv fixedConv Forward False Nothing Nothing
   floatSchedule <- schedule (Just start) maturity (6, Months) cal floatConv floatConv Forward False Nothing Nothing
-  floatDC <- IRI.asInterestRateIndex index6m >>= IRI.dayCounter
+  floatDC <- IRI.dayCounter index6m
   swp <- vanillaSwap swapType 1000.0 fixedSchedule dummyFixRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
   engine <- discountingSwapEngine ts Nothing Nothing Nothing
@@ -139,9 +139,8 @@ run = do
           let j = numCols - i - 1
               k = fromIntegral $ i * numCols + j
           vol <- simpleQuote (swaptionVols!!k)
-          index6mRI <- IRI.asInterestRateIndex index6m
-          dc <- IRI.dayCounter index6mRI
-          tenr <- IRI.tenor index6mRI
+          dc <- IRI.dayCounter index6m
+          tenr <- IRI.tenor index6m
           h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) vol index6m tenr dc dc ts Model.RelativePriceError
           tms <- Model.times h
           return (h, tms)
