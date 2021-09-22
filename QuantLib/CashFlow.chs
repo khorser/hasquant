@@ -239,11 +239,11 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds h
 
 {#fun qlFixedRateLeg as fixedRateLeg{withSchedule*`Schedule', withDoubleArray*`[Double]'&, withInterestRateArray*`[InterestRate]'&,`BusinessDayConvention', withDayCounter*`DayCounter', withCalendar*`Calendar', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlIborLeg as iborLeg{withSchedule*`Schedule',withIborIndex*`IborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Bool', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlIborLeg as iborLeg{withSchedule*`Schedule',withIborIndex*`GenIborIndex a', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Bool', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 {#fun qlOvernightLeg as overnightLeg{withSchedule*`Schedule',withOvernightIborIndex*`OvernightIborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlRangeAccrualLeg as rangeAccrualLeg{withSchedule*`Schedule',withIborIndex*`IborIndex', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlRangeAccrualLeg as rangeAccrualLeg{withSchedule*`Schedule',withIborIndex*`GenIborIndex a', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention', withIntArray*`[Word]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works

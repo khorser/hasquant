@@ -55,7 +55,7 @@ instance ForwardRateAgreement`Derives` Forward where cast = qlForwardRateAgreeme
 {#fun qlFixedRateBondForwardAsForward{withFixedRateBondForward*`FixedRateBondForward'}->`Forward'peekForward*#}
 instance FixedRateBondForward`Derives` Forward where cast = qlFixedRateBondForwardAsForward
 
-{#fun qlForwardRateAgreement as forwardRateAgreement{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double',`Double',withIborIndex*`IborIndex', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'peekForwardRateAgreement*#}
+{#fun qlForwardRateAgreement as forwardRateAgreement{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double',`Double',withIborIndex*`GenIborIndex a', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'peekForwardRateAgreement*#}
 
 -- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
 {#fun qlFixedRateBondForward as fixedRateBondForward{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double', fromIntegral`Word', withDayCounter*`DayCounter', withCalendar*`Calendar',`BusinessDayConvention', withFixedRateBond*`FixedRateBond', withMaybeYieldTermStructure*`Maybe YieldTermStructure', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`FixedRateBondForward'peekFixedRateBondForward*#}

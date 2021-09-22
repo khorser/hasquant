@@ -60,17 +60,17 @@ import QuantLib.Internal.Type
 
 {#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote a', withQuote*`GenQuote b', withQuote*`GenQuote c',`Double',`Double',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
-{#fun qlForwardSwapQuote as forwardSwapQuote{withSwapIndex*`SwapIndex', withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlForwardSwapQuote as forwardSwapQuote{withSwapIndex*`GenSwapIndex b', withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
-{#fun qlForwardValueQuote as forwardValueQuote{withIndex*`Index', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlForwardValueQuote as forwardValueQuote{withIndex*`GenIndex a', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
-{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote'{withIborIndex*`IborIndex',`String', withQuote*`GenQuote a', withQuote*`GenQuote b', withQuote*`GenQuote c', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote'{withIborIndex*`GenIborIndex i',`String', withQuote*`GenQuote a', withQuote*`GenQuote b', withQuote*`GenQuote c', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
-{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote{withIborIndex*`IborIndex', withDay*`Day', withQuote*`GenQuote a', withQuote*`GenQuote b', withQuote*`GenQuote c', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote{withIborIndex*`GenIborIndex i', withDay*`Day', withQuote*`GenQuote a', withQuote*`GenQuote b', withQuote*`GenQuote c', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 {#fun qlImpliedStdDevQuote as impliedStdDevQuote{fromEnumC`OptionType', withQuote*`GenQuote a', withQuote*`GenQuote b',`Double',`Double',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
-{#fun qlLastFixingQuote as lastFixingQuote{withIndex*`Index', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlLastFixingQuote as lastFixingQuote{withIndex*`GenIndex a', preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- |returns true if the Quote holds a valid value
 {#fun qlQuoteIsValid as isValid{withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-}->`Bool'#}

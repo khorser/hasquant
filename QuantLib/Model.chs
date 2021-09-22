@@ -215,12 +215,12 @@ calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -> OptimizationMet
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
 {#fun qlCalibratedModelCalibrate{withCalibratedModel*`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withOptimizationMethod*`OptimizationMethod', withEndCriteria*`EndCriteria', withMaybeConstraint*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlCapHelper as capHelper{fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`IborIndex',`Frequency', withDayCounter*`DayCounter',`Bool',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlCapHelper as capHelper{fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',`Frequency', withDayCounter*`DayCounter',`Bool',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 {#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word, TimeUnit)'&, withCalendar*`Calendar',`Double',`Double', withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 -- TODO add more parameters and more SwaptionHelper constructors
-{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`IborIndex', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`GenIborIndex b', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 {#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`BlackCalibrationHelper', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
 

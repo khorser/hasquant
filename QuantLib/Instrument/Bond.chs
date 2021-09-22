@@ -150,7 +150,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 {#fun qlZeroCouponBond as zeroCouponBond{fromIntegral`Word', withCalendar*`Calendar',`Double', withDay*`Day',`BusinessDayConvention',`Double', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |floating-rate bond (possibly capped and/or floored)
-{#fun qlFloatingRateBond as floatingRateBond{fromIntegral`Word',`Double', withSchedule*`Schedule',withIborIndex*`IborIndex', withDayCounter*`DayCounter',`BusinessDayConvention', fromIntegral`Word', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Double', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+{#fun qlFloatingRateBond as floatingRateBond{fromIntegral`Word',`Double', withSchedule*`Schedule',withIborIndex*`GenIborIndex a', withDayCounter*`DayCounter',`BusinessDayConvention', fromIntegral`Word', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Double', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |theoretical bond yield
 {#fun qlBondYield as yield{withBond*`Bond', withDayCounter*`DayCounter',`Compounding',`Frequency',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -254,7 +254,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 
 {#fun qlBondFunctionsZSpread as zSpread{withBond*`Bond',`Double',withYieldTermStructure*`YieldTermStructure', withDayCounter*`DayCounter',`Compounding',`Frequency', withDay*`Day',`Double', fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlFloatingRateBond1 as floatingRateBond'{fromIntegral`Word',`Double', withDay*`Day', withDay*`Day',`Frequency', withCalendar*`Calendar',withIborIndex*`IborIndex', withDayCounter*`DayCounter',`BusinessDayConvention',`BusinessDayConvention', fromIntegral`Word', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Double', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`DateGenerationRule',`Bool', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+{#fun qlFloatingRateBond1 as floatingRateBond'{fromIntegral`Word',`Double', withDay*`Day', withDay*`Day',`Frequency', withCalendar*`Calendar',withIborIndex*`GenIborIndex a', withDayCounter*`DayCounter',`BusinessDayConvention',`BusinessDayConvention', fromIntegral`Word', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Double', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`DateGenerationRule',`Bool', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |theoretical clean price for the current evaluation date and term structure
 {#fun qlBondCleanPrice as currentCleanPrice{withBond*`Bond', preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -271,7 +271,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 
 {#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word',withIborIndex*`IborIndex', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
+{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word',withIborIndex*`GenIborIndex b', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 
 {#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word', withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 

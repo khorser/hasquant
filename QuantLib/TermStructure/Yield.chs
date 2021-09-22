@@ -105,7 +105,7 @@ import QuantLib.Internal.Type
 
 {#enum BootstrapTrait{} deriving(Show, Eq)#}
 
-{#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote a',withIborIndex*`IborIndex', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote a',withIborIndex*`GenIborIndex b', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 {#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCalendar*`Calendar',`BusinessDayConvention',`Bool', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
@@ -114,7 +114,7 @@ import QuantLib.Internal.Type
 -- |Returns a discount factor from the given YieldTermStructure object
 {#fun qlYieldTSDiscount as discount'{withYieldTermStructure*`YieldTermStructure', withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwapRateHelper1 as swapRateHelper'{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, withCalendar*`Calendar',`Frequency',`BusinessDayConvention', withDayCounter*`DayCounter',withIborIndex*`IborIndex', withMaybeQuote*`Maybe Quote', fromEnumQuantity`(Int, TimeUnit)'&, withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+{#fun qlSwapRateHelper1 as swapRateHelper'{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, withCalendar*`Calendar',`Frequency',`BusinessDayConvention', withDayCounter*`DayCounter',withIborIndex*`GenIborIndex b', withMaybeQuote*`Maybe (GenQuote m)', fromEnumQuantity`(Int, TimeUnit)'&, withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
 {#fun qlFlatForward as flatForward{withDay*`Day', withQuote*`GenQuote a', withDayCounter*`DayCounter',`Compounding',`Frequency', preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
@@ -145,27 +145,27 @@ import QuantLib.Internal.Type
 
 {#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word', fromEnumQuantity`(Int, TimeUnit)'&, withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
-{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`SwapIndex', withMaybeQuote*`Maybe Quote', fromEnumQuantity`(Int, TimeUnit)'&, withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b', withMaybeQuote*`Maybe (GenQuote m)', fromEnumQuantity`(Int, TimeUnit)'&, withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
 {#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure', withQuote*`GenQuote a', preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure', withQuote*`GenQuote a',`Compounding',`Frequency', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCalendar*`Calendar', fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`IborIndex', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', withCalendar*`Calendar', fromEnumQuantity`(Int, TimeUnit)'&,`BusinessDayConvention', withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex b', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 {#fun qlDatedOISRateHelper as datedOISRateHelper{withDay*`Day', withDay*`Day', withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
-{#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a', fromIntegral`Word',withIborIndex*`IborIndex', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a', fromIntegral`Word',withIborIndex*`GenIborIndex b', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 {#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&, fromIntegral`Word', fromIntegral`Word', withCalendar*`Calendar',`BusinessDayConvention',`Bool', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
-{#fun qlFraRateHelper3 as fraIborRateHelper{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&,withIborIndex*`IborIndex', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFraRateHelper3 as fraIborRateHelper{withQuote*`GenQuote a', fromEnumQuantity`(Int, TimeUnit)'&,withIborIndex*`GenIborIndex b', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
-{#fun qlFuturesRateHelper1 as futuresRateHelper'{withQuote*`GenQuote a', withDay*`Day', withDay*`Day', withDayCounter*`DayCounter', withMaybeQuote*`Maybe Quote', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFuturesRateHelper1 as futuresRateHelper'{withQuote*`GenQuote a', withDay*`Day', withDay*`Day', withDayCounter*`DayCounter', withMaybeQuote*`Maybe (GenQuote m)', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
-{#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote a', withDay*`Day',withIborIndex*`IborIndex', withMaybeQuote*`Maybe Quote', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote a', withDay*`Day',withIborIndex*`GenIborIndex b', withMaybeQuote*`Maybe (GenQuote m)', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
-{#fun qlFuturesRateHelper as futuresRateHelper{withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word', withCalendar*`Calendar',`BusinessDayConvention',`Bool', withDayCounter*`DayCounter', withMaybeQuote*`Maybe Quote', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFuturesRateHelper as futuresRateHelper{withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word', withCalendar*`Calendar',`BusinessDayConvention',`Bool', withDayCounter*`DayCounter', withMaybeQuote*`Maybe (GenQuote m)', preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper a', preErrorCheck-`String'errorCheck*-}->`Double'#}
 

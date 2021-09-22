@@ -383,9 +383,9 @@ iborIndex c ts = do
 
 {#fun qlOvernightIndex as overnightIndex{`String', fromIntegral`Word', withCurrency*`Currency', withCalendar*`Calendar', withDayCounter*`DayCounter', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
 
-{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`IborIndex'}->`BusinessDayConvention'#}
+{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex a'}->`BusinessDayConvention'#}
 
-{#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`IborIndex'}->`Bool'#}
+{#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex a'}->`Bool'#}
 
 class HasUnderlying a b | a -> b where underlying :: a -> Day -> IO b
 
