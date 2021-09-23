@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, FunctionalDependencies, FlexibleInstances #-}
 module QuantLib.Index.InterestRate
   (
     InterestRateIndex
@@ -37,7 +36,8 @@ module QuantLib.Index.InterestRate
   , businessDayConvention
   , endOfMonth
 
-  , underlying
+  , underlyingSwap
+  , underlyingOIS
   )
   where
 
@@ -387,11 +387,8 @@ iborIndex c ts = do
 
 {#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex a'}->`Bool'#}
 
-class HasUnderlying a b | a -> b where underlying :: a -> Day -> IO b
+{#fun qlOvernightIndexedSwapIndexUnderlyingSwap as underlyingOIS {withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
-instance HasUnderlying OvernightIndexedSwapIndex OvernightIndexedSwap where underlying = qlOvernightIndexedSwapIndexUnderlyingSwap
-{#fun qlOvernightIndexedSwapIndexUnderlyingSwap{withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
-instance HasUnderlying SwapIndex VanillaSwap where underlying = qlSwapIndexUnderlyingSwap
-{#fun qlSwapIndexUnderlyingSwap{withSwapIndex*`GenSwapIndex a', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+{#fun qlSwapIndexUnderlyingSwap as underlyingSwap{withSwapIndex*`GenSwapIndex a', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -774,7 +774,6 @@ withFloatingRateCouponPricerArray = withSimpleArray getCFloatingRateCouponPricer
 newtype Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b)}
 -- we can infer upcast just from two types so actually we don't need to drag it around with the cast function
 data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a b)}
--- data GenObject2 b a = GenObject2 !(ForeignPtr a) !(Upcast a b) | GenObject2' !(GenObject a) !(Upcast a b)
 
 asGenObject :: Meta c -> Upcast c c -> GenObject c a -> IO (GenObject c c)
 asGenObject m0 m (GenObject p (Upcast k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
@@ -1724,9 +1723,6 @@ foreign import ccall "ql.h qlOvernightIndexedSwapIndexAsSwapIndex" qlOvernightIn
 foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterestRateIndex :: Ptr CIborIndex -> IO (Ptr CInterestRateIndex)
 foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex -> IO (Ptr CIborIndex)
 
-indexUpcast :: Upcast CIndex CIndex
-indexUpcast = Upcast return
-
 interestRateIndexUpcast :: Upcast CInterestRateIndex CIndex
 interestRateIndexUpcast = Upcast qlInterestRateIndexAsIndex
 
@@ -1764,6 +1760,14 @@ type BMAIndex = GenInterestRateIndex (ForeignPtr CBMAIndex)
 type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
 type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
 
+withNestedForeign :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
+withNestedForeign (Upcast u) p f = withForeignPtr p (u >=> f)
+
+--newtype Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b)}
+--data GenObject2 a b = GenObject2 !a !(forall r. a -> (Ptr b -> IO r) -> IO r)
+withNested :: Upcast a b -> GenObject2 c a -> (Ptr b -> IO r) -> IO r
+withNested (Upcast u) (GenObject2 p w) f = w p (u >=> f)
+
 withIndex :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
 withIndex (GenIndex (GenObject2 x w)) = w x
 
@@ -1776,10 +1780,10 @@ withBMAIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x _)) _)
 peekBMAIndex :: Ptr CBMAIndex -> IO BMAIndex
 peekBMAIndex x = do
   p <- newForeignPtr qlFreeBMAIndex x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 p (withNested bmaIndexUpcast)) withNestedInterestRateIndex
+  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 p (withNestedForeign bmaIndexUpcast)) withNestedInterestRateIndex
 
 withNestedInterestRateIndex :: NestedInterestRateIndex a -> (Ptr CIndex -> IO b) -> IO b
-withNestedInterestRateIndex (NestedInterestRateIndex (GenObject2 p w)) f = w p (qlInterestRateIndexAsIndex >=> f) 
+withNestedInterestRateIndex (NestedInterestRateIndex o) = withNested interestRateIndexUpcast o
 
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex -> IO b) -> IO b
 withIborIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedIborIndex (GenObject2 x w)) _)) _)) = w x
@@ -1799,15 +1803,12 @@ peekSwapIndex x = do
   return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex $ GenObject2 p withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex
 
 withNestedSwapIndex :: NestedSwapIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
-withNestedSwapIndex (NestedSwapIndex (GenObject2 p w)) f = w p (qlSwapIndexAsInterestRateIndex >=> f)
+withNestedSwapIndex (NestedSwapIndex o) = withNested swapIndexUpcast o
 
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex -> IO OvernightIndexedSwapIndex
 peekOvernightIndexedSwapIndex x = do
   p <- newForeignPtr qlFreeOvernightIndexedSwapIndex x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex $ GenObject2 p withNestedOvernightIndexedSwapIndex) withNestedSwapIndex) withNestedInterestRateIndex
-  where
-    withNestedOvernightIndexedSwapIndex :: ForeignPtr COvernightIndexedSwapIndex -> (Ptr CSwapIndex -> IO b) -> IO b
-    withNestedOvernightIndexedSwapIndex p f = withForeignPtr p (qlOvernightIndexedSwapIndexAsSwapIndex >=> f)
+  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex $ GenObject2 p (withNestedForeign overnightIndexedSwapIndexUpcast)) withNestedSwapIndex) withNestedInterestRateIndex
 
 peekIborIndex :: Ptr CIborIndex -> IO IborIndex
 peekIborIndex x = do
@@ -1815,21 +1816,18 @@ peekIborIndex x = do
   return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex $ GenObject2 p withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex
 
 withNestedIborIndex :: NestedIborIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
-withNestedIborIndex (NestedIborIndex (GenObject2 p w)) f = w p (qlIborIndexAsInterestRateIndex >=> f)
-
-withNested :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO c) -> IO c
-withNested (Upcast u) p f = withForeignPtr p (u >=> f)
+withNestedIborIndex (NestedIborIndex o) = withNested iborIndexUpcast o
 
 peekOvernightIborIndex :: Ptr COvernightIndex -> IO OvernightIborIndex
 peekOvernightIborIndex x = do
   p <- newForeignPtr qlFreeOvernightIborIndex x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex $ GenObject2 p (withNested overnightIndexUpcast)) withNestedIborIndex) withNestedInterestRateIndex
+  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex $ GenObject2 p (withNestedForeign overnightIndexUpcast)) withNestedIborIndex) withNestedInterestRateIndex
 
 asIndex :: GenIndex a -> IO Index
 asIndex (GenIndex (GenObject2 x w)) = w x (\p -> do {fp <- newForeignPtr qlFreeIndex p; return $ GenIndex $ GenObject2 fp withForeignPtr})
 
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x w)) _)) = w x (\p -> do {fp <- newForeignPtr qlFreeInterestRateIndex p; return $ GenIndex $ GenObject2 fp (withNested interestRateIndexUpcast)})
+asInterestRateIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x w)) _)) = w x (\p -> do {fp <- newForeignPtr qlFreeInterestRateIndex p; return $ GenIndex $ GenObject2 fp (withNestedForeign interestRateIndexUpcast)})
 
 asIborIndex :: GenIborIndex a -> IO IborIndex
 asIborIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedIborIndex (GenObject2 x w)) _)) _)) = w x (\p -> do {fp <- newForeignPtr qlFreeIborIndex p; return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex $ GenObject2 fp withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex})
