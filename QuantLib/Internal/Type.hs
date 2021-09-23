@@ -771,15 +771,22 @@ withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr 
 withFloatingRateCouponPricerArray = withSimpleArray getCFloatingRateCouponPricer
 
 ---- class hierarchies
-newtype Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b)}
+data Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b), _fi :: FinalizerPtr b}
 -- we can infer upcast just from two types so actually we don't need to drag it around with the cast function
 data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a b)}
 
 asGenObject :: Meta c -> Upcast c c -> GenObject c a -> IO (GenObject c c)
-asGenObject m0 m (GenObject p (Upcast k)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
+asGenObject m0 m (GenObject p (Upcast k _fi)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
 
+-- TODO: OPTIMIZE: call the finalizer without creating a temp foreign ptr
 withGenObject :: GenObject c a -> (Ptr c -> IO b) -> IO b
-withGenObject (GenObject p (Upcast k)) ff = withForeignPtr p (k >=> ff)
+withGenObject (GenObject p (Upcast k fi)) ff =
+    withForeignPtr p (\x -> do
+      pp <- k x
+      if fi /= nullFunPtr then
+         do xx <- newForeignPtr fi pp
+            withForeignPtr xx ff
+      else ff pp)
 
 withSubObject :: GenObject c a -> (Ptr a -> IO b) -> IO b
 withSubObject = withForeignPtr . getObject
@@ -819,10 +826,10 @@ simpleQuoteMeta :: Meta CSimpleQuote
 simpleQuoteMeta = Meta qlFreeSimpleQuote
 
 quoteUpcast :: Upcast CQuote CQuote
-quoteUpcast = Upcast return
+quoteUpcast = Upcast return nullFunPtr
 
 simpleQuoteUpcast :: Upcast CSimpleQuote CQuote
-simpleQuoteUpcast = Upcast qlSimpleQuoteAsQuote
+simpleQuoteUpcast = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
@@ -866,10 +873,10 @@ couponLegMeta :: Meta CCouponLeg
 couponLegMeta = Meta qlFreeCouponLeg
 
 legUpcast :: Upcast CLeg CLeg
-legUpcast = Upcast return
+legUpcast = Upcast return nullFunPtr 
 
 couponLegUpcast :: Upcast CCouponLeg CLeg
-couponLegUpcast = Upcast qlCouponLegAsLeg
+couponLegUpcast = Upcast qlCouponLegAsLeg qlFreeLeg
 
 asLeg :: GenLeg a -> IO Leg
 asLeg (GenLeg q) = GenLeg <$> asGenObject legMeta legUpcast q
@@ -935,16 +942,16 @@ oisRateHelperMeta :: Meta COISRateHelper
 oisRateHelperMeta = Meta qlFreeOISRateHelper
 
 rateHelperUpcast :: Upcast CRateHelper CRateHelper
-rateHelperUpcast = Upcast return
+rateHelperUpcast = Upcast return nullFunPtr
 
 bondHelperUpcast :: Upcast CBondHelper CRateHelper
-bondHelperUpcast = Upcast qlBondHelperAsRateHelper
+bondHelperUpcast = Upcast qlBondHelperAsRateHelper qlFreeRateHelper
 
 swapRateHelperUpcast :: Upcast CSwapRateHelper CRateHelper
-swapRateHelperUpcast = Upcast qlSwapRateHelperAsRateHelper
+swapRateHelperUpcast = Upcast qlSwapRateHelperAsRateHelper qlFreeRateHelper
 
 oisRateHelperUpcast :: Upcast COISRateHelper CRateHelper
-oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper
+oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
 
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
 asRateHelper (GenRateHelper q) = GenRateHelper <$> asGenObject rateHelperMeta rateHelperUpcast q
@@ -980,10 +987,10 @@ blackCalibrationHelperMeta :: Meta CBlackCalibrationHelper
 blackCalibrationHelperMeta = Meta qlFreeBlackCalibrationHelper
 
 calibrationHelperUpcast :: Upcast CCalibrationHelper CCalibrationHelper
-calibrationHelperUpcast = Upcast return
+calibrationHelperUpcast = Upcast return nullFunPtr
 
 blackCalibrationHelperUpcast :: Upcast CBlackCalibrationHelper CCalibrationHelper
-blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper
+blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
 
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
 asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asGenObject calibrationHelperMeta calibrationHelperUpcast q
@@ -1007,10 +1014,10 @@ blackScholesCalculatorMeta :: Meta CBlackScholesCalculator
 blackScholesCalculatorMeta = Meta qlFreeBlackScholesCalculator
 
 blackCalculatorUpcast :: Upcast CBlackCalculator CBlackCalculator
-blackCalculatorUpcast = Upcast return
+blackCalculatorUpcast = Upcast return nullFunPtr
 
 blackScholesCalculatorUpcast :: Upcast CBlackScholesCalculator CBlackCalculator
-blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator
+blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
 
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
 asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asGenObject blackCalculatorMeta blackCalculatorUpcast q
@@ -1724,22 +1731,22 @@ foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterest
 foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex -> IO (Ptr CIborIndex)
 
 interestRateIndexUpcast :: Upcast CInterestRateIndex CIndex
-interestRateIndexUpcast = Upcast qlInterestRateIndexAsIndex
+interestRateIndexUpcast = Upcast qlInterestRateIndexAsIndex qlFreeIndex
 
 bmaIndexUpcast :: Upcast CBMAIndex CInterestRateIndex
-bmaIndexUpcast = Upcast qlBMAIndexAsInterestRateIndex
+bmaIndexUpcast = Upcast qlBMAIndexAsInterestRateIndex qlFreeInterestRateIndex
 
 iborIndexUpcast :: Upcast CIborIndex CInterestRateIndex
-iborIndexUpcast = Upcast qlIborIndexAsInterestRateIndex
+iborIndexUpcast = Upcast qlIborIndexAsInterestRateIndex qlFreeInterestRateIndex
 
 swapIndexUpcast :: Upcast CSwapIndex CInterestRateIndex
-swapIndexUpcast = Upcast qlSwapIndexAsInterestRateIndex
+swapIndexUpcast = Upcast qlSwapIndexAsInterestRateIndex qlFreeInterestRateIndex
 
 overnightIndexUpcast :: Upcast COvernightIndex CIborIndex
-overnightIndexUpcast = Upcast qlOvernightIndexAsIborIndex
+overnightIndexUpcast = Upcast qlOvernightIndexAsIborIndex qlFreeIborIndex
 
 overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex CSwapIndex
-overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex
+overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
 
 data GenObject2 a b = GenObject2 !a !(forall r. a -> (Ptr b -> IO r) -> IO r)
 
@@ -1760,10 +1767,14 @@ type BMAIndex = GenInterestRateIndex (ForeignPtr CBMAIndex)
 type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
 type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
 
--- TODO FREE Ptr AFTER CAST
-
+-- FIXME free casted Ptr after call
+-- and then TODO optimization: don't create a temp ForeignPtr, rahter call the finalizer directly
 withNested :: Upcast a b -> GenObject2 c a -> (Ptr b -> IO r) -> IO r
-withNested (Upcast u) (GenObject2 p w) f = w p (u >=> f)
+--withNested (Upcast u fi) (GenObject2 p w) f = w p (\pp -> do
+--  cp <- u pp
+--  fp <- newForeignPtr fi cp
+--  withForeignPtr fp f)
+withNested (Upcast u _fi) (GenObject2 p w) f = w p (u >=> f)
 
 withIndex :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
 withIndex (GenIndex (GenObject2 x w)) = w x
@@ -1780,7 +1791,11 @@ newNested (Meta f) u x = do
   return $ GenObject2 p (withNestedForeign u)
   where 
     withNestedForeign :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
-    withNestedForeign (Upcast fu) p ff = withForeignPtr p (fu >=> ff)
+    withNestedForeign (Upcast fu _fi) p ff = withForeignPtr p (fu >=> ff)
+--    withNestedForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
+--      cp <- fu pp
+--      fp <- newForeignPtr fi cp
+--      withForeignPtr fp ff)
 
 newGenForeign :: Meta a -> Ptr a -> IO (GenObject2 (ForeignPtr a) a)
 newGenForeign (Meta f) x = do
