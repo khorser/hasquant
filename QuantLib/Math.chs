@@ -17,7 +17,7 @@ module QuantLib.Math
   , BoundaryConditionSide(..)
   , FdmSchemeType(..)
   , FdmScheme(..)
-  , PolynomType(..)
+  , PolynomialType(..)
   , ComplexLogFormula(..)
   , CmsMarketCalibrationType(..)
   , EndCriteria(..)
@@ -68,7 +68,7 @@ instance ForeignObject Rounding where
 
 {#enum BoundaryConditionSide {} deriving(Show, Eq)#}
 
-{#enum PolynomType {} deriving(Show, Eq)#}
+{#enum PolynomialType {} deriving(Show, Eq)#}
 
 {#enum ComplexLogFormula {} deriving(Show, Eq)#}
 

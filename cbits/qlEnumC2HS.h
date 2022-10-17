@@ -395,7 +395,7 @@ enum FdmSchemeType { HundsdorferType, DouglasType,
  CrankNicolsonType };
 
 // methods/montecarlo/lsmbasissystem.hpp
-enum PolynomType { Monomial, Laguerre, Hermite, Hyperbolic,
+enum PolynomialType { Monomial, Laguerre, Hermite, Hyperbolic,
   Legendre, Chebyshev, Chebyshev2nd };
 
 // pricingengines/vanilla/analytichestonengine.hpp

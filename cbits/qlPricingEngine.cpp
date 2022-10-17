@@ -43,6 +43,7 @@
 #include <ql/pricingengines/vanilla/integralengine.hpp>
 #include <ql/pricingengines/vanilla/jumpdiffusionengine.hpp>
 #include <ql/pricingengines/vanilla/juquadraticengine.hpp>
+#include <ql/instruments/dividendschedule.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
@@ -753,7 +754,7 @@ QlPricingEngine* qlMCHestonHullWhiteEngine1(int rngtrait, QlHybridHestonHullWhit
 }
 QlPricingEngine* qlMCAmericanEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(qlMCAmericanEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples))));
+    return ret(new QlPricingEngine(alloc(qlMCAmericanEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomialType)polynomType, nCalibrationSamples))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
@@ -859,9 +860,11 @@ QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProc
 //  }
 //}
 
-QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
+QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlQuote* creditSpread, unsigned dividendsLen, QlDividend** dividends, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(qlBinomialConvertibleEngineAux(tree, *arg(process), timeSteps))));
+    const Handle<Quote>& cs = Handle<Quote>(*arg(creditSpread));
+    DividendSchedule d = qlBuildVector(dividends, dividendsLen);
+    return ret(new QlPricingEngine(alloc(qlBinomialConvertibleEngineAux(tree, *arg(process), timeSteps, cs, d))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }

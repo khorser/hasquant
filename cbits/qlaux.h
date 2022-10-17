@@ -31,7 +31,7 @@ namespace QuantLib {
   class FixedRateBond;
   class ZeroCouponBond;
   class Forward;
-  class FixedRateBondForward;
+  class BondForward;
   class ForwardRateAgreement;
   class DayCounter;
   class Calendar;
@@ -58,7 +58,7 @@ using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
-using QuantLib::FixedRateBondForward;
+using QuantLib::BondForward;
 using QuantLib::ForwardRateAgreement;
 using QuantLib::DayCounter;
 using QuantLib::Calendar;
@@ -96,7 +96,7 @@ typedef QuantLib::ext::shared_ptr<Instrument> QlInstrument;
 typedef QuantLib::ext::shared_ptr<Bond> QlBond;
 typedef QuantLib::ext::shared_ptr<FixedRateBond> QlFixedRateBond;
 typedef QuantLib::ext::shared_ptr<Forward> QlForward;
-typedef QuantLib::ext::shared_ptr<FixedRateBondForward> QlFixedRateBondForward;
+typedef QuantLib::ext::shared_ptr<BondForward> QlBondForward;
 typedef QuantLib::ext::shared_ptr<ForwardRateAgreement> QlForwardRateAgreement;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
@@ -138,8 +138,8 @@ template <> class objClassName<QlFixedRateBond *> { public: static const char *n
 template <> class objClassName<ZeroCouponBond *> { public: static const char *name() { return "ZeroCouponBond"; } };
 template <> class objClassName<Forward *> { public: static const char *name() { return "Forward"; } };
 template <> class objClassName<QlForward *> { public: static const char *name() { return "QlForward"; } };
-template <> class objClassName<FixedRateBondForward *> { public: static const char *name() { return "FixedRateBondForward"; } };
-template <> class objClassName<QlFixedRateBondForward *> { public: static const char *name() { return "QlFixedRateBondForward"; } };
+template <> class objClassName<BondForward *> { public: static const char *name() { return "BondForward"; } };
+template <> class objClassName<QlBondForward *> { public: static const char *name() { return "QlBondForward"; } };
 template <> class objClassName<ForwardRateAgreement *> { public: static const char *name() { return "ForwardRateAgreement"; } };
 template <> class objClassName<QlForwardRateAgreement *> { public: static const char *name() { return "QlForwardRateAgreement"; } };
 template <> class objClassName<FloatingRateCouponPricer *> { public: static const char *name() { return "FloatingRateCouponPricer"; } };
@@ -211,9 +211,8 @@ Handle<T> qlNullableHandle(QuantLib::ext::shared_ptr<T> *p) {
     : Handle<T>();
 }
 
-QuantLib::Disposable<QuantLib::Matrix> qlBuildMatrix(double *a, unsigned r, unsigned c);
+QuantLib::Matrix qlBuildMatrix(double *a, unsigned r, unsigned c);
 
-// XXX suboptimal, use Disposable?
 template <class T>
 std::vector<T> qlBuildVector(T **vals, size_t len) {
   std::vector<T> r;

@@ -48,7 +48,6 @@ module QuantLib.TermStructure.Yield
   , asTermStructure
   , asRateHelper
 
-  , driftTermStructure
   , piecewiseZeroSpreadedTermStructure
   , quantoTermStructure
   , minimumCostValue
@@ -230,8 +229,6 @@ instance OISRateHelper `Derives` RateHelper where cast = qlOISRateHelperAsRateHe
 
 asRateHelper :: (a `Derives` RateHelper) => a -> IO RateHelper
 asRateHelper = cast
-
-{#fun qlDriftTermStructure as driftTermStructure {`YieldTermStructure', `YieldTermStructure', withObject* `BlackVolTermStructure', preErrorCheck- `String' errorCheck*-} -> `YieldTermStructure'#}
 
 piecewiseZeroSpreadedTermStructure :: YieldTermStructure
   -> [(Quote, Day)]  -- ^spreads, ^dates

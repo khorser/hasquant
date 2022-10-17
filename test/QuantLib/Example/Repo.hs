@@ -57,9 +57,9 @@ run = do
   repoQuote <- simpleQuote repoRate >>= asQuote
   repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
     repoCompounding repoCompoundFreq
-  bondFwd <- fixedRateBondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
+  bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
     repoSettlementDays
-    repoDayCountConvention bondCalendar bondBusinessDayConvention fixedBond
+    repoDayCountConvention bondCalendar bondBusinessDayConvention b
     (Just repoCurve) (Just repoCurve)
 
   clP <- cleanPrice b bondCurve repoSettlementDate

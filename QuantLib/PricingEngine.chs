@@ -157,6 +157,7 @@ import QuantLib.Internal.Schedule
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument#}(Instrument)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
+{#import QuantLib.CashFlow#}(Dividend)
 import QuantLib.Internal.Enum
 
 {#pointer *QlPricingEngine as PricingEngine foreign finalizer qlFreePricingEngine newtype#}
@@ -298,7 +299,7 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 -- Functions below use default value of Statistics
 {#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine {`RngTrait', withObject* `HybridHestonHullWhiteProcess', fromMaybeInt `Maybe Word', fromMaybeInt `Maybe Word', `Bool', `Bool', fromMaybeInt `Maybe Word', fromMaybeDouble `Maybe Double', fromMaybeInt `Maybe Word', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlMCAmericanEngine1 as mcAmericanEngine {`RngTrait', withObject* `GeneralizedBlackScholesProcess', fromMaybeInt `Maybe Word', fromMaybeInt `Maybe Word', `Bool', `Bool', fromMaybeInt `Maybe Word', fromMaybeDouble `Maybe Double', fromMaybeInt `Maybe Word', fromIntegral `Word', fromIntegral `Word', `PolynomType', fromMaybeInt `Maybe Word', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlMCAmericanEngine1 as mcAmericanEngine {`RngTrait', withObject* `GeneralizedBlackScholesProcess', fromMaybeInt `Maybe Word', fromMaybeInt `Maybe Word', `Bool', `Bool', fromMaybeInt `Maybe Word', fromMaybeDouble `Maybe Double', fromMaybeInt `Maybe Word', fromIntegral `Word', fromIntegral `Word', `PolynomialType', fromMaybeInt `Maybe Word', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 {#fun qlMCBarrierEngine1 as mcBarrierEngine {`RngTrait', withObject* `GeneralizedBlackScholesProcess', fromMaybeInt `Maybe Word', fromMaybeInt `Maybe Word', `Bool', `Bool', fromMaybeInt `Maybe Word', fromMaybeDouble `Maybe Double', fromMaybeInt `Maybe Word', `Bool', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
@@ -329,7 +330,7 @@ instance BlackScholesCalculator `Derives` BlackCalculator where cast = qlBlackSc
 -- {#fun qlFDBermudanEngine as fdBermudanEngine {`FdmScheme', withObject* `GeneralizedBlackScholesProcess', fromIntegral `Word', fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 -- {#fun qlFDEuropeanEngine as fdEuropeanEngine {`FdmScheme', withObject* `GeneralizedBlackScholesProcess', fromIntegral `Word', fromIntegral `Word', `Bool', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
-{#fun qlBinomialConvertibleEngine as binomialConvertibleEngine {`BinomialTree', withObject* `GeneralizedBlackScholesProcess', fromIntegral `Word', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
+{#fun qlBinomialConvertibleEngine as binomialConvertibleEngine {`BinomialTree', withObject* `GeneralizedBlackScholesProcess', fromIntegral `Word', `Quote', withObjectArray* `[Dividend]'&, preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine' {withObject* `CallableBondVolatilityStructure', `YieldTermStructure', preErrorCheck- `String' errorCheck*-} -> `PricingEngine'#}
