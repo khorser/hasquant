@@ -150,7 +150,7 @@ void qlECBKnownDates(unsigned *count, int **ds, char **e) {
     *count = dates.size();
     *ds = qlAllocateInts(*count);
     std::transform(dates.begin(), dates.end(), *ds,
-        std::mem_fun_ref(&Date::serialNumber));
+        std::mem_fn(&Date::serialNumber));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }
@@ -189,7 +189,7 @@ void qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, int **ds
     *count = dates.size();
     *ds = qlAllocateInts(*count);
     std::transform(dates.begin(), dates.end(), *ds,
-        std::mem_fun_ref(&Date::serialNumber));
+        std::mem_fn(&Date::serialNumber));
   } catch (std::exception& er) {
     (void)handleException<int*>(e, er);
   }
@@ -200,7 +200,7 @@ void qlECBNextDates(int d, unsigned *count, int **ds, char **e) {
     *count = dates.size();
     *ds = qlAllocateInts(*count);
     std::transform(dates.begin(), dates.end(), *ds,
-        std::mem_fun_ref(&Date::serialNumber));
+        std::mem_fn(&Date::serialNumber));
   } catch (std::exception& er) {
     (void)handleException<int*>(e, er);
   }

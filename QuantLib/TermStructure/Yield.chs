@@ -45,7 +45,6 @@ module QuantLib.TermStructure.Yield
   , asYieldTermStructure
   , asRateHelper
 
-  , driftTermStructure
   , piecewiseZeroSpreadedTermStructure
   , quantoTermStructure
   , minimumCostValue
@@ -178,8 +177,6 @@ instance FittedBondDiscountCurve`Derives` YieldTermStructure where cast = qlFitt
 
 asYieldTermStructure :: (a`Derives` YieldTermStructure) => a -> IO YieldTermStructure
 asYieldTermStructure = cast
-
-{#fun qlDriftTermStructure as driftTermStructure{withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure', withBlackVolTermStructure*`BlackVolTermStructure', preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 piecewiseZeroSpreadedTermStructure :: YieldTermStructure
   -> [(Quote, Day)]  -- ^spreads, ^dates

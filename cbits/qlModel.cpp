@@ -225,7 +225,7 @@ void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, d
 
 void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, char **e) {
   try {
-    Disposable<Array> params = (*arg(o))->params();
+    Array params = (*arg(o))->params();
     *len = params.size();
     *ps = qlAllocateDoubles(*len);
     std::copy(params.begin(), params.end(), *ps);

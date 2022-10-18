@@ -59,7 +59,7 @@ typedef struct QlExtendedOrnsteinUhlenbeckProcess QlExtendedOrnsteinUhlenbeckPro
 typedef struct QlExtOUWithJumpsProcess QlExtOUWithJumpsProcess;
 typedef struct QlFittedBondDiscountCurve QlFittedBondDiscountCurve;
 typedef struct QlFixedRateBond QlFixedRateBond;
-typedef struct QlFixedRateBondForward QlFixedRateBondForward;
+typedef struct QlBondForward QlBondForward;
 typedef struct QlFloatingRateCouponPricer QlFloatingRateCouponPricer;
 typedef struct QlForward QlForward;
 typedef struct QlForwardRateAgreement QlForwardRateAgreement;

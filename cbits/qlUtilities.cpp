@@ -86,7 +86,7 @@ std::vector<Date> qlDateVector(unsigned len, int *dates) {
   return d;
 }
 
-Disposable<Matrix> qlBuildMatrix(double *a, unsigned r, unsigned c) {
+Matrix qlBuildMatrix(double *a, unsigned r, unsigned c) {
   Matrix m (r, c);
   std::copy(a, a + r*c, m.begin());
   return m;

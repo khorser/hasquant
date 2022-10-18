@@ -1327,27 +1327,15 @@ main = do
         (FRAExample.Result it1 it2) <- Settings.keepingSettings' FRAExample.run
         let
           fwdRates1   = [3.0e-2, 3.1e-2, 3.2e-2, 3.3e-2, 3.4e-2]
-          spots1      = [99.73470, 99.49489, 99.23917, 98.41684, 97.60271]
-          fwdValues1  = [100.76667, 100.79222, 100.83556, 100.84333, 100.85944]
-          implYields1 = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
           zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
         it1 `shouldSatisfy` listClose FRAExample.fwdRateR fwdRates1 1.0e-5
-        it1 `shouldSatisfy` listClose FRAExample.spotR spots1 1.0e-5
-        it1 `shouldSatisfy` listClose FRAExample.fwdValueR fwdValues1 1.0e-5
-        it1 `shouldSatisfy` listClose FRAExample.implYieldR implYields1 1.0e-5
         it1 `shouldSatisfy` listClose FRAExample.zRateR zRates1 1.0e-5
         it1 `shouldSatisfy` listClose FRAExample.npvR (replicate (length it1) 0.0) 1.0e-5
         let
           fwdRates2   = [4.0e-2, 4.1e-2, 4.2e-2, 4.3e-2, 4.4e-2]
-          spots2      = [99.64687, 99.32793, 98.98812, 97.91433, 96.86156]
-          fwdValues2  = [101.02222, 101.04778, 101.09667, 101.09889, 101.11222]
-          implYields2 = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21173e-2, 4.29299e-2]
           zRates2     = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21174e-2, 4.29299e-2]
           npvs2       = [0.25208, 0.25121, 0.25567, 0.24751, 0.24215]
         it2 `shouldSatisfy` listClose FRAExample.fwdRateR fwdRates2 1.0e-5
-        it2 `shouldSatisfy` listClose FRAExample.spotR spots2 1.0e-5
-        it2 `shouldSatisfy` listClose FRAExample.fwdValueR fwdValues2 1.0e-5
-        it2 `shouldSatisfy` listClose FRAExample.implYieldR implYields2 1.0e-5
         it2 `shouldSatisfy` listClose FRAExample.zRateR zRates2 1.0e-5
         it2 `shouldSatisfy` listClose FRAExample.npvR npvs2 1.0e-5
 

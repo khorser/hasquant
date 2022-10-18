@@ -4,10 +4,10 @@ module QuantLib.Instrument.Forward
     Forward
   , asForward
   , ForwardRateAgreement
-  , FixedRateBondForward
+  , BondForward
 
   , forwardRateAgreement
-  , fixedRateBondForward
+  , bondForward
 
   , cleanForwardPrice
   , forwardPrice
@@ -34,6 +34,7 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
+{#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlForward as Forward foreign -> CForward nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
@@ -47,24 +48,24 @@ asForward = cast
 
 {#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign -> CForwardRateAgreement nocode#}
 
-{#fun qlForwardRateAgreementAsForward{withForwardRateAgreement*`ForwardRateAgreement'}->`Forward'peekForward*#}
-instance ForwardRateAgreement`Derives` Forward where cast = qlForwardRateAgreementAsForward
+{#fun qlForwardRateAgreementAsInstrument{withForwardRateAgreement*`ForwardRateAgreement'}->`Instrument'peekInstrument*#}
+instance ForwardRateAgreement`Derives` Instrument where cast = qlForwardRateAgreementAsInstrument
 
-{#pointer *QlFixedRateBondForward as FixedRateBondForward foreign -> CFixedRateBondForward nocode#}
+{#pointer *QlBondForward as BondForward foreign -> CBondForward nocode#}
 
-{#fun qlFixedRateBondForwardAsForward{withFixedRateBondForward*`FixedRateBondForward'}->`Forward'peekForward*#}
-instance FixedRateBondForward`Derives` Forward where cast = qlFixedRateBondForwardAsForward
+{#fun qlBondForwardAsForward{withBondForward*`BondForward'}->`Forward'peekForward*#}
+instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
 
 {#fun qlForwardRateAgreement as forwardRateAgreement{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double',`Double',withIborIndex*`GenIborIndex a', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'peekForwardRateAgreement*#}
 
 -- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
-{#fun qlFixedRateBondForward as fixedRateBondForward{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double', fromIntegral`Word', withDayCounter*`DayCounter', withCalendar*`Calendar',`BusinessDayConvention', withFixedRateBond*`FixedRateBond', withMaybeYieldTermStructure*`Maybe YieldTermStructure', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`FixedRateBondForward'peekFixedRateBondForward*#}
+{#fun qlBondForward as bondForward{withDay*`Day', withDay*`Day', fromEnumC`PositionType',`Double', fromIntegral`Word', withDayCounter*`DayCounter', withCalendar*`Calendar',`BusinessDayConvention', withBond*`Bond', withMaybeYieldTermStructure*`Maybe YieldTermStructure', withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`BondForward'peekBondForward*#}
 
 -- |(dirty) forward bond price minus accrued on bond at delivery
-{#fun qlFixedRateBondForwardCleanForwardPrice as cleanForwardPrice{withFixedRateBondForward*`FixedRateBondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondForwardCleanForwardPrice as cleanForwardPrice{withBondForward*`BondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |(dirty) forward bond price
-{#fun qlFixedRateBondForwardForwardPrice as forwardPrice{withFixedRateBondForward*`FixedRateBondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondForwardForwardPrice as forwardPrice{withBondForward*`BondForward', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |forward value/price of underlying, discounting income/dividends
 -- if this is a bond forward price, is must be a dirty forward price.

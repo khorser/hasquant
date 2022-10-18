@@ -70,13 +70,11 @@ run = do
 
   let euEx = European $ EuropeanExercise exec
       amEx = AmericanExercise (Just settl) exec False
-  euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities creditSpreadQ
-    issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
-  amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
-    issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
+  euBond <- convertibleFixedCouponBond euEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
+  amBond <- convertibleFixedCouponBond amEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
 
   [jr, crr, ad, tr, ti, lr, j] <- mapM
-    (priceBonds euBond amBond bsmProc)
+    (priceBonds euBond amBond bsmProc creditSpreadQ dividends)
     [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
   return Result {
@@ -105,9 +103,9 @@ run = do
         callPricesV = [101.5, 100.85]
         putPricesV = [105.0]
 
-        priceBonds eu am p b = do
-          eng1 <- binomialConvertibleEngine b p timeSteps
-          eng2 <- binomialConvertibleEngine b p timeSteps
+        priceBonds eu am p cs d b = do
+          eng1 <- binomialConvertibleEngine b p timeSteps cs d
+          eng2 <- binomialConvertibleEngine b p timeSteps cs d
           setPricingEngine eu eng1
           setPricingEngine am eng2
           mapM npv [eu, am]

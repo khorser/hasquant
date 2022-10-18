@@ -273,10 +273,10 @@ module QuantLib.Internal.Type
   , CFixedRateBond
   , peekFixedRateBond
   , withFixedRateBond
-  , FixedRateBondForward
-  , CFixedRateBondForward
-  , peekFixedRateBondForward
-  , withFixedRateBondForward
+  , BondForward
+  , CBondForward
+  , peekBondForward
+  , withBondForward
   , Forward
   , CForward
   , peekForward
@@ -1264,14 +1264,14 @@ peekFixedRateBond :: Ptr CFixedRateBond -> IO FixedRateBond
 peekFixedRateBond = peekSimpleType fixedRateBondMeta >=> return . FixedRateBond
 withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond -> IO b) -> IO b
 withFixedRateBond = withSimpleType . getCFixedRateBond
-data CFixedRateBondForward
-newtype FixedRateBondForward = FixedRateBondForward {getCFixedRateBondForward :: SimpleType CFixedRateBondForward}
-fixedRateBondForwardMeta :: Meta CFixedRateBondForward
-fixedRateBondForwardMeta = Meta qlFreeFixedRateBondForward
-peekFixedRateBondForward :: Ptr CFixedRateBondForward -> IO FixedRateBondForward
-peekFixedRateBondForward = peekSimpleType fixedRateBondForwardMeta >=> return . FixedRateBondForward
-withFixedRateBondForward :: FixedRateBondForward -> (Ptr CFixedRateBondForward -> IO b) -> IO b
-withFixedRateBondForward = withSimpleType . getCFixedRateBondForward
+data CBondForward
+newtype BondForward = BondForward {getCBondForward :: SimpleType CBondForward}
+bondForwardMeta :: Meta CBondForward
+bondForwardMeta = Meta qlFreeBondForward
+peekBondForward :: Ptr CBondForward -> IO BondForward
+peekBondForward = peekSimpleType bondForwardMeta >=> return . BondForward
+withBondForward :: BondForward -> (Ptr CBondForward -> IO b) -> IO b
+withBondForward = withSimpleType . getCBondForward
 data CForward
 newtype Forward = Forward {getCForward :: SimpleType CForward}
 forwardMeta :: Meta CForward
@@ -1663,7 +1663,7 @@ foreign import ccall "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess" qlFreeExtend
 foreign import ccall "ql.h &qlFreeExtOUWithJumpsProcess" qlFreeExtOUWithJumpsProcess :: FinalizerPtr CExtOUWithJumpsProcess
 foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
 foreign import ccall "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond
-foreign import ccall "ql.h &qlFreeFixedRateBondForward" qlFreeFixedRateBondForward :: FinalizerPtr CFixedRateBondForward
+foreign import ccall "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward
 foreign import ccall "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward
 foreign import ccall "ql.h &qlFreeForwardRateAgreement" qlFreeForwardRateAgreement :: FinalizerPtr CForwardRateAgreement
 foreign import ccall "ql.h &qlFreeForwardVanillaOption" qlFreeForwardVanillaOption :: FinalizerPtr CForwardVanillaOption

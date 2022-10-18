@@ -269,10 +269,10 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
+{#fun qlConvertibleFixedCouponBond as convertibleFixedCouponBond{withExercise*`Exercise',`Double', withCallabilityArray*`[Callability]'&, withDay*`Day', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 
-{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word',withIborIndex*`GenIborIndex b', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
+{#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond{withExercise*`Exercise',`Double', withCallabilityArray*`[Callability]'&, withDay*`Day', fromIntegral`Word',withIborIndex*`GenIborIndex b', fromIntegral`Word', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 
-{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond{withExercise*`Exercise',`Double', withDividendArray*`[Dividend]'&, withCallabilityArray*`[Callability]'&, withQuote*`GenQuote a', withDay*`Day', fromIntegral`Word', withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
+{#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond{withExercise*`Exercise',`Double', withCallabilityArray*`[Callability]'&, withDay*`Day', fromIntegral`Word', withDayCounter*`DayCounter', withSchedule*`Schedule',`Double', preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

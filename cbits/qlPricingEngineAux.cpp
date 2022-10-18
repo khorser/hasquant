@@ -1,13 +1,15 @@
+// this file intentionally does not contain any references to wrappers, only vanilla QuantLib is used here
 #include <ql/pricingengines/all.hpp>
 #include <ql/pricingengines/vanilla/binomialengine.hpp>
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
-#include <ql/experimental/convertiblebonds/binomialconvertibleengine.hpp>
+#include <ql/pricingengines/bond/binomialconvertibleengine.hpp>
 #include <ql/experimental/lattices/extendedbinomialtree.hpp>
 #include <ql/experimental/math/zigguratrng.hpp>
 #include <ql/methods/finitedifferences/expliciteuler.hpp>
 #include <ql/methods/finitedifferences/impliciteuler.hpp>
 #include <ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp>
+#include <ql/instruments/dividendschedule.hpp>
 
 #include "qlPricingEngineAux.h"
 
@@ -51,36 +53,36 @@ PricingEngine* qlBinomialVanillaEngineAux(int tree, const ext::shared_ptr<Genera
   QL_FAIL("Unknown Binomial Tree "<< tree);
 }
 
-PricingEngine* qlBinomialConvertibleEngineAux(int tree, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps) {
+PricingEngine* qlBinomialConvertibleEngineAux(int tree, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, const Handle<Quote>& cs, DividendSchedule d) {
   switch (tree) {
   case hasquant::JarrowRudd:
-    return new BinomialConvertibleEngine<JarrowRudd>(process, timeSteps);
+    return new BinomialConvertibleEngine<JarrowRudd>(process, timeSteps, cs, d);
   case hasquant::CoxRossRubinstein:
-    return new BinomialConvertibleEngine<CoxRossRubinstein>(process, timeSteps);
+    return new BinomialConvertibleEngine<CoxRossRubinstein>(process, timeSteps, cs, d);
   case hasquant::AdditiveEQPBinomialTree:
-    return new BinomialConvertibleEngine<AdditiveEQPBinomialTree>(process, timeSteps);
+    return new BinomialConvertibleEngine<AdditiveEQPBinomialTree>(process, timeSteps, cs, d);
   case hasquant::Trigeorgis:
-    return new BinomialConvertibleEngine<Trigeorgis>(process, timeSteps);
+    return new BinomialConvertibleEngine<Trigeorgis>(process, timeSteps, cs, d);
   case hasquant::Tian:
-    return new BinomialConvertibleEngine<Tian>(process, timeSteps);
+    return new BinomialConvertibleEngine<Tian>(process, timeSteps, cs, d);
   case hasquant::LeisenReimer:
-    return new BinomialConvertibleEngine<LeisenReimer>(process, timeSteps);
+    return new BinomialConvertibleEngine<LeisenReimer>(process, timeSteps, cs, d);
   case hasquant::Joshi4:
-    return new BinomialConvertibleEngine<Joshi4>(process, timeSteps);
+    return new BinomialConvertibleEngine<Joshi4>(process, timeSteps, cs, d);
   case hasquant::ExtendedJarrowRudd:
-    return new BinomialConvertibleEngine<ExtendedJarrowRudd>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedJarrowRudd>(process, timeSteps, cs, d);
   case hasquant::ExtendedCoxRossRubinstein:
-    return new BinomialConvertibleEngine<ExtendedCoxRossRubinstein>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedCoxRossRubinstein>(process, timeSteps, cs, d);
   case hasquant::ExtendedAdditiveEQPBinomialTree:
-    return new BinomialConvertibleEngine<ExtendedAdditiveEQPBinomialTree>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedAdditiveEQPBinomialTree>(process, timeSteps, cs, d);
   case hasquant::ExtendedTrigeorgis:
-    return new BinomialConvertibleEngine<ExtendedTrigeorgis>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedTrigeorgis>(process, timeSteps, cs, d);
   case hasquant::ExtendedTian:
-    return new BinomialConvertibleEngine<ExtendedTian>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedTian>(process, timeSteps, cs, d);
   case hasquant::ExtendedLeisenReimer:
-    return new BinomialConvertibleEngine<ExtendedLeisenReimer>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedLeisenReimer>(process, timeSteps, cs, d);
   case hasquant::ExtendedJoshi4:
-    return new BinomialConvertibleEngine<ExtendedJoshi4>(process, timeSteps);
+    return new BinomialConvertibleEngine<ExtendedJoshi4>(process, timeSteps, cs, d);
   };
   QL_FAIL("Unknown Binomial Tree "<< tree);
 }
@@ -112,7 +114,7 @@ PricingEngine* qlMCHestonHullWhiteEngine1Aux(int rngtrait, const ext::shared_ptr
   };
   QL_FAIL("Unknown RNG "<< rngtrait);
 }
-PricingEngine* qlMCAmericanEngine1Aux(int rngtrait, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, LsmBasisSystem::PolynomType polynomType, unsigned nCalibrationSamples) {
+PricingEngine* qlMCAmericanEngine1Aux(int rngtrait, const ext::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, LsmBasisSystem::PolynomialType polynomType, unsigned nCalibrationSamples) {
   switch (rngtrait) {
   case hasquant::PseudoRandom:
     return new MCAmericanEngine<PseudoRandom>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, polynomType, nCalibrationSamples);

@@ -11,7 +11,7 @@ import Control.Monad(forM, forM_)
 import QuantLib.Index
 import qualified QuantLib.Index.InterestRate as I
 import QuantLib.Instrument
-import QuantLib.Instrument.Forward(forwardRateAgreement, asForward, forwardValue, spotValue, impliedYield, forwardRate)
+import QuantLib.Instrument.Forward(forwardRateAgreement, forwardRate)
 import QuantLib.Time.Date(may)
 import QuantLib.Time.Calendar(BusinessDayConvention(..), advance)
 import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..), Frequency(..))
@@ -22,9 +22,6 @@ import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, Bootstra
 import QuantLib.Math
 
 data IterationResult = IterationResult { fwdRateR :: Double
-                        , spotR :: Double
-                        , fwdValueR :: Double
-                        , implYieldR :: Double
                         , zRateR :: Double
                         , npvR :: Double
                         } deriving Show
@@ -78,15 +75,11 @@ run = do
 
       mapM (\((v, m), q) -> do
         fra <- forwardRateAgreement v m Long q notional eu3m (Just ts)
-        fwd <- asForward fra
 
         fwdRate <- forwardRate fra
-        spot <- spotValue fwd
-        fwdValue <- forwardValue fwd
-        implYield <- impliedYield fwd spot fwdValue settle IR.Simple dc
         zRate <- zeroRate' ts m dc IR.Simple Annual False
-        fraNPV <- asInstrument fwd >>= npv
-        return $ IterationResult (IR.rate fwdRate) spot fwdValue (IR.rate implYield) (IR.rate zRate) fraNPV) $
+        fraNPV <- asInstrument fra >>= npv
+        return $ IterationResult (IR.rate fwdRate) (IR.rate zRate) fraNPV) $
          zip dates quotes
 
 

@@ -141,6 +141,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
+{#import QuantLib.CashFlow#}(Dividend)
 import QuantLib.Internal.Enum
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
@@ -305,7 +306,7 @@ import QuantLib.Internal.Enum
 -- Functions below use default value of Statistics
 {#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine{`RngTrait', withHybridHestonHullWhiteProcess*`HybridHestonHullWhiteProcess', fromMaybeInt`Maybe Word', fromMaybeInt`Maybe Word',`Bool',`Bool', fromMaybeInt`Maybe Word', fromMaybeDouble`Maybe Double', fromMaybeInt`Maybe Word', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlMCAmericanEngine1 as mcAmericanEngine{`RngTrait', withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess', fromMaybeInt`Maybe Word', fromMaybeInt`Maybe Word',`Bool',`Bool', fromMaybeInt`Maybe Word', fromMaybeDouble`Maybe Double', fromMaybeInt`Maybe Word', fromIntegral`Word', fromIntegral`Word',`PolynomType', fromMaybeInt`Maybe Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlMCAmericanEngine1 as mcAmericanEngine{`RngTrait', withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess', fromMaybeInt`Maybe Word', fromMaybeInt`Maybe Word',`Bool',`Bool', fromMaybeInt`Maybe Word', fromMaybeDouble`Maybe Double', fromMaybeInt`Maybe Word', fromIntegral`Word', fromIntegral`Word',`PolynomialType', fromMaybeInt`Maybe Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlMCBarrierEngine1 as mcBarrierEngine{`RngTrait', withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess', fromMaybeInt`Maybe Word', fromMaybeInt`Maybe Word',`Bool',`Bool', fromMaybeInt`Maybe Word', fromMaybeDouble`Maybe Double', fromMaybeInt`Maybe Word',`Bool', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -333,7 +334,7 @@ import QuantLib.Internal.Enum
 
 {#fun qlFdBlackScholesVanillaEngine as fdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess', fromIntegral`Word', fromIntegral`Word',fromIntegral`Word', withFdmSchemeDesc*`FdmScheme', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlBinomialConvertibleEngine as binomialConvertibleEngine{`BinomialTree', withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBinomialConvertibleEngine as binomialConvertibleEngine{`BinomialTree', withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess', fromIntegral`Word', withQuote*`GenQuote a', withDividendArray*`[Dividend]'&, preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine'{withCallableBondVolatilityStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
