@@ -481,19 +481,19 @@ module QuantLib.Internal.Type
   , GenSwapIndex
 )
   where
-
-import Control.Monad((>=>))
-
 import Foreign.Ptr
 import Foreign.ForeignPtr
 import Foreign.C.Types
 import Foreign.C.String
-import QuantLib.Internal
-
 import Foreign.Marshal.Array(withArray)
-import System.IO.Unsafe(unsafePerformIO)
 import Foreign.Marshal.Utils(withMany)
 
+import Control.Monad((>=>))
+import System.IO.Unsafe(unsafePerformIO)
+
+import QuantLib.Internal
+
+-- STANDALONE TYPES
 newtype Standalone a = Standalone {ptr :: ForeignPtr a}
 newtype Meta a = Meta {getFinalizer :: FinalizerPtr a}
 peekStandalone :: Meta a -> Ptr a -> IO (Standalone a)
@@ -717,49 +717,70 @@ lmVolatilityModelMeta = Meta qlFreeLmVolatilityModel
 peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityModel)
 peekLmVolatilityModel = peekStandalone lmVolatilityModelMeta
 
----- class hierarchies
-data Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b), _fi :: FinalizerPtr b}
--- we can infer upcast just from two types so actually we don't need to drag it around with the cast function
-data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a b)}
+-- TYPE HIERARCHIES
+data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _parentFinalizer :: FinalizerPtr p}
+-- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
+data GenObject a p = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a p)}
 
-asGenObject :: Meta c -> Upcast c c -> GenObject c a -> IO (GenObject c c)
-asGenObject m0 m (GenObject p (Upcast k _fi)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (getFinalizer m0)) <*> return m)
+asParent :: Meta p -> Upcast p p -> GenObject a p -> IO (GenObject p p)
+asParent m0 m (GenObject p (Upcast k _)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (getFinalizer m0)) <*> return m)
 
+peekObject :: Meta a -> Upcast a p -> Ptr a -> IO (GenObject a p)
+peekObject m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
+withObject :: GenObject a p -> (Ptr a -> IO b) -> IO b
+withObject = withForeignPtr . getObject
+withObjectArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
+peekParent :: Meta a -> Upcast a a -> Ptr a -> IO (GenObject a a)
+peekParent m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
 -- TODO: OPTIMIZE: call the finalizer without creating a temp foreign ptr
-withGenObject :: GenObject c a -> (Ptr c -> IO b) -> IO b
-withGenObject (GenObject p (Upcast k fi)) ff =
+withParent :: GenObject a p -> (Ptr p -> IO b) -> IO b
+withParent (GenObject p (Upcast k fi)) ff =
     withForeignPtr p (\x -> do
       pp <- k x
       if fi /= nullFunPtr then
          do xx <- newForeignPtr fi pp
             withForeignPtr xx ff
       else ff pp)
+withMaybeParent :: Maybe (GenObject a p) -> (Ptr p -> IO b) -> IO b
+withMaybeParent x f = maybe (f nullPtr) (`withParent` f) x
+withParentArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
+withParentArray x f = withMany withParent x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withParentArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
+withParentArrayRaw x f = withMany withParent x (`withArray` f)
 
-withSubObject :: GenObject c a -> (Ptr a -> IO b) -> IO b
-withSubObject = withForeignPtr . getObject
+data GenObject2 a b = GenObject2 !a !(forall r. a -> (Ptr b -> IO r) -> IO r)
+-- FIXME free casted Ptr after the call
+-- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
+withNested :: Upcast a b -> GenObject2 c a -> (Ptr b -> IO r) -> IO r
+--withNested (Upcast u fi) (GenObject2 p w) f = w p (\pp -> do
+--  cp <- u pp
+--  fp <- newForeignPtr fi cp
+--  withForeignPtr fp f)
+withNested (Upcast u _fi) (GenObject2 p w) f = w p (u >=> f)
 
-peekGenObject :: Meta c -> Upcast c c -> Ptr c -> IO (GenObject c c)
-peekGenObject m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
+newNested :: Meta a -> Upcast a b -> Ptr a -> IO (GenObject2 (ForeignPtr a) b)
+newNested (Meta f) u x = do
+  p <- newForeignPtr f x
+  return $ GenObject2 p (withNestedForeign u)
+  where 
+    withNestedForeign :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
+    withNestedForeign (Upcast fu _fi) p ff = withForeignPtr p (fu >=> ff)
+--    withNestedForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
+--      cp <- fu pp
+--      fp <- newForeignPtr fi cp
+--      withForeignPtr fp ff)
 
-peekSubObject :: Meta a -> Upcast a c -> Ptr a -> IO (GenObject c a)
-peekSubObject m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
-
-withGenArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr c)) -> IO b) -> IO b
-withGenArray x f = withMany withGenObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-
-withSubArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withSubArray x f = withMany withSubObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-
-withGenArrayRaw :: [GenObject c a] -> (Ptr (Ptr c) -> IO b) -> IO b -- pass an array without length
-withGenArrayRaw x f = withMany withGenObject x (`withArray` f)
-
-withGenMaybe :: Maybe (GenObject c a) -> (Ptr c -> IO b) -> IO b
-withGenMaybe x f = maybe (f nullPtr) (`withGenObject` f) x
+newGenForeign :: Meta a -> Ptr a -> IO (GenObject2 (ForeignPtr a) a)
+newGenForeign (Meta f) x = do
+  p <- newForeignPtr f x
+  return $ GenObject2 p withForeignPtr
 
 ---- instantiations
 data CQuote
 data CSimpleQuote
-newtype GenQuote a = GenQuote {getQuote :: GenObject CQuote a}
+newtype GenQuote a = GenQuote {getQuote :: GenObject a CQuote}
 type Quote = GenQuote CQuote
 type SimpleQuote = GenQuote CSimpleQuote
 foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
@@ -781,32 +802,32 @@ simpleQuoteUpcast = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO Quote
-asQuote (GenQuote q) = GenQuote <$> asGenObject quoteMeta quoteUpcast q
+asQuote (GenQuote q) = GenQuote <$> asParent quoteMeta quoteUpcast q
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
-withQuote = withGenObject . getQuote
+withQuote = withParent . getQuote
 
 withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
-withSimpleQuote = withSubObject . getQuote
+withSimpleQuote = withObject . getQuote
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekGenObject quoteMeta quoteUpcast p
+peekQuote p = GenQuote <$> peekParent quoteMeta quoteUpcast p
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> peekSubObject simpleQuoteMeta simpleQuoteUpcast p
+peekSimpleQuote p = GenQuote <$> peekObject simpleQuoteMeta simpleQuoteUpcast p
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
-withQuoteArray x = withGenArray (map getQuote x)
+withQuoteArray x = withParentArray (map getQuote x)
 
 withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
-withQuoteArrayRaw x = withGenArrayRaw (map getQuote x)
+withQuoteArrayRaw x = withParentArrayRaw (map getQuote x)
 
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
-withMaybeQuote x = withGenMaybe (getQuote <$> x)
+withMaybeQuote x = withMaybeParent (getQuote <$> x)
 
 data CLeg
 data CCouponLeg
-newtype GenLeg a = GenLeg {getLeg :: GenObject CLeg a}
+newtype GenLeg a = GenLeg {getLeg :: GenObject a CLeg}
 type Leg = GenLeg CLeg
 type CouponLeg = GenLeg CCouponLeg
 foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg
@@ -826,22 +847,22 @@ couponLegUpcast :: Upcast CCouponLeg CLeg
 couponLegUpcast = Upcast qlCouponLegAsLeg qlFreeLeg
 
 asLeg :: GenLeg a -> IO Leg
-asLeg (GenLeg q) = GenLeg <$> asGenObject legMeta legUpcast q
+asLeg (GenLeg q) = GenLeg <$> asParent legMeta legUpcast q
 
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
-withLeg = withGenObject . getLeg
+withLeg = withParent . getLeg
 
 withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
-withCouponLeg = withSubObject . getLeg
+withCouponLeg = withObject . getLeg
 
 peekLeg :: Ptr CLeg -> IO Leg
-peekLeg p = GenLeg <$> peekGenObject legMeta legUpcast p
+peekLeg p = GenLeg <$> peekParent legMeta legUpcast p
 
 peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
-peekCouponLeg p = GenLeg <$> peekSubObject couponLegMeta couponLegUpcast p
+peekCouponLeg p = GenLeg <$> peekObject couponLegMeta couponLegUpcast p
 
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
-withLegArray x = withGenArray (map getLeg x)
+withLegArray x = withParentArray (map getLeg x)
 
 data CRateHelper
 data CSwapRateHelper
@@ -851,9 +872,9 @@ data CCalibrationHelper
 data CBlackCalibrationHelper
 data CBlackCalculator
 data CBlackScholesCalculator
-newtype GenRateHelper a = GenRateHelper {getRateHelper :: GenObject CRateHelper a}
-newtype GenCalibrationHelper a = GenCalibrationHelper {getCalibrationHelper :: GenObject CCalibrationHelper a}
-newtype GenBlackCalculator a = GenBlackCalculator {getBlackCalculator :: GenObject CBlackCalculator a}
+newtype GenRateHelper a = GenRateHelper {getRateHelper :: GenObject a CRateHelper}
+newtype GenCalibrationHelper a = GenCalibrationHelper {getCalibrationHelper :: GenObject a CCalibrationHelper}
+newtype GenBlackCalculator a = GenBlackCalculator {getBlackCalculator :: GenObject a CBlackCalculator}
 type RateHelper = GenRateHelper CRateHelper
 type SwapRateHelper = GenRateHelper CSwapRateHelper
 type BondHelper = GenRateHelper CBondHelper
@@ -901,31 +922,31 @@ oisRateHelperUpcast :: Upcast COISRateHelper CRateHelper
 oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
 
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
-asRateHelper (GenRateHelper q) = GenRateHelper <$> asGenObject rateHelperMeta rateHelperUpcast q
+asRateHelper (GenRateHelper q) = GenRateHelper <$> asParent rateHelperMeta rateHelperUpcast q
 
 withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
-withRateHelper = withGenObject . getRateHelper
+withRateHelper = withParent . getRateHelper
 
 peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
-peekRateHelper p = GenRateHelper <$> peekGenObject rateHelperMeta rateHelperUpcast p
+peekRateHelper p = GenRateHelper <$> peekParent rateHelperMeta rateHelperUpcast p
 
 withBondHelper :: GenRateHelper CBondHelper -> (Ptr CBondHelper-> IO b) -> IO b
-withBondHelper = withSubObject . getRateHelper
+withBondHelper = withObject . getRateHelper
 
 peekBondHelper :: Ptr CBondHelper -> IO (GenRateHelper CBondHelper)
-peekBondHelper p = GenRateHelper <$> peekSubObject bondHelperMeta bondHelperUpcast p
+peekBondHelper p = GenRateHelper <$> peekObject bondHelperMeta bondHelperUpcast p
 
 withSwapRateHelper :: GenRateHelper CSwapRateHelper -> (Ptr CSwapRateHelper-> IO b) -> IO b
-withSwapRateHelper = withSubObject . getRateHelper
+withSwapRateHelper = withObject . getRateHelper
 
 peekSwapRateHelper :: Ptr CSwapRateHelper -> IO (GenRateHelper CSwapRateHelper)
-peekSwapRateHelper p = GenRateHelper <$> peekSubObject swapRateHelperMeta swapRateHelperUpcast p
+peekSwapRateHelper p = GenRateHelper <$> peekObject swapRateHelperMeta swapRateHelperUpcast p
 
 withOISRateHelper :: GenRateHelper COISRateHelper -> (Ptr COISRateHelper-> IO b) -> IO b
-withOISRateHelper = withSubObject . getRateHelper
+withOISRateHelper = withObject . getRateHelper
 
 peekOISRateHelper :: Ptr COISRateHelper -> IO (GenRateHelper COISRateHelper)
-peekOISRateHelper p = GenRateHelper <$> peekSubObject oisRateHelperMeta oisRateHelperUpcast p
+peekOISRateHelper p = GenRateHelper <$> peekObject oisRateHelperMeta oisRateHelperUpcast p
 
 calibrationHelperMeta :: Meta CCalibrationHelper
 calibrationHelperMeta = Meta qlFreeCalibrationHelper
@@ -940,19 +961,19 @@ blackCalibrationHelperUpcast :: Upcast CBlackCalibrationHelper CCalibrationHelpe
 blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
 
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
-asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asGenObject calibrationHelperMeta calibrationHelperUpcast q
+asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asParent calibrationHelperMeta calibrationHelperUpcast q
 
 withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
-withCalibrationHelper = withGenObject . getCalibrationHelper
+withCalibrationHelper = withParent . getCalibrationHelper
 
 peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
-peekCalibrationHelper p = GenCalibrationHelper <$> peekGenObject calibrationHelperMeta calibrationHelperUpcast p
+peekCalibrationHelper p = GenCalibrationHelper <$> peekParent calibrationHelperMeta calibrationHelperUpcast p
 
 withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
-withBlackCalibrationHelper = withSubObject . getCalibrationHelper
+withBlackCalibrationHelper = withObject . getCalibrationHelper
 
 peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (GenCalibrationHelper CBlackCalibrationHelper)
-peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekSubObject blackCalibrationHelperMeta blackCalibrationHelperUpcast p
+peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekObject blackCalibrationHelperMeta blackCalibrationHelperUpcast p
 
 blackCalculatorMeta :: Meta CBlackCalculator
 blackCalculatorMeta = Meta qlFreeBlackCalculator
@@ -967,28 +988,28 @@ blackScholesCalculatorUpcast :: Upcast CBlackScholesCalculator CBlackCalculator
 blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
 
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
-asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asGenObject blackCalculatorMeta blackCalculatorUpcast q
+asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asParent blackCalculatorMeta blackCalculatorUpcast q
 
 withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
-withBlackCalculator = withGenObject . getBlackCalculator
+withBlackCalculator = withParent . getBlackCalculator
 
 peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
-peekBlackCalculator p = GenBlackCalculator <$> peekGenObject blackCalculatorMeta blackCalculatorUpcast p
+peekBlackCalculator p = GenBlackCalculator <$> peekParent blackCalculatorMeta blackCalculatorUpcast p
 
 withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
-withBlackScholesCalculator = withSubObject . getBlackCalculator
+withBlackScholesCalculator = withObject . getBlackCalculator
 
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalculator CBlackScholesCalculator)
-peekBlackScholesCalculator p = GenBlackCalculator <$> peekSubObject blackScholesCalculatorMeta blackScholesCalculatorUpcast p
+peekBlackScholesCalculator p = GenBlackCalculator <$> peekObject blackScholesCalculatorMeta blackScholesCalculatorUpcast p
 
 withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
-withRateHelperArray x = withGenArray (map getRateHelper x)
+withRateHelperArray x = withParentArray (map getRateHelper x)
 
 withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper)) -> IO b) -> IO b
-withBondHelperArray x = withSubArray (map getRateHelper x)
+withBondHelperArray x = withObjectArray (map getRateHelper x)
 
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
-withCalibrationHelperArray x = withGenArray (map getCalibrationHelper x)
+withCalibrationHelperArray x = withParentArray (map getCalibrationHelper x)
 
 foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex -> IO (Ptr CIndex)
 foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRateIndex :: Ptr CBMAIndex -> IO (Ptr CInterestRateIndex)
@@ -1015,8 +1036,6 @@ overnightIndexUpcast = Upcast qlOvernightIndexAsIborIndex qlFreeIborIndex
 overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex CSwapIndex
 overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
 
-data GenObject2 a b = GenObject2 !a !(forall r. a -> (Ptr b -> IO r) -> IO r)
-
 newtype GenIndex a = GenIndex (GenObject2 a CIndex)
 newtype NestedInterestRateIndex a = NestedInterestRateIndex (GenObject2 a CInterestRateIndex)
 newtype NestedIborIndex a = NestedIborIndex (GenObject2 a CIborIndex)
@@ -1034,15 +1053,6 @@ type BMAIndex = GenInterestRateIndex (ForeignPtr CBMAIndex)
 type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
 type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
 
--- FIXME free casted Ptr after call
--- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
-withNested :: Upcast a b -> GenObject2 c a -> (Ptr b -> IO r) -> IO r
---withNested (Upcast u fi) (GenObject2 p w) f = w p (\pp -> do
---  cp <- u pp
---  fp <- newForeignPtr fi cp
---  withForeignPtr fp f)
-withNested (Upcast u _fi) (GenObject2 p w) f = w p (u >=> f)
-
 withIndex :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
 withIndex (GenIndex (GenObject2 x w)) = w x
 
@@ -1051,23 +1061,6 @@ withInterestRateIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2
 
 withBMAIndex :: BMAIndex -> (Ptr CBMAIndex -> IO b) -> IO b
 withBMAIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x _)) _)) = withForeignPtr x
-
-newNested :: Meta a -> Upcast a b -> Ptr a -> IO (GenObject2 (ForeignPtr a) b)
-newNested (Meta f) u x = do
-  p <- newForeignPtr f x
-  return $ GenObject2 p (withNestedForeign u)
-  where 
-    withNestedForeign :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
-    withNestedForeign (Upcast fu _fi) p ff = withForeignPtr p (fu >=> ff)
---    withNestedForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
---      cp <- fu pp
---      fp <- newForeignPtr fi cp
---      withForeignPtr fp ff)
-
-newGenForeign :: Meta a -> Ptr a -> IO (GenObject2 (ForeignPtr a) a)
-newGenForeign (Meta f) x = do
-  p <- newForeignPtr f x
-  return $ GenObject2 p withForeignPtr
 
 peekBMAIndex :: Ptr CBMAIndex -> IO BMAIndex
 peekBMAIndex x = do
