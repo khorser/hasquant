@@ -151,8 +151,7 @@ QlSwingExercise | qlFreeSwingExercise
 
 a:Instrument
     a:Forward : Instrument | qlForwardAsInstrument
-	ForwardRateAgreement : Forward | qlForwardRateAgreementAsForward
-	FixedRateBondForward : Forward | qlFixedRateBondForwardAsForward
+	BondForward : Forward | qlForwardAsForward
     a:Option : Instrument | qlOptionAsInstrument
 	CdsOption : Option | qlCdsOptionAsOption
 	MultiAssetOption : Option | qlMultiAssetOptionAsOption
@@ -171,6 +170,7 @@ a:Instrument
 	AssetSwap : Swap | qlAssetSwapAsSwap
 	BMASwap : Swap | qlBMASwapAsSwap
 	OvernightIndexedSwap : Swap | qlOvernightIndexedSwapAsSwap
+    ForwardRateAgreement : Instrument | qlForwardRateAgreementAsInstrument
     CreditDefaultSwap : Instrument | qlCreditDefaultSwapAsInstrument
     CapFloor : Instrument | qlCapFloorAsInstrument
     Bond : Instrument | qlBondAsInstrument
@@ -261,7 +261,7 @@ QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess | qlFreeE
 QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess | qlFreeExtOUWithJumpsProcess
 QlFittedBondDiscountCurve as FittedBondDiscountCurve | qlFreeFittedBondDiscountCurve
 QlFixedRateBond as FixedRateBond | qlFreeFixedRateBond
-QlFixedRateBondForward as FixedRateBondForward | qlFreeFixedRateBondForward
+QlBondForward as BondForward | qlFreeBondForward
 QlForward as Forward | qlFreeForward
 QlForwardRateAgreement as ForwardRateAgreement | qlFreeForwardRateAgreement
 QlForwardVanillaOption as ForwardVanillaOption | qlFreeForwardVanillaOption

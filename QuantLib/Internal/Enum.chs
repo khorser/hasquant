@@ -1,5 +1,5 @@
 {-# LANGUAGE RankNTypes #-}
--- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to exposure so I represented them as ADTs
+-- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to expose so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
     qlInterpolation
@@ -437,17 +437,17 @@ data Callability =
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 
-callability :: Callability -> IO (SimpleType CQlCallability)
+callability :: Callability -> IO (Standalone CQlCallability)
 callability (Soft p t d tg) = qlSoftCallability p t d tg
 callability (Callability p t ct d) = qlCallability p t ct d
 
-newtype EnumMeta a b = EnumMeta (a -> IO (SimpleType b))
+newtype EnumMeta a b = EnumMeta (a -> IO (Standalone b))
 
 withEnumType :: EnumMeta a b -> a -> (Ptr b -> IO c) -> IO c
-withEnumType (EnumMeta t) x f = t x >>= (`withSimpleType` f)
+withEnumType (EnumMeta t) x f = t x >>= (`withStandalone` f)
 
 withMaybeEnumType :: EnumMeta a b -> Maybe a -> (Ptr b -> IO c) -> IO c
-withMaybeEnumType (EnumMeta t) x f = maybe (f nullPtr) (\xx -> t xx >>= (`withSimpleType` f)) x
+withMaybeEnumType (EnumMeta t) x f = maybe (f nullPtr) (\xx -> t xx >>= (`withStandalone` f)) x
 
 withEnumTypeArray :: EnumMeta a b -> [a] -> ((CUInt, Ptr (Ptr b)) -> IO c) -> IO c
 withEnumTypeArray m x f = withMany (withEnumType m) x (`withArray` (\px -> f (fromIntegral $ length x, px)))
@@ -714,7 +714,7 @@ data LmCorrelationModel = ConstWrapperCorrelation LmCorrelationModel
     !Word -- ^factors
   deriving (Show, Eq)
 
-{#fun qlLmConstWrapperCorrelationModel{withSimpleType*`QlLmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+{#fun qlLmConstWrapperCorrelationModel{withStandalone*`QlLmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
 {#fun qlLmExponentialCorrelationModel{fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
 {#fun qlLmLinearExponentialCorrelationModel{fromIntegral`Word',`Double',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
 
@@ -738,7 +738,7 @@ data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
     !Double -- ^d
   deriving (Show, Eq)
 
-{#fun qlLmConstWrapperVolatilityModel{withSimpleType*`QlLmVolatilityModel', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+{#fun qlLmConstWrapperVolatilityModel{withStandalone*`QlLmVolatilityModel', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
 {#fun qlLmFixedVolatilityModel{withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
 {#fun qlLmLinearExponentialVolatilityModel{withDoubleArray*`[Double]'&,`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
 

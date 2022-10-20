@@ -14,7 +14,7 @@ module QuantLib.Internal.Type
   , DayCounter
   , peekDayCounter
 
-  , withSimpleType
+  , withStandalone
 
   , CQuote
   , Quote
@@ -37,7 +37,7 @@ module QuantLib.Internal.Type
   , QlCallability
   , peekCallability
 
-  , SimpleType(..)
+  , Standalone(..)
 
   , withCalendar
   , withCurrency
@@ -500,275 +500,228 @@ import Foreign.Marshal.Array(withArray)
 import System.IO.Unsafe(unsafePerformIO)
 import Foreign.Marshal.Utils(withMany)
 
+newtype Standalone a = Standalone {ptr :: ForeignPtr a}
+newtype Meta a = Meta {getFinalizer :: FinalizerPtr a}
+peekStandalone :: Meta a -> Ptr a -> IO (Standalone a)
+peekStandalone (Meta f) = newForeignPtr f >=> return . Standalone
+withStandalone :: Standalone a -> (Ptr a -> IO b) -> IO b
+withStandalone = withForeignPtr . ptr
+withMaybeStandalone :: Maybe (Standalone a) -> (Ptr a -> IO b) -> IO b
+withMaybeStandalone x f = maybe (f nullPtr) (`withStandalone` f) x
+withStandaloneArray :: (t -> Standalone a) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+withStandaloneArray c x f = withMany withStandalone (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
+showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
+showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
+
 data CCalendar
-data CCurrency
-data CDayCounter
-data CSchedule
-data CQlCallability
-data CQlClaim
-data CTimeGrid
-data CInterestRate
-data CDividend
-data CSmileSection
-data CPricingEngine
-data CFloatingRateCouponPricer
-data CDefaultProbabilityHelper
-data CConstraint
-data CEndCriteria
-data CFdmSchemeDesc
-data CFittedBondDiscountCurveFittingMethod
-data COptimizationMethod
-data CRounding
-data CLmVolatilityModel
-data CLmCorrelationModel
-
-newtype SimpleType a = SimpleType {ptr :: ForeignPtr a}
-newtype Meta a = Meta {_fin :: FinalizerPtr a}
-newtype Calendar = Calendar {getCCalendar :: SimpleType CCalendar}
-newtype Currency = Currency {getCCurrency :: SimpleType CCurrency}
-newtype DayCounter = DayCounter {getCDayCounter :: SimpleType CDayCounter}
-newtype Schedule = Schedule {getCSchedule :: SimpleType CSchedule}
-newtype InterestRate = InterestRate {getCInterestRate :: SimpleType CInterestRate}
-newtype TimeGrid = TimeGrid {getCTimeGrid :: SimpleType CTimeGrid}
-newtype Dividend = Dividend {getCDividend :: SimpleType CDividend}
-newtype SmileSection = SmileSection {getCSmileSection :: SimpleType CSmileSection}
-newtype PricingEngine = PricingEngine {getCPricingEngine :: SimpleType CPricingEngine}
-newtype FloatingRateCouponPricer = FloatingRateCouponPricer {getCFloatingRateCouponPricer :: SimpleType CFloatingRateCouponPricer}
-newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: SimpleType CDefaultProbabilityHelper}
--- special cases: those types will be represented as enums so no need to wrap them
-type QlClaim = SimpleType CQlClaim
-type QlCallability = SimpleType CQlCallability
-type QlConstraint = SimpleType CConstraint
-type QlEndCriteria = SimpleType CEndCriteria
-type QlFdmSchemeDesc = SimpleType CFdmSchemeDesc
-type QlFittedBondDiscountCurveFittingMethod = SimpleType CFittedBondDiscountCurveFittingMethod
-type QlOptimizationMethod = SimpleType COptimizationMethod
-type QlRounding = SimpleType CRounding
-type QlLmCorrelationModel = SimpleType CLmCorrelationModel
-type QlLmVolatilityModel = SimpleType CLmVolatilityModel
-
+newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
+foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCalendar
 calendarMeta :: Meta CCalendar
 calendarMeta = Meta qlFreeCalendar
-
-currencyMeta :: Meta CCurrency
-currencyMeta = Meta qlFreeCurrency
-
-dayCounterMeta :: Meta CDayCounter
-dayCounterMeta = Meta qlFreeDayCounter
-
-scheduleMeta :: Meta CSchedule
-scheduleMeta = Meta qlFreeSchedule
-
-callabilityMeta :: Meta CQlCallability
-callabilityMeta = Meta qlFreeCallability
-
-claimMeta :: Meta CQlClaim
-claimMeta = Meta qlFreeClaim
-
-optimizationMethodMeta :: Meta COptimizationMethod
-optimizationMethodMeta = Meta qlFreeOptimizationMethod
-
-fittedBondDiscountCurveFittingMethodMeta :: Meta CFittedBondDiscountCurveFittingMethod
-fittedBondDiscountCurveFittingMethodMeta = Meta qlFreeFittedBondDiscountCurveFittingMethod
-
-fdmSchemeDescMeta :: Meta CFdmSchemeDesc
-fdmSchemeDescMeta = Meta qlFreeFdmSchemeDesc
-
-endCritetiaMeta :: Meta CEndCriteria
-endCritetiaMeta = Meta qlFreeEndCriteria
-
-constraintMeta :: Meta CConstraint
-constraintMeta = Meta qlFreeConstraint
-
-lmCorrelationModelMeta :: Meta CLmCorrelationModel
-lmCorrelationModelMeta = Meta qlFreeLmCorrelationModel
-
-lmVolatilityModelMeta :: Meta CLmVolatilityModel
-lmVolatilityModelMeta = Meta qlFreeLmVolatilityModel
-
-timeGridMeta :: Meta CTimeGrid
-timeGridMeta = Meta qlFreeTimeGrid
-
-interestRateMeta :: Meta CInterestRate
-interestRateMeta = Meta qlFreeInterestRate
-
-dividendMeta :: Meta CDividend
-dividendMeta = Meta qlFreeDividend
-
-roundingMeta :: Meta CRounding
-roundingMeta = Meta qlFreeRounding
-
-floatingRateCouponPricerMeta :: Meta CFloatingRateCouponPricer
-floatingRateCouponPricerMeta = Meta qlFreeFloatingRateCouponPricer
-
-pricingEngineMeta :: Meta CPricingEngine
-pricingEngineMeta = Meta qlFreePricingEngine
-
-smileSectionMeta :: Meta CSmileSection
-smileSectionMeta = Meta qlFreeSmileSection
-
-defaultProbabilityHelperMeta :: Meta CDefaultProbabilityHelper
-defaultProbabilityHelperMeta = Meta qlFreeDefaultProbabilityHelper
-
-peekSimpleType :: Meta a -> Ptr a -> IO (SimpleType a)
-peekSimpleType (Meta f) = newForeignPtr f >=> return . SimpleType
-
 peekCalendar :: Ptr CCalendar -> IO Calendar
-peekCalendar = peekSimpleType calendarMeta >=> return . Calendar
-
-peekSchedule :: Ptr CSchedule -> IO Schedule
-peekSchedule = peekSimpleType scheduleMeta >=> return . Schedule
-
-peekDayCounter :: Ptr CDayCounter -> IO DayCounter
-peekDayCounter = peekSimpleType dayCounterMeta >=> return . DayCounter
-
-peekCurrency :: Ptr CCurrency -> IO Currency
-peekCurrency = peekSimpleType currencyMeta >=> return . Currency
-
-peekCallability :: Ptr CQlCallability -> IO (SimpleType CQlCallability)
-peekCallability = peekSimpleType callabilityMeta
-
-peekClaim :: Ptr CQlClaim -> IO (SimpleType CQlClaim)
-peekClaim = peekSimpleType claimMeta
-
-peekRounding :: Ptr CRounding -> IO (SimpleType CRounding)
-peekRounding = peekSimpleType roundingMeta
-
-peekConstraint :: Ptr CConstraint -> IO (SimpleType CConstraint)
-peekConstraint = peekSimpleType constraintMeta
-
-peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (SimpleType CLmVolatilityModel)
-peekLmVolatilityModel = peekSimpleType lmVolatilityModelMeta
-
-peekLmCorrelationModel :: Ptr CLmCorrelationModel -> IO (SimpleType CLmCorrelationModel)
-peekLmCorrelationModel = peekSimpleType lmCorrelationModelMeta
-
-peekEndCriteria :: Ptr CEndCriteria -> IO (SimpleType CEndCriteria)
-peekEndCriteria = peekSimpleType endCritetiaMeta
-
-peekFittedBondDiscountCurveFittingMethod :: Ptr CFittedBondDiscountCurveFittingMethod -> IO (SimpleType CFittedBondDiscountCurveFittingMethod)
-peekFittedBondDiscountCurveFittingMethod = peekSimpleType fittedBondDiscountCurveFittingMethodMeta
-
-peekFdmSchemeDesc :: Ptr CFdmSchemeDesc -> IO (SimpleType CFdmSchemeDesc)
-peekFdmSchemeDesc = peekSimpleType fdmSchemeDescMeta
-
-peekOptimizationMethod :: Ptr COptimizationMethod -> IO (SimpleType COptimizationMethod)
-peekOptimizationMethod = peekSimpleType optimizationMethodMeta
-
-peekInterestRate :: Ptr CInterestRate -> IO InterestRate
-peekInterestRate = peekSimpleType interestRateMeta >=> return . InterestRate
-
-peekDividend :: Ptr CDividend -> IO Dividend
-peekDividend = peekSimpleType dividendMeta >=> return . Dividend
-
-peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer -> IO FloatingRateCouponPricer
-peekFloatingRateCouponPricer = peekSimpleType floatingRateCouponPricerMeta >=> return . FloatingRateCouponPricer
-
-peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
-peekPricingEngine = peekSimpleType pricingEngineMeta >=> return . PricingEngine
-
-peekSmileSection :: Ptr CSmileSection -> IO SmileSection
-peekSmileSection = peekSimpleType smileSectionMeta >=> return . SmileSection
-
-peekDefaultProbabilityHelper :: Ptr CDefaultProbabilityHelper -> IO DefaultProbabilityHelper
-peekDefaultProbabilityHelper = peekSimpleType defaultProbabilityHelperMeta >=> return . DefaultProbabilityHelper
-
-peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
-peekTimeGrid = peekSimpleType timeGridMeta >=> return . TimeGrid
-
-withSimpleType :: SimpleType a -> (Ptr a -> IO b) -> IO b
-withSimpleType = withForeignPtr . ptr
-
-withMaybeSimpleType :: Maybe (SimpleType a) -> (Ptr a -> IO b) -> IO b
-withMaybeSimpleType x f = maybe (f nullPtr) (`withSimpleType` f) x
-
-withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
-withMaybeCurrency = withMaybeSimpleType . (getCCurrency <$>)
-
-foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCalendar
-foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
-foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSchedule
-foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr CDayCounter
-foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid
-foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerPtr CInterestRate
-foreign import ccall "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabilityHelper :: FinalizerPtr CDefaultProbabilityHelper
-foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
-foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
-foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
-foreign import ccall "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerPtr CSmileSection
-foreign import ccall "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
-foreign import ccall "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer
-foreign import ccall "ql.h &qlFreeConstraint" qlFreeConstraint :: FinalizerPtr CConstraint
-foreign import ccall "ql.h &qlFreeEndCriteria" qlFreeEndCriteria :: FinalizerPtr CEndCriteria
-foreign import ccall "ql.h &qlFreeFdmSchemeDesc" qlFreeFdmSchemeDesc :: FinalizerPtr CFdmSchemeDesc
-foreign import ccall "ql.h &qlFreeFittedBondDiscountCurveFittingMethod" qlFreeFittedBondDiscountCurveFittingMethod :: FinalizerPtr CFittedBondDiscountCurveFittingMethod
-foreign import ccall "ql.h &qlFreeOptimizationMethod" qlFreeOptimizationMethod :: FinalizerPtr COptimizationMethod
-foreign import ccall "ql.h &qlFreeRounding" qlFreeRounding :: FinalizerPtr CRounding
-foreign import ccall "ql.h &qlFreeLmVolatilityModel" qlFreeLmVolatilityModel :: FinalizerPtr CLmVolatilityModel
-foreign import ccall "ql.h &qlFreeLmCorrelationModel" qlFreeLmCorrelationModel :: FinalizerPtr CLmCorrelationModel
-
-showSimpleType :: (Ptr a -> IO CString) -> SimpleType a -> String
-showSimpleType f x = unsafePerformIO $ withSimpleType x (f >=> peekDynString)
-
+peekCalendar = peekStandalone calendarMeta >=> return . Calendar
+withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
+withCalendar = withStandalone . getCCalendar
 foreign import ccall safe "ql.h qlCalendarName" qlCalendarName :: Ptr CCalendar -> IO CString
-instance Show Calendar where show x = showSimpleType qlCalendarName (getCCalendar x)
+instance Show Calendar where show x = showStandalone qlCalendarName (getCCalendar x)
 instance Eq Calendar where x == y = show x == show y
 
+data CCurrency
+newtype Currency = Currency {getCCurrency :: Standalone CCurrency}
+foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
+currencyMeta :: Meta CCurrency
+currencyMeta = Meta qlFreeCurrency
+peekCurrency :: Ptr CCurrency -> IO Currency
+peekCurrency = peekStandalone currencyMeta >=> return . Currency
+withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
+withCurrency = withStandalone . getCCurrency
+withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
+withMaybeCurrency = withMaybeStandalone . (getCCurrency <$>)
 foreign import ccall safe "ql.h qlCurrencyName" qlCurrencyName :: Ptr CCurrency -> IO CString
-instance Show Currency where show x = showSimpleType qlCurrencyName (getCCurrency x)
+instance Show Currency where show x = showStandalone qlCurrencyName (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
 
+data CDayCounter
+newtype DayCounter = DayCounter {getCDayCounter :: Standalone CDayCounter}
+foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr CDayCounter
+dayCounterMeta :: Meta CDayCounter
+dayCounterMeta = Meta qlFreeDayCounter
+peekDayCounter :: Ptr CDayCounter -> IO DayCounter
+peekDayCounter = peekStandalone dayCounterMeta >=> return . DayCounter
+withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
+withDayCounter = withStandalone . getCDayCounter
 foreign import ccall safe "ql.h qlDayCounterName" qlDayCounterName :: Ptr CDayCounter -> IO CString
-instance Show DayCounter where show x = showSimpleType qlDayCounterName (getCDayCounter x)
+instance Show DayCounter where show x = showStandalone qlDayCounterName (getCDayCounter x)
 instance Eq DayCounter where x == y = show x == show y
 
-withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
-withCalendar = withSimpleType . getCCalendar
-
-withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
-withCurrency = withSimpleType . getCCurrency
-
-withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
-withDayCounter = withSimpleType . getCDayCounter
-
+data CSchedule
+newtype Schedule = Schedule {getCSchedule :: Standalone CSchedule}
+foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSchedule
+scheduleMeta :: Meta CSchedule
+scheduleMeta = Meta qlFreeSchedule
+peekSchedule :: Ptr CSchedule -> IO Schedule
+peekSchedule = peekStandalone scheduleMeta >=> return . Schedule
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
-withSchedule = withSimpleType . getCSchedule
+withSchedule = withStandalone . getCSchedule
 
+data CInterestRate
+newtype InterestRate = InterestRate {getCInterestRate :: Standalone CInterestRate}
+foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerPtr CInterestRate
+interestRateMeta :: Meta CInterestRate
+interestRateMeta = Meta qlFreeInterestRate
+peekInterestRate :: Ptr CInterestRate -> IO InterestRate
+peekInterestRate = peekStandalone interestRateMeta >=> return . InterestRate
 withInterestRate :: InterestRate -> (Ptr CInterestRate -> IO b) -> IO b
-withInterestRate = withSimpleType . getCInterestRate
-
-withDefaultProbabilityHelper :: DefaultProbabilityHelper -> (Ptr CDefaultProbabilityHelper -> IO b) -> IO b
-withDefaultProbabilityHelper = withSimpleType . getCDefaultProbabilityHelper
-
-withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
-withDividend = withSimpleType . getCDividend
-
-withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
-withFloatingRateCouponPricer = withSimpleType . getCFloatingRateCouponPricer
-
-withSmileSection :: SmileSection -> (Ptr CSmileSection -> IO b) -> IO b
-withSmileSection = withSimpleType . getCSmileSection
-
-withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
-withPricingEngine = withSimpleType . getCPricingEngine
-
-withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
-withTimeGrid = withSimpleType . getCTimeGrid
-
-withSimpleArray :: (t -> SimpleType a) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withSimpleArray c x f = withMany withSimpleType (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
-
+withInterestRate = withStandalone . getCInterestRate
 withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
-withInterestRateArray = withSimpleArray getCInterestRate
+withInterestRateArray = withStandaloneArray getCInterestRate
 
-withDefaultProbabilityHelperArray :: [DefaultProbabilityHelper] -> ((CUInt, Ptr (Ptr CDefaultProbabilityHelper)) -> IO b) -> IO b
-withDefaultProbabilityHelperArray = withSimpleArray getCDefaultProbabilityHelper
+data CTimeGrid
+newtype TimeGrid = TimeGrid {getCTimeGrid :: Standalone CTimeGrid}
+foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid
+timeGridMeta :: Meta CTimeGrid
+timeGridMeta = Meta qlFreeTimeGrid
+peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
+peekTimeGrid = peekStandalone timeGridMeta >=> return . TimeGrid
+withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
+withTimeGrid = withStandalone . getCTimeGrid
 
+data CDividend
+newtype Dividend = Dividend {getCDividend :: Standalone CDividend}
+foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
+dividendMeta :: Meta CDividend
+dividendMeta = Meta qlFreeDividend
+peekDividend :: Ptr CDividend -> IO Dividend
+peekDividend = peekStandalone dividendMeta >=> return . Dividend
+withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
+withDividend = withStandalone . getCDividend
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
-withDividendArray = withSimpleArray getCDividend
+withDividendArray = withStandaloneArray getCDividend
 
+data CSmileSection
+newtype SmileSection = SmileSection {getCSmileSection :: Standalone CSmileSection}
+foreign import ccall "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerPtr CSmileSection
+smileSectionMeta :: Meta CSmileSection
+smileSectionMeta = Meta qlFreeSmileSection
+peekSmileSection :: Ptr CSmileSection -> IO SmileSection
+peekSmileSection = peekStandalone smileSectionMeta >=> return . SmileSection
+withSmileSection :: SmileSection -> (Ptr CSmileSection -> IO b) -> IO b
+withSmileSection = withStandalone . getCSmileSection
+
+data CPricingEngine
+newtype PricingEngine = PricingEngine {getCPricingEngine :: Standalone CPricingEngine}
+foreign import ccall "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
+pricingEngineMeta :: Meta CPricingEngine
+pricingEngineMeta = Meta qlFreePricingEngine
+peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
+peekPricingEngine = peekStandalone pricingEngineMeta >=> return . PricingEngine
+withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
+withPricingEngine = withStandalone . getCPricingEngine
+
+data CFloatingRateCouponPricer
+newtype FloatingRateCouponPricer = FloatingRateCouponPricer {getCFloatingRateCouponPricer :: Standalone CFloatingRateCouponPricer}
+foreign import ccall "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer
+floatingRateCouponPricerMeta :: Meta CFloatingRateCouponPricer
+floatingRateCouponPricerMeta = Meta qlFreeFloatingRateCouponPricer
+peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer -> IO FloatingRateCouponPricer
+peekFloatingRateCouponPricer = peekStandalone floatingRateCouponPricerMeta >=> return . FloatingRateCouponPricer
+withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
+withFloatingRateCouponPricer = withStandalone . getCFloatingRateCouponPricer
 withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer)) -> IO b) -> IO b
-withFloatingRateCouponPricerArray = withSimpleArray getCFloatingRateCouponPricer
+withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPricer
+
+data CDefaultProbabilityHelper
+newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: Standalone CDefaultProbabilityHelper}
+foreign import ccall "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabilityHelper :: FinalizerPtr CDefaultProbabilityHelper
+defaultProbabilityHelperMeta :: Meta CDefaultProbabilityHelper
+defaultProbabilityHelperMeta = Meta qlFreeDefaultProbabilityHelper
+peekDefaultProbabilityHelper :: Ptr CDefaultProbabilityHelper -> IO DefaultProbabilityHelper
+peekDefaultProbabilityHelper = peekStandalone defaultProbabilityHelperMeta >=> return . DefaultProbabilityHelper
+withDefaultProbabilityHelper :: DefaultProbabilityHelper -> (Ptr CDefaultProbabilityHelper -> IO b) -> IO b
+withDefaultProbabilityHelper = withStandalone . getCDefaultProbabilityHelper
+withDefaultProbabilityHelperArray :: [DefaultProbabilityHelper] -> ((CUInt, Ptr (Ptr CDefaultProbabilityHelper)) -> IO b) -> IO b
+withDefaultProbabilityHelperArray = withStandaloneArray getCDefaultProbabilityHelper
+
+-- special cases: those types will be represented as enums so no need to wrap them
+data CQlClaim
+type QlClaim = Standalone CQlClaim
+foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
+claimMeta :: Meta CQlClaim
+claimMeta = Meta qlFreeClaim
+peekClaim :: Ptr CQlClaim -> IO (Standalone CQlClaim)
+peekClaim = peekStandalone claimMeta
+
+data CQlCallability
+type QlCallability = Standalone CQlCallability
+foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
+callabilityMeta :: Meta CQlCallability
+callabilityMeta = Meta qlFreeCallability
+peekCallability :: Ptr CQlCallability -> IO (Standalone CQlCallability)
+peekCallability = peekStandalone callabilityMeta
+
+data CConstraint
+type QlConstraint = Standalone CConstraint
+foreign import ccall "ql.h &qlFreeConstraint" qlFreeConstraint :: FinalizerPtr CConstraint
+constraintMeta :: Meta CConstraint
+constraintMeta = Meta qlFreeConstraint
+peekConstraint :: Ptr CConstraint -> IO (Standalone CConstraint)
+peekConstraint = peekStandalone constraintMeta
+
+data CEndCriteria
+type QlEndCriteria = Standalone CEndCriteria
+foreign import ccall "ql.h &qlFreeEndCriteria" qlFreeEndCriteria :: FinalizerPtr CEndCriteria
+endCritetiaMeta :: Meta CEndCriteria
+endCritetiaMeta = Meta qlFreeEndCriteria
+peekEndCriteria :: Ptr CEndCriteria -> IO (Standalone CEndCriteria)
+peekEndCriteria = peekStandalone endCritetiaMeta
+
+data CFdmSchemeDesc
+type QlFdmSchemeDesc = Standalone CFdmSchemeDesc
+foreign import ccall "ql.h &qlFreeFdmSchemeDesc" qlFreeFdmSchemeDesc :: FinalizerPtr CFdmSchemeDesc
+fdmSchemeDescMeta :: Meta CFdmSchemeDesc
+fdmSchemeDescMeta = Meta qlFreeFdmSchemeDesc
+peekFdmSchemeDesc :: Ptr CFdmSchemeDesc -> IO (Standalone CFdmSchemeDesc)
+peekFdmSchemeDesc = peekStandalone fdmSchemeDescMeta
+
+data CFittedBondDiscountCurveFittingMethod
+type QlFittedBondDiscountCurveFittingMethod = Standalone CFittedBondDiscountCurveFittingMethod
+foreign import ccall "ql.h &qlFreeFittedBondDiscountCurveFittingMethod" qlFreeFittedBondDiscountCurveFittingMethod :: FinalizerPtr CFittedBondDiscountCurveFittingMethod
+fittedBondDiscountCurveFittingMethodMeta :: Meta CFittedBondDiscountCurveFittingMethod
+fittedBondDiscountCurveFittingMethodMeta = Meta qlFreeFittedBondDiscountCurveFittingMethod
+peekFittedBondDiscountCurveFittingMethod :: Ptr CFittedBondDiscountCurveFittingMethod -> IO (Standalone CFittedBondDiscountCurveFittingMethod)
+peekFittedBondDiscountCurveFittingMethod = peekStandalone fittedBondDiscountCurveFittingMethodMeta
+
+data COptimizationMethod
+type QlOptimizationMethod = Standalone COptimizationMethod
+foreign import ccall "ql.h &qlFreeOptimizationMethod" qlFreeOptimizationMethod :: FinalizerPtr COptimizationMethod
+optimizationMethodMeta :: Meta COptimizationMethod
+optimizationMethodMeta = Meta qlFreeOptimizationMethod
+peekOptimizationMethod :: Ptr COptimizationMethod -> IO (Standalone COptimizationMethod)
+peekOptimizationMethod = peekStandalone optimizationMethodMeta
+
+data CRounding
+type QlRounding = Standalone CRounding
+foreign import ccall "ql.h &qlFreeRounding" qlFreeRounding :: FinalizerPtr CRounding
+roundingMeta :: Meta CRounding
+roundingMeta = Meta qlFreeRounding
+peekRounding :: Ptr CRounding -> IO (Standalone CRounding)
+peekRounding = peekStandalone roundingMeta
+
+data CLmCorrelationModel
+type QlLmCorrelationModel = Standalone CLmCorrelationModel
+foreign import ccall "ql.h &qlFreeLmCorrelationModel" qlFreeLmCorrelationModel :: FinalizerPtr CLmCorrelationModel
+lmCorrelationModelMeta :: Meta CLmCorrelationModel
+lmCorrelationModelMeta = Meta qlFreeLmCorrelationModel
+peekLmCorrelationModel :: Ptr CLmCorrelationModel -> IO (Standalone CLmCorrelationModel)
+peekLmCorrelationModel = peekStandalone lmCorrelationModelMeta
+
+data CLmVolatilityModel
+type QlLmVolatilityModel = Standalone CLmVolatilityModel
+foreign import ccall "ql.h &qlFreeLmVolatilityModel" qlFreeLmVolatilityModel :: FinalizerPtr CLmVolatilityModel
+lmVolatilityModelMeta :: Meta CLmVolatilityModel
+lmVolatilityModelMeta = Meta qlFreeLmVolatilityModel
+peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityModel)
+peekLmVolatilityModel = peekStandalone lmVolatilityModelMeta
 
 ---- class hierarchies
 data Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b), _fi :: FinalizerPtr b}
@@ -776,7 +729,7 @@ data Upcast a b = Upcast {_upcast :: Ptr a -> IO (Ptr b), _fi :: FinalizerPtr b}
 data GenObject b a = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a b)}
 
 asGenObject :: Meta c -> Upcast c c -> GenObject c a -> IO (GenObject c c)
-asGenObject m0 m (GenObject p (Upcast k _fi)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (_fin m0)) <*> return m)
+asGenObject m0 m (GenObject p (Upcast k _fi)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (getFinalizer m0)) <*> return m)
 
 -- TODO: OPTIMIZE: call the finalizer without creating a temp foreign ptr
 withGenObject :: GenObject c a -> (Ptr c -> IO b) -> IO b
@@ -792,10 +745,10 @@ withSubObject :: GenObject c a -> (Ptr a -> IO b) -> IO b
 withSubObject = withForeignPtr . getObject
 
 peekGenObject :: Meta c -> Upcast c c -> Ptr c -> IO (GenObject c c)
-peekGenObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
+peekGenObject m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
 
 peekSubObject :: Meta a -> Upcast a c -> Ptr a -> IO (GenObject c a)
-peekSubObject m0 m p = GenObject <$> newForeignPtr (_fin m0) p <*> return m
+peekSubObject m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
 
 withGenArray :: [GenObject c a] -> ((CUInt, Ptr (Ptr c)) -> IO b) -> IO b
 withGenArray x f = withMany withGenObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
@@ -1043,686 +996,6 @@ withBondHelperArray x = withSubArray (map getRateHelper x)
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
 withCalibrationHelperArray x = withGenArray (map getCalibrationHelper x)
 
--- temporary storage before hierarchies are migrated off type classes
-
-data CAffineModel
-newtype AffineModel = AffineModel {getCAffineModel :: SimpleType CAffineModel}
-affineModelMeta :: Meta CAffineModel
-affineModelMeta = Meta qlFreeAffineModel
-peekAffineModel :: Ptr CAffineModel -> IO AffineModel
-peekAffineModel = peekSimpleType affineModelMeta >=> return . AffineModel
-withAffineModel :: AffineModel -> (Ptr CAffineModel -> IO b) -> IO b
-withAffineModel = withSimpleType . getCAffineModel
-data CAssetSwap
-newtype AssetSwap = AssetSwap {getCAssetSwap :: SimpleType CAssetSwap}
-assetSwapMeta :: Meta CAssetSwap
-assetSwapMeta = Meta qlFreeAssetSwap
-peekAssetSwap :: Ptr CAssetSwap -> IO AssetSwap
-peekAssetSwap = peekSimpleType assetSwapMeta >=> return . AssetSwap
-withAssetSwap :: AssetSwap -> (Ptr CAssetSwap -> IO b) -> IO b
-withAssetSwap = withSimpleType . getCAssetSwap
-data CBarrierOption
-newtype BarrierOption = BarrierOption {getCBarrierOption :: SimpleType CBarrierOption}
-barrierOptionMeta :: Meta CBarrierOption
-barrierOptionMeta = Meta qlFreeBarrierOption
-peekBarrierOption :: Ptr CBarrierOption -> IO BarrierOption
-peekBarrierOption = peekSimpleType barrierOptionMeta >=> return . BarrierOption
-withBarrierOption :: BarrierOption -> (Ptr CBarrierOption -> IO b) -> IO b
-withBarrierOption = withSimpleType . getCBarrierOption
-data CBatesDetJumpModel
-newtype BatesDetJumpModel = BatesDetJumpModel {getCBatesDetJumpModel :: SimpleType CBatesDetJumpModel}
-batesDetJumpModelMeta :: Meta CBatesDetJumpModel
-batesDetJumpModelMeta = Meta qlFreeBatesDetJumpModel
-peekBatesDetJumpModel :: Ptr CBatesDetJumpModel -> IO BatesDetJumpModel
-peekBatesDetJumpModel = peekSimpleType batesDetJumpModelMeta >=> return . BatesDetJumpModel
-withBatesDetJumpModel :: BatesDetJumpModel -> (Ptr CBatesDetJumpModel -> IO b) -> IO b
-withBatesDetJumpModel = withSimpleType . getCBatesDetJumpModel
-data CBatesDoubleExpDetJumpModel
-newtype BatesDoubleExpDetJumpModel = BatesDoubleExpDetJumpModel {getCBatesDoubleExpDetJumpModel :: SimpleType CBatesDoubleExpDetJumpModel}
-batesDoubleExpDetJumpModelMeta :: Meta CBatesDoubleExpDetJumpModel
-batesDoubleExpDetJumpModelMeta = Meta qlFreeBatesDoubleExpDetJumpModel
-peekBatesDoubleExpDetJumpModel :: Ptr CBatesDoubleExpDetJumpModel -> IO BatesDoubleExpDetJumpModel
-peekBatesDoubleExpDetJumpModel = peekSimpleType batesDoubleExpDetJumpModelMeta >=> return . BatesDoubleExpDetJumpModel
-withBatesDoubleExpDetJumpModel :: BatesDoubleExpDetJumpModel -> (Ptr CBatesDoubleExpDetJumpModel -> IO b) -> IO b
-withBatesDoubleExpDetJumpModel = withSimpleType . getCBatesDoubleExpDetJumpModel
-data CBatesDoubleExpModel
-newtype BatesDoubleExpModel = BatesDoubleExpModel {getCBatesDoubleExpModel :: SimpleType CBatesDoubleExpModel}
-batesDoubleExpModelMeta :: Meta CBatesDoubleExpModel
-batesDoubleExpModelMeta = Meta qlFreeBatesDoubleExpModel
-peekBatesDoubleExpModel :: Ptr CBatesDoubleExpModel -> IO BatesDoubleExpModel
-peekBatesDoubleExpModel = peekSimpleType batesDoubleExpModelMeta >=> return . BatesDoubleExpModel
-withBatesDoubleExpModel :: BatesDoubleExpModel -> (Ptr CBatesDoubleExpModel -> IO b) -> IO b
-withBatesDoubleExpModel = withSimpleType . getCBatesDoubleExpModel
-data CBatesModel
-newtype BatesModel = BatesModel {getCBatesModel :: SimpleType CBatesModel}
-batesModelMeta :: Meta CBatesModel
-batesModelMeta = Meta qlFreeBatesModel
-peekBatesModel :: Ptr CBatesModel -> IO BatesModel
-peekBatesModel = peekSimpleType batesModelMeta >=> return . BatesModel
-withBatesModel :: BatesModel -> (Ptr CBatesModel -> IO b) -> IO b
-withBatesModel = withSimpleType . getCBatesModel
-data CBatesProcess
-newtype BatesProcess = BatesProcess {getCBatesProcess :: SimpleType CBatesProcess}
-batesProcessMeta :: Meta CBatesProcess
-batesProcessMeta = Meta qlFreeBatesProcess
-peekBatesProcess :: Ptr CBatesProcess -> IO BatesProcess
-peekBatesProcess = peekSimpleType batesProcessMeta >=> return . BatesProcess
-withBatesProcess :: BatesProcess -> (Ptr CBatesProcess -> IO b) -> IO b
-withBatesProcess = withSimpleType . getCBatesProcess
-data CBlackProcess
-newtype BlackProcess = BlackProcess {getCBlackProcess :: SimpleType CBlackProcess}
-blackProcessMeta :: Meta CBlackProcess
-blackProcessMeta = Meta qlFreeBlackProcess
-peekBlackProcess :: Ptr CBlackProcess -> IO BlackProcess
-peekBlackProcess = peekSimpleType blackProcessMeta >=> return . BlackProcess
-withBlackProcess :: BlackProcess -> (Ptr CBlackProcess -> IO b) -> IO b
-withBlackProcess = withSimpleType . getCBlackProcess
-data CBlackVarianceCurve
-newtype BlackVarianceCurve = BlackVarianceCurve {getCBlackVarianceCurve :: SimpleType CBlackVarianceCurve}
-blackVarianceCurveMeta :: Meta CBlackVarianceCurve
-blackVarianceCurveMeta = Meta qlFreeBlackVarianceCurve
-peekBlackVarianceCurve :: Ptr CBlackVarianceCurve -> IO BlackVarianceCurve
-peekBlackVarianceCurve = peekSimpleType blackVarianceCurveMeta >=> return . BlackVarianceCurve
-withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve -> IO b) -> IO b
-withBlackVarianceCurve = withSimpleType . getCBlackVarianceCurve
-data CBlackVolTermStructure
-newtype BlackVolTermStructure = BlackVolTermStructure {getCBlackVolTermStructure :: SimpleType CBlackVolTermStructure}
-blackVolTermStructureMeta :: Meta CBlackVolTermStructure
-blackVolTermStructureMeta = Meta qlFreeBlackVolTermStructure
-peekBlackVolTermStructure :: Ptr CBlackVolTermStructure -> IO BlackVolTermStructure
-peekBlackVolTermStructure = peekSimpleType blackVolTermStructureMeta >=> return . BlackVolTermStructure
-withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr CBlackVolTermStructure -> IO b) -> IO b
-withBlackVolTermStructure = withSimpleType . getCBlackVolTermStructure
-data CBMAIndex
-bMAIndexMeta :: Meta CBMAIndex
-bMAIndexMeta = Meta qlFreeBMAIndex
-data CBMASwap
-newtype BMASwap = BMASwap {getCBMASwap :: SimpleType CBMASwap}
-bMASwapMeta :: Meta CBMASwap
-bMASwapMeta = Meta qlFreeBMASwap
-peekBMASwap :: Ptr CBMASwap -> IO BMASwap
-peekBMASwap = peekSimpleType bMASwapMeta >=> return . BMASwap
-withBMASwap :: BMASwap -> (Ptr CBMASwap -> IO b) -> IO b
-withBMASwap = withSimpleType . getCBMASwap
-data CBond
-newtype Bond = Bond {getCBond :: SimpleType CBond}
-bondMeta :: Meta CBond
-bondMeta = Meta qlFreeBond
-peekBond :: Ptr CBond -> IO Bond
-peekBond = peekSimpleType bondMeta >=> return . Bond
-withBond :: Bond -> (Ptr CBond -> IO b) -> IO b
-withBond = withSimpleType . getCBond
-data CCalibratedModel
-newtype CalibratedModel = CalibratedModel {getCCalibratedModel :: SimpleType CCalibratedModel}
-calibratedModelMeta :: Meta CCalibratedModel
-calibratedModelMeta = Meta qlFreeCalibratedModel
-peekCalibratedModel :: Ptr CCalibratedModel -> IO CalibratedModel
-peekCalibratedModel = peekSimpleType calibratedModelMeta >=> return . CalibratedModel
-withCalibratedModel :: CalibratedModel -> (Ptr CCalibratedModel -> IO b) -> IO b
-withCalibratedModel = withSimpleType . getCCalibratedModel
-data CCallableBond
-newtype CallableBond = CallableBond {getCCallableBond :: SimpleType CCallableBond}
-callableBondMeta :: Meta CCallableBond
-callableBondMeta = Meta qlFreeCallableBond
-peekCallableBond :: Ptr CCallableBond -> IO CallableBond
-peekCallableBond = peekSimpleType callableBondMeta >=> return . CallableBond
-withCallableBond :: CallableBond -> (Ptr CCallableBond -> IO b) -> IO b
-withCallableBond = withSimpleType . getCCallableBond
-data CCallableBondVolatilityStructure
-newtype CallableBondVolatilityStructure = CallableBondVolatilityStructure {getCCallableBondVolatilityStructure :: SimpleType CCallableBondVolatilityStructure}
-callableBondVolatilityStructureMeta :: Meta CCallableBondVolatilityStructure
-callableBondVolatilityStructureMeta = Meta qlFreeCallableBondVolatilityStructure
-peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure -> IO CallableBondVolatilityStructure
-peekCallableBondVolatilityStructure = peekSimpleType callableBondVolatilityStructureMeta >=> return . CallableBondVolatilityStructure
-withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure -> IO b) -> IO b
-withCallableBondVolatilityStructure = withSimpleType . getCCallableBondVolatilityStructure
-data CCapFloor
-newtype CapFloor = CapFloor {getCCapFloor :: SimpleType CCapFloor}
-capFloorMeta :: Meta CCapFloor
-capFloorMeta = Meta qlFreeCapFloor
-peekCapFloor :: Ptr CCapFloor -> IO CapFloor
-peekCapFloor = peekSimpleType capFloorMeta >=> return . CapFloor
-withCapFloor :: CapFloor -> (Ptr CCapFloor -> IO b) -> IO b
-withCapFloor = withSimpleType . getCCapFloor
-data CCapFloorTermVolSurface
-newtype CapFloorTermVolSurface = CapFloorTermVolSurface {getCCapFloorTermVolSurface :: SimpleType CCapFloorTermVolSurface}
-capFloorTermVolSurfaceMeta :: Meta CCapFloorTermVolSurface
-capFloorTermVolSurfaceMeta = Meta qlFreeCapFloorTermVolSurface
-peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface -> IO CapFloorTermVolSurface
-peekCapFloorTermVolSurface = peekSimpleType capFloorTermVolSurfaceMeta >=> return . CapFloorTermVolSurface
-withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface -> IO b) -> IO b
-withCapFloorTermVolSurface = withSimpleType . getCCapFloorTermVolSurface
-data CCdsOption
-newtype CdsOption = CdsOption {getCCdsOption :: SimpleType CCdsOption}
-cdsOptionMeta :: Meta CCdsOption
-cdsOptionMeta = Meta qlFreeCdsOption
-peekCdsOption :: Ptr CCdsOption -> IO CdsOption
-peekCdsOption = peekSimpleType cdsOptionMeta >=> return . CdsOption
-withCdsOption :: CdsOption -> (Ptr CCdsOption -> IO b) -> IO b
-withCdsOption = withSimpleType . getCCdsOption
-data CConvertibleBond
-newtype ConvertibleBond = ConvertibleBond {getCConvertibleBond :: SimpleType CConvertibleBond}
-convertibleBondMeta :: Meta CConvertibleBond
-convertibleBondMeta = Meta qlFreeConvertibleBond
-peekConvertibleBond :: Ptr CConvertibleBond -> IO ConvertibleBond
-peekConvertibleBond = peekSimpleType convertibleBondMeta >=> return . ConvertibleBond
-withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond -> IO b) -> IO b
-withConvertibleBond = withSimpleType . getCConvertibleBond
-data CCreditDefaultSwap
-newtype CreditDefaultSwap = CreditDefaultSwap {getCCreditDefaultSwap :: SimpleType CCreditDefaultSwap}
-creditDefaultSwapMeta :: Meta CCreditDefaultSwap
-creditDefaultSwapMeta = Meta qlFreeCreditDefaultSwap
-peekCreditDefaultSwap :: Ptr CCreditDefaultSwap -> IO CreditDefaultSwap
-peekCreditDefaultSwap = peekSimpleType creditDefaultSwapMeta >=> return . CreditDefaultSwap
-withCreditDefaultSwap :: CreditDefaultSwap -> (Ptr CCreditDefaultSwap -> IO b) -> IO b
-withCreditDefaultSwap = withSimpleType . getCCreditDefaultSwap
-data CDefaultProbabilityTermStructure
-newtype DefaultProbabilityTermStructure = DefaultProbabilityTermStructure {getCDefaultProbabilityTermStructure :: SimpleType CDefaultProbabilityTermStructure}
-defaultProbabilityTermStructureMeta :: Meta CDefaultProbabilityTermStructure
-defaultProbabilityTermStructureMeta = Meta qlFreeDefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO DefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure = peekSimpleType defaultProbabilityTermStructureMeta >=> return . DefaultProbabilityTermStructure
-withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure -> IO b) -> IO b
-withDefaultProbabilityTermStructure = withSimpleType . getCDefaultProbabilityTermStructure
-data CDividendVanillaOption
-newtype DividendVanillaOption = DividendVanillaOption {getCDividendVanillaOption :: SimpleType CDividendVanillaOption}
-dividendVanillaOptionMeta :: Meta CDividendVanillaOption
-dividendVanillaOptionMeta = Meta qlFreeDividendVanillaOption
-peekDividendVanillaOption :: Ptr CDividendVanillaOption -> IO DividendVanillaOption
-peekDividendVanillaOption = peekSimpleType dividendVanillaOptionMeta >=> return . DividendVanillaOption
-withDividendVanillaOption :: DividendVanillaOption -> (Ptr CDividendVanillaOption -> IO b) -> IO b
-withDividendVanillaOption = withSimpleType . getCDividendVanillaOption
-data CExtendedOrnsteinUhlenbeckProcess
-newtype ExtendedOrnsteinUhlenbeckProcess = ExtendedOrnsteinUhlenbeckProcess {getCExtendedOrnsteinUhlenbeckProcess :: SimpleType CExtendedOrnsteinUhlenbeckProcess}
-extendedOrnsteinUhlenbeckProcessMeta :: Meta CExtendedOrnsteinUhlenbeckProcess
-extendedOrnsteinUhlenbeckProcessMeta = Meta qlFreeExtendedOrnsteinUhlenbeckProcess
-peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess -> IO ExtendedOrnsteinUhlenbeckProcess
-peekExtendedOrnsteinUhlenbeckProcess = peekSimpleType extendedOrnsteinUhlenbeckProcessMeta >=> return . ExtendedOrnsteinUhlenbeckProcess
-withExtendedOrnsteinUhlenbeckProcess :: ExtendedOrnsteinUhlenbeckProcess -> (Ptr CExtendedOrnsteinUhlenbeckProcess -> IO b) -> IO b
-withExtendedOrnsteinUhlenbeckProcess = withSimpleType . getCExtendedOrnsteinUhlenbeckProcess
-data CExtOUWithJumpsProcess
-newtype ExtOUWithJumpsProcess = ExtOUWithJumpsProcess {getCExtOUWithJumpsProcess :: SimpleType CExtOUWithJumpsProcess}
-extOUWithJumpsProcessMeta :: Meta CExtOUWithJumpsProcess
-extOUWithJumpsProcessMeta = Meta qlFreeExtOUWithJumpsProcess
-peekExtOUWithJumpsProcess :: Ptr CExtOUWithJumpsProcess -> IO ExtOUWithJumpsProcess
-peekExtOUWithJumpsProcess = peekSimpleType extOUWithJumpsProcessMeta >=> return . ExtOUWithJumpsProcess
-withExtOUWithJumpsProcess :: ExtOUWithJumpsProcess -> (Ptr CExtOUWithJumpsProcess -> IO b) -> IO b
-withExtOUWithJumpsProcess = withSimpleType . getCExtOUWithJumpsProcess
-data CFittedBondDiscountCurve
-newtype FittedBondDiscountCurve = FittedBondDiscountCurve {getCFittedBondDiscountCurve :: SimpleType CFittedBondDiscountCurve}
-fittedBondDiscountCurveMeta :: Meta CFittedBondDiscountCurve
-fittedBondDiscountCurveMeta = Meta qlFreeFittedBondDiscountCurve
-peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve -> IO FittedBondDiscountCurve
-peekFittedBondDiscountCurve = peekSimpleType fittedBondDiscountCurveMeta >=> return . FittedBondDiscountCurve
-withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve -> IO b) -> IO b
-withFittedBondDiscountCurve = withSimpleType . getCFittedBondDiscountCurve
-data CFixedRateBond
-newtype FixedRateBond = FixedRateBond {getCFixedRateBond :: SimpleType CFixedRateBond}
-fixedRateBondMeta :: Meta CFixedRateBond
-fixedRateBondMeta = Meta qlFreeFixedRateBond
-peekFixedRateBond :: Ptr CFixedRateBond -> IO FixedRateBond
-peekFixedRateBond = peekSimpleType fixedRateBondMeta >=> return . FixedRateBond
-withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond -> IO b) -> IO b
-withFixedRateBond = withSimpleType . getCFixedRateBond
-data CBondForward
-newtype BondForward = BondForward {getCBondForward :: SimpleType CBondForward}
-bondForwardMeta :: Meta CBondForward
-bondForwardMeta = Meta qlFreeBondForward
-peekBondForward :: Ptr CBondForward -> IO BondForward
-peekBondForward = peekSimpleType bondForwardMeta >=> return . BondForward
-withBondForward :: BondForward -> (Ptr CBondForward -> IO b) -> IO b
-withBondForward = withSimpleType . getCBondForward
-data CForward
-newtype Forward = Forward {getCForward :: SimpleType CForward}
-forwardMeta :: Meta CForward
-forwardMeta = Meta qlFreeForward
-peekForward :: Ptr CForward -> IO Forward
-peekForward = peekSimpleType forwardMeta >=> return . Forward
-withForward :: Forward -> (Ptr CForward -> IO b) -> IO b
-withForward = withSimpleType . getCForward
-data CForwardRateAgreement
-newtype ForwardRateAgreement = ForwardRateAgreement {getCForwardRateAgreement :: SimpleType CForwardRateAgreement}
-forwardRateAgreementMeta :: Meta CForwardRateAgreement
-forwardRateAgreementMeta = Meta qlFreeForwardRateAgreement
-peekForwardRateAgreement :: Ptr CForwardRateAgreement -> IO ForwardRateAgreement
-peekForwardRateAgreement = peekSimpleType forwardRateAgreementMeta >=> return . ForwardRateAgreement
-withForwardRateAgreement :: ForwardRateAgreement -> (Ptr CForwardRateAgreement -> IO b) -> IO b
-withForwardRateAgreement = withSimpleType . getCForwardRateAgreement
-data CForwardVanillaOption
-newtype ForwardVanillaOption = ForwardVanillaOption {getCForwardVanillaOption :: SimpleType CForwardVanillaOption}
-forwardVanillaOptionMeta :: Meta CForwardVanillaOption
-forwardVanillaOptionMeta = Meta qlFreeForwardVanillaOption
-peekForwardVanillaOption :: Ptr CForwardVanillaOption -> IO ForwardVanillaOption
-peekForwardVanillaOption = peekSimpleType forwardVanillaOptionMeta >=> return . ForwardVanillaOption
-withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption -> IO b) -> IO b
-withForwardVanillaOption = withSimpleType . getCForwardVanillaOption
-data CG2
-newtype G2 = G2 {getCG2 :: SimpleType CG2}
-g2Meta :: Meta CG2
-g2Meta = Meta qlFreeG2
-peekG2 :: Ptr CG2 -> IO G2
-peekG2 = peekSimpleType g2Meta >=> return . G2
-withG2 :: G2 -> (Ptr CG2 -> IO b) -> IO b
-withG2 = withSimpleType . getCG2
-data CGeneralizedBlackScholesProcess
-newtype GeneralizedBlackScholesProcess = GeneralizedBlackScholesProcess {getCGeneralizedBlackScholesProcess :: SimpleType CGeneralizedBlackScholesProcess}
-generalizedBlackScholesProcessMeta :: Meta CGeneralizedBlackScholesProcess
-generalizedBlackScholesProcessMeta = Meta qlFreeGeneralizedBlackScholesProcess
-peekGeneralizedBlackScholesProcess :: Ptr CGeneralizedBlackScholesProcess -> IO GeneralizedBlackScholesProcess
-peekGeneralizedBlackScholesProcess = peekSimpleType generalizedBlackScholesProcessMeta >=> return . GeneralizedBlackScholesProcess
-withGeneralizedBlackScholesProcess :: GeneralizedBlackScholesProcess -> (Ptr CGeneralizedBlackScholesProcess -> IO b) -> IO b
-withGeneralizedBlackScholesProcess = withSimpleType . getCGeneralizedBlackScholesProcess
-data CGJRGARCHModel
-newtype GJRGARCHModel = GJRGARCHModel {getCGJRGARCHModel :: SimpleType CGJRGARCHModel}
-gJRGARCHModelMeta :: Meta CGJRGARCHModel
-gJRGARCHModelMeta = Meta qlFreeGJRGARCHModel
-peekGJRGARCHModel :: Ptr CGJRGARCHModel -> IO GJRGARCHModel
-peekGJRGARCHModel = peekSimpleType gJRGARCHModelMeta >=> return . GJRGARCHModel
-withGJRGARCHModel :: GJRGARCHModel -> (Ptr CGJRGARCHModel -> IO b) -> IO b
-withGJRGARCHModel = withSimpleType . getCGJRGARCHModel
-data CGJRGARCHProcess
-newtype GJRGARCHProcess = GJRGARCHProcess {getCGJRGARCHProcess :: SimpleType CGJRGARCHProcess}
-gJRGARCHProcessMeta :: Meta CGJRGARCHProcess
-gJRGARCHProcessMeta = Meta qlFreeGJRGARCHProcess
-peekGJRGARCHProcess :: Ptr CGJRGARCHProcess -> IO GJRGARCHProcess
-peekGJRGARCHProcess = peekSimpleType gJRGARCHProcessMeta >=> return . GJRGARCHProcess
-withGJRGARCHProcess :: GJRGARCHProcess -> (Ptr CGJRGARCHProcess -> IO b) -> IO b
-withGJRGARCHProcess = withSimpleType . getCGJRGARCHProcess
-data CHestonModel
-newtype HestonModel = HestonModel {getCHestonModel :: SimpleType CHestonModel}
-hestonModelMeta :: Meta CHestonModel
-hestonModelMeta = Meta qlFreeHestonModel
-peekHestonModel :: Ptr CHestonModel -> IO HestonModel
-peekHestonModel = peekSimpleType hestonModelMeta >=> return . HestonModel
-withHestonModel :: HestonModel -> (Ptr CHestonModel -> IO b) -> IO b
-withHestonModel = withSimpleType . getCHestonModel
-data CHestonProcess
-newtype HestonProcess = HestonProcess {getCHestonProcess :: SimpleType CHestonProcess}
-hestonProcessMeta :: Meta CHestonProcess
-hestonProcessMeta = Meta qlFreeHestonProcess
-peekHestonProcess :: Ptr CHestonProcess -> IO HestonProcess
-peekHestonProcess = peekSimpleType hestonProcessMeta >=> return . HestonProcess
-withHestonProcess :: HestonProcess -> (Ptr CHestonProcess -> IO b) -> IO b
-withHestonProcess = withSimpleType . getCHestonProcess
-data CHullWhite
-newtype HullWhite = HullWhite {getCHullWhite :: SimpleType CHullWhite}
-hullWhiteMeta :: Meta CHullWhite
-hullWhiteMeta = Meta qlFreeHullWhite
-peekHullWhite :: Ptr CHullWhite -> IO HullWhite
-peekHullWhite = peekSimpleType hullWhiteMeta >=> return . HullWhite
-withHullWhite :: HullWhite -> (Ptr CHullWhite -> IO b) -> IO b
-withHullWhite = withSimpleType . getCHullWhite
-data CHullWhiteForwardProcess
-newtype HullWhiteForwardProcess = HullWhiteForwardProcess {getCHullWhiteForwardProcess :: SimpleType CHullWhiteForwardProcess}
-hullWhiteForwardProcessMeta :: Meta CHullWhiteForwardProcess
-hullWhiteForwardProcessMeta = Meta qlFreeHullWhiteForwardProcess
-peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess -> IO HullWhiteForwardProcess
-peekHullWhiteForwardProcess = peekSimpleType hullWhiteForwardProcessMeta >=> return . HullWhiteForwardProcess
-withHullWhiteForwardProcess :: HullWhiteForwardProcess -> (Ptr CHullWhiteForwardProcess -> IO b) -> IO b
-withHullWhiteForwardProcess = withSimpleType . getCHullWhiteForwardProcess
-data CHullWhiteProcess
-newtype HullWhiteProcess = HullWhiteProcess {getCHullWhiteProcess :: SimpleType CHullWhiteProcess}
-hullWhiteProcessMeta :: Meta CHullWhiteProcess
-hullWhiteProcessMeta = Meta qlFreeHullWhiteProcess
-peekHullWhiteProcess :: Ptr CHullWhiteProcess -> IO HullWhiteProcess
-peekHullWhiteProcess = peekSimpleType hullWhiteProcessMeta >=> return . HullWhiteProcess
-withHullWhiteProcess :: HullWhiteProcess -> (Ptr CHullWhiteProcess -> IO b) -> IO b
-withHullWhiteProcess = withSimpleType . getCHullWhiteProcess
-data CHybridHestonHullWhiteProcess
-newtype HybridHestonHullWhiteProcess = HybridHestonHullWhiteProcess {getCHybridHestonHullWhiteProcess :: SimpleType CHybridHestonHullWhiteProcess}
-hybridHestonHullWhiteProcessMeta :: Meta CHybridHestonHullWhiteProcess
-hybridHestonHullWhiteProcessMeta = Meta qlFreeHybridHestonHullWhiteProcess
-peekHybridHestonHullWhiteProcess :: Ptr CHybridHestonHullWhiteProcess -> IO HybridHestonHullWhiteProcess
-peekHybridHestonHullWhiteProcess = peekSimpleType hybridHestonHullWhiteProcessMeta >=> return . HybridHestonHullWhiteProcess
-withHybridHestonHullWhiteProcess :: HybridHestonHullWhiteProcess -> (Ptr CHybridHestonHullWhiteProcess -> IO b) -> IO b
-withHybridHestonHullWhiteProcess = withSimpleType . getCHybridHestonHullWhiteProcess
-data COvernightIndex
-overnightIborIndexMeta :: Meta COvernightIndex
-overnightIborIndexMeta = Meta qlFreeOvernightIborIndex
-data CIborIndex
-iborIndexMeta :: Meta CIborIndex
-iborIndexMeta = Meta qlFreeIborIndex
-data CIndex
-indexMeta :: Meta CIndex
-indexMeta = Meta qlFreeIndex
-data CInstrument
-newtype Instrument = Instrument {getCInstrument :: SimpleType CInstrument}
-instrumentMeta :: Meta CInstrument
-instrumentMeta = Meta qlFreeInstrument
-peekInstrument :: Ptr CInstrument -> IO Instrument
-peekInstrument = peekSimpleType instrumentMeta >=> return . Instrument
-withInstrument :: Instrument -> (Ptr CInstrument -> IO b) -> IO b
-withInstrument = withSimpleType . getCInstrument
-data CInterestRateIndex
-interestRateIndexMeta :: Meta CInterestRateIndex
-interestRateIndexMeta = Meta qlFreeInterestRateIndex
-data CKlugeExtOUProcess
-newtype KlugeExtOUProcess = KlugeExtOUProcess {getCKlugeExtOUProcess :: SimpleType CKlugeExtOUProcess}
-klugeExtOUProcessMeta :: Meta CKlugeExtOUProcess
-klugeExtOUProcessMeta = Meta qlFreeKlugeExtOUProcess
-peekKlugeExtOUProcess :: Ptr CKlugeExtOUProcess -> IO KlugeExtOUProcess
-peekKlugeExtOUProcess = peekSimpleType klugeExtOUProcessMeta >=> return . KlugeExtOUProcess
-withKlugeExtOUProcess :: KlugeExtOUProcess -> (Ptr CKlugeExtOUProcess -> IO b) -> IO b
-withKlugeExtOUProcess = withSimpleType . getCKlugeExtOUProcess
-data CLiborForwardModel
-newtype LiborForwardModel = LiborForwardModel {getCLiborForwardModel :: SimpleType CLiborForwardModel}
-liborForwardModelMeta :: Meta CLiborForwardModel
-liborForwardModelMeta = Meta qlFreeLiborForwardModel
-peekLiborForwardModel :: Ptr CLiborForwardModel -> IO LiborForwardModel
-peekLiborForwardModel = peekSimpleType liborForwardModelMeta >=> return . LiborForwardModel
-withLiborForwardModel :: LiborForwardModel -> (Ptr CLiborForwardModel -> IO b) -> IO b
-withLiborForwardModel = withSimpleType . getCLiborForwardModel
-data CLiborForwardModelProcess
-newtype LiborForwardModelProcess = LiborForwardModelProcess {getCLiborForwardModelProcess :: SimpleType CLiborForwardModelProcess}
-liborForwardModelProcessMeta :: Meta CLiborForwardModelProcess
-liborForwardModelProcessMeta = Meta qlFreeLiborForwardModelProcess
-peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess -> IO LiborForwardModelProcess
-peekLiborForwardModelProcess = peekSimpleType liborForwardModelProcessMeta >=> return . LiborForwardModelProcess
-withLiborForwardModelProcess :: LiborForwardModelProcess -> (Ptr CLiborForwardModelProcess -> IO b) -> IO b
-withLiborForwardModelProcess = withSimpleType . getCLiborForwardModelProcess
-data CLocalVolTermStructure
-newtype LocalVolTermStructure = LocalVolTermStructure {getCLocalVolTermStructure :: SimpleType CLocalVolTermStructure}
-localVolTermStructureMeta :: Meta CLocalVolTermStructure
-localVolTermStructureMeta = Meta qlFreeLocalVolTermStructure
-peekLocalVolTermStructure :: Ptr CLocalVolTermStructure -> IO LocalVolTermStructure
-peekLocalVolTermStructure = peekSimpleType localVolTermStructureMeta >=> return . LocalVolTermStructure
-withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure -> IO b) -> IO b
-withLocalVolTermStructure = withSimpleType . getCLocalVolTermStructure
-data CMargrabeOption
-newtype MargrabeOption = MargrabeOption {getCMargrabeOption :: SimpleType CMargrabeOption}
-margrabeOptionMeta :: Meta CMargrabeOption
-margrabeOptionMeta = Meta qlFreeMargrabeOption
-peekMargrabeOption :: Ptr CMargrabeOption -> IO MargrabeOption
-peekMargrabeOption = peekSimpleType margrabeOptionMeta >=> return . MargrabeOption
-withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption -> IO b) -> IO b
-withMargrabeOption = withSimpleType . getCMargrabeOption
-data CMerton76Process
-newtype Merton76Process = Merton76Process {getCMerton76Process :: SimpleType CMerton76Process}
-merton76ProcessMeta :: Meta CMerton76Process
-merton76ProcessMeta = Meta qlFreeMerton76Process
-peekMerton76Process :: Ptr CMerton76Process -> IO Merton76Process
-peekMerton76Process = peekSimpleType merton76ProcessMeta >=> return . Merton76Process
-withMerton76Process :: Merton76Process -> (Ptr CMerton76Process -> IO b) -> IO b
-withMerton76Process = withSimpleType . getCMerton76Process
-data CMultiAssetOption
-newtype MultiAssetOption = MultiAssetOption {getCMultiAssetOption :: SimpleType CMultiAssetOption}
-multiAssetOptionMeta :: Meta CMultiAssetOption
-multiAssetOptionMeta = Meta qlFreeMultiAssetOption
-peekMultiAssetOption :: Ptr CMultiAssetOption -> IO MultiAssetOption
-peekMultiAssetOption = peekSimpleType multiAssetOptionMeta >=> return . MultiAssetOption
-withMultiAssetOption :: MultiAssetOption -> (Ptr CMultiAssetOption -> IO b) -> IO b
-withMultiAssetOption = withSimpleType . getCMultiAssetOption
-data COneAssetOption
-newtype OneAssetOption = OneAssetOption {getCOneAssetOption :: SimpleType COneAssetOption}
-oneAssetOptionMeta :: Meta COneAssetOption
-oneAssetOptionMeta = Meta qlFreeOneAssetOption
-peekOneAssetOption :: Ptr COneAssetOption -> IO OneAssetOption
-peekOneAssetOption = peekSimpleType oneAssetOptionMeta >=> return . OneAssetOption
-withOneAssetOption :: OneAssetOption -> (Ptr COneAssetOption -> IO b) -> IO b
-withOneAssetOption = withSimpleType . getCOneAssetOption
-data COneFactorAffineModel
-newtype OneFactorAffineModel = OneFactorAffineModel {getCOneFactorAffineModel :: SimpleType COneFactorAffineModel}
-oneFactorAffineModelMeta :: Meta COneFactorAffineModel
-oneFactorAffineModelMeta = Meta qlFreeOneFactorAffineModel
-peekOneFactorAffineModel :: Ptr COneFactorAffineModel -> IO OneFactorAffineModel
-peekOneFactorAffineModel = peekSimpleType oneFactorAffineModelMeta >=> return . OneFactorAffineModel
-withOneFactorAffineModel :: OneFactorAffineModel -> (Ptr COneFactorAffineModel -> IO b) -> IO b
-withOneFactorAffineModel = withSimpleType . getCOneFactorAffineModel
-data COption
-newtype Option = Option {getCOption :: SimpleType COption}
-optionMeta :: Meta COption
-optionMeta = Meta qlFreeOption
-peekOption :: Ptr COption -> IO Option
-peekOption = peekSimpleType optionMeta >=> return . Option
-withOption :: Option -> (Ptr COption -> IO b) -> IO b
-withOption = withSimpleType . getCOption
-data COptionletVolatilityStructure
-newtype OptionletVolatilityStructure = OptionletVolatilityStructure {getCOptionletVolatilityStructure :: SimpleType COptionletVolatilityStructure}
-optionletVolatilityStructureMeta :: Meta COptionletVolatilityStructure
-optionletVolatilityStructureMeta = Meta qlFreeOptionletVolatilityStructure
-peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure -> IO OptionletVolatilityStructure
-peekOptionletVolatilityStructure = peekSimpleType optionletVolatilityStructureMeta >=> return . OptionletVolatilityStructure
-withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure -> IO b) -> IO b
-withOptionletVolatilityStructure = withSimpleType . getCOptionletVolatilityStructure
-data COvernightIndexedSwap
-newtype OvernightIndexedSwap = OvernightIndexedSwap {getCOvernightIndexedSwap :: SimpleType COvernightIndexedSwap}
-overnightIndexedSwapMeta :: Meta COvernightIndexedSwap
-overnightIndexedSwapMeta = Meta qlFreeOvernightIndexedSwap
-peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap -> IO OvernightIndexedSwap
-peekOvernightIndexedSwap = peekSimpleType overnightIndexedSwapMeta >=> return . OvernightIndexedSwap
-withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap -> IO b) -> IO b
-withOvernightIndexedSwap = withSimpleType . getCOvernightIndexedSwap
-data COvernightIndexedSwapIndex
-overnightIndexedSwapIndexMeta :: Meta COvernightIndexedSwapIndex
-overnightIndexedSwapIndexMeta = Meta qlFreeOvernightIndexedSwapIndex
-data CPiecewiseTimeDependentHestonModel
-newtype PiecewiseTimeDependentHestonModel = PiecewiseTimeDependentHestonModel {getCPiecewiseTimeDependentHestonModel :: SimpleType CPiecewiseTimeDependentHestonModel}
-piecewiseTimeDependentHestonModelMeta :: Meta CPiecewiseTimeDependentHestonModel
-piecewiseTimeDependentHestonModelMeta = Meta qlFreePiecewiseTimeDependentHestonModel
-peekPiecewiseTimeDependentHestonModel :: Ptr CPiecewiseTimeDependentHestonModel -> IO PiecewiseTimeDependentHestonModel
-peekPiecewiseTimeDependentHestonModel = peekSimpleType piecewiseTimeDependentHestonModelMeta >=> return . PiecewiseTimeDependentHestonModel
-withPiecewiseTimeDependentHestonModel :: PiecewiseTimeDependentHestonModel -> (Ptr CPiecewiseTimeDependentHestonModel -> IO b) -> IO b
-withPiecewiseTimeDependentHestonModel = withSimpleType . getCPiecewiseTimeDependentHestonModel
-data CQuantoBarrierOption
-newtype QuantoBarrierOption = QuantoBarrierOption {getCQuantoBarrierOption :: SimpleType CQuantoBarrierOption}
-quantoBarrierOptionMeta :: Meta CQuantoBarrierOption
-quantoBarrierOptionMeta = Meta qlFreeQuantoBarrierOption
-peekQuantoBarrierOption :: Ptr CQuantoBarrierOption -> IO QuantoBarrierOption
-peekQuantoBarrierOption = peekSimpleType quantoBarrierOptionMeta >=> return . QuantoBarrierOption
-withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption -> IO b) -> IO b
-withQuantoBarrierOption = withSimpleType . getCQuantoBarrierOption
-data CQuantoForwardVanillaOption
-newtype QuantoForwardVanillaOption = QuantoForwardVanillaOption {getCQuantoForwardVanillaOption :: SimpleType CQuantoForwardVanillaOption}
-quantoForwardVanillaOptionMeta :: Meta CQuantoForwardVanillaOption
-quantoForwardVanillaOptionMeta = Meta qlFreeQuantoForwardVanillaOption
-peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO QuantoForwardVanillaOption
-peekQuantoForwardVanillaOption = peekSimpleType quantoForwardVanillaOptionMeta >=> return . QuantoForwardVanillaOption
-withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption -> IO b) -> IO b
-withQuantoForwardVanillaOption = withSimpleType . getCQuantoForwardVanillaOption
-data CQuantoVanillaOption
-newtype QuantoVanillaOption = QuantoVanillaOption {getCQuantoVanillaOption :: SimpleType CQuantoVanillaOption}
-quantoVanillaOptionMeta :: Meta CQuantoVanillaOption
-quantoVanillaOptionMeta = Meta qlFreeQuantoVanillaOption
-peekQuantoVanillaOption :: Ptr CQuantoVanillaOption -> IO QuantoVanillaOption
-peekQuantoVanillaOption = peekSimpleType quantoVanillaOptionMeta >=> return . QuantoVanillaOption
-withQuantoVanillaOption :: QuantoVanillaOption -> (Ptr CQuantoVanillaOption -> IO b) -> IO b
-withQuantoVanillaOption = withSimpleType . getCQuantoVanillaOption
-data CShortRateModel
-newtype ShortRateModel = ShortRateModel {getCShortRateModel :: SimpleType CShortRateModel}
-shortRateModelMeta :: Meta CShortRateModel
-shortRateModelMeta = Meta qlFreeShortRateModel
-peekShortRateModel :: Ptr CShortRateModel -> IO ShortRateModel
-peekShortRateModel = peekSimpleType shortRateModelMeta >=> return . ShortRateModel
-withShortRateModel :: ShortRateModel -> (Ptr CShortRateModel -> IO b) -> IO b
-withShortRateModel = withSimpleType . getCShortRateModel
-data CStochasticProcess1D
-newtype StochasticProcess1D = StochasticProcess1D {getCStochasticProcess1D :: SimpleType CStochasticProcess1D}
-stochasticProcess1DMeta :: Meta CStochasticProcess1D
-stochasticProcess1DMeta = Meta qlFreeStochasticProcess1D
-peekStochasticProcess1D :: Ptr CStochasticProcess1D -> IO StochasticProcess1D
-peekStochasticProcess1D = peekSimpleType stochasticProcess1DMeta >=> return . StochasticProcess1D
-withStochasticProcess1D :: StochasticProcess1D -> (Ptr CStochasticProcess1D -> IO b) -> IO b
-withStochasticProcess1D = withSimpleType . getCStochasticProcess1D
-data CStochasticProcessArray
-newtype StochasticProcessArray = StochasticProcessArray {getCStochasticProcessArray :: SimpleType CStochasticProcessArray}
-stochasticProcessArrayMeta :: Meta CStochasticProcessArray
-stochasticProcessArrayMeta = Meta qlFreeStochasticProcessArray
-peekStochasticProcessArray :: Ptr CStochasticProcessArray -> IO StochasticProcessArray
-peekStochasticProcessArray = peekSimpleType stochasticProcessArrayMeta >=> return . StochasticProcessArray
-withStochasticProcessArray :: StochasticProcessArray -> (Ptr CStochasticProcessArray -> IO b) -> IO b
-withStochasticProcessArray = withSimpleType . getCStochasticProcessArray
-data CStochasticProcess
-newtype StochasticProcess = StochasticProcess {getCStochasticProcess :: SimpleType CStochasticProcess}
-stochasticProcessMeta :: Meta CStochasticProcess
-stochasticProcessMeta = Meta qlFreeStochasticProcess
-peekStochasticProcess :: Ptr CStochasticProcess -> IO StochasticProcess
-peekStochasticProcess = peekSimpleType stochasticProcessMeta >=> return . StochasticProcess
-withStochasticProcess :: StochasticProcess -> (Ptr CStochasticProcess -> IO b) -> IO b
-withStochasticProcess = withSimpleType . getCStochasticProcess
-data CSwap
-newtype Swap = Swap {getCSwap :: SimpleType CSwap}
-swapMeta :: Meta CSwap
-swapMeta = Meta qlFreeSwap
-peekSwap :: Ptr CSwap -> IO Swap
-peekSwap = peekSimpleType swapMeta >=> return . Swap
-withSwap :: Swap -> (Ptr CSwap -> IO b) -> IO b
-withSwap = withSimpleType . getCSwap
-data CSwapIndex
-swapIndexMeta :: Meta CSwapIndex
-swapIndexMeta = Meta qlFreeSwapIndex
-data CSwaption
-newtype Swaption = Swaption {getCSwaption :: SimpleType CSwaption}
-swaptionMeta :: Meta CSwaption
-swaptionMeta = Meta qlFreeSwaption
-peekSwaption :: Ptr CSwaption -> IO Swaption
-peekSwaption = peekSimpleType swaptionMeta >=> return . Swaption
-withSwaption :: Swaption -> (Ptr CSwaption -> IO b) -> IO b
-withSwaption = withSimpleType . getCSwaption
-data CSwaptionVolatilityStructure
-newtype SwaptionVolatilityStructure = SwaptionVolatilityStructure {getCSwaptionVolatilityStructure :: SimpleType CSwaptionVolatilityStructure}
-swaptionVolatilityStructureMeta :: Meta CSwaptionVolatilityStructure
-swaptionVolatilityStructureMeta = Meta qlFreeSwaptionVolatilityStructure
-peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure -> IO SwaptionVolatilityStructure
-peekSwaptionVolatilityStructure = peekSimpleType swaptionVolatilityStructureMeta >=> return . SwaptionVolatilityStructure
-withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure -> IO b) -> IO b
-withSwaptionVolatilityStructure = withSimpleType . getCSwaptionVolatilityStructure
-data CTermStructure
-newtype TermStructure = TermStructure {getCTermStructure :: SimpleType CTermStructure}
-termStructureMeta :: Meta CTermStructure
-termStructureMeta = Meta qlFreeTermStructure
-peekTermStructure :: Ptr CTermStructure -> IO TermStructure
-peekTermStructure = peekSimpleType termStructureMeta >=> return . TermStructure
-withTermStructure :: TermStructure -> (Ptr CTermStructure -> IO b) -> IO b
-withTermStructure = withSimpleType . getCTermStructure
-data CVanillaOption
-newtype VanillaOption = VanillaOption {getCVanillaOption :: SimpleType CVanillaOption}
-vanillaOptionMeta :: Meta CVanillaOption
-vanillaOptionMeta = Meta qlFreeVanillaOption
-peekVanillaOption :: Ptr CVanillaOption -> IO VanillaOption
-peekVanillaOption = peekSimpleType vanillaOptionMeta >=> return . VanillaOption
-withVanillaOption :: VanillaOption -> (Ptr CVanillaOption -> IO b) -> IO b
-withVanillaOption = withSimpleType . getCVanillaOption
-data CVanillaSwap
-newtype VanillaSwap = VanillaSwap {getCVanillaSwap :: SimpleType CVanillaSwap}
-vanillaSwapMeta :: Meta CVanillaSwap
-vanillaSwapMeta = Meta qlFreeVanillaSwap
-peekVanillaSwap :: Ptr CVanillaSwap -> IO VanillaSwap
-peekVanillaSwap = peekSimpleType vanillaSwapMeta >=> return . VanillaSwap
-withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap -> IO b) -> IO b
-withVanillaSwap = withSimpleType . getCVanillaSwap
-data CVarianceGammaProcess
-newtype VarianceGammaProcess = VarianceGammaProcess {getCVarianceGammaProcess :: SimpleType CVarianceGammaProcess}
-varianceGammaProcessMeta :: Meta CVarianceGammaProcess
-varianceGammaProcessMeta = Meta qlFreeVarianceGammaProcess
-peekVarianceGammaProcess :: Ptr CVarianceGammaProcess -> IO VarianceGammaProcess
-peekVarianceGammaProcess = peekSimpleType varianceGammaProcessMeta >=> return . VarianceGammaProcess
-withVarianceGammaProcess :: VarianceGammaProcess -> (Ptr CVarianceGammaProcess -> IO b) -> IO b
-withVarianceGammaProcess = withSimpleType . getCVarianceGammaProcess
-data CVolatilityTermStructure
-newtype VolatilityTermStructure = VolatilityTermStructure {getCVolatilityTermStructure :: SimpleType CVolatilityTermStructure}
-volatilityTermStructureMeta :: Meta CVolatilityTermStructure
-volatilityTermStructureMeta = Meta qlFreeVolatilityTermStructure
-peekVolatilityTermStructure :: Ptr CVolatilityTermStructure -> IO VolatilityTermStructure
-peekVolatilityTermStructure = peekSimpleType volatilityTermStructureMeta >=> return . VolatilityTermStructure
-withVolatilityTermStructure :: VolatilityTermStructure -> (Ptr CVolatilityTermStructure -> IO b) -> IO b
-withVolatilityTermStructure = withSimpleType . getCVolatilityTermStructure
-data CYieldTermStructure
-newtype YieldTermStructure = YieldTermStructure {getCYieldTermStructure :: SimpleType CYieldTermStructure}
-yieldTermStructureMeta :: Meta CYieldTermStructure
-yieldTermStructureMeta = Meta qlFreeYieldTermStructure
-peekYieldTermStructure :: Ptr CYieldTermStructure -> IO YieldTermStructure
-peekYieldTermStructure = peekSimpleType yieldTermStructureMeta >=> return . YieldTermStructure
-withYieldTermStructure :: YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
-withYieldTermStructure = withSimpleType . getCYieldTermStructure
-
-foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel
-foreign import ccall "ql.h &qlFreeAssetSwap" qlFreeAssetSwap :: FinalizerPtr CAssetSwap
-foreign import ccall "ql.h &qlFreeBarrierOption" qlFreeBarrierOption :: FinalizerPtr CBarrierOption
-foreign import ccall "ql.h &qlFreeBatesDetJumpModel" qlFreeBatesDetJumpModel :: FinalizerPtr CBatesDetJumpModel
-foreign import ccall "ql.h &qlFreeBatesDoubleExpDetJumpModel" qlFreeBatesDoubleExpDetJumpModel :: FinalizerPtr CBatesDoubleExpDetJumpModel
-foreign import ccall "ql.h &qlFreeBatesDoubleExpModel" qlFreeBatesDoubleExpModel :: FinalizerPtr CBatesDoubleExpModel
-foreign import ccall "ql.h &qlFreeBatesModel" qlFreeBatesModel :: FinalizerPtr CBatesModel
-foreign import ccall "ql.h &qlFreeBatesProcess" qlFreeBatesProcess :: FinalizerPtr CBatesProcess
-foreign import ccall "ql.h &qlFreeBlackProcess" qlFreeBlackProcess :: FinalizerPtr CBlackProcess
-foreign import ccall "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve
-foreign import ccall "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure
-foreign import ccall "ql.h &qlFreeBMAIndex" qlFreeBMAIndex :: FinalizerPtr CBMAIndex
-foreign import ccall "ql.h &qlFreeBMASwap" qlFreeBMASwap :: FinalizerPtr CBMASwap
-foreign import ccall "ql.h &qlFreeBond" qlFreeBond :: FinalizerPtr CBond
-foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel
-foreign import ccall "ql.h &qlFreeCallableBond" qlFreeCallableBond :: FinalizerPtr CCallableBond
-foreign import ccall "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure
-foreign import ccall "ql.h &qlFreeCapFloor" qlFreeCapFloor :: FinalizerPtr CCapFloor
-foreign import ccall "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface
-foreign import ccall "ql.h &qlFreeCdsOption" qlFreeCdsOption :: FinalizerPtr CCdsOption
-foreign import ccall "ql.h &qlFreeConvertibleBond" qlFreeConvertibleBond :: FinalizerPtr CConvertibleBond
-foreign import ccall "ql.h &qlFreeCreditDefaultSwap" qlFreeCreditDefaultSwap :: FinalizerPtr CCreditDefaultSwap
-foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure
-foreign import ccall "ql.h &qlFreeDividendVanillaOption" qlFreeDividendVanillaOption :: FinalizerPtr CDividendVanillaOption
-foreign import ccall "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess" qlFreeExtendedOrnsteinUhlenbeckProcess :: FinalizerPtr CExtendedOrnsteinUhlenbeckProcess
-foreign import ccall "ql.h &qlFreeExtOUWithJumpsProcess" qlFreeExtOUWithJumpsProcess :: FinalizerPtr CExtOUWithJumpsProcess
-foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
-foreign import ccall "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond
-foreign import ccall "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward
-foreign import ccall "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward
-foreign import ccall "ql.h &qlFreeForwardRateAgreement" qlFreeForwardRateAgreement :: FinalizerPtr CForwardRateAgreement
-foreign import ccall "ql.h &qlFreeForwardVanillaOption" qlFreeForwardVanillaOption :: FinalizerPtr CForwardVanillaOption
-foreign import ccall "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2
-foreign import ccall "ql.h &qlFreeGeneralizedBlackScholesProcess" qlFreeGeneralizedBlackScholesProcess :: FinalizerPtr CGeneralizedBlackScholesProcess
-foreign import ccall "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel
-foreign import ccall "ql.h &qlFreeGJRGARCHProcess" qlFreeGJRGARCHProcess :: FinalizerPtr CGJRGARCHProcess
-foreign import ccall "ql.h &qlFreeHestonModel" qlFreeHestonModel :: FinalizerPtr CHestonModel
-foreign import ccall "ql.h &qlFreeHestonProcess" qlFreeHestonProcess :: FinalizerPtr CHestonProcess
-foreign import ccall "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHullWhite
-foreign import ccall "ql.h &qlFreeHullWhiteForwardProcess" qlFreeHullWhiteForwardProcess :: FinalizerPtr CHullWhiteForwardProcess
-foreign import ccall "ql.h &qlFreeHullWhiteProcess" qlFreeHullWhiteProcess :: FinalizerPtr CHullWhiteProcess
-foreign import ccall "ql.h &qlFreeHybridHestonHullWhiteProcess" qlFreeHybridHestonHullWhiteProcess :: FinalizerPtr CHybridHestonHullWhiteProcess
-foreign import ccall "ql.h &qlFreeIborIndex" qlFreeIborIndex :: FinalizerPtr CIborIndex
-foreign import ccall "ql.h &qlFreeOvernightIndex" qlFreeOvernightIborIndex :: FinalizerPtr COvernightIndex
-foreign import ccall "ql.h &qlFreeIndex" qlFreeIndex :: FinalizerPtr CIndex
-foreign import ccall "ql.h &qlFreeInstrument" qlFreeInstrument :: FinalizerPtr CInstrument
-foreign import ccall "ql.h &qlFreeInterestRateIndex" qlFreeInterestRateIndex :: FinalizerPtr CInterestRateIndex
-foreign import ccall "ql.h &qlFreeKlugeExtOUProcess" qlFreeKlugeExtOUProcess :: FinalizerPtr CKlugeExtOUProcess
-foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel
-foreign import ccall "ql.h &qlFreeLiborForwardModelProcess" qlFreeLiborForwardModelProcess :: FinalizerPtr CLiborForwardModelProcess
-foreign import ccall "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure
-foreign import ccall "ql.h &qlFreeMargrabeOption" qlFreeMargrabeOption :: FinalizerPtr CMargrabeOption
-foreign import ccall "ql.h &qlFreeMerton76Process" qlFreeMerton76Process :: FinalizerPtr CMerton76Process
-foreign import ccall "ql.h &qlFreeMultiAssetOption" qlFreeMultiAssetOption :: FinalizerPtr CMultiAssetOption
-foreign import ccall "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: FinalizerPtr COneAssetOption
-foreign import ccall "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel
-foreign import ccall "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption
-foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure
-foreign import ccall "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap
-foreign import ccall "ql.h &qlFreeOvernightIndexedSwapIndex" qlFreeOvernightIndexedSwapIndex :: FinalizerPtr COvernightIndexedSwapIndex
-foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel
-foreign import ccall "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption
-foreign import ccall "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption
-foreign import ccall "ql.h &qlFreeQuantoVanillaOption" qlFreeQuantoVanillaOption :: FinalizerPtr CQuantoVanillaOption
-foreign import ccall "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel
-foreign import ccall "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D :: FinalizerPtr CStochasticProcess1D
-foreign import ccall "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray
-foreign import ccall "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess
-foreign import ccall "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap
-foreign import ccall "ql.h &qlFreeSwapIndex" qlFreeSwapIndex :: FinalizerPtr CSwapIndex
-foreign import ccall "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption
-foreign import ccall "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure
-foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure
-foreign import ccall "ql.h &qlFreeVanillaOption" qlFreeVanillaOption :: FinalizerPtr CVanillaOption
-foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap
-foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess
-foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure
-foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure
-
-withInstrumentArray :: [Instrument] -> ((CUInt, Ptr (Ptr CInstrument)) -> IO b) -> IO b
-withInstrumentArray = withSimpleArray getCInstrument
-
-withMaybeYieldTermStructure :: Maybe YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
-withMaybeYieldTermStructure = withMaybeSimpleType . (getCYieldTermStructure <$>)
-
-withStochasticProcess1DArray :: [StochasticProcess1D] -> ((CUInt, Ptr (Ptr CStochasticProcess1D)) -> IO b) -> IO b
-withStochasticProcess1DArray = withSimpleArray getCStochasticProcess1D
-
 foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex -> IO (Ptr CIndex)
 foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRateIndex :: Ptr CBMAIndex -> IO (Ptr CInterestRateIndex)
 foreign import ccall "ql.h qlSwapIndexAsInterestRateIndex" qlSwapIndexAsInterestRateIndex :: Ptr CSwapIndex -> IO (Ptr CInterestRateIndex)
@@ -1768,7 +1041,7 @@ type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
 type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
 
 -- FIXME free casted Ptr after call
--- and then TODO optimization: don't create a temp ForeignPtr, rahter call the finalizer directly
+-- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
 withNested :: Upcast a b -> GenObject2 c a -> (Ptr b -> IO r) -> IO r
 --withNested (Upcast u fi) (GenObject2 p w) f = w p (\pp -> do
 --  cp <- u pp
@@ -1865,5 +1138,685 @@ asSwapIndex :: GenSwapIndex a -> IO SwapIndex
 asSwapIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedSwapIndex (GenObject2 x w)) _)) _)) = w x (\p -> do
   fp <- newGenForeign swapIndexMeta p
   return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex fp) withNestedSwapIndex) withNestedInterestRateIndex)
+
+-- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
+
+data CAffineModel
+newtype AffineModel = AffineModel {getCAffineModel :: Standalone CAffineModel}
+affineModelMeta :: Meta CAffineModel
+affineModelMeta = Meta qlFreeAffineModel
+peekAffineModel :: Ptr CAffineModel -> IO AffineModel
+peekAffineModel = peekStandalone affineModelMeta >=> return . AffineModel
+withAffineModel :: AffineModel -> (Ptr CAffineModel -> IO b) -> IO b
+withAffineModel = withStandalone . getCAffineModel
+data CAssetSwap
+newtype AssetSwap = AssetSwap {getCAssetSwap :: Standalone CAssetSwap}
+assetSwapMeta :: Meta CAssetSwap
+assetSwapMeta = Meta qlFreeAssetSwap
+peekAssetSwap :: Ptr CAssetSwap -> IO AssetSwap
+peekAssetSwap = peekStandalone assetSwapMeta >=> return . AssetSwap
+withAssetSwap :: AssetSwap -> (Ptr CAssetSwap -> IO b) -> IO b
+withAssetSwap = withStandalone . getCAssetSwap
+data CBarrierOption
+newtype BarrierOption = BarrierOption {getCBarrierOption :: Standalone CBarrierOption}
+barrierOptionMeta :: Meta CBarrierOption
+barrierOptionMeta = Meta qlFreeBarrierOption
+peekBarrierOption :: Ptr CBarrierOption -> IO BarrierOption
+peekBarrierOption = peekStandalone barrierOptionMeta >=> return . BarrierOption
+withBarrierOption :: BarrierOption -> (Ptr CBarrierOption -> IO b) -> IO b
+withBarrierOption = withStandalone . getCBarrierOption
+data CBatesDetJumpModel
+newtype BatesDetJumpModel = BatesDetJumpModel {getCBatesDetJumpModel :: Standalone CBatesDetJumpModel}
+batesDetJumpModelMeta :: Meta CBatesDetJumpModel
+batesDetJumpModelMeta = Meta qlFreeBatesDetJumpModel
+peekBatesDetJumpModel :: Ptr CBatesDetJumpModel -> IO BatesDetJumpModel
+peekBatesDetJumpModel = peekStandalone batesDetJumpModelMeta >=> return . BatesDetJumpModel
+withBatesDetJumpModel :: BatesDetJumpModel -> (Ptr CBatesDetJumpModel -> IO b) -> IO b
+withBatesDetJumpModel = withStandalone . getCBatesDetJumpModel
+data CBatesDoubleExpDetJumpModel
+newtype BatesDoubleExpDetJumpModel = BatesDoubleExpDetJumpModel {getCBatesDoubleExpDetJumpModel :: Standalone CBatesDoubleExpDetJumpModel}
+batesDoubleExpDetJumpModelMeta :: Meta CBatesDoubleExpDetJumpModel
+batesDoubleExpDetJumpModelMeta = Meta qlFreeBatesDoubleExpDetJumpModel
+peekBatesDoubleExpDetJumpModel :: Ptr CBatesDoubleExpDetJumpModel -> IO BatesDoubleExpDetJumpModel
+peekBatesDoubleExpDetJumpModel = peekStandalone batesDoubleExpDetJumpModelMeta >=> return . BatesDoubleExpDetJumpModel
+withBatesDoubleExpDetJumpModel :: BatesDoubleExpDetJumpModel -> (Ptr CBatesDoubleExpDetJumpModel -> IO b) -> IO b
+withBatesDoubleExpDetJumpModel = withStandalone . getCBatesDoubleExpDetJumpModel
+data CBatesDoubleExpModel
+newtype BatesDoubleExpModel = BatesDoubleExpModel {getCBatesDoubleExpModel :: Standalone CBatesDoubleExpModel}
+batesDoubleExpModelMeta :: Meta CBatesDoubleExpModel
+batesDoubleExpModelMeta = Meta qlFreeBatesDoubleExpModel
+peekBatesDoubleExpModel :: Ptr CBatesDoubleExpModel -> IO BatesDoubleExpModel
+peekBatesDoubleExpModel = peekStandalone batesDoubleExpModelMeta >=> return . BatesDoubleExpModel
+withBatesDoubleExpModel :: BatesDoubleExpModel -> (Ptr CBatesDoubleExpModel -> IO b) -> IO b
+withBatesDoubleExpModel = withStandalone . getCBatesDoubleExpModel
+data CBatesModel
+newtype BatesModel = BatesModel {getCBatesModel :: Standalone CBatesModel}
+batesModelMeta :: Meta CBatesModel
+batesModelMeta = Meta qlFreeBatesModel
+peekBatesModel :: Ptr CBatesModel -> IO BatesModel
+peekBatesModel = peekStandalone batesModelMeta >=> return . BatesModel
+withBatesModel :: BatesModel -> (Ptr CBatesModel -> IO b) -> IO b
+withBatesModel = withStandalone . getCBatesModel
+data CBatesProcess
+newtype BatesProcess = BatesProcess {getCBatesProcess :: Standalone CBatesProcess}
+batesProcessMeta :: Meta CBatesProcess
+batesProcessMeta = Meta qlFreeBatesProcess
+peekBatesProcess :: Ptr CBatesProcess -> IO BatesProcess
+peekBatesProcess = peekStandalone batesProcessMeta >=> return . BatesProcess
+withBatesProcess :: BatesProcess -> (Ptr CBatesProcess -> IO b) -> IO b
+withBatesProcess = withStandalone . getCBatesProcess
+data CBlackProcess
+newtype BlackProcess = BlackProcess {getCBlackProcess :: Standalone CBlackProcess}
+blackProcessMeta :: Meta CBlackProcess
+blackProcessMeta = Meta qlFreeBlackProcess
+peekBlackProcess :: Ptr CBlackProcess -> IO BlackProcess
+peekBlackProcess = peekStandalone blackProcessMeta >=> return . BlackProcess
+withBlackProcess :: BlackProcess -> (Ptr CBlackProcess -> IO b) -> IO b
+withBlackProcess = withStandalone . getCBlackProcess
+data CBlackVarianceCurve
+newtype BlackVarianceCurve = BlackVarianceCurve {getCBlackVarianceCurve :: Standalone CBlackVarianceCurve}
+blackVarianceCurveMeta :: Meta CBlackVarianceCurve
+blackVarianceCurveMeta = Meta qlFreeBlackVarianceCurve
+peekBlackVarianceCurve :: Ptr CBlackVarianceCurve -> IO BlackVarianceCurve
+peekBlackVarianceCurve = peekStandalone blackVarianceCurveMeta >=> return . BlackVarianceCurve
+withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve -> IO b) -> IO b
+withBlackVarianceCurve = withStandalone . getCBlackVarianceCurve
+data CBlackVolTermStructure
+newtype BlackVolTermStructure = BlackVolTermStructure {getCBlackVolTermStructure :: Standalone CBlackVolTermStructure}
+blackVolTermStructureMeta :: Meta CBlackVolTermStructure
+blackVolTermStructureMeta = Meta qlFreeBlackVolTermStructure
+peekBlackVolTermStructure :: Ptr CBlackVolTermStructure -> IO BlackVolTermStructure
+peekBlackVolTermStructure = peekStandalone blackVolTermStructureMeta >=> return . BlackVolTermStructure
+withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr CBlackVolTermStructure -> IO b) -> IO b
+withBlackVolTermStructure = withStandalone . getCBlackVolTermStructure
+data CBMAIndex
+bMAIndexMeta :: Meta CBMAIndex
+bMAIndexMeta = Meta qlFreeBMAIndex
+data CBMASwap
+newtype BMASwap = BMASwap {getCBMASwap :: Standalone CBMASwap}
+bMASwapMeta :: Meta CBMASwap
+bMASwapMeta = Meta qlFreeBMASwap
+peekBMASwap :: Ptr CBMASwap -> IO BMASwap
+peekBMASwap = peekStandalone bMASwapMeta >=> return . BMASwap
+withBMASwap :: BMASwap -> (Ptr CBMASwap -> IO b) -> IO b
+withBMASwap = withStandalone . getCBMASwap
+data CBond
+newtype Bond = Bond {getCBond :: Standalone CBond}
+bondMeta :: Meta CBond
+bondMeta = Meta qlFreeBond
+peekBond :: Ptr CBond -> IO Bond
+peekBond = peekStandalone bondMeta >=> return . Bond
+withBond :: Bond -> (Ptr CBond -> IO b) -> IO b
+withBond = withStandalone . getCBond
+data CCalibratedModel
+newtype CalibratedModel = CalibratedModel {getCCalibratedModel :: Standalone CCalibratedModel}
+calibratedModelMeta :: Meta CCalibratedModel
+calibratedModelMeta = Meta qlFreeCalibratedModel
+peekCalibratedModel :: Ptr CCalibratedModel -> IO CalibratedModel
+peekCalibratedModel = peekStandalone calibratedModelMeta >=> return . CalibratedModel
+withCalibratedModel :: CalibratedModel -> (Ptr CCalibratedModel -> IO b) -> IO b
+withCalibratedModel = withStandalone . getCCalibratedModel
+data CCallableBond
+newtype CallableBond = CallableBond {getCCallableBond :: Standalone CCallableBond}
+callableBondMeta :: Meta CCallableBond
+callableBondMeta = Meta qlFreeCallableBond
+peekCallableBond :: Ptr CCallableBond -> IO CallableBond
+peekCallableBond = peekStandalone callableBondMeta >=> return . CallableBond
+withCallableBond :: CallableBond -> (Ptr CCallableBond -> IO b) -> IO b
+withCallableBond = withStandalone . getCCallableBond
+data CCallableBondVolatilityStructure
+newtype CallableBondVolatilityStructure = CallableBondVolatilityStructure {getCCallableBondVolatilityStructure :: Standalone CCallableBondVolatilityStructure}
+callableBondVolatilityStructureMeta :: Meta CCallableBondVolatilityStructure
+callableBondVolatilityStructureMeta = Meta qlFreeCallableBondVolatilityStructure
+peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure -> IO CallableBondVolatilityStructure
+peekCallableBondVolatilityStructure = peekStandalone callableBondVolatilityStructureMeta >=> return . CallableBondVolatilityStructure
+withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure -> IO b) -> IO b
+withCallableBondVolatilityStructure = withStandalone . getCCallableBondVolatilityStructure
+data CCapFloor
+newtype CapFloor = CapFloor {getCCapFloor :: Standalone CCapFloor}
+capFloorMeta :: Meta CCapFloor
+capFloorMeta = Meta qlFreeCapFloor
+peekCapFloor :: Ptr CCapFloor -> IO CapFloor
+peekCapFloor = peekStandalone capFloorMeta >=> return . CapFloor
+withCapFloor :: CapFloor -> (Ptr CCapFloor -> IO b) -> IO b
+withCapFloor = withStandalone . getCCapFloor
+data CCapFloorTermVolSurface
+newtype CapFloorTermVolSurface = CapFloorTermVolSurface {getCCapFloorTermVolSurface :: Standalone CCapFloorTermVolSurface}
+capFloorTermVolSurfaceMeta :: Meta CCapFloorTermVolSurface
+capFloorTermVolSurfaceMeta = Meta qlFreeCapFloorTermVolSurface
+peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface -> IO CapFloorTermVolSurface
+peekCapFloorTermVolSurface = peekStandalone capFloorTermVolSurfaceMeta >=> return . CapFloorTermVolSurface
+withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface -> IO b) -> IO b
+withCapFloorTermVolSurface = withStandalone . getCCapFloorTermVolSurface
+data CCdsOption
+newtype CdsOption = CdsOption {getCCdsOption :: Standalone CCdsOption}
+cdsOptionMeta :: Meta CCdsOption
+cdsOptionMeta = Meta qlFreeCdsOption
+peekCdsOption :: Ptr CCdsOption -> IO CdsOption
+peekCdsOption = peekStandalone cdsOptionMeta >=> return . CdsOption
+withCdsOption :: CdsOption -> (Ptr CCdsOption -> IO b) -> IO b
+withCdsOption = withStandalone . getCCdsOption
+data CConvertibleBond
+newtype ConvertibleBond = ConvertibleBond {getCConvertibleBond :: Standalone CConvertibleBond}
+convertibleBondMeta :: Meta CConvertibleBond
+convertibleBondMeta = Meta qlFreeConvertibleBond
+peekConvertibleBond :: Ptr CConvertibleBond -> IO ConvertibleBond
+peekConvertibleBond = peekStandalone convertibleBondMeta >=> return . ConvertibleBond
+withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond -> IO b) -> IO b
+withConvertibleBond = withStandalone . getCConvertibleBond
+data CCreditDefaultSwap
+newtype CreditDefaultSwap = CreditDefaultSwap {getCCreditDefaultSwap :: Standalone CCreditDefaultSwap}
+creditDefaultSwapMeta :: Meta CCreditDefaultSwap
+creditDefaultSwapMeta = Meta qlFreeCreditDefaultSwap
+peekCreditDefaultSwap :: Ptr CCreditDefaultSwap -> IO CreditDefaultSwap
+peekCreditDefaultSwap = peekStandalone creditDefaultSwapMeta >=> return . CreditDefaultSwap
+withCreditDefaultSwap :: CreditDefaultSwap -> (Ptr CCreditDefaultSwap -> IO b) -> IO b
+withCreditDefaultSwap = withStandalone . getCCreditDefaultSwap
+data CDefaultProbabilityTermStructure
+newtype DefaultProbabilityTermStructure = DefaultProbabilityTermStructure {getCDefaultProbabilityTermStructure :: Standalone CDefaultProbabilityTermStructure}
+defaultProbabilityTermStructureMeta :: Meta CDefaultProbabilityTermStructure
+defaultProbabilityTermStructureMeta = Meta qlFreeDefaultProbabilityTermStructure
+peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO DefaultProbabilityTermStructure
+peekDefaultProbabilityTermStructure = peekStandalone defaultProbabilityTermStructureMeta >=> return . DefaultProbabilityTermStructure
+withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure -> IO b) -> IO b
+withDefaultProbabilityTermStructure = withStandalone . getCDefaultProbabilityTermStructure
+data CDividendVanillaOption
+newtype DividendVanillaOption = DividendVanillaOption {getCDividendVanillaOption :: Standalone CDividendVanillaOption}
+dividendVanillaOptionMeta :: Meta CDividendVanillaOption
+dividendVanillaOptionMeta = Meta qlFreeDividendVanillaOption
+peekDividendVanillaOption :: Ptr CDividendVanillaOption -> IO DividendVanillaOption
+peekDividendVanillaOption = peekStandalone dividendVanillaOptionMeta >=> return . DividendVanillaOption
+withDividendVanillaOption :: DividendVanillaOption -> (Ptr CDividendVanillaOption -> IO b) -> IO b
+withDividendVanillaOption = withStandalone . getCDividendVanillaOption
+data CExtendedOrnsteinUhlenbeckProcess
+newtype ExtendedOrnsteinUhlenbeckProcess = ExtendedOrnsteinUhlenbeckProcess {getCExtendedOrnsteinUhlenbeckProcess :: Standalone CExtendedOrnsteinUhlenbeckProcess}
+extendedOrnsteinUhlenbeckProcessMeta :: Meta CExtendedOrnsteinUhlenbeckProcess
+extendedOrnsteinUhlenbeckProcessMeta = Meta qlFreeExtendedOrnsteinUhlenbeckProcess
+peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess -> IO ExtendedOrnsteinUhlenbeckProcess
+peekExtendedOrnsteinUhlenbeckProcess = peekStandalone extendedOrnsteinUhlenbeckProcessMeta >=> return . ExtendedOrnsteinUhlenbeckProcess
+withExtendedOrnsteinUhlenbeckProcess :: ExtendedOrnsteinUhlenbeckProcess -> (Ptr CExtendedOrnsteinUhlenbeckProcess -> IO b) -> IO b
+withExtendedOrnsteinUhlenbeckProcess = withStandalone . getCExtendedOrnsteinUhlenbeckProcess
+data CExtOUWithJumpsProcess
+newtype ExtOUWithJumpsProcess = ExtOUWithJumpsProcess {getCExtOUWithJumpsProcess :: Standalone CExtOUWithJumpsProcess}
+extOUWithJumpsProcessMeta :: Meta CExtOUWithJumpsProcess
+extOUWithJumpsProcessMeta = Meta qlFreeExtOUWithJumpsProcess
+peekExtOUWithJumpsProcess :: Ptr CExtOUWithJumpsProcess -> IO ExtOUWithJumpsProcess
+peekExtOUWithJumpsProcess = peekStandalone extOUWithJumpsProcessMeta >=> return . ExtOUWithJumpsProcess
+withExtOUWithJumpsProcess :: ExtOUWithJumpsProcess -> (Ptr CExtOUWithJumpsProcess -> IO b) -> IO b
+withExtOUWithJumpsProcess = withStandalone . getCExtOUWithJumpsProcess
+data CFittedBondDiscountCurve
+newtype FittedBondDiscountCurve = FittedBondDiscountCurve {getCFittedBondDiscountCurve :: Standalone CFittedBondDiscountCurve}
+fittedBondDiscountCurveMeta :: Meta CFittedBondDiscountCurve
+fittedBondDiscountCurveMeta = Meta qlFreeFittedBondDiscountCurve
+peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve -> IO FittedBondDiscountCurve
+peekFittedBondDiscountCurve = peekStandalone fittedBondDiscountCurveMeta >=> return . FittedBondDiscountCurve
+withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve -> IO b) -> IO b
+withFittedBondDiscountCurve = withStandalone . getCFittedBondDiscountCurve
+data CFixedRateBond
+newtype FixedRateBond = FixedRateBond {getCFixedRateBond :: Standalone CFixedRateBond}
+fixedRateBondMeta :: Meta CFixedRateBond
+fixedRateBondMeta = Meta qlFreeFixedRateBond
+peekFixedRateBond :: Ptr CFixedRateBond -> IO FixedRateBond
+peekFixedRateBond = peekStandalone fixedRateBondMeta >=> return . FixedRateBond
+withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond -> IO b) -> IO b
+withFixedRateBond = withStandalone . getCFixedRateBond
+data CBondForward
+newtype BondForward = BondForward {getCBondForward :: Standalone CBondForward}
+bondForwardMeta :: Meta CBondForward
+bondForwardMeta = Meta qlFreeBondForward
+peekBondForward :: Ptr CBondForward -> IO BondForward
+peekBondForward = peekStandalone bondForwardMeta >=> return . BondForward
+withBondForward :: BondForward -> (Ptr CBondForward -> IO b) -> IO b
+withBondForward = withStandalone . getCBondForward
+data CForward
+newtype Forward = Forward {getCForward :: Standalone CForward}
+forwardMeta :: Meta CForward
+forwardMeta = Meta qlFreeForward
+peekForward :: Ptr CForward -> IO Forward
+peekForward = peekStandalone forwardMeta >=> return . Forward
+withForward :: Forward -> (Ptr CForward -> IO b) -> IO b
+withForward = withStandalone . getCForward
+data CForwardRateAgreement
+newtype ForwardRateAgreement = ForwardRateAgreement {getCForwardRateAgreement :: Standalone CForwardRateAgreement}
+forwardRateAgreementMeta :: Meta CForwardRateAgreement
+forwardRateAgreementMeta = Meta qlFreeForwardRateAgreement
+peekForwardRateAgreement :: Ptr CForwardRateAgreement -> IO ForwardRateAgreement
+peekForwardRateAgreement = peekStandalone forwardRateAgreementMeta >=> return . ForwardRateAgreement
+withForwardRateAgreement :: ForwardRateAgreement -> (Ptr CForwardRateAgreement -> IO b) -> IO b
+withForwardRateAgreement = withStandalone . getCForwardRateAgreement
+data CForwardVanillaOption
+newtype ForwardVanillaOption = ForwardVanillaOption {getCForwardVanillaOption :: Standalone CForwardVanillaOption}
+forwardVanillaOptionMeta :: Meta CForwardVanillaOption
+forwardVanillaOptionMeta = Meta qlFreeForwardVanillaOption
+peekForwardVanillaOption :: Ptr CForwardVanillaOption -> IO ForwardVanillaOption
+peekForwardVanillaOption = peekStandalone forwardVanillaOptionMeta >=> return . ForwardVanillaOption
+withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption -> IO b) -> IO b
+withForwardVanillaOption = withStandalone . getCForwardVanillaOption
+data CG2
+newtype G2 = G2 {getCG2 :: Standalone CG2}
+g2Meta :: Meta CG2
+g2Meta = Meta qlFreeG2
+peekG2 :: Ptr CG2 -> IO G2
+peekG2 = peekStandalone g2Meta >=> return . G2
+withG2 :: G2 -> (Ptr CG2 -> IO b) -> IO b
+withG2 = withStandalone . getCG2
+data CGeneralizedBlackScholesProcess
+newtype GeneralizedBlackScholesProcess = GeneralizedBlackScholesProcess {getCGeneralizedBlackScholesProcess :: Standalone CGeneralizedBlackScholesProcess}
+generalizedBlackScholesProcessMeta :: Meta CGeneralizedBlackScholesProcess
+generalizedBlackScholesProcessMeta = Meta qlFreeGeneralizedBlackScholesProcess
+peekGeneralizedBlackScholesProcess :: Ptr CGeneralizedBlackScholesProcess -> IO GeneralizedBlackScholesProcess
+peekGeneralizedBlackScholesProcess = peekStandalone generalizedBlackScholesProcessMeta >=> return . GeneralizedBlackScholesProcess
+withGeneralizedBlackScholesProcess :: GeneralizedBlackScholesProcess -> (Ptr CGeneralizedBlackScholesProcess -> IO b) -> IO b
+withGeneralizedBlackScholesProcess = withStandalone . getCGeneralizedBlackScholesProcess
+data CGJRGARCHModel
+newtype GJRGARCHModel = GJRGARCHModel {getCGJRGARCHModel :: Standalone CGJRGARCHModel}
+gJRGARCHModelMeta :: Meta CGJRGARCHModel
+gJRGARCHModelMeta = Meta qlFreeGJRGARCHModel
+peekGJRGARCHModel :: Ptr CGJRGARCHModel -> IO GJRGARCHModel
+peekGJRGARCHModel = peekStandalone gJRGARCHModelMeta >=> return . GJRGARCHModel
+withGJRGARCHModel :: GJRGARCHModel -> (Ptr CGJRGARCHModel -> IO b) -> IO b
+withGJRGARCHModel = withStandalone . getCGJRGARCHModel
+data CGJRGARCHProcess
+newtype GJRGARCHProcess = GJRGARCHProcess {getCGJRGARCHProcess :: Standalone CGJRGARCHProcess}
+gJRGARCHProcessMeta :: Meta CGJRGARCHProcess
+gJRGARCHProcessMeta = Meta qlFreeGJRGARCHProcess
+peekGJRGARCHProcess :: Ptr CGJRGARCHProcess -> IO GJRGARCHProcess
+peekGJRGARCHProcess = peekStandalone gJRGARCHProcessMeta >=> return . GJRGARCHProcess
+withGJRGARCHProcess :: GJRGARCHProcess -> (Ptr CGJRGARCHProcess -> IO b) -> IO b
+withGJRGARCHProcess = withStandalone . getCGJRGARCHProcess
+data CHestonModel
+newtype HestonModel = HestonModel {getCHestonModel :: Standalone CHestonModel}
+hestonModelMeta :: Meta CHestonModel
+hestonModelMeta = Meta qlFreeHestonModel
+peekHestonModel :: Ptr CHestonModel -> IO HestonModel
+peekHestonModel = peekStandalone hestonModelMeta >=> return . HestonModel
+withHestonModel :: HestonModel -> (Ptr CHestonModel -> IO b) -> IO b
+withHestonModel = withStandalone . getCHestonModel
+data CHestonProcess
+newtype HestonProcess = HestonProcess {getCHestonProcess :: Standalone CHestonProcess}
+hestonProcessMeta :: Meta CHestonProcess
+hestonProcessMeta = Meta qlFreeHestonProcess
+peekHestonProcess :: Ptr CHestonProcess -> IO HestonProcess
+peekHestonProcess = peekStandalone hestonProcessMeta >=> return . HestonProcess
+withHestonProcess :: HestonProcess -> (Ptr CHestonProcess -> IO b) -> IO b
+withHestonProcess = withStandalone . getCHestonProcess
+data CHullWhite
+newtype HullWhite = HullWhite {getCHullWhite :: Standalone CHullWhite}
+hullWhiteMeta :: Meta CHullWhite
+hullWhiteMeta = Meta qlFreeHullWhite
+peekHullWhite :: Ptr CHullWhite -> IO HullWhite
+peekHullWhite = peekStandalone hullWhiteMeta >=> return . HullWhite
+withHullWhite :: HullWhite -> (Ptr CHullWhite -> IO b) -> IO b
+withHullWhite = withStandalone . getCHullWhite
+data CHullWhiteForwardProcess
+newtype HullWhiteForwardProcess = HullWhiteForwardProcess {getCHullWhiteForwardProcess :: Standalone CHullWhiteForwardProcess}
+hullWhiteForwardProcessMeta :: Meta CHullWhiteForwardProcess
+hullWhiteForwardProcessMeta = Meta qlFreeHullWhiteForwardProcess
+peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess -> IO HullWhiteForwardProcess
+peekHullWhiteForwardProcess = peekStandalone hullWhiteForwardProcessMeta >=> return . HullWhiteForwardProcess
+withHullWhiteForwardProcess :: HullWhiteForwardProcess -> (Ptr CHullWhiteForwardProcess -> IO b) -> IO b
+withHullWhiteForwardProcess = withStandalone . getCHullWhiteForwardProcess
+data CHullWhiteProcess
+newtype HullWhiteProcess = HullWhiteProcess {getCHullWhiteProcess :: Standalone CHullWhiteProcess}
+hullWhiteProcessMeta :: Meta CHullWhiteProcess
+hullWhiteProcessMeta = Meta qlFreeHullWhiteProcess
+peekHullWhiteProcess :: Ptr CHullWhiteProcess -> IO HullWhiteProcess
+peekHullWhiteProcess = peekStandalone hullWhiteProcessMeta >=> return . HullWhiteProcess
+withHullWhiteProcess :: HullWhiteProcess -> (Ptr CHullWhiteProcess -> IO b) -> IO b
+withHullWhiteProcess = withStandalone . getCHullWhiteProcess
+data CHybridHestonHullWhiteProcess
+newtype HybridHestonHullWhiteProcess = HybridHestonHullWhiteProcess {getCHybridHestonHullWhiteProcess :: Standalone CHybridHestonHullWhiteProcess}
+hybridHestonHullWhiteProcessMeta :: Meta CHybridHestonHullWhiteProcess
+hybridHestonHullWhiteProcessMeta = Meta qlFreeHybridHestonHullWhiteProcess
+peekHybridHestonHullWhiteProcess :: Ptr CHybridHestonHullWhiteProcess -> IO HybridHestonHullWhiteProcess
+peekHybridHestonHullWhiteProcess = peekStandalone hybridHestonHullWhiteProcessMeta >=> return . HybridHestonHullWhiteProcess
+withHybridHestonHullWhiteProcess :: HybridHestonHullWhiteProcess -> (Ptr CHybridHestonHullWhiteProcess -> IO b) -> IO b
+withHybridHestonHullWhiteProcess = withStandalone . getCHybridHestonHullWhiteProcess
+data COvernightIndex
+overnightIborIndexMeta :: Meta COvernightIndex
+overnightIborIndexMeta = Meta qlFreeOvernightIborIndex
+data CIborIndex
+iborIndexMeta :: Meta CIborIndex
+iborIndexMeta = Meta qlFreeIborIndex
+data CIndex
+indexMeta :: Meta CIndex
+indexMeta = Meta qlFreeIndex
+data CInstrument
+newtype Instrument = Instrument {getCInstrument :: Standalone CInstrument}
+instrumentMeta :: Meta CInstrument
+instrumentMeta = Meta qlFreeInstrument
+peekInstrument :: Ptr CInstrument -> IO Instrument
+peekInstrument = peekStandalone instrumentMeta >=> return . Instrument
+withInstrument :: Instrument -> (Ptr CInstrument -> IO b) -> IO b
+withInstrument = withStandalone . getCInstrument
+data CInterestRateIndex
+interestRateIndexMeta :: Meta CInterestRateIndex
+interestRateIndexMeta = Meta qlFreeInterestRateIndex
+data CKlugeExtOUProcess
+newtype KlugeExtOUProcess = KlugeExtOUProcess {getCKlugeExtOUProcess :: Standalone CKlugeExtOUProcess}
+klugeExtOUProcessMeta :: Meta CKlugeExtOUProcess
+klugeExtOUProcessMeta = Meta qlFreeKlugeExtOUProcess
+peekKlugeExtOUProcess :: Ptr CKlugeExtOUProcess -> IO KlugeExtOUProcess
+peekKlugeExtOUProcess = peekStandalone klugeExtOUProcessMeta >=> return . KlugeExtOUProcess
+withKlugeExtOUProcess :: KlugeExtOUProcess -> (Ptr CKlugeExtOUProcess -> IO b) -> IO b
+withKlugeExtOUProcess = withStandalone . getCKlugeExtOUProcess
+data CLiborForwardModel
+newtype LiborForwardModel = LiborForwardModel {getCLiborForwardModel :: Standalone CLiborForwardModel}
+liborForwardModelMeta :: Meta CLiborForwardModel
+liborForwardModelMeta = Meta qlFreeLiborForwardModel
+peekLiborForwardModel :: Ptr CLiborForwardModel -> IO LiborForwardModel
+peekLiborForwardModel = peekStandalone liborForwardModelMeta >=> return . LiborForwardModel
+withLiborForwardModel :: LiborForwardModel -> (Ptr CLiborForwardModel -> IO b) -> IO b
+withLiborForwardModel = withStandalone . getCLiborForwardModel
+data CLiborForwardModelProcess
+newtype LiborForwardModelProcess = LiborForwardModelProcess {getCLiborForwardModelProcess :: Standalone CLiborForwardModelProcess}
+liborForwardModelProcessMeta :: Meta CLiborForwardModelProcess
+liborForwardModelProcessMeta = Meta qlFreeLiborForwardModelProcess
+peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess -> IO LiborForwardModelProcess
+peekLiborForwardModelProcess = peekStandalone liborForwardModelProcessMeta >=> return . LiborForwardModelProcess
+withLiborForwardModelProcess :: LiborForwardModelProcess -> (Ptr CLiborForwardModelProcess -> IO b) -> IO b
+withLiborForwardModelProcess = withStandalone . getCLiborForwardModelProcess
+data CLocalVolTermStructure
+newtype LocalVolTermStructure = LocalVolTermStructure {getCLocalVolTermStructure :: Standalone CLocalVolTermStructure}
+localVolTermStructureMeta :: Meta CLocalVolTermStructure
+localVolTermStructureMeta = Meta qlFreeLocalVolTermStructure
+peekLocalVolTermStructure :: Ptr CLocalVolTermStructure -> IO LocalVolTermStructure
+peekLocalVolTermStructure = peekStandalone localVolTermStructureMeta >=> return . LocalVolTermStructure
+withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure -> IO b) -> IO b
+withLocalVolTermStructure = withStandalone . getCLocalVolTermStructure
+data CMargrabeOption
+newtype MargrabeOption = MargrabeOption {getCMargrabeOption :: Standalone CMargrabeOption}
+margrabeOptionMeta :: Meta CMargrabeOption
+margrabeOptionMeta = Meta qlFreeMargrabeOption
+peekMargrabeOption :: Ptr CMargrabeOption -> IO MargrabeOption
+peekMargrabeOption = peekStandalone margrabeOptionMeta >=> return . MargrabeOption
+withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption -> IO b) -> IO b
+withMargrabeOption = withStandalone . getCMargrabeOption
+data CMerton76Process
+newtype Merton76Process = Merton76Process {getCMerton76Process :: Standalone CMerton76Process}
+merton76ProcessMeta :: Meta CMerton76Process
+merton76ProcessMeta = Meta qlFreeMerton76Process
+peekMerton76Process :: Ptr CMerton76Process -> IO Merton76Process
+peekMerton76Process = peekStandalone merton76ProcessMeta >=> return . Merton76Process
+withMerton76Process :: Merton76Process -> (Ptr CMerton76Process -> IO b) -> IO b
+withMerton76Process = withStandalone . getCMerton76Process
+data CMultiAssetOption
+newtype MultiAssetOption = MultiAssetOption {getCMultiAssetOption :: Standalone CMultiAssetOption}
+multiAssetOptionMeta :: Meta CMultiAssetOption
+multiAssetOptionMeta = Meta qlFreeMultiAssetOption
+peekMultiAssetOption :: Ptr CMultiAssetOption -> IO MultiAssetOption
+peekMultiAssetOption = peekStandalone multiAssetOptionMeta >=> return . MultiAssetOption
+withMultiAssetOption :: MultiAssetOption -> (Ptr CMultiAssetOption -> IO b) -> IO b
+withMultiAssetOption = withStandalone . getCMultiAssetOption
+data COneAssetOption
+newtype OneAssetOption = OneAssetOption {getCOneAssetOption :: Standalone COneAssetOption}
+oneAssetOptionMeta :: Meta COneAssetOption
+oneAssetOptionMeta = Meta qlFreeOneAssetOption
+peekOneAssetOption :: Ptr COneAssetOption -> IO OneAssetOption
+peekOneAssetOption = peekStandalone oneAssetOptionMeta >=> return . OneAssetOption
+withOneAssetOption :: OneAssetOption -> (Ptr COneAssetOption -> IO b) -> IO b
+withOneAssetOption = withStandalone . getCOneAssetOption
+data COneFactorAffineModel
+newtype OneFactorAffineModel = OneFactorAffineModel {getCOneFactorAffineModel :: Standalone COneFactorAffineModel}
+oneFactorAffineModelMeta :: Meta COneFactorAffineModel
+oneFactorAffineModelMeta = Meta qlFreeOneFactorAffineModel
+peekOneFactorAffineModel :: Ptr COneFactorAffineModel -> IO OneFactorAffineModel
+peekOneFactorAffineModel = peekStandalone oneFactorAffineModelMeta >=> return . OneFactorAffineModel
+withOneFactorAffineModel :: OneFactorAffineModel -> (Ptr COneFactorAffineModel -> IO b) -> IO b
+withOneFactorAffineModel = withStandalone . getCOneFactorAffineModel
+data COption
+newtype Option = Option {getCOption :: Standalone COption}
+optionMeta :: Meta COption
+optionMeta = Meta qlFreeOption
+peekOption :: Ptr COption -> IO Option
+peekOption = peekStandalone optionMeta >=> return . Option
+withOption :: Option -> (Ptr COption -> IO b) -> IO b
+withOption = withStandalone . getCOption
+data COptionletVolatilityStructure
+newtype OptionletVolatilityStructure = OptionletVolatilityStructure {getCOptionletVolatilityStructure :: Standalone COptionletVolatilityStructure}
+optionletVolatilityStructureMeta :: Meta COptionletVolatilityStructure
+optionletVolatilityStructureMeta = Meta qlFreeOptionletVolatilityStructure
+peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure -> IO OptionletVolatilityStructure
+peekOptionletVolatilityStructure = peekStandalone optionletVolatilityStructureMeta >=> return . OptionletVolatilityStructure
+withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure -> IO b) -> IO b
+withOptionletVolatilityStructure = withStandalone . getCOptionletVolatilityStructure
+data COvernightIndexedSwap
+newtype OvernightIndexedSwap = OvernightIndexedSwap {getCOvernightIndexedSwap :: Standalone COvernightIndexedSwap}
+overnightIndexedSwapMeta :: Meta COvernightIndexedSwap
+overnightIndexedSwapMeta = Meta qlFreeOvernightIndexedSwap
+peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap -> IO OvernightIndexedSwap
+peekOvernightIndexedSwap = peekStandalone overnightIndexedSwapMeta >=> return . OvernightIndexedSwap
+withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap -> IO b) -> IO b
+withOvernightIndexedSwap = withStandalone . getCOvernightIndexedSwap
+data COvernightIndexedSwapIndex
+overnightIndexedSwapIndexMeta :: Meta COvernightIndexedSwapIndex
+overnightIndexedSwapIndexMeta = Meta qlFreeOvernightIndexedSwapIndex
+data CPiecewiseTimeDependentHestonModel
+newtype PiecewiseTimeDependentHestonModel = PiecewiseTimeDependentHestonModel {getCPiecewiseTimeDependentHestonModel :: Standalone CPiecewiseTimeDependentHestonModel}
+piecewiseTimeDependentHestonModelMeta :: Meta CPiecewiseTimeDependentHestonModel
+piecewiseTimeDependentHestonModelMeta = Meta qlFreePiecewiseTimeDependentHestonModel
+peekPiecewiseTimeDependentHestonModel :: Ptr CPiecewiseTimeDependentHestonModel -> IO PiecewiseTimeDependentHestonModel
+peekPiecewiseTimeDependentHestonModel = peekStandalone piecewiseTimeDependentHestonModelMeta >=> return . PiecewiseTimeDependentHestonModel
+withPiecewiseTimeDependentHestonModel :: PiecewiseTimeDependentHestonModel -> (Ptr CPiecewiseTimeDependentHestonModel -> IO b) -> IO b
+withPiecewiseTimeDependentHestonModel = withStandalone . getCPiecewiseTimeDependentHestonModel
+data CQuantoBarrierOption
+newtype QuantoBarrierOption = QuantoBarrierOption {getCQuantoBarrierOption :: Standalone CQuantoBarrierOption}
+quantoBarrierOptionMeta :: Meta CQuantoBarrierOption
+quantoBarrierOptionMeta = Meta qlFreeQuantoBarrierOption
+peekQuantoBarrierOption :: Ptr CQuantoBarrierOption -> IO QuantoBarrierOption
+peekQuantoBarrierOption = peekStandalone quantoBarrierOptionMeta >=> return . QuantoBarrierOption
+withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption -> IO b) -> IO b
+withQuantoBarrierOption = withStandalone . getCQuantoBarrierOption
+data CQuantoForwardVanillaOption
+newtype QuantoForwardVanillaOption = QuantoForwardVanillaOption {getCQuantoForwardVanillaOption :: Standalone CQuantoForwardVanillaOption}
+quantoForwardVanillaOptionMeta :: Meta CQuantoForwardVanillaOption
+quantoForwardVanillaOptionMeta = Meta qlFreeQuantoForwardVanillaOption
+peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO QuantoForwardVanillaOption
+peekQuantoForwardVanillaOption = peekStandalone quantoForwardVanillaOptionMeta >=> return . QuantoForwardVanillaOption
+withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption -> IO b) -> IO b
+withQuantoForwardVanillaOption = withStandalone . getCQuantoForwardVanillaOption
+data CQuantoVanillaOption
+newtype QuantoVanillaOption = QuantoVanillaOption {getCQuantoVanillaOption :: Standalone CQuantoVanillaOption}
+quantoVanillaOptionMeta :: Meta CQuantoVanillaOption
+quantoVanillaOptionMeta = Meta qlFreeQuantoVanillaOption
+peekQuantoVanillaOption :: Ptr CQuantoVanillaOption -> IO QuantoVanillaOption
+peekQuantoVanillaOption = peekStandalone quantoVanillaOptionMeta >=> return . QuantoVanillaOption
+withQuantoVanillaOption :: QuantoVanillaOption -> (Ptr CQuantoVanillaOption -> IO b) -> IO b
+withQuantoVanillaOption = withStandalone . getCQuantoVanillaOption
+data CShortRateModel
+newtype ShortRateModel = ShortRateModel {getCShortRateModel :: Standalone CShortRateModel}
+shortRateModelMeta :: Meta CShortRateModel
+shortRateModelMeta = Meta qlFreeShortRateModel
+peekShortRateModel :: Ptr CShortRateModel -> IO ShortRateModel
+peekShortRateModel = peekStandalone shortRateModelMeta >=> return . ShortRateModel
+withShortRateModel :: ShortRateModel -> (Ptr CShortRateModel -> IO b) -> IO b
+withShortRateModel = withStandalone . getCShortRateModel
+data CStochasticProcess1D
+newtype StochasticProcess1D = StochasticProcess1D {getCStochasticProcess1D :: Standalone CStochasticProcess1D}
+stochasticProcess1DMeta :: Meta CStochasticProcess1D
+stochasticProcess1DMeta = Meta qlFreeStochasticProcess1D
+peekStochasticProcess1D :: Ptr CStochasticProcess1D -> IO StochasticProcess1D
+peekStochasticProcess1D = peekStandalone stochasticProcess1DMeta >=> return . StochasticProcess1D
+withStochasticProcess1D :: StochasticProcess1D -> (Ptr CStochasticProcess1D -> IO b) -> IO b
+withStochasticProcess1D = withStandalone . getCStochasticProcess1D
+data CStochasticProcessArray
+newtype StochasticProcessArray = StochasticProcessArray {getCStochasticProcessArray :: Standalone CStochasticProcessArray}
+stochasticProcessArrayMeta :: Meta CStochasticProcessArray
+stochasticProcessArrayMeta = Meta qlFreeStochasticProcessArray
+peekStochasticProcessArray :: Ptr CStochasticProcessArray -> IO StochasticProcessArray
+peekStochasticProcessArray = peekStandalone stochasticProcessArrayMeta >=> return . StochasticProcessArray
+withStochasticProcessArray :: StochasticProcessArray -> (Ptr CStochasticProcessArray -> IO b) -> IO b
+withStochasticProcessArray = withStandalone . getCStochasticProcessArray
+data CStochasticProcess
+newtype StochasticProcess = StochasticProcess {getCStochasticProcess :: Standalone CStochasticProcess}
+stochasticProcessMeta :: Meta CStochasticProcess
+stochasticProcessMeta = Meta qlFreeStochasticProcess
+peekStochasticProcess :: Ptr CStochasticProcess -> IO StochasticProcess
+peekStochasticProcess = peekStandalone stochasticProcessMeta >=> return . StochasticProcess
+withStochasticProcess :: StochasticProcess -> (Ptr CStochasticProcess -> IO b) -> IO b
+withStochasticProcess = withStandalone . getCStochasticProcess
+data CSwap
+newtype Swap = Swap {getCSwap :: Standalone CSwap}
+swapMeta :: Meta CSwap
+swapMeta = Meta qlFreeSwap
+peekSwap :: Ptr CSwap -> IO Swap
+peekSwap = peekStandalone swapMeta >=> return . Swap
+withSwap :: Swap -> (Ptr CSwap -> IO b) -> IO b
+withSwap = withStandalone . getCSwap
+data CSwapIndex
+swapIndexMeta :: Meta CSwapIndex
+swapIndexMeta = Meta qlFreeSwapIndex
+data CSwaption
+newtype Swaption = Swaption {getCSwaption :: Standalone CSwaption}
+swaptionMeta :: Meta CSwaption
+swaptionMeta = Meta qlFreeSwaption
+peekSwaption :: Ptr CSwaption -> IO Swaption
+peekSwaption = peekStandalone swaptionMeta >=> return . Swaption
+withSwaption :: Swaption -> (Ptr CSwaption -> IO b) -> IO b
+withSwaption = withStandalone . getCSwaption
+data CSwaptionVolatilityStructure
+newtype SwaptionVolatilityStructure = SwaptionVolatilityStructure {getCSwaptionVolatilityStructure :: Standalone CSwaptionVolatilityStructure}
+swaptionVolatilityStructureMeta :: Meta CSwaptionVolatilityStructure
+swaptionVolatilityStructureMeta = Meta qlFreeSwaptionVolatilityStructure
+peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure -> IO SwaptionVolatilityStructure
+peekSwaptionVolatilityStructure = peekStandalone swaptionVolatilityStructureMeta >=> return . SwaptionVolatilityStructure
+withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure -> IO b) -> IO b
+withSwaptionVolatilityStructure = withStandalone . getCSwaptionVolatilityStructure
+data CTermStructure
+newtype TermStructure = TermStructure {getCTermStructure :: Standalone CTermStructure}
+termStructureMeta :: Meta CTermStructure
+termStructureMeta = Meta qlFreeTermStructure
+peekTermStructure :: Ptr CTermStructure -> IO TermStructure
+peekTermStructure = peekStandalone termStructureMeta >=> return . TermStructure
+withTermStructure :: TermStructure -> (Ptr CTermStructure -> IO b) -> IO b
+withTermStructure = withStandalone . getCTermStructure
+data CVanillaOption
+newtype VanillaOption = VanillaOption {getCVanillaOption :: Standalone CVanillaOption}
+vanillaOptionMeta :: Meta CVanillaOption
+vanillaOptionMeta = Meta qlFreeVanillaOption
+peekVanillaOption :: Ptr CVanillaOption -> IO VanillaOption
+peekVanillaOption = peekStandalone vanillaOptionMeta >=> return . VanillaOption
+withVanillaOption :: VanillaOption -> (Ptr CVanillaOption -> IO b) -> IO b
+withVanillaOption = withStandalone . getCVanillaOption
+data CVanillaSwap
+newtype VanillaSwap = VanillaSwap {getCVanillaSwap :: Standalone CVanillaSwap}
+vanillaSwapMeta :: Meta CVanillaSwap
+vanillaSwapMeta = Meta qlFreeVanillaSwap
+peekVanillaSwap :: Ptr CVanillaSwap -> IO VanillaSwap
+peekVanillaSwap = peekStandalone vanillaSwapMeta >=> return . VanillaSwap
+withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap -> IO b) -> IO b
+withVanillaSwap = withStandalone . getCVanillaSwap
+data CVarianceGammaProcess
+newtype VarianceGammaProcess = VarianceGammaProcess {getCVarianceGammaProcess :: Standalone CVarianceGammaProcess}
+varianceGammaProcessMeta :: Meta CVarianceGammaProcess
+varianceGammaProcessMeta = Meta qlFreeVarianceGammaProcess
+peekVarianceGammaProcess :: Ptr CVarianceGammaProcess -> IO VarianceGammaProcess
+peekVarianceGammaProcess = peekStandalone varianceGammaProcessMeta >=> return . VarianceGammaProcess
+withVarianceGammaProcess :: VarianceGammaProcess -> (Ptr CVarianceGammaProcess -> IO b) -> IO b
+withVarianceGammaProcess = withStandalone . getCVarianceGammaProcess
+data CVolatilityTermStructure
+newtype VolatilityTermStructure = VolatilityTermStructure {getCVolatilityTermStructure :: Standalone CVolatilityTermStructure}
+volatilityTermStructureMeta :: Meta CVolatilityTermStructure
+volatilityTermStructureMeta = Meta qlFreeVolatilityTermStructure
+peekVolatilityTermStructure :: Ptr CVolatilityTermStructure -> IO VolatilityTermStructure
+peekVolatilityTermStructure = peekStandalone volatilityTermStructureMeta >=> return . VolatilityTermStructure
+withVolatilityTermStructure :: VolatilityTermStructure -> (Ptr CVolatilityTermStructure -> IO b) -> IO b
+withVolatilityTermStructure = withStandalone . getCVolatilityTermStructure
+data CYieldTermStructure
+newtype YieldTermStructure = YieldTermStructure {getCYieldTermStructure :: Standalone CYieldTermStructure}
+yieldTermStructureMeta :: Meta CYieldTermStructure
+yieldTermStructureMeta = Meta qlFreeYieldTermStructure
+peekYieldTermStructure :: Ptr CYieldTermStructure -> IO YieldTermStructure
+peekYieldTermStructure = peekStandalone yieldTermStructureMeta >=> return . YieldTermStructure
+withYieldTermStructure :: YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
+withYieldTermStructure = withStandalone . getCYieldTermStructure
+
+foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel
+foreign import ccall "ql.h &qlFreeAssetSwap" qlFreeAssetSwap :: FinalizerPtr CAssetSwap
+foreign import ccall "ql.h &qlFreeBarrierOption" qlFreeBarrierOption :: FinalizerPtr CBarrierOption
+foreign import ccall "ql.h &qlFreeBatesDetJumpModel" qlFreeBatesDetJumpModel :: FinalizerPtr CBatesDetJumpModel
+foreign import ccall "ql.h &qlFreeBatesDoubleExpDetJumpModel" qlFreeBatesDoubleExpDetJumpModel :: FinalizerPtr CBatesDoubleExpDetJumpModel
+foreign import ccall "ql.h &qlFreeBatesDoubleExpModel" qlFreeBatesDoubleExpModel :: FinalizerPtr CBatesDoubleExpModel
+foreign import ccall "ql.h &qlFreeBatesModel" qlFreeBatesModel :: FinalizerPtr CBatesModel
+foreign import ccall "ql.h &qlFreeBatesProcess" qlFreeBatesProcess :: FinalizerPtr CBatesProcess
+foreign import ccall "ql.h &qlFreeBlackProcess" qlFreeBlackProcess :: FinalizerPtr CBlackProcess
+foreign import ccall "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve
+foreign import ccall "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure
+foreign import ccall "ql.h &qlFreeBMAIndex" qlFreeBMAIndex :: FinalizerPtr CBMAIndex
+foreign import ccall "ql.h &qlFreeBMASwap" qlFreeBMASwap :: FinalizerPtr CBMASwap
+foreign import ccall "ql.h &qlFreeBond" qlFreeBond :: FinalizerPtr CBond
+foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel
+foreign import ccall "ql.h &qlFreeCallableBond" qlFreeCallableBond :: FinalizerPtr CCallableBond
+foreign import ccall "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure
+foreign import ccall "ql.h &qlFreeCapFloor" qlFreeCapFloor :: FinalizerPtr CCapFloor
+foreign import ccall "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface
+foreign import ccall "ql.h &qlFreeCdsOption" qlFreeCdsOption :: FinalizerPtr CCdsOption
+foreign import ccall "ql.h &qlFreeConvertibleBond" qlFreeConvertibleBond :: FinalizerPtr CConvertibleBond
+foreign import ccall "ql.h &qlFreeCreditDefaultSwap" qlFreeCreditDefaultSwap :: FinalizerPtr CCreditDefaultSwap
+foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure
+foreign import ccall "ql.h &qlFreeDividendVanillaOption" qlFreeDividendVanillaOption :: FinalizerPtr CDividendVanillaOption
+foreign import ccall "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess" qlFreeExtendedOrnsteinUhlenbeckProcess :: FinalizerPtr CExtendedOrnsteinUhlenbeckProcess
+foreign import ccall "ql.h &qlFreeExtOUWithJumpsProcess" qlFreeExtOUWithJumpsProcess :: FinalizerPtr CExtOUWithJumpsProcess
+foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
+foreign import ccall "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond
+foreign import ccall "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward
+foreign import ccall "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward
+foreign import ccall "ql.h &qlFreeForwardRateAgreement" qlFreeForwardRateAgreement :: FinalizerPtr CForwardRateAgreement
+foreign import ccall "ql.h &qlFreeForwardVanillaOption" qlFreeForwardVanillaOption :: FinalizerPtr CForwardVanillaOption
+foreign import ccall "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2
+foreign import ccall "ql.h &qlFreeGeneralizedBlackScholesProcess" qlFreeGeneralizedBlackScholesProcess :: FinalizerPtr CGeneralizedBlackScholesProcess
+foreign import ccall "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel
+foreign import ccall "ql.h &qlFreeGJRGARCHProcess" qlFreeGJRGARCHProcess :: FinalizerPtr CGJRGARCHProcess
+foreign import ccall "ql.h &qlFreeHestonModel" qlFreeHestonModel :: FinalizerPtr CHestonModel
+foreign import ccall "ql.h &qlFreeHestonProcess" qlFreeHestonProcess :: FinalizerPtr CHestonProcess
+foreign import ccall "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHullWhite
+foreign import ccall "ql.h &qlFreeHullWhiteForwardProcess" qlFreeHullWhiteForwardProcess :: FinalizerPtr CHullWhiteForwardProcess
+foreign import ccall "ql.h &qlFreeHullWhiteProcess" qlFreeHullWhiteProcess :: FinalizerPtr CHullWhiteProcess
+foreign import ccall "ql.h &qlFreeHybridHestonHullWhiteProcess" qlFreeHybridHestonHullWhiteProcess :: FinalizerPtr CHybridHestonHullWhiteProcess
+foreign import ccall "ql.h &qlFreeIborIndex" qlFreeIborIndex :: FinalizerPtr CIborIndex
+foreign import ccall "ql.h &qlFreeOvernightIndex" qlFreeOvernightIborIndex :: FinalizerPtr COvernightIndex
+foreign import ccall "ql.h &qlFreeIndex" qlFreeIndex :: FinalizerPtr CIndex
+foreign import ccall "ql.h &qlFreeInstrument" qlFreeInstrument :: FinalizerPtr CInstrument
+foreign import ccall "ql.h &qlFreeInterestRateIndex" qlFreeInterestRateIndex :: FinalizerPtr CInterestRateIndex
+foreign import ccall "ql.h &qlFreeKlugeExtOUProcess" qlFreeKlugeExtOUProcess :: FinalizerPtr CKlugeExtOUProcess
+foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel
+foreign import ccall "ql.h &qlFreeLiborForwardModelProcess" qlFreeLiborForwardModelProcess :: FinalizerPtr CLiborForwardModelProcess
+foreign import ccall "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure
+foreign import ccall "ql.h &qlFreeMargrabeOption" qlFreeMargrabeOption :: FinalizerPtr CMargrabeOption
+foreign import ccall "ql.h &qlFreeMerton76Process" qlFreeMerton76Process :: FinalizerPtr CMerton76Process
+foreign import ccall "ql.h &qlFreeMultiAssetOption" qlFreeMultiAssetOption :: FinalizerPtr CMultiAssetOption
+foreign import ccall "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: FinalizerPtr COneAssetOption
+foreign import ccall "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel
+foreign import ccall "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption
+foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure
+foreign import ccall "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap
+foreign import ccall "ql.h &qlFreeOvernightIndexedSwapIndex" qlFreeOvernightIndexedSwapIndex :: FinalizerPtr COvernightIndexedSwapIndex
+foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel
+foreign import ccall "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption
+foreign import ccall "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption
+foreign import ccall "ql.h &qlFreeQuantoVanillaOption" qlFreeQuantoVanillaOption :: FinalizerPtr CQuantoVanillaOption
+foreign import ccall "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel
+foreign import ccall "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D :: FinalizerPtr CStochasticProcess1D
+foreign import ccall "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray
+foreign import ccall "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess
+foreign import ccall "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap
+foreign import ccall "ql.h &qlFreeSwapIndex" qlFreeSwapIndex :: FinalizerPtr CSwapIndex
+foreign import ccall "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption
+foreign import ccall "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure
+foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure
+foreign import ccall "ql.h &qlFreeVanillaOption" qlFreeVanillaOption :: FinalizerPtr CVanillaOption
+foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap
+foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess
+foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure
+foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure
+
+withInstrumentArray :: [Instrument] -> ((CUInt, Ptr (Ptr CInstrument)) -> IO b) -> IO b
+withInstrumentArray = withStandaloneArray getCInstrument
+
+withMaybeYieldTermStructure :: Maybe YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
+withMaybeYieldTermStructure = withMaybeStandalone . (getCYieldTermStructure <$>)
+
+withStochasticProcess1DArray :: [StochasticProcess1D] -> ((CUInt, Ptr (Ptr CStochasticProcess1D)) -> IO b) -> IO b
+withStochasticProcess1DArray = withStandaloneArray getCStochasticProcess1D
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
