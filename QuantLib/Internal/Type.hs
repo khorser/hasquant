@@ -1,20 +1,89 @@
 {-# LANGUAGE FlexibleInstances, RankNTypes #-}
 module QuantLib.Internal.Type
 (
-    CCalendar
+    Standalone(..)
+  , withStandalone
+
+  , CCalendar
   , Calendar
   , peekCalendar
+  , withCalendar
   , CCurrency
   , Currency
   , peekCurrency
-  , CSchedule
-  , Schedule
-  , peekSchedule
+  , withCurrency
+  , withMaybeCurrency
   , CDayCounter
   , DayCounter
   , peekDayCounter
+  , withDayCounter
+  , CSchedule
+  , Schedule
+  , peekSchedule
+  , withSchedule
+  , InterestRate
+  , CInterestRate
+  , peekInterestRate
+  , withInterestRate
+  , withInterestRateArray
+  , TimeGrid
+  , CTimeGrid
+  , peekTimeGrid
+  , withTimeGrid
+  , CDividend
+  , Dividend
+  , peekDividend
+  , withDividend
+  , withDividendArray
+  , CSmileSection
+  , SmileSection
+  , peekSmileSection
+  , withSmileSection
+  , CPricingEngine
+  , PricingEngine
+  , peekPricingEngine
+  , withPricingEngine
+  , CFloatingRateCouponPricer
+  , FloatingRateCouponPricer
+  , peekFloatingRateCouponPricer
+  , withFloatingRateCouponPricer
+  , withFloatingRateCouponPricerArray
+  , CDefaultProbabilityHelper
+  , DefaultProbabilityHelper
+  , peekDefaultProbabilityHelper
+  , withDefaultProbabilityHelper
+  , withDefaultProbabilityHelperArray
 
-  , withStandalone
+  , CQlClaim
+  , QlClaim
+  , peekClaim
+  , CQlCallability
+  , QlCallability
+  , peekCallability
+  , CConstraint
+  , QlConstraint
+  , peekConstraint
+  , CEndCriteria
+  , QlEndCriteria
+  , peekEndCriteria
+  , CFdmSchemeDesc
+  , QlFdmSchemeDesc
+  , peekFdmSchemeDesc
+  , CFittedBondDiscountCurveFittingMethod
+  , QlFittedBondDiscountCurveFittingMethod
+  , peekFittedBondDiscountCurveFittingMethod
+  , COptimizationMethod
+  , QlOptimizationMethod
+  , peekOptimizationMethod
+  , CRounding
+  , QlRounding
+  , peekRounding
+  , CLmCorrelationModel
+  , QlLmCorrelationModel
+  , peekLmCorrelationModel
+  , CLmVolatilityModel
+  , QlLmVolatilityModel
+  , peekLmVolatilityModel
 
   , CQuote
   , Quote
@@ -23,42 +92,6 @@ module QuantLib.Internal.Type
   , CSimpleQuote
   , SimpleQuote
   , peekSimpleQuote
-
-  , InterestRate
-  , CInterestRate
-  , peekInterestRate
-  , TimeGrid
-  , CTimeGrid
-  , peekTimeGrid
-  , QlClaim
-  , CQlClaim
-  , peekClaim
-  , CQlCallability
-  , QlCallability
-  , peekCallability
-
-  , Standalone(..)
-
-  , withCalendar
-  , withCurrency
-  , withMaybeCurrency
-  , withDayCounter
-  , withSchedule
-  , withInterestRate
-  , withInterestRateArray
-  , withTimeGrid
-
-  , CDividend
-  , Dividend
-  , withDividend
-  , withDividendArray
-  , peekDividend
-
-  , CDefaultProbabilityHelper
-  , DefaultProbabilityHelper
-  , withDefaultProbabilityHelper
-  , withDefaultProbabilityHelperArray
-  , peekDefaultProbabilityHelper
 
   , withQuote
   , withSimpleQuote
@@ -121,45 +154,6 @@ module QuantLib.Internal.Type
   , withRateHelperArray
   , withBondHelperArray
   , withCalibrationHelperArray
-
-  , CSmileSection
-  , SmileSection
-  , withSmileSection
-  , peekSmileSection
-  , CPricingEngine
-  , PricingEngine
-  , withPricingEngine
-  , peekPricingEngine
-  , CFloatingRateCouponPricer
-  , FloatingRateCouponPricer
-  , withFloatingRateCouponPricer
-  , peekFloatingRateCouponPricer
-  , withFloatingRateCouponPricerArray
-
-  , QlOptimizationMethod
-  , COptimizationMethod
-  , peekOptimizationMethod
-  , QlFdmSchemeDesc
-  , CFdmSchemeDesc
-  , peekFdmSchemeDesc
-  , QlFittedBondDiscountCurveFittingMethod
-  , CFittedBondDiscountCurveFittingMethod
-  , peekFittedBondDiscountCurveFittingMethod
-  , QlEndCriteria
-  , CEndCriteria
-  , peekEndCriteria
-  , QlConstraint
-  , CConstraint
-  , peekConstraint
-  , QlRounding
-  , CRounding
-  , peekRounding
-  , QlLmVolatilityModel
-  , CLmVolatilityModel
-  , peekLmVolatilityModel
-  , QlLmCorrelationModel
-  , CLmCorrelationModel
-  , peekLmCorrelationModel
 
   , AffineModel
   , CAffineModel
