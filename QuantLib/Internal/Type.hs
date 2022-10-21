@@ -495,7 +495,7 @@ import QuantLib.Internal
 
 -- STANDALONE TYPES
 newtype Standalone a = Standalone {ptr :: ForeignPtr a}
-newtype Meta a = Meta {getFinalizer :: FinalizerPtr a}
+newtype Meta a = Meta (FinalizerPtr a)
 peekStandalone :: Meta a -> Ptr a -> IO (Standalone a)
 peekStandalone (Meta f) = newForeignPtr f >=> return . Standalone
 withStandalone :: Standalone a -> (Ptr a -> IO b) -> IO b
@@ -718,64 +718,61 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone lmVolatilityModelMeta
 
 -- TYPE HIERARCHIES
-data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _parentFinalizer :: FinalizerPtr p}
+data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 data GenObject a p = GenObject {getObject :: !(ForeignPtr a), _getMeta :: !(Upcast a p)}
-
-asParent :: Meta p -> Upcast p p -> GenObject a p -> IO (GenObject p p)
-asParent m0 m (GenObject p (Upcast k _)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr (getFinalizer m0)) <*> return m)
-
+upcast :: Meta p -> Upcast p p -> GenObject a p -> IO (GenObject p p)
+upcast (Meta f) m (GenObject p (Upcast k _)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr f) <*> return m)
+peekBase :: Meta a -> Upcast a a -> Ptr a -> IO (GenObject a a)
+peekBase (Meta f) u p = GenObject <$> newForeignPtr f p <*> return u
 peekObject :: Meta a -> Upcast a p -> Ptr a -> IO (GenObject a p)
-peekObject m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
+peekObject (Meta f) u p = GenObject <$> newForeignPtr f p <*> return u
 withObject :: GenObject a p -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr . getObject
 withObjectArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-
-peekParent :: Meta a -> Upcast a a -> Ptr a -> IO (GenObject a a)
-peekParent m0 m p = GenObject <$> newForeignPtr (getFinalizer m0) p <*> return m
 -- TODO: OPTIMIZE: call the finalizer without creating a temp foreign ptr
-withParent :: GenObject a p -> (Ptr p -> IO b) -> IO b
-withParent (GenObject p (Upcast k fi)) ff =
+withDescendant :: GenObject a p -> (Ptr p -> IO b) -> IO b
+withDescendant (GenObject p (Upcast k fi)) ff =
     withForeignPtr p (\x -> do
       pp <- k x
       if fi /= nullFunPtr then
          do xx <- newForeignPtr fi pp
             withForeignPtr xx ff
       else ff pp)
-withMaybeParent :: Maybe (GenObject a p) -> (Ptr p -> IO b) -> IO b
-withMaybeParent x f = maybe (f nullPtr) (`withParent` f) x
-withParentArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
-withParentArray x f = withMany withParent x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-withParentArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
-withParentArrayRaw x f = withMany withParent x (`withArray` f)
+withMaybeDescendant :: Maybe (GenObject a p) -> (Ptr p -> IO b) -> IO b
+withMaybeDescendant x f = maybe (f nullPtr) (`withDescendant` f) x
+withDescendantArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
+withDescendantArray x f = withMany withDescendant x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withDescendantArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
+withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 
-data GenObject2 a b = GenObject2 !a !(forall r. a -> (Ptr b -> IO r) -> IO r)
--- FIXME free casted Ptr after the call
+data CastObject a b = CastObject !a !(forall r. a -> (Ptr b -> IO r) -> IO r)
+-- FIXME free cast Ptr after the call
 -- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
-withNested :: Upcast a b -> GenObject2 c a -> (Ptr b -> IO r) -> IO r
---withNested (Upcast u fi) (GenObject2 p w) f = w p (\pp -> do
+withNested :: Upcast a b -> CastObject c a -> (Ptr b -> IO r) -> IO r
+--withNested (Upcast u fi) (CastObject p w) f = w p (\pp -> do
 --  cp <- u pp
 --  fp <- newForeignPtr fi cp
 --  withForeignPtr fp f)
-withNested (Upcast u _fi) (GenObject2 p w) f = w p (u >=> f)
+withNested (Upcast u _) (CastObject p w) f = w p (u >=> f)
 
-newNested :: Meta a -> Upcast a b -> Ptr a -> IO (GenObject2 (ForeignPtr a) b)
+newNested :: Meta a -> Upcast a b -> Ptr a -> IO (CastObject (ForeignPtr a) b)
 newNested (Meta f) u x = do
   p <- newForeignPtr f x
-  return $ GenObject2 p (withNestedForeign u)
+  return $ CastObject p (withNestedForeign u)
   where 
     withNestedForeign :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
-    withNestedForeign (Upcast fu _fi) p ff = withForeignPtr p (fu >=> ff)
+    withNestedForeign (Upcast fu _) p ff = withForeignPtr p (fu >=> ff)
 --    withNestedForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
 --      cp <- fu pp
 --      fp <- newForeignPtr fi cp
 --      withForeignPtr fp ff)
 
-newGenForeign :: Meta a -> Ptr a -> IO (GenObject2 (ForeignPtr a) a)
+newGenForeign :: Meta a -> Ptr a -> IO (CastObject (ForeignPtr a) a)
 newGenForeign (Meta f) x = do
   p <- newForeignPtr f x
-  return $ GenObject2 p withForeignPtr
+  return $ CastObject p withForeignPtr
 
 ---- instantiations
 data CQuote
@@ -802,28 +799,28 @@ simpleQuoteUpcast = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO Quote
-asQuote (GenQuote q) = GenQuote <$> asParent quoteMeta quoteUpcast q
+asQuote (GenQuote q) = GenQuote <$> upcast quoteMeta quoteUpcast q
 
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
-withQuote = withParent . getQuote
+withQuote = withDescendant . getQuote
 
 withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 withSimpleQuote = withObject . getQuote
 
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekParent quoteMeta quoteUpcast p
+peekQuote p = GenQuote <$> peekBase quoteMeta quoteUpcast p
 
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
 peekSimpleQuote p = GenQuote <$> peekObject simpleQuoteMeta simpleQuoteUpcast p
 
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
-withQuoteArray x = withParentArray (map getQuote x)
+withQuoteArray x = withDescendantArray (map getQuote x)
 
 withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
-withQuoteArrayRaw x = withParentArrayRaw (map getQuote x)
+withQuoteArrayRaw x = withDescendantArrayRaw (map getQuote x)
 
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
-withMaybeQuote x = withMaybeParent (getQuote <$> x)
+withMaybeQuote x = withMaybeDescendant (getQuote <$> x)
 
 data CLeg
 data CCouponLeg
@@ -847,22 +844,22 @@ couponLegUpcast :: Upcast CCouponLeg CLeg
 couponLegUpcast = Upcast qlCouponLegAsLeg qlFreeLeg
 
 asLeg :: GenLeg a -> IO Leg
-asLeg (GenLeg q) = GenLeg <$> asParent legMeta legUpcast q
+asLeg (GenLeg q) = GenLeg <$> upcast legMeta legUpcast q
 
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
-withLeg = withParent . getLeg
+withLeg = withDescendant . getLeg
 
 withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
 withCouponLeg = withObject . getLeg
 
 peekLeg :: Ptr CLeg -> IO Leg
-peekLeg p = GenLeg <$> peekParent legMeta legUpcast p
+peekLeg p = GenLeg <$> peekBase legMeta legUpcast p
 
 peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
 peekCouponLeg p = GenLeg <$> peekObject couponLegMeta couponLegUpcast p
 
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
-withLegArray x = withParentArray (map getLeg x)
+withLegArray x = withDescendantArray (map getLeg x)
 
 data CRateHelper
 data CSwapRateHelper
@@ -922,13 +919,13 @@ oisRateHelperUpcast :: Upcast COISRateHelper CRateHelper
 oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
 
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
-asRateHelper (GenRateHelper q) = GenRateHelper <$> asParent rateHelperMeta rateHelperUpcast q
+asRateHelper (GenRateHelper q) = GenRateHelper <$> upcast rateHelperMeta rateHelperUpcast q
 
 withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
-withRateHelper = withParent . getRateHelper
+withRateHelper = withDescendant . getRateHelper
 
 peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
-peekRateHelper p = GenRateHelper <$> peekParent rateHelperMeta rateHelperUpcast p
+peekRateHelper p = GenRateHelper <$> peekBase rateHelperMeta rateHelperUpcast p
 
 withBondHelper :: GenRateHelper CBondHelper -> (Ptr CBondHelper-> IO b) -> IO b
 withBondHelper = withObject . getRateHelper
@@ -961,13 +958,13 @@ blackCalibrationHelperUpcast :: Upcast CBlackCalibrationHelper CCalibrationHelpe
 blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
 
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
-asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> asParent calibrationHelperMeta calibrationHelperUpcast q
+asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> upcast calibrationHelperMeta calibrationHelperUpcast q
 
 withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
-withCalibrationHelper = withParent . getCalibrationHelper
+withCalibrationHelper = withDescendant . getCalibrationHelper
 
 peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
-peekCalibrationHelper p = GenCalibrationHelper <$> peekParent calibrationHelperMeta calibrationHelperUpcast p
+peekCalibrationHelper p = GenCalibrationHelper <$> peekBase calibrationHelperMeta calibrationHelperUpcast p
 
 withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
 withBlackCalibrationHelper = withObject . getCalibrationHelper
@@ -988,13 +985,13 @@ blackScholesCalculatorUpcast :: Upcast CBlackScholesCalculator CBlackCalculator
 blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
 
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
-asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> asParent blackCalculatorMeta blackCalculatorUpcast q
+asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> upcast blackCalculatorMeta blackCalculatorUpcast q
 
 withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
-withBlackCalculator = withParent . getBlackCalculator
+withBlackCalculator = withDescendant . getBlackCalculator
 
 peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
-peekBlackCalculator p = GenBlackCalculator <$> peekParent blackCalculatorMeta blackCalculatorUpcast p
+peekBlackCalculator p = GenBlackCalculator <$> peekBase blackCalculatorMeta blackCalculatorUpcast p
 
 withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
 withBlackScholesCalculator = withObject . getBlackCalculator
@@ -1003,13 +1000,13 @@ peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalcula
 peekBlackScholesCalculator p = GenBlackCalculator <$> peekObject blackScholesCalculatorMeta blackScholesCalculatorUpcast p
 
 withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
-withRateHelperArray x = withParentArray (map getRateHelper x)
+withRateHelperArray x = withDescendantArray (map getRateHelper x)
 
 withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper)) -> IO b) -> IO b
 withBondHelperArray x = withObjectArray (map getRateHelper x)
 
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
-withCalibrationHelperArray x = withParentArray (map getCalibrationHelper x)
+withCalibrationHelperArray x = withDescendantArray (map getCalibrationHelper x)
 
 foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex -> IO (Ptr CIndex)
 foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRateIndex :: Ptr CBMAIndex -> IO (Ptr CInterestRateIndex)
@@ -1036,10 +1033,10 @@ overnightIndexUpcast = Upcast qlOvernightIndexAsIborIndex qlFreeIborIndex
 overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex CSwapIndex
 overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
 
-newtype GenIndex a = GenIndex (GenObject2 a CIndex)
-newtype NestedInterestRateIndex a = NestedInterestRateIndex (GenObject2 a CInterestRateIndex)
-newtype NestedIborIndex a = NestedIborIndex (GenObject2 a CIborIndex)
-newtype NestedSwapIndex a = NestedSwapIndex (GenObject2 a CSwapIndex)
+newtype GenIndex a = GenIndex (CastObject a CIndex)
+newtype NestedInterestRateIndex a = NestedInterestRateIndex (CastObject a CInterestRateIndex)
+newtype NestedIborIndex a = NestedIborIndex (CastObject a CIborIndex)
+newtype NestedSwapIndex a = NestedSwapIndex (CastObject a CSwapIndex)
 
 type GenInterestRateIndex a = GenIndex (NestedInterestRateIndex a)
 type GenIborIndex a = GenIndex (NestedInterestRateIndex (NestedIborIndex a))
@@ -1054,38 +1051,38 @@ type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
 type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
 
 withIndex :: GenIndex a -> (Ptr CIndex -> IO b) -> IO b
-withIndex (GenIndex (GenObject2 x w)) = w x
+withIndex (GenIndex (CastObject x w)) = w x
 
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
-withInterestRateIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x w)) _)) = w x 
+withInterestRateIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject x w)) _)) = w x 
 
 withBMAIndex :: BMAIndex -> (Ptr CBMAIndex -> IO b) -> IO b
-withBMAIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x _)) _)) = withForeignPtr x
+withBMAIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject x _)) _)) = withForeignPtr x
 
 peekBMAIndex :: Ptr CBMAIndex -> IO BMAIndex
 peekBMAIndex x = do
   np <- newNested bMAIndexMeta bmaIndexUpcast x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex np) withNestedInterestRateIndex
+  return $ GenIndex $ CastObject (NestedInterestRateIndex np) withNestedInterestRateIndex
 
 withNestedInterestRateIndex :: NestedInterestRateIndex a -> (Ptr CIndex -> IO b) -> IO b
 withNestedInterestRateIndex (NestedInterestRateIndex o) = withNested interestRateIndexUpcast o
 
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex -> IO b) -> IO b
-withIborIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedIborIndex (GenObject2 x w)) _)) _)) = w x
+withIborIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject (NestedIborIndex (CastObject x w)) _)) _)) = w x
 
 withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex -> IO b) -> IO b
-withSwapIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedSwapIndex (GenObject2 x w)) _)) _)) = w x
+withSwapIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject (NestedSwapIndex (CastObject x w)) _)) _)) = w x
 
 withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex -> IO b) -> IO b
-withOvernightIborIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedIborIndex (GenObject2 x _)) _)) _)) = withForeignPtr x
+withOvernightIborIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject (NestedIborIndex (CastObject x _)) _)) _)) = withForeignPtr x
 
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex -> IO b) -> IO b
-withOvernightIndexedSwapIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedSwapIndex (GenObject2 x _)) _)) _)) = withForeignPtr x
+withOvernightIndexedSwapIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject (NestedSwapIndex (CastObject x _)) _)) _)) = withForeignPtr x
 
 peekSwapIndex :: Ptr CSwapIndex -> IO SwapIndex
 peekSwapIndex x = do
   p <- newForeignPtr qlFreeSwapIndex x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex $ GenObject2 p withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex
+  return $ GenIndex $ CastObject (NestedInterestRateIndex $ CastObject (NestedSwapIndex $ CastObject p withForeignPtr) withNestedSwapIndex) withNestedInterestRateIndex
 
 withNestedSwapIndex :: NestedSwapIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
 withNestedSwapIndex (NestedSwapIndex o) = withNested swapIndexUpcast o
@@ -1093,12 +1090,12 @@ withNestedSwapIndex (NestedSwapIndex o) = withNested swapIndexUpcast o
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex -> IO OvernightIndexedSwapIndex
 peekOvernightIndexedSwapIndex x = do
   np <- newNested overnightIndexedSwapIndexMeta overnightIndexedSwapIndexUpcast x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex np) withNestedSwapIndex) withNestedInterestRateIndex
+  return $ GenIndex $ CastObject (NestedInterestRateIndex $ CastObject (NestedSwapIndex np) withNestedSwapIndex) withNestedInterestRateIndex
 
 peekIborIndex :: Ptr CIborIndex -> IO IborIndex
 peekIborIndex x = do
   p <- newForeignPtr qlFreeIborIndex x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex $ GenObject2 p withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex
+  return $ GenIndex $ CastObject (NestedInterestRateIndex $ CastObject (NestedIborIndex $ CastObject p withForeignPtr) withNestedIborIndex) withNestedInterestRateIndex
 
 withNestedIborIndex :: NestedIborIndex a -> (Ptr CInterestRateIndex -> IO b) -> IO b
 withNestedIborIndex (NestedIborIndex o) = withNested iborIndexUpcast o
@@ -1106,25 +1103,25 @@ withNestedIborIndex (NestedIborIndex o) = withNested iborIndexUpcast o
 peekOvernightIborIndex :: Ptr COvernightIndex -> IO OvernightIborIndex
 peekOvernightIborIndex x = do
   np <- newNested overnightIborIndexMeta overnightIndexUpcast x
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex np) withNestedIborIndex) withNestedInterestRateIndex
+  return $ GenIndex $ CastObject (NestedInterestRateIndex $ CastObject (NestedIborIndex np) withNestedIborIndex) withNestedInterestRateIndex
 
 asIndex :: GenIndex a -> IO Index
-asIndex (GenIndex (GenObject2 x w)) = w x (\p -> do
+asIndex (GenIndex (CastObject x w)) = w x (\p -> do
   fp <- newGenForeign indexMeta p
   return $ GenIndex fp)
 
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 x w)) _)) = w x (\p -> do {fp <- newNested interestRateIndexMeta interestRateIndexUpcast p; return $ GenIndex fp})
+asInterestRateIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject x w)) _)) = w x (\p -> do {fp <- newNested interestRateIndexMeta interestRateIndexUpcast p; return $ GenIndex fp})
 
 asIborIndex :: GenIborIndex a -> IO IborIndex
-asIborIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedIborIndex (GenObject2 x w)) _)) _)) = w x (\p -> do
+asIborIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject (NestedIborIndex (CastObject x w)) _)) _)) = w x (\p -> do
   fp <- newGenForeign iborIndexMeta p
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedIborIndex fp) withNestedIborIndex) withNestedInterestRateIndex)
+  return $ GenIndex $ CastObject (NestedInterestRateIndex $ CastObject (NestedIborIndex fp) withNestedIborIndex) withNestedInterestRateIndex)
 
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
-asSwapIndex (GenIndex (GenObject2 (NestedInterestRateIndex (GenObject2 (NestedSwapIndex (GenObject2 x w)) _)) _)) = w x (\p -> do
+asSwapIndex (GenIndex (CastObject (NestedInterestRateIndex (CastObject (NestedSwapIndex (CastObject x w)) _)) _)) = w x (\p -> do
   fp <- newGenForeign swapIndexMeta p
-  return $ GenIndex $ GenObject2 (NestedInterestRateIndex $ GenObject2 (NestedSwapIndex fp) withNestedSwapIndex) withNestedInterestRateIndex)
+  return $ GenIndex $ CastObject (NestedInterestRateIndex $ CastObject (NestedSwapIndex fp) withNestedSwapIndex) withNestedInterestRateIndex)
 
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 
