@@ -747,33 +747,6 @@ withDescendantArray x f = withMany withDescendant x (`withArray` (\px -> f (from
 withDescendantArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
 withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 
-data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
--- FIXME free cast Ptr after the call
--- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
-withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
---withGenForeignPtr (Upcast u fi) (GenForeignPtr p w) f = w p (\pp -> do
---  cp <- u pp
---  fp <- newForeignPtr fi cp
---  withForeignPtr fp f)
-withGenForeignPtr (Upcast u _) (GenForeignPtr p w) f = w p (u >=> f)
-
-newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
-newGenForeignPtr (Meta f) u x = do
-  p <- newForeignPtr f x
-  return $ GenForeignPtr p (withCastForeignPtr u)
-  where 
-    withCastForeignPtr :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
-    withCastForeignPtr (Upcast fu _) p ff = withForeignPtr p (fu >=> ff)
---    withGenForeignPtrForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
---      cp <- fu pp
---      fp <- newForeignPtr fi cp
---      withForeignPtr fp ff)
-
-newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newBaseForeignPtr (Meta f) x = do
-  p <- newForeignPtr f x
-  return $ GenForeignPtr p withForeignPtr
-
 ---- instantiations
 data CQuote
 data CSimpleQuote
@@ -954,6 +927,34 @@ peekBlackScholesCalculator p = GenBlackCalculator <$> peekObject blackScholesCal
 withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
 withBlackScholesCalculator = withObject . getBlackCalculator
 
+-- HIERARCHIES DEEPER THAN ONE
+data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
+-- FIXME free cast Ptr after the call
+-- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
+withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
+--withGenForeignPtr (Upcast u fi) (GenForeignPtr p w) f = w p (\pp -> do
+--  cp <- u pp
+--  fp <- newForeignPtr fi cp
+--  withForeignPtr fp f)
+withGenForeignPtr (Upcast u _) (GenForeignPtr p w) f = w p (u >=> f)
+
+newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
+newGenForeignPtr (Meta f) u x = do
+  p <- newForeignPtr f x
+  return $ GenForeignPtr p (withCastForeignPtr u)
+  where 
+    withCastForeignPtr :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
+    withCastForeignPtr (Upcast fu _) p ff = withForeignPtr p (fu >=> ff)
+--    withGenForeignPtrForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
+--      cp <- fu pp
+--      fp <- newForeignPtr fi cp
+--      withForeignPtr fp ff)
+
+newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
+newBaseForeignPtr (Meta f) x = do
+  p <- newForeignPtr f x
+  return $ GenForeignPtr p withForeignPtr
+
 data CIndex
 data CInterestRateIndex
 data CBMAIndex
@@ -962,19 +963,26 @@ data COvernightIndex
 data CSwapIndex
 data COvernightIndexedSwapIndex
 newtype GenIndex a = GenIndex (GenForeignPtr a CIndex)
-type Index = GenIndex (ForeignPtr CIndex)
+type ForeignCIndex = ForeignPtr CIndex
+type Index = GenIndex ForeignCIndex
 newtype NestedInterestRateIndex a = NestedInterestRateIndex (GenForeignPtr a CInterestRateIndex)
 type GenInterestRateIndex a = GenIndex (NestedInterestRateIndex a)
-type InterestRateIndex = GenIndex (ForeignPtr CInterestRateIndex)
-type BMAIndex = GenInterestRateIndex (ForeignPtr CBMAIndex)
+type ForeignCInterestRateIndex = ForeignPtr CInterestRateIndex
+type InterestRateIndex = GenIndex ForeignCInterestRateIndex
+type ForeignCBMAIndex = ForeignPtr CBMAIndex
+type BMAIndex = GenInterestRateIndex ForeignCBMAIndex
 newtype NestedIborIndex a = NestedIborIndex (GenForeignPtr a CIborIndex)
 type GenIborIndex a = GenIndex (NestedInterestRateIndex (NestedIborIndex a))
-type IborIndex = GenIborIndex (ForeignPtr CIborIndex)
-type OvernightIborIndex = GenIborIndex (ForeignPtr COvernightIndex)
+type ForeignCIborIndex = ForeignPtr CIborIndex
+type IborIndex = GenIborIndex ForeignCIborIndex
+type ForeignCOvernightIndex = ForeignPtr COvernightIndex
+type OvernightIborIndex = GenIborIndex ForeignCOvernightIndex
 newtype NestedSwapIndex a = NestedSwapIndex (GenForeignPtr a CSwapIndex)
 type GenSwapIndex a = GenIndex (NestedInterestRateIndex (NestedSwapIndex a))
-type SwapIndex = GenSwapIndex (ForeignPtr CSwapIndex)
-type OvernightIndexedSwapIndex = GenSwapIndex (ForeignPtr COvernightIndexedSwapIndex)
+type ForeignCSwapIndex = ForeignPtr CSwapIndex
+type SwapIndex = GenSwapIndex ForeignCSwapIndex
+type ForeignCOvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex
+type OvernightIndexedSwapIndex = GenSwapIndex ForeignCOvernightIndexedSwapIndex
 foreign import ccall "ql.h &qlFreeIndex" qlFreeIndex :: FinalizerPtr CIndex
 foreign import ccall "ql.h &qlFreeInterestRateIndex" qlFreeInterestRateIndex :: FinalizerPtr CInterestRateIndex
 foreign import ccall "ql.h &qlFreeBMAIndex" qlFreeBMAIndex :: FinalizerPtr CBMAIndex
