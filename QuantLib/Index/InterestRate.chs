@@ -76,7 +76,7 @@ import QuantLib.Internal.Type
 
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
 
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndex'edSwap nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
 
 {#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
 

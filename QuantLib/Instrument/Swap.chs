@@ -118,7 +118,7 @@ instance AssetSwap`Derives` Swap where cast = qlAssetSwapAsSwap
 {#fun qlBMASwapAsSwap{withBMASwap*`BMASwap'}->`Swap'peekSwap*#}
 instance BMASwap`Derives` Swap where cast = qlBMASwapAsSwap
 
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndex'edSwap nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
 
 {#fun qlOvernightIndexedSwapAsSwap{withOvernightIndexedSwap*`OvernightIndexedSwap'}->`Swap'peekSwap*#}
 instance OvernightIndexedSwap`Derives` Swap where cast = qlOvernightIndexedSwapAsSwap

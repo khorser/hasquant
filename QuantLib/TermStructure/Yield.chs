@@ -89,7 +89,7 @@ import QuantLib.Internal.Type
 {#pointer *QlSwap as Swap foreign -> CSwap nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndex'edSwap nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure nocode#}
 

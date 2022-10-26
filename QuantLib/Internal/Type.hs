@@ -85,88 +85,122 @@ module QuantLib.Internal.Type
   , QlLmVolatilityModel
   , peekLmVolatilityModel
 
+  , GenQuote
   , CQuote
   , Quote
   , asQuote
   , peekQuote
+  , withQuote
+  , withMaybeQuote
+  , withQuoteArray
+  , withQuoteArrayRaw
   , CSimpleQuote
   , SimpleQuote
   , peekSimpleQuote
-
-  , withQuote
   , withSimpleQuote
-  , withQuoteArray
-  , withQuoteArrayRaw
-  , withMaybeQuote
 
-  , GenQuote
-
-  , withLeg
-  , withCouponLeg
-  , peekLeg
-  , peekCouponLeg
-  , Leg
-  , CLeg
-  , CouponLeg
-  , CCouponLeg
-  , asLeg
   , GenLeg
+  , CLeg
+  , Leg
+  , asLeg
+  , peekLeg
+  , withLeg
   , withLegArray
+  , CCouponLeg
+  , CouponLeg
+  , peekCouponLeg
+  , withCouponLeg
 
-  , CRateHelper
-  , CSwapRateHelper
-  , CBondHelper
-  , COISRateHelper
-  , CCalibrationHelper
-  , CBlackCalibrationHelper
-  , CBlackCalculator
-  , CBlackScholesCalculator
-  , RateHelper
-  , SwapRateHelper
-  , BondHelper
-  , OISRateHelper
-  , CalibrationHelper
-  , BlackCalibrationHelper
-  , BlackCalculator
-  , BlackScholesCalculator
   , GenRateHelper
-  , GenCalibrationHelper
-  , GenBlackCalculator
-  , peekRateHelper
-  , peekSwapRateHelper
-  , peekBondHelper
-  , peekOISRateHelper
-  , peekCalibrationHelper
-  , peekBlackCalibrationHelper
-  , withRateHelper
-  , withSwapRateHelper
-  , withBondHelper
-  , withOISRateHelper
-  , withCalibrationHelper
-  , withBlackCalibrationHelper
+  , CRateHelper
+  , RateHelper
   , asRateHelper
-  , asCalibrationHelper
-  , peekBlackCalculator
-  , peekBlackScholesCalculator
-  , withBlackCalculator
-  , withBlackScholesCalculator
-  , asBlackCalculator
+  , peekRateHelper
+  , withRateHelper
   , withRateHelperArray
+  , CBondHelper
+  , BondHelper
+  , peekBondHelper
+  , withBondHelper
   , withBondHelperArray
+  , CSwapRateHelper
+  , SwapRateHelper
+  , peekSwapRateHelper
+  , withSwapRateHelper
+  , COISRateHelper
+  , OISRateHelper
+  , peekOISRateHelper
+  , withOISRateHelper
+
+  , GenCalibrationHelper
+  , CCalibrationHelper
+  , CalibrationHelper
+  , asCalibrationHelper
+  , peekCalibrationHelper
+  , withCalibrationHelper
   , withCalibrationHelperArray
+  , CBlackCalibrationHelper
+  , BlackCalibrationHelper
+  , withBlackCalibrationHelper
+  , peekBlackCalibrationHelper
+
+  , GenBlackCalculator
+  , CBlackCalculator
+  , BlackCalculator
+  , asBlackCalculator
+  , peekBlackCalculator
+  , withBlackCalculator
+  , CBlackScholesCalculator
+  , BlackScholesCalculator
+  , peekBlackScholesCalculator
+  , withBlackScholesCalculator
+
+  , GenIndex
+  , CIndex
+  , CIndex'
+  , Index
+  , asIndex
+  , withIndex
+  , GenInterestRateIndex
+  , CInterestRateIndex
+  , CInterestRateIndex'
+  , InterestRateIndex
+  , asInterestRateIndex
+  , withInterestRateIndex
+  , CBMAIndex
+  , CBMAIndex'
+  , BMAIndex
+  , peekBMAIndex
+  , withBMAIndex
+  , GenIborIndex
+  , CIborIndex
+  , CIborIndex'
+  , IborIndex
+  , asIborIndex
+  , peekIborIndex
+  , withIborIndex
+  , COvernightIndex
+  , COvernightIndex'
+  , OvernightIborIndex
+  , peekOvernightIborIndex
+  , withOvernightIborIndex
+  , GenSwapIndex
+  , CSwapIndex
+  , CSwapIndex'
+  , SwapIndex
+  , asSwapIndex
+  , peekSwapIndex
+  , withSwapIndex
+  , OvernightIndexedSwapIndex
+  , COvernightIndexedSwapIndex
+  , COvernightIndexedSwapIndex'
+  , peekOvernightIndexedSwapIndex
+  , withOvernightIndexedSwapIndex
 
   , AffineModel
   , CAffineModel
   , peekAffineModel
   , withAffineModel
-  , AssetSwap
-  , CAssetSwap
-  , peekAssetSwap
-  , withAssetSwap
-  , BarrierOption
-  , CBarrierOption
-  , peekBarrierOption
-  , withBarrierOption
   , BatesDetJumpModel
   , CBatesDetJumpModel
   , peekBatesDetJumpModel
@@ -183,26 +217,51 @@ module QuantLib.Internal.Type
   , CBatesModel
   , peekBatesModel
   , withBatesModel
-  , BatesProcess
-  , CBatesProcess
-  , peekBatesProcess
-  , withBatesProcess
-  , BlackProcess
-  , CBlackProcess
-  , peekBlackProcess
-  , withBlackProcess
-  , BlackVarianceCurve
-  , CBlackVarianceCurve
-  , peekBlackVarianceCurve
-  , withBlackVarianceCurve
-  , BlackVolTermStructure
-  , CBlackVolTermStructure
-  , peekBlackVolTermStructure
-  , withBlackVolTermStructure
-  , BMAIndex
-  , CBMAIndex'
-  , peekBMAIndex
-  , withBMAIndex
+  , CalibratedModel
+  , CCalibratedModel
+  , peekCalibratedModel
+  , withCalibratedModel
+  , G2
+  , CG2
+  , peekG2
+  , withG2
+  , GJRGARCHModel
+  , CGJRGARCHModel
+  , peekGJRGARCHModel
+  , withGJRGARCHModel
+  , HestonModel
+  , CHestonModel
+  , peekHestonModel
+  , withHestonModel
+  , HullWhite
+  , CHullWhite
+  , peekHullWhite
+  , withHullWhite
+  , PiecewiseTimeDependentHestonModel
+  , CPiecewiseTimeDependentHestonModel
+  , peekPiecewiseTimeDependentHestonModel
+  , withPiecewiseTimeDependentHestonModel
+  , ShortRateModel
+  , CShortRateModel
+  , peekShortRateModel
+  , withShortRateModel
+  , OneFactorAffineModel
+  , COneFactorAffineModel
+  , peekOneFactorAffineModel
+  , withOneFactorAffineModel
+  , LiborForwardModel
+  , CLiborForwardModel
+  , peekLiborForwardModel
+  , withLiborForwardModel
+
+  , AssetSwap
+  , CAssetSwap
+  , peekAssetSwap
+  , withAssetSwap
+  , BarrierOption
+  , CBarrierOption
+  , peekBarrierOption
+  , withBarrierOption
   , BMASwap
   , CBMASwap
   , peekBMASwap
@@ -211,26 +270,14 @@ module QuantLib.Internal.Type
   , CBond
   , peekBond
   , withBond
-  , CalibratedModel
-  , CCalibratedModel
-  , peekCalibratedModel
-  , withCalibratedModel
   , CallableBond
   , CCallableBond
   , peekCallableBond
   , withCallableBond
-  , CallableBondVolatilityStructure
-  , CCallableBondVolatilityStructure
-  , peekCallableBondVolatilityStructure
-  , withCallableBondVolatilityStructure
   , CapFloor
   , CCapFloor
   , peekCapFloor
   , withCapFloor
-  , CapFloorTermVolSurface
-  , CCapFloorTermVolSurface
-  , peekCapFloorTermVolSurface
-  , withCapFloorTermVolSurface
   , CdsOption
   , CCdsOption
   , peekCdsOption
@@ -243,26 +290,10 @@ module QuantLib.Internal.Type
   , CCreditDefaultSwap
   , peekCreditDefaultSwap
   , withCreditDefaultSwap
-  , DefaultProbabilityTermStructure
-  , CDefaultProbabilityTermStructure
-  , peekDefaultProbabilityTermStructure
-  , withDefaultProbabilityTermStructure
   , DividendVanillaOption
   , CDividendVanillaOption
   , peekDividendVanillaOption
   , withDividendVanillaOption
-  , ExtendedOrnsteinUhlenbeckProcess
-  , CExtendedOrnsteinUhlenbeckProcess
-  , peekExtendedOrnsteinUhlenbeckProcess
-  , withExtendedOrnsteinUhlenbeckProcess
-  , ExtOUWithJumpsProcess
-  , CExtOUWithJumpsProcess
-  , peekExtOUWithJumpsProcess
-  , withExtOUWithJumpsProcess
-  , FittedBondDiscountCurve
-  , CFittedBondDiscountCurve
-  , peekFittedBondDiscountCurve
-  , withFittedBondDiscountCurve
   , FixedRateBond
   , CFixedRateBond
   , peekFixedRateBond
@@ -283,120 +314,19 @@ module QuantLib.Internal.Type
   , CForwardVanillaOption
   , peekForwardVanillaOption
   , withForwardVanillaOption
-  , G2
-  , CG2
-  , peekG2
-  , withG2
-  , GeneralizedBlackScholesProcess
-  , CGeneralizedBlackScholesProcess
-  , peekGeneralizedBlackScholesProcess
-  , withGeneralizedBlackScholesProcess
-  , GJRGARCHModel
-  , CGJRGARCHModel
-  , peekGJRGARCHModel
-  , withGJRGARCHModel
-  , GJRGARCHProcess
-  , CGJRGARCHProcess
-  , peekGJRGARCHProcess
-  , withGJRGARCHProcess
-  , HestonModel
-  , CHestonModel
-  , peekHestonModel
-  , withHestonModel
-  , HestonProcess
-  , CHestonProcess
-  , peekHestonProcess
-  , withHestonProcess
-  , HullWhite
-  , CHullWhite
-  , peekHullWhite
-  , withHullWhite
-  , HullWhiteForwardProcess
-  , CHullWhiteForwardProcess
-  , peekHullWhiteForwardProcess
-  , withHullWhiteForwardProcess
-  , HullWhiteProcess
-  , CHullWhiteProcess
-  , peekHullWhiteProcess
-  , withHullWhiteProcess
-  , HybridHestonHullWhiteProcess
-  , CHybridHestonHullWhiteProcess
-  , peekHybridHestonHullWhiteProcess
-  , withHybridHestonHullWhiteProcess
-  , IborIndex
-  , CIborIndex'
-  , peekIborIndex
-  , withIborIndex
-  , OvernightIborIndex
-  , COvernightIndex'
-  , peekOvernightIborIndex
-  , withOvernightIborIndex
-  , Index
-  , CIndex'
-  , withIndex
   , Instrument
   , CInstrument
   , peekInstrument
   , withInstrument
-  , InterestRateIndex
-  , CInterestRateIndex'
-  , withInterestRateIndex
-  , KlugeExtOUProcess
-  , CKlugeExtOUProcess
-  , peekKlugeExtOUProcess
-  , withKlugeExtOUProcess
-  , LiborForwardModel
-  , CLiborForwardModel
-  , peekLiborForwardModel
-  , withLiborForwardModel
-  , LiborForwardModelProcess
-  , CLiborForwardModelProcess
-  , peekLiborForwardModelProcess
-  , withLiborForwardModelProcess
-  , LocalVolTermStructure
-  , CLocalVolTermStructure
-  , peekLocalVolTermStructure
-  , withLocalVolTermStructure
-  , MargrabeOption
-  , CMargrabeOption
-  , peekMargrabeOption
-  , withMargrabeOption
-  , Merton76Process
-  , CMerton76Process
-  , peekMerton76Process
-  , withMerton76Process
-  , MultiAssetOption
-  , CMultiAssetOption
-  , peekMultiAssetOption
-  , withMultiAssetOption
-  , OneAssetOption
-  , COneAssetOption
-  , peekOneAssetOption
-  , withOneAssetOption
-  , OneFactorAffineModel
-  , COneFactorAffineModel
-  , peekOneFactorAffineModel
-  , withOneFactorAffineModel
+  , withInstrumentArray
   , Option
   , COption
   , peekOption
   , withOption
-  , OptionletVolatilityStructure
-  , COptionletVolatilityStructure
-  , peekOptionletVolatilityStructure
-  , withOptionletVolatilityStructure
   , OvernightIndexedSwap
-  , COvernightIndex'edSwap
+  , COvernightIndexedSwap
   , peekOvernightIndexedSwap
   , withOvernightIndexedSwap
-  , OvernightIndexedSwapIndex
-  , COvernightIndexedSwapIndex'
-  , peekOvernightIndexedSwapIndex
-  , withOvernightIndexedSwapIndex
-  , PiecewiseTimeDependentHestonModel
-  , CPiecewiseTimeDependentHestonModel
-  , peekPiecewiseTimeDependentHestonModel
-  , withPiecewiseTimeDependentHestonModel
   , QuantoBarrierOption
   , CQuantoBarrierOption
   , peekQuantoBarrierOption
@@ -409,10 +339,84 @@ module QuantLib.Internal.Type
   , CQuantoVanillaOption
   , peekQuantoVanillaOption
   , withQuantoVanillaOption
-  , ShortRateModel
-  , CShortRateModel
-  , peekShortRateModel
-  , withShortRateModel
+  , Swap
+  , CSwap
+  , peekSwap
+  , withSwap
+  , Swaption
+  , CSwaption
+  , peekSwaption
+  , withSwaption
+  , VanillaOption
+  , CVanillaOption
+  , peekVanillaOption
+  , withVanillaOption
+  , VanillaSwap
+  , CVanillaSwap
+  , peekVanillaSwap
+  , withVanillaSwap
+  , MargrabeOption
+  , CMargrabeOption
+  , peekMargrabeOption
+  , withMargrabeOption
+  , MultiAssetOption
+  , CMultiAssetOption
+  , peekMultiAssetOption
+  , withMultiAssetOption
+  , OneAssetOption
+  , COneAssetOption
+  , peekOneAssetOption
+  , withOneAssetOption
+
+  , BatesProcess
+  , CBatesProcess
+  , peekBatesProcess
+  , withBatesProcess
+  , BlackProcess
+  , CBlackProcess
+  , peekBlackProcess
+  , withBlackProcess
+  , ExtendedOrnsteinUhlenbeckProcess
+  , CExtendedOrnsteinUhlenbeckProcess
+  , peekExtendedOrnsteinUhlenbeckProcess
+  , withExtendedOrnsteinUhlenbeckProcess
+  , ExtOUWithJumpsProcess
+  , CExtOUWithJumpsProcess
+  , peekExtOUWithJumpsProcess
+  , withExtOUWithJumpsProcess
+  , GeneralizedBlackScholesProcess
+  , CGeneralizedBlackScholesProcess
+  , peekGeneralizedBlackScholesProcess
+  , withGeneralizedBlackScholesProcess
+  , GJRGARCHProcess
+  , CGJRGARCHProcess
+  , peekGJRGARCHProcess
+  , withGJRGARCHProcess
+  , HestonProcess
+  , CHestonProcess
+  , peekHestonProcess
+  , withHestonProcess
+  , HullWhiteForwardProcess
+  , CHullWhiteForwardProcess
+  , peekHullWhiteForwardProcess
+  , withHullWhiteForwardProcess
+  , HullWhiteProcess
+  , CHullWhiteProcess
+  , peekHullWhiteProcess
+  , withHullWhiteProcess
+  , HybridHestonHullWhiteProcess
+  , CHybridHestonHullWhiteProcess
+  , peekHybridHestonHullWhiteProcess
+  , withHybridHestonHullWhiteProcess
+  , KlugeExtOUProcess
+  , CKlugeExtOUProcess
+  , peekKlugeExtOUProcess
+  , withKlugeExtOUProcess
+  , LiborForwardModelProcess
+  , CLiborForwardModelProcess
+  , peekLiborForwardModelProcess
+  , withLiborForwardModelProcess
+  , withStochasticProcess1DArray
   , StochasticProcess1D
   , CStochasticProcess1D
   , peekStochasticProcess1D
@@ -425,38 +429,39 @@ module QuantLib.Internal.Type
   , CStochasticProcess
   , peekStochasticProcess
   , withStochasticProcess
-  , Swap
-  , CSwap
-  , peekSwap
-  , withSwap
-  , SwapIndex
-  , CSwapIndex'
-  , peekSwapIndex
-  , withSwapIndex
-  , Swaption
-  , CSwaption
-  , peekSwaption
-  , withSwaption
-  , SwaptionVolatilityStructure
-  , CSwaptionVolatilityStructure
-  , peekSwaptionVolatilityStructure
-  , withSwaptionVolatilityStructure
-  , TermStructure
-  , CTermStructure
-  , peekTermStructure
-  , withTermStructure
-  , VanillaOption
-  , CVanillaOption
-  , peekVanillaOption
-  , withVanillaOption
-  , VanillaSwap
-  , CVanillaSwap
-  , peekVanillaSwap
-  , withVanillaSwap
   , VarianceGammaProcess
   , CVarianceGammaProcess
   , peekVarianceGammaProcess
   , withVarianceGammaProcess
+  , Merton76Process
+  , CMerton76Process
+  , peekMerton76Process
+  , withMerton76Process
+
+  , BlackVarianceCurve
+  , CBlackVarianceCurve
+  , peekBlackVarianceCurve
+  , withBlackVarianceCurve
+  , BlackVolTermStructure
+  , CBlackVolTermStructure
+  , peekBlackVolTermStructure
+  , withBlackVolTermStructure
+  , CallableBondVolatilityStructure
+  , CCallableBondVolatilityStructure
+  , peekCallableBondVolatilityStructure
+  , withCallableBondVolatilityStructure
+  , CapFloorTermVolSurface
+  , CCapFloorTermVolSurface
+  , peekCapFloorTermVolSurface
+  , withCapFloorTermVolSurface
+  , DefaultProbabilityTermStructure
+  , CDefaultProbabilityTermStructure
+  , peekDefaultProbabilityTermStructure
+  , withDefaultProbabilityTermStructure
+  , FittedBondDiscountCurve
+  , CFittedBondDiscountCurve
+  , peekFittedBondDiscountCurve
+  , withFittedBondDiscountCurve
   , VolatilityTermStructure
   , CVolatilityTermStructure
   , peekVolatilityTermStructure
@@ -465,20 +470,23 @@ module QuantLib.Internal.Type
   , CYieldTermStructure
   , peekYieldTermStructure
   , withYieldTermStructure
-  
-  , withInstrumentArray
   , withMaybeYieldTermStructure
-  , withStochasticProcess1DArray
-
-  , asIndex
-  , asInterestRateIndex
-  , asIborIndex
-  , asSwapIndex
-
-  , GenInterestRateIndex
-  , GenIndex
-  , GenIborIndex
-  , GenSwapIndex
+  , OptionletVolatilityStructure
+  , COptionletVolatilityStructure
+  , peekOptionletVolatilityStructure
+  , withOptionletVolatilityStructure
+  , SwaptionVolatilityStructure
+  , CSwaptionVolatilityStructure
+  , peekSwaptionVolatilityStructure
+  , withSwaptionVolatilityStructure
+  , TermStructure
+  , CTermStructure
+  , peekTermStructure
+  , withTermStructure
+  , LocalVolTermStructure
+  , CLocalVolTermStructure
+  , peekLocalVolTermStructure
+  , withLocalVolTermStructure
 )
   where
 import Foreign.Ptr
@@ -799,7 +807,6 @@ legUpcast = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
 couponLegUpcast :: Upcast CCouponLeg CLeg
 couponLegUpcast = Upcast qlCouponLegAsLeg qlFreeLeg
-
 asLeg :: GenLeg a -> IO Leg
 asLeg (GenLeg q) = GenLeg <$> upcast legMeta legUpcast q
 peekLeg :: Ptr CLeg -> IO Leg
@@ -845,7 +852,6 @@ swapRateHelperUpcast = Upcast qlSwapRateHelperAsRateHelper qlFreeRateHelper
 foreign import ccall safe "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper -> IO (Ptr CRateHelper)
 oisRateHelperUpcast :: Upcast COISRateHelper CRateHelper
 oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
-
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
 asRateHelper (GenRateHelper q) = GenRateHelper <$> upcast rateHelperMeta rateHelperUpcast q
 peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
@@ -885,7 +891,6 @@ calibrationHelperUpcast :: Upcast CCalibrationHelper CCalibrationHelper
 calibrationHelperUpcast = Upcast return nullFunPtr
 blackCalibrationHelperUpcast :: Upcast CBlackCalibrationHelper CCalibrationHelper
 blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
-
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
 asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> upcast calibrationHelperMeta calibrationHelperUpcast q
 peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
@@ -915,7 +920,6 @@ blackCalculatorUpcast = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
 blackScholesCalculatorUpcast :: Upcast CBlackScholesCalculator CBlackCalculator
 blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
-
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
 asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> upcast blackCalculatorMeta blackCalculatorUpcast q
 peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
@@ -963,22 +967,23 @@ data COvernightIndex'
 data CSwapIndex'
 data COvernightIndexedSwapIndex'
 newtype GenIndex a = GenIndex (GenForeignPtr a CIndex')
-type CIndex = ForeignPtr CIndex' -- extra encapsulation to hide ForeignPtr from users. I hope to find a cleaner solution
+-- extra encapsulation to hide ForeignPtr from users. I hope to find a cleaner solution, I feel like I'm using too many wrappers here
+type CIndex = ForeignPtr CIndex'
 type Index = GenIndex CIndex
-newtype NestedInterestRateIndex a = NestedInterestRateIndex (GenForeignPtr a CInterestRateIndex')
-type GenInterestRateIndex a = GenIndex (NestedInterestRateIndex a)
+newtype InterestRateIndexDescendant a = InterestRateIndexDescendant (GenForeignPtr a CInterestRateIndex')
+type GenInterestRateIndex a = GenIndex (InterestRateIndexDescendant a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
 type InterestRateIndex = GenIndex CInterestRateIndex
 type CBMAIndex = ForeignPtr CBMAIndex'
 type BMAIndex = GenInterestRateIndex CBMAIndex
-newtype NestedIborIndex a = NestedIborIndex (GenForeignPtr a CIborIndex')
-type GenIborIndex a = GenIndex (NestedInterestRateIndex (NestedIborIndex a))
+newtype IborIndexDescendant a = IborIndexDescendant (GenForeignPtr a CIborIndex')
+type GenIborIndex a = GenIndex (InterestRateIndexDescendant (IborIndexDescendant a))
 type CIborIndex = ForeignPtr CIborIndex'
 type IborIndex = GenIborIndex CIborIndex
 type COvernightIndex = ForeignPtr COvernightIndex'
 type OvernightIborIndex = GenIborIndex COvernightIndex
-newtype NestedSwapIndex a = NestedSwapIndex (GenForeignPtr a CSwapIndex')
-type GenSwapIndex a = GenIndex (NestedInterestRateIndex (NestedSwapIndex a))
+newtype SwapIndexDescendant a = SwapIndexDescendant (GenForeignPtr a CSwapIndex')
+type GenSwapIndex a = GenIndex (InterestRateIndexDescendant (SwapIndexDescendant a))
 type CSwapIndex = ForeignPtr CSwapIndex'
 type SwapIndex = GenSwapIndex CSwapIndex
 type COvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex'
@@ -1022,63 +1027,62 @@ swapIndexUpcast :: Upcast CSwapIndex' CInterestRateIndex'
 swapIndexUpcast = Upcast qlSwapIndexAsInterestRateIndex qlFreeInterestRateIndex
 overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex' CSwapIndex'
 overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
-
 asIndex :: GenIndex a -> IO Index
 asIndex (GenIndex (GenForeignPtr x w)) = w x (\p -> do
   fp <- newBaseForeignPtr indexMeta p
   return $ GenIndex fp)
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr x w)) _)) = w x (\p -> do {fp <- newGenForeignPtr interestRateIndexMeta interestRateIndexUpcast p; return $ GenIndex fp})
+asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x (\p -> do {fp <- newGenForeignPtr interestRateIndexMeta interestRateIndexUpcast p; return $ GenIndex fp})
 asIborIndex :: GenIborIndex a -> IO IborIndex
-asIborIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr (NestedIborIndex (GenForeignPtr x w)) _)) _)) = w x (\p -> do
+asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
   fp <- newBaseForeignPtr iborIndexMeta p
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex $ GenForeignPtr (NestedIborIndex fp) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex)
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant fp) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex)
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
-asSwapIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr (NestedSwapIndex (GenForeignPtr x w)) _)) _)) = w x (\p -> do
+asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
   fp <- newBaseForeignPtr swapIndexMeta p
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex $ GenForeignPtr (NestedSwapIndex fp) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex)
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant fp) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex)
 withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
 withIndex (GenIndex (GenForeignPtr x w)) = w x
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withInterestRateIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr x w)) _)) = w x 
+withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x 
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
 peekBMAIndex x = do
   np <- newGenForeignPtr bMAIndexMeta bmaIndexUpcast x
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex np) withGenForeignPtrInterestRateIndex
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant np) withGenForeignPtrInterestRateIndex
 withBMAIndex :: BMAIndex -> (Ptr CBMAIndex' -> IO b) -> IO b
-withBMAIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr x _)) _)) = withForeignPtr x
-withGenForeignPtrInterestRateIndex :: NestedInterestRateIndex a -> (Ptr CIndex' -> IO b) -> IO b
-withGenForeignPtrInterestRateIndex (NestedInterestRateIndex o) = withGenForeignPtr interestRateIndexUpcast o
+withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+withGenForeignPtrInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CIndex' -> IO b) -> IO b
+withGenForeignPtrInterestRateIndex (InterestRateIndexDescendant o) = withGenForeignPtr interestRateIndexUpcast o
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
-withIborIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr (NestedIborIndex (GenForeignPtr x w)) _)) _)) = w x
+withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
-withSwapIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr (NestedSwapIndex (GenForeignPtr x w)) _)) _)) = w x
+withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
-withOvernightIborIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr (NestedIborIndex (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
-withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (NestedInterestRateIndex (GenForeignPtr (NestedSwapIndex (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
 peekSwapIndex x = do
   p <- newForeignPtr qlFreeSwapIndex x
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex $ GenForeignPtr (NestedSwapIndex $ GenForeignPtr p withForeignPtr) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant $ GenForeignPtr p withForeignPtr) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
 
-withGenForeignPtrSwapIndex :: NestedSwapIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withGenForeignPtrSwapIndex (NestedSwapIndex o) = withGenForeignPtr swapIndexUpcast o
+withGenForeignPtrSwapIndex :: SwapIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
+withGenForeignPtrSwapIndex (SwapIndexDescendant o) = withGenForeignPtr swapIndexUpcast o
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
 peekOvernightIndexedSwapIndex x = do
   np <- newGenForeignPtr overnightIndexedSwapIndexMeta overnightIndexedSwapIndexUpcast x
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex $ GenForeignPtr (NestedSwapIndex np) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant np) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
 peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
 peekIborIndex x = do
   p <- newForeignPtr qlFreeIborIndex x
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex $ GenForeignPtr (NestedIborIndex $ GenForeignPtr p withForeignPtr) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant $ GenForeignPtr p withForeignPtr) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
 
-withGenForeignPtrIborIndex :: NestedIborIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withGenForeignPtrIborIndex (NestedIborIndex o) = withGenForeignPtr iborIndexUpcast o
+withGenForeignPtrIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
+withGenForeignPtrIborIndex (IborIndexDescendant o) = withGenForeignPtr iborIndexUpcast o
 peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
 peekOvernightIborIndex x = do
   np <- newGenForeignPtr overnightIborIndexMeta overnightIndexUpcast x
-  return $ GenIndex $ GenForeignPtr (NestedInterestRateIndex $ GenForeignPtr (NestedIborIndex np) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant np) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
 
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 
@@ -1242,13 +1246,13 @@ peekOption :: Ptr COption -> IO Option
 peekOption = peekStandalone optionMeta >=> return . Option
 withOption :: Option -> (Ptr COption -> IO b) -> IO b
 withOption = withStandalone . getCOption
-data COvernightIndex'edSwap
-newtype OvernightIndexedSwap = OvernightIndexedSwap {getCOvernightIndexedSwap :: Standalone COvernightIndex'edSwap}
-overnightIndexedSwapMeta :: Meta COvernightIndex'edSwap
+data COvernightIndexedSwap
+newtype OvernightIndexedSwap = OvernightIndexedSwap {getCOvernightIndexedSwap :: Standalone COvernightIndexedSwap}
+overnightIndexedSwapMeta :: Meta COvernightIndexedSwap
 overnightIndexedSwapMeta = Meta qlFreeOvernightIndexedSwap
-peekOvernightIndexedSwap :: Ptr COvernightIndex'edSwap -> IO OvernightIndexedSwap
+peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap -> IO OvernightIndexedSwap
 peekOvernightIndexedSwap = peekStandalone overnightIndexedSwapMeta >=> return . OvernightIndexedSwap
-withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndex'edSwap -> IO b) -> IO b
+withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap -> IO b) -> IO b
 withOvernightIndexedSwap = withStandalone . getCOvernightIndexedSwap
 data CQuantoBarrierOption
 newtype QuantoBarrierOption = QuantoBarrierOption {getCQuantoBarrierOption :: Standalone CQuantoBarrierOption}
@@ -1332,7 +1336,7 @@ foreign import ccall "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: Finali
 foreign import ccall "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption
 foreign import ccall "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption
 foreign import ccall "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption
-foreign import ccall "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndex'edSwap
+foreign import ccall "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap
 foreign import ccall "ql.h &qlFreeQuantoVanillaOption" qlFreeQuantoVanillaOption :: FinalizerPtr CQuantoVanillaOption
 foreign import ccall "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap
 foreign import ccall "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption
