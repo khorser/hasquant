@@ -56,27 +56,27 @@ import QuantLib.Internal.Type
 
 {#pointer *Currency foreign -> CCurrency nocode#}
 
-{#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex nocode#}
+{#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 
-{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex nocode#}
+{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 
-{#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex nocode#}
+{#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
 
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
-{#pointer *QlIndex as Index foreign -> CIndex nocode#}
+{#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
 
-{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex nocode#}
+{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 
-{#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign -> COvernightIndexedSwapIndex nocode#}
+{#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign -> COvernightIndexedSwapIndex' nocode#}
 
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
 
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndex'edSwap nocode#}
 
 {#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe YieldTermStructure', preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
 

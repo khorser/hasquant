@@ -93,9 +93,9 @@ import QuantLib.Internal.Type
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex nocode#}
-{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
+{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure nocode#}
 

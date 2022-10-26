@@ -37,7 +37,7 @@ import QuantLib.Internal.Type
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlForward as Forward foreign -> CForward nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond nocode#}
 
 {#fun qlForwardAsInstrument{withForward*`Forward'}->`Instrument'peekInstrument*#}

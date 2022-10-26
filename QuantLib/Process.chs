@@ -73,7 +73,7 @@ import QuantLib.Internal.Type
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
 {#enum ProcessDiscretization{} deriving(Show,Eq)#}
 

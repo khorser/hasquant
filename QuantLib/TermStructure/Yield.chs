@@ -79,18 +79,18 @@ import QuantLib.Internal.Type
 -- if you put all pointer declarations in a separate module
 -- ch2s will not attach finalizers to foreign ptrs in other modules
 -- I don't want to create extra modules just to workaround the issue with cyclic dependencies and this will not help with finalizers anyway
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
-{#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex nocode#}
-{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+{#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
+{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure nocode#}
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlSwap as Swap foreign -> CSwap nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
-{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndex'edSwap nocode#}
+{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}

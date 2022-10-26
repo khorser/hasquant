@@ -101,7 +101,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
 {#fun qlBondAsInstrument{withBond*`Bond'}->`Instrument'peekInstrument*#}
 instance Bond`Derives` Instrument where cast = qlBondAsInstrument

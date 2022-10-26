@@ -33,9 +33,9 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#pointer *QlIndex as Index foreign -> CIndex nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex nocode#}
+{#pointer *QlIndex as Index foreign -> CIndex' nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlSimpleQuote as Quote foreign -> CSimpleQuote nocode#}

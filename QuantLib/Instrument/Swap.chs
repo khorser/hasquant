@@ -76,9 +76,9 @@ import QuantLib.Internal.Enum
 {#import QuantLib.Instrument.Credit#}(CreditDefaultSwap)
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex nocode#}
-{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex nocode#}
-{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+{#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
+{#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -118,7 +118,7 @@ instance AssetSwap`Derives` Swap where cast = qlAssetSwapAsSwap
 {#fun qlBMASwapAsSwap{withBMASwap*`BMASwap'}->`Swap'peekSwap*#}
 instance BMASwap`Derives` Swap where cast = qlBMASwapAsSwap
 
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndex'edSwap nocode#}
 
 {#fun qlOvernightIndexedSwapAsSwap{withOvernightIndexedSwap*`OvernightIndexedSwap'}->`Swap'peekSwap*#}
 instance OvernightIndexedSwap`Derives` Swap where cast = qlOvernightIndexedSwapAsSwap

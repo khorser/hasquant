@@ -21,7 +21,7 @@ import QuantLib.Internal.Type
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 
-{#pointer *QlIndex as Index foreign -> CIndex nocode#}
+{#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 
 instance Show Index where show = qlIndexName
 
