@@ -1522,7 +1522,7 @@ test_FixedBond = do
     False
     (Just (fromGregorian 2012 12 21))
     (Just (fromGregorian 2013 12 21))
-  _ <- Bond.fixedRateBondFromSchedule'
+  _ <- Bond.fixedRateBond
           3
           100
           s

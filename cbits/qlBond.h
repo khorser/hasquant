@@ -16,13 +16,6 @@ extern "C" {
     unsigned cLen, double *coupons, DayCounter *counter,
     int payConv, double redemption, int issue, Calendar *payCal,
     char **e);
-  QlFixedRateBond *qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
-    int start, int maturity, int, int, unsigned cLen, double *coupons,
-    DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
-    int issue, int stub, int rule, int eom, Calendar *payCal, char **e);
-  QlFixedRateBond *qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
-    unsigned cLen, InterestRate **coupons, int paymentConv, double redemption,
-    int issue, Calendar *cal, char **e);
   QlBond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
     int maturity, int payConv, double redemption, int issue, char **e);
   QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,

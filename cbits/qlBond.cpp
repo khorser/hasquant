@@ -72,56 +72,6 @@ QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *sche
   }
 }
 
-QlFixedRateBond *qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
-  int start, int maturity, int l, int u, unsigned cLen, double *coupons,
-  DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
-  int issue, int stub, int rule, int eom, Calendar *payCal, char **e) {
-  try {
-    std::vector<Rate> cpns(coupons, coupons+cLen);
-    return ret(new QlFixedRateBond(alloc(new FixedRateBond(
-		  settlDays,
-		  *arg(cpnCal),
-		  face,
-		  Date(start),
-		  Date(maturity),
-		  Period(l, (TimeUnit)u),
-		  cpns,
-		  *arg(dayCounter),
-		  (BusinessDayConvention) accrConv,
-		  (BusinessDayConvention) paymentConv,
-		  redemption,
-		  qlNullableDate(issue),
-		  qlNullableDate(stub),
-		  (DateGeneration::Rule) rule,
-		  eom,
-		  *arg(payCal)))));
-  } catch (std::exception& er) {
-    return handleException<QlFixedRateBond *>(e, er);
-  }
-}
-
-QlFixedRateBond *qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
-  unsigned cLen, InterestRate **coupons, int paymentConv, double redemption, int issue,
-  Calendar *cal, char **e) {
-  try {
-    std::vector<InterestRate> cpns;
-    for (unsigned i = 0; i < cLen; ++i)
-      cpns.push_back(*coupons[i]);
-
-    return ret(new QlFixedRateBond(alloc(new FixedRateBond(
-		  settlDays,
-		  face,
-		  *arg(sched),
-		  cpns,
-		  (BusinessDayConvention) paymentConv,
-		  redemption,
-		  qlNullableDate(issue),
-		  *arg(cal)))));
-  } catch (std::exception& er) {
-    return handleException<QlFixedRateBond *>(e, er);
-  }
-}
-
 QlInstrument *qlBondAsInstrument(QlBond *b) {
   return ret(new QlInstrument(*arg(b)));
 }

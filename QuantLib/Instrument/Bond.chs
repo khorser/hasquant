@@ -12,9 +12,7 @@ module QuantLib.Instrument.Bond
 
   , bond
   , bond'
-  , fixedRateBondFromSchedule
   , fixedRateBond
-  , fixedRateBondFromSchedule'
   , zeroCouponBond
   , floatingRateBond
   , floatingRateBond'
@@ -137,14 +135,8 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 -- |Returns the maturity date of the bond
 {#fun pure qlBondMaturityDate as maturityDate{withBond*`Bond'}->`Maybe Day' toMaybeDay#}
 
--- |simple annual compounding coupon rates
-{#fun qlFixedRateBond2 as fixedRateBondFromSchedule{fromIntegral`Word',`Double', withSchedule*`Schedule', withInterestRateArray*`[InterestRate]'&,`BusinessDayConvention',`Double', withMaybeDay*`Maybe Day', withCalendar*`Calendar', preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
-
--- |simple annual compounding coupon rates with internal schedule calculation
-{#fun qlFixedRateBond1 as fixedRateBond{fromIntegral`Word', withCalendar*`Calendar',`Double', withDay*`Day', withDay*`Day', fromEnumQuantity`(Word, TimeUnit)'&, withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention',`BusinessDayConvention',`Double', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`DateGenerationRule',`Bool', withCalendar*`Calendar', preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
-
 -- |generic compounding and frequency InterestRate coupons
-{#fun qlFixedRateBond as fixedRateBondFromSchedule'{fromIntegral`Word',`Double', withSchedule*`Schedule', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention',`Double', withMaybeDay*`Maybe Day', withCalendar*`Calendar', preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
+{#fun qlFixedRateBond as fixedRateBond{fromIntegral`Word',`Double', withSchedule*`Schedule', withDoubleArray*`[Double]'&, withDayCounter*`DayCounter',`BusinessDayConvention',`Double', withMaybeDay*`Maybe Day', withCalendar*`Calendar', preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
 
 -- |zero-coupon bond
 {#fun qlZeroCouponBond as zeroCouponBond{fromIntegral`Word', withCalendar*`Calendar',`Double', withDay*`Day',`BusinessDayConvention',`Double', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}

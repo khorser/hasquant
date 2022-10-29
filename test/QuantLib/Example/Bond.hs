@@ -117,7 +117,7 @@ run = do
                                      False
                                      Nothing
                                      Nothing
-  fixedBond <- fixedRateBondFromSchedule' settlementDays
+  fixedBond <- fixedRateBond settlementDays
                                   faceAmount
                                   fixedSchedule
                                   [0.045]

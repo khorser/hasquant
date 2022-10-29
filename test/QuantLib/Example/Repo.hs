@@ -45,7 +45,7 @@ run = do
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
-  fixedBond <- fixedRateBondFromSchedule' bondSettlementDays faceAmount bondSchedule [bondCoupon]
+  fixedBond <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
     bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate)
     bondCalendar
   b <- asBond fixedBond
