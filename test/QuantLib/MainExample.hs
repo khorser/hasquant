@@ -159,11 +159,8 @@ main = do
   where
     printFraIterationResult :: [FRA.IterationResult] -> IO ()
     printFraIterationResult rs = forM_ rs $ \r ->
-      printf "Fwd rate: %.5f Spt val: %.5f Fwd val: %.5f Impl yld: %.5f Mkt zrate: %.5f NPV: %.5f\n"
+      printf "Fwd rate: %.5f Mkt zrate: %.5f NPV: %.5f\n"
         (FRA.fwdRateR r)
-        (FRA.spotR r)
-        (FRA.fwdValueR r)
-        (FRA.implYieldR r)
         (FRA.zRateR r)
         (FRA.npvR r)
 

@@ -15,7 +15,6 @@ module QuantLib.Instrument.Bond
   , fixedRateBond
   , zeroCouponBond
   , floatingRateBond
-  , floatingRateBond'
 
   , maturityDate
   , yield
@@ -245,8 +244,6 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 {#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint'{withBond*`Bond', withInterestRate*`InterestRate', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlBondFunctionsZSpread as zSpread{withBond*`Bond',`Double',withYieldTermStructure*`YieldTermStructure', withDayCounter*`DayCounter',`Compounding',`Frequency', withDay*`Day',`Double', fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#fun qlFloatingRateBond1 as floatingRateBond'{fromIntegral`Word',`Double', withDay*`Day', withDay*`Day',`Frequency', withCalendar*`Calendar',withIborIndex*`GenIborIndex a', withDayCounter*`DayCounter',`BusinessDayConvention',`BusinessDayConvention', fromIntegral`Word', withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&,`Bool',`Double', withMaybeDay*`Maybe Day', withMaybeDay*`Maybe Day',`DateGenerationRule',`Bool', preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |theoretical clean price for the current evaluation date and term structure
 {#fun qlBondCleanPrice as currentCleanPrice{withBond*`Bond', preErrorCheck-`String'errorCheck*-}->`Double'#}
