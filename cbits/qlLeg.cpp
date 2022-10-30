@@ -8,10 +8,12 @@
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/dividend.hpp>
+#include <ql/cashflows/couponpricer.hpp>
+#include <ql/cashflows/conundrumpricer.hpp>
 
 #include "qlaux.h"
 #include "qlLeg.h"
-#include "qlUtilities.h"
+#include "qlSettings.h"
 
 using namespace QuantLib;
 
@@ -467,6 +469,35 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
     return alloc(cl);
   } catch (std::exception& er) {
     return handleException(e, er, cl);
+  }
+}
+
+QlFloatingRateCouponPricer *qlBlackIborCouponPricer(
+    QlOptionletVolatilityStructure *vol, char **e) {
+  try {
+    return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(
+	    Handle<OptionletVolatilityStructure>(*arg(vol)))));
+  } catch (std::exception& er) {
+    return handleException<QlFloatingRateCouponPricer *>(e, er);
+  }
+}
+
+void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p) {
+  del(p);
+}
+
+QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
+  try {
+    return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion))))));
+  } catch (std::exception& er) {
+    return handleException<QlFloatingRateCouponPricer*>(e, er);
+  }
+}
+QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, char **e) {
+  try {
+    return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion)), lowerLimit, upperLimit, precision))));
+  } catch (std::exception& er) {
+    return handleException<QlFloatingRateCouponPricer*>(e, er);
   }
 }
 

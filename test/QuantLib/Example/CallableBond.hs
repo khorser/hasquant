@@ -19,7 +19,6 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Utility
 
 data Result = Result
   { pricesR :: [Double]

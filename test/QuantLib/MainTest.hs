@@ -16,7 +16,6 @@ import Data.List(delete)
 import Control.Arrow((&&&))
 
 import QuantLib.Time.Date as Date
-import QuantLib.Utility
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar as Calendar
@@ -63,8 +62,8 @@ instance Arbitrary InvalidDay where
 -- literal translation of close from ql/math/comparison.hpp
 areClose :: Double -> Double -> Bool
 areClose x1 x2 = x1 == x2
-            || x1 * x2 == 0 && diff < epsilon * epsilon
-            || diff <= epsilon * abs x1 && diff <= epsilon * abs x2
+            || x1 * x2 == 0 && diff < Settings.epsilon * Settings.epsilon
+            || diff <= Settings.epsilon * abs x1 && diff <= Settings.epsilon * abs x2
             where diff = abs(x1 - x2)
 
 closePrec :: Double -> Double -> Double -> Bool
@@ -76,7 +75,7 @@ listClose f x1 e x2 = (length x1 == length x2) && all (\(x, y) -> abs(x - f y) <
 main :: IO ()
 main = do
   putStrLn ">>>"
-  putStrLn $ "QuantLib version " ++ version ++ ", Boost " ++ boostVersion
+  putStrLn $ "QuantLib version " ++ Settings.version ++ ", Boost " ++ Settings.boostVersion
   tod <- today
   w <- weekday tod
   putStrLn $ "Today is " ++ show w

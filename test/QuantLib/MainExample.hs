@@ -4,7 +4,6 @@ where
 import Control.Monad(forM_, void)
 import QuantLib.Settings
 import QuantLib.Time.Date
-import QuantLib.Utility
 import Text.Printf
 import Data.List
 

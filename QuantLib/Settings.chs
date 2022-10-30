@@ -12,9 +12,15 @@ module QuantLib.Settings
 
   , keepingSettings
   , keepingSettings'
+  , version
+  , boostVersion
+  , epsilon
   )
 where
 
+import Foreign.C.Types
+import Foreign.C.String(CString, peekCString)
+import System.IO.Unsafe(unsafePerformIO)
 import System.Mem(performGC)
 
 import Control.Exception(bracket)
@@ -59,5 +65,20 @@ keepingSettings = bracket qlSavedSettings qlFreeSavedSettings . const
 -- garbage collection is run to avoid problems with market data objects watching evaluation date
 keepingSettings' :: IO b -> IO b
 keepingSettings' = bracket qlSavedSettings (\s -> performGC >> qlFreeSavedSettings s) . const
+
+foreign import ccall safe "ql.h qlVersion" qlVersion :: IO CString
+foreign import ccall safe "ql.h qlBoostVersion" qlBoostVersion :: IO CString
+foreign import ccall safe "ql.h qlEpsilon" qlEpsilon :: CDouble
+
+{-# NOINLINE version #-}
+version :: String
+version = unsafePerformIO $ qlVersion >>= peekCString
+
+{-# NOINLINE boostVersion #-}
+boostVersion :: String
+boostVersion = unsafePerformIO $ qlBoostVersion >>= peekCString
+
+epsilon :: Double
+epsilon = realToFrac qlEpsilon
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

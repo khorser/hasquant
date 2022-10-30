@@ -44,6 +44,7 @@
 #include <ql/pricingengines/vanilla/jumpdiffusionengine.hpp>
 #include <ql/pricingengines/vanilla/juquadraticengine.hpp>
 #include <ql/instruments/dividendschedule.hpp>
+#include <ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
@@ -909,6 +910,66 @@ QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, uns
     return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine(*arg(model), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
+  }
+}
+
+void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) { del(o); }
+
+FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e) {
+  try {
+    return alloc(new FdmSchemeDesc((FdmSchemeDesc::FdmSchemeType)type, theta, mu));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+
+FdmSchemeDesc* qlFdmSchemeDescCraigSneyd(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::CraigSneyd()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+FdmSchemeDesc* qlFdmSchemeDescDouglas(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::Douglas()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+FdmSchemeDesc* qlFdmSchemeDescExplicitEuler(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::ExplicitEuler()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+FdmSchemeDesc* qlFdmSchemeDescHundsdorfer(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::Hundsdorfer()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::ImplicitEuler()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedCraigSneyd()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
+  }
+}
+FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {
+  try {
+    return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));
+  } catch (std::exception& er) {
+    return handleException<FdmSchemeDesc*>(e, er);
   }
 }
 

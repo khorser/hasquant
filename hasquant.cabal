@@ -27,7 +27,6 @@ flag trackAllocations
 library
 -- the order is important as it defines the order of preprocessing modules with c2hs
   exposed-modules:  QuantLib.Type
-                    , QuantLib.Utility
                     , QuantLib.Math
                     , QuantLib.Currency
                     , QuantLib.Time.Date
@@ -74,23 +73,18 @@ library
   default-language: Haskell2010
   c-sources:        cbits/qlBond.cpp
                     , cbits/qlCalendar.cpp
-                    , cbits/qlCouponPricer.cpp
                     , cbits/qlCredit.cpp
                     , cbits/qlCurrency.cpp
                     , cbits/qlDate.cpp
-                    , cbits/qlDayCounter.cpp
                     , cbits/qlDefaultTS.cpp
                     , cbits/qlForward.cpp
-                    , cbits/qlIborIndex.cpp
                     , cbits/qlIndex.cpp
                     , cbits/qlInstrument.cpp
                     , cbits/qlInterestRate.cpp
                     , cbits/qlLeg.cpp
                     , cbits/qlMath.cpp
-                    , cbits/qlMethod.cpp
                     , cbits/qlModel.cpp
                     , cbits/qlOption.cpp
-                    , cbits/qlPeriod.cpp
                     , cbits/qlPricingEngineAux.cpp
                     , cbits/qlPricingEngine.cpp
                     , cbits/qlProcess.cpp
@@ -99,7 +93,6 @@ library
                     , cbits/qlSettings.cpp
                     , cbits/qlSwap.cpp
                     , cbits/qlTSAux.cpp
-                    , cbits/qlUtilities.cpp
                     , cbits/qlVolatilityTS.cpp
                     , cbits/qlYieldTS.cpp
   if flag(trackAllocations)

@@ -11,6 +11,17 @@ extern "C" {
   void qlSettingsSetIncludeReferenceDateEvents(int x0);
   void *qlSavedSettings();
   void qlFreeSavedSettings(void *settings);
+
+  const char *qlVersion();
+  const char *qlBoostVersion();
+  void qlFreeString(char *p);
+  void qlFreeInts(int *p);
+  void qlFreeUInts(unsigned *p);
+  void qlFreeDoubles(double *p);
+  void qlFreePointerArray(void **p);
+  int qlNullInteger();
+  double qlNullReal();
+  double qlEpsilon();
 #ifdef __cplusplus
 }
 #endif

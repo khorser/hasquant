@@ -121,7 +121,6 @@ extern "C" {
   QlPricingEngine* qlMCPerformanceEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
   QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e);
-
   QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
   QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlQuote* creditSpread, unsigned dividendsLen, QlDividend** dividends, char **e);
   QlPricingEngine* qlBlackCallableFixedRateBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e);
@@ -132,6 +131,16 @@ extern "C" {
   QlPricingEngine* qlTreeCallableFixedRateBondEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* qlTreeCallableZeroCouponBondEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
+
+  void qlFreeFdmSchemeDesc(FdmSchemeDesc *o);
+  FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e);
+  FdmSchemeDesc* qlFdmSchemeDescCraigSneyd(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescDouglas(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescExplicitEuler(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescHundsdorfer(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e);
 #ifdef __cplusplus
 }
 #endif
