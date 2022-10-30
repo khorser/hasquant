@@ -71,27 +71,20 @@ library
     cpp-options:      -P
 
   default-language: Haskell2010
-  c-sources:        cbits/qlBond.cpp
-                    , cbits/qlCalendar.cpp
-                    , cbits/qlCredit.cpp
-                    , cbits/qlCurrency.cpp
+  c-sources:        cbits/qlCurrency.cpp
                     , cbits/qlDate.cpp
                     , cbits/qlDefaultTS.cpp
-                    , cbits/qlForward.cpp
                     , cbits/qlIndex.cpp
                     , cbits/qlInstrument.cpp
                     , cbits/qlInterestRate.cpp
                     , cbits/qlLeg.cpp
                     , cbits/qlMath.cpp
                     , cbits/qlModel.cpp
-                    , cbits/qlOption.cpp
                     , cbits/qlPricingEngineAux.cpp
                     , cbits/qlPricingEngine.cpp
                     , cbits/qlProcess.cpp
                     , cbits/qlQuote.cpp
-                    , cbits/qlSchedule.cpp
                     , cbits/qlSettings.cpp
-                    , cbits/qlSwap.cpp
                     , cbits/qlTSAux.cpp
                     , cbits/qlVolatilityTS.cpp
                     , cbits/qlYieldTS.cpp
