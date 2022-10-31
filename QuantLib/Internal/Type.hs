@@ -933,26 +933,19 @@ withBlackScholesCalculator = withObject . getBlackCalculator
 
 -- MULTILEVEL HIERARCHIES
 data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
--- FIXME free cast Ptr after the call
--- and then TODO optimization: don't create a temp ForeignPtr, rather call the finalizer directly
+
+withCastForeignPtr :: (t -> (Ptr a -> IO r) -> IO r) -> Upcast a b -> t -> (Ptr b -> IO r) -> IO r
+withCastForeignPtr w (Upcast u _) p f = w p $ u >=> f
+-- FIXME for some reason this definition, being more rigorous, leads to double free of the base object, Investigate!
+--withCastForeignPtr w (Upcast u fi) p f = w p $ u >=> newForeignPtr fi >=> (`withForeignPtr` f)
+
 withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
---withGenForeignPtr (Upcast u fi) (GenForeignPtr p w) f = w p (\pp -> do
---  cp <- u pp
---  fp <- newForeignPtr fi cp
---  withForeignPtr fp f)
-withGenForeignPtr (Upcast u _) (GenForeignPtr p w) f = w p (u >=> f)
+withGenForeignPtr u (GenForeignPtr p w) = withCastForeignPtr w u p
 
 newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
 newGenForeignPtr (Meta f) u x = do
   p <- newForeignPtr f x
-  return $ GenForeignPtr p (withCastForeignPtr u)
-  where 
-    withCastForeignPtr :: Upcast a b -> ForeignPtr a -> (Ptr b -> IO r) -> IO r
-    withCastForeignPtr (Upcast fu _) p ff = withForeignPtr p (fu >=> ff)
---    withGenForeignPtrForeign (Upcast fu fi) p ff = withForeignPtr p (\pp -> do
---      cp <- fu pp
---      fp <- newForeignPtr fi cp
---      withForeignPtr fp ff)
+  return $ GenForeignPtr p (withCastForeignPtr withForeignPtr u)
 
 newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
 newBaseForeignPtr (Meta f) x = do
