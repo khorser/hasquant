@@ -21,11 +21,7 @@ cobj/qlTSAux.o: cbits/qlTSAux.cpp cbits/qlTSAux.h | cobj
 
 cobj/qlPricingEngine.o: cbits/qlPricingEngine.cpp cbits/qlaux.h cbits/qlPricingEngine.h cbits/qlPricingEngineAux.h | cobj
 
-cobj/qlDefaultTS.o: cbits/qlDefaultTS.cpp cbits/qlaux.h cbits/qlDefaultTS.h cbits/qlTSAux.h | cobj
-
-cobj/qlVolatilityTS.o: cbits/qlVolatilityTS.cpp cbits/qlaux.h cbits/qlVolatilityTS.h cbits/qlTSAux.h | cobj
-
-cobj/qlYieldTS.o: cbits/qlYieldTS.cpp cbits/qlaux.h cbits/qlYieldTS.h cbits/qlTSAux.h | cobj
+cobj/qlTermStructure.o: cbits/qlTermStructure.cpp cbits/qlaux.h cbits/qlTermStructure.h cbits/qlTermStructureAux.h | cobj
 
 cobj/%.o: cbits/%.cpp cbits/qlaux.h cbits/%.h | cobj
 	g++ -c $(CFLAGS) $(EXTRA) -o $@ $<

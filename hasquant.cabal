@@ -71,23 +71,17 @@ library
     cpp-options:      -P
 
   default-language: Haskell2010
-  c-sources:        cbits/qlCurrency.cpp
-                    , cbits/qlDate.cpp
-                    , cbits/qlDefaultTS.cpp
+  c-sources:        cbits/qlTime.cpp
                     , cbits/qlIndex.cpp
                     , cbits/qlInstrument.cpp
-                    , cbits/qlInterestRate.cpp
                     , cbits/qlLeg.cpp
-                    , cbits/qlMath.cpp
+                    , cbits/qlMisc.cpp
                     , cbits/qlModel.cpp
                     , cbits/qlPricingEngineAux.cpp
                     , cbits/qlPricingEngine.cpp
                     , cbits/qlProcess.cpp
-                    , cbits/qlQuote.cpp
-                    , cbits/qlSettings.cpp
-                    , cbits/qlTSAux.cpp
-                    , cbits/qlVolatilityTS.cpp
-                    , cbits/qlYieldTS.cpp
+                    , cbits/qlTermStructure.cpp
+                    , cbits/qlTermStructureAux.cpp
   if flag(trackAllocations)
     cc-options:        -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
   else

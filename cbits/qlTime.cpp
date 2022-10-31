@@ -9,7 +9,7 @@
 #include <ql/time/daycounters/all.hpp>
 
 #include "qlaux.h"
-#include "qlDate.h"
+#include "qlTime.h"
 
 using namespace QuantLib;
 

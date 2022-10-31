@@ -1,4 +1,4 @@
-#include "qlTSAux.h"
+#include "qlTermStructureAux.h"
 namespace hasquant {
 #include "qlEnumObjects.h"
 }

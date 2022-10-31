@@ -13,7 +13,7 @@
 
 #include "qlaux.h"
 #include "qlLeg.h"
-#include "qlSettings.h"
+#include "qlMisc.h"
 
 using namespace QuantLib;
 
