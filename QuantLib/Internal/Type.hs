@@ -948,9 +948,7 @@ newGenForeignPtr (Meta f) u x = do
   return $ GenForeignPtr p (withCastForeignPtr withForeignPtr u)
 
 newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newBaseForeignPtr (Meta f) x = do
-  p <- newForeignPtr f x
-  return $ GenForeignPtr p withForeignPtr
+newBaseForeignPtr (Meta f) x = newForeignPtr f x >>= return . (`GenForeignPtr` withForeignPtr)
 
 data CIndex'
 data CInterestRateIndex'
@@ -1021,11 +1019,9 @@ swapIndexUpcast = Upcast qlSwapIndexAsInterestRateIndex qlFreeInterestRateIndex
 overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex' CSwapIndex'
 overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
 asIndex :: GenIndex a -> IO Index
-asIndex (GenIndex (GenForeignPtr x w)) = w x (\p -> do
-  fp <- newBaseForeignPtr indexMeta p
-  return $ GenIndex fp)
+asIndex (GenIndex (GenForeignPtr x w)) = w x (newBaseForeignPtr indexMeta >=> (return . GenIndex))
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x (\p -> do {fp <- newGenForeignPtr interestRateIndexMeta interestRateIndexUpcast p; return $ GenIndex fp})
+asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x (newGenForeignPtr interestRateIndexMeta interestRateIndexUpcast >=> (return . GenIndex))
 asIborIndex :: GenIborIndex a -> IO IborIndex
 asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
   fp <- newBaseForeignPtr iborIndexMeta p

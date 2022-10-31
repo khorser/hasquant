@@ -9,7 +9,6 @@ module QuantLib.Index
   )
   where
 
-import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.Internal.Type
 
