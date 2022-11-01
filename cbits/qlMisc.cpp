@@ -133,7 +133,12 @@ int qlOptBool(boost::optional<bool> b) {
 char *tracedup(const char *p) {
   TP2("Duplicating string", (void *)p);
   char *dup = strdup(p);
-  TP2("Duplicated string to", (void *)dup);
+#ifdef QLTRACK_ALLOCATIONS
+  std::ostringstream os;
+  os << (void *)dup;
+  const void *ptr = os.str().c_str();
+  (void)traceval("Duplicate string", ptr);
+#endif
   return dup;
 }
 
