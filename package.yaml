@@ -9,7 +9,7 @@ description: |
   Bindings to the QuantLib library.
 github: khorser/hasquant
 tested-with:
-  - GHC == 8.10.6 # lts-18.8, older GHC 8.x actually worked as well
+  - GHC == 8.10.6 # lts-18.8
   - GHC == 9.0.2 # lts-19.30
   # also tested with lts-18.5 (ghc-8.10.4), lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3),
   # for ghc < 8.10 you need to add -P to cpp-options because some c2hs versions didn't like line markers like "# 0" in generated .i files

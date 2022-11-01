@@ -8,6 +8,9 @@
 #include <ql/timegrid.hpp>
 #include <ql/math/rounding.hpp>
 #include <ql/quotes/all.hpp>
+#ifdef QLTRACK_ALLOCATIONS
+# include <sstream>
+#endif
 
 #include "qlaux.h"
 #include "qlMisc.h"
@@ -67,9 +70,16 @@ const char *qlBoostVersion() {
 }
 
 void qlFreeString(char *p) {
-  TP2("Freeing string", (void *)p);
+#ifdef QLTRACK_ALLOCATIONS
+  std::ostringstream os;
+  os << (void *)p;
+  const void *ptr = os.str().c_str();
+  (void)traceval("Freeing string", ptr);
+#endif
   free(p);
-  TP2("Freed string", (void *)p);
+#ifdef QLTRACK_ALLOCATIONS
+  (void)traceval("Freed string", ptr);
+#endif
 }
 
 int *qlAllocateInts(size_t size) {

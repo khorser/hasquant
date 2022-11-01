@@ -79,7 +79,7 @@ import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
+{#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.CashFlow#}(DurationType)
 {#import QuantLib.InterestRate#}(Compounding)
 import QuantLib.Internal.Enum

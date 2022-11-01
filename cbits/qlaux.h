@@ -262,7 +262,7 @@ T handleException(char **msg, std::exception &e) {
 #ifdef QLTRACK_ALLOCATIONS
 template <class T>
 T traceval(const char *text, T val) {
-  std::cout << std::endl << text << objClassName<T>::name() << ": " << val << std::endl;
+  std::cout << std::endl << text << " " << objClassName<T>::name() << ": " << val << std::endl;
   return val;
 }
 #endif
