@@ -1,145 +1,150 @@
-cabal-version:      >=1.10
-name:               hasquant
-version:            0.2.0.0
-synopsis:           Bindings to QuantLib
--- description:
--- bug-reports:
--- license:
--- license-file:        LICENSE
-author:             Sergey Khorev
-maintainer:         sergey.khorev@gmail.com
--- copyright:
-category:           Finance
-build-type:         Simple
--- extra-source-files:  cbits
+cabal-version: 1.12
 
--- stackage lts-19.30 (ghc-9.0.2)
--- also tested with lts-18.8 (ghc-8.10.6), lts-18.5 (ghc-8.10.4), lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3),
--- lts-12.14 (ghc-8.4.3), lts-11.22 (ghc-8.2.2), lts-7.24 (ghc-8.0.1)
--- used to work with lts-6.35 (ghc-7.10.3) until I started using TemplateHaskell (there is no BangType in GHC-7.x and I can't be bothered with maintaining the compatibility)
--- tested-with:        GHC==8.10
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           hasquant
+version:        0.2.5.0
+synopsis:       Bindings to QuantLib
+description:    Bindings to the QuantLib library.
+category:       Finance
+homepage:       https://github.com/khorser/hasquant#readme
+bug-reports:    https://github.com/khorser/hasquant/issues
+maintainer:     Sergey Khorev <sergey.khorev@gmail.com>
+copyright:      (c) 2012-2022 Sergey Khorev
+license:        MIT
+build-type:     Simple
+tested-with:
+    GHC == 8.10.6
+  , GHC == 9.0.2
+
+source-repository head
+  type: git
+  location: https://github.com/khorser/hasquant
 
 flag buildExample
-  Default: False
+  manual: True
+  default: False
 
 flag trackAllocations
-  Default: False
+  manual: True
+  default: False
 
 library
--- the order is important as it defines the order of preprocessing modules with c2hs
-  exposed-modules:  QuantLib.Type
-                    , QuantLib.Math
-                    , QuantLib.Currency
-                    , QuantLib.Time.Date
-                    , QuantLib.Time.Calendar
-                    , QuantLib.Time.Schedule
-                    , QuantLib.Settings
-                    , QuantLib.InterestRate
-                    , QuantLib.Index
-                    , QuantLib.Instrument
-                    , QuantLib.Quote
-                    , QuantLib.TermStructure
-                    , QuantLib.TermStructure.Yield
-                    , QuantLib.TermStructure.Credit
-                    , QuantLib.TermStructure.Volatility
-                    , QuantLib.Index.InterestRate
-                    , QuantLib.CashFlow
-                    , QuantLib.Instrument.Bond
-                    , QuantLib.Instrument.CapFloor
-                    , QuantLib.Instrument.Forward
-                    , QuantLib.Process
-                    , QuantLib.Instrument.Option
-                    , QuantLib.Model
-                    , QuantLib.Instrument.Credit
-                    , QuantLib.Instrument.Swap
-                    , QuantLib.PricingEngine
-
-  other-modules:    QuantLib.Internal
-                    , QuantLib.Internal.Enum
-                    , QuantLib.Internal.Syntax
-                    , QuantLib.Internal.CalendarEnum
-                    , QuantLib.Internal.Type
-  -- other-extensions:
-  build-depends:    base >=4.9 && <5.0
-                    , time
-                    , template-haskell
-                    , split
-  -- hs-source-dirs:
-  build-tools:      c2hs
-
-  if impl(ghc < 8.10)
-    -- some versions of c2hs didn't like line markers like "# 0" in generated .i files. Guarding with impl because current ghcide seems to be confused by the flag while everything else works just fine
-    cpp-options:      -P
-
+  exposed-modules:
+      QuantLib.Type
+      QuantLib.Math
+      QuantLib.Currency
+      QuantLib.Time.Date
+      QuantLib.Time.Calendar
+      QuantLib.Time.Schedule
+      QuantLib.Settings
+      QuantLib.InterestRate
+      QuantLib.Index
+      QuantLib.Instrument
+      QuantLib.Quote
+      QuantLib.TermStructure
+      QuantLib.TermStructure.Yield
+      QuantLib.TermStructure.Credit
+      QuantLib.TermStructure.Volatility
+      QuantLib.Index.InterestRate
+      QuantLib.CashFlow
+      QuantLib.Instrument.Bond
+      QuantLib.Instrument.CapFloor
+      QuantLib.Instrument.Forward
+      QuantLib.Process
+      QuantLib.Instrument.Option
+      QuantLib.Model
+      QuantLib.Instrument.Credit
+      QuantLib.Instrument.Swap
+      QuantLib.PricingEngine
+  other-modules:
+      QuantLib.Internal
+      QuantLib.Internal.Enum
+      QuantLib.Internal.Syntax
+      QuantLib.Internal.CalendarEnum
+      QuantLib.Internal.Type
+  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  include-dirs:
+      cbits
+  c-sources:
+      cbits/qlTime.cpp
+      cbits/qlIndex.cpp
+      cbits/qlInstrument.cpp
+      cbits/qlLeg.cpp
+      cbits/qlMisc.cpp
+      cbits/qlModel.cpp
+      cbits/qlPricingEngineAux.cpp
+      cbits/qlPricingEngine.cpp
+      cbits/qlProcess.cpp
+      cbits/qlTermStructure.cpp
+      cbits/qlTermStructureAux.cpp
+  extra-libraries:
+      QuantLib
+      stdc++
+  build-tools:
+      c2hs
+  build-depends:
+      base >=4.9 && <5.0
+    , split
+    , template-haskell
+    , time
   default-language: Haskell2010
-  c-sources:        cbits/qlTime.cpp
-                    , cbits/qlIndex.cpp
-                    , cbits/qlInstrument.cpp
-                    , cbits/qlLeg.cpp
-                    , cbits/qlMisc.cpp
-                    , cbits/qlModel.cpp
-                    , cbits/qlPricingEngineAux.cpp
-                    , cbits/qlPricingEngine.cpp
-                    , cbits/qlProcess.cpp
-                    , cbits/qlTermStructure.cpp
-                    , cbits/qlTermStructureAux.cpp
   if flag(trackAllocations)
-    cc-options:        -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
+    cc-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
   else
-    cc-options:        -Wall -Wextra -pedantic
-
-  include-dirs:     cbits
-
-  ghc-options:      -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
-
-  extra-libraries:  QuantLib stdc++
+    cc-options: -Wall -Wextra -pedantic
 
 executable hasquant_example
+  main-is: QuantLib/MainExample.hs
+  other-modules:
+      QuantLib.Example.FRA
+      QuantLib.Example.Bond
+      QuantLib.Example.Repo
+      QuantLib.Example.Swap
+      QuantLib.Example.FittedBondCurve
+      QuantLib.Example.CDS
+      QuantLib.Example.BermudanSwaption
+      QuantLib.Example.Replication
+      QuantLib.Example.CallableBond
+      QuantLib.Example.ConvertibleBond
+      QuantLib.Example.EquityOption
+  hs-source-dirs:
+      test
+  ghc-options: -Wall
+  build-depends:
+      base >=4.9 && <5.0
+    , hasquant
+    , time
+  default-language: Haskell2010
   if flag(buildExample)
     buildable: True
   else
     buildable: False
 
-  main-is:          QuantLib/MainExample.hs
-  other-modules:    QuantLib.Example.FRA
-                    , QuantLib.Example.Bond
-                    , QuantLib.Example.Repo
-                    , QuantLib.Example.Swap
-                    , QuantLib.Example.FittedBondCurve
-                    , QuantLib.Example.CDS
-                    , QuantLib.Example.BermudanSwaption
-                    , QuantLib.Example.Replication
-                    , QuantLib.Example.CallableBond
-                    , QuantLib.Example.ConvertibleBond
-                    , QuantLib.Example.EquityOption
-  ghc-options:      -Wall
-  build-depends:    base >= 4.9 && < 5.0
-                    , time
-                    , hasquant
-  default-language: Haskell2010
-  hs-source-dirs:   test
-
 test-suite hasquant_test
-  type:             exitcode-stdio-1.0
-  main-is:          QuantLib/MainTest.hs
-  other-modules:    QuantLib.Example.FRA
-                    , QuantLib.Example.Bond
-                    , QuantLib.Example.Repo
-                    , QuantLib.Example.Swap
-                    , QuantLib.Example.CDS
-                    , QuantLib.Example.BermudanSwaption
-                    , QuantLib.Example.Replication
-                    , QuantLib.Example.CallableBond
-                    , QuantLib.Example.ConvertibleBond
-                    , QuantLib.Example.EquityOption
-  ghc-options:      -Wall
-  build-depends:    base >= 4.9 && < 5.0
-                    , time
-                    , hspec
-                    , HUnit
-                    , QuickCheck
-                    , hasquant
+  type: exitcode-stdio-1.0
+  main-is: QuantLib/MainTest.hs
+  other-modules:
+      QuantLib.Example.FRA
+      QuantLib.Example.Bond
+      QuantLib.Example.Repo
+      QuantLib.Example.Swap
+      QuantLib.Example.CDS
+      QuantLib.Example.BermudanSwaption
+      QuantLib.Example.Replication
+      QuantLib.Example.CallableBond
+      QuantLib.Example.ConvertibleBond
+      QuantLib.Example.EquityOption
+  hs-source-dirs:
+      test
+  ghc-options: -Wall
+  build-depends:
+      HUnit
+    , QuickCheck
+    , base >=4.9 && <5.0
+    , hasquant
+    , hspec
+    , time
   default-language: Haskell2010
-  hs-source-dirs:   test
-
--- vim: set et ts=8 sts=2 sw=2:
