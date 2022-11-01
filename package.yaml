@@ -30,8 +30,7 @@ library:
     - time
     - template-haskell
     - split
-  build-tools:
-    - c2hs
+  build-tools: c2hs
   exposed-modules:
     - QuantLib.Type
     - QuantLib.Math
@@ -68,7 +67,7 @@ library:
   extra-libraries:
     - QuantLib
     - stdc++
-  c-sources:
+  cxx-sources:
     - cbits/qlTime.cpp
     - cbits/qlIndex.cpp
     - cbits/qlInstrument.cpp
@@ -84,9 +83,9 @@ library:
   when:
     - condition: flag(trackAllocations)
       then:
-        cc-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
+        cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
       else:
-        cc-options: -Wall -Wextra -pedantic
+        cxx-options: -Wall -Wextra -pedantic
 tests:
   hasquant_test:
     dependencies:
