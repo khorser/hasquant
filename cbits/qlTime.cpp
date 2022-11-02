@@ -67,7 +67,7 @@ char* qlIMMCode(int immDate, char **e) {
 }
 int qlIMMDate(char* immCode, int referenceDate, char **e) {
   try {
-    return (IMM::date(std::string(arg(immCode)), Date(referenceDate))).serialNumber();
+    return (IMM::date(std::string(immCode), Date(referenceDate))).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -276,9 +276,7 @@ Calendar *qlCalendar(int country, int market, char **e) {
   }
 }
 
-void qlFreeCalendar(Calendar *calendar) {
-  del(calendar);
-}
+void qlFreeCalendar(Calendar *calendar) { del(calendar); }
 
 const char *qlCalendarName(Calendar *calendar) {
   std::string name = arg(calendar)->name();
@@ -372,7 +370,7 @@ void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e) {
 Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
   BespokeCalendar *cal = 0;
   try {
-    cal = new BespokeCalendar(std::string(arg(name)));
+    cal = new BespokeCalendar(std::string(name));
     for (unsigned i = 0; i < len; i++)
       cal->addWeekend((Weekday)weekends[i]);
     return ret(cal);

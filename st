@@ -1,1 +1,1 @@
-stack build --test --no-haddock --test-arguments --skip=LONG --cabal-verbose $*
+stack build --test --no-haddock --test-arguments --skip=LONG $*

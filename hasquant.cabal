@@ -18,6 +18,23 @@ build-type:     Simple
 tested-with:
     GHC == 8.10.6
   , GHC == 9.0.2
+extra-source-files:
+    cbits/ql.h
+    cbits/qlaux.h
+    cbits/qlEnumC2HS.h
+    cbits/qlEnumObjects.h
+    cbits/qlIndex.h
+    cbits/qlInstrument.h
+    cbits/qlLeg.h
+    cbits/qlMisc.h
+    cbits/qlModel.h
+    cbits/qlPricingEngine.h
+    cbits/qlPricingEngineAux.h
+    cbits/qlProcess.h
+    cbits/qlTermStructure.h
+    cbits/qlTermStructureAux.h
+    cbits/qlTime.h
+    cbits/qlTypesC2HS.h
 
 source-repository head
   type: git
@@ -69,22 +86,20 @@ library
   include-dirs:
       cbits
   cxx-sources:
-      cbits/qlTime.cpp
       cbits/qlIndex.cpp
       cbits/qlInstrument.cpp
       cbits/qlLeg.cpp
       cbits/qlMisc.cpp
       cbits/qlModel.cpp
-      cbits/qlPricingEngineAux.cpp
       cbits/qlPricingEngine.cpp
+      cbits/qlPricingEngineAux.cpp
       cbits/qlProcess.cpp
       cbits/qlTermStructure.cpp
       cbits/qlTermStructureAux.cpp
+      cbits/qlTime.cpp
   extra-libraries:
       QuantLib
       stdc++
-  build-tools:
-      c2hs
   build-depends:
       base >=4.9 && <5.0
     , split
@@ -95,6 +110,7 @@ library
     cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
   else
     cxx-options: -Wall -Wextra -pedantic
+  build-tool-depends: c2hs:c2hs
 
 executable hasquant_example
   main-is: QuantLib/MainExample.hs

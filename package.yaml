@@ -22,6 +22,8 @@ flags:
   trackAllocations:
     default: False
     manual: True
+extra-source-files:
+  - cbits/*.h
 
 library:
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
@@ -30,7 +32,8 @@ library:
     - time
     - template-haskell
     - split
-  build-tools: c2hs
+  verbatim:
+    - build-tool-depends: c2hs:c2hs
   exposed-modules:
     - QuantLib.Type
     - QuantLib.Math
@@ -68,17 +71,7 @@ library:
     - QuantLib
     - stdc++
   cxx-sources:
-    - cbits/qlTime.cpp
-    - cbits/qlIndex.cpp
-    - cbits/qlInstrument.cpp
-    - cbits/qlLeg.cpp
-    - cbits/qlMisc.cpp
-    - cbits/qlModel.cpp
-    - cbits/qlPricingEngineAux.cpp
-    - cbits/qlPricingEngine.cpp
-    - cbits/qlProcess.cpp
-    - cbits/qlTermStructure.cpp
-    - cbits/qlTermStructureAux.cpp
+    - cbits/*.cpp
   include-dirs: cbits
   when:
     - condition: flag(trackAllocations)

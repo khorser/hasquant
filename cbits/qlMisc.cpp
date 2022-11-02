@@ -72,7 +72,7 @@ const char *qlBoostVersion() {
 void qlFreeString(char *p) {
 #ifdef QLTRACK_ALLOCATIONS
   std::ostringstream os; os << (void *)p;
-  const char *ptr = os.str().c_str();
+  void *ptr = (void *)os.str().c_str();
   (void)traceval("Freeing string", ptr);
 #endif
   free(p);
@@ -134,7 +134,7 @@ char *tracedup(const char *p) {
   char *dup = strdup(p);
 #ifdef QLTRACK_ALLOCATIONS
   std::ostringstream os; os << (void *)dup;
-  (void)traceval("Duplicate string", os.str().c_str());
+  (void)traceval("Duplicate string", (void *)os.str().c_str());
 #endif
   return dup;
 }

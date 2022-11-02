@@ -1,1 +1,1 @@
-stack build --test --no-haddock --flag hasquant:trackAllocations --test-arguments --skip=LONG --cabal-verbose $*
+stack build --test --no-haddock --flag hasquant:trackAllocations --test-arguments --skip=LONG $*

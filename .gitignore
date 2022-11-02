@@ -11,3 +11,4 @@ cabal.project.local
 cabal.project.local~
 .stack-work
 _
+stack.yaml.lock

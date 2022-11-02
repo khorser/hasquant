@@ -1,1 +1,1 @@
-stack build --no-haddock  --flag hasquant:buildExample --flag hasquant:trackAllocations --cabal-verbose $* && stack exec hasquant_example
+stack build --no-haddock  --flag hasquant:buildExample --flag hasquant:trackAllocations $* && stack exec hasquant_example
