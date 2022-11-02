@@ -38,9 +38,7 @@ int qlLegStartDate(Leg *leg, char **e) {
   }
 }
 
-void qlFreeLeg(Leg *leg) {
-  del(leg);
-}
+void qlFreeLeg(Leg *leg) {del(leg);}
 
 Leg *qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e) {
   try {
@@ -482,9 +480,7 @@ QlFloatingRateCouponPricer *qlBlackIborCouponPricer(
   }
 }
 
-void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p) {
-  del(p);
-}
+void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p) {del(p);}
 
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
   try {

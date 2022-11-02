@@ -62,9 +62,7 @@ QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char *
   }
 }
 
-void qlFreePricingEngine(QlPricingEngine *engine) {
-  del(engine);
-}
+void qlFreePricingEngine(QlPricingEngine *engine) {del(engine);}
 
 QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {

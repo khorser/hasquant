@@ -13,50 +13,28 @@
 
 using namespace QuantLib;
 
-int qlMinDateSerialNumber() {
-  return Date::minDate().serialNumber();
-}
+int qlMinDateSerialNumber() {return Date::minDate().serialNumber();}
 
-int qlMaxDateSerialNumber() {
-  return Date::maxDate().serialNumber();
-}
+int qlMaxDateSerialNumber() {return Date::maxDate().serialNumber();}
 
-int qlMinYear() {
-  return Date::minDate().year();
-}
+int qlMinYear() {return Date::minDate().year();}
 
-int qlMinMonth() {
-  return Date::minDate().month();
-}
+int qlMinMonth() {return Date::minDate().month();}
 
-int qlMinDay() {
-  return Date::minDate().dayOfMonth();
-}
+int qlMinDay() {return Date::minDate().dayOfMonth();}
 
-int qlWeekday(int date) {
-  return Date(date).weekday();
-}
+int qlWeekday(int date) {return Date(date).weekday();}
 
 // generated code
-int qlDateDayOfYear(int o) {
-    return Date(o).dayOfYear();
-}
+int qlDateDayOfYear(int o) {return Date(o).dayOfYear();}
 
-int qlDateEndOfMonth(int d) {
-    return Date::endOfMonth(Date(d)).serialNumber();
-}
+int qlDateEndOfMonth(int d) {return Date::endOfMonth(Date(d)).serialNumber();}
 
-int qlDateIsEndOfMonth(int d) {
-    return Date::isEndOfMonth(Date(d));
-}
+int qlDateIsEndOfMonth(int d) {return Date::isEndOfMonth(Date(d));}
 
-int qlDateNextWeekday(int d, int w) {
-    return Date::nextWeekday(Date(d), (Weekday)w).serialNumber();
-}
+int qlDateNextWeekday(int d, int w) {return Date::nextWeekday(Date(d), (Weekday)w).serialNumber();}
 
-int qlDateNthWeekday(unsigned n, int w, int m, int y) {
-    return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();
-}
+int qlDateNthWeekday(unsigned n, int w, int m, int y) {return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();}
 
 char* qlIMMCode(int immDate, char **e) {
   try {
@@ -72,12 +50,10 @@ int qlIMMDate(char* immCode, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMIsIMMcode(char* in, int mainCycle) {
-    return IMM::isIMMcode(std::string(arg(in)), mainCycle);
-}
-int qlIMMIsIMMdate(int d, int mainCycle) {
-    return IMM::isIMMdate(Date(d), mainCycle);
-}
+int qlIMMIsIMMcode(char* in, int mainCycle) {return IMM::isIMMcode(std::string(arg(in)), mainCycle);}
+
+int qlIMMIsIMMdate(int d, int mainCycle) {return IMM::isIMMdate(Date(d), mainCycle);}
+
 char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
     return DUP(IMM::nextCode(std::string(arg(immCode)), mainCycle, Date(referenceDate)).c_str());
@@ -85,9 +61,8 @@ char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) 
     return handleException<char*>(e, er);
   }
 }
-char* qlIMMNextCode(int d, int mainCycle) {
-    return DUP(IMM::nextCode(Date(d), mainCycle).c_str());
-}
+char* qlIMMNextCode(int d, int mainCycle) {return DUP(IMM::nextCode(Date(d), mainCycle).c_str());}
+
 int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
     return (IMM::nextDate(std::string(arg(immCode)), mainCycle, Date(referenceDate))).serialNumber();
@@ -95,9 +70,7 @@ int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMNextDate(int d, int mainCycle) {
-    return IMM::nextDate(Date(d), mainCycle).serialNumber();
-}
+int qlIMMNextDate(int d, int mainCycle) {return IMM::nextDate(Date(d), mainCycle).serialNumber();}
 
 int qlAddPeriod(int d, int n, int u, char **e) {
   try {
@@ -462,9 +435,7 @@ void qlScheduleDates(Schedule *sched, unsigned *count, int **days) {
     (*days)[i] = dates[i].serialNumber();
 }
 
-void qlFreeSchedule(Schedule *s) {
-  del(s);
-}
+void qlFreeSchedule(Schedule *s) {del(s);}
 
 int qlPeriodFromFrequency1(int freq, int *u, char **e) {
   try {
@@ -567,9 +538,7 @@ DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {
   }
 }
 
-void  qlFreeDayCounter(DayCounter *counter) {
-  del(counter);
-}
+void  qlFreeDayCounter(DayCounter *counter) {del(counter);}
 
 const char *qlDayCounterName(DayCounter *counter) {
   std::string name = arg(counter)->name();
@@ -577,9 +546,8 @@ const char *qlDayCounterName(DayCounter *counter) {
 }
 
 // generated code
-int qlDayCounterDayCount(DayCounter* o, int x0, int x1) {
-    return arg(o)->dayCount(Date(x0), Date(x1));
-}
+int qlDayCounterDayCount(DayCounter* o, int x0, int x1) {return arg(o)->dayCount(Date(x0), Date(x1));}
+
 double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
   try {
     return arg(o)->yearFraction(Date(x0), Date(x1), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd));

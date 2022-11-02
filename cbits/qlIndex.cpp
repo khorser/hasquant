@@ -18,9 +18,7 @@ void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e)
   }
 }
 
-void qlFreeIndex(QlIndex *i) {
-  del(i);
-}
+void qlFreeIndex(QlIndex *i) {del(i);}
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
@@ -148,9 +146,8 @@ DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e) {
     return handleException<DayCounter*>(e, er);
   }
 }
-unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o) {
-  return (*arg(o))->fixingDays();
-}
+unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o) {return (*arg(o))->fixingDays();}
+
 int qlInterestRateIndexTenor(QlInterestRateIndex* o, int *u, char **e) {
   try {
     const Period& p = (*arg(o))->tenor();
@@ -177,9 +174,7 @@ QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays, Currency 
   }
 }
 
-void qlFreeIborIndex(QlIborIndex *i) {
-  del(i);
-}
+void qlFreeIborIndex(QlIborIndex *i) {del(i);}
 
 QlIborIndex *qlLibor(char *name, int l, int u, unsigned settlDays,
     Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd,
@@ -298,12 +293,8 @@ QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) {return ret(
 void qlFreeOvernightIndex(QlOvernightIndex *o) {del(o);}
 QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) {return ret(new QlIborIndex(*arg(o)));}
 
-int qlIborIndexBusinessDayConvention(QlIborIndex* o) {
-  return (*arg(o))->businessDayConvention();
-}
+int qlIborIndexBusinessDayConvention(QlIborIndex* o) {return (*arg(o))->businessDayConvention();}
 
-int qlIborIndexEndOfMonth(QlIborIndex* o) {
-  return (*arg(o))->endOfMonth();
-}
+int qlIborIndexEndOfMonth(QlIborIndex* o) {return (*arg(o))->endOfMonth();}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

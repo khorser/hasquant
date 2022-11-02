@@ -258,8 +258,6 @@ PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const shared_ptr<Generali
   QL_FAIL("Unknown RNG "<< rngtrait);
 }
 
-PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme) {
-  return new FdBlackScholesVanillaEngine(process, tGrid, xGrid, dampingSteps, fdScheme);
-}
+PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme) {return new FdBlackScholesVanillaEngine(process, tGrid, xGrid, dampingSteps, fdScheme);}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

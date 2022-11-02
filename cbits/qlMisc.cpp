@@ -22,9 +22,7 @@ int qlSettingsEvaluationDate() {
   return d.serialNumber();
 }
 
-int qlSettingsEnforceTodaysHistoricFixings() {
-  return Settings::instance().enforcesTodaysHistoricFixings();
-}
+int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
 
 void qlSettingsSetEvaluationDate(int x, char **e) {
   try {
@@ -34,40 +32,23 @@ void qlSettingsSetEvaluationDate(int x, char **e) {
   }
 }
 
-void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
-  Settings::instance().enforcesTodaysHistoricFixings() = x;
-}
+void qlSettingsSetEnforceTodaysHistoricFixings(int x) {Settings::instance().enforcesTodaysHistoricFixings() = x;}
 
-int qlSettingsIncludeTodaysCashFlows() {
-  return qlOptBool(Settings::instance().includeTodaysCashFlows());
-}
+int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().includeTodaysCashFlows());}
 
-void qlSettingsSetIncludeTodaysCashFlows(int x) {
-  Settings::instance().includeTodaysCashFlows() = qlOptBool(x);
-}
+void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
 
-int qlSettingsIncludeReferenceDateEvents() {
-  return Settings::instance().includeReferenceDateEvents();
-}
-void qlSettingsSetIncludeReferenceDateEvents(int x0) {
-  Settings::instance().includeReferenceDateEvents() = x0;
-}
+int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
 
-void *qlSavedSettings() {
-  return new SavedSettings();
-}
+void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
 
-void qlFreeSavedSettings(void *settings) {
-  delete (SavedSettings *)settings;
-}
+void *qlSavedSettings() {return new SavedSettings();}
 
-const char *qlVersion() {
-  return QL_VERSION;
-}
+void qlFreeSavedSettings(void *settings) {delete (SavedSettings *)settings;}
 
-const char *qlBoostVersion() {
-  return BOOST_LIB_VERSION;
-}
+const char *qlVersion() {return QL_VERSION;}
+
+const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
 void qlFreeString(char *p) {
 #ifdef QLTRACK_ALLOCATIONS
@@ -81,53 +62,23 @@ void qlFreeString(char *p) {
 #endif
 }
 
-int *qlAllocateInts(size_t size) {
-  return new int[size];
-}
+int *qlAllocateInts(size_t size) {return new int[size];}
 
-void qlFreeInts(int *p) {
-  delete[] p;
-}
+void qlFreeInts(int *p) {delete[] p;}
 
-void qlFreeUInts(unsigned *p) {
-  delete[] p;
-}
+void qlFreeUInts(unsigned *p) {delete[] p;}
 
-double *qlAllocateDoubles(size_t size) {
-  return new double[size];
-}
+double *qlAllocateDoubles(size_t size) {return new double[size];}
 
-void qlFreeDoubles(double *p) {
-  delete[] p;
-}
+void qlFreeDoubles(double *p) {delete[] p;}
 
-const QuantLib::Date qlNullableDate(int serialNumber) {
-  if (!serialNumber)
-    return Date(); /* special null date value */
-  else
-    return Date(serialNumber);
-}
+const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Date() : Date(serialNumber);}
 
-int qlNullableDate(const QuantLib::Date &date) {
-  if (date == Date())
-    return 0;
-  else
-    return date.serialNumber();
-}
+int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
 
-boost::optional<bool> qlOptBool(int b) {
-  if (b == -1)
-    return boost::none;
-  else
-    return b;
-}
+boost::optional<bool> qlOptBool(int b) {return b == -1 ? boost::none : boost::optional<bool>(b);}
 
-int qlOptBool(boost::optional<bool> b) {
-  if (b)
-    return *b;
-  else
-    return -1;
-}
+int qlOptBool(boost::optional<bool> b) {return b ? *b : -1;}
 
 char *tracedup(const char *p) {
   TP2("Duplicating string", (void *)p);
@@ -152,25 +103,15 @@ Matrix qlBuildMatrix(double *a, unsigned r, unsigned c) {
   return m;
 }
 
-void **qlAllocatePointerArray(size_t size) {
-  return new void*[size];
-}
+void **qlAllocatePointerArray(size_t size) {return new void*[size];}
 
-void qlFreePointerArray(void **p) {
-  delete[] p;
-}
+void qlFreePointerArray(void **p) {delete[] p;}
 
-int qlNullInteger() {
-  return QL_NULL_INTEGER;
-}
+int qlNullInteger() {return QL_NULL_INTEGER;}
 
-double qlNullReal() {
-  return QL_NULL_REAL;
-}
+double qlNullReal() {return QL_NULL_REAL;}
 
-double qlEpsilon() {
-  return QL_EPSILON;
-}
+double qlEpsilon() {return QL_EPSILON;}
 
 typedef Currency *(*makeCcy)();
 
@@ -310,19 +251,13 @@ Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol
 
 InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e) {
   try {
-    return alloc(new InterestRate(
-	  r,
-	  *arg(dc),
-	  (Compounding) comp,
-	  (Frequency) freq));
+    return alloc(new InterestRate(r, *arg(dc), (Compounding) comp, (Frequency) freq));
   } catch (std::exception& er) {
     return handleException<InterestRate *>(e, er);
   }
 }
 
-void qlFreeInterestRate(InterestRate *rate) {
-  del(rate);
-}
+void qlFreeInterestRate(InterestRate *rate) {del(rate);}
 
 // generated code
 double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e) {
@@ -389,9 +324,7 @@ InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCou
   }
 }
 
-double qlInterestRateRate(InterestRate* o) {
-  return arg(o)->rate();
-}
+double qlInterestRateRate(InterestRate* o) {return arg(o)->rate();}
 
 void qlFreeConstraint(Constraint *o) {del(o);}
 
@@ -491,9 +424,7 @@ Rounding* qlRounding1(int precision, int type, int digit, char **e) {
   }
 }
 
-double qlRound(Rounding *r, double val) {
-  return (*r)(val);
-}
+double qlRound(Rounding *r, double val) {return (*r)(val);}
 
 QlSimpleQuote *qlSimpleQuote(double value, char **e) {
   try {
@@ -511,9 +442,7 @@ double qlQuoteValue(QlQuote *quote, char **e) {
   }
 }
 
-void qlFreeQuote(QlQuote *quote) {
-  del(quote);
-}
+void qlFreeQuote(QlQuote *quote) {del(quote);}
 
 void qlFreeSimpleQuote(QlSimpleQuote *o) {del(o);}
 QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o) {return ret(new QlQuote(*arg(o)));}

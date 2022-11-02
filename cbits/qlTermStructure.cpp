@@ -37,9 +37,7 @@ QlOptionletVolatilityStructure *qlConstantOptionletVol1(
   }
 }
 
-void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {
-  del(p);
-}
+void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}
 
 QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 
@@ -670,9 +668,7 @@ QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double f
   }
 }
 
-void qlFreeRateHelper(QlRateHelper *helper) {
-  del(helper);
-}
+void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {

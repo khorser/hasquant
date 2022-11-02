@@ -986,21 +986,13 @@ std::vector<Date> qlDateVector(unsigned len, int *dates);
 boost::optional<bool> qlOptBool(int b);
 int qlOptBool(boost::optional<bool> b);
 
-template <class T>
-Handle<T> qlNullableHandle(shared_ptr<T> *p) {
-  return p
-    ? Handle<T>(*(arg(p)))
-    : Handle<T>();
-}
+template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}
 
 QuantLib::Matrix qlBuildMatrix(double *a, unsigned r, unsigned c);
 
 template <class T>
 std::vector<T> qlBuildVector(T **vals, size_t len) {
-  std::vector<T> r;
-  for (size_t i = 0; i < len; ++i) {
-    r.push_back(*vals[i]);
-  }
+  std::vector<T> r(*vals, *vals+len);
   return r;
 }
 

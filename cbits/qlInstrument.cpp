@@ -66,9 +66,7 @@ void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
   }
 }
 
-void qlFreeInstrument(QlInstrument *instr) {
-  del(instr);
-}
+void qlFreeInstrument(QlInstrument *instr) {del(instr);}
 
 QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, unsigned, double *coeff, char **e) {
   CompositeInstrument *ci = 0;
@@ -399,21 +397,13 @@ QlCallability* qlCallability(double price, int priceType, int type, int date, ch
   }
 }
 
-void qlFreeForward(QlForward *fwd) {
-  del(fwd);
-}
+void qlFreeForward(QlForward *fwd) {del(fwd);}
 
-void qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd) {
-  del(fwd);
-}
+void qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd) {del(fwd);}
 
-QlInstrument* qlForwardRateAgreementAsInstrument(QlForwardRateAgreement *fwd) {
-  return ret(new QlInstrument(*arg(fwd)));
-}
+QlInstrument* qlForwardRateAgreementAsInstrument(QlForwardRateAgreement *fwd) {return ret(new QlInstrument(*arg(fwd)));}
 
-QlInstrument* qlForwardAsInstrument(QlForward *fwd) {
-  return ret(new QlInstrument(*arg(fwd)));
-}
+QlInstrument* qlForwardAsInstrument(QlForward *fwd) {return ret(new QlInstrument(*arg(fwd)));}
 
 double qlForwardForwardValue(QlForward* o, char **e) {
   try {
@@ -460,13 +450,9 @@ QlForwardRateAgreement* qlForwardRateAgreement(int valueDate, int maturityDate, 
   }
 }
 
-void qlFreeBondForward(QlBondForward *fwd) {
-  del(fwd);
-}
+void qlFreeBondForward(QlBondForward *fwd) {del(fwd);}
 
-QlForward* qlBondForwardAsForward(QlBondForward *fwd) {
-  return ret(new QlForward(*arg(fwd)));
-}
+QlForward* qlBondForwardAsForward(QlBondForward *fwd) {return ret(new QlForward(*arg(fwd)));}
 
 QlBondForward* qlBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlBond* bond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e) {
   try {
@@ -1498,21 +1484,13 @@ QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
   }
 }
 
-int qlBondMaturityDate(QlBond *bond) {
-  return qlNullableDate((*arg(bond))->maturityDate());
-}
+int qlBondMaturityDate(QlBond *bond) {return qlNullableDate((*arg(bond))->maturityDate());}
 
-void qlFreeBond(QlBond *bond) {
-  del(bond);
-}
+void qlFreeBond(QlBond *bond) {del(bond);}
 
-void qlFreeFixedRateBond(QlFixedRateBond *bond) {
-  del(bond);
-}
+void qlFreeFixedRateBond(QlFixedRateBond *bond) {del(bond);}
 
-QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond) {
-  return ret(new QlBond(*arg(bond)));
-}
+QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond) {return ret(new QlBond(*arg(bond)));}
 
 QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
     unsigned cLen, double *coupons, DayCounter *counter,
@@ -1535,9 +1513,7 @@ QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *sche
   }
 }
 
-QlInstrument *qlBondAsInstrument(QlBond *b) {
-  return ret(new QlInstrument(*arg(b)));
-}
+QlInstrument *qlBondAsInstrument(QlBond *b) {return ret(new QlInstrument(*arg(b)));}
 
 QlBond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
   int maturity, int payConv, double redemption, int issue, char **e) {
