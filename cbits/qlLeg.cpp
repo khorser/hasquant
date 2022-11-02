@@ -22,7 +22,7 @@ Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
   try {
     leg = new Leg();
     for (unsigned i = 0; i < len; ++i)
-      leg->push_back(QuantLib::ext::shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
+      leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
     return alloc(leg);
   } catch (std::exception& er) {
     return handleException(e, er, leg);
@@ -377,7 +377,7 @@ void qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, int **days, char **e
   }
 }
 
-void qlFreeDividend(QlDividend *o) { del(o); }
+void qlFreeDividend(QlDividend *o) {del(o);}
 
 QlDividend* qlFixedDividend(double amount, int date, char **e) {
   try {
@@ -447,7 +447,7 @@ Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notional
   }
 }
 
-void qlFreeCouponLeg(CouponLeg *o) { del(o); }
+void qlFreeCouponLeg(CouponLeg *o) {del(o);}
 
 Leg* qlCouponLegAsLeg(CouponLeg *o) {
   Leg *l = new Leg();
@@ -460,7 +460,7 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   try {
     cl = new CouponLeg();
     for (unsigned i = 0; i < o->size(); ++i) {
-      ext::shared_ptr<Coupon> c = ext::dynamic_pointer_cast<Coupon>((*o)[i]);
+      shared_ptr<Coupon> c = ext::dynamic_pointer_cast<Coupon>((*o)[i]);
       if (c)
         cl->push_back(c);
       else

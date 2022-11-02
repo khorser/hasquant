@@ -106,22 +106,22 @@ int qlInstrumentValuationDate(QlInstrument* o, char **e) {
   }
 }
 
-void qlFreePayoff(QlPayoff *o) { del(o); }
+void qlFreePayoff(QlPayoff *o) {del(o);}
 
-void qlFreeBasketPayoff(QlBasketPayoff *o) { del(o); }
-QlPayoff* qlBasketPayoffAsPayoff(QlBasketPayoff *o) { return ret(new QlPayoff(*arg(o))); }
+void qlFreeBasketPayoff(QlBasketPayoff *o) {del(o);}
+QlPayoff* qlBasketPayoffAsPayoff(QlBasketPayoff *o) {return ret(new QlPayoff(*arg(o)));}
 
-void qlFreeTypePayoff(QlTypePayoff *o) { del(o); }
-QlPayoff* qlTypePayoffAsPayoff(QlTypePayoff *o) { return ret(new QlPayoff(*arg(o))); }
+void qlFreeTypePayoff(QlTypePayoff *o) {del(o);}
+QlPayoff* qlTypePayoffAsPayoff(QlTypePayoff *o) {return ret(new QlPayoff(*arg(o)));}
 
-void qlFreeStrikedTypePayoff(QlStrikedTypePayoff *o) { del(o); }
-QlTypePayoff* qlStrikedTypePayoffAsTypePayoff(QlStrikedTypePayoff *o) { return ret(new QlTypePayoff(*arg(o))); }
+void qlFreeStrikedTypePayoff(QlStrikedTypePayoff *o) {del(o);}
+QlTypePayoff* qlStrikedTypePayoffAsTypePayoff(QlStrikedTypePayoff *o) {return ret(new QlTypePayoff(*arg(o)));}
 
-void qlFreePercentageStrikePayoff(QlPercentageStrikePayoff *o) { del(o); }
-QlStrikedTypePayoff* qlPercentageStrikePayoffAsStrikedTypePayoff(QlPercentageStrikePayoff *o) { return ret(new QlStrikedTypePayoff(*arg(o))); }
+void qlFreePercentageStrikePayoff(QlPercentageStrikePayoff *o) {del(o);}
+QlStrikedTypePayoff* qlPercentageStrikePayoffAsStrikedTypePayoff(QlPercentageStrikePayoff *o) {return ret(new QlStrikedTypePayoff(*arg(o)));}
 
-void qlFreePlainVanillaPayoff(QlPlainVanillaPayoff *o) { del(o); }
-QlStrikedTypePayoff* qlPlainVanillaPayoffAsStrikedTypePayoff(QlPlainVanillaPayoff *o) { return ret(new QlStrikedTypePayoff(*arg(o))); }
+void qlFreePlainVanillaPayoff(QlPlainVanillaPayoff *o) {del(o);}
+QlStrikedTypePayoff* qlPlainVanillaPayoffAsStrikedTypePayoff(QlPlainVanillaPayoff *o) {return ret(new QlStrikedTypePayoff(*arg(o)));}
 
 QlStrikedTypePayoff* qlAssetOrNothingPayoff(int type, double strike, char **e) {
   try {
@@ -270,13 +270,13 @@ QlStrikedTypePayoff* qlSuperSharePayoff(double strike, double secondStrike, doub
     return handleException<QlStrikedTypePayoff*>(e, er);
   }
 }
-void qlFreeAmericanExercise(QlAmericanExercise *o) { del(o); }
-QlExercise* qlAmericanExerciseAsExercise(QlAmericanExercise *o) { return ret(new QlExercise(*arg(o))); }
-void qlFreeBermudanExercise(QlBermudanExercise *o) { del(o); }
-QlExercise* qlBermudanExerciseAsExercise(QlBermudanExercise *o) { return ret(new QlExercise(*arg(o))); }
-void qlFreeEuropeanExercise(QlEuropeanExercise *o) { del(o); }
-QlExercise* qlEuropeanExerciseAsExercise(QlEuropeanExercise *o) { return ret(new QlExercise(*arg(o))); }
-void qlFreeExercise(QlExercise *o) { del(o); }
+void qlFreeAmericanExercise(QlAmericanExercise *o) {del(o);}
+QlExercise* qlAmericanExerciseAsExercise(QlAmericanExercise *o) {return ret(new QlExercise(*arg(o)));}
+void qlFreeBermudanExercise(QlBermudanExercise *o) {del(o);}
+QlExercise* qlBermudanExerciseAsExercise(QlBermudanExercise *o) {return ret(new QlExercise(*arg(o)));}
+void qlFreeEuropeanExercise(QlEuropeanExercise *o) {del(o);}
+QlExercise* qlEuropeanExerciseAsExercise(QlEuropeanExercise *o) {return ret(new QlExercise(*arg(o)));}
+void qlFreeExercise(QlExercise *o) {del(o);}
 
 QlAmericanExercise* qlAmericanExercise(int earliestDate, int latestDate, int payoffAtExpiry, char **e) {
   try {
@@ -332,7 +332,7 @@ QlSwingExercise* qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char 
     return handleException<QlSwingExercise*>(e, er);
   }
 }
-QlExercise* qlSwingExerciseAsExercise(QlSwingExercise *o) { return ret(new QlExercise(*arg(o))); }
+QlExercise* qlSwingExerciseAsExercise(QlSwingExercise *o) {return ret(new QlExercise(*arg(o)));}
 
 QlAmericanExercise* qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e) {
   try {
@@ -342,8 +342,8 @@ QlAmericanExercise* qlAmericanExercise1(int latestDate, int payoffAtExpiry, char
   }
 }
 
-void qlFreeCapFloor(QlCapFloor *o) { del(o); }
-QlInstrument* qlCapFloorAsInstrument(QlCapFloor *o) { return ret(new QlInstrument(*arg(o))); }
+void qlFreeCapFloor(QlCapFloor *o) {del(o);}
+QlInstrument* qlCapFloorAsInstrument(QlCapFloor *o) {return ret(new QlInstrument(*arg(o)));}
 
 QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e) {
   try {
@@ -388,7 +388,7 @@ QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
   }
 }
 
-void qlFreeCallability(QlCallability *o) { del(o); }
+void qlFreeCallability(QlCallability *o) {del(o);}
 
 QlCallability* qlCallability(double price, int priceType, int type, int date, char **e) {
   try {
@@ -500,17 +500,17 @@ InterestRate* qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char 
   }
 }
 
-void qlFreeSwap(QlSwap *o) { del(o); }
-QlInstrument* qlSwapAsInstrument(QlSwap *o) { return ret(new QlInstrument(*arg(o))); }
+void qlFreeSwap(QlSwap *o) {del(o);}
+QlInstrument* qlSwapAsInstrument(QlSwap *o) {return ret(new QlInstrument(*arg(o)));}
 
-void qlFreeVanillaSwap(QlVanillaSwap *o) { del(o); }
-QlSwap* qlVanillaSwapAsSwap(QlVanillaSwap *o) { return ret(new QlSwap(*arg(o))); }
+void qlFreeVanillaSwap(QlVanillaSwap *o) {del(o);}
+QlSwap* qlVanillaSwapAsSwap(QlVanillaSwap *o) {return ret(new QlSwap(*arg(o)));}
 
-void qlFreeBMASwap(QlBMASwap *o) { del(o); }
-QlSwap* qlBMASwapAsSwap(QlBMASwap *o) { return ret(new QlSwap(*arg(o))); }
+void qlFreeBMASwap(QlBMASwap *o) {del(o);}
+QlSwap* qlBMASwapAsSwap(QlBMASwap *o) {return ret(new QlSwap(*arg(o)));}
 
-void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o) { del(o); }
-QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o) { return ret(new QlSwap(*arg(o))); }
+void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o) {del(o);}
+QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o) {return ret(new QlSwap(*arg(o)));}
 
 QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, char **e) {
   try {
@@ -520,8 +520,8 @@ QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, cha
   }
 }
 
-void qlFreeAssetSwap(QlAssetSwap *o) { del(o); }
-QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o) { return ret(new QlSwap(*arg(o))); }
+void qlFreeAssetSwap(QlAssetSwap *o) {del(o);}
+QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o) {return ret(new QlSwap(*arg(o)));}
 
 QlAssetSwap* qlAssetSwap1(int parAssetSwap, QlBond* bond, double bondCleanPrice, double nonParRepayment, double gearing, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int dealMaturity, int payBondCoupon, char **e) {
   try {
@@ -885,13 +885,13 @@ double qlOvernightIndexedSwapOvernightLegNPV(QlOvernightIndexedSwap* o, char **e
   }
 }
 
-void qlFreeCdsOption(QlCdsOption *o) { del(o); }
-QlOption* qlCdsOptionAsOption(QlCdsOption *o) { return ret(new QlOption(*arg(o))); }
+void qlFreeCdsOption(QlCdsOption *o) {del(o);}
+QlOption* qlCdsOptionAsOption(QlCdsOption *o) {return ret(new QlOption(*arg(o)));}
 
-void qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o) { del(o); }
-QlInstrument* qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o) { return ret(new QlInstrument(*arg(o))); }
+void qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o) {del(o);}
+QlInstrument* qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o) {return ret(new QlInstrument(*arg(o)));}
 
-void qlFreeClaim(QlClaim *o) { del(o); }
+void qlFreeClaim(QlClaim *o) {del(o);}
 
 QlClaim* qlFaceValueAccrualClaim(QlBond* referenceSecurity, char **e) {
   try {
@@ -997,38 +997,38 @@ double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e) {
   }
 }
 
-void qlFreeBarrierOption(QlBarrierOption *o) { del(o); }
-QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) { return ret(new QlOneAssetOption(*arg(o))); }
+void qlFreeBarrierOption(QlBarrierOption *o) {del(o);}
+QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
-void qlFreeDividendVanillaOption(QlDividendVanillaOption *o) { del(o); }
-QlOneAssetOption* qlDividendVanillaOptionAsOneAssetOption(QlDividendVanillaOption *o) { return ret(new QlOneAssetOption(*arg(o))); }
+void qlFreeDividendVanillaOption(QlDividendVanillaOption *o) {del(o);}
+QlOneAssetOption* qlDividendVanillaOptionAsOneAssetOption(QlDividendVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
-void qlFreeForwardVanillaOption(QlForwardVanillaOption *o) { del(o); }
-QlOneAssetOption* qlForwardVanillaOptionAsOneAssetOption(QlForwardVanillaOption *o) { return ret(new QlOneAssetOption(*arg(o))); }
+void qlFreeForwardVanillaOption(QlForwardVanillaOption *o) {del(o);}
+QlOneAssetOption* qlForwardVanillaOptionAsOneAssetOption(QlForwardVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
-void qlFreeMargrabeOption(QlMargrabeOption *o) { del(o); }
-QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o) { return ret(new QlMultiAssetOption(*arg(o))); }
+void qlFreeMargrabeOption(QlMargrabeOption *o) {del(o);}
+QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o) {return ret(new QlMultiAssetOption(*arg(o)));}
 
-void qlFreeMultiAssetOption(QlMultiAssetOption *o) { del(o); }
-QlOption* qlMultiAssetOptionAsOption(QlMultiAssetOption *o) { return ret(new QlOption(*arg(o))); }
+void qlFreeMultiAssetOption(QlMultiAssetOption *o) {del(o);}
+QlOption* qlMultiAssetOptionAsOption(QlMultiAssetOption *o) {return ret(new QlOption(*arg(o)));}
 
-void qlFreeOneAssetOption(QlOneAssetOption *o) { del(o); }
-QlOption* qlOneAssetOptionAsOption(QlOneAssetOption *o) { return ret(new QlOption(*arg(o))); }
+void qlFreeOneAssetOption(QlOneAssetOption *o) {del(o);}
+QlOption* qlOneAssetOptionAsOption(QlOneAssetOption *o) {return ret(new QlOption(*arg(o)));}
 
-void qlFreeOption(QlOption *o) { del(o); }
-QlInstrument* qlOptionAsInstrument(QlOption *o) { return ret(new QlInstrument(*arg(o))); }
+void qlFreeOption(QlOption *o) {del(o);}
+QlInstrument* qlOptionAsInstrument(QlOption *o) {return ret(new QlInstrument(*arg(o)));}
 
-void qlFreeQuantoVanillaOption(QlQuantoVanillaOption *o) { del(o); }
-QlOneAssetOption* qlQuantoVanillaOptionAsOneAssetOption(QlQuantoVanillaOption *o) { return ret(new QlOneAssetOption(*arg(o))); }
+void qlFreeQuantoVanillaOption(QlQuantoVanillaOption *o) {del(o);}
+QlOneAssetOption* qlQuantoVanillaOptionAsOneAssetOption(QlQuantoVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
-void qlFreeSwaption(QlSwaption *o) { del(o); }
-QlOption* qlSwaptionAsOption(QlSwaption *o) { return ret(new QlOption(*arg(o))); }
+void qlFreeSwaption(QlSwaption *o) {del(o);}
+QlOption* qlSwaptionAsOption(QlSwaption *o) {return ret(new QlOption(*arg(o)));}
 
-void qlFreeVanillaOption(QlVanillaOption *o) { del(o); }
-QlOneAssetOption* qlVanillaOptionAsOneAssetOption(QlVanillaOption *o) { return ret(new QlOneAssetOption(*arg(o))); }
+void qlFreeVanillaOption(QlVanillaOption *o) {del(o);}
+QlOneAssetOption* qlVanillaOptionAsOneAssetOption(QlVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
-void qlFreeSwingExercise(QlSwingExercise *o) { del(o); }
-QlBermudanExercise* qlSwingExerciseAsBermudanExercise(QlSwingExercise *o) { return ret(new QlBermudanExercise(*arg(o))); }
+void qlFreeSwingExercise(QlSwingExercise *o) {del(o);}
+QlBermudanExercise* qlSwingExerciseAsBermudanExercise(QlSwingExercise *o) {return ret(new QlBermudanExercise(*arg(o)));}
 
 double qlCdsOptionAtmRate(QlCdsOption* o, char **e) {
   try {
@@ -1073,11 +1073,11 @@ QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, 
   }
 }
 
-void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) { del(o); }
-QlBarrierOption* qlQuantoBarrierOptionAsBarrierOption(QlQuantoBarrierOption *o) { return ret(new QlBarrierOption(*arg(o))); }
+void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
+QlBarrierOption* qlQuantoBarrierOptionAsBarrierOption(QlQuantoBarrierOption *o) {return ret(new QlBarrierOption(*arg(o)));}
 
-void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o) { del(o); }
-QlForwardVanillaOption* qlQuantoForwardVanillaOptionAsForwardVanillaOption(QlQuantoForwardVanillaOption *o) { return ret(new QlForwardVanillaOption(*arg(o))); }
+void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o) {del(o);}
+QlForwardVanillaOption* qlQuantoForwardVanillaOptionAsForwardVanillaOption(QlQuantoForwardVanillaOption *o) {return ret(new QlForwardVanillaOption(*arg(o)));}
 
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
@@ -1925,10 +1925,10 @@ double qlBondDirtyPrice(QlBond* o, char **e) {
   }
 }
 
-void qlFreeCallableBond(QlCallableBond *o) { del(o); }
-QlBond* qlCallableBondAsBond(QlCallableBond *o) { return ret(new QlBond(*arg(o))); }
-void qlFreeConvertibleBond(QlConvertibleBond *o) { del(o); }
-QlBond* qlConvertibleBondAsBond(QlConvertibleBond *o) { return ret(new QlBond(*arg(o))); }
+void qlFreeCallableBond(QlCallableBond *o) {del(o);}
+QlBond* qlCallableBondAsBond(QlCallableBond *o) {return ret(new QlBond(*arg(o)));}
+void qlFreeConvertibleBond(QlConvertibleBond *o) {del(o);}
+QlBond* qlConvertibleBondAsBond(QlConvertibleBond *o) {return ret(new QlBond(*arg(o)));}
 
 QlCallableBond* qlCallableFixedRateBond(unsigned settlementDays, double faceAmount, Schedule* schedule, unsigned couponsLen, double* coupons, DayCounter* accrualDayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
   try {

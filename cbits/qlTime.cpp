@@ -222,48 +222,48 @@ typedef Calendar *(*makeCalendar)(int market);
 
 // must match with the order of qlEnumObjects.h:CalendarCountry
 static const makeCalendar calendars[] = {
-  [](int){ return static_cast<Calendar *>(new Argentina()); }
-  , [](int){ return static_cast<Calendar *>(new Australia()); }
-  , [](int market){ return static_cast<Calendar *>(new Austria((Austria::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new Botswana()); }
-  , [](int market){ return static_cast<Calendar *>(new Brazil((Brazil::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new Canada((Canada::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new China((China::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new CzechRepublic()); }
-  , [](int){ return static_cast<Calendar *>(new Denmark()); }
-  , [](int){ return static_cast<Calendar *>(new Finland()); }
-  , [](int market){ return static_cast<Calendar *>(new France((France::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new Germany((Germany::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new HongKong()); }
-  , [](int){ return static_cast<Calendar *>(new Hungary()); }
-  , [](int){ return static_cast<Calendar *>(new Iceland()); }
-  , [](int){ return static_cast<Calendar *>(new India()); }
-  , [](int market){ return static_cast<Calendar *>(new Indonesia((Indonesia::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new Israel((Israel::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new Italy((Italy::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new Japan()); }
-  , [](int){ return static_cast<Calendar *>(new Mexico()); }
-  , [](int){ return static_cast<Calendar *>(new NewZealand()); }
-  , [](int){ return static_cast<Calendar *>(new Norway()); }
-  , [](int){ return static_cast<Calendar *>(new NullCalendar()); }
-  , [](int){ return static_cast<Calendar *>(new Poland()); }
-  , [](int market){ return static_cast<Calendar *>(new Romania((Romania::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new Russia((Russia::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new SaudiArabia()); }
-  , [](int){ return static_cast<Calendar *>(new Singapore()); }
-  , [](int){ return static_cast<Calendar *>(new Slovakia()); }
-  , [](int){ return static_cast<Calendar *>(new SouthAfrica()); }
-  , [](int market){ return static_cast<Calendar *>(new SouthKorea((SouthKorea::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new Sweden()); }
-  , [](int){ return static_cast<Calendar *>(new Switzerland()); }
-  , [](int){ return static_cast<Calendar *>(new Taiwan()); }
-  , [](int){ return static_cast<Calendar *>(new TARGET()); }
-  , [](int){ return static_cast<Calendar *>(new Thailand()); }
-  , [](int){ return static_cast<Calendar *>(new Turkey()); }
-  , [](int){ return static_cast<Calendar *>(new Ukraine()); }
-  , [](int market){ return static_cast<Calendar *>(new UnitedKingdom((UnitedKingdom::Market) market)); }
-  , [](int market){ return static_cast<Calendar *>(new UnitedStates((UnitedStates::Market) market)); }
-  , [](int){ return static_cast<Calendar *>(new WeekendsOnly()); }
+  [](int){return static_cast<Calendar *>(new Argentina());}
+  , [](int){return static_cast<Calendar *>(new Australia());}
+  , [](int market){return static_cast<Calendar *>(new Austria((Austria::Market) market));}
+  , [](int){return static_cast<Calendar *>(new Botswana());}
+  , [](int market){return static_cast<Calendar *>(new Brazil((Brazil::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new Canada((Canada::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new China((China::Market) market));}
+  , [](int){return static_cast<Calendar *>(new CzechRepublic());}
+  , [](int){return static_cast<Calendar *>(new Denmark());}
+  , [](int){return static_cast<Calendar *>(new Finland());}
+  , [](int market){return static_cast<Calendar *>(new France((France::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new Germany((Germany::Market) market));}
+  , [](int){return static_cast<Calendar *>(new HongKong());}
+  , [](int){return static_cast<Calendar *>(new Hungary());}
+  , [](int){return static_cast<Calendar *>(new Iceland());}
+  , [](int){return static_cast<Calendar *>(new India());}
+  , [](int market){return static_cast<Calendar *>(new Indonesia((Indonesia::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new Israel((Israel::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new Italy((Italy::Market) market));}
+  , [](int){return static_cast<Calendar *>(new Japan());}
+  , [](int){return static_cast<Calendar *>(new Mexico());}
+  , [](int){return static_cast<Calendar *>(new NewZealand());}
+  , [](int){return static_cast<Calendar *>(new Norway());}
+  , [](int){return static_cast<Calendar *>(new NullCalendar());}
+  , [](int){return static_cast<Calendar *>(new Poland());}
+  , [](int market){return static_cast<Calendar *>(new Romania((Romania::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new Russia((Russia::Market) market));}
+  , [](int){return static_cast<Calendar *>(new SaudiArabia());}
+  , [](int){return static_cast<Calendar *>(new Singapore());}
+  , [](int){return static_cast<Calendar *>(new Slovakia());}
+  , [](int){return static_cast<Calendar *>(new SouthAfrica());}
+  , [](int market){return static_cast<Calendar *>(new SouthKorea((SouthKorea::Market) market));}
+  , [](int){return static_cast<Calendar *>(new Sweden());}
+  , [](int){return static_cast<Calendar *>(new Switzerland());}
+  , [](int){return static_cast<Calendar *>(new Taiwan());}
+  , [](int){return static_cast<Calendar *>(new TARGET());}
+  , [](int){return static_cast<Calendar *>(new Thailand());}
+  , [](int){return static_cast<Calendar *>(new Turkey());}
+  , [](int){return static_cast<Calendar *>(new Ukraine());}
+  , [](int market){return static_cast<Calendar *>(new UnitedKingdom((UnitedKingdom::Market) market));}
+  , [](int market){return static_cast<Calendar *>(new UnitedStates((UnitedStates::Market) market));}
+  , [](int){return static_cast<Calendar *>(new WeekendsOnly());}
 };
 
 Calendar *qlCalendar(int country, int market, char **e) {
@@ -276,7 +276,7 @@ Calendar *qlCalendar(int country, int market, char **e) {
   }
 }
 
-void qlFreeCalendar(Calendar *calendar) { del(calendar); }
+void qlFreeCalendar(Calendar *calendar) {del(calendar);}
 
 const char *qlCalendarName(Calendar *calendar) {
   std::string name = arg(calendar)->name();
@@ -539,14 +539,14 @@ typedef DayCounter *(*makeDayCounter)(int convention);
 
 // must match with the order of qlEnumObjects.h:DayCounterType
 static const makeDayCounter dayCounters[] = {
-  [](int) { return static_cast<DayCounter *>(new Actual360()); }
-  , [](int) { return static_cast<DayCounter *>(new Actual364()); }
-  , [](int conv) { return static_cast<DayCounter *>(new Actual365Fixed((Actual365Fixed::Convention) conv)); }
-  , [](int conv) { return static_cast<DayCounter *>(new ActualActual((ActualActual::Convention) conv)); }
-  , [](int) { return static_cast<DayCounter *>(new OneDayCounter()); }
-  , [](int) { return static_cast<DayCounter *>(new SimpleDayCounter()); }
-  , [](int conv) { return static_cast<DayCounter *>(new Thirty360((Thirty360::Convention) conv)); }
-  , [](int) { return static_cast<DayCounter *>(new Thirty365()); }
+  [](int) {return static_cast<DayCounter *>(new Actual360());}
+  , [](int) {return static_cast<DayCounter *>(new Actual364());}
+  , [](int conv) {return static_cast<DayCounter *>(new Actual365Fixed((Actual365Fixed::Convention) conv));}
+  , [](int conv) {return static_cast<DayCounter *>(new ActualActual((ActualActual::Convention) conv));}
+  , [](int) {return static_cast<DayCounter *>(new OneDayCounter());}
+  , [](int) {return static_cast<DayCounter *>(new SimpleDayCounter());}
+  , [](int conv) {return static_cast<DayCounter *>(new Thirty360((Thirty360::Convention) conv));}
+  , [](int) {return static_cast<DayCounter *>(new Thirty365());}
 };
 
 DayCounter *qlDayCounter(int type, int convention, char **e) {

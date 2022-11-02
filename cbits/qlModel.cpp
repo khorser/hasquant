@@ -8,20 +8,20 @@
 
 using namespace QuantLib;
 
-void qlFreeGJRGARCHModel(QlGJRGARCHModel *o) { del(o); }
-void qlFreeHestonModel(QlHestonModel *o) { del(o); }
-void qlFreeBatesModel(QlBatesModel *o) { del(o); }
-void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o) { del(o); }
-void qlFreeShortRateModel(QlShortRateModel *o) { del(o); }
-void qlFreeAffineModel(QlAffineModel *o) { del(o); }
-void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) { del(o); }
-QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) { return ret(new QlAffineModel(*arg(o))); }
-void qlFreeLiborForwardModel(QlLiborForwardModel *o) { del(o); }
-QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o) { return ret(new QlAffineModel(*arg(o))); }
-void qlFreeHullWhite(QlHullWhite *o) { del(o); }
-QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o) { return ret(new QlOneFactorAffineModel(*arg(o))); }
+void qlFreeGJRGARCHModel(QlGJRGARCHModel *o) {del(o);}
+void qlFreeHestonModel(QlHestonModel *o) {del(o);}
+void qlFreeBatesModel(QlBatesModel *o) {del(o);}
+void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o) {del(o);}
+void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
+void qlFreeAffineModel(QlAffineModel *o) {del(o);}
+void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
+QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
+void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}
+QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o) {return ret(new QlAffineModel(*arg(o)));}
+void qlFreeHullWhite(QlHullWhite *o) {del(o);}
+QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o) {return ret(new QlOneFactorAffineModel(*arg(o)));}
 
-void qlFreeCalibratedModel(QlCalibratedModel *o) { del(o); }
+void qlFreeCalibratedModel(QlCalibratedModel *o) {del(o);}
 
 QlBatesModel* qlBatesModel(QlBatesProcess* process, char **e) {
   try {
@@ -101,19 +101,19 @@ QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, d
   }
 }
 
-void qlFreeG2(QlG2 *o) { del(o); }
-QlAffineModel* qlG2AsAffineModel(QlG2 *o) { return ret(new QlAffineModel(*arg(o))); }
-QlShortRateModel* qlG2AsShortRateModel(QlG2 *o) { return ret(new QlShortRateModel(*arg(o))); }
+void qlFreeG2(QlG2 *o) {del(o);}
+QlAffineModel* qlG2AsAffineModel(QlG2 *o) {return ret(new QlAffineModel(*arg(o)));}
+QlShortRateModel* qlG2AsShortRateModel(QlG2 *o) {return ret(new QlShortRateModel(*arg(o)));}
 
-void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) { del(o); }
-QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o) { return ret(new QlBatesModel(*arg(o))); }
-void qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o) { del(o); }
-QlBatesDoubleExpModel* qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel(QlBatesDoubleExpDetJumpModel *o) { return ret(new QlBatesDoubleExpModel(*arg(o))); }
-void qlFreeBatesDoubleExpModel(QlBatesDoubleExpModel *o) { del(o); }
-QlHestonModel* qlBatesDoubleExpModelAsHestonModel(QlBatesDoubleExpModel *o) { return ret(new QlHestonModel(*arg(o))); }
+void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) {del(o);}
+QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o) {return ret(new QlBatesModel(*arg(o)));}
+void qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o) {del(o);}
+QlBatesDoubleExpModel* qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel(QlBatesDoubleExpDetJumpModel *o) {return ret(new QlBatesDoubleExpModel(*arg(o)));}
+void qlFreeBatesDoubleExpModel(QlBatesDoubleExpModel *o) {del(o);}
+QlHestonModel* qlBatesDoubleExpModelAsHestonModel(QlBatesDoubleExpModel *o) {return ret(new QlHestonModel(*arg(o)));}
 
-void qlFreeLmCorrelationModel(QlLmCorrelationModel *o) { del(o); }
-void qlFreeLmVolatilityModel(QlLmVolatilityModel *o) { del(o); }
+void qlFreeLmCorrelationModel(QlLmCorrelationModel *o) {del(o);}
+void qlFreeLmVolatilityModel(QlLmVolatilityModel *o) {del(o);}
 QlLmCorrelationModel* qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, char **e) {
   try {
     return ret(new QlLmCorrelationModel(alloc(new LmConstWrapperCorrelationModel(*arg(corrModel)))));
@@ -163,16 +163,16 @@ QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, Ql
     return handleException<QlLiborForwardModel*>(e, er);
   }
 }
-QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
-QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
-QlHestonModel* qlBatesModelAsHestonModel(QlBatesModel *o) { return ret(new QlHestonModel(*arg(o))); }
-QlCalibratedModel* qlLiborForwardModelAsCalibratedModel(QlLiborForwardModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
-QlCalibratedModel* qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
-QlCalibratedModel* qlShortRateModelAsCalibratedModel(QlShortRateModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
-QlShortRateModel* qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o) { return ret(new QlShortRateModel(*arg(o))); }
+QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlHestonModel* qlBatesModelAsHestonModel(QlBatesModel *o) {return ret(new QlHestonModel(*arg(o)));}
+QlCalibratedModel* qlLiborForwardModelAsCalibratedModel(QlLiborForwardModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlCalibratedModel* qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlCalibratedModel* qlShortRateModelAsCalibratedModel(QlShortRateModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlShortRateModel* qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o) {return ret(new QlShortRateModel(*arg(o)));}
 
-void qlFreeCalibrationHelper(QlCalibrationHelper *o) { del(o); }
-void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) { del(o); }
+void qlFreeCalibrationHelper(QlCalibrationHelper *o) {del(o);}
+void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
 
 void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
   try {
@@ -269,6 +269,6 @@ double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, char **e)
   }
 }
 
-QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) { return ret(new QlCalibrationHelper(*arg(o))); }
+QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

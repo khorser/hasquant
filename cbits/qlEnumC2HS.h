@@ -1,6 +1,6 @@
 // This file should only by used in C2HS, enums below are extracted from QuantLib headers
 // time/weekday.hpp
-enum Weekday { Sunday    = 1,
+enum Weekday {Sunday    = 1,
   Monday    = 2,
   Tuesday   = 3,
   Wednesday = 4,
@@ -17,7 +17,7 @@ enum Weekday { Sunday    = 1,
 };
 
 // time/date.hpp
-enum Month { January   = 1,
+enum Month {January   = 1,
   February  = 2,
   March     = 3,
   April     = 4,
@@ -104,7 +104,7 @@ enum DateGenerationRule {
 };
 
 // time/timeunit.hpp
-enum TimeUnit { Days,
+enum TimeUnit {Days,
   Weeks,
   Months,
   Years,
@@ -116,7 +116,7 @@ enum TimeUnit { Days,
 };
 
 // time/frequency.hpp
-enum Frequency { NoFrequency = -1,     //!< null frequency
+enum Frequency {NoFrequency = -1,     //!< null frequency
   Once = 0,             //!< only once, e.g., a zero-coupon
   Annual = 1,           //!< once a year
   Semiannual = 2,       //!< twice a year
@@ -132,16 +132,16 @@ enum Frequency { NoFrequency = -1,     //!< null frequency
 };
 
 // time/imm.hpp
-enum ImmMonth { F =  1, G =  2, H =  3,
+enum ImmMonth {F =  1, G =  2, H =  3,
   J =  4, K =  5, M =  6,
   N =  7, Q =  8, U =  9,
-  V = 10, X = 11, Z = 12 };
+  V = 10, X = 11, Z = 12};
 
 // cashflows/duration.hpp
-enum DurationType { Simple, Macaulay, Modified };
+enum DurationType {Simple, Macaulay, Modified};
 
 // time/calendars/jointcalendar.hpp
-enum JointCalendarRule { JoinHolidays,    /*!< A date is a holiday
+enum JointCalendarRule {JoinHolidays,    /*!< A date is a holiday
                                             for the joint calendar
                                             if it is a holiday
                                             for any of the given
@@ -171,7 +171,7 @@ enum PriceType {
 };
 
 // prices.hpp
-enum IntervalPriceType { Open, Close, High, Low };
+enum IntervalPriceType {Open, Close, High, Low};
 
 // experimental/fx/deltavolquote.hpp
 enum DeltaType {
@@ -197,7 +197,7 @@ enum CalibrationErrorType {
   RelativePriceError, PriceError, ImpliedVolError};
 
 // cashflows/duration.hpp
-enum DurationType { Simple, Macaulay, Modified };
+enum DurationType {Simple, Macaulay, Modified};
 
 // money.hpp
 enum MoneyConversionType {
@@ -211,13 +211,13 @@ enum MoneyConversionType {
 };
 
 // exercise.hpp
-enum ExerciseType { American, Bermudan, European };
+enum ExerciseType {American, Bermudan, European};
 
 // position.hpp
-enum PositionType { Long, Short };
+enum PositionType {Long, Short};
 
 // instruments/swaption.hpp
-enum SettlementType { Physical, Cash };
+enum SettlementType {Physical, Cash};
 
 // instruments/swaption.hpp
 enum SettlementMethod {
@@ -228,22 +228,22 @@ enum SettlementMethod {
 };
 
 // instruments/callabilityschedule.hpp
-enum CallabilityType { Call, Put };
+enum CallabilityType {Call, Put};
 
 // instruments/bond.hpp
-enum BondPriceType { Dirty, Clean };
+enum BondPriceType {Dirty, Clean};
 
 // option.hpp
-enum OptionType { Put = -1, Call = 1 };
+enum OptionType {Put = -1, Call = 1};
 
 // instruments/barriertype.hpp
-enum BarrierType { DownIn, UpIn, DownOut, UpOut };
+enum BarrierType {DownIn, UpIn, DownOut, UpOut};
 
 // instruments/swap.hpp
-enum SwapType { Receiver = -1, Payer = 1 };
+enum SwapType {Receiver = -1, Payer = 1};
 
 // compounding.hpp
-enum Compounding { Simple = 0,          //!< \f$ 1+rt \f$
+enum Compounding {Simple = 0,          //!< \f$ 1+rt \f$
   Compounded = 1,      //!< \f$ (1+r)^t \f$
   Continuous = 2,      //!< \f$ e^{rt} \f$
   SimpleThenCompounded, //!< Simple up to the first period then Compounded
@@ -251,7 +251,7 @@ enum Compounding { Simple = 0,          //!< \f$ 1+rt \f$
 };
 
 // instruments/averagetype.hpp
-enum AverageType { Arithmetic, Geometric };
+enum AverageType {Arithmetic, Geometric};
 
 // cashflows/rateaveraging.hpp
 enum RateAveragingType {
@@ -274,7 +274,7 @@ enum PricingModel {
 };
 
 // default.hpp
-enum ProtectionSide { Buyer, Seller };
+enum ProtectionSide {Buyer, Seller};
 
 // experimental/credit/defaulttype.hpp
 enum Seniority {
@@ -351,25 +351,25 @@ enum RoundingType {
 };
 
 // enums values should match with those in ql/time/calendars/*.hpp
-enum AustriaMarket { Settlement, Exchange };
-enum BrazilMarket { Settlement, Exchange };
-enum CanadaMarket { Settlement, TSX };
-enum ChinaMarket { SSE, IB };
-enum FranceMarket { Settlement, Exchange };
-enum GermanyMarket { Settlement, FrankfurtStockExchange, Xetra, Eurex, Euwax };
-enum IndonesiaMarket { BEJ, JSX, IDX };
-enum IsraelMarket { Settlement, TASE };
-enum ItalyMarket { Settlement, Exchange };
-enum RomaniaMarket { Public, BVB };
-enum RussiaMarket { Settlement, MOEX };
-enum SouthKoreaMarket { Settlement, KRX };
-enum UnitedKingdomMarket { Settlement, Exchange, Metals };
-enum UnitedStatesMarket { Settlement, NYSE, GovernmentBond, NERC, LiborImpact, FederalReserve };
+enum AustriaMarket {Settlement, Exchange};
+enum BrazilMarket {Settlement, Exchange};
+enum CanadaMarket {Settlement, TSX};
+enum ChinaMarket {SSE, IB};
+enum FranceMarket {Settlement, Exchange};
+enum GermanyMarket {Settlement, FrankfurtStockExchange, Xetra, Eurex, Euwax};
+enum IndonesiaMarket {BEJ, JSX, IDX};
+enum IsraelMarket {Settlement, TASE};
+enum ItalyMarket {Settlement, Exchange};
+enum RomaniaMarket {Public, BVB};
+enum RussiaMarket {Settlement, MOEX};
+enum SouthKoreaMarket {Settlement, KRX};
+enum UnitedKingdomMarket {Settlement, Exchange, Metals};
+enum UnitedStatesMarket {Settlement, NYSE, GovernmentBond, NERC, LiborImpact, FederalReserve};
 
 // enums values should match with those in ql/time/daycounters/*.hpp
-enum ActualActualConvention { ISMA, Bond, ISDA, Historical, Actual365, AFB, Euro };
-enum Thirty360Convention { USA, BondBasis, European, EurobondBasis, Italian, German, ISMA, ISDA, NASD };
-enum Actual365FixedConvention { Standard, Canadian, NoLeap };
+enum ActualActualConvention {ISMA, Bond, ISDA, Historical, Actual365, AFB, Euro};
+enum Thirty360Convention {USA, BondBasis, European, EurobondBasis, Italian, German, ISMA, ISDA, NASD};
+enum Actual365FixedConvention {Standard, Canadian, NoLeap};
 
 // math/optimization/endcriteria.hpp
 enum EndCriteriaType {EndNone,
@@ -382,21 +382,21 @@ enum EndCriteriaType {EndNone,
 };
 
 // math/statistics/histogram.hpp
-enum HistogramAlgorithm { HistogramNone, Sturges, FD, Scott };
+enum HistogramAlgorithm {HistogramNone, Sturges, FD, Scott};
 
 // methods/finitedifferences/boundarycondition.hpp
-enum BoundaryConditionSide { BoundaryNone, Upper, Lower };
+enum BoundaryConditionSide {BoundaryNone, Upper, Lower};
 
 // methods/finitedifferences/solvers/fdmbackwardsolver.hpp
-enum FdmSchemeType { HundsdorferType, DouglasType,
+enum FdmSchemeType {HundsdorferType, DouglasType,
  CraigSneydType, ModifiedCraigSneydType,
  ImplicitEulerType, ExplicitEulerType,
  MethodOfLinesType, TrBDF2Type,
- CrankNicolsonType };
+ CrankNicolsonType};
 
 // methods/montecarlo/lsmbasissystem.hpp
-enum PolynomialType { Monomial, Laguerre, Hermite, Hyperbolic,
-  Legendre, Chebyshev, Chebyshev2nd };
+enum PolynomialType {Monomial, Laguerre, Hermite, Hyperbolic,
+  Legendre, Chebyshev, Chebyshev2nd};
 
 // pricingengines/vanilla/analytichestonengine.hpp
 enum ComplexLogFormula {
@@ -416,10 +416,10 @@ enum ComplexLogFormula {
 };
 
 // experimental/processes/extendedblackscholesprocess.hpp
-enum ExtendedBlackScholesMertonProcessDiscretization { ExtendedBSMEuler, Milstein, PredictorCorrector };
+enum ExtendedBlackScholesMertonProcessDiscretization {ExtendedBSMEuler, Milstein, PredictorCorrector};
 
 // processes/hestonprocess.hpp
-enum HestonProcessDiscretization { HestonPartialTruncation,
+enum HestonProcessDiscretization {HestonPartialTruncation,
   HestonFullTruncation,
   HestonReflection,
   NonCentralChiSquareVariance,
@@ -431,21 +431,21 @@ enum HestonProcessDiscretization { HestonPartialTruncation,
 };
 
 // processes/gjrgarchprocess.hpp
-enum GJRGARCHProcessDiscretization { GJRGARCHPartialTruncation, GJRGARCHFullTruncation,
+enum GJRGARCHProcessDiscretization {GJRGARCHPartialTruncation, GJRGARCHFullTruncation,
   GJRGARCHReflection};
 
 // processes/hybridhestonhullwhiteprocess.hpp
-enum HybridHestonHullWhiteProcessDiscretization { HybridHestonHullWhiteEuler, BSMHullWhite };
+enum HybridHestonHullWhiteProcessDiscretization {HybridHestonHullWhiteEuler, BSMHullWhite};
 
 // cashflows/conundrumpricer.hpp
-enum YieldCurveModel { Standard,
+enum YieldCurveModel {Standard,
   ExactYield,
   ParallelShifts,
   NonParallelShifts
 };
 
 // termstructures/volatility/swaption/cmsmarketcalibration.hpp
-enum CmsMarketCalibrationType {OnSpread, OnPrice, OnForwardCmsPrice };
+enum CmsMarketCalibrationType {OnSpread, OnPrice, OnForwardCmsPrice};
 
 // termstructures/volatility/equityfx/blackvariancesurface.hp
 enum BlackVarianceSurfaceExtrapolation {
@@ -456,6 +456,6 @@ enum BlackVarianceSurfaceExtrapolation {
 // experimental/volatility/extendedblackvariancesurface.hpp
 enum ExtendedBlackVarianceSurfaceExtrapolation {
   ExtendedBlackVarianceSurfaceConstantExtrapolation,
-  ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation };
+  ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation};
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

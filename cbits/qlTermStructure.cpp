@@ -41,18 +41,18 @@ void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {
   del(p);
 }
 
-QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 
-void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) { del(o); }
-QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) {del(o);}
+QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 
-void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) { del(o); }
-QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
+void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) {del(o);}
+QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
-void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) { del(o); }
-QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
+QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 
-void qlFreeSmileSection(QlSmileSection *o) { del(o); }
+void qlFreeSmileSection(QlSmileSection *o) {del(o);}
 
 QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {
@@ -303,13 +303,13 @@ QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatility
   }
 }
 
-void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) { del(o); }
-QlVolatilityTermStructure* qlCapFloorTermVolSurfaceAsVolatilityTermStructure(QlCapFloorTermVolSurface *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
-void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o) { del(o); }
-QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) {del(o);}
+QlVolatilityTermStructure* qlCapFloorTermVolSurfaceAsVolatilityTermStructure(QlCapFloorTermVolSurface *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o) {del(o);}
+QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 
-void qlFreeBlackVarianceCurve(QlBlackVarianceCurve *o) { del(o); }
-QlBlackVolTermStructure* qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o) { return ret(new QlBlackVolTermStructure(*arg(o))); }
+void qlFreeBlackVarianceCurve(QlBlackVarianceCurve *o) {del(o);}
+QlBlackVolTermStructure* qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
 
 QlLocalVolTermStructure* qlLocalConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {
@@ -457,8 +457,8 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar
   }
 }
 
-void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) { del(o); }
-QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) { return ret(new QlTermStructure(*arg(o))); }
+void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) {del(o);}
+QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {
@@ -475,8 +475,8 @@ QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility(int referenc
   }
 }
 
-void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o) { del(o); }
-QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
+void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o) {del(o);}
+QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e) {
   try {
@@ -528,7 +528,7 @@ QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsign
   }
 }
 
-void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) { del(o); }
+void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) {del(o);}
 
 QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, char **e) {
   try {
@@ -676,7 +676,7 @@ void qlFreeRateHelper(QlRateHelper *helper) {
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<ext::shared_ptr<RateHelper> > instr;
+    std::vector<shared_ptr<RateHelper> > instr;
     std::vector<Handle<Quote> > jumps;
     std::vector<Date> jumpDates;
     for (unsigned i = 0; i < rateLen; ++i)
@@ -750,7 +750,7 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait,
   int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<ext::shared_ptr<RateHelper> > instr;
+    std::vector<shared_ptr<RateHelper> > instr;
     std::vector<Handle<Quote> > jumps;
     std::vector<Date> jumpDates;
     for (unsigned i = 0; i < rateLen; ++i)
@@ -765,7 +765,7 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
     return handleException<QlYieldTermStructure *>(e, er);
   }
 }
-void qlFreeYieldTermStructure(QlYieldTermStructure *ts) { del(ts); }
+void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {del(ts);}
 
 double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e) {
   try {
@@ -807,7 +807,7 @@ try {
   }
 }
 
-void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o) { del(o); }
+void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o) {del(o);}
 
 // generated functions
 InterestRate* qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
@@ -866,8 +866,8 @@ QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned mo
   }
 }
 
-void qlFreeBondHelper(QlBondHelper *o) { del(o); }
-QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) { return ret(new QlRateHelper(*arg(o))); }
+void qlFreeBondHelper(QlBondHelper *o) {del(o);}
+QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) {return ret(new QlRateHelper(*arg(o)));}
 
 FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, char **e) {
   try {
@@ -925,8 +925,8 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigne
   }
 }
 
-void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) { del(o); }
-QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) { return ret(new QlYieldTermStructure(*arg(o))); }
+void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) {del(o);}
+QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) {return ret(new QlYieldTermStructure(*arg(o)));}
 
 double qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve *o, char **e) {
   try {
@@ -944,11 +944,11 @@ int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscoun
   }
 }
 
-void qlFreeSwapRateHelper(QlSwapRateHelper *o) { del(o); }
-QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) { return ret(new QlRateHelper(*arg(o))); }
+void qlFreeSwapRateHelper(QlSwapRateHelper *o) {del(o);}
+QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) {return ret(new QlRateHelper(*arg(o)));}
 
-void qlFreeOISRateHelper(QlOISRateHelper *o) { del(o); }
-QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o) { return ret(new QlRateHelper(*arg(o))); }
+void qlFreeOISRateHelper(QlOISRateHelper *o) {del(o);}
+QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o) {return ret(new QlRateHelper(*arg(o)));}
 
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e) {
   try {
@@ -1096,8 +1096,8 @@ int qlTermStructureMaxDate(QlTermStructure* o, char **e) {
 }
 
 
-void qlFreeTermStructure(QlTermStructure *o) { del(o); }
-QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
+void qlFreeTermStructure(QlTermStructure *o) {del(o);}
+QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e) {
   try {

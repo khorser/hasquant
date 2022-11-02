@@ -1,3 +1,5 @@
+#include <ql/shared_ptr.hpp>
+using QuantLib::ext::shared_ptr;
 #include "qlTermStructureAux.h"
 namespace hasquant {
 #include "qlEnumObjects.h"
@@ -9,7 +11,7 @@ using namespace QuantLib;
 
 // extracted some template-heavy stuff into a separate file to speed up the compilation
 YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
-    const std::vector<ext::shared_ptr<RateHelper> >& instr,
+    const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg) {
@@ -161,7 +163,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
 }
 
 YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &cal,
-    const std::vector<ext::shared_ptr<RateHelper> >& instr,
+    const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg) {
@@ -626,7 +628,7 @@ DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurveAux(
 }
 
 DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenceDate,
-    const std::vector<ext::shared_ptr<DefaultProbabilityHelper> >& instruments,
+    const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg) {
@@ -755,7 +757,7 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenc
 
 QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
     const QuantLib::Calendar& calendar,
-    const std::vector<ext::shared_ptr<DefaultProbabilityHelper> >& instruments,
+    const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg) {

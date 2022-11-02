@@ -28,18 +28,18 @@ typedef SwapIndex *(*makeSwapIndex)(const Period &p, const YieldTermStructureHan
 
 // must match with the order of qlEnumObjects.h:LiborSwapIndexType
 static const makeSwapIndex swapIndices[] = {
-    [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixA(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixB(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EuriborSwapIfrFix(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EuriborSwapIsdaFixA(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new EuriborSwapIsdaFixB(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new GbpLiborSwapIsdaFix(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixAm(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixPm(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixAm(p, h1, h2)); }
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){ return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixPm(p, h1, h2)); }
+    [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixA(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixB(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EuriborSwapIfrFix(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixA(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixB(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new GbpLiborSwapIsdaFix(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixAm(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixPm(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixAm(p, h1, h2));}
+  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixPm(p, h1, h2));}
 };
 
 QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
@@ -55,17 +55,17 @@ QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructur
   }
 }
 
-void qlFreeInterestRateIndex(QlInterestRateIndex *o) { del(o); }
-QlIndex* qlInterestRateIndexAsIndex(QlInterestRateIndex *o) { return ret(new QlIndex(*arg(o))); }
+void qlFreeInterestRateIndex(QlInterestRateIndex *o) {del(o);}
+QlIndex* qlInterestRateIndexAsIndex(QlInterestRateIndex *o) {return ret(new QlIndex(*arg(o)));}
 
-void qlFreeSwapIndex(QlSwapIndex *o) { del(o); }
-QlInterestRateIndex* qlSwapIndexAsInterestRateIndex(QlSwapIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
+void qlFreeSwapIndex(QlSwapIndex *o) {del(o);}
+QlInterestRateIndex* qlSwapIndexAsInterestRateIndex(QlSwapIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
 
-void qlFreeBMAIndex(QlBMAIndex *o) { del(o); }
-QlInterestRateIndex* qlBMAIndexAsInterestRateIndex(QlBMAIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
+void qlFreeBMAIndex(QlBMAIndex *o) {del(o);}
+QlInterestRateIndex* qlBMAIndexAsInterestRateIndex(QlBMAIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
 
-void qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o) { del(o); }
-QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o) { return ret(new QlSwapIndex(*arg(o))); }
+void qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o) {del(o);}
+QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o) {return ret(new QlSwapIndex(*arg(o)));}
 
 QlBMAIndex* qlBMAIndex(QlYieldTermStructure* h, char **e) {
   try {
@@ -219,41 +219,41 @@ typedef IborIndex *(*makeIborIndex)(int l, int u, const YieldTermStructureHandle
 
 // must match with the order of qlEnumObjects:IborIndexType
 static const makeIborIndex iborIndices[] = {
-    [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Cdor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new EURLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new AUDLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new CADLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new CHFLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DKKLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new GBPLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new JPYLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts)); }
-  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts)); }
-  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts)); }
-  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts)); }
-  , [](int l, int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts)); }
-  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new CADLiborON(ts)); }
-  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new EURLiborON(ts)); }
-  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new GBPLiborON(ts)); }
-  , [](int  , int  , const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new USDLiborON(ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Mosprime(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Pribor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Robor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Shibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new THBFIX(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new TRLibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts)); }
-  , [](int l, int u, const YieldTermStructureHandle& ts) { return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts)); }
+    [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Cdor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new EURLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new AUDLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CADLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CHFLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DKKLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new GBPLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new JPYLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CADLiborON(ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new EURLiborON(ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new GBPLiborON(ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLiborON(ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Mosprime(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Pribor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Robor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Shibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new THBFIX(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new TRLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts));}
 };
 
 QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {
@@ -272,13 +272,13 @@ typedef OvernightIndex *(*makeONIndex)(const YieldTermStructureHandle &ts);
 
 // should match the order of qlEnumObjects.h:OvernightIborIndexType
 static const makeONIndex onIndices[] = {
-    [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Aonia(ts)); }
-  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Eonia(ts)); }
-  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Estr(ts)); }
-  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new FedFunds(ts)); }
-  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Nzocr(ts)); }
-  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Sofr(ts)); }
-  , [](const YieldTermStructureHandle &ts){ return static_cast<OvernightIndex *>(new Sonia(ts)); }
+    [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Aonia(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Eonia(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Estr(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new FedFunds(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Nzocr(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Sofr(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Sonia(ts));}
 };
 
 QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e) {
@@ -293,10 +293,10 @@ QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e
   }
 }
 
-QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
+QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
 
-void qlFreeOvernightIndex(QlOvernightIndex *o) { del(o); }
-QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) { return ret(new QlIborIndex(*arg(o))); }
+void qlFreeOvernightIndex(QlOvernightIndex *o) {del(o);}
+QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) {return ret(new QlIborIndex(*arg(o)));}
 
 int qlIborIndexBusinessDayConvention(QlIborIndex* o) {
   return (*arg(o))->businessDayConvention();

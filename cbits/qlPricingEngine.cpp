@@ -180,9 +180,9 @@ QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlS
   }
 }
 
-void qlFreeBlackCalculator(QlBlackCalculator *o) { del(o); }
-void qlFreeBlackScholesCalculator(QlBlackScholesCalculator *o) { del(o); }
-QlBlackCalculator* qlBlackScholesCalculatorAsBlackCalculator(QlBlackScholesCalculator *o) { return ret(new QlBlackCalculator(*arg(o))); }
+void qlFreeBlackCalculator(QlBlackCalculator *o) {del(o);}
+void qlFreeBlackScholesCalculator(QlBlackScholesCalculator *o) {del(o);}
+QlBlackCalculator* qlBlackScholesCalculatorAsBlackCalculator(QlBlackScholesCalculator *o) {return ret(new QlBlackCalculator(*arg(o)));}
 
 double qlBlackCalculatorAlpha(QlBlackCalculator* o, char **e) {
   try {
@@ -913,7 +913,7 @@ QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, uns
   }
 }
 
-void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) { del(o); }
+void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 
 FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e) {
   try {
