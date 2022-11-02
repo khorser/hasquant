@@ -803,7 +803,7 @@ legMeta = Meta qlFreeLeg
 couponLegMeta :: Meta CCouponLeg
 couponLegMeta = Meta qlFreeCouponLeg
 legUpcast :: Upcast CLeg CLeg
-legUpcast = Upcast return nullFunPtr 
+legUpcast = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
 couponLegUpcast :: Upcast CCouponLeg CLeg
 couponLegUpcast = Upcast qlCouponLegAsLeg qlFreeLeg
@@ -1033,7 +1033,7 @@ asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr
 withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
 withIndex (GenIndex (GenForeignPtr x w)) = w x
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x 
+withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
 peekBMAIndex x = do
   np <- newGenForeignPtr bMAIndexMeta bmaIndexUpcast x

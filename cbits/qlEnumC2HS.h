@@ -67,7 +67,7 @@ enum BusinessDayConvention {
                                  end of month, in which case choose
                                  the first business day before the
                                  holiday. */
-  Nearest                      /*!< Choose the nearest business day 
+  Nearest                      /*!< Choose the nearest business day
                                  to the given holiday. If both the
                                  preceding and following business
                                  days are equally far away, default
@@ -389,7 +389,7 @@ enum BoundaryConditionSide { BoundaryNone, Upper, Lower };
 
 // methods/finitedifferences/solvers/fdmbackwardsolver.hpp
 enum FdmSchemeType { HundsdorferType, DouglasType,
- CraigSneydType, ModifiedCraigSneydType, 
+ CraigSneydType, ModifiedCraigSneydType,
  ImplicitEulerType, ExplicitEulerType,
  MethodOfLinesType, TrBDF2Type,
  CrankNicolsonType };
@@ -454,7 +454,7 @@ enum BlackVarianceSurfaceExtrapolation {
 };
 
 // experimental/volatility/extendedblackvariancesurface.hpp
-enum ExtendedBlackVarianceSurfaceExtrapolation { 
+enum ExtendedBlackVarianceSurfaceExtrapolation {
   ExtendedBlackVarianceSurfaceConstantExtrapolation,
   ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation };
 
