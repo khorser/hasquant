@@ -34,7 +34,7 @@ library:
     - split
   verbatim:
     - build-tool-depends: c2hs:c2hs
-  exposed-modules:
+  exposed-modules: # the order is important as it defines the order used by c2hs
     - QuantLib.Type
     - QuantLib.Math
     - QuantLib.Currency

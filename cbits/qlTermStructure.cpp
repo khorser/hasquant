@@ -277,7 +277,7 @@ double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o,
 QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
     // the length of units array is unused
-    std::vector<Period> periods;
+    std::vector<Period> periods; periods.reserve(l);
     for (unsigned i = 0; i < l; ++i)
       periods.push_back(Period(n[i], (TimeUnit)u[i]));
     return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, periods, qlBuildHandleVector(vols, volsLen), *arg(dc)))));
@@ -288,7 +288,7 @@ QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar*
 QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
     // the length of units array is unused
-    std::vector<Period> periods;
+    std::vector<Period> periods; periods.reserve(l);
     for (unsigned i = 0; i < l; ++i)
       periods.push_back(Period(n[i], (TimeUnit)u[i]));
     return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, periods, qlBuildHandleVector(vols, volsLen), *arg(dc)))));
@@ -451,7 +451,7 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {
     // unit len is unused
-    std::vector<Period> periods;
+    std::vector<Period> periods; periods.reserve(l);
     for (unsigned i = 0; i < l; ++i)
       periods.push_back(Period(n[i], (TimeUnit)u[i]));
     return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, periods, std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
@@ -463,7 +463,7 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Cale
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {
     // unit len is unused
-    std::vector<Period> periods;
+    std::vector<Period> periods; periods.reserve(l);
     for (unsigned i = 0; i < l; ++i)
       periods.push_back(Period(n[i], (TimeUnit)u[i]));
     return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, periods, std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
@@ -780,8 +780,7 @@ double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, ch
 }
 
 QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int freq,
-  int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int fl, int fu,
-  QlYieldTermStructure *ts, char **e) {
+  int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int fl, int fu, QlYieldTermStructure *ts, char **e) {
   try {
     return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
 	    Period(l, (TimeUnit)u), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv, *arg(dc), *arg(i),

@@ -388,10 +388,9 @@ void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeek
   }
 }
 
-Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,
-  char **e) {
+Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **e) {
   try {
-    std::vector<Date> d;
+    std::vector<Date> d; d.reserve(len);
     for (unsigned i = 0; i < len; ++i)
       d.push_back(Date(dates[i]));
     return alloc(new Schedule(d, *arg(cal), (BusinessDayConvention) conv));
@@ -400,20 +399,11 @@ Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,
   }
 }
 
-Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal,
-    int conv, int termConv, int rule, int eom, int first, int nextToLast,
-    char **e) {
+Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e) {
   try {
-    return alloc(new Schedule(qlNullableDate(eff),
-			    Date(term),
-			    Period(l, (TimeUnit)u),
-			    *arg(cal),
-			    (BusinessDayConvention) conv,
-			    (BusinessDayConvention) termConv,
-			    (DateGeneration::Rule) rule,
-			    eom,
-			    qlNullableDate(first),
-			    qlNullableDate(nextToLast)));
+    return alloc(new Schedule(qlNullableDate(eff), Date(term), Period(l, (TimeUnit)u), *arg(cal),
+			    (BusinessDayConvention) conv, (BusinessDayConvention) termConv, (DateGeneration::Rule) rule,
+			    eom, qlNullableDate(first), qlNullableDate(nextToLast)));
   } catch (std::exception& er) {
     return handleException<Schedule *>(e, er);
   }

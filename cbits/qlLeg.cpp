@@ -20,7 +20,7 @@ using namespace QuantLib;
 Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
   Leg *leg = 0;
   try {
-    leg = new Leg();
+    leg = new Leg(); leg->reserve(len);
     for (unsigned i = 0; i < len; ++i)
       leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
     return alloc(leg);
@@ -456,7 +456,7 @@ Leg* qlCouponLegAsLeg(CouponLeg *o) {
 CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   CouponLeg *cl = 0;
   try {
-    cl = new CouponLeg();
+    cl = new CouponLeg(); cl->reserve(o->size());
     for (unsigned i = 0; i < o->size(); ++i) {
       shared_ptr<Coupon> c = ext::dynamic_pointer_cast<Coupon>((*o)[i]);
       if (c)
@@ -470,8 +470,7 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   }
 }
 
-QlFloatingRateCouponPricer *qlBlackIborCouponPricer(
-    QlOptionletVolatilityStructure *vol, char **e) {
+QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, char **e) {
   try {
     return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(
 	    Handle<OptionletVolatilityStructure>(*arg(vol)))));
