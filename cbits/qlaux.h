@@ -990,7 +990,13 @@ template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Hand
 
 QuantLib::Matrix qlBuildMatrix(double *a, unsigned r, unsigned c);
 
-template <class T> std::vector<T> qlBuildVector(T **vals, size_t len) {return std::vector<T>(*vals, *vals+len);}
+template <class T>
+std::vector<T> qlBuildVector(T **vals, size_t len) {
+  std::vector<T> r; r.reserve(len);
+  for (size_t i = 0; i < len; ++i)
+    r.push_back(*vals[i]);
+  return r;
+}
 
 template <class T>
 T *handleException(char **msg, std::exception &e, T *t) {

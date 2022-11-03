@@ -15,7 +15,6 @@
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 #include <ql/termstructures/yield/all.hpp>
 #include <ql/math/interpolations/all.hpp>
-#include <algorithm>
 
 #include "qlaux.h"
 #include "qlTermStructure.h"
@@ -29,18 +28,19 @@ using namespace QuantLib;
 
 template <class T>
 std::vector<Handle<T> > qlBuildHandleVector(shared_ptr<T> **vals, size_t len) {
-  std::vector<Handle<T> > r; std::transform(*vals, *vals+len, r.begin(), [](shared_ptr<T> x){return Handle<T>(x);});
+  std::vector<Handle<T> > r; r.reserve(len);
+  for (size_t i = 0; i < len; ++i)
+    r.push_back(Handle<T>(*vals[i]));
   return r;
 }
 
 template <class T>
 std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(shared_ptr<T> **vals, size_t rows, size_t cols) {
-  std::vector< std::vector<Handle<T> > > r;
+  std::vector< std::vector<Handle<T> > > r; r.reserve(rows);
   for (size_t i = 0; i < rows; ++i) {
-    std::vector<Handle<T> > row;
-    for (size_t j = 0; j < cols; ++j) {
+    std::vector<Handle<T> > row; row.reserve(cols);
+    for (size_t j = 0; j < cols; ++j)
       row.push_back(Handle<T>(*vals[i * cols + j]));
-    }
     r.push_back(row);
   }
   return r;
@@ -48,9 +48,7 @@ std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(shared_ptr<T> **vals,
 
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e) {
   try {
-    return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(
-		    days, *arg(cal), (BusinessDayConvention) conv, Handle<Quote>(*q),
-		    *arg(dc))));
+    return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, Handle<Quote>(*q), *arg(dc))));
   } catch (std::exception& er) {
     return handleException<QlOptionletVolatilityStructure *>(e, er);
   }
@@ -672,16 +670,7 @@ QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double f
   double redemption, int issue, char **e) {
   try {
     std::vector<Rate> cpns(coupons, coupons+cLen);
-    return ret(new QlBondHelper(new FixedRateBondHelper(
-	    Handle<Quote>(*arg(quote)),
-	    settlDays,
-	    face,
-	    *arg(sched),
-	    cpns,
-	    *arg(dayCount),
-	    (BusinessDayConvention) conv,
-	    redemption,
-	    qlNullableDate(issue))));
+    return ret(new QlBondHelper(new FixedRateBondHelper(Handle<Quote>(*arg(quote)), settlDays, face, *arg(sched), cpns, *arg(dayCount), (BusinessDayConvention) conv, redemption, qlNullableDate(issue))));
   } catch (std::exception& er) {
     return handleException<QlBondHelper *>(e, er);
   }
@@ -691,9 +680,9 @@ void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<shared_ptr<RateHelper> > instr;
-    std::vector<Handle<Quote> > jumps;
-    std::vector<Date> jumpDates;
+    std::vector<shared_ptr<RateHelper> > instr; instr.reserve(rateLen);
+    std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
+    std::vector<Date> jumpDates; jumpDates.reserve(datesLen);
     for (unsigned i = 0; i < rateLen; ++i)
       instr.push_back(*arg(ratehelpers[i]));
     for (unsigned i = 0; i < quoteLen; ++i)
@@ -722,10 +711,10 @@ QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,
   DayCounter *dayCount, Calendar *cal,
   unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<Date> rds;
+    std::vector<Date> rds; rds.reserve(rateDatesLen);
     std::vector<double> rs(rates, rates+rateLen);
-    std::vector<Handle<Quote> > jumps;
-    std::vector<Date> jumpDates;
+    std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
+    std::vector<Date> jumpDates; jumpDates.reserve(datesLen);
     for (unsigned i = 0; i < rateDatesLen; ++i)
       rds.push_back(Date(rateDates[i]));
     for (unsigned i = 0; i < quoteLen; ++i)
@@ -765,9 +754,9 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait,
   int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<shared_ptr<RateHelper> > instr;
-    std::vector<Handle<Quote> > jumps;
-    std::vector<Date> jumpDates;
+    std::vector<shared_ptr<RateHelper> > instr; instr.reserve(rateLen);
+    std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
+    std::vector<Date> jumpDates; jumpDates.reserve(quoteLen);
     for (unsigned i = 0; i < rateLen; ++i)
       instr.push_back(*arg(ratehelpers[i]));
     for (unsigned i = 0; i < quoteLen; ++i)
@@ -795,11 +784,9 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int
   QlYieldTermStructure *ts, char **e) {
   try {
     return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
-	    Period(l, (TimeUnit)u), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv,
-	    *arg(dc), *arg(i),
+	    Period(l, (TimeUnit)u), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv, *arg(dc), *arg(i),
             s ? Handle<Quote>(*arg(s)) : Handle<Quote>(),
-            Period(fl, (TimeUnit)fu),
-	    ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>())));
+            Period(fl, (TimeUnit)fu), ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>())));
   } catch (std::exception& er) {
     return handleException<QlSwapRateHelper *>(e, er);
   }

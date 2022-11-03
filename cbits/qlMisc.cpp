@@ -88,7 +88,9 @@ char *tracedup(const char *p) {
 }
 
 std::vector<Date> qlDateVector(unsigned len, int *dates) {
-  std::vector<Date> d; std::transform(dates, dates+len, d.begin(), [](int x){return Date(x);});
+  std::vector<Date> d; d.reserve(len);
+  for (unsigned i = 0; i < len; ++i)
+    d.push_back(Date(dates[i]));
   return d;
 }
 
