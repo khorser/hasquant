@@ -15,6 +15,7 @@
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 #include <ql/termstructures/yield/all.hpp>
 #include <ql/math/interpolations/all.hpp>
+#include <algorithm>
 
 #include "qlaux.h"
 #include "qlTermStructure.h"
@@ -26,8 +27,26 @@ namespace hasquant {
 
 using namespace QuantLib;
 
-QlOptionletVolatilityStructure *qlConstantOptionletVol1(
-    unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e) {
+template <class T>
+std::vector<Handle<T> > qlBuildHandleVector(shared_ptr<T> **vals, size_t len) {
+  std::vector<Handle<T> > r; std::transform(*vals, *vals+len, r.begin(), [](shared_ptr<T> x){return Handle<T>(x);});
+  return r;
+}
+
+template <class T>
+std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(shared_ptr<T> **vals, size_t rows, size_t cols) {
+  std::vector< std::vector<Handle<T> > > r;
+  for (size_t i = 0; i < rows; ++i) {
+    std::vector<Handle<T> > row;
+    for (size_t j = 0; j < cols; ++j) {
+      row.push_back(Handle<T>(*vals[i * cols + j]));
+    }
+    r.push_back(row);
+  }
+  return r;
+}
+
+QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e) {
   try {
     return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(
 		    days, *arg(cal), (BusinessDayConvention) conv, Handle<Quote>(*q),

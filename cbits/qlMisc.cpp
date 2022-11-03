@@ -17,10 +17,7 @@
 
 using namespace QuantLib;
 
-int qlSettingsEvaluationDate() {
-  Date d = Settings::instance().evaluationDate();
-  return d.serialNumber();
-}
+int qlSettingsEvaluationDate() {return Date(Settings::instance().evaluationDate()).serialNumber();}
 
 int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
 
@@ -91,15 +88,12 @@ char *tracedup(const char *p) {
 }
 
 std::vector<Date> qlDateVector(unsigned len, int *dates) {
-  std::vector<Date> d;
-  for (unsigned i = 0; i < len; ++i)
-    d.push_back(Date(dates[i]));
+  std::vector<Date> d; std::transform(dates, dates+len, d.begin(), [](int x){return Date(x);});
   return d;
 }
 
 Matrix qlBuildMatrix(double *a, unsigned r, unsigned c) {
-  Matrix m (r, c);
-  std::copy(a, a + r*c, m.begin());
+  Matrix m (r, c); std::copy(a, a+r*c, m.begin());
   return m;
 }
 
@@ -212,11 +206,7 @@ Currency *qlCurrency(int ccy, char **e) {
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
 
-const char *qlCurrencyName(Currency *currency) {
-  std::string name = arg(currency)->name();
-  return DUP(name.c_str());
-}
-
+const char *qlCurrencyName(Currency *currency) {return DUP(arg(currency)->name().c_str());}
 char* qlCurrencyCode(Currency* o) {return DUP(arg(o)->code().c_str());}
 char* qlCurrencyFormat(Currency* o) {return DUP(arg(o)->format().c_str());}
 int qlCurrencyFractionsPerUnit(Currency* o) {return arg(o)->fractionsPerUnit();}

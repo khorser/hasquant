@@ -990,35 +990,8 @@ template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Hand
 
 QuantLib::Matrix qlBuildMatrix(double *a, unsigned r, unsigned c);
 
-template <class T>
-std::vector<T> qlBuildVector(T **vals, size_t len) {
-  std::vector<T> r(*vals, *vals+len);
-  return r;
-}
+template <class T> std::vector<T> qlBuildVector(T **vals, size_t len) {return std::vector<T>(*vals, *vals+len);}
 
-template <class T>
-std::vector<Handle<T> > qlBuildHandleVector(shared_ptr<T> **vals, size_t len) {
-  std::vector<Handle<T> > r;
-  for (size_t i = 0; i < len; ++i) {
-    r.push_back(Handle<T>(*vals[i]));
-  }
-  return r;
-}
-
-template <class T>
-std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(shared_ptr<T> **vals, size_t rows, size_t cols) {
-  std::vector< std::vector<Handle<T> > > r;
-  for (size_t i = 0; i < rows; ++i) {
-    std::vector<Handle<T> > row;
-    for (size_t j = 0; j < cols; ++j) {
-      row.push_back(Handle<T>(*vals[i * cols + j]));
-    }
-    r.push_back(row);
-  }
-  return r;
-}
-
-/* some useful helpers ... well ... I hope they are... */
 template <class T>
 T *handleException(char **msg, std::exception &e, T *t) {
   *msg = DUP(e.what());
