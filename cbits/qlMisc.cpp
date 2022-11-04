@@ -17,7 +17,7 @@
 
 using namespace QuantLib;
 
-int qlSettingsEvaluationDate() {return Date(Settings::instance().evaluationDate()).serialNumber();}
+int qlSettingsEvaluationDate() {return static_cast<Date>(Settings::instance().evaluationDate()).serialNumber();}
 
 int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
 
