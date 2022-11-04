@@ -11,9 +11,14 @@ github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
   - GHC == 9.0.2 # lts-19.30
-  # also tested with lts-18.5 (ghc-8.10.4), lts-15.3 (ghc-8.8.2), lts-16.31 (ghc-8.8.4), lts-14.27 (ghc-8.6.5), lts-13.11 (ghc-8.6.3),
+  #- GHC == 8.10.4 # lts-18.5 
+  #- GHC == 8.8.2  # lts-15.3 
+  #- GHC == 8.8.4  # lts-16.31
+  #- GHC == 8.6.5  # lts-14.27
+  #- GHC == 8.6.3  # lts-13.11
   # for ghc < 8.10 you need to add -P to cpp-options because some c2hs versions didn't like line markers like "# 0" in generated .i files
-  # used to work with lts-6.35 (ghc-7.10.3) until I started using TemplateHaskell (there is no BangType in GHC-7.x and I can't be bothered with maintaining the compatibility)
+  # also used to work with lts-6.35 (ghc-7.10.3) until I started using TemplateHaskell:
+  # there is no BangType in GHC-7.x and I can't be bothered with maintaining the compatibility
 language: Haskell2010
 flags:
   buildExample:
@@ -88,20 +93,12 @@ tests:
       - HUnit
       - QuickCheck
       - hasquant
-    source-dirs: test
-    other-modules:
-      - QuantLib.Example.FRA
-      - QuantLib.Example.Bond
-      - QuantLib.Example.Repo
-      - QuantLib.Example.Swap
-      - QuantLib.Example.CDS
-      - QuantLib.Example.BermudanSwaption
-      - QuantLib.Example.Replication
-      - QuantLib.Example.CallableBond
-      - QuantLib.Example.ConvertibleBond
-      - QuantLib.Example.EquityOption
     ghc-options: -Wall
+    source-dirs:
+      - test
+      - main/test
     main: QuantLib/MainTest.hs
+
 executables:
   hasquant_example:
     when:
@@ -110,22 +107,12 @@ executables:
           buildable: True
         else:
           buildable: False
-    main: QuantLib/MainExample.hs
-    other-modules:
-      - QuantLib.Example.FRA
-      - QuantLib.Example.Bond
-      - QuantLib.Example.Repo
-      - QuantLib.Example.Swap
-      - QuantLib.Example.FittedBondCurve
-      - QuantLib.Example.CDS
-      - QuantLib.Example.BermudanSwaption
-      - QuantLib.Example.Replication
-      - QuantLib.Example.CallableBond
-      - QuantLib.Example.ConvertibleBond
-      - QuantLib.Example.EquityOption
     ghc-options: -Wall
     dependencies:
       - base >= 4.9 && < 5.0
       - time
       - hasquant
-    source-dirs: test
+    source-dirs:
+      - test
+      - main/exe
+    main: QuantLib/MainExample.hs

@@ -115,19 +115,23 @@ library
 executable hasquant_example
   main-is: QuantLib/MainExample.hs
   other-modules:
-      QuantLib.Example.FRA
-      QuantLib.Example.Bond
-      QuantLib.Example.Repo
-      QuantLib.Example.Swap
-      QuantLib.Example.FittedBondCurve
-      QuantLib.Example.CDS
       QuantLib.Example.BermudanSwaption
-      QuantLib.Example.Replication
+      QuantLib.Example.Bond
       QuantLib.Example.CallableBond
+      QuantLib.Example.CDS
       QuantLib.Example.ConvertibleBond
       QuantLib.Example.EquityOption
+      QuantLib.Example.FittedBondCurve
+      QuantLib.Example.FRA
+      QuantLib.Example.Replication
+      QuantLib.Example.Repo
+      QuantLib.Example.Swap
+      Paths_hasquant
+  autogen-modules:
+      Paths_hasquant
   hs-source-dirs:
       test
+      main/exe
   ghc-options: -Wall
   build-depends:
       base >=4.9 && <5.0
@@ -143,18 +147,23 @@ test-suite hasquant_test
   type: exitcode-stdio-1.0
   main-is: QuantLib/MainTest.hs
   other-modules:
-      QuantLib.Example.FRA
-      QuantLib.Example.Bond
-      QuantLib.Example.Repo
-      QuantLib.Example.Swap
-      QuantLib.Example.CDS
       QuantLib.Example.BermudanSwaption
-      QuantLib.Example.Replication
+      QuantLib.Example.Bond
       QuantLib.Example.CallableBond
+      QuantLib.Example.CDS
       QuantLib.Example.ConvertibleBond
       QuantLib.Example.EquityOption
+      QuantLib.Example.FittedBondCurve
+      QuantLib.Example.FRA
+      QuantLib.Example.Replication
+      QuantLib.Example.Repo
+      QuantLib.Example.Swap
+      Paths_hasquant
+  autogen-modules:
+      Paths_hasquant
   hs-source-dirs:
       test
+      main/test
   ghc-options: -Wall
   build-depends:
       HUnit
