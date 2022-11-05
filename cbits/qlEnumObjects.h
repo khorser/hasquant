@@ -1,5 +1,5 @@
 // Enumerations to be mapped to specific QuantLib classes
-// must match with the order of qlCurrency.cpp:ccys
+// must match with the order of qlMisc.cpp:ccys
 enum Ccy {ARS = 0
   , ATS
   , AUD
@@ -83,7 +83,7 @@ enum Ccy {ARS = 0
   , ZEC
 };
 
-// should match with the order of qlCalendar.cpp:calendars
+// should match with the order of qlMisc.cpp:calendars
 enum CalendarCountry {
   Argentina = 0
   , Australia
@@ -129,7 +129,7 @@ enum CalendarCountry {
   , WeekendsOnly
 };
 
-// should match with the order of qlDayCounter.cpp:dayCounters
+// should match with the order of qlMisc.cpp:dayCounters
 enum DayCounterType {
   Actual360 = 0
   , Actual364
