@@ -81,7 +81,7 @@ library:
   when:
     - condition: flag(trackAllocations)
       then:
-        cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
+        cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
       else:
         cxx-options: -Wall -Wextra -pedantic
 tests:

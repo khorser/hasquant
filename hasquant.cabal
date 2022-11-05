@@ -105,7 +105,7 @@ library
     , time
   default-language: Haskell2010
   if flag(trackAllocations)
-    cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS
+    cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
   else
     cxx-options: -Wall -Wextra -pedantic
   build-tool-depends: c2hs:c2hs

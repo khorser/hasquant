@@ -15,6 +15,9 @@
 #include "qlaux.h"
 #include "qlMisc.h"
 
+#ifdef QLTRACK_ALLOCATIONS
+std::ofstream ofs(QLTRACK_ALLOCATIONS);
+#endif
 using namespace QuantLib;
 
 int qlSettingsEvaluationDate() {return static_cast<Date>(Settings::instance().evaluationDate()).serialNumber();}

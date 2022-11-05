@@ -17,7 +17,7 @@ template <class T> T traceval(const char *text, T val);
 /* trace a pointer */
 # define TP(text, p) traceval((text), (p))
 # define TP2(text, p) (void)traceval((text), (p));
-# include <iostream>
+# include <fstream>
 #else
 # define TP(text, p) (p)
 # define TP2(text, p)
@@ -925,9 +925,10 @@ template <> class objClassName<VarianceGammaProcess*> {public: static void outpu
 template <> class objClassName<VegaStressedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "VegaStressedBlackScholesProcess";}};
 template <> class objClassName<VolatilityTermStructure*> {public: static void output(std::ostream& os) {os << "VolatilityTermStructure";}};
 template <> class objClassName<ZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "ZeroSpreadedTermStructure";}};
+extern std::ofstream ofs;
 template <class T>
 T traceval(const char *text, T val) {
-  std::cout << std::endl << text << " "; objClassName<T>::output(std::cout); std::cout << ": " << val << std::endl;
+  ofs << text << " "; objClassName<T>::output(ofs); ofs << ": " << val << std::endl;
   return val;
 }
 #endif
