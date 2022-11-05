@@ -12,3 +12,4 @@ cabal.project.local~
 .stack-work
 _
 stack.yaml.lock
+tags
