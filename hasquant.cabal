@@ -23,16 +23,12 @@ extra-source-files:
     cbits/qlaux.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
-    cbits/qlIndex.h
     cbits/qlInstrument.h
     cbits/qlMisc.h
-    cbits/qlModel.h
     cbits/qlPricingEngine.h
     cbits/qlPricingEngineAux.h
-    cbits/qlProcess.h
     cbits/qlTermStructure.h
     cbits/qlTermStructureAux.h
-    cbits/qlTime.h
     cbits/qlTypesC2HS.h
 
 source-repository head
@@ -85,16 +81,12 @@ library
   include-dirs:
       cbits
   cxx-sources:
-      cbits/qlIndex.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
-      cbits/qlModel.cpp
       cbits/qlPricingEngine.cpp
       cbits/qlPricingEngineAux.cpp
-      cbits/qlProcess.cpp
       cbits/qlTermStructure.cpp
       cbits/qlTermStructureAux.cpp
-      cbits/qlTime.cpp
   extra-libraries:
       QuantLib
       stdc++
