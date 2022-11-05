@@ -477,22 +477,6 @@ using QuantLib::VegaStressedBlackScholesProcess;
 using QuantLib::VolatilityTermStructure;
 using QuantLib::ZeroSpreadedTermStructure;
 using QuantLib::Date;
-// Leg and RateHelper are typedefs so we cannot use forward declaration
-// for them. Using them only when corresponding headers have been included
-// to save some time on compilation
-#ifdef quantlib_ratehelpers_hpp
-using QuantLib::RateHelper;
-#endif
-#ifdef quantlib_cash_flow_hpp
-using QuantLib::Leg;
-#endif
-// DefaultProbabilityHelper is a typedef so we cannot use forward declaration
-#ifdef quantlib_default_probability_helpers_hpp
-using QuantLib::DefaultProbabilityHelper;
-#endif
-#ifdef quantlib_piecewise_zero_spreaded_term_structure_hpp
-using QuantLib::PiecewiseZeroSpreadedTermStructure;
-#endif
 using QuantLib::ext::shared_ptr;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
@@ -607,15 +591,6 @@ typedef shared_ptr<VanillaSwap> QlVanillaSwap;
 typedef shared_ptr<VarianceGammaProcess> QlVarianceGammaProcess;
 typedef shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
 typedef std::vector<shared_ptr<Coupon> > CouponLeg;
-#ifdef quantlib_fitted_bond_discount_curve_hpp
-typedef FittedBondDiscountCurve::FittingMethod FittedBondDiscountCurveFittingMethod;
-#endif
-#ifdef quantlib_ratehelpers_hpp
-typedef shared_ptr<RateHelper> QlRateHelper;
-#endif
-#ifdef quantlib_default_probability_helpers_hpp
-typedef shared_ptr<DefaultProbabilityHelper> QlDefaultProbabilityHelper;
-#endif
 
 #ifdef QLTRACK_ALLOCATIONS
 template <class T> class objClassName {public: static void output(std::ostream& os) {os << typeid(T).name();}};
@@ -950,23 +925,6 @@ template <> class objClassName<VarianceGammaProcess*> {public: static void outpu
 template <> class objClassName<VegaStressedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "VegaStressedBlackScholesProcess";}};
 template <> class objClassName<VolatilityTermStructure*> {public: static void output(std::ostream& os) {os << "VolatilityTermStructure";}};
 template <> class objClassName<ZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "ZeroSpreadedTermStructure";}};
-# ifdef quantlib_cash_flow_hpp
-template <> class objClassName<Leg*> {public: static void output(std::ostream& os) {os << "Leg";}};
-# endif
-# ifdef quantlib_ratehelpers_hpp
-template <> class objClassName<RateHelper*> {public: static void output(std::ostream& os) {os << "RateHelper";}};
-template <> class objClassName<QlRateHelper*> {public: static void output(std::ostream& os) {os << "QlRateHelper";}};
-# endif
-# ifdef quantlib_default_probability_helpers_hpp
-template <> class objClassName<DefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityHelper";}};
-template <> class objClassName<QlDefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityHelper";}};
-# endif
-# ifdef quantlib_fitted_bond_discount_curve_hpp
-template <> class objClassName<FittedBondDiscountCurveFittingMethod*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurveFittingMethod";}};
-# endif
-# ifdef quantlib_piecewise_zero_spreaded_term_structure_hpp
-template <> class objClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
-# endif
 template <class T>
 T traceval(const char *text, T val) {
   std::cout << std::endl << text << " "; objClassName<T>::output(std::cout); std::cout << ": " << val << std::endl;

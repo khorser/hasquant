@@ -262,10 +262,8 @@ extern "C" {
   QlOneAssetOption* qlVanillaSwingOption(QlStrikedTypePayoff* payoff, QlSwingExercise* ex, unsigned minExerciseRights, unsigned maxExerciseRights, char **e);
   QlVanillaOption* qlEuropeanOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e);
 
-  QlBond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate,
-    Leg *coupons, char **e);
-  QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
-    int maturityDate, int issueDate, Leg *cashFlows, char **e);
+  QlBond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate, Leg *coupons, char **e);
+  QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount, int maturityDate, int issueDate, Leg *cashFlows, char **e);
   Leg* qlBondCashflows(QlBond* o, char **e);
   Leg* qlBondRedemptions(QlBond* o, char **e);
   int qlBondSettlementDate(QlBond* o, int d, char **e);
@@ -273,16 +271,10 @@ extern "C" {
   int qlBondMaturityDate(QlBond *bond);
   QlInstrument *qlBondAsInstrument(QlBond *bond);
 
-  QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
-    unsigned cLen, double *coupons, DayCounter *counter,
-    int payConv, double redemption, int issue, Calendar *payCal,
-    char **e);
-  QlBond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
-    int maturity, int payConv, double redemption, int issue, char **e);
-  QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
-    QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
-    unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
-    unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+  QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule, unsigned cLen, double *coupons, DayCounter *counter, int payConv, double redemption, int issue, Calendar *payCal, char **e);
+  QlBond *qlZeroCouponBond(int settlDays, Calendar *cal, double face, int maturity, int payConv, double redemption, int issue, char **e);
+  QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched, QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
+    unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
     int inArrears, double redemption, int issue, char **e);
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
 
@@ -345,6 +337,76 @@ extern "C" {
   QlConvertibleBond* qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned callabilityLen, QlCallability** callability, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
   QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned callabilityLen, QlCallability** callability, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
   QlCallability* qlSoftCallability(double price, int priceType, int date, double trigger, char **e);
+
+  Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e);
+  int qlLegStartDate(Leg *leg, char **e);
+
+  void qlFreeLeg(Leg *leg);
+  Leg *qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e);
+
+  double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  int qlCashFlowsAccrualDays(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsAccrualEndDate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  double qlCashFlowsAccrualPeriod(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsAccrualStartDate(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
+  double qlCashFlowsAccruedAmount(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsAccruedDays(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  double qlCashFlowsAccruedPeriod(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  double qlCashFlowsAtmRate(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double npv, char **e);
+  double qlCashFlowsBasisPointValue1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsBasisPointValue(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsBps1(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsBps2(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsBps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsConvexity1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsConvexity(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsDuration1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  int qlCashFlowsIsExpired(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsMaturityDate(Leg* leg, char **e);
+  double qlCashFlowsNextCashFlowAmount(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsNextCashFlowDate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  double qlCashFlowsNextCouponRate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  double qlCashFlowsNominal(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
+  double qlCashFlowsNpv1(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsNpv2(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsNpv3(Leg* leg, QlYieldTermStructure* discount, double zSpread, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsNpv(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  void qlCashFlowsNpvbps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double *npv, double *bps, char **e);
+  double qlCashFlowsPreviousCashFlowAmount(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsPreviousCashFlowDate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  double qlCashFlowsPreviousCouponRate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
+  int qlCashFlowsReferencePeriodEnd(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
+  int qlCashFlowsReferencePeriodStart(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
+  double qlCashFlowsYield(Leg* leg, double npv, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
+  double qlCashFlowsYieldValueBasisPoint1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsYieldValueBasisPoint(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  double qlCashFlowsZSpread(Leg* leg, double npv, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
+
+  void qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e);
+  void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e);
+
+  void qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, int **days, char **e);
+
+  void qlFreeDividend(QlDividend *o);
+  QlDividend* qlFixedDividend(double amount, int date, char **e);
+  QlDividend* qlFractionalDividend1(double rate, double nominal, int date, char **e);
+  QlDividend* qlFractionalDividend(double rate, int date, char **e);
+
+  Leg* qlAverageBMALeg(Schedule* schedule, QlBMAIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
+  Leg* qlFixedRateLeg(Schedule* schedule, unsigned NotionalsLen, double* Notionals, unsigned couponRatesLen, InterestRate** couponRates, int paymentAdjustment, DayCounter* firstPeriodDayCounter, Calendar* paymentCalendar, char **e);
+  Leg* qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e);
+  Leg* qlOvernightLeg(Schedule* schedule, QlOvernightIndex* overnightIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
+  Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, int, int, int observationConvention, char **e);
+  void qlFreeCouponLeg(CouponLeg *o);
+  Leg* qlCouponLegAsLeg(CouponLeg *o);
+
+  CouponLeg* qlLegToCouponLeg(Leg *o, char **e);
+  QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, char **e);
+  void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
+  QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);
+  QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, char **e);
 #ifdef __cplusplus
 }
 #endif

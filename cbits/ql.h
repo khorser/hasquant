@@ -4,7 +4,6 @@
 #include "qlTime.h"
 #include "qlIndex.h"
 #include "qlInstrument.h"
-#include "qlLeg.h"
 #include "qlModel.h"
 #include "qlPricingEngine.h"
 #include "qlProcess.h"

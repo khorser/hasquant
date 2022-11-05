@@ -17,6 +17,11 @@
 #include <ql/math/interpolations/all.hpp>
 
 #include "qlaux.h"
+using namespace QuantLib;
+// these are typedefs so we cannot use their forward declarations in qlaux.h without including all relevant header files
+typedef shared_ptr<DefaultProbabilityHelper> QlDefaultProbabilityHelper;
+typedef shared_ptr<RateHelper> QlRateHelper;
+typedef FittedBondDiscountCurve::FittingMethod FittedBondDiscountCurveFittingMethod;
 #include "qlTermStructure.h"
 #include "qlTermStructureAux.h"
 
@@ -24,7 +29,15 @@ namespace hasquant {
 #include "qlEnumObjects.h"
 }
 
-using namespace QuantLib;
+
+#ifdef QLTRACK_ALLOCATIONS
+template <> class objClassName<DefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityHelper";}};
+template <> class objClassName<QlDefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityHelper";}};
+template <> class objClassName<RateHelper*> {public: static void output(std::ostream& os) {os << "RateHelper";}};
+template <> class objClassName<QlRateHelper*> {public: static void output(std::ostream& os) {os << "QlRateHelper";}};
+template <> class objClassName<FittedBondDiscountCurveFittingMethod*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurveFittingMethod";}};
+template <> class objClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
+#endif
 
 template <class T>
 std::vector<Handle<T> > qlBuildHandleVector(shared_ptr<T> **vals, size_t len) {

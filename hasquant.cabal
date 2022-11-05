@@ -25,7 +25,6 @@ extra-source-files:
     cbits/qlEnumObjects.h
     cbits/qlIndex.h
     cbits/qlInstrument.h
-    cbits/qlLeg.h
     cbits/qlMisc.h
     cbits/qlModel.h
     cbits/qlPricingEngine.h
@@ -88,7 +87,6 @@ library
   cxx-sources:
       cbits/qlIndex.cpp
       cbits/qlInstrument.cpp
-      cbits/qlLeg.cpp
       cbits/qlMisc.cpp
       cbits/qlModel.cpp
       cbits/qlPricingEngine.cpp
