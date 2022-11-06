@@ -80,7 +80,7 @@ library:
   include-dirs: cbits
   when:
     - condition: flag(trackAllocations)
-      then:
+      then: # log allocations to stderr
         cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
       else:
         cxx-options: -Wall -Wextra -pedantic
