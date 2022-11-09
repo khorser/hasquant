@@ -51,6 +51,7 @@ library:
     - QuantLib.Index
     - QuantLib.Instrument
     - QuantLib.Quote
+    - QuantLib.Method
     - QuantLib.TermStructure
     - QuantLib.TermStructure.Yield
     - QuantLib.TermStructure.Credit
