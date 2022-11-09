@@ -312,15 +312,15 @@ private:
   std::function<const Sample<MultiPath>& ()> _antithetic;
 };
 
-PolymorphicPathGenerator* qlPathGenerator(int rngtrait, const shared_ptr<StochasticProcess> p, const TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge) {
+PolymorphicPathGenerator* qlPathGeneratorAux(int rngtrait, const shared_ptr<StochasticProcess> p, const TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge) {
   return new PolymorphicPathGenerator(rngtrait, p, grid, seed, dim, brownianBridge);
 }
 
-PolymorphicPathGenerator* qlSobolPathGenerator(SobolRsg::DirectionIntegers dir, const shared_ptr<StochasticProcess> p, const TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge) {
+PolymorphicPathGenerator* qlSobolPathGeneratorAux(SobolRsg::DirectionIntegers dir, const shared_ptr<StochasticProcess> p, const TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge) {
   return new PolymorphicPathGenerator(dir, p, grid, seed, dim, brownianBridge);
 }
 
-void qlDelPolymorphicPathGenerator(PolymorphicPathGenerator *p) {delete p;}
+void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p) {delete p;}
 const Sample<MultiPath>& qlPathGeneratorNext(PolymorphicPathGenerator *p) {return p->next();} 
 const Sample<MultiPath>& qlPathGeneratorAntithetic(PolymorphicPathGenerator *p) {return p->antithetic();} 
 

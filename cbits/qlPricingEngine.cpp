@@ -1446,7 +1446,7 @@ QlKlugeExtOUProcess* qlKlugeExtOUProcess(double rho, QlExtOUWithJumpsProcess* kl
 }
 QlLiborForwardModelProcess* qlLiborForwardModelProcess(unsigned size, QlIborIndex* index, char **e) {
   try {
-    return ret(new QlLiborForwardModelProcess(alloc(new LiborForwardModelProcess(size, (*arg(index))))));
+    return ret(new QlLiborForwardModelProcess(alloc(new LiborForwardModelProcess(size, *arg(index)))));
   } catch (std::exception& er) {
     return handleException<QlLiborForwardModelProcess*>(e, er);
   }
@@ -1481,6 +1481,22 @@ QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticP
   }
 }
 
-void qlFreePathGenerator(PolymorphicPathGenerator *gen) {qlDelPolymorphicPathGenerator(gen);}
+void qlFreePathGenerator(PolymorphicPathGenerator *gen) {qlFreePolymorphicPathGeneratorAux(gen);}
+
+PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
+  try {
+    return ret(qlPathGeneratorAux(rngtrait, *arg(p), *arg(t), seed, dim, brownianBridge));
+  } catch (std::exception& er) {
+    return handleException<PolymorphicPathGenerator*>(e, er);
+  }
+}
+
+PolymorphicPathGenerator *qlSobolPathGenerator(int dir, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
+  try {
+    return ret(qlSobolPathGeneratorAux((SobolRsg::DirectionIntegers)dir, *arg(p), *arg(t), seed, dim, brownianBridge));
+  } catch (std::exception& er) {
+    return handleException<PolymorphicPathGenerator*>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
