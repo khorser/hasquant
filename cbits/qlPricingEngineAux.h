@@ -17,4 +17,7 @@ QuantLib::PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const shared_pt
 
 QuantLib::PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const QuantLib::FdmSchemeDesc &fdScheme);
 
+class PolymorphicPathGenerator;
+PolymorphicPathGenerator* qlPathGenerator(int rngtrait, const shared_ptr<QuantLib::StochasticProcess> p, QuantLib::TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBrdige);
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

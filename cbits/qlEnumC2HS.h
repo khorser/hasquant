@@ -458,4 +458,9 @@ enum ExtendedBlackVarianceSurfaceExtrapolation {
   ExtendedBlackVarianceSurfaceConstantExtrapolation,
   ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation};
 
+// math/randomnumbers/sobolrsg.hpp
+enum SobolDirectionIntegers {
+  Unit, Jaeckel, SobolLevitan, SobolLevitanLemieux,
+  JoeKuoD5, JoeKuoD6, JoeKuoD7, Kuo, Kuo2, Kuo3};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

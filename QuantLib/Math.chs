@@ -21,6 +21,7 @@ module QuantLib.Math
   , EndCriteria(..)
   , OptimizationMethod(..)
   , Constraint(..)
+  , SobolDirectionIntegers(..)
 
   , Matrix
   , realMatrix
@@ -62,6 +63,8 @@ import QuantLib.Internal.Type
 {#enum ComplexLogFormula{} deriving(Show, Eq)#}
 
 {#enum CmsMarketCalibrationType{} deriving(Show, Eq)#}
+
+{#enum SobolDirectionIntegers{} deriving(Show, Eq)#}
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 

@@ -143,7 +143,7 @@ enum DayCounterType {
 
 #define NO_ENUM -100;
 
-// must match with the order of qlIborIndex.cpp:onIndices
+// must match with the order of qlTermStructure.cpp.cpp:onIndices
 enum OvernightIborIndexType {
   Aonia = 0
   , Eonia
@@ -154,7 +154,7 @@ enum OvernightIborIndexType {
   , Sonia
 };
 
-// must match with the order of qlIndex.cpp:swapIndices
+// must match with the order of qlTermStructure.cpp:swapIndices
 enum LiborSwapIndexType {
   ChfLiborSwapIsdaFix = 0
   , EurLiborSwapIfrFix
@@ -170,7 +170,7 @@ enum LiborSwapIndexType {
   , UsdLiborSwapIsdaFixPm
 };
 
-// must match with the order of qlIborIndex.cpp:iborIndices
+// must match with the order of qlTermStructure.cpp:iborIndices
 enum IborIndexType {
   Bbsw = 0
   , Bibor

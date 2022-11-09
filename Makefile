@@ -16,8 +16,8 @@ cobj/libql.a: $(OBJ)
 cobj/qlPricingEngineAux.o: cbits/qlPricingEngineAux.cpp cbits/qlPricingEngineAux.h | cobj
 	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlPricingEngineAux.o cbits/qlPricingEngineAux.cpp
 
-cobj/qlTSAux.o: cbits/qlTSAux.cpp cbits/qlTSAux.h | cobj
-	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlTSAux.o cbits/qlTSAux.cpp
+cobj/qlTermStructureAux.o: cbits/qlTermStructureAux.cpp cbits/qlTermStructureAux.h | cobj
+	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlTermStructureAux.o cbits/qlTermStructureAux.cpp
 
 cobj/qlPricingEngine.o: cbits/qlPricingEngine.cpp cbits/qlaux.h cbits/qlPricingEngine.h cbits/qlPricingEngineAux.h | cobj
 
