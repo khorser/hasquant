@@ -30,8 +30,9 @@ std::ofstream ofs(QLTRACK_ALLOCATIONS);
 #endif
 using namespace QuantLib;
 
-int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate().operator Date().serialNumber();}
+/* dates are passed as int = serial number of the date, the code assumes that Haskell bindings validate date */
 
+int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate().operator Date().serialNumber();}
 int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
 
 void qlSettingsSetEvaluationDate(int x, char **e) {
@@ -43,21 +44,13 @@ void qlSettingsSetEvaluationDate(int x, char **e) {
 }
 
 void qlSettingsSetEnforceTodaysHistoricFixings(int x) {Settings::instance().enforcesTodaysHistoricFixings() = x;}
-
 int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().includeTodaysCashFlows());}
-
 void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
-
 int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
-
 void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
-
 void *qlSavedSettings() {return new SavedSettings();}
-
 void qlFreeSavedSettings(void *settings) {delete (SavedSettings *)settings;}
-
 const char *qlVersion() {return QL_VERSION;}
-
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
 void qlFreeString(char *p) {
@@ -73,21 +66,13 @@ void qlFreeString(char *p) {
 }
 
 int *qlAllocateInts(size_t size) {return new int[size];}
-
 void qlFreeInts(int *p) {delete[] p;}
-
 void qlFreeUInts(unsigned *p) {delete[] p;}
-
 double *qlAllocateDoubles(size_t size) {return new double[size];}
-
 void qlFreeDoubles(double *p) {delete[] p;}
-
 const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Date() : Date(serialNumber);}
-
 int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
-
 boost::optional<bool> qlOptBool(int b) {return b == -1 ? boost::none : boost::optional<bool>(b);}
-
 int qlOptBool(boost::optional<bool> b) {return b ? *b : -1;}
 
 char *tracedup(const char *p) {
@@ -113,13 +98,9 @@ Matrix qlBuildMatrix(double *a, unsigned r, unsigned c) {
 }
 
 void **qlAllocatePointerArray(size_t size) {return new void*[size];}
-
 void qlFreePointerArray(void **p) {delete[] p;}
-
 int qlNullInteger() {return QL_NULL_INTEGER;}
-
 double qlNullReal() {return QL_NULL_REAL;}
-
 double qlEpsilon() {return QL_EPSILON;}
 
 typedef Currency *(*makeCcy)();

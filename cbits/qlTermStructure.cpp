@@ -36,12 +36,12 @@ namespace hasquant {
 }
 
 #ifdef QLTRACK_ALLOCATIONS
-template <> class objClassName<DefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityHelper";}};
-template <> class objClassName<QlDefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityHelper";}};
-template <> class objClassName<RateHelper*> {public: static void output(std::ostream& os) {os << "RateHelper";}};
-template <> class objClassName<QlRateHelper*> {public: static void output(std::ostream& os) {os << "QlRateHelper";}};
-template <> class objClassName<FittedBondDiscountCurveFittingMethod*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurveFittingMethod";}};
-template <> class objClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
+template <> class ObjClassName<DefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityHelper";}};
+template <> class ObjClassName<QlDefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityHelper";}};
+template <> class ObjClassName<RateHelper*> {public: static void output(std::ostream& os) {os << "RateHelper";}};
+template <> class ObjClassName<QlRateHelper*> {public: static void output(std::ostream& os) {os << "QlRateHelper";}};
+template <> class ObjClassName<FittedBondDiscountCurveFittingMethod*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurveFittingMethod";}};
+template <> class ObjClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
 #endif
 
 template <class T>

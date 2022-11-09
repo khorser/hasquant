@@ -62,7 +62,7 @@ using namespace QuantLib;
 #include "qlMisc.h"
 
 #ifdef QLTRACK_ALLOCATIONS
-template <> class objClassName<Leg*> {public: static void output(std::ostream& os) {os << "Leg";}};
+template <> class ObjClassName<Leg*> {public: static void output(std::ostream& os) {os << "Leg";}};
 #endif
 
 double qlInstrumentNPV(QlInstrument *instr, char **e) {

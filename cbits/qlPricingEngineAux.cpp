@@ -269,39 +269,59 @@ private:
   typedef MultiPathGenerator<PoissonPseudoRandom::rsg_type> PoissonPathGenerator;
   typedef MultiPathGenerator<Ziggurat::rsg_type> ZigguratPathGenerator;
 public:
-  PolymorphicPathGenerator(int rngtrait, const shared_ptr<StochasticProcess> p, TimeGrid &t, unsigned seed, unsigned dim, bool brownianBridge) {
+  PolymorphicPathGenerator(int rngtrait, const shared_ptr<StochasticProcess> p, const TimeGrid &t, unsigned seed, unsigned dim, bool brownianBridge) {
+    init(rngtrait, p, t, seed, dim, brownianBridge, SobolRsg::Jaeckel);
+  }
+  PolymorphicPathGenerator(SobolRsg::DirectionIntegers dir, const shared_ptr<StochasticProcess> p, const TimeGrid &t, unsigned seed, unsigned dim, bool brownianBridge) {
+    init(hasquant::LowDiscrepancy, p, t, seed, dim, brownianBridge, dir);
+  }
+  const Sample<MultiPath>& next() const {return _next();}
+  const Sample<MultiPath>& antithetic() const {return _antithetic();}
+private:
+  void init(int rngtrait, const shared_ptr<StochasticProcess> p, const TimeGrid &t, unsigned seed, unsigned dim, bool brownianBridge, SobolRsg::DirectionIntegers dir) {
     switch (rngtrait) {
     case hasquant::PseudoRandom:
       _pseudoRandom = std::unique_ptr<PseudoRandomPathGenerator>(new PseudoRandomPathGenerator(p, t, PseudoRandom::rsg_type(PseudoRandom::ursg_type(dim, PseudoRandom::urng_type(seed))), brownianBridge));
       _next = std::bind(static_cast<const Sample<MultiPath>& (PseudoRandomPathGenerator::*)() const>(&PseudoRandomPathGenerator::next), _pseudoRandom.get());
+      _antithetic = std::bind(&PseudoRandomPathGenerator::antithetic, _pseudoRandom.get());
       break;
     case hasquant::PoissonPseudoRandom:
       _poisson = std::unique_ptr<PoissonPathGenerator>(new PoissonPathGenerator(p, t, PoissonPseudoRandom::rsg_type(PoissonPseudoRandom::ursg_type(dim, PoissonPseudoRandom::urng_type(seed))), brownianBridge));
       _next = std::bind(static_cast<const Sample<MultiPath>& (PoissonPathGenerator::*)() const>(&PoissonPathGenerator::next), _poisson.get());
+      _antithetic = std::bind(&PoissonPathGenerator::antithetic, _poisson.get());
       break;
     case hasquant::LowDiscrepancy:
-      _sobol = std::unique_ptr<SobolPathGenerator>(new SobolPathGenerator(p, t, LowDiscrepancy::rsg_type(SobolRsg(dim, seed)), brownianBridge));
+      _sobol = std::unique_ptr<SobolPathGenerator>(new SobolPathGenerator(p, t, LowDiscrepancy::rsg_type(SobolRsg(dim, seed, dir)), brownianBridge));
       _next = std::bind(static_cast<const Sample<MultiPath>& (SobolPathGenerator::*)() const>(&SobolPathGenerator::next), _sobol.get());
+      _antithetic = std::bind(&SobolPathGenerator::antithetic, _sobol.get());
       break;
     case hasquant::Ziggurat:
       _ziggurat = std::unique_ptr<ZigguratPathGenerator>(new ZigguratPathGenerator(p, t, Ziggurat::rsg_type(dim, ZigguratRng(seed)), brownianBridge));
       _next = std::bind(static_cast<const Sample<MultiPath>& (ZigguratPathGenerator::*)() const>(&ZigguratPathGenerator::next), _ziggurat.get());
+      _antithetic = std::bind(&ZigguratPathGenerator::antithetic, _ziggurat.get());
       break;
     default:
       QL_FAIL("Unknown RNG "<< rngtrait);
-    };
+    }
   }
-  PolymorphicPathGenerator(SobolRsg::DirectionIntegers dir, const shared_ptr<StochasticProcess> p, TimeGrid &t, unsigned seed, unsigned dim, bool brownianBridge) {
-    _sobol = std::unique_ptr<SobolPathGenerator>(new SobolPathGenerator(p, t, LowDiscrepancy::rsg_type(SobolRsg(dim, seed, dir)), brownianBridge));
-    _next = std::bind(static_cast<const Sample<MultiPath>& (SobolPathGenerator::*)() const>(&SobolPathGenerator::next), _sobol.get());
-  }
-  const Sample<MultiPath>& next() {return _next();}
-private:
   std::unique_ptr<PseudoRandomPathGenerator> _pseudoRandom;
   std::unique_ptr<SobolPathGenerator> _sobol;
   std::unique_ptr<PoissonPathGenerator> _poisson;
   std::unique_ptr<ZigguratPathGenerator> _ziggurat;
   std::function<const Sample<MultiPath>& ()> _next;
+  std::function<const Sample<MultiPath>& ()> _antithetic;
 };
+
+PolymorphicPathGenerator* qlPathGenerator(int rngtrait, const shared_ptr<StochasticProcess> p, const TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge) {
+  return new PolymorphicPathGenerator(rngtrait, p, grid, seed, dim, brownianBridge);
+}
+
+PolymorphicPathGenerator* qlSobolPathGenerator(SobolRsg::DirectionIntegers dir, const shared_ptr<StochasticProcess> p, const TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge) {
+  return new PolymorphicPathGenerator(dir, p, grid, seed, dim, brownianBridge);
+}
+
+void qlDelPolymorphicPathGenerator(PolymorphicPathGenerator *p) {delete p;}
+const Sample<MultiPath>& qlPathGeneratorNext(PolymorphicPathGenerator *p) {return p->next();} 
+const Sample<MultiPath>& qlPathGeneratorAntithetic(PolymorphicPathGenerator *p) {return p->antithetic();} 
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

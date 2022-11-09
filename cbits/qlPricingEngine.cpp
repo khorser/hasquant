@@ -1481,4 +1481,6 @@ QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticP
   }
 }
 
+void qlFreePathGenerator(PolymorphicPathGenerator *gen) {qlDelPolymorphicPathGenerator(gen);}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

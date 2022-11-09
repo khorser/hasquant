@@ -125,3 +125,4 @@ typedef struct QlVanillaSwap QlVanillaSwap;
 typedef struct QlVarianceGammaProcess QlVarianceGammaProcess;
 typedef struct QlVolatilityTermStructure QlVolatilityTermStructure;
 typedef struct QlYieldTermStructure QlYieldTermStructure;
+typedef struct PolymorphicPathGenerator;

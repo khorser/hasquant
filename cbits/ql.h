@@ -1,6 +1,3 @@
-/* dates are passed as int = serial number o the date.
- * the code assumes that Haskell bindings validate date */
-
 #include "qlInstrument.h"
 #include "qlPricingEngine.h"
 #include "qlMisc.h"

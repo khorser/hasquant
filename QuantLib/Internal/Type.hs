@@ -53,6 +53,10 @@ module QuantLib.Internal.Type
   , peekDefaultProbabilityHelper
   , withDefaultProbabilityHelper
   , withDefaultProbabilityHelperArray
+  , CPathGenerator
+  , PathGenerator
+  , peekPathGenerator
+  , withPathGenerator
 
   , CQlClaim
   , QlClaim
@@ -643,6 +647,16 @@ withDefaultProbabilityHelper :: DefaultProbabilityHelper -> (Ptr CDefaultProbabi
 withDefaultProbabilityHelper = withStandalone . getCDefaultProbabilityHelper
 withDefaultProbabilityHelperArray :: [DefaultProbabilityHelper] -> ((CUInt, Ptr (Ptr CDefaultProbabilityHelper)) -> IO b) -> IO b
 withDefaultProbabilityHelperArray = withStandaloneArray getCDefaultProbabilityHelper
+
+data CPathGenerator
+newtype PathGenerator = PathGenerator {getCPathGenerator :: Standalone CPathGenerator}
+foreign import ccall "ql.h &qlFreePathGenerator" qlFreePathGenerator :: FinalizerPtr CPathGenerator
+pathGeneratorMeta :: Meta CPathGenerator
+pathGeneratorMeta = Meta qlFreePathGenerator
+peekPathGenerator :: Ptr CPathGenerator -> IO PathGenerator
+peekPathGenerator = peekStandalone pathGeneratorMeta >=> return . PathGenerator
+withPathGenerator :: PathGenerator -> (Ptr CPathGenerator -> IO b) -> IO b
+withPathGenerator = withStandalone . getCPathGenerator
 
 -- special cases: those types will be represented as enums so no need to wrap them
 data CQlClaim
