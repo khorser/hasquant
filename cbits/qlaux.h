@@ -477,6 +477,7 @@ using QuantLib::VegaStressedBlackScholesProcess;
 using QuantLib::VolatilityTermStructure;
 using QuantLib::ZeroSpreadedTermStructure;
 using QuantLib::Date;
+using QuantLib::Matrix;
 using QuantLib::ext::shared_ptr;
 
 class PolymorphicPathGenerator;
@@ -944,17 +945,26 @@ template <class T> T ret(T p) {return TP("returned", p);}
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);
-std::vector<Date> qlDateVector(unsigned len, int *dates);
+
+inline std::vector<Date> qlDateVector(int *dates, unsigned len) {
+  std::vector<Date> d; d.reserve(len);
+  for (unsigned i = 0; i < len; ++i)
+    d.push_back(Date(dates[i]));
+  return d;
+}
+
+inline Matrix qlMatrix(double *a, unsigned r, unsigned c) {
+  Matrix m (r, c); std::copy(a, a+r*c, m.begin());
+  return m;
+}
 
 boost::optional<bool> qlOptBool(int b);
 int qlOptBool(boost::optional<bool> b);
 
 template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}
 
-QuantLib::Matrix qlBuildMatrix(double *a, unsigned r, unsigned c);
-
 template <class T>
-std::vector<T> qlBuildVector(T **vals, size_t len) {
+inline std::vector<T> qlVector(T **vals, size_t len) {
   std::vector<T> r; r.reserve(len);
   for (size_t i = 0; i < len; ++i)
     r.push_back(*vals[i]);

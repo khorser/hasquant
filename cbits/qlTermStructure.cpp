@@ -45,15 +45,15 @@ template <> class ObjClassName<PiecewiseZeroSpreadedTermStructure*> {public: sta
 #endif
 
 template <class T>
-std::vector<Handle<T> > qlBuildHandleVector(shared_ptr<T> **vals, size_t len) {
+inline std::vector<Handle<T> > qlHandleVector(shared_ptr<T> **vals, size_t len) {
   std::vector<Handle<T> > r; r.reserve(len);
   for (size_t i = 0; i < len; ++i)
-    r.push_back(Handle<T>(*vals[i]));
+    r.push_back(Handle<T>(*arg(vals[i])));
   return r;
 }
 
 template <class T>
-std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(shared_ptr<T> **vals, size_t rows, size_t cols) {
+inline std::vector< std::vector<Handle<T> > > qlHandleMatrix(shared_ptr<T> **vals, size_t rows, size_t cols) {
   std::vector< std::vector<Handle<T> > > r; r.reserve(rows);
   for (size_t i = 0; i < rows; ++i) {
     std::vector<Handle<T> > row; row.reserve(cols);
@@ -62,6 +62,13 @@ std::vector< std::vector<Handle<T> > > qlBuildHandleMatrix(shared_ptr<T> **vals,
     r.push_back(row);
   }
   return r;
+}
+
+inline std::vector<Period> qlPeriodVector(int *num, int *unit, unsigned len) {
+  std::vector<Period> periods; periods.reserve(len);
+  for (unsigned i = 0; i < len; ++i)
+    periods.push_back(Period(num[i], (TimeUnit)unit[i]));
+  return periods;
 }
 
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e) {
@@ -295,10 +302,8 @@ double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o,
 QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
     // the length of units array is unused
-    std::vector<Period> periods; periods.reserve(l);
-    for (unsigned i = 0; i < l; ++i)
-      periods.push_back(Period(n[i], (TimeUnit)u[i]));
-    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, periods, qlBuildHandleVector(vols, volsLen), *arg(dc)))));
+    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc,
+              qlPeriodVector(n, u, l), qlHandleVector(vols, volsLen), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlVolatilityTermStructure*>(e, er);
   }
@@ -306,10 +311,8 @@ QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar*
 QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
   try {
     // the length of units array is unused
-    std::vector<Period> periods; periods.reserve(l);
-    for (unsigned i = 0; i < l; ++i)
-      periods.push_back(Period(n[i], (TimeUnit)u[i]));
-    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, periods, qlBuildHandleVector(vols, volsLen), *arg(dc)))));
+    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
+              qlPeriodVector(n, u, l), qlHandleVector(vols, volsLen), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlVolatilityTermStructure*>(e, er);
   }
@@ -441,7 +444,7 @@ void setInterpolation(T* o, int interpolator, int approximator, int approximator
 QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e) {
   BlackVarianceCurve *c = 0;
   try {
-    c = new BlackVarianceCurve(Date(referenceDate), qlDateVector(datesLen, dates), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance);
+    c = new BlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance);
     if (interpolator != QL_NULL_INTEGER)
       setInterpolation(c, interpolator, approximator, approximatorArg);
     return ret(new QlBlackVarianceCurve(alloc(c)));
@@ -454,7 +457,7 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
 QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, int interpolator, int approximator, int approximatorArg*/, char **e) {
   BlackVarianceSurface *s = 0;
   try {
-    s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(datesLen, dates), std::vector<double>(strikes, strikes+strikesLen), qlBuildMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);
+    s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(dates, datesLen), std::vector<double>(strikes, strikes+strikesLen), qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);
     /* TODO uncomment when 2-D Interpolation is added
     if (interpolation)
       setInterpolation(s, interpolation);
@@ -469,10 +472,8 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {
     // unit len is unused
-    std::vector<Period> periods; periods.reserve(l);
-    for (unsigned i = 0; i < l; ++i)
-      periods.push_back(Period(n[i], (TimeUnit)u[i]));
-    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, periods, std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
+    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
+              qlPeriodVector(n, u, l), std::vector<double>(strikes, strikes+strikesLen), qlHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlCapFloorTermVolSurface*>(e, er);
   }
@@ -481,10 +482,8 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Cale
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {
     // unit len is unused
-    std::vector<Period> periods; periods.reserve(l);
-    for (unsigned i = 0; i < l; ++i)
-      periods.push_back(Period(n[i], (TimeUnit)u[i]));
-    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, periods, std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
+    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc,
+              qlPeriodVector(n, u, l), std::vector<double>(strikes, strikes+strikesLen), qlHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlCapFloorTermVolSurface*>(e, er);
   }
@@ -540,21 +539,21 @@ QlDefaultProbabilityTermStructure* qlSpreadedHazardRateCurve(QlDefaultProbabilit
 }
 QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), interpolator, approximator, approximatorArg))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
 }
 QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedHazardRateCurveAux(qlDateVector(datesLen, dates), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), interpolator, approximator, approximatorArg))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedHazardRateCurveAux(qlDateVector(dates, datesLen), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
 }
 QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), interpolator, approximator, approximatorArg))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }
@@ -579,7 +578,7 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
 
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), trait, interpolator, approximator, approximatorArg);
+    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
@@ -588,7 +587,7 @@ QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, un
 
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jDatesLen, jumpDates), trait, interpolator, approximator, approximatorArg);
+    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
@@ -678,8 +677,8 @@ QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays
 QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
   Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e) {
   try {
-    std::vector<Rate> cpns(coupons, coupons+cLen);
-    return ret(new QlBondHelper(new FixedRateBondHelper(Handle<Quote>(*arg(quote)), settlDays, face, *arg(sched), cpns, *arg(dayCount), (BusinessDayConvention) conv, redemption, qlNullableDate(issue))));
+    return ret(new QlBondHelper(new FixedRateBondHelper(Handle<Quote>(*arg(quote)), settlDays, face, *arg(sched),
+            std::vector<Rate>(coupons, coupons+cLen), *arg(dayCount), (BusinessDayConvention) conv, redemption, qlNullableDate(issue))));
   } catch (std::exception& er) {
     return handleException<QlBondHelper *>(e, er);
   }
@@ -689,16 +688,8 @@ void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<shared_ptr<RateHelper> > instr; instr.reserve(rateLen);
-    std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
-    std::vector<Date> jumpDates; jumpDates.reserve(datesLen);
-    for (unsigned i = 0; i < rateLen; ++i)
-      instr.push_back(*arg(ratehelpers[i]));
-    for (unsigned i = 0; i < quoteLen; ++i)
-      jumps.push_back(Handle<Quote>(*arg(quotes[i])));
-    for (unsigned i = 0; i < datesLen; ++i)
-      jumpDates.push_back(Date(dates[i]));
-    YieldTermStructure *ts = qlPiecewiseYieldCurveAux(Date(date), instr, *arg(dayCount), jumps, jumpDates, trait, interpolator, approximator, approximatorArg);
+    YieldTermStructure *ts = qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
     // TODO free ts if allocation below fails
     return ret(new QlYieldTermStructure(alloc(ts)));
   } catch (std::exception& er) {
@@ -706,26 +697,14 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHe
   }
 }
 
-typedef YieldTermStructure *(*curveBuilder)(
-  const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
+typedef YieldTermStructure *(*curveBuilder)( const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates, int interpolator, int approximator, int approximatorArg);
 
-QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,
-  unsigned rateLen, double *rates, unsigned rateDatesLen, int *rateDates,
-  DayCounter *dayCount, Calendar *cal,
-  unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder, unsigned rateLen, double *rates, unsigned rateDatesLen, int *rateDates,
+  DayCounter *dayCount, Calendar *cal, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<Date> rds; rds.reserve(rateDatesLen);
-    std::vector<double> rs(rates, rates+rateLen);
-    std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
-    std::vector<Date> jumpDates; jumpDates.reserve(datesLen);
-    for (unsigned i = 0; i < rateDatesLen; ++i)
-      rds.push_back(Date(rateDates[i]));
-    for (unsigned i = 0; i < quoteLen; ++i)
-      jumps.push_back(Handle<Quote>(*arg(quotes[i])));
-    for (unsigned i = 0; i < datesLen; ++i)
-      jumpDates.push_back(Date(dates[i]));
-    YieldTermStructure *ts = builder(rds, rs, *arg(dayCount), *arg(cal), jumps, jumpDates, interpolator, approximator, approximatorArg);
+    YieldTermStructure *ts = builder(qlDateVector(rateDates, rateDatesLen), std::vector<double>(rates, rates+rateLen), *arg(dayCount), *arg(cal),
+        qlHandleVector(quotes, quoteLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg);
     return ret(new QlYieldTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlYieldTermStructure *>(e, er);
@@ -753,16 +732,8 @@ QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen, double *yields,
 QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<shared_ptr<RateHelper> > instr; instr.reserve(rateLen);
-    std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
-    std::vector<Date> jumpDates; jumpDates.reserve(quoteLen);
-    for (unsigned i = 0; i < rateLen; ++i)
-      instr.push_back(*arg(ratehelpers[i]));
-    for (unsigned i = 0; i < quoteLen; ++i)
-      jumps.push_back(Handle<Quote>(*arg(quotes[i])));
-    for (unsigned i = 0; i < datesLen; ++i)
-      jumpDates.push_back(Date(dates[i]));
-    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), instr, *arg(dayCount), jumps, jumpDates, trait, interpolator, approximator, approximatorArg);
+    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
     return ret(new QlYieldTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlYieldTermStructure *>(e, er);
@@ -906,7 +877,7 @@ FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(char **e) {
 
 QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e) {
   try {
-    return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(settlementDays, *arg(calendar), qlBuildVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));
+    return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(settlementDays, *arg(calendar), qlVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));
   } catch (std::exception& er) {
     return handleException<QlFittedBondDiscountCurve*>(e, er);
   }
@@ -914,7 +885,7 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Ca
 
 QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurveFittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e) {
   try {
-    return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(Date(referenceDate), qlBuildVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));
+    return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(Date(referenceDate), qlVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));
   } catch (std::exception& er) {
     return handleException<QlFittedBondDiscountCurve*>(e, er);
   }
@@ -1103,7 +1074,7 @@ QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int refer
 
 QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, DayCounter* dc, char **e) {
   try {
-    return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlBuildHandleVector(spreads, spreadsLen), qlDateVector(datesLen, dates), (Compounding)comp, (Frequency)freq, *arg(dc)))));
+    return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq, *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlYieldTermStructure*>(e, er);
   }

@@ -301,7 +301,7 @@ QlAmericanExercise* qlAmericanExercise(int earliestDate, int latestDate, int pay
 }
 QlBermudanExercise* qlBermudanExercise(unsigned datesLen, int *dates, int payoffAtExpiry, char **e) {
   try {
-    return ret(new QlBermudanExercise(alloc(new BermudanExercise(qlDateVector(datesLen, dates), payoffAtExpiry))));
+    return ret(new QlBermudanExercise(alloc(new BermudanExercise(qlDateVector(dates, datesLen), payoffAtExpiry))));
   } catch (std::exception& er) {
     return handleException<QlBermudanExercise*>(e, er);
   }
@@ -333,7 +333,7 @@ QlSwingExercise* qlSwingExercise(unsigned datesLen, int* dates, unsigned secLen,
   try {
     std::vector<Size> secs; // on x86-64 sizeof(size_t) might be greater than sizeof(unsigned)
     std::copy(seconds, seconds+secLen, secs.begin());
-    return ret(new QlSwingExercise(alloc(new SwingExercise(qlDateVector(datesLen, dates), secs))));
+    return ret(new QlSwingExercise(alloc(new SwingExercise(qlDateVector(dates, datesLen), secs))));
   } catch (std::exception& er) {
     return handleException<QlSwingExercise*>(e, er);
   }
@@ -516,7 +516,7 @@ QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o) {return ret(new 
 
 QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, char **e) {
   try {
-    return ret(new QlSwap(alloc(new Swap(qlBuildVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen)))));
+    return ret(new QlSwap(alloc(new Swap(qlVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen)))));
   } catch (std::exception& er) {
     return handleException<QlSwap*>(e, er);
   }
@@ -1097,7 +1097,7 @@ double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGene
 }
 QlDividendVanillaOption* qlDividendVanillaOption(QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e) {
   try {
-    return ret(new QlDividendVanillaOption(alloc(new DividendVanillaOption(*arg(payoff), *arg(exercise), qlDateVector(dividendDatesLen, dividendDates), std::vector<double>(dividends, dividends+dividendsLen)))));
+    return ret(new QlDividendVanillaOption(alloc(new DividendVanillaOption(*arg(payoff), *arg(exercise), qlDateVector(dividendDates, dividendDatesLen), std::vector<double>(dividends, dividends+dividendsLen)))));
   } catch (std::exception& er) {
     return handleException<QlDividendVanillaOption*>(e, er);
   }
@@ -1384,7 +1384,7 @@ QlVanillaOption* qlVanillaOption(QlStrikedTypePayoff* x0, QlExercise* x1, char *
 }
 QlBarrierOption* qlDividendBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e) {
   try {
-    return ret(new QlBarrierOption(alloc(new DividendBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), *arg(exercise), qlDateVector(dividendDatesLen, dividendDates), std::vector<double>(dividends, dividends+dividendsLen)))));
+    return ret(new QlBarrierOption(alloc(new DividendBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), *arg(exercise), qlDateVector(dividendDates, dividendDatesLen), std::vector<double>(dividends, dividends+dividendsLen)))));
   } catch (std::exception& er) {
     return handleException<QlBarrierOption*>(e, er);
   }
@@ -1398,14 +1398,14 @@ QlMultiAssetOption* qlBasketOption(QlBasketPayoff* x0, QlExercise* x1, char **e)
 }
 QlMultiAssetOption* qlHimalayaOption(unsigned fixingDatesLen, int* fixingDates, double strike, char **e) {
   try {
-    return ret(new QlMultiAssetOption(alloc(new HimalayaOption(qlDateVector(fixingDatesLen, fixingDates), strike))));
+    return ret(new QlMultiAssetOption(alloc(new HimalayaOption(qlDateVector(fixingDates, fixingDatesLen), strike))));
   } catch (std::exception& er) {
     return handleException<QlMultiAssetOption*>(e, er);
   }
 }
 QlMultiAssetOption* qlPagodaOption(unsigned fixingDatesLen, int* fixingDates, double roof, double fraction, char **e) {
   try {
-    return ret(new QlMultiAssetOption(alloc(new PagodaOption(qlDateVector(fixingDatesLen, fixingDates), roof, fraction))));
+    return ret(new QlMultiAssetOption(alloc(new PagodaOption(qlDateVector(fixingDates, fixingDatesLen), roof, fraction))));
   } catch (std::exception& er) {
     return handleException<QlMultiAssetOption*>(e, er);
   }
@@ -1419,7 +1419,7 @@ QlMultiAssetOption* qlSpreadOption(QlPlainVanillaPayoff* payoff, QlExercise* exe
 }
 QlOneAssetOption* qlCliquetOption(QlPercentageStrikePayoff* x0, QlEuropeanExercise* maturity, unsigned resetDatesLen, int* resetDates, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new CliquetOption(*arg(x0), *arg(maturity), qlDateVector(resetDatesLen, resetDates)))));
+    return ret(new QlOneAssetOption(alloc(new CliquetOption(*arg(x0), *arg(maturity), qlDateVector(resetDates, resetDatesLen)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
@@ -1447,7 +1447,7 @@ QlOneAssetOption* qlContinuousFloatingLookbackOption(double currentMinmax, QlTyp
 }
 QlOneAssetOption* qlDiscreteAveragingAsianOption(int averageType, double runningAccumulator, unsigned pastFixings, unsigned fixingDatesLen, int* fixingDates, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new DiscreteAveragingAsianOption((Average::Type)averageType, runningAccumulator, pastFixings, qlDateVector(fixingDatesLen, fixingDates), *arg(payoff), *arg(exercise)))));
+    return ret(new QlOneAssetOption(alloc(new DiscreteAveragingAsianOption((Average::Type)averageType, runningAccumulator, pastFixings, qlDateVector(fixingDates, fixingDatesLen), *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
@@ -1567,7 +1567,7 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
 
 void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e) {
   try {
-    const std::vector<double> notionals = (*arg(o))->notionals();
+    const std::vector<double>& notionals = (*arg(o))->notionals();
     *len = notionals.size();
     *ns = qlAllocateDoubles(*len);
     std::copy(notionals.begin(), notionals.end(), *ns);
@@ -1924,35 +1924,35 @@ QlBond* qlConvertibleBondAsBond(QlConvertibleBond *o) {return ret(new QlBond(*ar
 
 QlCallableBond* qlCallableFixedRateBond(unsigned settlementDays, double faceAmount, Schedule* schedule, unsigned couponsLen, double* coupons, DayCounter* accrualDayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
   try {
-    return ret(new QlCallableBond(alloc(new CallableFixedRateBond(settlementDays, faceAmount, *arg(schedule), std::vector<double>(coupons, coupons+couponsLen), *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
+    return ret(new QlCallableBond(alloc(new CallableFixedRateBond(settlementDays, faceAmount, *arg(schedule), std::vector<double>(coupons, coupons+couponsLen), *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlVector(putCallSchedule, putCallScheduleLen)))));
   } catch (std::exception& er) {
     return handleException<QlCallableBond*>(e, er);
   }
 }
 QlCallableBond* qlCallableZeroCouponBond(unsigned settlementDays, double faceAmount, Calendar* calendar, int maturityDate, DayCounter* dayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
   try {
-    return ret(new QlCallableBond(alloc(new CallableZeroCouponBond(settlementDays, faceAmount, *arg(calendar), Date(maturityDate), *arg(dayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
+    return ret(new QlCallableBond(alloc(new CallableZeroCouponBond(settlementDays, faceAmount, *arg(calendar), Date(maturityDate), *arg(dayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlVector(putCallSchedule, putCallScheduleLen)))));
   } catch (std::exception& er) {
     return handleException<QlCallableBond*>(e, er);
   }
 }
 QlConvertibleBond* qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned callabilityLen, QlCallability** callability, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
   try {
-    return ret(new QlConvertibleBond(alloc(new ConvertibleFixedCouponBond(*arg(exercise), conversionRatio, qlBuildVector(callability, callabilityLen), Date(issueDate), settlementDays, std::vector<double>(coupons, coupons+couponsLen), *arg(dayCounter), *arg(schedule), redemption))));
+    return ret(new QlConvertibleBond(alloc(new ConvertibleFixedCouponBond(*arg(exercise), conversionRatio, qlVector(callability, callabilityLen), Date(issueDate), settlementDays, std::vector<double>(coupons, coupons+couponsLen), *arg(dayCounter), *arg(schedule), redemption))));
   } catch (std::exception& er) {
     return handleException<QlConvertibleBond*>(e, er);
   }
 }
 QlConvertibleBond* qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned callabilityLen, QlCallability** callability, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
   try {
-    return ret(new QlConvertibleBond(alloc(new ConvertibleFloatingRateBond(*arg(exercise), conversionRatio, qlBuildVector(callability, callabilityLen), Date(issueDate), settlementDays, (*arg(index)), fixingDays, std::vector<double>(spreads, spreads+spreadsLen), *arg(dayCounter), *arg(schedule), redemption))));
+    return ret(new QlConvertibleBond(alloc(new ConvertibleFloatingRateBond(*arg(exercise), conversionRatio, qlVector(callability, callabilityLen), Date(issueDate), settlementDays, (*arg(index)), fixingDays, std::vector<double>(spreads, spreads+spreadsLen), *arg(dayCounter), *arg(schedule), redemption))));
   } catch (std::exception& er) {
     return handleException<QlConvertibleBond*>(e, er);
   }
 }
 QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned callabilityLen, QlCallability** callability, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
   try {
-    return ret(new QlConvertibleBond(alloc(new ConvertibleZeroCouponBond(*arg(exercise), conversionRatio, qlBuildVector(callability, callabilityLen), Date(issueDate), settlementDays, *arg(dayCounter), *arg(schedule), redemption))));
+    return ret(new QlConvertibleBond(alloc(new ConvertibleZeroCouponBond(*arg(exercise), conversionRatio, qlVector(callability, callabilityLen), Date(issueDate), settlementDays, *arg(dayCounter), *arg(schedule), redemption))));
   } catch (std::exception& er) {
     return handleException<QlConvertibleBond*>(e, er);
   }
@@ -2305,7 +2305,7 @@ void qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **
 }
 void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e) {
   try {
-    return setCouponPricers(*arg(leg), qlBuildVector(x1, x1Len));
+    return setCouponPricers(*arg(leg), qlVector(x1, x1Len));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }
@@ -2359,7 +2359,7 @@ Leg* qlAverageBMALeg(Schedule* schedule, QlBMAIndex* index, unsigned notionalsLe
 }
 Leg* qlFixedRateLeg(Schedule* schedule, unsigned NotionalsLen, double* Notionals, unsigned couponRatesLen, InterestRate** couponRates, int paymentAdjustment, DayCounter* firstPeriodDayCounter, Calendar* paymentCalendar, char **e) {
   try {
-    return alloc(new Leg(FixedRateLeg(*arg(schedule)).withNotionals(std::vector<double>(Notionals, Notionals+NotionalsLen)).withCouponRates(qlBuildVector(couponRates, couponRatesLen))
+    return alloc(new Leg(FixedRateLeg(*arg(schedule)).withNotionals(std::vector<double>(Notionals, Notionals+NotionalsLen)).withCouponRates(qlVector(couponRates, couponRatesLen))
           .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFirstPeriodDayCounter(*arg(firstPeriodDayCounter)).withPaymentCalendar(*arg(paymentCalendar))));
   } catch (std::exception& er) {
     return handleException<Leg*>(e, er);

@@ -11,9 +11,9 @@ github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
   - GHC == 9.0.2 # lts-19.31
-  #- GHC == 8.10.4 # lts-18.5 
-  #- GHC == 8.8.2  # lts-15.3 
+  #- GHC == 8.10.4 # lts-18.5
   #- GHC == 8.8.4  # lts-16.31
+  #- GHC == 8.8.2  # lts-15.3
   #- GHC == 8.6.5  # lts-14.27
   #- GHC == 8.6.3  # lts-13.11
   # for ghc < 8.10 you need to add -P to cpp-options because some c2hs versions didn't like line markers like "# 0" in generated .i files

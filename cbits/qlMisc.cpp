@@ -85,18 +85,6 @@ char *tracedup(const char *p) {
   return dup;
 }
 
-std::vector<Date> qlDateVector(unsigned len, int *dates) {
-  std::vector<Date> d; d.reserve(len);
-  for (unsigned i = 0; i < len; ++i)
-    d.push_back(Date(dates[i]));
-  return d;
-}
-
-Matrix qlBuildMatrix(double *a, unsigned r, unsigned c) {
-  Matrix m (r, c); std::copy(a, a+r*c, m.begin());
-  return m;
-}
-
 void **qlAllocatePointerArray(size_t size) {return new void*[size];}
 void qlFreePointerArray(void **p) {delete[] p;}
 int qlNullInteger() {return QL_NULL_INTEGER;}

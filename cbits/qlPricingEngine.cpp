@@ -860,7 +860,7 @@ QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess*
 QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlQuote* creditSpread, unsigned dividendsLen, QlDividend** dividends, char **e) {
   try {
     const Handle<Quote>& cs = Handle<Quote>(*arg(creditSpread));
-    DividendSchedule d = qlBuildVector(dividends, dividendsLen);
+    DividendSchedule d = qlVector(dividends, dividendsLen);
     return ret(new QlPricingEngine(alloc(qlBinomialConvertibleEngineAux(tree, *arg(process), timeSteps, cs, d))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
@@ -1035,7 +1035,7 @@ QlG2* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b
 }
 QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e) {
   try {
-    return ret(new QlShortRateModel(alloc(new GeneralizedHullWhite(Handle<YieldTermStructure>(*arg(yieldtermStructure)), qlDateVector(speedstructureLen, speedstructure), qlDateVector(volstructureLen, volstructure), std::vector<double>(speed, speed+speedLen), std::vector<double>(vol, vol+volLen)))));
+    return ret(new QlShortRateModel(alloc(new GeneralizedHullWhite(Handle<YieldTermStructure>(*arg(yieldtermStructure)), qlDateVector(speedstructure, speedstructureLen), qlDateVector(volstructure, volstructureLen), std::vector<double>(speed, speed+speedLen), std::vector<double>(vol, vol+volLen)))));
   } catch (std::exception& er) {
     return handleException<QlShortRateModel*>(e, er);
   }
@@ -1152,7 +1152,7 @@ void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
 void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
   try {
     Constraint c(constraint ? *arg(constraint) : Constraint());
-    (*arg(o))->calibrate(qlBuildVector(x1, x1Len), *arg(method), *arg(endCriteria), c, std::vector<double>(weights, weights+wLen));
+    (*arg(o))->calibrate(qlVector(x1, x1Len), *arg(method), *arg(endCriteria), c, std::vector<double>(weights, weights+wLen));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }
@@ -1475,7 +1475,7 @@ QlVarianceGammaProcess* qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure
 
 QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticProcess1D** x0, unsigned correlationRows, unsigned correlationCols, double* correlation, char **e) {
   try {
-    return ret(new QlStochasticProcessArray(alloc(new StochasticProcessArray(qlBuildVector(x0, x0Len), qlBuildMatrix(correlation, correlationRows, correlationCols)))));
+    return ret(new QlStochasticProcessArray(alloc(new StochasticProcessArray(qlVector(x0, x0Len), qlMatrix(correlation, correlationRows, correlationCols)))));
   } catch (std::exception& er) {
     return handleException<QlStochasticProcessArray*>(e, er);
   }
