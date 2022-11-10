@@ -492,6 +492,8 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar
 
 void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) {del(o);}
 QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o) {del(o);}
+QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {
@@ -507,9 +509,6 @@ QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility(int referenc
     return handleException<QlCallableBondVolatilityStructure*>(e, er);
   }
 }
-
-void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o) {del(o);}
-QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e) {
   try {
@@ -667,25 +666,17 @@ double qlDefaultProbabilityTermStructureSurvivalProbability(QlDefaultProbability
   }
 }
 
-QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays,
-  Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
+QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
-    return ret(new QlRateHelper(new DepositRateHelper(
-	    Handle<Quote>(*arg(quote)),
-	    Period(l, (TimeUnit)u),
-	    fixDays,
-	    *arg(calendar),
-	    (BusinessDayConvention) conv,
-	    eom,
-	    *arg(dayCount))));
+    return ret(new QlRateHelper(new DepositRateHelper( Handle<Quote>(*arg(quote)), Period(l, (TimeUnit)u), fixDays,
+            *arg(calendar), (BusinessDayConvention) conv, eom, *arg(dayCount))));
   } catch (std::exception& er) {
     return handleException<QlRateHelper *>(e, er);
   }
 }
 
 QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
-  Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
-  double redemption, int issue, char **e) {
+  Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e) {
   try {
     std::vector<Rate> cpns(coupons, coupons+cLen);
     return ret(new QlBondHelper(new FixedRateBondHelper(Handle<Quote>(*arg(quote)), settlDays, face, *arg(sched), cpns, *arg(dayCount), (BusinessDayConvention) conv, redemption, qlNullableDate(issue))));
@@ -716,13 +707,8 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHe
 }
 
 typedef YieldTermStructure *(*curveBuilder)(
-  const std::vector<Date>& dates,
-  const std::vector<double>& dfs,
-  const DayCounter& dayCount,
-  const Calendar& cal,
-  const std::vector<Handle<Quote> >& jumps,
-  const std::vector<Date>& jumpDates,
-  int interpolator, int approximator, int approximatorArg);
+  const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
+  const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates, int interpolator, int approximator, int approximatorArg);
 
 QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,
   unsigned rateLen, double *rates, unsigned rateDatesLen, int *rateDates,
@@ -746,31 +732,26 @@ QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,
   }
 }
 
-QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen,
-  double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
+QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen, double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
   unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   return qlInterpolatedCurve(&qlInterpolatedDiscountCurveAux, dfsLen, dfs, dfdatesLen, dfsDates,
     dayCount, cal, quoteLen, quotes, datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
 
-QlYieldTermStructure *qlInterpolatedForwardCurve(unsigned fwdLen,
-  double *fwds, unsigned fwddatesLen, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+QlYieldTermStructure *qlInterpolatedForwardCurve(unsigned fwdLen, double *fwds, unsigned fwddatesLen, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   return qlInterpolatedCurve(&qlInterpolatedForwardCurveAux, fwdLen, fwds, fwddatesLen, fwdDates,
     dayCount, cal, quoteLen, quotes, datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
 
-QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen,
-  double *yields, unsigned ydatesLen, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen, double *yields, unsigned ydatesLen, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   return qlInterpolatedCurve(&qlInterpolatedZeroCurveAux, yieldLen, yields, ydatesLen, yieldDates,
     dayCount, cal, quoteLen, quotes,  datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
 
-QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
-  unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, int trait,
-  int interpolator, int approximator, int approximatorArg, char **e) {
+QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     std::vector<shared_ptr<RateHelper> > instr; instr.reserve(rateLen);
     std::vector<Handle<Quote> > jumps; jumps.reserve(quoteLen);
@@ -787,8 +768,6 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
     return handleException<QlYieldTermStructure *>(e, er);
   }
 }
-void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {del(ts);}
-
 double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e) {
   try {
     return (*ts)->discount(Date(date), extrapolate);
@@ -885,9 +864,6 @@ QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned mo
   }
 }
 
-void qlFreeBondHelper(QlBondHelper *o) {del(o);}
-QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) {return ret(new QlRateHelper(*arg(o)));}
-
 FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, char **e) {
   try {
     return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero));
@@ -944,9 +920,6 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigne
   }
 }
 
-void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) {del(o);}
-QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) {return ret(new QlYieldTermStructure(*arg(o)));}
-
 double qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve *o, char **e) {
   try {
     return (*arg(o))->fitResults().minimumCostValue();
@@ -963,11 +936,17 @@ int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscoun
   }
 }
 
+void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {del(ts);}
+void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) {del(o);}
+QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) {return ret(new QlYieldTermStructure(*arg(o)));}
+void qlFreeBondHelper(QlBondHelper *o) {del(o);}
+QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) {return ret(new QlRateHelper(*arg(o)));}
 void qlFreeSwapRateHelper(QlSwapRateHelper *o) {del(o);}
 QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) {return ret(new QlRateHelper(*arg(o)));}
-
 void qlFreeOISRateHelper(QlOISRateHelper *o) {del(o);}
 QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o) {return ret(new QlRateHelper(*arg(o)));}
+void qlFreeTermStructure(QlTermStructure *o) {del(o);}
+QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e) {
   try {
@@ -1114,10 +1093,6 @@ int qlTermStructureMaxDate(QlTermStructure* o, char **e) {
   }
 }
 
-
-void qlFreeTermStructure(QlTermStructure *o) {del(o);}
-QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
-
 QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e) {
   try {
     return ret(new QlYieldTermStructure(alloc(new ImpliedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Date(referenceDate)))));
@@ -1149,12 +1124,8 @@ void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e)
   }
 }
 
-void qlFreeIndex(QlIndex *i) {del(i);}
-
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
-
 typedef SwapIndex *(*makeSwapIndex)(const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2);
-
 // must match with the order of qlEnumObjects.h:LiborSwapIndexType
 static const makeSwapIndex swapIndices[] = {
     [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2));}
@@ -1184,15 +1155,13 @@ QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructur
   }
 }
 
+void qlFreeIndex(QlIndex *i) {del(i);}
 void qlFreeInterestRateIndex(QlInterestRateIndex *o) {del(o);}
 QlIndex* qlInterestRateIndexAsIndex(QlInterestRateIndex *o) {return ret(new QlIndex(*arg(o)));}
-
 void qlFreeSwapIndex(QlSwapIndex *o) {del(o);}
 QlInterestRateIndex* qlSwapIndexAsInterestRateIndex(QlSwapIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
-
 void qlFreeBMAIndex(QlBMAIndex *o) {del(o);}
 QlInterestRateIndex* qlBMAIndexAsInterestRateIndex(QlBMAIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
-
 void qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o) {del(o);}
 QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o) {return ret(new QlSwapIndex(*arg(o)));}
 
@@ -1289,11 +1258,6 @@ int qlInterestRateIndexTenor(QlInterestRateIndex* o, int *u, char **e) {
   }
 }
 
-const char* qlIndexName(QlIndex *index) {
-  std::string name = (*arg(index))->name();
-  return DUP(name.c_str());
-}
-
 QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays, Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
   QlYieldTermStructure *fwd, char **e) {
   try {
@@ -1305,6 +1269,7 @@ QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays, Currency 
   }
 }
 
+const char* qlIndexName(QlIndex *index) {std::string name = (*arg(index))->name(); return DUP(name.c_str());}
 void qlFreeIborIndex(QlIborIndex *i) {del(i);}
 
 QlIborIndex *qlLibor(char *name, int l, int u, unsigned settlDays,
@@ -1340,9 +1305,7 @@ QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy
 }
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
-
 typedef IborIndex *(*makeIborIndex)(int l, int u, const YieldTermStructureHandle& ts);
-
 // must match with the order of qlEnumObjects:IborIndexType
 static const makeIborIndex iborIndices[] = {
     [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts));}
@@ -1395,7 +1358,6 @@ QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, ch
 }
 
 typedef OvernightIndex *(*makeONIndex)(const YieldTermStructureHandle &ts);
-
 // should match the order of qlEnumObjects.h:OvernightIborIndexType
 static const makeONIndex onIndices[] = {
     [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Aonia(ts));}
@@ -1420,11 +1382,9 @@ QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e
 }
 
 QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
-
 void qlFreeOvernightIndex(QlOvernightIndex *o) {del(o);}
 QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) {return ret(new QlIborIndex(*arg(o)));}
-
 int qlIborIndexBusinessDayConvention(QlIborIndex* o) {return (*arg(o))->businessDayConvention();}
-
 int qlIborIndexEndOfMonth(QlIborIndex* o) {return (*arg(o))->endOfMonth();}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

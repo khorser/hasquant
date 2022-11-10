@@ -201,7 +201,6 @@ Currency *qlCurrency(int ccy, char **e) {
 }
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
-
 const char *qlCurrencyName(Currency *currency) {return DUP(arg(currency)->name().c_str());}
 char* qlCurrencyCode(Currency* o) {return DUP(arg(o)->code().c_str());}
 char* qlCurrencyFormat(Currency* o) {return DUP(arg(o)->format().c_str());}
@@ -209,6 +208,7 @@ int qlCurrencyFractionsPerUnit(Currency* o) {return arg(o)->fractionsPerUnit();}
 char* qlCurrencyFractionSymbol(Currency* o) {return DUP(arg(o)->fractionSymbol().c_str());}
 int qlCurrencyNumericCode(Currency* o) {return arg(o)->numericCode();}
 char* qlCurrencySymbol(Currency* o) {return DUP(arg(o)->symbol().c_str());}
+void qlFreeInterestRate(InterestRate *rate) {del(rate);}
 
 class CustomCurrency : public Currency {
 public:
@@ -242,8 +242,6 @@ InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char 
     return handleException<InterestRate *>(e, er);
   }
 }
-
-void qlFreeInterestRate(InterestRate *rate) {del(rate);}
 
 // generated code
 double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e) {
@@ -310,10 +308,6 @@ InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCou
   }
 }
 
-double qlInterestRateRate(InterestRate* o) {return arg(o)->rate();}
-
-void qlFreeConstraint(Constraint *o) {del(o);}
-
 Constraint* qlBoundaryConstraint(double low, double high, char **e) {
   try {
     return alloc(new BoundaryConstraint(low, high));
@@ -342,7 +336,6 @@ Constraint* qlPositiveConstraint(char **e) {
     return handleException<Constraint*>(e, er);
   }
 }
-void qlFreeOptimizationMethod(OptimizationMethod *o) {del(o);}
 
 OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, char **e) {
   try {
@@ -359,7 +352,6 @@ OptimizationMethod* qlSimplex(double lambda, char **e) {
   }
 }
 
-void qlFreeEndCriteria(EndCriteria *o) {del(o);}
 EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e) {
   try {
     return alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon));
@@ -367,8 +359,6 @@ EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIt
     return handleException<EndCriteria*>(e, er);
   }
 }
-
-void qlFreeTimeGrid(TimeGrid *o) {del(o);}
 
 TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e) {
   try {
@@ -392,8 +382,6 @@ TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
   }
 }
 
-void qlFreeRounding(Rounding *o) {del(o);}
-
 Rounding* qlRounding(char **e) {
   try {
     return alloc(new Rounding());
@@ -410,8 +398,6 @@ Rounding* qlRounding1(int precision, int type, int digit, char **e) {
   }
 }
 
-double qlRound(Rounding *r, double val) {return (*r)(val);}
-
 QlSimpleQuote *qlSimpleQuote(double value, char **e) {
   try {
     return ret(new QlSimpleQuote(new SimpleQuote(value)));
@@ -427,11 +413,6 @@ double qlQuoteValue(QlQuote *quote, char **e) {
     return handleException<double>(e, er);
   }
 }
-
-void qlFreeQuote(QlQuote *quote) {del(quote);}
-
-void qlFreeSimpleQuote(QlSimpleQuote *o) {del(o);}
-QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o) {return ret(new QlQuote(*arg(o)));}
 
 double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e) {
   try {
@@ -498,18 +479,32 @@ int qlQuoteIsValid(QlQuote* o, char **e) {
   }
 }
 
+void qlFreeEndCriteria(EndCriteria *o) {del(o);}
+double qlInterestRateRate(InterestRate* o) {return arg(o)->rate();}
+void qlFreeConstraint(Constraint *o) {del(o);}
+void qlFreeOptimizationMethod(OptimizationMethod *o) {del(o);}
+void qlFreeTimeGrid(TimeGrid *o) {del(o);}
+void qlFreeRounding(Rounding *o) {del(o);}
+double qlRound(Rounding *r, double val) {return (*r)(val);}
+void qlFreeQuote(QlQuote *quote) {del(quote);}
+void qlFreeSimpleQuote(QlSimpleQuote *o) {del(o);}
+QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o) {return ret(new QlQuote(*arg(o)));}
+
 int qlMinDateSerialNumber() {return Date::minDate().serialNumber();}
 int qlMaxDateSerialNumber() {return Date::maxDate().serialNumber();}
 int qlMinYear() {return Date::minDate().year();}
 int qlMinMonth() {return Date::minDate().month();}
 int qlMinDay() {return Date::minDate().dayOfMonth();}
 int qlWeekday(int date) {return Date(date).weekday();}
-
 int qlDateDayOfYear(int o) {return Date(o).dayOfYear();}
 int qlDateEndOfMonth(int d) {return Date::endOfMonth(Date(d)).serialNumber();}
 int qlDateIsEndOfMonth(int d) {return Date::isEndOfMonth(Date(d));}
 int qlDateNextWeekday(int d, int w) {return Date::nextWeekday(Date(d), (Weekday)w).serialNumber();}
 int qlDateNthWeekday(unsigned n, int w, int m, int y) {return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();}
+int qlIMMIsIMMcode(char* in, int mainCycle) {return IMM::isIMMcode(std::string(arg(in)), mainCycle);}
+int qlIMMIsIMMdate(int d, int mainCycle) {return IMM::isIMMdate(Date(d), mainCycle);}
+char* qlIMMNextCode(int d, int mainCycle) {return DUP(IMM::nextCode(Date(d), mainCycle).c_str());}
+int qlIMMNextDate(int d, int mainCycle) {return IMM::nextDate(Date(d), mainCycle).serialNumber();}
 
 char* qlIMMCode(int immDate, char **e) {
   try {
@@ -525,9 +520,6 @@ int qlIMMDate(char* immCode, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMIsIMMcode(char* in, int mainCycle) {return IMM::isIMMcode(std::string(arg(in)), mainCycle);}
-int qlIMMIsIMMdate(int d, int mainCycle) {return IMM::isIMMdate(Date(d), mainCycle);}
-
 char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
     return DUP(IMM::nextCode(std::string(arg(immCode)), mainCycle, Date(referenceDate)).c_str());
@@ -535,7 +527,6 @@ char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) 
     return handleException<char*>(e, er);
   }
 }
-char* qlIMMNextCode(int d, int mainCycle) {return DUP(IMM::nextCode(Date(d), mainCycle).c_str());}
 
 int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
@@ -544,7 +535,6 @@ int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMNextDate(int d, int mainCycle) {return IMM::nextDate(Date(d), mainCycle).serialNumber();}
 
 int qlAddPeriod(int d, int n, int u, char **e) {
   try {
@@ -665,8 +655,8 @@ void qlECBRemoveDate(int d, char **e) {
   }
 }
 
+const char *qlCalendarName(Calendar *calendar) {std::string name = arg(calendar)->name(); return DUP(name.c_str());}
 typedef Calendar *(*makeCalendar)(int market);
-
 // must match with the order of qlEnumObjects.h:CalendarCountry
 static const makeCalendar calendars[] = {
   [](int){return static_cast<Calendar *>(new Argentina());}
@@ -721,13 +711,6 @@ Calendar *qlCalendar(int country, int market, char **e) {
   } catch (std::exception& er) {
     return handleException<Calendar *>(e, er);
   }
-}
-
-void qlFreeCalendar(Calendar *calendar) {del(calendar);}
-
-const char *qlCalendarName(Calendar *calendar) {
-  std::string name = arg(calendar)->name();
-  return DUP(name.c_str());
 }
 
 int qlCalendarAdjust(Calendar *c, int date, int conv) {
@@ -899,8 +882,6 @@ void qlScheduleDates(Schedule *sched, unsigned *count, int **days) {
     (*days)[i] = dates[i].serialNumber();
 }
 
-void qlFreeSchedule(Schedule *s) {del(s);}
-
 int qlPeriodFromFrequency1(int freq, int *u, char **e) {
   try {
     Period p((Frequency) freq);
@@ -1002,14 +983,10 @@ DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {
   }
 }
 
+void qlFreeCalendar(Calendar *calendar) {del(calendar);}
+void qlFreeSchedule(Schedule *s) {del(s);}
 void  qlFreeDayCounter(DayCounter *counter) {del(counter);}
-
-const char *qlDayCounterName(DayCounter *counter) {
-  std::string name = arg(counter)->name();
-  return DUP(name.c_str());
-}
-
-// generated code
+const char *qlDayCounterName(DayCounter *counter) {std::string name = arg(counter)->name(); return DUP(name.c_str());}
 int qlDayCounterDayCount(DayCounter* o, int x0, int x1) {return arg(o)->dayCount(Date(x0), Date(x1));}
 
 double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
