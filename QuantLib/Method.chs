@@ -2,6 +2,12 @@ module QuantLib.Method
   (
     pathGenerator
   , sobolPathGenerator
+  , next
+  , antithetic
+  , weight
+  , assetNumber
+  , pathSize
+  , at
   )
   where
 
@@ -15,9 +21,17 @@ import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
+{#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
 
-{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait', withStochasticProcess*`StochasticProcess', withTimeGrid*`TimeGrid', fromIntegral`Word', fromIntegral`Word', `Bool', preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
-{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers', withStochasticProcess*`StochasticProcess', withTimeGrid*`TimeGrid', fromIntegral`Word', fromIntegral`Word', `Bool', preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
+{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
+{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
+
+{#fun qlPathGeneratorNext as next{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}
+{#fun qlPathGeneratorAntithetic as antithetic{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}
+{#fun qlSamplePathWeight as weight{withSamplePath*`SamplePath'}->`Double'#}
+{#fun qlSamplePathAssetNumber as assetNumber{withSamplePath*`SamplePath'}->`Double'#}
+{#fun qlSamplePathSize as pathSize{withSamplePath*`SamplePath'}->`Double'#}
+{#fun qlSamplePathAt as at{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

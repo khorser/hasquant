@@ -1512,11 +1512,11 @@ SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, char **e) 
   }
 }
 
-double qlSampleWeight(SamplePath *p) {return arg(p)->weight;}
-double qlSampleAssetNumber(SamplePath *p) {return arg(p)->value.assetNumber();}
+double qlSamplePathWeight(SamplePath *p) {return arg(p)->weight;}
+double qlSamplePathAssetNumber(SamplePath *p) {return arg(p)->value.assetNumber();}
 double qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
-void qlFreeSample(SamplePath *p) {del(p);}
-double qlSampleAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
+void qlFreeSamplePath(SamplePath *p) {del(p);}
+double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
   try {
     return arg(p)->value.at(asset).at(point);
   } catch (std::exception& er) {

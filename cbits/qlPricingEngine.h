@@ -277,11 +277,13 @@ extern "C" {
   void qlFreePathGenerator(PolymorphicPathGenerator *gen);
   PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e);
   PolymorphicPathGenerator *qlSobolPathGenerator(int dir, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e);
-  double qlSampleWeight(SamplePath *p);
-  double qlSampleAssetNumber(SamplePath *p);
+  SamplePath *qlPathGeneratorNext(PolymorphicPathGenerator *pgen, char **e);
+  SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, char **e);
+  double qlSamplePathWeight(SamplePath *p);
+  double qlSamplePathAssetNumber(SamplePath *p);
   double qlSamplePathSize(SamplePath *p);
-  void qlFreeSample(SamplePath *p);
-  double qlSampleAt(SamplePath *p, unsigned asset, unsigned point, char **e);
+  void qlFreeSamplePath(SamplePath *p);
+  double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e);
 #ifdef __cplusplus
 }
 #endif

@@ -57,6 +57,10 @@ module QuantLib.Internal.Type
   , PathGenerator
   , peekPathGenerator
   , withPathGenerator
+  , CSamplePath
+  , SamplePath
+  , peekSamplePath
+  , withSamplePath
 
   , CQlClaim
   , QlClaim
@@ -657,6 +661,16 @@ peekPathGenerator :: Ptr CPathGenerator -> IO PathGenerator
 peekPathGenerator = peekStandalone pathGeneratorMeta >=> return . PathGenerator
 withPathGenerator :: PathGenerator -> (Ptr CPathGenerator -> IO b) -> IO b
 withPathGenerator = withStandalone . getCPathGenerator
+
+data CSamplePath
+newtype SamplePath = SamplePath {getCSamplePath :: Standalone CSamplePath}
+foreign import ccall "ql.h &qlFreeSamplePath" qlFreeSamplePath :: FinalizerPtr CSamplePath
+samplePathMeta :: Meta CSamplePath
+samplePathMeta = Meta qlFreeSamplePath
+peekSamplePath :: Ptr CSamplePath -> IO SamplePath
+peekSamplePath = peekStandalone samplePathMeta >=> return . SamplePath
+withSamplePath :: SamplePath -> (Ptr CSamplePath -> IO b) -> IO b
+withSamplePath = withStandalone . getCSamplePath
 
 -- special cases: those types will be represented as enums so no need to wrap them
 data CQlClaim
