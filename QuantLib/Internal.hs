@@ -67,7 +67,7 @@ import Control.Exception(throwIO)
 import Control.Monad(when)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
-import qualified Data.Vector.Storable as V
+import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
 
 import QuantLib.Type
 
@@ -181,12 +181,12 @@ peekDoubleArray pl pp = do
   p <- peek pp
   map realToFrac <$> peekArray (fromIntegral l) p <* qlFreeDoubles p
 
-peekDoubleVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO (V.Vector CDouble)
+peekDoubleVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO (Vector CDouble)
 peekDoubleVector pl pp = do
   l <- peek pl
   p <- peek pp
   f <- newForeignPtr qlFreeDoublesFPtr p
-  return $ V.unsafeFromForeignPtr0 f (fromIntegral l)
+  return $ unsafeFromForeignPtr0 f (fromIntegral l)
 
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)

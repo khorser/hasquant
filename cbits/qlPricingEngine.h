@@ -284,6 +284,7 @@ extern "C" {
   unsigned qlSamplePathSize(SamplePath *p);
   void qlFreeSamplePath(SamplePath *p);
   double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e);
+  void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e);
 #ifdef __cplusplus
 }
 #endif

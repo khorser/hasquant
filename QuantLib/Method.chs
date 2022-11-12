@@ -7,7 +7,9 @@ module QuantLib.Method
   , weight
   , assetNumber
   , pathSize
-  , valueAt
+  , assetAt
+  , asset
+  , asset'
   )
   where
 
@@ -19,6 +21,8 @@ module QuantLib.Method
 import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
+import Foreign.C.Types(CDouble)
+import Data.Vector.Storable(Vector)
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
@@ -32,6 +36,8 @@ import QuantLib.Internal.Type
 {#fun pure qlSamplePathWeight as weight{withSamplePath*`SamplePath'}->`Double'#}
 {#fun pure qlSamplePathAssetNumber as assetNumber{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
 {#fun pure qlSamplePathSize as pathSize{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
-{#fun qlSamplePathAt as valueAt{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSamplePathAt as assetAt{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlSamplePathAssetPath as asset'{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

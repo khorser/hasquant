@@ -1524,4 +1524,13 @@ double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
   }
 }
 
+void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
+  try {
+    *len = arg(s)->value.pathSize(); *p = qlAllocateDoubles(*len);
+    std::copy(s->value.at(asset).begin(), s->value.at(asset).end(), *p);
+  } catch (std::exception& er) {
+    (void)handleException<double*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -1,6 +1,7 @@
 # 0.1.0.0 (2012-2013)
 Initial implementation. Two projects: qlc (C part like wxcore) and quantlib.
   The latter used Template Haskell to build code that marshalls data given foreign declaration and function signature.
+  Tried to separate exceptions into two types: checked (via Either) and unchecked (IO)
   Some ideas of handling C++ templates were taked from QuantLibXL.
   Broke with the next major release of Haskell where you could not use TH to define function with existing signature.
   Heavy use of typeclasses to express inheritance (with lots of extensions used).
