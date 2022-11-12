@@ -117,7 +117,7 @@ foreign import ccall safe "ql.h qlFreeString" qlFreeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts" qlFreeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeUInts" qlFreeUInts :: Ptr CUInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> IO ()
-foreign import ccall safe "ql.h &qlFreeDoubles" qlFreeDoublesFPtr :: FinalizerPtr CDouble
+foreign import ccall safe "ql.h &qlFreeDoubles" qlFreeDoublesFin :: FinalizerPtr CDouble
 --foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
 foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
 foreign import ccall safe "ql.h qlFreeSavedSettings" qlFreeSavedSettings :: Ptr () -> IO ()
@@ -182,11 +182,7 @@ peekDoubleArray pl pp = do
   map realToFrac <$> peekArray (fromIntegral l) p <* qlFreeDoubles p
 
 peekDoubleVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO (Vector CDouble)
-peekDoubleVector pl pp = do
-  l <- peek pl
-  p <- peek pp
-  f <- newForeignPtr qlFreeDoublesFPtr p
-  return $ unsafeFromForeignPtr0 f (fromIntegral l)
+peekDoubleVector pl pp = unsafeFromForeignPtr0 <$> (peek pp >>= newForeignPtr qlFreeDoublesFin) <*> (fromIntegral <$> peek pl)
 
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)

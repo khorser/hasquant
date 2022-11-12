@@ -64,6 +64,7 @@ extern "C" {
   TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e);
   unsigned qlTimeGridSize(TimeGrid* t);
   double qlTimeGridAt(TimeGrid* t, unsigned i, char **e);
+  void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e);
 
   void qlFreeRounding(Rounding *o);
   Rounding* qlRounding(char **e);

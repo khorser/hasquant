@@ -33,12 +33,16 @@ module QuantLib.Math
   , timeGridFromList'
   , timeAt
   , size
+  , points
+  , points'
   )
 where
 
 import QuantLib.Internal
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
+import Foreign.C.Types(CDouble)
+import Data.Vector.Storable(Vector)
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -83,5 +87,7 @@ import QuantLib.Internal.Type
 
 {#fun pure qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
 {#fun qlTimeGridAt as timeAt{withTimeGrid*`TimeGrid',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlTimeGridPoints as points'{withTimeGrid*`TimeGrid',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

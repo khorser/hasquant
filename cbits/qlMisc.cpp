@@ -377,6 +377,14 @@ double qlTimeGridAt(TimeGrid* t, unsigned i, char **e) {
     return handleException<double>(e, er);
   }
 }
+void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e) {
+  try {
+    *len = arg(t)->size(); *p = qlAllocateDoubles(*len);
+    std::copy(t->begin(), t->end(), *p);
+  } catch (std::exception& er) {
+    (void)handleException<double*>(e, er);
+  }
+}
 
 Rounding* qlRounding(char **e) {
   try {
