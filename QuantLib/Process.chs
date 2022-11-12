@@ -122,7 +122,7 @@ import QuantLib.Internal.Type
 asStochasticProcess :: (a`Derives` StochasticProcess) => a -> IO StochasticProcess
 asStochasticProcess = cast
 
-asStochasticProcess1D :: (a`Derives` StochasticProcess) => a -> IO StochasticProcess
+asStochasticProcess1D :: (a`Derives` StochasticProcess1D) => a -> IO StochasticProcess1D
 asStochasticProcess1D = cast
 
 instance BlackProcess`Derives` GeneralizedBlackScholesProcess where cast = qlBlackProcessAsGeneralizedBlackScholesProcess

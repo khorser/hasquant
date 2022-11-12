@@ -1513,8 +1513,8 @@ SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, char **e) 
 }
 
 double qlSamplePathWeight(SamplePath *p) {return arg(p)->weight;}
-double qlSamplePathAssetNumber(SamplePath *p) {return arg(p)->value.assetNumber();}
-double qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
+unsigned qlSamplePathAssetNumber(SamplePath *p) {return arg(p)->value.assetNumber();}
+unsigned qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
 void qlFreeSamplePath(SamplePath *p) {del(p);}
 double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
   try {

@@ -280,8 +280,8 @@ extern "C" {
   SamplePath *qlPathGeneratorNext(PolymorphicPathGenerator *pgen, char **e);
   SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, char **e);
   double qlSamplePathWeight(SamplePath *p);
-  double qlSamplePathAssetNumber(SamplePath *p);
-  double qlSamplePathSize(SamplePath *p);
+  unsigned qlSamplePathAssetNumber(SamplePath *p);
+  unsigned qlSamplePathSize(SamplePath *p);
   void qlFreeSamplePath(SamplePath *p);
   double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e);
 #ifdef __cplusplus
