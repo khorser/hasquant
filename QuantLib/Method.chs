@@ -7,7 +7,7 @@ module QuantLib.Method
   , weight
   , assetNumber
   , pathSize
-  , at
+  , valueAt
   )
   where
 
@@ -32,6 +32,6 @@ import QuantLib.Internal.Type
 {#fun qlSamplePathWeight as weight{withSamplePath*`SamplePath'}->`Double'#}
 {#fun qlSamplePathAssetNumber as assetNumber{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
 {#fun qlSamplePathSize as pathSize{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
-{#fun qlSamplePathAt as at{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSamplePathAt as valueAt{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

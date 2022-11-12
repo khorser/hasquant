@@ -369,6 +369,14 @@ TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
     return handleException<TimeGrid*>(e, er);
   }
 }
+unsigned qlTimeGridSize(TimeGrid* t) {return arg(t)->size();}
+double qlTimeGridAt(TimeGrid* t, unsigned i, char **e) {
+  try {
+    return arg(t)->at(i);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 
 Rounding* qlRounding(char **e) {
   try {
