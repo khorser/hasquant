@@ -124,86 +124,86 @@ instance BMASwap`Derives` Swap where cast = qlBMASwapAsSwap
 instance OvernightIndexedSwap`Derives` Swap where cast = qlOvernightIndexedSwapAsSwap
 
 -- |implied volatility
-{#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double',withYieldTermStructure*`YieldTermStructure',`Double',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double',withYieldTermStructure*`YieldTermStructure',`Double',`Double',fromIntegral`Word',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Multi leg constructor.
 swap' :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
 swap' = (uncurry qlSwap1) . unzip
-{#fun qlSwap1{withLegArray*`[Leg]'&, withBoolArray*`[Bool]'&, preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+{#fun qlSwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
 
-{#fun qlBMASwap as bmaSwap{`SwapType',`Double', withSchedule*`Schedule',`Double',`Double',withIborIndex*`GenIborIndex a', withDayCounter*`DayCounter', withSchedule*`Schedule',withBMAIndex*`BMAIndex', withDayCounter*`DayCounter', preErrorCheck-`String'errorCheck*-}->`BMASwap'peekBMASwap*#}
+{#fun qlBMASwap as bmaSwap{`SwapType',`Double',withSchedule*`Schedule',`Double',`Double',withIborIndex*`GenIborIndex a',withDayCounter*`DayCounter',withSchedule*`Schedule',withBMAIndex*`BMAIndex',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BMASwap'peekBMASwap*#}
 
-{#fun qlVanillaSwap as vanillaSwap{`SwapType',`Double', withSchedule*`Schedule',`Double', withDayCounter*`DayCounter', withSchedule*`Schedule',withIborIndex*`GenIborIndex a',`Double', withDayCounter*`DayCounter',`BusinessDayConvention', preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+{#fun qlVanillaSwap as vanillaSwap{`SwapType',`Double',withSchedule*`Schedule',`Double',withDayCounter*`DayCounter',withSchedule*`Schedule',withIborIndex*`GenIborIndex a',`Double',withDayCounter*`DayCounter',`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
-{#fun qlSwap as swap{withLeg*`GenLeg a', withLeg*`GenLeg a', preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+{#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg a',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
 
-{#fun qlSwapEndDiscounts as endDiscounts{withSwap*`Swap', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapEndDiscounts as endDiscounts{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwapLeg as leg{withSwap*`Swap', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlSwapLeg as leg{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlSwapLegBPS as legBPS{withSwap*`Swap', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLegBPS as legBPS{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwapLegNPV as legNPV{withSwap*`Swap', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLegNPV as legNPV{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwapStartDiscounts as startDiscounts{withSwap*`Swap', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapStartDiscounts as startDiscounts{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap', withExercise*`Exercise',`SettlementType', preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
+{#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- AssetSwap
-{#fun qlAssetSwap1 as assetSwap'{`Bool', withBond*`Bond',`Double',`Double',`Double',withIborIndex*`GenIborIndex a',`Double', withDayCounter*`DayCounter', withMaybeDay*`Maybe Day',`Bool', preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
+{#fun qlAssetSwap1 as assetSwap'{`Bool',withBond*`Bond',`Double',`Double',`Double',withIborIndex*`GenIborIndex a',`Double',withDayCounter*`DayCounter',withMaybeDay*`Maybe Day',`Bool',preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
 
-{#fun qlAssetSwap as assetSwap{`Bool', withBond*`Bond',`Double',withIborIndex*`GenIborIndex a',`Double', withSchedule*`Schedule', withDayCounter*`DayCounter',`Bool', preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
+{#fun qlAssetSwap as assetSwap{`Bool',withBond*`Bond',`Double',withIborIndex*`GenIborIndex a',`Double',withSchedule*`Schedule',withDayCounter*`DayCounter',`Bool',preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
 
 -- OvernightIndexedSwap
-{#fun qlOvernightIndexedSwap as overnightIndexedSwap{`SwapType',`Double', withSchedule*`Schedule',`Double', withDayCounter*`DayCounter',withOvernightIborIndex*`OvernightIborIndex',`Double', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+{#fun qlOvernightIndexedSwap as overnightIndexedSwap{`SwapType',`Double',withSchedule*`Schedule',`Double',withDayCounter*`DayCounter',withOvernightIborIndex*`OvernightIborIndex',`Double',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
-{#fun qlOvernightIndexedSwap1 as overnightIndexedSwap'{`SwapType', withDoubleArray*`[Double]'&, withSchedule*`Schedule',`Double', withDayCounter*`DayCounter',withOvernightIborIndex*`OvernightIborIndex',`Double', preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+{#fun qlOvernightIndexedSwap1 as overnightIndexedSwap'{`SwapType',withDoubleArray*`[Double]'&,withSchedule*`Schedule',`Double',withDayCounter*`DayCounter',withOvernightIborIndex*`OvernightIborIndex',`Double',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
-{#fun qlSwapMaturityDate as maturityDate{withSwap*`Swap', preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+{#fun qlSwapMaturityDate as maturityDate{withSwap*`Swap',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
 
-{#fun qlSwapStartDate as startDate{withSwap*`Swap', preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+{#fun qlSwapStartDate as startDate{withSwap*`Swap',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
 
-{#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`Swap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`Swap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapBmaLeg as bmaLeg{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlBMASwapBmaLeg as bmaLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlBMASwapBmaLegBPS as bmaLegBPS{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapBmaLegBPS as bmaLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapBmaLegNPV as bmaLegNPV{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapBmaLegNPV as bmaLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapFairLiborFraction as fairLiborFraction{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapFairLiborFraction as fairLiborFraction{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapFairLiborSpread as fairLiborSpread{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapFairLiborSpread as fairLiborSpread{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapLiborFraction as liborFraction{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapLiborFraction as liborFraction{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapLiborLeg as liborLeg{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlBMASwapLiborLeg as liborLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlBMASwapLiborLegBPS as liborLegBPS{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapLiborLegBPS as liborLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBMASwapLiborLegNPV as liborLegNPV{withBMASwap*`BMASwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapLiborLegNPV as liborLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlAssetSwapBondLeg as bondLeg{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlAssetSwapBondLeg as bondLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlAssetSwapCleanPrice as cleanPrice{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapCleanPrice as cleanPrice{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlAssetSwapFairCleanPrice as fairCleanPrice{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapFairCleanPrice as fairCleanPrice{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlAssetSwapFairNonParRepayment as fairNonParRepayment{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapFairNonParRepayment as fairNonParRepayment{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlAssetSwapNonParRepayment as nonParRepayment{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapNonParRepayment as nonParRepayment{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlAssetSwapParSwap as parSwap{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlAssetSwapParSwap as parSwap{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
-{#fun qlAssetSwapPayBondCoupon as payBondCoupon{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlAssetSwapPayBondCoupon as payBondCoupon{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
-{#fun qlOvernightIndexedSwapOvernightLeg as overnightLeg{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlOvernightIndexedSwapOvernightLeg as overnightLeg{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-{#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 class HasFixedLeg a where
   fairRate :: a -> IO Double
@@ -245,24 +245,24 @@ instance HasFloatingLeg AssetSwap where
   floatingLegBPS = qlAssetSwapFloatingLegBPS
   floatingLegNPV = qlAssetSwapFloatingLegNPV
 
-{#fun qlVanillaSwapFairSpread{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAssetSwapFairSpread{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaSwapFairRate{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaSwapFixedLeg{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlVanillaSwapFixedLegBPS{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaSwapFixedLegNPV{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOvernightIndexedSwapFairRate{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOvernightIndexedSwapFixedLeg{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlOvernightIndexedSwapFixedLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOvernightIndexedSwapFixedLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOvernightIndexedSwapFairSpread{withOvernightIndexedSwap*`OvernightIndexedSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaSwapFairSpread{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapFairSpread{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaSwapFairRate{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaSwapFixedLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlVanillaSwapFixedLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaSwapFixedLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapFairRate{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapFixedLeg{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlOvernightIndexedSwapFixedLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapFixedLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapFairSpread{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.This calculation does not take any upfront into account, even if one was given.
-{#fun qlCreditDefaultSwapFairSpread{withCreditDefaultSwap*`CreditDefaultSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaSwapFloatingLeg{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlVanillaSwapFloatingLegBPS{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaSwapFloatingLegNPV{withVanillaSwap*`VanillaSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAssetSwapFloatingLeg{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlAssetSwapFloatingLegBPS{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAssetSwapFloatingLegNPV{withAssetSwap*`AssetSwap', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapFairSpread{withCreditDefaultSwap*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaSwapFloatingLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlVanillaSwapFloatingLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaSwapFloatingLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapFloatingLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlAssetSwapFloatingLegBPS{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAssetSwapFloatingLegNPV{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

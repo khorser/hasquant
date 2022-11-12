@@ -198,14 +198,14 @@ data Exercise =
     | European !EuropeanExercise
     | Bermudan !BermudanExercise
 
-{#fun qlExercise{`ExerciseType', preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
-{#fun qlAmericanExercise{withDay*`Day', withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
-{#fun qlAmericanExercise1{withDay*`Day',`Bool', preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
-{#fun qlBermudanExercise{withDayArray*`[Day]'&,`Bool', preErrorCheck-`String'errorCheck*-}->`QlBermudanExercise'#}
-{#fun qlEarlyExercise{`ExerciseType',`Bool', preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
-{#fun qlEuropeanExercise{withDay*`Day', preErrorCheck-`String'errorCheck*-}->`QlEuropeanExercise'#}
-{#fun qlSwingExercise{withDayArray*`[Day]'&, withIntArray*`[Word]'&, preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'#}
-{#fun qlSwingExercise1{withDay*`Day', withDay*`Day', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'#}
+{#fun qlExercise{`ExerciseType',preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
+{#fun qlAmericanExercise{withDay*`Day',withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
+{#fun qlAmericanExercise1{withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
+{#fun qlBermudanExercise{withDayArray*`[Day]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`QlBermudanExercise'#}
+{#fun qlEarlyExercise{`ExerciseType',`Bool',preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
+{#fun qlEuropeanExercise{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlEuropeanExercise'#}
+{#fun qlSwingExercise{withDayArray*`[Day]'&,withIntArray*`[Word]'&,preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'#}
+{#fun qlSwingExercise1{withDay*`Day',withDay*`Day',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'#}
 {#fun qlSwingExerciseAsBermudanExercise{`QlSwingExercise'}->`QlBermudanExercise'#}
 
 exercise :: Exercise -> IO QlExercise
@@ -382,27 +382,27 @@ instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff = qlPercentageStri
 {#fun qlPlainVanillaPayoffAsStrikedTypePayoff{`QlPlainVanillaPayoff'}->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoffAsStrikedTypePayoff >=> asQlPayoff
 
-{#fun qlAssetOrNothingPayoff{`OptionType',`Double', preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlAverageBasketPayoff{`QlPayoff', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlCashOrNothingPayoff{`OptionType',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlDoubleStickyRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlFloatingTypePayoff{`OptionType', preErrorCheck-`String'errorCheck*-}->`QlTypePayoff'#}
-{#fun qlForwardTypePayoff{`PositionType',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlGapPayoff{`OptionType',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlMaxBasketPayoff{`QlPayoff', preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlMinBasketPayoff{`QlPayoff', preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlPercentageStrikePayoff{`OptionType',`Double', preErrorCheck-`String'errorCheck*-}->`QlPercentageStrikePayoff'#}
-{#fun qlPlainVanillaPayoff{`OptionType',`Double', preErrorCheck-`String'errorCheck*-}->`QlPlainVanillaPayoff'#}
-{#fun qlRatchetMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlRatchetMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlSpreadBasketPayoff{`QlPayoff', preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlStickyMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlStickyMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlStickyPayoff{`Double',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlSuperFundPayoff{`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlSuperSharePayoff{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlAverageBasketPayoff1{`QlPayoff', withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
+{#fun qlAssetOrNothingPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
+{#fun qlAverageBasketPayoff{`QlPayoff',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
+{#fun qlCashOrNothingPayoff{`OptionType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
+{#fun qlDoubleStickyRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlFloatingTypePayoff{`OptionType',preErrorCheck-`String'errorCheck*-}->`QlTypePayoff'#}
+{#fun qlForwardTypePayoff{`PositionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlGapPayoff{`OptionType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
+{#fun qlMaxBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
+{#fun qlMinBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
+{#fun qlPercentageStrikePayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPercentageStrikePayoff'#}
+{#fun qlPlainVanillaPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPlainVanillaPayoff'#}
+{#fun qlRatchetMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlRatchetMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlSpreadBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
+{#fun qlStickyMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlStickyMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlStickyPayoff{`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
+{#fun qlSuperFundPayoff{`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
+{#fun qlSuperSharePayoff{`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
+{#fun qlAverageBasketPayoff1{`QlPayoff',withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
 
 payoff :: Payoff -> IO QlPayoff
 payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
@@ -575,9 +575,9 @@ withPayoff :: Payoff -> (Ptr QlPayoff -> IO a) -> IO a
 withPayoff = withEnumType' payoffMeta
 
 -- |callability leaving to the holder the possibility to convert
-{#fun qlSoftCallability{`Double',`BondPriceType', withDay*`Day',`Double', preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
+{#fun qlSoftCallability{`Double',`BondPriceType',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 
-{#fun qlCallability{`Double',`BondPriceType',`CallabilityType', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
+{#fun qlCallability{`Double',`BondPriceType',`CallabilityType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 
 data FittingMethod =
   CubicBSplines
@@ -598,10 +598,10 @@ fittingMethod NelsonSiegel = qlNelsonSiegelFitting
 fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
 fittingMethod Svensson = qlSvenssonFitting
 
-{#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool', preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-{#fun qlExponentialSplinesFitting{`Bool', preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlExponentialSplinesFitting{`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlNelsonSiegelFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-{#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool', preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlSvenssonFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 
 {#enum FdmSchemeType{} deriving(Show, Eq)#}
@@ -619,7 +619,7 @@ data FdmScheme =
   | ModifiedCraigSneyd
   | ModifiedHundsdorfer
 
-{#fun qlFdmSchemeDesc{`FdmSchemeType',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDesc{`FdmSchemeType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescDouglas{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescExplicitEuler{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
@@ -654,8 +654,8 @@ constraint (Composite c1 c2) = qlCompositeConstraint c1 c2
 constraint NoConstraint = qlNoConstraint
 constraint PositiveConstraint = qlPositiveConstraint
 
-{#fun qlBoundaryConstraint{`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
-{#fun qlCompositeConstraint{withConstraint*`Constraint', withConstraint*`Constraint', preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
+{#fun qlBoundaryConstraint{`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
+{#fun qlCompositeConstraint{withConstraint*`Constraint',withConstraint*`Constraint',preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
 {#fun qlNoConstraint{preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
 {#fun qlPositiveConstraint{preErrorCheck-`String'errorCheck*-}->`QlConstraint'peekConstraint*#}
 
@@ -669,8 +669,8 @@ data OptimizationMethod =
 optimizationMethod :: OptimizationMethod -> IO QlOptimizationMethod
 optimizationMethod (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
 optimizationMethod (Simplex l) = qlSimplex l
-{#fun qlLevenbergMarquardt{`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
-{#fun qlSimplex{`Double', preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
+{#fun qlLevenbergMarquardt{`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
+{#fun qlSimplex{`Double',preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
 
 data EndCriteria =
   EndCriteria
@@ -682,7 +682,7 @@ data EndCriteria =
 
 endCriteria :: EndCriteria -> IO QlEndCriteria
 endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
-{#fun qlEndCriteria{fromIntegral`Word', fromIntegral`Word',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'peekEndCriteria*#}
+{#fun qlEndCriteria{fromIntegral`Word',fromIntegral`Word',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'peekEndCriteria*#}
 
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 
@@ -700,7 +700,7 @@ rounding NoRounding = qlRounding
 rounding (Rounding p t d) = qlRounding1 p t d
 
 {#fun qlRounding{preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
-{#fun qlRounding1{`Int',`RoundingType',`Int', preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
+{#fun qlRounding1{`Int',`RoundingType',`Int',preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
 
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
@@ -714,9 +714,9 @@ data LmCorrelationModel = ConstWrapperCorrelation LmCorrelationModel
     !Word -- ^factors
   deriving (Show, Eq)
 
-{#fun qlLmConstWrapperCorrelationModel{withStandalone*`QlLmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
-{#fun qlLmExponentialCorrelationModel{fromIntegral`Word',`Double', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
-{#fun qlLmLinearExponentialCorrelationModel{fromIntegral`Word',`Double',`Double', fromIntegral`Word', preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+{#fun qlLmConstWrapperCorrelationModel{withStandalone*`QlLmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+{#fun qlLmExponentialCorrelationModel{fromIntegral`Word',`Double',preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
+{#fun qlLmLinearExponentialCorrelationModel{fromIntegral`Word',`Double',`Double',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlLmCorrelationModel'peekLmCorrelationModel*#}
 
 correlationModel :: LmCorrelationModel -> IO QlLmCorrelationModel
 correlationModel (ConstWrapperCorrelation m) = correlationModel m >>= qlLmConstWrapperCorrelationModel
@@ -738,9 +738,9 @@ data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
     !Double -- ^d
   deriving (Show, Eq)
 
-{#fun qlLmConstWrapperVolatilityModel{withStandalone*`QlLmVolatilityModel', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
-{#fun qlLmFixedVolatilityModel{withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
-{#fun qlLmLinearExponentialVolatilityModel{withDoubleArray*`[Double]'&,`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+{#fun qlLmConstWrapperVolatilityModel{withStandalone*`QlLmVolatilityModel',preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+{#fun qlLmFixedVolatilityModel{withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
+{#fun qlLmLinearExponentialVolatilityModel{withDoubleArray*`[Double]'&,`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlLmVolatilityModel'peekLmVolatilityModel*#}
 
 volatilityModel :: LmVolatilityModel -> IO QlLmVolatilityModel
 volatilityModel (ConstWrapperVolatility m) = volatilityModel m >>= qlLmConstWrapperVolatilityModel
@@ -770,6 +770,6 @@ claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
 -- |Claim on a notional
 {#fun qlFaceValueClaim{preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 -- |Claim on the notional of a reference security, including accrual
-{#fun qlFaceValueAccrualClaim{withBond*`Bond', preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
+{#fun qlFaceValueAccrualClaim{withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

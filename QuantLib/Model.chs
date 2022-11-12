@@ -179,32 +179,32 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess nocode#}
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
 
-{#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess', preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
+{#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 
-{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
+{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`YieldTermStructure',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 
-{#fun qlCoxIngersollRoss as coxIngersollRoss{`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+{#fun qlCoxIngersollRoss as coxIngersollRoss{`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
-{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
-{#fun qlG2 as g2{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
+{#fun qlG2 as g2{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
 
-{#fun qlGeneralizedHullWhite as generalizedHullWhite{withYieldTermStructure*`YieldTermStructure', withDayArray*`[Day]'&, withDayArray*`[Day]'&, withDoubleArray*`[Double]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
+{#fun qlGeneralizedHullWhite as generalizedHullWhite{withYieldTermStructure*`YieldTermStructure',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 
-{#fun qlGJRGARCHModel as gJRGARCHModel{withGJRGARCHProcess*`GJRGARCHProcess', preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
+{#fun qlGJRGARCHModel as gJRGARCHModel{withGJRGARCHProcess*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
 
-{#fun qlHestonModel as hestonModel{withHestonProcess*`HestonProcess', preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
+{#fun qlHestonModel as hestonModel{withHestonProcess*`HestonProcess',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
 
-{#fun qlHullWhite as hullWhite{withYieldTermStructure*`YieldTermStructure',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
+{#fun qlHullWhite as hullWhite{withYieldTermStructure*`YieldTermStructure',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
 
-{#fun qlVarianceGammaModel as varianceGammaModel{withVarianceGammaProcess*`VarianceGammaProcess', preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
+{#fun qlVarianceGammaModel as varianceGammaModel{withVarianceGammaProcess*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
 
-{#fun qlVasicek as vasicek{`Double',`Double',`Double',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+{#fun qlVasicek as vasicek{`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
-{#fun qlLiborForwardModel as liborForwardModel{withLiborForwardModelProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel', preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
+{#fun qlLiborForwardModel as liborForwardModel{withLiborForwardModelProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
@@ -213,35 +213,35 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -> OptimizationMethod -> EndCriteria -> Maybe Constraint -> IO ()
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
-{#fun qlCalibratedModelCalibrate{withCalibratedModel*`CalibratedModel', withCalibrationHelperArray*`[GenCalibrationHelper a]'&, withDoubleArray*`[Double]'&, withOptimizationMethod*`OptimizationMethod', withEndCriteria*`EndCriteria', withMaybeConstraint*`Maybe Constraint', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelCalibrate{withCalibratedModel*`CalibratedModel',withCalibrationHelperArray*`[GenCalibrationHelper a]'&,withDoubleArray*`[Double]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',withMaybeConstraint*`Maybe Constraint',preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlCapHelper as capHelper{fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',`Frequency', withDayCounter*`DayCounter',`Bool',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlCapHelper as capHelper{fromEnumQuantity`(Word,TimeUnit)'&,withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',`Frequency',withDayCounter*`DayCounter',`Bool',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
-{#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word, TimeUnit)'&, withCalendar*`Calendar',`Double',`Double', withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word,TimeUnit)'&,withCalendar*`Calendar',`Double',`Double',withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 -- TODO add more parameters and more SwaptionHelper constructors
-{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word, TimeUnit)'&, fromEnumQuantity`(Word, TimeUnit)'&, withQuote*`GenQuote a',withIborIndex*`GenIborIndex b', fromEnumQuantity`(Word, TimeUnit)'&, withDayCounter*`DayCounter', withDayCounter*`DayCounter',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType', preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'&,fromEnumQuantity`(Word,TimeUnit)'&,withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'&,withDayCounter*`DayCounter',withDayCounter*`DayCounter',withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
-{#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`BlackCalibrationHelper', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Returns array of arguments on which calibration is done.
-{#fun qlCalibratedModelParams as params{withCalibratedModel*`CalibratedModel', preArray-`[Double]'&peekDoubleArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelParams as params{withCalibratedModel*`CalibratedModel',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black price given a volatility.
-{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the error resulting from the model valuation
-{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withBlackCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black volatility implied by the model.
-{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double',`Double', fromIntegral`Word',`Double',`Double', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double',`Double',fromIntegral`Word',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the actual price of the instrument (from volatility)
-{#fun qlBlackCalibrationHelperMarketValue as marketValue{withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperMarketValue as marketValue{withBlackCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the price of the instrument according to the model
-{#fun qlBlackCalibrationHelperModelValue as modelValue{withBlackCalibrationHelper*`BlackCalibrationHelper', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperModelValue as modelValue{withBlackCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

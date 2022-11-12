@@ -152,10 +152,10 @@ today = do
 {#fun qlDateNthWeekday as nthWeekday{fromIntegral`Word',`Weekday',`Month',`Int'}->`Day'toDay#}
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
-{#fun qlIMMCode as immCode{withDay*`Day', preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
+{#fun qlIMMCode as immCode{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
 
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
-{#fun qlIMMDate as immDate{`String', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlIMMDate as immDate{`String',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |returns whether or not the given string is an IMM code, immCode -> mainCycle -> bool
 {#fun pure qlIMMIsIMMcode as isIMMCode{`String',`Bool'}->`Bool'#}
@@ -165,7 +165,7 @@ today = do
 
 -- |next IMM code following the given code
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode1 as nextIMMCode'{`String',`Bool', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
+{#fun qlIMMNextCode1 as nextIMMCode'{`String',`Bool',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
@@ -173,50 +173,50 @@ today = do
 
 -- |next IMM date following the given IMM code
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextDate1 as nextIMMDate'{`String',`Bool', withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlIMMNextDate1 as nextIMMDate'{`String',`Bool',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |next IMM date following the given date
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 {#fun qlIMMNextDate as nextIMMDate{withDay*`Day',`Bool'}->`Day'toDay#}
 
-{#fun qlAddPeriod as addPeriod{withDay*`Day', fromEnumQuantity`Int, TimeUnit'&, preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlAddPeriod as addPeriod{withDay*`Day',fromEnumQuantity`Int,TimeUnit'&,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
-{#fun qlECBAddDate as addECBDate{withDay*`Day', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBAddDate as addECBDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).Warning It raises an exception if the input date is not an ECB date
-{#fun qlECBCode as ecbCode{withDay*`Day', preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
+{#fun qlECBCode as ecbCode{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
 
 -- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
-{#fun qlECBDate1 as ecbDate'{`String', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlECBDate1 as ecbDate'{`String',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |maintenance period start date in the given month/year
-{#fun qlECBDate as ecbDate{`Month',`Int', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlECBDate as ecbDate{`Month',`Int',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |returns whether or not the given string is an ECB code
-{#fun qlECBIsECBcode as isECBCode{`String', preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlECBIsECBcode as isECBCode{`String',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- |returns whether or not the given date is a maintenance period start date
-{#fun qlECBIsECBdate as isECBDate{withDay*`Day', preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlECBIsECBdate as isECBDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
-{#fun qlECBKnownDates as knownECBDates{preArray-`[Day]'&peekDayArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBKnownDates as knownECBDates{preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |next ECB code following the given code
-{#fun qlECBNextCode1 as nextECBCode'{`String', preErrorCheck-`String'errorCheck*-}->`String'#}
+{#fun qlECBNextCode1 as nextECBCode'{`String',preErrorCheck-`String'errorCheck*-}->`String'#}
 
 -- |next ECB code following the given date
-{#fun qlECBNextCode as nextECBCode{withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`String'#}
+{#fun qlECBNextCode as nextECBCode{withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`String'#}
 
 -- |next maintenance period start date following the given ECB code
-{#fun qlECBNextDate1 as nextECBDate'{`String', withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlECBNextDate1 as nextECBDate'{`String',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |next maintenance period start date following the given date
-{#fun qlECBNextDate as nextECBDate{withMaybeDay*`Maybe Day', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlECBNextDate as nextECBDate{withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |next maintenance period start dates following the given code
-{#fun qlECBNextDates1 as nextECBDates'{`String', withMaybeDay*`Maybe Day', preArray-`[Day]'&peekDayArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBNextDates1 as nextECBDates'{`String',withMaybeDay*`Maybe Day',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlECBNextDates as nextECBDates{withMaybeDay*`Maybe Day', preArray-`[Day]'&peekDayArray*, preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBNextDates as nextECBDates{withMaybeDay*`Maybe Day',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlECBRemoveDate as removeECBDate{withDay*`Day', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBRemoveDate as removeECBDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

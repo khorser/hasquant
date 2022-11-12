@@ -61,21 +61,21 @@ asInstrument :: (a`Derives` Instrument) => a -> IO Instrument
 asInstrument = cast
 
 -- |Returns the net present value of the given Instrument
-{#fun qlInstrumentNPV as npv{withInstrument*`Instrument', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlInstrumentNPV as npv{withInstrument*`Instrument',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the error estimate on the NPV when available.
-{#fun qlInstrumentErrorEstimate as errorEstimate{withInstrument*`Instrument', preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlInstrumentErrorEstimate as errorEstimate{withInstrument*`Instrument',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns whether the instrument might have value greater than zero.
-{#fun qlInstrumentIsExpired as isExpired{withInstrument*`Instrument', preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlInstrumentIsExpired as isExpired{withInstrument*`Instrument',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- |returns the date the net present value refers to.
-{#fun qlInstrumentValuationDate as valuationDate{withInstrument*`Instrument', preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlInstrumentValuationDate as valuationDate{withInstrument*`Instrument',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 composite :: [(Instrument, Double)] -> IO Instrument
 composite = (uncurry qlCompositeInstrument) . unzip
-{#fun qlCompositeInstrument{withInstrumentArray*`[Instrument]'&, withDoubleArray*`[Double]'&, preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+{#fun qlCompositeInstrument{withInstrumentArray*`[Instrument]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
 
-{#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`Instrument',withPricingEngine*`PricingEngine', preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`Instrument',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
