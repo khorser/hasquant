@@ -29,9 +29,9 @@ import QuantLib.Internal.Type
 
 {#fun qlPathGeneratorNext as next{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}
 {#fun qlPathGeneratorAntithetic as antithetic{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}
-{#fun qlSamplePathWeight as weight{withSamplePath*`SamplePath'}->`Double'#}
-{#fun qlSamplePathAssetNumber as assetNumber{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
-{#fun qlSamplePathSize as pathSize{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
+{#fun pure qlSamplePathWeight as weight{withSamplePath*`SamplePath'}->`Double'#}
+{#fun pure qlSamplePathAssetNumber as assetNumber{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
+{#fun pure qlSamplePathSize as pathSize{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
 {#fun qlSamplePathAt as valueAt{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

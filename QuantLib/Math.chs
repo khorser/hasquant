@@ -81,7 +81,7 @@ import QuantLib.Internal.Type
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
 {#fun qlTimeGrid3 as timeGridFromList'{withDoubleArray*`[Double]'&,fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
-{#fun qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
+{#fun pure qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
 {#fun qlTimeGridAt as timeAt{withTimeGrid*`TimeGrid',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
