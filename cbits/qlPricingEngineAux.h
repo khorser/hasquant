@@ -18,8 +18,11 @@ QuantLib::PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const shared_pt
 QuantLib::PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const QuantLib::FdmSchemeDesc &fdScheme);
 
 class PolymorphicPathGenerator;
+typedef QuantLib::Sample<QuantLib::MultiPath> SamplePath;
 PolymorphicPathGenerator* qlPathGeneratorAux(int rngtrait, const shared_ptr<QuantLib::StochasticProcess> p, const QuantLib::TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBrdige);
 PolymorphicPathGenerator* qlSobolPathGeneratorAux(QuantLib::SobolRsg::DirectionIntegers dir, const shared_ptr<QuantLib::StochasticProcess> p, const QuantLib::TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge);
 void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p);
+const SamplePath& qlPathGeneratorNextAux(PolymorphicPathGenerator* gen);
+const SamplePath& qlPathGeneratorAntitheticAux(PolymorphicPathGenerator* gen);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

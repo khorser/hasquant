@@ -55,14 +55,18 @@
 #include <ql/legacy/libormarketmodels/lfmprocess.hpp>
 
 #include "qlaux.h"
-#include "qlPricingEngine.h"
 #include "qlPricingEngineAux.h"
+#include "qlPricingEngine.h"
 
 namespace hasquant {
 #include "qlEnumObjects.h"
 }
 
 using namespace QuantLib;
+
+#ifdef QLTRACK_ALLOCATIONS
+template <> class ObjClassName<SamplePath*> {public: static void output(std::ostream& os) {os << "SamplePath";}};
+#endif
 
 QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e) {
   try {
@@ -73,8 +77,6 @@ QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char *
     return handleException<QlPricingEngine *>(e, er);
   }
 }
-
-void qlFreePricingEngine(QlPricingEngine *engine) {del(engine);}
 
 QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {
@@ -190,6 +192,7 @@ QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlS
   }
 }
 
+void qlFreePricingEngine(QlPricingEngine *engine) {del(engine);}
 void qlFreeBlackCalculator(QlBlackCalculator *o) {del(o);}
 void qlFreeBlackScholesCalculator(QlBlackScholesCalculator *o) {del(o);}
 QlBlackCalculator* qlBlackScholesCalculatorAsBlackCalculator(QlBlackScholesCalculator *o) {return ret(new QlBlackCalculator(*arg(o)));}
@@ -848,7 +851,6 @@ QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProc
     return handleException<QlPricingEngine*>(e, er);
   }
 }
-
 QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
   try {
     return ret(new QlPricingEngine(alloc(qlFdBlackScholesVanillaEngineAux(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme)))));
@@ -856,7 +858,6 @@ QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess*
     return handleException<QlPricingEngine*>(e, er);
   }
 }
-
 QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlQuote* creditSpread, unsigned dividendsLen, QlDividend** dividends, char **e) {
   try {
     const Handle<Quote>& cs = Handle<Quote>(*arg(creditSpread));
@@ -923,8 +924,6 @@ QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, uns
   }
 }
 
-void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
-
 FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e) {
   try {
     return alloc(new FdmSchemeDesc((FdmSchemeDesc::FdmSchemeType)type, theta, mu));
@@ -932,7 +931,6 @@ FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e) {
     return handleException<FdmSchemeDesc*>(e, er);
   }
 }
-
 FdmSchemeDesc* qlFdmSchemeDescCraigSneyd(char **e) {
   try {
     return alloc(new FdmSchemeDesc(FdmSchemeDesc::CraigSneyd()));
@@ -983,6 +981,7 @@ FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {
   }
 }
 
+void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 void qlFreeGJRGARCHModel(QlGJRGARCHModel *o) {del(o);}
 void qlFreeHestonModel(QlHestonModel *o) {del(o);}
 void qlFreeBatesModel(QlBatesModel *o) {del(o);}
@@ -995,7 +994,6 @@ void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}
 QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o) {return ret(new QlAffineModel(*arg(o)));}
 void qlFreeHullWhite(QlHullWhite *o) {del(o);}
 QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o) {return ret(new QlOneFactorAffineModel(*arg(o)));}
-
 void qlFreeCalibratedModel(QlCalibratedModel *o) {del(o);}
 
 QlBatesModel* qlBatesModel(QlBatesProcess* process, char **e) {
@@ -1079,16 +1077,15 @@ QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, d
 void qlFreeG2(QlG2 *o) {del(o);}
 QlAffineModel* qlG2AsAffineModel(QlG2 *o) {return ret(new QlAffineModel(*arg(o)));}
 QlShortRateModel* qlG2AsShortRateModel(QlG2 *o) {return ret(new QlShortRateModel(*arg(o)));}
-
 void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) {del(o);}
 QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o) {return ret(new QlBatesModel(*arg(o)));}
 void qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o) {del(o);}
 QlBatesDoubleExpModel* qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel(QlBatesDoubleExpDetJumpModel *o) {return ret(new QlBatesDoubleExpModel(*arg(o)));}
 void qlFreeBatesDoubleExpModel(QlBatesDoubleExpModel *o) {del(o);}
 QlHestonModel* qlBatesDoubleExpModelAsHestonModel(QlBatesDoubleExpModel *o) {return ret(new QlHestonModel(*arg(o)));}
-
 void qlFreeLmCorrelationModel(QlLmCorrelationModel *o) {del(o);}
 void qlFreeLmVolatilityModel(QlLmVolatilityModel *o) {del(o);}
+
 QlLmCorrelationModel* qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, char **e) {
   try {
     return ret(new QlLmCorrelationModel(alloc(new LmConstWrapperCorrelationModel(*arg(corrModel)))));
@@ -1138,6 +1135,7 @@ QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, Ql
     return handleException<QlLiborForwardModel*>(e, er);
   }
 }
+
 QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlHestonModel* qlBatesModelAsHestonModel(QlBatesModel *o) {return ret(new QlHestonModel(*arg(o)));}
@@ -1145,9 +1143,9 @@ QlCalibratedModel* qlLiborForwardModelAsCalibratedModel(QlLiborForwardModel *o) 
 QlCalibratedModel* qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlCalibratedModel* qlShortRateModelAsCalibratedModel(QlShortRateModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlShortRateModel* qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o) {return ret(new QlShortRateModel(*arg(o)));}
-
 void qlFreeCalibrationHelper(QlCalibrationHelper *o) {del(o);}
 void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
+QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
 void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
   try {
@@ -1243,8 +1241,6 @@ double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, char **e)
     return handleException<double>(e, er);
   }
 }
-
-QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
 shared_ptr<StochasticProcess::discretization> createDiscretization(int n) {
   switch (n) {
@@ -1496,6 +1492,35 @@ PolymorphicPathGenerator *qlSobolPathGenerator(int dir, QlStochasticProcess *p, 
     return ret(qlSobolPathGeneratorAux((SobolRsg::DirectionIntegers)dir, *arg(p), *arg(t), seed, dim, brownianBridge));
   } catch (std::exception& er) {
     return handleException<PolymorphicPathGenerator*>(e, er);
+  }
+}
+
+
+SamplePath *qlPathGeneratorNext(PolymorphicPathGenerator *pgen, char **e) {
+  try {
+    return alloc(new SamplePath(qlPathGeneratorNextAux(pgen)));
+  } catch (std::exception& er) {
+    return handleException<SamplePath*>(e, er);
+  }
+}
+
+SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, char **e) {
+  try {
+    return alloc(new SamplePath(qlPathGeneratorAntitheticAux(pgen)));
+  } catch (std::exception& er) {
+    return handleException<SamplePath*>(e, er);
+  }
+}
+
+double qlSampleWeight(SamplePath *p) {return arg(p)->weight;}
+double qlSampleAssetNumber(SamplePath *p) {return arg(p)->value.assetNumber();}
+double qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
+void qlFreeSample(SamplePath *p) {del(p);}
+double qlSampleAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
+  try {
+    return arg(p)->value.at(asset).at(point);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
   }
 }
 

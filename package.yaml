@@ -1,7 +1,7 @@
 name: hasquant
 version: "0.2.5.0"
 synopsis: Bindings to QuantLib
-license: MIT
+license: BSD-3-Clause
 maintainer: Sergey Khorev <sergey.khorev@gmail.com>
 copyright: (c) 2012-2022 Sergey Khorev
 category: Finance
@@ -37,6 +37,7 @@ library:
     - time
     - template-haskell
     - split
+    - vector
   verbatim:
     - build-tool-depends: c2hs:c2hs
   exposed-modules: # the order is important as it defines the order used by c2hs

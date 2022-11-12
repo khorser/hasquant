@@ -126,3 +126,4 @@ typedef struct QlVarianceGammaProcess QlVarianceGammaProcess;
 typedef struct QlVolatilityTermStructure QlVolatilityTermStructure;
 typedef struct QlYieldTermStructure QlYieldTermStructure;
 typedef struct PolymorphicPathGenerator PolymorphicPathGenerator;
+typedef struct Sample Sample;

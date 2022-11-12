@@ -13,7 +13,7 @@ homepage:       https://github.com/khorser/hasquant#readme
 bug-reports:    https://github.com/khorser/hasquant/issues
 maintainer:     Sergey Khorev <sergey.khorev@gmail.com>
 copyright:      (c) 2012-2022 Sergey Khorev
-license:        MIT
+license:        BSD-3-Clause
 build-type:     Simple
 tested-with:
     GHC == 8.10.6
@@ -96,6 +96,7 @@ library
     , split
     , template-haskell
     , time
+    , vector
   default-language: Haskell2010
   if flag(trackAllocations)
     cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
