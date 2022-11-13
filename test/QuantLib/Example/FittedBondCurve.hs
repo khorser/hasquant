@@ -93,7 +93,7 @@ run = do
         \h -> do
           bcfs <- TS.underlying h >>= cashFlows
           cfs <- CF.cashFlows bcfs (Just False) (Just bondSettle)
-          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
+          let ds = map (\(d, _, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           m <- years dc tod (last ds) Nothing Nothing
           r1 <- parRate ts0 (bondSettle:ds) dc
           r2 <- forM curves $

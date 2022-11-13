@@ -1070,7 +1070,7 @@ main = do
                 checkInclusion l 2 [(1, True), (2, True), (3, False)]
           td <- today
           Settings.setEvaluationDate (Just td)
-          l <- CF.leg (zip (repeat 1.0) [td .. addDays 2 td])
+          l <- CF.leg $ zip [td .. addDays 2 td] (repeat 1.0)
 
           Settings.setIncludeReferenceDateEvents False
           Settings.setIncludeTodaysCashFlows Nothing
@@ -1133,25 +1133,25 @@ main = do
         (CF.leg [] >>= CF.startDate) `shouldThrow` (\(CPlusPlusException  m) -> not $ null m)
 
       it "single leg today" $ do
-        (CF.leg [(100, tod)] >>= CF.startDate) `shouldReturn` tod
+        (CF.leg [(tod, 100)] >>= CF.startDate) `shouldReturn` tod
 
       it "two legs unsorted" $ do
-        (CF.leg [(100, tod), (-1000, addDays (-10) tod)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
+        (CF.leg [(tod, 100), (addDays (-10) tod, -1000)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
 
       it "three legs sorted" $do
-        (CF.leg [(100, tod), (1000, addDays (-10) tod), (-2000, addDays 10 tod)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
+        (CF.leg [(tod, 100), (addDays (-10) tod, 1000), (addDays 10 tod, -2000)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
 
       prop "random single let start date" $
         \(a, ValidDay d) -> monadicIO $ do
-          run $ (CF.leg [(a, d)] >>= CF.startDate) `shouldReturn` d
+          run $ (CF.leg [(d, a)] >>= CF.startDate) `shouldReturn` d
 
       prop "start date should be minimal" $
         \flows ->
           not (null flows)
             ==> monadicIO $ do
-              let (a, d) = unzip (flows :: [(Double, ValidDay)])
+              let (d, a) = unzip (flows :: [(ValidDay, Double)])
                   ds = map validDay d
-                  f = zip a ds
+                  f = zip ds a
               run $ (CF.leg f >>= CF.startDate) `shouldReturn` minimum ds
 
       it "check for segfaulting regression with dynamic cast of coupon in Black pricer" $
@@ -1317,7 +1317,7 @@ main = do
     describe "some more bonds" $
       it "some statics" $ do
         c <- calendar UnitedKingdomSettlement
-        l <- CF.leg [(1000, fromGregorian 2013 1 1)]
+        l <- CF.leg [(fromGregorian 2013 1 1, 1000)]
         b <- B.bond' 2 c 1000 (Just (fromGregorian 2013 1 1)) (Just (fromGregorian 2012 1 1)) l
         B.maturityDate b `shouldBe` Just (fromGregorian 2013 1 1)
 

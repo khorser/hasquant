@@ -105,9 +105,9 @@ import QuantLib.Internal.Type
 
 {#fun qlLeg{withDoubleArray*`[Double]'&,withDayPtr*`[Day]',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
-leg :: [(Double, Day)] -- ^amounts and dates
+leg :: [(Day, Double)] -- ^amounts and dates
   -> IO Leg
-leg = (uncurry qlLeg) . unzip
+leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
 {#fun qlLegStartDate as startDate{withLeg*`GenLeg a',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
@@ -124,8 +124,8 @@ leg = (uncurry qlLeg) . unzip
 cashFlows :: Leg
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
-  -> IO [(Double, Day, Bool)] -- ^amount, date, hasOccurred
-cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 as ds hs}
+  -> IO [(Day, Double, Bool)] -- ^ date, amount, hasOccurred
+cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as hs}
 
 -- |Cash-flow duration.
 -- The simple duration of a string of cash flows is defined as \[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \] where $ c_i $ is the amount of the $ i $-th cash flow, $ t_i $ is its payment time, and $ B(t_i) $ is the corresponding discount according to the passed yield.The modified duration is defined as \[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.The Macaulay duration is defined for a compounded IRR as \[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \] where $ y $ is the IRR and $ N $ is the number of cash flows per year.
