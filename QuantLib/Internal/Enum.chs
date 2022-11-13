@@ -156,8 +156,7 @@ data Interpolation =
 
 {#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
 
-class IsQlExercise a where
-  asQlExercise :: a -> IO QlExercise
+class IsQlExercise a where asQlExercise :: a -> IO QlExercise
 
 {#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
 {#fun qlEuropeanExerciseAsExercise{`QlEuropeanExercise'}->`QlExercise'#}
@@ -174,7 +173,6 @@ instance IsQlExercise QlSwingExercise where asQlExercise = qlSwingExerciseAsExer
 {#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
 {#fun qlBermudanExerciseAsExercise{`QlBermudanExercise'}->`QlExercise'#}
 instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
-
 
 data EuropeanExercise = EuropeanExercise Day
 
@@ -359,8 +357,7 @@ data Payoff =
 
 {#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
 
-class IsQlPayoff a where
-  asQlPayoff :: a -> IO QlPayoff
+class IsQlPayoff a where asQlPayoff :: a -> IO QlPayoff
 
 {#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
 {#fun qlBasketPayoffAsPayoff{`QlBasketPayoff'}->`QlPayoff'#}

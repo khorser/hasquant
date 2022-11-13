@@ -241,7 +241,6 @@ class OptionOnAsset a where
   vega :: a -> IO Double
   dividendRho :: a -> IO Double
 
-
 instance OptionOnAsset MultiAssetOption where
   delta = qlMultiAssetOptionDelta
   gamma = qlMultiAssetOptionGamma
