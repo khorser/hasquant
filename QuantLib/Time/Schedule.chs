@@ -81,7 +81,7 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
 {#fun qlPeriodToFrequency1 as toFrequency{fromEnumQuantity`Word,TimeUnit'&,preErrorCheck-`String'errorCheck*-}->`Frequency'#}
 
-{#fun qlPeriodParserParse1 as parse{`String',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
+{#fun qlPeriodParserParse1 as parse{`String',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 {#fun qlPeriodAdd1 as addPeriods{fromEnumQuantity`Int,TimeUnit'&,fromEnumQuantity`Int,TimeUnit'&,preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
 
