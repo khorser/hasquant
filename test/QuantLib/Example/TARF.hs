@@ -19,6 +19,13 @@ import QuantLib.Settings
 
 data State = State{_remPL :: !Double, flows :: ![Double]}
 
+roundTo :: Double -> Int -> Double
+roundTo x n = fromIntegral rounded / mult
+  where
+    mult = 10.0**fromIntegral n
+    rounded :: Int
+    rounded = round (x * mult)
+
 run :: IO ()
 run = do
   setEvaluationDate (Just valDate)
@@ -49,12 +56,15 @@ run = do
     eurNotional = 500000
     ilsTarget = 0.4 * eurNotional
     leverage = 2.0
+    notionalDigits = 2
+    spotDigits = 4
 
     genFlows :: State -> Double -> State
     genFlows s@(State 0 _) _ = s
     genFlows (State tgt fs) spt | spt > strike = State (tgt-cash) (fs ++ [cash])
-      where cash = min ((spt-strike)*eurNotional) tgt
-    genFlows (State tgt fs) spt = State tgt (fs ++ [(spt-strike)*eurNotional*leverage])
+      where cash = min (roundTo ((roundTo spt spotDigits-strike)*eurNotional) notionalDigits) tgt
+    genFlows (State tgt fs) spt = State tgt (fs ++ [cash])
+      where cash = roundTo ((roundTo spt spotDigits-strike)*eurNotional*leverage) notionalDigits
 
     dfEUR = [(valDate, 1.0),
       (fromGregorian 2022 09 16, 0.999910),
