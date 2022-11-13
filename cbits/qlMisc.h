@@ -129,7 +129,6 @@ extern "C" {
   int qlCalendarAdjust(Calendar *c, int date, int conv);
   int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
   void qlCalendarAddHoliday(Calendar* o, int x0, char **e);
-  int qlCalendarAdvance1(Calendar* o, int date, int, int, int convention, int endOfMonth, char **e);
   int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e);
   int qlCalendarEndOfMonth(Calendar* o, int d, char **e);
   int qlCalendarIsBusinessDay(Calendar* o, int d, char **e);

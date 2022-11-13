@@ -441,9 +441,6 @@ Calendar *qlCalendar(int country, int market, char **e) {
 int qlCalendarAdjust(Calendar *c, int date, int conv) {return arg(c)->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();}
 int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom) {return arg(c)->advance(Date(date), n, (TimeUnit) unit,(BusinessDayConvention) conv, eom).serialNumber();}
 void qlCalendarAddHoliday(Calendar* o, int x0, char **e) {try {arg(o)->addHoliday(Date(x0));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
-int qlCalendarAdvance1(Calendar* o, int date, int n, int u, int convention, int endOfMonth, char **e) {
-  try {return (arg(o)->advance(Date(date), Period(n, (TimeUnit)u), (BusinessDayConvention)convention, endOfMonth)).serialNumber();
-  } catch (std::exception& er) {return handleException<int>(e, er);}}
 
 int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e) {
   try {return arg(o)->businessDaysBetween(Date(from), Date(to), includeFirst, includeLast);

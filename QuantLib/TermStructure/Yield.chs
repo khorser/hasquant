@@ -179,12 +179,13 @@ asYieldTermStructure :: (a`Derives` YieldTermStructure) => a -> IO YieldTermStru
 asYieldTermStructure = cast
 
 piecewiseZeroSpreadedTermStructure :: YieldTermStructure
-  -> [(Quote, Day)]  -- ^spreads, ^dates
+  -> [(Day, GenQuote a)]  -- ^spreads, ^dates
   -> Compounding
   -> Frequency
   -> DayCounter
   -> IO YieldTermStructure
-piecewiseZeroSpreadedTermStructure ts = uncurry (qlPiecewiseZeroSpreadedTermStructure ts) . unzip
+piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure ts qs ds
+  where (ds, qs) = unzip qd
 
 {#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
@@ -193,12 +194,12 @@ piecewiseZeroSpreadedTermStructure ts = uncurry (qlPiecewiseZeroSpreadedTermStru
 piecewiseYieldCurve :: Day -- ^referenceDate
   -> [GenRateHelper b] -- ^instruments
   -> DayCounter -- ^dayCounter
-  -> [(GenQuote a, Day)] -- ^jumps and jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps and jumpDates
   -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 piecewiseYieldCurve d r dc qd t i = uncurry' (qlPiecewiseYieldCurve d r dc qs ds t) (qlInterpolation i)
-  where (qs, ds) = unzip qd
+  where (ds, qs) = unzip qd
 
 {#fun qlPiecewiseYieldCurve{withDay*`Day',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
@@ -206,48 +207,48 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [GenRateHelper b] -- ^instruments
   -> DayCounter -- ^dayCounter
-  -> [(GenQuote a, Day)] -- ^jumps and jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps and jumpDates
   -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 piecewiseYieldCurve' s cal r dc qd t i = uncurry' (qlPiecewiseYieldCurve1 s cal r dc qs ds t) (qlInterpolation i)
-  where (qs, ds) = unzip qd
+  where (ds, qs) = unzip qd
 
 {#fun qlPiecewiseYieldCurve1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-interpolatedDiscountCurve :: [(Double, Day)] -- ^dates, dfs
+interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 interpolatedDiscountCurve r dc c qd i = uncurry' (qlInterpolatedDiscountCurve rs rd dc c qs ds) (qlInterpolation i)
-  where (rs, rd) = unzip r
-        (qs, ds) = unzip qd
+  where (rd, rs) = unzip r
+        (ds, qs) = unzip qd
 
 {#fun qlInterpolatedDiscountCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-interpolatedForwardCurve :: [(Double, Day)] -- ^dates, forwards
+interpolatedForwardCurve :: [(Day, Double)] -- ^dates, forwards
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 interpolatedForwardCurve r dc c qd i = uncurry' (qlInterpolatedForwardCurve rs rd dc c qs ds) (qlInterpolation i)
-  where (rs, rd) = unzip r
-        (qs, ds) = unzip qd
+  where (rd, rs) = unzip r
+        (ds, qs) = unzip qd
 
 {#fun qlInterpolatedForwardCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-interpolatedZeroCurve :: [(Double, Day)] -- ^dates, yields
+interpolatedZeroCurve :: [(Day, Double)] -- ^dates, yields
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
-  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 interpolatedZeroCurve r dc c qd i = uncurry' (qlInterpolatedZeroCurve rs rd dc c qs ds) (qlInterpolation i)
-  where (rs, rd) = unzip r
-        (qs, ds) = unzip qd
+  where (rd, rs) = unzip r
+        (ds, qs) = unzip qd
 
 {#fun qlInterpolatedZeroCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 

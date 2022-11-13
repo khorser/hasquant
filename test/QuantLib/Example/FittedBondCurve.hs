@@ -39,7 +39,7 @@ run = do
   setEvaluationDate $ Just tod
   dc <- dayCounter Simple
 
-  bondSettle <- advance' cal tod (bondSettleDays, Days) Following False
+  bondSettle <- advance cal tod (bondSettleDays, Days) Following False
   cleanQuotes <- mapM simpleQuote cleanPrices
 
   (rates1, ts0, instrA, instrB, curves) <- step1 tod dc cal bondSettle cleanQuotes

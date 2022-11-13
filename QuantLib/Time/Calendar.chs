@@ -8,7 +8,6 @@ module QuantLib.Time.Calendar
   , adjust
   , advance
   , addHoliday
-  , advance'
   , businessDaysBetween
   , endOfMonth
   , isBusinessDay
@@ -49,14 +48,11 @@ calendar x = uncurry qlCalendar $ mapCalendar x
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
 {#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',`BusinessDayConvention'}->`Day'toDay#}
 
--- |Advances the given date of the given number of business days and returns the result
+-- |Advances the given date of the given number of business days and returns the result using business day convention and the EOM flag
 {#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,`BusinessDayConvention',`Bool'}->`Day'toDay#}
 
 -- |Adds a date to the set of holidays for the given calendar.
 {#fun qlCalendarAddHoliday as addHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
-
--- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
-{#fun qlCalendarAdvance1 as advance'{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`Int,TimeUnit'&,`BusinessDayConvention',`Bool',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Calculates the number of business days between two given dates and returns the result.
 {#fun qlCalendarBusinessDaysBetween as businessDaysBetween{withCalendar*`Calendar',withDay*`Day',withDay*`Day',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`Int'#}
