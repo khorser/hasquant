@@ -118,6 +118,7 @@ executable hasquant_example
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.Swap
+      QuantLib.Example.TARF
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
@@ -150,6 +151,7 @@ test-suite hasquant_test
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.Swap
+      QuantLib.Example.TARF
       Paths_hasquant
   autogen-modules:
       Paths_hasquant

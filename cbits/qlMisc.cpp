@@ -192,18 +192,15 @@ char* qlCurrencySymbol(Currency* o) {return DUP(arg(o)->symbol().c_str());}
 void qlFreeInterestRate(InterestRate *rate) {del(rate);}
 
 class CustomCurrency : public Currency {
-public:
-  CustomCurrency(const char* name, const char* code, int numericCode,
-      const char* symbol, const char* fractionSymbol, int fractionsPerUnit,
-      Rounding* rounding, const char* formatString,
-      Currency* triangulationCurrency) {
-    shared_ptr<Data> data(new Data(name, code, numericCode,
-          symbol, fractionSymbol, fractionsPerUnit,
-          rounding ? *rounding : Rounding(),
-          formatString,
-          triangulationCurrency ? *triangulationCurrency : Currency()));
-    data_ = data;
-  }
+  public:
+    CustomCurrency(const char* name, const char* code, int numericCode,
+        const char* symbol, const char* fractionSymbol, int fractionsPerUnit,
+        Rounding* rounding, const char* formatString,
+        Currency* triangulationCurrency) {
+      shared_ptr<Data> data(new Data(name, code, numericCode, symbol, fractionSymbol, fractionsPerUnit,
+            rounding ? *rounding : Rounding(), formatString, triangulationCurrency ? *triangulationCurrency : Currency()));
+      data_ = data;
+    }
 };
 
 Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e) {
@@ -286,9 +283,7 @@ TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
 unsigned qlTimeGridSize(TimeGrid* t) {return arg(t)->size();}
 double qlTimeGridAt(TimeGrid* t, unsigned i, char **e) {try {return arg(t)->at(i);} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e) {
-  try {
-    *len = arg(t)->size(); *p = qlAllocateDoubles(*len);
-    std::copy(t->begin(), t->end(), *p);
+  try {*len = arg(t)->size(); *p = qlAllocateDoubles(*len); std::copy(t->begin(), t->end(), *p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
 Rounding* qlRounding(char **e) {try {return alloc(new Rounding());} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}
@@ -455,8 +450,7 @@ void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e) {try {arg(o)->remove
 
 Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
   BespokeCalendar *cal = 0;
-  try {
-    cal = new BespokeCalendar(std::string(name));
+  try {cal = new BespokeCalendar(std::string(name));
     for (unsigned i = 0; i < len; i++)
       cal->addWeekend((Weekday)weekends[i]);
     return ret(cal);
@@ -484,10 +478,9 @@ Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **
     return alloc(new Schedule(d, *arg(cal), (BusinessDayConvention) conv));
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
 Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e) {
-  try {
-    return alloc(new Schedule(qlNullableDate(eff), Date(term), Period(l, (TimeUnit)u), *arg(cal),
-			    (BusinessDayConvention) conv, (BusinessDayConvention) termConv, (DateGeneration::Rule) rule,
-			    eom, qlNullableDate(first), qlNullableDate(nextToLast)));
+  try {return alloc(new Schedule(qlNullableDate(eff), Date(term), Period(l, (TimeUnit)u), *arg(cal),
+        (BusinessDayConvention) conv, (BusinessDayConvention) termConv, (DateGeneration::Rule) rule,
+        eom, qlNullableDate(first), qlNullableDate(nextToLast)));
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
 Schedule *qlScheduleUntil(Schedule *sched, int date, char **e) {
   try {return alloc(new Schedule(arg(sched)->until(Date(date))));
