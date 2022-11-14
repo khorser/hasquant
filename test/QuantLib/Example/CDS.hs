@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.CDS
   (
     Result(..)
@@ -21,6 +22,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
+import QuantLib.Syntax
 
 data Result = Result
   { probsR :: [Double]
@@ -42,9 +44,8 @@ run = do
   maturities <- mapM (\d -> adjust cal d Following) mat
 
   instruments <- mapM
-    (\t -> do
-      q <- simpleQuote quotedSpread
-      spreadCdsHelper q (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
+    (\t -> simpleQuote quotedSpread >>=
+        $(free1st 'spreadCdsHelper) (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
       [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve tod instruments dc [] HazardRate BackwardFlat

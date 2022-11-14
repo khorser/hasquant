@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.FittedBondCurve
   (
     Result(..)
@@ -20,6 +21,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
+import QuantLib.Syntax
 
 data Result = Result { bondSettleR :: Day
   , rates1R :: Rate
@@ -91,8 +93,8 @@ run = do
 
       r <- forM instrA $
         \h -> do
-          bcfs <- TS.underlying h >>= cashFlows
-          cfs <- CF.cashFlows bcfs (Just False) (Just bondSettle)
+          cfs <- TS.underlying h >>= cashFlows >>=
+            $(free1st 'CF.cashFlows) (Just False) (Just bondSettle)
           let ds = map (\(d, _, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           m <- years dc tod (last ds) Nothing Nothing
           r1 <- parRate ts0 (bondSettle:ds) dc

@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.CallableBond
   (
     Result(..)
@@ -19,6 +20,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
+import QuantLib.Syntax
 
 data Result = Result
   { pricesR :: [Double]
@@ -50,8 +52,7 @@ run = do
 
         buildSchedule :: [Day] -> Int -> IO [Day]
         buildSchedule a@(d:_) _i = do
-          cal <- calendar Null
-          n <- advance cal d (3, Months) Following False
+          n <- calendar Null >>= $(free1st 'advance) d (3, Months) Following False
           return (n : a)
         buildSchedule [] _ = error "Impossible happened"
 
