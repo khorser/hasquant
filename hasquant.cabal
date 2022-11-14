@@ -72,6 +72,7 @@ library
       QuantLib.Instrument.Credit
       QuantLib.Instrument.Swap
       QuantLib.PricingEngine
+      QuantLib.Syntax
   other-modules:
       QuantLib.Internal
       QuantLib.Internal.Enum

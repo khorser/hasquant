@@ -11,7 +11,7 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.CashFlow
-import QuantLib.InterestRate
+--import QuantLib.InterestRate
 import QuantLib.Math
 import QuantLib.Process
 import QuantLib.Quote

@@ -68,9 +68,7 @@ run = do
   QuantLib.Instrument.setPricingEngine europeanInst hestonEng
   analyticHeston <- npv europeanInst
 
-  batesProc <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation
-  batesMod <- batesModel batesProc
-  batesEng <- batesEngine batesMod 144
+  batesEng <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation >>= batesModel >>= (`batesEngine` 144)
   QuantLib.Instrument.setPricingEngine europeanInst batesEng
   bates <- npv europeanInst
 
