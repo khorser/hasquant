@@ -17,5 +17,6 @@ free1st n = do
   return $ LamE (map VarP (tail vd ++ [head vd])) (foldr (\v e -> AppE e (VarE v)) (VarE fn) vars)
   where
     arity (AppT (AppT ArrowT _) x) = 1 + arity x
-    arity (ForallT _ _ (AppT (AppT ArrowT _) x)) = 1 + arity x
-    arity _ = 0
+    arity (ForallT _ _ a@(AppT _ _)) = arity a
+    arity (AppT (AppT _ _) _) = 0
+    arity _ = error "Unsupported function type"
