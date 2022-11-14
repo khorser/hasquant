@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.ConvertibleBond
   (
     Result(..)
@@ -22,6 +23,7 @@ import QuantLib.TermStructure.Volatility
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
+import QuantLib.Syntax
 
 data Result = Result
   { jarrowRuddR :: [Double]
@@ -56,7 +58,6 @@ run = do
   dividends <- mapM (CF.fixedDividend 1.0) divDates
   dc <- dayCounter Actual365FixedStandard
 
-  underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate
   divQ <- simpleQuote dividendYield
   volQ <- simpleQuote vol
@@ -66,7 +67,7 @@ run = do
   dts <- flatForward settl divQ dc Continuous Annual
   vts <- blackConstantVol settl cal volQ dc
 
-  bsmProc <- blackScholesMertonProcess underQ dts ts vts EulerDiscretization
+  bsmProc <- simpleQuote under >>= $(free1st 'blackScholesMertonProcess) dts ts vts EulerDiscretization
 
   let euEx = European $ EuropeanExercise exec
       amEx = AmericanExercise (Just settl) exec False

@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.Repo
   (
     Result(..)
@@ -18,6 +19,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
+import QuantLib.Syntax
 
 data Result = Result
   { cleanPriceR :: Double
@@ -45,17 +47,14 @@ run = do
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
-  fixedBond <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
-    bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate)
-    bondCalendar
-  b <- asBond fixedBond
+  b <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
+    bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar >>= asBond
   -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
   i <- asInstrument b
   discountingBondEngine bondCurve Nothing >>= setPricingEngine i
   void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
-  repoQuote <- simpleQuote repoRate
-  repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
-    repoCompounding repoCompoundFreq
+  repoCurve <- simpleQuote repoRate >>= 
+    $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
   bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
     repoSettlementDays
     repoDayCountConvention bondCalendar bondBusinessDayConvention b

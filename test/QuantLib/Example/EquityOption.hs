@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.EquityOption
   (
     Result(..)
@@ -21,6 +22,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
+import QuantLib.Syntax
 
 data Result = Result
   { analyticEuroR :: [Double]
@@ -37,7 +39,6 @@ data Result = Result
 run :: IO Result
 run = do
   setEvaluationDate $ Just tod
-  cal <- calendar TARGET
   dc <- dayCounter Actual365FixedStandard
   let europeanEx = European $ EuropeanExercise maturity
       bermudanEx = Bermudan $ BermudanExercise exDates False
@@ -48,7 +49,7 @@ run = do
   divQ <- simpleQuote dividend
   divTS <- flatForward settl divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- blackConstantVol settl cal volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) settl volQ dc
   let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization
   europeanOpt <- vanillaOption payoff europeanEx
@@ -58,8 +59,7 @@ run = do
   americanInst <- asOneAssetOption americanOpt >>= asOption >>= asInstrument
   bermudanInst <- asOneAssetOption bermudanOpt >>= asOption >>= asInstrument
 
-  euroEng <- analyticEuropeanEngine bsmProc
-  QuantLib.Instrument.setPricingEngine europeanInst euroEng
+  analyticEuropeanEngine bsmProc >>= QuantLib.Instrument.setPricingEngine europeanInst
   analyticEuro <- npv europeanInst
 
   hestonProc <- hestonProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale

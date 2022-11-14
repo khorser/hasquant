@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.TARF
   (
     run
@@ -19,6 +20,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
 import QuantLib.Method
 import QuantLib.Settings
+import QuantLib.Syntax
 
 data State = State{_remPL :: !Double, _flows :: ![Double]}
 
@@ -36,7 +38,6 @@ run = do
   sched <- schedule (Just $ 2 `november` 2022) (2 `october` 2023) (1, Months) calEUR ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
   ds <- dates sched
   grid <- mapM (\x -> years dcILS valDate x Nothing Nothing) ds >>= timeGridFromList
-  spotQuote <- simpleQuote spot
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
   volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear) >>= asBlackVolTermStructure
   ycILS <- interpolatedDiscountCurve dfILS dcILS calILS [] LogLinear
@@ -50,7 +51,8 @@ run = do
   -- yc <- interpolatedZeroCurve (zip dsILS mins) dcILS calILS [] Linear
   -- proc <- blackScholesProcess spotQuote yc volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
 
-  proc <- blackScholesMertonProcess spotQuote ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
+  proc <- simpleQuote spot >>=
+    $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
   ps <- replicateM trials $ nextNPV gen ds ycILS
   return $ (`roundTo` notionalDigits) $ sum ps/fromIntegral trials/spot

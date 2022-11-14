@@ -40,8 +40,7 @@ run = do
   flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
   ts <- flatForward tod flatRate dc Continuous Annual
-  mat <- mapM (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months))
-  maturities <- mapM (\d -> adjust cal d Following) mat
+  maturities <- mapM (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months)) >>= mapM (\d -> adjust cal d Following)
 
   instruments <- mapM
     (\t -> simpleQuote quotedSpread >>=
@@ -49,9 +48,7 @@ run = do
       [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve tod instruments dc [] HazardRate BackwardFlat
-
   probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y tod) False) [1, 2]
-
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
 
   sched <- forM maturities
