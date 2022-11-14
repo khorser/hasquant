@@ -4,11 +4,13 @@ module QuantLib.Example.TARF
   )
 where
 
+import Control.Monad(replicateM)
 import Data.Time.Calendar(fromGregorian)
 
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
+import QuantLib.CashFlow
 import QuantLib.Math
 import QuantLib.Process
 import QuantLib.Quote
@@ -17,14 +19,10 @@ import QuantLib.TermStructure.Volatility
 import QuantLib.Method
 import QuantLib.Settings
 
-data State = State{_remPL :: !Double, flows :: ![Double]}
+data State = State{_remPL :: !Double, _flows :: ![Double]}
 
 roundTo :: Double -> Int -> Double
-roundTo x n = fromIntegral rounded / mult
-  where
-    mult = 10.0**fromIntegral n
-    rounded :: Int
-    rounded = round (x * mult)
+roundTo x n = fromIntegral (round (x*mult) :: Int) / mult where mult = 10.0**fromIntegral n
 
 run :: IO ()
 run = do
@@ -42,13 +40,10 @@ run = do
   volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear) >>= asBlackVolTermStructure
   ycILS <- interpolatedDiscountCurve dfILS dcILS calILS [] LogLinear
   ycEUR <- interpolatedDiscountCurve dfEUR dcEUR calEUR [] LogLinear
-  proc <- blackScholesMertonProcess spotQuote ycEUR ycILS volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
+  proc <- blackScholesMertonProcess spotQuote ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
-  s <- next gen
-  sim <- asset s 0
-  let m = foldl genFlows (State ilsTarget []) sim
-  print sim
-  print (flows m)
+  ps <- replicateM trials $ nextNPV gen ds ycILS
+  print $ (sum ps)/fromIntegral trials/spot
   where
     valDate = 15 `august` 2022
     strike = 3.2
@@ -57,14 +52,23 @@ run = do
     ilsTarget = 0.4 * eurNotional
     leverage = 2.0
     notionalDigits = 2
-    spotDigits = 4
+    fxrateDigits = 4
+    trials = 2^(15::Int)
+
+    nextNPV :: PathGenerator -> [Day] -> YieldTermStructure -> IO Double
+    nextNPV g ds yc = do
+      s <- next g
+      sim <- asset s 0
+      let State _ fs = foldl genFlows (State ilsTarget []) $ map (`roundTo` fxrateDigits) sim
+      l <- leg $ zip ds fs
+      (`roundTo` notionalDigits) <$> npv l yc True Nothing Nothing
 
     genFlows :: State -> Double -> State
     genFlows s@(State 0 _) _ = s
     genFlows (State tgt fs) spt | spt > strike = State (tgt-cash) (fs ++ [cash])
-      where cash = min (roundTo ((roundTo spt spotDigits-strike)*eurNotional) notionalDigits) tgt
+      where cash = min (roundTo ((spt-strike)*eurNotional) notionalDigits) tgt
     genFlows (State tgt fs) spt = State tgt (fs ++ [cash])
-      where cash = roundTo ((roundTo spt spotDigits-strike)*eurNotional*leverage) notionalDigits
+      where cash = roundTo ((spt-strike)*eurNotional*leverage) notionalDigits
 
     dfEUR = [(valDate, 1.0),
       (fromGregorian 2022 09 16, 0.999910),

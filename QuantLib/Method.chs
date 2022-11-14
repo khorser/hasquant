@@ -1,6 +1,8 @@
 module QuantLib.Method
   (
-    pathGenerator
+    PathGenerator
+  , SamplePath
+  , pathGenerator
   , sobolPathGenerator
   , next
   , antithetic
