@@ -18,6 +18,7 @@ import qualified QuantLib.Example.CDS as CDSExample
 import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
 import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.Replication as ReplicationExample
+import qualified QuantLib.Example.TARF as TARF
 
 main :: IO ()
 main = do
@@ -152,6 +153,9 @@ main = do
   printDLine "%30s" "Tian" "%11.6f" ti
   printDLine "%30s" "Leisen-Reimer" "%11.6f" lr
   printDLine "%30s" "Joshi" "%11.6f" j
+
+  putStrLn "\n*** Straightforward Monte Carlo pricing of an FX TARF Example ***"
+  keepingSettings' TARF.run >>= print
 
   putStrLn "\nDONE"
 

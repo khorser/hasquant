@@ -11,6 +11,7 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.CashFlow
+import QuantLib.InterestRate
 import QuantLib.Math
 import QuantLib.Process
 import QuantLib.Quote
@@ -24,7 +25,7 @@ data State = State{_remPL :: !Double, _flows :: ![Double]}
 roundTo :: Double -> Int -> Double
 roundTo x n = fromIntegral (round (x*mult) :: Int) / mult where mult = 10.0**fromIntegral n
 
-run :: IO ()
+run :: IO Double
 run = do
   setEvaluationDate (Just valDate)
   calILS <- calendar IsraelSettlement
@@ -40,10 +41,19 @@ run = do
   volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear) >>= asBlackVolTermStructure
   ycILS <- interpolatedDiscountCurve dfILS dcILS calILS [] LogLinear
   ycEUR <- interpolatedDiscountCurve dfEUR dcEUR calEUR [] LogLinear
+
+  -- -- alternatively you can use Black-Scholes process
+  -- let dsILS = map fst dfILS
+  -- zrILS <- mapM (\x -> rate <$> zeroRate' ycILS x dcILS Continuous Once False) dsILS
+  -- zrEUR <- mapM (\x -> rate <$> zeroRate' ycEUR x dcILS Continuous Once False) dsILS
+  -- let mins = zipWith (-) zrEUR zrILS
+  -- yc <- interpolatedZeroCurve (zip dsILS mins) dcILS calILS [] Linear
+  -- proc <- blackScholesProcess spotQuote yc volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
+
   proc <- blackScholesMertonProcess spotQuote ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
   ps <- replicateM trials $ nextNPV gen ds ycILS
-  print $ (sum ps)/fromIntegral trials/spot
+  return $ (`roundTo` notionalDigits) $ sum ps/fromIntegral trials/spot
   where
     valDate = 15 `august` 2022
     strike = 3.2
@@ -53,7 +63,7 @@ run = do
     leverage = 2.0
     notionalDigits = 2
     fxrateDigits = 4
-    trials = 2^(15::Int)
+    trials = 2^(16::Int)
 
     nextNPV :: PathGenerator -> [Day] -> YieldTermStructure -> IO Double
     nextNPV g ds yc = do
