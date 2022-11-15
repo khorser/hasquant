@@ -155,7 +155,10 @@ main = do
   printDLine "%30s" "Joshi" "%11.6f" j
 
   putStrLn "\n*** Straightforward Monte Carlo pricing of an FX TARF Example ***"
-  keepingSettings' TARF.run >>= print
+  (TARF.Result tnpv fwds simFwds) <- keepingSettings' TARF.run
+  print tnpv
+  print fwds
+  print simFwds
 
   putStrLn "\nDONE"
 

@@ -2,6 +2,7 @@
 module QuantLib.Example.TARF
   (
     run
+  , Result(..)
   )
 where
 
@@ -24,10 +25,12 @@ import QuantLib.Syntax
 
 data State = State{_remPL :: !Double, _flows :: ![Double]}
 
+data Result = Result{rnpv :: !Double, implFwds :: ![Double], simFwds :: ![Double]}
+
 roundTo :: Double -> Int -> Double
 roundTo x n = fromIntegral (round (x*mult) :: Int) / mult where mult = 10.0**fromIntegral n
 
-run :: IO Double
+run :: IO Result
 run = do
   setEvaluationDate (Just valDate)
   calILS <- calendar IsraelSettlement
@@ -43,6 +46,9 @@ run = do
   ycILS <- interpolatedDiscountCurve dfILS dcILS calILS [] LogLinear
   ycEUR <- interpolatedDiscountCurve dfEUR dcEUR calEUR [] LogLinear
 
+  dfILS' <- points grid >>= mapM (\d -> discount ycILS d False)
+  dfEUR' <- points grid >>= mapM (\d -> discount ycEUR d False)
+  let fwds = map ((`roundTo` fxrateDigits) . (* spot)) $ zipWith (/) dfEUR' dfILS'
   -- -- alternatively you can use Black-Scholes process
   -- let dsILS = map fst dfILS
   -- zrILS <- mapM (\x -> rate <$> zeroRate' ycILS x dcILS Continuous Once False) dsILS
@@ -54,8 +60,10 @@ run = do
   proc <- simpleQuote spot >>=
     $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
-  ps <- replicateM trials $ nextNPV gen ds ycILS
-  return $ (`roundTo` notionalDigits) $ sum ps/fromIntegral trials/spot
+  pps <- replicateM trials $ nextNPV gen ds ycILS
+  let (ps, sFwds) = unzip pps
+  let ff = map (\x -> roundTo ((realToFrac x)/(realToFrac trials)) fxrateDigits) $ deepFold sFwds (+)
+  return $ Result ((`roundTo` notionalDigits) $ sum ps/fromIntegral trials/spot) fwds ff
   where
     valDate = 15 `august` 2022
     strike = 3.2
@@ -67,13 +75,17 @@ run = do
     fxrateDigits = 4
     trials = 2^(16::Int)
 
-    nextNPV :: PathGenerator -> [Day] -> YieldTermStructure -> IO Double
+    deepFold :: [[a]] -> (a -> a -> a) -> [a]
+    deepFold l f = foldr (zipWith f) (head l) (tail l)
+
+    nextNPV :: PathGenerator -> [Day] -> YieldTermStructure -> IO (Double, [Double])
     nextNPV g ds yc = do
       s <- next g
       sim <- asset s 0
       let State _ fs = foldl genFlows (State ilsTarget []) $ map (`roundTo` fxrateDigits) sim
       l <- leg $ zip ds fs
-      (`roundTo` notionalDigits) <$> npv l yc True Nothing Nothing
+      v <- (`roundTo` notionalDigits) <$> npv l yc True Nothing Nothing
+      return (v, sim)
 
     genFlows :: State -> Double -> State
     genFlows s@(State 0 _) _ = s
