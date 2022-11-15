@@ -62,7 +62,7 @@ run = do
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
   pps <- replicateM trials $ nextNPV gen ds ycILS
   let (ps, sFwds) = unzip pps
-  let ff = map (\x -> roundTo ((realToFrac x)/(realToFrac trials)) fxrateDigits) $ deepFold sFwds (+)
+  let ff = map (\x -> roundTo (realToFrac x/realToFrac trials) fxrateDigits) $ deepFold sFwds (+)
   return $ Result ((`roundTo` notionalDigits) $ sum ps/fromIntegral trials/spot) fwds ff
   where
     valDate = 15 `august` 2022
