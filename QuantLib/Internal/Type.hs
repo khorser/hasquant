@@ -1125,17 +1125,6 @@ newtype YieldTermStructure = YieldTermStructure {getCYieldTermStructure :: Stand
 newtype FittedBondDiscountCurve = FittedBondDiscountCurve {getCFittedBondDiscountCurve :: Standalone CFittedBondDiscountCurve}
 newtype CallableBondVolatilityStructure = CallableBondVolatilityStructure {getCCallableBondVolatilityStructure :: Standalone CCallableBondVolatilityStructure}
 newtype DefaultProbabilityTermStructure = DefaultProbabilityTermStructure {getCDefaultProbabilityTermStructure :: Standalone CDefaultProbabilityTermStructure}
---    YieldTermStructure : TermStructure | qlYieldTermStructureAsTermStructure
---	FittedBondDiscountCurve : YieldTermStructure | qlFittedBondDiscountCurveAsYieldTermStructure
---    VolatilityTermStructure : TermStructure | qlVolatilityTermStructureAsTermStructure
---	OptionletVolatilityStructure : VolatilityTermStructure | qlOptionletVolatilityStructureAsVolatilityTermStructure
---	BlackVolTermStructure : VolatilityTermStructure | qlBlackVolTermStructureAsVolatilityTermStructure
---	    BlackVarianceCurve : BlackVolTermStructure | qlBlackVarianceCurveAsBlackVolTermStructure
---	SwaptionVolatilityStructure : VolatilityTermStructure | qlSwaptionVolatilityStructureAsVolatilityTermStructure
---	CapFloorTermVolSurface : VolatilityTermStructure | qlCapFloorTermVolSurfaceAsVolatilityTermStructure
---	LocalVolTermStructure : VolatilityTermStructure | qlLocalVolTermStructureAsVolatilityTermStructure
---    CallableBondVolatilityStructure : TermStructure | qlCallableBondVolatilityStructureAsTermStructure;
---    DefaultProbabilityTermStructure : TermStructure | qlDefaultProbabilityTermStructureAsTermStructure
 foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure
 foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure
 foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure
@@ -1148,6 +1137,17 @@ foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :
 foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
 foreign import ccall "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure
 foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure
+foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure -> IO (Ptr CTermStructure)
+foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve -> IO (Ptr CYieldTermStructure)
+foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure -> IO (Ptr CTermStructure)
+foreign import ccall "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure" qlOptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure -> IO (Ptr CVolatilityTermStructure)
+foreign import ccall "ql.h qlBlackVolTermStructureAsVolatilityTermStructure" qlBlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure -> IO (Ptr CVolatilityTermStructure)
+foreign import ccall "ql.h qlBlackVarianceCurveAsBlackVolTermStructure" qlBlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve -> IO (Ptr CBlackVolTermStructure)
+foreign import ccall "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure" qlSwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure -> IO (Ptr CVolatilityTermStructure)
+foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" qlCapFloorTermVolSurfaceAsVolatilityTermStructure :: Ptr CCapFloorTermVolSurface -> IO (Ptr CVolatilityTermStructure)
+foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure -> IO (Ptr CVolatilityTermStructure)
+foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure -> IO (Ptr CTermStructure);
+foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO (Ptr CTermStructure)
 metaTermStructure :: Meta CTermStructure
 metaTermStructure = Meta qlFreeTermStructure
 peekTermStructure :: Ptr CTermStructure -> IO TermStructure
