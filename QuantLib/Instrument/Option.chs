@@ -167,70 +167,76 @@ instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForward
 {#pointer *QlSwingExercise foreign newtype nocode#}
 {#pointer *QlBermudanExercise foreign newtype nocode#}
 
-{#fun qlQuantoForwardVanillaOption as quantoForwardVanillaOption{`Double',withDay*`Day',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoForwardVanillaOption'peekQuantoForwardVanillaOption*#}
-
+{#fun qlQuantoForwardVanillaOption as quantoForwardVanillaOption{`Double' -- ^moneyness
+  ,withDay*`Day' -- ^resetDate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoForwardVanillaOption'peekQuantoForwardVanillaOption*#}
 {#fun qlQuantoVanillaOption as quantoVanillaOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoVanillaOption'peekQuantoVanillaOption*#}
-
 {#fun qlVanillaOption as vanillaOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`VanillaOption'peekVanillaOption*#}
+{#fun qlBarrierOption as barrierOption{`BarrierType',`Double' -- ^barrier
+  ,`Double' -- ^rebate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
+dividendVanillaOption :: StrikedPayoff -> Exercise -> [(Day, Double)] -- ^dividends
+  -> IO DividendVanillaOption
+dividendVanillaOption p e d = uncurry (qlDividendVanillaOption p e) (unzip d)
+{#fun qlDividendVanillaOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`DividendVanillaOption'peekDividendVanillaOption*#}
 
-{#fun qlBarrierOption as barrierOption{`BarrierType',`Double',`Double',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
-
-{#fun qlDividendVanillaOption as dividendVanillaOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`DividendVanillaOption'peekDividendVanillaOption*#}
-
-{#fun qlForwardVanillaOption as forwardVanillaOption{`Double',withDay*`Day',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'peekForwardVanillaOption*#}
-
+{#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
+  ,withDay*`Day' -- ^resetDate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'peekForwardVanillaOption*#}
 {#fun qlMargrabeOptionDelta1 as delta1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlMargrabeOptionDelta2 as delta2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlMargrabeOptionGamma1 as gamma1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlMargrabeOptionGamma2 as gamma2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlOneAssetOptionDeltaForward as deltaForward{withOneAssetOption*`OneAssetOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlOneAssetOptionElasticity as elasticity{withOneAssetOption*`OneAssetOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlOneAssetOptionStrikeSensitivity as strikeSensitivity{withOneAssetOption*`OneAssetOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlOneAssetOptionThetaPerDay as thetaPerDay{withOneAssetOption*`OneAssetOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#fun qlMargrabeOption as margrabeOption{`Int',`Int',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MargrabeOption'peekMargrabeOption*#}
-
+{#fun qlMargrabeOption as margrabeOption{`Int' -- ^Q1
+  ,`Int' -- ^Q2
+  ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MargrabeOption'peekMargrabeOption*#}
 {#fun qlMultiAssetOption as multiAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-
 {#fun qlOneAssetOptionItmCashProbability as itmCashProbability{withOneAssetOption*`OneAssetOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlOneAssetOption as oneAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+{#fun qlQuantoBarrierOption as quantoBarrierOption{`BarrierType'
+  ,`Double' -- ^barrier
+  ,`Double' -- ^rebate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'peekQuantoBarrierOption*#}
 
-{#fun qlQuantoBarrierOption as quantoBarrierOption{`BarrierType',`Double',`Double',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'peekQuantoBarrierOption*#}
-
-dividendBarrierOption :: BarrierType -> Double -> Double -> StrikedPayoff -> Exercise -> [(Day, Double)] -> IO BarrierOption
+dividendBarrierOption :: BarrierType -> Double -- ^barrier
+  -> Double -- ^rebate
+  -> StrikedPayoff -> Exercise
+  -> [(Day, Double)] -- ^dividends
+  -> IO BarrierOption
 dividendBarrierOption bt d1 d2 p e dv = uncurry (qlDividendBarrierOption bt d1 d2 p e) (unzip dv)
 {#fun qlDividendBarrierOption{`BarrierType',`Double',`Double',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
-
 {#fun qlBasketOption as basketOption{withBasketPayoff*`BasketPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-
-{#fun qlHimalayaOption as himalayaOption{withDayArray*`[Day]'&,`Double',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-
-{#fun qlPagodaOption as pagodaOption{withDayArray*`[Day]'&,`Double',`Double',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-
+{#fun qlHimalayaOption as himalayaOption{withDayArray*`[Day]'& -- ^fixingDates
+  , `Double' -- ^strike
+  ,preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
+{#fun qlPagodaOption as pagodaOption{withDayArray*`[Day]'& -- ^fixingDates
+  ,`Double' -- ^roof
+  ,`Double' -- ^fraction
+  ,preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 {#fun qlSpreadOption as spreadOption{withPlainVanillaPayoff*`PlainVanillaPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-
-{#fun qlCliquetOption as cliquetOption{withPercentageStrikePayoff*`PercentageStrikePayoff',withEuropeanExercise*`EuropeanExercise',withDayArray*`[Day]'&,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
+{#fun qlCliquetOption as cliquetOption{withPercentageStrikePayoff*`PercentageStrikePayoff',withEuropeanExercise*`EuropeanExercise' -- ^maturity
+  ,withDayArray*`[Day]'& -- ^resetDates
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlContinuousAveragingAsianOption as continuousAveragingAsianOption{`AverageType',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
-{#fun qlContinuousFixedLookbackOption as continuousFixedLookbackOption{`Double',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
-{#fun qlContinuousFloatingLookbackOption as continuousFloatingLookbackOption{`Double',withTypePayoff*`TypePayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
-{#fun qlDiscreteAveragingAsianOption as discreteAveragingAsianOption{`AverageType',`Double',fromIntegral`Word',withDayArray*`[Day]'&,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
-{#fun qlVanillaStorageOption as vanillaStorageOption{withBermudanExercise*`BermudanExercise',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
-{#fun qlVanillaSwingOption as vanillaSwingOption{withStrikedPayoff*`StrikedPayoff',withSwingExercise*`SwingExercise',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
-
+{#fun qlContinuousFixedLookbackOption as continuousFixedLookbackOption{`Double' -- ^currentMinmax
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+{#fun qlContinuousFloatingLookbackOption as continuousFloatingLookbackOption{`Double' -- ^currentMinmax
+  ,withTypePayoff*`TypePayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+{#fun qlDiscreteAveragingAsianOption as discreteAveragingAsianOption{`AverageType',`Double' -- ^runningAccumulator, the running sum or products of past fixings
+  ,fromIntegral`Word' -- ^pastFixings
+  ,withDayArray*`[Day]'& -- ^fixingDates
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+{#fun qlVanillaStorageOption as vanillaStorageOption{withBermudanExercise*`BermudanExercise',`Double' -- capacity
+  ,`Double' -- ^load
+  ,`Double' -- ^changeRate
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+{#fun qlVanillaSwingOption as vanillaSwingOption{withStrikedPayoff*`StrikedPayoff',withSwingExercise*`SwingExercise',fromIntegral`Word' -- ^minExerciseRights
+  ,fromIntegral`Word' -- ^maxExerciseRights
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlEuropeanOption as europeanOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`VanillaOption'peekVanillaOption*#}
 
 class OptionOnAsset a where
@@ -323,8 +329,23 @@ instance VolatileOption BarrierOption where
 {#fun qlQuantoVanillaOptionQvega{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlQuantoVanillaOptionQlambda{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlDividendVanillaOptionImpliedVolatility{withDividendVanillaOption*`DividendVanillaOption',`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double',fromIntegral`Word',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlVanillaOptionImpliedVolatility{withVanillaOption*`VanillaOption',`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double',fromIntegral`Word',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlBarrierOptionImpliedVolatility{withBarrierOption*`BarrierOption',`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double',fromIntegral`Word',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDividendVanillaOptionImpliedVolatility{withDividendVanillaOption*`DividendVanillaOption',`Double' -- ^price
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Double' -- ^minVol
+  ,`Double' -- ^maxVol
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVanillaOptionImpliedVolatility{withVanillaOption*`VanillaOption',`Double' -- ^price
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Double' -- ^minVol
+  ,`Double' -- ^maxVol
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBarrierOptionImpliedVolatility{withBarrierOption*`BarrierOption',`Double' -- ^price
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Double' -- ^minVol
+  ,`Double' -- ^maxVol
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

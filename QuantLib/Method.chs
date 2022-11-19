@@ -30,8 +30,16 @@ import Data.Vector.Storable(Vector)
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
 
-{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
-{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
+{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid'
+  ,fromIntegral`Word' -- ^seed
+  ,fromIntegral`Word' -- ^dimension
+  ,`Bool' -- ^brownian bridge
+  ,preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
+{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid'
+  ,fromIntegral`Word' -- ^seed
+  ,fromIntegral`Word' -- ^dimension
+  ,`Bool' -- ^brownian bridge
+  ,preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
 
 {#fun qlPathGeneratorNext as next{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}
 {#fun qlPathGeneratorAntithetic as antithetic{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}

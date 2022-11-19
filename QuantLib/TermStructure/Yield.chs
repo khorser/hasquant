@@ -106,38 +106,77 @@ import QuantLib.Internal.Type
 
 {#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
-{#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',`Bool',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote a' -- ^rate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 {#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote a',fromIntegral`Word',`Double',withSchedule*`Schedule',withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`BusinessDayConvention',`Double',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
 -- |Returns a discount factor from the given YieldTermStructure object
-{#fun qlYieldTSDiscount as discount'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlYieldTSDiscount as discount'{withYieldTermStructure*`YieldTermStructure'
+  ,withDay*`Day' -- ^d
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSwapRateHelper1 as swapRateHelper'{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'&,withCalendar*`Calendar',`Frequency',`BusinessDayConvention',withDayCounter*`DayCounter',withIborIndex*`GenIborIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+{#fun qlSwapRateHelper1 as swapRateHelper'{withQuote*`GenQuote a' -- ^rate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`Frequency' -- ^fixedFrequency
+  ,`BusinessDayConvention' -- ^fixedConvention
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withIborIndex*`GenIborIndex b' -- ^iborIndex
+  ,withMaybeQuote*`Maybe (GenQuote m)' -- ^spread
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
+  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discountingCurve
+  ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
 {#fun qlFlatForward as flatForward{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlFlatForward1 as flatForward'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlFlatForward1 as flatForward'{fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |The resulting interest rate has the required daycounting rule.
-{#fun qlYieldTermStructureZeroRate as zeroRate'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlYieldTermStructureZeroRate as zeroRate'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
-{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod{withYieldTermStructure*`YieldTermStructure',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod{withYieldTermStructure*`YieldTermStructure',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,withDayCounter*`DayCounter',`Compounding',`Frequency'
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the required day-counting rule.
-{#fun qlYieldTermStructureForwardRate as forwardRate'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlYieldTermStructureForwardRate as forwardRate'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
-{#fun qlYieldTermStructureForwardRate2 as forwardRate{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Compounding',`Frequency',`Bool',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlYieldTermStructureForwardRate2 as forwardRate{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Compounding',`Frequency'
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
-{#fun qlYieldTermStructureZeroRate1 as zeroRate{withYieldTermStructure*`YieldTermStructure',`Double',`Compounding',`Frequency',`Bool',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlYieldTermStructureZeroRate1 as zeroRate{withYieldTermStructure*`YieldTermStructure',`Double',`Compounding',`Frequency'
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlYieldTermStructureDiscount1 as discount{withYieldTermStructure*`YieldTermStructure',`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlYieldTermStructureDiscount1 as discount{withYieldTermStructure*`YieldTermStructure',`Double'
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlFraRateHelper as fraRateHelper{withQuote*`GenQuote a',fromIntegral`Word',fromIntegral`Word',fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',`Bool',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFraRateHelper as fraRateHelper{withQuote*`GenQuote a' -- ^rate
+  ,fromIntegral`Word' -- ^monthsToStart
+  ,fromIntegral`Word' -- ^monthsToEnd
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 {#fun qlBondHelper as bondHelper{withQuote*`GenQuote a',withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}

@@ -157,27 +157,35 @@ today = do
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
 {#fun qlIMMDate as immDate{`String',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
--- |returns whether or not the given string is an IMM code, immCode -> mainCycle -> bool
-{#fun pure qlIMMIsIMMcode as isIMMCode{`String',`Bool'}->`Bool'#}
+-- |returns whether or not the given string is an IMM code
+{#fun pure qlIMMIsIMMcode as isIMMCode{`String' -- ^immCode
+  ,`Bool' -- ^mainCycle
+  }->`Bool'#}
 
--- |returns whether or not the given date is an IMM date -> mainCycle -> bool
-{#fun qlIMMIsIMMdate as isIMMDate{withDay*`Day',`Bool'}->`Bool'#}
+-- |returns whether or not the given date is an IMM date
+{#fun qlIMMIsIMMdate as isIMMDate{withDay*`Day',`Bool' -- ^mainCycle
+  }->`Bool'#}
 
 -- |next IMM code following the given code
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode1 as nextIMMCode'{`String',`Bool',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
+{#fun qlIMMNextCode1 as nextIMMCode'{`String',`Bool' -- ^mainCycle
+  ,withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode as nextIMMCode{withDay*`Day',`Bool'}->`String'peekDynString*#}
+{#fun qlIMMNextCode as nextIMMCode{withDay*`Day',`Bool' -- ^mainCycle
+  }->`String'peekDynString*#}
 
 -- |next IMM date following the given IMM code
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextDate1 as nextIMMDate'{`String',`Bool',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlIMMNextDate1 as nextIMMDate'{`String',`Bool' -- ^mainCycle
+  ,withDay*`Day' -- ^referenceDate
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |next IMM date following the given date
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextDate as nextIMMDate{withDay*`Day',`Bool'}->`Day'toDay#}
+{#fun qlIMMNextDate as nextIMMDate{withDay*`Day',`Bool' -- ^mainCycle
+  }->`Day'toDay#}
 
 {#fun qlAddPeriod as addPeriod{withDay*`Day',fromEnumQuantity`Int,TimeUnit'&,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 

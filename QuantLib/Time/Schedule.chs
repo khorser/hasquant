@@ -60,7 +60,17 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 -- |Returns the period between two dates as a fraction of year.
 {#fun qlDayCounterYearFraction as years{withDayCounter*`DayCounter',withDay*`Day',withDay*`Day',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlSchedule as schedule{withMaybeDay*`Maybe Day',withDay*`Day',fromEnumQuantity`(Word,TimeUnit)'&,withCalendar*`Calendar',`BusinessDayConvention',`BusinessDayConvention',`DateGenerationRule',`Bool',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
+{#fun qlSchedule as schedule{withMaybeDay*`Maybe Day' -- ^effectiveDate
+  ,withDay*`Day' -- ^terminationDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`BusinessDayConvention' -- ^terminationDateConvention
+  ,`DateGenerationRule' -- ^rule
+  ,`Bool' -- ^endOfMonth
+  ,withMaybeDay*`Maybe Day' -- ^firstDate
+  ,withMaybeDay*`Maybe Day' -- ^nextToLastDate
+  ,preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 
 -- TODO add other parameters, provide a more user-friendly way to build schedules
 {#fun qlSchedule1 as fromDates{withDayArray*`[Day]'&,withCalendar*`Calendar',`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}

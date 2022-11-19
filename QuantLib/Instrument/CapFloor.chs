@@ -31,18 +31,29 @@ import QuantLib.Internal.Type
 {#fun qlCapFloorAsInstrument{withCapFloor*`CapFloor'}->`Instrument'peekInstrument*#}
 instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
 
-{#fun qlCap as cap{withLeg*`GenLeg a',withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-
-{#fun qlCollar as collar{withLeg*`GenLeg a',withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-
-{#fun qlFloor as floor{withLeg*`GenLeg a',withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-
+{#fun qlCap as cap{withLeg*`GenLeg a' -- ^floatingLeg
+  ,withDoubleArray*`[Double]'& -- ^exerciseRates
+  ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+{#fun qlCollar as collar{withLeg*`GenLeg a' -- ^floatingLeg
+  ,withDoubleArray*`[Double]'& -- ^capRates
+  ,withDoubleArray*`[Double]'& -- ^floorRates
+  ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+{#fun qlFloor as floor{withLeg*`GenLeg a' -- ^floatingLeg
+  ,withDoubleArray*`[Double]'& -- ^exerciseRates
+  ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
 {#fun qlCapFloorAtmRate as atmRate{withCapFloor*`CapFloor',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |implied term volatility
-{#fun qlCapFloorImpliedVolatility as impliedVolatility{withCapFloor*`CapFloor',`Double',withYieldTermStructure*`YieldTermStructure',`Double',`Double',fromIntegral`Word',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
+{#fun qlCapFloorImpliedVolatility as impliedVolatility{withCapFloor*`CapFloor',`Double' -- ^price
+  ,withYieldTermStructure*`YieldTermStructure' -- ^disc
+  ,`Double' -- ^guess
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Double' -- ^minVol
+  ,`Double' -- ^maxVol
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
-{#fun qlCapFloorOptionlet as optionlet{withCapFloor*`CapFloor',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+{#fun qlCapFloorOptionlet as optionlet{withCapFloor*`CapFloor',fromIntegral`Word' -- ^n
+  ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

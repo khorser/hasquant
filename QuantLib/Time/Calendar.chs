@@ -49,13 +49,17 @@ calendar x = uncurry qlCalendar $ mapCalendar x
 {#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',`BusinessDayConvention'}->`Day'toDay#}
 
 -- |Advances the given date of the given number of business days and returns the result using business day convention and the EOM flag
-{#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,`BusinessDayConvention',`Bool'}->`Day'toDay#}
+{#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,`BusinessDayConvention',`Bool' -- ^endOfMonth
+  }->`Day'toDay#}
 
 -- |Adds a date to the set of holidays for the given calendar.
 {#fun qlCalendarAddHoliday as addHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Calculates the number of business days between two given dates and returns the result.
-{#fun qlCalendarBusinessDaysBetween as businessDaysBetween{withCalendar*`Calendar',withDay*`Day',withDay*`Day',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`Int'#}
+{#fun qlCalendarBusinessDaysBetween as businessDaysBetween{withCalendar*`Calendar',withDay*`Day',withDay*`Day'
+  ,`Bool' -- ^includeFirst
+  ,`Bool' -- ^includeLast
+  ,preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 -- |last business day of the month to which the given date belongs
 {#fun qlCalendarEndOfMonth as endOfMonth{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
@@ -84,6 +88,9 @@ calendar x = uncurry qlCalendar $ mapCalendar x
 {#fun qlJointCalendar4{withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
 -- |Returns the holidays between two dates.
-{#fun qlCalendarHolidayList as holidays{withCalendar*`Calendar',withDay*`Day',withDay*`Day',`Bool',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalendarHolidayList as holidays{withCalendar*`Calendar',withDay*`Day' -- ^from
+  ,withDay*`Day' -- ^to
+  ,`Bool' -- ^includeWeekEnds
+  ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
