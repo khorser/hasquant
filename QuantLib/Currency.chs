@@ -47,6 +47,14 @@ import QuantLib.Internal.Enum
 
 {#fun pure qlCurrencySymbol as symbol{withCurrency*`Currency'}->`String'#}
 
-{#fun qlCreateCurrency as currency'{`String',`String',`Int',`String',`String',`Int',withMaybeRounding*`Maybe Rounding',`String',withMaybeCurrency*`Maybe Currency',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+{#fun qlCreateCurrency as currency'{`String' -- ^name
+  ,`String' -- ^code
+  ,`Int' -- ^numericCode
+  ,`String' -- ^symbol
+  ,`String' -- ^fractionSymbol
+  ,`Int' -- ^fractionsPerUnit
+  ,withMaybeRounding*`Maybe Rounding',`String' -- ^formatString
+  ,withMaybeCurrency*`Maybe Currency' -- ^triangulationCurrency
+  ,preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
