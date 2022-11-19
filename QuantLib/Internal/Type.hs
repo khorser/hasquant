@@ -205,6 +205,56 @@ module QuantLib.Internal.Type
   , peekOvernightIndexedSwapIndex
   , withOvernightIndexedSwapIndex
 
+  , TermStructure
+  , CTermStructure
+  , peekTermStructure
+  , withTermStructure
+  , VolatilityTermStructure
+  , CVolatilityTermStructure
+  , peekVolatilityTermStructure
+  , withVolatilityTermStructure
+  , OptionletVolatilityStructure
+  , COptionletVolatilityStructure
+  , peekOptionletVolatilityStructure
+  , withOptionletVolatilityStructure
+  , SwaptionVolatilityStructure
+  , CSwaptionVolatilityStructure
+  , peekSwaptionVolatilityStructure
+  , withSwaptionVolatilityStructure
+  , CapFloorTermVolSurface
+  , CCapFloorTermVolSurface
+  , peekCapFloorTermVolSurface
+  , withCapFloorTermVolSurface
+  , LocalVolTermStructure
+  , CLocalVolTermStructure
+  , peekLocalVolTermStructure
+  , withLocalVolTermStructure
+  , BlackVolTermStructure
+  , CBlackVolTermStructure
+  , peekBlackVolTermStructure
+  , withBlackVolTermStructure
+  , BlackVarianceCurve
+  , CBlackVarianceCurve
+  , peekBlackVarianceCurve
+  , withBlackVarianceCurve
+  , YieldTermStructure
+  , CYieldTermStructure
+  , peekYieldTermStructure
+  , withYieldTermStructure
+  , withMaybeYieldTermStructure
+  , FittedBondDiscountCurve
+  , CFittedBondDiscountCurve
+  , peekFittedBondDiscountCurve
+  , withFittedBondDiscountCurve
+  , CallableBondVolatilityStructure
+  , CCallableBondVolatilityStructure
+  , peekCallableBondVolatilityStructure
+  , withCallableBondVolatilityStructure
+  , DefaultProbabilityTermStructure
+  , CDefaultProbabilityTermStructure
+  , peekDefaultProbabilityTermStructure
+  , withDefaultProbabilityTermStructure
+
   , AffineModel
   , CAffineModel
   , peekAffineModel
@@ -445,56 +495,6 @@ module QuantLib.Internal.Type
   , CMerton76Process
   , peekMerton76Process
   , withMerton76Process
-
-  , BlackVarianceCurve
-  , CBlackVarianceCurve
-  , peekBlackVarianceCurve
-  , withBlackVarianceCurve
-  , BlackVolTermStructure
-  , CBlackVolTermStructure
-  , peekBlackVolTermStructure
-  , withBlackVolTermStructure
-  , CallableBondVolatilityStructure
-  , CCallableBondVolatilityStructure
-  , peekCallableBondVolatilityStructure
-  , withCallableBondVolatilityStructure
-  , CapFloorTermVolSurface
-  , CCapFloorTermVolSurface
-  , peekCapFloorTermVolSurface
-  , withCapFloorTermVolSurface
-  , DefaultProbabilityTermStructure
-  , CDefaultProbabilityTermStructure
-  , peekDefaultProbabilityTermStructure
-  , withDefaultProbabilityTermStructure
-  , FittedBondDiscountCurve
-  , CFittedBondDiscountCurve
-  , peekFittedBondDiscountCurve
-  , withFittedBondDiscountCurve
-  , VolatilityTermStructure
-  , CVolatilityTermStructure
-  , peekVolatilityTermStructure
-  , withVolatilityTermStructure
-  , YieldTermStructure
-  , CYieldTermStructure
-  , peekYieldTermStructure
-  , withYieldTermStructure
-  , withMaybeYieldTermStructure
-  , OptionletVolatilityStructure
-  , COptionletVolatilityStructure
-  , peekOptionletVolatilityStructure
-  , withOptionletVolatilityStructure
-  , SwaptionVolatilityStructure
-  , CSwaptionVolatilityStructure
-  , peekSwaptionVolatilityStructure
-  , withSwaptionVolatilityStructure
-  , TermStructure
-  , CTermStructure
-  , peekTermStructure
-  , withTermStructure
-  , LocalVolTermStructure
-  , CLocalVolTermStructure
-  , peekLocalVolTermStructure
-  , withLocalVolTermStructure
 )
   where
 import Foreign.Ptr
@@ -1101,6 +1101,115 @@ peekOvernightIborIndex x = do
   np <- newGenForeignPtr overnightIborIndexMeta overnightIndexUpcast x
   return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant np) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
 
+data CTermStructure
+newtype TermStructure = TermStructure {getCTermStructure :: Standalone CTermStructure}
+termStructureMeta :: Meta CTermStructure
+termStructureMeta = Meta qlFreeTermStructure
+peekTermStructure :: Ptr CTermStructure -> IO TermStructure
+peekTermStructure = peekStandalone termStructureMeta >=> return . TermStructure
+withTermStructure :: TermStructure -> (Ptr CTermStructure -> IO b) -> IO b
+withTermStructure = withStandalone . getCTermStructure
+data CVolatilityTermStructure
+newtype VolatilityTermStructure = VolatilityTermStructure {getCVolatilityTermStructure :: Standalone CVolatilityTermStructure}
+volatilityTermStructureMeta :: Meta CVolatilityTermStructure
+volatilityTermStructureMeta = Meta qlFreeVolatilityTermStructure
+peekVolatilityTermStructure :: Ptr CVolatilityTermStructure -> IO VolatilityTermStructure
+peekVolatilityTermStructure = peekStandalone volatilityTermStructureMeta >=> return . VolatilityTermStructure
+withVolatilityTermStructure :: VolatilityTermStructure -> (Ptr CVolatilityTermStructure -> IO b) -> IO b
+withVolatilityTermStructure = withStandalone . getCVolatilityTermStructure
+data COptionletVolatilityStructure
+newtype OptionletVolatilityStructure = OptionletVolatilityStructure {getCOptionletVolatilityStructure :: Standalone COptionletVolatilityStructure}
+optionletVolatilityStructureMeta :: Meta COptionletVolatilityStructure
+optionletVolatilityStructureMeta = Meta qlFreeOptionletVolatilityStructure
+peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure -> IO OptionletVolatilityStructure
+peekOptionletVolatilityStructure = peekStandalone optionletVolatilityStructureMeta >=> return . OptionletVolatilityStructure
+withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure -> IO b) -> IO b
+withOptionletVolatilityStructure = withStandalone . getCOptionletVolatilityStructure
+data CSwaptionVolatilityStructure
+newtype SwaptionVolatilityStructure = SwaptionVolatilityStructure {getCSwaptionVolatilityStructure :: Standalone CSwaptionVolatilityStructure}
+swaptionVolatilityStructureMeta :: Meta CSwaptionVolatilityStructure
+swaptionVolatilityStructureMeta = Meta qlFreeSwaptionVolatilityStructure
+peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure -> IO SwaptionVolatilityStructure
+peekSwaptionVolatilityStructure = peekStandalone swaptionVolatilityStructureMeta >=> return . SwaptionVolatilityStructure
+withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure -> IO b) -> IO b
+withSwaptionVolatilityStructure = withStandalone . getCSwaptionVolatilityStructure
+data CCapFloorTermVolSurface
+newtype CapFloorTermVolSurface = CapFloorTermVolSurface {getCCapFloorTermVolSurface :: Standalone CCapFloorTermVolSurface}
+capFloorTermVolSurfaceMeta :: Meta CCapFloorTermVolSurface
+capFloorTermVolSurfaceMeta = Meta qlFreeCapFloorTermVolSurface
+peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface -> IO CapFloorTermVolSurface
+peekCapFloorTermVolSurface = peekStandalone capFloorTermVolSurfaceMeta >=> return . CapFloorTermVolSurface
+withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface -> IO b) -> IO b
+withCapFloorTermVolSurface = withStandalone . getCCapFloorTermVolSurface
+data CLocalVolTermStructure
+newtype LocalVolTermStructure = LocalVolTermStructure {getCLocalVolTermStructure :: Standalone CLocalVolTermStructure}
+localVolTermStructureMeta :: Meta CLocalVolTermStructure
+localVolTermStructureMeta = Meta qlFreeLocalVolTermStructure
+peekLocalVolTermStructure :: Ptr CLocalVolTermStructure -> IO LocalVolTermStructure
+peekLocalVolTermStructure = peekStandalone localVolTermStructureMeta >=> return . LocalVolTermStructure
+withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure -> IO b) -> IO b
+withLocalVolTermStructure = withStandalone . getCLocalVolTermStructure
+data CBlackVolTermStructure
+newtype BlackVolTermStructure = BlackVolTermStructure {getCBlackVolTermStructure :: Standalone CBlackVolTermStructure}
+blackVolTermStructureMeta :: Meta CBlackVolTermStructure
+blackVolTermStructureMeta = Meta qlFreeBlackVolTermStructure
+peekBlackVolTermStructure :: Ptr CBlackVolTermStructure -> IO BlackVolTermStructure
+peekBlackVolTermStructure = peekStandalone blackVolTermStructureMeta >=> return . BlackVolTermStructure
+withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr CBlackVolTermStructure -> IO b) -> IO b
+withBlackVolTermStructure = withStandalone . getCBlackVolTermStructure
+data CBlackVarianceCurve
+newtype BlackVarianceCurve = BlackVarianceCurve {getCBlackVarianceCurve :: Standalone CBlackVarianceCurve}
+blackVarianceCurveMeta :: Meta CBlackVarianceCurve
+blackVarianceCurveMeta = Meta qlFreeBlackVarianceCurve
+peekBlackVarianceCurve :: Ptr CBlackVarianceCurve -> IO BlackVarianceCurve
+peekBlackVarianceCurve = peekStandalone blackVarianceCurveMeta >=> return . BlackVarianceCurve
+withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve -> IO b) -> IO b
+withBlackVarianceCurve = withStandalone . getCBlackVarianceCurve
+data CYieldTermStructure
+newtype YieldTermStructure = YieldTermStructure {getCYieldTermStructure :: Standalone CYieldTermStructure}
+yieldTermStructureMeta :: Meta CYieldTermStructure
+yieldTermStructureMeta = Meta qlFreeYieldTermStructure
+peekYieldTermStructure :: Ptr CYieldTermStructure -> IO YieldTermStructure
+peekYieldTermStructure = peekStandalone yieldTermStructureMeta >=> return . YieldTermStructure
+withYieldTermStructure :: YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
+withYieldTermStructure = withStandalone . getCYieldTermStructure
+withMaybeYieldTermStructure :: Maybe YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
+withMaybeYieldTermStructure = withMaybeStandalone . (getCYieldTermStructure <$>)
+data CFittedBondDiscountCurve
+newtype FittedBondDiscountCurve = FittedBondDiscountCurve {getCFittedBondDiscountCurve :: Standalone CFittedBondDiscountCurve}
+fittedBondDiscountCurveMeta :: Meta CFittedBondDiscountCurve
+fittedBondDiscountCurveMeta = Meta qlFreeFittedBondDiscountCurve
+peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve -> IO FittedBondDiscountCurve
+peekFittedBondDiscountCurve = peekStandalone fittedBondDiscountCurveMeta >=> return . FittedBondDiscountCurve
+withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve -> IO b) -> IO b
+withFittedBondDiscountCurve = withStandalone . getCFittedBondDiscountCurve
+data CCallableBondVolatilityStructure
+newtype CallableBondVolatilityStructure = CallableBondVolatilityStructure {getCCallableBondVolatilityStructure :: Standalone CCallableBondVolatilityStructure}
+callableBondVolatilityStructureMeta :: Meta CCallableBondVolatilityStructure
+callableBondVolatilityStructureMeta = Meta qlFreeCallableBondVolatilityStructure
+peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure -> IO CallableBondVolatilityStructure
+peekCallableBondVolatilityStructure = peekStandalone callableBondVolatilityStructureMeta >=> return . CallableBondVolatilityStructure
+withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure -> IO b) -> IO b
+withCallableBondVolatilityStructure = withStandalone . getCCallableBondVolatilityStructure
+data CDefaultProbabilityTermStructure
+newtype DefaultProbabilityTermStructure = DefaultProbabilityTermStructure {getCDefaultProbabilityTermStructure :: Standalone CDefaultProbabilityTermStructure}
+defaultProbabilityTermStructureMeta :: Meta CDefaultProbabilityTermStructure
+defaultProbabilityTermStructureMeta = Meta qlFreeDefaultProbabilityTermStructure
+peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO DefaultProbabilityTermStructure
+peekDefaultProbabilityTermStructure = peekStandalone defaultProbabilityTermStructureMeta >=> return . DefaultProbabilityTermStructure
+withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure -> IO b) -> IO b
+withDefaultProbabilityTermStructure = withStandalone . getCDefaultProbabilityTermStructure
+foreign import ccall "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve
+foreign import ccall "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure
+foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure
+foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
+foreign import ccall "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure
+foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure
+foreign import ccall "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure
+foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure
+foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure
+foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure
+
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 
 data CAssetSwap
@@ -1642,114 +1751,5 @@ foreign import ccall "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D
 foreign import ccall "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray
 foreign import ccall "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess
 foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess
-
-data CBlackVarianceCurve
-newtype BlackVarianceCurve = BlackVarianceCurve {getCBlackVarianceCurve :: Standalone CBlackVarianceCurve}
-blackVarianceCurveMeta :: Meta CBlackVarianceCurve
-blackVarianceCurveMeta = Meta qlFreeBlackVarianceCurve
-peekBlackVarianceCurve :: Ptr CBlackVarianceCurve -> IO BlackVarianceCurve
-peekBlackVarianceCurve = peekStandalone blackVarianceCurveMeta >=> return . BlackVarianceCurve
-withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve -> IO b) -> IO b
-withBlackVarianceCurve = withStandalone . getCBlackVarianceCurve
-data CBlackVolTermStructure
-newtype BlackVolTermStructure = BlackVolTermStructure {getCBlackVolTermStructure :: Standalone CBlackVolTermStructure}
-blackVolTermStructureMeta :: Meta CBlackVolTermStructure
-blackVolTermStructureMeta = Meta qlFreeBlackVolTermStructure
-peekBlackVolTermStructure :: Ptr CBlackVolTermStructure -> IO BlackVolTermStructure
-peekBlackVolTermStructure = peekStandalone blackVolTermStructureMeta >=> return . BlackVolTermStructure
-withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr CBlackVolTermStructure -> IO b) -> IO b
-withBlackVolTermStructure = withStandalone . getCBlackVolTermStructure
-data CCallableBondVolatilityStructure
-newtype CallableBondVolatilityStructure = CallableBondVolatilityStructure {getCCallableBondVolatilityStructure :: Standalone CCallableBondVolatilityStructure}
-callableBondVolatilityStructureMeta :: Meta CCallableBondVolatilityStructure
-callableBondVolatilityStructureMeta = Meta qlFreeCallableBondVolatilityStructure
-peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure -> IO CallableBondVolatilityStructure
-peekCallableBondVolatilityStructure = peekStandalone callableBondVolatilityStructureMeta >=> return . CallableBondVolatilityStructure
-withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure -> IO b) -> IO b
-withCallableBondVolatilityStructure = withStandalone . getCCallableBondVolatilityStructure
-data CCapFloorTermVolSurface
-newtype CapFloorTermVolSurface = CapFloorTermVolSurface {getCCapFloorTermVolSurface :: Standalone CCapFloorTermVolSurface}
-capFloorTermVolSurfaceMeta :: Meta CCapFloorTermVolSurface
-capFloorTermVolSurfaceMeta = Meta qlFreeCapFloorTermVolSurface
-peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface -> IO CapFloorTermVolSurface
-peekCapFloorTermVolSurface = peekStandalone capFloorTermVolSurfaceMeta >=> return . CapFloorTermVolSurface
-withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface -> IO b) -> IO b
-withCapFloorTermVolSurface = withStandalone . getCCapFloorTermVolSurface
-data CDefaultProbabilityTermStructure
-newtype DefaultProbabilityTermStructure = DefaultProbabilityTermStructure {getCDefaultProbabilityTermStructure :: Standalone CDefaultProbabilityTermStructure}
-defaultProbabilityTermStructureMeta :: Meta CDefaultProbabilityTermStructure
-defaultProbabilityTermStructureMeta = Meta qlFreeDefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO DefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure = peekStandalone defaultProbabilityTermStructureMeta >=> return . DefaultProbabilityTermStructure
-withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure -> IO b) -> IO b
-withDefaultProbabilityTermStructure = withStandalone . getCDefaultProbabilityTermStructure
-data CFittedBondDiscountCurve
-newtype FittedBondDiscountCurve = FittedBondDiscountCurve {getCFittedBondDiscountCurve :: Standalone CFittedBondDiscountCurve}
-fittedBondDiscountCurveMeta :: Meta CFittedBondDiscountCurve
-fittedBondDiscountCurveMeta = Meta qlFreeFittedBondDiscountCurve
-peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve -> IO FittedBondDiscountCurve
-peekFittedBondDiscountCurve = peekStandalone fittedBondDiscountCurveMeta >=> return . FittedBondDiscountCurve
-withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve -> IO b) -> IO b
-withFittedBondDiscountCurve = withStandalone . getCFittedBondDiscountCurve
-data CLocalVolTermStructure
-newtype LocalVolTermStructure = LocalVolTermStructure {getCLocalVolTermStructure :: Standalone CLocalVolTermStructure}
-localVolTermStructureMeta :: Meta CLocalVolTermStructure
-localVolTermStructureMeta = Meta qlFreeLocalVolTermStructure
-peekLocalVolTermStructure :: Ptr CLocalVolTermStructure -> IO LocalVolTermStructure
-peekLocalVolTermStructure = peekStandalone localVolTermStructureMeta >=> return . LocalVolTermStructure
-withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure -> IO b) -> IO b
-withLocalVolTermStructure = withStandalone . getCLocalVolTermStructure
-data COptionletVolatilityStructure
-newtype OptionletVolatilityStructure = OptionletVolatilityStructure {getCOptionletVolatilityStructure :: Standalone COptionletVolatilityStructure}
-optionletVolatilityStructureMeta :: Meta COptionletVolatilityStructure
-optionletVolatilityStructureMeta = Meta qlFreeOptionletVolatilityStructure
-peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure -> IO OptionletVolatilityStructure
-peekOptionletVolatilityStructure = peekStandalone optionletVolatilityStructureMeta >=> return . OptionletVolatilityStructure
-withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure -> IO b) -> IO b
-withOptionletVolatilityStructure = withStandalone . getCOptionletVolatilityStructure
-data CSwaptionVolatilityStructure
-newtype SwaptionVolatilityStructure = SwaptionVolatilityStructure {getCSwaptionVolatilityStructure :: Standalone CSwaptionVolatilityStructure}
-swaptionVolatilityStructureMeta :: Meta CSwaptionVolatilityStructure
-swaptionVolatilityStructureMeta = Meta qlFreeSwaptionVolatilityStructure
-peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure -> IO SwaptionVolatilityStructure
-peekSwaptionVolatilityStructure = peekStandalone swaptionVolatilityStructureMeta >=> return . SwaptionVolatilityStructure
-withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure -> IO b) -> IO b
-withSwaptionVolatilityStructure = withStandalone . getCSwaptionVolatilityStructure
-data CTermStructure
-newtype TermStructure = TermStructure {getCTermStructure :: Standalone CTermStructure}
-termStructureMeta :: Meta CTermStructure
-termStructureMeta = Meta qlFreeTermStructure
-peekTermStructure :: Ptr CTermStructure -> IO TermStructure
-peekTermStructure = peekStandalone termStructureMeta >=> return . TermStructure
-withTermStructure :: TermStructure -> (Ptr CTermStructure -> IO b) -> IO b
-withTermStructure = withStandalone . getCTermStructure
-data CVolatilityTermStructure
-newtype VolatilityTermStructure = VolatilityTermStructure {getCVolatilityTermStructure :: Standalone CVolatilityTermStructure}
-volatilityTermStructureMeta :: Meta CVolatilityTermStructure
-volatilityTermStructureMeta = Meta qlFreeVolatilityTermStructure
-peekVolatilityTermStructure :: Ptr CVolatilityTermStructure -> IO VolatilityTermStructure
-peekVolatilityTermStructure = peekStandalone volatilityTermStructureMeta >=> return . VolatilityTermStructure
-withVolatilityTermStructure :: VolatilityTermStructure -> (Ptr CVolatilityTermStructure -> IO b) -> IO b
-withVolatilityTermStructure = withStandalone . getCVolatilityTermStructure
-data CYieldTermStructure
-newtype YieldTermStructure = YieldTermStructure {getCYieldTermStructure :: Standalone CYieldTermStructure}
-yieldTermStructureMeta :: Meta CYieldTermStructure
-yieldTermStructureMeta = Meta qlFreeYieldTermStructure
-peekYieldTermStructure :: Ptr CYieldTermStructure -> IO YieldTermStructure
-peekYieldTermStructure = peekStandalone yieldTermStructureMeta >=> return . YieldTermStructure
-withYieldTermStructure :: YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
-withYieldTermStructure = withStandalone . getCYieldTermStructure
-withMaybeYieldTermStructure :: Maybe YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
-withMaybeYieldTermStructure = withMaybeStandalone . (getCYieldTermStructure <$>)
-foreign import ccall "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve
-foreign import ccall "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure
-foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure
-foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
-foreign import ccall "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure
-foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure
-foreign import ccall "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure
-foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure
-foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure
-foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

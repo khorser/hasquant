@@ -276,6 +276,7 @@ data BasketPayoff =
   | Spread
       !Payoff -- ^p
 
+basketPayoff :: BasketPayoff -> IO QlBasketPayoff
 basketPayoff (Average p n) = payoff p >>= (`qlAverageBasketPayoff` n)
 basketPayoff (AverageMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a)
 basketPayoff (Max p) = payoff p >>= qlMaxBasketPayoff

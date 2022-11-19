@@ -13,7 +13,10 @@ import Control.Monad((>=>))
 getConstructors :: Name -> Q [(Name, [BangType])] -- [(data constructor, constructor args)]
 getConstructors x = do
   (TyConI (DataD _ _tCon _ _ dCons _)) <- reify x
-  return $ map (\(NormalC dCon dConArgs) -> (dCon, dConArgs)) dCons
+  return $ map constr dCons
+    where
+      constr (NormalC dCon dConArgs) = (dCon, dConArgs)
+      constr c = error $ "Unsupported constructor: " ++ show c
 
 -- try to get constructors for a type d. return empty list if not found
 getConstructors' :: String -> Q [Name]

@@ -11,6 +11,7 @@ github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
   - GHC == 9.0.2 # lts-19.32
+  - GHC == 9.2.5 # lts-20.0
   #- GHC == 8.10.4 # lts-18.5
   #- GHC == 8.8.4  # lts-16.31
   #- GHC == 8.8.2  # lts-15.3

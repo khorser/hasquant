@@ -18,6 +18,7 @@ build-type:     Simple
 tested-with:
     GHC == 8.10.6
   , GHC == 9.0.2
+  , GHC == 9.2.5
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h

@@ -177,13 +177,6 @@ a:Instrument
 	ConvertibleBond : Bond | qlConvertibleBondAsBond
     	FixedRateBond : Bond | qlFixedRateBondAsBond
 	CallableBond : Bond | qlCallableBondAsBond
-a:Index
-    a:InterestRateIndex : Index | qlInterestRateIndexAsIndex
-	BMAIndex : InterestRateIndex | qlBMAIndexAsInterestRateIndex
-    	SwapIndex : InterestRateIndex | qlSwapIndexAsInterestRateIndex
-	    OvernightIndexedSwapIndex : SwapIndex | qlOvernightIndexedSwapIndexAsSwapIndex
-	IborIndex : InterestRateIndex | qlIborIndexAsInterestRateIndex
-	    OvernightIborIndex : IborIndex | qlOvernightIndexAsIborIndex
 a:TermStructure
     YieldTermStructure : TermStructure | qlYieldTermStructureAsTermStructure
 	FittedBondDiscountCurve : YieldTermStructure | qlFittedBondDiscountCurveAsYieldTermStructure
