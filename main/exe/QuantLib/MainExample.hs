@@ -156,9 +156,9 @@ main = do
 
   putStrLn "\n*** Straightforward Monte Carlo pricing of an FX TARF Example ***"
   (TARF.Result tnpv fwds simFwds) <- keepingSettings' TARF.run
-  print tnpv
-  print fwds
-  print simFwds
+  putStrLn $ "NPV: " ++ (show tnpv)
+  putStrLn $ "Forward Rates:           " ++ (show fwds)
+  putStrLn $ "SImulated Forward Rates: " ++ (show simFwds)
 
   putStrLn "\nDONE"
 

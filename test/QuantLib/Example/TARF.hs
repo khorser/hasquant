@@ -57,8 +57,10 @@ run = do
   -- yc <- interpolatedZeroCurve (zip dsILS mins) dcILS calILS [] Linear
   -- proc <- blackScholesProcess spotQuote yc volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
 
+  --proc <- simpleQuote spot >>=
+  --  $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   proc <- simpleQuote spot >>=
-    $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
+    $(free1st 'garmanKohlagenProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
   pps <- replicateM trials $ nextNPV gen ds ycILS
   let (ps, sFwds) = unzip pps
