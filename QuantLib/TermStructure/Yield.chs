@@ -10,6 +10,7 @@ module QuantLib.TermStructure.Yield
   , FittedBondDiscountCurve
   , fittedBondDiscountCurve
   , fittedBondDiscountCurve'
+  , GenRateHelper
 
   , BootstrapTrait(..)
   , depositRateHelper'
@@ -189,22 +190,35 @@ import QuantLib.Internal.Type
 
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure',withQuote*`GenQuote a',`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'&,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlDatedOISRateHelper as datedOISRateHelper{withDay*`Day',withDay*`Day',withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a',fromIntegral`Word',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word',fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',`Bool',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlFraRateHelper3 as fraIborRateHelper{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'&,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlFuturesRateHelper1 as futuresRateHelper'{withQuote*`GenQuote a',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote m)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote a',withDay*`Day',withIborIndex*`GenIborIndex b',withMaybeQuote*`Maybe (GenQuote m)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
-{#fun qlFuturesRateHelper as futuresRateHelper{withQuote*`GenQuote a',withDay*`Day',fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',`Bool',withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote m)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-
+{#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a' -- ^liborFraction
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^settlementDAys
+  ,withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^bmpPeriod
+  ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlDatedOISRateHelper as datedOISRateHelper{withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discountingCurve
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a',fromIntegral`Word' -- ^monthsToStart
+  ,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
+  ,fromIntegral`Word' -- ^lengthInMonths
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
+  ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFraRateHelper3 as fraIborRateHelper{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
+  ,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFuturesRateHelper1 as futuresRateHelper'{withQuote*`GenQuote a',withDay*`Day' -- ^immStartDate
+  ,withDay*`Day' -- ^endDate
+  ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote m)' -- ^convexityAdjustment
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote a',withDay*`Day' -- ^immDate
+  ,withIborIndex*`GenIborIndex b',withMaybeQuote*`Maybe (GenQuote m)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlFuturesRateHelper as futuresRateHelper{withQuote*`GenQuote a',withDay*`Day' -- ^immDate
+  ,fromIntegral`Word' -- ^lengthInMonths
+  ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
+  ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote m)' -- ^convexityAdjustment
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlImpliedTermStructure as impliedTermStructure{withYieldTermStructure*`YieldTermStructure',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
@@ -218,20 +232,24 @@ asYieldTermStructure :: (a`Derives` YieldTermStructure) => a -> IO YieldTermStru
 asYieldTermStructure = cast
 
 piecewiseZeroSpreadedTermStructure :: YieldTermStructure
-  -> [(Day, GenQuote a)]  -- ^spreads, ^dates
-  -> Compounding
-  -> Frequency
-  -> DayCounter
-  -> IO YieldTermStructure
+  -> [(Day, GenQuote a)]  -- ^spreads
+  -> Compounding -> Frequency -> DayCounter -> IO YieldTermStructure
 piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure ts qs ds where (ds, qs) = unzip qd
 {#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withYieldTermStructure*`YieldTermStructure',withBlackVolTermStructure*`BlackVolTermStructure',`Double',withBlackVolTermStructure*`BlackVolTermStructure',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-
+{#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`YieldTermStructure' -- ^underlyingDividendTS
+  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
+  ,withYieldTermStructure*`YieldTermStructure' -- ^foreignRsikFreeTS
+  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^underlyingBlackVolTS
+  ,`Double' -- ^strike
+  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^exchRateBlackVolTS
+  ,`Double' -- ^exchRateATMlevel
+  ,`Double' -- ^underlyingExchRateCorrelation
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 piecewiseYieldCurve :: Day -- ^referenceDate
   -> [GenRateHelper b] -- ^instruments
   -> DayCounter -- ^dayCounter
-  -> [(Day, GenQuote a)] -- ^jumps and jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
@@ -242,7 +260,7 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [GenRateHelper b] -- ^instruments
   -> DayCounter -- ^dayCounter
-  -> [(Day, GenQuote a)] -- ^jumps and jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
@@ -252,7 +270,7 @@ piecewiseYieldCurve' s cal r dc qd t i = uncurry' (qlPiecewiseYieldCurve1 s cal 
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
-  -> [(Day, GenQuote a)] -- ^jumps, jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 interpolatedDiscountCurve r dc c qd i = uncurry' (qlInterpolatedDiscountCurve rs rd dc c qs ds) (qlInterpolation i)
@@ -263,7 +281,7 @@ interpolatedDiscountCurve r dc c qd i = uncurry' (qlInterpolatedDiscountCurve rs
 interpolatedForwardCurve :: [(Day, Double)] -- ^dates, forwards
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
-  -> [(Day, GenQuote a)] -- ^jumps, jumpDates
+  -> [(Day, GenQuote a)] -- ^jumps
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 interpolatedForwardCurve r dc c qd i = uncurry' (qlInterpolatedForwardCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip r; (ds, qs) = unzip qd}
@@ -280,10 +298,21 @@ interpolatedZeroCurve r dc c qd i = uncurry' (qlInterpolatedZeroCurve rs rd dc c
 
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 -- |reference date based on current evaluation date
-{#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve{fromIntegral`Word',withCalendar*`Calendar',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod',`Double',fromIntegral`Word',withDoubleArray*`[Double]'&,`Double',preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'peekFittedBondDiscountCurve*#}
+{#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve{fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,withDoubleArray*`[Double]'& -- ^guess
+  ,`Double' -- ^simplexLambda
+  ,preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'peekFittedBondDiscountCurve*#}
 
 -- |curve reference date fixed for life of curve
-{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve'{withDay*`Day',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod',`Double',fromIntegral`Word',withDoubleArray*`[Double]'&,`Double',preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'peekFittedBondDiscountCurve*#}
+{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve'{withDay*`Day',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,withDoubleArray*`[Double]'& -- ^guess
+  ,`Double' -- ^simplexLambda
+,preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'peekFittedBondDiscountCurve*#}
 
 -- |final value of cost function after optimization
 {#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}

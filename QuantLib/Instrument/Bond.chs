@@ -268,14 +268,17 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield'{withBond*`Bond',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBondFunctionsConvexity1 as convexity{withBond*`Bond',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#fun qlBondFunctionsConvexity as convexity'{withBond*`Bond',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#fun qlBondFunctionsDuration1 as duration{withBond*`Bond',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',`DurationType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#fun qlBondFunctionsDuration as duration'{withBond*`Bond',withInterestRate*`InterestRate',`DurationType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
+{#fun qlBondFunctionsConvexity1 as convexity{withBond*`Bond',`Double' -- ^yield
+  ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsConvexity as convexity'{withBond*`Bond',withInterestRate*`InterestRate' -- ^yield
+  ,withDay*`Day' -- ^settlementDate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsDuration1 as duration{withBond*`Bond',`Double' -- ^yield
+  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`DurationType',withDay*`Day' -- ^settlementDate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsDuration as duration'{withBond*`Bond',withInterestRate*`InterestRate' -- ^yield
+  ,`DurationType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsNextCashFlowAmount as nextCashFlowAmount{withBond*`Bond',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlBondFunctionsPreviousCashFlowAmount as previousCashFlowAmount{withBond*`Bond',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -290,10 +293,10 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
   ,fromIntegral`Word' -- ^maxIterations
   ,`Double' -- ^guess
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlBondFunctionsYieldValueBasisPoint1 as yieldValueBasisPoint{withBond*`Bond',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint'{withBond*`Bond',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
+{#fun qlBondFunctionsYieldValueBasisPoint1 as yieldValueBasisPoint{withBond*`Bond',`Double' -- ^yield
+  ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint'{withBond*`Bond',withInterestRate*`InterestRate' -- ^yield
+  ,withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsZSpread as zSpread{withBond*`Bond',`Double' -- ^cleanPrice
   ,withYieldTermStructure*`YieldTermStructure'
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate

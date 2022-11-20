@@ -2,6 +2,7 @@
 module QuantLib.Index
   (
     Index
+  , GenIndex
 
   , addFixing
   , fixingCalendar

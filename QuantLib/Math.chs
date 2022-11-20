@@ -75,7 +75,9 @@ import Data.Vector.Storable(Vector)
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 
 -- |Regularly spaced time-grid.
-{#fun qlTimeGrid1 as timeGrid{`Double',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
+{#fun qlTimeGrid1 as timeGrid{`Double' -- ^end
+  ,fromIntegral`Word' -- ^steps
+  ,preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. No additional points are added.

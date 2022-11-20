@@ -46,7 +46,9 @@ import Data.Vector.Storable(Vector)
 {#fun pure qlSamplePathWeight as weight{withSamplePath*`SamplePath'}->`Double'#}
 {#fun pure qlSamplePathAssetNumber as assetNumber{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
 {#fun pure qlSamplePathSize as pathSize{withSamplePath*`SamplePath'}->`Word'fromIntegral#}
-{#fun qlSamplePathAt as assetAt{withSamplePath*`SamplePath',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSamplePathAt as assetAt{withSamplePath*`SamplePath',fromIntegral`Word' -- ^asset
+  ,fromIntegral`Word' -- ^point
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlSamplePathAssetPath as asset'{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 

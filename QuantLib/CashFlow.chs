@@ -6,6 +6,7 @@ module QuantLib.CashFlow
   , Dividend
   , DurationType(..)
   , RateAveragingType(..)
+  , GenLeg
 
   , leg
   , startDate

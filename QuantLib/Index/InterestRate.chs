@@ -6,6 +6,9 @@ module QuantLib.Index.InterestRate
   , IborIndex
   , SwapIndex
   , OvernightIndexedSwapIndex
+  , GenInterestRateIndex
+  , GenIborIndex
+  , GenSwapIndex
 
   , bmaIndex
 
@@ -161,9 +164,18 @@ data IborConstructor =
     | Wibor (Word, TimeUnit)
     | Zibor (Word, TimeUnit)
 
-    | Ibor String (Word, TimeUnit) Word Currency Calendar BusinessDayConvention Bool DayCounter
-    | Libor String (Word, TimeUnit) Word Currency Calendar DayCounter
-    | DailyTenorLibor String Word Currency Calendar DayCounter
+    | Ibor String -- ^familyName
+      (Word, TimeUnit) -- ^teno
+      Word -- ^settlementDays
+      Currency
+      Calendar -- ^fixingCalendar
+      BusinessDayConvention
+      Bool -- ^endOfMonth
+      DayCounter
+    | Libor String (Word, TimeUnit) Word -- ^settlementDays
+      Currency Calendar DayCounter
+    | DailyTenorLibor String Word -- ^settlementDays
+      Currency Calendar DayCounter
     -- convenience shortcuts
     | Bbsw1M
     | Bbsw2M

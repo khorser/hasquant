@@ -2,6 +2,7 @@ module QuantLib.Quote
   (
      Quote
    , SimpleQuote
+   , GenQuote
 
    , asQuote
    , PriceType(..)

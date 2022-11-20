@@ -4,6 +4,7 @@ module QuantLib.PricingEngine
   , BlackCalculator
   , BlackScholesCalculator
 
+  , GenBlackCalculator
   , asBlackCalculator
 
   , discountingBondEngine

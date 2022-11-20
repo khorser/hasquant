@@ -41,7 +41,8 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |compound factor implied by the rate compounded at time t.
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t. /Warning/ Time must be measured using InterestRate's own day counter.
-{#fun qlInterestRateCompoundFactor as compoundFactor{withInterestRate*`InterestRate',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlInterestRateCompoundFactor as compoundFactor{withInterestRate*`InterestRate',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |discount factor implied by the rate compounded between two dates
 {#fun qlInterestRateDiscountFactor1 as discountFactor'{withInterestRate*`InterestRate',withDay*`Day' -- ^d1
   ,withDay*`Day' -- ^d2
@@ -61,7 +62,8 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 -- |equivalent interest rate for a compounding period t.
 -- The resulting InterestRate shares the same implicit day-counting rule of the original InterestRate instance. /Warning/ Time must be measured using the InterestRate's own day counter.
-{#fun qlInterestRateEquivalentRate as equivalentRate{withInterestRate*`InterestRate',`Compounding',`Frequency',`Double',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlInterestRateEquivalentRate as equivalentRate{withInterestRate*`InterestRate',`Compounding',`Frequency',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 -- |implied rate for a given compound factor between two dates.
 -- The resulting rate is calculated taking the required day-counting rule into account.
 {#fun qlInterestRateImpliedRate1 as impliedRate'{withInterestRate*`InterestRate',`Double' -- ^compound

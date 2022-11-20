@@ -20,6 +20,7 @@ module QuantLib.Model
   , LmVolatilityModel(..)
   , CalibrationHelper
   , BlackCalibrationHelper
+  , GenCalibrationHelper
   , asCalibrationHelper
 
   , asAffineModel

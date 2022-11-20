@@ -76,7 +76,7 @@ instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapA
   ,withClaim*`Claim',preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
 {#fun qlCdsOptionAtmRate as atmRate{withCdsOption*`CdsOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#pointer *QlExercise foreign newtype nocode#}
-{#fun qlCdsOption as cdsOption{withCreditDefaultSwap*`CreditDefaultSwap',withExercise*`Exercise',`Bool'
+{#fun qlCdsOption as cdsOption{withCreditDefaultSwap*`CreditDefaultSwap',withExercise*`Exercise',`Bool' -- ^knocksOut
   ,preErrorCheck-`String'errorCheck*-}->`CdsOption'peekCdsOption*#}
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility{withCdsOption*`CdsOption',`Double' -- ^price
   ,withYieldTermStructure*`YieldTermStructure',withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure'
