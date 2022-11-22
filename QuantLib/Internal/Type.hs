@@ -205,53 +205,72 @@ module QuantLib.Internal.Type
   , peekOvernightIndexedSwapIndex
   , withOvernightIndexedSwapIndex
 
+  , GenTermStructure
   , TermStructure
   , CTermStructure
-  , peekTermStructure
+  , CTermStructure'
+  , asTermStructure
   , withTermStructure
+  , GenVolatilityTermStructure
   , VolatilityTermStructure
   , CVolatilityTermStructure
+  , CVolatilityTermStructure'
   , peekVolatilityTermStructure
   , withVolatilityTermStructure
   , OptionletVolatilityStructure
   , COptionletVolatilityStructure
+  , COptionletVolatilityStructure'
   , peekOptionletVolatilityStructure
   , withOptionletVolatilityStructure
   , SwaptionVolatilityStructure
   , CSwaptionVolatilityStructure
+  , CSwaptionVolatilityStructure'
   , peekSwaptionVolatilityStructure
   , withSwaptionVolatilityStructure
   , CapFloorTermVolSurface
   , CCapFloorTermVolSurface
+  , CCapFloorTermVolSurface'
   , peekCapFloorTermVolSurface
   , withCapFloorTermVolSurface
   , LocalVolTermStructure
   , CLocalVolTermStructure
+  , CLocalVolTermStructure'
   , peekLocalVolTermStructure
   , withLocalVolTermStructure
+  , GenBlackVolTermStructure
   , BlackVolTermStructure
   , CBlackVolTermStructure
+  , CBlackVolTermStructure'
+  , asBlackVolTermStructure
+  , asVolatilityTermStructure
   , peekBlackVolTermStructure
   , withBlackVolTermStructure
   , BlackVarianceCurve
   , CBlackVarianceCurve
+  , CBlackVarianceCurve'
   , peekBlackVarianceCurve
   , withBlackVarianceCurve
+  , GenYieldTermStructure
   , YieldTermStructure
   , CYieldTermStructure
+  , CYieldTermStructure'
+  , asYieldTermStructure
   , peekYieldTermStructure
   , withYieldTermStructure
   , withMaybeYieldTermStructure
   , FittedBondDiscountCurve
   , CFittedBondDiscountCurve
+  , CFittedBondDiscountCurve'
   , peekFittedBondDiscountCurve
   , withFittedBondDiscountCurve
   , CallableBondVolatilityStructure
   , CCallableBondVolatilityStructure
+  , CCallableBondVolatilityStructure'
   , peekCallableBondVolatilityStructure
   , withCallableBondVolatilityStructure
   , DefaultProbabilityTermStructure
   , CDefaultProbabilityTermStructure
+  , CDefaultProbabilityTermStructure'
   , peekDefaultProbabilityTermStructure
   , withDefaultProbabilityTermStructure
 
@@ -795,17 +814,17 @@ metaQuote :: Meta CQuote
 metaQuote = Meta qlFreeQuote
 metaSimpleQuote :: Meta CSimpleQuote
 metaSimpleQuote = Meta qlFreeSimpleQuote
-quoteUpcast :: Upcast CQuote CQuote
-quoteUpcast = Upcast return nullFunPtr
+upcastQuote :: Upcast CQuote CQuote
+upcastQuote = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
-simpleQuoteUpcast :: Upcast CSimpleQuote CQuote
-simpleQuoteUpcast = Upcast qlSimpleQuoteAsQuote qlFreeQuote
+upcastSimpleQuote :: Upcast CSimpleQuote CQuote
+upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO Quote
-asQuote (GenQuote q) = GenQuote <$> upcast metaQuote quoteUpcast q
+asQuote (GenQuote q) = GenQuote <$> upcast metaQuote upcastQuote q
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekBase metaQuote quoteUpcast p
+peekQuote p = GenQuote <$> peekBase metaQuote upcastQuote p
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
 withQuote = withDescendant . getQuote
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
@@ -815,7 +834,7 @@ withQuoteArray x = withDescendantArray (map getQuote x)
 withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
 withQuoteArrayRaw x = withDescendantArrayRaw (map getQuote x)
 peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote p = GenQuote <$> peekObject metaSimpleQuote simpleQuoteUpcast p
+peekSimpleQuote p = GenQuote <$> peekObject metaSimpleQuote upcastSimpleQuote p
 withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 withSimpleQuote = withObject . getQuote
 
@@ -830,21 +849,21 @@ metaLeg :: Meta CLeg
 metaLeg = Meta qlFreeLeg
 metaCouponLeg :: Meta CCouponLeg
 metaCouponLeg = Meta qlFreeCouponLeg
-legUpcast :: Upcast CLeg CLeg
-legUpcast = Upcast return nullFunPtr
+upcastLeg :: Upcast CLeg CLeg
+upcastLeg = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
-couponLegUpcast :: Upcast CCouponLeg CLeg
-couponLegUpcast = Upcast qlCouponLegAsLeg qlFreeLeg
+upcastCouponLeg :: Upcast CCouponLeg CLeg
+upcastCouponLeg = Upcast qlCouponLegAsLeg qlFreeLeg
 asLeg :: GenLeg a -> IO Leg
-asLeg (GenLeg q) = GenLeg <$> upcast metaLeg legUpcast q
+asLeg (GenLeg q) = GenLeg <$> upcast metaLeg upcastLeg q
 peekLeg :: Ptr CLeg -> IO Leg
-peekLeg p = GenLeg <$> peekBase metaLeg legUpcast p
+peekLeg p = GenLeg <$> peekBase metaLeg upcastLeg p
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
 withLeg = withDescendant . getLeg
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
 withLegArray x = withDescendantArray (map getLeg x)
 peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
-peekCouponLeg p = GenLeg <$> peekObject metaCouponLeg couponLegUpcast p
+peekCouponLeg p = GenLeg <$> peekObject metaCouponLeg upcastCouponLeg p
 withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
 withCouponLeg = withObject . getLeg
 
@@ -867,39 +886,39 @@ metaBondHelper :: Meta CBondHelper
 metaBondHelper = Meta qlFreeBondHelper
 metaSwapRateHelper :: Meta CSwapRateHelper
 metaSwapRateHelper = Meta qlFreeSwapRateHelper
-metaOisRateHelper :: Meta COISRateHelper
-metaOisRateHelper = Meta qlFreeOISRateHelper
-rateHelperUpcast :: Upcast CRateHelper CRateHelper
-rateHelperUpcast = Upcast return nullFunPtr
+metaOISRateHelper :: Meta COISRateHelper
+metaOISRateHelper = Meta qlFreeOISRateHelper
+upcastRateHelper :: Upcast CRateHelper CRateHelper
+upcastRateHelper = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlBondHelperAsRateHelper" qlBondHelperAsRateHelper :: Ptr CBondHelper -> IO (Ptr CRateHelper)
-bondHelperUpcast :: Upcast CBondHelper CRateHelper
-bondHelperUpcast = Upcast qlBondHelperAsRateHelper qlFreeRateHelper
+upcastBondHelper :: Upcast CBondHelper CRateHelper
+upcastBondHelper = Upcast qlBondHelperAsRateHelper qlFreeRateHelper
 foreign import ccall safe "ql.h qlSwapRateHelperAsRateHelper" qlSwapRateHelperAsRateHelper :: Ptr CSwapRateHelper -> IO (Ptr CRateHelper)
-swapRateHelperUpcast :: Upcast CSwapRateHelper CRateHelper
-swapRateHelperUpcast = Upcast qlSwapRateHelperAsRateHelper qlFreeRateHelper
+upcastSwapRateHelper :: Upcast CSwapRateHelper CRateHelper
+upcastSwapRateHelper = Upcast qlSwapRateHelperAsRateHelper qlFreeRateHelper
 foreign import ccall safe "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper -> IO (Ptr CRateHelper)
-oisRateHelperUpcast :: Upcast COISRateHelper CRateHelper
-oisRateHelperUpcast = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
+upcastOISRateHelper :: Upcast COISRateHelper CRateHelper
+upcastOISRateHelper = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
-asRateHelper (GenRateHelper q) = GenRateHelper <$> upcast metaRateHelper rateHelperUpcast q
+asRateHelper (GenRateHelper q) = GenRateHelper <$> upcast metaRateHelper upcastRateHelper q
 peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
-peekRateHelper p = GenRateHelper <$> peekBase metaRateHelper rateHelperUpcast p
+peekRateHelper p = GenRateHelper <$> peekBase metaRateHelper upcastRateHelper p
 withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
 withRateHelper = withDescendant . getRateHelper
 withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
 withRateHelperArray x = withDescendantArray (map getRateHelper x)
 peekBondHelper :: Ptr CBondHelper -> IO (GenRateHelper CBondHelper)
-peekBondHelper p = GenRateHelper <$> peekObject metaBondHelper bondHelperUpcast p
+peekBondHelper p = GenRateHelper <$> peekObject metaBondHelper upcastBondHelper p
 withBondHelper :: GenRateHelper CBondHelper -> (Ptr CBondHelper-> IO b) -> IO b
 withBondHelper = withObject . getRateHelper
 withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper)) -> IO b) -> IO b
 withBondHelperArray x = withObjectArray (map getRateHelper x)
 peekSwapRateHelper :: Ptr CSwapRateHelper -> IO (GenRateHelper CSwapRateHelper)
-peekSwapRateHelper p = GenRateHelper <$> peekObject metaSwapRateHelper swapRateHelperUpcast p
+peekSwapRateHelper p = GenRateHelper <$> peekObject metaSwapRateHelper upcastSwapRateHelper p
 withSwapRateHelper :: GenRateHelper CSwapRateHelper -> (Ptr CSwapRateHelper-> IO b) -> IO b
 withSwapRateHelper = withObject . getRateHelper
 peekOISRateHelper :: Ptr COISRateHelper -> IO (GenRateHelper COISRateHelper)
-peekOISRateHelper p = GenRateHelper <$> peekObject metaOisRateHelper oisRateHelperUpcast p
+peekOISRateHelper p = GenRateHelper <$> peekObject metaOISRateHelper upcastOISRateHelper p
 withOISRateHelper :: GenRateHelper COISRateHelper -> (Ptr COISRateHelper-> IO b) -> IO b
 withOISRateHelper = withObject . getRateHelper
 
@@ -915,20 +934,20 @@ metaCalibrationHelper = Meta qlFreeCalibrationHelper
 metaBlackCalibrationHelper :: Meta CBlackCalibrationHelper
 metaBlackCalibrationHelper = Meta qlFreeBlackCalibrationHelper
 foreign import ccall safe "ql.h qlBlackCalibrationHelperAsCalibrationHelper" qlBlackCalibrationHelperAsCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (Ptr CCalibrationHelper)
-calibrationHelperUpcast :: Upcast CCalibrationHelper CCalibrationHelper
-calibrationHelperUpcast = Upcast return nullFunPtr
-blackCalibrationHelperUpcast :: Upcast CBlackCalibrationHelper CCalibrationHelper
-blackCalibrationHelperUpcast = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
+upcastCalibrationHelper :: Upcast CCalibrationHelper CCalibrationHelper
+upcastCalibrationHelper = Upcast return nullFunPtr
+upcastBlackCalibrationHelper :: Upcast CBlackCalibrationHelper CCalibrationHelper
+upcastBlackCalibrationHelper = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
-asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> upcast metaCalibrationHelper calibrationHelperUpcast q
+asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> upcast metaCalibrationHelper upcastCalibrationHelper q
 peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
-peekCalibrationHelper p = GenCalibrationHelper <$> peekBase metaCalibrationHelper calibrationHelperUpcast p
+peekCalibrationHelper p = GenCalibrationHelper <$> peekBase metaCalibrationHelper upcastCalibrationHelper p
 withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
 withCalibrationHelper = withDescendant . getCalibrationHelper
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
 withCalibrationHelperArray x = withDescendantArray (map getCalibrationHelper x)
 peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (GenCalibrationHelper CBlackCalibrationHelper)
-peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekObject metaBlackCalibrationHelper blackCalibrationHelperUpcast p
+peekBlackCalibrationHelper p = GenCalibrationHelper <$> peekObject metaBlackCalibrationHelper upcastBlackCalibrationHelper p
 withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
 withBlackCalibrationHelper = withObject . getCalibrationHelper
 
@@ -943,19 +962,19 @@ metaBlackCalculator :: Meta CBlackCalculator
 metaBlackCalculator = Meta qlFreeBlackCalculator
 metaBlackScholesCalculator :: Meta CBlackScholesCalculator
 metaBlackScholesCalculator = Meta qlFreeBlackScholesCalculator
-blackCalculatorUpcast :: Upcast CBlackCalculator CBlackCalculator
-blackCalculatorUpcast = Upcast return nullFunPtr
+upcastBlackCalculator :: Upcast CBlackCalculator CBlackCalculator
+upcastBlackCalculator = Upcast return nullFunPtr
 foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
-blackScholesCalculatorUpcast :: Upcast CBlackScholesCalculator CBlackCalculator
-blackScholesCalculatorUpcast = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
+upcastBlackScholesCalculator :: Upcast CBlackScholesCalculator CBlackCalculator
+upcastBlackScholesCalculator = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
-asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> upcast metaBlackCalculator blackCalculatorUpcast q
+asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> upcast metaBlackCalculator upcastBlackCalculator q
 peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
-peekBlackCalculator p = GenBlackCalculator <$> peekBase metaBlackCalculator blackCalculatorUpcast p
+peekBlackCalculator p = GenBlackCalculator <$> peekBase metaBlackCalculator upcastBlackCalculator p
 withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
 withBlackCalculator = withDescendant . getBlackCalculator
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalculator CBlackScholesCalculator)
-peekBlackScholesCalculator p = GenBlackCalculator <$> peekObject metaBlackScholesCalculator blackScholesCalculatorUpcast p
+peekBlackScholesCalculator p = GenBlackCalculator <$> peekObject metaBlackScholesCalculator upcastBlackScholesCalculator p
 withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
 withBlackScholesCalculator = withObject . getBlackCalculator
 
@@ -992,7 +1011,7 @@ type Index = GenIndex CIndex
 newtype InterestRateIndexDescendant a = InterestRateIndexDescendant (GenForeignPtr a CInterestRateIndex')
 type GenInterestRateIndex a = GenIndex (InterestRateIndexDescendant a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
-type InterestRateIndex = GenIndex CInterestRateIndex
+type InterestRateIndex = GenInterestRateIndex CInterestRateIndex
 type CBMAIndex = ForeignPtr CBMAIndex'
 type BMAIndex = GenInterestRateIndex CBMAIndex
 newtype IborIndexDescendant a = IborIndexDescendant (GenForeignPtr a CIborIndex')
@@ -1034,194 +1053,290 @@ foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterest
 foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex' -> IO (Ptr CIborIndex')
 foreign import ccall "ql.h qlSwapIndexAsInterestRateIndex" qlSwapIndexAsInterestRateIndex :: Ptr CSwapIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlOvernightIndexedSwapIndexAsSwapIndex" qlOvernightIndexedSwapIndexAsSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO (Ptr CSwapIndex')
-interestRateIndexUpcast :: Upcast CInterestRateIndex' CIndex'
-interestRateIndexUpcast = Upcast qlInterestRateIndexAsIndex qlFreeIndex
-bmaIndexUpcast :: Upcast CBMAIndex' CInterestRateIndex'
-bmaIndexUpcast = Upcast qlBMAIndexAsInterestRateIndex qlFreeInterestRateIndex
-iborIndexUpcast :: Upcast CIborIndex' CInterestRateIndex'
-iborIndexUpcast = Upcast qlIborIndexAsInterestRateIndex qlFreeInterestRateIndex
-overnightIndexUpcast :: Upcast COvernightIndex' CIborIndex'
-overnightIndexUpcast = Upcast qlOvernightIndexAsIborIndex qlFreeIborIndex
-swapIndexUpcast :: Upcast CSwapIndex' CInterestRateIndex'
-swapIndexUpcast = Upcast qlSwapIndexAsInterestRateIndex qlFreeInterestRateIndex
-overnightIndexedSwapIndexUpcast :: Upcast COvernightIndexedSwapIndex' CSwapIndex'
-overnightIndexedSwapIndexUpcast = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
+upcastInterestRateIndex :: Upcast CInterestRateIndex' CIndex'
+upcastInterestRateIndex = Upcast qlInterestRateIndexAsIndex qlFreeIndex
+upcastBMAIndex :: Upcast CBMAIndex' CInterestRateIndex'
+upcastBMAIndex = Upcast qlBMAIndexAsInterestRateIndex qlFreeInterestRateIndex
+upcastIborIndex :: Upcast CIborIndex' CInterestRateIndex'
+upcastIborIndex = Upcast qlIborIndexAsInterestRateIndex qlFreeInterestRateIndex
+upcastOvernightIndex :: Upcast COvernightIndex' CIborIndex'
+upcastOvernightIndex = Upcast qlOvernightIndexAsIborIndex qlFreeIborIndex
+upcastSwapIndex :: Upcast CSwapIndex' CInterestRateIndex'
+upcastSwapIndex = Upcast qlSwapIndexAsInterestRateIndex qlFreeInterestRateIndex
+upcastOvernightIndexedSwapIndex :: Upcast COvernightIndexedSwapIndex' CSwapIndex'
+upcastOvernightIndexedSwapIndex = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
+
 asIndex :: GenIndex a -> IO Index
 asIndex (GenIndex (GenForeignPtr x w)) = w x (newBaseForeignPtr metaIndex >=> (return . GenIndex))
+withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
+withIndex (GenIndex (GenForeignPtr x w)) = w x
+
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x (newGenForeignPtr metaInterestRateIndex interestRateIndexUpcast >=> (return . GenIndex))
+asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x (\p -> do
+    np <- newBaseForeignPtr metaInterestRateIndex p
+    return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant np) withGenForeignPtrInterestRateIndex)
+withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
+withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x
+withGenForeignPtrInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CIndex' -> IO b) -> IO b
+withGenForeignPtrInterestRateIndex (InterestRateIndexDescendant o) = withGenForeignPtr upcastInterestRateIndex o
+
+peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
+peekBMAIndex x = do
+  np <- newGenForeignPtr metaBMAIndex upcastBMAIndex x
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant np) withGenForeignPtrInterestRateIndex
+withBMAIndex :: BMAIndex -> (Ptr CBMAIndex' -> IO b) -> IO b
+withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
 asIborIndex :: GenIborIndex a -> IO IborIndex
 asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
   fp <- newBaseForeignPtr metaIborIndex p
   return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant fp) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex)
+peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
+peekIborIndex x = do
+  p <- newBaseForeignPtr metaIborIndex x
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant p) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
+withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
+withGenForeignPtrIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
+withGenForeignPtrIborIndex (IborIndexDescendant o) = withGenForeignPtr upcastIborIndex o
+
+peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
+peekOvernightIborIndex x = do
+  np <- newGenForeignPtr metaOvernightIborIndex upcastOvernightIndex x
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant np) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
+withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
 asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
   fp <- newBaseForeignPtr metaSwapIndex p
   return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant fp) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex)
-withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
-withIndex (GenIndex (GenForeignPtr x w)) = w x
-withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x
-peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
-peekBMAIndex x = do
-  np <- newGenForeignPtr metaBMAIndex bmaIndexUpcast x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant np) withGenForeignPtrInterestRateIndex
-withBMAIndex :: BMAIndex -> (Ptr CBMAIndex' -> IO b) -> IO b
-withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
-withGenForeignPtrInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CIndex' -> IO b) -> IO b
-withGenForeignPtrInterestRateIndex (InterestRateIndexDescendant o) = withGenForeignPtr interestRateIndexUpcast o
-withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
-withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
-withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
-withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
-withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
-withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
-withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
-withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
 peekSwapIndex x = do
-  p <- newForeignPtr qlFreeSwapIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant $ GenForeignPtr p withForeignPtr) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
-
+  p <- newBaseForeignPtr metaSwapIndex x
+  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant p) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
+withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
+withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrSwapIndex :: SwapIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withGenForeignPtrSwapIndex (SwapIndexDescendant o) = withGenForeignPtr swapIndexUpcast o
+withGenForeignPtrSwapIndex (SwapIndexDescendant o) = withGenForeignPtr upcastSwapIndex o
+
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
 peekOvernightIndexedSwapIndex x = do
-  np <- newGenForeignPtr metaOvernightIndexedSwapIndex overnightIndexedSwapIndexUpcast x
+  np <- newGenForeignPtr metaOvernightIndexedSwapIndex upcastOvernightIndexedSwapIndex x
   return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant np) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
-peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
-peekIborIndex x = do
-  p <- newForeignPtr qlFreeIborIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant $ GenForeignPtr p withForeignPtr) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
+withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
-withGenForeignPtrIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withGenForeignPtrIborIndex (IborIndexDescendant o) = withGenForeignPtr iborIndexUpcast o
-peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
-peekOvernightIborIndex x = do
-  np <- newGenForeignPtr metaOvernightIborIndex overnightIndexUpcast x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant np) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
-
-data CTermStructure
-data CVolatilityTermStructure
-data COptionletVolatilityStructure
-data CSwaptionVolatilityStructure
-data CCapFloorTermVolSurface
-data CLocalVolTermStructure
-data CBlackVolTermStructure
-data CBlackVarianceCurve
-data CYieldTermStructure
-data CFittedBondDiscountCurve
-data CCallableBondVolatilityStructure
-data CDefaultProbabilityTermStructure
-newtype TermStructure = TermStructure {getCTermStructure :: Standalone CTermStructure}
-newtype VolatilityTermStructure = VolatilityTermStructure {getCVolatilityTermStructure :: Standalone CVolatilityTermStructure}
-newtype OptionletVolatilityStructure = OptionletVolatilityStructure {getCOptionletVolatilityStructure :: Standalone COptionletVolatilityStructure}
-newtype SwaptionVolatilityStructure = SwaptionVolatilityStructure {getCSwaptionVolatilityStructure :: Standalone CSwaptionVolatilityStructure}
-newtype CapFloorTermVolSurface = CapFloorTermVolSurface {getCCapFloorTermVolSurface :: Standalone CCapFloorTermVolSurface}
-newtype LocalVolTermStructure = LocalVolTermStructure {getCLocalVolTermStructure :: Standalone CLocalVolTermStructure}
-newtype BlackVolTermStructure = BlackVolTermStructure {getCBlackVolTermStructure :: Standalone CBlackVolTermStructure}
-newtype BlackVarianceCurve = BlackVarianceCurve {getCBlackVarianceCurve :: Standalone CBlackVarianceCurve}
-newtype YieldTermStructure = YieldTermStructure {getCYieldTermStructure :: Standalone CYieldTermStructure}
-newtype FittedBondDiscountCurve = FittedBondDiscountCurve {getCFittedBondDiscountCurve :: Standalone CFittedBondDiscountCurve}
-newtype CallableBondVolatilityStructure = CallableBondVolatilityStructure {getCCallableBondVolatilityStructure :: Standalone CCallableBondVolatilityStructure}
-newtype DefaultProbabilityTermStructure = DefaultProbabilityTermStructure {getCDefaultProbabilityTermStructure :: Standalone CDefaultProbabilityTermStructure}
-foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure
-foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure
-foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure
-foreign import ccall "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure
-foreign import ccall "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface
-foreign import ccall "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure
-foreign import ccall "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure
-foreign import ccall "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve
-foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure
-foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve
-foreign import ccall "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure
-foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure
-foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure -> IO (Ptr CTermStructure)
-foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve -> IO (Ptr CYieldTermStructure)
-foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure -> IO (Ptr CTermStructure)
-foreign import ccall "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure" qlOptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure -> IO (Ptr CVolatilityTermStructure)
-foreign import ccall "ql.h qlBlackVolTermStructureAsVolatilityTermStructure" qlBlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure -> IO (Ptr CVolatilityTermStructure)
-foreign import ccall "ql.h qlBlackVarianceCurveAsBlackVolTermStructure" qlBlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve -> IO (Ptr CBlackVolTermStructure)
-foreign import ccall "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure" qlSwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure -> IO (Ptr CVolatilityTermStructure)
-foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" qlCapFloorTermVolSurfaceAsVolatilityTermStructure :: Ptr CCapFloorTermVolSurface -> IO (Ptr CVolatilityTermStructure)
-foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure -> IO (Ptr CVolatilityTermStructure)
-foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure -> IO (Ptr CTermStructure);
-foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO (Ptr CTermStructure)
-metaTermStructure :: Meta CTermStructure
+data CTermStructure'
+data CVolatilityTermStructure'
+data COptionletVolatilityStructure'
+data CSwaptionVolatilityStructure'
+data CCapFloorTermVolSurface'
+data CLocalVolTermStructure'
+data CBlackVolTermStructure'
+data CBlackVarianceCurve'
+data CYieldTermStructure'
+data CFittedBondDiscountCurve'
+data CCallableBondVolatilityStructure'
+data CDefaultProbabilityTermStructure'
+newtype GenTermStructure a = GenTermStructure (GenForeignPtr a CTermStructure')
+type CTermStructure = ForeignPtr CTermStructure'
+type TermStructure = GenTermStructure CTermStructure
+newtype YieldTermStructureDescendant a = YieldTermStructureDescendant (GenForeignPtr a CYieldTermStructure')
+type GenYieldTermStructure a = GenTermStructure (YieldTermStructureDescendant a)
+type CYieldTermStructure = ForeignPtr CYieldTermStructure'
+type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
+type CFittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve'
+type FittedBondDiscountCurve = GenYieldTermStructure CFittedBondDiscountCurve
+newtype VolatilityTermStructureDescendant a = VolatilityTermStructureDescendant (GenForeignPtr a CVolatilityTermStructure')
+type GenVolatilityTermStructure a = GenTermStructure (VolatilityTermStructureDescendant a)
+type CVolatilityTermStructure = ForeignPtr CVolatilityTermStructure'
+type VolatilityTermStructure = GenVolatilityTermStructure CVolatilityTermStructure
+type COptionletVolatilityStructure = ForeignPtr COptionletVolatilityStructure'
+type OptionletVolatilityStructure = GenVolatilityTermStructure COptionletVolatilityStructure
+type CCapFloorTermVolSurface = ForeignPtr CCapFloorTermVolSurface'
+type CapFloorTermVolSurface = GenVolatilityTermStructure CCapFloorTermVolSurface
+type CSwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure'
+type SwaptionVolatilityStructure = GenVolatilityTermStructure CSwaptionVolatilityStructure
+type CLocalVolTermStructure = ForeignPtr CLocalVolTermStructure'
+type LocalVolTermStructure = GenVolatilityTermStructure CLocalVolTermStructure
+newtype BlackVolTermStructureDescendant a = BlackVolTermStructureDescendant (GenForeignPtr a CBlackVolTermStructure')
+type GenBlackVolTermStructure a = GenTermStructure (VolatilityTermStructureDescendant (BlackVolTermStructureDescendant a))
+type CBlackVolTermStructure = ForeignPtr CBlackVolTermStructure'
+type BlackVolTermStructure = GenBlackVolTermStructure CBlackVolTermStructure
+type CBlackVarianceCurve = ForeignPtr CBlackVarianceCurve'
+type BlackVarianceCurve = GenBlackVolTermStructure CBlackVarianceCurve
+type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStructure'
+type CallableBondVolatilityStructure = GenTermStructure CCallableBondVolatilityStructure
+type CDefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure'
+type DefaultProbabilityTermStructure = GenTermStructure CDefaultProbabilityTermStructure
+foreign import ccall "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
+foreign import ccall "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
+foreign import ccall "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure'
+foreign import ccall "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure'
+foreign import ccall "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface'
+foreign import ccall "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure'
+foreign import ccall "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure'
+foreign import ccall "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve'
+foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure'
+foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve'
+foreign import ccall "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure'
+foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
+metaTermStructure :: Meta CTermStructure'
 metaTermStructure = Meta qlFreeTermStructure
-peekTermStructure :: Ptr CTermStructure -> IO TermStructure
-peekTermStructure = peekStandalone metaTermStructure >=> return . TermStructure
-withTermStructure :: TermStructure -> (Ptr CTermStructure -> IO b) -> IO b
-withTermStructure = withStandalone . getCTermStructure
-metaVolatilityTermStructure :: Meta CVolatilityTermStructure
+metaVolatilityTermStructure :: Meta CVolatilityTermStructure'
 metaVolatilityTermStructure = Meta qlFreeVolatilityTermStructure
-peekVolatilityTermStructure :: Ptr CVolatilityTermStructure -> IO VolatilityTermStructure
-peekVolatilityTermStructure = peekStandalone metaVolatilityTermStructure >=> return . VolatilityTermStructure
-withVolatilityTermStructure :: VolatilityTermStructure -> (Ptr CVolatilityTermStructure -> IO b) -> IO b
-withVolatilityTermStructure = withStandalone . getCVolatilityTermStructure
-metaOptionletVolatilityStructure :: Meta COptionletVolatilityStructure
+metaOptionletVolatilityStructure :: Meta COptionletVolatilityStructure'
 metaOptionletVolatilityStructure = Meta qlFreeOptionletVolatilityStructure
-peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure -> IO OptionletVolatilityStructure
-peekOptionletVolatilityStructure = peekStandalone metaOptionletVolatilityStructure >=> return . OptionletVolatilityStructure
-withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure -> IO b) -> IO b
-withOptionletVolatilityStructure = withStandalone . getCOptionletVolatilityStructure
-metaSwaptionVolatilityStructure :: Meta CSwaptionVolatilityStructure
+metaSwaptionVolatilityStructure :: Meta CSwaptionVolatilityStructure'
 metaSwaptionVolatilityStructure = Meta qlFreeSwaptionVolatilityStructure
-peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure -> IO SwaptionVolatilityStructure
-peekSwaptionVolatilityStructure = peekStandalone metaSwaptionVolatilityStructure >=> return . SwaptionVolatilityStructure
-withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure -> IO b) -> IO b
-withSwaptionVolatilityStructure = withStandalone . getCSwaptionVolatilityStructure
-metaCapFloorTermVolSurface :: Meta CCapFloorTermVolSurface
+metaCapFloorTermVolSurface :: Meta CCapFloorTermVolSurface'
 metaCapFloorTermVolSurface = Meta qlFreeCapFloorTermVolSurface
-peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface -> IO CapFloorTermVolSurface
-peekCapFloorTermVolSurface = peekStandalone metaCapFloorTermVolSurface >=> return . CapFloorTermVolSurface
-withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface -> IO b) -> IO b
-withCapFloorTermVolSurface = withStandalone . getCCapFloorTermVolSurface
-metaLocalVolTermStructure :: Meta CLocalVolTermStructure
+metaLocalVolTermStructure :: Meta CLocalVolTermStructure'
 metaLocalVolTermStructure = Meta qlFreeLocalVolTermStructure
-peekLocalVolTermStructure :: Ptr CLocalVolTermStructure -> IO LocalVolTermStructure
-peekLocalVolTermStructure = peekStandalone metaLocalVolTermStructure >=> return . LocalVolTermStructure
-withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure -> IO b) -> IO b
-withLocalVolTermStructure = withStandalone . getCLocalVolTermStructure
-metaBlackVolTermStructure :: Meta CBlackVolTermStructure
+metaBlackVolTermStructure :: Meta CBlackVolTermStructure'
 metaBlackVolTermStructure = Meta qlFreeBlackVolTermStructure
-peekBlackVolTermStructure :: Ptr CBlackVolTermStructure -> IO BlackVolTermStructure
-peekBlackVolTermStructure = peekStandalone metaBlackVolTermStructure >=> return . BlackVolTermStructure
-withBlackVolTermStructure :: BlackVolTermStructure -> (Ptr CBlackVolTermStructure -> IO b) -> IO b
-withBlackVolTermStructure = withStandalone . getCBlackVolTermStructure
-metaBlackVarianceCurve :: Meta CBlackVarianceCurve
+metaBlackVarianceCurve :: Meta CBlackVarianceCurve'
 metaBlackVarianceCurve = Meta qlFreeBlackVarianceCurve
-peekBlackVarianceCurve :: Ptr CBlackVarianceCurve -> IO BlackVarianceCurve
-peekBlackVarianceCurve = peekStandalone metaBlackVarianceCurve >=> return . BlackVarianceCurve
-withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve -> IO b) -> IO b
-withBlackVarianceCurve = withStandalone . getCBlackVarianceCurve
-metaYieldTermStructure :: Meta CYieldTermStructure
+metaYieldTermStructure :: Meta CYieldTermStructure'
 metaYieldTermStructure = Meta qlFreeYieldTermStructure
-peekYieldTermStructure :: Ptr CYieldTermStructure -> IO YieldTermStructure
-peekYieldTermStructure = peekStandalone metaYieldTermStructure >=> return . YieldTermStructure
-withYieldTermStructure :: YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
-withYieldTermStructure = withStandalone . getCYieldTermStructure
-withMaybeYieldTermStructure :: Maybe YieldTermStructure -> (Ptr CYieldTermStructure -> IO b) -> IO b
-withMaybeYieldTermStructure = withMaybeStandalone . (getCYieldTermStructure <$>)
-metaFittedBondDiscountCurve :: Meta CFittedBondDiscountCurve
+metaFittedBondDiscountCurve :: Meta CFittedBondDiscountCurve'
 metaFittedBondDiscountCurve = Meta qlFreeFittedBondDiscountCurve
-peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve -> IO FittedBondDiscountCurve
-peekFittedBondDiscountCurve = peekStandalone metaFittedBondDiscountCurve >=> return . FittedBondDiscountCurve
-withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve -> IO b) -> IO b
-withFittedBondDiscountCurve = withStandalone . getCFittedBondDiscountCurve
-metaCallableBondVolatilityStructure :: Meta CCallableBondVolatilityStructure
+metaCallableBondVolatilityStructure :: Meta CCallableBondVolatilityStructure'
 metaCallableBondVolatilityStructure = Meta qlFreeCallableBondVolatilityStructure
-peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure -> IO CallableBondVolatilityStructure
-peekCallableBondVolatilityStructure = peekStandalone metaCallableBondVolatilityStructure >=> return . CallableBondVolatilityStructure
-withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure -> IO b) -> IO b
-withCallableBondVolatilityStructure = withStandalone . getCCallableBondVolatilityStructure
-metaDefaultProbabilityTermStructure :: Meta CDefaultProbabilityTermStructure
+metaDefaultProbabilityTermStructure :: Meta CDefaultProbabilityTermStructure'
 metaDefaultProbabilityTermStructure = Meta qlFreeDefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO DefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure = peekStandalone metaDefaultProbabilityTermStructure >=> return . DefaultProbabilityTermStructure
-withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure -> IO b) -> IO b
-withDefaultProbabilityTermStructure = withStandalone . getCDefaultProbabilityTermStructure
+foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
+foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure" qlOptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlBlackVolTermStructureAsVolatilityTermStructure" qlBlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlBlackVarianceCurveAsBlackVolTermStructure" qlBlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve' -> IO (Ptr CBlackVolTermStructure')
+foreign import ccall "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure" qlSwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" qlCapFloorTermVolSurfaceAsVolatilityTermStructure :: Ptr CCapFloorTermVolSurface' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
+upcastYieldTermStructure :: Upcast CYieldTermStructure' CTermStructure'
+upcastYieldTermStructure = Upcast qlYieldTermStructureAsTermStructure qlFreeTermStructure
+upcastFittedBondDiscountCurve :: Upcast CFittedBondDiscountCurve' CYieldTermStructure'
+upcastFittedBondDiscountCurve = Upcast qlFittedBondDiscountCurveAsYieldTermStructure qlFreeYieldTermStructure
+upcastVolatilityTermStructure :: Upcast CVolatilityTermStructure' CTermStructure'
+upcastVolatilityTermStructure = Upcast qlVolatilityTermStructureAsTermStructure qlFreeTermStructure
+upcastCallableBondVolatilityStructure :: Upcast CCallableBondVolatilityStructure' CTermStructure'
+upcastCallableBondVolatilityStructure = Upcast qlCallableBondVolatilityStructureAsTermStructure qlFreeTermStructure
+upcastDefaultProbabilityTermStructure :: Upcast CDefaultProbabilityTermStructure' CTermStructure'
+upcastDefaultProbabilityTermStructure = Upcast qlDefaultProbabilityTermStructureAsTermStructure qlFreeTermStructure
+upcastBlackVolTermStructure :: Upcast CBlackVolTermStructure' CVolatilityTermStructure'
+upcastBlackVolTermStructure = Upcast qlBlackVolTermStructureAsVolatilityTermStructure qlFreeVolatilityTermStructure
+upcastBlackVarianceCurve :: Upcast CBlackVarianceCurve' CBlackVolTermStructure'
+upcastBlackVarianceCurve = Upcast qlBlackVarianceCurveAsBlackVolTermStructure qlFreeBlackVolTermStructure
+upcastOptionletVolatilityStructure :: Upcast COptionletVolatilityStructure' CVolatilityTermStructure'
+upcastOptionletVolatilityStructure = Upcast qlOptionletVolatilityStructureAsVolatilityTermStructure qlFreeVolatilityTermStructure
+upcastSwaptionVolatilityStructure :: Upcast CSwaptionVolatilityStructure' CVolatilityTermStructure'
+upcastSwaptionVolatilityStructure = Upcast qlSwaptionVolatilityStructureAsVolatilityTermStructure qlFreeVolatilityTermStructure
+upcastCapFloorTermVolSurface :: Upcast CCapFloorTermVolSurface' CVolatilityTermStructure'
+upcastCapFloorTermVolSurface = Upcast qlCapFloorTermVolSurfaceAsVolatilityTermStructure qlFreeVolatilityTermStructure
+upcastLocalVolTermStructure :: Upcast CLocalVolTermStructure' CVolatilityTermStructure'
+upcastLocalVolTermStructure = Upcast qlLocalVolTermStructureAsVolatilityTermStructure qlFreeVolatilityTermStructure
+
+asTermStructure :: GenTermStructure a -> IO TermStructure
+asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (newBaseForeignPtr metaTermStructure >=> (return . GenTermStructure))
+withTermStructure :: GenTermStructure a  -> (Ptr CTermStructure' -> IO b) -> IO b
+withTermStructure (GenTermStructure (GenForeignPtr x w)) = w x
+
+asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermStructure
+asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x (\p -> do
+  np <- newBaseForeignPtr metaVolatilityTermStructure p
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure)
+peekVolatilityTermStructure :: Ptr CVolatilityTermStructure' -> IO VolatilityTermStructure
+peekVolatilityTermStructure x = do
+  np <- newBaseForeignPtr metaVolatilityTermStructure x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
+withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
+withGenForeignPtrVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
+withGenForeignPtrVolatilityTermStructure (VolatilityTermStructureDescendant o) = withGenForeignPtr upcastVolatilityTermStructure o
+
+asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
+asBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
+  fp <- newBaseForeignPtr metaBlackVolTermStructure p
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant fp) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure)
+peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStructure
+peekBlackVolTermStructure x = do
+  p <- newBaseForeignPtr metaBlackVolTermStructure x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant p) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
+withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
+withBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x
+withGenForeignPtrBlackVolTermStructure :: BlackVolTermStructureDescendant a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
+withGenForeignPtrBlackVolTermStructure (BlackVolTermStructureDescendant o) = withGenForeignPtr upcastBlackVolTermStructure o
+
+peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
+peekBlackVarianceCurve x = do
+  np <- newGenForeignPtr metaBlackVarianceCurve upcastBlackVarianceCurve x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant np) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
+withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO b) -> IO b
+withBlackVarianceCurve (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure' -> IO OptionletVolatilityStructure
+peekOptionletVolatilityStructure x = do
+  np <- newGenForeignPtr metaOptionletVolatilityStructure upcastOptionletVolatilityStructure x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure' -> IO b) -> IO b
+withOptionletVolatilityStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
+peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure' -> IO SwaptionVolatilityStructure
+peekSwaptionVolatilityStructure x = do
+  np <- newGenForeignPtr metaSwaptionVolatilityStructure upcastSwaptionVolatilityStructure x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure' -> IO b) -> IO b
+withSwaptionVolatilityStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
+peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVolSurface
+peekCapFloorTermVolSurface x = do
+  np <- newGenForeignPtr metaCapFloorTermVolSurface upcastCapFloorTermVolSurface x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface' -> IO b) -> IO b
+withCapFloorTermVolSurface (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
+peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
+peekLocalVolTermStructure x = do
+  np <- newGenForeignPtr metaLocalVolTermStructure upcastLocalVolTermStructure x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
+withLocalVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
+peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
+peekCallableBondVolatilityStructure = newGenForeignPtr metaCallableBondVolatilityStructure upcastCallableBondVolatilityStructure >=> return . GenTermStructure
+withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure' -> IO b) -> IO b
+withCallableBondVolatilityStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
+
+peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
+peekDefaultProbabilityTermStructure = newGenForeignPtr metaDefaultProbabilityTermStructure upcastDefaultProbabilityTermStructure >=> return . GenTermStructure
+withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
+withDefaultProbabilityTermStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
+
+asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
+asYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x (\p -> do
+  np <- newBaseForeignPtr metaYieldTermStructure p
+  return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant np) withGenForeignPtrYieldTermStructure)
+peekYieldTermStructure :: Ptr CYieldTermStructure' -> IO YieldTermStructure
+peekYieldTermStructure x = do
+  np <- newBaseForeignPtr metaYieldTermStructure x
+  return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant np) withGenForeignPtrYieldTermStructure
+withYieldTermStructure :: GenYieldTermStructure a -> (Ptr CYieldTermStructure' -> IO b) -> IO b
+withYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x
+withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTermStructure' -> IO b) -> IO b
+withMaybeYieldTermStructure x f = maybe (f nullPtr) (`withYieldTermStructure` f) x
+withGenForeignPtrYieldTermStructure :: YieldTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
+withGenForeignPtrYieldTermStructure (YieldTermStructureDescendant o) = withGenForeignPtr upcastYieldTermStructure o
+
+peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
+peekFittedBondDiscountCurve x = do
+  np <- newGenForeignPtr metaFittedBondDiscountCurve upcastFittedBondDiscountCurve x
+  return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant np) withGenForeignPtrYieldTermStructure
+withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
+withFittedBondDiscountCurve (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 

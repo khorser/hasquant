@@ -79,7 +79,7 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel nocode#}
@@ -167,7 +167,7 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
 
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
-{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`YieldTermStructure',`Double' -- ^a
+{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 {#fun qlCoxIngersollRoss as coxIngersollRoss{`Double' -- ^r0
@@ -175,25 +175,25 @@ instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAf
   ,`Double' -- ^k
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`YieldTermStructure',`Double' -- ^theta
+{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^theta
   ,`Double' -- ^k
   ,`Double' -- ^sigma
   ,`Double' -- ^x0
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-{#fun qlG2 as g2{withYieldTermStructure*`YieldTermStructure',`Double' -- ^a
+{#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,`Double' -- ^b
   ,`Double' -- ^eta
   ,`Double' -- ^rho
   ,preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
-generalizedHullWhite :: YieldTermStructure -> [(Day, Double)] -- ^speedstructure
+generalizedHullWhite :: GenYieldTermStructure a -> [(Day, Double)] -- ^speedstructure
   -> [(Day, Double)] -- ^volstructure
   -> IO ShortRateModel
 generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip s; (vd, vq) = unzip v}
-{#fun qlGeneralizedHullWhite{withYieldTermStructure*`YieldTermStructure',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
+{#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 {#fun qlGJRGARCHModel as gJRGARCHModel{withGJRGARCHProcess*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
 {#fun qlHestonModel as hestonModel{withHestonProcess*`HestonProcess',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
-{#fun qlHullWhite as hullWhite{withYieldTermStructure*`YieldTermStructure',`Double' -- ^a
+{#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
 {#fun qlVarianceGammaModel as varianceGammaModel{withVarianceGammaProcess*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
@@ -223,13 +223,13 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,withQuote*`GenQuote a' -- ^volatility
   ,withIborIndex*`GenIborIndex b',`Frequency' -- ^fixedLegFrequency
   ,withDayCounter*`DayCounter',`Bool' -- ^includeFirstSwaplet
-  ,withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,withCalendar*`Calendar',`Double' -- ^s0
   ,`Double' -- ^strikePrice
   ,withQuote*`GenQuote a' -- ^volatility
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeRate
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendYield
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 -- TODO add more parameters and more SwaptionHelper constructors
 {#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
@@ -238,7 +238,7 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
-  ,withYieldTermStructure*`YieldTermStructure',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`CalibratedModel',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}

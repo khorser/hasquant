@@ -75,7 +75,7 @@ import QuantLib.Internal.Enum
 {#import QuantLib.Instrument.Option#}(Option)
 {#import QuantLib.Instrument.Credit#}(CreditDefaultSwap)
 
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
@@ -125,7 +125,7 @@ instance OvernightIndexedSwap`Derives` Swap where cast = qlOvernightIndexedSwapA
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double' -- ^price
-  ,withYieldTermStructure*`YieldTermStructure',`Double' -- ^guess
+  ,withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^guess
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol

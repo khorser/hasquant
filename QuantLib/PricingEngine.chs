@@ -148,11 +148,11 @@ import QuantLib.Internal.Enum
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure nocode#}
-{#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure nocode#}
-{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure nocode#}
-{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
+{#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
+{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
+{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel nocode#}
@@ -190,9 +190,9 @@ import QuantLib.Internal.Enum
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 
-{#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`YieldTermStructure',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+{#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure a',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlDiscountingSwapEngine as discountingSwapEngine{withYieldTermStructure*`YieldTermStructure',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+{#fun qlDiscountingSwapEngine as discountingSwapEngine{withYieldTermStructure*`GenYieldTermStructure a',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -219,18 +219,18 @@ import QuantLib.Internal.Enum
 
 {#fun qlAnalyticPerformanceEngine as analyticPerformanceEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlBlackCapFloorEngine1 as blackCapFloorEngine'{withYieldTermStructure*`YieldTermStructure',withOptionletVolatilityStructure*`OptionletVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCapFloorEngine1 as blackCapFloorEngine'{withYieldTermStructure*`GenYieldTermStructure a',withOptionletVolatilityStructure*`OptionletVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlBlackCapFloorEngine as blackCapFloorEngine{withYieldTermStructure*`YieldTermStructure',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCapFloorEngine as blackCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlBlackSwaptionEngine as blackSwaptionEngine{withYieldTermStructure*`YieldTermStructure',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackSwaptionEngine as blackSwaptionEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`YieldTermStructure',withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
-{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlAnalyticGJRGARCHEngine as analyticGJRGARCHEngine{withGJRGARCHModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -253,11 +253,11 @@ import QuantLib.Internal.Enum
   ,fromIntegral`Word' -- ^maxIterations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlTreeCapFloorEngine as treeCapFloorEngine{withShortRateModel*`ShortRateModel',fromIntegral`Word' -- ^timeSteps
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlTreeSwaptionEngine as treeSwaptionEngine{withShortRateModel*`ShortRateModel',fromIntegral`Word' -- ^timeSteps
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlTreeVanillaSwapEngine as treeVanillaSwapEngine{withShortRateModel*`ShortRateModel',fromIntegral`Word' -- ^timeSteps
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlVarianceGammaEngine as varianceGammaEngine{withVarianceGammaProcess*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticHestonEngine1 as analyticHestonEngine'{withHestonModel*`HestonModel',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -287,18 +287,18 @@ import QuantLib.Internal.Enum
 
 {#fun qlIntegralCdsEngine as integralCdsEngine{fromEnumQuantity`(Word,TimeUnit)'& -- ^integrationStep
   ,withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
-  ,withYieldTermStructure*`YieldTermStructure' -- ^discountCurve
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlIntegralEngine as integralEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
-{#fun qlJamshidianSwaptionEngine as jamshidianSwaptionEngine{withOneFactorAffineModel*`OneFactorAffineModel',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlJamshidianSwaptionEngine as jamshidianSwaptionEngine{withOneFactorAffineModel*`OneFactorAffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlJuQuadraticApproximationEngine as juQuadraticApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlKirkEngine as kirkEngine{withBlackProcess*`BlackProcess',withBlackProcess*`BlackProcess',`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlMidPointCdsEngine as midPointCdsEngine{withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
-  ,withYieldTermStructure*`YieldTermStructure'
+  ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlReplicatingVarianceSwapEngine as replicatingVarianceSwapEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^dk
@@ -307,10 +307,10 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlStulzEngine as stulzEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlLfmSwaptionEngine as lfmSwaptionEngine{withLiborForwardModel*`LiborForwardModel',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlTreeCapFloorEngine1 as treeCapFloorEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlTreeSwaptionEngine1 as treeSwaptionEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlLfmSwaptionEngine as lfmSwaptionEngine{withLiborForwardModel*`LiborForwardModel',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeCapFloorEngine1 as treeCapFloorEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeSwaptionEngine1 as treeSwaptionEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withG2*`G2',fromIntegral`Word' -- ^tGrid
@@ -450,24 +450,24 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine'{withCallableBondVolatilityStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine'{withCallableBondVolatilityStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine{withQuote*`GenQuote a',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngine'{withCallableBondVolatilityStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngine'{withCallableBondVolatilityStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine{withQuote*`GenQuote a',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine{withQuote*`GenQuote a',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
-{#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlTreeCallableFixedRateBondEngine as treeCallableFixedRateBondEngine{withShortRateModel*`ShortRateModel',fromIntegral`Word' -- ^timeSteps
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine'{withShortRateModel*`ShortRateModel',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngine{withShortRateModel*`ShortRateModel',fromIntegral`Word' -- ^timeSteps
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlBlackCalculatorAlpha as alpha{withBlackCalculator*`GenBlackCalculator a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBlackCalculatorBeta as beta{withBlackCalculator*`GenBlackCalculator a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBlackCalculator1 as blackCalculator'{fromEnumC`OptionType',`Double' -- ^strike

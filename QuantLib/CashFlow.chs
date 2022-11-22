@@ -93,12 +93,12 @@ import QuantLib.Internal.Type
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure nocode#}
-{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure nocode#}
+{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
+{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 
 {#enum DurationType{} deriving(Show, Eq)#}
 
@@ -231,39 +231,39 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |At-the-money rate of the cash flows.
 -- The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector's NPV is used instead.
-{#fun qlCashFlowsAtmRate as atmRate{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsAtmRate as atmRate{withLeg*`GenLeg a',withYieldTermStructure*`GenYieldTermStructure b',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,`Double' -- ^npv
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
-{#fun qlCashFlowsBps as bps{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsBps as bps{withLeg*`GenLeg a',withYieldTermStructure*`GenYieldTermStructure b',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
-{#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Double' -- ^zSpread
+{#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg a',withYieldTermStructure*`GenYieldTermStructure b',`Double' -- ^zSpread
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |NPV of the cash flows.
 -- The NPV is the sum of the cash flows, each discounted according to the given term structure.
-{#fun qlCashFlowsNpv as npv{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsNpv as npv{withLeg*`GenLeg a',withYieldTermStructure*`GenYieldTermStructure b',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |NPV and BPS of the cash flows.
 -- The NPV and BPS of the cash flows calculated together for performance reason
-{#fun qlCashFlowsNpvbps as npvbps{withLeg*`GenLeg a',withYieldTermStructure*`YieldTermStructure',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsNpvbps as npvbps{withLeg*`GenLeg a',withYieldTermStructure*`GenYieldTermStructure b',`Bool' -- ^includeSettlementDateFlows
   ,withDay*`Day' -- ^settlementDate
   ,withDay*`Day' -- ^npvDate
   ,prePtr-`Double'peekDouble*,prePtr-`Double'peekDouble*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |implied Z-spread.
 {#fun qlCashFlowsZSpread as zSpread{withLeg*`GenLeg a',`Double' -- ^npv
-  ,withYieldTermStructure*`YieldTermStructure',withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
+  ,withYieldTermStructure*`GenYieldTermStructure b',withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,`Double' -- ^accuracy

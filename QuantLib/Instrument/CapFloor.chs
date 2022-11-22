@@ -26,7 +26,7 @@ import QuantLib.Internal.Type
 {#pointer *Leg foreign -> CLeg nocode#}
 
 {#pointer *QlCapFloor as CapFloor foreign -> CCapFloor nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
 {#fun qlCapFloorAsInstrument{withCapFloor*`CapFloor'}->`Instrument'peekInstrument*#}
 instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
@@ -41,11 +41,11 @@ instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
 {#fun qlFloor as floor{withLeg*`GenLeg a' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-{#fun qlCapFloorAtmRate as atmRate{withCapFloor*`CapFloor',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCapFloorAtmRate as atmRate{withCapFloor*`CapFloor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |implied term volatility
 {#fun qlCapFloorImpliedVolatility as impliedVolatility{withCapFloor*`CapFloor',`Double' -- ^price
-  ,withYieldTermStructure*`YieldTermStructure' -- ^disc
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^disc
   ,`Double' -- ^guess
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations

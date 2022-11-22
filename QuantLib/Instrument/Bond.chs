@@ -97,7 +97,7 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
 {#fun qlBondAsInstrument{withBond*`Bond'}->`Instrument'peekInstrument*#}
@@ -121,7 +121,7 @@ instance CallableBond`Derives` Bond where cast = qlCallableBondAsBond
 {#fun qlConvertibleBondAsBond{withConvertibleBond*`ConvertibleBond'}->`Bond'peekBond*#}
 instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 
-{#fun qlBondFunctionsAtmRate as atmRate{withBond*`Bond',withYieldTermStructure*`YieldTermStructure',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsAtmRate as atmRate{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |constructor for amortizing or non-amortizing bonds.
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
@@ -258,11 +258,11 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 
 {#fun qlBondFunctionsBps2 as bpsFromYield{withBond*`Bond',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBondFunctionsBps as bps{withBond*`Bond',withYieldTermStructure*`YieldTermStructure',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsBps as bps{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBondFunctionsCleanPrice2 as cleanPrice{withBond*`Bond',withYieldTermStructure*`YieldTermStructure',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsCleanPrice2 as cleanPrice{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBondFunctionsCleanPrice3 as cleanPrice'{withBond*`Bond',withYieldTermStructure*`YieldTermStructure' -- ^discount
+{#fun qlBondFunctionsCleanPrice3 as cleanPrice'{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a' -- ^discount
   ,`Double' -- ^zSpread
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -298,7 +298,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 {#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint'{withBond*`Bond',withInterestRate*`InterestRate' -- ^yield
   ,withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsZSpread as zSpread{withBond*`Bond',`Double' -- ^cleanPrice
-  ,withYieldTermStructure*`YieldTermStructure'
+  ,withYieldTermStructure*`GenYieldTermStructure a'
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIterations

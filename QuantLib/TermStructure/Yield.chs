@@ -2,6 +2,7 @@
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure
+  , GenYieldTermStructure
   , BondHelper
   , RateHelper
   , SwapRateHelper
@@ -62,7 +63,6 @@ module QuantLib.TermStructure.Yield
   where
 
 import QuantLib.Internal hiding (maxDate)
-import QuantLib.Type
 import QuantLib.Internal.Enum
 import QuantLib.Quote
 {#import QuantLib.InterestRate#}(Compounding)
@@ -85,18 +85,16 @@ import QuantLib.Internal.Type
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
-{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlSwap as Swap foreign -> CSwap nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
-{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure nocode#}
-
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-
-{#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign -> CFittedBondDiscountCurve nocode#}
+{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign -> CFittedBondDiscountCurve' nocode#}
 
 {#pointer *QlRateHelper as RateHelper foreign -> CRateHelper nocode#}
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign -> CSwapRateHelper nocode#}
@@ -118,7 +116,7 @@ import QuantLib.Internal.Type
 {#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote a',fromIntegral`Word',`Double',withSchedule*`Schedule',withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`BusinessDayConvention',`Double',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
 -- |Returns a discount factor from the given YieldTermStructure object
-{#fun qlYieldTSDiscount as discount'{withYieldTermStructure*`YieldTermStructure'
+{#fun qlYieldTSDiscount as discount'{withYieldTermStructure*`GenYieldTermStructure a'
   ,withDay*`Day' -- ^d
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -130,44 +128,36 @@ import QuantLib.Internal.Type
   ,`BusinessDayConvention' -- ^fixedConvention
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
   ,withIborIndex*`GenIborIndex b' -- ^iborIndex
-  ,withMaybeQuote*`Maybe (GenQuote m)' -- ^spread
+  ,withMaybeQuote*`Maybe (GenQuote s)' -- ^spread
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discountingCurve
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure d)' -- ^discountingCurve
   ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
 {#fun qlFlatForward as flatForward{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 {#fun qlFlatForward1 as flatForward'{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-
 -- |The resulting interest rate has the required daycounting rule.
-{#fun qlYieldTermStructureZeroRate as zeroRate'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
+{#fun qlYieldTermStructureZeroRate as zeroRate'{withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-
 -- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
-{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod{withYieldTermStructure*`YieldTermStructure',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,withDayCounter*`DayCounter',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod{withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-
 -- |The resulting interest rate has the required day-counting rule.
-{#fun qlYieldTermStructureForwardRate as forwardRate'{withYieldTermStructure*`YieldTermStructure',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate as forwardRate'{withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
-{#fun qlYieldTermStructureForwardRate2 as forwardRate{withYieldTermStructure*`YieldTermStructure',`Double',`Double',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate2 as forwardRate{withYieldTermStructure*`GenYieldTermStructure a',`Double',`Double',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
-{#fun qlYieldTermStructureZeroRate1 as zeroRate{withYieldTermStructure*`YieldTermStructure',`Double',`Compounding',`Frequency'
-  ,`Bool' -- ^extrapolate
+{#fun qlYieldTermStructureZeroRate1 as zeroRate{withYieldTermStructure*`GenYieldTermStructure a',`Double',`Compounding',`Frequency',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlYieldTermStructureDiscount1 as discount{withYieldTermStructure*`YieldTermStructure',`Double'
-  ,`Bool' -- ^extrapolate
+{#fun qlYieldTermStructureDiscount1 as discount{withYieldTermStructure*`GenYieldTermStructure a',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlFraRateHelper as fraRateHelper{withQuote*`GenQuote a' -- ^rate
@@ -182,13 +172,13 @@ import QuantLib.Internal.Type
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 {#fun qlBondHelper as bondHelper{withQuote*`GenQuote a',withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
-{#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
+{#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
-{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
-{#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure',withQuote*`GenQuote a',`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a' -- ^liborFraction
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
@@ -197,7 +187,7 @@ import QuantLib.Internal.Type
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlDatedOISRateHelper as datedOISRateHelper{withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
-  ,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discountingCurve
+  ,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)' -- ^discountingCurve
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a',fromIntegral`Word' -- ^monthsToStart
   ,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
@@ -221,28 +211,20 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlImpliedTermStructure as impliedTermStructure{withYieldTermStructure*`YieldTermStructure',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlImpliedTermStructure as impliedTermStructure{withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-instance YieldTermStructure`Derives` TermStructure where cast = qlYieldTermStructureAsTermStructure
-instance FittedBondDiscountCurve`Derives` YieldTermStructure where cast = qlFittedBondDiscountCurveAsYieldTermStructure
-{#fun qlYieldTermStructureAsTermStructure{withYieldTermStructure*`YieldTermStructure'}->`TermStructure'peekTermStructure*#}
-{#fun qlFittedBondDiscountCurveAsYieldTermStructure{withFittedBondDiscountCurve*`FittedBondDiscountCurve'}->`YieldTermStructure'peekYieldTermStructure*#}
-
-asYieldTermStructure :: (a`Derives` YieldTermStructure) => a -> IO YieldTermStructure
-asYieldTermStructure = cast
-
-piecewiseZeroSpreadedTermStructure :: YieldTermStructure
+piecewiseZeroSpreadedTermStructure :: GenYieldTermStructure b
   -> [(Day, GenQuote a)]  -- ^spreads
   -> Compounding -> Frequency -> DayCounter -> IO YieldTermStructure
 piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure ts qs ds where (ds, qs) = unzip qd
-{#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`YieldTermStructure',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`YieldTermStructure' -- ^underlyingDividendTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^foreignRsikFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^underlyingBlackVolTS
+{#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`GenYieldTermStructure a' -- ^underlyingDividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^foreignRsikFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^underlyingBlackVolTS
   ,`Double' -- ^strike
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^exchRateBlackVolTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure e' -- ^exchRateBlackVolTS
   ,`Double' -- ^exchRateATMlevel
   ,`Double' -- ^underlyingExchRateCorrelation
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}

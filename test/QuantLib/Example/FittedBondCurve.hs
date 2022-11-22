@@ -75,7 +75,7 @@ run = do
     tolerance = 1e-10
     maxEvals = 5000
 
-    parRate :: TS.YieldTermStructure -> [Day] -> DayCounter -> IO Double
+    parRate :: TS.GenYieldTermStructure a -> [Day] -> DayCounter -> IO Double
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- years dc d1 d2 Nothing Nothing
@@ -98,10 +98,7 @@ run = do
           let ds = map (\(d, _, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           m <- years dc tod (last ds) Nothing Nothing
           r1 <- parRate ts0 (bondSettle:ds) dc
-          r2 <- forM curves $
-            \c -> do
-              ts <- TS.asYieldTermStructure c
-              parRate ts (bondSettle:ds) dc
+          r2 <- forM curves $ \c -> parRate c (bondSettle:ds) dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)
       let (tenors, rs) = unzip r
       return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rs}

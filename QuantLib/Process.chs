@@ -71,8 +71,8 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
 {#enum ProcessDiscretization{} deriving(Show,Eq)#}
@@ -86,37 +86,21 @@ import QuantLib.Internal.Type
 {#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq)#}
 
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess nocode#}
-
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D nocode#}
-
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
-
 {#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess nocode#}
-
 {#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess nocode#}
-
 {#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess nocode#}
-
 {#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess nocode#}
-
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess nocode#}
-
 {#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess nocode#}
-
 {#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess nocode#}
-
 {#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess nocode#}
-
 {#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess nocode#}
-
 {#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray nocode#}
-
 {#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess nocode#}
-
 {#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process nocode#}
-
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess nocode#}
-
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
 
 asStochasticProcess :: (a`Derives` StochasticProcess) => a -> IO StochasticProcess
@@ -168,32 +152,32 @@ instance Merton76Process`Derives` StochasticProcess1D where cast = qlMerton76Pro
 instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarianceGammaProcessAsStochasticProcess1D
 
 {#fun qlBlackProcess as blackProcess{withQuote*`GenQuote a' -- ^x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure c' -- ^blackVolTS
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`BlackProcess'peekBlackProcess*#}
 {#fun qlBlackScholesMertonProcess as blackScholesMertonProcess{withQuote*`GenQuote a' -- ^x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlBlackScholesProcess as blackScholesProcess{withQuote*`GenQuote a' -- ^x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure c' -- ^blackVolTS
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlExtendedBlackScholesMertonProcess as extendedBlackScholesMertonProcess{withQuote*`GenQuote a' -- ^x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^rsikFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^rsikFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
   ,`ProcessDiscretization',`ExtendedBlackScholesMertonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlGarmanKohlagenProcess as garmanKohlagenProcess{withQuote*`GenQuote a' -- x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^foreignRiskFreeTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^domesticRiskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^foreignRiskFreeTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^domesticRiskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlGeneralizedBlackScholesProcess as generalizedBlackScholesProcess{withQuote*`GenQuote a' -- ^x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlSquareRootProcess as squareRootProcess{`Double' -- ^b
   ,`Double' -- ^a
@@ -201,17 +185,17 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
   ,`Double' -- ^x0
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 {#fun qlVegaStressedBlackScholesProcess as vegaStressedBlackScholesProcess{withQuote*`GenQuote a' -- x0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
   ,`Double' -- ^lowerTimeBorderForStressTest
   ,`Double' -- ^upperTimeBorderForStressTest
   ,`Double' -- ^lowerAssetBorderForStressTest
   ,`Double' -- ^upperAssetBorderForStressTest
   ,`Double' -- ^stressLevel
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
-{#fun qlBatesProcess as batesProcess{withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendYield
+{#fun qlBatesProcess as batesProcess{withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendYield
   ,withQuote*`GenQuote a' -- ^s0
   ,`Double' -- ^v0
   ,`Double' -- ^kappa
@@ -261,8 +245,8 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
   ,`Double' -- ^mue
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
-{#fun qlGJRGARCHProcess as gjrGARCHProcess{withYieldTermStructure*`YieldTermStructure' -- ^riskFreeRate
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendYield
+{#fun qlGJRGARCHProcess as gjrGARCHProcess{withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendYield
   ,withQuote*`GenQuote a' -- ^s0
   ,`Double' -- ^v0
   ,`Double' -- &omega
@@ -272,8 +256,8 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
   ,`Double' -- ^lambda
   ,`Double' -- ^daysPerYear
   ,`GJRGARCHProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GJRGARCHProcess'peekGJRGARCHProcess*#}
-{#fun qlHestonProcess as hestonProcess{withYieldTermStructure*`YieldTermStructure' -- ^riskFreeRate
-  ,withYieldTermStructure*`YieldTermStructure' -- dividendYield
+{#fun qlHestonProcess as hestonProcess{withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- dividendYield
   ,withQuote*`GenQuote a' -- ^s0
   ,`Double' -- ^v0
   ,`Double' -- ^kappa
@@ -281,11 +265,11 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
   ,`Double' -- ^sigma
   ,`Double' -- ^rho
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HestonProcess'peekHestonProcess*#}
-{#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess{withYieldTermStructure*`YieldTermStructure' -- ^h
+{#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess{withYieldTermStructure*`GenYieldTermStructure a' -- ^h
   ,`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteForwardProcess'peekHullWhiteForwardProcess*#}
-{#fun qlHullWhiteProcess as hullWhiteProcess{withYieldTermStructure*`YieldTermStructure' -- ^h
+{#fun qlHullWhiteProcess as hullWhiteProcess{withYieldTermStructure*`GenYieldTermStructure a' -- ^h
   ,`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteProcess'peekHullWhiteProcess*#}
@@ -297,9 +281,9 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
 {#fun qlLiborForwardModelProcess as liborForwardModelProcess{fromIntegral`Word' -- ^size
   ,withIborIndex*`GenIborIndex a',preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'peekLiborForwardModelProcess*#}
 {#fun qlMerton76Process as merton76Process{withQuote*`GenQuote a' -- ^stateVariable
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withBlackVolTermStructure*`BlackVolTermStructure' -- ^blackVolTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
   ,withQuote*`GenQuote b' -- ^jumpInt
   ,withQuote*`GenQuote c' -- ^logJMean
   ,withQuote*`GenQuote d' -- ^logJVol
@@ -310,8 +294,8 @@ instance VarianceGammaProcess`Derives` StochasticProcess1D where cast = qlVarian
   ,`Double' -- ^vol
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 {#fun qlVarianceGammaProcess as varianceGammaProcess{withQuote*`GenQuote a' -- ^s0
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendYield
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeRate
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendYield
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeRate
   ,`Double' -- ^sigma
   ,`Double' -- ^nu
   ,`Double' -- ^theta

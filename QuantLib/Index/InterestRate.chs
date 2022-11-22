@@ -60,28 +60,20 @@ import QuantLib.Internal.Type
 {#pointer *Currency foreign -> CCurrency nocode#}
 
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
-
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
-
 {#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
-
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
-
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
-
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
-
 {#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign -> COvernightIndexedSwapIndex' nocode#}
 
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
 
-{#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+
+{#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
 
 -- |This method returns a schedule of fixing dates between start and end.
 {#fun qlBMAIndexFixingSchedule as fixingSchedule{withBMAIndex*`BMAIndex',withDay*`Day',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
@@ -99,13 +91,13 @@ import QuantLib.Internal.Type
 
 {#enum OvernightIborIndexType{} deriving (Show, Eq)#}
 
-{#fun qlCreateONIndex as overnightIborIndex{`OvernightIborIndexType',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
+{#fun qlCreateONIndex as overnightIborIndex{`OvernightIborIndexType',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
 
 {#enum LiborSwapIndexType{} deriving (Show, Eq)#}
 
 {#fun qlCreateLiborSwapIndex as liborSwapIndex{`LiborSwapIndexType',fromEnumQuantity`(Int,TimeUnit)'&
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^forwarding
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discounting
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure f)' -- ^forwarding
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure d)' -- ^discounting
   ,preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 {#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withOvernightIborIndex*`OvernightIborIndex',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwapIndex'peekOvernightIndexedSwapIndex*#}
@@ -118,7 +110,7 @@ import QuantLib.Internal.Type
   ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^fixedLegTenor
   ,`BusinessDayConvention' -- ^fixedLegConvention
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
-  ,withIborIndex*`GenIborIndex a',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
+  ,withIborIndex*`GenIborIndex a',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 
 {#enum IborIndexType{} add prefix = "Ibor" deriving (Show, Eq)#}
 
@@ -323,7 +315,7 @@ iborIndexTenor (Wibor p) = p
 iborIndexTenor (Zibor p) = p
 iborIndexTenor _ = (0, Days)
 
-iborIndex :: IborConstructor -> Maybe YieldTermStructure -> IO IborIndex
+iborIndex :: IborConstructor -> Maybe (GenYieldTermStructure y) -> IO IborIndex
 iborIndex (Ibor n p s cr ca bd b dc) ts = qlIborIndex n p s cr ca bd b dc ts
 iborIndex (Libor n p s cr ca dc) ts = qlLibor n p s cr ca dc ts
 iborIndex (DailyTenorLibor n c cr ca dc) ts = qlDailyTenorLibor n c cr ca dc ts
@@ -399,16 +391,16 @@ iborIndex c ts = do
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',`BusinessDayConvention'
   ,`Bool' -- ^endOfMonth
-  ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+  ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 {#fun qlLibor{`String' -- ^familyName
   ,fromEnumQuantity`(Word,TimeUnit)'&,fromIntegral`Word' -- settlementDays
-  ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+  ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 {#fun qlDailyTenorLibor{`String' -- ^familyName
   ,fromIntegral`Word' -- ^settlementDays
-  ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
-{#fun qlCreateIbor{`IborIndexType',fromEnumQuantity`(Word,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+  ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+{#fun qlCreateIbor{`IborIndexType',fromEnumQuantity`(Word,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 {#fun qlOvernightIndex as overnightIndex{`String',fromIntegral`Word' -- ^settlementDays
-  ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
+  ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
 {#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex a'}->`BusinessDayConvention'#}
 {#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex a'}->`Bool'#}
 {#fun qlOvernightIndexedSwapIndexUnderlyingSwap as underlyingOIS {withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}

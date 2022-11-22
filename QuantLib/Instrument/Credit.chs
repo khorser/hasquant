@@ -41,8 +41,8 @@ import Foreign.Ptr(Ptr)
 {#enum ProtectionSide{} deriving(Show, Eq)#}
 
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption nocode#}
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
@@ -79,7 +79,7 @@ instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapA
 {#fun qlCdsOption as cdsOption{withCreditDefaultSwap*`CreditDefaultSwap',withExercise*`Exercise',`Bool' -- ^knocksOut
   ,preErrorCheck-`String'errorCheck*-}->`CdsOption'peekCdsOption*#}
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility{withCdsOption*`CdsOption',`Double' -- ^price
-  ,withYieldTermStructure*`YieldTermStructure',withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure'
+  ,withYieldTermStructure*`GenYieldTermStructure a',withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure'
   ,`Double' -- ^recoveryRate
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
@@ -91,7 +91,7 @@ instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapA
 -- |Conventional/standard upfront-to-spread conversion.
 -- Under a standard ISDA model and a set of standardised instrument characteristics, it is the running only quoted spread that will make a CDS contract have an NPV of 0 when quoted for that running only spread. Refer to: "ISDA Standard CDS converter specification." May 2009.The conventional recovery rate to apply in the calculation is as specified by ISDA, not necessarily equal to the market-quoted one. It is typically 0.4 for SeniorSec and 0.2 for subordinate.The conversion employs a flat hazard rate. As a result, you will not recover the market quotes.This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably: The calendar should have no bank holidays, just weekends.The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.Convention should be Following for yield curve and contract cashflows.The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3.
 {#fun qlCreditDefaultSwapConventionalSpread as conventionalSpread{withCreditDefaultSwap*`CreditDefaultSwap',`Double'
-  ,withYieldTermStructure*`YieldTermStructure',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`Double'#}
+  ,withYieldTermStructure*`GenYieldTermStructure a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the variation of the fixed-leg value given a one-basis-point change in the running spread.
 {#fun qlCreditDefaultSwapCouponLegBPS as couponLegBPS{withCreditDefaultSwap*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlCreditDefaultSwapCouponLegNPV as couponLegNPV{withCreditDefaultSwap*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -102,7 +102,7 @@ instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapA
 -- |Implied hazard rate calculation.
 -- This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably: The calendar should have no bank holidays, just weekends.The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.Convention should be Following for yield curve and contract cashflows.The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3.
 {#fun qlCreditDefaultSwapImpliedHazardRate as impliedHazardRate{withCreditDefaultSwap*`CreditDefaultSwap',`Double' -- ^targetNPV
-  ,withYieldTermStructure*`YieldTermStructure',withDayCounter*`DayCounter',`Double' -- ^recoveryRate
+  ,withYieldTermStructure*`GenYieldTermStructure a',withDayCounter*`DayCounter',`Double' -- ^recoveryRate
   ,`Double' -- ^accuracy
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlCreditDefaultSwapUpfrontBPS as upfrontBPS{withCreditDefaultSwap*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}

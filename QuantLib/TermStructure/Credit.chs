@@ -33,7 +33,6 @@ module QuantLib.TermStructure.Credit
 #include "ql.h"
 #include "qlEnumObjects.h"
 
-import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
@@ -42,16 +41,12 @@ import QuantLib.Internal.Enum
 
 {#enum ProbabilityTrait{} deriving(Show, Eq)#}
 
-{#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure nocode#}
+{#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 
-instance DefaultProbabilityTermStructure`Derives` TermStructure where cast = qlDefaultProbabilityTermStructureAsTermStructure
-
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign -> CDefaultProbabilityHelper nocode#}
-
-{#fun qlDefaultProbabilityTermStructureAsTermStructure{withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure'}->`TermStructure'peekTermStructure*#}
 
 {#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withDefaultProbabilityTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
@@ -91,7 +86,7 @@ instance DefaultProbabilityTermStructure`Derives` TermStructure where cast = qlD
   ,`Int' -- ^settlementDays
   ,withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule',withDayCounter*`DayCounter'
   ,`Double' -- recoveryRate
-  ,withYieldTermStructure*`YieldTermStructure' -- ^discountCurve
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^discountCurve
   ,`Bool' -- ^settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityHelper'peekDefaultProbabilityHelper*#}
@@ -103,7 +98,7 @@ instance DefaultProbabilityTermStructure`Derives` TermStructure where cast = qlD
   ,`Int' -- ^settlementDays
   ,withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule',withDayCounter*`DayCounter'
   ,`Double' -- ^recoveryDate
-  ,withYieldTermStructure*`YieldTermStructure' -- ^discountCurve
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^discountCurve
   ,fromIntegral`Word' -- ^upfrontSettlementDays
   ,`Bool' -- &settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime

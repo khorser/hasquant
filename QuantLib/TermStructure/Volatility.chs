@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.TermStructure.Volatility
   (
     BlackVarianceSurfaceExtrapolation
@@ -6,6 +5,7 @@ module QuantLib.TermStructure.Volatility
 
   , BlackVarianceCurve
   , BlackVolTermStructure
+  , GenBlackVolTermStructure
   , CallableBondVolatilityStructure
   , CapFloorTermVolSurface
   , LocalVolTermStructure
@@ -14,6 +14,7 @@ module QuantLib.TermStructure.Volatility
   , SwaptionVolatilityStructure
   , TermStructure
   , VolatilityTermStructure
+  , GenVolatilityTermStructure
 
   , asVolatilityTermStructure
   , asBlackVolTermStructure
@@ -66,7 +67,6 @@ module QuantLib.TermStructure.Volatility
   )
   where
 
-import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.TermStructure
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
@@ -80,68 +80,27 @@ import QuantLib.Internal.Enum
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 
-{#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign -> CBlackVarianceCurve nocode#}
-
-{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure nocode#}
-
-{#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure nocode#}
-
-{#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign -> CCapFloorTermVolSurface nocode#}
-
-{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure nocode#}
-
-{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure nocode#}
-
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
-{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure nocode#}
-
-{#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure nocode#}
-
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
-{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure nocode#}
-
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
+{#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
+{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
+{#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign -> CBlackVarianceCurve' nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
+{#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
+{#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign -> CCapFloorTermVolSurface' nocode#}
+{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 
-asVolatilityTermStructure :: (a`Derives` VolatilityTermStructure) => a -> IO VolatilityTermStructure
-asVolatilityTermStructure = cast
-
-{#fun qlOptionletVolatilityStructureAsVolatilityTermStructure{withOptionletVolatilityStructure*`OptionletVolatilityStructure'}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
-instance OptionletVolatilityStructure`Derives` VolatilityTermStructure where cast = qlOptionletVolatilityStructureAsVolatilityTermStructure
-
-{#fun qlVolatilityTermStructureAsTermStructure{withVolatilityTermStructure*`VolatilityTermStructure'}->`TermStructure'peekTermStructure*#}
-instance VolatilityTermStructure`Derives` TermStructure where cast = qlVolatilityTermStructureAsTermStructure
-
-{#fun qlBlackVolTermStructureAsVolatilityTermStructure{withBlackVolTermStructure*`BlackVolTermStructure'}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
-instance BlackVolTermStructure`Derives` VolatilityTermStructure where cast = qlBlackVolTermStructureAsVolatilityTermStructure
-
-{#fun qlSwaptionVolatilityStructureAsVolatilityTermStructure{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
-instance SwaptionVolatilityStructure`Derives` VolatilityTermStructure where cast = qlSwaptionVolatilityStructureAsVolatilityTermStructure
-
-{#fun qlCapFloorTermVolSurfaceAsVolatilityTermStructure{withCapFloorTermVolSurface*`CapFloorTermVolSurface'}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
-instance CapFloorTermVolSurface`Derives` VolatilityTermStructure where cast = qlCapFloorTermVolSurfaceAsVolatilityTermStructure
-
-{#fun qlLocalVolTermStructureAsVolatilityTermStructure{withLocalVolTermStructure*`LocalVolTermStructure'}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
-instance LocalVolTermStructure`Derives` VolatilityTermStructure where cast = qlLocalVolTermStructureAsVolatilityTermStructure
-
-{#fun qlBlackVarianceCurveAsBlackVolTermStructure{withBlackVarianceCurve*`BlackVarianceCurve'}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
-
-{#fun qlCallableBondVolatilityStructureAsTermStructure{withCallableBondVolatilityStructure*`CallableBondVolatilityStructure'}->`TermStructure'peekTermStructure*#}
-instance CallableBondVolatilityStructure`Derives` TermStructure where cast = qlCallableBondVolatilityStructureAsTermStructure;
-
-instance BlackVarianceCurve`Derives` BlackVolTermStructure where cast = qlBlackVarianceCurveAsBlackVolTermStructure
-
-asBlackVolTermStructure :: (a`Derives` BlackVolTermStructure) => a -> IO BlackVolTermStructure
-asBlackVolTermStructure = cast
-
 {#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`BlackVolTermStructure'
-  ,withYieldTermStructure*`YieldTermStructure' -- ^riskFreeTS
-  ,withYieldTermStructure*`YieldTermStructure' -- ^dividendTS
+  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendTS
   ,withQuote*`GenQuote a' -- ^underlying
   ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 

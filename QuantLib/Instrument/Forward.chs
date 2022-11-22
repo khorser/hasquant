@@ -36,7 +36,7 @@ import QuantLib.Internal.Type
 
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlForward as Forward foreign -> CForward nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond nocode#}
 
@@ -60,7 +60,7 @@ instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
   ,withDay*`Day' -- ^maturityDate
   ,fromEnumC`PositionType',`Double' -- ^strikeForwardRate
   ,`Double' -- ^notionalAmount
-  ,withIborIndex*`GenIborIndex a',withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discountCurve
+  ,withIborIndex*`GenIborIndex a',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'peekForwardRateAgreement*#}
 
 -- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
@@ -68,8 +68,8 @@ instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
   ,withDay*`Day' -- ^maturityDate
   ,fromEnumC`PositionType',`Double' -- ^strike
   ,fromIntegral`Word' -- ^settlementDays
-  ,withDayCounter*`DayCounter',withCalendar*`Calendar',`BusinessDayConvention',withBond*`Bond',withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^discountCurve
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^incomeDiscountCurve
+  ,withDayCounter*`DayCounter',withCalendar*`Calendar',`BusinessDayConvention',withBond*`Bond',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^incomeDiscountCurve
   ,preErrorCheck-`String'errorCheck*-}->`BondForward'peekBondForward*#}
 
 -- |(dirty) forward bond price minus accrued on bond at delivery
@@ -89,7 +89,7 @@ instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
   ,`Compounding',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 {#fun qlForwardSettlementDate as settlementDate{withForward*`Forward',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 -- |NPV of income/dividends/storage-costs etc. of underlying instrument.
-{#fun qlForwardSpotIncome as spotIncome{withForward*`Forward',withYieldTermStructure*`YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardSpotIncome as spotIncome{withForward*`Forward',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns spot value/price of an underlying financial instrument
 {#fun qlForwardSpotValue as spotValue{withForward*`Forward',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the relevant forward rate associated with the FRA term.
