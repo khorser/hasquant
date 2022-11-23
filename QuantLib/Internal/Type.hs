@@ -524,6 +524,7 @@ import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
 
 import Control.Monad((>=>))
+import Data.Functor((<&>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal
@@ -995,7 +996,7 @@ newGenForeignPtr (Meta f) u x = do
   return $ GenForeignPtr p (withCastForeignPtr withForeignPtr u)
 
 newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newBaseForeignPtr (Meta f) x = newForeignPtr f x >>= return . (`GenForeignPtr` withForeignPtr)
+newBaseForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
 
 data CIndex'
 data CInterestRateIndex'
@@ -1257,15 +1258,17 @@ withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityT
 withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
 withGenForeignPtrVolatilityTermStructure (VolatilityTermStructureDescendant o) = withGenForeignPtr upcastVolatilityTermStructure o
+newVolatilityTermStructureDescendant :: GenForeignPtr a CVolatilityTermStructure' -> IO (GenTermStructure (VolatilityTermStructureDescendant a))
+newVolatilityTermStructureDescendant p = return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant p) withGenForeignPtrVolatilityTermStructure
 
 asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
 asBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
-  fp <- newBaseForeignPtr metaBlackVolTermStructure p
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant fp) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure)
+  np <- newBaseForeignPtr metaBlackVolTermStructure p
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant np) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure)
 peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStructure
 peekBlackVolTermStructure x = do
-  p <- newBaseForeignPtr metaBlackVolTermStructure x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant p) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
+  np <- newBaseForeignPtr metaBlackVolTermStructure x
+  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant np) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
 withBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrBlackVolTermStructure :: BlackVolTermStructureDescendant a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
@@ -1279,30 +1282,22 @@ withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO 
 withBlackVarianceCurve (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
 peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure' -> IO OptionletVolatilityStructure
-peekOptionletVolatilityStructure x = do
-  np <- newGenForeignPtr metaOptionletVolatilityStructure upcastOptionletVolatilityStructure x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+peekOptionletVolatilityStructure = newGenForeignPtr metaOptionletVolatilityStructure upcastOptionletVolatilityStructure >=> newVolatilityTermStructureDescendant
 withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure' -> IO b) -> IO b
 withOptionletVolatilityStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure' -> IO SwaptionVolatilityStructure
-peekSwaptionVolatilityStructure x = do
-  np <- newGenForeignPtr metaSwaptionVolatilityStructure upcastSwaptionVolatilityStructure x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+peekSwaptionVolatilityStructure  = newGenForeignPtr metaSwaptionVolatilityStructure upcastSwaptionVolatilityStructure >=> newVolatilityTermStructureDescendant
 withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure' -> IO b) -> IO b
 withSwaptionVolatilityStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVolSurface
-peekCapFloorTermVolSurface x = do
-  np <- newGenForeignPtr metaCapFloorTermVolSurface upcastCapFloorTermVolSurface x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+peekCapFloorTermVolSurface = newGenForeignPtr metaCapFloorTermVolSurface upcastCapFloorTermVolSurface >=> newVolatilityTermStructureDescendant
 withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface' -> IO b) -> IO b
 withCapFloorTermVolSurface (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
-peekLocalVolTermStructure x = do
-  np <- newGenForeignPtr metaLocalVolTermStructure upcastLocalVolTermStructure x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+peekLocalVolTermStructure = newGenForeignPtr metaLocalVolTermStructure upcastLocalVolTermStructure >=> newVolatilityTermStructureDescendant
 withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
 withLocalVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
