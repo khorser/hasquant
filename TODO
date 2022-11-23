@@ -177,18 +177,6 @@ a:Instrument
 	ConvertibleBond : Bond | qlConvertibleBondAsBond
     	FixedRateBond : Bond | qlFixedRateBondAsBond
 	CallableBond : Bond | qlCallableBondAsBond
-a:TermStructure
-    YieldTermStructure : TermStructure | qlYieldTermStructureAsTermStructure
-	FittedBondDiscountCurve : YieldTermStructure | qlFittedBondDiscountCurveAsYieldTermStructure
-    VolatilityTermStructure : TermStructure | qlVolatilityTermStructureAsTermStructure
-	OptionletVolatilityStructure : VolatilityTermStructure | qlOptionletVolatilityStructureAsVolatilityTermStructure
-	BlackVolTermStructure : VolatilityTermStructure | qlBlackVolTermStructureAsVolatilityTermStructure
-	    BlackVarianceCurve : BlackVolTermStructure | qlBlackVarianceCurveAsBlackVolTermStructure
-	SwaptionVolatilityStructure : VolatilityTermStructure | qlSwaptionVolatilityStructureAsVolatilityTermStructure
-	CapFloorTermVolSurface : VolatilityTermStructure | qlCapFloorTermVolSurfaceAsVolatilityTermStructure
-	LocalVolTermStructure : VolatilityTermStructure | qlLocalVolTermStructureAsVolatilityTermStructure
-    CallableBondVolatilityStructure : TermStructure | qlCallableBondVolatilityStructureAsTermStructure;
-    DefaultProbabilityTermStructure : TermStructure | qlDefaultProbabilityTermStructureAsTermStructure
 StochasticProcess
     StochasticProcess1D : StochasticProcess | qlStochasticProcess1DAsStochasticProcess
 	ExtendedOrnsteinUhlenbeckProcess : StochasticProcess1D | qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D

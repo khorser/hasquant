@@ -1130,7 +1130,9 @@ main = do
         accA `shouldSatisfy` (/= 0)
 
       it "empty leg start" $ do
-        (CF.leg [] >>= CF.startDate) `shouldThrow` (\(CPlusPlusException  m) -> not $ null m)
+        let cPlusPlusEx (CPlusPlusException m) = not $ null m
+            cPlusPlusEx _ = False
+        (CF.leg [] >>= CF.startDate) `shouldThrow` cPlusPlusEx
 
       it "single leg today" $ do
         (CF.leg [(tod, 100)] >>= CF.startDate) `shouldReturn` tod
@@ -1138,7 +1140,7 @@ main = do
       it "two legs unsorted" $ do
         (CF.leg [(tod, 100), (addDays (-10) tod, -1000)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
 
-      it "three legs sorted" $do
+      it "three legs sorted" $ do
         (CF.leg [(tod, 100), (addDays (-10) tod, 1000), (addDays 10 tod, -2000)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
 
       prop "random single let start date" $

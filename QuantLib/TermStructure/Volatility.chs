@@ -98,7 +98,7 @@ import QuantLib.Internal.Enum
 
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 
-{#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`BlackVolTermStructure'
+{#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure v'
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendTS
   ,withQuote*`GenQuote a' -- ^underlying
@@ -292,7 +292,7 @@ import QuantLib.Internal.Enum
 
 {#fun qlLocalVolCurve as localVolCurve{withBlackVarianceCurve*`BlackVarianceCurve',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
-{#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`BlackVolTermStructure',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+{#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |fixed reference date, floating market data
 capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote a)] -> DayCounter -> IO VolatilityTermStructure

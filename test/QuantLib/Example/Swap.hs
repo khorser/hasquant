@@ -96,7 +96,7 @@ run = do
     fraTerms = [(3, 6), (6, 9), (6, 12)]
     swapYears = [2, 3, 5, 10, 15]
 
-    valuateSwap :: Day -> TS.YieldTermStructure -> TS.YieldTermStructure -> IO IterationResult
+    valuateSwap :: Day -> TS.GenYieldTermStructure a -> TS.GenYieldTermStructure a -> IO IterationResult
     valuateSwap settle d f = do
       fixDC <- dayCounter Thirty360European
       floatDC <- dayCounter Actual360
@@ -118,7 +118,7 @@ run = do
         cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
       fwd1Y5Y <- vanillaSwap Payer 1000000 fwdFixS 0.04 fixDC
         fwdFloatS eu6m 0.0 floatDC ModifiedFollowing
-      refDate <- asTermStructure d >>= referenceDate
+      refDate <- referenceDate d
       pricer <- discountingSwapEngine d (Just False) (Just refDate) (Just refDate)
 
       spotInstr <- asSwap spot5Y >>= asInstrument

@@ -88,7 +88,7 @@ run = do
 
     rates :: TS.YieldTermStructure -> DayCounter -> Day -> Day -> [TS.FittedBondDiscountCurve] -> [TS.BondHelper] -> IO Rate
     rates ts0 dc bondSettle tod curves instrA = do
-      refDate <- asTermStructure ts0 >>= referenceDate
+      refDate <- referenceDate ts0
       numIter <- forM curves TS.numberOfIterations
 
       r <- forM instrA $

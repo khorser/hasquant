@@ -42,7 +42,7 @@ run = do
   ds <- dates sched
   grid <- mapM (\x -> years dcILS valDate x Nothing Nothing) ds >>= timeGridFromList
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
-  volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear) >>= asBlackVolTermStructure
+  volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear)
   ycILS <- interpolatedDiscountCurve dfILS dcILS calILS [] LogLinear
   ycEUR <- interpolatedDiscountCurve dfEUR dcEUR calEUR [] LogLinear
 
@@ -80,7 +80,7 @@ run = do
     deepFold :: [[a]] -> (a -> a -> a) -> [a]
     deepFold l f = foldr (zipWith f) (head l) (tail l)
 
-    nextNPV :: PathGenerator -> [Day] -> YieldTermStructure -> IO (Double, [Double])
+    nextNPV :: PathGenerator -> [Day] -> GenYieldTermStructure a -> IO (Double, [Double])
     nextNPV g ds yc = do
       s <- next g
       sim <- asset s 0
