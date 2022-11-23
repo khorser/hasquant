@@ -523,6 +523,7 @@ import Foreign.C.String
 import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
 
+import Data.Functor((<&>))
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -532,7 +533,7 @@ import QuantLib.Internal
 newtype Standalone a = Standalone {_ptr :: ForeignPtr a}
 newtype Meta a = Meta (FinalizerPtr a)
 peekStandalone :: Meta a -> Ptr a -> IO (Standalone a)
-peekStandalone (Meta f) = newForeignPtr f >=> return . Standalone
+peekStandalone (Meta f) = fmap Standalone . newForeignPtr f
 withStandalone :: Standalone a -> (Ptr a -> IO b) -> IO b
 withStandalone (Standalone p) = withForeignPtr p
 withMaybeStandalone :: Maybe (Standalone a) -> (Ptr a -> IO b) -> IO b
@@ -548,7 +549,7 @@ foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCale
 metaCalendar :: Meta CCalendar
 metaCalendar = Meta qlFreeCalendar
 peekCalendar :: Ptr CCalendar -> IO Calendar
-peekCalendar = peekStandalone metaCalendar >=> return . Calendar
+peekCalendar = fmap Calendar . peekStandalone metaCalendar
 withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
 withCalendar = withStandalone . getCCalendar
 foreign import ccall safe "ql.h qlCalendarName" qlCalendarName :: Ptr CCalendar -> IO CString
@@ -561,7 +562,7 @@ foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurr
 metaCurrency :: Meta CCurrency
 metaCurrency = Meta qlFreeCurrency
 peekCurrency :: Ptr CCurrency -> IO Currency
-peekCurrency = peekStandalone metaCurrency >=> return . Currency
+peekCurrency = fmap Currency . peekStandalone metaCurrency
 withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
 withCurrency = withStandalone . getCCurrency
 withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
@@ -576,7 +577,7 @@ foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr C
 metaDayCounter :: Meta CDayCounter
 metaDayCounter = Meta qlFreeDayCounter
 peekDayCounter :: Ptr CDayCounter -> IO DayCounter
-peekDayCounter = peekStandalone metaDayCounter >=> return . DayCounter
+peekDayCounter = fmap DayCounter . peekStandalone metaDayCounter
 withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
 withDayCounter = withStandalone . getCDayCounter
 foreign import ccall safe "ql.h qlDayCounterName" qlDayCounterName :: Ptr CDayCounter -> IO CString
@@ -589,7 +590,7 @@ foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSche
 metaSchedule :: Meta CSchedule
 metaSchedule = Meta qlFreeSchedule
 peekSchedule :: Ptr CSchedule -> IO Schedule
-peekSchedule = peekStandalone metaSchedule >=> return . Schedule
+peekSchedule = fmap Schedule . peekStandalone metaSchedule
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
 withSchedule = withStandalone . getCSchedule
 
@@ -599,7 +600,7 @@ foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerP
 metaInterestRate :: Meta CInterestRate
 metaInterestRate = Meta qlFreeInterestRate
 peekInterestRate :: Ptr CInterestRate -> IO InterestRate
-peekInterestRate = peekStandalone metaInterestRate >=> return . InterestRate
+peekInterestRate = fmap InterestRate . peekStandalone metaInterestRate
 withInterestRate :: InterestRate -> (Ptr CInterestRate -> IO b) -> IO b
 withInterestRate = withStandalone . getCInterestRate
 withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
@@ -611,7 +612,7 @@ foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTime
 metaTimeGrid :: Meta CTimeGrid
 metaTimeGrid = Meta qlFreeTimeGrid
 peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
-peekTimeGrid = peekStandalone metaTimeGrid >=> return . TimeGrid
+peekTimeGrid = fmap TimeGrid . peekStandalone metaTimeGrid
 withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
 withTimeGrid = withStandalone . getCTimeGrid
 
@@ -621,7 +622,7 @@ foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDivi
 metaDividend :: Meta CDividend
 metaDividend = Meta qlFreeDividend
 peekDividend :: Ptr CDividend -> IO Dividend
-peekDividend = peekStandalone metaDividend >=> return . Dividend
+peekDividend = fmap Dividend . peekStandalone metaDividend
 withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
 withDividend = withStandalone . getCDividend
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
@@ -633,7 +634,7 @@ foreign import ccall "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerP
 metaSmileSection :: Meta CSmileSection
 metaSmileSection = Meta qlFreeSmileSection
 peekSmileSection :: Ptr CSmileSection -> IO SmileSection
-peekSmileSection = peekStandalone metaSmileSection >=> return . SmileSection
+peekSmileSection = fmap SmileSection . peekStandalone metaSmileSection
 withSmileSection :: SmileSection -> (Ptr CSmileSection -> IO b) -> IO b
 withSmileSection = withStandalone . getCSmileSection
 
@@ -643,7 +644,7 @@ foreign import ccall "ql.h &qlFreePricingEngine" qlFreePricingEngine :: Finalize
 metaPricingEngine :: Meta CPricingEngine
 metaPricingEngine = Meta qlFreePricingEngine
 peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
-peekPricingEngine = peekStandalone metaPricingEngine >=> return . PricingEngine
+peekPricingEngine = fmap PricingEngine . peekStandalone metaPricingEngine
 withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
 withPricingEngine = withStandalone . getCPricingEngine
 
@@ -653,7 +654,7 @@ foreign import ccall "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCoupon
 metaFloatingRateCouponPricer :: Meta CFloatingRateCouponPricer
 metaFloatingRateCouponPricer = Meta qlFreeFloatingRateCouponPricer
 peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer -> IO FloatingRateCouponPricer
-peekFloatingRateCouponPricer = peekStandalone metaFloatingRateCouponPricer >=> return . FloatingRateCouponPricer
+peekFloatingRateCouponPricer = fmap FloatingRateCouponPricer . peekStandalone metaFloatingRateCouponPricer
 withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
 withFloatingRateCouponPricer = withStandalone . getCFloatingRateCouponPricer
 withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer)) -> IO b) -> IO b
@@ -665,7 +666,7 @@ foreign import ccall "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabi
 metaDefaultProbabilityHelper :: Meta CDefaultProbabilityHelper
 metaDefaultProbabilityHelper = Meta qlFreeDefaultProbabilityHelper
 peekDefaultProbabilityHelper :: Ptr CDefaultProbabilityHelper -> IO DefaultProbabilityHelper
-peekDefaultProbabilityHelper = peekStandalone metaDefaultProbabilityHelper >=> return . DefaultProbabilityHelper
+peekDefaultProbabilityHelper = fmap DefaultProbabilityHelper . peekStandalone metaDefaultProbabilityHelper
 withDefaultProbabilityHelper :: DefaultProbabilityHelper -> (Ptr CDefaultProbabilityHelper -> IO b) -> IO b
 withDefaultProbabilityHelper = withStandalone . getCDefaultProbabilityHelper
 withDefaultProbabilityHelperArray :: [DefaultProbabilityHelper] -> ((CUInt, Ptr (Ptr CDefaultProbabilityHelper)) -> IO b) -> IO b
@@ -677,7 +678,7 @@ foreign import ccall "ql.h &qlFreePathGenerator" qlFreePathGenerator :: Finalize
 metaPathGenerator :: Meta CPathGenerator
 metaPathGenerator = Meta qlFreePathGenerator
 peekPathGenerator :: Ptr CPathGenerator -> IO PathGenerator
-peekPathGenerator = peekStandalone metaPathGenerator >=> return . PathGenerator
+peekPathGenerator = fmap PathGenerator . peekStandalone metaPathGenerator
 withPathGenerator :: PathGenerator -> (Ptr CPathGenerator -> IO b) -> IO b
 withPathGenerator = withStandalone . getCPathGenerator
 
@@ -687,7 +688,7 @@ foreign import ccall "ql.h &qlFreeSamplePath" qlFreeSamplePath :: FinalizerPtr C
 metaSamplePath :: Meta CSamplePath
 metaSamplePath = Meta qlFreeSamplePath
 peekSamplePath :: Ptr CSamplePath -> IO SamplePath
-peekSamplePath = peekStandalone metaSamplePath >=> return . SamplePath
+peekSamplePath = fmap SamplePath . peekStandalone metaSamplePath
 withSamplePath :: SamplePath -> (Ptr CSamplePath -> IO b) -> IO b
 withSamplePath = withStandalone . getCSamplePath
 
@@ -779,7 +780,7 @@ data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
 upcast :: Meta p -> Upcast p p -> GenObject a p -> IO (GenObject p p)
 upcast m u (GenObject p (Upcast k _)) = withForeignPtr p (k >=> peekObject m u)
 peekObject :: Meta a -> Upcast a p -> Ptr a -> IO (GenObject a p)
-peekObject (Meta f) u p = GenObject <$> newForeignPtr f p <*> return u
+peekObject (Meta f) u p = newForeignPtr f p <&> (`GenObject` u)
 withObject :: GenObject a p -> (Ptr a -> IO b) -> IO b
 withObject (GenObject p _) = withForeignPtr p
 withObjectArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
@@ -789,10 +790,9 @@ withDescendant :: GenObject a p -> (Ptr p -> IO b) -> IO b
 withDescendant (GenObject p (Upcast k fi)) ff =
     withForeignPtr p (\x -> do
       pp <- k x
-      if fi /= nullFunPtr then
-         do xx <- newForeignPtr fi pp
-            withForeignPtr xx ff
-      else ff pp)
+      if fi /= nullFunPtr
+        then newForeignPtr fi pp >>= (`withForeignPtr` ff)
+        else ff pp)
 withMaybeDescendant :: Maybe (GenObject a p) -> (Ptr p -> IO b) -> IO b
 withMaybeDescendant x f = maybe (f nullPtr) (`withDescendant` f) x
 withDescendantArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
@@ -990,8 +990,8 @@ withGenForeignPtr u (GenForeignPtr p w) = withCastForeignPtr w u p
 newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
 newGenForeignPtr (Meta f) u x = (`GenForeignPtr` withCastForeignPtr withForeignPtr u) <$> newForeignPtr f x
 
-newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newBaseForeignPtr (Meta f) x = (`GenForeignPtr` withForeignPtr) <$> newForeignPtr f x
+newCastForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
+newCastForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
 
 data CIndex'
 data CInterestRateIndex'
@@ -1063,13 +1063,13 @@ upcastOvernightIndexedSwapIndex :: Upcast COvernightIndexedSwapIndex' CSwapIndex
 upcastOvernightIndexedSwapIndex = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
 
 asIndex :: GenIndex a -> IO Index
-asIndex (GenIndex (GenForeignPtr x w)) = w x (newBaseForeignPtr metaIndex >=> (return . GenIndex))
+asIndex (GenIndex (GenForeignPtr x w)) = w x (fmap GenIndex . newCastForeignPtr metaIndex)
 withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
 withIndex (GenIndex (GenForeignPtr x w)) = w x
 
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
 asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x peekInterestRateIndex
-  where peekInterestRateIndex = newBaseForeignPtr metaInterestRateIndex >=> newInterestRateIndexDescendant
+  where peekInterestRateIndex = newCastForeignPtr metaInterestRateIndex >=> newInterestRateIndexDescendant
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CIndex' -> IO b) -> IO b
@@ -1085,7 +1085,7 @@ withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPt
 asIborIndex :: GenIborIndex a -> IO IborIndex
 asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekIborIndex
 peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
-peekIborIndex = newBaseForeignPtr metaIborIndex >=> newIborIndexDescendant
+peekIborIndex = newCastForeignPtr metaIborIndex >=> newIborIndexDescendant
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
 withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
@@ -1101,7 +1101,7 @@ withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (Ge
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
 asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekSwapIndex
 peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
-peekSwapIndex = newBaseForeignPtr metaSwapIndex >=> newSwapIndexDescendant
+peekSwapIndex = newCastForeignPtr metaSwapIndex >=> newSwapIndexDescendant
 withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
 withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrSwapIndex :: SwapIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
@@ -1228,14 +1228,14 @@ upcastLocalVolTermStructure :: Upcast CLocalVolTermStructure' CVolatilityTermStr
 upcastLocalVolTermStructure = Upcast qlLocalVolTermStructureAsVolatilityTermStructure qlFreeVolatilityTermStructure
 
 asTermStructure :: GenTermStructure a -> IO TermStructure
-asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (newBaseForeignPtr metaTermStructure >=> (return . GenTermStructure))
+asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (fmap GenTermStructure . newCastForeignPtr metaTermStructure)
 withTermStructure :: GenTermStructure a  -> (Ptr CTermStructure' -> IO b) -> IO b
 withTermStructure (GenTermStructure (GenForeignPtr x w)) = w x
 
 asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermStructure
 asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekVolatilityTermStructure
 peekVolatilityTermStructure :: Ptr CVolatilityTermStructure' -> IO VolatilityTermStructure
-peekVolatilityTermStructure = newBaseForeignPtr metaVolatilityTermStructure >=> newVolatilityTermStructureDescendant
+peekVolatilityTermStructure = newCastForeignPtr metaVolatilityTermStructure >=> newVolatilityTermStructureDescendant
 withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
 withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
@@ -1246,7 +1246,7 @@ newVolatilityTermStructureDescendant p = return $ GenTermStructure $ GenForeignP
 asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
 asBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x peekBlackVolTermStructure
 peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStructure
-peekBlackVolTermStructure = newBaseForeignPtr metaBlackVolTermStructure >=> newBlackVolTermStructureDescendant
+peekBlackVolTermStructure = newCastForeignPtr metaBlackVolTermStructure >=> newBlackVolTermStructureDescendant
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
 withBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrBlackVolTermStructure :: BlackVolTermStructureDescendant a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
@@ -1280,19 +1280,19 @@ withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructur
 withLocalVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
-peekCallableBondVolatilityStructure = newGenForeignPtr metaCallableBondVolatilityStructure upcastCallableBondVolatilityStructure >=> return . GenTermStructure
+peekCallableBondVolatilityStructure = fmap GenTermStructure . newGenForeignPtr metaCallableBondVolatilityStructure upcastCallableBondVolatilityStructure
 withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure' -> IO b) -> IO b
 withCallableBondVolatilityStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
 
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure = newGenForeignPtr metaDefaultProbabilityTermStructure upcastDefaultProbabilityTermStructure >=> return . GenTermStructure
+peekDefaultProbabilityTermStructure = fmap GenTermStructure . newGenForeignPtr metaDefaultProbabilityTermStructure upcastDefaultProbabilityTermStructure
 withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
 withDefaultProbabilityTermStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
 asYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekYieldTermStructure
 peekYieldTermStructure :: Ptr CYieldTermStructure' -> IO YieldTermStructure
-peekYieldTermStructure = newBaseForeignPtr metaYieldTermStructure >=> newYieldTermStructureDescendant
+peekYieldTermStructure = newCastForeignPtr metaYieldTermStructure >=> newYieldTermStructureDescendant
 withYieldTermStructure :: GenYieldTermStructure a -> (Ptr CYieldTermStructure' -> IO b) -> IO b
 withYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTermStructure' -> IO b) -> IO b

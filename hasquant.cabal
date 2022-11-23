@@ -94,7 +94,7 @@ library
       QuantLib
       stdc++
   build-depends:
-      base >=4.9 && <5.0
+      base >=4.11 && <5.0
     , split
     , template-haskell
     , time
