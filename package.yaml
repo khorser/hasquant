@@ -30,7 +30,7 @@ extra-source-files:
 library:
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   dependencies:
-    - base >=4.11 && <5.0
+    - base >=4.9 && <5.0
     - time
     - template-haskell
     - split

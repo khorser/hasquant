@@ -524,7 +524,6 @@ import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
 
 import Control.Monad((>=>))
-import Data.Functor((<&>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal
@@ -778,9 +777,7 @@ data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: Fina
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
 upcast :: Meta p -> Upcast p p -> GenObject a p -> IO (GenObject p p)
-upcast (Meta f) m (GenObject p (Upcast k _)) = withForeignPtr p (\qq -> GenObject <$> (k qq >>= newForeignPtr f) <*> return m)
-peekBase :: Meta a -> Upcast a a -> Ptr a -> IO (GenObject a a)
-peekBase (Meta f) u p = GenObject <$> newForeignPtr f p <*> return u
+upcast m u (GenObject p (Upcast k _)) = withForeignPtr p (k >=> peekObject m u)
 peekObject :: Meta a -> Upcast a p -> Ptr a -> IO (GenObject a p)
 peekObject (Meta f) u p = GenObject <$> newForeignPtr f p <*> return u
 withObject :: GenObject a p -> (Ptr a -> IO b) -> IO b
@@ -825,7 +822,7 @@ upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 asQuote :: GenQuote a -> IO Quote
 asQuote (GenQuote q) = GenQuote <$> upcast metaQuote upcastQuote q
 peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekBase metaQuote upcastQuote p
+peekQuote p = GenQuote <$> peekObject metaQuote upcastQuote p
 withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
 withQuote = withDescendant . getQuote
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
@@ -858,7 +855,7 @@ upcastCouponLeg = Upcast qlCouponLegAsLeg qlFreeLeg
 asLeg :: GenLeg a -> IO Leg
 asLeg (GenLeg q) = GenLeg <$> upcast metaLeg upcastLeg q
 peekLeg :: Ptr CLeg -> IO Leg
-peekLeg p = GenLeg <$> peekBase metaLeg upcastLeg p
+peekLeg p = GenLeg <$> peekObject metaLeg upcastLeg p
 withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
 withLeg = withDescendant . getLeg
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
@@ -903,7 +900,7 @@ upcastOISRateHelper = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
 asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
 asRateHelper (GenRateHelper q) = GenRateHelper <$> upcast metaRateHelper upcastRateHelper q
 peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
-peekRateHelper p = GenRateHelper <$> peekBase metaRateHelper upcastRateHelper p
+peekRateHelper p = GenRateHelper <$> peekObject metaRateHelper upcastRateHelper p
 withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
 withRateHelper = withDescendant . getRateHelper
 withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
@@ -942,7 +939,7 @@ upcastBlackCalibrationHelper = Upcast qlBlackCalibrationHelperAsCalibrationHelpe
 asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
 asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> upcast metaCalibrationHelper upcastCalibrationHelper q
 peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
-peekCalibrationHelper p = GenCalibrationHelper <$> peekBase metaCalibrationHelper upcastCalibrationHelper p
+peekCalibrationHelper p = GenCalibrationHelper <$> peekObject metaCalibrationHelper upcastCalibrationHelper p
 withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
 withCalibrationHelper = withDescendant . getCalibrationHelper
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
@@ -971,7 +968,7 @@ upcastBlackScholesCalculator = Upcast qlBlackScholesCalculatorAsBlackCalculator 
 asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
 asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> upcast metaBlackCalculator upcastBlackCalculator q
 peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
-peekBlackCalculator p = GenBlackCalculator <$> peekBase metaBlackCalculator upcastBlackCalculator p
+peekBlackCalculator p = GenBlackCalculator <$> peekObject metaBlackCalculator upcastBlackCalculator p
 withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
 withBlackCalculator = withDescendant . getBlackCalculator
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalculator CBlackScholesCalculator)
@@ -991,12 +988,10 @@ withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
 withGenForeignPtr u (GenForeignPtr p w) = withCastForeignPtr w u p
 
 newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
-newGenForeignPtr (Meta f) u x = do
-  p <- newForeignPtr f x
-  return $ GenForeignPtr p (withCastForeignPtr withForeignPtr u)
+newGenForeignPtr (Meta f) u x = (`GenForeignPtr` withCastForeignPtr withForeignPtr u) <$> newForeignPtr f x
 
 newBaseForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newBaseForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
+newBaseForeignPtr (Meta f) x = (`GenForeignPtr` withForeignPtr) <$> newForeignPtr f x
 
 data CIndex'
 data CInterestRateIndex'
@@ -1073,58 +1068,49 @@ withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
 withIndex (GenIndex (GenForeignPtr x w)) = w x
 
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x (\p -> do
-    np <- newBaseForeignPtr metaInterestRateIndex p
-    return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant np) withGenForeignPtrInterestRateIndex)
+asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x peekInterestRateIndex
+  where peekInterestRateIndex = newBaseForeignPtr metaInterestRateIndex >=> newInterestRateIndexDescendant
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CIndex' -> IO b) -> IO b
 withGenForeignPtrInterestRateIndex (InterestRateIndexDescendant o) = withGenForeignPtr upcastInterestRateIndex o
+newInterestRateIndexDescendant :: GenForeignPtr a CInterestRateIndex' -> IO (GenIndex (InterestRateIndexDescendant a))
+newInterestRateIndexDescendant p = return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant p) withGenForeignPtrInterestRateIndex
 
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
-peekBMAIndex x = do
-  np <- newGenForeignPtr metaBMAIndex upcastBMAIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant np) withGenForeignPtrInterestRateIndex
+peekBMAIndex = newGenForeignPtr metaBMAIndex upcastBMAIndex >=> newInterestRateIndexDescendant
 withBMAIndex :: BMAIndex -> (Ptr CBMAIndex' -> IO b) -> IO b
 withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 asIborIndex :: GenIborIndex a -> IO IborIndex
-asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
-  fp <- newBaseForeignPtr metaIborIndex p
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant fp) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex)
+asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekIborIndex
 peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
-peekIborIndex x = do
-  p <- newBaseForeignPtr metaIborIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant p) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+peekIborIndex = newBaseForeignPtr metaIborIndex >=> newIborIndexDescendant
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
 withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withGenForeignPtrIborIndex (IborIndexDescendant o) = withGenForeignPtr upcastIborIndex o
+newIborIndexDescendant :: GenForeignPtr a CIborIndex' -> IO (GenIndex (InterestRateIndexDescendant (IborIndexDescendant a)))
+newIborIndexDescendant p = return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant p) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
 
 peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
-peekOvernightIborIndex x = do
-  np <- newGenForeignPtr metaOvernightIborIndex upcastOvernightIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant np) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
+peekOvernightIborIndex = newGenForeignPtr metaOvernightIborIndex upcastOvernightIndex >=> newIborIndexDescendant
 withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
 withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
-asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
-  fp <- newBaseForeignPtr metaSwapIndex p
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant fp) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex)
+asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekSwapIndex
 peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
-peekSwapIndex x = do
-  p <- newBaseForeignPtr metaSwapIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant p) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
+peekSwapIndex = newBaseForeignPtr metaSwapIndex >=> newSwapIndexDescendant
 withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
 withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrSwapIndex :: SwapIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withGenForeignPtrSwapIndex (SwapIndexDescendant o) = withGenForeignPtr upcastSwapIndex o
+newSwapIndexDescendant :: GenForeignPtr a CSwapIndex' -> IO (GenIndex (InterestRateIndexDescendant (SwapIndexDescendant a)))
+newSwapIndexDescendant p = return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant p) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
 
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
-peekOvernightIndexedSwapIndex x = do
-  np <- newGenForeignPtr metaOvernightIndexedSwapIndex upcastOvernightIndexedSwapIndex x
-  return $ GenIndex $ GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant np) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
+peekOvernightIndexedSwapIndex = newGenForeignPtr metaOvernightIndexedSwapIndex upcastOvernightIndexedSwapIndex >=> newSwapIndexDescendant
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
 withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
@@ -1247,13 +1233,9 @@ withTermStructure :: GenTermStructure a  -> (Ptr CTermStructure' -> IO b) -> IO 
 withTermStructure (GenTermStructure (GenForeignPtr x w)) = w x
 
 asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermStructure
-asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x (\p -> do
-  np <- newBaseForeignPtr metaVolatilityTermStructure p
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure)
+asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekVolatilityTermStructure
 peekVolatilityTermStructure :: Ptr CVolatilityTermStructure' -> IO VolatilityTermStructure
-peekVolatilityTermStructure x = do
-  np <- newBaseForeignPtr metaVolatilityTermStructure x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant np) withGenForeignPtrVolatilityTermStructure
+peekVolatilityTermStructure = newBaseForeignPtr metaVolatilityTermStructure >=> newVolatilityTermStructureDescendant
 withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
 withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
@@ -1262,22 +1244,18 @@ newVolatilityTermStructureDescendant :: GenForeignPtr a CVolatilityTermStructure
 newVolatilityTermStructureDescendant p = return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant p) withGenForeignPtrVolatilityTermStructure
 
 asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
-asBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x (\p -> do
-  np <- newBaseForeignPtr metaBlackVolTermStructure p
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant np) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure)
+asBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x peekBlackVolTermStructure
 peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStructure
-peekBlackVolTermStructure x = do
-  np <- newBaseForeignPtr metaBlackVolTermStructure x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant np) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
+peekBlackVolTermStructure = newBaseForeignPtr metaBlackVolTermStructure >=> newBlackVolTermStructureDescendant
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
 withBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrBlackVolTermStructure :: BlackVolTermStructureDescendant a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
 withGenForeignPtrBlackVolTermStructure (BlackVolTermStructureDescendant o) = withGenForeignPtr upcastBlackVolTermStructure o
+newBlackVolTermStructureDescendant :: GenForeignPtr a CBlackVolTermStructure' -> IO (GenTermStructure (VolatilityTermStructureDescendant (BlackVolTermStructureDescendant a)))
+newBlackVolTermStructureDescendant p = return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant p) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
 
 peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
-peekBlackVarianceCurve x = do
-  np <- newGenForeignPtr metaBlackVarianceCurve upcastBlackVarianceCurve x
-  return $ GenTermStructure $ GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant np) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
+peekBlackVarianceCurve = newGenForeignPtr metaBlackVarianceCurve upcastBlackVarianceCurve >=> newBlackVolTermStructureDescendant
 withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO b) -> IO b
 withBlackVarianceCurve (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
@@ -1312,24 +1290,20 @@ withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr C
 withDefaultProbabilityTermStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
-asYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x (\p -> do
-  np <- newBaseForeignPtr metaYieldTermStructure p
-  return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant np) withGenForeignPtrYieldTermStructure)
+asYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekYieldTermStructure
 peekYieldTermStructure :: Ptr CYieldTermStructure' -> IO YieldTermStructure
-peekYieldTermStructure x = do
-  np <- newBaseForeignPtr metaYieldTermStructure x
-  return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant np) withGenForeignPtrYieldTermStructure
+peekYieldTermStructure = newBaseForeignPtr metaYieldTermStructure >=> newYieldTermStructureDescendant
 withYieldTermStructure :: GenYieldTermStructure a -> (Ptr CYieldTermStructure' -> IO b) -> IO b
 withYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTermStructure' -> IO b) -> IO b
 withMaybeYieldTermStructure x f = maybe (f nullPtr) (`withYieldTermStructure` f) x
 withGenForeignPtrYieldTermStructure :: YieldTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
 withGenForeignPtrYieldTermStructure (YieldTermStructureDescendant o) = withGenForeignPtr upcastYieldTermStructure o
+newYieldTermStructureDescendant :: GenForeignPtr a CYieldTermStructure' -> IO (GenTermStructure (YieldTermStructureDescendant a))
+newYieldTermStructureDescendant p = return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant p) withGenForeignPtrYieldTermStructure
 
 peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
-peekFittedBondDiscountCurve x = do
-  np <- newGenForeignPtr metaFittedBondDiscountCurve upcastFittedBondDiscountCurve x
-  return $ GenTermStructure $ GenForeignPtr (YieldTermStructureDescendant np) withGenForeignPtrYieldTermStructure
+peekFittedBondDiscountCurve = newGenForeignPtr metaFittedBondDiscountCurve upcastFittedBondDiscountCurve >=> newYieldTermStructureDescendant
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
