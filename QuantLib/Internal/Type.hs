@@ -211,32 +211,30 @@ module QuantLib.Internal.Type
   , CTermStructure'
   , asTermStructure
   , withTermStructure
+  , withTermStructureDescendant
   , GenVolatilityTermStructure
   , VolatilityTermStructure
   , CVolatilityTermStructure
   , CVolatilityTermStructure'
   , peekVolatilityTermStructure
   , withVolatilityTermStructure
+  , withVolatilityTermStructureDescendant
   , OptionletVolatilityStructure
   , COptionletVolatilityStructure
   , COptionletVolatilityStructure'
   , peekOptionletVolatilityStructure
-  , withOptionletVolatilityStructure
   , SwaptionVolatilityStructure
   , CSwaptionVolatilityStructure
   , CSwaptionVolatilityStructure'
   , peekSwaptionVolatilityStructure
-  , withSwaptionVolatilityStructure
   , CapFloorTermVolSurface
   , CCapFloorTermVolSurface
   , CCapFloorTermVolSurface'
   , peekCapFloorTermVolSurface
-  , withCapFloorTermVolSurface
   , LocalVolTermStructure
   , CLocalVolTermStructure
   , CLocalVolTermStructure'
   , peekLocalVolTermStructure
-  , withLocalVolTermStructure
   , GenBlackVolTermStructure
   , BlackVolTermStructure
   , CBlackVolTermStructure
@@ -267,12 +265,10 @@ module QuantLib.Internal.Type
   , CCallableBondVolatilityStructure
   , CCallableBondVolatilityStructure'
   , peekCallableBondVolatilityStructure
-  , withCallableBondVolatilityStructure
   , DefaultProbabilityTermStructure
   , CDefaultProbabilityTermStructure
   , CDefaultProbabilityTermStructure'
   , peekDefaultProbabilityTermStructure
-  , withDefaultProbabilityTermStructure
 
   , AffineModel
   , CAffineModel
@@ -1081,6 +1077,8 @@ withGenForeignPtrInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CInd
 withGenForeignPtrInterestRateIndex (InterestRateIndexDescendant o) = withGenForeignPtr upcastInterestRateIndex o
 newInterestRateIndexDescendant :: GenForeignPtr a CInterestRateIndex' -> IO (GenIndex (InterestRateIndexDescendant a))
 newInterestRateIndexDescendant p = GenIndex <^> GenForeignPtr (InterestRateIndexDescendant p) withGenForeignPtrInterestRateIndex
+newInterestRateIndexDescendant2 :: (t -> IborIndexDescendant a) -> t -> IO (GenIndex (InterestRateIndexDescendant (IborIndexDescendant a)))
+newInterestRateIndexDescendant2 f p = newInterestRateIndexDescendant $ GenForeignPtr (f p) withGenForeignPtrIborIndex
 
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
 peekBMAIndex = newGenForeignPtr metaBMAIndex upcastBMAIndex >=> newInterestRateIndexDescendant
@@ -1090,16 +1088,14 @@ withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPt
 asIborIndex :: GenIborIndex a -> IO IborIndex
 asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekIborIndex
 peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
-peekIborIndex = newCastForeignPtr metaIborIndex >=> newIborIndexDescendant
+peekIborIndex = newCastForeignPtr metaIborIndex >=> newInterestRateIndexDescendant2 IborIndexDescendant
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
 withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withGenForeignPtrIborIndex (IborIndexDescendant o) = withGenForeignPtr upcastIborIndex o
-newIborIndexDescendant :: GenForeignPtr a CIborIndex' -> IO (GenIndex (InterestRateIndexDescendant (IborIndexDescendant a)))
-newIborIndexDescendant p = GenIndex <^> GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant p) withGenForeignPtrIborIndex) withGenForeignPtrInterestRateIndex
 
 peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
-peekOvernightIborIndex = newGenForeignPtr metaOvernightIborIndex upcastOvernightIndex >=> newIborIndexDescendant
+peekOvernightIborIndex = newGenForeignPtr metaOvernightIborIndex upcastOvernightIndex >=> newInterestRateIndexDescendant2 IborIndexDescendant
 withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
 withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
@@ -1236,6 +1232,8 @@ asTermStructure :: GenTermStructure a -> IO TermStructure
 asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (GenTermStructure <.> newCastForeignPtr metaTermStructure)
 withTermStructure :: GenTermStructure a  -> (Ptr CTermStructure' -> IO b) -> IO b
 withTermStructure (GenTermStructure (GenForeignPtr x w)) = w x
+withTermStructureDescendant :: GenTermStructure (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withTermStructureDescendant (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
 
 asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermStructure
 asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekVolatilityTermStructure
@@ -1247,6 +1245,8 @@ withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityT
 withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
 withGenForeignPtrVolatilityTermStructure (VolatilityTermStructureDescendant o) = withGenForeignPtr upcastVolatilityTermStructure o
+withVolatilityTermStructureDescendant :: GenTermStructure (VolatilityTermStructureDescendant (ForeignPtr p)) -> (Ptr p -> IO b) -> IO b
+withVolatilityTermStructureDescendant (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 newVolatilityTermStructureDescendant :: GenForeignPtr a CVolatilityTermStructure' -> IO (GenTermStructure (VolatilityTermStructureDescendant a))
 newVolatilityTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (VolatilityTermStructureDescendant p) withGenForeignPtrVolatilityTermStructure
 
@@ -1268,33 +1268,16 @@ withBlackVarianceCurve (GenTermStructure (GenForeignPtr (VolatilityTermStructure
 
 peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure' -> IO OptionletVolatilityStructure
 peekOptionletVolatilityStructure = peekVolatilityTermStructureDescendant metaOptionletVolatilityStructure upcastOptionletVolatilityStructure
-withOptionletVolatilityStructure :: OptionletVolatilityStructure -> (Ptr COptionletVolatilityStructure' -> IO b) -> IO b
-withOptionletVolatilityStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
-
 peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure' -> IO SwaptionVolatilityStructure
 peekSwaptionVolatilityStructure = peekVolatilityTermStructureDescendant metaSwaptionVolatilityStructure upcastSwaptionVolatilityStructure
-withSwaptionVolatilityStructure :: SwaptionVolatilityStructure -> (Ptr CSwaptionVolatilityStructure' -> IO b) -> IO b
-withSwaptionVolatilityStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
-
 peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVolSurface
 peekCapFloorTermVolSurface = peekVolatilityTermStructureDescendant metaCapFloorTermVolSurface upcastCapFloorTermVolSurface
-withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface' -> IO b) -> IO b
-withCapFloorTermVolSurface (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
-
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
 peekLocalVolTermStructure = peekVolatilityTermStructureDescendant metaLocalVolTermStructure upcastLocalVolTermStructure
-withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
-withLocalVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
-
 peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
 peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr metaCallableBondVolatilityStructure upcastCallableBondVolatilityStructure
-withCallableBondVolatilityStructure :: CallableBondVolatilityStructure -> (Ptr CCallableBondVolatilityStructure' -> IO b) -> IO b
-withCallableBondVolatilityStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
-
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
 peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr metaDefaultProbabilityTermStructure upcastDefaultProbabilityTermStructure
-withDefaultProbabilityTermStructure :: DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
-withDefaultProbabilityTermStructure (GenTermStructure (GenForeignPtr x _)) = withForeignPtr x
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
 asYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekYieldTermStructure

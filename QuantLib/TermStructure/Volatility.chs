@@ -122,7 +122,7 @@ import QuantLib.Internal.Enum
 {#fun qlConstantSwaptionVolatility as constantSwaptionVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- |returns the Black variance for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureBlackVariance1 as blackVarianceForPeriod'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureBlackVariance1 as blackVarianceForPeriod'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
@@ -130,7 +130,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the Black variance for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureBlackVariance2 as blackVarianceForPeriod{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureBlackVariance2 as blackVarianceForPeriod{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,`Double' -- optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- swapTenor
   ,`Double' -- ^strike
@@ -138,7 +138,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the Black variance for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureBlackVariance3 as blackVarianceForTenor{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureBlackVariance3 as blackVarianceForTenor{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -146,7 +146,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the Black variance for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureBlackVariance4 as blackVariance'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureBlackVariance4 as blackVariance'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -154,7 +154,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the Black variance for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureBlackVariance5 as blackVariance{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureBlackVariance5 as blackVariance{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -162,7 +162,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the Black variance for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureBlackVariance as blackVarianceForPeriods{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureBlackVariance as blackVarianceForPeriods{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
@@ -170,64 +170,64 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the largest swapLength for which the term structure can return vols
-{#fun qlSwaptionVolatilityStructureMaxSwapLength as maxSwapLength{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwaptionVolatilityStructureMaxSwapLength as maxSwapLength{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the largest length for which the term structure can return vols
-{#fun qlSwaptionVolatilityStructureMaxSwapTenor as maxSwapTenor{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
+{#fun qlSwaptionVolatilityStructureMaxSwapTenor as maxSwapTenor{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 -- |returns the smile for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,`Double' -- ^optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |returns the smile for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |implements the conversion between swap dates and swap (time) length
-{#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^start
   ,withDay*`Day' -- ^end
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |implements the conversion between swap tenor and swap (time) length
-{#fun qlSwaptionVolatilityStructureSwapLength as swapLength{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',fromEnumQuantity`(Word,TimeUnit)'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwaptionVolatilityStructureSwapLength as swapLength{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure',fromEnumQuantity`(Word,TimeUnit)'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureVolatility1 as volatilityForPeriod'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureVolatility1 as volatilityForPeriod'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
@@ -235,7 +235,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureVolatility2 as volatilityForPeriod{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureVolatility2 as volatilityForPeriod{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,`Double' -- ^optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
@@ -243,7 +243,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureVolatility3 as volatilityForTenor{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureVolatility3 as volatilityForTenor{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -251,7 +251,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureVolatility4 as volatilityForTenor'{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureVolatility4 as volatilityForTenor'{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -259,7 +259,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureVolatility5 as volatility{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureVolatility5 as volatility{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -267,7 +267,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureVolatility as volatilityForPeriods{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure'
+{#fun qlSwaptionVolatilityStructureVolatility as volatilityForPeriods{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
@@ -284,7 +284,7 @@ import QuantLib.Internal.Enum
 -- |floating reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 
-{#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`SwaptionVolatilityStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+{#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withVolatilityTermStructureDescendant*`SwaptionVolatilityStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 {#fun qlLocalConstantVol1 as localConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
