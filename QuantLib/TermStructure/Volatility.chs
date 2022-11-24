@@ -12,7 +12,6 @@ module QuantLib.TermStructure.Volatility
   , OptionletVolatilityStructure
   , SmileSection
   , SwaptionVolatilityStructure
-  , TermStructure
   , VolatilityTermStructure
   , GenVolatilityTermStructure
 
