@@ -1107,7 +1107,7 @@ withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
 withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrSwapIndex :: SwapIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withGenForeignPtrSwapIndex (SwapIndexDescendant o) = withGenForeignPtr upcastSwapIndex o
-newSwapIndexDescendant :: GenForeignPtr a CSwapIndex' -> IO (GenIndex (InterestRateIndexDescendant (SwapIndexDescendant a)))
+newSwapIndexDescendant :: GenForeignPtr a CSwapIndex' -> IO (GenSwapIndex a)
 newSwapIndexDescendant p = GenIndex <^> GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant p) withGenForeignPtrSwapIndex) withGenForeignPtrInterestRateIndex
 
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
@@ -1239,15 +1239,15 @@ asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermSt
 asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekVolatilityTermStructure
 peekVolatilityTermStructure :: Ptr CVolatilityTermStructure' -> IO VolatilityTermStructure
 peekVolatilityTermStructure = newCastForeignPtr metaVolatilityTermStructure >=> newVolatilityTermStructureDescendant
-peekVolatilityTermStructureDescendant :: Meta a -> Upcast a CVolatilityTermStructure' -> Ptr a -> IO (GenTermStructure (VolatilityTermStructureDescendant (ForeignPtr a)))
+peekVolatilityTermStructureDescendant :: Meta a -> Upcast a CVolatilityTermStructure' -> Ptr a -> IO (GenVolatilityTermStructure (ForeignPtr a))
 peekVolatilityTermStructureDescendant m u = newGenForeignPtr m u >=> newVolatilityTermStructureDescendant
 withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
 withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignPtrVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
 withGenForeignPtrVolatilityTermStructure (VolatilityTermStructureDescendant o) = withGenForeignPtr upcastVolatilityTermStructure o
-withVolatilityTermStructureDescendant :: GenTermStructure (VolatilityTermStructureDescendant (ForeignPtr p)) -> (Ptr p -> IO b) -> IO b
+withVolatilityTermStructureDescendant :: GenVolatilityTermStructure (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
 withVolatilityTermStructureDescendant (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
-newVolatilityTermStructureDescendant :: GenForeignPtr a CVolatilityTermStructure' -> IO (GenTermStructure (VolatilityTermStructureDescendant a))
+newVolatilityTermStructureDescendant :: GenForeignPtr a CVolatilityTermStructure' -> IO (GenVolatilityTermStructure a)
 newVolatilityTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (VolatilityTermStructureDescendant p) withGenForeignPtrVolatilityTermStructure
 
 asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
@@ -1258,7 +1258,7 @@ withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStr
 withBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignPtrBlackVolTermStructure :: BlackVolTermStructureDescendant a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
 withGenForeignPtrBlackVolTermStructure (BlackVolTermStructureDescendant o) = withGenForeignPtr upcastBlackVolTermStructure o
-newBlackVolTermStructureDescendant :: GenForeignPtr a CBlackVolTermStructure' -> IO (GenTermStructure (VolatilityTermStructureDescendant (BlackVolTermStructureDescendant a)))
+newBlackVolTermStructureDescendant :: GenForeignPtr a CBlackVolTermStructure' -> IO (GenBlackVolTermStructure a)
 newBlackVolTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant p) withGenForeignPtrBlackVolTermStructure) withGenForeignPtrVolatilityTermStructure
 
 peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
@@ -1289,7 +1289,7 @@ withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTer
 withMaybeYieldTermStructure x f = maybe (f nullPtr) (`withYieldTermStructure` f) x
 withGenForeignPtrYieldTermStructure :: YieldTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
 withGenForeignPtrYieldTermStructure (YieldTermStructureDescendant o) = withGenForeignPtr upcastYieldTermStructure o
-newYieldTermStructureDescendant :: GenForeignPtr a CYieldTermStructure' -> IO (GenTermStructure (YieldTermStructureDescendant a))
+newYieldTermStructureDescendant :: GenForeignPtr a CYieldTermStructure' -> IO (GenYieldTermStructure a)
 newYieldTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (YieldTermStructureDescendant p) withGenForeignPtrYieldTermStructure
 
 peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
@@ -1836,5 +1836,116 @@ foreign import ccall "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D
 foreign import ccall "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray
 foreign import ccall "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess
 foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess
+
+--- TEMPLATE CODE
+
+data CNode0'
+data CLeaf1'
+data CNode1'
+data CLeaf2'
+data CNode2'
+data CLeaf3'
+newtype GenNode0 a = GenNode0 (GenForeignPtr a CNode0')
+type CNode0 = ForeignPtr CNode0'
+type Node0 = GenNode0 CNode0
+newtype Node1Descendant a = Node1Descendant (GenForeignPtr a CNode1')
+type GenNode1 a = GenNode0 (Node1Descendant a)
+type CNode1 = ForeignPtr CNode1'
+type Node1 = GenNode1 CNode1
+type CLeaf2 = ForeignPtr CLeaf2'
+type Leaf2 = GenNode1 CLeaf2
+newtype Node2Descendant a = Node2Descendant (GenForeignPtr a CNode2')
+type GenNode2 a = GenNode0 (Node1Descendant (Node2Descendant a))
+type CNode2 = ForeignPtr CNode2'
+type Node2 = GenNode2 CNode2
+type CLeaf3 = ForeignPtr CLeaf3'
+type Leaf3 = GenNode2 CLeaf3
+type CLeaf1 = ForeignPtr CLeaf1'
+type Leaf1 = GenNode0 CLeaf1
+foreign import ccall "ql.h &qlFreeNode0" qlFreeNode0 :: FinalizerPtr CNode0'
+foreign import ccall "ql.h &qlFreeNode1" qlFreeNode1 :: FinalizerPtr CNode1'
+foreign import ccall "ql.h &qlFreeLeaf2" qlFreeLeaf2 :: FinalizerPtr CLeaf2'
+foreign import ccall "ql.h &qlFreeNode2" qlFreeNode2 :: FinalizerPtr CNode2'
+foreign import ccall "ql.h &qlFreeLeaf3" qlFreeLeaf3 :: FinalizerPtr CLeaf3'
+foreign import ccall "ql.h &qlFreeLeaf1" qlFreeLeaf1 :: FinalizerPtr CLeaf1'
+metaNode0 :: Meta CNode0'
+metaNode0 = Meta qlFreeNode0
+metaNode1 :: Meta CNode1'
+metaNode1 = Meta qlFreeNode1
+metaLeaf2 :: Meta CLeaf2'
+metaLeaf2 = Meta qlFreeLeaf2
+metaNode2 :: Meta CNode2'
+metaNode2 = Meta qlFreeNode2
+metaLeaf3 :: Meta CLeaf3'
+metaLeaf3 = Meta qlFreeLeaf3
+metaLeaf1 :: Meta CLeaf1'
+metaLeaf1 = Meta qlFreeLeaf1
+foreign import ccall "ql.h qlNode1AsNode0" qlNode1AsNode0 :: Ptr CNode1' -> IO (Ptr CNode0')
+foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
+foreign import ccall "ql.h qlNode2AsNode1" qlNode2AsNode1 :: Ptr CNode2' -> IO (Ptr CNode1')
+foreign import ccall "ql.h qlLeaf3AsNode2" qlLeaf3AsNode2 :: Ptr CLeaf3' -> IO (Ptr CNode2')
+foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
+upcastNode1 :: Upcast CNode1' CNode0'
+upcastNode1 = Upcast qlNode1AsNode0 qlFreeNode0
+upcastLeaf2 :: Upcast CLeaf2' CNode1'
+upcastLeaf2 = Upcast qlLeaf2AsNode1 qlFreeNode1
+upcastNode2 :: Upcast CNode2' CNode1'
+upcastNode2 = Upcast qlNode2AsNode1 qlFreeNode1
+upcastLeaf3 :: Upcast CLeaf3' CNode2'
+upcastLeaf3 = Upcast qlLeaf3AsNode2 qlFreeNode2
+upcastLeaf1 :: Upcast CLeaf1' CNode0'
+upcastLeaf1 = Upcast qlLeaf1AsNode0 qlFreeNode0
+
+asNode0 :: GenNode0 a -> IO Node0
+asNode0 (GenNode0 (GenForeignPtr x w)) = w x peekNode0
+peekNode0 :: Ptr CNode0' -> IO Node0
+peekNode0 = GenNode0 <.> newCastForeignPtr metaNode0
+withNode0 :: GenNode0 a -> (Ptr CNode0' -> IO b) -> IO b
+withNode0 (GenNode0 (GenForeignPtr x w)) = w x
+withNode0Descendant :: GenNode0 (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withNode0Descendant (GenNode0 (GenForeignPtr x _)) = withForeignPtr x
+
+asNode1 :: GenNode1 a -> IO Node1
+asNode1 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x w)) _)) = w x peekNode1
+peekNode1 :: Ptr CNode1' -> IO Node1
+peekNode1 = newCastForeignPtr metaNode1 >=> newNode1Descendant
+withNode1 :: GenNode1 a -> (Ptr CNode1' -> IO b) -> IO b
+withNode1 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x w)) _)) = w x
+withMaybeNode1 :: Maybe (GenNode1 a) -> (Ptr CNode1' -> IO b) -> IO b
+withMaybeNode1 x f = maybe (f nullPtr) (`withNode1` f) x
+withGenForeignPtrNode1 :: Node1Descendant a -> (Ptr CNode0' -> IO b) -> IO b
+withGenForeignPtrNode1 (Node1Descendant o) = withGenForeignPtr upcastNode1 o
+newNode1Descendant :: GenForeignPtr a CNode1' -> IO (GenNode1 a)
+newNode1Descendant p = GenNode0 <^> GenForeignPtr (Node1Descendant p) withGenForeignPtrNode1
+newNode1Descendant2 :: (t -> Node2Descendant a) -> t -> IO (GenNode2 a)
+newNode1Descendant2 f p = newNode1Descendant $ GenForeignPtr (f p) withGenForeignPtrNode2
+peekNode1Descendant :: Meta a -> Upcast a CNode1' -> Ptr a -> IO (GenNode1 (ForeignPtr a))
+peekNode1Descendant m u = newGenForeignPtr m u >=> newNode1Descendant
+withNode1Descendant :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+withNode1Descendant (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
+asNode2 :: GenNode2 a -> IO Node2
+asNode2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x w)) _)) _)) = w x peekNode2
+peekNode2 :: Ptr CNode2' -> IO Node2
+peekNode2 = newCastForeignPtr metaNode2 >=> newNode2Descendant
+withNode2 :: GenNode2 a -> (Ptr CNode2' -> IO b) -> IO b
+withNode2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x w)) _)) _)) = w x
+withGenForeignPtrNode2 :: Node2Descendant a -> (Ptr CNode1' -> IO b) -> IO b
+withGenForeignPtrNode2 (Node2Descendant o) = withGenForeignPtr upcastNode2 o
+newNode2Descendant :: GenForeignPtr a CNode2' -> IO (GenNode2 a)
+newNode2Descendant p = GenNode0 <^> GenForeignPtr (Node1Descendant $ GenForeignPtr (Node2Descendant p) withGenForeignPtrNode2) withGenForeignPtrNode1
+
+peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
+peekLeaf1 = GenNode0 <.> newGenForeignPtr metaLeaf1 upcastLeaf1
+
+peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
+peekLeaf2 = peekNode1Descendant metaLeaf2 upcastLeaf2
+withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
+withLeaf2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
+
+peekLeaf3 :: Ptr CLeaf3' -> IO Leaf3
+peekLeaf3 = newGenForeignPtr metaLeaf3 upcastLeaf3 >=> newNode2Descendant
+withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
+withLeaf3 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
