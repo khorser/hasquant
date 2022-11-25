@@ -142,7 +142,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
-{#import QuantLib.CashFlow#}(Dividend)
+{#import QuantLib.CashFlow#}()
 import QuantLib.Internal.Enum
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
@@ -406,7 +406,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlMCEuropeanHestonEngine1 as mcEuropeanHestonEngine{`RngTrait',withHestonProcess*`HestonProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanHestonEngine1 as mcEuropeanHestonEngine{`RngTrait',withHestonProcess*`GenHestonProcess a',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples

@@ -35,7 +35,7 @@ import Data.Vector.Storable(Vector)
   ,fromIntegral`Word' -- ^dimension
   ,`Bool' -- ^brownian bridge
   ,preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
-{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid'
+{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`GenStochasticProcess a',withTimeGrid*`TimeGrid'
   ,fromIntegral`Word' -- ^seed
   ,fromIntegral`Word' -- ^dimension
   ,`Bool' -- ^brownian bridge

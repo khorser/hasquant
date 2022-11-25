@@ -71,9 +71,9 @@ import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
-{#import QuantLib.Instrument.Bond#}(Bond)
-{#import QuantLib.Instrument.Option#}(Option)
-{#import QuantLib.Instrument.Credit#}(CreditDefaultSwap)
+{#import QuantLib.Instrument.Bond#}()
+{#import QuantLib.Instrument.Option#}()
+{#import QuantLib.Instrument.Credit#}()
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
