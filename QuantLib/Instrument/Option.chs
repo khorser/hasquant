@@ -102,18 +102,13 @@ instance CdsOption`Derives` Option where cast = qlCdsOptionAsOption
 {#fun qlCdsOptionAsOption{withCdsOption*`CdsOption'}->`Option'peekOption*#}
 
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
-
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption nocode#}
-
 {#pointer *QlDividendVanillaOption as DividendVanillaOption foreign -> CDividendVanillaOption nocode#}
-
 {#pointer *QlForwardVanillaOption as ForwardVanillaOption foreign -> CForwardVanillaOption nocode#}
-
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption nocode#}
-
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption nocode#}
 
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess nocode#}
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 
 {#fun qlMultiAssetOptionAsOption{withMultiAssetOption*`MultiAssetOption'}->`Option'peekOption*#}
 instance MultiAssetOption`Derives` Option where cast = qlMultiAssetOptionAsOption
@@ -330,19 +325,19 @@ instance VolatileOption BarrierOption where
 {#fun qlQuantoVanillaOptionQlambda{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlDividendVanillaOptionImpliedVolatility{withDividendVanillaOption*`DividendVanillaOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^accuracy
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlVanillaOptionImpliedVolatility{withVanillaOption*`VanillaOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^accuracy
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBarrierOptionImpliedVolatility{withBarrierOption*`BarrierOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^accuracy
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol

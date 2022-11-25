@@ -148,23 +148,23 @@ instance ShortRateModel`Derives` CalibratedModel where cast = qlShortRateModelAs
 {#fun qlOneFactorAffineModelAsShortRateModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`ShortRateModel'peekShortRateModel*#}
 instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
 
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess nocode#}
-{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D nocode#}
-{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
-{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess nocode#}
-{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess nocode#}
-{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess nocode#}
-{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess nocode#}
-{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess nocode#}
-{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess nocode#}
-{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess nocode#}
-{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess nocode#}
-{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess nocode#}
-{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray nocode#}
-{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess nocode#}
-{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process nocode#}
-{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess nocode#}
-{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
+{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
+{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
+{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess' nocode#}
+{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess' nocode#}
+{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
+{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
+{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
+{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
+{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
+{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
+{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
+{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray' nocode#}
+{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
+{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
+{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
+{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 {#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
@@ -191,12 +191,12 @@ generalizedHullWhite :: GenYieldTermStructure a -> [(Day, Double)] -- ^speedstru
   -> IO ShortRateModel
 generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip s; (vd, vq) = unzip v}
 {#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
-{#fun qlGJRGARCHModel as gJRGARCHModel{withGJRGARCHProcess*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
-{#fun qlHestonModel as hestonModel{withHestonProcess*`HestonProcess',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
+{#fun qlGJRGARCHModel as gJRGARCHModel{withStochasticProcessDescendant*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
+{#fun qlHestonModel as hestonModel{withHestonProcess*`GenHestonProcess a',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
-{#fun qlVarianceGammaModel as varianceGammaModel{withVarianceGammaProcess*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
+{#fun qlVarianceGammaModel as varianceGammaModel{withStochasticProcess1DDescendant*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
 {#fun qlVasicek as vasicek{`Double' -- ^r0
   ,`Double' -- ^a
   ,`Double' -- ^b
@@ -206,7 +206,7 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
-{#fun qlLiborForwardModel as liborForwardModel{withLiborForwardModelProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
+{#fun qlLiborForwardModel as liborForwardModel{withStochasticProcessDescendant*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}

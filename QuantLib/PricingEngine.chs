@@ -169,23 +169,24 @@ import QuantLib.Internal.Enum
 {#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel nocode#}
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel nocode#}
 
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess nocode#}
-{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D nocode#}
-{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
-{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess nocode#}
-{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess nocode#}
-{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess nocode#}
-{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess nocode#}
-{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess nocode#}
-{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess nocode#}
-{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess nocode#}
-{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess nocode#}
-{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess nocode#}
-{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray nocode#}
-{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess nocode#}
-{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process nocode#}
-{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess nocode#}
-{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess nocode#}
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
+{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
+{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
+{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess' nocode#}
+{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess' nocode#}
+{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
+{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
+{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
+{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
+{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
+{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
+{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
+{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray' nocode#}
+{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
+{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
+{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
+{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
+
 {#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator nocode#}
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
@@ -248,7 +249,7 @@ import QuantLib.Internal.Enum
 {#fun qlG2SwaptionEngine as g2SwaptionEngine{withG2*`G2',`Double' -- ^range
   ,fromIntegral`Word' -- ^intervals
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlJumpDiffusionEngine as jumpDiffusionEngine{withMerton76Process*`Merton76Process'
+{#fun qlJumpDiffusionEngine as jumpDiffusionEngine{withStochasticProcess1DDescendant*`Merton76Process'
   ,`Double' -- ^relativeAccuracy
   ,fromIntegral`Word' -- ^maxIterations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -258,7 +259,7 @@ import QuantLib.Internal.Enum
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlTreeVanillaSwapEngine as treeVanillaSwapEngine{withShortRateModel*`ShortRateModel',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlVarianceGammaEngine as varianceGammaEngine{withVarianceGammaProcess*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlVarianceGammaEngine as varianceGammaEngine{withStochasticProcess1DDescendant*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticHestonEngine1 as analyticHestonEngine'{withHestonModel*`HestonModel',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticHestonHullWhiteEngine1 as analyticHestonHullWhiteEngine'{withHestonModel*`HestonModel',withHullWhite*`HullWhite',`Double' -- ^relTolerance
@@ -327,7 +328,7 @@ import QuantLib.Internal.Enum
 
 -- |/NB/ C++ classes Monte Carlo engines are additionally parameterised via statistic template argument
 -- Functions below use default value of Statistics
-{#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine{`RngTrait',withHybridHestonHullWhiteProcess*`HybridHestonHullWhiteProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine{`RngTrait',withStochasticProcessDescendant*`HybridHestonHullWhiteProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,`Bool' -- ^controlVariate
@@ -397,7 +398,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGJRGARCHEngine{`RngTrait',withGJRGARCHProcess*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGJRGARCHEngine{`RngTrait',withStochasticProcessDescendant*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples

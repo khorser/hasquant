@@ -28,9 +28,9 @@ import Data.Vector.Storable(Vector)
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
-{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess nocode#}
+{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
 
-{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`StochasticProcess',withTimeGrid*`TimeGrid'
+{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess a',withTimeGrid*`TimeGrid'
   ,fromIntegral`Word' -- ^seed
   ,fromIntegral`Word' -- ^dimension
   ,`Bool' -- ^brownian bridge

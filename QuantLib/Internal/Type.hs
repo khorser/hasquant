@@ -270,6 +270,92 @@ module QuantLib.Internal.Type
   , CDefaultProbabilityTermStructure'
   , peekDefaultProbabilityTermStructure
 
+  , BatesProcess
+  , CBatesProcess
+  , CBatesProcess'
+  , peekBatesProcess
+  , withBatesProcess
+  , BlackProcess
+  , CBlackProcess
+  , CBlackProcess'
+  , peekBlackProcess
+  , withBlackProcess
+  , ExtendedOrnsteinUhlenbeckProcess
+  , CExtendedOrnsteinUhlenbeckProcess
+  , CExtendedOrnsteinUhlenbeckProcess'
+  , peekExtendedOrnsteinUhlenbeckProcess
+  , ExtOUWithJumpsProcess
+  , CExtOUWithJumpsProcess
+  , CExtOUWithJumpsProcess'
+  , peekExtOUWithJumpsProcess
+  , GeneralizedBlackScholesProcess
+  , GenGeneralizedBlackScholesProcess
+  , CGeneralizedBlackScholesProcess
+  , CGeneralizedBlackScholesProcess'
+  , peekGeneralizedBlackScholesProcess
+  , withGeneralizedBlackScholesProcess
+  , GJRGARCHProcess
+  , CGJRGARCHProcess
+  , CGJRGARCHProcess'
+  , peekGJRGARCHProcess
+  , HestonProcess
+  , GenHestonProcess
+  , CHestonProcess
+  , CHestonProcess'
+  , peekHestonProcess
+  , withHestonProcess
+  , HullWhiteForwardProcess
+  , CHullWhiteForwardProcess
+  , CHullWhiteForwardProcess'
+  , peekHullWhiteForwardProcess
+  , HullWhiteProcess
+  , CHullWhiteProcess
+  , CHullWhiteProcess'
+  , peekHullWhiteProcess
+  , HybridHestonHullWhiteProcess
+  , CHybridHestonHullWhiteProcess
+  , CHybridHestonHullWhiteProcess'
+  , peekHybridHestonHullWhiteProcess
+  , KlugeExtOUProcess
+  , CKlugeExtOUProcess
+  , CKlugeExtOUProcess'
+  , peekKlugeExtOUProcess
+  , LiborForwardModelProcess
+  , CLiborForwardModelProcess
+  , CLiborForwardModelProcess'
+  , peekLiborForwardModelProcess
+  , withStochasticProcess1DArray
+  , StochasticProcess1D
+  , GenStochasticProcess1D
+  , CStochasticProcess1D
+  , CStochasticProcess1D'
+  , peekStochasticProcess1D
+  , withStochasticProcess1D
+  , withStochasticProcess1DDescendant
+  , StochasticProcessArray
+  , CStochasticProcessArray
+  , CStochasticProcessArray'
+  , peekStochasticProcessArray
+  , StochasticProcess
+  , GenStochasticProcess
+  , CStochasticProcess
+  , CStochasticProcess'
+  , peekStochasticProcess
+  , withStochasticProcess
+  , withStochasticProcessDescendant
+  , VarianceGammaProcess
+  , CVarianceGammaProcess
+  , CVarianceGammaProcess'
+  , peekVarianceGammaProcess
+  , Merton76Process
+  , CMerton76Process
+  , CMerton76Process'
+  , peekMerton76Process
+  , asStochasticProcess
+  , asHestonProcess
+  , asStochasticProcess1D
+  , asGeneralizedBlackScholesProcess
+
   , AffineModel
   , CAffineModel
   , peekAffineModel
@@ -440,76 +526,6 @@ module QuantLib.Internal.Type
   , COneAssetOption
   , peekOneAssetOption
   , withOneAssetOption
-
-  , BatesProcess
-  , CBatesProcess
-  , peekBatesProcess
-  , withBatesProcess
-  , BlackProcess
-  , CBlackProcess
-  , peekBlackProcess
-  , withBlackProcess
-  , ExtendedOrnsteinUhlenbeckProcess
-  , CExtendedOrnsteinUhlenbeckProcess
-  , peekExtendedOrnsteinUhlenbeckProcess
-  , withExtendedOrnsteinUhlenbeckProcess
-  , ExtOUWithJumpsProcess
-  , CExtOUWithJumpsProcess
-  , peekExtOUWithJumpsProcess
-  , withExtOUWithJumpsProcess
-  , GeneralizedBlackScholesProcess
-  , CGeneralizedBlackScholesProcess
-  , peekGeneralizedBlackScholesProcess
-  , withGeneralizedBlackScholesProcess
-  , GJRGARCHProcess
-  , CGJRGARCHProcess
-  , peekGJRGARCHProcess
-  , withGJRGARCHProcess
-  , HestonProcess
-  , CHestonProcess
-  , peekHestonProcess
-  , withHestonProcess
-  , HullWhiteForwardProcess
-  , CHullWhiteForwardProcess
-  , peekHullWhiteForwardProcess
-  , withHullWhiteForwardProcess
-  , HullWhiteProcess
-  , CHullWhiteProcess
-  , peekHullWhiteProcess
-  , withHullWhiteProcess
-  , HybridHestonHullWhiteProcess
-  , CHybridHestonHullWhiteProcess
-  , peekHybridHestonHullWhiteProcess
-  , withHybridHestonHullWhiteProcess
-  , KlugeExtOUProcess
-  , CKlugeExtOUProcess
-  , peekKlugeExtOUProcess
-  , withKlugeExtOUProcess
-  , LiborForwardModelProcess
-  , CLiborForwardModelProcess
-  , peekLiborForwardModelProcess
-  , withLiborForwardModelProcess
-  , withStochasticProcess1DArray
-  , StochasticProcess1D
-  , CStochasticProcess1D
-  , peekStochasticProcess1D
-  , withStochasticProcess1D
-  , StochasticProcessArray
-  , CStochasticProcessArray
-  , peekStochasticProcessArray
-  , withStochasticProcessArray
-  , StochasticProcess
-  , CStochasticProcess
-  , peekStochasticProcess
-  , withStochasticProcess
-  , VarianceGammaProcess
-  , CVarianceGammaProcess
-  , peekVarianceGammaProcess
-  , withVarianceGammaProcess
-  , Merton76Process
-  , CMerton76Process
-  , peekMerton76Process
-  , withMerton76Process
 )
   where
 import Foreign.Ptr
@@ -789,11 +805,11 @@ withObjectArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 -- TODO: OPTIMIZE: call the finalizer without creating a temp foreign ptr
 withDescendant :: GenObject a p -> (Ptr p -> IO b) -> IO b
-withDescendant (GenObject p (Upcast k fi)) ff =
-    withForeignPtr p (k >=> \pp ->
-      (if fi /= nullFunPtr
-        then newForeignPtr fi pp >>= (`withForeignPtr` ff)
-        else ff pp))
+withDescendant (GenObject p (Upcast k fi)) f =
+    withForeignPtr p (k >=>
+      if fi /= nullFunPtr
+        then newForeignPtr fi >=> (`withForeignPtr` f)
+        else f)
 withMaybeDescendant :: Maybe (GenObject a p) -> (Ptr p -> IO b) -> IO b
 withMaybeDescendant x f = maybe (f nullPtr) (`withDescendant` f) x
 withDescendantArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
@@ -1297,6 +1313,240 @@ peekFittedBondDiscountCurve = newGenForeignPtr metaFittedBondDiscountCurve upcas
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
+data CStochasticProcess'
+data CExtOUWithJumpsProcess'
+data CGJRGARCHProcess'
+data CHybridHestonHullWhiteProcess'
+data CKlugeExtOUProcess'
+data CLiborForwardModelProcess'
+data CStochasticProcessArray'
+data CHestonProcess'
+data CStochasticProcess1D'
+data CBatesProcess'
+data CExtendedOrnsteinUhlenbeckProcess'
+data CHullWhiteForwardProcess'
+data CHullWhiteProcess'
+data CMerton76Process'
+data CVarianceGammaProcess'
+data CGeneralizedBlackScholesProcess'
+data CBlackProcess'
+newtype GenStochasticProcess a = GenStochasticProcess (GenForeignPtr a CStochasticProcess')
+type CStochasticProcess = ForeignPtr CStochasticProcess'
+type StochasticProcess = GenStochasticProcess CStochasticProcess
+type CExtOUWithJumpsProcess = ForeignPtr CExtOUWithJumpsProcess'
+type ExtOUWithJumpsProcess = GenStochasticProcess CExtOUWithJumpsProcess
+type CGJRGARCHProcess = ForeignPtr CGJRGARCHProcess'
+type GJRGARCHProcess = GenStochasticProcess CGJRGARCHProcess
+type CHybridHestonHullWhiteProcess = ForeignPtr CHybridHestonHullWhiteProcess'
+type HybridHestonHullWhiteProcess = GenStochasticProcess CHybridHestonHullWhiteProcess
+type CKlugeExtOUProcess = ForeignPtr CKlugeExtOUProcess'
+type KlugeExtOUProcess = GenStochasticProcess CKlugeExtOUProcess
+type CLiborForwardModelProcess = ForeignPtr CLiborForwardModelProcess'
+type LiborForwardModelProcess = GenStochasticProcess CLiborForwardModelProcess
+type CStochasticProcessArray = ForeignPtr CStochasticProcessArray'
+type StochasticProcessArray = GenStochasticProcess CStochasticProcessArray
+newtype HestonProcessDescendant a = HestonProcessDescendant (GenForeignPtr a CHestonProcess')
+type GenHestonProcess a = GenStochasticProcess (HestonProcessDescendant a)
+type CHestonProcess = ForeignPtr CHestonProcess'
+type HestonProcess = GenHestonProcess CHestonProcess
+newtype StochasticProcess1DDescendant a = StochasticProcess1DDescendant (GenForeignPtr a CStochasticProcess1D')
+type GenStochasticProcess1D a = GenStochasticProcess (StochasticProcess1DDescendant a)
+type CStochasticProcess1D = ForeignPtr CStochasticProcess1D'
+type StochasticProcess1D = GenStochasticProcess1D CStochasticProcess1D
+type CMerton76Process = ForeignPtr CMerton76Process'
+type Merton76Process = GenStochasticProcess1D CMerton76Process
+type CVarianceGammaProcess = ForeignPtr CVarianceGammaProcess'
+type VarianceGammaProcess = GenStochasticProcess1D CVarianceGammaProcess
+newtype GeneralizedBlackScholesProcessDescendant a = GeneralizedBlackScholesProcessDescendant (GenForeignPtr a CGeneralizedBlackScholesProcess')
+type GenGeneralizedBlackScholesProcess a = GenStochasticProcess (StochasticProcess1DDescendant (GeneralizedBlackScholesProcessDescendant a))
+type CGeneralizedBlackScholesProcess = ForeignPtr CGeneralizedBlackScholesProcess'
+type GeneralizedBlackScholesProcess = GenGeneralizedBlackScholesProcess CGeneralizedBlackScholesProcess
+type CBlackProcess = ForeignPtr CBlackProcess'
+type BlackProcess = GenGeneralizedBlackScholesProcess CBlackProcess
+type CBatesProcess = ForeignPtr CBatesProcess'
+type BatesProcess = GenHestonProcess CBatesProcess
+type CHullWhiteProcess = ForeignPtr CHullWhiteProcess'
+type HullWhiteProcess = GenStochasticProcess1D CHullWhiteProcess
+type CHullWhiteForwardProcess = ForeignPtr CHullWhiteForwardProcess'
+type HullWhiteForwardProcess = GenStochasticProcess1D CHullWhiteForwardProcess
+type CExtendedOrnsteinUhlenbeckProcess = ForeignPtr CExtendedOrnsteinUhlenbeckProcess'
+type ExtendedOrnsteinUhlenbeckProcess = GenStochasticProcess1D CExtendedOrnsteinUhlenbeckProcess
+foreign import ccall "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess'
+foreign import ccall "ql.h &qlFreeExtOUWithJumpsProcess" qlFreeExtOUWithJumpsProcess :: FinalizerPtr CExtOUWithJumpsProcess'
+foreign import ccall "ql.h &qlFreeGJRGARCHProcess" qlFreeGJRGARCHProcess :: FinalizerPtr CGJRGARCHProcess'
+foreign import ccall "ql.h &qlFreeHybridHestonHullWhiteProcess" qlFreeHybridHestonHullWhiteProcess :: FinalizerPtr CHybridHestonHullWhiteProcess'
+foreign import ccall "ql.h &qlFreeKlugeExtOUProcess" qlFreeKlugeExtOUProcess :: FinalizerPtr CKlugeExtOUProcess'
+foreign import ccall "ql.h &qlFreeLiborForwardModelProcess" qlFreeLiborForwardModelProcess :: FinalizerPtr CLiborForwardModelProcess'
+foreign import ccall "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray'
+foreign import ccall "ql.h &qlFreeHestonProcess" qlFreeHestonProcess :: FinalizerPtr CHestonProcess'
+foreign import ccall "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D :: FinalizerPtr CStochasticProcess1D'
+foreign import ccall "ql.h &qlFreeBatesProcess" qlFreeBatesProcess :: FinalizerPtr CBatesProcess'
+foreign import ccall "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess" qlFreeExtendedOrnsteinUhlenbeckProcess :: FinalizerPtr CExtendedOrnsteinUhlenbeckProcess'
+foreign import ccall "ql.h &qlFreeHullWhiteForwardProcess" qlFreeHullWhiteForwardProcess :: FinalizerPtr CHullWhiteForwardProcess'
+foreign import ccall "ql.h &qlFreeHullWhiteProcess" qlFreeHullWhiteProcess :: FinalizerPtr CHullWhiteProcess'
+foreign import ccall "ql.h &qlFreeMerton76Process" qlFreeMerton76Process :: FinalizerPtr CMerton76Process'
+foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess'
+foreign import ccall "ql.h &qlFreeGeneralizedBlackScholesProcess" qlFreeGeneralizedBlackScholesProcess :: FinalizerPtr CGeneralizedBlackScholesProcess'
+foreign import ccall "ql.h &qlFreeBlackProcess" qlFreeBlackProcess :: FinalizerPtr CBlackProcess'
+metaStochasticProcess :: Meta CStochasticProcess'
+metaStochasticProcess = Meta qlFreeStochasticProcess
+metaExtOUWithJumpsProcess :: Meta CExtOUWithJumpsProcess'
+metaExtOUWithJumpsProcess = Meta qlFreeExtOUWithJumpsProcess
+metaGJRGARCHProcess :: Meta CGJRGARCHProcess'
+metaGJRGARCHProcess = Meta qlFreeGJRGARCHProcess
+metaHybridHestonHullWhiteProcess :: Meta CHybridHestonHullWhiteProcess'
+metaHybridHestonHullWhiteProcess = Meta qlFreeHybridHestonHullWhiteProcess
+metaKlugeExtOUProcess :: Meta CKlugeExtOUProcess'
+metaKlugeExtOUProcess = Meta qlFreeKlugeExtOUProcess
+metaLiborForwardModelProcess :: Meta CLiborForwardModelProcess'
+metaLiborForwardModelProcess = Meta qlFreeLiborForwardModelProcess
+metaStochasticProcessArray :: Meta CStochasticProcessArray'
+metaStochasticProcessArray = Meta qlFreeStochasticProcessArray
+metaHestonProcess :: Meta CHestonProcess'
+metaHestonProcess = Meta qlFreeHestonProcess
+metaStochasticProcess1D :: Meta CStochasticProcess1D'
+metaStochasticProcess1D = Meta qlFreeStochasticProcess1D
+metaBatesProcess :: Meta CBatesProcess'
+metaBatesProcess = Meta qlFreeBatesProcess
+metaExtendedOrnsteinUhlenbeckProcess :: Meta CExtendedOrnsteinUhlenbeckProcess'
+metaExtendedOrnsteinUhlenbeckProcess = Meta qlFreeExtendedOrnsteinUhlenbeckProcess
+metaHullWhiteForwardProcess :: Meta CHullWhiteForwardProcess'
+metaHullWhiteForwardProcess = Meta qlFreeHullWhiteForwardProcess
+metaHullWhiteProcess :: Meta CHullWhiteProcess'
+metaHullWhiteProcess = Meta qlFreeHullWhiteProcess
+metaMerton76Process :: Meta CMerton76Process'
+metaMerton76Process = Meta qlFreeMerton76Process
+metaVarianceGammaProcess :: Meta CVarianceGammaProcess'
+metaVarianceGammaProcess = Meta qlFreeVarianceGammaProcess
+metaGeneralizedBlackScholesProcess :: Meta CGeneralizedBlackScholesProcess'
+metaGeneralizedBlackScholesProcess = Meta qlFreeGeneralizedBlackScholesProcess
+metaBlackProcess :: Meta CBlackProcess'
+metaBlackProcess = Meta qlFreeBlackProcess
+foreign import ccall "ql.h qlExtOUWithJumpsProcessAsStochasticProcess" qlExtOUWithJumpsProcessAsStochasticProcess :: Ptr CExtOUWithJumpsProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlGJRGARCHProcessAsStochasticProcess" qlGJRGARCHProcessAsStochasticProcess :: Ptr CGJRGARCHProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlHybridHestonHullWhiteProcessAsStochasticProcess" qlHybridHestonHullWhiteProcessAsStochasticProcess :: Ptr CHybridHestonHullWhiteProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlKlugeExtOUProcessAsStochasticProcess" qlKlugeExtOUProcessAsStochasticProcess :: Ptr CKlugeExtOUProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlLiborForwardModelProcessAsStochasticProcess" qlLiborForwardModelProcessAsStochasticProcess :: Ptr CLiborForwardModelProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlStochasticProcessArrayAsStochasticProcess" qlStochasticProcessArrayAsStochasticProcess :: Ptr CStochasticProcessArray' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlHestonProcessAsStochasticProcess" qlHestonProcessAsStochasticProcess :: Ptr CHestonProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlStochasticProcess1DAsStochasticProcess" qlStochasticProcess1DAsStochasticProcess :: Ptr CStochasticProcess1D' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlBatesProcessAsHestonProcess" qlBatesProcessAsHestonProcess :: Ptr CBatesProcess' -> IO (Ptr CHestonProcess')
+foreign import ccall "ql.h qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D" qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D :: Ptr CExtendedOrnsteinUhlenbeckProcess' -> IO (Ptr CStochasticProcess1D')
+foreign import ccall "ql.h qlHullWhiteForwardProcessAsStochasticProcess1D" qlHullWhiteForwardProcessAsStochasticProcess1D :: Ptr CHullWhiteForwardProcess' -> IO (Ptr CStochasticProcess1D')
+foreign import ccall "ql.h qlHullWhiteProcessAsStochasticProcess1D" qlHullWhiteProcessAsStochasticProcess1D :: Ptr CHullWhiteProcess' -> IO (Ptr CStochasticProcess1D')
+foreign import ccall "ql.h qlMerton76ProcessAsStochasticProcess1D" qlMerton76ProcessAsStochasticProcess1D :: Ptr CMerton76Process' -> IO (Ptr CStochasticProcess1D')
+foreign import ccall "ql.h qlVarianceGammaProcessAsStochasticProcess1D" qlVarianceGammaProcessAsStochasticProcess1D :: Ptr CVarianceGammaProcess' -> IO (Ptr CStochasticProcess1D')
+foreign import ccall "ql.h qlGeneralizedBlackScholesProcessAsStochasticProcess1D" qlGeneralizedBlackScholesProcessAsStochasticProcess1D :: Ptr CGeneralizedBlackScholesProcess' -> IO (Ptr CStochasticProcess1D')
+foreign import ccall "ql.h qlBlackProcessAsGeneralizedBlackScholesProcess" qlBlackProcessAsGeneralizedBlackScholesProcess :: Ptr CBlackProcess' -> IO (Ptr CGeneralizedBlackScholesProcess')
+upcastExtOUWithJumpsProcess :: Upcast CExtOUWithJumpsProcess' CStochasticProcess'
+upcastExtOUWithJumpsProcess = Upcast qlExtOUWithJumpsProcessAsStochasticProcess qlFreeStochasticProcess
+upcastGJRGARCHProcess :: Upcast CGJRGARCHProcess' CStochasticProcess'
+upcastGJRGARCHProcess = Upcast qlGJRGARCHProcessAsStochasticProcess qlFreeStochasticProcess
+upcastHybridHestonHullWhiteProcess :: Upcast CHybridHestonHullWhiteProcess' CStochasticProcess'
+upcastHybridHestonHullWhiteProcess = Upcast qlHybridHestonHullWhiteProcessAsStochasticProcess qlFreeStochasticProcess
+upcastKlugeExtOUProcess :: Upcast CKlugeExtOUProcess' CStochasticProcess'
+upcastKlugeExtOUProcess = Upcast qlKlugeExtOUProcessAsStochasticProcess qlFreeStochasticProcess
+upcastLiborForwardModelProcess :: Upcast CLiborForwardModelProcess' CStochasticProcess'
+upcastLiborForwardModelProcess = Upcast qlLiborForwardModelProcessAsStochasticProcess qlFreeStochasticProcess
+upcastStochasticProcessArray :: Upcast CStochasticProcessArray' CStochasticProcess'
+upcastStochasticProcessArray = Upcast qlStochasticProcessArrayAsStochasticProcess qlFreeStochasticProcess
+upcastHestonProcess :: Upcast CHestonProcess' CStochasticProcess'
+upcastHestonProcess = Upcast qlHestonProcessAsStochasticProcess qlFreeStochasticProcess
+upcastStochasticProcess1D :: Upcast CStochasticProcess1D' CStochasticProcess'
+upcastStochasticProcess1D = Upcast qlStochasticProcess1DAsStochasticProcess qlFreeStochasticProcess
+upcastBatesProcess :: Upcast CBatesProcess' CHestonProcess'
+upcastBatesProcess = Upcast qlBatesProcessAsHestonProcess qlFreeHestonProcess
+upcastExtendedOrnsteinUhlenbeckProcess :: Upcast CExtendedOrnsteinUhlenbeckProcess' CStochasticProcess1D'
+upcastExtendedOrnsteinUhlenbeckProcess = Upcast qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D qlFreeStochasticProcess1D
+upcastHullWhiteForwardProcess :: Upcast CHullWhiteForwardProcess' CStochasticProcess1D'
+upcastHullWhiteForwardProcess = Upcast qlHullWhiteForwardProcessAsStochasticProcess1D qlFreeStochasticProcess1D
+upcastHullWhiteProcess :: Upcast CHullWhiteProcess' CStochasticProcess1D'
+upcastHullWhiteProcess = Upcast qlHullWhiteProcessAsStochasticProcess1D qlFreeStochasticProcess1D
+upcastMerton76Process :: Upcast CMerton76Process' CStochasticProcess1D'
+upcastMerton76Process = Upcast qlMerton76ProcessAsStochasticProcess1D qlFreeStochasticProcess1D
+upcastVarianceGammaProcess :: Upcast CVarianceGammaProcess' CStochasticProcess1D'
+upcastVarianceGammaProcess = Upcast qlVarianceGammaProcessAsStochasticProcess1D qlFreeStochasticProcess1D
+upcastGeneralizedBlackScholesProcess :: Upcast CGeneralizedBlackScholesProcess' CStochasticProcess1D'
+upcastGeneralizedBlackScholesProcess = Upcast qlGeneralizedBlackScholesProcessAsStochasticProcess1D qlFreeStochasticProcess1D
+upcastBlackProcess :: Upcast CBlackProcess' CGeneralizedBlackScholesProcess'
+upcastBlackProcess = Upcast qlBlackProcessAsGeneralizedBlackScholesProcess qlFreeGeneralizedBlackScholesProcess
+asStochasticProcess :: GenStochasticProcess a -> IO StochasticProcess
+asStochasticProcess (GenStochasticProcess (GenForeignPtr x w)) = w x peekStochasticProcess
+peekStochasticProcess :: Ptr CStochasticProcess' -> IO StochasticProcess
+peekStochasticProcess = GenStochasticProcess <.> newCastForeignPtr metaStochasticProcess
+withStochasticProcess :: GenStochasticProcess a -> (Ptr CStochasticProcess' -> IO b) -> IO b
+withStochasticProcess (GenStochasticProcess (GenForeignPtr x w)) = w x
+withStochasticProcessDescendant :: GenStochasticProcess (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withStochasticProcessDescendant (GenStochasticProcess (GenForeignPtr x _)) = withForeignPtr x
+peekExtOUWithJumpsProcess :: Ptr CExtOUWithJumpsProcess' -> IO ExtOUWithJumpsProcess
+peekExtOUWithJumpsProcess = GenStochasticProcess <.> newGenForeignPtr metaExtOUWithJumpsProcess upcastExtOUWithJumpsProcess
+peekGJRGARCHProcess :: Ptr CGJRGARCHProcess' -> IO GJRGARCHProcess
+peekGJRGARCHProcess = GenStochasticProcess <.> newGenForeignPtr metaGJRGARCHProcess upcastGJRGARCHProcess
+peekHybridHestonHullWhiteProcess :: Ptr CHybridHestonHullWhiteProcess' -> IO HybridHestonHullWhiteProcess
+peekHybridHestonHullWhiteProcess = GenStochasticProcess <.> newGenForeignPtr metaHybridHestonHullWhiteProcess upcastHybridHestonHullWhiteProcess
+peekKlugeExtOUProcess :: Ptr CKlugeExtOUProcess' -> IO KlugeExtOUProcess
+peekKlugeExtOUProcess = GenStochasticProcess <.> newGenForeignPtr metaKlugeExtOUProcess upcastKlugeExtOUProcess
+peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess' -> IO LiborForwardModelProcess
+peekLiborForwardModelProcess = GenStochasticProcess <.> newGenForeignPtr metaLiborForwardModelProcess upcastLiborForwardModelProcess
+peekStochasticProcessArray :: Ptr CStochasticProcessArray' -> IO StochasticProcessArray
+peekStochasticProcessArray = GenStochasticProcess <.> newGenForeignPtr metaStochasticProcessArray upcastStochasticProcessArray
+asHestonProcess :: GenHestonProcess a -> IO HestonProcess
+asHestonProcess (GenStochasticProcess (GenForeignPtr (HestonProcessDescendant (GenForeignPtr x w)) _)) = w x peekHestonProcess
+peekHestonProcess :: Ptr CHestonProcess' -> IO HestonProcess
+peekHestonProcess = newCastForeignPtr metaHestonProcess >=> newHestonProcessDescendant
+withHestonProcess :: GenHestonProcess a -> (Ptr CHestonProcess' -> IO b) -> IO b
+withHestonProcess (GenStochasticProcess (GenForeignPtr (HestonProcessDescendant (GenForeignPtr x w)) _)) = w x
+marshalHestonProcess :: HestonProcessDescendant a -> (Ptr CStochasticProcess' -> IO b) -> IO b
+marshalHestonProcess (HestonProcessDescendant o) = withGenForeignPtr upcastHestonProcess o
+newHestonProcessDescendant :: GenForeignPtr a CHestonProcess' -> IO (GenHestonProcess a)
+newHestonProcessDescendant p = GenStochasticProcess <^> GenForeignPtr (HestonProcessDescendant p) marshalHestonProcess
+peekHestonProcessDescendant :: Meta a -> Upcast a CHestonProcess' -> Ptr a -> IO (GenHestonProcess (ForeignPtr a))
+peekHestonProcessDescendant m u = newGenForeignPtr m u >=> newHestonProcessDescendant
+asStochasticProcess1D :: GenStochasticProcess1D a -> IO StochasticProcess1D
+asStochasticProcess1D (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x w)) _)) = w x peekStochasticProcess1D
+peekStochasticProcess1D :: Ptr CStochasticProcess1D' -> IO StochasticProcess1D
+peekStochasticProcess1D = newCastForeignPtr metaStochasticProcess1D >=> newStochasticProcess1DDescendant
+withStochasticProcess1D :: GenStochasticProcess1D a -> (Ptr CStochasticProcess1D' -> IO b) -> IO b
+withStochasticProcess1D (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x w)) _)) = w x
+withStochasticProcess1DArray :: [GenStochasticProcess1D a] -> ((CUInt, Ptr (Ptr CStochasticProcess1D')) -> IO b) -> IO b
+withStochasticProcess1DArray x f = withMany withStochasticProcess1D x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+marshalStochasticProcess1D :: StochasticProcess1DDescendant a -> (Ptr CStochasticProcess' -> IO b) -> IO b
+marshalStochasticProcess1D (StochasticProcess1DDescendant o) = withGenForeignPtr upcastStochasticProcess1D o
+newStochasticProcess1DDescendant :: GenForeignPtr a CStochasticProcess1D' -> IO (GenStochasticProcess1D a)
+newStochasticProcess1DDescendant p = GenStochasticProcess <^> GenForeignPtr (StochasticProcess1DDescendant p) marshalStochasticProcess1D
+peekStochasticProcess1DDescendant :: Meta a -> Upcast a CStochasticProcess1D' -> Ptr a -> IO (GenStochasticProcess1D (ForeignPtr a))
+peekStochasticProcess1DDescendant m u = newGenForeignPtr m u >=> newStochasticProcess1DDescendant
+withStochasticProcess1DDescendant :: GenStochasticProcess1D (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+withStochasticProcess1DDescendant (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+peekBatesProcess :: Ptr CBatesProcess' -> IO BatesProcess
+peekBatesProcess = peekHestonProcessDescendant metaBatesProcess upcastBatesProcess
+withBatesProcess :: BatesProcess -> (Ptr CBatesProcess' -> IO b) -> IO b
+withBatesProcess (GenStochasticProcess (GenForeignPtr (HestonProcessDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
+peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess' -> IO ExtendedOrnsteinUhlenbeckProcess
+peekExtendedOrnsteinUhlenbeckProcess = peekStochasticProcess1DDescendant metaExtendedOrnsteinUhlenbeckProcess upcastExtendedOrnsteinUhlenbeckProcess
+peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess' -> IO HullWhiteForwardProcess
+peekHullWhiteForwardProcess = peekStochasticProcess1DDescendant metaHullWhiteForwardProcess upcastHullWhiteForwardProcess
+peekHullWhiteProcess :: Ptr CHullWhiteProcess' -> IO HullWhiteProcess
+peekHullWhiteProcess = peekStochasticProcess1DDescendant metaHullWhiteProcess upcastHullWhiteProcess
+peekMerton76Process :: Ptr CMerton76Process' -> IO Merton76Process
+peekMerton76Process = peekStochasticProcess1DDescendant metaMerton76Process upcastMerton76Process
+peekVarianceGammaProcess :: Ptr CVarianceGammaProcess' -> IO VarianceGammaProcess
+peekVarianceGammaProcess = peekStochasticProcess1DDescendant metaVarianceGammaProcess upcastVarianceGammaProcess
+asGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess a -> IO GeneralizedBlackScholesProcess
+asGeneralizedBlackScholesProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr (GeneralizedBlackScholesProcessDescendant (GenForeignPtr x w)) _)) _)) = w x peekGeneralizedBlackScholesProcess
+peekGeneralizedBlackScholesProcess :: Ptr CGeneralizedBlackScholesProcess' -> IO GeneralizedBlackScholesProcess
+peekGeneralizedBlackScholesProcess = newCastForeignPtr metaGeneralizedBlackScholesProcess >=> newGeneralizedBlackScholesProcessDescendant
+withGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess a -> (Ptr CGeneralizedBlackScholesProcess' -> IO b) -> IO b
+withGeneralizedBlackScholesProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr (GeneralizedBlackScholesProcessDescendant (GenForeignPtr x w)) _)) _)) = w x
+marshalGeneralizedBlackScholesProcess :: GeneralizedBlackScholesProcessDescendant a -> (Ptr CStochasticProcess1D' -> IO b) -> IO b
+marshalGeneralizedBlackScholesProcess (GeneralizedBlackScholesProcessDescendant o) = withGenForeignPtr upcastGeneralizedBlackScholesProcess o
+newGeneralizedBlackScholesProcessDescendant :: GenForeignPtr a CGeneralizedBlackScholesProcess' -> IO (GenGeneralizedBlackScholesProcess a)
+newGeneralizedBlackScholesProcessDescendant p = GenStochasticProcess <^> GenForeignPtr (StochasticProcess1DDescendant $ GenForeignPtr (GeneralizedBlackScholesProcessDescendant p) marshalGeneralizedBlackScholesProcess) marshalStochasticProcess1D
+peekBlackProcess :: Ptr CBlackProcess' -> IO BlackProcess
+peekBlackProcess = newGenForeignPtr metaBlackProcess upcastBlackProcess >=> newGeneralizedBlackScholesProcessDescendant
+withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
+withBlackProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr (GeneralizedBlackScholesProcessDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 
 data CAssetSwap
@@ -1679,163 +1929,7 @@ foreign import ccall "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHu
 foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel
 foreign import ccall "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel
 foreign import ccall "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel
-
-data CBatesProcess
-newtype BatesProcess = BatesProcess {getCBatesProcess :: Standalone CBatesProcess}
-metaBatesProcess :: Meta CBatesProcess
-metaBatesProcess = Meta qlFreeBatesProcess
-peekBatesProcess :: Ptr CBatesProcess -> IO BatesProcess
-peekBatesProcess = peekStandalone metaBatesProcess >=> return . BatesProcess
-withBatesProcess :: BatesProcess -> (Ptr CBatesProcess -> IO b) -> IO b
-withBatesProcess = withStandalone . getCBatesProcess
-data CBlackProcess
-newtype BlackProcess = BlackProcess {getCBlackProcess :: Standalone CBlackProcess}
-metaBlackProcess :: Meta CBlackProcess
-metaBlackProcess = Meta qlFreeBlackProcess
-peekBlackProcess :: Ptr CBlackProcess -> IO BlackProcess
-peekBlackProcess = peekStandalone metaBlackProcess >=> return . BlackProcess
-withBlackProcess :: BlackProcess -> (Ptr CBlackProcess -> IO b) -> IO b
-withBlackProcess = withStandalone . getCBlackProcess
-data CExtendedOrnsteinUhlenbeckProcess
-newtype ExtendedOrnsteinUhlenbeckProcess = ExtendedOrnsteinUhlenbeckProcess {getCExtendedOrnsteinUhlenbeckProcess :: Standalone CExtendedOrnsteinUhlenbeckProcess}
-metaExtendedOrnsteinUhlenbeckProcess :: Meta CExtendedOrnsteinUhlenbeckProcess
-metaExtendedOrnsteinUhlenbeckProcess = Meta qlFreeExtendedOrnsteinUhlenbeckProcess
-peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess -> IO ExtendedOrnsteinUhlenbeckProcess
-peekExtendedOrnsteinUhlenbeckProcess = peekStandalone metaExtendedOrnsteinUhlenbeckProcess >=> return . ExtendedOrnsteinUhlenbeckProcess
-withExtendedOrnsteinUhlenbeckProcess :: ExtendedOrnsteinUhlenbeckProcess -> (Ptr CExtendedOrnsteinUhlenbeckProcess -> IO b) -> IO b
-withExtendedOrnsteinUhlenbeckProcess = withStandalone . getCExtendedOrnsteinUhlenbeckProcess
-data CExtOUWithJumpsProcess
-newtype ExtOUWithJumpsProcess = ExtOUWithJumpsProcess {getCExtOUWithJumpsProcess :: Standalone CExtOUWithJumpsProcess}
-metaExtOUWithJumpsProcess :: Meta CExtOUWithJumpsProcess
-metaExtOUWithJumpsProcess = Meta qlFreeExtOUWithJumpsProcess
-peekExtOUWithJumpsProcess :: Ptr CExtOUWithJumpsProcess -> IO ExtOUWithJumpsProcess
-peekExtOUWithJumpsProcess = peekStandalone metaExtOUWithJumpsProcess >=> return . ExtOUWithJumpsProcess
-withExtOUWithJumpsProcess :: ExtOUWithJumpsProcess -> (Ptr CExtOUWithJumpsProcess -> IO b) -> IO b
-withExtOUWithJumpsProcess = withStandalone . getCExtOUWithJumpsProcess
-data CGeneralizedBlackScholesProcess
-newtype GeneralizedBlackScholesProcess = GeneralizedBlackScholesProcess {getCGeneralizedBlackScholesProcess :: Standalone CGeneralizedBlackScholesProcess}
-metaGeneralizedBlackScholesProcess :: Meta CGeneralizedBlackScholesProcess
-metaGeneralizedBlackScholesProcess = Meta qlFreeGeneralizedBlackScholesProcess
-peekGeneralizedBlackScholesProcess :: Ptr CGeneralizedBlackScholesProcess -> IO GeneralizedBlackScholesProcess
-peekGeneralizedBlackScholesProcess = peekStandalone metaGeneralizedBlackScholesProcess >=> return . GeneralizedBlackScholesProcess
-withGeneralizedBlackScholesProcess :: GeneralizedBlackScholesProcess -> (Ptr CGeneralizedBlackScholesProcess -> IO b) -> IO b
-withGeneralizedBlackScholesProcess = withStandalone . getCGeneralizedBlackScholesProcess
-data CGJRGARCHProcess
-newtype GJRGARCHProcess = GJRGARCHProcess {getCGJRGARCHProcess :: Standalone CGJRGARCHProcess}
-metaGJRGARCHProcess :: Meta CGJRGARCHProcess
-metaGJRGARCHProcess = Meta qlFreeGJRGARCHProcess
-peekGJRGARCHProcess :: Ptr CGJRGARCHProcess -> IO GJRGARCHProcess
-peekGJRGARCHProcess = peekStandalone metaGJRGARCHProcess >=> return . GJRGARCHProcess
-withGJRGARCHProcess :: GJRGARCHProcess -> (Ptr CGJRGARCHProcess -> IO b) -> IO b
-withGJRGARCHProcess = withStandalone . getCGJRGARCHProcess
-data CHestonProcess
-newtype HestonProcess = HestonProcess {getCHestonProcess :: Standalone CHestonProcess}
-metaHestonProcess :: Meta CHestonProcess
-metaHestonProcess = Meta qlFreeHestonProcess
-peekHestonProcess :: Ptr CHestonProcess -> IO HestonProcess
-peekHestonProcess = peekStandalone metaHestonProcess >=> return . HestonProcess
-withHestonProcess :: HestonProcess -> (Ptr CHestonProcess -> IO b) -> IO b
-withHestonProcess = withStandalone . getCHestonProcess
-data CHullWhiteForwardProcess
-newtype HullWhiteForwardProcess = HullWhiteForwardProcess {getCHullWhiteForwardProcess :: Standalone CHullWhiteForwardProcess}
-metaHullWhiteForwardProcess :: Meta CHullWhiteForwardProcess
-metaHullWhiteForwardProcess = Meta qlFreeHullWhiteForwardProcess
-peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess -> IO HullWhiteForwardProcess
-peekHullWhiteForwardProcess = peekStandalone metaHullWhiteForwardProcess >=> return . HullWhiteForwardProcess
-withHullWhiteForwardProcess :: HullWhiteForwardProcess -> (Ptr CHullWhiteForwardProcess -> IO b) -> IO b
-withHullWhiteForwardProcess = withStandalone . getCHullWhiteForwardProcess
-data CHullWhiteProcess
-newtype HullWhiteProcess = HullWhiteProcess {getCHullWhiteProcess :: Standalone CHullWhiteProcess}
-metaHullWhiteProcess :: Meta CHullWhiteProcess
-metaHullWhiteProcess = Meta qlFreeHullWhiteProcess
-peekHullWhiteProcess :: Ptr CHullWhiteProcess -> IO HullWhiteProcess
-peekHullWhiteProcess = peekStandalone metaHullWhiteProcess >=> return . HullWhiteProcess
-withHullWhiteProcess :: HullWhiteProcess -> (Ptr CHullWhiteProcess -> IO b) -> IO b
-withHullWhiteProcess = withStandalone . getCHullWhiteProcess
-data CHybridHestonHullWhiteProcess
-newtype HybridHestonHullWhiteProcess = HybridHestonHullWhiteProcess {getCHybridHestonHullWhiteProcess :: Standalone CHybridHestonHullWhiteProcess}
-metaHybridHestonHullWhiteProcess :: Meta CHybridHestonHullWhiteProcess
-metaHybridHestonHullWhiteProcess = Meta qlFreeHybridHestonHullWhiteProcess
-peekHybridHestonHullWhiteProcess :: Ptr CHybridHestonHullWhiteProcess -> IO HybridHestonHullWhiteProcess
-peekHybridHestonHullWhiteProcess = peekStandalone metaHybridHestonHullWhiteProcess >=> return . HybridHestonHullWhiteProcess
-withHybridHestonHullWhiteProcess :: HybridHestonHullWhiteProcess -> (Ptr CHybridHestonHullWhiteProcess -> IO b) -> IO b
-withHybridHestonHullWhiteProcess = withStandalone . getCHybridHestonHullWhiteProcess
-data CKlugeExtOUProcess
-newtype KlugeExtOUProcess = KlugeExtOUProcess {getCKlugeExtOUProcess :: Standalone CKlugeExtOUProcess}
-metaKlugeExtOUProcess :: Meta CKlugeExtOUProcess
-metaKlugeExtOUProcess = Meta qlFreeKlugeExtOUProcess
-peekKlugeExtOUProcess :: Ptr CKlugeExtOUProcess -> IO KlugeExtOUProcess
-peekKlugeExtOUProcess = peekStandalone metaKlugeExtOUProcess >=> return . KlugeExtOUProcess
-withKlugeExtOUProcess :: KlugeExtOUProcess -> (Ptr CKlugeExtOUProcess -> IO b) -> IO b
-withKlugeExtOUProcess = withStandalone . getCKlugeExtOUProcess
-data CLiborForwardModelProcess
-newtype LiborForwardModelProcess = LiborForwardModelProcess {getCLiborForwardModelProcess :: Standalone CLiborForwardModelProcess}
-metaLiborForwardModelProcess :: Meta CLiborForwardModelProcess
-metaLiborForwardModelProcess = Meta qlFreeLiborForwardModelProcess
-peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess -> IO LiborForwardModelProcess
-peekLiborForwardModelProcess = peekStandalone metaLiborForwardModelProcess >=> return . LiborForwardModelProcess
-withLiborForwardModelProcess :: LiborForwardModelProcess -> (Ptr CLiborForwardModelProcess -> IO b) -> IO b
-withLiborForwardModelProcess = withStandalone . getCLiborForwardModelProcess
-data CMerton76Process
-newtype Merton76Process = Merton76Process {getCMerton76Process :: Standalone CMerton76Process}
-metaMerton76Process :: Meta CMerton76Process
-metaMerton76Process = Meta qlFreeMerton76Process
-peekMerton76Process :: Ptr CMerton76Process -> IO Merton76Process
-peekMerton76Process = peekStandalone metaMerton76Process >=> return . Merton76Process
-withMerton76Process :: Merton76Process -> (Ptr CMerton76Process -> IO b) -> IO b
-withMerton76Process = withStandalone . getCMerton76Process
-data CStochasticProcess1D
-newtype StochasticProcess1D = StochasticProcess1D {getCStochasticProcess1D :: Standalone CStochasticProcess1D}
-metaStochasticProcess1D :: Meta CStochasticProcess1D
-metaStochasticProcess1D = Meta qlFreeStochasticProcess1D
-peekStochasticProcess1D :: Ptr CStochasticProcess1D -> IO StochasticProcess1D
-peekStochasticProcess1D = peekStandalone metaStochasticProcess1D >=> return . StochasticProcess1D
-withStochasticProcess1D :: StochasticProcess1D -> (Ptr CStochasticProcess1D -> IO b) -> IO b
-withStochasticProcess1D = withStandalone . getCStochasticProcess1D
-data CStochasticProcessArray
-newtype StochasticProcessArray = StochasticProcessArray {getCStochasticProcessArray :: Standalone CStochasticProcessArray}
-metaStochasticProcessArray :: Meta CStochasticProcessArray
-metaStochasticProcessArray = Meta qlFreeStochasticProcessArray
-peekStochasticProcessArray :: Ptr CStochasticProcessArray -> IO StochasticProcessArray
-peekStochasticProcessArray = peekStandalone metaStochasticProcessArray >=> return . StochasticProcessArray
-withStochasticProcessArray :: StochasticProcessArray -> (Ptr CStochasticProcessArray -> IO b) -> IO b
-withStochasticProcessArray = withStandalone . getCStochasticProcessArray
-data CStochasticProcess
-newtype StochasticProcess = StochasticProcess {getCStochasticProcess :: Standalone CStochasticProcess}
-metaStochasticProcess :: Meta CStochasticProcess
-metaStochasticProcess = Meta qlFreeStochasticProcess
-peekStochasticProcess :: Ptr CStochasticProcess -> IO StochasticProcess
-peekStochasticProcess = peekStandalone metaStochasticProcess >=> return . StochasticProcess
-withStochasticProcess :: StochasticProcess -> (Ptr CStochasticProcess -> IO b) -> IO b
-withStochasticProcess = withStandalone . getCStochasticProcess
-data CVarianceGammaProcess
-newtype VarianceGammaProcess = VarianceGammaProcess {getCVarianceGammaProcess :: Standalone CVarianceGammaProcess}
-metaVarianceGammaProcess :: Meta CVarianceGammaProcess
-metaVarianceGammaProcess = Meta qlFreeVarianceGammaProcess
-peekVarianceGammaProcess :: Ptr CVarianceGammaProcess -> IO VarianceGammaProcess
-peekVarianceGammaProcess = peekStandalone metaVarianceGammaProcess >=> return . VarianceGammaProcess
-withVarianceGammaProcess :: VarianceGammaProcess -> (Ptr CVarianceGammaProcess -> IO b) -> IO b
-withVarianceGammaProcess = withStandalone . getCVarianceGammaProcess
-withStochasticProcess1DArray :: [StochasticProcess1D] -> ((CUInt, Ptr (Ptr CStochasticProcess1D)) -> IO b) -> IO b
-withStochasticProcess1DArray = withStandaloneArray getCStochasticProcess1D
-foreign import ccall "ql.h &qlFreeBatesProcess" qlFreeBatesProcess :: FinalizerPtr CBatesProcess
-foreign import ccall "ql.h &qlFreeBlackProcess" qlFreeBlackProcess :: FinalizerPtr CBlackProcess
-foreign import ccall "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess" qlFreeExtendedOrnsteinUhlenbeckProcess :: FinalizerPtr CExtendedOrnsteinUhlenbeckProcess
-foreign import ccall "ql.h &qlFreeExtOUWithJumpsProcess" qlFreeExtOUWithJumpsProcess :: FinalizerPtr CExtOUWithJumpsProcess
-foreign import ccall "ql.h &qlFreeGeneralizedBlackScholesProcess" qlFreeGeneralizedBlackScholesProcess :: FinalizerPtr CGeneralizedBlackScholesProcess
-foreign import ccall "ql.h &qlFreeGJRGARCHProcess" qlFreeGJRGARCHProcess :: FinalizerPtr CGJRGARCHProcess
-foreign import ccall "ql.h &qlFreeHestonProcess" qlFreeHestonProcess :: FinalizerPtr CHestonProcess
-foreign import ccall "ql.h &qlFreeHullWhiteForwardProcess" qlFreeHullWhiteForwardProcess :: FinalizerPtr CHullWhiteForwardProcess
-foreign import ccall "ql.h &qlFreeHullWhiteProcess" qlFreeHullWhiteProcess :: FinalizerPtr CHullWhiteProcess
-foreign import ccall "ql.h &qlFreeHybridHestonHullWhiteProcess" qlFreeHybridHestonHullWhiteProcess :: FinalizerPtr CHybridHestonHullWhiteProcess
-foreign import ccall "ql.h &qlFreeKlugeExtOUProcess" qlFreeKlugeExtOUProcess :: FinalizerPtr CKlugeExtOUProcess
-foreign import ccall "ql.h &qlFreeMerton76Process" qlFreeMerton76Process :: FinalizerPtr CMerton76Process
-foreign import ccall "ql.h &qlFreeLiborForwardModelProcess" qlFreeLiborForwardModelProcess :: FinalizerPtr CLiborForwardModelProcess
 foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel
-foreign import ccall "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D :: FinalizerPtr CStochasticProcess1D
-foreign import ccall "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray
-foreign import ccall "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess
-foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess
 
 --- TEMPLATE CODE
 
@@ -1848,28 +1942,30 @@ foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProce
 --newtype GenNode0 a = GenNode0 (GenForeignPtr a CNode0')
 --type CNode0 = ForeignPtr CNode0'
 --type Node0 = GenNode0 CNode0
+--type CLeaf1 = ForeignPtr CLeaf1'
+--type Leaf1 = GenNode0 CLeaf1
 --newtype Node1Descendant a = Node1Descendant (GenForeignPtr a CNode1')
 --type GenNode1 a = GenNode0 (Node1Descendant a)
 --type CNode1 = ForeignPtr CNode1'
 --type Node1 = GenNode1 CNode1
 --type CLeaf2 = ForeignPtr CLeaf2'
 --type Leaf2 = GenNode1 CLeaf2
---newtype Node2Descendant a = Node2Descendant {fptr2 :: GenForeignPtr a CNode2'}
+--newtype Node2Descendant a = Node2Descendant (GenForeignPtr a CNode2')
 --type GenNode2 a = GenNode0 (Node1Descendant (Node2Descendant a))
 --type CNode2 = ForeignPtr CNode2'
 --type Node2 = GenNode2 CNode2
 --type CLeaf3 = ForeignPtr CLeaf3'
 --type Leaf3 = GenNode2 CLeaf3
---type CLeaf1 = ForeignPtr CLeaf1'
---type Leaf1 = GenNode0 CLeaf1
 --foreign import ccall "ql.h &qlFreeNode0" qlFreeNode0 :: FinalizerPtr CNode0'
+--foreign import ccall "ql.h &qlFreeLeaf1" qlFreeLeaf1 :: FinalizerPtr CLeaf1'
 --foreign import ccall "ql.h &qlFreeNode1" qlFreeNode1 :: FinalizerPtr CNode1'
 --foreign import ccall "ql.h &qlFreeLeaf2" qlFreeLeaf2 :: FinalizerPtr CLeaf2'
 --foreign import ccall "ql.h &qlFreeNode2" qlFreeNode2 :: FinalizerPtr CNode2'
 --foreign import ccall "ql.h &qlFreeLeaf3" qlFreeLeaf3 :: FinalizerPtr CLeaf3'
---foreign import ccall "ql.h &qlFreeLeaf1" qlFreeLeaf1 :: FinalizerPtr CLeaf1'
 --metaNode0 :: Meta CNode0'
 --metaNode0 = Meta qlFreeNode0
+--metaLeaf1 :: Meta CLeaf1'
+--metaLeaf1 = Meta qlFreeLeaf1
 --metaNode1 :: Meta CNode1'
 --metaNode1 = Meta qlFreeNode1
 --metaLeaf2 :: Meta CLeaf2'
@@ -1878,13 +1974,13 @@ foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProce
 --metaNode2 = Meta qlFreeNode2
 --metaLeaf3 :: Meta CLeaf3'
 --metaLeaf3 = Meta qlFreeLeaf3
---metaLeaf1 :: Meta CLeaf1'
---metaLeaf1 = Meta qlFreeLeaf1
+--foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
 --foreign import ccall "ql.h qlNode1AsNode0" qlNode1AsNode0 :: Ptr CNode1' -> IO (Ptr CNode0')
 --foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
 --foreign import ccall "ql.h qlNode2AsNode1" qlNode2AsNode1 :: Ptr CNode2' -> IO (Ptr CNode1')
 --foreign import ccall "ql.h qlLeaf3AsNode2" qlLeaf3AsNode2 :: Ptr CLeaf3' -> IO (Ptr CNode2')
---foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
+--upcastLeaf1 :: Upcast CLeaf1' CNode0'
+--upcastLeaf1 = Upcast qlLeaf1AsNode0 qlFreeNode0
 --upcastNode1 :: Upcast CNode1' CNode0'
 --upcastNode1 = Upcast qlNode1AsNode0 qlFreeNode0
 --upcastLeaf2 :: Upcast CLeaf2' CNode1'
@@ -1893,8 +1989,6 @@ foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProce
 --upcastNode2 = Upcast qlNode2AsNode1 qlFreeNode1
 --upcastLeaf3 :: Upcast CLeaf3' CNode2'
 --upcastLeaf3 = Upcast qlLeaf3AsNode2 qlFreeNode2
---upcastLeaf1 :: Upcast CLeaf1' CNode0'
---upcastLeaf1 = Upcast qlLeaf1AsNode0 qlFreeNode0
 --asNode0 :: GenNode0 a -> IO Node0
 --asNode0 (GenNode0 (GenForeignPtr x w)) = w x peekNode0
 --peekNode0 :: Ptr CNode0' -> IO Node0
@@ -1903,6 +1997,8 @@ foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProce
 --withNode0 (GenNode0 (GenForeignPtr x w)) = w x
 --withNode0Descendant :: GenNode0 (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 --withNode0Descendant (GenNode0 (GenForeignPtr x _)) = withForeignPtr x
+--peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
+--peekLeaf1 = GenNode0 <.> newGenForeignPtr metaLeaf1 upcastLeaf1
 --asNode1 :: GenNode1 a -> IO Node1
 --asNode1 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x w)) _)) = w x peekNode1
 --peekNode1 :: Ptr CNode1' -> IO Node1
@@ -1919,6 +2015,10 @@ foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProce
 --peekNode1Descendant m u = newGenForeignPtr m u >=> newNode1Descendant
 --withNode1Descendant :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
 --withNode1Descendant (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
+--peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
+--peekLeaf2 = peekNode1Descendant metaLeaf2 upcastLeaf2
+----withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
+----withLeaf2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
 --asNode2 :: GenNode2 a -> IO Node2
 --asNode2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x w)) _)) _)) = w x peekNode2
 --peekNode2 :: Ptr CNode2' -> IO Node2
@@ -1929,15 +2029,9 @@ foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProce
 --marshalNode2 (Node2Descendant o) = withGenForeignPtr upcastNode2 o
 --newNode2Descendant :: GenForeignPtr a CNode2' -> IO (GenNode2 a)
 --newNode2Descendant p = GenNode0 <^> GenForeignPtr (Node1Descendant $ GenForeignPtr (Node2Descendant p) marshalNode2) marshalNode1
---peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
---peekLeaf1 = GenNode0 <.> newGenForeignPtr metaLeaf1 upcastLeaf1
---peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
---peekLeaf2 = peekNode1Descendant metaLeaf2 upcastLeaf2
---withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
---withLeaf2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
 --peekLeaf3 :: Ptr CLeaf3' -> IO Leaf3
 --peekLeaf3 = newGenForeignPtr metaLeaf3 upcastLeaf3 >=> newNode2Descendant
---withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
---withLeaf3 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+----withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
+----withLeaf3 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

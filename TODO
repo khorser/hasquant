@@ -177,23 +177,6 @@ a:Instrument
 	ConvertibleBond : Bond | qlConvertibleBondAsBond
     	FixedRateBond : Bond | qlFixedRateBondAsBond
 	CallableBond : Bond | qlCallableBondAsBond
-StochasticProcess
-    ExtOUWithJumpsProcess : StochasticProcess | qlExtOUWithJumpsProcessAsStochasticProcess
-    GJRGARCHProcess : StochasticProcess | qlGJRGARCHProcessAsStochasticProcess
-    HybridHestonHullWhiteProcess : StochasticProcess | qlHybridHestonHullWhiteProcessAsStochasticProcess
-    KlugeExtOUProcess : StochasticProcess | qlKlugeExtOUProcessAsStochasticProcess
-    LiborForwardModelProcess : StochasticProcess | qlLiborForwardModelProcessAsStochasticProcess
-    StochasticProcessArray : StochasticProcess | qlStochasticProcessArrayAsStochasticProcess
-    HestonProcess : StochasticProcess | qlHestonProcessAsStochasticProcess
-	BatesProcess : HestonProcess | qlBatesProcessAsHestonProcess
-    StochasticProcess1D : StochasticProcess | qlStochasticProcess1DAsStochasticProcess
-	ExtendedOrnsteinUhlenbeckProcess : StochasticProcess1D | qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
-	HullWhiteForwardProcess : StochasticProcess1D | qlHullWhiteForwardProcessAsStochasticProcess1D
-	HullWhiteProcess : StochasticProcess1D | qlHullWhiteProcessAsStochasticProcess1D
-	Merton76Process : StochasticProcess1D | qlMerton76ProcessAsStochasticProcess1D
-	VarianceGammaProcess : StochasticProcess1D | qlVarianceGammaProcessAsStochasticProcess1D
-	GeneralizedBlackScholesProcess : StochasticProcess1D | qlGeneralizedBlackScholesProcessAsStochasticProcess1D
-	    BlackProcess : GeneralizedBlackScholesProcess | qlBlackProcessAsGeneralizedBlackScholesProcess
 CalibratedModel
     ShortRateModel : CalibratedModel | qlShortRateModelAsCalibratedModel
 	OneFactorAffineModel : ShortRateModel | qlOneFactorAffineModelAsShortRateModel
