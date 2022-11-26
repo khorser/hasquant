@@ -179,77 +179,59 @@ a:Instrument
 	CallableBond : Bond | qlCallableBondAsBond
 CalibratedModel
     LiborForwardModel : CalibratedModel | qlLiborForwardModelAsCalibratedModel
+    GJRGARCHModel : CalibratedModel | qlGJRGARCHModelAsCalibratedModel
     PiecewiseTimeDependentHestonModel : CalibratedModel | qlPiecewiseTimeDependentHestonModelAsCalibratedModel
-    ShortRateModel : CalibratedModel | qlShortRateModelAsCalibratedModel
-	OneFactorAffineModel : ShortRateModel | qlOneFactorAffineModelAsShortRateModel
-	    HullWhite : OneFactorAffineModel | qlHullWhiteAsOneFactorAffineModel
-	G2 : ShortRateModel | qlG2AsShortRateModel
     HestonModel : CalibratedModel | qlHestonModelAsCalibratedModel
-	BatesDoubleExpModel : HestonModel | qlBatesDoubleExpModelAsHestonModel
-	    BatesDoubleExpDetJumpModel : BatesDoubleExpModel | qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
 	BatesModel : HestonModel | qlBatesModelAsHestonModel
 	    BatesDetJumpModel : BatesModel | qlBatesDetJumpModelAsBatesModel
-    GJRGARCHModel : CalibratedModel | qlGJRGARCHModelAsCalibratedModel
+	BatesDoubleExpModel : HestonModel | qlBatesDoubleExpModelAsHestonModel
+	    BatesDoubleExpDetJumpModel : BatesDoubleExpModel | qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
+    ShortRateModel : CalibratedModel | qlShortRateModelAsCalibratedModel
+	G2 : ShortRateModel | qlG2AsShortRateModel
+	OneFactorAffineModel : ShortRateModel | qlOneFactorAffineModelAsShortRateModel
+	    HullWhite : OneFactorAffineModel | qlHullWhiteAsOneFactorAffineModel
 
 ---
 
-QlBatesProcess as BatesProcess | qlFreeBatesProcess
-QlBlackProcess as BlackProcess | qlFreeBlackProcess
-QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess | qlFreeExtendedOrnsteinUhlenbeckProcess
-QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess | qlFreeExtOUWithJumpsProcess
-QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess | qlFreeGeneralizedBlackScholesProcess
-QlGJRGARCHProcess as GJRGARCHProcess | qlFreeGJRGARCHProcess
-QlHestonProcess as HestonProcess | qlFreeHestonProcess
-QlHullWhiteForwardProcess as HullWhiteForwardProcess | qlFreeHullWhiteForwardProcess
-QlHullWhiteProcess as HullWhiteProcess | qlFreeHullWhiteProcess
-QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess | qlFreeHybridHestonHullWhiteProcess
-QlKlugeExtOUProcess as KlugeExtOUProcess | qlFreeKlugeExtOUProcess
-QlLiborForwardModelProcess as LiborForwardModelProcess | qlFreeLiborForwardModelProcess
-QlMerton76Process as Merton76Process | qlFreeMerton76Process
-QlStochasticProcess1D as StochasticProcess1D | qlFreeStochasticProcess1D
-QlStochasticProcessArray as StochasticProcessArray | qlFreeStochasticProcessArray
-QlStochasticProcess as StochasticProcess | qlFreeStochasticProcess
-QlVarianceGammaProcess as VarianceGammaProcess | qlFreeVarianceGammaProcess
-
 QlAffineModel as AffineModel | qlFreeAffineModel
-QlAssetSwap as AssetSwap | qlFreeAssetSwap
-QlBarrierOption as BarrierOption | qlFreeBarrierOption
 QlBatesDetJumpModel as BatesDetJumpModel | qlFreeBatesDetJumpModel
 QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel | qlFreeBatesDoubleExpDetJumpModel
 QlBatesDoubleExpModel as BatesDoubleExpModel | qlFreeBatesDoubleExpModel
 QlBatesModel as BatesModel | qlFreeBatesModel
+QlCalibratedModel as CalibratedModel | qlFreeCalibratedModel
+QlG2 as G2 | qlFreeG2
+QlGJRGARCHModel as GJRGARCHModel | qlFreeGJRGARCHModel
+QlHestonModel as HestonModel | qlFreeHestonModel
+QlHullWhite as HullWhite | qlFreeHullWhite
+QlLiborForwardModel as LiborForwardModel | qlFreeLiborForwardModel
+QlOneFactorAffineModel as OneFactorAffineModel | qlFreeOneFactorAffineModel
+QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel | qlFreePiecewiseTimeDependentHestonModel
+QlShortRateModel as ShortRateModel | qlFreeShortRateModel
+
+QlAssetSwap as AssetSwap | qlFreeAssetSwap
+QlBarrierOption as BarrierOption | qlFreeBarrierOption
 QlBMASwap as BMASwap | qlFreeBMASwap
 QlBond as Bond | qlFreeBond
-QlCalibratedModel as CalibratedModel | qlFreeCalibratedModel
 QlCallableBond as CallableBond | qlFreeCallableBond
 QlCapFloor as CapFloor | qlFreeCapFloor
 QlCdsOption as CdsOption | qlFreeCdsOption
 QlConvertibleBond as ConvertibleBond | qlFreeConvertibleBond
 QlCreditDefaultSwap as CreditDefaultSwap | qlFreeCreditDefaultSwap
 QlDividendVanillaOption as DividendVanillaOption | qlFreeDividendVanillaOption
-QlFittedBondDiscountCurve as FittedBondDiscountCurve | qlFreeFittedBondDiscountCurve
 QlFixedRateBond as FixedRateBond | qlFreeFixedRateBond
 QlBondForward as BondForward | qlFreeBondForward
 QlForward as Forward | qlFreeForward
 QlForwardRateAgreement as ForwardRateAgreement | qlFreeForwardRateAgreement
 QlForwardVanillaOption as ForwardVanillaOption | qlFreeForwardVanillaOption
-QlG2 as G2 | qlFreeG2
-QlGJRGARCHModel as GJRGARCHModel | qlFreeGJRGARCHModel
-QlHestonModel as HestonModel | qlFreeHestonModel
-QlHullWhite as HullWhite | qlFreeHullWhite
 QlInstrument as Instrument | qlFreeInstrument
-QlLiborForwardModel as LiborForwardModel | qlFreeLiborForwardModel
 QlMargrabeOption as MargrabeOption | qlFreeMargrabeOption
 QlMultiAssetOption as MultiAssetOption | qlFreeMultiAssetOption
 QlOneAssetOption as OneAssetOption | qlFreeOneAssetOption
-QlOneFactorAffineModel as OneFactorAffineModel | qlFreeOneFactorAffineModel
 QlOption as Option | qlFreeOption
 QlOvernightIndexedSwap as OvernightIndexedSwap | qlFreeOvernightIndexedSwap
-QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel | qlFreePiecewiseTimeDependentHestonModel
 QlQuantoBarrierOption as QuantoBarrierOption | qlFreeQuantoBarrierOption
 QlQuantoForwardVanillaOption as QuantoForwardVanillaOption | qlFreeQuantoForwardVanillaOption
 QlQuantoVanillaOption as QuantoVanillaOption | qlFreeQuantoVanillaOption
-QlShortRateModel as ShortRateModel | qlFreeShortRateModel
 QlSwap as Swap | qlFreeSwap
 QlSwaption as Swaption | qlFreeSwaption
 QlVanillaOption as VanillaOption | qlFreeVanillaOption
