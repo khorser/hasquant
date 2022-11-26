@@ -21,10 +21,8 @@ freeNth i n = do
   let an = arity as
   vars <- replicateM an (newName "x")
   let vd = reverse vars
-      h = take i vd -- split off i-th element
-      t = drop i vd
-      hh = take (i-1) h
-      ht = drop (i-1) h
+      (h, t) = splitAt i vd
+      (hh, ht) = splitAt (i-1) h
   return $ LamE (map VarP (hh ++ t ++ ht)) (foldr (\v e -> AppE e (VarE v)) (VarE fn) vars)
   where
     arity as = arity' as
