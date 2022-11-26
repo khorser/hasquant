@@ -142,12 +142,13 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
-{#import QuantLib.CashFlow#}()
 import QuantLib.Internal.Enum
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 
+{#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}

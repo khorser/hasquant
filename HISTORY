@@ -38,7 +38,7 @@ Without typeclasses the inheritance can be expressed even better if you do not l
   Any YieldTermStructure subclass including YieldTermStructure itself is GenYieldTermStructure a (and GenTermStructure <some nested stuff>)
   TermStructure = GenTermStructure a
     YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
-      FittedBondDiscountCurve = ...
+      FittedBondDiscountCurve = GenYieldTermStructure ...
     VolatilityTermStructure
 	OptionletVolatilityStructure
 	BlackVolTermStructure
@@ -48,3 +48,29 @@ Without typeclasses the inheritance can be expressed even better if you do not l
 	LocalVolTermStructure
     CallableBondVolatilityStructure
     DefaultProbabilityTermStructure
+
+Index
+    InterestRateIndex
+	BMAIndex
+    IborIndex
+	OvernightIborIndex
+    SwapIndex
+	OvernightIndexedSwapIndex
+
+StochasticProcess
+    ExtOUWithJumpsProcess
+    GJRGARCHProcess
+    HybridHestonHullWhiteProcess
+    KlugeExtOUProcess
+    LiborForwardModelProcess
+    StochasticProcessArray
+    HestonProcess
+	BatesProcess
+    StochasticProcess1D
+	ExtendedOrnsteinUhlenbeckProcess
+	HullWhiteForwardProcess
+	HullWhiteProcess
+	Merton76Process
+	VarianceGammaProcess
+	GeneralizedBlackScholesProcess
+	    BlackProcess

@@ -71,14 +71,17 @@ import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
-{#import QuantLib.Instrument.Bond#}()
-{#import QuantLib.Instrument.Option#}()
-{#import QuantLib.Instrument.Credit#}()
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
+{#pointer *QlOption as Option foreign -> COption nocode#}
+{#pointer *QlBond as Bond foreign -> CBond nocode#}
+{#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap nocode#}
+{#pointer *Schedule as Schedule foreign -> CSchedule nocode#}
+{#pointer *QlExercise as Exercies foreign -> QlExercise nocode#}
+{#pointer *DayCounter foreign -> CDayCounter nocode#}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

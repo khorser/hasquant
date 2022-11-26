@@ -178,22 +178,18 @@ a:Instrument
     	FixedRateBond : Bond | qlFixedRateBondAsBond
 	CallableBond : Bond | qlCallableBondAsBond
 CalibratedModel
+    LiborForwardModel : CalibratedModel | qlLiborForwardModelAsCalibratedModel
+    PiecewiseTimeDependentHestonModel : CalibratedModel | qlPiecewiseTimeDependentHestonModelAsCalibratedModel
     ShortRateModel : CalibratedModel | qlShortRateModelAsCalibratedModel
 	OneFactorAffineModel : ShortRateModel | qlOneFactorAffineModelAsShortRateModel
 	    HullWhite : OneFactorAffineModel | qlHullWhiteAsOneFactorAffineModel
 	G2 : ShortRateModel | qlG2AsShortRateModel
-    LiborForwardModel : CalibratedModel | qlLiborForwardModelAsCalibratedModel
-    PiecewiseTimeDependentHestonModel : CalibratedModel | qlPiecewiseTimeDependentHestonModelAsCalibratedModel
     HestonModel : CalibratedModel | qlHestonModelAsCalibratedModel
 	BatesDoubleExpModel : HestonModel | qlBatesDoubleExpModelAsHestonModel
 	    BatesDoubleExpDetJumpModel : BatesDoubleExpModel | qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
 	BatesModel : HestonModel | qlBatesModelAsHestonModel
 	    BatesDetJumpModel : BatesModel | qlBatesDetJumpModelAsBatesModel
     GJRGARCHModel : CalibratedModel | qlGJRGARCHModelAsCalibratedModel
-a:AffineModel
-    (AffineModelDescendant OneFactorAffineModel) : AffineModel | cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
-    (AffineModelDescendant LiborForwardModel) : AffineModel | cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
-    (AffineModelDescendant G2) : AffineModel | cast (AffineModelDescendant x) = qlG2AsAffineModel x
 
 ---
 
