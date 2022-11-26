@@ -14,7 +14,7 @@ bug-reports:    https://github.com/khorser/hasquant/issues
 maintainer:     Sergey Khorev <sergey.khorev@gmail.com>
 copyright:      (c) 2012-2022 Sergey Khorev
 license:        BSD-3-Clause
-build-type:     Custom
+build-type:     Simple
 tested-with:
     GHC == 8.10.6
   , GHC == 9.0.2
@@ -36,12 +36,6 @@ source-repository head
   type: git
   location: https://github.com/khorser/hasquant
 
-custom-setup
-  setup-depends:
-      Cabal >=2.2
-    , base
-    , process
-
 flag buildExample
   manual: True
   default: False
@@ -49,6 +43,10 @@ flag buildExample
 flag trackAllocations
   manual: True
   default: False
+
+flag usePkgConfig
+  manual: True
+  default: True
 
 library
   exposed-modules:
@@ -87,6 +85,7 @@ library
       QuantLib.Internal.CalendarEnum
       QuantLib.Internal.Type
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  cxx-options: -Wall -Wextra -pedantic
   include-dirs:
       cbits
   cxx-sources:
@@ -97,7 +96,6 @@ library
       cbits/qlTermStructure.cpp
       cbits/qlTermStructureAux.cpp
   extra-libraries:
-      QuantLib
       stdc++
   build-depends:
       base >=4.11 && <5.0
@@ -106,8 +104,16 @@ library
     , time
     , vector
   default-language: Haskell2010
+  if flag(trackAllocations)
+    cxx-options: -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
   if impl(ghc < 8.10)
     cpp-options: -P
+  if flag(usePkgConfig) && !os(windows)
+    pkgconfig-depends:
+        quantlib >= 1.28
+  else
+    extra-libraries:
+        QuantLib
   build-tool-depends: c2hs:c2hs
 
 executable hasquant_example
@@ -133,7 +139,7 @@ executable hasquant_example
       main/exe
   ghc-options: -Wall
   build-depends:
-      base >=4.9 && <5.0
+      base >=4.11 && <5.0
     , hasquant
     , time
   default-language: Haskell2010
@@ -168,7 +174,7 @@ test-suite hasquant_test
   build-depends:
       HUnit
     , QuickCheck
-    , base >=4.9 && <5.0
+    , base >=4.11 && <5.0
     , hasquant
     , hspec
     , time

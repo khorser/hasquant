@@ -7,12 +7,7 @@ copyright: (c) 2012-2022 Sergey Khorev
 category: Finance
 description: |
   Bindings to the QuantLib library.
-build-type: Custom
-custom-setup:
-  dependencies:
-    - base
-    - process
-    - Cabal >= 2.2
+build-type: Simple
 github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
@@ -29,14 +24,18 @@ flags:
   trackAllocations:
     default: False
     manual: True
+  usePkgConfig:
+    default: True
+    manual: True
 extra-source-files:
   - cbits/*.h
+dependencies:
+  - base >=4.11 && <5.0
+  - time
 
 library:
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   dependencies:
-    - base >=4.11 && <5.0
-    - time
     - template-haskell
     - split
     - vector
@@ -77,26 +76,25 @@ library:
     - QuantLib.Internal.Syntax
     - QuantLib.Internal.CalendarEnum
     - QuantLib.Internal.Type
-  extra-libraries:
-    - QuantLib
-    - stdc++
   cxx-sources:
     - cbits/*.cpp
   include-dirs: cbits
+  cxx-options: -Wall -Wextra -pedantic
+  extra-libraries: stdc++
   when:
-    - condition: flag(trackAllocations)
-      then: # log allocations to stderr
-        cxx-options: -Wall -Wextra -pedantic -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
-      else:
-        cxx-options: -Wall -Wextra -pedantic
-  when:
+    - condition: flag(trackAllocations) # log allocations to stderr
+      cxx-options: -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
     - condition: impl(ghc < 8.10)
       cpp-options: -P # some c2hs versions didn't like line markers like "# 0" in generated .i files
+    - condition: flag(usePkgConfig) && !os(windows)
+      then:
+        pkg-config-dependencies:
+          quantlib >= 1.28
+      else:
+        extra-libraries: QuantLib
 tests:
   hasquant_test:
     dependencies:
-      - base >= 4.9 && < 5.0
-      - time
       - hspec
       - HUnit
       - QuickCheck
@@ -117,8 +115,6 @@ executables:
           buildable: False
     ghc-options: -Wall
     dependencies:
-      - base >= 4.9 && < 5.0
-      - time
       - hasquant
     source-dirs:
       - test
