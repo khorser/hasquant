@@ -147,14 +147,16 @@ module QuantLib.Internal.Type
 
   , GenCalibrationHelper
   , CCalibrationHelper
+  , CCalibrationHelper'
   , CalibrationHelper
   , asCalibrationHelper
   , peekCalibrationHelper
   , withCalibrationHelper
+  , withCalibrationHelperDescendant
   , withCalibrationHelperArray
   , CBlackCalibrationHelper
+  , CBlackCalibrationHelper'
   , BlackCalibrationHelper
-  , withBlackCalibrationHelper
   , peekBlackCalibrationHelper
 
   , GenBlackCalculator
@@ -797,6 +799,9 @@ newGenForeignPtr (Meta f) u x = newForeignPtr f x <&> (`GenForeignPtr` withCastF
 newCastForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
 newCastForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
 
+withGenArray :: Storable b1 => (a2 -> (b1 -> IO b2) -> IO b2) -> [a2] -> ((CUInt, Ptr b1) -> IO b2) -> IO b2
+withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+
 data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
@@ -852,8 +857,6 @@ withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b
 withQuoteArray = withGenArray withQuote
 withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote') -> IO b) -> IO b
 withQuoteArrayRaw x f= withMany withQuote x (`withArray` f)
-withGenArray :: Storable b1 => (a2 -> (b1 -> IO b2) -> IO b2) -> [a2] -> ((CUInt, Ptr b1) -> IO b2) -> IO b2
-withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 ---- Attempt at type classes. In its current form it pollutes all usages with `~' etc
 --class Upcastable a where
@@ -1006,34 +1009,34 @@ peekOISRateHelper = GenRateHelper <.> peekObject metaOISRateHelper upcastOISRate
 withOISRateHelper :: GenRateHelper COISRateHelper -> (Ptr COISRateHelper-> IO b) -> IO b
 withOISRateHelper = withObject . getRateHelper
 
-data CCalibrationHelper
-data CBlackCalibrationHelper
-newtype GenCalibrationHelper a = GenCalibrationHelper {getCalibrationHelper :: GenObject a CCalibrationHelper}
+data CCalibrationHelper'
+data CBlackCalibrationHelper'
+newtype GenCalibrationHelper a = GenCalibrationHelper (GenForeignPtr a CCalibrationHelper')
+type CCalibrationHelper = ForeignPtr CCalibrationHelper'
 type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
+type CBlackCalibrationHelper = ForeignPtr CBlackCalibrationHelper'
 type BlackCalibrationHelper = GenCalibrationHelper CBlackCalibrationHelper
-foreign import ccall "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper
-foreign import ccall "ql.h &qlFreeBlackCalibrationHelper" qlFreeBlackCalibrationHelper :: FinalizerPtr CBlackCalibrationHelper
-metaCalibrationHelper :: Meta CCalibrationHelper
+foreign import ccall "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper'
+foreign import ccall "ql.h &qlFreeBlackCalibrationHelper" qlFreeBlackCalibrationHelper :: FinalizerPtr CBlackCalibrationHelper'
+metaCalibrationHelper :: Meta CCalibrationHelper'
 metaCalibrationHelper = Meta qlFreeCalibrationHelper
-metaBlackCalibrationHelper :: Meta CBlackCalibrationHelper
+metaBlackCalibrationHelper :: Meta CBlackCalibrationHelper'
 metaBlackCalibrationHelper = Meta qlFreeBlackCalibrationHelper
-foreign import ccall safe "ql.h qlBlackCalibrationHelperAsCalibrationHelper" qlBlackCalibrationHelperAsCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (Ptr CCalibrationHelper)
-upcastCalibrationHelper :: Upcast CCalibrationHelper CCalibrationHelper
-upcastCalibrationHelper = Upcast return nullFunPtr
-upcastBlackCalibrationHelper :: Upcast CBlackCalibrationHelper CCalibrationHelper
+foreign import ccall "ql.h qlBlackCalibrationHelperAsCalibrationHelper" qlBlackCalibrationHelperAsCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO (Ptr CCalibrationHelper')
+upcastBlackCalibrationHelper :: Upcast CBlackCalibrationHelper' CCalibrationHelper'
 upcastBlackCalibrationHelper = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
-asCalibrationHelper :: GenCalibrationHelper a -> IO (GenCalibrationHelper CCalibrationHelper)
-asCalibrationHelper (GenCalibrationHelper q) = GenCalibrationHelper <$> upcast metaCalibrationHelper upcastCalibrationHelper q
-peekCalibrationHelper :: Ptr CCalibrationHelper -> IO (GenCalibrationHelper CCalibrationHelper)
-peekCalibrationHelper = GenCalibrationHelper <.> peekObject metaCalibrationHelper upcastCalibrationHelper
-withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper -> IO b) -> IO b
-withCalibrationHelper = withDescendant . getCalibrationHelper
-withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper)) -> IO b) -> IO b
-withCalibrationHelperArray x = withDescendantArray (map getCalibrationHelper x)
-peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper -> IO (GenCalibrationHelper CBlackCalibrationHelper)
-peekBlackCalibrationHelper = GenCalibrationHelper <.> peekObject metaBlackCalibrationHelper upcastBlackCalibrationHelper
-withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
-withBlackCalibrationHelper = withObject . getCalibrationHelper
+asCalibrationHelper :: GenCalibrationHelper a -> IO CalibrationHelper
+asCalibrationHelper (GenCalibrationHelper (GenForeignPtr x w)) = w x peekCalibrationHelper
+peekCalibrationHelper :: Ptr CCalibrationHelper' -> IO CalibrationHelper
+peekCalibrationHelper = GenCalibrationHelper <.> newCastForeignPtr metaCalibrationHelper
+withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper' -> IO b) -> IO b
+withCalibrationHelper (GenCalibrationHelper (GenForeignPtr x w)) = w x
+withCalibrationHelperDescendant :: GenCalibrationHelper (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withCalibrationHelperDescendant (GenCalibrationHelper (GenForeignPtr x _)) = withForeignPtr x
+peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO BlackCalibrationHelper
+peekBlackCalibrationHelper = GenCalibrationHelper <.> newGenForeignPtr metaBlackCalibrationHelper upcastBlackCalibrationHelper
+withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper')) -> IO b) -> IO b
+withCalibrationHelperArray = withGenArray withCalibrationHelper
 
 data CBlackCalculator'
 data CBlackScholesCalculator'
@@ -1062,6 +1065,7 @@ withBlackCalculatorDescendant (GenBlackCalculator (GenForeignPtr x _)) = withFor
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCalculator
 peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr metaBlackScholesCalculator upcastBlackScholesCalculator
 
+-- MULTILEVEL HIERARCHIES
 data CIndex'
 data CInterestRateIndex'
 data CBMAIndex'

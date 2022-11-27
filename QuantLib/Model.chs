@@ -96,8 +96,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel nocode#}
 {#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel nocode#}
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel nocode#}
-{#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper nocode#}
-{#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper nocode#}
+{#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
+{#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
 
 -- multiple inheritance... not sure if we need that cast to AffineModel at all
 newtype AffineModelDescendant a = AffineModelDescendant a
@@ -239,16 +239,16 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
   ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
-{#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperTimes as times{withCalibrationHelperDescendant*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`CalibratedModel',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Black price given a volatility.
-{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^volatility
+{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withCalibrationHelperDescendant*`BlackCalibrationHelper',`Double' -- ^volatility
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the error resulting from the model valuation
-{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withBlackCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Black volatility implied by the model.
-{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withBlackCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^targetValue
+{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withCalibrationHelperDescendant*`BlackCalibrationHelper',`Double' -- ^targetValue
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
@@ -256,11 +256,11 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the actual price of the instrument (from volatility)
-{#fun qlBlackCalibrationHelperMarketValue as marketValue{withBlackCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperMarketValue as marketValue{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the price of the instrument according to the model
-{#fun qlBlackCalibrationHelperModelValue as modelValue{withBlackCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperModelValue as modelValue{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withCalibrationHelperDescendant*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
