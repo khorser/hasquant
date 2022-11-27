@@ -1,4 +1,5 @@
 {-# LANGUAGE RankNTypes, DuplicateRecordFields #-}
+--{-# LANGUAGE FlexibleContexts, TypeFamilies #-}
 module QuantLib.Internal.Type
 (
     Standalone(..)
@@ -536,6 +537,7 @@ import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
 
 import Data.Functor((<&>))
+--import Data.Kind(Type)
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -548,9 +550,6 @@ f1 <.> f2 = fmap f1 . f2
 f <^> x = pure $ f x
 
 -- STANDALONE TYPES
-class Finalizable a where
-  finalize :: FinalizerPtr a
-
 newtype Standalone a = Standalone {_ptr :: ForeignPtr a}
 peekStandalone :: Finalizable a => Ptr a -> IO (Standalone a)
 peekStandalone = Standalone <.> newForeignPtr finalize
@@ -771,8 +770,9 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
--- TODO get rid of implicit dictionary passing in favour of type classes
 newtype Meta a = Meta (FinalizerPtr a)
+class Finalizable a where
+  finalize :: FinalizerPtr a
 data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
@@ -798,7 +798,73 @@ withDescendantArray x f = withMany withDescendant x (`withArray` (\px -> f (from
 withDescendantArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
 withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 
----- instantiations
+---- Attempt at type classes. So far it pollutes all usages with ~ etc
+--class Upcastable a where
+--  type Parent a :: Type
+--  upc :: Ptr a -> IO (Ptr (Parent a))
+--  root :: Ptr a -> Bool
+--data GenObject2 a = GenObject2 {_ptr :: !(ForeignPtr a)}
+--upcast2 :: (Upcastable a, Finalizable (Parent a)) =>  GenObject2 a -> IO (GenObject2 (Parent a))
+--upcast2 (GenObject2 p) = withForeignPtr p (upc >=> peekObject2)
+--peekObject2 :: Finalizable a => Ptr a -> IO (GenObject2 a)
+--peekObject2 p = newForeignPtr finalize p <&> GenObject2
+--withObject2 :: GenObject2 a -> (Ptr a -> IO b) -> IO b
+--withObject2 (GenObject2 p) = withForeignPtr p
+--withObject2Array :: [GenObject2 a] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+--withObject2Array x f = withMany withObject2 x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+--withDescendant2 :: (Upcastable a, Finalizable (Parent a), Upcastable (Parent a)) => GenObject2 a -> (Ptr (Parent a) -> IO b) -> IO b
+--withDescendant2 (GenObject2 p) f =
+--    withForeignPtr p (\x -> do
+--      u <- upc x
+--      if not $ root u
+--        then newForeignPtr finalize u >>= (`withForeignPtr` f)
+--        else f u)
+--withMaybeDescendant2 :: (Upcastable a, Upcastable (Parent a), Finalizable (Parent a)) => Maybe (GenObject2 a) -> (Ptr (Parent a) -> IO b) -> IO b
+--withMaybeDescendant2 x f = maybe (f nullPtr) (`withDescendant2` f) x
+--withDescendant2Array :: (Upcastable a, Upcastable (Parent a), Finalizable (Parent a)) => [GenObject2 a] -> ((CUInt, Ptr (Ptr (Parent a))) -> IO b) -> IO b
+--withDescendant2Array x f = withMany withDescendant2 x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+--withDescendant2ArrayRaw :: (Upcastable a, Upcastable (Parent a), Finalizable (Parent a)) => [GenObject2 a] -> (Ptr (Ptr (Parent a)) -> IO b) -> IO b
+--withDescendant2ArrayRaw x f = withMany withDescendant2 x (`withArray` f)
+
+--data CQuote
+--data CSimpleQuote
+--instance Upcastable CSimpleQuote where
+--  type Parent CSimpleQuote = CQuote
+--  upc = qlSimpleQuoteAsQuote
+--  root = const False
+--instance Upcastable CQuote where
+--  type Parent CQuote = CQuote
+--  upc = return
+--  root = const True
+--instance Finalizable CSimpleQuote where
+--  finalize = qlFreeSimpleQuote
+--instance Finalizable CQuote where
+--  finalize = qlFreeQuote
+--newtype GenQuote a = GenQuote {getQuote :: GenObject2 a}
+--type Quote = GenQuote CQuote
+--type SimpleQuote = GenQuote CSimpleQuote
+--foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
+--foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
+--foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
+---- Haskell does not allow function arguments like [forall a.GenQuote a]
+---- let's at least provide a way to convert all quote classes to the most generic one
+--asQuote :: (Parent a ~ CQuote, Upcastable a) => GenQuote a -> IO Quote
+--asQuote (GenQuote q) = GenQuote <$> upcast2 q
+--peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
+--peekQuote p = GenQuote <$> peekObject2 p
+--withQuote :: (Parent a ~ CQuote, Upcastable a) => GenQuote a -> (Ptr CQuote -> IO b) -> IO b
+--withQuote = withDescendant2 . getQuote
+--withMaybeQuote :: (Parent a ~ CQuote, Upcastable a) => Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
+--withMaybeQuote x = withMaybeDescendant2 (getQuote <$> x)
+--withQuoteArray :: (Parent a ~ CQuote, Upcastable a) => [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
+--withQuoteArray x = withDescendant2Array (map getQuote x)
+--withQuoteArrayRaw :: (Parent a ~ CQuote, Upcastable a) => [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
+--withQuoteArrayRaw x = withDescendant2ArrayRaw (map getQuote x)
+--peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
+--peekSimpleQuote = GenQuote <.> peekObject2
+--withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
+--withSimpleQuote = withObject2 . getQuote
+
 data CQuote
 data CSimpleQuote
 newtype GenQuote a = GenQuote {getQuote :: GenObject a CQuote}
@@ -975,6 +1041,7 @@ withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr
 withBlackScholesCalculator = withObject . getBlackCalculator
 
 -- MULTILEVEL HIERARCHIES
+-- TODO get rid of implicit dictionary passing in favour of type classes
 data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
 
 withCastForeignPtr :: (t -> (Ptr a -> IO r) -> IO r) -> Upcast a b -> t -> (Ptr b -> IO r) -> IO r
