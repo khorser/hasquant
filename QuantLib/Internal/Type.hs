@@ -126,24 +126,26 @@ module QuantLib.Internal.Type
 
   , GenRateHelper
   , CRateHelper
+  , CRateHelper'
   , RateHelper
   , asRateHelper
   , peekRateHelper
   , withRateHelper
+  , withRateHelperDescendant
   , withRateHelperArray
   , CBondHelper
+  , CBondHelper'
   , BondHelper
   , peekBondHelper
-  , withBondHelper
   , withBondHelperArray
   , CSwapRateHelper
+  , CSwapRateHelper'
   , SwapRateHelper
   , peekSwapRateHelper
-  , withSwapRateHelper
   , COISRateHelper
+  , COISRateHelper'
   , OISRateHelper
   , peekOISRateHelper
-  , withOISRateHelper
 
   , GenCalibrationHelper
   , CCalibrationHelper
@@ -781,9 +783,11 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
-newtype Meta a = Meta (FinalizerPtr a)
 -- TODO get rid of implicit dictionary passing in favour of type classes
+newtype Meta a = Meta (FinalizerPtr a)
 data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
+data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
+-- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 
 withCastForeignPtr :: (t -> (Ptr a -> IO r) -> IO r) -> Upcast a b -> t -> (Ptr b -> IO r) -> IO r
 withCastForeignPtr w (Upcast u _) p f = w p $ u >=> f
@@ -801,27 +805,6 @@ newCastForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeig
 
 withGenArray :: Storable b1 => (a2 -> (b1 -> IO b2) -> IO b2) -> [a2] -> ((CUInt, Ptr b1) -> IO b2) -> IO b2
 withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-
-data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
--- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
-data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
-upcast :: Meta p -> Upcast p p -> GenObject a p -> IO (GenObject p p)
-upcast m u (GenObject p (Upcast k _)) = withForeignPtr p (k >=> peekObject m u)
-peekObject :: Meta a -> Upcast a p -> Ptr a -> IO (GenObject a p)
-peekObject (Meta f) u p = newForeignPtr f p <&> (`GenObject` u)
-withObject :: GenObject a p -> (Ptr a -> IO b) -> IO b
-withObject (GenObject p _) = withForeignPtr p
-withObjectArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
-withObjectArray x f = withMany withObject x (`withArray` (\px -> f (fromIntegral $ length x, px)))
--- TODO: OPTIMIZE: call the finalizer without creating a temp foreign ptr
-withDescendant :: GenObject a p -> (Ptr p -> IO b) -> IO b
-withDescendant (GenObject p (Upcast k fi)) f =
-    withForeignPtr p (k >=>
-      if fi /= nullFunPtr
-        then newForeignPtr fi >=> (`withForeignPtr` f)
-        else f)
-withDescendantArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
-withDescendantArray x f = withMany withDescendant x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 data CQuote'
 data CSimpleQuote'
@@ -954,60 +937,58 @@ withLegDescendant (GenLeg (GenForeignPtr x _)) = withForeignPtr x
 peekCouponLeg :: Ptr CCouponLeg' -> IO CouponLeg
 peekCouponLeg = GenLeg <.> newGenForeignPtr metaCouponLeg upcastCouponLeg
 
-data CRateHelper
-data CBondHelper
-data CSwapRateHelper
-data COISRateHelper
-newtype GenRateHelper a = GenRateHelper {getRateHelper :: GenObject a CRateHelper}
+data CRateHelper'
+newtype GenRateHelper a = GenRateHelper (GenForeignPtr a CRateHelper')
+type CRateHelper = ForeignPtr CRateHelper'
 type RateHelper = GenRateHelper CRateHelper
-type BondHelper = GenRateHelper CBondHelper
-type SwapRateHelper = GenRateHelper CSwapRateHelper
-type OISRateHelper = GenRateHelper COISRateHelper
-foreign import ccall "ql.h &qlFreeRateHelper" qlFreeRateHelper :: FinalizerPtr CRateHelper
-foreign import ccall "ql.h &qlFreeBondHelper" qlFreeBondHelper :: FinalizerPtr CBondHelper
-foreign import ccall "ql.h &qlFreeSwapRateHelper" qlFreeSwapRateHelper :: FinalizerPtr CSwapRateHelper
-foreign import ccall "ql.h &qlFreeOISRateHelper" qlFreeOISRateHelper :: FinalizerPtr COISRateHelper
-metaRateHelper :: Meta CRateHelper
+foreign import ccall "ql.h &qlFreeRateHelper" qlFreeRateHelper :: FinalizerPtr CRateHelper'
+metaRateHelper :: Meta CRateHelper'
 metaRateHelper = Meta qlFreeRateHelper
-metaBondHelper :: Meta CBondHelper
+asRateHelper :: GenRateHelper a -> IO RateHelper
+asRateHelper (GenRateHelper (GenForeignPtr x w)) = w x peekRateHelper
+peekRateHelper :: Ptr CRateHelper' -> IO RateHelper
+peekRateHelper = GenRateHelper <.> newCastForeignPtr metaRateHelper
+withRateHelper :: GenRateHelper a -> (Ptr CRateHelper' -> IO b) -> IO b
+withRateHelper (GenRateHelper (GenForeignPtr x w)) = w x
+withRateHelperDescendant :: GenRateHelper (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withRateHelperDescendant (GenRateHelper (GenForeignPtr x _)) = withForeignPtr x
+withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper')) -> IO b) -> IO b
+withRateHelperArray = withGenArray withRateHelper
+data CBondHelper'
+type CBondHelper = ForeignPtr CBondHelper'
+type BondHelper = GenRateHelper CBondHelper
+foreign import ccall "ql.h &qlFreeBondHelper" qlFreeBondHelper :: FinalizerPtr CBondHelper'
+metaBondHelper :: Meta CBondHelper'
 metaBondHelper = Meta qlFreeBondHelper
-metaSwapRateHelper :: Meta CSwapRateHelper
-metaSwapRateHelper = Meta qlFreeSwapRateHelper
-metaOISRateHelper :: Meta COISRateHelper
-metaOISRateHelper = Meta qlFreeOISRateHelper
-upcastRateHelper :: Upcast CRateHelper CRateHelper
-upcastRateHelper = Upcast return nullFunPtr
-foreign import ccall safe "ql.h qlBondHelperAsRateHelper" qlBondHelperAsRateHelper :: Ptr CBondHelper -> IO (Ptr CRateHelper)
-upcastBondHelper :: Upcast CBondHelper CRateHelper
+foreign import ccall "ql.h qlBondHelperAsRateHelper" qlBondHelperAsRateHelper :: Ptr CBondHelper' -> IO (Ptr CRateHelper')
+upcastBondHelper :: Upcast CBondHelper' CRateHelper'
 upcastBondHelper = Upcast qlBondHelperAsRateHelper qlFreeRateHelper
-foreign import ccall safe "ql.h qlSwapRateHelperAsRateHelper" qlSwapRateHelperAsRateHelper :: Ptr CSwapRateHelper -> IO (Ptr CRateHelper)
-upcastSwapRateHelper :: Upcast CSwapRateHelper CRateHelper
+peekBondHelper :: Ptr CBondHelper' -> IO BondHelper
+peekBondHelper = GenRateHelper <.> newGenForeignPtr metaBondHelper upcastBondHelper
+withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper')) -> IO b) -> IO b
+withBondHelperArray = withGenArray withRateHelperDescendant
+data CSwapRateHelper'
+type CSwapRateHelper = ForeignPtr CSwapRateHelper'
+type SwapRateHelper = GenRateHelper CSwapRateHelper
+foreign import ccall "ql.h &qlFreeSwapRateHelper" qlFreeSwapRateHelper :: FinalizerPtr CSwapRateHelper'
+metaSwapRateHelper :: Meta CSwapRateHelper'
+metaSwapRateHelper = Meta qlFreeSwapRateHelper
+foreign import ccall "ql.h qlSwapRateHelperAsRateHelper" qlSwapRateHelperAsRateHelper :: Ptr CSwapRateHelper' -> IO (Ptr CRateHelper')
+upcastSwapRateHelper :: Upcast CSwapRateHelper' CRateHelper'
 upcastSwapRateHelper = Upcast qlSwapRateHelperAsRateHelper qlFreeRateHelper
-foreign import ccall safe "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper -> IO (Ptr CRateHelper)
-upcastOISRateHelper :: Upcast COISRateHelper CRateHelper
+peekSwapRateHelper :: Ptr CSwapRateHelper' -> IO SwapRateHelper
+peekSwapRateHelper = GenRateHelper <.> newGenForeignPtr metaSwapRateHelper upcastSwapRateHelper
+data COISRateHelper'
+type COISRateHelper = ForeignPtr COISRateHelper'
+type OISRateHelper = GenRateHelper COISRateHelper
+foreign import ccall "ql.h &qlFreeOISRateHelper" qlFreeOISRateHelper :: FinalizerPtr COISRateHelper'
+metaOISRateHelper :: Meta COISRateHelper'
+metaOISRateHelper = Meta qlFreeOISRateHelper
+foreign import ccall "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper' -> IO (Ptr CRateHelper')
+upcastOISRateHelper :: Upcast COISRateHelper' CRateHelper'
 upcastOISRateHelper = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
-asRateHelper :: GenRateHelper a -> IO (GenRateHelper CRateHelper)
-asRateHelper (GenRateHelper q) = GenRateHelper <$> upcast metaRateHelper upcastRateHelper q
-peekRateHelper :: Ptr CRateHelper -> IO (GenRateHelper CRateHelper)
-peekRateHelper = GenRateHelper <.> peekObject metaRateHelper upcastRateHelper
-withRateHelper :: GenRateHelper a -> (Ptr CRateHelper -> IO b) -> IO b
-withRateHelper = withDescendant . getRateHelper
-withRateHelperArray :: [GenRateHelper a] -> ((CUInt, Ptr (Ptr CRateHelper)) -> IO b) -> IO b
-withRateHelperArray x = withDescendantArray (map getRateHelper x)
-peekBondHelper :: Ptr CBondHelper -> IO (GenRateHelper CBondHelper)
-peekBondHelper = GenRateHelper <.> peekObject metaBondHelper upcastBondHelper
-withBondHelper :: GenRateHelper CBondHelper -> (Ptr CBondHelper-> IO b) -> IO b
-withBondHelper = withObject . getRateHelper
-withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper)) -> IO b) -> IO b
-withBondHelperArray x = withObjectArray (map getRateHelper x)
-peekSwapRateHelper :: Ptr CSwapRateHelper -> IO (GenRateHelper CSwapRateHelper)
-peekSwapRateHelper = GenRateHelper <.> peekObject metaSwapRateHelper upcastSwapRateHelper
-withSwapRateHelper :: GenRateHelper CSwapRateHelper -> (Ptr CSwapRateHelper-> IO b) -> IO b
-withSwapRateHelper = withObject . getRateHelper
-peekOISRateHelper :: Ptr COISRateHelper -> IO (GenRateHelper COISRateHelper)
-peekOISRateHelper = GenRateHelper <.> peekObject metaOISRateHelper upcastOISRateHelper
-withOISRateHelper :: GenRateHelper COISRateHelper -> (Ptr COISRateHelper-> IO b) -> IO b
-withOISRateHelper = withObject . getRateHelper
+peekOISRateHelper :: Ptr COISRateHelper' -> IO OISRateHelper
+peekOISRateHelper = GenRateHelper <.> newGenForeignPtr metaOISRateHelper upcastOISRateHelper
 
 data CCalibrationHelper'
 data CBlackCalibrationHelper'
