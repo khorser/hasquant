@@ -798,7 +798,13 @@ withDescendantArray x f = withMany withDescendant x (`withArray` (\px -> f (from
 withDescendantArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
 withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 
----- Attempt at type classes. So far it pollutes all usages with ~ etc
+data CQuote
+data CSimpleQuote
+foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
+foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
+foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
+
+---- Attempt at type classes. So far it pollutes all usages with `~' etc
 --class Upcastable a where
 --  type Parent a :: Type
 --  upc :: Ptr a -> IO (Ptr (Parent a))
@@ -826,8 +832,6 @@ withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 --withDescendant2ArrayRaw :: (Upcastable a, Upcastable (Parent a), Finalizable (Parent a)) => [GenObject2 a] -> (Ptr (Ptr (Parent a)) -> IO b) -> IO b
 --withDescendant2ArrayRaw x f = withMany withDescendant2 x (`withArray` f)
 
---data CQuote
---data CSimpleQuote
 --instance Upcastable CSimpleQuote where
 --  type Parent CSimpleQuote = CQuote
 --  upc = qlSimpleQuoteAsQuote
@@ -843,9 +847,6 @@ withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 --newtype GenQuote a = GenQuote {getQuote :: GenObject2 a}
 --type Quote = GenQuote CQuote
 --type SimpleQuote = GenQuote CSimpleQuote
---foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
---foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
---foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 ---- Haskell does not allow function arguments like [forall a.GenQuote a]
 ---- let's at least provide a way to convert all quote classes to the most generic one
 --asQuote :: (Parent a ~ CQuote, Upcastable a) => GenQuote a -> IO Quote
@@ -865,20 +866,15 @@ withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 --withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 --withSimpleQuote = withObject2 . getQuote
 
-data CQuote
-data CSimpleQuote
 newtype GenQuote a = GenQuote {getQuote :: GenObject a CQuote}
 type Quote = GenQuote CQuote
 type SimpleQuote = GenQuote CSimpleQuote
-foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
-foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
 metaQuote :: Meta CQuote
 metaQuote = Meta qlFreeQuote
 metaSimpleQuote :: Meta CSimpleQuote
 metaSimpleQuote = Meta qlFreeSimpleQuote
 upcastQuote :: Upcast CQuote CQuote
 upcastQuote = Upcast return nullFunPtr
-foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 upcastSimpleQuote :: Upcast CSimpleQuote CQuote
 upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
