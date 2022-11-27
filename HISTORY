@@ -33,7 +33,9 @@ Getting rid of typeclasses, had to introduce more boilerplate and more manual ma
   But now I'm able to avoid some dangerous extensions.
   Revived allocation tracking in C++ code to ensure all objects are freed properly.
   Restored haddock comments on function arguments
-Without typeclasses the inheritance can be expressed even better if you do not look at the code underlying it (e.g. you don't need to chain asXXX casts)
+Without typeclasses the inheritance can be expressed even better if you do not look at the code underlying it ;)
+E.g. you don't need to chain asXXX casts and in most cases you don't need the casts at all)
+
   E.g., any TermStructure is represented as type GenTermStructure a.
   Any YieldTermStructure subclass including YieldTermStructure itself is GenYieldTermStructure a (and GenTermStructure <some nested stuff>)
   TermStructure = GenTermStructure a

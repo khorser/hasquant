@@ -98,7 +98,7 @@ run = do
           let ds = map (\(d, _, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           m <- years dc tod (last ds) Nothing Nothing
           r1 <- parRate ts0 (bondSettle:ds) dc
-          r2 <- forM curves $ \c -> parRate c (bondSettle:ds) dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
+          r2 <- forM curves $ $(free1st' 3) parRate (bondSettle:ds) dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)
       let (tenors, rs) = unzip r
       return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rs}
