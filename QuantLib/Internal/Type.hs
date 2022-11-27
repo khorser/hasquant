@@ -790,7 +790,7 @@ class Upcastable a where
 withCastForeignPtr :: Upcastable a => (t -> (Ptr a -> IO r) -> IO r) -> t -> (Ptr (Parent a) -> IO r) -> IO r
 withCastForeignPtr w p f = w p $ upcast >=> f
 -- FIXME for some reason this definition, being more rigorous, leads to double free of the base object, Investigate!
---withCastForeignPtr w (Upcast u fi) p f = w p $ u >=> newForeignPtr fi >=> (`withForeignPtr` f)
+--withCastForeignPtr w p f = w p $ upcast >=> newForeignPtr finalize >=> (`withForeignPtr` f)
 
 withGenForeignPtr :: Upcastable a => GenForeignPtr c a -> (Ptr (Parent a) -> IO r) -> IO r
 withGenForeignPtr (GenForeignPtr p w) = withCastForeignPtr w p
