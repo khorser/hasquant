@@ -23,7 +23,7 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#pointer *Leg foreign -> CLeg nocode#}
+{#pointer *Leg foreign -> CLeg' nocode#}
 
 {#pointer *QlCapFloor as CapFloor foreign -> CCapFloor nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}

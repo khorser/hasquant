@@ -87,8 +87,8 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#pointer *Leg foreign -> CLeg nocode#}
-{#pointer *CouponLeg foreign -> CCouponLeg nocode#}
+{#pointer *Leg foreign -> CLeg' nocode#}
+{#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
@@ -308,7 +308,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |start of the accrual periods for a coupon leg
-{#fun qlCouponAccrualStartDates as couponAccrualStartDates{withCouponLeg*`CouponLeg',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCouponAccrualStartDates as couponAccrualStartDates{withLegDescendant*`CouponLeg',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlFixedDividend as fixedDividend{`Double' -- ^amount
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}

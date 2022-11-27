@@ -91,8 +91,7 @@ import QuantLib.Internal.Enum
 
 {#enum SwapType{} deriving(Show, Eq)#}
 
-{#pointer *Leg foreign -> CLeg nocode#}
-
+{#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption nocode#}
 
 {#fun qlSwaptionAsOption{withSwaption*`Swaption'}->`Option'peekOption*#}

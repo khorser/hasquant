@@ -47,7 +47,7 @@ import Foreign.Ptr(Ptr)
 {#pointer *QlBond as Bond foreign -> CBond nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
-{#pointer *Leg foreign -> CLeg nocode#}
+{#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *Schedule foreign -> CSchedule nocode#}
 
 instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapAsInstrument

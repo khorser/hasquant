@@ -112,15 +112,17 @@ module QuantLib.Internal.Type
 
   , GenLeg
   , CLeg
+  , CLeg'
   , Leg
   , asLeg
   , peekLeg
   , withLeg
+  , withLegDescendant
   , withLegArray
   , CCouponLeg
+  , CCouponLeg'
   , CouponLeg
   , peekCouponLeg
-  , withCouponLeg
 
   , GenRateHelper
   , CRateHelper
@@ -157,14 +159,16 @@ module QuantLib.Internal.Type
 
   , GenBlackCalculator
   , CBlackCalculator
+  , CBlackCalculator'
   , BlackCalculator
   , asBlackCalculator
   , peekBlackCalculator
   , withBlackCalculator
   , CBlackScholesCalculator
+  , CBlackScholesCalculator'
   , BlackScholesCalculator
   , peekBlackScholesCalculator
-  , withBlackScholesCalculator
+  , withBlackCalculatorDescendant
 
   , GenIndex
   , CIndex
@@ -554,6 +558,8 @@ f <^> x = pure $ f x
 
 -- STANDALONE TYPES
 newtype Standalone a = Standalone {_ptr :: ForeignPtr a}
+class Finalizable a where
+  finalize :: FinalizerPtr a
 peekStandalone :: Finalizable a => Ptr a -> IO (Standalone a)
 peekStandalone = Standalone <.> newForeignPtr finalize
 withStandalone :: Standalone a -> (Ptr a -> IO b) -> IO b
@@ -774,8 +780,23 @@ peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
 newtype Meta a = Meta (FinalizerPtr a)
-class Finalizable a where
-  finalize :: FinalizerPtr a
+-- TODO get rid of implicit dictionary passing in favour of type classes
+data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
+
+withCastForeignPtr :: (t -> (Ptr a -> IO r) -> IO r) -> Upcast a b -> t -> (Ptr b -> IO r) -> IO r
+withCastForeignPtr w (Upcast u _) p f = w p $ u >=> f
+-- FIXME for some reason this definition, being more rigorous, leads to double free of the base object, Investigate!
+--withCastForeignPtr w (Upcast u fi) p f = w p $ u >=> newForeignPtr fi >=> (`withForeignPtr` f)
+
+withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
+withGenForeignPtr u (GenForeignPtr p w) = withCastForeignPtr w u p
+
+newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
+newGenForeignPtr (Meta f) u x = newForeignPtr f x <&> (`GenForeignPtr` withCastForeignPtr withForeignPtr u)
+
+newCastForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
+newCastForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
+
 data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
@@ -834,7 +855,7 @@ withQuoteArrayRaw x f= withMany withQuote x (`withArray` f)
 withGenArray :: Storable b1 => (a2 -> (b1 -> IO b2) -> IO b2) -> [a2] -> ((CUInt, Ptr b1) -> IO b2) -> IO b2
 withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
----- Attempt at type classes. So far it pollutes all usages with `~' etc
+---- Attempt at type classes. In its current form it pollutes all usages with `~' etc
 --class Upcastable a where
 --  type Parent a :: Type
 --  upc :: Ptr a -> IO (Ptr (Parent a))
@@ -901,34 +922,34 @@ withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegr
 --withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 --withSimpleQuote = withObject2 . getQuote
 
-data CLeg
-data CCouponLeg
-newtype GenLeg a = GenLeg {getLeg :: GenObject a CLeg}
+data CLeg'
+data CCouponLeg'
+newtype GenLeg a = GenLeg (GenForeignPtr a CLeg')
+type CLeg = ForeignPtr CLeg'
 type Leg = GenLeg CLeg
+type CCouponLeg = ForeignPtr CCouponLeg'
 type CouponLeg = GenLeg CCouponLeg
-foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg
-foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg
-metaLeg :: Meta CLeg
+foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg'
+foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg'
+metaLeg :: Meta CLeg'
 metaLeg = Meta qlFreeLeg
-metaCouponLeg :: Meta CCouponLeg
+metaCouponLeg :: Meta CCouponLeg'
 metaCouponLeg = Meta qlFreeCouponLeg
-upcastLeg :: Upcast CLeg CLeg
-upcastLeg = Upcast return nullFunPtr
-foreign import ccall safe "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg -> IO (Ptr CLeg)
-upcastCouponLeg :: Upcast CCouponLeg CLeg
+foreign import ccall "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg' -> IO (Ptr CLeg')
+upcastCouponLeg :: Upcast CCouponLeg' CLeg'
 upcastCouponLeg = Upcast qlCouponLegAsLeg qlFreeLeg
 asLeg :: GenLeg a -> IO Leg
-asLeg (GenLeg q) = GenLeg <$> upcast metaLeg upcastLeg q
-peekLeg :: Ptr CLeg -> IO Leg
-peekLeg = GenLeg <.> peekObject metaLeg upcastLeg
-withLeg :: GenLeg a -> (Ptr CLeg -> IO b) -> IO b
-withLeg = withDescendant . getLeg
-withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg)) -> IO b) -> IO b
-withLegArray x = withDescendantArray (map getLeg x)
-peekCouponLeg :: Ptr CCouponLeg -> IO (GenLeg CCouponLeg)
-peekCouponLeg = GenLeg <.> peekObject metaCouponLeg upcastCouponLeg
-withCouponLeg :: GenLeg CCouponLeg -> (Ptr CCouponLeg-> IO b) -> IO b
-withCouponLeg = withObject . getLeg
+asLeg (GenLeg (GenForeignPtr x w)) = w x peekLeg
+peekLeg :: Ptr CLeg' -> IO Leg
+peekLeg = GenLeg <.> newCastForeignPtr metaLeg
+withLeg :: GenLeg a -> (Ptr CLeg' -> IO b) -> IO b
+withLeg (GenLeg (GenForeignPtr x w)) = w x
+withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg')) -> IO b) -> IO b
+withLegArray = withGenArray withLeg
+withLegDescendant :: GenLeg (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withLegDescendant (GenLeg (GenForeignPtr x _)) = withForeignPtr x
+peekCouponLeg :: Ptr CCouponLeg' -> IO CouponLeg
+peekCouponLeg = GenLeg <.> newGenForeignPtr metaCouponLeg upcastCouponLeg
 
 data CRateHelper
 data CBondHelper
@@ -1014,50 +1035,32 @@ peekBlackCalibrationHelper = GenCalibrationHelper <.> peekObject metaBlackCalibr
 withBlackCalibrationHelper :: GenCalibrationHelper CBlackCalibrationHelper -> (Ptr CBlackCalibrationHelper-> IO b) -> IO b
 withBlackCalibrationHelper = withObject . getCalibrationHelper
 
-data CBlackCalculator
-data CBlackScholesCalculator
-newtype GenBlackCalculator a = GenBlackCalculator {getBlackCalculator :: GenObject a CBlackCalculator}
+data CBlackCalculator'
+data CBlackScholesCalculator'
+newtype GenBlackCalculator a = GenBlackCalculator (GenForeignPtr a CBlackCalculator')
+type CBlackCalculator = ForeignPtr CBlackCalculator'
 type BlackCalculator = GenBlackCalculator CBlackCalculator
+type CBlackScholesCalculator = ForeignPtr CBlackScholesCalculator'
 type BlackScholesCalculator = GenBlackCalculator CBlackScholesCalculator
-foreign import ccall "ql.h &qlFreeBlackCalculator" qlFreeBlackCalculator :: FinalizerPtr CBlackCalculator
-foreign import ccall "ql.h &qlFreeBlackScholesCalculator" qlFreeBlackScholesCalculator :: FinalizerPtr CBlackScholesCalculator
-metaBlackCalculator :: Meta CBlackCalculator
+foreign import ccall "ql.h &qlFreeBlackCalculator" qlFreeBlackCalculator :: FinalizerPtr CBlackCalculator'
+foreign import ccall "ql.h &qlFreeBlackScholesCalculator" qlFreeBlackScholesCalculator :: FinalizerPtr CBlackScholesCalculator'
+metaBlackCalculator :: Meta CBlackCalculator'
 metaBlackCalculator = Meta qlFreeBlackCalculator
-metaBlackScholesCalculator :: Meta CBlackScholesCalculator
+metaBlackScholesCalculator :: Meta CBlackScholesCalculator'
 metaBlackScholesCalculator = Meta qlFreeBlackScholesCalculator
-upcastBlackCalculator :: Upcast CBlackCalculator CBlackCalculator
-upcastBlackCalculator = Upcast return nullFunPtr
-foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
-upcastBlackScholesCalculator :: Upcast CBlackScholesCalculator CBlackCalculator
+foreign import ccall "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator' -> IO (Ptr CBlackCalculator')
+upcastBlackScholesCalculator :: Upcast CBlackScholesCalculator' CBlackCalculator'
 upcastBlackScholesCalculator = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
-asBlackCalculator :: GenBlackCalculator a -> IO (GenBlackCalculator CBlackCalculator)
-asBlackCalculator (GenBlackCalculator q) = GenBlackCalculator <$> upcast metaBlackCalculator upcastBlackCalculator q
-peekBlackCalculator :: Ptr CBlackCalculator -> IO (GenBlackCalculator CBlackCalculator)
-peekBlackCalculator = GenBlackCalculator <.> peekObject metaBlackCalculator upcastBlackCalculator
-withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator -> IO b) -> IO b
-withBlackCalculator = withDescendant . getBlackCalculator
-peekBlackScholesCalculator :: Ptr CBlackScholesCalculator -> IO (GenBlackCalculator CBlackScholesCalculator)
-peekBlackScholesCalculator = GenBlackCalculator <.> peekObject metaBlackScholesCalculator upcastBlackScholesCalculator
-withBlackScholesCalculator :: GenBlackCalculator CBlackScholesCalculator -> (Ptr CBlackScholesCalculator-> IO b) -> IO b
-withBlackScholesCalculator = withObject . getBlackCalculator
-
--- MULTILEVEL HIERARCHIES
--- TODO get rid of implicit dictionary passing in favour of type classes
-data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
-
-withCastForeignPtr :: (t -> (Ptr a -> IO r) -> IO r) -> Upcast a b -> t -> (Ptr b -> IO r) -> IO r
-withCastForeignPtr w (Upcast u _) p f = w p $ u >=> f
--- FIXME for some reason this definition, being more rigorous, leads to double free of the base object, Investigate!
---withCastForeignPtr w (Upcast u fi) p f = w p $ u >=> newForeignPtr fi >=> (`withForeignPtr` f)
-
-withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
-withGenForeignPtr u (GenForeignPtr p w) = withCastForeignPtr w u p
-
-newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
-newGenForeignPtr (Meta f) u x = newForeignPtr f x <&> (`GenForeignPtr` withCastForeignPtr withForeignPtr u)
-
-newCastForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newCastForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
+asBlackCalculator :: GenBlackCalculator a -> IO BlackCalculator
+asBlackCalculator (GenBlackCalculator (GenForeignPtr x w)) = w x peekBlackCalculator
+peekBlackCalculator :: Ptr CBlackCalculator' -> IO BlackCalculator
+peekBlackCalculator = GenBlackCalculator <.> newCastForeignPtr metaBlackCalculator
+withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator' -> IO b) -> IO b
+withBlackCalculator (GenBlackCalculator (GenForeignPtr x w)) = w x
+withBlackCalculatorDescendant :: GenBlackCalculator (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withBlackCalculatorDescendant (GenBlackCalculator (GenForeignPtr x _)) = withForeignPtr x
+peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCalculator
+peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr metaBlackScholesCalculator upcastBlackScholesCalculator
 
 data CIndex'
 data CInterestRateIndex'

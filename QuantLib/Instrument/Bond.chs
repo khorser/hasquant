@@ -90,7 +90,7 @@ import QuantLib.Internal.Enum
 
 #include "ql.h"
 
-{#pointer *Leg foreign -> CLeg nocode#}
+{#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}

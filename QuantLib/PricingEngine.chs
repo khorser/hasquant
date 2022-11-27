@@ -188,8 +188,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
-{#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator nocode#}
-{#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator nocode#}
+{#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator' nocode#}
+{#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 
 {#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure a',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
@@ -536,16 +536,16 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'peekBlackScholesCalculator*#}
 -- |Sensitivity to change in the underlying spot price.
-{#fun qlBlackScholesCalculatorDelta as blackScholesDelta{withBlackScholesCalculator*`BlackScholesCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorDelta as blackScholesDelta{withBlackCalculatorDescendant*`BlackScholesCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity in percent to a percent change in the underlying spot price.
-{#fun qlBlackScholesCalculatorElasticity as blackScholesElasticity{withBlackScholesCalculator*`BlackScholesCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorElasticity as blackScholesElasticity{withBlackCalculatorDescendant*`BlackScholesCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Second order derivative with respect to change in the underlying spot price.
-{#fun qlBlackScholesCalculatorGamma as blackScholesGamma{withBlackScholesCalculator*`BlackScholesCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackScholesCalculatorGamma as blackScholesGamma{withBlackCalculatorDescendant*`BlackScholesCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to time to maturity.
-{#fun qlBlackScholesCalculatorTheta as blackScholesTheta{withBlackScholesCalculator*`BlackScholesCalculator',`Double' -- ^maturity
+{#fun qlBlackScholesCalculatorTheta as blackScholesTheta{withBlackCalculatorDescendant*`BlackScholesCalculator',`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to time to maturity per day (assuming 365 day in a year).
-{#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay{withBlackScholesCalculator*`BlackScholesCalculator',`Double' -- ^maturity
+{#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay{withBlackCalculatorDescendant*`BlackScholesCalculator',`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormula1 as blackFormula'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
