@@ -38,8 +38,8 @@ import QuantLib.Internal.Type
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
-{#pointer *QlSimpleQuote as Quote foreign -> CSimpleQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
+{#pointer *QlSimpleQuote as Quote foreign -> CSimpleQuote' nocode#}
 
 {#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq)#}
 
@@ -57,7 +57,7 @@ import QuantLib.Internal.Type
 
 -- |returns the difference between the new value and the old value
 -- /NB/ The change will propagate to all users of the quote
-{#fun qlSimpleQuoteSetValue as setValue{withSimpleQuote*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSimpleQuoteSetValue as setValue{withQuoteDescendant*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote a' -- ^forward
   ,withQuote*`GenQuote b' -- ^callPrice

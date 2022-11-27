@@ -147,7 +147,7 @@ import QuantLib.Internal.Enum
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}

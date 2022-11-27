@@ -44,7 +44,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign -> CDefaultProbabilityHelper nocode#}
 

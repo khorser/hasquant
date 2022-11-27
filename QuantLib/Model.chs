@@ -77,7 +77,7 @@ import QuantLib.Internal.Enum
 
 {#enum CalibrationErrorType{} deriving(Show, Eq)#}
 
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}

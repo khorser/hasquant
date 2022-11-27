@@ -71,7 +71,7 @@ module QuantLib.Process
 import QuantLib.Internal
 import QuantLib.Internal.Type
 
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}

@@ -79,7 +79,7 @@ import QuantLib.Internal.Enum
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}

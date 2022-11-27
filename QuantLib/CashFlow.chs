@@ -90,7 +90,7 @@ import QuantLib.Internal.Type
 {#pointer *Leg foreign -> CLeg nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg nocode#}
 
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}

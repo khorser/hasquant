@@ -96,17 +96,19 @@ module QuantLib.Internal.Type
 
   , GenQuote
   , CQuote
+  , CQuote'
   , Quote
   , asQuote
   , peekQuote
   , withQuote
+  , withQuoteDescendant
   , withMaybeQuote
   , withQuoteArray
   , withQuoteArrayRaw
   , CSimpleQuote
+  , CSimpleQuote'
   , SimpleQuote
   , peekSimpleQuote
-  , withSimpleQuote
 
   , GenLeg
   , CLeg
@@ -531,6 +533,7 @@ module QuantLib.Internal.Type
   where
 import Foreign.Ptr
 import Foreign.ForeignPtr
+import Foreign.Storable(Storable)
 import Foreign.C.Types
 import Foreign.C.String
 import Foreign.Marshal.Array(withArray)
@@ -791,18 +794,45 @@ withDescendant (GenObject p (Upcast k fi)) f =
       if fi /= nullFunPtr
         then newForeignPtr fi >=> (`withForeignPtr` f)
         else f)
-withMaybeDescendant :: Maybe (GenObject a p) -> (Ptr p -> IO b) -> IO b
-withMaybeDescendant x f = maybe (f nullPtr) (`withDescendant` f) x
 withDescendantArray :: [GenObject a p] -> ((CUInt, Ptr (Ptr p)) -> IO b) -> IO b
 withDescendantArray x f = withMany withDescendant x (`withArray` (\px -> f (fromIntegral $ length x, px)))
-withDescendantArrayRaw :: [GenObject a p] -> (Ptr (Ptr p) -> IO b) -> IO b
-withDescendantArrayRaw x f = withMany withDescendant x (`withArray` f)
 
-data CQuote
-data CSimpleQuote
-foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
-foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
-foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
+data CQuote'
+data CSimpleQuote'
+newtype GenQuote a = GenQuote (GenForeignPtr a CQuote')
+type CQuote = ForeignPtr CQuote'
+type Quote = GenQuote CQuote
+type CSimpleQuote = ForeignPtr CSimpleQuote'
+type SimpleQuote = GenQuote CSimpleQuote
+foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
+foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
+metaQuote :: Meta CQuote'
+metaQuote = Meta qlFreeQuote
+metaSimpleQuote :: Meta CSimpleQuote'
+metaSimpleQuote = Meta qlFreeSimpleQuote
+foreign import ccall "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote' -> IO (Ptr CQuote')
+upcastSimpleQuote :: Upcast CSimpleQuote' CQuote'
+upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
+-- Haskell does not allow function arguments like [forall a.GenQuote a]
+-- let's at least provide a way to convert all quote classes to the most generic one
+asQuote :: GenQuote a -> IO Quote
+asQuote (GenQuote (GenForeignPtr x w)) = w x peekQuote
+peekQuote :: Ptr CQuote' -> IO Quote
+peekQuote = GenQuote <.> newCastForeignPtr metaQuote
+withQuote :: GenQuote a -> (Ptr CQuote' -> IO b) -> IO b
+withQuote (GenQuote (GenForeignPtr x w)) = w x
+withQuoteDescendant :: GenQuote (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withQuoteDescendant (GenQuote (GenForeignPtr x _)) = withForeignPtr x
+peekSimpleQuote :: Ptr CSimpleQuote' -> IO SimpleQuote
+peekSimpleQuote = GenQuote <.> newGenForeignPtr metaSimpleQuote upcastSimpleQuote
+withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote' -> IO b) -> IO b
+withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
+withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b
+withQuoteArray = withGenArray withQuote
+withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote') -> IO b) -> IO b
+withQuoteArrayRaw x f= withMany withQuote x (`withArray` f)
+withGenArray :: Storable b1 => (a2 -> (b1 -> IO b2) -> IO b2) -> [a2] -> ((CUInt, Ptr b1) -> IO b2) -> IO b2
+withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegral $ length x, px)))
 
 ---- Attempt at type classes. So far it pollutes all usages with `~' etc
 --class Upcastable a where
@@ -832,6 +862,11 @@ foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Pt
 --withDescendant2ArrayRaw :: (Upcastable a, Upcastable (Parent a), Finalizable (Parent a)) => [GenObject2 a] -> (Ptr (Ptr (Parent a)) -> IO b) -> IO b
 --withDescendant2ArrayRaw x f = withMany withDescendant2 x (`withArray` f)
 
+--data CQuote
+--data CSimpleQuote
+--foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote
+--foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote
+--foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
 --instance Upcastable CSimpleQuote where
 --  type Parent CSimpleQuote = CQuote
 --  upc = qlSimpleQuoteAsQuote
@@ -865,36 +900,6 @@ foreign import ccall safe "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Pt
 --peekSimpleQuote = GenQuote <.> peekObject2
 --withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
 --withSimpleQuote = withObject2 . getQuote
-
-newtype GenQuote a = GenQuote {getQuote :: GenObject a CQuote}
-type Quote = GenQuote CQuote
-type SimpleQuote = GenQuote CSimpleQuote
-metaQuote :: Meta CQuote
-metaQuote = Meta qlFreeQuote
-metaSimpleQuote :: Meta CSimpleQuote
-metaSimpleQuote = Meta qlFreeSimpleQuote
-upcastQuote :: Upcast CQuote CQuote
-upcastQuote = Upcast return nullFunPtr
-upcastSimpleQuote :: Upcast CSimpleQuote CQuote
-upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
--- Haskell does not allow function arguments like [forall a.GenQuote a]
--- let's at least provide a way to convert all quote classes to the most generic one
-asQuote :: GenQuote a -> IO Quote
-asQuote (GenQuote q) = GenQuote <$> upcast metaQuote upcastQuote q
-peekQuote :: Ptr CQuote -> IO (GenQuote CQuote)
-peekQuote p = GenQuote <$> peekObject metaQuote upcastQuote p
-withQuote :: GenQuote a -> (Ptr CQuote -> IO b) -> IO b
-withQuote = withDescendant . getQuote
-withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote -> IO b) -> IO b
-withMaybeQuote x = withMaybeDescendant (getQuote <$> x)
-withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote)) -> IO b) -> IO b
-withQuoteArray x = withDescendantArray (map getQuote x)
-withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote) -> IO b) -> IO b
-withQuoteArrayRaw x = withDescendantArrayRaw (map getQuote x)
-peekSimpleQuote :: Ptr CSimpleQuote -> IO (GenQuote CSimpleQuote)
-peekSimpleQuote = GenQuote <.> peekObject metaSimpleQuote upcastSimpleQuote
-withSimpleQuote :: GenQuote CSimpleQuote -> (Ptr CSimpleQuote-> IO b) -> IO b
-withSimpleQuote = withObject . getQuote
 
 data CLeg
 data CCouponLeg
@@ -1553,7 +1558,7 @@ peekStochasticProcess1D = newCastForeignPtr metaStochasticProcess1D >=> newStoch
 withStochasticProcess1D :: GenStochasticProcess1D a -> (Ptr CStochasticProcess1D' -> IO b) -> IO b
 withStochasticProcess1D (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x w)) _)) = w x
 withStochasticProcess1DArray :: [GenStochasticProcess1D a] -> ((CUInt, Ptr (Ptr CStochasticProcess1D')) -> IO b) -> IO b
-withStochasticProcess1DArray x f = withMany withStochasticProcess1D x (`withArray` (\px -> f (fromIntegral $ length x, px)))
+withStochasticProcess1DArray = withGenArray withStochasticProcess1D
 marshalStochasticProcess1D :: StochasticProcess1DDescendant a -> (Ptr CStochasticProcess' -> IO b) -> IO b
 marshalStochasticProcess1D (StochasticProcess1DDescendant o) = withGenForeignPtr upcastStochasticProcess1D o
 newStochasticProcess1DDescendant :: GenForeignPtr a CStochasticProcess1D' -> IO (GenStochasticProcess1D a)
