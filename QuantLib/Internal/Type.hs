@@ -784,7 +784,6 @@ peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
 -- TODO get rid of implicit dictionary passing in favour of type classes
-newtype Meta a = Meta (FinalizerPtr a)
 data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
 data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
@@ -797,11 +796,11 @@ withCastForeignPtr w (Upcast u _) p f = w p $ u >=> f
 withGenForeignPtr :: Upcast a b -> GenForeignPtr c a -> (Ptr b -> IO r) -> IO r
 withGenForeignPtr u (GenForeignPtr p w) = withCastForeignPtr w u p
 
-newGenForeignPtr :: Meta a -> Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
-newGenForeignPtr (Meta f) u x = newForeignPtr f x <&> (`GenForeignPtr` withCastForeignPtr withForeignPtr u)
+newGenForeignPtr :: Finalizable a => Upcast a b -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) b)
+newGenForeignPtr u x = newForeignPtr finalize x <&> (`GenForeignPtr` withCastForeignPtr withForeignPtr u)
 
-newCastForeignPtr :: Meta a -> Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
-newCastForeignPtr (Meta f) x = newForeignPtr f x <&> (`GenForeignPtr` withForeignPtr)
+newCastForeignPtr :: Finalizable a => Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
+newCastForeignPtr x = newForeignPtr finalize x <&> (`GenForeignPtr` withForeignPtr)
 
 withGenArray :: Storable b1 => (a2 -> (b1 -> IO b2) -> IO b2) -> [a2] -> ((CUInt, Ptr b1) -> IO b2) -> IO b2
 withGenArray marshal x f = withMany marshal x (`withArray` (\px -> f (fromIntegral $ length x, px)))
@@ -815,10 +814,8 @@ type CSimpleQuote = ForeignPtr CSimpleQuote'
 type SimpleQuote = GenQuote CSimpleQuote
 foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
 foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
-metaQuote :: Meta CQuote'
-metaQuote = Meta qlFreeQuote
-metaSimpleQuote :: Meta CSimpleQuote'
-metaSimpleQuote = Meta qlFreeSimpleQuote
+instance Finalizable CQuote' where finalize = qlFreeQuote
+instance Finalizable CSimpleQuote' where finalize = qlFreeSimpleQuote
 foreign import ccall "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote' -> IO (Ptr CQuote')
 upcastSimpleQuote :: Upcast CSimpleQuote' CQuote'
 upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
@@ -827,13 +824,13 @@ upcastSimpleQuote = Upcast qlSimpleQuoteAsQuote qlFreeQuote
 asQuote :: GenQuote a -> IO Quote
 asQuote (GenQuote (GenForeignPtr x w)) = w x peekQuote
 peekQuote :: Ptr CQuote' -> IO Quote
-peekQuote = GenQuote <.> newCastForeignPtr metaQuote
+peekQuote = GenQuote <.> newCastForeignPtr
 withQuote :: GenQuote a -> (Ptr CQuote' -> IO b) -> IO b
 withQuote (GenQuote (GenForeignPtr x w)) = w x
 withQuoteDescendant :: GenQuote (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withQuoteDescendant (GenQuote (GenForeignPtr x _)) = withForeignPtr x
 peekSimpleQuote :: Ptr CSimpleQuote' -> IO SimpleQuote
-peekSimpleQuote = GenQuote <.> newGenForeignPtr metaSimpleQuote upcastSimpleQuote
+peekSimpleQuote = GenQuote <.> newGenForeignPtr upcastSimpleQuote
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote' -> IO b) -> IO b
 withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b
@@ -917,17 +914,15 @@ type CCouponLeg = ForeignPtr CCouponLeg'
 type CouponLeg = GenLeg CCouponLeg
 foreign import ccall "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg'
 foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg'
-metaLeg :: Meta CLeg'
-metaLeg = Meta qlFreeLeg
-metaCouponLeg :: Meta CCouponLeg'
-metaCouponLeg = Meta qlFreeCouponLeg
+instance Finalizable CLeg' where finalize = qlFreeLeg
+instance Finalizable CCouponLeg' where finalize = qlFreeCouponLeg
 foreign import ccall "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg' -> IO (Ptr CLeg')
 upcastCouponLeg :: Upcast CCouponLeg' CLeg'
 upcastCouponLeg = Upcast qlCouponLegAsLeg qlFreeLeg
 asLeg :: GenLeg a -> IO Leg
 asLeg (GenLeg (GenForeignPtr x w)) = w x peekLeg
 peekLeg :: Ptr CLeg' -> IO Leg
-peekLeg = GenLeg <.> newCastForeignPtr metaLeg
+peekLeg = GenLeg <.> newCastForeignPtr
 withLeg :: GenLeg a -> (Ptr CLeg' -> IO b) -> IO b
 withLeg (GenLeg (GenForeignPtr x w)) = w x
 withLegArray :: [GenLeg a] -> ((CUInt, Ptr (Ptr CLeg')) -> IO b) -> IO b
@@ -935,19 +930,18 @@ withLegArray = withGenArray withLeg
 withLegDescendant :: GenLeg (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withLegDescendant (GenLeg (GenForeignPtr x _)) = withForeignPtr x
 peekCouponLeg :: Ptr CCouponLeg' -> IO CouponLeg
-peekCouponLeg = GenLeg <.> newGenForeignPtr metaCouponLeg upcastCouponLeg
+peekCouponLeg = GenLeg <.> newGenForeignPtr upcastCouponLeg
 
 data CRateHelper'
 newtype GenRateHelper a = GenRateHelper (GenForeignPtr a CRateHelper')
 type CRateHelper = ForeignPtr CRateHelper'
 type RateHelper = GenRateHelper CRateHelper
 foreign import ccall "ql.h &qlFreeRateHelper" qlFreeRateHelper :: FinalizerPtr CRateHelper'
-metaRateHelper :: Meta CRateHelper'
-metaRateHelper = Meta qlFreeRateHelper
+instance Finalizable CRateHelper' where finalize = qlFreeRateHelper
 asRateHelper :: GenRateHelper a -> IO RateHelper
 asRateHelper (GenRateHelper (GenForeignPtr x w)) = w x peekRateHelper
 peekRateHelper :: Ptr CRateHelper' -> IO RateHelper
-peekRateHelper = GenRateHelper <.> newCastForeignPtr metaRateHelper
+peekRateHelper = GenRateHelper <.> newCastForeignPtr
 withRateHelper :: GenRateHelper a -> (Ptr CRateHelper' -> IO b) -> IO b
 withRateHelper (GenRateHelper (GenForeignPtr x w)) = w x
 withRateHelperDescendant :: GenRateHelper (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
@@ -958,37 +952,34 @@ data CBondHelper'
 type CBondHelper = ForeignPtr CBondHelper'
 type BondHelper = GenRateHelper CBondHelper
 foreign import ccall "ql.h &qlFreeBondHelper" qlFreeBondHelper :: FinalizerPtr CBondHelper'
-metaBondHelper :: Meta CBondHelper'
-metaBondHelper = Meta qlFreeBondHelper
+instance Finalizable CBondHelper' where finalize = qlFreeBondHelper
 foreign import ccall "ql.h qlBondHelperAsRateHelper" qlBondHelperAsRateHelper :: Ptr CBondHelper' -> IO (Ptr CRateHelper')
 upcastBondHelper :: Upcast CBondHelper' CRateHelper'
 upcastBondHelper = Upcast qlBondHelperAsRateHelper qlFreeRateHelper
 peekBondHelper :: Ptr CBondHelper' -> IO BondHelper
-peekBondHelper = GenRateHelper <.> newGenForeignPtr metaBondHelper upcastBondHelper
+peekBondHelper = GenRateHelper <.> newGenForeignPtr upcastBondHelper
 withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper')) -> IO b) -> IO b
 withBondHelperArray = withGenArray withRateHelperDescendant
 data CSwapRateHelper'
 type CSwapRateHelper = ForeignPtr CSwapRateHelper'
 type SwapRateHelper = GenRateHelper CSwapRateHelper
 foreign import ccall "ql.h &qlFreeSwapRateHelper" qlFreeSwapRateHelper :: FinalizerPtr CSwapRateHelper'
-metaSwapRateHelper :: Meta CSwapRateHelper'
-metaSwapRateHelper = Meta qlFreeSwapRateHelper
+instance Finalizable CSwapRateHelper' where finalize = qlFreeSwapRateHelper
 foreign import ccall "ql.h qlSwapRateHelperAsRateHelper" qlSwapRateHelperAsRateHelper :: Ptr CSwapRateHelper' -> IO (Ptr CRateHelper')
 upcastSwapRateHelper :: Upcast CSwapRateHelper' CRateHelper'
 upcastSwapRateHelper = Upcast qlSwapRateHelperAsRateHelper qlFreeRateHelper
 peekSwapRateHelper :: Ptr CSwapRateHelper' -> IO SwapRateHelper
-peekSwapRateHelper = GenRateHelper <.> newGenForeignPtr metaSwapRateHelper upcastSwapRateHelper
+peekSwapRateHelper = GenRateHelper <.> newGenForeignPtr upcastSwapRateHelper
 data COISRateHelper'
 type COISRateHelper = ForeignPtr COISRateHelper'
 type OISRateHelper = GenRateHelper COISRateHelper
 foreign import ccall "ql.h &qlFreeOISRateHelper" qlFreeOISRateHelper :: FinalizerPtr COISRateHelper'
-metaOISRateHelper :: Meta COISRateHelper'
-metaOISRateHelper = Meta qlFreeOISRateHelper
+instance Finalizable COISRateHelper' where finalize = qlFreeOISRateHelper
 foreign import ccall "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper' -> IO (Ptr CRateHelper')
 upcastOISRateHelper :: Upcast COISRateHelper' CRateHelper'
 upcastOISRateHelper = Upcast qlOISRateHelperAsRateHelper qlFreeRateHelper
 peekOISRateHelper :: Ptr COISRateHelper' -> IO OISRateHelper
-peekOISRateHelper = GenRateHelper <.> newGenForeignPtr metaOISRateHelper upcastOISRateHelper
+peekOISRateHelper = GenRateHelper <.> newGenForeignPtr upcastOISRateHelper
 
 data CCalibrationHelper'
 data CBlackCalibrationHelper'
@@ -999,23 +990,21 @@ type CBlackCalibrationHelper = ForeignPtr CBlackCalibrationHelper'
 type BlackCalibrationHelper = GenCalibrationHelper CBlackCalibrationHelper
 foreign import ccall "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper'
 foreign import ccall "ql.h &qlFreeBlackCalibrationHelper" qlFreeBlackCalibrationHelper :: FinalizerPtr CBlackCalibrationHelper'
-metaCalibrationHelper :: Meta CCalibrationHelper'
-metaCalibrationHelper = Meta qlFreeCalibrationHelper
-metaBlackCalibrationHelper :: Meta CBlackCalibrationHelper'
-metaBlackCalibrationHelper = Meta qlFreeBlackCalibrationHelper
+instance Finalizable CCalibrationHelper' where finalize = qlFreeCalibrationHelper
+instance Finalizable CBlackCalibrationHelper' where finalize = qlFreeBlackCalibrationHelper
 foreign import ccall "ql.h qlBlackCalibrationHelperAsCalibrationHelper" qlBlackCalibrationHelperAsCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO (Ptr CCalibrationHelper')
 upcastBlackCalibrationHelper :: Upcast CBlackCalibrationHelper' CCalibrationHelper'
 upcastBlackCalibrationHelper = Upcast qlBlackCalibrationHelperAsCalibrationHelper qlFreeCalibrationHelper
 asCalibrationHelper :: GenCalibrationHelper a -> IO CalibrationHelper
 asCalibrationHelper (GenCalibrationHelper (GenForeignPtr x w)) = w x peekCalibrationHelper
 peekCalibrationHelper :: Ptr CCalibrationHelper' -> IO CalibrationHelper
-peekCalibrationHelper = GenCalibrationHelper <.> newCastForeignPtr metaCalibrationHelper
+peekCalibrationHelper = GenCalibrationHelper <.> newCastForeignPtr
 withCalibrationHelper :: GenCalibrationHelper a -> (Ptr CCalibrationHelper' -> IO b) -> IO b
 withCalibrationHelper (GenCalibrationHelper (GenForeignPtr x w)) = w x
 withCalibrationHelperDescendant :: GenCalibrationHelper (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withCalibrationHelperDescendant (GenCalibrationHelper (GenForeignPtr x _)) = withForeignPtr x
 peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO BlackCalibrationHelper
-peekBlackCalibrationHelper = GenCalibrationHelper <.> newGenForeignPtr metaBlackCalibrationHelper upcastBlackCalibrationHelper
+peekBlackCalibrationHelper = GenCalibrationHelper <.> newGenForeignPtr upcastBlackCalibrationHelper
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper')) -> IO b) -> IO b
 withCalibrationHelperArray = withGenArray withCalibrationHelper
 
@@ -1028,23 +1017,21 @@ type CBlackScholesCalculator = ForeignPtr CBlackScholesCalculator'
 type BlackScholesCalculator = GenBlackCalculator CBlackScholesCalculator
 foreign import ccall "ql.h &qlFreeBlackCalculator" qlFreeBlackCalculator :: FinalizerPtr CBlackCalculator'
 foreign import ccall "ql.h &qlFreeBlackScholesCalculator" qlFreeBlackScholesCalculator :: FinalizerPtr CBlackScholesCalculator'
-metaBlackCalculator :: Meta CBlackCalculator'
-metaBlackCalculator = Meta qlFreeBlackCalculator
-metaBlackScholesCalculator :: Meta CBlackScholesCalculator'
-metaBlackScholesCalculator = Meta qlFreeBlackScholesCalculator
+instance Finalizable CBlackCalculator' where finalize = qlFreeBlackCalculator
+instance Finalizable CBlackScholesCalculator' where finalize = qlFreeBlackScholesCalculator
 foreign import ccall "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator' -> IO (Ptr CBlackCalculator')
 upcastBlackScholesCalculator :: Upcast CBlackScholesCalculator' CBlackCalculator'
 upcastBlackScholesCalculator = Upcast qlBlackScholesCalculatorAsBlackCalculator qlFreeBlackCalculator
 asBlackCalculator :: GenBlackCalculator a -> IO BlackCalculator
 asBlackCalculator (GenBlackCalculator (GenForeignPtr x w)) = w x peekBlackCalculator
 peekBlackCalculator :: Ptr CBlackCalculator' -> IO BlackCalculator
-peekBlackCalculator = GenBlackCalculator <.> newCastForeignPtr metaBlackCalculator
+peekBlackCalculator = GenBlackCalculator <.> newCastForeignPtr
 withBlackCalculator :: GenBlackCalculator a -> (Ptr CBlackCalculator' -> IO b) -> IO b
 withBlackCalculator (GenBlackCalculator (GenForeignPtr x w)) = w x
 withBlackCalculatorDescendant :: GenBlackCalculator (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withBlackCalculatorDescendant (GenBlackCalculator (GenForeignPtr x _)) = withForeignPtr x
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCalculator
-peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr metaBlackScholesCalculator upcastBlackScholesCalculator
+peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr upcastBlackScholesCalculator
 
 -- MULTILEVEL HIERARCHIES
 data CIndex'
@@ -1083,20 +1070,13 @@ foreign import ccall "ql.h &qlFreeIborIndex" qlFreeIborIndex :: FinalizerPtr CIb
 foreign import ccall "ql.h &qlFreeOvernightIndex" qlFreeOvernightIborIndex :: FinalizerPtr COvernightIndex'
 foreign import ccall "ql.h &qlFreeSwapIndex" qlFreeSwapIndex :: FinalizerPtr CSwapIndex'
 foreign import ccall "ql.h &qlFreeOvernightIndexedSwapIndex" qlFreeOvernightIndexedSwapIndex :: FinalizerPtr COvernightIndexedSwapIndex'
-metaIndex :: Meta CIndex'
-metaIndex = Meta qlFreeIndex
-metaInterestRateIndex :: Meta CInterestRateIndex'
-metaInterestRateIndex = Meta qlFreeInterestRateIndex
-metaBMAIndex :: Meta CBMAIndex'
-metaBMAIndex = Meta qlFreeBMAIndex
-metaIborIndex :: Meta CIborIndex'
-metaIborIndex = Meta qlFreeIborIndex
-metaOvernightIborIndex :: Meta COvernightIndex'
-metaOvernightIborIndex = Meta qlFreeOvernightIborIndex
-metaSwapIndex :: Meta CSwapIndex'
-metaSwapIndex = Meta qlFreeSwapIndex
-metaOvernightIndexedSwapIndex :: Meta COvernightIndexedSwapIndex'
-metaOvernightIndexedSwapIndex = Meta qlFreeOvernightIndexedSwapIndex
+instance Finalizable CIndex' where finalize = qlFreeIndex
+instance Finalizable CInterestRateIndex' where finalize = qlFreeInterestRateIndex
+instance Finalizable CBMAIndex' where finalize = qlFreeBMAIndex
+instance Finalizable CIborIndex' where finalize = qlFreeIborIndex
+instance Finalizable COvernightIndex' where finalize = qlFreeOvernightIborIndex
+instance Finalizable CSwapIndex' where finalize = qlFreeSwapIndex
+instance Finalizable COvernightIndexedSwapIndex' where finalize = qlFreeOvernightIndexedSwapIndex
 foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex' -> IO (Ptr CIndex')
 foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRateIndex :: Ptr CBMAIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterestRateIndex :: Ptr CIborIndex' -> IO (Ptr CInterestRateIndex')
@@ -1117,13 +1097,13 @@ upcastOvernightIndexedSwapIndex :: Upcast COvernightIndexedSwapIndex' CSwapIndex
 upcastOvernightIndexedSwapIndex = Upcast qlOvernightIndexedSwapIndexAsSwapIndex qlFreeSwapIndex
 
 asIndex :: GenIndex a -> IO Index
-asIndex (GenIndex (GenForeignPtr x w)) = w x (GenIndex <.> newCastForeignPtr metaIndex)
+asIndex (GenIndex (GenForeignPtr x w)) = w x (GenIndex <.> newCastForeignPtr)
 withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
 withIndex (GenIndex (GenForeignPtr x w)) = w x
 
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
 asInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x peekInterestRateIndex
-  where peekInterestRateIndex = newCastForeignPtr metaInterestRateIndex >=> newInterestRateIndexDescendant
+  where peekInterestRateIndex = newCastForeignPtr >=> newInterestRateIndexDescendant
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withInterestRateIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x w)) _)) = w x
 withGenForeignInterestRateIndex :: InterestRateIndexDescendant a -> (Ptr CIndex' -> IO b) -> IO b
@@ -1132,14 +1112,14 @@ newInterestRateIndexDescendant :: GenForeignPtr a CInterestRateIndex' -> IO (Gen
 newInterestRateIndexDescendant p = GenIndex <^> GenForeignPtr (InterestRateIndexDescendant p) withGenForeignInterestRateIndex
 
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
-peekBMAIndex = newGenForeignPtr metaBMAIndex upcastBMAIndex >=> newInterestRateIndexDescendant
+peekBMAIndex = newGenForeignPtr upcastBMAIndex >=> newInterestRateIndexDescendant
 withBMAIndex :: BMAIndex -> (Ptr CBMAIndex' -> IO b) -> IO b
 withBMAIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
 asIborIndex :: GenIborIndex a -> IO IborIndex
 asIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekIborIndex
 peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
-peekIborIndex = newCastForeignPtr metaIborIndex >=> newIborIndexDescendant
+peekIborIndex = newCastForeignPtr >=> newIborIndexDescendant
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
 withIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignIborIndex :: IborIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
@@ -1148,14 +1128,14 @@ newIborIndexDescendant :: GenForeignPtr a CIborIndex' -> IO (GenIborIndex a)
 newIborIndexDescendant p = GenIndex <^> GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (IborIndexDescendant p) withGenForeignIborIndex) withGenForeignInterestRateIndex
 
 peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
-peekOvernightIborIndex = newGenForeignPtr metaOvernightIborIndex upcastOvernightIndex >=> newIborIndexDescendant
+peekOvernightIborIndex = newGenForeignPtr upcastOvernightIndex >=> newIborIndexDescendant
 withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
 withOvernightIborIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (IborIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
 asSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x peekSwapIndex
 peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
-peekSwapIndex = newCastForeignPtr metaSwapIndex >=> newSwapIndexDescendant
+peekSwapIndex = newCastForeignPtr >=> newSwapIndexDescendant
 withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
 withSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x w)) _)) _)) = w x
 withGenForeignSwapIndex :: SwapIndexDescendant a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
@@ -1164,7 +1144,7 @@ newSwapIndexDescendant :: GenForeignPtr a CSwapIndex' -> IO (GenSwapIndex a)
 newSwapIndexDescendant p = GenIndex <^> GenForeignPtr (InterestRateIndexDescendant $ GenForeignPtr (SwapIndexDescendant p) withGenForeignSwapIndex) withGenForeignInterestRateIndex
 
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
-peekOvernightIndexedSwapIndex = newGenForeignPtr metaOvernightIndexedSwapIndex upcastOvernightIndexedSwapIndex >=> newSwapIndexDescendant
+peekOvernightIndexedSwapIndex = newGenForeignPtr upcastOvernightIndexedSwapIndex >=> newSwapIndexDescendant
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
 withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (InterestRateIndexDescendant (GenForeignPtr (SwapIndexDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
@@ -1223,30 +1203,18 @@ foreign import ccall "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :
 foreign import ccall "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve'
 foreign import ccall "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure'
 foreign import ccall "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
-metaTermStructure :: Meta CTermStructure'
-metaTermStructure = Meta qlFreeTermStructure
-metaVolatilityTermStructure :: Meta CVolatilityTermStructure'
-metaVolatilityTermStructure = Meta qlFreeVolatilityTermStructure
-metaOptionletVolatilityStructure :: Meta COptionletVolatilityStructure'
-metaOptionletVolatilityStructure = Meta qlFreeOptionletVolatilityStructure
-metaSwaptionVolatilityStructure :: Meta CSwaptionVolatilityStructure'
-metaSwaptionVolatilityStructure = Meta qlFreeSwaptionVolatilityStructure
-metaCapFloorTermVolSurface :: Meta CCapFloorTermVolSurface'
-metaCapFloorTermVolSurface = Meta qlFreeCapFloorTermVolSurface
-metaLocalVolTermStructure :: Meta CLocalVolTermStructure'
-metaLocalVolTermStructure = Meta qlFreeLocalVolTermStructure
-metaBlackVolTermStructure :: Meta CBlackVolTermStructure'
-metaBlackVolTermStructure = Meta qlFreeBlackVolTermStructure
-metaBlackVarianceCurve :: Meta CBlackVarianceCurve'
-metaBlackVarianceCurve = Meta qlFreeBlackVarianceCurve
-metaYieldTermStructure :: Meta CYieldTermStructure'
-metaYieldTermStructure = Meta qlFreeYieldTermStructure
-metaFittedBondDiscountCurve :: Meta CFittedBondDiscountCurve'
-metaFittedBondDiscountCurve = Meta qlFreeFittedBondDiscountCurve
-metaCallableBondVolatilityStructure :: Meta CCallableBondVolatilityStructure'
-metaCallableBondVolatilityStructure = Meta qlFreeCallableBondVolatilityStructure
-metaDefaultProbabilityTermStructure :: Meta CDefaultProbabilityTermStructure'
-metaDefaultProbabilityTermStructure = Meta qlFreeDefaultProbabilityTermStructure
+instance Finalizable CTermStructure' where finalize = qlFreeTermStructure
+instance Finalizable CVolatilityTermStructure' where finalize = qlFreeVolatilityTermStructure
+instance Finalizable COptionletVolatilityStructure' where finalize = qlFreeOptionletVolatilityStructure
+instance Finalizable CSwaptionVolatilityStructure' where finalize = qlFreeSwaptionVolatilityStructure
+instance Finalizable CCapFloorTermVolSurface' where finalize = qlFreeCapFloorTermVolSurface
+instance Finalizable CLocalVolTermStructure' where finalize = qlFreeLocalVolTermStructure
+instance Finalizable CBlackVolTermStructure' where finalize = qlFreeBlackVolTermStructure
+instance Finalizable CBlackVarianceCurve' where finalize = qlFreeBlackVarianceCurve
+instance Finalizable CYieldTermStructure' where finalize = qlFreeYieldTermStructure
+instance Finalizable CFittedBondDiscountCurve' where finalize = qlFreeFittedBondDiscountCurve
+instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCallableBondVolatilityStructure
+instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure' -> IO (Ptr CTermStructure')
@@ -1282,7 +1250,7 @@ upcastLocalVolTermStructure :: Upcast CLocalVolTermStructure' CVolatilityTermStr
 upcastLocalVolTermStructure = Upcast qlLocalVolTermStructureAsVolatilityTermStructure qlFreeVolatilityTermStructure
 
 asTermStructure :: GenTermStructure a -> IO TermStructure
-asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (GenTermStructure <.> newCastForeignPtr metaTermStructure)
+asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (GenTermStructure <.> newCastForeignPtr)
 withTermStructure :: GenTermStructure a  -> (Ptr CTermStructure' -> IO b) -> IO b
 withTermStructure (GenTermStructure (GenForeignPtr x w)) = w x
 withTermStructureDescendant :: GenTermStructure (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
@@ -1291,9 +1259,9 @@ withTermStructureDescendant (GenTermStructure (GenForeignPtr x _)) = withForeign
 asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermStructure
 asVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekVolatilityTermStructure
 peekVolatilityTermStructure :: Ptr CVolatilityTermStructure' -> IO VolatilityTermStructure
-peekVolatilityTermStructure = newCastForeignPtr metaVolatilityTermStructure >=> newVolatilityTermStructureDescendant
-peekVolatilityTermStructureDescendant :: Meta a -> Upcast a CVolatilityTermStructure' -> Ptr a -> IO (GenVolatilityTermStructure (ForeignPtr a))
-peekVolatilityTermStructureDescendant m u = newGenForeignPtr m u >=> newVolatilityTermStructureDescendant
+peekVolatilityTermStructure = newCastForeignPtr >=> newVolatilityTermStructureDescendant
+peekVolatilityTermStructureDescendant :: Finalizable a => Upcast a CVolatilityTermStructure' -> Ptr a -> IO (GenVolatilityTermStructure (ForeignPtr a))
+peekVolatilityTermStructureDescendant u = newGenForeignPtr u >=> newVolatilityTermStructureDescendant
 withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
 withVolatilityTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 marshalVolatilityTermStructure :: VolatilityTermStructureDescendant a -> (Ptr CTermStructure' -> IO b) -> IO b
@@ -1306,7 +1274,7 @@ newVolatilityTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (Vol
 asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
 asBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x peekBlackVolTermStructure
 peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStructure
-peekBlackVolTermStructure = newCastForeignPtr metaBlackVolTermStructure >=> newBlackVolTermStructureDescendant
+peekBlackVolTermStructure = newCastForeignPtr >=> newBlackVolTermStructureDescendant
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
 withBlackVolTermStructure (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x w)) _)) _)) = w x
 marshalBlackVolTermStructure :: BlackVolTermStructureDescendant a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
@@ -1315,27 +1283,27 @@ newBlackVolTermStructureDescendant :: GenForeignPtr a CBlackVolTermStructure' ->
 newBlackVolTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (VolatilityTermStructureDescendant $ GenForeignPtr (BlackVolTermStructureDescendant p) marshalBlackVolTermStructure) marshalVolatilityTermStructure
 
 peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
-peekBlackVarianceCurve = newGenForeignPtr metaBlackVarianceCurve upcastBlackVarianceCurve >=> newBlackVolTermStructureDescendant
+peekBlackVarianceCurve = newGenForeignPtr upcastBlackVarianceCurve >=> newBlackVolTermStructureDescendant
 withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO b) -> IO b
 withBlackVarianceCurve (GenTermStructure (GenForeignPtr (VolatilityTermStructureDescendant (GenForeignPtr (BlackVolTermStructureDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
 peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure' -> IO OptionletVolatilityStructure
-peekOptionletVolatilityStructure = peekVolatilityTermStructureDescendant metaOptionletVolatilityStructure upcastOptionletVolatilityStructure
+peekOptionletVolatilityStructure = peekVolatilityTermStructureDescendant upcastOptionletVolatilityStructure
 peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure' -> IO SwaptionVolatilityStructure
-peekSwaptionVolatilityStructure = peekVolatilityTermStructureDescendant metaSwaptionVolatilityStructure upcastSwaptionVolatilityStructure
+peekSwaptionVolatilityStructure = peekVolatilityTermStructureDescendant upcastSwaptionVolatilityStructure
 peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVolSurface
-peekCapFloorTermVolSurface = peekVolatilityTermStructureDescendant metaCapFloorTermVolSurface upcastCapFloorTermVolSurface
+peekCapFloorTermVolSurface = peekVolatilityTermStructureDescendant upcastCapFloorTermVolSurface
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
-peekLocalVolTermStructure = peekVolatilityTermStructureDescendant metaLocalVolTermStructure upcastLocalVolTermStructure
+peekLocalVolTermStructure = peekVolatilityTermStructureDescendant upcastLocalVolTermStructure
 peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
-peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr metaCallableBondVolatilityStructure upcastCallableBondVolatilityStructure
+peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr upcastCallableBondVolatilityStructure
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr metaDefaultProbabilityTermStructure upcastDefaultProbabilityTermStructure
+peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr upcastDefaultProbabilityTermStructure
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
 asYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x peekYieldTermStructure
 peekYieldTermStructure :: Ptr CYieldTermStructure' -> IO YieldTermStructure
-peekYieldTermStructure = newCastForeignPtr metaYieldTermStructure >=> newYieldTermStructureDescendant
+peekYieldTermStructure = newCastForeignPtr >=> newYieldTermStructureDescendant
 withYieldTermStructure :: GenYieldTermStructure a -> (Ptr CYieldTermStructure' -> IO b) -> IO b
 withYieldTermStructure (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x w)) _)) = w x
 withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTermStructure' -> IO b) -> IO b
@@ -1346,7 +1314,7 @@ newYieldTermStructureDescendant :: GenForeignPtr a CYieldTermStructure' -> IO (G
 newYieldTermStructureDescendant p = GenTermStructure <^> GenForeignPtr (YieldTermStructureDescendant p) marshalYieldTermStructure
 
 peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
-peekFittedBondDiscountCurve = newGenForeignPtr metaFittedBondDiscountCurve upcastFittedBondDiscountCurve >=> newYieldTermStructureDescendant
+peekFittedBondDiscountCurve = newGenForeignPtr upcastFittedBondDiscountCurve >=> newYieldTermStructureDescendant
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve (GenTermStructure (GenForeignPtr (YieldTermStructureDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 
@@ -1425,40 +1393,23 @@ foreign import ccall "ql.h &qlFreeMerton76Process" qlFreeMerton76Process :: Fina
 foreign import ccall "ql.h &qlFreeVarianceGammaProcess" qlFreeVarianceGammaProcess :: FinalizerPtr CVarianceGammaProcess'
 foreign import ccall "ql.h &qlFreeGeneralizedBlackScholesProcess" qlFreeGeneralizedBlackScholesProcess :: FinalizerPtr CGeneralizedBlackScholesProcess'
 foreign import ccall "ql.h &qlFreeBlackProcess" qlFreeBlackProcess :: FinalizerPtr CBlackProcess'
-metaStochasticProcess :: Meta CStochasticProcess'
-metaStochasticProcess = Meta qlFreeStochasticProcess
-metaExtOUWithJumpsProcess :: Meta CExtOUWithJumpsProcess'
-metaExtOUWithJumpsProcess = Meta qlFreeExtOUWithJumpsProcess
-metaGJRGARCHProcess :: Meta CGJRGARCHProcess'
-metaGJRGARCHProcess = Meta qlFreeGJRGARCHProcess
-metaHybridHestonHullWhiteProcess :: Meta CHybridHestonHullWhiteProcess'
-metaHybridHestonHullWhiteProcess = Meta qlFreeHybridHestonHullWhiteProcess
-metaKlugeExtOUProcess :: Meta CKlugeExtOUProcess'
-metaKlugeExtOUProcess = Meta qlFreeKlugeExtOUProcess
-metaLiborForwardModelProcess :: Meta CLiborForwardModelProcess'
-metaLiborForwardModelProcess = Meta qlFreeLiborForwardModelProcess
-metaStochasticProcessArray :: Meta CStochasticProcessArray'
-metaStochasticProcessArray = Meta qlFreeStochasticProcessArray
-metaHestonProcess :: Meta CHestonProcess'
-metaHestonProcess = Meta qlFreeHestonProcess
-metaStochasticProcess1D :: Meta CStochasticProcess1D'
-metaStochasticProcess1D = Meta qlFreeStochasticProcess1D
-metaBatesProcess :: Meta CBatesProcess'
-metaBatesProcess = Meta qlFreeBatesProcess
-metaExtendedOrnsteinUhlenbeckProcess :: Meta CExtendedOrnsteinUhlenbeckProcess'
-metaExtendedOrnsteinUhlenbeckProcess = Meta qlFreeExtendedOrnsteinUhlenbeckProcess
-metaHullWhiteForwardProcess :: Meta CHullWhiteForwardProcess'
-metaHullWhiteForwardProcess = Meta qlFreeHullWhiteForwardProcess
-metaHullWhiteProcess :: Meta CHullWhiteProcess'
-metaHullWhiteProcess = Meta qlFreeHullWhiteProcess
-metaMerton76Process :: Meta CMerton76Process'
-metaMerton76Process = Meta qlFreeMerton76Process
-metaVarianceGammaProcess :: Meta CVarianceGammaProcess'
-metaVarianceGammaProcess = Meta qlFreeVarianceGammaProcess
-metaGeneralizedBlackScholesProcess :: Meta CGeneralizedBlackScholesProcess'
-metaGeneralizedBlackScholesProcess = Meta qlFreeGeneralizedBlackScholesProcess
-metaBlackProcess :: Meta CBlackProcess'
-metaBlackProcess = Meta qlFreeBlackProcess
+instance Finalizable CStochasticProcess' where finalize = qlFreeStochasticProcess
+instance Finalizable CExtOUWithJumpsProcess' where finalize = qlFreeExtOUWithJumpsProcess
+instance Finalizable CGJRGARCHProcess' where finalize = qlFreeGJRGARCHProcess
+instance Finalizable CHybridHestonHullWhiteProcess' where finalize = qlFreeHybridHestonHullWhiteProcess
+instance Finalizable CKlugeExtOUProcess' where finalize = qlFreeKlugeExtOUProcess
+instance Finalizable CLiborForwardModelProcess' where finalize = qlFreeLiborForwardModelProcess
+instance Finalizable CStochasticProcessArray' where finalize = qlFreeStochasticProcessArray
+instance Finalizable CHestonProcess' where finalize = qlFreeHestonProcess
+instance Finalizable CStochasticProcess1D' where finalize = qlFreeStochasticProcess1D
+instance Finalizable CBatesProcess' where finalize = qlFreeBatesProcess
+instance Finalizable CExtendedOrnsteinUhlenbeckProcess' where finalize = qlFreeExtendedOrnsteinUhlenbeckProcess
+instance Finalizable CHullWhiteForwardProcess' where finalize = qlFreeHullWhiteForwardProcess
+instance Finalizable CHullWhiteProcess' where finalize = qlFreeHullWhiteProcess
+instance Finalizable CMerton76Process' where finalize = qlFreeMerton76Process
+instance Finalizable CVarianceGammaProcess' where finalize = qlFreeVarianceGammaProcess
+instance Finalizable CGeneralizedBlackScholesProcess' where finalize = qlFreeGeneralizedBlackScholesProcess
+instance Finalizable CBlackProcess' where finalize = qlFreeBlackProcess
 foreign import ccall "ql.h qlExtOUWithJumpsProcessAsStochasticProcess" qlExtOUWithJumpsProcessAsStochasticProcess :: Ptr CExtOUWithJumpsProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlGJRGARCHProcessAsStochasticProcess" qlGJRGARCHProcessAsStochasticProcess :: Ptr CGJRGARCHProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlHybridHestonHullWhiteProcessAsStochasticProcess" qlHybridHestonHullWhiteProcessAsStochasticProcess :: Ptr CHybridHestonHullWhiteProcess' -> IO (Ptr CStochasticProcess')
@@ -1510,39 +1461,39 @@ upcastBlackProcess = Upcast qlBlackProcessAsGeneralizedBlackScholesProcess qlFre
 asStochasticProcess :: GenStochasticProcess a -> IO StochasticProcess
 asStochasticProcess (GenStochasticProcess (GenForeignPtr x w)) = w x peekStochasticProcess
 peekStochasticProcess :: Ptr CStochasticProcess' -> IO StochasticProcess
-peekStochasticProcess = GenStochasticProcess <.> newCastForeignPtr metaStochasticProcess
+peekStochasticProcess = GenStochasticProcess <.> newCastForeignPtr
 withStochasticProcess :: GenStochasticProcess a -> (Ptr CStochasticProcess' -> IO b) -> IO b
 withStochasticProcess (GenStochasticProcess (GenForeignPtr x w)) = w x
 withStochasticProcessDescendant :: GenStochasticProcess (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withStochasticProcessDescendant (GenStochasticProcess (GenForeignPtr x _)) = withForeignPtr x
 peekExtOUWithJumpsProcess :: Ptr CExtOUWithJumpsProcess' -> IO ExtOUWithJumpsProcess
-peekExtOUWithJumpsProcess = GenStochasticProcess <.> newGenForeignPtr metaExtOUWithJumpsProcess upcastExtOUWithJumpsProcess
+peekExtOUWithJumpsProcess = GenStochasticProcess <.> newGenForeignPtr upcastExtOUWithJumpsProcess
 peekGJRGARCHProcess :: Ptr CGJRGARCHProcess' -> IO GJRGARCHProcess
-peekGJRGARCHProcess = GenStochasticProcess <.> newGenForeignPtr metaGJRGARCHProcess upcastGJRGARCHProcess
+peekGJRGARCHProcess = GenStochasticProcess <.> newGenForeignPtr upcastGJRGARCHProcess
 peekHybridHestonHullWhiteProcess :: Ptr CHybridHestonHullWhiteProcess' -> IO HybridHestonHullWhiteProcess
-peekHybridHestonHullWhiteProcess = GenStochasticProcess <.> newGenForeignPtr metaHybridHestonHullWhiteProcess upcastHybridHestonHullWhiteProcess
+peekHybridHestonHullWhiteProcess = GenStochasticProcess <.> newGenForeignPtr upcastHybridHestonHullWhiteProcess
 peekKlugeExtOUProcess :: Ptr CKlugeExtOUProcess' -> IO KlugeExtOUProcess
-peekKlugeExtOUProcess = GenStochasticProcess <.> newGenForeignPtr metaKlugeExtOUProcess upcastKlugeExtOUProcess
+peekKlugeExtOUProcess = GenStochasticProcess <.> newGenForeignPtr upcastKlugeExtOUProcess
 peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess' -> IO LiborForwardModelProcess
-peekLiborForwardModelProcess = GenStochasticProcess <.> newGenForeignPtr metaLiborForwardModelProcess upcastLiborForwardModelProcess
+peekLiborForwardModelProcess = GenStochasticProcess <.> newGenForeignPtr upcastLiborForwardModelProcess
 peekStochasticProcessArray :: Ptr CStochasticProcessArray' -> IO StochasticProcessArray
-peekStochasticProcessArray = GenStochasticProcess <.> newGenForeignPtr metaStochasticProcessArray upcastStochasticProcessArray
+peekStochasticProcessArray = GenStochasticProcess <.> newGenForeignPtr upcastStochasticProcessArray
 asHestonProcess :: GenHestonProcess a -> IO HestonProcess
 asHestonProcess (GenStochasticProcess (GenForeignPtr (HestonProcessDescendant (GenForeignPtr x w)) _)) = w x peekHestonProcess
 peekHestonProcess :: Ptr CHestonProcess' -> IO HestonProcess
-peekHestonProcess = newCastForeignPtr metaHestonProcess >=> newHestonProcessDescendant
+peekHestonProcess = newCastForeignPtr >=> newHestonProcessDescendant
 withHestonProcess :: GenHestonProcess a -> (Ptr CHestonProcess' -> IO b) -> IO b
 withHestonProcess (GenStochasticProcess (GenForeignPtr (HestonProcessDescendant (GenForeignPtr x w)) _)) = w x
 marshalHestonProcess :: HestonProcessDescendant a -> (Ptr CStochasticProcess' -> IO b) -> IO b
 marshalHestonProcess (HestonProcessDescendant o) = withGenForeignPtr upcastHestonProcess o
 newHestonProcessDescendant :: GenForeignPtr a CHestonProcess' -> IO (GenHestonProcess a)
 newHestonProcessDescendant p = GenStochasticProcess <^> GenForeignPtr (HestonProcessDescendant p) marshalHestonProcess
-peekHestonProcessDescendant :: Meta a -> Upcast a CHestonProcess' -> Ptr a -> IO (GenHestonProcess (ForeignPtr a))
-peekHestonProcessDescendant m u = newGenForeignPtr m u >=> newHestonProcessDescendant
+peekHestonProcessDescendant :: Finalizable a => Upcast a CHestonProcess' -> Ptr a -> IO (GenHestonProcess (ForeignPtr a))
+peekHestonProcessDescendant u = newGenForeignPtr u >=> newHestonProcessDescendant
 asStochasticProcess1D :: GenStochasticProcess1D a -> IO StochasticProcess1D
 asStochasticProcess1D (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x w)) _)) = w x peekStochasticProcess1D
 peekStochasticProcess1D :: Ptr CStochasticProcess1D' -> IO StochasticProcess1D
-peekStochasticProcess1D = newCastForeignPtr metaStochasticProcess1D >=> newStochasticProcess1DDescendant
+peekStochasticProcess1D = newCastForeignPtr >=> newStochasticProcess1DDescendant
 withStochasticProcess1D :: GenStochasticProcess1D a -> (Ptr CStochasticProcess1D' -> IO b) -> IO b
 withStochasticProcess1D (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x w)) _)) = w x
 withStochasticProcess1DArray :: [GenStochasticProcess1D a] -> ((CUInt, Ptr (Ptr CStochasticProcess1D')) -> IO b) -> IO b
@@ -1551,28 +1502,28 @@ marshalStochasticProcess1D :: StochasticProcess1DDescendant a -> (Ptr CStochasti
 marshalStochasticProcess1D (StochasticProcess1DDescendant o) = withGenForeignPtr upcastStochasticProcess1D o
 newStochasticProcess1DDescendant :: GenForeignPtr a CStochasticProcess1D' -> IO (GenStochasticProcess1D a)
 newStochasticProcess1DDescendant p = GenStochasticProcess <^> GenForeignPtr (StochasticProcess1DDescendant p) marshalStochasticProcess1D
-peekStochasticProcess1DDescendant :: Meta a -> Upcast a CStochasticProcess1D' -> Ptr a -> IO (GenStochasticProcess1D (ForeignPtr a))
-peekStochasticProcess1DDescendant m u = newGenForeignPtr m u >=> newStochasticProcess1DDescendant
+peekStochasticProcess1DDescendant :: Finalizable a => Upcast a CStochasticProcess1D' -> Ptr a -> IO (GenStochasticProcess1D (ForeignPtr a))
+peekStochasticProcess1DDescendant u = newGenForeignPtr u >=> newStochasticProcess1DDescendant
 withStochasticProcess1DDescendant :: GenStochasticProcess1D (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
 withStochasticProcess1DDescendant (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 peekBatesProcess :: Ptr CBatesProcess' -> IO BatesProcess
-peekBatesProcess = peekHestonProcessDescendant metaBatesProcess upcastBatesProcess
+peekBatesProcess = peekHestonProcessDescendant upcastBatesProcess
 withBatesProcess :: BatesProcess -> (Ptr CBatesProcess' -> IO b) -> IO b
 withBatesProcess (GenStochasticProcess (GenForeignPtr (HestonProcessDescendant (GenForeignPtr x _)) _)) = withForeignPtr x
 peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess' -> IO ExtendedOrnsteinUhlenbeckProcess
-peekExtendedOrnsteinUhlenbeckProcess = peekStochasticProcess1DDescendant metaExtendedOrnsteinUhlenbeckProcess upcastExtendedOrnsteinUhlenbeckProcess
+peekExtendedOrnsteinUhlenbeckProcess = peekStochasticProcess1DDescendant upcastExtendedOrnsteinUhlenbeckProcess
 peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess' -> IO HullWhiteForwardProcess
-peekHullWhiteForwardProcess = peekStochasticProcess1DDescendant metaHullWhiteForwardProcess upcastHullWhiteForwardProcess
+peekHullWhiteForwardProcess = peekStochasticProcess1DDescendant upcastHullWhiteForwardProcess
 peekHullWhiteProcess :: Ptr CHullWhiteProcess' -> IO HullWhiteProcess
-peekHullWhiteProcess = peekStochasticProcess1DDescendant metaHullWhiteProcess upcastHullWhiteProcess
+peekHullWhiteProcess = peekStochasticProcess1DDescendant upcastHullWhiteProcess
 peekMerton76Process :: Ptr CMerton76Process' -> IO Merton76Process
-peekMerton76Process = peekStochasticProcess1DDescendant metaMerton76Process upcastMerton76Process
+peekMerton76Process = peekStochasticProcess1DDescendant upcastMerton76Process
 peekVarianceGammaProcess :: Ptr CVarianceGammaProcess' -> IO VarianceGammaProcess
-peekVarianceGammaProcess = peekStochasticProcess1DDescendant metaVarianceGammaProcess upcastVarianceGammaProcess
+peekVarianceGammaProcess = peekStochasticProcess1DDescendant upcastVarianceGammaProcess
 asGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess a -> IO GeneralizedBlackScholesProcess
 asGeneralizedBlackScholesProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr (GeneralizedBlackScholesProcessDescendant (GenForeignPtr x w)) _)) _)) = w x peekGeneralizedBlackScholesProcess
 peekGeneralizedBlackScholesProcess :: Ptr CGeneralizedBlackScholesProcess' -> IO GeneralizedBlackScholesProcess
-peekGeneralizedBlackScholesProcess = newCastForeignPtr metaGeneralizedBlackScholesProcess >=> newGeneralizedBlackScholesProcessDescendant
+peekGeneralizedBlackScholesProcess = newCastForeignPtr >=> newGeneralizedBlackScholesProcessDescendant
 withGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess a -> (Ptr CGeneralizedBlackScholesProcess' -> IO b) -> IO b
 withGeneralizedBlackScholesProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr (GeneralizedBlackScholesProcessDescendant (GenForeignPtr x w)) _)) _)) = w x
 marshalGeneralizedBlackScholesProcess :: GeneralizedBlackScholesProcessDescendant a -> (Ptr CStochasticProcess1D' -> IO b) -> IO b
@@ -1580,7 +1531,7 @@ marshalGeneralizedBlackScholesProcess (GeneralizedBlackScholesProcessDescendant 
 newGeneralizedBlackScholesProcessDescendant :: GenForeignPtr a CGeneralizedBlackScholesProcess' -> IO (GenGeneralizedBlackScholesProcess a)
 newGeneralizedBlackScholesProcessDescendant p = GenStochasticProcess <^> GenForeignPtr (StochasticProcess1DDescendant $ GenForeignPtr (GeneralizedBlackScholesProcessDescendant p) marshalGeneralizedBlackScholesProcess) marshalStochasticProcess1D
 peekBlackProcess :: Ptr CBlackProcess' -> IO BlackProcess
-peekBlackProcess = newGenForeignPtr metaBlackProcess upcastBlackProcess >=> newGeneralizedBlackScholesProcessDescendant
+peekBlackProcess = newGenForeignPtr upcastBlackProcess >=> newGeneralizedBlackScholesProcessDescendant
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescendant (GenForeignPtr (GeneralizedBlackScholesProcessDescendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
@@ -1957,18 +1908,12 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --foreign import ccall "ql.h &qlFreeLeaf2" qlFreeLeaf2 :: FinalizerPtr CLeaf2'
 --foreign import ccall "ql.h &qlFreeNode2" qlFreeNode2 :: FinalizerPtr CNode2'
 --foreign import ccall "ql.h &qlFreeLeaf3" qlFreeLeaf3 :: FinalizerPtr CLeaf3'
---metaNode0 :: Meta CNode0'
---metaNode0 = Meta qlFreeNode0
---metaLeaf1 :: Meta CLeaf1'
---metaLeaf1 = Meta qlFreeLeaf1
---metaNode1 :: Meta CNode1'
---metaNode1 = Meta qlFreeNode1
---metaLeaf2 :: Meta CLeaf2'
---metaLeaf2 = Meta qlFreeLeaf2
---metaNode2 :: Meta CNode2'
---metaNode2 = Meta qlFreeNode2
---metaLeaf3 :: Meta CLeaf3'
---metaLeaf3 = Meta qlFreeLeaf3
+--instance Finalizable CNode0' where finalize = qlFreeNode0
+--instance Finalizable CLeaf1' where finalize = qlFreeLeaf1
+--instance Finalizable CNode1' where finalize = qlFreeNode1
+--instance Finalizable CLeaf2' where finalize = qlFreeLeaf2
+--instance Finalizable CNode2' where finalize = qlFreeNode2
+--instance Finalizable CLeaf3' where finalize = qlFreeLeaf3
 --foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
 --foreign import ccall "ql.h qlNode1AsNode0" qlNode1AsNode0 :: Ptr CNode1' -> IO (Ptr CNode0')
 --foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
@@ -1987,17 +1932,17 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --asNode0 :: GenNode0 a -> IO Node0
 --asNode0 (GenNode0 (GenForeignPtr x w)) = w x peekNode0
 --peekNode0 :: Ptr CNode0' -> IO Node0
---peekNode0 = GenNode0 <.> newCastForeignPtr metaNode0
+--peekNode0 = GenNode0 <.> newCastForeignPtr
 --withNode0 :: GenNode0 a -> (Ptr CNode0' -> IO b) -> IO b
 --withNode0 (GenNode0 (GenForeignPtr x w)) = w x
 --withNode0Descendant :: GenNode0 (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 --withNode0Descendant (GenNode0 (GenForeignPtr x _)) = withForeignPtr x
 --peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
---peekLeaf1 = GenNode0 <.> newGenForeignPtr metaLeaf1 upcastLeaf1
+--peekLeaf1 = GenNode0 <.> newGenForeignPtr upcastLeaf1
 --asNode1 :: GenNode1 a -> IO Node1
 --asNode1 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x w)) _)) = w x peekNode1
 --peekNode1 :: Ptr CNode1' -> IO Node1
---peekNode1 = newCastForeignPtr metaNode1 >=> newNode1Descendant
+--peekNode1 = newCastForeignPtr >=> newNode1Descendant
 --withNode1 :: GenNode1 a -> (Ptr CNode1' -> IO b) -> IO b
 --withNode1 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x w)) _)) = w x
 --withMaybeNode1 :: Maybe (GenNode1 a) -> (Ptr CNode1' -> IO b) -> IO b
@@ -2006,18 +1951,18 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --marshalNode1 (Node1Descendant o) = withGenForeignPtr upcastNode1 o
 --newNode1Descendant :: GenForeignPtr a CNode1' -> IO (GenNode1 a)
 --newNode1Descendant p = GenNode0 <^> GenForeignPtr (Node1Descendant p) marshalNode1
---peekNode1Descendant :: Meta a -> Upcast a CNode1' -> Ptr a -> IO (GenNode1 (ForeignPtr a))
---peekNode1Descendant m u = newGenForeignPtr m u >=> newNode1Descendant
+--peekNode1Descendant :: Finalizable a => Upcast a CNode1' -> Ptr a -> IO (GenNode1 (ForeignPtr a))
+--peekNode1Descendant u = newGenForeignPtr u >=> newNode1Descendant
 --withNode1Descendant :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
 --withNode1Descendant (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
 --peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
---peekLeaf2 = peekNode1Descendant metaLeaf2 upcastLeaf2
+--peekLeaf2 = peekNode1Descendant upcastLeaf2
 ----withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
 ----withLeaf2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr x _)) _)) = withForeignPtr x
 --asNode2 :: GenNode2 a -> IO Node2
 --asNode2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x w)) _)) _)) = w x peekNode2
 --peekNode2 :: Ptr CNode2' -> IO Node2
---peekNode2 = newCastForeignPtr metaNode2 >=> newNode2Descendant
+--peekNode2 = newCastForeignPtr >=> newNode2Descendant
 --withNode2 :: GenNode2 a -> (Ptr CNode2' -> IO b) -> IO b
 --withNode2 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x w)) _)) _)) = w x
 --marshalNode2 :: Node2Descendant a -> (Ptr CNode1' -> IO b) -> IO b
@@ -2025,7 +1970,7 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --newNode2Descendant :: GenForeignPtr a CNode2' -> IO (GenNode2 a)
 --newNode2Descendant p = GenNode0 <^> GenForeignPtr (Node1Descendant $ GenForeignPtr (Node2Descendant p) marshalNode2) marshalNode1
 --peekLeaf3 :: Ptr CLeaf3' -> IO Leaf3
---peekLeaf3 = newGenForeignPtr metaLeaf3 upcastLeaf3 >=> newNode2Descendant
+--peekLeaf3 = newGenForeignPtr upcastLeaf3 >=> newNode2Descendant
 ----withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
 ----withLeaf3 (GenNode0 (GenForeignPtr (Node1Descendant (GenForeignPtr (Node2Descendant (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
