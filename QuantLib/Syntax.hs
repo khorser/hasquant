@@ -4,6 +4,8 @@ module QuantLib.Syntax
   , free2nd
   , free1st'
   , free2nd'
+  , freeNth
+  , freeNth'
   )
 where
 
@@ -46,7 +48,6 @@ freeNth i n = do
 freeNth' :: Int -> Int -> ExpQ
 freeNth' i an = do
   n <- newName "f"
-  l <- genFreeNth i an n
-  return $ LamE [VarP n] l
+  LamE [VarP n] <$> genFreeNth i an n
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
