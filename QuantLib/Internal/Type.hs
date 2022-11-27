@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances, RankNTypes, DuplicateRecordFields #-}
+{-# LANGUAGE RankNTypes, DuplicateRecordFields #-}
 module QuantLib.Internal.Type
 (
     Standalone(..)
@@ -548,14 +548,12 @@ f1 <.> f2 = fmap f1 . f2
 f <^> x = pure $ f x
 
 -- STANDALONE TYPES
-newtype Meta a = Meta (FinalizerPtr a)
-
 class Finalizable a where
-  fin :: FinalizerPtr a
+  finalize :: FinalizerPtr a
 
 newtype Standalone a = Standalone {_ptr :: ForeignPtr a}
 peekStandalone :: Finalizable a => Ptr a -> IO (Standalone a)
-peekStandalone = Standalone <.> newForeignPtr fin
+peekStandalone = Standalone <.> newForeignPtr finalize
 withStandalone :: Standalone a -> (Ptr a -> IO b) -> IO b
 withStandalone (Standalone p) = withForeignPtr p
 withMaybeStandalone :: Maybe (Standalone a) -> (Ptr a -> IO b) -> IO b
@@ -567,7 +565,7 @@ showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
 
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
-instance Finalizable CCalendar where fin = qlFreeCalendar
+instance Finalizable CCalendar where finalize = qlFreeCalendar
 foreign import ccall "ql.h &qlFreeCalendar" qlFreeCalendar :: FinalizerPtr CCalendar
 peekCalendar :: Ptr CCalendar -> IO Calendar
 peekCalendar = Calendar <.> peekStandalone
@@ -580,7 +578,7 @@ instance Eq Calendar where x == y = show x == show y
 data CCurrency
 newtype Currency = Currency {getCCurrency :: Standalone CCurrency}
 foreign import ccall "ql.h &qlFreeCurrency" qlFreeCurrency :: FinalizerPtr CCurrency
-instance Finalizable CCurrency where fin = qlFreeCurrency
+instance Finalizable CCurrency where finalize = qlFreeCurrency
 peekCurrency :: Ptr CCurrency -> IO Currency
 peekCurrency = Currency <.> peekStandalone
 withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
@@ -594,7 +592,7 @@ instance Eq Currency where x == y = show x == show y
 data CDayCounter
 newtype DayCounter = DayCounter {getCDayCounter :: Standalone CDayCounter}
 foreign import ccall "ql.h &qlFreeDayCounter" qlFreeDayCounter :: FinalizerPtr CDayCounter
-instance Finalizable CDayCounter where fin = qlFreeDayCounter
+instance Finalizable CDayCounter where finalize = qlFreeDayCounter
 peekDayCounter :: Ptr CDayCounter -> IO DayCounter
 peekDayCounter = DayCounter <.> peekStandalone
 withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
@@ -606,7 +604,7 @@ instance Eq DayCounter where x == y = show x == show y
 data CSchedule
 newtype Schedule = Schedule {getCSchedule :: Standalone CSchedule}
 foreign import ccall "ql.h &qlFreeSchedule" qlFreeSchedule :: FinalizerPtr CSchedule
-instance Finalizable CSchedule where fin = qlFreeSchedule
+instance Finalizable CSchedule where finalize = qlFreeSchedule
 peekSchedule :: Ptr CSchedule -> IO Schedule
 peekSchedule = Schedule <.> peekStandalone
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
@@ -615,7 +613,7 @@ withSchedule = withStandalone . getCSchedule
 data CInterestRate
 newtype InterestRate = InterestRate {getCInterestRate :: Standalone CInterestRate}
 foreign import ccall "ql.h &qlFreeInterestRate" qlFreeInterestRate :: FinalizerPtr CInterestRate
-instance Finalizable CInterestRate where fin = qlFreeInterestRate
+instance Finalizable CInterestRate where finalize = qlFreeInterestRate
 peekInterestRate :: Ptr CInterestRate -> IO InterestRate
 peekInterestRate = InterestRate <.> peekStandalone
 withInterestRate :: InterestRate -> (Ptr CInterestRate -> IO b) -> IO b
@@ -626,7 +624,7 @@ withInterestRateArray = withStandaloneArray getCInterestRate
 data CTimeGrid
 newtype TimeGrid = TimeGrid {getCTimeGrid :: Standalone CTimeGrid}
 foreign import ccall "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid
-instance Finalizable CTimeGrid where fin = qlFreeTimeGrid
+instance Finalizable CTimeGrid where finalize = qlFreeTimeGrid
 peekTimeGrid :: Ptr CTimeGrid -> IO TimeGrid
 peekTimeGrid = TimeGrid <.> peekStandalone
 withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
@@ -635,7 +633,7 @@ withTimeGrid = withStandalone . getCTimeGrid
 data CDividend
 newtype Dividend = Dividend {getCDividend :: Standalone CDividend}
 foreign import ccall "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
-instance Finalizable CDividend where fin = qlFreeDividend
+instance Finalizable CDividend where finalize = qlFreeDividend
 peekDividend :: Ptr CDividend -> IO Dividend
 peekDividend = Dividend <.> peekStandalone
 withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
@@ -646,7 +644,7 @@ withDividendArray = withStandaloneArray getCDividend
 data CSmileSection
 newtype SmileSection = SmileSection {getCSmileSection :: Standalone CSmileSection}
 foreign import ccall "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerPtr CSmileSection
-instance Finalizable CSmileSection where fin = qlFreeSmileSection
+instance Finalizable CSmileSection where finalize = qlFreeSmileSection
 peekSmileSection :: Ptr CSmileSection -> IO SmileSection
 peekSmileSection = SmileSection <.> peekStandalone
 withSmileSection :: SmileSection -> (Ptr CSmileSection -> IO b) -> IO b
@@ -655,7 +653,7 @@ withSmileSection = withStandalone . getCSmileSection
 data CPricingEngine
 newtype PricingEngine = PricingEngine {getCPricingEngine :: Standalone CPricingEngine}
 foreign import ccall "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
-instance Finalizable CPricingEngine where fin = qlFreePricingEngine
+instance Finalizable CPricingEngine where finalize = qlFreePricingEngine
 peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
 peekPricingEngine = PricingEngine <.> peekStandalone
 withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
@@ -664,7 +662,7 @@ withPricingEngine = withStandalone . getCPricingEngine
 data CFloatingRateCouponPricer
 newtype FloatingRateCouponPricer = FloatingRateCouponPricer {getCFloatingRateCouponPricer :: Standalone CFloatingRateCouponPricer}
 foreign import ccall "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer
-instance Finalizable CFloatingRateCouponPricer where fin = qlFreeFloatingRateCouponPricer
+instance Finalizable CFloatingRateCouponPricer where finalize = qlFreeFloatingRateCouponPricer
 peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer -> IO FloatingRateCouponPricer
 peekFloatingRateCouponPricer = FloatingRateCouponPricer <.> peekStandalone
 withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
@@ -675,7 +673,7 @@ withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPr
 data CDefaultProbabilityHelper
 newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: Standalone CDefaultProbabilityHelper}
 foreign import ccall "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabilityHelper :: FinalizerPtr CDefaultProbabilityHelper
-instance Finalizable CDefaultProbabilityHelper where fin = qlFreeDefaultProbabilityHelper
+instance Finalizable CDefaultProbabilityHelper where finalize = qlFreeDefaultProbabilityHelper
 peekDefaultProbabilityHelper :: Ptr CDefaultProbabilityHelper -> IO DefaultProbabilityHelper
 peekDefaultProbabilityHelper = DefaultProbabilityHelper <.> peekStandalone
 withDefaultProbabilityHelper :: DefaultProbabilityHelper -> (Ptr CDefaultProbabilityHelper -> IO b) -> IO b
@@ -686,7 +684,7 @@ withDefaultProbabilityHelperArray = withStandaloneArray getCDefaultProbabilityHe
 data CPathGenerator
 newtype PathGenerator = PathGenerator {getCPathGenerator :: Standalone CPathGenerator}
 foreign import ccall "ql.h &qlFreePathGenerator" qlFreePathGenerator :: FinalizerPtr CPathGenerator
-instance Finalizable CPathGenerator where fin = qlFreePathGenerator
+instance Finalizable CPathGenerator where finalize = qlFreePathGenerator
 peekPathGenerator :: Ptr CPathGenerator -> IO PathGenerator
 peekPathGenerator = PathGenerator <.> peekStandalone
 withPathGenerator :: PathGenerator -> (Ptr CPathGenerator -> IO b) -> IO b
@@ -695,7 +693,7 @@ withPathGenerator = withStandalone . getCPathGenerator
 data CSamplePath
 newtype SamplePath = SamplePath {getCSamplePath :: Standalone CSamplePath}
 foreign import ccall "ql.h &qlFreeSamplePath" qlFreeSamplePath :: FinalizerPtr CSamplePath
-instance Finalizable CSamplePath where fin = qlFreeSamplePath
+instance Finalizable CSamplePath where finalize = qlFreeSamplePath
 peekSamplePath :: Ptr CSamplePath -> IO SamplePath
 peekSamplePath = SamplePath <.> peekStandalone
 withSamplePath :: SamplePath -> (Ptr CSamplePath -> IO b) -> IO b
@@ -705,75 +703,76 @@ withSamplePath = withStandalone . getCSamplePath
 data CQlClaim
 type QlClaim = Standalone CQlClaim
 foreign import ccall "ql.h &qlFreeClaim" qlFreeClaim :: FinalizerPtr CQlClaim
-instance Finalizable CQlClaim where fin = qlFreeClaim
+instance Finalizable CQlClaim where finalize = qlFreeClaim
 peekClaim :: Ptr CQlClaim -> IO (Standalone CQlClaim)
 peekClaim = peekStandalone
 
 data CQlCallability
 type QlCallability = Standalone CQlCallability
 foreign import ccall "ql.h &qlFreeCallability" qlFreeCallability :: FinalizerPtr CQlCallability
-instance Finalizable CQlCallability where fin = qlFreeCallability
+instance Finalizable CQlCallability where finalize = qlFreeCallability
 peekCallability :: Ptr CQlCallability -> IO (Standalone CQlCallability)
 peekCallability = peekStandalone
 
 data CConstraint
 type QlConstraint = Standalone CConstraint
 foreign import ccall "ql.h &qlFreeConstraint" qlFreeConstraint :: FinalizerPtr CConstraint
-instance Finalizable CConstraint where fin = qlFreeConstraint
+instance Finalizable CConstraint where finalize = qlFreeConstraint
 peekConstraint :: Ptr CConstraint -> IO (Standalone CConstraint)
 peekConstraint = peekStandalone
 
 data CEndCriteria
 type QlEndCriteria = Standalone CEndCriteria
 foreign import ccall "ql.h &qlFreeEndCriteria" qlFreeEndCriteria :: FinalizerPtr CEndCriteria
-instance Finalizable CEndCriteria where fin = qlFreeEndCriteria
+instance Finalizable CEndCriteria where finalize = qlFreeEndCriteria
 peekEndCriteria :: Ptr CEndCriteria -> IO (Standalone CEndCriteria)
 peekEndCriteria = peekStandalone
 
 data CFdmSchemeDesc
 type QlFdmSchemeDesc = Standalone CFdmSchemeDesc
 foreign import ccall "ql.h &qlFreeFdmSchemeDesc" qlFreeFdmSchemeDesc :: FinalizerPtr CFdmSchemeDesc
-instance Finalizable CFdmSchemeDesc where fin = qlFreeFdmSchemeDesc
+instance Finalizable CFdmSchemeDesc where finalize = qlFreeFdmSchemeDesc
 peekFdmSchemeDesc :: Ptr CFdmSchemeDesc -> IO (Standalone CFdmSchemeDesc)
 peekFdmSchemeDesc = peekStandalone
 
 data CFittedBondDiscountCurveFittingMethod
 type QlFittedBondDiscountCurveFittingMethod = Standalone CFittedBondDiscountCurveFittingMethod
 foreign import ccall "ql.h &qlFreeFittedBondDiscountCurveFittingMethod" qlFreeFittedBondDiscountCurveFittingMethod :: FinalizerPtr CFittedBondDiscountCurveFittingMethod
-instance Finalizable CFittedBondDiscountCurveFittingMethod where fin = qlFreeFittedBondDiscountCurveFittingMethod
+instance Finalizable CFittedBondDiscountCurveFittingMethod where finalize = qlFreeFittedBondDiscountCurveFittingMethod
 peekFittedBondDiscountCurveFittingMethod :: Ptr CFittedBondDiscountCurveFittingMethod -> IO (Standalone CFittedBondDiscountCurveFittingMethod)
 peekFittedBondDiscountCurveFittingMethod = peekStandalone
 
 data COptimizationMethod
 type QlOptimizationMethod = Standalone COptimizationMethod
 foreign import ccall "ql.h &qlFreeOptimizationMethod" qlFreeOptimizationMethod :: FinalizerPtr COptimizationMethod
-instance Finalizable COptimizationMethod where fin = qlFreeOptimizationMethod
+instance Finalizable COptimizationMethod where finalize = qlFreeOptimizationMethod
 peekOptimizationMethod :: Ptr COptimizationMethod -> IO (Standalone COptimizationMethod)
 peekOptimizationMethod = peekStandalone
 
 data CRounding
 type QlRounding = Standalone CRounding
 foreign import ccall "ql.h &qlFreeRounding" qlFreeRounding :: FinalizerPtr CRounding
-instance Finalizable CRounding where fin = qlFreeRounding
+instance Finalizable CRounding where finalize = qlFreeRounding
 peekRounding :: Ptr CRounding -> IO (Standalone CRounding)
 peekRounding = peekStandalone
 
 data CLmCorrelationModel
 type QlLmCorrelationModel = Standalone CLmCorrelationModel
 foreign import ccall "ql.h &qlFreeLmCorrelationModel" qlFreeLmCorrelationModel :: FinalizerPtr CLmCorrelationModel
-instance Finalizable CLmCorrelationModel where fin = qlFreeLmCorrelationModel
+instance Finalizable CLmCorrelationModel where finalize = qlFreeLmCorrelationModel
 peekLmCorrelationModel :: Ptr CLmCorrelationModel -> IO (Standalone CLmCorrelationModel)
 peekLmCorrelationModel = peekStandalone
 
 data CLmVolatilityModel
 type QlLmVolatilityModel = Standalone CLmVolatilityModel
 foreign import ccall "ql.h &qlFreeLmVolatilityModel" qlFreeLmVolatilityModel :: FinalizerPtr CLmVolatilityModel
-instance Finalizable CLmVolatilityModel where fin = qlFreeLmVolatilityModel
+instance Finalizable CLmVolatilityModel where finalize = qlFreeLmVolatilityModel
 peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityModel)
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
 -- TODO get rid of implicit dictionary passing in favour of type classes
+newtype Meta a = Meta (FinalizerPtr a)
 data Upcast a p = Upcast {_upcast :: Ptr a -> IO (Ptr p), _baseFinalizer :: FinalizerPtr p}
 -- we can infer upcast just from two types, actually we don't need to drag it around with the cast function
 data GenObject a p = GenObject {_ptr :: !(ForeignPtr a), _meta :: !(Upcast a p)}
@@ -1532,7 +1531,7 @@ withBlackProcess (GenStochasticProcess (GenForeignPtr (StochasticProcess1DDescen
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 
 data CAssetSwap
-instance Finalizable CAssetSwap where fin = qlFreeAssetSwap
+instance Finalizable CAssetSwap where finalize = qlFreeAssetSwap
 newtype AssetSwap = AssetSwap {getCAssetSwap :: Standalone CAssetSwap}
 peekAssetSwap :: Ptr CAssetSwap -> IO AssetSwap
 peekAssetSwap = peekStandalone >=> return . AssetSwap
@@ -1540,189 +1539,189 @@ withAssetSwap :: AssetSwap -> (Ptr CAssetSwap -> IO b) -> IO b
 withAssetSwap = withStandalone . getCAssetSwap
 data CBarrierOption
 newtype BarrierOption = BarrierOption {getCBarrierOption :: Standalone CBarrierOption}
-instance Finalizable CBarrierOption where fin = qlFreeBarrierOption
+instance Finalizable CBarrierOption where finalize = qlFreeBarrierOption
 peekBarrierOption :: Ptr CBarrierOption -> IO BarrierOption
 peekBarrierOption = peekStandalone >=> return . BarrierOption
 withBarrierOption :: BarrierOption -> (Ptr CBarrierOption -> IO b) -> IO b
 withBarrierOption = withStandalone . getCBarrierOption
 data CBMASwap
 newtype BMASwap = BMASwap {getCBMASwap :: Standalone CBMASwap}
-instance Finalizable CBMASwap where fin = qlFreeBMASwap
+instance Finalizable CBMASwap where finalize = qlFreeBMASwap
 peekBMASwap :: Ptr CBMASwap -> IO BMASwap
 peekBMASwap = peekStandalone >=> return . BMASwap
 withBMASwap :: BMASwap -> (Ptr CBMASwap -> IO b) -> IO b
 withBMASwap = withStandalone . getCBMASwap
 data CBond
 newtype Bond = Bond {getCBond :: Standalone CBond}
-instance Finalizable CBond where fin = qlFreeBond
+instance Finalizable CBond where finalize = qlFreeBond
 peekBond :: Ptr CBond -> IO Bond
 peekBond = peekStandalone >=> return . Bond
 withBond :: Bond -> (Ptr CBond -> IO b) -> IO b
 withBond = withStandalone . getCBond
 data CCallableBond
 newtype CallableBond = CallableBond {getCCallableBond :: Standalone CCallableBond}
-instance Finalizable CCallableBond where fin = qlFreeCallableBond
+instance Finalizable CCallableBond where finalize = qlFreeCallableBond
 peekCallableBond :: Ptr CCallableBond -> IO CallableBond
 peekCallableBond = peekStandalone >=> return . CallableBond
 withCallableBond :: CallableBond -> (Ptr CCallableBond -> IO b) -> IO b
 withCallableBond = withStandalone . getCCallableBond
 data CCapFloor
 newtype CapFloor = CapFloor {getCCapFloor :: Standalone CCapFloor}
-instance Finalizable CCapFloor where fin = qlFreeCapFloor
+instance Finalizable CCapFloor where finalize = qlFreeCapFloor
 peekCapFloor :: Ptr CCapFloor -> IO CapFloor
 peekCapFloor = peekStandalone >=> return . CapFloor
 withCapFloor :: CapFloor -> (Ptr CCapFloor -> IO b) -> IO b
 withCapFloor = withStandalone . getCCapFloor
 data CCdsOption
 newtype CdsOption = CdsOption {getCCdsOption :: Standalone CCdsOption}
-instance Finalizable CCdsOption where fin = qlFreeCdsOption
+instance Finalizable CCdsOption where finalize = qlFreeCdsOption
 peekCdsOption :: Ptr CCdsOption -> IO CdsOption
 peekCdsOption = peekStandalone >=> return . CdsOption
 withCdsOption :: CdsOption -> (Ptr CCdsOption -> IO b) -> IO b
 withCdsOption = withStandalone . getCCdsOption
 data CConvertibleBond
 newtype ConvertibleBond = ConvertibleBond {getCConvertibleBond :: Standalone CConvertibleBond}
-instance Finalizable CConvertibleBond where fin = qlFreeConvertibleBond
+instance Finalizable CConvertibleBond where finalize = qlFreeConvertibleBond
 peekConvertibleBond :: Ptr CConvertibleBond -> IO ConvertibleBond
 peekConvertibleBond = peekStandalone >=> return . ConvertibleBond
 withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond -> IO b) -> IO b
 withConvertibleBond = withStandalone . getCConvertibleBond
 data CCreditDefaultSwap
 newtype CreditDefaultSwap = CreditDefaultSwap {getCCreditDefaultSwap :: Standalone CCreditDefaultSwap}
-instance Finalizable CCreditDefaultSwap where fin = qlFreeCreditDefaultSwap
+instance Finalizable CCreditDefaultSwap where finalize = qlFreeCreditDefaultSwap
 peekCreditDefaultSwap :: Ptr CCreditDefaultSwap -> IO CreditDefaultSwap
 peekCreditDefaultSwap = peekStandalone >=> return . CreditDefaultSwap
 withCreditDefaultSwap :: CreditDefaultSwap -> (Ptr CCreditDefaultSwap -> IO b) -> IO b
 withCreditDefaultSwap = withStandalone . getCCreditDefaultSwap
 data CDividendVanillaOption
 newtype DividendVanillaOption = DividendVanillaOption {getCDividendVanillaOption :: Standalone CDividendVanillaOption}
-instance Finalizable CDividendVanillaOption where fin = qlFreeDividendVanillaOption
+instance Finalizable CDividendVanillaOption where finalize = qlFreeDividendVanillaOption
 peekDividendVanillaOption :: Ptr CDividendVanillaOption -> IO DividendVanillaOption
 peekDividendVanillaOption = peekStandalone >=> return . DividendVanillaOption
 withDividendVanillaOption :: DividendVanillaOption -> (Ptr CDividendVanillaOption -> IO b) -> IO b
 withDividendVanillaOption = withStandalone . getCDividendVanillaOption
 data CFixedRateBond
 newtype FixedRateBond = FixedRateBond {getCFixedRateBond :: Standalone CFixedRateBond}
-instance Finalizable CFixedRateBond where fin = qlFreeFixedRateBond
+instance Finalizable CFixedRateBond where finalize = qlFreeFixedRateBond
 peekFixedRateBond :: Ptr CFixedRateBond -> IO FixedRateBond
 peekFixedRateBond = peekStandalone >=> return . FixedRateBond
 withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond -> IO b) -> IO b
 withFixedRateBond = withStandalone . getCFixedRateBond
 data CBondForward
 newtype BondForward = BondForward {getCBondForward :: Standalone CBondForward}
-instance Finalizable CBondForward where fin = qlFreeBondForward
+instance Finalizable CBondForward where finalize = qlFreeBondForward
 peekBondForward :: Ptr CBondForward -> IO BondForward
 peekBondForward = peekStandalone >=> return . BondForward
 withBondForward :: BondForward -> (Ptr CBondForward -> IO b) -> IO b
 withBondForward = withStandalone . getCBondForward
 data CForward
 newtype Forward = Forward {getCForward :: Standalone CForward}
-instance Finalizable CForward where fin = qlFreeForward
+instance Finalizable CForward where finalize = qlFreeForward
 peekForward :: Ptr CForward -> IO Forward
 peekForward = peekStandalone >=> return . Forward
 withForward :: Forward -> (Ptr CForward -> IO b) -> IO b
 withForward = withStandalone . getCForward
 data CForwardRateAgreement
 newtype ForwardRateAgreement = ForwardRateAgreement {getCForwardRateAgreement :: Standalone CForwardRateAgreement}
-instance Finalizable CForwardRateAgreement where fin = qlFreeForwardRateAgreement
+instance Finalizable CForwardRateAgreement where finalize = qlFreeForwardRateAgreement
 peekForwardRateAgreement :: Ptr CForwardRateAgreement -> IO ForwardRateAgreement
 peekForwardRateAgreement = peekStandalone >=> return . ForwardRateAgreement
 withForwardRateAgreement :: ForwardRateAgreement -> (Ptr CForwardRateAgreement -> IO b) -> IO b
 withForwardRateAgreement = withStandalone . getCForwardRateAgreement
 data CForwardVanillaOption
 newtype ForwardVanillaOption = ForwardVanillaOption {getCForwardVanillaOption :: Standalone CForwardVanillaOption}
-instance Finalizable CForwardVanillaOption where fin = qlFreeForwardVanillaOption
+instance Finalizable CForwardVanillaOption where finalize = qlFreeForwardVanillaOption
 peekForwardVanillaOption :: Ptr CForwardVanillaOption -> IO ForwardVanillaOption
 peekForwardVanillaOption = peekStandalone >=> return . ForwardVanillaOption
 withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption -> IO b) -> IO b
 withForwardVanillaOption = withStandalone . getCForwardVanillaOption
 data CInstrument
 newtype Instrument = Instrument {getCInstrument :: Standalone CInstrument}
-instance Finalizable CInstrument where fin = qlFreeInstrument
+instance Finalizable CInstrument where finalize = qlFreeInstrument
 peekInstrument :: Ptr CInstrument -> IO Instrument
 peekInstrument = peekStandalone >=> return . Instrument
 withInstrument :: Instrument -> (Ptr CInstrument -> IO b) -> IO b
 withInstrument = withStandalone . getCInstrument
 data CMargrabeOption
 newtype MargrabeOption = MargrabeOption {getCMargrabeOption :: Standalone CMargrabeOption}
-instance Finalizable CMargrabeOption where fin = qlFreeMargrabeOption
+instance Finalizable CMargrabeOption where finalize = qlFreeMargrabeOption
 peekMargrabeOption :: Ptr CMargrabeOption -> IO MargrabeOption
 peekMargrabeOption = peekStandalone >=> return . MargrabeOption
 withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption -> IO b) -> IO b
 withMargrabeOption = withStandalone . getCMargrabeOption
 data CMultiAssetOption
 newtype MultiAssetOption = MultiAssetOption {getCMultiAssetOption :: Standalone CMultiAssetOption}
-instance Finalizable CMultiAssetOption where fin = qlFreeMultiAssetOption
+instance Finalizable CMultiAssetOption where finalize = qlFreeMultiAssetOption
 peekMultiAssetOption :: Ptr CMultiAssetOption -> IO MultiAssetOption
 peekMultiAssetOption = peekStandalone >=> return . MultiAssetOption
 withMultiAssetOption :: MultiAssetOption -> (Ptr CMultiAssetOption -> IO b) -> IO b
 withMultiAssetOption = withStandalone . getCMultiAssetOption
 data COneAssetOption
 newtype OneAssetOption = OneAssetOption {getCOneAssetOption :: Standalone COneAssetOption}
-instance Finalizable COneAssetOption where fin = qlFreeOneAssetOption
+instance Finalizable COneAssetOption where finalize = qlFreeOneAssetOption
 peekOneAssetOption :: Ptr COneAssetOption -> IO OneAssetOption
 peekOneAssetOption = peekStandalone >=> return . OneAssetOption
 withOneAssetOption :: OneAssetOption -> (Ptr COneAssetOption -> IO b) -> IO b
 withOneAssetOption = withStandalone . getCOneAssetOption
 data COption
 newtype Option = Option {getCOption :: Standalone COption}
-instance Finalizable COption where fin = qlFreeOption
+instance Finalizable COption where finalize = qlFreeOption
 peekOption :: Ptr COption -> IO Option
 peekOption = peekStandalone >=> return . Option
 withOption :: Option -> (Ptr COption -> IO b) -> IO b
 withOption = withStandalone . getCOption
 data COvernightIndexedSwap
 newtype OvernightIndexedSwap = OvernightIndexedSwap {getCOvernightIndexedSwap :: Standalone COvernightIndexedSwap}
-instance Finalizable COvernightIndexedSwap where fin = qlFreeOvernightIndexedSwap
+instance Finalizable COvernightIndexedSwap where finalize = qlFreeOvernightIndexedSwap
 peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap -> IO OvernightIndexedSwap
 peekOvernightIndexedSwap = peekStandalone >=> return . OvernightIndexedSwap
 withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap -> IO b) -> IO b
 withOvernightIndexedSwap = withStandalone . getCOvernightIndexedSwap
 data CQuantoBarrierOption
 newtype QuantoBarrierOption = QuantoBarrierOption {getCQuantoBarrierOption :: Standalone CQuantoBarrierOption}
-instance Finalizable CQuantoBarrierOption where fin = qlFreeQuantoBarrierOption
+instance Finalizable CQuantoBarrierOption where finalize = qlFreeQuantoBarrierOption
 peekQuantoBarrierOption :: Ptr CQuantoBarrierOption -> IO QuantoBarrierOption
 peekQuantoBarrierOption = peekStandalone >=> return . QuantoBarrierOption
 withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption -> IO b) -> IO b
 withQuantoBarrierOption = withStandalone . getCQuantoBarrierOption
 data CQuantoForwardVanillaOption
 newtype QuantoForwardVanillaOption = QuantoForwardVanillaOption {getCQuantoForwardVanillaOption :: Standalone CQuantoForwardVanillaOption}
-instance Finalizable CQuantoForwardVanillaOption where fin = qlFreeQuantoForwardVanillaOption
+instance Finalizable CQuantoForwardVanillaOption where finalize = qlFreeQuantoForwardVanillaOption
 peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO QuantoForwardVanillaOption
 peekQuantoForwardVanillaOption = peekStandalone >=> return . QuantoForwardVanillaOption
 withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption -> IO b) -> IO b
 withQuantoForwardVanillaOption = withStandalone . getCQuantoForwardVanillaOption
 data CQuantoVanillaOption
 newtype QuantoVanillaOption = QuantoVanillaOption {getCQuantoVanillaOption :: Standalone CQuantoVanillaOption}
-instance Finalizable CQuantoVanillaOption where fin = qlFreeQuantoVanillaOption
+instance Finalizable CQuantoVanillaOption where finalize = qlFreeQuantoVanillaOption
 peekQuantoVanillaOption :: Ptr CQuantoVanillaOption -> IO QuantoVanillaOption
 peekQuantoVanillaOption = peekStandalone >=> return . QuantoVanillaOption
 withQuantoVanillaOption :: QuantoVanillaOption -> (Ptr CQuantoVanillaOption -> IO b) -> IO b
 withQuantoVanillaOption = withStandalone . getCQuantoVanillaOption
 data CSwap
 newtype Swap = Swap {getCSwap :: Standalone CSwap}
-instance Finalizable CSwap where fin = qlFreeSwap
+instance Finalizable CSwap where finalize = qlFreeSwap
 peekSwap :: Ptr CSwap -> IO Swap
 peekSwap = peekStandalone >=> return . Swap
 withSwap :: Swap -> (Ptr CSwap -> IO b) -> IO b
 withSwap = withStandalone . getCSwap
 data CSwaption
 newtype Swaption = Swaption {getCSwaption :: Standalone CSwaption}
-instance Finalizable CSwaption where fin = qlFreeSwaption
+instance Finalizable CSwaption where finalize = qlFreeSwaption
 peekSwaption :: Ptr CSwaption -> IO Swaption
 peekSwaption = peekStandalone >=> return . Swaption
 withSwaption :: Swaption -> (Ptr CSwaption -> IO b) -> IO b
 withSwaption = withStandalone . getCSwaption
 data CVanillaOption
 newtype VanillaOption = VanillaOption {getCVanillaOption :: Standalone CVanillaOption}
-instance Finalizable CVanillaOption where fin = qlFreeVanillaOption
+instance Finalizable CVanillaOption where finalize = qlFreeVanillaOption
 peekVanillaOption :: Ptr CVanillaOption -> IO VanillaOption
 peekVanillaOption = peekStandalone >=> return . VanillaOption
 withVanillaOption :: VanillaOption -> (Ptr CVanillaOption -> IO b) -> IO b
 withVanillaOption = withStandalone . getCVanillaOption
 data CVanillaSwap
 newtype VanillaSwap = VanillaSwap {getCVanillaSwap :: Standalone CVanillaSwap}
-instance Finalizable CVanillaSwap where fin = qlFreeVanillaSwap
+instance Finalizable CVanillaSwap where finalize = qlFreeVanillaSwap
 peekVanillaSwap :: Ptr CVanillaSwap -> IO VanillaSwap
 peekVanillaSwap = peekStandalone >=> return . VanillaSwap
 withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap -> IO b) -> IO b
@@ -1760,98 +1759,98 @@ foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr
 
 data CAffineModel
 newtype AffineModel = AffineModel {getCAffineModel :: Standalone CAffineModel}
-instance Finalizable CAffineModel where fin = qlFreeAffineModel
+instance Finalizable CAffineModel where finalize = qlFreeAffineModel
 peekAffineModel :: Ptr CAffineModel -> IO AffineModel
 peekAffineModel = peekStandalone >=> return . AffineModel
 withAffineModel :: AffineModel -> (Ptr CAffineModel -> IO b) -> IO b
 withAffineModel = withStandalone . getCAffineModel
 data CBatesDetJumpModel
 newtype BatesDetJumpModel = BatesDetJumpModel {getCBatesDetJumpModel :: Standalone CBatesDetJumpModel}
-instance Finalizable CBatesDetJumpModel where fin = qlFreeBatesDetJumpModel
+instance Finalizable CBatesDetJumpModel where finalize = qlFreeBatesDetJumpModel
 peekBatesDetJumpModel :: Ptr CBatesDetJumpModel -> IO BatesDetJumpModel
 peekBatesDetJumpModel = peekStandalone >=> return . BatesDetJumpModel
 withBatesDetJumpModel :: BatesDetJumpModel -> (Ptr CBatesDetJumpModel -> IO b) -> IO b
 withBatesDetJumpModel = withStandalone . getCBatesDetJumpModel
 data CBatesDoubleExpDetJumpModel
 newtype BatesDoubleExpDetJumpModel = BatesDoubleExpDetJumpModel {getCBatesDoubleExpDetJumpModel :: Standalone CBatesDoubleExpDetJumpModel}
-instance Finalizable CBatesDoubleExpDetJumpModel where fin = qlFreeBatesDoubleExpDetJumpModel
+instance Finalizable CBatesDoubleExpDetJumpModel where finalize = qlFreeBatesDoubleExpDetJumpModel
 peekBatesDoubleExpDetJumpModel :: Ptr CBatesDoubleExpDetJumpModel -> IO BatesDoubleExpDetJumpModel
 peekBatesDoubleExpDetJumpModel = peekStandalone >=> return . BatesDoubleExpDetJumpModel
 withBatesDoubleExpDetJumpModel :: BatesDoubleExpDetJumpModel -> (Ptr CBatesDoubleExpDetJumpModel -> IO b) -> IO b
 withBatesDoubleExpDetJumpModel = withStandalone . getCBatesDoubleExpDetJumpModel
 data CBatesDoubleExpModel
 newtype BatesDoubleExpModel = BatesDoubleExpModel {getCBatesDoubleExpModel :: Standalone CBatesDoubleExpModel}
-instance Finalizable CBatesDoubleExpModel where fin = qlFreeBatesDoubleExpModel
+instance Finalizable CBatesDoubleExpModel where finalize = qlFreeBatesDoubleExpModel
 peekBatesDoubleExpModel :: Ptr CBatesDoubleExpModel -> IO BatesDoubleExpModel
 peekBatesDoubleExpModel = peekStandalone >=> return . BatesDoubleExpModel
 withBatesDoubleExpModel :: BatesDoubleExpModel -> (Ptr CBatesDoubleExpModel -> IO b) -> IO b
 withBatesDoubleExpModel = withStandalone . getCBatesDoubleExpModel
 data CBatesModel
 newtype BatesModel = BatesModel {getCBatesModel :: Standalone CBatesModel}
-instance Finalizable CBatesModel where fin = qlFreeBatesModel
+instance Finalizable CBatesModel where finalize = qlFreeBatesModel
 peekBatesModel :: Ptr CBatesModel -> IO BatesModel
 peekBatesModel = peekStandalone >=> return . BatesModel
 withBatesModel :: BatesModel -> (Ptr CBatesModel -> IO b) -> IO b
 withBatesModel = withStandalone . getCBatesModel
 data CCalibratedModel
 newtype CalibratedModel = CalibratedModel {getCCalibratedModel :: Standalone CCalibratedModel}
-instance Finalizable CCalibratedModel where fin = qlFreeCalibratedModel
+instance Finalizable CCalibratedModel where finalize = qlFreeCalibratedModel
 peekCalibratedModel :: Ptr CCalibratedModel -> IO CalibratedModel
 peekCalibratedModel = peekStandalone >=> return . CalibratedModel
 withCalibratedModel :: CalibratedModel -> (Ptr CCalibratedModel -> IO b) -> IO b
 withCalibratedModel = withStandalone . getCCalibratedModel
 data CG2
 newtype G2 = G2 {getCG2 :: Standalone CG2}
-instance Finalizable CG2 where fin = qlFreeG2
+instance Finalizable CG2 where finalize = qlFreeG2
 peekG2 :: Ptr CG2 -> IO G2
 peekG2 = peekStandalone >=> return . G2
 withG2 :: G2 -> (Ptr CG2 -> IO b) -> IO b
 withG2 = withStandalone . getCG2
 data CGJRGARCHModel
 newtype GJRGARCHModel = GJRGARCHModel {getCGJRGARCHModel :: Standalone CGJRGARCHModel}
-instance Finalizable CGJRGARCHModel where fin = qlFreeGJRGARCHModel
+instance Finalizable CGJRGARCHModel where finalize = qlFreeGJRGARCHModel
 peekGJRGARCHModel :: Ptr CGJRGARCHModel -> IO GJRGARCHModel
 peekGJRGARCHModel = peekStandalone >=> return . GJRGARCHModel
 withGJRGARCHModel :: GJRGARCHModel -> (Ptr CGJRGARCHModel -> IO b) -> IO b
 withGJRGARCHModel = withStandalone . getCGJRGARCHModel
 data CHestonModel
 newtype HestonModel = HestonModel {getCHestonModel :: Standalone CHestonModel}
-instance Finalizable CHestonModel where fin = qlFreeHestonModel
+instance Finalizable CHestonModel where finalize = qlFreeHestonModel
 peekHestonModel :: Ptr CHestonModel -> IO HestonModel
 peekHestonModel = peekStandalone >=> return . HestonModel
 withHestonModel :: HestonModel -> (Ptr CHestonModel -> IO b) -> IO b
 withHestonModel = withStandalone . getCHestonModel
 data CHullWhite
 newtype HullWhite = HullWhite {getCHullWhite :: Standalone CHullWhite}
-instance Finalizable CHullWhite where fin = qlFreeHullWhite
+instance Finalizable CHullWhite where finalize = qlFreeHullWhite
 peekHullWhite :: Ptr CHullWhite -> IO HullWhite
 peekHullWhite = peekStandalone >=> return . HullWhite
 withHullWhite :: HullWhite -> (Ptr CHullWhite -> IO b) -> IO b
 withHullWhite = withStandalone . getCHullWhite
 data CLiborForwardModel
 newtype LiborForwardModel = LiborForwardModel {getCLiborForwardModel :: Standalone CLiborForwardModel}
-instance Finalizable CLiborForwardModel where fin = qlFreeLiborForwardModel
+instance Finalizable CLiborForwardModel where finalize = qlFreeLiborForwardModel
 peekLiborForwardModel :: Ptr CLiborForwardModel -> IO LiborForwardModel
 peekLiborForwardModel = peekStandalone >=> return . LiborForwardModel
 withLiborForwardModel :: LiborForwardModel -> (Ptr CLiborForwardModel -> IO b) -> IO b
 withLiborForwardModel = withStandalone . getCLiborForwardModel
 data COneFactorAffineModel
 newtype OneFactorAffineModel = OneFactorAffineModel {getCOneFactorAffineModel :: Standalone COneFactorAffineModel}
-instance Finalizable COneFactorAffineModel where fin = qlFreeOneFactorAffineModel
+instance Finalizable COneFactorAffineModel where finalize = qlFreeOneFactorAffineModel
 peekOneFactorAffineModel :: Ptr COneFactorAffineModel -> IO OneFactorAffineModel
 peekOneFactorAffineModel = peekStandalone >=> return . OneFactorAffineModel
 withOneFactorAffineModel :: OneFactorAffineModel -> (Ptr COneFactorAffineModel -> IO b) -> IO b
 withOneFactorAffineModel = withStandalone . getCOneFactorAffineModel
 data CPiecewiseTimeDependentHestonModel
 newtype PiecewiseTimeDependentHestonModel = PiecewiseTimeDependentHestonModel {getCPiecewiseTimeDependentHestonModel :: Standalone CPiecewiseTimeDependentHestonModel}
-instance Finalizable CPiecewiseTimeDependentHestonModel where fin = qlFreePiecewiseTimeDependentHestonModel
+instance Finalizable CPiecewiseTimeDependentHestonModel where finalize = qlFreePiecewiseTimeDependentHestonModel
 peekPiecewiseTimeDependentHestonModel :: Ptr CPiecewiseTimeDependentHestonModel -> IO PiecewiseTimeDependentHestonModel
 peekPiecewiseTimeDependentHestonModel = peekStandalone >=> return . PiecewiseTimeDependentHestonModel
 withPiecewiseTimeDependentHestonModel :: PiecewiseTimeDependentHestonModel -> (Ptr CPiecewiseTimeDependentHestonModel -> IO b) -> IO b
 withPiecewiseTimeDependentHestonModel = withStandalone . getCPiecewiseTimeDependentHestonModel
 data CShortRateModel
 newtype ShortRateModel = ShortRateModel {getCShortRateModel :: Standalone CShortRateModel}
-instance Finalizable CShortRateModel where fin = qlFreeShortRateModel
+instance Finalizable CShortRateModel where finalize = qlFreeShortRateModel
 peekShortRateModel :: Ptr CShortRateModel -> IO ShortRateModel
 peekShortRateModel = peekStandalone >=> return . ShortRateModel
 withShortRateModel :: ShortRateModel -> (Ptr CShortRateModel -> IO b) -> IO b
