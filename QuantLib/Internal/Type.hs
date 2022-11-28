@@ -550,10 +550,10 @@ import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal
 
-(<.>) :: Functor f => (a1 -> b) -> (a2 -> f a1) -> a2 -> f b
+(<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
 
-(<^>) :: Applicative f => (t -> a) -> t -> f a
+(<^>) :: Applicative f => (a -> r) -> a -> f r
 f <^> x = pure $ f x
 
 -- STANDALONE TYPES
@@ -784,10 +784,9 @@ data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a ->
 class Upcastable a where
   type Base a
   upcast :: Ptr a -> IO (Ptr (Base a))
-withCastForeignPtr :: Upcastable a => (t -> (Ptr a -> IO r) -> IO r) -> t -> (Ptr (Base a) -> IO r) -> IO r
+withCastForeignPtr :: Upcastable c => (a -> (Ptr c -> IO r) -> IO r) -> a -> (Ptr (Base c) -> IO r) -> IO r
 withCastForeignPtr w p f = w p $ upcast >=> f
--- FIXME for some reason this definition, being more rigorous, leads to double free of the base object, Investigate!
---withCastForeignPtr w p f = w p $ upcast >=> newForeignPtr finalize >=> (`withForeignPtr` f)
+
 withGenForeignPtr :: Upcastable a => GenForeignPtr c a -> (Ptr (Base a) -> IO r) -> IO r
 withGenForeignPtr (GenForeignPtr p w) = withCastForeignPtr w p
 
@@ -797,7 +796,7 @@ newGenForeignPtr x = newForeignPtr finalize x <&> (`GenForeignPtr` withCastForei
 newCastForeignPtr :: Finalizable a => Ptr a -> IO (GenForeignPtr (ForeignPtr a) a)
 newCastForeignPtr x = newForeignPtr finalize x <&> (`GenForeignPtr` withForeignPtr)
 
-withGenArray :: (a -> (Ptr b -> IO r) -> IO r) -> [a] -> ((CUInt, Ptr (Ptr b)) -> IO r) -> IO r
+withGenArray :: (a -> (Ptr c -> IO r) -> IO r) -> [a] -> ((CUInt, Ptr (Ptr c)) -> IO r) -> IO r
 withGenArray m x f = withMany m x (`withArray` (\p -> f (fromIntegral $ length x, p)))
 
 data CQuote'
