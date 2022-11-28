@@ -57,7 +57,7 @@ module QuantLib.Model
   , marketValue
   , modelValue
 
-  , AffineModelDescendant(..)
+  , GenAffineModel(..)
   , setPricingEngine
   ) where
 #include "qlTypesC2HS.h"
@@ -121,10 +121,10 @@ import QuantLib.Internal.Enum
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
 -- multiple inheritance... not sure if we need that cast to AffineModel at all
-newtype AffineModelDescendant a = AffineModelDescendant a
-instance (AffineModelDescendant OneFactorAffineModel)`Derives` AffineModel where cast (AffineModelDescendant x) = qlOneFactorAffineModelAsAffineModel x
-instance (AffineModelDescendant LiborForwardModel)`Derives` AffineModel where cast (AffineModelDescendant x) = qlLiborForwardModelAsAffineModel x
-instance (AffineModelDescendant G2)`Derives` AffineModel where cast (AffineModelDescendant x) = qlG2AsAffineModel x
+newtype GenAffineModel a = GenAffineModel a
+instance (GenAffineModel OneFactorAffineModel)`Derives` AffineModel where cast (GenAffineModel x) = qlOneFactorAffineModelAsAffineModel x
+instance (GenAffineModel LiborForwardModel)`Derives` AffineModel where cast (GenAffineModel x) = qlLiborForwardModelAsAffineModel x
+instance (GenAffineModel G2)`Derives` AffineModel where cast (GenAffineModel x) = qlG2AsAffineModel x
 
 asAffineModel :: (a`Derives` AffineModel) => a -> IO AffineModel
 asAffineModel = cast
