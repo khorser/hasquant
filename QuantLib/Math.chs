@@ -35,9 +35,7 @@ module QuantLib.Math
   , size
   , points
   , points'
-  )
-where
-
+  ) where
 import QuantLib.Internal
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
@@ -50,29 +48,19 @@ import Data.Vector.Storable(Vector)
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
-{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
-
-{#fun pure qlRound as applyRounding{withRounding*`Rounding',`Double'}->`Double'#}
-
 {#enum EndCriteriaType{} deriving(Show, Eq)#}
-
 {#enum HistogramAlgorithm{} deriving(Show, Eq)#}
-
 {#enum RngTrait{} deriving(Show, Eq)#}
-
 {#enum BinomialTree{} deriving(Show, Eq)#}
-
 {#enum BoundaryConditionSide{} deriving(Show, Eq)#}
-
 {#enum PolynomialType{} deriving(Show, Eq)#}
-
 {#enum ComplexLogFormula{} deriving(Show, Eq)#}
-
 {#enum CmsMarketCalibrationType{} deriving(Show, Eq)#}
-
 {#enum SobolDirectionIntegers{} deriving(Show, Eq)#}
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
+{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
+{#fun pure qlRound as applyRounding{withRounding*`Rounding',`Double'}->`Double'#}
 
 -- |Regularly spaced time-grid.
 {#fun qlTimeGrid1 as timeGrid{`Double' -- ^end

@@ -2,9 +2,7 @@ module QuantLib.Example.Replication
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(void, foldM)
 import Data.Time.Calendar
 

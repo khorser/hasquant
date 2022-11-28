@@ -12,9 +12,7 @@ module QuantLib.Method
   , assetAt
   , asset
   , asset'
-  )
-  where
-
+  ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 

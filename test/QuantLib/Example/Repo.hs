@@ -3,8 +3,7 @@ module QuantLib.Example.Repo
   (
     Result(..)
   , run
-  )
-where
+  ) where
 
 import Control.Monad(void)
 

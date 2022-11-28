@@ -94,9 +94,7 @@ module QuantLib.Internal.Enum
   -- remove these two exports once QlClaim migrated here
   , EnumMeta(..)
   , withEnumType
-  )
-where
-
+  ) where
 import Control.Monad((>=>))
 import Foreign.Marshal.Utils(fromBool, withMany)
 import Foreign.Marshal.Array(withArray)
@@ -113,10 +111,38 @@ import Foreign.C.Types
 
 -- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
 {#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
-
 {#enum ApproximationType{} add prefix="Approximation" deriving(Show, Eq)#}
-
 {#enum InterpolationType{} add prefix="Interpolation" deriving(Show, Eq)#}
+{#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
+{#enum OptionType{} deriving (Show, Eq)#}
+{#enum PositionType{} deriving (Show, Eq)#}
+{#enum BondPriceType{} deriving (Show, Eq)#}
+{#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
+{#enum FdmSchemeType{} deriving(Show, Eq)#}
+{#enum RoundingType{} deriving (Show, Eq)#}
+
+{#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
+{#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
+{#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
+{#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
+{#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
+{#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
+{#pointer *QlCallability foreign -> CQlCallability nocode#}
+{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
+{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
+{#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
+{#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
+{#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
+{#pointer *QlAmericanExercise foreign finalizer qlFreeAmericanExercise newtype#}
+{#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
+{#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
+{#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
+{#pointer *QlBond as Bond foreign -> CBond nocode#}
+{#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
+{#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
+{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 
 qlApproximation :: Approximation -> (Int, Int)
 qlApproximation (NaturalSpline x) = (fromEnum ApproximationNaturalSpline, fromBool x)
@@ -154,38 +180,24 @@ data Interpolation =
   | Abcd
   deriving (Show, Eq)
 
-{#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
-
 class IsQlExercise a where asQlExercise :: a -> IO QlExercise
 
-{#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
 {#fun qlEuropeanExerciseAsExercise{`QlEuropeanExercise'}->`QlExercise'#}
 instance IsQlExercise QlEuropeanExercise where asQlExercise = qlEuropeanExerciseAsExercise
-
-{#pointer *QlAmericanExercise foreign finalizer qlFreeAmericanExercise newtype#}
 {#fun qlAmericanExerciseAsExercise{`QlAmericanExercise'}->`QlExercise'#}
 instance IsQlExercise QlAmericanExercise where asQlExercise = qlAmericanExerciseAsExercise
-
-{#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
 {#fun qlSwingExerciseAsExercise{`QlSwingExercise'}->`QlExercise'#}
 instance IsQlExercise QlSwingExercise where asQlExercise = qlSwingExerciseAsExercise
-
-{#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
 {#fun qlBermudanExerciseAsExercise{`QlBermudanExercise'}->`QlExercise'#}
 instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
 
 data EuropeanExercise = EuropeanExercise Day
-
 data SwingExercise =
     SwingListExercise ![(Day, Word)] -- ^(dates, seconds)
     | SwingIntervalExercise !Day !Day !Word -- ^stepSizeSecs
-
 data BermudanExercise =
     BermudanExercise ![Day] !Bool
     | Swing SwingExercise
-
-{#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
-
 data Exercise =
     AmericanExercise
       !(Maybe Day) -- ^earliestDate
@@ -213,12 +225,6 @@ exercise (Early t p) = qlEarlyExercise t p
 exercise (Vanilla t) = qlExercise t
 exercise (European e) = getMeta' europeanExerciseMeta e >>= asQlExercise
 exercise (Bermudan e) = getMeta' bermudanExerciseMeta e >>= asQlExercise
-
-{#enum OptionType{} deriving (Show, Eq)#}
-
-{#enum PositionType{} deriving (Show, Eq)#}
-
-{#enum BondPriceType{} deriving (Show, Eq)#}
 
 data PercentageStrikePayoff = PercentageStrikePayoff
       !OptionType -- ^type
@@ -261,7 +267,6 @@ strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
 
 data TypePayoff = Striked !StrikedPayoff
   | Floating !OptionType -- ^type
-
 data BasketPayoff =
     Average
       !Payoff -- ^p
@@ -356,27 +361,16 @@ data Payoff =
   | Type !TypePayoff
   | Basket !BasketPayoff
 
-{#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
 
 class IsQlPayoff a where asQlPayoff :: a -> IO QlPayoff
-
-{#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
 {#fun qlBasketPayoffAsPayoff{`QlBasketPayoff'}->`QlPayoff'#}
 instance IsQlPayoff QlBasketPayoff where asQlPayoff = qlBasketPayoffAsPayoff
-
-{#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
 {#fun qlTypePayoffAsPayoff{`QlTypePayoff'}->`QlPayoff'#}
 instance IsQlPayoff QlTypePayoff where asQlPayoff = qlTypePayoffAsPayoff
-
-{#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
 {#fun qlStrikedTypePayoffAsTypePayoff{`QlStrikedTypePayoff'}->`QlTypePayoff'#}
 instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff = qlStrikedTypePayoffAsTypePayoff >=> asQlPayoff
-
-{#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
 {#fun qlPercentageStrikePayoffAsStrikedTypePayoff{`QlPercentageStrikePayoff'}->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff = qlPercentageStrikePayoffAsStrikedTypePayoff >=> asQlPayoff
-
-{#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
 {#fun qlPlainVanillaPayoffAsStrikedTypePayoff{`QlPlainVanillaPayoff'}->`QlStrikedTypePayoff'#}
 instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoffAsStrikedTypePayoff >=> asQlPayoff
 
@@ -425,15 +419,6 @@ data Callability =
       !BondPriceType
       !CallabilityType
       !Day
-
-{#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
-
-{#pointer *QlCallability foreign -> CQlCallability nocode#}
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
-{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
-{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
-{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
-{#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 
 callability :: Callability -> IO (Standalone CQlCallability)
 callability (Soft p t d tg) = qlSoftCallability p t d tg
@@ -574,7 +559,6 @@ withPayoff = withEnumType' payoffMeta
 
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability{`Double',`BondPriceType',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
-
 {#fun qlCallability{`Double',`BondPriceType',`CallabilityType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 
 data FittingMethod =
@@ -601,8 +585,6 @@ fittingMethod Svensson = qlSvenssonFitting
 {#fun qlNelsonSiegelFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlSvenssonFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-
-{#enum FdmSchemeType{} deriving(Show, Eq)#}
 
 data FdmScheme =
   FdmScheme
@@ -682,10 +664,6 @@ endCriteria :: EndCriteria -> IO QlEndCriteria
 endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
 {#fun qlEndCriteria{fromIntegral`Word',fromIntegral`Word',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'peekEndCriteria*#}
 
-{#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
-
-{#enum RoundingType{} deriving (Show, Eq)#}
-
 data Rounding = NoRounding
   | Rounding
     !Int -- ^precision
@@ -699,9 +677,6 @@ rounding (Rounding p t d) = qlRounding1 p t d
 
 {#fun qlRounding{preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
 {#fun qlRounding1{`Int',`RoundingType',`Int',preErrorCheck-`String'errorCheck*-}->`QlRounding'peekRounding*#}
-
-{#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
-{#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
 data LmCorrelationModel = ConstWrapperCorrelation LmCorrelationModel
   | ExponentialCorrelation Word -- ^size
@@ -750,9 +725,6 @@ volatilityModelMeta = EnumMeta volatilityModel
 
 withLmVolatilityModel :: LmVolatilityModel -> (Ptr CLmVolatilityModel -> IO a) -> IO a
 withLmVolatilityModel = withEnumType volatilityModelMeta
-
-{#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
-{#pointer *QlBond as Bond foreign -> CBond nocode#}
 
 data Claim = FaceValue | FaceValueAccrual Bond
 claimMeta :: EnumMeta Claim CQlClaim

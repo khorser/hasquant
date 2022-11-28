@@ -25,9 +25,7 @@ module QuantLib.TermStructure.Credit
   , interpolatedSurvivalProbabilityCurve
   , piecewiseDefaultCurve
   , piecewiseDefaultCurve'
-  )
-  where
-
+  ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "ql.h"
@@ -49,13 +47,9 @@ import QuantLib.Internal.Enum
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign -> CDefaultProbabilityHelper nocode#}
 
 {#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withTermStructureDescendant*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-
 {#fun qlFlatHazardRate1 as flatHazardRate'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-
 {#fun qlFlatHazardRate as flatHazardRate{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-
 {#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve{withTermStructureDescendant*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-
 {#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability{withTermStructureDescendant*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRate'{withTermStructureDescendant*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate

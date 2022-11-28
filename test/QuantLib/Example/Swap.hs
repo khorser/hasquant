@@ -4,9 +4,7 @@ module QuantLib.Example.Swap
   , SwapResult(..)
   , IterationResult(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(void, forM, foldM)
 import Data.Time.Calendar
 

@@ -3,9 +3,7 @@ module QuantLib.Example.EquityOption
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Data.Time.Calendar
 
 import QuantLib.Instrument

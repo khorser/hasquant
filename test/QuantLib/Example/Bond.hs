@@ -2,9 +2,7 @@ module QuantLib.Example.Bond
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad((>=>))
 
 import Data.List(zip4)

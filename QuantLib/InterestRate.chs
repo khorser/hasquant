@@ -14,9 +14,7 @@ module QuantLib.InterestRate
   , impliedRate
   , impliedRate'
   , rate
-  )
-  where
-
+  ) where
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Type
@@ -31,7 +29,6 @@ import QuantLib.Internal.Type
 {#enum Compounding{} deriving(Show, Eq)#}
 
 {#fun qlInterestRate as interestRate{`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-
 -- |compound factor implied by the rate compounded between two dates
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
 {#fun qlInterestRateCompoundFactor1 as compoundFactor'{withInterestRate*`InterestRate',withDay*`Day' -- ^d1

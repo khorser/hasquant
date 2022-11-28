@@ -8,9 +8,7 @@ module QuantLib.Instrument.CapFloor
   , atmRate
   , impliedVolatility
   , optionlet
-  )
-  where
-
+  ) where
 import Prelude hiding(floor)
 
 import QuantLib.Type
@@ -24,7 +22,6 @@ import QuantLib.Internal.Type
 #include "ql.h"
 
 {#pointer *Leg foreign -> CLeg' nocode#}
-
 {#pointer *QlCapFloor as CapFloor foreign -> CCapFloor nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
@@ -42,7 +39,6 @@ instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
 {#fun qlCapFloorAtmRate as atmRate{withCapFloor*`CapFloor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |implied term volatility
 {#fun qlCapFloorImpliedVolatility as impliedVolatility{withCapFloor*`CapFloor',`Double' -- ^price
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^disc

@@ -3,9 +3,7 @@ module QuantLib.Example.FRA
     Result(..)
   , IterationResult(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(forM, forM_)
 
 import QuantLib.Index

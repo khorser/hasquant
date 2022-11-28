@@ -3,9 +3,7 @@ module QuantLib.Example.ConvertibleBond
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Data.Time.Calendar
 
 import qualified QuantLib.CashFlow as CF
@@ -87,7 +85,6 @@ run = do
     , leisenReimerR = lr
     , joshiR = j
   }
-
   where under = 36.0
         spreadRate = 0.005
         dividendYield = 0.02

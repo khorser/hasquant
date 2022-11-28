@@ -536,8 +536,7 @@ module QuantLib.Internal.Type
   , COneAssetOption
   , peekOneAssetOption
   , withOneAssetOption
-)
-  where
+) where
 import Foreign.Ptr
 import Foreign.ForeignPtr
 import Foreign.Storable(Storable)
@@ -781,7 +780,7 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
--- do we really need to drag _marshal around?
+-- the original pointer to a with a way to marshal it to b
 data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
 class Upcastable a where
   type Base a
@@ -813,9 +812,7 @@ foreign import ccall "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
 foreign import ccall "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
 instance Finalizable CQuote' where finalize = qlFreeQuote
 instance Finalizable CSimpleQuote' where finalize = qlFreeSimpleQuote
-instance Upcastable CSimpleQuote' where
-  type Base CSimpleQuote' = CQuote'
-  upcast = qlSimpleQuoteAsQuote
+instance Upcastable CSimpleQuote' where {type Base CSimpleQuote' = CQuote'; upcast = qlSimpleQuoteAsQuote}
 foreign import ccall "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote' -> IO (Ptr CQuote')
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
@@ -848,9 +845,7 @@ foreign import ccall "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCo
 instance Finalizable CLeg' where finalize = qlFreeLeg
 instance Finalizable CCouponLeg' where finalize = qlFreeCouponLeg
 foreign import ccall "ql.h qlCouponLegAsLeg" qlCouponLegAsLeg :: Ptr CCouponLeg' -> IO (Ptr CLeg')
-instance Upcastable CCouponLeg' where
-  type Base CCouponLeg' = CLeg'
-  upcast = qlCouponLegAsLeg
+instance Upcastable CCouponLeg' where {type Base CCouponLeg' = CLeg'; upcast = qlCouponLegAsLeg}
 asLeg :: GenLeg a -> IO Leg
 asLeg (GenLeg (GenForeignPtr x w)) = w x peekLeg
 peekLeg :: Ptr CLeg' -> IO Leg
@@ -886,9 +881,7 @@ type BondHelper = GenRateHelper CBondHelper
 foreign import ccall "ql.h &qlFreeBondHelper" qlFreeBondHelper :: FinalizerPtr CBondHelper'
 instance Finalizable CBondHelper' where finalize = qlFreeBondHelper
 foreign import ccall "ql.h qlBondHelperAsRateHelper" qlBondHelperAsRateHelper :: Ptr CBondHelper' -> IO (Ptr CRateHelper')
-instance Upcastable CBondHelper' where
-  type Base CBondHelper' = CRateHelper'
-  upcast = qlBondHelperAsRateHelper
+instance Upcastable CBondHelper' where {type Base CBondHelper' = CRateHelper'; upcast = qlBondHelperAsRateHelper}
 peekBondHelper :: Ptr CBondHelper' -> IO BondHelper
 peekBondHelper = GenRateHelper <.> newGenForeignPtr
 withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper')) -> IO b) -> IO b
@@ -899,9 +892,7 @@ type SwapRateHelper = GenRateHelper CSwapRateHelper
 foreign import ccall "ql.h &qlFreeSwapRateHelper" qlFreeSwapRateHelper :: FinalizerPtr CSwapRateHelper'
 instance Finalizable CSwapRateHelper' where finalize = qlFreeSwapRateHelper
 foreign import ccall "ql.h qlSwapRateHelperAsRateHelper" qlSwapRateHelperAsRateHelper :: Ptr CSwapRateHelper' -> IO (Ptr CRateHelper')
-instance Upcastable CSwapRateHelper' where
-  type Base CSwapRateHelper' = CRateHelper'
-  upcast = qlSwapRateHelperAsRateHelper
+instance Upcastable CSwapRateHelper' where {type Base CSwapRateHelper' = CRateHelper'; upcast = qlSwapRateHelperAsRateHelper}
 peekSwapRateHelper :: Ptr CSwapRateHelper' -> IO SwapRateHelper
 peekSwapRateHelper = GenRateHelper <.> newGenForeignPtr
 data COISRateHelper'
@@ -910,9 +901,7 @@ type OISRateHelper = GenRateHelper COISRateHelper
 foreign import ccall "ql.h &qlFreeOISRateHelper" qlFreeOISRateHelper :: FinalizerPtr COISRateHelper'
 instance Finalizable COISRateHelper' where finalize = qlFreeOISRateHelper
 foreign import ccall "ql.h qlOISRateHelperAsRateHelper" qlOISRateHelperAsRateHelper :: Ptr COISRateHelper' -> IO (Ptr CRateHelper')
-instance Upcastable COISRateHelper' where
-  type Base COISRateHelper' = CRateHelper'
-  upcast = qlOISRateHelperAsRateHelper
+instance Upcastable COISRateHelper' where {type Base COISRateHelper' = CRateHelper'; upcast = qlOISRateHelperAsRateHelper}
 peekOISRateHelper :: Ptr COISRateHelper' -> IO OISRateHelper
 peekOISRateHelper = GenRateHelper <.> newGenForeignPtr
 
@@ -928,9 +917,7 @@ foreign import ccall "ql.h &qlFreeBlackCalibrationHelper" qlFreeBlackCalibration
 instance Finalizable CCalibrationHelper' where finalize = qlFreeCalibrationHelper
 instance Finalizable CBlackCalibrationHelper' where finalize = qlFreeBlackCalibrationHelper
 foreign import ccall "ql.h qlBlackCalibrationHelperAsCalibrationHelper" qlBlackCalibrationHelperAsCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO (Ptr CCalibrationHelper')
-instance Upcastable CBlackCalibrationHelper' where
-  type Base CBlackCalibrationHelper' = CCalibrationHelper'
-  upcast = qlBlackCalibrationHelperAsCalibrationHelper
+instance Upcastable CBlackCalibrationHelper' where {type Base CBlackCalibrationHelper' = CCalibrationHelper'; upcast = qlBlackCalibrationHelperAsCalibrationHelper}
 asCalibrationHelper :: GenCalibrationHelper a -> IO CalibrationHelper
 asCalibrationHelper (GenCalibrationHelper (GenForeignPtr x w)) = w x peekCalibrationHelper
 peekCalibrationHelper :: Ptr CCalibrationHelper' -> IO CalibrationHelper
@@ -956,9 +943,7 @@ foreign import ccall "ql.h &qlFreeBlackScholesCalculator" qlFreeBlackScholesCalc
 instance Finalizable CBlackCalculator' where finalize = qlFreeBlackCalculator
 instance Finalizable CBlackScholesCalculator' where finalize = qlFreeBlackScholesCalculator
 foreign import ccall "ql.h qlBlackScholesCalculatorAsBlackCalculator" qlBlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator' -> IO (Ptr CBlackCalculator')
-instance Upcastable CBlackScholesCalculator' where
-  type Base CBlackScholesCalculator' = CBlackCalculator'
-  upcast = qlBlackScholesCalculatorAsBlackCalculator
+instance Upcastable CBlackScholesCalculator' where {type Base CBlackScholesCalculator' = CBlackCalculator'; upcast = qlBlackScholesCalculatorAsBlackCalculator}
 asBlackCalculator :: GenBlackCalculator a -> IO BlackCalculator
 asBlackCalculator (GenBlackCalculator (GenForeignPtr x w)) = w x peekBlackCalculator
 peekBlackCalculator :: Ptr CBlackCalculator' -> IO BlackCalculator
@@ -1020,24 +1005,12 @@ foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterest
 foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex' -> IO (Ptr CIborIndex')
 foreign import ccall "ql.h qlSwapIndexAsInterestRateIndex" qlSwapIndexAsInterestRateIndex :: Ptr CSwapIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlOvernightIndexedSwapIndexAsSwapIndex" qlOvernightIndexedSwapIndexAsSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO (Ptr CSwapIndex')
-instance Upcastable CInterestRateIndex' where
-  type Base CInterestRateIndex' = CIndex'
-  upcast = qlInterestRateIndexAsIndex
-instance Upcastable CBMAIndex' where
-  type Base CBMAIndex' = CInterestRateIndex'
-  upcast = qlBMAIndexAsInterestRateIndex
-instance Upcastable CIborIndex' where
-  type Base CIborIndex' = CInterestRateIndex'
-  upcast = qlIborIndexAsInterestRateIndex
-instance Upcastable COvernightIndex' where
-  type Base COvernightIndex' = CIborIndex'
-  upcast = qlOvernightIndexAsIborIndex
-instance Upcastable CSwapIndex' where
-  type Base CSwapIndex' = CInterestRateIndex'
-  upcast = qlSwapIndexAsInterestRateIndex
-instance Upcastable COvernightIndexedSwapIndex' where
-  type Base COvernightIndexedSwapIndex' = CSwapIndex'
-  upcast = qlOvernightIndexedSwapIndexAsSwapIndex
+instance Upcastable CInterestRateIndex' where {type Base CInterestRateIndex' = CIndex'; upcast = qlInterestRateIndexAsIndex}
+instance Upcastable CBMAIndex' where {type Base CBMAIndex' = CInterestRateIndex'; upcast = qlBMAIndexAsInterestRateIndex}
+instance Upcastable CIborIndex' where {type Base CIborIndex' = CInterestRateIndex'; upcast = qlIborIndexAsInterestRateIndex}
+instance Upcastable COvernightIndex' where {type Base COvernightIndex' = CIborIndex'; upcast = qlOvernightIndexAsIborIndex}
+instance Upcastable CSwapIndex' where {type Base CSwapIndex' = CInterestRateIndex'; upcast = qlSwapIndexAsInterestRateIndex}
+instance Upcastable COvernightIndexedSwapIndex' where {type Base COvernightIndexedSwapIndex' = CSwapIndex'; upcast = qlOvernightIndexedSwapIndexAsSwapIndex}
 asIndex :: GenIndex a -> IO Index
 asIndex (GenIndex (GenForeignPtr x w)) = w x (GenIndex <.> newCastForeignPtr)
 withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
@@ -1168,39 +1141,17 @@ foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" ql
 foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
-instance Upcastable CYieldTermStructure' where
-  type Base CYieldTermStructure' = CTermStructure'
-  upcast = qlYieldTermStructureAsTermStructure
-instance Upcastable CFittedBondDiscountCurve' where
-  type Base CFittedBondDiscountCurve' = CYieldTermStructure'
-  upcast = qlFittedBondDiscountCurveAsYieldTermStructure
-instance Upcastable CVolatilityTermStructure' where
-  type Base CVolatilityTermStructure' = CTermStructure'
-  upcast = qlVolatilityTermStructureAsTermStructure
-instance Upcastable CCallableBondVolatilityStructure' where
-  type Base CCallableBondVolatilityStructure' = CTermStructure'
-  upcast = qlCallableBondVolatilityStructureAsTermStructure
-instance Upcastable CDefaultProbabilityTermStructure' where
-  type Base CDefaultProbabilityTermStructure' = CTermStructure'
-  upcast = qlDefaultProbabilityTermStructureAsTermStructure
-instance Upcastable CBlackVolTermStructure' where
-  type Base CBlackVolTermStructure' = CVolatilityTermStructure'
-  upcast = qlBlackVolTermStructureAsVolatilityTermStructure
-instance Upcastable CBlackVarianceCurve' where
-  type Base CBlackVarianceCurve' = CBlackVolTermStructure'
-  upcast = qlBlackVarianceCurveAsBlackVolTermStructure
-instance Upcastable COptionletVolatilityStructure' where
-  type Base COptionletVolatilityStructure' = CVolatilityTermStructure'
-  upcast = qlOptionletVolatilityStructureAsVolatilityTermStructure
-instance Upcastable CSwaptionVolatilityStructure' where
-  type Base CSwaptionVolatilityStructure' = CVolatilityTermStructure'
-  upcast = qlSwaptionVolatilityStructureAsVolatilityTermStructure
-instance Upcastable CCapFloorTermVolSurface' where
-  type Base CCapFloorTermVolSurface' = CVolatilityTermStructure'
-  upcast = qlCapFloorTermVolSurfaceAsVolatilityTermStructure
-instance Upcastable CLocalVolTermStructure' where
-  type Base CLocalVolTermStructure' = CVolatilityTermStructure'
-  upcast = qlLocalVolTermStructureAsVolatilityTermStructure
+instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
+instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; upcast = qlFittedBondDiscountCurveAsYieldTermStructure}
+instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; upcast = qlVolatilityTermStructureAsTermStructure}
+instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallableBondVolatilityStructure' = CTermStructure'; upcast = qlCallableBondVolatilityStructureAsTermStructure}
+instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
+instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
+instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; upcast = qlBlackVarianceCurveAsBlackVolTermStructure}
+instance Upcastable COptionletVolatilityStructure' where {type Base COptionletVolatilityStructure' = CVolatilityTermStructure'; upcast = qlOptionletVolatilityStructureAsVolatilityTermStructure}
+instance Upcastable CSwaptionVolatilityStructure' where {type Base CSwaptionVolatilityStructure' = CVolatilityTermStructure'; upcast = qlSwaptionVolatilityStructureAsVolatilityTermStructure}
+instance Upcastable CCapFloorTermVolSurface' where {type Base CCapFloorTermVolSurface' = CVolatilityTermStructure'; upcast = qlCapFloorTermVolSurfaceAsVolatilityTermStructure}
+instance Upcastable CLocalVolTermStructure' where {type Base CLocalVolTermStructure' = CVolatilityTermStructure'; upcast = qlLocalVolTermStructureAsVolatilityTermStructure}
 asTermStructure :: GenTermStructure a -> IO TermStructure
 asTermStructure (GenTermStructure (GenForeignPtr x w)) = w x (GenTermStructure <.> newCastForeignPtr)
 withTermStructure :: GenTermStructure a  -> (Ptr CTermStructure' -> IO b) -> IO b
@@ -1378,54 +1329,22 @@ foreign import ccall "ql.h qlMerton76ProcessAsStochasticProcess1D" qlMerton76Pro
 foreign import ccall "ql.h qlVarianceGammaProcessAsStochasticProcess1D" qlVarianceGammaProcessAsStochasticProcess1D :: Ptr CVarianceGammaProcess' -> IO (Ptr CStochasticProcess1D')
 foreign import ccall "ql.h qlGeneralizedBlackScholesProcessAsStochasticProcess1D" qlGeneralizedBlackScholesProcessAsStochasticProcess1D :: Ptr CGeneralizedBlackScholesProcess' -> IO (Ptr CStochasticProcess1D')
 foreign import ccall "ql.h qlBlackProcessAsGeneralizedBlackScholesProcess" qlBlackProcessAsGeneralizedBlackScholesProcess :: Ptr CBlackProcess' -> IO (Ptr CGeneralizedBlackScholesProcess')
-instance Upcastable CExtOUWithJumpsProcess' where
-  type Base CExtOUWithJumpsProcess' = CStochasticProcess'
-  upcast = qlExtOUWithJumpsProcessAsStochasticProcess
-instance Upcastable CGJRGARCHProcess' where
-  type Base CGJRGARCHProcess' = CStochasticProcess'
-  upcast = qlGJRGARCHProcessAsStochasticProcess
-instance Upcastable CHybridHestonHullWhiteProcess' where
-  type Base CHybridHestonHullWhiteProcess' = CStochasticProcess'
-  upcast = qlHybridHestonHullWhiteProcessAsStochasticProcess
-instance Upcastable CKlugeExtOUProcess' where
-  type Base CKlugeExtOUProcess' = CStochasticProcess'
-  upcast = qlKlugeExtOUProcessAsStochasticProcess
-instance Upcastable CLiborForwardModelProcess' where
-  type Base CLiborForwardModelProcess' = CStochasticProcess'
-  upcast = qlLiborForwardModelProcessAsStochasticProcess
-instance Upcastable CStochasticProcessArray' where
-  type Base CStochasticProcessArray' = CStochasticProcess'
-  upcast = qlStochasticProcessArrayAsStochasticProcess
-instance Upcastable CHestonProcess' where
-  type Base CHestonProcess' = CStochasticProcess'
-  upcast = qlHestonProcessAsStochasticProcess
-instance Upcastable CStochasticProcess1D' where
-  type Base CStochasticProcess1D' = CStochasticProcess'
-  upcast = qlStochasticProcess1DAsStochasticProcess
-instance Upcastable CBatesProcess' where
-  type Base CBatesProcess' = CHestonProcess'
-  upcast = qlBatesProcessAsHestonProcess
-instance Upcastable CExtendedOrnsteinUhlenbeckProcess' where
-  type Base CExtendedOrnsteinUhlenbeckProcess' = CStochasticProcess1D'
-  upcast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
-instance Upcastable CHullWhiteForwardProcess' where
-  type Base CHullWhiteForwardProcess' = CStochasticProcess1D'
-  upcast = qlHullWhiteForwardProcessAsStochasticProcess1D
-instance Upcastable CHullWhiteProcess' where
-  type Base CHullWhiteProcess' = CStochasticProcess1D'
-  upcast = qlHullWhiteProcessAsStochasticProcess1D
-instance Upcastable CMerton76Process' where
-  type Base CMerton76Process' = CStochasticProcess1D'
-  upcast = qlMerton76ProcessAsStochasticProcess1D
-instance Upcastable CVarianceGammaProcess' where
-  type Base CVarianceGammaProcess' = CStochasticProcess1D'
-  upcast = qlVarianceGammaProcessAsStochasticProcess1D
-instance Upcastable CGeneralizedBlackScholesProcess' where
-  type Base CGeneralizedBlackScholesProcess' = CStochasticProcess1D'
-  upcast = qlGeneralizedBlackScholesProcessAsStochasticProcess1D
-instance Upcastable CBlackProcess' where
-  type Base CBlackProcess' = CGeneralizedBlackScholesProcess'
-  upcast = qlBlackProcessAsGeneralizedBlackScholesProcess
+instance Upcastable CExtOUWithJumpsProcess' where {type Base CExtOUWithJumpsProcess' = CStochasticProcess'; upcast = qlExtOUWithJumpsProcessAsStochasticProcess}
+instance Upcastable CGJRGARCHProcess' where {type Base CGJRGARCHProcess' = CStochasticProcess'; upcast = qlGJRGARCHProcessAsStochasticProcess}
+instance Upcastable CHybridHestonHullWhiteProcess' where {type Base CHybridHestonHullWhiteProcess' = CStochasticProcess'; upcast = qlHybridHestonHullWhiteProcessAsStochasticProcess}
+instance Upcastable CKlugeExtOUProcess' where {type Base CKlugeExtOUProcess' = CStochasticProcess'; upcast = qlKlugeExtOUProcessAsStochasticProcess}
+instance Upcastable CLiborForwardModelProcess' where {type Base CLiborForwardModelProcess' = CStochasticProcess'; upcast = qlLiborForwardModelProcessAsStochasticProcess}
+instance Upcastable CStochasticProcessArray' where {type Base CStochasticProcessArray' = CStochasticProcess'; upcast = qlStochasticProcessArrayAsStochasticProcess}
+instance Upcastable CHestonProcess' where {type Base CHestonProcess' = CStochasticProcess'; upcast = qlHestonProcessAsStochasticProcess}
+instance Upcastable CStochasticProcess1D' where {type Base CStochasticProcess1D' = CStochasticProcess'; upcast = qlStochasticProcess1DAsStochasticProcess}
+instance Upcastable CBatesProcess' where {type Base CBatesProcess' = CHestonProcess'; upcast = qlBatesProcessAsHestonProcess}
+instance Upcastable CExtendedOrnsteinUhlenbeckProcess' where {type Base CExtendedOrnsteinUhlenbeckProcess' = CStochasticProcess1D'; upcast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D}
+instance Upcastable CHullWhiteForwardProcess' where {type Base CHullWhiteForwardProcess' = CStochasticProcess1D'; upcast = qlHullWhiteForwardProcessAsStochasticProcess1D}
+instance Upcastable CHullWhiteProcess' where {type Base CHullWhiteProcess' = CStochasticProcess1D'; upcast = qlHullWhiteProcessAsStochasticProcess1D}
+instance Upcastable CMerton76Process' where {type Base CMerton76Process' = CStochasticProcess1D'; upcast = qlMerton76ProcessAsStochasticProcess1D}
+instance Upcastable CVarianceGammaProcess' where {type Base CVarianceGammaProcess' = CStochasticProcess1D'; upcast = qlVarianceGammaProcessAsStochasticProcess1D}
+instance Upcastable CGeneralizedBlackScholesProcess' where {type Base CGeneralizedBlackScholesProcess' = CStochasticProcess1D'; upcast = qlGeneralizedBlackScholesProcessAsStochasticProcess1D}
+instance Upcastable CBlackProcess' where {type Base CBlackProcess' = CGeneralizedBlackScholesProcess'; upcast = qlBlackProcessAsGeneralizedBlackScholesProcess}
 asStochasticProcess :: GenStochasticProcess a -> IO StochasticProcess
 asStochasticProcess (GenStochasticProcess (GenForeignPtr x w)) = w x peekStochasticProcess
 peekStochasticProcess :: Ptr CStochasticProcess' -> IO StochasticProcess
@@ -1887,21 +1806,11 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
 --foreign import ccall "ql.h qlNode2AsNode1" qlNode2AsNode1 :: Ptr CNode2' -> IO (Ptr CNode1')
 --foreign import ccall "ql.h qlLeaf3AsNode2" qlLeaf3AsNode2 :: Ptr CLeaf3' -> IO (Ptr CNode2')
---instance Upcastable CLeaf1' where
---  type Base CLeaf1' = CNode0'
---  upcast = qlLeaf1AsNode0
---instance Upcastable CNode1' where
---  type Base CNode1' = CNode0'
---  upcast = qlNode1AsNode0
---instance Upcastable CLeaf2' where
---  type Base CLeaf2' = CNode1'
---  upcast = qlLeaf2AsNode1
---instance Upcastable CNode2' where
---  type Base CNode2' = CNode1'
---  upcast = qlNode2AsNode1
---instance Upcastable CLeaf3' where
---  type Base CLeaf3' = CNode2'
---  upcast = qlLeaf3AsNode2
+--instance Upcastable CLeaf1' where {type Base CLeaf1' = CNode0'; upcast = qlLeaf1AsNode0}
+--instance Upcastable CNode1' where {type Base CNode1' = CNode0'; upcast = qlNode1AsNode0}
+--instance Upcastable CLeaf2' where {type Base CLeaf2' = CNode1'; upcast = qlLeaf2AsNode1}
+--instance Upcastable CNode2' where {type Base CNode2' = CNode1'; upcast = qlNode2AsNode1}
+--instance Upcastable CLeaf3' where {type Base CLeaf3' = CNode2'; upcast = qlLeaf3AsNode2}
 --asNode0 :: GenNode0 a -> IO Node0
 --asNode0 (GenNode0 (GenForeignPtr x w)) = w x peekNode0
 --peekNode0 :: Ptr CNode0' -> IO Node0

@@ -59,9 +59,7 @@ module QuantLib.Model
 
   , AffineModelDescendant(..)
   , setPricingEngine
-  )
-  where
-
+  ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 
@@ -81,6 +79,11 @@ import QuantLib.Internal.Enum
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
+{#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
+{#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel nocode#}
@@ -98,6 +101,24 @@ import QuantLib.Internal.Enum
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel nocode#}
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
+
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
+{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
+{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
+{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess' nocode#}
+{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess' nocode#}
+{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
+{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
+{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
+{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
+{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
+{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
+{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
+{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray' nocode#}
+{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
+{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
+{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
+{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
 -- multiple inheritance... not sure if we need that cast to AffineModel at all
 newtype AffineModelDescendant a = AffineModelDescendant a
@@ -148,24 +169,6 @@ instance ShortRateModel`Derives` CalibratedModel where cast = qlShortRateModelAs
 {#fun qlOneFactorAffineModelAsShortRateModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`ShortRateModel'peekShortRateModel*#}
 instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
 
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
-{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
-{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
-{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess' nocode#}
-{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess' nocode#}
-{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
-{#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
-{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
-{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
-{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
-{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
-{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
-{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray' nocode#}
-{#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
-{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
-{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
-{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
-
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 {#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
@@ -203,14 +206,8 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
   ,`Double' -- ^sigma
   ,`Double' -- ^lambda
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-{#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
-{#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
 {#fun qlLiborForwardModel as liborForwardModel{withStochasticProcessDescendant*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
-
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
-{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
-{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -- ^(instrument, weight)
@@ -257,10 +254,8 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
 
 -- |returns the actual price of the instrument (from volatility)
 {#fun qlBlackCalibrationHelperMarketValue as marketValue{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |returns the price of the instrument according to the model
 {#fun qlBlackCalibrationHelperModelValue as modelValue{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 {#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withCalibrationHelperDescendant*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

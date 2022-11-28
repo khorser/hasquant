@@ -4,9 +4,7 @@ module QuantLib.Example.FittedBondCurve
     Result(..)
   , Rate(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(forM)
 import Data.Time.Calendar
 

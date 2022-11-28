@@ -69,9 +69,7 @@ module QuantLib.Instrument.Option
   , VolatileOption(..)
   , QuantoOption(..)
   , OptionOnAsset(..)
-  )
-  where
-
+  ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
@@ -97,60 +95,18 @@ asOneAssetOption :: (a`Derives` OneAssetOption) => a -> IO OneAssetOption
 asOneAssetOption = cast
 
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption nocode#}
-
-instance CdsOption`Derives` Option where cast = qlCdsOptionAsOption
-{#fun qlCdsOptionAsOption{withCdsOption*`CdsOption'}->`Option'peekOption*#}
-
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption nocode#}
 {#pointer *QlDividendVanillaOption as DividendVanillaOption foreign -> CDividendVanillaOption nocode#}
 {#pointer *QlForwardVanillaOption as ForwardVanillaOption foreign -> CForwardVanillaOption nocode#}
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption nocode#}
-
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
-
-{#fun qlMultiAssetOptionAsOption{withMultiAssetOption*`MultiAssetOption'}->`Option'peekOption*#}
-instance MultiAssetOption`Derives` Option where cast = qlMultiAssetOptionAsOption
-
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption nocode#}
-
-{#fun qlOneAssetOptionAsOption{withOneAssetOption*`OneAssetOption'}->`Option'peekOption*#}
-instance OneAssetOption`Derives` Option where cast = qlOneAssetOptionAsOption
-
 {#pointer *QlQuantoBarrierOption as QuantoBarrierOption foreign -> CQuantoBarrierOption nocode#}
-
 {#pointer *QlQuantoForwardVanillaOption as QuantoForwardVanillaOption foreign -> CQuantoForwardVanillaOption nocode#}
-
 {#pointer *QlQuantoVanillaOption as QuantoVanillaOption foreign -> CQuantoVanillaOption nocode#}
-
 {#pointer *QlVanillaOption as VanillaOption foreign -> CVanillaOption nocode#}
-
-{#fun qlBarrierOptionAsOneAssetOption{withBarrierOption*`BarrierOption'}->`OneAssetOption'peekOneAssetOption*#}
-instance BarrierOption`Derives` OneAssetOption where cast = qlBarrierOptionAsOneAssetOption
-
-{#fun qlDividendVanillaOptionAsOneAssetOption{withDividendVanillaOption*`DividendVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
-instance DividendVanillaOption`Derives` OneAssetOption where cast = qlDividendVanillaOptionAsOneAssetOption
-
-{#fun qlForwardVanillaOptionAsOneAssetOption{withForwardVanillaOption*`ForwardVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
-instance ForwardVanillaOption`Derives` OneAssetOption where cast = qlForwardVanillaOptionAsOneAssetOption
-
-{#fun qlQuantoVanillaOptionAsOneAssetOption{withQuantoVanillaOption*`QuantoVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
-instance QuantoVanillaOption`Derives` OneAssetOption where cast = qlQuantoVanillaOptionAsOneAssetOption
-
-{#fun qlVanillaOptionAsOneAssetOption{withVanillaOption*`VanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
-instance VanillaOption`Derives` OneAssetOption where cast = qlVanillaOptionAsOneAssetOption
-
-{#fun qlQuantoBarrierOptionAsBarrierOption{withQuantoBarrierOption*`QuantoBarrierOption'}->`BarrierOption'peekBarrierOption*#}
-instance QuantoBarrierOption`Derives` Option where cast = qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
-
-{#fun qlMargrabeOptionAsMultiAssetOption{withMargrabeOption*`MargrabeOption'}->`MultiAssetOption'peekMultiAssetOption*#}
-instance MargrabeOption`Derives` MultiAssetOption where cast = qlMargrabeOptionAsMultiAssetOption
-
-{#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption{withQuantoForwardVanillaOption*`QuantoForwardVanillaOption'}->`ForwardVanillaOption'peekForwardVanillaOption*#}
-instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
-
--- some necessary boilerplate
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlPayoff foreign newtype nocode#}
 {#pointer *QlPercentageStrikePayoff foreign newtype nocode#}
 {#pointer *QlStrikedTypePayoff foreign newtype nocode#}
@@ -161,6 +117,31 @@ instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForward
 {#pointer *QlEuropeanExercise foreign newtype nocode#}
 {#pointer *QlSwingExercise foreign newtype nocode#}
 {#pointer *QlBermudanExercise foreign newtype nocode#}
+
+
+instance CdsOption`Derives` Option where cast = qlCdsOptionAsOption
+{#fun qlCdsOptionAsOption{withCdsOption*`CdsOption'}->`Option'peekOption*#}
+{#fun qlMultiAssetOptionAsOption{withMultiAssetOption*`MultiAssetOption'}->`Option'peekOption*#}
+instance MultiAssetOption`Derives` Option where cast = qlMultiAssetOptionAsOption
+
+{#fun qlOneAssetOptionAsOption{withOneAssetOption*`OneAssetOption'}->`Option'peekOption*#}
+instance OneAssetOption`Derives` Option where cast = qlOneAssetOptionAsOption
+{#fun qlBarrierOptionAsOneAssetOption{withBarrierOption*`BarrierOption'}->`OneAssetOption'peekOneAssetOption*#}
+instance BarrierOption`Derives` OneAssetOption where cast = qlBarrierOptionAsOneAssetOption
+{#fun qlDividendVanillaOptionAsOneAssetOption{withDividendVanillaOption*`DividendVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
+instance DividendVanillaOption`Derives` OneAssetOption where cast = qlDividendVanillaOptionAsOneAssetOption
+{#fun qlForwardVanillaOptionAsOneAssetOption{withForwardVanillaOption*`ForwardVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
+instance ForwardVanillaOption`Derives` OneAssetOption where cast = qlForwardVanillaOptionAsOneAssetOption
+{#fun qlQuantoVanillaOptionAsOneAssetOption{withQuantoVanillaOption*`QuantoVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
+instance QuantoVanillaOption`Derives` OneAssetOption where cast = qlQuantoVanillaOptionAsOneAssetOption
+{#fun qlVanillaOptionAsOneAssetOption{withVanillaOption*`VanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
+instance VanillaOption`Derives` OneAssetOption where cast = qlVanillaOptionAsOneAssetOption
+{#fun qlQuantoBarrierOptionAsBarrierOption{withQuantoBarrierOption*`QuantoBarrierOption'}->`BarrierOption'peekBarrierOption*#}
+instance QuantoBarrierOption`Derives` Option where cast = qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
+{#fun qlMargrabeOptionAsMultiAssetOption{withMargrabeOption*`MargrabeOption'}->`MultiAssetOption'peekMultiAssetOption*#}
+instance MargrabeOption`Derives` MultiAssetOption where cast = qlMargrabeOptionAsMultiAssetOption
+{#fun qlQuantoForwardVanillaOptionAsForwardVanillaOption{withQuantoForwardVanillaOption*`QuantoForwardVanillaOption'}->`ForwardVanillaOption'peekForwardVanillaOption*#}
+instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
 
 {#fun qlQuantoForwardVanillaOption as quantoForwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
@@ -174,7 +155,6 @@ dividendVanillaOption :: StrikedPayoff -> Exercise -> [(Day, Double)] -- ^divide
   -> IO DividendVanillaOption
 dividendVanillaOption p e d = uncurry (qlDividendVanillaOption p e) (unzip d)
 {#fun qlDividendVanillaOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`DividendVanillaOption'peekDividendVanillaOption*#}
-
 {#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'peekForwardVanillaOption*#}
@@ -196,7 +176,6 @@ dividendVanillaOption p e d = uncurry (qlDividendVanillaOption p e) (unzip d)
   ,`Double' -- ^barrier
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'peekQuantoBarrierOption*#}
-
 dividendBarrierOption :: BarrierType -> Double -- ^barrier
   -> Double -- ^rebate
   -> StrikedPayoff -> Exercise
@@ -276,17 +255,14 @@ class QuantoOption a where
   qrho :: a -> IO Double
   qvega :: a -> IO Double
   qlambda :: a -> IO Double
-
 instance QuantoOption QuantoBarrierOption where
   qrho = qlQuantoBarrierOptionQrho
   qvega = qlQuantoBarrierOptionQvega
   qlambda = qlQuantoBarrierOptionQlambda
-
 instance QuantoOption QuantoForwardVanillaOption where
   qrho = qlQuantoForwardVanillaOptionQrho
   qvega = qlQuantoForwardVanillaOptionQvega
   qlambda = qlQuantoForwardVanillaOptionQlambda
-
 instance QuantoOption QuantoVanillaOption where
   qrho = qlQuantoVanillaOptionQrho
   qvega = qlQuantoVanillaOptionQvega
@@ -302,13 +278,10 @@ class VolatileOption a where
     -> Double -- ^minVol
     -> Double -- ^maxVol
     -> IO Double
-
 instance VolatileOption DividendVanillaOption where
   impliedVolatility = qlDividendVanillaOptionImpliedVolatility
-
 instance VolatileOption VanillaOption where
   impliedVolatility = qlVanillaOptionImpliedVolatility
-
 instance VolatileOption BarrierOption where
   impliedVolatility = qlBarrierOptionImpliedVolatility
 

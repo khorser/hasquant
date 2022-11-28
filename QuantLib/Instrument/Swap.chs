@@ -62,9 +62,7 @@ module QuantLib.Instrument.Swap
   , HasFixedLeg(..)
   , HasFloatingLeg(..)
   , HasSpread(..)
-  )
-  where
-
+  ) where
 import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
@@ -93,35 +91,26 @@ import QuantLib.Internal.Enum
 
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption nocode#}
+{#pointer *QlSwap as Swap foreign -> CSwap nocode#}
+{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
+{#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap nocode#}
+{#pointer *QlBMASwap as BMASwap foreign -> CBMASwap nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
 
 {#fun qlSwaptionAsOption{withSwaption*`Swaption'}->`Option'peekOption*#}
 instance Swaption`Derives` Option where cast = qlSwaptionAsOption
-
-{#pointer *QlSwap as Swap foreign -> CSwap nocode#}
-
 {#fun qlSwapAsInstrument{withSwap*`Swap'}->`Instrument'peekInstrument*#}
 instance Swap`Derives` Instrument where cast = qlSwapAsInstrument
 
 asSwap:: (a`Derives` Swap) => a -> IO Swap
 asSwap = cast
 
-{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-
 {#fun qlVanillaSwapAsSwap{withVanillaSwap*`VanillaSwap'}->`Swap'peekSwap*#}
 instance VanillaSwap`Derives` Swap where cast = qlVanillaSwapAsSwap
-
-{#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap nocode#}
-
 {#fun qlAssetSwapAsSwap{withAssetSwap*`AssetSwap'}->`Swap'peekSwap*#}
 instance AssetSwap`Derives` Swap where cast = qlAssetSwapAsSwap
-
-{#pointer *QlBMASwap as BMASwap foreign -> CBMASwap nocode#}
-
 {#fun qlBMASwapAsSwap{withBMASwap*`BMASwap'}->`Swap'peekSwap*#}
 instance BMASwap`Derives` Swap where cast = qlBMASwapAsSwap
-
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
-
 {#fun qlOvernightIndexedSwapAsSwap{withOvernightIndexedSwap*`OvernightIndexedSwap'}->`Swap'peekSwap*#}
 instance OvernightIndexedSwap`Derives` Swap where cast = qlOvernightIndexedSwapAsSwap
 
@@ -139,7 +128,6 @@ swap' :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
 swap' = (uncurry qlSwap1) . unzip
 {#fun qlSwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
-
 -- |Swap paying Libor against BMA coupons
 {#fun qlBMASwap as bmaSwap{`SwapType',`Double' -- ^nominal
   ,withSchedule*`Schedule' -- ^liborSchedule

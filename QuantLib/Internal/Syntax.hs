@@ -2,9 +2,7 @@
 module QuantLib.Internal.Syntax
   (
     mergeEnums
-  )
-  where
-
+  ) where
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib
 import Data.List.Split

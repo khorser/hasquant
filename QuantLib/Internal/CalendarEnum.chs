@@ -9,9 +9,7 @@ module QuantLib.Internal.CalendarEnum
 
   , mapDayCounter
   , DayCounterConstructor(..)
-  )
-  where
-
+  ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
@@ -21,9 +19,7 @@ import QuantLib.Internal.Type
 import QuantLib.Time.Date(Weekday)
 
 {#enum JointCalendarRule{} deriving(Show, Eq)#}
-
 {#enum CalendarCountry{} add prefix = "Country__" deriving(Show, Eq)#}
-
 {#enum AustriaMarket{} add prefix = "Austria__" deriving(Show, Eq)#}
 {#enum BrazilMarket{} add prefix = "Brazil__" deriving(Show, Eq)#}
 {#enum CanadaMarket{} add prefix = "Canada__" deriving(Show, Eq)#}
@@ -51,7 +47,6 @@ deriving instance Show CalendarConstructor
 deriving instance Eq CalendarConstructor
 
 {#enum DayCounterType{} add prefix = "DayCounter__" deriving(Show, Eq)#}
-
 {#enum ActualActualConvention{} add prefix = "ActualActual__" deriving(Show, Eq)#}
 {#enum Thirty360Convention{} add prefix = "Thirty360__" deriving(Show, Eq)#}
 {#enum Actual365FixedConvention{} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}

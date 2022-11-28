@@ -11,9 +11,7 @@ module QuantLib.Currency
   , fractionSymbol
   , code'
   , symbol
-  )
-  where
-
+  ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
@@ -27,26 +25,18 @@ import QuantLib.Internal.Enum
 {#pointer *Rounding as QlRounding foreign newtype nocode#}
 
 {#enum MoneyConversionType{} deriving(Show, Eq)#}
-
 {#enum Ccy{} deriving(Show, Eq)#}
 
 {#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 
 {#fun qlCurrency as currency{`Ccy',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
-
 {#fun pure qlCurrencyCode as code{withCurrency*`Currency'}->`String'peekDynString*#}
-
 {#fun pure qlCurrencyFormat as format{withCurrency*`Currency'}->`String'peekDynString*#}
-
 {#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit{withCurrency*`Currency'}->`Int'#}
-
 {#fun pure qlCurrencyFractionSymbol as fractionSymbol{withCurrency*`Currency'}->`String'#}
-
 {#fun pure qlCurrencyNumericCode as code'{withCurrency*`Currency'}->`Int'#}
-
 {#fun pure qlCurrencySymbol as symbol{withCurrency*`Currency'}->`String'#}
-
 {#fun qlCreateCurrency as currency'{`String' -- ^name
   ,`String' -- ^code
   ,`Int' -- ^numericCode

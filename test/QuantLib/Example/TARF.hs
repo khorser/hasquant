@@ -3,9 +3,7 @@ module QuantLib.Example.TARF
   (
     run
   , Result(..)
-  )
-where
-
+  ) where
 import Control.Monad(replicateM)
 import Data.Time.Calendar(fromGregorian)
 

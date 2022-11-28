@@ -21,10 +21,7 @@ module QuantLib.Quote
   , futuresConvAdjustmentQuote
   , impliedStdDevQuote
   , lastFixingQuote
-  )
-
-  where
-
+  ) where
 import QuantLib.Internal
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
@@ -34,20 +31,16 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
+{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq)#}
+{#enum AtmType{} deriving(Show, Eq)#}
+{#enum PriceType{} deriving(Show, Eq)#}
+{#enum DeltaType{} deriving(Show, Eq)#}
+
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
-
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlSimpleQuote as Quote foreign -> CSimpleQuote' nocode#}
-
-{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq)#}
-
-{#enum AtmType{} deriving(Show, Eq)#}
-
-{#enum PriceType{} deriving(Show, Eq)#}
-
-{#enum DeltaType{} deriving(Show, Eq)#}
 
 -- |market element returning a stored value
 {#fun qlSimpleQuote as simpleQuote{`Double',preErrorCheck-`String'errorCheck*-}->`SimpleQuote'peekSimpleQuote*#}

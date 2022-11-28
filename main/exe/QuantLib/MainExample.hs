@@ -1,5 +1,4 @@
-module Main
-where
+module Main where
 
 import Control.Monad(forM_, void)
 import QuantLib.Settings

@@ -2,9 +2,7 @@ module QuantLib.Example.BermudanSwaption
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(forM_)
 
 import qualified QuantLib.CashFlow as CF

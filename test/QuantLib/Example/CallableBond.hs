@@ -3,9 +3,7 @@ module QuantLib.Example.CallableBond
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(foldM)
 import Data.Time.Calendar
 

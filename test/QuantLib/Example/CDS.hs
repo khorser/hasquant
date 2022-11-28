@@ -3,9 +3,7 @@ module QuantLib.Example.CDS
   (
     Result(..)
   , run
-  )
-where
-
+  ) where
 import Control.Monad(forM, (>=>))
 import Data.Time.Calendar
 
@@ -67,7 +65,6 @@ run = do
     , defNpvR = defnpvs
     , cpnNpvR = cpnnpvs
   }
-
   where recoveryRate = 0.5
         nominal = 1000000.0
         quotedSpread = 0.0150

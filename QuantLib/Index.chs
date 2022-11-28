@@ -7,9 +7,7 @@ module QuantLib.Index
   , addFixing
   , fixingCalendar
   , asIndex
-  )
-  where
-
+  ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
 
@@ -20,7 +18,6 @@ import QuantLib.Internal.Type
 #include "ql.h"
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
-
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 
 instance Show Index where show = qlIndexName
@@ -32,7 +29,6 @@ instance Show Index where show = qlIndexName
 -- Adds fixings for the given InterestRateIndex object
 {#fun qlIndexAddFixing as addFixing{withIndex*`GenIndex a',withDay*`Day',`Double',`Bool' -- ^forceOverwrite
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
-
 -- |returns the calendar defining valid fixing dates
 {#fun qlIndexFixingCalendar as fixingCalendar{withIndex*`GenIndex a',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 

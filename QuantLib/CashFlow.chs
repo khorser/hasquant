@@ -72,9 +72,7 @@ module QuantLib.CashFlow
   , setCouponPricers
   , analyticHaganPricer
   , numericHaganPricer
-  )
-  where
-
+  ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.Time.Schedule#}(Frequency, TimeUnit)
@@ -89,7 +87,6 @@ import QuantLib.Internal.Type
 
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
-
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
@@ -101,7 +98,6 @@ import QuantLib.Internal.Type
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 
 {#enum DurationType{} deriving(Show, Eq)#}
-
 {#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq)#}
 
 {#fun qlLeg{withDoubleArray*`[Double]'&,withDayPtr*`[Day]',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}

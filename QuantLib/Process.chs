@@ -60,9 +60,7 @@ module QuantLib.Process
   , stochasticProcessArray
 
   , blackScholesTheta
-  )
-  where
-
+  ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "ql.h"
@@ -71,20 +69,16 @@ module QuantLib.Process
 import QuantLib.Internal
 import QuantLib.Internal.Type
 
+{#enum ProcessDiscretization{} deriving(Show,Eq)#}
+{#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq)#}
+{#enum HestonProcessDiscretization{} deriving(Show, Eq)#}
+{#enum GJRGARCHProcessDiscretization{} deriving(Show, Eq)#}
+{#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq)#}
+
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-
-{#enum ProcessDiscretization{} deriving(Show,Eq)#}
-
-{#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq)#}
-
-{#enum HestonProcessDiscretization{} deriving(Show, Eq)#}
-
-{#enum GJRGARCHProcessDiscretization{} deriving(Show, Eq)#}
-
-{#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq)#}
 
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}

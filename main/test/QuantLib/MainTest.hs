@@ -1,6 +1,5 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-module Main
-  where
+module Main where
 
 import Prelude hiding(until)
 
