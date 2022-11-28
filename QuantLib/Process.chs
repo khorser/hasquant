@@ -153,7 +153,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^nu
   ,`Double' -- ^delta
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`BatesProcess'peekBatesProcess*#}
-{#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess{withStochasticProcess1DDescendant*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
+{#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
   ,`Double' -- ^beta
   ,`Double' -- ^jumpIntensity
   ,`Double' -- ^eta
@@ -220,11 +220,11 @@ import QuantLib.Internal.Type
   ,`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteProcess'peekHullWhiteProcess*#}
-{#fun qlHybridHestonHullWhiteProcess as hybridHestonHullWhiteProcess{withHestonProcess*`GenHestonProcess a',withStochasticProcess1DDescendant*`HullWhiteForwardProcess'
+{#fun qlHybridHestonHullWhiteProcess as hybridHestonHullWhiteProcess{withHestonProcess*`GenHestonProcess a',withGenStochasticProcess1D*`HullWhiteForwardProcess'
   ,`Double' -- ^corrEquityShortRate
   ,`HybridHestonHullWhiteProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'peekHybridHestonHullWhiteProcess*#}
 {#fun qlKlugeExtOUProcess as klugeExtOUProcess{`Double' -- ^rho
-  ,withStochasticProcessDescendant*`ExtOUWithJumpsProcess',withStochasticProcess1DDescendant*`ExtendedOrnsteinUhlenbeckProcess',preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
+  ,withGenStochasticProcess*`ExtOUWithJumpsProcess',withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
 {#fun qlLiborForwardModelProcess as liborForwardModelProcess{fromIntegral`Word' -- ^size
   ,withIborIndex*`GenIborIndex a',preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'peekLiborForwardModelProcess*#}
 {#fun qlMerton76Process as merton76Process{withQuote*`GenQuote a' -- ^stateVariable

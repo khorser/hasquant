@@ -290,12 +290,12 @@ interpolatedZeroCurve r dc c qd i = uncurry' (qlInterpolatedZeroCurve rs rd dc c
 class HelperUnderlying a b | a -> b where underlying :: a -> IO b
 
 instance HelperUnderlying BondHelper Bond where underlying = qlBondHelperBond
-{#fun qlBondHelperBond{withRateHelperDescendant*`BondHelper',preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+{#fun qlBondHelperBond{withGenRateHelper*`BondHelper',preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 instance HelperUnderlying SwapRateHelper VanillaSwap where underlying = qlSwapRateHelperSwap
-{#fun qlSwapRateHelperSwap{withRateHelperDescendant*`SwapRateHelper',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+{#fun qlSwapRateHelperSwap{withGenRateHelper*`SwapRateHelper',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 instance HelperUnderlying OISRateHelper OvernightIndexedSwap where underlying = qlOISRateHelperSwap
-{#fun qlOISRateHelperSwap{withRateHelperDescendant*`OISRateHelper',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+{#fun qlOISRateHelperSwap{withGenRateHelper*`OISRateHelper',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

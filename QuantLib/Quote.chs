@@ -50,7 +50,7 @@ import QuantLib.Internal.Type
 
 -- |returns the difference between the new value and the old value
 -- /NB/ The change will propagate to all users of the quote
-{#fun qlSimpleQuoteSetValue as setValue{withQuoteDescendant*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSimpleQuoteSetValue as setValue{withGenQuote*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote a' -- ^forward
   ,withQuote*`GenQuote b' -- ^callPrice

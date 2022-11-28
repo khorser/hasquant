@@ -75,7 +75,7 @@ instance CreditDefaultSwap`Derives` Instrument where cast = qlCreditDefaultSwapA
 {#fun qlCdsOption as cdsOption{withCreditDefaultSwap*`CreditDefaultSwap',withExercise*`Exercise',`Bool' -- ^knocksOut
   ,preErrorCheck-`String'errorCheck*-}->`CdsOption'peekCdsOption*#}
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility{withCdsOption*`CdsOption',`Double' -- ^price
-  ,withYieldTermStructure*`GenYieldTermStructure a',withTermStructureDescendant*`DefaultProbabilityTermStructure'
+  ,withYieldTermStructure*`GenYieldTermStructure a',withGenTermStructure*`DefaultProbabilityTermStructure'
   ,`Double' -- ^recoveryRate
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations

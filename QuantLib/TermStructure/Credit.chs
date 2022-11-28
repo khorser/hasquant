@@ -46,33 +46,33 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign -> CDefaultProbabilityHelper nocode#}
 
-{#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withTermStructureDescendant*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+{#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withGenTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 {#fun qlFlatHazardRate1 as flatHazardRate'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 {#fun qlFlatHazardRate as flatHazardRate{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-{#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve{withTermStructureDescendant*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-{#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability{withTermStructureDescendant*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve{withGenTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+{#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRate'{withTermStructureDescendant*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRate'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDefaultProbabilityTermStructureHazardRate as hazardRate{withTermStructureDescendant*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
--- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbability'{withTermStructureDescendant*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDefaultProbabilityTermStructureSurvivalProbability as survivalProbability{withTermStructureDescendant*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensity'{withTermStructureDescendant*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDefaultProbabilityTermStructureDefaultDensity as defaultDensity{withTermStructureDescendant*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureHazardRate as hazardRate{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbability'{withTermStructureDescendant*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbability'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDefaultProbabilityTermStructureSurvivalProbability as survivalProbability{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensity'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDefaultProbabilityTermStructureDefaultDensity as defaultDensity{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+{#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbability'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |probability of default between two given dates
-{#fun qlDefaultProbabilityTermStructureDefaultProbability2 as defaultProbabilityBetween{withTermStructureDescendant*`DefaultProbabilityTermStructure',withDay*`Day',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability2 as defaultProbabilityBetween{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |probability of default between two given times
-{#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetween'{withTermStructureDescendant*`DefaultProbabilityTermStructure',`Double',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetween'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlSpreadCdsHelper as spreadCdsHelper{withQuote*`GenQuote a' -- ^runningSpread

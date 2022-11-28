@@ -194,12 +194,12 @@ generalizedHullWhite :: GenYieldTermStructure a -> [(Day, Double)] -- ^speedstru
   -> IO ShortRateModel
 generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip s; (vd, vq) = unzip v}
 {#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
-{#fun qlGJRGARCHModel as gJRGARCHModel{withStochasticProcessDescendant*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
+{#fun qlGJRGARCHModel as gJRGARCHModel{withGenStochasticProcess*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
 {#fun qlHestonModel as hestonModel{withHestonProcess*`GenHestonProcess a',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
-{#fun qlVarianceGammaModel as varianceGammaModel{withStochasticProcess1DDescendant*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
+{#fun qlVarianceGammaModel as varianceGammaModel{withGenStochasticProcess1D*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
 {#fun qlVasicek as vasicek{`Double' -- ^r0
   ,`Double' -- ^a
   ,`Double' -- ^b
@@ -207,7 +207,7 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
   ,`Double' -- ^lambda
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
-{#fun qlLiborForwardModel as liborForwardModel{withStochasticProcessDescendant*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
+{#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel -> [(CalibrationHelper, Double)] -- ^(instrument, weight)
@@ -236,16 +236,16 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
   ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
-{#fun qlBlackCalibrationHelperTimes as times{withCalibrationHelperDescendant*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperTimes as times{withGenCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`CalibratedModel',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Black price given a volatility.
-{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withCalibrationHelperDescendant*`BlackCalibrationHelper',`Double' -- ^volatility
+{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withGenCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^volatility
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the error resulting from the model valuation
-{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Black volatility implied by the model.
-{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withCalibrationHelperDescendant*`BlackCalibrationHelper',`Double' -- ^targetValue
+{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withGenCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^targetValue
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
@@ -253,9 +253,9 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the actual price of the instrument (from volatility)
-{#fun qlBlackCalibrationHelperMarketValue as marketValue{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperMarketValue as marketValue{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the price of the instrument according to the model
-{#fun qlBlackCalibrationHelperModelValue as modelValue{withCalibrationHelperDescendant*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withCalibrationHelperDescendant*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperModelValue as modelValue{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withGenCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
