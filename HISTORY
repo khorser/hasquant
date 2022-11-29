@@ -79,7 +79,7 @@ StochasticProcess
 	    BlackProcess
 
 CalibratedModel
-    LiborForwardModel
+    LiborForwardModel: AffineModel
     GJRGARCHModel
     PiecewiseTimeDependentHestonModel
     HestonModel
@@ -88,6 +88,6 @@ CalibratedModel
 	BatesDoubleExpModel
 	    BatesDoubleExpDetJumpModel
     ShortRateModel
-	G2
-	OneFactorAffineModel
-	    HullWhite
+	G2: AffineModel
+	OneFactorAffineModel: AffineModel
+	    HullWhite: AffineMode

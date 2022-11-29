@@ -70,15 +70,11 @@ template <> class ObjClassName<SamplePath*> {public: static void output(std::ost
 
 QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(
-                    new DiscountingBondEngine(
-                        Handle<YieldTermStructure>(*arg(ts)), qlOptBool(f)))));
+    return ret(new QlPricingEngine(alloc(new DiscountingBondEngine(Handle<YieldTermStructure>(*arg(ts)), qlOptBool(f)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine *>(e, er);}}
-
 QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return ret(new QlPricingEngine(alloc(new DiscountingSwapEngine(Handle<YieldTermStructure>(*arg(discountCurve)), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -322,7 +318,6 @@ QlPricingEngine* qlFdG2SwaptionEngine(QlG2* model, unsigned tGrid, unsigned xGri
 QlPricingEngine* qlFdHullWhiteSwaptionEngine(QlHullWhite* model, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, char **e) {
   try {return ret(new QlPricingEngine(alloc(new FdHullWhiteSwaptionEngine(*arg(model), tGrid, xGrid, dampingSteps, invEps, *arg(schemeDesc)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-
 QlPricingEngine* qlMCVarianceSwapEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCVarianceSwapEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -362,7 +357,6 @@ QlPricingEngine* qlMCHullWhiteCapFloorEngine1(int rngtrait, QlHullWhite* model, 
 QlPricingEngine* qlMCPerformanceEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCPerformanceEngine1Aux(rngtrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-
 QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlBinomialVanillaEngineAux(tree, *arg(process), timeSteps))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -495,9 +489,7 @@ void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
 QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
 void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
-  try {
-    Constraint c(constraint ? *arg(constraint) : Constraint());
-    (*arg(o))->calibrate(qlVector(x1, x1Len), *arg(method), *arg(endCriteria), c, std::vector<double>(weights, weights+wLen));
+  try {(*arg(o))->calibrate(qlVector(x1, x1Len), *arg(method), *arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+wLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, char **e) {
   try {(*arg(o))->setPricingEngine(*arg(engine));

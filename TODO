@@ -177,36 +177,8 @@ a:Instrument
 	ConvertibleBond : Bond | qlConvertibleBondAsBond
     	FixedRateBond : Bond | qlFixedRateBondAsBond
 	CallableBond : Bond | qlCallableBondAsBond
-CalibratedModel
-    LiborForwardModel : CalibratedModel | qlLiborForwardModelAsCalibratedModel
-    GJRGARCHModel : CalibratedModel | qlGJRGARCHModelAsCalibratedModel
-    PiecewiseTimeDependentHestonModel : CalibratedModel | qlPiecewiseTimeDependentHestonModelAsCalibratedModel
-    HestonModel : CalibratedModel | qlHestonModelAsCalibratedModel
-	BatesModel : HestonModel | qlBatesModelAsHestonModel
-	    BatesDetJumpModel : BatesModel | qlBatesDetJumpModelAsBatesModel
-	BatesDoubleExpModel : HestonModel | qlBatesDoubleExpModelAsHestonModel
-	    BatesDoubleExpDetJumpModel : BatesDoubleExpModel | qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
-    ShortRateModel : CalibratedModel | qlShortRateModelAsCalibratedModel
-	G2 : ShortRateModel | qlG2AsShortRateModel
-	OneFactorAffineModel : ShortRateModel | qlOneFactorAffineModelAsShortRateModel
-	    HullWhite : OneFactorAffineModel | qlHullWhiteAsOneFactorAffineModel
 
 ---
-
-QlAffineModel as AffineModel | qlFreeAffineModel
-QlBatesDetJumpModel as BatesDetJumpModel | qlFreeBatesDetJumpModel
-QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel | qlFreeBatesDoubleExpDetJumpModel
-QlBatesDoubleExpModel as BatesDoubleExpModel | qlFreeBatesDoubleExpModel
-QlBatesModel as BatesModel | qlFreeBatesModel
-QlCalibratedModel as CalibratedModel | qlFreeCalibratedModel
-QlG2 as G2 | qlFreeG2
-QlGJRGARCHModel as GJRGARCHModel | qlFreeGJRGARCHModel
-QlHestonModel as HestonModel | qlFreeHestonModel
-QlHullWhite as HullWhite | qlFreeHullWhite
-QlLiborForwardModel as LiborForwardModel | qlFreeLiborForwardModel
-QlOneFactorAffineModel as OneFactorAffineModel | qlFreeOneFactorAffineModel
-QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel | qlFreePiecewiseTimeDependentHestonModel
-QlShortRateModel as ShortRateModel | qlFreeShortRateModel
 
 QlAssetSwap as AssetSwap | qlFreeAssetSwap
 QlBarrierOption as BarrierOption | qlFreeBarrierOption
