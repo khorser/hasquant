@@ -26,7 +26,7 @@ module QuantLib.PricingEngine
   , blackSwaptionEngine
   , blackSwaptionEngine'
   , analyticBSMHullWhiteEngine
-  --, analyticCapFloorEngine
+  , analyticCapFloorEngine
   , analyticGJRGARCHEngine
   , analyticHestonEngine
   , analyticHestonHullWhiteEngine
@@ -215,7 +215,7 @@ import QuantLib.Internal.Enum
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
---{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticGJRGARCHEngine as analyticGJRGARCHEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticHestonEngine as analyticHestonEngine{withHestonModel*`HestonModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations

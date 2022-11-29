@@ -375,8 +375,8 @@ module QuantLib.Internal.Type
   , asOneFactorAffineModel
   , asShortRateModel
   , asHestonModel
-  --, peekAffineModel
-  --, withAffineModel
+  , peekAffineModel
+  , withAffineModel
   , BatesDetJumpModel
   , CBatesDetJumpModel
   , CBatesDetJumpModel'
@@ -388,16 +388,19 @@ module QuantLib.Internal.Type
   , peekBatesDoubleExpDetJumpModel
   , withBatesDoubleExpDetJumpModel
   , BatesDoubleExpModel
+  , GenBatesDoubleExpModel
   , CBatesDoubleExpModel
   , CBatesDoubleExpModel'
   , peekBatesDoubleExpModel
   , withBatesDoubleExpModel
   , BatesModel
+  , GenBatesModel
   , CBatesModel
   , CBatesModel'
   , peekBatesModel
   , withBatesModel
   , CalibratedModel
+  , GenCalibratedModel
   , CCalibratedModel
   , CCalibratedModel'
   , peekCalibratedModel
@@ -412,8 +415,8 @@ module QuantLib.Internal.Type
   , CGJRGARCHModel
   , CGJRGARCHModel'
   , peekGJRGARCHModel
-  --, withGJRGARCHModel
   , HestonModel
+  , GenHestonModel
   , CHestonModel
   , CHestonModel'
   , peekHestonModel
@@ -427,13 +430,14 @@ module QuantLib.Internal.Type
   , CPiecewiseTimeDependentHestonModel
   , CPiecewiseTimeDependentHestonModel'
   , peekPiecewiseTimeDependentHestonModel
-  --, withPiecewiseTimeDependentHestonModel
   , ShortRateModel
+  , GenShortRateModel
   , CShortRateModel
   , CShortRateModel'
   , peekShortRateModel
   , withShortRateModel
   , OneFactorAffineModel
+  , GenOneFactorAffineModel
   , COneFactorAffineModel
   , COneFactorAffineModel'
   , peekOneFactorAffineModel
@@ -442,7 +446,6 @@ module QuantLib.Internal.Type
   , CLiborForwardModel
   , CLiborForwardModel'
   , peekLiborForwardModel
-  --, withLiborForwardModel
 
   , AssetSwap
   , CAssetSwap
@@ -1619,6 +1622,9 @@ type CAffineModel = ForeignPtr CAffineModel'
 type AffineModel = GenAffineModel CAffineModel
 foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel'
 instance Finalizable CAffineModel' where finalize = qlFreeAffineModel
+
+withAffineModel = undefined
+peekAffineModel = undefined
 
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 

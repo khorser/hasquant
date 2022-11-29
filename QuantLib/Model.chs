@@ -1,21 +1,26 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances, FlexibleContexts, TypeOperators #-}
 module QuantLib.Model
   (
    CalibrationErrorType(..)
   , GJRGARCHModel
   , HestonModel
+  , GenHestonModel
   , BatesModel
+  , GenBatesModel
   , PiecewiseTimeDependentHestonModel
   , ShortRateModel
-  --, AffineModel
+  , GenShortRateModel
+  , AffineModel
   , OneFactorAffineModel
+  , GenOneFactorAffineModel
   , LiborForwardModel
   , HullWhite
   , CalibratedModel
+  , GenCalibratedModel
   , G2
   , BatesDetJumpModel
   , BatesDoubleExpDetJumpModel
   , BatesDoubleExpModel
+  , GenBatesDoubleExpModel
   , LmCorrelationModel(..)
   , LmVolatilityModel(..)
   , CalibrationHelper
@@ -126,10 +131,10 @@ import QuantLib.Internal.Enum
 --instance (GenAffineModel LiborForwardModel)`Derives` AffineModel where cast (GenAffineModel x) = qlLiborForwardModelAsAffineModel x
 --instance (GenAffineModel G2)`Derives` AffineModel where cast (GenAffineModel x) = qlG2AsAffineModel x
 
---{#fun qlOneFactorAffineModelAsAffineModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`AffineModel'peekAffineModel*#}
---{#fun qlLiborForwardModelAsAffineModel{withGenCalibratedModel*`LiborForwardModel'}->`AffineModel'peekAffineModel*#}
---{#fun qlHullWhiteAsOneFactorAffineModel{withHullWhite*`HullWhite'}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
---{#fun qlG2AsAffineModel{withG2*`G2'}->`AffineModel'peekAffineModel*#}
+{#fun qlOneFactorAffineModelAsAffineModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`AffineModel'peekAffineModel*#}
+{#fun qlLiborForwardModelAsAffineModel{withGenCalibratedModel*`LiborForwardModel'}->`AffineModel'peekAffineModel*#}
+{#fun qlHullWhiteAsOneFactorAffineModel{withHullWhite*`HullWhite'}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+{#fun qlG2AsAffineModel{withG2*`G2'}->`AffineModel'peekAffineModel*#}
 
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 {#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
