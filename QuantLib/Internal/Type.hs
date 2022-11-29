@@ -1448,23 +1448,25 @@ data COneFactorAffineModel'
 data CHullWhite'
 data CG2'
 data CAffineModel'
-newtype GenCalibratedModel a = GenCalibratedModel (GenForeignPtr a CCalibratedModel')
+data NonAffineModel
+data AffineModel
+newtype GenCalibratedModel a f = GenCalibratedModel (GenForeignPtr a CCalibratedModel')
 type CCalibratedModel = ForeignPtr CCalibratedModel'
-type CalibratedModel = GenCalibratedModel CCalibratedModel
+type CalibratedModel = GenCalibratedModel CCalibratedModel NonAffineModel
 type CLiborForwardModel = ForeignPtr CLiborForwardModel'
-type LiborForwardModel = GenCalibratedModel CLiborForwardModel
+type LiborForwardModel = GenCalibratedModel CLiborForwardModel AffineModel
 type CGJRGARCHModel = ForeignPtr CGJRGARCHModel'
-type GJRGARCHModel = GenCalibratedModel CGJRGARCHModel
+type GJRGARCHModel = GenCalibratedModel CGJRGARCHModel NonAffineModel
 type CPiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel'
-type PiecewiseTimeDependentHestonModel = GenCalibratedModel CPiecewiseTimeDependentHestonModel
+type PiecewiseTimeDependentHestonModel = GenCalibratedModel CPiecewiseTimeDependentHestonModel NonAffineModel
 newtype AnyHestonModel a = AnyHestonModel {getHestonModel :: GenForeignPtr a CHestonModel'}
-type GenHestonModel a = GenCalibratedModel (AnyHestonModel a)
+type GenHestonModel a = GenCalibratedModel (AnyHestonModel a) NonAffineModel
 type CHestonModel = ForeignPtr CHestonModel'
 type HestonModel = GenHestonModel CHestonModel
 newtype AnyShortRateModel a = AnyShortRateModel {getShortRateModel :: GenForeignPtr a CShortRateModel'}
-type GenShortRateModel a = GenCalibratedModel (AnyShortRateModel a)
+type GenShortRateModel a f = GenCalibratedModel (AnyShortRateModel a) f
 type CShortRateModel = ForeignPtr CShortRateModel'
-type ShortRateModel = GenShortRateModel CShortRateModel
+type ShortRateModel = GenShortRateModel CShortRateModel NonAffineModel
 newtype AnyBatesModel a = AnyBatesModel {getBatesModel :: GenForeignPtr a CBatesModel'}
 type GenBatesModel a = GenHestonModel (AnyBatesModel a)
 type CBatesModel = ForeignPtr CBatesModel'
@@ -1478,16 +1480,16 @@ type BatesDoubleExpModel = GenBatesDoubleExpModel CBatesDoubleExpModel
 type CBatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel'
 type BatesDoubleExpDetJumpModel = GenBatesDoubleExpModel CBatesDoubleExpDetJumpModel
 newtype AnyOneFactorAffineModel a = AnyOneFactorAffineModel {getOneFactorAffineModel :: GenForeignPtr a COneFactorAffineModel'}
-type GenOneFactorAffineModel a = GenShortRateModel (AnyOneFactorAffineModel a)
+type GenOneFactorAffineModel a = GenShortRateModel (AnyOneFactorAffineModel a) AffineModel
 type COneFactorAffineModel = ForeignPtr COneFactorAffineModel'
 type OneFactorAffineModel = GenOneFactorAffineModel COneFactorAffineModel
 type CHullWhite = ForeignPtr CHullWhite'
 type HullWhite = GenOneFactorAffineModel CHullWhite
 type CG2 = ForeignPtr CG2'
-type G2 = GenShortRateModel CG2
+type G2 = GenShortRateModel CG2 AffineModel
 newtype GenAffineModel a = GenAffineModel (GenForeignPtr a CAffineModel')
 type CAffineModel = ForeignPtr CAffineModel'
-type AffineModel = GenAffineModel CAffineModel
+--type AffineModel = GenAffineModel CAffineModel
 foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel'
 foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel'
 foreign import ccall "ql.h qlLiborForwardModelAsCalibratedModel" qlLiborForwardModelAsCalibratedModel :: Ptr CLiborForwardModel' -> IO (Ptr CCalibratedModel')
@@ -1540,13 +1542,13 @@ instance Upcastable CBatesDoubleExpDetJumpModel' where {type Base CBatesDoubleEx
 instance Upcastable COneFactorAffineModel' where {type Base COneFactorAffineModel' = CShortRateModel'; upcast = qlOneFactorAffineModelAsShortRateModel}
 instance Upcastable CHullWhite' where {type Base CHullWhite' = COneFactorAffineModel'; upcast = qlHullWhiteAsOneFactorAffineModel}
 instance Upcastable CG2' where {type Base CG2' = CShortRateModel'; upcast = qlG2AsShortRateModel}
-asCalibratedModel :: GenCalibratedModel a -> IO CalibratedModel
+asCalibratedModel :: GenCalibratedModel a f -> IO CalibratedModel
 asCalibratedModel (GenCalibratedModel (GenForeignPtr x w)) = w x peekCalibratedModel
 peekCalibratedModel :: Ptr CCalibratedModel' -> IO CalibratedModel
 peekCalibratedModel = GenCalibratedModel <.> newCastForeignPtr
-withCalibratedModel :: GenCalibratedModel a -> (Ptr CCalibratedModel' -> IO b) -> IO b
+withCalibratedModel :: GenCalibratedModel a f -> (Ptr CCalibratedModel' -> IO b) -> IO b
 withCalibratedModel (GenCalibratedModel (GenForeignPtr x w)) = w x
-withGenCalibratedModel :: GenCalibratedModel (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withGenCalibratedModel :: GenCalibratedModel (ForeignPtr a) f -> (Ptr a -> IO b) -> IO b
 withGenCalibratedModel (GenCalibratedModel (GenForeignPtr x _)) = withForeignPtr x
 peekLiborForwardModel :: Ptr CLiborForwardModel' -> IO LiborForwardModel
 peekLiborForwardModel = GenCalibratedModel <.> newGenForeignPtr
@@ -1564,15 +1566,15 @@ withHestonModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPt
 newGenHestonModel :: GenForeignPtr a CHestonModel' -> IO (GenHestonModel a)
 newGenHestonModel p = GenCalibratedModel <^> GenForeignPtr (AnyHestonModel p) (withGenForeignPtr . getHestonModel)
 
-asShortRateModel :: GenShortRateModel a -> IO ShortRateModel
+asShortRateModel :: GenShortRateModel a f -> IO ShortRateModel
 asShortRateModel (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x w)) _)) = w x peekShortRateModel
 peekShortRateModel :: Ptr CShortRateModel' -> IO ShortRateModel
 peekShortRateModel = newCastForeignPtr >=> newGenShortRateModel
-withShortRateModel :: GenShortRateModel a -> (Ptr CShortRateModel' -> IO b) -> IO b
+withShortRateModel :: GenShortRateModel a f -> (Ptr CShortRateModel' -> IO b) -> IO b
 withShortRateModel (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x w)) _)) = w x
-newGenShortRateModel :: GenForeignPtr a CShortRateModel' -> IO (GenShortRateModel a)
+newGenShortRateModel :: GenForeignPtr a CShortRateModel' -> IO (GenShortRateModel a f)
 newGenShortRateModel p = GenCalibratedModel <^> GenForeignPtr (AnyShortRateModel p) (withGenForeignPtr . getShortRateModel)
-peekGenShortRateModel :: (Finalizable a, Upcastable a, Base a ~ CShortRateModel') => Ptr a -> IO (GenShortRateModel (ForeignPtr a))
+peekGenShortRateModel :: (Finalizable a, Upcastable a, Base a ~ CShortRateModel') => Ptr a -> IO (GenShortRateModel (ForeignPtr a) f)
 peekGenShortRateModel = newGenForeignPtr >=> newGenShortRateModel
 
 asBatesModel :: GenBatesModel a -> IO BatesModel
