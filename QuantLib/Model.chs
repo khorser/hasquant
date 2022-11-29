@@ -7,7 +7,7 @@ module QuantLib.Model
   , BatesModel
   , PiecewiseTimeDependentHestonModel
   , ShortRateModel
-  , AffineModel
+  --, AffineModel
   , OneFactorAffineModel
   , LiborForwardModel
   , HullWhite
@@ -23,7 +23,7 @@ module QuantLib.Model
   , GenCalibrationHelper
   , asCalibrationHelper
 
-  , asAffineModel
+  --, asAffineModel
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
@@ -57,7 +57,7 @@ module QuantLib.Model
   , marketValue
   , modelValue
 
-  , GenAffineModel(..)
+  --, GenAffineModel(..)
   , setPricingEngine
   ) where
 #include "qlTypesC2HS.h"
@@ -85,20 +85,21 @@ import QuantLib.Internal.Enum
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 
-{#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel nocode#}
-{#pointer *QlHestonModel as HestonModel foreign -> CHestonModel nocode#}
-{#pointer *QlBatesModel as BatesModel foreign -> CBatesModel nocode#}
-{#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel nocode#}
-{#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel nocode#}
-{#pointer *QlAffineModel as AffineModel foreign -> CAffineModel nocode#}
-{#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel nocode#}
-{#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel nocode#}
-{#pointer *QlHullWhite as HullWhite foreign -> CHullWhite nocode#}
-{#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel nocode#}
-{#pointer *QlG2 as G2 foreign -> CG2 nocode#}
-{#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel nocode#}
-{#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel nocode#}
-{#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel nocode#}
+{#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
+{#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
+{#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
+{#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
+{#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
+{#pointer *QlAffineModel as AffineModel foreign -> CAffineModel' nocode#}
+{#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
+{#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel' nocode#}
+{#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
+{#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel' nocode#}
+{#pointer *QlG2 as G2 foreign -> CG2' nocode#}
+{#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel' nocode#}
+{#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel' nocode#}
+{#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
+
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
 
@@ -120,54 +121,15 @@ import QuantLib.Internal.Enum
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
--- multiple inheritance... not sure if we need that cast to AffineModel at all
-newtype GenAffineModel a = GenAffineModel a
-instance (GenAffineModel OneFactorAffineModel)`Derives` AffineModel where cast (GenAffineModel x) = qlOneFactorAffineModelAsAffineModel x
-instance (GenAffineModel LiborForwardModel)`Derives` AffineModel where cast (GenAffineModel x) = qlLiborForwardModelAsAffineModel x
-instance (GenAffineModel G2)`Derives` AffineModel where cast (GenAffineModel x) = qlG2AsAffineModel x
+--newtype GenAffineModel a = GenAffineModel a
+--instance (GenAffineModel OneFactorAffineModel)`Derives` AffineModel where cast (GenAffineModel x) = qlOneFactorAffineModelAsAffineModel x
+--instance (GenAffineModel LiborForwardModel)`Derives` AffineModel where cast (GenAffineModel x) = qlLiborForwardModelAsAffineModel x
+--instance (GenAffineModel G2)`Derives` AffineModel where cast (GenAffineModel x) = qlG2AsAffineModel x
 
-asAffineModel :: (a`Derives` AffineModel) => a -> IO AffineModel
-asAffineModel = cast
-asCalibratedModel :: (a`Derives` CalibratedModel) => a -> IO CalibratedModel
-asCalibratedModel = cast
-asHestonModel :: (a`Derives` HestonModel) => a -> IO HestonModel
-asHestonModel = cast
-asShortRateModel :: (a`Derives` ShortRateModel) => a -> IO ShortRateModel
-asShortRateModel = cast
-asOneFactorAffineModel :: (a`Derives` OneFactorAffineModel) => a -> IO OneFactorAffineModel
-asOneFactorAffineModel = cast
-asBatesModel :: (a`Derives` BatesModel) => a -> IO BatesModel
-asBatesModel = cast
-asBatesDoubleExpModel :: (a`Derives` BatesDoubleExpModel) => a -> IO BatesDoubleExpModel
-asBatesDoubleExpModel = cast
-
-{#fun qlOneFactorAffineModelAsAffineModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`AffineModel'peekAffineModel*#}
-{#fun qlLiborForwardModelAsAffineModel{withLiborForwardModel*`LiborForwardModel'}->`AffineModel'peekAffineModel*#}
-instance HullWhite`Derives` OneFactorAffineModel where cast = qlHullWhiteAsOneFactorAffineModel
-{#fun qlHullWhiteAsOneFactorAffineModel{withHullWhite*`HullWhite'}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-{#fun qlG2AsAffineModel{withG2*`G2'}->`AffineModel'peekAffineModel*#}
-{#fun qlG2AsShortRateModel{withG2*`G2'}->`ShortRateModel'peekShortRateModel*#}
-instance G2`Derives` ShortRateModel where cast = qlG2AsShortRateModel
-instance BatesDetJumpModel`Derives` BatesModel where cast = qlBatesDetJumpModelAsBatesModel
-{#fun qlBatesDetJumpModelAsBatesModel{withBatesDetJumpModel*`BatesDetJumpModel'}->`BatesModel'peekBatesModel*#}
-instance BatesDoubleExpDetJumpModel`Derives` BatesDoubleExpModel where cast = qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel
-{#fun qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel'}->`BatesDoubleExpModel'peekBatesDoubleExpModel*#}
-{#fun qlBatesDoubleExpModelAsHestonModel{withBatesDoubleExpModel*`BatesDoubleExpModel'}->`HestonModel'peekHestonModel*#}
-instance BatesDoubleExpModel`Derives` HestonModel where cast = qlBatesDoubleExpModelAsHestonModel
-{#fun qlGJRGARCHModelAsCalibratedModel{withGJRGARCHModel*`GJRGARCHModel'}->`CalibratedModel'peekCalibratedModel*#}
-instance GJRGARCHModel`Derives` CalibratedModel where cast = qlGJRGARCHModelAsCalibratedModel
-{#fun qlHestonModelAsCalibratedModel{withHestonModel*`HestonModel'}->`CalibratedModel'peekCalibratedModel*#}
-instance HestonModel`Derives` CalibratedModel where cast = qlHestonModelAsCalibratedModel
-{#fun qlBatesModelAsHestonModel{withBatesModel*`BatesModel'}->`HestonModel'peekHestonModel*#}
-instance BatesModel`Derives` HestonModel where cast = qlBatesModelAsHestonModel
-{#fun qlLiborForwardModelAsCalibratedModel{withLiborForwardModel*`LiborForwardModel'}->`CalibratedModel'peekCalibratedModel*#}
-instance LiborForwardModel`Derives` CalibratedModel where cast = qlLiborForwardModelAsCalibratedModel
-{#fun qlPiecewiseTimeDependentHestonModelAsCalibratedModel{withPiecewiseTimeDependentHestonModel*`PiecewiseTimeDependentHestonModel'}->`CalibratedModel'peekCalibratedModel*#}
-instance PiecewiseTimeDependentHestonModel`Derives` CalibratedModel where cast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel
-{#fun qlShortRateModelAsCalibratedModel{withShortRateModel*`ShortRateModel'}->`CalibratedModel'peekCalibratedModel*#}
-instance ShortRateModel`Derives` CalibratedModel where cast = qlShortRateModelAsCalibratedModel
-{#fun qlOneFactorAffineModelAsShortRateModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`ShortRateModel'peekShortRateModel*#}
-instance OneFactorAffineModel`Derives` ShortRateModel where cast = qlOneFactorAffineModelAsShortRateModel
+--{#fun qlOneFactorAffineModelAsAffineModel{withOneFactorAffineModel*`OneFactorAffineModel'}->`AffineModel'peekAffineModel*#}
+--{#fun qlLiborForwardModelAsAffineModel{withGenCalibratedModel*`LiborForwardModel'}->`AffineModel'peekAffineModel*#}
+--{#fun qlHullWhiteAsOneFactorAffineModel{withHullWhite*`HullWhite'}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+--{#fun qlG2AsAffineModel{withG2*`G2'}->`AffineModel'peekAffineModel*#}
 
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 {#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a

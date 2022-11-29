@@ -368,60 +368,81 @@ module QuantLib.Internal.Type
 
   , AffineModel
   , CAffineModel
-  , peekAffineModel
-  , withAffineModel
+  , CAffineModel'
+  , asCalibratedModel
+  , asBatesDoubleExpModel
+  , asBatesModel
+  , asOneFactorAffineModel
+  , asShortRateModel
+  , asHestonModel
+  --, peekAffineModel
+  --, withAffineModel
   , BatesDetJumpModel
   , CBatesDetJumpModel
+  , CBatesDetJumpModel'
   , peekBatesDetJumpModel
   , withBatesDetJumpModel
   , BatesDoubleExpDetJumpModel
   , CBatesDoubleExpDetJumpModel
+  , CBatesDoubleExpDetJumpModel'
   , peekBatesDoubleExpDetJumpModel
   , withBatesDoubleExpDetJumpModel
   , BatesDoubleExpModel
   , CBatesDoubleExpModel
+  , CBatesDoubleExpModel'
   , peekBatesDoubleExpModel
   , withBatesDoubleExpModel
   , BatesModel
   , CBatesModel
+  , CBatesModel'
   , peekBatesModel
   , withBatesModel
   , CalibratedModel
   , CCalibratedModel
+  , CCalibratedModel'
   , peekCalibratedModel
   , withCalibratedModel
+  , withGenCalibratedModel
   , G2
   , CG2
+  , CG2'
   , peekG2
   , withG2
   , GJRGARCHModel
   , CGJRGARCHModel
+  , CGJRGARCHModel'
   , peekGJRGARCHModel
-  , withGJRGARCHModel
+  --, withGJRGARCHModel
   , HestonModel
   , CHestonModel
+  , CHestonModel'
   , peekHestonModel
   , withHestonModel
   , HullWhite
   , CHullWhite
+  , CHullWhite'
   , peekHullWhite
   , withHullWhite
   , PiecewiseTimeDependentHestonModel
   , CPiecewiseTimeDependentHestonModel
+  , CPiecewiseTimeDependentHestonModel'
   , peekPiecewiseTimeDependentHestonModel
-  , withPiecewiseTimeDependentHestonModel
+  --, withPiecewiseTimeDependentHestonModel
   , ShortRateModel
   , CShortRateModel
+  , CShortRateModel'
   , peekShortRateModel
   , withShortRateModel
   , OneFactorAffineModel
   , COneFactorAffineModel
+  , COneFactorAffineModel'
   , peekOneFactorAffineModel
   , withOneFactorAffineModel
   , LiborForwardModel
   , CLiborForwardModel
+  , CLiborForwardModel'
   , peekLiborForwardModel
-  , withLiborForwardModel
+  --, withLiborForwardModel
 
   , AssetSwap
   , CAssetSwap
@@ -1410,6 +1431,195 @@ peekBlackProcess = newGenForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr (AnyGeneralizedBlackScholesProcess (GenForeignPtr x _)) _)) _)) = withForeignPtr x
 
+data CCalibratedModel'
+newtype GenCalibratedModel a = GenCalibratedModel (GenForeignPtr a CCalibratedModel')
+type CCalibratedModel = ForeignPtr CCalibratedModel'
+type CalibratedModel = GenCalibratedModel CCalibratedModel
+foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel'
+instance Finalizable CCalibratedModel' where finalize = qlFreeCalibratedModel
+asCalibratedModel :: GenCalibratedModel a -> IO CalibratedModel
+asCalibratedModel (GenCalibratedModel (GenForeignPtr x w)) = w x peekCalibratedModel
+peekCalibratedModel :: Ptr CCalibratedModel' -> IO CalibratedModel
+peekCalibratedModel = GenCalibratedModel <.> newCastForeignPtr
+withCalibratedModel :: GenCalibratedModel a -> (Ptr CCalibratedModel' -> IO b) -> IO b
+withCalibratedModel (GenCalibratedModel (GenForeignPtr x w)) = w x
+withGenCalibratedModel :: GenCalibratedModel (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withGenCalibratedModel (GenCalibratedModel (GenForeignPtr x _)) = withForeignPtr x
+
+data CLiborForwardModel'
+type CLiborForwardModel = ForeignPtr CLiborForwardModel'
+type LiborForwardModel = GenCalibratedModel CLiborForwardModel
+foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel'
+instance Finalizable CLiborForwardModel' where finalize = qlFreeLiborForwardModel
+foreign import ccall "ql.h qlLiborForwardModelAsCalibratedModel" qlLiborForwardModelAsCalibratedModel :: Ptr CLiborForwardModel' -> IO (Ptr CCalibratedModel')
+instance Upcastable CLiborForwardModel' where {type Base CLiborForwardModel' = CCalibratedModel'; upcast = qlLiborForwardModelAsCalibratedModel}
+peekLiborForwardModel :: Ptr CLiborForwardModel' -> IO LiborForwardModel
+peekLiborForwardModel = GenCalibratedModel <.> newGenForeignPtr
+
+data CGJRGARCHModel'
+type CGJRGARCHModel = ForeignPtr CGJRGARCHModel'
+type GJRGARCHModel = GenCalibratedModel CGJRGARCHModel
+foreign import ccall "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel'
+instance Finalizable CGJRGARCHModel' where finalize = qlFreeGJRGARCHModel
+foreign import ccall "ql.h qlGJRGARCHModelAsCalibratedModel" qlGJRGARCHModelAsCalibratedModel :: Ptr CGJRGARCHModel' -> IO (Ptr CCalibratedModel')
+instance Upcastable CGJRGARCHModel' where {type Base CGJRGARCHModel' = CCalibratedModel'; upcast = qlGJRGARCHModelAsCalibratedModel}
+peekGJRGARCHModel :: Ptr CGJRGARCHModel' -> IO GJRGARCHModel
+peekGJRGARCHModel = GenCalibratedModel <.> newGenForeignPtr
+
+data CPiecewiseTimeDependentHestonModel'
+type CPiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel'
+type PiecewiseTimeDependentHestonModel = GenCalibratedModel CPiecewiseTimeDependentHestonModel
+foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel'
+instance Finalizable CPiecewiseTimeDependentHestonModel' where finalize = qlFreePiecewiseTimeDependentHestonModel
+foreign import ccall "ql.h qlPiecewiseTimeDependentHestonModelAsCalibratedModel" qlPiecewiseTimeDependentHestonModelAsCalibratedModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO (Ptr CCalibratedModel')
+instance Upcastable CPiecewiseTimeDependentHestonModel' where {type Base CPiecewiseTimeDependentHestonModel' = CCalibratedModel'; upcast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel}
+peekPiecewiseTimeDependentHestonModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO PiecewiseTimeDependentHestonModel
+peekPiecewiseTimeDependentHestonModel = GenCalibratedModel <.> newGenForeignPtr
+
+data CHestonModel'
+newtype AnyHestonModel a = AnyHestonModel {getHestonModel :: GenForeignPtr a CHestonModel'}
+type GenHestonModel a = GenCalibratedModel (AnyHestonModel a)
+type CHestonModel = ForeignPtr CHestonModel'
+type HestonModel = GenHestonModel CHestonModel
+foreign import ccall "ql.h &qlFreeHestonModel" qlFreeHestonModel :: FinalizerPtr CHestonModel'
+instance Finalizable CHestonModel' where finalize = qlFreeHestonModel
+foreign import ccall "ql.h qlHestonModelAsCalibratedModel" qlHestonModelAsCalibratedModel :: Ptr CHestonModel' -> IO (Ptr CCalibratedModel')
+instance Upcastable CHestonModel' where {type Base CHestonModel' = CCalibratedModel'; upcast = qlHestonModelAsCalibratedModel}
+asHestonModel :: GenHestonModel a -> IO HestonModel
+asHestonModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr x w)) _)) = w x peekHestonModel
+peekHestonModel :: Ptr CHestonModel' -> IO HestonModel
+peekHestonModel = newCastForeignPtr >=> newGenHestonModel
+withHestonModel :: GenHestonModel a -> (Ptr CHestonModel' -> IO b) -> IO b
+withHestonModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr x w)) _)) = w x
+newGenHestonModel :: GenForeignPtr a CHestonModel' -> IO (GenHestonModel a)
+newGenHestonModel p = GenCalibratedModel <^> GenForeignPtr (AnyHestonModel p) (withGenForeignPtr . getHestonModel)
+
+data CShortRateModel'
+newtype AnyShortRateModel a = AnyShortRateModel {getShortRateModel :: GenForeignPtr a CShortRateModel'}
+type GenShortRateModel a = GenCalibratedModel (AnyShortRateModel a)
+type CShortRateModel = ForeignPtr CShortRateModel'
+type ShortRateModel = GenShortRateModel CShortRateModel
+foreign import ccall "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel'
+instance Finalizable CShortRateModel' where finalize = qlFreeShortRateModel
+foreign import ccall "ql.h qlShortRateModelAsCalibratedModel" qlShortRateModelAsCalibratedModel :: Ptr CShortRateModel' -> IO (Ptr CCalibratedModel')
+instance Upcastable CShortRateModel' where {type Base CShortRateModel' = CCalibratedModel'; upcast = qlShortRateModelAsCalibratedModel}
+asShortRateModel :: GenShortRateModel a -> IO ShortRateModel
+asShortRateModel (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x w)) _)) = w x peekShortRateModel
+peekShortRateModel :: Ptr CShortRateModel' -> IO ShortRateModel
+peekShortRateModel = newCastForeignPtr >=> newGenShortRateModel
+withShortRateModel :: GenShortRateModel a -> (Ptr CShortRateModel' -> IO b) -> IO b
+withShortRateModel (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x w)) _)) = w x
+newGenShortRateModel :: GenForeignPtr a CShortRateModel' -> IO (GenShortRateModel a)
+newGenShortRateModel p = GenCalibratedModel <^> GenForeignPtr (AnyShortRateModel p) (withGenForeignPtr . getShortRateModel)
+peekGenShortRateModel :: (Finalizable a, Upcastable a, Base a ~ CShortRateModel') => Ptr a -> IO (GenShortRateModel (ForeignPtr a))
+peekGenShortRateModel = newGenForeignPtr >=> newGenShortRateModel
+
+data CBatesModel'
+data CBatesDetJumpModel'
+newtype AnyBatesModel a = AnyBatesModel {getBatesModel :: GenForeignPtr a CBatesModel'}
+type GenBatesModel a = GenHestonModel (AnyBatesModel a)
+type CBatesModel = ForeignPtr CBatesModel'
+type BatesModel = GenBatesModel CBatesModel
+type CBatesDetJumpModel = ForeignPtr CBatesDetJumpModel'
+type BatesDetJumpModel = GenBatesModel CBatesDetJumpModel
+foreign import ccall "ql.h &qlFreeBatesModel" qlFreeBatesModel :: FinalizerPtr CBatesModel'
+foreign import ccall "ql.h &qlFreeBatesDetJumpModel" qlFreeBatesDetJumpModel :: FinalizerPtr CBatesDetJumpModel'
+instance Finalizable CBatesModel' where finalize = qlFreeBatesModel
+instance Finalizable CBatesDetJumpModel' where finalize = qlFreeBatesDetJumpModel
+foreign import ccall "ql.h qlBatesModelAsHestonModel" qlBatesModelAsHestonModel :: Ptr CBatesModel' -> IO (Ptr CHestonModel')
+foreign import ccall "ql.h qlBatesDetJumpModelAsBatesModel" qlBatesDetJumpModelAsBatesModel :: Ptr CBatesDetJumpModel' -> IO (Ptr CBatesModel')
+instance Upcastable CBatesModel' where {type Base CBatesModel' = CHestonModel'; upcast = qlBatesModelAsHestonModel}
+instance Upcastable CBatesDetJumpModel' where {type Base CBatesDetJumpModel' = CBatesModel'; upcast = qlBatesDetJumpModelAsBatesModel}
+asBatesModel :: GenBatesModel a -> IO BatesModel
+asBatesModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr (AnyBatesModel (GenForeignPtr x w)) _)) _)) = w x peekBatesModel
+peekBatesModel :: Ptr CBatesModel' -> IO BatesModel
+peekBatesModel = newCastForeignPtr >=> newGenBatesModel
+withBatesModel :: GenBatesModel a -> (Ptr CBatesModel' -> IO b) -> IO b
+withBatesModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr (AnyBatesModel (GenForeignPtr x w)) _)) _)) = w x
+newGenBatesModel :: GenForeignPtr a CBatesModel' -> IO (GenBatesModel a)
+newGenBatesModel p = GenCalibratedModel <^> GenForeignPtr (AnyHestonModel $ GenForeignPtr (AnyBatesModel p) (withGenForeignPtr . getBatesModel)) (withGenForeignPtr . getHestonModel)
+peekBatesDetJumpModel :: Ptr CBatesDetJumpModel' -> IO BatesDetJumpModel
+peekBatesDetJumpModel = newGenForeignPtr >=> newGenBatesModel
+withBatesDetJumpModel :: BatesDetJumpModel -> (Ptr CBatesDetJumpModel' -> IO b) -> IO b
+withBatesDetJumpModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr (AnyBatesModel (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data CBatesDoubleExpModel'
+data CBatesDoubleExpDetJumpModel'
+newtype AnyBatesDoubleExpModel a = AnyBatesDoubleExpModel {getBatesDoubleExpModel :: GenForeignPtr a CBatesDoubleExpModel'}
+type GenBatesDoubleExpModel a = GenHestonModel (AnyBatesDoubleExpModel a)
+type CBatesDoubleExpModel = ForeignPtr CBatesDoubleExpModel'
+type BatesDoubleExpModel = GenBatesDoubleExpModel CBatesDoubleExpModel
+type CBatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel'
+type BatesDoubleExpDetJumpModel = GenBatesDoubleExpModel CBatesDoubleExpDetJumpModel
+foreign import ccall "ql.h &qlFreeBatesDoubleExpModel" qlFreeBatesDoubleExpModel :: FinalizerPtr CBatesDoubleExpModel'
+foreign import ccall "ql.h &qlFreeBatesDoubleExpDetJumpModel" qlFreeBatesDoubleExpDetJumpModel :: FinalizerPtr CBatesDoubleExpDetJumpModel'
+instance Finalizable CBatesDoubleExpModel' where finalize = qlFreeBatesDoubleExpModel
+instance Finalizable CBatesDoubleExpDetJumpModel' where finalize = qlFreeBatesDoubleExpDetJumpModel
+foreign import ccall "ql.h qlBatesDoubleExpModelAsHestonModel" qlBatesDoubleExpModelAsHestonModel :: Ptr CBatesDoubleExpModel' -> IO (Ptr CHestonModel')
+foreign import ccall "ql.h qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel" qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel :: Ptr CBatesDoubleExpDetJumpModel' -> IO (Ptr CBatesDoubleExpModel')
+instance Upcastable CBatesDoubleExpModel' where {type Base CBatesDoubleExpModel' = CHestonModel'; upcast = qlBatesDoubleExpModelAsHestonModel}
+instance Upcastable CBatesDoubleExpDetJumpModel' where {type Base CBatesDoubleExpDetJumpModel' = CBatesDoubleExpModel'; upcast = qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel}
+asBatesDoubleExpModel :: GenBatesDoubleExpModel a -> IO BatesDoubleExpModel
+asBatesDoubleExpModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr (AnyBatesDoubleExpModel (GenForeignPtr x w)) _)) _)) = w x peekBatesDoubleExpModel
+peekBatesDoubleExpModel :: Ptr CBatesDoubleExpModel' -> IO BatesDoubleExpModel
+peekBatesDoubleExpModel = newCastForeignPtr >=> newGenBatesDoubleExpModel
+withBatesDoubleExpModel :: GenBatesDoubleExpModel a -> (Ptr CBatesDoubleExpModel' -> IO b) -> IO b
+withBatesDoubleExpModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr (AnyBatesDoubleExpModel (GenForeignPtr x w)) _)) _)) = w x
+newGenBatesDoubleExpModel :: GenForeignPtr a CBatesDoubleExpModel' -> IO (GenBatesDoubleExpModel a)
+newGenBatesDoubleExpModel p = GenCalibratedModel <^> GenForeignPtr (AnyHestonModel $ GenForeignPtr (AnyBatesDoubleExpModel p) (withGenForeignPtr . getBatesDoubleExpModel)) (withGenForeignPtr . getHestonModel)
+peekBatesDoubleExpDetJumpModel :: Ptr CBatesDoubleExpDetJumpModel' -> IO BatesDoubleExpDetJumpModel
+peekBatesDoubleExpDetJumpModel = newGenForeignPtr >=> newGenBatesDoubleExpModel
+withBatesDoubleExpDetJumpModel :: BatesDoubleExpDetJumpModel -> (Ptr CBatesDoubleExpDetJumpModel' -> IO b) -> IO b
+withBatesDoubleExpDetJumpModel (GenCalibratedModel (GenForeignPtr (AnyHestonModel (GenForeignPtr (AnyBatesDoubleExpModel (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data COneFactorAffineModel'
+data CHullWhite'
+newtype AnyOneFactorAffineModel a = AnyOneFactorAffineModel {getOneFactorAffineModel :: GenForeignPtr a COneFactorAffineModel'}
+type GenOneFactorAffineModel a = GenShortRateModel (AnyOneFactorAffineModel a)
+type COneFactorAffineModel = ForeignPtr COneFactorAffineModel'
+type OneFactorAffineModel = GenOneFactorAffineModel COneFactorAffineModel
+type CHullWhite = ForeignPtr CHullWhite'
+type HullWhite = GenOneFactorAffineModel CHullWhite
+foreign import ccall "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel'
+foreign import ccall "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHullWhite'
+instance Finalizable COneFactorAffineModel' where finalize = qlFreeOneFactorAffineModel
+instance Finalizable CHullWhite' where finalize = qlFreeHullWhite
+foreign import ccall "ql.h qlOneFactorAffineModelAsShortRateModel" qlOneFactorAffineModelAsShortRateModel :: Ptr COneFactorAffineModel' -> IO (Ptr CShortRateModel')
+foreign import ccall "ql.h qlHullWhiteAsOneFactorAffineModel" qlHullWhiteAsOneFactorAffineModel :: Ptr CHullWhite' -> IO (Ptr COneFactorAffineModel')
+instance Upcastable COneFactorAffineModel' where {type Base COneFactorAffineModel' = CShortRateModel'; upcast = qlOneFactorAffineModelAsShortRateModel}
+instance Upcastable CHullWhite' where {type Base CHullWhite' = COneFactorAffineModel'; upcast = qlHullWhiteAsOneFactorAffineModel}
+asOneFactorAffineModel :: GenOneFactorAffineModel a -> IO OneFactorAffineModel
+asOneFactorAffineModel (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr (AnyOneFactorAffineModel (GenForeignPtr x w)) _)) _)) = w x peekOneFactorAffineModel
+peekOneFactorAffineModel :: Ptr COneFactorAffineModel' -> IO OneFactorAffineModel
+peekOneFactorAffineModel = newCastForeignPtr >=> newGenOneFactorAffineModel
+withOneFactorAffineModel :: GenOneFactorAffineModel a -> (Ptr COneFactorAffineModel' -> IO b) -> IO b
+withOneFactorAffineModel (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr (AnyOneFactorAffineModel (GenForeignPtr x w)) _)) _)) = w x
+newGenOneFactorAffineModel :: GenForeignPtr a COneFactorAffineModel' -> IO (GenOneFactorAffineModel a)
+newGenOneFactorAffineModel p = GenCalibratedModel <^> GenForeignPtr (AnyShortRateModel $ GenForeignPtr (AnyOneFactorAffineModel p) (withGenForeignPtr . getOneFactorAffineModel)) (withGenForeignPtr . getShortRateModel)
+peekHullWhite :: Ptr CHullWhite' -> IO HullWhite
+peekHullWhite = newGenForeignPtr >=> newGenOneFactorAffineModel
+withHullWhite :: HullWhite -> (Ptr CHullWhite' -> IO b) -> IO b
+withHullWhite (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr (AnyOneFactorAffineModel (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data CG2'
+type CG2 = ForeignPtr CG2'
+type G2 = GenShortRateModel CG2
+foreign import ccall "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2'
+instance Finalizable CG2' where finalize = qlFreeG2
+foreign import ccall "ql.h qlG2AsShortRateModel" qlG2AsShortRateModel :: Ptr CG2' -> IO (Ptr CShortRateModel')
+instance Upcastable CG2' where {type Base CG2' = CShortRateModel'; upcast = qlG2AsShortRateModel}
+peekG2 :: Ptr CG2' -> IO G2
+peekG2 = peekGenShortRateModel
+withG2 :: G2 -> (Ptr CG2' -> IO b) -> IO b
+withG2 (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CAffineModel'
+newtype GenAffineModel a = GenAffineModel (GenForeignPtr a CAffineModel')
+type CAffineModel = ForeignPtr CAffineModel'
+type AffineModel = GenAffineModel CAffineModel
+foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel'
+instance Finalizable CAffineModel' where finalize = qlFreeAffineModel
+
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 
 data CAssetSwap
@@ -1638,119 +1848,6 @@ foreign import ccall "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap
 foreign import ccall "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption
 foreign import ccall "ql.h &qlFreeVanillaOption" qlFreeVanillaOption :: FinalizerPtr CVanillaOption
 foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap
-
-data CAffineModel
-newtype AffineModel = AffineModel {getCAffineModel :: Standalone CAffineModel}
-instance Finalizable CAffineModel where finalize = qlFreeAffineModel
-peekAffineModel :: Ptr CAffineModel -> IO AffineModel
-peekAffineModel = peekStandalone >=> return . AffineModel
-withAffineModel :: AffineModel -> (Ptr CAffineModel -> IO b) -> IO b
-withAffineModel = withStandalone . getCAffineModel
-data CBatesDetJumpModel
-newtype BatesDetJumpModel = BatesDetJumpModel {getCBatesDetJumpModel :: Standalone CBatesDetJumpModel}
-instance Finalizable CBatesDetJumpModel where finalize = qlFreeBatesDetJumpModel
-peekBatesDetJumpModel :: Ptr CBatesDetJumpModel -> IO BatesDetJumpModel
-peekBatesDetJumpModel = peekStandalone >=> return . BatesDetJumpModel
-withBatesDetJumpModel :: BatesDetJumpModel -> (Ptr CBatesDetJumpModel -> IO b) -> IO b
-withBatesDetJumpModel = withStandalone . getCBatesDetJumpModel
-data CBatesDoubleExpDetJumpModel
-newtype BatesDoubleExpDetJumpModel = BatesDoubleExpDetJumpModel {getCBatesDoubleExpDetJumpModel :: Standalone CBatesDoubleExpDetJumpModel}
-instance Finalizable CBatesDoubleExpDetJumpModel where finalize = qlFreeBatesDoubleExpDetJumpModel
-peekBatesDoubleExpDetJumpModel :: Ptr CBatesDoubleExpDetJumpModel -> IO BatesDoubleExpDetJumpModel
-peekBatesDoubleExpDetJumpModel = peekStandalone >=> return . BatesDoubleExpDetJumpModel
-withBatesDoubleExpDetJumpModel :: BatesDoubleExpDetJumpModel -> (Ptr CBatesDoubleExpDetJumpModel -> IO b) -> IO b
-withBatesDoubleExpDetJumpModel = withStandalone . getCBatesDoubleExpDetJumpModel
-data CBatesDoubleExpModel
-newtype BatesDoubleExpModel = BatesDoubleExpModel {getCBatesDoubleExpModel :: Standalone CBatesDoubleExpModel}
-instance Finalizable CBatesDoubleExpModel where finalize = qlFreeBatesDoubleExpModel
-peekBatesDoubleExpModel :: Ptr CBatesDoubleExpModel -> IO BatesDoubleExpModel
-peekBatesDoubleExpModel = peekStandalone >=> return . BatesDoubleExpModel
-withBatesDoubleExpModel :: BatesDoubleExpModel -> (Ptr CBatesDoubleExpModel -> IO b) -> IO b
-withBatesDoubleExpModel = withStandalone . getCBatesDoubleExpModel
-data CBatesModel
-newtype BatesModel = BatesModel {getCBatesModel :: Standalone CBatesModel}
-instance Finalizable CBatesModel where finalize = qlFreeBatesModel
-peekBatesModel :: Ptr CBatesModel -> IO BatesModel
-peekBatesModel = peekStandalone >=> return . BatesModel
-withBatesModel :: BatesModel -> (Ptr CBatesModel -> IO b) -> IO b
-withBatesModel = withStandalone . getCBatesModel
-data CCalibratedModel
-newtype CalibratedModel = CalibratedModel {getCCalibratedModel :: Standalone CCalibratedModel}
-instance Finalizable CCalibratedModel where finalize = qlFreeCalibratedModel
-peekCalibratedModel :: Ptr CCalibratedModel -> IO CalibratedModel
-peekCalibratedModel = peekStandalone >=> return . CalibratedModel
-withCalibratedModel :: CalibratedModel -> (Ptr CCalibratedModel -> IO b) -> IO b
-withCalibratedModel = withStandalone . getCCalibratedModel
-data CG2
-newtype G2 = G2 {getCG2 :: Standalone CG2}
-instance Finalizable CG2 where finalize = qlFreeG2
-peekG2 :: Ptr CG2 -> IO G2
-peekG2 = peekStandalone >=> return . G2
-withG2 :: G2 -> (Ptr CG2 -> IO b) -> IO b
-withG2 = withStandalone . getCG2
-data CGJRGARCHModel
-newtype GJRGARCHModel = GJRGARCHModel {getCGJRGARCHModel :: Standalone CGJRGARCHModel}
-instance Finalizable CGJRGARCHModel where finalize = qlFreeGJRGARCHModel
-peekGJRGARCHModel :: Ptr CGJRGARCHModel -> IO GJRGARCHModel
-peekGJRGARCHModel = peekStandalone >=> return . GJRGARCHModel
-withGJRGARCHModel :: GJRGARCHModel -> (Ptr CGJRGARCHModel -> IO b) -> IO b
-withGJRGARCHModel = withStandalone . getCGJRGARCHModel
-data CHestonModel
-newtype HestonModel = HestonModel {getCHestonModel :: Standalone CHestonModel}
-instance Finalizable CHestonModel where finalize = qlFreeHestonModel
-peekHestonModel :: Ptr CHestonModel -> IO HestonModel
-peekHestonModel = peekStandalone >=> return . HestonModel
-withHestonModel :: HestonModel -> (Ptr CHestonModel -> IO b) -> IO b
-withHestonModel = withStandalone . getCHestonModel
-data CHullWhite
-newtype HullWhite = HullWhite {getCHullWhite :: Standalone CHullWhite}
-instance Finalizable CHullWhite where finalize = qlFreeHullWhite
-peekHullWhite :: Ptr CHullWhite -> IO HullWhite
-peekHullWhite = peekStandalone >=> return . HullWhite
-withHullWhite :: HullWhite -> (Ptr CHullWhite -> IO b) -> IO b
-withHullWhite = withStandalone . getCHullWhite
-data CLiborForwardModel
-newtype LiborForwardModel = LiborForwardModel {getCLiborForwardModel :: Standalone CLiborForwardModel}
-instance Finalizable CLiborForwardModel where finalize = qlFreeLiborForwardModel
-peekLiborForwardModel :: Ptr CLiborForwardModel -> IO LiborForwardModel
-peekLiborForwardModel = peekStandalone >=> return . LiborForwardModel
-withLiborForwardModel :: LiborForwardModel -> (Ptr CLiborForwardModel -> IO b) -> IO b
-withLiborForwardModel = withStandalone . getCLiborForwardModel
-data COneFactorAffineModel
-newtype OneFactorAffineModel = OneFactorAffineModel {getCOneFactorAffineModel :: Standalone COneFactorAffineModel}
-instance Finalizable COneFactorAffineModel where finalize = qlFreeOneFactorAffineModel
-peekOneFactorAffineModel :: Ptr COneFactorAffineModel -> IO OneFactorAffineModel
-peekOneFactorAffineModel = peekStandalone >=> return . OneFactorAffineModel
-withOneFactorAffineModel :: OneFactorAffineModel -> (Ptr COneFactorAffineModel -> IO b) -> IO b
-withOneFactorAffineModel = withStandalone . getCOneFactorAffineModel
-data CPiecewiseTimeDependentHestonModel
-newtype PiecewiseTimeDependentHestonModel = PiecewiseTimeDependentHestonModel {getCPiecewiseTimeDependentHestonModel :: Standalone CPiecewiseTimeDependentHestonModel}
-instance Finalizable CPiecewiseTimeDependentHestonModel where finalize = qlFreePiecewiseTimeDependentHestonModel
-peekPiecewiseTimeDependentHestonModel :: Ptr CPiecewiseTimeDependentHestonModel -> IO PiecewiseTimeDependentHestonModel
-peekPiecewiseTimeDependentHestonModel = peekStandalone >=> return . PiecewiseTimeDependentHestonModel
-withPiecewiseTimeDependentHestonModel :: PiecewiseTimeDependentHestonModel -> (Ptr CPiecewiseTimeDependentHestonModel -> IO b) -> IO b
-withPiecewiseTimeDependentHestonModel = withStandalone . getCPiecewiseTimeDependentHestonModel
-data CShortRateModel
-newtype ShortRateModel = ShortRateModel {getCShortRateModel :: Standalone CShortRateModel}
-instance Finalizable CShortRateModel where finalize = qlFreeShortRateModel
-peekShortRateModel :: Ptr CShortRateModel -> IO ShortRateModel
-peekShortRateModel = peekStandalone >=> return . ShortRateModel
-withShortRateModel :: ShortRateModel -> (Ptr CShortRateModel -> IO b) -> IO b
-withShortRateModel = withStandalone . getCShortRateModel
-foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel
-foreign import ccall "ql.h &qlFreeBatesDetJumpModel" qlFreeBatesDetJumpModel :: FinalizerPtr CBatesDetJumpModel
-foreign import ccall "ql.h &qlFreeBatesDoubleExpDetJumpModel" qlFreeBatesDoubleExpDetJumpModel :: FinalizerPtr CBatesDoubleExpDetJumpModel
-foreign import ccall "ql.h &qlFreeBatesDoubleExpModel" qlFreeBatesDoubleExpModel :: FinalizerPtr CBatesDoubleExpModel
-foreign import ccall "ql.h &qlFreeBatesModel" qlFreeBatesModel :: FinalizerPtr CBatesModel
-foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel
-foreign import ccall "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2
-foreign import ccall "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel
-foreign import ccall "ql.h &qlFreeHestonModel" qlFreeHestonModel :: FinalizerPtr CHestonModel
-foreign import ccall "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHullWhite
-foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel
-foreign import ccall "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel
-foreign import ccall "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel
-foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel
 
 --- TEMPLATE CODE
 

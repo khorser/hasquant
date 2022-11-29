@@ -77,3 +77,17 @@ StochasticProcess
 	VarianceGammaProcess
 	GeneralizedBlackScholesProcess
 	    BlackProcess
+
+CalibratedModel
+    LiborForwardModel
+    GJRGARCHModel
+    PiecewiseTimeDependentHestonModel
+    HestonModel
+	BatesModel
+	    BatesDetJumpModel
+	BatesDoubleExpModel
+	    BatesDoubleExpDetJumpModel
+    ShortRateModel
+	G2
+	OneFactorAffineModel
+	    HullWhite
