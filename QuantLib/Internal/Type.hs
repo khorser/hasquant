@@ -1802,7 +1802,7 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
 --peekLeaf1 = GenNode0 <.> newGenForeignPtr
 --asNode1 :: GenNode1 a -> IO Node1
---asNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x w)) _)) = w x peekNode1
+--asNode1 (GenNode0 (GenForeignPtr (GenForeignPtr x w) _)) = w x peekNode1
 --peekNode1 :: Ptr CNode1' -> IO Node1
 --peekNode1 = newCastForeignPtr >=> newGenNode1
 --withNode1 :: GenNode1 a -> (Ptr CNode1' -> IO b) -> IO b
@@ -1811,7 +1811,7 @@ foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiece
 --withMaybeNode1 x f = maybe (f nullPtr) (`withNode1` f) x
 --newGenNode1 :: GenForeignPtr a CNode1' -> IO (GenNode1 a)
 --newGenNode1 p = GenNode0 <^> GenForeignPtr p withGenForeignPtr
---peekGenNode1 :: Finalizable a => Ptr a -> IO (GenNode1 (ForeignPtr a))
+--peekGenNode1 :: (Finalizable a, Upcastable a, Base a ~ CNode1') => Ptr a -> IO (GenNode1 (ForeignPtr a))
 --peekGenNode1 = newGenForeignPtr >=> newGenNode1
 --withGenNode1 :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
 --withGenNode1 (GenNode0 (GenForeignPtr (GenForeignPtr x _) _)) = withForeignPtr x
