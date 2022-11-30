@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes, DuplicateRecordFields, TypeFamilies #-}
 module QuantLib.Internal.Type
-(
+  (
     Standalone(..)
   , withStandalone
 
@@ -367,6 +367,7 @@ module QuantLib.Internal.Type
   , asGeneralizedBlackScholesProcess
 
   , AffineModel
+  , GenAffineModel
   , CAffineModel
   , CAffineModel'
   , asCalibratedModel
@@ -377,6 +378,7 @@ module QuantLib.Internal.Type
   , asHestonModel
   , peekAffineModel
   , withAffineModel
+  , asAffineModel
   , BatesDetJumpModel
   , CBatesDetJumpModel
   , CBatesDetJumpModel'
@@ -560,7 +562,7 @@ module QuantLib.Internal.Type
   , COneAssetOption
   , peekOneAssetOption
   , withOneAssetOption
-) where
+  ) where
 import Foreign.Ptr
 import Foreign.ForeignPtr
 import Foreign.C.Types
@@ -1449,12 +1451,12 @@ data CHullWhite'
 data CG2'
 data CAffineModel'
 data NonAffineModel
-data AffineModel
+newtype AffineModel a = AffineModel (forall r. a -> (Ptr CAffineModel' -> IO r) -> IO r)
 newtype GenCalibratedModel a f = GenCalibratedModel (GenForeignPtr a CCalibratedModel')
 type CCalibratedModel = ForeignPtr CCalibratedModel'
 type CalibratedModel = GenCalibratedModel CCalibratedModel NonAffineModel
 type CLiborForwardModel = ForeignPtr CLiborForwardModel'
-type LiborForwardModel = GenCalibratedModel CLiborForwardModel AffineModel
+type LiborForwardModel = GenCalibratedModel CLiborForwardModel (AffineModel CLiborForwardModel)
 type CGJRGARCHModel = ForeignPtr CGJRGARCHModel'
 type GJRGARCHModel = GenCalibratedModel CGJRGARCHModel NonAffineModel
 type CPiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel'
@@ -1480,42 +1482,42 @@ type BatesDoubleExpModel = GenBatesDoubleExpModel CBatesDoubleExpModel
 type CBatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel'
 type BatesDoubleExpDetJumpModel = GenBatesDoubleExpModel CBatesDoubleExpDetJumpModel
 newtype AnyOneFactorAffineModel a = AnyOneFactorAffineModel {getOneFactorAffineModel :: GenForeignPtr a COneFactorAffineModel'}
-type GenOneFactorAffineModel a = GenShortRateModel (AnyOneFactorAffineModel a) AffineModel
+type GenOneFactorAffineModel a = GenShortRateModel (AnyOneFactorAffineModel a) (AffineModel COneFactorAffineModel)
 type COneFactorAffineModel = ForeignPtr COneFactorAffineModel'
 type OneFactorAffineModel = GenOneFactorAffineModel COneFactorAffineModel
 type CHullWhite = ForeignPtr CHullWhite'
 type HullWhite = GenOneFactorAffineModel CHullWhite
 type CG2 = ForeignPtr CG2'
-type G2 = GenShortRateModel CG2 AffineModel
+type G2 = GenShortRateModel CG2 (AffineModel CG2)
 newtype GenAffineModel a = GenAffineModel (GenForeignPtr a CAffineModel')
 type CAffineModel = ForeignPtr CAffineModel'
 --type AffineModel = GenAffineModel CAffineModel
 foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel'
 foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel'
-foreign import ccall "ql.h qlLiborForwardModelAsCalibratedModel" qlLiborForwardModelAsCalibratedModel :: Ptr CLiborForwardModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel'
-foreign import ccall "ql.h qlGJRGARCHModelAsCalibratedModel" qlGJRGARCHModelAsCalibratedModel :: Ptr CGJRGARCHModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel'
-foreign import ccall "ql.h qlPiecewiseTimeDependentHestonModelAsCalibratedModel" qlPiecewiseTimeDependentHestonModelAsCalibratedModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h &qlFreeHestonModel" qlFreeHestonModel :: FinalizerPtr CHestonModel'
-foreign import ccall "ql.h qlHestonModelAsCalibratedModel" qlHestonModelAsCalibratedModel :: Ptr CHestonModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel'
-foreign import ccall "ql.h qlShortRateModelAsCalibratedModel" qlShortRateModelAsCalibratedModel :: Ptr CShortRateModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h &qlFreeBatesModel" qlFreeBatesModel :: FinalizerPtr CBatesModel'
 foreign import ccall "ql.h &qlFreeBatesDetJumpModel" qlFreeBatesDetJumpModel :: FinalizerPtr CBatesDetJumpModel'
-foreign import ccall "ql.h qlBatesModelAsHestonModel" qlBatesModelAsHestonModel :: Ptr CBatesModel' -> IO (Ptr CHestonModel')
-foreign import ccall "ql.h qlBatesDetJumpModelAsBatesModel" qlBatesDetJumpModelAsBatesModel :: Ptr CBatesDetJumpModel' -> IO (Ptr CBatesModel')
 foreign import ccall "ql.h &qlFreeBatesDoubleExpModel" qlFreeBatesDoubleExpModel :: FinalizerPtr CBatesDoubleExpModel'
 foreign import ccall "ql.h &qlFreeBatesDoubleExpDetJumpModel" qlFreeBatesDoubleExpDetJumpModel :: FinalizerPtr CBatesDoubleExpDetJumpModel'
-foreign import ccall "ql.h qlBatesDoubleExpModelAsHestonModel" qlBatesDoubleExpModelAsHestonModel :: Ptr CBatesDoubleExpModel' -> IO (Ptr CHestonModel')
-foreign import ccall "ql.h qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel" qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel :: Ptr CBatesDoubleExpDetJumpModel' -> IO (Ptr CBatesDoubleExpModel')
+foreign import ccall "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2'
+foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel'
 foreign import ccall "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel'
 foreign import ccall "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHullWhite'
+foreign import ccall "ql.h qlPiecewiseTimeDependentHestonModelAsCalibratedModel" qlPiecewiseTimeDependentHestonModelAsCalibratedModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlLiborForwardModelAsCalibratedModel" qlLiborForwardModelAsCalibratedModel :: Ptr CLiborForwardModel' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlGJRGARCHModelAsCalibratedModel" qlGJRGARCHModelAsCalibratedModel :: Ptr CGJRGARCHModel' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlHestonModelAsCalibratedModel" qlHestonModelAsCalibratedModel :: Ptr CHestonModel' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlShortRateModelAsCalibratedModel" qlShortRateModelAsCalibratedModel :: Ptr CShortRateModel' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlBatesModelAsHestonModel" qlBatesModelAsHestonModel :: Ptr CBatesModel' -> IO (Ptr CHestonModel')
+foreign import ccall "ql.h qlBatesDetJumpModelAsBatesModel" qlBatesDetJumpModelAsBatesModel :: Ptr CBatesDetJumpModel' -> IO (Ptr CBatesModel')
+foreign import ccall "ql.h qlBatesDoubleExpModelAsHestonModel" qlBatesDoubleExpModelAsHestonModel :: Ptr CBatesDoubleExpModel' -> IO (Ptr CHestonModel')
+foreign import ccall "ql.h qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel" qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel :: Ptr CBatesDoubleExpDetJumpModel' -> IO (Ptr CBatesDoubleExpModel')
 foreign import ccall "ql.h qlOneFactorAffineModelAsShortRateModel" qlOneFactorAffineModelAsShortRateModel :: Ptr COneFactorAffineModel' -> IO (Ptr CShortRateModel')
 foreign import ccall "ql.h qlHullWhiteAsOneFactorAffineModel" qlHullWhiteAsOneFactorAffineModel :: Ptr CHullWhite' -> IO (Ptr COneFactorAffineModel')
-foreign import ccall "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2'
 foreign import ccall "ql.h qlG2AsShortRateModel" qlG2AsShortRateModel :: Ptr CG2' -> IO (Ptr CShortRateModel')
-foreign import ccall "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel'
 instance Finalizable CCalibratedModel' where finalize = qlFreeCalibratedModel
 instance Finalizable CLiborForwardModel' where finalize = qlFreeLiborForwardModel
 instance Finalizable CGJRGARCHModel' where finalize = qlFreeGJRGARCHModel
@@ -1621,8 +1623,13 @@ peekG2 = peekGenShortRateModel
 withG2 :: G2 -> (Ptr CG2' -> IO b) -> IO b
 withG2 (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x _)) _)) = withForeignPtr x
 
+foreign import ccall "ql.h qlOneFactorAffineModelAsAffineModel" qlOneFactorAffineModelAsAffineModel :: Ptr COneFactorAffineModel' -> IO (Ptr CAffineModel')
+foreign import ccall "ql.h qlLiborForwardModelAsAffineModel" qlLiborForwardModelAsAffineModel :: Ptr CLiborForwardModel' -> IO (Ptr CAffineModel')
+foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2 -> IO (Ptr CAffineModel')
+--withAffineModel :: GenCalibratedModel a AffineModel -> (Ptr CAffineModel' -> IO b) -> IO b
 withAffineModel = undefined
 peekAffineModel = undefined
+asAffineModel = undefined
 
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
 

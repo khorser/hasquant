@@ -1,6 +1,6 @@
 module QuantLib.Model
   (
-   CalibrationErrorType(..)
+    CalibrationErrorType(..)
   , GJRGARCHModel
   , HestonModel
   , GenHestonModel
@@ -10,6 +10,7 @@ module QuantLib.Model
   , ShortRateModel
   , GenShortRateModel
   , AffineModel
+  , GenAffineModel(..)
   , OneFactorAffineModel
   , GenOneFactorAffineModel
   , LiborForwardModel
@@ -28,7 +29,7 @@ module QuantLib.Model
   , GenCalibrationHelper
   , asCalibrationHelper
 
-  --, asAffineModel
+  , asAffineModel
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
@@ -61,8 +62,6 @@ module QuantLib.Model
   , impliedVolatility
   , marketValue
   , modelValue
-
-  --, GenAffineModel(..)
   , setPricingEngine
   ) where
 #include "qlTypesC2HS.h"
@@ -125,16 +124,6 @@ import QuantLib.Internal.Enum
 {#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
-
---newtype GenAffineModel a = GenAffineModel a
---instance (GenAffineModel OneFactorAffineModel)`Derives` AffineModel where cast (GenAffineModel x) = qlOneFactorAffineModelAsAffineModel x
---instance (GenAffineModel LiborForwardModel)`Derives` AffineModel where cast (GenAffineModel x) = qlLiborForwardModelAsAffineModel x
---instance (GenAffineModel G2)`Derives` AffineModel where cast (GenAffineModel x) = qlG2AsAffineModel x
-
-{#fun qlOneFactorAffineModelAsAffineModel{withOneFactorAffineModel*`GenOneFactorAffineModel m'}->`AffineModel'peekAffineModel*#}
-{#fun qlLiborForwardModelAsAffineModel{withGenCalibratedModel*`LiborForwardModel'}->`AffineModel'peekAffineModel*#}
-{#fun qlHullWhiteAsOneFactorAffineModel{withHullWhite*`HullWhite'}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-{#fun qlG2AsAffineModel{withG2*`G2'}->`AffineModel'peekAffineModel*#}
 
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
 {#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
