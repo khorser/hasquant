@@ -806,6 +806,7 @@ peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
 -- the original pointer to a with a way to marshal it to b
+-- Actually we don't need the second field as we can infer the number of upcasts needed from the structure of the objects
 data GenForeignPtr a b = GenForeignPtr {_ptr :: !a, _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
 class Upcastable a where
   type Base a
@@ -1450,8 +1451,6 @@ data COneFactorAffineModel'
 data CHullWhite'
 data CG2'
 data CAffineModel'
-data NonAffineModel
-newtype AffineModel a = AffineModel (forall r. a -> (Ptr CAffineModel' -> IO r) -> IO r)
 newtype GenCalibratedModel a f = GenCalibratedModel (GenForeignPtr a CCalibratedModel')
 type CCalibratedModel = ForeignPtr CCalibratedModel'
 type CalibratedModel = GenCalibratedModel CCalibratedModel NonAffineModel
@@ -1489,9 +1488,6 @@ type CHullWhite = ForeignPtr CHullWhite'
 type HullWhite = GenOneFactorAffineModel CHullWhite
 type CG2 = ForeignPtr CG2'
 type G2 = GenShortRateModel CG2 (AffineModel CG2)
-newtype GenAffineModel a = GenAffineModel (GenForeignPtr a CAffineModel')
-type CAffineModel = ForeignPtr CAffineModel'
---type AffineModel = GenAffineModel CAffineModel
 foreign import ccall "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel'
 foreign import ccall "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel'
 foreign import ccall "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel'
@@ -1623,12 +1619,17 @@ peekG2 = peekGenShortRateModel
 withG2 :: G2 -> (Ptr CG2' -> IO b) -> IO b
 withG2 (GenCalibratedModel (GenForeignPtr (AnyShortRateModel (GenForeignPtr x _)) _)) = withForeignPtr x
 
+data NonAffineModel
+newtype AffineModel a = AffineModel (forall r. a -> (Ptr CAffineModel' -> IO r) -> IO r)
+newtype GenAffineModel a = GenAffineModel (GenForeignPtr a CAffineModel')
+type CAffineModel = ForeignPtr CAffineModel'
 foreign import ccall "ql.h qlOneFactorAffineModelAsAffineModel" qlOneFactorAffineModelAsAffineModel :: Ptr COneFactorAffineModel' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlLiborForwardModelAsAffineModel" qlLiborForwardModelAsAffineModel :: Ptr CLiborForwardModel' -> IO (Ptr CAffineModel')
-foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2 -> IO (Ptr CAffineModel')
---withAffineModel :: GenCalibratedModel a AffineModel -> (Ptr CAffineModel' -> IO b) -> IO b
+foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2' -> IO (Ptr CAffineModel')
+foreign import ccall "ql.h qlHullWhiteAsAffineModel" qlHullWhiteAsAffineModel :: Ptr CHullWhite' -> IO (Ptr CAffineModel')
 withAffineModel = undefined
 peekAffineModel = undefined
+asAffineModel :: GenCalibratedModel a (AffineModel a) -> IO (GenAffineModel a)
 asAffineModel = undefined
 
 -- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES

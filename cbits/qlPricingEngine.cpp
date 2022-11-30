@@ -408,6 +408,7 @@ void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
 void qlFreeAffineModel(QlAffineModel *o) {del(o);}
 void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
+QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o) {return ret(new QlAffineModel(*arg(o)));}
 QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
 void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}
 QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o) {return ret(new QlAffineModel(*arg(o)));}

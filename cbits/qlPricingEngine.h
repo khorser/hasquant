@@ -149,6 +149,7 @@ extern "C" {
   void qlFreeShortRateModel(QlShortRateModel *o);
   void qlFreeAffineModel(QlAffineModel *o);
   void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o);
+  QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o);
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);
   QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o);
