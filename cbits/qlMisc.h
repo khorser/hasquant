@@ -28,12 +28,11 @@ extern "C" {
 
   void qlFreeCurrency(Currency *currency);
   char* qlCurrencyCode(Currency* o);
-  char* qlCurrencyFormat(Currency* o);
   int qlCurrencyFractionsPerUnit(Currency* o);
   char* qlCurrencyFractionSymbol(Currency* o);
   int qlCurrencyNumericCode(Currency* o);
   char* qlCurrencySymbol(Currency* o);
-  Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
+  Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, Currency* triangulationCurrency, char **e);
 
   InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e);
   double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e);

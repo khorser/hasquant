@@ -174,8 +174,6 @@ extern "C" {
   double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e);
   void qlFreeBarrierOption(QlBarrierOption *o);
   QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
-  void qlFreeDividendVanillaOption(QlDividendVanillaOption *o);
-  QlOneAssetOption* qlDividendVanillaOptionAsOneAssetOption(QlDividendVanillaOption *o);
   void qlFreeForwardVanillaOption(QlForwardVanillaOption *o);
   QlOneAssetOption* qlForwardVanillaOptionAsOneAssetOption(QlForwardVanillaOption *o);
   void qlFreeMargrabeOption(QlMargrabeOption *o);
@@ -207,8 +205,6 @@ extern "C" {
 
   QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
-  QlDividendVanillaOption* qlDividendVanillaOption(QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e);
-  double qlDividendVanillaOptionImpliedVolatility(QlDividendVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlForwardVanillaOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlMargrabeOptionDelta1(QlMargrabeOption* o, char **e);
   double qlMargrabeOptionDelta2(QlMargrabeOption* o, char **e);
@@ -248,11 +244,9 @@ extern "C" {
   double qlQuantoVanillaOptionQvega(QlQuantoVanillaOption* o, char **e);
   double qlVanillaOptionImpliedVolatility(QlVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlVanillaOption* qlVanillaOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e);
-  QlBarrierOption* qlDividendBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e);
   QlMultiAssetOption* qlBasketOption(QlBasketPayoff* x0, QlExercise* x1, char **e);
   QlMultiAssetOption* qlHimalayaOption(unsigned fixingDatesLen, int* fixingDates, double strike, char **e);
   QlMultiAssetOption* qlPagodaOption(unsigned fixingDatesLen, int* fixingDates, double roof, double fraction, char **e);
-  QlMultiAssetOption* qlSpreadOption(QlPlainVanillaPayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlCliquetOption(QlPercentageStrikePayoff* x0, QlEuropeanExercise* maturity, unsigned resetDatesLen, int* resetDates, char **e);
   QlOneAssetOption* qlContinuousAveragingAsianOption(int averageType, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlContinuousFixedLookbackOption(double currentMinmax, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);

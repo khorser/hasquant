@@ -6,7 +6,6 @@ module QuantLib.Currency
   , currency
   , currency'
   , code
-  , format
   , fractionsPerUnit
   , fractionSymbol
   , code'
@@ -32,7 +31,6 @@ import QuantLib.Internal.Enum
 
 {#fun qlCurrency as currency{`Ccy',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 {#fun pure qlCurrencyCode as code{withCurrency*`Currency'}->`String'peekDynString*#}
-{#fun pure qlCurrencyFormat as format{withCurrency*`Currency'}->`String'peekDynString*#}
 {#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit{withCurrency*`Currency'}->`Int'#}
 {#fun pure qlCurrencyFractionSymbol as fractionSymbol{withCurrency*`Currency'}->`String'#}
 {#fun pure qlCurrencyNumericCode as code'{withCurrency*`Currency'}->`Int'#}
@@ -43,7 +41,7 @@ import QuantLib.Internal.Enum
   ,`String' -- ^symbol
   ,`String' -- ^fractionSymbol
   ,`Int' -- ^fractionsPerUnit
-  ,withMaybeRounding*`Maybe Rounding',`String' -- ^formatString
+  ,withMaybeRounding*`Maybe Rounding'
   ,withMaybeCurrency*`Maybe Currency' -- ^triangulationCurrency
   ,preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 

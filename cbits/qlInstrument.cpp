@@ -23,7 +23,6 @@
 #include <ql/instruments/swaption.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
 #include <ql/instruments/forwardvanillaoption.hpp>
-#include <ql/instruments/dividendvanillaoption.hpp>
 #include <ql/instruments/quantoforwardvanillaoption.hpp>
 #include <ql/instruments/quantobarrieroption.hpp>
 #include <ql/instruments/europeanoption.hpp>
@@ -32,11 +31,9 @@
 #include <ql/instruments/lookbackoption.hpp>
 #include <ql/instruments/cliquetoption.hpp>
 #include <ql/instruments/basketoption.hpp>
-#include <ql/instruments/dividendbarrieroption.hpp>
-#include <ql/experimental/exoticoptions/margrabeoption.hpp>
+#include <ql/instruments/margrabeoption.hpp>
 #include <ql/experimental/exoticoptions/himalayaoption.hpp>
 #include <ql/experimental/exoticoptions/pagodaoption.hpp>
-#include <ql/experimental/exoticoptions/spreadoption.hpp>
 #include <ql/experimental/credit/cdsoption.hpp>
 #include <ql/instruments/bonds/all.hpp>
 #include <ql/cashflows/couponpricer.hpp>
@@ -222,7 +219,8 @@ double qlForwardSpotIncome(QlForward* o, QlYieldTermStructure* incomeDiscountCur
 double qlForwardSpotValue(QlForward* o, char **e) {try {return (*arg(o))->spotValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlForwardRateAgreement* qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e) {
-  try {return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, *arg(index), qlNullableHandle(arg(discountCurve))))));
+  // TODO fix arg order
+  try {return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(*arg(index), Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, qlNullableHandle(arg(discountCurve))))));
   } catch (std::exception& er) {return handleException<QlForwardRateAgreement*>(e, er);}}
 
 void qlFreeBondForward(QlBondForward *fwd) {del(fwd);}
@@ -250,9 +248,6 @@ QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, cha
 void qlFreeAssetSwap(QlAssetSwap *o) {del(o);}
 QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o) {return ret(new QlSwap(*arg(o)));}
 
-QlAssetSwap* qlAssetSwap1(int parAssetSwap, QlBond* bond, double bondCleanPrice, double nonParRepayment, double gearing, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int dealMaturity, int payBondCoupon, char **e) {
-  try {return ret(new QlAssetSwap(alloc(new AssetSwap(parAssetSwap, *arg(bond), bondCleanPrice, nonParRepayment, gearing, *arg(iborIndex), spread, *arg(floatingDayCount), qlNullableDate(dealMaturity), payBondCoupon))));
-  } catch (std::exception& er) {return handleException<QlAssetSwap*>(e, er);}}
 QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, char **e) {
   try {return ret(new QlAssetSwap(alloc(new AssetSwap(payBondCoupon, *arg(bond), bondCleanPrice, *arg(iborIndex), spread, *arg(floatSchedule), *arg(floatingDayCount), parAssetSwap))));
   } catch (std::exception& er) {return handleException<QlAssetSwap*>(e, er);}}
@@ -348,8 +343,6 @@ double qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e) {try {ret
 double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBarrierOption(QlBarrierOption *o) {del(o);}
 QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
-void qlFreeDividendVanillaOption(QlDividendVanillaOption *o) {del(o);}
-QlOneAssetOption* qlDividendVanillaOptionAsOneAssetOption(QlDividendVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeForwardVanillaOption(QlForwardVanillaOption *o) {del(o);}
 QlOneAssetOption* qlForwardVanillaOptionAsOneAssetOption(QlForwardVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeMargrabeOption(QlMargrabeOption *o) {del(o);}
@@ -394,12 +387,6 @@ QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate,
   try {return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlBarrierOption*>(e, er);}}
 double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
-  try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
-  } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlDividendVanillaOption* qlDividendVanillaOption(QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e) {
-  try {return ret(new QlDividendVanillaOption(alloc(new DividendVanillaOption(*arg(payoff), *arg(exercise), qlDateVector(dividendDates, dividendDatesLen), std::vector<double>(dividends, dividends+dividendsLen)))));
-  } catch (std::exception& er) {return handleException<QlDividendVanillaOption*>(e, er);}}
-double qlDividendVanillaOptionImpliedVolatility(QlDividendVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlForwardVanillaOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
@@ -453,9 +440,6 @@ double qlVanillaOptionImpliedVolatility(QlVanillaOption* o, double price, QlGene
 QlVanillaOption* qlVanillaOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e) {
   try {return ret(new QlVanillaOption(alloc(new VanillaOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {return handleException<QlVanillaOption*>(e, er);}}
-QlBarrierOption* qlDividendBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e) {
-  try {return ret(new QlBarrierOption(alloc(new DividendBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), *arg(exercise), qlDateVector(dividendDates, dividendDatesLen), std::vector<double>(dividends, dividends+dividendsLen)))));
-  } catch (std::exception& er) {return handleException<QlBarrierOption*>(e, er);}}
 QlMultiAssetOption* qlBasketOption(QlBasketPayoff* x0, QlExercise* x1, char **e) {
   try {return ret(new QlMultiAssetOption(alloc(new BasketOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {return handleException<QlMultiAssetOption*>(e, er);}}
@@ -464,9 +448,6 @@ QlMultiAssetOption* qlHimalayaOption(unsigned fixingDatesLen, int* fixingDates, 
   } catch (std::exception& er) {return handleException<QlMultiAssetOption*>(e, er);}}
 QlMultiAssetOption* qlPagodaOption(unsigned fixingDatesLen, int* fixingDates, double roof, double fraction, char **e) {
   try {return ret(new QlMultiAssetOption(alloc(new PagodaOption(qlDateVector(fixingDates, fixingDatesLen), roof, fraction))));
-  } catch (std::exception& er) {return handleException<QlMultiAssetOption*>(e, er);}}
-QlMultiAssetOption* qlSpreadOption(QlPlainVanillaPayoff* payoff, QlExercise* exercise, char **e) {
-  try {return ret(new QlMultiAssetOption(alloc(new SpreadOption(*arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlMultiAssetOption*>(e, er);}}
 QlOneAssetOption* qlCliquetOption(QlPercentageStrikePayoff* x0, QlEuropeanExercise* maturity, unsigned resetDatesLen, int* resetDates, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new CliquetOption(*arg(x0), *arg(maturity), qlDateVector(resetDates, resetDatesLen)))));
@@ -505,6 +486,7 @@ QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond) {return ret(new QlBond(*arg
 QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule, unsigned cLen, double *coupons, DayCounter *counter,
     int payConv, double redemption, int issue, Calendar *payCal, char **e) {
   try {std::vector<Rate> cpns(coupons, coupons+cLen);
+    // TODO more args
     return ret(new QlFixedRateBond(alloc(new FixedRateBond(settlDays, face, *arg(schedule),
               cpns, *arg(counter), (BusinessDayConvention) payConv, redemption, qlNullableDate(issue), *arg(payCal)))));
   } catch (std::exception& er) {return handleException<QlFixedRateBond *>(e, er);}}
@@ -549,7 +531,7 @@ double qlBondSettlementValue1(QlBond* o, double cleanPrice, char **e) {try {retu
 double qlBondSettlementValue(QlBond* o, char **e) {try {return (*arg(o))->settlementValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e) {
-  try {return (*arg(o))->yield(cleanPrice, *arg(dc), (Compounding)comp, (Frequency)freq, Date(settlementDate), accuracy, maxEvaluations);
+  try {return (*arg(o))->yield(Bond::Price(cleanPrice, Bond::Price::Clean), *arg(dc), (Compounding)comp, (Frequency)freq, Date(settlementDate), accuracy, maxEvaluations);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 int qlBondIsTradable(QlBond* o, int d, char **e) {try {return (*arg(o))->isTradable(Date(d));} catch (std::exception& er) {return handleException<int>(e, er);}}
@@ -577,7 +559,8 @@ double qlBondFunctionsAccruedPeriod(QlBond* bond, int settlementDate, char **e) 
   try {return BondFunctions::accruedPeriod(**arg(bond), Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double cleanPrice, char **e) {
-  try {return BondFunctions::atmRate(**arg(bond), **arg(discountCurve), Date(settlementDate), cleanPrice);
+  // TODO allow dirty price here and in similar places
+  try {return BondFunctions::atmRate(**arg(bond), **arg(discountCurve), Date(settlementDate), Bond::Price(cleanPrice, Bond::Price::Clean));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsBasisPointValue1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
   try {return BondFunctions::basisPointValue(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
@@ -628,7 +611,7 @@ int qlBondFunctionsReferencePeriodStart(QlBond* bond, int settlementDate, char *
   try {return qlNullableDate(BondFunctions::referencePeriodStart(**arg(bond), Date(settlementDate)));
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlBondFunctionsYield2(QlBond* bond, double cleanPrice, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
-  try {return BondFunctions::yield(**arg(bond), cleanPrice, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
+  try {return BondFunctions::yield(**arg(bond), Bond::Price(cleanPrice, Bond::Price::Clean), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsYieldValueBasisPoint1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
   try {return BondFunctions::yieldValueBasisPoint(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
@@ -637,7 +620,7 @@ double qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, in
   try {return BondFunctions::yieldValueBasisPoint(**arg(bond), *arg(yield), Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
-  try {return BondFunctions::zSpread(**arg(bond), cleanPrice, *arg(x2), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
+  try {return BondFunctions::zSpread(**arg(bond), Bond::Price(cleanPrice, Bond::Price::Clean), *arg(x2), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlBondCleanPrice(QlBond* o, char **e) {try {return (*arg(o))->cleanPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -783,7 +766,9 @@ double qlCashFlowsNpv(Leg* leg, QlYieldTermStructure* discountCurve, int include
   try {return CashFlows::npv(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlCashFlowsNpvbps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double *npv, double *bps, char **e) {
-  try {CashFlows::npvbps(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, Date(settlementDate), Date(npvDate), *npv, *bps);
+  try {
+    auto r = CashFlows::npvbps(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, Date(settlementDate), Date(npvDate));
+    *npv = r.first; *bps = r.second;
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 double qlCashFlowsPreviousCashFlowAmount(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e) {
   try {return CashFlows::previousCashFlowAmount(*arg(leg), includeSettlementDateFlows, qlNullableDate(settlementDate));

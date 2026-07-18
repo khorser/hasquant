@@ -34,7 +34,6 @@ module QuantLib.TermStructure.Yield
   , forwardSpreadedTermStructure
   , zeroSpreadedTermStructure
   , bmaSwapRateHelper
-  , datedOISRateHelper
   , fraIborRateHelper'
   , fraRateHelper'
   , fraIborRateHelper
@@ -173,10 +172,6 @@ import QuantLib.Internal.Type
   ,fromIntegral`Word' -- ^settlementDAys
   ,withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^bmpPeriod
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-{#fun qlDatedOISRateHelper as datedOISRateHelper{withDay*`Day' -- ^startDate
-  ,withDay*`Day' -- ^endDate
-  ,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)' -- ^discountingCurve
-  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a',fromIntegral`Word' -- ^monthsToStart
   ,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart

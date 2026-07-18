@@ -3,7 +3,7 @@ SRC=$(wildcard cbits/ql*.cpp)
 
 OBJ=$(subst cbits,cobj,$(SRC:.cpp=.o))
 
-CFLAGS=-Wall -Wextra -pedantic $(shell quantlib-config --cflags)
+CFLAGS=-Wall -Wextra -pedantic $(shell quantlib-config --cflags) -I/opt/homebrew/include
 
 all:	cobj/libql.a
 

@@ -131,7 +131,6 @@ namespace QuantLib {
   class DefaultProbabilityTermStructure;
   class DiscountingSwapEngine;
   class Dividend;
-  class DividendVanillaOption;
   class EarlyExercise;
   class EndCriteria;
   class EuropeanExercise;
@@ -358,7 +357,6 @@ using QuantLib::CubicBSplinesFitting;
 using QuantLib::DefaultProbabilityTermStructure;
 using QuantLib::DiscountingSwapEngine;
 using QuantLib::Dividend;
-using QuantLib::DividendVanillaOption;
 using QuantLib::EarlyExercise;
 using QuantLib::EndCriteria;
 using QuantLib::EuropeanExercise;
@@ -479,6 +477,7 @@ using QuantLib::ZeroSpreadedTermStructure;
 using QuantLib::Date;
 using QuantLib::Matrix;
 using QuantLib::ext::shared_ptr;
+using QuantLib::ext::optional;
 
 class PolymorphicPathGenerator;
 
@@ -533,7 +532,6 @@ typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
 typedef shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
 typedef shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityTermStructure;
 typedef shared_ptr<Dividend> QlDividend;
-typedef shared_ptr<DividendVanillaOption> QlDividendVanillaOption;
 typedef shared_ptr<EuropeanExercise> QlEuropeanExercise;
 typedef shared_ptr<Exercise> QlExercise;
 typedef shared_ptr<ExtOUWithJumpsProcess> QlExtOUWithJumpsProcess;
@@ -824,7 +822,6 @@ template <> class ObjClassName<QlConvertibleBond*> {public: static void output(s
 template <> class ObjClassName<QlCreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "QlCreditDefaultSwap";}};
 template <> class ObjClassName<QlDefaultProbabilityTermStructure*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityTermStructure";}};
 template <> class ObjClassName<QlDividend*> {public: static void output(std::ostream& os) {os << "QlDividend";}};
-template <> class ObjClassName<QlDividendVanillaOption*> {public: static void output(std::ostream& os) {os << "QlDividendVanillaOption";}};
 template <> class ObjClassName<QlEuropeanExercise*> {public: static void output(std::ostream& os) {os << "QlEuropeanExercise";}};
 template <> class ObjClassName<QlExercise*> {public: static void output(std::ostream& os) {os << "QlExercise";}};
 template <> class ObjClassName<QlExtOUWithJumpsProcess*> {public: static void output(std::ostream& os) {os << "QlExtOUWithJumpsProcess";}};
@@ -958,8 +955,8 @@ inline Matrix qlMatrix(double *a, unsigned r, unsigned c) {
   return m;
 }
 
-boost::optional<bool> qlOptBool(int b);
-int qlOptBool(boost::optional<bool> b);
+optional<bool> qlOptBool(int b);
+int qlOptBool(optional<bool> b);
 
 template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}
 

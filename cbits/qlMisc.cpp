@@ -68,8 +68,8 @@ double *qlAllocateDoubles(size_t size) {return new double[size];}
 void qlFreeDoubles(double *p) {delete[] p;}
 const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Date() : Date(serialNumber);}
 int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
-boost::optional<bool> qlOptBool(int b) {return b == -1 ? boost::none : boost::optional<bool>(b);}
-int qlOptBool(boost::optional<bool> b) {return b ? *b : -1;}
+ext::optional<bool> qlOptBool(int b) {return b == -1 ? ext::nullopt : ext::optional<bool>(b);}
+int qlOptBool(optional<bool> b) {return b ? *b : -1;}
 
 char *tracedup(const char *p) {
   TP2("Duplicating string", (void *)p);
@@ -83,8 +83,8 @@ char *tracedup(const char *p) {
 
 void **qlAllocatePointerArray(size_t size) {return new void*[size];}
 void qlFreePointerArray(void **p) {delete[] p;}
-int qlNullInteger() {return QL_NULL_INTEGER;}
-double qlNullReal() {return QL_NULL_REAL;}
+int qlNullInteger() {return Null<Integer>();}
+double qlNullReal() {return Null<Real>();}
 double qlEpsilon() {return QL_EPSILON;}
 
 typedef Currency *(*makeCcy)();
@@ -184,7 +184,6 @@ Currency *qlCurrency(int ccy, char **e) {
 void qlFreeCurrency(Currency *currency) {del(currency);}
 const char *qlCurrencyName(Currency *currency) {return DUP(arg(currency)->name().c_str());}
 char* qlCurrencyCode(Currency* o) {return DUP(arg(o)->code().c_str());}
-char* qlCurrencyFormat(Currency* o) {return DUP(arg(o)->format().c_str());}
 int qlCurrencyFractionsPerUnit(Currency* o) {return arg(o)->fractionsPerUnit();}
 char* qlCurrencyFractionSymbol(Currency* o) {return DUP(arg(o)->fractionSymbol().c_str());}
 int qlCurrencyNumericCode(Currency* o) {return arg(o)->numericCode();}
@@ -195,19 +194,19 @@ class CustomCurrency : public Currency {
   public:
     CustomCurrency(const char* name, const char* code, int numericCode,
         const char* symbol, const char* fractionSymbol, int fractionsPerUnit,
-        Rounding* rounding, const char* formatString,
+        Rounding* rounding,
         Currency* triangulationCurrency) {
       shared_ptr<Data> data(new Data(name, code, numericCode, symbol, fractionSymbol, fractionsPerUnit,
-            rounding ? *rounding : Rounding(), formatString, triangulationCurrency ? *triangulationCurrency : Currency()));
+            rounding ? *rounding : Rounding(), triangulationCurrency ? *triangulationCurrency : Currency()));
       data_ = data;
     }
 };
 
-Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e) {
+Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, Currency* triangulationCurrency, char **e) {
   try {
     return alloc(new CustomCurrency(arg(name), arg(code), numericCode,
           arg(symbol), arg(fractionSymbol), fractionsPerUnit,
-          rounding, arg(formatString), triangulationCurrency));
+          rounding, triangulationCurrency));
   } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
 
 InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e) {

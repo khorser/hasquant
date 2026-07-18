@@ -99,8 +99,10 @@ QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralize
 QlPricingEngine* qlAnalyticDiscreteGeometricAverageStrikeAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAverageStrikeAsianEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+// TODO add dividends
 QlPricingEngine* qlAnalyticDividendEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new AnalyticDividendEuropeanEngine(*arg(x0)))));
+  try {DividendSchedule ds;
+    return ret(new QlPricingEngine(alloc(new AnalyticDividendEuropeanEngine(*arg(x0), ds))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticEuropeanEngine(*arg(x0)))));

@@ -6,7 +6,6 @@ module QuantLib.Instrument.Option
   , asOneAssetOption
   , CdsOption
   , BarrierOption
-  , DividendVanillaOption
   , ForwardVanillaOption
   , MargrabeOption
   , MultiAssetOption
@@ -33,7 +32,6 @@ module QuantLib.Instrument.Option
   , TypePayoff(..)
 
   , barrierOption
-  , dividendVanillaOption
   , forwardVanillaOption
   , delta1
   , delta2
@@ -52,11 +50,9 @@ module QuantLib.Instrument.Option
   , quantoForwardVanillaOption
   , quantoVanillaOption
   , vanillaOption
-  , dividendBarrierOption
   , basketOption
   , himalayaOption
   , pagodaOption
-  , spreadOption
   , cliquetOption
   , continuousAveragingAsianOption
   , continuousFixedLookbackOption
@@ -97,7 +93,6 @@ asOneAssetOption = cast
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption nocode#}
-{#pointer *QlDividendVanillaOption as DividendVanillaOption foreign -> CDividendVanillaOption nocode#}
 {#pointer *QlForwardVanillaOption as ForwardVanillaOption foreign -> CForwardVanillaOption nocode#}
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption nocode#}
@@ -128,8 +123,6 @@ instance MultiAssetOption`Derives` Option where cast = qlMultiAssetOptionAsOptio
 instance OneAssetOption`Derives` Option where cast = qlOneAssetOptionAsOption
 {#fun qlBarrierOptionAsOneAssetOption{withBarrierOption*`BarrierOption'}->`OneAssetOption'peekOneAssetOption*#}
 instance BarrierOption`Derives` OneAssetOption where cast = qlBarrierOptionAsOneAssetOption
-{#fun qlDividendVanillaOptionAsOneAssetOption{withDividendVanillaOption*`DividendVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
-instance DividendVanillaOption`Derives` OneAssetOption where cast = qlDividendVanillaOptionAsOneAssetOption
 {#fun qlForwardVanillaOptionAsOneAssetOption{withForwardVanillaOption*`ForwardVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
 instance ForwardVanillaOption`Derives` OneAssetOption where cast = qlForwardVanillaOptionAsOneAssetOption
 {#fun qlQuantoVanillaOptionAsOneAssetOption{withQuantoVanillaOption*`QuantoVanillaOption'}->`OneAssetOption'peekOneAssetOption*#}
@@ -151,10 +144,6 @@ instance QuantoForwardVanillaOption`Derives` Option where cast = qlQuantoForward
 {#fun qlBarrierOption as barrierOption{`BarrierType',`Double' -- ^barrier
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
-dividendVanillaOption :: StrikedPayoff -> Exercise -> [(Day, Double)] -- ^dividends
-  -> IO DividendVanillaOption
-dividendVanillaOption p e d = uncurry (qlDividendVanillaOption p e) (unzip d)
-{#fun qlDividendVanillaOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`DividendVanillaOption'peekDividendVanillaOption*#}
 {#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'peekForwardVanillaOption*#}
@@ -176,13 +165,6 @@ dividendVanillaOption p e d = uncurry (qlDividendVanillaOption p e) (unzip d)
   ,`Double' -- ^barrier
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'peekQuantoBarrierOption*#}
-dividendBarrierOption :: BarrierType -> Double -- ^barrier
-  -> Double -- ^rebate
-  -> StrikedPayoff -> Exercise
-  -> [(Day, Double)] -- ^dividends
-  -> IO BarrierOption
-dividendBarrierOption bt d1 d2 p e dv = uncurry (qlDividendBarrierOption bt d1 d2 p e) (unzip dv)
-{#fun qlDividendBarrierOption{`BarrierType',`Double',`Double',withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
 {#fun qlBasketOption as basketOption{withBasketPayoff*`BasketPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 {#fun qlHimalayaOption as himalayaOption{withDayArray*`[Day]'& -- ^fixingDates
   , `Double' -- ^strike
@@ -191,7 +173,6 @@ dividendBarrierOption bt d1 d2 p e dv = uncurry (qlDividendBarrierOption bt d1 d
   ,`Double' -- ^roof
   ,`Double' -- ^fraction
   ,preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-{#fun qlSpreadOption as spreadOption{withPlainVanillaPayoff*`PlainVanillaPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 {#fun qlCliquetOption as cliquetOption{withPercentageStrikePayoff*`PercentageStrikePayoff',withEuropeanExercise*`EuropeanExercise' -- ^maturity
   ,withDayArray*`[Day]'& -- ^resetDates
   ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
@@ -278,8 +259,6 @@ class VolatileOption a where
     -> Double -- ^minVol
     -> Double -- ^maxVol
     -> IO Double
-instance VolatileOption DividendVanillaOption where
-  impliedVolatility = qlDividendVanillaOptionImpliedVolatility
 instance VolatileOption VanillaOption where
   impliedVolatility = qlVanillaOptionImpliedVolatility
 instance VolatileOption BarrierOption where
@@ -297,12 +276,6 @@ instance VolatileOption BarrierOption where
 {#fun qlQuantoVanillaOptionQvega{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlQuantoVanillaOptionQlambda{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlDividendVanillaOptionImpliedVolatility{withDividendVanillaOption*`DividendVanillaOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
-  ,fromIntegral`Word' -- ^maxEvaluations
-  ,`Double' -- ^minVol
-  ,`Double' -- ^maxVol
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlVanillaOptionImpliedVolatility{withVanillaOption*`VanillaOption',`Double' -- ^price
   ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations

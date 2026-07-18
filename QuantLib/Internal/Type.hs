@@ -485,10 +485,6 @@ module QuantLib.Internal.Type
   , CCreditDefaultSwap
   , peekCreditDefaultSwap
   , withCreditDefaultSwap
-  , DividendVanillaOption
-  , CDividendVanillaOption
-  , peekDividendVanillaOption
-  , withDividendVanillaOption
   , FixedRateBond
   , CFixedRateBond
   , peekFixedRateBond
@@ -1697,13 +1693,6 @@ peekCreditDefaultSwap :: Ptr CCreditDefaultSwap -> IO CreditDefaultSwap
 peekCreditDefaultSwap = peekStandalone >=> return . CreditDefaultSwap
 withCreditDefaultSwap :: CreditDefaultSwap -> (Ptr CCreditDefaultSwap -> IO b) -> IO b
 withCreditDefaultSwap = withStandalone . getCCreditDefaultSwap
-data CDividendVanillaOption
-newtype DividendVanillaOption = DividendVanillaOption {getCDividendVanillaOption :: Standalone CDividendVanillaOption}
-instance Finalizable CDividendVanillaOption where finalize = qlFreeDividendVanillaOption
-peekDividendVanillaOption :: Ptr CDividendVanillaOption -> IO DividendVanillaOption
-peekDividendVanillaOption = peekStandalone >=> return . DividendVanillaOption
-withDividendVanillaOption :: DividendVanillaOption -> (Ptr CDividendVanillaOption -> IO b) -> IO b
-withDividendVanillaOption = withStandalone . getCDividendVanillaOption
 data CFixedRateBond
 newtype FixedRateBond = FixedRateBond {getCFixedRateBond :: Standalone CFixedRateBond}
 instance Finalizable CFixedRateBond where finalize = qlFreeFixedRateBond
@@ -1841,7 +1830,6 @@ foreign import ccall "ql.h &qlFreeCapFloor" qlFreeCapFloor :: FinalizerPtr CCapF
 foreign import ccall "ql.h &qlFreeCdsOption" qlFreeCdsOption :: FinalizerPtr CCdsOption
 foreign import ccall "ql.h &qlFreeConvertibleBond" qlFreeConvertibleBond :: FinalizerPtr CConvertibleBond
 foreign import ccall "ql.h &qlFreeCreditDefaultSwap" qlFreeCreditDefaultSwap :: FinalizerPtr CCreditDefaultSwap
-foreign import ccall "ql.h &qlFreeDividendVanillaOption" qlFreeDividendVanillaOption :: FinalizerPtr CDividendVanillaOption
 foreign import ccall "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond
 foreign import ccall "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward
 foreign import ccall "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward
