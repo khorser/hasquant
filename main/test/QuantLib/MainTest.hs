@@ -3,7 +3,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Main where
 
-import Prelude hiding(until)
+import Prelude hiding(until, head, tail)
 
 import Test.Hspec
 import Test.Hspec.QuickCheck
@@ -13,7 +13,7 @@ import Test.QuickCheck.Monadic as Q
 
 import Data.Time.Calendar
 import Data.List(delete)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(NonEmpty, fromList, toList, head, tail)
 
 import Control.Arrow((&&&))
 
@@ -140,10 +140,10 @@ main = do
         Settings.keepingSettings' $ do
           knownDates_ <- knownECBDates
           knownDates_ `shouldNotSatisfy` null
-          let knownDates = NE.fromList knownDates_
+          let knownDates = fromList knownDates_
           knownDates'_ <- nextECBDates (Just minDate)
           knownDates'_ `shouldNotSatisfy` null
-          let knownDates' = NE.fromList knownDates'_
+          let knownDates' = fromList knownDates'_
           knownDates `shouldBe` knownDates'
           mapM_ (\(d, p) -> do
             isECBDate d `shouldReturn` True
@@ -151,8 +151,8 @@ main = do
             isECBDate d1 `shouldReturn` False
             nextECBDate (Just d1) `shouldReturn` d
             nextECBDate (Just p) `shouldReturn` d)
-            (NE.zip knownDates (minDate NE.:| knownDates_))
-          let h = NE.head knownDates
+            (zip knownDates_ (minDate:knownDates_))
+          let h = head knownDates
           removeECBDate h
           isECBDate h `shouldReturn` False
           addECBDate h
@@ -801,7 +801,7 @@ main = do
 
       it "Business days between" $ do
         cal <- calendar BrazilSettlement
-        let testDates :: NE.NonEmpty Day = [1 `february` 2002,
+        let testDates :: NonEmpty Day = [1 `february` 2002,
                           4 `february` 2002,
                           16 `may` 2003,
                           17 `december` 2003,
@@ -826,7 +826,7 @@ main = do
                         51]
         mapM_ (\(d1, d2, e) -> do
                 businessDaysBetween cal d1 d2 True False `shouldReturn` e)
-            (zip3 (NE.toList testDates) (NE.tail testDates) expected)
+            (zip3 (toList testDates) (tail testDates) expected)
 
       it "bespoke calendars" $ do
         let testDate1 = 4 `october` 2008
@@ -916,7 +916,7 @@ main = do
 
       it "Business 252" $
         Settings.keepingSettings' $ do
-          let ds :: NE.NonEmpty Day = [1 `february` 2002,
+          let ds :: NonEmpty Day = [1 `february` 2002,
                         4 `february` 2002,
                         16 `may` 2003,
                         17 `december` 2003,
@@ -946,7 +946,7 @@ main = do
                         2.214285714286,
                         6.84126984127]
           dc <- calendar BrazilSettlement >>= dayCounter . Business252
-          fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip (NE.toList ds) (NE.tail ds))
+          fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip (toList ds) (tail ds))
           let diffs = zipWith (-) fractions expected
           all ((1.0e-12 >) . abs) diffs `shouldBe` True
 

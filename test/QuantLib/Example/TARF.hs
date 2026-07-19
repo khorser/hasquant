@@ -6,6 +6,7 @@ module QuantLib.Example.TARF
   ) where
 import Control.Monad(replicateM)
 import Data.Time.Calendar(fromGregorian)
+import Data.List.NonEmpty(fromList, toList)
 
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -37,7 +38,8 @@ run = do
   dcEUR <- dayCounter Actual360
   dcILS <- dayCounter Actual365FixedStandard
   sched <- schedule (Just $ 2 `november` 2022) (2 `october` 2023) (1, Months) calEUR ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
-  ds <- dates sched
+  ds_ <- dates sched
+  let ds = fromList ds_
   grid <- mapM (\x -> years dcILS valDate x Nothing Nothing) ds >>= timeGridFromList
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
   volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear)
@@ -60,7 +62,7 @@ run = do
   proc <- simpleQuote spot >>=
     $(free1st 'garmanKohlagenProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
-  pps <- replicateM trials $ nextNPV gen ds ycILS
+  pps <- replicateM trials $ nextNPV gen (toList ds) ycILS
   let (ps, sFwds) = unzip pps
   let ff = map (\x -> roundTo (realToFrac x/realToFrac trials) fxrateDigits) $ deepFold sFwds (+)
   return $ Result ((`roundTo` notionalDigits) $ sum ps/fromIntegral trials/spot) fwds ff

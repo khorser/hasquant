@@ -1,11 +1,12 @@
 module Main where
 
+import Prelude hiding(head, last, (!!))
 import Control.Monad(forM_, void)
 import QuantLib.Settings
 import QuantLib.Time.Date
 import Text.Printf
-import Data.List
-import qualified Data.List.NonEmpty as NE
+import Data.List hiding(head, last, (!!))
+import Data.List.NonEmpty(head, last, (!!))
 
 import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
@@ -124,9 +125,9 @@ main = do
         "Binomial Leisen-Reimer",
         "Binomial Joshi"]
       bin)
-  printEquityOptNPVs "MC (crude)" (NE.head mc : [0, 0])
-  printEquityOptNPVs "QMC (Sobol)" ((mc NE.!! 1): [0, 0])
-  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [NE.last mc])
+  printEquityOptNPVs "MC (crude)" (head mc : [0, 0])
+  printEquityOptNPVs "QMC (Sobol)" ((mc !! 1): [0, 0])
+  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [last mc])
 
   putStrLn "\n*** CDS Example ***"
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run

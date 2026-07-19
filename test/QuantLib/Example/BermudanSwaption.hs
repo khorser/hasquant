@@ -4,6 +4,7 @@ module QuantLib.Example.BermudanSwaption
   , run
   ) where
 import Control.Monad(forM_)
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IRI
@@ -55,7 +56,7 @@ run = do
   asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
   fixedATMRate <- fairRate swp
   (swaptions, tms) <- unzip <$> mapM (createHelpers index6m ts) rows
-  grid <- timeGridFromList' (concat tms) 30
+  grid <- timeGridFromList' (fromList (concat tms)) 30
 
   modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
   forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= Model.setPricingEngine s)

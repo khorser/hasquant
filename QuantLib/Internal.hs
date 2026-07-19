@@ -21,6 +21,7 @@ module QuantLib.Internal
   , withIntArray
   , withBoolArray
   , withDoubleArray
+  , withNonEmptyDoubleArray
   , withDoubleArrayRaw
   , withDayPtr
   , fromEnumQuantity
@@ -66,6 +67,7 @@ import Foreign.Marshal.Alloc(alloca)
 import Control.Exception(throwIO)
 import Control.Monad(when)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
+import Data.List.NonEmpty(NonEmpty, toList)
 
 import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
 
@@ -136,6 +138,9 @@ withBoolArray = withLArray fromBool
 
 withDoubleArray :: [Double] -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
 withDoubleArray = withLArray realToFrac
+
+withNonEmptyDoubleArray :: NonEmpty Double -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
+withNonEmptyDoubleArray x = withLArray realToFrac (toList x)
 
 withDoubleArrayRaw :: [Double] -> (Ptr CDouble -> IO b) -> IO b
 withDoubleArrayRaw x = withArray (map realToFrac x)

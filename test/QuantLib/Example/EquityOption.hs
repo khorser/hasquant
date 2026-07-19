@@ -6,7 +6,7 @@ module QuantLib.Example.EquityOption
   , run
   ) where
 import Data.Time.Calendar
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(NonEmpty)
 
 import QuantLib.Instrument
 import QuantLib.InterestRate
@@ -33,7 +33,7 @@ data Result = Result
   , binR :: [[Double]]
   , intR :: [Double]
   , fdR :: [Double]
-  , mcR :: NE.NonEmpty Double
+  , mcR :: NonEmpty Double
   }
 
 run :: IO Result

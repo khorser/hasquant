@@ -41,6 +41,7 @@ import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
 import Foreign.C.Types(CDouble)
 import Data.Vector.Storable(Vector)
+import Data.List.NonEmpty(NonEmpty)
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -69,11 +70,11 @@ import Data.Vector.Storable(Vector)
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. No additional points are added.
-{#fun qlTimeGrid2 as timeGridFromList{withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
+{#fun qlTimeGrid2 as timeGridFromList{withNonEmptyDoubleArray*`NonEmpty Double'&,preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-{#fun qlTimeGrid3 as timeGridFromList'{withDoubleArray*`[Double]'&,fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
+{#fun qlTimeGrid3 as timeGridFromList'{withNonEmptyDoubleArray*`NonEmpty Double'&,fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
 {#fun pure qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
 {#fun qlTimeGridAt as timeAt{withTimeGrid*`TimeGrid',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
