@@ -2,11 +2,12 @@ module Main where
 
 import Prelude hiding(head, last, (!!))
 import Control.Monad(forM_, void)
+import Text.Printf
+import Data.List(intercalate)
+import Data.List.NonEmpty(head, last, (!!))
+
 import QuantLib.Settings
 import QuantLib.Time.Date
-import Text.Printf
-import Data.List hiding(head, last, (!!))
-import Data.List.NonEmpty(head, last, (!!))
 
 import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
