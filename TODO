@@ -1,3 +1,5 @@
+make sure upcast doesn't cause memory leaks or null ptr
+
 -- enums
 QlPayoff | qlFreePayoff
 QlPercentageStrikePayoff | qlFreePercentageStrikePayoff

@@ -12,7 +12,7 @@ category:       Finance
 homepage:       https://github.com/khorser/hasquant#readme
 bug-reports:    https://github.com/khorser/hasquant/issues
 maintainer:     Sergei Khorev <sergey.khorev@gmail.com>
-copyright:      (c) 2012-2022 Sergey Khorev
+copyright:      (c) 2012-2026 Sergei Khorev
 license:        BSD-3-Clause
 build-type:     Simple
 tested-with:
