@@ -1265,7 +1265,7 @@ main = do
           q <- Quote.simpleQuote 0.01
           val <- Quote.value q
           actual360dc <- dayCounter Actual360
-          spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency actual360dc
+          spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
           zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False

@@ -71,6 +71,37 @@ inline std::vector<Period> qlPeriodVector(int *num, int *unit, unsigned len) {
   return periods;
 }
 
+// move into qlTSAux?
+template <class T>
+void setInterpolation(T* o, int interpolator, int approximator, int approximatorArg) {
+  switch (interpolator) {
+  case hasquant::BackwardFlat: o->setInterpolation(BackwardFlat()); break;
+  case hasquant::ForwardFlat: o->setInterpolation(ForwardFlat()); break;
+  case hasquant::Linear: o->setInterpolation(Linear()); break;
+  case hasquant::LogLinear: o->setInterpolation(LogLinear()); break;
+  case hasquant::Cubic:
+    switch (approximator) {
+    case hasquant::NaturalSpline: o->setInterpolation(Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0)); break;
+    case hasquant::Kruger: o->setInterpolation(Cubic(CubicInterpolation::Kruger)); break;
+    case hasquant::FritschButland: o->setInterpolation(Cubic(CubicInterpolation::FritschButland)); break;
+    case hasquant::Parabolic: o->setInterpolation(Cubic(CubicInterpolation::Parabolic, approximatorArg)); break;
+    default: QL_FAIL("Unsupported approximation " << approximator);
+    }
+    break;
+  case hasquant::LogCubic:
+    switch(approximator) {
+    case hasquant::NaturalSpline: o->setInterpolation(LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0)); break;
+    case hasquant::Kruger: o->setInterpolation(LogCubic(CubicInterpolation::Kruger)); break;
+    case hasquant::FritschButland: o->setInterpolation(LogCubic(CubicInterpolation::FritschButland)); break;
+    case hasquant::Parabolic: o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, approximatorArg)); break;
+    default: QL_FAIL("Unsupported approximation " << approximator);
+    }
+    break;
+  default: QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+}
+
+extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, Handle<Quote>(*q), *arg(dc))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
@@ -217,36 +248,6 @@ QlLocalVolTermStructure* qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlY
 QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
   try {return ret(new QlBlackVolTermStructure(alloc(new ImpliedVolTermStructure(Handle<BlackVolTermStructure>(*arg(origTS)), Date(referenceDate)))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
-
-// move into qlTSAux?
-template <class T>
-void setInterpolation(T* o, int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat: o->setInterpolation(BackwardFlat()); break;
-  case hasquant::ForwardFlat: o->setInterpolation(ForwardFlat()); break;
-  case hasquant::Linear: o->setInterpolation(Linear()); break;
-  case hasquant::LogLinear: o->setInterpolation(LogLinear()); break;
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline: o->setInterpolation(Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0)); break;
-    case hasquant::Kruger: o->setInterpolation(Cubic(CubicInterpolation::Kruger)); break;
-    case hasquant::FritschButland: o->setInterpolation(Cubic(CubicInterpolation::FritschButland)); break;
-    case hasquant::Parabolic: o->setInterpolation(Cubic(CubicInterpolation::Parabolic, approximatorArg)); break;
-    default: QL_FAIL("Unsupported approximation " << approximator);
-    }
-    break;
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline: o->setInterpolation(LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0)); break;
-    case hasquant::Kruger: o->setInterpolation(LogCubic(CubicInterpolation::Kruger)); break;
-    case hasquant::FritschButland: o->setInterpolation(LogCubic(CubicInterpolation::FritschButland)); break;
-    case hasquant::Parabolic: o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, approximatorArg)); break;
-    default: QL_FAIL("Unsupported approximation " << approximator);
-    }
-    break;
-  default: QL_FAIL("Unsupported interpolation " << interpolator);
-  }
-}
 
 QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e) {
   BlackVarianceCurve *c = 0;
@@ -505,8 +506,8 @@ QlYieldTermStructure* qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, Q
   try {return ret(new QlYieldTermStructure(alloc(new ForwardSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
-QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, DayCounter* dc, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new ZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq, *arg(dc)))));
+QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, char **e) {
+  try {return ret(new QlYieldTermStructure(alloc(new ZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int tl, int tu, unsigned settlementDays, Calendar* calendar, int bl, int bu, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e) {
@@ -545,8 +546,8 @@ QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int refer
   try {return ret(new QlYieldTermStructure(alloc(new ImpliedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Date(referenceDate)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
-QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, DayCounter* dc, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq, *arg(dc)))));
+QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, char **e) {
+  try {return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
   try {return ret(new QlYieldTermStructure(alloc(new QuantoTermStructure(Handle<YieldTermStructure>(*arg(underlyingDividendTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(foreignRiskFreeTS)), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation))));
@@ -733,5 +734,5 @@ void qlFreeOvernightIndex(QlOvernightIndex *o) {del(o);}
 QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) {return ret(new QlIborIndex(*arg(o)));}
 int qlIborIndexBusinessDayConvention(QlIborIndex* o) {return (*arg(o))->businessDayConvention();}
 int qlIborIndexEndOfMonth(QlIborIndex* o) {return (*arg(o))->endOfMonth();}
-
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

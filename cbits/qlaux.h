@@ -715,7 +715,6 @@ template <> class ObjClassName<CubicBSplinesFitting*> {public: static void outpu
 template <> class ObjClassName<DefaultProbabilityTermStructure*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityTermStructure";}};
 template <> class ObjClassName<DiscountingSwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingSwapEngine";}};
 template <> class ObjClassName<Dividend*> {public: static void output(std::ostream& os) {os << "Dividend";}};
-template <> class ObjClassName<DividendVanillaOption*> {public: static void output(std::ostream& os) {os << "DividendVanillaOption";}};
 template <> class ObjClassName<EarlyExercise*> {public: static void output(std::ostream& os) {os << "EarlyExercise";}};
 template <> class ObjClassName<EndCriteria*> {public: static void output(std::ostream& os) {os << "EndCriteria";}};
 template <> class ObjClassName<EuropeanExercise*> {public: static void output(std::ostream& os) {os << "EuropeanExercise";}};

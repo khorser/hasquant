@@ -30,42 +30,8 @@ std::ofstream ofs(QLTRACK_ALLOCATIONS);
 #endif
 using namespace QuantLib;
 
-/* dates are passed as int = serial number of the date, the code assumes that Haskell bindings validate date */
-
-int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate().operator Date().serialNumber();}
-int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
-
-void qlSettingsSetEvaluationDate(int x, char **e) {
-  try {Settings::instance().evaluationDate() = qlNullableDate(x);
-  } catch (std::exception& er) {handleException<void *>(e, er);}}
-
-void qlSettingsSetEnforceTodaysHistoricFixings(int x) {Settings::instance().enforcesTodaysHistoricFixings() = x;}
-int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().includeTodaysCashFlows());}
-void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
-int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
-void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
-void *qlSavedSettings() {return new SavedSettings();}
-void qlFreeSavedSettings(void *settings) {delete (SavedSettings *)settings;}
-const char *qlVersion() {return QL_VERSION;}
-const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
-
-void qlFreeString(char *p) {
-#ifdef QLTRACK_ALLOCATIONS
-  std::ostringstream os; os << (void *)p;
-  void *ptr = (void *)os.str().c_str();
-  (void)traceval("Freeing string", ptr);
-#endif
-  free(p);
-#ifdef QLTRACK_ALLOCATIONS
-  (void)traceval("Freed string", ptr);
-#endif
-}
-
 int *qlAllocateInts(size_t size) {return new int[size];}
-void qlFreeInts(int *p) {delete[] p;}
-void qlFreeUInts(unsigned *p) {delete[] p;}
 double *qlAllocateDoubles(size_t size) {return new double[size];}
-void qlFreeDoubles(double *p) {delete[] p;}
 const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Date() : Date(serialNumber);}
 int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
 ext::optional<bool> qlOptBool(int b) {return b == -1 ? ext::nullopt : ext::optional<bool>(b);}
@@ -82,11 +48,6 @@ char *tracedup(const char *p) {
 }
 
 void **qlAllocatePointerArray(size_t size) {return new void*[size];}
-void qlFreePointerArray(void **p) {delete[] p;}
-int qlNullInteger() {return Null<Integer>();}
-double qlNullReal() {return Null<Real>();}
-double qlEpsilon() {return QL_EPSILON;}
-
 typedef Currency *(*makeCcy)();
 
 // must match the order of qlEnumObjects.h:Ccy
@@ -174,12 +135,52 @@ static const makeCcy ccys[] = {
   , [](){return static_cast<Currency *>(new ZECCurrency());}
 };
 
+extern "C" {
+void qlFreeInts(int *p) {delete[] p;}
+void qlFreeUInts(unsigned *p) {delete[] p;}
+void qlFreeDoubles(double *p) {delete[] p;}
+void qlFreePointerArray(void **p) {delete[] p;}
+int qlNullInteger() {return Null<Integer>();}
+double qlNullReal() {return Null<Real>();}
+double qlEpsilon() {return QL_EPSILON;}
+
 Currency *qlCurrency(int ccy, char **e) {
   try {
     if (ccy < 0 || ccy >= (int)LENGTH(ccys))
       QL_FAIL("Invalid currency index " << ccy);
     return alloc(ccys[ccy]());
   } catch (std::exception& er) {return handleException<Currency *>(e, er);}}
+
+void qlFreeString(char *p) {
+#ifdef QLTRACK_ALLOCATIONS
+  std::ostringstream os; os << (void *)p;
+  void *ptr = (void *)os.str().c_str();
+  (void)traceval("Freeing string", ptr);
+#endif
+  free(p);
+#ifdef QLTRACK_ALLOCATIONS
+  (void)traceval("Freed string", ptr);
+#endif
+}
+
+/* dates are passed as int = serial number of the date, the code assumes that Haskell bindings validate date */
+int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate().operator Date().serialNumber();}
+int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
+
+void qlSettingsSetEvaluationDate(int x, char **e) {
+  try {Settings::instance().evaluationDate() = qlNullableDate(x);
+  } catch (std::exception& er) {handleException<void *>(e, er);}}
+
+void qlSettingsSetEnforceTodaysHistoricFixings(int x) {Settings::instance().enforcesTodaysHistoricFixings() = x;}
+int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().includeTodaysCashFlows());}
+void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
+int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
+void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
+void *qlSavedSettings() {return new SavedSettings();}
+void qlFreeSavedSettings(void *settings) {delete (SavedSettings *)settings;}
+const char *qlVersion() {return QL_VERSION;}
+const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
+
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
 const char *qlCurrencyName(Currency *currency) {return DUP(arg(currency)->name().c_str());}
@@ -544,5 +545,5 @@ int qlDayCounterDayCount(DayCounter* o, int x0, int x1) {return arg(o)->dayCount
 double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
   try {return arg(o)->yearFraction(Date(x0), Date(x1), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

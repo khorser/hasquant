@@ -166,7 +166,7 @@ import QuantLib.Internal.Type
 {#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 {#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-{#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a' -- ^liborFraction
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDAys
@@ -198,9 +198,9 @@ import QuantLib.Internal.Type
 
 piecewiseZeroSpreadedTermStructure :: GenYieldTermStructure b
   -> [(Day, GenQuote a)]  -- ^spreads
-  -> Compounding -> Frequency -> DayCounter -> IO YieldTermStructure
+  -> Compounding -> Frequency -> IO YieldTermStructure
 piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure ts qs ds where (ds, qs) = unzip qd
-{#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 {#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`GenYieldTermStructure a' -- ^underlyingDividendTS
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS

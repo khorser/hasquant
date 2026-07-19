@@ -1,4 +1,5 @@
-make sure upcast doesn't cause memory leaks or null ptr
+make sure upcast doesn't cause memory leaks or dangling ptrs
+integrate with docker
 
 -- enums
 QlPayoff | qlFreePayoff

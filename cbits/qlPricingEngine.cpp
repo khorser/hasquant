@@ -68,6 +68,29 @@ using namespace QuantLib;
 template <> class ObjClassName<SamplePath*> {public: static void output(std::ostream& os) {os << "SamplePath";}};
 #endif
 
+shared_ptr<StochasticProcess::discretization> createDiscretization(int n) {
+  switch (n) {
+  case hasquant::EulerDiscretization:
+    return shared_ptr<StochasticProcess::discretization>(new EulerDiscretization());
+  case hasquant::EndEulerDiscretization:
+    return shared_ptr<StochasticProcess::discretization>(new EndEulerDiscretization());
+  default:
+      QL_FAIL("Invalid discretization: " << n);
+  }
+}
+
+shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
+  switch (n) {
+  case hasquant::EulerDiscretization:
+    return shared_ptr<StochasticProcess1D::discretization>(new EulerDiscretization());
+  case hasquant::EndEulerDiscretization:
+    return shared_ptr<StochasticProcess1D::discretization>(new EndEulerDiscretization());
+  default:
+    QL_FAIL("Invalid discretization: " << n);
+  }
+}
+
+extern "C" {
 QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e) {
   try {
     return ret(new QlPricingEngine(alloc(new DiscountingBondEngine(Handle<YieldTermStructure>(*arg(ts)), qlOptBool(f)))));
@@ -519,28 +542,6 @@ double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, do
 double qlBlackCalibrationHelperMarketValue(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->marketValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->modelValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
-shared_ptr<StochasticProcess::discretization> createDiscretization(int n) {
-  switch (n) {
-  case hasquant::EulerDiscretization:
-    return shared_ptr<StochasticProcess::discretization>(new EulerDiscretization());
-  case hasquant::EndEulerDiscretization:
-    return shared_ptr<StochasticProcess::discretization>(new EndEulerDiscretization());
-  default:
-      QL_FAIL("Invalid discretization: " << n);
-  }
-}
-
-shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
-  switch (n) {
-  case hasquant::EulerDiscretization:
-    return shared_ptr<StochasticProcess1D::discretization>(new EulerDiscretization());
-  case hasquant::EndEulerDiscretization:
-    return shared_ptr<StochasticProcess1D::discretization>(new EndEulerDiscretization());
-  default:
-    QL_FAIL("Invalid discretization: " << n);
-  }
-}
-
 void qlFreeStochasticProcess1D(QlStochasticProcess1D *o) {del(o);}
 QlStochasticProcess* qlStochasticProcess1DAsStochasticProcess(QlStochasticProcess1D *o) {return ret(new QlStochasticProcess(*arg(o)));}
 void qlFreeBlackProcess(QlBlackProcess *o) {del(o);}
@@ -676,5 +677,5 @@ double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
 void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
   try {*len = arg(s)->value.pathSize(); *p = qlAllocateDoubles(*len);std::copy(s->value.at(asset).begin(), s->value.at(asset).end(), *p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
-
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

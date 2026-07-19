@@ -222,7 +222,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 {#fun qlBondFunctionsCleanPrice2 as cleanPrice{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsCleanPrice3 as cleanPrice'{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a' -- ^discount
   ,`Double' -- ^zSpread
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
+  ,`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield'{withBond*`Bond',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsConvexity1 as convexity{withBond*`Bond',`Double' -- ^yield
@@ -252,7 +252,7 @@ instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
   ,withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsZSpread as zSpread{withBond*`Bond',`Double' -- ^cleanPrice
   ,withYieldTermStructure*`GenYieldTermStructure a'
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
+  ,`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIterations
   ,`Double' -- ^guess

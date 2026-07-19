@@ -241,7 +241,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
 {#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg a',withYieldTermStructure*`GenYieldTermStructure b',`Double' -- ^zSpread
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
+  ,`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -259,7 +259,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,prePtr-`Double'peekDouble*,prePtr-`Double'peekDouble*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |implied Z-spread.
 {#fun qlCashFlowsZSpread as zSpread{withLeg*`GenLeg a',`Double' -- ^npv
-  ,withYieldTermStructure*`GenYieldTermStructure b',withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
+  ,withYieldTermStructure*`GenYieldTermStructure b',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,`Double' -- ^accuracy
