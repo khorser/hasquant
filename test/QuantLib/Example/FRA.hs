@@ -72,7 +72,7 @@ run = do
           return (v, m)
 
       mapM (\((v, m), q) -> do
-        fra <- forwardRateAgreement v m Long q notional eu3m (Just ts)
+        fra <- forwardRateAgreement eu3m v m Long q notional (Just ts)
 
         fwdRate <- forwardRate fra
         zRate <- zeroRate' ts m dc IR.Simple Annual False

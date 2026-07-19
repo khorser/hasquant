@@ -76,7 +76,8 @@ run = do
     trials = 2^(16::Int)
 
     deepFold :: [[a]] -> (a -> a -> a) -> [a]
-    deepFold l f = foldr (zipWith f) (head l) (tail l)
+    deepFold [] _ = []
+    deepFold (h:t) f = foldr (zipWith f) h t
 
     nextNPV :: PathGenerator -> [Day] -> GenYieldTermStructure a -> IO (Double, [Double])
     nextNPV g ds yc = do

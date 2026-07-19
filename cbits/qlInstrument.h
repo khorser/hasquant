@@ -86,7 +86,7 @@ extern "C" {
   double qlForwardSpotValue(QlForward* o, char **e);
   void qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd);
   QlInstrument* qlForwardRateAgreementAsInstrument(QlForwardRateAgreement *fwd);
-  QlForwardRateAgreement* qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e);
+  QlForwardRateAgreement* qlForwardRateAgreement(QlIborIndex* index, int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlYieldTermStructure* discountCurve, char **e);
 
   InterestRate* qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e);
 

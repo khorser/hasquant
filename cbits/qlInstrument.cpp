@@ -219,8 +219,7 @@ double qlForwardSpotIncome(QlForward* o, QlYieldTermStructure* incomeDiscountCur
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlForwardSpotValue(QlForward* o, char **e) {try {return (*arg(o))->spotValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlForwardRateAgreement* qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e) {
-  // TODO fix arg order
+QlForwardRateAgreement* qlForwardRateAgreement(QlIborIndex* index, int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlYieldTermStructure* discountCurve, char **e) {
   try {return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(*arg(index), Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, qlNullableHandle(arg(discountCurve))))));
   } catch (std::exception& er) {return handleException<QlForwardRateAgreement*>(e, er);}}
 

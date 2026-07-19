@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedLists #-}
 module QuantLib.Example.Replication
   (
     Result(..)
@@ -5,6 +6,7 @@ module QuantLib.Example.Replication
   ) where
 import Control.Monad(void, foldM)
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -28,7 +30,7 @@ data Result = Result
 run :: IO Result
 run = do
   setEvaluationDate $ Just tod
-  underlyingQuote <- simpleQuote (head underlyingValues)
+  underlyingQuote <- simpleQuote (NE.head underlyingValues)
   riskFreeRate <- simpleQuote 0.04
   vol <- simpleQuote 0.20
   dc <- dayCounter Actual365FixedStandard
@@ -75,6 +77,7 @@ run = do
         maturity = addGregorianYearsClip 1 tod
         barrier = 70.0
         rebate = 0.0
+        underlyingValues :: NE.NonEmpty Double
         underlyingValues = [100.0, 110.0, 90.0]
         strike = 100.0
         i1 = [12, 11 .. 1]

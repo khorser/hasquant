@@ -1,10 +1,12 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE OverloadedLists #-}
 module QuantLib.Example.EquityOption
   (
     Result(..)
   , run
   ) where
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Instrument
 import QuantLib.InterestRate
@@ -31,7 +33,7 @@ data Result = Result
   , binR :: [[Double]]
   , intR :: [Double]
   , fdR :: [Double]
-  , mcR :: [Double]
+  , mcR :: NE.NonEmpty Double
   }
 
 run :: IO Result

@@ -49,11 +49,12 @@ asForward = cast
 instance ForwardRateAgreement`Derives` Instrument where cast = qlForwardRateAgreementAsInstrument
 {#fun qlBondForwardAsForward{withBondForward*`BondForward'}->`Forward'peekForward*#}
 instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
-{#fun qlForwardRateAgreement as forwardRateAgreement{withDay*`Day' -- ^valueDate
+{#fun qlForwardRateAgreement as forwardRateAgreement{withIborIndex*`GenIborIndex a'
+  ,withDay*`Day' -- ^valueDate
   ,withDay*`Day' -- ^maturityDate
   ,fromEnumC`PositionType',`Double' -- ^strikeForwardRate
   ,`Double' -- ^notionalAmount
-  ,withIborIndex*`GenIborIndex a',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`ForwardRateAgreement'peekForwardRateAgreement*#}
 -- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
 {#fun qlBondForward as bondForward{withDay*`Day' -- ^valueDate

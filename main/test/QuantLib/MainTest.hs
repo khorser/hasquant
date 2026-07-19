@@ -1,3 +1,5 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE OverloadedLists #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Main where
 
@@ -11,6 +13,7 @@ import Test.QuickCheck.Monadic as Q
 
 import Data.Time.Calendar
 import Data.List(delete)
+import qualified Data.List.NonEmpty as NE
 
 import Control.Arrow((&&&))
 
@@ -135,9 +138,12 @@ main = do
         Settings.keepingSettings' $ read "2006-01-15" `shouldBe` january 15 2006
       it "known ECB dates" $ do
         Settings.keepingSettings' $ do
-          knownDates <- knownECBDates
-          knownDates `shouldNotSatisfy` null
-          knownDates' <- nextECBDates (Just minDate)
+          knownDates_ <- knownECBDates
+          knownDates_ `shouldNotSatisfy` null
+          let knownDates = NE.fromList knownDates_
+          knownDates'_ <- nextECBDates (Just minDate)
+          knownDates'_ `shouldNotSatisfy` null
+          let knownDates' = NE.fromList knownDates'_
           knownDates `shouldBe` knownDates'
           mapM_ (\(d, p) -> do
             isECBDate d `shouldReturn` True
@@ -145,8 +151,8 @@ main = do
             isECBDate d1 `shouldReturn` False
             nextECBDate (Just d1) `shouldReturn` d
             nextECBDate (Just p) `shouldReturn` d)
-            (zip knownDates (minDate:knownDates))
-          let h = head knownDates
+            (NE.zip knownDates (minDate NE.:| knownDates_))
+          let h = NE.head knownDates
           removeECBDate h
           isECBDate h `shouldReturn` False
           addECBDate h
@@ -176,7 +182,7 @@ main = do
               immd <- immDate i d
               immd `shouldSatisfy` (>= d))
               $ take 40 immCodes)
-            [minDate .. (addGregorianMonthsClip (-121) maxDate)]
+           ([minDate .. (addGregorianMonthsClip (-121) maxDate)] :: [Day])
 
     describe "frequencies and periods" $ do
       it "frequency to period" $ do
@@ -310,7 +316,7 @@ main = do
           b1 || b2 || b3 `shouldBe` c123bb
           b1 && b2 && b3 && b4 `shouldBe` c1234hb
           b1 || b2 || b3 || b4 `shouldBe` c1234bb)
-          [tod .. addGregorianYearsClip 1 tod]
+          ([tod .. addGregorianYearsClip 1 tod] :: [Day])
 
       it "US Settlement" $ do
         cal <- calendar UnitedStatesSettlement
@@ -384,7 +390,7 @@ main = do
                             25 `december` 2006]
 
         mapM_ (\d -> isHoliday cal d `shouldReturn` True)
-          [11 `june` 2004,
+          ([11 `june` 2004,
           14 `september` 2001,
           13 `september` 2001,
           12 `september` 2001,
@@ -411,7 +417,7 @@ main = do
           2 `november` 1976,
           7 `november` 1972,
           5 `november` 1968,
-          3 `november` 1964]
+          3 `november` 1964] :: [Day])
 
       it "TARGET" $ do
         cal <- calendar TARGET
@@ -791,11 +797,11 @@ main = do
         mapM_ (\d -> do
                 eom <- Calendar.endOfMonth cal d
                 Calendar.isEndOfMonth cal eom `shouldReturn` True)
-          [minDate .. addGregorianMonthsClip (-2) maxDate]
+          ([minDate .. addGregorianMonthsClip (-2) maxDate] :: [Day])
 
       it "Business days between" $ do
         cal <- calendar BrazilSettlement
-        let testDates = [1 `february` 2002,
+        let testDates :: NE.NonEmpty Day = [1 `february` 2002,
                           4 `february` 2002,
                           16 `may` 2003,
                           17 `december` 2003,
@@ -820,7 +826,7 @@ main = do
                         51]
         mapM_ (\(d1, d2, e) -> do
                 businessDaysBetween cal d1 d2 True False `shouldReturn` e)
-            (zip3 testDates (tail testDates) expected)
+            (zip3 (NE.toList testDates) (NE.tail testDates) expected)
 
       it "bespoke calendars" $ do
         let testDate1 = 4 `october` 2008
@@ -872,7 +878,7 @@ main = do
                     dc <- dayCounter c
                     f <- years dc s e rs re
                     abs(t - f) `shouldSatisfy` (<= 1.0e-10))
-            [(ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
+            ([(ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
               (ActualActualISMA, 1 `november` 2003, 1 `may` 2004, Just $ 1 `november` 2003, Just $ 1 `may` 2004, 0.500000000000),
               (ActualActualAFB, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497267759563),
               (ActualActualISDA, 1 `february` 1999, 1 `july` 1999, Nothing, Nothing, 0.410958904110),
@@ -892,7 +898,7 @@ main = do
               (ActualActualAFB, 30 `july` 1999, 30 `january` 2000, Nothing, Nothing, 0.504109589041),
               (ActualActualISDA, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.415300546448),
               (ActualActualISMA, 30 `january` 2000, 30 `june` 2000, Just $ 30 `january` 2000, Just $ 30 `july` 2000, 0.417582417582),
-              (ActualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
+              (ActualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)] :: [(DayCounterConstructor, Day, Day, Maybe Day, Maybe Day, Double)])
 
       it "simple" $ do
         dc <- dayCounter Simple
@@ -910,7 +916,7 @@ main = do
 
       it "Business 252" $
         Settings.keepingSettings' $ do
-          let ds = [1 `february` 2002,
+          let ds :: NE.NonEmpty Day = [1 `february` 2002,
                         4 `february` 2002,
                         16 `may` 2003,
                         17 `december` 2003,
@@ -940,7 +946,7 @@ main = do
                         2.214285714286,
                         6.84126984127]
           dc <- calendar BrazilSettlement >>= dayCounter . Business252
-          fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip ds (tail ds))
+          fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip (NE.toList ds) (NE.tail ds))
           let diffs = zipWith (-) fractions expected
           all ((1.0e-12 >) . abs) diffs `shouldBe` True
 
