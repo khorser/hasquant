@@ -5,11 +5,12 @@ module QuantLib.Example.FittedBondCurve
   , Rate(..)
   , run
   ) where
-import Prelude hiding(init, head)
+import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
-import Data.List.NonEmpty(NonEmpty(..), init, head)
-import qualified Data.List.NonEmpty as NE(drop, last)
+import Data.Foldable1(last)
+import qualified Data.List as L(last)
+import Data.List.NonEmpty(NonEmpty(..), init, head, tail)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR
@@ -82,9 +83,9 @@ run = do
               dt <- years dc d1 d2 Nothing Nothing
               df <- TS.discount' ts d2 False
               return $ df * dt) $
-                zip (init ds) (NE.drop 1 ds)
+                zip (init ds) (tail ds)
       df1 <- TS.discount' ts (head ds) False
-      df2 <- TS.discount' ts (NE.last ds) False
+      df2 <- TS.discount' ts (last ds) False
       return $ 100.0 * (df1 - df2) / sum dfs
 
     rates :: TS.YieldTermStructure -> DayCounter -> Day -> Day -> [TS.FittedBondDiscountCurve] -> [TS.BondHelper] -> IO Rate
@@ -97,7 +98,7 @@ run = do
           cfs <- TS.underlying h >>= cashFlows >>=
             $(free1st 'CF.cashFlows) (Just False) (Just bondSettle)
           let ds = map (\(d, _, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-          m <- years dc tod (last ds) Nothing Nothing
+          m <- years dc tod (L.last ds) Nothing Nothing
           r1 <- parRate ts0 (bondSettle :| ds) dc
           r2 <- forM curves $ $(free1st' 3) parRate (bondSettle :| ds) dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)
