@@ -98,7 +98,7 @@ run = do
 
         nextComponent engine underlyingQuote p innerMaturity killDate = do
           let innerExercise = European $ EuropeanExercise innerMaturity
-          let innerPayoff = PlainVanilla $ PlainVanillaPayoff Put barrier
+              innerPayoff = PlainVanilla $ PlainVanillaPayoff Put barrier
           putn <- europeanOption innerPayoff innerExercise >>= asOneAssetOption >>= asOption >>= asInstrument
           setPricingEngine putn engine
           setEvaluationDate $ Just killDate

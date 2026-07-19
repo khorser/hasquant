@@ -8,7 +8,6 @@ module QuantLib.Example.FittedBondCurve
 import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
-import qualified Data.List as L(last)
 import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last)
 
 import qualified QuantLib.CashFlow as CF
@@ -96,8 +95,8 @@ run = do
         \h -> do
           cfs <- TS.underlying h >>= cashFlows >>=
             $(free1st 'CF.cashFlows) (Just False) (Just bondSettle)
-          let ds = map (\(d, _, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-          m <- years dc tod (L.last ds) Nothing Nothing
+          let (ds, _, _) = unzip3 $ filter (\(_, _, oc) -> not oc) cfs
+          m <- years dc tod (maximum ds) Nothing Nothing
           r1 <- parRate ts0 (bondSettle :| ds) dc
           r2 <- forM curves $ $(free1st' 3) parRate (bondSettle :| ds) dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)
