@@ -95,13 +95,14 @@ module QuantLib.Internal.Enum
   , EnumMeta(..)
   , withEnumType
   ) where
-import Control.Monad((>=>))
+import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.C.Types(CUInt)
 import Foreign.Marshal.Utils(fromBool, withMany)
 import Foreign.Marshal.Array(withArray)
+import Control.Monad((>=>))
+
 import QuantLib.Internal
 import QuantLib.Internal.Type
-import Foreign.Ptr
-import Foreign.C.Types
 
 #include "qlTypesC2HS.h"
 #include "ql.h"

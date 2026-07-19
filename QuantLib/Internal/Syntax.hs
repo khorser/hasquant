@@ -5,7 +5,7 @@ module QuantLib.Internal.Syntax
   ) where
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib
-import Data.List.Split
+import Data.List.Split(splitOn)
 import Control.Monad((>=>))
 
 getConstructors :: Name -> Q [(Name, [BangType])] -- [(data constructor, constructor args)]

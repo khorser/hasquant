@@ -559,10 +559,10 @@ module QuantLib.Internal.Type
   , peekOneAssetOption
   , withOneAssetOption
   ) where
-import Foreign.Ptr
-import Foreign.ForeignPtr
-import Foreign.C.Types
-import Foreign.C.String
+import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
+import Foreign.C.Types(CUInt)
+import Foreign.C.String(CString)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
 

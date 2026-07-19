@@ -55,10 +55,10 @@ module QuantLib.Internal
   )
 where
 
-import Foreign.C.Types
+import Foreign.C.Types(CUInt, CInt(..), CDouble(..))
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
-import Foreign.ForeignPtr
+import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
 import Foreign.Storable(peek, Storable)

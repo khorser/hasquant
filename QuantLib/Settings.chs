@@ -16,11 +16,10 @@ module QuantLib.Settings
   , boostVersion
   , epsilon
   ) where
-import Foreign.C.Types
+import Foreign.C.Types(CDouble)
 import Foreign.C.String(CString, peekCString)
 import System.IO.Unsafe(unsafePerformIO)
 import System.Mem(performGC)
-
 import Control.Exception(bracket)
 
 import QuantLib.Time.Date
