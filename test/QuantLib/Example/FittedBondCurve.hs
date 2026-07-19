@@ -8,9 +8,8 @@ module QuantLib.Example.FittedBondCurve
 import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
-import Data.Foldable1(last)
 import qualified Data.List as L(last)
-import Data.List.NonEmpty(NonEmpty(..), init, head, tail)
+import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR

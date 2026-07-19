@@ -1,10 +1,8 @@
 module Main where
 
-import Prelude hiding(head, last, (!!))
 import Control.Monad(forM_, void)
 import Text.Printf
 import Data.List(intercalate)
-import Data.List.NonEmpty(head, last, (!!))
 
 import QuantLib.Settings
 import QuantLib.Time.Date
@@ -107,7 +105,7 @@ main = do
   printDLine "%15s" "ITM Swaption" "%14.4f" npvI
 
   putStrLn "\n*** Equity Option Example ***"
-  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- EquityOptionExample.run
+  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd (mcE, mcE2, mcA)) <- EquityOptionExample.run
   void $ printf "%30s   %9s %9s %9s\n" "NPV of" "European" "Bermudan" "American"
   printEquityOptNPVs "Black-Sholes" (analyticEuro ++ [0, 0])
   printEquityOptNPVs "Heston semi-analytic" (analyticHeston ++ [0, 0])
@@ -126,9 +124,9 @@ main = do
         "Binomial Leisen-Reimer",
         "Binomial Joshi"]
       bin)
-  printEquityOptNPVs "MC (crude)" (head mc : [0, 0])
-  printEquityOptNPVs "QMC (Sobol)" ((mc !! 1): [0, 0])
-  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [last mc])
+  printEquityOptNPVs "MC (crude)" (mcE : [0, 0])
+  printEquityOptNPVs "QMC (Sobol)" (mcE2: [0, 0])
+  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [mcA])
 
   putStrLn "\n*** CDS Example ***"
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
