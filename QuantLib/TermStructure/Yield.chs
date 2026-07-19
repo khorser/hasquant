@@ -30,6 +30,7 @@ module QuantLib.TermStructure.Yield
   , fraRateHelper
   , bondHelper
   , oisRateHelper
+  , oisRateHelper'
   , swapRateHelper
   , forwardSpreadedTermStructure
   , zeroSpreadedTermStructure
@@ -164,6 +165,7 @@ import QuantLib.Internal.Type
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 {#fun qlBondHelper as bondHelper{withQuote*`GenQuote a',withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 {#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
+{#fun qlOISRateHelper2 as oisRateHelper'{withDay*`Day', withDay*`Day',withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 {#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}

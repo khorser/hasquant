@@ -145,7 +145,7 @@ namespace QuantLib {
   class FaceValueClaim;
   class FdG2SwaptionEngine;
   class FdHullWhiteSwaptionEngine;
-  class FdmSchemeDesc;
+  struct FdmSchemeDesc;
   class FittedBondDiscountCurve;
   class FixedDividend;
   class ForwardSpreadedTermStructure;

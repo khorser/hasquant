@@ -494,9 +494,11 @@ QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {r
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e) {
   try {return ret(new QlBondHelper(alloc(new BondHelper(Handle<Quote>(*arg(cleanPrice)), *arg(bond)))));
   } catch (std::exception& er) {return handleException<QlBondHelper*>(e, er);}}
-// TODO add forward start date which used to be in DatedOISRateHelper
 QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
   try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
+  } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
+QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
+    try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
 QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int fl, int fu, QlYieldTermStructure* discountingCurve, char **e) {
   try {return ret(new QlSwapRateHelper(alloc(new SwapRateHelper(Handle<Quote>(*arg(rate)), *arg(swapIndex), qlNullableHandle(arg(spread)), Period(fl, (TimeUnit)fu), qlNullableHandle(arg(discountingCurve))))));

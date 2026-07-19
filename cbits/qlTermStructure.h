@@ -109,6 +109,7 @@ extern "C" {
   QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o);
   QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e);
   QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int, int, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
+  QlOISRateHelper* qlOISRateHelper2(int, int, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
   QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int, int, QlYieldTermStructure* discountingCurve, char **e);
   QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int, int, unsigned settlementDays, Calendar* calendar, int, int, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e);
   QlRateHelper* qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, char **e);
