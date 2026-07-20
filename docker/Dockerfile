@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     gdb valgrind htop locales vim zsh less vifm
 
 ARG BOOST_VERSION=1.91.0-1
-ARG QL_VERSION=1.42.1
+ARG QL_VERSION=1.43
 
 FROM base AS boost-builder
 ARG BOOST_VERSION
@@ -45,14 +45,14 @@ RUN echo "set auto-load safe-path /" >> /root/.gdbinit
 
 RUN ldconfig
 
-RUN curl -sSL https://get.haskellstack.org/ | sh
-WORKDIR /app
-COPY stack.yaml ./
-RUN echo "name: dummy" > package.yaml && \
-    stack setup && \
-    rm package.yaml dummy.cabal
-COPY package.yaml ./
-COPY *.cpp ./
-RUN stack build --only-snapshot
+#RUN curl -sSL https://get.haskellstack.org/ | sh
+#WORKDIR /app
+#COPY stack.yaml ./
+#RUN echo "name: dummy" > package.yaml && \
+#    stack setup && \
+#    rm package.yaml dummy.cabal
+#COPY package.yaml ./
+#COPY *.cpp ./
+#RUN stack build --only-snapshot
 
-COPY . .
+#COPY . .

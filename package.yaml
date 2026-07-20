@@ -37,7 +37,6 @@ library:
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   dependencies:
     - template-haskell
-    - split
     - vector
   verbatim:
     - build-tool-depends: c2hs:c2hs

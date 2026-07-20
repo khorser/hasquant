@@ -5,7 +5,8 @@ module QuantLib.Internal.Syntax
   ) where
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib
-import Data.List.Split(splitOn)
+import Data.List(isPrefixOf)
+import Data.Maybe(fromJust)
 import Control.Monad((>=>))
 
 getConstructors :: Name -> Q [(Name, [BangType])] -- [(data constructor, constructor args)]
@@ -21,10 +22,12 @@ getConstructors' :: String -> Q [Name]
 getConstructors' d = lookupTypeName d >>= maybe (return []) (getConstructors >=> (return . map fst))
 
 stripPrefix :: String -> String
-stripPrefix x = if length res < 2
-                   then fail "Error splitting " ++ x
-                   else res !! 1
-                     where res = splitOn "__" x
+stripPrefix = fromJust . suffix
+  where suffix :: String -> Maybe String
+        suffix str@(_:cs)
+          | "__" `isPrefixOf` str = Just (drop 2 str)
+          | otherwise = suffix cs
+        suffix [] = Nothing
 
 -- merge a set of enums into a big one providing a function to map values back to ordinal numbers of original enums
 -- e.g. for mainEnum data CalendarCountry = Country__Australia | Country__UnitedStated,

@@ -5,7 +5,7 @@ services:
     # target: development
       args:
         BOOST_VERSION: "1.91.0-1"
-        QL_VERSION: "1.42.1"
+        QL_VERSION: "1.43"
     
     image: hasquant:default
     platform: linux/amd64
