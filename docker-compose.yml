@@ -1,5 +1,5 @@
 services:
-  app:
+  stack:
     build:
       context: .
     # target: development
@@ -10,6 +10,8 @@ services:
     image: hasquant:default
     platform: linux/amd64
     init: true
+    working_dir: /work
+    container_name: hasquant-dev
     
     cap_add:
       - SYS_PTRACE
@@ -17,9 +19,9 @@ services:
       - seccomp:unconfined
     
     volumes:
-      - .:/app:delegated
+      - .:/work:delegated
       - stack-root:/root/.stack
-      - stack-work:/app/.stack-work
+      - stack-work:/work/.stack-work
     
     stdin_open: true
     tty: true

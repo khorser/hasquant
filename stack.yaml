@@ -3,17 +3,3 @@ packages:
 - .
 build:
   cabal-verbose: True
-docker:
-  enable: false
-  #image: haskell:9.10.3-bookworm
-  image: hasquant:default
-  auto-pull: false
-  persist: true
-  container-name: "hasquant-dev"
-  mount:
-  ##  - /usr/local/lib:/usr/local/lib
-  ##  - /usr/local/include:/usr/local/include
-  #  - .:/app
-    - hasquant_stack:/root/.stack
-    - hasquant_work:/app/.stack-work
-  mount-mode: delegated

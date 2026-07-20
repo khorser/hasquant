@@ -41,7 +41,6 @@ module QuantLib.Instrument.Swap
 
   -- AssetSwap
   , assetSwap
-  , assetSwap'
 
   , bondLeg
   , cleanPrice
@@ -158,15 +157,6 @@ swap' = (uncurry qlSwap1) . unzip
 {#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- AssetSwap
-{#fun qlAssetSwap1 as assetSwap'{`Bool' -- ^parAssetSwap
-  ,withBond*`Bond',`Double' -- ^bondCleanPrice
-  ,`Double' -- ^nonParRepayment
-  ,`Double' -- ^gearing
-  ,withIborIndex*`GenIborIndex a',`Double' -- ^spread
-  ,withDayCounter*`DayCounter' -- ^floatingDayCount
-  ,withMaybeDay*`Maybe Day' -- ^dealMaturity
-  ,`Bool' -- ^payBondCoupon
-  ,preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
 {#fun qlAssetSwap as assetSwap{`Bool' -- ^payBondCoupon
   ,withBond*`Bond',`Double' -- ^bondCleanPrice
   ,withIborIndex*`GenIborIndex a',`Double' -- spread
