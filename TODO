@@ -1,7 +1,8 @@
 make sure upcast doesn't cause memory leaks or dangling ptrs
 add more nonempty lists for Haskell functions where applicable
-integrate with docker
-use some handles
+use some handles for quotes and curves?
+
+integrate with HLS in docker?
 
 -- enums
 QlPayoff | qlFreePayoff

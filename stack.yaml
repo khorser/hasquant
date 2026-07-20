@@ -3,3 +3,10 @@ packages:
 - .
 build:
   cabal-verbose: True
+docker:
+  enable: false
+  image: haskell:9.6
+  extra-volumes:
+    - /usr/local/lib:/usr/local/lib
+    - /usr/local/include:/usr/local/include
+  run-args: ["--name", "hasquant-dev-container"]

@@ -4,11 +4,9 @@ obj
 *.chs.h
 *.hi
 *.o
-Main
-Main.hs
 dist-newstyle
 cabal.project.local
-cabal.project.local~
+*~
 .stack-work
 _
 stack.yaml.lock
