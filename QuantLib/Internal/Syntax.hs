@@ -6,7 +6,6 @@ module QuantLib.Internal.Syntax
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib
 import Data.List(isPrefixOf)
-import Data.Maybe(fromJust)
 import Control.Monad((>=>))
 
 getConstructors :: Name -> Q [(Name, [BangType])] -- [(data constructor, constructor args)]
@@ -21,13 +20,11 @@ getConstructors x = do
 getConstructors' :: String -> Q [Name]
 getConstructors' d = lookupTypeName d >>= maybe (return []) (getConstructors >=> (return . map fst))
 
-stripPrefix :: String -> String
-stripPrefix = fromJust . suffix
-  where suffix :: String -> Maybe String
-        suffix str@(_:cs)
-          | "__" `isPrefixOf` str = Just (drop 2 str)
-          | otherwise = suffix cs
-        suffix [] = Nothing
+stripEnumPrefix :: String -> String
+stripEnumPrefix str@(_:cs)
+  | "__" `isPrefixOf` str = drop 2 str
+  | otherwise = stripEnumPrefix cs
+stripEnumPrefix [] = fail "Enum prefix not found"
 
 -- merge a set of enums into a big one providing a function to map values back to ordinal numbers of original enums
 -- e.g. for mainEnum data CalendarCountry = Country__Australia | Country__UnitedStated,
@@ -42,7 +39,7 @@ mergeEnums resName mapper mainEnum subSuffix extra = do
   mainValues <- map fst <$> getConstructors mainEnum
 
   mergedValues <- concat <$> mapM (\d -> do -- (mainName, subName, []), the third member will hold arguments for extra constructors
-    vals <- getConstructors' (stripPrefix (nameBase d) ++ subSuffix)
+    vals <- getConstructors' (stripEnumPrefix (nameBase d) ++ subSuffix)
     return $ if null vals then [(d, Nothing, [])] else zip3 (repeat d) (map Just vals) (repeat [])) mainValues
 
   extraConstructors <- map (\(con, args) -> (con, Nothing, args)) <$> getConstructors extra
@@ -57,7 +54,7 @@ mergeEnums resName mapper mainEnum subSuffix extra = do
   return [dataDecl, mapperSignature, mapperBody]
 
   where concatNames :: Name -> Maybe Name -> Name
-        concatNames x y = mkName (stripPrefix (nameBase x) ++ maybe "" (stripPrefix . nameBase) y)
+        concatNames x y = mkName (stripEnumPrefix (nameBase x) ++ maybe "" (stripEnumPrefix . nameBase) y)
         resNameType = mkName resName
         mapperName = mkName mapper
         enumVal :: Maybe Name -> ExpQ

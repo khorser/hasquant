@@ -1,10 +1,15 @@
 ARG PLATFORM=linux/amd64
 
 FROM --platform=${PLATFORM} debian:trixie AS base
-RUN apt-get update && apt-get install -y \
-    build-essential cmake curl wget git python3-dev \
-    libgmp-dev libffi-dev libtinfo-dev zlib1g-dev pkg-config \
-    gdb valgrind htop locales vim zsh less vifm
+RUN apt-get update \
+    && apt-get install -y \
+        build-essential cmake curl wget git python3-dev \
+        libgmp-dev libffi-dev libtinfo-dev zlib1g-dev pkg-config \
+        gdb valgrind htop locales vim zsh less vifm \
+    && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+    && locale-gen
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
 ARG BOOST_VERSION=1.91.0-1
 ARG QL_VERSION=1.43
@@ -46,17 +51,3 @@ RUN echo "set auto-load safe-path /" >> /root/.gdbinit
 RUN ldconfig
 
 RUN curl -sSL https://get.haskellstack.org/ | sh
-# TODO move up
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
-ENV LANG=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
-#WORKDIR /work
-#COPY stack.yaml ./
-#RUN echo "name: dummy" > package.yaml && \
-#    stack setup && \
-#    rm package.yaml dummy.cabal
-#COPY package.yaml ./
-#COPY *.cpp ./
-#RUN stack build --only-snapshot
-
-#COPY . .

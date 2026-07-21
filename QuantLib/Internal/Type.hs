@@ -570,7 +570,7 @@ import Data.Functor((<&>))
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal
+import QuantLib.Internal(peekDynString)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2

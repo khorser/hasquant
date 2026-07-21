@@ -1,5 +1,5 @@
 services:
-  stack:
+  hasquant:
     build:
       context: .
     # target: development
@@ -10,7 +10,7 @@ services:
     image: hasquant:default
     platform: linux/amd64
     init: true
-    working_dir: /work
+    working_dir: /hasquant
     container_name: hasquant-dev
     
     cap_add:
@@ -19,9 +19,9 @@ services:
       - seccomp:unconfined
     
     volumes:
-      - .:/work:delegated
+      - .:/hasquant:delegated
       - stack-root:/root/.stack
-      - stack-work:/work/.stack-work
+      - hasquant-work:/hasquant/.stack-work
     
     stdin_open: true
     tty: true
@@ -31,6 +31,6 @@ services:
 
 volumes:
   stack-root:
-    name: hasquant_stack
-  stack-work:
-    name: hasquant_work
+    name: stack-root
+  hasquant-work:
+    name: hasquant-work

@@ -71,7 +71,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 
 import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
 
-import QuantLib.Type
+import QuantLib.Type(Error(DateConversion, CPlusPlusException))
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do
