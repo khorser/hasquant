@@ -6,10 +6,10 @@ module Main where
 import Prelude hiding(until, head, tail)
 
 import Test.Hspec
-import Test.Hspec.QuickCheck
+import Test.Hspec.QuickCheck(prop)
 
-import Test.QuickCheck
-import Test.QuickCheck.Monadic as Q
+import Test.QuickCheck(elements, (==>), Arbitrary(arbitrary))
+import Test.QuickCheck.Monadic as Q(assert, monadicIO, pick, run)
 
 import Data.Time.Calendar
 import Data.List(delete)

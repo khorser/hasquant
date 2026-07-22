@@ -118,9 +118,8 @@ library
         /opt/homebrew/include
   build-tool-depends: c2hs:c2hs
 
-executable hasquant_example
-  main-is: QuantLib/MainExample.hs
-  other-modules:
+library hasquant-examples
+  exposed-modules:
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -133,16 +132,31 @@ executable hasquant_example
       QuantLib.Example.Repo
       QuantLib.Example.Swap
       QuantLib.Example.TARF
+  other-modules:
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
       test
+  build-depends:
+      base >=4.11 && <5.0
+    , hasquant
+    , time
+  default-language: Haskell2010
+
+executable hasquant_example
+  main-is: QuantLib/MainExample.hs
+  other-modules:
+      Paths_hasquant
+  autogen-modules:
+      Paths_hasquant
+  hs-source-dirs:
       main/exe
   ghc-options: -Wall
   build-depends:
       base >=4.11 && <5.0
     , hasquant
+    , hasquant-examples
     , time
   default-language: Haskell2010
   if flag(buildExample)
@@ -154,23 +168,10 @@ test-suite hasquant_test
   type: exitcode-stdio-1.0
   main-is: QuantLib/MainTest.hs
   other-modules:
-      QuantLib.Example.BermudanSwaption
-      QuantLib.Example.Bond
-      QuantLib.Example.CallableBond
-      QuantLib.Example.CDS
-      QuantLib.Example.ConvertibleBond
-      QuantLib.Example.EquityOption
-      QuantLib.Example.FittedBondCurve
-      QuantLib.Example.FRA
-      QuantLib.Example.Replication
-      QuantLib.Example.Repo
-      QuantLib.Example.Swap
-      QuantLib.Example.TARF
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
-      test
       main/test
   ghc-options: -Wall
   build-depends:
@@ -178,6 +179,7 @@ test-suite hasquant_test
     , QuickCheck
     , base >=4.11 && <5.0
     , hasquant
+    , hasquant-examples
     , hspec
     , time
   default-language: Haskell2010

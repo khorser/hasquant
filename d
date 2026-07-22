@@ -1,1 +1,1 @@
-cabal configure --enable-documentation --ghc-options=-dynamic && cabal build
+cabal configure --enable-documentation && cabal build

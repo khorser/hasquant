@@ -1,7 +1,7 @@
 module Main where
 
 import Control.Monad(forM_, void)
-import Text.Printf
+import Text.Printf(printf)
 import Data.List(intercalate)
 
 import QuantLib.Settings

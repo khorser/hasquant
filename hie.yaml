@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "./main/exe"
+      component: "exe:hasquant_example"
+    - path: "./main/test"
+      component: "test:hasquant_test"
+    - path: "./test"
+      component: "lib:hasquant-examples"
+    - path: "./"
+      component: "lib:hasquant"

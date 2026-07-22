@@ -1,1 +1,1 @@
-cabal configure -f buildExample --disable-documentation --ghc-options=-dynamic && cabal build
+cabal configure -f buildExample --disable-documentation && cabal build
