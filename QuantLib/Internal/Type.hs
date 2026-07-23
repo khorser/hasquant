@@ -466,6 +466,7 @@ module QuantLib.Internal.Type
   , peekBMASwap
   , withBMASwap
   , Bond
+  , GenBond
   , CBond
   , CBond'
   , asBond
@@ -506,6 +507,7 @@ module QuantLib.Internal.Type
   , withBondForward
   , Forward
   , CForward
+  , GenForward
   , CForward'
   , asForward
   , peekForward
@@ -520,6 +522,7 @@ module QuantLib.Internal.Type
   , peekForwardVanillaOption
   , withForwardVanillaOption
   , Instrument
+  , GenInstrument
   , CInstrument
   , CInstrument'
   , asInstrument
@@ -528,6 +531,7 @@ module QuantLib.Internal.Type
   , withInstrumentArray
   , withGenInstrument
   , Option
+  , GenOption
   , COption
   , COption'
   , asOption
@@ -555,6 +559,7 @@ module QuantLib.Internal.Type
   , withQuantoVanillaOption
   , Swap
   , CSwap
+  , GenSwap
   , CSwap'
   , asSwap
   , withGenSwap
@@ -581,12 +586,14 @@ module QuantLib.Internal.Type
   , peekMargrabeOption
   , withMargrabeOption
   , MultiAssetOption
+  , GenMultiAssetOption
   , CMultiAssetOption
   , CMultiAssetOption'
   , asMultiAssetOption
   , peekMultiAssetOption
   , withMultiAssetOption
   , OneAssetOption
+  , GenOneAssetOption
   , COneAssetOption
   , COneAssetOption'
   , asOneAssetOption

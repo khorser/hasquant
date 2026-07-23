@@ -1,5 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators, TypeSynonymInstances, FlexibleInstances #-}
--- TODO get rid of some extensions and TypeSynonymInstances in particular
+{-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Instrument.Swap
   (
     Swaption
@@ -133,11 +132,11 @@ swap' = (uncurry qlSwap1) . unzip
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg a',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
-{#fun qlSwapEndDiscounts as endDiscounts{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwapLeg as leg{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlSwapLegBPS as legBPS{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwapLegNPV as legNPV{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwapStartDiscounts as startDiscounts{withSwap*`Swap',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapEndDiscounts as endDiscounts{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLeg as leg{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLegNPV as legNPV{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- AssetSwap
@@ -160,9 +159,9 @@ swap' = (uncurry qlSwap1) . unzip
   ,withDayCounter*`DayCounter' -- ^fixedDC
   ,withOvernightIborIndex*`OvernightIborIndex',`Double' -- ^spread
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
-{#fun qlSwapMaturityDate as maturityDate{withSwap*`Swap',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
-{#fun qlSwapStartDate as startDate{withSwap*`Swap',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
-{#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`Swap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+{#fun qlSwapStartDate as startDate{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+{#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBMASwapBmaLeg as bmaLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlBMASwapBmaLegBPS as bmaLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBMASwapBmaLegNPV as bmaLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}

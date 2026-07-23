@@ -64,7 +64,7 @@ run = do
 
     valuateFRA convention dc settle ts = do
       eu3m <- I.iborIndex I.Euribor3M (Just ts)
-      fraCalendar <- I.asInterestRateIndex eu3m >>= asIndex >>= fixingCalendar
+      fraCalendar <- fixingCalendar eu3m
       dates <- forM starts $
         \months -> do
           v <- advance fraCalendar settle (fromIntegral months, Months) convention False
@@ -76,7 +76,7 @@ run = do
 
         fwdRate <- forwardRate fra
         zRate <- zeroRate' ts m dc IR.Simple Annual False
-        fraNPV <- asInstrument fra >>= npv
+        fraNPV <- npv fra
         return $ IterationResult (IR.rate fwdRate) (IR.rate zRate) fraNPV) $
          zip dates quotes
 

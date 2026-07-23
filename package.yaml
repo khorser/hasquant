@@ -13,6 +13,7 @@ tested-with:
   - GHC == 8.10.6 # lts-18.8
   - GHC == 9.0.2 # lts-19.32
   - GHC == 9.2.5 # lts-20.2
+  - GHC == 9.10.3 # lts-24.49
   #- GHC == 8.10.4 # lts-18.5
   #- GHC == 8.8.4  # lts-16.31
   # with minimal compatibility tweaks in Quantlib.Internal.Syntax and probably other modules you should be able to build it with GHC 7.10
@@ -32,9 +33,13 @@ extra-source-files:
 dependencies:
   - base >=4.11 && <5.0
   - time
+ghc-options: -Wall
+when:
+  - condition: flag(trackAllocations)
+    ghc-options: -g3
 
 library:
-  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  ghc-options: -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   dependencies:
     - template-haskell
     - vector
@@ -119,7 +124,6 @@ tests:
   hasquant_test:
     main: QuantLib/MainTest.hs
     source-dirs: main/test
-    ghc-options: -Wall
     dependencies:
       - hasquant
       - hasquant-examples
@@ -131,7 +135,6 @@ executables:
   hasquant_example:
     main: QuantLib/MainExample.hs
     source-dirs: main/exe
-    ghc-options: -Wall
     dependencies:
       - hasquant
       - hasquant-examples

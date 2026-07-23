@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
 module QuantLib.Instrument.Forward
   (
     Forward
@@ -52,7 +51,7 @@ import QuantLib.Internal.Type
   ,withDay*`Day' -- ^maturityDate
   ,fromEnumC`PositionType',`Double' -- ^strike
   ,fromIntegral`Word' -- ^settlementDays
-  ,withDayCounter*`DayCounter',withCalendar*`Calendar',`BusinessDayConvention',withBond*`Bond',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,withDayCounter*`DayCounter',withCalendar*`Calendar',`BusinessDayConvention',withBond*`GenBond b',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^incomeDiscountCurve
   ,preErrorCheck-`String'errorCheck*-}->`BondForward'peekBondForward*#}
 
@@ -62,17 +61,17 @@ import QuantLib.Internal.Type
 {#fun qlBondForwardForwardPrice as forwardPrice{withBondForward*`BondForward',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |forward value/price of underlying, discounting income/dividends
 -- if this is a bond forward price, is must be a dirty forward price.
-{#fun qlForwardForwardValue as forwardValue{withForward*`Forward',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardForwardValue as forwardValue{withForward*`GenForward a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t>0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
-{#fun qlForwardImpliedYield as impliedYield{withForward*`Forward',`Double' -- ^underlyingSpotValue
+{#fun qlForwardImpliedYield as impliedYield{withForward*`GenForward a',`Double' -- ^underlyingSpotValue
   ,`Double' -- ^forwarValue
   ,withDay*`Day' -- ^settlementDate
   ,`Compounding',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
-{#fun qlForwardSettlementDate as settlementDate{withForward*`Forward',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlForwardSettlementDate as settlementDate{withForward*`GenForward a',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 -- |NPV of income/dividends/storage-costs etc. of underlying instrument.
-{#fun qlForwardSpotIncome as spotIncome{withForward*`Forward',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardSpotIncome as spotIncome{withForward*`GenForward a',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns spot value/price of an underlying financial instrument
-{#fun qlForwardSpotValue as spotValue{withForward*`Forward',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlForwardSpotValue as spotValue{withForward*`GenForward a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the relevant forward rate associated with the FRA term.
 {#fun qlForwardRateAgreementForwardRate as forwardRate{withGenInstrument*`ForwardRateAgreement',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 

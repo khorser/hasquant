@@ -119,17 +119,15 @@ run = do
       refDate <- referenceDate d
       pricer <- discountingSwapEngine d (Just False) (Just refDate) (Just refDate)
 
-      spotInstr <- asSwap spot5Y >>= asInstrument
-      fwdInstr <- asSwap fwd1Y5Y >>= asInstrument
-      setPricingEngine spotInstr pricer
-      setPricingEngine fwdInstr pricer
+      setPricingEngine spot5Y pricer
+      setPricingEngine fwd1Y5Y pricer
 
-      spotNPV <- npv spotInstr
+      spotNPV <- npv spot5Y
       spotFairSpread <- fairSpread spot5Y
       spotFairRate <- fairRate spot5Y
       let sr = SwapResult spotNPV spotFairSpread spotFairRate
 
-      fwdNPV <- npv fwdInstr
+      fwdNPV <- npv fwd1Y5Y
       fwdFairSpread <- fairSpread fwd1Y5Y
       fwdFairRate <- fairRate fwd1Y5Y
       let fr = SwapResult fwdNPV fwdFairSpread fwdFairRate

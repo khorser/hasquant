@@ -89,7 +89,7 @@ run = do
 
   bermudanDates <- fixedLeg swp >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
   let ex = Bermudan (BermudanExercise bermudanDates False)
-  atmSwaption <- swaption atmSwap ex Physical >>= asOption >>= asInstrument
+  atmSwaption <- swaption atmSwap ex Physical
 
   npvA <- priceSwaption atmSwaption modelG2 50 modelHW modelHW2 modelBK
 
@@ -97,11 +97,11 @@ run = do
       fixedITMRate = fixedATMRate * 0.8
   otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
-  otmSwaption <- swaption otmSwap ex Physical >>= asOption >>= asInstrument
+  otmSwaption <- swaption otmSwap ex Physical
 
   itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
-  itmSwaption <- swaption itmSwap ex Physical >>= asOption >>= asInstrument
+  itmSwaption <- swaption itmSwap ex Physical
 
   npvO <- priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK
   npvI <- priceSwaption itmSwaption modelG2 50 modelHW modelHW2 modelBK

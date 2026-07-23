@@ -5,7 +5,7 @@ module QuantLib.Example.Repo
   , run
   ) where
 
-import Control.Monad(void)
+import Control.Monad(void, when)
 import System.Mem(performGC)
 import System.IO (hPutStrLn, stderr)
 
@@ -38,8 +38,8 @@ data Result = Result
   , zeroRateR :: Double
   } deriving Show
 
-run :: IO Result
-run = do
+run :: Bool -> IO Result
+run gc = do
   repoDayCountConvention <- dayCounter Actual360
   bondCalendar <- calendar Null
   bondDayCountConvention <- dayCounter Thirty360BondBasis
@@ -50,14 +50,12 @@ run = do
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
   (fwd, clP, accr1, accr2, clF, fP, dp) <- doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve
-  performGC
-  hPutStrLn stderr "GC complete"
+  when gc (performGC >> hPutStrLn stderr "GC complete")
   repoCurve <- simpleQuote repoRate >>=
         $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve
   disc <- discount' repoCurve repoDeliveryDate False
-  ii <- asInstrument fwd
-  np <- npv ii
+  np <- npv fwd
 
   impR <- impliedYield fwd dp dummyStrike repoSettlementDate
     repoCompounding repoDayCountConvention
@@ -102,10 +100,9 @@ run = do
         doBond :: Calendar -> Schedule -> SimpleQuote -> DayCounter -> DayCounter -> YieldTermStructure -> IO (Forward, Double, Double, Double, Double, Double, Double)
         doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve = do
           b <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
-            bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar >>= asBond
+            bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar
           -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
-          i <- asInstrument b
-          discountingBondEngine bondCurve Nothing >>= setPricingEngine i
+          discountingBondEngine bondCurve Nothing >>= setPricingEngine b
           void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
           repoCurve <- simpleQuote repoRate >>=
             $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq

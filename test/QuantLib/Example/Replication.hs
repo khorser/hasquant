@@ -45,7 +45,7 @@ run = do
   europeanEngine <- analyticEuropeanEngine bsProcess
   referenceOption <- barrierOption barrierType barrier rebate payoff ex
   refInstrument <- asOneAssetOption referenceOption >>= asOption >>= asInstrument
-  setPricingEngine refInstrument barrierEngine
+  setPricingEngine referenceOption barrierEngine
   put1 <- europeanOption payoff ex >>= asOneAssetOption >>= asOption >>= asInstrument
   setPricingEngine put1 europeanEngine
   digitalPut <- europeanOption (CashOrNothing Put barrier 1.0) ex >>= asOneAssetOption >>= asOption >>= asInstrument

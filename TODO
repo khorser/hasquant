@@ -26,6 +26,7 @@ main = do
 finish hierarchies of models (undefined is used in some functions)
 add more nonempty lists for Haskell functions where applicable
 use some QuantLib handles for quotes and curves?
+get rid of FlexibleInstances
 
 integrate with HLS in docker?
 

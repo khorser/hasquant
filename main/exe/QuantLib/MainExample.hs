@@ -45,7 +45,7 @@ main = do
   putStrLn $ "BPS: " ++ show (Bond.bpsR br)
 
   putStrLn "\n*** Repo Example ***"
-  rr <- keepingSettings' RepoExample.run
+  rr <- keepingSettings' $ RepoExample.run True
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
   putStrLn $ "Underlying bond accrued at settlement: " ++ show (RepoExample.accruedAmountSettlement rr)

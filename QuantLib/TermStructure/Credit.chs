@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses, TypeOperators #-}
 module QuantLib.TermStructure.Credit
   (
     ProbabilityTrait(..)

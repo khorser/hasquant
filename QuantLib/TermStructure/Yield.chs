@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, FlexibleContexts, TypeOperators, FlexibleInstances #-}
+{-# LANGUAGE FunctionalDependencies, FlexibleInstances #-}
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure

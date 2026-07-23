@@ -1382,7 +1382,7 @@ main = do
 
     describe "Repo example" $
       it "check values" $ do 
-        r <- Settings.keepingSettings' RepoExample.run
+        r <- Settings.keepingSettings' $ RepoExample.run True
         RepoExample.cleanPriceR r `shouldSatisfy` closePrec 89.9769 1e-4
         RepoExample.dirtyPriceR r `shouldSatisfy` closePrec 93.2880 1e-4
         RepoExample.accruedAmountSettlement r `shouldSatisfy` closePrec 3.3111 1e-4
