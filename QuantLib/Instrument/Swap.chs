@@ -1,4 +1,5 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleContexts, TypeOperators, TypeSynonymInstances, FlexibleInstances #-}
+-- TODO get rid of some extensions and TypeSynonymInstances in particular
 module QuantLib.Instrument.Swap
   (
     Swaption
@@ -73,9 +74,9 @@ import QuantLib.Internal.Enum
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
-{#pointer *QlOption as Option foreign -> COption nocode#}
-{#pointer *QlBond as Bond foreign -> CBond nocode#}
-{#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap nocode#}
+{#pointer *QlOption as Option foreign -> COption' nocode#}
+{#pointer *QlBond as Bond foreign -> CBond' nocode#}
+{#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap' nocode#}
 {#pointer *Schedule as Schedule foreign -> CSchedule nocode#}
 {#pointer *QlExercise as Exercies foreign -> QlExercise nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
@@ -89,29 +90,12 @@ import QuantLib.Internal.Enum
 {#enum SwapType{} deriving(Show, Eq)#}
 
 {#pointer *Leg foreign -> CLeg' nocode#}
-{#pointer *QlSwaption as Swaption foreign -> CSwaption nocode#}
-{#pointer *QlSwap as Swap foreign -> CSwap nocode#}
-{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-{#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap nocode#}
-{#pointer *QlBMASwap as BMASwap foreign -> CBMASwap nocode#}
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
-
-{#fun qlSwaptionAsOption{withSwaption*`Swaption'}->`Option'peekOption*#}
-instance Swaption`Derives` Option where cast = qlSwaptionAsOption
-{#fun qlSwapAsInstrument{withSwap*`Swap'}->`Instrument'peekInstrument*#}
-instance Swap`Derives` Instrument where cast = qlSwapAsInstrument
-
-asSwap:: (a`Derives` Swap) => a -> IO Swap
-asSwap = cast
-
-{#fun qlVanillaSwapAsSwap{withVanillaSwap*`VanillaSwap'}->`Swap'peekSwap*#}
-instance VanillaSwap`Derives` Swap where cast = qlVanillaSwapAsSwap
-{#fun qlAssetSwapAsSwap{withAssetSwap*`AssetSwap'}->`Swap'peekSwap*#}
-instance AssetSwap`Derives` Swap where cast = qlAssetSwapAsSwap
-{#fun qlBMASwapAsSwap{withBMASwap*`BMASwap'}->`Swap'peekSwap*#}
-instance BMASwap`Derives` Swap where cast = qlBMASwapAsSwap
-{#fun qlOvernightIndexedSwapAsSwap{withOvernightIndexedSwap*`OvernightIndexedSwap'}->`Swap'peekSwap*#}
-instance OvernightIndexedSwap`Derives` Swap where cast = qlOvernightIndexedSwapAsSwap
+{#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
+{#pointer *QlSwap as Swap foreign -> CSwap' nocode#}
+{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
+{#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap' nocode#}
+{#pointer *QlBMASwap as BMASwap foreign -> CBMASwap' nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double' -- ^price
@@ -251,7 +235,7 @@ instance HasFloatingLeg AssetSwap where
 {#fun qlOvernightIndexedSwapFixedLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlOvernightIndexedSwapFairSpread{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.This calculation does not take any upfront into account, even if one was given.
-{#fun qlCreditDefaultSwapFairSpread{withCreditDefaultSwap*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapFairSpread{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlVanillaSwapFloatingLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlVanillaSwapFloatingLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlVanillaSwapFloatingLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}

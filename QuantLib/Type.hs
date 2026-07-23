@@ -1,9 +1,7 @@
-{-# LANGUAGE FunctionalDependencies #-}
 module QuantLib.Type
   (
     Error(..)
 --  , Settings(..)
-  , Derives(..)
   )
 where
 
@@ -22,7 +20,5 @@ data Error = CPlusPlusException String
           deriving (Show, Eq)
 
 instance Exception Error
-
-class Derives a b | a -> b where cast :: a -> IO b
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

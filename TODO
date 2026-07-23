@@ -23,6 +23,7 @@ main = do
       si <- liborSwapIndex EuriborSwapIfrFix (6, Months) Nothing Nothing
       asInterestRateIndex si
 
+finish hierarchies of models (undefined is used in some functions)
 add more nonempty lists for Haskell functions where applicable
 use some QuantLib handles for quotes and curves?
 
@@ -54,7 +55,7 @@ Payoff =
       Double -- ^strike
   | RatchetMax
       Double -- ^gearing1
-      Double -- ^gearing2
+      Double -- ^gearing
       Double -- ^gearing3
       Double -- ^spread1
       Double -- ^spread2
@@ -175,66 +176,3 @@ QlAmericanExercise | qlFreeAmericanExercise
 QlEuropeanExercise | qlFreeEuropeanExercise
 QlBermudanExercise | qlFreeBermudanExercise
 QlSwingExercise | qlFreeSwingExercise
-
--- hierarchies
-"a:" means an abstract class, i.e. interface only
-
-a:Instrument
-    a:Forward : Instrument | qlForwardAsInstrument
-	BondForward : Forward | qlForwardAsForward
-    a:Option : Instrument | qlOptionAsInstrument
-	CdsOption : Option | qlCdsOptionAsOption
-	MultiAssetOption : Option | qlMultiAssetOptionAsOption
-	    MargrabeOption : MultiAssetOption | qlMargrabeOptionAsMultiAssetOption
-	OneAssetOption : Option | qlOneAssetOptionAsOption
-	    BarrierOption : OneAssetOption | qlBarrierOptionAsOneAssetOption
-	    DividendVanillaOption : OneAssetOption | qlDividendVanillaOptionAsOneAssetOption
-	    ForwardVanillaOption : OneAssetOption | qlForwardVanillaOptionAsOneAssetOption
-	    QuantoVanillaOption : OneAssetOption | qlQuantoVanillaOptionAsOneAssetOption
-	    VanillaOption : OneAssetOption | qlVanillaOptionAsOneAssetOption
-	QuantoBarrierOption : Option | qlQuantoBarrierOptionAsBarrierOption >=> asOneAssetOption >=> asOption
-	QuantoForwardVanillaOption : Option | qlQuantoForwardVanillaOptionAsForwardVanillaOption >=> asOneAssetOption >=> asOption
-	Swaption : Option | qlSwaptionAsOption
-    a:Swap : Instrument | qlSwapAsInstrument
-	VanillaSwap : Swap | qlVanillaSwapAsSwap
-	AssetSwap : Swap | qlAssetSwapAsSwap
-	BMASwap : Swap | qlBMASwapAsSwap
-	OvernightIndexedSwap : Swap | qlOvernightIndexedSwapAsSwap
-    ForwardRateAgreement : Instrument | qlForwardRateAgreementAsInstrument
-    CreditDefaultSwap : Instrument | qlCreditDefaultSwapAsInstrument
-    CapFloor : Instrument | qlCapFloorAsInstrument
-    Bond : Instrument | qlBondAsInstrument
-	ConvertibleBond : Bond | qlConvertibleBondAsBond
-    	FixedRateBond : Bond | qlFixedRateBondAsBond
-	CallableBond : Bond | qlCallableBondAsBond
-
----
-
-QlAssetSwap as AssetSwap | qlFreeAssetSwap
-QlBarrierOption as BarrierOption | qlFreeBarrierOption
-QlBMASwap as BMASwap | qlFreeBMASwap
-QlBond as Bond | qlFreeBond
-QlCallableBond as CallableBond | qlFreeCallableBond
-QlCapFloor as CapFloor | qlFreeCapFloor
-QlCdsOption as CdsOption | qlFreeCdsOption
-QlConvertibleBond as ConvertibleBond | qlFreeConvertibleBond
-QlCreditDefaultSwap as CreditDefaultSwap | qlFreeCreditDefaultSwap
-QlDividendVanillaOption as DividendVanillaOption | qlFreeDividendVanillaOption
-QlFixedRateBond as FixedRateBond | qlFreeFixedRateBond
-QlBondForward as BondForward | qlFreeBondForward
-QlForward as Forward | qlFreeForward
-QlForwardRateAgreement as ForwardRateAgreement | qlFreeForwardRateAgreement
-QlForwardVanillaOption as ForwardVanillaOption | qlFreeForwardVanillaOption
-QlInstrument as Instrument | qlFreeInstrument
-QlMargrabeOption as MargrabeOption | qlFreeMargrabeOption
-QlMultiAssetOption as MultiAssetOption | qlFreeMultiAssetOption
-QlOneAssetOption as OneAssetOption | qlFreeOneAssetOption
-QlOption as Option | qlFreeOption
-QlOvernightIndexedSwap as OvernightIndexedSwap | qlFreeOvernightIndexedSwap
-QlQuantoBarrierOption as QuantoBarrierOption | qlFreeQuantoBarrierOption
-QlQuantoForwardVanillaOption as QuantoForwardVanillaOption | qlFreeQuantoForwardVanillaOption
-QlQuantoVanillaOption as QuantoVanillaOption | qlFreeQuantoVanillaOption
-QlSwap as Swap | qlFreeSwap
-QlSwaption as Swaption | qlFreeSwaption
-QlVanillaOption as VanillaOption | qlFreeVanillaOption
-QlVanillaSwap as VanillaSwap | qlFreeVanillaSwap

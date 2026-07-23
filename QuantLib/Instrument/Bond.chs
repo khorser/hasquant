@@ -93,28 +93,15 @@ import QuantLib.Internal.Enum
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 
-{#pointer *QlBond as Bond foreign -> CBond nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
+{#pointer *QlBond as Bond foreign -> CBond' nocode#}
+{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond nocode#}
-{#pointer *QlCallableBond as CallableBond foreign -> CCallableBond nocode#}
-{#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond nocode#}
+{#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
+{#pointer *QlCallableBond as CallableBond foreign -> CCallableBond' nocode#}
+{#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond' nocode#}
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlBondAsInstrument{withBond*`Bond'}->`Instrument'peekInstrument*#}
-instance Bond`Derives` Instrument where cast = qlBondAsInstrument
-
-asBond :: (a`Derives` Bond) => a -> IO Bond
-asBond = cast
-
-{#fun qlFixedRateBondAsBond{withFixedRateBond*`FixedRateBond'}->`Bond'peekBond*#}
-instance FixedRateBond`Derives` Bond where cast = qlFixedRateBondAsBond
-
-{#fun qlCallableBondAsBond{withCallableBond*`CallableBond'}->`Bond'peekBond*#}
-instance CallableBond`Derives` Bond where cast = qlCallableBondAsBond
-{#fun qlConvertibleBondAsBond{withConvertibleBond*`ConvertibleBond'}->`Bond'peekBond*#}
-instance ConvertibleBond`Derives` Bond where cast = qlConvertibleBondAsBond
 {#fun qlBondFunctionsAtmRate as atmRate{withBond*`Bond',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |constructor for amortizing or non-amortizing bonds.
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.

@@ -84,11 +84,11 @@ import QuantLib.Internal.Type
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
-{#pointer *QlBond as Bond foreign -> CBond nocode#}
-{#pointer *QlSwap as Swap foreign -> CSwap nocode#}
+{#pointer *QlBond as Bond foreign -> CBond' nocode#}
+{#pointer *QlSwap as Swap foreign -> CSwap' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
-{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
+{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}

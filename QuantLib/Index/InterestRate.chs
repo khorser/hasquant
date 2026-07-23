@@ -66,8 +66,8 @@ import QuantLib.Internal.Type
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign -> COvernightIndexedSwapIndex' nocode#}
 
-{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap nocode#}
-{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap nocode#}
+{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
+{#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 

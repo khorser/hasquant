@@ -140,7 +140,7 @@ import QuantLib.Internal.Type
 {#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
 {#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
 {#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
-{#pointer *QlBond as Bond foreign -> CBond nocode#}
+{#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}

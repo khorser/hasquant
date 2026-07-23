@@ -32,23 +32,14 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#pointer *QlBond as Bond foreign -> CBond nocode#}
-{#pointer *QlForward as Forward foreign -> CForward nocode#}
+{#pointer *QlBond as Bond foreign -> CBond' nocode#}
+{#pointer *QlForward as Forward foreign -> CForward' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond nocode#}
-{#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign -> CForwardRateAgreement nocode#}
-{#pointer *QlBondForward as BondForward foreign -> CBondForward nocode#}
+{#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
+{#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign -> CForwardRateAgreement' nocode#}
+{#pointer *QlBondForward as BondForward foreign -> CBondForward' nocode#}
 
-{#fun qlForwardAsInstrument{withForward*`Forward'}->`Instrument'peekInstrument*#}
-instance Forward`Derives` Instrument where cast = qlForwardAsInstrument
-
-asForward :: (a`Derives` Forward) => a -> IO Forward
-asForward = cast
-{#fun qlForwardRateAgreementAsInstrument{withForwardRateAgreement*`ForwardRateAgreement'}->`Instrument'peekInstrument*#}
-instance ForwardRateAgreement`Derives` Instrument where cast = qlForwardRateAgreementAsInstrument
-{#fun qlBondForwardAsForward{withBondForward*`BondForward'}->`Forward'peekForward*#}
-instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
 {#fun qlForwardRateAgreement as forwardRateAgreement{withIborIndex*`GenIborIndex a'
   ,withDay*`Day' -- ^valueDate
   ,withDay*`Day' -- ^maturityDate
@@ -83,6 +74,6 @@ instance BondForward`Derives` Forward where cast = qlBondForwardAsForward
 -- |returns spot value/price of an underlying financial instrument
 {#fun qlForwardSpotValue as spotValue{withForward*`Forward',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the relevant forward rate associated with the FRA term.
-{#fun qlForwardRateAgreementForwardRate as forwardRate{withForwardRateAgreement*`ForwardRateAgreement',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+{#fun qlForwardRateAgreementForwardRate as forwardRate{withGenInstrument*`ForwardRateAgreement',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -45,10 +45,7 @@ import QuantLib.Internal.Enum
 {#enum AtomicDefaultType{} deriving(Show, Eq)#}
 
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
-
-asInstrument :: (a`Derives` Instrument) => a -> IO Instrument
-asInstrument = cast
+{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 
 -- |Returns the net present value of the given Instrument
 {#fun qlInstrumentNPV as npv{withInstrument*`Instrument',preErrorCheck-`String'errorCheck*-}->`Double'#}

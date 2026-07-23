@@ -22,11 +22,9 @@ import QuantLib.Internal.Type
 #include "ql.h"
 
 {#pointer *Leg foreign -> CLeg' nocode#}
-{#pointer *QlCapFloor as CapFloor foreign -> CCapFloor nocode#}
+{#pointer *QlCapFloor as CapFloor foreign -> CCapFloor' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument nocode#}
-{#fun qlCapFloorAsInstrument{withCapFloor*`CapFloor'}->`Instrument'peekInstrument*#}
-instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
+{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 
 {#fun qlCap as cap{withLeg*`GenLeg a' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
@@ -38,9 +36,9 @@ instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
 {#fun qlFloor as floor{withLeg*`GenLeg a' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-{#fun qlCapFloorAtmRate as atmRate{withCapFloor*`CapFloor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCapFloorAtmRate as atmRate{withGenInstrument*`CapFloor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |implied term volatility
-{#fun qlCapFloorImpliedVolatility as impliedVolatility{withCapFloor*`CapFloor',`Double' -- ^price
+{#fun qlCapFloorImpliedVolatility as impliedVolatility{withGenInstrument*`CapFloor',`Double' -- ^price
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^disc
   ,`Double' -- ^guess
   ,`Double' -- ^accuracy
@@ -49,7 +47,7 @@ instance CapFloor`Derives` Instrument where cast = qlCapFloorAsInstrument
   ,`Double' -- ^maxVol
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
-{#fun qlCapFloorOptionlet as optionlet{withCapFloor*`CapFloor',fromIntegral`Word' -- ^n
+{#fun qlCapFloorOptionlet as optionlet{withGenInstrument*`CapFloor',fromIntegral`Word' -- ^n
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

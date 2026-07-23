@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, DuplicateRecordFields, TypeFamilies #-}
+{-# LANGUAGE RankNTypes, DuplicateRecordFields, TypeFamilies, TypeOperators #-}
 module QuantLib.Internal.Type
   (
     Standalone(..)
@@ -137,6 +137,7 @@ module QuantLib.Internal.Type
   , BondHelper
   , peekBondHelper
   , withBondHelperArray
+  , withGenBond
   , CSwapRateHelper
   , CSwapRateHelper'
   , SwapRateHelper
@@ -451,111 +452,144 @@ module QuantLib.Internal.Type
 
   , AssetSwap
   , CAssetSwap
+  , CAssetSwap'
   , peekAssetSwap
   , withAssetSwap
   , BarrierOption
   , CBarrierOption
+  , CBarrierOption'
   , peekBarrierOption
   , withBarrierOption
   , BMASwap
   , CBMASwap
+  , CBMASwap'
   , peekBMASwap
   , withBMASwap
   , Bond
   , CBond
+  , CBond'
+  , asBond
   , peekBond
   , withBond
   , CallableBond
   , CCallableBond
+  , CCallableBond'
   , peekCallableBond
   , withCallableBond
   , CapFloor
   , CCapFloor
+  , CCapFloor'
   , peekCapFloor
-  , withCapFloor
   , CdsOption
   , CCdsOption
+  , CCdsOption'
   , peekCdsOption
   , withCdsOption
   , ConvertibleBond
   , CConvertibleBond
+  , CConvertibleBond'
   , peekConvertibleBond
   , withConvertibleBond
   , CreditDefaultSwap
   , CCreditDefaultSwap
+  , CCreditDefaultSwap'
   , peekCreditDefaultSwap
-  , withCreditDefaultSwap
   , FixedRateBond
   , CFixedRateBond
+  , CFixedRateBond'
   , peekFixedRateBond
   , withFixedRateBond
   , BondForward
   , CBondForward
+  , CBondForward'
   , peekBondForward
   , withBondForward
   , Forward
   , CForward
+  , CForward'
+  , asForward
   , peekForward
   , withForward
   , ForwardRateAgreement
   , CForwardRateAgreement
+  , CForwardRateAgreement'
   , peekForwardRateAgreement
-  , withForwardRateAgreement
   , ForwardVanillaOption
   , CForwardVanillaOption
+  , CForwardVanillaOption'
   , peekForwardVanillaOption
   , withForwardVanillaOption
   , Instrument
   , CInstrument
+  , CInstrument'
+  , asInstrument
   , peekInstrument
   , withInstrument
   , withInstrumentArray
+  , withGenInstrument
   , Option
   , COption
+  , COption'
+  , asOption
+  , withGenOption
   , peekOption
   , withOption
   , OvernightIndexedSwap
   , COvernightIndexedSwap
+  , COvernightIndexedSwap'
   , peekOvernightIndexedSwap
   , withOvernightIndexedSwap
   , QuantoBarrierOption
   , CQuantoBarrierOption
+  , CQuantoBarrierOption'
   , peekQuantoBarrierOption
   , withQuantoBarrierOption
   , QuantoForwardVanillaOption
   , CQuantoForwardVanillaOption
+  , CQuantoForwardVanillaOption'
   , peekQuantoForwardVanillaOption
   , withQuantoForwardVanillaOption
   , QuantoVanillaOption
-  , CQuantoVanillaOption
+  , CQuantoVanillaOption'
   , peekQuantoVanillaOption
   , withQuantoVanillaOption
   , Swap
   , CSwap
+  , CSwap'
+  , asSwap
+  , withGenSwap
   , peekSwap
   , withSwap
   , Swaption
   , CSwaption
+  , CSwaption'
   , peekSwaption
   , withSwaption
   , VanillaOption
   , CVanillaOption
+  , CVanillaOption'
   , peekVanillaOption
   , withVanillaOption
   , VanillaSwap
   , CVanillaSwap
+  , CVanillaSwap'
   , peekVanillaSwap
   , withVanillaSwap
   , MargrabeOption
   , CMargrabeOption
+  , CMargrabeOption'
   , peekMargrabeOption
   , withMargrabeOption
   , MultiAssetOption
   , CMultiAssetOption
+  , CMultiAssetOption'
+  , asMultiAssetOption
   , peekMultiAssetOption
   , withMultiAssetOption
   , OneAssetOption
   , COneAssetOption
+  , COneAssetOption'
+  , asOneAssetOption
   , peekOneAssetOption
   , withOneAssetOption
   ) where
@@ -1628,226 +1662,378 @@ peekAffineModel = undefined
 asAffineModel :: GenCalibratedModel a (AffineModel a) -> IO (GenAffineModel a)
 asAffineModel = undefined
 
--- TEMPORARY STORAGE BEFORE HIERARCHIES ARE MIGRATED OFF TYPE CLASSES
+data CInstrument'
+newtype GenInstrument a = GenInstrument (GenForeignPtr a CInstrument')
+type CInstrument = ForeignPtr CInstrument'
+type Instrument = GenInstrument CInstrument
+foreign import ccall "ql.h &qlFreeInstrument" qlFreeInstrument :: FinalizerPtr CInstrument'
+instance Finalizable CInstrument' where finalize = qlFreeInstrument
+asInstrument :: GenInstrument a -> IO Instrument
+asInstrument (GenInstrument (GenForeignPtr x w)) = w x peekInstrument
+peekInstrument :: Ptr CInstrument' -> IO Instrument
+peekInstrument = GenInstrument <.> newCastForeignPtr
+withInstrument :: GenInstrument a -> (Ptr CInstrument' -> IO b) -> IO b
+withInstrument (GenInstrument (GenForeignPtr x w)) = w x
+withGenInstrument :: GenInstrument (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+withGenInstrument (GenInstrument (GenForeignPtr x _)) = withForeignPtr x
 
-data CAssetSwap
-instance Finalizable CAssetSwap where finalize = qlFreeAssetSwap
-newtype AssetSwap = AssetSwap {getCAssetSwap :: Standalone CAssetSwap}
-peekAssetSwap :: Ptr CAssetSwap -> IO AssetSwap
-peekAssetSwap = peekStandalone >=> return . AssetSwap
-withAssetSwap :: AssetSwap -> (Ptr CAssetSwap -> IO b) -> IO b
-withAssetSwap = withStandalone . getCAssetSwap
-data CBarrierOption
-newtype BarrierOption = BarrierOption {getCBarrierOption :: Standalone CBarrierOption}
-instance Finalizable CBarrierOption where finalize = qlFreeBarrierOption
-peekBarrierOption :: Ptr CBarrierOption -> IO BarrierOption
-peekBarrierOption = peekStandalone >=> return . BarrierOption
-withBarrierOption :: BarrierOption -> (Ptr CBarrierOption -> IO b) -> IO b
-withBarrierOption = withStandalone . getCBarrierOption
-data CBMASwap
-newtype BMASwap = BMASwap {getCBMASwap :: Standalone CBMASwap}
-instance Finalizable CBMASwap where finalize = qlFreeBMASwap
-peekBMASwap :: Ptr CBMASwap -> IO BMASwap
-peekBMASwap = peekStandalone >=> return . BMASwap
-withBMASwap :: BMASwap -> (Ptr CBMASwap -> IO b) -> IO b
-withBMASwap = withStandalone . getCBMASwap
-data CBond
-newtype Bond = Bond {getCBond :: Standalone CBond}
-instance Finalizable CBond where finalize = qlFreeBond
-peekBond :: Ptr CBond -> IO Bond
-peekBond = peekStandalone >=> return . Bond
-withBond :: Bond -> (Ptr CBond -> IO b) -> IO b
-withBond = withStandalone . getCBond
-data CCallableBond
-newtype CallableBond = CallableBond {getCCallableBond :: Standalone CCallableBond}
-instance Finalizable CCallableBond where finalize = qlFreeCallableBond
-peekCallableBond :: Ptr CCallableBond -> IO CallableBond
-peekCallableBond = peekStandalone >=> return . CallableBond
-withCallableBond :: CallableBond -> (Ptr CCallableBond -> IO b) -> IO b
-withCallableBond = withStandalone . getCCallableBond
-data CCapFloor
-newtype CapFloor = CapFloor {getCCapFloor :: Standalone CCapFloor}
-instance Finalizable CCapFloor where finalize = qlFreeCapFloor
-peekCapFloor :: Ptr CCapFloor -> IO CapFloor
-peekCapFloor = peekStandalone >=> return . CapFloor
-withCapFloor :: CapFloor -> (Ptr CCapFloor -> IO b) -> IO b
-withCapFloor = withStandalone . getCCapFloor
-data CCdsOption
-newtype CdsOption = CdsOption {getCCdsOption :: Standalone CCdsOption}
-instance Finalizable CCdsOption where finalize = qlFreeCdsOption
-peekCdsOption :: Ptr CCdsOption -> IO CdsOption
-peekCdsOption = peekStandalone >=> return . CdsOption
-withCdsOption :: CdsOption -> (Ptr CCdsOption -> IO b) -> IO b
-withCdsOption = withStandalone . getCCdsOption
-data CConvertibleBond
-newtype ConvertibleBond = ConvertibleBond {getCConvertibleBond :: Standalone CConvertibleBond}
-instance Finalizable CConvertibleBond where finalize = qlFreeConvertibleBond
-peekConvertibleBond :: Ptr CConvertibleBond -> IO ConvertibleBond
-peekConvertibleBond = peekStandalone >=> return . ConvertibleBond
-withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond -> IO b) -> IO b
-withConvertibleBond = withStandalone . getCConvertibleBond
-data CCreditDefaultSwap
-newtype CreditDefaultSwap = CreditDefaultSwap {getCCreditDefaultSwap :: Standalone CCreditDefaultSwap}
-instance Finalizable CCreditDefaultSwap where finalize = qlFreeCreditDefaultSwap
-peekCreditDefaultSwap :: Ptr CCreditDefaultSwap -> IO CreditDefaultSwap
-peekCreditDefaultSwap = peekStandalone >=> return . CreditDefaultSwap
-withCreditDefaultSwap :: CreditDefaultSwap -> (Ptr CCreditDefaultSwap -> IO b) -> IO b
-withCreditDefaultSwap = withStandalone . getCCreditDefaultSwap
-data CFixedRateBond
-newtype FixedRateBond = FixedRateBond {getCFixedRateBond :: Standalone CFixedRateBond}
-instance Finalizable CFixedRateBond where finalize = qlFreeFixedRateBond
-peekFixedRateBond :: Ptr CFixedRateBond -> IO FixedRateBond
-peekFixedRateBond = peekStandalone >=> return . FixedRateBond
-withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond -> IO b) -> IO b
-withFixedRateBond = withStandalone . getCFixedRateBond
-data CBondForward
-newtype BondForward = BondForward {getCBondForward :: Standalone CBondForward}
-instance Finalizable CBondForward where finalize = qlFreeBondForward
-peekBondForward :: Ptr CBondForward -> IO BondForward
-peekBondForward = peekStandalone >=> return . BondForward
-withBondForward :: BondForward -> (Ptr CBondForward -> IO b) -> IO b
-withBondForward = withStandalone . getCBondForward
-data CForward
-newtype Forward = Forward {getCForward :: Standalone CForward}
-instance Finalizable CForward where finalize = qlFreeForward
-peekForward :: Ptr CForward -> IO Forward
-peekForward = peekStandalone >=> return . Forward
-withForward :: Forward -> (Ptr CForward -> IO b) -> IO b
-withForward = withStandalone . getCForward
-data CForwardRateAgreement
-newtype ForwardRateAgreement = ForwardRateAgreement {getCForwardRateAgreement :: Standalone CForwardRateAgreement}
-instance Finalizable CForwardRateAgreement where finalize = qlFreeForwardRateAgreement
-peekForwardRateAgreement :: Ptr CForwardRateAgreement -> IO ForwardRateAgreement
-peekForwardRateAgreement = peekStandalone >=> return . ForwardRateAgreement
-withForwardRateAgreement :: ForwardRateAgreement -> (Ptr CForwardRateAgreement -> IO b) -> IO b
-withForwardRateAgreement = withStandalone . getCForwardRateAgreement
-data CForwardVanillaOption
-newtype ForwardVanillaOption = ForwardVanillaOption {getCForwardVanillaOption :: Standalone CForwardVanillaOption}
-instance Finalizable CForwardVanillaOption where finalize = qlFreeForwardVanillaOption
-peekForwardVanillaOption :: Ptr CForwardVanillaOption -> IO ForwardVanillaOption
-peekForwardVanillaOption = peekStandalone >=> return . ForwardVanillaOption
-withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption -> IO b) -> IO b
-withForwardVanillaOption = withStandalone . getCForwardVanillaOption
-data CInstrument
-newtype Instrument = Instrument {getCInstrument :: Standalone CInstrument}
-instance Finalizable CInstrument where finalize = qlFreeInstrument
-peekInstrument :: Ptr CInstrument -> IO Instrument
-peekInstrument = peekStandalone >=> return . Instrument
-withInstrument :: Instrument -> (Ptr CInstrument -> IO b) -> IO b
-withInstrument = withStandalone . getCInstrument
-data CMargrabeOption
-newtype MargrabeOption = MargrabeOption {getCMargrabeOption :: Standalone CMargrabeOption}
-instance Finalizable CMargrabeOption where finalize = qlFreeMargrabeOption
-peekMargrabeOption :: Ptr CMargrabeOption -> IO MargrabeOption
-peekMargrabeOption = peekStandalone >=> return . MargrabeOption
-withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption -> IO b) -> IO b
-withMargrabeOption = withStandalone . getCMargrabeOption
-data CMultiAssetOption
-newtype MultiAssetOption = MultiAssetOption {getCMultiAssetOption :: Standalone CMultiAssetOption}
-instance Finalizable CMultiAssetOption where finalize = qlFreeMultiAssetOption
-peekMultiAssetOption :: Ptr CMultiAssetOption -> IO MultiAssetOption
-peekMultiAssetOption = peekStandalone >=> return . MultiAssetOption
-withMultiAssetOption :: MultiAssetOption -> (Ptr CMultiAssetOption -> IO b) -> IO b
-withMultiAssetOption = withStandalone . getCMultiAssetOption
-data COneAssetOption
-newtype OneAssetOption = OneAssetOption {getCOneAssetOption :: Standalone COneAssetOption}
-instance Finalizable COneAssetOption where finalize = qlFreeOneAssetOption
-peekOneAssetOption :: Ptr COneAssetOption -> IO OneAssetOption
-peekOneAssetOption = peekStandalone >=> return . OneAssetOption
-withOneAssetOption :: OneAssetOption -> (Ptr COneAssetOption -> IO b) -> IO b
-withOneAssetOption = withStandalone . getCOneAssetOption
-data COption
-newtype Option = Option {getCOption :: Standalone COption}
-instance Finalizable COption where finalize = qlFreeOption
-peekOption :: Ptr COption -> IO Option
-peekOption = peekStandalone >=> return . Option
-withOption :: Option -> (Ptr COption -> IO b) -> IO b
-withOption = withStandalone . getCOption
-data COvernightIndexedSwap
-newtype OvernightIndexedSwap = OvernightIndexedSwap {getCOvernightIndexedSwap :: Standalone COvernightIndexedSwap}
-instance Finalizable COvernightIndexedSwap where finalize = qlFreeOvernightIndexedSwap
-peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap -> IO OvernightIndexedSwap
-peekOvernightIndexedSwap = peekStandalone >=> return . OvernightIndexedSwap
-withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap -> IO b) -> IO b
-withOvernightIndexedSwap = withStandalone . getCOvernightIndexedSwap
-data CQuantoBarrierOption
-newtype QuantoBarrierOption = QuantoBarrierOption {getCQuantoBarrierOption :: Standalone CQuantoBarrierOption}
-instance Finalizable CQuantoBarrierOption where finalize = qlFreeQuantoBarrierOption
-peekQuantoBarrierOption :: Ptr CQuantoBarrierOption -> IO QuantoBarrierOption
-peekQuantoBarrierOption = peekStandalone >=> return . QuantoBarrierOption
-withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption -> IO b) -> IO b
-withQuantoBarrierOption = withStandalone . getCQuantoBarrierOption
-data CQuantoForwardVanillaOption
-newtype QuantoForwardVanillaOption = QuantoForwardVanillaOption {getCQuantoForwardVanillaOption :: Standalone CQuantoForwardVanillaOption}
-instance Finalizable CQuantoForwardVanillaOption where finalize = qlFreeQuantoForwardVanillaOption
-peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO QuantoForwardVanillaOption
-peekQuantoForwardVanillaOption = peekStandalone >=> return . QuantoForwardVanillaOption
-withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption -> IO b) -> IO b
-withQuantoForwardVanillaOption = withStandalone . getCQuantoForwardVanillaOption
-data CQuantoVanillaOption
-newtype QuantoVanillaOption = QuantoVanillaOption {getCQuantoVanillaOption :: Standalone CQuantoVanillaOption}
-instance Finalizable CQuantoVanillaOption where finalize = qlFreeQuantoVanillaOption
-peekQuantoVanillaOption :: Ptr CQuantoVanillaOption -> IO QuantoVanillaOption
-peekQuantoVanillaOption = peekStandalone >=> return . QuantoVanillaOption
-withQuantoVanillaOption :: QuantoVanillaOption -> (Ptr CQuantoVanillaOption -> IO b) -> IO b
-withQuantoVanillaOption = withStandalone . getCQuantoVanillaOption
-data CSwap
-newtype Swap = Swap {getCSwap :: Standalone CSwap}
-instance Finalizable CSwap where finalize = qlFreeSwap
-peekSwap :: Ptr CSwap -> IO Swap
-peekSwap = peekStandalone >=> return . Swap
-withSwap :: Swap -> (Ptr CSwap -> IO b) -> IO b
-withSwap = withStandalone . getCSwap
-data CSwaption
-newtype Swaption = Swaption {getCSwaption :: Standalone CSwaption}
-instance Finalizable CSwaption where finalize = qlFreeSwaption
-peekSwaption :: Ptr CSwaption -> IO Swaption
-peekSwaption = peekStandalone >=> return . Swaption
-withSwaption :: Swaption -> (Ptr CSwaption -> IO b) -> IO b
-withSwaption = withStandalone . getCSwaption
-data CVanillaOption
-newtype VanillaOption = VanillaOption {getCVanillaOption :: Standalone CVanillaOption}
-instance Finalizable CVanillaOption where finalize = qlFreeVanillaOption
-peekVanillaOption :: Ptr CVanillaOption -> IO VanillaOption
-peekVanillaOption = peekStandalone >=> return . VanillaOption
-withVanillaOption :: VanillaOption -> (Ptr CVanillaOption -> IO b) -> IO b
-withVanillaOption = withStandalone . getCVanillaOption
-data CVanillaSwap
-newtype VanillaSwap = VanillaSwap {getCVanillaSwap :: Standalone CVanillaSwap}
-instance Finalizable CVanillaSwap where finalize = qlFreeVanillaSwap
-peekVanillaSwap :: Ptr CVanillaSwap -> IO VanillaSwap
-peekVanillaSwap = peekStandalone >=> return . VanillaSwap
-withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap -> IO b) -> IO b
-withVanillaSwap = withStandalone . getCVanillaSwap
-withInstrumentArray :: [Instrument] -> ((CUInt, Ptr (Ptr CInstrument)) -> IO b) -> IO b
-withInstrumentArray = withStandaloneArray getCInstrument
-foreign import ccall "ql.h &qlFreeAssetSwap" qlFreeAssetSwap :: FinalizerPtr CAssetSwap
-foreign import ccall "ql.h &qlFreeBarrierOption" qlFreeBarrierOption :: FinalizerPtr CBarrierOption
-foreign import ccall "ql.h &qlFreeBMASwap" qlFreeBMASwap :: FinalizerPtr CBMASwap
-foreign import ccall "ql.h &qlFreeBond" qlFreeBond :: FinalizerPtr CBond
-foreign import ccall "ql.h &qlFreeCallableBond" qlFreeCallableBond :: FinalizerPtr CCallableBond
-foreign import ccall "ql.h &qlFreeCapFloor" qlFreeCapFloor :: FinalizerPtr CCapFloor
-foreign import ccall "ql.h &qlFreeCdsOption" qlFreeCdsOption :: FinalizerPtr CCdsOption
-foreign import ccall "ql.h &qlFreeConvertibleBond" qlFreeConvertibleBond :: FinalizerPtr CConvertibleBond
-foreign import ccall "ql.h &qlFreeCreditDefaultSwap" qlFreeCreditDefaultSwap :: FinalizerPtr CCreditDefaultSwap
-foreign import ccall "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond
-foreign import ccall "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward
-foreign import ccall "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward
-foreign import ccall "ql.h &qlFreeForwardRateAgreement" qlFreeForwardRateAgreement :: FinalizerPtr CForwardRateAgreement
-foreign import ccall "ql.h &qlFreeForwardVanillaOption" qlFreeForwardVanillaOption :: FinalizerPtr CForwardVanillaOption
-foreign import ccall "ql.h &qlFreeInstrument" qlFreeInstrument :: FinalizerPtr CInstrument
-foreign import ccall "ql.h &qlFreeMargrabeOption" qlFreeMargrabeOption :: FinalizerPtr CMargrabeOption
-foreign import ccall "ql.h &qlFreeMultiAssetOption" qlFreeMultiAssetOption :: FinalizerPtr CMultiAssetOption
-foreign import ccall "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: FinalizerPtr COneAssetOption
-foreign import ccall "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption
-foreign import ccall "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption
-foreign import ccall "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption
-foreign import ccall "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap
-foreign import ccall "ql.h &qlFreeQuantoVanillaOption" qlFreeQuantoVanillaOption :: FinalizerPtr CQuantoVanillaOption
-foreign import ccall "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap
-foreign import ccall "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption
-foreign import ccall "ql.h &qlFreeVanillaOption" qlFreeVanillaOption :: FinalizerPtr CVanillaOption
-foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap
+data CForwardRateAgreement'
+type CForwardRateAgreement = ForeignPtr CForwardRateAgreement'
+type ForwardRateAgreement = GenInstrument CForwardRateAgreement
+foreign import ccall "ql.h &qlFreeForwardRateAgreement" qlFreeForwardRateAgreement :: FinalizerPtr CForwardRateAgreement'
+instance Finalizable CForwardRateAgreement' where finalize = qlFreeForwardRateAgreement
+foreign import ccall "ql.h qlForwardRateAgreementAsInstrument" qlForwardRateAgreementAsInstrument :: Ptr CForwardRateAgreement' -> IO (Ptr CInstrument')
+instance Upcastable CForwardRateAgreement' where {type Base CForwardRateAgreement' = CInstrument'; upcast = qlForwardRateAgreementAsInstrument}
+peekForwardRateAgreement :: Ptr CForwardRateAgreement' -> IO ForwardRateAgreement
+peekForwardRateAgreement = GenInstrument <.> newGenForeignPtr
+
+data CCreditDefaultSwap'
+type CCreditDefaultSwap = ForeignPtr CCreditDefaultSwap'
+type CreditDefaultSwap = GenInstrument CCreditDefaultSwap
+foreign import ccall "ql.h &qlFreeCreditDefaultSwap" qlFreeCreditDefaultSwap :: FinalizerPtr CCreditDefaultSwap'
+instance Finalizable CCreditDefaultSwap' where finalize = qlFreeCreditDefaultSwap
+foreign import ccall "ql.h qlCreditDefaultSwapAsInstrument" qlCreditDefaultSwapAsInstrument :: Ptr CCreditDefaultSwap' -> IO (Ptr CInstrument')
+instance Upcastable CCreditDefaultSwap' where {type Base CCreditDefaultSwap' = CInstrument'; upcast = qlCreditDefaultSwapAsInstrument}
+peekCreditDefaultSwap :: Ptr CCreditDefaultSwap' -> IO CreditDefaultSwap
+peekCreditDefaultSwap = GenInstrument <.> newGenForeignPtr
+
+data CCapFloor'
+type CCapFloor = ForeignPtr CCapFloor'
+type CapFloor = GenInstrument CCapFloor
+foreign import ccall "ql.h &qlFreeCapFloor" qlFreeCapFloor :: FinalizerPtr CCapFloor'
+instance Finalizable CCapFloor' where finalize = qlFreeCapFloor
+foreign import ccall "ql.h qlCapFloorAsInstrument" qlCapFloorAsInstrument :: Ptr CCapFloor' -> IO (Ptr CInstrument')
+instance Upcastable CCapFloor' where {type Base CCapFloor' = CInstrument'; upcast = qlCapFloorAsInstrument}
+peekCapFloor :: Ptr CCapFloor' -> IO CapFloor
+peekCapFloor = GenInstrument <.> newGenForeignPtr
+
+data CForward'
+newtype AnyForward a = AnyForward {getForward :: GenForeignPtr a CForward'}
+type GenForward a = GenInstrument (AnyForward a)
+type CForward = ForeignPtr CForward'
+type Forward = GenForward CForward
+foreign import ccall "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward'
+instance Finalizable CForward' where finalize = qlFreeForward
+foreign import ccall "ql.h qlForwardAsInstrument" qlForwardAsInstrument :: Ptr CForward' -> IO (Ptr CInstrument')
+instance Upcastable CForward' where {type Base CForward' = CInstrument'; upcast = qlForwardAsInstrument}
+asForward :: GenForward a -> IO Forward
+asForward (GenInstrument (GenForeignPtr (AnyForward (GenForeignPtr x w)) _)) = w x peekForward
+peekForward :: Ptr CForward' -> IO Forward
+peekForward = newCastForeignPtr >=> newGenForward
+withForward :: GenForward a -> (Ptr CForward' -> IO b) -> IO b
+withForward (GenInstrument (GenForeignPtr (AnyForward (GenForeignPtr x w)) _)) = w x
+newGenForward :: GenForeignPtr a CForward' -> IO (GenForward a)
+newGenForward p = GenInstrument <^> GenForeignPtr (AnyForward p) (withGenForeignPtr . getForward)
+peekGenForward :: (Finalizable a, Upcastable a, Base a ~ CForward') => Ptr a -> IO (GenForward (ForeignPtr a))
+peekGenForward = newGenForeignPtr >=> newGenForward
+
+data COption'
+newtype AnyOption a = AnyOption {getOption :: GenForeignPtr a COption'}
+type GenOption a = GenInstrument (AnyOption a)
+type COption = ForeignPtr COption'
+type Option = GenOption COption
+foreign import ccall "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption'
+instance Finalizable COption' where finalize = qlFreeOption
+foreign import ccall "ql.h qlOptionAsInstrument" qlOptionAsInstrument :: Ptr COption' -> IO (Ptr CInstrument')
+instance Upcastable COption' where {type Base COption' = CInstrument'; upcast = qlOptionAsInstrument}
+asOption :: GenOption a -> IO Option
+asOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x w)) _)) = w x peekOption
+peekOption :: Ptr COption' -> IO Option
+peekOption = newCastForeignPtr >=> newGenOption
+withOption :: GenOption a -> (Ptr COption' -> IO b) -> IO b
+withOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x w)) _)) = w x
+newGenOption :: GenForeignPtr a COption' -> IO (GenOption a)
+newGenOption p = GenInstrument <^> GenForeignPtr (AnyOption p) (withGenForeignPtr . getOption)
+peekGenOption :: (Finalizable a, Upcastable a, Base a ~ COption') => Ptr a -> IO (GenOption (ForeignPtr a))
+peekGenOption = newGenForeignPtr >=> newGenOption
+withGenOption :: GenOption (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+withGenOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CSwap'
+newtype AnySwap a = AnySwap {getSwap :: GenForeignPtr a CSwap'}
+type GenSwap a = GenInstrument (AnySwap a)
+type CSwap = ForeignPtr CSwap'
+type Swap = GenSwap CSwap
+foreign import ccall "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap'
+instance Finalizable CSwap' where finalize = qlFreeSwap
+foreign import ccall "ql.h qlSwapAsInstrument" qlSwapAsInstrument :: Ptr CSwap' -> IO (Ptr CInstrument')
+instance Upcastable CSwap' where {type Base CSwap' = CInstrument'; upcast = qlSwapAsInstrument}
+asSwap :: GenSwap a -> IO Swap
+asSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x w)) _)) = w x peekSwap
+peekSwap :: Ptr CSwap' -> IO Swap
+peekSwap = newCastForeignPtr >=> newGenSwap
+withSwap :: GenSwap a -> (Ptr CSwap' -> IO b) -> IO b
+withSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x w)) _)) = w x
+newGenSwap :: GenForeignPtr a CSwap' -> IO (GenSwap a)
+newGenSwap p = GenInstrument <^> GenForeignPtr (AnySwap p) (withGenForeignPtr . getSwap)
+peekGenSwap :: (Finalizable a, Upcastable a, Base a ~ CSwap') => Ptr a -> IO (GenSwap (ForeignPtr a))
+peekGenSwap = newGenForeignPtr >=> newGenSwap
+withGenSwap :: GenSwap (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+withGenSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CBond'
+newtype AnyBond a = AnyBond {getBond :: GenForeignPtr a CBond'}
+type GenBond a = GenInstrument (AnyBond a)
+type CBond = ForeignPtr CBond'
+type Bond = GenBond CBond
+foreign import ccall "ql.h &qlFreeBond" qlFreeBond :: FinalizerPtr CBond'
+instance Finalizable CBond' where finalize = qlFreeBond
+foreign import ccall "ql.h qlBondAsInstrument" qlBondAsInstrument :: Ptr CBond' -> IO (Ptr CInstrument')
+instance Upcastable CBond' where {type Base CBond' = CInstrument'; upcast = qlBondAsInstrument}
+asBond :: GenBond a -> IO Bond
+asBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x w)) _)) = w x peekBond
+peekBond :: Ptr CBond' -> IO Bond
+peekBond = newCastForeignPtr >=> newGenBond
+withBond :: GenBond a -> (Ptr CBond' -> IO b) -> IO b
+withBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x w)) _)) = w x
+newGenBond :: GenForeignPtr a CBond' -> IO (GenBond a)
+newGenBond p = GenInstrument <^> GenForeignPtr (AnyBond p) (withGenForeignPtr . getBond)
+peekGenBond :: (Finalizable a, Upcastable a, Base a ~ CBond') => Ptr a -> IO (GenBond (ForeignPtr a))
+peekGenBond = newGenForeignPtr >=> newGenBond
+withGenBond :: GenBond (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+withGenBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CBondForward'
+type CBondForward = ForeignPtr CBondForward'
+type BondForward = GenForward CBondForward
+foreign import ccall "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward'
+instance Finalizable CBondForward' where finalize = qlFreeBondForward
+foreign import ccall "ql.h qlBondForwardAsForward" qlBondForwardAsForward :: Ptr CBondForward' -> IO (Ptr CForward')
+instance Upcastable CBondForward' where {type Base CBondForward' = CForward'; upcast = qlBondForwardAsForward}
+peekBondForward :: Ptr CBondForward' -> IO BondForward
+peekBondForward = peekGenForward
+withBondForward :: BondForward -> (Ptr CBondForward' -> IO b) -> IO b
+withBondForward (GenInstrument (GenForeignPtr (AnyForward (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CConvertibleBond'
+type CConvertibleBond = ForeignPtr CConvertibleBond'
+type ConvertibleBond = GenBond CConvertibleBond
+foreign import ccall "ql.h &qlFreeConvertibleBond" qlFreeConvertibleBond :: FinalizerPtr CConvertibleBond'
+instance Finalizable CConvertibleBond' where finalize = qlFreeConvertibleBond
+foreign import ccall "ql.h qlConvertibleBondAsBond" qlConvertibleBondAsBond :: Ptr CConvertibleBond' -> IO (Ptr CBond')
+instance Upcastable CConvertibleBond' where {type Base CConvertibleBond' = CBond'; upcast = qlConvertibleBondAsBond}
+peekConvertibleBond :: Ptr CConvertibleBond' -> IO ConvertibleBond
+peekConvertibleBond = peekGenBond
+withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond' -> IO b) -> IO b
+withConvertibleBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CFixedRateBond'
+type CFixedRateBond = ForeignPtr CFixedRateBond'
+type FixedRateBond = GenBond CFixedRateBond
+foreign import ccall "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond'
+instance Finalizable CFixedRateBond' where finalize = qlFreeFixedRateBond
+foreign import ccall "ql.h qlFixedRateBondAsBond" qlFixedRateBondAsBond :: Ptr CFixedRateBond' -> IO (Ptr CBond')
+instance Upcastable CFixedRateBond' where {type Base CFixedRateBond' = CBond'; upcast = qlFixedRateBondAsBond}
+peekFixedRateBond :: Ptr CFixedRateBond' -> IO FixedRateBond
+peekFixedRateBond = peekGenBond
+withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond' -> IO b) -> IO b
+withFixedRateBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CCallableBond'
+type CCallableBond = ForeignPtr CCallableBond'
+type CallableBond = GenBond CCallableBond
+foreign import ccall "ql.h &qlFreeCallableBond" qlFreeCallableBond :: FinalizerPtr CCallableBond'
+instance Finalizable CCallableBond' where finalize = qlFreeCallableBond
+foreign import ccall "ql.h qlCallableBondAsBond" qlCallableBondAsBond :: Ptr CCallableBond' -> IO (Ptr CBond')
+instance Upcastable CCallableBond' where {type Base CCallableBond' = CBond'; upcast = qlCallableBondAsBond}
+peekCallableBond :: Ptr CCallableBond' -> IO CallableBond
+peekCallableBond = peekGenBond
+withCallableBond :: CallableBond -> (Ptr CCallableBond' -> IO b) -> IO b
+withCallableBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CVanillaSwap'
+type CVanillaSwap = ForeignPtr CVanillaSwap'
+type VanillaSwap = GenSwap CVanillaSwap
+foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap'
+instance Finalizable CVanillaSwap' where finalize = qlFreeVanillaSwap
+foreign import ccall "ql.h qlVanillaSwapAsSwap" qlVanillaSwapAsSwap :: Ptr CVanillaSwap' -> IO (Ptr CSwap')
+instance Upcastable CVanillaSwap' where {type Base CVanillaSwap' = CSwap'; upcast = qlVanillaSwapAsSwap}
+peekVanillaSwap :: Ptr CVanillaSwap' -> IO VanillaSwap
+peekVanillaSwap = peekGenSwap
+withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap' -> IO b) -> IO b
+withVanillaSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CAssetSwap'
+type CAssetSwap = ForeignPtr CAssetSwap'
+type AssetSwap = GenSwap CAssetSwap
+foreign import ccall "ql.h &qlFreeAssetSwap" qlFreeAssetSwap :: FinalizerPtr CAssetSwap'
+instance Finalizable CAssetSwap' where finalize = qlFreeAssetSwap
+foreign import ccall "ql.h qlAssetSwapAsSwap" qlAssetSwapAsSwap :: Ptr CAssetSwap' -> IO (Ptr CSwap')
+instance Upcastable CAssetSwap' where {type Base CAssetSwap' = CSwap'; upcast = qlAssetSwapAsSwap}
+peekAssetSwap :: Ptr CAssetSwap' -> IO AssetSwap
+peekAssetSwap = peekGenSwap
+withAssetSwap :: AssetSwap -> (Ptr CAssetSwap' -> IO b) -> IO b
+withAssetSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CBMASwap'
+type CBMASwap = ForeignPtr CBMASwap'
+type BMASwap = GenSwap CBMASwap
+foreign import ccall "ql.h &qlFreeBMASwap" qlFreeBMASwap :: FinalizerPtr CBMASwap'
+instance Finalizable CBMASwap' where finalize = qlFreeBMASwap
+foreign import ccall "ql.h qlBMASwapAsSwap" qlBMASwapAsSwap :: Ptr CBMASwap' -> IO (Ptr CSwap')
+instance Upcastable CBMASwap' where {type Base CBMASwap' = CSwap'; upcast = qlBMASwapAsSwap}
+peekBMASwap :: Ptr CBMASwap' -> IO BMASwap
+peekBMASwap = peekGenSwap
+withBMASwap :: BMASwap -> (Ptr CBMASwap' -> IO b) -> IO b
+withBMASwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data COvernightIndexedSwap'
+type COvernightIndexedSwap = ForeignPtr COvernightIndexedSwap'
+type OvernightIndexedSwap = GenSwap COvernightIndexedSwap
+foreign import ccall "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap'
+instance Finalizable COvernightIndexedSwap' where finalize = qlFreeOvernightIndexedSwap
+foreign import ccall "ql.h qlOvernightIndexedSwapAsSwap" qlOvernightIndexedSwapAsSwap :: Ptr COvernightIndexedSwap' -> IO (Ptr CSwap')
+instance Upcastable COvernightIndexedSwap' where {type Base COvernightIndexedSwap' = CSwap'; upcast = qlOvernightIndexedSwapAsSwap}
+peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap' -> IO OvernightIndexedSwap
+peekOvernightIndexedSwap = peekGenSwap
+withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap' -> IO b) -> IO b
+withOvernightIndexedSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CCdsOption'
+type CCdsOption = ForeignPtr CCdsOption'
+type CdsOption = GenOption CCdsOption
+foreign import ccall "ql.h &qlFreeCdsOption" qlFreeCdsOption :: FinalizerPtr CCdsOption'
+instance Finalizable CCdsOption' where finalize = qlFreeCdsOption
+foreign import ccall "ql.h qlCdsOptionAsOption" qlCdsOptionAsOption :: Ptr CCdsOption' -> IO (Ptr COption')
+instance Upcastable CCdsOption' where {type Base CCdsOption' = COption'; upcast = qlCdsOptionAsOption}
+peekCdsOption :: Ptr CCdsOption' -> IO CdsOption
+peekCdsOption = peekGenOption
+withCdsOption :: CdsOption -> (Ptr CCdsOption' -> IO b) -> IO b
+withCdsOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CQuantoBarrierOption'
+type CQuantoBarrierOption = ForeignPtr CQuantoBarrierOption'
+type QuantoBarrierOption = GenOption CQuantoBarrierOption
+foreign import ccall "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption'
+instance Finalizable CQuantoBarrierOption' where finalize = qlFreeQuantoBarrierOption
+foreign import ccall "ql.h qlQuantoBarrierOptionAsOption" qlQuantoBarrierOptionAsOption :: Ptr CQuantoBarrierOption' -> IO (Ptr COption')
+instance Upcastable CQuantoBarrierOption' where {type Base CQuantoBarrierOption' = COption'; upcast = qlQuantoBarrierOptionAsOption}
+peekQuantoBarrierOption :: Ptr CQuantoBarrierOption' -> IO QuantoBarrierOption
+peekQuantoBarrierOption = peekGenOption
+withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
+withQuantoBarrierOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CQuantoForwardVanillaOption'
+type CQuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption'
+type QuantoForwardVanillaOption = GenOption CQuantoForwardVanillaOption
+foreign import ccall "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption'
+instance Finalizable CQuantoForwardVanillaOption' where finalize = qlFreeQuantoForwardVanillaOption
+foreign import ccall "ql.h qlQuantoForwardVanillaOptionAsOption" qlQuantoForwardVanillaOptionAsOption :: Ptr CQuantoForwardVanillaOption' -> IO (Ptr COption')
+instance Upcastable CQuantoForwardVanillaOption' where {type Base CQuantoForwardVanillaOption' = COption'; upcast = qlQuantoForwardVanillaOptionAsOption}
+peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption' -> IO QuantoForwardVanillaOption
+peekQuantoForwardVanillaOption = peekGenOption
+withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption' -> IO b) -> IO b
+withQuantoForwardVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CSwaption'
+type CSwaption = ForeignPtr CSwaption'
+type Swaption = GenOption CSwaption
+foreign import ccall "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption'
+instance Finalizable CSwaption' where finalize = qlFreeSwaption
+foreign import ccall "ql.h qlSwaptionAsOption" qlSwaptionAsOption :: Ptr CSwaption' -> IO (Ptr COption')
+instance Upcastable CSwaption' where {type Base CSwaption' = COption'; upcast = qlSwaptionAsOption}
+peekSwaption :: Ptr CSwaption' -> IO Swaption
+peekSwaption = peekGenOption
+withSwaption :: Swaption -> (Ptr CSwaption' -> IO b) -> IO b
+withSwaption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _)) _)) = withForeignPtr x
+
+data CMultiAssetOption'
+data CMargrabeOption'
+newtype AnyMultiAssetOption a = AnyMultiAssetOption {getMultiAssetOption :: GenForeignPtr a CMultiAssetOption'}
+type GenMultiAssetOption a = GenOption (AnyMultiAssetOption a)
+type CMultiAssetOption = ForeignPtr CMultiAssetOption'
+type MultiAssetOption = GenMultiAssetOption CMultiAssetOption
+type CMargrabeOption = ForeignPtr CMargrabeOption'
+type MargrabeOption = GenMultiAssetOption CMargrabeOption
+foreign import ccall "ql.h &qlFreeMultiAssetOption" qlFreeMultiAssetOption :: FinalizerPtr CMultiAssetOption'
+foreign import ccall "ql.h &qlFreeMargrabeOption" qlFreeMargrabeOption :: FinalizerPtr CMargrabeOption'
+instance Finalizable CMultiAssetOption' where finalize = qlFreeMultiAssetOption
+instance Finalizable CMargrabeOption' where finalize = qlFreeMargrabeOption
+foreign import ccall "ql.h qlMultiAssetOptionAsOption" qlMultiAssetOptionAsOption :: Ptr CMultiAssetOption' -> IO (Ptr COption')
+foreign import ccall "ql.h qlMargrabeOptionAsMultiAssetOption" qlMargrabeOptionAsMultiAssetOption :: Ptr CMargrabeOption' -> IO (Ptr CMultiAssetOption')
+instance Upcastable CMultiAssetOption' where {type Base CMultiAssetOption' = COption'; upcast = qlMultiAssetOptionAsOption}
+instance Upcastable CMargrabeOption' where {type Base CMargrabeOption' = CMultiAssetOption'; upcast = qlMargrabeOptionAsMultiAssetOption}
+asMultiAssetOption :: GenMultiAssetOption a -> IO MultiAssetOption
+asMultiAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyMultiAssetOption (GenForeignPtr x w)) _)) _)) = w x peekMultiAssetOption
+peekMultiAssetOption :: Ptr CMultiAssetOption' -> IO MultiAssetOption
+peekMultiAssetOption = newCastForeignPtr >=> newGenMultiAssetOption
+withMultiAssetOption :: GenMultiAssetOption a -> (Ptr CMultiAssetOption' -> IO b) -> IO b
+withMultiAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyMultiAssetOption (GenForeignPtr x w)) _)) _)) = w x
+newGenMultiAssetOption :: GenForeignPtr a CMultiAssetOption' -> IO (GenMultiAssetOption a)
+newGenMultiAssetOption p = GenInstrument <^> GenForeignPtr (AnyOption $ GenForeignPtr (AnyMultiAssetOption p) (withGenForeignPtr . getMultiAssetOption)) (withGenForeignPtr . getOption)
+peekMargrabeOption :: Ptr CMargrabeOption' -> IO MargrabeOption
+peekMargrabeOption = newGenForeignPtr >=> newGenMultiAssetOption
+withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption' -> IO b) -> IO b
+withMargrabeOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyMultiAssetOption (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data COneAssetOption'
+newtype AnyOneAssetOption a = AnyOneAssetOption {getOneAssetOption :: GenForeignPtr a COneAssetOption'}
+type GenOneAssetOption a = GenOption (AnyOneAssetOption a)
+type COneAssetOption = ForeignPtr COneAssetOption'
+type OneAssetOption = GenOneAssetOption COneAssetOption
+foreign import ccall "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: FinalizerPtr COneAssetOption'
+instance Finalizable COneAssetOption' where finalize = qlFreeOneAssetOption
+foreign import ccall "ql.h qlOneAssetOptionAsOption" qlOneAssetOptionAsOption :: Ptr COneAssetOption' -> IO (Ptr COption')
+instance Upcastable COneAssetOption' where {type Base COneAssetOption' = COption'; upcast = qlOneAssetOptionAsOption}
+asOneAssetOption :: GenOneAssetOption a -> IO OneAssetOption
+asOneAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x w)) _)) _)) = w x peekOneAssetOption
+peekOneAssetOption :: Ptr COneAssetOption' -> IO OneAssetOption
+peekOneAssetOption = newCastForeignPtr >=> newGenOneAssetOption
+withOneAssetOption :: GenOneAssetOption a -> (Ptr COneAssetOption' -> IO b) -> IO b
+withOneAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x w)) _)) _)) = w x
+newGenOneAssetOption :: GenForeignPtr a COneAssetOption' -> IO (GenOneAssetOption a)
+newGenOneAssetOption p = GenInstrument <^> GenForeignPtr (AnyOption $ GenForeignPtr (AnyOneAssetOption p) (withGenForeignPtr . getOneAssetOption)) (withGenForeignPtr . getOption)
+
+data CBarrierOption'
+type CBarrierOption = ForeignPtr CBarrierOption'
+type BarrierOption = GenOneAssetOption CBarrierOption
+foreign import ccall "ql.h &qlFreeBarrierOption" qlFreeBarrierOption :: FinalizerPtr CBarrierOption'
+instance Finalizable CBarrierOption' where finalize = qlFreeBarrierOption
+foreign import ccall "ql.h qlBarrierOptionAsOneAssetOption" qlBarrierOptionAsOneAssetOption :: Ptr CBarrierOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CBarrierOption' where {type Base CBarrierOption' = COneAssetOption'; upcast = qlBarrierOptionAsOneAssetOption}
+peekBarrierOption :: Ptr CBarrierOption' -> IO BarrierOption
+peekBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
+withBarrierOption :: BarrierOption -> (Ptr CBarrierOption' -> IO b) -> IO b
+withBarrierOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data CForwardVanillaOption'
+type CForwardVanillaOption = ForeignPtr CForwardVanillaOption'
+type ForwardVanillaOption = GenOneAssetOption CForwardVanillaOption
+foreign import ccall "ql.h &qlFreeForwardVanillaOption" qlFreeForwardVanillaOption :: FinalizerPtr CForwardVanillaOption'
+instance Finalizable CForwardVanillaOption' where finalize = qlFreeForwardVanillaOption
+foreign import ccall "ql.h qlForwardVanillaOptionAsOneAssetOption" qlForwardVanillaOptionAsOneAssetOption :: Ptr CForwardVanillaOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CForwardVanillaOption' where {type Base CForwardVanillaOption' = COneAssetOption'; upcast = qlForwardVanillaOptionAsOneAssetOption}
+peekForwardVanillaOption :: Ptr CForwardVanillaOption' -> IO ForwardVanillaOption
+peekForwardVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
+withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption' -> IO b) -> IO b
+withForwardVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data CQuantoVanillaOption'
+type CQuantoVanillaOption = ForeignPtr CQuantoVanillaOption'
+type QuantoVanillaOption = GenOneAssetOption CQuantoVanillaOption
+foreign import ccall "ql.h &qlFreeQuantoVanillaOption" qlFreeQuantoVanillaOption :: FinalizerPtr CQuantoVanillaOption'
+instance Finalizable CQuantoVanillaOption' where finalize = qlFreeQuantoVanillaOption
+foreign import ccall "ql.h qlQuantoVanillaOptionAsOneAssetOption" qlQuantoVanillaOptionAsOneAssetOption :: Ptr CQuantoVanillaOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CQuantoVanillaOption' where {type Base CQuantoVanillaOption' = COneAssetOption'; upcast = qlQuantoVanillaOptionAsOneAssetOption}
+peekQuantoVanillaOption :: Ptr CQuantoVanillaOption' -> IO QuantoVanillaOption
+peekQuantoVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
+withQuantoVanillaOption :: QuantoVanillaOption -> (Ptr CQuantoVanillaOption' -> IO b) -> IO b
+withQuantoVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+data CVanillaOption'
+type CVanillaOption = ForeignPtr CVanillaOption'
+type VanillaOption = GenOneAssetOption CVanillaOption
+foreign import ccall "ql.h &qlFreeVanillaOption" qlFreeVanillaOption :: FinalizerPtr CVanillaOption'
+instance Finalizable CVanillaOption' where finalize = qlFreeVanillaOption
+foreign import ccall "ql.h qlVanillaOptionAsOneAssetOption" qlVanillaOptionAsOneAssetOption :: Ptr CVanillaOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CVanillaOption' where {type Base CVanillaOption' = COneAssetOption'; upcast = qlVanillaOptionAsOneAssetOption}
+peekVanillaOption :: Ptr CVanillaOption' -> IO VanillaOption
+peekVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
+withVanillaOption :: VanillaOption -> (Ptr CVanillaOption' -> IO b) -> IO b
+withVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+
+withInstrumentArray :: [GenInstrument a] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b
+withInstrumentArray = withGenArray withInstrument
 
 --- TEMPLATE CODE
 
@@ -1936,19 +2122,5 @@ foreign import ccall "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr
 --peekLeaf3 = newGenForeignPtr >=> newGenNode2
 ----withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
 ----withLeaf3 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x _)) _)) _)) = withForeignPtr x
-
---From Claude:
---Architecture review: hasquant FFI/upcast layer
---What's done well:
---Standalone/Finalizable is the right base idiom. Tying each type to its own Finalizable a instance (finalize :: FinalizerPtr a) is exactly how a type-safe FFI binding over ForeignPtr should look — the object type is statically linked to its correct finalizer, so it's impossible to accidentally mix up finalizers between unrelated types (e.g. finalizing a Bond with a Swap's destructor). Many FFI bindings skip this and pay for it later in hard-to-trace use-after-free or double-free bugs.
---GenForeignPtr with a polymorphic _marshal is an elegant solution to "how do you expose a base-class pointer without giving up ownership of the derived object." Making _marshal a forall r. a -> (Ptr b -> IO r) -> IO r rather than a stored Ptr b is the key design decision — it guarantees the base pointer can never outlive the derived object's withForeignPtr scope, and that a stale pointer can never be cached after GC collects the original. This design prevents dangling pointers by construction. The leak we found was a different problem (ownership vs. borrowing), not a dangling-pointer issue — the fact that your architecture rules out dangling pointers structurally is a real strength.
---Derives as a multi-param type class with a functional dependency, to express C++ inheritance in the type system, is justified here — QuantLib genuinely has deep class hierarchies (Instrument ⊃ Forward ⊃ BondForward, etc.), so this is an honest reflection of the domain model rather than artificial complexity.
---Separating newGenForeignPtr (with upcast) from newCastForeignPtr (without) is correct — not every type needs the double wrapper, and the explicit split avoids paying upcast overhead where it isn't needed.
---
---What's worth revisiting:
---The upcast implementation (new shared_ptr(*orig)) has the wrong default semantics. It's the one place where new ownership is created implicitly, even though the rest of the design (_marshal as a scoped function) is clearly built around borrowing, not owning. Worth writing down explicitly (in a code comment) the invariant: "upcast is always non-owning; the base pointer's lifetime equals the derived pointer's lifetime within the current scope." Then re-check every other Upcastable instance against that same invariant — this is likely not the only spot with the new QlX(*arg(...)) pattern. Worth a grep -rn "new Ql.*(\*arg(" across all .cpp files.
---Trade-off: type safety via shared_ptr copy vs. performance. If upcast is called frequently (e.g. inside numeric pricing loops), even after the fix (with matching delete) you're paying atomic refcount ops on every call. If profiling confirms this as a bottleneck, consider caching the upcasted pointer for the duration of a computation (upcast once before the loop, not on every iteration) rather than changing the underlying mechanism — this is orthogonal to the current design, just a question of where withGenForeignPtr sits in the hot path.
---unsafePerformIO in showStandalone is standard practice for pure read-only C calls (like toString), but worth double-checking that every function passed there is genuinely referentially transparent (no side effects beyond reading) — otherwise it's a source of hard-to-diagnose bugs tied to evaluation order under laziness.
---Overall verdict: the architecture is mature and well thought out — it's clear the design was deliberately built to avoid dangling pointers and type confusion, which is rare for a binding layer over manually-memory-managed C++ (most FFI bindings are far more careless). The leak found isn't a systemic design flaw, but a local violation of an invariant in one specific place (the upcast implementation) that the design otherwise upholds consistently. Recommended next steps: (a) grep all Upcastable instances for the same pattern, (b) document the non-ownership invariant in a comment next to class Upcastable so future instances don't repeat the mistake.
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
