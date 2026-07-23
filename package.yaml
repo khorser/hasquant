@@ -81,7 +81,9 @@ library:
   cxx-options: -Wall -Wextra -pedantic -std=c++17
   extra-libraries: stdc++
   when:
-    - condition: flag(trackAllocations) # log allocations to stderr
+    - condition: flag(trackAllocations) && os(osx)
+      cxx-options: -DQLTRACK_ALLOCATIONS="/dev/fd/2"
+    - condition: flag(trackAllocations) && os(linux)
       cxx-options: -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
     - condition: impl(ghc < 8.10)
       cpp-options: -P # some c2hs versions didn't like line markers like "# 0" in generated .i files

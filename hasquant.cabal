@@ -103,7 +103,9 @@ library
     , time
     , vector
   default-language: Haskell2010
-  if flag(trackAllocations)
+  if flag(trackAllocations) && os(osx)
+    cxx-options: -DQLTRACK_ALLOCATIONS="/dev/fd/2"
+  if flag(trackAllocations) && os(linux)
     cxx-options: -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
   if impl(ghc < 8.10)
     cpp-options: -P

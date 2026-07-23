@@ -6,20 +6,23 @@ module QuantLib.Example.Repo
   ) where
 
 import Control.Monad(void)
+import System.Mem(performGC)
+import System.IO (hPutStrLn, stderr)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
 import QuantLib.Instrument.Forward
 import qualified QuantLib.InterestRate as IR
-import QuantLib.PricingEngine
-import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.PricingEngine(discountingBondEngine)
+import QuantLib.Quote(setValue, simpleQuote, SimpleQuote)
+import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.Syntax
 
+-- run tests with stack test --ta '--match /Repo'
 data Result = Result
   { cleanPriceR :: Double
   , dirtyPriceR :: Double
@@ -46,32 +49,15 @@ run = do
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
-  b <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
-    bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar >>= asBond
-  -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
-  i <- asInstrument b
-  discountingBondEngine bondCurve Nothing >>= setPricingEngine i
-  void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
-  repoCurve <- simpleQuote repoRate >>= 
-    $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
-  bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
-    repoSettlementDays
-    repoDayCountConvention bondCalendar bondBusinessDayConvention b
-    (Just repoCurve) (Just repoCurve)
-
-  clP <- cleanPrice b bondCurve repoSettlementDate
-  accr1 <- accruedAmount b repoSettlementDate
-  let dp = clP + accr1
-  accr2 <- accruedAmount b repoDeliveryDate
-
-  fwd <- asForward bondFwd
+  (fwd, clP, accr1, accr2, clF, fP, dp) <- doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve
+  performGC
+  hPutStrLn stderr "GC complete"
+  repoCurve <- simpleQuote repoRate >>=
+        $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve
   disc <- discount' repoCurve repoDeliveryDate False
   ii <- asInstrument fwd
   np <- npv ii
-
-  clF <- cleanForwardPrice bondFwd
-  fP <- forwardPrice bondFwd
 
   impR <- impliedYield fwd dp dummyStrike repoSettlementDate
     repoCompounding repoDayCountConvention
@@ -112,4 +98,29 @@ run = do
         dummyStrike = 91.5745
         fwdType = Long
 
+        -- make sure bond forward reference is scoped (for GC checks)
+        doBond :: Calendar -> Schedule -> SimpleQuote -> DayCounter -> DayCounter -> YieldTermStructure -> IO (Forward, Double, Double, Double, Double, Double, Double)
+        doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve = do
+          b <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
+            bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar >>= asBond
+          -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
+          i <- asInstrument b
+          discountingBondEngine bondCurve Nothing >>= setPricingEngine i
+          void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
+          repoCurve <- simpleQuote repoRate >>=
+            $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
+          bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
+            repoSettlementDays
+            repoDayCountConvention bondCalendar bondBusinessDayConvention b
+            (Just repoCurve) (Just repoCurve)
+
+          clP <- cleanPrice b bondCurve repoSettlementDate
+          accr1 <- accruedAmount b repoSettlementDate
+          let dp = clP + accr1
+          accr2 <- accruedAmount b repoDeliveryDate
+          fwd <- asForward bondFwd
+          clF <- cleanForwardPrice bondFwd
+          fP <- forwardPrice bondFwd
+
+          return (fwd, clP, accr1, accr2, clF, fP, dp)
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
