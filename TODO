@@ -1,5 +1,28 @@
 check upcast calls proper destructors in time (see https://github.com/khorser/hasquant/commit/d0f932ecf3190e19710666cd47964e6fd57aea67#diff-2708e33847161b26801fc0d40ea056d5b8cf6cc5963e9a94a897601cc3fe42d3R783 for a prior approach)
-  Repo example shows the Forward still keeps the reference to BondForward
+  Repo example shows the Forward still keeps the reference to BondForward. Apparently it's only the old approach to hierarchies that shows the effect as the new one seems working better:
+
+-- build and run with stack build --no-haddock --flag hasquant:trackAllocations && stack runghc Main.hs
+import System.Mem(performGC)
+import System.IO (hPutStrLn, stderr, hFlush)
+
+import QuantLib.Index.InterestRate
+import QuantLib.Time.Schedule
+import qualified QuantLib.Currency as Ccy
+
+main :: IO ()
+main = do
+  i <- iidx
+  hPutStrLn stderr "Starting GC"
+  performGC
+  hPutStrLn stderr "GC complete"
+  ccy <- currency i
+  putStrLn $ Ccy.code ccy
+  where
+    iidx :: IO InterestRateIndex
+    iidx = do
+      si <- liborSwapIndex EuriborSwapIfrFix (6, Months) Nothing Nothing
+      asInterestRateIndex si
+
 add more nonempty lists for Haskell functions where applicable
 use some QuantLib handles for quotes and curves?
 
