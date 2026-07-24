@@ -379,9 +379,9 @@ QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, 
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
-QlBarrierOption* qlQuantoBarrierOptionAsBarrierOption(QlQuantoBarrierOption *o) {return ret(new QlBarrierOption(*arg(o)));}
+QlOption* qlQuantoBarrierOptionAsOption(QlQuantoBarrierOption *o) {return ret(new QlOption(*arg(o)));}
 void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o) {del(o);}
-QlForwardVanillaOption* qlQuantoForwardVanillaOptionAsForwardVanillaOption(QlQuantoForwardVanillaOption *o) {return ret(new QlForwardVanillaOption(*arg(o)));}
+QlOption* qlQuantoForwardVanillaOptionAsOption(QlQuantoForwardVanillaOption *o) {return ret(new QlOption(*arg(o)));}
 
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));

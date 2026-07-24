@@ -198,9 +198,9 @@ extern "C" {
   double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, char **e);
   void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o);
-  QlBarrierOption* qlQuantoBarrierOptionAsBarrierOption(QlQuantoBarrierOption *o);
+  QlOption* qlQuantoBarrierOptionAsOption(QlQuantoBarrierOption *o);
   void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o);
-  QlForwardVanillaOption* qlQuantoForwardVanillaOptionAsForwardVanillaOption(QlQuantoForwardVanillaOption *o);
+  QlOption* qlQuantoForwardVanillaOptionAsOption(QlQuantoForwardVanillaOption *o);
 
   QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);

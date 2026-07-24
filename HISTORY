@@ -108,8 +108,8 @@ a:Instrument
             ForwardVanillaOption : OneAssetOption
             QuantoVanillaOption : OneAssetOption
             VanillaOption : OneAssetOption
-        QuantoBarrierOption : Option
-        QuantoForwardVanillaOption : Option
+        QuantoBarrierOption : Option (TODO consider deriving from BarrierOption)
+        QuantoForwardVanillaOption : Option (TODO consider deriving from ForwardVanillaOption)
         Swaption : Option
     a:Swap : Instrument
         VanillaSwap : Swap
