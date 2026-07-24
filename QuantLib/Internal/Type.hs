@@ -1,5 +1,4 @@
-{-# LANGUAGE RankNTypes, DuplicateRecordFields, TypeFamilies, TypeOperators, FlexibleContexts #-}
-{-# LANGUAGE PatternSynonyms, ViewPatterns #-}
+{-# LANGUAGE RankNTypes, DuplicateRecordFields, TypeFamilies, TypeOperators, FlexibleContexts, PatternSynonyms, ViewPatterns #-}
 module QuantLib.Internal.Type
   (
     Standalone(..)
@@ -513,6 +512,7 @@ module QuantLib.Internal.Type
   , asForward
   , peekForward
   , withForward
+  , withGenForward
   , ForwardRateAgreement
   , CForwardRateAgreement
   , CForwardRateAgreement'
@@ -934,6 +934,18 @@ newCastForeignPtr x = do
 
 withGenArray :: (a -> (Ptr c -> IO r) -> IO r) -> [a] -> ((CUInt, Ptr (Ptr c)) -> IO r) -> IO r
 withGenArray m x f = withMany m x (`withArray` (\p -> f (fromIntegral $ length x, p)))
+
+newtype AnyOf b a = AnyOf { getAnyOf :: GenForeignPtr a b }
+pattern Layer :: a -> (forall r. a -> (Ptr b -> IO r) -> IO r)
+                    -> (forall r. a -> (Ptr b -> IO r) -> IO r)
+                    -> GenForeignPtr (AnyOf b a) c
+pattern Layer x w t <- GenForeignPtr (AnyOf (GenForeignPtr x w t)) _ _
+pattern Next :: a -> (forall r. a -> (Ptr b -> IO r) -> IO r)
+                   -> (forall r. a -> (Ptr b -> IO r) -> IO r)
+                   -> AnyOf b a
+pattern Next x w t <- AnyOf (GenForeignPtr x w t)
+{-# COMPLETE Layer #-}
+{-# COMPLETE Next #-}
 
 data CQuote'
 data CSimpleQuote'
@@ -1771,6 +1783,10 @@ withInstrument (GenInstrument (GenForeignPtr x w _)) = w x
 withGenInstrument :: GenInstrument (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withGenInstrument (GenInstrument (GenForeignPtr x _ _)) = withForeignPtr x
 
+pattern PInstrument :: GenForeignPtr a CInstrument' -> GenInstrument a
+pattern PInstrument g = GenInstrument g
+{-# COMPLETE PInstrument #-}
+
 data CForwardRateAgreement'
 type CForwardRateAgreement = ForeignPtr CForwardRateAgreement'
 type ForwardRateAgreement = GenInstrument CForwardRateAgreement
@@ -1802,8 +1818,7 @@ peekCapFloor :: Ptr CCapFloor' -> IO CapFloor
 peekCapFloor = GenInstrument <.> newGenForeignPtr
 
 data CForward'
-newtype AnyForward a = AnyForward {getForward :: GenForeignPtr a CForward'}
-type GenForward a = GenInstrument (AnyForward a)
+type GenForward a = GenInstrument (AnyOf CForward' a)
 type CForward = ForeignPtr CForward'
 type Forward = GenForward CForward
 foreign import ccall unsafe "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward'
@@ -1811,19 +1826,20 @@ instance Finalizable CForward' where finalize = qlFreeForward
 foreign import ccall "ql.h qlForwardAsInstrument" qlForwardAsInstrument :: Ptr CForward' -> IO (Ptr CInstrument')
 instance Upcastable CForward' where {type Base CForward' = CInstrument'; upcast = qlForwardAsInstrument}
 asForward :: GenForward a -> IO Forward
-asForward (GenInstrument (GenForeignPtr (AnyForward (GenForeignPtr x _ t)) _ _)) = t x peekForward
+asForward (PInstrument (Layer x _ t)) = t x peekForward
 peekForward :: Ptr CForward' -> IO Forward
 peekForward = newCastForeignPtr >=> newGenForward
 withForward :: GenForward a -> (Ptr CForward' -> IO b) -> IO b
-withForward (GenInstrument (GenForeignPtr (AnyForward (GenForeignPtr x w _)) _ _)) = w x
+withForward (PInstrument (Layer x w _)) = w x
 newGenForward :: GenForeignPtr a CForward' -> IO (GenForward a)
-newGenForward p = GenInstrument <^> GenForeignPtr (AnyForward p) (withGenForeignPtr . getForward) (transferGenForeignPtr . getForward)
+newGenForward p = pure $ PInstrument (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 peekGenForward :: (Finalizable a, Upcastable a, Base a ~ CForward') => Ptr a -> IO (GenForward (ForeignPtr a))
 peekGenForward = newGenForeignPtr >=> newGenForward
+withGenForward :: GenForward (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+withGenForward (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data COption'
-newtype AnyOption a = AnyOption {getOption :: GenForeignPtr a COption'}
-type GenOption a = GenInstrument (AnyOption a)
+type GenOption a = GenInstrument (AnyOf COption' a)
 type COption = ForeignPtr COption'
 type Option = GenOption COption
 foreign import ccall unsafe "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption'
@@ -1831,21 +1847,20 @@ instance Finalizable COption' where finalize = qlFreeOption
 foreign import ccall "ql.h qlOptionAsInstrument" qlOptionAsInstrument :: Ptr COption' -> IO (Ptr CInstrument')
 instance Upcastable COption' where {type Base COption' = CInstrument'; upcast = qlOptionAsInstrument}
 asOption :: GenOption a -> IO Option
-asOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _ t)) _ _)) = t x peekOption
+asOption (PInstrument (Layer x _ t)) = t x peekOption
 peekOption :: Ptr COption' -> IO Option
 peekOption = newCastForeignPtr >=> newGenOption
 withOption :: GenOption a -> (Ptr COption' -> IO b) -> IO b
-withOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x w _)) _ _)) = w x
+withOption (PInstrument (Layer x w _)) = w x
 newGenOption :: GenForeignPtr a COption' -> IO (GenOption a)
-newGenOption p = GenInstrument <^> GenForeignPtr (AnyOption p) (withGenForeignPtr . getOption) (transferGenForeignPtr . getOption)
+newGenOption p = pure $ PInstrument (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 peekGenOption :: (Finalizable a, Upcastable a, Base a ~ COption') => Ptr a -> IO (GenOption (ForeignPtr a))
 peekGenOption = newGenForeignPtr >=> newGenOption
 withGenOption :: GenOption (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
-withGenOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withGenOption (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CSwap'
-newtype AnySwap a = AnySwap {getSwap :: GenForeignPtr a CSwap'}
-type GenSwap a = GenInstrument (AnySwap a)
+type GenSwap a = GenInstrument (AnyOf CSwap' a)
 type CSwap = ForeignPtr CSwap'
 type Swap = GenSwap CSwap
 foreign import ccall unsafe "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap'
@@ -1853,21 +1868,20 @@ instance Finalizable CSwap' where finalize = qlFreeSwap
 foreign import ccall "ql.h qlSwapAsInstrument" qlSwapAsInstrument :: Ptr CSwap' -> IO (Ptr CInstrument')
 instance Upcastable CSwap' where {type Base CSwap' = CInstrument'; upcast = qlSwapAsInstrument}
 asSwap :: GenSwap a -> IO Swap
-asSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _ t)) _ _)) = t x peekSwap
+asSwap (PInstrument (Layer x _ t)) = t x peekSwap
 peekSwap :: Ptr CSwap' -> IO Swap
 peekSwap = newCastForeignPtr >=> newGenSwap
 withSwap :: GenSwap a -> (Ptr CSwap' -> IO b) -> IO b
-withSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x w _)) _ _)) = w x
+withSwap (PInstrument (Layer x w _)) = w x
 newGenSwap :: GenForeignPtr a CSwap' -> IO (GenSwap a)
-newGenSwap p = GenInstrument <^> GenForeignPtr (AnySwap p) (withGenForeignPtr . getSwap) (transferGenForeignPtr . getSwap)
+newGenSwap p = pure $ PInstrument (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 peekGenSwap :: (Finalizable a, Upcastable a, Base a ~ CSwap') => Ptr a -> IO (GenSwap (ForeignPtr a))
 peekGenSwap = newGenForeignPtr >=> newGenSwap
 withGenSwap :: GenSwap (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
-withGenSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withGenSwap (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CBond'
-newtype AnyBond a = AnyBond {getBond :: GenForeignPtr a CBond'}
-type GenBond a = GenInstrument (AnyBond a)
+type GenBond a = GenInstrument (AnyOf CBond' a)
 type CBond = ForeignPtr CBond'
 type Bond = GenBond CBond
 foreign import ccall unsafe "ql.h &qlFreeBond" qlFreeBond :: FinalizerPtr CBond'
@@ -1875,17 +1889,17 @@ instance Finalizable CBond' where finalize = qlFreeBond
 foreign import ccall "ql.h qlBondAsInstrument" qlBondAsInstrument :: Ptr CBond' -> IO (Ptr CInstrument')
 instance Upcastable CBond' where {type Base CBond' = CInstrument'; upcast = qlBondAsInstrument}
 asBond :: GenBond a -> IO Bond
-asBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _ t)) _ _)) = t x peekBond
+asBond (PInstrument (Layer x _ t)) = t x peekBond
 peekBond :: Ptr CBond' -> IO Bond
 peekBond = newCastForeignPtr >=> newGenBond
 withBond :: GenBond a -> (Ptr CBond' -> IO b) -> IO b
-withBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x w _)) _ _)) = w x
+withBond (PInstrument (Layer x w _)) = w x
 newGenBond :: GenForeignPtr a CBond' -> IO (GenBond a)
-newGenBond p = GenInstrument <^> GenForeignPtr (AnyBond p) (withGenForeignPtr . getBond) (transferGenForeignPtr . getBond)
+newGenBond p = pure $ PInstrument (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 peekGenBond :: (Finalizable a, Upcastable a, Base a ~ CBond') => Ptr a -> IO (GenBond (ForeignPtr a))
 peekGenBond = newGenForeignPtr >=> newGenBond
 withGenBond :: GenBond (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
-withGenBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withGenBond (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CBondForward'
 type CBondForward = ForeignPtr CBondForward'
@@ -1897,7 +1911,7 @@ instance Upcastable CBondForward' where {type Base CBondForward' = CForward'; up
 peekBondForward :: Ptr CBondForward' -> IO BondForward
 peekBondForward = peekGenForward
 withBondForward :: BondForward -> (Ptr CBondForward' -> IO b) -> IO b
-withBondForward (GenInstrument (GenForeignPtr (AnyForward (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withBondForward (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CConvertibleBond'
 type CConvertibleBond = ForeignPtr CConvertibleBond'
@@ -1909,7 +1923,7 @@ instance Upcastable CConvertibleBond' where {type Base CConvertibleBond' = CBond
 peekConvertibleBond :: Ptr CConvertibleBond' -> IO ConvertibleBond
 peekConvertibleBond = peekGenBond
 withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond' -> IO b) -> IO b
-withConvertibleBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withConvertibleBond (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CFixedRateBond'
 type CFixedRateBond = ForeignPtr CFixedRateBond'
@@ -1921,7 +1935,7 @@ instance Upcastable CFixedRateBond' where {type Base CFixedRateBond' = CBond'; u
 peekFixedRateBond :: Ptr CFixedRateBond' -> IO FixedRateBond
 peekFixedRateBond = peekGenBond
 withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond' -> IO b) -> IO b
-withFixedRateBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withFixedRateBond (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CCallableBond'
 type CCallableBond = ForeignPtr CCallableBond'
@@ -1933,7 +1947,7 @@ instance Upcastable CCallableBond' where {type Base CCallableBond' = CBond'; upc
 peekCallableBond :: Ptr CCallableBond' -> IO CallableBond
 peekCallableBond = peekGenBond
 withCallableBond :: CallableBond -> (Ptr CCallableBond' -> IO b) -> IO b
-withCallableBond (GenInstrument (GenForeignPtr (AnyBond (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withCallableBond (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CVanillaSwap'
 type CVanillaSwap = ForeignPtr CVanillaSwap'
@@ -1945,7 +1959,7 @@ instance Upcastable CVanillaSwap' where {type Base CVanillaSwap' = CSwap'; upcas
 peekVanillaSwap :: Ptr CVanillaSwap' -> IO VanillaSwap
 peekVanillaSwap = peekGenSwap
 withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap' -> IO b) -> IO b
-withVanillaSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withVanillaSwap (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CAssetSwap'
 type CAssetSwap = ForeignPtr CAssetSwap'
@@ -1957,7 +1971,7 @@ instance Upcastable CAssetSwap' where {type Base CAssetSwap' = CSwap'; upcast = 
 peekAssetSwap :: Ptr CAssetSwap' -> IO AssetSwap
 peekAssetSwap = peekGenSwap
 withAssetSwap :: AssetSwap -> (Ptr CAssetSwap' -> IO b) -> IO b
-withAssetSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withAssetSwap (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CBMASwap'
 type CBMASwap = ForeignPtr CBMASwap'
@@ -1969,7 +1983,7 @@ instance Upcastable CBMASwap' where {type Base CBMASwap' = CSwap'; upcast = qlBM
 peekBMASwap :: Ptr CBMASwap' -> IO BMASwap
 peekBMASwap = peekGenSwap
 withBMASwap :: BMASwap -> (Ptr CBMASwap' -> IO b) -> IO b
-withBMASwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withBMASwap (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data COvernightIndexedSwap'
 type COvernightIndexedSwap = ForeignPtr COvernightIndexedSwap'
@@ -1981,7 +1995,7 @@ instance Upcastable COvernightIndexedSwap' where {type Base COvernightIndexedSwa
 peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap' -> IO OvernightIndexedSwap
 peekOvernightIndexedSwap = peekGenSwap
 withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap' -> IO b) -> IO b
-withOvernightIndexedSwap (GenInstrument (GenForeignPtr (AnySwap (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withOvernightIndexedSwap (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CCdsOption'
 type CCdsOption = ForeignPtr CCdsOption'
@@ -1993,7 +2007,7 @@ instance Upcastable CCdsOption' where {type Base CCdsOption' = COption'; upcast 
 peekCdsOption :: Ptr CCdsOption' -> IO CdsOption
 peekCdsOption = peekGenOption
 withCdsOption :: CdsOption -> (Ptr CCdsOption' -> IO b) -> IO b
-withCdsOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withCdsOption (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CQuantoBarrierOption'
 type CQuantoBarrierOption = ForeignPtr CQuantoBarrierOption'
@@ -2005,7 +2019,7 @@ instance Upcastable CQuantoBarrierOption' where {type Base CQuantoBarrierOption'
 peekQuantoBarrierOption :: Ptr CQuantoBarrierOption' -> IO QuantoBarrierOption
 peekQuantoBarrierOption = peekGenOption
 withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
-withQuantoBarrierOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withQuantoBarrierOption (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CQuantoForwardVanillaOption'
 type CQuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption'
@@ -2017,7 +2031,7 @@ instance Upcastable CQuantoForwardVanillaOption' where {type Base CQuantoForward
 peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption' -> IO QuantoForwardVanillaOption
 peekQuantoForwardVanillaOption = peekGenOption
 withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption' -> IO b) -> IO b
-withQuantoForwardVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withQuantoForwardVanillaOption (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CSwaption'
 type CSwaption = ForeignPtr CSwaption'
@@ -2029,12 +2043,11 @@ instance Upcastable CSwaption' where {type Base CSwaption' = COption'; upcast = 
 peekSwaption :: Ptr CSwaption' -> IO Swaption
 peekSwaption = peekGenOption
 withSwaption :: Swaption -> (Ptr CSwaption' -> IO b) -> IO b
-withSwaption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withSwaption (PInstrument (Layer x _ _)) = withForeignPtr x
 
 data CMultiAssetOption'
 data CMargrabeOption'
-newtype AnyMultiAssetOption a = AnyMultiAssetOption {getMultiAssetOption :: GenForeignPtr a CMultiAssetOption'}
-type GenMultiAssetOption a = GenOption (AnyMultiAssetOption a)
+type GenMultiAssetOption a = GenOption (AnyOf CMultiAssetOption' a)
 type CMultiAssetOption = ForeignPtr CMultiAssetOption'
 type MultiAssetOption = GenMultiAssetOption CMultiAssetOption
 type CMargrabeOption = ForeignPtr CMargrabeOption'
@@ -2048,23 +2061,24 @@ foreign import ccall "ql.h qlMargrabeOptionAsMultiAssetOption" qlMargrabeOptionA
 instance Upcastable CMultiAssetOption' where {type Base CMultiAssetOption' = COption'; upcast = qlMultiAssetOptionAsOption}
 instance Upcastable CMargrabeOption' where {type Base CMargrabeOption' = CMultiAssetOption'; upcast = qlMargrabeOptionAsMultiAssetOption}
 asMultiAssetOption :: GenMultiAssetOption a -> IO MultiAssetOption
-asMultiAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyMultiAssetOption (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekMultiAssetOption
+asMultiAssetOption (PInstrument (Layer (Next x _ t) _ _)) = t x peekMultiAssetOption
 peekMultiAssetOption :: Ptr CMultiAssetOption' -> IO MultiAssetOption
 peekMultiAssetOption = newCastForeignPtr >=> newGenMultiAssetOption
 withMultiAssetOption :: GenMultiAssetOption a -> (Ptr CMultiAssetOption' -> IO b) -> IO b
-withMultiAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyMultiAssetOption (GenForeignPtr x w _)) _ _)) _ _)) = w x
+withMultiAssetOption (PInstrument (Layer (Next x w _) _ _)) = w x
 newGenMultiAssetOption :: GenForeignPtr a CMultiAssetOption' -> IO (GenMultiAssetOption a)
-newGenMultiAssetOption p = GenInstrument <^> GenForeignPtr (AnyOption $ GenForeignPtr (AnyMultiAssetOption p)
-  (withGenForeignPtr . getMultiAssetOption) (transferGenForeignPtr . getMultiAssetOption))
-  (withGenForeignPtr . getOption) (transferGenForeignPtr . getOption)
+newGenMultiAssetOption p = pure $ PInstrument $ GenForeignPtr
+  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+  (withGenForeignPtr . getAnyOf)
+  (transferGenForeignPtr . getAnyOf)
+
 peekMargrabeOption :: Ptr CMargrabeOption' -> IO MargrabeOption
 peekMargrabeOption = newGenForeignPtr >=> newGenMultiAssetOption
 withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption' -> IO b) -> IO b
-withMargrabeOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyMultiAssetOption (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withMargrabeOption (PInstrument (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 data COneAssetOption'
-newtype AnyOneAssetOption a = AnyOneAssetOption {getOneAssetOption :: GenForeignPtr a COneAssetOption'}
-type GenOneAssetOption a = GenOption (AnyOneAssetOption a)
+type GenOneAssetOption a = GenOption (AnyOf COneAssetOption' a)
 type COneAssetOption = ForeignPtr COneAssetOption'
 type OneAssetOption = GenOneAssetOption COneAssetOption
 foreign import ccall unsafe "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: FinalizerPtr COneAssetOption'
@@ -2072,15 +2086,16 @@ instance Finalizable COneAssetOption' where finalize = qlFreeOneAssetOption
 foreign import ccall "ql.h qlOneAssetOptionAsOption" qlOneAssetOptionAsOption :: Ptr COneAssetOption' -> IO (Ptr COption')
 instance Upcastable COneAssetOption' where {type Base COneAssetOption' = COption'; upcast = qlOneAssetOptionAsOption}
 asOneAssetOption :: GenOneAssetOption a -> IO OneAssetOption
-asOneAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekOneAssetOption
+asOneAssetOption (PInstrument (Layer (Next x _ t) _ _)) = t x peekOneAssetOption
 peekOneAssetOption :: Ptr COneAssetOption' -> IO OneAssetOption
 peekOneAssetOption = newCastForeignPtr >=> newGenOneAssetOption
 withOneAssetOption :: GenOneAssetOption a -> (Ptr COneAssetOption' -> IO b) -> IO b
-withOneAssetOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x w _)) _ _)) _ _)) = w x
+withOneAssetOption (PInstrument (Layer (Next x w _) _ _)) = w x
 newGenOneAssetOption :: GenForeignPtr a COneAssetOption' -> IO (GenOneAssetOption a)
-newGenOneAssetOption p = GenInstrument <^> GenForeignPtr (AnyOption $ GenForeignPtr (AnyOneAssetOption p)
-  (withGenForeignPtr . getOneAssetOption) (transferGenForeignPtr . getOneAssetOption))
-  (withGenForeignPtr . getOption) (transferGenForeignPtr . getOption)
+newGenOneAssetOption p = pure $ PInstrument $ GenForeignPtr
+  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+  (withGenForeignPtr . getAnyOf)
+  (transferGenForeignPtr . getAnyOf)
 
 data CBarrierOption'
 type CBarrierOption = ForeignPtr CBarrierOption'
@@ -2092,7 +2107,7 @@ instance Upcastable CBarrierOption' where {type Base CBarrierOption' = COneAsset
 peekBarrierOption :: Ptr CBarrierOption' -> IO BarrierOption
 peekBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withBarrierOption :: BarrierOption -> (Ptr CBarrierOption' -> IO b) -> IO b
-withBarrierOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withBarrierOption (PInstrument (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 data CForwardVanillaOption'
 type CForwardVanillaOption = ForeignPtr CForwardVanillaOption'
@@ -2104,7 +2119,7 @@ instance Upcastable CForwardVanillaOption' where {type Base CForwardVanillaOptio
 peekForwardVanillaOption :: Ptr CForwardVanillaOption' -> IO ForwardVanillaOption
 peekForwardVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
 withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption' -> IO b) -> IO b
-withForwardVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withForwardVanillaOption (PInstrument (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 data CQuantoVanillaOption'
 type CQuantoVanillaOption = ForeignPtr CQuantoVanillaOption'
@@ -2116,7 +2131,7 @@ instance Upcastable CQuantoVanillaOption' where {type Base CQuantoVanillaOption'
 peekQuantoVanillaOption :: Ptr CQuantoVanillaOption' -> IO QuantoVanillaOption
 peekQuantoVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
 withQuantoVanillaOption :: QuantoVanillaOption -> (Ptr CQuantoVanillaOption' -> IO b) -> IO b
-withQuantoVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withQuantoVanillaOption (PInstrument (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 data CVanillaOption'
 type CVanillaOption = ForeignPtr CVanillaOption'
@@ -2128,113 +2143,10 @@ instance Upcastable CVanillaOption' where {type Base CVanillaOption' = COneAsset
 peekVanillaOption :: Ptr CVanillaOption' -> IO VanillaOption
 peekVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
 withVanillaOption :: VanillaOption -> (Ptr CVanillaOption' -> IO b) -> IO b
-withVanillaOption (GenInstrument (GenForeignPtr (AnyOption (GenForeignPtr (AnyOneAssetOption (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withVanillaOption (PInstrument (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 withInstrumentArray :: [GenInstrument a] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b
 withInstrumentArray = withGenArray withInstrument
-
---newtype AnyOf b a = AnyOf { getAnyOf :: GenForeignPtr a b }
---data CNode0'
---data CLeaf1'
---data CNode1'
---data CLeaf2'
---data CNode2'
---data CLeaf3'
---newtype GenNode0 a = GenNode0 (GenForeignPtr a CNode0')
---type CNode0 = ForeignPtr CNode0'
---type Node0 = GenNode0 CNode0
---type CLeaf1 = ForeignPtr CLeaf1'
---type Leaf1 = GenNode0 CLeaf1
---
---type GenNode1 a = GenNode0 (AnyOf CNode1' a)
---type GenNode2 a = GenNode1 (AnyOf CNode2' a)
---
---pattern Node0p :: GenForeignPtr a CNode0' -> GenNode0 a
---pattern Node0p g = GenNode0 g
---pattern Layer :: a -> (forall r. a -> (Ptr b -> IO r) -> IO r)
---                    -> (forall r. a -> (Ptr b -> IO r) -> IO r)
---                    -> GenForeignPtr (AnyOf b a) c
---pattern Layer x w t <- GenForeignPtr (AnyOf (GenForeignPtr x w t)) _ _
---pattern Next :: a -> (forall r. a -> (Ptr b -> IO r) -> IO r)
---                   -> (forall r. a -> (Ptr b -> IO r) -> IO r)
---                   -> AnyOf b a
---pattern Next x w t <- AnyOf (GenForeignPtr x w t)
---
---type CNode1 = ForeignPtr CNode1'
---type Node1 = GenNode1 CNode1
---type CLeaf2 = ForeignPtr CLeaf2'
---type Leaf2 = GenNode1 CLeaf2
---newtype AnyNode2 a = AnyNode2 {getNode2 :: GenForeignPtr a CNode2'}
---type CNode2 = ForeignPtr CNode2'
---type Node2 = GenNode2 CNode2
---type CLeaf3 = ForeignPtr CLeaf3'
---type Leaf3 = GenNode2 CLeaf3
---asNode0 :: GenNode0 a -> IO Node0
---asNode0 (GenNode0 (GenForeignPtr x _ t)) = t x peekNode0
---peekNode0 :: Ptr CNode0' -> IO Node0
---peekNode0 = GenNode0 <.> newCastForeignPtr
---withNode0 :: GenNode0 a -> (Ptr CNode0' -> IO b) -> IO b
---withNode0 (GenNode0 (GenForeignPtr x w _)) = w x
---withGenNode0 :: GenNode0 (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
---withGenNode0 (GenNode0 (GenForeignPtr x _ _)) = withForeignPtr x
---peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
---peekLeaf1 = GenNode0 <.> newGenForeignPtr
---asNode1 :: GenNode1 a -> IO Node1
---asNode1 (Node0p (Layer x _ t)) = t x peekNode1
---peekNode1 :: Ptr CNode1' -> IO Node1
---peekNode1 = newCastForeignPtr >=> newGenNode1
---withNode1 :: GenNode1 a -> (Ptr CNode1' -> IO b) -> IO b
---withNode1 (Node0p (Layer x w _)) = w x
---withMaybeNode1 :: Maybe (GenNode1 a) -> (Ptr CNode1' -> IO b) -> IO b
---withMaybeNode1 x f = maybe (f nullPtr) (`withNode1` f) x
---newGenNode1 :: GenForeignPtr a CNode1' -> IO (GenNode1 a)
---newGenNode1 p = pure $ Node0p (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
---peekGenNode1 :: (Finalizable a, Upcastable a, Base a ~ CNode1') => Ptr a -> IO (GenNode1 (ForeignPtr a))
---peekGenNode1 = newGenForeignPtr >=> newGenNode1
---withGenNode1 :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
---withGenNode1 (Node0p (Layer x _ _)) = withForeignPtr x
---peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
---peekLeaf2 = peekGenNode1
---withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
---withLeaf2 (Node0p (Layer x _ _)) = withForeignPtr x
---asNode2 :: GenNode2 a -> IO Node2
---asNode2 (Node0p (Layer (Next x _ t) _ _)) = t x peekNode2
---peekNode2 :: Ptr CNode2' -> IO Node2
---peekNode2 = newCastForeignPtr >=> newGenNode2
---withNode2 :: GenNode2 a -> (Ptr CNode2' -> IO b) -> IO b
---withNode2 (Node0p (Layer (Next x w _) _ _)) = w x
---newGenNode2 :: GenForeignPtr a CNode2' -> IO (GenNode2 a)
---newGenNode2 p = pure $ Node0p $ GenForeignPtr
---  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
---  (withGenForeignPtr . getAnyOf)
---  (transferGenForeignPtr . getAnyOf)
---peekLeaf3 :: Ptr CLeaf3' -> IO Leaf3
---peekLeaf3 = newGenForeignPtr >=> newGenNode2
---withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
---withLeaf3 (Node0p (Layer (Next x _ _) _ _)) = withForeignPtr x
---
---foreign import ccall unsafe "ql.h &qlFreeNode0" qlFreeNode0 :: FinalizerPtr CNode0'
---foreign import ccall unsafe "ql.h &qlFreeLeaf1" qlFreeLeaf1 :: FinalizerPtr CLeaf1'
---foreign import ccall unsafe "ql.h &qlFreeNode1" qlFreeNode1 :: FinalizerPtr CNode1'
---foreign import ccall unsafe "ql.h &qlFreeLeaf2" qlFreeLeaf2 :: FinalizerPtr CLeaf2'
---foreign import ccall unsafe "ql.h &qlFreeNode2" qlFreeNode2 :: FinalizerPtr CNode2'
---foreign import ccall unsafe "ql.h &qlFreeLeaf3" qlFreeLeaf3 :: FinalizerPtr CLeaf3'
---instance Finalizable CNode0' where finalize = qlFreeNode0
---instance Finalizable CLeaf1' where finalize = qlFreeLeaf1
---instance Finalizable CNode1' where finalize = qlFreeNode1
---instance Finalizable CLeaf2' where finalize = qlFreeLeaf2
---instance Finalizable CNode2' where finalize = qlFreeNode2
---instance Finalizable CLeaf3' where finalize = qlFreeLeaf3
---foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
---foreign import ccall "ql.h qlNode1AsNode0" qlNode1AsNode0 :: Ptr CNode1' -> IO (Ptr CNode0')
---foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
---foreign import ccall "ql.h qlNode2AsNode1" qlNode2AsNode1 :: Ptr CNode2' -> IO (Ptr CNode1')
---foreign import ccall "ql.h qlLeaf3AsNode2" qlLeaf3AsNode2 :: Ptr CLeaf3' -> IO (Ptr CNode2')
---instance Upcastable CLeaf1' where {type Base CLeaf1' = CNode0'; upcast = qlLeaf1AsNode0}
---instance Upcastable CNode1' where {type Base CNode1' = CNode0'; upcast = qlNode1AsNode0}
---instance Upcastable CLeaf2' where {type Base CLeaf2' = CNode1'; upcast = qlLeaf2AsNode1}
---instance Upcastable CNode2' where {type Base CNode2' = CNode1'; upcast = qlNode2AsNode1}
---instance Upcastable CLeaf3' where {type Base CLeaf3' = CNode2'; upcast = qlLeaf3AsNode2}
 
 --- TEMPLATE CODE
 -- data CNode0'
@@ -2322,5 +2234,26 @@ withInstrumentArray = withGenArray withInstrument
 -- peekLeaf3 = newGenForeignPtr >=> newGenNode2
 -- withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
 -- withLeaf3 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+
+-- alternative approach:
+--pattern PNode0 :: GenForeignPtr a CNode0' -> GenNode0 a
+--pattern PNode0 g = GenNode0 g
+--{-# COMPLETE PNode0 #-}
+--
+--type GenNode1 a = GenNode0 (AnyOf CNode1' a)
+--type GenNode2 a = GenNode1 (AnyOf CNode2' a)
+--
+--asNode1 (PNode0 (Layer x _ t)) = t x peekNode1
+--withNode1 (PNode0 (Layer x w _)) = w x
+--newGenNode1 p = pure $ PNode0 (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+--withGenNode1 (PNode0 (Layer x _ _)) = withForeignPtr x
+--withLeaf2 (PNode0 (Layer x _ _)) = withForeignPtr x
+--asNode2 (PNode0 (Layer (Next x _ t) _ _)) = t x peekNode2
+--withNode2 (PNode0 (Layer (Next x w _) _ _)) = w x
+--newGenNode2 p = pure $ PNode0 $ GenForeignPtr
+--  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+--  (withGenForeignPtr . getAnyOf)
+--  (transferGenForeignPtr . getAnyOf)
+--withLeaf3 (PNode0 (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

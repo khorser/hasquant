@@ -98,7 +98,7 @@ CalibratedModel
 
 a:Instrument
     a:Forward : Instrument
-    BondForward : Forward
+        BondForward : Forward
     a:Option : Instrument
         CdsOption : Option
         MultiAssetOption : Option
