@@ -8,6 +8,7 @@ module QuantLib.Example.Repo
 import Control.Monad(void, when)
 import System.Mem(performGC)
 import System.IO (hPutStrLn, stderr)
+import Control.Concurrent (threadDelay)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
@@ -50,7 +51,7 @@ run gc = do
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
   (fwd, clP, accr1, accr2, clF, fP, dp) <- doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve
-  when gc (performGC >> hPutStrLn stderr "GC complete")
+  when gc (performGC >> threadDelay 1000000 >> performGC >> threadDelay 1000000 >> hPutStrLn stderr "GC complete")
   repoCurve <- simpleQuote repoRate >>=
         $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve
