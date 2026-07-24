@@ -1103,6 +1103,10 @@ peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 
 -- MULTILEVEL HIERARCHIES
 -- INDEX
+pattern PIndex :: GenForeignPtr a CIndex' -> GenIndex a
+pattern PIndex g = GenIndex g
+{-# COMPLETE PIndex #-}
+
 data CIndex'
 data CInterestRateIndex'
 data CBMAIndex'
@@ -1115,22 +1119,20 @@ newtype GenIndex a = GenIndex (GenForeignPtr a CIndex')
 type CIndex = ForeignPtr CIndex'
 type Index = GenIndex CIndex
 -- to make types in error messages a bit pretty
-newtype AnyInterestRateIndex a = AnyInterestRateIndex {getInterestRateIndex :: GenForeignPtr a CInterestRateIndex'}
-type GenInterestRateIndex a = GenIndex (AnyInterestRateIndex a)
+type GenInterestRateIndex a = GenIndex (AnyOf CInterestRateIndex' a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
 type InterestRateIndex = GenInterestRateIndex CInterestRateIndex
 type CBMAIndex = ForeignPtr CBMAIndex'
 type BMAIndex = GenInterestRateIndex CBMAIndex
-newtype AnyIborIndex a = AnyIborIndex {getIborIndex :: GenForeignPtr a CIborIndex'}
-type GenIborIndex a = GenInterestRateIndex (AnyIborIndex a)
 type CIborIndex = ForeignPtr CIborIndex'
 type IborIndex = GenIborIndex CIborIndex
 type COvernightIndex = ForeignPtr COvernightIndex'
 type OvernightIborIndex = GenIborIndex COvernightIndex
-newtype AnySwapIndex a = AnySwapIndex {getSwapIndex :: GenForeignPtr a CSwapIndex'}
-type GenSwapIndex a = GenInterestRateIndex (AnySwapIndex a)
 type CSwapIndex = ForeignPtr CSwapIndex'
 type SwapIndex = GenSwapIndex CSwapIndex
+type GenBMAIndex a = GenInterestRateIndex (AnyOf CBMAIndex' a)
+type GenIborIndex a = GenInterestRateIndex (AnyOf CIborIndex' a)
+type GenSwapIndex a = GenInterestRateIndex (AnyOf CSwapIndex' a)
 type COvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex'
 type OvernightIndexedSwapIndex = GenSwapIndex COvernightIndexedSwapIndex
 foreign import ccall unsafe "ql.h &qlFreeIndex" qlFreeIndex :: FinalizerPtr CIndex'
@@ -1164,51 +1166,53 @@ asIndex (GenIndex (GenForeignPtr x _ t)) = t x (GenIndex <.> newCastForeignPtr)
 withIndex :: GenIndex a -> (Ptr CIndex' -> IO b) -> IO b
 withIndex (GenIndex (GenForeignPtr x w _)) = w x
 
+peekInterestRateIndex :: Ptr CInterestRateIndex' -> IO InterestRateIndex
+peekInterestRateIndex = newCastForeignPtr >=> newGenInterestRateIndex
 asInterestRateIndex :: GenInterestRateIndex a -> IO InterestRateIndex
-asInterestRateIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr x _ t)) _ _)) = t x peekInterestRateIndex
-  where peekInterestRateIndex = newCastForeignPtr >=> newGenInterestRateIndex
+asInterestRateIndex (PIndex (Layer x _ t)) = t x peekInterestRateIndex
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
-withInterestRateIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr x w _)) _ _)) = w x
+withInterestRateIndex (PIndex (Layer x w _)) = w x
 newGenInterestRateIndex :: GenForeignPtr a CInterestRateIndex' -> IO (GenInterestRateIndex a)
-newGenInterestRateIndex p = GenIndex <^> GenForeignPtr (AnyInterestRateIndex p)
-  (withGenForeignPtr . getInterestRateIndex) (transferGenForeignPtr . getInterestRateIndex)
+newGenInterestRateIndex p = pure $ PIndex (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
 peekBMAIndex = newGenForeignPtr >=> newGenInterestRateIndex
 withBMAIndex :: BMAIndex -> (Ptr CBMAIndex' -> IO b) -> IO b
-withBMAIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withBMAIndex (PIndex (Layer x _ _)) = withForeignPtr x
 
 asIborIndex :: GenIborIndex a -> IO IborIndex
-asIborIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr (AnyIborIndex (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekIborIndex
+asIborIndex (PIndex (Layer (Next x _ t) _ _)) = t x peekIborIndex
 peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
 peekIborIndex = newCastForeignPtr >=> newGenIborIndex
 withIborIndex :: GenIborIndex a -> (Ptr CIborIndex' -> IO b) -> IO b
-withIborIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr (AnyIborIndex (GenForeignPtr x w _)) _ _)) _ _)) = w x
+withIborIndex (PIndex (Layer (Next x w _) _ _)) = w x
 newGenIborIndex :: GenForeignPtr a CIborIndex' -> IO (GenIborIndex a)
-newGenIborIndex p = GenIndex <^> GenForeignPtr (AnyInterestRateIndex $ GenForeignPtr (AnyIborIndex p)
-  (withGenForeignPtr . getIborIndex) (transferGenForeignPtr . getIborIndex))
-  (withGenForeignPtr . getInterestRateIndex) (transferGenForeignPtr . getInterestRateIndex)
+newGenIborIndex p = pure $ PIndex $ GenForeignPtr
+  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+  (withGenForeignPtr . getAnyOf)
+  (transferGenForeignPtr . getAnyOf)
 
 peekOvernightIborIndex :: Ptr COvernightIndex' -> IO OvernightIborIndex
 peekOvernightIborIndex = newGenForeignPtr >=> newGenIborIndex
 withOvernightIborIndex :: OvernightIborIndex -> (Ptr COvernightIndex' -> IO b) -> IO b
-withOvernightIborIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr (AnyIborIndex (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withOvernightIborIndex (PIndex (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 asSwapIndex :: GenSwapIndex a -> IO SwapIndex
-asSwapIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr (AnySwapIndex (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekSwapIndex
+asSwapIndex (PIndex (Layer (Next x _ t) _ _)) = t x peekSwapIndex
 peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
 peekSwapIndex = newCastForeignPtr >=> newGenSwapIndex
 withSwapIndex :: GenSwapIndex a -> (Ptr CSwapIndex' -> IO b) -> IO b
-withSwapIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr (AnySwapIndex (GenForeignPtr x w _)) _ _)) _ _)) = w x
+withSwapIndex (PIndex (Layer (Next x w _) _ _)) = w x
 newGenSwapIndex :: GenForeignPtr a CSwapIndex' -> IO (GenSwapIndex a)
-newGenSwapIndex p = GenIndex <^> GenForeignPtr (AnyInterestRateIndex $ GenForeignPtr (AnySwapIndex p)
-  (withGenForeignPtr . getSwapIndex) (transferGenForeignPtr . getSwapIndex))
-  (withGenForeignPtr . getInterestRateIndex) (transferGenForeignPtr . getInterestRateIndex)
+newGenSwapIndex p = pure $ PIndex $ GenForeignPtr
+  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+  (withGenForeignPtr . getAnyOf)
+  (transferGenForeignPtr . getAnyOf)
 
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
 peekOvernightIndexedSwapIndex = newGenForeignPtr >=> newGenSwapIndex
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
-withOvernightIndexedSwapIndex (GenIndex (GenForeignPtr (AnyInterestRateIndex (GenForeignPtr (AnySwapIndex (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withOvernightIndexedSwapIndex (PIndex (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 -- TERMSTRUCTURE
 data CTermStructure'

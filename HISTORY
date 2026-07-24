@@ -57,10 +57,10 @@ TermStructure = GenTermStructure a
 Index
   InterestRateIndex
     BMAIndex
-  IborIndex
-    OvernightIborIndex
-  SwapIndex
-    OvernightIndexedSwapIndex
+    IborIndex
+      OvernightIborIndex
+    SwapIndex
+      OvernightIndexedSwapIndex
 
 StochasticProcess
   ExtOUWithJumpsProcess
