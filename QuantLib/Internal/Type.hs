@@ -844,6 +844,7 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
+-- Fixed resource leak with Claude, the summary:
 -- ============================================================================
 -- Upcastable / GenForeignPtr: ownership discipline for FFI upcasts
 -- ============================================================================
@@ -858,7 +859,7 @@ peekLmVolatilityModel = peekStandalone
 --
 --   1. BORROW (`_marshal` / `withCastForeignPtr` / `withGenForeignPtr`):
 --      the upcasted pointer is used synchronously within a continuation
---      and discarded immediately after. We eagerly call `freeUpcast` right
+--      and discarded immediately after. We eagerly call finalizer right
 --      after the continuation returns (via `finally`). Used by e.g. `npv`,
 --      `withInstrument`, any C function that just reads/computes and returns.
 --
@@ -875,12 +876,6 @@ peekLmVolatilityModel = peekStandalone
 --   not its `_transfer` — every intermediate level is borrowed-and-freed,
 --   only the FINAL (outermost requested) level is transferred to the caller.
 --   Using `_transfer` for inner levels leaks the intermediate pointer.
---
--- `freeUpcast` takes the original `Ptr a` as a witness argument
--- (`Ptr a -> Ptr (Base a) -> IO ()`) purely so GHC can resolve the
--- `Upcastable` instance — associated type families are not injective
--- (multiple derived types legitimately share one `Base`), so `a` cannot be
--- inferred back from `Base a` alone.
 --
 -- GOTCHA: `performGC` does not guarantee finalizers have *run* by the time
 -- it returns — only that unreachable objects have been *identified*.
@@ -903,24 +898,21 @@ peekLmVolatilityModel = peekStandalone
 -- ============================================================================
 -- the original pointer to `a' with a way to marshal it to `b'
 -- Actually we don't need the second field as we can infer the number of upcasts needed from the structure of the objects
----- Had to add freeUpcast to avoid object leaks (Claude, see its summary above)
 data GenForeignPtr a b = GenForeignPtr {
   _ptr :: !a
   , _marshal :: !(forall r. a -> (Ptr b -> IO r) -> IO r)
   , _transfer :: !(forall r. a -> (Ptr b -> IO r) -> IO r)}
 
-class Finalizable (Base a) => Upcastable a where
+class Upcastable a where
   type Base a
   upcast :: Ptr a -> IO (Ptr (Base a))
-  freeUpcast :: Ptr a -> Ptr (Base a) -> IO ()
-  freeUpcast _ bp = callFinalizer finalize bp
 
-withCastForeignPtr :: Upcastable c => (a -> (Ptr c -> IO r) -> IO r) -> a -> (Ptr (Base c) -> IO r) -> IO r
+withCastForeignPtr :: (Upcastable c, Finalizable (Base c)) => (a -> (Ptr c -> IO r) -> IO r) -> a -> (Ptr (Base c) -> IO r) -> IO r
 withCastForeignPtr w p f = w p $ \dp -> do
   bp <- upcast dp
-  f bp `finally` freeUpcast dp bp
+  f bp `finally` (callFinalizer finalize bp)
 
-withGenForeignPtr :: Upcastable b => GenForeignPtr a b -> (Ptr (Base b) -> IO r) -> IO r
+withGenForeignPtr :: (Upcastable b, Finalizable (Base b)) => GenForeignPtr a b -> (Ptr (Base b) -> IO r) -> IO r
 withGenForeignPtr (GenForeignPtr p w _) = withCastForeignPtr w p
 
 transferCastForeignPtr :: Upcastable c => (a -> (Ptr c -> IO r) -> IO r) -> a -> (Ptr (Base c) -> IO r) -> IO r
@@ -929,7 +921,7 @@ transferCastForeignPtr w p f = w p (upcast >=> f)
 transferGenForeignPtr :: Upcastable b => GenForeignPtr a b -> (Ptr (Base b) -> IO r) -> IO r
 transferGenForeignPtr (GenForeignPtr p w _) = transferCastForeignPtr w p
 
-newGenForeignPtr :: (Finalizable a, Upcastable a) => Ptr a -> IO (GenForeignPtr (ForeignPtr a) (Base a))
+newGenForeignPtr :: (Finalizable a, Upcastable a, Finalizable (Base a)) => Ptr a -> IO (GenForeignPtr (ForeignPtr a) (Base a))
 newGenForeignPtr x = do
   fp <- newForeignPtr finalize x
   pure $ GenForeignPtr fp (withCastForeignPtr withForeignPtr) (transferCastForeignPtr withForeignPtr)
@@ -2141,90 +2133,90 @@ withInstrumentArray :: [GenInstrument a] -> ((CUInt, Ptr (Ptr CInstrument')) -> 
 withInstrumentArray = withGenArray withInstrument
 
 --- TEMPLATE CODE
---data CNode0'
---data CLeaf1'
---data CNode1'
---data CLeaf2'
---data CNode2'
---data CLeaf3'
---newtype GenNode0 a = GenNode0 (GenForeignPtr a CNode0')
---type CNode0 = ForeignPtr CNode0'
---type Node0 = GenNode0 CNode0
---type CLeaf1 = ForeignPtr CLeaf1'
---type Leaf1 = GenNode0 CLeaf1
---newtype AnyNode1 a = AnyNode1 {getNode1 :: GenForeignPtr a CNode1'}
---type GenNode1 a = GenNode0 (AnyNode1 a)
---type CNode1 = ForeignPtr CNode1'
---type Node1 = GenNode1 CNode1
---type CLeaf2 = ForeignPtr CLeaf2'
---type Leaf2 = GenNode1 CLeaf2
---newtype AnyNode2 a = AnyNode2 {getNode2 :: GenForeignPtr a CNode2'}
---type GenNode2 a = GenNode1 (AnyNode2 a)
---type CNode2 = ForeignPtr CNode2'
---type Node2 = GenNode2 CNode2
---type CLeaf3 = ForeignPtr CLeaf3'
---type Leaf3 = GenNode2 CLeaf3
---foreign import ccall unsafe "ql.h &qlFreeNode0" qlFreeNode0 :: FinalizerPtr CNode0'
---foreign import ccall unsafe "ql.h &qlFreeLeaf1" qlFreeLeaf1 :: FinalizerPtr CLeaf1'
---foreign import ccall unsafe "ql.h &qlFreeNode1" qlFreeNode1 :: FinalizerPtr CNode1'
---foreign import ccall unsafe "ql.h &qlFreeLeaf2" qlFreeLeaf2 :: FinalizerPtr CLeaf2'
---foreign import ccall unsafe "ql.h &qlFreeNode2" qlFreeNode2 :: FinalizerPtr CNode2'
---foreign import ccall unsafe "ql.h &qlFreeLeaf3" qlFreeLeaf3 :: FinalizerPtr CLeaf3'
---instance Finalizable CNode0' where finalize = qlFreeNode0
---instance Finalizable CLeaf1' where finalize = qlFreeLeaf1
---instance Finalizable CNode1' where finalize = qlFreeNode1
---instance Finalizable CLeaf2' where finalize = qlFreeLeaf2
---instance Finalizable CNode2' where finalize = qlFreeNode2
---instance Finalizable CLeaf3' where finalize = qlFreeLeaf3
---foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
---foreign import ccall "ql.h qlNode1AsNode0" qlNode1AsNode0 :: Ptr CNode1' -> IO (Ptr CNode0')
---foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
---foreign import ccall "ql.h qlNode2AsNode1" qlNode2AsNode1 :: Ptr CNode2' -> IO (Ptr CNode1')
---foreign import ccall "ql.h qlLeaf3AsNode2" qlLeaf3AsNode2 :: Ptr CLeaf3' -> IO (Ptr CNode2')
---instance Upcastable CLeaf1' where {type Base CLeaf1' = CNode0'; upcast = qlLeaf1AsNode0}
---instance Upcastable CNode1' where {type Base CNode1' = CNode0'; upcast = qlNode1AsNode0}
---instance Upcastable CLeaf2' where {type Base CLeaf2' = CNode1'; upcast = qlLeaf2AsNode1}
---instance Upcastable CNode2' where {type Base CNode2' = CNode1'; upcast = qlNode2AsNode1}
---instance Upcastable CLeaf3' where {type Base CLeaf3' = CNode2'; upcast = qlLeaf3AsNode2}
---asNode0 :: GenNode0 a -> IO Node0
---asNode0 (GenNode0 (GenForeignPtr x w)) = w x peekNode0
---peekNode0 :: Ptr CNode0' -> IO Node0
---peekNode0 = GenNode0 <.> newCastForeignPtr
---withNode0 :: GenNode0 a -> (Ptr CNode0' -> IO b) -> IO b
---withNode0 (GenNode0 (GenForeignPtr x w)) = w x
---withGenNode0 :: GenNode0 (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
---withGenNode0 (GenNode0 (GenForeignPtr x _)) = withForeignPtr x
---peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
---peekLeaf1 = GenNode0 <.> newGenForeignPtr
---asNode1 :: GenNode1 a -> IO Node1
---asNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x w)) _)) = w x peekNode1
---peekNode1 :: Ptr CNode1' -> IO Node1
---peekNode1 = newCastForeignPtr >=> newGenNode1
---withNode1 :: GenNode1 a -> (Ptr CNode1' -> IO b) -> IO b
---withNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x w)) _)) = w x
---withMaybeNode1 :: Maybe (GenNode1 a) -> (Ptr CNode1' -> IO b) -> IO b
---withMaybeNode1 x f = maybe (f nullPtr) (`withNode1` f) x
---newGenNode1 :: GenForeignPtr a CNode1' -> IO (GenNode1 a)
---newGenNode1 p = GenNode0 <^> GenForeignPtr (AnyNode1 p) (withGenForeignPtr . getNode1)
---peekGenNode1 :: (Finalizable a, Upcastable a, Base a ~ CNode1') => Ptr a -> IO (GenNode1 (ForeignPtr a))
---peekGenNode1 = newGenForeignPtr >=> newGenNode1
---withGenNode1 :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
---withGenNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x _)) _)) = withForeignPtr x
---peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
---peekLeaf2 = peekGenNode1
-----withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
-----withLeaf2 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x _)) _)) = withForeignPtr x
---asNode2 :: GenNode2 a -> IO Node2
---asNode2 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x w)) _)) _)) = w x peekNode2
---peekNode2 :: Ptr CNode2' -> IO Node2
---peekNode2 = newCastForeignPtr >=> newGenNode2
---withNode2 :: GenNode2 a -> (Ptr CNode2' -> IO b) -> IO b
---withNode2 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x w)) _)) _)) = w x
---newGenNode2 :: GenForeignPtr a CNode2' -> IO (GenNode2 a)
---newGenNode2 p = GenNode0 <^> GenForeignPtr (AnyNode1 $ GenForeignPtr (AnyNode2 p) (withGenForeignPtr . getNode2)) (withGenForeignPtr . getNode1)
---peekLeaf3 :: Ptr CLeaf3' -> IO Leaf3
---peekLeaf3 = newGenForeignPtr >=> newGenNode2
-----withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
-----withLeaf3 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x _)) _)) _)) = withForeignPtr x
+-- data CNode0'
+-- data CLeaf1'
+-- data CNode1'
+-- data CLeaf2'
+-- data CNode2'
+-- data CLeaf3'
+-- newtype GenNode0 a = GenNode0 (GenForeignPtr a CNode0')
+-- type CNode0 = ForeignPtr CNode0'
+-- type Node0 = GenNode0 CNode0
+-- type CLeaf1 = ForeignPtr CLeaf1'
+-- type Leaf1 = GenNode0 CLeaf1
+-- newtype AnyNode1 a = AnyNode1 {getNode1 :: GenForeignPtr a CNode1'}
+-- type GenNode1 a = GenNode0 (AnyNode1 a)
+-- type CNode1 = ForeignPtr CNode1'
+-- type Node1 = GenNode1 CNode1
+-- type CLeaf2 = ForeignPtr CLeaf2'
+-- type Leaf2 = GenNode1 CLeaf2
+-- newtype AnyNode2 a = AnyNode2 {getNode2 :: GenForeignPtr a CNode2'}
+-- type GenNode2 a = GenNode1 (AnyNode2 a)
+-- type CNode2 = ForeignPtr CNode2'
+-- type Node2 = GenNode2 CNode2
+-- type CLeaf3 = ForeignPtr CLeaf3'
+-- type Leaf3 = GenNode2 CLeaf3
+-- foreign import ccall unsafe "ql.h &qlFreeNode0" qlFreeNode0 :: FinalizerPtr CNode0'
+-- foreign import ccall unsafe "ql.h &qlFreeLeaf1" qlFreeLeaf1 :: FinalizerPtr CLeaf1'
+-- foreign import ccall unsafe "ql.h &qlFreeNode1" qlFreeNode1 :: FinalizerPtr CNode1'
+-- foreign import ccall unsafe "ql.h &qlFreeLeaf2" qlFreeLeaf2 :: FinalizerPtr CLeaf2'
+-- foreign import ccall unsafe "ql.h &qlFreeNode2" qlFreeNode2 :: FinalizerPtr CNode2'
+-- foreign import ccall unsafe "ql.h &qlFreeLeaf3" qlFreeLeaf3 :: FinalizerPtr CLeaf3'
+-- instance Finalizable CNode0' where finalize = qlFreeNode0
+-- instance Finalizable CLeaf1' where finalize = qlFreeLeaf1
+-- instance Finalizable CNode1' where finalize = qlFreeNode1
+-- instance Finalizable CLeaf2' where finalize = qlFreeLeaf2
+-- instance Finalizable CNode2' where finalize = qlFreeNode2
+-- instance Finalizable CLeaf3' where finalize = qlFreeLeaf3
+-- foreign import ccall "ql.h qlLeaf1AsNode0" qlLeaf1AsNode0 :: Ptr CLeaf1' -> IO (Ptr CNode0')
+-- foreign import ccall "ql.h qlNode1AsNode0" qlNode1AsNode0 :: Ptr CNode1' -> IO (Ptr CNode0')
+-- foreign import ccall "ql.h qlLeaf2AsNode1" qlLeaf2AsNode1 :: Ptr CLeaf2' -> IO (Ptr CNode1')
+-- foreign import ccall "ql.h qlNode2AsNode1" qlNode2AsNode1 :: Ptr CNode2' -> IO (Ptr CNode1')
+-- foreign import ccall "ql.h qlLeaf3AsNode2" qlLeaf3AsNode2 :: Ptr CLeaf3' -> IO (Ptr CNode2')
+-- instance Upcastable CLeaf1' where {type Base CLeaf1' = CNode0'; upcast = qlLeaf1AsNode0}
+-- instance Upcastable CNode1' where {type Base CNode1' = CNode0'; upcast = qlNode1AsNode0}
+-- instance Upcastable CLeaf2' where {type Base CLeaf2' = CNode1'; upcast = qlLeaf2AsNode1}
+-- instance Upcastable CNode2' where {type Base CNode2' = CNode1'; upcast = qlNode2AsNode1}
+-- instance Upcastable CLeaf3' where {type Base CLeaf3' = CNode2'; upcast = qlLeaf3AsNode2}
+-- asNode0 :: GenNode0 a -> IO Node0
+-- asNode0 (GenNode0 (GenForeignPtr x _ t)) = t x peekNode0
+-- peekNode0 :: Ptr CNode0' -> IO Node0
+-- peekNode0 = GenNode0 <.> newCastForeignPtr
+-- withNode0 :: GenNode0 a -> (Ptr CNode0' -> IO b) -> IO b
+-- withNode0 (GenNode0 (GenForeignPtr x w _)) = w x
+-- withGenNode0 :: GenNode0 (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
+-- withGenNode0 (GenNode0 (GenForeignPtr x _ _)) = withForeignPtr x
+-- peekLeaf1 :: Ptr CLeaf1' -> IO Leaf1
+-- peekLeaf1 = GenNode0 <.> newGenForeignPtr
+-- asNode1 :: GenNode1 a -> IO Node1
+-- asNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x _ t)) _ _)) = t x peekNode1
+-- peekNode1 :: Ptr CNode1' -> IO Node1
+-- peekNode1 = newCastForeignPtr >=> newGenNode1
+-- withNode1 :: GenNode1 a -> (Ptr CNode1' -> IO b) -> IO b
+-- withNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x w _)) _ _)) = w x
+-- withMaybeNode1 :: Maybe (GenNode1 a) -> (Ptr CNode1' -> IO b) -> IO b
+-- withMaybeNode1 x f = maybe (f nullPtr) (`withNode1` f) x
+-- newGenNode1 :: GenForeignPtr a CNode1' -> IO (GenNode1 a)
+-- newGenNode1 p = GenNode0 <^> GenForeignPtr (AnyNode1 p) (withGenForeignPtr . getNode1) (transferGenForeignPtr . getNode1)
+-- peekGenNode1 :: (Finalizable a, Upcastable a, Base a ~ CNode1') => Ptr a -> IO (GenNode1 (ForeignPtr a))
+-- peekGenNode1 = newGenForeignPtr >=> newGenNode1
+-- withGenNode1 :: GenNode1 (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
+-- withGenNode1 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+-- peekLeaf2 :: Ptr CLeaf2' -> IO Leaf2
+-- peekLeaf2 = peekGenNode1
+-- withLeaf2 :: Leaf2 -> (Ptr CLeaf2' -> IO b) -> IO b
+-- withLeaf2 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+-- asNode2 :: GenNode2 a -> IO Node2
+-- asNode2 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekNode2
+-- peekNode2 :: Ptr CNode2' -> IO Node2
+-- peekNode2 = newCastForeignPtr >=> newGenNode2
+-- withNode2 :: GenNode2 a -> (Ptr CNode2' -> IO b) -> IO b
+-- withNode2 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x w _)) _ _)) _ _)) = w x
+-- newGenNode2 :: GenForeignPtr a CNode2' -> IO (GenNode2 a)
+-- newGenNode2 p = GenNode0 <^> GenForeignPtr (AnyNode1 $ GenForeignPtr (AnyNode2 p) (withGenForeignPtr . getNode2) (transferGenForeignPtr . getNode2)) (withGenForeignPtr . getNode1) (transferGenForeignPtr . getNode1)
+-- peekLeaf3 :: Ptr CLeaf3' -> IO Leaf3
+-- peekLeaf3 = newGenForeignPtr >=> newGenNode2
+-- withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
+-- withLeaf3 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
