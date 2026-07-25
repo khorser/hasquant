@@ -10,7 +10,7 @@ module QuantLib.Model
   , ShortRateModel
   , GenShortRateModel
   , AffineModel
-  , GenAffineModel(..)
+  , GenAffineModel
   , OneFactorAffineModel
   , GenOneFactorAffineModel
   , LiborForwardModel
@@ -165,10 +165,10 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 {#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
-calibrate :: GenCalibratedModel m f -> [(GenCalibrationHelper a, Double)] -- ^(instrument, weight)
+calibrate :: GenCalibratedModel m -> [(GenCalibrationHelper a, Double)] -- ^(instrument, weight)
   -> OptimizationMethod -> EndCriteria -> Maybe Constraint -> IO ()
 calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
-{#fun qlCalibratedModelCalibrate{withCalibratedModel*`GenCalibratedModel m f',withCalibrationHelperArray*`[GenCalibrationHelper a]'&,withDoubleArray*`[Double]'&
+{#fun qlCalibratedModelCalibrate{withCalibratedModel*`GenCalibratedModel m',withCalibrationHelperArray*`[GenCalibrationHelper a]'&,withDoubleArray*`[Double]'&
   ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',withMaybeConstraint*`Maybe Constraint',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlCapHelper as capHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^length
@@ -193,7 +193,7 @@ calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = 
   ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlBlackCalibrationHelperTimes as times{withGenCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Returns array of arguments on which calibration is done.
-{#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m f',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Black price given a volatility.
 {#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withGenCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^volatility
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
