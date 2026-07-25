@@ -18,7 +18,6 @@ module QuantLib.Instrument.Forward
 
   , forwardRate
   ) where
-import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)

@@ -72,7 +72,6 @@ module QuantLib.Instrument.Bond
   , convertibleFloatingRateBond
   , convertibleZeroCouponBond
   ) where
-import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type

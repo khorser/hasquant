@@ -10,7 +10,6 @@ module QuantLib.Instrument.CapFloor
   ) where
 import Prelude hiding(floor)
 
-import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.Internal.Type
 

@@ -65,7 +65,6 @@ module QuantLib.TermStructure.Volatility
   , blackVarianceSurface
   ) where
 import QuantLib.Internal
-import QuantLib.TermStructure
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum

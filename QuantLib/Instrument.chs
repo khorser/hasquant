@@ -24,7 +24,6 @@ module QuantLib.Instrument
   , composite
   , setPricingEngine
   ) where
-import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum

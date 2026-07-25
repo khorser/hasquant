@@ -71,7 +71,6 @@ module QuantLib.Model
 
 #include "ql.h"
 
-import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Type

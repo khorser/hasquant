@@ -22,7 +22,6 @@ module QuantLib.Instrument.Credit
   , upfrontBPS
   , upfrontNPV
   ) where
-import QuantLib.Type
 import QuantLib.Internal
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type

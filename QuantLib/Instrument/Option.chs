@@ -72,11 +72,9 @@ module QuantLib.Instrument.Option
 
 #include "ql.h"
 
-import QuantLib.Type
 import QuantLib.Internal
 {#import QuantLib.Instrument#}(AverageType, BarrierType)
 import QuantLib.Internal.Type
-import Control.Monad((>=>))
 import QuantLib.Internal.Enum
 
 {#pointer *QlOption as Option foreign -> COption' nocode#}

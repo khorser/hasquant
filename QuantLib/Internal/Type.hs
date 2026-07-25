@@ -1404,6 +1404,10 @@ withFittedBondDiscountCurve (PTermStructure (Layer x _ _)) = withForeignPtr x
 --     VarianceGammaProcess
 --     GeneralizedBlackScholesProcess
 --       BlackProcess
+pattern PStochasticProcess :: GenForeignPtr a CStochasticProcess' -> GenStochasticProcess a
+pattern PStochasticProcess g = GenStochasticProcess g
+{-# COMPLETE PStochasticProcess #-}
+
 data CStochasticProcess'
 data CExtOUWithJumpsProcess'
 data CGJRGARCHProcess'
@@ -1436,20 +1440,17 @@ type CLiborForwardModelProcess = ForeignPtr CLiborForwardModelProcess'
 type LiborForwardModelProcess = GenStochasticProcess CLiborForwardModelProcess
 type CStochasticProcessArray = ForeignPtr CStochasticProcessArray'
 type StochasticProcessArray = GenStochasticProcess CStochasticProcessArray
-newtype AnyHestonProcess a = AnyHestonProcess {getHestonProcess :: GenForeignPtr a CHestonProcess'}
-type GenHestonProcess a = GenStochasticProcess (AnyHestonProcess a)
+type GenHestonProcess a = GenStochasticProcess (AnyOf CHestonProcess' a)
 type CHestonProcess = ForeignPtr CHestonProcess'
 type HestonProcess = GenHestonProcess CHestonProcess
-newtype AnyStochasticProcess1D a = AnyStochasticProcess1D {getStochasticProcess1D :: GenForeignPtr a CStochasticProcess1D'}
-type GenStochasticProcess1D a = GenStochasticProcess (AnyStochasticProcess1D a)
+type GenStochasticProcess1D a = GenStochasticProcess (AnyOf CStochasticProcess1D' a)
 type CStochasticProcess1D = ForeignPtr CStochasticProcess1D'
 type StochasticProcess1D = GenStochasticProcess1D CStochasticProcess1D
 type CMerton76Process = ForeignPtr CMerton76Process'
 type Merton76Process = GenStochasticProcess1D CMerton76Process
 type CVarianceGammaProcess = ForeignPtr CVarianceGammaProcess'
 type VarianceGammaProcess = GenStochasticProcess1D CVarianceGammaProcess
-newtype AnyGeneralizedBlackScholesProcess a = AnyGeneralizedBlackScholesProcess {getGeneralizedBlackScholesProcess :: GenForeignPtr a CGeneralizedBlackScholesProcess'}
-type GenGeneralizedBlackScholesProcess a = GenStochasticProcess1D (AnyGeneralizedBlackScholesProcess a)
+type GenGeneralizedBlackScholesProcess a = GenStochasticProcess1D (AnyOf CGeneralizedBlackScholesProcess' a)
 type CGeneralizedBlackScholesProcess = ForeignPtr CGeneralizedBlackScholesProcess'
 type GeneralizedBlackScholesProcess = GenGeneralizedBlackScholesProcess CGeneralizedBlackScholesProcess
 type CBlackProcess = ForeignPtr CBlackProcess'
@@ -1549,33 +1550,33 @@ peekLiborForwardModelProcess = GenStochasticProcess <.> newGenForeignPtr
 peekStochasticProcessArray :: Ptr CStochasticProcessArray' -> IO StochasticProcessArray
 peekStochasticProcessArray = GenStochasticProcess <.> newGenForeignPtr
 asHestonProcess :: GenHestonProcess a -> IO HestonProcess
-asHestonProcess (GenStochasticProcess (GenForeignPtr (AnyHestonProcess (GenForeignPtr x _ t)) _ _)) = t x peekHestonProcess
+asHestonProcess (PStochasticProcess (Layer x _ t)) = t x peekHestonProcess
 peekHestonProcess :: Ptr CHestonProcess' -> IO HestonProcess
 peekHestonProcess = newCastForeignPtr >=> newGenHestonProcess
 withHestonProcess :: GenHestonProcess a -> (Ptr CHestonProcess' -> IO b) -> IO b
-withHestonProcess (GenStochasticProcess (GenForeignPtr (AnyHestonProcess (GenForeignPtr x w _)) _ _)) = w x
+withHestonProcess (PStochasticProcess (Layer x w _)) = w x
 newGenHestonProcess :: GenForeignPtr a CHestonProcess' -> IO (GenHestonProcess a)
-newGenHestonProcess p = GenStochasticProcess <^> GenForeignPtr (AnyHestonProcess p) (withGenForeignPtr . getHestonProcess) (transferGenForeignPtr . getHestonProcess)
+newGenHestonProcess p = pure $ PStochasticProcess (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 peekGenHestonProcess :: (Finalizable a, Upcastable a, Base a ~ CHestonProcess') => Ptr a -> IO (GenHestonProcess (ForeignPtr a))
 peekGenHestonProcess = newGenForeignPtr >=> newGenHestonProcess
 asStochasticProcess1D :: GenStochasticProcess1D a -> IO StochasticProcess1D
-asStochasticProcess1D (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr x _ t)) _ _)) = t x peekStochasticProcess1D
+asStochasticProcess1D (PStochasticProcess (Layer x _ t)) = t x peekStochasticProcess1D
 peekStochasticProcess1D :: Ptr CStochasticProcess1D' -> IO StochasticProcess1D
 peekStochasticProcess1D = newCastForeignPtr >=> newGenStochasticProcess1D
 withStochasticProcess1D :: GenStochasticProcess1D a -> (Ptr CStochasticProcess1D' -> IO b) -> IO b
-withStochasticProcess1D (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr x w _)) _ _)) = w x
+withStochasticProcess1D (PStochasticProcess (Layer x w _)) = w x
 withStochasticProcess1DArray :: [GenStochasticProcess1D a] -> ((CUInt, Ptr (Ptr CStochasticProcess1D')) -> IO b) -> IO b
 withStochasticProcess1DArray = withGenArray withStochasticProcess1D
 newGenStochasticProcess1D :: GenForeignPtr a CStochasticProcess1D' -> IO (GenStochasticProcess1D a)
-newGenStochasticProcess1D p = GenStochasticProcess <^> GenForeignPtr (AnyStochasticProcess1D p) (withGenForeignPtr . getStochasticProcess1D) (transferGenForeignPtr . getStochasticProcess1D)
+newGenStochasticProcess1D p = pure $ PStochasticProcess (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 peekGenStochasticProcess1D :: (Finalizable a, Upcastable a, Base a ~ CStochasticProcess1D') => Ptr a -> IO (GenStochasticProcess1D (ForeignPtr a))
 peekGenStochasticProcess1D = newGenForeignPtr >=> newGenStochasticProcess1D
 withGenStochasticProcess1D :: GenStochasticProcess1D (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
-withGenStochasticProcess1D (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withGenStochasticProcess1D (PStochasticProcess (Layer x _ _)) = withForeignPtr x
 peekBatesProcess :: Ptr CBatesProcess' -> IO BatesProcess
 peekBatesProcess = peekGenHestonProcess
 withBatesProcess :: BatesProcess -> (Ptr CBatesProcess' -> IO b) -> IO b
-withBatesProcess (GenStochasticProcess (GenForeignPtr (AnyHestonProcess (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withBatesProcess (PStochasticProcess (Layer x _ _)) = withForeignPtr x
 peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess' -> IO ExtendedOrnsteinUhlenbeckProcess
 peekExtendedOrnsteinUhlenbeckProcess = peekGenStochasticProcess1D
 peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess' -> IO HullWhiteForwardProcess
@@ -1587,19 +1588,20 @@ peekMerton76Process = peekGenStochasticProcess1D
 peekVarianceGammaProcess :: Ptr CVarianceGammaProcess' -> IO VarianceGammaProcess
 peekVarianceGammaProcess = peekGenStochasticProcess1D
 asGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess a -> IO GeneralizedBlackScholesProcess
-asGeneralizedBlackScholesProcess (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr (AnyGeneralizedBlackScholesProcess (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekGeneralizedBlackScholesProcess
+asGeneralizedBlackScholesProcess (PStochasticProcess (Layer (Next x _ t) _ _)) = t x peekGeneralizedBlackScholesProcess
 peekGeneralizedBlackScholesProcess :: Ptr CGeneralizedBlackScholesProcess' -> IO GeneralizedBlackScholesProcess
 peekGeneralizedBlackScholesProcess = newCastForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess a -> (Ptr CGeneralizedBlackScholesProcess' -> IO b) -> IO b
-withGeneralizedBlackScholesProcess (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr (AnyGeneralizedBlackScholesProcess (GenForeignPtr x w _)) _ _)) _ _)) = w x
+withGeneralizedBlackScholesProcess (PStochasticProcess (Layer (Next x w _) _ _)) = w x
 newGenGeneralizedBlackScholesProcess :: GenForeignPtr a CGeneralizedBlackScholesProcess' -> IO (GenGeneralizedBlackScholesProcess a)
-newGenGeneralizedBlackScholesProcess p = GenStochasticProcess <^> GenForeignPtr (AnyStochasticProcess1D $ GenForeignPtr (AnyGeneralizedBlackScholesProcess p)
-  (withGenForeignPtr . getGeneralizedBlackScholesProcess) (transferGenForeignPtr . getGeneralizedBlackScholesProcess))
-  (withGenForeignPtr . getStochasticProcess1D) (transferGenForeignPtr . getStochasticProcess1D)
+newGenGeneralizedBlackScholesProcess p = pure $ PStochasticProcess $ GenForeignPtr
+  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+  (withGenForeignPtr . getAnyOf)
+  (transferGenForeignPtr . getAnyOf)
 peekBlackProcess :: Ptr CBlackProcess' -> IO BlackProcess
 peekBlackProcess = newGenForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
-withBlackProcess (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr (AnyGeneralizedBlackScholesProcess (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withBlackProcess (PStochasticProcess (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 -- CalibratedModel
 --   LiborForwardModel: AffineModel
