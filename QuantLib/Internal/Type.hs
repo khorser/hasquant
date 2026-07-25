@@ -1102,7 +1102,13 @@ peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCal
 peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 
 -- MULTILEVEL HIERARCHIES
--- INDEX
+-- Index
+--   InterestRateIndex
+--     BMAIndex
+--     IborIndex
+--       OvernightIborIndex
+--     SwapIndex
+--       OvernightIndexedSwapIndex
 pattern PIndex :: GenForeignPtr a CIndex' -> GenIndex a
 pattern PIndex g = GenIndex g
 {-# COMPLETE PIndex #-}
@@ -1130,7 +1136,6 @@ type COvernightIndex = ForeignPtr COvernightIndex'
 type OvernightIborIndex = GenIborIndex COvernightIndex
 type CSwapIndex = ForeignPtr CSwapIndex'
 type SwapIndex = GenSwapIndex CSwapIndex
-type GenBMAIndex a = GenInterestRateIndex (AnyOf CBMAIndex' a)
 type GenIborIndex a = GenInterestRateIndex (AnyOf CIborIndex' a)
 type GenSwapIndex a = GenInterestRateIndex (AnyOf CSwapIndex' a)
 type COvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex'
@@ -1214,7 +1219,22 @@ peekOvernightIndexedSwapIndex = newGenForeignPtr >=> newGenSwapIndex
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
 withOvernightIndexedSwapIndex (PIndex (Layer (Next x _ _) _ _)) = withForeignPtr x
 
--- TERMSTRUCTURE
+-- TermStructure = GenTermStructure a
+--   YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
+--     FittedBondDiscountCurve = GenYieldTermStructure ...
+--   VolatilityTermStructure
+--     OptionletVolatilityStructure
+--     BlackVolTermStructure
+--       BlackVarianceCurve
+--     SwaptionVolatilityStructure
+--     CapFloorTermVolSurface
+--     LocalVolTermStructure
+--   CallableBondVolatilityStructure
+--   DefaultProbabilityTermStructure
+pattern PTermStructure :: GenForeignPtr a CTermStructure' -> GenTermStructure a
+pattern PTermStructure g = GenTermStructure g
+{-# COMPLETE PTermStructure #-}
+
 data CTermStructure'
 data CVolatilityTermStructure'
 data COptionletVolatilityStructure'
@@ -1230,14 +1250,12 @@ data CDefaultProbabilityTermStructure'
 newtype GenTermStructure a = GenTermStructure (GenForeignPtr a CTermStructure')
 type CTermStructure = ForeignPtr CTermStructure'
 type TermStructure = GenTermStructure CTermStructure
-newtype AnyYieldTermStructure a = AnyYieldTermStructure {getYieldTermStructure :: GenForeignPtr a CYieldTermStructure'}
-type GenYieldTermStructure a = GenTermStructure (AnyYieldTermStructure a)
+type GenYieldTermStructure a = GenTermStructure (AnyOf CYieldTermStructure' a)
 type CYieldTermStructure = ForeignPtr CYieldTermStructure'
 type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
 type CFittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve'
 type FittedBondDiscountCurve = GenYieldTermStructure CFittedBondDiscountCurve
-newtype AnyVolatilityTermStructure a = AnyVolatilityTermStructure {getVolatilityTermStructure :: GenForeignPtr a CVolatilityTermStructure'}
-type GenVolatilityTermStructure a = GenTermStructure (AnyVolatilityTermStructure a)
+type GenVolatilityTermStructure a = GenTermStructure (AnyOf CVolatilityTermStructure' a)
 type CVolatilityTermStructure = ForeignPtr CVolatilityTermStructure'
 type VolatilityTermStructure = GenVolatilityTermStructure CVolatilityTermStructure
 type COptionletVolatilityStructure = ForeignPtr COptionletVolatilityStructure'
@@ -1248,8 +1266,7 @@ type CSwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure'
 type SwaptionVolatilityStructure = GenVolatilityTermStructure CSwaptionVolatilityStructure
 type CLocalVolTermStructure = ForeignPtr CLocalVolTermStructure'
 type LocalVolTermStructure = GenVolatilityTermStructure CLocalVolTermStructure
-newtype AnyBlackVolTermStructure a = AnyBlackVolTermStructure {getBlackVolTermStructure :: GenForeignPtr a CBlackVolTermStructure'}
-type GenBlackVolTermStructure a = GenVolatilityTermStructure (AnyBlackVolTermStructure a)
+type GenBlackVolTermStructure a = GenVolatilityTermStructure (AnyOf CBlackVolTermStructure' a)
 type CBlackVolTermStructure = ForeignPtr CBlackVolTermStructure'
 type BlackVolTermStructure = GenBlackVolTermStructure CBlackVolTermStructure
 type CBlackVarianceCurve = ForeignPtr CBlackVarianceCurve'
@@ -1312,34 +1329,34 @@ withGenTermStructure :: GenTermStructure (ForeignPtr a) -> (Ptr a -> IO b) -> IO
 withGenTermStructure (GenTermStructure (GenForeignPtr x _ _)) = withForeignPtr x
 
 asVolatilityTermStructure :: GenVolatilityTermStructure a -> IO VolatilityTermStructure
-asVolatilityTermStructure (GenTermStructure (GenForeignPtr (AnyVolatilityTermStructure (GenForeignPtr x _ t)) _ _)) = t x peekVolatilityTermStructure
+asVolatilityTermStructure (PTermStructure (Layer x _ t)) = t x peekVolatilityTermStructure
 peekVolatilityTermStructure :: Ptr CVolatilityTermStructure' -> IO VolatilityTermStructure
 peekVolatilityTermStructure = newCastForeignPtr >=> newGenVolatilityTermStructure
 peekGenVolatilityTermStructure :: (Finalizable a, Upcastable a, Base a ~ CVolatilityTermStructure') => Ptr a -> IO (GenVolatilityTermStructure (ForeignPtr a))
 peekGenVolatilityTermStructure = newGenForeignPtr >=> newGenVolatilityTermStructure
 withVolatilityTermStructure :: GenVolatilityTermStructure a -> (Ptr CVolatilityTermStructure' -> IO b) -> IO b
-withVolatilityTermStructure (GenTermStructure (GenForeignPtr (AnyVolatilityTermStructure (GenForeignPtr x w _)) _ _)) = w x
+withVolatilityTermStructure (PTermStructure (Layer x w _)) = w x
 withGenVolatilityTermStructure :: GenVolatilityTermStructure (ForeignPtr p) -> (Ptr p -> IO b) -> IO b
-withGenVolatilityTermStructure (GenTermStructure (GenForeignPtr (AnyVolatilityTermStructure (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withGenVolatilityTermStructure (PTermStructure (Layer x _ _)) = withForeignPtr x
 newGenVolatilityTermStructure :: GenForeignPtr a CVolatilityTermStructure' -> IO (GenVolatilityTermStructure a)
-newGenVolatilityTermStructure p = GenTermStructure <^> GenForeignPtr (AnyVolatilityTermStructure p)
-  (withGenForeignPtr . getVolatilityTermStructure) (transferGenForeignPtr . getVolatilityTermStructure)
+newGenVolatilityTermStructure p = pure $ PTermStructure (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 
 asBlackVolTermStructure :: GenBlackVolTermStructure a -> IO BlackVolTermStructure
-asBlackVolTermStructure (GenTermStructure (GenForeignPtr (AnyVolatilityTermStructure (GenForeignPtr (AnyBlackVolTermStructure (GenForeignPtr x _ t)) _ _)) _ _)) = t x peekBlackVolTermStructure
+asBlackVolTermStructure (PTermStructure (Layer (Next x _ t) _ _)) = t x peekBlackVolTermStructure
 peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStructure
 peekBlackVolTermStructure = newCastForeignPtr >=> newGenBlackVolTermStructure
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
-withBlackVolTermStructure (GenTermStructure (GenForeignPtr (AnyVolatilityTermStructure (GenForeignPtr (AnyBlackVolTermStructure (GenForeignPtr x w _)) _ _)) _ _)) = w x
+withBlackVolTermStructure (PTermStructure (Layer (Next x w _) _ _)) = w x
 newGenBlackVolTermStructure :: GenForeignPtr a CBlackVolTermStructure' -> IO (GenBlackVolTermStructure a)
-newGenBlackVolTermStructure p = GenTermStructure <^> GenForeignPtr (AnyVolatilityTermStructure $ GenForeignPtr (AnyBlackVolTermStructure p) (withGenForeignPtr . getBlackVolTermStructure)
-  (transferGenForeignPtr . getBlackVolTermStructure))
-  (withGenForeignPtr . getVolatilityTermStructure) (transferGenForeignPtr . getVolatilityTermStructure)
+newGenBlackVolTermStructure p = pure $ PTermStructure $ GenForeignPtr
+  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+  (withGenForeignPtr . getAnyOf)
+  (transferGenForeignPtr . getAnyOf)
 
 peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
 peekBlackVarianceCurve = newGenForeignPtr >=> newGenBlackVolTermStructure
 withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO b) -> IO b
-withBlackVarianceCurve (GenTermStructure (GenForeignPtr (AnyVolatilityTermStructure (GenForeignPtr (AnyBlackVolTermStructure (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
+withBlackVarianceCurve (PTermStructure (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure' -> IO OptionletVolatilityStructure
 peekOptionletVolatilityStructure = peekGenVolatilityTermStructure
@@ -1355,23 +1372,38 @@ peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> 
 peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
-asYieldTermStructure (GenTermStructure (GenForeignPtr (AnyYieldTermStructure (GenForeignPtr x _ t)) _ _)) = t x peekYieldTermStructure
+asYieldTermStructure (PTermStructure (Layer x _ t)) = t x peekYieldTermStructure
 peekYieldTermStructure :: Ptr CYieldTermStructure' -> IO YieldTermStructure
 peekYieldTermStructure = newCastForeignPtr >=> newGenYieldTermStructure
 withYieldTermStructure :: GenYieldTermStructure a -> (Ptr CYieldTermStructure' -> IO b) -> IO b
-withYieldTermStructure (GenTermStructure (GenForeignPtr (AnyYieldTermStructure (GenForeignPtr x w _)) _ _)) = w x
+withYieldTermStructure (PTermStructure (Layer x w _)) = w x
 withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTermStructure' -> IO b) -> IO b
 withMaybeYieldTermStructure x f = maybe (f nullPtr) (`withYieldTermStructure` f) x
 newGenYieldTermStructure :: GenForeignPtr a CYieldTermStructure' -> IO (GenYieldTermStructure a)
-newGenYieldTermStructure p = GenTermStructure <^> GenForeignPtr (AnyYieldTermStructure p)
-  (withGenForeignPtr . getYieldTermStructure) (transferGenForeignPtr . getYieldTermStructure)
+newGenYieldTermStructure p = pure $ PTermStructure (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
 
 peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
 peekFittedBondDiscountCurve = newGenForeignPtr >=> newGenYieldTermStructure
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
-withFittedBondDiscountCurve (GenTermStructure (GenForeignPtr (AnyYieldTermStructure (GenForeignPtr x _ _)) _ _)) = withForeignPtr x
+withFittedBondDiscountCurve (PTermStructure (Layer x _ _)) = withForeignPtr x
 
--- PROCESS
+-- StochasticProcess
+--   ExtOUWithJumpsProcess
+--   GJRGARCHProcess
+--   HybridHestonHullWhiteProcess
+--   KlugeExtOUProcess
+--   LiborForwardModelProcess
+--   StochasticProcessArray
+--   HestonProcess
+--     BatesProcess
+--   StochasticProcess1D
+--     ExtendedOrnsteinUhlenbeckProcess
+--     HullWhiteForwardProcess
+--     HullWhiteProcess
+--     Merton76Process
+--     VarianceGammaProcess
+--     GeneralizedBlackScholesProcess
+--       BlackProcess
 data CStochasticProcess'
 data CExtOUWithJumpsProcess'
 data CGJRGARCHProcess'
@@ -1569,7 +1601,19 @@ peekBlackProcess = newGenForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess (GenStochasticProcess (GenForeignPtr (AnyStochasticProcess1D (GenForeignPtr (AnyGeneralizedBlackScholesProcess (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
 
--- MODEL
+-- CalibratedModel
+--   LiborForwardModel: AffineModel
+--   GJRGARCHModel
+--   PiecewiseTimeDependentHestonModel
+--   HestonModel
+--   BatesModel
+--     BatesDetJumpModel
+--   BatesDoubleExpModel
+--     BatesDoubleExpDetJumpModel
+--   ShortRateModel
+--     G2: AffineModel
+--     OneFactorAffineModel: AffineModel
+--       HullWhite: AffineMode
 data CCalibratedModel'
 data CGJRGARCHModel'
 data CLiborForwardModel'
@@ -1771,7 +1815,34 @@ peekAffineModel = undefined
 asAffineModel :: GenCalibratedModel a (AffineModel a) -> IO (GenAffineModel a)
 asAffineModel = undefined
 
--- INSTRUMENT
+-- "a:" == an abstract class, i.e. interface only
+-- a:Instrument
+--     a:Forward : Instrument
+--         BondForward : Forward
+--     a:Option : Instrument
+--         CdsOption : Option
+--         MultiAssetOption : Option
+--             MargrabeOption : MultiAssetOption
+--         OneAssetOption : Option
+--             BarrierOption : OneAssetOption
+--             ForwardVanillaOption : OneAssetOption
+--             QuantoVanillaOption : OneAssetOption
+--             VanillaOption : OneAssetOption
+--         QuantoBarrierOption : Option (TODO consider deriving from BarrierOption)
+--         QuantoForwardVanillaOption : Option (TODO consider deriving from ForwardVanillaOption)
+--         Swaption : Option
+--     a:Swap : Instrument
+--         VanillaSwap : Swap
+--         AssetSwap : Swap
+--         BMASwap : Swap
+--         OvernightIndexedSwap : Swap
+--     ForwardRateAgreement : Instrument
+--     CreditDefaultSwap : Instrument
+--     CapFloor : Instrument
+--     Bond : Instrument
+--         ConvertibleBond : Bond
+--         FixedRateBond : Bond
+--         CallableBond : Bond
 data CInstrument'
 newtype GenInstrument a = GenInstrument (GenForeignPtr a CInstrument')
 type CInstrument = ForeignPtr CInstrument'
@@ -2239,25 +2310,26 @@ withInstrumentArray = withGenArray withInstrument
 -- withLeaf3 :: Leaf3 -> (Ptr CLeaf3' -> IO b) -> IO b
 -- withLeaf3 (GenNode0 (GenForeignPtr (AnyNode1 (GenForeignPtr (AnyNode2 (GenForeignPtr x _ _)) _ _)) _ _)) = withForeignPtr x
 
--- alternative approach:
---pattern PNode0 :: GenForeignPtr a CNode0' -> GenNode0 a
---pattern PNode0 g = GenNode0 g
---{-# COMPLETE PNode0 #-}
+-- ALTERNATIVE APPROACH:
+-- pattern PNode0 :: GenForeignPtr a CNode0' -> GenNode0 a
+-- pattern PNode0 g = GenNode0 g
+-- {-# COMPLETE PNode0 #-}
 --
---type GenNode1 a = GenNode0 (AnyOf CNode1' a)
---type GenNode2 a = GenNode1 (AnyOf CNode2' a)
+-- type GenNode1 a = GenNode0 (AnyOf CNode1' a)
+-- asNode1 (PNode0 (Layer x _ t)) = t x peekNode1
+-- withNode1 (PNode0 (Layer x w _)) = w x
+-- newGenNode1 p = pure $ PNode0 (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+-- withGenNode1 (PNode0 (Layer x _ _)) = withForeignPtr x
 --
---asNode1 (PNode0 (Layer x _ t)) = t x peekNode1
---withNode1 (PNode0 (Layer x w _)) = w x
---newGenNode1 p = pure $ PNode0 (GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
---withGenNode1 (PNode0 (Layer x _ _)) = withForeignPtr x
---withLeaf2 (PNode0 (Layer x _ _)) = withForeignPtr x
---asNode2 (PNode0 (Layer (Next x _ t) _ _)) = t x peekNode2
---withNode2 (PNode0 (Layer (Next x w _) _ _)) = w x
---newGenNode2 p = pure $ PNode0 $ GenForeignPtr
---  (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
---  (withGenForeignPtr . getAnyOf)
---  (transferGenForeignPtr . getAnyOf)
---withLeaf3 (PNode0 (Layer (Next x _ _) _ _)) = withForeignPtr x
+-- type GenNode2 a = GenNode1 (AnyOf CNode2' a)
+-- asNode2 (PNode0 (Layer (Next x _ t) _ _)) = t x peekNode2
+-- withNode2 (PNode0 (Layer (Next x w _) _ _)) = w x
+-- newGenNode2 p = pure $ PNode0 $ GenForeignPtr
+--   (AnyOf $ GenForeignPtr (AnyOf p) (withGenForeignPtr . getAnyOf) (transferGenForeignPtr . getAnyOf))
+--   (withGenForeignPtr . getAnyOf)
+--   (transferGenForeignPtr . getAnyOf)
+--
+-- withLeaf2 (PNode0 (Layer x _ _)) = withForeignPtr x
+-- withLeaf3 (PNode0 (Layer (Next x _ _) _ _)) = withForeignPtr x
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
