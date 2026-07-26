@@ -4,7 +4,7 @@ I deliberately kept the API low-level to simplify its use in higher-level APIs.
 The only exceptions are enums and ADTs used for some things implemented as classes in C++.
 
 Examples can be found in `main/test/QuantLib/MainTest.hs` and `test/QuantLib/Example`.
-Beware: I didn't try too hard to write idiomatic Haskell code there.
+Beware: I didn't try too hard to write idiomatic Haskell code there, just translated QuantLib examples.
 
 For now, Haddock documentation is available at https://khorser.github.io/hasquant
 
@@ -46,7 +46,7 @@ The repo contains docker compose files for a custom Linux x86_64 image. You can 
 
 I deliberately avoided typeclasses, as the code quickly becomes polluted by typeclass constraints.
 
-How to read types.
+## How to read types.
 
 If you see a function accepting `CallableBond`, you can pass only instances of callable bonds.
 But if a function accepts `GenBond a`, you can pass a `Bond` or any of its derivatives: `FixedRateBond`, `ConvertibleBond`, `CallableBond`.
