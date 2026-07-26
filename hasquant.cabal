@@ -14,6 +14,7 @@ bug-reports:    https://github.com/khorser/hasquant/issues
 maintainer:     Sergei Khorev <sergey.khorev@gmail.com>
 copyright:      (c) 2012-2026 Sergei Khorev
 license:        BSD-3-Clause
+license-file:   LICENSE
 build-type:     Simple
 tested-with:
     GHC == 8.10.6
