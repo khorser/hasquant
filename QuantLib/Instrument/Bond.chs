@@ -27,7 +27,7 @@ module QuantLib.Instrument.Bond
   , previousCouponRate
   , settlementValueFromCleanPrice
   , settlementValue
-  , yieldFromCleanPrice
+  , yieldFromPrice
   , isTradable
   , notionals
   , cashFlows
@@ -58,7 +58,7 @@ module QuantLib.Instrument.Bond
   , previousCashFlowAmount
   , referencePeriodEnd
   , referencePeriodStart
-  , yieldFromCleanPrice'
+  , yieldFromPrice'
   , yieldValueBasisPoint'
   , yieldValueBasisPoint
   , zSpread
@@ -100,7 +100,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond' nocode#}
 {#pointer *QlExercise foreign newtype nocode#}
 
-{#fun qlBondFunctionsAtmRate as atmRate{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsAtmRate as atmRate{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',fromEnumDouble`Double,BondPriceType'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |constructor for amortizing or non-amortizing bonds.
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
 {#fun qlBond as bond{fromIntegral`Word',withCalendar*`Calendar',withMaybeDay*`Maybe Day' -- ^issueDate
@@ -180,7 +180,7 @@ import QuantLib.Internal.Enum
 -- The default bond settlement date is used for calculation.
 {#fun qlBondSettlementValue as settlementValue{withBond*`GenBond a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |yield given a (clean) price and settlement date
-{#fun qlBondYield1 as yieldFromCleanPrice{withBond*`GenBond a',`Double' -- ^cleanPrice
+{#fun qlBondYield1 as yieldFromPrice{withBond*`GenBond a',fromEnumDouble`Double,BondPriceType'&
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- settlementDate
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
@@ -225,7 +225,7 @@ import QuantLib.Internal.Enum
 {#fun qlBondFunctionsPreviousCashFlowAmount as previousCashFlowAmount{withBond*`GenBond a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsReferencePeriodEnd as referencePeriodEnd{withBond*`GenBond a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
 {#fun qlBondFunctionsReferencePeriodStart as referencePeriodStart{withBond*`GenBond a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
-{#fun qlBondFunctionsYield2 as yieldFromCleanPrice'{withBond*`GenBond a',`Double' -- ^cleanPrice
+{#fun qlBondFunctionsYield2 as yieldFromPrice'{withBond*`GenBond a',fromEnumDouble`Double,BondPriceType'&
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,`Double' --  ^accuracy
   ,fromIntegral`Word' -- ^maxIterations
@@ -235,7 +235,7 @@ import QuantLib.Internal.Enum
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint'{withBond*`GenBond a',withInterestRate*`InterestRate' -- ^yield
   ,withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlBondFunctionsZSpread as zSpread{withBond*`GenBond b',`Double' -- ^cleanPrice
+{#fun qlBondFunctionsZSpread as zSpread{withBond*`GenBond b',fromEnumDouble`Double,BondPriceType'&
   ,withYieldTermStructure*`GenYieldTermStructure a'
   ,`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,`Double' -- ^accuracy

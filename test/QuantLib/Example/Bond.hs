@@ -211,7 +211,7 @@ run = do
   bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
   bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
   fCleanFromYield <- cleanPriceFromYield floater (bYield!!2) actual360dc Compounded Annual settlDate
-  fYieldFromClean <- yieldFromCleanPrice floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
+  fYieldFromClean <- yieldFromPrice floater ((bCleanPrice!!2), Clean) actual360dc Compounded Annual settlDate 1e-8 100
 
   let bDirtyPrice = zipWith (+) bCleanPrice bAccruedAmount
 

@@ -46,8 +46,8 @@ run = do
   bdc <- dayCounter Thirty360BondBasis
   schedDates <- dates sched
 
-  let callPrices = map (`Soft` Clean) callPricesV
-      putPrices = map (`Callability` Clean) putPricesV
+  let callPrices = map (\x -> Soft (x, Clean)) callPricesV
+      putPrices = map (\x -> Callability (x, Clean)) putPricesV
       callability1 = zipWith (\pp y -> pp (schedDates!!y) 1.20) callPrices callLength
       callability2 = zipWith (\pp y -> pp CallabilityPut (schedDates!!y)) putPrices putLength
   let callabilities = callability1 ++ callability2

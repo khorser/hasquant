@@ -285,7 +285,7 @@ extern "C" {
   double qlBondPreviousCouponRate(QlBond* o, int d, char **e);
   double qlBondSettlementValue1(QlBond* o, double cleanPrice, char **e);
   double qlBondSettlementValue(QlBond* o, char **e);
-  double qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e);
+  double qlBondYield1(QlBond* o, double price, int, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e);
   int qlBondIsTradable(QlBond* o, int d, char **e);
   void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e);
 
@@ -295,7 +295,7 @@ extern "C" {
   int qlBondFunctionsAccrualStartDate(QlBond* bond, int settlementDate, char **e);
   int qlBondFunctionsAccruedDays(QlBond* bond, int settlementDate, char **e);
   double qlBondFunctionsAccruedPeriod(QlBond* bond, int settlementDate, char **e);
-  double qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double cleanPrice, char **e);
+  double qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double price, int, char **e);
   double qlBondFunctionsBasisPointValue1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsBasisPointValue(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
   double qlBondFunctionsBps1(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
@@ -312,10 +312,10 @@ extern "C" {
   double qlBondFunctionsPreviousCashFlowAmount(QlBond* bond, int refDate, char **e);
   int qlBondFunctionsReferencePeriodEnd(QlBond* bond, int settlementDate, char **e);
   int qlBondFunctionsReferencePeriodStart(QlBond* bond, int settlementDate, char **e);
-  double qlBondFunctionsYield2(QlBond* bond, double cleanPrice, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
+  double qlBondFunctionsYield2(QlBond* bond, double price, int, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
   double qlBondFunctionsYieldValueBasisPoint1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
-  double qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStructure* x2, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
+  double qlBondFunctionsZSpread(QlBond* bond, double price, int, QlYieldTermStructure* x2, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
 
   void qlFreeBond(QlBond *bond);
   void qlFreeFixedRateBond(QlFixedRateBond *bond);

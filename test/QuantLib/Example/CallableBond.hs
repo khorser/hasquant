@@ -33,7 +33,7 @@ run = do
   flatRate <- flatForward tod q bbdc Compounded Semiannual
 
   callDates <- reverse <$> foldM buildSchedule [15 `september` 2006] [1 .. 23]
-  let callSchedule = map (Callability 100.0 Clean CallabilityCall) callDates
+  let callSchedule = map (Callability (100.0, Clean) CallabilityCall) callDates
 
   cal <- calendar UnitedStatesGovernmentBond
   sch <- schedule (Just $ 16 `september` 2004) (15 `september` 2012) (3, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing

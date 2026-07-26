@@ -411,19 +411,17 @@ payoff (Basket b) = getMeta' basketPayoffMeta b >>= asQlPayoff
 
 data Callability =
   Soft
-    !Double -- ^price
-    !BondPriceType
+    !(Double, BondPriceType)
     !Day
     !Double -- ^trigger
   | Callability
-      !Double
-      !BondPriceType
+      !(Double, BondPriceType)
       !CallabilityType
       !Day
 
 callability :: Callability -> IO (Standalone CQlCallability)
-callability (Soft p t d tg) = qlSoftCallability p t d tg
-callability (Callability p t ct d) = qlCallability p t ct d
+callability (Soft (p, t) d tg) = qlSoftCallability p t d tg
+callability (Callability (p, t) ct d) = qlCallability p t ct d
 
 newtype EnumMeta a b = EnumMeta (a -> IO (Standalone b))
 

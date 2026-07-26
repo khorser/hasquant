@@ -26,6 +26,8 @@ module QuantLib.Internal
   , withDayPtr
   , fromEnumQuantity
   , toEnumQuantity
+  , fromEnumDouble
+  , toEnumDouble
   , fromEnumC
 
   , withDay
@@ -192,8 +194,14 @@ peekDoubleVector pl pp = unsafeFromForeignPtr0 <$> (peek pp >>= newForeignPtr ql
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)
 
-toEnumQuantity :: (Enum a, Integral c, Integral b) => (CInt, c) -> (b, a)
+toEnumQuantity :: (Enum a, Integral b, Integral c) => (CInt, c) -> (b, a)
 toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)
+
+fromEnumDouble :: (Enum a, Integral c) => (Double, a) -> (CDouble, c)
+fromEnumDouble (x, u) = (realToFrac x, fromIntegral $ fromEnum u)
+
+toEnumDouble :: (Enum a, Integral c) => (CDouble, c) -> (Double, a)
+toEnumDouble (x, u) = (realToFrac x, toEnum $ fromIntegral u)
 
 foreign import ccall safe "ql.h qlMinYear" qlMinYear :: CInt
 foreign import ccall safe "ql.h qlMinMonth" qlMinMonth :: CInt

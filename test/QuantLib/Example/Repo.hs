@@ -104,7 +104,7 @@ run gc = do
             bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar
           -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
           discountingBondEngine bondCurve Nothing >>= setPricingEngine b
-          void $ yieldFromCleanPrice b bondCleanPrice bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
+          void $ yieldFromPrice b (bondCleanPrice, Clean) bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
           repoCurve <- simpleQuote repoRate >>=
             $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
           bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
