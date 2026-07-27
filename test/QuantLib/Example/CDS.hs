@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TupleSections #-}
 module QuantLib.Example.CDS
   (
     Result(..)
@@ -38,7 +39,7 @@ run = do
   flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
   ts <- flatForward tod flatRate dc Continuous Annual
-  maturities <- mapM (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months)) >>= mapM (\d -> adjust cal d Following)
+  maturities <- mapM (addPeriod tod . (, Months)) [3, 6, 12, 24] >>= mapM (\d -> adjust cal d Following)
 
   instruments <- mapM
     (\t -> simpleQuote quotedSpread >>=

@@ -1,9 +1,10 @@
+{-# LANGUAGE TupleSections #-}
 module QuantLib.Example.BermudanSwaption
   (
     Result(..)
   , run
   ) where
-import Control.Monad(forM_)
+import Control.Monad(forM_, mapAndUnzipM)
 import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF
@@ -55,7 +56,7 @@ run = do
   engine <- discountingSwapEngine ts Nothing Nothing Nothing
   asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
   fixedATMRate <- fairRate swp
-  (swaptions, tms) <- unzip <$> mapM (createHelpers index6m ts) rows
+  (swaptions, tms) <- mapAndUnzipM (createHelpers index6m ts) rows
   grid <- timeGridFromList' (fromList (concat tms)) 30
 
   modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
@@ -146,7 +147,7 @@ run = do
 
         calibrateModel m hs = do
           hsh <- mapM Model.asCalibrationHelper hs
-          Model.calibrate m (zip hsh $ repeat 1.0) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing
+          Model.calibrate m (map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing
           mapM calibrate hs
 
         calibrate h = do

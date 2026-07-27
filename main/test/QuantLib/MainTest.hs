@@ -1,6 +1,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE OverloadedLists #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
+{-# LANGUAGE TupleSections #-}
 module Main where
 
 import Prelude hiding(until, head, tail)
@@ -1078,7 +1079,7 @@ main = do
                 checkInclusion l 2 [(1, True), (2, True), (3, False)]
           td <- today
           Settings.setEvaluationDate (Just td)
-          l <- CF.leg $ zip [td .. addDays 2 td] (repeat 1.0)
+          l <- CF.leg $ map (, 1.0) [td .. addDays 2 td]
 
           Settings.setIncludeReferenceDateEvents False
           Settings.setIncludeTodaysCashFlows Nothing

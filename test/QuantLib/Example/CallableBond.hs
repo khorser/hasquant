@@ -4,7 +4,7 @@ module QuantLib.Example.CallableBond
     Result(..)
   , run
   ) where
-import Control.Monad(foldM)
+import Control.Monad(foldM, mapAndUnzipM)
 import Data.Time.Calendar
 
 import QuantLib.Instrument
@@ -40,7 +40,7 @@ run = do
 
   b <- callableFixedRateBond 3 100.0 sch [0.0465] bbdc Unadjusted 100.0 (Just $ 16 `september` 2004) callSchedule
 
-  (ps, ys) <- unzip <$> mapM (priceBond flatRate bbdc b) [epsilon, 0.01, 0.03, 0.06, 0.12]
+  (ps, ys) <- mapAndUnzipM (priceBond flatRate bbdc b) [epsilon, 0.01, 0.03, 0.06, 0.12]
 
   return Result {
     pricesR = ps
