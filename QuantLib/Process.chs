@@ -231,9 +231,9 @@ import QuantLib.Internal.Type
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
-  ,withQuote*`GenQuote b' -- ^jumpInt
-  ,withQuote*`GenQuote c' -- ^logJMean
-  ,withQuote*`GenQuote d' -- ^logJVol
+  ,withQuote*`GenQuote e' -- ^jumpInt
+  ,withQuote*`GenQuote f' -- ^logJMean
+  ,withQuote*`GenQuote g' -- ^logJVol
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`Merton76Process'peekMerton76Process*#}
 {#fun qlOrnsteinUhlenbeckProcess as ornsteinUhlenbeckProcess{`Double' -- ^speed
   ,`Double' -- ^vol

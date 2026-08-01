@@ -130,7 +130,7 @@ swap' = (uncurry qlSwap1) . unzip
   ,preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
-{#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg a',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+{#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg b',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
 {#fun qlSwapEndDiscounts as endDiscounts{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlSwapLeg as leg{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
