@@ -64,4 +64,4 @@ Two edits, not one — easy to forget the first:
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `cabal build`.
+Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.

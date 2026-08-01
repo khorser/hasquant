@@ -25,4 +25,6 @@ Trickier than [[reconcile-currencies]]: calendars are keyed by country, but seve
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `cabal build`.
+Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+
+**Gotcha:** editing only `cbits/qlEnumObjects.h`/`cbits/qlEnumC2HS.h`/`cbits/qlMisc.cpp` (no `.chs` file touched) can leave the incremental build silently stale under both `cabal build` and `stack build` — neither tracks that a `.chs` file's `#include`d C header changed, so either may report success without ever re-running c2hs, and a subsequent test run will pass against the *old* generated enum. If in doubt, do a clean build (`cabal clean` / `stack clean`) before rebuilding, and verify end-to-end at the value level (construct one of the new calendars and print something derived from it — e.g. via a script in `smoke/`), not just "the build succeeded."

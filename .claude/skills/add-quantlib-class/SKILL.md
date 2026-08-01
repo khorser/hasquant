@@ -37,4 +37,4 @@ Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Ha
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `cabal build`.
+Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.

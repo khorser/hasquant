@@ -152,6 +152,15 @@ enum OvernightIborIndexType {
   , Nzocr
   , Sofr
   , Sonia
+  , Cdi
+  , Corra
+  , Kofr
+  , Destr
+  , Swestr
+  , Shir
+  , Tonar
+  , Saron
+  , Zaronia
 };
 
 // must match with the order of qlTermStructure.cpp:swapIndices

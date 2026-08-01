@@ -39,7 +39,7 @@ For each family, diff the enum in `cbits/qlEnumObjects.h` against the concrete s
 - IBOR/Libor-style → same directory, `public IborIndex` (note: many concrete Libor variants subclass an intermediate class like `Libor`/`DailyTenorLibor` rather than `IborIndex` directly, so a plain `public IborIndex` grep will undercount — check the actual class hierarchy in the header, don't trust the grep count alone).
 - Swap-rate → `/opt/homebrew/include/ql/indexes/swap/*.hpp` vs `enum LiborSwapIndexType`.
 
-As of this QuantLib install, hasquant's `OvernightIborIndexType` (`Aonia`, `Eonia`, `Estr`, `FedFunds`, `Nzocr`, `Sofr`, `Sonia` — 7 entries) is missing at least `Cdi`, `Corra`, `Kofr`, `Destr`, `Swestr`, `Shir`, `Tonar`, `Saron`, `Zaronia` (9 headers present in `ql/indexes/ibor/` with no matching enum case) — re-check, this list will drift as QuantLib releases new versions. Adding each is a Case 1 append (enum + `onIndices[]` lambda), not a new binding.
+Do this diff fresh each time rather than trusting a cached list — hasquant's `OvernightIborIndexType` was found to be missing 9 upstream overnight indexes as of one prior check, and QuantLib adds more with each release. Adding each is a Case 1 append (enum + `onIndices[]`/`iborIndices[]`/`swapIndices[]` lambda), not a new binding.
 
 ## Case 2: new node/leaf object
 
@@ -48,3 +48,5 @@ Not an enum case — treat it as a new class in the `Index`/`IborIndex`/`Overnig
 ## Verification
 
 Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+
+**Case 1 gotcha:** editing only `cbits/qlEnumObjects.h`/`cbits/qlTermStructure.cpp` (no `.chs` file touched) can leave the incremental build silently stale — under both `cabal build` and `stack build`, neither tracks that a `.chs` file's `#include`d C header changed, so either may report success (`cabal`: "Up to date") without ever re-running c2hs, and a subsequent `cabal test`/`stack test` will pass against the *old* generated enum. Confirmed by checking the generated `dist-newstyle/.../QuantLib/Index/InterestRate.hs`'s (or the stack-equivalent `.stack-work/...` path) timestamp/content after such a change. If in doubt, do a clean build (`cabal clean` / `stack clean`, or delete the specific generated `.hs`) before rebuilding, and verify end-to-end at the value level (construct one of the new cases and print something derived from it — e.g. via a script in `smoke/`), not just "the build succeeded."

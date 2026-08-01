@@ -720,6 +720,15 @@ static const makeONIndex onIndices[] = {
   , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Nzocr(ts));}
   , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Sofr(ts));}
   , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Sonia(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Cdi(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Corra(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Kofr(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Destr(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Swestr(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Shir(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Tonar(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Saron(ts));}
+  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Zaronia(ts));}
 };
 
 QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e) {
