@@ -81,6 +81,36 @@ enum Ccy {ARS = 0
   , XRP
   , ZAR
   , ZEC
+  , AED
+  , AOA
+  , BGN
+  , BHD
+  , BWP
+  , CLF
+  , CNH
+  , COU
+  , EGP
+  , ETB
+  , GEL
+  , GHS
+  , HRK
+  , JOD
+  , KES
+  , LKR
+  , MAD
+  , MKD
+  , MUR
+  , MXV
+  , OMR
+  , PHP
+  , QAR
+  , RSD
+  , TND
+  , UGX
+  , UYU
+  , UZS
+  , XOF
+  , ZMW
 };
 
 // should match with the order of qlMisc.cpp:calendars

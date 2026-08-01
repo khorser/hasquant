@@ -133,6 +133,36 @@ static const makeCcy ccys[] = {
   , [](){return static_cast<Currency *>(new XRPCurrency());}
   , [](){return static_cast<Currency *>(new ZARCurrency());}
   , [](){return static_cast<Currency *>(new ZECCurrency());}
+  , [](){return static_cast<Currency *>(new AEDCurrency());}
+  , [](){return static_cast<Currency *>(new AOACurrency());}
+  , [](){return static_cast<Currency *>(new BGNCurrency());}
+  , [](){return static_cast<Currency *>(new BHDCurrency());}
+  , [](){return static_cast<Currency *>(new BWPCurrency());}
+  , [](){return static_cast<Currency *>(new CLFCurrency());}
+  , [](){return static_cast<Currency *>(new CNHCurrency());}
+  , [](){return static_cast<Currency *>(new COUCurrency());}
+  , [](){return static_cast<Currency *>(new EGPCurrency());}
+  , [](){return static_cast<Currency *>(new ETBCurrency());}
+  , [](){return static_cast<Currency *>(new GELCurrency());}
+  , [](){return static_cast<Currency *>(new GHSCurrency());}
+  , [](){return static_cast<Currency *>(new HRKCurrency());}
+  , [](){return static_cast<Currency *>(new JODCurrency());}
+  , [](){return static_cast<Currency *>(new KESCurrency());}
+  , [](){return static_cast<Currency *>(new LKRCurrency());}
+  , [](){return static_cast<Currency *>(new MADCurrency());}
+  , [](){return static_cast<Currency *>(new MKDCurrency());}
+  , [](){return static_cast<Currency *>(new MURCurrency());}
+  , [](){return static_cast<Currency *>(new MXVCurrency());}
+  , [](){return static_cast<Currency *>(new OMRCurrency());}
+  , [](){return static_cast<Currency *>(new PHPCurrency());}
+  , [](){return static_cast<Currency *>(new QARCurrency());}
+  , [](){return static_cast<Currency *>(new RSDCurrency());}
+  , [](){return static_cast<Currency *>(new TNDCurrency());}
+  , [](){return static_cast<Currency *>(new UGXCurrency());}
+  , [](){return static_cast<Currency *>(new UYUCurrency());}
+  , [](){return static_cast<Currency *>(new UZSCurrency());}
+  , [](){return static_cast<Currency *>(new XOFCurrency());}
+  , [](){return static_cast<Currency *>(new ZMWCurrency());}
 };
 
 extern "C" {
