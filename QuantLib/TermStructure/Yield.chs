@@ -283,7 +283,7 @@ interpolatedZeroCurve r dc c qd i = uncurry' (qlInterpolatedZeroCurve rs rd dc c
 -- |final number of iterations used in the optimization problem
 {#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Int'#}
 
--- XXX
+-- TODO use the class or decide it's not needed
 class HelperUnderlying a b | a -> b where underlying :: a -> IO b
 
 instance HelperUnderlying BondHelper Bond where underlying = qlBondHelperBond

@@ -79,7 +79,7 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 -- TODO add other parameters, provide a more user-friendly way to build schedules
 {#fun qlSchedule1 as fromDates{withDayArray*`[Day]'&,withCalendar*`Calendar',`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 -- |truncated schedule
--- XXX Introduce another Schedule type with restricted interface?
+-- TODO Introduce another Schedule type with restricted interface?
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
 {#fun qlScheduleUntil as until{withSchedule*`Schedule',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 -- |returns the dates for the given Schedule object
