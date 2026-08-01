@@ -860,9 +860,9 @@ Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notional
 CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   CouponLeg *cl = 0;
   try {cl = new CouponLeg(); cl->reserve(o->size());
-    for (unsigned i = 0; i < o->size(); ++i) { // TODO adopt coupon_cast
-      shared_ptr<Coupon> c = ext::dynamic_pointer_cast<Coupon>((*o)[i]);
-      if (c) cl->push_back(c);
+    for (unsigned i = 0; i < o->size(); ++i) {
+      shared_ptr<Coupon> c = coupon_cast((*o)[i]);
+      if (c != nullptr) cl->push_back(c);
       else QL_FAIL("Cash flow #" << i << " is not a coupon");
     }
     return alloc(cl);
