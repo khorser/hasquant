@@ -11,3 +11,4 @@ cabal.project.local
 _
 stack.yaml.lock
 tags
+.aider*
