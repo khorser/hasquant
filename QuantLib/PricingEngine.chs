@@ -9,6 +9,7 @@ module QuantLib.PricingEngine
 
   , discountingBondEngine
   , discountingSwapEngine
+  , discountingFxForwardEngine
 
   , analyticBarrierEngine
   , analyticCliquetEngine
@@ -195,6 +196,10 @@ import QuantLib.Internal.Enum
 {#fun qlDiscountingSwapEngine as discountingSwapEngine{withYieldTermStructure*`GenYieldTermStructure a',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlDiscountingFxForwardEngine as discountingFxForwardEngine{withYieldTermStructure*`GenYieldTermStructure y1' -- ^sourceCurrencyDiscountCurve
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^targetCurrencyDiscountCurve
+  ,withQuote*`GenQuote a' -- ^spotFx
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

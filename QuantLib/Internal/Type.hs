@@ -517,6 +517,10 @@ module QuantLib.Internal.Type
   , CForwardRateAgreement
   , CForwardRateAgreement'
   , peekForwardRateAgreement
+  , FxForward
+  , CFxForward
+  , CFxForward'
+  , peekFxForward
   , ForwardVanillaOption
   , CForwardVanillaOption
   , CForwardVanillaOption'
@@ -1795,6 +1799,16 @@ foreign import ccall "ql.h qlForwardRateAgreementAsInstrument" qlForwardRateAgre
 instance Upcastable CForwardRateAgreement' where {type Base CForwardRateAgreement' = CInstrument'; upcast = qlForwardRateAgreementAsInstrument}
 peekForwardRateAgreement :: Ptr CForwardRateAgreement' -> IO ForwardRateAgreement
 peekForwardRateAgreement = GenInstrument <.> newGenForeignPtr
+
+data CFxForward'
+type CFxForward = ForeignPtr CFxForward'
+type FxForward = GenInstrument CFxForward
+foreign import ccall unsafe "ql.h &qlFreeFxForward" qlFreeFxForward :: FinalizerPtr CFxForward'
+instance Finalizable CFxForward' where finalize = qlFreeFxForward
+foreign import ccall "ql.h qlFxForwardAsInstrument" qlFxForwardAsInstrument :: Ptr CFxForward' -> IO (Ptr CInstrument')
+instance Upcastable CFxForward' where {type Base CFxForward' = CInstrument'; upcast = qlFxForwardAsInstrument}
+peekFxForward :: Ptr CFxForward' -> IO FxForward
+peekFxForward = GenInstrument <.> newGenForeignPtr
 
 data CCreditDefaultSwap'
 type CCreditDefaultSwap = ForeignPtr CCreditDefaultSwap'

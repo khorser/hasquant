@@ -64,6 +64,7 @@ typedef struct QlFloatingRateCouponPricer QlFloatingRateCouponPricer;
 typedef struct QlForward QlForward;
 typedef struct QlForwardRateAgreement QlForwardRateAgreement;
 typedef struct QlForwardVanillaOption QlForwardVanillaOption;
+typedef struct QlFxForward QlFxForward;
 typedef struct QlG2 QlG2;
 typedef struct QlGeneralizedBlackScholesProcess QlGeneralizedBlackScholesProcess;
 typedef struct QlGJRGARCHModel QlGJRGARCHModel;

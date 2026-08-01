@@ -4,9 +4,12 @@ module QuantLib.Instrument.Forward
   , asForward
   , ForwardRateAgreement
   , BondForward
+  , FxForward
 
   , forwardRateAgreement
   , bondForward
+  , fxForward
+  , fxForward'
 
   , cleanForwardPrice
   , forwardPrice
@@ -17,6 +20,9 @@ module QuantLib.Instrument.Forward
   , spotValue
 
   , forwardRate
+  , fairForwardRate
+  , npvSourceCurrency
+  , npvTargetCurrency
   ) where
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
@@ -37,6 +43,8 @@ import QuantLib.Internal.Type
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
 {#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign -> CForwardRateAgreement' nocode#}
 {#pointer *QlBondForward as BondForward foreign -> CBondForward' nocode#}
+{#pointer *QlFxForward as FxForward foreign -> CFxForward' nocode#}
+{#pointer *Currency foreign -> CCurrency nocode#}
 
 {#fun qlForwardRateAgreement as forwardRateAgreement{withIborIndex*`GenIborIndex a'
   ,withDay*`Day' -- ^valueDate
@@ -73,5 +81,32 @@ import QuantLib.Internal.Type
 {#fun qlForwardSpotValue as spotValue{withForward*`GenForward a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the relevant forward rate associated with the FRA term.
 {#fun qlForwardRateAgreementForwardRate as forwardRate{withGenInstrument*`ForwardRateAgreement',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+
+-- |FX forward using nominal amounts in both currencies.
+{#fun qlFxForward as fxForward{`Double' -- ^sourceNominal
+  ,withCurrency*`Currency' -- ^sourceCurrency
+  ,`Double' -- ^targetNominal
+  ,withCurrency*`Currency' -- ^targetCurrency
+  ,withDay*`Day' -- ^maturityDate
+  ,`Bool' -- ^paySourceCurrency
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,preErrorCheck-`String'errorCheck*-}->`FxForward'peekFxForward*#}
+-- |FX forward using a source nominal amount and a contracted forward rate (target/source).
+{#fun qlFxForward1 as fxForward'{`Double' -- ^sourceNominal
+  ,withCurrency*`Currency' -- ^sourceCurrency
+  ,withCurrency*`Currency' -- ^targetCurrency
+  ,`Double' -- ^forwardRate
+  ,withDay*`Day' -- ^maturityDate
+  ,`Bool' -- ^paySourceCurrency
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,preErrorCheck-`String'errorCheck*-}->`FxForward'peekFxForward*#}
+-- |The market-implied fair forward rate, computed by the pricing engine.
+{#fun qlFxForwardFairForwardRate as fairForwardRate{withGenInstrument*`FxForward',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |NPV in source currency terms.
+{#fun qlFxForwardNpvSourceCurrency as npvSourceCurrency{withGenInstrument*`FxForward',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |NPV in target currency terms.
+{#fun qlFxForwardNpvTargetCurrency as npvTargetCurrency{withGenInstrument*`FxForward',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

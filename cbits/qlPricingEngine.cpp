@@ -20,6 +20,7 @@
 #include <ql/pricingengines/cliquet/analyticperformanceengine.hpp>
 #include <ql/pricingengines/credit/integralcdsengine.hpp>
 #include <ql/pricingengines/credit/midpointcdsengine.hpp>
+#include <ql/pricingengines/forward/discountingfxforwardengine.hpp>
 #include <ql/pricingengines/forward/replicatingvarianceswapengine.hpp>
 #include <ql/pricingengines/greeks.hpp>
 #include <ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp>
@@ -97,6 +98,9 @@ QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char *
   } catch (std::exception& er) {return handleException<QlPricingEngine *>(e, er);}}
 QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return ret(new QlPricingEngine(alloc(new DiscountingSwapEngine(Handle<YieldTermStructure>(*arg(discountCurve)), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new DiscountingFxForwardEngine(Handle<YieldTermStructure>(*arg(sourceCurrencyDiscountCurve)), Handle<YieldTermStructure>(*arg(targetCurrencyDiscountCurve)), Handle<Quote>(*arg(spotFx))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));

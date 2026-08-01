@@ -38,6 +38,7 @@ import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.Repo as RepoExample
+import qualified QuantLib.Example.FxForward as FxForwardExample
 --import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 --import qualified QuantLib.Example.CallableBond as CallableBondExample
 --import qualified QuantLib.Example.CDS as CDSExample
@@ -1395,6 +1396,15 @@ main = do
         RepoExample.forwardPriceR r `shouldSatisfy` closePrec 91.5744 1e-4
         RepoExample.impliedYieldR r `shouldSatisfy` closePrec 0.0500 1e-4
         RepoExample.zeroRateR r `shouldSatisfy` closePrec 0.05 1e-7
+
+    describe "FxForward example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' FxForwardExample.run
+        FxForwardExample.npvR r `shouldSatisfy` closePrec (-19162.41040215391) 1e-4
+        FxForwardExample.fairForwardRateR r `shouldSatisfy` closePrec 1.1221599841264838 1e-7
+        FxForwardExample.npvSourceCurrencyR r `shouldSatisfy` closePrec (-19162.41040215391) 1e-4
+        FxForwardExample.npvTargetCurrencyR r `shouldSatisfy` closePrec (-21076.341579740263) 1e-4
+        FxForwardExample.npvAtFairRateR r `shouldSatisfy` closePrec 0.0 1e-6
 
     --describe "Replication example" $
     --  it "check values" $ do

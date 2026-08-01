@@ -9,6 +9,7 @@
 #include <ql/instruments/capfloor.hpp>
 #include <ql/instruments/callabilityschedule.hpp>
 #include <ql/instruments/forwardrateagreement.hpp>
+#include <ql/instruments/fxforward.hpp>
 #include <ql/instruments/bondforward.hpp>
 #include <ql/instruments/creditdefaultswap.hpp>
 #include <ql/experimental/credit/cdsoption.hpp>
@@ -233,6 +234,19 @@ QlBondForward* qlBondForward(int valueDate, int maturityDate, int type, double s
 double qlBondForwardCleanForwardPrice(QlBondForward* o, char **e) {try {return (*arg(o))->cleanForwardPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondForwardForwardPrice(QlBondForward* o, char **e) {try {return (*arg(o))->forwardPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
 InterestRate* qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e) {try {return ret(new InterestRate((*arg(o))->forwardRate()));} catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
+
+void qlFreeFxForward(QlFxForward *fwd) {del(fwd);}
+QlInstrument* qlFxForwardAsInstrument(QlFxForward *fwd) {return ret(new QlInstrument(*arg(fwd)));}
+QlFxForward* qlFxForward(double sourceNominal, Currency* sourceCurrency, double targetNominal, Currency* targetCurrency, int maturityDate, int paySourceCurrency, unsigned settlementDays, Calendar* paymentCalendar, char **e) {
+  try {return ret(new QlFxForward(alloc(new FxForward(sourceNominal, *arg(sourceCurrency), targetNominal, *arg(targetCurrency), Date(maturityDate), paySourceCurrency, settlementDays, *arg(paymentCalendar)))));
+  } catch (std::exception& er) {return handleException<QlFxForward*>(e, er);}}
+QlFxForward* qlFxForward1(double sourceNominal, Currency* sourceCurrency, Currency* targetCurrency, double forwardRate, int maturityDate, int paySourceCurrency, unsigned settlementDays, Calendar* paymentCalendar, char **e) {
+  try {return ret(new QlFxForward(alloc(new FxForward(sourceNominal, *arg(sourceCurrency), *arg(targetCurrency), forwardRate, Date(maturityDate), paySourceCurrency, settlementDays, *arg(paymentCalendar)))));
+  } catch (std::exception& er) {return handleException<QlFxForward*>(e, er);}}
+double qlFxForwardFairForwardRate(QlFxForward* o, char **e) {try {return (*arg(o))->fairForwardRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFxForwardNpvSourceCurrency(QlFxForward* o, char **e) {try {return (*arg(o))->npvSourceCurrency();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFxForwardNpvTargetCurrency(QlFxForward* o, char **e) {try {return (*arg(o))->npvTargetCurrency();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
 void qlFreeSwap(QlSwap *o) {del(o);}
 QlInstrument* qlSwapAsInstrument(QlSwap *o) {return ret(new QlInstrument(*arg(o)));}
 void qlFreeVanillaSwap(QlVanillaSwap *o) {del(o);}

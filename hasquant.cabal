@@ -134,6 +134,7 @@ library hasquant-examples
       QuantLib.Example.EquityOption
       QuantLib.Example.FittedBondCurve
       QuantLib.Example.FRA
+      QuantLib.Example.FxForward
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.Swap

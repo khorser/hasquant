@@ -90,6 +90,14 @@ extern "C" {
 
   InterestRate* qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e);
 
+  void qlFreeFxForward(QlFxForward *fwd);
+  QlInstrument* qlFxForwardAsInstrument(QlFxForward *fwd);
+  QlFxForward* qlFxForward(double sourceNominal, Currency* sourceCurrency, double targetNominal, Currency* targetCurrency, int maturityDate, int paySourceCurrency, unsigned settlementDays, Calendar* paymentCalendar, char **e);
+  QlFxForward* qlFxForward1(double sourceNominal, Currency* sourceCurrency, Currency* targetCurrency, double forwardRate, int maturityDate, int paySourceCurrency, unsigned settlementDays, Calendar* paymentCalendar, char **e);
+  double qlFxForwardFairForwardRate(QlFxForward* o, char **e);
+  double qlFxForwardNpvSourceCurrency(QlFxForward* o, char **e);
+  double qlFxForwardNpvTargetCurrency(QlFxForward* o, char **e);
+
   void qlFreeSwap(QlSwap *o);
   QlInstrument* qlSwapAsInstrument(QlSwap *o);
   void qlFreeVanillaSwap(QlVanillaSwap *o);
