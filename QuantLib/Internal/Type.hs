@@ -603,7 +603,7 @@ module QuantLib.Internal.Type
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
-import Foreign.C.Types(CUInt)
+import Foreign.C.Types(CUInt, CInt)
 import Foreign.C.String(CString)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
@@ -611,7 +611,7 @@ import Foreign.Marshal.Utils(withMany)
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(peekDynString)
+import QuantLib.Internal(peekDynString, preArray, peekDayArray)
 import Control.Exception (finally)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
@@ -680,6 +680,12 @@ peekSchedule :: Ptr CSchedule -> IO Schedule
 peekSchedule = Schedule <.> peekStandalone
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
 withSchedule = withStandalone . getCSchedule
+foreign import ccall safe "ql.h qlScheduleDates" qlScheduleDates :: Ptr CSchedule -> Ptr CUInt -> Ptr (Ptr CInt) -> IO ()
+instance Show Schedule where
+  show x = unsafePerformIO $ withSchedule x $ \p ->
+    show <$> preArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
+instance Eq Schedule where
+  x == y = show x == show y
 
 data CInterestRate
 newtype InterestRate = InterestRate {getCInterestRate :: Standalone CInterestRate}

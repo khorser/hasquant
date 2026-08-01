@@ -54,11 +54,11 @@ deriving instance Eq CalendarConstructor
 {#enum Thirty360Convention{} add prefix = "Thirty360__" deriving(Show, Eq)#}
 {#enum Actual365FixedConvention{} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}
 
--- TODO add the second (Schedule) argument to Actua/Actual constructor
-
 data DayCounterExtra = Extra__Business252 !Calendar
   | Extra__Actual36525 !Bool
   | Extra__Actual366 !Bool
+  | Extra__ActualActualBond' !Schedule
+  | Extra__ActualActualISMA' !Schedule
 
 $(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
 
