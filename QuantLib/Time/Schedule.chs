@@ -46,9 +46,13 @@ import QuantLib.Internal.CalendarEnum
 
 {#fun qlDayCounter{`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
 {#fun qlDayCounterBusiness252{withCalendar*`Calendar',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
+{#fun qlDayCounterActual36525{`Bool',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
+{#fun qlDayCounterActual366{`Bool',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
 
 dayCounter :: DayCounterConstructor -> IO DayCounter
 dayCounter (Business252 x) = qlDayCounterBusiness252 x
+dayCounter (Actual36525 x) = qlDayCounterActual36525 x
+dayCounter (Actual366 x) = qlDayCounterActual366 x
 dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 
 -- |Returns the number of days between two dates.

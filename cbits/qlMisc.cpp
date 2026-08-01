@@ -574,6 +574,8 @@ DayCounter *qlDayCounter(int type, int convention, char **e) {
   } catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 
 DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {try {return alloc(new Business252(*arg(cal)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterActual36525(int includeLastDay, char **e) {try {return alloc(new Actual36525((bool) includeLastDay));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterActual366(int includeLastDay, char **e) {try {return alloc(new Actual366((bool) includeLastDay));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 void qlFreeCalendar(Calendar *calendar) {del(calendar);}
 void qlFreeSchedule(Schedule *s) {del(s);}
 void  qlFreeDayCounter(DayCounter *counter) {del(counter);}

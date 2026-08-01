@@ -159,6 +159,8 @@ extern "C" {
 
   DayCounter *qlDayCounter(int type, int convention, char **e);
   DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e);
+  DayCounter *qlDayCounterActual36525(int includeLastDay, char **e);
+  DayCounter *qlDayCounterActual366(int includeLastDay, char **e);
   const char *qlDayCounterName(DayCounter *counter);
   int qlDayCounterDayCount(DayCounter* o, int x0, int x1);
   double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e);

@@ -57,6 +57,8 @@ deriving instance Eq CalendarConstructor
 -- TODO add the second (Schedule) argument to Actua/Actual constructor
 
 data DayCounterExtra = Extra__Business252 !Calendar
+  | Extra__Actual36525 !Bool
+  | Extra__Actual366 !Bool
 
 $(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
 
