@@ -53,6 +53,16 @@ module QuantLib.Internal.Type
   , peekDefaultProbabilityHelper
   , withDefaultProbabilityHelper
   , withDefaultProbabilityHelperArray
+  , CZeroCouponInflationSwapHelper
+  , ZeroCouponInflationSwapHelper
+  , peekZeroCouponInflationSwapHelper
+  , withZeroCouponInflationSwapHelper
+  , withZeroCouponInflationSwapHelperArray
+  , CYearOnYearInflationSwapHelper
+  , YearOnYearInflationSwapHelper
+  , peekYearOnYearInflationSwapHelper
+  , withYearOnYearInflationSwapHelper
+  , withYearOnYearInflationSwapHelperArray
   , CPathGenerator
   , PathGenerator
   , peekPathGenerator
@@ -186,6 +196,24 @@ module QuantLib.Internal.Type
   , InterestRateIndex
   , asInterestRateIndex
   , withInterestRateIndex
+  , GenInflationIndex
+  , CInflationIndex
+  , CInflationIndex'
+  , InflationIndex
+  , asInflationIndex
+  , withInflationIndex
+  , GenZeroInflationIndex
+  , CZeroInflationIndex
+  , CZeroInflationIndex'
+  , ZeroInflationIndex
+  , peekZeroInflationIndex
+  , withZeroInflationIndex
+  , GenYoYInflationIndex
+  , CYoYInflationIndex
+  , CYoYInflationIndex'
+  , YoYInflationIndex
+  , peekYoYInflationIndex
+  , withYoYInflationIndex
   , CBMAIndex
   , CBMAIndex'
   , BMAIndex
@@ -280,6 +308,14 @@ module QuantLib.Internal.Type
   , CDefaultProbabilityTermStructure
   , CDefaultProbabilityTermStructure'
   , peekDefaultProbabilityTermStructure
+  , ZeroInflationTermStructure
+  , CZeroInflationTermStructure
+  , CZeroInflationTermStructure'
+  , peekZeroInflationTermStructure
+  , YoYInflationTermStructure
+  , CYoYInflationTermStructure
+  , CYoYInflationTermStructure'
+  , peekYoYInflationTermStructure
 
   , BatesProcess
   , CBatesProcess
@@ -762,6 +798,28 @@ withDefaultProbabilityHelper = withStandalone . getCDefaultProbabilityHelper
 withDefaultProbabilityHelperArray :: [DefaultProbabilityHelper] -> ((CUInt, Ptr (Ptr CDefaultProbabilityHelper)) -> IO b) -> IO b
 withDefaultProbabilityHelperArray = withStandaloneArray getCDefaultProbabilityHelper
 
+data CZeroCouponInflationSwapHelper
+newtype ZeroCouponInflationSwapHelper = ZeroCouponInflationSwapHelper {getCZeroCouponInflationSwapHelper :: Standalone CZeroCouponInflationSwapHelper}
+foreign import ccall unsafe "ql.h &qlFreeZeroCouponInflationSwapHelper" qlFreeZeroCouponInflationSwapHelper :: FinalizerPtr CZeroCouponInflationSwapHelper
+instance Finalizable CZeroCouponInflationSwapHelper where finalize = qlFreeZeroCouponInflationSwapHelper
+peekZeroCouponInflationSwapHelper :: Ptr CZeroCouponInflationSwapHelper -> IO ZeroCouponInflationSwapHelper
+peekZeroCouponInflationSwapHelper = ZeroCouponInflationSwapHelper <.> peekStandalone
+withZeroCouponInflationSwapHelper :: ZeroCouponInflationSwapHelper -> (Ptr CZeroCouponInflationSwapHelper -> IO b) -> IO b
+withZeroCouponInflationSwapHelper = withStandalone . getCZeroCouponInflationSwapHelper
+withZeroCouponInflationSwapHelperArray :: [ZeroCouponInflationSwapHelper] -> ((CUInt, Ptr (Ptr CZeroCouponInflationSwapHelper)) -> IO b) -> IO b
+withZeroCouponInflationSwapHelperArray = withStandaloneArray getCZeroCouponInflationSwapHelper
+
+data CYearOnYearInflationSwapHelper
+newtype YearOnYearInflationSwapHelper = YearOnYearInflationSwapHelper {getCYearOnYearInflationSwapHelper :: Standalone CYearOnYearInflationSwapHelper}
+foreign import ccall unsafe "ql.h &qlFreeYearOnYearInflationSwapHelper" qlFreeYearOnYearInflationSwapHelper :: FinalizerPtr CYearOnYearInflationSwapHelper
+instance Finalizable CYearOnYearInflationSwapHelper where finalize = qlFreeYearOnYearInflationSwapHelper
+peekYearOnYearInflationSwapHelper :: Ptr CYearOnYearInflationSwapHelper -> IO YearOnYearInflationSwapHelper
+peekYearOnYearInflationSwapHelper = YearOnYearInflationSwapHelper <.> peekStandalone
+withYearOnYearInflationSwapHelper :: YearOnYearInflationSwapHelper -> (Ptr CYearOnYearInflationSwapHelper -> IO b) -> IO b
+withYearOnYearInflationSwapHelper = withStandalone . getCYearOnYearInflationSwapHelper
+withYearOnYearInflationSwapHelperArray :: [YearOnYearInflationSwapHelper] -> ((CUInt, Ptr (Ptr CYearOnYearInflationSwapHelper)) -> IO b) -> IO b
+withYearOnYearInflationSwapHelperArray = withStandaloneArray getCYearOnYearInflationSwapHelper
+
 data CPathGenerator
 newtype PathGenerator = PathGenerator {getCPathGenerator :: Standalone CPathGenerator}
 foreign import ccall unsafe "ql.h &qlFreePathGenerator" qlFreePathGenerator :: FinalizerPtr CPathGenerator
@@ -1060,6 +1118,9 @@ peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 --       OvernightIndexedSwapIndex
 data CIndex'
 data CInterestRateIndex'
+data CInflationIndex'
+data CZeroInflationIndex'
+data CYoYInflationIndex'
 data CBMAIndex'
 data CIborIndex'
 data COvernightIndex'
@@ -1071,6 +1132,15 @@ type Index = GenIndex CIndex
 type GenInterestRateIndex a = GenIndex (AnyOf CInterestRateIndex' a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
 type InterestRateIndex = GenInterestRateIndex CInterestRateIndex
+type GenInflationIndex a = GenIndex (AnyOf CInflationIndex' a)
+type CInflationIndex = ForeignPtr CInflationIndex'
+type InflationIndex = GenInflationIndex CInflationIndex
+type GenZeroInflationIndex a = GenInflationIndex (AnyOf CZeroInflationIndex' a)
+type CZeroInflationIndex = ForeignPtr CZeroInflationIndex'
+type ZeroInflationIndex = GenZeroInflationIndex CZeroInflationIndex
+type GenYoYInflationIndex a = GenInflationIndex (AnyOf CYoYInflationIndex' a)
+type CYoYInflationIndex = ForeignPtr CYoYInflationIndex'
+type YoYInflationIndex = GenYoYInflationIndex CYoYInflationIndex
 type CBMAIndex = ForeignPtr CBMAIndex'
 type BMAIndex = GenInterestRateIndex CBMAIndex
 type CIborIndex = ForeignPtr CIborIndex'
@@ -1085,6 +1155,9 @@ type COvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex'
 type OvernightIndexedSwapIndex = GenSwapIndex COvernightIndexedSwapIndex
 foreign import ccall unsafe "ql.h &qlFreeIndex" qlFreeIndex :: FinalizerPtr CIndex'
 foreign import ccall unsafe "ql.h &qlFreeInterestRateIndex" qlFreeInterestRateIndex :: FinalizerPtr CInterestRateIndex'
+foreign import ccall unsafe "ql.h &qlFreeInflationIndex" qlFreeInflationIndex :: FinalizerPtr CInflationIndex'
+foreign import ccall unsafe "ql.h &qlFreeZeroInflationIndex" qlFreeZeroInflationIndex :: FinalizerPtr CZeroInflationIndex'
+foreign import ccall unsafe "ql.h &qlFreeYoYInflationIndex" qlFreeYoYInflationIndex :: FinalizerPtr CYoYInflationIndex'
 foreign import ccall unsafe "ql.h &qlFreeBMAIndex" qlFreeBMAIndex :: FinalizerPtr CBMAIndex'
 foreign import ccall unsafe "ql.h &qlFreeIborIndex" qlFreeIborIndex :: FinalizerPtr CIborIndex'
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndex" qlFreeOvernightIborIndex :: FinalizerPtr COvernightIndex'
@@ -1092,18 +1165,27 @@ foreign import ccall unsafe "ql.h &qlFreeSwapIndex" qlFreeSwapIndex :: Finalizer
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndexedSwapIndex" qlFreeOvernightIndexedSwapIndex :: FinalizerPtr COvernightIndexedSwapIndex'
 instance Finalizable CIndex' where finalize = qlFreeIndex
 instance Finalizable CInterestRateIndex' where finalize = qlFreeInterestRateIndex
+instance Finalizable CInflationIndex' where finalize = qlFreeInflationIndex
+instance Finalizable CZeroInflationIndex' where finalize = qlFreeZeroInflationIndex
+instance Finalizable CYoYInflationIndex' where finalize = qlFreeYoYInflationIndex
 instance Finalizable CBMAIndex' where finalize = qlFreeBMAIndex
 instance Finalizable CIborIndex' where finalize = qlFreeIborIndex
 instance Finalizable COvernightIndex' where finalize = qlFreeOvernightIborIndex
 instance Finalizable CSwapIndex' where finalize = qlFreeSwapIndex
 instance Finalizable COvernightIndexedSwapIndex' where finalize = qlFreeOvernightIndexedSwapIndex
 foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex' -> IO (Ptr CIndex')
+foreign import ccall "ql.h qlInflationIndexAsIndex" qlInflationIndexAsIndex :: Ptr CInflationIndex' -> IO (Ptr CIndex')
+foreign import ccall "ql.h qlZeroInflationIndexAsInflationIndex" qlZeroInflationIndexAsInflationIndex :: Ptr CZeroInflationIndex' -> IO (Ptr CInflationIndex')
+foreign import ccall "ql.h qlYoYInflationIndexAsInflationIndex" qlYoYInflationIndexAsInflationIndex :: Ptr CYoYInflationIndex' -> IO (Ptr CInflationIndex')
 foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRateIndex :: Ptr CBMAIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterestRateIndex :: Ptr CIborIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex' -> IO (Ptr CIborIndex')
 foreign import ccall "ql.h qlSwapIndexAsInterestRateIndex" qlSwapIndexAsInterestRateIndex :: Ptr CSwapIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlOvernightIndexedSwapIndexAsSwapIndex" qlOvernightIndexedSwapIndexAsSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO (Ptr CSwapIndex')
 instance Upcastable CInterestRateIndex' where {type Base CInterestRateIndex' = CIndex'; upcast = qlInterestRateIndexAsIndex}
+instance Upcastable CInflationIndex' where {type Base CInflationIndex' = CIndex'; upcast = qlInflationIndexAsIndex}
+instance Upcastable CZeroInflationIndex' where {type Base CZeroInflationIndex' = CInflationIndex'; upcast = qlZeroInflationIndexAsInflationIndex}
+instance Upcastable CYoYInflationIndex' where {type Base CYoYInflationIndex' = CInflationIndex'; upcast = qlYoYInflationIndexAsInflationIndex}
 instance Upcastable CBMAIndex' where {type Base CBMAIndex' = CInterestRateIndex'; upcast = qlBMAIndexAsInterestRateIndex}
 instance Upcastable CIborIndex' where {type Base CIborIndex' = CInterestRateIndex'; upcast = qlIborIndexAsInterestRateIndex}
 instance Upcastable COvernightIndex' where {type Base COvernightIndex' = CIborIndex'; upcast = qlOvernightIndexAsIborIndex}
@@ -1125,6 +1207,29 @@ newGenInterestRateIndex :: GenForeignPtr a CInterestRateIndex' -> IO (GenInteres
 newGenInterestRateIndex = pure . GenIndex . newAnyOf
 withInterestRateIndex :: GenInterestRateIndex a -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withInterestRateIndex = withGenForeignPtr . peel . getIndex
+
+asInflationIndex :: GenInflationIndex a -> IO InflationIndex
+asInflationIndex = transferGenForeignPtr peekInflationIndex . peel . getIndex
+peekInflationIndex :: Ptr CInflationIndex' -> IO InflationIndex
+peekInflationIndex = newCastForeignPtr >=> newGenInflationIndex
+newGenInflationIndex :: GenForeignPtr a CInflationIndex' -> IO (GenInflationIndex a)
+newGenInflationIndex = pure . GenIndex . newAnyOf
+withInflationIndex :: GenInflationIndex a -> (Ptr CInflationIndex' -> IO b) -> IO b
+withInflationIndex = withGenForeignPtr . peel . getIndex
+
+peekZeroInflationIndex :: Ptr CZeroInflationIndex' -> IO ZeroInflationIndex
+peekZeroInflationIndex = newCastForeignPtr >=> newGenZeroInflationIndex
+withZeroInflationIndex :: GenZeroInflationIndex a -> (Ptr CZeroInflationIndex' -> IO b) -> IO b
+withZeroInflationIndex = withGenForeignPtr . peel . peel . getIndex
+newGenZeroInflationIndex :: GenForeignPtr a CZeroInflationIndex' -> IO (GenZeroInflationIndex a)
+newGenZeroInflationIndex = pure . GenIndex . newAnyOf . newAnyOf
+
+peekYoYInflationIndex :: Ptr CYoYInflationIndex' -> IO YoYInflationIndex
+peekYoYInflationIndex = newCastForeignPtr >=> newGenYoYInflationIndex
+withYoYInflationIndex :: GenYoYInflationIndex a -> (Ptr CYoYInflationIndex' -> IO b) -> IO b
+withYoYInflationIndex = withGenForeignPtr . peel . peel . getIndex
+newGenYoYInflationIndex :: GenForeignPtr a CYoYInflationIndex' -> IO (GenYoYInflationIndex a)
+newGenYoYInflationIndex = pure . GenIndex . newAnyOf . newAnyOf
 
 peekBMAIndex :: Ptr CBMAIndex' -> IO BMAIndex
 peekBMAIndex = newGenForeignPtr >=> newGenInterestRateIndex
@@ -1183,6 +1288,8 @@ data CYieldTermStructure'
 data CFittedBondDiscountCurve'
 data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
+data CZeroInflationTermStructure'
+data CYoYInflationTermStructure'
 newtype GenTermStructure a = GenTermStructure {getTermStructure :: GenForeignPtr a CTermStructure'}
 type CTermStructure = ForeignPtr CTermStructure'
 type TermStructure = GenTermStructure CTermStructure
@@ -1211,6 +1318,10 @@ type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStruct
 type CallableBondVolatilityStructure = GenTermStructure CCallableBondVolatilityStructure
 type CDefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure'
 type DefaultProbabilityTermStructure = GenTermStructure CDefaultProbabilityTermStructure
+type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
+type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
+type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'
+type YoYInflationTermStructure = GenTermStructure CYoYInflationTermStructure
 foreign import ccall unsafe "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure'
@@ -1223,6 +1334,8 @@ foreign import ccall unsafe "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStru
 foreign import ccall unsafe "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve'
 foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
 instance Finalizable CTermStructure' where finalize = qlFreeTermStructure
 instance Finalizable CVolatilityTermStructure' where finalize = qlFreeVolatilityTermStructure
 instance Finalizable COptionletVolatilityStructure' where finalize = qlFreeOptionletVolatilityStructure
@@ -1235,6 +1348,8 @@ instance Finalizable CYieldTermStructure' where finalize = qlFreeYieldTermStruct
 instance Finalizable CFittedBondDiscountCurve' where finalize = qlFreeFittedBondDiscountCurve
 instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCallableBondVolatilityStructure
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
+instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
+instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure' -> IO (Ptr CTermStructure')
@@ -1246,11 +1361,15 @@ foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" ql
 foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
 instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
 instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; upcast = qlFittedBondDiscountCurveAsYieldTermStructure}
 instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; upcast = qlVolatilityTermStructureAsTermStructure}
 instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallableBondVolatilityStructure' = CTermStructure'; upcast = qlCallableBondVolatilityStructureAsTermStructure}
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
+instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
+instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
 instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
 instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; upcast = qlBlackVarianceCurveAsBlackVolTermStructure}
 instance Upcastable COptionletVolatilityStructure' where {type Base COptionletVolatilityStructure' = CVolatilityTermStructure'; upcast = qlOptionletVolatilityStructureAsVolatilityTermStructure}
@@ -1305,6 +1424,10 @@ peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> 
 peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
 peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr
+peekZeroInflationTermStructure :: Ptr CZeroInflationTermStructure' -> IO ZeroInflationTermStructure
+peekZeroInflationTermStructure = GenTermStructure <.> newGenForeignPtr
+peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflationTermStructure
+peekYoYInflationTermStructure = GenTermStructure <.> newGenForeignPtr
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
 asYieldTermStructure = transferGenForeignPtr peekYieldTermStructure . peel . getTermStructure

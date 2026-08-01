@@ -6,6 +6,8 @@
 #include <ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp>
 #include <ql/termstructures/credit/piecewisedefaultcurve.hpp>
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
+#include <ql/termstructures/inflation/piecewisezeroinflationcurve.hpp>
+#include <ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp>
 
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
   const QuantLib::Date &date,
@@ -90,5 +92,22 @@ QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned 
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
     int trait,int interpolator, int approximator, int approximatorArg);
+
+QuantLib::ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
+    const QuantLib::Date &referenceDate,
+    const QuantLib::Date &baseDate,
+    QuantLib::Frequency frequency,
+    const QuantLib::DayCounter& dayCounter,
+    const std::vector<QuantLib::ext::shared_ptr<QuantLib::BootstrapHelper<QuantLib::ZeroInflationTermStructure> > >& instruments,
+    int interpolator, int approximator, int approximatorArg);
+
+QuantLib::YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
+    const QuantLib::Date &referenceDate,
+    const QuantLib::Date &baseDate,
+    QuantLib::Rate baseYoYRate,
+    QuantLib::Frequency frequency,
+    const QuantLib::DayCounter& dayCounter,
+    const std::vector<QuantLib::ext::shared_ptr<QuantLib::BootstrapHelper<QuantLib::YoYInflationTermStructure> > >& instruments,
+    int interpolator, int approximator, int approximatorArg);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

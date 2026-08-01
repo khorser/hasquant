@@ -314,4 +314,32 @@ enum ProbabilityTrait {
   , DefaultDensity
 };
 
+// must match the order of qlTermStructure.cpp:zeroInflationIndices
+enum ZeroInflationIndexType {
+  AUCPI = 0
+  , EUHICP
+  , EUHICPXT
+  , FRHICP
+  , UKHICP
+  , UKRPI
+  , USCPI
+  , ZACPI
+};
+
+// must match the order of qlTermStructure.cpp:yoyInflationIndices
+enum YoYInflationIndexType {
+  YYAUCPI = 0
+  , YYEUHICP
+  , YYEUHICPXT
+  , YYFRHICP
+  , YYUKRPI
+  , YYUSCPI
+  , YYZACPI
+};
+
+enum CPIInterpolationType {
+  CPIFlat = 0
+  , CPILinear
+};
+
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

@@ -91,6 +91,21 @@ extern "C" {
   double qlDefaultProbabilityTermStructureSurvivalProbability1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e);
   double qlDefaultProbabilityTermStructureSurvivalProbability(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, char **e);
 
+  void qlFreeZeroInflationTermStructure(QlZeroInflationTermStructure *o);
+  QlTermStructure* qlZeroInflationTermStructureAsTermStructure(QlZeroInflationTermStructure *o);
+  double qlZeroInflationTermStructureZeroRate(QlZeroInflationTermStructure* o, int d, int extrapolate, char **e);
+  void qlFreeYoYInflationTermStructure(QlYoYInflationTermStructure *o);
+  QlTermStructure* qlYoYInflationTermStructureAsTermStructure(QlYoYInflationTermStructure *o);
+  double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d, int extrapolate, char **e);
+
+  void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o);
+  QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, char **e);
+  void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o);
+  QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlYoYInflationIndex* yii, int observationInterpolation, QlYieldTermStructure* nominalTermStructure, char **e);
+
+  QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e);
+  QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e);
+
   QlRateHelper *qlDepositRateHelper(QlQuote *quote, int, int, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e);
   QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face, Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e);
@@ -211,6 +226,19 @@ extern "C" {
   QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o);
   int qlIborIndexBusinessDayConvention(QlIborIndex* o);
   int qlIborIndexEndOfMonth(QlIborIndex* o);
+
+  QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e);
+  QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e);
+
+  void qlFreeInflationIndex(QlInflationIndex *o);
+  QlIndex* qlInflationIndexAsIndex(QlInflationIndex *o);
+  void qlFreeZeroInflationIndex(QlZeroInflationIndex *o);
+  QlInflationIndex* qlZeroInflationIndexAsInflationIndex(QlZeroInflationIndex *o);
+  void qlFreeYoYInflationIndex(QlYoYInflationIndex *o);
+  QlInflationIndex* qlYoYInflationIndexAsInflationIndex(QlYoYInflationIndex *o);
+
+  double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, char **e);
+  double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, char **e);
 #ifdef __cplusplus
 }
 #endif

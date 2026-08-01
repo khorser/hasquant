@@ -39,6 +39,7 @@ import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FxForward as FxForwardExample
+import qualified QuantLib.Example.InflationCurve as InflationCurveExample
 --import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 --import qualified QuantLib.Example.CallableBond as CallableBondExample
 --import qualified QuantLib.Example.CDS as CDSExample
@@ -1405,6 +1406,14 @@ main = do
         FxForwardExample.npvSourceCurrencyR r `shouldSatisfy` closePrec (-19162.41040215391) 1e-4
         FxForwardExample.npvTargetCurrencyR r `shouldSatisfy` closePrec (-21076.341579740263) 1e-4
         FxForwardExample.npvAtFairRateR r `shouldSatisfy` closePrec 0.0 1e-6
+
+    describe "Inflation curve example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' InflationCurveExample.run
+        InflationCurveExample.zeroRate1Y r `shouldSatisfy` closePrec 3.0029877159296493e-2 1e-9
+        InflationCurveExample.zeroRate2Y r `shouldSatisfy` closePrec 3.001286439212614e-2 1e-9
+        InflationCurveExample.yoyRate1Y r `shouldSatisfy` closePrec 3.0000000000000002e-2 1e-9
+        InflationCurveExample.yoyRate2Y r `shouldSatisfy` closePrec 2.999999999999999e-2 1e-9
 
     --describe "Replication example" $
     --  it "check values" $ do

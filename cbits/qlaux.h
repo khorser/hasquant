@@ -172,6 +172,7 @@ namespace QuantLib {
   class HybridHestonHullWhiteProcess;
   class ImpliedTermStructure;
   class ImpliedVolTermStructure;
+  class InflationIndex;
   class IntegralCdsEngine;
   class IntegralEngine;
   class InterestRateIndex;
@@ -249,6 +250,12 @@ namespace QuantLib {
   class VarianceGammaProcess;
   class VegaStressedBlackScholesProcess;
   class VolatilityTermStructure;
+  class YearOnYearInflationSwapHelper;
+  class YoYInflationIndex;
+  class YoYInflationTermStructure;
+  class ZeroCouponInflationSwapHelper;
+  class ZeroInflationIndex;
+  class ZeroInflationTermStructure;
   class ZeroSpreadedTermStructure;
 }
 
@@ -400,6 +407,7 @@ using QuantLib::HullWhiteProcess;
 using QuantLib::HybridHestonHullWhiteProcess;
 using QuantLib::ImpliedTermStructure;
 using QuantLib::ImpliedVolTermStructure;
+using QuantLib::InflationIndex;
 using QuantLib::IntegralCdsEngine;
 using QuantLib::IntegralEngine;
 using QuantLib::InterestRateIndex;
@@ -477,6 +485,12 @@ using QuantLib::VarianceGammaEngine;
 using QuantLib::VarianceGammaProcess;
 using QuantLib::VegaStressedBlackScholesProcess;
 using QuantLib::VolatilityTermStructure;
+using QuantLib::YearOnYearInflationSwapHelper;
+using QuantLib::YoYInflationIndex;
+using QuantLib::YoYInflationTermStructure;
+using QuantLib::ZeroCouponInflationSwapHelper;
+using QuantLib::ZeroInflationIndex;
+using QuantLib::ZeroInflationTermStructure;
 using QuantLib::ZeroSpreadedTermStructure;
 using QuantLib::Date;
 using QuantLib::Matrix;
@@ -553,6 +567,7 @@ typedef shared_ptr<HullWhite> QlHullWhite;
 typedef shared_ptr<HullWhiteForwardProcess> QlHullWhiteForwardProcess;
 typedef shared_ptr<HullWhiteProcess> QlHullWhiteProcess;
 typedef shared_ptr<HybridHestonHullWhiteProcess> QlHybridHestonHullWhiteProcess;
+typedef shared_ptr<InflationIndex> QlInflationIndex;
 typedef shared_ptr<InterestRateIndex> QlInterestRateIndex;
 typedef shared_ptr<KlugeExtOUProcess> QlKlugeExtOUProcess;
 typedef shared_ptr<LiborForwardModel> QlLiborForwardModel;
@@ -596,6 +611,12 @@ typedef shared_ptr<VanillaOption> QlVanillaOption;
 typedef shared_ptr<VanillaSwap> QlVanillaSwap;
 typedef shared_ptr<VarianceGammaProcess> QlVarianceGammaProcess;
 typedef shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
+typedef shared_ptr<YearOnYearInflationSwapHelper> QlYearOnYearInflationSwapHelper;
+typedef shared_ptr<YoYInflationIndex> QlYoYInflationIndex;
+typedef shared_ptr<YoYInflationTermStructure> QlYoYInflationTermStructure;
+typedef shared_ptr<ZeroCouponInflationSwapHelper> QlZeroCouponInflationSwapHelper;
+typedef shared_ptr<ZeroInflationIndex> QlZeroInflationIndex;
+typedef shared_ptr<ZeroInflationTermStructure> QlZeroInflationTermStructure;
 typedef std::vector<shared_ptr<Coupon> > CouponLeg;
 
 #ifdef QLTRACK_ALLOCATIONS

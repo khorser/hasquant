@@ -21,6 +21,8 @@
 #include <ql/indexes/swap/all.hpp>
 #include <ql/indexes/iborindex.hpp>
 #include <ql/indexes/ibor/all.hpp>
+#include <ql/indexes/inflation/all.hpp>
+#include <ql/termstructures/inflation/inflationhelpers.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -362,6 +364,55 @@ double qlDefaultProbabilityTermStructureSurvivalProbability1(QlDefaultProbabilit
 double qlDefaultProbabilityTermStructureSurvivalProbability(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, char **e) {
   try {return (*arg(o))->survivalProbability(Date(d), extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeZeroInflationTermStructure(QlZeroInflationTermStructure *o) {del(o);}
+QlTermStructure* qlZeroInflationTermStructureAsTermStructure(QlZeroInflationTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+double qlZeroInflationTermStructureZeroRate(QlZeroInflationTermStructure* o, int d, int extrapolate, char **e) {
+  try {return (*arg(o))->zeroRate(Date(d), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlFreeYoYInflationTermStructure(QlYoYInflationTermStructure *o) {del(o);}
+QlTermStructure* qlYoYInflationTermStructureAsTermStructure(QlYoYInflationTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d, int extrapolate, char **e) {
+  try {return (*arg(o))->yoyRate(Date(d), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}
+QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, char **e) {
+  try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(Handle<Quote>(*arg(quote)), Period(n, (TimeUnit)u), Date(maturity),
+          *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(zii),
+          observationInterpolation == 0 ? CPI::Flat : CPI::Linear, Pillar::LastRelevantDate, Date()))));
+  } catch (std::exception& er) {return handleException<QlZeroCouponInflationSwapHelper*>(e, er);}}
+
+void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o) {del(o);}
+QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlYoYInflationIndex* yii, int observationInterpolation, QlYieldTermStructure* nominalTermStructure, char **e) {
+  try {return ret(new QlYearOnYearInflationSwapHelper(alloc(new YearOnYearInflationSwapHelper(Handle<Quote>(*arg(quote)), Period(n, (TimeUnit)u), Date(maturity),
+          *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(yii),
+          observationInterpolation == 0 ? CPI::Flat : CPI::Linear, Handle<YieldTermStructure>(*arg(nominalTermStructure)), Pillar::LastRelevantDate, Date()))));
+  } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwapHelper*>(e, er);}}
+
+QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
+  try {
+    // instruments[i] is shared_ptr<ZeroCouponInflationSwapHelper>*; push_back upcasts each
+    // element to shared_ptr<BootstrapHelper<ZeroInflationTermStructure>> (PiecewiseZeroInflationCurve's
+    // helper type) -- qlVector can't do this since it deduces the vector's element type from the
+    // array's pointee type, not the target parameter type.
+    std::vector<shared_ptr<BootstrapHelper<ZeroInflationTermStructure> > > instr;
+    instr.reserve(instrumentsLen);
+    for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
+    ZeroInflationTermStructure *ts = qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
+        instr, interpolator, approximator, approximatorArg);
+    return ret(new QlZeroInflationTermStructure(alloc(ts)));
+  } catch (std::exception& er) {return handleException<QlZeroInflationTermStructure*>(e, er);}}
+QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
+  try {
+    std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > > instr;
+    instr.reserve(instrumentsLen);
+    for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
+    YoYInflationTermStructure *ts = qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
+        instr, interpolator, approximator, approximatorArg);
+    return ret(new QlYoYInflationTermStructure(alloc(ts)));
+  } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
+
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {return ret(new QlRateHelper(new DepositRateHelper( Handle<Quote>(*arg(quote)), Period(l, (TimeUnit)u), fixDays,
           *arg(calendar), (BusinessDayConvention) conv, eom, *arg(dayCount))));
@@ -745,5 +796,58 @@ void qlFreeOvernightIndex(QlOvernightIndex *o) {del(o);}
 QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) {return ret(new QlIborIndex(*arg(o)));}
 int qlIborIndexBusinessDayConvention(QlIborIndex* o) {return (*arg(o))->businessDayConvention();}
 int qlIborIndexEndOfMonth(QlIborIndex* o) {return (*arg(o))->endOfMonth();}
+
+typedef ZeroInflationIndex *(*makeZeroInflationIndex)();
+// must match the order of qlEnumObjects.h:ZeroInflationIndexType
+static const makeZeroInflationIndex zeroInflationIndices[] = {
+    []{return static_cast<ZeroInflationIndex *>(new AUCPI(Quarterly, false));} // AU CPI is published quarterly, unlike the other (monthly) named indices
+  , []{return static_cast<ZeroInflationIndex *>(new EUHICP());}
+  , []{return static_cast<ZeroInflationIndex *>(new EUHICPXT());}
+  , []{return static_cast<ZeroInflationIndex *>(new FRHICP());}
+  , []{return static_cast<ZeroInflationIndex *>(new UKHICP());}
+  , []{return static_cast<ZeroInflationIndex *>(new UKRPI());}
+  , []{return static_cast<ZeroInflationIndex *>(new USCPI());}
+  , []{return static_cast<ZeroInflationIndex *>(new ZACPI());}
+};
+
+QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e) {
+  try {
+    if (index < 0 || index >= (int)LENGTH(zeroInflationIndices))
+      QL_FAIL("Invalid zero inflation index index" << index);
+    return ret(new QlZeroInflationIndex(alloc(zeroInflationIndices[index]())));
+  } catch (std::exception& er) {return handleException<QlZeroInflationIndex *>(e, er);}}
+
+typedef YoYInflationIndex *(*makeYoYInflationIndex)();
+// must match the order of qlEnumObjects.h:YoYInflationIndexType
+static const makeYoYInflationIndex yoyInflationIndices[] = {
+    []{return static_cast<YoYInflationIndex *>(new YYAUCPI(Quarterly, false));}
+  , []{return static_cast<YoYInflationIndex *>(new YYEUHICP());}
+  , []{return static_cast<YoYInflationIndex *>(new YYEUHICPXT());}
+  , []{return static_cast<YoYInflationIndex *>(new YYFRHICP());}
+  , []{return static_cast<YoYInflationIndex *>(new YYUKRPI());}
+  , []{return static_cast<YoYInflationIndex *>(new YYUSCPI());}
+  , []{return static_cast<YoYInflationIndex *>(new YYZACPI());}
+};
+
+QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e) {
+  try {
+    if (index < 0 || index >= (int)LENGTH(yoyInflationIndices))
+      QL_FAIL("Invalid year-on-year inflation index index" << index);
+    return ret(new QlYoYInflationIndex(alloc(yoyInflationIndices[index]())));
+  } catch (std::exception& er) {return handleException<QlYoYInflationIndex *>(e, er);}}
+
+void qlFreeInflationIndex(QlInflationIndex *o) {del(o);}
+QlIndex* qlInflationIndexAsIndex(QlInflationIndex *o) {return ret(new QlIndex(*arg(o)));}
+void qlFreeZeroInflationIndex(QlZeroInflationIndex *o) {del(o);}
+QlInflationIndex* qlZeroInflationIndexAsInflationIndex(QlZeroInflationIndex *o) {return ret(new QlInflationIndex(*arg(o)));}
+void qlFreeYoYInflationIndex(QlYoYInflationIndex *o) {del(o);}
+QlInflationIndex* qlYoYInflationIndexAsInflationIndex(QlYoYInflationIndex *o) {return ret(new QlInflationIndex(*arg(o)));}
+
+double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, char **e) {
+  try {return (*arg(o))->fixing(Date(fixingDate));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, char **e) {
+  try {return (*arg(o))->fixing(Date(fixingDate));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

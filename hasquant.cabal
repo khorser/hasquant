@@ -66,9 +66,11 @@ library
       QuantLib.Method
       QuantLib.TermStructure
       QuantLib.TermStructure.Yield
+      QuantLib.TermStructure.Inflation
       QuantLib.TermStructure.Credit
       QuantLib.TermStructure.Volatility
       QuantLib.Index.InterestRate
+      QuantLib.Index.Inflation
       QuantLib.CashFlow
       QuantLib.Instrument.Bond
       QuantLib.Instrument.CapFloor
@@ -135,6 +137,7 @@ library hasquant-examples
       QuantLib.Example.FittedBondCurve
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
+      QuantLib.Example.InflationCurve
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.Swap
