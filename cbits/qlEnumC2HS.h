@@ -358,13 +358,16 @@ enum ChinaMarket {SSE, IB};
 enum FranceMarket {Settlement, Exchange};
 enum GermanyMarket {Settlement, FrankfurtStockExchange, Xetra, Eurex, Euwax};
 enum IndonesiaMarket {BEJ, JSX, IDX};
-enum IsraelMarket {Settlement, TASE};
+enum IsraelMarket {Settlement, TASE, SHIR, Telbor};
 enum ItalyMarket {Settlement, Exchange};
 enum RomaniaMarket {Public, BVB};
 enum RussiaMarket {Settlement, MOEX};
 enum SouthKoreaMarket {Settlement, KRX};
 enum UnitedKingdomMarket {Settlement, Exchange, Metals};
-enum UnitedStatesMarket {Settlement, NYSE, GovernmentBond, NERC, LiborImpact, FederalReserve};
+enum UnitedStatesMarket {Settlement, NYSE, GovernmentBond, NERC, LiborImpact, FederalReserve, SOFR};
+enum AustraliaMarket {Settlement, ASX};
+enum NewZealandMarket {Wellington, Auckland};
+enum PolandMarket {Settlement, WSE};
 
 // enums values should match with those in ql/time/daycounters/*.hpp
 enum ActualActualConvention {ISMA, Bond, ISDA, Historical, Actual365, AFB, Euro};

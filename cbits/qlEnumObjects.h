@@ -157,6 +157,14 @@ enum CalendarCountry {
   , UnitedKingdom
   , UnitedStates
   , WeekendsOnly
+  , Chile
+  , Croatia
+  , Malta
+  , Montenegro
+  , NorthMacedonia
+  , Serbia
+  , Slovenia
+  , Uzbekistan
 };
 
 // should match with the order of qlMisc.cpp:dayCounters

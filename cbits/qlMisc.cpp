@@ -413,7 +413,7 @@ typedef Calendar *(*makeCalendar)(int market);
 // must match with the order of qlEnumObjects.h:CalendarCountry
 static const makeCalendar calendars[] = {
   [](int){return static_cast<Calendar *>(new Argentina());}
-  , [](int){return static_cast<Calendar *>(new Australia());}
+  , [](int market){return static_cast<Calendar *>(new Australia((Australia::Market) market));}
   , [](int market){return static_cast<Calendar *>(new Austria((Austria::Market) market));}
   , [](int){return static_cast<Calendar *>(new Botswana());}
   , [](int market){return static_cast<Calendar *>(new Brazil((Brazil::Market) market));}
@@ -433,10 +433,10 @@ static const makeCalendar calendars[] = {
   , [](int market){return static_cast<Calendar *>(new Italy((Italy::Market) market));}
   , [](int){return static_cast<Calendar *>(new Japan());}
   , [](int){return static_cast<Calendar *>(new Mexico());}
-  , [](int){return static_cast<Calendar *>(new NewZealand());}
+  , [](int market){return static_cast<Calendar *>(new NewZealand((NewZealand::Market) market));}
   , [](int){return static_cast<Calendar *>(new Norway());}
   , [](int){return static_cast<Calendar *>(new NullCalendar());}
-  , [](int){return static_cast<Calendar *>(new Poland());}
+  , [](int market){return static_cast<Calendar *>(new Poland((Poland::Market) market));}
   , [](int market){return static_cast<Calendar *>(new Romania((Romania::Market) market));}
   , [](int market){return static_cast<Calendar *>(new Russia((Russia::Market) market));}
   , [](int){return static_cast<Calendar *>(new SaudiArabia());}
@@ -454,6 +454,14 @@ static const makeCalendar calendars[] = {
   , [](int market){return static_cast<Calendar *>(new UnitedKingdom((UnitedKingdom::Market) market));}
   , [](int market){return static_cast<Calendar *>(new UnitedStates((UnitedStates::Market) market));}
   , [](int){return static_cast<Calendar *>(new WeekendsOnly());}
+  , [](int){return static_cast<Calendar *>(new Chile());}
+  , [](int){return static_cast<Calendar *>(new Croatia());}
+  , [](int){return static_cast<Calendar *>(new Malta());}
+  , [](int){return static_cast<Calendar *>(new Montenegro());}
+  , [](int){return static_cast<Calendar *>(new NorthMacedonia());}
+  , [](int){return static_cast<Calendar *>(new Serbia());}
+  , [](int){return static_cast<Calendar *>(new Slovenia());}
+  , [](int){return static_cast<Calendar *>(new Uzbekistan());}
 };
 
 Calendar *qlCalendar(int country, int market, char **e) {

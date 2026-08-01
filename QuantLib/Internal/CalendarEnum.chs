@@ -34,6 +34,9 @@ import QuantLib.Time.Date(Weekday)
 {#enum SouthKoreaMarket{} add prefix = "SouthKorea__" deriving(Show, Eq)#}
 {#enum UnitedKingdomMarket{} add prefix = "UnitedKingdom__" deriving(Show, Eq)#}
 {#enum UnitedStatesMarket{} add prefix = "UnitedStates__" deriving(Show, Eq)#}
+{#enum AustraliaMarket{} add prefix = "Australia__" deriving(Show, Eq)#}
+{#enum NewZealandMarket{} add prefix = "NewZealand__" deriving(Show, Eq)#}
+{#enum PolandMarket{} add prefix = "Poland__" deriving(Show, Eq)#}
 
 data CalendarExtra =
    Extra__Bespoke !String ![Weekday]

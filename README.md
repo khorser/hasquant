@@ -68,7 +68,6 @@ While this is convenient, it leads to some allocation and deallocation on each c
  - classes (e.g. Inflation Term Structure). You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files
  - methods. Since the last time I looked into it, QuantLib has added more interesting methods. It looks like a good task for an LLM.
  - method arguments. Some methods were refactored and updated to support more arguments. Particularly, look for TODO items in cbits.
- - calendars and currencies
 - Add more nonempty lists or vectors for some functions where applicable
 - Use some QuantLib handles for quotes and curves to support standard semantics
 - Design a declarative embedded DSL
