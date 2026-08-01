@@ -39,3 +39,7 @@ As part of the effort I generalized arguments (e.g. GenBond a instead of Bond)
 
 Eventually some type classes emerged back but not visible to the end user.
 E.g., any TermStructure is represented as type GenTermStructure a. Any YieldTermStructure subclass including YieldTermStructure itself is GenYieldTermStructure a (and GenTermStructure <some nested stuff>)
+
+# 0.2.7.0 (2026)
+
+Resurrected the project, polished FFI helpers. Updated static data, added inflation.

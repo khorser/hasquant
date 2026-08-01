@@ -74,6 +74,13 @@ While this is convenient, it leads to some allocation and deallocation on each c
 - Add HLS integration in Docker
 - Add generic `ZeroInflationIndex`/`YoYInflationIndex` constructors (custom family name/`Region`/currency), not just the 8/7 pre-baked named indices (`UKRPI`, `EUHICP`, ...) added so far. `QuantLib.Index.Inflation`'s `Index -> InflationIndex -> {ZeroInflationIndex, YoYInflationIndex}` hierarchy was deliberately built as a real 3-level Haskell type hierarchy (mirroring `InterestRateIndex`), rather than collapsed into single-level leaves, specifically so this can be added later without restructuring. Would also need a `Region` binding (`ql/indexes/region.hpp`), currently unbound.
 - `Pillar::Choice` is not exposed anywhere `BootstrapHelper`-derived helpers are bound (`RateHelper`s in `QuantLib.TermStructure.Yield`, and `ZeroCouponInflationSwapHelper`/`YearOnYearInflationSwapHelper` in `QuantLib.TermStructure.Inflation`) -- always uses the upstream default (`Pillar::LastRelevantDate`). Add a Haskell parameter if a caller ever needs `MaturityDate`/`CustomDate` pillars instead.
+- experimental/commodities
+- experimental/termstructures
+- migrate more tests and examples from QuantLib
+- review interfaces for consistency, add obviously missing features and fix things contradicting the current design
+- add more swap types
+- add CPIBondHelper, CPILeg, all inflation bonds and swaps
+
 - Finish migration of following enums
 
 ```
