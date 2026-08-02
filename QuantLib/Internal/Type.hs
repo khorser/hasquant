@@ -4,6 +4,27 @@ module QuantLib.Internal.Type
     Standalone(..)
   , withStandalone
 
+  , Finalizable(..)
+  , Upcastable(..)
+  , GenForeignPtr
+  , newCastForeignPtr
+  , newGenForeignPtr
+  , newAnyOf
+  , withGenForeignPtr
+  , freeUpcast
+
+  , CPayoff'
+  , CBasketPayoff'
+  , CTypePayoff'
+  , CStrikedTypePayoff'
+  , CPercentageStrikePayoff'
+  , CPlainVanillaPayoff'
+  , CExercise'
+  , CAmericanExercise'
+  , CEuropeanExercise'
+  , CBermudanExercise'
+  , CSwingExercise'
+
   , CCalendar
   , Calendar
   , peekCalendar
@@ -985,6 +1006,71 @@ withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b
 withQuoteArray = withGenArray withQuote
 withQuoteArrayRaw :: [GenQuote a] -> (Ptr (Ptr CQuote') -> IO b) -> IO b
 withQuoteArrayRaw x f = withMany withQuote x (`withArray` f)
+
+-- PAYOFF/EXERCISE upcast targets used by QuantLib.Internal.Enum's Payoff/Exercise ADT dispatch
+-- (the ADTs themselves stay in Enum.chs; only the pointer hierarchy plumbing lives here,
+-- matching every other hierarchy in this module)
+data CPayoff'
+foreign import ccall unsafe "ql.h &qlFreePayoff" qlFreePayoff :: FinalizerPtr CPayoff'
+instance Finalizable CPayoff' where finalize = qlFreePayoff
+
+data CBasketPayoff'
+foreign import ccall unsafe "ql.h &qlFreeBasketPayoff" qlFreeBasketPayoff :: FinalizerPtr CBasketPayoff'
+instance Finalizable CBasketPayoff' where finalize = qlFreeBasketPayoff
+instance Upcastable CBasketPayoff' where {type Base CBasketPayoff' = CPayoff'; upcast = qlBasketPayoffAsPayoff}
+foreign import ccall "ql.h qlBasketPayoffAsPayoff" qlBasketPayoffAsPayoff :: Ptr CBasketPayoff' -> IO (Ptr CPayoff')
+
+data CTypePayoff'
+foreign import ccall unsafe "ql.h &qlFreeTypePayoff" qlFreeTypePayoff :: FinalizerPtr CTypePayoff'
+instance Finalizable CTypePayoff' where finalize = qlFreeTypePayoff
+instance Upcastable CTypePayoff' where {type Base CTypePayoff' = CPayoff'; upcast = qlTypePayoffAsPayoff}
+foreign import ccall "ql.h qlTypePayoffAsPayoff" qlTypePayoffAsPayoff :: Ptr CTypePayoff' -> IO (Ptr CPayoff')
+
+data CStrikedTypePayoff'
+foreign import ccall unsafe "ql.h &qlFreeStrikedTypePayoff" qlFreeStrikedTypePayoff :: FinalizerPtr CStrikedTypePayoff'
+instance Finalizable CStrikedTypePayoff' where finalize = qlFreeStrikedTypePayoff
+instance Upcastable CStrikedTypePayoff' where {type Base CStrikedTypePayoff' = CTypePayoff'; upcast = qlStrikedTypePayoffAsTypePayoff}
+foreign import ccall "ql.h qlStrikedTypePayoffAsTypePayoff" qlStrikedTypePayoffAsTypePayoff :: Ptr CStrikedTypePayoff' -> IO (Ptr CTypePayoff')
+
+data CPercentageStrikePayoff'
+foreign import ccall unsafe "ql.h &qlFreePercentageStrikePayoff" qlFreePercentageStrikePayoff :: FinalizerPtr CPercentageStrikePayoff'
+instance Finalizable CPercentageStrikePayoff' where finalize = qlFreePercentageStrikePayoff
+instance Upcastable CPercentageStrikePayoff' where {type Base CPercentageStrikePayoff' = CStrikedTypePayoff'; upcast = qlPercentageStrikePayoffAsStrikedTypePayoff}
+foreign import ccall "ql.h qlPercentageStrikePayoffAsStrikedTypePayoff" qlPercentageStrikePayoffAsStrikedTypePayoff :: Ptr CPercentageStrikePayoff' -> IO (Ptr CStrikedTypePayoff')
+
+data CPlainVanillaPayoff'
+foreign import ccall unsafe "ql.h &qlFreePlainVanillaPayoff" qlFreePlainVanillaPayoff :: FinalizerPtr CPlainVanillaPayoff'
+instance Finalizable CPlainVanillaPayoff' where finalize = qlFreePlainVanillaPayoff
+instance Upcastable CPlainVanillaPayoff' where {type Base CPlainVanillaPayoff' = CStrikedTypePayoff'; upcast = qlPlainVanillaPayoffAsStrikedTypePayoff}
+foreign import ccall "ql.h qlPlainVanillaPayoffAsStrikedTypePayoff" qlPlainVanillaPayoffAsStrikedTypePayoff :: Ptr CPlainVanillaPayoff' -> IO (Ptr CStrikedTypePayoff')
+
+data CExercise'
+foreign import ccall unsafe "ql.h &qlFreeExercise" qlFreeExercise :: FinalizerPtr CExercise'
+instance Finalizable CExercise' where finalize = qlFreeExercise
+
+data CAmericanExercise'
+foreign import ccall unsafe "ql.h &qlFreeAmericanExercise" qlFreeAmericanExercise :: FinalizerPtr CAmericanExercise'
+instance Finalizable CAmericanExercise' where finalize = qlFreeAmericanExercise
+instance Upcastable CAmericanExercise' where {type Base CAmericanExercise' = CExercise'; upcast = qlAmericanExerciseAsExercise}
+foreign import ccall "ql.h qlAmericanExerciseAsExercise" qlAmericanExerciseAsExercise :: Ptr CAmericanExercise' -> IO (Ptr CExercise')
+
+data CEuropeanExercise'
+foreign import ccall unsafe "ql.h &qlFreeEuropeanExercise" qlFreeEuropeanExercise :: FinalizerPtr CEuropeanExercise'
+instance Finalizable CEuropeanExercise' where finalize = qlFreeEuropeanExercise
+instance Upcastable CEuropeanExercise' where {type Base CEuropeanExercise' = CExercise'; upcast = qlEuropeanExerciseAsExercise}
+foreign import ccall "ql.h qlEuropeanExerciseAsExercise" qlEuropeanExerciseAsExercise :: Ptr CEuropeanExercise' -> IO (Ptr CExercise')
+
+data CBermudanExercise'
+foreign import ccall unsafe "ql.h &qlFreeBermudanExercise" qlFreeBermudanExercise :: FinalizerPtr CBermudanExercise'
+instance Finalizable CBermudanExercise' where finalize = qlFreeBermudanExercise
+instance Upcastable CBermudanExercise' where {type Base CBermudanExercise' = CExercise'; upcast = qlBermudanExerciseAsExercise}
+foreign import ccall "ql.h qlBermudanExerciseAsExercise" qlBermudanExerciseAsExercise :: Ptr CBermudanExercise' -> IO (Ptr CExercise')
+
+data CSwingExercise'
+foreign import ccall unsafe "ql.h &qlFreeSwingExercise" qlFreeSwingExercise :: FinalizerPtr CSwingExercise'
+instance Finalizable CSwingExercise' where finalize = qlFreeSwingExercise
+instance Upcastable CSwingExercise' where {type Base CSwingExercise' = CBermudanExercise'; upcast = qlSwingExerciseAsBermudanExercise}
+foreign import ccall "ql.h qlSwingExerciseAsBermudanExercise" qlSwingExerciseAsBermudanExercise :: Ptr CSwingExercise' -> IO (Ptr CBermudanExercise')
 
 data CLeg'
 data CCouponLeg'

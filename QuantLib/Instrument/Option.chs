@@ -90,16 +90,16 @@ import QuantLib.Internal.Enum
 {#pointer *QlQuantoVanillaOption as QuantoVanillaOption foreign -> CQuantoVanillaOption' nocode#}
 {#pointer *QlVanillaOption as VanillaOption foreign -> CVanillaOption' nocode#}
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
-{#pointer *QlPayoff foreign newtype nocode#}
-{#pointer *QlPercentageStrikePayoff foreign newtype nocode#}
-{#pointer *QlStrikedTypePayoff foreign newtype nocode#}
-{#pointer *QlTypePayoff foreign newtype nocode#}
-{#pointer *QlBasketPayoff foreign newtype nocode#}
-{#pointer *QlPlainVanillaPayoff foreign newtype nocode#}
-{#pointer *QlExercise foreign newtype nocode#}
-{#pointer *QlEuropeanExercise foreign newtype nocode#}
-{#pointer *QlSwingExercise foreign newtype nocode#}
-{#pointer *QlBermudanExercise foreign newtype nocode#}
+{#pointer *QlPayoff nocode#}
+{#pointer *QlBasketPayoff nocode#}
+{#pointer *QlTypePayoff nocode#}
+{#pointer *QlStrikedTypePayoff nocode#}
+{#pointer *QlPercentageStrikePayoff nocode#}
+{#pointer *QlPlainVanillaPayoff nocode#}
+{#pointer *QlExercise nocode#}
+{#pointer *QlEuropeanExercise nocode#}
+{#pointer *QlSwingExercise nocode#}
+{#pointer *QlBermudanExercise nocode#}
 
 {#fun qlQuantoForwardVanillaOption as quantoForwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate

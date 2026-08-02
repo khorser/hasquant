@@ -76,8 +76,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap' nocode#}
 {#pointer *Schedule as Schedule foreign -> CSchedule nocode#}
-{#pointer *QlExercise as Exercies foreign -> QlExercise nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
+{#pointer *QlExercise nocode#}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

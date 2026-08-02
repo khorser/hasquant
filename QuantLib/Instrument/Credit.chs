@@ -46,6 +46,7 @@ import Foreign.Ptr(Ptr)
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *Schedule foreign -> CSchedule nocode#}
 {#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
+{#pointer *QlExercise nocode#}
 
 -- |CDS quoted as running-spread only.
 -- side Whether the protection is bought or sold. notional Notional value spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract.
@@ -66,7 +67,6 @@ import Foreign.Ptr(Ptr)
   ,withMaybeDay*`Maybe Day' -- ^upfrontDate
   ,withClaim*`Claim',preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
 {#fun qlCdsOptionAtmRate as atmRate{withCdsOption*`CdsOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#pointer *QlExercise foreign newtype nocode#}
 {#fun qlCdsOption as cdsOption{withGenInstrument*`CreditDefaultSwap',withExercise*`Exercise',`Bool' -- ^knocksOut
   ,preErrorCheck-`String'errorCheck*-}->`CdsOption'peekCdsOption*#}
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility{withCdsOption*`CdsOption',`Double' -- ^price

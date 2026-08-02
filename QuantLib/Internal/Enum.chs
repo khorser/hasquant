@@ -100,6 +100,7 @@ import Foreign.C.Types(CUInt)
 import Foreign.Marshal.Utils(fromBool, withMany)
 import Foreign.Marshal.Array(withArray)
 import Control.Monad((>=>))
+import Control.Exception(finally)
 
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -122,23 +123,43 @@ import QuantLib.Internal.Type
 {#enum FdmSchemeType{} deriving(Show, Eq)#}
 {#enum RoundingType{} deriving (Show, Eq)#}
 
-{#pointer *QlPayoff foreign finalizer qlFreePayoff newtype#}
-{#pointer *QlBasketPayoff foreign finalizer qlFreeBasketPayoff newtype#}
-{#pointer *QlTypePayoff foreign finalizer qlFreeTypePayoff newtype#}
-{#pointer *QlStrikedTypePayoff foreign finalizer qlFreeStrikedTypePayoff newtype#}
-{#pointer *QlPercentageStrikePayoff foreign finalizer qlFreePercentageStrikePayoff newtype#}
-{#pointer *QlPlainVanillaPayoff foreign finalizer qlFreePlainVanillaPayoff newtype#}
+-- Payoff/Exercise pointer hierarchy: the Finalizable/Upcastable instances and raw phantom
+-- tags (CPayoff' etc.) live in QuantLib.Internal.Type alongside every other class hierarchy;
+-- these are just c2hs-local aliases so {#fun#} specs below can keep writing the bare `QlX'
+-- names, resolving to a raw, unwrapped Ptr (no auto-generated foreign-pointer code) since
+-- construction/upcasting is handled by hand in the with* functions further down.
+type QlPayoff = Ptr CPayoff'
+type QlBasketPayoff = Ptr CBasketPayoff'
+type QlTypePayoff = Ptr CTypePayoff'
+type QlStrikedTypePayoff = Ptr CStrikedTypePayoff'
+type QlPercentageStrikePayoff = Ptr CPercentageStrikePayoff'
+type QlPlainVanillaPayoff = Ptr CPlainVanillaPayoff'
+type QlExercise = Ptr CExercise'
+type QlEuropeanExercise = Ptr CEuropeanExercise'
+type QlAmericanExercise = Ptr CAmericanExercise'
+type QlSwingExercise = Ptr CSwingExercise'
+type QlBermudanExercise = Ptr CBermudanExercise'
+-- identity peek function: c2hs {#fun#} return specs always need a named out-marshaller,
+-- even when (as here) construction should just hand back the raw, un-wrapped pointer.
+peekPtr :: Ptr a -> IO (Ptr a)
+peekPtr = pure
+{#pointer *QlPayoff nocode#}
+{#pointer *QlBasketPayoff nocode#}
+{#pointer *QlTypePayoff nocode#}
+{#pointer *QlStrikedTypePayoff nocode#}
+{#pointer *QlPercentageStrikePayoff nocode#}
+{#pointer *QlPlainVanillaPayoff nocode#}
+{#pointer *QlExercise nocode#}
+{#pointer *QlEuropeanExercise nocode#}
+{#pointer *QlAmericanExercise nocode#}
+{#pointer *QlSwingExercise nocode#}
+{#pointer *QlBermudanExercise nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
-{#pointer *QlExercise foreign finalizer qlFreeExercise newtype#}
-{#pointer *QlEuropeanExercise foreign finalizer qlFreeEuropeanExercise newtype#}
-{#pointer *QlAmericanExercise foreign finalizer qlFreeAmericanExercise newtype#}
-{#pointer *QlSwingExercise foreign finalizer qlFreeSwingExercise newtype#}
-{#pointer *QlBermudanExercise foreign finalizer qlFreeBermudanExercise newtype#}
 {#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
@@ -181,17 +202,6 @@ data Interpolation =
   | Abcd
   deriving (Show, Eq)
 
-class IsQlExercise a where asQlExercise :: a -> IO QlExercise
-
-{#fun qlEuropeanExerciseAsExercise{`QlEuropeanExercise'}->`QlExercise'#}
-instance IsQlExercise QlEuropeanExercise where asQlExercise = qlEuropeanExerciseAsExercise
-{#fun qlAmericanExerciseAsExercise{`QlAmericanExercise'}->`QlExercise'#}
-instance IsQlExercise QlAmericanExercise where asQlExercise = qlAmericanExerciseAsExercise
-{#fun qlSwingExerciseAsExercise{`QlSwingExercise'}->`QlExercise'#}
-instance IsQlExercise QlSwingExercise where asQlExercise = qlSwingExerciseAsExercise
-{#fun qlBermudanExerciseAsExercise{`QlBermudanExercise'}->`QlExercise'#}
-instance IsQlExercise QlBermudanExercise where asQlExercise = qlBermudanExerciseAsExercise
-
 data EuropeanExercise = EuropeanExercise Day
 data SwingExercise =
     SwingListExercise ![(Day, Word)] -- ^(dates, seconds)
@@ -209,23 +219,33 @@ data Exercise =
     | European !EuropeanExercise
     | Bermudan !BermudanExercise
 
-{#fun qlExercise{`ExerciseType',preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
-{#fun qlAmericanExercise{withDay*`Day',withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
-{#fun qlAmericanExercise1{withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'#}
-{#fun qlBermudanExercise{withDayArray*`[Day]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`QlBermudanExercise'#}
-{#fun qlEarlyExercise{`ExerciseType',`Bool',preErrorCheck-`String'errorCheck*-}->`QlExercise'#}
-{#fun qlEuropeanExercise{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlEuropeanExercise'#}
-{#fun qlSwingExercise{withDayArray*`[Day]'&,withIntArray*`[Word]'&,preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'#}
-{#fun qlSwingExercise1{withDay*`Day',withDay*`Day',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'#}
-{#fun qlSwingExerciseAsBermudanExercise{`QlSwingExercise'}->`QlBermudanExercise'#}
+{#fun qlExercise{`ExerciseType',preErrorCheck-`String'errorCheck*-}->`QlExercise'peekPtr*#}
+{#fun qlAmericanExercise{withDay*`Day',withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'peekPtr*#}
+{#fun qlAmericanExercise1{withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'peekPtr*#}
+{#fun qlBermudanExercise{withDayArray*`[Day]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`QlBermudanExercise'peekPtr*#}
+{#fun qlEarlyExercise{`ExerciseType',`Bool',preErrorCheck-`String'errorCheck*-}->`QlExercise'peekPtr*#}
+{#fun qlEuropeanExercise{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlEuropeanExercise'peekPtr*#}
+{#fun qlSwingExercise{withDayArray*`[Day]'&,withIntArray*`[Word]'&,preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'peekPtr*#}
+{#fun qlSwingExercise1{withDay*`Day',withDay*`Day',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'peekPtr*#}
 
-exercise :: Exercise -> IO QlExercise
-exercise (AmericanExercise Nothing d p) = qlAmericanExercise1 d p >>= asQlExercise
-exercise (AmericanExercise (Just d0) d p) = qlAmericanExercise d0 d p >>= asQlExercise
-exercise (Early t p) = qlEarlyExercise t p
-exercise (Vanilla t) = qlExercise t
-exercise (European e) = getMeta' europeanExerciseMeta e >>= asQlExercise
-exercise (Bermudan e) = getMeta' bermudanExerciseMeta e >>= asQlExercise
+withEuropeanExercise :: EuropeanExercise -> (QlEuropeanExercise -> IO a) -> IO a
+withEuropeanExercise (EuropeanExercise d) f = qlEuropeanExercise d >>= newCastForeignPtr >>= flip withGenForeignPtr f
+
+withSwingExercise :: SwingExercise -> (QlSwingExercise -> IO a) -> IO a
+withSwingExercise (SwingListExercise ds) f = uncurry qlSwingExercise (unzip ds) >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withSwingExercise (SwingIntervalExercise d1 d2 s) f = qlSwingExercise1 d1 d2 s >>= newCastForeignPtr >>= flip withGenForeignPtr f
+
+withBermudanExercise :: BermudanExercise -> (QlBermudanExercise -> IO a) -> IO a
+withBermudanExercise (BermudanExercise d p) f = qlBermudanExercise d p >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withBermudanExercise (Swing e) f = withSwingExercise e (\sp -> upcast sp >>= \bp -> f bp `finally` freeUpcast bp)
+
+withExercise :: Exercise -> (QlExercise -> IO a) -> IO a
+withExercise (AmericanExercise Nothing d p) f = qlAmericanExercise1 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
+withExercise (AmericanExercise (Just d0) d p) f = qlAmericanExercise d0 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
+withExercise (Early t p) f = qlEarlyExercise t p >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withExercise (Vanilla t) f = qlExercise t >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withExercise (European e) f = withEuropeanExercise e (\ep -> upcast ep >>= \xp -> f xp `finally` freeUpcast xp)
+withExercise (Bermudan e) f = withBermudanExercise e (\bp -> upcast bp >>= \xp -> f xp `finally` freeUpcast xp)
 
 data PercentageStrikePayoff = PercentageStrikePayoff
       !OptionType -- ^type
@@ -257,14 +277,20 @@ data StrikedPayoff =
       !Double -- ^secondStrike
       !Double -- ^cashPayoff
 
-strikedPayoff :: StrikedPayoff -> IO QlStrikedTypePayoff
-strikedPayoff (AssetOrNothing t s) = qlAssetOrNothingPayoff t s
-strikedPayoff (CashOrNothing t s c) = qlCashOrNothingPayoff t s c
-strikedPayoff (Gap t s ss) = qlGapPayoff t s ss
-strikedPayoff (PercentageStrike p) = getMeta' percentageStrikePayoffMeta p >>= qlPercentageStrikePayoffAsStrikedTypePayoff
-strikedPayoff (PlainVanilla p) = getMeta' plainVanillaPayoffMeta p >>= qlPlainVanillaPayoffAsStrikedTypePayoff
-strikedPayoff (SuperFund s ss) = qlSuperFundPayoff s ss
-strikedPayoff (SuperSharePayoff s ss c) = qlSuperSharePayoff s ss c
+withPercentageStrikePayoff :: PercentageStrikePayoff -> (QlPercentageStrikePayoff -> IO a) -> IO a
+withPercentageStrikePayoff (PercentageStrikePayoff t m) f = qlPercentageStrikePayoff t m >>= newCastForeignPtr >>= flip withGenForeignPtr f
+
+withPlainVanillaPayoff :: PlainVanillaPayoff -> (QlPlainVanillaPayoff -> IO a) -> IO a
+withPlainVanillaPayoff (PlainVanillaPayoff t s) f = qlPlainVanillaPayoff t s >>= newCastForeignPtr >>= flip withGenForeignPtr f
+
+withStrikedPayoff :: StrikedPayoff -> (QlStrikedTypePayoff -> IO a) -> IO a
+withStrikedPayoff (AssetOrNothing t s) f = qlAssetOrNothingPayoff t s >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withStrikedPayoff (CashOrNothing t s c) f = qlCashOrNothingPayoff t s c >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withStrikedPayoff (Gap t s ss) f = qlGapPayoff t s ss >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withStrikedPayoff (PercentageStrike p) f = withPercentageStrikePayoff p (\pp -> upcast pp >>= \sp -> f sp `finally` freeUpcast sp)
+withStrikedPayoff (PlainVanilla p) f = withPlainVanillaPayoff p (\pp -> upcast pp >>= \sp -> f sp `finally` freeUpcast sp)
+withStrikedPayoff (SuperFund s ss) f = qlSuperFundPayoff s ss >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withStrikedPayoff (SuperSharePayoff s ss c) f = qlSuperSharePayoff s ss c >>= newCastForeignPtr >>= flip withGenForeignPtr f
 
 data TypePayoff = Striked !StrikedPayoff
   | Floating !OptionType -- ^type
@@ -282,12 +308,16 @@ data BasketPayoff =
   | Spread
       !Payoff -- ^p
 
-basketPayoff :: BasketPayoff -> IO QlBasketPayoff
-basketPayoff (Average p n) = payoff p >>= (`qlAverageBasketPayoff` n)
-basketPayoff (AverageMultiple p a) = payoff p >>= (`qlAverageBasketPayoff1` a)
-basketPayoff (Max p) = payoff p >>= qlMaxBasketPayoff
-basketPayoff (Min p) = payoff p >>= qlMinBasketPayoff
-basketPayoff (Spread p) = payoff p >>= qlSpreadBasketPayoff
+withTypePayoff :: TypePayoff -> (QlTypePayoff -> IO a) -> IO a
+withTypePayoff (Floating t) f = qlFloatingTypePayoff t >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withTypePayoff (Striked s) f = withStrikedPayoff s (\sp -> upcast sp >>= \tp -> f tp `finally` freeUpcast tp)
+
+withBasketPayoff :: BasketPayoff -> (QlBasketPayoff -> IO a) -> IO a
+withBasketPayoff (Average p n) f = withPayoff p (\pp -> qlAverageBasketPayoff pp n >>= newCastForeignPtr >>= flip withGenForeignPtr f)
+withBasketPayoff (AverageMultiple p a) f = withPayoff p (\pp -> qlAverageBasketPayoff1 pp a >>= newCastForeignPtr >>= flip withGenForeignPtr f)
+withBasketPayoff (Max p) f = withPayoff p (\pp -> qlMaxBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
+withBasketPayoff (Min p) f = withPayoff p (\pp -> qlMinBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
+withBasketPayoff (Spread p) f = withPayoff p (\pp -> qlSpreadBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
 
 data Payoff =
     DoubleStickyRatchet
@@ -363,51 +393,39 @@ data Payoff =
   | Basket !BasketPayoff
 
 
-class IsQlPayoff a where asQlPayoff :: a -> IO QlPayoff
-{#fun qlBasketPayoffAsPayoff{`QlBasketPayoff'}->`QlPayoff'#}
-instance IsQlPayoff QlBasketPayoff where asQlPayoff = qlBasketPayoffAsPayoff
-{#fun qlTypePayoffAsPayoff{`QlTypePayoff'}->`QlPayoff'#}
-instance IsQlPayoff QlTypePayoff where asQlPayoff = qlTypePayoffAsPayoff
-{#fun qlStrikedTypePayoffAsTypePayoff{`QlStrikedTypePayoff'}->`QlTypePayoff'#}
-instance IsQlPayoff QlStrikedTypePayoff where asQlPayoff = qlStrikedTypePayoffAsTypePayoff >=> asQlPayoff
-{#fun qlPercentageStrikePayoffAsStrikedTypePayoff{`QlPercentageStrikePayoff'}->`QlStrikedTypePayoff'#}
-instance IsQlPayoff QlPercentageStrikePayoff where asQlPayoff = qlPercentageStrikePayoffAsStrikedTypePayoff >=> asQlPayoff
-{#fun qlPlainVanillaPayoffAsStrikedTypePayoff{`QlPlainVanillaPayoff'}->`QlStrikedTypePayoff'#}
-instance IsQlPayoff QlPlainVanillaPayoff where asQlPayoff = qlPlainVanillaPayoffAsStrikedTypePayoff >=> asQlPayoff
+{#fun qlAssetOrNothingPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
+{#fun qlAverageBasketPayoff{`QlPayoff',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
+{#fun qlCashOrNothingPayoff{`OptionType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
+{#fun qlDoubleStickyRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlFloatingTypePayoff{`OptionType',preErrorCheck-`String'errorCheck*-}->`QlTypePayoff'peekPtr*#}
+{#fun qlForwardTypePayoff{`PositionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlGapPayoff{`OptionType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
+{#fun qlMaxBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
+{#fun qlMinBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
+{#fun qlPercentageStrikePayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPercentageStrikePayoff'peekPtr*#}
+{#fun qlPlainVanillaPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPlainVanillaPayoff'peekPtr*#}
+{#fun qlRatchetMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlRatchetMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlSpreadBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
+{#fun qlStickyMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlStickyMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlStickyPayoff{`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlSuperFundPayoff{`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
+{#fun qlSuperSharePayoff{`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
+{#fun qlAverageBasketPayoff1{`QlPayoff',withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
 
-{#fun qlAssetOrNothingPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlAverageBasketPayoff{`QlPayoff',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlCashOrNothingPayoff{`OptionType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlDoubleStickyRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlFloatingTypePayoff{`OptionType',preErrorCheck-`String'errorCheck*-}->`QlTypePayoff'#}
-{#fun qlForwardTypePayoff{`PositionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlGapPayoff{`OptionType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlMaxBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlMinBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlPercentageStrikePayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPercentageStrikePayoff'#}
-{#fun qlPlainVanillaPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlPlainVanillaPayoff'#}
-{#fun qlRatchetMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlRatchetMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlRatchetPayoff{`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlSpreadBasketPayoff{`QlPayoff',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-{#fun qlStickyMaxPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlStickyMinPayoff{`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlStickyPayoff{`Double',`Double',`Double',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlPayoff'#}
-{#fun qlSuperFundPayoff{`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlSuperSharePayoff{`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'#}
-{#fun qlAverageBasketPayoff1{`QlPayoff',withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'#}
-
-payoff :: Payoff -> IO QlPayoff
-payoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a
-payoff (ForwardType t s) = qlForwardTypePayoff t s
-payoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
-payoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
-payoff (Ratchet g1 g2 s1 s2 i a) = qlRatchetPayoff g1 g2 s1 s2 i a
-payoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
-payoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a
-payoff (Sticky g1 g2 s1 s2 i a) = qlStickyPayoff g1 g2 s1 s2 i a
-payoff (Type s) = getMeta' typedPayoffMeta s >>= asQlPayoff
-payoff (Basket b) = getMeta' basketPayoffMeta b >>= asQlPayoff
+withPayoff :: Payoff -> (QlPayoff -> IO a) -> IO a
+withPayoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (ForwardType t s) f = qlForwardTypePayoff t s >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (Ratchet g1 g2 s1 s2 i a) f = qlRatchetPayoff g1 g2 s1 s2 i a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (Sticky g1 g2 s1 s2 i a) f = qlStickyPayoff g1 g2 s1 s2 i a >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (Type t) f = withTypePayoff t (\tp -> upcast tp >>= \pp -> f pp `finally` freeUpcast pp)
+withPayoff (Basket b) f = withBasketPayoff b (\bp -> upcast bp >>= \pp -> f pp `finally` freeUpcast pp)
 
 data Callability =
   Soft
@@ -485,76 +503,8 @@ optimizationMethodMeta = EnumMeta optimizationMethod
 withOptimizationMethod :: OptimizationMethod -> (Ptr COptimizationMethod -> IO a) -> IO a
 withOptimizationMethod = withEnumType optimizationMethodMeta
 
--- temp solution just to get rid of the EnumObject multiparam type class
-data EnumMeta' a b = EnumMeta' {getMeta' :: !(a -> IO b), with :: !(forall c. b -> (Ptr b -> IO c) -> IO c)}
-withEnumType' :: EnumMeta' a b -> a -> (Ptr b -> IO c) -> IO c
-withEnumType' t x f = getMeta' t x >>= \y -> with t y f
-
-europeanExerciseMeta :: EnumMeta' EuropeanExercise QlEuropeanExercise
-europeanExerciseMeta = EnumMeta' (\(EuropeanExercise d) -> qlEuropeanExercise d) withQlEuropeanExercise
-
-swingExerciseMeta :: EnumMeta' SwingExercise QlSwingExercise
-swingExerciseMeta = EnumMeta' (\x -> case x of
-  SwingListExercise ds -> uncurry qlSwingExercise (unzip ds)
-  SwingIntervalExercise d1 d2 s -> qlSwingExercise1 d1 d2 s) withQlSwingExercise
-
-bermudanExerciseMeta :: EnumMeta' BermudanExercise QlBermudanExercise
-bermudanExerciseMeta = EnumMeta' (\x -> case x of
-  BermudanExercise d p -> qlBermudanExercise d p
-  Swing e -> getMeta' swingExerciseMeta e >>= qlSwingExerciseAsBermudanExercise) withQlBermudanExercise
-
-exerciseMeta :: EnumMeta' Exercise QlExercise
-exerciseMeta = EnumMeta' exercise withQlExercise
-
-percentageStrikePayoffMeta :: EnumMeta' PercentageStrikePayoff QlPercentageStrikePayoff
-percentageStrikePayoffMeta = EnumMeta' (\(PercentageStrikePayoff t m) -> qlPercentageStrikePayoff t m) withQlPercentageStrikePayoff
-
-plainVanillaPayoffMeta :: EnumMeta' PlainVanillaPayoff QlPlainVanillaPayoff
-plainVanillaPayoffMeta = EnumMeta' (\(PlainVanillaPayoff t s) -> qlPlainVanillaPayoff t s) withQlPlainVanillaPayoff
-
-strikedPayoffMeta :: EnumMeta' StrikedPayoff QlStrikedTypePayoff
-strikedPayoffMeta = EnumMeta' strikedPayoff withQlStrikedTypePayoff
-
-typedPayoffMeta :: EnumMeta' TypePayoff QlTypePayoff
-typedPayoffMeta = EnumMeta' (\x -> case x of
-  Striked p -> getMeta' strikedPayoffMeta p >>= qlStrikedTypePayoffAsTypePayoff
-  Floating t -> qlFloatingTypePayoff t) withQlTypePayoff
-
-basketPayoffMeta :: EnumMeta' BasketPayoff QlBasketPayoff
-basketPayoffMeta = EnumMeta' basketPayoff withQlBasketPayoff
-
-payoffMeta :: EnumMeta' Payoff QlPayoff
-payoffMeta = EnumMeta' payoff withQlPayoff
-
-withEuropeanExercise :: EuropeanExercise -> (Ptr QlEuropeanExercise -> IO a) -> IO a
-withEuropeanExercise = withEnumType' europeanExerciseMeta
-
-withSwingExercise :: SwingExercise -> (Ptr QlSwingExercise -> IO a) -> IO a
-withSwingExercise = withEnumType' swingExerciseMeta
-
-withBermudanExercise :: BermudanExercise -> (Ptr QlBermudanExercise -> IO a) -> IO a
-withBermudanExercise = withEnumType' bermudanExerciseMeta
-
-withExercise :: Exercise -> (Ptr QlExercise -> IO a) -> IO a
-withExercise = withEnumType' exerciseMeta
-
-withPercentageStrikePayoff :: PercentageStrikePayoff -> (Ptr QlPercentageStrikePayoff -> IO a) -> IO a
-withPercentageStrikePayoff = withEnumType' percentageStrikePayoffMeta
-
-withPlainVanillaPayoff :: PlainVanillaPayoff -> (Ptr QlPlainVanillaPayoff -> IO a) -> IO a
-withPlainVanillaPayoff = withEnumType' plainVanillaPayoffMeta
-
-withStrikedPayoff :: StrikedPayoff -> (Ptr QlStrikedTypePayoff -> IO a) -> IO a
-withStrikedPayoff = withEnumType' strikedPayoffMeta
-
-withTypePayoff :: TypePayoff -> (Ptr QlTypePayoff -> IO a) -> IO a
-withTypePayoff = withEnumType' typedPayoffMeta
-
-withBasketPayoff :: BasketPayoff -> (Ptr QlBasketPayoff -> IO a) -> IO a
-withBasketPayoff = withEnumType' basketPayoffMeta
-
-withPayoff :: Payoff -> (Ptr QlPayoff -> IO a) -> IO a
-withPayoff = withEnumType' payoffMeta
+-- Payoff/Exercise with* functions are now defined directly, near their ADTs, using
+-- Upcastable/GenForeignPtr (see QuantLib.Internal.Type) instead of EnumMeta'/IsQlPayoff/IsQlExercise.
 
 -- |callability leaving to the holder the possibility to convert
 {#fun qlSoftCallability{`Double',`BondPriceType',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}

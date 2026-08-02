@@ -190,6 +190,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator' nocode#}
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
+{#pointer *QlStrikedTypePayoff nocode#}
+{#pointer *QlPlainVanillaPayoff nocode#}
 
 {#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure a',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -464,7 +466,6 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalculator'peekBlackCalculator*#}
 
-{#pointer *QlStrikedTypePayoff foreign newtype nocode#}
 {#fun qlBlackCalculator as blackCalculator{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
@@ -547,7 +548,6 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#pointer *QlPlainVanillaPayoff foreign newtype nocode#}
 
 -- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormulaCashItmProbability1 as blackCashItmProbability'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward

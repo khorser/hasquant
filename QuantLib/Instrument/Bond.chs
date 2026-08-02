@@ -98,7 +98,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
 {#pointer *QlCallableBond as CallableBond foreign -> CCallableBond' nocode#}
 {#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond' nocode#}
-{#pointer *QlExercise foreign newtype nocode#}
+{#pointer *QlExercise nocode#}
 
 {#fun qlBondFunctionsAtmRate as atmRate{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure a',withDay*`Day',fromEnumDouble`Double,BondPriceType'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |constructor for amortizing or non-amortizing bonds.
