@@ -1,0 +1,45 @@
+---
+name: add-quantlib-adt
+description: Decide whether a new QuantLib value type needs a flat tag-based enum, a live/held object, or a nested-ADT-with-on-demand-materialization (Payoff/Exercise-style) -- and build the nested-ADT case if that's the fit. Use when adding a new QuantLib value type, payoff, exercise, or similar structure, or when unsure whether a new binding needs its own pointer type at all.
+---
+
+## First: which of the three patterns actually fits?
+
+hasquant exposes QuantLib concepts through three different shapes. Picking the wrong one is expensive to unwind — Payoff/Exercise itself used to be a bespoke `IsQlPayoff`/`IsQlExercise`/`EnumMeta'` mechanism before being rebuilt on the pattern described below; reuse that finding rather than re-deriving it from scratch.
+
+1. **Flat tag, no real substructure** — the QuantLib type is fully described by picking one of a fixed set of variants, each with at most a couple of scalar/enum parameters (`DayCounter`, `Calendar`, `Currency`, `BusinessDayConvention`). See `[[reconcile-daycounters]]` for the full mechanism (`mergeEnums` TH machinery, int-indexed factory tables, the `*Extra` escape hatch for non-enum parameters).
+
+2. **Live object, held and passed to many different consumers over its lifetime** — the QuantLib type is a genuine C++ class users construct once and then pass around, query, or feed into other constructors repeatedly (`Option`, `Quote`, `Bond`, `Index`, `TermStructure`, ...). See `[[add-quantlib-class]]` for the full mechanism (`Upcastable`/`GenForeignPtr`/`AnyOf`, the `Gen*`-phantom pattern that lets one value satisfy multiple ancestor-typed consumers).
+
+3. **Nested value type with real structure, but never held long-term** — the QuantLib type has genuine multi-level substructure (a payoff can itself contain another payoff; an exercise can be one of several shapes each with their own sub-cases), but every consumer just builds the underlying C++ object once, hands it to a single C++ constructor call, and is done — nothing ever holds the intermediate object or passes it to a second, different consumer later. This is the shape covered by the rest of this skill.
+
+The deciding question: **does anything ever need to hold a constructed value and pass it to more than one place, or query it after construction?** If yes, it's pattern 2 even if it also has nested substructure. If no — built fresh, used immediately by exactly one C call, discarded — pattern 3 applies, and the `Gen*`/`AnyOf` phantom-flexibility machinery can be skipped entirely (see below for why it isn't needed).
+
+## Pattern 3: nested ADT + on-demand materialization (worked example: Payoff/Exercise, `QuantLib/Internal/Enum.chs`)
+
+### 1. The ADTs themselves
+
+Plain Haskell sum types, one per structural level, in the module that will own them (`Enum.chs` for Payoff/Exercise) — ordinary nested `data`/constructors mirroring the upstream class hierarchy's shape, nothing QuantLib-specific about this part. Each level a consumer needs to accept *directly* (not just as a case nested inside a bigger ADT) gets its own type, e.g. `PlainVanillaPayoff`, `StrikedPayoff`, `TypePayoff`, `BasketPayoff`, `Payoff`.
+
+### 2. Pointer-hierarchy plumbing lives in `QuantLib/Internal/Type.hs`, not alongside the ADT
+
+Even though the ADTs live in `Enum.chs`, the C++ pointer-hierarchy machinery for materializing them (phantom tags, `Finalizable`, `Upcastable`) goes in `Type.hs`, matching every other hierarchy in the codebase — see `[[add-quantlib-class]]` step 4 for the exact declaration shape (`data CXxx'`, `foreign import ccall unsafe "ql.h &qlFreeXxx" ...`, `instance Finalizable CXxx' where finalize = qlFreeXxx`, and for non-root levels `instance Upcastable CXxx' where {type Base CXxx' = CParent'; upcast = qlXxxAsParent}` with `qlXxxAsParent` a plain `foreign import ccall` — **not** a c2hs `{#fun#}` binding). One block per ADT level that has an upstream `qlXxxAsYyy` cast shim.
+
+`Enum.chs` can't define these itself: it already imports `Type.hs`, and `Type.hs` can't import the ADTs back without a cycle. This means `Finalizable`, `Upcastable`, `GenForeignPtr`, `newCastForeignPtr`, `newGenForeignPtr`, `freeUpcast`, and `withGenForeignPtr` — normally private to `Type.hs`, since every other hierarchy only ever needs `Type.hs`'s own finished `with*`/`peek*`/`as*` functions — need to be **added to `Type.hs`'s export list**. This is the one export-surface widening this pattern requires; nothing else in `Type.hs`'s privacy story changes.
+
+### 3. `with*` functions: no `Gen*`/`AnyOf` needed
+
+Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper entirely — there's no long-lived value that needs to satisfy multiple different-specificity consumers, so there's nothing for the phantom to buy. Instead, write one CPS-style `with*` function per ADT level, in `Enum.chs`, with the same signature shape it would have had if hand-rolled: `withX :: X -> (Ptr CX' -> IO a) -> IO a` — in practice spelled via a `type QlX = Ptr CX'` alias kept for backward-compatible signatures, paired with a `{#pointer *QlX nocode#}` declaration and a `peekPtr`-out-marshaller on the raw C constructor bindings (see CLAUDE.md's `{#pointer#}` bullet for exactly why both of those are needed and what happens if you get the pragma flags wrong). Each case in the function body is one of:
+
+- **Own-level construction** (the C constructor already returns exactly this level): `qlConstructX ... >>= newCastForeignPtr >>= flip withGenForeignPtr f`.
+- **A different, more-specific leaf constructed directly by this case, one hop from here, with no separate ADT/`with*` function of its own** (e.g. `AmericanExercise` inside `Exercise`, which has no standalone `withAmericanExercise`): `qlConstructLeaf ... >>= newGenForeignPtr >>= flip withGenForeignPtr f` (`newGenForeignPtr` bakes in exactly one `Upcastable` hop).
+- **A nested ADT that already has its own `with*` function**: delegate to it and add exactly one manual upcast, freed immediately after use: `withSubX sub (\subPtr -> upcast subPtr >>= \p -> f p \`finally\` freeUpcast p)`. This is the composable case — it's what lets `Payoff`'s `Type` case reach 3 hops deep (`PlainVanillaPayoff -> StrikedPayoff -> TypePayoff -> Payoff`) by nesting three single-hop delegations, one per level, instead of hand-computing a multi-hop `newAnyOf` chain up front.
+- **A field that's itself the general ADT one level up** (e.g. `BasketPayoff`'s `Average :: Payoff -> Word -> BasketPayoff`): that's a genuine recursive *materialize*, not an upcast — call `withPayoff` (or whichever ADT it nests) recursively for that field, then construct directly at this level: `withPayoff p (\pp -> qlAverageBasketPayoff pp n >>= newCastForeignPtr >>= flip withGenForeignPtr f)`.
+
+### 4. The C++ side is unchanged from every other hierarchy
+
+The `Ql*AsY` "upcast" shim functions this needs (`cbits/*.cpp`) are the same shape as every other hierarchy's — `ret(new QlY(*arg(o)))`, a fresh independently-refcounted `shared_ptr` handle, safe to free immediately after the consuming call returns (see CLAUDE.md). If the type already has these shims from a previous, differently-structured implementation, nothing there needs to change.
+
+## Verification
+
+Run `make` (see CLAUDE.md) for a quick C++-only compile check before a full `stack build --test --no-haddock` — and do the full rebuild, not incremental: this pattern touches `{#pointer#}` declarations across multiple `.chs` files, exactly the kind of change CLAUDE.md's staleness warning covers (confirmed the hard way: an incremental `stack build` reported success but still ran stale code once, here). Add or extend a `smoke/` script that exercises the *deepest* case (most upcast hops) end-to-end, not just "the build succeeded" — a wrong hop count still type-checks. See `smoke/CheckPayoffExerciseUpcast.hs` for the pattern: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`).
