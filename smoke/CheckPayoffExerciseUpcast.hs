@@ -9,13 +9,12 @@
 --    1-hop SwingExercise -> BermudanExercise path used directly by vanillaStorageOption.
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/CheckPayoffExerciseUpcast.hs -o /tmp/checkpeu -outputdir /tmp/checkpeu_build && /tmp/checkpeu
--- Uses SwingIntervalExercise (qlSwingExercise1, two Day args + one Word) rather than
--- SwingListExercise (qlSwingExercise, array-marshalled) -- SwingListExercise/qlSwingExercise
--- was found to segfault during development of this smoke test (bad write inside
--- qlSwingExercise itself, isolated via lldb to its array argument marshalling), but that bug
--- predates and is unrelated to this change: nothing in the test suite or examples had ever
--- constructed a SwingExercise before, via either constructor, so it was never caught. Left
--- as-is, out of scope for this refactor -- flagged here for whoever investigates it next.
+--
+-- Also covers SwingListExercise (qlSwingExercise, array-marshalled), which used to segfault:
+-- cbits/qlInstrument.cpp built its `seconds` std::vector as an empty vector plus std::copy
+-- into it (never allocated), instead of the range-constructor idiom used everywhere else in
+-- cbits/ for this exact pattern. Nothing in the test suite or examples had ever constructed a
+-- SwingExercise via either constructor before this was found, so it went uncaught until now.
 import Data.Time.Calendar (fromGregorian)
 
 import QuantLib.Instrument
@@ -42,3 +41,10 @@ main = do
   storageOpt <- vanillaStorageOption (Swing swingEx) 100 0 0
   expired2 <- isExpired storageOpt
   putStrLn ("vanillaStorageOption (bare SwingExercise as BermudanExercise): isExpired = " ++ show expired2)
+
+  -- 4: SwingListExercise (qlSwingExercise, the array-marshalled constructor) -- the
+  -- original repro for the qlInstrument.cpp empty-vector segfault, now fixed.
+  let listSwingEx = SwingListExercise [(maturity, 0)]
+  swingOpt <- vanillaSwingOption (PlainVanilla (PlainVanillaPayoff Call 100)) listSwingEx 0 1
+  expired3 <- isExpired swingOpt
+  putStrLn ("vanillaSwingOption (SwingListExercise): isExpired = " ++ show expired3)

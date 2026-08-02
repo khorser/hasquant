@@ -1,5 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE TupleSections #-}
+{-# LANGUAGE TemplateHaskell, TupleSections #-}
 module QuantLib.Example.CDS
   (
     Result(..)
