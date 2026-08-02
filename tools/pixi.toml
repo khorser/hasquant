@@ -1,0 +1,10 @@
+[workspace]
+channels = ["conda-forge"]
+name = "hasquant-tools"
+platforms = ["osx-arm64"]
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+python-clang = "*"
