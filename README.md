@@ -299,3 +299,7 @@ Eventually, some typeclasses emerged again, but they're not visible to the end u
 ## 0.2.6.0 (2026)
 
 Finished migration to the new approach without explicit typeclasses — time to publish.
+
+## 0.2.7.0 (2026)
+
+Polished FFI helpers and reduced technical debt. Updated static data, added inflation.

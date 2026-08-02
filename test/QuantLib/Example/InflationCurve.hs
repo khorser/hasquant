@@ -14,7 +14,7 @@ import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date
+import QuantLib.Time.Date hiding(today)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 
 data Result = Result
