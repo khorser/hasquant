@@ -1,4 +1,3 @@
-{-# LANGUAGE RankNTypes #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to expose so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
@@ -32,7 +31,7 @@ module QuantLib.Internal.Enum
   , BasketPayoff(..)
   , QlBasketPayoff
   , TypePayoff(..)
-  , QlTypePayoff(..)
+  , QlTypePayoff
 
   , CallabilityType(..)
   , Callability(..)
@@ -99,7 +98,6 @@ import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.C.Types(CUInt)
 import Foreign.Marshal.Utils(fromBool, withMany)
 import Foreign.Marshal.Array(withArray)
-import Control.Monad((>=>))
 import Control.Exception(finally)
 
 import QuantLib.Internal

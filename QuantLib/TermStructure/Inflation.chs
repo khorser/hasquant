@@ -19,7 +19,7 @@ module QuantLib.TermStructure.Inflation
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(Frequency, TimeUnit)
+{#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
