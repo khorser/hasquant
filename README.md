@@ -77,7 +77,7 @@ While this is convenient, it leads to some allocation and deallocation on each c
 - experimental/commodities
 - experimental/termstructures
 - migrate more tests and examples from QuantLib
-- review interfaces for consistency, add obviously missing features and fix things contradicting the current design
+- review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - add CPIBondHelper, CPILeg, all inflation bonds and swaps
 
 # Project History

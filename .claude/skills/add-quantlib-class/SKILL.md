@@ -9,7 +9,7 @@ Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Ha
 
 ## Steps
 
-1. **`cbits/qlaux.h`** — add the `typedef shared_ptr<Xxx> QlXxx;` line (alongside the existing alphabetical block of `typedef shared_ptr<...> Ql...;` lines), plus any other declarations the wrapper needs in this file.
+1. **`cbits/qlaux.h`** — add the `typedef shared_ptr<Xxx> QlXxx;` line (alongside the existing alphabetical block of `typedef shared_ptr<...> Ql...;` lines), plus any other declarations the wrapper needs in this file. Also add both `Xxx` and `QlXxx` to ObjClassName specialiazetions guarded by `QLTRACK_ALLOCATIONS`.
 
 2. **`cbits/qlTypesC2HS.h`** — add a fake `typedef struct QlXxx QlXxx;` def. This is a c2hs-only stand-in type (the real definition lives in C++; c2hs just needs something to point at).
 

@@ -90,9 +90,10 @@ module QuantLib.Internal.Enum
   , withBasketPayoff
   , withPayoff
 
-  -- remove these two exports once QlClaim migrated here
-  , EnumMeta(..)
-  , withEnumType
+  , strikedPayoff
+  , percentageStrikePayoff
+  , plainVanillaPayoff
+  , swingExercise
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.C.Types(CUInt)
@@ -201,6 +202,7 @@ data Interpolation =
   deriving (Show, Eq)
 
 data EuropeanExercise = EuropeanExercise Day
+-- | Use 'swingExerice' to construct 'Exercise'
 data SwingExercise =
     SwingListExercise ![(Day, Word)] -- ^(dates, seconds)
     | SwingIntervalExercise !Day !Day !Word -- ^stepSizeSecs
@@ -245,14 +247,17 @@ withExercise (Vanilla t) f = qlExercise t >>= newCastForeignPtr >>= flip withGen
 withExercise (European e) f = withEuropeanExercise e (\ep -> upcast ep >>= \xp -> f xp `finally` freeUpcast xp)
 withExercise (Bermudan e) f = withBermudanExercise e (\bp -> upcast bp >>= \xp -> f xp `finally` freeUpcast xp)
 
+-- | use 'percentageStrikePayoff' to construct 'Payoff'
 data PercentageStrikePayoff = PercentageStrikePayoff
       !OptionType -- ^type
       !Double -- ^moneyness
 
+-- | use 'plainVanillaPayoff' to construct 'Payoff'
 data PlainVanillaPayoff = PlainVanillaPayoff
       !OptionType -- ^type
       !Double -- ^strike
 
+-- | use 'strikedPayoff' to construct 'Payoff'
 data StrikedPayoff =
   AssetOrNothing
     !OptionType -- ^type
@@ -688,5 +693,17 @@ claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
 {#fun qlFaceValueClaim{preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 -- |Claim on the notional of a reference security, including accrual
 {#fun qlFaceValueAccrualClaim{withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
+
+strikedPayoff :: StrikedPayoff -> Payoff
+strikedPayoff = Type . Striked
+
+percentageStrikePayoff :: PercentageStrikePayoff -> Payoff
+percentageStrikePayoff = Type . Striked . PercentageStrike
+
+plainVanillaPayoff :: PlainVanillaPayoff -> Payoff
+plainVanillaPayoff = Type . Striked . PlainVanilla
+
+swingExercise :: SwingExercise -> Exercise
+swingExercise = Bermudan . Swing
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

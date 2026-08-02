@@ -31,6 +31,11 @@ module QuantLib.Instrument.Option
   , Payoff(..)
   , TypePayoff(..)
 
+  , strikedPayoff
+  , plainVanillaPayoff
+  , percentageStrikePayoff
+  , swingExercise
+
   , barrierOption
   , forwardVanillaOption
   , delta1
