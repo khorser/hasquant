@@ -62,6 +62,85 @@ Two edits, not one — easy to forget the first:
 
    Add a `-- |` doc comment line above it — the existing modules do this for every binding, usually paraphrasing QuantLib's own doc comment for that method from the upstream header.
 
+## 5. Less-common parameter/return shapes
+
+### `std::vector<T>` parameters
+
+Primitive element type (`double`, `int`/`Date`, ...): the C shim takes a `(len, T*)` pair built from a raw array, not a real `std::vector` at the boundary. Example, `Cap`'s `vector<double>` ctor arg (`cbits/qlInstrument.h`/`.cpp`):
+```cpp
+QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e) {
+  try {return ret(new QlCapFloor(alloc(new Cap(*arg(floatingLeg), std::vector<double>(exerciseRates, exerciseRates+exerciseRatesLen)))));
+  } catch (std::exception& er) {return handleException<QlCapFloor*>(e, er);}}
+```
+```
+{#fun qlCap as cap{withLeg*`GenLeg a' -- ^floatingLeg
+  ,withDoubleArray*`[Double]'& -- ^exerciseRates
+  ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+```
+The `&` after `withDoubleArray*` splices the marshaller's `(CUInt, Ptr CDouble)` pair into two consecutive C params — one Haskell `[Double]` argument, two C arguments. A `vector<Date>` param uses the same shape via the `qlaux.h` helper `qlDateVector(int *dates, unsigned len)` on the C++ side.
+
+Object-pointer element type (`vector<shared_ptr<T>>`): the C shim takes `(len, QlT**)`, built into a real vector via `qlaux.h`'s `template <class T> std::vector<T> qlVector(T **vals, size_t len)`. Example, `Swap`'s multi-leg constructor:
+```cpp
+QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, char **e) {
+  try {return ret(new QlSwap(alloc(new Swap(qlVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen)))));
+  } catch (std::exception& er) {return handleException<QlSwap*>(e, er);}}
+```
+```
+{#fun qlSwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+```
+`withLegArray = withGenArray withLeg` — every array-taking class needs its own `with<T>Array = withGenArray with<T>` defined once in `Internal/Type.hs` (mirrors `withQuoteArray`, `withRateHelperArray`, `withCalibrationHelperArray`, `withInstrumentArray`, ...); add one if missing, don't invent a different combinator.
+
+### `std::vector<T>` return values
+
+Primitive element type: **out-parameters**, not a return value — `(unsigned *len, T **out)` appended before `char **e`, with the C++ body allocating via `qlaux.h`'s `qlAllocateDoubles`/`qlAllocateInts` and copying into it:
+```cpp
+void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e) {
+  try {const std::vector<double>& notionals = (*arg(o))->notionals(); *len = notionals.size(); *ns = qlAllocateDoubles(*len); std::copy(notionals.begin(), notionals.end(), *ns);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+```
+```
+{#fun qlBondNotionals as notionals{withBond*`GenBond a',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+```
+`preArray`/`peekDoubleArray`/`peekIntArray'` are generic combinators already in `QuantLib/Internal.hs` — reuse them, don't write a new allocator per type. The `.chs` return spec is still `` ->`()' `` (the real "return value" travels through the out-param marshaller in the arg list, not the arrow).
+
+Object-pointer element type: hasquant **never** marshals `vector<shared_ptr<T>>` back element-by-element. It only works when the vector itself already has a named alias type (`Leg`/`CouponLeg` — QuantLib's own typedefs for `vector<shared_ptr<CashFlow>>`/`vector<shared_ptr<Coupon>>`), returned as a single opaque `Leg*`/`CouponLeg*`, e.g. `Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e) {try {return ret(new Leg((*arg(o))->leg(j)));} ...}`. If a method returns a raw, unaliased `vector<shared_ptr<T>>` with no existing named type, there's no established pattern for it — don't invent an element-wise marshaller; flag it for manual design instead.
+
+### `Handle<T>` parameters — nullable, not a plain pointer
+
+`Handle<T>` is QuantLib's "possibly-empty, observable" wrapper — map it to `Maybe` on the Haskell side, using `qlaux.h`'s `template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}` on the C++ side:
+```cpp
+try {return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(*arg(index), Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, qlNullableHandle(arg(discountCurve))))));
+```
+The Haskell marshaller is a **per-type** `withMaybe<T>`, hand-written once in `Internal/Type.hs` alongside `with<T>` (not a generic combinator):
+```haskell
+withMaybeYieldTermStructure :: Maybe (GenYieldTermStructure a) -> (Ptr CYieldTermStructure' -> IO b) -> IO b
+withMaybeYieldTermStructure x f = maybe (f nullPtr) (`withYieldTermStructure` f) x
+```
+used as `withMaybeYieldTermStructure*\`Maybe (GenYieldTermStructure y)'` in `.chs` (see `forwardRateAgreement` in `QuantLib/Instrument/Forward.chs`, `swapRateHelper` in `QuantLib/TermStructure/Yield.chs`, `discountingBondEngine` in `QuantLib/PricingEngine.chs`). `withMaybeQuote` is the same pattern for `Handle<Quote>`. If the class doesn't have a `withMaybe<T>` yet, add one (same shape) rather than passing it non-nullably and dropping the "empty handle" case.
+
+### `ext::optional<T>` parameters/returns
+
+Only `bool` and (separately) `Date` have established conversions. `ext::optional<bool>`: C-side sentinel via `qlaux.h`'s `qlOptBool` (`-1` = empty), Haskell-side via `QuantLib/Internal.hs`'s generic `fromMaybeBool :: Maybe Bool -> CInt` / `toMaybeBool :: CInt -> Maybe Bool` — as a param: `fromMaybeBool\`Maybe Bool'`; as a return: `{#fun qlSettingsIncludeTodaysCashFlows as includeTodaysCashFlows{}->\`Maybe Bool' toMaybeBool#}` (backed by `int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().includeTodaysCashFlows());}`). `ext::optional<Date>`/defaulted `Date` params use the analogous `qlNullableDate`/`withMaybeDay` pair. Don't assume this generalizes to arbitrary `ext::optional<T>` — for any other `T` there's no established combinator; add one deliberately rather than guessing a shape.
+
+### Default-valued C++ parameters — one full-arity shim, not two
+
+hasquant does **not** emit two arities for a method with trailing default arguments. Every defaulted parameter becomes a **required** Haskell argument typed to carry the "use the default" sentinel — `Maybe`/nullable via the same `Handle<T>`/`ext::optional<T>` machinery above. Example, `DiscountingSwapEngine`'s constructor (`Handle<YieldTermStructure> discountCurve = Handle<YieldTermStructure>(), const ext::optional<bool>& includeSettlementDateFlows = ext::nullopt, Date settlementDate = Date(), Date npvDate = Date()`) binds as one shim with four required Haskell args:
+```
+{#fun qlDiscountingSwapEngine as discountingSwapEngine{withYieldTermStructure*`GenYieldTermStructure a',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,withMaybeDay*`Maybe Day' -- ^settlementDate
+  ,withMaybeDay*`Maybe Day' -- ^npvDate
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+```
+(Note this particular binding types `discountCurve` non-nullably, so its `Handle<T>()`-default case isn't reachable from Haskell at all — a defaulted `Handle<T>` doesn't *have* to become `Maybe`; it's a per-binding judgment call whether the empty-handle case is worth exposing.) Don't confuse this with genuine C++ **overloads** (distinct signatures, not one signature's defaults) — those get separate numbered C shims, see below.
+
+### Numbered overloads
+
+When a class has multiple real overloads of the same name, each gets its own C shim with a numeric suffix on the second and later ones — the first keeps the bare name: `qlOISRateHelper`/`qlOISRateHelper2`, `qlJointCalendar2`/`qlJointCalendar3`/`qlJointCalendar4`. The numbering isn't necessarily contiguous from 1 and isn't derivable from the C++ signature — it reflects whatever order bindings were historically added in. If you're adding a second overload of an existing binding, just pick the next unused suffix; don't try to make it "meaningful."
+
+### Static methods aren't distinguishable from a bare declaration
+
+A method signature alone (e.g. from a header, or a clang-extracted prototype dump) doesn't tell you whether it's `static` — nothing about the printed text differs. Check the actual `static` keyword in the upstream header before assuming a receiver pointer is needed. A true static/singleton accessor takes no self-parameter and no other hint: `Settings::instance()`'s shim is `int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate()...;}`, bound as `{#fun qlSettingsEvaluationDate as evaluationDate{}->\`Day'toDay#}` — the empty `{}` argument list is the tell that there's no instance pointer at all.
+
 ## Verification
 
 Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
