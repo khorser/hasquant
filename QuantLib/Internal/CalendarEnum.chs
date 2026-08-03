@@ -53,11 +53,14 @@ deriving instance Eq CalendarConstructor
 {#enum ActualActualConvention{} add prefix = "ActualActual__" deriving(Show, Eq)#}
 {#enum Thirty360Convention{} add prefix = "Thirty360__" deriving(Show, Eq)#}
 {#enum Actual365FixedConvention{} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}
+-- these three don't have a real named Convention enum upstream, just a plain
+-- includeLastDay bool -- this marker tells mergeEnums to give them a single
+-- constructor carrying a runtime Bool instead of cross-producting named values
+type Actual360Convention = Bool
+type Actual36525Convention = Bool
+type Actual366Convention = Bool
 
 data DayCounterExtra = Extra__Business252 !Calendar
-  | Extra__Actual36525 !Bool
-  | Extra__Actual366 !Bool
-  | Extra__Actual360' !Bool
   | Extra__ActualActualBond' !Schedule
   | Extra__ActualActualISMA' !Schedule
 

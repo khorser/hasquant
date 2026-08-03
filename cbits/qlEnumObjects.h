@@ -177,6 +177,8 @@ enum DayCounterType {
   , Simple
   , Thirty360
   , Thirty365
+  , Actual36525
+  , Actual366
 };
 
 #define NO_ENUM -100;

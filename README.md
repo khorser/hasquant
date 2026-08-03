@@ -79,9 +79,6 @@ While this is convenient, it leads to some allocation and deallocation on each c
 - migrate more tests and examples from QuantLib
 - review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - add CPIBondHelper, CPILeg, all inflation bonds and swaps
-- we have three almost identical functions qlDayCounterActual36525, qlDayCounterActual366, qlDayCounterActual360.
-I think we can use the standard qlDayCounter instead as it accepts an extra argument already but probably we will need to make mergEnums recognize Bool args, not only enums.
-It plays with DayCounterType enum nicely already passing extra args to Actual365Fixed, ActualActual and Thirty360 so we could add Actual36525 and Actual365 there.
 
 # Project History
 

@@ -41,7 +41,7 @@ data Result = Result
 
 run :: Bool -> IO Result
 run gc = do
-  repoDayCountConvention <- dayCounter Actual360
+  repoDayCountConvention <- dayCounter (Actual360 False)
   bondCalendar <- calendar Null
   bondDayCountConvention <- dayCounter Thirty360BondBasis
   setEvaluationDate $ Just repoSettlementDate

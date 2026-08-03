@@ -1030,7 +1030,7 @@ main = do
       let testCase :: (Double, IR.Compounding, Frequency, Double, IR.Compounding, Frequency, Double, Int) -> IO ()
           testCase (r, comp, freq, t, comp2, freq2, expected, prec) = do
             d1 <- today
-            dc <- dayCounter Actual360
+            dc <- dayCounter (Actual360 False)
             ir <- IR.interestRate r dc comp freq
             let d2 = addDays (truncate $ 360 * t + 0.5) d1
             compoundf <- IR.compoundFactor' ir d1 d2 d1 d2
@@ -1130,7 +1130,7 @@ main = do
         td <- Settings.evaluationDate
         cal <- calendar TARGET
         sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
-        dc <- dayCounter Actual360
+        dc <- dayCounter (Actual360 False)
         cpn <- IR.interestRate 0.03 dc IR.Simple Annual
         l <- CF.fixedRateLeg sch [100.0] [cpn] Following dc cal
         accP <- CF.accruedPeriod l False Nothing
@@ -1212,7 +1212,7 @@ main = do
             today' <- adjust cal d Following
             Settings.setEvaluationDate (Just today')
             settlement <- advance cal today' (fromIntegral settlementDays, Days) Following False
-            actual360dc <- dayCounter Actual360
+            actual360dc <- dayCounter (Actual360 False)
             deposits <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100)
@@ -1234,7 +1234,7 @@ main = do
         (_calendar, settlementDays, _ts) <- setup
         flatRate <- Quote.simpleQuote 0.03
         cal <- calendar Null
-        actual360dc <- dayCounter Actual360
+        actual360dc <- dayCounter (Actual360 False)
         ts <- flatForward' settlementDays cal flatRate actual360dc IR.Continuous Annual
         td <- Settings.evaluationDate
 
@@ -1266,7 +1266,7 @@ main = do
           spreaded <- forwardSpreadedTermStructure ts me
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
-          actual360dc <- dayCounter Actual360
+          actual360dc <- dayCounter (Actual360 False)
           forward <- IR.rate <$> forwardRate' ts testDate testDate actual360dc IR.Continuous NoFrequency False
           spreadedForward <- IR.rate <$> forwardRate' spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
 
@@ -1276,7 +1276,7 @@ main = do
           (_calendar, _settlementDays, ts) <- setup
           q <- Quote.simpleQuote 0.01
           val <- Quote.value q
-          actual360dc <- dayCounter Actual360
+          actual360dc <- dayCounter (Actual360 False)
           spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate

@@ -41,7 +41,7 @@ run = do
   futQuotes <- forM futPrices simpleQuote
   swapQuotes <- forM swapRates simpleQuote
 
-  depoDC <- dayCounter Actual360
+  depoDC <- dayCounter (Actual360 False)
 
   depoHelpers <- mapM (\(q, p) ->
     TS.depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
@@ -97,7 +97,7 @@ run = do
     valuateSwap :: Day -> TS.GenYieldTermStructure a -> TS.GenYieldTermStructure a -> IO IterationResult
     valuateSwap settle d f = do
       fixDC <- dayCounter Thirty360European
-      floatDC <- dayCounter Actual360
+      floatDC <- dayCounter (Actual360 False)
       eu6m <- IR.iborIndex IR.Euribor6M (Just f)
       fixP <- fromFrequency Annual
       floatP <- fromFrequency Semiannual

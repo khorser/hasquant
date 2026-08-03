@@ -556,7 +556,7 @@ typedef DayCounter *(*makeDayCounter)(int convention);
 
 // must match with the order of qlEnumObjects.h:DayCounterType
 static const makeDayCounter dayCounters[] = {
-  [](int) {return static_cast<DayCounter *>(new Actual360());}
+  [](int b) {return static_cast<DayCounter *>(new Actual360((bool) b));}
   , [](int) {return static_cast<DayCounter *>(new Actual364());}
   , [](int conv) {return static_cast<DayCounter *>(new Actual365Fixed((Actual365Fixed::Convention) conv));}
   , [](int conv) {return static_cast<DayCounter *>(new ActualActual((ActualActual::Convention) conv));}
@@ -564,6 +564,8 @@ static const makeDayCounter dayCounters[] = {
   , [](int) {return static_cast<DayCounter *>(new SimpleDayCounter());}
   , [](int conv) {return static_cast<DayCounter *>(new Thirty360((Thirty360::Convention) conv));}
   , [](int) {return static_cast<DayCounter *>(new Thirty365());}
+  , [](int b) {return static_cast<DayCounter *>(new Actual36525((bool) b));}
+  , [](int b) {return static_cast<DayCounter *>(new Actual366((bool) b));}
 };
 
 DayCounter *qlDayCounter(int type, int convention, char **e) {
@@ -574,9 +576,6 @@ DayCounter *qlDayCounter(int type, int convention, char **e) {
   } catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 
 DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {try {return alloc(new Business252(*arg(cal)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActual36525(int includeLastDay, char **e) {try {return alloc(new Actual36525((bool) includeLastDay));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActual366(int includeLastDay, char **e) {try {return alloc(new Actual366((bool) includeLastDay));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActual360(int includeLastDay, char **e) {try {return alloc(new Actual360((bool) includeLastDay));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e) {try {return alloc(new ActualActual(ActualActual::Bond, *arg(schedule)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e) {try {return alloc(new ActualActual(ActualActual::ISMA, *arg(schedule)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 void qlFreeCalendar(Calendar *calendar) {del(calendar);}

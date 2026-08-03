@@ -55,7 +55,7 @@ run = do
   actual365Fixeddc <- dayCounter Actual365FixedStandard
   actActBond <- dayCounter ActualActualBond
   actActISDA <- dayCounter ActualActualISDA
-  actual360dc <- dayCounter Actual360
+  actual360dc <- dayCounter (Actual360 False)
   thirty360Europeandc <- dayCounter Thirty360European
 
   targetCal <- calendar TARGET

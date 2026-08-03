@@ -35,7 +35,7 @@ run = do
   calILS <- calendar IsraelSettlement
   calEUR <- calendar TARGET
   calEURILS <- calendar $ Joint2 calILS calEUR JoinHolidays
-  dcEUR <- dayCounter Actual360
+  dcEUR <- dayCounter (Actual360 False)
   dcILS <- dayCounter Actual365FixedStandard
   sched <- schedule (Just $ 2 `november` 2022) (2 `october` 2023) (1, Months) calEUR ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
   ds_ <- dates sched
