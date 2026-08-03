@@ -163,7 +163,8 @@ class ParsedProto:
     is_dtor: bool
     is_operator: bool
     ret_type: str
-    params: list  # list of (type_str, name)
+    params: list  # list of (type_str, name, default_text_or_None)
+    is_static: bool = False
 
 
 def split_top_level(s, sep=","):
@@ -192,6 +193,20 @@ PROTO_RE = re.compile(
 )
 
 
+def strip_param_default(p):
+    """('type name', default_text_or_None) -- splits off a top-level ` = ...` suffix
+    (dump_signatures.py now captures C++ default values; older dumps never had one)."""
+    depth = 0
+    for i, ch in enumerate(p):
+        if ch in "<(":
+            depth += 1
+        elif ch in ">)":
+            depth -= 1
+        elif ch == "=" and depth == 0:
+            return p[:i].rstrip(), p[i + 1:].strip()
+    return p, None
+
+
 def parse_line(line: str):
     line = line.rstrip("\n")
     if not line.strip():
@@ -212,6 +227,10 @@ def parse_line(line: str):
     if not decl.endswith(";"):
         decl = decl + ";"
 
+    is_static = decl.startswith("static ")
+    if is_static:
+        decl = decl[len("static "):]
+
     m = PROTO_RE.match(decl)
     if not m:
         return None, f"could not parse declaration: {decl!r}"
@@ -229,14 +248,15 @@ def parse_line(line: str):
 
     params = []
     for p in split_top_level(raw_params):
+        p, default_text = strip_param_default(p)
         pm = re.match(r"^(.*[\s>&*])(\w+)$", p)
         if pm:
             ptype, pname = pm.group(1).strip(), pm.group(2)
         else:
             ptype, pname = p.strip(), None
-        params.append((ptype, pname))
+        params.append((ptype, pname, default_text))
 
-    return ParsedProto(decl, cls, member, is_ctor, is_dtor, False, ret, params), None
+    return ParsedProto(decl, cls, member, is_ctor, is_dtor, False, ret, params, is_static), None
 
 
 # ------------------------------------------------------------- classify
@@ -469,7 +489,7 @@ def render_method(proto: ParsedProto, reg: Registries, c_name: str, overload_ind
     self_ctype = None
     self_cexpr_hierarchy = None
     self_chs = ""
-    if not proto.is_ctor:
+    if not proto.is_ctor and not proto.is_static:
         if proto.cls in reg.hierarchy_classes:
             self_ctype = f"Ql{proto.cls}*"
             self_cexpr_hierarchy = True
@@ -486,16 +506,20 @@ def render_method(proto: ParsedProto, reg: Registries, c_name: str, overload_ind
             self_chs = f"with{proto.cls}*`{base} {letters.next()}'"
         else:
             self_chs = f"with{proto.cls}*`{proto.cls}'"
-    else:
+    elif proto.is_ctor:
         if proto.cls not in reg.hierarchy_classes and proto.cls not in reg.plain_value_classes:
             return None, f"receiver class '{proto.cls}' not yet bound -- run add-quantlib-class first"
+    # else: static method -- no receiver at all, `proto.cls` is just a namespace-like
+    # qualifier for the call and need not be a bound pointer type.
 
     arg_marshals = []
-    for ptype, pname in proto.params:
+    has_default = []
+    for ptype, pname, default_text in proto.params:
         m = classify_arg(ptype, pname, reg, letters)
         if not m.ok:
             return None, f"parameter '{(ptype + ' ' + (pname or '')).strip()}' -- {m.note}"
         arg_marshals.append(m)
+        has_default.append((pname, default_text))
 
     ret_type = "" if proto.is_ctor else proto.ret_type
     if proto.is_ctor:
@@ -530,6 +554,8 @@ def render_method(proto: ParsedProto, reg: Registries, c_name: str, overload_ind
     cpp_args = [m.cpp_expr for m in arg_marshals]
     if proto.is_ctor:
         call_expr = ", ".join(cpp_args)
+    elif proto.is_static:
+        call_expr = f"{proto.cls}::{proto.member}({', '.join(cpp_args)})"
     else:
         recv = f"(*arg(o))" if self_cexpr_hierarchy else "arg(o)"
         call_expr = f"{recv}->{proto.member}({', '.join(cpp_args)})"
@@ -556,8 +582,11 @@ def render_method(proto: ParsedProto, reg: Registries, c_name: str, overload_ind
     sibling_file = reg.chs_file_for_class.get(proto.cls, "(no existing .chs file found for this class -- pick one per add-quantlib-class)")
 
     notes = []
-    if not proto.is_ctor:
-        notes.append("-- NOTE: assumed instance method (self-param present) -- dump can't see `static`; verify against the upstream header")
+    if not proto.is_ctor and not proto.is_static:
+        notes.append("-- NOTE: no `static` keyword seen -- confirmed instance method if this line came from a current dump_signatures.py run; if from the old ql-methods-1.43.txt dump, static-ness wasn't captured there and this is still just an assumption -- verify against the upstream header")
+    for pname, default_text in has_default:
+        if default_text is not None:
+            notes.append(f"-- NOTE: parameter `{pname}` has a C++ default (= {default_text}) -- per the skill, consider wrapping it as `Maybe` (required arg here, substituting the literal default at the call site when Nothing) rather than binding it as unconditionally required")
     notes.append("-- NOTE: defaults to the throwing convention (char **e / try-catch) per the skill's safe-default rule; hand-simplify to `pure` only if you confirm this is a trivial non-throwing field access")
     notes.append(f"-- also add `{hs_name}` to the export list of {sibling_file}")
 

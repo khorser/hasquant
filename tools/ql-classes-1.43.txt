@@ -232,7 +232,6 @@ VannaVolgaBarrierEngine:BarrierOption::engine
 VannaVolgaDoubleBarrierEngine:GenericEngine<DoubleBarrierOption::arguments, DoubleBarrierOption::results>
 VannaVolgaInterpolation:Interpolation
 VannaVolga:
-VannaVolgaInterpolationImpl:Interpolation::templateImpl<I1, I2>
 IborLegCashFlows:
 SwapCashFlows:IborLegCashFlows
 SwaptionCashFlows:SwapCashFlows
@@ -467,7 +466,6 @@ ObjectiveFunction:
 KInterpolatedYoYOptionletVolatilitySurface:YoYOptionletVolatilitySurface
 YoYInflationVolatilityTraits:
 PiecewiseYoYOptionletVolatilityCurve:InterpolatedYoYOptionletVolatilityCurve<Interpolator>,LazyObject
-Polynomial2DSplineImpl:Interpolation2D::templateImpl<I1, I2, M>
 Polynomial2DSpline:Interpolation2D
 Polynomial:
 YoYCapFloorTermPriceSurface:TermStructure
@@ -576,14 +574,12 @@ GemanRoncoroniProcess:StochasticProcess1D
 KlugeExtOUProcess:StochasticProcess
 VegaStressedBlackScholesProcess:GeneralizedBlackScholesProcess
 InterpolationParameter:Parameter
-Impl:Parameter::Impl
 GeneralizedHullWhite:OneFactorAffineModel,TermStructureConsistentModel
 Dynamics:GeneralizedHullWhite::ShortRateDynamics
 identity:
 FittingParameter:TermStructureFittingParameter
 LinearFlatInterpolation:Interpolation
 LinearFlat:
-LinearFlatInterpolationImpl:Interpolation::templateImpl<I1, I2>
 GeneralizedOrnsteinUhlenbeckProcess:StochasticProcess1D
 HaganIrregularSwaptionEngine:GenericEngine<IrregularSwaption::arguments, IrregularSwaption::results>
 Basket:
@@ -892,7 +888,6 @@ engine:GenericEngine<FxForward::arguments, FxForward::results>
 HolderExtensibleOption:OneAssetOption
 arguments:OneAssetOption::arguments
 engine:GenericEngine<HolderExtensibleOption::arguments, HolderExtensibleOption::results>
-ImpliedVolatilityHelper:
 YoYInflationCapFloor:Instrument
 YoYInflationCap:YoYInflationCapFloor
 YoYInflationFloor:YoYInflationCapFloor
@@ -1109,30 +1104,21 @@ Default:
 MidPoint:
 TwoDimensionalIntegral:
 Interpolation:Extrapolator
-Impl:
-templateImpl:Base
-AbcdCoeffHolder:Interpolation::Impl
-AbcdInterpolationImpl:Interpolation::templateImpl<I1, I2, AbcdCoeffHolder>
 AbcdInterpolation:Interpolation
 Abcd:
 BackwardFlatInterpolation:Interpolation
 BackwardFlat:
-BackwardFlatInterpolationImpl:Interpolation::templateImpl<I1, I2>
-BackwardflatLinearInterpolationImpl:Interpolation2D::templateImpl<I1, I2, M>
 BackwardflatLinearInterpolation:Interpolation2D
 BackwardflatLinear:
 BicubicSplineDerivatives:
-BicubicSplineImpl:Interpolation2D::templateImpl<I1, I2, M>,BicubicSplineDerivatives
 BicubicSpline:Interpolation2D
 Bicubic:
-BilinearInterpolationImpl:Interpolation2D::templateImpl<I1, I2, M>
 BilinearInterpolation:Interpolation2D
 Bilinear:
 ChebyshevInterpolation:Interpolation
 ConvexMonotoneInterpolation:Interpolation
 ConvexMonotone:
 SectionHelper:
-ConvexMonotoneImpl:Interpolation::templateImpl<I1, I2>
 ComboHelper:SectionHelper
 EverywhereConstantHelper:SectionHelper
 ConvexMonotone2Helper:SectionHelper
@@ -1142,7 +1128,6 @@ ConvexMonotone4MinHelper:ConvexMonotone4Helper
 ConstantGradHelper:SectionHelper
 QuadraticHelper:SectionHelper
 QuadraticMinHelper:SectionHelper
-CubicInterpolationBaseImpl:Interpolation::Impl
 CubicInterpolation:Interpolation
 CubicNaturalSpline:CubicInterpolation
 MonotonicCubicNaturalSpline:CubicInterpolation
@@ -1155,28 +1140,17 @@ FritschButlandCubic:CubicInterpolation
 Parabolic:CubicInterpolation
 MonotonicParabolic:CubicInterpolation
 Cubic:
-CubicInterpolationImpl:Interpolation::templateImpl<I1, I2, CubicInterpolationBaseImpl>
 Extrapolator:
 FlatExtrapolator:Interpolation
-FlatExtrapolatorImpl:Interpolation::Impl
 FlatExtrapolator2D:Interpolation2D
-FlatExtrapolator2DImpl:Interpolation2D::Impl
 ForwardFlatInterpolation:Interpolation
 ForwardFlat:
-ForwardFlatInterpolationImpl:Interpolation::templateImpl<I1, I2>
 Interpolation2D:Extrapolator
-Impl:
-templateImpl:Impl
-KernelInterpolationImpl:Interpolation::templateImpl<I1, I2>
 KernelInterpolation:Interpolation
-KernelInterpolation2DImpl:Interpolation2D::templateImpl<I1, I2, M>
 KernelInterpolation2D:Interpolation2D
-UpdatedYInterpolation:Interpolation::Impl
-LagrangeInterpolationImpl:Interpolation::templateImpl<I1, I2, UpdatedYInterpolation>
 LagrangeInterpolation:Interpolation
 LinearInterpolation:Interpolation
 Linear:
-LinearInterpolationImpl:Interpolation::templateImpl<I1, I2>
 LogLinearInterpolation:Interpolation
 LogLinear:
 LogCubicInterpolation:Interpolation
@@ -1197,7 +1171,6 @@ DefaultLogMixedLinearCubic:LogMixedLinearCubic
 MonotonicLogMixedLinearCubic:LogMixedLinearCubic
 KrugerLogMixedLinearCubic:LogMixedLinearCubic
 LogMixedLinearCubicNaturalSpline:LogMixedLinearCubicInterpolation
-LogInterpolationImpl:Interpolation::templateImpl<I1, I2>
 MixedInterpolation:
 MixedLinearCubicInterpolation:Interpolation
 MixedLinearCubic:
@@ -1207,7 +1180,6 @@ MixedLinearKrugerCubic:MixedLinearCubicInterpolation
 MixedLinearFritschButlandCubic:MixedLinearCubicInterpolation
 MixedLinearParabolic:MixedLinearCubicInterpolation
 MixedLinearMonotonicParabolic:MixedLinearCubicInterpolation
-MixedInterpolationImpl:Interpolation::templateImpl<I1, I2>
 EmptyArg:
 EmptyRes:
 EmptyDim:
@@ -1225,7 +1197,6 @@ SABRSpecs:
 SABRInterpolation:Interpolation
 SABR:
 XABRCoeffHolder:
-XABRInterpolationImpl:Interpolation::templateImpl<I1, I2>,XABRCoeffHolder<Model>
 XABRError:CostFunction
 ZabrSpecs:
 ZabrInterpolation:Interpolation
@@ -1258,7 +1229,6 @@ ArmijoLineSearch:LineSearch
 BFGS:LineSearchBasedMethod
 ConjugateGradient:LineSearchBasedMethod
 Constraint:
-Impl:
 NoConstraint:Constraint
 PositiveConstraint:Constraint
 BoundaryConstraint:Constraint
@@ -1282,7 +1252,6 @@ LineSearchBasedMethod:OptimizationMethod
 OptimizationMethod:
 Problem:
 ProjectedConstraint:Constraint
-Impl:Constraint::Impl
 ProjectedCostFunction:CostFunction,Projection
 Projection:
 Simplex:OptimizationMethod
@@ -1354,7 +1323,6 @@ DPlusDMinus:TridiagonalOperator
 DZero:TridiagonalOperator
 ExplicitEuler:MixedScheme<Operator>
 FiniteDifferenceModel:
-ImplicitEuler:MixedScheme<Operator>
 Concentrating1dMesher:Fdm1dMesher
 ExponentialJump1dMesher:Fdm1dMesher
 Fdm1dMesher:
@@ -1412,7 +1380,6 @@ CrankNicolsonScheme:
 DouglasScheme:
 ExplicitEulerScheme:
 HundsdorferScheme:
-ImplicitEulerScheme:
 MethodOfLinesScheme:
 ModifiedCraigSneydScheme:
 TrBDF2Scheme:
@@ -1516,7 +1483,6 @@ BatesDoubleExpDetJumpModel:BatesDoubleExpModel
 GJRGARCHModel:CalibratedModel
 HestonModel:CalibratedModel
 FellerConstraint:Constraint
-Impl:Constraint::Impl
 HestonModelHelper:BlackCalibrationHelper
 HestonSLVFokkerPlanckFdmParams:
 HestonSLVFDMModel:LazyObject
@@ -1574,7 +1540,6 @@ NormalFwdRatePc:MarketModelEvolver
 SVDDFwdRatePc:MarketModelEvolver
 SquareRootAndersen:MarketModelVolProcess
 HistoricalForwardRatesAnalysis:
-HistoricalForwardRatesAnalysisImpl:HistoricalForwardRatesAnalysis
 HistoricalRatesAnalysis:
 MarketModel:
 MarketModelFactory:Observable
@@ -1661,14 +1626,11 @@ TermStructureConsistentModel:Observable
 CalibratedModel:Observer,Observable
 ShortRateModel:CalibratedModel
 PrivateConstraint:Constraint
-Impl:Constraint::Impl
 Parameter:
-Impl:
 ConstantParameter:Parameter
 NullParameter:Parameter
 PiecewiseConstantParameter:Parameter
 TermStructureFittingParameter:Parameter
-NumericalImpl:Parameter::Impl
 CapHelper:BlackCalibrationHelper
 SwaptionHelper:BlackCalibrationHelper
 OneFactorModel:ShortRateModel
@@ -1682,7 +1644,6 @@ Dynamics:OneFactorModel::ShortRateDynamics
 ExtendedCoxIngersollRoss:CoxIngersollRoss,TermStructureConsistentModel
 Dynamics:CoxIngersollRoss::Dynamics
 FittingParameter:TermStructureFittingParameter
-Impl:Parameter::Impl
 Gaussian1dModel:TermStructureConsistentModel,LazyObject
 CachedSwapKey:
 CachedSwapKeyHasher:
@@ -1692,7 +1653,6 @@ ReversionObserver:Observer
 HullWhite:Vasicek,TermStructureConsistentModel
 Dynamics:OneFactorModel::ShortRateDynamics
 FittingParameter:TermStructureFittingParameter
-Impl:Parameter::Impl
 MarkovFunctional:Gaussian1dModel,CalibratedModel
 CustomSmileSection:SmileSection
 CustomSmileFactory:
@@ -1708,7 +1668,6 @@ ShortRateTree:TreeLattice2D<TwoFactorModel::ShortRateTree, TrinomialTree>
 G2:TwoFactorModel,AffineModel,TermStructureConsistentModel
 Dynamics:TwoFactorModel::ShortRateDynamics
 FittingParameter:TermStructureFittingParameter
-Impl:Parameter::Impl
 ConstantEstimator:VolatilityCompositor
 Garch11:VolatilityCompositor
 GarmanKlassAbstract:LocalVolatilityEstimator<IntervalPrice>
@@ -2013,7 +1972,6 @@ EurodollarFuturesImpliedStdDevQuote:Quote,LazyObject
 ForwardSwapQuote:Quote,LazyObject
 ForwardValueQuote:Quote,Observer
 FuturesConvAdjustmentQuote:Quote,Observer
-ImpliedStdDevQuote:Quote,LazyObject
 LastFixingQuote:Quote,Observer
 MultiCompositeQuote:Quote,Observer
 SimpleQuote:Quote
@@ -2097,7 +2055,6 @@ BlackVolTimeExtrapolation:
 FixedLocalVolSurface:LocalVolTermStructure
 GridModelLocalVolSurface:LocalVolTermStructure,CalibratedModel
 HestonBlackVolSurface:BlackVolTermStructure
-ImpliedVolTermStructure:BlackVarianceTermStructure
 LocalConstantVol:LocalVolTermStructure
 LocalVolCurve:LocalVolTermStructure
 LocalVolSurface:LocalVolTermStructure
@@ -2173,7 +2130,6 @@ FlatForward:YieldTermStructure,LazyObject
 InterpolatedForwardCurve:ZeroYieldStructure,InterpolatedCurve<Interpolator>
 ForwardSpreadedTermStructure:ZeroYieldStructure
 ForwardRateStructure:ZeroYieldStructure
-ImpliedTermStructure:YieldTermStructure
 InterpolatedSimpleZeroCurve:YieldTermStructure,InterpolatedCurve<Interpolator>
 MultipleResetsSwapRateHelper:RelativeDateRateHelper
 ExponentialSplinesFitting:FittedBondDiscountCurve::FittingMethod
@@ -2207,137 +2163,58 @@ ZeroYieldStructure:YieldTermStructure
 YieldTermStructure:TermStructure
 ASX:
 Calendar:
-Impl:
-WesternImpl:Impl
-OrthodoxImpl:Impl
 Argentina:Calendar
-MervalImpl:Calendar::WesternImpl
 Australia:Calendar
-SettlementImpl:Calendar::WesternImpl
-AsxImpl:Calendar::WesternImpl
 Austria:Calendar
-SettlementImpl:Calendar::WesternImpl
-ExchangeImpl:Calendar::WesternImpl
 BespokeCalendar:Calendar
-Impl:Calendar::Impl
 Botswana:Calendar
-Impl:Calendar::WesternImpl
 Brazil:Calendar
-SettlementImpl:Calendar::WesternImpl
-ExchangeImpl:Calendar::WesternImpl
 Canada:Calendar
-SettlementImpl:Calendar::WesternImpl
-TsxImpl:Calendar::WesternImpl
 Chile:Calendar
-SseImpl:Calendar::WesternImpl
 China:Calendar
-SseImpl:Calendar::Impl
-IbImpl:Calendar::Impl
 Croatia:Calendar
-ZseImpl:Calendar::WesternImpl
 CzechRepublic:Calendar
-PseImpl:Calendar::WesternImpl
 Denmark:Calendar
-Impl:Calendar::WesternImpl
 Finland:Calendar
-Impl:Calendar::WesternImpl
 France:Calendar
-SettlementImpl:Calendar::WesternImpl
-ExchangeImpl:Calendar::WesternImpl
 Germany:Calendar
-SettlementImpl:Calendar::WesternImpl
-FrankfurtStockExchangeImpl:Calendar::WesternImpl
-XetraImpl:Calendar::WesternImpl
-EurexImpl:Calendar::WesternImpl
-EuwaxImpl:Calendar::WesternImpl
 HongKong:Calendar
-HkexImpl:Calendar::WesternImpl
 Hungary:Calendar
-Impl:Calendar::WesternImpl
 Iceland:Calendar
-IcexImpl:Calendar::WesternImpl
 India:Calendar
-NseImpl:Calendar::WesternImpl
 Indonesia:Calendar
-BejImpl:Calendar::WesternImpl
 Israel:Calendar
 Italy:Calendar
-SettlementImpl:Calendar::WesternImpl
-ExchangeImpl:Calendar::WesternImpl
 Japan:Calendar
-Impl:Calendar::Impl
 JointCalendar:Calendar
-Impl:Calendar::Impl
 Malta:Calendar
-MseImpl:Calendar::WesternImpl
 Mexico:Calendar
-BmvImpl:Calendar::WesternImpl
 Montenegro:Calendar
-MnseImpl:Calendar::WesternImpl
 NewZealand:Calendar
-CommonImpl:Calendar::WesternImpl
-WellingtonImpl:CommonImpl
-AucklandImpl:CommonImpl
 NorthMacedonia:Calendar
-MseImpl:Calendar::OrthodoxImpl
 Norway:Calendar
-Impl:Calendar::WesternImpl
 NullCalendar:Calendar
-Impl:Calendar::Impl
 Poland:Calendar
-SettlementImpl:Calendar::WesternImpl
-WseImpl:SettlementImpl
 Romania:Calendar
-PublicImpl:Calendar::OrthodoxImpl
-BVBImpl:PublicImpl
 Russia:Calendar
-SettlementImpl:Calendar::OrthodoxImpl
-ExchangeImpl:Calendar::OrthodoxImpl
 SaudiArabia:Calendar
-TadawulImpl:Calendar::Impl
 Serbia:Calendar
-BseImpl:Calendar::WesternImpl
 Singapore:Calendar
-SgxImpl:Calendar::WesternImpl
 Slovakia:Calendar
-BsseImpl:Calendar::WesternImpl
 Slovenia:Calendar
-LseImpl:Calendar::WesternImpl
 SouthAfrica:Calendar
-Impl:Calendar::WesternImpl
 SouthKorea:Calendar
-SettlementImpl:Calendar::Impl
-KrxImpl:SettlementImpl
 Sweden:Calendar
-Impl:Calendar::WesternImpl
 Switzerland:Calendar
-Impl:Calendar::WesternImpl
 Taiwan:Calendar
-TsecImpl:Calendar::Impl
 TARGET:Calendar
-Impl:Calendar::WesternImpl
 Thailand:Calendar
-SetImpl:Calendar::WesternImpl
 Turkey:Calendar
-Impl:Calendar::Impl
 Ukraine:Calendar
-UseImpl:Calendar::OrthodoxImpl
 UnitedKingdom:Calendar
-SettlementImpl:Calendar::WesternImpl
-ExchangeImpl:Calendar::WesternImpl
-MetalsImpl:Calendar::WesternImpl
 UnitedStates:Calendar
-SettlementImpl:Calendar::WesternImpl
-LiborImpactImpl:SettlementImpl
-NyseImpl:Calendar::WesternImpl
-GovernmentBondImpl:Calendar::WesternImpl
-SofrImpl:GovernmentBondImpl
-NercImpl:Calendar::WesternImpl
-FederalReserveImpl:Calendar::WesternImpl
 Uzbekistan:Calendar
-Impl:Calendar::WesternImpl
 WeekendsOnly:Calendar
-Impl:Calendar::WesternImpl
 Date:
 short_date_holder:
 long_date_holder:
@@ -2347,40 +2224,17 @@ iso_datetime_holder:
 hash:
 DateGeneration:
 DayCounter:
-Impl:
 Actual360:DayCounter
-Impl:DayCounter::Impl
 Actual364:DayCounter
-Impl:DayCounter::Impl
 Actual36525:DayCounter
-Impl:DayCounter::Impl
 Actual365Fixed:DayCounter
-Impl:DayCounter::Impl
-CA_Impl:DayCounter::Impl
-NL_Impl:DayCounter::Impl
 Actual366:DayCounter
-Impl:DayCounter::Impl
 ActualActual:DayCounter
-ISMA_Impl:DayCounter::Impl
-Old_ISMA_Impl:DayCounter::Impl
-ISDA_Impl:DayCounter::Impl
-AFB_Impl:DayCounter::Impl
 Business252:DayCounter
-Impl:DayCounter::Impl
 OneDayCounter:DayCounter
-Impl:DayCounter::Impl
 SimpleDayCounter:DayCounter
-Impl:DayCounter::Impl
 Thirty360:DayCounter
-Thirty360_Impl:DayCounter::Impl
-US_Impl:Thirty360_Impl
-ISMA_Impl:Thirty360_Impl
-EU_Impl:Thirty360_Impl
-IT_Impl:Thirty360_Impl
-ISDA_Impl:Thirty360_Impl
-NASD_Impl:Thirty360_Impl
 Thirty365:DayCounter
-Impl:DayCounter::Impl
 ECB:
 IMM:
 Period:
