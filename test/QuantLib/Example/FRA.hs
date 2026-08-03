@@ -41,7 +41,7 @@ run = do
   fraDayCounter <- I.dayCounter eu3m
 
   fraInstruments <- mapM
-    (\(q, t, p) -> fraRateHelper q t p (fromIntegral fixDays) fraCalendar convention eom fraDayCounter) $
+    (\(q, t, p) -> fraRateHelper q t p fixDays fraCalendar convention eom fraDayCounter) $
     zip3 fraQuotes starts periods
 
   tsdc <- dayCounter ActualActualISDA

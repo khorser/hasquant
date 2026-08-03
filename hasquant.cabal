@@ -148,7 +148,7 @@ library hasquant-examples
       Paths_hasquant
   hs-source-dirs:
       test
-  ghc-options: -Wall
+  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
       base >=4.11 && <5.0
     , hasquant
@@ -165,7 +165,7 @@ executable hasquant_example
       Paths_hasquant
   hs-source-dirs:
       main/exe
-  ghc-options: -Wall
+  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
       base >=4.11 && <5.0
     , hasquant
@@ -188,7 +188,7 @@ test-suite hasquant_test
       Paths_hasquant
   hs-source-dirs:
       main/test
-  ghc-options: -Wall
+  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
       HUnit
     , QuickCheck

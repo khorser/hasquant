@@ -161,6 +161,7 @@ extern "C" {
   DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e);
   DayCounter *qlDayCounterActual36525(int includeLastDay, char **e);
   DayCounter *qlDayCounterActual366(int includeLastDay, char **e);
+  DayCounter *qlDayCounterActual360(int includeLastDay, char **e);
   DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e);
   DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e);
   const char *qlDayCounterName(DayCounter *counter);

@@ -57,6 +57,7 @@ deriving instance Eq CalendarConstructor
 data DayCounterExtra = Extra__Business252 !Calendar
   | Extra__Actual36525 !Bool
   | Extra__Actual366 !Bool
+  | Extra__Actual360' !Bool
   | Extra__ActualActualBond' !Schedule
   | Extra__ActualActualISMA' !Schedule
 

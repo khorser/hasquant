@@ -33,13 +33,12 @@ extra-source-files:
 dependencies:
   - base >=4.11 && <5.0
   - time
-ghc-options: -Wall
+ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
 when:
   - condition: flag(trackAllocations)
     ghc-options: -g3
 
 library:
-  ghc-options: -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   dependencies:
     - template-haskell
     - vector
