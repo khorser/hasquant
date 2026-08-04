@@ -16,7 +16,7 @@ Currently, only Linux and macOS are supported; Windows should be easy to support
 
 ## Stack
 
-Standard build with documentation: `stack build --haddock --no-test`
+Minimal build: `stack build --no-haddock --no-test`
 
 Run tests: `stack build --test --no-haddock`
 
@@ -29,13 +29,13 @@ Run GHCi: `stack ghci --ghci-options $(find .stack-work \( -name "*.so" -o -name
 
 ## Cabal
 
-`cabal configure --disable-documentation && cabal build`
+Standard build: `cabal configure --disable-documentation && cabal build`
 
-`cabal configure --enable-documentation && cabal build`
+Build with documentation: `cabal configure --enable-documentation && cabal build`
 
-`cabal configure -f buildExample --disable-documentation && cabal build`
+Build example: `cabal configure -f buildExample --disable-documentation && cabal build`
 
-`cabal configure -f buildExample --enable-tests --disable-documentation && cabal build`
+Build example and tests: `cabal configure -f buildExample --enable-tests --disable-documentation && cabal build`
 
 ## Docker
 
@@ -76,7 +76,7 @@ While this is convenient, it leads to some allocation and deallocation on each c
 - `Pillar::Choice` is not exposed anywhere `BootstrapHelper`-derived helpers are bound (`RateHelper`s in `QuantLib.TermStructure.Yield`, and `ZeroCouponInflationSwapHelper`/`YearOnYearInflationSwapHelper` in `QuantLib.TermStructure.Inflation`) -- always uses the upstream default (`Pillar::LastRelevantDate`). Add a Haskell parameter if a caller ever needs `MaturityDate`/`CustomDate` pillars instead.
 - `experimental/commodities`
 - `experimental/termstructures`
-- migrate more tests and examples from QuantLib
+- migrate more tests and examples from QuantLib (esp. shortratemodels, Gaussian1dModels, CVAIRS)
 - review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - add CPIBondHelper, CPILeg, all inflation bonds and swaps
 

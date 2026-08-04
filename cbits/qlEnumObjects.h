@@ -256,6 +256,7 @@ enum IborIndexType {
   , Tibor
   , Wibor
   , Zibor
+  , Nibor
 };
 
 enum RngTrait {

@@ -750,6 +750,7 @@ static const makeIborIndex iborIndices[] = {
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Nibor(Period(l, (TimeUnit)u), ts));}
 };
 
 QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {

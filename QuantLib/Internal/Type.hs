@@ -1202,6 +1202,9 @@ peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 --       OvernightIborIndex
 --     SwapIndex
 --       OvernightIndexedSwapIndex
+--   InflationIndex
+--     YoYInflationIndex-
+--     ZeroInflationIndex-
 data CIndex'
 data CInterestRateIndex'
 data CInflationIndex'
@@ -1362,6 +1365,8 @@ withOvernightIndexedSwapIndex = withForeignPtr  .ptr . peel . peel . getIndex
 --     LocalVolTermStructure
 --   CallableBondVolatilityStructure
 --   DefaultProbabilityTermStructure
+--   ZeroInflationTermStructure
+--   YoYInflationTermStructure
 data CTermStructure'
 data CVolatilityTermStructure'
 data COptionletVolatilityStructure'
