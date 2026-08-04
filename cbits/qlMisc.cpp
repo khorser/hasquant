@@ -177,7 +177,7 @@ double qlEpsilon() {return QL_EPSILON;}
 Currency *qlCurrency(int ccy, char **e) {
   try {
     if (ccy < 0 || ccy >= (int)LENGTH(ccys))
-      QL_FAIL("Invalid currency index " << ccy);
+      QL_FAIL("Invalid currency index: " << ccy);
     return alloc(ccys[ccy]());
   } catch (std::exception& er) {return handleException<Currency *>(e, er);}}
 
@@ -467,7 +467,7 @@ static const makeCalendar calendars[] = {
 Calendar *qlCalendar(int country, int market, char **e) {
   try {
     if (country < 0 || country >= (int)LENGTH(calendars))
-      QL_FAIL("Invalid country index " << country);
+      QL_FAIL("Invalid country index: " << country);
     return alloc(calendars[country](market));
   } catch (std::exception& er) {return handleException<Calendar *>(e, er);}}
 
@@ -571,7 +571,7 @@ static const makeDayCounter dayCounters[] = {
 DayCounter *qlDayCounter(int type, int convention, char **e) {
   try {
     if (type < 0 || type >= (int)LENGTH(dayCounters))
-      QL_FAIL("Invalid DayCounter type " << type);
+      QL_FAIL("Invalid DayCounter type: " << type);
     return alloc(dayCounters[type](convention));
   } catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 
