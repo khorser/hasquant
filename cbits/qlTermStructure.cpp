@@ -756,7 +756,7 @@ static const makeIborIndex iborIndices[] = {
 QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {
   try {
     if (index < 0 || index >= (int)LENGTH(iborIndices))
-      QL_FAIL("Invalid IBOR index index" << index);
+      QL_FAIL("Invalid IBOR index index: " << index);
     YieldTermStructureHandle ts = qlNullableHandle(fwd);
     IborIndex *i = iborIndices[index](l, u, ts);
     return ret(new QlIborIndex(alloc(i)));

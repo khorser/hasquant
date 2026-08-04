@@ -116,6 +116,7 @@ data IborConstructor =
     | Tibor (Word, TimeUnit)
     | Wibor (Word, TimeUnit)
     | Zibor (Word, TimeUnit)
+    | Nibor (Word, TimeUnit)
 
     | Ibor String -- ^familyName
       (Word, TimeUnit) -- ^teno
@@ -236,6 +237,7 @@ iborIndexType (TRLibor _) = return IborTRLibor
 iborIndexType (Tibor _) = return IborTibor
 iborIndexType (Wibor _) = return IborWibor
 iborIndexType (Zibor _) = return IborZibor
+iborIndexType (Nibor _) = return IborNibor
 iborIndexType x = throwIO $ EnumConversion $ "No type defined for Ibor constructor " ++ show x
 
 iborIndexTenor :: IborConstructor -> (Word, TimeUnit)

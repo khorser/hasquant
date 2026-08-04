@@ -1218,6 +1218,10 @@ data COvernightIndexedSwapIndex'
 newtype GenIndex a = GenIndex {getIndex :: GenForeignPtr a CIndex'}
 type CIndex = ForeignPtr CIndex'
 type Index = GenIndex CIndex
+
+foreign import ccall safe "ql.h qlIndexName" qlIndexName :: Ptr CIndex' -> IO CString
+instance Show (GenIndex a) where show = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
+
 type GenInterestRateIndex a = GenIndex (AnyOf CInterestRateIndex' a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
 type InterestRateIndex = GenInterestRateIndex CInterestRateIndex

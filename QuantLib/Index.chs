@@ -19,11 +19,6 @@ import QuantLib.Internal.Type
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
-
-instance Show Index where show = qlIndexName
-
-{#fun pure qlIndexName{withIndex*`GenIndex a'}->`String'#}
-
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
 -- Adds fixings for the given InterestRateIndex object
