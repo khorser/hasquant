@@ -9,8 +9,7 @@ module QuantLib.Model
   , PiecewiseTimeDependentHestonModel
   , ShortRateModel
   , GenShortRateModel
-  , AffineModel
-  , GenAffineModel
+  , AffineModel(..)
   , OneFactorAffineModel
   , GenOneFactorAffineModel
   , LiborForwardModel
@@ -29,7 +28,6 @@ module QuantLib.Model
   , GenCalibrationHelper
   , asCalibrationHelper
 
-  , asAffineModel
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
@@ -93,7 +91,6 @@ import QuantLib.Internal.Enum
 {#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
 {#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
 {#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
-{#pointer *QlAffineModel as AffineModel foreign -> CAffineModel' nocode#}
 {#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
 {#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel' nocode#}
 {#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}

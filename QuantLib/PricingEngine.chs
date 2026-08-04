@@ -159,7 +159,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
 {#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
 {#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
-{#pointer *QlAffineModel as AffineModel foreign -> CAffineModel' nocode#}
+{#pointer *QlAffineModel foreign -> CAffineModel' nocode#}
 {#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
 {#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel' nocode#}
 {#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
@@ -222,7 +222,7 @@ import QuantLib.Internal.Enum
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
-{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`GenAffineModel m',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticGJRGARCHEngine as analyticGJRGARCHEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticHestonEngine as analyticHestonEngine{withHestonModel*`GenHestonModel m',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations

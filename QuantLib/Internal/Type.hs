@@ -424,9 +424,7 @@ module QuantLib.Internal.Type
   , asStochasticProcess1D
   , asGeneralizedBlackScholesProcess
 
-  , AffineModel
-  , GenAffineModel
-  , CAffineModel
+  , AffineModel(..)
   , CAffineModel'
   , asCalibratedModel
   , asBatesDoubleExpModel
@@ -434,9 +432,7 @@ module QuantLib.Internal.Type
   , asOneFactorAffineModel
   , asShortRateModel
   , asHestonModel
-  , peekAffineModel
   , withAffineModel
-  , HasAffineModel(..)
   , BatesDetJumpModel
   , CBatesDetJumpModel
   , CBatesDetJumpModel'
@@ -673,7 +669,7 @@ import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(peekDynString, preArray, peekDayArray)
-import Control.Exception (finally)
+import Control.Exception (finally, bracket)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
@@ -1940,31 +1936,19 @@ peekG2 = peekGenShortRateModel
 withG2 :: G2 -> (Ptr CG2' -> IO b) -> IO b
 withG2 = withForeignPtr . ptr . peel . getCalibratedModel
 
-newtype GenAffineModel a = GenAffineModel {getAffineModel :: GenForeignPtr a CAffineModel'}
-type CAffineModel = ForeignPtr CAffineModel'
-type AffineModel = GenAffineModel CAffineModel
 foreign import ccall "ql.h qlOneFactorAffineModelAsAffineModel" qlOneFactorAffineModelAsAffineModel :: Ptr COneFactorAffineModel' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlLiborForwardModelAsAffineModel" qlLiborForwardModelAsAffineModel :: Ptr CLiborForwardModel' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlHullWhiteAsAffineModel" qlHullWhiteAsAffineModel :: Ptr CHullWhite' -> IO (Ptr CAffineModel')
 
-peekAffineModel :: Ptr CAffineModel' -> IO AffineModel
-peekAffineModel = GenAffineModel <.> newCastForeignPtr
-
-withAffineModel :: GenAffineModel a -> (Ptr CAffineModel' -> IO b) -> IO b
-withAffineModel = withGenForeignPtr . getAffineModel
-
-class HasAffineModel a where
-  asAffineModel :: a -> IO AffineModel
-
-instance HasAffineModel HullWhite where
-  asAffineModel = flip withForeignPtr (qlHullWhiteAsAffineModel >=> peekAffineModel) . ptr . peel . peel . getCalibratedModel
-instance HasAffineModel G2 where
-  asAffineModel = flip withForeignPtr (qlG2AsAffineModel >=> peekAffineModel) . ptr . peel . getCalibratedModel
-instance HasAffineModel OneFactorAffineModel where
-  asAffineModel = flip withForeignPtr (qlOneFactorAffineModelAsAffineModel >=> peekAffineModel) . ptr . peel . peel . getCalibratedModel
-instance HasAffineModel LiborForwardModel where
-  asAffineModel = flip withForeignPtr (qlLiborForwardModelAsAffineModel >=> peekAffineModel) . ptr . getCalibratedModel
+data AffineModel = HullWhite HullWhite | G2 G2 | OneFactorAffineModel OneFactorAffineModel | LiborForwardModel LiborForwardModel
+withUpcast :: Finalizable b => (Ptr a -> IO (Ptr b)) -> Ptr a -> (Ptr b -> IO r) -> IO r
+withUpcast up p f = bracket (up p) freeUpcast f
+withAffineModel :: AffineModel -> (Ptr CAffineModel' -> IO b) -> IO b
+withAffineModel (HullWhite m) f = withHullWhite m (flip (withUpcast qlHullWhiteAsAffineModel) f)
+withAffineModel (G2 m) f = withG2 m (flip (withUpcast qlG2AsAffineModel) f)
+withAffineModel (OneFactorAffineModel m) f = withOneFactorAffineModel m (flip (withUpcast qlOneFactorAffineModelAsAffineModel) f)
+withAffineModel (LiborForwardModel m) f = withGenCalibratedModel m (flip (withUpcast qlLiborForwardModelAsAffineModel) f)
 
 -- a:Instrument ("a" == an abstract class)
 --   a:Forward : Instrument
