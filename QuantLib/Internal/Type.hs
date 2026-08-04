@@ -1942,13 +1942,13 @@ foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2' -> I
 foreign import ccall "ql.h qlHullWhiteAsAffineModel" qlHullWhiteAsAffineModel :: Ptr CHullWhite' -> IO (Ptr CAffineModel')
 
 data AffineModel = HullWhite HullWhite | G2 G2 | OneFactorAffineModel OneFactorAffineModel | LiborForwardModel LiborForwardModel
-withUpcast :: Finalizable b => (Ptr a -> IO (Ptr b)) -> Ptr a -> (Ptr b -> IO r) -> IO r
-withUpcast up p f = bracket (up p) freeUpcast f
+withUpcast :: Finalizable b => (Ptr a -> IO (Ptr b)) -> (Ptr b -> IO r) -> Ptr a -> IO r
+withUpcast up f p = bracket (up p) freeUpcast f
 withAffineModel :: AffineModel -> (Ptr CAffineModel' -> IO b) -> IO b
-withAffineModel (HullWhite m) f = withHullWhite m (flip (withUpcast qlHullWhiteAsAffineModel) f)
-withAffineModel (G2 m) f = withG2 m (flip (withUpcast qlG2AsAffineModel) f)
-withAffineModel (OneFactorAffineModel m) f = withOneFactorAffineModel m (flip (withUpcast qlOneFactorAffineModelAsAffineModel) f)
-withAffineModel (LiborForwardModel m) f = withGenCalibratedModel m (flip (withUpcast qlLiborForwardModelAsAffineModel) f)
+withAffineModel (HullWhite m) f = withHullWhite m (withUpcast qlHullWhiteAsAffineModel f)
+withAffineModel (G2 m) f = withG2 m (withUpcast qlG2AsAffineModel f)
+withAffineModel (OneFactorAffineModel m) f = withOneFactorAffineModel m (withUpcast qlOneFactorAffineModelAsAffineModel f)
+withAffineModel (LiborForwardModel m) f = withGenCalibratedModel m (withUpcast qlLiborForwardModelAsAffineModel f)
 
 -- a:Instrument ("a" == an abstract class)
 --   a:Forward : Instrument
