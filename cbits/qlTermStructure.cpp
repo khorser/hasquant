@@ -851,6 +851,41 @@ QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e) {
     return ret(new QlYoYInflationIndex(alloc(yoyInflationIndices[index]())));
   } catch (std::exception& er) {return handleException<QlYoYInflationIndex *>(e, er);}}
 
+typedef Region *(*makeRegion)();
+// must match the order of qlEnumObjects.h:RegionType
+static const makeRegion regions[] = {
+    []{return static_cast<Region *>(new AustraliaRegion());}
+  , []{return static_cast<Region *>(new EURegion());}
+  , []{return static_cast<Region *>(new FranceRegion());}
+  , []{return static_cast<Region *>(new UKRegion());}
+  , []{return static_cast<Region *>(new USRegion());}
+  , []{return static_cast<Region *>(new ZARegion());}
+};
+Region *qlRegion(int r, char **e) {
+  try {
+    if (r < 0 || r >= (int)LENGTH(regions)) QL_FAIL("Invalid region index " << r);
+    return regions[r]();
+  } catch (std::exception& er) {return handleException<Region*>(e, er);}}
+Region *qlCreateRegion(char* name, char* code, char **e) {
+  try {return alloc(new CustomRegion(arg(name), arg(code)));
+  } catch (std::exception& er) {return handleException<Region*>(e, er);}}
+void qlFreeRegion(Region *o) {del(o);}
+const char *qlRegionName(Region *o) {return DUP(arg(o)->name().c_str());}
+
+QlZeroInflationIndex *qlZeroInflationIndex(char *familyName, Region *region, int revised, int frequency,
+    int availLagN, int availLagU, Currency *currency, QlZeroInflationTermStructure *ts, char **e) {
+  try {return ret(new QlZeroInflationIndex(alloc(new ZeroInflationIndex(arg(familyName), *arg(region), revised,
+          (Frequency)frequency, Period(availLagN, (TimeUnit)availLagU), *arg(currency), qlNullableHandle(ts)))));
+  } catch (std::exception& er) {return handleException<QlZeroInflationIndex *>(e, er);}}
+QlYoYInflationIndex *qlYoYInflationIndex(char *familyName, Region *region, int revised, int frequency,
+    int availLagN, int availLagU, Currency *currency, QlYoYInflationTermStructure *ts, char **e) {
+  try {return ret(new QlYoYInflationIndex(alloc(new YoYInflationIndex(arg(familyName), *arg(region), revised,
+          (Frequency)frequency, Period(availLagN, (TimeUnit)availLagU), *arg(currency), qlNullableHandle(ts)))));
+  } catch (std::exception& er) {return handleException<QlYoYInflationIndex *>(e, er);}}
+QlYoYInflationIndex *qlYoYInflationIndexFromZero(QlZeroInflationIndex *underlying, QlYoYInflationTermStructure *ts, char **e) {
+  try {return ret(new QlYoYInflationIndex(alloc(new YoYInflationIndex(*arg(underlying), qlNullableHandle(ts)))));
+  } catch (std::exception& er) {return handleException<QlYoYInflationIndex *>(e, er);}}
+
 void qlFreeInflationIndex(QlInflationIndex *o) {del(o);}
 QlIndex* qlInflationIndexAsIndex(QlInflationIndex *o) {return ret(new QlIndex(*arg(o)));}
 void qlFreeZeroInflationIndex(QlZeroInflationIndex *o) {del(o);}

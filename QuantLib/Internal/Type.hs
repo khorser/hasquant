@@ -34,6 +34,10 @@ module QuantLib.Internal.Type
   , peekCurrency
   , withCurrency
   , withMaybeCurrency
+  , CRegion
+  , Region
+  , peekRegion
+  , withRegion
   , CDayCounter
   , DayCounter
   , peekDayCounter
@@ -334,10 +338,12 @@ module QuantLib.Internal.Type
   , CZeroInflationTermStructure
   , CZeroInflationTermStructure'
   , peekZeroInflationTermStructure
+  , withMaybeZeroInflationTermStructure
   , YoYInflationTermStructure
   , CYoYInflationTermStructure
   , CYoYInflationTermStructure'
   , peekYoYInflationTermStructure
+  , withMaybeYoYInflationTermStructure
 
   , BatesProcess
   , CBatesProcess
@@ -717,6 +723,18 @@ withMaybeCurrency = withMaybeStandalone . (getCCurrency <$>)
 foreign import ccall safe "ql.h qlCurrencyName" qlCurrencyName :: Ptr CCurrency -> IO CString
 instance Show Currency where show x = showStandalone qlCurrencyName (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
+
+data CRegion
+newtype Region = Region {getCRegion :: Standalone CRegion}
+foreign import ccall unsafe "ql.h &qlFreeRegion" qlFreeRegion :: FinalizerPtr CRegion
+instance Finalizable CRegion where finalize = qlFreeRegion
+peekRegion :: Ptr CRegion -> IO Region
+peekRegion = Region <.> peekStandalone
+withRegion :: Region -> (Ptr CRegion -> IO b) -> IO b
+withRegion = withStandalone . getCRegion
+foreign import ccall safe "ql.h qlRegionName" qlRegionName :: Ptr CRegion -> IO CString
+instance Show Region where show x = showStandalone qlRegionName (getCRegion x)
+instance Eq Region where x == y = show x == show y
 
 data CDayCounter
 newtype DayCounter = DayCounter {getCDayCounter :: Standalone CDayCounter}
@@ -1520,8 +1538,12 @@ withMaybeDefaultProbabilityTermStructure :: Maybe DefaultProbabilityTermStructur
 withMaybeDefaultProbabilityTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
 peekZeroInflationTermStructure :: Ptr CZeroInflationTermStructure' -> IO ZeroInflationTermStructure
 peekZeroInflationTermStructure = GenTermStructure <.> newGenForeignPtr
+withMaybeZeroInflationTermStructure :: Maybe ZeroInflationTermStructure -> (Ptr CZeroInflationTermStructure' -> IO b) -> IO b
+withMaybeZeroInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
 peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflationTermStructure
 peekYoYInflationTermStructure = GenTermStructure <.> newGenForeignPtr
+withMaybeYoYInflationTermStructure :: Maybe YoYInflationTermStructure -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
+withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
 
 asYieldTermStructure :: GenYieldTermStructure a -> IO YieldTermStructure
 asYieldTermStructure = transferGenForeignPtr peekYieldTermStructure . peel . getTermStructure

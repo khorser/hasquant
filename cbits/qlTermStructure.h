@@ -230,6 +230,17 @@ extern "C" {
   QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e);
   QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e);
 
+  Region *qlRegion(int r, char **e);
+  Region *qlCreateRegion(char *name, char *code, char **e);
+  void qlFreeRegion(Region *o);
+  const char *qlRegionName(Region *o);
+
+  QlZeroInflationIndex *qlZeroInflationIndex(char *familyName, Region *region, int revised, int frequency,
+    int availLagN, int availLagU, Currency *currency, QlZeroInflationTermStructure *ts, char **e);
+  QlYoYInflationIndex *qlYoYInflationIndex(char *familyName, Region *region, int revised, int frequency,
+    int availLagN, int availLagU, Currency *currency, QlYoYInflationTermStructure *ts, char **e);
+  QlYoYInflationIndex *qlYoYInflationIndexFromZero(QlZeroInflationIndex *underlying, QlYoYInflationTermStructure *ts, char **e);
+
   void qlFreeInflationIndex(QlInflationIndex *o);
   QlIndex* qlInflationIndexAsIndex(QlInflationIndex *o);
   void qlFreeZeroInflationIndex(QlZeroInflationIndex *o);
