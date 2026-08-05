@@ -14,25 +14,29 @@ Check the class's constructor in its header under `/opt/homebrew/include/ql/inde
 
 ## Case 1: enum-like index
 
-There are three parallel enum+table pairs, each following the same lockstep-append rule as [[reconcile-currencies]]/[[reconcile-calendars]] (append only, don't reorder, keep both lists the same length):
+There are several parallel enum+table pairs, each following the same lockstep-append rule as [[reconcile-currencies]]/[[reconcile-calendars]] (append only within your group, don't reorder, keep enum and table the same length):
 
 | Kind | Enum (`cbits/qlEnumObjects.h`) | Table (`cbits/qlTermStructure.cpp`) | Factory fn | Shared shape |
 |---|---|---|---|---|
-| IBOR / Libor-style | `enum IborIndexType` | `iborIndices[]` (`makeIborIndex`) | `qlCreateIbor` | `(Period tenor, YieldTermStructureHandle ts)` |
-| Overnight | `enum OvernightIborIndexType` | `onIndices[]` (`makeONIndex`) | `qlCreateONIndex` | `(YieldTermStructureHandle ts)` |
+| IBOR, standard tenor | `enum IborIndexType` | `iborIndices[]`'s Standard block | `qlCreateIbor` | `(Period tenor, YieldTermStructureHandle ts)` |
+| IBOR, daily tenor | `enum IborDailyTenorIndexType` | `iborIndices[]`'s DailyTenor block | `qlCreateIbor` | `(Size fixingDays, YieldTermStructureHandle ts)` |
+| IBOR, overnight | `enum IborONIndexType` | `iborIndices[]`'s Overnight block | `qlCreateIbor` | `(YieldTermStructureHandle ts)` |
+| Overnight (true O/N compounding index, e.g. SOFR/SONIA) | `enum OvernightIborIndexType` | `onIndices[]` (`makeONIndex`) | `qlCreateONIndex` | `(YieldTermStructureHandle ts)` |
 | Swap-rate | `enum LiborSwapIndexType` | `swapIndices[]` (`makeSwapIndex`) | `qlCreateLiborSwapIndex` | `(Period tenor, YieldTermStructureHandle h1, YieldTermStructureHandle h2)` |
 | Zero inflation | `enum ZeroInflationIndexType` | `zeroInflationIndices[]` | `qlCreateZeroInflationIndex` | *(none)* |
 | YoY inflation | `enum YoYInflationIndexType` | `yoyInflationIndices[]` | `qlCreateYoYInflationIndex` | *(none)* |
 
-Each enum's comment states which table it must match the order of, and vice versa — a mismatch is a silent wrong-index-constructed bug, not a compile error, exactly like the currency/calendar tables.
+Each enum's comment states which table (or block of the table) it must match the order of, and vice versa — a mismatch is a silent wrong-index-constructed bug, not a compile error, exactly like the currency/calendar tables.
+
+**IBOR is split into three enums, not one.** `iborIndices[]` is a single flat C++ array, but it's laid out as three contiguous blocks (Standard, then DailyTenor, then Overnight — see the block comments in `cbits/qlTermStructure.cpp`), each with its own C enum. `IborIndexType`/`IborDailyTenorIndexType` end with a trailing `...Last` sentinel value (not a real index — it only marks "insert new values above this line" and is stripped out on the Haskell side); `IborONIndexType`, being the last block, has none. This exists because — unlike Overnight/Swap, where every variant takes the exact same constructor shape — IBOR variants need one of three differently-shaped runtime arguments (a `(Period, ts)` tenor, an `(fixingDays, ts)` pair, or just `(ts)`), so `QuantLib/Index/InterestRate.chs` layers a hand-written `IborConstructor` wrapper ADT on top of the three raw enums (`iborIndex :: IborConstructor -> ...`) instead of exposing them directly, unlike `OvernightIborIndexType`/`LiborSwapIndexType`, which callers use as bare enum values with no wrapper.
 
 **Index hierarchy note (inflation-specific):** unlike Ibor/Overnight/Swap indices (which collapse straight into their family's single Haskell type), `ZeroInflationIndex`/`YoYInflationIndex` sit under a real intermediate `InflationIndex` Haskell type (`Index -> InflationIndex -> {Zero,YoY}`, mirroring `InterestRateIndex`'s own 3-level shape in `Internal/Type.hs`), even though today nothing needs to treat "any inflation index" polymorphically. This was a deliberate choice (not the usual "leaf directly under the root" shape a Case-1 family would otherwise get) specifically to leave room for the generic-constructor Case-2 follow-up noted above, without a later restructuring. If you're adding a similar enum-dispatched family that has no foreseeable generic-constructor follow-up, prefer the flatter direct-leaf shape (`GenIndex a` with a single `AnyOf`, like `IborIndex`/`SwapIndex` sit under `InterestRateIndex`) — this extra level is the exception, not the default.
 
 Steps:
-1. Confirm the new index class's constructor matches the shared shape for its family (check the header under `ql/indexes/ibor/` or `ql/indexes/swap/`).
-2. Append the new variant name to the matching `enum` in `cbits/qlEnumObjects.h`.
-3. Append the matching lambda to the matching table in `cbits/qlTermStructure.cpp`, at the same relative position, e.g. for an overnight index: `, [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new NewIndexName(ts));}`.
-4. No `.chs`/`Internal/Type.hs` changes needed for a new *case* of an existing enum — all three enums are already exposed as flat c2hs enums in `QuantLib/Index/InterestRate.chs` (`{#enum OvernightIborIndexType{} deriving (Show, Eq)#}`, `{#enum LiborSwapIndexType{} deriving (Show, Eq)#}`, `{#enum IborIndexType{} add prefix = "Ibor" deriving (Show, Eq)#}`, each also listed in the module's export list) and consumed directly as plain enum arguments by `qlCreateONIndex`/`qlCreateLiborSwapIndex`/`qlCreateIbor` respectively — no `mergeEnums`/per-variant Market-style machinery here (unlike calendars), since these are flat enums, not parameterized per case.
+1. Confirm the new index class's constructor matches the shared shape for its family (check the header under `ql/indexes/ibor/` or `ql/indexes/swap/`). For IBOR specifically, this also decides which of the three enums/blocks it belongs to — Standard (`(Period, ts)`), DailyTenor (a settlement-days `Size`/`int`, e.g. subclasses of `DailyTenorLibor`), or Overnight (no tenor argument at all, e.g. `FooLiborON`).
+2. Append the new variant name to the matching `enum` in `cbits/qlEnumObjects.h` — for IBOR, insert directly above that enum's trailing `...Last` sentinel (or at the end, for `IborONIndexType`, which has none).
+3. Append the matching lambda to the matching table/block in `cbits/qlTermStructure.cpp`, at the same relative position, e.g. for an overnight index: `, [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new NewIndexName(ts));}`.
+4. No `.chs`/`Internal/Type.hs` changes needed for a new *case* of an existing enum. `OvernightIborIndexType`/`LiborSwapIndexType` are exposed as flat c2hs enums in `QuantLib/Index/InterestRate.chs` and consumed directly as plain enum arguments by `qlCreateONIndex`/`qlCreateLiborSwapIndex` — no generation machinery involved, since these are flat enums with a uniform shape, not parameterized per case. IBOR's three split enums are consumed by `deriveIborConstructor` (`QuantLib/Internal/Syntax.hs`), a TH combinator that reifies all three at build time and regenerates the `IborConstructor` wrapper ADT and its dispatch functions from them — so a new Standard/DailyTenor/Overnight IBOR case is *also* zero-touch on the Haskell side; you never edit `IborConstructor` by hand.
 
 ## Reconciling existing index enums against upstream
 
@@ -40,7 +44,7 @@ Same idea as [[reconcile-currencies]]/[[reconcile-calendars]]: QuantLib periodic
 
 For each family, diff the enum in `cbits/qlEnumObjects.h` against the concrete subclasses declared upstream:
 - Overnight → grep `/opt/homebrew/include/ql/indexes/ibor/*.hpp` for `public OvernightIndex` vs `enum OvernightIborIndexType`.
-- IBOR/Libor-style → same directory, `public IborIndex` (note: many concrete Libor variants subclass an intermediate class like `Libor`/`DailyTenorLibor` rather than `IborIndex` directly, so a plain `public IborIndex` grep will undercount — check the actual class hierarchy in the header, don't trust the grep count alone).
+- IBOR/Libor-style → same directory, `public IborIndex` (note: many concrete Libor variants subclass an intermediate class like `Libor`/`DailyTenorLibor` rather than `IborIndex` directly, so a plain `public IborIndex` grep will undercount — check the actual class hierarchy in the header, don't trust the grep count alone). Diff against all three IBOR enums combined (`IborIndexType`/`IborDailyTenorIndexType`/`IborONIndexType`), and check the class's own constructor shape (see step 1 above) to know which one a missing variant belongs to.
 - Swap-rate → `/opt/homebrew/include/ql/indexes/swap/*.hpp` vs `enum LiborSwapIndexType`.
 
 Do this diff fresh each time rather than trusting a cached list — hasquant's `OvernightIborIndexType` was found to be missing 9 upstream overnight indexes as of one prior check, and QuantLib adds more with each release. Adding each is a Case 1 append (enum + `onIndices[]`/`iborIndices[]`/`swapIndices[]` lambda), not a new binding.

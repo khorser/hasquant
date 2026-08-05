@@ -713,8 +713,12 @@ QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 typedef IborIndex *(*makeIborIndex)(int l, int u, const YieldTermStructureHandle& ts);
-// must match with the order of qlEnumObjects:IborIndexType
+// must match the order of qlEnumObjects.h:IborIndexType (Standard block), then
+// IborDailyTenorIndexType (DailyTenor block), then IborONIndexType (Overnight block) --
+// see deriveIborConstructor in QuantLib/Internal/Syntax.hs for how the three Haskell-side
+// enums are stitched back into a single flat offset into this array.
 static const makeIborIndex iborIndices[] = {
+    // -- Standard block (IborIndexType) --
     [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts));}
@@ -729,15 +733,6 @@ static const makeIborIndex iborIndices[] = {
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CADLiborON(ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new EURLiborON(ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new GBPLiborON(ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLiborON(ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts));}
@@ -751,6 +746,17 @@ static const makeIborIndex iborIndices[] = {
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts));}
   , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Nibor(Period(l, (TimeUnit)u), ts));}
+    // -- DailyTenor block (IborDailyTenorIndexType) --
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts));}
+  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts));}
+    // -- Overnight block (IborONIndexType) --
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CADLiborON(ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new EURLiborON(ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new GBPLiborON(ts));}
+  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLiborON(ts));}
 };
 
 QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {

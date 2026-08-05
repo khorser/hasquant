@@ -1,3 +1,6 @@
+{-# LANGUAGE TemplateHaskell, StandaloneDeriving #-}
+-- suppress warnings about unused Extra_ constructors
+{-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Index.InterestRate
   (
     InterestRateIndex
@@ -43,8 +46,7 @@ module QuantLib.Index.InterestRate
   , underlyingOIS
   ) where
 import QuantLib.Internal
-import QuantLib.Type
-import Control.Exception(throwIO)
+import QuantLib.Internal.Syntax
 {#import QuantLib.Time.Schedule#}(TimeUnit(..))
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
@@ -73,210 +75,102 @@ import QuantLib.Internal.Type
 
 {#enum OvernightIborIndexType{} deriving (Show, Eq)#}
 {#enum LiborSwapIndexType{} deriving (Show, Eq)#}
-{#enum IborIndexType{} add prefix = "Ibor" deriving (Show, Eq)#}
+{#enum IborIndexType{} add prefix = "Ibor__" deriving (Show, Eq)#}
+{#enum IborDailyTenorIndexType{} add prefix = "Ibor__" deriving (Show, Eq)#}
+{#enum IborONIndexType{} add prefix = "Ibor__" deriving (Show, Eq)#}
 
--- |for some indices without a dedicated overnight constructor you can use (0, Days) tenor
-data IborConstructor =
-    Bbsw (Word, TimeUnit)
-    | Bibor (Word, TimeUnit)
-    | Bkbm (Word, TimeUnit)
-    | Cdor (Word, TimeUnit)
-
-    | EurLibor (Word, TimeUnit)
-    | AudLibor (Word, TimeUnit)
-    | CadLibor (Word, TimeUnit)
-    | ChfLibor (Word, TimeUnit)
-    | DkkLibor (Word, TimeUnit)
-    | GbpLibor (Word, TimeUnit)
-    | JpyLibor (Word, TimeUnit)
-    | NzdLibor (Word, TimeUnit)
-    | SekLibor (Word, TimeUnit)
-    | UsdLibor (Word, TimeUnit)
-
-    | EurDailyTenorLibor Word
-    | ChfDailyTenorLibor Word
-    | GbpDailyTenorLibor Word
-    | JpyDailyTenorLibor Word
-    | UsdDailyTenorLibor Word
-
-    | CadLiborON
-    | EurLiborON
-    | GbpLiborON
-    | UsdLiborON
-
-    | Euribor (Word, TimeUnit)
-    | Euribor365 (Word, TimeUnit)
-    | Jibar (Word, TimeUnit)
-    | Mosprime (Word, TimeUnit)
-    | Pribor (Word, TimeUnit)
-    | Robor (Word, TimeUnit)
-    | Shibor (Word, TimeUnit)
-    | THBFIX (Word, TimeUnit)
-    | TRLibor (Word, TimeUnit)
-    | Tibor (Word, TimeUnit)
-    | Wibor (Word, TimeUnit)
-    | Zibor (Word, TimeUnit)
-    | Nibor (Word, TimeUnit)
-
-    | Ibor String -- ^familyName
-      (Word, TimeUnit) -- ^teno
+-- non-enum-ordinal IborConstructor cases -- convenience shortcuts and the fully generic
+-- constructors -- merged into IborConstructor by deriveIborConstructor below, alongside the
+-- plain-tenor/daily-tenor/overnight cases generated straight from IborIndexType/
+-- IborDailyTenorIndexType/IborONIndexType
+data IborExtra =
+      Extra__Ibor String -- ^familyName
+      (Word, TimeUnit) -- ^tenor
       Word -- ^settlementDays
       Currency
       Calendar -- ^fixingCalendar
       BusinessDayConvention
       Bool -- ^endOfMonth
       DayCounter
-    | Libor String (Word, TimeUnit) Word -- ^settlementDays
+    | Extra__Libor String (Word, TimeUnit) Word -- ^settlementDays
       Currency Calendar DayCounter
-    | DailyTenorLibor String Word -- ^settlementDays
+    | Extra__DailyTenorLibor String Word -- ^settlementDays
       Currency Calendar DayCounter
     -- convenience shortcuts
-    | Bbsw1M
-    | Bbsw2M
-    | Bbsw3M
-    | Bbsw4M
-    | Bbsw5M
-    | Bbsw6M
+    | Extra__Bbsw1M
+    | Extra__Bbsw2M
+    | Extra__Bbsw3M
+    | Extra__Bbsw4M
+    | Extra__Bbsw5M
+    | Extra__Bbsw6M
 
-    | BiborSW
-    | Bibor1M
-    | Bibor2M
-    | Bibor3M
-    | Bibor6M
-    | Bibor9M
-    | Bibor1Y
+    | Extra__BiborSW
+    | Extra__Bibor1M
+    | Extra__Bibor2M
+    | Extra__Bibor3M
+    | Extra__Bibor6M
+    | Extra__Bibor9M
+    | Extra__Bibor1Y
 
-    | Bkbm1M
-    | Bkbm2M
-    | Bkbm3M
-    | Bkbm4M
-    | Bkbm5M
-    | Bkbm6M
+    | Extra__Bkbm1M
+    | Extra__Bkbm2M
+    | Extra__Bkbm3M
+    | Extra__Bkbm4M
+    | Extra__Bkbm5M
+    | Extra__Bkbm6M
 
-    | EuriborSW
-    | Euribor2W
-    | Euribor3W
-    | Euribor1M
-    | Euribor2M
-    | Euribor3M
-    | Euribor4M
-    | Euribor5M
-    | Euribor6M
-    | Euribor7M
-    | Euribor8M
-    | Euribor9M
-    | Euribor10M
-    | Euribor11M
-    | Euribor1Y
+    | Extra__EuriborSW
+    | Extra__Euribor2W
+    | Extra__Euribor3W
+    | Extra__Euribor1M
+    | Extra__Euribor2M
+    | Extra__Euribor3M
+    | Extra__Euribor4M
+    | Extra__Euribor5M
+    | Extra__Euribor6M
+    | Extra__Euribor7M
+    | Extra__Euribor8M
+    | Extra__Euribor9M
+    | Extra__Euribor10M
+    | Extra__Euribor11M
+    | Extra__Euribor1Y
 
-    | Euribor365_SW
-    | Euribor365_2W
-    | Euribor365_3W
-    | Euribor365_1M
-    | Euribor365_2M
-    | Euribor365_3M
-    | Euribor365_4M
-    | Euribor365_5M
-    | Euribor365_6M
-    | Euribor365_7M
-    | Euribor365_8M
-    | Euribor365_9M
-    | Euribor365_10M
-    | Euribor365_11M
-    | Euribor365_1Y
+    | Extra__Euribor365_SW
+    | Extra__Euribor365_2W
+    | Extra__Euribor365_3W
+    | Extra__Euribor365_1M
+    | Extra__Euribor365_2M
+    | Extra__Euribor365_3M
+    | Extra__Euribor365_4M
+    | Extra__Euribor365_5M
+    | Extra__Euribor365_6M
+    | Extra__Euribor365_7M
+    | Extra__Euribor365_8M
+    | Extra__Euribor365_9M
+    | Extra__Euribor365_10M
+    | Extra__Euribor365_11M
+    | Extra__Euribor365_1Y
 
-    | EurLiborSW
-    | EurLibor2W
-    | EurLibor1M
-    | EurLibor2M
-    | EurLibor3M
-    | EurLibor4M
-    | EurLibor5M
-    | EurLibor6M
-    | EurLibor7M
-    | EurLibor8M
-    | EurLibor9M
-    | EurLibor10M
-    | EurLibor11M
-    | EurLibor1Y
-    deriving (Show, Eq)
+    | Extra__EurLiborSW
+    | Extra__EurLibor2W
+    | Extra__EurLibor1M
+    | Extra__EurLibor2M
+    | Extra__EurLibor3M
+    | Extra__EurLibor4M
+    | Extra__EurLibor5M
+    | Extra__EurLibor6M
+    | Extra__EurLibor7M
+    | Extra__EurLibor8M
+    | Extra__EurLibor9M
+    | Extra__EurLibor10M
+    | Extra__EurLibor11M
+    | Extra__EurLibor1Y
 
-iborIndexType :: IborConstructor -> IO IborIndexType
-iborIndexType (Bbsw _) = return IborBbsw
-iborIndexType (Bibor _) = return IborBibor
-iborIndexType (Bkbm _) = return IborBkbm
-iborIndexType (Cdor _) = return IborCdor
-iborIndexType (EurLibor _) = return IborEurLibor
-iborIndexType (AudLibor _) = return IborAudLibor
-iborIndexType (CadLibor _) = return IborCadLibor
-iborIndexType (ChfLibor _) = return IborChfLibor
-iborIndexType (DkkLibor _) = return IborDkkLibor
-iborIndexType (GbpLibor _) = return IborGbpLibor
-iborIndexType (JpyLibor _) = return IborJpyLibor
-iborIndexType (NzdLibor _) = return IborNzdLibor
-iborIndexType (SekLibor _) = return IborSekLibor
-iborIndexType (UsdLibor _) = return IborUsdLibor
-iborIndexType (EurDailyTenorLibor _) = return IborEurDailyTenorLibor
-iborIndexType (ChfDailyTenorLibor _) = return IborChfDailyTenorLibor
-iborIndexType (GbpDailyTenorLibor _) = return IborGbpDailyTenorLibor
-iborIndexType (JpyDailyTenorLibor _) = return IborJpyDailyTenorLibor
-iborIndexType (UsdDailyTenorLibor _) = return IborUsdDailyTenorLibor
-iborIndexType CadLiborON = return IborCadLiborON
-iborIndexType EurLiborON = return IborEurLiborON
-iborIndexType GbpLiborON = return IborGbpLiborON
-iborIndexType UsdLiborON = return IborUsdLiborON
-iborIndexType (Euribor _) = return IborEuribor
-iborIndexType (Euribor365 _) = return IborEuribor365
-iborIndexType (Jibar _) = return IborJibar
-iborIndexType (Mosprime _) = return IborMosprime
-iborIndexType (Pribor _) = return IborPribor
-iborIndexType (Robor _) = return IborRobor
-iborIndexType (Shibor _) = return IborShibor
-iborIndexType (THBFIX _) = return IborTHBFIX
-iborIndexType (TRLibor _) = return IborTRLibor
-iborIndexType (Tibor _) = return IborTibor
-iborIndexType (Wibor _) = return IborWibor
-iborIndexType (Zibor _) = return IborZibor
-iborIndexType (Nibor _) = return IborNibor
-iborIndexType x = throwIO $ EnumConversion $ "No type defined for Ibor constructor " ++ show x
+$(deriveIborConstructor "IborConstructor" "iborIndexOrdinal" "iborIndexTenor"
+  ''IborIndexType ''IborDailyTenorIndexType ''IborONIndexType ''IborExtra)
 
-iborIndexTenor :: IborConstructor -> (Word, TimeUnit)
-iborIndexTenor (Bbsw p) = p
-iborIndexTenor (Bibor p) = p
-iborIndexTenor (Bkbm p) = p
-iborIndexTenor (Cdor p) = p
-iborIndexTenor (EurLibor p) = p
-iborIndexTenor (AudLibor p) = p
-iborIndexTenor (CadLibor p) = p
-iborIndexTenor (ChfLibor p) = p
-iborIndexTenor (DkkLibor p) = p
-iborIndexTenor (GbpLibor p) = p
-iborIndexTenor (JpyLibor p) = p
-iborIndexTenor (NzdLibor p) = p
-iborIndexTenor (SekLibor p) = p
-iborIndexTenor (UsdLibor p) = p
-iborIndexTenor (EurDailyTenorLibor d) = (d, Days)
-iborIndexTenor (ChfDailyTenorLibor d) = (d, Days)
-iborIndexTenor (GbpDailyTenorLibor d) = (d, Days)
-iborIndexTenor (JpyDailyTenorLibor d) = (d, Days)
-iborIndexTenor (UsdDailyTenorLibor d) = (d, Days)
-iborIndexTenor CadLiborON = (0, Days)
-iborIndexTenor EurLiborON = (0, Days)
-iborIndexTenor GbpLiborON = (0, Days)
-iborIndexTenor UsdLiborON = (0, Days)
-iborIndexTenor (Euribor p) = p
-iborIndexTenor (Euribor365 p) = p
-iborIndexTenor (Jibar p) = p
-iborIndexTenor (Mosprime p) = p
-iborIndexTenor (Pribor p) = p
-iborIndexTenor (Robor p) = p
-iborIndexTenor (Shibor p) = p
-iborIndexTenor (THBFIX p) = p
-iborIndexTenor (TRLibor p) = p
-iborIndexTenor (Tibor p) = p
-iborIndexTenor (Wibor p) = p
-iborIndexTenor (Zibor p) = p
-iborIndexTenor _ = (0, Days)
+deriving instance Show IborConstructor
+deriving instance Eq IborConstructor
 
 iborIndex :: IborConstructor -> Maybe (GenYieldTermStructure y) -> IO IborIndex
 iborIndex (Ibor n p s cr ca bd b dc) ts = qlIborIndex n p s cr ca bd b dc ts
@@ -345,9 +239,7 @@ iborIndex EurLibor9M ts = iborIndex (EurLibor (9, Months)) ts
 iborIndex EurLibor10M ts = iborIndex (EurLibor (10, Months)) ts
 iborIndex EurLibor11M ts = iborIndex (EurLibor (11, Months)) ts
 iborIndex EurLibor1Y ts = iborIndex (EurLibor (1, Years)) ts
-iborIndex c ts = do
-  t <- iborIndexType c
-  qlCreateIbor t (iborIndexTenor c) ts
+iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 
 {#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
 -- |This method returns a schedule of fixing dates between start and end.
@@ -388,7 +280,7 @@ iborIndex c ts = do
 {#fun qlDailyTenorLibor{`String' -- ^familyName
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
-{#fun qlCreateIbor{`IborIndexType',fromEnumQuantity`(Word,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+{#fun qlCreateIbor{fromIntegral`Int',fromEnumQuantity`(Word,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 {#fun qlOvernightIndex as overnightIndex{`String',fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
 {#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex a'}->`BusinessDayConvention'#}

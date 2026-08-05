@@ -219,7 +219,11 @@ enum LiborSwapIndexType {
   , UsdLiborSwapIsdaFixPm
 };
 
-// must match with the order of qlTermStructure.cpp:iborIndices
+// must match the order of the "standard" block of qlTermStructure.cpp:iborIndices (comes
+// first). IborIndexTypeLast is a sentinel, not a real index -- insert new values above it.
+// This (and the other *Last sentinels below) is stripped out and turned into a flat-array
+// offset entirely on the Haskell side by deriveIborConstructor in QuantLib/Internal/Syntax.hs
+// -- nothing here needs to encode a count, a length, or an offset by hand.
 enum IborIndexType {
   Bbsw = 0
   , Bibor
@@ -235,15 +239,6 @@ enum IborIndexType {
   , NzdLibor
   , SekLibor
   , UsdLibor
-  , EurDailyTenorLibor
-  , ChfDailyTenorLibor
-  , GbpDailyTenorLibor
-  , JpyDailyTenorLibor
-  , UsdDailyTenorLibor
-  , CadLiborON
-  , EurLiborON
-  , GbpLiborON
-  , UsdLiborON
   , Euribor
   , Euribor365
   , Jibar
@@ -257,6 +252,27 @@ enum IborIndexType {
   , Wibor
   , Zibor
   , Nibor
+  , IborIndexTypeLast
+};
+
+// must match the order of the "daily tenor" block of qlTermStructure.cpp:iborIndices (comes
+// right after the standard block).
+enum IborDailyTenorIndexType {
+  EurDailyTenorLibor = 0
+  , ChfDailyTenorLibor
+  , GbpDailyTenorLibor
+  , JpyDailyTenorLibor
+  , UsdDailyTenorLibor
+  , IborDailyTenorIndexTypeLast
+};
+
+// must match the order of the "overnight" block of qlTermStructure.cpp:iborIndices (comes
+// last -- no sentinel needed, nothing chains off this group).
+enum IborONIndexType {
+  CadLiborON = 0
+  , EurLiborON
+  , GbpLiborON
+  , UsdLiborON
 };
 
 enum RngTrait {
