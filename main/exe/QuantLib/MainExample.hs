@@ -74,8 +74,8 @@ main = do
   printSwapIterationResult si2
 
   putStrLn "\n*** FittedBondCurve Example ***"
-  (BondCurveExample.Result s r1 r2 r3 r4) <- keepingSettings' BondCurveExample.run
-  putStrLn $ "Bond settlement date: " ++ show s
+  (BondCurveExample.Result ss r1 r2 r3 r4) <- keepingSettings' BondCurveExample.run
+  putStrLn $ "Bond settlement date: " ++ show ss
   printBondCurveInfo r1
   printBondCurveInfo r2
   printBondCurveInfo r3
@@ -166,8 +166,8 @@ main = do
   (CVAIRSExample.Result rows) <- keepingSettings' CVAIRSExample.run
   putStrLn "-- Correction in the contract fix rate in bp --"
   void $ printf "%4s %8s %8s %8s %8s\n" "Tenor" "FairRate" "Low" "Medium" "High"
-  forM_ rows $ \(CVAIRSExample.SwapRow t fr lo med hi) ->
-    printf "%4d %8.3f %8.2f %8.2f %8.2f\n" t (fr*100) lo med hi
+  forM_ rows $ \(CVAIRSExample.SwapRow tt fr lo med hi) ->
+    printf "%4d %8.3f %8.2f %8.2f %8.2f\n" tt (fr*100) lo med hi
 
   putStrLn "\n*** Short Rate Models Example ***"
   srm <- keepingSettings' ShortRateModelsExample.run
