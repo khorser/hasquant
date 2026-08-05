@@ -440,6 +440,8 @@ void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
 void qlFreeAffineModel(QlAffineModel *o) {del(o);}
 void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
+double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate) {return (*arg(o))->discountBond(now, maturity, rate);}
+double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a) {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);}
 QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o) {return ret(new QlAffineModel(*arg(o)));}
 QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
 void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}
@@ -521,9 +523,12 @@ void qlFreeCalibrationHelper(QlCalibrationHelper *o) {del(o);}
 void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
 QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
-void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
-  try {(*arg(o))->calibrate(qlVector(x1, x1Len), *arg(method), *arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+wLen));
+void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, unsigned fpLen, int* fixParameters, char **e) {
+  try {(*arg(o))->calibrate(qlVector(x1, x1Len), *arg(method), *arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+wLen), std::vector<bool>(fixParameters, fixParameters+fpLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+double qlCalibratedModelValue(QlCalibratedModel* o, unsigned pLen, double* p, unsigned hLen, QlCalibrationHelper** h, char **e) {
+  try {return (*arg(o))->value(Array(p, p+pLen), qlVector(h, hLen));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, char **e) {
   try {(*arg(o))->setPricingEngine(*arg(engine));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}

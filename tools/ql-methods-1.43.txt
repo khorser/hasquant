@@ -6864,8 +6864,8 @@
 | |ql/models/model.hpp|TermStructureConsistentModel::TermStructureConsistentModel(Handle<YieldTermStructure> termStructure);
 | |ql/models/model.hpp|const Handle<YieldTermStructure> & TermStructureConsistentModel::termStructure() const;
 | |ql/models/model.hpp|CalibratedModel::CalibratedModel(Size nArguments);
-|?|ql/models/model.hpp|void CalibratedModel::calibrate(const std::vector<ext::shared_ptr<CalibrationHelper>> &, OptimizationMethod & method, const EndCriteria & endCriteria, const Constraint & constraint = Constraint(), const std::vector<Real> & weights = std::vector<Real>(), const std::vector<bool> & fixParameters = std::vector<bool>());
-| |ql/models/model.hpp|Real CalibratedModel::value(const Array & params, const std::vector<ext::shared_ptr<CalibrationHelper>> &);
+|v|ql/models/model.hpp|void CalibratedModel::calibrate(const std::vector<ext::shared_ptr<CalibrationHelper>> &, OptimizationMethod & method, const EndCriteria & endCriteria, const Constraint & constraint = Constraint(), const std::vector<Real> & weights = std::vector<Real>(), const std::vector<bool> & fixParameters = std::vector<bool>());
+|v|ql/models/model.hpp|Real CalibratedModel::value(const Array & params, const std::vector<ext::shared_ptr<CalibrationHelper>> &);
 | |ql/models/model.hpp|const ext::shared_ptr<Constraint> & CalibratedModel::constraint() const;
 | |ql/models/model.hpp|EndCriteria::Type CalibratedModel::endCriteria() const;
 | |ql/models/model.hpp|const Array & CalibratedModel::problemValues() const;
@@ -6923,7 +6923,7 @@
 | |ql/models/shortrate/onefactormodel.hpp|Real ShortRateTree::probability(Size i, Size index, Size branch) const;
 | |ql/models/shortrate/onefactormodel.hpp|void ShortRateTree::setSpread(Spread spread);
 | |ql/models/shortrate/onefactormodel.hpp|OneFactorAffineModel::OneFactorAffineModel(Size nArguments);
-| |ql/models/shortrate/onefactormodel.hpp|Real OneFactorAffineModel::discountBond(Time now, Time maturity, Rate rate) const;
+|v|ql/models/shortrate/onefactormodel.hpp|Real OneFactorAffineModel::discountBond(Time now, Time maturity, Rate rate) const;
 |v|ql/models/shortrate/onefactormodels/blackkarasinski.hpp|BlackKarasinski::BlackKarasinski(const Handle<YieldTermStructure> & termStructure, Real a = 0.1, Real sigma = 0.1);
 | |ql/models/shortrate/onefactormodels/blackkarasinski.hpp|Dynamics::Dynamics(Parameter fitting, Real alpha, Real sigma);
 |u|ql/models/shortrate/onefactormodels/coxingersollross.hpp|CoxIngersollRoss::CoxIngersollRoss(Rate r0 = 0.05, Real theta = 0.1, Real k = 0.1, Real sigma = 0.1, bool withFellerConstraint = true);
@@ -6972,8 +6972,8 @@
 | |ql/models/shortrate/onefactormodels/gsr.hpp|Real numeraireTime() const;
 | |ql/models/shortrate/onefactormodels/gsr.hpp|void numeraireTime(const Real T);
 |v|ql/models/shortrate/onefactormodels/hullwhite.hpp|HullWhite::HullWhite(const Handle<YieldTermStructure> & termStructure, Real a = 0.1, Real sigma = 0.01);
-| |ql/models/shortrate/onefactormodels/hullwhite.hpp|static Rate HullWhite::convexityBias(Real futurePrice, Time t, Time T, Real sigma, Real a);
-| |ql/models/shortrate/onefactormodels/hullwhite.hpp|static std::vector<bool> HullWhite::FixedReversion();
+|v|ql/models/shortrate/onefactormodels/hullwhite.hpp|static Rate HullWhite::convexityBias(Real futurePrice, Time t, Time T, Real sigma, Real a);
+|v|ql/models/shortrate/onefactormodels/hullwhite.hpp|static std::vector<bool> HullWhite::FixedReversion();
 | |ql/models/shortrate/onefactormodels/hullwhite.hpp|Dynamics::Dynamics(Parameter fitting, Real a, Real sigma);
 | |ql/models/shortrate/onefactormodels/hullwhite.hpp|Impl::Impl(Handle<YieldTermStructure> termStructure, Real a, Real sigma);
 | |ql/models/shortrate/onefactormodels/hullwhite.hpp|FittingParameter::FittingParameter(const Handle<YieldTermStructure> & termStructure, Real a, Real sigma);

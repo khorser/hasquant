@@ -147,7 +147,7 @@ run = do
 
         calibrateModel m hs = do
           hsh <- mapM Model.asCalibrationHelper hs
-          Model.calibrate m (map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing
+          Model.calibrate m (map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing []
           mapM calibrate hs
 
         calibrate h = do
