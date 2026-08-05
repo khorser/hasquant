@@ -66,13 +66,6 @@ inline std::vector< std::vector<Handle<T> > > qlHandleMatrix(shared_ptr<T> **val
   return r;
 }
 
-inline std::vector<Period> qlPeriodVector(int *num, int *unit, unsigned len) {
-  std::vector<Period> periods; periods.reserve(len);
-  for (unsigned i = 0; i < len; ++i)
-    periods.push_back(Period(num[i], (TimeUnit)unit[i]));
-  return periods;
-}
-
 // move into qlTSAux?
 template <class T>
 void setInterpolation(T* o, int interpolator, int approximator, int approximatorArg) {

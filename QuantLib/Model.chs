@@ -10,10 +10,13 @@ module QuantLib.Model
   , ShortRateModel
   , GenShortRateModel
   , AffineModel(..)
+  , Gaussian1dModel(..)
   , OneFactorAffineModel
   , GenOneFactorAffineModel
   , LiborForwardModel
   , HullWhite
+  , Gsr
+  , MarkovFunctional
   , CalibratedModel
   , GenCalibratedModel
   , G2
@@ -47,8 +50,11 @@ module QuantLib.Model
   , varianceGammaModel
   , vasicek
   , liborForwardModel
+  , gsr
+  , markovFunctional
 
   , calibrate
+  , calibrateVolatilitiesIterative
   , capHelper
   , hestonModelHelper
   , swaptionHelper
@@ -57,6 +63,8 @@ module QuantLib.Model
   , discountBond
   , convexityBias
   , fixedReversion
+  , gsrVolatility
+  , markovFunctionalVolatility
   , params
   , value
   , blackPrice
@@ -103,6 +111,10 @@ import QuantLib.Internal.Enum
 {#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
+{#pointer *QlGsr as Gsr foreign -> CGsr' nocode#}
+{#pointer *QlMarkovFunctional as MarkovFunctional foreign -> CMarkovFunctional' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
+{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
@@ -170,6 +182,35 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 -- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
 fixedReversion :: [Bool]
 fixedReversion = [True, False]
+{#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'& -- ^volstepdates
+  ,withDoubleArray*`[Double]'& -- ^volatilities
+  ,`Double' -- ^reversion
+  ,preErrorCheck-`String'errorCheck*-}->`Gsr'peekGsr*#}
+-- |Volatility step values, as calibrated so far.
+{#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
+{#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[BlackCalibrationHelper]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',preErrorCheck-`String'errorCheck*-}->`()'#}
+markovFunctional :: GenYieldTermStructure a -> Double -- ^reversion
+  -> [Day] -- ^volstepdates
+  -> [Double] -- ^volatilities
+  -> SwaptionVolatilityStructure
+  -> [Day] -- ^swaptionExpiries
+  -> [(Word, TimeUnit)] -- ^swaptionTenors
+  -> GenSwapIndex s -- ^swapIndexBase
+  -> Word -- ^yGridPoints
+  -> IO MarkovFunctional
+markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reversion vsd vs svol se tq tu
+  where (tq, tu) = unzip tenors
+{#fun qlMarkovFunctional{withYieldTermStructure*`GenYieldTermStructure a',`Double'
+  ,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
+  ,withGenVolatilityTermStructure*`SwaptionVolatilityStructure'
+  ,withDayArray*`[Day]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withSwapIndex*`GenSwapIndex s'
+  ,fromIntegral`Word'
+  ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
+-- |Volatility step values, as calibrated so far.
+{#fun qlMarkovFunctionalVolatility as markovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlVarianceGammaModel as varianceGammaModel{withGenStochasticProcess1D*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
 {#fun qlVasicek as vasicek{`Double' -- ^r0
   ,`Double' -- ^a

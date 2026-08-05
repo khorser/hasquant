@@ -162,8 +162,10 @@ namespace QuantLib {
   class GJRGARCHProcess;
   class GapPayoff;
   class GarmanKohlagenProcess;
+  class Gaussian1dModel;
   class GeneralizedBlackScholesProcess;
   class GeneralizedHullWhite;
+  class Gsr;
   class HestonModel;
   class HestonModelHelper;
   class HestonProcess;
@@ -190,6 +192,7 @@ namespace QuantLib {
   class LmVolatilityModel;
   class LocalVolTermStructure;
   class MargrabeOption;
+  class MarkovFunctional;
   class Merton76Process;
   class MidPointCdsEngine;
   class MultiAssetOption;
@@ -398,8 +401,10 @@ using QuantLib::GJRGARCHModel;
 using QuantLib::GJRGARCHProcess;
 using QuantLib::GapPayoff;
 using QuantLib::GarmanKohlagenProcess;
+using QuantLib::Gaussian1dModel;
 using QuantLib::GeneralizedBlackScholesProcess;
 using QuantLib::GeneralizedHullWhite;
+using QuantLib::Gsr;
 using QuantLib::HestonModel;
 using QuantLib::HestonModelHelper;
 using QuantLib::HestonProcess;
@@ -426,6 +431,7 @@ using QuantLib::LmCorrelationModel;
 using QuantLib::LmVolatilityModel;
 using QuantLib::LocalVolTermStructure;
 using QuantLib::MargrabeOption;
+using QuantLib::MarkovFunctional;
 using QuantLib::Merton76Process;
 using QuantLib::MidPointCdsEngine;
 using QuantLib::MultiAssetOption;
@@ -441,6 +447,7 @@ using QuantLib::OvernightIndexedSwap;
 using QuantLib::OvernightIndexedSwapIndex;
 using QuantLib::Payoff;
 using QuantLib::PercentageStrikePayoff;
+using QuantLib::Period;
 using QuantLib::PiecewiseTimeDependentHestonModel;
 using QuantLib::PlainVanillaPayoff;
 using QuantLib::PositiveConstraint;
@@ -474,6 +481,7 @@ using QuantLib::SwaptionVolatilityStructure;
 using QuantLib::SwingExercise;
 using QuantLib::TermStructure;
 using QuantLib::TimeGrid;
+using QuantLib::TimeUnit;
 using QuantLib::TreeCallableFixedRateBondEngine;
 using QuantLib::TreeCallableZeroCouponBondEngine;
 using QuantLib::TreeCapFloorEngine;
@@ -562,7 +570,9 @@ typedef shared_ptr<FxForward> QlFxForward;
 typedef shared_ptr<G2> QlG2;
 typedef shared_ptr<GJRGARCHModel> QlGJRGARCHModel;
 typedef shared_ptr<GJRGARCHProcess> QlGJRGARCHProcess;
+typedef shared_ptr<Gaussian1dModel> QlGaussian1dModel;
 typedef shared_ptr<GeneralizedBlackScholesProcess> QlGeneralizedBlackScholesProcess;
+typedef shared_ptr<Gsr> QlGsr;
 typedef shared_ptr<HestonModel> QlHestonModel;
 typedef shared_ptr<HestonProcess> QlHestonProcess;
 typedef shared_ptr<HullWhite> QlHullWhite;
@@ -578,6 +588,7 @@ typedef shared_ptr<LmCorrelationModel> QlLmCorrelationModel;
 typedef shared_ptr<LmVolatilityModel> QlLmVolatilityModel;
 typedef shared_ptr<LocalVolTermStructure> QlLocalVolTermStructure;
 typedef shared_ptr<MargrabeOption> QlMargrabeOption;
+typedef shared_ptr<MarkovFunctional> QlMarkovFunctional;
 typedef shared_ptr<Merton76Process> QlMerton76Process;
 typedef shared_ptr<MultiAssetOption> QlMultiAssetOption;
 typedef shared_ptr<OISRateHelper> QlOISRateHelper;
@@ -748,8 +759,10 @@ template <> class ObjClassName<GJRGARCHModel*> {public: static void output(std::
 template <> class ObjClassName<GJRGARCHProcess*> {public: static void output(std::ostream& os) {os << "GJRGARCHProcess";}};
 template <> class ObjClassName<GapPayoff*> {public: static void output(std::ostream& os) {os << "GapPayoff";}};
 template <> class ObjClassName<GarmanKohlagenProcess*> {public: static void output(std::ostream& os) {os << "GarmanKohlagenProcess";}};
+template <> class ObjClassName<Gaussian1dModel*> {public: static void output(std::ostream& os) {os << "Gaussian1dModel";}};
 template <> class ObjClassName<GeneralizedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "GeneralizedBlackScholesProcess";}};
 template <> class ObjClassName<GeneralizedHullWhite*> {public: static void output(std::ostream& os) {os << "GeneralizedHullWhite";}};
+template <> class ObjClassName<Gsr*> {public: static void output(std::ostream& os) {os << "Gsr";}};
 template <> class ObjClassName<HestonModel*> {public: static void output(std::ostream& os) {os << "HestonModel";}};
 template <> class ObjClassName<HestonModelHelper*> {public: static void output(std::ostream& os) {os << "HestonModelHelper";}};
 template <> class ObjClassName<HestonProcess*> {public: static void output(std::ostream& os) {os << "HestonProcess";}};
@@ -781,6 +794,7 @@ template <> class ObjClassName<LmCorrelationModel*> {public: static void output(
 template <> class ObjClassName<LmVolatilityModel*> {public: static void output(std::ostream& os) {os << "LmVolatilityModel";}};
 template <> class ObjClassName<LocalVolTermStructure*> {public: static void output(std::ostream& os) {os << "LocalVolTermStructure";}};
 template <> class ObjClassName<MargrabeOption*> {public: static void output(std::ostream& os) {os << "MargrabeOption";}};
+template <> class ObjClassName<MarkovFunctional*> {public: static void output(std::ostream& os) {os << "MarkovFunctional";}};
 template <> class ObjClassName<Merton76Process*> {public: static void output(std::ostream& os) {os << "Merton76Process";}};
 template <> class ObjClassName<MidPointCdsEngine*> {public: static void output(std::ostream& os) {os << "MidPointCdsEngine";}};
 template <> class ObjClassName<MultiAssetOption*> {public: static void output(std::ostream& os) {os << "MultiAssetOption";}};
@@ -851,7 +865,9 @@ template <> class ObjClassName<QlFxForward*> {public: static void output(std::os
 template <> class ObjClassName<QlG2*> {public: static void output(std::ostream& os) {os << "QlG2";}};
 template <> class ObjClassName<QlGJRGARCHModel*> {public: static void output(std::ostream& os) {os << "QlGJRGARCHModel";}};
 template <> class ObjClassName<QlGJRGARCHProcess*> {public: static void output(std::ostream& os) {os << "QlGJRGARCHProcess";}};
+template <> class ObjClassName<QlGaussian1dModel*> {public: static void output(std::ostream& os) {os << "QlGaussian1dModel";}};
 template <> class ObjClassName<QlGeneralizedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "QlGeneralizedBlackScholesProcess";}};
+template <> class ObjClassName<QlGsr*> {public: static void output(std::ostream& os) {os << "QlGsr";}};
 template <> class ObjClassName<QlHestonModel*> {public: static void output(std::ostream& os) {os << "QlHestonModel";}};
 template <> class ObjClassName<QlHestonProcess*> {public: static void output(std::ostream& os) {os << "QlHestonProcess";}};
 template <> class ObjClassName<QlHullWhite*> {public: static void output(std::ostream& os) {os << "QlHullWhite";}};
@@ -870,6 +886,7 @@ template <> class ObjClassName<QlLmCorrelationModel*> {public: static void outpu
 template <> class ObjClassName<QlLmVolatilityModel*> {public: static void output(std::ostream& os) {os << "QlLmVolatilityModel";}};
 template <> class ObjClassName<QlLocalVolTermStructure*> {public: static void output(std::ostream& os) {os << "QlLocalVolTermStructure";}};
 template <> class ObjClassName<QlMargrabeOption*> {public: static void output(std::ostream& os) {os << "QlMargrabeOption";}};
+template <> class ObjClassName<QlMarkovFunctional*> {public: static void output(std::ostream& os) {os << "QlMarkovFunctional";}};
 template <> class ObjClassName<QlMerton76Process*> {public: static void output(std::ostream& os) {os << "QlMerton76Process";}};
 template <> class ObjClassName<QlMultiAssetOption*> {public: static void output(std::ostream& os) {os << "QlMultiAssetOption";}};
 template <> class ObjClassName<QlOISRateHelper*> {public: static void output(std::ostream& os) {os << "QlOISRateHelper";}};
@@ -993,6 +1010,13 @@ inline std::vector<Date> qlDateVector(int *dates, unsigned len) {
   for (unsigned i = 0; i < len; ++i)
     d.push_back(Date(dates[i]));
   return d;
+}
+
+inline std::vector<Period> qlPeriodVector(int *num, int *unit, unsigned len) {
+  std::vector<Period> periods; periods.reserve(len);
+  for (unsigned i = 0; i < len; ++i)
+    periods.push_back(Period(num[i], (TimeUnit)unit[i]));
+  return periods;
 }
 
 inline Matrix qlMatrix(double *a, unsigned r, unsigned c) {
