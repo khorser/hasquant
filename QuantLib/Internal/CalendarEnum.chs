@@ -44,7 +44,7 @@ data CalendarExtra =
   | Extra__Joint3 !Calendar !Calendar !Calendar !JointCalendarRule
   | Extra__Joint4 !Calendar !Calendar !Calendar !Calendar !JointCalendarRule
 
-$(mergeEnums "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra)
+$(deriveCrossEnum "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra)
 
 deriving instance Show CalendarConstructor
 deriving instance Eq CalendarConstructor
@@ -54,7 +54,7 @@ deriving instance Eq CalendarConstructor
 {#enum Thirty360Convention{} add prefix = "Thirty360__" deriving(Show, Eq)#}
 {#enum Actual365FixedConvention{} add prefix = "Actual365Fixed__" deriving(Show, Eq)#}
 -- these three don't have a real named Convention enum upstream, just a plain
--- includeLastDay bool -- this marker tells mergeEnums to give them a single
+-- includeLastDay bool -- this marker tells deriveCrossEnum to give them a single
 -- constructor carrying a runtime Bool instead of cross-producting named values
 type Actual360Convention = Bool
 type Actual36525Convention = Bool
@@ -64,7 +64,7 @@ data DayCounterExtra = Extra__Business252 !Calendar
   | Extra__ActualActualBond' !Schedule
   | Extra__ActualActualISMA' !Schedule
 
-$(mergeEnums "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
+$(deriveCrossEnum "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
 
 deriving instance Show DayCounterConstructor
 deriving instance Eq DayCounterConstructor

@@ -3,7 +3,7 @@
 -- between two known dates differs correctly with/without the extra day --
 -- catching a stale c2hs-generated enum, a wrong bool<->int FFI marshal, or
 -- a wrong dispatch in `mapDayCounter`/`qlDayCounter` that a successful
--- build alone wouldn't reveal. All three are routed through mergeEnums's
+-- build alone wouldn't reveal. All three are routed through deriveCrossEnum's
 -- Bool sub-choice into the generic qlDayCounter(Int,Int) dispatch table --
 -- Actual360's flag used to be silently ignored before that.
 --

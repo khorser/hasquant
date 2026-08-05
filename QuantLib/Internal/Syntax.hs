@@ -1,11 +1,12 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Internal.Syntax
   (
-    mergeEnums
+    deriveCrossEnum
+  , deriveIborConstructor
   ) where
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib
-import Data.List(isPrefixOf)
+import Data.List(isPrefixOf, isSuffixOf)
 import Control.Monad((>=>))
 
 getConstructors :: Name -> Q [(Name, [BangType])] -- [(data constructor, constructor args)]
@@ -18,7 +19,7 @@ getConstructors x = do
 
 -- what a main enum value's sub-choice looks like, once we go find the type named
 -- <mainValue><subSuffix>: nothing there at all, a proper enum to cross-product with,
--- or just a `type X = Bool` marker (see the mergeEnums comment below)
+-- or just a `type X = Bool` marker (see the deriveCrossEnum comment below)
 data SubKind = NoSub | EnumSub [Name] | BoolSub
 
 classifySub :: String -> Q SubKind
@@ -26,7 +27,7 @@ classifySub d = lookupTypeName d >>= maybe (return NoSub) (reify >=> classify)
   where
     classify (TyConI (DataD _ _ _ _ dCons _)) = EnumSub . map fst <$> mapM constr dCons
     classify (TyConI (TySynD _ _ (ConT b))) | b == ''Bool = return BoolSub
-    classify info = fail $ "mergeEnums: unsupported sub-type declaration for " ++ d ++ ": " ++ show info
+    classify info = fail $ "deriveCrossEnum: unsupported sub-type declaration for " ++ d ++ ": " ++ show info
     constr (NormalC dCon dConArgs) = return (dCon, dConArgs)
     constr c = fail $ "Unsupported constructor: " ++ show c
 
@@ -65,8 +66,8 @@ stripEnumPrefix [] = fail "Enum prefix not found"
 -- `uncurry qlDayCounter $ mapDayCounter x`. Extra constructors have no such pair (they're built
 -- from their own dedicated C shim instead), so mapper blows up on them via the defaultClause --
 -- it's a bug if that ever actually fires.
-mergeEnums :: String -> String -> Name -> String -> Name -> DecsQ
-mergeEnums resName mapper mainEnum subSuffix extra = do
+deriveCrossEnum :: String -> String -> Name -> String -> Name -> DecsQ
+deriveCrossEnum resName mapper mainEnum subSuffix extra = do
   mainValues <- map fst <$> getConstructors mainEnum
 
   mergedValues <- concat <$> mapM (\d -> do -- (mainName, subName, []), the third member holds constructor arguments (extras, or a lone Bool for BoolSub)
@@ -100,6 +101,92 @@ mergeEnums resName mapper mainEnum subSuffix extra = do
         mkClause (mainVal, Nothing, [_]) = do
           x <- newName "x"
           clause [conP (concatNames mainVal Nothing) [varP x]] (normalB [|(fromEnum $(conE mainVal), fromEnum $(varE x))|]) []
-        mkClause (mainVal, _, _) = fail $ "mergeEnums: unsupported sub-choice shape for " ++ show mainVal
+        mkClause (mainVal, _, _) = fail $ "deriveCrossEnum: unsupported sub-choice shape for " ++ show mainVal
+
+-- Unlike deriveCrossEnum's cross-product of two ordinal dimensions (a main enum times a
+-- per-value sub-enum/bool), this concatenates several *sibling* enums -- normalEnum,
+-- dailyEnum, onEnum -- each of which contributes one fixed constructor "shape" to a single
+-- merged ADT, plus one flat Int dispatch ordinal per value (their positions in the shared
+-- flat C array), computed here in Haskell rather than trusted from the C side. The three
+-- enums are each independent, plain, zero-based C enums (no cross-enum value chaining); the
+-- first two may carry a trailing sentinel constructor whose stripped name ends in "Last"
+-- (e.g. IborIndexTypeLast), which exists purely as an "insert real values above this line"
+-- marker in the C header and is dropped here via dropIborSentinel -- both to exclude it from
+-- the merged ADT and so its group's real (sentinel-excluded) length becomes the next group's
+-- ordinal offset, with no count ever hand-written on either side of the FFI boundary.
+data IborShape = ShapeTenor | ShapeDailyTenor | ShapeOvernight
+
+dropIborSentinel :: [(Name, [BangType])] -> [(Name, [BangType])]
+dropIborSentinel = filter (not . ("Last" `isSuffixOf`) . stripEnumPrefix . nameBase . fst)
+
+deriveIborConstructor :: String -> String -> String -> Name -> Name -> Name -> Name -> DecsQ
+deriveIborConstructor resName ordinalFn tenorFn normalEnum dailyEnum onEnum extra = do
+  normalCtors <- dropIborSentinel <$> getConstructors normalEnum
+  dailyCtors <- dropIborSentinel <$> getConstructors dailyEnum
+  onCtors <- dropIborSentinel <$> getConstructors onEnum
+
+  -- resolved against the splice site's scope (InterestRate.chs, where TimeUnit(..) and Days
+  -- are already imported/in scope), not this module's own imports -- Syntax.hs must not import
+  -- QuantLib.Time.Schedule directly, since Schedule -> CalendarEnum -> Syntax already, and that
+  -- would close an import cycle
+  timeUnit <- lookupTypeName "TimeUnit" >>= maybe (fail "deriveIborConstructor: TimeUnit not in scope at splice site") return
+  days <- lookupValueName "Days" >>= maybe (fail "deriveIborConstructor: Days not in scope at splice site") return
+
+  let dailyOffset = length normalCtors
+      onOffset = dailyOffset + length dailyCtors
+
+  normalGroups <- mapM (mkGroup ShapeTenor timeUnit days 0) normalCtors
+  dailyGroups <- mapM (mkGroup ShapeDailyTenor timeUnit days dailyOffset) dailyCtors
+  onGroups <- mapM (mkGroup ShapeOvernight timeUnit days onOffset) onCtors
+
+  extraConstructors <- getConstructors extra
+  let extraCon (con, args) = NormalC (mkName (stripEnumPrefix (nameBase con))) args
+      errMsg = "Internal error: " ++ ordinalFn ++ "/" ++ tenorFn ++
+               " called on a non-enumerable data constructor, probably an extra one"
+      errBody = normalB [|error $(litE (stringL errMsg))|]
+  ordinalDefault <- clause [[p|_|]] errBody []
+  tenorDefault <- clause [[p|_|]] errBody []
+
+  let groups = normalGroups ++ dailyGroups ++ onGroups
+      dataDecl = DataD [] resNameType [] Nothing
+                   (map (\(con, _, _) -> con) groups ++ map extraCon extraConstructors) []
+  ordinalSig <- sigD ordinalName [t|$(conT resNameType) -> Int|]
+  tenorSig <- sigD tenorName [t|$(conT resNameType) -> (Word, $(conT timeUnit))|]
+  let ordinalBody = FunD ordinalName (map (\(_, o, _) -> o) groups ++ [ordinalDefault])
+      tenorBody = FunD tenorName (map (\(_, _, t) -> t) groups ++ [tenorDefault])
+
+  return [dataDecl, ordinalSig, ordinalBody, tenorSig, tenorBody]
+
+  where
+    resNameType = mkName resName
+    ordinalName = mkName ordinalFn
+    tenorName = mkName tenorFn
+
+    offsetLit :: Int -> ExpQ
+    offsetLit = litE . integerL . toInteger
+
+    mkGroup :: IborShape -> Name -> Name -> Int -> (Name, [BangType]) -> Q (Con, Clause, Clause)
+    mkGroup shape timeUnit days offset (origName, _) = do
+      let strippedName = mkName (stripEnumPrefix (nameBase origName))
+          ordinalBody' = normalB [|$(offsetLit offset) + fromEnum $(conE origName)|]
+      case shape of
+        ShapeTenor -> do
+          let con = NormalC strippedName
+                [(Bang NoSourceUnpackedness SourceStrict, AppT (AppT (TupleT 2) (ConT ''Word)) (ConT timeUnit))]
+          ordinalClause <- clause [conP strippedName [wildP]] ordinalBody' []
+          p <- newName "p"
+          tenorClause <- clause [conP strippedName [varP p]] (normalB (varE p)) []
+          return (con, ordinalClause, tenorClause)
+        ShapeDailyTenor -> do
+          let con = NormalC strippedName [(Bang NoSourceUnpackedness SourceStrict, ConT ''Word)]
+          ordinalClause <- clause [conP strippedName [wildP]] ordinalBody' []
+          d <- newName "d"
+          tenorClause <- clause [conP strippedName [varP d]] (normalB [|($(varE d), $(conE days))|]) []
+          return (con, ordinalClause, tenorClause)
+        ShapeOvernight -> do
+          let con = NormalC strippedName []
+          ordinalClause <- clause [conP strippedName []] ordinalBody' []
+          tenorClause <- clause [conP strippedName []] (normalB [|(0, $(conE days))|]) []
+          return (con, ordinalClause, tenorClause)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
