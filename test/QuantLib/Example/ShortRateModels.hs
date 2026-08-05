@@ -8,13 +8,13 @@ module QuantLib.Example.ShortRateModels
   , Result(..)
   , run
   ) where
-import Control.Monad(forM)
+import Control.Monad(forM, when)
 
 import QuantLib.Index(fixingCalendar, addFixing)
 import qualified QuantLib.Index.InterestRate as IR
-import QuantLib.InterestRate
+import QuantLib.InterestRate hiding(rate)
 import QuantLib.Instrument(npv, setPricingEngine)
-import QuantLib.Instrument.Swap
+import QuantLib.Instrument.Swap hiding(startDate)
 import QuantLib.Math
 import QuantLib.Model hiding (setPricingEngine, value)
 import qualified QuantLib.Model as Model
@@ -22,7 +22,7 @@ import QuantLib.PricingEngine
 import QuantLib.Quote
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date
+import QuantLib.Time.Date hiding(today)
 import QuantLib.Time.Schedule
 import QuantLib.Settings
 
@@ -170,9 +170,7 @@ runSwaps = do
   act360 <- dayCounter (Actual360 False)
   results <- forM starts $ \s -> do
     startDate <- advance cal settlement (s, Months) Following False
-    if startDate < today
-      then advance cal startDate (-2, Days) Following False >>= \fd -> addFixing euribor fd 0.03 False
-      else pure ()
+    when (startDate < today) $ advance cal startDate (-2, Days) Following False >>= \fd -> addFixing euribor fd 0.03 False
     forM lengths $ \l -> do
       maturity <- advance cal startDate (l, Years) Following False
       fixedSchedule <- schedule (Just startDate) maturity (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
