@@ -191,6 +191,7 @@ module QuantLib.Internal.Type
   , withCalibrationHelper
   , withGenCalibrationHelper
   , withCalibrationHelperArray
+  , withBlackCalibrationHelperArray
   , CBlackCalibrationHelper
   , CBlackCalibrationHelper'
   , BlackCalibrationHelper
@@ -440,6 +441,9 @@ module QuantLib.Internal.Type
   , asShortRateModel
   , asHestonModel
   , withAffineModel
+  , Gaussian1dModel(..)
+  , CGaussian1dModel'
+  , withGaussian1dModel
   , BatesDetJumpModel
   , CBatesDetJumpModel
   , CBatesDetJumpModel'
@@ -509,6 +513,14 @@ module QuantLib.Internal.Type
   , CLiborForwardModel
   , CLiborForwardModel'
   , peekLiborForwardModel
+  , Gsr
+  , CGsr
+  , CGsr'
+  , peekGsr
+  , MarkovFunctional
+  , CMarkovFunctional
+  , CMarkovFunctional'
+  , peekMarkovFunctional
 
   , AssetSwap
   , CAssetSwap
@@ -1184,6 +1196,8 @@ peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO BlackCalibratio
 peekBlackCalibrationHelper = GenCalibrationHelper <.> newGenForeignPtr
 withCalibrationHelperArray :: [GenCalibrationHelper a] -> ((CUInt, Ptr (Ptr CCalibrationHelper')) -> IO b) -> IO b
 withCalibrationHelperArray = withGenArray withCalibrationHelper
+withBlackCalibrationHelperArray :: [BlackCalibrationHelper] -> ((CUInt, Ptr (Ptr CBlackCalibrationHelper')) -> IO b) -> IO b
+withBlackCalibrationHelperArray = withGenArray withGenCalibrationHelper
 
 data CBlackCalculator'
 data CBlackScholesCalculator'
@@ -1783,10 +1797,14 @@ withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 -- >    G2: AffineModel
 -- >    OneFactorAffineModel: AffineModel
 -- >      HullWhite: AffineMode
+-- >  Gsr: Gaussian1dModel
+-- >  MarkovFunctional: Gaussian1dModel
 type CalibratedModel = GenCalibratedModel CCalibratedModel
 data CCalibratedModel'
 data CGJRGARCHModel'
 data CLiborForwardModel'
+data CGsr'
+data CMarkovFunctional'
 data CPiecewiseTimeDependentHestonModel'
 data CHestonModel'
 data CShortRateModel'
@@ -1804,6 +1822,10 @@ type CLiborForwardModel = ForeignPtr CLiborForwardModel'
 type LiborForwardModel = GenCalibratedModel CLiborForwardModel
 type CGJRGARCHModel = ForeignPtr CGJRGARCHModel'
 type GJRGARCHModel = GenCalibratedModel CGJRGARCHModel
+type CGsr = ForeignPtr CGsr'
+type Gsr = GenCalibratedModel CGsr
+type CMarkovFunctional = ForeignPtr CMarkovFunctional'
+type MarkovFunctional = GenCalibratedModel CMarkovFunctional
 type CPiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel'
 type PiecewiseTimeDependentHestonModel = GenCalibratedModel CPiecewiseTimeDependentHestonModel
 type GenHestonModel a = GenCalibratedModel (AnyOf CHestonModel' a)
@@ -1832,6 +1854,8 @@ type G2 = GenShortRateModel CG2
 foreign import ccall unsafe "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel'
 foreign import ccall unsafe "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel'
 foreign import ccall unsafe "ql.h &qlFreeGJRGARCHModel" qlFreeGJRGARCHModel :: FinalizerPtr CGJRGARCHModel'
+foreign import ccall unsafe "ql.h &qlFreeGsr" qlFreeGsr :: FinalizerPtr CGsr'
+foreign import ccall unsafe "ql.h &qlFreeMarkovFunctional" qlFreeMarkovFunctional :: FinalizerPtr CMarkovFunctional'
 foreign import ccall unsafe "ql.h &qlFreePiecewiseTimeDependentHestonModel" qlFreePiecewiseTimeDependentHestonModel :: FinalizerPtr CPiecewiseTimeDependentHestonModel'
 foreign import ccall unsafe "ql.h &qlFreeHestonModel" qlFreeHestonModel :: FinalizerPtr CHestonModel'
 foreign import ccall unsafe "ql.h &qlFreeShortRateModel" qlFreeShortRateModel :: FinalizerPtr CShortRateModel'
@@ -1846,6 +1870,8 @@ foreign import ccall unsafe "ql.h &qlFreeHullWhite" qlFreeHullWhite :: Finalizer
 foreign import ccall "ql.h qlPiecewiseTimeDependentHestonModelAsCalibratedModel" qlPiecewiseTimeDependentHestonModelAsCalibratedModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h qlLiborForwardModelAsCalibratedModel" qlLiborForwardModelAsCalibratedModel :: Ptr CLiborForwardModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h qlGJRGARCHModelAsCalibratedModel" qlGJRGARCHModelAsCalibratedModel :: Ptr CGJRGARCHModel' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlGsrAsCalibratedModel" qlGsrAsCalibratedModel :: Ptr CGsr' -> IO (Ptr CCalibratedModel')
+foreign import ccall "ql.h qlMarkovFunctionalAsCalibratedModel" qlMarkovFunctionalAsCalibratedModel :: Ptr CMarkovFunctional' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h qlHestonModelAsCalibratedModel" qlHestonModelAsCalibratedModel :: Ptr CHestonModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h qlShortRateModelAsCalibratedModel" qlShortRateModelAsCalibratedModel :: Ptr CShortRateModel' -> IO (Ptr CCalibratedModel')
 foreign import ccall "ql.h qlBatesModelAsHestonModel" qlBatesModelAsHestonModel :: Ptr CBatesModel' -> IO (Ptr CHestonModel')
@@ -1858,6 +1884,8 @@ foreign import ccall "ql.h qlG2AsShortRateModel" qlG2AsShortRateModel :: Ptr CG2
 instance Finalizable CCalibratedModel' where finalize = qlFreeCalibratedModel
 instance Finalizable CLiborForwardModel' where finalize = qlFreeLiborForwardModel
 instance Finalizable CGJRGARCHModel' where finalize = qlFreeGJRGARCHModel
+instance Finalizable CGsr' where finalize = qlFreeGsr
+instance Finalizable CMarkovFunctional' where finalize = qlFreeMarkovFunctional
 instance Finalizable CPiecewiseTimeDependentHestonModel' where finalize = qlFreePiecewiseTimeDependentHestonModel
 instance Finalizable CHestonModel' where finalize = qlFreeHestonModel
 instance Finalizable CShortRateModel' where finalize = qlFreeShortRateModel
@@ -1872,6 +1900,8 @@ instance Finalizable CAffineModel' where finalize = qlFreeAffineModel
 instance Upcastable CLiborForwardModel' where {type Base CLiborForwardModel' = CCalibratedModel'; upcast = qlLiborForwardModelAsCalibratedModel}
 instance Upcastable CPiecewiseTimeDependentHestonModel' where {type Base CPiecewiseTimeDependentHestonModel' = CCalibratedModel'; upcast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel}
 instance Upcastable CGJRGARCHModel' where {type Base CGJRGARCHModel' = CCalibratedModel'; upcast = qlGJRGARCHModelAsCalibratedModel}
+instance Upcastable CGsr' where {type Base CGsr' = CCalibratedModel'; upcast = qlGsrAsCalibratedModel}
+instance Upcastable CMarkovFunctional' where {type Base CMarkovFunctional' = CCalibratedModel'; upcast = qlMarkovFunctionalAsCalibratedModel}
 instance Upcastable CHestonModel' where {type Base CHestonModel' = CCalibratedModel'; upcast = qlHestonModelAsCalibratedModel}
 instance Upcastable CShortRateModel' where {type Base CShortRateModel' = CCalibratedModel'; upcast = qlShortRateModelAsCalibratedModel}
 instance Upcastable CBatesModel' where {type Base CBatesModel' = CHestonModel'; upcast = qlBatesModelAsHestonModel}
@@ -1893,6 +1923,10 @@ peekLiborForwardModel :: Ptr CLiborForwardModel' -> IO LiborForwardModel
 peekLiborForwardModel = GenCalibratedModel <.> newGenForeignPtr
 peekGJRGARCHModel :: Ptr CGJRGARCHModel' -> IO GJRGARCHModel
 peekGJRGARCHModel = GenCalibratedModel <.> newGenForeignPtr
+peekGsr :: Ptr CGsr' -> IO Gsr
+peekGsr = GenCalibratedModel <.> newGenForeignPtr
+peekMarkovFunctional :: Ptr CMarkovFunctional' -> IO MarkovFunctional
+peekMarkovFunctional = GenCalibratedModel <.> newGenForeignPtr
 peekPiecewiseTimeDependentHestonModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO PiecewiseTimeDependentHestonModel
 peekPiecewiseTimeDependentHestonModel = GenCalibratedModel <.> newGenForeignPtr
 
@@ -1974,6 +2008,16 @@ withAffineModel (HullWhite m) f = withHullWhite m (withUpcast qlHullWhiteAsAffin
 withAffineModel (G2 m) f = withG2 m (withUpcast qlG2AsAffineModel f)
 withAffineModel (OneFactorAffineModel m) f = withOneFactorAffineModel m (withUpcast qlOneFactorAffineModelAsAffineModel f)
 withAffineModel (LiborForwardModel m) f = withGenCalibratedModel m (withUpcast qlLiborForwardModelAsAffineModel f)
+
+data CGaussian1dModel'
+foreign import ccall unsafe "ql.h &qlFreeGaussian1dModel" qlFreeGaussian1dModel :: FinalizerPtr CGaussian1dModel'
+instance Finalizable CGaussian1dModel' where finalize = qlFreeGaussian1dModel
+foreign import ccall "ql.h qlGsrAsGaussian1dModel" qlGsrAsGaussian1dModel :: Ptr CGsr' -> IO (Ptr CGaussian1dModel')
+foreign import ccall "ql.h qlMarkovFunctionalAsGaussian1dModel" qlMarkovFunctionalAsGaussian1dModel :: Ptr CMarkovFunctional' -> IO (Ptr CGaussian1dModel')
+data Gaussian1dModel = Gsr Gsr | MarkovFunctional MarkovFunctional
+withGaussian1dModel :: Gaussian1dModel -> (Ptr CGaussian1dModel' -> IO b) -> IO b
+withGaussian1dModel (Gsr m) f = withGenCalibratedModel m (withUpcast qlGsrAsGaussian1dModel f)
+withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcast qlMarkovFunctionalAsGaussian1dModel f)
 
 -- | > a:Instrument ("a" == an abstract class)
 -- >  a:Forward : Instrument

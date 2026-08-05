@@ -67,6 +67,7 @@ module QuantLib.PricingEngine
   , integralCdsEngine
   , integralEngine
   , jamshidianSwaptionEngine
+  , gaussian1dSwaptionEngine
   , juQuadraticApproximationEngine
   , kirkEngine
   , midPointCdsEngine
@@ -161,6 +162,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
 {#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
 {#pointer *QlAffineModel foreign -> CAffineModel' nocode#}
+{#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
 {#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
 {#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel' nocode#}
 {#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
@@ -296,6 +298,13 @@ import QuantLib.Internal.Enum
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
 {#fun qlJamshidianSwaptionEngine as jamshidianSwaptionEngine{withOneFactorAffineModel*`GenOneFactorAffineModel m',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlGaussian1dSwaptionEngine as gaussian1dSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
+  ,fromIntegral`Int' -- ^integrationPoints
+  ,`Double' -- ^stddevs
+  ,`Bool' -- ^extrapolatePayoff
+  ,`Bool' -- ^flatPayoffExtrapolation
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlJuQuadraticApproximationEngine as juQuadraticApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlKirkEngine as kirkEngine{withBlackProcess*`BlackProcess',withBlackProcess*`BlackProcess',`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

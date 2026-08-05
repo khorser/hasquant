@@ -191,6 +191,20 @@ extern "C" {
   QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLen, double * fixingTimes, double a, double b, double c, double d, char **e);
   QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e);
 
+  void qlFreeGsr(QlGsr *o);
+  void qlFreeMarkovFunctional(QlMarkovFunctional *o);
+  void qlFreeGaussian1dModel(QlGaussian1dModel *o);
+  QlCalibratedModel* qlGsrAsCalibratedModel(QlGsr *o);
+  QlCalibratedModel* qlMarkovFunctionalAsCalibratedModel(QlMarkovFunctional *o);
+  QlGaussian1dModel* qlGsrAsGaussian1dModel(QlGsr *o);
+  QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o);
+  QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, double reversion, char **e);
+  void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e);
+  void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, OptimizationMethod* method, EndCriteria* endCriteria, char **e);
+  QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e);
+  void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, char **e);
+  QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, char **e);
+
   QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o);
   QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o);
   QlHestonModel* qlBatesModelAsHestonModel(QlBatesModel *o);

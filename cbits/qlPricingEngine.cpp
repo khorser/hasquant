@@ -32,6 +32,7 @@
 #include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
 #include <ql/pricingengines/swaption/fdhullwhiteswaptionengine.hpp>
 #include <ql/pricingengines/swaption/g2swaptionengine.hpp>
+#include <ql/pricingengines/swaption/gaussian1dswaptionengine.hpp>
 #include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
 #include <ql/pricingengines/swaption/treeswaptionengine.hpp>
 #include <ql/pricingengines/vanilla/analyticbsmhullwhiteengine.hpp>
@@ -511,6 +512,32 @@ QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLe
 QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
   try {return ret(new QlLiborForwardModel(alloc(new LiborForwardModel(*arg(process), *arg(volaModel), *arg(corrModel)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModel*>(e, er);}}
+
+void qlFreeGsr(QlGsr *o) {del(o);}
+void qlFreeMarkovFunctional(QlMarkovFunctional *o) {del(o);}
+void qlFreeGaussian1dModel(QlGaussian1dModel *o) {del(o);}
+QlCalibratedModel* qlGsrAsCalibratedModel(QlGsr *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlCalibratedModel* qlMarkovFunctionalAsCalibratedModel(QlMarkovFunctional *o) {return ret(new QlCalibratedModel(*arg(o)));}
+QlGaussian1dModel* qlGsrAsGaussian1dModel(QlGsr *o) {return ret(new QlGaussian1dModel(*arg(o)));}
+QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o) {return ret(new QlGaussian1dModel(*arg(o)));}
+QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, double reversion, char **e) {
+  try {return ret(new QlGsr(alloc(new Gsr(Handle<YieldTermStructure>(*arg(termStructure)), qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), reversion, 60.0))));
+  } catch (std::exception& er) {return handleException<QlGsr*>(e, er);}}
+void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
+  try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, OptimizationMethod* method, EndCriteria* endCriteria, char **e) {
+  try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), *arg(method), *arg(endCriteria));
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e) {
+  try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(Handle<YieldTermStructure>(*arg(termStructure)), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), qlDateVector(swaptionExpiries, expiriesLen), qlPeriodVector(tenorQuantity, tenorUnit, tenorsLen), *arg(swapIndexBase), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
+  } catch (std::exception& er) {return handleException<QlMarkovFunctional*>(e, er);}}
+void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, char **e) {
+  try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new Gaussian1dSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(discountCurve)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
