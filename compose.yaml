@@ -6,6 +6,7 @@ services:
       args:
         BOOST_VERSION: "1.91.0-1"
         QL_VERSION: "1.43"
+        GHC_VERSION: "9.10.3"
     
     image: hasquant:default
     platform: linux/amd64
@@ -21,6 +22,7 @@ services:
     volumes:
       - .:/hasquant:delegated
       - stack-root:/root/.stack
+      - ghcup-root:/root/.ghcup
       - hasquant-work:/hasquant/.stack-work
     
     stdin_open: true
@@ -32,5 +34,7 @@ services:
 volumes:
   stack-root:
     name: stack-root
+  ghcup-root:
+    name: ghcup-root
   hasquant-work:
     name: hasquant-work
