@@ -10,6 +10,7 @@ module QuantLib.PricingEngine
   , discountingBondEngine
   , discountingSwapEngine
   , discountingFxForwardEngine
+  , counterpartyAdjSwapEngine
 
   , analyticBarrierEngine
   , analyticCliquetEngine
@@ -202,6 +203,17 @@ import QuantLib.Internal.Enum
 {#fun qlDiscountingFxForwardEngine as discountingFxForwardEngine{withYieldTermStructure*`GenYieldTermStructure y1' -- ^sourceCurrencyDiscountCurve
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^targetCurrencyDiscountCurve
   ,withQuote*`GenQuote a' -- ^spotFx
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- | CVA/DVA-adjusted swap pricing engine. @invstDTS@\/@invstRecoveryRate@ are the
+-- own (investor-side) default probability curve and recovery rate for bilateral
+-- CVA\/DVA; pass 'Nothing' for @invstDTS@ and @0.999@ for @invstRecoveryRate@ to
+-- match upstream's unilateral-CVA-only defaults.
+{#fun qlCounterpartyAdjSwapEngine as counterpartyAdjSwapEngine{withYieldTermStructure*`GenYieldTermStructure a' -- ^discountCurve
+  ,`Double' -- ^blackVol
+  ,withGenTermStructure*`DefaultProbabilityTermStructure' -- ^ctptyDTS
+  ,`Double' -- ^ctptyRecoveryRate
+  ,withMaybeDefaultProbabilityTermStructure*`Maybe DefaultProbabilityTermStructure' -- ^invstDTS
+  ,`Double' -- ^invstRecoveryRate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

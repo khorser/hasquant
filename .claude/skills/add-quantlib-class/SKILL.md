@@ -39,6 +39,10 @@ Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Ha
    `{#pointer *QlXxx as Xxx foreign -> CParent' nocode#}`
    then the `{#fun ...#}` bindings for the class's own methods. Ask the user which module if not already specified, but default to grouping with the closest topically-related family rather than a generic hierarchy-root file, even if the new class's C++ inheritance doesn't literally match that module's other contents — e.g. `FxForward` isn't a C++ subclass of `Forward`, but it lives in `QuantLib/Instrument/Forward.chs` anyway, alongside `ForwardRateAgreement` (also not a `Forward` subclass), because they're the same topical family of forward-settled instruments. Leave the generic root module (e.g. `QuantLib/Instrument.chs`) for universal, hierarchy-wide methods only.
 
+## Update tools/ql-methods-*.txt
+
+After the binding compiles, grep the class/method names in `tools/ql-methods-1.43.txt` (the current version's tracking dump) and set each bound line's status character to `v` (arg counts match) or `u` (shim deliberately binds fewer args than upstream, e.g. a documented scope cut) — see [[add-quantlib-method]] for the full status vocabulary. Do this for every constructor/method the new class exposes, not just the first one.
+
 ## Verification
 
 Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.

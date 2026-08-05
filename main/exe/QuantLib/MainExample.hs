@@ -19,6 +19,7 @@ import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
 import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.TARF as TARF
+import qualified QuantLib.Example.CVAIRS as CVAIRSExample
 
 main :: IO ()
 main = do
@@ -159,6 +160,13 @@ main = do
   putStrLn $ "NPV: " ++ show tnpv
   putStrLn $ "Forward Rates:           " ++ show fwds
   putStrLn $ "SImulated Forward Rates: " ++ show simFwds
+
+  putStrLn "\n*** CVA IRS Example ***"
+  (CVAIRSExample.Result rows) <- keepingSettings' CVAIRSExample.run
+  putStrLn "-- Correction in the contract fix rate in bp --"
+  void $ printf "%4s %8s %8s %8s %8s\n" "Tenor" "FairRate" "Low" "Medium" "High"
+  forM_ rows $ \(CVAIRSExample.SwapRow t fr lo med hi) ->
+    printf "%4d %8.3f %8.2f %8.2f %8.2f\n" t (fr*100) lo med hi
 
   putStrLn "\nDONE"
 

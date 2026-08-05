@@ -119,7 +119,7 @@ run = do
 
       let (instrA, instrB) = unzip helpers
 
-      ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] TS.Discount LogLinear
+      ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] TS.Discount LogLinear False
 
       -- results depend on optimization options used to build QLC
       let fittings = [TS.ExponentialSplines True,
@@ -143,7 +143,7 @@ run = do
 
 
     step3 tod dc cal bondSettle iA iB = do
-      ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal iB dc [] TS.Discount LogLinear
+      ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal iB dc [] TS.Discount LogLinear False
 
       -- results depend on optimization options used to build QLC
       let fittings = [TS.ExponentialSplines True,

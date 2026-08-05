@@ -329,6 +329,7 @@ module QuantLib.Internal.Type
   , CDefaultProbabilityTermStructure
   , CDefaultProbabilityTermStructure'
   , peekDefaultProbabilityTermStructure
+  , withMaybeDefaultProbabilityTermStructure
   , ZeroInflationTermStructure
   , CZeroInflationTermStructure
   , CZeroInflationTermStructure'
@@ -1515,6 +1516,8 @@ peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> 
 peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
 peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr
+withMaybeDefaultProbabilityTermStructure :: Maybe DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
+withMaybeDefaultProbabilityTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
 peekZeroInflationTermStructure :: Ptr CZeroInflationTermStructure' -> IO ZeroInflationTermStructure
 peekZeroInflationTermStructure = GenTermStructure <.> newGenForeignPtr
 peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflationTermStructure
