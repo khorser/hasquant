@@ -40,6 +40,7 @@ namespace QuantLib {
   class BespokeCalendar;
   class Schedule;
   class Currency;
+  class Region;
   class InterestRate;
   class FixedRateBondHelper;
   class DepositRateHelper;
@@ -275,6 +276,7 @@ using QuantLib::JointCalendar;
 using QuantLib::BespokeCalendar;
 using QuantLib::Schedule;
 using QuantLib::Currency;
+using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
@@ -918,6 +920,7 @@ template <> class ObjClassName<QuantoForwardVanillaOption*> {public: static void
 template <> class ObjClassName<QuantoTermStructure*> {public: static void output(std::ostream& os) {os << "QuantoTermStructure";}};
 template <> class ObjClassName<QuantoVanillaOption*> {public: static void output(std::ostream& os) {os << "QuantoVanillaOption";}};
 template <> class ObjClassName<Quote*> {public: static void output(std::ostream& os) {os << "Quote";}};
+template <> class ObjClassName<Region*> {public: static void output(std::ostream& os) {os << "Region";}};
 template <> class ObjClassName<ReplicatingVarianceSwapEngine*> {public: static void output(std::ostream& os) {os << "ReplicatingVarianceSwapEngine";}};
 template <> class ObjClassName<Rounding*> {public: static void output(std::ostream& os) {os << "Rounding";}};
 template <> class ObjClassName<Schedule*> {public: static void output(std::ostream& os) {os << "Schedule";}};

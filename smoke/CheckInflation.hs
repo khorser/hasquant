@@ -8,6 +8,7 @@
 -- Run with: cabal exec -- ghc -package hasquant smoke/CheckInflation.hs -o /tmp/checkinfl -outputdir /tmp/checkinfl_build && /tmp/checkinfl
 import Control.Monad
 import qualified QuantLib.InterestRate as IR
+import QuantLib.Currency(currency, Ccy(GBP))
 import QuantLib.Index(addFixing)
 import QuantLib.Index.Inflation
 import QuantLib.Math(Interpolation(..))
@@ -19,8 +20,8 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 
--- c2hs only derives Show/Eq for these enums (no Bounded), so the case lists
--- are spelled out explicitly here rather than via [minBound .. maxBound].
+-- c2hs only derives Show/Eq for the *Type enums (no Bounded), so those case
+-- lists are spelled out explicitly here rather than via [minBound .. maxBound].
 main :: IO ()
 main = do
   forM_ [AUCPI, EUHICP, EUHICPXT, FRHICP, UKHICP, UKRPI, USCPI, ZACPI] $ \ty -> do
@@ -33,6 +34,28 @@ main = do
     addFixing idx (1 `january` 2020) 0.03 False
     f <- yoyFixing idx (1 `january` 2020)
     putStrLn (show ty ++ " -> fixing " ++ show f)
+
+  forM_ [minBound .. maxBound :: RegionType] $ \ty -> do
+    r <- region ty
+    putStrLn (show ty ++ " -> " ++ show r)
+
+  gbp <- currency GBP
+  customRegion <- region' "Wonderland" "WL"
+  zii' <- zeroInflationIndex' "WL CPI" customRegion False Monthly (1, Months) gbp Nothing
+  addFixing zii' (1 `january` 2019) 97.0 False
+  addFixing zii' (1 `january` 2020) 100.0 False
+  fz' <- fixing zii' (1 `january` 2020)
+  putStrLn ("custom zeroInflationIndex' -> fixing " ++ show fz')
+
+  yii' <- yoyInflationIndex' "WL YoY CPI" customRegion False Monthly (1, Months) gbp Nothing
+  addFixing yii' (1 `january` 2020) 0.03 False
+  fy' <- yoyFixing yii' (1 `january` 2020)
+  putStrLn ("custom yoyInflationIndex' -> fixing " ++ show fy')
+
+  -- ratio YoY index needs the underlying zero index's fixings a year apart
+  yiiRatio <- yoyInflationIndexFromZero zii' Nothing
+  fyr <- yoyFixing yiiRatio (1 `january` 2020)
+  putStrLn ("yoyInflationIndexFromZero (ratio off custom zero index) -> fixing " ++ show fyr)
 
   setEvaluationDate $ Just today
   dc <- dayCounter Actual365FixedStandard
