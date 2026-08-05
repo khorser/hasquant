@@ -20,6 +20,7 @@ import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.TARF as TARF
 import qualified QuantLib.Example.CVAIRS as CVAIRSExample
+import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 
 main :: IO ()
 main = do
@@ -168,9 +169,34 @@ main = do
   forM_ rows $ \(CVAIRSExample.SwapRow t fr lo med hi) ->
     printf "%4d %8.3f %8.2f %8.2f %8.2f\n" t (fr*100) lo med hi
 
+  putStrLn "\n*** Short Rate Models Example ***"
+  srm <- keepingSettings' ShortRateModelsExample.run
+  printCalibration "cachedHullWhite" (ShortRateModelsExample.cachedHullWhite srm)
+  printCalibration "cachedHullWhiteFixedReversion" (ShortRateModelsExample.cachedHullWhiteFixedReversion srm)
+  printCalibration "cachedHullWhite2" (ShortRateModelsExample.cachedHullWhite2 srm)
+  let swapDiffs = map (\s -> abs (ShortRateModelsExample.expectedNPV s - ShortRateModelsExample.calculatedNPV s))
+        (ShortRateModelsExample.swaps srm)
+  printf "swaps: max |expected-calculated| NPV over %d entries: %.6f\n" (length swapDiffs) (maximum swapDiffs)
+  forM_ (ShortRateModelsExample.futuresConvexityBias srm) $ \c ->
+    printf "futuresConvexityBias: T=%.3f a=%.5f expected=%.7f calculated=%.7f\n"
+      (ShortRateModelsExample.convexityT c) (ShortRateModelsExample.convexityA c)
+      (ShortRateModelsExample.expectedForward c) (ShortRateModelsExample.calculatedForward c)
+  printDiscountCheck "extendedCirDiscountFactor" (ShortRateModelsExample.extendedCirDiscountFactor srm)
+  printDiscountCheck "vasicekDiscountFactorSmallMeanReversion" (ShortRateModelsExample.vasicekDiscountFactorSmallMeanReversion srm)
+
   putStrLn "\nDONE"
 
   where
+    printCalibration :: String -> ShortRateModelsExample.CalibrationResult -> IO ()
+    printCalibration label cr = printf "%s: a = %.6f (cached %.6f), sigma = %.6f (cached %.6f), value = %.6f (cached %.6f)\n"
+      label (ShortRateModelsExample.calculatedA cr) (ShortRateModelsExample.cachedA cr)
+      (ShortRateModelsExample.calculatedSigma cr) (ShortRateModelsExample.cachedSigma cr)
+      (ShortRateModelsExample.calculatedValue cr) (ShortRateModelsExample.cachedValue cr)
+
+    printDiscountCheck :: String -> ShortRateModelsExample.DiscountCheck -> IO ()
+    printDiscountCheck label dc = printf "%s: expected=%.8f calculated=%.8f\n" label
+      (ShortRateModelsExample.expectedDF dc) (ShortRateModelsExample.calculatedDF dc)
+
     printFraIterationResult :: [FRA.IterationResult] -> IO ()
     printFraIterationResult rs = forM_ rs $ \r ->
       printf "Fwd rate: %.5f Mkt zrate: %.5f NPV: %.5f\n"

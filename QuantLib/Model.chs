@@ -54,7 +54,11 @@ module QuantLib.Model
   , swaptionHelper
   , times
 
+  , discountBond
+  , convexityBias
+  , fixedReversion
   , params
+  , value
   , blackPrice
   , calibrationError
   , impliedVolatility
@@ -135,6 +139,11 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^sigma
   ,`Double' -- ^x0
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+-- |Price of a discount bond paying 1 at @maturity@, given the short rate @rate@ at time @now@.
+{#fun pure qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
+  ,`Double' -- ^maturity
+  ,`Double' -- ^rate
+  }->`Double'#}
 {#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,`Double' -- ^b
@@ -151,6 +160,16 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
+-- |Futures convexity bias (difference between futures implied rate and forward rate), per G. Kirikos, D. Novak, \"Convexity Conundrums\", Risk Magazine, March 1997. @t@/@T@ are in yearfraction using the deposit day counter, @futurePrice@ is the futures' market price.
+{#fun pure qlHullWhiteConvexityBias as convexityBias{`Double' -- ^futurePrice
+  ,`Double' -- ^t
+  ,`Double' -- ^T
+  ,`Double' -- ^sigma
+  ,`Double' -- ^a
+  }->`Double'#}
+-- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
+fixedReversion :: [Bool]
+fixedReversion = [True, False]
 {#fun qlVarianceGammaModel as varianceGammaModel{withGenStochasticProcess1D*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
 {#fun qlVasicek as vasicek{`Double' -- ^r0
   ,`Double' -- ^a
@@ -163,10 +182,14 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: GenCalibratedModel m -> [(GenCalibrationHelper a, Double)] -- ^(instrument, weight)
-  -> OptimizationMethod -> EndCriteria -> Maybe Constraint -> IO ()
-calibrate m h o e c = qlCalibratedModelCalibrate m hh hw o e c where (hh, hw) = unzip h
+  -> OptimizationMethod -> EndCriteria -> Maybe Constraint
+  -> [Bool] -- ^fixParameters, e.g. 'fixedReversion'; @[]@ leaves nothing fixed
+  -> IO ()
+calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, hw) = unzip h
 {#fun qlCalibratedModelCalibrate{withCalibratedModel*`GenCalibratedModel m',withCalibrationHelperArray*`[GenCalibrationHelper a]'&,withDoubleArray*`[Double]'&
-  ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',withMaybeConstraint*`Maybe Constraint',preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',withMaybeConstraint*`Maybe Constraint',withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Objective function value at @params@ for the given calibration instruments.
+{#fun qlCalibratedModelValue as value{withCalibratedModel*`GenCalibratedModel m',withDoubleArray*`[Double]'&,withCalibrationHelperArray*`[GenCalibrationHelper a]'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlCapHelper as capHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^length
   ,withQuote*`GenQuote a' -- ^volatility

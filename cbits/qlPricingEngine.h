@@ -151,6 +151,8 @@ extern "C" {
   void qlFreeShortRateModel(QlShortRateModel *o);
   void qlFreeAffineModel(QlAffineModel *o);
   void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o);
+  double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate);
+  double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a);
   QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o);
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);
@@ -200,7 +202,8 @@ extern "C" {
   void qlFreeCalibrationHelper(QlCalibrationHelper *o);
   void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o);
   QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o);
-  void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e);
+  void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, unsigned fpLen, int* fixParameters, char **e);
+  double qlCalibratedModelValue(QlCalibratedModel* o, unsigned pLen, double* p, unsigned hLen, QlCalibrationHelper** h, char **e);
 
   void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, char **e);
   QlBlackCalibrationHelper* qlCapHelper(int, int, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e);

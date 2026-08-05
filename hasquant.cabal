@@ -141,6 +141,7 @@ library hasquant-examples
       QuantLib.Example.InflationCurve
       QuantLib.Example.Replication
       QuantLib.Example.Repo
+      QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
       QuantLib.Example.TARF
   other-modules:
