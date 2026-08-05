@@ -1210,16 +1210,17 @@ peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCal
 peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 
 -- MULTILEVEL HIERARCHIES
--- Index
---   InterestRateIndex
---     BMAIndex
---     IborIndex
---       OvernightIborIndex
---     SwapIndex
---       OvernightIndexedSwapIndex
---   InflationIndex
---     YoYInflationIndex-
---     ZeroInflationIndex-
+-- | > Index
+-- >  InterestRateIndex
+-- >    BMAIndex
+-- >    IborIndex
+-- >      OvernightIborIndex
+-- >    SwapIndex
+-- >      OvernightIndexedSwapIndex
+-- >  InflationIndex
+-- >    YoYInflationIndex-
+-- >    ZeroInflationIndex-
+type Index = GenIndex CIndex
 data CIndex'
 data CInterestRateIndex'
 data CInflationIndex'
@@ -1232,7 +1233,6 @@ data CSwapIndex'
 data COvernightIndexedSwapIndex'
 newtype GenIndex a = GenIndex {getIndex :: GenForeignPtr a CIndex'}
 type CIndex = ForeignPtr CIndex'
-type Index = GenIndex CIndex
 
 foreign import ccall safe "ql.h qlIndexName" qlIndexName :: Ptr CIndex' -> IO CString
 instance Show (GenIndex a) where show = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
@@ -1372,20 +1372,21 @@ peekOvernightIndexedSwapIndex = newGenForeignPtr >=> newGenSwapIndex
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
 withOvernightIndexedSwapIndex = withForeignPtr  .ptr . peel . peel . getIndex
 
--- TermStructure = GenTermStructure a
---   YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
---     FittedBondDiscountCurve = GenYieldTermStructure ...
---   VolatilityTermStructure
---     OptionletVolatilityStructure
---     BlackVolTermStructure
---       BlackVarianceCurve
---     SwaptionVolatilityStructure
---     CapFloorTermVolSurface
---     LocalVolTermStructure
---   CallableBondVolatilityStructure
---   DefaultProbabilityTermStructure
---   ZeroInflationTermStructure
---   YoYInflationTermStructure
+-- | > TermStructure = GenTermStructure a
+-- >  YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
+-- >    FittedBondDiscountCurve = GenYieldTermStructure ...
+-- >  VolatilityTermStructure
+-- >    OptionletVolatilityStructure
+-- >    BlackVolTermStructure
+-- >      BlackVarianceCurve
+-- >    SwaptionVolatilityStructure
+-- >    CapFloorTermVolSurface
+-- >    LocalVolTermStructure
+-- >  CallableBondVolatilityStructure
+-- >  DefaultProbabilityTermStructure
+-- >  ZeroInflationTermStructure
+-- >  YoYInflationTermStructure
+type TermStructure = GenTermStructure CTermStructure
 data CTermStructure'
 data CVolatilityTermStructure'
 data COptionletVolatilityStructure'
@@ -1402,7 +1403,6 @@ data CZeroInflationTermStructure'
 data CYoYInflationTermStructure'
 newtype GenTermStructure a = GenTermStructure {getTermStructure :: GenForeignPtr a CTermStructure'}
 type CTermStructure = ForeignPtr CTermStructure'
-type TermStructure = GenTermStructure CTermStructure
 type GenYieldTermStructure a = GenTermStructure (AnyOf CYieldTermStructure' a)
 type CYieldTermStructure = ForeignPtr CYieldTermStructure'
 type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
@@ -1561,23 +1561,24 @@ peekFittedBondDiscountCurve = newGenForeignPtr >=> newGenYieldTermStructure
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve = withForeignPtr . ptr . peel . getTermStructure
 
--- StochasticProcess
---   ExtOUWithJumpsProcess
---   GJRGARCHProcess
---   HybridHestonHullWhiteProcess
---   KlugeExtOUProcess
---   LiborForwardModelProcess
---   StochasticProcessArray
---   HestonProcess
---     BatesProcess
---   StochasticProcess1D
---     ExtendedOrnsteinUhlenbeckProcess
---     HullWhiteForwardProcess
---     HullWhiteProcess
---     Merton76Process
---     VarianceGammaProcess
---     GeneralizedBlackScholesProcess
---       BlackProcess
+-- | > StochasticProcess
+-- >   ExtOUWithJumpsProcess
+-- >   GJRGARCHProcess
+-- >   HybridHestonHullWhiteProcess
+-- >   KlugeExtOUProcess
+-- >   LiborForwardModelProcess
+-- >   StochasticProcessArray
+-- >   HestonProcess
+-- >     BatesProcess
+-- >   StochasticProcess1D
+-- >     ExtendedOrnsteinUhlenbeckProcess
+-- >     HullWhiteForwardProcess
+-- >     HullWhiteProcess
+-- >     Merton76Process
+-- >     VarianceGammaProcess
+-- >     GeneralizedBlackScholesProcess
+-- >       BlackProcess
+type StochasticProcess = GenStochasticProcess CStochasticProcess
 data CStochasticProcess'
 data CExtOUWithJumpsProcess'
 data CGJRGARCHProcess'
@@ -1597,7 +1598,6 @@ data CGeneralizedBlackScholesProcess'
 data CBlackProcess'
 newtype GenStochasticProcess a = GenStochasticProcess {getStochasticProcess :: GenForeignPtr a CStochasticProcess'}
 type CStochasticProcess = ForeignPtr CStochasticProcess'
-type StochasticProcess = GenStochasticProcess CStochasticProcess
 type CExtOUWithJumpsProcess = ForeignPtr CExtOUWithJumpsProcess'
 type ExtOUWithJumpsProcess = GenStochasticProcess CExtOUWithJumpsProcess
 type CGJRGARCHProcess = ForeignPtr CGJRGARCHProcess'
@@ -1770,19 +1770,20 @@ peekBlackProcess = newGenForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 
--- CalibratedModel
---   LiborForwardModel: AffineModel
---   GJRGARCHModel
---   PiecewiseTimeDependentHestonModel
---   HestonModel
---     BatesModel
---       BatesDetJumpModel
---     BatesDoubleExpModel
---       BatesDoubleExpDetJumpModel
---   ShortRateModel
---     G2: AffineModel
---     OneFactorAffineModel: AffineModel
---       HullWhite: AffineMode
+-- | > CalibratedModel
+-- >  LiborForwardModel: AffineModel
+-- >  GJRGARCHModel
+-- >  PiecewiseTimeDependentHestonModel
+-- >  HestonModel
+-- >    BatesModel
+-- >      BatesDetJumpModel
+-- >    BatesDoubleExpModel
+-- >      BatesDoubleExpDetJumpModel
+-- >  ShortRateModel
+-- >    G2: AffineModel
+-- >    OneFactorAffineModel: AffineModel
+-- >      HullWhite: AffineMode
+type CalibratedModel = GenCalibratedModel CCalibratedModel
 data CCalibratedModel'
 data CGJRGARCHModel'
 data CLiborForwardModel'
@@ -1799,7 +1800,6 @@ data CG2'
 data CAffineModel'
 newtype GenCalibratedModel a = GenCalibratedModel {getCalibratedModel :: GenForeignPtr a CCalibratedModel'}
 type CCalibratedModel = ForeignPtr CCalibratedModel'
-type CalibratedModel = GenCalibratedModel CCalibratedModel
 type CLiborForwardModel = ForeignPtr CLiborForwardModel'
 type LiborForwardModel = GenCalibratedModel CLiborForwardModel
 type CGJRGARCHModel = ForeignPtr CGJRGARCHModel'
@@ -1975,37 +1975,37 @@ withAffineModel (G2 m) f = withG2 m (withUpcast qlG2AsAffineModel f)
 withAffineModel (OneFactorAffineModel m) f = withOneFactorAffineModel m (withUpcast qlOneFactorAffineModelAsAffineModel f)
 withAffineModel (LiborForwardModel m) f = withGenCalibratedModel m (withUpcast qlLiborForwardModelAsAffineModel f)
 
--- a:Instrument ("a" == an abstract class)
---   a:Forward : Instrument
---     BondForward : Forward
---   a:Option : Instrument
---     CdsOption : Option
---     MultiAssetOption : Option
---       MargrabeOption : MultiAssetOption
---     OneAssetOption : Option
---       BarrierOption : OneAssetOption
---       ForwardVanillaOption : OneAssetOption
---       QuantoVanillaOption : OneAssetOption
---       VanillaOption : OneAssetOption
---     QuantoBarrierOption : Option (TODO consider deriving from BarrierOption)
---     QuantoForwardVanillaOption : Option (TODO consider deriving from ForwardVanillaOption)
---     Swaption : Option
---   a:Swap : Instrument
---     VanillaSwap : Swap
---     AssetSwap : Swap
---     BMASwap : Swap
---     OvernightIndexedSwap : Swap
---   ForwardRateAgreement : Instrument
---   CreditDefaultSwap : Instrument
---     CapFloor : Instrument
---     Bond : Instrument
---       ConvertibleBond : Bond
---       FixedRateBond : Bond
---       CallableBond : Bond
+-- | > a:Instrument ("a" == an abstract class)
+-- >  a:Forward : Instrument
+-- >    BondForward : Forward
+-- >  a:Option : Instrument
+-- >    CdsOption : Option
+-- >    MultiAssetOption : Option
+-- >      MargrabeOption : MultiAssetOption
+-- >    OneAssetOption : Option
+-- >      BarrierOption : OneAssetOption
+-- >      ForwardVanillaOption : OneAssetOption
+-- >      QuantoVanillaOption : OneAssetOption
+-- >      VanillaOption : OneAssetOption
+-- >    QuantoBarrierOption : Option (TODO consider deriving from BarrierOption)
+-- >    QuantoForwardVanillaOption : Option (TODO consider deriving from ForwardVanillaOption)
+-- >    Swaption : Option
+-- >  a:Swap : Instrument
+-- >    VanillaSwap : Swap
+-- >    AssetSwap : Swap
+-- >    BMASwap : Swap
+-- >    OvernightIndexedSwap : Swap
+-- >  ForwardRateAgreement : Instrument
+-- >  CreditDefaultSwap : Instrument
+-- >    CapFloor : Instrument
+-- >    Bond : Instrument
+-- >      ConvertibleBond : Bond
+-- >      FixedRateBond : Bond
+-- >      CallableBond : Bond
+type Instrument = GenInstrument CInstrument
 data CInstrument'
 newtype GenInstrument a = GenInstrument {getInstrument :: GenForeignPtr a CInstrument'}
 type CInstrument = ForeignPtr CInstrument'
-type Instrument = GenInstrument CInstrument
 foreign import ccall unsafe "ql.h &qlFreeInstrument" qlFreeInstrument :: FinalizerPtr CInstrument'
 instance Finalizable CInstrument' where finalize = qlFreeInstrument
 asInstrument :: GenInstrument a -> IO Instrument
