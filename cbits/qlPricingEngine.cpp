@@ -25,6 +25,7 @@
 #include <ql/pricingengines/greeks.hpp>
 #include <ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp>
 #include <ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp>
+#include <ql/pricingengines/swap/cvaswapengine.hpp>
 #include <ql/pricingengines/swap/treeswapengine.hpp>
 #include <ql/pricingengines/swaption/blackswaptionengine.hpp>
 #include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
@@ -101,6 +102,9 @@ QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, in
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e) {
   try {return ret(new QlPricingEngine(alloc(new DiscountingFxForwardEngine(Handle<YieldTermStructure>(*arg(sourceCurrencyDiscountCurve)), Handle<YieldTermStructure>(*arg(targetCurrencyDiscountCurve)), Handle<Quote>(*arg(spotFx))))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, double blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new CounterpartyAdjSwapEngine(Handle<YieldTermStructure>(*arg(discountCurve)), blackVol, Handle<DefaultProbabilityTermStructure>(*arg(ctptyDTS)), ctptyRecoveryRate, qlNullableHandle(arg(invstDTS)), invstRecoveryRate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));

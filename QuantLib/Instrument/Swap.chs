@@ -17,6 +17,7 @@ module QuantLib.Instrument.Swap
   , swap
   , bmaSwap
   , vanillaSwap
+  , makeVanillaSwap
 
   , endDiscounts
   , leg
@@ -62,11 +63,17 @@ module QuantLib.Instrument.Swap
   , HasFloatingLeg(..)
   , HasSpread(..)
   ) where
+import Data.Maybe(fromMaybe)
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..), adjust, advance)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
+import QuantLib.Time.Schedule(schedule, DateGenerationRule(..))
+import QuantLib.Time.Date(addPeriod)
+import QuantLib.Settings(evaluationDate)
+import QuantLib.Index(fixingCalendar)
+import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
@@ -128,6 +135,68 @@ swap' = (uncurry qlSwap1) . unzip
   ,withDayCounter*`DayCounter' -- ^floatingDayCount
   ,`BusinessDayConvention' -- ^paymentConvention
   ,preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+
+-- | Haskell equivalent of QuantLib's fluent @MakeVanillaSwap@ builder -- a
+-- single function with 'Maybe'-wrapped optional parameters instead of
+-- chained @.with*@ calls, covering the subset of @makevanillaswap.hpp@'s
+-- fields named in the parameters below. Not covered at all (no parameter):
+-- explicit effective\/termination date overrides, a settlement calendar
+-- distinct from the floating-leg one, floating-leg tenor\/convention\/
+-- termination convention\/day count overrides (always taken from the
+-- index, matching upstream's own defaults), @withRule@ variants (always
+-- @DateGeneration::Backward@), end-of-month\/first-date\/next-to-last-date
+-- overrides, a floating-leg spread other than @0@, a discounting term
+-- structure or custom pricing engine (use 'setPricingEngine' on the
+-- result instead), indexed\/at-par coupon overrides, and payment
+-- convention (always the floating leg's, matching upstream's own default
+-- when unset). @fixedLegTenor@\/@fixedLegDayCount@ are required arguments
+-- here rather than optional with upstream's currency-based inference. A
+-- 'Nothing' @settlementDays@ behaves as @Just 0@, rather than replicating
+-- upstream's index-@valueDate@-based spot-date convention.
+makeVanillaSwap
+  :: (Word, TimeUnit)             -- ^swapTenor
+  -> GenIborIndex a
+  -> Double                       -- ^fixedRate
+  -> (Int, TimeUnit)              -- ^forwardStart
+  -> Maybe Int                    -- ^settlementDays
+  -> (Word, TimeUnit)             -- ^fixedLegTenor
+  -> DayCounter                   -- ^fixedLegDayCount
+  -> Maybe BusinessDayConvention  -- ^fixedLegConvention
+  -> Maybe BusinessDayConvention  -- ^fixedLegTerminationDateConvention
+  -> Maybe Calendar               -- ^fixedLegCalendar
+  -> Maybe Calendar               -- ^floatingLegCalendar
+  -> Maybe Double                 -- ^nominal
+  -> Maybe SwapType
+  -> IO VanillaSwap
+makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
+    fixedTenor fixedDayCount mFixedConvention mFixedTerminationConvention mFixedCalendar
+    mFloatCalendar mNominal mType = do
+  idxCalendar <- fixingCalendar index
+  floatTenor <- tenor index
+  floatDayCount <- dayCounter index
+  refDate <- evaluationDate
+  let floatConv = businessDayConvention index
+      floatCalendar = fromMaybe idxCalendar mFloatCalendar
+      fixedCalendar = fromMaybe idxCalendar mFixedCalendar
+      fixedConvention = fromMaybe ModifiedFollowing mFixedConvention
+      fixedTerminationConvention = fromMaybe ModifiedFollowing mFixedTerminationConvention
+      settlementDays = fromMaybe 0 mSettlementDays
+      nominal = fromMaybe 1.0 mNominal
+      swapType = fromMaybe Payer mType
+      (fsLen, _) = forwardStart
+  spotDate <- advance floatCalendar refDate (settlementDays, Days) Following False
+  startDate0 <- addPeriod spotDate forwardStart
+  swapStartDate <- case compare fsLen 0 of
+    LT -> adjust floatCalendar startDate0 Preceding
+    GT -> adjust floatCalendar startDate0 Following
+    EQ -> pure startDate0
+  endDate <- addPeriod swapStartDate (fromIntegral swLen, swUnit)
+  fixedSchedule <- schedule (Just swapStartDate) endDate fixedTenor fixedCalendar
+    fixedConvention fixedTerminationConvention Backward False Nothing Nothing
+  floatSchedule <- schedule (Just swapStartDate) endDate floatTenor floatCalendar
+    floatConv floatConv Backward False Nothing Nothing
+  vanillaSwap swapType nominal fixedSchedule fixedRate fixedDayCount
+    floatSchedule index 0.0 floatDayCount floatConv
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg b',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}

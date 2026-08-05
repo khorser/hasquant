@@ -103,9 +103,11 @@ interpolatedDefaultDensityCurve d dc c q i = uncurry' (qlInterpolatedDefaultDens
 {#fun qlInterpolatedDefaultDensityCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 interpolatedHazardRateCurve :: [(Day, Double)] -> DayCounter -> Calendar -> [(Day, GenQuote a)] -- ^jumps
-  -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedHazardRateCurve d dc c q i = uncurry' (qlInterpolatedHazardRateCurve dd dq dc c qq qd) (qlInterpolation i)  where {(qd, qq) = unzip q; (dd, dq) = unzip d}
-{#fun qlInterpolatedHazardRateCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+  -> Interpolation
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO DefaultProbabilityTermStructure
+interpolatedHazardRateCurve d dc c q i ex = uncurry' (qlInterpolatedHazardRateCurve dd dq dc c qq qd) (qlInterpolation i) ex where {(qd, qq) = unzip q; (dd, dq) = unzip d}
+{#fun qlInterpolatedHazardRateCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 interpolatedSurvivalProbabilityCurve :: [(Day, Double)] -> DayCounter -> Calendar -> [(Day, GenQuote a)] -- ^jumps
   -> Interpolation -> IO DefaultProbabilityTermStructure

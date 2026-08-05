@@ -143,6 +143,10 @@ When a class has multiple real overloads of the same name, each gets its own C s
 
 A true static/singleton accessor takes no self-parameter at all: `Settings::instance()`'s shim is `int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate()...;}`, bound as `{#fun qlSettingsEvaluationDate as evaluationDate{}->\`Day'toDay#}` — the empty `{}` argument list is the tell. `tools/gen_quantlib_method.py` now does this automatically when it sees a `static` prefix: no receiver pointer/bound-class requirement, and the C++ call is qualified directly as `Class::member(...)` rather than dereferencing a receiver — see `qlCashFlowsYield` (generated from the `static Rate CashFlows::yield(...)` declaration above) for the shape. It also flags every defaulted parameter with a note pointing at the "one full-arity shim" convention above, rather than silently guessing whether to `Maybe`-wrap it — auto-generating the nullable marshalling for an arbitrary parameter type isn't reliable without an existing `Handle<T>`/`ext::optional<T>`-style convention for that specific type, so it's left as a flagged, human judgment call.
 
+## Update tools/ql-methods-*.txt
+
+After the binding compiles, grep the method/class name in `tools/ql-methods-1.43.txt` (the current version's tracking dump) and set that line's status character to match what you just did: `v` if the shim's arg count matches the upstream declaration exactly, `u` if it deliberately binds fewer args (a documented scope cut, e.g. an omitted optional parameter). This is the same status vocabulary `tools/sync_ql_methods_status.py`/`tools/reconcile_signatures.py` already use (blank = unreviewed candidate, `x` = permanently excluded, `v`/`u`/`?` as above) — updating it inline as you add each binding keeps the file current without needing another bulk resync pass later.
+
 ## Verification
 
 Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.

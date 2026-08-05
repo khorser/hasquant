@@ -230,9 +230,10 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
   -> [(Day, GenQuote a)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
+  -> Bool -- ^extrapolate past the curve's max date
   -> IO YieldTermStructure
-piecewiseYieldCurve' s cal r dc qd t i = uncurry' (qlPiecewiseYieldCurve1 s cal r dc qs ds t) (qlInterpolation i) where (ds, qs) = unzip qd
-{#fun qlPiecewiseYieldCurve1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+piecewiseYieldCurve' s cal r dc qd t i ex = uncurry' (qlPiecewiseYieldCurve1 s cal r dc qs ds t) (qlInterpolation i) ex where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurve1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter

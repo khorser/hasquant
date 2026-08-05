@@ -111,6 +111,7 @@ internal-libraries:
       - QuantLib.Example.CallableBond
       - QuantLib.Example.CDS
       - QuantLib.Example.ConvertibleBond
+      - QuantLib.Example.CVAIRS
       - QuantLib.Example.EquityOption
       - QuantLib.Example.FittedBondCurve
       - QuantLib.Example.FRA
