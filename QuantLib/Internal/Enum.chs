@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell, StandaloneDeriving, EmptyDataDecls #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to expose so I represented them as ADTs
 module QuantLib.Internal.Enum
   (
@@ -97,12 +98,13 @@ module QuantLib.Internal.Enum
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.C.Types(CUInt)
-import Foreign.Marshal.Utils(fromBool, withMany)
+import Foreign.Marshal.Utils(withMany)
 import Foreign.Marshal.Array(withArray)
 import Control.Exception(finally)
 
 import QuantLib.Internal
 import QuantLib.Internal.Type
+import QuantLib.Internal.Syntax
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -112,7 +114,7 @@ import QuantLib.Internal.Type
 
 -- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
 {#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
-{#enum ApproximationType{} add prefix="Approximation" deriving(Show, Eq)#}
+{#enum ApproximationType{} add prefix="Approximation__" deriving(Show, Eq)#}
 {#enum InterpolationType{} add prefix="Interpolation" deriving(Show, Eq)#}
 {#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
 {#enum OptionType{} deriving (Show, Eq)#}
@@ -165,11 +167,38 @@ peekPtr = pure
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 
-qlApproximation :: Approximation -> (Int, Int)
-qlApproximation (NaturalSpline x) = (fromEnum ApproximationNaturalSpline, fromBool x)
-qlApproximation (Parabolic x) = (fromEnum ApproximationParabolic, fromBool x)
-qlApproximation Kruger = (fromEnum ApproximationKruger, 0)
-qlApproximation FritschButland = (fromEnum ApproximationFritschButland, 0)
+-- monotonic flag for CubicInterpolation::Spline/::Parabolic -- tells deriveCrossEnum to give
+-- these two values a runtime Bool field instead of cross-producting named sub-values (same
+-- pattern as Actual360Convention etc. in CalendarEnum.chs). Order matters here in a way it
+-- doesn't for the ApproximationType enum itself: these two type synonyms (and ApproximationExtra
+-- below) must be declared textually *above* the deriveCrossEnum splice, since a TH splice can
+-- only see top-level declarations that already exist earlier in the same module -- classifySub's
+-- lookupTypeName would silently miss them (falling back to NoSub, dropping the Bool field) if
+-- they were moved below the splice.
+type NaturalSplineMonotonic = Bool
+type ParabolicMonotonic = Bool
+
+-- every Approximation case is driven by ApproximationType itself, so unlike
+-- CalendarExtra/DayCounterExtra/IborExtra there are no non-enum-driven cases to add here
+data ApproximationExtra
+
+$(deriveCrossEnum "Approximation" "qlApproximation" ''ApproximationType "Monotonic" ''ApproximationExtra)
+
+deriving instance Show Approximation
+deriving instance Eq Approximation
+
+-- Remaining cpp<->hs lockstep, unlike CalendarConstructor/DayCounterConstructor/IborConstructor:
+-- those own a full C-side array/table, so *every* lockstep edit needed for a new value stays
+-- inside cbits/. Approximation/Interpolation instead get dispatched via symbolic switch-case on
+-- the shared enum (cbits/qlTermStructure.cpp's setInterpolation, and ~18 duplicated
+-- switch(interpolator){switch(approximator){...}} sites in cbits/qlTermStructureAux.cpp, one per
+-- PiecewiseYieldCurve trait/interpolator instantiation). Adding a new ApproximationType/
+-- InterpolationType value to cbits/qlEnumObjects.h is zero-touch here on the Haskell side
+-- (deriveCrossEnum picks it up automatically, defaulting to a nullary constructor unless a
+-- <Value>Monotonic marker is added above), but each cbits switch still needs a matching
+-- `case hasquant::NewValue:` by hand -- a missed one isn't a compile error, just a runtime
+-- QL_FAIL("Unsupported ..."), exactly the pre-existing gap Abcd fell into (see the comment next
+-- to setInterpolation's default case in qlTermStructure.cpp).
 
 qlInterpolation :: Interpolation -> (Int, (Int, Int))
 qlInterpolation BackwardFlat = (fromEnum InterpolationBackwardFlat, (0, 0))
@@ -183,13 +212,6 @@ qlInterpolation Abcd = (fromEnum InterpolationAbcd, (0, 0))
 qlInterpolation' :: Maybe Interpolation -> (Int, (Int, Int))
 qlInterpolation' Nothing = (fromIntegral qlNullInteger, (0, 0))
 qlInterpolation' (Just i) = qlInterpolation i
-
-data Approximation =
-  NaturalSpline !Bool
-  | Parabolic !Bool
-  | Kruger
-  | FritschButland
-  deriving (Show, Eq)
 
 data Interpolation =
   BackwardFlat
