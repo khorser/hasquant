@@ -232,8 +232,16 @@ data SwingExercise =
 data BermudanExercise =
     BermudanExercise ![Day] !Bool
     | Swing SwingExercise
+
+-- | > Exercise
+-- >  American
+-- >  Early
+-- >  Vanilla
+-- >  EuropeanExercise
+-- >  BermudanExercise
+-- >    SwingExercise
 data Exercise =
-    AmericanExercise
+    American
       !(Maybe Day) -- ^earliestDate
       !Day -- ^latestDate
       !Bool -- ^paoffAtExpiry
@@ -263,8 +271,8 @@ withBermudanExercise (BermudanExercise d p) f = qlBermudanExercise d p >>= newCa
 withBermudanExercise (Swing e) f = withSwingExercise e (\sp -> upcast sp >>= \bp -> f bp `finally` freeUpcast bp)
 
 withExercise :: Exercise -> (QlExercise -> IO a) -> IO a
-withExercise (AmericanExercise Nothing d p) f = qlAmericanExercise1 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
-withExercise (AmericanExercise (Just d0) d p) f = qlAmericanExercise d0 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
+withExercise (American Nothing d p) f = qlAmericanExercise1 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
+withExercise (American (Just d0) d p) f = qlAmericanExercise d0 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
 withExercise (Early t p) f = qlEarlyExercise t p >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withExercise (Vanilla t) f = qlExercise t >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withExercise (European e) f = withEuropeanExercise e (\ep -> upcast ep >>= \xp -> f xp `finally` freeUpcast xp)
@@ -345,6 +353,30 @@ withBasketPayoff (Max p) f = withPayoff p (\pp -> qlMaxBasketPayoff pp >>= newCa
 withBasketPayoff (Min p) f = withPayoff p (\pp -> qlMinBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
 withBasketPayoff (Spread p) f = withPayoff p (\pp -> qlSpreadBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
 
+-- | > Payoff
+-- >  DoubleStickyRatchet
+-- >  ForwardType
+-- >  RatchettMax
+-- >  RatchetMin
+-- >  StickyMax
+-- >  StickyMin
+-- >  Sticky
+-- >  TypePayoff
+-- >    Floating
+-- >    Striked
+-- >      AssetOrNothing
+-- >      CashOrNothing
+-- >      Gap
+-- >      PercentageStrike
+-- >      PlainVanilla
+-- >      SuperFund
+-- >      SuperSharePayoff
+-- >  BasketPayoff
+-- >    Average
+-- >    AverageMultiple
+-- >    Max
+-- >    Min
+-- >    Spread
 data Payoff =
     DoubleStickyRatchet
       !Double -- ^type1

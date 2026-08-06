@@ -40,7 +40,7 @@ run = do
   dc <- dayCounter Actual365FixedStandard
   let europeanEx = European $ EuropeanExercise maturity
       bermudanEx = Bermudan $ BermudanExercise exDates False
-      americanEx = AmericanExercise Nothing maturity False
+      americanEx = American Nothing maturity False
   underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate
   ts <- flatForward settl riskFreeQ dc Continuous Annual
