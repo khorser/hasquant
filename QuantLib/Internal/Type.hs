@@ -1002,11 +1002,13 @@ withGenArray m x f = withMany m x (`withArray` (\p -> f (fromIntegral $ length x
 peel :: GenForeignPtr (AnyOf b a) c -> GenForeignPtr a b
 peel = getAnyOf . ptr
 
+-- | > Quote
+-- >   SimpleQuote
+type Quote = GenQuote CQuote
 data CQuote'
 data CSimpleQuote'
 newtype GenQuote a = GenQuote {getQuote :: GenForeignPtr a CQuote'}
 type CQuote = ForeignPtr CQuote'
-type Quote = GenQuote CQuote
 type CSimpleQuote = ForeignPtr CSimpleQuote'
 type SimpleQuote = GenQuote CSimpleQuote
 foreign import ccall unsafe "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
@@ -1125,10 +1127,14 @@ withGenLeg = withForeignPtr . ptr . getLeg
 peekCouponLeg :: Ptr CCouponLeg' -> IO CouponLeg
 peekCouponLeg = GenLeg <.> newGenForeignPtr
 
+-- | > RateHelper
+-- >   BondHelper
+-- >   SwapRateHelper
+-- >   OISRateHelper
+type RateHelper = GenRateHelper CRateHelper
 data CRateHelper'
 newtype GenRateHelper a = GenRateHelper {getRateHelper :: GenForeignPtr a CRateHelper'}
 type CRateHelper = ForeignPtr CRateHelper'
-type RateHelper = GenRateHelper CRateHelper
 foreign import ccall unsafe "ql.h &qlFreeRateHelper" qlFreeRateHelper :: FinalizerPtr CRateHelper'
 instance Finalizable CRateHelper' where finalize = qlFreeRateHelper
 asRateHelper :: GenRateHelper a -> IO RateHelper
@@ -1171,11 +1177,13 @@ instance Upcastable COISRateHelper' where {type Base COISRateHelper' = CRateHelp
 peekOISRateHelper :: Ptr COISRateHelper' -> IO OISRateHelper
 peekOISRateHelper = GenRateHelper <.> newGenForeignPtr
 
+-- | > CalibrationHelper
+-- >   BlackCalibrationHelper
+type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
 data CCalibrationHelper'
 data CBlackCalibrationHelper'
 newtype GenCalibrationHelper a = GenCalibrationHelper {getCalibrationHelper :: GenForeignPtr a CCalibrationHelper'}
 type CCalibrationHelper = ForeignPtr CCalibrationHelper'
-type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
 type CBlackCalibrationHelper = ForeignPtr CBlackCalibrationHelper'
 type BlackCalibrationHelper = GenCalibrationHelper CBlackCalibrationHelper
 foreign import ccall unsafe "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper'
@@ -1199,11 +1207,13 @@ withCalibrationHelperArray = withGenArray withCalibrationHelper
 withBlackCalibrationHelperArray :: [BlackCalibrationHelper] -> ((CUInt, Ptr (Ptr CBlackCalibrationHelper')) -> IO b) -> IO b
 withBlackCalibrationHelperArray = withGenArray withGenCalibrationHelper
 
+-- | > BlackCalculator
+-- >   BlackScholesCalculator
+type BlackCalculator = GenBlackCalculator CBlackCalculator
 data CBlackCalculator'
 data CBlackScholesCalculator'
 newtype GenBlackCalculator a = GenBlackCalculator {getBlackCalculator :: GenForeignPtr a CBlackCalculator'}
 type CBlackCalculator = ForeignPtr CBlackCalculator'
-type BlackCalculator = GenBlackCalculator CBlackCalculator
 type CBlackScholesCalculator = ForeignPtr CBlackScholesCalculator'
 type BlackScholesCalculator = GenBlackCalculator CBlackScholesCalculator
 foreign import ccall unsafe "ql.h &qlFreeBlackCalculator" qlFreeBlackCalculator :: FinalizerPtr CBlackCalculator'
@@ -2020,32 +2030,33 @@ withGaussian1dModel (Gsr m) f = withGenCalibratedModel m (withUpcast qlGsrAsGaus
 withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcast qlMarkovFunctionalAsGaussian1dModel f)
 
 -- | > a:Instrument ("a" == an abstract class)
--- >  a:Forward : Instrument
--- >    BondForward : Forward
--- >  a:Option : Instrument
+-- >  a:Forward
+-- >    BondForward
+-- >  ForwardRateAgreement
+-- >  FxForward
+-- >  a:Option
 -- >    CdsOption : Option
--- >    MultiAssetOption : Option
--- >      MargrabeOption : MultiAssetOption
--- >    OneAssetOption : Option
--- >      BarrierOption : OneAssetOption
--- >      ForwardVanillaOption : OneAssetOption
--- >      QuantoVanillaOption : OneAssetOption
--- >      VanillaOption : OneAssetOption
--- >    QuantoBarrierOption : Option (TODO consider deriving from BarrierOption)
--- >    QuantoForwardVanillaOption : Option (TODO consider deriving from ForwardVanillaOption)
+-- >    MultiAssetOption
+-- >      MargrabeOption
+-- >    OneAssetOption
+-- >      BarrierOption
+-- >      ForwardVanillaOption
+-- >      QuantoVanillaOption
+-- >      VanillaOption
+-- >    QuantoBarrierOption (TODO consider deriving from BarrierOption)
+-- >    QuantoForwardVanillaOption (TODO consider deriving from ForwardVanillaOption)
 -- >    Swaption : Option
 -- >  a:Swap : Instrument
 -- >    VanillaSwap : Swap
 -- >    AssetSwap : Swap
 -- >    BMASwap : Swap
--- >    OvernightIndexedSwap : Swap
--- >  ForwardRateAgreement : Instrument
--- >  CreditDefaultSwap : Instrument
--- >    CapFloor : Instrument
--- >    Bond : Instrument
--- >      ConvertibleBond : Bond
--- >      FixedRateBond : Bond
--- >      CallableBond : Bond
+-- >    OvernightIndexedSwap
+-- >  CreditDefaultSwap
+-- >  CapFloor
+-- >  Bond
+-- >    ConvertibleBond
+-- >    FixedRateBond
+-- >    CallableBond
 type Instrument = GenInstrument CInstrument
 data CInstrument'
 newtype GenInstrument a = GenInstrument {getInstrument :: GenForeignPtr a CInstrument'}

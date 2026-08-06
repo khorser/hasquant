@@ -68,7 +68,7 @@ run = do
   bsmProc <- simpleQuote under >>= $(free1st 'blackScholesMertonProcess) dts ts vts EulerDiscretization
 
   let euEx = European $ EuropeanExercise exec
-      amEx = AmericanExercise (Just settl) exec False
+      amEx = American (Just settl) exec False
   euBond <- convertibleFixedCouponBond euEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption
   amBond <- convertibleFixedCouponBond amEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption
 
