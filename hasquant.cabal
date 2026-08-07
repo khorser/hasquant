@@ -126,8 +126,9 @@ library
         /opt/homebrew/include
   build-tool-depends: c2hs:c2hs
 
-library hasquant-examples
-  exposed-modules:
+executable hasquant_example
+  main-is: QuantLib/MainExample.hs
+  other-modules:
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -144,34 +145,16 @@ library hasquant-examples
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
       QuantLib.Example.TARF
-  other-modules:
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
       test
-  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
-  build-depends:
-      base >=4.11 && <5.0
-    , hasquant
-    , time
-  default-language: Haskell2010
-  if flag(trackAllocations)
-    ghc-options: -g3
-
-executable hasquant_example
-  main-is: QuantLib/MainExample.hs
-  other-modules:
-      Paths_hasquant
-  autogen-modules:
-      Paths_hasquant
-  hs-source-dirs:
       main/exe
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
       base >=4.11 && <5.0
     , hasquant
-    , hasquant-examples
     , time
   default-language: Haskell2010
   if flag(trackAllocations)
@@ -185,10 +168,27 @@ test-suite hasquant_test
   type: exitcode-stdio-1.0
   main-is: QuantLib/MainTest.hs
   other-modules:
+      QuantLib.Example.BermudanSwaption
+      QuantLib.Example.Bond
+      QuantLib.Example.CallableBond
+      QuantLib.Example.CDS
+      QuantLib.Example.ConvertibleBond
+      QuantLib.Example.CVAIRS
+      QuantLib.Example.EquityOption
+      QuantLib.Example.FittedBondCurve
+      QuantLib.Example.FRA
+      QuantLib.Example.FxForward
+      QuantLib.Example.InflationCurve
+      QuantLib.Example.Replication
+      QuantLib.Example.Repo
+      QuantLib.Example.ShortRateModels
+      QuantLib.Example.Swap
+      QuantLib.Example.TARF
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
+      test
       main/test
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
@@ -196,7 +196,6 @@ test-suite hasquant_test
     , QuickCheck
     , base >=4.11 && <5.0
     , hasquant
-    , hasquant-examples
     , hspec
     , time
   default-language: Haskell2010
