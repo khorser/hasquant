@@ -593,11 +593,6 @@ module QuantLib.Internal.Type
   , CFxForward
   , CFxForward'
   , peekFxForward
-  , ForwardVanillaOption
-  , CForwardVanillaOption
-  , CForwardVanillaOption'
-  , peekForwardVanillaOption
-  , withForwardVanillaOption
   , Instrument
   , GenInstrument
   , CInstrument
@@ -2040,11 +2035,10 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      MargrabeOption
 -- >    OneAssetOption
 -- >      BarrierOption
--- >      ForwardVanillaOption
 -- >      QuantoVanillaOption
 -- >      VanillaOption
+-- >      QuantoForwardVanillaOption
 -- >    QuantoBarrierOption (TODO consider deriving from BarrierOption)
--- >    QuantoForwardVanillaOption (TODO consider deriving from ForwardVanillaOption)
 -- >    Swaption : Option
 -- >  a:Swap : Instrument
 -- >    VanillaSwap : Swap
@@ -2316,18 +2310,6 @@ peekQuantoBarrierOption = peekGenOption
 withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
 withQuantoBarrierOption = withForeignPtr . ptr . peel . getInstrument
 
-data CQuantoForwardVanillaOption'
-type CQuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption'
-type QuantoForwardVanillaOption = GenOption CQuantoForwardVanillaOption
-foreign import ccall unsafe "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption'
-instance Finalizable CQuantoForwardVanillaOption' where finalize = qlFreeQuantoForwardVanillaOption
-foreign import ccall "ql.h qlQuantoForwardVanillaOptionAsOption" qlQuantoForwardVanillaOptionAsOption :: Ptr CQuantoForwardVanillaOption' -> IO (Ptr COption')
-instance Upcastable CQuantoForwardVanillaOption' where {type Base CQuantoForwardVanillaOption' = COption'; upcast = qlQuantoForwardVanillaOptionAsOption}
-peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption' -> IO QuantoForwardVanillaOption
-peekQuantoForwardVanillaOption = peekGenOption
-withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption' -> IO b) -> IO b
-withQuantoForwardVanillaOption = withForeignPtr . ptr . peel . getInstrument
-
 data CSwaption'
 type CSwaption = ForeignPtr CSwaption'
 type Swaption = GenOption CSwaption
@@ -2398,17 +2380,17 @@ peekBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withBarrierOption :: BarrierOption -> (Ptr CBarrierOption' -> IO b) -> IO b
 withBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
-data CForwardVanillaOption'
-type CForwardVanillaOption = ForeignPtr CForwardVanillaOption'
-type ForwardVanillaOption = GenOneAssetOption CForwardVanillaOption
-foreign import ccall unsafe "ql.h &qlFreeForwardVanillaOption" qlFreeForwardVanillaOption :: FinalizerPtr CForwardVanillaOption'
-instance Finalizable CForwardVanillaOption' where finalize = qlFreeForwardVanillaOption
-foreign import ccall "ql.h qlForwardVanillaOptionAsOneAssetOption" qlForwardVanillaOptionAsOneAssetOption :: Ptr CForwardVanillaOption' -> IO (Ptr COneAssetOption')
-instance Upcastable CForwardVanillaOption' where {type Base CForwardVanillaOption' = COneAssetOption'; upcast = qlForwardVanillaOptionAsOneAssetOption}
-peekForwardVanillaOption :: Ptr CForwardVanillaOption' -> IO ForwardVanillaOption
-peekForwardVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
-withForwardVanillaOption :: ForwardVanillaOption -> (Ptr CForwardVanillaOption' -> IO b) -> IO b
-withForwardVanillaOption = withForeignPtr . ptr . peel . peel . getInstrument
+data CQuantoForwardVanillaOption'
+type CQuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption'
+type QuantoForwardVanillaOption = GenOneAssetOption CQuantoForwardVanillaOption
+foreign import ccall unsafe "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption'
+instance Finalizable CQuantoForwardVanillaOption' where finalize = qlFreeQuantoForwardVanillaOption
+foreign import ccall "ql.h qlQuantoForwardVanillaOptionAsOneAssetOption" qlQuantoForwardVanillaOptionAsOneAssetOption :: Ptr CQuantoForwardVanillaOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CQuantoForwardVanillaOption' where {type Base CQuantoForwardVanillaOption' = COneAssetOption'; upcast = qlQuantoForwardVanillaOptionAsOneAssetOption}
+peekQuantoForwardVanillaOption :: Ptr CQuantoForwardVanillaOption' -> IO QuantoForwardVanillaOption
+peekQuantoForwardVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
+withQuantoForwardVanillaOption :: QuantoForwardVanillaOption -> (Ptr CQuantoForwardVanillaOption' -> IO b) -> IO b
+withQuantoForwardVanillaOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CQuantoVanillaOption'
 type CQuantoVanillaOption = ForeignPtr CQuantoVanillaOption'

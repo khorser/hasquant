@@ -6,7 +6,6 @@ module QuantLib.Instrument.Option
   , asOneAssetOption
   , CdsOption
   , BarrierOption
-  , ForwardVanillaOption
   , MargrabeOption
   , MultiAssetOption
   , OneAssetOption
@@ -86,7 +85,6 @@ import QuantLib.Internal.Enum
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption' nocode#}
-{#pointer *QlForwardVanillaOption as ForwardVanillaOption foreign -> CForwardVanillaOption' nocode#}
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption' nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption' nocode#}
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption' nocode#}
@@ -116,7 +114,7 @@ import QuantLib.Internal.Enum
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
 {#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
-  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`ForwardVanillaOption'peekForwardVanillaOption*#}
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlMargrabeOptionDelta1 as delta1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOptionDelta2 as delta2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOptionGamma1 as gamma1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
