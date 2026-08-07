@@ -2038,7 +2038,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      QuantoVanillaOption
 -- >      VanillaOption
 -- >      QuantoForwardVanillaOption
--- >    QuantoBarrierOption (TODO consider deriving from BarrierOption)
+-- >      QuantoBarrierOption
 -- >    Swaption : Option
 -- >  a:Swap : Instrument
 -- >    VanillaSwap : Swap
@@ -2298,18 +2298,6 @@ peekCdsOption = peekGenOption
 withCdsOption :: CdsOption -> (Ptr CCdsOption' -> IO b) -> IO b
 withCdsOption = withForeignPtr . ptr . peel . getInstrument
 
-data CQuantoBarrierOption'
-type CQuantoBarrierOption = ForeignPtr CQuantoBarrierOption'
-type QuantoBarrierOption = GenOption CQuantoBarrierOption
-foreign import ccall unsafe "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption'
-instance Finalizable CQuantoBarrierOption' where finalize = qlFreeQuantoBarrierOption
-foreign import ccall "ql.h qlQuantoBarrierOptionAsOption" qlQuantoBarrierOptionAsOption :: Ptr CQuantoBarrierOption' -> IO (Ptr COption')
-instance Upcastable CQuantoBarrierOption' where {type Base CQuantoBarrierOption' = COption'; upcast = qlQuantoBarrierOptionAsOption}
-peekQuantoBarrierOption :: Ptr CQuantoBarrierOption' -> IO QuantoBarrierOption
-peekQuantoBarrierOption = peekGenOption
-withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
-withQuantoBarrierOption = withForeignPtr . ptr . peel . getInstrument
-
 data CSwaption'
 type CSwaption = ForeignPtr CSwaption'
 type Swaption = GenOption CSwaption
@@ -2415,6 +2403,18 @@ peekVanillaOption :: Ptr CVanillaOption' -> IO VanillaOption
 peekVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
 withVanillaOption :: VanillaOption -> (Ptr CVanillaOption' -> IO b) -> IO b
 withVanillaOption = withForeignPtr . ptr . peel . peel . getInstrument
+
+data CQuantoBarrierOption'
+type CQuantoBarrierOption = ForeignPtr CQuantoBarrierOption'
+type QuantoBarrierOption = GenOneAssetOption CQuantoBarrierOption
+foreign import ccall unsafe "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption'
+instance Finalizable CQuantoBarrierOption' where finalize = qlFreeQuantoBarrierOption
+foreign import ccall "ql.h qlQuantoBarrierOptionAsOneAssetOption" qlQuantoBarrierOptionAsOneAssetOption :: Ptr CQuantoBarrierOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CQuantoBarrierOption' where {type Base CQuantoBarrierOption' = COneAssetOption'; upcast = qlQuantoBarrierOptionAsOneAssetOption}
+peekQuantoBarrierOption :: Ptr CQuantoBarrierOption' -> IO QuantoBarrierOption
+peekQuantoBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
+withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
+withQuantoBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 withInstrumentArray :: [GenInstrument a] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b
 withInstrumentArray = withGenArray withInstrument
