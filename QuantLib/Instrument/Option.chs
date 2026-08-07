@@ -67,7 +67,7 @@ module QuantLib.Instrument.Option
   , europeanOption
 
   , HasImpliedVol(..)
-  , QuantoOption(..)
+  , HasQuanto(..)
   , HasGreeks(..)
   ) where
 #include "qlTypesC2HS.h"
@@ -200,19 +200,19 @@ instance HasGreeks OneAssetOption where
 {#fun qlOneAssetOptionTheta{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlOneAssetOptionVega{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-class QuantoOption a where
+class HasQuanto a where
   qrho :: a -> IO Double
   qvega :: a -> IO Double
   qlambda :: a -> IO Double
-instance QuantoOption QuantoBarrierOption where
+instance HasQuanto QuantoBarrierOption where
   qrho = qlQuantoBarrierOptionQrho
   qvega = qlQuantoBarrierOptionQvega
   qlambda = qlQuantoBarrierOptionQlambda
-instance QuantoOption QuantoForwardVanillaOption where
+instance HasQuanto QuantoForwardVanillaOption where
   qrho = qlQuantoForwardVanillaOptionQrho
   qvega = qlQuantoForwardVanillaOptionQvega
   qlambda = qlQuantoForwardVanillaOptionQlambda
-instance QuantoOption QuantoVanillaOption where
+instance HasQuanto QuantoVanillaOption where
   qrho = qlQuantoVanillaOptionQrho
   qvega = qlQuantoVanillaOptionQvega
   qlambda = qlQuantoVanillaOptionQlambda
