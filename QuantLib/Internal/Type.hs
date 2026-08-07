@@ -2035,8 +2035,8 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      MargrabeOption
 -- >    OneAssetOption
 -- >      BarrierOption
--- >      QuantoVanillaOption
 -- >      VanillaOption
+-- >      QuantoVanillaOption
 -- >      QuantoForwardVanillaOption
 -- >      QuantoBarrierOption
 -- >    Swaption : Option

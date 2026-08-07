@@ -66,9 +66,9 @@ module QuantLib.Instrument.Option
   , vanillaSwingOption
   , europeanOption
 
-  , VolatileOption(..)
+  , HasImpliedVol(..)
   , QuantoOption(..)
-  , OptionOnAsset(..)
+  , HasGreeks(..)
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -162,7 +162,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlEuropeanOption as europeanOption{withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`VanillaOption'peekVanillaOption*#}
 
-class OptionOnAsset a where
+class HasGreeks a where
   delta :: a -> IO Double
   gamma :: a -> IO Double
   rho :: a -> IO Double
@@ -170,7 +170,7 @@ class OptionOnAsset a where
   vega :: a -> IO Double
   dividendRho :: a -> IO Double
 
-instance OptionOnAsset MultiAssetOption where
+instance HasGreeks MultiAssetOption where
   delta = qlMultiAssetOptionDelta
   gamma = qlMultiAssetOptionGamma
   rho = qlMultiAssetOptionRho
@@ -178,7 +178,7 @@ instance OptionOnAsset MultiAssetOption where
   vega = qlMultiAssetOptionVega
   dividendRho = qlMultiAssetOptionDividendRho
 
-instance OptionOnAsset OneAssetOption where
+instance HasGreeks OneAssetOption where
   delta = qlOneAssetOptionDelta
   gamma = qlOneAssetOptionGamma
   rho = qlOneAssetOptionRho
@@ -217,7 +217,7 @@ instance QuantoOption QuantoVanillaOption where
   qvega = qlQuantoVanillaOptionQvega
   qlambda = qlQuantoVanillaOptionQlambda
 
-class VolatileOption a where
+class HasImpliedVol a where
 -- /Warning/ currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)Warningoptions with a gamma that changes sign (e.g., binary options) have values that are not monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options.
   impliedVolatility :: a
     -> Double -- ^price
@@ -227,9 +227,9 @@ class VolatileOption a where
     -> Double -- ^minVol
     -> Double -- ^maxVol
     -> IO Double
-instance VolatileOption VanillaOption where
+instance HasImpliedVol VanillaOption where
   impliedVolatility = qlVanillaOptionImpliedVolatility
-instance VolatileOption BarrierOption where
+instance HasImpliedVol BarrierOption where
   impliedVolatility = qlBarrierOptionImpliedVolatility
 
 {#fun qlQuantoBarrierOptionQrho{withQuantoBarrierOption*`QuantoBarrierOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
