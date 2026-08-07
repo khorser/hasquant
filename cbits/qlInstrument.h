@@ -204,7 +204,7 @@ extern "C" {
   double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, char **e);
   void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o);
-  QlOption* qlQuantoBarrierOptionAsOption(QlQuantoBarrierOption *o);
+  QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o);
   void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o);
   QlOption* qlQuantoForwardVanillaOptionAsOption(QlQuantoForwardVanillaOption *o);
 

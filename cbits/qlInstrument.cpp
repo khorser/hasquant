@@ -391,7 +391,7 @@ QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, 
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
-QlOption* qlQuantoBarrierOptionAsOption(QlQuantoBarrierOption *o) {return ret(new QlOption(*arg(o)));}
+QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o) {del(o);}
 QlOneAssetOption* qlQuantoForwardVanillaOptionAsOneAssetOption(QlQuantoForwardVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
