@@ -102,36 +102,14 @@ library:
     - condition: os(osx)
       include-dirs: /opt/homebrew/include
 
-internal-libraries:
-  hasquant-examples:
-    source-dirs: test
-    exposed-modules:
-      - QuantLib.Example.BermudanSwaption
-      - QuantLib.Example.Bond
-      - QuantLib.Example.CallableBond
-      - QuantLib.Example.CDS
-      - QuantLib.Example.ConvertibleBond
-      - QuantLib.Example.CVAIRS
-      - QuantLib.Example.EquityOption
-      - QuantLib.Example.FittedBondCurve
-      - QuantLib.Example.FRA
-      - QuantLib.Example.FxForward
-      - QuantLib.Example.InflationCurve
-      - QuantLib.Example.Replication
-      - QuantLib.Example.Repo
-      - QuantLib.Example.ShortRateModels
-      - QuantLib.Example.Swap
-      - QuantLib.Example.TARF
-    dependencies:
-      - hasquant
-
 tests:
   hasquant_test:
     main: QuantLib/MainTest.hs
-    source-dirs: main/test
+    source-dirs:
+      - test
+      - main/test
     dependencies:
       - hasquant
-      - hasquant-examples
       - hspec
       - HUnit
       - QuickCheck
@@ -139,10 +117,11 @@ tests:
 executables:
   hasquant_example:
     main: QuantLib/MainExample.hs
-    source-dirs: main/exe
+    source-dirs:
+      - test
+      - main/exe
     dependencies:
       - hasquant
-      - hasquant-examples
     when:
       - condition: flag(buildExample)
         then:

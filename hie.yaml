@@ -1,10 +1,13 @@
 cradle:
   cabal:
-    - path: "./main/exe"
-      component: "exe:hasquant_example"
-    - path: "./main/test"
-      component: "test:hasquant_test"
-    - path: "./test"
-      component: "lib:hasquant-examples"
-    - path: "./"
+    - path: "QuantLib"
       component: "lib:hasquant"
+
+    - path: "main/exe/QuantLib/MainExample.hs"
+      component: "hasquant:exe:hasquant_example"
+
+    - path: "main/test/QuantLib/MainTest.hs"
+      component: "hasquant:test:hasquant_test"
+
+    - path: "test"
+      component: "hasquant:test:hasquant_test"
