@@ -2039,11 +2039,11 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      QuantoVanillaOption
 -- >      QuantoForwardVanillaOption
 -- >      QuantoBarrierOption
--- >    Swaption : Option
--- >  a:Swap : Instrument
--- >    VanillaSwap : Swap
--- >    AssetSwap : Swap
--- >    BMASwap : Swap
+-- >    Swaption
+-- >  a:Swap
+-- >    VanillaSwap
+-- >    AssetSwap
+-- >    BMASwap
 -- >    OvernightIndexedSwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
