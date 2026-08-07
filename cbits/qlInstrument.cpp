@@ -357,8 +357,6 @@ double qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e) {try {ret
 double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBarrierOption(QlBarrierOption *o) {del(o);}
 QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
-void qlFreeForwardVanillaOption(QlForwardVanillaOption *o) {del(o);}
-QlOneAssetOption* qlForwardVanillaOptionAsOneAssetOption(QlForwardVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeMargrabeOption(QlMargrabeOption *o) {del(o);}
 QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o) {return ret(new QlMultiAssetOption(*arg(o)));}
 void qlFreeMultiAssetOption(QlMultiAssetOption *o) {del(o);}
@@ -395,7 +393,7 @@ QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
 QlOption* qlQuantoBarrierOptionAsOption(QlQuantoBarrierOption *o) {return ret(new QlOption(*arg(o)));}
 void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o) {del(o);}
-QlOption* qlQuantoForwardVanillaOptionAsOption(QlQuantoForwardVanillaOption *o) {return ret(new QlOption(*arg(o)));}
+QlOneAssetOption* qlQuantoForwardVanillaOptionAsOneAssetOption(QlQuantoForwardVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
@@ -403,9 +401,9 @@ QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate,
 double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlForwardVanillaOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
-  try {return ret(new QlForwardVanillaOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));
-  } catch (std::exception& er) {return handleException<QlForwardVanillaOption*>(e, er);}}
+QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 double qlMargrabeOptionDelta1(QlMargrabeOption* o, char **e) {try {return (*arg(o))->delta1();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlMargrabeOptionDelta2(QlMargrabeOption* o, char **e) {try {return (*arg(o))->delta2();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlMargrabeOptionGamma1(QlMargrabeOption* o, char **e) {try {return (*arg(o))->gamma1();} catch (std::exception& er) {return handleException<double>(e, er);}}
