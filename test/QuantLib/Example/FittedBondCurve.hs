@@ -5,10 +5,9 @@ module QuantLib.Example.FittedBondCurve
   , Rate(..)
   , run
   ) where
-import Prelude hiding(init, head, tail, last, unzip)
+import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
-import Data.Functor(unzip)
 import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last)
 
 import qualified QuantLib.CashFlow as CF

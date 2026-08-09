@@ -10,9 +10,9 @@ For now, Haddock documentation is available at https://khorser.github.io/hasquan
 
 # Building
 
-The current version was tested with GHC-9.10.3 only, but it should work with relatively newer or older versions, since I deliberately avoided advanced language features.
+The current version was mostly tested with GHC-9.10.3, but it should work with newer or reasonably older versions (at least from 8.10.6), since I deliberately avoided advanced language features.
 
-Currently, only Linux and macOS are supported; Windows should be easy to support once I figure out the proper way to supply paths to custom libraries in cabal.
+Linux and macOS are the primary, well-tested platforms. Windows builds are also possible, but the process currently involves several non-obvious toolchain workarounds — see [`.claude/skills/build-windows/SKILL.md`](.claude/skills/build-windows/SKILL.md) for the full, tested recipe if you want to try it.
 
 ## Stack
 
@@ -23,7 +23,7 @@ Run tests: `stack build --test --no-haddock`
 Build and run examples: `stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example`, also `--flag hasquant:buildExample` is required if you want to use HLS with examples.
 
 Build and run examples enabling tracking of memory allocations (print all created and deleted objects to stderr):
-`stack build --no-haddock  --flag hasquant:buildExample --flag hasquant:trackAllocations $* && stack exec hasquant_example`
+`stack build --no-haddock --flag hasquant:buildExample --flag hasquant:trackAllocations $* && stack exec hasquant_example`
 
 Run GHCi: `stack ghci --ghci-options $(find .stack-work \( -name "*.so" -o -name "*.dylib" \) -print -quit)`
 
@@ -46,7 +46,7 @@ The repo contains docker compose files for a custom Linux x86_64 image. You can 
 
 I deliberately avoided typeclasses, as the code quickly becomes polluted by typeclass constraints.
 
-## How to read types.
+## How to read types
 
 If you see a function accepting `CallableBond`, you can pass only instances of callable bonds.
 But if a function accepts `GenBond a`, you can pass a `Bond` or any of its derivatives: `FixedRateBond`, `ConvertibleBond`, `CallableBond`.
@@ -63,11 +63,10 @@ While this is convenient, it leads to some allocation and deallocation on each c
 
 # TODO
 - Publish on Hackage
-- Support Windows
 - Add more (can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information):
- - classes. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files
- - methods. Since the last time I looked into it, QuantLib has added more interesting methods
- - method arguments. Some methods were refactored and updated to support more arguments. Particularly, look for TODO items in cbits
+  - classes. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files
+  - methods. Since the last time I looked into it, QuantLib has added more interesting methods
+  - method arguments. Some methods were refactored and updated to support more arguments. Particularly, look for TODO items in cbits
 - Add more nonempty lists or vectors for some functions where applicable
 - Use some QuantLib handles for quotes and curves to support native QuantLib semantics
 - Design a declarative embedded DSL

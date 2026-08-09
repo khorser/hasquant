@@ -18,8 +18,6 @@ license-file:   LICENSE
 build-type:     Simple
 tested-with:
     GHC == 8.10.6
-  , GHC == 9.0.2
-  , GHC == 9.2.5
   , GHC == 9.10.3
 extra-source-files:
     cbits/ql.h
@@ -99,8 +97,6 @@ library
       cbits/qlPricingEngineAux.cpp
       cbits/qlTermStructure.cpp
       cbits/qlTermStructureAux.cpp
-  extra-libraries:
-      stdc++
   build-depends:
       base >=4.11 && <5.0
     , template-haskell
@@ -109,6 +105,9 @@ library
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3
+  if !os(windows)
+    extra-libraries:
+        stdc++
   if flag(trackAllocations) && os(osx)
     cxx-options: -DQLTRACK_ALLOCATIONS="/dev/fd/2"
   if flag(trackAllocations) && os(linux)

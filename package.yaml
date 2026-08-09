@@ -11,12 +11,7 @@ build-type: Simple
 github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
-  - GHC == 9.0.2 # lts-19.32
-  - GHC == 9.2.5 # lts-20.2
-  - GHC == 9.10.3 # lts-24.49
-  #- GHC == 8.10.4 # lts-18.5
-  #- GHC == 8.8.4  # lts-16.31
-  # with minimal compatibility tweaks in Quantlib.Internal.Syntax and probably other modules you should be able to build it with GHC 7.10
+  - GHC == 9.10.3 # lts-24.53
 language: Haskell2010
 flags:
   buildExample:
@@ -85,8 +80,9 @@ library:
     - cbits/*.cpp
   include-dirs: cbits
   cxx-options: -Wall -Wextra -pedantic -std=c++17
-  extra-libraries: stdc++
   when:
+    - condition: "!os(windows)"
+      extra-libraries: stdc++
     - condition: flag(trackAllocations) && os(osx)
       cxx-options: -DQLTRACK_ALLOCATIONS="/dev/fd/2"
     - condition: flag(trackAllocations) && os(linux)
