@@ -54,7 +54,7 @@ extern "C" {
 
   void qlFreeOptimizationMethod(OptimizationMethod *o);
   OptimizationMethod* qlSimplex(double lambda, char **e);
-  OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, char **e);
+  OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e);
   void qlFreeEndCriteria(EndCriteria *o);
   EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e);
   void qlFreeTimeGrid(TimeGrid *o);

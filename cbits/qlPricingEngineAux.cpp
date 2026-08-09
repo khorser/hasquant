@@ -260,7 +260,7 @@ PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const shared_ptr<Generali
   QL_FAIL("Unknown RNG "<< rngtrait);
 }
 
-PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme) {return new FdBlackScholesVanillaEngine(process, tGrid, xGrid, dampingSteps, fdScheme);}
+PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme, bool localVol, double illegalLocalVolOverwrite, int cashDividendModel) {return new FdBlackScholesVanillaEngine(process, tGrid, xGrid, dampingSteps, fdScheme, localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel);}
 
 class PolymorphicPathGenerator {
 private:

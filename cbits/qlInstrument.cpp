@@ -191,8 +191,8 @@ QlCapFloor* qlFloor(Leg* floatingLeg, unsigned exerciseRatesLen, double* exercis
 double qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e) {
   try {return (*arg(o))->atmRate(**arg(discountCurve));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
-  try {return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(disc)), guess, accuracy, maxEvaluations, minVol, maxVol);
+double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, char **e) {
+  try {return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(disc)), guess, accuracy, maxEvaluations, minVol, maxVol, (VolatilityType)type, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
   try {return ret(new QlCapFloor(alloc((*arg(o))->optionlet(n))));
@@ -342,16 +342,16 @@ QlCreditDefaultSwap* qlCreditDefaultSwap(int side, double notional, double sprea
   } catch (std::exception& er) {return handleException<QlCreditDefaultSwap*>(e, er);}}
 
 double qlCreditDefaultSwapFairSpread(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlCreditDefaultSwapConventionalSpread(QlCreditDefaultSwap* o, double conventionalRecovery, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, char **e) {
-  try {return (*arg(o))->conventionalSpread(conventionalRecovery, Handle<YieldTermStructure>(*arg(discountCurve)), *arg(dayCounter));
+double qlCreditDefaultSwapConventionalSpread(QlCreditDefaultSwap* o, double conventionalRecovery, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, int model, char **e) {
+  try {return (*arg(o))->conventionalSpread(conventionalRecovery, Handle<YieldTermStructure>(*arg(discountCurve)), *arg(dayCounter), (CreditDefaultSwap::PricingModel)model);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapCouponLegBPS(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->couponLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapCouponLegNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->couponLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 Leg* qlCreditDefaultSwapCoupons(QlCreditDefaultSwap* o, char **e) {try {return alloc(new Leg((*arg(o))->coupons()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlCreditDefaultSwapDefaultLegNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->defaultLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapFairUpfront(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->fairUpfront();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlCreditDefaultSwapImpliedHazardRate(QlCreditDefaultSwap* o, double targetNPV, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, double recoveryRate, double accuracy, char **e) {
-  try {return (*arg(o))->impliedHazardRate(targetNPV, Handle<YieldTermStructure>(*arg(discountCurve)), *arg(dayCounter), recoveryRate, accuracy);
+double qlCreditDefaultSwapImpliedHazardRate(QlCreditDefaultSwap* o, double targetNPV, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, double recoveryRate, double accuracy, int model, char **e) {
+  try {return (*arg(o))->impliedHazardRate(targetNPV, Handle<YieldTermStructure>(*arg(discountCurve)), *arg(dayCounter), recoveryRate, accuracy, (CreditDefaultSwap::PricingModel)model);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -383,11 +383,11 @@ double qlCdsOptionImpliedVolatility(QlCdsOption* o, double price, QlYieldTermStr
 double qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e) {
   try {return (*arg(o))->riskyAnnuity();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
-  try {return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(discountCurve)), guess, accuracy, maxEvaluations, minVol, maxVol);
+double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, int priceType, char **e) {
+  try {return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(discountCurve)), guess, accuracy, maxEvaluations, minVol, maxVol, (VolatilityType)type, displacement, (Swaption::PriceType)priceType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, char **e) {
-  try {return ret(new QlSwaption(alloc(new Swaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery))));
+QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
+  try {return ret(new QlSwaption(alloc(new Swaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
@@ -521,8 +521,8 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched, QlI
 void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e) {
   try {const std::vector<double>& notionals = (*arg(o))->notionals(); *len = notionals.size(); *ns = qlAllocateDoubles(*len); std::copy(notionals.begin(), notionals.end(), *ns);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
-double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy, unsigned maxEvaluations, char **e) {
-  try {return (*arg(o))->yield(*arg(dc), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations);
+double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy, unsigned maxEvaluations, double guess, int priceType, char **e) {
+  try {return (*arg(o))->yield(*arg(dc), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations, guess, (Bond::Price::Type)priceType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlBondAccruedAmount(QlBond* o, int d, char **e) {try {return (*arg(o))->accruedAmount(Date(d));} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -872,8 +872,8 @@ QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructu
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion))))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
-QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion)), lowerLimit, upperLimit, precision))));
+QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e) {
+  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion)), lowerLimit, upperLimit, precision, hardUpperLimit))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

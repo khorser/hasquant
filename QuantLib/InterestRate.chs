@@ -2,6 +2,7 @@ module QuantLib.InterestRate
   (
 
     Compounding(..)
+  , VolatilityType(..)
 
   , InterestRate
   , interestRate
@@ -27,6 +28,7 @@ import QuantLib.Internal.Type
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 
 {#enum Compounding{} deriving(Show, Eq)#}
+{#enum VolatilityType{} deriving(Show, Eq)#}
 
 {#fun qlInterestRate as interestRate{`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 -- |compound factor implied by the rate compounded between two dates

@@ -50,6 +50,11 @@ import QuantLib.Internal.Syntax
 {#import QuantLib.Time.Schedule#}(TimeUnit(..))
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
+-- Plain (non-c2hs) import: QuantLib.CashFlow is later in exposed-modules than
+-- this file, so a {#import#} here would need its .chi before it exists.
+-- overnightIndexedSwapIndex below marshals RateAveragingType as a plain Int
+-- via fromEnum instead, per CLAUDE.md's cross-module enum-import workaround.
+import QuantLib.CashFlow (RateAveragingType)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -255,8 +260,17 @@ iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure f)' -- ^forwarding
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure d)' -- ^discounting
   ,preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
-{#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
-  ,withCurrency*`Currency',withOvernightIborIndex*`OvernightIborIndex',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwapIndex'peekOvernightIndexedSwapIndex*#}
+-- | Construct an overnight-indexed swap index.
+overnightIndexedSwapIndex :: String -> (Int, TimeUnit) -> Word -> Currency
+  -> OvernightIborIndex -> Bool -> RateAveragingType -> IO OvernightIndexedSwapIndex
+overnightIndexedSwapIndex familyName tenor settlementDays ccy idx telescopicValueDates averagingMethod =
+  overnightIndexedSwapIndex_ familyName tenor settlementDays ccy idx telescopicValueDates (fromEnum averagingMethod)
+
+{#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex_{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
+  ,withCurrency*`Currency',withOvernightIborIndex*`OvernightIborIndex'
+  ,`Bool' -- ^telescopicValueDates
+  ,`Int' -- ^averagingMethod
+  ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwapIndex'peekOvernightIndexedSwapIndex*#}
 {#fun qlSwapIndex as swapIndex{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^fixedLegTenor
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withIborIndex*`GenIborIndex a',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}

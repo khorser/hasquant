@@ -12,6 +12,7 @@ import Prelude hiding(floor)
 
 import QuantLib.Internal
 import QuantLib.Internal.Type
+{#import QuantLib.InterestRate#}(VolatilityType)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -43,6 +44,8 @@ import QuantLib.Internal.Type
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
 {#fun qlCapFloorOptionlet as optionlet{withGenInstrument*`CapFloor',fromIntegral`Word' -- ^n

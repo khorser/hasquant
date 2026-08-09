@@ -53,7 +53,7 @@ main = do
   swp <- vanillaSwap Payer 1.0 fixedSchedule 0.03 thirty360bb floatSchedule euribor6m 0.0 act360 ModifiedFollowing
   bermudanDates <- fixedLeg swp >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
   let ex = Bermudan (BermudanExercise bermudanDates False)
-  swpn <- swaption swp ex Physical
+  swpn <- swaption swp ex Physical PhysicalOTC
 
   -- A small swaption calibration basket for Gsr.
   let basketData = [(1, 9, 0.15), (2, 8, 0.14), (3, 7, 0.13)] :: [(Word, Word, Double)]
@@ -62,10 +62,10 @@ main = do
     swaptionHelper (s, Years) (l, Years) volQ euribor6m (1, Years) thirty360bb act360 ts RelativePriceError
   stepDates <- forM (init [s | (s, _, _) <- basketData]) $ \s -> advance cal today (fromIntegral s, Years) Following False
 
-  gsrModel <- gsr ts stepDates (replicate (length basketData) 0.01) 0.01
-  gsrEngine <- gaussian1dSwaptionEngine (Gsr gsrModel) 32 5.0 True False (Just ts)
+  gsrModel <- gsr ts stepDates (replicate (length basketData) 0.01) 0.01 60.0
+  gsrEngine <- gaussian1dSwaptionEngine (Gsr gsrModel) 32 5.0 True False (Just ts) None
   forM_ helpers (`Model.setPricingEngine` gsrEngine)
-  let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8
+  let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
       ec = EndCriteria 1000 10 1e-8 1e-8 1e-8
   calibrateVolatilitiesIterative gsrModel helpers method ec
   gsrVols <- gsrVolatility gsrModel
@@ -78,14 +78,14 @@ main = do
   -- MarkovFunctional: the sibling leaf under the same Gaussian1dModel ADT.
   swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
   swaptionVolQ <- simpleQuote 0.20
-  swaptionVolTS <- constantSwaptionVolatility 0 cal ModifiedFollowing swaptionVolQ dc365
+  swaptionVolTS <- constantSwaptionVolatility 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
   cmsExpiries <- forM [1, 2, 3 :: Int] $ \n -> advance cal today (n, Years) Following False
   let cmsTenors = replicate 3 (10, Years) :: [(Word, TimeUnit)]
   markov <- markovFunctional ts 0.01 [] [0.01] swaptionVolTS cmsExpiries cmsTenors swapBase 16
   markovVols <- markovFunctionalVolatility markov
   putStrLn ("MarkovFunctional volatilities: " ++ show markovVols)
 
-  markovEngine <- gaussian1dSwaptionEngine (MarkovFunctional markov) 8 5.0 True False (Just ts)
+  markovEngine <- gaussian1dSwaptionEngine (MarkovFunctional markov) 8 5.0 True False (Just ts) None
   setPricingEngine swpn markovEngine
   npvMarkov <- npv swpn
   putStrLn ("Bermudan swaption NPV under MarkovFunctional: " ++ show npvMarkov)

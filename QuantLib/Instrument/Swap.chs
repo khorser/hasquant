@@ -12,6 +12,7 @@ module QuantLib.Instrument.Swap
 
   , impliedVolatility
   , SwapType(..)
+  , SwaptionPriceType(..)
 
   , swap'
   , swap
@@ -66,6 +67,7 @@ module QuantLib.Instrument.Swap
 import Data.Maybe(fromMaybe)
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
+{#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention(..), adjust, advance)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
@@ -93,6 +95,7 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 #include "ql.h"
 
 {#enum SwapType{} deriving(Show, Eq)#}
+{#enum SwaptionPriceType{} add prefix="Swaption" deriving(Show, Eq)#}
 
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
@@ -109,6 +112,9 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^displacement
+  ,`SwaptionPriceType' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Multi leg constructor.
@@ -205,7 +211,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
 {#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlSwapLegNPV as legNPV{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
+{#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- AssetSwap
 {#fun qlAssetSwap as assetSwap{`Bool' -- ^payBondCoupon

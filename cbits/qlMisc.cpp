@@ -290,8 +290,8 @@ Constraint* qlPositiveConstraint(char **e) {
   try {return alloc(new PositiveConstraint());
   } catch (std::exception& er) {return handleException<Constraint*>(e, er);}}
 
-OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, char **e) {
-  try {return alloc(new LevenbergMarquardt(epsfcn, xtol, gtol));
+OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e) {
+  try {return alloc(new LevenbergMarquardt(epsfcn, xtol, gtol, useCostFunctionsJacobian));
   } catch (std::exception& er) {return handleException<OptimizationMethod*>(e, er);}}
 OptimizationMethod* qlSimplex(double lambda, char **e) {
   try {return alloc(new Simplex(lambda));

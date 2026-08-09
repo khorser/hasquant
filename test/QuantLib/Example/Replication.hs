@@ -40,7 +40,7 @@ run = do
   flatVol <- blackConstantVol' 0 cal vol dc
   let ex = European $ EuropeanExercise maturity
       payoff = PlainVanilla $ PlainVanillaPayoff optionType strike
-  bsProcess <- blackScholesProcess underlyingQuote flatRate flatVol EulerDiscretization
+  bsProcess <- blackScholesProcess underlyingQuote flatRate flatVol EulerDiscretization False
   barrierEngine <- analyticBarrierEngine bsProcess
   europeanEngine <- analyticEuropeanEngine bsProcess
   referenceOption <- barrierOption barrierType barrier rebate payoff ex

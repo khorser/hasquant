@@ -101,16 +101,22 @@ import QuantLib.Internal.Type
 {#fun qlBlackProcess as blackProcess{withQuote*`GenQuote a' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure c' -- ^blackVolTS
-  ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`BlackProcess'peekBlackProcess*#}
+  ,`ProcessDiscretization'
+  ,`Bool' -- ^forceDiscretization
+  ,preErrorCheck-`String'errorCheck*-}->`BlackProcess'peekBlackProcess*#}
 {#fun qlBlackScholesMertonProcess as blackScholesMertonProcess{withQuote*`GenQuote a' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
-  ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+  ,`ProcessDiscretization'
+  ,`Bool' -- ^forceDiscretization
+  ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlBlackScholesProcess as blackScholesProcess{withQuote*`GenQuote a' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure c' -- ^blackVolTS
-  ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+  ,`ProcessDiscretization'
+  ,`Bool' -- ^forceDiscretization
+  ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlExtendedBlackScholesMertonProcess as extendedBlackScholesMertonProcess{withQuote*`GenQuote a' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^rsikFreeTS
@@ -120,12 +126,16 @@ import QuantLib.Internal.Type
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^foreignRiskFreeTS
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^domesticRiskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
-  ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+  ,`ProcessDiscretization'
+  ,`Bool' -- ^forceDiscretization
+  ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlGeneralizedBlackScholesProcess as generalizedBlackScholesProcess{withQuote*`GenQuote a' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^dividendTS
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^riskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure d' -- ^blackVolTS
-  ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+  ,`ProcessDiscretization'
+  ,`Bool' -- ^forceDiscretization
+  ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 {#fun qlSquareRootProcess as squareRootProcess{`Double' -- ^b
   ,`Double' -- ^a
   ,`Double' -- ^sigma

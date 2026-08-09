@@ -60,7 +60,7 @@ run = do
   --proc <- simpleQuote spot >>=
   --  $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   proc <- simpleQuote spot >>=
-    $(free1st 'garmanKohlagenProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
+    $(free1st 'garmanKohlagenProcess) ycILS ycEUR volEURILS EulerDiscretization False >>= asStochasticProcess1D >>= asStochasticProcess
   gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
   pps <- replicateM trials $ nextNPV gen (toList ds) ycILS
   let (ps, sFwds) = unzip pps

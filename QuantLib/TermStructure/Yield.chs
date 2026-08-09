@@ -63,6 +63,7 @@ module QuantLib.TermStructure.Yield
 import QuantLib.Internal hiding (maxDate)
 import QuantLib.Internal.Enum
 import QuantLib.Quote
+import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
@@ -163,7 +164,14 @@ import QuantLib.Internal.Type
   ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
-{#fun qlBondHelper as bondHelper{withQuote*`GenQuote a',withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
+-- BondPriceType (QuantLib.Instrument.Bond) is later in exposed-modules than
+-- this file, so priceType is marshalled as a plain Int via fromEnum here
+-- instead of a {#import#}'d enum type, per CLAUDE.md's cross-module workaround.
+bondHelper :: GenQuote a -> Bond -> Bond.BondPriceType -> IO BondHelper
+bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum priceType)
+
+{#fun qlBondHelper as bondHelper_{withQuote*`GenQuote a',withBond*`Bond',`Int' -- ^priceType
+  ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 {#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlOISRateHelper2 as oisRateHelper'{withDay*`Day', withDay*`Day',withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}

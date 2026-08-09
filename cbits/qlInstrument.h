@@ -67,7 +67,7 @@ extern "C" {
   QlCapFloor* qlCollar(Leg* floatingLeg, unsigned capRatesLen, double* capRates, unsigned floorRatesLen, double* floorRates, char **e);
   QlCapFloor* qlFloor(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e);
   double qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e);
-  double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, char **e);
   QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
 
   void qlFreeCallability(QlCallability *o);
@@ -170,13 +170,13 @@ extern "C" {
   QlOption* qlCdsOptionAsOption(QlCdsOption *o);
   void qlFreeCdsOption(QlCdsOption *o);
   double qlCreditDefaultSwapFairSpread(QlCreditDefaultSwap* o, char **e);
-  double qlCreditDefaultSwapConventionalSpread(QlCreditDefaultSwap* o, double conventionalRecovery, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, char **e);
+  double qlCreditDefaultSwapConventionalSpread(QlCreditDefaultSwap* o, double conventionalRecovery, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, int model, char **e);
   double qlCreditDefaultSwapCouponLegBPS(QlCreditDefaultSwap* o, char **e);
   double qlCreditDefaultSwapCouponLegNPV(QlCreditDefaultSwap* o, char **e);
   Leg* qlCreditDefaultSwapCoupons(QlCreditDefaultSwap* o, char **e);
   double qlCreditDefaultSwapDefaultLegNPV(QlCreditDefaultSwap* o, char **e);
   double qlCreditDefaultSwapFairUpfront(QlCreditDefaultSwap* o, char **e);
-  double qlCreditDefaultSwapImpliedHazardRate(QlCreditDefaultSwap* o, double targetNPV, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, double recoveryRate, double accuracy, char **e);
+  double qlCreditDefaultSwapImpliedHazardRate(QlCreditDefaultSwap* o, double targetNPV, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, double recoveryRate, double accuracy, int model, char **e);
   double qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e);
   double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e);
   void qlFreeBarrierOption(QlBarrierOption *o);
@@ -201,8 +201,8 @@ extern "C" {
   QlCdsOption* qlCdsOption(QlCreditDefaultSwap* swap, QlExercise* exercise, int knocksOut, char **e);
   double qlCdsOptionImpliedVolatility(QlCdsOption* o, double price, QlYieldTermStructure* termStructure, QlDefaultProbabilityTermStructure* x3, double recoveryRate, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   double qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e);
-  double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
-  QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, char **e);
+  double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, int priceType, char **e);
+  QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
   void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o);
   QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o);
   void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o);
@@ -278,7 +278,7 @@ extern "C" {
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
 
   double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
-    unsigned maxEvaluations, char **e);
+    unsigned maxEvaluations, double guess, int priceType, char **e);
   double qlBondAccruedAmount(QlBond* o, int d, char **e);
   double qlBondCleanPrice(QlBond* o, char **e);
   double qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
@@ -405,7 +405,7 @@ extern "C" {
   QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, char **e);
   void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
   QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);
-  QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, char **e);
+  QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e);
 #ifdef __cplusplus
 }
 #endif

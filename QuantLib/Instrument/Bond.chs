@@ -158,6 +158,7 @@ import QuantLib.Internal.Enum
 {#fun qlBondYield as yield{withBond*`GenBond a',withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
+  ,fromEnumDouble`Double,BondPriceType'& -- ^guess, priceType
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |accrued amount at a given date
 {#fun qlBondAccruedAmount as accruedAmount{withBond*`GenBond a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}

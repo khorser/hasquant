@@ -220,6 +220,18 @@ enum PositionType {Long, Short};
 enum SettlementType {Physical, Cash};
 
 // instruments/swaption.hpp
+enum SwaptionPriceType {Spot, Forward};
+
+// pricingengines/swaption/blackswaptionengine.hpp
+enum CashAnnuityModel {SwapRate, DiscountCurve};
+
+// pricingengines/swaption/gaussian1dswaptionengine.hpp
+enum Probabilities {None, Naive, Digital};
+
+// pricingengines/vanilla/cashdividendeuropeanengine.hpp
+enum CashDividendModel {Spot, Escrowed};
+
+// instruments/swaption.hpp
 enum SettlementMethod {
   PhysicalOTC,
   PhysicalCleared,
@@ -252,6 +264,9 @@ enum Compounding {Simple = 0,          //!< \f$ 1+rt \f$
 
 // instruments/averagetype.hpp
 enum AverageType {Arithmetic, Geometric};
+
+// termstructures/volatility/volatilitytype.hpp
+enum VolatilityType {ShiftedLognormal, Normal};
 
 // cashflows/rateaveraging.hpp
 enum RateAveragingType {

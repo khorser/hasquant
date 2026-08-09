@@ -366,6 +366,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,`Double' -- ^lowerLimit
   ,`Double' -- ^upperLimit
   ,`Double' -- ^precision
+  ,`Double' -- ^hardUpperLimit
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

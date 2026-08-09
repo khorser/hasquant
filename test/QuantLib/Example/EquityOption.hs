@@ -49,7 +49,7 @@ run = do
   volQ <- simpleQuote vol
   volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) settl volQ dc
   let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
-  bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization
+  bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
   europeanOpt <- vanillaOption payoff europeanEx
   bermudanOpt <- vanillaOption payoff bermudanEx
   americanOpt <- vanillaOption payoff americanEx
@@ -83,7 +83,7 @@ run = do
   int <- npv europeanOpt
 
   fd <- mapM (\i -> do
-    eng <- fdBlackScholesVanillaEngine bsmProc 801 800 0 Douglas
+    eng <- fdBlackScholesVanillaEngine bsmProc 801 800 0 Douglas False 0.0 CashDividendSpot
     QuantLib.Instrument.setPricingEngine i eng
     npv i)
     [europeanInst, bermudanInst, americanInst]

@@ -83,6 +83,7 @@ module QuantLib.Model
 
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
+{#import QuantLib.InterestRate#}(VolatilityType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 
@@ -145,11 +146,13 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^theta
   ,`Double' -- ^k
   ,`Double' -- ^sigma
+  ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 {#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^theta
   ,`Double' -- ^k
   ,`Double' -- ^sigma
   ,`Double' -- ^x0
+  ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 -- |Price of a discount bond paying 1 at @maturity@, given the short rate @rate@ at time @now@.
 {#fun pure qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
@@ -185,6 +188,7 @@ fixedReversion = [True, False]
 {#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'& -- ^volstepdates
   ,withDoubleArray*`[Double]'& -- ^volatilities
   ,`Double' -- ^reversion
+  ,`Double' -- ^T
   ,preErrorCheck-`String'errorCheck*-}->`Gsr'peekGsr*#}
 -- |Volatility step values, as calibrated so far.
 {#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -236,7 +240,10 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,withQuote*`GenQuote a' -- ^volatility
   ,withIborIndex*`GenIborIndex b',`Frequency' -- ^fixedLegFrequency
   ,withDayCounter*`DayCounter',`Bool' -- ^includeFirstSwaplet
-  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^shift
+  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,withCalendar*`Calendar',`Double' -- ^s0
   ,`Double' -- ^strikePrice

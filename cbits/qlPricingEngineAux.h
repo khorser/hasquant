@@ -15,7 +15,7 @@ QuantLib::PricingEngine* qlMCEuropeanHestonEngine1Aux(int rngtrait, const shared
 QuantLib::PricingEngine* qlMCHullWhiteCapFloorEngine1Aux(int rngtrait, shared_ptr<QuantLib::HullWhite> model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);
 QuantLib::PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);
 
-QuantLib::PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const QuantLib::FdmSchemeDesc &fdScheme);
+QuantLib::PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const QuantLib::FdmSchemeDesc &fdScheme, bool localVol, double illegalLocalVolOverwrite, int cashDividendModel);
 
 class PolymorphicPathGenerator;
 typedef QuantLib::Sample<QuantLib::MultiPath> SamplePath;

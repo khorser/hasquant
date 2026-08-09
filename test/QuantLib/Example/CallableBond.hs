@@ -59,7 +59,7 @@ run = do
           engine <- treeCallableFixedRateBondEngine hw 40 Nothing
           asInstrument b >>= (`QuantLib.Instrument.setPricingEngine` engine)
           cp <- currentCleanPrice b
-          y <- yield b dc Compounded Quarterly 1.0e-8 1000
+          y <- yield b dc Compounded Quarterly 1.0e-8 1000 (0.05, Clean)
           return (cp, 100 * y)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

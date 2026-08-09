@@ -187,7 +187,7 @@ run = do
                                    (Just $ fromGregorian 2005 10 21)
   volval <- simpleQuote 0
   vol <- constantOptionletVolatility'
-          settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
+          settlementDays targetCal ModifiedFollowing volval actual365Fixeddc ShiftedLognormal 0.0
   cf <- cashFlows floater
   CF.blackIborCouponPricer vol >>= CF.setCouponPricer cf
 
@@ -206,7 +206,7 @@ run = do
     allBonds
 
   bCleanPrice <- mapM (\b -> cleanPrice b ts settlDate) allBonds
-  bYield <- mapM (\b -> yield b actual360dc Compounded Annual 1e-8 100) allBonds
+  bYield <- mapM (\b -> yield b actual360dc Compounded Annual 1e-8 100 (0.05, Clean)) allBonds
   bAccruedAmount <- mapM (`accruedAmount` settlDate) allBonds
   bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
   bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds

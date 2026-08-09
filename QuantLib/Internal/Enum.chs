@@ -651,12 +651,13 @@ data OptimizationMethod =
     !Double -- ^epsfcn
     !Double -- ^xtol
     !Double -- ^gtol
+    !Bool -- ^useCostFunctionsJacobian
   | Simplex !Double -- ^lambda, characteristic length
 
 optimizationMethod :: OptimizationMethod -> IO QlOptimizationMethod
-optimizationMethod (LevenbergMarquardt e x g) = qlLevenbergMarquardt e x g
+optimizationMethod (LevenbergMarquardt e x g j) = qlLevenbergMarquardt e x g j
 optimizationMethod (Simplex l) = qlSimplex l
-{#fun qlLevenbergMarquardt{`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
+{#fun qlLevenbergMarquardt{`Double',`Double',`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
 {#fun qlSimplex{`Double',preErrorCheck-`String'errorCheck*-}->`QlOptimizationMethod'peekOptimizationMethod*#}
 
 data EndCriteria =

@@ -134,7 +134,7 @@ runCalibration model index ts fixParams cachedAv cachedSigmaV = do
     h <- swaptionHelper (s, Years) (l, Years) vol index (1, Years) thirty360bb act360 ts RelativePriceError
     Model.setPricingEngine h engine
     asCalibrationHelper h
-  let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8
+  let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
       ec = EndCriteria 10000 100 1e-6 1e-8 1e-8
   calibrate model (map (, 1.0) helpers) method ec Nothing fixParams
   ps@[calcA, calcSigma] <- params model
@@ -215,7 +215,7 @@ runExtendedCirDiscountFactor = do
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote rate
   rts <- TS.flatForward today q ac365 Continuous Annual
-  model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate
+  model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate True
   dNow <- TS.discount rts now False
   dMat <- TS.discount rts maturity False
   pure DiscountCheck { expectedDF = dMat / dNow, calculatedDF = discountBond model now maturity rate }

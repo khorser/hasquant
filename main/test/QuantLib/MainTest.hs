@@ -1175,7 +1175,7 @@ main = do
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
-          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc
+          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
           pricer <- CF.blackIborCouponPricer vol
