@@ -32,6 +32,7 @@ module QuantLib.TermStructure.Credit
 
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+{#import QuantLib.Instrument#}(PricingModel)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
 import QuantLib.Internal.Enum
@@ -82,6 +83,10 @@ import QuantLib.Internal.Enum
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^discountCurve
   ,`Bool' -- ^settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime
+  ,withMaybeDay*`Maybe Day' -- ^startDate
+  ,withDayCounter*`DayCounter' -- ^lastPeriodDayCounter
+  ,`Bool' -- ^rebatesAccrual
+  ,`PricingModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityHelper'peekDefaultProbabilityHelper*#}
 
 -- |the upfront must be quoted in fractional units.
@@ -95,6 +100,10 @@ import QuantLib.Internal.Enum
   ,fromIntegral`Word' -- ^upfrontSettlementDays
   ,`Bool' -- &settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime
+  ,withMaybeDay*`Maybe Day' -- ^startDate
+  ,withDayCounter*`DayCounter' -- ^lastPeriodDayCounter
+  ,`Bool' -- ^rebatesAccrual
+  ,`PricingModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityHelper'peekDefaultProbabilityHelper*#}
 
 interpolatedDefaultDensityCurve :: [(Day, Double)] -> DayCounter -> Calendar -> [(Day, GenQuote a)] -- ^jumps

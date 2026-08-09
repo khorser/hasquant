@@ -42,7 +42,7 @@ run = do
 
   instruments <- mapM
     (\t -> simpleQuote quotedSpread >>=
-        $(free1st 'spreadCdsHelper) (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True)
+        $(free1st 'spreadCdsHelper) (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
       [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve tod instruments dc [] HazardRate BackwardFlat
@@ -52,7 +52,7 @@ run = do
   sched <- forM maturities
     $ \m -> schedule (Just tod) m (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
   cds <- forM sched
-    $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing FaceValue
+    $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing FaceValue dc True Nothing 3
 
   [fairSpreads, npvs, defnpvs, cpnnpvs] <- mapM
     (\f -> mapM (\c -> asInstrument c >>= (`setPricingEngine` eng) >> f c) cds)

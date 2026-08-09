@@ -333,12 +333,14 @@ void qlFreeClaim(QlClaim *o) {del(o);}
 QlClaim* qlFaceValueAccrualClaim(QlBond* referenceSecurity, char **e) {try {return ret(new QlClaim(alloc(new FaceValueAccrualClaim(*arg(referenceSecurity)))));} catch (std::exception& er) {return handleException<QlClaim*>(e, er);}}
 
 QlClaim* qlFaceValueClaim(char **e) {try {return ret(new QlClaim(alloc(new FaceValueClaim())));} catch (std::exception& er) {return handleException<QlClaim*>(e, er);}}
-QlCreditDefaultSwap* qlCreditDefaultSwap1(int side, double notional, double upfront, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, int upfrontDate, QlClaim* x11, char **e) {
-  try {return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, upfront, spread, *arg(schedule), (BusinessDayConvention)paymentConvention, *arg(dayCounter), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), qlNullableDate(upfrontDate), (*arg(x11))))));
+QlCreditDefaultSwap* qlCreditDefaultSwap1(int side, double notional, double upfront, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, int upfrontDate, QlClaim* x11, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int tradeDate, unsigned cashSettlementDays, char **e) {
+  try {return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, upfront, spread, *arg(schedule), (BusinessDayConvention)paymentConvention, *arg(dayCounter), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), qlNullableDate(upfrontDate), (*arg(x11)),
+            *arg(lastPeriodDayCounter), rebatesAccrual, qlNullableDate(tradeDate), cashSettlementDays))));
   } catch (std::exception& er) {return handleException<QlCreditDefaultSwap*>(e, er);}}
 
-QlCreditDefaultSwap* qlCreditDefaultSwap(int side, double notional, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, QlClaim* x9, char **e) {
-  try {return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, spread, *arg(schedule), (BusinessDayConvention)paymentConvention, *arg(dayCounter), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), (*arg(x9))))));
+QlCreditDefaultSwap* qlCreditDefaultSwap(int side, double notional, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, QlClaim* x9, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int tradeDate, unsigned cashSettlementDays, char **e) {
+  try {return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, spread, *arg(schedule), (BusinessDayConvention)paymentConvention, *arg(dayCounter), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), (*arg(x9)),
+            *arg(lastPeriodDayCounter), rebatesAccrual, qlNullableDate(tradeDate), cashSettlementDays))));
   } catch (std::exception& er) {return handleException<QlCreditDefaultSwap*>(e, er);}}
 
 double qlCreditDefaultSwapFairSpread(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}

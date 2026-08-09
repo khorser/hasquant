@@ -56,7 +56,12 @@ import Foreign.Ptr(Ptr)
   ,withSchedule*`Schedule',`BusinessDayConvention',withDayCounter*`DayCounter',`Bool' -- ^settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime
   ,withMaybeDay*`Maybe Day' -- ^protectionStart
-  ,withClaim*`Claim',preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
+  ,withClaim*`Claim'
+  ,withDayCounter*`DayCounter' -- ^lastPeriodDayCounter
+  ,`Bool' -- ^rebatesAccrual
+  ,withMaybeDay*`Maybe Day' -- ^tradeDate
+  ,fromIntegral`Word' -- ^cashSettlementDays
+  ,preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
 -- |CDS quoted as upfront and running spread.
 -- side Whether the protection is bought or sold. notional Notional value upfront Upfront in fractional units. spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract. upfrontDate Settlement date for the upfront payment.
 {#fun qlCreditDefaultSwap1 as creditDefaultSwap'{`ProtectionSide',`Double' -- ^notional
@@ -66,7 +71,12 @@ import Foreign.Ptr(Ptr)
   ,`Bool' -- ^paysAtDefaultTime
   ,withMaybeDay*`Maybe Day' -- ^protectionStart
   ,withMaybeDay*`Maybe Day' -- ^upfrontDate
-  ,withClaim*`Claim',preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
+  ,withClaim*`Claim'
+  ,withDayCounter*`DayCounter' -- ^lastPeriodDayCounter
+  ,`Bool' -- ^rebatesAccrual
+  ,withMaybeDay*`Maybe Day' -- ^tradeDate
+  ,fromIntegral`Word' -- ^cashSettlementDays
+  ,preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
 {#fun qlCdsOptionAtmRate as atmRate{withCdsOption*`CdsOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlCdsOption as cdsOption{withGenInstrument*`CreditDefaultSwap',withExercise*`Exercise',`Bool' -- ^knocksOut
   ,preErrorCheck-`String'errorCheck*-}->`CdsOption'peekCdsOption*#}
