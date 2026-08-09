@@ -189,7 +189,7 @@ run = do
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc ShiftedLognormal 0.0
   cf <- cashFlows floater
-  CF.blackIborCouponPricer vol >>= CF.setCouponPricer cf
+  CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing >>= CF.setCouponPricer cf
 
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]

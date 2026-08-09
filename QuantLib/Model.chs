@@ -84,6 +84,7 @@ module QuantLib.Model
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.InterestRate#}(VolatilityType)
+{#import QuantLib.CashFlow#}(RateAveragingType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 
@@ -193,7 +194,10 @@ fixedReversion = [True, False]
 -- |Volatility step values, as calibrated so far.
 {#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
-{#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[BlackCalibrationHelper]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[BlackCalibrationHelper]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,withDoubleArray*`[Double]'&
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 markovFunctional :: GenYieldTermStructure a -> Double -- ^reversion
   -> [Day] -- ^volstepdates
   -> [Double] -- ^volatilities
@@ -251,14 +255,21 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
--- TODO add more parameters and more SwaptionHelper constructors
+-- TODO add more SwaptionHelper constructors
 {#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
   ,withQuote*`GenQuote a' -- ^maturity
   ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
-  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,fromMaybeDouble`Maybe Double' -- ^strike
+  ,`Double' -- ^nominal
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^shift
+  ,fromMaybeInt`Maybe Word' -- ^settlementDays
+  ,`RateAveragingType' -- ^averagingMethod
+  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlBlackCalibrationHelperTimes as times{withGenCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}

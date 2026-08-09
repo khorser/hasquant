@@ -173,12 +173,14 @@ import QuantLib.Internal.Type
   ,`Double' -- ^b
   ,`Double' -- ^eta
   ,`Double' -- ^rho
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^termStructure
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
 {#fun qlG2Process as g2Process{`Double' -- ^a
   ,`Double' -- ^sigma
   ,`Double' -- ^b
   ,`Double' -- ^eta
   ,`Double' -- ^rho
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^termStructure
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
 {#fun qlGemanRoncoroniProcess as gemanRoncoroniProcess{`Double'-- ^x0
   ,`Double' -- ^alpha

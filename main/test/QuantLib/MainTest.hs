@@ -1178,7 +1178,7 @@ main = do
           vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
-          pricer <- CF.blackIborCouponPricer vol
+          pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
           sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
           cpns <- CF.iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
           CF.setCouponPricer cpns pricer

@@ -93,6 +93,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlQuantoVanillaOption as QuantoVanillaOption foreign -> CQuantoVanillaOption' nocode#}
 {#pointer *QlVanillaOption as VanillaOption foreign -> CVanillaOption' nocode#}
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
+{#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlPayoff nocode#}
 {#pointer *QlBasketPayoff nocode#}
 {#pointer *QlTypePayoff nocode#}
@@ -222,6 +223,7 @@ class HasImpliedVol a where
   impliedVolatility :: a
     -> Double -- ^price
     -> GeneralizedBlackScholesProcess -- ^process
+    -> [Dividend] -- ^dividends
     -> Double -- ^accuracy
     -> Word -- ^maxEvaluations
     -> Double -- ^minVol
@@ -245,13 +247,17 @@ instance HasImpliedVol BarrierOption where
 {#fun qlQuantoVanillaOptionQlambda{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlVanillaOptionImpliedVolatility{withVanillaOption*`VanillaOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
+  ,withDividendArray*`[Dividend]'& -- ^dividends
+  ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBarrierOptionImpliedVolatility{withBarrierOption*`BarrierOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p',`Double' -- ^accuracy
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
+  ,withDividendArray*`[Dividend]'& -- ^dividends
+  ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
   ,`Double' -- ^maxVol

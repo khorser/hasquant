@@ -220,6 +220,9 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,withSchedule*`Schedule' -- ^floatSchedule
   ,withDayCounter*`DayCounter' -- ^floatingDayCount
   ,`Bool' -- ^parAssetSwap
+  ,`Double' -- ^gearing
+  ,fromMaybeDouble`Maybe Double' -- ^nonParRepayment
+  ,withMaybeDay*`Maybe Day' -- ^dealMaturity
   ,preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
 -- OvernightIndexedSwap
 {#fun qlOvernightIndexedSwap as overnightIndexedSwap{`SwapType',`Double' -- ^nominal

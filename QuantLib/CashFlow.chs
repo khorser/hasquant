@@ -6,6 +6,7 @@ module QuantLib.CashFlow
   , Dividend
   , DurationType(..)
   , RateAveragingType(..)
+  , TimingAdjustment(..)
   , GenLeg
 
   , leg
@@ -99,6 +100,7 @@ import QuantLib.Internal.Type
 
 {#enum DurationType{} deriving(Show, Eq)#}
 {#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq)#}
+{#enum TimingAdjustment{} deriving(Show, Eq)#}
 
 {#fun qlLeg{withDoubleArray*`[Double]'&,withDayPtr*`[Day]',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
@@ -357,7 +359,11 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
-{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withGenVolatilityTermStructure*`OptionletVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withGenVolatilityTermStructure*`OptionletVolatilityStructure'
+  ,`TimingAdjustment'
+  ,withMaybeQuote*`Maybe (GenQuote a)' -- ^correlation
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlAnalyticHaganPricer as analyticHaganPricer{withGenVolatilityTermStructure*`SwaptionVolatilityStructure',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion

@@ -171,7 +171,7 @@
 | |ql/cashflows/couponpricer.hpp|Handle<OptionletVolatilityStructure> IborCouponPricer::capletVolatility() const;
 | |ql/cashflows/couponpricer.hpp|void IborCouponPricer::setCapletVolatility(const Handle<OptionletVolatilityStructure> & v = Handle<OptionletVolatilityStructure>());
 | |ql/cashflows/couponpricer.hpp|void IborCouponPricer::initializeCachedData(const IborCoupon & coupon) const;
-|u|ql/cashflows/couponpricer.hpp|BlackIborCouponPricer::BlackIborCouponPricer(const Handle<OptionletVolatilityStructure> & v = Handle<OptionletVolatilityStructure>(), const TimingAdjustment timingAdjustment = Black76, Handle<Quote> correlation = Handle<Quote>(ext::shared_ptr<Quote>(new SimpleQuote(1.0))), const ext::optional<bool> useIndexedCoupon = ext::nullopt);
+|v|ql/cashflows/couponpricer.hpp|BlackIborCouponPricer::BlackIborCouponPricer(const Handle<OptionletVolatilityStructure> & v = Handle<OptionletVolatilityStructure>(), const TimingAdjustment timingAdjustment = Black76, Handle<Quote> correlation = Handle<Quote>(ext::shared_ptr<Quote>(new SimpleQuote(1.0))), const ext::optional<bool> useIndexedCoupon = ext::nullopt);
 | |ql/cashflows/couponpricer.hpp|CmsCouponPricer::CmsCouponPricer(Handle<SwaptionVolatilityStructure> v = Handle<SwaptionVolatilityStructure>());
 | |ql/cashflows/couponpricer.hpp|Handle<SwaptionVolatilityStructure> CmsCouponPricer::swaptionVolatility() const;
 | |ql/cashflows/couponpricer.hpp|void CmsCouponPricer::setSwaptionVolatility(const Handle<SwaptionVolatilityStructure> & v = Handle<SwaptionVolatilityStructure>());
@@ -3124,7 +3124,7 @@
 |?|ql/instruments/asianoption.hpp|DiscreteAveragingAsianOption::DiscreteAveragingAsianOption(Average::Type averageType, std::vector<Date> fixingDates, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise, std::vector<Real> allPastFixings = std::vector<Real>());
 | |ql/instruments/asianoption.hpp|arguments::arguments();
 | |ql/instruments/asianoption.hpp|void arguments::validate() const;
-|u|ql/instruments/assetswap.hpp|AssetSwap::AssetSwap(bool payBondCoupon, ext::shared_ptr<Bond> bond, Real bondCleanPrice, const ext::shared_ptr<IborIndex> & iborIndex, Spread spread, Schedule floatSchedule = Schedule(), const DayCounter & floatingDayCount = DayCounter(), bool parAssetSwap = true, Real gearing = 1.0, Real nonParRepayment = Null<Real>(), Date dealMaturity = Date());
+|v|ql/instruments/assetswap.hpp|AssetSwap::AssetSwap(bool payBondCoupon, ext::shared_ptr<Bond> bond, Real bondCleanPrice, const ext::shared_ptr<IborIndex> & iborIndex, Spread spread, Schedule floatSchedule = Schedule(), const DayCounter & floatingDayCount = DayCounter(), bool parAssetSwap = true, Real gearing = 1.0, Real nonParRepayment = Null<Real>(), Date dealMaturity = Date());
 |v|ql/instruments/assetswap.hpp|Spread AssetSwap::fairSpread() const;
 |v|ql/instruments/assetswap.hpp|Real AssetSwap::floatingLegBPS() const;
 |v|ql/instruments/assetswap.hpp|Real AssetSwap::floatingLegNPV() const;
@@ -3144,7 +3144,7 @@
 | |ql/instruments/averagetype.hpp|std::ostream & operator<<(std::ostream & out, Average::Type type);
 |v|ql/instruments/barrieroption.hpp|BarrierOption::BarrierOption(Barrier::Type barrierType, Real barrier, Real rebate, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
 |v|ql/instruments/barrieroption.hpp|Volatility BarrierOption::impliedVolatility(Real price, const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Real accuracy = 1.0e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
-|u|ql/instruments/barrieroption.hpp|Volatility BarrierOption::impliedVolatility(Real price, const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, const DividendSchedule & dividends, Real accuracy = 1.0e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
+|v|ql/instruments/barrieroption.hpp|Volatility BarrierOption::impliedVolatility(Real price, const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, const DividendSchedule & dividends, Real accuracy = 1.0e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
 | |ql/instruments/barrieroption.hpp|arguments::arguments();
 | |ql/instruments/barrieroption.hpp|void arguments::validate() const;
 | |ql/instruments/barriertype.hpp|std::ostream & operator<<(std::ostream & out, Barrier::Type type);
@@ -4033,7 +4033,7 @@
 | |ql/instruments/twoassetcorrelationoption.hpp|void arguments::validate() const;
 |v|ql/instruments/vanillaoption.hpp|VanillaOption::VanillaOption(const ext::shared_ptr<StrikedTypePayoff> &, const ext::shared_ptr<Exercise> &);
 |v|ql/instruments/vanillaoption.hpp|Volatility VanillaOption::impliedVolatility(Real price, const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Real accuracy = 1.0e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
-|u|ql/instruments/vanillaoption.hpp|Volatility VanillaOption::impliedVolatility(Real price, const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, const DividendSchedule & dividends, Real accuracy = 1.0e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
+|v|ql/instruments/vanillaoption.hpp|Volatility VanillaOption::impliedVolatility(Real price, const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, const DividendSchedule & dividends, Real accuracy = 1.0e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
 |v|ql/instruments/vanillastorageoption.hpp|VanillaStorageOption::VanillaStorageOption(const ext::shared_ptr<BermudanExercise> & ex, Real capacity, Real load, Real changeRate);
 | |ql/instruments/vanillastorageoption.hpp|arguments::arguments();
 | |ql/instruments/vanillastorageoption.hpp|void arguments::validate() const;
@@ -6903,7 +6903,7 @@
 | |ql/models/parameter.hpp|TermStructureFittingParameter::TermStructureFittingParameter(const ext::shared_ptr<Parameter::Impl> & impl);
 | |ql/models/parameter.hpp|TermStructureFittingParameter::TermStructureFittingParameter(const Handle<YieldTermStructure> & term);
 |v|ql/models/shortrate/calibrationhelpers/caphelper.hpp|CapHelper::CapHelper(const Period & length, const Handle<Quote> & volatility, ext::shared_ptr<IborIndex> index, Frequency fixedLegFrequency, DayCounter fixedLegDayCounter, bool includeFirstSwaplet, Handle<YieldTermStructure> termStructure, BlackCalibrationHelper::CalibrationErrorType errorType = BlackCalibrationHelper::RelativePriceError, VolatilityType type = ShiftedLognormal, Real shift = 0.0);
-|u|ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp|SwaptionHelper::SwaptionHelper(const Period & maturity, const Period & length, const Handle<Quote> & volatility, ext::shared_ptr<IborIndex> index, const Period & fixedLegTenor, DayCounter fixedLegDayCounter, DayCounter floatingLegDayCounter, Handle<YieldTermStructure> termStructure, CalibrationErrorType errorType = RelativePriceError, Real strike = Null<Real>(), Real nominal = 1.0, VolatilityType type = ShiftedLognormal, Real shift = 0.0, Natural settlementDays = Null<Size>(), RateAveraging::Type averagingMethod = RateAveraging::Compound);
+|v|ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp|SwaptionHelper::SwaptionHelper(const Period & maturity, const Period & length, const Handle<Quote> & volatility, ext::shared_ptr<IborIndex> index, const Period & fixedLegTenor, DayCounter fixedLegDayCounter, DayCounter floatingLegDayCounter, Handle<YieldTermStructure> termStructure, CalibrationErrorType errorType = RelativePriceError, Real strike = Null<Real>(), Real nominal = 1.0, VolatilityType type = ShiftedLognormal, Real shift = 0.0, Natural settlementDays = Null<Size>(), RateAveraging::Type averagingMethod = RateAveraging::Compound);
 | |ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp|SwaptionHelper::SwaptionHelper(const Date & exerciseDate, const Period & length, const Handle<Quote> & volatility, ext::shared_ptr<IborIndex> index, const Period & fixedLegTenor, DayCounter fixedLegDayCounter, DayCounter floatingLegDayCounter, Handle<YieldTermStructure> termStructure, CalibrationErrorType errorType = RelativePriceError, Real strike = Null<Real>(), Real nominal = 1.0, VolatilityType type = ShiftedLognormal, Real shift = 0.0, Natural settlementDays = Null<Size>(), RateAveraging::Type averagingMethod = RateAveraging::Compound);
 | |ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp|SwaptionHelper::SwaptionHelper(const Date & exerciseDate, const Date & endDate, const Handle<Quote> & volatility, ext::shared_ptr<IborIndex> index, const Period & fixedLegTenor, DayCounter fixedLegDayCounter, DayCounter floatingLegDayCounter, Handle<YieldTermStructure> termStructure, CalibrationErrorType errorType = RelativePriceError, Real strike = Null<Real>(), Real nominal = 1.0, VolatilityType type = ShiftedLognormal, Real shift = 0.0, Natural settlementDays = Null<Size>(), RateAveraging::Type averagingMethod = RateAveraging::Compound);
 | |ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp|const ext::shared_ptr<FixedVsFloatingSwap> & SwaptionHelper::underlying() const;
@@ -6965,7 +6965,7 @@
 | |ql/models/shortrate/onefactormodels/gsr.hpp|std::vector<bool> Gsr::FixedVolatilities();
 | |ql/models/shortrate/onefactormodels/gsr.hpp|std::vector<bool> Gsr::MoveVolatility(Size i);
 | |ql/models/shortrate/onefactormodels/gsr.hpp|std::vector<bool> Gsr::MoveReversion(Size i);
-|u|ql/models/shortrate/onefactormodels/gsr.hpp|void Gsr::calibrateVolatilitiesIterative(const std::vector<ext::shared_ptr<BlackCalibrationHelper>> & helpers, OptimizationMethod & method, const EndCriteria & endCriteria, const Constraint & constraint = Constraint(), const std::vector<Real> & weights = std::vector<Real>());
+|v|ql/models/shortrate/onefactormodels/gsr.hpp|void Gsr::calibrateVolatilitiesIterative(const std::vector<ext::shared_ptr<BlackCalibrationHelper>> & helpers, OptimizationMethod & method, const EndCriteria & endCriteria, const Constraint & constraint = Constraint(), const std::vector<Real> & weights = std::vector<Real>());
 | |ql/models/shortrate/onefactormodels/gsr.hpp|void Gsr::calibrateReversionsIterative(const std::vector<ext::shared_ptr<BlackCalibrationHelper>> & helpers, OptimizationMethod & method, const EndCriteria & endCriteria, const Constraint & constraint = Constraint(), const std::vector<Real> & weights = std::vector<Real>());
 | |ql/models/shortrate/onefactormodels/gsr.hpp|VolatilityObserver::VolatilityObserver(Gsr * p);
 | |ql/models/shortrate/onefactormodels/gsr.hpp|ReversionObserver::ReversionObserver(Gsr * p);
@@ -8063,7 +8063,7 @@
 |?|ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp|AnalyticDividendEuropeanEngine::AnalyticDividendEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, DividendSchedule dividends);
 | |ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp|void AnalyticDividendEuropeanEngine::calculate() const;
 |v|ql/pricingengines/vanilla/analyticeuropeanengine.hpp|AnalyticEuropeanEngine::AnalyticEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>);
-|u|ql/pricingengines/vanilla/analyticeuropeanengine.hpp|AnalyticEuropeanEngine::AnalyticEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<YieldTermStructure> discountCurve);
+|v|ql/pricingengines/vanilla/analyticeuropeanengine.hpp|AnalyticEuropeanEngine::AnalyticEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<YieldTermStructure> discountCurve);
 | |ql/pricingengines/vanilla/analyticeuropeanengine.hpp|void AnalyticEuropeanEngine::calculate() const;
 | |ql/pricingengines/vanilla/analyticeuropeanvasicekengine.hpp|AnalyticBlackVasicekEngine::AnalyticBlackVasicekEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, ext::shared_ptr<Vasicek>, Real correlation);
 | |ql/pricingengines/vanilla/analyticeuropeanvasicekengine.hpp|void AnalyticBlackVasicekEngine::calculate() const;
@@ -8232,7 +8232,7 @@
 | |ql/pricingengines/vanilla/jumpdiffusionengine.hpp|void JumpDiffusionEngine::calculate() const;
 |v|ql/pricingengines/vanilla/juquadraticengine.hpp|JuQuadraticApproximationEngine::JuQuadraticApproximationEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>);
 | |ql/pricingengines/vanilla/juquadraticengine.hpp|void JuQuadraticApproximationEngine::calculate() const;
-|u|ql/pricingengines/vanilla/mcamericanengine.hpp|MCAmericanEngine::MCAmericanEngine<RNG, S, RNG_Calibration>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size polynomialOrder, LsmBasisSystem::PolynomialType polynomialType, Size nCalibrationSamples = Null<Size>(), const ext::optional<bool> & antitheticVariateCalibration = ext::nullopt, BigNatural seedCalibration = Null<Size>());
+|v|ql/pricingengines/vanilla/mcamericanengine.hpp|MCAmericanEngine::MCAmericanEngine<RNG, S, RNG_Calibration>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size polynomialOrder, LsmBasisSystem::PolynomialType polynomialType, Size nCalibrationSamples = Null<Size>(), const ext::optional<bool> & antitheticVariateCalibration = ext::nullopt, BigNatural seedCalibration = Null<Size>());
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|AmericanPathPricer::AmericanPathPricer(ext::shared_ptr<Payoff> payoff, Size polynomialOrder, LsmBasisSystem::PolynomialType polynomialType);
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|Real AmericanPathPricer::state(const Path & path, Size t) const;
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|Real AmericanPathPricer::operator()(const Path & path, Size t) const;
@@ -8251,7 +8251,7 @@
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|MakeMCAmericanEngine<RNG, S, RNG_Calibration> & MakeMCAmericanEngine::withCalibrationSamples(Size calibrationSamples);
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|MakeMCAmericanEngine<RNG, S, RNG_Calibration> & MakeMCAmericanEngine::withAntitheticVariateCalibration(bool b = true);
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|MakeMCAmericanEngine<RNG, S, RNG_Calibration> & MakeMCAmericanEngine::withSeedCalibration(BigNatural seed);
-|u|ql/pricingengines/vanilla/mcamericanengine.hpp|MCAmericanEngine<RNG, S, RNG_Calibration>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size polynomialOrder, LsmBasisSystem::PolynomialType polynomialType, Size nCalibrationSamples, const ext::optional<bool> & antitheticVariateCalibration, BigNatural seedCalibration);
+|v|ql/pricingengines/vanilla/mcamericanengine.hpp|MCAmericanEngine<RNG, S, RNG_Calibration>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size polynomialOrder, LsmBasisSystem::PolynomialType polynomialType, Size nCalibrationSamples, const ext::optional<bool> & antitheticVariateCalibration, BigNatural seedCalibration);
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|void calculate() const;
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|ext::shared_ptr<LongstaffSchwartzPathPricer<Path>> lsmPathPricer() const;
 | |ql/pricingengines/vanilla/mcamericanengine.hpp|ext::shared_ptr<PathPricer<Path>> controlPathPricer() const;
@@ -8448,7 +8448,7 @@
 | |ql/processes/forwardmeasureprocess.hpp|Time ForwardMeasureProcess::getForwardMeasureTime() const;
 | |ql/processes/forwardmeasureprocess.hpp|void ForwardMeasureProcess1D::setForwardMeasureTime(Time);
 | |ql/processes/forwardmeasureprocess.hpp|Time ForwardMeasureProcess1D::getForwardMeasureTime() const;
-|u|ql/processes/g2process.hpp|G2Process::G2Process(Real a, Real sigma, Real b, Real eta, Real rho, const Handle<YieldTermStructure> & termStructure = { });
+|v|ql/processes/g2process.hpp|G2Process::G2Process(Real a, Real sigma, Real b, Real eta, Real rho, const Handle<YieldTermStructure> & termStructure = { });
 | |ql/processes/g2process.hpp|Real G2Process::x0() const;
 | |ql/processes/g2process.hpp|Real G2Process::y0() const;
 | |ql/processes/g2process.hpp|Real G2Process::a() const;
@@ -8459,7 +8459,7 @@
 | |ql/processes/g2process.hpp|const Handle<YieldTermStructure> & G2Process::termStructure() const;
 | |ql/processes/g2process.hpp|Real G2Process::phi(Time t) const;
 | |ql/processes/g2process.hpp|Rate G2Process::shortRate(Time t, Real x, Real y) const;
-|u|ql/processes/g2process.hpp|G2ForwardProcess::G2ForwardProcess(Real a, Real sigma, Real b, Real eta, Real rho, const Handle<YieldTermStructure> & termStructure = { });
+|v|ql/processes/g2process.hpp|G2ForwardProcess::G2ForwardProcess(Real a, Real sigma, Real b, Real eta, Real rho, const Handle<YieldTermStructure> & termStructure = { });
 | |ql/processes/g2process.hpp|const Handle<YieldTermStructure> & G2ForwardProcess::termStructure() const;
 | |ql/processes/g2process.hpp|Real G2ForwardProcess::phi(Time t) const;
 | |ql/processes/g2process.hpp|Rate G2ForwardProcess::shortRate(Time t, Real x, Real y) const;

@@ -476,6 +476,9 @@ enum ExtendedBlackVarianceSurfaceExtrapolation {
   ExtendedBlackVarianceSurfaceConstantExtrapolation,
   ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation};
 
+// cashflows/couponpricer.hpp (BlackIborCouponPricer::TimingAdjustment)
+enum TimingAdjustment {Black76, BivariateLognormal};
+
 // math/randomnumbers/sobolrsg.hpp
 enum SobolDirectionIntegers {
   Unit, Jaeckel, SobolLevitan, SobolLevitanLemieux,

@@ -57,7 +57,7 @@ run = do
   americanInst <- asOneAssetOption americanOpt
   bermudanInst <- asOneAssetOption bermudanOpt
 
-  analyticEuropeanEngine bsmProc >>= QuantLib.Instrument.setPricingEngine europeanOpt
+  analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
   analyticEuro <- npv europeanOpt
 
   hestonProc <- hestonProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
@@ -99,7 +99,7 @@ run = do
   QuantLib.Instrument.setPricingEngine europeanOpt mceEng2
   mcE2 <- npv europeanOpt
 
-  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096)
+  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096) Nothing Nothing
   QuantLib.Instrument.setPricingEngine americanOpt mcaEng
   mcA <- npv americanOpt
 

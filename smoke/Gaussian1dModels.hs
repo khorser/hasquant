@@ -59,7 +59,7 @@ main = do
   let basketData = [(1, 9, 0.15), (2, 8, 0.14), (3, 7, 0.13)] :: [(Word, Word, Double)]
   helpers <- forM basketData $ \(s, l, v) -> do
     volQ <- simpleQuote v
-    swaptionHelper (s, Years) (l, Years) volQ euribor6m (1, Years) thirty360bb act360 ts RelativePriceError
+    swaptionHelper (s, Years) (l, Years) volQ euribor6m (1, Years) thirty360bb act360 ts RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing CF.AveragingCompound
   stepDates <- forM (init [s | (s, _, _) <- basketData]) $ \s -> advance cal today (fromIntegral s, Years) Following False
 
   gsrModel <- gsr ts stepDates (replicate (length basketData) 0.01) 0.01 60.0
@@ -67,7 +67,7 @@ main = do
   forM_ helpers (`Model.setPricingEngine` gsrEngine)
   let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
       ec = EndCriteria 1000 10 1e-8 1e-8 1e-8
-  calibrateVolatilitiesIterative gsrModel helpers method ec
+  calibrateVolatilitiesIterative gsrModel helpers method ec Nothing []
   gsrVols <- gsrVolatility gsrModel
   putStrLn ("Gsr calibrated volatilities: " ++ show gsrVols)
 

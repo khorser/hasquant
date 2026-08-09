@@ -262,8 +262,8 @@ QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, cha
 void qlFreeAssetSwap(QlAssetSwap *o) {del(o);}
 QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o) {return ret(new QlSwap(*arg(o)));}
 
-QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, char **e) {
-  try {return ret(new QlAssetSwap(alloc(new AssetSwap(payBondCoupon, *arg(bond), bondCleanPrice, *arg(iborIndex), spread, *arg(floatSchedule), *arg(floatingDayCount), parAssetSwap))));
+QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, double gearing, double nonParRepayment, int dealMaturity, char **e) {
+  try {return ret(new QlAssetSwap(alloc(new AssetSwap(payBondCoupon, *arg(bond), bondCleanPrice, *arg(iborIndex), spread, *arg(floatSchedule), *arg(floatingDayCount), parAssetSwap, gearing, nonParRepayment, qlNullableDate(dealMaturity)))));
   } catch (std::exception& er) {return handleException<QlAssetSwap*>(e, er);}}
 QlBMASwap* qlBMASwap(int type, double nominal, Schedule* liborSchedule, double liborFraction, double liborSpread, QlIborIndex* liborIndex, DayCounter* liborDayCount, Schedule* bmaSchedule, QlBMAIndex* bmaIndex, DayCounter* bmaDayCount, char **e) {
   try {return ret(new QlBMASwap(alloc(new BMASwap((BMASwap::Type)type, nominal, *arg(liborSchedule), liborFraction, liborSpread, *arg(liborIndex), *arg(liborDayCount), *arg(bmaSchedule), *arg(bmaIndex), *arg(bmaDayCount)))));
@@ -398,8 +398,9 @@ QlOneAssetOption* qlQuantoForwardVanillaOptionAsOneAssetOption(QlQuantoForwardVa
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlBarrierOption*>(e, er);}}
-double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
-  try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
+double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {DividendSchedule d = qlVector(dividends, dividendsLen);
+    return (*arg(o))->impliedVolatility(price, *arg(process), d, accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));
@@ -446,8 +447,9 @@ QlQuantoVanillaOption* qlQuantoVanillaOption(QlStrikedTypePayoff* x0, QlExercise
   try {return ret(new QlQuantoVanillaOption(alloc(new QuantoVanillaOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {return handleException<QlQuantoVanillaOption*>(e, er);}}
 double qlQuantoVanillaOptionQvega(QlQuantoVanillaOption* o, char **e) {try {return (*arg(o))->qvega();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlVanillaOptionImpliedVolatility(QlVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
-  try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
+double qlVanillaOptionImpliedVolatility(QlVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {DividendSchedule d = qlVector(dividends, dividendsLen);
+    return (*arg(o))->impliedVolatility(price, *arg(process), d, accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlVanillaOption* qlVanillaOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e) {
   try {return ret(new QlVanillaOption(alloc(new VanillaOption(*arg(x0), (*arg(x1))))));
@@ -866,8 +868,9 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
     return alloc(cl);
   } catch (std::exception& er) {return handleException(e, er, cl);}}
 
-QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(Handle<OptionletVolatilityStructure>(*arg(vol)))));
+QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e) {
+  try {Handle<Quote> corr = correlation ? Handle<Quote>(*arg(correlation)) : Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)));
+    return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(Handle<OptionletVolatilityStructure>(*arg(vol)), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion))))));

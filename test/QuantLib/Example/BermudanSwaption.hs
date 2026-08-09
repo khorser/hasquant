@@ -141,7 +141,7 @@ run = do
           vol <- simpleQuote (swaptionVols!!k)
           dc <- IRI.dayCounter index6m
           tenr <- IRI.tenor index6m
-          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) vol index6m tenr dc dc ts Model.RelativePriceError
+          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) vol index6m tenr dc dc ts Model.RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing CF.AveragingCompound
           tms <- Model.times h
           return (h, tms)
 

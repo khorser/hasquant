@@ -42,7 +42,7 @@ run = do
       payoff = PlainVanilla $ PlainVanillaPayoff optionType strike
   bsProcess <- blackScholesProcess underlyingQuote flatRate flatVol EulerDiscretization False
   barrierEngine <- analyticBarrierEngine bsProcess
-  europeanEngine <- analyticEuropeanEngine bsProcess
+  europeanEngine <- analyticEuropeanEngine bsProcess Nothing
   referenceOption <- barrierOption barrierType barrier rebate payoff ex
   refInstrument <- asOneAssetOption referenceOption >>= asOption >>= asInstrument
   setPricingEngine referenceOption barrierEngine
