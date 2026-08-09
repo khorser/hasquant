@@ -123,7 +123,8 @@ run = do
                                   ModifiedFollowing
                                   100.0
                                   (Just $ 15 `may` 2007)
-                                  usGovBondCal >>= asBond
+                                  usGovBondCal
+                                  (0, Days) usGovBondCal Unadjusted False actActBond >>= asBond
   zcBond <- zeroCouponBond settlementDays
                                usGovBondCal
                                faceAmount
@@ -185,6 +186,7 @@ run = do
                                    True
                                    100.0
                                    (Just $ fromGregorian 2005 10 21)
+                                   (0, Days) nyseCal Unadjusted False ModifiedFollowing
   volval <- simpleQuote 0
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc ShiftedLognormal 0.0

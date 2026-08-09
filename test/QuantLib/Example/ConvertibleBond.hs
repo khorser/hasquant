@@ -69,8 +69,8 @@ run = do
 
   let euEx = European $ EuropeanExercise exec
       amEx = American (Just settl) exec False
-  euBond <- convertibleFixedCouponBond euEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption
-  amBond <- convertibleFixedCouponBond amEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption
+  euBond <- convertibleFixedCouponBond euEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption (0, Days) cal Unadjusted False
+  amBond <- convertibleFixedCouponBond amEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption (0, Days) cal Unadjusted False
 
   [jr, crr, ad, tr, ti, lr, j] <- mapM
     (priceBonds euBond amBond bsmProc creditSpreadQ dividends)

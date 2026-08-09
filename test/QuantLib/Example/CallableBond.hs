@@ -38,7 +38,7 @@ run = do
   cal <- calendar UnitedStatesGovernmentBond
   sch <- schedule (Just $ 16 `september` 2004) (15 `september` 2012) (3, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
 
-  b <- callableFixedRateBond 3 100.0 sch [0.0465] bbdc Unadjusted 100.0 (Just $ 16 `september` 2004) callSchedule
+  b <- callableFixedRateBond 3 100.0 sch [0.0465] bbdc Unadjusted 100.0 (Just $ 16 `september` 2004) callSchedule (0, Days) cal Unadjusted False
 
   (ps, ys) <- mapAndUnzipM (priceBond flatRate bbdc b) [epsilon, 0.01, 0.03, 0.06, 0.12]
 

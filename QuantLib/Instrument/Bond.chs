@@ -128,6 +128,11 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
 -- |zero-coupon bond
 {#fun qlZeroCouponBond as zeroCouponBond{fromIntegral`Word' -- ^settlementDays
@@ -153,6 +158,11 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^inArrears
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 -- |theoretical bond yield
 {#fun qlBondYield as yield{withBond*`GenBond a',withDayCounter*`DayCounter',`Compounding',`Frequency'
@@ -254,7 +264,12 @@ import QuantLib.Internal.Enum
   ,withDayCounter*`DayCounter',`BusinessDayConvention'
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
-  ,withCallabilityArray*`[Callability]'&,preErrorCheck-`String'errorCheck*-}->`CallableBond'peekCallableBond*#}
+  ,withCallabilityArray*`[Callability]'&
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,preErrorCheck-`String'errorCheck*-}->`CallableBond'peekCallableBond*#}
 {#fun qlCallableZeroCouponBond as callableZeroCouponBond{fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
   ,withCalendar*`Calendar',withDay*`Day' -- ^maturityDate
@@ -268,6 +283,10 @@ import QuantLib.Internal.Enum
   ,fromIntegral`Word' -- ^settlementDays
   ,withDoubleArray*`[Double]'& -- ^coupons
   ,withDayCounter*`DayCounter',withSchedule*`Schedule',`Double' -- ^redemption
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
   ,preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 {#fun qlConvertibleFloatingRateBond as convertibleFloatingRateBond{withExercise*`Exercise',`Double' -- ^conversionRatio
   ,withCallabilityArray*`[Callability]'&
@@ -276,6 +295,10 @@ import QuantLib.Internal.Enum
   ,withIborIndex*`GenIborIndex b',fromIntegral`Word' -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,withDayCounter*`DayCounter',withSchedule*`Schedule',`Double' -- ^redemption
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
   ,preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 {#fun qlConvertibleZeroCouponBond as convertibleZeroCouponBond{withExercise*`Exercise',`Double' -- ^conversionRatio
   ,withCallabilityArray*`[Callability]'&

@@ -102,6 +102,7 @@ run gc = do
         doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve = do
           b <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
             bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar
+            (0, Days) bondCalendar Unadjusted False bondDayCountConvention
           -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
           discountingBondEngine bondCurve Nothing >>= setPricingEngine b
           void $ yieldFromPrice b (bondCleanPrice, Clean) bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
