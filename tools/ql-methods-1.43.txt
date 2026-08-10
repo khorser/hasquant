@@ -1032,10 +1032,10 @@
 | |ql/experimental/commodities/commodity.hpp|void Commodity::addPricingError(PricingError::Level errorLevel, const std::string & error, const std::string & detail = "") const;
 | |ql/experimental/commodities/commoditycashflow.hpp|CommodityCashFlow::CommodityCashFlow(const Date & date, Money discountedAmount, Money undiscountedAmount, Money discountedPaymentAmount, Money undiscountedPaymentAmount, Real discountFactor, Real paymentDiscountFactor, bool finalized);
 | |ql/experimental/commodities/commoditycashflow.hpp|const Currency & CommodityCashFlow::currency() const;
-| |ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::discountedAmount() const;
-| |ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::undiscountedAmount() const;
-| |ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::discountedPaymentAmount() const;
-| |ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::undiscountedPaymentAmount() const;
+|x|ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::discountedAmount() const;
+|x|ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::undiscountedAmount() const;
+|x|ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::discountedPaymentAmount() const;
+|x|ql/experimental/commodities/commoditycashflow.hpp|const Money & CommodityCashFlow::undiscountedPaymentAmount() const;
 |x|ql/experimental/commodities/commoditycashflow.hpp|Real CommodityCashFlow::discountFactor() const;
 |x|ql/experimental/commodities/commoditycashflow.hpp|Real CommodityCashFlow::paymentDiscountFactor() const;
 |x|ql/experimental/commodities/commoditycashflow.hpp|bool CommodityCashFlow::finalized() const;
@@ -1128,14 +1128,14 @@
 | |ql/experimental/commodities/commoditytype.hpp|bool operator!=(const CommodityType & c1, const CommodityType & c2);
 | |ql/experimental/commodities/commodityunitcost.hpp|CommodityUnitCost::CommodityUnitCost();
 | |ql/experimental/commodities/commodityunitcost.hpp|CommodityUnitCost::CommodityUnitCost(Money amount, UnitOfMeasure unitOfMeasure);
-| |ql/experimental/commodities/commodityunitcost.hpp|const Money & CommodityUnitCost::amount() const;
-| |ql/experimental/commodities/commodityunitcost.hpp|const UnitOfMeasure & CommodityUnitCost::unitOfMeasure() const;
+|x|ql/experimental/commodities/commodityunitcost.hpp|const Money & CommodityUnitCost::amount() const;
+|x|ql/experimental/commodities/commodityunitcost.hpp|const UnitOfMeasure & CommodityUnitCost::unitOfMeasure() const;
 | |ql/experimental/commodities/commodityunitcost.hpp|std::ostream & operator<<(std::ostream & out, const CommodityUnitCost & unitCost);
 | |ql/experimental/commodities/dateinterval.hpp|std::ostream & DateInterval::operator<<(std::ostream &, const DateInterval &);
 | |ql/experimental/commodities/dateinterval.hpp|DateInterval::DateInterval();
 | |ql/experimental/commodities/dateinterval.hpp|DateInterval::DateInterval(const Date & startDate, const Date & endDate);
-| |ql/experimental/commodities/dateinterval.hpp|const Date & DateInterval::startDate() const;
-| |ql/experimental/commodities/dateinterval.hpp|const Date & DateInterval::endDate() const;
+|x|ql/experimental/commodities/dateinterval.hpp|const Date & DateInterval::startDate() const;
+|x|ql/experimental/commodities/dateinterval.hpp|const Date & DateInterval::endDate() const;
 | |ql/experimental/commodities/dateinterval.hpp|bool DateInterval::isDateBetween(Date date, bool includeFirst = true, bool includeLast = true) const;
 | |ql/experimental/commodities/dateinterval.hpp|DateInterval DateInterval::intersection(const DateInterval & di) const;
 | |ql/experimental/commodities/dateinterval.hpp|bool DateInterval::operator==(const DateInterval & rhs) const;
@@ -1207,8 +1207,8 @@
 | |ql/experimental/commodities/petroleumunitsofmeasure.hpp|KilolitreUnitOfMeasure::KilolitreUnitOfMeasure();
 | |ql/experimental/commodities/petroleumunitsofmeasure.hpp|TokyoKilolitreUnitOfMeasure::TokyoKilolitreUnitOfMeasure();
 | |ql/experimental/commodities/pricingperiod.hpp|PricingPeriod::PricingPeriod(const Date & startDate, const Date & endDate, const Date & paymentDate, Quantity quantity);
-| |ql/experimental/commodities/pricingperiod.hpp|const Date & PricingPeriod::paymentDate() const;
-| |ql/experimental/commodities/pricingperiod.hpp|const Quantity & PricingPeriod::quantity() const;
+|x|ql/experimental/commodities/pricingperiod.hpp|const Date & PricingPeriod::paymentDate() const;
+|x|ql/experimental/commodities/pricingperiod.hpp|const Quantity & PricingPeriod::quantity() const;
 | |ql/experimental/commodities/quantity.hpp|Quantity::Quantity();
 | |ql/experimental/commodities/quantity.hpp|Quantity::Quantity(CommodityType commodityType, UnitOfMeasure unitOfMeasure, Real amount);
 | |ql/experimental/commodities/quantity.hpp|const CommodityType & Quantity::commodityType() const;
@@ -1491,7 +1491,7 @@
 | |ql/experimental/credit/constantlosslatentmodel.hpp|Real ConstantLossLatentmodel::conditionalRecovery(Probability uncondDefP, Size iName, const std::vector<Real> & mktFactors) const;
 | |ql/experimental/credit/constantlosslatentmodel.hpp|Real ConstantLossLatentmodel::conditionalRecoveryInvP(Real invUncondDefP, Size iName, const std::vector<Real> & mktFactors) const;
 | |ql/experimental/credit/constantlosslatentmodel.hpp|Real ConstantLossLatentmodel::conditionalRecovery(Real latentVarSample, Size iName, const Date & d) const;
-| |ql/experimental/credit/constantlosslatentmodel.hpp|const std::vector<Real> & ConstantLossLatentmodel::recoveries() const;
+|x|ql/experimental/credit/constantlosslatentmodel.hpp|const std::vector<Real> & ConstantLossLatentmodel::recoveries() const;
 | |ql/experimental/credit/constantlosslatentmodel.hpp|Real ConstantLossLatentmodel::expectedRecovery(const Date & d, Size iName, const DefaultProbKey & defKeys) const;
 | |ql/experimental/credit/constantlosslatentmodel.hpp|ConstantLossModel::ConstantLossModel<copulaPolicy>(const std::vector<std::vector<Real>> & factorWeights, const std::vector<Real> & recoveries, LatentModelIntegrationType::LatentModelIntegrationType integralType, const typename copulaPolicy::initTraits & ini = copulaPolicy::initTraits());
 | |ql/experimental/credit/constantlosslatentmodel.hpp|ConstantLossModel::ConstantLossModel<copulaPolicy>(const Handle<Quote> & mktCorrel, const std::vector<Real> & recoveries, LatentModelIntegrationType::LatentModelIntegrationType integralType, Size nVariables, const typename copulaPolicy::initTraits & ini = copulaPolicy::initTraits());
@@ -1551,7 +1551,7 @@
 | |ql/experimental/credit/defaulttype.hpp|bool operator==(const DefaultType & lhs, const DefaultType & rhs);
 | |ql/experimental/credit/defaulttype.hpp|FailureToPay::FailureToPay(const Period & grace, Real amount = 1.e+6);
 |x|ql/experimental/credit/defaulttype.hpp|Real FailureToPay::amountRequired() const;
-| |ql/experimental/credit/defaulttype.hpp|const Period & FailureToPay::gracePeriod() const;
+|x|ql/experimental/credit/defaulttype.hpp|const Period & FailureToPay::gracePeriod() const;
 | |ql/experimental/credit/distribution.hpp|Distribution::Distribution(int nBuckets, Real xmin, Real xmax);
 | |ql/experimental/credit/distribution.hpp|Distribution::Distribution();
 | |ql/experimental/credit/distribution.hpp|void Distribution::add(Real value);
@@ -5180,7 +5180,7 @@
 | |ql/math/optimization/differentialevolution.hpp|Configuration & Configuration::withCrossoverType(CrossoverType t);
 | |ql/math/optimization/differentialevolution.hpp|Configuration & Configuration::withStrategy(Strategy s);
 | |ql/math/optimization/differentialevolution.hpp|DifferentialEvolution::DifferentialEvolution(const Configuration & configuration = Configuration());
-| |ql/math/optimization/differentialevolution.hpp|const Configuration & DifferentialEvolution::configuration() const;
+|x|ql/math/optimization/differentialevolution.hpp|const Configuration & DifferentialEvolution::configuration() const;
 |v|ql/math/optimization/endcriteria.hpp|EndCriteria::EndCriteria(Size maxIterations, Size maxStationaryStateIterations, Real rootEpsilon, Real functionEpsilon, Real gradientNormEpsilon);
 | |ql/math/optimization/endcriteria.hpp|Size EndCriteria::maxIterations() const;
 | |ql/math/optimization/endcriteria.hpp|Size EndCriteria::maxStationaryStateIterations() const;
@@ -5236,7 +5236,7 @@
 |x|ql/math/optimization/problem.hpp|Constraint & Problem::constraint() const;
 |x|ql/math/optimization/problem.hpp|CostFunction & Problem::costFunction() const;
 | |ql/math/optimization/problem.hpp|void Problem::setCurrentValue(Array currentValue);
-| |ql/math/optimization/problem.hpp|const Array & Problem::currentValue() const;
+|x|ql/math/optimization/problem.hpp|const Array & Problem::currentValue() const;
 | |ql/math/optimization/problem.hpp|void Problem::setFunctionValue(Real functionValue);
 | |ql/math/optimization/problem.hpp|Real Problem::functionValue() const;
 | |ql/math/optimization/problem.hpp|void Problem::setGradientNormValue(Real squaredNorm);
@@ -5652,7 +5652,7 @@
 | |ql/methods/finitedifferences/meshers/fdmmesher.hpp|Real FdmMesher::dminus(const FdmLinearOpIterator & iter, Size direction) const;
 | |ql/methods/finitedifferences/meshers/fdmmesher.hpp|Real FdmMesher::location(const FdmLinearOpIterator & iter, Size direction) const;
 | |ql/methods/finitedifferences/meshers/fdmmesher.hpp|Array FdmMesher::locations(Size direction) const;
-| |ql/methods/finitedifferences/meshers/fdmmesher.hpp|const ext::shared_ptr<FdmLinearOpLayout> & FdmMesher::layout() const;
+|x|ql/methods/finitedifferences/meshers/fdmmesher.hpp|const ext::shared_ptr<FdmLinearOpLayout> & FdmMesher::layout() const;
 | |ql/methods/finitedifferences/meshers/fdmmeshercomposite.hpp|FdmMesherComposite::FdmMesherComposite(const ext::shared_ptr<FdmLinearOpLayout> & layout, const std::vector<ext::shared_ptr<Fdm1dMesher>> & mesher);
 | |ql/methods/finitedifferences/meshers/fdmmeshercomposite.hpp|FdmMesherComposite::FdmMesherComposite(const std::vector<ext::shared_ptr<Fdm1dMesher>> & mesher);
 | |ql/methods/finitedifferences/meshers/fdmmeshercomposite.hpp|FdmMesherComposite::FdmMesherComposite(const ext::shared_ptr<Fdm1dMesher> & mesher);
@@ -5739,7 +5739,7 @@
 | |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|FdmLinearOpLayout::FdmLinearOpLayout(std::vector<Size> dim);
 | |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|FdmLinearOpIterator FdmLinearOpLayout::begin() const;
 | |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|FdmLinearOpIterator FdmLinearOpLayout::end() const;
-| |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|const std::vector<Size> & FdmLinearOpLayout::dim() const;
+|x|ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|const std::vector<Size> & FdmLinearOpLayout::dim() const;
 | |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|const std::vector<Size> & FdmLinearOpLayout::spacing() const;
 | |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|Size FdmLinearOpLayout::size() const;
 | |ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp|Size FdmLinearOpLayout::index(const std::vector<Size> & coordinates) const;
@@ -6862,7 +6862,7 @@
 | |ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondMaturity) const;
 | |ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondStart, Time bondMaturity) const;
 | |ql/models/model.hpp|TermStructureConsistentModel::TermStructureConsistentModel(Handle<YieldTermStructure> termStructure);
-| |ql/models/model.hpp|const Handle<YieldTermStructure> & TermStructureConsistentModel::termStructure() const;
+|x|ql/models/model.hpp|const Handle<YieldTermStructure> & TermStructureConsistentModel::termStructure() const;
 | |ql/models/model.hpp|CalibratedModel::CalibratedModel(Size nArguments);
 |v|ql/models/model.hpp|void CalibratedModel::calibrate(const std::vector<ext::shared_ptr<CalibrationHelper>> &, OptimizationMethod & method, const EndCriteria & endCriteria, const Constraint & constraint = Constraint(), const std::vector<Real> & weights = std::vector<Real>(), const std::vector<bool> & fixParameters = std::vector<bool>());
 |v|ql/models/model.hpp|Real CalibratedModel::value(const Array & params, const std::vector<ext::shared_ptr<CalibrationHelper>> &);
@@ -6888,7 +6888,7 @@
 | |ql/models/parameter.hpp|bool Parameter::testParams(const Array & params) const;
 | |ql/models/parameter.hpp|Size Parameter::size() const;
 | |ql/models/parameter.hpp|Real Parameter::operator()(Time t) const;
-| |ql/models/parameter.hpp|const ext::shared_ptr<Impl> & Parameter::implementation() const;
+|x|ql/models/parameter.hpp|const ext::shared_ptr<Impl> & Parameter::implementation() const;
 | |ql/models/parameter.hpp|const Constraint & Parameter::constraint() const;
 | |ql/models/parameter.hpp|ConstantParameter::ConstantParameter(const Constraint & constraint);
 | |ql/models/parameter.hpp|ConstantParameter::ConstantParameter(Real value, const Constraint & constraint);
@@ -6899,7 +6899,7 @@
 | |ql/models/parameter.hpp|void NumericalImpl::set(Time t, Real x);
 | |ql/models/parameter.hpp|void NumericalImpl::change(Real x);
 | |ql/models/parameter.hpp|void NumericalImpl::reset();
-| |ql/models/parameter.hpp|const Handle<YieldTermStructure> & NumericalImpl::termStructure() const;
+|x|ql/models/parameter.hpp|const Handle<YieldTermStructure> & NumericalImpl::termStructure() const;
 | |ql/models/parameter.hpp|TermStructureFittingParameter::TermStructureFittingParameter(const ext::shared_ptr<Parameter::Impl> & impl);
 | |ql/models/parameter.hpp|TermStructureFittingParameter::TermStructureFittingParameter(const Handle<YieldTermStructure> & term);
 |v|ql/models/shortrate/calibrationhelpers/caphelper.hpp|CapHelper::CapHelper(const Period & length, const Handle<Quote> & volatility, ext::shared_ptr<IborIndex> index, Frequency fixedLegFrequency, DayCounter fixedLegDayCounter, bool includeFirstSwaplet, Handle<YieldTermStructure> termStructure, BlackCalibrationHelper::CalibrationErrorType errorType = BlackCalibrationHelper::RelativePriceError, VolatilityType type = ShiftedLognormal, Real shift = 0.0);
@@ -6913,7 +6913,7 @@
 | |ql/models/shortrate/onefactormodel.hpp|ShortRateDynamics::ShortRateDynamics(ext::shared_ptr<StochasticProcess1D> process);
 | |ql/models/shortrate/onefactormodel.hpp|Real ShortRateDynamics::variable(Time t, Rate r) const;
 | |ql/models/shortrate/onefactormodel.hpp|Rate ShortRateDynamics::shortRate(Time t, Real variable) const;
-| |ql/models/shortrate/onefactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::process();
+|x|ql/models/shortrate/onefactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::process();
 | |ql/models/shortrate/onefactormodel.hpp|ShortRateTree::ShortRateTree(const ext::shared_ptr<TrinomialTree> & tree, ext::shared_ptr<ShortRateDynamics> dynamics, const TimeGrid & timeGrid);
 | |ql/models/shortrate/onefactormodel.hpp|ShortRateTree::ShortRateTree(const ext::shared_ptr<TrinomialTree> & tree, ext::shared_ptr<ShortRateDynamics> dynamics, const ext::shared_ptr<TermStructureFittingParameter::NumericalImpl> & phi, const TimeGrid & timeGrid);
 | |ql/models/shortrate/onefactormodel.hpp|Size ShortRateTree::size(Size i) const;
@@ -7020,8 +7020,8 @@
 | |ql/models/shortrate/twofactormodel.hpp|ext::shared_ptr<ShortRateDynamics> TwoFactorModel::dynamics() const;
 | |ql/models/shortrate/twofactormodel.hpp|ShortRateDynamics::ShortRateDynamics(ext::shared_ptr<StochasticProcess1D> xProcess, ext::shared_ptr<StochasticProcess1D> yProcess, Real correlation);
 | |ql/models/shortrate/twofactormodel.hpp|Rate ShortRateDynamics::shortRate(Time t, Real x, Real y) const;
-| |ql/models/shortrate/twofactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::xProcess() const;
-| |ql/models/shortrate/twofactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::yProcess() const;
+|x|ql/models/shortrate/twofactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::xProcess() const;
+|x|ql/models/shortrate/twofactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::yProcess() const;
 |x|ql/models/shortrate/twofactormodel.hpp|Real ShortRateDynamics::correlation() const;
 | |ql/models/shortrate/twofactormodel.hpp|ext::shared_ptr<StochasticProcess> ShortRateDynamics::process() const;
 | |ql/models/shortrate/twofactormodel.hpp|ShortRateTree::ShortRateTree(const ext::shared_ptr<TrinomialTree> & tree1, const ext::shared_ptr<TrinomialTree> & tree2, const ext::shared_ptr<ShortRateDynamics> & dynamics);
@@ -7127,7 +7127,7 @@
 | |ql/money.hpp|Money operator*(Decimal value, const Currency & c);
 | |ql/money.hpp|Money operator*(const Currency & c, Decimal value);
 | |ql/numericalmethod.hpp|Lattice::Lattice(TimeGrid timeGrid);
-| |ql/numericalmethod.hpp|const TimeGrid & Lattice::timeGrid() const;
+|x|ql/numericalmethod.hpp|const TimeGrid & Lattice::timeGrid() const;
 | |ql/numericalmethod.hpp|void Lattice::initialize(DiscretizedAsset &, Time time) const;
 | |ql/numericalmethod.hpp|void Lattice::rollback(DiscretizedAsset &, Time to) const;
 | |ql/numericalmethod.hpp|void Lattice::partialRollback(DiscretizedAsset &, Time to) const;
@@ -7635,8 +7635,8 @@
 | |ql/pricingengines/blackscholescalculator.hpp|Real thetaPerDay(Time maturity) const;
 |?|ql/pricingengines/bond/binomialconvertibleengine.hpp|BinomialConvertibleEngine::BinomialConvertibleEngine<T>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, const Handle<Quote> & creditSpread, DividendSchedule dividends = DividendSchedule());
 | |ql/pricingengines/bond/binomialconvertibleengine.hpp|void BinomialConvertibleEngine::calculate() const;
-| |ql/pricingengines/bond/binomialconvertibleengine.hpp|const Handle<Quote> & BinomialConvertibleEngine::creditSpread() const;
-| |ql/pricingengines/bond/binomialconvertibleengine.hpp|const DividendSchedule & BinomialConvertibleEngine::dividends() const;
+|x|ql/pricingengines/bond/binomialconvertibleengine.hpp|const Handle<Quote> & BinomialConvertibleEngine::creditSpread() const;
+|x|ql/pricingengines/bond/binomialconvertibleengine.hpp|const DividendSchedule & BinomialConvertibleEngine::dividends() const;
 | |ql/pricingengines/bond/binomialconvertibleengine.hpp|void calculate() const;
 | |ql/pricingengines/bond/bondfunctions.hpp|static Date BondFunctions::startDate(const Bond & bond);
 | |ql/pricingengines/bond/bondfunctions.hpp|static Date BondFunctions::maturityDate(const Bond & bond);
