@@ -231,6 +231,7 @@ extern "C" {
   QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
+  QlOneAssetOption* qlCompoundOption(QlStrikedTypePayoff* motherPayoff, QlExercise* motherExercise, QlStrikedTypePayoff* daughterPayoff, QlExercise* daughterExercise, char **e);
   double qlMargrabeOptionDelta1(QlMargrabeOption* o, char **e);
   double qlMargrabeOptionDelta2(QlMargrabeOption* o, char **e);
   double qlMargrabeOptionGamma1(QlMargrabeOption* o, char **e);

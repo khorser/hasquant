@@ -17,6 +17,7 @@ module QuantLib.PricingEngine
 
   , analyticBarrierEngine
   , analyticCliquetEngine
+  , analyticCompoundOptionEngine
   , analyticContinuousFixedLookbackEngine
   , analyticContinuousFloatingLookbackEngine
   , analyticContinuousGeometricAveragePriceAsianEngine
@@ -239,6 +240,7 @@ import QuantLib.Internal.Enum
 
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticCliquetEngine as analyticCliquetEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticCompoundOptionEngine as analyticCompoundOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticContinuousFixedLookbackEngine as analyticContinuousFixedLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticContinuousFloatingLookbackEngine as analyticContinuousFloatingLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticContinuousGeometricAveragePriceAsianEngine as analyticContinuousGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

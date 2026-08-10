@@ -3324,7 +3324,7 @@
 | |ql/instruments/complexchooseroption.hpp|void arguments::validate() const;
 | |ql/instruments/compositeinstrument.hpp|void CompositeInstrument::add(const ext::shared_ptr<Instrument> & instrument, Real multiplier = 1.0);
 | |ql/instruments/compositeinstrument.hpp|void CompositeInstrument::subtract(const ext::shared_ptr<Instrument> & instrument, Real multiplier = 1.0);
-| |ql/instruments/compoundoption.hpp|CompoundOption::CompoundOption(const ext::shared_ptr<StrikedTypePayoff> & motherPayoff, const ext::shared_ptr<Exercise> & motherExercise, ext::shared_ptr<StrikedTypePayoff> daughterPayoff, ext::shared_ptr<Exercise> daughterExercise);
+|v|ql/instruments/compoundoption.hpp|CompoundOption::CompoundOption(const ext::shared_ptr<StrikedTypePayoff> & motherPayoff, const ext::shared_ptr<Exercise> & motherExercise, ext::shared_ptr<StrikedTypePayoff> daughterPayoff, ext::shared_ptr<Exercise> daughterExercise);
 | |ql/instruments/compoundoption.hpp|void arguments::validate() const;
 |x|ql/instruments/constnotionalcrosscurrencybasisswap.hpp|ConstNotionalCrossCurrencyBasisSwap::ConstNotionalCrossCurrencyBasisSwap(Real payNominal, Currency payCurrency, Schedule paySchedule, const ext::shared_ptr<IborIndex> & payIndex, Spread paySpread, Real payGearing, Real recNominal, Currency recCurrency, Schedule recSchedule, const ext::shared_ptr<IborIndex> & recIndex, Spread recSpread, Real recGearing, Integer payPaymentLag = 0, Integer recPaymentLag = 0, bool payCompoundSpread = false, Natural payLookbackDays = Null<Natural>(), bool payObservationShift = false, Natural payLockoutDays = 0, RateAveraging::Type payAveragingMethod = RateAveraging::Compound, bool recCompoundSpread = false, Natural recLookbackDays = Null<Natural>(), bool recObservationShift = false, Natural recLockoutDays = 0, RateAveraging::Type recAveragingMethod = RateAveraging::Compound, bool telescopicValueDates = false);
 |x|ql/instruments/constnotionalcrosscurrencybasisswap.hpp|Real ConstNotionalCrossCurrencyBasisSwap::payNominal() const;
@@ -7777,7 +7777,7 @@
 | |ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp|void AnalyticAmericanMargrabeEngine::calculate() const;
 | |ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|AnalyticComplexChooserEngine::AnalyticComplexChooserEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|void AnalyticComplexChooserEngine::calculate() const;
-| |ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|AnalyticCompoundOptionEngine::AnalyticCompoundOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|AnalyticCompoundOptionEngine::AnalyticCompoundOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|void AnalyticCompoundOptionEngine::calculate() const;
 | |ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|AnalyticEuropeanMargrabeEngine::AnalyticEuropeanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
 | |ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|void AnalyticEuropeanMargrabeEngine::calculate() const;

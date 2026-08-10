@@ -19,6 +19,7 @@
 #include <ql/pricingengines/cliquet/analyticcliquetengine.hpp>
 #include <ql/pricingengines/cliquet/analyticperformanceengine.hpp>
 #include <ql/pricingengines/credit/integralcdsengine.hpp>
+#include <ql/pricingengines/exotic/analyticcompoundoptionengine.hpp>
 #include <ql/pricingengines/credit/midpointcdsengine.hpp>
 #include <ql/pricingengines/forward/discountingfxforwardengine.hpp>
 #include <ql/pricingengines/forward/replicatingvarianceswapengine.hpp>
@@ -113,6 +114,9 @@ QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* proce
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticCliquetEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticCliquetEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticCompoundOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticCompoundOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticContinuousFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousFixedLookbackEngine(*arg(process)))));

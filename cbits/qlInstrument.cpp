@@ -23,6 +23,7 @@
 #include <ql/instruments/yearonyearinflationswap.hpp>
 #include <ql/instruments/cpiswap.hpp>
 #include <ql/instruments/zerocouponswap.hpp>
+#include <ql/instruments/compoundoption.hpp>
 #include <ql/instruments/barrieroption.hpp>
 #include <ql/instruments/vanillaoption.hpp>
 #include <ql/instruments/swaption.hpp>
@@ -447,6 +448,9 @@ double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGene
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
+QlOneAssetOption* qlCompoundOption(QlStrikedTypePayoff* motherPayoff, QlExercise* motherExercise, QlStrikedTypePayoff* daughterPayoff, QlExercise* daughterExercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new CompoundOption(*arg(motherPayoff), *arg(motherExercise), *arg(daughterPayoff), *arg(daughterExercise)))));
   } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 double qlMargrabeOptionDelta1(QlMargrabeOption* o, char **e) {try {return (*arg(o))->delta1();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlMargrabeOptionDelta2(QlMargrabeOption* o, char **e) {try {return (*arg(o))->delta2();} catch (std::exception& er) {return handleException<double>(e, er);}}

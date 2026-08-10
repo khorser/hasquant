@@ -37,6 +37,7 @@ module QuantLib.Instrument.Option
 
   , barrierOption
   , forwardVanillaOption
+  , compoundOption
   , delta1
   , delta2
   , gamma1
@@ -116,6 +117,11 @@ import QuantLib.Internal.Enum
 {#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+{#fun qlCompoundOption as compoundOption{withStrikedPayoff*`StrikedPayoff' -- ^motherPayoff
+  ,withExercise*`Exercise' -- ^motherExercise
+  ,withStrikedPayoff*`StrikedPayoff' -- ^daughterPayoff
+  ,withExercise*`Exercise' -- ^daughterExercise
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlMargrabeOptionDelta1 as delta1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOptionDelta2 as delta2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOptionGamma1 as gamma1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
