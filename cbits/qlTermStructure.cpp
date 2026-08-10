@@ -515,20 +515,29 @@ double qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extr
 QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
   try {return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), monthsToStart, monthsToEnd, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, char **e) {
-  try {return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero));
+// Each shim below binds the sibling overload that omits the leading
+// `optimizationMethod` param, not the primary ctor -- OptimizationMethod's
+// hasquant-side handle is a raw, Haskell-finalized pointer (see
+// qlLevenbergMarquardt/qlSimplex), not a QlXxx shared_ptr box, and
+// FittedBondDiscountCurve additionally clones its fitting method, so there
+// is no safe way to hand it into a `const ext::shared_ptr<OptimizationMethod>&`
+// slot without a real ownership-representation change (would also touch
+// qlGsrCalibrateVolatilitiesIterative/qlCalibratedModelCalibrate) -- see the
+// README TODO.
+FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
+  try {return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero, Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e) {
-  try {return alloc(new ExponentialSplinesFitting(constrainAtZero));
+FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, unsigned numCoeffs, double fixedKappa, Constraint* constraint, char **e) {
+  try {return alloc(new ExponentialSplinesFitting(constrainAtZero, Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, numCoeffs, fixedKappa, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlNelsonSiegelFitting(char **e) {
-  try {return alloc(new NelsonSiegelFitting());
+FittedBondDiscountCurveFittingMethod* qlNelsonSiegelFitting(unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
+  try {return alloc(new NelsonSiegelFitting(Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e) {
-  try {return alloc(new SimplePolynomialFitting(degree, constrainAtZero));
+FittedBondDiscountCurveFittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
+  try {return alloc(new SimplePolynomialFitting(degree, constrainAtZero, Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(char **e) {
-  try {return alloc(new SvenssonFitting());
+FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
+  try {return alloc(new SvenssonFitting(Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
 QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e) {
   try {return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(settlementDays, *arg(calendar), qlVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));

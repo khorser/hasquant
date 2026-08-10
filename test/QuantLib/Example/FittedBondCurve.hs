@@ -121,11 +121,12 @@ run = do
       ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] TS.Discount LogLinear False
 
       -- results depend on optimization options used to build QLC
-      let fittings = [TS.ExponentialSplines True,
-                        TS.SimplePolynomial 3 True,
-                        TS.NelsonSiegel,
-                        TS.CubicBSplines [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
-                        TS.Svensson]
+      let fittings = [TS.ExponentialSplines True [] [] 0.0 noCutoff 9 Nothing Nothing,
+                        TS.SimplePolynomial 3 True [] [] 0.0 noCutoff Nothing,
+                        TS.NelsonSiegel [] [] 0.0 noCutoff Nothing,
+                        TS.CubicBSplines [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True [] [] 0.0 noCutoff Nothing,
+                        TS.Svensson [] [] 0.0 noCutoff Nothing]
+          noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")
 
       curves <- mapM
           (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals [] 1.0)
@@ -145,11 +146,12 @@ run = do
       ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal iB dc [] TS.Discount LogLinear False
 
       -- results depend on optimization options used to build QLC
-      let fittings = [TS.ExponentialSplines True,
-                        TS.SimplePolynomial 3 True,
-                        TS.NelsonSiegel,
-                        TS.CubicBSplines [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
-                        TS.Svensson]
+      let fittings = [TS.ExponentialSplines True [] [] 0.0 noCutoff 9 Nothing Nothing,
+                        TS.SimplePolynomial 3 True [] [] 0.0 noCutoff Nothing,
+                        TS.NelsonSiegel [] [] 0.0 noCutoff Nothing,
+                        TS.CubicBSplines [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True [] [] 0.0 noCutoff Nothing,
+                        TS.Svensson [] [] 0.0 noCutoff Nothing]
+          noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")
 
       curves <- mapM
           (\f -> TS.fittedBondDiscountCurve curveSettleDays cal iA dc f tolerance maxEvals [] 1.0)

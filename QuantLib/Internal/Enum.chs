@@ -568,30 +568,93 @@ withOptimizationMethod = withEnumType optimizationMethodMeta
 {#fun qlSoftCallability{`Double',`BondPriceType',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 {#fun qlCallability{`Double',`BondPriceType',`CallabilityType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 
+-- Every constructor below binds the QuantLib overload that omits the leading
+-- optimizationMethod param (see the qlTermStructure.cpp comment above the
+-- qlXxxFitting shims for why: OptimizationMethod's hasquant-side handle is a
+-- raw, Haskell-finalized pointer, not a QlXxx shared_ptr box, and
+-- FittedBondDiscountCurve additionally clones its fitting method -- passing
+-- one through safely needs a real ownership-representation change).
 data FittingMethod =
   CubicBSplines
     ![Double] -- ^knotVector (year fraction)
     !Bool -- ^constrainAtZero
-  | ExponentialSplines !Bool
+    ![Double] -- ^weights
+    ![Double] -- ^l2
+    !Double -- ^minCutoffTime
+    !Double -- ^maxCutoffTime
+    !(Maybe Constraint)
+  | ExponentialSplines
+    !Bool -- ^constrainAtZero
+    ![Double] -- ^weights
+    ![Double] -- ^l2
+    !Double -- ^minCutoffTime
+    !Double -- ^maxCutoffTime
+    !Word -- ^numCoeffs
+    !(Maybe Double) -- ^fixedKappa
+    !(Maybe Constraint)
   | NelsonSiegel
+    ![Double] -- ^weights
+    ![Double] -- ^l2
+    !Double -- ^minCutoffTime
+    !Double -- ^maxCutoffTime
+    !(Maybe Constraint)
   | SimplePolynomial
     !Word -- ^degree
     !Bool -- ^constrainAtZero
+    ![Double] -- ^weights
+    ![Double] -- ^l2
+    !Double -- ^minCutoffTime
+    !Double -- ^maxCutoffTime
+    !(Maybe Constraint)
   | Svensson
-  deriving (Show, Eq)
+    ![Double] -- ^weights
+    ![Double] -- ^l2
+    !Double -- ^minCutoffTime
+    !Double -- ^maxCutoffTime
+    !(Maybe Constraint)
 
 fittingMethod :: FittingMethod -> IO QlFittedBondDiscountCurveFittingMethod
-fittingMethod (CubicBSplines k c) = qlCubicBSplinesFitting k c
-fittingMethod (ExponentialSplines c) = qlExponentialSplinesFitting c
-fittingMethod NelsonSiegel = qlNelsonSiegelFitting
-fittingMethod (SimplePolynomial d c) = qlSimplePolynomialFitting d c
-fittingMethod Svensson = qlSvenssonFitting
+fittingMethod (CubicBSplines k c w l2 mn mx cn) = qlCubicBSplinesFitting k c w l2 mn mx cn
+fittingMethod (ExponentialSplines c w l2 mn mx n fk cn) = qlExponentialSplinesFitting c w l2 mn mx n fk cn
+fittingMethod (NelsonSiegel w l2 mn mx cn) = qlNelsonSiegelFitting w l2 mn mx cn
+fittingMethod (SimplePolynomial d c w l2 mn mx cn) = qlSimplePolynomialFitting d c w l2 mn mx cn
+fittingMethod (Svensson w l2 mn mx cn) = qlSvenssonFitting w l2 mn mx cn
 
-{#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-{#fun qlExponentialSplinesFitting{`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-{#fun qlNelsonSiegelFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-{#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
-{#fun qlSvenssonFitting{preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool'
+  ,withDoubleArray*`[Double]'& -- ^weights
+  ,withDoubleArray*`[Double]'& -- ^l2
+  ,`Double' -- ^minCutoffTime
+  ,`Double' -- ^maxCutoffTime
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlExponentialSplinesFitting{`Bool'
+  ,withDoubleArray*`[Double]'& -- ^weights
+  ,withDoubleArray*`[Double]'& -- ^l2
+  ,`Double' -- ^minCutoffTime
+  ,`Double' -- ^maxCutoffTime
+  ,fromIntegral`Word' -- ^numCoeffs
+  ,fromMaybeDouble`Maybe Double' -- ^fixedKappa
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlNelsonSiegelFitting{withDoubleArray*`[Double]'& -- ^weights
+  ,withDoubleArray*`[Double]'& -- ^l2
+  ,`Double' -- ^minCutoffTime
+  ,`Double' -- ^maxCutoffTime
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool'
+  ,withDoubleArray*`[Double]'& -- ^weights
+  ,withDoubleArray*`[Double]'& -- ^l2
+  ,`Double' -- ^minCutoffTime
+  ,`Double' -- ^maxCutoffTime
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
+{#fun qlSvenssonFitting{withDoubleArray*`[Double]'& -- ^weights
+  ,withDoubleArray*`[Double]'& -- ^l2
+  ,`Double' -- ^minCutoffTime
+  ,`Double' -- ^maxCutoffTime
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 
 data FdmScheme =
   FdmScheme
