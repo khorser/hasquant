@@ -72,6 +72,7 @@ module QuantLib.CashFlow
 
   , FloatingRateCouponPricer
   , blackIborCouponPricer
+  , rangeAccrualPricerByBgm
   , setCouponPricer
   , setCouponPricers
   , analyticHaganPricer
@@ -389,12 +390,20 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 {#enum YieldCurveModel{} deriving(Show, Eq)#}
 
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
+{#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer{withGenVolatilityTermStructure*`OptionletVolatilityStructure'
   ,`TimingAdjustment'
   ,withMaybeQuote*`Maybe (GenQuote a)' -- ^correlation
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+-- |BGM-based pricer for 'RangeAccrualFloatersCoupon's (a 'rangeAccrualLeg')
+{#fun qlRangeAccrualPricerByBgm as rangeAccrualPricerByBgm{`Double' -- ^correlation
+  ,withSmileSection*`SmileSection' -- ^smilesOnExpiry
+  ,withSmileSection*`SmileSection' -- ^smilesOnPayment
+  ,`Bool' -- ^withSmile
+  ,`Bool' -- ^byCallSpread
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}

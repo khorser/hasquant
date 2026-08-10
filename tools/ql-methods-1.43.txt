@@ -587,7 +587,7 @@
 | |ql/cashflows/rangeaccrual.hpp|Real RangeAccrualPricer::floorletPrice(Rate effectiveFloor) const;
 | |ql/cashflows/rangeaccrual.hpp|Rate RangeAccrualPricer::floorletRate(Rate effectiveFloor) const;
 | |ql/cashflows/rangeaccrual.hpp|void RangeAccrualPricer::initialize(const FloatingRateCoupon & coupon);
-| |ql/cashflows/rangeaccrual.hpp|RangeAccrualPricerByBgm::RangeAccrualPricerByBgm(Real correlation, ext::shared_ptr<SmileSection> smilesOnExpiry, ext::shared_ptr<SmileSection> smilesOnPayment, bool withSmile, bool byCallSpread);
+|v|ql/cashflows/rangeaccrual.hpp|RangeAccrualPricerByBgm::RangeAccrualPricerByBgm(Real correlation, ext::shared_ptr<SmileSection> smilesOnExpiry, ext::shared_ptr<SmileSection> smilesOnPayment, bool withSmile, bool byCallSpread);
 | |ql/cashflows/rangeaccrual.hpp|Real RangeAccrualPricerByBgm::swapletPrice() const;
 |?|ql/cashflows/rangeaccrual.hpp|RangeAccrualLeg::RangeAccrualLeg(Schedule schedule, ext::shared_ptr<IborIndex> index);
 | |ql/cashflows/rangeaccrual.hpp|RangeAccrualLeg & RangeAccrualLeg::withNotionals(Real notional);
