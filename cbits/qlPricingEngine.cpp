@@ -28,6 +28,7 @@
 #include <ql/pricingengines/swap/cvaswapengine.hpp>
 #include <ql/pricingengines/swap/treeswapengine.hpp>
 #include <ql/pricingengines/swaption/blackswaptionengine.hpp>
+#include <ql/termstructures/volatility/sabr.hpp>
 #include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
 #include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
 #include <ql/pricingengines/swaption/fdhullwhiteswaptionengine.hpp>
@@ -716,6 +717,35 @@ double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
 
 void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
   try {*len = arg(s)->value.pathSize(); *p = qlAllocateDoubles(*len);std::copy(s->value.at(asset).begin(), s->value.at(asset).end(), *p);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+
+double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
+  try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlUnsafeShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
+  try {return unsafeShiftedSabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, shift, (VolatilityType)volatilityType);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlUnsafeSabrNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
+  try {return unsafeSabrNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlUnsafeSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, char **e) {
+  try {return unsafeSabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, (VolatilityType)volatilityType);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, char **e) {
+  try {return sabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, (VolatilityType)volatilityType);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
+  try {return shiftedSabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, shift, (VolatilityType)volatilityType);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrFlochKennedyVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
+  try {return sabrFlochKennedyVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, char **e) {
+  try {validateSabrParameters(alpha, beta, nu, rho);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, char **e) {
+  try {std::array<Real, 4> guess = sabrGuess(k_m, vol_m, k_0, vol_0, k_p, vol_p, forward, expiryTime, beta, shift, (VolatilityType)volatilityType);
+    *len = guess.size(); *out = qlAllocateDoubles(*len); std::copy(guess.begin(), guess.end(), *out);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

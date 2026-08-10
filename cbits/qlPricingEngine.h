@@ -305,6 +305,16 @@ extern "C" {
   void qlFreeSamplePath(SamplePath *p);
   double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e);
   void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e);
+
+  double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e);
+  double qlUnsafeShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e);
+  double qlUnsafeSabrNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e);
+  double qlUnsafeSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, char **e);
+  double qlSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, char **e);
+  double qlShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e);
+  double qlSabrFlochKennedyVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e);
+  void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, char **e);
+  void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, char **e);
 #ifdef __cplusplus
 }
 #endif

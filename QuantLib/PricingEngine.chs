@@ -136,6 +136,15 @@ module QuantLib.PricingEngine
   , bachelierBlackFormula'
   , bachelierBlackFormula
   , defaultThetaPerDay
+  , unsafeSabrLogNormalVolatility
+  , unsafeShiftedSabrVolatility
+  , unsafeSabrNormalVolatility
+  , unsafeSabrVolatility
+  , sabrVolatility
+  , shiftedSabrVolatility
+  , sabrFlochKennedyVolatility
+  , validateSabrParameters
+  , sabrGuess
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -675,5 +684,95 @@ import QuantLib.Internal.Enum
 -- |default theta-per-day calculation
 {#fun qlQuantLibDefaultThetaPerDay as defaultThetaPerDay{`Double' -- ^theta
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |lognormal SABR volatility, no validity checks on the parameters
+{#fun qlUnsafeSabrLogNormalVolatility as unsafeSabrLogNormalVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |shifted SABR volatility (lognormal or normal), no validity checks on the parameters
+{#fun qlUnsafeShiftedSabrVolatility as unsafeShiftedSabrVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |normal SABR volatility, no validity checks on the parameters
+{#fun qlUnsafeSabrNormalVolatility as unsafeSabrNormalVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |SABR volatility (lognormal or normal), no validity checks on the parameters
+{#fun qlUnsafeSabrVolatility as unsafeSabrVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |SABR volatility (lognormal or normal), with validity checks on the parameters
+{#fun qlSabrVolatility as sabrVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |shifted SABR volatility (lognormal or normal), with validity checks on the parameters
+{#fun qlShiftedSabrVolatility as shiftedSabrVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |lognormal SABR volatility using the Floc'h-Kennedy formula, with validity checks on the parameters
+{#fun qlSabrFlochKennedyVolatility as sabrFlochKennedyVolatility{`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |validate SABR parameters, throwing if they are not acceptable
+{#fun qlValidateSabrParameters as validateSabrParameters{`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |initial guess (alpha, beta, nu, rho) for SABR calibration, per Le Floc'h and Kennedy
+{#fun qlSabrGuess as sabrGuess{`Double' -- ^k_m
+  ,`Double' -- ^vol_m
+  ,`Double' -- ^k_0
+  ,`Double' -- ^vol_0
+  ,`Double' -- ^k_p
+  ,`Double' -- ^vol_p
+  ,`Double' -- ^forward
+  ,`Double' -- ^expiryTime
+  ,`Double' -- ^beta
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
