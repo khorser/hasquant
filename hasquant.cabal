@@ -143,6 +143,7 @@ executable hasquant_example
       QuantLib.Example.Repo
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
+      QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
       Paths_hasquant
   autogen-modules:
@@ -182,6 +183,7 @@ test-suite hasquant_test
       QuantLib.Example.Repo
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
+      QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
       Paths_hasquant
   autogen-modules:

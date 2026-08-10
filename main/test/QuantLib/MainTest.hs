@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedLists #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 {-# LANGUAGE TupleSections #-}
+{-# LANGUAGE TemplateHaskell #-}
 module Main where
 
 import Prelude hiding(until, head, tail)
@@ -33,6 +34,8 @@ import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
 import qualified QuantLib.Instrument.Bond as B
+import QuantLib.Syntax(free1st, free2nd, cutAt, cutAt', cut)
+import QuantLib.Example.SyntaxHelpers(syntaxTestF, HasSyntaxLabel(..))
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.FRA as FRAExample
@@ -86,6 +89,23 @@ main = do
   putStrLn $ "Today is " ++ show w
 
   hspec $ do
+
+    describe "syntax" $ do
+      it "cutAt [1] matches free1st" $ do
+        $(cutAt [1] 'syntaxTestF) 2 3 4 1 `shouldBe` syntaxTestF 1 2 3 4
+        $(cutAt [1] 'syntaxTestF) 2 3 4 1 `shouldBe` $(free1st 'syntaxTestF) 2 3 4 1
+      it "cutAt [2] matches free2nd" $ do
+        $(cutAt [2] 'syntaxTestF) 1 3 4 2 `shouldBe` syntaxTestF 1 2 3 4
+        $(cutAt [2] 'syntaxTestF) 1 3 4 2 `shouldBe` $(free2nd 'syntaxTestF) 1 3 4 2
+      it "cutAt frees two non-adjacent positions" $
+        $(cutAt [1,3] 'syntaxTestF) 2 4 1 3 `shouldBe` syntaxTestF 1 2 3 4
+      it "cut substitutes holes in order of occurrence" $
+        $(cut [| syntaxTestF _ 2 _ 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
+      it "cut treats named holes the same as bare _" $
+        $(cut [| syntaxTestF _a 2 _b 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
+      it "cutAt' and cut both work on a typeclass method" $ do
+        $(cutAt' [1] 4) syntaxLabelWith 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
+        $(cut [| syntaxLabelWith _ 1 2 3 |]) True `shouldBe` syntaxLabelWith True 1 2 3
 
     describe "settings" $ do
       describe "evaluaton date" $ do
