@@ -30,6 +30,7 @@
 #include <ql/instruments/quantoforwardvanillaoption.hpp>
 #include <ql/instruments/quantobarrieroption.hpp>
 #include <ql/instruments/europeanoption.hpp>
+#include <ql/instruments/varianceswap.hpp>
 #include <ql/instruments/asianoption.hpp>
 #include <ql/instruments/vanillastorageoption.hpp>
 #include <ql/instruments/lookbackoption.hpp>
@@ -939,5 +940,17 @@ QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* 
 QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new RangeAccrualPricerByBgm(correlation, *arg(smilesOnExpiry), *arg(smilesOnPayment), withSmile, byCallSpread))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+
+void qlFreeVarianceSwap(QlVarianceSwap *o) {del(o);}
+QlInstrument* qlVarianceSwapAsInstrument(QlVarianceSwap *o) {return ret(new QlInstrument(*arg(o)));}
+QlVarianceSwap* qlVarianceSwap(int position, double strike, double notional, int startDate, int maturityDate, char **e) {
+  try {return ret(new QlVarianceSwap(alloc(new VarianceSwap((Position::Type)position, strike, notional, Date(startDate), Date(maturityDate)))));
+  } catch (std::exception& er) {return handleException<QlVarianceSwap*>(e, er);}}
+double qlVarianceSwapStrike(QlVarianceSwap* o, char **e) {try {return (*arg(o))->strike();} catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlVarianceSwapPosition(QlVarianceSwap* o, char **e) {try {return (*arg(o))->position();} catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlVarianceSwapStartDate(QlVarianceSwap* o, char **e) {try {return (*arg(o))->startDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlVarianceSwapMaturityDate(QlVarianceSwap* o, char **e) {try {return (*arg(o))->maturityDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
+double qlVarianceSwapNotional(QlVarianceSwap* o, char **e) {try {return (*arg(o))->notional();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlVarianceSwapVariance(QlVarianceSwap* o, char **e) {try {return (*arg(o))->variance();} catch (std::exception& er) {return handleException<double>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

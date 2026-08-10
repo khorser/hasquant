@@ -73,6 +73,7 @@ library
       QuantLib.Instrument.Bond
       QuantLib.Instrument.CapFloor
       QuantLib.Instrument.Forward
+      QuantLib.Instrument.Variance
       QuantLib.Process
       QuantLib.Instrument.Option
       QuantLib.Model

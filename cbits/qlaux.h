@@ -4,6 +4,7 @@
 #include <vector>
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
+#include <ql/instruments/varianceswap.hpp>
 
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
@@ -498,6 +499,7 @@ using QuantLib::VanillaOption;
 using QuantLib::VanillaSwap;
 using QuantLib::VarianceGammaEngine;
 using QuantLib::VarianceGammaProcess;
+using QuantLib::VarianceSwap;
 using QuantLib::VegaStressedBlackScholesProcess;
 using QuantLib::VolatilityTermStructure;
 using QuantLib::YearOnYearInflationSwap;
@@ -631,6 +633,7 @@ typedef shared_ptr<TypePayoff> QlTypePayoff;
 typedef shared_ptr<VanillaOption> QlVanillaOption;
 typedef shared_ptr<VanillaSwap> QlVanillaSwap;
 typedef shared_ptr<VarianceGammaProcess> QlVarianceGammaProcess;
+typedef shared_ptr<VarianceSwap> QlVarianceSwap;
 typedef shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
 typedef shared_ptr<YearOnYearInflationSwap> QlYearOnYearInflationSwap;
 typedef shared_ptr<YearOnYearInflationSwapHelper> QlYearOnYearInflationSwapHelper;
@@ -936,6 +939,7 @@ template <> class ObjClassName<QlTypePayoff*> {public: static void output(std::o
 template <> class ObjClassName<QlVanillaOption*> {public: static void output(std::ostream& os) {os << "QlVanillaOption";}};
 template <> class ObjClassName<QlVanillaSwap*> {public: static void output(std::ostream& os) {os << "QlVanillaSwap";}};
 template <> class ObjClassName<QlVarianceGammaProcess*> {public: static void output(std::ostream& os) {os << "QlVarianceGammaProcess";}};
+template <> class ObjClassName<QlVarianceSwap*> {public: static void output(std::ostream& os) {os << "QlVarianceSwap";}};
 template <> class ObjClassName<QlVolatilityTermStructure*> {public: static void output(std::ostream& os) {os << "QlVolatilityTermStructure";}};
 template <> class ObjClassName<QlYearOnYearInflationSwap*> {public: static void output(std::ostream& os) {os << "QlYearOnYearInflationSwap";}};
 template <> class ObjClassName<QlYearOnYearInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "QlYearOnYearInflationSwapHelper";}};
@@ -990,6 +994,7 @@ template <> class ObjClassName<VanillaOption*> {public: static void output(std::
 template <> class ObjClassName<VanillaSwap*> {public: static void output(std::ostream& os) {os << "VanillaSwap";}};
 template <> class ObjClassName<VarianceGammaEngine*> {public: static void output(std::ostream& os) {os << "VarianceGammaEngine";}};
 template <> class ObjClassName<VarianceGammaProcess*> {public: static void output(std::ostream& os) {os << "VarianceGammaProcess";}};
+template <> class ObjClassName<VarianceSwap*> {public: static void output(std::ostream& os) {os << "VarianceSwap";}};
 template <> class ObjClassName<VegaStressedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "VegaStressedBlackScholesProcess";}};
 template <> class ObjClassName<VolatilityTermStructure*> {public: static void output(std::ostream& os) {os << "VolatilityTermStructure";}};
 template <> class ObjClassName<YearOnYearInflationSwap*> {public: static void output(std::ostream& os) {os << "YearOnYearInflationSwap";}};
