@@ -1926,7 +1926,7 @@
 | |ql/experimental/exoticoptions/mceverestengine.hpp|MakeMCEverestEngine<RNG, S> & withAbsoluteTolerance(Real tolerance);
 | |ql/experimental/exoticoptions/mceverestengine.hpp|MakeMCEverestEngine<RNG, S> & withMaxSamples(Size samples);
 | |ql/experimental/exoticoptions/mceverestengine.hpp|MakeMCEverestEngine<RNG, S> & withSeed(BigNatural seed);
-| |ql/experimental/exoticoptions/mchimalayaengine.hpp|MCHimalayaEngine::MCHimalayaEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
+|?|ql/experimental/exoticoptions/mchimalayaengine.hpp|MCHimalayaEngine::MCHimalayaEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 | |ql/experimental/exoticoptions/mchimalayaengine.hpp|void MCHimalayaEngine::calculate() const;
 | |ql/experimental/exoticoptions/mchimalayaengine.hpp|MakeMCHimalayaEngine::MakeMCHimalayaEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>);
 | |ql/experimental/exoticoptions/mchimalayaengine.hpp|MakeMCHimalayaEngine<RNG, S> & MakeMCHimalayaEngine::withBrownianBridge(bool b = true);
@@ -1947,7 +1947,7 @@
 | |ql/experimental/exoticoptions/mchimalayaengine.hpp|MakeMCHimalayaEngine<RNG, S> & withAbsoluteTolerance(Real tolerance);
 | |ql/experimental/exoticoptions/mchimalayaengine.hpp|MakeMCHimalayaEngine<RNG, S> & withMaxSamples(Size samples);
 | |ql/experimental/exoticoptions/mchimalayaengine.hpp|MakeMCHimalayaEngine<RNG, S> & withSeed(BigNatural seed);
-| |ql/experimental/exoticoptions/mcpagodaengine.hpp|MCPagodaEngine::MCPagodaEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
+|?|ql/experimental/exoticoptions/mcpagodaengine.hpp|MCPagodaEngine::MCPagodaEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 | |ql/experimental/exoticoptions/mcpagodaengine.hpp|void MCPagodaEngine::calculate() const;
 | |ql/experimental/exoticoptions/mcpagodaengine.hpp|MakeMCPagodaEngine::MakeMCPagodaEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>);
 | |ql/experimental/exoticoptions/mcpagodaengine.hpp|MakeMCPagodaEngine<RNG, S> & MakeMCPagodaEngine::withBrownianBridge(bool b = true);

@@ -12,6 +12,8 @@
 #include <ql/instruments/dividendschedule.hpp>
 #include <ql/methods/montecarlo/pathgenerator.hpp>
 #include <ql/methods/montecarlo/multipathgenerator.hpp>
+#include <ql/experimental/exoticoptions/mchimalayaengine.hpp>
+#include <ql/experimental/exoticoptions/mcpagodaengine.hpp>
 
 namespace hasquant {
 #include "qlEnumObjects.h"
@@ -243,6 +245,32 @@ PricingEngine* qlMCHullWhiteCapFloorEngine1Aux(int rngtrait, shared_ptr<HullWhit
     return new MCHullWhiteCapFloorEngine<LowDiscrepancy>(model, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   case hasquant::Ziggurat:
     return new MCHullWhiteCapFloorEngine<Ziggurat>(model, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown RNG "<< rngtrait);
+}
+PricingEngine* qlMCHimalayaEngine1Aux(int rngtrait, const shared_ptr<StochasticProcessArray> processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  switch (rngtrait) {
+  case hasquant::PseudoRandom:
+    return new MCHimalayaEngine<PseudoRandom>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::PoissonPseudoRandom:
+    return new MCHimalayaEngine<PoissonPseudoRandom>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::LowDiscrepancy:
+    return new MCHimalayaEngine<LowDiscrepancy>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::Ziggurat:
+    return new MCHimalayaEngine<Ziggurat>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown RNG "<< rngtrait);
+}
+PricingEngine* qlMCPagodaEngine1Aux(int rngtrait, const shared_ptr<StochasticProcessArray> processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  switch (rngtrait) {
+  case hasquant::PseudoRandom:
+    return new MCPagodaEngine<PseudoRandom>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::PoissonPseudoRandom:
+    return new MCPagodaEngine<PoissonPseudoRandom>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::LowDiscrepancy:
+    return new MCPagodaEngine<LowDiscrepancy>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::Ziggurat:
+    return new MCPagodaEngine<Ziggurat>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   };
   QL_FAIL("Unknown RNG "<< rngtrait);
 }

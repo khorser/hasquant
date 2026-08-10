@@ -57,6 +57,8 @@ module QuantLib.PricingEngine
   , mcEuropeanGJRGARCHEngine
   , mcEuropeanHestonEngine
   , mcHullWhiteCapFloorEngine
+  , mcHimalayaEngine
+  , mcPagodaEngine
   , mcPerformanceEngine
   , mcVarianceSwapEngine
   , baroneAdesiWhaleyApproximationEngine
@@ -454,6 +456,22 @@ import QuantLib.Internal.Enum
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlMCHullWhiteCapFloorEngine1 as mcHullWhiteCapFloorEngine{`RngTrait',withHullWhite*`HullWhite',`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for 'himalayaOption'
+{#fun qlMCHimalayaEngine1 as mcHimalayaEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for 'pagodaOption'
+{#fun qlMCPagodaEngine1 as mcPagodaEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
