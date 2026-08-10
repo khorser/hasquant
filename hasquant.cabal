@@ -62,6 +62,7 @@ library
       QuantLib.Instrument
       QuantLib.Quote
       QuantLib.Method
+      QuantLib.CashFlow
       QuantLib.TermStructure
       QuantLib.TermStructure.Yield
       QuantLib.TermStructure.Inflation
@@ -69,7 +70,6 @@ library
       QuantLib.TermStructure.Volatility
       QuantLib.Index.InterestRate
       QuantLib.Index.Inflation
-      QuantLib.CashFlow
       QuantLib.Instrument.Bond
       QuantLib.Instrument.CapFloor
       QuantLib.Instrument.Forward
