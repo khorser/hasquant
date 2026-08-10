@@ -132,6 +132,7 @@ typedef struct QlTypePayoff QlTypePayoff;
 typedef struct QlVanillaOption QlVanillaOption;
 typedef struct QlVanillaSwap QlVanillaSwap;
 typedef struct QlVarianceGammaProcess QlVarianceGammaProcess;
+typedef struct QlVarianceOption QlVarianceOption;
 typedef struct QlVarianceSwap QlVarianceSwap;
 typedef struct QlVolatilityTermStructure QlVolatilityTermStructure;
 typedef struct QlYearOnYearInflationSwap QlYearOnYearInflationSwap;

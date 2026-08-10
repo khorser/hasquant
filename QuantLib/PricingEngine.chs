@@ -57,6 +57,7 @@ module QuantLib.PricingEngine
   , mcEuropeanEngine
   , mcEuropeanGJRGARCHEngine
   , mcEuropeanHestonEngine
+  , integralHestonVarianceOptionEngine
   , mcHullWhiteCapFloorEngine
   , mcHimalayaEngine
   , mcPagodaEngine
@@ -457,6 +458,8 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Prices a 'VarianceOption' by integrating its payoff against the Heston-model transition density.
+{#fun qlIntegralHestonVarianceOptionEngine as integralHestonVarianceOptionEngine{withHestonProcess*`GenHestonProcess a',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlMCHullWhiteCapFloorEngine1 as mcHullWhiteCapFloorEngine{`RngTrait',withHullWhite*`HullWhite',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples

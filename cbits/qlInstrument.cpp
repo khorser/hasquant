@@ -33,6 +33,7 @@
 #include <ql/instruments/quantobarrieroption.hpp>
 #include <ql/instruments/europeanoption.hpp>
 #include <ql/instruments/varianceswap.hpp>
+#include <ql/experimental/varianceoption/varianceoption.hpp>
 #include <ql/instruments/asianoption.hpp>
 #include <ql/instruments/vanillastorageoption.hpp>
 #include <ql/instruments/lookbackoption.hpp>
@@ -983,5 +984,11 @@ QlVarianceSwap* qlVarianceSwap(int position, double strike, double notional, int
   try {return ret(new QlVarianceSwap(alloc(new VarianceSwap((Position::Type)position, strike, notional, Date(startDate), Date(maturityDate)))));
   } catch (std::exception& er) {return handleException<QlVarianceSwap*>(e, er);}}
 double qlVarianceSwapVariance(QlVarianceSwap* o, char **e) {try {return (*arg(o))->variance();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeVarianceOption(QlVarianceOption *o) {del(o);}
+QlInstrument* qlVarianceOptionAsInstrument(QlVarianceOption *o) {return ret(new QlInstrument(*arg(o)));}
+QlVarianceOption* qlVarianceOption(QlPayoff* payoff, double notional, int startDate, int maturityDate, char **e) {
+  try {return ret(new QlVarianceOption(alloc(new VarianceOption(*arg(payoff), notional, Date(startDate), Date(maturityDate)))));
+  } catch (std::exception& er) {return handleException<QlVarianceOption*>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

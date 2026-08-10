@@ -2,6 +2,7 @@
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
 #include <ql/experimental/math/zigguratrng.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
+#include <ql/experimental/varianceoption/integralhestonvarianceoptionengine.hpp>
 #include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 #include <ql/methods/montecarlo/lsmbasissystem.hpp>
 #include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
@@ -389,6 +390,9 @@ QlPricingEngine* qlMCEuropeanGJRGARCHEngine1(int rngtrait, QlGJRGARCHProcess* x0
 QlPricingEngine* qlMCEuropeanHestonEngine1(int rngtrait, QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCEuropeanHestonEngine1Aux(rngtrait, *arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlIntegralHestonVarianceOptionEngine(QlHestonProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new IntegralHestonVarianceOptionEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCHullWhiteCapFloorEngine1(int rngtrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCHullWhiteCapFloorEngine1Aux(rngtrait, *arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -675,7 +679,7 @@ QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYield
   try {return ret(new QlGJRGARCHProcess(alloc(new GJRGARCHProcess(Handle<YieldTermStructure>(*arg(riskFreeRate)), Handle<YieldTermStructure>(*arg(dividendYield)), Handle<Quote>(*arg(s0)), v0, omega, alpha, beta, gamma, lambda, daysPerYear, (GJRGARCHProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlGJRGARCHProcess*>(e, er);}}
 QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e) {
-  try {return ret(new QlHestonProcess(alloc(new HestonProcess(Handle<YieldTermStructure>(*arg(riskFreeRate)), Handle<YieldTermStructure>(*arg(dividendYield)), Handle<Quote>(*arg(s0)), v0, kappa, theta, sigma, rho, (HestonProcess::Discretization)d))));
+  try {return ret(new QlHestonProcess(alloc(new HestonProcess(Handle<YieldTermStructure>(*arg(riskFreeRate)), qlNullableHandle(arg(dividendYield)), Handle<Quote>(*arg(s0)), v0, kappa, theta, sigma, rho, (HestonProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlHestonProcess*>(e, er);}}
 QlHullWhiteForwardProcess* qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, char **e) {
   try {return ret(new QlHullWhiteForwardProcess(alloc(new HullWhiteForwardProcess(Handle<YieldTermStructure>(*arg(h)), a, sigma))));

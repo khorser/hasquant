@@ -12,6 +12,7 @@ module QuantLib.Instrument.Swap
   , CPISwap
   , ZeroCouponSwap
   , VarianceSwap
+  , VarianceOption
 
   , asSwap
 
@@ -37,6 +38,7 @@ module QuantLib.Instrument.Swap
   , fairFixedRate
   , varianceSwap
   , variance
+  , varianceOption
 
   , endDiscounts
   , leg
@@ -461,5 +463,17 @@ instance HasFloatingLeg AssetSwap where
 
 -- |Realized variance -- requires a pricing engine to be set first
 {#fun qlVarianceSwapVariance as variance{withGenInstrument*`VarianceSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+{#pointer *QlPayoff nocode#}
+{#pointer *QlVarianceOption as VarianceOption foreign -> CVarianceOption' nocode#}
+
+-- |Variance option: an option on realized variance, priced (e.g. via 'integralHestonVarianceOptionEngine')
+-- against a payoff on the variance level rather than the underlying price. This class does not
+-- manage seasoned variance options.
+{#fun qlVarianceOption as varianceOption{withPayoff*`Payoff'
+  ,`Double' -- ^notional
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^maturityDate
+  ,preErrorCheck-`String'errorCheck*-}->`VarianceOption'peekVarianceOption*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

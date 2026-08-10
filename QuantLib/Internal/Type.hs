@@ -562,6 +562,10 @@ module QuantLib.Internal.Type
   , CVarianceSwap
   , CVarianceSwap'
   , peekVarianceSwap
+  , VarianceOption
+  , CVarianceOption
+  , CVarianceOption'
+  , peekVarianceOption
   , CapFloor
   , CCapFloor
   , CCapFloor'
@@ -2088,6 +2092,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >  ForwardRateAgreement
 -- >  FxForward
 -- >  VarianceSwap
+-- >  VarianceOption
 -- >  a:Option
 -- >    CdsOption : Option
 -- >    MultiAssetOption
@@ -2169,6 +2174,16 @@ foreign import ccall "ql.h qlVarianceSwapAsInstrument" qlVarianceSwapAsInstrumen
 instance Upcastable CVarianceSwap' where {type Base CVarianceSwap' = CInstrument'; upcast = qlVarianceSwapAsInstrument}
 peekVarianceSwap :: Ptr CVarianceSwap' -> IO VarianceSwap
 peekVarianceSwap = GenInstrument <.> newGenForeignPtr
+
+data CVarianceOption'
+type CVarianceOption = ForeignPtr CVarianceOption'
+type VarianceOption = GenInstrument CVarianceOption
+foreign import ccall unsafe "ql.h &qlFreeVarianceOption" qlFreeVarianceOption :: FinalizerPtr CVarianceOption'
+instance Finalizable CVarianceOption' where finalize = qlFreeVarianceOption
+foreign import ccall "ql.h qlVarianceOptionAsInstrument" qlVarianceOptionAsInstrument :: Ptr CVarianceOption' -> IO (Ptr CInstrument')
+instance Upcastable CVarianceOption' where {type Base CVarianceOption' = CInstrument'; upcast = qlVarianceOptionAsInstrument}
+peekVarianceOption :: Ptr CVarianceOption' -> IO VarianceOption
+peekVarianceOption = GenInstrument <.> newGenForeignPtr
 
 data CCapFloor'
 type CCapFloor = ForeignPtr CCapFloor'

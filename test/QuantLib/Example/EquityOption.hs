@@ -60,7 +60,7 @@ run = do
   analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
   analyticEuro <- npv europeanOpt
 
-  hestonProc <- hestonProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
+  hestonProc <- hestonProcess ts (Just divTS) underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
   hestonMod <- hestonModel hestonProc
   hestonEng <- analyticHestonEngine' hestonMod 144
   QuantLib.Instrument.setPricingEngine europeanOpt hestonEng

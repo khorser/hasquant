@@ -215,8 +215,11 @@ import QuantLib.Internal.Type
   ,`Double' -- ^lambda
   ,`Double' -- ^daysPerYear
   ,`GJRGARCHProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GJRGARCHProcess'peekGJRGARCHProcess*#}
+-- |/dividendYield/ may be 'Nothing' (an empty term-structure handle) -- required e.g. by
+-- 'QuantLib.PricingEngine.integralHestonVarianceOptionEngine', which rejects a process with a
+-- non-empty dividend handle.
 {#fun qlHestonProcess as hestonProcess{withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
-  ,withYieldTermStructure*`GenYieldTermStructure c' -- dividendYield
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)' -- ^dividendYield
   ,withQuote*`GenQuote a' -- ^s0
   ,`Double' -- ^v0
   ,`Double' -- ^kappa

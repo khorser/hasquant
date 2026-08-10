@@ -450,6 +450,10 @@ extern "C" {
   QlInstrument* qlVarianceSwapAsInstrument(QlVarianceSwap *o);
   QlVarianceSwap* qlVarianceSwap(int position, double strike, double notional, int startDate, int maturityDate, char **e);
   double qlVarianceSwapVariance(QlVarianceSwap* o, char **e);
+
+  void qlFreeVarianceOption(QlVarianceOption *o);
+  QlInstrument* qlVarianceOptionAsInstrument(QlVarianceOption *o);
+  QlVarianceOption* qlVarianceOption(QlPayoff* payoff, double notional, int startDate, int maturityDate, char **e);
 #ifdef __cplusplus
 }
 #endif
