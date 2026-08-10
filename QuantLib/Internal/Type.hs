@@ -60,6 +60,14 @@ module QuantLib.Internal.Type
   , peekDividend
   , withDividend
   , withDividendArray
+  , CZeroInflationCashFlow
+  , ZeroInflationCashFlow
+  , peekZeroInflationCashFlow
+  , withZeroInflationCashFlow
+  , CCPICashFlow
+  , CPICashFlow
+  , peekCPICashFlow
+  , withCPICashFlow
   , CSmileSection
   , SmileSection
   , peekSmileSection
@@ -830,6 +838,24 @@ withDividend :: Dividend -> (Ptr CDividend -> IO b) -> IO b
 withDividend = withStandalone . getCDividend
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
 withDividendArray = withStandaloneArray getCDividend
+
+data CZeroInflationCashFlow
+newtype ZeroInflationCashFlow = ZeroInflationCashFlow {getCZeroInflationCashFlow :: Standalone CZeroInflationCashFlow}
+foreign import ccall unsafe "ql.h &qlFreeZeroInflationCashFlow" qlFreeZeroInflationCashFlow :: FinalizerPtr CZeroInflationCashFlow
+instance Finalizable CZeroInflationCashFlow where finalize = qlFreeZeroInflationCashFlow
+peekZeroInflationCashFlow :: Ptr CZeroInflationCashFlow -> IO ZeroInflationCashFlow
+peekZeroInflationCashFlow = ZeroInflationCashFlow <.> peekStandalone
+withZeroInflationCashFlow :: ZeroInflationCashFlow -> (Ptr CZeroInflationCashFlow -> IO b) -> IO b
+withZeroInflationCashFlow = withStandalone . getCZeroInflationCashFlow
+
+data CCPICashFlow
+newtype CPICashFlow = CPICashFlow {getCCPICashFlow :: Standalone CCPICashFlow}
+foreign import ccall unsafe "ql.h &qlFreeCPICashFlow" qlFreeCPICashFlow :: FinalizerPtr CCPICashFlow
+instance Finalizable CCPICashFlow where finalize = qlFreeCPICashFlow
+peekCPICashFlow :: Ptr CCPICashFlow -> IO CPICashFlow
+peekCPICashFlow = CPICashFlow <.> peekStandalone
+withCPICashFlow :: CPICashFlow -> (Ptr CCPICashFlow -> IO b) -> IO b
+withCPICashFlow = withStandalone . getCCPICashFlow
 
 data CSmileSection
 newtype SmileSection = SmileSection {getCSmileSection :: Standalone CSmileSection}

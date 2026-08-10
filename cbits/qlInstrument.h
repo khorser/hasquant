@@ -428,6 +428,18 @@ extern "C" {
   CouponLeg* qlLegToCouponLeg(Leg *o, char **e);
   Leg* qlCPILeg(Schedule* schedule, QlZeroInflationIndex* index, double baseCPI, int obsLagLen, int obsLagUnit, unsigned notionalsLen, double* notionals, unsigned fixedRatesLen, double* fixedRates, DayCounter* paymentDayCounter, int paymentAdjustment, Calendar* paymentCalendar, int observationInterpolation, int subtractInflationNominal, char **e);
   Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
+
+  void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o);
+  QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e);
+  double qlZeroInflationCashFlowAmount(QlZeroInflationCashFlow* o, char **e);
+  double qlZeroInflationCashFlowBaseFixing(QlZeroInflationCashFlow* o, char **e);
+  double qlZeroInflationCashFlowIndexFixing(QlZeroInflationCashFlow* o, char **e);
+
+  void qlFreeCPICashFlow(QlCPICashFlow *o);
+  QlCPICashFlow* qlCPICashFlow(double notional, QlZeroInflationIndex* index, int baseDate, double baseFixing, int observationDate, int obsLagLen, int obsLagUnit, int interpolation, int paymentDate, int growthOnly, char **e);
+  double qlCPICashFlowAmount(QlCPICashFlow* o, char **e);
+  double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e);
+  double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e);
   QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e);
   void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
   QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);

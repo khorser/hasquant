@@ -1,4 +1,4 @@
-| |ql/cashflow.hpp|Real CashFlow::amount() const;
+|u|ql/cashflow.hpp|Real CashFlow::amount() const;
 | |ql/cashflow.hpp|Date CashFlow::exCouponDate() const;
 | |ql/cashflow.hpp|bool CashFlow::tradingExCoupon(const Date & refDate = Date()) const;
 | |ql/cashflow.hpp|ext::shared_ptr<Coupon> CashFlow::coupon_cast(const ext::shared_ptr<CashFlow> &);
@@ -198,12 +198,12 @@
 | |ql/cashflows/cpicoupon.hpp|ext::shared_ptr<ZeroInflationIndex> CPICoupon::cpiIndex() const;
 | |ql/cashflows/cpicoupon.hpp|Rate CPICoupon::indexRatio(Date d) const;
 | |ql/cashflows/cpicoupon.hpp|Rate CPICoupon::adjustedIndexGrowth() const;
-| |ql/cashflows/cpicoupon.hpp|CPICashFlow::CPICashFlow(Real notional, const ext::shared_ptr<ZeroInflationIndex> & index, const Date & baseDate, Real baseFixing, const Date & observationDate, const Period & observationLag, CPI::InterpolationType interpolation, const Date & paymentDate, bool growthOnly = false);
-| |ql/cashflows/cpicoupon.hpp|Date CPICashFlow::observationDate() const;
-| |ql/cashflows/cpicoupon.hpp|Period CPICashFlow::observationLag() const;
-| |ql/cashflows/cpicoupon.hpp|CPI::InterpolationType CPICashFlow::interpolation() const;
-| |ql/cashflows/cpicoupon.hpp|Frequency CPICashFlow::frequency() const;
-| |ql/cashflows/cpicoupon.hpp|ext::shared_ptr<ZeroInflationIndex> CPICashFlow::cpiIndex() const;
+|v|ql/cashflows/cpicoupon.hpp|CPICashFlow::CPICashFlow(Real notional, const ext::shared_ptr<ZeroInflationIndex> & index, const Date & baseDate, Real baseFixing, const Date & observationDate, const Period & observationLag, CPI::InterpolationType interpolation, const Date & paymentDate, bool growthOnly = false);
+|x|ql/cashflows/cpicoupon.hpp|Date CPICashFlow::observationDate() const;
+|x|ql/cashflows/cpicoupon.hpp|Period CPICashFlow::observationLag() const;
+|x|ql/cashflows/cpicoupon.hpp|CPI::InterpolationType CPICashFlow::interpolation() const;
+|x|ql/cashflows/cpicoupon.hpp|Frequency CPICashFlow::frequency() const;
+|x|ql/cashflows/cpicoupon.hpp|ext::shared_ptr<ZeroInflationIndex> CPICashFlow::cpiIndex() const;
 |v|ql/cashflows/cpicoupon.hpp|CPILeg::CPILeg(Schedule schedule, ext::shared_ptr<ZeroInflationIndex> index, Real baseCPI, const Period & observationLag);
 | |ql/cashflows/cpicoupon.hpp|CPILeg & CPILeg::withNotionals(Real notional);
 |v|ql/cashflows/cpicoupon.hpp|CPILeg & CPILeg::withNotionals(const std::vector<Real> & notionals);
@@ -402,8 +402,8 @@
 | |ql/cashflows/indexedcashflow.hpp|Date IndexedCashFlow::fixingDate() const;
 | |ql/cashflows/indexedcashflow.hpp|ext::shared_ptr<Index> IndexedCashFlow::index() const;
 | |ql/cashflows/indexedcashflow.hpp|bool IndexedCashFlow::growthOnly() const;
-| |ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::baseFixing() const;
-| |ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::indexFixing() const;
+|u|ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::baseFixing() const;
+|u|ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::indexFixing() const;
 | |ql/cashflows/indexedcashflow.hpp|void accept(AcyclicVisitor & v);
 | |ql/cashflows/inflationcoupon.hpp|InflationCoupon::InflationCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, ext::shared_ptr<InflationIndex> index, const Period & observationLag, DayCounter dayCounter, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
 | |ql/cashflows/inflationcoupon.hpp|Real InflationCoupon::price(const Handle<YieldTermStructure> & discountingCurve) const;
@@ -647,9 +647,9 @@
 | |ql/cashflows/yoyinflationcoupon.hpp|yoyInflationLeg & yoyInflationLeg::withCaps(const std::vector<Rate> & caps);
 | |ql/cashflows/yoyinflationcoupon.hpp|yoyInflationLeg & yoyInflationLeg::withFloors(Rate floor);
 | |ql/cashflows/yoyinflationcoupon.hpp|yoyInflationLeg & yoyInflationLeg::withFloors(const std::vector<Rate> & floors);
-| |ql/cashflows/zeroinflationcashflow.hpp|ZeroInflationCashFlow::ZeroInflationCashFlow(Real notional, const ext::shared_ptr<ZeroInflationIndex> & index, CPI::InterpolationType observationInterpolation, const Date & startDate, const Date & endDate, const Period & observationLag, const Date & paymentDate, bool growthOnly = false);
-| |ql/cashflows/zeroinflationcashflow.hpp|ext::shared_ptr<ZeroInflationIndex> ZeroInflationCashFlow::zeroInflationIndex() const;
-| |ql/cashflows/zeroinflationcashflow.hpp|CPI::InterpolationType ZeroInflationCashFlow::observationInterpolation() const;
+|v|ql/cashflows/zeroinflationcashflow.hpp|ZeroInflationCashFlow::ZeroInflationCashFlow(Real notional, const ext::shared_ptr<ZeroInflationIndex> & index, CPI::InterpolationType observationInterpolation, const Date & startDate, const Date & endDate, const Period & observationLag, const Date & paymentDate, bool growthOnly = false);
+|x|ql/cashflows/zeroinflationcashflow.hpp|ext::shared_ptr<ZeroInflationIndex> ZeroInflationCashFlow::zeroInflationIndex() const;
+|x|ql/cashflows/zeroinflationcashflow.hpp|CPI::InterpolationType ZeroInflationCashFlow::observationInterpolation() const;
 | |ql/compounding.hpp|std::ostream & operator<<(std::ostream & out, const Compounding & compounding);
 |v|ql/currencies/africa.hpp|AOACurrency::AOACurrency();
 |v|ql/currencies/africa.hpp|BWPCurrency::BWPCurrency();

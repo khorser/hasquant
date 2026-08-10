@@ -68,6 +68,16 @@ module QuantLib.CashFlow
   , rangeAccrualLeg
   , cpiLeg
   , yoyInflationLeg
+  , ZeroInflationCashFlow
+  , zeroInflationCashFlow
+  , zeroInflationCashFlowAmount
+  , zeroInflationCashFlowBaseFixing
+  , zeroInflationCashFlowIndexFixing
+  , CPICashFlow
+  , cpiCashFlow
+  , cpiCashFlowAmount
+  , cpiCashFlowBaseFixing
+  , cpiCashFlowIndexFixing
   , YieldCurveModel(..)
 
   , FloatingRateCouponPricer
@@ -383,6 +393,46 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow nocode#}
+{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow nocode#}
+
+-- |Cash flow dependent on a 'ZeroInflationIndex' ratio (not a coupon -- no accruals).
+-- The ratio is taken between fixings observed at /startDate/ and /endDate/ minus /observationLag/.
+{#fun qlZeroInflationCashFlow as zeroInflationCashFlow{`Double' -- ^notional
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,withDay*`Day' -- ^paymentDate
+  ,`Bool' -- ^growthOnly
+  ,preErrorCheck-`String'errorCheck*-}->`ZeroInflationCashFlow'peekZeroInflationCashFlow*#}
+-- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
+{#fun qlZeroInflationCashFlowAmount as zeroInflationCashFlowAmount{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Fixing used as the base of the ratio (as of /startDate/, lagged).
+{#fun qlZeroInflationCashFlowBaseFixing as zeroInflationCashFlowBaseFixing{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Fixing used as the numerator of the ratio (as of /endDate/, lagged).
+{#fun qlZeroInflationCashFlowIndexFixing as zeroInflationCashFlowIndexFixing{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |CPI-linked cash flow (not a coupon -- no accruals), with an optional explicit /baseFixing/
+-- (pass 'Nothing' to derive it from /baseDate/ instead).
+{#fun qlCPICashFlow as cpiCashFlow{`Double' -- ^notional
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withMaybeDay*`Maybe Day' -- ^baseDate
+  ,fromMaybeDouble`Maybe Double' -- ^baseFixing
+  ,withDay*`Day' -- ^observationDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,fromEnumC`CPIInterpolationType' -- ^interpolation
+  ,withDay*`Day' -- ^paymentDate
+  ,`Bool' -- ^growthOnly
+  ,preErrorCheck-`String'errorCheck*-}->`CPICashFlow'peekCPICashFlow*#}
+-- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
+{#fun qlCPICashFlowAmount as cpiCashFlowAmount{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Fixing used as the base of the ratio: the explicit /baseFixing/ if given at construction, else derived from /baseDate/.
+{#fun qlCPICashFlowBaseFixing as cpiCashFlowBaseFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Fixing used as the numerator of the ratio (as of /observationDate/, lagged).
+{#fun qlCPICashFlowIndexFixing as cpiCashFlowIndexFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as toCouponLeg{withLeg*`GenLeg a',preErrorCheck-`String'errorCheck*-}->`CouponLeg'peekCouponLeg*#}

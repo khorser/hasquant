@@ -57,6 +57,7 @@
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/cashflows/cpicoupon.hpp>
 #include <ql/cashflows/yoyinflationcoupon.hpp>
+#include <ql/cashflows/zeroinflationcashflow.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/dividend.hpp>
 #include <ql/cashflows/couponpricer.hpp>
@@ -932,6 +933,25 @@ Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* i
         .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<Natural>(fixingDays, fixingDays+fixingDaysLen))
         .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+
+void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o) {del(o);}
+QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e) {
+  try {return ret(new QlZeroInflationCashFlow(alloc(new ZeroInflationCashFlow(notional, *arg(index), (CPI::InterpolationType)observationInterpolation,
+        Date(startDate), Date(endDate), Period(obsLagLen, (TimeUnit)obsLagUnit), Date(paymentDate), growthOnly))));
+  } catch (std::exception& er) {return handleException<QlZeroInflationCashFlow*>(e, er);}}
+double qlZeroInflationCashFlowAmount(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZeroInflationCashFlowBaseFixing(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZeroInflationCashFlowIndexFixing(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeCPICashFlow(QlCPICashFlow *o) {del(o);}
+QlCPICashFlow* qlCPICashFlow(double notional, QlZeroInflationIndex* index, int baseDate, double baseFixing, int observationDate, int obsLagLen, int obsLagUnit, int interpolation, int paymentDate, int growthOnly, char **e) {
+  try {return ret(new QlCPICashFlow(alloc(new CPICashFlow(notional, *arg(index), qlNullableDate(baseDate), baseFixing,
+        Date(observationDate), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation, Date(paymentDate), growthOnly))));
+  } catch (std::exception& er) {return handleException<QlCPICashFlow*>(e, er);}}
+double qlCPICashFlowAmount(QlCPICashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
 CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   CouponLeg *cl = 0;
   try {cl = new CouponLeg(); cl->reserve(o->size());
