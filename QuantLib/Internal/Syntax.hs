@@ -1,8 +1,9 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell, TupleSections #-}
 module QuantLib.Internal.Syntax
   (
     deriveCrossEnum
   , deriveIborConstructor
+  , deriveOptionsRecord
   ) where
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib
@@ -188,5 +189,34 @@ deriveIborConstructor resName ordinalFn tenorFn normalEnum dailyEnum onEnum extr
           ordinalClause <- clause [conP strippedName []] ordinalBody' []
           tenorClause <- clause [conP strippedName []] (normalB [|(0, $(conE days))|]) []
           return (con, ordinalClause, tenorClause)
+
+-- A wide C++ constructor's trailing, upstream-defaulted params are turned into
+-- one record type (one field per param, in the order given) plus a `default<recName>`
+-- value built from the supplied default exprs. Unlike deriveCrossEnum/deriveIborConstructor,
+-- this deliberately does NOT reify the target binding's type to recover field types --
+-- doing so for a c2hs-generated function whose distinct trailing params can each carry
+-- their own independent type variable (e.g. OISRateHelper's fixedRate :: GenQuote a vs.
+-- overnightSpread :: Maybe (GenQuote m)) would mean decomposing a ForallT, working out
+-- which of its bound variables occur free in just the trailing slice, and re-quantifying
+-- the generated record/wrapper over exactly those -- real complexity with no precedent
+-- elsewhere in this module (both existing helpers only reify enum/data-constructor
+-- *shapes*, never a function's type). Taking explicit field types (and, since a field's
+-- type may itself mention a fresh type variable, the record's own type parameters) at
+-- the splice site sidesteps all of that; the actual drift protection this exists for --
+-- "the record's fields must match the underlying binding" -- still comes for free from
+-- the type checker at the hand-written wrapper that applies the record's fields to that
+-- binding, so nothing is lost by not reifying.
+deriveOptionsRecord :: String -> [String] -> [(String, TypeQ, ExpQ)] -> DecsQ
+deriveOptionsRecord recName tyVarNames fields = sequence
+  [ dataD (cxt []) recTypeName tyVars Nothing
+      [recC recTypeName [varBangType (mkName n) (bangType strictness t) | (n, t, _) <- fields]] []
+  , sigD defaultName (foldl appT (conT recTypeName) (map (varT . mkName) tyVarNames))
+  , funD defaultName [clause [] (normalB (recConE recTypeName [(mkName n,) <$> e | (n, _, e) <- fields])) []]
+  ]
+  where
+    recTypeName = mkName recName
+    tyVars = map (plainTV . mkName) tyVarNames
+    defaultName = mkName ("default" ++ recName)
+    strictness = bang noSourceUnpackedness noSourceStrictness
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

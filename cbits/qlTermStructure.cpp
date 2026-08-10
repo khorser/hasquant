@@ -563,11 +563,32 @@ QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {r
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, int priceType, char **e) {
   try {return ret(new QlBondHelper(alloc(new BondHelper(Handle<Quote>(*arg(cleanPrice)), *arg(bond), (Bond::Price::Type)priceType))));
   } catch (std::exception& er) {return handleException<QlBondHelper*>(e, er);}}
-QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
-  try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
+QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve,
+  int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
+  int fl, int fu, QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
+  Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
+  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, char **e) {
+  try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
+    telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
+    Period(fl, (TimeUnit)fu),
+    overnightSpread ? std::variant<Spread, Handle<Quote>>(Handle<Quote>(*arg(overnightSpread))) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
+    (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
+    fixedPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)fixedPaymentFrequency),
+    *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
+    pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
-QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
-    try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
+QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve,
+  int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
+  QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
+  Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
+  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, char **e) {
+    try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
+    telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
+    overnightSpread ? std::variant<Spread, Handle<Quote>>(Handle<Quote>(*arg(overnightSpread))) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
+    (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
+    fixedPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)fixedPaymentFrequency),
+    *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
+    pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
 QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int fl, int fu, QlYieldTermStructure* discountingCurve,
   int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, QlFloatingRateCouponPricer *couponPricer, char **e) {

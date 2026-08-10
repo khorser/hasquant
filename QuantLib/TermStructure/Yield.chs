@@ -1,4 +1,4 @@
-{-# LANGUAGE FunctionalDependencies, FlexibleInstances #-}
+{-# LANGUAGE FunctionalDependencies, FlexibleInstances, TemplateHaskell #-}
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure
@@ -33,6 +33,10 @@ module QuantLib.TermStructure.Yield
   , bondHelper
   , oisRateHelper
   , oisRateHelper'
+  , OISRateHelperOpts(..)
+  , defaultOISRateHelperOpts
+  , oisRateHelperFull
+  , oisRateHelperFull'
   , swapRateHelper
   , forwardSpreadedTermStructure
   , zeroSpreadedTermStructure
@@ -64,13 +68,18 @@ module QuantLib.TermStructure.Yield
   ) where
 import QuantLib.Internal hiding (maxDate)
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax(deriveOptionsRecord)
+import Language.Haskell.TH(mkName)
+import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote
+import Data.Maybe(fromMaybe)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
-{#import QuantLib.CashFlow#}(FloatingRateCouponPricer)
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+{#import QuantLib.CashFlow#}(FloatingRateCouponPricer, RateAveragingType(..))
+{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
+import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(Frequency)
+{#import QuantLib.Time.Schedule#}(Frequency(..), DateGenerationRule(..))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -106,6 +115,44 @@ import QuantLib.Internal.Type
 {#enum BootstrapTrait{} deriving(Show, Eq)#}
 {#enum PillarChoice{} deriving(Show, Eq)#}
 {#enum FuturesType{} deriving(Show, Eq)#}
+
+-- OISRateHelperOpts bundles every trailing param oisRateHelper/oisRateHelper' hardcode
+-- (see the comment above them, further down), pre-populated with upstream's own
+-- defaults via defaultOISRateHelperOpts, overridden through record-update syntax at
+-- the call site -- see the feedback_th_options_record_pattern memory note for why this
+-- exists as a second entry point instead of widening oisRateHelper/oisRateHelper'
+-- themselves. The three Calendar fields are Maybe here (unlike the raw binding's plain
+-- Calendar) since a real Calendar is only obtainable in IO (`calendar Null`) and can't
+-- live in a pure default record value -- oisRateHelperFull/oisRateHelperFull'
+-- substitute a fresh Null calendar for Nothing, same as the narrow constructors do
+-- today. This splice must stay textually before every {#fun#}-generated binding in
+-- this file: c2hs always appends its raw foreign-import stubs at the physical end of
+-- the generated module regardless of where in the .chs a {#fun#} hook appears, and a
+-- top-level TH splice anywhere in between would otherwise split the file into
+-- declaration groups that can't see each other, breaking every earlier {#fun#}
+-- wrapper's reference to its own (always-last) foreign-import stub.
+$(deriveOptionsRecord "OISRateHelperOpts" ["m"]
+  [ ("oisTelescopicValueDates", [t|Bool|], [|False|])
+  , ("oisPaymentLag", [t|Int|], [|0|])
+  , ("oisPaymentConvention", [t|BusinessDayConvention|], [|Following|])
+  , ("oisPaymentFrequency", [t|Frequency|], [|Annual|])
+  , ("oisPaymentCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("oisForwardStart", [t|(Int, TimeUnit)|], [|(0, Days)|]) -- ^ignored by oisRateHelperFull' (ctor2 has no forwardStart)
+  , ("oisOvernightSpread", [t|Maybe (GenQuote $(varT (mkName "m")))|], [|Nothing|])
+  , ("oisPillar", [t|PillarChoice|], [|LastRelevantDate|])
+  , ("oisCustomPillarDate", [t|Maybe Day|], [|Nothing|])
+  , ("oisAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
+  , ("oisEndOfMonth", [t|Maybe Bool|], [|Nothing|])
+  , ("oisFixedPaymentFrequency", [t|Maybe Frequency|], [|Nothing|])
+  , ("oisFixedCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("oisLookbackDays", [t|Maybe Word|], [|Nothing|])
+  , ("oisLockoutDays", [t|Word|], [|0|])
+  , ("oisApplyObservationShift", [t|Bool|], [|False|])
+  , ("oisPricer", [t|Maybe FloatingRateCouponPricer|], [|Nothing|])
+  , ("oisRule", [t|DateGenerationRule|], [|Backward|])
+  , ("oisOvernightCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("oisConvention", [t|BusinessDayConvention|], [|ModifiedFollowing|])
+  ])
 
 {#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote a' -- ^rate
@@ -188,8 +235,106 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
 
 {#fun qlBondHelper as bondHelper_{withQuote*`GenQuote a',withBond*`Bond',`Int' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
-{#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
-{#fun qlOISRateHelper2 as oisRateHelper'{withDay*`Day', withDay*`Day',withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
+-- oisRateHelper/oisRateHelper' keep their original 5-param signatures (below);
+-- both call the same full-arity raw bindings as oisRateHelperFull/oisRateHelperFull'
+-- (the options-record wrappers spliced further down in this file), hardcoding
+-- upstream's own defaults for every trailing param -- widening the underlying C
+-- shim was cheaper than maintaining a second near-duplicate one (see
+-- cbits/qlTermStructure.cpp's qlOISRateHelper/qlOISRateHelper2).
+oisRateHelper :: Word -> (Int, TimeUnit) -> GenQuote a -> OvernightIborIndex
+  -> Maybe (GenYieldTermStructure b) -> IO OISRateHelper
+oisRateHelper settlementDays tenor fixedRate idx discountingCurve = do
+  cal <- calendar Null
+  oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
+    False 0 Following Annual cal (0, Days) Nothing LastRelevantDate Nothing AveragingCompound
+    Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+
+oisRateHelper' :: Day -> Day -> GenQuote a -> OvernightIborIndex
+  -> Maybe (GenYieldTermStructure b) -> IO OISRateHelper
+oisRateHelper' startDate endDate fixedRate idx discountingCurve = do
+  cal <- calendar Null
+  oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
+    False 0 Following Annual cal Nothing LastRelevantDate Nothing AveragingCompound
+    Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+
+{#fun qlOISRateHelper as oisRateHelper_{fromIntegral`Word' -- ^settlementDays
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,withQuote*`GenQuote a'
+  ,withOvernightIborIndex*`OvernightIborIndex'
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)' -- ^discountingCurve
+  ,`Bool' -- ^telescopicValueDates
+  ,fromIntegral`Int' -- ^paymentLag
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,`Frequency' -- ^paymentFrequency
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^forwardStart
+  ,withMaybeQuote*`Maybe (GenQuote m)' -- ^overnightSpread
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`RateAveragingType' -- ^averagingMethod
+  ,fromMaybeBool`Maybe Bool' -- ^endOfMonth
+  ,fromMaybeEnum`Maybe Frequency' -- ^fixedPaymentFrequency
+  ,withCalendar*`Calendar' -- ^fixedCalendar
+  ,fromMaybeInt`Maybe Word' -- ^lookbackDays
+  ,fromIntegral`Word' -- ^lockoutDays
+  ,`Bool' -- ^applyObservationShift
+  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^pricer
+  ,`DateGenerationRule' -- ^rule
+  ,withCalendar*`Calendar' -- ^overnightCalendar
+  ,`BusinessDayConvention' -- ^convention (a.k.a. overnightConvention)
+  ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
+{#fun qlOISRateHelper2 as oisRateHelper2_{withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,withQuote*`GenQuote a'
+  ,withOvernightIborIndex*`OvernightIborIndex'
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)' -- ^discountingCurve
+  ,`Bool' -- ^telescopicValueDates
+  ,fromIntegral`Int' -- ^paymentLag
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,`Frequency' -- ^paymentFrequency
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,withMaybeQuote*`Maybe (GenQuote m)' -- ^overnightSpread
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`RateAveragingType' -- ^averagingMethod
+  ,fromMaybeBool`Maybe Bool' -- ^endOfMonth
+  ,fromMaybeEnum`Maybe Frequency' -- ^fixedPaymentFrequency
+  ,withCalendar*`Calendar' -- ^fixedCalendar
+  ,fromMaybeInt`Maybe Word' -- ^lookbackDays
+  ,fromIntegral`Word' -- ^lockoutDays
+  ,`Bool' -- ^applyObservationShift
+  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^pricer
+  ,`DateGenerationRule' -- ^rule
+  ,withCalendar*`Calendar' -- ^overnightCalendar
+  ,`BusinessDayConvention' -- ^convention (a.k.a. overnightConvention)
+  ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
+
+oisRateHelperFull :: Word -> (Int, TimeUnit) -> GenQuote a -> OvernightIborIndex
+  -> Maybe (GenYieldTermStructure b) -> OISRateHelperOpts m -> IO OISRateHelper
+oisRateHelperFull settlementDays tenor fixedRate idx discountingCurve opts = do
+  cal <- calendar Null
+  oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
+    (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
+    (oisPaymentFrequency opts) (fromMaybe cal (oisPaymentCalendar opts))
+    (oisForwardStart opts) (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)
+    (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
+    (fromMaybe cal (oisFixedCalendar opts)) (oisLookbackDays opts) (oisLockoutDays opts)
+    (oisApplyObservationShift opts) (oisPricer opts) (oisRule opts)
+    (fromMaybe cal (oisOvernightCalendar opts)) (oisConvention opts)
+
+oisRateHelperFull' :: Day -> Day -> GenQuote a -> OvernightIborIndex
+  -> Maybe (GenYieldTermStructure b) -> OISRateHelperOpts m -> IO OISRateHelper
+oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
+  cal <- calendar Null
+  oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
+    (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
+    (oisPaymentFrequency opts) (fromMaybe cal (oisPaymentCalendar opts))
+    (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)
+    (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
+    (fromMaybe cal (oisFixedCalendar opts)) (oisLookbackDays opts) (oisLockoutDays opts)
+    (oisApplyObservationShift opts) (oisPricer opts) (oisRule opts)
+    (fromMaybe cal (oisOvernightCalendar opts)) (oisConvention opts)
+
 {#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)'
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
