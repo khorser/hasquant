@@ -36,6 +36,7 @@ const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Da
 int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
 ext::optional<bool> qlOptBool(int b) {return b == -1 ? ext::nullopt : ext::optional<bool>(b);}
 int qlOptBool(optional<bool> b) {return b ? *b : -1;}
+ext::optional<BusinessDayConvention> qlOptBusinessDayConvention(int c) {return c == -1 ? ext::nullopt : ext::optional<BusinessDayConvention>((BusinessDayConvention)c);}
 
 char *tracedup(const char *p) {
   TP2("Duplicating string", (void *)p);

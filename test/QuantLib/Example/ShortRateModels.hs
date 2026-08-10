@@ -177,7 +177,7 @@ runSwaps = do
       fixedSchedule <- schedule (Just startDate) maturity (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
       floatSchedule <- schedule (Just startDate) maturity (6, Months) cal Following Following Forward False Nothing Nothing
       forM rates $ \r -> do
-        swp <- vanillaSwap Payer 1000000.0 fixedSchedule r thirty360bb floatSchedule euribor 0.0 act360 Following
+        swp <- vanillaSwap Payer 1000000.0 fixedSchedule r thirty360bb floatSchedule euribor 0.0 act360 (Just Following) Nothing
         setPricingEngine swp riskFreeEngine
         expected <- npv swp
         setPricingEngine swp treeEngine

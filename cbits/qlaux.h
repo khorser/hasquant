@@ -264,6 +264,7 @@ namespace QuantLib {
 
 using QuantLib::Handle;
 using QuantLib::Quote;
+using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::FloatingRateBond;
@@ -1021,6 +1022,8 @@ inline Matrix qlMatrix(double *a, unsigned r, unsigned c) {
 
 optional<bool> qlOptBool(int b);
 int qlOptBool(optional<bool> b);
+
+optional<BusinessDayConvention> qlOptBusinessDayConvention(int c);
 
 template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}
 

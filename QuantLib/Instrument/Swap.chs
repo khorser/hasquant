@@ -140,7 +140,8 @@ swap' = (uncurry qlSwap1) . unzip
   ,withIborIndex*`GenIborIndex a',
   `Double' -- ^spread
   ,withDayCounter*`DayCounter' -- ^floatingDayCount
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
   ,preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 -- | Haskell equivalent of QuantLib's fluent @MakeVanillaSwap@ builder -- a
@@ -203,7 +204,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   floatSchedule <- schedule (Just swapStartDate) endDate floatTenor floatCalendar
     floatConv floatConv Backward False Nothing Nothing
   vanillaSwap swapType nominal fixedSchedule fixedRate fixedDayCount
-    floatSchedule index 0.0 floatDayCount floatConv
+    floatSchedule index 0.0 floatDayCount (Just floatConv) Nothing
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg b',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}

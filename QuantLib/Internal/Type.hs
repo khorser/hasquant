@@ -73,6 +73,7 @@ module QuantLib.Internal.Type
   , peekFloatingRateCouponPricer
   , withFloatingRateCouponPricer
   , withFloatingRateCouponPricerArray
+  , withMaybeFloatingRateCouponPricer
   , CDefaultProbabilityHelper
   , DefaultProbabilityHelper
   , peekDefaultProbabilityHelper
@@ -829,6 +830,8 @@ withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCo
 withFloatingRateCouponPricer = withStandalone . getCFloatingRateCouponPricer
 withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer)) -> IO b) -> IO b
 withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPricer
+withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
+withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
 
 data CDefaultProbabilityHelper
 newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: Standalone CDefaultProbabilityHelper}

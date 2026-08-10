@@ -268,8 +268,8 @@ QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice,
 QlBMASwap* qlBMASwap(int type, double nominal, Schedule* liborSchedule, double liborFraction, double liborSpread, QlIborIndex* liborIndex, DayCounter* liborDayCount, Schedule* bmaSchedule, QlBMAIndex* bmaIndex, DayCounter* bmaDayCount, char **e) {
   try {return ret(new QlBMASwap(alloc(new BMASwap((BMASwap::Type)type, nominal, *arg(liborSchedule), liborFraction, liborSpread, *arg(liborIndex), *arg(liborDayCount), *arg(bmaSchedule), *arg(bmaIndex), *arg(bmaDayCount)))));
   } catch (std::exception& er) {return handleException<QlBMASwap*>(e, er);}}
-QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, char **e) {
-  try {return ret(new QlVanillaSwap(alloc(new VanillaSwap((VanillaSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(floatSchedule), *arg(iborIndex), spread, *arg(floatingDayCount), (BusinessDayConvention)paymentConvention))));
+QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, int useIndexedCoupons, char **e) {
+  try {return ret(new QlVanillaSwap(alloc(new VanillaSwap((VanillaSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(floatSchedule), *arg(iborIndex), spread, *arg(floatingDayCount), qlOptBusinessDayConvention(paymentConvention), qlOptBool(useIndexedCoupons)))));
   } catch (std::exception& er) {return handleException<QlVanillaSwap*>(e, er);}}
 
 QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {try {return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));} catch (std::exception& er) {return handleException<QlSwap*>(e, er);} }

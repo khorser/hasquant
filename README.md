@@ -71,7 +71,6 @@ While this is convenient, it leads to some allocation and deallocation on each c
 - Use some QuantLib handles for quotes and curves to support native QuantLib semantics
 - Design a declarative embedded DSL
 - Add HLS integration in Docker
-- `Pillar::Choice` is not exposed anywhere `BootstrapHelper`-derived helpers are bound (`RateHelper`s in `QuantLib.TermStructure.Yield`, and `ZeroCouponInflationSwapHelper`/`YearOnYearInflationSwapHelper` in `QuantLib.TermStructure.Inflation`) -- always uses the upstream default (`Pillar::LastRelevantDate`). Add a Haskell parameter if a caller ever needs `MaturityDate`/`CustomDate` pillars instead.
 - `experimental/commodities`
 - `experimental/termstructures`
 - `shortratemodels` example: the two RelinkableHandle-dependent tests (`testHullWhiteUpdatesR0WhenTermStructureRelinks`, `testExtendedCoxIngersollRossUpdatesWhenTermStructureRelinks`) are not ported -- no `RelinkableHandle<YieldTermStructure>`/`linkTo` concept exists in hasquant; a separate, bigger project, not a small addition. The other 7 tests are ported in `QuantLib.Example.ShortRateModels`.

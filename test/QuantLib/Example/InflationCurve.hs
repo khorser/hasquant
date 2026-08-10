@@ -12,7 +12,7 @@ import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Inflation
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date hiding(today)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
@@ -38,8 +38,8 @@ run = do
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing zii d (260.0 + i) False
   q1 <- simpleQuote flatRate
   q2 <- simpleQuote flatRate
-  h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear
-  h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear
+  h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
+  h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
   zeroCurve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Linear
   z1 <- zeroRate zeroCurve maturity1 True
   z2 <- zeroRate zeroCurve maturity2 True
@@ -50,8 +50,8 @@ run = do
   nominalCurve <- flatForward today nominalQ dc IR.Continuous Annual
   qy1 <- simpleQuote flatRate
   qy2 <- simpleQuote flatRate
-  hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve
-  hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve
+  hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
+  hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   yoyCurve <- piecewiseYoYInflationCurve today baseDate flatRate Monthly dc [hy1, hy2] Linear
   y1 <- yoyRate yoyCurve maturity1 True
   y2 <- yoyRate yoyCurve maturity2 True

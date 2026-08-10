@@ -52,7 +52,7 @@ run = do
   floatSchedule <- schedule (Just start) maturity (6, Months) cal floatConv floatConv Forward False Nothing Nothing
   floatDC <- IRI.dayCounter index6m
   swp <- vanillaSwap swapType 1000.0 fixedSchedule dummyFixRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
+    floatDC (Just floatConv) Nothing
   engine <- discountingSwapEngine ts Nothing Nothing Nothing
   asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
   fixedATMRate <- fairRate swp
@@ -86,7 +86,7 @@ run = do
   bkp <- Model.params modelBK'
 
   atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
+    floatDC (Just floatConv) Nothing
 
   bermudanDates <- fixedLeg swp >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
   let ex = Bermudan (BermudanExercise bermudanDates False)
@@ -97,11 +97,11 @@ run = do
   let fixedOTMRate = fixedATMRate * 1.2
       fixedITMRate = fixedATMRate * 0.8
   otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
+    floatDC (Just floatConv) Nothing
   otmSwaption <- swaption otmSwap ex Physical PhysicalOTC
 
   itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
+    floatDC (Just floatConv) Nothing
   itmSwaption <- swaption itmSwap ex Physical PhysicalOTC
 
   npvO <- priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK

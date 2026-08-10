@@ -1224,7 +1224,8 @@ main = do
             swaps <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100)
-                swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= asRateHelper)
+                swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
+                  Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
               swapData
 
             ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear

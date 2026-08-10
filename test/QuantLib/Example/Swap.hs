@@ -47,7 +47,7 @@ run = do
     TS.depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip depoQuotes depoTerms
   fraHelpers <- mapM (\(q, (m1, m2)) ->
-    TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
+    TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC TS.LastRelevantDate Nothing True) $
       zip fraQuotes fraTerms
 
   imm1 <- nextIMMDate settleDate True
@@ -58,13 +58,14 @@ run = do
   imms <- foldM nextIMM [imm1] (replicate (length futPrices-1) 1)
 
   futHelpers <- mapM (\(q, imm) ->
-    TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing) $
+    TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing TS.IMM) $
       zip futQuotes imms
 
   swFixedDC <- dayCounter Thirty360European
   eu6m <- IR.iborIndex IR.Euribor6M Nothing
   swapHelpers <- mapM (\(q, y) ->
-    TS.swapRateHelper' q (y, Years) cal Annual Unadjusted swFixedDC eu6m Nothing (0, Days) Nothing >>= TS.asRateHelper) $
+    TS.swapRateHelper' q (y, Years) cal Annual Unadjusted swFixedDC eu6m Nothing (0, Days) Nothing
+      Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing >>= TS.asRateHelper) $
       zip swapQuotes swapYears
 
   tsDC <- dayCounter ActualActualISDA
@@ -106,7 +107,7 @@ run = do
       fixSched <- schedule (Just settle) maturity fixP cal Unadjusted Unadjusted Forward False Nothing Nothing
       floatSched <- schedule (Just settle) maturity floatP cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
       spot5Y <- vanillaSwap Payer 1000000 fixSched 0.04 fixDC
-        floatSched eu6m 0.0 floatDC ModifiedFollowing
+        floatSched eu6m 0.0 floatDC (Just ModifiedFollowing) Nothing
 
       fwdStart <- advance cal settle (1, Years) Following False
       let fwdMat = addGregorianYearsClip 5 fwdStart
@@ -115,7 +116,7 @@ run = do
       fwdFloatS <- schedule (Just fwdStart) fwdMat floatP
         cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
       fwd1Y5Y <- vanillaSwap Payer 1000000 fwdFixS 0.04 fixDC
-        fwdFloatS eu6m 0.0 floatDC ModifiedFollowing
+        fwdFloatS eu6m 0.0 floatDC (Just ModifiedFollowing) Nothing
       refDate <- referenceDate d
       pricer <- discountingSwapEngine d (Just False) (Just refDate) (Just refDate)
 

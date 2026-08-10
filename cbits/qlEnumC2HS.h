@@ -282,6 +282,12 @@ enum RateAveragingType {
              unpaid interest. */
 };
 
+// termstructures/bootstraphelper.hpp
+enum PillarChoice {MaturityDate, LastRelevantDate, CustomDate};
+
+// instruments/futures.hpp
+enum FuturesType {IMM, ASX, Custom};
+
 // instruments/creditdefaultswap.hpp
 enum PricingModel {
   Midpoint,

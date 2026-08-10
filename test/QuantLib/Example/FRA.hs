@@ -16,7 +16,7 @@ import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, BootstrapTrait(..), zeroRate')
+import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, BootstrapTrait(..), zeroRate', PillarChoice(..))
 import QuantLib.Math
 
 data IterationResult = IterationResult { fwdRateR :: Double
@@ -41,7 +41,7 @@ run = do
   fraDayCounter <- I.dayCounter eu3m
 
   fraInstruments <- mapM
-    (\(q, t, p) -> fraRateHelper q t p fixDays fraCalendar convention eom fraDayCounter) $
+    (\(q, t, p) -> fraRateHelper q t p fixDays fraCalendar convention eom fraDayCounter LastRelevantDate Nothing True) $
     zip3 fraQuotes starts periods
 
   tsdc <- dayCounter ActualActualISDA

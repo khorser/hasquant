@@ -46,6 +46,7 @@ module QuantLib.Internal
   , qlSavedSettings
   , qlFreeSavedSettings
   , fromMaybeDouble
+  , fromMaybeEnum
   , peekIntArray
   , peekUIntArray
   , Matrix(..)
@@ -97,6 +98,12 @@ fromMaybeInt = maybe (fromIntegral qlNullInteger) fromIntegral
 
 fromMaybeDouble :: Maybe Double -> CDouble
 fromMaybeDouble = maybe qlNullReal realToFrac
+
+-- |Marshals a Maybe of a plain by-value C++ enum whose lowest member maps to 0
+-- (true of every by-value enum bound so far) as a C int, using -1 as the
+-- ext::nullopt sentinel -- mirrors fromMaybeBool's convention.
+fromMaybeEnum :: Enum a => Maybe a -> CInt
+fromMaybeEnum = maybe (-1) (fromIntegral . fromEnum)
 
 toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x

@@ -14,6 +14,8 @@ module QuantLib.TermStructure.Yield
   , GenRateHelper
 
   , BootstrapTrait(..)
+  , PillarChoice(..)
+  , FuturesType(..)
   , depositRateHelper'
   , depositRateHelper
   , fixedRateBondHelper
@@ -65,6 +67,7 @@ import QuantLib.Internal.Enum
 import QuantLib.Quote
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
+{#import QuantLib.CashFlow#}(FloatingRateCouponPricer)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
@@ -101,6 +104,8 @@ import QuantLib.Internal.Type
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 
 {#enum BootstrapTrait{} deriving(Show, Eq)#}
+{#enum PillarChoice{} deriving(Show, Eq)#}
+{#enum FuturesType{} deriving(Show, Eq)#}
 
 {#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote a',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote a' -- ^rate
@@ -127,6 +132,13 @@ import QuantLib.Internal.Type
   ,withMaybeQuote*`Maybe (GenQuote s)' -- ^spread
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure d)' -- ^discountingCurve
+  ,fromMaybeInt`Maybe Word' -- ^settlementDays
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^endOfMonth
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^floatConvention
+  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^couponPricer
   ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 {#fun qlFlatForward as flatForward{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlFlatForward1 as flatForward'{fromIntegral`Word' -- ^settlementDays
@@ -161,7 +173,11 @@ import QuantLib.Internal.Type
   ,withCalendar*`Calendar' -- ^calendar
   ,`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
-  ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,withDayCounter*`DayCounter'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 -- BondPriceType (QuantLib.Instrument.Bond) is later in exposed-modules than
@@ -174,7 +190,13 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 {#fun qlOISRateHelper as oisRateHelper{fromIntegral`Word',fromEnumQuantity`(Int,TimeUnit)'&,withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlOISRateHelper2 as oisRateHelper'{withDay*`Day', withDay*`Day',withQuote*`GenQuote a',withOvernightIborIndex*`OvernightIborIndex',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure b)',preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
-{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)',preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote a',withSwapIndex*`GenSwapIndex b',withMaybeQuote*`Maybe (GenQuote m)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure c)'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^endOfMonth
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
+  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^couponPricer
+  ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 {#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure b',withQuote*`GenQuote a',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote a' -- ^liborFraction
@@ -183,17 +205,30 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
   ,withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^bmpPeriod
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote a',fromIntegral`Word' -- ^monthsToStart
-  ,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,withIborIndex*`GenIborIndex b'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
   ,fromIntegral`Word' -- ^lengthInMonths
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
-  ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,withDayCounter*`DayCounter'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper3 as fraIborRateHelper{withQuote*`GenQuote a',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
-  ,withIborIndex*`GenIborIndex b',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,withIborIndex*`GenIborIndex b'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFuturesRateHelper1 as futuresRateHelper'{withQuote*`GenQuote a',withDay*`Day' -- ^immStartDate
   ,withDay*`Day' -- ^endDate
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote m)' -- ^convexityAdjustment
+  ,`FuturesType' -- ^type
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote a',withDay*`Day' -- ^immDate
   ,withIborIndex*`GenIborIndex b',withMaybeQuote*`Maybe (GenQuote m)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
@@ -201,6 +236,7 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
   ,fromIntegral`Word' -- ^lengthInMonths
   ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote m)' -- ^convexityAdjustment
+  ,`FuturesType' -- ^type
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper a',preErrorCheck-`String'errorCheck*-}->`Double'#}
 

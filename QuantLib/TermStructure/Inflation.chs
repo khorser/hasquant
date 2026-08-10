@@ -21,6 +21,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Enum
+{#import QuantLib.TermStructure.Yield#}(PillarChoice)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -48,6 +49,8 @@ import QuantLib.Internal.Enum
   ,withDayCounter*`DayCounter'
   ,withZeroInflationIndex*`ZeroInflationIndex'
   ,`CPIInterpolationType' -- ^observationInterpolation
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwapHelper'peekZeroCouponInflationSwapHelper*#}
 -- |Bootstrap helper for a year-on-year inflation swap. Unlike 'zeroCouponInflationSwapHelper',
 -- also needs the nominal discount curve (the YoY swap's fixed/floating legs discount off it).
@@ -60,6 +63,8 @@ import QuantLib.Internal.Enum
   ,withYoYInflationIndex*`YoYInflationIndex'
   ,`CPIInterpolationType' -- ^observationInterpolation
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
 
 piecewiseZeroInflationCurve :: Day -- ^referenceDate

@@ -47,6 +47,7 @@ run = do
   swapHelpers <- forM (zip swapQuotes tenorsSwapMkt) $ \(q, t) ->
     TS.swapRateHelper' q (t, Years) cal Quarterly ModifiedFollowing actActISDA yieldIndex
       Nothing (0, Days) Nothing
+      Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
       >>= TS.asRateHelper
 
   swapTS <- TS.piecewiseYieldCurve' 2 cal swapHelpers actActISDA [] TS.Discount LogLinear True
