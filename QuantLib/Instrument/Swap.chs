@@ -68,6 +68,7 @@ import Data.Maybe(fromMaybe)
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.InterestRate#}(VolatilityType)
+{#import QuantLib.CashFlow#}(RateAveragingType)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention(..), adjust, advance)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
@@ -229,12 +230,28 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,withSchedule*`Schedule',`Double'  -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDC
   ,withOvernightIborIndex*`OvernightIborIndex',`Double' -- ^spread
+  ,fromIntegral`Int' -- ^paymentLag
+  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,`Bool' -- ^telescopicValueDates
+  ,`RateAveragingType' -- ^averagingMethod
+  ,fromMaybeInt`Maybe Word' -- ^lookbackDays
+  ,fromIntegral`Word' -- ^lockoutDays
+  ,`Bool' -- ^applyObservationShift
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 {#fun qlOvernightIndexedSwap1 as overnightIndexedSwap'{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
   ,withSchedule*`Schedule' -- ^schedule
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDC
   ,withOvernightIborIndex*`OvernightIborIndex',`Double' -- ^spread
+  ,fromIntegral`Int' -- ^paymentLag
+  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,`Bool' -- ^telescopicValueDates
+  ,`RateAveragingType' -- ^averagingMethod
+  ,fromMaybeInt`Maybe Word' -- ^lookbackDays
+  ,fromIntegral`Word' -- ^lockoutDays
+  ,`Bool' -- ^applyObservationShift
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 {#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
 {#fun qlSwapStartDate as startDate{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
