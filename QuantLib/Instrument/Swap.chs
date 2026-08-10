@@ -11,6 +11,7 @@ module QuantLib.Instrument.Swap
   , YearOnYearInflationSwap
   , CPISwap
   , ZeroCouponSwap
+  , VarianceSwap
 
   , asSwap
 
@@ -34,6 +35,8 @@ module QuantLib.Instrument.Swap
   , zeroCouponSwap'
   , fairFixedPayment
   , fairFixedRate
+  , varianceSwap
+  , variance
 
   , endDiscounts
   , leg
@@ -446,5 +449,17 @@ instance HasFloatingLeg AssetSwap where
 {#fun qlAssetSwapFloatingLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlAssetSwapFloatingLegBPS{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlAssetSwapFloatingLegNPV{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+{#pointer *QlVarianceSwap as VarianceSwap foreign -> CVarianceSwap' nocode#}
+
+-- |Variance swap: pays off the difference between realized and strike variance, scaled by notional. This class does not manage seasoned variance swaps.
+{#fun qlVarianceSwap as varianceSwap{fromEnumC`PositionType',`Double' -- ^strike
+  ,`Double' -- ^notional
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^maturityDate
+  ,preErrorCheck-`String'errorCheck*-}->`VarianceSwap'peekVarianceSwap*#}
+
+-- |Realized variance -- requires a pricing engine to be set first
+{#fun qlVarianceSwapVariance as variance{withGenInstrument*`VarianceSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
