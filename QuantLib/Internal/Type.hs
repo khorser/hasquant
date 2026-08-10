@@ -640,6 +640,11 @@ module QuantLib.Internal.Type
   , CCPISwap'
   , peekCPISwap
   , withCPISwap
+  , ZeroCouponSwap
+  , CZeroCouponSwap
+  , CZeroCouponSwap'
+  , peekZeroCouponSwap
+  , withZeroCouponSwap
   , QuantoBarrierOption
   , CQuantoBarrierOption
   , CQuantoBarrierOption'
@@ -2076,6 +2081,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    ZeroCouponInflationSwap
 -- >    YearOnYearInflationSwap
 -- >    CPISwap
+-- >    ZeroCouponSwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
 -- >  Bond
@@ -2375,6 +2381,18 @@ peekCPISwap :: Ptr CCPISwap' -> IO CPISwap
 peekCPISwap = peekGenSwap
 withCPISwap :: CPISwap -> (Ptr CCPISwap' -> IO b) -> IO b
 withCPISwap = withForeignPtr . ptr . peel . getInstrument
+
+data CZeroCouponSwap'
+type CZeroCouponSwap = ForeignPtr CZeroCouponSwap'
+type ZeroCouponSwap = GenSwap CZeroCouponSwap
+foreign import ccall unsafe "ql.h &qlFreeZeroCouponSwap" qlFreeZeroCouponSwap :: FinalizerPtr CZeroCouponSwap'
+instance Finalizable CZeroCouponSwap' where finalize = qlFreeZeroCouponSwap
+foreign import ccall "ql.h qlZeroCouponSwapAsSwap" qlZeroCouponSwapAsSwap :: Ptr CZeroCouponSwap' -> IO (Ptr CSwap')
+instance Upcastable CZeroCouponSwap' where {type Base CZeroCouponSwap' = CSwap'; upcast = qlZeroCouponSwapAsSwap}
+peekZeroCouponSwap :: Ptr CZeroCouponSwap' -> IO ZeroCouponSwap
+peekZeroCouponSwap = peekGenSwap
+withZeroCouponSwap :: ZeroCouponSwap -> (Ptr CZeroCouponSwap' -> IO b) -> IO b
+withZeroCouponSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CCdsOption'
 type CCdsOption = ForeignPtr CCdsOption'

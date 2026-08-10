@@ -140,6 +140,7 @@ typedef struct QlYoYInflationIndex QlYoYInflationIndex;
 typedef struct QlYoYInflationTermStructure QlYoYInflationTermStructure;
 typedef struct QlZeroCouponInflationSwap QlZeroCouponInflationSwap;
 typedef struct QlZeroCouponInflationSwapHelper QlZeroCouponInflationSwapHelper;
+typedef struct QlZeroCouponSwap QlZeroCouponSwap;
 typedef struct QlZeroInflationIndex QlZeroInflationIndex;
 typedef struct QlZeroInflationTermStructure QlZeroInflationTermStructure;
 typedef struct PolymorphicPathGenerator PolymorphicPathGenerator;

@@ -22,6 +22,7 @@
 #include <ql/instruments/zerocouponinflationswap.hpp>
 #include <ql/instruments/yearonyearinflationswap.hpp>
 #include <ql/instruments/cpiswap.hpp>
+#include <ql/instruments/zerocouponswap.hpp>
 #include <ql/instruments/barrieroption.hpp>
 #include <ql/instruments/vanillaoption.hpp>
 #include <ql/instruments/swaption.hpp>
@@ -336,6 +337,17 @@ QlCPISwap* qlCPISwap(int type, double nominal, int subtractInflationNominal, dou
   } catch (std::exception& er) {return handleException<QlCPISwap*>(e, er);}}
 double qlCPISwapFairRate(QlCPISwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCPISwapFairSpread(QlCPISwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeZeroCouponSwap(QlZeroCouponSwap *o) {del(o);}
+QlSwap* qlZeroCouponSwapAsSwap(QlZeroCouponSwap *o) {return ret(new QlSwap(*arg(o)));}
+QlZeroCouponSwap* qlZeroCouponSwap(int type, double baseNominal, int startDate, int maturityDate, double fixedPayment, QlIborIndex* iborIndex, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e) {
+  try {return ret(new QlZeroCouponSwap(alloc(new ZeroCouponSwap((Swap::Type)type, baseNominal, Date(startDate), Date(maturityDate), fixedPayment, *arg(iborIndex), *arg(paymentCalendar), (BusinessDayConvention)paymentConvention, paymentDelay))));
+  } catch (std::exception& er) {return handleException<QlZeroCouponSwap*>(e, er);}}
+QlZeroCouponSwap* qlZeroCouponSwap1(int type, double baseNominal, int startDate, int maturityDate, double fixedRate, DayCounter* fixedDayCounter, QlIborIndex* iborIndex, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e) {
+  try {return ret(new QlZeroCouponSwap(alloc(new ZeroCouponSwap((Swap::Type)type, baseNominal, Date(startDate), Date(maturityDate), fixedRate, *arg(fixedDayCounter), *arg(iborIndex), *arg(paymentCalendar), (BusinessDayConvention)paymentConvention, paymentDelay))));
+  } catch (std::exception& er) {return handleException<QlZeroCouponSwap*>(e, er);}}
+double qlZeroCouponSwapFairFixedPayment(QlZeroCouponSwap* o, char **e) {try {return (*arg(o))->fairFixedPayment();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZeroCouponSwapFairFixedRate(QlZeroCouponSwap* o, DayCounter* dayCounter, char **e) {try {return (*arg(o))->fairFixedRate(*arg(dayCounter));} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlAssetSwapPayBondCoupon(QlAssetSwap* o, char **e) {try {return (*arg(o))->payBondCoupon();} catch (std::exception& er) {return handleException<int>(e, er);}}
 Leg* qlBMASwapBmaLeg(QlBMASwap* o, char **e) {try {return ret(new Leg((*arg(o))->bmaLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlBMASwapBmaLegBPS(QlBMASwap* o, char **e) {try {return (*arg(o))->bmaLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}

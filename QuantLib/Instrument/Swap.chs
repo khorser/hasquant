@@ -10,6 +10,7 @@ module QuantLib.Instrument.Swap
   , ZeroCouponInflationSwap
   , YearOnYearInflationSwap
   , CPISwap
+  , ZeroCouponSwap
 
   , asSwap
 
@@ -29,6 +30,10 @@ module QuantLib.Instrument.Swap
   , yoyFairRate
   , cpiSwap
   , cpiSwapFairRate
+  , zeroCouponSwap
+  , zeroCouponSwap'
+  , fairFixedPayment
+  , fairFixedRate
 
   , endDiscounts
   , leg
@@ -120,6 +125,7 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlZeroCouponInflationSwap as ZeroCouponInflationSwap foreign -> CZeroCouponInflationSwap' nocode#}
 {#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 {#pointer *QlCPISwap as CPISwap foreign -> CCPISwap' nocode#}
+{#pointer *QlZeroCouponSwap as ZeroCouponSwap foreign -> CZeroCouponSwap' nocode#}
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double' -- ^price
@@ -354,6 +360,28 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,preErrorCheck-`String'errorCheck*-}->`CPISwap'peekCPISwap*#}
 {#fun qlCPISwapFairRate as cpiSwapFairRate{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlCPISwapFairSpread{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Zero-coupon swap quoted in terms of a known fixed cash flow. \"payer\"\/\"receiver\" refer to the fixed leg.
+{#fun qlZeroCouponSwap as zeroCouponSwap{`SwapType',`Double' -- ^baseNominal
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^maturityDate
+  ,`Double' -- ^fixedPayment
+  ,withIborIndex*`GenIborIndex a',withCalendar*`Calendar' -- ^paymentCalendar
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^paymentDelay
+  ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
+-- |Zero-coupon swap quoted in terms of a fixed rate.
+{#fun qlZeroCouponSwap1 as zeroCouponSwap'{`SwapType',`Double' -- ^baseNominal
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^maturityDate
+  ,`Double' -- ^fixedRate
+  ,withDayCounter*`DayCounter' -- ^fixedDayCounter
+  ,withIborIndex*`GenIborIndex a',withCalendar*`Calendar' -- ^paymentCalendar
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^paymentDelay
+  ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
+{#fun qlZeroCouponSwapFairFixedPayment as fairFixedPayment{withZeroCouponSwap*`ZeroCouponSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlZeroCouponSwapFairFixedRate as fairFixedRate{withZeroCouponSwap*`ZeroCouponSwap',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 class HasFixedLeg a where
   fairRate :: a -> IO Double

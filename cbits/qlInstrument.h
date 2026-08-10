@@ -122,6 +122,12 @@ extern "C" {
   QlCPISwap* qlCPISwap(int type, double nominal, int subtractInflationNominal, double spread, DayCounter* floatDayCount, Schedule* floatSchedule, int floatRoll, unsigned fixingDays, QlIborIndex* floatIndex, double fixedRate, double baseCPI, DayCounter* fixedDayCount, Schedule* fixedSchedule, int fixedRoll, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* fixedIndex, int observationInterpolation, double inflationNominal, char **e);
   double qlCPISwapFairRate(QlCPISwap* o, char **e);
   double qlCPISwapFairSpread(QlCPISwap* o, char **e);
+  void qlFreeZeroCouponSwap(QlZeroCouponSwap *o);
+  QlSwap* qlZeroCouponSwapAsSwap(QlZeroCouponSwap *o);
+  QlZeroCouponSwap* qlZeroCouponSwap(int type, double baseNominal, int startDate, int maturityDate, double fixedPayment, QlIborIndex* iborIndex, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e);
+  QlZeroCouponSwap* qlZeroCouponSwap1(int type, double baseNominal, int startDate, int maturityDate, double fixedRate, DayCounter* fixedDayCounter, QlIborIndex* iborIndex, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e);
+  double qlZeroCouponSwapFairFixedPayment(QlZeroCouponSwap* o, char **e);
+  double qlZeroCouponSwapFairFixedRate(QlZeroCouponSwap* o, DayCounter* dayCounter, char **e);
   QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e);
   QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e);
   QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, char **e);

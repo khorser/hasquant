@@ -4120,8 +4120,8 @@
 | |ql/instruments/zerocouponinflationswap.hpp|Real ZeroCouponInflationSwap::fixedLegBPS() const;
 | |ql/instruments/zerocouponinflationswap.hpp|Real ZeroCouponInflationSwap::inflationLegNPV() const;
 |v|ql/instruments/zerocouponinflationswap.hpp|Real ZeroCouponInflationSwap::fairRate() const;
-| |ql/instruments/zerocouponswap.hpp|ZeroCouponSwap::ZeroCouponSwap(Type type, Real baseNominal, const Date & startDate, const Date & maturityDate, Real fixedPayment, ext::shared_ptr<IborIndex> iborIndex, const Calendar & paymentCalendar, BusinessDayConvention paymentConvention = Following, Natural paymentDelay = 0);
-| |ql/instruments/zerocouponswap.hpp|ZeroCouponSwap::ZeroCouponSwap(Type type, Real baseNominal, const Date & startDate, const Date & maturityDate, Rate fixedRate, const DayCounter & fixedDayCounter, ext::shared_ptr<IborIndex> iborIndex, const Calendar & paymentCalendar, BusinessDayConvention paymentConvention = Following, Natural paymentDelay = 0);
+|v|ql/instruments/zerocouponswap.hpp|ZeroCouponSwap::ZeroCouponSwap(Type type, Real baseNominal, const Date & startDate, const Date & maturityDate, Real fixedPayment, ext::shared_ptr<IborIndex> iborIndex, const Calendar & paymentCalendar, BusinessDayConvention paymentConvention = Following, Natural paymentDelay = 0);
+|v|ql/instruments/zerocouponswap.hpp|ZeroCouponSwap::ZeroCouponSwap(Type type, Real baseNominal, const Date & startDate, const Date & maturityDate, Rate fixedRate, const DayCounter & fixedDayCounter, ext::shared_ptr<IborIndex> iborIndex, const Calendar & paymentCalendar, BusinessDayConvention paymentConvention = Following, Natural paymentDelay = 0);
 | |ql/instruments/zerocouponswap.hpp|Type ZeroCouponSwap::type() const;
 | |ql/instruments/zerocouponswap.hpp|Real ZeroCouponSwap::baseNominal() const;
 | |ql/instruments/zerocouponswap.hpp|const ext::shared_ptr<IborIndex> & ZeroCouponSwap::iborIndex() const;
@@ -4130,8 +4130,8 @@
 | |ql/instruments/zerocouponswap.hpp|Real ZeroCouponSwap::fixedPayment() const;
 | |ql/instruments/zerocouponswap.hpp|Real ZeroCouponSwap::fixedLegNPV() const;
 | |ql/instruments/zerocouponswap.hpp|Real ZeroCouponSwap::floatingLegNPV() const;
-| |ql/instruments/zerocouponswap.hpp|Real ZeroCouponSwap::fairFixedPayment() const;
-| |ql/instruments/zerocouponswap.hpp|Rate ZeroCouponSwap::fairFixedRate(const DayCounter & dayCounter) const;
+|v|ql/instruments/zerocouponswap.hpp|Real ZeroCouponSwap::fairFixedPayment() const;
+|v|ql/instruments/zerocouponswap.hpp|Rate ZeroCouponSwap::fairFixedRate(const DayCounter & dayCounter) const;
 |?|ql/interestrate.hpp|InterestRate::InterestRate();
 |v|ql/interestrate.hpp|InterestRate::InterestRate(Rate r, DayCounter dc, Compounding comp, Frequency freq);
 |v|ql/interestrate.hpp|Rate InterestRate::rate() const;
