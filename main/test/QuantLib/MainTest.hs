@@ -43,6 +43,7 @@ import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FxForward as FxForwardExample
 import qualified QuantLib.Example.InflationCurve as InflationCurveExample
+import qualified QuantLib.Example.InflationInstruments as InflationInstrumentsExample
 --import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 --import qualified QuantLib.Example.CallableBond as CallableBondExample
 --import qualified QuantLib.Example.CDS as CDSExample
@@ -1435,6 +1436,18 @@ main = do
         InflationCurveExample.zeroRate2Y r `shouldSatisfy` closePrec 3.001286439212614e-2 1e-9
         InflationCurveExample.yoyRate1Y r `shouldSatisfy` closePrec 3.0000000000000002e-2 1e-9
         InflationCurveExample.yoyRate2Y r `shouldSatisfy` closePrec 2.999999999999999e-2 1e-9
+
+    describe "Inflation instruments example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' InflationInstrumentsExample.run
+        InflationInstrumentsExample.zcisNpvAtFairRate r `shouldSatisfy` closePrec 0.0 1e-6
+        InflationInstrumentsExample.cpiSwapNpvAtFairRate r `shouldSatisfy` closePrec 0.0 1e-6
+        InflationInstrumentsExample.yoySwapNpvAtFairRate r `shouldSatisfy` closePrec 0.0 1e-6
+        InflationInstrumentsExample.cpiBondDirtyMinusCleanAccrued r `shouldSatisfy` closePrec 0.0 1e-8
+        InflationInstrumentsExample.cpiBondPriceHighInflation r `shouldSatisfy` (> InflationInstrumentsExample.cpiBondPriceLowInflation r)
+        InflationInstrumentsExample.cpiBondPriceLowInflation r `shouldSatisfy` closePrec 129.63096250934797 1e-6
+        InflationInstrumentsExample.cpiLegBondNpv r `shouldSatisfy` closePrec 129.6439572892922 1e-6
+        InflationInstrumentsExample.yoyLegSwapNpv r `shouldSatisfy` closePrec 1049.4720402141393 1e-6
 
     --describe "Replication example" $
     --  it "check values" $ do

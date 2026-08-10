@@ -16,9 +16,11 @@ module QuantLib.TermStructure.Yield
   , BootstrapTrait(..)
   , PillarChoice(..)
   , FuturesType(..)
+  , CPIInterpolationType(..)
   , depositRateHelper'
   , depositRateHelper
   , fixedRateBondHelper
+  , cpiBondHelper
   , discount'
   , swapRateHelper'
   , flatForward
@@ -110,6 +112,7 @@ import QuantLib.Internal.Type
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign -> CSwapRateHelper' nocode#}
 {#pointer *QlOISRateHelper as OISRateHelper foreign -> COISRateHelper' nocode#}
 {#pointer *QlBondHelper as BondHelper foreign -> CBondHelper' nocode#}
+{#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 
 {#enum BootstrapTrait{} deriving(Show, Eq)#}
@@ -163,6 +166,21 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m"]
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote a',fromIntegral`Word',`Double',withSchedule*`Schedule',withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`BusinessDayConvention',`Double',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
+-- |Bootstrap helper for a 'QuantLib.Instrument.Bond.CPIBond' -- a 'CPIBondHelper', which is a
+-- plain 'BondHelper' subclass with no extra methods, so it's returned as the generic
+-- 'BondHelper' type (same shape as 'fixedRateBondHelper').
+{#fun qlCPIBondHelper as cpiBondHelper{withQuote*`GenQuote a',fromIntegral`Word' -- ^settlementDays
+  ,`Double' -- ^faceAmount
+  ,`Double' -- ^baseCPI
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
+  ,withDayCounter*`DayCounter' -- ^accrualDayCounter
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
 -- |Returns a discount factor from the given YieldTermStructure object
 {#fun qlYieldTSDiscount as discount'{withYieldTermStructure*`GenYieldTermStructure a'

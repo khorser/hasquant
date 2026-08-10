@@ -573,6 +573,11 @@ module QuantLib.Internal.Type
   , CFixedRateBond'
   , peekFixedRateBond
   , withFixedRateBond
+  , CPIBond
+  , CCPIBond
+  , CCPIBond'
+  , peekCPIBond
+  , withCPIBond
   , BondForward
   , CBondForward
   , CBondForward'
@@ -616,6 +621,21 @@ module QuantLib.Internal.Type
   , COvernightIndexedSwap'
   , peekOvernightIndexedSwap
   , withOvernightIndexedSwap
+  , ZeroCouponInflationSwap
+  , CZeroCouponInflationSwap
+  , CZeroCouponInflationSwap'
+  , peekZeroCouponInflationSwap
+  , withZeroCouponInflationSwap
+  , YearOnYearInflationSwap
+  , CYearOnYearInflationSwap
+  , CYearOnYearInflationSwap'
+  , peekYearOnYearInflationSwap
+  , withYearOnYearInflationSwap
+  , CPISwap
+  , CCPISwap
+  , CCPISwap'
+  , peekCPISwap
+  , withCPISwap
   , QuantoBarrierOption
   , CQuantoBarrierOption
   , CQuantoBarrierOption'
@@ -2048,12 +2068,16 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    AssetSwap
 -- >    BMASwap
 -- >    OvernightIndexedSwap
+-- >    ZeroCouponInflationSwap
+-- >    YearOnYearInflationSwap
+-- >    CPISwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
 -- >  Bond
 -- >    ConvertibleBond
 -- >    FixedRateBond
 -- >    CallableBond
+-- >    CPIBond
 type Instrument = GenInstrument CInstrument
 data CInstrument'
 newtype GenInstrument a = GenInstrument {getInstrument :: GenForeignPtr a CInstrument'}
@@ -2229,6 +2253,18 @@ peekFixedRateBond = peekGenBond
 withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond' -> IO b) -> IO b
 withFixedRateBond = withForeignPtr . ptr . peel . getInstrument
 
+data CCPIBond'
+type CCPIBond = ForeignPtr CCPIBond'
+type CPIBond = GenBond CCPIBond
+foreign import ccall unsafe "ql.h &qlFreeCPIBond" qlFreeCPIBond :: FinalizerPtr CCPIBond'
+instance Finalizable CCPIBond' where finalize = qlFreeCPIBond
+foreign import ccall "ql.h qlCPIBondAsBond" qlCPIBondAsBond :: Ptr CCPIBond' -> IO (Ptr CBond')
+instance Upcastable CCPIBond' where {type Base CCPIBond' = CBond'; upcast = qlCPIBondAsBond}
+peekCPIBond :: Ptr CCPIBond' -> IO CPIBond
+peekCPIBond = peekGenBond
+withCPIBond :: CPIBond -> (Ptr CCPIBond' -> IO b) -> IO b
+withCPIBond = withForeignPtr . ptr . peel . getInstrument
+
 data CCallableBond'
 type CCallableBond = ForeignPtr CCallableBond'
 type CallableBond = GenBond CCallableBond
@@ -2288,6 +2324,42 @@ peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap' -> IO OvernightIndexedSwa
 peekOvernightIndexedSwap = peekGenSwap
 withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap' -> IO b) -> IO b
 withOvernightIndexedSwap = withForeignPtr . ptr . peel . getInstrument
+
+data CZeroCouponInflationSwap'
+type CZeroCouponInflationSwap = ForeignPtr CZeroCouponInflationSwap'
+type ZeroCouponInflationSwap = GenSwap CZeroCouponInflationSwap
+foreign import ccall unsafe "ql.h &qlFreeZeroCouponInflationSwap" qlFreeZeroCouponInflationSwap :: FinalizerPtr CZeroCouponInflationSwap'
+instance Finalizable CZeroCouponInflationSwap' where finalize = qlFreeZeroCouponInflationSwap
+foreign import ccall "ql.h qlZeroCouponInflationSwapAsSwap" qlZeroCouponInflationSwapAsSwap :: Ptr CZeroCouponInflationSwap' -> IO (Ptr CSwap')
+instance Upcastable CZeroCouponInflationSwap' where {type Base CZeroCouponInflationSwap' = CSwap'; upcast = qlZeroCouponInflationSwapAsSwap}
+peekZeroCouponInflationSwap :: Ptr CZeroCouponInflationSwap' -> IO ZeroCouponInflationSwap
+peekZeroCouponInflationSwap = peekGenSwap
+withZeroCouponInflationSwap :: ZeroCouponInflationSwap -> (Ptr CZeroCouponInflationSwap' -> IO b) -> IO b
+withZeroCouponInflationSwap = withForeignPtr . ptr . peel . getInstrument
+
+data CYearOnYearInflationSwap'
+type CYearOnYearInflationSwap = ForeignPtr CYearOnYearInflationSwap'
+type YearOnYearInflationSwap = GenSwap CYearOnYearInflationSwap
+foreign import ccall unsafe "ql.h &qlFreeYearOnYearInflationSwap" qlFreeYearOnYearInflationSwap :: FinalizerPtr CYearOnYearInflationSwap'
+instance Finalizable CYearOnYearInflationSwap' where finalize = qlFreeYearOnYearInflationSwap
+foreign import ccall "ql.h qlYearOnYearInflationSwapAsSwap" qlYearOnYearInflationSwapAsSwap :: Ptr CYearOnYearInflationSwap' -> IO (Ptr CSwap')
+instance Upcastable CYearOnYearInflationSwap' where {type Base CYearOnYearInflationSwap' = CSwap'; upcast = qlYearOnYearInflationSwapAsSwap}
+peekYearOnYearInflationSwap :: Ptr CYearOnYearInflationSwap' -> IO YearOnYearInflationSwap
+peekYearOnYearInflationSwap = peekGenSwap
+withYearOnYearInflationSwap :: YearOnYearInflationSwap -> (Ptr CYearOnYearInflationSwap' -> IO b) -> IO b
+withYearOnYearInflationSwap = withForeignPtr . ptr . peel . getInstrument
+
+data CCPISwap'
+type CCPISwap = ForeignPtr CCPISwap'
+type CPISwap = GenSwap CCPISwap
+foreign import ccall unsafe "ql.h &qlFreeCPISwap" qlFreeCPISwap :: FinalizerPtr CCPISwap'
+instance Finalizable CCPISwap' where finalize = qlFreeCPISwap
+foreign import ccall "ql.h qlCPISwapAsSwap" qlCPISwapAsSwap :: Ptr CCPISwap' -> IO (Ptr CSwap')
+instance Upcastable CCPISwap' where {type Base CCPISwap' = CSwap'; upcast = qlCPISwapAsSwap}
+peekCPISwap :: Ptr CCPISwap' -> IO CPISwap
+peekCPISwap = peekGenSwap
+withCPISwap :: CPISwap -> (Ptr CCPISwap' -> IO b) -> IO b
+withCPISwap = withForeignPtr . ptr . peel . getInstrument
 
 data CCdsOption'
 type CCdsOption = ForeignPtr CCdsOption'

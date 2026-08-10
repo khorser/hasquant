@@ -52,6 +52,8 @@ module QuantLib.Internal.Enum
   , QlFdmSchemeDesc
   , withFdmSchemeDesc
 
+  , CPIInterpolationType(..)
+
   , Constraint(..)
   , QlConstraint
   , withConstraint
@@ -124,6 +126,15 @@ import QuantLib.Internal.Syntax
 {#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
 {#enum FdmSchemeType{} deriving(Show, Eq)#}
 {#enum RoundingType{} deriving (Show, Eq)#}
+-- flat/linear interpolation of a CPI index between its publication dates -- skips the
+-- deprecated AsIndex upstream case, so cbits/qlEnumObjects.h's values (and thus this
+-- c2hs-derived enum's fromEnum) start at 1, not 0; see that header's comment for why a
+-- renumbered-from-0 enum here would silently alias to the wrong upstream case. Declared here
+-- (not in QuantLib.TermStructure.Inflation, its "natural" home) for the same reason as
+-- TimeUnit above: needed by several modules whose build order can't all safely {#import#} that
+-- module (built before it, or -- for QuantLib.TermStructure.Yield -- mutually dependent with
+-- it already).
+{#enum CPIInterpolationType{} deriving (Show, Eq, Bounded)#}
 
 -- Payoff/Exercise pointer hierarchy: the Finalizable/Upcastable instances and raw phantom
 -- tags (CPayoff' etc.) live in QuantLib.Internal.Type alongside every other class hierarchy;

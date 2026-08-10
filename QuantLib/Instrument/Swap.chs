@@ -7,18 +7,28 @@ module QuantLib.Instrument.Swap
   , AssetSwap
   , OvernightIndexedSwap
   , BMASwap
+  , ZeroCouponInflationSwap
+  , YearOnYearInflationSwap
+  , CPISwap
 
   , asSwap
 
   , impliedVolatility
   , SwapType(..)
   , SwaptionPriceType(..)
+  , CPIInterpolationType(..)
 
   , swap'
   , swap
   , bmaSwap
   , vanillaSwap
   , makeVanillaSwap
+  , zeroCouponInflationSwap
+  , zcisFairRate
+  , yearOnYearInflationSwap
+  , yoyFairRate
+  , cpiSwap
+  , cpiSwapFairRate
 
   , endDiscounts
   , leg
@@ -88,6 +98,8 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *Schedule as Schedule foreign -> CSchedule nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *QlExercise nocode#}
+{#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
+{#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -105,6 +117,9 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap' nocode#}
 {#pointer *QlBMASwap as BMASwap foreign -> CBMASwap' nocode#}
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
+{#pointer *QlZeroCouponInflationSwap as ZeroCouponInflationSwap foreign -> CZeroCouponInflationSwap' nocode#}
+{#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
+{#pointer *QlCPISwap as CPISwap foreign -> CCPISwap' nocode#}
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double' -- ^price
@@ -277,6 +292,69 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
 {#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- Inflation-linked swaps
+-- |A zero-coupon inflation-indexed swap (ZCIIS): a single fixed-vs-CPI-ratio exchange at
+-- maturity. Per-leg NPV\/BPS use the generic 'leg'\/'legNPV'\/'legBPS' (leg 0 = fixed, leg 1 =
+-- inflation).
+{#fun qlZeroCouponInflationSwap as zeroCouponInflationSwap{`SwapType',`Double' -- ^nominal
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^maturity
+  ,withCalendar*`Calendar'
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,withDayCounter*`DayCounter'
+  ,`Double' -- ^fixedRate
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,`Bool' -- ^adjustInfObsDates
+  ,withCalendar*`Calendar' -- ^infCalendar
+  ,`BusinessDayConvention' -- ^infConvention
+  ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
+{#fun qlZeroCouponInflationSwapFairRate as zcisFairRate{withZeroCouponInflationSwap*`ZeroCouponInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |A year-on-year inflation-indexed swap: fixed leg vs a YoY-inflation-linked leg. Per-leg
+-- NPV\/BPS use the generic 'leg'\/'legNPV'\/'legBPS' (leg 0 = fixed, leg 1 = YoY).
+{#fun qlYearOnYearInflationSwap as yearOnYearInflationSwap{`SwapType',`Double' -- ^nominal
+  ,withSchedule*`Schedule' -- ^fixedSchedule
+  ,`Double' -- ^fixedRate
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withSchedule*`Schedule' -- ^yoySchedule
+  ,withYoYInflationIndex*`YoYInflationIndex'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,fromEnumC`CPIInterpolationType' -- ^interpolation
+  ,`Double' -- ^spread
+  ,withDayCounter*`DayCounter' -- ^yoyDayCount
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
+{#fun qlYearOnYearInflationSwapFairRate as yoyFairRate{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlYearOnYearInflationSwapFairSpread{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |A fixed-x-CPI-ratio leg (subtracting the inflation notional if
+-- /subtractInflationNominal/) vs a float+spread leg -- QuantLib's general-purpose inflation
+-- swap, also usable to replicate a single-cashflow ZCIIS (see 'zeroCouponInflationSwap').
+-- Per-leg NPV\/BPS use the generic 'leg'\/'legNPV'\/'legBPS' (leg 0 = CPI, leg 1 = float).
+{#fun qlCPISwap as cpiSwap{`SwapType',`Double' -- ^nominal
+  ,`Bool' -- ^subtractInflationNominal
+  ,`Double' -- ^spread
+  ,withDayCounter*`DayCounter' -- ^floatDayCount
+  ,withSchedule*`Schedule' -- ^floatSchedule
+  ,`BusinessDayConvention' -- ^floatRoll
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withIborIndex*`GenIborIndex a' -- ^floatIndex
+  ,`Double' -- ^fixedRate
+  ,`Double' -- ^baseCPI
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withSchedule*`Schedule' -- ^fixedSchedule
+  ,`BusinessDayConvention' -- ^fixedRoll
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,withZeroInflationIndex*`ZeroInflationIndex' -- ^fixedIndex
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,fromMaybeDouble`Maybe Double' -- ^inflationNominal
+  ,preErrorCheck-`String'errorCheck*-}->`CPISwap'peekCPISwap*#}
+{#fun qlCPISwapFairRate as cpiSwapFairRate{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCPISwapFairSpread{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 class HasFixedLeg a where
   fairRate :: a -> IO Double
   fixedLeg :: a -> IO Leg
@@ -303,6 +381,10 @@ instance HasSpread AssetSwap where
   fairSpread = qlAssetSwapFairSpread
 instance HasSpread CreditDefaultSwap where
   fairSpread = qlCreditDefaultSwapFairSpread
+instance HasSpread YearOnYearInflationSwap where
+  fairSpread = qlYearOnYearInflationSwapFairSpread
+instance HasSpread CPISwap where
+  fairSpread = qlCPISwapFairSpread
 
 class HasFloatingLeg a where
   floatingLeg :: a -> IO Leg

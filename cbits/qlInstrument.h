@@ -108,6 +108,20 @@ extern "C" {
   QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
   void qlFreeAssetSwap(QlAssetSwap *o);
   QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o);
+  void qlFreeZeroCouponInflationSwap(QlZeroCouponInflationSwap *o);
+  QlSwap* qlZeroCouponInflationSwapAsSwap(QlZeroCouponInflationSwap *o);
+  QlZeroCouponInflationSwap* qlZeroCouponInflationSwap(int type, double nominal, int startDate, int maturity, Calendar* cal, int paymentConvention, DayCounter* dayCounter, double fixedRate, QlZeroInflationIndex* index, int obsLagLen, int obsLagUnit, int observationInterpolation, int adjustInfObsDates, Calendar* infCalendar, int infConvention, char **e);
+  double qlZeroCouponInflationSwapFairRate(QlZeroCouponInflationSwap* o, char **e);
+  void qlFreeYearOnYearInflationSwap(QlYearOnYearInflationSwap *o);
+  QlSwap* qlYearOnYearInflationSwapAsSwap(QlYearOnYearInflationSwap *o);
+  QlYearOnYearInflationSwap* qlYearOnYearInflationSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* yoySchedule, QlYoYInflationIndex* yoyIndex, int obsLagLen, int obsLagUnit, int interpolation, double spread, DayCounter* yoyDayCount, Calendar* paymentCalendar, int paymentConvention, char **e);
+  double qlYearOnYearInflationSwapFairRate(QlYearOnYearInflationSwap* o, char **e);
+  double qlYearOnYearInflationSwapFairSpread(QlYearOnYearInflationSwap* o, char **e);
+  void qlFreeCPISwap(QlCPISwap *o);
+  QlSwap* qlCPISwapAsSwap(QlCPISwap *o);
+  QlCPISwap* qlCPISwap(int type, double nominal, int subtractInflationNominal, double spread, DayCounter* floatDayCount, Schedule* floatSchedule, int floatRoll, unsigned fixingDays, QlIborIndex* floatIndex, double fixedRate, double baseCPI, DayCounter* fixedDayCount, Schedule* fixedSchedule, int fixedRoll, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* fixedIndex, int observationInterpolation, double inflationNominal, char **e);
+  double qlCPISwapFairRate(QlCPISwap* o, char **e);
+  double qlCPISwapFairSpread(QlCPISwap* o, char **e);
   QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e);
   QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e);
   QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, char **e);
@@ -276,6 +290,8 @@ extern "C" {
     unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
     int inArrears, double redemption, int issue, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, char **e);
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
+  QlCPIBond *qlCPIBond(unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, char **e);
+  QlBond *qlCPIBondAsBond(QlCPIBond *bond);
 
   double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, double guess, int priceType, char **e);
@@ -325,6 +341,7 @@ extern "C" {
 
   void qlFreeBond(QlBond *bond);
   void qlFreeFixedRateBond(QlFixedRateBond *bond);
+  void qlFreeCPIBond(QlCPIBond *bond);
   void qlFreeCallableBond(QlCallableBond *o);
   QlBond* qlCallableBondAsBond(QlCallableBond *o);
   void qlFreeConvertibleBond(QlConvertibleBond *o);
@@ -402,6 +419,8 @@ extern "C" {
   Leg* qlCouponLegAsLeg(CouponLeg *o);
 
   CouponLeg* qlLegToCouponLeg(Leg *o, char **e);
+  Leg* qlCPILeg(Schedule* schedule, QlZeroInflationIndex* index, double baseCPI, int obsLagLen, int obsLagUnit, unsigned notionalsLen, double* notionals, unsigned fixedRatesLen, double* fixedRates, DayCounter* paymentDayCounter, int paymentAdjustment, Calendar* paymentCalendar, int observationInterpolation, int subtractInflationNominal, char **e);
+  Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
   QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e);
   void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
   QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);

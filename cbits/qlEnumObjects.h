@@ -356,9 +356,18 @@ enum YoYInflationIndexType {
   , YYZACPI
 };
 
+// Values must equal upstream ql/indexes/inflationindex.hpp's CPI::InterpolationType
+// exactly (AsIndex = 0 is deprecated upstream and deliberately not exposed here, so this
+// enum starts at 1, not 0 -- do NOT renumber from 0, that silently aliases CPIFlat to
+// upstream's deprecated AsIndex and CPILinear to upstream's Flat, see
+// smoke/CheckInflation.hs's Flat-vs-Linear divergence check, which exists specifically to
+// catch this).
+// Must match QuantLib.Internal.Type's hand-written CPIInterpolationType Enum instance
+// (CPIFlat = 1, CPILinear = 2) -- deliberately not c2hs {#enum#}-derived, see the type's
+// haddock comment for why.
 enum CPIInterpolationType {
-  CPIFlat = 0
-  , CPILinear
+  CPIFlat = 1
+  , CPILinear = 2
 };
 
 // must match the order of qlTermStructure.cpp:regions

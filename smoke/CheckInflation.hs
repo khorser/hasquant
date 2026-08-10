@@ -7,6 +7,7 @@
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/CheckInflation.hs -o /tmp/checkinfl -outputdir /tmp/checkinfl_build && /tmp/checkinfl
 import Control.Monad
+import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Currency(currency, Ccy(GBP))
 import QuantLib.Index(addFixing)
@@ -18,7 +19,7 @@ import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
+import QuantLib.Time.Schedule(dayCounter, fromDates, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 
 -- c2hs only derives Show/Eq for the *Type enums (no Bounded), so those case
 -- lists are spelled out explicitly here rather than via [minBound .. maxBound].
@@ -87,6 +88,31 @@ main = do
   ry1 <- yoyRate yoyCurve maturity1 True
   ry2 <- yoyRate yoyCurve maturity2 True
   putStrLn ("yoyRate @1Y = " ++ show ry1 ++ ", @2Y = " ++ show ry2 ++ " (both should be ~0.03)")
+
+  -- CPIInterpolationType is a hand-written Enum in QuantLib.Internal.Type (not c2hs
+  -- {#enum#}-derived, see its haddock) that must stay in sync with cbits/qlEnumObjects.h by
+  -- hand -- exercise *both* cases and confirm they actually diverge numerically, not just that
+  -- each constructs without crashing. fixingDates are on the 1st of each month with strictly
+  -- increasing values, and this leg's schedule dates are mid-month (and after the evaluation
+  -- date set above, or CashFlows::npv would exclude the cashflow as already-occurred
+  -- regardless of interpolation), so CPIFlat's last-published-fixing lookup and CPILinear's
+  -- interpolation between straddling fixings must disagree.
+  --
+  -- The second (coupon) date must also stay within zii's "available" window: even with a
+  -- manually-added future fixing, ZeroInflationIndex::needsForecast forces forecasting (and
+  -- since zii has no linked curve, throws "empty Handle") for any month past
+  -- evaluationDate-availabilityLag, independent of whether historical data was actually
+  -- supplied for it -- see ql/indexes/inflationindex.cpp. With today = 2 Jan 2024,
+  -- availabilityLag = 1M and obsLag = 3M, CPILinear's forward-bracketing fixing must resolve
+  -- to Dec 2023 or earlier, which bounds the coupon date to on/before ~end of Feb 2024.
+  midMonthSchedule <- fromDates [3 `january` 2024, 20 `february` 2024] cal Unadjusted
+  legFlat <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPIFlat True
+  legLinear <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPILinear True
+  npvFlat <- CF.npv legFlat nominalCurve True Nothing Nothing
+  npvLinear <- CF.npv legLinear nominalCurve True Nothing Nothing
+  putStrLn ("cpiLeg NPV: CPIFlat=" ++ show npvFlat ++ ", CPILinear=" ++ show npvLinear ++ " (must differ)")
+  when (npvFlat == npvLinear) $
+    error "CPIFlat and CPILinear produced identical NPVs -- CPIInterpolationType mapping may be stale"
   where
     today = 2 `january` 2024
     baseDate = 1 `october` 2023

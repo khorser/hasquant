@@ -19,6 +19,9 @@
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/assetswap.hpp>
+#include <ql/instruments/zerocouponinflationswap.hpp>
+#include <ql/instruments/yearonyearinflationswap.hpp>
+#include <ql/instruments/cpiswap.hpp>
 #include <ql/instruments/barrieroption.hpp>
 #include <ql/instruments/vanillaoption.hpp>
 #include <ql/instruments/swaption.hpp>
@@ -49,6 +52,8 @@
 #include <ql/cashflows/overnightindexedcoupon.hpp>
 #include <ql/cashflows/rangeaccrual.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
+#include <ql/cashflows/cpicoupon.hpp>
+#include <ql/cashflows/yoyinflationcoupon.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/dividend.hpp>
 #include <ql/cashflows/couponpricer.hpp>
@@ -307,6 +312,29 @@ double qlAssetSwapFloatingLegBPS(QlAssetSwap* o, char **e) {try {return (*arg(o)
 double qlAssetSwapFloatingLegNPV(QlAssetSwap* o, char **e) {try {return (*arg(o))->floatingLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlAssetSwapNonParRepayment(QlAssetSwap* o, char **e) {try {return (*arg(o))->nonParRepayment();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlAssetSwapParSwap(QlAssetSwap* o, char **e) {try {return (*arg(o))->parSwap();} catch (std::exception& er) {return handleException<int>(e, er);}}
+
+void qlFreeZeroCouponInflationSwap(QlZeroCouponInflationSwap *o) {del(o);}
+QlSwap* qlZeroCouponInflationSwapAsSwap(QlZeroCouponInflationSwap *o) {return ret(new QlSwap(*arg(o)));}
+QlZeroCouponInflationSwap* qlZeroCouponInflationSwap(int type, double nominal, int startDate, int maturity, Calendar* cal, int paymentConvention, DayCounter* dayCounter, double fixedRate, QlZeroInflationIndex* index, int obsLagLen, int obsLagUnit, int observationInterpolation, int adjustInfObsDates, Calendar* infCalendar, int infConvention, char **e) {
+  try {return ret(new QlZeroCouponInflationSwap(alloc(new ZeroCouponInflationSwap((ZeroCouponInflationSwap::Type)type, nominal, Date(startDate), Date(maturity), *arg(cal), (BusinessDayConvention)paymentConvention, *arg(dayCounter), fixedRate, *arg(index), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)observationInterpolation, adjustInfObsDates, infCalendar ? *arg(infCalendar) : Calendar(), (BusinessDayConvention)infConvention))));
+  } catch (std::exception& er) {return handleException<QlZeroCouponInflationSwap*>(e, er);}}
+double qlZeroCouponInflationSwapFairRate(QlZeroCouponInflationSwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeYearOnYearInflationSwap(QlYearOnYearInflationSwap *o) {del(o);}
+QlSwap* qlYearOnYearInflationSwapAsSwap(QlYearOnYearInflationSwap *o) {return ret(new QlSwap(*arg(o)));}
+QlYearOnYearInflationSwap* qlYearOnYearInflationSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* yoySchedule, QlYoYInflationIndex* yoyIndex, int obsLagLen, int obsLagUnit, int interpolation, double spread, DayCounter* yoyDayCount, Calendar* paymentCalendar, int paymentConvention, char **e) {
+  try {return ret(new QlYearOnYearInflationSwap(alloc(new YearOnYearInflationSwap((YearOnYearInflationSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(yoySchedule), *arg(yoyIndex), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation, spread, *arg(yoyDayCount), *arg(paymentCalendar), (BusinessDayConvention)paymentConvention))));
+  } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
+double qlYearOnYearInflationSwapFairRate(QlYearOnYearInflationSwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlYearOnYearInflationSwapFairSpread(QlYearOnYearInflationSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeCPISwap(QlCPISwap *o) {del(o);}
+QlSwap* qlCPISwapAsSwap(QlCPISwap *o) {return ret(new QlSwap(*arg(o)));}
+QlCPISwap* qlCPISwap(int type, double nominal, int subtractInflationNominal, double spread, DayCounter* floatDayCount, Schedule* floatSchedule, int floatRoll, unsigned fixingDays, QlIborIndex* floatIndex, double fixedRate, double baseCPI, DayCounter* fixedDayCount, Schedule* fixedSchedule, int fixedRoll, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* fixedIndex, int observationInterpolation, double inflationNominal, char **e) {
+  try {return ret(new QlCPISwap(alloc(new CPISwap((CPISwap::Type)type, nominal, subtractInflationNominal, spread, *arg(floatDayCount), *arg(floatSchedule), (BusinessDayConvention)floatRoll, fixingDays, *arg(floatIndex), fixedRate, baseCPI, *arg(fixedDayCount), *arg(fixedSchedule), (BusinessDayConvention)fixedRoll, Period(obsLagLen, (TimeUnit)obsLagUnit), *arg(fixedIndex), (CPI::InterpolationType)observationInterpolation, inflationNominal))));
+  } catch (std::exception& er) {return handleException<QlCPISwap*>(e, er);}}
+double qlCPISwapFairRate(QlCPISwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCPISwapFairSpread(QlCPISwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlAssetSwapPayBondCoupon(QlAssetSwap* o, char **e) {try {return (*arg(o))->payBondCoupon();} catch (std::exception& er) {return handleException<int>(e, er);}}
 Leg* qlBMASwapBmaLeg(QlBMASwap* o, char **e) {try {return ret(new Leg((*arg(o))->bmaLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlBMASwapBmaLegBPS(QlBMASwap* o, char **e) {try {return (*arg(o))->bmaLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -498,6 +526,16 @@ int qlBondMaturityDate(QlBond *bond) {return qlNullableDate((*arg(bond))->maturi
 void qlFreeBond(QlBond *bond) {del(bond);}
 void qlFreeFixedRateBond(QlFixedRateBond *bond) {del(bond);}
 QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond) {return ret(new QlBond(*arg(bond)));}
+
+void qlFreeCPIBond(QlCPIBond *bond) {del(bond);}
+QlBond *qlCPIBondAsBond(QlCPIBond *bond) {return ret(new QlBond(*arg(bond)));}
+QlCPIBond *qlCPIBond(unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, char **e) {
+  try {std::vector<Rate> cpns(coupons, coupons+couponsLen);
+    return ret(new QlCPIBond(alloc(new CPIBond(settlementDays, faceAmount, baseCPI, Period(obsLagLen, (TimeUnit)obsLagUnit), *arg(index),
+              (CPI::InterpolationType)observationInterpolation, *arg(schedule), cpns, *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention,
+              qlNullableDate(issueDate), *arg(paymentCalendar), Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar),
+              (BusinessDayConvention)exCouponConvention, exCouponEndOfMonth))));
+  } catch (std::exception& er) {return handleException<QlCPIBond *>(e, er);}}
 
 QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule, unsigned cLen, double *coupons, DayCounter *counter,
     int payConv, double redemption, int issue, Calendar *payCal, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, DayCounter* firstPeriodDayCounter, char **e) {
@@ -864,6 +902,18 @@ Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notional
         .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen)).
         withLowerTriggers(std::vector<double>(lowerTriggers, lowerTriggers+lowerTriggersLen)).withUpperTriggers(std::vector<double>(upperTriggers, upperTriggers+upperTriggersLen))
         .withObservationTenor(Period(l, (TimeUnit)u)).withObservationConvention((BusinessDayConvention)observationConvention)));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+Leg* qlCPILeg(Schedule* schedule, QlZeroInflationIndex* index, double baseCPI, int obsLagLen, int obsLagUnit, unsigned notionalsLen, double* notionals, unsigned fixedRatesLen, double* fixedRates, DayCounter* paymentDayCounter, int paymentAdjustment, Calendar* paymentCalendar, int observationInterpolation, int subtractInflationNominal, char **e) {
+  try {return alloc(new Leg(CPILeg(*arg(schedule), *arg(index), baseCPI, Period(obsLagLen, (TimeUnit)obsLagUnit))
+        .withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withFixedRates(std::vector<double>(fixedRates, fixedRates+fixedRatesLen))
+        .withPaymentDayCounter(*arg(paymentDayCounter)).withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withPaymentCalendar(*arg(paymentCalendar))
+        .withObservationInterpolation((CPI::InterpolationType)observationInterpolation).withSubtractInflationNominal(subtractInflationNominal)));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e) {
+  try {return alloc(new Leg(yoyInflationLeg(*arg(schedule), *arg(cal), *arg(index), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation)
+        .withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
+        .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<Natural>(fixingDays, fixingDays+fixingDaysLen))
+        .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   CouponLeg *cl = 0;

@@ -4,16 +4,19 @@ module QuantLib.Instrument.Bond
   , FixedRateBond
   , ConvertibleBond
   , CallableBond
+  , CPIBond
 
   , asBond
 
   , BondPriceType(..)
+  , CPIInterpolationType(..)
 
   , bond
   , bond'
   , fixedRateBond
   , zeroCouponBond
   , floatingRateBond
+  , cpiBond
 
   , maturityDate
   , yield
@@ -93,9 +96,11 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
+{#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
+{#pointer *QlCPIBond as CPIBond foreign -> CCPIBond' nocode#}
 {#pointer *QlCallableBond as CallableBond foreign -> CCallableBond' nocode#}
 {#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond' nocode#}
 {#pointer *QlExercise nocode#}
@@ -134,6 +139,25 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^exCouponEndOfMonth
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
+-- |An inflation-linked bond whose redemption and coupons scale with a 'ZeroInflationIndex'
+-- fixing relative to /baseCPI/.
+{#fun qlCPIBond as cpiBond{fromIntegral`Word' -- ^settlementDays
+  ,`Double' -- ^faceAmount
+  ,`Double' -- ^baseCPI
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,withSchedule*`Schedule'
+  ,withDoubleArray*`[Double]'& -- ^coupons
+  ,withDayCounter*`DayCounter' -- ^accrualDayCounter
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,preErrorCheck-`String'errorCheck*-}->`CPIBond'peekCPIBond*#}
 -- |zero-coupon bond
 {#fun qlZeroCouponBond as zeroCouponBond{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar'

@@ -424,6 +424,13 @@ QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double f
   try {return ret(new QlBondHelper(new FixedRateBondHelper(Handle<Quote>(*arg(quote)), settlDays, face, *arg(sched),
           std::vector<Rate>(coupons, coupons+cLen), *arg(dayCount), (BusinessDayConvention) conv, redemption, qlNullableDate(issue))));
   } catch (std::exception& er) {return handleException<QlBondHelper *>(e, er);}}
+QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit,
+    QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter,
+    int paymentConvention, int issueDate, Calendar *paymentCalendar, char **e) {
+  try {return ret(new QlBondHelper(new CPIBondHelper(Handle<Quote>(*arg(quote)), settlementDays, faceAmount, baseCPI, Period(obsLagLen, (TimeUnit)obsLagUnit),
+          *arg(index), (CPI::InterpolationType)observationInterpolation, *arg(schedule), std::vector<Rate>(coupons, coupons+couponsLen),
+          *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, qlNullableDate(issueDate), *arg(paymentCalendar))));
+  } catch (std::exception& er) {return handleException<QlBondHelper *>(e, er);}}
 void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {

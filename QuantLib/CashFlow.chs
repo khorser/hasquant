@@ -7,6 +7,7 @@ module QuantLib.CashFlow
   , DurationType(..)
   , RateAveragingType(..)
   , TimingAdjustment(..)
+  , CPIInterpolationType(..)
   , GenLeg
 
   , leg
@@ -65,6 +66,8 @@ module QuantLib.CashFlow
   , iborLeg
   , overnightLeg
   , rangeAccrualLeg
+  , cpiLeg
+  , yoyInflationLeg
   , YieldCurveModel(..)
 
   , FloatingRateCouponPricer
@@ -79,6 +82,7 @@ import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency, TimeUnit)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
+import QuantLib.Internal.Enum(CPIInterpolationType(..))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -97,6 +101,8 @@ import QuantLib.Internal.Type
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
+{#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
+{#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 
 {#enum DurationType{} deriving(Show, Eq)#}
 {#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq)#}
@@ -350,6 +356,32 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withDoubleArray*`[Double]'& -- ^upperTriggers
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^observationTenor
   ,`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+-- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
+-- (a 'CPICoupon' leg -- caps/floors are not exposed, see README.md's TODO).
+{#fun qlCPILeg as cpiLeg{withSchedule*`Schedule',withZeroInflationIndex*`ZeroInflationIndex'
+  ,`Double' -- ^baseCPI
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withDoubleArray*`[Double]'& -- ^fixedRates
+  ,withDayCounter*`DayCounter' -- ^paymentDayCounter
+  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,`Bool' -- ^subtractInflationNominal
+  ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+-- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg -- caps/floors are not
+-- exposed, see README.md's TODO).
+{#fun qlYoYInflationLeg as yoyInflationLeg{withSchedule*`Schedule',withCalendar*`Calendar'
+  ,withYoYInflationIndex*`YoYInflationIndex'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,fromEnumC`CPIInterpolationType' -- ^interpolation
+  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withDayCounter*`DayCounter' -- ^paymentDayCounter
+  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,withIntArray*`[Word]'& -- ^fixingDays
+  ,withDoubleArray*`[Double]'& -- ^gearings
+  ,withDoubleArray*`[Double]'& -- ^spreads
+  ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as toCouponLeg{withLeg*`GenLeg a',preErrorCheck-`String'errorCheck*-}->`CouponLeg'peekCouponLeg*#}

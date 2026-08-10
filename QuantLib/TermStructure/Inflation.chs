@@ -5,7 +5,7 @@ module QuantLib.TermStructure.Inflation
   , ZeroCouponInflationSwapHelper
   , YearOnYearInflationSwapHelper
 
-  , CPIInterpolationType(..)
+  , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Enum"
 
   , zeroCouponInflationSwapHelper
   , yearOnYearInflationSwapHelper
@@ -38,8 +38,6 @@ import QuantLib.Internal.Enum
 {#pointer *QlZeroCouponInflationSwapHelper as ZeroCouponInflationSwapHelper foreign -> CZeroCouponInflationSwapHelper nocode#}
 {#pointer *QlYearOnYearInflationSwapHelper as YearOnYearInflationSwapHelper foreign -> CYearOnYearInflationSwapHelper nocode#}
 
-{#enum CPIInterpolationType{} deriving (Show, Eq)#}
-
 -- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).
 {#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote a' -- ^quote
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
@@ -48,7 +46,7 @@ import QuantLib.Internal.Enum
   ,`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
   ,withZeroInflationIndex*`ZeroInflationIndex'
-  ,`CPIInterpolationType' -- ^observationInterpolation
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwapHelper'peekZeroCouponInflationSwapHelper*#}
@@ -61,7 +59,7 @@ import QuantLib.Internal.Enum
   ,`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
   ,withYoYInflationIndex*`YoYInflationIndex'
-  ,`CPIInterpolationType' -- ^observationInterpolation
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
