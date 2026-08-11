@@ -105,7 +105,10 @@ main = do
         $(cut [| syntaxTestF _ 2 _ 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
       it "cut treats named holes the same as bare _" $
         $(cut [| syntaxTestF _a 2 _b 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
-      it "cutAt' and cut both work on a typeclass method" $ do
+      it "cut repeats a named hole rather than sharing it" $
+        $(cut [| syntaxTestF _a 2 _a 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
+      it "cutAt, cutAt' and cut all work on a typeclass method" $ do
+        $(cutAt [1] 'syntaxLabelWith) 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
         $(cutAt' [1] 4) syntaxLabelWith 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
         $(cut [| syntaxLabelWith _ 1 2 3 |]) True `shouldBe` syntaxLabelWith True 1 2 3
 

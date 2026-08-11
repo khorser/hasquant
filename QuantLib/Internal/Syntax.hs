@@ -36,7 +36,8 @@ stripEnumPrefix :: String -> String
 stripEnumPrefix str@(_:cs)
   | "__" `isPrefixOf` str = drop 2 str
   | otherwise = stripEnumPrefix cs
-stripEnumPrefix [] = fail "Enum prefix not found"
+-- error, not fail: this runs in the String (i.e. []) monad, where fail silently yields ""
+stripEnumPrefix [] = error "deriveCrossEnum: enum prefix not found"
 
 -- merge a set of enums into a big one providing a function to map values back to ordinal numbers of original enums
 -- e.g. for mainEnum data CalendarCountry = Country__Australia | Country__UnitedStated,

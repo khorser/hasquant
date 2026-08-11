@@ -36,6 +36,7 @@ when:
 library:
   dependencies:
     - template-haskell
+    - transformers
     - vector
   verbatim:
     - build-tool-depends: c2hs:c2hs
