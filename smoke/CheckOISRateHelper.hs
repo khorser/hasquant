@@ -1,5 +1,5 @@
 -- Smoke test for OISRateHelperOpts/deriveOptionsRecord (Batch 8's new options-record
--- TH infra -- see feedback_th_options_record_pattern memory note). Two things this
+-- TH infra -- see the add-quantlib-options-record skill). Two things this
 -- checks that a green `stack build` alone would not:
 --  1. defaultOISRateHelperOpts's field order/types actually line up with the raw
 --     full-arity binding oisRateHelperFull threads them into -- a silent field

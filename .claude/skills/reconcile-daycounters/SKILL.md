@@ -46,4 +46,4 @@ Prefer **specific, dedicated constructors over a generic parameterized one** her
 
 Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
 
-**Gotcha:** same as [[reconcile-currencies]]/[[reconcile-calendars]] — editing only `cbits/` files (no `.chs` touched) can leave the incremental build silently stale under both `cabal build` and `stack build`. If in doubt, do a clean build, and verify end-to-end at the value level (construct one of the new day counters and check a day-count/year-fraction actually differs the way it should — e.g. via a script in `smoke/`), not just "the build succeeded."
+A `cbits/`-only change touches no `.chs` file, so CLAUDE.md's stale-build gotcha applies: clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new day counters and checks a day-count/year-fraction actually differs the way it should.

@@ -122,8 +122,8 @@ import QuantLib.Internal.Type
 -- OISRateHelperOpts bundles every trailing param oisRateHelper/oisRateHelper' hardcode
 -- (see the comment above them, further down), pre-populated with upstream's own
 -- defaults via defaultOISRateHelperOpts, overridden through record-update syntax at
--- the call site -- see the feedback_th_options_record_pattern memory note for why this
--- exists as a second entry point instead of widening oisRateHelper/oisRateHelper'
+-- the call site -- see the add-quantlib-options-record skill for why this exists as a
+-- second entry point instead of widening oisRateHelper/oisRateHelper'
 -- themselves. The three Calendar fields are Maybe here (unlike the raw binding's plain
 -- Calendar) since a real Calendar is only obtainable in IO (`calendar Null`) and can't
 -- live in a pure default record value -- oisRateHelperFull/oisRateHelperFull'
