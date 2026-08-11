@@ -42,6 +42,94 @@ data Result = Result
   , yoyLegSwapNpv :: Double
   } deriving Show
 
+today :: Day
+today = 2 `january` 2024
+
+baseDate :: Day
+baseDate = 1 `october` 2023
+
+obsLag :: (Word, TimeUnit)
+obsLag = (3, Months)
+
+-- index availabilityLag must satisfy (swapObservationLag - indexPeriod) >= availabilityLag;
+-- with a Monthly index and 3M swap observation lag, 1M availability lag is required.
+obsLagI :: (Int, TimeUnit)
+obsLagI = (1, Months)
+
+maturity2Y :: Day
+maturity2Y = 2 `january` 2026
+
+maturity5Y :: Day
+maturity5Y = 2 `january` 2029
+
+flatRate :: Double
+flatRate = 0.03
+
+nominalRate :: Double
+nominalRate = 0.02
+
+nominal :: Double
+nominal = 1000000.0
+
+faceAmount :: Double
+faceAmount = 100.0
+
+couponRate :: Double
+couponRate = 0.05
+
+settlementDays :: Word
+settlementDays = 2
+
+-- |Prices the ZCIIS at its quoted rate and again at its own fair rate -- the
+-- latter reprices to ~0 in one step, unlike the CPISwap refinement below.
+priceZcis :: DayCounter -> Calendar -> ZeroInflationIndex -> PricingEngine -> IO (Double, Double)
+priceZcis dc cal idx1 swapEngine = do
+  zcis0 <- zeroCouponInflationSwap Payer nominal today maturity5Y cal Unadjusted dc flatRate idx1 obsLag CPILinear False cal Following
+  zcis0Inst <- asInstrument zcis0
+  setPricingEngine zcis0Inst swapEngine
+  npvBefore <- npv zcis0Inst
+  fairZcisRate <- zcisFairRate zcis0
+  zcis1 <- zeroCouponInflationSwap Payer nominal today maturity5Y cal Unadjusted dc fairZcisRate idx1 obsLag CPILinear False cal Following
+  zcis1Inst <- asInstrument zcis1
+  setPricingEngine zcis1Inst swapEngine
+  npvAtFair <- npv zcis1Inst
+  return (npvBefore, npvAtFair)
+
+-- |Context shared by every iteration of the CPISwap fair-rate refinement below.
+data CpiSwapContext = CpiSwapContext
+  { cpiSwapDc :: DayCounter
+  , cpiSwapFloatSchedule :: Schedule
+  , cpiSwapFloatIdx :: I.IborIndex
+  , cpiSwapBaseCPI0 :: Double
+  , cpiSwapFixedSchedule :: Schedule
+  , cpiSwapIdx1 :: ZeroInflationIndex
+  , cpiSwapEngine :: PricingEngine
+  }
+
+buildCpiSwap :: CpiSwapContext -> Double -> IO (CPISwap, Instrument)
+buildCpiSwap ctx r = do
+  s <- cpiSwap Payer nominal True 0.0 (cpiSwapDc ctx) (cpiSwapFloatSchedule ctx) Unadjusted 0
+    (cpiSwapFloatIdx ctx) r (cpiSwapBaseCPI0 ctx)
+    (cpiSwapDc ctx) (cpiSwapFixedSchedule ctx) Unadjusted obsLag (cpiSwapIdx1 ctx) CPILinear Nothing
+  i <- asInstrument s
+  setPricingEngine i (cpiSwapEngine ctx)
+  _ <- npv i
+  pure (s, i)
+
+-- |Rebuilding once at @CPISwap::fairRate()@'s single-step correction leaves a
+-- non-trivial residual NPV for a CPI leg (unlike ZeroCouponInflationSwap, which
+-- reprices to ~0 in one step) -- iterating the correction converges it to
+-- machine-epsilon scale.
+refineCpiSwapRate :: CpiSwapContext -> Int -> Double -> IO (Double, Double)
+refineCpiSwapRate ctx 0 r = do
+  (_, i) <- buildCpiSwap ctx r
+  n <- npv i
+  pure (r, n)
+refineCpiSwapRate ctx n r = do
+  (s, _) <- buildCpiSwap ctx r
+  r' <- cpiSwapFairRate s
+  refineCpiSwapRate ctx (n - 1) r'
+
 run :: IO Result
 run = do
   setEvaluationDate $ Just today
@@ -69,41 +157,23 @@ run = do
   bondEngine <- discountingBondEngine nominalCurve Nothing
 
   -- ZCIIS: reprices to ~0 once rebuilt at its own fair rate
-  zcis0 <- zeroCouponInflationSwap Payer nominal today maturity5Y cal Unadjusted dc flatRate idx1 obsLag CPILinear False cal Following
-  zcis0Inst <- asInstrument zcis0
-  setPricingEngine zcis0Inst swapEngine
-  npvBefore <- npv zcis0Inst
-  fairZcisRate <- zcisFairRate zcis0
-  zcis1 <- zeroCouponInflationSwap Payer nominal today maturity5Y cal Unadjusted dc fairZcisRate idx1 obsLag CPILinear False cal Following
-  zcis1Inst <- asInstrument zcis1
-  setPricingEngine zcis1Inst swapEngine
-  npvAtFair <- npv zcis1Inst
+  (npvBefore, npvAtFair) <- priceZcis dc cal idx1 swapEngine
 
   -- CPISwap: same self-consistency discipline, exercising the 19-arg shim end to end.
-  -- Empirically, rebuilding once at CPISwap::fairRate()'s single-step correction leaves a
-  -- non-trivial residual NPV for a CPI leg (unlike ZeroCouponInflationSwap, which reprices
-  -- to ~0 in one step) -- iterating the correction converges it to machine-epsilon scale.
   floatSchedule <- schedule (Just today) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   fixedSchedule <- schedule (Just today) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   floatIdx <- I.iborIndex (I.GbpLibor (6, Months)) (Just nominalCurve)
   baseCPI0 <- fixing idx1 today
-  let buildCpiSwap r = do
-        s <- cpiSwap Payer nominal True 0.0 dc floatSchedule Unadjusted 0 floatIdx r baseCPI0
-          dc fixedSchedule Unadjusted obsLag idx1 CPILinear Nothing
-        i <- asInstrument s
-        setPricingEngine i swapEngine
-        _ <- npv i
-        pure (s, i)
-      refineCpiSwapRate :: Int -> Double -> IO (Double, Double)
-      refineCpiSwapRate 0 r = do
-        (_, i) <- buildCpiSwap r
-        n <- npv i
-        pure (r, n)
-      refineCpiSwapRate n r = do
-        (s, _) <- buildCpiSwap r
-        r' <- cpiSwapFairRate s
-        refineCpiSwapRate (n - 1) r'
-  (_, cpiSwapNpv) <- refineCpiSwapRate (15 :: Int) flatRate
+  let cpiSwapCtx = CpiSwapContext
+        { cpiSwapDc = dc
+        , cpiSwapFloatSchedule = floatSchedule
+        , cpiSwapFloatIdx = floatIdx
+        , cpiSwapBaseCPI0 = baseCPI0
+        , cpiSwapFixedSchedule = fixedSchedule
+        , cpiSwapIdx1 = idx1
+        , cpiSwapEngine = swapEngine
+        }
+  (_, cpiSwapNpv) <- refineCpiSwapRate cpiSwapCtx (15 :: Int) flatRate
 
   -- YoY inflation curve + swap, mirroring the same unlinked/linked-index trick
   yidx0 <- yoyInflationIndex' "WL YoY CPI" reg False Monthly obsLagI gbp Nothing
@@ -173,20 +243,5 @@ run = do
     , cpiLegBondNpv = cpiLegNpv
     , yoyLegSwapNpv = yoyLegNpv
     }
-  where
-    today = 2 `january` 2024
-    baseDate = 1 `october` 2023
-    obsLag = (3, Months) :: (Word, TimeUnit)
-    -- index availabilityLag must satisfy (swapObservationLag - indexPeriod) >= availabilityLag;
-    -- with a Monthly index and 3M swap observation lag, 1M availability lag is required.
-    obsLagI = (1, Months) :: (Int, TimeUnit)
-    maturity2Y = 2 `january` 2026
-    maturity5Y = 2 `january` 2029
-    flatRate = 0.03
-    nominalRate = 0.02
-    nominal = 1000000.0
-    faceAmount = 100.0
-    couponRate = 0.05
-    settlementDays = 2
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

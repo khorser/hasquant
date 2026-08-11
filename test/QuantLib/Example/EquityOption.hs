@@ -34,6 +34,75 @@ data Result = Result
   , mcR :: (Double, Double, Double)
   }
 
+-- Each of these prices the same shared 'europeanOpt'/'americanOpt' handle by
+-- attaching a fresh engine and reading 'npv' -- the QuantLib objects are pure
+-- value-holders whose only "state" is the currently attached engine, so each
+-- helper is self-contained even though it mutates a handle built in 'run'.
+
+analyticEuropeanNpv :: GeneralizedBlackScholesProcess -> VanillaOption -> IO Double
+analyticEuropeanNpv bsmProc europeanOpt = do
+  analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
+  npv europeanOpt
+
+hestonNpv :: YieldTermStructure -> YieldTermStructure -> SimpleQuote -> Double -> VanillaOption -> IO Double
+hestonNpv ts divTS underQ vol europeanOpt = do
+  hestonProc <- hestonProcess ts (Just divTS) underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
+  hestonMod <- hestonModel hestonProc
+  hestonEng <- analyticHestonEngine' hestonMod 144
+  QuantLib.Instrument.setPricingEngine europeanOpt hestonEng
+  npv europeanOpt
+
+batesNpv :: YieldTermStructure -> YieldTermStructure -> SimpleQuote -> Double -> VanillaOption -> IO Double
+batesNpv ts divTS underQ vol europeanOpt = do
+  batesEng <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation >>= batesModel >>= (`batesEngine` 144)
+  QuantLib.Instrument.setPricingEngine europeanOpt batesEng
+  npv europeanOpt
+
+baroneAdesiWhaleyNpv :: GeneralizedBlackScholesProcess -> VanillaOption -> IO Double
+baroneAdesiWhaleyNpv bsmProc americanOpt = do
+  bawEng <- baroneAdesiWhaleyApproximationEngine bsmProc
+  QuantLib.Instrument.setPricingEngine americanOpt bawEng
+  npv americanOpt
+
+bjerksundStenslandNpv :: GeneralizedBlackScholesProcess -> VanillaOption -> IO Double
+bjerksundStenslandNpv bsmProc americanOpt = do
+  bsEng <- bjerksundStenslandApproximationEngine bsmProc
+  QuantLib.Instrument.setPricingEngine americanOpt bsEng
+  npv americanOpt
+
+integralNpv :: GeneralizedBlackScholesProcess -> VanillaOption -> IO Double
+integralNpv bsmProc europeanOpt = do
+  iEng <- integralEngine bsmProc
+  QuantLib.Instrument.setPricingEngine europeanOpt iEng
+  npv europeanOpt
+
+fdSweep :: GeneralizedBlackScholesProcess -> [OneAssetOption] -> IO [Double]
+fdSweep bsmProc = mapM (\i -> do
+    eng <- fdBlackScholesVanillaEngine bsmProc 801 800 0 Douglas False 0.0 CashDividendSpot
+    QuantLib.Instrument.setPricingEngine i eng
+    npv i)
+
+binomialPrice :: GeneralizedBlackScholesProcess -> [OneAssetOption] -> Word -> BinomialTree -> IO [Double]
+binomialPrice proc inst timeSteps tree = do
+  eng <- binomialVanillaEngine tree proc timeSteps
+  mapM (\i -> QuantLib.Instrument.setPricingEngine i eng >> npv i) inst
+
+monteCarloNpvs :: GeneralizedBlackScholesProcess -> VanillaOption -> VanillaOption -> IO (Double, Double, Double)
+monteCarloNpvs bsmProc europeanOpt americanOpt = do
+  mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
+  QuantLib.Instrument.setPricingEngine europeanOpt mceEng
+  mcE <- npv europeanOpt
+
+  mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
+  QuantLib.Instrument.setPricingEngine europeanOpt mceEng2
+  mcE2 <- npv europeanOpt
+
+  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096) Nothing Nothing
+  QuantLib.Instrument.setPricingEngine americanOpt mcaEng
+  mcA <- npv americanOpt
+
+  return (mcE, mcE2, mcA)
+
 run :: IO Result
 run = do
   setEvaluationDate $ Just tod
@@ -57,51 +126,19 @@ run = do
   americanInst <- asOneAssetOption americanOpt
   bermudanInst <- asOneAssetOption bermudanOpt
 
-  analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
-  analyticEuro <- npv europeanOpt
+  analyticEuro <- analyticEuropeanNpv bsmProc europeanOpt
+  analyticHeston <- hestonNpv ts divTS underQ vol europeanOpt
+  bates <- batesNpv ts divTS underQ vol europeanOpt
+  baw <- baroneAdesiWhaleyNpv bsmProc americanOpt
+  bjs <- bjerksundStenslandNpv bsmProc americanOpt
+  int <- integralNpv bsmProc europeanOpt
 
-  hestonProc <- hestonProcess ts (Just divTS) underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
-  hestonMod <- hestonModel hestonProc
-  hestonEng <- analyticHestonEngine' hestonMod 144
-  QuantLib.Instrument.setPricingEngine europeanOpt hestonEng
-  analyticHeston <- npv europeanOpt
+  fd <- fdSweep bsmProc [europeanInst, bermudanInst, americanInst]
 
-  batesEng <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation >>= batesModel >>= (`batesEngine` 144)
-  QuantLib.Instrument.setPricingEngine europeanOpt batesEng
-  bates <- npv europeanOpt
-
-  bawEng <- baroneAdesiWhaleyApproximationEngine bsmProc
-  QuantLib.Instrument.setPricingEngine americanOpt bawEng
-  baw <- npv americanOpt
-
-  bsEng <- bjerksundStenslandApproximationEngine bsmProc
-  QuantLib.Instrument.setPricingEngine americanOpt bsEng
-  bjs <- npv americanOpt
-
-  iEng <- integralEngine bsmProc
-  QuantLib.Instrument.setPricingEngine europeanOpt iEng
-  int <- npv europeanOpt
-
-  fd <- mapM (\i -> do
-    eng <- fdBlackScholesVanillaEngine bsmProc 801 800 0 Douglas False 0.0 CashDividendSpot
-    QuantLib.Instrument.setPricingEngine i eng
-    npv i)
-    [europeanInst, bermudanInst, americanInst]
-
-  bin <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
+  bin <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst] timeSteps)
             [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
-  mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
-  QuantLib.Instrument.setPricingEngine europeanOpt mceEng
-  mcE <- npv europeanOpt
-
-  mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
-  QuantLib.Instrument.setPricingEngine europeanOpt mceEng2
-  mcE2 <- npv europeanOpt
-
-  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096) Nothing Nothing
-  QuantLib.Instrument.setPricingEngine americanOpt mcaEng
-  mcA <- npv americanOpt
+  (mcE, mcE2, mcA) <- monteCarloNpvs bsmProc europeanOpt americanOpt
 
   return Result {
     analyticEuroR = [analyticEuro]
@@ -126,9 +163,5 @@ run = do
         months = [1 .. 4]
         exDates = map (\i -> addGregorianMonthsClip (3*i) settl) months
         timeSteps = 801
-
-        binomialPrice proc inst tree = do
-          eng <- binomialVanillaEngine tree proc timeSteps
-          mapM (\i -> QuantLib.Instrument.setPricingEngine i eng >> npv i) inst
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

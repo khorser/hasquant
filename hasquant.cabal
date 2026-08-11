@@ -191,6 +191,14 @@ test-suite hasquant_test
       QuantLib.Example.Swap
       QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
+      QuantLib.Spec.Calendars
+      QuantLib.Spec.CurrencyAndDayCounter
+      QuantLib.Spec.DatesAndSchedule
+      QuantLib.Spec.Examples
+      QuantLib.Spec.Helpers
+      QuantLib.Spec.InterestRateAndCashFlow
+      QuantLib.Spec.Syntax
+      QuantLib.Spec.TermStructure
       Paths_hasquant
   autogen-modules:
       Paths_hasquant

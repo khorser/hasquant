@@ -90,7 +90,7 @@ main = do
 
   putStrLn "\n*** BermudanSwaption Example ***"
   (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' BermudanSwaptionExample.run
-  void $ printf "%25s %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x2" "4x2" "5x1"
+  void $ printf "%25s %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x3" "4x2" "5x1"
   printDLine "%25s" "G2" "%9.5f" g2v
   printDLine "%25s" "Hull-White" "%9.5f" hwv
   printDLine "%25s" "Numerical" "%9.5f" hw2v

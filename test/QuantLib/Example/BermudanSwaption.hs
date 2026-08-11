@@ -4,7 +4,7 @@ module QuantLib.Example.BermudanSwaption
     Result(..)
   , run
   ) where
-import Control.Monad(forM_, mapAndUnzipM)
+import Control.Monad((>=>), forM_, mapAndUnzipM)
 import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF
@@ -37,6 +37,37 @@ data Result = Result
   , npvItm :: [Double]
   }
 
+calibrateModel :: Model.CalibratedModel -> [Model.BlackCalibrationHelper] -> IO [Double]
+calibrateModel m hs = do
+  hsh <- mapM Model.asCalibrationHelper hs
+  Model.calibrate m (map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing []
+  mapM calibrate hs
+
+calibrate :: Model.BlackCalibrationHelper -> IO Double
+calibrate h = do
+  nPV <- Model.modelValue h
+  vol <- Model.impliedVolatility h nPV 1.0e-4 1000 0.05 0.50
+  return $ 100.0 * vol
+
+-- |Builds a short-rate model, attaches a pricing engine to the calibration
+-- swaptions, calibrates it and returns the (still-untouched) model alongside
+-- its calibrated vols/params. The model itself -- not just its calibration
+-- output -- is what the pricing phase needs next, since 'priceSwaption'
+-- re-derives its own engines from it.
+calibrateShortRateModel
+  :: IO m                                             -- ^model constructor
+  -> (m -> [Model.BlackCalibrationHelper] -> IO ())   -- ^attach a pricing engine for calibration
+  -> (m -> IO Model.CalibratedModel)                  -- ^narrow to the calibratable interface
+  -> [Model.BlackCalibrationHelper]
+  -> IO (m, [Double], [Double])
+calibrateShortRateModel buildModel attachEngine toCalibratable swaptions = do
+  m <- buildModel
+  attachEngine m swaptions
+  calibratable <- toCalibratable m
+  vols <- calibrateModel calibratable swaptions
+  ps <- Model.params calibratable
+  return (m, vols, ps)
+
 run :: IO Result
 run = do
   cal <- calendar TARGET
@@ -59,31 +90,33 @@ run = do
   (swaptions, tms) <- mapAndUnzipM (createHelpers index6m ts) calibrationGrid
   grid <- timeGridFromList' (fromList (concat tms)) 30
 
-  modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
-  forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= Model.setPricingEngine s)
-  modelG2' <- Model.asShortRateModel modelG2 >>= Model.asCalibratedModel
-  g2v <- calibrateModel modelG2' swaptions
-  g2p <- Model.params modelG2'
+  (modelG2, g2v, g2p) <- calibrateShortRateModel
+    (Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75))
+    (\m ss -> forM_ ss (\s -> g2SwaptionEngine m 6.0 16 >>= Model.setPricingEngine s))
+    (Model.asShortRateModel >=> Model.asCalibratedModel)
+    swaptions
 
-  modelHW <- Model.hullWhite ts 0.1 0.01
-  modelHWo <- Model.asOneFactorAffineModel modelHW
-  forM_ swaptions (\s -> jamshidianSwaptionEngine modelHWo Nothing >>= Model.setPricingEngine s)
-  modelHW' <- Model.asShortRateModel modelHWo >>= Model.asCalibratedModel
-  hwv <- calibrateModel modelHW' swaptions
-  hwp <- Model.params modelHW'
+  (modelHW, hwv, hwp) <- calibrateShortRateModel
+    (Model.hullWhite ts 0.1 0.01)
+    (\m ss -> do
+      modelHWo <- Model.asOneFactorAffineModel m
+      forM_ ss (\s -> jamshidianSwaptionEngine modelHWo Nothing >>= Model.setPricingEngine s))
+    (\m -> Model.asOneFactorAffineModel m >>= Model.asShortRateModel >>= Model.asCalibratedModel)
+    swaptions
 
-  modelHW2 <- Model.hullWhite ts 0.1 0.01
-  modelHW2s <- Model.asOneFactorAffineModel modelHW2 >>= Model.asShortRateModel
-  forM_ swaptions (\s -> treeSwaptionEngine' modelHW2s grid Nothing>>= Model.setPricingEngine s)
-  modelHW2' <- Model.asCalibratedModel modelHW2s
-  hw2v <- calibrateModel modelHW2' swaptions
-  hw2p <- Model.params modelHW2'
+  (modelHW2, hw2v, hw2p) <- calibrateShortRateModel
+    (Model.hullWhite ts 0.1 0.01)
+    (\m ss -> do
+      modelHW2s <- Model.asOneFactorAffineModel m >>= Model.asShortRateModel
+      forM_ ss (\s -> treeSwaptionEngine' modelHW2s grid Nothing >>= Model.setPricingEngine s))
+    (\m -> Model.asOneFactorAffineModel m >>= Model.asShortRateModel >>= Model.asCalibratedModel)
+    swaptions
 
-  modelBK <- Model.blackKarasinski ts 0.1 0.1
-  forM_ swaptions (\s -> treeSwaptionEngine' modelBK grid Nothing>>= Model.setPricingEngine s)
-  modelBK' <- Model.asCalibratedModel modelBK
-  bkv <- calibrateModel modelBK' swaptions
-  bkp <- Model.params modelBK'
+  (modelBK, bkv, bkp) <- calibrateShortRateModel
+    (Model.blackKarasinski ts 0.1 0.1)
+    (\m ss -> forM_ ss (\s -> treeSwaptionEngine' m grid Nothing >>= Model.setPricingEngine s))
+    Model.asCalibratedModel
+    swaptions
 
   atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
     floatDC (Just floatConv) Nothing
@@ -137,7 +170,7 @@ run = do
 
         -- The example calibrates against the anti-diagonal of that table: expiry i+1
         -- years against the swap length in column (numCols - 1 - i), giving 1x5, 2x4,
-        -- 3x3, 4x2, 5x1. Built by pattern-matching a drop rather than indexing, so
+        -- 3x3, 4x2, 5x1. Built by pattern-matching a `drop` rather than indexing, so
         -- there is no partial `!!` and a mis-sized row drops out instead of crashing.
         calibrationGrid :: [(Word, Word, Double)] -- (expiry years, swap length years, vol)
         calibrationGrid =
@@ -157,16 +190,6 @@ run = do
           h <- Model.swaptionHelper (expiry, Years) (len, Years) vol index6m tenr dc dc ts Model.RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing CF.AveragingCompound
           tms <- Model.times h
           return (h, tms)
-
-        calibrateModel m hs = do
-          hsh <- mapM Model.asCalibrationHelper hs
-          Model.calibrate m (map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing []
-          mapM calibrate hs
-
-        calibrate h = do
-          nPV <- Model.modelValue h
-          vol <- Model.impliedVolatility h nPV 1.0e-4 1000 0.05 0.50
-          return $ 100.0 * vol
 
         priceSwaption swption modelG2 g2n modelHW modelHW2 modelBK = do
           modelG2s <- Model.asShortRateModel modelG2
