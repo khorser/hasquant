@@ -60,6 +60,7 @@ library:
     - QuantLib.TermStructure.Volatility
     - QuantLib.Index.InterestRate
     - QuantLib.Index.Inflation
+    - QuantLib.Index.Equity
     - QuantLib.Instrument.Bond
     - QuantLib.Instrument.CapFloor
     - QuantLib.Instrument.Forward

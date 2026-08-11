@@ -11,6 +11,7 @@ module QuantLib.Instrument.Swap
   , YearOnYearInflationSwap
   , CPISwap
   , ZeroCouponSwap
+  , EquityTotalReturnSwap
   , VarianceSwap
   , VarianceOption
 
@@ -36,6 +37,11 @@ module QuantLib.Instrument.Swap
   , zeroCouponSwap'
   , fairFixedPayment
   , fairFixedRate
+  , equityTotalReturnSwapIbor
+  , equityTotalReturnSwapOvernight
+  , equityLegNPV
+  , interestRateLegNPV
+  , fairMargin
   , varianceSwap
   , variance
   , varianceOption
@@ -131,6 +137,8 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 {#pointer *QlCPISwap as CPISwap foreign -> CCPISwap' nocode#}
 {#pointer *QlZeroCouponSwap as ZeroCouponSwap foreign -> CZeroCouponSwap' nocode#}
+{#pointer *QlEquityTotalReturnSwap as EquityTotalReturnSwap foreign -> CEquityTotalReturnSwap' nocode#}
+{#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double' -- ^price
@@ -387,6 +395,36 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
 {#fun qlZeroCouponSwapFairFixedPayment as fairFixedPayment{withZeroCouponSwap*`ZeroCouponSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlZeroCouponSwapFairFixedRate as fairFixedRate{withZeroCouponSwap*`ZeroCouponSwap',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Exchanges the total return of an 'EquityIndex' for a set of floating cash flows linked to an
+-- 'IborIndex'. /type/ (payer\/receiver) refers to the equity leg.
+{#fun qlEquityTotalReturnSwapIbor as equityTotalReturnSwapIbor{`SwapType',`Double' -- ^nominal
+  ,withSchedule*`Schedule'
+  ,withEquityIndex*`EquityIndex'
+  ,withIborIndex*`GenIborIndex a' -- ^interestRateIndex
+  ,withDayCounter*`DayCounter'
+  ,`Double' -- ^margin
+  ,`Double' -- ^gearing
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^paymentDelay
+  ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
+-- |As 'equityTotalReturnSwapIbor', but with the floating leg linked to an overnight index instead
+-- -- fixings are compounded over the accrual period.
+{#fun qlEquityTotalReturnSwapOvernight as equityTotalReturnSwapOvernight{`SwapType',`Double' -- ^nominal
+  ,withSchedule*`Schedule'
+  ,withEquityIndex*`EquityIndex'
+  ,withOvernightIborIndex*`OvernightIborIndex' -- ^interestRateIndex
+  ,withDayCounter*`DayCounter'
+  ,`Double' -- ^margin
+  ,`Double' -- ^gearing
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^paymentDelay
+  ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
+{#fun qlEquityTotalReturnSwapEquityLegNPV as equityLegNPV{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityTotalReturnSwapInterestRateLegNPV as interestRateLegNPV{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityTotalReturnSwapFairMargin as fairMargin{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 class HasFixedLeg a where
   fairRate :: a -> IO Double

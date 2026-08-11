@@ -78,6 +78,12 @@ module QuantLib.CashFlow
   , cpiCashFlowAmount
   , cpiCashFlowBaseFixing
   , cpiCashFlowIndexFixing
+  , EquityCashFlow
+  , equityCashFlow
+  , equityCashFlowAmount
+  , equityCashFlowBaseFixing
+  , equityCashFlowIndexFixing
+  , setEquityCashFlowPricer
   , YieldCurveModel(..)
 
   , FloatingRateCouponPricer
@@ -87,6 +93,9 @@ module QuantLib.CashFlow
   , setCouponPricers
   , analyticHaganPricer
   , numericHaganPricer
+  , EquityCashFlowPricer
+  , equityQuantoCashFlowPricer
+  , setEquityLegPricer
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding)
@@ -113,6 +122,8 @@ import QuantLib.Internal.Enum(CPIInterpolationType(..))
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
+{#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 
 {#enum DurationType{} deriving(Show, Eq)#}
@@ -395,6 +406,8 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow nocode#}
 {#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow nocode#}
+{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow nocode#}
+{#pointer *QlEquityCashFlowPricer as EquityCashFlowPricer foreign -> CEquityCashFlowPricer nocode#}
 
 -- |Cash flow dependent on a 'ZeroInflationIndex' ratio (not a coupon -- no accruals).
 -- The ratio is taken between fixings observed at /startDate/ and /endDate/ minus /observationLag/.
@@ -432,6 +445,40 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 {#fun qlCPICashFlowBaseFixing as cpiCashFlowBaseFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Fixing used as the numerator of the ratio (as of /observationDate/, lagged).
 {#fun qlCPICashFlowIndexFixing as cpiCashFlowIndexFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Cash flow dependent on the total return of an 'QuantLib.Index.Equity.EquityIndex' (not a coupon
+-- -- no accruals): @index(fixingDate)\/index(baseDate)@, or that ratio minus one if /growthOnly/.
+-- If no 'EquityCashFlowPricer' is attached via 'setEquityCashFlowPricer', 'equityCashFlowAmount'
+-- computes this ratio directly from the index; a pricer (e.g. 'equityQuantoCashFlowPricer') is only
+-- needed to price a quanto-adjusted variant.
+{#fun qlEquityCashFlow as equityCashFlow{`Double' -- ^notional
+  ,withEquityIndex*`EquityIndex'
+  ,withDay*`Day' -- ^baseDate
+  ,withDay*`Day' -- ^fixingDate
+  ,withDay*`Day' -- ^paymentDate
+  ,`Bool' -- ^growthOnly
+  ,preErrorCheck-`String'errorCheck*-}->`EquityCashFlow'peekEquityCashFlow*#}
+-- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly --
+-- or, if a pricer is attached, the notional times the pricer's 'price'.
+{#fun qlEquityCashFlowAmount as equityCashFlowAmount{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Fixing used as the base of the ratio (as of /baseDate/).
+{#fun qlEquityCashFlowBaseFixing as equityCashFlowBaseFixing{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Fixing used as the numerator of the ratio (as of /fixingDate/).
+{#fun qlEquityCashFlowIndexFixing as equityCashFlowIndexFixing{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Attach a pricer (e.g. from 'equityQuantoCashFlowPricer') to a single 'EquityCashFlow'; see
+-- 'setEquityLegPricer' to attach one to every 'EquityCashFlow' in a leg instead.
+{#fun qlEquityCashFlowSetPricer as setEquityCashFlowPricer{withEquityCashFlow*`EquityCashFlow',withEquityCashFlowPricer*`EquityCashFlowPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Quanto-adjusted pricer for an 'EquityCashFlow' whose equity leg is denominated in a currency
+-- other than the swap's payment currency.
+{#fun qlEquityQuantoCashFlowPricer as equityQuantoCashFlowPricer{withYieldTermStructure*`GenYieldTermStructure y' -- ^quantoCurrencyTermStructure
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure e' -- ^equityVolatility
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure f' -- ^fxVolatility
+  ,withQuote*`GenQuote a' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`EquityCashFlowPricer'peekEquityCashFlowPricer*#}
+-- |Attach a pricer to every 'EquityCashFlow' found in /leg/ (non-'EquityCashFlow' entries are left
+-- untouched); see 'setEquityCashFlowPricer' to attach one to a single cash flow instead.
+{#fun qlQuantLibSetEquityCashFlowPricer as setEquityLegPricer{withLeg*`GenLeg a',withEquityCashFlowPricer*`EquityCashFlowPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |try to downcast leg to a coupon leg
 -- don't blame me, it's how QuantLib works

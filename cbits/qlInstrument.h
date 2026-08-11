@@ -180,6 +180,14 @@ extern "C" {
   double qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e);
   double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e);
 
+  void qlFreeEquityTotalReturnSwap(QlEquityTotalReturnSwap *o);
+  QlSwap* qlEquityTotalReturnSwapAsSwap(QlEquityTotalReturnSwap *o);
+  QlEquityTotalReturnSwap* qlEquityTotalReturnSwapIbor(int type, double nominal, Schedule* schedule, QlEquityIndex* equityIndex, QlIborIndex* interestRateIndex, DayCounter* dayCounter, double margin, double gearing, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e);
+  QlEquityTotalReturnSwap* qlEquityTotalReturnSwapOvernight(int type, double nominal, Schedule* schedule, QlEquityIndex* equityIndex, QlOvernightIndex* interestRateIndex, DayCounter* dayCounter, double margin, double gearing, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e);
+  double qlEquityTotalReturnSwapEquityLegNPV(QlEquityTotalReturnSwap* o, char **e);
+  double qlEquityTotalReturnSwapInterestRateLegNPV(QlEquityTotalReturnSwap* o, char **e);
+  double qlEquityTotalReturnSwapFairMargin(QlEquityTotalReturnSwap* o, char **e);
+
   void qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o);
   QlInstrument* qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o);
   void qlFreeClaim(QlClaim *o);
@@ -440,6 +448,18 @@ extern "C" {
   double qlCPICashFlowAmount(QlCPICashFlow* o, char **e);
   double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e);
   double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e);
+
+  void qlFreeEquityCashFlow(QlEquityCashFlow *o);
+  QlEquityCashFlow* qlEquityCashFlow(double notional, QlEquityIndex* index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e);
+  double qlEquityCashFlowAmount(QlEquityCashFlow* o, char **e);
+  double qlEquityCashFlowBaseFixing(QlEquityCashFlow* o, char **e);
+  double qlEquityCashFlowIndexFixing(QlEquityCashFlow* o, char **e);
+  void qlEquityCashFlowSetPricer(QlEquityCashFlow* o, QlEquityCashFlowPricer* pricer, char **e);
+
+  void qlFreeEquityCashFlowPricer(QlEquityCashFlowPricer *o);
+  QlEquityCashFlowPricer* qlEquityQuantoCashFlowPricer(QlYieldTermStructure* quantoCurrencyTermStructure, QlBlackVolTermStructure* equityVolatility, QlBlackVolTermStructure* fxVolatility, QlQuote* correlation, char **e);
+  void qlQuantLibSetEquityCashFlowPricer(Leg* leg, QlEquityCashFlowPricer* pricer, char **e);
+
   QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e);
   void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
   QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);

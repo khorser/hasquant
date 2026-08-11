@@ -23,6 +23,7 @@
 #include <ql/indexes/ibor/all.hpp>
 #include <ql/indexes/inflation/all.hpp>
 #include <ql/termstructures/inflation/inflationhelpers.hpp>
+#include <ql/indexes/equityindex.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -853,6 +854,26 @@ void qlFreeOvernightIndex(QlOvernightIndex *o) {del(o);}
 QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) {return ret(new QlIborIndex(*arg(o)));}
 int qlIborIndexBusinessDayConvention(QlIborIndex* o) {return (*arg(o))->businessDayConvention();}
 int qlIborIndexEndOfMonth(QlIborIndex* o) {return (*arg(o))->endOfMonth();}
+
+QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy, QlYieldTermStructure *interest, QlYieldTermStructure *dividend, QlQuote *spot, char **e) {
+  try {
+    return ret(new QlEquityIndex(alloc(new EquityIndex(name, *arg(fixingCalendar), *arg(ccy),
+      qlNullableHandle(interest), qlNullableHandle(dividend), qlNullableHandle(spot)))));
+  } catch (std::exception& er) {return handleException<QlEquityIndex *>(e, er);}}
+void qlFreeEquityIndex(QlEquityIndex *o) {del(o);}
+QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o) {return ret(new QlIndex(*arg(o)));}
+Currency* qlEquityIndexCurrency(QlEquityIndex* o, char **e) {
+  try {return alloc(new Currency((*arg(o))->currency()));
+  } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
+QlYieldTermStructure* qlEquityIndexInterestRateCurve(QlEquityIndex* o, char **e) {
+  try {return ret(new QlYieldTermStructure((*arg(o))->equityInterestRateCurve().currentLink()));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlYieldTermStructure* qlEquityIndexDividendCurve(QlEquityIndex* o, char **e) {
+  try {return ret(new QlYieldTermStructure((*arg(o))->equityDividendCurve().currentLink()));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlQuote* qlEquityIndexSpot(QlEquityIndex* o, char **e) {
+  try {return ret(new QlQuote((*arg(o))->spot().currentLink()));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 
 typedef ZeroInflationIndex *(*makeZeroInflationIndex)();
 // must match the order of qlEnumObjects.h:ZeroInflationIndexType

@@ -236,6 +236,14 @@ extern "C" {
   int qlIborIndexBusinessDayConvention(QlIborIndex* o);
   int qlIborIndexEndOfMonth(QlIborIndex* o);
 
+  QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy, QlYieldTermStructure *interest, QlYieldTermStructure *dividend, QlQuote *spot, char **e);
+  void qlFreeEquityIndex(QlEquityIndex *o);
+  QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o);
+  Currency* qlEquityIndexCurrency(QlEquityIndex* o, char **e);
+  QlYieldTermStructure* qlEquityIndexInterestRateCurve(QlEquityIndex* o, char **e);
+  QlYieldTermStructure* qlEquityIndexDividendCurve(QlEquityIndex* o, char **e);
+  QlQuote* qlEquityIndexSpot(QlEquityIndex* o, char **e);
+
   QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e);
   QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e);
 

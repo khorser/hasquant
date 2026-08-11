@@ -68,6 +68,10 @@ module QuantLib.Internal.Type
   , CPICashFlow
   , peekCPICashFlow
   , withCPICashFlow
+  , CEquityCashFlow
+  , EquityCashFlow
+  , peekEquityCashFlow
+  , withEquityCashFlow
   , CSmileSection
   , SmileSection
   , peekSmileSection
@@ -82,6 +86,10 @@ module QuantLib.Internal.Type
   , withFloatingRateCouponPricer
   , withFloatingRateCouponPricerArray
   , withMaybeFloatingRateCouponPricer
+  , CEquityCashFlowPricer
+  , EquityCashFlowPricer
+  , peekEquityCashFlowPricer
+  , withEquityCashFlowPricer
   , CDefaultProbabilityHelper
   , DefaultProbabilityHelper
   , peekDefaultProbabilityHelper
@@ -152,6 +160,10 @@ module QuantLib.Internal.Type
   , CSimpleQuote'
   , SimpleQuote
   , peekSimpleQuote
+  , CDeltaVolQuote
+  , CDeltaVolQuote'
+  , DeltaVolQuote
+  , peekDeltaVolQuote
 
   , GenLeg
   , CLeg
@@ -278,6 +290,11 @@ module QuantLib.Internal.Type
   , COvernightIndexedSwapIndex'
   , peekOvernightIndexedSwapIndex
   , withOvernightIndexedSwapIndex
+  , CEquityIndex
+  , CEquityIndex'
+  , EquityIndex
+  , peekEquityIndex
+  , withEquityIndex
 
   , GenTermStructure
   , TermStructure
@@ -657,6 +674,11 @@ module QuantLib.Internal.Type
   , CZeroCouponSwap'
   , peekZeroCouponSwap
   , withZeroCouponSwap
+  , EquityTotalReturnSwap
+  , CEquityTotalReturnSwap
+  , CEquityTotalReturnSwap'
+  , peekEquityTotalReturnSwap
+  , withEquityTotalReturnSwap
   , QuantoBarrierOption
   , CQuantoBarrierOption
   , CQuantoBarrierOption'
@@ -861,6 +883,15 @@ peekCPICashFlow = CPICashFlow <.> peekStandalone
 withCPICashFlow :: CPICashFlow -> (Ptr CCPICashFlow -> IO b) -> IO b
 withCPICashFlow = withStandalone . getCCPICashFlow
 
+data CEquityCashFlow
+newtype EquityCashFlow = EquityCashFlow {getCEquityCashFlow :: Standalone CEquityCashFlow}
+foreign import ccall unsafe "ql.h &qlFreeEquityCashFlow" qlFreeEquityCashFlow :: FinalizerPtr CEquityCashFlow
+instance Finalizable CEquityCashFlow where finalize = qlFreeEquityCashFlow
+peekEquityCashFlow :: Ptr CEquityCashFlow -> IO EquityCashFlow
+peekEquityCashFlow = EquityCashFlow <.> peekStandalone
+withEquityCashFlow :: EquityCashFlow -> (Ptr CEquityCashFlow -> IO b) -> IO b
+withEquityCashFlow = withStandalone . getCEquityCashFlow
+
 data CSmileSection
 newtype SmileSection = SmileSection {getCSmileSection :: Standalone CSmileSection}
 foreign import ccall unsafe "ql.h &qlFreeSmileSection" qlFreeSmileSection :: FinalizerPtr CSmileSection
@@ -891,6 +922,15 @@ withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr 
 withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPricer
 withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
 withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
+
+data CEquityCashFlowPricer
+newtype EquityCashFlowPricer = EquityCashFlowPricer {getCEquityCashFlowPricer :: Standalone CEquityCashFlowPricer}
+foreign import ccall unsafe "ql.h &qlFreeEquityCashFlowPricer" qlFreeEquityCashFlowPricer :: FinalizerPtr CEquityCashFlowPricer
+instance Finalizable CEquityCashFlowPricer where finalize = qlFreeEquityCashFlowPricer
+peekEquityCashFlowPricer :: Ptr CEquityCashFlowPricer -> IO EquityCashFlowPricer
+peekEquityCashFlowPricer = EquityCashFlowPricer <.> peekStandalone
+withEquityCashFlowPricer :: EquityCashFlowPricer -> (Ptr CEquityCashFlowPricer -> IO b) -> IO b
+withEquityCashFlowPricer = withStandalone . getCEquityCashFlowPricer
 
 data CDefaultProbabilityHelper
 newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: Standalone CDefaultProbabilityHelper}
@@ -1061,19 +1101,27 @@ peel = getAnyOf . ptr
 
 -- | > Quote
 -- >   SimpleQuote
+-- >   DeltaVolQuote
 type Quote = GenQuote CQuote
 data CQuote'
 data CSimpleQuote'
+data CDeltaVolQuote'
 newtype GenQuote a = GenQuote {getQuote :: GenForeignPtr a CQuote'}
 type CQuote = ForeignPtr CQuote'
 type CSimpleQuote = ForeignPtr CSimpleQuote'
 type SimpleQuote = GenQuote CSimpleQuote
+type CDeltaVolQuote = ForeignPtr CDeltaVolQuote'
+type DeltaVolQuote = GenQuote CDeltaVolQuote
 foreign import ccall unsafe "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
 foreign import ccall unsafe "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
+foreign import ccall unsafe "ql.h &qlFreeDeltaVolQuote" qlFreeDeltaVolQuote :: FinalizerPtr CDeltaVolQuote'
 instance Finalizable CQuote' where finalize = qlFreeQuote
 instance Finalizable CSimpleQuote' where finalize = qlFreeSimpleQuote
+instance Finalizable CDeltaVolQuote' where finalize = qlFreeDeltaVolQuote
 instance Upcastable CSimpleQuote' where {type Base CSimpleQuote' = CQuote'; upcast = qlSimpleQuoteAsQuote}
+instance Upcastable CDeltaVolQuote' where {type Base CDeltaVolQuote' = CQuote'; upcast = qlDeltaVolQuoteAsQuote}
 foreign import ccall "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote' -> IO (Ptr CQuote')
+foreign import ccall "ql.h qlDeltaVolQuoteAsQuote" qlDeltaVolQuoteAsQuote :: Ptr CDeltaVolQuote' -> IO (Ptr CQuote')
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO Quote
@@ -1086,6 +1134,8 @@ withGenQuote :: GenQuote (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 withGenQuote = withForeignPtr . ptr . getQuote
 peekSimpleQuote :: Ptr CSimpleQuote' -> IO SimpleQuote
 peekSimpleQuote = GenQuote <.> newGenForeignPtr
+peekDeltaVolQuote :: Ptr CDeltaVolQuote' -> IO DeltaVolQuote
+peekDeltaVolQuote = GenQuote <.> newGenForeignPtr
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote' -> IO b) -> IO b
 withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b
@@ -1301,6 +1351,7 @@ peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 -- >  InflationIndex
 -- >    YoYInflationIndex-
 -- >    ZeroInflationIndex-
+-- >  EquityIndex
 type Index = GenIndex CIndex
 data CIndex'
 data CInterestRateIndex'
@@ -1452,6 +1503,18 @@ peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO Overnight
 peekOvernightIndexedSwapIndex = newGenForeignPtr >=> newGenSwapIndex
 withOvernightIndexedSwapIndex :: OvernightIndexedSwapIndex -> (Ptr COvernightIndexedSwapIndex' -> IO b) -> IO b
 withOvernightIndexedSwapIndex = withForeignPtr  .ptr . peel . peel . getIndex
+
+data CEquityIndex'
+type CEquityIndex = ForeignPtr CEquityIndex'
+type EquityIndex = GenIndex CEquityIndex
+foreign import ccall unsafe "ql.h &qlFreeEquityIndex" qlFreeEquityIndex :: FinalizerPtr CEquityIndex'
+instance Finalizable CEquityIndex' where finalize = qlFreeEquityIndex
+foreign import ccall "ql.h qlEquityIndexAsIndex" qlEquityIndexAsIndex :: Ptr CEquityIndex' -> IO (Ptr CIndex')
+instance Upcastable CEquityIndex' where {type Base CEquityIndex' = CIndex'; upcast = qlEquityIndexAsIndex}
+peekEquityIndex :: Ptr CEquityIndex' -> IO EquityIndex
+peekEquityIndex = GenIndex <.> newGenForeignPtr
+withEquityIndex :: EquityIndex -> (Ptr CEquityIndex' -> IO b) -> IO b
+withEquityIndex = withForeignPtr . ptr . getIndex
 
 -- | > TermStructure = GenTermStructure a
 -- >  YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
@@ -2113,6 +2176,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    YearOnYearInflationSwap
 -- >    CPISwap
 -- >    ZeroCouponSwap
+-- >    EquityTotalReturnSwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
 -- >  Bond
@@ -2434,6 +2498,18 @@ peekZeroCouponSwap :: Ptr CZeroCouponSwap' -> IO ZeroCouponSwap
 peekZeroCouponSwap = peekGenSwap
 withZeroCouponSwap :: ZeroCouponSwap -> (Ptr CZeroCouponSwap' -> IO b) -> IO b
 withZeroCouponSwap = withForeignPtr . ptr . peel . getInstrument
+
+data CEquityTotalReturnSwap'
+type CEquityTotalReturnSwap = ForeignPtr CEquityTotalReturnSwap'
+type EquityTotalReturnSwap = GenSwap CEquityTotalReturnSwap
+foreign import ccall unsafe "ql.h &qlFreeEquityTotalReturnSwap" qlFreeEquityTotalReturnSwap :: FinalizerPtr CEquityTotalReturnSwap'
+instance Finalizable CEquityTotalReturnSwap' where finalize = qlFreeEquityTotalReturnSwap
+foreign import ccall "ql.h qlEquityTotalReturnSwapAsSwap" qlEquityTotalReturnSwapAsSwap :: Ptr CEquityTotalReturnSwap' -> IO (Ptr CSwap')
+instance Upcastable CEquityTotalReturnSwap' where {type Base CEquityTotalReturnSwap' = CSwap'; upcast = qlEquityTotalReturnSwapAsSwap}
+peekEquityTotalReturnSwap :: Ptr CEquityTotalReturnSwap' -> IO EquityTotalReturnSwap
+peekEquityTotalReturnSwap = peekGenSwap
+withEquityTotalReturnSwap :: EquityTotalReturnSwap -> (Ptr CEquityTotalReturnSwap' -> IO b) -> IO b
+withEquityTotalReturnSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CCdsOption'
 type CCdsOption = ForeignPtr CCdsOption'

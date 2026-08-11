@@ -23,6 +23,7 @@
 #include <ql/instruments/yearonyearinflationswap.hpp>
 #include <ql/instruments/cpiswap.hpp>
 #include <ql/instruments/zerocouponswap.hpp>
+#include <ql/instruments/equitytotalreturnswap.hpp>
 #include <ql/instruments/compoundoption.hpp>
 #include <ql/instruments/barrieroption.hpp>
 #include <ql/instruments/vanillaoption.hpp>
@@ -63,6 +64,8 @@
 #include <ql/cashflows/dividend.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/conundrumpricer.hpp>
+#include <ql/cashflows/equitycashflow.hpp>
+#include <ql/indexes/equityindex.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -299,6 +302,20 @@ double qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e) {try {return (*arg(o
 Leg* qlVanillaSwapFloatingLeg(QlVanillaSwap* o, char **e) {try {return ret(new Leg((*arg(o))->floatingLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e) {try {return (*arg(o))->floatingLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e) {try {return (*arg(o))->floatingLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);} }
+
+void qlFreeEquityTotalReturnSwap(QlEquityTotalReturnSwap *o) {del(o);}
+QlSwap* qlEquityTotalReturnSwapAsSwap(QlEquityTotalReturnSwap *o) {return ret(new QlSwap(*arg(o)));}
+QlEquityTotalReturnSwap* qlEquityTotalReturnSwapIbor(int type, double nominal, Schedule* schedule, QlEquityIndex* equityIndex, QlIborIndex* interestRateIndex, DayCounter* dayCounter, double margin, double gearing, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e) {
+  try {return ret(new QlEquityTotalReturnSwap(alloc(new EquityTotalReturnSwap((Swap::Type)type, nominal, *arg(schedule), *arg(equityIndex), *arg(interestRateIndex),
+        *arg(dayCounter), margin, gearing, *arg(paymentCalendar), (BusinessDayConvention)paymentConvention, paymentDelay))));
+  } catch (std::exception& er) {return handleException<QlEquityTotalReturnSwap*>(e, er);}}
+QlEquityTotalReturnSwap* qlEquityTotalReturnSwapOvernight(int type, double nominal, Schedule* schedule, QlEquityIndex* equityIndex, QlOvernightIndex* interestRateIndex, DayCounter* dayCounter, double margin, double gearing, Calendar* paymentCalendar, int paymentConvention, unsigned paymentDelay, char **e) {
+  try {return ret(new QlEquityTotalReturnSwap(alloc(new EquityTotalReturnSwap((Swap::Type)type, nominal, *arg(schedule), *arg(equityIndex), *arg(interestRateIndex),
+        *arg(dayCounter), margin, gearing, *arg(paymentCalendar), (BusinessDayConvention)paymentConvention, paymentDelay))));
+  } catch (std::exception& er) {return handleException<QlEquityTotalReturnSwap*>(e, er);}}
+double qlEquityTotalReturnSwapEquityLegNPV(QlEquityTotalReturnSwap* o, char **e) {try {return (*arg(o))->equityLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlEquityTotalReturnSwapInterestRateLegNPV(QlEquityTotalReturnSwap* o, char **e) {try {return (*arg(o))->interestRateLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlEquityTotalReturnSwapFairMargin(QlEquityTotalReturnSwap* o, char **e) {try {return (*arg(o))->fairMargin();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e) {
   try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, nominal, *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift))));
@@ -952,6 +969,27 @@ QlCPICashFlow* qlCPICashFlow(double notional, QlZeroInflationIndex* index, int b
 double qlCPICashFlowAmount(QlCPICashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeEquityCashFlow(QlEquityCashFlow *o) {del(o);}
+QlEquityCashFlow* qlEquityCashFlow(double notional, QlEquityIndex* index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
+  try {return ret(new QlEquityCashFlow(alloc(new EquityCashFlow(notional, *arg(index),
+        Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));
+  } catch (std::exception& er) {return handleException<QlEquityCashFlow*>(e, er);}}
+double qlEquityCashFlowAmount(QlEquityCashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlEquityCashFlowBaseFixing(QlEquityCashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlEquityCashFlowIndexFixing(QlEquityCashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlEquityCashFlowSetPricer(QlEquityCashFlow* o, QlEquityCashFlowPricer* pricer, char **e) {
+  try {(*arg(o))->setPricer(*arg(pricer));
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+
+void qlFreeEquityCashFlowPricer(QlEquityCashFlowPricer *o) {del(o);}
+QlEquityCashFlowPricer* qlEquityQuantoCashFlowPricer(QlYieldTermStructure* quantoCurrencyTermStructure, QlBlackVolTermStructure* equityVolatility, QlBlackVolTermStructure* fxVolatility, QlQuote* correlation, char **e) {
+  try {return ret(new QlEquityCashFlowPricer(alloc(new EquityQuantoCashFlowPricer(Handle<YieldTermStructure>(*arg(quantoCurrencyTermStructure)),
+        Handle<BlackVolTermStructure>(*arg(equityVolatility)), Handle<BlackVolTermStructure>(*arg(fxVolatility)), Handle<Quote>(*arg(correlation))))));
+  } catch (std::exception& er) {return handleException<QlEquityCashFlowPricer*>(e, er);}}
+void qlQuantLibSetEquityCashFlowPricer(Leg* leg, QlEquityCashFlowPricer* pricer, char **e) {
+  try {setCouponPricer(*arg(leg), *arg(pricer));
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   CouponLeg *cl = 0;

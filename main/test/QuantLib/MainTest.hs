@@ -44,6 +44,7 @@ import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FxForward as FxForwardExample
 import qualified QuantLib.Example.InflationCurve as InflationCurveExample
 import qualified QuantLib.Example.InflationInstruments as InflationInstrumentsExample
+import qualified QuantLib.Example.EquityTotalReturnSwap as EquityTotalReturnSwapExample
 --import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 --import qualified QuantLib.Example.CallableBond as CallableBondExample
 --import qualified QuantLib.Example.CDS as CDSExample
@@ -1428,6 +1429,12 @@ main = do
         FxForwardExample.npvSourceCurrencyR r `shouldSatisfy` closePrec (-19162.41040215391) 1e-4
         FxForwardExample.npvTargetCurrencyR r `shouldSatisfy` closePrec (-21076.341579740263) 1e-4
         FxForwardExample.npvAtFairRateR r `shouldSatisfy` closePrec 0.0 1e-6
+
+    describe "EquityTotalReturnSwap example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' EquityTotalReturnSwapExample.run
+        EquityTotalReturnSwapExample.parNpvIborR r `shouldSatisfy` closePrec 0.0 1e-4
+        EquityTotalReturnSwapExample.parNpvOvernightR r `shouldSatisfy` closePrec 0.0 1e-4
 
     describe "Inflation curve example" $
       it "check values" $ do
