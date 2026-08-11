@@ -254,6 +254,9 @@ enum OptionType {Put = -1, Call = 1};
 // instruments/barriertype.hpp
 enum BarrierType {DownIn, UpIn, DownOut, UpOut};
 
+// instruments/doublebarriertype.hpp
+enum DoubleBarrierType {KnockIn, KnockOut, KIKO, KOKI};
+
 // instruments/swap.hpp
 enum SwapType {Receiver = -1, Payer = 1};
 

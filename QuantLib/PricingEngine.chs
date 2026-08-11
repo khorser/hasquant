@@ -3,6 +3,7 @@ module QuantLib.PricingEngine
     PricingEngine
   , BlackCalculator
   , BlackScholesCalculator
+  , BlackDeltaCalculator
   , CashAnnuityModel(..)
   , Probabilities(..)
   , CashDividendModel(..)
@@ -16,6 +17,14 @@ module QuantLib.PricingEngine
   , counterpartyAdjSwapEngine
 
   , analyticBarrierEngine
+  , analyticBinaryBarrierEngine
+  , fdBlackScholesBarrierEngine
+  , binomialBarrierEngine
+  , vannaVolgaBarrierEngine
+  , analyticDoubleBarrierEngine
+  , vannaVolgaDoubleBarrierEngine
+  , binomialDoubleBarrierEngine
+  , mcDoubleBarrierEngine
   , analyticCliquetEngine
   , analyticCompoundOptionEngine
   , analyticContinuousFixedLookbackEngine
@@ -126,6 +135,10 @@ module QuantLib.PricingEngine
   , blackScholesGamma
   , blackScholesTheta
   , blackScholesThetaPerDay
+  , blackDeltaCalculator
+  , deltaFromStrike
+  , strikeFromDelta
+  , atmStrike
   , blackFormula'
   , blackFormula
   , blackCashItmProbability'
@@ -159,6 +172,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.Math#}
+{#import QuantLib.Quote#}(DeltaType, AtmType)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
 import QuantLib.Internal.Enum
 
@@ -213,6 +227,7 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator' nocode#}
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
+{#pointer *BlackDeltaCalculator foreign -> CBlackDeltaCalculator nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlStrikedTypePayoff nocode#}
 {#pointer *QlPlainVanillaPayoff nocode#}
@@ -240,6 +255,47 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for American binary barrier options (cash-or-nothing/asset-or-nothing)
+{#fun qlAnalyticBinaryBarrierEngine as analyticBinaryBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |/NB/ Timesteps for Cox-Ross-Rubinstein trees are adjusted using the Boyle-Lau algorithm;
+-- pass @maxTimeSteps = timeSteps@ to disable it, or @0@ to use the library's default heuristic.
+{#fun qlBinomialBarrierEngine as binomialBarrierEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
+  ,fromIntegral`Word' -- ^maxTimeSteps
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |FX barrier option engine using the vanna-volga method to account for the volatility smile
+{#fun qlVannaVolgaBarrierEngine as vannaVolgaBarrierEngine{withGenQuote*`DeltaVolQuote' -- ^atmVol
+  ,withGenQuote*`DeltaVolQuote' -- ^vol25Put
+  ,withGenQuote*`DeltaVolQuote' -- ^vol25Call
+  ,withQuote*`GenQuote a' -- ^spotFX
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticTS
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignTS
+  ,`Bool' -- ^adaptVanDelta
+  ,`Double' -- ^bsPriceWithSmile
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticDoubleBarrierEngine as analyticDoubleBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Int' -- ^series
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |always uses 'AnalyticDoubleBarrierEngine' as the underlying smile-free double-barrier engine
+{#fun qlVannaVolgaDoubleBarrierEngine as vannaVolgaDoubleBarrierEngine{withGenQuote*`DeltaVolQuote' -- ^atmVol
+  ,withGenQuote*`DeltaVolQuote' -- ^vol25Put
+  ,withGenQuote*`DeltaVolQuote' -- ^vol25Call
+  ,withQuote*`GenQuote a' -- ^spotFX
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticTS
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignTS
+  ,`Bool' -- ^adaptVanDelta
+  ,`Double' -- ^bsPriceWithSmile
+  ,fromIntegral`Int' -- ^series
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBinomialDoubleBarrierEngine as binomialDoubleBarrierEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlMCDoubleBarrierEngine as mcDoubleBarrierEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticCliquetEngine as analyticCliquetEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticCompoundOptionEngine as analyticCompoundOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticContinuousFixedLookbackEngine as analyticContinuousFixedLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -367,6 +423,13 @@ import QuantLib.Internal.Enum
   ,fromIntegral`Word' -- ^dampingSpecs
   ,`Double' -- ^invEps
   ,withFdmSchemeDesc*`FdmScheme',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdBlackScholesBarrierEngine as fdBlackScholesBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,`Bool' -- ^localVol
+  ,`Double' -- ^illegalLocalVolOverwrite
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |/NB/ C++ classes Monte Carlo engines are additionally parameterised via statistic template argument
 -- Functions below use default value of Statistics
@@ -611,6 +674,22 @@ import QuantLib.Internal.Enum
 -- |Sensitivity to time to maturity per day (assuming 365 day in a year).
 {#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay{withGenBlackCalculator*`BlackScholesCalculator',`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |computes the strike given the option's Black-Scholes delta (in an FX-style delta/vol quotation)
+{#fun qlBlackDeltaCalculator as blackDeltaCalculator{fromEnumC`OptionType'
+  ,fromEnumC`DeltaType'
+  ,`Double' -- ^spot
+  ,`Double' -- ^dDiscount (domestic discount factor)
+  ,`Double' -- ^fDiscount (foreign discount factor)
+  ,`Double' -- ^stdDev
+  ,preErrorCheck-`String'errorCheck*-}->`BlackDeltaCalculator'peekBlackDeltaCalculator*#}
+{#fun qlBlackDeltaCalculatorDeltaFromStrike as deltaFromStrike{withBlackDeltaCalculator*`BlackDeltaCalculator',`Double' -- ^strike
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackDeltaCalculatorStrikeFromDelta as strikeFromDelta{withBlackDeltaCalculator*`BlackDeltaCalculator',`Double' -- ^delta
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackDeltaCalculatorAtmStrike as atmStrike{withBlackDeltaCalculator*`BlackDeltaCalculator',fromEnumC`AtmType'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormula1 as blackFormula'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev

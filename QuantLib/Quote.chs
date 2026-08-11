@@ -2,6 +2,7 @@ module QuantLib.Quote
   (
      Quote
    , SimpleQuote
+   , DeltaVolQuote
    , GenQuote
 
    , asQuote
@@ -11,6 +12,8 @@ module QuantLib.Quote
    , DeltaType(..)
 
   , simpleQuote
+  , deltaVolQuote
+  , atmVolQuote
   , value
   , isValid
   , setValue
@@ -41,9 +44,24 @@ import QuantLib.Internal.Type
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlSimpleQuote as Quote foreign -> CSimpleQuote' nocode#}
+{#pointer *QlDeltaVolQuote as DeltaVolQuote foreign -> CDeltaVolQuote' nocode#}
 
 -- |market element returning a stored value
 {#fun qlSimpleQuote as simpleQuote{`Double',preErrorCheck-`String'errorCheck*-}->`SimpleQuote'peekSimpleQuote*#}
+
+-- |quotation of an FX delta vs vol, e.g. a 25-delta risk-reversal/butterfly point
+{#fun qlDeltaVolQuote1 as deltaVolQuote{`Double' -- ^delta
+  ,withQuote*`GenQuote a' -- ^vol
+  ,`Double' -- ^maturity
+  ,fromEnumC`DeltaType'
+  ,preErrorCheck-`String'errorCheck*-}->`DeltaVolQuote'peekDeltaVolQuote*#}
+
+-- |quotation of an FX at-the-money vol point (e.g. ATM straddle)
+{#fun qlDeltaVolQuote2 as atmVolQuote{withQuote*`GenQuote a' -- ^vol
+  ,fromEnumC`DeltaType'
+  ,`Double' -- ^maturity
+  ,fromEnumC`AtmType'
+  ,preErrorCheck-`String'errorCheck*-}->`DeltaVolQuote'peekDeltaVolQuote*#}
 
 -- |Returns the current value of the given Quote object
 {#fun qlQuoteValue as value{withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`Double'#}

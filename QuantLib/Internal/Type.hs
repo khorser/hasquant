@@ -80,6 +80,10 @@ module QuantLib.Internal.Type
   , PricingEngine
   , peekPricingEngine
   , withPricingEngine
+  , CBlackDeltaCalculator
+  , BlackDeltaCalculator
+  , peekBlackDeltaCalculator
+  , withBlackDeltaCalculator
   , CFloatingRateCouponPricer
   , FloatingRateCouponPricer
   , peekFloatingRateCouponPricer
@@ -558,6 +562,11 @@ module QuantLib.Internal.Type
   , CBarrierOption'
   , peekBarrierOption
   , withBarrierOption
+  , DoubleBarrierOption
+  , CDoubleBarrierOption
+  , CDoubleBarrierOption'
+  , peekDoubleBarrierOption
+  , withDoubleBarrierOption
   , BMASwap
   , CBMASwap
   , CBMASwap'
@@ -909,6 +918,15 @@ peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
 peekPricingEngine = PricingEngine <.> peekStandalone
 withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
 withPricingEngine = withStandalone . getCPricingEngine
+
+data CBlackDeltaCalculator
+newtype BlackDeltaCalculator = BlackDeltaCalculator {getCBlackDeltaCalculator :: Standalone CBlackDeltaCalculator}
+foreign import ccall unsafe "ql.h &qlFreeBlackDeltaCalculator" qlFreeBlackDeltaCalculator :: FinalizerPtr CBlackDeltaCalculator
+instance Finalizable CBlackDeltaCalculator where finalize = qlFreeBlackDeltaCalculator
+peekBlackDeltaCalculator :: Ptr CBlackDeltaCalculator -> IO BlackDeltaCalculator
+peekBlackDeltaCalculator = BlackDeltaCalculator <.> peekStandalone
+withBlackDeltaCalculator :: BlackDeltaCalculator -> (Ptr CBlackDeltaCalculator -> IO b) -> IO b
+withBlackDeltaCalculator = withStandalone . getCBlackDeltaCalculator
 
 data CFloatingRateCouponPricer
 newtype FloatingRateCouponPricer = FloatingRateCouponPricer {getCFloatingRateCouponPricer :: Standalone CFloatingRateCouponPricer}
@@ -2162,6 +2180,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      MargrabeOption
 -- >    OneAssetOption
 -- >      BarrierOption
+-- >      DoubleBarrierOption
 -- >      VanillaOption
 -- >      QuantoVanillaOption
 -- >      QuantoForwardVanillaOption
@@ -2592,6 +2611,18 @@ peekBarrierOption :: Ptr CBarrierOption' -> IO BarrierOption
 peekBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withBarrierOption :: BarrierOption -> (Ptr CBarrierOption' -> IO b) -> IO b
 withBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
+
+data CDoubleBarrierOption'
+type CDoubleBarrierOption = ForeignPtr CDoubleBarrierOption'
+type DoubleBarrierOption = GenOneAssetOption CDoubleBarrierOption
+foreign import ccall unsafe "ql.h &qlFreeDoubleBarrierOption" qlFreeDoubleBarrierOption :: FinalizerPtr CDoubleBarrierOption'
+instance Finalizable CDoubleBarrierOption' where finalize = qlFreeDoubleBarrierOption
+foreign import ccall "ql.h qlDoubleBarrierOptionAsOneAssetOption" qlDoubleBarrierOptionAsOneAssetOption :: Ptr CDoubleBarrierOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CDoubleBarrierOption' where {type Base CDoubleBarrierOption' = COneAssetOption'; upcast = qlDoubleBarrierOptionAsOneAssetOption}
+peekDoubleBarrierOption :: Ptr CDoubleBarrierOption' -> IO DoubleBarrierOption
+peekDoubleBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
+withDoubleBarrierOption :: DoubleBarrierOption -> (Ptr CDoubleBarrierOption' -> IO b) -> IO b
+withDoubleBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CQuantoForwardVanillaOption'
 type CQuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption'

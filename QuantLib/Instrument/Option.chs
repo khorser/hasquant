@@ -6,6 +6,7 @@ module QuantLib.Instrument.Option
   , asOneAssetOption
   , CdsOption
   , BarrierOption
+  , DoubleBarrierOption
   , MargrabeOption
   , MultiAssetOption
   , OneAssetOption
@@ -36,6 +37,8 @@ module QuantLib.Instrument.Option
   , swingExercise
 
   , barrierOption
+  , doubleBarrierOption
+  , doubleBarrierOptionImpliedVolatility
   , forwardVanillaOption
   , compoundOption
   , delta1
@@ -78,7 +81,7 @@ module QuantLib.Instrument.Option
 #include "ql.h"
 
 import QuantLib.Internal
-{#import QuantLib.Instrument#}(AverageType, BarrierType)
+{#import QuantLib.Instrument#}(AverageType, BarrierType, DoubleBarrierType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 
@@ -86,6 +89,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption' nocode#}
+{#pointer *QlDoubleBarrierOption as DoubleBarrierOption foreign -> CDoubleBarrierOption' nocode#}
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption' nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption' nocode#}
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption' nocode#}
@@ -114,6 +118,10 @@ import QuantLib.Internal.Enum
 {#fun qlBarrierOption as barrierOption{`BarrierType',`Double' -- ^barrier
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
+{#fun qlDoubleBarrierOption as doubleBarrierOption{`DoubleBarrierType',`Double' -- ^barrierLo
+  ,`Double' -- ^barrierHi
+  ,`Double' -- ^rebate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`DoubleBarrierOption'peekDoubleBarrierOption*#}
 {#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
@@ -263,6 +271,13 @@ instance HasImpliedVol BarrierOption where
 {#fun qlBarrierOptionImpliedVolatility{withBarrierOption*`BarrierOption',`Double' -- ^price
   ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
   ,withDividendArray*`[Dividend]'& -- ^dividends
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Double' -- ^minVol
+  ,`Double' -- ^maxVol
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDoubleBarrierOptionImpliedVolatility as doubleBarrierOptionImpliedVolatility{withDoubleBarrierOption*`DoubleBarrierOption',`Double' -- ^price
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol

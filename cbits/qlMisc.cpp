@@ -354,6 +354,14 @@ double qlRound(Rounding *r, double val) {return (*r)(val);}
 void qlFreeQuote(QlQuote *quote) {del(quote);}
 void qlFreeSimpleQuote(QlSimpleQuote *o) {del(o);}
 QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o) {return ret(new QlQuote(*arg(o)));}
+QlDeltaVolQuote *qlDeltaVolQuote1(double delta, QlQuote *vol, double maturity, int deltaType, char **e) {
+  try {return ret(new QlDeltaVolQuote(alloc(new DeltaVolQuote(delta, Handle<Quote>(*arg(vol)), maturity, (DeltaVolQuote::DeltaType)deltaType))));
+  } catch (std::exception& er) {return handleException<QlDeltaVolQuote*>(e, er);}}
+QlDeltaVolQuote *qlDeltaVolQuote2(QlQuote *vol, int deltaType, double maturity, int atmType, char **e) {
+  try {return ret(new QlDeltaVolQuote(alloc(new DeltaVolQuote(Handle<Quote>(*arg(vol)), (DeltaVolQuote::DeltaType)deltaType, maturity, (DeltaVolQuote::AtmType)atmType))));
+  } catch (std::exception& er) {return handleException<QlDeltaVolQuote*>(e, er);}}
+void qlFreeDeltaVolQuote(QlDeltaVolQuote *o) {del(o);}
+QlQuote* qlDeltaVolQuoteAsQuote(QlDeltaVolQuote *o) {return ret(new QlQuote(*arg(o)));}
 
 int qlMinDateSerialNumber() {return Date::minDate().serialNumber();}
 int qlMaxDateSerialNumber() {return Date::maxDate().serialNumber();}

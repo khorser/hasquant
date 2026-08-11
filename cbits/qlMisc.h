@@ -76,6 +76,10 @@ extern "C" {
   void qlFreeSimpleQuote(QlSimpleQuote *o);
   QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o);
   double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e);
+  QlDeltaVolQuote *qlDeltaVolQuote1(double delta, QlQuote *vol, double maturity, int deltaType, char **e);
+  QlDeltaVolQuote *qlDeltaVolQuote2(QlQuote *vol, int deltaType, double maturity, int atmType, char **e);
+  void qlFreeDeltaVolQuote(QlDeltaVolQuote *o);
+  QlQuote* qlDeltaVolQuoteAsQuote(QlDeltaVolQuote *o);
   QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, char **e);
   QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int, int, char **e);
   QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e);

@@ -1,6 +1,9 @@
 // this file intentionally does not contain any references to wrappers, only vanilla QuantLib is used here
 #include <ql/pricingengines/all.hpp>
 #include <ql/pricingengines/vanilla/binomialengine.hpp>
+#include <ql/pricingengines/barrier/binomialbarrierengine.hpp>
+#include <ql/experimental/barrieroption/binomialdoublebarrierengine.hpp>
+#include <ql/experimental/barrieroption/mcdoublebarrierengine.hpp>
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
 #include <ql/pricingengines/bond/binomialconvertibleengine.hpp>
@@ -89,6 +92,88 @@ PricingEngine* qlBinomialConvertibleEngineAux(int tree, const shared_ptr<General
     return new BinomialConvertibleEngine<ExtendedJoshi4>(process, timeSteps, cs, d);
   };
   QL_FAIL("Unknown Binomial Tree "<< tree);
+}
+
+PricingEngine* qlBinomialBarrierEngineAux(int tree, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned maxTimeSteps) {
+  switch (tree) {
+  case hasquant::JarrowRudd:
+    return new BinomialBarrierEngine<JarrowRudd, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::CoxRossRubinstein:
+    return new BinomialBarrierEngine<CoxRossRubinstein, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::AdditiveEQPBinomialTree:
+    return new BinomialBarrierEngine<AdditiveEQPBinomialTree, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::Trigeorgis:
+    return new BinomialBarrierEngine<Trigeorgis, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::Tian:
+    return new BinomialBarrierEngine<Tian, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::LeisenReimer:
+    return new BinomialBarrierEngine<LeisenReimer, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::Joshi4:
+    return new BinomialBarrierEngine<Joshi4, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedJarrowRudd:
+    return new BinomialBarrierEngine<ExtendedJarrowRudd, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedCoxRossRubinstein:
+    return new BinomialBarrierEngine<ExtendedCoxRossRubinstein, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedAdditiveEQPBinomialTree:
+    return new BinomialBarrierEngine<ExtendedAdditiveEQPBinomialTree, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedTrigeorgis:
+    return new BinomialBarrierEngine<ExtendedTrigeorgis, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedTian:
+    return new BinomialBarrierEngine<ExtendedTian, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedLeisenReimer:
+    return new BinomialBarrierEngine<ExtendedLeisenReimer, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  case hasquant::ExtendedJoshi4:
+    return new BinomialBarrierEngine<ExtendedJoshi4, DiscretizedBarrierOption>(process, timeSteps, maxTimeSteps);
+  };
+  QL_FAIL("Unknown Binomial Tree "<< tree);
+}
+
+PricingEngine* qlBinomialDoubleBarrierEngineAux(int tree, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps) {
+  switch (tree) {
+  case hasquant::JarrowRudd:
+    return new BinomialDoubleBarrierEngine<JarrowRudd>(process, timeSteps);
+  case hasquant::CoxRossRubinstein:
+    return new BinomialDoubleBarrierEngine<CoxRossRubinstein>(process, timeSteps);
+  case hasquant::AdditiveEQPBinomialTree:
+    return new BinomialDoubleBarrierEngine<AdditiveEQPBinomialTree>(process, timeSteps);
+  case hasquant::Trigeorgis:
+    return new BinomialDoubleBarrierEngine<Trigeorgis>(process, timeSteps);
+  case hasquant::Tian:
+    return new BinomialDoubleBarrierEngine<Tian>(process, timeSteps);
+  case hasquant::LeisenReimer:
+    return new BinomialDoubleBarrierEngine<LeisenReimer>(process, timeSteps);
+  case hasquant::Joshi4:
+    return new BinomialDoubleBarrierEngine<Joshi4>(process, timeSteps);
+  case hasquant::ExtendedJarrowRudd:
+    return new BinomialDoubleBarrierEngine<ExtendedJarrowRudd>(process, timeSteps);
+  case hasquant::ExtendedCoxRossRubinstein:
+    return new BinomialDoubleBarrierEngine<ExtendedCoxRossRubinstein>(process, timeSteps);
+  case hasquant::ExtendedAdditiveEQPBinomialTree:
+    return new BinomialDoubleBarrierEngine<ExtendedAdditiveEQPBinomialTree>(process, timeSteps);
+  case hasquant::ExtendedTrigeorgis:
+    return new BinomialDoubleBarrierEngine<ExtendedTrigeorgis>(process, timeSteps);
+  case hasquant::ExtendedTian:
+    return new BinomialDoubleBarrierEngine<ExtendedTian>(process, timeSteps);
+  case hasquant::ExtendedLeisenReimer:
+    return new BinomialDoubleBarrierEngine<ExtendedLeisenReimer>(process, timeSteps);
+  case hasquant::ExtendedJoshi4:
+    return new BinomialDoubleBarrierEngine<ExtendedJoshi4>(process, timeSteps);
+  };
+  QL_FAIL("Unknown Binomial Tree "<< tree);
+}
+
+PricingEngine* qlMCDoubleBarrierEngineAux(int rngtrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  switch (rngtrait) {
+  case hasquant::PseudoRandom:
+    return new MCDoubleBarrierEngine<PseudoRandom>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::PoissonPseudoRandom:
+    return new MCDoubleBarrierEngine<PoissonPseudoRandom>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::LowDiscrepancy:
+    return new MCDoubleBarrierEngine<LowDiscrepancy>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::Ziggurat:
+    return new MCDoubleBarrierEngine<Ziggurat>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown RNG "<< rngtrait);
 }
 
 // TODO use second template argument (Statistics)

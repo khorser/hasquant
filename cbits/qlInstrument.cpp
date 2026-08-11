@@ -26,6 +26,7 @@
 #include <ql/instruments/equitytotalreturnswap.hpp>
 #include <ql/instruments/compoundoption.hpp>
 #include <ql/instruments/barrieroption.hpp>
+#include <ql/instruments/doublebarrieroption.hpp>
 #include <ql/instruments/vanillaoption.hpp>
 #include <ql/instruments/swaption.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
@@ -420,6 +421,8 @@ double qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e) {try {ret
 double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBarrierOption(QlBarrierOption *o) {del(o);}
 QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
+void qlFreeDoubleBarrierOption(QlDoubleBarrierOption *o) {del(o);}
+QlOneAssetOption* qlDoubleBarrierOptionAsOneAssetOption(QlDoubleBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeMargrabeOption(QlMargrabeOption *o) {del(o);}
 QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o) {return ret(new QlMultiAssetOption(*arg(o)));}
 void qlFreeMultiAssetOption(QlMultiAssetOption *o) {del(o);}
@@ -464,6 +467,12 @@ QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate,
 double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
     return (*arg(o))->impliedVolatility(price, *arg(process), d, accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlDoubleBarrierOption* qlDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlDoubleBarrierOption(alloc(new DoubleBarrierOption((DoubleBarrier::Type)barrierType, barrierLo, barrierHi, rebate, *arg(payoff), (*arg(exercise))))));
+  } catch (std::exception& er) {return handleException<QlDoubleBarrierOption*>(e, er);}}
+double qlDoubleBarrierOptionImpliedVolatility(QlDoubleBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));

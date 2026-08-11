@@ -2,15 +2,21 @@
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
 #include <ql/experimental/math/zigguratrng.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
+#include <ql/experimental/barrieroption/vannavolgabarrierengine.hpp>
 #include <ql/experimental/varianceoption/integralhestonvarianceoptionengine.hpp>
 #include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 #include <ql/methods/montecarlo/lsmbasissystem.hpp>
 #include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
 #include <ql/pricingengines/asian/analytic_discr_geom_av_strike.hpp>
 #include <ql/pricingengines/asian/mc_discr_arith_av_price.hpp>
+#include <ql/experimental/barrieroption/vannavolgadoublebarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticbarrierengine.hpp>
+#include <ql/pricingengines/barrier/analyticbinarybarrierengine.hpp>
+#include <ql/pricingengines/barrier/analyticdoublebarrierengine.hpp>
+#include <ql/pricingengines/barrier/fdblackscholesbarrierengine.hpp>
 #include <ql/pricingengines/basket/kirkengine.hpp>
 #include <ql/pricingengines/basket/stulzengine.hpp>
+#include <ql/pricingengines/blackdeltacalculator.hpp>
 #include <ql/pricingengines/blackformula.hpp>
 #include <ql/pricingengines/blackscholescalculator.hpp>
 #include <ql/pricingengines/bond/discountingbondengine.hpp>
@@ -113,6 +119,30 @@ QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticBinaryBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticBinaryBarrierEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesBarrierEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesBarrierEngine(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBinomialBarrierEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned maxTimeSteps, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlBinomialBarrierEngineAux(tree, *arg(process), timeSteps, maxTimeSteps))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlVannaVolgaBarrierEngine(QlDeltaVolQuote* atmVol, QlDeltaVolQuote* vol25Put, QlDeltaVolQuote* vol25Call, QlQuote* spotFX, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, int adaptVanDelta, double bsPriceWithSmile, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new VannaVolgaBarrierEngine(Handle<DeltaVolQuote>(*arg(atmVol)), Handle<DeltaVolQuote>(*arg(vol25Put)), Handle<DeltaVolQuote>(*arg(vol25Call)), Handle<Quote>(*arg(spotFX)), Handle<YieldTermStructure>(*arg(domesticTS)), Handle<YieldTermStructure>(*arg(foreignTS)), adaptVanDelta, bsPriceWithSmile))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, int series, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticDoubleBarrierEngine(*arg(process), series))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlVannaVolgaDoubleBarrierEngine(QlDeltaVolQuote* atmVol, QlDeltaVolQuote* vol25Put, QlDeltaVolQuote* vol25Call, QlQuote* spotFX, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, int adaptVanDelta, double bsPriceWithSmile, int series, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new VannaVolgaDoubleBarrierEngine<AnalyticDoubleBarrierEngine>(Handle<DeltaVolQuote>(*arg(atmVol)), Handle<DeltaVolQuote>(*arg(vol25Put)), Handle<DeltaVolQuote>(*arg(vol25Call)), Handle<Quote>(*arg(spotFX)), Handle<YieldTermStructure>(*arg(domesticTS)), Handle<YieldTermStructure>(*arg(foreignTS)), adaptVanDelta, bsPriceWithSmile, series))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBinomialDoubleBarrierEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlBinomialDoubleBarrierEngineAux(tree, *arg(process), timeSteps))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCDoubleBarrierEngine(int rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCDoubleBarrierEngineAux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticCliquetEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticCliquetEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -199,6 +229,13 @@ double qlBlackScholesCalculatorElasticity(QlBlackScholesCalculator* o, char **e)
 double qlBlackScholesCalculatorGamma(QlBlackScholesCalculator* o, char **e) {try {return (*arg(o))->gamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackScholesCalculatorTheta(QlBlackScholesCalculator* o, double maturity, char **e) {try {return (*arg(o))->theta(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackScholesCalculatorThetaPerDay(QlBlackScholesCalculator* o, double maturity, char **e) {try {return (*arg(o))->thetaPerDay(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlFreeBlackDeltaCalculator(BlackDeltaCalculator *o) {del(o);}
+BlackDeltaCalculator* qlBlackDeltaCalculator(int optionType, int deltaType, double spot, double dDiscount, double fDiscount, double stdDev, char **e) {
+  try {return alloc(new BlackDeltaCalculator((Option::Type)optionType, (DeltaVolQuote::DeltaType)deltaType, spot, dDiscount, fDiscount, stdDev));
+  } catch (std::exception& er) {return handleException<BlackDeltaCalculator*>(e, er);}}
+double qlBlackDeltaCalculatorDeltaFromStrike(BlackDeltaCalculator* o, double strike, char **e) {try {return arg(o)->deltaFromStrike(strike);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackDeltaCalculatorStrikeFromDelta(BlackDeltaCalculator* o, double delta, char **e) {try {return arg(o)->strikeFromDelta(delta);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackDeltaCalculatorAtmStrike(BlackDeltaCalculator* o, int atmType, char **e) {try {return arg(o)->atmStrike((DeltaVolQuote::AtmType)atmType);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlQuantLibBlackFormula1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, double displacement, char **e) {
   try {return QuantLib::blackFormula(*arg(payoff), forward, stdDev, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}

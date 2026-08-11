@@ -1,5 +1,8 @@
 QuantLib::PricingEngine* qlBinomialVanillaEngineAux(int tree, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps);
 QuantLib::PricingEngine* qlBinomialConvertibleEngineAux(int tree, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, const QuantLib::Handle<QuantLib::Quote>& cs, QuantLib::DividendSchedule d);
+QuantLib::PricingEngine* qlBinomialBarrierEngineAux(int tree, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned maxTimeSteps);
+QuantLib::PricingEngine* qlBinomialDoubleBarrierEngineAux(int tree, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps);
+QuantLib::PricingEngine* qlMCDoubleBarrierEngineAux(int rngtrait, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);
 
 QuantLib::PricingEngine* qlMCVarianceSwapEngine1Aux(int rngtrait, const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);
 QuantLib::PricingEngine* qlMCHestonHullWhiteEngine1Aux(int rngtrait, const shared_ptr<QuantLib::HybridHestonHullWhiteProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed);

@@ -6,6 +6,7 @@ module QuantLib.Instrument
   , CallabilityType(..)
   , OptionType(..)
   , BarrierType(..)
+  , DoubleBarrierType(..)
   , AverageType(..)
   , Seniority(..)
   , PricingModel(..)
@@ -36,6 +37,7 @@ import QuantLib.Internal.Enum
 {#enum SettlementType{} deriving(Show, Eq)#}
 {#enum SettlementMethod{} deriving(Show, Eq)#}
 {#enum BarrierType{} deriving(Show, Eq)#}
+{#enum DoubleBarrierType{} deriving(Show, Eq)#}
 {#enum AverageType{} deriving(Show, Eq)#}
 {#enum Seniority{} deriving(Show, Eq)#}
 {#enum PricingModel{} deriving(Show, Eq)#}
