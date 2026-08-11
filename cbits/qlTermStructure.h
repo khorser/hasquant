@@ -30,6 +30,17 @@ extern "C" {
   QlSmileSection* qlSwaptionVolatilityStructureSmileSection4(QlSwaptionVolatilityStructure* o, int optionDate, double swapLength, int extr, char **e);
   QlSmileSection* qlSwaptionVolatilityStructureSmileSection5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, int extr, char **e);
   QlSmileSection* qlSwaptionVolatilityStructureSmileSection(QlSwaptionVolatilityStructure* o, int, int, int, int, int extr, char **e);
+  QlSmileSection* qlSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e);
+  double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e);
+  double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e);
+  QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, double forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, double atmVolatility, unsigned volsLen, double* vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e);
+  double qlSabrInterpolatedSmileSectionAlpha(QlSmileSection* o, char **e);
+  double qlSabrInterpolatedSmileSectionBeta(QlSmileSection* o, char **e);
+  double qlSabrInterpolatedSmileSectionNu(QlSmileSection* o, char **e);
+  double qlSabrInterpolatedSmileSectionRho(QlSmileSection* o, char **e);
+  double qlSabrInterpolatedSmileSectionRmsError(QlSmileSection* o, char **e);
+  double qlSabrInterpolatedSmileSectionMaxError(QlSmileSection* o, char **e);
+  int qlSabrInterpolatedSmileSectionEndCriteria(QlSmileSection* o, char **e);
   double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e);
   double qlSwaptionVolatilityStructureSwapLength(QlSwaptionVolatilityStructure* o, int, int, char **e);
   double qlSwaptionVolatilityStructureVolatility1(QlSwaptionVolatilityStructure* o, int optionDate, int, int, double strike, int extrapolate, char **e);

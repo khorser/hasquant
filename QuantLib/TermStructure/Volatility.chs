@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Volatility
   (
     BlackVarianceSurfaceExtrapolation
@@ -41,6 +42,19 @@ module QuantLib.TermStructure.Volatility
   , smileSection'
   , smileSection
   , smileSectionForPeriods
+  , sabrSmileSection
+  , smileSectionVolatility
+  , smileSectionVariance
+  , SabrInterpolatedSmileSectionOpts(..)
+  , defaultSabrInterpolatedSmileSectionOpts
+  , sabrInterpolatedSmileSection
+  , sabrInterpolatedSmileSectionAlpha
+  , sabrInterpolatedSmileSectionBeta
+  , sabrInterpolatedSmileSectionNu
+  , sabrInterpolatedSmileSectionRho
+  , sabrInterpolatedSmileSectionRmsError
+  , sabrInterpolatedSmileSectionMaxError
+  , sabrInterpolatedSmileSectionEndCriteria
   , swapLength'
   , swapLength
   , volatilityForPeriod'
@@ -67,8 +81,11 @@ module QuantLib.TermStructure.Volatility
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 {#import QuantLib.InterestRate#}(VolatilityType)
+{#import QuantLib.Math#}(EndCriteriaType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax(deriveOptionsRecord)
+import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -92,6 +109,27 @@ import QuantLib.Internal.Enum
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
+
+-- SabrInterpolatedSmileSectionOpts bundles every trailing param
+-- sabrInterpolatedSmileSection_ hardcodes, pre-populated with upstream's own defaults,
+-- overridden through record-update syntax -- see OISRateHelperOpts (QuantLib.TermStructure.Yield)
+-- for the worked example this follows. dayCounter is Maybe here (unlike the raw binding's
+-- plain DayCounter) since a real DayCounter is only obtainable in IO (`dayCounter
+-- Actual365FixedStandard`) and can't live in a pure default record value;
+-- sabrInterpolatedSmileSection substitutes a fresh Actual365Fixed for Nothing, same as
+-- OISRateHelperOpts does for its Calendar fields. This splice must stay textually before
+-- every {#fun#}-generated binding in this file -- see the comment above OISRateHelperOpts
+-- for why (c2hs always appends its raw foreign-import stubs at the physical end of the
+-- generated module regardless of where a {#fun#} hook appears in the source).
+$(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
+  [ ("sabrIsAlphaFixed", [t|Bool|], [|False|])
+  , ("sabrIsBetaFixed", [t|Bool|], [|False|])
+  , ("sabrIsNuFixed", [t|Bool|], [|False|])
+  , ("sabrIsRhoFixed", [t|Bool|], [|False|])
+  , ("sabrVegaWeighted", [t|Bool|], [|True|])
+  , ("sabrDayCounter", [t|Maybe DayCounter|], [|Nothing|])
+  , ("sabrShift", [t|Double|], [|0.0|])
+  ])
 
 {#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure v'
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
@@ -207,6 +245,85 @@ import QuantLib.Internal.Enum
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+-- |a smile section built directly from SABR parameters (Hagan et al. 2002), rather than
+-- interpolated from a 'SwaptionVolatilityStructure'
+{#fun qlSabrSmileSection as sabrSmileSection{`Double' -- ^timeToExpiry
+  ,`Double' -- ^forward
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+-- |the volatility for the given strike, for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionVolatility as smileSectionVolatility{withSmileSection*`SmileSection'
+  ,`Double' -- ^strike
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the Black variance for the given strike, for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionVariance as smileSectionVariance{withSmileSection*`SmileSection'
+  ,`Double' -- ^strike
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |a smile section calibrated to a market smile (strikes/vols given directly, not as live
+-- quotes -- calibration runs once, eagerly, at construction). alpha\/beta\/nu\/rho\/vegaWeighted
+-- are the SABR calibration's initial guess and fixed\/free flags; endCriteria\/optimization
+-- method are left at QuantLib's own internal defaults (a raw, Haskell-finalized EndCriteria or
+-- OptimizationMethod handle can't safely be stored for this object's full lifetime -- see the
+-- qlXxxFitting comment in "QuantLib.Internal.Enum" for the same ownership hazard elsewhere).
+sabrInterpolatedSmileSection :: Day -- ^optionDate
+  -> Double -- ^forward
+  -> [Double] -- ^strikes
+  -> Bool -- ^hasFloatingStrikes
+  -> Double -- ^atmVolatility
+  -> [Double] -- ^vols
+  -> Double -- ^alpha
+  -> Double -- ^beta
+  -> Double -- ^nu
+  -> Double -- ^rho
+  -> SabrInterpolatedSmileSectionOpts -> IO SmileSection
+sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVolatility vols
+  alpha beta nu rho opts = do
+  dc <- maybe (dayCounter Actual365FixedStandard) return (sabrDayCounter opts)
+  sabrInterpolatedSmileSection_ optionDate forward strikes hasFloatingStrikes atmVolatility vols
+    alpha beta nu rho (sabrIsAlphaFixed opts) (sabrIsBetaFixed opts) (sabrIsNuFixed opts)
+    (sabrIsRhoFixed opts) (sabrVegaWeighted opts) dc (sabrShift opts)
+
+{#fun qlSabrInterpolatedSmileSection as sabrInterpolatedSmileSection_{withDay*`Day'
+  ,`Double' -- ^forward
+  ,withDoubleArray*`[Double]'& -- ^strikes
+  ,`Bool' -- ^hasFloatingStrikes
+  ,`Double' -- ^atmVolatility
+  ,withDoubleArray*`[Double]'& -- ^vols
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Bool' -- ^isAlphaFixed
+  ,`Bool' -- ^isBetaFixed
+  ,`Bool' -- ^isNuFixed
+  ,`Bool' -- ^isRhoFixed
+  ,`Bool' -- ^vegaWeighted
+  ,withDayCounter*`DayCounter'
+  ,`Double' -- ^shift
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |calibrated alpha (post-fit; can differ from the initial guess passed to
+-- 'sabrInterpolatedSmileSection' unless @sabrIsAlphaFixed@ was set). Only valid for a
+-- 'SmileSection' built by 'sabrInterpolatedSmileSection'.
+{#fun qlSabrInterpolatedSmileSectionAlpha as sabrInterpolatedSmileSectionAlpha{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated beta, see 'sabrInterpolatedSmileSectionAlpha'
+{#fun qlSabrInterpolatedSmileSectionBeta as sabrInterpolatedSmileSectionBeta{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated nu, see 'sabrInterpolatedSmileSectionAlpha'
+{#fun qlSabrInterpolatedSmileSectionNu as sabrInterpolatedSmileSectionNu{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated rho, see 'sabrInterpolatedSmileSectionAlpha'
+{#fun qlSabrInterpolatedSmileSectionRho as sabrInterpolatedSmileSectionRho{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |root-mean-square calibration error
+{#fun qlSabrInterpolatedSmileSectionRmsError as sabrInterpolatedSmileSectionRmsError{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |maximum calibration error
+{#fun qlSabrInterpolatedSmileSectionMaxError as sabrInterpolatedSmileSectionMaxError{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the reason the SABR calibration's optimizer stopped
+{#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withGenVolatilityTermStructure*`SwaptionVolatilityStructure'
   ,withDay*`Day' -- ^start

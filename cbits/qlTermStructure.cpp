@@ -4,6 +4,8 @@
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp>
+#include <ql/termstructures/volatility/sabrsmilesection.hpp>
+#include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/instruments/capfloor.hpp>
 #include <ql/termstructures/volatility/capfloor/all.hpp>
 #include <ql/math/interpolations/all.hpp>
@@ -101,6 +103,14 @@ void setInterpolation(T* o, int interpolator, int approximator, int approximator
   }
 }
 
+namespace {
+ext::shared_ptr<SabrInterpolatedSmileSection> asSabrInterpolatedSmileSection(const QlSmileSection& o) {
+  auto s = ext::dynamic_pointer_cast<SabrInterpolatedSmileSection>(o);
+  QL_REQUIRE(s, "not a SabrInterpolatedSmileSection");
+  return s;
+}
+}
+
 extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, Handle<Quote>(*q), *arg(dc), (VolatilityType)type, displacement)));
@@ -185,6 +195,54 @@ QlSmileSection* qlSwaptionVolatilityStructureSmileSection5(QlSwaptionVolatilityS
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection(QlSwaptionVolatilityStructure* o, int n, int u, int n1, int u1, int extr, char **e) {
   try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Period(n, (TimeUnit)u), Period(n1, (TimeUnit)u1), extr))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new SabrSmileSection(
+      timeToExpiry, forward, std::vector<Real>{alpha, beta, nu, rho}, shift, (VolatilityType)volatilityType)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e) {
+  try {return (*arg(o))->volatility(strike);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e) {
+  try {return (*arg(o))->variance(strike);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, double forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, double atmVolatility, unsigned volsLen, double* vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e) {
+  try {
+    // endCriteria/optMethod are left at their empty-shared_ptr defaults (SABRInterpolation's
+    // own internal EndCriteria/LevenbergMarquardt defaults apply) rather than accepting
+    // Haskell-owned EndCriteria/OptimizationMethod handles here: those are raw,
+    // Haskell-finalized pointers (see the qlXxxFitting comment above), and this ctor stores
+    // them as shared_ptr members for the object's full lifetime, not just for the duration of
+    // this call -- the same ownership hazard already avoided for FittedBondDiscountCurve's
+    // fitting methods.
+    ext::shared_ptr<SmileSection> section(new SabrInterpolatedSmileSection(
+        Date(optionDate), forward, std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
+        atmVolatility, std::vector<Real>(vols, vols + volsLen), alpha, beta, nu, rho,
+        isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, vegaWeighted,
+        ext::shared_ptr<EndCriteria>(), ext::shared_ptr<OptimizationMethod>(), *arg(dc), shift));
+    section->volatility(forward); // force calibration now, surfacing failures at construction
+    return ret(new QlSmileSection(alloc(section)));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+double qlSabrInterpolatedSmileSectionAlpha(QlSmileSection* o, char **e) {
+  try {return asSabrInterpolatedSmileSection(*arg(o))->alpha();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrInterpolatedSmileSectionBeta(QlSmileSection* o, char **e) {
+  try {return asSabrInterpolatedSmileSection(*arg(o))->beta();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrInterpolatedSmileSectionNu(QlSmileSection* o, char **e) {
+  try {return asSabrInterpolatedSmileSection(*arg(o))->nu();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrInterpolatedSmileSectionRho(QlSmileSection* o, char **e) {
+  try {return asSabrInterpolatedSmileSection(*arg(o))->rho();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrInterpolatedSmileSectionRmsError(QlSmileSection* o, char **e) {
+  try {return asSabrInterpolatedSmileSection(*arg(o))->rmsError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrInterpolatedSmileSectionMaxError(QlSmileSection* o, char **e) {
+  try {return asSabrInterpolatedSmileSection(*arg(o))->maxError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlSabrInterpolatedSmileSectionEndCriteria(QlSmileSection* o, char **e) {
+  try {return (int)asSabrInterpolatedSmileSection(*arg(o))->endCriteria();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e) {
   try {return (*arg(o))->swapLength(Date(start), Date(end));
   } catch (std::exception& er) {return handleException<double>(e, er);}}

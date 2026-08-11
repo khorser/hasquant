@@ -67,7 +67,6 @@ While this is convenient, it leads to some allocation and deallocation on each c
 - Use some QuantLib Handles/RelinkableHandle for quotes and curves to support native QuantLib semantics
 - Design a declarative embedded DSL
 - Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
-- SABR-based swaption/cap volatility surfaces (`SabrSmileSection`, `SabrInterpolatedSmileSection`, `SabrSwaptionVolatilityCube`) are not bound -- the plain SABR closed-form functions (`ql/termstructures/volatility/sabr.hpp`: `sabrVolatility`, `shiftedSabrVolatility`, etc.) are, but nothing builds a smile-consistent `SmileSection`/`SwaptionVolatilityStructure` from them yet. Materially bigger than the formulas alone (64+ tracker lines in `sabrswaptionvolatilitycube.hpp` plus the smile-section classes) -- worth its own follow-up project.
 - See [github issues](https://github.com/khorser/hasquant) for more formalized tasks
 
 # Project History
