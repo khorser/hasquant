@@ -9,6 +9,7 @@ module QuantLib.Spec.Helpers (
   , areClose
   , closePrec
   , listClose
+  , listCloseRel
   , binomialsClose
   ) where
 
@@ -50,6 +51,12 @@ closePrec r p x = abs (x - r) < p
 
 listClose :: (a -> Double) -> [Double] -> Double -> [a] -> Bool
 listClose f x1 e x2 = (length x1 == length x2) && all (\(x, y) -> abs(x - f y) < e) (zip x1 x2)
+
+-- |Like 'listClose', but the tolerance is relative to each expected value
+-- rather than a fixed absolute epsilon -- for tables whose entries span more
+-- than an order of magnitude (e.g. CVA corrections from 0.24bp to 32bp).
+listCloseRel :: (a -> Double) -> [Double] -> Double -> [a] -> Bool
+listCloseRel f x1 e x2 = (length x1 == length x2) && all (\(x, y) -> abs(x - f y) < e * abs x) (zip x1 x2)
 
 -- |row-wise 'listClose' at 1.0e-6, for tables of per-engine results (e.g. the
 -- binomial-tree grid in the equity option example)

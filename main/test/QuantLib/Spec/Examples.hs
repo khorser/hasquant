@@ -25,8 +25,11 @@ import qualified QuantLib.Example.CDS as CDSExample
 import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
 import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.Replication as ReplicationExample
+import qualified QuantLib.Example.CVAIRS as CVAIRSExample
+import qualified QuantLib.Example.TARF as TARFExample
+import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 
-import QuantLib.Spec.Helpers(closePrec, listClose, binomialsClose)
+import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
 spec :: Spec
 spec = do
@@ -285,3 +288,99 @@ spec = do
           , [3.844308, 4.360713, 4.486076] -- Leisen-Reimer
           , [3.844308, 4.360713, 4.486076] -- Joshi
           ]
+
+    -- The three blocks below close the "smaller related gap" noted in issue #11:
+    -- QuantLib.Example.{CVAIRS,TARF,FittedBondCurve} are wired into
+    -- main/exe/QuantLib/MainExample.hs but previously had no automated assertions.
+    describe "CVA IRS example" $
+      it "check values" $ do
+        (CVAIRSExample.Result rows) <- Settings.keepingSettings' CVAIRSExample.run
+        map CVAIRSExample.tenorR rows `shouldBe` [5, 10, 15, 20, 25, 30]
+        -- fairRateR is a bootstrap round-trip of the input market quotes, not
+        -- independent content, but pinning it tightly still catches a broken curve
+        rows `shouldSatisfy` listCloseRel CVAIRSExample.fairRateR
+          [0.03249, 0.04074, 0.04463, 0.04675, 0.04775, 0.04811] 1.0e-6
+        -- CVA corrections to the fair rate in bp, reproduced (to 2dp) from Brigo &
+        -- Masetti (2005) Table 2 / upstream Examples/CVAIRS/CVAIRS.cpp, built and run
+        -- natively against the same QuantLib: -0.24/-0.87/-2.10, -2.15/-5.62/-11.65,
+        -- -4.60/-10.41/-19.60, -6.94/-14.57/-25.67, -8.79/-17.63/-29.62,
+        -- -10.16/-19.73/-32.00. Full-precision Haskell values recorded here, at
+        -- 1.0e-4 relative per CLAUDE.md (bootstrap+hazard-curve derived, same class
+        -- of quantity that diverges ~1e-4 between aarch64/macOS and the x86_64
+        -- lts-18.8 container).
+        rows `shouldSatisfy` listCloseRel CVAIRSExample.lowCorrectionBp
+          [-0.24498469548300816, -2.1523635870508704, -4.60263253879413,
+           -6.93715536386412, -8.788751020730595, -10.155506309652008] 1.0e-4
+        rows `shouldSatisfy` listCloseRel CVAIRSExample.mediumCorrectionBp
+          [-0.8688114251539231, -5.61927168415216, -10.410910658531918,
+           -14.568917651245975, -17.628019093181983, -19.725229057328818] 1.0e-4
+        rows `shouldSatisfy` listCloseRel CVAIRSExample.highCorrectionBp
+          [-2.0984221282007582, -11.649947234236013, -19.59834323104939,
+           -25.66959958174693, -29.622840627738718, -31.999973986819306] 1.0e-4
+
+    describe "TARF example" $
+      it "check values" $ do
+        (TARFExample.Result rnpv implFwds simFwds) <- Settings.keepingSettings' TARFExample.run
+        -- purely from the input EUR/ILS discount tables, no randomness involved
+        implFwds `shouldSatisfy` listCloseRel id
+          [3.3084, 3.3112, 3.3129, 3.3153, 3.3179, 3.3199, 3.3215, 3.3228, 3.324,
+           3.3249, 3.3258, 3.3267, 3.3275] 1.0e-6
+        -- the Monte Carlo leg is reproducible now that TARF.hs's path generator
+        -- uses a fixed nonzero seed rather than 0 ("seed from entropy" in
+        -- QuantLib's MersenneTwisterUniformRng); MT19937's integer draw sequence is
+        -- identical across platforms, so only the FP transform/evolution differs
+        rnpv `shouldSatisfy` closePrec (-75637.39) 10.0
+        -- simFwds must track implFwds under the risk-neutral measure (a martingale
+        -- check caught garmanKohlagenProcess's foreign/domestic curve args being
+        -- swapped in TARF.hs: with ILS quoted as ILS-per-EUR, EUR is the foreign
+        -- currency and ILS the domestic one, but the args were the other way
+        -- around, biasing the drift and making simFwds run ~1% below implFwds)
+        simFwds `shouldSatisfy` listCloseRel id
+          [3.3084, 3.3113, 3.3129, 3.3153, 3.3177, 3.3196, 3.3217, 3.3229, 3.3235,
+           3.3247, 3.3253, 3.3267, 3.3278] 1.0e-4
+
+    -- FittedBondCurve rolls Settings' evaluation date to Date::todaysDate(), so
+    -- unlike every other example here its numbers are not reproducible across runs
+    -- taken on different days -- asserted structurally instead of pinning values.
+    describe "Fitted bond curve example (LONG)" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' FittedBondCurveExample.run
+        let coupons = [0.0200, 0.0225, 0.0250, 0.0275, 0.0300,
+                       0.0325, 0.0350, 0.0375, 0.0400, 0.0425,
+                       0.0450, 0.0475, 0.0500, 0.0525, 0.0550]
+            rates1 = FittedBondCurveExample.rates1R r
+            rates2 = FittedBondCurveExample.rates2R r
+            rates3 = FittedBondCurveExample.rates3R r
+            rates4 = FittedBondCurveExample.rates4R r
+
+        length (FittedBondCurveExample.tenorsR rates1) `shouldBe` 15
+        length (FittedBondCurveExample.tenorsR rates2) `shouldBe` 15
+        length (FittedBondCurveExample.tenorsR rates3) `shouldBe` 14
+        length (FittedBondCurveExample.tenorsR rates4) `shouldBe` 14
+        all ((== 6) . length) (FittedBondCurveExample.ratesR rates1) `shouldBe` True
+
+        -- step1/step3 bootstrap a fresh piecewise curve at par (clean price 100)
+        -- from the same evaluation date the bonds are priced from, so the curve's
+        -- own par rate for each bond reprices its coupon almost exactly. step2/step4
+        -- query an already-built curve from a later date (step2) or after a price
+        -- shock (step4), so their first column is real content, not a tautology.
+        map (!! 0) (FittedBondCurveExample.ratesR rates1) `shouldSatisfy`
+          listClose id (map (* 100) coupons) 1.0e-6
+        map (!! 0) (FittedBondCurveExample.ratesR rates3) `shouldSatisfy`
+          listClose id (map (* 100) (drop 1 coupons)) 1.0e-6
+
+        -- step2's bonds are the same instruments as step1's, priced 23 months later
+        FittedBondCurveExample.tenorsR rates2 `shouldSatisfy`
+          listClose id (map (subtract (23 / 12)) (FittedBondCurveExample.tenorsR rates1)) 1.0e-6
+
+        -- step3/step4 share the curve built in step3, so its reference date and the
+        -- bonds' time-to-maturity ladder line up exactly between the two
+        FittedBondCurveExample.refDateR rates3 `shouldBe` FittedBondCurveExample.refDateR rates4
+        FittedBondCurveExample.tenorsR rates3 `shouldBe` FittedBondCurveExample.tenorsR rates4
+
+        -- every fitting method should report having actually iterated (not bounded
+        -- above by maxEvals: ExponentialSplines legitimately exceeds it)
+        all (> 0) (FittedBondCurveExample.numIterR rates1) `shouldBe` True
+        all (> 0) (FittedBondCurveExample.numIterR rates2) `shouldBe` True
+        all (> 0) (FittedBondCurveExample.numIterR rates3) `shouldBe` True
+        all (> 0) (FittedBondCurveExample.numIterR rates4) `shouldBe` True
