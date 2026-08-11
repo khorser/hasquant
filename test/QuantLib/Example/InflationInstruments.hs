@@ -21,7 +21,7 @@ import QuantLib.Settings
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date
+import QuantLib.Time.Date hiding(today)
 import QuantLib.Time.Schedule
 
 -- |Two 'ZeroInflationIndex' instances sharing a name/region/currency/frequency/lag share

@@ -1,8 +1,5 @@
-{-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE OverloadedLists #-}
+{-# LANGUAGE ScopedTypeVariables, OverloadedLists, TupleSections, TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-{-# LANGUAGE TupleSections #-}
-{-# LANGUAGE TemplateHaskell #-}
 module Main where
 
 import Prelude hiding(until, head, tail)

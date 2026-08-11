@@ -10,7 +10,6 @@ module QuantLib.Index.Equity
   , spot
   ) where
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 
 #include "qlTypesC2HS.h"
@@ -19,6 +18,7 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
