@@ -44,7 +44,13 @@ data CalendarExtra =
   | Extra__Joint3 !Calendar !Calendar !Calendar !JointCalendarRule
   | Extra__Joint4 !Calendar !Calendar !Calendar !Calendar !JointCalendarRule
 
-$(deriveCrossEnum "CalendarConstructor" "mapCalendar" ''CalendarCountry "Market" ''CalendarExtra)
+$(deriveCrossEnum CrossEnumSpec
+    { crossTypeName = "CalendarConstructor"
+    , crossMapperFn = "mapCalendar"
+    , crossMainEnum = ''CalendarCountry
+    , crossSubSuffix = "Market"
+    , crossExtraType = ''CalendarExtra
+    })
 
 deriving instance Show CalendarConstructor
 deriving instance Eq CalendarConstructor
@@ -64,7 +70,13 @@ data DayCounterExtra = Extra__Business252 !Calendar
   | Extra__ActualActualBond' !Schedule
   | Extra__ActualActualISMA' !Schedule
 
-$(deriveCrossEnum "DayCounterConstructor" "mapDayCounter" ''DayCounterType "Convention" ''DayCounterExtra)
+$(deriveCrossEnum CrossEnumSpec
+    { crossTypeName = "DayCounterConstructor"
+    , crossMapperFn = "mapDayCounter"
+    , crossMainEnum = ''DayCounterType
+    , crossSubSuffix = "Convention"
+    , crossExtraType = ''DayCounterExtra
+    })
 
 deriving instance Show DayCounterConstructor
 deriving instance Eq DayCounterConstructor

@@ -116,8 +116,15 @@ data IborExtra =
     | Extra__DailyTenorLibor String Word -- ^settlementDays
       Currency Calendar DayCounter
 
-$(deriveIborConstructor "IborConstructor" "iborIndexOrdinal" "iborIndexTenor"
-  ''IborIndexType ''IborDailyTenorIndexType ''IborONIndexType ''IborExtra)
+$(deriveIborConstructor IborConstructorSpec
+    { iborTypeName = "IborConstructor"
+    , iborOrdinalFn = "iborIndexOrdinal"
+    , iborTenorFn = "iborIndexTenor"
+    , iborTenorEnum = ''IborIndexType
+    , iborDailyTenorEnum = ''IborDailyTenorIndexType
+    , iborOvernightEnum = ''IborONIndexType
+    , iborExtraType = ''IborExtra
+    })
 
 deriving instance Show IborConstructor
 deriving instance Eq IborConstructor
