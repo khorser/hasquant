@@ -493,12 +493,12 @@ QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double fa
 void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+  YieldTermStructure *ts = 0;
   try {
-    YieldTermStructure *ts = qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    ts = qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
-    // TODO free ts if allocation below fails
     return ret(new QlYieldTermStructure(alloc(ts)));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 
 typedef YieldTermStructure *(*curveBuilder)( const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates, int interpolator, int approximator, int approximatorArg);
