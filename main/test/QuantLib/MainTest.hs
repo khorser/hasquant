@@ -103,10 +103,12 @@ main = do
         $(cutAt [1,3] 'syntaxTestF) 2 4 1 3 `shouldBe` syntaxTestF 1 2 3 4
       it "cut substitutes holes in order of occurrence" $
         $(cut [| syntaxTestF _ 2 _ 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
-      it "cut treats named holes the same as bare _" $
+      it "cut treats distinct named holes the same as bare _" $
         $(cut [| syntaxTestF _a 2 _b 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
-      it "cut repeats a named hole rather than sharing it" $
-        $(cut [| syntaxTestF _a 2 _a 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
+      it "cut shares one parameter between repeats of a named hole" $
+        $(cut [| syntaxTestF _a 2 _a 4 |]) 1 `shouldBe` syntaxTestF 1 2 1 4
+      it "cut orders shared holes by first occurrence" $
+        $(cut [| syntaxTestF _b 2 _a _b |]) 1 3 `shouldBe` syntaxTestF 1 2 3 1
       it "cutAt, cutAt' and cut all work on a typeclass method" $ do
         $(cutAt [1] 'syntaxLabelWith) 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
         $(cutAt' [1] 4) syntaxLabelWith 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3

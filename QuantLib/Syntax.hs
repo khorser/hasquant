@@ -15,7 +15,7 @@ where
 
 import Control.Monad(replicateM)
 import Control.Monad.Trans.Class(lift)
-import Control.Monad.Trans.State.Strict(StateT, modify', runStateT)
+import Control.Monad.Trans.State.Strict(StateT, get, modify', runStateT)
 import Data.Data(Data, gmapM, cast)
 import Data.List(isPrefixOf, nub)
 import Language.Haskell.TH
@@ -121,8 +121,23 @@ cutAt' is an = do
 isHole :: Name -> Bool
 isHole n = "_" `isPrefixOf` nameBase n
 
--- collected holes are accumulated in reverse order of occurrence, see 'cut'
-type HoleQ = StateT [Name] Q
+-- the lambda parameter each hole seen so far introduced, accumulated in reverse order of first
+-- occurrence (see 'cut'). An anonymous @_@ is keyed by Nothing and never shares; a named @_x@
+-- is keyed by its own name, so a later @_x@ reuses the parameter rather than adding one.
+type HoleQ = StateT [(Maybe String, Name)] Q
+
+holeParam :: Name -> HoleQ Name
+holeParam n
+  | anonymous = fresh Nothing
+  | otherwise = do
+      seen <- get
+      maybe (fresh (Just (nameBase n))) return (lookup (Just (nameBase n)) seen)
+  where
+    anonymous = nameBase n == "_"
+    fresh k = do
+      v <- lift (newName "h")
+      modify' ((k, v) :)
+      return v
 
 -- a hole appearing inside a *nested* quotation bracket within the cut'd expression would also
 -- get replaced, since this doesn't track quotation depth -- not expected to matter for any call
@@ -131,10 +146,7 @@ replaceHoles :: Exp -> HoleQ Exp
 replaceHoles = go
   where
     go :: Exp -> HoleQ Exp
-    go (UnboundVarE n) | isHole n = do
-      v <- lift (newName "h")
-      modify' (v :)
-      return (VarE v)
+    go (UnboundVarE n) | isHole n = VarE <$> holeParam n
     go e = gmapM step e
       where
         step :: forall d. Data d => d -> HoleQ d
@@ -149,16 +161,19 @@ replaceHoles = go
 -- |'cut'-style partial application via placeholders (in the spirit of SRFI's @cut@): mark the
 -- argument(s) to leave free with a bare @_@ or a named hole (@_x@) -- GHC's own typed-hole
 -- syntax, valid in any expression position -- inside a quoted expression. Each hole becomes a
--- fresh trailing lambda parameter, in left-to-right order of occurrence; a hole's name is a
--- label for the reader only, so repeating the same one (@_x ... _x@) yields two independent
--- parameters rather than sharing one. Unlike 'freeNth'\/'cutAt', this never reifies the target,
--- so it works equally well on ordinary functions, typeclass methods, and operators.
+-- trailing lambda parameter, ordered by first occurrence, left to right. Repeating a named hole
+-- reuses the parameter its first occurrence introduced, so the same argument can be fed to
+-- several positions at once; a bare @_@ is anonymous and always gets a parameter of its own.
+-- Unlike 'freeNth'\/'cutAt', this never reifies the target, so it works equally well on
+-- ordinary functions, typeclass methods, local bindings, and operators.
 --
 -- > $(cut [| advance _ (3, Months) Following False |]) `fmap` calendar Null
+-- > -- one argument fed to two positions:
+-- > $(cut [| f _x 2 _x |]) 1  ==  f 1 2 1
 cut :: ExpQ -> ExpQ
 cut eq = do
   e <- eq
   (e', holes) <- runStateT (replaceHoles e) []
-  return $ LamE (map VarP (reverse holes)) e'
+  return $ LamE (map (VarP . snd) (reverse holes)) e'
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
