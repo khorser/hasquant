@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, StandaloneDeriving #-}
+{-# LANGUAGE TemplateHaskell, StandaloneDeriving, PatternSynonyms #-}
 -- suppress warnings about unused Extra_ constructors
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Index.InterestRate
@@ -36,7 +36,22 @@ module QuantLib.Index.InterestRate
   , swapIndex
   , swapIndex'
 
-  , IborConstructor(..)
+  -- The bundled names are the fixed-tenor shortcut pattern synonyms defined below;
+  -- @Euribor3M@ and @Euribor (3, Months)@ are the same value, usable interchangeably
+  -- in expressions and in patterns.
+  , IborConstructor(.., Bbsw1M, Bbsw2M, Bbsw3M, Bbsw4M, Bbsw5M, Bbsw6M
+                      , BiborSW, Bibor1M, Bibor2M, Bibor3M, Bibor6M, Bibor9M, Bibor1Y
+                      , Bkbm1M, Bkbm2M, Bkbm3M, Bkbm4M, Bkbm5M, Bkbm6M
+                      , EuriborSW, Euribor2W, Euribor3W
+                      , Euribor1M, Euribor2M, Euribor3M, Euribor4M, Euribor5M, Euribor6M
+                      , Euribor7M, Euribor8M, Euribor9M, Euribor10M, Euribor11M, Euribor1Y
+                      , Euribor365_SW, Euribor365_2W, Euribor365_3W
+                      , Euribor365_1M, Euribor365_2M, Euribor365_3M, Euribor365_4M
+                      , Euribor365_5M, Euribor365_6M, Euribor365_7M, Euribor365_8M
+                      , Euribor365_9M, Euribor365_10M, Euribor365_11M, Euribor365_1Y
+                      , EurLiborSW, EurLibor2W
+                      , EurLibor1M, EurLibor2M, EurLibor3M, EurLibor4M, EurLibor5M, EurLibor6M
+                      , EurLibor7M, EurLibor8M, EurLibor9M, EurLibor10M, EurLibor11M, EurLibor1Y)
   , iborIndex
   , overnightIndex
   , businessDayConvention
@@ -84,10 +99,9 @@ import QuantLib.CashFlow (RateAveragingType)
 {#enum IborDailyTenorIndexType{} add prefix = "Ibor__" deriving (Show, Eq)#}
 {#enum IborONIndexType{} add prefix = "Ibor__" deriving (Show, Eq)#}
 
--- non-enum-ordinal IborConstructor cases -- convenience shortcuts and the fully generic
--- constructors -- merged into IborConstructor by deriveIborConstructor below, alongside the
--- plain-tenor/daily-tenor/overnight cases generated straight from IborIndexType/
--- IborDailyTenorIndexType/IborONIndexType
+-- the fully generic, non-enum-ordinal IborConstructor cases, merged into IborConstructor by
+-- deriveIborConstructor below alongside the plain-tenor/daily-tenor/overnight cases generated
+-- straight from IborIndexType/IborDailyTenorIndexType/IborONIndexType
 data IborExtra =
       Extra__Ibor String -- ^familyName
       (Word, TimeUnit) -- ^tenor
@@ -101,75 +115,6 @@ data IborExtra =
       Currency Calendar DayCounter
     | Extra__DailyTenorLibor String Word -- ^settlementDays
       Currency Calendar DayCounter
-    -- convenience shortcuts
-    | Extra__Bbsw1M
-    | Extra__Bbsw2M
-    | Extra__Bbsw3M
-    | Extra__Bbsw4M
-    | Extra__Bbsw5M
-    | Extra__Bbsw6M
-
-    | Extra__BiborSW
-    | Extra__Bibor1M
-    | Extra__Bibor2M
-    | Extra__Bibor3M
-    | Extra__Bibor6M
-    | Extra__Bibor9M
-    | Extra__Bibor1Y
-
-    | Extra__Bkbm1M
-    | Extra__Bkbm2M
-    | Extra__Bkbm3M
-    | Extra__Bkbm4M
-    | Extra__Bkbm5M
-    | Extra__Bkbm6M
-
-    | Extra__EuriborSW
-    | Extra__Euribor2W
-    | Extra__Euribor3W
-    | Extra__Euribor1M
-    | Extra__Euribor2M
-    | Extra__Euribor3M
-    | Extra__Euribor4M
-    | Extra__Euribor5M
-    | Extra__Euribor6M
-    | Extra__Euribor7M
-    | Extra__Euribor8M
-    | Extra__Euribor9M
-    | Extra__Euribor10M
-    | Extra__Euribor11M
-    | Extra__Euribor1Y
-
-    | Extra__Euribor365_SW
-    | Extra__Euribor365_2W
-    | Extra__Euribor365_3W
-    | Extra__Euribor365_1M
-    | Extra__Euribor365_2M
-    | Extra__Euribor365_3M
-    | Extra__Euribor365_4M
-    | Extra__Euribor365_5M
-    | Extra__Euribor365_6M
-    | Extra__Euribor365_7M
-    | Extra__Euribor365_8M
-    | Extra__Euribor365_9M
-    | Extra__Euribor365_10M
-    | Extra__Euribor365_11M
-    | Extra__Euribor365_1Y
-
-    | Extra__EurLiborSW
-    | Extra__EurLibor2W
-    | Extra__EurLibor1M
-    | Extra__EurLibor2M
-    | Extra__EurLibor3M
-    | Extra__EurLibor4M
-    | Extra__EurLibor5M
-    | Extra__EurLibor6M
-    | Extra__EurLibor7M
-    | Extra__EurLibor8M
-    | Extra__EurLibor9M
-    | Extra__EurLibor10M
-    | Extra__EurLibor11M
-    | Extra__EurLibor1Y
 
 $(deriveIborConstructor "IborConstructor" "iborIndexOrdinal" "iborIndexTenor"
   ''IborIndexType ''IborDailyTenorIndexType ''IborONIndexType ''IborExtra)
@@ -177,73 +122,98 @@ $(deriveIborConstructor "IborConstructor" "iborIndexOrdinal" "iborIndexTenor"
 deriving instance Show IborConstructor
 deriving instance Eq IborConstructor
 
+-- Fixed-tenor shortcuts, mirroring upstream's thin @Euribor3M@-style subclasses (whose
+-- constructors only delegate to the parameterized one). They are bidirectional pattern
+-- synonyms, not constructors: each is *defined* as the parameterized case it stands for,
+-- so there is a single list to keep right and no separate dispatch clause that can drift
+-- out of step with it -- @Euribor365_SW@ used to expand, via such a clause, to
+-- @Euribor (365, Weeks)@: wrong family and wrong tenor both.
+pattern Bbsw1M, Bbsw2M, Bbsw3M, Bbsw4M, Bbsw5M, Bbsw6M :: IborConstructor
+pattern Bbsw1M = Bbsw (1, Months)
+pattern Bbsw2M = Bbsw (2, Months)
+pattern Bbsw3M = Bbsw (3, Months)
+pattern Bbsw4M = Bbsw (4, Months)
+pattern Bbsw5M = Bbsw (5, Months)
+pattern Bbsw6M = Bbsw (6, Months)
+
+pattern BiborSW, Bibor1M, Bibor2M, Bibor3M, Bibor6M, Bibor9M, Bibor1Y :: IborConstructor
+pattern BiborSW = Bibor (1, Weeks)
+pattern Bibor1M = Bibor (1, Months)
+pattern Bibor2M = Bibor (2, Months)
+pattern Bibor3M = Bibor (3, Months)
+pattern Bibor6M = Bibor (6, Months)
+pattern Bibor9M = Bibor (9, Months)
+pattern Bibor1Y = Bibor (1, Years)
+
+pattern Bkbm1M, Bkbm2M, Bkbm3M, Bkbm4M, Bkbm5M, Bkbm6M :: IborConstructor
+pattern Bkbm1M = Bkbm (1, Months)
+pattern Bkbm2M = Bkbm (2, Months)
+pattern Bkbm3M = Bkbm (3, Months)
+pattern Bkbm4M = Bkbm (4, Months)
+pattern Bkbm5M = Bkbm (5, Months)
+pattern Bkbm6M = Bkbm (6, Months)
+
+pattern EuriborSW, Euribor2W, Euribor3W, Euribor1M, Euribor2M, Euribor3M, Euribor4M
+  , Euribor5M, Euribor6M, Euribor7M, Euribor8M, Euribor9M, Euribor10M, Euribor11M
+  , Euribor1Y :: IborConstructor
+pattern EuriborSW = Euribor (1, Weeks)
+pattern Euribor2W = Euribor (2, Weeks)
+pattern Euribor3W = Euribor (3, Weeks)
+pattern Euribor1M = Euribor (1, Months)
+pattern Euribor2M = Euribor (2, Months)
+pattern Euribor3M = Euribor (3, Months)
+pattern Euribor4M = Euribor (4, Months)
+pattern Euribor5M = Euribor (5, Months)
+pattern Euribor6M = Euribor (6, Months)
+pattern Euribor7M = Euribor (7, Months)
+pattern Euribor8M = Euribor (8, Months)
+pattern Euribor9M = Euribor (9, Months)
+pattern Euribor10M = Euribor (10, Months)
+pattern Euribor11M = Euribor (11, Months)
+pattern Euribor1Y = Euribor (1, Years)
+
+pattern Euribor365_SW, Euribor365_2W, Euribor365_3W, Euribor365_1M, Euribor365_2M
+  , Euribor365_3M, Euribor365_4M, Euribor365_5M, Euribor365_6M, Euribor365_7M
+  , Euribor365_8M, Euribor365_9M, Euribor365_10M, Euribor365_11M
+  , Euribor365_1Y :: IborConstructor
+pattern Euribor365_SW = Euribor365 (1, Weeks)
+pattern Euribor365_2W = Euribor365 (2, Weeks)
+pattern Euribor365_3W = Euribor365 (3, Weeks)
+pattern Euribor365_1M = Euribor365 (1, Months)
+pattern Euribor365_2M = Euribor365 (2, Months)
+pattern Euribor365_3M = Euribor365 (3, Months)
+pattern Euribor365_4M = Euribor365 (4, Months)
+pattern Euribor365_5M = Euribor365 (5, Months)
+pattern Euribor365_6M = Euribor365 (6, Months)
+pattern Euribor365_7M = Euribor365 (7, Months)
+pattern Euribor365_8M = Euribor365 (8, Months)
+pattern Euribor365_9M = Euribor365 (9, Months)
+pattern Euribor365_10M = Euribor365 (10, Months)
+pattern Euribor365_11M = Euribor365 (11, Months)
+pattern Euribor365_1Y = Euribor365 (1, Years)
+
+pattern EurLiborSW, EurLibor2W, EurLibor1M, EurLibor2M, EurLibor3M, EurLibor4M
+  , EurLibor5M, EurLibor6M, EurLibor7M, EurLibor8M, EurLibor9M, EurLibor10M
+  , EurLibor11M, EurLibor1Y :: IborConstructor
+pattern EurLiborSW = EurLibor (1, Weeks)
+pattern EurLibor2W = EurLibor (2, Weeks)
+pattern EurLibor1M = EurLibor (1, Months)
+pattern EurLibor2M = EurLibor (2, Months)
+pattern EurLibor3M = EurLibor (3, Months)
+pattern EurLibor4M = EurLibor (4, Months)
+pattern EurLibor5M = EurLibor (5, Months)
+pattern EurLibor6M = EurLibor (6, Months)
+pattern EurLibor7M = EurLibor (7, Months)
+pattern EurLibor8M = EurLibor (8, Months)
+pattern EurLibor9M = EurLibor (9, Months)
+pattern EurLibor10M = EurLibor (10, Months)
+pattern EurLibor11M = EurLibor (11, Months)
+pattern EurLibor1Y = EurLibor (1, Years)
+
 iborIndex :: IborConstructor -> Maybe (GenYieldTermStructure y) -> IO IborIndex
 iborIndex (Ibor n p s cr ca bd b dc) ts = qlIborIndex n p s cr ca bd b dc ts
 iborIndex (Libor n p s cr ca dc) ts = qlLibor n p s cr ca dc ts
 iborIndex (DailyTenorLibor n c cr ca dc) ts = qlDailyTenorLibor n c cr ca dc ts
-iborIndex Bbsw1M ts = iborIndex (Bbsw (1, Months)) ts
-iborIndex Bbsw2M ts = iborIndex (Bbsw (2, Months)) ts
-iborIndex Bbsw3M ts = iborIndex (Bbsw (3, Months)) ts
-iborIndex Bbsw4M ts = iborIndex (Bbsw (4, Months)) ts
-iborIndex Bbsw5M ts = iborIndex (Bbsw (5, Months)) ts
-iborIndex Bbsw6M ts = iborIndex (Bbsw (6, Months)) ts
-iborIndex BiborSW ts = iborIndex (Bibor (1, Weeks)) ts
-iborIndex Bibor1M ts = iborIndex (Bibor (1, Months)) ts
-iborIndex Bibor2M ts = iborIndex (Bibor (2, Months)) ts
-iborIndex Bibor3M ts = iborIndex (Bibor (3, Months)) ts
-iborIndex Bibor6M ts = iborIndex (Bibor (6, Months)) ts
-iborIndex Bibor9M ts = iborIndex (Bibor (9, Months)) ts
-iborIndex Bibor1Y ts = iborIndex (Bibor (1, Years)) ts
-iborIndex Bkbm1M ts = iborIndex (Bkbm (1, Months)) ts
-iborIndex Bkbm2M ts = iborIndex (Bkbm (2, Months)) ts
-iborIndex Bkbm3M ts = iborIndex (Bkbm (3, Months)) ts
-iborIndex Bkbm4M ts = iborIndex (Bkbm (4, Months)) ts
-iborIndex Bkbm5M ts = iborIndex (Bkbm (5, Months)) ts
-iborIndex Bkbm6M ts = iborIndex (Bkbm (6, Months)) ts
-iborIndex EuriborSW ts = iborIndex (Euribor (1, Weeks)) ts
-iborIndex Euribor2W ts = iborIndex (Euribor (2, Weeks)) ts
-iborIndex Euribor3W ts = iborIndex (Euribor (3, Weeks)) ts
-iborIndex Euribor1M ts = iborIndex (Euribor (1, Months)) ts
-iborIndex Euribor2M ts = iborIndex (Euribor (2, Months)) ts
-iborIndex Euribor3M ts = iborIndex (Euribor (3, Months)) ts
-iborIndex Euribor4M ts = iborIndex (Euribor (4, Months)) ts
-iborIndex Euribor5M ts = iborIndex (Euribor (5, Months)) ts
-iborIndex Euribor6M ts = iborIndex (Euribor (6, Months)) ts
-iborIndex Euribor7M ts = iborIndex (Euribor (7, Months)) ts
-iborIndex Euribor8M ts = iborIndex (Euribor (8, Months)) ts
-iborIndex Euribor9M ts = iborIndex (Euribor (9, Months)) ts
-iborIndex Euribor10M ts = iborIndex (Euribor (10, Months)) ts
-iborIndex Euribor11M ts = iborIndex (Euribor (11, Months)) ts
-iborIndex Euribor1Y ts = iborIndex (Euribor (1, Years)) ts
-iborIndex Euribor365_SW ts = iborIndex (Euribor (365, Weeks)) ts
-iborIndex Euribor365_2W ts = iborIndex (Euribor365 (2, Weeks)) ts
-iborIndex Euribor365_3W ts = iborIndex (Euribor365 (3, Weeks)) ts
-iborIndex Euribor365_1M ts = iborIndex (Euribor365 (1, Months)) ts
-iborIndex Euribor365_2M ts = iborIndex (Euribor365 (2, Months)) ts
-iborIndex Euribor365_3M ts = iborIndex (Euribor365 (3, Months)) ts
-iborIndex Euribor365_4M ts = iborIndex (Euribor365 (4, Months)) ts
-iborIndex Euribor365_5M ts = iborIndex (Euribor365 (5, Months)) ts
-iborIndex Euribor365_6M ts = iborIndex (Euribor365 (6, Months)) ts
-iborIndex Euribor365_7M ts = iborIndex (Euribor365 (7, Months)) ts
-iborIndex Euribor365_8M ts = iborIndex (Euribor365 (8, Months)) ts
-iborIndex Euribor365_9M ts = iborIndex (Euribor365 (9, Months)) ts
-iborIndex Euribor365_10M ts = iborIndex (Euribor365 (10, Months)) ts
-iborIndex Euribor365_11M ts = iborIndex (Euribor365 (11, Months)) ts
-iborIndex Euribor365_1Y ts = iborIndex (Euribor365 (1, Years)) ts
-iborIndex EurLiborSW ts = iborIndex (EurLibor (1, Weeks)) ts
-iborIndex EurLibor2W ts = iborIndex (EurLibor (2, Weeks)) ts
-iborIndex EurLibor1M ts = iborIndex (EurLibor (1, Months)) ts
-iborIndex EurLibor2M ts = iborIndex (EurLibor (2, Months)) ts
-iborIndex EurLibor3M ts = iborIndex (EurLibor (3, Months)) ts
-iborIndex EurLibor4M ts = iborIndex (EurLibor (4, Months)) ts
-iborIndex EurLibor5M ts = iborIndex (EurLibor (5, Months)) ts
-iborIndex EurLibor6M ts = iborIndex (EurLibor (6, Months)) ts
-iborIndex EurLibor7M ts = iborIndex (EurLibor (7, Months)) ts
-iborIndex EurLibor8M ts = iborIndex (EurLibor (8, Months)) ts
-iborIndex EurLibor9M ts = iborIndex (EurLibor (9, Months)) ts
-iborIndex EurLibor10M ts = iborIndex (EurLibor (10, Months)) ts
-iborIndex EurLibor11M ts = iborIndex (EurLibor (11, Months)) ts
-iborIndex EurLibor1Y ts = iborIndex (EurLibor (1, Years)) ts
 iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 
 {#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}

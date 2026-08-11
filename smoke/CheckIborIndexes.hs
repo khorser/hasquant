@@ -34,6 +34,20 @@ dailyTenorCases =
 overnightCases :: [IborConstructor]
 overnightCases = [CadLiborON, EurLiborON, GbpLiborON, UsdLiborON]
 
+-- Spot checks on the fixed-tenor shortcut pattern synonyms: one per family, plus every
+-- SW ("spot week") one, since the single case that was previously wrong was Euribor365_SW
+-- (it expanded to Euribor (365, Weeks) -- wrong family and wrong tenor). The synonyms are
+-- definitionally aliases now, so what this actually pins is that the family each expands to
+-- still routes to the index whose tenor comes back as expected.
+shortcutCases :: [((Word, TimeUnit), IborConstructor)]
+shortcutCases =
+  [ ((1, Weeks), BiborSW), ((1, Weeks), EuriborSW)
+  , ((1, Weeks), Euribor365_SW), ((1, Weeks), EurLiborSW)
+  , ((3, Months), Bbsw3M), ((6, Months), Bibor6M), ((3, Months), Bkbm3M)
+  , ((3, Months), Euribor3M), ((1, Years), Euribor1Y)
+  , ((11, Months), Euribor365_11M), ((3, Months), EurLibor3M)
+  ]
+
 check :: (Word, TimeUnit) -> IborConstructor -> IO ()
 check expected ctor = do
   idx <- iborIndex ctor Nothing
@@ -50,3 +64,4 @@ main = do
   -- of these constructors into the wrong block (which would report (3,Months) or throw).
   forM_ dailyTenorCases (check (1, Days))
   forM_ overnightCases (check (1, Days))
+  forM_ shortcutCases (uncurry check)
