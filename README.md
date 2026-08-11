@@ -1,4 +1,4 @@
-This is a Haskell binding to a subset of [QuantLib library](https://www.quantlib.org/), a free/open-source library for quantitative finance.
+This is a Haskell binding to a subset of [QuantLib library](https://www.quantlib.org/) (1000+ constructors and non-trivial methods are bound currently), a free/open-source library for quantitative finance.
 
 I deliberately kept the API low-level to simplify its use in higher-level APIs.
 The only exceptions are enums and ADTs used for some things implemented as classes in C++.
@@ -10,7 +10,7 @@ For now, Haddock documentation is available at https://khorser.github.io/hasquan
 
 # Building
 
-The current version was mostly tested with GHC-9.10.3, but it should work with newer or reasonably older versions (at least from 8.10.6), since I deliberately avoided advanced language features.
+The current version was mostly tested with GHC-9.10.3, but it should work with newer or reasonably older versions (at least as old as 8.10.6), since I deliberately avoided advanced language features.
 
 Linux and macOS are the primary, well-tested platforms. Windows builds are also possible, but the process currently involves several non-obvious toolchain workarounds — see [`.claude/skills/build-windows/SKILL.md`](.claude/skills/build-windows/SKILL.md) for the full, tested recipe if you want to try it.
 
@@ -62,21 +62,13 @@ And if a function accepts `GenInstrument a` (like `npv`), you can pass any instr
 While this is convenient, it leads to some allocation and deallocation on each call, so you might consider using `asBond` and `asInstrument` to get an object of the required type.
 
 # TODO
-- Publish on Hackage
-- Add more classes and methods. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
+- (Perpetual) Add more classes and methods. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
 - Add more nonempty lists or vectors for some functions where applicable
-- Use some QuantLib handles for quotes and curves to support native QuantLib semantics
+- Use some QuantLib Handles/RelinkableHandle for quotes and curves to support native QuantLib semantics
 - Design a declarative embedded DSL
-- Add HLS integration in Docker
-- `experimental/commodities`
-- `experimental/termstructures`
-- The `ExponentialSplines`/`NelsonSiegel`/`Svensson`/`CubicBSplines`/`SimplePolynomial` `FittingMethod` constructors (`QuantLib.Internal.Enum`) bind the QuantLib overload that omits the leading `optimizationMethod` param, not the primary one. `OptimizationMethod`'s hasquant-side handle (`qlLevenbergMarquardt`/`qlSimplex`) is a raw, Haskell-finalized pointer (`alloc`/`del`), not a `QlXxx` shared_ptr box like every other bound hierarchy, and `FittedBondDiscountCurve` additionally clones its fitting method internally -- so there's no safe way to hand one into a `const ext::shared_ptr<OptimizationMethod>&` slot without reworking `OptimizationMethod` into the shared_ptr-boxed pattern first (touches `qlaux.h`/`qlTypesC2HS.h`/`Internal/Type.hs`'s `COptimizationMethod`, and the two existing raw-reference consumers `qlGsrCalibrateVolatilitiesIterative`/`qlCalibratedModelCalibrate`, which would need one extra deref).
-- `shortratemodels` example: the two RelinkableHandle-dependent tests (`testHullWhiteUpdatesR0WhenTermStructureRelinks`, `testExtendedCoxIngersollRossUpdatesWhenTermStructureRelinks`) are not ported -- no `RelinkableHandle<YieldTermStructure>`/`linkTo` concept exists in hasquant; a separate, bigger project, not a small addition. The other 7 tests are ported in `QuantLib.Example.ShortRateModels`.
-- `SwaptionHelper::underlying()` isn't exposed -- `swaptionHelper` currently collapses into the generic `BlackCalibrationHelper` type like `capHelper` does, but `underlying()` (-> `FixedVsFloatingSwap`/`VanillaSwap`) is declared only on `SwaptionHelper` upstream, not on `BlackCalibrationHelper` or `CapHelper` -- so there's nothing to unify via a shared typeclass. Give `SwaptionHelper` its own dedicated leaf type instead (justified now that it has a getter `capHelper` doesn't -- see `add-quantlib-class`'s leaf-type pattern, like `FxForward`), with `underlying :: SwaptionHelper -> IO VanillaSwap`; it still upcasts into `calibrate`'s existing `GenCalibrationHelper a` polymorphism, no new typeclass needed. Not needed by any currently-ported example.
-- migrate `Gaussian1dModels` example from QuantLib -- needs a whole new model/instrument/engine family, not currently bound at all: swaption engines (`Gaussian1dNonstandardSwaptionEngine`, `Gaussian1dFloatFloatSwaptionEngine`), `NonstandardSwap`/`NonstandardSwaption` (incl. `calibrationBasket`/`BasketGeneratingEngine`), `FloatFloatSwap`/`FloatFloatSwaption`, `RebatedExercise`, `LinearTsrPricer`, and a generic `Instrument::additionalResults()`/`result<T>(name)` extraction mechanism (no analog exists in hasquant). Disproportionate in scope to a single example port -- worth its own project if wanted later.
-- review interfaces for consistency, add obviously missing features and fix contradictions to the current design
-- CPI/YoY inflation cap/floor instruments (`CPICapFloor`, YoY cap/floor) and their volatility-dependent coupon pricers (`CPICouponPricer`, `YoYInflationCouponPricer` + Black/Bachelier/UnitDisplacedBlack variants) are not bound -- they need `CPIVolatilitySurface`/`YoYOptionletVolatilitySurface`, a materially bigger, more niche follow-up to the plain inflation legs/swaps/bonds already bound (`cpiLeg`, `yoyInflationLeg`, `zeroCouponInflationSwap`, `yearOnYearInflationSwap`, `cpiSwap`, `cpiBond`, `cpiBondHelper`).
+- Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - SABR-based swaption/cap volatility surfaces (`SabrSmileSection`, `SabrInterpolatedSmileSection`, `SabrSwaptionVolatilityCube`) are not bound -- the plain SABR closed-form functions (`ql/termstructures/volatility/sabr.hpp`: `sabrVolatility`, `shiftedSabrVolatility`, etc.) are, but nothing builds a smile-consistent `SmileSection`/`SwaptionVolatilityStructure` from them yet. Materially bigger than the formulas alone (64+ tracker lines in `sabrswaptionvolatilitycube.hpp` plus the smile-section classes) -- worth its own follow-up project.
+- See [github issues](https://github.com/khorser/hasquant) for more formalized tasks
 
 # Project History
 
@@ -149,3 +141,7 @@ Finished migration to the new approach without explicit typeclasses — time to 
 ## 0.2.7.0 (2026)
 
 Polished FFI helpers and reduced technical debt. Updated static data, added inflation.
+
+## 0.4.0.0 (2026)
+
+Extended the functionality, added more instruments and asset classes

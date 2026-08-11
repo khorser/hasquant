@@ -1,5 +1,5 @@
 name: hasquant
-version: "0.3.0.0"
+version: "0.4.0.0"
 synopsis: Bindings to QuantLib
 license: BSD-3-Clause
 maintainer: Sergei Khorev <sergey.khorev@gmail.com>
