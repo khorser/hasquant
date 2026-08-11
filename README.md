@@ -1,12 +1,16 @@
-This is a Haskell binding to a subset of [QuantLib library](https://www.quantlib.org/) (1000+ constructors and non-trivial methods are bound currently), a free/open-source library for quantitative finance.
+Haskell bindings to [QuantLib](https://www.quantlib.org/), the free/open-source C++ library for quantitative finance — rates, bonds, options, swaps, credit, inflation, and equity derivatives, with the associated term structures, indexes, and pricing engines. Around 1000 constructors and non-trivial methods are bound so far, covering roughly a tenth of QuantLib's surface.
 
-I deliberately kept the API low-level to simplify its use in higher-level APIs.
-The only exceptions are enums and ADTs used for some things implemented as classes in C++.
+I deliberately kept the API low-level rather than build a framework on top of it, so it composes into whatever higher-level API you actually need instead of imposing one. The only departure from a thin wrapper is enums and ADTs standing in for things that are classes on the C++ side (see "On Types" below) — everything else maps close to 1:1 onto the underlying QuantLib call.
 
-Examples can be found in `main/test/QuantLib/MainTest.hs` and `test/QuantLib/Example`.
-Beware: I didn't try too hard to write idiomatic Haskell code there, just translated QuantLib examples.
+This started as a hand-written project in 2012 (see "Project History" below) and has gone through several architecture rewrites since. The core design — the pointer-ownership model, the enum/ADT scheme, the C shim conventions — is hand-designed and predates any AI involvement. More recently I've used AI assistance to extend coverage faster (new classes, methods, day counters, indexes), but every generated binding is reviewed against the pattern it's supposed to follow, checked against the upstream C++ signature, and covered by a test before it's considered done — see "Testing" below for what that actually means in practice.
 
-For now, Haddock documentation is available at https://khorser.github.io/hasquant
+Examples live in `main/test/QuantLib/MainTest.hs` and `test/QuantLib/Example`. They're direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style.
+
+Haddock documentation is published at https://khorser.github.io/hasquant
+
+# Testing
+
+Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.cpp` covers a class or scenario, the corresponding hasquant test reuses its inputs and cached expected values directly, rather than deriving numbers by hand or relying on self-consistency alone. Enum-dispatched cases (currencies, calendars, day counters, index variants) get a standalone `smoke/` check that constructs every case and asserts on the output — this is what caught a real bug where two enum cases silently aliased to the wrong upstream values despite a clean build and passing test suite. New method/class bindings are cross-checked against `tools/ql-methods-1.43.txt`, a line-by-line tracking dump of every constructor and non-trivial method upstream, so coverage claims are verifiable rather than asserted.
 
 # Building
 
