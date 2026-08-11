@@ -54,9 +54,11 @@ run = do
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing FaceValue dc True Nothing 3
 
-  [fairSpreads, npvs, defnpvs, cpnnpvs] <- mapM
-    (\f -> mapM (\c -> asInstrument c >>= (`setPricingEngine` eng) >> f c) cds)
-    [fairSpread, asInstrument >=> npv, defaultLegNPV, couponLegNPV]
+  mapM_ (asInstrument >=> (`setPricingEngine` eng)) cds
+  fairSpreads <- mapM fairSpread cds
+  npvs <- mapM (asInstrument >=> npv) cds
+  defnpvs <- mapM defaultLegNPV cds
+  cpnnpvs <- mapM couponLegNPV cds
 
   return Result {
       probsR = map (100*) probs

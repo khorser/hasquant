@@ -108,29 +108,29 @@ import QuantLib.Internal.Enum
 
 interpolatedDefaultDensityCurve :: [(Day, Double)] -> DayCounter -> Calendar -> [(Day, GenQuote a)] -- ^jumps
   -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedDefaultDensityCurve d dc c q i = uncurry' (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip d}
+interpolatedDefaultDensityCurve d dc c q i = uncurryNested (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip d}
 {#fun qlInterpolatedDefaultDensityCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 interpolatedHazardRateCurve :: [(Day, Double)] -> DayCounter -> Calendar -> [(Day, GenQuote a)] -- ^jumps
   -> Interpolation
   -> Bool -- ^extrapolate past the curve's max date
   -> IO DefaultProbabilityTermStructure
-interpolatedHazardRateCurve d dc c q i ex = uncurry' (qlInterpolatedHazardRateCurve dd dq dc c qq qd) (qlInterpolation i) ex where {(qd, qq) = unzip q; (dd, dq) = unzip d}
+interpolatedHazardRateCurve d dc c q i ex = uncurryNested (qlInterpolatedHazardRateCurve dd dq dc c qq qd) (qlInterpolation i) ex where {(qd, qq) = unzip q; (dd, dq) = unzip d}
 {#fun qlInterpolatedHazardRateCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 interpolatedSurvivalProbabilityCurve :: [(Day, Double)] -> DayCounter -> Calendar -> [(Day, GenQuote a)] -- ^jumps
   -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedSurvivalProbabilityCurve d dc c q i = uncurry' (qlInterpolatedSurvivalProbabilityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip d}
+interpolatedSurvivalProbabilityCurve d dc c q i = uncurryNested (qlInterpolatedSurvivalProbabilityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip d}
 {#fun qlInterpolatedSurvivalProbabilityCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 piecewiseDefaultCurve :: Day -> [DefaultProbabilityHelper] -> DayCounter -> [(Day, GenQuote a)] -- ^jumps
   -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve d h dc q t i = uncurry' (qlPiecewiseDefaultCurve d h dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q
+piecewiseDefaultCurve d h dc q t i = uncurryNested (qlPiecewiseDefaultCurve d h dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q
 {#fun qlPiecewiseDefaultCurve{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 piecewiseDefaultCurve' :: Word -> Calendar -> [DefaultProbabilityHelper] -> DayCounter -> [(Day, GenQuote a)] -- ^jumps
   -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve' d c h dc q t i = uncurry' (qlPiecewiseDefaultCurve1 d c h dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q
+piecewiseDefaultCurve' d c h dc q t i = uncurryNested (qlPiecewiseDefaultCurve1 d c h dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q
 {#fun qlPiecewiseDefaultCurve1{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

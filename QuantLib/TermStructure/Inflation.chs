@@ -69,7 +69,7 @@ piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
   -> Frequency -> DayCounter -> [ZeroCouponInflationSwapHelper] -> Interpolation
   -> IO ZeroInflationTermStructure
-piecewiseZeroInflationCurve r b f dc h i = uncurry' (qlPiecewiseZeroInflationCurve r b f dc h) (qlInterpolation i)
+piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflationCurve r b f dc h) (qlInterpolation i)
 {#fun qlPiecewiseZeroInflationCurve{withDay*`Day',withDay*`Day',`Frequency',withDayCounter*`DayCounter'
   ,withZeroCouponInflationSwapHelperArray*`[ZeroCouponInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
@@ -79,7 +79,7 @@ piecewiseYoYInflationCurve :: Day -- ^referenceDate
   -> Double -- ^baseYoYRate
   -> Frequency -> DayCounter -> [YearOnYearInflationSwapHelper] -> Interpolation
   -> IO YoYInflationTermStructure
-piecewiseYoYInflationCurve r b y f dc h i = uncurry' (qlPiecewiseYoYInflationCurve r b y f dc h) (qlInterpolation i)
+piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc h) (qlInterpolation i)
 {#fun qlPiecewiseYoYInflationCurve{withDay*`Day',withDay*`Day',`Double',`Frequency',withDayCounter*`DayCounter'
   ,withYearOnYearInflationSwapHelperArray*`[YearOnYearInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}

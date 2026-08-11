@@ -5,7 +5,7 @@ module QuantLib.Example.Swap
   , IterationResult(..)
   , run
   ) where
-import Control.Monad(void, forM, foldM)
+import Control.Monad(void, forM)
 import Data.Time.Calendar
 
 import QuantLib.Math
@@ -51,11 +51,15 @@ run = do
       zip fraQuotes fraTerms
 
   imm1 <- nextIMMDate settleDate True
-  let nextIMM :: [Day] -> Integer -> IO [Day]
-      nextIMM l inc = do
-        v <- nextIMMDate (addDays inc $ last l) True
-        return (l ++ [v])
-  imms <- foldM nextIMM [imm1] (replicate (length futPrices-1) 1)
+  -- chain of IMM dates, each derived from the one before. Written as an explicit
+  -- unfold rather than foldM over an accumulator list, which needed a partial `last`
+  -- to see the previous date and rebuilt the list with `++` on every step.
+  let nextIMMs :: Int -> Day -> IO [Day]
+      nextIMMs 0 _ = pure []
+      nextIMMs k prev = do
+        v <- nextIMMDate (addDays 1 prev) True
+        (v :) <$> nextIMMs (k - 1) v
+  imms <- (imm1 :) <$> nextIMMs (length futPrices - 1) imm1
 
   futHelpers <- mapM (\(q, imm) ->
     TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing TS.IMM) $

@@ -261,6 +261,10 @@ iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure d)' -- ^discounting
   ,preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 -- | Construct an overnight-indexed swap index.
+-- RateAveragingType (QuantLib.CashFlow) is later in exposed-modules than this file,
+-- so averagingMethod is marshalled as a plain Int via fromEnum in the unexported
+-- glue binding below instead of a {#import#}'d enum type, per CLAUDE.md's
+-- cross-module workaround. The public signature stays fully typed.
 overnightIndexedSwapIndex :: String -> (Int, TimeUnit) -> Word -> Currency
   -> OvernightIborIndex -> Bool -> RateAveragingType -> IO OvernightIndexedSwapIndex
 overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValueDates averagingMethod =

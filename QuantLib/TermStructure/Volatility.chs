@@ -401,7 +401,7 @@ capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, 
 
 blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -- ^forceMonotoneVariance
   -> Maybe Interpolation -> IO BlackVarianceCurve
-blackVarianceCurve d dq dc f i = uncurry' (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i) where (dd, q) = unzip dq
+blackVarianceCurve d dq dc f i = uncurryNested (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i) where (dd, q) = unzip dq
 {#fun qlBlackVarianceCurve{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`Bool',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`BlackVarianceCurve'peekBlackVarianceCurve*#}
 
 blackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates

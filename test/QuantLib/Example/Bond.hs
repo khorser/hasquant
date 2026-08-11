@@ -6,7 +6,6 @@ module QuantLib.Example.Bond
 import Control.Monad((>=>))
 
 import Data.List(zip4)
-import Data.Maybe(fromJust)
 import Data.Time.Calendar(fromGregorian)
 
 import qualified QuantLib.CashFlow as CF
@@ -42,13 +41,22 @@ data Result = Result
   , bpsR :: Double
   }
 
-listToTuple :: Show a => [a] -> String -> (a, a)
-listToTuple [x, y] _ = (x, y)
-listToTuple l w = error $ "Not a 2 element list: " ++ show l ++ " (" ++ w ++ ")"
+-- This example works with a fixed set of three bonds (and a two-bond subset) all the
+-- way through, and every Result field is correspondingly a tuple. Keeping them as
+-- tuples rather than lists carries that arity in the types, so there is no list
+-- length to re-check: these replace a pair of `error`-throwing listToTuple/listToTriple
+-- converters, and with them the `!!` and `fromJust` uses further down.
+mapPair :: Applicative f => (a -> f b) -> (a, a) -> f (b, b)
+mapPair f (x, y) = (,) <$> f x <*> f y
 
-listToTriple :: Show a => [a] -> String -> (a, a, a)
-listToTriple [x, y, z] _ = (x, y, z)
-listToTriple l w = error $ "Not a 3 element list: " ++ show l ++ " (" ++ w ++ ")"
+mapTriple :: Applicative f => (a -> f b) -> (a, a, a) -> f (b, b, b)
+mapTriple f (x, y, z) = (,,) <$> f x <*> f y <*> f z
+
+zipTriple :: (a -> b -> c) -> (a, a, a) -> (b, b, b) -> (c, c, c)
+zipTriple f (x, y, z) (x', y', z') = (f x x', f y y', f z z')
+
+sequenceTriple :: Applicative f => (f a, f a, f a) -> f (a, a, a)
+sequenceTriple (x, y, z) = (,,) <$> x <*> y <*> z
 
 run :: IO Result
 run = do
@@ -194,8 +202,8 @@ run = do
   cf <- cashFlows floater
   CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing >>= CF.setCouponPricer cf
 
-  let allBonds = [fixedBond, zcBond, floater]
-      twoBonds = [fixedBond, floater]
+  let allBonds = (fixedBond, zcBond, floater)
+      twoBonds = (fixedBond, floater)
 
   -- some cash flows smoke check
   cfs <- cashFlows fixedBond
@@ -203,36 +211,40 @@ run = do
   cfnpvbps <- CF.npvbps cfs ts True (1 `may` 2012) (3 `may` 2012)
   bbps <- bps fixedBond ts (3 `may` 2012)
 
-  [fixnpv, znpv, fnpv] <-
-    mapM (asInstrument >=>
+  bNpv <-
+    mapTriple (asInstrument >=>
       (\y -> setPricingEngine y pricing >> npv y))
     allBonds
 
-  bCleanPrice <- mapM (\b -> cleanPrice b ts settlDate) allBonds
-  bYield <- mapM (\b -> yield b actual360dc Compounded Annual 1e-8 100 (0.05, Clean)) allBonds
-  bAccruedAmount <- mapM (`accruedAmount` settlDate) allBonds
-  bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
-  bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
-  fCleanFromYield <- cleanPriceFromYield floater (bYield!!2) actual360dc Compounded Annual settlDate
-  fYieldFromClean <- yieldFromPrice floater (bCleanPrice!!2, Clean) actual360dc Compounded Annual settlDate 1e-8 100
+  bCleanPrice <- mapTriple (\b -> cleanPrice b ts settlDate) allBonds
+  bYield <- mapTriple (\b -> yield b actual360dc Compounded Annual 1e-8 100 (0.05, Clean)) allBonds
+  bAccruedAmount <- mapTriple (`accruedAmount` settlDate) allBonds
+  bPreviousCoupon <- mapPair (`previousCouponRate` todaysDate) twoBonds
+  bNextCoupon <- mapPair (`nextCouponRate` todaysDate) twoBonds
 
-  let bDirtyPrice = zipWith (+) bCleanPrice bAccruedAmount
+  let (_, _, floaterYield) = bYield
+      (_, _, floaterCleanPrice) = bCleanPrice
+  fCleanFromYield <- cleanPriceFromYield floater floaterYield actual360dc Compounded Annual settlDate
+  fYieldFromClean <- yieldFromPrice floater (floaterCleanPrice, Clean) actual360dc Compounded Annual settlDate 1e-8 100
 
-  bNextCouponDate <- mapM (`nextCashFlowDate` todaysDate) allBonds
-  bTradable <- mapM (`isTradable` (10 `february` 2013)) allBonds
+  let bDirtyPrice = zipTriple (+) bCleanPrice bAccruedAmount
+
+  bNextCouponDate <- mapTriple (`nextCashFlowDate` todaysDate) allBonds
+    >>= maybe (fail "a bond has no next cash flow date") pure . sequenceTriple
+  bTradable <- mapTriple (`isTradable` (10 `february` 2013)) allBonds
 
   return Result {
-      npvR = (fixnpv, znpv, fnpv)
-    , cleanPriceR = listToTriple bCleanPrice "bCleanPrice"
-    , dirtyPriceR = listToTriple bDirtyPrice "bDirtyPrice"
-    , accruedAmountR = listToTriple bAccruedAmount "bAccruedAmount"
-    , previousCoupon = listToTuple bPreviousCoupon "bPreviousCoupon"
-    , nextCoupon = listToTuple bNextCoupon "bNextCoupon"
-    , yieldR = listToTriple bYield "bYield"
-    , nextCouponDate = listToTriple (map fromJust bNextCouponDate) "bNextCouponDate)"
+      npvR = bNpv
+    , cleanPriceR = bCleanPrice
+    , dirtyPriceR = bDirtyPrice
+    , accruedAmountR = bAccruedAmount
+    , previousCoupon = bPreviousCoupon
+    , nextCoupon = bNextCoupon
+    , yieldR = bYield
+    , nextCouponDate = bNextCouponDate
     , cleanPriceFromYieldR = fCleanFromYield
     , yieldFromCleanPriceR = fYieldFromClean
-    , tradable = listToTriple bTradable "bTradable"
+    , tradable = bTradable
     , cfnpvR = cfnpv
     , cfnpvbpsR = cfnpvbps
     , bpsR = bbps

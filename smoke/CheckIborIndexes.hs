@@ -10,10 +10,12 @@
 -- cbits/qlTermStructure.cpp:iborIndices after the IborIndexType/IborDailyTenorIndexType/
 -- IborONIndexType split -- either would silently construct the wrong underlying index.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckIborIndexes.hs -o /tmp/checkibor -outputdir /tmp/checkibor_build && /tmp/checkibor
+-- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckIborIndexes.hs -o /tmp/checkibor -outputdir /tmp/checkibor_build && /tmp/checkibor
 import QuantLib.Index.InterestRate
 import QuantLib.Time.Schedule (TimeUnit(..))
 import Control.Monad
+
+import SmokeCheck (checkEq)
 
 standardCases :: [IborConstructor]
 standardCases =
@@ -36,9 +38,7 @@ check :: (Word, TimeUnit) -> IborConstructor -> IO ()
 check expected ctor = do
   idx <- iborIndex ctor Nothing
   actual <- tenor idx
-  if actual == expected
-    then putStrLn (show ctor ++ ": OK, tenor = " ++ show actual)
-    else error (show ctor ++ ": expected tenor " ++ show expected ++ " but got " ++ show actual)
+  checkEq (show ctor ++ " tenor") expected actual
 
 main :: IO ()
 main = do

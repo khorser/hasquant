@@ -774,8 +774,12 @@ withMaybeStandalone :: Maybe (Standalone a) -> (Ptr a -> IO b) -> IO b
 withMaybeStandalone x f = maybe (f nullPtr) (`withStandalone` f) x
 withStandaloneArray :: (t -> Standalone a) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withStandaloneArray c x f = withMany withStandalone (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
+-- The name of a QuantLib object is fixed for its lifetime, so reading it through
+-- unsafePerformIO is safe; NOINLINE keeps GHC from duplicating or floating the C++
+-- call, matching how QuantLib.Settings guards its own unsafePerformIO sites.
 showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
 showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
+{-# NOINLINE showStandalone #-}
 
 -- TODO double check feasibility of `unsafe' if Haskell callbacks are added later
 data CCalendar
@@ -788,6 +792,8 @@ withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
 withCalendar = withStandalone . getCCalendar
 foreign import ccall safe "ql.h qlCalendarName" qlCalendarName :: Ptr CCalendar -> IO CString
 instance Show Calendar where show x = showStandalone qlCalendarName (getCCalendar x)
+-- Equality by name, here and for the Currency/Region/DayCounter/Schedule instances
+-- below. This is deliberate: it is how QuantLib itself compares these types.
 instance Eq Calendar where x == y = show x == show y
 
 data CCurrency
@@ -837,9 +843,13 @@ peekSchedule = Schedule <.> peekStandalone
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
 withSchedule = withStandalone . getCSchedule
 foreign import ccall safe "ql.h qlScheduleDates" qlScheduleDates :: Ptr CSchedule -> Ptr CUInt -> Ptr (Ptr CInt) -> IO ()
+showSchedule :: Schedule -> String
+showSchedule x = unsafePerformIO $ withSchedule x $ \p ->
+  show <$> preArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
+{-# NOINLINE showSchedule #-}
+
 instance Show Schedule where
-  show x = unsafePerformIO $ withSchedule x $ \p ->
-    show <$> preArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
+  show = showSchedule
 instance Eq Schedule where
   x == y = show x == show y
 
@@ -1385,7 +1395,11 @@ newtype GenIndex a = GenIndex {getIndex :: GenForeignPtr a CIndex'}
 type CIndex = ForeignPtr CIndex'
 
 foreign import ccall safe "ql.h qlIndexName" qlIndexName :: Ptr CIndex' -> IO CString
-instance Show (GenIndex a) where show = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
+showIndex :: GenIndex a -> String
+showIndex = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
+{-# NOINLINE showIndex #-}
+
+instance Show (GenIndex a) where show = showIndex
 
 type GenInterestRateIndex a = GenIndex (AnyOf CInterestRateIndex' a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'

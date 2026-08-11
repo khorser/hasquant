@@ -56,7 +56,7 @@ run = do
   engine <- discountingSwapEngine ts Nothing Nothing Nothing
   asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
   fixedATMRate <- fairRate swp
-  (swaptions, tms) <- mapAndUnzipM (createHelpers index6m ts) rows
+  (swaptions, tms) <- mapAndUnzipM (createHelpers index6m ts) calibrationGrid
   grid <- timeGridFromList' (fromList (concat tms)) 30
 
   modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
@@ -122,26 +122,39 @@ run = do
   }
   where tod = 15 `february` 2002
         settl = 19 `february` 2002
-        rows = [0 .. 4]
-        numCols = 5
+        swapLengths :: [Word]
         swapLengths = [1, 2, 3, 4, 5]
-        swaptionVols = [0.1490, 0.1340, 0.1228, 0.1189, 0.1148,
-          0.1290, 0.1201, 0.1146, 0.1108, 0.1040,
-          0.1149, 0.1112, 0.1070, 0.1010, 0.0957,
-          0.1047, 0.1021, 0.0980, 0.0951, 0.1270,
-          0.1000, 0.0950, 0.0900, 0.1230, 0.1160]
+        -- Market swaption vols. Rows are option expiries (1y..5y), columns are swap
+        -- lengths (1y..5y) as given by swapLengths. This used to be a flat 25-element
+        -- list indexed with hand-rolled `i * numCols + j` arithmetic, which silently
+        -- reads the wrong cell if the literal is ever re-wrapped.
+        swaptionVolTable = [
+          [0.1490, 0.1340, 0.1228, 0.1189, 0.1148],
+          [0.1290, 0.1201, 0.1146, 0.1108, 0.1040],
+          [0.1149, 0.1112, 0.1070, 0.1010, 0.0957],
+          [0.1047, 0.1021, 0.0980, 0.0951, 0.1270],
+          [0.1000, 0.0950, 0.0900, 0.1230, 0.1160]]
+
+        -- The example calibrates against the anti-diagonal of that table: expiry i+1
+        -- years against the swap length in column (numCols - 1 - i), giving 1x5, 2x4,
+        -- 3x3, 4x2, 5x1. Built by pattern-matching a drop rather than indexing, so
+        -- there is no partial `!!` and a mis-sized row drops out instead of crashing.
+        calibrationGrid :: [(Word, Word, Double)] -- (expiry years, swap length years, vol)
+        calibrationGrid =
+          [ (fromIntegral i + 1, len, vol)
+          | (i, row) <- zip [0 :: Int ..] swaptionVolTable
+          , ((len, vol) : _) <- [drop (length row - 1 - i) (zip swapLengths row)]
+          ]
         fixedConv = Unadjusted
         floatConv = ModifiedFollowing
         dummyFixRate = 0.03
         swapType = Payer
 
-        createHelpers index6m ts i = do
-          let j = numCols - i - 1
-              k = fromIntegral $ i * numCols + j
-          vol <- simpleQuote (swaptionVols!!k)
+        createHelpers index6m ts (expiry, len, volValue) = do
+          vol <- simpleQuote volValue
           dc <- IRI.dayCounter index6m
           tenr <- IRI.tenor index6m
-          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!fromIntegral j, Years) vol index6m tenr dc dc ts Model.RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing CF.AveragingCompound
+          h <- Model.swaptionHelper (expiry, Years) (len, Years) vol index6m tenr dc dc ts Model.RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing CF.AveragingCompound
           tms <- Model.times h
           return (h, tms)
 
