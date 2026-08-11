@@ -26,7 +26,9 @@ flags:
 extra-source-files:
   - cbits/*.h
 dependencies:
-  - base >=4.11 && <5.0
+  # 4.14 is GHC 8.10.6, the oldest compiler this is actually built and tested against
+  # (the lts-18.8 gate); nothing below that is exercised, so don't claim to support it
+  - base >=4.14 && <5.0
   - time
 ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
 when:
