@@ -2175,7 +2175,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >  VarianceSwap
 -- >  VarianceOption
 -- >  a:Option
--- >    CdsOption : Option
+-- >    CdsOption
 -- >    MultiAssetOption
 -- >      MargrabeOption
 -- >    OneAssetOption
