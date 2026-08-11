@@ -1490,35 +1490,31 @@ main = do
 
     describe "CDS example" $
       it "check values" $ do
-        (CDSExample.Result probs fairSpread npv _defNpv _cpnNpv) <- Settings.keepingSettings' CDSExample.run
-        probs `shouldSatisfy` listClose id [97.048093, 94.183575] 1.0e-3
-        -- These tolerances are deliberately coarse (~0.5% relative), much looser than
-        -- the other blocks here. The aarch64/macOS and x86_64 container builds run the
-        -- *same* QuantLib 1.43 and still disagree by ~0.25% on the repriced fair
-        -- spread (1.488188 vs 1.484437), which is far more than rounding: the hazard
-        -- curve bootstrap plus repricing looks ill-conditioned for this fixture, so
-        -- small libm/optimisation differences get amplified. That makes this block a
-        -- structural check -- it would catch wiring or schedule breakage, which moves
-        -- these by far more than a percent -- rather than a fine numerical one. Worth
-        -- investigating separately; see STYLE-REVIEW.md.
+        (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Settings.keepingSettings' CDSExample.run
+        -- Previously recorded as diverging ~24% between the aarch64/macOS and
+        -- x86_64/GHC-8.10.6 container builds, with defNpv/cpnNpv left unasserted and a
+        -- coarse tolerance on fairSpread/npv. That divergence was a stale Docker build
+        -- volume (the compose `hasquant-work`/`stack-root` volumes persist across runs,
+        -- same class of problem as CLAUDE.md's "Stale builds" note, just triggered by
+        -- volume staleness rather than a `.chs`/header edit), not a real numerical or
+        -- structural difference: a `stack --resolver lts-18.8 clean hasquant` before
+        -- rebuilding reproduces the macOS values to ~1e-10 relative or tighter on every
+        -- field, confirmed independently against unmodified upstream
+        -- `Examples/CDS/CDS.cpp` compiled natively on both platforms.
         --
-        -- NB the repriced fair spread does not come back exactly at the quoted 1.50%,
-        -- and the NPV is correspondingly non-zero. That is upstream behaviour, not a
-        -- porting artefact: Examples/CDS/CDS.cpp only prints these, it never asserts
-        -- the repriced spread equals the quote. The previous expectation of exactly
-        -- 1.500000 here was aspirational (it carried a FIXME) and is what kept this
-        -- block disabled.
-        fairSpread `shouldSatisfy` listClose id [1.488188, 1.493061, 1.496182, 1.497959] 1.0e-2
-        npv `shouldSatisfy` listClose id [41.092513, 41.092513, 41.092513, 41.092513] 2.0e-1
-        -- defNpv/cpnNpv are NOT asserted -- deliberately, and this is a real open bug.
-        -- The two legs differ by ~24% between the aarch64/macOS and x86_64 container
-        -- builds on the same QuantLib 1.43 (defNpv 3M: -5177.29 vs -3919.50; the other
-        -- tenors and cpnNpv diverge by a similar proportion), yet their *sum* -- the
-        -- swap NPV asserted above -- agrees to better than 0.2. Two legs each ~24% off
-        -- whose net is stable points at a structural difference in the coupon schedule
-        -- or accrual, not at libm noise. Asserting these would need a ~25% tolerance,
-        -- which would not be a test. Left unasserted with the numbers recorded here
-        -- until someone can explain the divergence; see STYLE-REVIEW.md.
+        -- The example itself was also brought in line with upstream while investigating:
+        -- it had been scheduling CDS legs from the evaluation date directly, where
+        -- `Examples/CDS/CDS.cpp`'s `example01` advances one business day to a
+        -- `settlementDate` first (also passed as `SpreadCdsHelper`'s settlementDays) and
+        -- schedules from there. With that fix the repriced fair spread now lands
+        -- (to ~1e-13) exactly on the quoted 1.50% and NPV at ~0 -- the FIXME-tagged
+        -- expectation that had originally kept this block disabled, and which upstream's
+        -- own example only prints rather than asserts.
+        probs `shouldSatisfy` listClose id [97.040077, 94.175796] 1.0e-6
+        fairSpread `shouldSatisfy` listClose id [1.5, 1.5, 1.5, 1.5] 1.0e-6
+        npv `shouldSatisfy` listClose id [0, 0, 0, 0] 1.0e-6
+        defNpv `shouldSatisfy` listClose id [-5177.051075, -8841.722057, -16101.812179, -30154.499576] 1.0e-2
+        cpnNpv `shouldSatisfy` listClose id [5177.051075, 8841.722057, 16101.812179, 30154.499576] 1.0e-2
 
     describe "Convertible bond example" $
       it "check values" $ do
