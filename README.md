@@ -16,7 +16,7 @@ Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.
 
 The current version was mostly tested with GHC-9.10.3, but it should work with newer or reasonably older versions (at least as old as 8.10.6), since I deliberately avoided advanced language features.
 
-Linux and macOS are the primary, well-tested platforms. Windows builds are also possible, but the process currently involves several non-obvious toolchain workarounds — see [`.claude/skills/build-windows/SKILL.md`](.claude/skills/build-windows/SKILL.md) for the full, tested recipe if you want to try it.
+Linux and macOS are the primary, well-tested platforms. Windows builds are also possible, but the process currently involves several non-obvious toolchain workarounds — see [`WINDOWS.md`](WINDOWS.md) for the full, tested recipe if you want to try it.
 
 ## Stack
 
