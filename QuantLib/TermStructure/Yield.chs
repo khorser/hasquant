@@ -77,7 +77,7 @@ import QuantLib.Quote
 import Data.Maybe(fromMaybe)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
-{#import QuantLib.CashFlow#}(FloatingRateCouponPricer, RateAveragingType(..))
+{#import QuantLib.CashFlow#}(RateAveragingType(..))
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type

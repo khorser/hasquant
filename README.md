@@ -44,7 +44,7 @@ Build example and tests: `cabal configure -f buildExample --enable-tests --disab
 ## Docker
 
 The repo contains docker compose files for a custom Linux x86_64 image. You can use it like this:
-`docker compose run --rm -it hasquant stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example`
+`docker compose run --rm -it hasquant sh -c 'stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example && stack test`
 
 # On Types
 

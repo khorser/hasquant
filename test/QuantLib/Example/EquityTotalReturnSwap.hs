@@ -6,7 +6,7 @@ module QuantLib.Example.EquityTotalReturnSwap
 
 import QuantLib.Currency
 import QuantLib.Index(addFixing)
-import QuantLib.Index.Equity(EquityIndex, equityIndex)
+import QuantLib.Index.Equity(equityIndex)
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
 import QuantLib.Instrument.Swap

@@ -263,8 +263,8 @@ iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 -- | Construct an overnight-indexed swap index.
 overnightIndexedSwapIndex :: String -> (Int, TimeUnit) -> Word -> Currency
   -> OvernightIborIndex -> Bool -> RateAveragingType -> IO OvernightIndexedSwapIndex
-overnightIndexedSwapIndex familyName tenor settlementDays ccy idx telescopicValueDates averagingMethod =
-  overnightIndexedSwapIndex_ familyName tenor settlementDays ccy idx telescopicValueDates (fromEnum averagingMethod)
+overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValueDates averagingMethod =
+  overnightIndexedSwapIndex_ familyName tenr settlementDays ccy idx telescopicValueDates (fromEnum averagingMethod)
 
 {#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex_{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withOvernightIborIndex*`OvernightIborIndex'
