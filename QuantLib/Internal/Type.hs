@@ -806,6 +806,7 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- | > TermStructure = GenTermStructure a
 -- >  YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
+-- >    RelinkableYieldTermStructure = GenYieldTermStructure ...
 -- >  VolatilityTermStructure
 -- >    OptionletVolatilityStructure
 -- >    BlackVolTermStructure
@@ -828,6 +829,7 @@ data CBlackVolTermStructure'
 data CBlackVarianceCurve'
 data CYieldTermStructure'
 data CFittedBondDiscountCurve'
+data CRelinkableYieldTermStructure'
 data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
 data CZeroInflationTermStructure'
@@ -839,6 +841,12 @@ type CYieldTermStructure = ForeignPtr CYieldTermStructure'
 type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
 type CFittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve'
 type FittedBondDiscountCurve = GenYieldTermStructure CFittedBondDiscountCurve
+type CRelinkableYieldTermStructure = ForeignPtr CRelinkableYieldTermStructure'
+-- | A curve held behind a relinkable handle. It /is/ a 'YieldTermStructure' -- pass it
+-- anywhere a curve is expected and it upcasts like any other hierarchy member, sharing its
+-- @Link@ so that a later 'QuantLib.TermStructure.Yield.linkTo' reaches everything already
+-- built on it.
+type RelinkableYieldTermStructure = GenYieldTermStructure CRelinkableYieldTermStructure
 type GenVolatilityTermStructure a = GenTermStructure (AnyOf CVolatilityTermStructure' a)
 type CVolatilityTermStructure = ForeignPtr CVolatilityTermStructure'
 type VolatilityTermStructure = GenVolatilityTermStructure CVolatilityTermStructure
@@ -873,6 +881,7 @@ foreign import ccall unsafe "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTe
 foreign import ccall unsafe "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve'
 foreign import ccall unsafe "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableYieldTermStructure" qlFreeRelinkableYieldTermStructure :: FinalizerPtr CRelinkableYieldTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
@@ -887,12 +896,14 @@ instance Finalizable CBlackVolTermStructure' where finalize = qlFreeBlackVolTerm
 instance Finalizable CBlackVarianceCurve' where finalize = qlFreeBlackVarianceCurve
 instance Finalizable CYieldTermStructure' where finalize = qlFreeYieldTermStructure
 instance Finalizable CFittedBondDiscountCurve' where finalize = qlFreeFittedBondDiscountCurve
+instance Finalizable CRelinkableYieldTermStructure' where finalize = qlFreeRelinkableYieldTermStructure
 instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCallableBondVolatilityStructure
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
+foreign import ccall "ql.h qlRelinkableYieldTermStructureAsYieldTermStructure" qlRelinkableYieldTermStructureAsYieldTermStructure :: Ptr CRelinkableYieldTermStructure' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure" qlOptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlBlackVolTermStructureAsVolatilityTermStructure" qlBlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
@@ -906,6 +917,7 @@ foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroIn
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
 instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
 instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; upcast = qlFittedBondDiscountCurveAsYieldTermStructure}
+instance Upcastable CRelinkableYieldTermStructure' where {type Base CRelinkableYieldTermStructure' = CYieldTermStructure'; upcast = qlRelinkableYieldTermStructureAsYieldTermStructure}
 instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; upcast = qlVolatilityTermStructureAsTermStructure}
 instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallableBondVolatilityStructure' = CTermStructure'; upcast = qlCallableBondVolatilityStructureAsTermStructure}
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
@@ -989,6 +1001,13 @@ newGenYieldTermStructure = pure . GenTermStructure . newAnyOf
 
 peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
 peekFittedBondDiscountCurve = newGenForeignPtr >=> newGenYieldTermStructure
+peekRelinkableYieldTermStructure :: Ptr CRelinkableYieldTermStructure' -> IO RelinkableYieldTermStructure
+peekRelinkableYieldTermStructure = newGenForeignPtr >=> newGenYieldTermStructure
+-- | Reach the relinkable handle itself, for the operations that only it has ('linkTo',
+-- 'currentLink'). Ordinary curve arguments go through 'withYieldTermStructure' instead,
+-- which upcasts.
+withRelinkableYieldTermStructure :: RelinkableYieldTermStructure -> (Ptr CRelinkableYieldTermStructure' -> IO b) -> IO b
+withRelinkableYieldTermStructure = withForeignPtr . ptr . peel . getTermStructure
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve = withForeignPtr . ptr . peel . getTermStructure
 

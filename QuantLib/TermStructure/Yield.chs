@@ -11,6 +11,9 @@ module QuantLib.TermStructure.Yield
   , FittedBondDiscountCurve
   , fittedBondDiscountCurve
   , fittedBondDiscountCurve'
+  , RelinkableYieldTermStructure
+  , relinkableYieldTermStructure
+  , linkTo
   , GenRateHelper
 
   , BootstrapTrait(..)
@@ -108,6 +111,7 @@ import QuantLib.Internal.Type
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign -> CFittedBondDiscountCurve' nocode#}
+{#pointer *QlRelinkableYieldTermStructure as RelinkableYieldTermStructure foreign -> CRelinkableYieldTermStructure' nocode#}
 {#pointer *QlRateHelper as RateHelper foreign -> CRateHelper' nocode#}
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign -> CSwapRateHelper' nocode#}
 {#pointer *QlOISRateHelper as OISRateHelper foreign -> COISRateHelper' nocode#}
@@ -490,6 +494,25 @@ interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd
 {#fun qlFittedBondDiscountCurveFittingMethodMinimumCostValue as minimumCostValue{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |final number of iterations used in the optimization problem
 {#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Int'#}
+
+-- |A curve behind a relinkable handle. The result /is/ a 'YieldTermStructure': pass it to
+-- any curve-taking function and everything built on it keeps tracking whatever the handle
+-- currently points at, so a later 'linkTo' reprices already-constructed instruments
+-- without rebuilding them. 'Nothing' gives an empty handle -- meaningful rather than an
+-- error, since that is what makes a rate helper discount off the curve being bootstrapped
+-- -- but reading a curve value through one throws until it is linked.
+{#fun qlRelinkableYieldTermStructure as relinkableYieldTermStructure{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure a)'
+  ,preErrorCheck-`String'errorCheck*-}->`RelinkableYieldTermStructure'peekRelinkableYieldTermStructure*#}
+
+-- |Point a relinkable handle at a different curve. Everything already built on the handle
+-- reprices against the new curve, with no object rebuilt.
+--
+-- This is the one mutator in the module. The API rules here otherwise forbid new setters
+-- and prefer constructing a fresh object, but relinking /is/ the capability being bound:
+-- a forecast curve is cloned into every floating coupon of every instrument, so without
+-- it a curve scenario means rebuilding the whole portfolio.
+{#fun qlRelinkableYieldTermStructureLinkTo as linkTo{withRelinkableYieldTermStructure*`RelinkableYieldTermStructure'
+  ,withYieldTermStructure*`GenYieldTermStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- TODO use the class or decide it's not needed
 class HelperUnderlying a b | a -> b where underlying :: a -> IO b

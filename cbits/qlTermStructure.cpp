@@ -615,6 +615,22 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigne
 double qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve *o, char **e) {try {return (*arg(o))->fitResults().minimumCostValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscountCurve *o, char **e) {try {return (*arg(o))->fitResults().numberOfIterations();} catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {del(ts);}
+
+// A relinkable handle, empty when `initial` is null. An empty handle is meaningful, not an
+// error: it is what makes a rate helper discount off the curve being bootstrapped.
+QlRelinkableYieldTermStructure* qlRelinkableYieldTermStructure(QlYieldTermStructure *initial, char **e) {
+  try {return ret(initial ? new QlRelinkableYieldTermStructure(curvePtr(arg(initial)))
+                          : new QlRelinkableYieldTermStructure());
+  } catch (std::exception& er) {return handleException<QlRelinkableYieldTermStructure*>(e, er);}}
+void qlFreeRelinkableYieldTermStructure(QlRelinkableYieldTermStructure *o) {del(o);}
+void qlRelinkableYieldTermStructureLinkTo(QlRelinkableYieldTermStructure *o, QlYieldTermStructure *c, char **e) {
+  try {arg(o)->linkTo(curvePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+// The hierarchy upcast. Copy-constructing Handle<YieldTermStructure> from
+// RelinkableHandle<YieldTermStructure> is the same T, so link_ is shared and relinking
+// through the original still reaches everything built on the upcast copy. This is the
+// whole reason the design works.
+QlYieldTermStructure* qlRelinkableYieldTermStructureAsYieldTermStructure(QlRelinkableYieldTermStructure *o) {
+  return ret(new QlYieldTermStructure(*arg(o)));}
 void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) {del(o);}
 QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) {return ret(new QlYieldTermStructure(*arg(o)));}
 void qlFreeBondHelper(QlBondHelper *o) {del(o);}

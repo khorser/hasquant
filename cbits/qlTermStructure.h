@@ -159,6 +159,10 @@ extern "C" {
   QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, char **e);
   QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e);
   void qlFreeYieldTermStructure(QlYieldTermStructure *ts);
+  QlRelinkableYieldTermStructure* qlRelinkableYieldTermStructure(QlYieldTermStructure *initial, char **e);
+  void qlFreeRelinkableYieldTermStructure(QlRelinkableYieldTermStructure *o);
+  void qlRelinkableYieldTermStructureLinkTo(QlRelinkableYieldTermStructure *o, QlYieldTermStructure *c, char **e);
+  QlYieldTermStructure* qlRelinkableYieldTermStructureAsYieldTermStructure(QlRelinkableYieldTermStructure *o);
   double qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
     int extrapolate, char **e);
   QlYieldTermStructure* qlFlatForward(int referenceDate, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e);

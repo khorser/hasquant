@@ -280,6 +280,7 @@ namespace QuantLib {
 }
 
 using QuantLib::Handle;
+using QuantLib::RelinkableHandle;
 using QuantLib::Quote;
 using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
@@ -553,6 +554,10 @@ typedef shared_ptr<Quote> QlQuote;
 // linkTo() propagate to everything already built on it. Handle constructs implicitly from
 // nothing (the ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed.
 typedef Handle<YieldTermStructure> QlYieldTermStructure;
+// RelinkableHandle publicly inherits Handle, so a relinkable curve IS a QlYieldTermStructure
+// and needs no separate parameter type: it goes wherever a curve goes, through the ordinary
+// Upcastable machinery, and the upcast copy shares its Link so relinking still propagates.
+typedef RelinkableHandle<YieldTermStructure> QlRelinkableYieldTermStructure;
 typedef shared_ptr<PricingEngine> QlPricingEngine;
 typedef shared_ptr<IborIndex> QlIborIndex;
 typedef shared_ptr<Index> QlIndex;
