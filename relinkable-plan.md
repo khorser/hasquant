@@ -466,3 +466,40 @@ Recorded so they are not re-derived.
   typedef gets the same single-type property with none of these.
 - **Unifying the C parameter type only, keeping plain + `H` Haskell siblings.** A strict subset
   of this plan (it is the same C-side change) that keeps the Haskell duplication for no benefit.
+
+## Next, after this lands: propagate the approach to quotes and other market data
+
+**Decided, but deliberately last** — not part of this plan's scope, and not to be started until
+the curve work is complete and merged.
+
+The same reasoning applies to every other market-data type the shim currently passes as a bare
+`shared_ptr` and wraps into a `Handle` at each use. The priority order is:
+
+1. **`Quote`** — `typedef shared_ptr<Quote> QlQuote` (`cbits/qlaux.h:550`). By far the widest
+   surface: `Handle<Quote>(*arg(q))` appears throughout every `.cpp` in `cbits/`. Relinkable
+   quotes are what make a scenario/bump run possible without rebuilding instruments, so this is
+   the one with the most user-visible payoff. Note `SimpleQuote.setValue` already provides a
+   mutation path for the common bump case, so the *marginal* gain is narrower than for curves —
+   it buys swapping in a different quote object, not a different value.
+2. **`BlackVolTermStructure`** and **`SwaptionVolatilityStructure`** — the volatility surfaces,
+   for the same reason curves needed it: they are baked into pricing engines at construction, so
+   today a vol scenario means rebuilding every engine.
+
+Everything established here carries over unchanged, and should be reused rather than re-derived:
+
+- The mechanics are identical — change the typedef, let `make` enumerate the sites, add the
+  `qlNullableHandle` overload (already generic over `T`, so it needs nothing), and expect the
+  `operator->` chaining to make method-call sites compile untouched.
+- `curvePtr`/`curveRef` (F7 in `relinkable-spike.md`) generalise as-is: both are templates over
+  `Handle<T>`, so they already work for `Quote` and the vol structures. They may want less
+  curve-specific names at that point.
+- **The F8 invariant is the deliverable to replicate**: after each conversion,
+  `grep -rn 'Handle<Quote>' cbits/` (and likewise per type) must return exactly its one typedef.
+  That is what keeps caveat 1 checkable as the number of handle-shaped types grows — and it gets
+  *more* important with each one, since the audit surface is multiplicative.
+- The GC/ownership prerequisite does **not** need re-running per type. It established a property
+  of `Handle<T>` under Haskell GC, not of `Handle<YieldTermStructure>` specifically. Re-run
+  `smoke/CheckHandleGC.hs`'s growth loop as a regression check, not as a gate.
+
+Expect each conversion to be smaller than the curve one: curves were the type with the most
+consumers, the most return positions, and the only subtype hierarchy.
