@@ -177,9 +177,9 @@ hot path, so it gets measured rather than assumed.
 | 0 Baseline | ✅ done | 185.3 MB / 44.10e9 instr |
 | 1 Typedef spike | ✅ done | 3 files, +40/−24, **zero `.chs` changes** |
 | 2 Pinned values | ✅ pass | 101 skip-LONG and 104 full, 0 failures, no value moved |
-| 3 GC liveness | not started | |
-| 4 Growth loop | not started | |
-| 5 trackAllocations | not started | |
+| 3 GC liveness | ✅ pass | `smoke/CheckHandleGC.hs`, 3 checks |
+| 4 Growth loop | ✅ pass | RSS flat 200 → 20000 iterations |
+| 5 trackAllocations | ✅ pass | lifecycle events identical to baseline, line for line |
 | 6 After-numbers | ✅ pass | RSS −0.2%, instructions −0.1% — both inside noise |
 
 ### F5. The typedef spike came out far smaller than the worklist implied
@@ -290,3 +290,92 @@ the honest reading is "no detectable difference", not "faster".
   argument-position sites, not in the bootstrap inner loop.
 
 Full suite including LONG: 104 examples, 0 failures, 26.23 s (baseline 26.46 s).
+
+### GC liveness (step 3) — pass
+
+`smoke/CheckHandleGC.hs`, all three checks pass:
+
+```
+OK   derived curve outlives its dropped base       0.9048374180359595
+OK   engine outlives its dropped curve             48911.41160693682
+OK   a different curve gives a different NPV       2% and 5% flat curves must not price the same
+```
+
+Checks 1 and 2 build a curve inside a function that returns something *else* (a derived curve;
+an engine), so no Haskell reference to the curve survives the return, then `performGC` twice and
+read through the consumer, requiring the reference value **exactly**. Check 3 is the negative
+control — a 2% and a 5% curve must not price the same — so a build where the two halves disagreed
+about the parameter type could not pass on a coincidence.
+
+### Growth loop (step 4) — pass, flat
+
+Peak RSS of the whole process, N iterations each building and dropping a curve, a derived curve,
+an engine and the upcast intermediates:
+
+| N | Max RSS |
+| --- | --- |
+| 200 | 20.19 MB |
+| 2,000 | 20.30 MB |
+| 20,000 | 20.30 MB |
+
+**100× the work for +0.6%, and byte-identical between 2,000 and 20,000.** No Link leak, no cycle
+— which is the half `alloc-summary.py` structurally cannot see.
+
+### trackAllocations (step 5) — pass, and stronger than "no new leaks"
+
+Run on both builds with the flag, after `rm -rf .stack-work/dist/*/*/build/cbits` and with
+`strings … | grep -c allocated` confirming tracing was actually compiled in (per CLAUDE.md — a
+flag-only change does not rebuild `cxx-sources`, and an untraced run looks like a clean one).
+
+**The two `alloc-summary.py` summaries are identical** (`diff` clean): 135,822 tracked allocations
+across 157 classes in both, the same three pre-existing over-frees (`Calendar` ×9, `DayCounter`,
+`Region`) and the same three still-live objects (`BespokeCalendar` ×2, `PolymorphicPathGenerator`)
+on **both** builds. Those are pre-existing and unrelated to curves — established by running the
+control, not by assuming it.
+
+Event counts, line for line:
+
+| Event | Baseline | Handle | Δ |
+| --- | --- | --- | --- |
+| `allocated` | 132,797 | 132,797 | 0 |
+| `returned` | 3,023 | 3,023 | 0 |
+| `deleting` | 135,065 | 135,065 | 0 |
+| `deleted` | 135,065 | 135,065 | 0 |
+| `arg` | 430,106 | 495,657 | +65,551 |
+
+The object lifecycle is **unchanged**. The whole 7.8% trace growth is `arg()`, which is
+pass-through and not a lifecycle event — it comes from the new `curvePtr`/`curveRef`/
+`qlNullableHandle(Handle*)` helpers each calling `arg()` once.
+
+---
+
+## Verdict
+
+**The prerequisite is met. `Handle<YieldTermStructure>` is on par with `shared_ptr` under Haskell
+GC — indistinguishable on every metric measured.** Proceed with the implementation in
+`relinkable-plan.md`.
+
+Summary of the six plan concerns:
+
+| Plan concern | Outcome |
+| --- | --- |
+| Exposure 1 — two heap objects per curve | Not detectable: RSS −0.2%, growth loop flat |
+| Exposure 2 — GC mutating the observer graph | Closed analytically (F2): nothing is `-threaded`, C finalizers run inside GC, so a finalizer can never unregister an Observer during a QuantLib call |
+| Exposure 3 — reference cycles | None: growth loop flat to 20,000 iterations |
+| Exposure 4 — extra indirection | Not detectable, and smaller than assumed (F5): `operator->` chaining makes method calls compile identically |
+| Upcast-intermediate lifetime | Safe: all four consumers store the Handle **by value** (F3) |
+| Caveat 1 — silent detachment | Zero sites; all 76 constructions audited exhaustively (F6) |
+
+### Carry into the implementation
+
+- **Keep the spike's C++ diff** — it is the real thing, not a throwaway. `a94ed4d`.
+- **Keep `curvePtr`/`curveRef`** (F7) — greppable derefs are caveat 1's only defence.
+- **Promote `smoke/CheckHandleGC.hs`'s liveness checks** into the test suite alongside the relink
+  checks once the flag is dropped, per the plan's "Porting the relink checks". Keep the growth
+  loop in `smoke/` — it takes an argument and is not a pass/fail assertion.
+- **Note in CLAUDE.md** that F2's argument depends on nothing being `-threaded`; adding
+  `-threaded` would reopen exposure 2 against a QuantLib built without
+  `QL_ENABLE_THREAD_SAFE_OBSERVER_PATTERN` (F1).
+- Still to do from the plan, untouched by this spike: the Haskell side
+  (`RelinkableYieldTermStructure` as an `Upcastable` member of the `YieldTermStructure`
+  hierarchy), `linkTo`/`currentLink`, dropping the flag, and the documentation upkeep.
