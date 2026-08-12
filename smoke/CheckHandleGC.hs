@@ -150,9 +150,12 @@ mkSwap = do
 -- ---------------------------------------------------------------- growth
 
 -- |Build and drop N curves, derived curves and engines, collecting periodically. Each
--- iteration allocates: a curve (Handle + Link), a derived curve holding a copy of it, an
--- engine holding another copy, and the upcast intermediates the marshallers create and
--- free. Nothing is retained across iterations, so a correct implementation must be flat
+-- iteration allocates a curve (Handle + Link), a derived curve holding a copy of it, and an
+-- engine holding another copy, plus the instrument-side upcast intermediates the marshallers
+-- create and free. Note there are no *curve*-side upcast intermediates here: both curves are
+-- the root YieldTermStructure type, so withYieldTermStructure passes them straight through.
+-- The one curve subtype, FittedBondDiscountCurve, is exercised by the LONG test suite
+-- instead. Nothing is retained across iterations, so a correct implementation must be flat
 -- in N; growth means a Link is never freed, or a cycle keeps one alive.
 growthLoop :: Int -> IO ()
 growthLoop n = do

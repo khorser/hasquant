@@ -71,6 +71,14 @@ either already-`Handle` H variants or unrelated `Forward` instruments.
 
 ## PREREQUISITE — verify `Handle` ownership under Haskell GC before committing to this
 
+> **EXECUTED AND PASSED — do not re-run.** See `relinkable-spike.md` for the full record and
+> `baf5159` for the verdict; the C++ half of the change is already done on branch
+> `relinkable-spike` (`a94ed4d`) and should be carried into the implementation rather than
+> redone. Headline: RSS −0.2%, instructions −0.1%, growth loop flat to 20,000 iterations,
+> allocation-trace lifecycle counts identical to a control run, and **zero** silent-detachment
+> sites across all 76 `Handle<YieldTermStructure>(…)` constructions. The section below is kept
+> as the record of what was asked for and why.
+
 **Decided: this gates the full implementation.** The claim to establish is not "it works" but
 "it is *at least on par* with `shared_ptr`". Do this first, on a throwaway spike, before the
 mechanical rewrite.
