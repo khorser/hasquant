@@ -643,28 +643,28 @@ QlStochasticProcess1D* qlGeneralizedBlackScholesProcessAsStochasticProcess1D(QlG
 void qlFreeStochasticProcess(QlStochasticProcess *o) {del(o);}
 
 QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
-  try {return ret(new QlBlackProcess(alloc(new BlackProcess(*arg(x0), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), createDiscretization1D(d), forceDiscretization))));
+  try {return ret(new QlBlackProcess(alloc(new BlackProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlBlackProcess*>(e, er);}}
 QlGeneralizedBlackScholesProcess* qlBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
-  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new BlackScholesMertonProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), createDiscretization1D(d), forceDiscretization))));
+  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new BlackScholesMertonProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 QlGeneralizedBlackScholesProcess* qlBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
-  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new BlackScholesProcess(*arg(x0), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), createDiscretization1D(d), forceDiscretization))));
+  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new BlackScholesProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 QlGeneralizedBlackScholesProcess* qlExtendedBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int evolDisc, char **e) {
-  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new ExtendedBlackScholesMertonProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), createDiscretization1D(d), (ExtendedBlackScholesMertonProcess::Discretization)evolDisc))));
+  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new ExtendedBlackScholesMertonProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), (ExtendedBlackScholesMertonProcess::Discretization)evolDisc))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 QlGeneralizedBlackScholesProcess* qlGarmanKohlagenProcess(QlQuote* x0, QlYieldTermStructure* foreignRiskFreeTS, QlYieldTermStructure* domesticRiskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
-  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new GarmanKohlagenProcess(*arg(x0), *arg(foreignRiskFreeTS), *arg(domesticRiskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), createDiscretization1D(d), forceDiscretization))));
+  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new GarmanKohlagenProcess(*arg(x0), *arg(foreignRiskFreeTS), *arg(domesticRiskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 QlGeneralizedBlackScholesProcess* qlGeneralizedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
-  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new GeneralizedBlackScholesProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), createDiscretization1D(d), forceDiscretization))));
+  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new GeneralizedBlackScholesProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 QlStochasticProcess1D* qlSquareRootProcess(double b, double a, double sigma, double x0, int d, char **e) {
   try {return ret(new QlStochasticProcess1D(alloc(new SquareRootProcess(b, a, sigma, x0, createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
 QlGeneralizedBlackScholesProcess* qlVegaStressedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, double lowerTimeBorderForStressTest, double upperTimeBorderForStressTest, double lowerAssetBorderForStressTest, double upperAssetBorderForStressTest, double stressLevel, int d, char **e) {
-  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new VegaStressedBlackScholesProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), lowerTimeBorderForStressTest, upperTimeBorderForStressTest, lowerAssetBorderForStressTest, upperAssetBorderForStressTest, stressLevel, createDiscretization1D(d)))));
+  try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new VegaStressedBlackScholesProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), lowerTimeBorderForStressTest, upperTimeBorderForStressTest, lowerAssetBorderForStressTest, upperAssetBorderForStressTest, stressLevel, createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 
 void qlFreeExtOUWithJumpsProcess(QlExtOUWithJumpsProcess *o) {del(o);}
@@ -734,7 +734,7 @@ QlLiborForwardModelProcess* qlLiborForwardModelProcess(unsigned size, QlIborInde
   try {return ret(new QlLiborForwardModelProcess(alloc(new LiborForwardModelProcess(size, *arg(index)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModelProcess*>(e, er);}}
 QlMerton76Process* qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, int d, char **e) {
-  try {return ret(new QlMerton76Process(alloc(new Merton76Process(*arg(stateVariable), *arg(dividendTS), *arg(riskFreeTS), Handle<BlackVolTermStructure>(*arg(blackVolTS)), *arg(jumpInt), *arg(logJMean), *arg(logJVol), createDiscretization1D(d)))));
+  try {return ret(new QlMerton76Process(alloc(new Merton76Process(*arg(stateVariable), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), *arg(jumpInt), *arg(logJMean), *arg(logJVol), createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlMerton76Process*>(e, er);}}
 QlStochasticProcess1D* qlOrnsteinUhlenbeckProcess(double speed, double vol, double x0, double level, char **e) {
   try {return ret(new QlStochasticProcess1D(alloc(new OrnsteinUhlenbeckProcess(speed, vol, x0, level))));

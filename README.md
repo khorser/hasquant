@@ -90,7 +90,7 @@ While this is convenient, it leads to some allocation and deallocation on each c
 # TODO
 - (Perpetual) Add more classes and methods. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
 - Add more nonempty lists or vectors for some functions where applicable
-- Use QuantLib Handles/RelinkableHandle for volatility structures to support native QuantLib semantics (done for yield curves and quotes: see `relinkableYieldTermStructure`/`linkTo` and `QuantLib.Quote.relinkableQuote`/`linkTo`)
+- Use QuantLib Handles/RelinkableHandle for SwaptionVolatilityStructure and OptionletVolatilityStructure to support native QuantLib semantics (done for yield curves, quotes, and BlackVolTermStructure: see `relinkableYieldTermStructure`/`linkTo`, `QuantLib.Quote.relinkableQuote`/`linkTo`, and `QuantLib.TermStructure.Volatility.relinkableBlackVolTermStructure`/`linkBlackVolTo`)
 - Design a declarative embedded DSL
 - Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - See [github issues](https://github.com/khorser/hasquant) for more formalized tasks

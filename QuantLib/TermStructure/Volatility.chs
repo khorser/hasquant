@@ -7,6 +7,7 @@ module QuantLib.TermStructure.Volatility
   , BlackVarianceCurve
   , BlackVolTermStructure
   , GenBlackVolTermStructure
+  , RelinkableBlackVolTermStructure
   , CallableBondVolatilityStructure
   , CapFloorTermVolSurface
   , LocalVolTermStructure
@@ -26,6 +27,8 @@ module QuantLib.TermStructure.Volatility
   , impliedVolTermStructure
   , blackConstantVol'
   , blackConstantVol
+  , relinkableBlackVolTermStructure
+  , linkBlackVolTo
   , constantSwaptionVolatility'
   , constantSwaptionVolatility
   , blackVarianceForPeriod'
@@ -103,6 +106,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign -> CBlackVarianceCurve' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
+{#pointer *QlRelinkableBlackVolTermStructure as RelinkableBlackVolTermStructure foreign -> CRelinkableBlackVolTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
 {#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign -> CCapFloorTermVolSurface' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
@@ -151,6 +155,20 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 {#fun qlBlackConstantVol1 as blackConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 {#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- |A Black vol surface behind a relinkable handle. The result /is/ a 'BlackVolTermStructure':
+-- pass it anywhere one is expected and everything built on it keeps tracking whatever the
+-- handle currently points at, so a later 'linkBlackVolTo' reprices already-constructed
+-- instruments without rebuilding them. Mirrors
+-- 'QuantLib.TermStructure.Yield.relinkableYieldTermStructure'.
+{#fun qlRelinkableBlackVolTermStructure as relinkableBlackVolTermStructure{withMaybeBlackVolTermStructure*`Maybe (GenBlackVolTermStructure a)'
+  ,preErrorCheck-`String'errorCheck*-}->`RelinkableBlackVolTermStructure'peekRelinkableBlackVolTermStructure*#}
+
+-- |Point a relinkable Black vol handle at a different surface. Everything already built on the
+-- handle reprices against the new surface, with no engine rebuilt. Mirrors
+-- 'QuantLib.TermStructure.Yield.linkTo' -- see its haddock for why this mutator is justified.
+{#fun qlRelinkableBlackVolTermStructureLinkTo as linkBlackVolTo{withRelinkableBlackVolTermStructure*`RelinkableBlackVolTermStructure'
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |fixed reference date, floating market data
 {#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter'

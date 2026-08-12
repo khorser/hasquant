@@ -823,6 +823,7 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- >    OptionletVolatilityStructure
 -- >    BlackVolTermStructure
 -- >      BlackVarianceCurve
+-- >      RelinkableBlackVolTermStructure
 -- >    SwaptionVolatilityStructure
 -- >    CapFloorTermVolSurface
 -- >    LocalVolTermStructure
@@ -838,6 +839,7 @@ data CSwaptionVolatilityStructure'
 data CCapFloorTermVolSurface'
 data CLocalVolTermStructure'
 data CBlackVolTermStructure'
+data CRelinkableBlackVolTermStructure'
 data CBlackVarianceCurve'
 data CYieldTermStructure'
 data CFittedBondDiscountCurve'
@@ -873,6 +875,12 @@ type LocalVolTermStructure = GenVolatilityTermStructure CLocalVolTermStructure
 type GenBlackVolTermStructure a = GenVolatilityTermStructure (AnyOf CBlackVolTermStructure' a)
 type CBlackVolTermStructure = ForeignPtr CBlackVolTermStructure'
 type BlackVolTermStructure = GenBlackVolTermStructure CBlackVolTermStructure
+type CRelinkableBlackVolTermStructure = ForeignPtr CRelinkableBlackVolTermStructure'
+-- | A Black vol surface held behind a relinkable handle. It /is/ a 'BlackVolTermStructure' --
+-- pass it anywhere one is expected and it upcasts like any other hierarchy member, sharing its
+-- @Link@ so that a later 'QuantLib.TermStructure.Volatility.linkBlackVolTo' reaches everything
+-- already built on it. Mirrors 'RelinkableYieldTermStructure'.
+type RelinkableBlackVolTermStructure = GenBlackVolTermStructure CRelinkableBlackVolTermStructure
 type CBlackVarianceCurve = ForeignPtr CBlackVarianceCurve'
 type BlackVarianceCurve = GenBlackVolTermStructure CBlackVarianceCurve
 type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStructure'
@@ -890,6 +898,7 @@ foreign import ccall unsafe "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwap
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface'
 foreign import ccall unsafe "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableBlackVolTermStructure" qlFreeRelinkableBlackVolTermStructure :: FinalizerPtr CRelinkableBlackVolTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve'
 foreign import ccall unsafe "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve'
@@ -905,6 +914,7 @@ instance Finalizable CSwaptionVolatilityStructure' where finalize = qlFreeSwapti
 instance Finalizable CCapFloorTermVolSurface' where finalize = qlFreeCapFloorTermVolSurface
 instance Finalizable CLocalVolTermStructure' where finalize = qlFreeLocalVolTermStructure
 instance Finalizable CBlackVolTermStructure' where finalize = qlFreeBlackVolTermStructure
+instance Finalizable CRelinkableBlackVolTermStructure' where finalize = qlFreeRelinkableBlackVolTermStructure
 instance Finalizable CBlackVarianceCurve' where finalize = qlFreeBlackVarianceCurve
 instance Finalizable CYieldTermStructure' where finalize = qlFreeYieldTermStructure
 instance Finalizable CFittedBondDiscountCurve' where finalize = qlFreeFittedBondDiscountCurve
@@ -919,6 +929,7 @@ foreign import ccall "ql.h qlRelinkableYieldTermStructureAsYieldTermStructure" q
 foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure" qlOptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlBlackVolTermStructureAsVolatilityTermStructure" qlBlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlRelinkableBlackVolTermStructureAsBlackVolTermStructure" qlRelinkableBlackVolTermStructureAsBlackVolTermStructure :: Ptr CRelinkableBlackVolTermStructure' -> IO (Ptr CBlackVolTermStructure')
 foreign import ccall "ql.h qlBlackVarianceCurveAsBlackVolTermStructure" qlBlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve' -> IO (Ptr CBlackVolTermStructure')
 foreign import ccall "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure" qlSwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" qlCapFloorTermVolSurfaceAsVolatilityTermStructure :: Ptr CCapFloorTermVolSurface' -> IO (Ptr CVolatilityTermStructure')
@@ -936,6 +947,7 @@ instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultP
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
 instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
+instance Upcastable CRelinkableBlackVolTermStructure' where {type Base CRelinkableBlackVolTermStructure' = CBlackVolTermStructure'; upcast = qlRelinkableBlackVolTermStructureAsBlackVolTermStructure}
 instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; upcast = qlBlackVarianceCurveAsBlackVolTermStructure}
 instance Upcastable COptionletVolatilityStructure' where {type Base COptionletVolatilityStructure' = CVolatilityTermStructure'; upcast = qlOptionletVolatilityStructureAsVolatilityTermStructure}
 instance Upcastable CSwaptionVolatilityStructure' where {type Base CSwaptionVolatilityStructure' = CVolatilityTermStructure'; upcast = qlSwaptionVolatilityStructureAsVolatilityTermStructure}
@@ -969,11 +981,17 @@ peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStruc
 peekBlackVolTermStructure = newCastForeignPtr >=> newGenBlackVolTermStructure
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
 withBlackVolTermStructure = withGenForeignPtr . peel . peel . getTermStructure
+withMaybeBlackVolTermStructure :: Maybe (GenBlackVolTermStructure a) -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
+withMaybeBlackVolTermStructure x f = maybe (f nullPtr) (`withBlackVolTermStructure` f) x
 newGenBlackVolTermStructure :: GenForeignPtr a CBlackVolTermStructure' -> IO (GenBlackVolTermStructure a)
 newGenBlackVolTermStructure = pure . GenTermStructure . newAnyOf . newAnyOf
 
 peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
 peekBlackVarianceCurve = newGenForeignPtr >=> newGenBlackVolTermStructure
+peekRelinkableBlackVolTermStructure :: Ptr CRelinkableBlackVolTermStructure' -> IO RelinkableBlackVolTermStructure
+peekRelinkableBlackVolTermStructure = newGenForeignPtr >=> newGenBlackVolTermStructure
+withRelinkableBlackVolTermStructure :: RelinkableBlackVolTermStructure -> (Ptr CRelinkableBlackVolTermStructure' -> IO b) -> IO b
+withRelinkableBlackVolTermStructure = withForeignPtr . ptr . peel . peel . getTermStructure
 withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO b) -> IO b
 withBlackVarianceCurve = withForeignPtr . ptr . peel . peel . getTermStructure
 

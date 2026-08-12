@@ -593,7 +593,11 @@ typedef shared_ptr<BlackCalibrationHelper> QlBlackCalibrationHelper;
 typedef shared_ptr<BlackProcess> QlBlackProcess;
 typedef shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
 typedef shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
-typedef shared_ptr<BlackVolTermStructure> QlBlackVolTermStructure;
+// A vol structure is a Handle, same reasoning as QlYieldTermStructure/QlQuote above -- upstream
+// itself speaks Handle<BlackVolTermStructure> throughout, unlike the VolatilityTermStructure
+// base (never a Handle upstream, confirmed by grep; stays shared_ptr, same as QlTermStructure).
+typedef Handle<BlackVolTermStructure> QlBlackVolTermStructure;
+typedef RelinkableHandle<BlackVolTermStructure> QlRelinkableBlackVolTermStructure;
 typedef shared_ptr<BondHelper> QlBondHelper;
 typedef shared_ptr<CalibratedModel> QlCalibratedModel;
 typedef shared_ptr<CalibrationHelper> QlCalibrationHelper;

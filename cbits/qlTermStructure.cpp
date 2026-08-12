@@ -122,7 +122,19 @@ QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar 
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}
 QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) {del(o);}
-QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+// VolatilityTermStructure is never a Handle upstream (confirmed by grep), so this is a
+// deliberate snapshot detach -- same reasoning as qlYieldTermStructureAsTermStructure.
+QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+
+// A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
+QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e) {
+  try {return ret(initial ? new QlRelinkableBlackVolTermStructure(handlePtr(arg(initial)))
+                          : new QlRelinkableBlackVolTermStructure());
+  } catch (std::exception& er) {return handleException<QlRelinkableBlackVolTermStructure*>(e, er);}}
+void qlFreeRelinkableBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o) {del(o);}
+void qlRelinkableBlackVolTermStructureLinkTo(QlRelinkableBlackVolTermStructure *o, QlBlackVolTermStructure *c, char **e) {
+  try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+QlBlackVolTermStructure* qlRelinkableBlackVolTermStructureAsBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
 void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) {del(o);}
 QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
@@ -130,10 +142,10 @@ QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructur
 void qlFreeSmileSection(QlSmileSection *o) {del(o);}
 
 QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(settlementDays, *arg(x1), *arg(volatility), *arg(dayCounter)))));
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new BlackConstantVol(settlementDays, *arg(x1), *arg(volatility), *arg(dayCounter))))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlBlackConstantVol(int referenceDate, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), *arg(volatility), *arg(dayCounter)))));
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), *arg(volatility), *arg(dayCounter))))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlConstantOptionletVolatility(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double displacement, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, displacement))));
@@ -304,10 +316,10 @@ QlLocalVolTermStructure* qlLocalVolCurve(QlBlackVarianceCurve* curve, char **e) 
   try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolCurve(Handle<BlackVarianceCurve>(*arg(curve))))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlLocalVolTermStructure* qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, char **e) {
-  try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(Handle<BlackVolTermStructure>(*arg(blackTS)), *arg(riskFreeTS), *arg(dividendTS), *arg(underlying)))));
+  try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(*arg(blackTS), *arg(riskFreeTS), *arg(dividendTS), *arg(underlying)))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
-  try {return ret(new QlBlackVolTermStructure(alloc(new ImpliedVolTermStructure(Handle<BlackVolTermStructure>(*arg(origTS)), Date(referenceDate)))));
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new ImpliedVolTermStructure(*arg(origTS), Date(referenceDate))))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 
 QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e) {
@@ -331,7 +343,7 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
     if (interpolation)
       setInterpolation(s, interpolation);
     */
-    return ret(new QlBlackVolTermStructure(alloc(s)));
+    return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(s))));
   } catch (std::exception& er) {delete s; return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
@@ -731,7 +743,7 @@ QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure*
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new PiecewiseZeroSpreadedTermStructure(*arg(x0), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation)))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), *arg(underlyingBlackVolTS), strike, *arg(exchRateBlackVolTS), exchRateATMlevel, underlyingExchRateCorrelation)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e) {try {(*arg(i))->addFixing(Date(date), fix, overwrite);} catch (std::exception& er) {(void)handleException<void *>(e, er);}}

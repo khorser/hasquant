@@ -511,10 +511,28 @@ The same reasoning applies to every other market-data type the shim currently pa
 `shared_ptr` and wraps into a `Handle` at each use. The priority order is:
 
 1. ~~**`Quote`**~~ — done, see above.
-2. **`BlackVolTermStructure`**, **`SwaptionVolatilityStructure`**,
-   **`OptionletVolatilityStructure`** — the volatility surfaces, for the same reason curves
-   needed it: they are baked into pricing engines at construction, so today a vol scenario
-   means rebuilding every engine. (`SmileSection` dropped from this list — see above.)
+2. ~~**`BlackVolTermStructure`**~~ — **IMPLEMENTED.** `typedef Handle<BlackVolTermStructure>
+   QlBlackVolTermStructure` plus `QlRelinkableBlackVolTermStructure`. `VolatilityTermStructure`
+   (the base) confirmed to stay `shared_ptr` — `grep -c 'Handle<VolatilityTermStructure>'
+   ~/Src/QuantLib/ql/` is zero everywhere, so it's the `QlTermStructure` situation again: only
+   the leaf converts, the root gets the deliberate-snapshot treatment
+   (`qlBlackVolTermStructureAsVolatilityTermStructure` now uses `handlePtr`, mirroring
+   `qlYieldTermStructureAsTermStructure`). 4 return sites needed the explicit
+   `shared_ptr<BlackVolTermStructure>(alloc(...))` interposed; F8 came out fully clean with
+   **no** accepted exceptions this time (unlike Quote's default-correlation one). Naming
+   collision handled differently than Quote's: rather than `hiding(linkTo)` at every import
+   site, the binding is named `linkBlackVolTo` outright, since `BlackVolTermStructure`,
+   `SwaptionVolatilityStructure` and `OptionletVolatilityStructure` all live in one
+   `QuantLib.TermStructure.Volatility` module and would collide with *each other*, not just
+   with `Yield.chs`/`Quote.chs` — a bare `linkTo` only works when a module binds exactly one
+   relinkable type. Added `withMaybeBlackVolTermStructure` to `Internal/Type.hs` (curves and
+   Quote already had the analogous helper). New test: relinking a `BlackVolTermStructure` feeding
+   a `blackScholesMertonProcess`/`analyticEuropeanEngine` moves the option NPV without rebuilding
+   the engine — same shape as the discount-curve and quote relink checks.
+3. **`SwaptionVolatilityStructure`**, **`OptionletVolatilityStructure`** — the same treatment,
+   not yet started. Same reason curves needed it: they are baked into pricing engines at
+   construction, so today a vol scenario means rebuilding every engine. (`SmileSection` dropped
+   from this list — see above.)
 
 Everything established here carries over unchanged, and should be reused rather than re-derived:
 
@@ -522,8 +540,8 @@ Everything established here carries over unchanged, and should be reused rather 
   `qlNullableHandle` overload (already generic over `T`, so it needs nothing), and expect the
   `operator->` chaining to make method-call sites compile untouched.
 - `curvePtr`/`curveRef` (F7 in `relinkable-spike.md`) generalise as-is: both are templates over
-  `Handle<T>`, so they already work for `Quote` and the vol structures. They may want less
-  curve-specific names at that point.
+  `Handle<T>`. Renamed to `handlePtr`/`handleRef` as a preparatory commit before the `Quote`
+  conversion, exactly per this bullet's prediction — no other change needed.
 - **The F8 invariant is the deliverable to replicate**: after each conversion,
   `grep -rn 'Handle<Quote>' cbits/` (and likewise per type) must return exactly its one typedef.
   That is what keeps caveat 1 checkable as the number of handle-shaped types grows — and it gets

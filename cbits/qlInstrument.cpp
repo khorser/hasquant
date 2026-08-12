@@ -994,7 +994,7 @@ void qlEquityCashFlowSetPricer(QlEquityCashFlow* o, QlEquityCashFlowPricer* pric
 void qlFreeEquityCashFlowPricer(QlEquityCashFlowPricer *o) {del(o);}
 QlEquityCashFlowPricer* qlEquityQuantoCashFlowPricer(QlYieldTermStructure* quantoCurrencyTermStructure, QlBlackVolTermStructure* equityVolatility, QlBlackVolTermStructure* fxVolatility, QlQuote* correlation, char **e) {
   try {return ret(new QlEquityCashFlowPricer(alloc(new EquityQuantoCashFlowPricer(*arg(quantoCurrencyTermStructure),
-        Handle<BlackVolTermStructure>(*arg(equityVolatility)), Handle<BlackVolTermStructure>(*arg(fxVolatility)), *arg(correlation)))));
+        *arg(equityVolatility), *arg(fxVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlEquityCashFlowPricer*>(e, er);}}
 void qlQuantLibSetEquityCashFlowPricer(Leg* leg, QlEquityCashFlowPricer* pricer, char **e) {
   try {setCouponPricer(*arg(leg), *arg(pricer));

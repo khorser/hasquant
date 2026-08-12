@@ -8,6 +8,10 @@ extern "C" {
   QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
+  QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e);
+  void qlFreeRelinkableBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o);
+  void qlRelinkableBlackVolTermStructureLinkTo(QlRelinkableBlackVolTermStructure *o, QlBlackVolTermStructure *c, char **e);
+  QlBlackVolTermStructure* qlRelinkableBlackVolTermStructureAsBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o);
   void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o);
   QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o);
   void qlFreeSmileSection(QlSmileSection *o);

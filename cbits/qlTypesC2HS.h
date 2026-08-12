@@ -122,6 +122,7 @@ typedef struct QlQuantoForwardVanillaOption QlQuantoForwardVanillaOption;
 typedef struct QlQuantoVanillaOption QlQuantoVanillaOption;
 typedef struct QlQuote QlQuote;
 typedef struct QlRateHelper QlRateHelper;
+typedef struct QlRelinkableBlackVolTermStructure QlRelinkableBlackVolTermStructure;
 typedef struct QlRelinkableQuote QlRelinkableQuote;
 typedef struct QlRelinkableYieldTermStructure QlRelinkableYieldTermStructure;
 typedef struct QlShortRateModel QlShortRateModel;

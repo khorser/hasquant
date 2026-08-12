@@ -21,7 +21,10 @@ import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Swap(vanillaSwap, SwapType(Payer))
-import QuantLib.PricingEngine(discountingSwapEngine)
+import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
+import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
+import qualified QuantLib.TermStructure.Volatility as Vol
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine)
 
 import QuantLib.Spec.Helpers(areClose)
 
@@ -227,3 +230,36 @@ spec = do
           Quote.simpleQuote 0.02 >>= Quote.linkTo qh
           -- exact, not approximate: same reasoning as the curve-relink-back check above
           discount c 5.0 False `shouldReturn` before
+
+      -- A relinkable Black vol surface propagates the same way: an option engine built on it
+      -- keeps tracking whatever surface the handle currently points at, so relinking reprices
+      -- without rebuilding the engine.
+      let mkOption = do
+            underQ <- Quote.simpleQuote 100
+            riskFreeQ <- Quote.simpleQuote 0.03
+            dc <- dayCounter Actual365FixedStandard
+            ts <- flatForward (11 `december` 2012) riskFreeQ dc IR.Continuous Annual
+            divQ <- Quote.simpleQuote 0.0
+            divTS <- flatForward (11 `december` 2012) divQ dc IR.Continuous Annual
+            volQ <- Quote.simpleQuote 0.20
+            cal <- Calendar.calendar TARGET
+            vol0 <- Vol.blackConstantVol (11 `december` 2012) cal volQ dc
+            volH <- Vol.relinkableBlackVolTermStructure (Just vol0)
+            proc <- blackScholesMertonProcess underQ divTS ts volH EulerDiscretization False
+            opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100))
+                                  (European (EuropeanExercise (11 `december` 2013)))
+            analyticEuropeanEngine proc Nothing >>= setPricingEngine opt
+            pure (opt, volH)
+
+      it "relinking a Black vol surface reprices the option, without rebuilding the engine" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (opt, volH) <- mkOption
+          before <- npv opt
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          q <- Quote.simpleQuote 0.40
+          vol1 <- Vol.blackConstantVol (11 `december` 2012) cal q dc
+          Vol.linkBlackVolTo volH vol1
+          after <- npv opt
+          abs (after - before) `shouldSatisfy` (> 0.5)
