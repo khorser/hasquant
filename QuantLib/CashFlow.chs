@@ -99,10 +99,10 @@ module QuantLib.CashFlow
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding)
-{#import QuantLib.Time.Schedule#}(Frequency, TimeUnit)
+{#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum(CPIInterpolationType(..))
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

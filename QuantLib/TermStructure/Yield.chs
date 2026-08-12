@@ -68,7 +68,7 @@ module QuantLib.TermStructure.Yield
 
   , underlying
   ) where
-import QuantLib.Internal hiding (maxDate)
+import QuantLib.Internal hiding(maxDate)
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)

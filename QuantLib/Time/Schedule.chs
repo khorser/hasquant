@@ -29,7 +29,7 @@ import QuantLib.Time.Date
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum(TimeUnit(..))
+import QuantLib.Internal.Enum
 import QuantLib.Internal.CalendarEnum
 
 #include "qlTypesC2HS.h"
