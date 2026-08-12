@@ -619,12 +619,12 @@ void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {del(ts);}
 // A relinkable handle, empty when `initial` is null. An empty handle is meaningful, not an
 // error: it is what makes a rate helper discount off the curve being bootstrapped.
 QlRelinkableYieldTermStructure* qlRelinkableYieldTermStructure(QlYieldTermStructure *initial, char **e) {
-  try {return ret(initial ? new QlRelinkableYieldTermStructure(curvePtr(arg(initial)))
+  try {return ret(initial ? new QlRelinkableYieldTermStructure(handlePtr(arg(initial)))
                           : new QlRelinkableYieldTermStructure());
   } catch (std::exception& er) {return handleException<QlRelinkableYieldTermStructure*>(e, er);}}
 void qlFreeRelinkableYieldTermStructure(QlRelinkableYieldTermStructure *o) {del(o);}
 void qlRelinkableYieldTermStructureLinkTo(QlRelinkableYieldTermStructure *o, QlYieldTermStructure *c, char **e) {
-  try {arg(o)->linkTo(curvePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+  try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 // The hierarchy upcast. Copy-constructing Handle<YieldTermStructure> from
 // RelinkableHandle<YieldTermStructure> is the same T, so link_ is shared and relinking
 // through the original still reaches everything built on the upcast copy. This is the
@@ -640,7 +640,7 @@ QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) {return ret(new 
 void qlFreeOISRateHelper(QlOISRateHelper *o) {del(o);}
 QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o) {return ret(new QlRateHelper(*arg(o)));}
 void qlFreeTermStructure(QlTermStructure *o) {del(o);}
-QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(curvePtr(arg(o))));}
+QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(handlePtr(arg(o))));}
 
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, int priceType, char **e) {
   try {return ret(new QlBondHelper(alloc(new BondHelper(Handle<Quote>(*arg(cleanPrice)), *arg(bond), (Bond::Price::Type)priceType))));

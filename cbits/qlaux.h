@@ -1124,9 +1124,11 @@ template <class T> Handle<T> qlNullableHandle(Handle<T> *p) {return p ? *(arg(p)
 // pointee rather than the handle. Named rather than spelled with stars because *arg(h),
 // **arg(h) and ***arg(h) are all well-formed here and differ by a single character inside
 // very long argument lists -- and picking the wrong one is the failure mode this whole design
-// has to guard against. Both throw on an empty handle, per Handle::operator*.
-template <class T> const shared_ptr<T>& curvePtr(Handle<T> *p) {return **arg(p);}
-template <class T> const T& curveRef(Handle<T> *p) {return ***arg(p);}
+// has to guard against. Both throw on an empty handle, per Handle::operator*. Generic over T
+// (not curve-specific) so every Handle-shaped type -- Quote, the vol structures -- reuses these
+// rather than growing its own same-shaped spelling.
+template <class T> const shared_ptr<T>& handlePtr(Handle<T> *p) {return **arg(p);}
+template <class T> const T& handleRef(Handle<T> *p) {return ***arg(p);}
 
 template <class T>
 inline std::vector<T> qlVector(T **vals, size_t len) {
