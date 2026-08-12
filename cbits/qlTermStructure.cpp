@@ -301,7 +301,7 @@ QlLocalVolTermStructure* qlLocalVolCurve(QlBlackVarianceCurve* curve, char **e) 
   try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolCurve(Handle<BlackVarianceCurve>(*arg(curve))))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlLocalVolTermStructure* qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, char **e) {
-  try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(Handle<BlackVolTermStructure>(*arg(blackTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(dividendTS)), Handle<Quote>(*arg(underlying))))));
+  try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(Handle<BlackVolTermStructure>(*arg(blackTS)), *arg(riskFreeTS), *arg(dividendTS), Handle<Quote>(*arg(underlying))))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
   try {return ret(new QlBlackVolTermStructure(alloc(new ImpliedVolTermStructure(Handle<BlackVolTermStructure>(*arg(origTS)), Date(referenceDate)))));
@@ -378,11 +378,11 @@ QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsign
 void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) {del(o);}
 
 QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, char **e) {
-  try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(Handle<Quote>(*arg(runningSpread)), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), settlesAccrual, paysAtDefaultTime,
+  try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(Handle<Quote>(*arg(runningSpread)), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, char **e) {
-  try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(Handle<Quote>(*arg(upfront)), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
+  try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(Handle<Quote>(*arg(upfront)), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
@@ -448,7 +448,7 @@ void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o) {de
 QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlYoYInflationIndex* yii, int observationInterpolation, QlYieldTermStructure* nominalTermStructure, int pillar, int customPillarDate, char **e) {
   try {return ret(new QlYearOnYearInflationSwapHelper(alloc(new YearOnYearInflationSwapHelper(Handle<Quote>(*arg(quote)), Period(n, (TimeUnit)u), Date(maturity),
           *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(yii),
-          observationInterpolation == 0 ? CPI::Flat : CPI::Linear, Handle<YieldTermStructure>(*arg(nominalTermStructure)), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+          observationInterpolation == 0 ? CPI::Flat : CPI::Linear, *arg(nominalTermStructure), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwapHelper*>(e, er);}}
 
 QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
@@ -544,7 +544,7 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int
     return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
 	    Period(l, (TimeUnit)u), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv, *arg(dc), *arg(i),
             s ? Handle<Quote>(*arg(s)) : Handle<Quote>(),
-            Period(fl, (TimeUnit)fu), ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>(),
+            Period(fl, (TimeUnit)fu), qlNullableHandle(arg(ts)),
             settlementDays, (Pillar::Choice)pillar, qlNullableDate(customPillarDate), endOfMonth,
             qlOptBool(useIndexedCoupons),
             qlOptBusinessDayConvention(floatConvention),
@@ -665,11 +665,11 @@ QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuot
   } catch (std::exception& er) {return handleException<QlSwapRateHelper*>(e, er);}}
 
 QlYieldTermStructure* qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ForwardSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)))))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ForwardSpreadedTermStructure(*arg(x0), Handle<Quote>(*arg(spread)))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq)))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ZeroSpreadedTermStructure(*arg(x0), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int tl, int tu, unsigned settlementDays, Calendar* calendar, int bl, int bu, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e) {
@@ -705,41 +705,40 @@ QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e) {try {return 
 int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {try {return (*arg(o))->referenceDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlTermStructureMaxDate(QlTermStructure* o, char **e) {try {return (*arg(o))->maxDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ImpliedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Date(referenceDate))))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ImpliedTermStructure(*arg(x0), Date(referenceDate))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq)))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new PiecewiseZeroSpreadedTermStructure(*arg(x0), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(Handle<YieldTermStructure>(*arg(underlyingDividendTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(foreignRiskFreeTS)), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation)))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e) {try {(*arg(i))->addFixing(Date(date), fix, overwrite);} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
-typedef Handle<YieldTermStructure> YieldTermStructureHandle;
-typedef SwapIndex *(*makeSwapIndex)(const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2);
+typedef SwapIndex *(*makeSwapIndex)(const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2);
 // must match with the order of qlEnumObjects.h:LiborSwapIndexType
 static const makeSwapIndex swapIndices[] = {
-    [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixA(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixB(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EuriborSwapIfrFix(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixA(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixB(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new GbpLiborSwapIsdaFix(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixAm(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixPm(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixAm(p, h1, h2));}
-  , [](const Period &p, const YieldTermStructureHandle &h1, const YieldTermStructureHandle &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixPm(p, h1, h2));}
+    [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixA(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixB(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EuriborSwapIfrFix(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixA(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixB(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new GbpLiborSwapIsdaFix(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixAm(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixPm(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixAm(p, h1, h2));}
+  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixPm(p, h1, h2));}
 };
 
 QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
   try {
     if (index < 0 || index >= (int)LENGTH(swapIndices))
       QL_FAIL("Invalid swap index index" << index);
-    YieldTermStructureHandle ts1 = qlNullableHandle(h1);
-    YieldTermStructureHandle ts2 = qlNullableHandle(h2);
+    QlYieldTermStructure ts1 = qlNullableHandle(h1);
+    QlYieldTermStructure ts2 = qlNullableHandle(h2);
     SwapIndex *i = swapIndices[index](Period(l, (TimeUnit)u), ts1, ts2);
     return ret(new QlSwapIndex(alloc(i)));
   } catch (std::exception& er) {return handleException<QlSwapIndex*>(e, er);}}
@@ -761,7 +760,7 @@ QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, int l
   try {return ret(new QlOvernightIndexedSwapIndex(alloc(new OvernightIndexedSwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(overnightIndex), telescopicValueDates, (RateAveraging::Type)averagingMethod))));
   } catch (std::exception& er) {return handleException<QlOvernightIndexedSwapIndex*>(e, er);}}
 QlSwapIndex* qlSwapIndex1(char* familyName, int l, int u, unsigned settlementDays, Currency* currency, Calendar* calendar, int fl, int fu, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e) {
-  try {return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(calendar), Period(fl, (TimeUnit)fu), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex), Handle<YieldTermStructure>(*arg(discountingTermStructure))))));
+  try {return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(calendar), Period(fl, (TimeUnit)fu), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex), *arg(discountingTermStructure)))));
   } catch (std::exception& er) {return handleException<QlSwapIndex*>(e, er);}}
 QlSwapIndex* qlSwapIndex(char* familyName, int l, int u, unsigned settlementDays, Currency* currency, Calendar* calendar, int fl, int fu, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e) {
   try {return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), Period(l, (TimeUnit)u), settlementDays, *arg(currency), *arg(calendar), Period(fl, (TimeUnit)fu), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex)))));
@@ -820,89 +819,88 @@ QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy
             *arg(ccy), *arg(cal), *arg(dayCount), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {return handleException<QlOvernightIndex *>(e, er);}}
 
-typedef Handle<YieldTermStructure> YieldTermStructureHandle;
-typedef IborIndex *(*makeIborIndex)(int l, int u, const YieldTermStructureHandle& ts);
+typedef IborIndex *(*makeIborIndex)(int l, int u, const QlYieldTermStructure& ts);
 // must match the order of qlEnumObjects.h:IborIndexType (Standard block), then
 // IborDailyTenorIndexType (DailyTenor block), then IborONIndexType (Overnight block) --
 // see deriveIborConstructor in QuantLib/Internal/Syntax.hs for how the three Haskell-side
 // enums are stitched back into a single flat offset into this array.
 static const makeIborIndex iborIndices[] = {
     // -- Standard block (IborIndexType) --
-    [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Cdor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new EURLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new AUDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CADLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CHFLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DKKLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new GBPLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new JPYLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Mosprime(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Pribor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Robor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Shibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new THBFIX(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new TRLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new Nibor(Period(l, (TimeUnit)u), ts));}
+    [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Cdor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new EURLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new AUDLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new CADLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new CHFLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DKKLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new GBPLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new JPYLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Mosprime(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Pribor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Robor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Shibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new THBFIX(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new TRLibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts));}
+  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Nibor(Period(l, (TimeUnit)u), ts));}
     // -- DailyTenor block (IborDailyTenorIndexType) --
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts));}
-  , [](int l, int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts));}
+  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts));}
+  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts));}
+  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts));}
+  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts));}
+  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts));}
     // -- Overnight block (IborONIndexType) --
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new CADLiborON(ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new EURLiborON(ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new GBPLiborON(ts));}
-  , [](int  , int  , const YieldTermStructureHandle& ts) {return static_cast<IborIndex *>(new USDLiborON(ts));}
+  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new CADLiborON(ts));}
+  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new EURLiborON(ts));}
+  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new GBPLiborON(ts));}
+  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new USDLiborON(ts));}
 };
 
 QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {
   try {
     if (index < 0 || index >= (int)LENGTH(iborIndices))
       QL_FAIL("Invalid IBOR index index: " << index);
-    YieldTermStructureHandle ts = qlNullableHandle(fwd);
+    QlYieldTermStructure ts = qlNullableHandle(fwd);
     IborIndex *i = iborIndices[index](l, u, ts);
     return ret(new QlIborIndex(alloc(i)));
   } catch (std::exception& er) {return handleException<QlIborIndex *>(e, er);}}
 
-typedef OvernightIndex *(*makeONIndex)(const YieldTermStructureHandle &ts);
+typedef OvernightIndex *(*makeONIndex)(const QlYieldTermStructure &ts);
 // should match the order of qlEnumObjects.h:OvernightIborIndexType
 static const makeONIndex onIndices[] = {
-    [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Aonia(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Eonia(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Estr(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new FedFunds(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Nzocr(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Sofr(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Sonia(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Cdi(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Corra(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Kofr(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Destr(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Swestr(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Shir(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Tonar(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Saron(ts));}
-  , [](const YieldTermStructureHandle &ts){return static_cast<OvernightIndex *>(new Zaronia(ts));}
+    [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Aonia(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Eonia(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Estr(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new FedFunds(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Nzocr(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Sofr(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Sonia(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Cdi(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Corra(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Kofr(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Destr(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Swestr(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Shir(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Tonar(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Saron(ts));}
+  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Zaronia(ts));}
 };
 
 QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e) {
   try {
     if (index < 0 || index >= (int)LENGTH(onIndices))
       QL_FAIL("Invalid O/N index index" << index);
-    YieldTermStructureHandle ts = qlNullableHandle(fwd);
+    QlYieldTermStructure ts = qlNullableHandle(fwd);
     OvernightIndex *i = onIndices[index](ts);
     return ret(new QlOvernightIndex(alloc(i)));
   } catch (std::exception& er) {return handleException<QlOvernightIndex *>(e, er);}}

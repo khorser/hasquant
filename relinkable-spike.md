@@ -240,6 +240,43 @@ template <class T> const T& curveRef(Handle<T> *p) {return ***arg(p);}
 Keep these in the real implementation. They make every deliberate deref greppable, which is the
 only defence caveat 1 has.
 
+### F8. `Handle<YieldTermStructure>` now appears exactly once in `cbits/` — as an invariant
+
+F6 established that all 76 explicit constructions were *harmless* (copy constructors). Leaving
+them was still wrong, and this is the point the audit missed on the first pass:
+
+`Handle<YieldTermStructure>(…)` is **the** spelling that creates a fresh, detached Link when its
+argument is a `shared_ptr`. Keeping 76 instances of that spelling around — all benign — normalises
+it. A future one that *is* a detachment would blend into the crowd, and caveat 1 says nothing else
+can catch it: not the compiler, not a green build, not the test suite, not a crash.
+
+So all of them were removed:
+
+- 74 × `Handle<YieldTermStructure>(*arg(x))` → `*arg(x)`. The argument already *is* the handle;
+  passing it through binds `const Handle&` directly instead of copy-constructing a temporary.
+- 1 × `x ? Handle<YieldTermStructure>(*arg(x)) : Handle<YieldTermStructure>()` →
+  `qlNullableHandle(arg(x))`, the one shared null-handling helper.
+- 2 local `typedef Handle<YieldTermStructure> YieldTermStructureHandle;` in
+  `qlTermStructure.cpp` (naming parameter types in the swap-index and ibor-index function-pointer
+  tables) deleted, their 84 uses renamed to `QlYieldTermStructure`. A separate name now implies a
+  distinction that no longer exists.
+
+**The invariant, which is what makes this worth doing:**
+
+```
+grep -rn 'Handle<YieldTermStructure>' cbits/    # must return exactly one line:
+cbits/qlaux.h:555:typedef Handle<YieldTermStructure> QlYieldTermStructure;
+```
+
+Any second hit is either a fresh Link (a caveat-1 detachment bug) or a redundant alias. This
+turns caveat 1 from "audit 76 sites by hand" into "one grep", and belongs in CLAUDE.md.
+
+Net effect on the diff: −2 lines. Verified after the change: `make` clean, 104 examples /
+0 failures, liveness checks byte-identical (`0.9048374180359595`, `48911.41160693682`), growth
+loop still flat (20.12 MB at N=200, 20.10 MB at N=20,000).
+
+Credit where due: this was the user's catch, not the audit's.
+
 ### Baseline (step 0)
 
 `d96a113`, `hasquant_test --skip LONG`, 101 examples / 0 failures, 3× on the same machine:
@@ -370,6 +407,9 @@ Summary of the six plan concerns:
 
 - **Keep the spike's C++ diff** — it is the real thing, not a throwaway. `a94ed4d`.
 - **Keep `curvePtr`/`curveRef`** (F7) — greppable derefs are caveat 1's only defence.
+- **Add the F8 invariant to CLAUDE.md** as a standing constraint: `Handle<YieldTermStructure>`
+  must appear exactly once in `cbits/`, in the `qlaux.h` typedef. Anything else is a fresh Link.
+  This is the cheapest possible check for caveat 1 and the only one that scales.
 - **Promote `smoke/CheckHandleGC.hs`'s liveness checks** into the test suite alongside the relink
   checks once the flag is dropped, per the plan's "Porting the relink checks". Keep the growth
   loop in `smoke/` — it takes an argument and is not a pass/fail assertion.
