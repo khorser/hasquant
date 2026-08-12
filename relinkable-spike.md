@@ -6,7 +6,7 @@ findings go in as they land, so an interrupted session can resume without re-der
 
 Started 2026-08-12 on `relinkable-handles-2` @ `d96a113`.
 
-**Verdict so far: not yet reached.** See "Results" at the bottom.
+**Verdict: PASSED — the prerequisite is met.** See "Results" and "Verdict" at the bottom.
 
 ---
 
@@ -69,7 +69,7 @@ wrote `Handle<YTS>(...)`. This is the structural fact that makes caveat 1 tracta
 Each step gates the next. **If any fails, stop** — the H-sibling design on `relinkable-handles`
 is a working fallback without exposures 1, 2 or 4 on the default path.
 
-### Step 0 — Baseline, measured BEFORE any edit ⬅ current
+### Step 0 — Baseline, measured BEFORE any edit
 
 Baseline on `d96a113`, **not** on `ai`: `relinkable-handles-2` carries the Multicurve example,
 so `ai` is not apples-to-apples.
@@ -264,12 +264,14 @@ So all of them were removed:
 **The invariant, which is what makes this worth doing:**
 
 ```
-grep -rn 'Handle<YieldTermStructure>' cbits/    # must return exactly one line:
-cbits/qlaux.h:555:typedef Handle<YieldTermStructure> QlYieldTermStructure;
+grep -rn 'Handle<YieldTermStructure>(' cbits/   # must return nothing at all
 ```
 
-Any second hit is either a fresh Link (a caveat-1 detachment bug) or a redundant alias. This
-turns caveat 1 from "audit 76 sites by hand" into "one grep", and belongs in CLAUDE.md.
+Note the trailing `(`: that is what marks a *construction*. The bare name legitimately appears
+in the `qlaux.h` typedefs (`QlYieldTermStructure` and, once relinkable handles landed,
+`QlRelinkableYieldTermStructure`) and in comments. Any hit with the paren is either a fresh Link
+— a caveat-1 detachment bug — or a redundant rewrap. This turns caveat 1 from "audit 76 sites by
+hand" into one grep, and is now a standing constraint in CLAUDE.md.
 
 Net effect on the diff: −2 lines. Verified after the change: `make` clean, 104 examples /
 0 failures, liveness checks byte-identical (`0.9048374180359595`, `48911.41160693682`), growth

@@ -19,6 +19,9 @@ import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.Currency(currency, Ccy(..))
+import QuantLib.Instrument(npv, setPricingEngine)
+import QuantLib.Instrument.Swap(vanillaSwap, SwapType(Payer))
+import QuantLib.PricingEngine(discountingSwapEngine)
 
 import QuantLib.Spec.Helpers(areClose)
 
@@ -124,3 +127,74 @@ spec = do
           spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
+
+    -- Relinking is the one thing a plain curve cannot do: reassign a whole curve under
+    -- objects that are already built, and have everything downstream reprice. Every check
+    -- here is a before/after comparison rather than a value assertion, because the failure
+    -- mode is specific -- a handle whose Link got detached still returns the *correct*
+    -- value for the curve it was detached holding, so it is memory-safe, passes any pinned
+    -- expected value, and never crashes. The entire symptom is an NPV that stops moving.
+    describe "relinkable handles" $ do
+      let flat r = do
+            q <- Quote.simpleQuote r
+            dc <- dayCounter Actual365FixedStandard
+            flatForward (11 `december` 2012) q dc IR.Continuous Annual
+          -- one swap and one engine, built once and never rebuilt; the relinks below all
+          -- act on the already-constructed objects
+          setupSwap = do
+            cal <- Calendar.calendar TARGET
+            settle <- advance cal (11 `december` 2012) (2, Days) Following False
+            fixedDC <- dayCounter Thirty360European
+            floatDC <- dayCounter (Actual360 False)
+            c <- flat 0.02
+            discountH <- relinkableYieldTermStructure (Just c)
+            forecastH <- relinkableYieldTermStructure (Just c)
+            idx <- iborIndex Euribor6M (Just forecastH)
+            fixedSch <- schedule (Just settle) (11 `december` 2017) (1, Years) cal
+              Unadjusted Unadjusted Forward False Nothing Nothing
+            floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
+              ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+            swap <- vanillaSwap Payer 1000000 fixedSch 0.02 fixedDC floatSch idx 0 floatDC
+              Nothing Nothing
+            eng <- discountingSwapEngine discountH Nothing Nothing Nothing
+            setPricingEngine swap eng
+            pure (swap, discountH, forecastH)
+
+      it "a relinkable handle is accepted wherever a curve is" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          -- no sibling function, no wrapper: it upcasts like any hierarchy member
+          (swap, _, _) <- setupSwap
+          v <- npv swap
+          v `shouldSatisfy` (not . isNaN)
+
+      it "relinking the discount curve reprices without rebuilding" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (swap, discountH, _) <- setupSwap
+          before <- npv swap
+          flat 0.05 >>= linkTo discountH
+          after <- npv swap
+          abs (after - before) `shouldSatisfy` (> 1.0)
+
+      it "relinking back restores the original value exactly" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (swap, discountH, _) <- setupSwap
+          before <- npv swap
+          flat 0.05 >>= linkTo discountH
+          flat 0.02 >>= linkTo discountH
+          -- exact, not approximate: relinking to an identical curve must reproduce the
+          -- same arithmetic, and anything else means we are not reaching the same object
+          npv swap `shouldReturn` before
+
+      it "relinking the forecast curve reprices without rebuilding" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          -- the case with no workaround today: an IborIndex is cloned into every floating
+          -- coupon at construction, so without a handle this needs the swap rebuilt
+          (swap, _, forecastH) <- setupSwap
+          before <- npv swap
+          flat 0.05 >>= linkTo forecastH
+          after <- npv swap
+          abs (after - before) `shouldSatisfy` (> 1.0)

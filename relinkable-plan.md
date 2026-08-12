@@ -5,6 +5,21 @@ Status: **plan only, nothing implemented.** Supersedes the H-sibling design curr
 
 ## The one-line change
 
+> **IMPLEMENTED.** See `relinkable-spike.md` for the GC prerequisite and its numbers. The plan
+> below is the record of the design; where it and the code disagree, the code is right. Three
+> deliberate divergences:
+> - **`currentLink` and `empty` are not bound.** Both are trivial getters echoing what the caller
+>   already has (the construction argument, or the curve just handed to `linkTo`), and
+>   `currentLink` additionally returns a fresh Handle with its own Link, so it silently stops
+>   tracking relinks while looking identical to the handle at the call site. **Caveat 3 no longer
+>   applies** — the footgun was removed rather than documented.
+> - **There was no flag to drop.** `relinkableHandles` only ever existed on `relinkable-handles`;
+>   this branch is off `ai`, which never had it. The "drop the flag" section is a no-op, and its
+>   real content — relink checks living in the test suite rather than only in `smoke/` — is done.
+> - **`qlaux.h` gained `curvePtr`/`curveRef` and an F8 invariant** not in the original worklist.
+>   See `relinkable-spike.md` F7/F8.
+
+
 ```c
 // cbits/qlaux.h:553
 typedef shared_ptr<YieldTermStructure> QlYieldTermStructure;   // before
@@ -481,7 +496,8 @@ The same reasoning applies to every other market-data type the shim currently pa
    the one with the most user-visible payoff. Note `SimpleQuote.setValue` already provides a
    mutation path for the common bump case, so the *marginal* gain is narrower than for curves —
    it buys swapping in a different quote object, not a different value.
-2. **`BlackVolTermStructure`** and **`SwaptionVolatilityStructure`** — the volatility surfaces,
+2. **`BlackVolTermStructure`, **`SwaptionVolatilityStructure`**,
+   **`OptionletVolatilityStructure`**, **`SmileSection`** — the volatility surfaces,
    for the same reason curves needed it: they are baked into pricing engines at construction, so
    today a vol scenario means rebuilding every engine.
 
