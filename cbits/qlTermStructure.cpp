@@ -999,10 +999,10 @@ static const makeRegion regions[] = {
 Region *qlRegion(int r, char **e) {
   try {
     if (r < 0 || r >= (int)LENGTH(regions)) QL_FAIL("Invalid region index " << r);
-    return regions[r]();
+    return alloc(regions[r]());
   } catch (std::exception& er) {return handleException<Region*>(e, er);}}
 Region *qlCreateRegion(char* name, char* code, char **e) {
-  try {return alloc(new CustomRegion(arg(name), arg(code)));
+  try {return alloc(static_cast<Region*>(new CustomRegion(arg(name), arg(code))));
   } catch (std::exception& er) {return handleException<Region*>(e, er);}}
 void qlFreeRegion(Region *o) {del(o);}
 const char *qlRegionName(Region *o) {return DUP(arg(o)->name().c_str());}

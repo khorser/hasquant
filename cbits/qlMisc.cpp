@@ -504,21 +504,31 @@ int qlCalendarIsWeekend(Calendar* o, int w, char **e) {try {return arg(o)->isWee
 void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e) {try {arg(o)->removeHoliday(Date(x0));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
-  BespokeCalendar *cal = 0;
-  try {cal = new BespokeCalendar(std::string(name));
+  try {
+    // BespokeCalendar keeps its own extra shared_ptr member (bespokeImpl_,
+    // aliased to the same control block as the inherited impl_) alongside
+    // Calendar's. qlFreeCalendar deletes through a bare Calendar*, and
+    // Calendar has no virtual destructor -- deleting a *BespokeCalendar
+    // through Calendar* would only run ~Calendar(), leaking bespokeImpl_'s
+    // refcount share and the Impl object with it. So finish building it here
+    // as a BespokeCalendar (needs addWeekend, only on that type), then heap-
+    // allocate a plain Calendar sliced from it: same underlying Impl control
+    // block (Calendar's copy ctor just copies impl_), but now the object
+    // qlFreeCalendar deletes really is a Calendar, so slicing never happens.
+    BespokeCalendar cal{std::string(name)};
     for (unsigned i = 0; i < len; i++)
-      cal->addWeekend((Weekday)weekends[i]);
-    return ret(cal);
-  } catch (std::exception& er) {return handleException(e, er, cal);}}
+      cal.addWeekend((Weekday)weekends[i]);
+    return ret(new Calendar(cal));
+  } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 
 Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e) {
-  try {return alloc(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), *arg(x2), (JointCalendarRule)x3));
+  try {return alloc(static_cast<Calendar*>(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), *arg(x2), (JointCalendarRule)x3)));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e) {
-  try {return alloc(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), (JointCalendarRule)x2));
+  try {return alloc(static_cast<Calendar*>(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), (JointCalendarRule)x2)));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
-  try {return alloc(new JointCalendar(*arg(x_1), *arg(x0), (JointCalendarRule)x1));
+  try {return alloc(static_cast<Calendar*>(new JointCalendar(*arg(x_1), *arg(x0), (JointCalendarRule)x1)));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, int **days, char **e) {
   try {const std::vector<Date> dates = arg(calendar)->holidayList(Date(from), Date(to), includeWeekEnds);
@@ -592,9 +602,9 @@ DayCounter *qlDayCounter(int type, int convention, char **e) {
     return alloc(dayCounters[type](convention));
   } catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 
-DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {try {return alloc(new Business252(*arg(cal)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e) {try {return alloc(new ActualActual(ActualActual::Bond, *arg(schedule)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e) {try {return alloc(new ActualActual(ActualActual::ISMA, *arg(schedule)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {try {return alloc(static_cast<DayCounter *>(new Business252(*arg(cal))));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e) {try {return alloc(static_cast<DayCounter *>(new ActualActual(ActualActual::Bond, *arg(schedule))));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e) {try {return alloc(static_cast<DayCounter *>(new ActualActual(ActualActual::ISMA, *arg(schedule))));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 void qlFreeCalendar(Calendar *calendar) {del(calendar);}
 void qlFreeSchedule(Schedule *s) {del(s);}
 void  qlFreeDayCounter(DayCounter *counter) {del(counter);}

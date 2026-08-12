@@ -746,7 +746,12 @@ QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticP
   try {return ret(new QlStochasticProcessArray(alloc(new StochasticProcessArray(qlVector(x0, x0Len), qlMatrix(correlation, correlationRows, correlationCols)))));
   } catch (std::exception& er) {return handleException<QlStochasticProcessArray*>(e, er);}}
 
-void qlFreePathGenerator(PolymorphicPathGenerator *gen) {qlFreePolymorphicPathGeneratorAux(gen);}
+// qlFreePolymorphicPathGeneratorAux does the actual `delete` (PolymorphicPathGenerator
+// is only forward-declared here, so del()'s own `delete` can't run in this translation
+// unit) -- trace around it by hand so freed generators don't look permanently live.
+void qlFreePathGenerator(PolymorphicPathGenerator *gen) {
+  TP("deleting", gen); qlFreePolymorphicPathGeneratorAux(gen); TP2("deleted", gen);
+}
 PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
   try {return ret(qlPathGeneratorAux(rngtrait, *arg(p), *arg(t), seed, dim, brownianBridge));
   } catch (std::exception& er) {return handleException<PolymorphicPathGenerator*>(e, er);}}
