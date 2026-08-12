@@ -65,6 +65,9 @@ Build example and tests: `cabal configure -f buildExample --enable-tests --disab
 The repo contains docker compose files for a custom Linux x86_64 image. You can use it like this:
 `docker compose run --rm -it hasquant sh -c 'stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example && stack test'`
 
+The config mounts `/root/.stack`, `/root/.ghcup` and `/hasquant/.stack-work` as named volumes so
+everything installed with stack/ghcup will persist.
+
 # On Types
 
 I deliberately avoided typeclasses, as the code quickly becomes polluted by typeclass constraints.
