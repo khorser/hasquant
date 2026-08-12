@@ -143,6 +143,7 @@ executable hasquant_example
       QuantLib.Example.FxForward
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
+      QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.ShortRateModels
@@ -185,6 +186,7 @@ test-suite hasquant_test
       QuantLib.Example.FxForward
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
+      QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.ShortRateModels

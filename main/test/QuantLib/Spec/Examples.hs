@@ -26,6 +26,7 @@ import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
 import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.CVAIRS as CVAIRSExample
+import qualified QuantLib.Example.MulticurveBootstrapping as MulticurveExample
 import qualified QuantLib.Example.TARF as TARFExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 
@@ -131,6 +132,36 @@ spec = do
         fwds2  `shouldSatisfy` listClose SwapExample.spotNpvR fwdNpvs2 1.0e-5
         fwds2  `shouldSatisfy` listClose SwapExample.spotFairSpreadR fwdFairSpreads2 1.0e-5
         fwds2  `shouldSatisfy` listClose SwapExample.spotFairRateR fwdFairRates2 1.0e-5
+
+    describe "Multicurve bootstrapping example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' MulticurveExample.run
+        let spot = MulticurveExample.spot5Y r
+            fwd  = MulticurveExample.forward1Y5Y r
+            single = MulticurveExample.singleCurveSpot5Y r
+        -- The strongest check is upstream's own: the 5-year swap must reprice to the
+        -- 5-year market quote it was bootstrapped from. MulticurveBootstrapping.cpp
+        -- asserts |fairRate - 0.007620| < 1e-8; this reproduces it at ~4e-13, which is
+        -- what says the dual-curve wiring is right rather than merely self-consistent.
+        MulticurveExample.swapFairRate spot `shouldSatisfy` closePrec 0.007620 1.0e-8
+        -- Recorded from a run of this code, not from upstream's printed output: the
+        -- bootstrap accuracy argument (upstream 1e-15) is unbound, so this runs at
+        -- IterativeBootstrap's 1e-12 default. Relative, per CLAUDE.md -- these come
+        -- off two chained bootstraps, the class of value that diverges ~1e-4 between
+        -- aarch64/macOS and the x86_64 lts-18.8 container.
+        [spot, fwd] `shouldSatisfy` listCloseRel MulticurveExample.swapNpv
+          [3076.0295302421655, 19202.494662657475] 1.0e-4
+        [spot, fwd] `shouldSatisfy` listCloseRel MulticurveExample.swapFairSpread
+          [-6.10357516462014e-4, -3.8369629490121655e-3] 1.0e-4
+        MulticurveExample.swapFairRate fwd `shouldSatisfy`
+          closePrec 1.0900976309553284e-2 1.0e-6
+        -- Negative control: with no discounting curve on the Euribor helpers the
+        -- forecast curve is bootstrapped single-curve, and the 5-year swap no longer
+        -- reprices to its own market quote. Without this, every number above would be
+        -- equally satisfied by an implementation that ignored the EONIA curve.
+        MulticurveExample.swapFairRate single `shouldSatisfy`
+          closePrec 7.633944410226181e-3 1.0e-6
+        abs (MulticurveExample.swapFairRate single - 0.007620) `shouldSatisfy` (> 1.0e-5)
 
     describe "Repo example" $
       it "check values" $ do
