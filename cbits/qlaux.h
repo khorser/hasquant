@@ -548,7 +548,11 @@ class PolymorphicPathGenerator;
 // Alternatively we could clone passed quotes/helpers and put them into
 // the containers each time we call QuantLib
 typedef shared_ptr<Quote> QlQuote;
-typedef shared_ptr<YieldTermStructure> QlYieldTermStructure;
+// A curve is a Handle, not a bare shared_ptr, so that a RelinkableHandle can be passed
+// wherever a curve is expected: copies of a Handle share one Link, which is what makes a
+// linkTo() propagate to everything already built on it. Handle constructs implicitly from
+// nothing (the ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed.
+typedef Handle<YieldTermStructure> QlYieldTermStructure;
 typedef shared_ptr<PricingEngine> QlPricingEngine;
 typedef shared_ptr<IborIndex> QlIborIndex;
 typedef shared_ptr<Index> QlIndex;
@@ -1106,6 +1110,18 @@ int qlOptBool(optional<bool> b);
 optional<BusinessDayConvention> qlOptBusinessDayConvention(int c);
 
 template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}
+// Handle form: pass the caller's Handle straight through, so a relinkable handle keeps its
+// Link (rewrapping it via Handle<T>(shared_ptr) would make a fresh one and silently detach
+// relinking). Null means an empty handle, as with the shared_ptr form above.
+template <class T> Handle<T> qlNullableHandle(Handle<T> *p) {return p ? *(arg(p)) : Handle<T>();}
+
+// Accessors for the QuantLib free functions (BondFunctions::, CashFlows::) that want the
+// pointee rather than the handle. Named rather than spelled with stars because *arg(h),
+// **arg(h) and ***arg(h) are all well-formed here and differ by a single character inside
+// very long argument lists -- and picking the wrong one is the failure mode this whole design
+// has to guard against. Both throw on an empty handle, per Handle::operator*.
+template <class T> const shared_ptr<T>& curvePtr(Handle<T> *p) {return **arg(p);}
+template <class T> const T& curveRef(Handle<T> *p) {return ***arg(p);}
 
 template <class T>
 inline std::vector<T> qlVector(T **vals, size_t len) {

@@ -497,7 +497,7 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHe
   try {
     ts = qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
-    return ret(new QlYieldTermStructure(alloc(ts)));
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 
 typedef YieldTermStructure *(*curveBuilder)( const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
@@ -508,7 +508,7 @@ QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder, unsigned rateLen
   try {
     YieldTermStructure *ts = builder(qlDateVector(rateDates, rateDatesLen), std::vector<double>(rates, rates+rateLen), *arg(dayCount), *arg(cal),
         qlHandleVector(quotes, quoteLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg);
-    return ret(new QlYieldTermStructure(alloc(ts)));
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen, double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
   unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
@@ -531,7 +531,7 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsi
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(alloc(ts)));
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e) {
   try {return (*ts)->discount(Date(date), extrapolate);
@@ -551,10 +551,10 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int
             couponPricer ? *arg(couponPricer) : ext::shared_ptr<FloatingRateCouponPricer>())));
   } catch (std::exception& er) {return handleException<QlSwapRateHelper *>(e, er);}}
 QlYieldTermStructure* qlFlatForward(int referenceDate, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
-try {return ret(new QlYieldTermStructure(alloc(new FlatForward(Date(referenceDate), Handle<Quote>(*arg(forward)), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency))));
+try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(Date(referenceDate), Handle<Quote>(*arg(forward)), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlFlatForward1(unsigned settlementDays, Calendar* calendar, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
-try {return ret(new QlYieldTermStructure(alloc(new FlatForward(settlementDays, *arg(calendar), Handle<Quote>(*arg(forward)), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency))));
+try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(settlementDays, *arg(calendar), Handle<Quote>(*arg(forward)), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o) {del(o);}
@@ -624,7 +624,7 @@ QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) {return ret(new 
 void qlFreeOISRateHelper(QlOISRateHelper *o) {del(o);}
 QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o) {return ret(new QlRateHelper(*arg(o)));}
 void qlFreeTermStructure(QlTermStructure *o) {del(o);}
-QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(curvePtr(arg(o))));}
 
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, int priceType, char **e) {
   try {return ret(new QlBondHelper(alloc(new BondHelper(Handle<Quote>(*arg(cleanPrice)), *arg(bond), (Bond::Price::Type)priceType))));
@@ -665,11 +665,11 @@ QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuot
   } catch (std::exception& er) {return handleException<QlSwapRateHelper*>(e, er);}}
 
 QlYieldTermStructure* qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new ForwardSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread))))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ForwardSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new ZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int tl, int tu, unsigned settlementDays, Calendar* calendar, int bl, int bu, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e) {
@@ -705,14 +705,14 @@ QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e) {try {return 
 int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {try {return (*arg(o))->referenceDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlTermStructureMaxDate(QlTermStructure* o, char **e) {try {return (*arg(o))->maxDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new ImpliedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Date(referenceDate)))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ImpliedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Date(referenceDate))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
-  try {return ret(new QlYieldTermStructure(alloc(new QuantoTermStructure(Handle<YieldTermStructure>(*arg(underlyingDividendTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(foreignRiskFreeTS)), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(Handle<YieldTermStructure>(*arg(underlyingDividendTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(foreignRiskFreeTS)), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e) {try {(*arg(i))->addFixing(Date(date), fix, overwrite);} catch (std::exception& er) {(void)handleException<void *>(e, er);}}

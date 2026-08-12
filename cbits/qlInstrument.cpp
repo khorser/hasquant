@@ -203,7 +203,7 @@ QlCapFloor* qlFloor(Leg* floatingLeg, unsigned exerciseRatesLen, double* exercis
   try {return ret(new QlCapFloor(alloc(new Floor(*arg(floatingLeg), std::vector<double>(exerciseRates, exerciseRates+exerciseRatesLen)))));
   } catch (std::exception& er) {return handleException<QlCapFloor*>(e, er);}}
 double qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e) {
-  try {return (*arg(o))->atmRate(**arg(discountCurve));
+  try {return (*arg(o))->atmRate(curveRef(arg(discountCurve)));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, char **e) {
   try {return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(disc)), guess, accuracy, maxEvaluations, minVol, maxVol, (VolatilityType)type, displacement);
@@ -661,7 +661,7 @@ double qlBondFunctionsAccruedPeriod(QlBond* bond, int settlementDate, char **e) 
   try {return BondFunctions::accruedPeriod(**arg(bond), Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double price, int priceType, char **e) {
-  try {return BondFunctions::atmRate(**arg(bond), **arg(discountCurve), Date(settlementDate), Bond::Price(price, (Bond::Price::Type)priceType));
+  try {return BondFunctions::atmRate(**arg(bond), curveRef(arg(discountCurve)), Date(settlementDate), Bond::Price(price, (Bond::Price::Type)priceType));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsBasisPointValue1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
   try {return BondFunctions::basisPointValue(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
@@ -676,13 +676,13 @@ double qlBondFunctionsBps2(QlBond* bond, double yield, DayCounter* dayCounter, i
   try {return BondFunctions::bps(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsBps(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e) {
-  try {return BondFunctions::bps(**arg(bond), **arg(discountCurve), Date(settlementDate));
+  try {return BondFunctions::bps(**arg(bond), curveRef(arg(discountCurve)), Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsCleanPrice2(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e) {
-  try {return BondFunctions::cleanPrice(**arg(bond), **arg(discountCurve), Date(settlementDate));
+  try {return BondFunctions::cleanPrice(**arg(bond), curveRef(arg(discountCurve)), Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsCleanPrice3(QlBond* bond, QlYieldTermStructure* discount, double zSpread, int compounding, int frequency, int settlementDate, char **e) {
-  try {return BondFunctions::cleanPrice(**arg(bond), *arg(discount), zSpread, (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
+  try {return BondFunctions::cleanPrice(**arg(bond), curvePtr(arg(discount)), zSpread, (Compounding)compounding, (Frequency)frequency, Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsCleanPrice4(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
   try {return BondFunctions::cleanPrice(**arg(bond), *arg(yield), Date(settlementDate));
@@ -721,7 +721,7 @@ double qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, in
   try {return BondFunctions::yieldValueBasisPoint(**arg(bond), *arg(yield), Date(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondFunctionsZSpread(QlBond* bond, double price, int priceType, QlYieldTermStructure* x2, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
-  try {return BondFunctions::zSpread(**arg(bond), Bond::Price(price, (Bond::Price::Type)priceType), *arg(x2), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
+  try {return BondFunctions::zSpread(**arg(bond), Bond::Price(price, (Bond::Price::Type)priceType), curvePtr(arg(x2)), (Compounding)compounding, (Frequency)frequency, Date(settlementDate), accuracy, maxIterations, guess);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlBondCleanPrice(QlBond* o, char **e) {try {return (*arg(o))->cleanPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -813,7 +813,7 @@ double qlCashFlowsAccruedPeriod(Leg* leg, int includeSettlementDateFlows, int se
   try {return CashFlows::accruedPeriod(*arg(leg), includeSettlementDateFlows, qlNullableDate(settlementDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsAtmRate(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double npv, char **e) {
-  try {return CashFlows::atmRate(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), npv);
+  try {return CashFlows::atmRate(*arg(leg), curveRef(arg(discountCurve)), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), npv);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsBasisPointValue1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return CashFlows::basisPointValue(*arg(leg), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
@@ -828,7 +828,7 @@ double qlCashFlowsBps2(Leg* leg, double yield, DayCounter* dayCounter, int compo
   try {return CashFlows::bps(*arg(leg), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsBps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
-  try {return CashFlows::bps(*arg(leg), *(*arg(discountCurve)), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
+  try {return CashFlows::bps(*arg(leg), curveRef(arg(discountCurve)), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsConvexity1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return CashFlows::convexity(*arg(leg), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
@@ -864,14 +864,14 @@ double qlCashFlowsNpv2(Leg* leg, double yield, DayCounter* dayCounter, int compo
   try {return CashFlows::npv(*arg(leg), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsNpv3(Leg* leg, QlYieldTermStructure* discount, double zSpread, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
-  try {return CashFlows::npv(*arg(leg), *arg(discount), zSpread, (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
+  try {return CashFlows::npv(*arg(leg), curvePtr(arg(discount)), zSpread, (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsNpv(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
-  try {return CashFlows::npv(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
+  try {return CashFlows::npv(*arg(leg), curveRef(arg(discountCurve)), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlCashFlowsNpvbps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double *npv, double *bps, char **e) {
   try {
-    auto r = CashFlows::npvbps(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, Date(settlementDate), Date(npvDate));
+    auto r = CashFlows::npvbps(*arg(leg), curveRef(arg(discountCurve)), includeSettlementDateFlows, Date(settlementDate), Date(npvDate));
     *npv = r.first; *bps = r.second;
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 double qlCashFlowsPreviousCashFlowAmount(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e) {
@@ -899,7 +899,7 @@ double qlCashFlowsYieldValueBasisPoint(Leg* leg, InterestRate* yield, int includ
   try {return CashFlows::yieldValueBasisPoint(*arg(leg), *arg(yield), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCashFlowsZSpread(Leg* leg, double npv, QlYieldTermStructure* x2, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e) {
-  try {return CashFlows::zSpread(*arg(leg), npv, *arg(x2), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), accuracy, maxIterations, guess);
+  try {return CashFlows::zSpread(*arg(leg), npv, curvePtr(arg(x2)), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), accuracy, maxIterations, guess);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e) {try {return setCouponPricer(*arg(leg), *arg(x1));} catch (std::exception& er) {(void)handleException<int>(e, er);} }
 void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e) {try {return setCouponPricers(*arg(leg), qlVector(x1, x1Len));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
