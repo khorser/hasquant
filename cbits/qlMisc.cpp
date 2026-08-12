@@ -19,14 +19,25 @@
 #include <ql/time/daycounters/all.hpp>
 
 #ifdef QLTRACK_ALLOCATIONS
-# include <sstream>
+# include <cstdlib>
 #endif
 
 #include "qlaux.h"
 #include "qlMisc.h"
 
 #ifdef QLTRACK_ALLOCATIONS
-std::ofstream ofs(QLTRACK_ALLOCATIONS);
+// Destination is the QLTRACK_ALLOCATIONS env var when set, else the compile-time
+// default the flag bakes in (stderr, spelled differently per platform). Without the
+// env var the only way to send a trace to a file was to recompile with a different
+// -DQLTRACK_ALLOCATIONS, and redirecting stderr also swallows the program's own
+// output -- which matters here because a trace is only useful next to the values it
+// explains. Reading it at static-init is deliberate: ofs must be open before any
+// traced allocation runs.
+static const char *qlTrackDestination() {
+  const char *env = std::getenv("QLTRACK_ALLOCATIONS");
+  return env && *env ? env : QLTRACK_ALLOCATIONS;
+}
+std::ofstream ofs(qlTrackDestination());
 #endif
 using namespace QuantLib;
 
@@ -42,8 +53,7 @@ char *tracedup(const char *p) {
   TP2("Duplicating string", (void *)p);
   char *dup = strdup(p);
 #ifdef QLTRACK_ALLOCATIONS
-  std::ostringstream os; os << (void *)dup;
-  (void)traceval("Duplicate string", (void *)os.str().c_str());
+  (void)traceval("Duplicate string", (void *)dup);
 #endif
   return dup;
 }
@@ -184,13 +194,11 @@ Currency *qlCurrency(int ccy, char **e) {
 
 void qlFreeString(char *p) {
 #ifdef QLTRACK_ALLOCATIONS
-  std::ostringstream os; os << (void *)p;
-  void *ptr = (void *)os.str().c_str();
-  (void)traceval("Freeing string", ptr);
+  (void)traceval("Freeing string", (void *)p);
 #endif
   free(p);
 #ifdef QLTRACK_ALLOCATIONS
-  (void)traceval("Freed string", ptr);
+  (void)traceval("Freed string", (void *)p);
 #endif
 }
 

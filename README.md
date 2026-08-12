@@ -26,8 +26,27 @@ Run tests: `stack build --test --no-haddock`
 
 Build and run examples: `stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example`, also `--flag hasquant:buildExample` is required if you want to use HLS with examples.
 
-Build and run examples enabling tracking of memory allocations (print all created and deleted objects to stderr):
+Build and run examples enabling tracking of memory allocations (log every object as it
+is created and deleted):
 `stack build --no-haddock --flag hasquant:buildExample --flag hasquant:trackAllocations $* && stack exec hasquant_example`
+
+The trace goes to stderr by default. Set the `QLTRACK_ALLOCATIONS` environment variable
+to send it to a file instead, which is usually what you want — redirecting stderr also
+swallows the program's own output, and a trace is only useful next to the values it
+explains:
+
+`QLTRACK_ALLOCATIONS=/tmp/trace.log stack exec hasquant_example`
+
+A raw trace is thousands of interleaved lines. `tools/alloc-summary.py /tmp/trace.log`
+pairs allocations with frees by pointer and reports what is still live, grouped by
+class, listing double frees separately from ordinary leaks; it exits non-zero if
+anything is unaccounted for, so it can gate a check.
+
+**One trap worth knowing:** neither cabal nor stack recompiles `cxx-sources` when only
+a flag changes, so turning `trackAllocations` on for an already-built tree reports
+success and produces a library with no tracing in it — an empty trace and no error.
+Delete the built C++ objects (the `build/cbits` directory) first, and confirm with
+`strings <a built .o> | grep -c allocated` before trusting an empty result.
 
 Run GHCi: `stack ghci --ghci-options $(find .stack-work \( -name "*.so" -o -name "*.dylib" \) -print -quit)`
 
