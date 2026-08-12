@@ -3,6 +3,7 @@ module QuantLib.Quote
      Quote
    , SimpleQuote
    , DeltaVolQuote
+   , RelinkableQuote
    , GenQuote
 
    , asQuote
@@ -24,6 +25,8 @@ module QuantLib.Quote
   , futuresConvAdjustmentQuote
   , impliedStdDevQuote
   , lastFixingQuote
+  , relinkableQuote
+  , linkTo
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Enum
@@ -45,6 +48,7 @@ import QuantLib.Internal.Type
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlSimpleQuote as Quote foreign -> CSimpleQuote' nocode#}
 {#pointer *QlDeltaVolQuote as DeltaVolQuote foreign -> CDeltaVolQuote' nocode#}
+{#pointer *QlRelinkableQuote as RelinkableQuote foreign -> CRelinkableQuote' nocode#}
 
 -- |market element returning a stored value
 {#fun qlSimpleQuote as simpleQuote{`Double',preErrorCheck-`String'errorCheck*-}->`SimpleQuote'peekSimpleQuote*#}
@@ -102,5 +106,24 @@ import QuantLib.Internal.Type
 {#fun qlLastFixingQuote as lastFixingQuote{withIndex*`GenIndex a',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 -- |returns true if the Quote holds a valid value
 {#fun qlQuoteIsValid as isValid{withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
+-- |A quote behind a relinkable handle. The result /is/ a 'Quote': pass it to any quote-taking
+-- function and everything built on it keeps tracking whatever the handle currently points at,
+-- so a later 'linkTo' reprices already-constructed instruments without rebuilding them.
+-- 'Nothing' gives an empty handle -- meaningful rather than an error -- but reading a value
+-- through one throws until it is linked. Mirrors 'QuantLib.TermStructure.Yield.relinkableYieldTermStructure'.
+{#fun qlRelinkableQuote as relinkableQuote{withMaybeQuote*`Maybe (GenQuote a)'
+  ,preErrorCheck-`String'errorCheck*-}->`RelinkableQuote'peekRelinkableQuote*#}
+
+-- |Point a relinkable handle at a different quote. Everything already built on the handle
+-- reprices against the new quote, with no object rebuilt.
+--
+-- This is the one mutator in the module besides 'setValue'. The API rules here otherwise
+-- forbid new setters and prefer constructing a fresh object, but relinking /is/ the capability
+-- being bound -- the same justification as 'QuantLib.TermStructure.Yield.linkTo'. Note the
+-- narrower payoff versus curves: 'SimpleQuote.setValue' already covers the common bump case,
+-- so this buys swapping in a different quote object, not a different value.
+{#fun qlRelinkableQuoteLinkTo as linkTo{withRelinkableQuote*`RelinkableQuote'
+  ,withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

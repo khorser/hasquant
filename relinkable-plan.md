@@ -484,22 +484,37 @@ Recorded so they are not re-derived.
 
 ## Next, after this lands: propagate the approach to quotes and other market data
 
-**Decided, but deliberately last** — not part of this plan's scope, and not to be started until
-the curve work is complete and merged.
+> **Quote: IMPLEMENTED.** `cbits/qlaux.h` now has `typedef Handle<Quote> QlQuote` and
+> `typedef RelinkableHandle<Quote> QlRelinkableQuote`. Mechanics matched this section's
+> prediction exactly: `curvePtr`/`curveRef` were renamed to `handlePtr`/`handleRef` (generic
+> over `T`, needed no other change) as a preparatory commit; the 7 `qlMisc.cpp` return sites
+> needed an explicit `shared_ptr<Quote>(alloc(...))` interposed, same as curves; `qlHandleVector`/
+> `qlHandleMatrix` (the array marshallers curves never needed) took `Handle<T>**` instead of
+> `shared_ptr<T>**` — one line each, and elements copy straight through since they were already
+> `Handle<Quote>*`. `Quote`/`SimpleQuote`/`DeltaVolQuote`/`RelinkableQuote` share one
+> `QuantLib.Quote` module (unlike curves, which have their own `Yield.chs`), so its `linkTo`
+> collides on name with `QuantLib.TermStructure.Yield.linkTo` for any unqualified import of
+> both — fixed with `hiding(linkTo)` at the two import sites that needed it
+> (`QuantLib/TermStructure/Yield.chs`, `smoke/CheckRelinkable.hs`); call sites that already
+> `import qualified QuantLib.Quote as Quote` were unaffected. One accepted F8 exception, same
+> shape as the `FittedBondDiscountCurve` upcast: `qlBlackIborCouponPricer`'s
+> default-correlation branch constructs a brand new `SimpleQuote(1.0)` with nothing to preserve
+> a Link to, so `Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)))` is correct as the one
+> remaining `Handle<Quote>(` construction in `cbits/`. Also fixed in passing: the
+> `qlConstantOptionletVol1` quote argument was dereferenced with a bare `*q` instead of
+> `arg(q)`, silently skipping allocation tracing — now `*arg(q)`, matching every other site.
+> `SmileSection` confirmed **out of scope**: `grep -rn 'Handle<SmileSection>'
+> ~/Src/QuantLib/ql/` returns zero hits, so upstream itself never speaks `Handle<SmileSection>`
+> and converting it would add `*arg()` boilerplate for no relink payoff.
 
 The same reasoning applies to every other market-data type the shim currently passes as a bare
 `shared_ptr` and wraps into a `Handle` at each use. The priority order is:
 
-1. **`Quote`** — `typedef shared_ptr<Quote> QlQuote` (`cbits/qlaux.h:550`). By far the widest
-   surface: `Handle<Quote>(*arg(q))` appears throughout every `.cpp` in `cbits/`. Relinkable
-   quotes are what make a scenario/bump run possible without rebuilding instruments, so this is
-   the one with the most user-visible payoff. Note `SimpleQuote.setValue` already provides a
-   mutation path for the common bump case, so the *marginal* gain is narrower than for curves —
-   it buys swapping in a different quote object, not a different value.
-2. **`BlackVolTermStructure`, **`SwaptionVolatilityStructure`**,
-   **`OptionletVolatilityStructure`**, **`SmileSection`** — the volatility surfaces,
-   for the same reason curves needed it: they are baked into pricing engines at construction, so
-   today a vol scenario means rebuilding every engine.
+1. ~~**`Quote`**~~ — done, see above.
+2. **`BlackVolTermStructure`**, **`SwaptionVolatilityStructure`**,
+   **`OptionletVolatilityStructure`** — the volatility surfaces, for the same reason curves
+   needed it: they are baked into pricing engines at construction, so today a vol scenario
+   means rebuilding every engine. (`SmileSection` dropped from this list — see above.)
 
 Everything established here carries over unchanged, and should be reused rather than re-derived:
 

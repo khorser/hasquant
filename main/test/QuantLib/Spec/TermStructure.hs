@@ -198,3 +198,32 @@ spec = do
           flat 0.05 >>= linkTo forecastH
           after <- npv swap
           abs (after - before) `shouldSatisfy` (> 1.0)
+
+      -- A relinkable quote propagates the same way a relinkable curve does: the curve built
+      -- on top of it (fixed, not itself relinkable) still moves when the quote underneath is
+      -- relinked, because Quote.relinkableQuote/linkTo share one Link exactly like the curve
+      -- case above.
+      it "relinking a quote reprices the curve built on it, without rebuilding" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          q02 <- Quote.simpleQuote 0.02
+          qh <- Quote.relinkableQuote (Just q02)
+          dc <- dayCounter Actual365FixedStandard
+          c <- flatForward (11 `december` 2012) qh dc IR.Continuous Annual
+          before <- discount c 5.0 False
+          Quote.simpleQuote 0.05 >>= Quote.linkTo qh
+          after <- discount c 5.0 False
+          abs (after - before) `shouldSatisfy` (> 0.01)
+
+      it "relinking a quote back restores the original value exactly" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          q02 <- Quote.simpleQuote 0.02
+          qh <- Quote.relinkableQuote (Just q02)
+          dc <- dayCounter Actual365FixedStandard
+          c <- flatForward (11 `december` 2012) qh dc IR.Continuous Annual
+          before <- discount c 5.0 False
+          Quote.simpleQuote 0.05 >>= Quote.linkTo qh
+          Quote.simpleQuote 0.02 >>= Quote.linkTo qh
+          -- exact, not approximate: same reasoning as the curve-relink-back check above
+          discount c 5.0 False `shouldReturn` before

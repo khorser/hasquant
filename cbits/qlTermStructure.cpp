@@ -49,21 +49,24 @@ template <> class ObjClassName<FittedBondDiscountCurveFittingMethod*> {public: s
 template <> class ObjClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
 #endif
 
+// vals elements are already Handle<T>*, since a Quote/vol-structure array is an array of the
+// same Handle-backed pointer type used everywhere else -- copying *arg(vals[i]) into the
+// vector shares its Link like any other Handle copy, so a relinkable element stays tracked.
 template <class T>
-inline std::vector<Handle<T> > qlHandleVector(shared_ptr<T> **vals, size_t len) {
+inline std::vector<Handle<T> > qlHandleVector(Handle<T> **vals, size_t len) {
   std::vector<Handle<T> > r; r.reserve(len);
   for (size_t i = 0; i < len; ++i)
-    r.push_back(Handle<T>(*arg(vals[i])));
+    r.push_back(*arg(vals[i]));
   return r;
 }
 
 template <class T>
-inline std::vector< std::vector<Handle<T> > > qlHandleMatrix(shared_ptr<T> **vals, size_t rows, size_t cols) {
+inline std::vector< std::vector<Handle<T> > > qlHandleMatrix(Handle<T> **vals, size_t rows, size_t cols) {
   std::vector< std::vector<Handle<T> > > r; r.reserve(rows);
   for (size_t i = 0; i < rows; ++i) {
     std::vector<Handle<T> > row; row.reserve(cols);
     for (size_t j = 0; j < cols; ++j)
-      row.push_back(Handle<T>(*vals[i * cols + j]));
+      row.push_back(*arg(vals[i * cols + j]));
     r.push_back(row);
   }
   return r;
@@ -113,7 +116,7 @@ ext::shared_ptr<SabrInterpolatedSmileSection> asSabrInterpolatedSmileSection(con
 
 extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, char **e) {
-  try {return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, Handle<Quote>(*q), *arg(dc), (VolatilityType)type, displacement)));
+  try {return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, *arg(q), *arg(dc), (VolatilityType)type, displacement)));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
 
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}
@@ -127,19 +130,19 @@ QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructur
 void qlFreeSmileSection(QlSmileSection *o) {del(o);}
 
 QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  try {return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(settlementDays, *arg(x1), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlBlackConstantVol(int referenceDate, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  try {return ret(new QlBlackVolTermStructure(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlConstantOptionletVolatility(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double displacement, char **e) {
-  try {return ret(new QlOptionletVolatilityStructure(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), (*arg(dc)), (VolatilityType)type, displacement))));
+  try {return ret(new QlOptionletVolatilityStructure(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, displacement))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlConstantSwaptionVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double shift, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(alloc(new ConstantSwaptionVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), (*arg(dc)), (VolatilityType)type, shift))));
+  try {return ret(new QlSwaptionVolatilityStructure(alloc(new ConstantSwaptionVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlConstantSwaptionVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double shift, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(alloc(new ConstantSwaptionVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), (*arg(dc)), (VolatilityType)type, shift))));
+  try {return ret(new QlSwaptionVolatilityStructure(alloc(new ConstantSwaptionVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 double qlSwaptionVolatilityStructureBlackVariance1(QlSwaptionVolatilityStructure* o, int optionDate, int n, int u, double strike, int extrapolate, char **e) {
   try {return (*arg(o))->blackVariance(Date(optionDate), Period(n, (TimeUnit)u), strike, extrapolate);
@@ -276,13 +279,13 @@ QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calen
               qlPeriodVector(n, u, l), qlHandleVector(vols, volsLen), *arg(dc)))));
   } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
 QlVolatilityTermStructure* qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
-  try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), *arg(dc)))));
+  try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
   } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
 QlVolatilityTermStructure* qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
-  try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), *arg(dc)))));
+  try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
   } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(alloc(new SpreadedSwaptionVolatility(Handle<SwaptionVolatilityStructure>(*arg(x0)), Handle<Quote>(*arg(spread))))));
+  try {return ret(new QlSwaptionVolatilityStructure(alloc(new SpreadedSwaptionVolatility(Handle<SwaptionVolatilityStructure>(*arg(x0)), *arg(spread)))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 
 void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) {del(o);}
@@ -292,16 +295,16 @@ QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLo
 void qlFreeBlackVarianceCurve(QlBlackVarianceCurve *o) {del(o);}
 QlBlackVolTermStructure* qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
 QlLocalVolTermStructure* qlLocalConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlLocalVolTermStructure(alloc(new LocalConstantVol(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  try {return ret(new QlLocalVolTermStructure(alloc(new LocalConstantVol(settlementDays, *arg(x1), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlLocalVolTermStructure* qlLocalConstantVol(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlLocalVolTermStructure(alloc(new LocalConstantVol(Date(referenceDate), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  try {return ret(new QlLocalVolTermStructure(alloc(new LocalConstantVol(Date(referenceDate), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlLocalVolTermStructure* qlLocalVolCurve(QlBlackVarianceCurve* curve, char **e) {
   try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolCurve(Handle<BlackVarianceCurve>(*arg(curve))))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlLocalVolTermStructure* qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, char **e) {
-  try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(Handle<BlackVolTermStructure>(*arg(blackTS)), *arg(riskFreeTS), *arg(dividendTS), Handle<Quote>(*arg(underlying))))));
+  try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(Handle<BlackVolTermStructure>(*arg(blackTS)), *arg(riskFreeTS), *arg(dividendTS), *arg(underlying)))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
   try {return ret(new QlBlackVolTermStructure(alloc(new ImpliedVolTermStructure(Handle<BlackVolTermStructure>(*arg(origTS)), Date(referenceDate)))));
@@ -345,22 +348,22 @@ void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o)
 QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 
 QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  try {return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(settlementDays, *arg(x1), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlCallableBondVolatilityStructure*>(e, er);}}
 QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e) {
-  try {return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(Date(referenceDate), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  try {return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(Date(referenceDate), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlCallableBondVolatilityStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e) {
-  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FactorSpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), Handle<Quote>(*arg(spread))))));
+  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FactorSpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), *arg(spread)))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlFlatHazardRate1(unsigned settlementDays, Calendar* calendar, QlQuote* hazardRate, DayCounter* x3, char **e) {
-  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(settlementDays, *arg(calendar), Handle<Quote>(*arg(hazardRate)), (*arg(x3))))));
+  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(settlementDays, *arg(calendar), *arg(hazardRate), (*arg(x3))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlFlatHazardRate(int referenceDate, QlQuote* hazardRate, DayCounter* x2, char **e) {
-  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(Date(referenceDate), Handle<Quote>(*arg(hazardRate)), (*arg(x2))))));
+  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(Date(referenceDate), *arg(hazardRate), (*arg(x2))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e) {
-  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new SpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), Handle<Quote>(*arg(spread))))));
+  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new SpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), *arg(spread)))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
@@ -378,11 +381,11 @@ QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsign
 void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) {del(o);}
 
 QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, char **e) {
-  try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(Handle<Quote>(*arg(runningSpread)), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
+  try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(*arg(runningSpread), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, char **e) {
-  try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(Handle<Quote>(*arg(upfront)), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
+  try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(*arg(upfront), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
@@ -439,14 +442,14 @@ double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d,
 
 void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}
 QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e) {
-  try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(Handle<Quote>(*arg(quote)), Period(n, (TimeUnit)u), Date(maturity),
+  try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(maturity),
           *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(zii),
           observationInterpolation == 0 ? CPI::Flat : CPI::Linear, (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlZeroCouponInflationSwapHelper*>(e, er);}}
 
 void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o) {del(o);}
 QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlYoYInflationIndex* yii, int observationInterpolation, QlYieldTermStructure* nominalTermStructure, int pillar, int customPillarDate, char **e) {
-  try {return ret(new QlYearOnYearInflationSwapHelper(alloc(new YearOnYearInflationSwapHelper(Handle<Quote>(*arg(quote)), Period(n, (TimeUnit)u), Date(maturity),
+  try {return ret(new QlYearOnYearInflationSwapHelper(alloc(new YearOnYearInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(maturity),
           *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(yii),
           observationInterpolation == 0 ? CPI::Flat : CPI::Linear, *arg(nominalTermStructure), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwapHelper*>(e, er);}}
@@ -475,18 +478,18 @@ QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int
   } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
-  try {return ret(new QlRateHelper(new DepositRateHelper( Handle<Quote>(*arg(quote)), Period(l, (TimeUnit)u), fixDays,
+  try {return ret(new QlRateHelper(new DepositRateHelper( *arg(quote), Period(l, (TimeUnit)u), fixDays,
           *arg(calendar), (BusinessDayConvention) conv, eom, *arg(dayCount))));
   } catch (std::exception& er) {return handleException<QlRateHelper *>(e, er);}}
 QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
     Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e) {
-  try {return ret(new QlBondHelper(new FixedRateBondHelper(Handle<Quote>(*arg(quote)), settlDays, face, *arg(sched),
+  try {return ret(new QlBondHelper(new FixedRateBondHelper(*arg(quote), settlDays, face, *arg(sched),
           std::vector<Rate>(coupons, coupons+cLen), *arg(dayCount), (BusinessDayConvention) conv, redemption, qlNullableDate(issue))));
   } catch (std::exception& er) {return handleException<QlBondHelper *>(e, er);}}
 QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit,
     QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter,
     int paymentConvention, int issueDate, Calendar *paymentCalendar, char **e) {
-  try {return ret(new QlBondHelper(new CPIBondHelper(Handle<Quote>(*arg(quote)), settlementDays, faceAmount, baseCPI, Period(obsLagLen, (TimeUnit)obsLagUnit),
+  try {return ret(new QlBondHelper(new CPIBondHelper(*arg(quote), settlementDays, faceAmount, baseCPI, Period(obsLagLen, (TimeUnit)obsLagUnit),
           *arg(index), (CPI::InterpolationType)observationInterpolation, *arg(schedule), std::vector<Rate>(coupons, coupons+couponsLen),
           *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, qlNullableDate(issueDate), *arg(paymentCalendar))));
   } catch (std::exception& er) {return handleException<QlBondHelper *>(e, er);}}
@@ -541,9 +544,9 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int
   unsigned settlementDays, int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons,
   int floatConvention, QlFloatingRateCouponPricer *couponPricer, char **e) {
   try {
-    return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
+    return ret(new QlSwapRateHelper(new SwapRateHelper(*arg(q),
 	    Period(l, (TimeUnit)u), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv, *arg(dc), *arg(i),
-            s ? Handle<Quote>(*arg(s)) : Handle<Quote>(),
+            qlNullableHandle(arg(s)),
             Period(fl, (TimeUnit)fu), qlNullableHandle(arg(ts)),
             settlementDays, (Pillar::Choice)pillar, qlNullableDate(customPillarDate), endOfMonth,
             qlOptBool(useIndexedCoupons),
@@ -551,10 +554,10 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int
             couponPricer ? *arg(couponPricer) : ext::shared_ptr<FloatingRateCouponPricer>())));
   } catch (std::exception& er) {return handleException<QlSwapRateHelper *>(e, er);}}
 QlYieldTermStructure* qlFlatForward(int referenceDate, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
-try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(Date(referenceDate), Handle<Quote>(*arg(forward)), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
+try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(Date(referenceDate), *arg(forward), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlFlatForward1(unsigned settlementDays, Calendar* calendar, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
-try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(settlementDays, *arg(calendar), Handle<Quote>(*arg(forward)), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
+try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(settlementDays, *arg(calendar), *arg(forward), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o) {del(o);}
@@ -579,7 +582,7 @@ double qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extr
   try {return (*arg(o))->discount(t, extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), monthsToStart, monthsToEnd, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
+  try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), monthsToStart, monthsToEnd, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 // Each shim below binds the sibling overload that omits the leading
 // `optimizationMethod` param, not the primary ctor -- OptimizationMethod's
@@ -643,17 +646,17 @@ void qlFreeTermStructure(QlTermStructure *o) {del(o);}
 QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) {return ret(new QlTermStructure(handlePtr(arg(o))));}
 
 QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, int priceType, char **e) {
-  try {return ret(new QlBondHelper(alloc(new BondHelper(Handle<Quote>(*arg(cleanPrice)), *arg(bond), (Bond::Price::Type)priceType))));
+  try {return ret(new QlBondHelper(alloc(new BondHelper(*arg(cleanPrice), *arg(bond), (Bond::Price::Type)priceType))));
   } catch (std::exception& er) {return handleException<QlBondHelper*>(e, er);}}
 QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve,
   int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
   int fl, int fu, QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
   Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
   QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, char **e) {
-  try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
+  try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), *arg(fixedRate), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
     Period(fl, (TimeUnit)fu),
-    overnightSpread ? std::variant<Spread, Handle<Quote>>(Handle<Quote>(*arg(overnightSpread))) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
+    overnightSpread ? std::variant<Spread, Handle<Quote>>(*arg(overnightSpread)) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
     (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
     fixedPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)fixedPaymentFrequency),
     *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
@@ -664,9 +667,9 @@ QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOver
   QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
   Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
   QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, char **e) {
-    try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
+    try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), *arg(fixedRate), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
-    overnightSpread ? std::variant<Spread, Handle<Quote>>(Handle<Quote>(*arg(overnightSpread))) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
+    overnightSpread ? std::variant<Spread, Handle<Quote>>(*arg(overnightSpread)) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
     (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
     fixedPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)fixedPaymentFrequency),
     *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
@@ -674,43 +677,43 @@ QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOver
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
 QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int fl, int fu, QlYieldTermStructure* discountingCurve,
   int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, QlFloatingRateCouponPricer *couponPricer, char **e) {
-  try {return ret(new QlSwapRateHelper(alloc(new SwapRateHelper(Handle<Quote>(*arg(rate)), *arg(swapIndex), qlNullableHandle(arg(spread)), Period(fl, (TimeUnit)fu), qlNullableHandle(arg(discountingCurve)),
+  try {return ret(new QlSwapRateHelper(alloc(new SwapRateHelper(*arg(rate), *arg(swapIndex), qlNullableHandle(arg(spread)), Period(fl, (TimeUnit)fu), qlNullableHandle(arg(discountingCurve)),
           (Pillar::Choice)pillar, qlNullableDate(customPillarDate), endOfMonth,
           qlOptBool(useIndexedCoupons),
           couponPricer ? *arg(couponPricer) : ext::shared_ptr<FloatingRateCouponPricer>()))));
   } catch (std::exception& er) {return handleException<QlSwapRateHelper*>(e, er);}}
 
 QlYieldTermStructure* qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ForwardSpreadedTermStructure(*arg(x0), Handle<Quote>(*arg(spread)))))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ForwardSpreadedTermStructure(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ZeroSpreadedTermStructure(*arg(x0), Handle<Quote>(*arg(spread)), (Compounding)comp, (Frequency)freq)))));
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ZeroSpreadedTermStructure(*arg(x0), *arg(spread), (Compounding)comp, (Frequency)freq)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int tl, int tu, unsigned settlementDays, Calendar* calendar, int bl, int bu, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e) {
-  try {return ret(new QlRateHelper(alloc(new BMASwapRateHelper(Handle<Quote>(*arg(liborFraction)), Period(tl, (TimeUnit)tu), settlementDays, *arg(calendar), Period(bl, (TimeUnit)bu), (BusinessDayConvention)bmaConvention, *arg(bmaDayCount), *arg(bmaIndex), *arg(index)))));
+  try {return ret(new QlRateHelper(alloc(new BMASwapRateHelper(*arg(liborFraction), Period(tl, (TimeUnit)tu), settlementDays, *arg(calendar), Period(bl, (TimeUnit)bu), (BusinessDayConvention)bmaConvention, *arg(bmaDayCount), *arg(bmaIndex), *arg(index)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, char **e) {
-  try {return ret(new QlRateHelper(alloc(new DepositRateHelper(Handle<Quote>(*arg(rate)), *arg(iborIndex)))));
+  try {return ret(new QlRateHelper(alloc(new DepositRateHelper(*arg(rate), *arg(iborIndex)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), monthsToStart, *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
+  try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), monthsToStart, *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFraRateHelper2(QlQuote* rate, int l, int u, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), Period(l, (TimeUnit)u), lengthInMonths, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
+  try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), Period(l, (TimeUnit)u), lengthInMonths, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFraRateHelper3(QlQuote* rate, int l, int u, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), Period(l, (TimeUnit)u), *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
+  try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), Period(l, (TimeUnit)u), *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(Handle<Quote>(*arg(price)), Date(immStartDate), Date(endDate), *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
+  try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immStartDate), Date(endDate), *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(Handle<Quote>(*arg(price)), Date(immDate), *arg(iborIndex), qlNullableHandle(arg(convexityAdjustment))))));
+  try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immDate), *arg(iborIndex), qlNullableHandle(arg(convexityAdjustment))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e) {
-  try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(Handle<Quote>(*arg(price)), Date(immDate), lengthInMonths, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
+  try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immDate), lengthInMonths, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 double qlRateHelperImpliedQuote(QlRateHelper* o, char **e) {try {return (*arg(o))->impliedQuote();} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlBond* qlBondHelperBond(QlBondHelper* o, char **e) {try {return ret(new QlBond((*arg(o))->bond()));} catch (std::exception& er) {return handleException<QlBond*>(e, er);}}

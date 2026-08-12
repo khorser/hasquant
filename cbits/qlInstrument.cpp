@@ -994,7 +994,7 @@ void qlEquityCashFlowSetPricer(QlEquityCashFlow* o, QlEquityCashFlowPricer* pric
 void qlFreeEquityCashFlowPricer(QlEquityCashFlowPricer *o) {del(o);}
 QlEquityCashFlowPricer* qlEquityQuantoCashFlowPricer(QlYieldTermStructure* quantoCurrencyTermStructure, QlBlackVolTermStructure* equityVolatility, QlBlackVolTermStructure* fxVolatility, QlQuote* correlation, char **e) {
   try {return ret(new QlEquityCashFlowPricer(alloc(new EquityQuantoCashFlowPricer(*arg(quantoCurrencyTermStructure),
-        Handle<BlackVolTermStructure>(*arg(equityVolatility)), Handle<BlackVolTermStructure>(*arg(fxVolatility)), Handle<Quote>(*arg(correlation))))));
+        Handle<BlackVolTermStructure>(*arg(equityVolatility)), Handle<BlackVolTermStructure>(*arg(fxVolatility)), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlEquityCashFlowPricer*>(e, er);}}
 void qlQuantLibSetEquityCashFlowPricer(Leg* leg, QlEquityCashFlowPricer* pricer, char **e) {
   try {setCouponPricer(*arg(leg), *arg(pricer));
@@ -1012,14 +1012,17 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   } catch (std::exception& er) {return handleException(e, er, cl);}}
 
 QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e) {
-  try {Handle<Quote> corr = correlation ? Handle<Quote>(*arg(correlation)) : Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)));
+  // The default-correlation branch constructs a brand new Quote with nothing to preserve a
+  // Link to, so a fresh Link here is correct -- same reasoning as the FittedBondDiscountCurve
+  // upcast in qlTermStructure.cpp. This is the one accepted exception to the F8 invariant.
+  try {Handle<Quote> corr = correlation ? *arg(correlation) : Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)));
     return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(Handle<OptionletVolatilityStructure>(*arg(vol)), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion))))));
+  try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion)))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, Handle<Quote>(*arg(meanReversion)), lowerLimit, upperLimit, precision, hardUpperLimit))));
+  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion), lowerLimit, upperLimit, precision, hardUpperLimit))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new RangeAccrualPricerByBgm(correlation, *arg(smilesOnExpiry), *arg(smilesOnPayment), withSmile, byCallSpread))));

@@ -76,7 +76,7 @@ import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
-import QuantLib.Quote
+import QuantLib.Quote hiding(linkTo)
 import Data.Maybe(fromMaybe)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)

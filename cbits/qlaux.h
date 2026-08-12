@@ -543,12 +543,17 @@ using QuantLib::ext::optional;
 
 class PolymorphicPathGenerator;
 
-// Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
-// because quotes and rate helpers are used via smart pointers (Handle
-// and shared_ptr) in QuantLib
-// Alternatively we could clone passed quotes/helpers and put them into
-// the containers each time we call QuantLib
-typedef shared_ptr<Quote> QlQuote;
+// Haskell CRateHelper is actually a pointer to a shared_ptr, because rate helpers are used via
+// shared_ptr in QuantLib and have no Handle-based counterpart upstream.
+// A Quote is a Handle, not a bare shared_ptr, so that a RelinkableHandle can be passed wherever
+// a quote is expected: copies of a Handle share one Link, which is what makes a linkTo()
+// propagate to everything already built on it. Handle constructs implicitly from nothing (the
+// ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed. Mirrors
+// QlYieldTermStructure below; see the invariant note there before touching either.
+typedef Handle<Quote> QlQuote;
+// RelinkableHandle publicly inherits Handle, so a relinkable quote IS a QlQuote and needs no
+// separate parameter type -- same reasoning as QlRelinkableYieldTermStructure below.
+typedef RelinkableHandle<Quote> QlRelinkableQuote;
 // A curve is a Handle, not a bare shared_ptr, so that a RelinkableHandle can be passed
 // wherever a curve is expected: copies of a Handle share one Link, which is what makes a
 // linkTo() propagate to everything already built on it. Handle constructs implicitly from

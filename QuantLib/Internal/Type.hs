@@ -385,26 +385,34 @@ peel = getAnyOf . ptr
 -- | > Quote
 -- >   SimpleQuote
 -- >   DeltaVolQuote
+-- >   RelinkableQuote
 type Quote = GenQuote CQuote
 data CQuote'
 data CSimpleQuote'
 data CDeltaVolQuote'
+data CRelinkableQuote'
 newtype GenQuote a = GenQuote {getQuote :: GenForeignPtr a CQuote'}
 type CQuote = ForeignPtr CQuote'
 type CSimpleQuote = ForeignPtr CSimpleQuote'
 type SimpleQuote = GenQuote CSimpleQuote
 type CDeltaVolQuote = ForeignPtr CDeltaVolQuote'
 type DeltaVolQuote = GenQuote CDeltaVolQuote
+type CRelinkableQuote = ForeignPtr CRelinkableQuote'
+type RelinkableQuote = GenQuote CRelinkableQuote
 foreign import ccall unsafe "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
 foreign import ccall unsafe "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
 foreign import ccall unsafe "ql.h &qlFreeDeltaVolQuote" qlFreeDeltaVolQuote :: FinalizerPtr CDeltaVolQuote'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableQuote" qlFreeRelinkableQuote :: FinalizerPtr CRelinkableQuote'
 instance Finalizable CQuote' where finalize = qlFreeQuote
 instance Finalizable CSimpleQuote' where finalize = qlFreeSimpleQuote
 instance Finalizable CDeltaVolQuote' where finalize = qlFreeDeltaVolQuote
+instance Finalizable CRelinkableQuote' where finalize = qlFreeRelinkableQuote
 instance Upcastable CSimpleQuote' where {type Base CSimpleQuote' = CQuote'; upcast = qlSimpleQuoteAsQuote}
 instance Upcastable CDeltaVolQuote' where {type Base CDeltaVolQuote' = CQuote'; upcast = qlDeltaVolQuoteAsQuote}
+instance Upcastable CRelinkableQuote' where {type Base CRelinkableQuote' = CQuote'; upcast = qlRelinkableQuoteAsQuote}
 foreign import ccall "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote' -> IO (Ptr CQuote')
 foreign import ccall "ql.h qlDeltaVolQuoteAsQuote" qlDeltaVolQuoteAsQuote :: Ptr CDeltaVolQuote' -> IO (Ptr CQuote')
+foreign import ccall "ql.h qlRelinkableQuoteAsQuote" qlRelinkableQuoteAsQuote :: Ptr CRelinkableQuote' -> IO (Ptr CQuote')
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO Quote
@@ -419,6 +427,10 @@ peekSimpleQuote :: Ptr CSimpleQuote' -> IO SimpleQuote
 peekSimpleQuote = GenQuote <.> newGenForeignPtr
 peekDeltaVolQuote :: Ptr CDeltaVolQuote' -> IO DeltaVolQuote
 peekDeltaVolQuote = GenQuote <.> newGenForeignPtr
+peekRelinkableQuote :: Ptr CRelinkableQuote' -> IO RelinkableQuote
+peekRelinkableQuote = GenQuote <.> newGenForeignPtr
+withRelinkableQuote :: RelinkableQuote -> (Ptr CRelinkableQuote' -> IO b) -> IO b
+withRelinkableQuote = withGenQuote
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote' -> IO b) -> IO b
 withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b

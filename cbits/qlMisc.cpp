@@ -333,25 +333,39 @@ double qlQuoteValue(QlQuote *quote, char **e) {try {return (*arg(quote))->value(
 double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e) {try {return (*arg(o))->setValue(value);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, char **e) {
-  try {return ret(new QlQuote(alloc(new EurodollarFuturesImpliedStdDevQuote(Handle<Quote>(*arg(forward)), Handle<Quote>(*arg(callPrice)), Handle<Quote>(*arg(putPrice)), strike, guess, accuracy, maxIter))));
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new EurodollarFuturesImpliedStdDevQuote(*arg(forward), *arg(callPrice), *arg(putPrice), strike, guess, accuracy, maxIter)))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int l, int u, char **e) {
-  try {return ret(new QlQuote(alloc(new ForwardSwapQuote(*arg(swapIndex), Handle<Quote>(*arg(spread)), Period(l, (TimeUnit)u)))));
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ForwardSwapQuote(*arg(swapIndex), *arg(spread), Period(l, (TimeUnit)u))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e) {
-  try {return ret(new QlQuote(alloc(new ForwardValueQuote(*arg(index), Date(fixingDate)))));
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ForwardValueQuote(*arg(index), Date(fixingDate))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), Handle<Quote>(*arg(futuresQuote)), Handle<Quote>(*arg(volatility)), Handle<Quote>(*arg(meanReversion))))));
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), *arg(futuresQuote), *arg(volatility), *arg(meanReversion))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), Handle<Quote>(*arg(futuresQuote)), Handle<Quote>(*arg(volatility)), Handle<Quote>(*arg(meanReversion))))));
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), *arg(futuresQuote), *arg(volatility), *arg(meanReversion))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e) {
-  try {return ret(new QlQuote(alloc(new ImpliedStdDevQuote((Option::Type)optionType, Handle<Quote>(*arg(forward)), Handle<Quote>(*arg(price)), strike, guess, accuracy, maxIter))));
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ImpliedStdDevQuote((Option::Type)optionType, *arg(forward), *arg(price), strike, guess, accuracy, maxIter)))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
-QlQuote* qlLastFixingQuote(QlIndex* index, char **e) {try {return ret(new QlQuote(alloc(new LastFixingQuote(*arg(index)))));} catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote* qlLastFixingQuote(QlIndex* index, char **e) {try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new LastFixingQuote(*arg(index))))));} catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 int qlQuoteIsValid(QlQuote* o, char **e) {try {return (*arg(o))->isValid();} catch (std::exception& er) {return handleException<int>(e, er);}}
+
+// A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure
+// in cbits/qlTermStructure.cpp; see its comments for the rationale.
+QlRelinkableQuote* qlRelinkableQuote(QlQuote *initial, char **e) {
+  try {return ret(initial ? new QlRelinkableQuote(handlePtr(arg(initial)))
+                          : new QlRelinkableQuote());
+  } catch (std::exception& er) {return handleException<QlRelinkableQuote*>(e, er);}}
+void qlFreeRelinkableQuote(QlRelinkableQuote *o) {del(o);}
+void qlRelinkableQuoteLinkTo(QlRelinkableQuote *o, QlQuote *c, char **e) {
+  try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+// The hierarchy upcast. Copy-constructing Handle<Quote> from RelinkableHandle<Quote> is the
+// same T, so link_ is shared and relinking through the original still reaches everything built
+// on the upcast copy.
+QlQuote* qlRelinkableQuoteAsQuote(QlRelinkableQuote *o) {return ret(new QlQuote(*arg(o)));}
 void qlFreeEndCriteria(EndCriteria *o) {del(o);}
 double qlInterestRateRate(InterestRate* o) {return arg(o)->rate();}
 void qlFreeConstraint(Constraint *o) {del(o);}
@@ -363,10 +377,10 @@ void qlFreeQuote(QlQuote *quote) {del(quote);}
 void qlFreeSimpleQuote(QlSimpleQuote *o) {del(o);}
 QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o) {return ret(new QlQuote(*arg(o)));}
 QlDeltaVolQuote *qlDeltaVolQuote1(double delta, QlQuote *vol, double maturity, int deltaType, char **e) {
-  try {return ret(new QlDeltaVolQuote(alloc(new DeltaVolQuote(delta, Handle<Quote>(*arg(vol)), maturity, (DeltaVolQuote::DeltaType)deltaType))));
+  try {return ret(new QlDeltaVolQuote(alloc(new DeltaVolQuote(delta, *arg(vol), maturity, (DeltaVolQuote::DeltaType)deltaType))));
   } catch (std::exception& er) {return handleException<QlDeltaVolQuote*>(e, er);}}
 QlDeltaVolQuote *qlDeltaVolQuote2(QlQuote *vol, int deltaType, double maturity, int atmType, char **e) {
-  try {return ret(new QlDeltaVolQuote(alloc(new DeltaVolQuote(Handle<Quote>(*arg(vol)), (DeltaVolQuote::DeltaType)deltaType, maturity, (DeltaVolQuote::AtmType)atmType))));
+  try {return ret(new QlDeltaVolQuote(alloc(new DeltaVolQuote(*arg(vol), (DeltaVolQuote::DeltaType)deltaType, maturity, (DeltaVolQuote::AtmType)atmType))));
   } catch (std::exception& er) {return handleException<QlDeltaVolQuote*>(e, er);}}
 void qlFreeDeltaVolQuote(QlDeltaVolQuote *o) {del(o);}
 QlQuote* qlDeltaVolQuoteAsQuote(QlDeltaVolQuote *o) {return ret(new QlQuote(*arg(o)));}
