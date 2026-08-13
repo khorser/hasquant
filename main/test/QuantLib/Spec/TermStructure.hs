@@ -160,50 +160,50 @@ spec = do
               Unadjusted Unadjusted Forward False Nothing Nothing
             floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
               ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
-            swap <- vanillaSwap Payer 1000000 fixedSch 0.02 fixedDC floatSch idx 0 floatDC
+            sw <- vanillaSwap Payer 1000000 fixedSch 0.02 fixedDC floatSch idx 0 floatDC
               Nothing Nothing
             eng <- discountingSwapEngine discountH Nothing Nothing Nothing
-            setPricingEngine swap eng
-            pure (swap, discountH, forecastH)
+            setPricingEngine sw eng
+            pure (sw, discountH, forecastH)
 
       it "a relinkable handle is accepted wherever a curve is" $
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
           -- no sibling function, no wrapper: it upcasts like any hierarchy member
-          (swap, _, _) <- setupSwap
-          v <- npv swap
+          (sw, _, _) <- setupSwap
+          v <- npv sw
           v `shouldSatisfy` (not . isNaN)
 
       it "relinking the discount curve reprices without rebuilding" $
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
-          (swap, discountH, _) <- setupSwap
-          before <- npv swap
+          (sw, discountH, _) <- setupSwap
+          npvBefore <- npv sw
           flat 0.05 >>= linkTo discountH
-          after <- npv swap
-          abs (after - before) `shouldSatisfy` (> 1.0)
+          npvAfter <- npv sw
+          abs (npvAfter - npvBefore) `shouldSatisfy` (> 1.0)
 
       it "relinking back restores the original value exactly" $
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
-          (swap, discountH, _) <- setupSwap
-          before <- npv swap
+          (sw, discountH, _) <- setupSwap
+          npvBefore <- npv sw
           flat 0.05 >>= linkTo discountH
           flat 0.02 >>= linkTo discountH
           -- exact, not approximate: relinking to an identical curve must reproduce the
           -- same arithmetic, and anything else means we are not reaching the same object
-          npv swap `shouldReturn` before
+          npv sw `shouldReturn` npvBefore
 
       it "relinking the forecast curve reprices without rebuilding" $
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
           -- the case with no workaround today: an IborIndex is cloned into every floating
           -- coupon at construction, so without a handle this needs the swap rebuilt
-          (swap, _, forecastH) <- setupSwap
-          before <- npv swap
+          (sw, _, forecastH) <- setupSwap
+          npvBefore <- npv sw
           flat 0.05 >>= linkTo forecastH
-          after <- npv swap
-          abs (after - before) `shouldSatisfy` (> 1.0)
+          npvAfter <- npv sw
+          abs (npvAfter - npvBefore) `shouldSatisfy` (> 1.0)
 
       -- A relinkable quote propagates the same way a relinkable curve does: the curve built
       -- on top of it (fixed, not itself relinkable) still moves when the quote underneath is
@@ -216,10 +216,10 @@ spec = do
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
           c <- flatForward (11 `december` 2012) qh dc IR.Continuous Annual
-          before <- discount c 5.0 False
+          npvBefore <- discount c 5.0 False
           Quote.simpleQuote 0.05 >>= Quote.linkTo qh
-          after <- discount c 5.0 False
-          abs (after - before) `shouldSatisfy` (> 0.01)
+          npvAfter <- discount c 5.0 False
+          abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.01)
 
       it "relinking a quote back restores the original value exactly" $
         Settings.keepingSettings' $ do
@@ -228,11 +228,11 @@ spec = do
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
           c <- flatForward (11 `december` 2012) qh dc IR.Continuous Annual
-          before <- discount c 5.0 False
+          npvBefore <- discount c 5.0 False
           Quote.simpleQuote 0.05 >>= Quote.linkTo qh
           Quote.simpleQuote 0.02 >>= Quote.linkTo qh
           -- exact, not approximate: same reasoning as the curve-relink-back check above
-          discount c 5.0 False `shouldReturn` before
+          discount c 5.0 False `shouldReturn` npvBefore
 
       -- A relinkable Black vol surface propagates the same way: an option engine built on it
       -- keeps tracking whatever surface the handle currently points at, so relinking reprices
@@ -258,20 +258,20 @@ spec = do
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
           (opt, volH) <- mkOption
-          before <- npv opt
+          npvBefore <- npv opt
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.40
           vol1 <- Vol.blackConstantVol (11 `december` 2012) cal q dc
           Vol.linkBlackVolTo volH vol1
-          after <- npv opt
-          abs (after - before) `shouldSatisfy` (> 0.5)
+          npvAfter <- npv opt
+          abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
 
       -- A relinkable swaption vol surface propagates the same way: an engine built on it
       -- keeps tracking whatever surface the handle currently points at, so relinking reprices
       -- the swaption without rebuilding the engine. Mirrors the Black vol case above.
       let mkSwaption = do
-            (swap, discountH, _) <- setupSwap
+            (sw, discountH, _) <- setupSwap
             cal <- Calendar.calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20
@@ -280,7 +280,7 @@ spec = do
             eng <- blackSwaptionEngine' discountH volH
             -- the Black swaption engine requires a spot-starting swaption: the exercise date
             -- must fall on or before the swap's start date (13 december 2012)
-            swpn <- swaption swap (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
+            swpn <- swaption sw (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
             setPricingEngine swpn eng
             pure (swpn, volH)
 
@@ -288,14 +288,14 @@ spec = do
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
           (swpn, volH) <- mkSwaption
-          before <- npv swpn
+          npvBefore <- npv swpn
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.60
           vol1 <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
           Vol.linkSwaptionVolTo volH vol1
-          after <- npv swpn
-          abs (after - before) `shouldSatisfy` (> 0.5)
+          npvAfter <- npv swpn
+          abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
 
       -- A relinkable optionlet vol surface propagates the same way: an engine built on it
       -- keeps tracking whatever surface the handle currently points at, so relinking reprices
@@ -322,14 +322,14 @@ spec = do
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (11 `december` 2012))
           (capfl, volH) <- mkCap
-          before <- npv capfl
+          npvBefore <- npv capfl
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.60
           vol1 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
           Vol.linkOptionletVolTo volH vol1
-          after <- npv capfl
-          abs (after - before) `shouldSatisfy` (> 0.5)
+          npvAfter <- npv capfl
+          abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
 
       -- The bidirectional dependency cycle RelinkableHandle actually exists for: two Euribor
       -- forecast curves (3m/6m) whose rate helpers reference *each other's* not-yet-bootstrapped
