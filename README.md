@@ -171,3 +171,7 @@ Polished FFI helpers and reduced technical debt. Updated static data, added infl
 ## 0.4.0.0 (2026)
 
 Extended the functionality, added more instruments and asset classes
+
+## 0.5.0.0 (2026)
+
+Support for RelinkableHandle has finally landed. As it turned out the current model is a perfect fit for it.
