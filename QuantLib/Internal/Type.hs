@@ -11,7 +11,7 @@ import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(peekDynString, preArray, peekDayArray)
-import Control.Exception (finally, bracket)
+import Control.Exception (finally, bracket, mask)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
@@ -36,7 +36,18 @@ showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
 showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
 {-# NOINLINE showStandalone #-}
 
--- TODO double check feasibility of `unsafe' if Haskell callbacks are added later
+-- On `safe' vs `unsafe' imports, file-wide (this was an open TODO; it is settled):
+--   * The `&qlFreeX' finalizer imports below take a symbol *address*, not a call, so their
+--     `unsafe' annotation is inert. The call that matters is `callFinalizer' above, plus
+--     whatever the GC runs; both are safe.
+--   * Everything that runs QuantLib logic stays `safe'. Under the non-threaded RTS an
+--     `unsafe' call blocks GC and the scheduler for its whole duration, and pricing or
+--     bootstrapping is unbounded.
+--   * The qlXAsY upcast shims are the one legitimate `unsafe' candidate -- bare
+--     `ret(new QlY(*arg(o)))', no callback into Haskell, bounded work -- but they are
+--     already dominated by the QuantLib call they precede, so leave them `safe' absent a
+--     measurement; a per-shim rule would break the first time one grows logic.
+-- If a Haskell callback is ever passed into C++, every import on that path must be `safe'.
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
@@ -350,8 +361,27 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
+--
+-- Each hierarchy root below carries a haddock tree listing every member. Notation:
+--   indentation  parent/child
+--   `X*'         abstract *here*: hasquant binds no constructor returning an X, you only
+--                obtain one by upcasting. This is not the same as C++ abstractness and
+--                cannot be derived from it -- Option and Swap are concrete classes
+--                upstream but unconstructible here, while Quote/Index/TermStructure are
+--                pure-virtual upstream yet routinely returned by bindings. Marks are
+--                added where established; an unmarked node is not a claim of the opposite.
+--   `X + Y'      X also reaches secondary interface Y, via the standalone qlXAsY shim and
+--                the hand-written Y ADT (see CAffineModel' below), not via Upcastable.
+--   X (CFoo')    X's C type, given only where it is not the expected C<X>'.
+-- Payoff and Exercise are documented in the files that define them, not here.
 -- the original pointer to `a' with a way to marshal it to `b'
--- Actually we don't need the second field as we can infer the number of upcasts needed from the structure of the objects
+-- The access/free pair IS derivable from the structure of `a' (each nested AnyOf layer is
+-- one upcast; the innermost ForeignPtr is identity or one upcast). It stays a stored
+-- dictionary because the alternative -- an `Access a b' class -- becomes a constraint at
+-- every polymorphic use site, and c2hs emits an explicit signature for every {#fun#}: 363
+-- of 880 hooks take a polymorphic `GenX a' and would each need a hand-written context,
+-- which would also leak into public API signatures. It buys no correctness -- the smart
+-- constructors below are already pinned by their result types.
 data GenForeignPtr a b = GenForeignPtr {
   ptr :: !a
   , _access :: !(forall r. a -> (Ptr b -> IO r) -> IO r)
@@ -381,9 +411,16 @@ newCastForeignPtr x = do
   fp <- newForeignPtr finalize x
   pure $ GenForeignPtr fp withForeignPtr Nothing
 
+-- `access' performs the upcast, which allocates a fresh handle that `mfree' must release, so
+-- acquiring it and installing the handler have to be atomic -- `mask' covers the upcast
+-- happening inside `access', and `restore' hands `f' back the caller's masking state. This
+-- is `bracket' semantics (cf. `withUpcast' below) expressed around a continuation that
+-- allocates internally. Nesting is fine: an inner level's `restore' only wraps the
+-- continuation that contains the outer `restore', so `f' still runs unmasked.
 withGenForeignPtr :: GenForeignPtr a b -> (Ptr b -> IO r) -> IO r
-withGenForeignPtr (GenForeignPtr p access mfree) f =
-  access p $ \bp -> f bp `finally` maybe (pure ()) ($ bp) mfree
+withGenForeignPtr (GenForeignPtr p access Nothing) f = access p f
+withGenForeignPtr (GenForeignPtr p access (Just free)) f =
+  mask $ \restore -> access p $ \bp -> restore (f bp) `finally` free bp
 
 transferGenForeignPtr :: (Ptr b -> IO r) -> GenForeignPtr a b -> IO r
 transferGenForeignPtr f (GenForeignPtr p access _) = access p f
@@ -652,12 +689,12 @@ peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 -- >  InterestRateIndex
 -- >    BMAIndex
 -- >    IborIndex
--- >      OvernightIborIndex
+-- >      OvernightIborIndex (COvernightIndex')
 -- >    SwapIndex
 -- >      OvernightIndexedSwapIndex
 -- >  InflationIndex
--- >    YoYInflationIndex-
--- >    ZeroInflationIndex-
+-- >    YoYInflationIndex
+-- >    ZeroInflationIndex
 -- >  EquityIndex
 type Index = GenIndex CIndex
 data CIndex'
@@ -1314,7 +1351,7 @@ withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 
 -- | > CalibratedModel
--- >  LiborForwardModel: AffineModel
+-- >  LiborForwardModel + AffineModel
 -- >  GJRGARCHModel
 -- >  PiecewiseTimeDependentHestonModel
 -- >  HestonModel
@@ -1323,11 +1360,11 @@ withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 -- >    BatesDoubleExpModel
 -- >      BatesDoubleExpDetJumpModel
 -- >  ShortRateModel
--- >    G2: AffineModel
--- >    OneFactorAffineModel: AffineModel
--- >      HullWhite: AffineMode
--- >  Gsr: Gaussian1dModel
--- >  MarkovFunctional: Gaussian1dModel
+-- >    G2 + AffineModel
+-- >    OneFactorAffineModel + AffineModel
+-- >      HullWhite + AffineModel
+-- >  Gsr + Gaussian1dModel
+-- >  MarkovFunctional + Gaussian1dModel
 type CalibratedModel = GenCalibratedModel CCalibratedModel
 data CCalibratedModel'
 data CGJRGARCHModel'
@@ -1548,14 +1585,14 @@ withGaussian1dModel :: Gaussian1dModel -> (Ptr CGaussian1dModel' -> IO b) -> IO 
 withGaussian1dModel (Gsr m) f = withGenCalibratedModel m (withUpcast qlGsrAsGaussian1dModel f)
 withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcast qlMarkovFunctionalAsGaussian1dModel f)
 
--- | > a:Instrument ("a" == an abstract class)
--- >  a:Forward
+-- | > Instrument*
+-- >  Forward*
 -- >    BondForward
 -- >  ForwardRateAgreement
 -- >  FxForward
 -- >  VarianceSwap
 -- >  VarianceOption
--- >  a:Option
+-- >  Option*
 -- >    CdsOption
 -- >    MultiAssetOption
 -- >      MargrabeOption
@@ -1567,7 +1604,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      QuantoForwardVanillaOption
 -- >      QuantoBarrierOption
 -- >    Swaption
--- >  a:Swap
+-- >  Swap*
 -- >    VanillaSwap
 -- >    AssetSwap
 -- >    BMASwap
