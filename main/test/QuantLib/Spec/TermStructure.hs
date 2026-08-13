@@ -17,10 +17,12 @@ import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
-import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr))
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long))
 import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
+import qualified QuantLib.Instrument.Swap as Swap
+import qualified QuantLib.Instrument.Bond as Bond
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.CashFlow(iborLeg)
 import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
@@ -133,6 +135,38 @@ spec = do
           spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
+
+    -- The three rate helpers below build their instrument internally rather than taking
+    -- one, so these accessors are the only way to reach it. Checking the instrument's own
+    -- maturity against the tenor the helper was given is what catches an accessor wired to
+    -- the wrong helper: the returned object would still be a valid swap/bond, just not this
+    -- helper's.
+    describe "rate helper underlying instruments" $
+      it "each accessor returns the instrument built from the helper's own tenor" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar Null
+          actual360dc <- dayCounter (Actual360 False)
+          thirty360dc <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03
+
+          ois <- overnightIborIndex Sofr Nothing
+          oisSwap <- oisRateHelper 2 (1, Years) q ois Nothing >>= oisRateHelperSwap
+          (Swap.asSwap oisSwap >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2025)
+
+          ccy <- currency EUR
+          ibor <- iborIndex (Ibor "dummy" (6, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
+          vanilla <- swapRateHelper' q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
+            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= swapRateHelperSwap
+          (Swap.asSwap vanilla >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2029)
+
+          bondMaturity <- advance cal (2 `january` 2024) (5, Years) Unadjusted False
+          sch <- schedule (Just (2 `january` 2024)) bondMaturity (1, Years) cal Unadjusted Unadjusted
+                   Backward False Nothing Nothing
+          price <- Quote.simpleQuote 100.0
+          bond <- fixedRateBondHelper price 3 100.0 sch [0.04] thirty360dc Following 100.0 Nothing
+                    >>= bondHelperBond
+          Bond.maturityDate bond `shouldBe` Just bondMaturity
 
     -- Relinking is the one thing a plain curve cannot do: reassign a whole curve under
     -- objects that are already built, and have everything downstream reprice. Every check

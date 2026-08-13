@@ -1,4 +1,4 @@
-{-# LANGUAGE FunctionalDependencies, FlexibleInstances, TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Yield
   (
     YieldTermStructure
@@ -81,7 +81,9 @@ module QuantLib.TermStructure.Yield
   , mtMCrossCurrencyBasisSwapRateHelper
   , constNotionalCrossCurrencySwapRateHelper
 
-  , underlying
+  , bondHelperBond
+  , swapRateHelperSwap
+  , oisRateHelperSwap
   ) where
 import QuantLib.Internal hiding(maxDate)
 import QuantLib.Internal.Enum
@@ -665,16 +667,14 @@ interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd
   ,withYieldTermStructure*`GenYieldTermStructure a' -- ^curve
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
--- TODO use the class or decide it's not needed
-class HelperUnderlying a b | a -> b where underlying :: a -> IO b
+-- |The bond the helper prices. For 'fixedRateBondHelper'\/'cpiBondHelper' this is the only way
+-- to reach it, since they build the bond internally rather than taking one (unlike 'bondHelper').
+{#fun qlBondHelperBond as bondHelperBond{withGenRateHelper*`BondHelper',preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
-instance HelperUnderlying BondHelper Bond where underlying = qlBondHelperBond
-{#fun qlBondHelperBond{withGenRateHelper*`BondHelper',preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+-- |The underlying swap the helper builds from its tenor and index.
+{#fun qlSwapRateHelperSwap as swapRateHelperSwap{withGenRateHelper*`SwapRateHelper',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
-instance HelperUnderlying SwapRateHelper VanillaSwap where underlying = qlSwapRateHelperSwap
-{#fun qlSwapRateHelperSwap{withGenRateHelper*`SwapRateHelper',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
-
-instance HelperUnderlying OISRateHelper OvernightIndexedSwap where underlying = qlOISRateHelperSwap
-{#fun qlOISRateHelperSwap{withGenRateHelper*`OISRateHelper',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+-- |The underlying overnight indexed swap the helper builds from its tenor and index.
+{#fun qlOISRateHelperSwap as oisRateHelperSwap{withGenRateHelper*`OISRateHelper',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

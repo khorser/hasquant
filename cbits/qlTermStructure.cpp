@@ -491,6 +491,9 @@ QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote,
           observationInterpolation == 0 ? CPI::Flat : CPI::Linear, *arg(nominalTermStructure), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwapHelper*>(e, er);}}
 
+QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInflationSwapHelper* o, char **e) {try {return ret(new QlZeroCouponInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlZeroCouponInflationSwap*>(e, er);}}
+QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, char **e) {try {return ret(new QlYearOnYearInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
+
 QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     // instruments[i] is shared_ptr<ZeroCouponInflationSwapHelper>*; push_back upcasts each

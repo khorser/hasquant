@@ -200,6 +200,10 @@ spec = do
         InflationCurveExample.zeroRate2Y r `shouldSatisfy` closePrec 3.001286439212614e-2 1e-9
         InflationCurveExample.yoyRate1Y r `shouldSatisfy` closePrec 3.0000000000000002e-2 1e-9
         InflationCurveExample.yoyRate2Y r `shouldSatisfy` closePrec 2.999999999999999e-2 1e-9
+        -- both helpers were quoted at 3%; after bootstrapping, the swap each one holds
+        -- internally must reprice back to that quote
+        InflationCurveExample.zcisHelperFairRate r `shouldSatisfy` closePrec 3.0e-2 1e-8
+        InflationCurveExample.yoyHelperFairRate r `shouldSatisfy` closePrec 3.0e-2 1e-8
 
     describe "Inflation instruments example" $
       it "check values" $ do

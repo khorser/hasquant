@@ -8919,12 +8919,12 @@
 |v|ql/termstructures/inflation/inflationhelpers.hpp|ZeroCouponInflationSwapHelper::ZeroCouponInflationSwapHelper(const Handle<Quote> & quote, const Period & swapObsLag, const Date & maturity, Calendar calendar, BusinessDayConvention paymentConvention, DayCounter dayCounter, const ext::shared_ptr<ZeroInflationIndex> & zii, CPI::InterpolationType observationInterpolation, Handle<YieldTermStructure> nominalTermStructure);
 | |ql/termstructures/inflation/inflationhelpers.hpp|void ZeroCouponInflationSwapHelper::setTermStructure(ZeroInflationTermStructure *);
 | |ql/termstructures/inflation/inflationhelpers.hpp|Real ZeroCouponInflationSwapHelper::impliedQuote() const;
-| |ql/termstructures/inflation/inflationhelpers.hpp|ext::shared_ptr<ZeroCouponInflationSwap> ZeroCouponInflationSwapHelper::swap() const;
+|v|ql/termstructures/inflation/inflationhelpers.hpp|ext::shared_ptr<ZeroCouponInflationSwap> ZeroCouponInflationSwapHelper::swap() const;
 |v|ql/termstructures/inflation/inflationhelpers.hpp|YearOnYearInflationSwapHelper::YearOnYearInflationSwapHelper(const Handle<Quote> & quote, const Period & swapObsLag, const Date & maturity, Calendar calendar, BusinessDayConvention paymentConvention, DayCounter dayCounter, const ext::shared_ptr<YoYInflationIndex> & yii, CPI::InterpolationType interpolation, Handle<YieldTermStructure> nominalTermStructure, Pillar::Choice pillar = Pillar::LastRelevantDate, Date customPillarDate = Date());
 |u|ql/termstructures/inflation/inflationhelpers.hpp|YearOnYearInflationSwapHelper::YearOnYearInflationSwapHelper(const Handle<Quote> & quote, const Period & swapObsLag, const Date & startDate, const Date & endDate, Calendar calendar, BusinessDayConvention paymentConvention, DayCounter dayCounter, const ext::shared_ptr<YoYInflationIndex> & yii, CPI::InterpolationType interpolation, Handle<YieldTermStructure> nominalTermStructure, Pillar::Choice pillar = Pillar::LastRelevantDate, Date customPillarDate = Date());
 | |ql/termstructures/inflation/inflationhelpers.hpp|void YearOnYearInflationSwapHelper::setTermStructure(YoYInflationTermStructure *);
 | |ql/termstructures/inflation/inflationhelpers.hpp|Real YearOnYearInflationSwapHelper::impliedQuote() const;
-| |ql/termstructures/inflation/inflationhelpers.hpp|ext::shared_ptr<YearOnYearInflationSwap> YearOnYearInflationSwapHelper::swap() const;
+|v|ql/termstructures/inflation/inflationhelpers.hpp|ext::shared_ptr<YearOnYearInflationSwap> YearOnYearInflationSwapHelper::swap() const;
 | |ql/termstructures/inflation/inflationtraits.hpp|static Date ZeroInflationTraits::initialDate(const ZeroInflationTermStructure * t);
 | |ql/termstructures/inflation/inflationtraits.hpp|static Rate ZeroInflationTraits::initialValue(const ZeroInflationTermStructure *);
 | |ql/termstructures/inflation/inflationtraits.hpp|static void ZeroInflationTraits::updateGuess(std::vector<Rate> & data, Rate level, Size i);

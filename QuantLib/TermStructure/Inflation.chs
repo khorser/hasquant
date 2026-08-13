@@ -9,6 +9,8 @@ module QuantLib.TermStructure.Inflation
 
   , zeroCouponInflationSwapHelper
   , yearOnYearInflationSwapHelper
+  , zeroCouponInflationSwapHelperSwap
+  , yearOnYearInflationSwapHelperSwap
 
   , piecewiseZeroInflationCurve
   , piecewiseYoYInflationCurve
@@ -37,6 +39,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *QlZeroCouponInflationSwapHelper as ZeroCouponInflationSwapHelper foreign -> CZeroCouponInflationSwapHelper nocode#}
 {#pointer *QlYearOnYearInflationSwapHelper as YearOnYearInflationSwapHelper foreign -> CYearOnYearInflationSwapHelper nocode#}
+{#pointer *QlZeroCouponInflationSwap as ZeroCouponInflationSwap foreign -> CZeroCouponInflationSwap' nocode#}
+{#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 
 -- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).
 {#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote a' -- ^quote
@@ -64,6 +68,11 @@ import QuantLib.Internal.Enum
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
+
+-- |The underlying swap the helper builds from its quote, observation lag and maturity.
+{#fun qlZeroCouponInflationSwapHelperSwap as zeroCouponInflationSwapHelperSwap{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
+-- |The underlying swap the helper builds from its quote, observation lag and maturity.
+{#fun qlYearOnYearInflationSwapHelperSwap as yearOnYearInflationSwapHelperSwap{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
 
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
