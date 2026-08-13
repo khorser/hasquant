@@ -88,6 +88,7 @@ And if a function accepts `GenInstrument a` (like `npv`), you can pass any instr
 While this is convenient, it leads to some allocation and deallocation on each call, so you might consider using `asBond` and `asInstrument` to get an object of the required type.
 
 # TODO
+- Two instances of the same "dispatch table doesn't cover the full template parameter space" pattern, worth reconsidering together if a generic solution is ever designed: `qlPiecewiseYieldCurveAux1`'s `GlobalBootstrap` branch only covers `Discount`x`LogLinear`, not the full trait x interpolator matrix `IterativeBootstrap` supports; and `qlBlackVarianceSurface` (`cbits/qlTermStructure.cpp`) has its `interpolator`/`approximator`/`approximatorArg` params commented out entirely (2-D `Interpolation` was never wired up), so it's always upstream's default bilinear. Both are hand-written C++ switches over a fixed subset rather than something generic over the template parameter.
 - (Perpetual) Add more classes and methods. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
 - Add more nonempty lists or vectors for some functions where applicable
 - Design a declarative embedded DSL

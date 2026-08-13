@@ -1,4 +1,5 @@
 #include <ql/termstructures/yield/all.hpp>
+#include <ql/termstructures/globalbootstrap.hpp>
 #include <ql/math/interpolations/all.hpp>
 #include <ql/time/calendar.hpp>
 #include <ql/termstructures/credit/interpolateddefaultdensitycurve.hpp>
@@ -17,13 +18,20 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
   const std::vector<QuantLib::Date>& jumpDates,
   int trait, int interpolator, int approximator, int approximatorArg);
 
+// bootstrap: 0 = IterativeBootstrap (existing behaviour, default), 1 = GlobalBootstrap,
+// wired up only for trait=Discount/interpolator=LogLinear (see qlTermStructureAux.cpp).
+// This is a cbits-internal dispatch value, never exposed as a Haskell enum: the two Haskell
+// entry points (piecewiseYieldCurve'/piecewiseYieldCurveGlobalBootstrap') each hardcode their
+// own literal from their own C shim, per CLAUDE.md's "dedicated constructor hardcodes the enum
+// value" convention. accuracy is only used by the GlobalBootstrap branch.
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  int trait, int interpolator, int approximator, int approximatorArg);
+  int trait, int interpolator, int approximator, int approximatorArg,
+  int bootstrap, double accuracy);
 
 QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const std::vector<QuantLib::Date>& dates,

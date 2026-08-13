@@ -19,16 +19,17 @@ import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.Currency(currency, Ccy(..))
-import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC))
-import QuantLib.Instrument.Swap(vanillaSwap, SwapType(Payer), swaption)
+import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long))
+import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.CashFlow(iborLeg)
 import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
+import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
 import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine')
 
-import QuantLib.Spec.Helpers(areClose)
+import QuantLib.Spec.Helpers(areClose, closePrec)
 
 spec :: Spec
 spec = do
@@ -329,3 +330,89 @@ spec = do
           Vol.linkOptionletVolTo volH vol1
           after <- npv capfl
           abs (after - before) `shouldSatisfy` (> 0.5)
+
+      -- The bidirectional dependency cycle RelinkableHandle actually exists for: two Euribor
+      -- forecast curves (3m/6m) whose rate helpers reference *each other's* not-yet-bootstrapped
+      -- handle, resolved by bootstrapping both curves together under one optimizer
+      -- (GlobalBootstrap) via MultiCurve. Ports upstream's
+      -- testMultiCurveTwoPiecewiseYieldCurves (piecewiseyieldcurve.cpp).
+      let curveToday = 23 `october` 2025
+          tolerance = 1.0e-6 :: Double
+          setupMultiCurve = do
+            Settings.setEvaluationDate (Just curveToday)
+            cal <- Calendar.calendar TARGET
+            euriborDC <- dayCounter (Actual360 False)
+            thirty360 <- dayCounter Thirty360BondBasis
+            settleFix <- advance cal curveToday (2, Days) Following False
+            discQ <- Quote.simpleQuote 0.02
+            discountCurve <- flatForward' 0 cal discQ euriborDC IR.Continuous Annual
+            -- the internal handles: empty until addBootstrappedCurve links them below
+            intcurve3m <- relinkableYieldTermStructure Nothing
+            intcurve6m <- relinkableYieldTermStructure Nothing
+            euribor3m <- iborIndex Euribor3M (Just intcurve3m)
+            euribor6m <- iborIndex Euribor6M (Just intcurve6m)
+            q <- Quote.simpleQuote 0.03
+            b <- Quote.simpleQuote 0.0020
+            helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 9]
+            helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 10]
+            helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 3]
+            helpers6mSwap <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)
+                                            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 10]
+              >>= mapM asRateHelper -- swapRateHelper' returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
+            -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
+            -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
+            -- piecewiseYieldCurve' (IterativeBootstrap) can't resolve.
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 False
+            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 False
+            mc <- multiCurve 1.0e-10
+            curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
+            curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
+            pure (cal, settleFix, euriborDC, thirty360, euribor3m, euribor6m, q, b, discountCurve, curve3m, curve6m)
+
+      it "FRA-implied forward rates match the input quote once the 3m/6m curves are bootstrapped together" $
+        Settings.keepingSettings' $ do
+          (cal, settleFix, _, _, euribor3m, _, q, _, _, curve3m, _) <- setupMultiCurve
+          qVal <- Quote.value q
+          mapM_ (\i -> do
+              -- FraRateHelper::initializeDates computes maturityDate_ as a single advance by
+              -- (periodToStart + tenor) from the spot date, not two sequential advances --
+              -- those disagree by a business day here and there (endOfMonth interacts
+              -- differently with a combined-period vs. chained advance), which is enough to
+              -- move the FRA off the pillar the helper actually calibrated.
+              start <- advance cal settleFix (i, Months) ModifiedFollowing True
+              maturity <- advance cal settleFix (i + 3, Months) ModifiedFollowing True
+              fra <- Fwd.forwardRateAgreement euribor3m start maturity Long qVal 1.0 (Just curve3m)
+              rate <- IR.rate <$> Fwd.forwardRate fra
+              rate `shouldSatisfy` closePrec qVal tolerance
+            ) [1 .. 9 :: Int]
+
+      it "3m/6m ibor-ibor basis swaps built from the bootstrapped curves reprice to zero" $
+        Settings.keepingSettings' $ do
+          (cal, settleFix, euriborDC, _, euribor3m, euribor6m, _, b, discountCurve, _, _) <- setupMultiCurve
+          bVal <- Quote.value b
+          eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
+          let checkBasisSwap tenor = do
+                maturity <- advance cal settleFix tenor ModifiedFollowing True
+                baseSchedule <- schedule (Just settleFix) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
+                otherSchedule <- schedule (Just settleFix) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
+                baseLeg <- iborLeg baseSchedule euribor3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
+                otherLeg <- iborLeg otherSchedule euribor6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
+                sw <- swap baseLeg otherLeg
+                setPricingEngine sw eng
+                v <- npv sw
+                v `shouldSatisfy` closePrec 0 tolerance
+          mapM_ (\i -> checkBasisSwap (i, Years)) [2 .. 10 :: Int]
+          mapM_ (\i -> checkBasisSwap (i * 6, Months)) [1 .. 3 :: Int]
+
+      it "a makeVanillaSwap-built 6m swap on the bootstrapped curves reprices to zero" $
+        Settings.keepingSettings' $ do
+          (_, _, _, thirty360, _, euribor6m, q, _, discountCurve, _, _) <- setupMultiCurve
+          qVal <- Quote.value q
+          eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
+          mapM_ (\i -> do
+              sw <- makeVanillaSwap (i, Years) euribor6m qVal (0, Days) (Just 2) (1, Years) thirty360
+                      (Just Following) (Just Following) Nothing Nothing Nothing Nothing
+              setPricingEngine sw eng
+              v <- npv sw
+              v `shouldSatisfy` closePrec 0 tolerance
+            ) [2 .. 10 :: Word]

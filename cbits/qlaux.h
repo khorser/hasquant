@@ -207,6 +207,7 @@ namespace QuantLib {
   class Merton76Process;
   class MidPointCdsEngine;
   class MultiAssetOption;
+  class MultiCurve;
   class NelsonSiegelFitting;
   class NoConstraint;
   class OISRateHelper;
@@ -463,6 +464,7 @@ using QuantLib::MarkovFunctional;
 using QuantLib::Merton76Process;
 using QuantLib::MidPointCdsEngine;
 using QuantLib::MultiAssetOption;
+using QuantLib::MultiCurve;
 using QuantLib::NelsonSiegelFitting;
 using QuantLib::NoConstraint;
 using QuantLib::OISRateHelper;
@@ -653,6 +655,10 @@ typedef shared_ptr<MargrabeOption> QlMargrabeOption;
 typedef shared_ptr<MarkovFunctional> QlMarkovFunctional;
 typedef shared_ptr<Merton76Process> QlMerton76Process;
 typedef shared_ptr<MultiAssetOption> QlMultiAssetOption;
+// MultiCurve is enable_shared_from_this and upstream's own doc comment says "This must be a
+// shared pointer" -- bound as a standalone leaf type (own Finalizable instance, no Upcastable
+// parent: it isn't a TermStructure), same shape as e.g. QlSwapRateHelper.
+typedef shared_ptr<MultiCurve> QlMultiCurve;
 typedef shared_ptr<OISRateHelper> QlOISRateHelper;
 typedef shared_ptr<OneAssetOption> QlOneAssetOption;
 typedef shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
@@ -877,6 +883,7 @@ template <> class ObjClassName<MarkovFunctional*> {public: static void output(st
 template <> class ObjClassName<Merton76Process*> {public: static void output(std::ostream& os) {os << "Merton76Process";}};
 template <> class ObjClassName<MidPointCdsEngine*> {public: static void output(std::ostream& os) {os << "MidPointCdsEngine";}};
 template <> class ObjClassName<MultiAssetOption*> {public: static void output(std::ostream& os) {os << "MultiAssetOption";}};
+template <> class ObjClassName<MultiCurve*> {public: static void output(std::ostream& os) {os << "MultiCurve";}};
 template <> class ObjClassName<NelsonSiegelFitting*> {public: static void output(std::ostream& os) {os << "NelsonSiegelFitting";}};
 template <> class ObjClassName<NoConstraint*> {public: static void output(std::ostream& os) {os << "NoConstraint";}};
 template <> class ObjClassName<OISRateHelper*> {public: static void output(std::ostream& os) {os << "OISRateHelper";}};
@@ -977,6 +984,7 @@ template <> class ObjClassName<QlMargrabeOption*> {public: static void output(st
 template <> class ObjClassName<QlMarkovFunctional*> {public: static void output(std::ostream& os) {os << "QlMarkovFunctional";}};
 template <> class ObjClassName<QlMerton76Process*> {public: static void output(std::ostream& os) {os << "QlMerton76Process";}};
 template <> class ObjClassName<QlMultiAssetOption*> {public: static void output(std::ostream& os) {os << "QlMultiAssetOption";}};
+template <> class ObjClassName<QlMultiCurve*> {public: static void output(std::ostream& os) {os << "QlMultiCurve";}};
 template <> class ObjClassName<QlOISRateHelper*> {public: static void output(std::ostream& os) {os << "QlOISRateHelper";}};
 template <> class ObjClassName<QlOneAssetOption*> {public: static void output(std::ostream& os) {os << "QlOneAssetOption";}};
 template <> class ObjClassName<QlOneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "QlOneFactorAffineModel";}};

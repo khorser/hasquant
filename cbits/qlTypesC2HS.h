@@ -104,6 +104,7 @@ typedef struct QlMargrabeOption QlMargrabeOption;
 typedef struct QlMarkovFunctional QlMarkovFunctional;
 typedef struct QlMerton76Process QlMerton76Process;
 typedef struct QlMultiAssetOption QlMultiAssetOption;
+typedef struct QlMultiCurve QlMultiCurve;
 typedef struct QlOISRateHelper QlOISRateHelper;
 typedef struct QlOneAssetOption QlOneAssetOption;
 typedef struct QlOneFactorAffineModel QlOneFactorAffineModel;

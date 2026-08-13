@@ -16,6 +16,9 @@
 #include <ql/experimental/credit/factorspreadedhazardratecurve.hpp>
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 #include <ql/termstructures/yield/all.hpp>
+#include <ql/termstructures/multicurve.hpp>
+#include <ql/experimental/termstructures/basisswapratehelpers.hpp>
+#include <ql/experimental/termstructures/crosscurrencyratehelpers.hpp>
 #include <ql/math/interpolations/all.hpp>
 #include <ql/index.hpp>
 #include <ql/indexes/swapindex.hpp>
@@ -566,10 +569,93 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsi
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
   try {
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
+        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, /*bootstrap=*/0, /*accuracy=*/0.0);
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, int extrapolate, char **e) {
+  try {
+    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy);
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
+// MultiCurve builds a set of curves that form a genuine dependency cycle -- see the class's own
+// doc comment in multicurve.hpp for the 4-step protocol this wraps. It is bound as a standalone
+// leaf (see QlMultiCurve's typedef comment in qlaux.h), not part of the TermStructure hierarchy.
+QlMultiCurve *qlMultiCurve(double accuracy, char **e) {
+  try {return ret(new QlMultiCurve(shared_ptr<MultiCurve>(alloc(new MultiCurve(accuracy)))));
+  } catch (std::exception& er) {return handleException<QlMultiCurve*>(e, er);}}
+void qlFreeMultiCurve(QlMultiCurve *o) {del(o);}
+
+// curve's underlying shared_ptr is copied out of its Handle (currentLink()) and moved into
+// addBootstrappedCurve/addNonBootstrappedCurve -- the caller's own QlYieldTermStructure* still
+// owns/frees its Handle independently afterward. The Handle<YieldTermStructure> this returns is
+// wrapped directly, never rebuilt from a shared_ptr (see the "no Handle<YieldTermStructure>("
+// invariant in CLAUDE.md) -- this is a Handle the API itself handed back, not a fresh one.
+QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, char **e) {
+  try {
+    shared_ptr<YieldTermStructure> sp = (*arg(curve)).currentLink();
+    return ret(new QlYieldTermStructure((*arg(mc))->addBootstrappedCurve(*arg(internalHandle), std::move(sp))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlYieldTermStructure *qlMultiCurveAddNonBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, char **e) {
+  try {
+    shared_ptr<YieldTermStructure> sp = (*arg(curve)).currentLink();
+    return ret(new QlYieldTermStructure((*arg(mc))->addNonBootstrappedCurve(*arg(internalHandle), std::move(sp))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+
+// ql/experimental/termstructures/basisswapratehelpers.hpp -- rate-helper constructors only
+// (impliedQuote/accept/setTermStructure/swap() are visitor-pattern/internal plumbing, matching
+// the existing FraRateHelper/SwapRateHelper precedent of leaving those unbound).
+QlRateHelper *qlIborIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth,
+  QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new IborIborBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
+      *arg(baseIndex), *arg(otherIndex), *arg(discountHandle), bootstrapBaseCurve))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth,
+  QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new OvernightIborBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
+      *arg(baseIndex), *arg(otherIndex), qlNullableHandle(arg(discountHandle))))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+
+// ql/experimental/termstructures/crosscurrencyratehelpers.hpp -- CrossCurrencySwapRateHelperBase
+// and CrossCurrencyBasisSwapRateHelperBase are protected-constructor bases, not directly
+// constructible, so only the three concrete leaf classes are bound here.
+QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
+  QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
+  int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg,
+  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
+      *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
+      isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg,
+      paymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)paymentFrequency),
+      paymentLag,
+      quoteCurrencyPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
+  QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
+  int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int isFxBaseCurrencyLegResettable,
+  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new MtMCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
+      *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
+      isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg, isFxBaseCurrencyLegResettable,
+      paymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)paymentFrequency),
+      paymentLag,
+      quoteCurrencyPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
+  int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencySwapRateHelper(*arg(fixedRate), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
+      (Frequency)fixedFrequency, *arg(fixedDayCount), *arg(floatIndex), *arg(collateralCurve), collateralOnFixedLeg, paymentLag))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+
 double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e) {
   try {return (*ts)->discount(Date(date), extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}

@@ -266,6 +266,18 @@ peekSamplePath = SamplePath <.> peekStandalone
 withSamplePath :: SamplePath -> (Ptr CSamplePath -> IO b) -> IO b
 withSamplePath = withStandalone . getCSamplePath
 
+-- MultiCurve is enable_shared_from_this upstream ("This must be a shared pointer") and builds a
+-- set of curves that form a genuine dependency cycle; bound as a standalone leaf, not part of
+-- the TermStructure hierarchy (it isn't a TermStructure itself), mirroring PricingEngine above.
+data CMultiCurve
+newtype MultiCurve = MultiCurve {getCMultiCurve :: Standalone CMultiCurve}
+foreign import ccall unsafe "ql.h &qlFreeMultiCurve" qlFreeMultiCurve :: FinalizerPtr CMultiCurve
+instance Finalizable CMultiCurve where finalize = qlFreeMultiCurve
+peekMultiCurve :: Ptr CMultiCurve -> IO MultiCurve
+peekMultiCurve = MultiCurve <.> peekStandalone
+withMultiCurve :: MultiCurve -> (Ptr CMultiCurve -> IO b) -> IO b
+withMultiCurve = withStandalone . getCMultiCurve
+
 -- special cases: those types will be represented as enums so no need to wrap them
 data CQlClaim
 type QlClaim = Standalone CQlClaim
@@ -819,6 +831,9 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- >  YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
 -- >    RelinkableYieldTermStructure = GenYieldTermStructure ...
+-- (MultiCurve, below with the other standalone leaves, is not a YieldTermStructure member --
+-- it manages a cycle of them, handing out 'YieldTermStructure' handles via addBootstrappedCurve
+-- \/ addNonBootstrappedCurve. See its own definition's comment.)
 -- >  VolatilityTermStructure
 -- >    OptionletVolatilityStructure
 -- >      RelinkableOptionletVolatilityStructure

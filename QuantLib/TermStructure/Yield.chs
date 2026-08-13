@@ -65,9 +65,21 @@ module QuantLib.TermStructure.Yield
 
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
+  , piecewiseYieldCurveGlobalBootstrap'
   , interpolatedZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
+
+  , MultiCurve
+  , multiCurve
+  , addBootstrappedCurve
+  , addNonBootstrappedCurve
+
+  , iborIborBasisSwapRateHelper
+  , overnightIborBasisSwapRateHelper
+  , constNotionalCrossCurrencyBasisSwapRateHelper
+  , mtMCrossCurrencyBasisSwapRateHelper
+  , constNotionalCrossCurrencySwapRateHelper
 
   , underlying
   ) where
@@ -112,6 +124,7 @@ import QuantLib.Internal.Type
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign -> CFittedBondDiscountCurve' nocode#}
 {#pointer *QlRelinkableYieldTermStructure as RelinkableYieldTermStructure foreign -> CRelinkableYieldTermStructure' nocode#}
+{#pointer *QlMultiCurve as MultiCurve foreign -> CMultiCurve nocode#}
 {#pointer *QlRateHelper as RateHelper foreign -> CRateHelper' nocode#}
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign -> CSwapRateHelper' nocode#}
 {#pointer *QlOISRateHelper as OISRateHelper foreign -> COISRateHelper' nocode#}
@@ -246,6 +259,94 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m"]
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper for an ibor-ibor basis swap: pays @baseIndex + basis@, receives
+-- @otherIndex@. Pass @bootstrapBaseCurve = True@ (with 'otherIndex' carrying a forecast curve)
+-- to bootstrap the forecast curve for 'baseIndex', or 'False' (with 'baseIndex' carrying a
+-- forecast curve) to bootstrap the forecast curve for 'otherIndex'. An exogenous discount curve
+-- is always required.
+{#fun qlIborIborBasisSwapRateHelper as iborIborBasisSwapRateHelper{withQuote*`GenQuote a' -- ^basis
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withIborIndex*`GenIborIndex b' -- ^baseIndex
+  ,withIborIndex*`GenIborIndex c' -- ^otherIndex
+  ,withYieldTermStructure*`GenYieldTermStructure d' -- ^discountHandle
+  ,`Bool' -- ^bootstrapBaseCurve
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper for an overnight-ibor basis swap: pays @baseIndex + basis@, receives
+-- @otherIndex@. Bootstraps the forecast curve for 'otherIndex'; 'baseIndex' needs an existing
+-- forecast curve. If 'Nothing', the overnight index's own curve is used as the discount curve.
+{#fun qlOvernightIborBasisSwapRateHelper as overnightIborBasisSwapRateHelper{withQuote*`GenQuote a' -- ^basis
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withOvernightIborIndex*`OvernightIborIndex' -- ^baseIndex
+  ,withIborIndex*`GenIborIndex b' -- ^otherIndex
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure d)' -- ^discountHandle
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper for a constant-notional cross-currency basis swap: the collateral is
+-- paid in the quote currency, the basis is given on the base-currency leg. 'Nothing' for either
+-- frequency parameter derives the corresponding leg's schedule from its index tenor (or, for the
+-- quote-currency leg, falls back to the base-currency frequency if that is given).
+{#fun qlConstNotionalCrossCurrencyBasisSwapRateHelper as constNotionalCrossCurrencyBasisSwapRateHelper{withQuote*`GenQuote a' -- ^basis
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withIborIndex*`GenIborIndex b' -- ^baseCurrencyIndex
+  ,withIborIndex*`GenIborIndex c' -- ^quoteCurrencyIndex
+  ,withYieldTermStructure*`GenYieldTermStructure d' -- ^collateralCurve
+  ,`Bool' -- ^isFxBaseCurrencyCollateralCurrency
+  ,`Bool' -- ^isBasisOnFxBaseCurrencyLeg
+  ,fromMaybeEnum`Maybe Frequency' -- ^paymentFrequency
+  ,fromIntegral`Int' -- ^paymentLag
+  ,fromMaybeEnum`Maybe Frequency' -- ^quoteCurrencyPaymentFrequency
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper for a marked-to-market cross-currency basis swap: like
+-- 'constNotionalCrossCurrencyBasisSwapRateHelper', but the notional on the MtM leg resets at
+-- each payment to reflect the FX rate.
+{#fun qlMtMCrossCurrencyBasisSwapRateHelper as mtMCrossCurrencyBasisSwapRateHelper{withQuote*`GenQuote a' -- ^basis
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withIborIndex*`GenIborIndex b' -- ^baseCurrencyIndex
+  ,withIborIndex*`GenIborIndex c' -- ^quoteCurrencyIndex
+  ,withYieldTermStructure*`GenYieldTermStructure d' -- ^collateralCurve
+  ,`Bool' -- ^isFxBaseCurrencyCollateralCurrency
+  ,`Bool' -- ^isBasisOnFxBaseCurrencyLeg
+  ,`Bool' -- ^isFxBaseCurrencyLegResettable
+  ,fromMaybeEnum`Maybe Frequency' -- ^paymentFrequency
+  ,fromIntegral`Int' -- ^paymentLag
+  ,fromMaybeEnum`Maybe Frequency' -- ^quoteCurrencyPaymentFrequency
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper for a fixed-vs-floating cross-currency par swap: quoted at par, so the
+-- FX spot cancels out and isn't required. 'collateralOnFixedLeg' selects which leg is discounted
+-- with 'collateralCurve' -- the other leg's discount curve is the one being bootstrapped.
+{#fun qlConstNotionalCrossCurrencySwapRateHelper as constNotionalCrossCurrencySwapRateHelper{withQuote*`GenQuote a' -- ^fixedRate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,`Frequency' -- ^fixedFrequency
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withIborIndex*`GenIborIndex b' -- ^floatIndex
+  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^collateralCurve
+  ,`Bool' -- ^collateralOnFixedLeg
+  ,fromIntegral`Int' -- ^paymentLag
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
@@ -446,6 +547,25 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
 piecewiseYieldCurve' s cal r dc qd t i ex = uncurryNested (qlPiecewiseYieldCurve1 s cal r dc qs ds t) (qlInterpolation i) ex where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurve1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Like 'piecewiseYieldCurve'', but bootstraps with QuantLib's @GlobalBootstrap@ instead of
+-- @IterativeBootstrap@ -- all instruments (and, for a 'MultiCurve' cycle, all member curves) are
+-- solved for together under one optimizer, rather than pillar-by-pillar. This is what lets a
+-- rate helper reference another curve's not-yet-bootstrapped handle: see the \"relinkable
+-- handles\" tests in "QuantLib.Spec.TermStructure" for the two-curve cycle this exists for.
+-- Hardcodes trait=Discount\/interpolator=LogLinear in its own shim (the only combination this
+-- dispatch supports, per CLAUDE.md's dispatch-table-scope note) rather than taking
+-- 'BootstrapTrait'\/'Interpolation' params.
+piecewiseYieldCurveGlobalBootstrap' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper b] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote a)] -- ^jumps
+  -> Double -- ^accuracy
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveGlobalBootstrap' s cal r dc qd acc ex = qlPiecewiseYieldCurveGlobalBootstrap1 s cal r dc qs ds acc ex where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
@@ -513,6 +633,31 @@ interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd
 -- it a curve scenario means rebuilding the whole portfolio.
 {#fun qlRelinkableYieldTermStructureLinkTo as linkTo{withRelinkableYieldTermStructure*`RelinkableYieldTermStructure'
   ,withYieldTermStructure*`GenYieldTermStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Builds a set of curves that form a genuine dependency cycle -- the scenario
+-- 'RelinkableYieldTermStructure' exists for. Protocol (see the class's own upstream doc
+-- comment): build each member curve's rate helpers off an empty 'relinkableYieldTermStructure'
+-- (the /internal/ handle), construct the curves themselves (e.g. via
+-- 'piecewiseYieldCurveGlobalBootstrap''), then hand each pair of (internal handle, curve) to
+-- 'addBootstrappedCurve' -- which returns an /external/ handle to reference the curve by from
+-- then on, and links the internal handle to it (with ownership/observability stripped to avoid
+-- shared_ptr and notification cycles) so the curves' own cross-references resolve.
+{#fun qlMultiCurve as multiCurve{`Double' -- ^accuracy
+  ,preErrorCheck-`String'errorCheck*-}->`MultiCurve'peekMultiCurve*#}
+
+-- |Add a curve built with a bootstrapper (e.g. 'piecewiseYieldCurveGlobalBootstrap'') to the
+-- cycle. See 'multiCurve' for the protocol.
+{#fun qlMultiCurveAddBootstrappedCurve as addBootstrappedCurve{withMultiCurve*`MultiCurve'
+  ,withRelinkableYieldTermStructure*`RelinkableYieldTermStructure' -- ^internalHandle
+  ,withYieldTermStructure*`GenYieldTermStructure a' -- ^curve
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Add a curve that isn't built with a bootstrapper (e.g. a spreaded curve) to the cycle. See
+-- 'multiCurve' for the protocol.
+{#fun qlMultiCurveAddNonBootstrappedCurve as addNonBootstrappedCurve{withMultiCurve*`MultiCurve'
+  ,withRelinkableYieldTermStructure*`RelinkableYieldTermStructure' -- ^internalHandle
+  ,withYieldTermStructure*`GenYieldTermStructure a' -- ^curve
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- TODO use the class or decide it's not needed
 class HelperUnderlying a b | a -> b where underlying :: a -> IO b
