@@ -21,10 +21,12 @@ import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC))
 import QuantLib.Instrument.Swap(vanillaSwap, SwapType(Payer), swaption)
+import QuantLib.Instrument.CapFloor(cap)
+import QuantLib.CashFlow(iborLeg)
 import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine')
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine')
 
 import QuantLib.Spec.Helpers(areClose)
 
@@ -292,4 +294,38 @@ spec = do
           vol1 <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
           Vol.linkSwaptionVolTo volH vol1
           after <- npv swpn
+          abs (after - before) `shouldSatisfy` (> 0.5)
+
+      -- A relinkable optionlet vol surface propagates the same way: an engine built on it
+      -- keeps tracking whatever surface the handle currently points at, so relinking reprices
+      -- the cap without rebuilding the engine. Mirrors the swaption vol case above.
+      let mkCap = do
+            (_, discountH, forecastH) <- setupSwap
+            cal <- Calendar.calendar TARGET
+            settle <- advance cal (11 `december` 2012) (2, Days) Following False
+            floatDC <- dayCounter (Actual360 False)
+            floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
+              ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+            idx <- iborIndex Euribor6M (Just forecastH)
+            leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+            capfl <- cap leg [0.03]
+            dc <- dayCounter Actual365FixedStandard
+            volQ <- Quote.simpleQuote 0.20
+            vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            volH <- Vol.relinkableOptionletVolatilityStructure (Just vol0)
+            eng <- blackCapFloorEngine' discountH volH
+            setPricingEngine capfl eng
+            pure (capfl, volH)
+
+      it "relinking an optionlet vol surface reprices the cap, without rebuilding the engine" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (capfl, volH) <- mkCap
+          before <- npv capfl
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          q <- Quote.simpleQuote 0.60
+          vol1 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
+          Vol.linkOptionletVolTo volH vol1
+          after <- npv capfl
           abs (after - before) `shouldSatisfy` (> 0.5)

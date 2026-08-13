@@ -567,12 +567,21 @@ The same reasoning applies to every other market-data type the shim currently pa
    `SwaptionVolatilityStructure` instead. F8 came out fully clean, no accepted exceptions. New
    test: relinking a `SwaptionVolatilityStructure` feeding a real `swaption`/`blackSwaptionEngine'`
    moves the NPV without rebuilding the engine.
-4. **`OptionletVolatilityStructure`** — the same treatment, not yet started. Its consumers
-   (`blackCapFloorEngine'`, `blackIborCouponPricer`, and the `Volatility.chs` getters) are, like
-   `SwaptionVolatilityStructure`'s were, typed to the concrete type rather than already
-   polymorphic — so this needs the same `GenOptionletVolatilityStructure`/
-   `withOptionletVolatilityStructure` dedicated-wrapper treatment, not a signature-only widen.
-   (`SmileSection` dropped from this list — see above.)
+4. ~~**`OptionletVolatilityStructure`**~~ — **IMPLEMENTED**, applying the `SwaptionVolatilityStructure`
+   dedicated-wrapper pattern directly (its two consumers, `blackCapFloorEngine'` and
+   `blackIborCouponPricer`, were typed to the concrete type rather than already polymorphic, same
+   as Swaption's were): `GenOptionletVolatilityStructure a = GenVolatilityTermStructure (AnyOf
+   COptionletVolatilityStructure' a)`, `withOptionletVolatilityStructure` performing a real
+   upcast to the fixed `Ptr COptionletVolatilityStructure'`, `RelinkableOptionletVolatilityStructure`
+   one-hop-upcasting straight to `OptionletVolatilityStructure` (Link-preserving). This one had
+   only two consumer call sites to widen (`Volatility.chs` binds no other getters against the
+   concrete type), versus Swaption's ~26, so it went in cleanly on the first build. One
+   pre-existing wrinkle fixed in passing: `qlConstantOptionletVol1`'s return site constructed the
+   `ConstantOptionletVolatility` with a bare `new` rather than `alloc(new ...)` (unlike its
+   sibling `qlConstantOptionletVolatility`), silently skipping allocation tracing for that one
+   constructor — now consistent. F8 fully clean, no accepted exceptions. New test: relinking an
+   `OptionletVolatilityStructure` feeding a real `cap`/`blackCapFloorEngine'` moves the NPV
+   without rebuilding the engine. (`SmileSection` dropped from this list — see above.)
 
 Everything established here carries over unchanged, and should be reused rather than re-derived:
 

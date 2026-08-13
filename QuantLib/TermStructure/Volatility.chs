@@ -12,6 +12,8 @@ module QuantLib.TermStructure.Volatility
   , CapFloorTermVolSurface
   , LocalVolTermStructure
   , OptionletVolatilityStructure
+  , GenOptionletVolatilityStructure
+  , RelinkableOptionletVolatilityStructure
   , SmileSection
   , SwaptionVolatilityStructure
   , RelinkableSwaptionVolatilityStructure
@@ -74,6 +76,8 @@ module QuantLib.TermStructure.Volatility
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
   , linkSwaptionVolTo
+  , relinkableOptionletVolatilityStructure
+  , linkOptionletVolTo
   , localConstantVol'
   , localConstantVol
   , localVolCurve
@@ -106,6 +110,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
+{#pointer *QlRelinkableOptionletVolatilityStructure as RelinkableOptionletVolatilityStructure foreign -> CRelinkableOptionletVolatilityStructure' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign -> CBlackVarianceCurve' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
@@ -157,6 +162,21 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
+
+-- |An optionlet vol surface behind a relinkable handle. The result /is/ an
+-- 'OptionletVolatilityStructure': pass it anywhere one is expected and everything built on it
+-- keeps tracking whatever the handle currently points at, so a later 'linkOptionletVolTo'
+-- reprices already-constructed instruments without rebuilding them. Mirrors
+-- 'relinkableSwaptionVolatilityStructure'.
+{#fun qlRelinkableOptionletVolatilityStructure as relinkableOptionletVolatilityStructure{withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure a)'
+  ,preErrorCheck-`String'errorCheck*-}->`RelinkableOptionletVolatilityStructure'peekRelinkableOptionletVolatilityStructure*#}
+
+-- |Point a relinkable optionlet vol handle at a different surface. Everything already built on
+-- the handle reprices against the new surface, with no engine rebuilt. Named distinctly from
+-- 'QuantLib.TermStructure.Yield.linkTo'\/'linkBlackVolTo'\/'linkSwaptionVolTo' for the same
+-- reason as those: all four relinkable vol types live in this one module.
+{#fun qlRelinkableOptionletVolatilityStructureLinkTo as linkOptionletVolTo{withRelinkableOptionletVolatilityStructure*`RelinkableOptionletVolatilityStructure'
+  ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlBlackConstantVol1 as blackConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 {#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 

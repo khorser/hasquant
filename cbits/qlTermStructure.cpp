@@ -116,11 +116,22 @@ ext::shared_ptr<SabrInterpolatedSmileSection> asSabrInterpolatedSmileSection(con
 
 extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, char **e) {
-  try {return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, *arg(q), *arg(dc), (VolatilityType)type, displacement)));
+  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, *arg(q), *arg(dc), (VolatilityType)type, displacement)))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
 
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}
-QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+// Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
+QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+
+// A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
+QlRelinkableOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructure(QlOptionletVolatilityStructure *initial, char **e) {
+  try {return ret(initial ? new QlRelinkableOptionletVolatilityStructure(handlePtr(arg(initial)))
+                          : new QlRelinkableOptionletVolatilityStructure());
+  } catch (std::exception& er) {return handleException<QlRelinkableOptionletVolatilityStructure*>(e, er);}}
+void qlFreeRelinkableOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o) {del(o);}
+void qlRelinkableOptionletVolatilityStructureLinkTo(QlRelinkableOptionletVolatilityStructure *o, QlOptionletVolatilityStructure *c, char **e) {
+  try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+QlOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o) {return ret(new QlOptionletVolatilityStructure(*arg(o)));}
 void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) {del(o);}
 // VolatilityTermStructure is never a Handle upstream (confirmed by grep), so this is a
 // deliberate snapshot detach -- same reasoning as qlYieldTermStructureAsTermStructure.
@@ -159,7 +170,7 @@ QlBlackVolTermStructure* qlBlackConstantVol(int referenceDate, Calendar* x1, QlQ
   try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), *arg(volatility), *arg(dayCounter))))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlConstantOptionletVolatility(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double displacement, char **e) {
-  try {return ret(new QlOptionletVolatilityStructure(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, displacement))));
+  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, displacement)))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlConstantSwaptionVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double shift, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new ConstantSwaptionVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift)))));

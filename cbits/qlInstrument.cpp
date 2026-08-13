@@ -1013,7 +1013,7 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
 
 QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e) {
   try {Handle<Quote> corr = qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(new SimpleQuote(1.0)); });
-    return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(Handle<OptionletVolatilityStructure>(*arg(vol)), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
+    return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(*arg(vol), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion)))));

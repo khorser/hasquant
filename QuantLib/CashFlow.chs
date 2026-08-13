@@ -490,7 +490,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
-{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withGenVolatilityTermStructure*`OptionletVolatilityStructure'
+{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure b'
   ,`TimingAdjustment'
   ,withMaybeQuote*`Maybe (GenQuote a)' -- ^correlation
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupon

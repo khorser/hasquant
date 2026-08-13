@@ -178,7 +178,7 @@ QlPricingEngine* qlAnalyticPerformanceEngine(QlGeneralizedBlackScholesProcess* p
   try {return ret(new QlPricingEngine(alloc(new AnalyticPerformanceEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new BlackCapFloorEngine(*arg(discountCurve), Handle<OptionletVolatilityStructure>(*arg(vol))))));
+  try {return ret(new QlPricingEngine(alloc(new BlackCapFloorEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, double displacement, char **e) {
   try {return ret(new QlPricingEngine(alloc(new BlackCapFloorEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), displacement))));

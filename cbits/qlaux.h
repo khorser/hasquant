@@ -567,7 +567,9 @@ typedef shared_ptr<PricingEngine> QlPricingEngine;
 typedef shared_ptr<IborIndex> QlIborIndex;
 typedef shared_ptr<Index> QlIndex;
 typedef shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
-typedef shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
+// A vol structure is a Handle, same reasoning as QlBlackVolTermStructure/QlSwaptionVolatilityStructure below.
+typedef Handle<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
+typedef RelinkableHandle<OptionletVolatilityStructure> QlRelinkableOptionletVolatilityStructure;
 typedef shared_ptr<Instrument> QlInstrument;
 typedef shared_ptr<Bond> QlBond;
 typedef shared_ptr<FixedRateBond> QlFixedRateBond;
