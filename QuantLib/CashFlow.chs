@@ -99,10 +99,10 @@ module QuantLib.CashFlow
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding)
-{#import QuantLib.Time.Schedule#}(Frequency, TimeUnit)
+{#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum(CPIInterpolationType(..))
+import QuantLib.Internal.Enum
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -490,7 +490,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
-{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withGenVolatilityTermStructure*`OptionletVolatilityStructure'
+{#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure b'
   ,`TimingAdjustment'
   ,withMaybeQuote*`Maybe (GenQuote a)' -- ^correlation
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupon
@@ -504,9 +504,9 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlAnalyticHaganPricer as analyticHaganPricer{withGenVolatilityTermStructure*`SwaptionVolatilityStructure',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
+{#fun qlAnalyticHaganPricer as analyticHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
-{#fun qlNumericHaganPricer as numericHaganPricer{withGenVolatilityTermStructure*`SwaptionVolatilityStructure',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
+{#fun qlNumericHaganPricer as numericHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
   ,`Double' -- ^lowerLimit
   ,`Double' -- ^upperLimit
   ,`Double' -- ^precision

@@ -38,11 +38,12 @@ run = do
   flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
   ts <- flatForward tod flatRate dc Continuous Annual
-  maturities <- mapM (addPeriod tod . (, Months)) [3, 6, 12, 24] >>= mapM (\d -> adjust cal d Following)
+  settlementDate <- advance cal tod (1, Days) Following False
+  maturities <- mapM (addPeriod settlementDate . (, Months)) [3, 6, 12, 24] >>= mapM (\d -> adjust cal d Following)
 
   instruments <- mapM
     (\t -> simpleQuote quotedSpread >>=
-        $(free1st 'spreadCdsHelper) (t, Months) 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
+        $(free1st 'spreadCdsHelper) (t, Months) 1 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
       [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve tod instruments dc [] HazardRate BackwardFlat
@@ -50,13 +51,15 @@ run = do
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
 
   sched <- forM maturities
-    $ \m -> schedule (Just tod) m (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
+    $ \m -> schedule (Just settlementDate) m (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing FaceValue dc True Nothing 3
 
-  [fairSpreads, npvs, defnpvs, cpnnpvs] <- mapM
-    (\f -> mapM (\c -> asInstrument c >>= (`setPricingEngine` eng) >> f c) cds)
-    [fairSpread, asInstrument >=> npv, defaultLegNPV, couponLegNPV]
+  mapM_ (asInstrument >=> (`setPricingEngine` eng)) cds
+  fairSpreads <- mapM fairSpread cds
+  npvs <- mapM (asInstrument >=> npv) cds
+  defnpvs <- mapM defaultLegNPV cds
+  cpnnpvs <- mapM couponLegNPV cds
 
   return Result {
       probsR = map (100*) probs

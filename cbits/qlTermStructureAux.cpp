@@ -166,7 +166,31 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
-    int trait, int interpolator, int approximator, int approximatorArg) {
+    int trait, int interpolator, int approximator, int approximatorArg,
+    int bootstrap, double accuracy, const std::vector<double>& instrumentWeights) {
+  if (bootstrap == 1) {
+    // GlobalBootstrap is wired up only for trait=Discount, interpolator=LogLinear -- the one
+    // combination the multi-curve relinkable-handle test needs; CLAUDE.md is explicit about
+    // not building dispatch for hypothetical future trait x interpolator combinations.
+    QL_REQUIRE(trait == hasquant::Discount && interpolator == hasquant::LogLinear,
+        "GlobalBootstrap-based PiecewiseYieldCurve construction is only supported for "
+        "trait=Discount, interpolator=LogLinear (got trait " << trait << ", interpolator "
+        << interpolator << ")");
+    typedef PiecewiseYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap> CurveType;
+    // Spelled CurveType::bootstrap_type(accuracy), not GlobalBootstrap<CurveType>(accuracy):
+    // GlobalBootstrap overrides pure-virtual methods from MultiCurveBootstrapContributor, and
+    // [temp.inst] instantiates a class's virtual member function bodies together with the class
+    // itself. Naming GlobalBootstrap<CurveType> directly starts instantiating *that*
+    // specialization first, which then needs CurveType complete -- but CurveType is simultaneously
+    // mid-instantiation because of this very argument (its bootstrap_ field has type
+    // GlobalBootstrap<CurveType>), producing a hard "incomplete type" error (reproduced
+    // independently with clang and g++-16). Naming CurveType (via ::bootstrap_type) first instead
+    // makes CurveType the outer instantiation, so GlobalBootstrap<CurveType>'s virtual bodies are
+    // only instantiated once CurveType is complete. Don't "simplify" this back to the direct
+    // spelling -- it silently reintroduces the compile failure.
+    return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::LogLinear(),
+        CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
+  }
   switch (trait) {
   case hasquant::Discount:
     switch (interpolator) {

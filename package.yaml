@@ -1,5 +1,5 @@
 name: hasquant
-version: "0.4.0.0"
+version: "0.5.0.0"
 synopsis: Bindings to QuantLib
 license: BSD-3-Clause
 maintainer: Sergei Khorev <sergey.khorev@gmail.com>
@@ -26,7 +26,9 @@ flags:
 extra-source-files:
   - cbits/*.h
 dependencies:
-  - base >=4.11 && <5.0
+  # 4.14 is GHC 8.10.6, the oldest compiler this is actually built and tested against
+  # (the lts-18.8 gate); nothing below that is exercised, so don't claim to support it
+  - base >=4.14 && <5.0
   - time
 ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
 when:
@@ -98,7 +100,14 @@ library:
       else:
         extra-libraries: QuantLib
     - condition: os(osx)
+      # include-dirs stays: c2hs/cpp needs it to find the headers at all. The -isystem
+      # duplicates below are what silence QuantLib's and boost's own warnings (~113 under
+      # -Wall -Wextra -pedantic, vs none from cbits/) -- -isystem wins over the -I that
+      # include-dirs and pkg-config emit for the same directory, and leaves warnings in
+      # cbits/ untouched. QuantLib goes through Homebrew's stable opt/ symlink because
+      # pkg-config points at the version-pinned Cellar path, which -isystem must match.
       include-dirs: /opt/homebrew/include
+      cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
 
 tests:
   hasquant_test:

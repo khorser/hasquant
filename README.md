@@ -16,7 +16,7 @@ Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.
 
 The current version was mostly tested with GHC-9.10.3, but it should work with newer or reasonably older versions (at least as old as 8.10.6), since I deliberately avoided advanced language features.
 
-Linux and macOS are the primary, well-tested platforms. Windows builds are also possible, but the process currently involves several non-obvious toolchain workarounds — see [`WINDOWS.md`](WINDOWS.md) for the full, tested recipe if you want to try it.
+Linux and macOS are the primary, well-tested platforms. Windows builds work too, but QuantLib has to be rebuilt with GHC's own bundled Clang first — see [`WINDOWS.md`](WINDOWS.md) for the (short) recipe.
 
 ## Stack
 
@@ -26,8 +26,27 @@ Run tests: `stack build --test --no-haddock`
 
 Build and run examples: `stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example`, also `--flag hasquant:buildExample` is required if you want to use HLS with examples.
 
-Build and run examples enabling tracking of memory allocations (print all created and deleted objects to stderr):
+Build and run examples enabling tracking of memory allocations (log every object as it
+is created and deleted):
 `stack build --no-haddock --flag hasquant:buildExample --flag hasquant:trackAllocations $* && stack exec hasquant_example`
+
+The trace goes to stderr by default. Set the `QLTRACK_ALLOCATIONS` environment variable
+to send it to a file instead, which is usually what you want — redirecting stderr also
+swallows the program's own output, and a trace is only useful next to the values it
+explains:
+
+`QLTRACK_ALLOCATIONS=/tmp/trace.log stack exec hasquant_example`
+
+A raw trace is thousands of interleaved lines. `tools/alloc-summary.py /tmp/trace.log`
+pairs allocations with frees by pointer and reports what is still live, grouped by
+class, listing double frees separately from ordinary leaks; it exits non-zero if
+anything is unaccounted for, so it can gate a check.
+
+**One trap worth knowing:** neither cabal nor stack recompiles `cxx-sources` when only
+a flag changes, so turning `trackAllocations` on for an already-built tree reports
+success and produces a library with no tracing in it — an empty trace and no error.
+Delete the built C++ objects (the `build/cbits` directory) first, and confirm with
+`strings <a built .o> | grep -c allocated` before trusting an empty result.
 
 Run GHCi: `stack ghci --ghci-options $(find .stack-work \( -name "*.so" -o -name "*.dylib" \) -print -quit)`
 
@@ -43,8 +62,11 @@ Build example and tests: `cabal configure -f buildExample --enable-tests --disab
 
 ## Docker
 
-The repo contains docker compose files for a custom Linux x86_64 image. You can use it like this:
-`docker compose run --rm -it hasquant sh -c 'stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example && stack test`
+The repo contains docker compose files for a custom Linux x86_64 image. You can use it like this to run tests using GHC-8.10.6:
+`docker compose run --rm -it hasquant stack --resolver lts-18.8 test`
+
+The config mounts `/root/.stack`, `/root/.ghcup` and `/hasquant/.stack-work` as named volumes so
+everything installed with stack/ghcup will persist across runs.
 
 # On Types
 
@@ -66,9 +88,10 @@ And if a function accepts `GenInstrument a` (like `npv`), you can pass any instr
 While this is convenient, it leads to some allocation and deallocation on each call, so you might consider using `asBond` and `asInstrument` to get an object of the required type.
 
 # TODO
+- Two instances of the same "dispatch table doesn't cover the full template parameter space" pattern, worth reconsidering together if a generic solution is ever designed: `qlPiecewiseYieldCurveAux1`'s `GlobalBootstrap` branch only covers `Discount`x`LogLinear`, not the full trait x interpolator matrix `IterativeBootstrap` supports; and `qlBlackVarianceSurface` (`cbits/qlTermStructure.cpp`) has its `interpolator`/`approximator`/`approximatorArg` params commented out entirely (2-D `Interpolation` was never wired up), so it's always upstream's default bilinear. Both are hand-written C++ switches over a fixed subset rather than something generic over the template parameter.
+- `GlobalBootstrap`'s functor-callback constructors are not bound: `additionalHelpers`/`additionalDates`/`additionalPenalties`/`additionalVariables` (`ql/termstructures/globalbootstrap.hpp`) let a caller inject extra pillars, extra cost-function error terms, and extra optimized variables (e.g. `SimpleQuoteVariables`, for jointly calibrating a convexity-adjustment quote alongside the curve) as C++ `std::function`s. Only the plain `accuracy`/`instrumentWeights` constructor is bound (`piecewiseYieldCurveGlobalBootstrap'`). Binding the functor forms means marshalling Haskell functions as callbacks into QuantLib's optimizer, which is a materially larger feature than a normal constructor binding -- not attempted. `testGlobalBootstrap`/`testGlobalBootstrapPenalty`/`testGlobalBootstrapVariables` (`test-suite/piecewiseyieldcurve.cpp`) exercise these and are unported for the same reason.
 - (Perpetual) Add more classes and methods. You will need to update `cbits/qlaux.h`, `qlTypesC2HS.hs`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
 - Add more nonempty lists or vectors for some functions where applicable
-- Use some QuantLib Handles/RelinkableHandle for quotes and curves to support native QuantLib semantics
 - Design a declarative embedded DSL
 - Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - See [github issues](https://github.com/khorser/hasquant) for more formalized tasks
@@ -148,3 +171,7 @@ Polished FFI helpers and reduced technical debt. Updated static data, added infl
 ## 0.4.0.0 (2026)
 
 Extended the functionality, added more instruments and asset classes
+
+## 0.5.0.0 (2026)
+
+Support for RelinkableHandle has finally landed. As it turned out the current model is a perfect fit for it.

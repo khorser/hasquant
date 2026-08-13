@@ -54,7 +54,7 @@ module QuantLib.Internal
   , objectMatrix
   , qlNullInteger
 
-  , uncurry'
+  , uncurryNested
   )
 where
 
@@ -244,6 +244,10 @@ toDay = fromSerial
 withMaybeDay :: Maybe Day -> (CInt -> IO a) -> IO a
 withMaybeDay x f = maybe (f 0) (`withDay` f) x
 
+-- |Unlike the -1 sentinel used by 'fromMaybeBool'/'fromMaybeEnum'/'toMaybeBool', the
+-- absent-date sentinel is 0: QuantLib serial 0 is not a representable date (serials
+-- start at 'qlMinDateSerialNumber'), so it is free to mean "no date". This matches
+-- 'withMaybeDay', which passes 0 in the other direction.
 toMaybeDay :: CInt -> Maybe Day
 toMaybeDay 0 = Nothing
 toMaybeDay x = Just $ fromSerial x
@@ -259,24 +263,22 @@ maxDate = fromSerial qlMaxDateSerialNumber
 data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
   deriving (Eq, Show)
 
--- do something more interesting using type system
+-- |'objectMatrix' specialised to 'Double'. Kept as a separate name for callers that
+-- need the element type pinned; the check and construction are identical.
 realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
-realMatrix rows cols d =
-  if rows * cols /= fromIntegral (length d)
-    then Left "Data length does not match with dimensions"
-    else Right $ Matrix rows cols d
+realMatrix = objectMatrix
 
 objectMatrix :: Word -> Word -> [a] -> Either String (Matrix a)
-objectMatrix rows cols d =
-  if rows * cols /= fromIntegral (length d)
-    then Left "Data length does not match with dimensions"
-    else Right $ Matrix rows cols d
+objectMatrix rows cols d
+  | rows * cols == fromIntegral (length d) = Right $ Matrix rows cols d
+  | otherwise = Left $ "Data length " ++ show (length d)
+      ++ " does not match dimensions " ++ show rows ++ "x" ++ show cols
 
 -- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
 fromEnumC :: (Enum a, Integral b) => a -> b
 fromEnumC = fromIntegral . fromEnum
 
-uncurry' :: (a -> b -> c -> d) -> (a, (b, c)) -> d
-uncurry' f (x, (y, z)) = f x y z
+uncurryNested :: (a -> b -> c -> d) -> (a, (b, c)) -> d
+uncurryNested f (x, (y, z)) = f x y z
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

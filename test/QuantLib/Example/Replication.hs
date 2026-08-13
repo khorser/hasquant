@@ -4,10 +4,8 @@ module QuantLib.Example.Replication
     Result(..)
   , run
   ) where
-import Prelude hiding(head)
 import Control.Monad(void, foldM)
 import Data.Time.Calendar
-import Data.List.NonEmpty(NonEmpty, head)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -31,7 +29,7 @@ data Result = Result
 run :: IO Result
 run = do
   setEvaluationDate $ Just tod
-  underlyingQuote <- simpleQuote (head underlyingValues)
+  underlyingQuote <- simpleQuote initialSpot
   riskFreeRate <- simpleQuote 0.04
   vol <- simpleQuote 0.20
   dc <- dayCounter Actual365FixedStandard
@@ -62,15 +60,22 @@ run = do
 
   setEvaluationDate $ Just tod
 
-  [npv1, npv2, npv3] <- mapM
-    (\v -> setValue underlyingQuote v
-      >> mapM npv [refInstrument, portfolio1, portfolio2, portfolio3])
-    underlyingValues
+  -- naming the three spots directly, rather than pattern-matching a 3-element list out
+  -- of a mapM over `underlyingValues`, which hid which result belonged to which spot
+  -- the signature is load-bearing: OverloadedLists is on for this module, so without
+  -- it the instrument list literal makes the inferred type IsList-polymorphic, which
+  -- GHC 8.10 rejects outright ("illegal equational constraint")
+  let npvsAtSpot :: Double -> IO [Double]
+      npvsAtSpot v = setValue underlyingQuote v
+        >> mapM npv [refInstrument, portfolio1, portfolio2, portfolio3]
+  npvAtInitial <- npvsAtSpot initialSpot
+  npvAtOutOfTheMoney <- npvsAtSpot outOfTheMoneySpot
+  npvAtInTheMoney <- npvsAtSpot inTheMoneySpot
 
   return Result {
-    npvInit = npv1
-  , npvOut = npv2
-  , npvIn = npv3
+    npvInit = npvAtInitial
+  , npvOut = npvAtOutOfTheMoney
+  , npvIn = npvAtInTheMoney
   }
   where barrierType = DownOut
         optionType = Put
@@ -78,8 +83,10 @@ run = do
         maturity = addGregorianYearsClip 1 tod
         barrier = 70.0
         rebate = 0.0
-        underlyingValues :: NonEmpty Double
-        underlyingValues = [100.0, 110.0, 90.0]
+        initialSpot, outOfTheMoneySpot, inTheMoneySpot :: Double
+        initialSpot = 100.0
+        outOfTheMoneySpot = 110.0
+        inTheMoneySpot = 90.0
         strike = 100.0
         i1 = [12, 11 .. 1]
         maturities1 = map (`addGregorianMonthsClip` tod) i1

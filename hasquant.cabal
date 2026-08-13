@@ -5,7 +5,7 @@ cabal-version: 2.2
 -- see: https://github.com/sol/hpack
 
 name:           hasquant
-version:        0.4.0.0
+version:        0.5.0.0
 synopsis:       Bindings to QuantLib
 description:    Bindings to the QuantLib library.
 category:       Finance
@@ -99,7 +99,7 @@ library
       cbits/qlTermStructure.cpp
       cbits/qlTermStructureAux.cpp
   build-depends:
-      base >=4.11 && <5.0
+      base >=4.14 && <5.0
     , template-haskell
     , time
     , transformers
@@ -123,6 +123,7 @@ library
     extra-libraries:
         QuantLib
   if os(osx)
+    cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
     include-dirs:
         /opt/homebrew/include
   build-tool-depends: c2hs:c2hs
@@ -143,6 +144,7 @@ executable hasquant_example
       QuantLib.Example.FxForward
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
+      QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.ShortRateModels
@@ -157,7 +159,7 @@ executable hasquant_example
       main/exe
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
-      base >=4.11 && <5.0
+      base >=4.14 && <5.0
     , hasquant
     , time
   default-language: Haskell2010
@@ -185,12 +187,21 @@ test-suite hasquant_test
       QuantLib.Example.FxForward
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
+      QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Replication
       QuantLib.Example.Repo
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
       QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
+      QuantLib.Spec.Calendars
+      QuantLib.Spec.CurrencyAndDayCounter
+      QuantLib.Spec.DatesAndSchedule
+      QuantLib.Spec.Examples
+      QuantLib.Spec.Helpers
+      QuantLib.Spec.InterestRateAndCashFlow
+      QuantLib.Spec.Syntax
+      QuantLib.Spec.TermStructure
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
@@ -201,7 +212,7 @@ test-suite hasquant_test
   build-depends:
       HUnit
     , QuickCheck
-    , base >=4.11 && <5.0
+    , base >=4.14 && <5.0
     , hasquant
     , hspec
     , time

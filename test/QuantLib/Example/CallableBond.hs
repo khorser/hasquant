@@ -4,7 +4,7 @@ module QuantLib.Example.CallableBond
     Result(..)
   , run
   ) where
-import Control.Monad(foldM, mapAndUnzipM)
+import Control.Monad(mapAndUnzipM)
 import Data.Time.Calendar
 
 import QuantLib.Instrument
@@ -32,7 +32,7 @@ run = do
   q <- simpleQuote 0.055
   flatRate <- flatForward tod q bbdc Compounded Semiannual
 
-  callDates <- reverse <$> foldM buildSchedule [15 `september` 2006] [1 .. 23]
+  callDates <- (firstCallDate :) <$> buildSchedule 23 firstCallDate
   let callSchedule = map (Callability (100.0, Clean) CallabilityCall) callDates
 
   cal <- calendar UnitedStatesGovernmentBond
@@ -47,12 +47,17 @@ run = do
   , yieldsR = ys
   }
   where tod = 16 `october` 2007
+        firstCallDate = 15 `september` 2006
 
-        buildSchedule :: [Day] -> Int -> IO [Day]
-        buildSchedule a@(d:_) _i = do
-          n <- calendar Null >>= $(free1st 'advance) d (3, Months) Following False
-          return (n : a)
-        buildSchedule [] _ = error "Impossible happened"
+        -- the k call dates following `prev`, each 3 months after the one before.
+        -- Replaces a foldM over a prepending accumulator, which needed a
+        -- `buildSchedule [] _ = error "Impossible happened"` clause to be total and
+        -- a final `reverse` to get back into ascending order.
+        buildSchedule :: Int -> Day -> IO [Day]
+        buildSchedule 0 _ = pure []
+        buildSchedule k prev = do
+          n <- calendar Null >>= $(free1st 'advance) prev (3, Months) Following False
+          (n :) <$> buildSchedule (k - 1) n
 
         priceBond ts dc b sigma = do
           hw <- hullWhite ts 0.03 sigma >>= asOneFactorAffineModel >>= asShortRateModel

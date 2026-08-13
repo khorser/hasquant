@@ -9,6 +9,8 @@ module QuantLib.TermStructure.Inflation
 
   , zeroCouponInflationSwapHelper
   , yearOnYearInflationSwapHelper
+  , zeroCouponInflationSwapHelperSwap
+  , yearOnYearInflationSwapHelperSwap
 
   , piecewiseZeroInflationCurve
   , piecewiseYoYInflationCurve
@@ -37,6 +39,8 @@ import QuantLib.Internal.Enum
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *QlZeroCouponInflationSwapHelper as ZeroCouponInflationSwapHelper foreign -> CZeroCouponInflationSwapHelper nocode#}
 {#pointer *QlYearOnYearInflationSwapHelper as YearOnYearInflationSwapHelper foreign -> CYearOnYearInflationSwapHelper nocode#}
+{#pointer *QlZeroCouponInflationSwap as ZeroCouponInflationSwap foreign -> CZeroCouponInflationSwap' nocode#}
+{#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 
 -- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).
 {#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote a' -- ^quote
@@ -65,11 +69,16 @@ import QuantLib.Internal.Enum
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
 
+-- |The underlying swap the helper builds from its quote, observation lag and maturity.
+{#fun qlZeroCouponInflationSwapHelperSwap as zeroCouponInflationSwapHelperSwap{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
+-- |The underlying swap the helper builds from its quote, observation lag and maturity.
+{#fun qlYearOnYearInflationSwapHelperSwap as yearOnYearInflationSwapHelperSwap{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
+
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
   -> Frequency -> DayCounter -> [ZeroCouponInflationSwapHelper] -> Interpolation
   -> IO ZeroInflationTermStructure
-piecewiseZeroInflationCurve r b f dc h i = uncurry' (qlPiecewiseZeroInflationCurve r b f dc h) (qlInterpolation i)
+piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflationCurve r b f dc h) (qlInterpolation i)
 {#fun qlPiecewiseZeroInflationCurve{withDay*`Day',withDay*`Day',`Frequency',withDayCounter*`DayCounter'
   ,withZeroCouponInflationSwapHelperArray*`[ZeroCouponInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
@@ -79,7 +88,7 @@ piecewiseYoYInflationCurve :: Day -- ^referenceDate
   -> Double -- ^baseYoYRate
   -> Frequency -> DayCounter -> [YearOnYearInflationSwapHelper] -> Interpolation
   -> IO YoYInflationTermStructure
-piecewiseYoYInflationCurve r b y f dc h i = uncurry' (qlPiecewiseYoYInflationCurve r b y f dc h) (qlInterpolation i)
+piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc h) (qlInterpolation i)
 {#fun qlPiecewiseYoYInflationCurve{withDay*`Day',withDay*`Day',`Double',`Frequency',withDayCounter*`DayCounter'
   ,withYearOnYearInflationSwapHelperArray*`[YearOnYearInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}

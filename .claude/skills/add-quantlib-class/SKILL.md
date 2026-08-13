@@ -5,7 +5,7 @@ description: Add a new QuantLib class binding (new hierarchy root or a class in 
 
 Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Haskell FFI layer (`QuantLib/`). Before starting, ask the user (if not already clear) which concrete `.cpp` file the new definitions belong in, and which `QuantLib/*.chs` module should hold the `{#pointer}` boilerplate — these are chosen per class, not fixed.
 
-**Before doing any of this, check whether the class needs a dedicated Haskell type at all.** Don't mirror QuantLib's C++ hierarchy 1:1 (see CLAUDE.md). Only give a class its own `CXxx'`/`Xxx` type if it has calculations/getters of its own (e.g. `FxForward`'s `fairForwardRate`, `ForwardRateAgreement`'s `forwardRate`) or must be passed around as its own type elsewhere. Otherwise — most `PricingEngine` subclasses, for instance — skip all of this and just bind a constructing function that returns the existing parent/grandparent type directly, e.g. `discountingSwapEngine :: ... -> IO PricingEngine`. There's no type boilerplate (step 4) and no `AsParent` upcast shim (step 3) to write, since there's no dedicated type to upcast from.
+**First, check whether the class needs a dedicated Haskell type at all** — apply CLAUDE.md's "don't mirror the C++ hierarchy 1:1" rule. If it doesn't (most `PricingEngine` subclasses, for instance), just bind a constructing function returning the existing parent/grandparent type, e.g. `discountingSwapEngine :: ... -> IO PricingEngine`: no type boilerplate (step 4) and no `AsParent` upcast shim (step 3), since there's no dedicated type to upcast from.
 
 ## Steps
 
@@ -37,11 +37,11 @@ Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Ha
 
 5. **`QuantLib/<Module>.chs`** — add the `{#pointer}` boilerplate, e.g.:
    `{#pointer *QlXxx as Xxx foreign -> CParent' nocode#}`
-   then the `{#fun ...#}` bindings for the class's own methods. Ask the user which module if not already specified, but default to grouping with the closest topically-related family rather than a generic hierarchy-root file, even if the new class's C++ inheritance doesn't literally match that module's other contents — e.g. `FxForward` isn't a C++ subclass of `Forward`, but it lives in `QuantLib/Instrument/Forward.chs` anyway, alongside `ForwardRateAgreement` (also not a `Forward` subclass), because they're the same topical family of forward-settled instruments. Leave the generic root module (e.g. `QuantLib/Instrument.chs`) for universal, hierarchy-wide methods only.
+   then the `{#fun ...#}` bindings for the class's own methods. Ask the user which module if not already specified; otherwise pick by topical family, per CLAUDE.md's module-placement rule.
 
 ## Update tools/ql-methods-*.txt
 
-After the binding compiles, grep the class/method names in `tools/ql-methods-1.43.txt` (the current version's tracking dump) and set each bound line's status character to `v` (arg counts match) or `u` (shim deliberately binds fewer args than upstream, e.g. a documented scope cut) — see [[add-quantlib-method]] for the full status vocabulary. Do this for every constructor/method the new class exposes, not just the first one.
+After the binding compiles, update `tools/ql-methods-1.43.txt` for **every** constructor/method the new class exposes, not just the first — see [[add-quantlib-method]] for the status vocabulary.
 
 ## Verification
 

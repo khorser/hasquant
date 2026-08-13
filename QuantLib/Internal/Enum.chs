@@ -194,7 +194,13 @@ type ParabolicMonotonic = Bool
 -- CalendarExtra/DayCounterExtra/IborExtra there are no non-enum-driven cases to add here
 data ApproximationExtra
 
-$(deriveCrossEnum "Approximation" "qlApproximation" ''ApproximationType "Monotonic" ''ApproximationExtra)
+$(deriveCrossEnum CrossEnumSpec
+    { crossTypeName = "Approximation"
+    , crossMapperFn = "qlApproximation"
+    , crossMainEnum = ''ApproximationType
+    , crossSubSuffix = "Monotonic"
+    , crossExtraType = ''ApproximationExtra
+    })
 
 deriving instance Show Approximation
 deriving instance Eq Approximation

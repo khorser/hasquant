@@ -219,7 +219,8 @@ runExtendedCirDiscountFactor = do
   model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate True
   dNow <- TS.discount rts now False
   dMat <- TS.discount rts maturity False
-  pure DiscountCheck { expectedDF = dMat / dNow, calculatedDF = discountBond model now maturity rate }
+  calculated <- discountBond model now maturity rate
+  pure DiscountCheck { expectedDF = dMat / dNow, calculatedDF = calculated }
   where
     rate = 0.1
     now = 1.5
@@ -229,9 +230,10 @@ runExtendedCirDiscountFactor = do
 runVasicekSmallMeanReversion :: IO DiscountCheck
 runVasicekSmallMeanReversion = do
   model <- vasicek r0 a b sigma lambda
+  calculated <- discountBond model now maturity r0
   pure DiscountCheck
     { expectedDF = exp (-r0 * maturity + sigma * sigma * maturity ** 3 / 6.0)
-    , calculatedDF = discountBond model now maturity r0
+    , calculatedDF = calculated
     }
   where
     r0 = 0.05

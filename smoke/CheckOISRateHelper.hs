@@ -1,5 +1,5 @@
 -- Smoke test for OISRateHelperOpts/deriveOptionsRecord (Batch 8's new options-record
--- TH infra -- see feedback_th_options_record_pattern memory note). Two things this
+-- TH infra -- see the add-quantlib-options-record skill). Two things this
 -- checks that a green `stack build` alone would not:
 --  1. defaultOISRateHelperOpts's field order/types actually line up with the raw
 --     full-arity binding oisRateHelperFull threads them into -- a silent field
@@ -17,7 +17,7 @@
 -- were tried first but need historical fixing data this smoke test doesn't provide,
 -- so the override case below sticks to fields that don't change the accrual schedule.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckOISRateHelper.hs -o /tmp/checkois -outputdir /tmp/checkois_build && /tmp/checkois
+-- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckOISRateHelper.hs -o /tmp/checkois -outputdir /tmp/checkois_build && /tmp/checkois
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Index.InterestRate hiding (dayCounter)
 import QuantLib.Math(Interpolation(..))
@@ -26,7 +26,9 @@ import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), DateGenerationRule(..), Frequency(..))
+import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), Frequency(..))
+
+import SmokeCheck (checkWith)
 
 main :: IO ()
 main = do
@@ -49,16 +51,17 @@ main = do
 
   putStrLn ("narrow          -> discount " ++ show dNarrow)
   putStrLn ("full (defaults) -> discount " ++ show dFullDefaults)
-  if dNarrow /= dFullDefaults
-    then error "oisRateHelperFull with defaultOISRateHelperOpts diverged from oisRateHelper -- field order/type drift in the options record"
-    else putStrLn "OK: full-with-defaults matches narrow exactly"
+  -- exact equality is intended: both paths must build an identical helper
+  checkWith "full-with-defaults matches narrow"
+    "identical discount (a difference means field order/type drift in the options record)"
+    (dNarrow == dFullDefaults)
 
   hOverridden <- oisRateHelperFull 2 (1, Years) q idx Nothing
     defaultOISRateHelperOpts{oisTelescopicValueDates = True, oisPaymentFrequency = Semiannual, oisAveragingMethod = AveragingSimple}
   dOverridden <- endToEndDiscount hOverridden
   putStrLn ("full (overridden) -> discount " ++ show dOverridden)
-  if dOverridden == dFullDefaults
-    then error "overridden options record produced the same discount as defaults -- override path is not taking effect"
-    else putStrLn "OK: override path changes the result as expected"
+  checkWith "override path takes effect"
+    "discount differs from defaults (equality means the overrides are being dropped)"
+    (dOverridden /= dFullDefaults)
   where
     today = 2 `january` 2024

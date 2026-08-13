@@ -9,7 +9,7 @@
 -- 2. sabrInterpolatedSmileSection calibrates to a small synthetic strike/vol set and
 --    the calibrated alpha/beta/nu/rho/vols should reproduce the input reasonably well.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckSabrSmileSection.hs -o /tmp/checksabr -outputdir /tmp/checksabr_build && /tmp/checksabr
+-- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckSabrSmileSection.hs -o /tmp/checksabr -outputdir /tmp/checksabr_build && /tmp/checksabr
 import Control.Monad(forM_, unless)
 import Text.Printf(printf)
 import QuantLib.InterestRate(VolatilityType(..))
@@ -18,13 +18,15 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule(TimeUnit(..))
 import QuantLib.TermStructure.Volatility
 
+import SmokeCheck (checkClose, checkEq)
+
 forward, expiry, alpha, beta, nu, rho, shift :: Double
 forward = 0.03
 expiry = 5.0
 alpha = 0.04
 beta = 0.5
 nu = 0.4
-rho = (-0.2)
+rho = -0.2
 shift = 0.0
 
 main :: IO ()
@@ -34,15 +36,11 @@ main = do
     forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
       got <- smileSectionVolatility section strike
       expected <- unsafeShiftedSabrVolatility strike forward expiry alpha beta nu rho shift volType
-      unless (got == expected) $
-        error (show volType ++ " strike " ++ show strike ++ ": smileSectionVolatility " ++ show got
-          ++ " /= unsafeShiftedSabrVolatility " ++ show expected)
+      -- exact equality is intended: both paths must hit the identical SABR formula
+      checkEq (printf "%s strike=%.2f vol" (show volType) strike) expected got
       var <- smileSectionVariance section strike
-      let expectedVar = expected * expected * expiry
-      unless (abs (var - expectedVar) < 1e-12) $
-        error (show volType ++ " strike " ++ show strike ++ ": smileSectionVariance " ++ show var
-          ++ " /= " ++ show expectedVar)
-      printf "%s strike=%.2f vol=%.6f var=%.6f\n" (show volType) strike got var
+      checkClose (printf "%s strike=%.2f variance" (show volType) strike)
+        (expected * expected * expiry) var 1e-12
 
   volShiftedLognormal <- sabrSmileSection expiry forward alpha beta nu rho shift ShiftedLognormal
   volAtAtm1 <- smileSectionVolatility volShiftedLognormal forward

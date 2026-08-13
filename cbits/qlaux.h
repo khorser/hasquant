@@ -207,6 +207,7 @@ namespace QuantLib {
   class Merton76Process;
   class MidPointCdsEngine;
   class MultiAssetOption;
+  class MultiCurve;
   class NelsonSiegelFitting;
   class NoConstraint;
   class OISRateHelper;
@@ -280,6 +281,7 @@ namespace QuantLib {
 }
 
 using QuantLib::Handle;
+using QuantLib::RelinkableHandle;
 using QuantLib::Quote;
 using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
@@ -462,6 +464,7 @@ using QuantLib::MarkovFunctional;
 using QuantLib::Merton76Process;
 using QuantLib::MidPointCdsEngine;
 using QuantLib::MultiAssetOption;
+using QuantLib::MultiCurve;
 using QuantLib::NelsonSiegelFitting;
 using QuantLib::NoConstraint;
 using QuantLib::OISRateHelper;
@@ -542,18 +545,33 @@ using QuantLib::ext::optional;
 
 class PolymorphicPathGenerator;
 
-// Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
-// because quotes and rate helpers are used via smart pointers (Handle
-// and shared_ptr) in QuantLib
-// Alternatively we could clone passed quotes/helpers and put them into
-// the containers each time we call QuantLib
-typedef shared_ptr<Quote> QlQuote;
-typedef shared_ptr<YieldTermStructure> QlYieldTermStructure;
+// Haskell CRateHelper is actually a pointer to a shared_ptr, because rate helpers are used via
+// shared_ptr in QuantLib and have no Handle-based counterpart upstream.
+// A Quote is a Handle, not a bare shared_ptr, so that a RelinkableHandle can be passed wherever
+// a quote is expected: copies of a Handle share one Link, which is what makes a linkTo()
+// propagate to everything already built on it. Handle constructs implicitly from nothing (the
+// ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed. Mirrors
+// QlYieldTermStructure below; see the invariant note there before touching either.
+typedef Handle<Quote> QlQuote;
+// RelinkableHandle publicly inherits Handle, so a relinkable quote IS a QlQuote and needs no
+// separate parameter type -- same reasoning as QlRelinkableYieldTermStructure below.
+typedef RelinkableHandle<Quote> QlRelinkableQuote;
+// A curve is a Handle, not a bare shared_ptr, so that a RelinkableHandle can be passed
+// wherever a curve is expected: copies of a Handle share one Link, which is what makes a
+// linkTo() propagate to everything already built on it. Handle constructs implicitly from
+// nothing (the ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed.
+typedef Handle<YieldTermStructure> QlYieldTermStructure;
+// RelinkableHandle publicly inherits Handle, so a relinkable curve IS a QlYieldTermStructure
+// and needs no separate parameter type: it goes wherever a curve goes, through the ordinary
+// Upcastable machinery, and the upcast copy shares its Link so relinking still propagates.
+typedef RelinkableHandle<YieldTermStructure> QlRelinkableYieldTermStructure;
 typedef shared_ptr<PricingEngine> QlPricingEngine;
 typedef shared_ptr<IborIndex> QlIborIndex;
 typedef shared_ptr<Index> QlIndex;
 typedef shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
-typedef shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
+// A vol structure is a Handle, same reasoning as QlBlackVolTermStructure/QlSwaptionVolatilityStructure below.
+typedef Handle<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
+typedef RelinkableHandle<OptionletVolatilityStructure> QlRelinkableOptionletVolatilityStructure;
 typedef shared_ptr<Instrument> QlInstrument;
 typedef shared_ptr<Bond> QlBond;
 typedef shared_ptr<FixedRateBond> QlFixedRateBond;
@@ -579,7 +597,11 @@ typedef shared_ptr<BlackCalibrationHelper> QlBlackCalibrationHelper;
 typedef shared_ptr<BlackProcess> QlBlackProcess;
 typedef shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
 typedef shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
-typedef shared_ptr<BlackVolTermStructure> QlBlackVolTermStructure;
+// A vol structure is a Handle, same reasoning as QlYieldTermStructure/QlQuote above -- upstream
+// itself speaks Handle<BlackVolTermStructure> throughout, unlike the VolatilityTermStructure
+// base (never a Handle upstream, confirmed by grep; stays shared_ptr, same as QlTermStructure).
+typedef Handle<BlackVolTermStructure> QlBlackVolTermStructure;
+typedef RelinkableHandle<BlackVolTermStructure> QlRelinkableBlackVolTermStructure;
 typedef shared_ptr<BondHelper> QlBondHelper;
 typedef shared_ptr<CalibratedModel> QlCalibratedModel;
 typedef shared_ptr<CalibrationHelper> QlCalibrationHelper;
@@ -633,6 +655,10 @@ typedef shared_ptr<MargrabeOption> QlMargrabeOption;
 typedef shared_ptr<MarkovFunctional> QlMarkovFunctional;
 typedef shared_ptr<Merton76Process> QlMerton76Process;
 typedef shared_ptr<MultiAssetOption> QlMultiAssetOption;
+// MultiCurve is enable_shared_from_this and upstream's own doc comment says "This must be a
+// shared pointer" -- bound as a standalone leaf type (own Finalizable instance, no Upcastable
+// parent: it isn't a TermStructure), same shape as e.g. QlSwapRateHelper.
+typedef shared_ptr<MultiCurve> QlMultiCurve;
 typedef shared_ptr<OISRateHelper> QlOISRateHelper;
 typedef shared_ptr<OneAssetOption> QlOneAssetOption;
 typedef shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
@@ -658,7 +684,9 @@ typedef shared_ptr<Swap> QlSwap;
 typedef shared_ptr<SwapIndex> QlSwapIndex;
 typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
 typedef shared_ptr<Swaption> QlSwaption;
-typedef shared_ptr<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
+// A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
+typedef Handle<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
+typedef RelinkableHandle<SwaptionVolatilityStructure> QlRelinkableSwaptionVolatilityStructure;
 typedef shared_ptr<SwingExercise> QlSwingExercise;
 typedef shared_ptr<TermStructure> QlTermStructure;
 typedef shared_ptr<TypePayoff> QlTypePayoff;
@@ -855,6 +883,7 @@ template <> class ObjClassName<MarkovFunctional*> {public: static void output(st
 template <> class ObjClassName<Merton76Process*> {public: static void output(std::ostream& os) {os << "Merton76Process";}};
 template <> class ObjClassName<MidPointCdsEngine*> {public: static void output(std::ostream& os) {os << "MidPointCdsEngine";}};
 template <> class ObjClassName<MultiAssetOption*> {public: static void output(std::ostream& os) {os << "MultiAssetOption";}};
+template <> class ObjClassName<MultiCurve*> {public: static void output(std::ostream& os) {os << "MultiCurve";}};
 template <> class ObjClassName<NelsonSiegelFitting*> {public: static void output(std::ostream& os) {os << "NelsonSiegelFitting";}};
 template <> class ObjClassName<NoConstraint*> {public: static void output(std::ostream& os) {os << "NoConstraint";}};
 template <> class ObjClassName<OISRateHelper*> {public: static void output(std::ostream& os) {os << "OISRateHelper";}};
@@ -955,6 +984,7 @@ template <> class ObjClassName<QlMargrabeOption*> {public: static void output(st
 template <> class ObjClassName<QlMarkovFunctional*> {public: static void output(std::ostream& os) {os << "QlMarkovFunctional";}};
 template <> class ObjClassName<QlMerton76Process*> {public: static void output(std::ostream& os) {os << "QlMerton76Process";}};
 template <> class ObjClassName<QlMultiAssetOption*> {public: static void output(std::ostream& os) {os << "QlMultiAssetOption";}};
+template <> class ObjClassName<QlMultiCurve*> {public: static void output(std::ostream& os) {os << "QlMultiCurve";}};
 template <> class ObjClassName<QlOISRateHelper*> {public: static void output(std::ostream& os) {os << "QlOISRateHelper";}};
 template <> class ObjClassName<QlOneAssetOption*> {public: static void output(std::ostream& os) {os << "QlOneAssetOption";}};
 template <> class ObjClassName<QlOneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "QlOneFactorAffineModel";}};
@@ -1106,6 +1136,28 @@ int qlOptBool(optional<bool> b);
 optional<BusinessDayConvention> qlOptBusinessDayConvention(int c);
 
 template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Handle<T>(*(arg(p))) : Handle<T>();}
+// Handle form: pass the caller's Handle straight through, so a relinkable handle keeps its
+// Link (rewrapping it via Handle<T>(shared_ptr) would make a fresh one and silently detach
+// relinking). Null means an empty handle, as with the shared_ptr form above.
+template <class T> Handle<T> qlNullableHandle(Handle<T> *p) {return p ? *(arg(p)) : Handle<T>();}
+
+// Same as the Handle form above, but null means "construct this default" (via the caller's
+// `make`, returning shared_ptr<T>) rather than an empty handle. Still the one accepted shape of
+// Handle<T>(shared_ptr<...>) construction: the default branch has no pre-existing Link to
+// detach from, since `make` builds the object fresh right here. Named and centralised so a
+// call site never has to spell Handle<T>(...) itself -- see qlBlackIborCouponPricer's
+// default-correlation SimpleQuote for the motivating case.
+template <class T, class F> Handle<T> qlNullableHandleOr(Handle<T> *p, F make) {return p ? *(arg(p)) : Handle<T>(make());}
+
+// Accessors for the QuantLib free functions (BondFunctions::, CashFlows::) that want the
+// pointee rather than the handle. Named rather than spelled with stars because *arg(h),
+// **arg(h) and ***arg(h) are all well-formed here and differ by a single character inside
+// very long argument lists -- and picking the wrong one is the failure mode this whole design
+// has to guard against. Both throw on an empty handle, per Handle::operator*. Generic over T
+// (not curve-specific) so every Handle-shaped type -- Quote, the vol structures -- reuses these
+// rather than growing its own same-shaped spelling.
+template <class T> const shared_ptr<T>& handlePtr(Handle<T> *p) {return **arg(p);}
+template <class T> const T& handleRef(Handle<T> *p) {return ***arg(p);}
 
 template <class T>
 inline std::vector<T> qlVector(T **vals, size_t len) {

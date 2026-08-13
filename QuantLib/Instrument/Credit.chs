@@ -27,7 +27,6 @@ import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
 {#import QuantLib.Instrument#}(PricingModel)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
-import Foreign.Ptr(Ptr)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

@@ -89,6 +89,11 @@ extern "C" {
   QlQuote* qlLastFixingQuote(QlIndex* index, char **e);
   int qlQuoteIsValid(QlQuote* o, char **e);
 
+  QlRelinkableQuote* qlRelinkableQuote(QlQuote *initial, char **e);
+  void qlFreeRelinkableQuote(QlRelinkableQuote *o);
+  void qlRelinkableQuoteLinkTo(QlRelinkableQuote *o, QlQuote *c, char **e);
+  QlQuote* qlRelinkableQuoteAsQuote(QlRelinkableQuote *o);
+
   int qlMinDateSerialNumber();
   int qlMaxDateSerialNumber();
   int qlMinYear();

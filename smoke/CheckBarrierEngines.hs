@@ -12,10 +12,13 @@
 -- BinomialTree/RngTrait case lists below are spelled out explicitly rather
 -- than via [minBound .. maxBound] (see smoke/CheckInflation.hs).
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckBarrierEngines.hs -o /tmp/checkbarrier -outputdir /tmp/checkbarrier_build && /tmp/checkbarrier
+-- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckBarrierEngines.hs -o /tmp/checkbarrier -outputdir /tmp/checkbarrier_build && /tmp/checkbarrier
+-- (-ismoke puts smoke/SmokeCheck.hs, the shared assertion helpers, on the search path)
 import Control.Monad
 import Data.Time.Calendar (addDays)
 import Text.Printf (printf)
+
+import SmokeCheck (checkClose)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -38,11 +41,6 @@ allTrees =
   , ExtendedAdditiveEQPBinomialTree, ExtendedTrigeorgis, ExtendedTian
   , ExtendedLeisenReimer, ExtendedJoshi4
   ]
-
-checkClose :: String -> Double -> Double -> Double -> IO ()
-checkClose label expected actual tol
-  | abs (expected - actual) <= tol = printf "OK   %-45s expected %.6f, got %.6f\n" label expected actual
-  | otherwise = error $ printf "FAIL %-45s expected %.6f, got %.6f (tol %.1e)" label expected actual tol
 
 main :: IO ()
 main = do

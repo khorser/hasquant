@@ -38,8 +38,8 @@ Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper 
 
 ### 4. The C++ side is unchanged from every other hierarchy
 
-The `Ql*AsY` "upcast" shim functions this needs (`cbits/*.cpp`) are the same shape as every other hierarchy's — `ret(new QlY(*arg(o)))`, a fresh independently-refcounted `shared_ptr` handle, safe to free immediately after the consuming call returns (see CLAUDE.md). If the type already has these shims from a previous, differently-structured implementation, nothing there needs to change.
+The `Ql*AsY` upcast shims this needs (`cbits/*.cpp`) are the standard `ret(new QlY(*arg(o)))` shape described in CLAUDE.md. If the type already has them from a previous implementation, nothing there changes.
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before a full `stack build --test --no-haddock` — and do the full rebuild, not incremental: this pattern touches `{#pointer#}` declarations across multiple `.chs` files, exactly the kind of change CLAUDE.md's staleness warning covers (confirmed the hard way: an incremental `stack build` reported success but still ran stale code once, here). Add or extend a `smoke/` script that exercises the *deepest* case (most upcast hops) end-to-end, not just "the build succeeded" — a wrong hop count still type-checks. See `smoke/CheckPayoffExerciseUpcast.hs` for the pattern: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`).
+Run `make` (see CLAUDE.md) for a quick C++-only compile check, then a **full** (not incremental) `stack build --test --no-haddock` — this pattern touches `{#pointer#}` declarations across multiple `.chs` files, and an incremental build here once reported success while still running stale code. A wrong hop count still type-checks, so add or extend a `smoke/` script exercising the *deepest* case (most upcast hops) end to end: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`) — see `smoke/CheckPayoffExerciseUpcast.hs`.

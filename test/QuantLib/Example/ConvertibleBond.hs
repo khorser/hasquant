@@ -4,6 +4,7 @@ module QuantLib.Example.ConvertibleBond
     Result(..)
   , run
   ) where
+import Control.Monad(zipWithM)
 import Data.Time.Calendar
 
 import qualified QuantLib.CashFlow as CF
@@ -48,8 +49,15 @@ run = do
 
   let callPrices = map (\x -> Soft (x, Clean)) callPricesV
       putPrices = map (\x -> Callability (x, Clean)) putPricesV
-      callability1 = zipWith (\pp y -> pp (schedDates!!y) 1.20) callPrices callLength
-      callability2 = zipWith (\pp y -> pp CallabilityPut (schedDates!!y)) putPrices putLength
+      -- schedDates comes back from C++, so its length is not known statically; report
+      -- a short schedule rather than letting `!!` throw an index-too-large exception
+      schedDateAt y = case drop y schedDates of
+        (d : _) -> pure d
+        [] -> fail $ "convertible bond: callability at schedule index " ++ show y
+                       ++ " requested, but the schedule has only "
+                       ++ show (length schedDates) ++ " dates"
+  callability1 <- zipWithM (\pp y -> (`pp` 1.20) <$> schedDateAt y) callPrices callLength
+  callability2 <- zipWithM (\pp y -> pp CallabilityPut <$> schedDateAt y) putPrices putLength
   let callabilities = callability1 ++ callability2
 
   let divDates = [d | m <- [6, 12 .. 1000], let d = addGregorianMonthsClip m tod, d < exec]

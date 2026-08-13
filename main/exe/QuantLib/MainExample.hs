@@ -85,12 +85,12 @@ main = do
   (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
   void $ printf "%20s %19s %19s %19s %19s\n" "NPV of" "Analytic" "12-day replication" "26-day replication" "52-day replication"
   printDLine "%20s" "Initial" "%20.6f" npvInit
-  printDLine "%20s" "Out of the money""%20.6f"  npvOut
+  printDLine "%20s" "Out of the money" "%20.6f" npvOut
   printDLine "%20s" "In the money" "%20.6f" npvIn
 
   putStrLn "\n*** BermudanSwaption Example ***"
   (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' BermudanSwaptionExample.run
-  void $ printf "%25s %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x2" "4x2" "5x1"
+  void $ printf "%25s %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x3" "4x2" "5x1"
   printDLine "%25s" "G2" "%9.5f" g2v
   printDLine "%25s" "Hull-White" "%9.5f" hwv
   printDLine "%25s" "Numerical" "%9.5f" hw2v
@@ -109,13 +109,13 @@ main = do
   putStrLn "\n*** Equity Option Example ***"
   (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd (mcE, mcE2, mcA)) <- EquityOptionExample.run
   void $ printf "%30s   %9s %9s %9s\n" "NPV of" "European" "Bermudan" "American"
-  printEquityOptNPVs "Black-Sholes" (analyticEuro ++ [0, 0])
-  printEquityOptNPVs "Heston semi-analytic" (analyticHeston ++ [0, 0])
-  printEquityOptNPVs "Bates semi-analytic" (bates ++ [0, 0])
-  printEquityOptNPVs "Barone-Adesi/Whaley" ([0, 0] ++ baw)
-  printEquityOptNPVs "Bjerksund/Stensland" ([0, 0] ++ bjs)
-  printEquityOptNPVs "Integral" (int ++ [0, 0])
-  printEquityOptNPVs "Finite differences" fd
+  printEquityOptNPVs "Black-Scholes" (europeanOnly analyticEuro)
+  printEquityOptNPVs "Heston semi-analytic" (europeanOnly analyticHeston)
+  printEquityOptNPVs "Bates semi-analytic" (europeanOnly bates)
+  printEquityOptNPVs "Barone-Adesi/Whaley" (americanOnly baw)
+  printEquityOptNPVs "Bjerksund/Stensland" (americanOnly bjs)
+  printEquityOptNPVs "Integral" (europeanOnly int)
+  printEquityOptNPVs "Finite differences" (allExercises fd)
   mapM_ (uncurry printEquityOptNPVs)
     (zip
       ["Binomial Jarrow-Rudd",
@@ -125,10 +125,10 @@ main = do
         "Binomial Tian",
         "Binomial Leisen-Reimer",
         "Binomial Joshi"]
-      bin)
-  printEquityOptNPVs "MC (crude)" (mcE : [0, 0])
-  printEquityOptNPVs "QMC (Sobol)" (mcE2: [0, 0])
-  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [mcA])
+      (map allExercises bin))
+  printEquityOptNPVs "MC (crude)" (europeanOnly [mcE])
+  printEquityOptNPVs "QMC (Sobol)" (europeanOnly [mcE2])
+  printEquityOptNPVs "MC (longstaff Schwartz)" (americanOnly [mcA])
 
   putStrLn "\n*** CDS Example ***"
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
@@ -160,7 +160,7 @@ main = do
   (TARF.Result tnpv fwds simFwds) <- keepingSettings' TARF.run
   putStrLn $ "NPV: " ++ show tnpv
   putStrLn $ "Forward Rates:           " ++ show fwds
-  putStrLn $ "SImulated Forward Rates: " ++ show simFwds
+  putStrLn $ "Simulated Forward Rates: " ++ show simFwds
 
   putStrLn "\n*** CVA IRS Example ***"
   (CVAIRSExample.Result rows) <- keepingSettings' CVAIRSExample.run
@@ -225,12 +225,19 @@ main = do
         putStrLn "")
       putStrLn ""
 
-    printEquityOptNPVs :: String -> [Double] -> IO ()
+    -- The equity option table has three columns (European, Bermudan, American) but
+    -- most engines price only one or two of them. 'Nothing' is the absent cell.
+    -- This used to pad with 0.0 and print "N/A" for any value equal to 0.0, which
+    -- would have hidden a legitimately-zero NPV.
+    europeanOnly, americanOnly, allExercises :: [Double] -> [Maybe Double]
+    europeanOnly v = map Just v ++ [Nothing, Nothing]
+    americanOnly v = [Nothing, Nothing] ++ map Just v
+    allExercises = map Just
+
+    printEquityOptNPVs :: String -> [Maybe Double] -> IO ()
     printEquityOptNPVs m v = do
       void $ printf "%30s: " m
-      mapM_ (\vv -> if vv == 0.0
-                      then printf " %9s" "N/A"
-                      else printf " %9.6f" vv) v
+      mapM_ (maybe (printf " %9s" "N/A") (printf " %9.6f")) v
       putStrLn ""
 
     printDoubles :: String -> [Double] -> IO ()

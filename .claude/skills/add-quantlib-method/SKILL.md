@@ -133,6 +133,8 @@ hasquant does **not** emit two arities for a method with trailing default argume
 ```
 (Note this particular binding types `discountCurve` non-nullably, so its `Handle<T>()`-default case isn't reachable from Haskell at all — a defaulted `Handle<T>` doesn't *have* to become `Maybe`; it's a per-binding judgment call whether the empty-handle case is worth exposing.) Don't confuse this with genuine C++ **overloads** (distinct signatures, not one signature's defaults) — those get separate numbered C shims, see below.
 
+The one exception is a genuinely wide signature (~19+ trailing defaulted params, `OISRateHelper`-scale): that gets a second, options-record entry point alongside the narrow binding instead — see [[add-quantlib-options-record]].
+
 ### Numbered overloads
 
 When a class has multiple real overloads of the same name, each gets its own C shim with a numeric suffix on the second and later ones — the first keeps the bare name: `qlOISRateHelper`/`qlOISRateHelper2`, `qlJointCalendar2`/`qlJointCalendar3`/`qlJointCalendar4`. The numbering isn't necessarily contiguous from 1 and isn't derivable from the C++ signature — it reflects whatever order bindings were historically added in. If you're adding a second overload of an existing binding, just pick the next unused suffix; don't try to make it "meaningful."

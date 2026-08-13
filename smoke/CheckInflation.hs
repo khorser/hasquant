@@ -5,7 +5,7 @@
 -- immediately, not just "the build succeeded" (see reconcile-*/
 -- add-quantlib-index skills' "gotcha" notes).
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckInflation.hs -o /tmp/checkinfl -outputdir /tmp/checkinfl_build && /tmp/checkinfl
+-- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckInflation.hs -o /tmp/checkinfl -outputdir /tmp/checkinfl_build && /tmp/checkinfl
 import Control.Monad
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR
@@ -20,6 +20,8 @@ import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, fromDates, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
+
+import SmokeCheck (checkWith)
 
 -- c2hs only derives Show/Eq for the *Type enums (no Bounded), so those case
 -- lists are spelled out explicitly here rather than via [minBound .. maxBound].
@@ -111,8 +113,9 @@ main = do
   npvFlat <- CF.npv legFlat nominalCurve True Nothing Nothing
   npvLinear <- CF.npv legLinear nominalCurve True Nothing Nothing
   putStrLn ("cpiLeg NPV: CPIFlat=" ++ show npvFlat ++ ", CPILinear=" ++ show npvLinear ++ " (must differ)")
-  when (npvFlat == npvLinear) $
-    error "CPIFlat and CPILinear produced identical NPVs -- CPIInterpolationType mapping may be stale"
+  checkWith "cpiLeg CPIFlat vs CPILinear"
+    "NPVs differ (equality means the CPIInterpolationType mapping may be stale)"
+    (npvFlat /= npvLinear)
   where
     today = 2 `january` 2024
     baseDate = 1 `october` 2023

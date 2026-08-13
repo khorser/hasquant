@@ -60,8 +60,11 @@ run = do
   --proc <- simpleQuote spot >>=
   --  $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
   proc <- simpleQuote spot >>=
-    $(free1st 'garmanKohlagenProcess) ycILS ycEUR volEURILS EulerDiscretization False >>= asStochasticProcess1D >>= asStochasticProcess
-  gen <- pathGenerator PseudoRandom proc grid 0 (size grid - 1) False
+    $(free1st 'garmanKohlagenProcess) ycEUR ycILS volEURILS EulerDiscretization False >>= asStochasticProcess1D >>= asStochasticProcess
+  -- fixed nonzero seed (0 means "seed from entropy" in QuantLib's
+  -- MersenneTwisterUniformRng) so the simulated path set, and hence rnpv/simFwds,
+  -- is reproducible for `test/QuantLib/Spec/Examples.hs`'s "check values" assertion
+  gen <- pathGenerator PseudoRandom proc grid 42 (size grid - 1) False
   pps <- replicateM trials $ nextNPV gen (toList ds) ycILS
   let (ps, sFwds) = unzip pps
   let ff = map (\x -> roundTo (x/realToFrac trials) fxrateDigits) $ deepFold sFwds (+)

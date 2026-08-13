@@ -1,750 +1,5 @@
 {-# LANGUAGE RankNTypes, TypeFamilies, TypeOperators, FlexibleContexts, FlexibleInstances #-}
-module QuantLib.Internal.Type
-  (
-    Standalone(..)
-  , withStandalone
-
-  , Finalizable(..)
-  , Upcastable(..)
-  , GenForeignPtr
-  , newCastForeignPtr
-  , newGenForeignPtr
-  , newAnyOf
-  , withGenForeignPtr
-  , freeUpcast
-
-  , CPayoff'
-  , CBasketPayoff'
-  , CTypePayoff'
-  , CStrikedTypePayoff'
-  , CPercentageStrikePayoff'
-  , CPlainVanillaPayoff'
-  , CExercise'
-  , CAmericanExercise'
-  , CEuropeanExercise'
-  , CBermudanExercise'
-  , CSwingExercise'
-
-  , CCalendar
-  , Calendar
-  , peekCalendar
-  , withCalendar
-  , CCurrency
-  , Currency
-  , peekCurrency
-  , withCurrency
-  , withMaybeCurrency
-  , CRegion
-  , Region
-  , peekRegion
-  , withRegion
-  , CDayCounter
-  , DayCounter
-  , peekDayCounter
-  , withDayCounter
-  , CSchedule
-  , Schedule
-  , peekSchedule
-  , withSchedule
-  , InterestRate
-  , CInterestRate
-  , peekInterestRate
-  , withInterestRate
-  , withInterestRateArray
-  , TimeGrid
-  , CTimeGrid
-  , peekTimeGrid
-  , withTimeGrid
-  , CDividend
-  , Dividend
-  , peekDividend
-  , withDividend
-  , withDividendArray
-  , CZeroInflationCashFlow
-  , ZeroInflationCashFlow
-  , peekZeroInflationCashFlow
-  , withZeroInflationCashFlow
-  , CCPICashFlow
-  , CPICashFlow
-  , peekCPICashFlow
-  , withCPICashFlow
-  , CEquityCashFlow
-  , EquityCashFlow
-  , peekEquityCashFlow
-  , withEquityCashFlow
-  , CSmileSection
-  , SmileSection
-  , peekSmileSection
-  , withSmileSection
-  , CPricingEngine
-  , PricingEngine
-  , peekPricingEngine
-  , withPricingEngine
-  , CBlackDeltaCalculator
-  , BlackDeltaCalculator
-  , peekBlackDeltaCalculator
-  , withBlackDeltaCalculator
-  , CFloatingRateCouponPricer
-  , FloatingRateCouponPricer
-  , peekFloatingRateCouponPricer
-  , withFloatingRateCouponPricer
-  , withFloatingRateCouponPricerArray
-  , withMaybeFloatingRateCouponPricer
-  , CEquityCashFlowPricer
-  , EquityCashFlowPricer
-  , peekEquityCashFlowPricer
-  , withEquityCashFlowPricer
-  , CDefaultProbabilityHelper
-  , DefaultProbabilityHelper
-  , peekDefaultProbabilityHelper
-  , withDefaultProbabilityHelper
-  , withDefaultProbabilityHelperArray
-  , CZeroCouponInflationSwapHelper
-  , ZeroCouponInflationSwapHelper
-  , peekZeroCouponInflationSwapHelper
-  , withZeroCouponInflationSwapHelper
-  , withZeroCouponInflationSwapHelperArray
-  , CYearOnYearInflationSwapHelper
-  , YearOnYearInflationSwapHelper
-  , peekYearOnYearInflationSwapHelper
-  , withYearOnYearInflationSwapHelper
-  , withYearOnYearInflationSwapHelperArray
-  , CPathGenerator
-  , PathGenerator
-  , peekPathGenerator
-  , withPathGenerator
-  , CSamplePath
-  , SamplePath
-  , peekSamplePath
-  , withSamplePath
-
-  , CQlClaim
-  , QlClaim
-  , peekClaim
-  , CQlCallability
-  , QlCallability
-  , peekCallability
-  , CConstraint
-  , QlConstraint
-  , peekConstraint
-  , CEndCriteria
-  , QlEndCriteria
-  , peekEndCriteria
-  , CFdmSchemeDesc
-  , QlFdmSchemeDesc
-  , peekFdmSchemeDesc
-  , CFittedBondDiscountCurveFittingMethod
-  , QlFittedBondDiscountCurveFittingMethod
-  , peekFittedBondDiscountCurveFittingMethod
-  , COptimizationMethod
-  , QlOptimizationMethod
-  , peekOptimizationMethod
-  , CRounding
-  , QlRounding
-  , peekRounding
-  , CLmCorrelationModel
-  , QlLmCorrelationModel
-  , peekLmCorrelationModel
-  , CLmVolatilityModel
-  , QlLmVolatilityModel
-  , peekLmVolatilityModel
-
-  , GenQuote
-  , CQuote
-  , CQuote'
-  , Quote
-  , asQuote
-  , peekQuote
-  , withQuote
-  , withGenQuote
-  , withMaybeQuote
-  , withQuoteArray
-  , withQuoteArrayRaw
-  , CSimpleQuote
-  , CSimpleQuote'
-  , SimpleQuote
-  , peekSimpleQuote
-  , CDeltaVolQuote
-  , CDeltaVolQuote'
-  , DeltaVolQuote
-  , peekDeltaVolQuote
-
-  , GenLeg
-  , CLeg
-  , CLeg'
-  , Leg
-  , asLeg
-  , peekLeg
-  , withLeg
-  , withGenLeg
-  , withLegArray
-  , CCouponLeg
-  , CCouponLeg'
-  , CouponLeg
-  , peekCouponLeg
-
-  , GenRateHelper
-  , CRateHelper
-  , CRateHelper'
-  , RateHelper
-  , asRateHelper
-  , peekRateHelper
-  , withRateHelper
-  , withGenRateHelper
-  , withRateHelperArray
-  , CBondHelper
-  , CBondHelper'
-  , BondHelper
-  , peekBondHelper
-  , withBondHelperArray
-  , withGenBond
-  , CSwapRateHelper
-  , CSwapRateHelper'
-  , SwapRateHelper
-  , peekSwapRateHelper
-  , COISRateHelper
-  , COISRateHelper'
-  , OISRateHelper
-  , peekOISRateHelper
-
-  , GenCalibrationHelper
-  , CCalibrationHelper
-  , CCalibrationHelper'
-  , CalibrationHelper
-  , asCalibrationHelper
-  , peekCalibrationHelper
-  , withCalibrationHelper
-  , withGenCalibrationHelper
-  , withCalibrationHelperArray
-  , withBlackCalibrationHelperArray
-  , CBlackCalibrationHelper
-  , CBlackCalibrationHelper'
-  , BlackCalibrationHelper
-  , peekBlackCalibrationHelper
-
-  , GenBlackCalculator
-  , CBlackCalculator
-  , CBlackCalculator'
-  , BlackCalculator
-  , asBlackCalculator
-  , peekBlackCalculator
-  , withBlackCalculator
-  , CBlackScholesCalculator
-  , CBlackScholesCalculator'
-  , BlackScholesCalculator
-  , peekBlackScholesCalculator
-  , withGenBlackCalculator
-
-  , GenIndex
-  , CIndex
-  , CIndex'
-  , Index
-  , asIndex
-  , withIndex
-  , GenInterestRateIndex
-  , CInterestRateIndex
-  , CInterestRateIndex'
-  , InterestRateIndex
-  , asInterestRateIndex
-  , withInterestRateIndex
-  , GenInflationIndex
-  , CInflationIndex
-  , CInflationIndex'
-  , InflationIndex
-  , asInflationIndex
-  , withInflationIndex
-  , GenZeroInflationIndex
-  , CZeroInflationIndex
-  , CZeroInflationIndex'
-  , ZeroInflationIndex
-  , peekZeroInflationIndex
-  , withZeroInflationIndex
-  , GenYoYInflationIndex
-  , CYoYInflationIndex
-  , CYoYInflationIndex'
-  , YoYInflationIndex
-  , peekYoYInflationIndex
-  , withYoYInflationIndex
-  , CBMAIndex
-  , CBMAIndex'
-  , BMAIndex
-  , peekBMAIndex
-  , withBMAIndex
-  , GenIborIndex
-  , CIborIndex
-  , CIborIndex'
-  , IborIndex
-  , asIborIndex
-  , peekIborIndex
-  , withIborIndex
-  , COvernightIndex
-  , COvernightIndex'
-  , OvernightIborIndex
-  , peekOvernightIborIndex
-  , withOvernightIborIndex
-  , GenSwapIndex
-  , CSwapIndex
-  , CSwapIndex'
-  , SwapIndex
-  , asSwapIndex
-  , peekSwapIndex
-  , withSwapIndex
-  , OvernightIndexedSwapIndex
-  , COvernightIndexedSwapIndex
-  , COvernightIndexedSwapIndex'
-  , peekOvernightIndexedSwapIndex
-  , withOvernightIndexedSwapIndex
-  , CEquityIndex
-  , CEquityIndex'
-  , EquityIndex
-  , peekEquityIndex
-  , withEquityIndex
-
-  , GenTermStructure
-  , TermStructure
-  , CTermStructure
-  , CTermStructure'
-  , asTermStructure
-  , withTermStructure
-  , withGenTermStructure
-  , GenVolatilityTermStructure
-  , VolatilityTermStructure
-  , CVolatilityTermStructure
-  , CVolatilityTermStructure'
-  , peekVolatilityTermStructure
-  , withVolatilityTermStructure
-  , withGenVolatilityTermStructure
-  , OptionletVolatilityStructure
-  , COptionletVolatilityStructure
-  , COptionletVolatilityStructure'
-  , peekOptionletVolatilityStructure
-  , SwaptionVolatilityStructure
-  , CSwaptionVolatilityStructure
-  , CSwaptionVolatilityStructure'
-  , peekSwaptionVolatilityStructure
-  , CapFloorTermVolSurface
-  , CCapFloorTermVolSurface
-  , CCapFloorTermVolSurface'
-  , peekCapFloorTermVolSurface
-  , LocalVolTermStructure
-  , CLocalVolTermStructure
-  , CLocalVolTermStructure'
-  , peekLocalVolTermStructure
-  , GenBlackVolTermStructure
-  , BlackVolTermStructure
-  , CBlackVolTermStructure
-  , CBlackVolTermStructure'
-  , asBlackVolTermStructure
-  , asVolatilityTermStructure
-  , peekBlackVolTermStructure
-  , withBlackVolTermStructure
-  , BlackVarianceCurve
-  , CBlackVarianceCurve
-  , CBlackVarianceCurve'
-  , peekBlackVarianceCurve
-  , withBlackVarianceCurve
-  , GenYieldTermStructure
-  , YieldTermStructure
-  , CYieldTermStructure
-  , CYieldTermStructure'
-  , asYieldTermStructure
-  , peekYieldTermStructure
-  , withYieldTermStructure
-  , withMaybeYieldTermStructure
-  , FittedBondDiscountCurve
-  , CFittedBondDiscountCurve
-  , CFittedBondDiscountCurve'
-  , peekFittedBondDiscountCurve
-  , withFittedBondDiscountCurve
-  , CallableBondVolatilityStructure
-  , CCallableBondVolatilityStructure
-  , CCallableBondVolatilityStructure'
-  , peekCallableBondVolatilityStructure
-  , DefaultProbabilityTermStructure
-  , CDefaultProbabilityTermStructure
-  , CDefaultProbabilityTermStructure'
-  , peekDefaultProbabilityTermStructure
-  , withMaybeDefaultProbabilityTermStructure
-  , ZeroInflationTermStructure
-  , CZeroInflationTermStructure
-  , CZeroInflationTermStructure'
-  , peekZeroInflationTermStructure
-  , withMaybeZeroInflationTermStructure
-  , YoYInflationTermStructure
-  , CYoYInflationTermStructure
-  , CYoYInflationTermStructure'
-  , peekYoYInflationTermStructure
-  , withMaybeYoYInflationTermStructure
-
-  , BatesProcess
-  , CBatesProcess
-  , CBatesProcess'
-  , peekBatesProcess
-  , withBatesProcess
-  , BlackProcess
-  , CBlackProcess
-  , CBlackProcess'
-  , peekBlackProcess
-  , withBlackProcess
-  , ExtendedOrnsteinUhlenbeckProcess
-  , CExtendedOrnsteinUhlenbeckProcess
-  , CExtendedOrnsteinUhlenbeckProcess'
-  , peekExtendedOrnsteinUhlenbeckProcess
-  , ExtOUWithJumpsProcess
-  , CExtOUWithJumpsProcess
-  , CExtOUWithJumpsProcess'
-  , peekExtOUWithJumpsProcess
-  , GeneralizedBlackScholesProcess
-  , GenGeneralizedBlackScholesProcess
-  , CGeneralizedBlackScholesProcess
-  , CGeneralizedBlackScholesProcess'
-  , peekGeneralizedBlackScholesProcess
-  , withGeneralizedBlackScholesProcess
-  , GJRGARCHProcess
-  , CGJRGARCHProcess
-  , CGJRGARCHProcess'
-  , peekGJRGARCHProcess
-  , HestonProcess
-  , GenHestonProcess
-  , CHestonProcess
-  , CHestonProcess'
-  , peekHestonProcess
-  , withHestonProcess
-  , HullWhiteForwardProcess
-  , CHullWhiteForwardProcess
-  , CHullWhiteForwardProcess'
-  , peekHullWhiteForwardProcess
-  , HullWhiteProcess
-  , CHullWhiteProcess
-  , CHullWhiteProcess'
-  , peekHullWhiteProcess
-  , HybridHestonHullWhiteProcess
-  , CHybridHestonHullWhiteProcess
-  , CHybridHestonHullWhiteProcess'
-  , peekHybridHestonHullWhiteProcess
-  , KlugeExtOUProcess
-  , CKlugeExtOUProcess
-  , CKlugeExtOUProcess'
-  , peekKlugeExtOUProcess
-  , LiborForwardModelProcess
-  , CLiborForwardModelProcess
-  , CLiborForwardModelProcess'
-  , peekLiborForwardModelProcess
-  , withStochasticProcess1DArray
-  , StochasticProcess1D
-  , GenStochasticProcess1D
-  , CStochasticProcess1D
-  , CStochasticProcess1D'
-  , peekStochasticProcess1D
-  , withStochasticProcess1D
-  , withGenStochasticProcess1D
-  , StochasticProcessArray
-  , CStochasticProcessArray
-  , CStochasticProcessArray'
-  , peekStochasticProcessArray
-  , StochasticProcess
-  , GenStochasticProcess
-  , CStochasticProcess
-  , CStochasticProcess'
-  , peekStochasticProcess
-  , withStochasticProcess
-  , withGenStochasticProcess
-  , VarianceGammaProcess
-  , CVarianceGammaProcess
-  , CVarianceGammaProcess'
-  , peekVarianceGammaProcess
-  , Merton76Process
-  , CMerton76Process
-  , CMerton76Process'
-  , peekMerton76Process
-  , asStochasticProcess
-  , asHestonProcess
-  , asStochasticProcess1D
-  , asGeneralizedBlackScholesProcess
-
-  , AffineModel(..)
-  , CAffineModel'
-  , asCalibratedModel
-  , asBatesDoubleExpModel
-  , asBatesModel
-  , asOneFactorAffineModel
-  , asShortRateModel
-  , asHestonModel
-  , withAffineModel
-  , Gaussian1dModel(..)
-  , CGaussian1dModel'
-  , withGaussian1dModel
-  , BatesDetJumpModel
-  , CBatesDetJumpModel
-  , CBatesDetJumpModel'
-  , peekBatesDetJumpModel
-  , withBatesDetJumpModel
-  , BatesDoubleExpDetJumpModel
-  , CBatesDoubleExpDetJumpModel
-  , CBatesDoubleExpDetJumpModel'
-  , peekBatesDoubleExpDetJumpModel
-  , withBatesDoubleExpDetJumpModel
-  , BatesDoubleExpModel
-  , GenBatesDoubleExpModel
-  , CBatesDoubleExpModel
-  , CBatesDoubleExpModel'
-  , peekBatesDoubleExpModel
-  , withBatesDoubleExpModel
-  , BatesModel
-  , GenBatesModel
-  , CBatesModel
-  , CBatesModel'
-  , peekBatesModel
-  , withBatesModel
-  , CalibratedModel
-  , GenCalibratedModel
-  , CCalibratedModel
-  , CCalibratedModel'
-  , peekCalibratedModel
-  , withCalibratedModel
-  , withGenCalibratedModel
-  , G2
-  , CG2
-  , CG2'
-  , peekG2
-  , withG2
-  , GJRGARCHModel
-  , CGJRGARCHModel
-  , CGJRGARCHModel'
-  , peekGJRGARCHModel
-  , HestonModel
-  , GenHestonModel
-  , CHestonModel
-  , CHestonModel'
-  , peekHestonModel
-  , withHestonModel
-  , HullWhite
-  , CHullWhite
-  , CHullWhite'
-  , peekHullWhite
-  , withHullWhite
-  , PiecewiseTimeDependentHestonModel
-  , CPiecewiseTimeDependentHestonModel
-  , CPiecewiseTimeDependentHestonModel'
-  , peekPiecewiseTimeDependentHestonModel
-  , ShortRateModel
-  , GenShortRateModel
-  , CShortRateModel
-  , CShortRateModel'
-  , peekShortRateModel
-  , withShortRateModel
-  , OneFactorAffineModel
-  , GenOneFactorAffineModel
-  , COneFactorAffineModel
-  , COneFactorAffineModel'
-  , peekOneFactorAffineModel
-  , withOneFactorAffineModel
-  , LiborForwardModel
-  , CLiborForwardModel
-  , CLiborForwardModel'
-  , peekLiborForwardModel
-  , Gsr
-  , CGsr
-  , CGsr'
-  , peekGsr
-  , MarkovFunctional
-  , CMarkovFunctional
-  , CMarkovFunctional'
-  , peekMarkovFunctional
-
-  , AssetSwap
-  , CAssetSwap
-  , CAssetSwap'
-  , peekAssetSwap
-  , withAssetSwap
-  , BarrierOption
-  , CBarrierOption
-  , CBarrierOption'
-  , peekBarrierOption
-  , withBarrierOption
-  , DoubleBarrierOption
-  , CDoubleBarrierOption
-  , CDoubleBarrierOption'
-  , peekDoubleBarrierOption
-  , withDoubleBarrierOption
-  , BMASwap
-  , CBMASwap
-  , CBMASwap'
-  , peekBMASwap
-  , withBMASwap
-  , Bond
-  , GenBond
-  , CBond
-  , CBond'
-  , asBond
-  , peekBond
-  , withBond
-  , CallableBond
-  , CCallableBond
-  , CCallableBond'
-  , peekCallableBond
-  , withCallableBond
-  , VarianceSwap
-  , CVarianceSwap
-  , CVarianceSwap'
-  , peekVarianceSwap
-  , VarianceOption
-  , CVarianceOption
-  , CVarianceOption'
-  , peekVarianceOption
-  , CapFloor
-  , CCapFloor
-  , CCapFloor'
-  , peekCapFloor
-  , CdsOption
-  , CCdsOption
-  , CCdsOption'
-  , peekCdsOption
-  , withCdsOption
-  , ConvertibleBond
-  , CConvertibleBond
-  , CConvertibleBond'
-  , peekConvertibleBond
-  , withConvertibleBond
-  , CreditDefaultSwap
-  , CCreditDefaultSwap
-  , CCreditDefaultSwap'
-  , peekCreditDefaultSwap
-  , FixedRateBond
-  , CFixedRateBond
-  , CFixedRateBond'
-  , peekFixedRateBond
-  , withFixedRateBond
-  , CPIBond
-  , CCPIBond
-  , CCPIBond'
-  , peekCPIBond
-  , withCPIBond
-  , BondForward
-  , CBondForward
-  , CBondForward'
-  , peekBondForward
-  , withBondForward
-  , Forward
-  , CForward
-  , GenForward
-  , CForward'
-  , asForward
-  , peekForward
-  , withForward
-  , withGenForward
-  , ForwardRateAgreement
-  , CForwardRateAgreement
-  , CForwardRateAgreement'
-  , peekForwardRateAgreement
-  , FxForward
-  , CFxForward
-  , CFxForward'
-  , peekFxForward
-  , Instrument
-  , GenInstrument
-  , CInstrument
-  , CInstrument'
-  , asInstrument
-  , peekInstrument
-  , withInstrument
-  , withInstrumentArray
-  , withGenInstrument
-  , Option
-  , GenOption
-  , COption
-  , COption'
-  , asOption
-  , withGenOption
-  , peekOption
-  , withOption
-  , OvernightIndexedSwap
-  , COvernightIndexedSwap
-  , COvernightIndexedSwap'
-  , peekOvernightIndexedSwap
-  , withOvernightIndexedSwap
-  , ZeroCouponInflationSwap
-  , CZeroCouponInflationSwap
-  , CZeroCouponInflationSwap'
-  , peekZeroCouponInflationSwap
-  , withZeroCouponInflationSwap
-  , YearOnYearInflationSwap
-  , CYearOnYearInflationSwap
-  , CYearOnYearInflationSwap'
-  , peekYearOnYearInflationSwap
-  , withYearOnYearInflationSwap
-  , CPISwap
-  , CCPISwap
-  , CCPISwap'
-  , peekCPISwap
-  , withCPISwap
-  , ZeroCouponSwap
-  , CZeroCouponSwap
-  , CZeroCouponSwap'
-  , peekZeroCouponSwap
-  , withZeroCouponSwap
-  , EquityTotalReturnSwap
-  , CEquityTotalReturnSwap
-  , CEquityTotalReturnSwap'
-  , peekEquityTotalReturnSwap
-  , withEquityTotalReturnSwap
-  , QuantoBarrierOption
-  , CQuantoBarrierOption
-  , CQuantoBarrierOption'
-  , peekQuantoBarrierOption
-  , withQuantoBarrierOption
-  , QuantoForwardVanillaOption
-  , CQuantoForwardVanillaOption
-  , CQuantoForwardVanillaOption'
-  , peekQuantoForwardVanillaOption
-  , withQuantoForwardVanillaOption
-  , QuantoVanillaOption
-  , CQuantoVanillaOption'
-  , peekQuantoVanillaOption
-  , withQuantoVanillaOption
-  , Swap
-  , CSwap
-  , GenSwap
-  , CSwap'
-  , asSwap
-  , withGenSwap
-  , peekSwap
-  , withSwap
-  , Swaption
-  , CSwaption
-  , CSwaption'
-  , peekSwaption
-  , withSwaption
-  , VanillaOption
-  , CVanillaOption
-  , CVanillaOption'
-  , peekVanillaOption
-  , withVanillaOption
-  , VanillaSwap
-  , CVanillaSwap
-  , CVanillaSwap'
-  , peekVanillaSwap
-  , withVanillaSwap
-  , MargrabeOption
-  , CMargrabeOption
-  , CMargrabeOption'
-  , peekMargrabeOption
-  , withMargrabeOption
-  , MultiAssetOption
-  , GenMultiAssetOption
-  , CMultiAssetOption
-  , CMultiAssetOption'
-  , asMultiAssetOption
-  , peekMultiAssetOption
-  , withMultiAssetOption
-  , OneAssetOption
-  , GenOneAssetOption
-  , COneAssetOption
-  , COneAssetOption'
-  , asOneAssetOption
-  , peekOneAssetOption
-  , withOneAssetOption
-  ) where
+module QuantLib.Internal.Type where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types(CUInt, CInt)
@@ -756,7 +11,7 @@ import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(peekDynString, preArray, peekDayArray)
-import Control.Exception (finally, bracket)
+import Control.Exception (finally, bracket, mask)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
@@ -774,10 +29,25 @@ withMaybeStandalone :: Maybe (Standalone a) -> (Ptr a -> IO b) -> IO b
 withMaybeStandalone x f = maybe (f nullPtr) (`withStandalone` f) x
 withStandaloneArray :: (t -> Standalone a) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO b) -> IO b
 withStandaloneArray c x f = withMany withStandalone (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
+-- The name of a QuantLib object is fixed for its lifetime, so reading it through
+-- unsafePerformIO is safe; NOINLINE keeps GHC from duplicating or floating the C++
+-- call, matching how QuantLib.Settings guards its own unsafePerformIO sites.
 showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
 showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
+{-# NOINLINE showStandalone #-}
 
--- TODO double check feasibility of `unsafe' if Haskell callbacks are added later
+-- On `safe' vs `unsafe' imports, file-wide (this was an open TODO; it is settled):
+--   * The `&qlFreeX' finalizer imports below take a symbol *address*, not a call, so their
+--     `unsafe' annotation is inert. The call that matters is `callFinalizer' above, plus
+--     whatever the GC runs; both are safe.
+--   * Everything that runs QuantLib logic stays `safe'. Under the non-threaded RTS an
+--     `unsafe' call blocks GC and the scheduler for its whole duration, and pricing or
+--     bootstrapping is unbounded.
+--   * The qlXAsY upcast shims are the one legitimate `unsafe' candidate -- bare
+--     `ret(new QlY(*arg(o)))', no callback into Haskell, bounded work -- but they are
+--     already dominated by the QuantLib call they precede, so leave them `safe' absent a
+--     measurement; a per-shim rule would break the first time one grows logic.
+-- If a Haskell callback is ever passed into C++, every import on that path must be `safe'.
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
@@ -788,6 +58,8 @@ withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
 withCalendar = withStandalone . getCCalendar
 foreign import ccall safe "ql.h qlCalendarName" qlCalendarName :: Ptr CCalendar -> IO CString
 instance Show Calendar where show x = showStandalone qlCalendarName (getCCalendar x)
+-- Equality by name, here and for the Currency/Region/DayCounter/Schedule instances
+-- below. This is deliberate: it is how QuantLib itself compares these types.
 instance Eq Calendar where x == y = show x == show y
 
 data CCurrency
@@ -837,9 +109,13 @@ peekSchedule = Schedule <.> peekStandalone
 withSchedule :: Schedule -> (Ptr CSchedule -> IO b) -> IO b
 withSchedule = withStandalone . getCSchedule
 foreign import ccall safe "ql.h qlScheduleDates" qlScheduleDates :: Ptr CSchedule -> Ptr CUInt -> Ptr (Ptr CInt) -> IO ()
+showSchedule :: Schedule -> String
+showSchedule x = unsafePerformIO $ withSchedule x $ \p ->
+  show <$> preArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
+{-# NOINLINE showSchedule #-}
+
 instance Show Schedule where
-  show x = unsafePerformIO $ withSchedule x $ \p ->
-    show <$> preArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
+  show = showSchedule
 instance Eq Schedule where
   x == y = show x == show y
 
@@ -1001,6 +277,18 @@ peekSamplePath = SamplePath <.> peekStandalone
 withSamplePath :: SamplePath -> (Ptr CSamplePath -> IO b) -> IO b
 withSamplePath = withStandalone . getCSamplePath
 
+-- MultiCurve is enable_shared_from_this upstream ("This must be a shared pointer") and builds a
+-- set of curves that form a genuine dependency cycle; bound as a standalone leaf, not part of
+-- the TermStructure hierarchy (it isn't a TermStructure itself), mirroring PricingEngine above.
+data CMultiCurve
+newtype MultiCurve = MultiCurve {getCMultiCurve :: Standalone CMultiCurve}
+foreign import ccall unsafe "ql.h &qlFreeMultiCurve" qlFreeMultiCurve :: FinalizerPtr CMultiCurve
+instance Finalizable CMultiCurve where finalize = qlFreeMultiCurve
+peekMultiCurve :: Ptr CMultiCurve -> IO MultiCurve
+peekMultiCurve = MultiCurve <.> peekStandalone
+withMultiCurve :: MultiCurve -> (Ptr CMultiCurve -> IO b) -> IO b
+withMultiCurve = withStandalone . getCMultiCurve
+
 -- special cases: those types will be represented as enums so no need to wrap them
 data CQlClaim
 type QlClaim = Standalone CQlClaim
@@ -1073,8 +361,27 @@ peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityM
 peekLmVolatilityModel = peekStandalone
 
 -- TYPE HIERARCHIES
+--
+-- Each hierarchy root below carries a haddock tree listing every member. Notation:
+--   indentation  parent/child
+--   `X*'         abstract *here*: hasquant binds no constructor returning an X, you only
+--                obtain one by upcasting. This is not the same as C++ abstractness and
+--                cannot be derived from it -- Option and Swap are concrete classes
+--                upstream but unconstructible here, while Quote/Index/TermStructure are
+--                pure-virtual upstream yet routinely returned by bindings. Marks are
+--                added where established; an unmarked node is not a claim of the opposite.
+--   `X + Y'      X also reaches secondary interface Y, via the standalone qlXAsY shim and
+--                the hand-written Y ADT (see CAffineModel' below), not via Upcastable.
+--   X (CFoo')    X's C type, given only where it is not the expected C<X>'.
+-- Payoff and Exercise are documented in the files that define them, not here.
 -- the original pointer to `a' with a way to marshal it to `b'
--- Actually we don't need the second field as we can infer the number of upcasts needed from the structure of the objects
+-- The access/free pair IS derivable from the structure of `a' (each nested AnyOf layer is
+-- one upcast; the innermost ForeignPtr is identity or one upcast). It stays a stored
+-- dictionary because the alternative -- an `Access a b' class -- becomes a constraint at
+-- every polymorphic use site, and c2hs emits an explicit signature for every {#fun#}: 363
+-- of 880 hooks take a polymorphic `GenX a' and would each need a hand-written context,
+-- which would also leak into public API signatures. It buys no correctness -- the smart
+-- constructors below are already pinned by their result types.
 data GenForeignPtr a b = GenForeignPtr {
   ptr :: !a
   , _access :: !(forall r. a -> (Ptr b -> IO r) -> IO r)
@@ -1104,9 +411,16 @@ newCastForeignPtr x = do
   fp <- newForeignPtr finalize x
   pure $ GenForeignPtr fp withForeignPtr Nothing
 
+-- `access' performs the upcast, which allocates a fresh handle that `mfree' must release, so
+-- acquiring it and installing the handler have to be atomic -- `mask' covers the upcast
+-- happening inside `access', and `restore' hands `f' back the caller's masking state. This
+-- is `bracket' semantics (cf. `withUpcast' below) expressed around a continuation that
+-- allocates internally. Nesting is fine: an inner level's `restore' only wraps the
+-- continuation that contains the outer `restore', so `f' still runs unmasked.
 withGenForeignPtr :: GenForeignPtr a b -> (Ptr b -> IO r) -> IO r
-withGenForeignPtr (GenForeignPtr p access mfree) f =
-  access p $ \bp -> f bp `finally` maybe (pure ()) ($ bp) mfree
+withGenForeignPtr (GenForeignPtr p access Nothing) f = access p f
+withGenForeignPtr (GenForeignPtr p access (Just free)) f =
+  mask $ \restore -> access p $ \bp -> restore (f bp) `finally` free bp
 
 transferGenForeignPtr :: (Ptr b -> IO r) -> GenForeignPtr a b -> IO r
 transferGenForeignPtr f (GenForeignPtr p access _) = access p f
@@ -1120,26 +434,34 @@ peel = getAnyOf . ptr
 -- | > Quote
 -- >   SimpleQuote
 -- >   DeltaVolQuote
+-- >   RelinkableQuote
 type Quote = GenQuote CQuote
 data CQuote'
 data CSimpleQuote'
 data CDeltaVolQuote'
+data CRelinkableQuote'
 newtype GenQuote a = GenQuote {getQuote :: GenForeignPtr a CQuote'}
 type CQuote = ForeignPtr CQuote'
 type CSimpleQuote = ForeignPtr CSimpleQuote'
 type SimpleQuote = GenQuote CSimpleQuote
 type CDeltaVolQuote = ForeignPtr CDeltaVolQuote'
 type DeltaVolQuote = GenQuote CDeltaVolQuote
+type CRelinkableQuote = ForeignPtr CRelinkableQuote'
+type RelinkableQuote = GenQuote CRelinkableQuote
 foreign import ccall unsafe "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
 foreign import ccall unsafe "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
 foreign import ccall unsafe "ql.h &qlFreeDeltaVolQuote" qlFreeDeltaVolQuote :: FinalizerPtr CDeltaVolQuote'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableQuote" qlFreeRelinkableQuote :: FinalizerPtr CRelinkableQuote'
 instance Finalizable CQuote' where finalize = qlFreeQuote
 instance Finalizable CSimpleQuote' where finalize = qlFreeSimpleQuote
 instance Finalizable CDeltaVolQuote' where finalize = qlFreeDeltaVolQuote
+instance Finalizable CRelinkableQuote' where finalize = qlFreeRelinkableQuote
 instance Upcastable CSimpleQuote' where {type Base CSimpleQuote' = CQuote'; upcast = qlSimpleQuoteAsQuote}
 instance Upcastable CDeltaVolQuote' where {type Base CDeltaVolQuote' = CQuote'; upcast = qlDeltaVolQuoteAsQuote}
+instance Upcastable CRelinkableQuote' where {type Base CRelinkableQuote' = CQuote'; upcast = qlRelinkableQuoteAsQuote}
 foreign import ccall "ql.h qlSimpleQuoteAsQuote" qlSimpleQuoteAsQuote :: Ptr CSimpleQuote' -> IO (Ptr CQuote')
 foreign import ccall "ql.h qlDeltaVolQuoteAsQuote" qlDeltaVolQuoteAsQuote :: Ptr CDeltaVolQuote' -> IO (Ptr CQuote')
+foreign import ccall "ql.h qlRelinkableQuoteAsQuote" qlRelinkableQuoteAsQuote :: Ptr CRelinkableQuote' -> IO (Ptr CQuote')
 -- Haskell does not allow function arguments like [forall a.GenQuote a]
 -- let's at least provide a way to convert all quote classes to the most generic one
 asQuote :: GenQuote a -> IO Quote
@@ -1154,6 +476,10 @@ peekSimpleQuote :: Ptr CSimpleQuote' -> IO SimpleQuote
 peekSimpleQuote = GenQuote <.> newGenForeignPtr
 peekDeltaVolQuote :: Ptr CDeltaVolQuote' -> IO DeltaVolQuote
 peekDeltaVolQuote = GenQuote <.> newGenForeignPtr
+peekRelinkableQuote :: Ptr CRelinkableQuote' -> IO RelinkableQuote
+peekRelinkableQuote = GenQuote <.> newGenForeignPtr
+withRelinkableQuote :: RelinkableQuote -> (Ptr CRelinkableQuote' -> IO b) -> IO b
+withRelinkableQuote = withGenQuote
 withMaybeQuote :: Maybe (GenQuote a) -> (Ptr CQuote' -> IO b) -> IO b
 withMaybeQuote x f = maybe (f nullPtr) (`withQuote` f) x
 withQuoteArray :: [GenQuote a] -> ((CUInt, Ptr (Ptr CQuote')) -> IO b) -> IO b
@@ -1363,12 +689,12 @@ peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 -- >  InterestRateIndex
 -- >    BMAIndex
 -- >    IborIndex
--- >      OvernightIborIndex
+-- >      OvernightIborIndex (COvernightIndex')
 -- >    SwapIndex
 -- >      OvernightIndexedSwapIndex
 -- >  InflationIndex
--- >    YoYInflationIndex-
--- >    ZeroInflationIndex-
+-- >    YoYInflationIndex
+-- >    ZeroInflationIndex
 -- >  EquityIndex
 type Index = GenIndex CIndex
 data CIndex'
@@ -1385,7 +711,11 @@ newtype GenIndex a = GenIndex {getIndex :: GenForeignPtr a CIndex'}
 type CIndex = ForeignPtr CIndex'
 
 foreign import ccall safe "ql.h qlIndexName" qlIndexName :: Ptr CIndex' -> IO CString
-instance Show (GenIndex a) where show = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
+showIndex :: GenIndex a -> String
+showIndex = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
+{-# NOINLINE showIndex #-}
+
+instance Show (GenIndex a) where show = showIndex
 
 type GenInterestRateIndex a = GenIndex (AnyOf CInterestRateIndex' a)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
@@ -1537,11 +867,18 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- | > TermStructure = GenTermStructure a
 -- >  YieldTermStructure = GenYieldTermStructure b = GenTermStructure c
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
+-- >    RelinkableYieldTermStructure = GenYieldTermStructure ...
+-- (MultiCurve, below with the other standalone leaves, is not a YieldTermStructure member --
+-- it manages a cycle of them, handing out 'YieldTermStructure' handles via addBootstrappedCurve
+-- \/ addNonBootstrappedCurve. See its own definition's comment.)
 -- >  VolatilityTermStructure
 -- >    OptionletVolatilityStructure
+-- >      RelinkableOptionletVolatilityStructure
 -- >    BlackVolTermStructure
 -- >      BlackVarianceCurve
+-- >      RelinkableBlackVolTermStructure
 -- >    SwaptionVolatilityStructure
+-- >      RelinkableSwaptionVolatilityStructure
 -- >    CapFloorTermVolSurface
 -- >    LocalVolTermStructure
 -- >  CallableBondVolatilityStructure
@@ -1552,13 +889,17 @@ type TermStructure = GenTermStructure CTermStructure
 data CTermStructure'
 data CVolatilityTermStructure'
 data COptionletVolatilityStructure'
+data CRelinkableOptionletVolatilityStructure'
 data CSwaptionVolatilityStructure'
+data CRelinkableSwaptionVolatilityStructure'
 data CCapFloorTermVolSurface'
 data CLocalVolTermStructure'
 data CBlackVolTermStructure'
+data CRelinkableBlackVolTermStructure'
 data CBlackVarianceCurve'
 data CYieldTermStructure'
 data CFittedBondDiscountCurve'
+data CRelinkableYieldTermStructure'
 data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
 data CZeroInflationTermStructure'
@@ -1570,20 +911,48 @@ type CYieldTermStructure = ForeignPtr CYieldTermStructure'
 type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
 type CFittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve'
 type FittedBondDiscountCurve = GenYieldTermStructure CFittedBondDiscountCurve
+type CRelinkableYieldTermStructure = ForeignPtr CRelinkableYieldTermStructure'
+-- | A curve held behind a relinkable handle. It /is/ a 'YieldTermStructure' -- pass it
+-- anywhere a curve is expected and it upcasts like any other hierarchy member, sharing its
+-- @Link@ so that a later 'QuantLib.TermStructure.Yield.linkTo' reaches everything already
+-- built on it.
+type RelinkableYieldTermStructure = GenYieldTermStructure CRelinkableYieldTermStructure
 type GenVolatilityTermStructure a = GenTermStructure (AnyOf CVolatilityTermStructure' a)
 type CVolatilityTermStructure = ForeignPtr CVolatilityTermStructure'
 type VolatilityTermStructure = GenVolatilityTermStructure CVolatilityTermStructure
+type GenOptionletVolatilityStructure a = GenVolatilityTermStructure (AnyOf COptionletVolatilityStructure' a)
 type COptionletVolatilityStructure = ForeignPtr COptionletVolatilityStructure'
-type OptionletVolatilityStructure = GenVolatilityTermStructure COptionletVolatilityStructure
+type OptionletVolatilityStructure = GenOptionletVolatilityStructure COptionletVolatilityStructure
+type CRelinkableOptionletVolatilityStructure = ForeignPtr CRelinkableOptionletVolatilityStructure'
+-- | An optionlet vol surface held behind a relinkable handle. It /is/ an
+-- 'OptionletVolatilityStructure' -- pass it anywhere one is expected and it upcasts like any
+-- other hierarchy member, sharing its @Link@ so that a later
+-- 'QuantLib.TermStructure.Volatility.linkOptionletVolTo' reaches everything already built on
+-- it. Mirrors 'RelinkableSwaptionVolatilityStructure'.
+type RelinkableOptionletVolatilityStructure = GenOptionletVolatilityStructure CRelinkableOptionletVolatilityStructure
 type CCapFloorTermVolSurface = ForeignPtr CCapFloorTermVolSurface'
 type CapFloorTermVolSurface = GenVolatilityTermStructure CCapFloorTermVolSurface
+type GenSwaptionVolatilityStructure a = GenVolatilityTermStructure (AnyOf CSwaptionVolatilityStructure' a)
 type CSwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure'
-type SwaptionVolatilityStructure = GenVolatilityTermStructure CSwaptionVolatilityStructure
+type SwaptionVolatilityStructure = GenSwaptionVolatilityStructure CSwaptionVolatilityStructure
+type CRelinkableSwaptionVolatilityStructure = ForeignPtr CRelinkableSwaptionVolatilityStructure'
+-- | A swaption vol surface held behind a relinkable handle. It /is/ a
+-- 'SwaptionVolatilityStructure' -- pass it anywhere one is expected and it upcasts like any
+-- other hierarchy member, sharing its @Link@ so that a later
+-- 'QuantLib.TermStructure.Volatility.linkSwaptionVolTo' reaches everything already built on
+-- it. Mirrors 'RelinkableBlackVolTermStructure'.
+type RelinkableSwaptionVolatilityStructure = GenSwaptionVolatilityStructure CRelinkableSwaptionVolatilityStructure
 type CLocalVolTermStructure = ForeignPtr CLocalVolTermStructure'
 type LocalVolTermStructure = GenVolatilityTermStructure CLocalVolTermStructure
 type GenBlackVolTermStructure a = GenVolatilityTermStructure (AnyOf CBlackVolTermStructure' a)
 type CBlackVolTermStructure = ForeignPtr CBlackVolTermStructure'
 type BlackVolTermStructure = GenBlackVolTermStructure CBlackVolTermStructure
+type CRelinkableBlackVolTermStructure = ForeignPtr CRelinkableBlackVolTermStructure'
+-- | A Black vol surface held behind a relinkable handle. It /is/ a 'BlackVolTermStructure' --
+-- pass it anywhere one is expected and it upcasts like any other hierarchy member, sharing its
+-- @Link@ so that a later 'QuantLib.TermStructure.Volatility.linkBlackVolTo' reaches everything
+-- already built on it. Mirrors 'RelinkableYieldTermStructure'.
+type RelinkableBlackVolTermStructure = GenBlackVolTermStructure CRelinkableBlackVolTermStructure
 type CBlackVarianceCurve = ForeignPtr CBlackVarianceCurve'
 type BlackVarianceCurve = GenBlackVolTermStructure CBlackVarianceCurve
 type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStructure'
@@ -1597,13 +966,17 @@ type YoYInflationTermStructure = GenTermStructure CYoYInflationTermStructure
 foreign import ccall unsafe "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableOptionletVolatilityStructure" qlFreeRelinkableOptionletVolatilityStructure :: FinalizerPtr CRelinkableOptionletVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableSwaptionVolatilityStructure" qlFreeRelinkableSwaptionVolatilityStructure :: FinalizerPtr CRelinkableSwaptionVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface'
 foreign import ccall unsafe "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableBlackVolTermStructure" qlFreeRelinkableBlackVolTermStructure :: FinalizerPtr CRelinkableBlackVolTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeBlackVarianceCurve" qlFreeBlackVarianceCurve :: FinalizerPtr CBlackVarianceCurve'
 foreign import ccall unsafe "ql.h &qlFreeYieldTermStructure" qlFreeYieldTermStructure :: FinalizerPtr CYieldTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBondDiscountCurve :: FinalizerPtr CFittedBondDiscountCurve'
+foreign import ccall unsafe "ql.h &qlFreeRelinkableYieldTermStructure" qlFreeRelinkableYieldTermStructure :: FinalizerPtr CRelinkableYieldTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
@@ -1611,24 +984,32 @@ foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInf
 instance Finalizable CTermStructure' where finalize = qlFreeTermStructure
 instance Finalizable CVolatilityTermStructure' where finalize = qlFreeVolatilityTermStructure
 instance Finalizable COptionletVolatilityStructure' where finalize = qlFreeOptionletVolatilityStructure
+instance Finalizable CRelinkableOptionletVolatilityStructure' where finalize = qlFreeRelinkableOptionletVolatilityStructure
 instance Finalizable CSwaptionVolatilityStructure' where finalize = qlFreeSwaptionVolatilityStructure
+instance Finalizable CRelinkableSwaptionVolatilityStructure' where finalize = qlFreeRelinkableSwaptionVolatilityStructure
 instance Finalizable CCapFloorTermVolSurface' where finalize = qlFreeCapFloorTermVolSurface
 instance Finalizable CLocalVolTermStructure' where finalize = qlFreeLocalVolTermStructure
 instance Finalizable CBlackVolTermStructure' where finalize = qlFreeBlackVolTermStructure
+instance Finalizable CRelinkableBlackVolTermStructure' where finalize = qlFreeRelinkableBlackVolTermStructure
 instance Finalizable CBlackVarianceCurve' where finalize = qlFreeBlackVarianceCurve
 instance Finalizable CYieldTermStructure' where finalize = qlFreeYieldTermStructure
 instance Finalizable CFittedBondDiscountCurve' where finalize = qlFreeFittedBondDiscountCurve
+instance Finalizable CRelinkableYieldTermStructure' where finalize = qlFreeRelinkableYieldTermStructure
 instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCallableBondVolatilityStructure
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
+foreign import ccall "ql.h qlRelinkableYieldTermStructureAsYieldTermStructure" qlRelinkableYieldTermStructureAsYieldTermStructure :: Ptr CRelinkableYieldTermStructure' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlVolatilityTermStructureAsTermStructure" qlVolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure" qlOptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure" qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure :: Ptr CRelinkableOptionletVolatilityStructure' -> IO (Ptr COptionletVolatilityStructure')
 foreign import ccall "ql.h qlBlackVolTermStructureAsVolatilityTermStructure" qlBlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlRelinkableBlackVolTermStructureAsBlackVolTermStructure" qlRelinkableBlackVolTermStructureAsBlackVolTermStructure :: Ptr CRelinkableBlackVolTermStructure' -> IO (Ptr CBlackVolTermStructure')
 foreign import ccall "ql.h qlBlackVarianceCurveAsBlackVolTermStructure" qlBlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve' -> IO (Ptr CBlackVolTermStructure')
 foreign import ccall "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure" qlSwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure" qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure :: Ptr CRelinkableSwaptionVolatilityStructure' -> IO (Ptr CSwaptionVolatilityStructure')
 foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure" qlCapFloorTermVolSurfaceAsVolatilityTermStructure :: Ptr CCapFloorTermVolSurface' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure' -> IO (Ptr CTermStructure')
@@ -1637,15 +1018,19 @@ foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroIn
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
 instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
 instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; upcast = qlFittedBondDiscountCurveAsYieldTermStructure}
+instance Upcastable CRelinkableYieldTermStructure' where {type Base CRelinkableYieldTermStructure' = CYieldTermStructure'; upcast = qlRelinkableYieldTermStructureAsYieldTermStructure}
 instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; upcast = qlVolatilityTermStructureAsTermStructure}
 instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallableBondVolatilityStructure' = CTermStructure'; upcast = qlCallableBondVolatilityStructureAsTermStructure}
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
 instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
+instance Upcastable CRelinkableBlackVolTermStructure' where {type Base CRelinkableBlackVolTermStructure' = CBlackVolTermStructure'; upcast = qlRelinkableBlackVolTermStructureAsBlackVolTermStructure}
 instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; upcast = qlBlackVarianceCurveAsBlackVolTermStructure}
 instance Upcastable COptionletVolatilityStructure' where {type Base COptionletVolatilityStructure' = CVolatilityTermStructure'; upcast = qlOptionletVolatilityStructureAsVolatilityTermStructure}
+instance Upcastable CRelinkableOptionletVolatilityStructure' where {type Base CRelinkableOptionletVolatilityStructure' = COptionletVolatilityStructure'; upcast = qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure}
 instance Upcastable CSwaptionVolatilityStructure' where {type Base CSwaptionVolatilityStructure' = CVolatilityTermStructure'; upcast = qlSwaptionVolatilityStructureAsVolatilityTermStructure}
+instance Upcastable CRelinkableSwaptionVolatilityStructure' where {type Base CRelinkableSwaptionVolatilityStructure' = CSwaptionVolatilityStructure'; upcast = qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure}
 instance Upcastable CCapFloorTermVolSurface' where {type Base CCapFloorTermVolSurface' = CVolatilityTermStructure'; upcast = qlCapFloorTermVolSurfaceAsVolatilityTermStructure}
 instance Upcastable CLocalVolTermStructure' where {type Base CLocalVolTermStructure' = CVolatilityTermStructure'; upcast = qlLocalVolTermStructureAsVolatilityTermStructure}
 asTermStructure :: GenTermStructure a -> IO TermStructure
@@ -1676,18 +1061,44 @@ peekBlackVolTermStructure :: Ptr CBlackVolTermStructure' -> IO BlackVolTermStruc
 peekBlackVolTermStructure = newCastForeignPtr >=> newGenBlackVolTermStructure
 withBlackVolTermStructure :: GenBlackVolTermStructure a -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
 withBlackVolTermStructure = withGenForeignPtr . peel . peel . getTermStructure
+withMaybeBlackVolTermStructure :: Maybe (GenBlackVolTermStructure a) -> (Ptr CBlackVolTermStructure' -> IO b) -> IO b
+withMaybeBlackVolTermStructure x f = maybe (f nullPtr) (`withBlackVolTermStructure` f) x
 newGenBlackVolTermStructure :: GenForeignPtr a CBlackVolTermStructure' -> IO (GenBlackVolTermStructure a)
 newGenBlackVolTermStructure = pure . GenTermStructure . newAnyOf . newAnyOf
 
 peekBlackVarianceCurve :: Ptr CBlackVarianceCurve' -> IO BlackVarianceCurve
 peekBlackVarianceCurve = newGenForeignPtr >=> newGenBlackVolTermStructure
+peekRelinkableBlackVolTermStructure :: Ptr CRelinkableBlackVolTermStructure' -> IO RelinkableBlackVolTermStructure
+peekRelinkableBlackVolTermStructure = newGenForeignPtr >=> newGenBlackVolTermStructure
+withRelinkableBlackVolTermStructure :: RelinkableBlackVolTermStructure -> (Ptr CRelinkableBlackVolTermStructure' -> IO b) -> IO b
+withRelinkableBlackVolTermStructure = withForeignPtr . ptr . peel . peel . getTermStructure
 withBlackVarianceCurve :: BlackVarianceCurve -> (Ptr CBlackVarianceCurve' -> IO b) -> IO b
 withBlackVarianceCurve = withForeignPtr . ptr . peel . peel . getTermStructure
 
 peekOptionletVolatilityStructure :: Ptr COptionletVolatilityStructure' -> IO OptionletVolatilityStructure
-peekOptionletVolatilityStructure = peekGenVolatilityTermStructure
+peekOptionletVolatilityStructure = newCastForeignPtr >=> newGenOptionletVolatilityStructure
+withOptionletVolatilityStructure :: GenOptionletVolatilityStructure a -> (Ptr COptionletVolatilityStructure' -> IO b) -> IO b
+withOptionletVolatilityStructure = withGenForeignPtr . peel . peel . getTermStructure
+withMaybeOptionletVolatilityStructure :: Maybe (GenOptionletVolatilityStructure a) -> (Ptr COptionletVolatilityStructure' -> IO b) -> IO b
+withMaybeOptionletVolatilityStructure x f = maybe (f nullPtr) (`withOptionletVolatilityStructure` f) x
+newGenOptionletVolatilityStructure :: GenForeignPtr a COptionletVolatilityStructure' -> IO (GenOptionletVolatilityStructure a)
+newGenOptionletVolatilityStructure = pure . GenTermStructure . newAnyOf . newAnyOf
+peekRelinkableOptionletVolatilityStructure :: Ptr CRelinkableOptionletVolatilityStructure' -> IO RelinkableOptionletVolatilityStructure
+peekRelinkableOptionletVolatilityStructure = newGenForeignPtr >=> newGenOptionletVolatilityStructure
+withRelinkableOptionletVolatilityStructure :: RelinkableOptionletVolatilityStructure -> (Ptr CRelinkableOptionletVolatilityStructure' -> IO b) -> IO b
+withRelinkableOptionletVolatilityStructure = withForeignPtr . ptr . peel . peel . getTermStructure
 peekSwaptionVolatilityStructure :: Ptr CSwaptionVolatilityStructure' -> IO SwaptionVolatilityStructure
-peekSwaptionVolatilityStructure = peekGenVolatilityTermStructure
+peekSwaptionVolatilityStructure = newCastForeignPtr >=> newGenSwaptionVolatilityStructure
+withSwaptionVolatilityStructure :: GenSwaptionVolatilityStructure a -> (Ptr CSwaptionVolatilityStructure' -> IO b) -> IO b
+withSwaptionVolatilityStructure = withGenForeignPtr . peel . peel . getTermStructure
+withMaybeSwaptionVolatilityStructure :: Maybe (GenSwaptionVolatilityStructure a) -> (Ptr CSwaptionVolatilityStructure' -> IO b) -> IO b
+withMaybeSwaptionVolatilityStructure x f = maybe (f nullPtr) (`withSwaptionVolatilityStructure` f) x
+newGenSwaptionVolatilityStructure :: GenForeignPtr a CSwaptionVolatilityStructure' -> IO (GenSwaptionVolatilityStructure a)
+newGenSwaptionVolatilityStructure = pure . GenTermStructure . newAnyOf . newAnyOf
+peekRelinkableSwaptionVolatilityStructure :: Ptr CRelinkableSwaptionVolatilityStructure' -> IO RelinkableSwaptionVolatilityStructure
+peekRelinkableSwaptionVolatilityStructure = newGenForeignPtr >=> newGenSwaptionVolatilityStructure
+withRelinkableSwaptionVolatilityStructure :: RelinkableSwaptionVolatilityStructure -> (Ptr CRelinkableSwaptionVolatilityStructure' -> IO b) -> IO b
+withRelinkableSwaptionVolatilityStructure = withForeignPtr . ptr . peel . peel . getTermStructure
 peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVolSurface
 peekCapFloorTermVolSurface = peekGenVolatilityTermStructure
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
@@ -1720,6 +1131,13 @@ newGenYieldTermStructure = pure . GenTermStructure . newAnyOf
 
 peekFittedBondDiscountCurve :: Ptr CFittedBondDiscountCurve' -> IO FittedBondDiscountCurve
 peekFittedBondDiscountCurve = newGenForeignPtr >=> newGenYieldTermStructure
+peekRelinkableYieldTermStructure :: Ptr CRelinkableYieldTermStructure' -> IO RelinkableYieldTermStructure
+peekRelinkableYieldTermStructure = newGenForeignPtr >=> newGenYieldTermStructure
+-- | Reach the relinkable handle itself, for the operations that only it has ('linkTo',
+-- 'currentLink'). Ordinary curve arguments go through 'withYieldTermStructure' instead,
+-- which upcasts.
+withRelinkableYieldTermStructure :: RelinkableYieldTermStructure -> (Ptr CRelinkableYieldTermStructure' -> IO b) -> IO b
+withRelinkableYieldTermStructure = withForeignPtr . ptr . peel . getTermStructure
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve = withForeignPtr . ptr . peel . getTermStructure
 
@@ -1933,7 +1351,7 @@ withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 
 -- | > CalibratedModel
--- >  LiborForwardModel: AffineModel
+-- >  LiborForwardModel + AffineModel
 -- >  GJRGARCHModel
 -- >  PiecewiseTimeDependentHestonModel
 -- >  HestonModel
@@ -1942,11 +1360,11 @@ withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 -- >    BatesDoubleExpModel
 -- >      BatesDoubleExpDetJumpModel
 -- >  ShortRateModel
--- >    G2: AffineModel
--- >    OneFactorAffineModel: AffineModel
--- >      HullWhite: AffineMode
--- >  Gsr: Gaussian1dModel
--- >  MarkovFunctional: Gaussian1dModel
+-- >    G2 + AffineModel
+-- >    OneFactorAffineModel + AffineModel
+-- >      HullWhite + AffineModel
+-- >  Gsr + Gaussian1dModel
+-- >  MarkovFunctional + Gaussian1dModel
 type CalibratedModel = GenCalibratedModel CCalibratedModel
 data CCalibratedModel'
 data CGJRGARCHModel'
@@ -2167,14 +1585,14 @@ withGaussian1dModel :: Gaussian1dModel -> (Ptr CGaussian1dModel' -> IO b) -> IO 
 withGaussian1dModel (Gsr m) f = withGenCalibratedModel m (withUpcast qlGsrAsGaussian1dModel f)
 withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcast qlMarkovFunctionalAsGaussian1dModel f)
 
--- | > a:Instrument ("a" == an abstract class)
--- >  a:Forward
+-- | > Instrument*
+-- >  Forward*
 -- >    BondForward
 -- >  ForwardRateAgreement
 -- >  FxForward
 -- >  VarianceSwap
 -- >  VarianceOption
--- >  a:Option
+-- >  Option*
 -- >    CdsOption
 -- >    MultiAssetOption
 -- >      MargrabeOption
@@ -2186,7 +1604,7 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      QuantoForwardVanillaOption
 -- >      QuantoBarrierOption
 -- >    Swaption
--- >  a:Swap
+-- >  Swap*
 -- >    VanillaSwap
 -- >    AssetSwap
 -- >    BMASwap

@@ -58,6 +58,8 @@ module QuantLib.Model
   , capHelper
   , hestonModelHelper
   , swaptionHelper
+  , swaptionHelperFromDate
+  , swaptionHelperFromDates
   , times
 
   , discountBond
@@ -156,7 +158,11 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 -- |Price of a discount bond paying 1 at @maturity@, given the short rate @rate@ at time @now@.
-{#fun pure qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
+-- Not 'pure': the model's short-rate fitting function depends on its 'YieldTermStructure' handle,
+-- which can be relinked after construction, so the result at fixed arguments can change between
+-- two calls -- a genuine 'IO' action, not a value fixed at construction time like the other
+-- @{#fun pure ...#}@ bindings in this codebase.
+{#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
   ,`Double' -- ^maturity
   ,`Double' -- ^rate
   }->`Double'#}
@@ -211,7 +217,7 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
   where (tq, tu) = unzip tenors
 {#fun qlMarkovFunctional{withYieldTermStructure*`GenYieldTermStructure a',`Double'
   ,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
-  ,withGenVolatilityTermStructure*`SwaptionVolatilityStructure'
+  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b'
   ,withDayArray*`[Day]'&
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,withSwapIndex*`GenSwapIndex s'
@@ -255,9 +261,38 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
   ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
--- TODO add more SwaptionHelper constructors
 {#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
+  ,withQuote*`GenQuote a' -- ^maturity
+  ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
+  ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
+  ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
+  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,fromMaybeDouble`Maybe Double' -- ^strike
+  ,`Double' -- ^nominal
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^shift
+  ,fromMaybeInt`Maybe Word' -- ^settlementDays
+  ,`RateAveragingType' -- ^averagingMethod
+  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+-- |Like 'swaptionHelper', but the option's exercise is given as an explicit date rather than a maturity 'Period'.
+{#fun qlSwaptionHelperFromDate as swaptionHelperFromDate{withDay*`Day' -- ^exerciseDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
+  ,withQuote*`GenQuote a' -- ^maturity
+  ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
+  ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
+  ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
+  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,fromMaybeDouble`Maybe Double' -- ^strike
+  ,`Double' -- ^nominal
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^shift
+  ,fromMaybeInt`Maybe Word' -- ^settlementDays
+  ,`RateAveragingType' -- ^averagingMethod
+  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+-- |Like 'swaptionHelper', but both the option's exercise and the underlying swap's end are given as explicit dates.
+{#fun qlSwaptionHelperFromDates as swaptionHelperFromDates{withDay*`Day' -- ^exerciseDate
+  ,withDay*`Day' -- ^endDate
   ,withQuote*`GenQuote a' -- ^maturity
   ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter

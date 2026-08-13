@@ -1,22 +1,69 @@
-{-# LANGUAGE TemplateHaskell, TupleSections #-}
+-- TemplateHaskellQuotes, not TemplateHaskell: dropping the quotation brackets in favour of raw
+-- constructors left only 'name / ''Name quotes, which the narrower extension covers
+{-# LANGUAGE TemplateHaskellQuotes, LambdaCase #-}
 module QuantLib.Internal.Syntax
   (
-    deriveCrossEnum
+    CrossEnumSpec(..)
+  , deriveCrossEnum
+  , IborConstructorSpec(..)
   , deriveIborConstructor
   , deriveOptionsRecord
   ) where
 import Language.Haskell.TH.Syntax
-import Language.Haskell.TH.Lib
+import Language.Haskell.TH.Lib(DecsQ, TypeQ, ExpQ, conP, plainTV)
 import Data.List(isPrefixOf, isSuffixOf)
 import Control.Monad((>=>))
 
+-- All three derive functions below build their output as raw Dec/Con/Exp/Pat constructors
+-- rather than quotation brackets or the Q combinators from TH.Lib, so the shape of what is
+-- generated is visible in one style throughout. Names inside the generated code still come
+-- from 'name / ''Name quotes, which resolve at *this* module's scope exactly as a quotation
+-- bracket would, so nothing is lost to capture by dropping the brackets.
+--
+-- Two constructors resist this and stay as TH.Lib combinators, both for the same reason --
+-- template-haskell changed their arity inside the GHC range this package supports (8.10's
+-- 2.16 through 9.10's 2.22), so a literal application of either fails to compile on one end
+-- or the other:
+--   * ConP gained a [Type] field for visible type application in 2.18 (GHC 9.2) -- see conPat.
+--   * TyVarBndr gained a flag parameter in 2.17, so PlainTV took a second argument -- hence
+--     plainTV in deriveOptionsRecord.
+--
+-- Every generated top-level name (the merged ADTs, the mapper/ordinal/tenor functions, the
+-- options record and its default value) goes through mkName rather than newName *by design*:
+-- these are exactly the names the splice site then refers to by hand, so they must not be
+-- freshened. newName is used only where it belongs -- pattern variables inside the generated
+-- clauses, which nothing outside refers to.
+
+-- the one non-portable Pat constructor, see the note above
+conPat :: Name -> [Pat] -> Q Pat
+conPat n ps = conP n (map pure ps)
+
+arrowT :: Type -> Type -> Type
+arrowT a = AppT (AppT ArrowT a)
+
+pairT :: Type -> Type -> Type
+pairT a = AppT (AppT (TupleT 2) a)
+
+-- TupE has taken [Maybe Exp] (for tuple sections) since template-haskell 2.16, i.e. across
+-- the whole supported GHC range, so unlike ConP/PlainTV it needs no combinator
+pairE :: Exp -> Exp -> Exp
+pairE a b = TupE [Just a, Just b]
+
+fromEnumE :: Exp -> Exp
+fromEnumE = AppE (VarE 'fromEnum)
+
+-- One data constructor of a reified plain data type, plus its argument types.
+normalConstructor :: Con -> Q (Name, [BangType])
+normalConstructor (NormalC dCon dConArgs) = return (dCon, dConArgs)
+normalConstructor c = fail $ "Unsupported constructor: " ++ show c
+
+-- An explicit case rather than a refutable `(TyConI (DataD ...)) <- reify x` pattern bind:
+-- handing this a newtype, a type synonym or a class would otherwise fail in Q's MonadFail
+-- with a "Pattern match failure" naming neither the argument nor what was actually found.
 getConstructors :: Name -> Q [(Name, [BangType])] -- [(data constructor, constructor args)]
-getConstructors x = do
-  (TyConI (DataD _ _tCon _ _ dCons _)) <- reify x
-  mapM constr dCons
-    where
-      constr (NormalC dCon dConArgs) = return (dCon, dConArgs)
-      constr c = fail $ "Unsupported constructor: " ++ show c
+getConstructors x = reify x >>= \case
+  TyConI (DataD _ _tCon _ _ dCons _) -> mapM normalConstructor dCons
+  info -> fail $ "Expected a plain data declaration for " ++ show x ++ ", got: " ++ show info
 
 -- what a main enum value's sub-choice looks like, once we go find the type named
 -- <mainValue><subSuffix>: nothing there at all, a proper enum to cross-product with,
@@ -26,18 +73,32 @@ data SubKind = NoSub | EnumSub [Name] | BoolSub
 classifySub :: String -> Q SubKind
 classifySub d = lookupTypeName d >>= maybe (return NoSub) (reify >=> classify)
   where
-    classify (TyConI (DataD _ _ _ _ dCons _)) = EnumSub . map fst <$> mapM constr dCons
+    classify (TyConI (DataD _ _ _ _ dCons _)) = EnumSub . map fst <$> mapM normalConstructor dCons
     classify (TyConI (TySynD _ _ (ConT b))) | b == ''Bool = return BoolSub
     classify info = fail $ "deriveCrossEnum: unsupported sub-type declaration for " ++ d ++ ": " ++ show info
-    constr (NormalC dCon dConArgs) = return (dCon, dConArgs)
-    constr c = fail $ "Unsupported constructor: " ++ show c
 
-stripEnumPrefix :: String -> String
-stripEnumPrefix str@(_:cs)
-  | "__" `isPrefixOf` str = drop 2 str
-  | otherwise = stripEnumPrefix cs
--- error, not fail: this runs in the String (i.e. []) monad, where fail silently yields ""
-stripEnumPrefix [] = error "deriveCrossEnum: enum prefix not found"
+-- Strips the "<Prefix>__" that a c2hs `add prefix = "Prefix__"` puts on every constructor of
+-- a generated enum. Takes the Name rather than its nameBase purely so the failure can say
+-- which constructor it choked on -- the type it came from isn't recoverable from a Name.
+stripEnumPrefix :: Name -> String
+stripEnumPrefix name = go (nameBase name)
+  where
+    go str@(_:cs)
+      | "__" `isPrefixOf` str = drop 2 str
+      | otherwise = go cs
+    -- error, not fail: this is pure, called from pure positions (concatNames, dropIborSentinel).
+    -- It still surfaces at compile time, since TH forces it while building the splice's output.
+    go [] = error $ "Expected a c2hs enum constructor carrying a \"Prefix__\" prefix, but "
+                    ++ show name ++ " has no __ separator"
+
+-- The body baked into the catch-all clause of every generated dispatch function: those
+-- functions map a constructor back to its C enum ordinal(s), which the "extra" constructors
+-- (built from their own dedicated C shim) don't have. It's a bug if this ever fires, so the
+-- message names the generated function that fired it.
+unenumerableError :: String -> Body
+unenumerableError fnName = NormalB (AppE (VarE 'error) (LitE (StringL msg)))
+  where msg = "Internal error: " ++ fnName ++
+              " called on a non-enumerable data constructor, probably an extra one"
 
 -- merge a set of enums into a big one providing a function to map values back to ordinal numbers of original enums
 -- e.g. for mainEnum data CalendarCountry = Country__Australia | Country__UnitedStated,
@@ -68,41 +129,55 @@ stripEnumPrefix [] = error "deriveCrossEnum: enum prefix not found"
 -- `uncurry qlDayCounter $ mapDayCounter x`. Extra constructors have no such pair (they're built
 -- from their own dedicated C shim instead), so mapper blows up on them via the defaultClause --
 -- it's a bug if that ever actually fires.
-deriveCrossEnum :: String -> String -> Name -> String -> Name -> DecsQ
-deriveCrossEnum resName mapper mainEnum subSuffix extra = do
-  mainValues <- map fst <$> getConstructors mainEnum
+-- A record rather than five positional arguments, for the same reason as IborConstructorSpec
+-- below: resName/mapperFn/subSuffix are three interchangeable Strings and mainEnum/extraType
+-- two interchangeable Names, so a transposition type-checks and silently generates the wrong
+-- thing.
+data CrossEnumSpec = CrossEnumSpec
+  { crossTypeName :: String   -- ^the merged ADT to generate
+  , crossMapperFn :: String   -- ^generated @\<ADT\> -> (Int, Int)@ main/sub ordinal pair
+  , crossMainEnum :: Name     -- ^the main C enum
+  , crossSubSuffix :: String  -- ^appended to a stripped main value to find its sub-type
+  , crossExtraType :: Name    -- ^data type holding the non-enumerable extra constructors
+  }
+
+deriveCrossEnum :: CrossEnumSpec -> DecsQ
+deriveCrossEnum spec = do
+  mainValues <- map fst <$> getConstructors (crossMainEnum spec)
 
   mergedValues <- concat <$> mapM (\d -> do -- (mainName, subName, []), the third member holds constructor arguments (extras, or a lone Bool for BoolSub)
-    sub <- classifySub (stripEnumPrefix (nameBase d) ++ subSuffix)
+    sub <- classifySub (stripEnumPrefix d ++ crossSubSuffix spec)
     return $ case sub of
       NoSub -> [(d, Nothing, [])]
       EnumSub vals -> zip3 (repeat d) (map Just vals) (repeat [])
       BoolSub -> [(d, Nothing, [(Bang NoSourceUnpackedness SourceStrict, ConT ''Bool)])]) mainValues
 
-  extraConstructors <- map (\(con, args) -> (con, Nothing, args)) <$> getConstructors extra
+  extraConstructors <- map (\(con, args) -> (con, Nothing, args)) <$> getConstructors (crossExtraType spec)
 
   caseClauses <- mapM mkClause mergedValues
-  defaultClause <- clause [[p|_|]] (normalB [|error "Internal error: mapper called on an non-enumerable data constructor, probably, an exta one"|]) []
 
-  let dataDecl = DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (mergedValues ++ extraConstructors)) []
-  mapperSignature <- sigD mapperName [t|$(conT resNameType) -> (Int, Int)|]
-  let mapperBody = FunD mapperName (caseClauses ++ [defaultClause])
+  let defaultClause = Clause [WildP] (unenumerableError (crossMapperFn spec)) []
+      dataDecl = DataD [] resNameType [] Nothing (map (\(x, y, a) -> NormalC (concatNames x y) a) (mergedValues ++ extraConstructors)) []
+      mapperSignature = SigD mapperName (arrowT (ConT resNameType) (pairT (ConT ''Int) (ConT ''Int)))
+      mapperBody = FunD mapperName (caseClauses ++ [defaultClause])
 
   return [dataDecl, mapperSignature, mapperBody]
 
   where concatNames :: Name -> Maybe Name -> Name
-        concatNames x y = mkName (stripEnumPrefix (nameBase x) ++ maybe "" (stripEnumPrefix . nameBase) y)
-        resNameType = mkName resName
-        mapperName = mkName mapper
-        enumVal :: Maybe Name -> ExpQ
-        enumVal Nothing = [|0|]
-        enumVal (Just n) = [|fromEnum $(conE n)|]
+        concatNames x y = mkName (stripEnumPrefix x ++ maybe "" stripEnumPrefix y)
+        resNameType = mkName (crossTypeName spec)
+        mapperName = mkName (crossMapperFn spec)
+        enumVal :: Maybe Name -> Exp
+        enumVal Nothing = LitE (IntegerL 0)
+        enumVal (Just n) = fromEnumE (ConE n)
         mkClause :: (Name, Maybe Name, [BangType]) -> Q Clause
-        mkClause (mainVal, subVal, []) =
-          clause [conP (concatNames mainVal subVal) []] (normalB [|(fromEnum $(conE mainVal), $(enumVal subVal))|]) []
+        mkClause (mainVal, subVal, []) = do
+          pat <- conPat (concatNames mainVal subVal) []
+          return $ Clause [pat] (NormalB (pairE (fromEnumE (ConE mainVal)) (enumVal subVal))) []
         mkClause (mainVal, Nothing, [_]) = do
           x <- newName "x"
-          clause [conP (concatNames mainVal Nothing) [varP x]] (normalB [|(fromEnum $(conE mainVal), fromEnum $(varE x))|]) []
+          pat <- conPat (concatNames mainVal Nothing) [VarP x]
+          return $ Clause [pat] (NormalB (pairE (fromEnumE (ConE mainVal)) (fromEnumE (VarE x)))) []
         mkClause (mainVal, _, _) = fail $ "deriveCrossEnum: unsupported sub-choice shape for " ++ show mainVal
 
 -- Unlike deriveCrossEnum's cross-product of two ordinal dimensions (a main enum times a
@@ -119,13 +194,27 @@ deriveCrossEnum resName mapper mainEnum subSuffix extra = do
 data IborShape = ShapeTenor | ShapeDailyTenor | ShapeOvernight
 
 dropIborSentinel :: [(Name, [BangType])] -> [(Name, [BangType])]
-dropIborSentinel = filter (not . ("Last" `isSuffixOf`) . stripEnumPrefix . nameBase . fst)
+dropIborSentinel = filter (not . ("Last" `isSuffixOf`) . stripEnumPrefix . fst)
 
-deriveIborConstructor :: String -> String -> String -> Name -> Name -> Name -> Name -> DecsQ
-deriveIborConstructor resName ordinalFn tenorFn normalEnum dailyEnum onEnum extra = do
-  normalCtors <- dropIborSentinel <$> getConstructors normalEnum
-  dailyCtors <- dropIborSentinel <$> getConstructors dailyEnum
-  onCtors <- dropIborSentinel <$> getConstructors onEnum
+-- A record rather than seven positional arguments: three Strings followed by four Names meant
+-- any two same-typed arguments could be transposed with nothing to catch it -- swapping the
+-- ordinal and tenor function names, or the daily-tenor and overnight enums, type-checks
+-- silently and yields wrong-but-compiling generated code.
+data IborConstructorSpec = IborConstructorSpec
+  { iborTypeName :: String        -- ^the merged ADT to generate
+  , iborOrdinalFn :: String       -- ^generated @\<ADT\> -> Int@ flat C dispatch ordinal
+  , iborTenorFn :: String         -- ^generated @\<ADT\> -> (Word, TimeUnit)@ tenor accessor
+  , iborTenorEnum :: Name         -- ^C enum of the tenor-carrying indices
+  , iborDailyTenorEnum :: Name    -- ^C enum of the daily-tenor indices
+  , iborOvernightEnum :: Name     -- ^C enum of the overnight indices
+  , iborExtraType :: Name         -- ^data type holding the non-enum-ordinal extra constructors
+  }
+
+deriveIborConstructor :: IborConstructorSpec -> DecsQ
+deriveIborConstructor spec = do
+  normalCtors <- dropIborSentinel <$> getConstructors (iborTenorEnum spec)
+  dailyCtors <- dropIborSentinel <$> getConstructors (iborDailyTenorEnum spec)
+  onCtors <- dropIborSentinel <$> getConstructors (iborOvernightEnum spec)
 
   -- resolved against the splice site's scope (InterestRate.chs, where TimeUnit(..) and Days
   -- are already imported/in scope), not this module's own imports -- Syntax.hs must not import
@@ -141,55 +230,53 @@ deriveIborConstructor resName ordinalFn tenorFn normalEnum dailyEnum onEnum extr
   dailyGroups <- mapM (mkGroup ShapeDailyTenor timeUnit days dailyOffset) dailyCtors
   onGroups <- mapM (mkGroup ShapeOvernight timeUnit days onOffset) onCtors
 
-  extraConstructors <- getConstructors extra
-  let extraCon (con, args) = NormalC (mkName (stripEnumPrefix (nameBase con))) args
-      errMsg = "Internal error: " ++ ordinalFn ++ "/" ++ tenorFn ++
-               " called on a non-enumerable data constructor, probably an extra one"
-      errBody = normalB [|error $(litE (stringL errMsg))|]
-  ordinalDefault <- clause [[p|_|]] errBody []
-  tenorDefault <- clause [[p|_|]] errBody []
+  extraConstructors <- getConstructors (iborExtraType spec)
 
-  let groups = normalGroups ++ dailyGroups ++ onGroups
+  let extraCon (con, args) = NormalC (mkName (stripEnumPrefix con)) args
+      ordinalDefault = Clause [WildP] (unenumerableError (iborOrdinalFn spec)) []
+      tenorDefault = Clause [WildP] (unenumerableError (iborTenorFn spec)) []
+      groups = normalGroups ++ dailyGroups ++ onGroups
       dataDecl = DataD [] resNameType [] Nothing
                    (map (\(con, _, _) -> con) groups ++ map extraCon extraConstructors) []
-  ordinalSig <- sigD ordinalName [t|$(conT resNameType) -> Int|]
-  tenorSig <- sigD tenorName [t|$(conT resNameType) -> (Word, $(conT timeUnit))|]
-  let ordinalBody = FunD ordinalName (map (\(_, o, _) -> o) groups ++ [ordinalDefault])
+      ordinalSig = SigD ordinalName (arrowT (ConT resNameType) (ConT ''Int))
+      tenorSig = SigD tenorName (arrowT (ConT resNameType) (pairT (ConT ''Word) (ConT timeUnit)))
+      ordinalBody = FunD ordinalName (map (\(_, o, _) -> o) groups ++ [ordinalDefault])
       tenorBody = FunD tenorName (map (\(_, _, t) -> t) groups ++ [tenorDefault])
 
   return [dataDecl, ordinalSig, ordinalBody, tenorSig, tenorBody]
 
   where
-    resNameType = mkName resName
-    ordinalName = mkName ordinalFn
-    tenorName = mkName tenorFn
-
-    offsetLit :: Int -> ExpQ
-    offsetLit = litE . integerL . toInteger
+    resNameType = mkName (iborTypeName spec)
+    ordinalName = mkName (iborOrdinalFn spec)
+    tenorName = mkName (iborTenorFn spec)
 
     mkGroup :: IborShape -> Name -> Name -> Int -> (Name, [BangType]) -> Q (Con, Clause, Clause)
     mkGroup shape timeUnit days offset (origName, _) = do
-      let strippedName = mkName (stripEnumPrefix (nameBase origName))
-          ordinalBody' = normalB [|$(offsetLit offset) + fromEnum $(conE origName)|]
+      let strippedName = mkName (stripEnumPrefix origName)
+          ordinalBody' = NormalB (InfixE (Just (LitE (IntegerL (toInteger offset)))) (VarE '(+))
+                                         (Just (fromEnumE (ConE origName))))
       case shape of
         ShapeTenor -> do
           let con = NormalC strippedName
-                [(Bang NoSourceUnpackedness SourceStrict, AppT (AppT (TupleT 2) (ConT ''Word)) (ConT timeUnit))]
-          ordinalClause <- clause [conP strippedName [wildP]] ordinalBody' []
+                [(Bang NoSourceUnpackedness SourceStrict, pairT (ConT ''Word) (ConT timeUnit))]
+          ordinalPat <- conPat strippedName [WildP]
           p <- newName "p"
-          tenorClause <- clause [conP strippedName [varP p]] (normalB (varE p)) []
-          return (con, ordinalClause, tenorClause)
+          tenorPat <- conPat strippedName [VarP p]
+          return (con, Clause [ordinalPat] ordinalBody' [], Clause [tenorPat] (NormalB (VarE p)) [])
         ShapeDailyTenor -> do
           let con = NormalC strippedName [(Bang NoSourceUnpackedness SourceStrict, ConT ''Word)]
-          ordinalClause <- clause [conP strippedName [wildP]] ordinalBody' []
+          ordinalPat <- conPat strippedName [WildP]
           d <- newName "d"
-          tenorClause <- clause [conP strippedName [varP d]] (normalB [|($(varE d), $(conE days))|]) []
-          return (con, ordinalClause, tenorClause)
+          tenorPat <- conPat strippedName [VarP d]
+          return ( con
+                 , Clause [ordinalPat] ordinalBody' []
+                 , Clause [tenorPat] (NormalB (pairE (VarE d) (ConE days))) [] )
         ShapeOvernight -> do
           let con = NormalC strippedName []
-          ordinalClause <- clause [conP strippedName []] ordinalBody' []
-          tenorClause <- clause [conP strippedName []] (normalB [|(0, $(conE days))|]) []
-          return (con, ordinalClause, tenorClause)
+          pat <- conPat strippedName []
+          return ( con
+                 , Clause [pat] ordinalBody' []
+                 , Clause [pat] (NormalB (pairE (LitE (IntegerL 0)) (ConE days))) [] )
 
 -- A wide C++ constructor's trailing, upstream-defaulted params are turned into
 -- one record type (one field per param, in the order given) plus a `default<recName>`
@@ -208,16 +295,24 @@ deriveIborConstructor resName ordinalFn tenorFn normalEnum dailyEnum onEnum extr
 -- the type checker at the hand-written wrapper that applies the record's fields to that
 -- binding, so nothing is lost by not reifying.
 deriveOptionsRecord :: String -> [String] -> [(String, TypeQ, ExpQ)] -> DecsQ
-deriveOptionsRecord recName tyVarNames fields = sequence
-  [ dataD (cxt []) recTypeName tyVars Nothing
-      [recC recTypeName [varBangType (mkName n) (bangType strictness t) | (n, t, _) <- fields]] []
-  , sigD defaultName (foldl appT (conT recTypeName) (map (varT . mkName) tyVarNames))
-  , funD defaultName [clause [] (normalB (recConE recTypeName [(mkName n,) <$> e | (n, _, e) <- fields])) []]
-  ]
+deriveOptionsRecord recName tyVarNames fields = do
+  -- the field types and default exprs are the caller's own Q values, so unlike the two
+  -- functions above these have to be run before the raw Decs can be assembled
+  fieldTypes <- sequence [t | (_, t, _) <- fields]
+  fieldDefaults <- sequence [e | (_, _, e) <- fields]
+
+  let tyVars = map (plainTV . mkName) tyVarNames
+      recFields = zipWith (\n t -> (n, strictness, t)) fieldNames fieldTypes
+  return
+    [ DataD [] recTypeName tyVars Nothing [RecC recTypeName recFields] []
+    , SigD defaultName (foldl AppT (ConT recTypeName) (map (VarT . mkName) tyVarNames))
+    , FunD defaultName [Clause [] (NormalB (RecConE recTypeName (zip fieldNames fieldDefaults))) []]
+    ]
   where
     recTypeName = mkName recName
-    tyVars = map (plainTV . mkName) tyVarNames
     defaultName = mkName ("default" ++ recName)
-    strictness = bang noSourceUnpackedness noSourceStrictness
+    fieldNames = [mkName n | (n, _, _) <- fields]
+    -- lazy fields, unlike the strict (!) ones the two enum-merging functions above generate
+    strictness = Bang NoSourceUnpackedness NoSourceStrictness
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
