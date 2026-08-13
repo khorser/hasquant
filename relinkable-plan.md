@@ -496,11 +496,20 @@ Recorded so they are not re-derived.
 > collides on name with `QuantLib.TermStructure.Yield.linkTo` for any unqualified import of
 > both — fixed with `hiding(linkTo)` at the two import sites that needed it
 > (`QuantLib/TermStructure/Yield.chs`, `smoke/CheckRelinkable.hs`); call sites that already
-> `import qualified QuantLib.Quote as Quote` were unaffected. One accepted F8 exception, same
-> shape as the `FittedBondDiscountCurve` upcast: `qlBlackIborCouponPricer`'s
+> `import qualified QuantLib.Quote as Quote` were unaffected. One F8 exception was initially
+> accepted, same shape as the `FittedBondDiscountCurve` upcast: `qlBlackIborCouponPricer`'s
 > default-correlation branch constructs a brand new `SimpleQuote(1.0)` with nothing to preserve
-> a Link to, so `Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)))` is correct as the one
-> remaining `Handle<Quote>(` construction in `cbits/`. Also fixed in passing: the
+> a Link to, so `Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)))` was correct as the one
+> remaining `Handle<Quote>(` construction in `cbits/` — but it was still an inline
+> `Handle<Quote>(...)` construction sitting at a call site, which is exactly the shape F8's grep
+> exists to make rare and visible. Replaced with a named, reusable helper instead:
+> `qlNullableHandleOr(Handle<T> *p, F make)` in `qlaux.h`, alongside the existing
+> `qlNullableHandle` overloads — null means "construct this default via `make` (returning
+> `shared_ptr<T>`)" rather than an empty handle. The call site is now
+> `qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(new SimpleQuote(1.0)); })`,
+> with no `Handle<Quote>(...)` visible at all; the one construction moved into the generic
+> helper where it's documented once. `grep -rn 'Handle<Quote>(' cbits/` is now fully empty — F8
+> has **zero** exceptions for `Quote`, not one. Also fixed in passing: the
 > `qlConstantOptionletVol1` quote argument was dereferenced with a bare `*q` instead of
 > `arg(q)`, silently skipping allocation tracing — now `*arg(q)`, matching every other site.
 > `SmileSection` confirmed **out of scope**: `grep -rn 'Handle<SmileSection>'

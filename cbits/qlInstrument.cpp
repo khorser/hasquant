@@ -1012,10 +1012,7 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   } catch (std::exception& er) {return handleException(e, er, cl);}}
 
 QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e) {
-  // The default-correlation branch constructs a brand new Quote with nothing to preserve a
-  // Link to, so a fresh Link here is correct -- same reasoning as the FittedBondDiscountCurve
-  // upcast in qlTermStructure.cpp. This is the one accepted exception to the F8 invariant.
-  try {Handle<Quote> corr = correlation ? *arg(correlation) : Handle<Quote>(shared_ptr<Quote>(new SimpleQuote(1.0)));
+  try {Handle<Quote> corr = qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(new SimpleQuote(1.0)); });
     return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(Handle<OptionletVolatilityStructure>(*arg(vol)), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
