@@ -33,14 +33,14 @@ import Data.Time.Calendar(addGregorianYearsClip)
 import QuantLib.Math
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
-import QuantLib.Instrument.Swap
+import QuantLib.Instrument.Swap hiding(swap)
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
-import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Time.Schedule hiding(years)
+import QuantLib.Settings(setEvaluationDate)
 
 data SwapResult = SwapResult { swapNpv :: Double
                              , swapFairSpread :: Double
