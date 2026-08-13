@@ -123,6 +123,7 @@ library
     extra-libraries:
         QuantLib
   if os(osx)
+    cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
     include-dirs:
         /opt/homebrew/include
   build-tool-depends: c2hs:c2hs
