@@ -529,10 +529,41 @@ The same reasoning applies to every other market-data type the shim currently pa
    Quote already had the analogous helper). New test: relinking a `BlackVolTermStructure` feeding
    a `blackScholesMertonProcess`/`analyticEuropeanEngine` moves the option NPV without rebuilding
    the engine — same shape as the discount-curve and quote relink checks.
-3. **`SwaptionVolatilityStructure`**, **`OptionletVolatilityStructure`** — the same treatment,
-   not yet started. Same reason curves needed it: they are baked into pricing engines at
-   construction, so today a vol scenario means rebuilding every engine. (`SmileSection` dropped
-   from this list — see above.)
+3. ~~**`SwaptionVolatilityStructure`**~~ — **IMPLEMENTED**, with a structural difference from
+   `BlackVolTermStructure`/`Quote`/curves worth recording. Those three all had their
+   *consumers* already polymorphic over the relinkable-vs-plain distinction (`GenYieldTermStructure
+   a`-shaped), so widening was a signature-only change. `SwaptionVolatilityStructure`'s ~26
+   consumers (`analyticHaganPricer`, `numericHaganPricer`, `blackSwaptionEngine'`,
+   `markovFunctional`, and every getter in `QuantLib/TermStructure/Volatility.chs`) were typed to
+   the *concrete* `SwaptionVolatilityStructure`, and the first attempt at widening them — reusing
+   the existing single-level `withGenVolatilityTermStructure :: GenVolatilityTermStructure
+   (ForeignPtr p) -> (Ptr p -> IO b) -> IO b` with a `GenVolatilityTermStructure (ForeignPtr a)`
+   annotation — does not type-check: that marshaller's callback pointer type varies with `p`,
+   but every `{#fun#}` site is a low-level FFI import fixed to one concrete `Ptr
+   CSwaptionVolatilityStructure'`, so GHC rejects the mismatch (`Couldn't match type 'b' with
+   'CSwaptionVolatilityStructure''`) regardless of how the polymorphic annotation is spelled.
+   The fix was to give `SwaptionVolatilityStructure` its own dedicated wrapper, exactly mirroring
+   `GenBlackVolTermStructure`/`withBlackVolTermStructure`: `GenSwaptionVolatilityStructure a =
+   GenVolatilityTermStructure (AnyOf CSwaptionVolatilityStructure' a)`, with
+   `withSwaptionVolatilityStructure :: GenSwaptionVolatilityStructure a -> (Ptr
+   CSwaptionVolatilityStructure' -> IO b) -> IO b` performing a real upcast to the fixed pointer
+   type (free in `a`, just like `withYieldTermStructure`) — so every `.chs` consumer site needed
+   no `ForeignPtr` import at all, just `withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure
+   a'` in place of the concrete-type binding. `RelinkableSwaptionVolatilityStructure`'s
+   `Upcastable` target is correspondingly `CSwaptionVolatilityStructure'` (one hop, Link-preserving,
+   `qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure`), not
+   `VolatilityTermStructure` — an earlier draft used a `VolatilityTermStructure`-targeted
+   snapshot detach here (reasoning it was harmless since no consumer path called it), which
+   became moot once the dedicated wrapper made every consumer path real-upcast through
+   `SwaptionVolatilityStructure` instead. F8 came out fully clean, no accepted exceptions. New
+   test: relinking a `SwaptionVolatilityStructure` feeding a real `swaption`/`blackSwaptionEngine'`
+   moves the NPV without rebuilding the engine.
+4. **`OptionletVolatilityStructure`** — the same treatment, not yet started. Its consumers
+   (`blackCapFloorEngine'`, `blackIborCouponPricer`, and the `Volatility.chs` getters) are, like
+   `SwaptionVolatilityStructure`'s were, typed to the concrete type rather than already
+   polymorphic — so this needs the same `GenOptionletVolatilityStructure`/
+   `withOptionletVolatilityStructure` dedicated-wrapper treatment, not a signature-only widen.
+   (`SmileSection` dropped from this list — see above.)
 
 Everything established here carries over unchanged, and should be reused rather than re-derived:
 

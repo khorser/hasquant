@@ -1019,10 +1019,10 @@ QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructu
     return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(Handle<OptionletVolatilityStructure>(*arg(vol)), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
 QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion)))));
+  try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion)))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion), lowerLimit, upperLimit, precision, hardUpperLimit))));
+  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion), lowerLimit, upperLimit, precision, hardUpperLimit))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new RangeAccrualPricerByBgm(correlation, *arg(smilesOnExpiry), *arg(smilesOnPayment), withSmile, byCallSpread))));

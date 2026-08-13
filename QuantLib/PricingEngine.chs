@@ -317,7 +317,7 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^displacement
   ,`CashAnnuityModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
-{#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withGenVolatilityTermStructure*`SwaptionVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.

@@ -676,7 +676,9 @@ typedef shared_ptr<Swap> QlSwap;
 typedef shared_ptr<SwapIndex> QlSwapIndex;
 typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
 typedef shared_ptr<Swaption> QlSwaption;
-typedef shared_ptr<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
+// A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
+typedef Handle<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
+typedef RelinkableHandle<SwaptionVolatilityStructure> QlRelinkableSwaptionVolatilityStructure;
 typedef shared_ptr<SwingExercise> QlSwingExercise;
 typedef shared_ptr<TermStructure> QlTermStructure;
 typedef shared_ptr<TypePayoff> QlTypePayoff;

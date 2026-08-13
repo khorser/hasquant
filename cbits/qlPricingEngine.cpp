@@ -187,7 +187,7 @@ QlPricingEngine* qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQu
   try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), displacement, (BlackSwaptionEngine::CashAnnuityModel)model))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), Handle<SwaptionVolatilityStructure>(*arg(vol))))));
+  try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 void qlFreePricingEngine(QlPricingEngine *engine) {del(engine);}
@@ -582,7 +582,7 @@ void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackC
   try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), *arg(method), *arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e) {
-  try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(*arg(termStructure), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), Handle<SwaptionVolatilityStructure>(*arg(swaptionVol)), qlDateVector(swaptionExpiries, expiriesLen), qlPeriodVector(tenorQuantity, tenorUnit, tenorsLen), *arg(swapIndexBase), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
+  try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(*arg(termStructure), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), *arg(swaptionVol), qlDateVector(swaptionExpiries, expiriesLen), qlPeriodVector(tenorQuantity, tenorUnit, tenorsLen), *arg(swapIndexBase), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
   } catch (std::exception& er) {return handleException<QlMarkovFunctional*>(e, er);}}
 void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, char **e) {
   try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);

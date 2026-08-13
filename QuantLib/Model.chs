@@ -211,7 +211,7 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
   where (tq, tu) = unzip tenors
 {#fun qlMarkovFunctional{withYieldTermStructure*`GenYieldTermStructure a',`Double'
   ,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
-  ,withGenVolatilityTermStructure*`SwaptionVolatilityStructure'
+  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b'
   ,withDayArray*`[Day]'&
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,withSwapIndex*`GenSwapIndex s'

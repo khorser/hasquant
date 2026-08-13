@@ -19,12 +19,12 @@ import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import QuantLib.Currency(currency, Ccy(..))
-import QuantLib.Instrument(npv, setPricingEngine)
-import QuantLib.Instrument.Swap(vanillaSwap, SwapType(Payer))
+import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC))
+import QuantLib.Instrument.Swap(vanillaSwap, SwapType(Payer), swaption)
 import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine)
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine')
 
 import QuantLib.Spec.Helpers(areClose)
 
@@ -262,4 +262,34 @@ spec = do
           vol1 <- Vol.blackConstantVol (11 `december` 2012) cal q dc
           Vol.linkBlackVolTo volH vol1
           after <- npv opt
+          abs (after - before) `shouldSatisfy` (> 0.5)
+
+      -- A relinkable swaption vol surface propagates the same way: an engine built on it
+      -- keeps tracking whatever surface the handle currently points at, so relinking reprices
+      -- the swaption without rebuilding the engine. Mirrors the Black vol case above.
+      let mkSwaption = do
+            (swap, discountH, _) <- setupSwap
+            cal <- Calendar.calendar TARGET
+            dc <- dayCounter Actual365FixedStandard
+            volQ <- Quote.simpleQuote 0.20
+            vol0 <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            volH <- Vol.relinkableSwaptionVolatilityStructure (Just vol0)
+            eng <- blackSwaptionEngine' discountH volH
+            -- the Black swaption engine requires a spot-starting swaption: the exercise date
+            -- must fall on or before the swap's start date (13 december 2012)
+            swpn <- swaption swap (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
+            setPricingEngine swpn eng
+            pure (swpn, volH)
+
+      it "relinking a swaption vol surface reprices the swaption, without rebuilding the engine" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (swpn, volH) <- mkSwaption
+          before <- npv swpn
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          q <- Quote.simpleQuote 0.60
+          vol1 <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
+          Vol.linkSwaptionVolTo volH vol1
+          after <- npv swpn
           abs (after - before) `shouldSatisfy` (> 0.5)

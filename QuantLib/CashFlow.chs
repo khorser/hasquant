@@ -504,9 +504,9 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg a',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg a',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlAnalyticHaganPricer as analyticHaganPricer{withGenVolatilityTermStructure*`SwaptionVolatilityStructure',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
+{#fun qlAnalyticHaganPricer as analyticHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
-{#fun qlNumericHaganPricer as numericHaganPricer{withGenVolatilityTermStructure*`SwaptionVolatilityStructure',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
+{#fun qlNumericHaganPricer as numericHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b',`YieldCurveModel',withQuote*`GenQuote a' -- ^meanReversion
   ,`Double' -- ^lowerLimit
   ,`Double' -- ^upperLimit
   ,`Double' -- ^precision

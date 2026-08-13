@@ -14,6 +14,10 @@ extern "C" {
   QlBlackVolTermStructure* qlRelinkableBlackVolTermStructureAsBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o);
   void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o);
   QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o);
+  QlRelinkableSwaptionVolatilityStructure* qlRelinkableSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *initial, char **e);
+  void qlFreeRelinkableSwaptionVolatilityStructure(QlRelinkableSwaptionVolatilityStructure *o);
+  void qlRelinkableSwaptionVolatilityStructureLinkTo(QlRelinkableSwaptionVolatilityStructure *o, QlSwaptionVolatilityStructure *c, char **e);
+  QlSwaptionVolatilityStructure* qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure(QlRelinkableSwaptionVolatilityStructure *o);
   void qlFreeSmileSection(QlSmileSection *o);
   QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e);
   QlBlackVolTermStructure* qlBlackConstantVol(int referenceDate, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e);

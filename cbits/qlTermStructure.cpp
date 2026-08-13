@@ -138,7 +138,18 @@ QlBlackVolTermStructure* qlRelinkableBlackVolTermStructureAsBlackVolTermStructur
 void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) {del(o);}
 QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
-QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+// Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
+QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+
+// A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
+QlRelinkableSwaptionVolatilityStructure* qlRelinkableSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *initial, char **e) {
+  try {return ret(initial ? new QlRelinkableSwaptionVolatilityStructure(handlePtr(arg(initial)))
+                          : new QlRelinkableSwaptionVolatilityStructure());
+  } catch (std::exception& er) {return handleException<QlRelinkableSwaptionVolatilityStructure*>(e, er);}}
+void qlFreeRelinkableSwaptionVolatilityStructure(QlRelinkableSwaptionVolatilityStructure *o) {del(o);}
+void qlRelinkableSwaptionVolatilityStructureLinkTo(QlRelinkableSwaptionVolatilityStructure *o, QlSwaptionVolatilityStructure *c, char **e) {
+  try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+QlSwaptionVolatilityStructure* qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure(QlRelinkableSwaptionVolatilityStructure *o) {return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
 void qlFreeSmileSection(QlSmileSection *o) {del(o);}
 
 QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
@@ -151,10 +162,10 @@ QlOptionletVolatilityStructure* qlConstantOptionletVolatility(int referenceDate,
   try {return ret(new QlOptionletVolatilityStructure(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, displacement))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlConstantSwaptionVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double shift, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(alloc(new ConstantSwaptionVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift))));
+  try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new ConstantSwaptionVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift)))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlConstantSwaptionVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double shift, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(alloc(new ConstantSwaptionVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift))));
+  try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new ConstantSwaptionVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, shift)))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 double qlSwaptionVolatilityStructureBlackVariance1(QlSwaptionVolatilityStructure* o, int optionDate, int n, int u, double strike, int extrapolate, char **e) {
   try {return (*arg(o))->blackVariance(Date(optionDate), Period(n, (TimeUnit)u), strike, extrapolate);
@@ -185,14 +196,14 @@ QlSmileSection* qlSwaptionVolatilityStructureSmileSection2(QlSwaptionVolatilityS
   try {
     // declared but not implemented in Swaption TS for some reason:
     //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, *arg(swapTenor), extr))));
-    SwaptionVolatilityStructure *ts = arg(o)->get(); Time length = ts->swapLength(Period(n, (TimeUnit)u));
+    SwaptionVolatilityStructure *ts = handlePtr(arg(o)).get(); Time length = ts->swapLength(Period(n, (TimeUnit)u));
     return ret(new QlSmileSection(alloc(ts->smileSection(optionTime, length, extr))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection3(QlSwaptionVolatilityStructure* o, int n, int u, double swapLength, int extr, char **e) {
   try {
     // declared but not implemented in Swaption TS for some reason:
     //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(*arg(optionTenor), swapLength, extr))));
-    SwaptionVolatilityStructure *ts = arg(o)->get(); Date optionDate = ts->optionDateFromTenor(Period(n, (TimeUnit)u));
+    SwaptionVolatilityStructure *ts = handlePtr(arg(o)).get(); Date optionDate = ts->optionDateFromTenor(Period(n, (TimeUnit)u));
     Time optionTime = ts->timeFromReference(optionDate);
     return ret(new QlSmileSection(alloc(ts->smileSection(optionTime, swapLength, extr))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
@@ -200,7 +211,7 @@ QlSmileSection* qlSwaptionVolatilityStructureSmileSection4(QlSwaptionVolatilityS
   try {
     // declared but not implemented in Swaption TS for some reason:
     //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), swapLength, extr))));
-    SwaptionVolatilityStructure *ts = arg(o)->get(); Time optionTime = ts->timeFromReference(Date(optionDate));
+    SwaptionVolatilityStructure *ts = handlePtr(arg(o)).get(); Time optionTime = ts->timeFromReference(Date(optionDate));
     return ret(new QlSmileSection(alloc(ts->smileSection(optionTime, swapLength, extr))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 
@@ -297,7 +308,7 @@ QlVolatilityTermStructure* qlConstantCapFloorTermVolatility(unsigned settlementD
   try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
   } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
 QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(alloc(new SpreadedSwaptionVolatility(Handle<SwaptionVolatilityStructure>(*arg(x0)), *arg(spread)))));
+  try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SpreadedSwaptionVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 
 void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) {del(o);}
