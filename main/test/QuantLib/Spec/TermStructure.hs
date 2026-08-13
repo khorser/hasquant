@@ -1,7 +1,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module QuantLib.Spec.TermStructure (spec) where
 
-import Test.Hspec
+import Test.Hspec hiding(before, after)
 import Test.Hspec.QuickCheck(prop)
 import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
