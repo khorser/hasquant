@@ -289,7 +289,11 @@ spec = do
     describe "Bermudan swaption example (LONG)" $
       it "check values" $ do
         (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' BermudanSwaptionExample.run
-        g2v `shouldSatisfy` listClose id [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
+        -- On Windows (GHC 9.10.3 + clang/libc++), the LevenbergMarquardt-calibrated
+        -- G2 vols diverge from the recorded macOS values by up to ~2.2e-5 (elements
+        -- 1 and 5), same class of cross-platform optimiser divergence documented in
+        -- CLAUDE.md for the CDS/G2 calibration case; 1e-4 covers it.
+        g2v `shouldSatisfy` listClose id [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-4
         hwv `shouldSatisfy` listClose id [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
         -- g2v/hwv reproduced exactly. hw2v (numerical Hull-White) and bkv, and all four
         -- calibrated-parameter vectors, are optimiser-dependent and were re-based.
