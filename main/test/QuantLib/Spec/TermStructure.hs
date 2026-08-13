@@ -18,6 +18,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr))
+import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long))
 import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
@@ -364,6 +365,34 @@ spec = do
           Vol.linkOptionletVolTo volH vol1
           npvAfter <- npv capfl
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
+
+      -- A short-rate model built on a relinkable curve is an observer of it too: both
+      -- HullWhite and ExtendedCoxIngersollRoss register with their Handle<YieldTermStructure>
+      -- (QuantLib's CalibratedModel::update() recomputes the model's curve-fitting function on
+      -- notification), so relinking moves the model's own discountBond without rebuilding it --
+      -- same relink-propagation property as the curve/quote/vol-surface cases above, just
+      -- surfaced through the model instead of an instrument.
+      it "relinking the curve updates HullWhite's discount bond without rebuilding the model" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          c <- flat 0.02
+          th <- relinkableYieldTermStructure (Just c)
+          model <- hullWhite th 0.1 0.01
+          before <- discountBond model 0.0 5.0 0.02
+          flat 0.05 >>= linkTo th
+          after <- discountBond model 0.0 5.0 0.02
+          abs (after - before) `shouldSatisfy` (> 0.01)
+
+      it "relinking the curve updates ExtendedCoxIngersollRoss's discount bond without rebuilding the model" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          c <- flat 0.02
+          th <- relinkableYieldTermStructure (Just c)
+          model <- extendedCoxIngersollRoss th 0.02 1.0 1e-4 0.02 True
+          before <- discountBond model 0.0 5.0 0.02
+          flat 0.05 >>= linkTo th
+          after <- discountBond model 0.0 5.0 0.02
+          abs (after - before) `shouldSatisfy` (> 0.01)
 
       -- The bidirectional dependency cycle RelinkableHandle actually exists for: two Euribor
       -- forecast curves (3m/6m) whose rate helpers reference *each other's* not-yet-bootstrapped

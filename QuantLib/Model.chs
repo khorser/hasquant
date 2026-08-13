@@ -158,7 +158,11 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 -- |Price of a discount bond paying 1 at @maturity@, given the short rate @rate@ at time @now@.
-{#fun pure qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
+-- Not 'pure': the model's short-rate fitting function depends on its 'YieldTermStructure' handle,
+-- which can be relinked after construction, so the result at fixed arguments can change between
+-- two calls -- a genuine 'IO' action, not a value fixed at construction time like the other
+-- @{#fun pure ...#}@ bindings in this codebase.
+{#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
   ,`Double' -- ^maturity
   ,`Double' -- ^rate
   }->`Double'#}

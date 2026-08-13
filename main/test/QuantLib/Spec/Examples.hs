@@ -29,6 +29,7 @@ import qualified QuantLib.Example.CVAIRS as CVAIRSExample
 import qualified QuantLib.Example.MulticurveBootstrapping as MulticurveExample
 import qualified QuantLib.Example.TARF as TARFExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
+import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
@@ -373,6 +374,37 @@ spec = do
         simFwds `shouldSatisfy` listCloseRel id
           [3.3084, 3.3113, 3.3129, 3.3153, 3.3177, 3.3196, 3.3217, 3.3229, 3.3235,
            3.3247, 3.3253, 3.3267, 3.3278] 1.0e-4
+
+    describe "Short rate models example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' ShortRateModelsExample.run
+        let checkCalibration tol cr = do
+              ShortRateModelsExample.calculatedA cr `shouldSatisfy`
+                closePrec (ShortRateModelsExample.cachedA cr) tol
+              ShortRateModelsExample.calculatedSigma cr `shouldSatisfy`
+                closePrec (ShortRateModelsExample.cachedSigma cr) tol
+        -- testCachedHullWhite / testCachedHullWhiteFixedReversion tolerance (1.3e-5 upstream)
+        checkCalibration 1.3e-5 (ShortRateModelsExample.cachedHullWhite r)
+        checkCalibration 1.3e-5 (ShortRateModelsExample.cachedHullWhiteFixedReversion r)
+        -- testCachedHullWhite2 (zero-fixing-days index) tolerance (1.0e-5 upstream)
+        checkCalibration 1.0e-5 (ShortRateModelsExample.cachedHullWhite2 r)
+
+        -- testSwaps: discounting engine vs Hull-White tree engine (120 steps) must agree.
+        -- Upstream's tolerance is 1.0e-8 for the usingAtParCoupons branch this build matches.
+        ShortRateModelsExample.swaps r `shouldSatisfy` all (\s ->
+          abs (ShortRateModelsExample.expectedNPV s - ShortRateModelsExample.calculatedNPV s) < 1.0e-8)
+
+        -- testFuturesConvexityBias (closed-form, no curve involved)
+        ShortRateModelsExample.futuresConvexityBias r `shouldSatisfy` all (\c ->
+          abs (ShortRateModelsExample.expectedForward c - ShortRateModelsExample.calculatedForward c) < 1.0e-7)
+
+        -- testExtendedCoxIngersollRossDiscountFactor / testVasicekDiscountFactorForSmallMeanReversion
+        let cirDF = ShortRateModelsExample.extendedCirDiscountFactor r
+            vasicekDF = ShortRateModelsExample.vasicekDiscountFactorSmallMeanReversion r
+        ShortRateModelsExample.calculatedDF cirDF `shouldSatisfy`
+          closePrec (ShortRateModelsExample.expectedDF cirDF) 1.0e-6
+        ShortRateModelsExample.calculatedDF vasicekDF `shouldSatisfy`
+          closePrec (ShortRateModelsExample.expectedDF vasicekDF) 1.0e-12
 
     -- FittedBondCurve rolls Settings' evaluation date to Date::todaysDate(), so
     -- unlike every other example here its numbers are not reproducible across runs
