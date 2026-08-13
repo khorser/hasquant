@@ -569,15 +569,17 @@ QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsi
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
   try {
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, /*bootstrap=*/0, /*accuracy=*/0.0);
+        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, /*bootstrap=*/0, /*accuracy=*/0.0,
+        std::vector<double>());
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, int extrapolate, char **e) {
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
   try {
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy);
+        qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
+        std::vector<double>(weights, weights + weightsLen));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}

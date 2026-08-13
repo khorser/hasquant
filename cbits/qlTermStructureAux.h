@@ -23,7 +23,8 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
 // This is a cbits-internal dispatch value, never exposed as a Haskell enum: the two Haskell
 // entry points (piecewiseYieldCurve'/piecewiseYieldCurveGlobalBootstrap') each hardcode their
 // own literal from their own C shim, per CLAUDE.md's "dedicated constructor hardcodes the enum
-// value" convention. accuracy is only used by the GlobalBootstrap branch.
+// value" convention. accuracy and instrumentWeights are only used by the GlobalBootstrap
+// branch (instrumentWeights empty means upstream's default, equal weighting).
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
@@ -31,7 +32,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
   int trait, int interpolator, int approximator, int approximatorArg,
-  int bootstrap, double accuracy);
+  int bootstrap, double accuracy, const std::vector<double>& instrumentWeights);
 
 QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const std::vector<QuantLib::Date>& dates,

@@ -167,7 +167,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg,
-    int bootstrap, double accuracy) {
+    int bootstrap, double accuracy, const std::vector<double>& instrumentWeights) {
   if (bootstrap == 1) {
     // GlobalBootstrap is wired up only for trait=Discount, interpolator=LogLinear -- the one
     // combination the multi-curve relinkable-handle test needs; CLAUDE.md is explicit about
@@ -189,7 +189,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     // only instantiated once CurveType is complete. Don't "simplify" this back to the direct
     // spelling -- it silently reintroduces the compile failure.
     return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::LogLinear(),
-        CurveType::bootstrap_type(accuracy));
+        CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
   }
   switch (trait) {
   case hasquant::Discount:

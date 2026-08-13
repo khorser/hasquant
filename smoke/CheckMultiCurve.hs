@@ -47,7 +47,7 @@ main = do
   -- Discount/LogLinear branch added to qlPiecewiseYieldCurveAux1.
   q <- Quote.simpleQuote 0.03
   standaloneHelpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
-  standaloneCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal standaloneHelpers euriborDC [] 1.0e-10 False
+  standaloneCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal standaloneHelpers euriborDC [] 1.0e-10 [] False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
   standaloneDiscount <- discount' standaloneCurve sixM False
   checkWith "standalone GlobalBootstrap curve produces a sane discount factor"
@@ -68,8 +68,8 @@ main = do
   helpers6mSwap <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
                                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 4]
     >>= mapM asRateHelper
-  ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 False
-  ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 False
+  ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 [] False
+  ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 [] False
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
   curve6m <- addBootstrappedCurve mc intcurve6m ptr6m

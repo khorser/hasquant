@@ -554,17 +554,23 @@ piecewiseYieldCurve' s cal r dc qd t i ex = uncurryNested (qlPiecewiseYieldCurve
 -- handles\" tests in "QuantLib.Spec.TermStructure" for the two-curve cycle this exists for.
 -- Hardcodes trait=Discount\/interpolator=LogLinear in its own shim (the only combination this
 -- dispatch supports, per CLAUDE.md's dispatch-table-scope note) rather than taking
--- 'BootstrapTrait'\/'Interpolation' params.
+-- 'BootstrapTrait'\/'Interpolation' params. 'instrumentWeights' is upstream's
+-- @GlobalBootstrap@ constructor's trailing @instrumentWeights@ parameter -- an empty list
+-- reproduces its default (equal weighting); a non-empty one must have one entry per alive
+-- instrument. The @additionalHelpers@\/@additionalDates@\/@additionalPenalties@\/
+-- @additionalVariables@ overloads (functor callbacks into the optimizer) are not bound -- see
+-- README's # TODO.
 piecewiseYieldCurveGlobalBootstrap' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [GenRateHelper b] -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote a)] -- ^jumps
   -> Double -- ^accuracy
+  -> [Double] -- ^instrumentWeights (empty for upstream's default equal weighting)
   -> Bool -- ^extrapolate past the curve's max date
   -> IO YieldTermStructure
-piecewiseYieldCurveGlobalBootstrap' s cal r dc qd acc ex = qlPiecewiseYieldCurveGlobalBootstrap1 s cal r dc qs ds acc ex where (ds, qs) = unzip qd
-{#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+piecewiseYieldCurveGlobalBootstrap' s cal r dc qd acc w ex = qlPiecewiseYieldCurveGlobalBootstrap1 s cal r dc qs ds acc w ex where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper b]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote a]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter

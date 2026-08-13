@@ -362,8 +362,8 @@ spec = do
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurve' (IterativeBootstrap) can't resolve.
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 False
-            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 False
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 [] False
+            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 [] False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -416,3 +416,80 @@ spec = do
               v <- npv sw
               v `shouldSatisfy` closePrec 0 tolerance
             ) [2 .. 10 :: Word]
+
+      -- A MultiCurve member that is not itself solved by the optimizer -- a deterministic
+      -- function (here, a fixed spread) of another member curve. Ports upstream's
+      -- testMultiCurvePiecewiseYieldCurveAndSpreadedCurve (piecewiseyieldcurve.cpp): the OIS
+      -- discounting curve is a spread over the 3m Euribor forecast curve, and the 3m curve's
+      -- own swap-rate helpers discount off that same OIS curve -- each curve is defined in
+      -- terms of the other, resolved the same way as the two-curve cycle above via
+      -- 'addBootstrappedCurve'\/'addNonBootstrappedCurve'.
+      let setupSpreadedMultiCurve = do
+            Settings.setEvaluationDate (Just curveToday)
+            cal <- Calendar.calendar TARGET
+            euriborDC <- dayCounter (Actual360 False)
+            thirty360 <- dayCounter Thirty360BondBasis
+            intcurveois <- relinkableYieldTermStructure Nothing
+            intcurve3m <- relinkableYieldTermStructure Nothing
+            euribor3m <- iborIndex Euribor3M (Just intcurve3m)
+            q <- Quote.simpleQuote 0.03
+            b <- Quote.simpleQuote (-0.01)
+            -- these helpers discount off intcurveois, which is not yet linked to anything --
+            -- it is itself a spread over the curve being bootstrapped from these very helpers.
+            helpers3m <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
+                                        Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
+                                      >>= asRateHelper) [1 .. 10 :: Int]
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers3m euriborDC [] 1.0e-10 [] False
+            mc <- multiCurve 1.0e-10
+            curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
+            ptrois <- zeroSpreadedTermStructure intcurve3m b IR.Continuous NoFrequency
+            curveois <- addNonBootstrappedCurve mc intcurveois ptrois
+            pure (thirty360, euribor3m, q, b, curveois, curve3m)
+
+      it "a fixed spread over a bootstrapped curve reprices to that spread" $
+        Settings.keepingSettings' $ do
+          (_, _, _, b, curveois, curve3m) <- setupSpreadedMultiCurve
+          bVal <- Quote.value b
+          zOis <- IR.rate <$> zeroRate curveois 1.0 IR.Continuous NoFrequency False
+          z3m <- IR.rate <$> zeroRate curve3m 1.0 IR.Continuous NoFrequency False
+          (zOis - z3m) `shouldSatisfy` closePrec bVal tolerance
+
+      it "swaps priced on the spreaded curve, discounted through the cycle, reprice to zero" $
+        Settings.keepingSettings' $ do
+          (thirty360, euribor3m, q, _, curveois, _) <- setupSpreadedMultiCurve
+          qVal <- Quote.value q
+          eng <- discountingSwapEngine curveois Nothing Nothing Nothing
+          mapM_ (\i -> do
+              sw <- makeVanillaSwap (i, Years) euribor3m qVal (0, Days) (Just 2) (1, Years) thirty360
+                      (Just Following) (Just Following) Nothing Nothing Nothing Nothing
+              setPricingEngine sw eng
+              v <- npv sw
+              v `shouldSatisfy` closePrec 0 tolerance
+            ) [1 .. 10 :: Word]
+
+      -- GlobalBootstrap's instrumentWeights: overdetermined instrument sets (more instruments
+      -- than pillars) are fitted by least squares, weighted per instrument. Ports (the
+      -- weights-vector half of) upstream's testGlobalBootstrapInstrumentWeights
+      -- (piecewiseyieldcurve.cpp) -- its curve2, comparing against a custom-penalty functor
+      -- construction, is not ported: that overload needs GlobalBootstrap's functor-callback
+      -- constructors, which are not bound (see README's # TODO).
+      it "instrumentWeights shifts an overdetermined fit toward the more heavily weighted quote" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          -- two deposits over the same period at different rates: with no unique fit, the
+          -- weight on each pins where the (otherwise underdetermined) curve lands.
+          q1 <- Quote.simpleQuote 0.01
+          q2 <- Quote.simpleQuote 0.02
+          h1 <- depositRateHelper q1 (6, Months) 2 cal ModifiedFollowing True euriborDC
+          h2 <- depositRateHelper q2 (6, Months) 2 cal ModifiedFollowing True euriborDC
+          let helpers = [h1, h2]
+          curveMostlyQ2 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.1, 0.9] False
+          curveMostlyQ1 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.9, 0.1] False
+          settleFix <- advance cal curveToday (2, Days) Following False
+          pillar <- advance cal settleFix (6, Months) ModifiedFollowing True
+          d1 <- discount' curveMostlyQ1 pillar False
+          d2 <- discount' curveMostlyQ2 pillar False
+          -- higher weight on the higher rate (q2) means a lower discount factor at the pillar
+          d2 `shouldSatisfy` (< d1)

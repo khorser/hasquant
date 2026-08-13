@@ -137,7 +137,7 @@ extern "C" {
   // Dedicated GlobalBootstrap entry point, hardcoding trait=Discount/interpolator=LogLinear in
   // the shim itself (see qlTermStructureAux.cpp) rather than taking those as Haskell-visible
   // params -- CLAUDE.md's "dedicated constructor hardcodes the enum value" pattern.
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
 
   QlMultiCurve *qlMultiCurve(double accuracy, char **e);
   void qlFreeMultiCurve(QlMultiCurve *o);
