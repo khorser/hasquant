@@ -25,6 +25,7 @@ import qualified QuantLib.Example.EquityTotalReturnSwap as EquityTotalReturnSwap
 import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 import qualified QuantLib.Example.CallableBond as CallableBondExample
 import qualified QuantLib.Example.CDS as CDSExample
+import qualified QuantLib.Example.IsdaCds as IsdaCdsExample
 import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
 import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.Replication as ReplicationExample
@@ -324,6 +325,16 @@ spec = do
         npv `shouldSatisfy` listClose id [0, 0, 0, 0] 1.0e-6
         defNpv `shouldSatisfy` listClose id [-5177.051075, -8841.722057, -16101.812179, -30154.499576] 1.0e-2
         cpnNpv `shouldSatisfy` listClose id [5177.051075, 8841.722057, 16101.812179, 30154.499576] 1.0e-2
+
+    describe "ISDA CDS engine example" $
+      it "check values" $ do
+        -- Ports the first case (termDate=20 Jun 2010, spread=0.001, recovery=0.2) of
+        -- upstream's testIsdaEngine (test-suite/creditdefaultswap.cpp), a real ISDA-fixture
+        -- test with cached Markit-published upfront values, rather than falling back to a
+        -- self-consistency check -- see gap-07's plan for why each builder default below
+        -- was transcribed from ql/instruments/makecds.cpp.
+        (IsdaCdsExample.Result upfront) <- Settings.keepingSettings' IsdaCdsExample.run
+        upfront `shouldSatisfy` closePrec (-97798.29358) 0.1
 
     describe "Convertible bond example" $
       it "check values" $ do

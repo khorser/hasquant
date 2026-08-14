@@ -234,6 +234,13 @@ enum Probabilities {None, Naive, Digital};
 // pricingengines/vanilla/cashdividendeuropeanengine.hpp
 enum CashDividendModel {Spot, Escrowed};
 
+// pricingengines/credit/isdacdsengine.hpp
+// NumericalFix's enumerators are prefixed (NumericalFixNone/NumericalFixTaylor) because plain
+// "None" already belongs to Probabilities above -- C enumerators share one namespace per TU.
+enum NumericalFix {NumericalFixNone, NumericalFixTaylor};
+enum AccrualBias {HalfDayBias, NoBias};
+enum ForwardsInCouponPeriod {Flat, Piecewise};
+
 // instruments/swaption.hpp
 enum SettlementMethod {
   PhysicalOTC,

@@ -7767,7 +7767,7 @@
 | |ql/pricingengines/cliquet/mcperformanceengine.hpp|MakeMCPerformanceEngine<RNG, S> & withSeed(BigNatural seed);
 |?|ql/pricingengines/credit/integralcdsengine.hpp|IntegralCdsEngine::IntegralCdsEngine(const Period & integrationStep, Handle<DefaultProbabilityTermStructure>, Real recoveryRate, Handle<YieldTermStructure> discountCurve, const ext::optional<bool> & includeSettlementDateFlows = ext::nullopt);
 | |ql/pricingengines/credit/integralcdsengine.hpp|void IntegralCdsEngine::calculate() const;
-| |ql/pricingengines/credit/isdacdsengine.hpp|IsdaCdsEngine::IsdaCdsEngine(Handle<DefaultProbabilityTermStructure> probability, Real recoveryRate, Handle<YieldTermStructure> discountCurve, const ext::optional<bool> & includeSettlementDateFlows = ext::nullopt, NumericalFix numericalFix = Taylor, AccrualBias accrualBias = HalfDayBias, ForwardsInCouponPeriod forwardsInCouponPeriod = Piecewise);
+|v|ql/pricingengines/credit/isdacdsengine.hpp|IsdaCdsEngine::IsdaCdsEngine(Handle<DefaultProbabilityTermStructure> probability, Real recoveryRate, Handle<YieldTermStructure> discountCurve, const ext::optional<bool> & includeSettlementDateFlows = ext::nullopt, NumericalFix numericalFix = Taylor, AccrualBias accrualBias = HalfDayBias, ForwardsInCouponPeriod forwardsInCouponPeriod = Piecewise);
 | |ql/pricingengines/credit/isdacdsengine.hpp|Handle<YieldTermStructure> IsdaCdsEngine::isdaRateCurve() const;
 | |ql/pricingengines/credit/isdacdsengine.hpp|Handle<DefaultProbabilityTermStructure> IsdaCdsEngine::isdaCreditCurve() const;
 | |ql/pricingengines/credit/isdacdsengine.hpp|void IsdaCdsEngine::calculate() const;

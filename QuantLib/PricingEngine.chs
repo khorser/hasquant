@@ -7,6 +7,9 @@ module QuantLib.PricingEngine
   , CashAnnuityModel(..)
   , Probabilities(..)
   , CashDividendModel(..)
+  , NumericalFix(..)
+  , AccrualBias(..)
+  , ForwardsInCouponPeriod(..)
 
   , GenBlackCalculator
   , asBlackCalculator
@@ -86,6 +89,7 @@ module QuantLib.PricingEngine
   , bjerksundStenslandApproximationEngine
   , integralCdsEngine
   , integralEngine
+  , isdaCdsEngine
   , jamshidianSwaptionEngine
   , gaussian1dSwaptionEngine
   , juQuadraticApproximationEngine
@@ -183,6 +187,9 @@ import QuantLib.Internal.Enum
 {#enum CashAnnuityModel{} deriving(Show, Eq)#}
 {#enum Probabilities{} deriving(Show, Eq)#}
 {#enum CashDividendModel{} add prefix="CashDividend" deriving(Show, Eq)#}
+{#enum NumericalFix{} deriving(Show, Eq)#}
+{#enum AccrualBias{} deriving(Show, Eq)#}
+{#enum ForwardsInCouponPeriod{} deriving(Show, Eq)#}
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 
@@ -408,6 +415,13 @@ import QuantLib.Internal.Enum
 {#fun qlMidPointCdsEngine as midPointCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlIsdaCdsEngine as isdaCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
+  ,withYieldTermStructure*`GenYieldTermStructure y'
+  ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,`NumericalFix' -- ^numericalFix
+  ,`AccrualBias' -- ^accrualBias
+  ,`ForwardsInCouponPeriod' -- ^forwardsInCouponPeriod
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlReplicatingVarianceSwapEngine as replicatingVarianceSwapEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^dk
   ,withDoubleArray*`[Double]'& -- ^callStrikes

@@ -27,6 +27,7 @@
 #include <ql/pricingengines/cliquet/analyticcliquetengine.hpp>
 #include <ql/pricingengines/cliquet/analyticperformanceengine.hpp>
 #include <ql/pricingengines/credit/integralcdsengine.hpp>
+#include <ql/pricingengines/credit/isdacdsengine.hpp>
 #include <ql/pricingengines/exotic/analyticcompoundoptionengine.hpp>
 #include <ql/pricingengines/credit/midpointcdsengine.hpp>
 #include <ql/pricingengines/forward/discountingfxforwardengine.hpp>
@@ -379,6 +380,10 @@ QlPricingEngine* qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProce
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, char **e) {
   try {return ret(new QlPricingEngine(alloc(new KirkEngine(*arg(process1), *arg(process2), correlation))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlIsdaCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int numericalFix, int accrualBias, int forwardsInCouponPeriod, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new IsdaCdsEngine(Handle<DefaultProbabilityTermStructure>(*arg(x0)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows),
+      (IsdaCdsEngine::NumericalFix)numericalFix, (IsdaCdsEngine::AccrualBias)accrualBias, (IsdaCdsEngine::ForwardsInCouponPeriod)forwardsInCouponPeriod))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
   try {return ret(new QlPricingEngine(alloc(new MidPointCdsEngine(Handle<DefaultProbabilityTermStructure>(*arg(x0)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows)))));
