@@ -72,6 +72,8 @@ module QuantLib.TermStructure.Yield
   , piecewiseYieldCurveFull
   , piecewiseYieldCurveFull'
   , piecewiseYieldCurveGlobalBootstrap'
+  , piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear'
+  , piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull'
   , interpolatedZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
@@ -686,6 +688,44 @@ piecewiseYieldCurveGlobalBootstrap' :: Word -- ^settlementDays
   -> IO YieldTermStructure
 piecewiseYieldCurveGlobalBootstrap' s cal r dc qd acc w ex = qlPiecewiseYieldCurveGlobalBootstrap1 s cal r dc qs ds acc w ex where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Like 'piecewiseYieldCurveGlobalBootstrap'', but hardcodes trait=SimpleZeroYield\/
+-- interpolator=Linear instead of trait=Discount\/interpolator=LogLinear -- QuantLib-SWIG's only
+-- bound @GlobalBootstrap@ combination (@GlobalLinearSimpleZeroCurve@).
+piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper rh] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> Double -- ^accuracy
+  -> [Double] -- ^instrumentWeights (empty for upstream's default equal weighting)
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' s cal r dc qd acc w ex = qlPiecewiseYieldCurveGlobalBootstrap2 s cal r dc qs ds acc w ex where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveGlobalBootstrap2{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Like 'piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear'', but bootstraps with
+-- @GlobalBootstrap@'s functor-callback constructor instead of the plain @accuracy@\/
+-- @instrumentWeights@ one -- upstream QuantLib-SWIG's canned @AdditionalErrors@\/@AdditionalDates@
+-- functors (see README's # TODO), constructed internally from @additionalHelpers@\/
+-- @additionalDates@ rather than taking the formula itself as a parameter (it's fixed, not a
+-- user-supplied callback). @additionalDates@ must have exactly @length additionalHelpers - 2@
+-- entries -- @AdditionalErrors@' fixed linear-interpolation formula produces that many
+-- equations, and @GlobalBootstrap@ requires equations to match unknowns; a mismatch raises a
+-- 'QuantLib.Type.Error' naming both counts.
+piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper rh1] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> [GenRateHelper rh2] -- ^additionalHelpers
+  -> [Day] -- ^additionalDates (length must be @length additionalHelpers - 2@)
+  -> Double -- ^accuracy
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' s cal r dc qd ar ad acc ex =
+  qlPiecewiseYieldCurveGlobalBootstrap3 s cal r dc qs ds ar ad acc ex where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter

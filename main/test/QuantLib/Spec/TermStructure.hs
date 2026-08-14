@@ -759,6 +759,91 @@ spec = do
           -- higher weight on the higher rate (q2) means a lower discount factor at the pillar
           d2 `shouldSatisfy` (< d1)
 
+      -- SimpleZeroYield x Linear is upstream QuantLib-SWIG's only bound GlobalBootstrap
+      -- combination (GlobalLinearSimpleZeroCurve); Discount x LogLinear is the combination
+      -- hasquant already had. Both must reprice the same input instruments to the same
+      -- discount factors *at the pillar dates* (bootstrap forces an exact fit regardless of
+      -- trait/interpolator), which is what distinguishes "a genuinely different CurveType" from
+      -- "the enum case aliased and dispatched to the same one" -- see also
+      -- smoke/CheckSimpleZeroYield.hs, which checks the complementary property (the two curves
+      -- *disagree* between pillars, since that's where the interpolation differs).
+      --
+      -- Uses deposit helpers (not FRAs, like the instrumentWeights test above), deliberately:
+      -- each DepositRateHelper's equation only involves the common curve-start point and its own
+      -- maturity, never another helper's pillar, so the bootstrap is well-determined pillar by
+      -- pillar with no dependence on inter-pillar interpolation shape. A first attempt with FRA
+      -- helpers here (start dates 1m/2m/3m falling before the first 4m pillar) failed: those
+      -- FRAs' *start* discount factors are themselves interpolated, and Discount/LogLinear vs.
+      -- SimpleZeroYield/Linear extrapolate that sub-pillar region differently, so the two curves'
+      -- solved pillar values genuinely disagreed -- not a test bug, but the wrong instrument
+      -- choice for isolating "same pillars" from "same interpolation".
+      it "SimpleZeroYield GlobalBootstrap curve reprices to the same pillar discount factors as Discount" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpersDiscount euriborDC [] 1.0e-10 [] False
+          zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal helpersZero euriborDC [] 1.0e-10 [] False
+          settleFix <- advance cal curveToday (2, Days) Following False
+          mapM_ (\i -> do
+              pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
+              dDiscount <- discount' discountCurve pillar False
+              dZero <- discount' zeroCurve pillar False
+              dZero `shouldSatisfy` closePrec dDiscount tolerance
+            ) [1 .. 5 :: Int]
+
+      -- GlobalBootstrap's functor-callback constructor (upstream QuantLib-SWIG's canned
+      -- AdditionalErrors/AdditionalDates), bound only for SimpleZeroYield x Linear -- the same
+      -- combination its GlobalLinearSimpleZeroCurve demonstrates. testGlobalBootstrap
+      -- (piecewiseyieldcurve.cpp) is not ported: its cached
+      -- expected values are for that test's own bespoke error formula's fixed point, not a
+      -- property derivable independently here.
+      --
+      -- A first version of this test compared two curves whose additionalHelpers "agreed" vs.
+      -- "disagreed" with the primary instruments, expecting a measurably different fit -- that
+      -- failed (0.0 difference): with additionalHelpers reusing the primary instruments' own
+      -- dates, AdditionalErrors' formula is evaluated on quotes the primary curve already fully
+      -- determines, so it imposes no new constraint and the fit is identical either way. That's
+      -- a real property of the canned formula (over-determined/degenerate when additionalHelpers
+      -- duplicates the primary grid), not a bug -- but the wrong property to test here. Testing
+      -- what the plan actually called for instead: additionalHelpers/additionalDates are present
+      -- and satisfied without breaking the primary instruments' own fit (each deposit still
+      -- reprices to its own input quote via the standard simple-compounding relation).
+      it "GlobalBootstrapFull reprices its own instruments correctly with additionalHelpers/additionalDates present" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          settleFix <- advance cal curveToday (2, Days) Following False
+          q <- Quote.simpleQuote 0.03
+          qVal <- Quote.value q
+          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          -- Deliberately *not* coincident with the primary monthly pillars above (45/75/105
+          -- days sit between the 1m/2m/3m/4m pillars): reusing the same dates as additionalDates
+          -- gave GlobalBootstrap two unknowns pinned to the same time, which visibly perturbed
+          -- the first three pillars' solved values (a first version of this test hit that).
+          extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
+          -- settl=2, matching the deposit helpers' own fixingDays: otherwise the curve's
+          -- reference date is curveToday rather than settleFix, and the simple-compounding
+          -- relation below (which is anchored at settleFix, the deposits' own start) picks up a
+          -- spurious 2-day discounting gap -- confirmed by comparing against a settl=0 curve,
+          -- whose discount() came out identical to a plain (non-functor) curve but consistently
+          -- off from the hand-computed expectation.
+          curve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' 2 cal helpers euriborDC [] helpers extraDates 1.0e-10 False
+          mapM_ (\i -> do
+              pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
+              -- Actual360's own year fraction: no dedicated QuantLib.yearFraction binding
+              -- exists (CLAUDE.md's "bind few inspectors" rule), and diffDays/360 reproduces it
+              -- exactly since Actual360 is a plain actual-days-over-360 day counter.
+              let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
+              df <- discount' curve pillar False
+              -- simple-compounding deposit relation: df = 1 / (1 + qVal * tau)
+              df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
+            ) [1 .. 5 :: Int]
+
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
     -- Handle<Quote>-based ("floating market data") overload, not the plain-Matrix one bound

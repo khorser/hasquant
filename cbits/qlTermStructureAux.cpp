@@ -87,6 +87,78 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
 
 }
 
+// Upstream QuantLib-SWIG's canned-functor GlobalBootstrap construction (SWIG/piecewiseyieldcurve.i
+// :186-282's AdditionalErrors/AdditionalDates), confirmed to compile against both clang and
+// g++-16 by an earlier standalone spike (see README's # TODO). AdditionalErrors is a fixed linear-
+// interpolation formula between the first and last additional helper's implied quote -- not a
+// user-supplied callback -- so it needs no Haskell-side marshalling; it and AdditionalDates are
+// trait-independent (Traits::helper is BootstrapHelper<YieldTermStructure> == RateHelper for
+// every trait this file dispatches, per ratehelpers.hpp/bootstraptraits.hpp), so they live here
+// once rather than duplicated per trait x interpolator combination that ends up using them.
+namespace {
+
+class AdditionalErrors {
+  std::vector<shared_ptr<RateHelper> > additionalHelpers_;
+public:
+  AdditionalErrors(const std::vector<shared_ptr<RateHelper> >& additionalHelpers)
+  : additionalHelpers_(additionalHelpers) {}
+  Array operator()() const {
+    Array errors(additionalHelpers_.size() - 2);
+    Real a = additionalHelpers_.front()->impliedQuote();
+    Real b = additionalHelpers_.back()->impliedQuote();
+    for (Size k = 0; k < errors.size(); ++k) {
+      errors[k] = (static_cast<Real>(errors.size()-k) * a + static_cast<Real>(1+k) * b) / static_cast<Real>(errors.size()+1)
+          - additionalHelpers_.at(1+k)->impliedQuote();
+    }
+    return errors;
+  }
+};
+
+class AdditionalDates {
+  std::vector<Date> additionalDates_;
+public:
+  AdditionalDates(const std::vector<Date>& additionalDates) : additionalDates_(additionalDates) {}
+  std::vector<Date> operator()() const { return additionalDates_; }
+};
+
+}
+
+// PiecewiseYieldCurve<SimpleZeroYield, Linear, GlobalBootstrap> built via GlobalBootstrap's
+// functor-callback constructor, taking additionalHelpers/additionalDates and constructing
+// AdditionalErrors/AdditionalDates internally -- the same GlobalLinearSimpleZeroCurve combination
+// QuantLib-SWIG demonstrates. A separate entry point from qlPiecewiseYieldCurveAux1's
+// bootstrap==1 branch (not a widened version of it): that branch's plain accuracy/
+// instrumentWeights constructor and this functor constructor are different GlobalBootstrap
+// overloads entirely, not more parameters on the same one.
+YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl, const Calendar &cal,
+    const std::vector<shared_ptr<RateHelper> >& instr,
+    const DayCounter& dayCount,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    const std::vector<shared_ptr<RateHelper> >& additionalHelpers,
+    const std::vector<Date>& additionalDates,
+    double accuracy) {
+  // AdditionalErrors returns additionalHelpers.size()-2 equations; GlobalBootstrap requires
+  // #equations == #unknowns, so additionalDates must supply exactly that many extra unknowns
+  // (confirmed empirically by an earlier standalone spike, which crashed at runtime with
+  // QuantLib's own "less functions than available variables" until the two were matched).
+  // Surfaced here with a message in terms of the Haskell-visible arguments, not left to that
+  // internal QuantLib error.
+  QL_REQUIRE(additionalHelpers.size() >= 2,
+      "GlobalBootstrap's canned AdditionalErrors formula needs at least 2 additionalHelpers "
+      "(got " << additionalHelpers.size() << ")");
+  QL_REQUIRE(additionalDates.size() == additionalHelpers.size() - 2,
+      "additionalDates must have exactly additionalHelpers.size() - 2 entries for "
+      "GlobalBootstrap's canned AdditionalErrors formula (got " << additionalHelpers.size() <<
+      " additionalHelpers and " << additionalDates.size() << " additionalDates, expected " <<
+      (additionalHelpers.size() - 2) << " additionalDates)");
+  typedef PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap> CurveType;
+  // CurveType::bootstrap_type(...) naming order -- see the comment on the plain-constructor
+  // GlobalBootstrap branch in qlPiecewiseYieldCurveAux1, same [temp.inst] reason.
+  return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::Linear(),
+      CurveType::bootstrap_type(additionalHelpers, AdditionalDates(additionalDates),
+          AdditionalErrors(additionalHelpers), accuracy, nullptr, nullptr));
+}
+
 // extracted some template-heavy stuff into a separate file to speed up the compilation
 YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
     const std::vector<shared_ptr<RateHelper> >& instr,
@@ -106,25 +178,37 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
     const QlIterativeBootstrapOpts& bootstrapOpts) {
   if (bootstrap == 1) {
-    // GlobalBootstrap is wired up only for trait=Discount, interpolator=LogLinear -- the one
-    // combination the multi-curve relinkable-handle test needs; CLAUDE.md is explicit about
-    // not building dispatch for hypothetical future trait x interpolator combinations.
+    // GlobalBootstrap is wired up only for the two combinations concrete use cases have asked
+    // for -- Discount/LogLinear (the multi-curve relinkable-handle test) and SimpleZeroYield/
+    // Linear (upstream QuantLib-SWIG's GlobalLinearSimpleZeroCurve) -- not the full trait x
+    // interpolator matrix; CLAUDE.md is explicit about not building dispatch for hypothetical
+    // future combinations.
+    //
+    // Spelled CurveType::bootstrap_type(accuracy), not GlobalBootstrap<CurveType>(accuracy), in
+    // both branches below: GlobalBootstrap overrides pure-virtual methods from
+    // MultiCurveBootstrapContributor, and [temp.inst] instantiates a class's virtual member
+    // function bodies together with the class itself. Naming GlobalBootstrap<CurveType> directly
+    // starts instantiating *that* specialization first, which then needs CurveType complete --
+    // but CurveType is simultaneously mid-instantiation because of this very argument (its
+    // bootstrap_ field has type GlobalBootstrap<CurveType>), producing a hard "incomplete type"
+    // error (reproduced independently with clang and g++-16). Naming CurveType (via
+    // ::bootstrap_type) first instead makes CurveType the outer instantiation, so
+    // GlobalBootstrap<CurveType>'s virtual bodies are only instantiated once CurveType is
+    // complete. Don't "simplify" this back to the direct spelling -- it silently reintroduces
+    // the compile failure.
+    if (trait == hasquant::SimpleZeroYield) {
+      QL_REQUIRE(interpolator == hasquant::Linear,
+          "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=SimpleZeroYield "
+          "only supports interpolator=Linear (got interpolator " << interpolator << ")");
+      typedef PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap> CurveType;
+      return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::Linear(),
+          CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
+    }
     QL_REQUIRE(trait == hasquant::Discount && interpolator == hasquant::LogLinear,
         "GlobalBootstrap-based PiecewiseYieldCurve construction is only supported for "
-        "trait=Discount, interpolator=LogLinear (got trait " << trait << ", interpolator "
-        << interpolator << ")");
+        "trait=Discount, interpolator=LogLinear or trait=SimpleZeroYield, interpolator=Linear "
+        "(got trait " << trait << ", interpolator " << interpolator << ")");
     typedef PiecewiseYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap> CurveType;
-    // Spelled CurveType::bootstrap_type(accuracy), not GlobalBootstrap<CurveType>(accuracy):
-    // GlobalBootstrap overrides pure-virtual methods from MultiCurveBootstrapContributor, and
-    // [temp.inst] instantiates a class's virtual member function bodies together with the class
-    // itself. Naming GlobalBootstrap<CurveType> directly starts instantiating *that*
-    // specialization first, which then needs CurveType complete -- but CurveType is simultaneously
-    // mid-instantiation because of this very argument (its bootstrap_ field has type
-    // GlobalBootstrap<CurveType>), producing a hard "incomplete type" error (reproduced
-    // independently with clang and g++-16). Naming CurveType (via ::bootstrap_type) first instead
-    // makes CurveType the outer instantiation, so GlobalBootstrap<CurveType>'s virtual bodies are
-    // only instantiated once CurveType is complete. Don't "simplify" this back to the direct
-    // spelling -- it silently reintroduces the compile failure.
     return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::LogLinear(),
         CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
   }

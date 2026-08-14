@@ -673,6 +673,26 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Cale
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
+  try {
+    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), hasquant::SimpleZeroYield, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts());
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
+  double accuracy, int extrapolate, char **e) {
+  try {
+    YieldTermStructure *ts = qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy);
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
 // MultiCurve builds a set of curves that form a genuine dependency cycle -- see the class's own
 // doc comment in multicurve.hpp for the 4-step protocol this wraps. It is bound as a standalone
 // leaf (see QlMultiCurve's typedef comment in qlaux.h), not part of the TermStructure hierarchy.

@@ -149,6 +149,14 @@ extern "C" {
   // the shim itself (see qlTermStructureAux.cpp) rather than taking those as Haskell-visible
   // params -- CLAUDE.md's "dedicated constructor hardcodes the enum value" pattern.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1, hardcoding trait=SimpleZeroYield/
+  // interpolator=Linear instead -- QuantLib-SWIG's only bound GlobalBootstrap combination
+  // (GlobalLinearSimpleZeroCurve).
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  // trait=SimpleZeroYield/interpolator=Linear via GlobalBootstrap's functor-callback
+  // constructor (canned AdditionalErrors/AdditionalDates -- see qlTermStructureAux.cpp).
+  // additionalDatesLen must equal additionalRateLen - 2.
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, char **e);
 
   QlMultiCurve *qlMultiCurve(double accuracy, char **e);
   void qlFreeMultiCurve(QlMultiCurve *o);

@@ -308,6 +308,7 @@ enum BootstrapTrait {
   Discount
   , ZeroYield
   , ForwardRate
+  , SimpleZeroYield
 };
 
 enum InterpolationType {
