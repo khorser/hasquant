@@ -65,6 +65,10 @@ module QuantLib.TermStructure.Yield
 
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
+  , IterativeBootstrapOpts(..)
+  , defaultIterativeBootstrapOpts
+  , piecewiseYieldCurveFull
+  , piecewiseYieldCurveFull'
   , piecewiseYieldCurveGlobalBootstrap'
   , interpolatedZeroCurve
   , interpolatedForwardCurve
@@ -175,6 +179,29 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m"]
   , ("oisOvernightCalendar", [t|Maybe Calendar|], [|Nothing|])
   , ("oisConvention", [t|BusinessDayConvention|], [|ModifiedFollowing|])
   ])
+
+-- IterativeBootstrapOpts bundles every constructor parameter of QuantLib's
+-- @IterativeBootstrap@ (@ql\/termstructures\/iterativebootstrap.hpp@), which is the
+-- bootstrapper 'piecewiseYieldCurve'\/'piecewiseYieldCurve'' use and whose settings they
+-- hardcode to upstream's defaults. Shape borrowed from QuantLib-SWIG's @_IterativeBootstrap@
+-- struct. Same splice-placement constraint as OISRateHelperOpts above.
+$(deriveOptionsRecord "IterativeBootstrapOpts" []
+  [ ("ibAccuracy", [t|Maybe Double|], [|Nothing|])
+  , ("ibMinValue", [t|Maybe Double|], [|Nothing|])
+  , ("ibMaxValue", [t|Maybe Double|], [|Nothing|])
+  , ("ibMaxAttempts", [t|Word|], [|1|])
+  , ("ibMaxFactor", [t|Double|], [|2.0|])
+  , ("ibMinFactor", [t|Double|], [|2.0|])
+  , ("ibDontThrow", [t|Bool|], [|False|])
+  , ("ibDontThrowSteps", [t|Word|], [|10|])
+  , ("ibMaxEvaluations", [t|Word|], [|100|])
+  ])
+
+-- Upstream defaults accuracy/minValue/maxValue to Null<Real>() rather than to a number, so
+-- those three are Maybe on the Haskell side; fromMaybeDouble supplies the sentinel, and the
+-- {#fun#} specs below take a plain Double, hence the realToFrac.
+nullableDouble :: Maybe Double -> Double
+nullableDouble = realToFrac . fromMaybeDouble
 
 {#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote q',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote q' -- ^rate
@@ -548,6 +575,48 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
   -> IO YieldTermStructure
 piecewiseYieldCurve' s cal r dc qd t i ex = uncurryNested (qlPiecewiseYieldCurve1 s cal r dc qs ds t) (qlInterpolation i) ex where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurve1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Like 'piecewiseYieldCurve', but exposes every @IterativeBootstrap@ setting through
+-- 'IterativeBootstrapOpts' instead of hardcoding upstream's defaults. Start from
+-- 'defaultIterativeBootstrapOpts' and override with record-update syntax; passing it
+-- unchanged is exactly 'piecewiseYieldCurve'. 'ibAccuracy'\/'ibMinValue'\/'ibMaxValue' are
+-- 'Maybe' because upstream defaults them to @Null\<Real\>()@ (\"pick a sensible value per
+-- pillar\"), not to a number. 'ibDontThrow' is the one to reach for when a curve fails to
+-- bootstrap: it substitutes the best value found so far for a pillar that won't solve,
+-- rather than throwing.
+piecewiseYieldCurveFull :: Day -- ^referenceDate
+  -> [GenRateHelper rh] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> BootstrapTrait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IterativeBootstrapOpts -- ^bootstrap settings
+  -> IO YieldTermStructure
+piecewiseYieldCurveFull d r dc qd t i b =
+  uncurryNested (qlPiecewiseYieldCurveFull d r dc qs ds t) (qlInterpolation i)
+    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
+  where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveFull{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |'piecewiseYieldCurve'' with the same @IterativeBootstrap@ settings 'piecewiseYieldCurveFull'
+-- exposes; see there for what they mean.
+piecewiseYieldCurveFull' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper rh] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> BootstrapTrait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IterativeBootstrapOpts -- ^bootstrap settings
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveFull' s cal r dc qd t i b ex =
+  uncurryNested (qlPiecewiseYieldCurveFull1 s cal r dc qs ds t) (qlInterpolation i)
+    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
+  where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveFull1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Like 'piecewiseYieldCurve'', but bootstraps with QuantLib's @GlobalBootstrap@ instead of
 -- @IterativeBootstrap@ -- all instruments (and, for a 'MultiCurve' cycle, all member curves) are

@@ -7,6 +7,7 @@ module QuantLib.Internal.Enum
   , qlInterpolation'
   , Approximation(..)
   , Interpolation(..)
+  , Interpolation2D(..)
 
   , ExerciseType(..)
   , Exercise(..)
@@ -119,6 +120,12 @@ import QuantLib.Internal.Syntax
 {#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
 {#enum ApproximationType{} add prefix="Approximation__" deriving(Show, Eq)#}
 {#enum InterpolationType{} add prefix="Interpolation" deriving(Show, Eq)#}
+-- 2-D interpolators for a BlackVarianceSurface. Unlike InterpolationType/ApproximationType
+-- above (merged into the public Interpolation ADT by deriveCrossEnum), this enum is itself the
+-- public type: setInterpolation on a surface is a member template over a default-constructed
+-- interpolator, so there is no approximator to pair it with. Declared here rather than in
+-- QuantLib.TermStructure.Volatility for the usual cross-module {#import#} ordering reason.
+{#enum Interpolation2D{} deriving (Show, Eq, Bounded)#}
 {#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
 {#enum OptionType{} deriving (Show, Eq)#}
 {#enum PositionType{} deriving (Show, Eq)#}

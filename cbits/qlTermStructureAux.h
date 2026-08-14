@@ -10,13 +10,28 @@
 #include <ql/termstructures/inflation/piecewisezeroinflationcurve.hpp>
 #include <ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp>
 
+// Every IterativeBootstrap constructor parameter (ql/termstructures/iterativebootstrap.hpp),
+// as one flat POD so the piecewise-curve entry points don't grow nine more positional
+// scalars each. Mirrors QuantLib-SWIG's _IterativeBootstrap struct + make_bootstrap<Curve>()
+// shape (SWIG/piecewiseyieldcurve.i). accuracy/minValue/maxValue take qlNullReal() to mean
+// "upstream's default", matching their Null<Real>() defaults; dontThrow is an int because
+// this header is consumed from C.
+struct QlIterativeBootstrapOpts {
+  double accuracy, minValue, maxValue;
+  unsigned maxAttempts;
+  double maxFactor, minFactor;
+  int dontThrow;
+  unsigned dontThrowSteps, maxEvaluations;
+};
+
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
   const QuantLib::Date &date,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
-  int trait, int interpolator, int approximator, int approximatorArg);
+  int trait, int interpolator, int approximator, int approximatorArg,
+  const QlIterativeBootstrapOpts& bootstrapOpts);
 
 // bootstrap: 0 = IterativeBootstrap (existing behaviour, default), 1 = GlobalBootstrap,
 // wired up only for trait=Discount/interpolator=LogLinear (see qlTermStructureAux.cpp).
@@ -24,7 +39,8 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
 // entry points (piecewiseYieldCurve'/piecewiseYieldCurveGlobalBootstrap') each hardcode their
 // own literal from their own C shim, per CLAUDE.md's "dedicated constructor hardcodes the enum
 // value" convention. accuracy and instrumentWeights are only used by the GlobalBootstrap
-// branch (instrumentWeights empty means upstream's default, equal weighting).
+// branch (instrumentWeights empty means upstream's default, equal weighting); conversely
+// bootstrapOpts is only used by the IterativeBootstrap branch.
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
@@ -32,7 +48,8 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
   int trait, int interpolator, int approximator, int approximatorArg,
-  int bootstrap, double accuracy, const std::vector<double>& instrumentWeights);
+  int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
+  const QlIterativeBootstrapOpts& bootstrapOpts);
 
 QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const std::vector<QuantLib::Date>& dates,

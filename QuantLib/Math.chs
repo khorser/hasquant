@@ -9,6 +9,7 @@ module QuantLib.Math
 
   , Approximation(..)
   , Interpolation(..)
+  , Interpolation2D(..)
 
   , RngTrait(..)
   , BinomialTree(..)

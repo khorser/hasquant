@@ -109,6 +109,19 @@ void setInterpolation(T* o, int interpolator, int approximator, int approximator
   }
 }
 
+// 2-D counterpart of the above, for BlackVarianceSurface. setInterpolation is a member
+// *template* taking a default-constructed Interpolator, so there is no approximator or
+// approximatorArg to thread and no Interpolation2D object to marshal -- just a two-case
+// switch. Same set QuantLib-SWIG exposes (SWIG/volatilities.i).
+template <class T>
+void setInterpolation2D(T* o, int interpolator) {
+  switch (interpolator) {
+  case hasquant::Bilinear: o->template setInterpolation<QuantLib::Bilinear>(); break;
+  case hasquant::Bicubic: o->template setInterpolation<QuantLib::Bicubic>(); break;
+  default: QL_FAIL("Unsupported 2-D interpolation " << interpolator);
+  }
+}
+
 namespace {
 ext::shared_ptr<SabrInterpolatedSmileSection> asSabrInterpolatedSmileSection(const QlSmileSection& o) {
   auto s = ext::dynamic_pointer_cast<SabrInterpolatedSmileSection>(o);
@@ -360,14 +373,11 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
   }
 }
 
-QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, int interpolator, int approximator, int approximatorArg*/, char **e) {
+QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, int interpolator, char **e) {
   BlackVarianceSurface *s = 0;
   try {
     s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(dates, datesLen), std::vector<double>(strikes, strikes+strikesLen), qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);
-    /* TODO uncomment when 2-D Interpolation is added
-    if (interpolation)
-      setInterpolation(s, interpolation);
-    */
+    setInterpolation2D(s, interpolator);
     return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(s))));
   } catch (std::exception& er) {delete s; return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
@@ -535,13 +545,49 @@ QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double fa
   } catch (std::exception& er) {return handleException<QlBondHelper *>(e, er);}}
 void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
 
-QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+// IterativeBootstrap's own constructor defaults (ql/termstructures/iterativebootstrap.hpp),
+// for the narrow entry points that don't expose the settings. Kept here rather than as
+// in-class initialisers so the struct stays a POD usable from the C side.
+static QlIterativeBootstrapOpts defaultBootstrapOpts() {
+  QlIterativeBootstrapOpts b;
+  b.accuracy = b.minValue = b.maxValue = Null<Real>();
+  b.maxAttempts = 1;
+  b.maxFactor = b.minFactor = 2.0;
+  b.dontThrow = 0;
+  b.dontThrowSteps = 10;
+  b.maxEvaluations = MAX_FUNCTION_EVALUATIONS;
+  return b;
+}
+
+static QlIterativeBootstrapOpts bootstrapOpts(double accuracy, double minValue, double maxValue,
+    unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow,
+    unsigned dontThrowSteps, unsigned maxEvaluations) {
+  QlIterativeBootstrapOpts b;
+  b.accuracy = accuracy; b.minValue = minValue; b.maxValue = maxValue;
+  b.maxAttempts = maxAttempts; b.maxFactor = maxFactor; b.minFactor = minFactor;
+  b.dontThrow = dontThrow; b.dontThrowSteps = dontThrowSteps; b.maxEvaluations = maxEvaluations;
+  return b;
+}
+
+static QlYieldTermStructure *piecewiseYieldCurveImpl(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, char **e) {
   YieldTermStructure *ts = 0;
   try {
     ts = qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg);
+        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, b);
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+
+QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+  return piecewiseYieldCurveImpl(date, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
+      trait, interpolator, approximator, approximatorArg, defaultBootstrapOpts(), e);
+}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveFull(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg,
+  double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, char **e) {
+  return piecewiseYieldCurveImpl(date, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
+      trait, interpolator, approximator, approximatorArg,
+      bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations), e);
+}
 
 typedef YieldTermStructure *(*curveBuilder)( const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates, int interpolator, int approximator, int approximatorArg);
@@ -568,21 +614,35 @@ QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen, double *yields,
   return qlInterpolatedCurve(&qlInterpolatedZeroCurveAux, yieldLen, yields, ydatesLen, yieldDates,
     dayCount, cal, quoteLen, quotes,  datesLen, dates, interpolator, approximator, approximatorArg, e);
 }
-QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
+static QlYieldTermStructure *piecewiseYieldCurve1Impl(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, int extrapolate, char **e) {
   try {
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, /*bootstrap=*/0, /*accuracy=*/0.0,
-        std::vector<double>());
+        std::vector<double>(), b);
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
+QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
+  return piecewiseYieldCurve1Impl(settl, cal, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
+      trait, interpolator, approximator, approximatorArg, defaultBootstrapOpts(), extrapolate, e);
+}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveFull1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg,
+  double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, char **e) {
+  return piecewiseYieldCurve1Impl(settl, cal, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
+      trait, interpolator, approximator, approximatorArg,
+      bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations), extrapolate, e);
+}
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
   try {
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen));
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts());
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}

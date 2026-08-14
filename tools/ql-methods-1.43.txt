@@ -9024,10 +9024,10 @@
 | |ql/termstructures/inflationtermstructure.hpp|Rate baseRate() const;
 | |ql/termstructures/inflationtermstructure.hpp|ext::shared_ptr<Seasonality> seasonality() const;
 | |ql/termstructures/inflationtermstructure.hpp|bool hasSeasonality() const;
-| |ql/termstructures/iterativebootstrap.hpp|IterativeBootstrap::IterativeBootstrap<Curve>(Real accuracy = Null<Real>(), Real minValue = Null<Real>(), Real maxValue = Null<Real>(), Size maxAttempts = 1, Real maxFactor = 2.0, Real minFactor = 2.0, bool dontThrow = false, Size dontThrowSteps = 10, Size maxEvaluations = MAX_FUNCTION_EVALUATIONS);
+|v|ql/termstructures/iterativebootstrap.hpp|IterativeBootstrap::IterativeBootstrap<Curve>(Real accuracy = Null<Real>(), Real minValue = Null<Real>(), Real maxValue = Null<Real>(), Size maxAttempts = 1, Real maxFactor = 2.0, Real minFactor = 2.0, bool dontThrow = false, Size dontThrowSteps = 10, Size maxEvaluations = MAX_FUNCTION_EVALUATIONS);
 | |ql/termstructures/iterativebootstrap.hpp|void IterativeBootstrap::setup(Curve * ts);
 | |ql/termstructures/iterativebootstrap.hpp|void IterativeBootstrap::calculate() const;
-| |ql/termstructures/iterativebootstrap.hpp|IterativeBootstrap<Curve>(Real accuracy, Real minValue, Real maxValue, Size maxAttempts, Real maxFactor, Real minFactor, bool dontThrow, Size dontThrowSteps, Size maxEvaluations);
+|v|ql/termstructures/iterativebootstrap.hpp|IterativeBootstrap<Curve>(Real accuracy, Real minValue, Real maxValue, Size maxAttempts, Real maxFactor, Real minFactor, bool dontThrow, Size dontThrowSteps, Size maxEvaluations);
 | |ql/termstructures/iterativebootstrap.hpp|void setup(Curve * ts);
 | |ql/termstructures/iterativebootstrap.hpp|void initialize() const;
 | |ql/termstructures/iterativebootstrap.hpp|void calculate() const;
@@ -9158,7 +9158,7 @@
 | |ql/termstructures/volatility/equityfx/blackvariancecurve.hpp|Real minStrike() const;
 | |ql/termstructures/volatility/equityfx/blackvariancecurve.hpp|Real maxStrike() const;
 | |ql/termstructures/volatility/equityfx/blackvariancecurve.hpp|void accept(AcyclicVisitor & v);
-|?|ql/termstructures/volatility/equityfx/blackvariancesurface.hpp|BlackVarianceSurface::BlackVarianceSurface(const Date & referenceDate, const Calendar & cal, const std::vector<Date> & dates, std::vector<Real> strikes, const Matrix & blackVolMatrix, DayCounter dayCounter, Extrapolation lowerExtrapolation = InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation = InterpolatorDefaultExtrapolation);
+|v|ql/termstructures/volatility/equityfx/blackvariancesurface.hpp|BlackVarianceSurface::BlackVarianceSurface(const Date & referenceDate, const Calendar & cal, const std::vector<Date> & dates, std::vector<Real> strikes, const Matrix & blackVolMatrix, DayCounter dayCounter, Extrapolation lowerExtrapolation = InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation = InterpolatorDefaultExtrapolation);
 | |ql/termstructures/volatility/equityfx/blackvariancesurface.hpp|void accept(AcyclicVisitor & v);
 | |ql/termstructures/volatility/equityfx/blackvolsurfacedelta.hpp|BlackVolatilitySurfaceDelta::BlackVolatilitySurfaceDelta(Date referenceDate, const std::vector<Date> & dates, const std::vector<Real> & putDeltas, const std::vector<Real> & callDeltas, bool hasAtm, const Matrix & blackVolMatrix, const DayCounter & dayCounter, const Calendar & cal, const Handle<Quote> & spot, const Handle<YieldTermStructure> & domesticTS, const Handle<YieldTermStructure> & foreignTS, DeltaVolQuote::DeltaType deltaType = DeltaVolQuote::DeltaType::Spot, DeltaVolQuote::AtmType atmType = DeltaVolQuote::AtmType::AtmDeltaNeutral, ext::optional<DeltaVolQuote::DeltaType> atmDeltaType = ext::nullopt, SmileInterpolationMethod interpolationMethod = SmileInterpolationMethod::Linear, bool flatStrikeExtrapolation = false, BlackVolTimeExtrapolation::Type timeExtrapolationType = BlackVolTimeExtrapolation::FlatVolatility, const Period & switchTenor = 0 * Days, DeltaVolQuote::DeltaType longTermDeltaType = DeltaVolQuote::DeltaType::Fwd, DeltaVolQuote::AtmType longTermAtmType = DeltaVolQuote::AtmType::AtmDeltaNeutral, ext::optional<DeltaVolQuote::DeltaType> longTermAtmDeltaType = ext::nullopt);
 | |ql/termstructures/volatility/equityfx/blackvolsurfacedelta.hpp|const std::vector<Date> & BlackVolatilitySurfaceDelta::dates() const;

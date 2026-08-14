@@ -1,8 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Volatility
   (
-    BlackVarianceSurfaceExtrapolation
-  , ExtendedBlackVarianceSurfaceExtrapolation
+    BlackVarianceSurfaceExtrapolation(..)
+  , ExtendedBlackVarianceSurfaceExtrapolation(..)
 
   , BlackVarianceCurve
   , BlackVolTermStructure
@@ -463,15 +463,19 @@ blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -- ^forceMono
 blackVarianceCurve d dq dc f i = uncurryNested (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i) where (dd, q) = unzip dq
 {#fun qlBlackVarianceCurve{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`Bool',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`BlackVarianceCurve'peekBlackVarianceCurve*#}
 
+-- |The @interpolator@ is applied through @BlackVarianceSurface::setInterpolation@ right after
+-- construction; 'Bilinear' reproduces upstream's default. Both interpolators reproduce
+-- @blackVolMatrix@ exactly at its own (date, strike) nodes -- they only differ between them.
 blackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
   -> [Double] -- ^strikes
   -> Matrix Double -- ^blackVolMatrix
   -> DayCounter
   -> BlackVarianceSurfaceExtrapolation -- ^lowerExtrapolation
   -> BlackVarianceSurfaceExtrapolation -- ^upperExtrapolation
+  -> Interpolation2D -- ^interpolator
   -> IO BlackVolTermStructure
 blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
-{#fun qlBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`BlackVarianceSurfaceExtrapolation',`BlackVarianceSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+{#fun qlBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`BlackVarianceSurfaceExtrapolation',`BlackVarianceSurfaceExtrapolation',fromEnumC`Interpolation2D',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |floating reference date, floating market data
 capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors

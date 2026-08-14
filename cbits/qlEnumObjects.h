@@ -327,6 +327,21 @@ enum ApproximationType {
   , FritschButland
 };
 
+// 2-D interpolators, for BlackVarianceSurface::setInterpolation<Interpolator>(). Separate from
+// InterpolationType above because the two sets are disjoint (no 1-D interpolator is usable on
+// a surface and vice versa) and because a 2-D interpolator is always default-constructed --
+// there is no approximator/approximatorArg to pair with it. Matches the two QuantLib-SWIG
+// exposes (SWIG/volatilities.i's "bilinear"/"bicubic" strings); QuantLib also has
+// BackwardflatLinear, deliberately left out to stay aligned with the reference binding.
+// Named without the "Type" suffix InterpolationType/ApproximationType carry: those two are
+// merged into the public Interpolation ADT by TH (deriveCrossEnum) and their c2hs-derived
+// enums stay unexported, whereas this one *is* the public Haskell type, and public names here
+// don't carry the suffix.
+enum Interpolation2D {
+  Bilinear
+  , Bicubic
+};
+
 enum ProbabilityTrait {
   SurvivalProbability = 0
   , HazardRate
