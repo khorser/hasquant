@@ -87,6 +87,7 @@ module QuantLib.TermStructure.Volatility
   , capFloorTermVolSurface
   , capFloorTermVolSurface'
   , blackVarianceSurface
+  , swaptionVolatilityMatrix'
   ) where
 import QuantLib.Internal
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
@@ -492,5 +493,27 @@ capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, T
   -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface' d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t
 {#fun qlCapFloorTermVolSurface1{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
+
+-- |fixed reference date, fixed market data. Pass an empty 'Matrix' (@Matrix 0 0 []@) for @shifts@
+-- when no shift is needed -- upstream treats a zero-row shift matrix as all-zero.
+swaptionVolatilityMatrix' :: Day -> Calendar -> BusinessDayConvention
+  -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [(Word, TimeUnit)] -- ^swapTenors
+  -> Matrix Double -- ^volatilities
+  -> DayCounter
+  -> Bool -- ^flatExtrapolation
+  -> VolatilityType
+  -> Matrix Double -- ^shifts
+  -> IO SwaptionVolatilityStructure
+swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr sc sd) =
+  qlSwaptionVolatilityMatrix d c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
+  where (opl, opu) = unzip ot; (spl, spu) = unzip st
+{#fun qlSwaptionVolatilityMatrix{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

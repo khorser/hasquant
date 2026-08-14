@@ -620,3 +620,52 @@ spec = do
           d2 <- discount' curveMostlyQ2 pillar False
           -- higher weight on the higher rate (q2) means a lower discount factor at the pillar
           d2 `shouldSatisfy` (< d1)
+
+    -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
+    -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
+    -- Handle<Quote>-based ("floating market data") overload, not the plain-Matrix one bound
+    -- here. Self-consistency checks instead: a constant grid must agree with the existing
+    -- flat-vol constructor, and a grid with distinct cells must reproduce each cell's input
+    -- exactly at its own (option tenor, swap tenor) node.
+    describe "swaption volatility matrix" $ do
+      let optionTenors = [(1, Years), (5, Years)]
+          swapTenors = [(2, Years), (10, Years)]
+          refDate = 11 `december` 2012
+
+      it "a constant grid agrees with constantSwaptionVolatility' at the same point" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just refDate)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          let v = 0.20
+              volMatrix = either error id $ realMatrix 2 2 (replicate 4 v)
+              shiftMatrix = either error id $ realMatrix 0 0 []
+          grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
+                    volMatrix dc False IR.ShiftedLognormal shiftMatrix
+          volQ <- Quote.simpleQuote v
+          flatVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
+          fromGrid <- Vol.volatilityForPeriod' grid optionDate (2, Years) 0.02 False
+          fromFlat <- Vol.volatilityForPeriod' flatVol optionDate (2, Years) 0.02 False
+          abs (fromGrid - fromFlat) `shouldSatisfy` (< 1.0e-6 * max 1 (abs fromFlat))
+
+      it "recovers each cell's input volatility exactly at its own grid node" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just refDate)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          -- rows are option tenors, columns are swap tenors, matching SwaptionVolatilityMatrix's
+          -- own row/column convention (M[i][j] = i-th option date, j-th swap tenor)
+          let vols = [[0.10, 0.20], [0.30, 0.40]]
+              volMatrix = either error id $ realMatrix 2 2 (concat vols)
+              shiftMatrix = either error id $ realMatrix 0 0 []
+          grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
+                    volMatrix dc False IR.ShiftedLognormal shiftMatrix
+          optionDates <- mapM (\(n, u) -> advance cal refDate (fromIntegral n, u) ModifiedFollowing False) optionTenors
+          let nodes = [(od, st, expected)
+                      | (od, oVols) <- zip optionDates vols
+                      , (st, expected) <- zip swapTenors oVols]
+          mapM_ (\(od, st, expected) -> do
+                    v <- Vol.volatilityForPeriod' grid od st 0.02 False
+                    abs (v - expected) `shouldSatisfy` (< 1.0e-6)
+                ) nodes

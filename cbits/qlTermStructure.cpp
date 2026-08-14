@@ -4,6 +4,7 @@
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp>
+#include <ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp>
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/instruments/capfloor.hpp>
@@ -388,6 +389,18 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar
   try {return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc,
             qlPeriodVector(n, u, l), std::vector<double>(strikes, strikes+strikesLen), qlHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
   } catch (std::exception& er) {return handleException<QlCapFloorTermVolSurface*>(e, er);}}
+QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc,
+    unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
+    unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
+    unsigned volRows, unsigned volCols, double* vols, DayCounter* dc, int flatExtrapolation, int type,
+    unsigned shiftRows, unsigned shiftCols, double* shifts, char **e) {
+  try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SwaptionVolatilityMatrix(
+            Date(referenceDate), *arg(calendar), (BusinessDayConvention)bdc,
+            qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
+            qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
+            qlMatrix(vols, volRows, volCols), *arg(dc), (bool)flatExtrapolation, (VolatilityType)type,
+            qlMatrix(shifts, shiftRows, shiftCols))))));
+  } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 
 void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) {del(o);}
 QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) {return ret(new QlTermStructure(*arg(o)));}
