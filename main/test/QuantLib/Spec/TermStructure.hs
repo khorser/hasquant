@@ -30,7 +30,7 @@ import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVani
 import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine')
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine')
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
 
@@ -365,6 +365,70 @@ spec = do
           Vol.linkOptionletVolTo volH vol1
           npvAfter <- npv capfl
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
+
+      -- Bachelier (normal-vol) engines use a different pricing formula from their Black
+      -- (lognormal-vol) siblings; this checks the new bindings are actually wired to that
+      -- formula rather than silently aliasing to Black, by repricing the same instrument
+      -- with both engines and confirming the results are finite and non-trivially different.
+      -- No cached NPV to match against: upstream's Bachelier tests check deltas via finite
+      -- differences, not NPVs (see swaption.cpp/capfloor.cpp).
+      it "Bachelier swaption engine prices differently from the Black engine on the same swaption" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (sw, discountH, _) <- setupSwap
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          swpn <- swaption sw (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
+
+          normalVolQ <- Quote.simpleQuote 0.0075
+          normalVol <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
+          normalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just normalVol)
+          bachelierEng <- bachelierSwaptionEngine' discountH normalVolH
+          setPricingEngine swpn bachelierEng
+          npvBachelier <- npv swpn
+          npvBachelier `shouldSatisfy` (not . isNaN)
+
+          lognormalVolQ <- Quote.simpleQuote 0.20
+          lognormalVol <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
+          lognormalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just lognormalVol)
+          blackEng <- blackSwaptionEngine' discountH lognormalVolH
+          setPricingEngine swpn blackEng
+          npvBlack <- npv swpn
+          npvBlack `shouldSatisfy` (not . isNaN)
+
+          abs (npvBachelier - npvBlack) `shouldSatisfy` (> 0.5)
+
+      it "Bachelier cap/floor engine prices differently from the Black engine on the same cap" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (_, discountH, forecastH) <- setupSwap
+          cal <- Calendar.calendar TARGET
+          settle <- advance cal (11 `december` 2012) (2, Days) Following False
+          floatDC <- dayCounter (Actual360 False)
+          floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
+            ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+          idx <- iborIndex Euribor6M (Just forecastH)
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.03]
+          dc <- dayCounter Actual365FixedStandard
+
+          normalVolQ <- Quote.simpleQuote 0.0075
+          normalVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
+          normalVolH <- Vol.relinkableOptionletVolatilityStructure (Just normalVol)
+          bachelierEng <- bachelierCapFloorEngine' discountH normalVolH
+          setPricingEngine capfl bachelierEng
+          npvBachelier <- npv capfl
+          npvBachelier `shouldSatisfy` (not . isNaN)
+
+          lognormalVolQ <- Quote.simpleQuote 0.20
+          lognormalVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
+          lognormalVolH <- Vol.relinkableOptionletVolatilityStructure (Just lognormalVol)
+          blackEng <- blackCapFloorEngine' discountH lognormalVolH
+          setPricingEngine capfl blackEng
+          npvBlack <- npv capfl
+          npvBlack `shouldSatisfy` (not . isNaN)
+
+          abs (npvBachelier - npvBlack) `shouldSatisfy` (> 0.5)
 
       -- A short-rate model built on a relinkable curve is an observer of it too: both
       -- HullWhite and ExtendedCoxIngersollRoss register with their Handle<YieldTermStructure>

@@ -7704,8 +7704,8 @@
 |v|ql/pricingengines/capfloor/analyticcapfloorengine.hpp|AnalyticCapFloorEngine::AnalyticCapFloorEngine(const ext::shared_ptr<AffineModel> & model, Handle<YieldTermStructure> termStructure = Handle<YieldTermStructure>());
 | |ql/pricingengines/capfloor/analyticcapfloorengine.hpp|void AnalyticCapFloorEngine::calculate() const;
 | |ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|BachelierCapFloorEngine::BachelierCapFloorEngine(Handle<YieldTermStructure> discountCurve, Volatility vol, const DayCounter & dc = Actual365Fixed());
-| |ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|BachelierCapFloorEngine::BachelierCapFloorEngine(Handle<YieldTermStructure> discountCurve, const Handle<Quote> & vol, const DayCounter & dc = Actual365Fixed());
-| |ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|BachelierCapFloorEngine::BachelierCapFloorEngine(Handle<YieldTermStructure> discountCurve, Handle<OptionletVolatilityStructure> vol);
+|v|ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|BachelierCapFloorEngine::BachelierCapFloorEngine(Handle<YieldTermStructure> discountCurve, const Handle<Quote> & vol, const DayCounter & dc = Actual365Fixed());
+|v|ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|BachelierCapFloorEngine::BachelierCapFloorEngine(Handle<YieldTermStructure> discountCurve, Handle<OptionletVolatilityStructure> vol);
 | |ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|void BachelierCapFloorEngine::calculate() const;
 | |ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|Handle<YieldTermStructure> BachelierCapFloorEngine::termStructure();
 | |ql/pricingengines/capfloor/bacheliercapfloorengine.hpp|Handle<OptionletVolatilityStructure> BachelierCapFloorEngine::volatility();
@@ -8016,8 +8016,8 @@
 |v|ql/pricingengines/swaption/blackswaptionengine.hpp|BlackSwaptionEngine::BlackSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<Quote> & vol, const DayCounter & dc = Actual365Fixed(), Real displacement = 0.0, CashAnnuityModel model = DiscountCurve);
 |v|ql/pricingengines/swaption/blackswaptionengine.hpp|BlackSwaptionEngine::BlackSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<SwaptionVolatilityStructure> & vol, CashAnnuityModel model = DiscountCurve);
 | |ql/pricingengines/swaption/blackswaptionengine.hpp|BachelierSwaptionEngine::BachelierSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, Volatility vol, const DayCounter & dc = Actual365Fixed(), CashAnnuityModel model = DiscountCurve);
-| |ql/pricingengines/swaption/blackswaptionengine.hpp|BachelierSwaptionEngine::BachelierSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<Quote> & vol, const DayCounter & dc = Actual365Fixed(), CashAnnuityModel model = DiscountCurve);
-| |ql/pricingengines/swaption/blackswaptionengine.hpp|BachelierSwaptionEngine::BachelierSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<SwaptionVolatilityStructure> & vol, CashAnnuityModel model = DiscountCurve);
+|v|ql/pricingengines/swaption/blackswaptionengine.hpp|BachelierSwaptionEngine::BachelierSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<Quote> & vol, const DayCounter & dc = Actual365Fixed(), CashAnnuityModel model = DiscountCurve);
+|v|ql/pricingengines/swaption/blackswaptionengine.hpp|BachelierSwaptionEngine::BachelierSwaptionEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<SwaptionVolatilityStructure> & vol, CashAnnuityModel model = DiscountCurve);
 | |ql/pricingengines/swaption/blackswaptionengine.hpp|BlackStyleSwaptionEngine<Spec>(Handle<YieldTermStructure> discountCurve, Volatility vol, const DayCounter & dc, Real displacement, CashAnnuityModel model);
 | |ql/pricingengines/swaption/blackswaptionengine.hpp|BlackStyleSwaptionEngine<Spec>(Handle<YieldTermStructure> discountCurve, const Handle<Quote> & vol, const DayCounter & dc, Real displacement, CashAnnuityModel model);
 | |ql/pricingengines/swaption/blackswaptionengine.hpp|BlackStyleSwaptionEngine<Spec>(Handle<YieldTermStructure> discountCurve, Handle<SwaptionVolatilityStructure> volatility, CashAnnuityModel model);

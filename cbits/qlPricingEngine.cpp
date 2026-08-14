@@ -21,6 +21,7 @@
 #include <ql/pricingengines/blackscholescalculator.hpp>
 #include <ql/pricingengines/bond/discountingbondengine.hpp>
 #include <ql/pricingengines/capfloor/analyticcapfloorengine.hpp>
+#include <ql/pricingengines/capfloor/bacheliercapfloorengine.hpp>
 #include <ql/pricingengines/capfloor/blackcapfloorengine.hpp>
 #include <ql/pricingengines/capfloor/treecapfloorengine.hpp>
 #include <ql/pricingengines/cliquet/analyticcliquetengine.hpp>
@@ -188,6 +189,18 @@ QlPricingEngine* qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQu
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
   try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBachelierCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new BachelierCapFloorEngine(*arg(discountCurve), *arg(vol)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBachelierCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new BachelierCapFloorEngine(*arg(discountCurve), *arg(vol), (*arg(dc))))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBachelierSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, int model, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new BachelierSwaptionEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), (BachelierSwaptionEngine::CashAnnuityModel)model))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBachelierSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new BachelierSwaptionEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 void qlFreePricingEngine(QlPricingEngine *engine) {del(engine);}
