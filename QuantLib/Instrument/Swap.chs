@@ -162,7 +162,7 @@ swap' = (uncurry qlSwap1) . unzip
   ,withSchedule*`Schedule' -- ^liborSchedule
   ,`Double' -- ^liborFraction
   ,`Double' -- ^liborSpread
-  ,withIborIndex*`GenIborIndex a',withDayCounter*`DayCounter' -- ^liborDayCount
+  ,withIborIndex*`GenIborIndex ibor',withDayCounter*`DayCounter' -- ^liborDayCount
   ,withSchedule*`Schedule' -- ^bmaSchedule
   ,withBMAIndex*`BMAIndex',withDayCounter*`DayCounter' -- ^bmaDayCount
   ,preErrorCheck-`String'errorCheck*-}->`BMASwap'peekBMASwap*#}
@@ -171,7 +171,7 @@ swap' = (uncurry qlSwap1) . unzip
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
   ,withSchedule*`Schedule' -- ^floatSchedule
-  ,withIborIndex*`GenIborIndex a',
+  ,withIborIndex*`GenIborIndex ibor',
   `Double' -- ^spread
   ,withDayCounter*`DayCounter' -- ^floatingDayCount
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
@@ -197,7 +197,7 @@ swap' = (uncurry qlSwap1) . unzip
 -- upstream's index-@valueDate@-based spot-date convention.
 makeVanillaSwap
   :: (Word, TimeUnit)             -- ^swapTenor
-  -> GenIborIndex a
+  -> GenIborIndex ibor
   -> Double                       -- ^fixedRate
   -> (Int, TimeUnit)              -- ^forwardStart
   -> Maybe Int                    -- ^settlementDays
@@ -241,18 +241,18 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
     floatSchedule index 0.0 floatDayCount (Just floatConv) Nothing
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
-{#fun qlSwap as swap{withLeg*`GenLeg a',withLeg*`GenLeg b',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
-{#fun qlSwapEndDiscounts as endDiscounts{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwapLeg as leg{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwapLegNPV as legNPV{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap a',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwap as swap{withLeg*`GenLeg l1',withLeg*`GenLeg l2',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+{#fun qlSwapEndDiscounts as endDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLeg as leg{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLegNPV as legNPV{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- AssetSwap
 {#fun qlAssetSwap as assetSwap{`Bool' -- ^payBondCoupon
   ,withBond*`Bond',`Double' -- ^bondCleanPrice
-  ,withIborIndex*`GenIborIndex a',`Double' -- spread
+  ,withIborIndex*`GenIborIndex ibor',`Double' -- spread
   ,withSchedule*`Schedule' -- ^floatSchedule
   ,withDayCounter*`DayCounter' -- ^floatingDayCount
   ,`Bool' -- ^parAssetSwap
@@ -288,9 +288,9 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
-{#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
-{#fun qlSwapStartDate as startDate{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
-{#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`GenSwap a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+{#fun qlSwapStartDate as startDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+{#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBMASwapBmaLeg as bmaLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlBMASwapBmaLegBPS as bmaLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBMASwapBmaLegNPV as bmaLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -360,7 +360,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,withSchedule*`Schedule' -- ^floatSchedule
   ,`BusinessDayConvention' -- ^floatRoll
   ,fromIntegral`Word' -- ^fixingDays
-  ,withIborIndex*`GenIborIndex a' -- ^floatIndex
+  ,withIborIndex*`GenIborIndex ibor' -- ^floatIndex
   ,`Double' -- ^fixedRate
   ,`Double' -- ^baseCPI
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
@@ -379,7 +379,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^maturityDate
   ,`Double' -- ^fixedPayment
-  ,withIborIndex*`GenIborIndex a',withCalendar*`Calendar' -- ^paymentCalendar
+  ,withIborIndex*`GenIborIndex ibor',withCalendar*`Calendar' -- ^paymentCalendar
   ,`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
@@ -389,7 +389,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   ,withDay*`Day' -- ^maturityDate
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDayCounter
-  ,withIborIndex*`GenIborIndex a',withCalendar*`Calendar' -- ^paymentCalendar
+  ,withIborIndex*`GenIborIndex ibor',withCalendar*`Calendar' -- ^paymentCalendar
   ,`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
@@ -401,7 +401,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
 {#fun qlEquityTotalReturnSwapIbor as equityTotalReturnSwapIbor{`SwapType',`Double' -- ^nominal
   ,withSchedule*`Schedule'
   ,withEquityIndex*`EquityIndex'
-  ,withIborIndex*`GenIborIndex a' -- ^interestRateIndex
+  ,withIborIndex*`GenIborIndex ibor' -- ^interestRateIndex
   ,withDayCounter*`DayCounter'
   ,`Double' -- ^margin
   ,`Double' -- ^gearing

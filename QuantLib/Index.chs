@@ -21,9 +21,9 @@ import QuantLib.Internal.Type
 -- |stores the historical fixing at the given date
 -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
 -- Adds fixings for the given InterestRateIndex object
-{#fun qlIndexAddFixing as addFixing{withIndex*`GenIndex a',withDay*`Day',`Double',`Bool' -- ^forceOverwrite
+{#fun qlIndexAddFixing as addFixing{withIndex*`GenIndex idx',withDay*`Day',`Double',`Bool' -- ^forceOverwrite
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |returns the calendar defining valid fixing dates
-{#fun qlIndexFixingCalendar as fixingCalendar{withIndex*`GenIndex a',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+{#fun qlIndexFixingCalendar as fixingCalendar{withIndex*`GenIndex idx',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -32,9 +32,9 @@ import QuantLib.Internal.Type
 {#fun qlEquityIndex as equityIndex{`String' -- ^name
   ,withCalendar*`Calendar' -- ^fixingCalendar
   ,withCurrency*`Currency'
-  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^interest
-  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure z)' -- ^dividend
-  ,withMaybeQuote*`Maybe (GenQuote a)' -- ^spot
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y1)' -- ^interest
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^dividend
+  ,withMaybeQuote*`Maybe (GenQuote q)' -- ^spot
   ,preErrorCheck-`String'errorCheck*-}->`EquityIndex'peekEquityIndex*#}
 
 {#fun qlEquityIndexCurrency as currency{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}

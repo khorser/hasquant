@@ -75,7 +75,7 @@ run = do
     tolerance = 1e-10
     maxEvals = 5000
 
-    parRate :: TS.GenYieldTermStructure a -> NonEmpty Day -> DayCounter -> IO Double
+    parRate :: TS.GenYieldTermStructure y -> NonEmpty Day -> DayCounter -> IO Double
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- years dc d1 d2 Nothing Nothing

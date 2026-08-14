@@ -134,15 +134,15 @@ import QuantLib.Internal.Enum
 {#fun qlMargrabeOptionDelta2 as delta2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOptionGamma1 as gamma1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOptionGamma2 as gamma2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionDeltaForward as deltaForward{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionElasticity as elasticity{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionStrikeSensitivity as strikeSensitivity{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionThetaPerDay as thetaPerDay{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionDeltaForward as deltaForward{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionElasticity as elasticity{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionStrikeSensitivity as strikeSensitivity{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionThetaPerDay as thetaPerDay{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlMargrabeOption as margrabeOption{`Int' -- ^Q1
   ,`Int' -- ^Q2
   ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MargrabeOption'peekMargrabeOption*#}
 {#fun qlMultiAssetOption as multiAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
-{#fun qlOneAssetOptionItmCashProbability as itmCashProbability{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionItmCashProbability as itmCashProbability{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlOneAssetOption as oneAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlQuantoBarrierOption as quantoBarrierOption{`BarrierType'
   ,`Double' -- ^barrier
@@ -201,19 +201,19 @@ instance HasGreeks OneAssetOption where
   vega = qlOneAssetOptionVega
   dividendRho = qlOneAssetOptionDividendRho
 
-{#fun qlMultiAssetOptionDelta{withMultiAssetOption*`GenMultiAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionDividendRho{withMultiAssetOption*`GenMultiAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionGamma{withMultiAssetOption*`GenMultiAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionRho{withMultiAssetOption*`GenMultiAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionTheta{withMultiAssetOption*`GenMultiAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlMultiAssetOptionVega{withMultiAssetOption*`GenMultiAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionDelta{withMultiAssetOption*`GenMultiAssetOption mo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionDividendRho{withMultiAssetOption*`GenMultiAssetOption mo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionGamma{withMultiAssetOption*`GenMultiAssetOption mo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionRho{withMultiAssetOption*`GenMultiAssetOption mo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionTheta{withMultiAssetOption*`GenMultiAssetOption mo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMultiAssetOptionVega{withMultiAssetOption*`GenMultiAssetOption mo',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlOneAssetOptionDelta{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionDividendRho{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionGamma{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionRho{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionTheta{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlOneAssetOptionVega{withOneAssetOption*`GenOneAssetOption a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionDelta{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionDividendRho{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionGamma{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionRho{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionTheta{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOneAssetOptionVega{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 class HasQuanto a where
   qrho :: a -> IO Double
@@ -261,7 +261,7 @@ instance HasImpliedVol BarrierOption where
 {#fun qlQuantoVanillaOptionQlambda{withQuantoVanillaOption*`QuantoVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlVanillaOptionImpliedVolatility{withVanillaOption*`VanillaOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess gbs'
   ,withDividendArray*`[Dividend]'& -- ^dividends
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
@@ -269,7 +269,7 @@ instance HasImpliedVol BarrierOption where
   ,`Double' -- ^maxVol
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBarrierOptionImpliedVolatility{withBarrierOption*`BarrierOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess gbs'
   ,withDividendArray*`[Dividend]'& -- ^dividends
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
@@ -277,7 +277,7 @@ instance HasImpliedVol BarrierOption where
   ,`Double' -- ^maxVol
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlDoubleBarrierOptionImpliedVolatility as doubleBarrierOptionImpliedVolatility{withDoubleBarrierOption*`DoubleBarrierOption',`Double' -- ^price
-  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess p'
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess gbs'
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol

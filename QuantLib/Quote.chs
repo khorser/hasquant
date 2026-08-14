@@ -55,64 +55,64 @@ import QuantLib.Internal.Type
 
 -- |quotation of an FX delta vs vol, e.g. a 25-delta risk-reversal/butterfly point
 {#fun qlDeltaVolQuote1 as deltaVolQuote{`Double' -- ^delta
-  ,withQuote*`GenQuote a' -- ^vol
+  ,withQuote*`GenQuote q' -- ^vol
   ,`Double' -- ^maturity
   ,fromEnumC`DeltaType'
   ,preErrorCheck-`String'errorCheck*-}->`DeltaVolQuote'peekDeltaVolQuote*#}
 
 -- |quotation of an FX at-the-money vol point (e.g. ATM straddle)
-{#fun qlDeltaVolQuote2 as atmVolQuote{withQuote*`GenQuote a' -- ^vol
+{#fun qlDeltaVolQuote2 as atmVolQuote{withQuote*`GenQuote q' -- ^vol
   ,fromEnumC`DeltaType'
   ,`Double' -- ^maturity
   ,fromEnumC`AtmType'
   ,preErrorCheck-`String'errorCheck*-}->`DeltaVolQuote'peekDeltaVolQuote*#}
 
 -- |Returns the current value of the given Quote object
-{#fun qlQuoteValue as value{withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlQuoteValue as value{withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the difference between the new value and the old value
 -- /NB/ The change will propagate to all users of the quote
 {#fun qlSimpleQuoteSetValue as setValue{withGenQuote*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote a' -- ^forward
-  ,withQuote*`GenQuote b' -- ^callPrice
-  ,withQuote*`GenQuote c' -- ^putPrice
+{#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote q1' -- ^forward
+  ,withQuote*`GenQuote q2' -- ^callPrice
+  ,withQuote*`GenQuote q3' -- ^putPrice
   ,`Double' -- ^strike
   ,`Double' -- ^guess
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIter
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
-{#fun qlForwardSwapQuote as forwardSwapQuote{withSwapIndex*`GenSwapIndex b',withQuote*`GenQuote a' -- ^spread
+{#fun qlForwardSwapQuote as forwardSwapQuote{withSwapIndex*`GenSwapIndex sidx',withQuote*`GenQuote q' -- ^spread
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
-{#fun qlForwardValueQuote as forwardValueQuote{withIndex*`GenIndex a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
-{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote'{withIborIndex*`GenIborIndex i',`String' -- ^immCode
-  ,withQuote*`GenQuote a' -- ^futuresQuote
-  ,withQuote*`GenQuote b' -- ^volatility
-  ,withQuote*`GenQuote c' -- ^meanReversion
+{#fun qlForwardValueQuote as forwardValueQuote{withIndex*`GenIndex idx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote'{withIborIndex*`GenIborIndex ibor',`String' -- ^immCode
+  ,withQuote*`GenQuote q1' -- ^futuresQuote
+  ,withQuote*`GenQuote q2' -- ^volatility
+  ,withQuote*`GenQuote q3' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
-{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote{withIborIndex*`GenIborIndex i',withDay*`Day' -- ^futuresDate
-  ,withQuote*`GenQuote a' -- ^futuresQuote
-  ,withQuote*`GenQuote b' -- ^volatility
-  ,withQuote*`GenQuote c' -- ^meanReversion
+{#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote{withIborIndex*`GenIborIndex ibor',withDay*`Day' -- ^futuresDate
+  ,withQuote*`GenQuote q1' -- ^futuresQuote
+  ,withQuote*`GenQuote q2' -- ^volatility
+  ,withQuote*`GenQuote q3' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
-{#fun qlImpliedStdDevQuote as impliedStdDevQuote{fromEnumC`OptionType',withQuote*`GenQuote a' -- ^forward
-  ,withQuote*`GenQuote b' -- ^price
+{#fun qlImpliedStdDevQuote as impliedStdDevQuote{fromEnumC`OptionType',withQuote*`GenQuote q1' -- ^forward
+  ,withQuote*`GenQuote q2' -- ^price
   ,`Double' -- &strike
   ,`Double' -- ^guess
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIter
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
-{#fun qlLastFixingQuote as lastFixingQuote{withIndex*`GenIndex a',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlLastFixingQuote as lastFixingQuote{withIndex*`GenIndex idx',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 -- |returns true if the Quote holds a valid value
-{#fun qlQuoteIsValid as isValid{withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlQuoteIsValid as isValid{withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- |A quote behind a relinkable handle. The result /is/ a 'Quote': pass it to any quote-taking
 -- function and everything built on it keeps tracking whatever the handle currently points at,
 -- so a later 'linkTo' reprices already-constructed instruments without rebuilding them.
 -- 'Nothing' gives an empty handle -- meaningful rather than an error -- but reading a value
 -- through one throws until it is linked. Mirrors 'QuantLib.TermStructure.Yield.relinkableYieldTermStructure'.
-{#fun qlRelinkableQuote as relinkableQuote{withMaybeQuote*`Maybe (GenQuote a)'
+{#fun qlRelinkableQuote as relinkableQuote{withMaybeQuote*`Maybe (GenQuote q)'
   ,preErrorCheck-`String'errorCheck*-}->`RelinkableQuote'peekRelinkableQuote*#}
 
 -- |Point a relinkable handle at a different quote. Everything already built on the handle
@@ -124,6 +124,6 @@ import QuantLib.Internal.Type
 -- narrower payoff versus curves: 'SimpleQuote.setValue' already covers the common bump case,
 -- so this buys swapping in a different quote object, not a different value.
 {#fun qlRelinkableQuoteLinkTo as linkTo{withRelinkableQuote*`RelinkableQuote'
-  ,withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

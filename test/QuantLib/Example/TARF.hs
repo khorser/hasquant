@@ -84,7 +84,7 @@ run = do
     deepFold [] _ = []
     deepFold (h:t) f = foldr (zipWith f) h t
 
-    nextNPV :: PathGenerator -> [Day] -> GenYieldTermStructure a -> IO (Double, [Double])
+    nextNPV :: PathGenerator -> [Day] -> GenYieldTermStructure y -> IO (Double, [Double])
     nextNPV g ds yc = do
       s <- next g
       sim <- asset s 0

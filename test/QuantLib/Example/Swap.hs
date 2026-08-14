@@ -99,7 +99,7 @@ run = do
     fraTerms = [(3, 6), (6, 9), (6, 12)]
     swapYears = [2, 3, 5, 10, 15]
 
-    valuateSwap :: Day -> TS.GenYieldTermStructure a -> TS.GenYieldTermStructure a -> IO IterationResult
+    valuateSwap :: Day -> TS.GenYieldTermStructure y1 -> TS.GenYieldTermStructure y2 -> IO IterationResult
     valuateSwap settle d f = do
       fixDC <- dayCounter Thirty360European
       floatDC <- dayCounter (Actual360 False)

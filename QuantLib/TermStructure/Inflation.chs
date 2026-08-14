@@ -43,7 +43,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 
 -- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).
-{#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote a' -- ^quote
+{#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote q' -- ^quote
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'
@@ -56,7 +56,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwapHelper'peekZeroCouponInflationSwapHelper*#}
 -- |Bootstrap helper for a year-on-year inflation swap. Unlike 'zeroCouponInflationSwapHelper',
 -- also needs the nominal discount curve (the YoY swap's fixed/floating legs discount off it).
-{#fun qlYearOnYearInflationSwapHelper as yearOnYearInflationSwapHelper{withQuote*`GenQuote a' -- ^quote
+{#fun qlYearOnYearInflationSwapHelper as yearOnYearInflationSwapHelper{withQuote*`GenQuote q' -- ^quote
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'

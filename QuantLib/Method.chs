@@ -28,12 +28,12 @@ import Data.Vector.Storable(Vector)
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
 
-{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess a',withTimeGrid*`TimeGrid'
+{#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
   ,fromIntegral`Word' -- ^seed
   ,fromIntegral`Word' -- ^dimension
   ,`Bool' -- ^brownian bridge
   ,preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
-{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`GenStochasticProcess a',withTimeGrid*`TimeGrid'
+{#fun qlSobolPathGenerator as sobolPathGenerator{fromEnumC`SobolDirectionIntegers',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
   ,fromIntegral`Word' -- ^seed
   ,fromIntegral`Word' -- ^dimension
   ,`Bool' -- ^brownian bridge

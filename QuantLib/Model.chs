@@ -142,7 +142,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
-{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
+{#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 {#fun qlCoxIngersollRoss as coxIngersollRoss{`Double' -- ^r0
@@ -151,7 +151,7 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^sigma
   ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^theta
+{#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^theta
   ,`Double' -- ^k
   ,`Double' -- ^sigma
   ,`Double' -- ^x0
@@ -162,24 +162,24 @@ import QuantLib.Internal.Enum
 -- which can be relinked after construction, so the result at fixed arguments can change between
 -- two calls -- a genuine 'IO' action, not a value fixed at construction time like the other
 -- @{#fun pure ...#}@ bindings in this codebase.
-{#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel m',`Double' -- ^now
+{#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel om',`Double' -- ^now
   ,`Double' -- ^maturity
   ,`Double' -- ^rate
   }->`Double'#}
-{#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
+{#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
   ,`Double' -- ^sigma
   ,`Double' -- ^b
   ,`Double' -- ^eta
   ,`Double' -- ^rho
   ,preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
-generalizedHullWhite :: GenYieldTermStructure a -> [(Day, Double)] -- ^speedstructure
+generalizedHullWhite :: GenYieldTermStructure y -> [(Day, Double)] -- ^speedstructure
   -> [(Day, Double)] -- ^volstructure
   -> IO ShortRateModel
 generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip s; (vd, vq) = unzip v}
-{#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
+{#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 {#fun qlGJRGARCHModel as gJRGARCHModel{withGenStochasticProcess*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
-{#fun qlHestonModel as hestonModel{withHestonProcess*`GenHestonProcess a',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
-{#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure a',`Double' -- ^a
+{#fun qlHestonModel as hestonModel{withHestonProcess*`GenHestonProcess hp',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
+{#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
 -- |Futures convexity bias (difference between futures implied rate and forward rate), per G. Kirikos, D. Novak, \"Convexity Conundrums\", Risk Magazine, March 1997. @t@/@T@ are in yearfraction using the deposit day counter, @futurePrice@ is the futures' market price.
@@ -192,7 +192,7 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 -- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
 fixedReversion :: [Bool]
 fixedReversion = [True, False]
-{#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure a',withDayArray*`[Day]'& -- ^volstepdates
+{#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'& -- ^volstepdates
   ,withDoubleArray*`[Double]'& -- ^volatilities
   ,`Double' -- ^reversion
   ,`Double' -- ^T
@@ -204,23 +204,23 @@ fixedReversion = [True, False]
   ,withMaybeConstraint*`Maybe Constraint'
   ,withDoubleArray*`[Double]'&
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
-markovFunctional :: GenYieldTermStructure a -> Double -- ^reversion
+markovFunctional :: GenYieldTermStructure y -> Double -- ^reversion
   -> [Day] -- ^volstepdates
   -> [Double] -- ^volatilities
   -> SwaptionVolatilityStructure
   -> [Day] -- ^swaptionExpiries
   -> [(Word, TimeUnit)] -- ^swaptionTenors
-  -> GenSwapIndex s -- ^swapIndexBase
+  -> GenSwapIndex sidx -- ^swapIndexBase
   -> Word -- ^yGridPoints
   -> IO MarkovFunctional
 markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reversion vsd vs svol se tq tu
   where (tq, tu) = unzip tenors
-{#fun qlMarkovFunctional{withYieldTermStructure*`GenYieldTermStructure a',`Double'
+{#fun qlMarkovFunctional{withYieldTermStructure*`GenYieldTermStructure y',`Double'
   ,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
-  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b'
+  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDayArray*`[Day]'&
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
-  ,withSwapIndex*`GenSwapIndex s'
+  ,withSwapIndex*`GenSwapIndex sidx'
   ,fromIntegral`Word'
   ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
 -- |Volatility step values, as calibrated so far.
@@ -236,38 +236,38 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
 {#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
-calibrate :: GenCalibratedModel m -> [(GenCalibrationHelper a, Double)] -- ^(instrument, weight)
+calibrate :: GenCalibratedModel m -> [(GenCalibrationHelper ch, Double)] -- ^(instrument, weight)
   -> OptimizationMethod -> EndCriteria -> Maybe Constraint
   -> [Bool] -- ^fixParameters, e.g. 'fixedReversion'; @[]@ leaves nothing fixed
   -> IO ()
 calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, hw) = unzip h
-{#fun qlCalibratedModelCalibrate{withCalibratedModel*`GenCalibratedModel m',withCalibrationHelperArray*`[GenCalibrationHelper a]'&,withDoubleArray*`[Double]'&
+{#fun qlCalibratedModelCalibrate{withCalibratedModel*`GenCalibratedModel m',withCalibrationHelperArray*`[GenCalibrationHelper ch]'&,withDoubleArray*`[Double]'&
   ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',withMaybeConstraint*`Maybe Constraint',withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Objective function value at @params@ for the given calibration instruments.
-{#fun qlCalibratedModelValue as value{withCalibratedModel*`GenCalibratedModel m',withDoubleArray*`[Double]'&,withCalibrationHelperArray*`[GenCalibrationHelper a]'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCalibratedModelValue as value{withCalibratedModel*`GenCalibratedModel m',withDoubleArray*`[Double]'&,withCalibrationHelperArray*`[GenCalibrationHelper ch]'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlCapHelper as capHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^length
-  ,withQuote*`GenQuote a' -- ^volatility
-  ,withIborIndex*`GenIborIndex b',`Frequency' -- ^fixedLegFrequency
+  ,withQuote*`GenQuote q' -- ^volatility
+  ,withIborIndex*`GenIborIndex ibor',`Frequency' -- ^fixedLegFrequency
   ,withDayCounter*`DayCounter',`Bool' -- ^includeFirstSwaplet
-  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,withYieldTermStructure*`GenYieldTermStructure y',`CalibrationErrorType'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,withCalendar*`Calendar',`Double' -- ^s0
   ,`Double' -- ^strikePrice
-  ,withQuote*`GenQuote a' -- ^volatility
-  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeRate
-  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendYield
+  ,withQuote*`GenQuote q' -- ^volatility
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeRate
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
-  ,withQuote*`GenQuote a' -- ^maturity
-  ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
+  ,withQuote*`GenQuote q' -- ^maturity
+  ,withIborIndex*`GenIborIndex ibor',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
-  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,withYieldTermStructure*`GenYieldTermStructure y',`CalibrationErrorType'
   ,fromMaybeDouble`Maybe Double' -- ^strike
   ,`Double' -- ^nominal
   ,`VolatilityType' -- ^type
@@ -278,11 +278,11 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
 -- |Like 'swaptionHelper', but the option's exercise is given as an explicit date rather than a maturity 'Period'.
 {#fun qlSwaptionHelperFromDate as swaptionHelperFromDate{withDay*`Day' -- ^exerciseDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
-  ,withQuote*`GenQuote a' -- ^maturity
-  ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
+  ,withQuote*`GenQuote q' -- ^maturity
+  ,withIborIndex*`GenIborIndex ibor',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
-  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,withYieldTermStructure*`GenYieldTermStructure y',`CalibrationErrorType'
   ,fromMaybeDouble`Maybe Double' -- ^strike
   ,`Double' -- ^nominal
   ,`VolatilityType' -- ^type
@@ -293,11 +293,11 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
 -- |Like 'swaptionHelper', but both the option's exercise and the underlying swap's end are given as explicit dates.
 {#fun qlSwaptionHelperFromDates as swaptionHelperFromDates{withDay*`Day' -- ^exerciseDate
   ,withDay*`Day' -- ^endDate
-  ,withQuote*`GenQuote a' -- ^maturity
-  ,withIborIndex*`GenIborIndex b',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
+  ,withQuote*`GenQuote q' -- ^maturity
+  ,withIborIndex*`GenIborIndex ibor',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withDayCounter*`DayCounter' -- ^floatingLegDayCounter
-  ,withYieldTermStructure*`GenYieldTermStructure c',`CalibrationErrorType'
+  ,withYieldTermStructure*`GenYieldTermStructure y',`CalibrationErrorType'
   ,fromMaybeDouble`Maybe Double' -- ^strike
   ,`Double' -- ^nominal
   ,`VolatilityType' -- ^type

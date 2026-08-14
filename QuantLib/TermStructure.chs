@@ -18,7 +18,7 @@ import QuantLib.Internal.Type
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 
 -- |the date at which discount = 1.0 and/or variance = 0.0
-{#fun qlTermStructureReferenceDate as referenceDate{withTermStructure*`GenTermStructure a',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
-{#fun qlTermStructureMaxDate as maxDate{withTermStructure*`GenTermStructure a',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlTermStructureReferenceDate as referenceDate{withTermStructure*`GenTermStructure t',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+{#fun qlTermStructureMaxDate as maxDate{withTermStructure*`GenTermStructure t',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

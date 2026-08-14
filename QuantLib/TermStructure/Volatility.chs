@@ -144,21 +144,21 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
   , ("sabrShift", [t|Double|], [|0.0|])
   ])
 
-{#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure v'
-  ,withYieldTermStructure*`GenYieldTermStructure b' -- ^riskFreeTS
-  ,withYieldTermStructure*`GenYieldTermStructure c' -- ^dividendTS
-  ,withQuote*`GenQuote a' -- ^underlying
+{#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure bv'
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeTS
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendTS
+  ,withQuote*`GenQuote q' -- ^underlying
   ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
 -- |Constant caplet volatility, no time-strike dependence
 -- floating reference date, floating market data
-{#fun qlConstantOptionletVol1 as constantOptionletVolatility'{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter'
+{#fun qlConstantOptionletVol1 as constantOptionletVolatility'{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 -- |fixed reference date, floating market data
-{#fun qlConstantOptionletVolatility as constantOptionletVolatility{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter'
+{#fun qlConstantOptionletVolatility as constantOptionletVolatility{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
@@ -168,7 +168,7 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
 -- keeps tracking whatever the handle currently points at, so a later 'linkOptionletVolTo'
 -- reprices already-constructed instruments without rebuilding them. Mirrors
 -- 'relinkableSwaptionVolatilityStructure'.
-{#fun qlRelinkableOptionletVolatilityStructure as relinkableOptionletVolatilityStructure{withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure a)'
+{#fun qlRelinkableOptionletVolatilityStructure as relinkableOptionletVolatilityStructure{withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure ov)'
   ,preErrorCheck-`String'errorCheck*-}->`RelinkableOptionletVolatilityStructure'peekRelinkableOptionletVolatilityStructure*#}
 
 -- |Point a relinkable optionlet vol handle at a different surface. Everything already built on
@@ -176,113 +176,113 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
 -- 'QuantLib.TermStructure.Yield.linkTo'\/'linkBlackVolTo'\/'linkSwaptionVolTo' for the same
 -- reason as those: all four relinkable vol types live in this one module.
 {#fun qlRelinkableOptionletVolatilityStructureLinkTo as linkOptionletVolTo{withRelinkableOptionletVolatilityStructure*`RelinkableOptionletVolatilityStructure'
-  ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlBlackConstantVol1 as blackConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
-{#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+  ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackConstantVol1 as blackConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+{#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |A Black vol surface behind a relinkable handle. The result /is/ a 'BlackVolTermStructure':
 -- pass it anywhere one is expected and everything built on it keeps tracking whatever the
 -- handle currently points at, so a later 'linkBlackVolTo' reprices already-constructed
 -- instruments without rebuilding them. Mirrors
 -- 'QuantLib.TermStructure.Yield.relinkableYieldTermStructure'.
-{#fun qlRelinkableBlackVolTermStructure as relinkableBlackVolTermStructure{withMaybeBlackVolTermStructure*`Maybe (GenBlackVolTermStructure a)'
+{#fun qlRelinkableBlackVolTermStructure as relinkableBlackVolTermStructure{withMaybeBlackVolTermStructure*`Maybe (GenBlackVolTermStructure bv)'
   ,preErrorCheck-`String'errorCheck*-}->`RelinkableBlackVolTermStructure'peekRelinkableBlackVolTermStructure*#}
 
 -- |Point a relinkable Black vol handle at a different surface. Everything already built on the
 -- handle reprices against the new surface, with no engine rebuilt. Mirrors
 -- 'QuantLib.TermStructure.Yield.linkTo' -- see its haddock for why this mutator is justified.
 {#fun qlRelinkableBlackVolTermStructureLinkTo as linkBlackVolTo{withRelinkableBlackVolTermStructure*`RelinkableBlackVolTermStructure'
-  ,withBlackVolTermStructure*`GenBlackVolTermStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |fixed reference date, floating market data
-{#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter'
+{#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 -- |floating reference date, floating market data
-{#fun qlConstantSwaptionVolatility as constantSwaptionVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter'
+{#fun qlConstantSwaptionVolatility as constantSwaptionVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- |returns the Black variance for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureBlackVariance1 as blackVarianceForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureBlackVariance1 as blackVarianceForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the Black variance for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureBlackVariance2 as blackVarianceForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureBlackVariance2 as blackVarianceForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- swapTenor
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the Black variance for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureBlackVariance3 as blackVarianceForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureBlackVariance3 as blackVarianceForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the Black variance for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureBlackVariance4 as blackVariance'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureBlackVariance4 as blackVariance'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the Black variance for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureBlackVariance5 as blackVariance{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureBlackVariance5 as blackVariance{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the Black variance for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureBlackVariance as blackVarianceForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureBlackVariance as blackVarianceForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |the largest swapLength for which the term structure can return vols
-{#fun qlSwaptionVolatilityStructureMaxSwapLength as maxSwapLength{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwaptionVolatilityStructureMaxSwapLength as maxSwapLength{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |the largest length for which the term structure can return vols
-{#fun qlSwaptionVolatilityStructureMaxSwapTenor as maxSwapTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
+{#fun qlSwaptionVolatilityStructureMaxSwapTenor as maxSwapTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
 -- |returns the smile for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 -- |returns the smile for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 -- |returns the smile for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 -- |returns the smile for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 -- |returns the smile for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 -- |returns the smile for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extr
@@ -367,28 +367,28 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- |the reason the SABR calibration's optimizer stopped
 {#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 -- |implements the conversion between swap dates and swap (time) length
-{#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^start
   ,withDay*`Day' -- ^end
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |implements the conversion between swap tenor and swap (time) length
-{#fun qlSwaptionVolatilityStructureSwapLength as swapLength{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a',fromEnumQuantity`(Word,TimeUnit)'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwaptionVolatilityStructureSwapLength as swapLength{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',fromEnumQuantity`(Word,TimeUnit)'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the volatility for a given option date and swap tenor
-{#fun qlSwaptionVolatilityStructureVolatility1 as volatilityForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureVolatility1 as volatilityForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the volatility for a given option time and swap tenor
-{#fun qlSwaptionVolatilityStructureVolatility2 as volatilityForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureVolatility2 as volatilityForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the volatility for a given option tenor and swap length
-{#fun qlSwaptionVolatilityStructureVolatility3 as volatilityForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureVolatility3 as volatilityForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -396,7 +396,7 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option date and swap length
-{#fun qlSwaptionVolatilityStructureVolatility4 as volatilityForTenor'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureVolatility4 as volatilityForTenor'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -404,7 +404,7 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option time and swap length
-{#fun qlSwaptionVolatilityStructureVolatility5 as volatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureVolatility5 as volatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Double' -- ^strike
@@ -412,27 +412,27 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the volatility for a given option tenor and swap tenor
-{#fun qlSwaptionVolatilityStructureVolatility as volatilityForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a'
+{#fun qlSwaptionVolatilityStructureVolatility as volatilityForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-{#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatility'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
-{#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+{#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatility'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+{#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
 -- |fixed reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 -- |floating reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
-{#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure b',withQuote*`GenQuote a',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- |A swaption vol surface behind a relinkable handle. The result /is/ a
 -- 'SwaptionVolatilityStructure': pass it anywhere one is expected and everything built on it
 -- keeps tracking whatever the handle currently points at, so a later 'linkSwaptionVolTo'
 -- reprices already-constructed instruments without rebuilding them. Mirrors
 -- 'QuantLib.TermStructure.Yield.relinkableYieldTermStructure'.
-{#fun qlRelinkableSwaptionVolatilityStructure as relinkableSwaptionVolatilityStructure{withMaybeSwaptionVolatilityStructure*`Maybe (GenSwaptionVolatilityStructure a)'
+{#fun qlRelinkableSwaptionVolatilityStructure as relinkableSwaptionVolatilityStructure{withMaybeSwaptionVolatilityStructure*`Maybe (GenSwaptionVolatilityStructure sv)'
   ,preErrorCheck-`String'errorCheck*-}->`RelinkableSwaptionVolatilityStructure'peekRelinkableSwaptionVolatilityStructure*#}
 
 -- |Point a relinkable swaption vol handle at a different surface. Everything already built on
@@ -442,21 +442,21 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- live in this one module and a bare 'linkTo' per type would collide with its own siblings,
 -- not just with 'Yield.chs'\/'Quote.chs'.
 {#fun qlRelinkableSwaptionVolatilityStructureLinkTo as linkSwaptionVolTo{withRelinkableSwaptionVolatilityStructure*`RelinkableSwaptionVolatilityStructure'
-  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure a',preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlLocalConstantVol1 as localConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
-{#fun qlLocalConstantVol as localConstantVol{withDay*`Day',withQuote*`GenQuote a',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlLocalConstantVol1 as localConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+{#fun qlLocalConstantVol as localConstantVol{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 {#fun qlLocalVolCurve as localVolCurve{withBlackVarianceCurve*`BlackVarianceCurve',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
-{#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure a',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+{#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |fixed reference date, floating market data
-capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote a)] -> DayCounter -> IO VolatilityTermStructure
+capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO VolatilityTermStructure
 capFloorTermVolCurve' d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 ntq
-{#fun qlCapFloorTermVolCurve1{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote a]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlCapFloorTermVolCurve1{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 
 -- |floating reference date, floating market data
-capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote a)] -> DayCounter -> IO VolatilityTermStructure
+capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO VolatilityTermStructure
 capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 ntq
-{#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote a]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 
 blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -- ^forceMonotoneVariance
   -> Maybe Interpolation -> IO BlackVarianceCurve
@@ -476,17 +476,17 @@ blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds 
 -- |floating reference date, floating market data
 capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors
   -> [Double] -- ^strikes
-  -> Matrix (GenQuote a) -- ^volatilities
+  -> Matrix (GenQuote q) -- ^volatilities
   -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface d c bd pl pu s mr mc md where (pl, pu) = unzip t
-{#fun qlCapFloorTermVolSurface{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote a]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
+{#fun qlCapFloorTermVolSurface{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
 
 -- |fixed reference date, floating market data
 capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors
   -> [Double] -- ^strikes
-  -> Matrix (GenQuote a) -- ^volatilities
+  -> Matrix (GenQuote q) -- ^volatilities
   -> DayCounter -> IO CapFloorTermVolSurface
 capFloorTermVolSurface' d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t
-{#fun qlCapFloorTermVolSurface1{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote a]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
+{#fun qlCapFloorTermVolSurface1{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -25,14 +25,14 @@ import QuantLib.Internal.Type
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 
-{#fun qlCap as cap{withLeg*`GenLeg a' -- ^floatingLeg
+{#fun qlCap as cap{withLeg*`GenLeg l' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-{#fun qlCollar as collar{withLeg*`GenLeg a' -- ^floatingLeg
+{#fun qlCollar as collar{withLeg*`GenLeg l' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^capRates
   ,withDoubleArray*`[Double]'& -- ^floorRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
-{#fun qlFloor as floor{withLeg*`GenLeg a' -- ^floatingLeg
+{#fun qlFloor as floor{withLeg*`GenLeg l' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
 {#fun qlCapFloorAtmRate as atmRate{withGenInstrument*`CapFloor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
