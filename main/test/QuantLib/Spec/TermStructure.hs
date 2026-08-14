@@ -366,6 +366,47 @@ spec = do
           npvAfter <- npv capfl
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
 
+      -- OptionletStripper1 strips a quoted CapFloorTermVolSurface into caplet/floorlet vols,
+      -- immediately wrapped behind StrippedOptionletAdapter (an OptionletVolatilityStructure).
+      -- Self-consistency check (upstream: optionletstripper.cpp's testFlatTermVolatilityStripping1,
+      -- ported to a single tenor/strike rather than its full 10x10 grid): a *flat* term vol
+      -- surface strips to the same flat caplet vol, so pricing a cap at a strike/tenor that sits
+      -- exactly on the surface's own grid nodes through the stripped vol must reprice the same
+      -- cap priced directly off a constant-vol surface at that flat vol.
+      it "stripping a flat cap vol surface reprices a cap struck on its own grid" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (_, discountH, forecastH) <- setupSwap
+          cal <- Calendar.calendar TARGET
+          settle <- advance cal (11 `december` 2012) (2, Days) Following False
+          floatDC <- dayCounter (Actual360 False)
+          floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
+            ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+          idx <- iborIndex Euribor6M (Just forecastH)
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.05]
+          dc <- dayCounter Actual365FixedStandard
+
+          flatVolQ <- Quote.simpleQuote 0.18
+          let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
+          capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following
+            [(n, Years) | n <- [1 .. 10]] [0.02, 0.05, 0.08] volMatrix dc
+          strippedVol <- Vol.optionletStripper1 capVolSurface idx Nothing 1.0e-6 100
+            (Just discountH) IR.ShiftedLognormal 0 False Nothing
+          strippedEng <- blackCapFloorEngine' discountH strippedVol
+          setPricingEngine capfl strippedEng
+          priceStripped <- npv capfl
+
+          constVolQ <- Quote.simpleQuote 0.18
+          constVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal Following constVolQ dc
+            IR.ShiftedLognormal 0
+          constEng <- blackCapFloorEngine' discountH constVol
+          setPricingEngine capfl constEng
+          priceConst <- npv capfl
+
+          priceConst `shouldSatisfy` (> 1)
+          abs (priceStripped - priceConst) / abs priceConst `shouldSatisfy` (< 1.0e-5)
+
       -- Bachelier (normal-vol) engines use a different pricing formula from their Black
       -- (lognormal-vol) siblings; this checks the new bindings are actually wired to that
       -- formula rather than silently aliasing to Black, by repricing the same instrument

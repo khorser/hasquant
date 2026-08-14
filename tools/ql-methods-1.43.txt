@@ -9328,7 +9328,7 @@
 | |ql/termstructures/volatility/optionlet/optionletstripper.hpp|ext::shared_ptr<CapFloorTermVolSurface> OptionletStripper::termVolSurface() const;
 | |ql/termstructures/volatility/optionlet/optionletstripper.hpp|ext::shared_ptr<IborIndex> OptionletStripper::iborIndex() const;
 | |ql/termstructures/volatility/optionlet/optionletstripper.hpp|ext::optional<Period> OptionletStripper::optionletFrequency() const;
-| |ql/termstructures/volatility/optionlet/optionletstripper1.hpp|OptionletStripper1::OptionletStripper1(const ext::shared_ptr<CapFloorTermVolSurface> &, const ext::shared_ptr<IborIndex> & index, Rate switchStrikes = Null<Rate>(), Real accuracy = 1.0e-6, Natural maxIter = 100, const Handle<YieldTermStructure> & discount = { }, VolatilityType type = ShiftedLognormal, Real displacement = 0.0, bool dontThrow = false, ext::optional<Period> optionletFrequency = ext::nullopt);
+|v|ql/termstructures/volatility/optionlet/optionletstripper1.hpp|OptionletStripper1::OptionletStripper1(const ext::shared_ptr<CapFloorTermVolSurface> &, const ext::shared_ptr<IborIndex> & index, Rate switchStrikes = Null<Rate>(), Real accuracy = 1.0e-6, Natural maxIter = 100, const Handle<YieldTermStructure> & discount = { }, VolatilityType type = ShiftedLognormal, Real displacement = 0.0, bool dontThrow = false, ext::optional<Period> optionletFrequency = ext::nullopt);
 | |ql/termstructures/volatility/optionlet/optionletstripper1.hpp|const Matrix & OptionletStripper1::capFloorPrices() const;
 | |ql/termstructures/volatility/optionlet/optionletstripper1.hpp|const Matrix & OptionletStripper1::capletVols() const;
 | |ql/termstructures/volatility/optionlet/optionletstripper1.hpp|const Matrix & OptionletStripper1::capFloorVolatilities() const;
@@ -9381,7 +9381,7 @@
 | |ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp|Real displacement() const;
 | |ql/termstructures/volatility/optionlet/strippedoptionlet.hpp|StrippedOptionlet::StrippedOptionlet(Natural settlementDays, const Calendar & calendar, BusinessDayConvention bdc, ext::shared_ptr<IborIndex> iborIndex, const std::vector<Date> & optionletDates, const std::vector<Rate> & strikes, std::vector<std::vector<Handle<Quote>>>, DayCounter dc, VolatilityType type = ShiftedLognormal, Real displacement = 0.0);
 | |ql/termstructures/volatility/optionlet/strippedoptionlet.hpp|StrippedOptionlet::StrippedOptionlet(Natural settlementDays, const Calendar & calendar, BusinessDayConvention bdc, ext::shared_ptr<IborIndex> iborIndex, const std::vector<Date> & optionletDates, const std::vector<std::vector<Rate>> & strikes, std::vector<std::vector<Handle<Quote>>>, DayCounter dc, VolatilityType type = ShiftedLognormal, Real displacement = 0.0);
-| |ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp|StrippedOptionletAdapter::StrippedOptionletAdapter(const ext::shared_ptr<StrippedOptionletBase> &);
+|v|ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp|StrippedOptionletAdapter::StrippedOptionletAdapter(const ext::shared_ptr<StrippedOptionletBase> &);
 | |ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp|ext::shared_ptr<OptionletStripper> StrippedOptionletAdapter::optionletStripper() const;
 | |ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp|void update();
 | |ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp|void deepUpdate();

@@ -26,6 +26,7 @@ module QuantLib.TermStructure.Volatility
   , localVolSurface
   , constantOptionletVolatility
   , constantOptionletVolatility'
+  , optionletStripper1
 
   , impliedVolTermStructure
   , blackConstantVol'
@@ -90,6 +91,7 @@ module QuantLib.TermStructure.Volatility
   , swaptionVolatilityMatrix'
   ) where
 import QuantLib.Internal
+import Foreign.C.Types(CInt)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.Math#}(EndCriteriaType)
@@ -105,6 +107,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
@@ -162,6 +165,28 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
 {#fun qlConstantOptionletVolatility as constantOptionletVolatility{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
+  ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
+
+-- |'Nothing' emits 'TimeUnit''s -1 sentinel (same convention as 'fromMaybeEnum'), since 'TimeUnit'
+-- itself starts at 0 and can't self-sentinel -- used for 'optionletStripper1''s optionletFrequency.
+fromMaybeEnumQuantity :: Maybe (Word, TimeUnit) -> (CInt, CInt)
+fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
+
+-- |Strips a 'CapFloorTermVolSurface' (quoted cap\/floor term vols) into caplet\/floorlet vols via
+-- 'OptionletStripper1', immediately wrapping the result behind 'StrippedOptionletAdapter' in one
+-- step -- 'OptionletStripper1' itself is never exposed as a Haskell type, since none of its own
+-- getters (capFloorPrices\/capletVols\/etc.) are needed beyond feeding the adapter, per the "bind
+-- few inspectors" rule.
+{#fun qlOptionletStripper1 as optionletStripper1{withGenVolatilityTermStructure*`CapFloorTermVolSurface'
+  ,withIborIndex*`GenIborIndex ibor'
+  ,fromMaybeDouble`Maybe Double' -- ^switchStrikes
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxIter
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discount
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^displacement
+  ,`Bool' -- ^dontThrow
+  ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 -- |An optionlet vol surface behind a relinkable handle. The result /is/ an

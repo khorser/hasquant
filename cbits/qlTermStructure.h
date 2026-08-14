@@ -8,6 +8,7 @@ extern "C" {
   void qlFreeRelinkableOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o);
   void qlRelinkableOptionletVolatilityStructureLinkTo(QlRelinkableOptionletVolatilityStructure *o, QlOptionletVolatilityStructure *c, char **e);
   QlOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o);
+  QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, char **e);
   void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
   QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);

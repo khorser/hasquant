@@ -1,4 +1,6 @@
 #include <ql/termstructures/volatility/optionlet/constantoptionletvol.hpp>
+#include <ql/termstructures/volatility/optionlet/optionletstripper1.hpp>
+#include <ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
@@ -139,6 +141,17 @@ QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar 
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
 QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+
+// OptionletStripper1 is never exposed to Haskell as its own type -- immediately wrapped in a
+// StrippedOptionletAdapter, itself an OptionletVolatilityStructure, mirroring qlConstantOptionletVol1
+// above. optionletFrequencyUnit < 0 is the ext::nullopt sentinel for optionletFrequency, same
+// convention as qlOptBusinessDayConvention/qlOptFrequency (TimeUnit starts at 0, so can't self-sentinel).
+QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, char **e) {
+  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new StrippedOptionletAdapter(
+            shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index), switchStrikes, accuracy, maxIter,
+              qlNullableHandle(arg(discount)), (VolatilityType)type, displacement, (bool)dontThrow,
+              optionletFrequencyUnit < 0 ? ext::optional<Period>() : ext::optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit))))))))));
+  } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 
 // A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
 QlRelinkableOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructure(QlOptionletVolatilityStructure *initial, char **e) {
