@@ -73,14 +73,92 @@ using namespace QuantLib;
 #include "qlInstrument.h"
 #include "qlMisc.h"
 
+#include <cstring>
+#include <any>
+#include <typeinfo>
+
 #ifdef QLTRACK_ALLOCATIONS
 template <> class ObjClassName<Leg*> {public: static void output(std::ostream& os) {os << "Leg";}};
+template <> class ObjClassName<QlAdditionalResult*> {public: static void output(std::ostream& os) {os << "QlAdditionalResult";}};
 #endif
 
 extern "C" {
 double qlInstrumentNPV(QlInstrument *instr, char **e) {try {return (*arg(instr))->NPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng, char **e) {try {(*arg(instr))->setPricingEngine(*arg(eng));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlFreeInstrument(QlInstrument *instr) {del(instr);}
+
+namespace {
+  // ext::any is std::any in the Homebrew build and boost::any in the Docker build; both expose
+  // .type() returning a std::type_info-compatible name, so we classify by typeid equality rather
+  // than by a string name (which differs between the two).
+  //
+  // r's fields are all zero/null on entry (the caller value-initialises the whole array), so any
+  // field this leaves untouched is already the correct "unset" value.
+  void fillResult(struct QlAdditionalResult &r, const ext::any &v) {
+    if (v.type() == typeid(double)) {
+      r.type = AdditionalResultDouble;
+      r.dval = ext::any_cast<double>(v);
+    } else if (v.type() == typeid(std::string)) {
+      r.type = AdditionalResultString;
+      r.sval = DUP(ext::any_cast<std::string>(v).c_str());
+    } else if (v.type() == typeid(std::vector<double>)) {
+      r.type = AdditionalResultDoubleVector;
+      const std::vector<double> &vec = ext::any_cast<const std::vector<double>&>(v);
+      r.vlen = static_cast<unsigned>(vec.size());
+      if (r.vlen) {
+        double *varr = alloc(new double[r.vlen]);
+        for (unsigned i = 0; i < r.vlen; ++i) varr[i] = vec[i];
+        r.varr = varr;
+      }
+    } else {
+      r.type = AdditionalResultUnknown;
+      r.sval = DUP(v.type().name());
+    }
+  }
+}
+
+void qlInstrumentAdditionalResults(QlInstrument *instr, unsigned *len,
+    struct QlAdditionalResult **out, char **e) {
+  *out = 0;
+  *len = 0;
+  QlAdditionalResult *arr = 0;
+  unsigned n = 0;
+  try {
+    const std::map<std::string, ext::any> &res = (*arg(instr))->additionalResults();
+    if (res.empty()) return;
+    n = static_cast<unsigned>(res.size());
+    // Value-initialised (the trailing `()`): every field, including the pointers, starts at
+    // zero/null, so a not-yet-filled or half-filled entry is always safe to free -- this is what
+    // lets the catch below release partial work without tracking how far the loop got.
+    arr = alloc(new QlAdditionalResult[n]());
+    unsigned i = 0;
+    for (std::map<std::string, ext::any>::const_iterator it = res.begin(); it != res.end(); ++it, ++i) {
+      arr[i].key = DUP(it->first.c_str());
+      fillResult(arr[i], it->second);
+    }
+    *out = arr;
+    *len = n;
+  } catch (std::exception& er) {
+    qlFreeAdditionalResults(n, arr);
+    *e = DUP(er.what());
+  }
+}
+
+void qlFreeAdditionalResults(unsigned len, struct QlAdditionalResult *out) {
+  if (!out) return;
+  for (unsigned i = 0; i < len; ++i) {
+    qlFreeString(out[i].key);
+    if (out[i].sval) qlFreeString(out[i].sval);
+    if (out[i].varr) {
+      TP2("deleting", out[i].varr);
+      delete[] out[i].varr;
+      TP2("deleted", out[i].varr);
+    }
+  }
+  TP2("deleting", out);
+  delete[] out;
+  TP2("deleted", out);
+}
 
 QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, unsigned, double *coeff, char **e) {
   CompositeInstrument *ci = 0;

@@ -49,16 +49,18 @@ module QuantLib.Internal
   , fromMaybeEnum
   , peekIntArray
   , peekUIntArray
+  , peekStructArray
   , Matrix(..)
   , realMatrix
   , objectMatrix
   , qlNullInteger
+  , qlFreeAdditionalResults
 
   , uncurryNested
   )
 where
 
-import Foreign.C.Types(CUInt, CInt(..), CDouble(..))
+import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
 import Foreign.C.String(CString, peekCString)
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
@@ -130,6 +132,7 @@ foreign import ccall safe "ql.h qlFreeUInts" qlFreeUInts :: Ptr CUInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> IO ()
 foreign import ccall safe "ql.h &qlFreeDoubles" qlFreeDoublesFin :: FinalizerPtr CDouble
 --foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
+foreign import ccall safe "ql.h qlFreeAdditionalResults" qlFreeAdditionalResults :: CUInt -> Ptr () -> IO ()
 foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
 foreign import ccall safe "ql.h qlFreeSavedSettings" qlFreeSavedSettings :: Ptr () -> IO ()
 
@@ -197,6 +200,24 @@ peekDoubleArray pl pp = do
 
 peekDoubleVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO (Vector CDouble)
 peekDoubleVector pl pp = unsafeFromForeignPtr0 <$> (peek pp >>= newForeignPtr qlFreeDoublesFin) <*> (fromIntegral <$> peek pl)
+
+-- |Like 'peekIntArray'\''/'peekDoubleArray', but for an array of a C struct rather than a C
+-- primitive: reads the length and pointer out-params, walks the array via 'peekArray' (so the
+-- element type just needs a 'Storable' instance -- e.g. one built from c2hs @{#get#}@/@{#sizeof#}@
+-- hooks), converts every element via @convert@, /then/ hands the whole array to @freeFn@ to
+-- release. The conversion must run before the free -- unlike 'peekIntArray'\''/'peekDoubleArray',
+-- whose elements are self-contained primitives, a struct element read here may itself own
+-- further heap buffers (e.g. a @char*@/@double*@ field) that @convert@ still needs to dereference
+-- (via 'peekCString'/'peekArray' etc.); freeing first would leave it reading already-freed
+-- memory. @freeFn@ takes the element count because some frees need it (e.g.
+-- 'qlFreeAdditionalResults'); one that doesn't can ignore it.
+peekStructArray :: Storable a => (a -> IO b) -> (CUInt -> Ptr a -> IO ()) -> Ptr CUInt -> Ptr (Ptr a) -> IO [b]
+peekStructArray convert freeFn pl pp = do
+  l <- peek pl
+  p <- peek pp
+  raws <- peekArray (fromIntegral l) p
+  results <- mapM convert raws
+  results <$ freeFn l p
 
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)

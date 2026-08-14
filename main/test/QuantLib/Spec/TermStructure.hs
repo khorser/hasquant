@@ -20,17 +20,17 @@ import QuantLib.Math
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr))
 import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond)
 import QuantLib.Currency(currency, Ccy(..))
-import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long))
+import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long), additionalResults, AdditionalResultVal(..))
 import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
 import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.Instrument.Bond as Bond
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.CashFlow(iborLeg, RateAveragingType(..))
-import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
+import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European, American), StrikedPayoff(PlainVanilla), OptionType(Call, Put))
 import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine')
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine', bjerksundStenslandApproximationEngine)
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
 
@@ -984,3 +984,68 @@ spec = do
                     v <- Vol.volatilityForPeriod' grid od st 0.02 False
                     abs (v - expected) `shouldSatisfy` (< 1.0e-6)
                 ) nodes
+
+    -- Instrument.additionalResults() marshals four discriminants: Real, std::string,
+    -- vector<Real>, and an Unsupported fallback (RTTI name) for anything else. The Real/String
+    -- and vector<Real> cases are each exercised here against a real engine that upstream QuantLib
+    -- 1.43 is known to populate that way (grepped ql/pricingengines/**/*.cpp): the Bjerksund-
+    -- Stensland American option engine writes `exerciseType`/`strikeGamma`, and the Black
+    -- cap/floor engine writes `optionletsPrice` as a vector<Real>. No shipped 1.43 engine ever
+    -- stores a type this binding can't name, so the Unsupported fallback isn't exercised here --
+    -- its C++ side is a trivial, visibly-correct `else`, and its Haskell side is a
+    -- compiler-checked exhaustive `case` (QuantLib.Instrument.convertResult).
+    describe "Instrument additionalResults" $ do
+      it "Bjerksund-Stensland engine reports exerciseType/strikeGamma" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (17 `may` 1998))
+          -- A zero-dividend American call is never optimally exercised early, so the engine
+          -- prices it as "European" -- a put (or a call with dividends) is what actually takes
+          -- the "American" branch upstream (bjerksundstenslandengine.cpp).
+          underQ <- Quote.simpleQuote 36
+          riskFreeQ <- Quote.simpleQuote 0.06
+          dc <- dayCounter Actual365FixedStandard
+          ts <- flatForward (17 `may` 1998) riskFreeQ dc IR.Continuous Annual
+          divQ <- Quote.simpleQuote 0.0
+          divTS <- flatForward (17 `may` 1998) divQ dc IR.Continuous Annual
+          volQ <- Quote.simpleQuote 0.20
+          cal <- Calendar.calendar TARGET
+          vol0 <- Vol.blackConstantVol (17 `may` 1998) cal volQ dc
+          proc <- blackScholesMertonProcess underQ divTS ts vol0 EulerDiscretization False
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 40))
+                                (American Nothing (17 `may` 1999) False)
+          bjerksundStenslandApproximationEngine proc >>= setPricingEngine opt
+          _ <- npv opt
+          res <- additionalResults opt
+          lookup "exerciseType" res `shouldBe` Just (StringVal "American")
+          case lookup "strikeGamma" res of
+            Just (RealVal g) -> g `shouldSatisfy` (> 0)
+            other -> expectationFailure $ "strikeGamma missing or wrong type: " ++ show other
+
+      it "Black cap/floor engine reports optionletsPrice as a RealVectorVal" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          cal <- Calendar.calendar TARGET
+          settle <- advance cal (11 `december` 2012) (2, Days) Following False
+          discQ <- Quote.simpleQuote 0.02
+          dc <- dayCounter Actual365FixedStandard
+          discountTS <- flatForward (11 `december` 2012) discQ dc IR.Continuous Annual
+          idx <- iborIndex Euribor6M (Just discountTS)
+          floatDC <- dayCounter (Actual360 False)
+          floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
+            ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.03]
+          volQ <- Quote.simpleQuote 0.20
+          vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          eng <- blackCapFloorEngine' discountTS vol0
+          setPricingEngine capfl eng
+          _ <- npv capfl
+          res <- additionalResults capfl
+          case lookup "optionletsPrice" res of
+            -- the near-dated optionlet(s) can legitimately price at (or near) zero; check the
+            -- vector is non-trivial and non-negative rather than requiring every entry positive
+            Just (RealVectorVal xs) -> do
+              xs `shouldSatisfy` (not . null)
+              xs `shouldSatisfy` all (>= 0)
+              xs `shouldSatisfy` any (> 0)
+            other -> expectationFailure $ "optionletsPrice missing or wrong type: " ++ show other

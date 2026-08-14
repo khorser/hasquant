@@ -3103,7 +3103,7 @@
 |v|ql/instrument.hpp|Real Instrument::errorEstimate() const;
 |v|ql/instrument.hpp|const Date & Instrument::valuationDate() const;
 | |ql/instrument.hpp|const ext::shared_ptr<PricingEngine> & Instrument::pricingEngine() const;
-| |ql/instrument.hpp|const std::map<std::string, ext::any> & Instrument::additionalResults() const;
+|v|ql/instrument.hpp|const std::map<std::string, ext::any> & Instrument::additionalResults() const;
 |v|ql/instrument.hpp|bool Instrument::isExpired() const;
 |v|ql/instrument.hpp|void Instrument::setPricingEngine(const ext::shared_ptr<PricingEngine> &);
 | |ql/instrument.hpp|void Instrument::setupArguments(PricingEngine::arguments *) const;

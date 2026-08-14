@@ -1,6 +1,35 @@
+// Discriminants for QlAdditionalResult.type, read by both the C++ shim and c2hs. Declared here,
+// before the `#ifdef __cplusplus` guard that wraps the function prototypes, so c2hs (whose
+// preprocessor does NOT define __cplusplus) can see and bind them with `{#enum ... #}`; the C++
+// shim references the same names below.
+enum AdditionalResultType {
+  AdditionalResultDouble       = 0,  // value holds a Real (double)
+  AdditionalResultString       = 1,  // value holds a std::string
+  AdditionalResultDoubleVector = 2,  // value holds a std::vector<Real>
+  AdditionalResultUnknown      = 3   // value is an unrecognised type; sval holds its C++ RTTI name
+};
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+  // Flat, C-friendly projection of Instrument::additionalResults(), whose values are
+  // QuantLib's ext::any (std::any or boost::any depending on the QuantLib build). We pick
+  // four concrete shapes -- double, std::string, vector<Real>, and an "unknown" fallback that
+  // records the value's RTTI type name -- so no key is ever silently dropped or mislabelled.
+  // Every key, (when set) sval, and (when set) varr is strdup'd/heap-allocated and freed by
+  // qlFreeAdditionalResults.
+  struct QlAdditionalResult {
+    char    *key;   // strdup'd, freed by qlFreeAdditionalResults
+    int      type;  // AdditionalResultType discriminant
+    double   dval;  // valid iff type == AdditionalResultDouble
+    char    *sval;  // strdup'd (or NULL), freed by qlFreeAdditionalResults
+    double  *varr;  // heap array (or NULL), freed by qlFreeAdditionalResults; valid iff type == AdditionalResultDoubleVector
+    unsigned vlen;  // varr's length
+  };
+  void qlInstrumentAdditionalResults(QlInstrument *instr, unsigned *len,
+    struct QlAdditionalResult **out, char **e);
+  void qlFreeAdditionalResults(unsigned len, struct QlAdditionalResult *out);
+
   void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
     char **e);
   double qlInstrumentNPV(QlInstrument *instr, char **e);
