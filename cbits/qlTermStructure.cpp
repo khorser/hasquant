@@ -394,6 +394,12 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
     setInterpolation2D(s, interpolator);
     return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(s))));
   } catch (std::exception& er) {delete s; return handleException<QlBlackVolTermStructure*>(e, er);}}
+QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e) {
+  try {
+    return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(
+        PiecewiseBlackVarianceSurface::makeFromGrid(Date(referenceDate), qlDateVector(dates, datesLen),
+            std::vector<Real>(strikes, strikes+strikesLen), qlMatrix(blackVols, blackVolsRows, blackVolsCols), *arg(dayCounter)))));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
             qlPeriodVector(n, u, l), std::vector<double>(strikes, strikes+strikesLen), qlHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));

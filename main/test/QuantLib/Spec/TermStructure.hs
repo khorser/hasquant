@@ -844,6 +844,50 @@ spec = do
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) [1 .. 5 :: Int]
 
+    -- PiecewiseBlackVarianceSurface::makeFromGrid: upstream's testMakeFromGrid
+    -- (test-suite/piecewiseblackvariancesurface.cpp) has no cached NPV fixture, only
+    -- analytical self-consistency checks (exact reprice at grid nodes, etc). hasquant has no
+    -- blackVariance/blackVol inspector on the generic BlackVolTermStructure, so check the
+    -- reprice-at-a-grid-node property indirectly through pricing: a European option struck and
+    -- expiring exactly at a grid node must reprice identically under the piecewise surface and
+    -- under a flat blackConstantVol at that node's own vol, since both surfaces have the same
+    -- variance there.
+    describe "piecewise Black variance surface" $
+      it "reproduces the input vol exactly at a grid node" $
+        Settings.keepingSettings' $ do
+          let refDate = 11 `december` 2012
+              otherDate = 11 `june` 2013
+              nodeDate = 11 `december` 2013
+              nodeStrike = 100
+              nodeVol = 0.22
+              tolerance = 1.0e-6 :: Double
+          Settings.setEvaluationDate (Just refDate)
+          underQ <- Quote.simpleQuote 100
+          riskFreeQ <- Quote.simpleQuote 0.03
+          dc <- dayCounter Actual365FixedStandard
+          ts <- flatForward refDate riskFreeQ dc IR.Continuous Annual
+          divQ <- Quote.simpleQuote 0.0
+          divTS <- flatForward refDate divQ dc IR.Continuous Annual
+          cal <- Calendar.calendar TARGET
+          let mkNpv vol = do
+                proc <- blackScholesMertonProcess underQ divTS ts vol EulerDiscretization False
+                opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call nodeStrike))
+                                      (European (EuropeanExercise nodeDate))
+                analyticEuropeanEngine proc Nothing >>= setPricingEngine opt
+                npv opt
+          let volMatrix = either error id $ realMatrix 3 2
+                [ 0.30, 0.28
+                , 0.20, nodeVol
+                , 0.35, 0.32
+                ]
+          piecewise <- Vol.piecewiseBlackVarianceSurface refDate [otherDate, nodeDate]
+                         [80, 100, 120] volMatrix dc
+          q <- Quote.simpleQuote nodeVol
+          flat <- Vol.blackConstantVol refDate cal q dc
+          npvPiecewise <- mkNpv piecewise
+          npvFlat <- mkNpv flat
+          npvPiecewise `shouldSatisfy` closePrec npvFlat tolerance
+
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
     -- Handle<Quote>-based ("floating market data") overload, not the plain-Matrix one bound

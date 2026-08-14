@@ -88,6 +88,7 @@ module QuantLib.TermStructure.Volatility
   , capFloorTermVolSurface
   , capFloorTermVolSurface'
   , blackVarianceSurface
+  , piecewiseBlackVarianceSurface
   , swaptionVolatilityMatrix'
   ) where
 import QuantLib.Internal
@@ -502,6 +503,18 @@ blackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
   -> IO BlackVolTermStructure
 blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
 {#fun qlBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`BlackVarianceSurfaceExtrapolation',`BlackVarianceSurfaceExtrapolation',fromEnumC`Interpolation2D',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- |Builds a Black volatility surface from a rectangular vol grid via
+-- 'PiecewiseBlackVarianceSurface::makeFromGrid': one interpolated smile section per date
+-- column, linear in total variance between columns -- a fixed interpolation scheme, unlike
+-- 'blackVarianceSurface''s configurable 2-D interpolator.
+piecewiseBlackVarianceSurface :: Day -> [Day] -- ^dates
+  -> [Double] -- ^strikes
+  -> Matrix Double -- ^blackVols
+  -> DayCounter
+  -> IO BlackVolTermStructure
+piecewiseBlackVarianceSurface d ds s (Matrix mr mc md) dc = qlPiecewiseBlackVarianceSurface d ds s mr mc md dc
+{#fun qlPiecewiseBlackVarianceSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |floating reference date, floating market data
 capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors
