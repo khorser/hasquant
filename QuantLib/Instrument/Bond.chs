@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Instrument.Bond
   (
     Bond
@@ -17,6 +18,12 @@ module QuantLib.Instrument.Bond
   , zeroCouponBond
   , floatingRateBond
   , cpiBond
+  , amortizingFixedRateBond
+  , AmortizingFloatingRateBondOpts(..)
+  , defaultAmortizingFloatingRateBondOpts
+  , amortizingFloatingRateBond
+  , sinkingSchedule
+  , sinkingNotionals
 
   , maturityDate
   , yield
@@ -76,12 +83,15 @@ module QuantLib.Instrument.Bond
   , convertibleZeroCouponBond
   ) where
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.CashFlow#}(DurationType)
 {#import QuantLib.InterestRate#}(Compounding)
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax(deriveOptionsRecord)
+import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
+import Data.Maybe(fromMaybe)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -104,6 +114,34 @@ import QuantLib.Internal.Enum
 {#pointer *QlCallableBond as CallableBond foreign -> CCallableBond' nocode#}
 {#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond' nocode#}
 {#pointer *QlExercise nocode#}
+
+-- AmortizingFloatingRateBondOpts bundles every trailing param
+-- amortizingFloatingRateBond hardcodes, pre-populated with upstream's own
+-- defaults via defaultAmortizingFloatingRateBondOpts, overridden through
+-- record-update syntax at the call site -- see the add-quantlib-options-record
+-- skill. This splice must stay textually before every {#fun#}-generated
+-- binding in this file: c2hs always appends its raw foreign-import stubs at
+-- the physical end of the generated module regardless of where in the .chs a
+-- {#fun#} hook appears, and a top-level TH splice anywhere in between would
+-- otherwise split the file into declaration groups that can't see each
+-- other, breaking every earlier {#fun#} wrapper's reference to its own
+-- (always-last) foreign-import stub.
+$(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
+  [ ("afrbPaymentConvention", [t|BusinessDayConvention|], [|Following|])
+  , ("afrbFixingDays", [t|Maybe Word|], [|Nothing|])
+  , ("afrbGearings", [t|[Double]|], [|[1.0]|])
+  , ("afrbSpreads", [t|[Double]|], [|[0.0]|])
+  , ("afrbCaps", [t|[Double]|], [|[]|])
+  , ("afrbFloors", [t|[Double]|], [|[]|])
+  , ("afrbInArrears", [t|Bool|], [|False|])
+  , ("afrbIssueDate", [t|Maybe Day|], [|Nothing|])
+  , ("afrbExCouponPeriod", [t|(Int, TimeUnit)|], [|(0, Days)|])
+  , ("afrbExCouponCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("afrbExCouponConvention", [t|BusinessDayConvention|], [|Unadjusted|])
+  , ("afrbExCouponEndOfMonth", [t|Bool|], [|False|])
+  , ("afrbRedemptions", [t|[Double]|], [|[100.0]|])
+  , ("afrbPaymentLag", [t|Int|], [|0|])
+  ])
 
 {#fun qlBondFunctionsAtmRate as atmRate{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',fromEnumDouble`Double,BondPriceType'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |constructor for amortizing or non-amortizing bonds.
@@ -139,6 +177,35 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^exCouponEndOfMonth
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
+-- |amortizing fixed-rate bond: like 'fixedRateBond' but with a per-period notional schedule
+-- instead of a single face amount (see 'sinkingSchedule'\/'sinkingNotionals' for building one).
+{#fun qlAmortizingFixedRateBond as amortizingFixedRateBond{fromIntegral`Word' -- ^settlementDays
+  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withSchedule*`Schedule' -- ^schedule
+  ,withDoubleArray*`[Double]'& -- ^coupons
+  ,withDayCounter*`DayCounter' -- ^accrualDayCounter
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,withDoubleArray*`[Double]'& -- ^redemptions
+  ,fromIntegral`Int' -- ^paymentLag
+  ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+-- |returns a schedule for French amortization
+{#fun qlSinkingSchedule as sinkingSchedule{withDay*`Day' -- ^startDate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^bondLength
+  ,`Frequency'
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
+-- |returns a sequence of notionals for French amortization
+{#fun qlSinkingNotionals as sinkingNotionals{fromEnumQuantity`(Int,TimeUnit)'& -- ^bondLength
+  ,`Frequency'
+  ,`Double' -- ^couponRate
+  ,`Double' -- ^initialNotional
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |An inflation-linked bond whose redemption and coupons scale with a 'ZeroInflationIndex'
 -- fixing relative to /baseCPI/.
 {#fun qlCPIBond as cpiBond{fromIntegral`Word' -- ^settlementDays
@@ -187,6 +254,41 @@ import QuantLib.Internal.Enum
   ,`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,`BusinessDayConvention' -- ^fixingConvention
+  ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+-- |amortizing floating-rate bond (possibly capped and\/or floored) with a per-period
+-- notional schedule instead of a single face amount; see 'AmortizingFloatingRateBondOpts'
+-- for the trailing optional parameters (default via 'defaultAmortizingFloatingRateBondOpts',
+-- override with record-update syntax).
+amortizingFloatingRateBond :: Word -> [Double] -> Schedule -> GenIborIndex ibor -> DayCounter
+  -> AmortizingFloatingRateBondOpts -> IO Bond
+amortizingFloatingRateBond settlementDays notionals schedule idx accrualDayCounter opts = do
+  cal <- calendar Null
+  amortizingFloatingRateBond_ settlementDays notionals schedule idx accrualDayCounter
+    (afrbPaymentConvention opts) (fromMaybeInt (afrbFixingDays opts))
+    (afrbGearings opts) (afrbSpreads opts) (afrbCaps opts) (afrbFloors opts)
+    (afrbInArrears opts) (afrbIssueDate opts) (afrbExCouponPeriod opts)
+    (fromMaybe cal (afrbExCouponCalendar opts)) (afrbExCouponConvention opts)
+    (afrbExCouponEndOfMonth opts) (afrbRedemptions opts) (afrbPaymentLag opts)
+
+{#fun qlAmortizingFloatingRateBond as amortizingFloatingRateBond_{fromIntegral`Word' -- ^settlementDays
+  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withSchedule*`Schedule' -- ^schedule
+  ,withIborIndex*`GenIborIndex ibor'
+  ,withDayCounter*`DayCounter' -- ^accrualDayCounter
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withDoubleArray*`[Double]'& -- ^gearings
+  ,withDoubleArray*`[Double]'& -- ^spreads
+  ,withDoubleArray*`[Double]'& -- ^caps
+  ,withDoubleArray*`[Double]'& -- ^floors
+  ,`Bool' -- ^inArrears
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,withDoubleArray*`[Double]'& -- ^redemptions
+  ,fromIntegral`Int' -- ^paymentLag
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 -- |theoretical bond yield
 {#fun qlBondYield as yield{withBond*`GenBond b',withDayCounter*`DayCounter',`Compounding',`Frequency'

@@ -312,6 +312,19 @@ extern "C" {
   QlCPIBond *qlCPIBond(unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, char **e);
   QlBond *qlCPIBondAsBond(QlCPIBond *bond);
 
+  QlBond *qlAmortizingFixedRateBond(unsigned settlementDays, unsigned notionalsLen, double *notionals, Schedule *schedule,
+    unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate,
+    int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth,
+    unsigned redemptionsLen, double *redemptions, int paymentLag, char **e);
+  QlBond *qlAmortizingFloatingRateBond(unsigned settlementDays, unsigned notionalLen, double *notional, Schedule *schedule,
+    QlIborIndex *index, DayCounter *accrualDayCounter, int paymentConvention, unsigned fixingDays,
+    unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+    int inArrears, int issueDate, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention,
+    int exCouponEndOfMonth, unsigned redemptionsLen, double *redemptions, int paymentLag, char **e);
+  Schedule *qlSinkingSchedule(int startDate, int lengthLen, int lengthUnit, int frequency, Calendar *paymentCalendar, char **e);
+  void qlSinkingNotionals(int lengthLen, int lengthUnit, int frequency, double couponRate, double initialNotional,
+    unsigned *len, double **out, char **e);
+
   double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, double guess, int priceType, char **e);
   double qlBondAccruedAmount(QlBond* o, int d, char **e);

@@ -608,6 +608,42 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched, QlI
 	  (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
 
+QlBond *qlAmortizingFixedRateBond(unsigned settlementDays, unsigned notionalsLen, double *notionals, Schedule *schedule,
+    unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate,
+    int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth,
+    unsigned redemptionsLen, double *redemptions, int paymentLag, char **e) {
+  try {std::vector<Real> ns(notionals, notionals+notionalsLen); std::vector<Rate> cpns(coupons, coupons+couponsLen);
+    std::vector<Real> reds(redemptions, redemptions+redemptionsLen);
+    return ret(new QlBond(alloc(new AmortizingFixedRateBond(settlementDays, ns, *arg(schedule), cpns, *arg(accrualDayCounter),
+              (BusinessDayConvention)paymentConvention, qlNullableDate(issueDate),
+              Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar), (BusinessDayConvention)exCouponConvention,
+              exCouponEndOfMonth, reds, paymentLag))));
+  } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
+
+QlBond *qlAmortizingFloatingRateBond(unsigned settlementDays, unsigned notionalLen, double *notional, Schedule *schedule,
+    QlIborIndex *index, DayCounter *accrualDayCounter, int paymentConvention, unsigned fixingDays,
+    unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+    int inArrears, int issueDate, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention,
+    int exCouponEndOfMonth, unsigned redemptionsLen, double *redemptions, int paymentLag, char **e) {
+  try {std::vector<Real> ns(notional, notional+notionalLen);
+    std::vector<Real> gs(gearings, gearings+nGearings); std::vector<Spread> sps(spreads, spreads+nSpreads);
+    std::vector<Rate> cs(caps, caps+nCaps); std::vector<Rate> fs(floors, floors+nFloors);
+    std::vector<Real> reds(redemptions, redemptions+redemptionsLen);
+    return ret(new QlBond(alloc(new AmortizingFloatingRateBond(settlementDays, ns, *arg(schedule), *arg(index), *arg(accrualDayCounter),
+              (BusinessDayConvention)paymentConvention, fixingDays, gs, sps, cs, fs, inArrears, qlNullableDate(issueDate),
+              Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar), (BusinessDayConvention)exCouponConvention,
+              exCouponEndOfMonth, reds, paymentLag))));
+  } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
+
+Schedule *qlSinkingSchedule(int startDate, int lengthLen, int lengthUnit, int frequency, Calendar *paymentCalendar, char **e) {
+  try {return alloc(new Schedule(sinkingSchedule(Date(startDate), Period(lengthLen, (TimeUnit)lengthUnit), (Frequency)frequency, *arg(paymentCalendar))));
+  } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
+void qlSinkingNotionals(int lengthLen, int lengthUnit, int frequency, double couponRate, double initialNotional,
+    unsigned *len, double **out, char **e) {
+  try {const std::vector<Real>& ns = sinkingNotionals(Period(lengthLen, (TimeUnit)lengthUnit), (Frequency)frequency, couponRate, initialNotional);
+    *len = ns.size(); *out = qlAllocateDoubles(*len); std::copy(ns.begin(), ns.end(), *out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+
 void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e) {
   try {const std::vector<double>& notionals = (*arg(o))->notionals(); *len = notionals.size(); *ns = qlAllocateDoubles(*len); std::copy(notionals.begin(), notionals.end(), *ns);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}

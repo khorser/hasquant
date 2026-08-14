@@ -3,13 +3,16 @@ module QuantLib.Spec.Examples (spec) where
 import Test.Hspec
 
 import Control.Arrow((&&&))
+import Control.Monad(forM_)
 
 import Data.Time.Calendar
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar
+import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), Frequency(..))
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Instrument.Bond as B
+import qualified QuantLib.Index.InterestRate as I
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.FRA as FRAExample
@@ -84,6 +87,62 @@ spec = do
         l <- CF.leg [(fromGregorian 2013 1 1, 1000)]
         b <- B.bond' 2 c 1000 (Just (fromGregorian 2013 1 1)) (Just (fromGregorian 2012 1 1)) l
         B.maturityDate b `shouldBe` Just (fromGregorian 2013 1 1)
+
+    describe "Amortizing bonds" $ do
+      it "AmortizingFixedRateBond reproduces upstream's sinking-fund pmt values" $ do
+        -- ported from ~/Src/QuantLib/test-suite/amortizingbond.cpp:testAmortizingFixedRateBond
+        nullCal <- calendar Null
+        dc <- dayCounter ActualActualISMA
+        let refDate = fromGregorian 2013 1 1
+            rates = [0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11, 0.12]
+            amounts = [0.277777778, 0.321639520, 0.369619473, 0.421604034,
+                       0.477415295, 0.536821623, 0.599550525,
+                       0.665302495, 0.733764574, 0.804622617,
+                       0.877571570, 0.952323396, 1.028612597]
+            pairUp (c1:p1:rest) = (c1, p1) : pairUp rest
+            pairUp _ = []
+        forM_ (zip rates amounts) $ \(rate, expectedAmount) -> do
+          sched <- B.sinkingSchedule refDate (30, Years) Monthly nullCal
+          ns <- B.sinkingNotionals (30, Years) Monthly rate 100.0
+          bnd <- B.amortizingFixedRateBond 0 ns sched [rate] dc
+                   Following Nothing (0, Days) nullCal Unadjusted False [100.0] 0
+          cf <- B.cashFlows bnd
+          flows <- CF.cashFlows cf Nothing Nothing
+          let cashflowPairs = pairUp (map (\(_, a, _) -> a) flows)
+          forM_ (zip cashflowPairs ns) $ \((coupon, principal), notional) -> do
+            (coupon + principal) `shouldSatisfy` closePrec expectedAmount 1e-6
+            coupon `shouldSatisfy` closePrec (notional * rate / 12) 1e-6
+
+      it "AmortizingFloatingRateBond's notional schedule and total redemption are self-consistent" $ do
+        -- no upstream test-suite fixture for this bond, so this checks structural
+        -- invariants instead: the bond echoes back the declining notional schedule
+        -- it was given, and the sum of its principal (redemption) cashflows equals
+        -- the initial notional -- no term structure or fixings needed for either.
+        nullCal <- calendar Null
+        dc <- dayCounter (Actual360 False)
+        let refDate = fromGregorian 2013 1 1
+        sched <- B.sinkingSchedule refDate (2, Years) Quarterly nullCal
+        -- sinkingNotionals returns one entry per period plus a trailing 0.0 (the
+        -- notional after the last period), matching AmortizingFixedRateBond's
+        -- convention; AmortizingFloatingRateBond instead wants exactly one notional
+        -- per coupon period (same as its underlying IborLeg), hence the `init`.
+        allNs <- B.sinkingNotionals (2, Years) Quarterly 0.05 100.0
+        let ns = init allNs
+        usd3m <- I.iborIndex (I.UsdLibor (3, Months)) Nothing
+        bnd <- B.amortizingFloatingRateBond 0 ns sched usd3m dc
+                 B.defaultAmortizingFloatingRateBondOpts
+
+        -- Bond.notionals() reports one entry per schedule date (periods+1, with an
+        -- implicit trailing 0.0 after the last period), so it echoes back allNs
+        -- (what sinkingNotionals produced), not the period-count-sized ns we
+        -- actually passed to the constructor.
+        reportedNotionals <- B.notionals bnd
+        reportedNotionals `shouldSatisfy` listClose id allNs 1e-9
+
+        redemptionLeg <- B.redemptions bnd
+        redemptionFlows <- CF.cashFlows redemptionLeg Nothing Nothing
+        let totalRedeemed = sum (map (\(_, a, _) -> a) redemptionFlows)
+        totalRedeemed `shouldSatisfy` closePrec (head ns) 1e-6
 
     describe "FRA Example" $
       it "check values" $ do
