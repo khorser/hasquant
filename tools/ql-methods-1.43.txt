@@ -10067,8 +10067,8 @@
 | |ql/termstructures/yield/ratehelpers.hpp|Real BMASwapRateHelper::impliedQuote() const;
 | |ql/termstructures/yield/ratehelpers.hpp|void BMASwapRateHelper::setTermStructure(YieldTermStructure *);
 | |ql/termstructures/yield/ratehelpers.hpp|void BMASwapRateHelper::accept(AcyclicVisitor &);
-| |ql/termstructures/yield/ratehelpers.hpp|FxSwapRateHelper::FxSwapRateHelper(const Handle<Quote> & fwdPoint, Handle<Quote> spotFx, const Period & tenor, Natural fixingDays, Calendar calendar, BusinessDayConvention convention, bool endOfMonth, bool isFxBaseCurrencyCollateralCurrency, Handle<YieldTermStructure> collateralCurve, Calendar tradingCalendar = Calendar());
-| |ql/termstructures/yield/ratehelpers.hpp|FxSwapRateHelper::FxSwapRateHelper(const Handle<Quote> & fwdPoint, Handle<Quote> spotFx, const Date & startDate, const Date & endDate, bool isFxBaseCurrencyCollateralCurrency, Handle<YieldTermStructure> collateralCurve);
+|v|ql/termstructures/yield/ratehelpers.hpp|FxSwapRateHelper::FxSwapRateHelper(const Handle<Quote> & fwdPoint, Handle<Quote> spotFx, const Period & tenor, Natural fixingDays, Calendar calendar, BusinessDayConvention convention, bool endOfMonth, bool isFxBaseCurrencyCollateralCurrency, Handle<YieldTermStructure> collateralCurve, Calendar tradingCalendar = Calendar());
+|v|ql/termstructures/yield/ratehelpers.hpp|FxSwapRateHelper::FxSwapRateHelper(const Handle<Quote> & fwdPoint, Handle<Quote> spotFx, const Date & startDate, const Date & endDate, bool isFxBaseCurrencyCollateralCurrency, Handle<YieldTermStructure> collateralCurve);
 | |ql/termstructures/yield/ratehelpers.hpp|Real FxSwapRateHelper::impliedQuote() const;
 | |ql/termstructures/yield/ratehelpers.hpp|void FxSwapRateHelper::setTermStructure(YieldTermStructure *);
 | |ql/termstructures/yield/ratehelpers.hpp|Real FxSwapRateHelper::spot() const;

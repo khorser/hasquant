@@ -169,6 +169,37 @@ spec = do
                     >>= bondHelperBond
           Bond.maturityDate bond `shouldBe` Just bondMaturity
 
+    -- No upstream test-suite fixture exists for FxSwapRateHelper (unlike the other rate
+    -- helpers ported elsewhere in this file), so this is a self-consistency check instead of
+    -- a cached-value comparison: bootstrapping a curve from a single FxSwapRateHelper pillar
+    -- must solve for a curve under which the helper's own impliedQuote() reproduces the
+    -- fwdPoint quote it was built from -- that is the definition of a successful bootstrap
+    -- (RateHelper::quoteError() = quote_->value() - impliedQuote(), driven to ~0 by the
+    -- solver), not something specific to FX swaps.
+    describe "fx swap rate helper" $
+      it "bootstrapped curve reprices the helper's own forward points" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          tradingCal <- calendar Null
+          actual360dc <- dayCounter (Actual360 False)
+          let fixingDays = 2 :: Word
+          settlement <- advance cal (2 `january` 2024) (2, Days) Following False
+          collRate <- Quote.simpleQuote 0.03
+          collateralCurve <- flatForward' fixingDays cal collRate actual360dc IR.Continuous Annual
+          spotFx <- Quote.simpleQuote 1.10
+          fwdPoint <- Quote.simpleQuote 0.0025
+          rh <- fxSwapRateHelper fwdPoint spotFx (1, Years) fixingDays cal ModifiedFollowing False
+                  True collateralCurve tradingCal
+          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
+          -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
+          -- setTermStructure call on each helper) only runs on first calculation, not on
+          -- construction, so the curve must be queried before impliedQuote is meaningful.
+          _ <- discount' ts settlement False
+          implied <- impliedQuote rh
+          fwdVal <- Quote.value fwdPoint
+          implied `shouldSatisfy` closePrec fwdVal 1.0e-8
+
     -- Relinking is the one thing a plain curve cannot do: reassign a whole curve under
     -- objects that are already built, and have everything downstream reprice. Every check
     -- here is a before/after comparison rather than a value assertion, because the failure

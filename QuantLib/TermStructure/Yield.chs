@@ -84,6 +84,8 @@ module QuantLib.TermStructure.Yield
   , constNotionalCrossCurrencyBasisSwapRateHelper
   , mtMCrossCurrencyBasisSwapRateHelper
   , constNotionalCrossCurrencySwapRateHelper
+  , fxSwapRateHelper
+  , fxSwapRateHelper'
 
   , bondHelperBond
   , swapRateHelperSwap
@@ -376,6 +378,30 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^collateralCurve
   ,`Bool' -- ^collateralOnFixedLeg
   ,fromIntegral`Int' -- ^paymentLag
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper from FX swap points, tenor-relative. 'collateralCurve' discounts the
+-- collateral currency; the curve being bootstrapped is for the other currency. 'fwdPoint' and
+-- 'spotFx' must be quoted in the same units (points already scaled to match the spot).
+{#fun qlFxSwapRateHelper as fxSwapRateHelper{withQuote*`GenQuote q1' -- ^fwdPoint
+  ,withQuote*`GenQuote q2' -- ^spotFx
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,`Bool' -- ^isFxBaseCurrencyCollateralCurrency
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^collateralCurve
+  ,withCalendar*`Calendar' -- ^tradingCalendar
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Bootstrapping helper from FX swap points, explicit start\/end date.
+{#fun qlFxSwapRateHelper2 as fxSwapRateHelper'{withQuote*`GenQuote q1' -- ^fwdPoint
+  ,withQuote*`GenQuote q2' -- ^spotFx
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,`Bool' -- ^isFxBaseCurrencyCollateralCurrency
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^collateralCurve
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.

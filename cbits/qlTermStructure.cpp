@@ -746,6 +746,16 @@ QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int
     return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencySwapRateHelper(*arg(fixedRate), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       (Frequency)fixedFrequency, *arg(fixedDayCount), *arg(floatIndex), *arg(collateralCurve), collateralOnFixedLeg, paymentLag))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper *qlFxSwapRateHelper(QlQuote *fwdPoint, QlQuote *spotFx, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
+  int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, Calendar *tradingCalendar, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new FxSwapRateHelper(*arg(fwdPoint), *arg(spotFx), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention,
+      endOfMonth, isFxBaseCurrencyCollateralCurrency, *arg(collateralCurve), *arg(tradingCalendar)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper *qlFxSwapRateHelper2(QlQuote *fwdPoint, QlQuote *spotFx, int startDate, int endDate, int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new FxSwapRateHelper(*arg(fwdPoint), *arg(spotFx), Date(startDate), Date(endDate), isFxBaseCurrencyCollateralCurrency, *arg(collateralCurve)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 
 double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e) {
   try {return (*ts)->discount(Date(date), extrapolate);
