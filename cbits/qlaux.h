@@ -109,6 +109,7 @@ namespace QuantLib {
   class BlackSwaptionEngine;
   class BlackVarianceCurve;
   class BlackVolTermStructure;
+  class BlackVolatilitySurfaceDelta;
   class BondHelper;
   class BoundaryConstraint;
   class CalibratedModel;
@@ -366,6 +367,7 @@ using QuantLib::BlackScholesProcess;
 using QuantLib::BlackSwaptionEngine;
 using QuantLib::BlackVarianceCurve;
 using QuantLib::BlackVolTermStructure;
+using QuantLib::BlackVolatilitySurfaceDelta;
 using QuantLib::BondHelper;
 using QuantLib::BoundaryConstraint;
 using QuantLib::CalibratedModel;
@@ -597,6 +599,7 @@ typedef shared_ptr<BlackCalibrationHelper> QlBlackCalibrationHelper;
 typedef shared_ptr<BlackProcess> QlBlackProcess;
 typedef shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
 typedef shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
+typedef shared_ptr<BlackVolatilitySurfaceDelta> QlBlackVolatilitySurfaceDelta;
 // A vol structure is a Handle, same reasoning as QlYieldTermStructure/QlQuote above -- upstream
 // itself speaks Handle<BlackVolTermStructure> throughout, unlike the VolatilityTermStructure
 // base (never a Handle upstream, confirmed by grep; stays shared_ptr, same as QlTermStructure).
@@ -921,6 +924,7 @@ template <> class ObjClassName<QlBlackCalibrationHelper*> {public: static void o
 template <> class ObjClassName<QlBlackProcess*> {public: static void output(std::ostream& os) {os << "QlBlackProcess";}};
 template <> class ObjClassName<QlBlackScholesCalculator*> {public: static void output(std::ostream& os) {os << "QlBlackScholesCalculator";}};
 template <> class ObjClassName<QlBlackVarianceCurve*> {public: static void output(std::ostream& os) {os << "QlBlackVarianceCurve";}};
+template <> class ObjClassName<QlBlackVolatilitySurfaceDelta*> {public: static void output(std::ostream& os) {os << "QlBlackVolatilitySurfaceDelta";}};
 template <> class ObjClassName<QlBlackVolTermStructure*> {public: static void output(std::ostream& os) {os << "QlBlackVolTermStructure";}};
 template <> class ObjClassName<QlBond*> {public: static void output(std::ostream& os) {os << "QlBond";}};
 template <> class ObjClassName<QlBondForward*> {public: static void output(std::ostream& os) {os << "QlBondForward";}};

@@ -82,6 +82,20 @@ extern "C" {
   QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e);
   QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, int interpolator, char **e);
   QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e);
+  void qlFreeBlackVolatilitySurfaceDelta(QlBlackVolatilitySurfaceDelta *o);
+  QlBlackVolTermStructure* qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure(QlBlackVolatilitySurfaceDelta *o);
+  QlBlackVolatilitySurfaceDelta* qlBlackVolatilitySurfaceDelta(int referenceDate, unsigned datesLen, int* dates,
+    unsigned putDeltasLen, double* putDeltas, unsigned callDeltasLen, double* callDeltas,
+    int hasAtm, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix,
+    DayCounter* dayCounter, Calendar* cal, QlQuote* spot,
+    QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS,
+    int deltaType, int atmType, int atmDeltaType,
+    int interpolationMethod, int flatStrikeExtrapolation, int timeExtrapolationType,
+    int switchTenorLen, int switchTenorUnit,
+    int longTermDeltaType, int longTermAtmType, int longTermAtmDeltaType,
+    char **e);
+  QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile1(QlBlackVolatilitySurfaceDelta* o, double t, char **e);
+  QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile(QlBlackVolatilitySurfaceDelta* o, int d, char **e);
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
   QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, double* vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);

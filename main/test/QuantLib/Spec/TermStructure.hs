@@ -888,6 +888,54 @@ spec = do
           npvFlat <- mkNpv flat
           npvPiecewise `shouldSatisfy` closePrec npvFlat tolerance
 
+    -- BlackVolatilitySurfaceDelta: cached fixture ported from upstream's
+    -- testBlackVolSurfaceDeltaNonConstantVol (test-suite/blackvolsurfacedelta.cpp), which
+    -- exercises blackVolSmile directly -- the one binding-specific getter this class adds over
+    -- the generic BlackVolTermStructure -- so no extra generic blackVol(t,k) inspector is
+    -- needed just to reuse it.
+    describe "black volatility surface delta" $
+      it "reproduces upstream's cached smile volatilities" $
+        Settings.keepingSettings' $ do
+          let refDate = 1 `january` 2010
+              atmStrike = 1.18
+              tolerance = 1.0e-8 :: Double
+          Settings.setEvaluationDate (Just refDate)
+          d1M <- addPeriod refDate (1, Months)
+          d6M <- addPeriod refDate (6, Months)
+          d1Y <- addPeriod refDate (1, Years)
+          d2Y <- addPeriod refDate (2, Years)
+          d15D <- addPeriod refDate (15, Days)
+          d3M <- addPeriod refDate (3, Months)
+          dc <- dayCounter ActualActualISDA
+          cal <- Calendar.calendar TARGET
+          spot <- Quote.simpleQuote 1.18
+          dtsQ <- Quote.simpleQuote 0.02
+          dts <- flatForward' 0 cal dtsQ dc IR.Continuous Annual
+          ftsQ <- Quote.simpleQuote 0.035
+          fts <- flatForward' 0 cal ftsQ dc IR.Continuous Annual
+          let vols = either error id $ realMatrix 4 3
+                [ 0.15, 0.13, 0.135
+                , 0.14, 0.11, 0.125
+                , 0.13, 0.10, 0.12
+                , 0.125, 0.095, 0.115
+                ]
+          surface <- Vol.blackVolatilitySurfaceDelta refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
+                       dc cal spot dts fts
+          smile1M <- Vol.blackVolSmile' surface d1M
+          vol1M <- Vol.smileSectionVolatility smile1M atmStrike
+          vol1M `shouldSatisfy` closePrec 0.13010360399 tolerance
+          smile15D <- Vol.blackVolSmile' surface d15D
+          vol15D <- Vol.smileSectionVolatility smile15D atmStrike
+          vol15D `shouldSatisfy` closePrec 0.13007226607 tolerance
+          smile3M <- Vol.blackVolSmile' surface d3M
+          vol3M <- Vol.smileSectionVolatility smile3M atmStrike
+          vol3M `shouldSatisfy` closePrec 0.115077252583 tolerance
+          smile6M <- Vol.blackVolSmile' surface d6M
+          volLow <- Vol.smileSectionVolatility smile6M 1.10
+          volHigh <- Vol.smileSectionVolatility smile6M 1.30
+          volLow `shouldSatisfy` closePrec 0.1411379628132 tolerance
+          volHigh `shouldSatisfy` closePrec 0.136291154962 tolerance
+
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
     -- Handle<Quote>-based ("floating market data") overload, not the plain-Matrix one bound

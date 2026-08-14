@@ -400,6 +400,38 @@ QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsi
         PiecewiseBlackVarianceSurface::makeFromGrid(Date(referenceDate), qlDateVector(dates, datesLen),
             std::vector<Real>(strikes, strikes+strikesLen), qlMatrix(blackVols, blackVolsRows, blackVolsCols), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+void qlFreeBlackVolatilitySurfaceDelta(QlBlackVolatilitySurfaceDelta *o) {del(o);}
+QlBlackVolTermStructure* qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure(QlBlackVolatilitySurfaceDelta *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
+QlBlackVolatilitySurfaceDelta* qlBlackVolatilitySurfaceDelta(int referenceDate, unsigned datesLen, int* dates,
+    unsigned putDeltasLen, double* putDeltas, unsigned callDeltasLen, double* callDeltas,
+    int hasAtm, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix,
+    DayCounter* dayCounter, Calendar* cal, QlQuote* spot,
+    QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS,
+    int deltaType, int atmType, int atmDeltaType,
+    int interpolationMethod, int flatStrikeExtrapolation, int timeExtrapolationType,
+    int switchTenorLen, int switchTenorUnit,
+    int longTermDeltaType, int longTermAtmType, int longTermAtmDeltaType,
+    char **e) {
+  try {
+    return ret(new QlBlackVolatilitySurfaceDelta(alloc(new BlackVolatilitySurfaceDelta(
+        Date(referenceDate), qlDateVector(dates, datesLen),
+        std::vector<Real>(putDeltas, putDeltas+putDeltasLen), std::vector<Real>(callDeltas, callDeltas+callDeltasLen),
+        hasAtm, qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols),
+        *arg(dayCounter), *arg(cal), *arg(spot), *arg(domesticTS), *arg(foreignTS),
+        (DeltaVolQuote::DeltaType)deltaType, (DeltaVolQuote::AtmType)atmType,
+        atmDeltaType < 0 ? ext::nullopt : ext::optional<DeltaVolQuote::DeltaType>((DeltaVolQuote::DeltaType)atmDeltaType),
+        (BlackVolatilitySurfaceDelta::SmileInterpolationMethod)interpolationMethod,
+        flatStrikeExtrapolation, (BlackVolTimeExtrapolation::Type)timeExtrapolationType,
+        Period(switchTenorLen, (TimeUnit)switchTenorUnit),
+        (DeltaVolQuote::DeltaType)longTermDeltaType, (DeltaVolQuote::AtmType)longTermAtmType,
+        longTermAtmDeltaType < 0 ? ext::nullopt : ext::optional<DeltaVolQuote::DeltaType>((DeltaVolQuote::DeltaType)longTermAtmDeltaType)))));
+  } catch (std::exception& er) {return handleException<QlBlackVolatilitySurfaceDelta*>(e, er);}}
+QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile1(QlBlackVolatilitySurfaceDelta* o, double t, char **e) {
+  try {return ret(new QlSmileSection((*arg(o))->blackVolSmile(t)));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile(QlBlackVolatilitySurfaceDelta* o, int d, char **e) {
+  try {return ret(new QlSmileSection((*arg(o))->blackVolSmile(Date(d))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
   try {return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
             qlPeriodVector(n, u, l), std::vector<double>(strikes, strikes+strikesLen), qlHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));

@@ -5,6 +5,11 @@ module QuantLib.TermStructure.Volatility
   , ExtendedBlackVarianceSurfaceExtrapolation(..)
 
   , BlackVarianceCurve
+  , BlackVolatilitySurfaceDelta
+  , SmileInterpolationMethod(..)
+  , BlackVolTimeExtrapolationType(..)
+  , BlackVolatilitySurfaceDeltaOpts(..)
+  , defaultBlackVolatilitySurfaceDeltaOpts
   , BlackVolTermStructure
   , GenBlackVolTermStructure
   , RelinkableBlackVolTermStructure
@@ -89,6 +94,10 @@ module QuantLib.TermStructure.Volatility
   , capFloorTermVolSurface'
   , blackVarianceSurface
   , piecewiseBlackVarianceSurface
+  , blackVolatilitySurfaceDelta
+  , blackVolatilitySurfaceDeltaFull
+  , blackVolSmile
+  , blackVolSmile'
   , swaptionVolatilityMatrix'
   ) where
 import QuantLib.Internal
@@ -96,6 +105,7 @@ import Foreign.C.Types(CInt)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.Math#}(EndCriteriaType)
+{#import QuantLib.Quote#}(DeltaType(..), AtmType(..))
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
@@ -118,6 +128,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlRelinkableOptionletVolatilityStructure as RelinkableOptionletVolatilityStructure foreign -> CRelinkableOptionletVolatilityStructure' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign -> CBlackVarianceCurve' nocode#}
+{#pointer *QlBlackVolatilitySurfaceDelta as BlackVolatilitySurfaceDelta foreign -> CBlackVolatilitySurfaceDelta' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlRelinkableBlackVolTermStructure as RelinkableBlackVolTermStructure foreign -> CRelinkableBlackVolTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
@@ -127,6 +138,14 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
+-- |'BlackVolatilitySurfaceDelta::SmileInterpolationMethod', local to that class -- not shared
+-- with any other binding, so declared here rather than in 'QuantLib.Internal.Enum'.
+{#enum SmileInterpolationMethod{} deriving(Show, Eq)#}
+-- |'BlackVolTimeExtrapolation::Type', consumed only by 'blackVolatilitySurfaceDelta' today --
+-- same local-declaration treatment as 'SmileInterpolationMethod'. Named
+-- @BlackVolTimeExtrapolationType@ (rather than reusing the bare @Type@ c2hs would otherwise
+-- emit) to avoid a top-level name clash.
+{#enum BlackVolTimeExtrapolationType{} deriving(Show, Eq)#}
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
 -- sabrInterpolatedSmileSection_ hardcodes, pre-populated with upstream's own defaults,
@@ -147,6 +166,25 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
   , ("sabrVegaWeighted", [t|Bool|], [|True|])
   , ("sabrDayCounter", [t|Maybe DayCounter|], [|Nothing|])
   , ("sabrShift", [t|Double|], [|0.0|])
+  ])
+
+-- BlackVolatilitySurfaceDeltaOpts bundles every trailing defaulted param of
+-- 'BlackVolatilitySurfaceDelta''s one constructor (deltaType through longTermAtmDeltaType),
+-- pre-populated with upstream's own defaults via defaultBlackVolatilitySurfaceDeltaOpts,
+-- overridden through record-update syntax at the call site -- see OISRateHelperOpts
+-- (QuantLib.TermStructure.Yield) for the worked example this follows. Same
+-- splice-placement constraint as SabrInterpolatedSmileSectionOpts above.
+$(deriveOptionsRecord "BlackVolatilitySurfaceDeltaOpts" []
+  [ ("bvsdDeltaType", [t|DeltaType|], [|Spot|])
+  , ("bvsdAtmType", [t|AtmType|], [|AtmDeltaNeutral|])
+  , ("bvsdAtmDeltaType", [t|Maybe DeltaType|], [|Nothing|])
+  , ("bvsdInterpolationMethod", [t|SmileInterpolationMethod|], [|SmileLinear|])
+  , ("bvsdFlatStrikeExtrapolation", [t|Bool|], [|False|])
+  , ("bvsdTimeExtrapolationType", [t|BlackVolTimeExtrapolationType|], [|FlatVolatility|])
+  , ("bvsdSwitchTenor", [t|(Int, TimeUnit)|], [|(0, Days)|])
+  , ("bvsdLongTermDeltaType", [t|DeltaType|], [|Fwd|])
+  , ("bvsdLongTermAtmType", [t|AtmType|], [|AtmDeltaNeutral|])
+  , ("bvsdLongTermAtmDeltaType", [t|Maybe DeltaType|], [|Nothing|])
   ])
 
 {#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure bv'
@@ -515,6 +553,65 @@ piecewiseBlackVarianceSurface :: Day -> [Day] -- ^dates
   -> IO BlackVolTermStructure
 piecewiseBlackVarianceSurface d ds s (Matrix mr mc md) dc = qlPiecewiseBlackVarianceSurface d ds s mr mc md dc
 {#fun qlPiecewiseBlackVarianceSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- |A Black volatility surface parameterized by market deltas (put\/call deltas and, optionally,
+-- an ATM quote) rather than fixed strikes -- the standard FX vol quoting convention. Constructed
+-- with upstream's own defaults for the trailing options; use 'blackVolatilitySurfaceDeltaFull'
+-- to override them.
+blackVolatilitySurfaceDelta :: Day -> [Day] -- ^dates
+  -> [Double] -- ^putDeltas
+  -> [Double] -- ^callDeltas
+  -> Bool -- ^hasAtm
+  -> Matrix Double -- ^blackVolMatrix
+  -> DayCounter -> Calendar -> GenQuote q -- ^spot
+  -> GenYieldTermStructure y1 -- ^domesticTS
+  -> GenYieldTermStructure y2 -- ^foreignTS
+  -> IO BlackVolatilitySurfaceDelta
+blackVolatilitySurfaceDelta d ds pd cd hasAtm (Matrix mr mc md) dc cal spot dts fts =
+  blackVolatilitySurfaceDelta_ d ds pd cd hasAtm mr mc md dc cal spot dts fts
+    Spot AtmDeltaNeutral Nothing SmileLinear False FlatVolatility (0, Days) Fwd AtmDeltaNeutral Nothing
+
+-- |As 'blackVolatilitySurfaceDelta', but takes a 'BlackVolatilitySurfaceDeltaOpts' record for
+-- the trailing options instead of hardcoding upstream's defaults.
+blackVolatilitySurfaceDeltaFull :: Day -> [Day] -> [Double] -> [Double] -> Bool -> Matrix Double
+  -> DayCounter -> Calendar -> GenQuote q -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
+  -> BlackVolatilitySurfaceDeltaOpts -> IO BlackVolatilitySurfaceDelta
+blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (Matrix mr mc md) dc cal spot dts fts opts =
+  blackVolatilitySurfaceDelta_ d ds pd cd hasAtm mr mc md dc cal spot dts fts
+    (bvsdDeltaType opts) (bvsdAtmType opts) (bvsdAtmDeltaType opts)
+    (bvsdInterpolationMethod opts) (bvsdFlatStrikeExtrapolation opts) (bvsdTimeExtrapolationType opts)
+    (bvsdSwitchTenor opts) (bvsdLongTermDeltaType opts) (bvsdLongTermAtmType opts) (bvsdLongTermAtmDeltaType opts)
+
+{#fun qlBlackVolatilitySurfaceDelta as blackVolatilitySurfaceDelta_{withDay*`Day',withDayArray*`[Day]'&
+  ,withDoubleArray*`[Double]'& -- ^putDeltas
+  ,withDoubleArray*`[Double]'& -- ^callDeltas
+  ,`Bool' -- ^hasAtm
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^blackVolMatrix
+  ,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuote*`GenQuote q' -- ^spot
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticTS
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignTS
+  ,fromEnumC`DeltaType' -- ^deltaType
+  ,fromEnumC`AtmType' -- ^atmType
+  ,fromMaybeEnum`Maybe DeltaType' -- ^atmDeltaType
+  ,fromEnumC`SmileInterpolationMethod' -- ^interpolationMethod
+  ,`Bool' -- ^flatStrikeExtrapolation
+  ,fromEnumC`BlackVolTimeExtrapolationType' -- ^timeExtrapolationType
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^switchTenor
+  ,fromEnumC`DeltaType' -- ^longTermDeltaType
+  ,fromEnumC`AtmType' -- ^longTermAtmType
+  ,fromMaybeEnum`Maybe DeltaType' -- ^longTermAtmDeltaType
+  ,preErrorCheck-`String'errorCheck*-}->`BlackVolatilitySurfaceDelta'peekBlackVolatilitySurfaceDelta*#}
+
+-- |The Black vol smile at a given time to expiry (year fraction from the reference date), built
+-- by interpolating\/extrapolating the delta-quoted surface. The returned 'SmileSection' does not
+-- track later changes to the surface's spot\/curve handles -- recreate it if those change.
+{#fun qlBlackVolatilitySurfaceDeltaSmile1 as blackVolSmile{withBlackVolatilitySurfaceDelta*`BlackVolatilitySurfaceDelta'
+  ,`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+-- |As 'blackVolSmile', for a given expiry 'Day' instead of a year fraction.
+{#fun qlBlackVolatilitySurfaceDeltaSmile as blackVolSmile'{withBlackVolatilitySurfaceDelta*`BlackVolatilitySurfaceDelta'
+  ,withDay*`Day' -- ^d
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |floating reference date, floating market data
 capFloorTermVolSurface :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors

@@ -503,4 +503,14 @@ enum SobolDirectionIntegers {
   Unit, Jaeckel, SobolLevitan, SobolLevitanLemieux,
   JoeKuoD5, JoeKuoD6, JoeKuoD7, Kuo, Kuo2, Kuo3};
 
+// termstructures/volatility/equityfx/blackvolsurfacedelta.hpp
+// (BlackVolatilitySurfaceDelta::SmileInterpolationMethod). SmileLinear (not bare Linear, which
+// would collide with Interpolation's own Linear constructor, imported unqualified all over) --
+// same disambiguation-by-prefix convention DeltaVolQuote::AtmType's AtmSpot/AtmFwd/etc. already
+// use against DeltaType's Spot/Fwd.
+enum SmileInterpolationMethod {SmileLinear, NaturalCubic, FinancialCubic, CubicSpline};
+
+// termstructures/volatility/equityfx/blackvoltimeextrapolation.hpp (BlackVolTimeExtrapolation::Type)
+enum BlackVolTimeExtrapolationType {FlatVolatility, UseInterpolator, LinearVariance};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

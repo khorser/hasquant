@@ -36,6 +36,7 @@ typedef struct QlBlackProcess QlBlackProcess;
 typedef struct QlBlackScholesCalculator QlBlackScholesCalculator;
 typedef struct QlBlackVarianceCurve QlBlackVarianceCurve;
 typedef struct QlBlackVolTermStructure QlBlackVolTermStructure;
+typedef struct QlBlackVolatilitySurfaceDelta QlBlackVolatilitySurfaceDelta;
 typedef struct QlBMAIndex QlBMAIndex;
 typedef struct QlBMASwap QlBMASwap;
 typedef struct QlBond QlBond;
