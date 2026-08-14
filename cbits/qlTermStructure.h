@@ -194,6 +194,8 @@ extern "C" {
   QlRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
   QlRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e);
   QlRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
+  QlRateHelper* qlOvernightIndexFutureRateHelper(QlQuote* price, int valueDate, int maturityDate, QlOvernightIndex* overnightIndex, QlQuote* convexityAdjustment, int averagingMethod, int pillar, int customPillarDate, char **e);
+  QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int freq, QlQuote* convexityAdjustment, int pillar, int customPillarDate, char **e);
   double qlRateHelperImpliedQuote(QlRateHelper* o, char **e);
   QlBond* qlBondHelperBond(QlBondHelper* o, char **e);
   QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, char **e);

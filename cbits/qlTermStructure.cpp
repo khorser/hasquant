@@ -936,6 +936,17 @@ QlRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* ibo
 QlRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e) {
   try {return ret(new QlRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immDate), lengthInMonths, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper* qlOvernightIndexFutureRateHelper(QlQuote* price, int valueDate, int maturityDate, QlOvernightIndex* overnightIndex, QlQuote* convexityAdjustment, int averagingMethod, int pillar, int customPillarDate, char **e) {
+  try {return ret(new QlRateHelper(alloc(new OvernightIndexFutureRateHelper(*arg(price), Date(valueDate), Date(maturityDate),
+      *arg(overnightIndex), qlNullableHandle(arg(convexityAdjustment)), (RateAveraging::Type)averagingMethod,
+      (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int freq, QlQuote* convexityAdjustment, int pillar, int customPillarDate, char **e) {
+  try {return ret(new QlRateHelper(alloc(new SofrFutureRateHelper(
+      std::variant<Rate, Handle<Quote>>(*arg(price)), (Month)month, year, (Frequency)freq,
+      convexityAdjustment ? std::variant<Rate, Handle<Quote>>(*arg(convexityAdjustment)) : std::variant<Rate, Handle<Quote>>(Rate(0.0)),
+      (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 double qlRateHelperImpliedQuote(QlRateHelper* o, char **e) {try {return (*arg(o))->impliedQuote();} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlBond* qlBondHelperBond(QlBondHelper* o, char **e) {try {return ret(new QlBond((*arg(o))->bond()));} catch (std::exception& er) {return handleException<QlBond*>(e, er);}}
 QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, char **e) {

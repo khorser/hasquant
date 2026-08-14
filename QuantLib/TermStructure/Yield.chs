@@ -52,6 +52,8 @@ module QuantLib.TermStructure.Yield
   , futuresRateHelper'
   , futuresIborRateHelper
   , futuresRateHelper
+  , overnightIndexFutureRateHelper
+  , sofrFutureRateHelper
   , impliedQuote
   , impliedTermStructure
 
@@ -105,6 +107,7 @@ import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency(..), DateGenerationRule(..))
+{#import QuantLib.Time.Date#}(Month(..))
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -560,6 +563,21 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
   ,`FuturesType' -- ^type
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlOvernightIndexFutureRateHelper as overnightIndexFutureRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^valueDate
+  ,withDay*`Day' -- ^maturityDate
+  ,withOvernightIborIndex*`OvernightIborIndex'
+  ,withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
+  ,`RateAveragingType' -- ^averagingMethod
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlSofrFutureRateHelper as sofrFutureRateHelper{withQuote*`GenQuote q1',`Month' -- ^referenceMonth
+  ,fromIntegral`Int' -- ^referenceYear
+  ,`Frequency' -- ^referenceFreq
+  ,withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper rh',preErrorCheck-`String'errorCheck*-}->`Double'#}
 

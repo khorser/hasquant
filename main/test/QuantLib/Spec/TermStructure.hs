@@ -25,7 +25,7 @@ import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Pay
 import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.Instrument.Bond as Bond
 import QuantLib.Instrument.CapFloor(cap)
-import QuantLib.CashFlow(iborLeg)
+import QuantLib.CashFlow(iborLeg, RateAveragingType(..))
 import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European), StrikedPayoff(PlainVanilla), OptionType(Call))
 import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
@@ -199,6 +199,72 @@ spec = do
           implied <- impliedQuote rh
           fwdVal <- Quote.value fwdPoint
           implied `shouldSatisfy` closePrec fwdVal 1.0e-8
+
+    -- No upstream test-suite fixture exists for OvernightIndexFutureRateHelper/SofrFutureRateHelper
+    -- either (checked ~/Src/QuantLib/test-suite for overnightindexfuture/sofrfuture-named files,
+    -- found none). A single-pillar impliedQuote() self-consistency check alone (as used for the fx
+    -- swap rate helper above) is near-tautological here: RateHelper::quoteError() is driven to ~0
+    -- by the bootstrap solver regardless of whether valueDate/maturityDate/averagingMethod/pillar
+    -- are wired correctly, or whether the futures-price convention (100 - compounded rate) was
+    -- used consistently -- a transposed date or enum still converges. So each check below is kept,
+    -- but paired with a discriminating check that can actually fail on a wiring mistake.
+    describe "overnight index future rate helper" $
+      it "bootstrapped curve reprices the helper's own futures price" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual360dc <- dayCounter (Actual360 False)
+          ois <- overnightIborIndex Sofr Nothing
+          let valueDate = 2 `january` 2024
+          maturityDate <- advance cal valueDate (3, Months) ModifiedFollowing False
+          price <- Quote.simpleQuote 95.0
+          rh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
+          ts <- piecewiseYieldCurve valueDate [rh] actual360dc [] Discount LogLinear
+          _ <- discount' ts valueDate False
+          implied <- impliedQuote rh
+          priceVal <- Quote.value price
+          implied `shouldSatisfy` closePrec priceVal 1.0e-6
+
+    describe "sofr future rate helper" $ do
+      it "bootstrapped curve reprices the helper's own futures price" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          actual360dc <- dayCounter (Actual360 False)
+          let settlement = 2 `january` 2024
+          price <- Quote.simpleQuote 95.0
+          rh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
+          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
+          _ <- discount' ts settlement False
+          implied <- impliedQuote rh
+          priceVal <- Quote.value price
+          implied `shouldSatisfy` closePrec priceVal 1.0e-6
+
+      -- SofrFutureRateHelper derives its own valueDate/maturityDate (third Wednesday of the
+      -- reference month to the third Wednesday one Month/Quarter later) and constructs a Sofr
+      -- index internally, then delegates into the same OvernightIndexFutureRateHelper base
+      -- constructor bound above. Building the base helper directly with those same dates and
+      -- comparing the resulting discount factors pins both the date derivation and the
+      -- base-class delegation: a wrong Month/Frequency/averaging wiring makes the two curves
+      -- disagree even though each one's own impliedQuote() self-check (above) still passes.
+      it "agrees with an explicitly-dated overnight index future rate helper" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          actual360dc <- dayCounter (Actual360 False)
+          ois <- overnightIborIndex Sofr Nothing
+          let settlement = 2 `january` 2024
+          valueDate <- nthWeekday 3 QuantLib.Time.Date.Wednesday QuantLib.Time.Date.March 2024
+          maturityDate <- nthWeekday 3 QuantLib.Time.Date.Wednesday QuantLib.Time.Date.June 2024
+          price <- Quote.simpleQuote 95.0
+
+          sofrRh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
+          sofrTs <- piecewiseYieldCurve settlement [sofrRh] actual360dc [] Discount LogLinear
+          sofrDf <- discount' sofrTs maturityDate False
+
+          explicitRh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
+          explicitTs <- piecewiseYieldCurve settlement [explicitRh] actual360dc [] Discount LogLinear
+          explicitDf <- discount' explicitTs maturityDate False
+
+          sofrDf `shouldSatisfy` closePrec explicitDf 1.0e-8
 
     -- Relinking is the one thing a plain curve cannot do: reassign a whole curve under
     -- objects that are already built, and have everything downstream reprice. Every check
