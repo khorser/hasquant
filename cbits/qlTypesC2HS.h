@@ -71,6 +71,7 @@ typedef struct QlEuropeanExercise QlEuropeanExercise;
 typedef struct QlExercise QlExercise;
 typedef struct QlExtendedOrnsteinUhlenbeckProcess QlExtendedOrnsteinUhlenbeckProcess;
 typedef struct QlExtOUWithJumpsProcess QlExtOUWithJumpsProcess;
+typedef struct QlFdmQuantoHelper QlFdmQuantoHelper;
 typedef struct QlFittedBondDiscountCurve QlFittedBondDiscountCurve;
 typedef struct QlFixedRateBond QlFixedRateBond;
 typedef struct QlBondForward QlBondForward;

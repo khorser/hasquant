@@ -20,7 +20,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr))
-import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond)
+import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, hestonModel)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long), additionalResults, AdditionalResultVal(..))
 import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
@@ -30,9 +30,9 @@ import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.CashFlow(iborLeg, RateAveragingType(..))
 import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVanillaPayoff(..), Exercise(European, American), StrikedPayoff(PlainVanilla), OptionType(Call, Put))
 import qualified QuantLib.Instrument.Forward as Fwd
-import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
+import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization), hestonProcess, HestonProcessDiscretization(..))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine', bjerksundStenslandApproximationEngine)
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine', bjerksundStenslandApproximationEngine, analyticHestonEngine', fdHestonVanillaEngine)
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
 
@@ -988,6 +988,33 @@ spec = do
                     v <- Vol.volatilityForPeriod' grid od st 0.02 False
                     abs (v - expected) `shouldSatisfy` (< 1.0e-6)
                 ) nodes
+
+    -- Fixture from QuantLib's test-suite/fdheston.cpp testFdmHestonConvergence (first row of its
+    -- HestonTestData table), which compares FdHestonVanillaEngine against AnalyticHestonEngine on
+    -- the same HestonModel and expects agreement within 2% relative (or 0.002 absolute for small
+    -- NPVs) -- this exercises HestonModel -> engine -> instrument end to end, unlike a
+    -- self-consistency check against the model's own inputs.
+    describe "FD Heston engines" $
+      it "fdHestonVanillaEngine agrees with analyticHestonEngine on the same Heston model" $
+        Settings.keepingSettings' $ do
+          let refDate = 28 `march` 2004
+          Settings.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          rQ <- Quote.simpleQuote 0.025
+          rTS <- flatForward refDate rQ dc IR.Continuous Annual
+          qQ <- Quote.simpleQuote 0.0
+          qTS <- flatForward refDate qQ dc IR.Continuous Annual
+          s0 <- Quote.simpleQuote 75
+          proc <- hestonProcess rTS (Just qTS) s0 0.04 1.5 0.04 0.3 (-0.9) QuadraticExponentialMartingale
+          model <- hestonModel proc
+          exerciseDate <- addPeriod refDate (365, Days)
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100))
+                                (European (EuropeanExercise exerciseDate))
+          analyticHestonEngine' model 144 >>= setPricingEngine opt
+          expected <- npv opt
+          fdHestonVanillaEngine model 60 101 51 0 Hundsdorfer Nothing 1.0 >>= setPricingEngine opt
+          calculated <- npv opt
+          abs (calculated - expected) `shouldSatisfy` (< max 0.002 (0.02 * abs expected))
 
     -- Instrument.additionalResults() marshals four discriminants: Real, std::string,
     -- vector<Real>, and an Unsupported fallback (RTTI name) for anything else. The Real/String

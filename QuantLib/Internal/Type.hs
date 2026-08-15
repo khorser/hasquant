@@ -150,6 +150,17 @@ withDividend = withStandalone . getCDividend
 withDividendArray :: [Dividend] -> ((CUInt, Ptr (Ptr CDividend)) -> IO b) -> IO b
 withDividendArray = withStandaloneArray getCDividend
 
+data CFdmQuantoHelper
+newtype FdmQuantoHelper = FdmQuantoHelper {getCFdmQuantoHelper :: Standalone CFdmQuantoHelper}
+foreign import ccall unsafe "ql.h &qlFreeFdmQuantoHelper" qlFreeFdmQuantoHelper :: FinalizerPtr CFdmQuantoHelper
+instance Finalizable CFdmQuantoHelper where finalize = qlFreeFdmQuantoHelper
+peekFdmQuantoHelper :: Ptr CFdmQuantoHelper -> IO FdmQuantoHelper
+peekFdmQuantoHelper = FdmQuantoHelper <.> peekStandalone
+withFdmQuantoHelper :: FdmQuantoHelper -> (Ptr CFdmQuantoHelper -> IO b) -> IO b
+withFdmQuantoHelper = withStandalone . getCFdmQuantoHelper
+withMaybeFdmQuantoHelper :: Maybe FdmQuantoHelper -> (Ptr CFdmQuantoHelper -> IO b) -> IO b
+withMaybeFdmQuantoHelper = withMaybeStandalone . (getCFdmQuantoHelper <$>)
+
 data CZeroInflationCashFlow
 newtype ZeroInflationCashFlow = ZeroInflationCashFlow {getCZeroInflationCashFlow :: Standalone CZeroInflationCashFlow}
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationCashFlow" qlFreeZeroInflationCashFlow :: FinalizerPtr CZeroInflationCashFlow
@@ -1127,6 +1138,8 @@ peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVol
 peekCapFloorTermVolSurface = peekGenVolatilityTermStructure
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
 peekLocalVolTermStructure = peekGenVolatilityTermStructure
+withMaybeLocalVolTermStructure :: Maybe LocalVolTermStructure -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
+withMaybeLocalVolTermStructure x f = maybe (f nullPtr) (`withGenVolatilityTermStructure` f) x
 peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
 peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure

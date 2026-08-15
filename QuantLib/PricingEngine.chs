@@ -11,6 +11,7 @@ module QuantLib.PricingEngine
   , NumericalFix(..)
   , AccrualBias(..)
   , ForwardsInCouponPeriod(..)
+  , FdmQuantoHelper
 
   , GenBlackCalculator
   , asBlackCalculator
@@ -23,9 +24,12 @@ module QuantLib.PricingEngine
   , analyticBarrierEngine
   , analyticBinaryBarrierEngine
   , fdBlackScholesBarrierEngine
+  , fdHestonBarrierEngine
+  , fdHestonBarrierEngine'
   , binomialBarrierEngine
   , vannaVolgaBarrierEngine
   , analyticDoubleBarrierEngine
+  , fdHestonDoubleBarrierEngine
   , vannaVolgaDoubleBarrierEngine
   , binomialDoubleBarrierEngine
   , mcDoubleBarrierEngine
@@ -107,6 +111,13 @@ module QuantLib.PricingEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
   , fdBlackScholesVanillaEngine
+  , fdmQuantoHelper
+  , fdHestonVanillaEngine
+  , fdHestonVanillaEngine'
+  , fdHestonVanillaEngineQuanto
+  , fdHestonVanillaEngineQuanto'
+  , fdHestonHullWhiteVanillaEngine
+  , fdHestonHullWhiteVanillaEngine'
 
   , binomialConvertibleEngine
   , blackCallableFixedRateBondEngine'
@@ -225,6 +236,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
@@ -463,6 +475,18 @@ import QuantLib.Internal.Enum
 {#fun qlTreeSwaptionEngine1 as treeSwaptionEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
+{#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
+-- |Snapshots @rTS@/@fTS@/@fxVolTS@ at construction time (their underlying @shared_ptr@s are copied
+-- out of their handles): a later relink of a 'RelinkableYieldTermStructure' or
+-- 'RelinkableBlackVolTermStructure' passed in here will /not/ be reflected in this 'FdmQuantoHelper'.
+{#fun qlFdmQuantoHelper as fdmQuantoHelper{withYieldTermStructure*`GenYieldTermStructure y1' -- ^rTS
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^fTS
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^fxVolTS
+  ,`Double' -- ^equityFxCorrelation
+  ,`Double' -- ^exchRateATMlevel
+  ,preErrorCheck-`String'errorCheck*-}->`FdmQuantoHelper'peekFdmQuantoHelper*#}
+
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withG2*`G2',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -481,6 +505,31 @@ import QuantLib.Internal.Enum
   ,withFdmSchemeDesc*`FdmScheme'
   ,`Bool' -- ^localVol
   ,`Double' -- ^illegalLocalVolOverwrite
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonBarrierEngine as fdHestonBarrierEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonBarrierEngine1 as fdHestonBarrierEngine'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonDoubleBarrierEngine as fdHestonDoubleBarrierEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |/NB/ C++ classes Monte Carlo engines are additionally parameterised via statistic template argument
@@ -623,6 +672,61 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^localVol
   ,`Double' -- ^illegalLocalVolOverwrite
   ,`CashDividendModel' -- ^cashDividendModel
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonVanillaEngine as fdHestonVanillaEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonVanillaEngine1 as fdHestonVanillaEngine'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonVanillaEngine2 as fdHestonVanillaEngineQuanto{withHestonModel*`GenHestonModel hm',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonVanillaEngine3 as fdHestonVanillaEngineQuanto'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonHullWhiteVanillaEngine as fdHestonHullWhiteVanillaEngine{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess'
+  ,`Double' -- ^corrEquityShortRate
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^rGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,`Bool' -- ^controlVariate, upstream default: true
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlFdHestonHullWhiteVanillaEngine1 as fdHestonHullWhiteVanillaEngine'{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess',withDividendArray*`[Dividend]'&
+  ,`Double' -- ^corrEquityShortRate
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^rGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,`Bool' -- ^controlVariate, upstream default: true
+  ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlBinomialConvertibleEngine as binomialConvertibleEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
