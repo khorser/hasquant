@@ -55,17 +55,6 @@ template <> class ObjClassName<FittedBondDiscountCurveFittingMethod*> {public: s
 template <> class ObjClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
 #endif
 
-// vals elements are already Handle<T>*, since a Quote/vol-structure array is an array of the
-// same Handle-backed pointer type used everywhere else -- copying *arg(vals[i]) into the
-// vector shares its Link like any other Handle copy, so a relinkable element stays tracked.
-template <class T>
-inline std::vector<Handle<T> > qlHandleVector(Handle<T> **vals, size_t len) {
-  std::vector<Handle<T> > r; r.reserve(len);
-  for (size_t i = 0; i < len; ++i)
-    r.push_back(*arg(vals[i]));
-  return r;
-}
-
 template <class T>
 inline std::vector< std::vector<Handle<T> > > qlHandleMatrix(Handle<T> **vals, size_t rows, size_t cols) {
   std::vector< std::vector<Handle<T> > > r; r.reserve(rows);
@@ -272,7 +261,7 @@ double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e) {
 double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e) {
   try {return (*arg(o))->variance(strike);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, double forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, double atmVolatility, unsigned volsLen, double* vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e) {
+QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e) {
   try {
     // endCriteria/optMethod are left at their empty-shared_ptr defaults (SABRInterpolation's
     // own internal EndCriteria/LevenbergMarquardt defaults apply) rather than accepting
@@ -282,11 +271,11 @@ QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, double forward, u
     // this call -- the same ownership hazard already avoided for FittedBondDiscountCurve's
     // fitting methods.
     ext::shared_ptr<SmileSection> section(new SabrInterpolatedSmileSection(
-        Date(optionDate), forward, std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
-        atmVolatility, std::vector<Real>(vols, vols + volsLen), alpha, beta, nu, rho,
+        Date(optionDate), *arg(forward), std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
+        *arg(atmVolatility), qlHandleVector(vols, volsLen), alpha, beta, nu, rho,
         isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, vegaWeighted,
         ext::shared_ptr<EndCriteria>(), ext::shared_ptr<OptimizationMethod>(), *arg(dc), shift));
-    section->volatility(forward); // force calibration now, surfacing failures at construction
+    section->atmLevel(); // force calibration now, surfacing failures at construction
     return ret(new QlSmileSection(alloc(section)));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 double qlSabrInterpolatedSmileSectionAlpha(QlSmileSection* o, char **e) {
@@ -443,14 +432,14 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar
 QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc,
     unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
     unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
-    unsigned volRows, unsigned volCols, double* vols, DayCounter* dc, int flatExtrapolation, int type,
+    unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type,
     unsigned shiftRows, unsigned shiftCols, double* shifts, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SwaptionVolatilityMatrix(
             Date(referenceDate), *arg(calendar), (BusinessDayConvention)bdc,
             qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
             qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
-            qlMatrix(vols, volRows, volCols), *arg(dc), (bool)flatExtrapolation, (VolatilityType)type,
-            qlMatrix(shifts, shiftRows, shiftCols))))));
+            qlHandleMatrix(vols, volRows, volCols), *arg(dc), (bool)flatExtrapolation, (VolatilityType)type,
+            qlRealMatrix(shifts, shiftRows, shiftCols))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 
 void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) {del(o);}

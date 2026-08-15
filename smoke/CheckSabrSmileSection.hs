@@ -14,6 +14,7 @@ import Control.Monad(forM_, unless)
 import Text.Printf(printf)
 import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.PricingEngine(unsafeShiftedSabrVolatility)
+import QuantLib.Quote(simpleQuote)
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(TimeUnit(..))
 import QuantLib.TermStructure.Volatility
@@ -58,7 +59,10 @@ main = do
   atmVol <- unsafeShiftedSabrVolatility forward forward expiry alpha beta nu rho shift ShiftedLognormal
   now <- today
   optionDate <- addPeriod now (round (expiry * 365) :: Int, Days)
-  interp <- sabrInterpolatedSmileSection optionDate forward strikes False atmVol refVols
+  forwardQuote <- simpleQuote forward
+  atmVolQuote <- simpleQuote atmVol
+  refVolQuotes <- mapM simpleQuote refVols
+  interp <- sabrInterpolatedSmileSection optionDate forwardQuote strikes False atmVolQuote refVolQuotes
     alpha beta nu rho defaultSabrInterpolatedSmileSectionOpts
   calibratedAlpha <- sabrInterpolatedSmileSectionAlpha interp
   calibratedBeta <- sabrInterpolatedSmileSectionBeta interp

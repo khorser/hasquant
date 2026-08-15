@@ -4,7 +4,7 @@ extern "C" {
   QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
   QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e);
-  QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, double blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e);
+  QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, QlQuote* blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e);
   QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticBinaryBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlFdBlackScholesBarrierEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, char **e);
@@ -220,7 +220,7 @@ extern "C" {
   QlCalibratedModel* qlMarkovFunctionalAsCalibratedModel(QlMarkovFunctional *o);
   QlGaussian1dModel* qlGsrAsGaussian1dModel(QlGsr *o);
   QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o);
-  QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, double reversion, double T, char **e);
+  QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, QlQuote* reversion, double T, char **e);
   void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e);
   void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e);
   QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e);
@@ -243,7 +243,7 @@ extern "C" {
 
   void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, char **e);
   QlBlackCalibrationHelper* qlCapHelper(int, int, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, int type, double shift, char **e);
-  QlBlackCalibrationHelper* qlHestonModelHelper(int, int, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
+  QlBlackCalibrationHelper* qlHestonModelHelper(int, int, Calendar* calendar, QlQuote* s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
   QlBlackCalibrationHelper* qlSwaptionHelper(int, int, int, int, QlQuote* volatility, QlIborIndex* index, int, int, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e);
   QlBlackCalibrationHelper* qlSwaptionHelperFromDate(int exerciseDate, int, int, QlQuote* volatility, QlIborIndex* index, int, int, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e);
   QlBlackCalibrationHelper* qlSwaptionHelperFromDates(int exerciseDate, int endDate, QlQuote* volatility, QlIborIndex* index, int, int, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e);

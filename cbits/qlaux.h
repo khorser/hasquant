@@ -1134,6 +1134,15 @@ inline Matrix qlMatrix(double *a, unsigned r, unsigned c) {
   return m;
 }
 
+// Some constructors (e.g. SwaptionVolatilityMatrix's Handle<Quote>-vols overload) take a plain
+// vector<vector<Real>> rather than a Matrix for a same-shaped Real-only argument (shifts).
+inline std::vector<std::vector<double> > qlRealMatrix(double *a, unsigned r, unsigned c) {
+  std::vector<std::vector<double> > m; m.reserve(r);
+  for (unsigned i = 0; i < r; ++i)
+    m.push_back(std::vector<double>(a + i*c, a + (i+1)*c));
+  return m;
+}
+
 optional<bool> qlOptBool(int b);
 int qlOptBool(optional<bool> b);
 
@@ -1168,6 +1177,17 @@ inline std::vector<T> qlVector(T **vals, size_t len) {
   std::vector<T> r; r.reserve(len);
   for (size_t i = 0; i < len; ++i)
     r.push_back(*vals[i]);
+  return r;
+}
+
+// vals elements are already Handle<T>*, since a Quote/vol-structure array is an array of the
+// same Handle-backed pointer type used everywhere else -- copying *arg(vals[i]) into the
+// vector shares its Link like any other Handle copy, so a relinkable element stays tracked.
+template <class T>
+inline std::vector<Handle<T> > qlHandleVector(Handle<T> **vals, size_t len) {
+  std::vector<Handle<T> > r; r.reserve(len);
+  for (size_t i = 0; i < len; ++i)
+    r.push_back(*arg(vals[i]));
   return r;
 }
 

@@ -193,8 +193,8 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 fixedReversion :: [Bool]
 fixedReversion = [True, False]
 {#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'& -- ^volstepdates
-  ,withDoubleArray*`[Double]'& -- ^volatilities
-  ,`Double' -- ^reversion
+  ,withQuoteArray*`[GenQuote q1]'& -- ^volatilities
+  ,withQuote*`GenQuote q2' -- ^reversion
   ,`Double' -- ^T
   ,preErrorCheck-`String'errorCheck*-}->`Gsr'peekGsr*#}
 -- |Volatility step values, as calibrated so far.
@@ -255,9 +255,9 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 {#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
-  ,withCalendar*`Calendar',`Double' -- ^s0
+  ,withCalendar*`Calendar',withQuote*`GenQuote q1' -- ^s0
   ,`Double' -- ^strikePrice
-  ,withQuote*`GenQuote q' -- ^volatility
+  ,withQuote*`GenQuote q2' -- ^volatility
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeRate
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}

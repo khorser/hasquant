@@ -379,11 +379,11 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
 -- OptimizationMethod handle can't safely be stored for this object's full lifetime -- see the
 -- qlXxxFitting comment in "QuantLib.Internal.Enum" for the same ownership hazard elsewhere).
 sabrInterpolatedSmileSection :: Day -- ^optionDate
-  -> Double -- ^forward
+  -> GenQuote q1 -- ^forward
   -> [Double] -- ^strikes
   -> Bool -- ^hasFloatingStrikes
-  -> Double -- ^atmVolatility
-  -> [Double] -- ^vols
+  -> GenQuote q2 -- ^atmVolatility
+  -> [GenQuote q3] -- ^vols
   -> Double -- ^alpha
   -> Double -- ^beta
   -> Double -- ^nu
@@ -397,11 +397,11 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
     (sabrIsRhoFixed opts) (sabrVegaWeighted opts) dc (sabrShift opts)
 
 {#fun qlSabrInterpolatedSmileSection as sabrInterpolatedSmileSection_{withDay*`Day'
-  ,`Double' -- ^forward
+  ,withQuote*`GenQuote q1' -- ^forward
   ,withDoubleArray*`[Double]'& -- ^strikes
   ,`Bool' -- ^hasFloatingStrikes
-  ,`Double' -- ^atmVolatility
-  ,withDoubleArray*`[Double]'& -- ^vols
+  ,withQuote*`GenQuote q2' -- ^atmVolatility
+  ,withQuoteArray*`[GenQuote q3]'& -- ^vols
   ,`Double' -- ^alpha
   ,`Double' -- ^beta
   ,`Double' -- ^nu
@@ -629,12 +629,12 @@ capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, T
 capFloorTermVolSurface' d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t
 {#fun qlCapFloorTermVolSurface1{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
 
--- |fixed reference date, fixed market data. Pass an empty 'Matrix' (@Matrix 0 0 []@) for @shifts@
+-- |fixed reference date, floating market data. Pass an empty 'Matrix' (@Matrix 0 0 []@) for @shifts@
 -- when no shift is needed -- upstream treats a zero-row shift matrix as all-zero.
 swaptionVolatilityMatrix' :: Day -> Calendar -> BusinessDayConvention
   -> [(Word, TimeUnit)] -- ^optionTenors
   -> [(Word, TimeUnit)] -- ^swapTenors
-  -> Matrix Double -- ^volatilities
+  -> Matrix (GenQuote q) -- ^volatilities
   -> DayCounter
   -> Bool -- ^flatExtrapolation
   -> VolatilityType
@@ -646,7 +646,7 @@ swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr s
 {#fun qlSwaptionVolatilityMatrix{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
   ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}

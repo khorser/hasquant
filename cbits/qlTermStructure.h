@@ -46,7 +46,7 @@ extern "C" {
   QlSmileSection* qlSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e);
   double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e);
   double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e);
-  QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, double forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, double atmVolatility, unsigned volsLen, double* vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e);
+  QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e);
   double qlSabrInterpolatedSmileSectionAlpha(QlSmileSection* o, char **e);
   double qlSabrInterpolatedSmileSectionBeta(QlSmileSection* o, char **e);
   double qlSabrInterpolatedSmileSectionNu(QlSmileSection* o, char **e);
@@ -98,7 +98,7 @@ extern "C" {
   QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile(QlBlackVolatilitySurfaceDelta* o, int d, char **e);
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
-  QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, double* vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
+  QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
 
   void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o);
   QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o);

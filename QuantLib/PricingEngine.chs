@@ -258,7 +258,7 @@ import QuantLib.Internal.Enum
 -- CVA\/DVA; pass 'Nothing' for @invstDTS@ and @0.999@ for @invstRecoveryRate@ to
 -- match upstream's unilateral-CVA-only defaults.
 {#fun qlCounterpartyAdjSwapEngine as counterpartyAdjSwapEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
-  ,`Double' -- ^blackVol
+  ,withQuote*`GenQuote q' -- ^blackVol
   ,withGenTermStructure*`DefaultProbabilityTermStructure' -- ^ctptyDTS
   ,`Double' -- ^ctptyRecoveryRate
   ,withMaybeDefaultProbabilityTermStructure*`Maybe DefaultProbabilityTermStructure' -- ^invstDTS

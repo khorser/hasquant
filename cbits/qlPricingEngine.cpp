@@ -115,8 +115,8 @@ QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, in
 QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e) {
   try {return ret(new QlPricingEngine(alloc(new DiscountingFxForwardEngine(*arg(sourceCurrencyDiscountCurve), *arg(targetCurrencyDiscountCurve), *arg(spotFx)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, double blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new CounterpartyAdjSwapEngine(*arg(discountCurve), blackVol, Handle<DefaultProbabilityTermStructure>(*arg(ctptyDTS)), ctptyRecoveryRate, qlNullableHandle(arg(invstDTS)), invstRecoveryRate))));
+QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, QlQuote* blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new CounterpartyAdjSwapEngine(*arg(discountCurve), *arg(blackVol), Handle<DefaultProbabilityTermStructure>(*arg(ctptyDTS)), ctptyRecoveryRate, qlNullableHandle(arg(invstDTS)), invstRecoveryRate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));
@@ -590,8 +590,8 @@ QlCalibratedModel* qlGsrAsCalibratedModel(QlGsr *o) {return ret(new QlCalibrated
 QlCalibratedModel* qlMarkovFunctionalAsCalibratedModel(QlMarkovFunctional *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlGaussian1dModel* qlGsrAsGaussian1dModel(QlGsr *o) {return ret(new QlGaussian1dModel(*arg(o)));}
 QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o) {return ret(new QlGaussian1dModel(*arg(o)));}
-QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, double reversion, double T, char **e) {
-  try {return ret(new QlGsr(alloc(new Gsr(*arg(termStructure), qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), reversion, T))));
+QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, QlQuote* reversion, double T, char **e) {
+  try {return ret(new QlGsr(alloc(new Gsr(*arg(termStructure), qlDateVector(volstepdates, volstepdatesLen), qlHandleVector(volatilities, volatilitiesLen), *arg(reversion), T))));
   } catch (std::exception& er) {return handleException<QlGsr*>(e, er);}}
 void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
   try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
@@ -632,8 +632,8 @@ void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPri
 QlBlackCalibrationHelper* qlCapHelper(int l, int u, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, int type, double shift, char **e) {
   try {return ret(new QlBlackCalibrationHelper(alloc(new CapHelper(Period(l, (TimeUnit)u), *arg(volatility), *arg(index), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, (VolatilityType)type, shift))));
   } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
-QlBlackCalibrationHelper* qlHestonModelHelper(int l, int u, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
-  try {return ret(new QlBlackCalibrationHelper(alloc(new HestonModelHelper(Period(l, (TimeUnit)u), *arg(calendar), s0, strikePrice, *arg(volatility), *arg(riskFreeRate), *arg(dividendYield), (BlackCalibrationHelper::CalibrationErrorType)errorType))));
+QlBlackCalibrationHelper* qlHestonModelHelper(int l, int u, Calendar* calendar, QlQuote* s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
+  try {return ret(new QlBlackCalibrationHelper(alloc(new HestonModelHelper(Period(l, (TimeUnit)u), *arg(calendar), *arg(s0), strikePrice, *arg(volatility), *arg(riskFreeRate), *arg(dividendYield), (BlackCalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
 QlBlackCalibrationHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
   try {return ret(new QlBlackCalibrationHelper(alloc(new SwaptionHelper(Period(l, (TimeUnit)u), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));

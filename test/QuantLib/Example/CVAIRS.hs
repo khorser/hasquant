@@ -61,9 +61,10 @@ run = do
   mediumTS <- mkHazardCurve intensitiesMedium
   highTS <- mkHazardCurve intensitiesHigh
 
-  ctptyLow <- counterpartyAdjSwapEngine swapTS blackVol lowTS ctptyRRLow Nothing 0.999
-  ctptyMedium <- counterpartyAdjSwapEngine swapTS blackVol mediumTS ctptyRRMedium Nothing 0.999
-  ctptyHigh <- counterpartyAdjSwapEngine swapTS blackVol highTS ctptyRRHigh Nothing 0.999
+  blackVolQuote <- simpleQuote blackVol
+  ctptyLow <- counterpartyAdjSwapEngine swapTS blackVolQuote lowTS ctptyRRLow Nothing 0.999
+  ctptyMedium <- counterpartyAdjSwapEngine swapTS blackVolQuote mediumTS ctptyRRMedium Nothing 0.999
+  ctptyHigh <- counterpartyAdjSwapEngine swapTS blackVolQuote highTS ctptyRRHigh Nothing 0.999
 
   yieldIndexS <- IR.iborIndex IR.Euribor3M (Just swapTS)
 

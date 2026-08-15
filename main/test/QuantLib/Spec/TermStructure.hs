@@ -1,6 +1,8 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module QuantLib.Spec.TermStructure (spec) where
 
+import Control.Monad(replicateM)
+
 import Test.Hspec hiding(before, after)
 import Test.Hspec.QuickCheck(prop)
 import Test.QuickCheck.Monadic as Q(monadicIO, run)
@@ -953,8 +955,9 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           let v = 0.20
-              volMatrix = either error id $ realMatrix 2 2 (replicate 4 v)
               shiftMatrix = either error id $ realMatrix 0 0 []
+          volQuotes <- replicateM 4 (Quote.simpleQuote v)
+          let volMatrix = either error id $ objectMatrix 2 2 volQuotes
           grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
                     volMatrix dc False IR.ShiftedLognormal shiftMatrix
           volQ <- Quote.simpleQuote v
@@ -972,8 +975,9 @@ spec = do
           -- rows are option tenors, columns are swap tenors, matching SwaptionVolatilityMatrix's
           -- own row/column convention (M[i][j] = i-th option date, j-th swap tenor)
           let vols = [[0.10, 0.20], [0.30, 0.40]]
-              volMatrix = either error id $ realMatrix 2 2 (concat vols)
               shiftMatrix = either error id $ realMatrix 0 0 []
+          volQuotes <- mapM Quote.simpleQuote (concat vols)
+          let volMatrix = either error id $ objectMatrix 2 2 volQuotes
           grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
                     volMatrix dc False IR.ShiftedLognormal shiftMatrix
           optionDates <- mapM (\(n, u) -> advance cal refDate (fromIntegral n, u) ModifiedFollowing False) optionTenors

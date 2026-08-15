@@ -10,7 +10,7 @@
 --    Upcastable/Gaussian1dModel wiring is right, not just that it compiles.
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/Gaussian1dModels.hs -o /tmp/gaussian1dmodels -outputdir /tmp/gaussian1dmodels_build && /tmp/gaussian1dmodels
-import Control.Monad (forM, forM_)
+import Control.Monad (forM, forM_, replicateM)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IR
@@ -62,7 +62,9 @@ main = do
     swaptionHelper (s, Years) (l, Years) volQ euribor6m (1, Years) thirty360bb act360 ts RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing CF.AveragingCompound
   stepDates <- forM (init [s | (s, _, _) <- basketData]) $ \s -> advance cal today (fromIntegral s, Years) Following False
 
-  gsrModel <- gsr ts stepDates (replicate (length basketData) 0.01) 0.01 60.0
+  gsrVolQuotes <- replicateM (length basketData) (simpleQuote 0.01)
+  gsrReversionQuote <- simpleQuote 0.01
+  gsrModel <- gsr ts stepDates gsrVolQuotes gsrReversionQuote 60.0
   gsrEngine <- gaussian1dSwaptionEngine (Gsr gsrModel) 32 5.0 True False (Just ts) None
   forM_ helpers (`Model.setPricingEngine` gsrEngine)
   let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
