@@ -337,6 +337,9 @@ extern "C" {
   QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched, QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
     unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
     int inArrears, double redemption, int issue, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, char **e);
+  QlBond *qlCmsRateBond(unsigned settlDays, double faceAmount, Schedule *sched, QlSwapIndex *index, DayCounter *dc,
+    int payConv, unsigned fixDays, unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
+    unsigned nCaps, double *caps, unsigned nFloors, double *floors, int inArrears, double redemption, int issue, char **e);
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
   QlCPIBond *qlCPIBond(unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, char **e);
   QlBond *qlCPIBondAsBond(QlCPIBond *bond);
@@ -473,7 +476,10 @@ extern "C" {
 
   Leg* qlAverageBMALeg(Schedule* schedule, QlBMAIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
   Leg* qlFixedRateLeg(Schedule* schedule, unsigned NotionalsLen, double* Notionals, unsigned couponRatesLen, InterestRate** couponRates, int paymentAdjustment, DayCounter* firstPeriodDayCounter, Calendar* paymentCalendar, char **e);
-  Leg* qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e);
+  Leg* qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments,
+    int paymentLag, Calendar* paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, int useIndexedCoupons, char **e);
+  Leg* qlCmsLeg(Schedule* schedule, QlSwapIndex* swapIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments,
+    int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, char **e);
   Leg* qlOvernightLeg(Schedule* schedule, QlOvernightIndex* overnightIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
   Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, int, int, int observationConvention, char **e);
   void qlFreeCouponLeg(CouponLeg *o);

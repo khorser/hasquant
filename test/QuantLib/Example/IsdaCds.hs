@@ -6,7 +6,6 @@ module QuantLib.Example.IsdaCds
 import Data.Time.Calendar
 
 import QuantLib.Currency
-import QuantLib.InterestRate
 import QuantLib.Instrument
 import QuantLib.Instrument.Credit
 import QuantLib.Index.InterestRate hiding(dayCounter, currency)

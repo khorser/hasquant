@@ -55,6 +55,7 @@
 #include <ql/cashflows/averagebmacoupon.hpp>
 #include <ql/cashflows/fixedratecoupon.hpp>
 #include <ql/cashflows/iborcoupon.hpp>
+#include <ql/cashflows/cmscoupon.hpp>
 #include <ql/cashflows/overnightindexedcoupon.hpp>
 #include <ql/cashflows/rangeaccrual.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
@@ -686,6 +687,15 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched, QlI
 	  (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
 
+QlBond *qlCmsRateBond(unsigned settlDays, double faceAmount, Schedule *sched, QlSwapIndex *index, DayCounter *dc,
+  int payConv, unsigned fixDays, unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
+  unsigned nCaps, double *caps, unsigned nFloors, double *floors, int inArrears, double redemption, int issue, char **e) {
+  try {std::vector<Real> gs(gearings, gearings+nGearings); std::vector<Spread> sps(spreads, spreads+nSpreads);
+    std::vector<Rate> cs(caps, caps+nCaps); std::vector<Rate> fs(floors, floors+nFloors);
+    return ret(new QlBond(alloc(new CmsRateBond(settlDays, faceAmount, *arg(sched), *arg(index), *arg(dc),
+      (BusinessDayConvention)payConv, fixDays, gs, sps, cs, fs, inArrears, redemption, qlNullableDate(issue)))));
+  } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
+
 QlBond *qlAmortizingFixedRateBond(unsigned settlementDays, unsigned notionalsLen, double *notionals, Schedule *schedule,
     unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate,
     int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth,
@@ -1045,11 +1055,24 @@ Leg* qlFixedRateLeg(Schedule* schedule, unsigned NotionalsLen, double* Notionals
   try {return alloc(new Leg(FixedRateLeg(*arg(schedule)).withNotionals(std::vector<double>(Notionals, Notionals+NotionalsLen)).withCouponRates(qlVector(couponRates, couponRatesLen))
         .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFirstPeriodDayCounter(*arg(firstPeriodDayCounter)).withPaymentCalendar(*arg(paymentCalendar))));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
-Leg* qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e) {
+Leg* qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments,
+  int paymentLag, Calendar* paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, int useIndexedCoupons, char **e) {
   try {return alloc(new Leg(IborLeg(*arg(schedule), *arg(index)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
         .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<unsigned>(fixingDays, fixingDays+fixingDaysLen))
         .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))
-        .withCaps(std::vector<double>(caps, caps+capsLen)).withFloors(std::vector<double>(floors, floors+floorsLen)).inArrears(inArrears).withZeroPayments(zeroPayments)));
+        .withCaps(std::vector<double>(caps, caps+capsLen)).withFloors(std::vector<double>(floors, floors+floorsLen)).inArrears(inArrears).withZeroPayments(zeroPayments)
+        .withPaymentLag(paymentLag).withPaymentCalendar(*arg(paymentCalendar))
+        .withExCouponPeriod(Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar), (BusinessDayConvention)exCouponConvention, exCouponEndOfMonth)
+        .withFixingConvention((BusinessDayConvention)fixingConvention).withIndexedCoupons(qlOptBool(useIndexedCoupons))));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+Leg* qlCmsLeg(Schedule* schedule, QlSwapIndex* swapIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments,
+  int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, char **e) {
+  try {return alloc(new Leg(CmsLeg(*arg(schedule), *arg(swapIndex)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
+        .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<unsigned>(fixingDays, fixingDays+fixingDaysLen))
+        .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))
+        .withCaps(std::vector<double>(caps, caps+capsLen)).withFloors(std::vector<double>(floors, floors+floorsLen)).inArrears(inArrears).withZeroPayments(zeroPayments)
+        .withExCouponPeriod(Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar), (BusinessDayConvention)exCouponConvention, exCouponEndOfMonth)
+        .withFixingConvention((BusinessDayConvention)fixingConvention)));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 Leg* qlOvernightLeg(Schedule* schedule, QlOvernightIndex* overnightIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e) {
   try {return alloc(new Leg(OvernightLeg(*arg(schedule), *arg(overnightIndex)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))

@@ -129,6 +129,9 @@ spec = do
         -- per coupon period (same as its underlying IborLeg), hence the `init`.
         allNs <- B.sinkingNotionals (2, Years) Quarterly 0.05 100.0
         let ns = init allNs
+            n0 = case allNs of
+              (x:_) -> x
+              [] -> error "sinkingNotionals returned no notionals"
         usd3m <- I.iborIndex (I.UsdLibor (3, Months)) Nothing
         bnd <- B.amortizingFloatingRateBond 0 ns sched usd3m dc
                  B.defaultAmortizingFloatingRateBondOpts
@@ -143,7 +146,7 @@ spec = do
         redemptionLeg <- B.redemptions bnd
         redemptionFlows <- CF.cashFlows redemptionLeg Nothing Nothing
         let totalRedeemed = sum (map (\(_, a, _) -> a) redemptionFlows)
-        totalRedeemed `shouldSatisfy` closePrec (head ns) 1e-6
+        totalRedeemed `shouldSatisfy` closePrec n0 1e-6
 
     describe "FRA Example" $
       it "check values" $ do

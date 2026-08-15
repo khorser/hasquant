@@ -91,7 +91,7 @@
 | |ql/cashflows/cashflowvectors.hpp|bool noOption(const std::vector<Rate> & caps, const std::vector<Rate> & floors, Size i);
 | |ql/cashflows/cmscoupon.hpp|CmsCoupon::CmsCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<SwapIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
 | |ql/cashflows/cmscoupon.hpp|const ext::shared_ptr<SwapIndex> & CmsCoupon::swapIndex() const;
-| |ql/cashflows/cmscoupon.hpp|CmsLeg::CmsLeg(Schedule schedule, ext::shared_ptr<SwapIndex> swapIndex);
+|?|ql/cashflows/cmscoupon.hpp|CmsLeg::CmsLeg(Schedule schedule, ext::shared_ptr<SwapIndex> swapIndex);
 | |ql/cashflows/cmscoupon.hpp|CmsLeg & CmsLeg::withNotionals(Real notional);
 | |ql/cashflows/cmscoupon.hpp|CmsLeg & CmsLeg::withNotionals(const std::vector<Real> & notionals);
 | |ql/cashflows/cmscoupon.hpp|CmsLeg & CmsLeg::withPaymentDayCounter(const DayCounter &);
@@ -3268,7 +3268,7 @@
 | |ql/instruments/bonds/btp.hpp|Time equivalentSwapLength() const;
 | |ql/instruments/bonds/btp.hpp|Spread equivalentSwapSpread() const;
 | |ql/instruments/bonds/btp.hpp|Real value() const;
-| |ql/instruments/bonds/cmsratebond.hpp|CmsRateBond::CmsRateBond(Natural settlementDays, Real faceAmount, Schedule schedule, const ext::shared_ptr<SwapIndex> & index, const DayCounter & paymentDayCounter, BusinessDayConvention paymentConvention = Following, Natural fixingDays = Null<Natural>(), const std::vector<Real> & gearings = { 1.0 }, const std::vector<Spread> & spreads = { 0.0 }, const std::vector<Rate> & caps = { }, const std::vector<Rate> & floors = { }, bool inArrears = false, Real redemption = 100.0, const Date & issueDate = Date());
+|v|ql/instruments/bonds/cmsratebond.hpp|CmsRateBond::CmsRateBond(Natural settlementDays, Real faceAmount, Schedule schedule, const ext::shared_ptr<SwapIndex> & index, const DayCounter & paymentDayCounter, BusinessDayConvention paymentConvention = Following, Natural fixingDays = Null<Natural>(), const std::vector<Real> & gearings = { 1.0 }, const std::vector<Spread> & spreads = { 0.0 }, const std::vector<Rate> & caps = { }, const std::vector<Rate> & floors = { }, bool inArrears = false, Real redemption = 100.0, const Date & issueDate = Date());
 |?|ql/instruments/bonds/convertiblebonds.hpp|SoftCallability::SoftCallability(const Bond::Price & price, const Date & date, Real trigger);
 |x|ql/instruments/bonds/convertiblebonds.hpp|Real SoftCallability::trigger() const;
 | |ql/instruments/bonds/convertiblebonds.hpp|Real ConvertibleBond::conversionRatio() const;

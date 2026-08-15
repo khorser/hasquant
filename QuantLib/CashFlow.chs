@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.CashFlow
   (
     Leg
@@ -64,6 +65,13 @@ module QuantLib.CashFlow
   , averageBMALeg
   , fixedRateLeg
   , iborLeg
+  , iborLegFull
+  , IborLegOpts(..)
+  , defaultIborLegOpts
+  , cmsLeg
+  , cmsLegFull
+  , CmsLegOpts(..)
+  , defaultCmsLegOpts
   , overnightLeg
   , rangeAccrualLeg
   , cpiLeg
@@ -100,9 +108,12 @@ module QuantLib.CashFlow
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.Time.Schedule#}(Frequency)
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
+import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax(deriveOptionsRecord)
+import Data.Maybe(fromMaybe)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -119,6 +130,7 @@ import QuantLib.Internal.Enum
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
@@ -129,6 +141,41 @@ import QuantLib.Internal.Enum
 {#enum DurationType{} deriving(Show, Eq)#}
 {#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq)#}
 {#enum TimingAdjustment{} deriving(Show, Eq)#}
+
+-- IborLegOpts/CmsLegOpts bundle every IborLeg/CmsLeg builder-method param beyond
+-- iborLeg/cmsLeg's original 12-arg shape, pre-populated with upstream's own defaults via
+-- defaultIborLegOpts/defaultCmsLegOpts, overridden through record-update syntax at the
+-- call site -- see OISRateHelperOpts (QuantLib.TermStructure.Yield) for the worked
+-- example this follows. The Calendar fields are Maybe here (unlike the raw bindings'
+-- plain Calendar) since a real Calendar is only obtainable in IO (`calendar Null`) and
+-- can't live in a pure default record value -- iborLegFull/cmsLegFull substitute a fresh
+-- Null calendar for Nothing. This splice must stay textually before every
+-- {#fun#}-generated binding in this file: c2hs always appends its raw foreign-import
+-- stubs at the physical end of the generated module regardless of where in the .chs a
+-- {#fun#} hook appears, and a top-level TH splice anywhere in between would otherwise
+-- split the file into declaration groups that can't see each other, breaking every
+-- earlier {#fun#} wrapper's reference to its own (always-last) foreign-import stub.
+$(deriveOptionsRecord "IborLegOpts" []
+  [ ("ilgPaymentLag", [t|Int|], [|0|])
+  , ("ilgPaymentCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("ilgExCouponPeriod", [t|(Int, TimeUnit)|], [|(0, Days)|])
+  , ("ilgExCouponCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("ilgExCouponConvention", [t|BusinessDayConvention|], [|Unadjusted|])
+  , ("ilgExCouponEndOfMonth", [t|Bool|], [|False|])
+  , ("ilgFixingConvention", [t|BusinessDayConvention|], [|Preceding|])
+  , ("ilgUseIndexedCoupons", [t|Maybe Bool|], [|Nothing|])
+  ])
+
+-- Same shape as IborLegOpts, minus the fields CmsLeg's builder doesn't have
+-- (withPaymentLag/withPaymentCalendar/withIndexedCoupons -- confirmed absent from
+-- ql/cashflows/cmscoupon.hpp's CmsLeg). Same splice-placement constraint as above.
+$(deriveOptionsRecord "CmsLegOpts" []
+  [ ("cmslExCouponPeriod", [t|(Int, TimeUnit)|], [|(0, Days)|])
+  , ("cmslExCouponCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("cmslExCouponConvention", [t|BusinessDayConvention|], [|Unadjusted|])
+  , ("cmslExCouponEndOfMonth", [t|Bool|], [|False|])
+  , ("cmslFixingConvention", [t|BusinessDayConvention|], [|Preceding|])
+  ])
 
 {#fun qlLeg{withDoubleArray*`[Double]'&,withDayPtr*`[Day]',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
@@ -356,7 +403,32 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#fun qlIborLeg as iborLeg{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withDoubleArray*`[Double]'& -- ^notionals
+-- |iborLeg keeps its original 12-arg signature -- existing callers are unaffected -- but
+-- now delegates to iborLeg_, the raw binding widened to IborLeg's full builder surface,
+-- hardcoding upstream's own defaults for the params iborLeg doesn't expose. Use
+-- 'iborLegFull' to reach those (payment lag\/calendar, ex-coupon period, fixing
+-- convention, indexed\/at-par coupons) via 'IborLegOpts'.
+iborLeg :: Schedule -> GenIborIndex ibor -> [Double] -> DayCounter -> BusinessDayConvention
+  -> [Word] -> [Double] -> [Double] -> [Double] -> [Double] -> Bool -> Bool -> IO Leg
+iborLeg schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp = do
+  cal <- calendar Null
+  iborLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp
+    (ilgPaymentLag defaultIborLegOpts) cal (ilgExCouponPeriod defaultIborLegOpts) cal
+    (ilgExCouponConvention defaultIborLegOpts) (ilgExCouponEndOfMonth defaultIborLegOpts)
+    (ilgFixingConvention defaultIborLegOpts) (ilgUseIndexedCoupons defaultIborLegOpts)
+
+-- |'iborLeg' widened to every 'IborLeg' builder-method param via 'IborLegOpts'.
+iborLegFull :: Schedule -> GenIborIndex ibor -> [Double] -> DayCounter -> BusinessDayConvention
+  -> [Word] -> [Double] -> [Double] -> [Double] -> [Double] -> Bool -> Bool -> IborLegOpts
+  -> IO Leg
+iborLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do
+  cal <- calendar Null
+  iborLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp
+    (ilgPaymentLag opts) (fromMaybe cal (ilgPaymentCalendar opts)) (ilgExCouponPeriod opts)
+    (fromMaybe cal (ilgExCouponCalendar opts)) (ilgExCouponConvention opts)
+    (ilgExCouponEndOfMonth opts) (ilgFixingConvention opts) (ilgUseIndexedCoupons opts)
+
+{#fun qlIborLeg as iborLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withDoubleArray*`[Double]'& -- ^notionals
   ,withDayCounter*`DayCounter',`BusinessDayConvention' -- ^paymentAdjustment
   ,withIntArray*`[Word]'&  -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
@@ -365,6 +437,51 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withDoubleArray*`[Double]'& -- ^floors
   ,`Bool' -- ^inArrears
   ,`Bool' -- ^zeroPayments
+  ,fromIntegral`Int' -- ^paymentLag
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,`BusinessDayConvention' -- ^fixingConvention
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
+  ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
+-- |CMS leg builder (analog of 'iborLeg'), 12-arg core shape -- same defaults-hardcoding
+-- pattern as 'iborLeg' for the params not in this signature. Use 'cmsLegFull' to reach
+-- them ('CmsLegOpts').
+cmsLeg :: Schedule -> GenSwapIndex sidx -> [Double] -> DayCounter -> BusinessDayConvention
+  -> [Word] -> [Double] -> [Double] -> [Double] -> [Double] -> Bool -> Bool -> IO Leg
+cmsLeg schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp = do
+  cal <- calendar Null
+  cmsLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp
+    (cmslExCouponPeriod defaultCmsLegOpts) cal (cmslExCouponConvention defaultCmsLegOpts)
+    (cmslExCouponEndOfMonth defaultCmsLegOpts) (cmslFixingConvention defaultCmsLegOpts)
+
+-- |'cmsLeg' widened to every 'CmsLeg' builder-method param via 'CmsLegOpts'.
+cmsLegFull :: Schedule -> GenSwapIndex sidx -> [Double] -> DayCounter -> BusinessDayConvention
+  -> [Word] -> [Double] -> [Double] -> [Double] -> [Double] -> Bool -> Bool -> CmsLegOpts
+  -> IO Leg
+cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do
+  cal <- calendar Null
+  cmsLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp
+    (cmslExCouponPeriod opts) (fromMaybe cal (cmslExCouponCalendar opts))
+    (cmslExCouponConvention opts) (cmslExCouponEndOfMonth opts) (cmslFixingConvention opts)
+
+{#fun qlCmsLeg as cmsLeg_{withSchedule*`Schedule',withSwapIndex*`GenSwapIndex sidx',withDoubleArray*`[Double]'& -- ^notionals
+  ,withDayCounter*`DayCounter',`BusinessDayConvention' -- ^paymentAdjustment
+  ,withIntArray*`[Word]'&  -- ^fixingDays
+  ,withDoubleArray*`[Double]'& -- ^gearings
+  ,withDoubleArray*`[Double]'& -- ^spreads
+  ,withDoubleArray*`[Double]'& -- ^caps
+  ,withDoubleArray*`[Double]'& -- ^floors
+  ,`Bool' -- ^inArrears
+  ,`Bool' -- ^zeroPayments
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
+  ,withCalendar*`Calendar' -- ^exCouponCalendar
+  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,`Bool' -- ^exCouponEndOfMonth
+  ,`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlOvernightLeg as overnightLeg{withSchedule*`Schedule',withOvernightIborIndex*`OvernightIborIndex',withDoubleArray*`[Double]'& -- ^notionals'
   ,withDayCounter*`DayCounter',`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings

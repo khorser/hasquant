@@ -17,6 +17,7 @@ module QuantLib.Instrument.Bond
   , fixedRateBond
   , zeroCouponBond
   , floatingRateBond
+  , cmsRateBond
   , cpiBond
   , amortizingFixedRateBond
   , AmortizingFloatingRateBondOpts(..)
@@ -109,6 +110,7 @@ import Data.Maybe(fromMaybe)
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
 {#pointer *QlCPIBond as CPIBond foreign -> CCPIBond' nocode#}
 {#pointer *QlCallableBond as CallableBond foreign -> CCallableBond' nocode#}
@@ -255,15 +257,31 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,`Bool' -- ^exCouponEndOfMonth
   ,`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+-- |CMS-rate bond
+{#fun qlCmsRateBond as cmsRateBond{fromIntegral`Word' -- ^settlementDays
+  ,`Double' -- ^faceAmount
+  ,withSchedule*`Schedule' -- ^schedule
+  ,withSwapIndex*`GenSwapIndex sidx'
+  ,withDayCounter*`DayCounter' -- ^paymentDayCounter
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withDoubleArray*`[Double]'& -- ^gearings
+  ,withDoubleArray*`[Double]'& -- ^spreads
+  ,withDoubleArray*`[Double]'& -- ^caps
+  ,withDoubleArray*`[Double]'& -- ^floors
+  ,`Bool' -- ^inArrears
+  ,`Double' -- ^redemption
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 -- |amortizing floating-rate bond (possibly capped and\/or floored) with a per-period
 -- notional schedule instead of a single face amount; see 'AmortizingFloatingRateBondOpts'
 -- for the trailing optional parameters (default via 'defaultAmortizingFloatingRateBondOpts',
 -- override with record-update syntax).
 amortizingFloatingRateBond :: Word -> [Double] -> Schedule -> GenIborIndex ibor -> DayCounter
   -> AmortizingFloatingRateBondOpts -> IO Bond
-amortizingFloatingRateBond settlementDays notionals schedule idx accrualDayCounter opts = do
+amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCounter opts = do
   cal <- calendar Null
-  amortizingFloatingRateBond_ settlementDays notionals schedule idx accrualDayCounter
+  amortizingFloatingRateBond_ settlementDays notionalsArg schedule idx accrualDayCounter
     (afrbPaymentConvention opts) (fromMaybeInt (afrbFixingDays opts))
     (afrbGearings opts) (afrbSpreads opts) (afrbCaps opts) (afrbFloors opts)
     (afrbInArrears opts) (afrbIssueDate opts) (afrbExCouponPeriod opts)
