@@ -44,6 +44,9 @@ extern "C" {
   QlSmileSection* qlSwaptionVolatilityStructureSmileSection5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, int extr, char **e);
   QlSmileSection* qlSwaptionVolatilityStructureSmileSection(QlSwaptionVolatilityStructure* o, int, int, int, int, int extr, char **e);
   QlSmileSection* qlSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e);
+  QlSmileSection* qlSabrSmileSection1(int optionDate, double forward, double alpha, double beta, double nu, double rho, int referenceDate, DayCounter* dc, double shift, int volatilityType, char **e);
+  QlSmileSection* qlNoArbSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e);
+  QlSmileSection* qlNoArbSabrSmileSection1(int optionDate, double forward, double alpha, double beta, double nu, double rho, DayCounter* dc, double shift, int volatilityType, char **e);
   double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e);
   double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e);
   QlSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e);

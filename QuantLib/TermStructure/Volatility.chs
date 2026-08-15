@@ -55,6 +55,9 @@ module QuantLib.TermStructure.Volatility
   , smileSection
   , smileSectionForPeriods
   , sabrSmileSection
+  , sabrSmileSection'
+  , noArbSabrSmileSection
+  , noArbSabrSmileSection'
   , smileSectionVolatility
   , smileSectionVariance
   , SabrInterpolatedSmileSectionOpts(..)
@@ -360,6 +363,42 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^beta
   ,`Double' -- ^nu
   ,`Double' -- ^rho
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+-- |as 'sabrSmileSection', but the time to expiry is derived from a date, reference date and day
+-- counter rather than given directly
+{#fun qlSabrSmileSection1 as sabrSmileSection'{withDay*`Day' -- ^optionDate
+  ,`Double' -- ^forward
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,withDayCounter*`DayCounter'
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+-- |an arbitrage-free SABR smile section (Doust's approach via 'NoArbSabrSmileSection'), built
+-- directly from SABR parameters like 'sabrSmileSection' but guaranteeing a proper terminal density
+{#fun qlNoArbSabrSmileSection as noArbSabrSmileSection{`Double' -- ^timeToExpiry
+  ,`Double' -- ^forward
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^shift
+  ,`VolatilityType' -- ^volatilityType
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+-- |as 'noArbSabrSmileSection', but the time to expiry is derived from a date and day counter
+-- rather than given directly
+{#fun qlNoArbSabrSmileSection1 as noArbSabrSmileSection'{withDay*`Day' -- ^optionDate
+  ,`Double' -- ^forward
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,withDayCounter*`DayCounter'
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}

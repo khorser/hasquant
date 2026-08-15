@@ -2744,8 +2744,8 @@
 | |ql/experimental/volatility/noarbsabrinterpolation.hpp|const std::vector<Real> & NoArbSabrInterpolation::interpolationWeights() const;
 | |ql/experimental/volatility/noarbsabrinterpolation.hpp|EndCriteria::Type NoArbSabrInterpolation::endCriteria();
 | |ql/experimental/volatility/noarbsabrinterpolation.hpp|NoArbSabr::NoArbSabr(Time t, Real forward, Real alpha, Real beta, Real nu, Real rho, bool alphaIsFixed, bool betaIsFixed, bool nuIsFixed, bool rhoIsFixed, bool vegaWeighted = false, ext::shared_ptr<EndCriteria> endCriteria = ext::shared_ptr<EndCriteria>(), ext::shared_ptr<OptimizationMethod> optMethod = ext::shared_ptr<OptimizationMethod>(), const Real errorAccept = 0.0020, const bool useMaxError = false, const Size maxGuesses = 50);
-| |ql/experimental/volatility/noarbsabrsmilesection.hpp|NoArbSabrSmileSection::NoArbSabrSmileSection(Time timeToExpiry, Rate forward, std::vector<Real> sabrParameters, Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
-| |ql/experimental/volatility/noarbsabrsmilesection.hpp|NoArbSabrSmileSection::NoArbSabrSmileSection(const Date & d, Rate forward, std::vector<Real> sabrParameters, const DayCounter & dc = Actual365Fixed(), Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
+|v|ql/experimental/volatility/noarbsabrsmilesection.hpp|NoArbSabrSmileSection::NoArbSabrSmileSection(Time timeToExpiry, Rate forward, std::vector<Real> sabrParameters, Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
+|v|ql/experimental/volatility/noarbsabrsmilesection.hpp|NoArbSabrSmileSection::NoArbSabrSmileSection(const Date & d, Rate forward, std::vector<Real> sabrParameters, const DayCounter & dc = Actual365Fixed(), Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
 | |ql/experimental/volatility/noarbsabrsmilesection.hpp|ext::shared_ptr<NoArbSabrModel> NoArbSabrSmileSection::model();
 | |ql/experimental/volatility/noarbsabrswaptionvolatilitycube.hpp|static Real XabrModelTraits::extractGamma(const ext::shared_ptr<NoArbSabrInterpolation> &);
 | |ql/experimental/volatility/noarbsabrswaptionvolatilitycube.hpp|static ext::shared_ptr<NoArbSabrSmileSection> XabrModelTraits::createSmileSection(Time optionTime, Real forward, const std::vector<Real> & params, Real shift, VolatilityType volatilityType);
@@ -9429,7 +9429,7 @@
 | |ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp|Real maxStrike() const;
 | |ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp|Real atmLevel() const;
 |v|ql/termstructures/volatility/sabrsmilesection.hpp|SabrSmileSection::SabrSmileSection(Time timeToExpiry, Rate forward, const std::vector<Real> & sabrParameters, Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
-| |ql/termstructures/volatility/sabrsmilesection.hpp|SabrSmileSection::SabrSmileSection(const Date & d, Rate forward, const std::vector<Real> & sabrParameters, const Date & referenceDate = Date(), const DayCounter & dc = Actual365Fixed(), Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
+|v|ql/termstructures/volatility/sabrsmilesection.hpp|SabrSmileSection::SabrSmileSection(const Date & d, Rate forward, const std::vector<Real> & sabrParameters, const Date & referenceDate = Date(), const DayCounter & dc = Actual365Fixed(), Real shift = 0.0, VolatilityType volatilityType = VolatilityType::ShiftedLognormal);
 |x|ql/termstructures/volatility/sabrsmilesection.hpp|Real SabrSmileSection::alpha() const;
 |x|ql/termstructures/volatility/sabrsmilesection.hpp|Real SabrSmileSection::beta() const;
 |x|ql/termstructures/volatility/sabrsmilesection.hpp|Real SabrSmileSection::nu() const;

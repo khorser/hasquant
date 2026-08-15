@@ -9,6 +9,7 @@
 #include <ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp>
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
+#include <ql/experimental/volatility/noarbsabrsmilesection.hpp>
 #include <ql/instruments/capfloor.hpp>
 #include <ql/termstructures/volatility/capfloor/all.hpp>
 #include <ql/math/interpolations/all.hpp>
@@ -254,6 +255,19 @@ QlSmileSection* qlSwaptionVolatilityStructureSmileSection(QlSwaptionVolatilitySt
 QlSmileSection* qlSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
   try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new SabrSmileSection(
       timeToExpiry, forward, std::vector<Real>{alpha, beta, nu, rho}, shift, (VolatilityType)volatilityType)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlSabrSmileSection1(int optionDate, double forward, double alpha, double beta, double nu, double rho, int referenceDate, DayCounter* dc, double shift, int volatilityType, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new SabrSmileSection(
+      Date(optionDate), forward, std::vector<Real>{alpha, beta, nu, rho}, qlNullableDate(referenceDate),
+      *arg(dc), shift, (VolatilityType)volatilityType)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlNoArbSabrSmileSection(double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new NoArbSabrSmileSection(
+      timeToExpiry, forward, std::vector<Real>{alpha, beta, nu, rho}, shift, (VolatilityType)volatilityType)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlNoArbSabrSmileSection1(int optionDate, double forward, double alpha, double beta, double nu, double rho, DayCounter* dc, double shift, int volatilityType, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new NoArbSabrSmileSection(
+      Date(optionDate), forward, std::vector<Real>{alpha, beta, nu, rho}, *arg(dc), shift, (VolatilityType)volatilityType)))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e) {
   try {return (*arg(o))->volatility(strike);

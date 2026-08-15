@@ -1,4 +1,4 @@
--- Smoke test: SabrSmileSection and SabrInterpolatedSmileSection.
+-- Smoke test: SabrSmileSection, NoArbSabrSmileSection and SabrInterpolatedSmileSection.
 --
 -- 1. sabrSmileSection's volatility(strike)/variance(strike) must exactly match the
 --    already-bound unsafeShiftedSabrVolatility formula it's built on
@@ -6,17 +6,25 @@
 --    this is enum-dispatched through a C-side (VolatilityType) cast, same class of
 --    bug as the CPIInterpolationType incident, so a same-input-different-enum check
 --    is needed, not just a hand-picked number.
--- 2. sabrInterpolatedSmileSection calibrates to a small synthetic strike/vol set and
+-- 2. sabrSmileSection' (Date-based ctor) must agree with sabrSmileSection (Time-based)
+--    when given the same time to expiry via Actual365Fixed, since both must construct
+--    the identical underlying SabrSmileSection.
+-- 3. noArbSabrSmileSection and noArbSabrSmileSection' (Time- vs Date-based NoArbSabrSmileSection
+--    ctors) must likewise agree with each other, and must differ from the plain
+--    sabrSmileSection at the same inputs (different, arbitrage-free model) -- so the test
+--    can't accidentally pass by calling the wrong shim.
+-- 4. sabrInterpolatedSmileSection calibrates to a small synthetic strike/vol set and
 --    the calibrated alpha/beta/nu/rho/vols should reproduce the input reasonably well.
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckSabrSmileSection.hs -o /tmp/checksabr -outputdir /tmp/checksabr_build && /tmp/checksabr
-import Control.Monad(forM_, unless)
+import Control.Monad(forM, forM_, unless)
 import Text.Printf(printf)
 import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.PricingEngine(unsafeShiftedSabrVolatility)
 import QuantLib.Quote(simpleQuote)
+import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Time.Date
-import QuantLib.Time.Schedule(TimeUnit(..))
+import QuantLib.Time.Schedule(TimeUnit(..), DayCounterConstructor(..), dayCounter)
 import QuantLib.TermStructure.Volatility
 
 import SmokeCheck (checkClose, checkEq)
@@ -51,6 +59,37 @@ main = do
     error ("Normal and ShiftedLognormal SABR vols should differ at the same inputs, got "
       ++ show volAtAtm1 ++ " for both")
   putStrLn "SabrSmileSection: OK, matches unsafeShiftedSabrVolatility and Normal /= ShiftedLognormal"
+
+  -- SabrSmileSection' / NoArbSabrSmileSection / NoArbSabrSmileSection': the Date-based ctors
+  -- derive their Time from a Date via a DayCounter, so pin the evaluation date (used as
+  -- NoArbSabrSmileSection's implicit referenceDate) and pick a whole number of days so the
+  -- Actual365Fixed fraction (actualDays/365.0) matches the Time-based ctors' input exactly.
+  refDate <- today
+  setEvaluationDate (Just refDate)
+  let expiryDays = 1826 :: Int -- ~5y in actual days
+      expiryFromDays = fromIntegral expiryDays / 365.0 :: Double
+  optionDate <- addPeriod refDate (expiryDays, Days)
+  act365 <- dayCounter Actual365FixedStandard
+
+  sectionByTime <- sabrSmileSection expiryFromDays forward alpha beta nu rho shift ShiftedLognormal
+  sectionByDate <- sabrSmileSection' optionDate forward alpha beta nu rho (Just refDate) act365 shift ShiftedLognormal
+  forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
+    volT <- smileSectionVolatility sectionByTime strike
+    volD <- smileSectionVolatility sectionByDate strike
+    checkClose (printf "SabrSmileSection' strike=%.2f vol (date vs time)" strike) volT volD 1e-12
+  putStrLn "SabrSmileSection': OK, matches sabrSmileSection at the equivalent Time"
+
+  noArbByTime <- noArbSabrSmileSection expiryFromDays forward alpha beta nu rho shift ShiftedLognormal
+  noArbByDate <- noArbSabrSmileSection' optionDate forward alpha beta nu rho act365 shift ShiftedLognormal
+  differences <- forM [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
+    volT <- smileSectionVolatility noArbByTime strike
+    volD <- smileSectionVolatility noArbByDate strike
+    checkClose (printf "NoArbSabrSmileSection' strike=%.2f vol (date vs time)" strike) volT volD 1e-12
+    plainVol <- smileSectionVolatility sectionByTime strike
+    return (volT /= plainVol)
+  unless (or differences) $
+    error "noArbSabrSmileSection vols should differ from the plain sabrSmileSection at some strike"
+  putStrLn "NoArbSabrSmileSection/': OK, date/time ctors agree and differ from the plain SabrSmileSection"
 
   -- SabrInterpolatedSmileSection: calibrate to vols generated from known SABR params,
   -- then check the calibrated smile reprices those same strikes closely.
