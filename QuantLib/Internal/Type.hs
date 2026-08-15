@@ -684,6 +684,18 @@ withGenBlackCalculator = withForeignPtr . ptr . getBlackCalculator
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCalculator
 peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 
+-- | > BachelierCalculator
+-- no subclasses upstream, unlike BlackCalculator/BlackScholesCalculator above, so this is a
+-- plain leaf (Standalone), not a GenX/Upcastable hierarchy
+data CBachelierCalculator
+newtype BachelierCalculator = BachelierCalculator {getCBachelierCalculator :: Standalone CBachelierCalculator}
+foreign import ccall unsafe "ql.h &qlFreeBachelierCalculator" qlFreeBachelierCalculator :: FinalizerPtr CBachelierCalculator
+instance Finalizable CBachelierCalculator where finalize = qlFreeBachelierCalculator
+peekBachelierCalculator :: Ptr CBachelierCalculator -> IO BachelierCalculator
+peekBachelierCalculator = BachelierCalculator <.> peekStandalone
+withBachelierCalculator :: BachelierCalculator -> (Ptr CBachelierCalculator -> IO b) -> IO b
+withBachelierCalculator = withStandalone . getCBachelierCalculator
+
 -- MULTILEVEL HIERARCHIES
 -- | > Index
 -- >  InterestRateIndex

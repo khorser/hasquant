@@ -54,10 +54,38 @@ extern "C" {
   double qlBlackCalculatorItmCashProbability(QlBlackCalculator* o, char **e);
   double qlBlackCalculatorRho(QlBlackCalculator* o, double maturity, char **e);
   double qlBlackCalculatorStrikeSensitivity(QlBlackCalculator* o, char **e);
+  double qlBlackCalculatorStrikeGamma(QlBlackCalculator* o, char **e);
   double qlBlackCalculatorTheta(QlBlackCalculator* o, double spot, double maturity, char **e);
   double qlBlackCalculatorThetaPerDay(QlBlackCalculator* o, double spot, double maturity, char **e);
   double qlBlackCalculatorValue(QlBlackCalculator* o, char **e);
+  double qlBlackCalculatorVanna(QlBlackCalculator* o, double spot, double maturity, char **e);
   double qlBlackCalculatorVega(QlBlackCalculator* o, double maturity, char **e);
+  double qlBlackCalculatorVolga(QlBlackCalculator* o, double maturity, char **e);
+
+  void qlFreeBachelierCalculator(QlBachelierCalculator *o);
+  double qlBachelierCalculatorAlpha(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorBeta(QlBachelierCalculator* o, char **e);
+  QlBachelierCalculator* qlBachelierCalculator1(int optionType, double strike, double forward, double stdDev, double discount, char **e);
+  QlBachelierCalculator* qlBachelierCalculator(QlStrikedTypePayoff* payoff, double forward, double stdDev, double discount, char **e);
+  double qlBachelierCalculatorDelta(QlBachelierCalculator* o, double spot, char **e);
+  double qlBachelierCalculatorDeltaForward(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorDividendRho(QlBachelierCalculator* o, double maturity, char **e);
+  double qlBachelierCalculatorElasticity(QlBachelierCalculator* o, double spot, char **e);
+  double qlBachelierCalculatorElasticityForward(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorGamma(QlBachelierCalculator* o, double spot, char **e);
+  double qlBachelierCalculatorGammaForward(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorItmAssetProbability(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorItmCashProbability(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorRho(QlBachelierCalculator* o, double maturity, char **e);
+  double qlBachelierCalculatorStrikeSensitivity(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorStrikeGamma(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorTheta(QlBachelierCalculator* o, double spot, double maturity, char **e);
+  double qlBachelierCalculatorThetaPerDay(QlBachelierCalculator* o, double spot, double maturity, char **e);
+  double qlBachelierCalculatorValue(QlBachelierCalculator* o, char **e);
+  double qlBachelierCalculatorVanna(QlBachelierCalculator* o, double maturity, char **e);
+  double qlBachelierCalculatorVega(QlBachelierCalculator* o, double maturity, char **e);
+  double qlBachelierCalculatorVolga(QlBachelierCalculator* o, double maturity, char **e);
+
   QlBlackScholesCalculator* qlBlackScholesCalculator1(int optionType, double strike, double spot, double growth, double stdDev, double discount, char **e);
   QlBlackScholesCalculator* qlBlackScholesCalculator(QlStrikedTypePayoff* payoff, double spot, double growth, double stdDev, double discount, char **e);
   double qlBlackScholesCalculatorDelta(QlBlackScholesCalculator* o, char **e);

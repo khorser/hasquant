@@ -22,6 +22,7 @@ typedef struct QlAffineModel QlAffineModel;
 typedef struct Qlambda Qlambda;
 typedef struct QlAmericanExercise QlAmericanExercise;
 typedef struct QlAssetSwap QlAssetSwap;
+typedef struct QlBachelierCalculator QlBachelierCalculator;
 typedef struct QlBarrierOption QlBarrierOption;
 typedef struct QlDoubleBarrierOption QlDoubleBarrierOption;
 typedef struct QlBasketPayoff QlBasketPayoff;

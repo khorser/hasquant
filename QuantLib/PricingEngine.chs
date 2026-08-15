@@ -3,6 +3,7 @@ module QuantLib.PricingEngine
     PricingEngine
   , BlackCalculator
   , BlackScholesCalculator
+  , BachelierCalculator
   , BlackDeltaCalculator
   , CashAnnuityModel(..)
   , Probabilities(..)
@@ -132,10 +133,13 @@ module QuantLib.PricingEngine
   , itmCashProbability
   , rho
   , strikeSensitivity
+  , strikeGamma
   , blackTheta
   , blackThetaPerDay
   , value
+  , vanna
   , vega
+  , volga
   , blackScholesCalculator'
   , blackScholesCalculator
   , blackScholesDelta
@@ -143,6 +147,30 @@ module QuantLib.PricingEngine
   , blackScholesGamma
   , blackScholesTheta
   , blackScholesThetaPerDay
+
+  , bachelierCalculator'
+  , bachelierCalculator
+  , bachelierAlpha
+  , bachelierBeta
+  , bachelierDelta
+  , bachelierDeltaForward
+  , bachelierDividendRho
+  , bachelierElasticity
+  , bachelierElasticityForward
+  , bachelierGamma
+  , bachelierGammaForward
+  , bachelierItmAssetProbability
+  , bachelierItmCashProbability
+  , bachelierRho
+  , bachelierStrikeSensitivity
+  , bachelierStrikeGamma
+  , bachelierTheta
+  , bachelierThetaPerDay
+  , bachelierValue
+  , bachelierVanna
+  , bachelierVega
+  , bachelierVolga
+
   , blackDeltaCalculator
   , deltaFromStrike
   , strikeFromDelta
@@ -238,6 +266,7 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator' nocode#}
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
+{#pointer *QlBachelierCalculator as BachelierCalculator foreign -> CBachelierCalculator nocode#}
 {#pointer *BlackDeltaCalculator foreign -> CBlackDeltaCalculator nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlStrikedTypePayoff nocode#}
@@ -662,6 +691,8 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to strike.
 {#fun qlBlackCalculatorStrikeSensitivity as strikeSensitivity{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |gamma w.r.t. strike.
+{#fun qlBlackCalculatorStrikeGamma as strikeGamma{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to time to maturity.
 {#fun qlBlackCalculatorTheta as blackTheta{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^spot
   ,`Double' -- ^maturity
@@ -671,8 +702,15 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBlackCalculatorValue as value{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity of vega to spot (Vanna).
+{#fun qlBlackCalculatorVanna as vanna{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^spot
+  ,`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to volatility.
 {#fun qlBlackCalculatorVega as vega{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity of vega to volatility (Volga).
+{#fun qlBlackCalculatorVolga as volga{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlBlackScholesCalculator1 as blackScholesCalculator'{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^spot
@@ -696,6 +734,69 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to time to maturity per day (assuming 365 day in a year).
 {#fun qlBlackScholesCalculatorThetaPerDay as blackScholesThetaPerDay{withGenBlackCalculator*`BlackScholesCalculator',`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Bachelier (normal-model) analogue of 'BlackCalculator', for options on a rate rather than a
+-- price. No subclass hierarchy upstream, unlike BlackCalculator\/BlackScholesCalculator, so this
+-- is a single leaf type with its own methods rather than a 'GenBlackCalculator' instance.
+{#fun qlBachelierCalculator1 as bachelierCalculator'{fromEnumC`OptionType',`Double' -- ^strike
+  ,`Double' -- ^forward
+  ,`Double' -- ^stdDev
+  ,`Double' -- ^discount
+  ,preErrorCheck-`String'errorCheck*-}->`BachelierCalculator'peekBachelierCalculator*#}
+{#fun qlBachelierCalculator as bachelierCalculator{withStrikedPayoff*`StrikedPayoff'
+  ,`Double' -- ^forward
+  ,`Double' -- ^stdDev
+  ,`Double' -- ^discount
+  ,preErrorCheck-`String'errorCheck*-}->`BachelierCalculator'peekBachelierCalculator*#}
+{#fun qlBachelierCalculatorAlpha as bachelierAlpha{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBachelierCalculatorBeta as bachelierBeta{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to change in the underlying spot price.
+{#fun qlBachelierCalculatorDelta as bachelierDelta{withBachelierCalculator*`BachelierCalculator', `Double' -- ^spot
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to change in the underlying forward price.
+{#fun qlBachelierCalculatorDeltaForward as bachelierDeltaForward{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to dividend/growth rate.
+{#fun qlBachelierCalculatorDividendRho as bachelierDividendRho{withBachelierCalculator*`BachelierCalculator',`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity in percent to a percent change in the underlying spot price.
+{#fun qlBachelierCalculatorElasticity as bachelierElasticity{withBachelierCalculator*`BachelierCalculator',`Double' -- ^spot
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity in percent to a percent change in the underlying forward price.
+{#fun qlBachelierCalculatorElasticityForward as bachelierElasticityForward{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Second order derivative with respect to change in the underlying spot price.
+{#fun qlBachelierCalculatorGamma as bachelierGamma{withBachelierCalculator*`BachelierCalculator',`Double' -- ^spot
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Second order derivative with respect to change in the underlying forward price.
+{#fun qlBachelierCalculatorGammaForward as bachelierGammaForward{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Probability of being in the money in the asset martingale measure, i.e. N(d). It is a risk-neutral probability, not the real world one.
+{#fun qlBachelierCalculatorItmAssetProbability as bachelierItmAssetProbability{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Probability of being in the money in the bond martingale measure, i.e. N(d). It is a risk-neutral probability, not the real world one.
+{#fun qlBachelierCalculatorItmCashProbability as bachelierItmCashProbability{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to discounting rate.
+{#fun qlBachelierCalculatorRho as bachelierRho{withBachelierCalculator*`BachelierCalculator',`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to strike.
+{#fun qlBachelierCalculatorStrikeSensitivity as bachelierStrikeSensitivity{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |gamma w.r.t. strike.
+{#fun qlBachelierCalculatorStrikeGamma as bachelierStrikeGamma{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to time to maturity.
+{#fun qlBachelierCalculatorTheta as bachelierTheta{withBachelierCalculator*`BachelierCalculator',`Double' -- ^spot
+  ,`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to time to maturity per day, assuming 365 day per year.
+{#fun qlBachelierCalculatorThetaPerDay as bachelierThetaPerDay{withBachelierCalculator*`BachelierCalculator',`Double' -- ^spot
+  ,`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBachelierCalculatorValue as bachelierValue{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity of vega to spot (Vanna).
+{#fun qlBachelierCalculatorVanna as bachelierVanna{withBachelierCalculator*`BachelierCalculator',`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity to volatility.
+{#fun qlBachelierCalculatorVega as bachelierVega{withBachelierCalculator*`BachelierCalculator',`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sensitivity of vega to volatility (Volga).
+{#fun qlBachelierCalculatorVolga as bachelierVolga{withBachelierCalculator*`BachelierCalculator',`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |computes the strike given the option's Black-Scholes delta (in an FX-style delta/vol quotation)

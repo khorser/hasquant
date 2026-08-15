@@ -16,6 +16,7 @@
 #include <ql/pricingengines/barrier/fdblackscholesbarrierengine.hpp>
 #include <ql/pricingengines/basket/kirkengine.hpp>
 #include <ql/pricingengines/basket/stulzengine.hpp>
+#include <ql/pricingengines/bacheliercalculator.hpp>
 #include <ql/pricingengines/blackdeltacalculator.hpp>
 #include <ql/pricingengines/blackformula.hpp>
 #include <ql/pricingengines/blackscholescalculator.hpp>
@@ -228,10 +229,42 @@ double qlBlackCalculatorItmAssetProbability(QlBlackCalculator* o, char **e) {try
 double qlBlackCalculatorItmCashProbability(QlBlackCalculator* o, char **e) {try {return (*arg(o))->itmCashProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalculatorRho(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->rho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalculatorStrikeSensitivity(QlBlackCalculator* o, char **e) {try {return (*arg(o))->strikeSensitivity();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorStrikeGamma(QlBlackCalculator* o, char **e) {try {return (*arg(o))->strikeGamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalculatorTheta(QlBlackCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->theta(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalculatorThetaPerDay(QlBlackCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->thetaPerDay(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalculatorValue(QlBlackCalculator* o, char **e) {try {return (*arg(o))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorVanna(QlBlackCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->vanna(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalculatorVega(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->vega(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorVolga(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->volga(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeBachelierCalculator(QlBachelierCalculator *o) {del(o);}
+double qlBachelierCalculatorAlpha(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->alpha();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorBeta(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->beta();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlBachelierCalculator* qlBachelierCalculator1(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+  try {return ret(new QlBachelierCalculator(alloc(new BachelierCalculator((Option::Type)optionType, strike, forward, stdDev, discount))));
+  } catch (std::exception& er) {return handleException<QlBachelierCalculator*>(e, er);}}
+QlBachelierCalculator* qlBachelierCalculator(QlStrikedTypePayoff* payoff, double forward, double stdDev, double discount, char **e) {
+  try {return ret(new QlBachelierCalculator(alloc(new BachelierCalculator(*arg(payoff), forward, stdDev, discount))));
+  } catch (std::exception& er) {return handleException<QlBachelierCalculator*>(e, er);}}
+double qlBachelierCalculatorDelta(QlBachelierCalculator* o, double spot, char **e) {try {return (*arg(o))->delta(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorDeltaForward(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->deltaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorDividendRho(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->dividendRho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorElasticity(QlBachelierCalculator* o, double spot, char **e) {try {return (*arg(o))->elasticity(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorElasticityForward(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->elasticityForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorGamma(QlBachelierCalculator* o, double spot, char **e) {try {return (*arg(o))->gamma(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorGammaForward(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->gammaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorItmAssetProbability(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->itmAssetProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorItmCashProbability(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->itmCashProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorRho(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->rho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorStrikeSensitivity(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->strikeSensitivity();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorStrikeGamma(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->strikeGamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorTheta(QlBachelierCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->theta(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorThetaPerDay(QlBachelierCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->thetaPerDay(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorValue(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorVanna(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->vanna(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorVega(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->vega(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorVolga(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->volga(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+
 QlBlackScholesCalculator* qlBlackScholesCalculator1(int optionType, double strike, double spot, double growth, double stdDev, double discount, char **e) {
   try {return ret(new QlBlackScholesCalculator(alloc(new BlackScholesCalculator((Option::Type)optionType, strike, spot, growth, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBlackScholesCalculator*>(e, er);}}
