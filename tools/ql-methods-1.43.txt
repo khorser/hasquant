@@ -950,7 +950,7 @@
 | |ql/experimental/callablebonds/callablebond.hpp|arguments::arguments();
 | |ql/experimental/callablebonds/callablebond.hpp|void arguments::validate() const;
 |v|ql/experimental/callablebonds/callablebond.hpp|CallableFixedRateBond::CallableFixedRateBond(Natural settlementDays, Real faceAmount, Schedule schedule, const std::vector<Rate> & coupons, const DayCounter & accrualDayCounter, BusinessDayConvention paymentConvention = Following, Real redemption = 100.0, const Date & issueDate = Date(), const CallabilitySchedule & putCallSchedule = { }, const Period & exCouponPeriod = Period(), const Calendar & exCouponCalendar = Calendar(), BusinessDayConvention exCouponConvention = Unadjusted, bool exCouponEndOfMonth = false);
-|?|ql/experimental/callablebonds/callablebond.hpp|CallableZeroCouponBond::CallableZeroCouponBond(Natural settlementDays, Real faceAmount, const Calendar & calendar, const Date & maturityDate, const DayCounter & dayCounter, BusinessDayConvention paymentConvention = Following, Real redemption = 100.0, const Date & issueDate = Date(), const CallabilitySchedule & putCallSchedule = { });
+|v|ql/experimental/callablebonds/callablebond.hpp|CallableZeroCouponBond::CallableZeroCouponBond(Natural settlementDays, Real faceAmount, const Calendar & calendar, const Date & maturityDate, const DayCounter & dayCounter, BusinessDayConvention paymentConvention = Following, Real redemption = 100.0, const Date & issueDate = Date(), const CallabilitySchedule & putCallSchedule = { });
 |x|ql/experimental/callablebonds/callablebondconstantvol.hpp|CallableBondConstantVolatility::CallableBondConstantVolatility(const Date & referenceDate, Volatility volatility, DayCounter dayCounter);
 |v|ql/experimental/callablebonds/callablebondconstantvol.hpp|CallableBondConstantVolatility::CallableBondConstantVolatility(const Date & referenceDate, Handle<Quote> volatility, DayCounter dayCounter);
 |x|ql/experimental/callablebonds/callablebondconstantvol.hpp|CallableBondConstantVolatility::CallableBondConstantVolatility(Natural settlementDays, const Calendar &, Volatility volatility, DayCounter dayCounter);
@@ -3273,7 +3273,7 @@
 |x|ql/instruments/bonds/convertiblebonds.hpp|Real SoftCallability::trigger() const;
 | |ql/instruments/bonds/convertiblebonds.hpp|Real ConvertibleBond::conversionRatio() const;
 | |ql/instruments/bonds/convertiblebonds.hpp|const CallabilitySchedule & ConvertibleBond::callability() const;
-|?|ql/instruments/bonds/convertiblebonds.hpp|ConvertibleZeroCouponBond::ConvertibleZeroCouponBond(const ext::shared_ptr<Exercise> & exercise, Real conversionRatio, const CallabilitySchedule & callability, const Date & issueDate, Natural settlementDays, const DayCounter & dayCounter, const Schedule & schedule, Real redemption = 100);
+|v|ql/instruments/bonds/convertiblebonds.hpp|ConvertibleZeroCouponBond::ConvertibleZeroCouponBond(const ext::shared_ptr<Exercise> & exercise, Real conversionRatio, const CallabilitySchedule & callability, const Date & issueDate, Natural settlementDays, const DayCounter & dayCounter, const Schedule & schedule, Real redemption = 100);
 |v|ql/instruments/bonds/convertiblebonds.hpp|ConvertibleFixedCouponBond::ConvertibleFixedCouponBond(const ext::shared_ptr<Exercise> & exercise, Real conversionRatio, const CallabilitySchedule & callability, const Date & issueDate, Natural settlementDays, const std::vector<Rate> & coupons, const DayCounter & dayCounter, const Schedule & schedule, Real redemption = 100, const Period & exCouponPeriod = Period(), const Calendar & exCouponCalendar = Calendar(), BusinessDayConvention exCouponConvention = Unadjusted, bool exCouponEndOfMonth = false);
 |v|ql/instruments/bonds/convertiblebonds.hpp|ConvertibleFloatingRateBond::ConvertibleFloatingRateBond(const ext::shared_ptr<Exercise> & exercise, Real conversionRatio, const CallabilitySchedule & callability, const Date & issueDate, Natural settlementDays, const ext::shared_ptr<IborIndex> & index, Natural fixingDays, const std::vector<Spread> & spreads, const DayCounter & dayCounter, const Schedule & schedule, Real redemption = 100, const Period & exCouponPeriod = Period(), const Calendar & exCouponCalendar = Calendar(), BusinessDayConvention exCouponConvention = Unadjusted, bool exCouponEndOfMonth = false);
 | |ql/instruments/bonds/convertiblebonds.hpp|arguments::arguments();
@@ -3309,9 +3309,9 @@
 |v|ql/instruments/capfloor.hpp|ext::shared_ptr<CapFloor> CapFloor::optionlet(Size n) const;
 |v|ql/instruments/capfloor.hpp|Rate CapFloor::atmRate(const YieldTermStructure & discountCurve) const;
 |v|ql/instruments/capfloor.hpp|Volatility CapFloor::impliedVolatility(Real price, const Handle<YieldTermStructure> & disc, Volatility guess, Real accuracy = 1.0e-4, Natural maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0, VolatilityType type = ShiftedLognormal, Real displacement = 0.0) const;
-|?|ql/instruments/capfloor.hpp|Cap::Cap(const Leg & floatingLeg, const std::vector<Rate> & exerciseRates);
-|?|ql/instruments/capfloor.hpp|Floor::Floor(const Leg & floatingLeg, const std::vector<Rate> & exerciseRates);
-|?|ql/instruments/capfloor.hpp|Collar::Collar(const Leg & floatingLeg, const std::vector<Rate> & capRates, const std::vector<Rate> & floorRates);
+|v|ql/instruments/capfloor.hpp|Cap::Cap(const Leg & floatingLeg, const std::vector<Rate> & exerciseRates);
+|v|ql/instruments/capfloor.hpp|Floor::Floor(const Leg & floatingLeg, const std::vector<Rate> & exerciseRates);
+|v|ql/instruments/capfloor.hpp|Collar::Collar(const Leg & floatingLeg, const std::vector<Rate> & capRates, const std::vector<Rate> & floorRates);
 | |ql/instruments/capfloor.hpp|arguments::arguments();
 | |ql/instruments/capfloor.hpp|void arguments::validate() const;
 | |ql/instruments/capfloor.hpp|std::ostream & operator<<(std::ostream &, CapFloor::Type);
