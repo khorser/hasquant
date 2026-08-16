@@ -9078,7 +9078,7 @@
 | |ql/termstructures/volatility/abcdcalibration.hpp|Real AbcdCalibration::c() const;
 | |ql/termstructures/volatility/abcdcalibration.hpp|Real AbcdCalibration::d() const;
 | |ql/termstructures/volatility/atmadjustedsmilesection.hpp|AtmAdjustedSmileSection::AtmAdjustedSmileSection(const ext::shared_ptr<SmileSection> & source, Real atm = Null<Real>(), bool recenterSmile = false);
-| |ql/termstructures/volatility/atmsmilesection.hpp|AtmSmileSection::AtmSmileSection(const ext::shared_ptr<SmileSection> & source, Real atm = Null<Real>());
+|v|ql/termstructures/volatility/atmsmilesection.hpp|AtmSmileSection::AtmSmileSection(const ext::shared_ptr<SmileSection> & source, Real atm = Null<Real>());
 | |ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp|CapFloorTermVolatilityStructure::CapFloorTermVolatilityStructure(BusinessDayConvention bdc, const DayCounter & dc = DayCounter());
 | |ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp|CapFloorTermVolatilityStructure::CapFloorTermVolatilityStructure(const Date & referenceDate, const Calendar & cal, BusinessDayConvention bdc, const DayCounter & dc = DayCounter());
 | |ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp|CapFloorTermVolatilityStructure::CapFloorTermVolatilityStructure(Natural settlementDays, const Calendar &, BusinessDayConvention bdc, const DayCounter & dc = DayCounter());
@@ -9197,7 +9197,7 @@
 | |ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp|Volatility blackVolImpl(Time t, Real strike) const;
 | |ql/termstructures/volatility/equityfx/blackvoltimeextrapolation.hpp|static Real BlackVolTimeExtrapolation::extrapolatedVariance(Type type, Time t, Real strike, const std::vector<Time> & times, const std::function<Real (Time, Real)> & varianceSurface);
 | |ql/termstructures/volatility/equityfx/blackvoltimeextrapolation.hpp|static Real BlackVolTimeExtrapolation::extrapolatedVariance(Type type, Time t, const std::vector<Time> & times, const std::function<Real (Time)> & varianceCurve);
-| |ql/termstructures/volatility/equityfx/fixedlocalvolsurface.hpp|FixedLocalVolSurface::FixedLocalVolSurface(const Date & referenceDate, const std::vector<Date> & dates, const std::vector<Real> & strikes, ext::shared_ptr<Matrix> localVolMatrix, const DayCounter & dayCounter, Extrapolation lowerExtrapolation = ConstantExtrapolation, Extrapolation upperExtrapolation = ConstantExtrapolation);
+|v|ql/termstructures/volatility/equityfx/fixedlocalvolsurface.hpp|FixedLocalVolSurface::FixedLocalVolSurface(const Date & referenceDate, const std::vector<Date> & dates, const std::vector<Real> & strikes, ext::shared_ptr<Matrix> localVolMatrix, const DayCounter & dayCounter, Extrapolation lowerExtrapolation = ConstantExtrapolation, Extrapolation upperExtrapolation = ConstantExtrapolation);
 | |ql/termstructures/volatility/equityfx/fixedlocalvolsurface.hpp|FixedLocalVolSurface::FixedLocalVolSurface(const Date & referenceDate, const std::vector<Time> & times, const std::vector<Real> & strikes, ext::shared_ptr<Matrix> localVolMatrix, const DayCounter & dayCounter, Extrapolation lowerExtrapolation = ConstantExtrapolation, Extrapolation upperExtrapolation = ConstantExtrapolation);
 | |ql/termstructures/volatility/equityfx/fixedlocalvolsurface.hpp|FixedLocalVolSurface::FixedLocalVolSurface(const Date & referenceDate, const std::vector<Time> & times, const std::vector<ext::shared_ptr<std::vector<Real>>> & strikes, ext::shared_ptr<Matrix> localVolMatrix, const DayCounter & dayCounter, Extrapolation lowerExtrapolation = ConstantExtrapolation, Extrapolation upperExtrapolation = ConstantExtrapolation);
 | |ql/termstructures/volatility/equityfx/gridmodellocalvolsurface.hpp|GridModelLocalVolSurface::GridModelLocalVolSurface(const Date & referenceDate, const std::vector<Date> & dates, const std::vector<ext::shared_ptr<std::vector<Real>>> & strikes, const DayCounter & dayCounter, Extrapolation lowerExtrapolation = FixedLocalVolSurface::ConstantExtrapolation, Extrapolation upperExtrapolation = FixedLocalVolSurface::ConstantExtrapolation);
@@ -9227,10 +9227,10 @@
 | |ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|LocalVolTermStructure::LocalVolTermStructure(BusinessDayConvention bdc = Following, const DayCounter & dc = DayCounter());
 | |ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|LocalVolTermStructure::LocalVolTermStructure(const Date & referenceDate, const Calendar & cal = Calendar(), BusinessDayConvention bdc = Following, const DayCounter & dc = DayCounter());
 | |ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|LocalVolTermStructure::LocalVolTermStructure(Natural settlementDays, const Calendar &, BusinessDayConvention bdc = Following, const DayCounter & dc = DayCounter());
-| |ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|Volatility LocalVolTermStructure::localVol(const Date & d, Real underlyingLevel, bool extrapolate = false) const;
+|v|ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|Volatility LocalVolTermStructure::localVol(const Date & d, Real underlyingLevel, bool extrapolate = false) const;
 | |ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|Volatility LocalVolTermStructure::localVol(Time t, Real underlyingLevel, bool extrapolate = false) const;
 | |ql/termstructures/volatility/equityfx/localvoltermstructure.hpp|void LocalVolTermStructure::accept(AcyclicVisitor &);
-| |ql/termstructures/volatility/equityfx/noexceptlocalvolsurface.hpp|NoExceptLocalVolSurface::NoExceptLocalVolSurface(const Handle<BlackVolTermStructure> & blackTS, const Handle<YieldTermStructure> & riskFreeTS, const Handle<YieldTermStructure> & dividendTS, const Handle<Quote> & underlying, Real illegalLocalVolOverwrite);
+|v|ql/termstructures/volatility/equityfx/noexceptlocalvolsurface.hpp|NoExceptLocalVolSurface::NoExceptLocalVolSurface(const Handle<BlackVolTermStructure> & blackTS, const Handle<YieldTermStructure> & riskFreeTS, const Handle<YieldTermStructure> & dividendTS, const Handle<Quote> & underlying, Real illegalLocalVolOverwrite);
 |x|ql/termstructures/volatility/equityfx/noexceptlocalvolsurface.hpp|NoExceptLocalVolSurface::NoExceptLocalVolSurface(const Handle<BlackVolTermStructure> & blackTS, const Handle<YieldTermStructure> & riskFreeTS, const Handle<YieldTermStructure> & dividendTS, Real underlying, Real illegalLocalVolOverwrite);
 | |ql/termstructures/volatility/equityfx/piecewiseblackvariancesurface.hpp|PiecewiseBlackVarianceSurface::PiecewiseBlackVarianceSurface(const Date & referenceDate, const std::vector<Date> & dates, std::vector<ext::shared_ptr<SmileSection>> smileSections, DayCounter dayCounter = DayCounter());
 | |ql/termstructures/volatility/equityfx/piecewiseblackvariancesurface.hpp|PiecewiseBlackVarianceSurface::PiecewiseBlackVarianceSurface(const Date & referenceDate, const Date & date, ext::shared_ptr<SmileSection> smileSection, DayCounter dayCounter = DayCounter());
@@ -9239,7 +9239,7 @@
 | |ql/termstructures/volatility/equityfx/piecewiseblackvariancesurface.hpp|Date maxDate() const;
 | |ql/termstructures/volatility/equityfx/piecewiseblackvariancesurface.hpp|Real minStrike() const;
 | |ql/termstructures/volatility/equityfx/piecewiseblackvariancesurface.hpp|Real maxStrike() const;
-| |ql/termstructures/volatility/flatsmilesection.hpp|FlatSmileSection::FlatSmileSection(const Date & d, Volatility vol, const DayCounter & dc, const Date & referenceDate = Date(), Real atmLevel = Null<Rate>(), VolatilityType type = ShiftedLognormal, Real shift = 0.0);
+|v|ql/termstructures/volatility/flatsmilesection.hpp|FlatSmileSection::FlatSmileSection(const Date & d, Volatility vol, const DayCounter & dc, const Date & referenceDate = Date(), Real atmLevel = Null<Rate>(), VolatilityType type = ShiftedLognormal, Real shift = 0.0);
 | |ql/termstructures/volatility/flatsmilesection.hpp|FlatSmileSection::FlatSmileSection(Time exerciseTime, Volatility vol, const DayCounter & dc, Real atmLevel = Null<Rate>(), VolatilityType type = ShiftedLognormal, Real shift = 0.0);
 | |ql/termstructures/volatility/flatsmilesection.hpp|Real minStrike() const;
 | |ql/termstructures/volatility/flatsmilesection.hpp|Real maxStrike() const;
@@ -9367,7 +9367,7 @@
 | |ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp|Volatility volatilityImpl(const Date & optionDate, Rate strike) const;
 | |ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp|VolatilityType volatilityType() const;
 | |ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp|Real displacement() const;
-| |ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp|SpreadedOptionletVolatility::SpreadedOptionletVolatility(const Handle<OptionletVolatilityStructure> &, Handle<Quote> spread);
+|v|ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp|SpreadedOptionletVolatility::SpreadedOptionletVolatility(const Handle<OptionletVolatilityStructure> &, Handle<Quote> spread);
 |?|ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp|DayCounter dayCounter() const;
 | |ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp|Date maxDate() const;
 | |ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp|Time maxTime() const;
@@ -9441,7 +9441,7 @@
 | |ql/termstructures/volatility/smilesection.hpp|Real SmileSection::maxStrike() const;
 |v|ql/termstructures/volatility/smilesection.hpp|Real SmileSection::variance(Rate strike) const;
 |v|ql/termstructures/volatility/smilesection.hpp|Volatility SmileSection::volatility(Rate strike) const;
-| |ql/termstructures/volatility/smilesection.hpp|Real SmileSection::atmLevel() const;
+|v|ql/termstructures/volatility/smilesection.hpp|Real SmileSection::atmLevel() const;
 | |ql/termstructures/volatility/smilesection.hpp|const Date & SmileSection::exerciseDate() const;
 | |ql/termstructures/volatility/smilesection.hpp|VolatilityType SmileSection::volatilityType() const;
 | |ql/termstructures/volatility/smilesection.hpp|Rate SmileSection::shift() const;
@@ -9464,7 +9464,7 @@
 | |ql/termstructures/volatility/smilesectionutils.hpp|const std::vector<Real> & SmileSectionUtils::strikeGrid() const;
 | |ql/termstructures/volatility/smilesectionutils.hpp|const std::vector<Real> & SmileSectionUtils::callPrices() const;
 | |ql/termstructures/volatility/smilesectionutils.hpp|Real SmileSectionUtils::atmLevel() const;
-| |ql/termstructures/volatility/spreadedsmilesection.hpp|SpreadedSmileSection::SpreadedSmileSection(ext::shared_ptr<SmileSection>, Handle<Quote> spread);
+|v|ql/termstructures/volatility/spreadedsmilesection.hpp|SpreadedSmileSection::SpreadedSmileSection(ext::shared_ptr<SmileSection>, Handle<Quote> spread);
 | |ql/termstructures/volatility/spreadedsmilesection.hpp|Real minStrike() const;
 | |ql/termstructures/volatility/spreadedsmilesection.hpp|Real maxStrike() const;
 | |ql/termstructures/volatility/spreadedsmilesection.hpp|Real atmLevel() const;
@@ -9617,7 +9617,7 @@
 | |ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp|const std::vector<Period> & swapTenors() const;
 | |ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp|const std::vector<Time> & swapLengths() const;
 | |ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp|Date optionDateFromTime(Time optionTime) const;
-| |ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix::SwaptionVolatilityMatrix(const Calendar & calendar, BusinessDayConvention bdc, const std::vector<Period> & optionTenors, const std::vector<Period> & swapTenors, const std::vector<std::vector<Handle<Quote>>> & vols, const DayCounter & dayCounter, bool flatExtrapolation = false, VolatilityType type = ShiftedLognormal, const std::vector<std::vector<Real>> & shifts = std::vector<std::vector<Real>>());
+|v|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix::SwaptionVolatilityMatrix(const Calendar & calendar, BusinessDayConvention bdc, const std::vector<Period> & optionTenors, const std::vector<Period> & swapTenors, const std::vector<std::vector<Handle<Quote>>> & vols, const DayCounter & dayCounter, bool flatExtrapolation = false, VolatilityType type = ShiftedLognormal, const std::vector<std::vector<Real>> & shifts = std::vector<std::vector<Real>>());
 |v|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix::SwaptionVolatilityMatrix(const Date & referenceDate, const Calendar & calendar, BusinessDayConvention bdc, const std::vector<Period> & optionTenors, const std::vector<Period> & swapTenors, const std::vector<std::vector<Handle<Quote>>> & vols, const DayCounter & dayCounter, bool flatExtrapolation = false, VolatilityType type = ShiftedLognormal, const std::vector<std::vector<Real>> & shifts = std::vector<std::vector<Real>>());
 | |ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix::SwaptionVolatilityMatrix(const Calendar & calendar, BusinessDayConvention bdc, const std::vector<Period> & optionTenors, const std::vector<Period> & swapTenors, const Matrix & volatilities, const DayCounter & dayCounter, bool flatExtrapolation = false, VolatilityType type = ShiftedLognormal, const Matrix & shifts = Matrix());
 |x|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix::SwaptionVolatilityMatrix(const Date & referenceDate, const Calendar & calendar, BusinessDayConvention bdc, const std::vector<Period> & optionTenors, const std::vector<Period> & swapTenors, const Matrix & volatilities, const DayCounter & dayCounter, bool flatExtrapolation = false, VolatilityType type = ShiftedLognormal, const Matrix & shifts = Matrix());

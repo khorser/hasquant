@@ -498,6 +498,12 @@ enum ExtendedBlackVarianceSurfaceExtrapolation {
   ExtendedBlackVarianceSurfaceConstantExtrapolation,
   ExtendedBlackVarianceSurfaceInterpolatorDefaultExtrapolation};
 
+// termstructures/volatility/equityfx/fixedlocalvolsurface.hpp
+enum FixedLocalVolSurfaceExtrapolation {
+  FixedLocalVolSurfaceConstantExtrapolation,
+  FixedLocalVolSurfaceInterpolatorDefaultExtrapolation
+};
+
 // cashflows/couponpricer.hpp (BlackIborCouponPricer::TimingAdjustment)
 enum TimingAdjustment {Black76, BivariateLognormal};
 

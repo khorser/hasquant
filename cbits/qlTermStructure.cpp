@@ -1,6 +1,10 @@
 #include <ql/termstructures/volatility/optionlet/constantoptionletvol.hpp>
 #include <ql/termstructures/volatility/optionlet/optionletstripper1.hpp>
 #include <ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp>
+#include <ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp>
+#include <ql/termstructures/volatility/flatsmilesection.hpp>
+#include <ql/termstructures/volatility/spreadedsmilesection.hpp>
+#include <ql/termstructures/volatility/atmsmilesection.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
@@ -277,6 +281,19 @@ double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e) {
 double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e) {
   try {return (*arg(o))->variance(strike);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionAtmLevel(QlSmileSection* o, char **e) {
+  try {return (*arg(o))->atmLevel();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlSmileSection* qlFlatSmileSection(int d, double vol, DayCounter* dc, int referenceDate, double atmLevel, int type, double shift, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new FlatSmileSection(
+      Date(d), vol, *arg(dc), qlNullableDate(referenceDate), atmLevel, (VolatilityType)type, shift)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlSpreadedSmileSection(QlSmileSection* source, QlQuote* spread, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new SpreadedSmileSection(*arg(source), *arg(spread))))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlAtmSmileSection(QlSmileSection* source, double atm, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new AtmSmileSection(*arg(source), atm)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e) {
   try {
     // endCriteria/optMethod are left at their empty-shared_ptr defaults (SABRInterpolation's
@@ -366,11 +383,17 @@ QlVolatilityTermStructure* qlConstantCapFloorTermVolatility(unsigned settlementD
 QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SpreadedSwaptionVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
+QlOptionletVolatilityStructure* qlSpreadedOptionletVolatility(QlOptionletVolatilityStructure* x0, QlQuote* spread, char **e) {
+  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new SpreadedOptionletVolatility(*arg(x0), *arg(spread))))));
+  } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 
 void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) {del(o);}
 QlVolatilityTermStructure* qlCapFloorTermVolSurfaceAsVolatilityTermStructure(QlCapFloorTermVolSurface *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o) {del(o);}
 QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+double qlLocalVolTermStructureLocalVol(QlLocalVolTermStructure* o, int d, double underlyingLevel, int extrapolate, char **e) {
+  try {return (*arg(o))->localVol(Date(d), underlyingLevel, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBlackVarianceCurve(QlBlackVarianceCurve *o) {del(o);}
 QlBlackVolTermStructure* qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
 QlLocalVolTermStructure* qlLocalConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
@@ -384,6 +407,14 @@ QlLocalVolTermStructure* qlLocalVolCurve(QlBlackVarianceCurve* curve, char **e) 
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlLocalVolTermStructure* qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, char **e) {
   try {return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(*arg(blackTS), *arg(riskFreeTS), *arg(dividendTS), *arg(underlying)))));
+  } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
+QlLocalVolTermStructure* qlNoExceptLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, double illegalLocalVolOverwrite, char **e) {
+  try {return ret(new QlLocalVolTermStructure(alloc(new NoExceptLocalVolSurface(*arg(blackTS), *arg(riskFreeTS), *arg(dividendTS), *arg(underlying), illegalLocalVolOverwrite))));
+  } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
+QlLocalVolTermStructure* qlFixedLocalVolSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned matrixRows, unsigned matrixCols, double* matrixData, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, char **e) {
+  try {return ret(new QlLocalVolTermStructure(alloc(new FixedLocalVolSurface(Date(referenceDate), qlDateVector(dates, datesLen),
+      std::vector<Real>(strikes, strikes+strikesLen), ext::make_shared<Matrix>(qlMatrix(matrixData, matrixRows, matrixCols)),
+      *arg(dayCounter), (FixedLocalVolSurface::Extrapolation)lowerExtrapolation, (FixedLocalVolSurface::Extrapolation)upperExtrapolation))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
   try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new ImpliedVolTermStructure(*arg(origTS), Date(referenceDate))))));
@@ -462,6 +493,18 @@ QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Cal
     unsigned shiftRows, unsigned shiftCols, double* shifts, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SwaptionVolatilityMatrix(
             Date(referenceDate), *arg(calendar), (BusinessDayConvention)bdc,
+            qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
+            qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
+            qlHandleMatrix(vols, volRows, volCols), *arg(dc), (bool)flatExtrapolation, (VolatilityType)type,
+            qlRealMatrix(shifts, shiftRows, shiftCols))))));
+  } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
+QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix1(Calendar* calendar, int bdc,
+    unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
+    unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
+    unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type,
+    unsigned shiftRows, unsigned shiftCols, double* shifts, char **e) {
+  try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SwaptionVolatilityMatrix(
+            *arg(calendar), (BusinessDayConvention)bdc,
             qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
             qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
             qlHandleMatrix(vols, volRows, volCols), *arg(dc), (bool)flatExtrapolation, (VolatilityType)type,

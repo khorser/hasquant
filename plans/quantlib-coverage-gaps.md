@@ -11,17 +11,17 @@ known unreliable at the per-overload level — see CLAUDE.md).
 
 hasquant's coverage is broad and in places deeper than the documented Python
 surface — multi-curve bootstrapping, a wide exotic-option set, credit, and
-inflation instruments all exceed what QuantLib-Python-Docs shows. But two
-structural gaps stand out as high-value: no swaption volatility cube (only a
-flat matrix), and no finite-difference Heston pricing engines. Below that is
-a long tail of individually narrow items.
+inflation instruments all exceed what QuantLib-Python-Docs shows. The
+finite-difference Heston pricing engines are the remaining high-value
+structural gap. Below that is a long tail of individually narrow items.
 
 ## Tier 1 — high-value gaps
 
 | Item | Why it matters | Evidence |
 |---|---|---|
-| **Swaption volatility cubes** (`SwaptionVolCube1`, `SwaptionVolCube2`, SABR-based) | Central to any swaption/CMS desk workflow; the single biggest hole in the vol-surface coverage | hasquant only binds the flat `swaptionVolatilityMatrix'`; confirmed absent via grep of `QuantLib/`/`cbits/` |
 | **FD Heston engine family** (`FdHestonVanillaEngine`, `FdHestonBarrierEngine`, `FdHestonDoubleBarrierEngine`, `FdHestonHullWhiteVanillaEngine`) | FD is the standard method for American/barrier payoffs under Heston; hasquant has analytic/MC Heston engines but no FD ones | Confirmed absent via grep |
+
+- ~~**Swaption volatility cubes**~~ — **closed.** This row was stale even when first written to call out `SabrSwaptionVolatilityCube`/`InterpolatedSwaptionVolatilityCube` as absent: both are bound in `QuantLib/TermStructure/Volatility.chs` (`sabrSwaptionVolatilityCube`/`interpolatedSwaptionVolatilityCube`), each with its own diagnostic getters (`sparseSabrParameters`, `denseSabrParameters`, `marketVolCube`, `volCubeAtmCalibrated`, `*AtmStrike`). The flat `swaptionVolatilityMatrix'` (fixed ref date) has since been joined by a floating-ref-date sibling, `swaptionVolatilityMatrix`.
 
 ## Tier 2 — medium-value gaps
 

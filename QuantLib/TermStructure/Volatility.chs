@@ -3,6 +3,7 @@ module QuantLib.TermStructure.Volatility
   (
     BlackVarianceSurfaceExtrapolation(..)
   , ExtendedBlackVarianceSurfaceExtrapolation(..)
+  , FixedLocalVolSurfaceExtrapolation(..)
 
   , BlackVarianceCurve
   , BlackVolatilitySurfaceDelta
@@ -116,6 +117,15 @@ module QuantLib.TermStructure.Volatility
   , sabrSwaptionVolatilityCubeAtmStrike
   , interpolatedSwaptionVolatilityCubeAtmStrike'
   , interpolatedSwaptionVolatilityCubeAtmStrike
+  , swaptionVolatilityMatrix
+  , noExceptLocalVolSurface
+  , fixedLocalVolSurface
+  , spreadedOptionletVol
+  , localVol
+  , smileSectionAtmLevel
+  , flatSmileSection
+  , spreadedSmileSection
+  , atmSmileSection
   ) where
 import QuantLib.Internal
 import Foreign.C.Types(CInt)
@@ -167,6 +177,9 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 -- @BlackVolTimeExtrapolationType@ (rather than reusing the bare @Type@ c2hs would otherwise
 -- emit) to avoid a top-level name clash.
 {#enum BlackVolTimeExtrapolationType{} deriving(Show, Eq)#}
+-- |'FixedLocalVolSurface::Extrapolation', local to that class -- not shared with any other
+-- binding, same local-declaration treatment as 'SmileInterpolationMethod'.
+{#enum FixedLocalVolSurfaceExtrapolation{} deriving(Show, Eq)#}
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
 -- sabrInterpolatedSmileSection_ hardcodes, pre-populated with upstream's own defaults,
@@ -213,6 +226,36 @@ $(deriveOptionsRecord "BlackVolatilitySurfaceDeltaOpts" []
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendTS
   ,withQuote*`GenQuote q' -- ^underlying
   ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
+-- |as 'localVolSurface', but a local vol calculation that would otherwise throw returns
+-- @illegalLocalVolOverwrite@ instead
+{#fun qlNoExceptLocalVolSurface as noExceptLocalVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure bv'
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeTS
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendTS
+  ,withQuote*`GenQuote q' -- ^underlying
+  ,`Double' -- ^illegalLocalVolOverwrite
+  ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
+-- |a local vol surface fed directly from a matrix of local vols (rather than derived from a
+-- Black vol surface, as 'localVolSurface' is) -- one flat strike grid shared across all dates,
+-- same shape as 'blackVarianceSurface'.
+fixedLocalVolSurface :: Day -> [Day] -- ^dates
+  -> [Double] -- ^strikes
+  -> Matrix Double -- ^localVolMatrix
+  -> DayCounter
+  -> FixedLocalVolSurfaceExtrapolation -- ^lowerExtrapolation
+  -> FixedLocalVolSurfaceExtrapolation -- ^upperExtrapolation
+  -> IO LocalVolTermStructure
+fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr mc md
+{#fun qlFixedLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
+-- |the local vol at a given date and underlying level, for any 'LocalVolTermStructure' (however
+-- it was constructed) -- the only way to observe what a local vol surface actually computes.
+{#fun qlLocalVolTermStructureLocalVol as localVol{withLocalVolTermStructure*`LocalVolTermStructure'
+  ,withDay*`Day'
+  ,`Double' -- ^underlyingLevel
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Constant caplet volatility, no time-strike dependence
 -- floating reference date, floating market data
@@ -428,6 +471,34 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
 {#fun qlSmileSectionVariance as smileSectionVariance{withSmileSection*`SmileSection'
   ,`Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the ATM level baked into the 'SmileSection' at construction (or later re-anchored via
+-- 'atmSmileSection'), for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionAtmLevel as smileSectionAtmLevel{withSmileSection*`SmileSection'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |a flat-volatility smile section: 'volatility' returns @vol@ for every strike.
+-- 'Nothing'\/'Nothing' reproduce upstream's own defaults for @referenceDate@\/@atmLevel@.
+{#fun qlFlatSmileSection as flatSmileSection{withDay*`Day'
+  ,`Double' -- ^vol
+  ,withDayCounter*`DayCounter'
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,fromMaybeDouble`Maybe Double' -- ^atmLevel
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^shift
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |a 'SmileSection' whose volatility at every strike is @source@'s plus @spread@ (which may
+-- change over time, since it's a live 'GenQuote' rather than a fixed number)
+{#fun qlSpreadedSmileSection as spreadedSmileSection{withSmileSection*`SmileSection'
+  ,withQuote*`GenQuote q'
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |@source@ re-anchored to a different ATM level ('Nothing' reproduces upstream's own default,
+-- which recomputes the ATM level from @source@ itself). @source@'s volatility at every other
+-- strike is unchanged -- use 'smileSectionAtmLevel' to observe what this changed.
+{#fun qlAtmSmileSection as atmSmileSection{withSmileSection*`SmileSection'
+  ,fromMaybeDouble`Maybe Double' -- ^atm
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |a smile section calibrated to a market smile (strikes/vols given directly, not as live
 -- quotes -- calibration runs once, eagerly, at construction). alpha\/beta\/nu\/rho\/vegaWeighted
@@ -551,6 +622,9 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- |floating reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 {#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+-- |as 'spreadedSwaptionVolatility', for 'OptionletVolatilityStructure' rather than
+-- 'SwaptionVolatilityStructure'
+{#fun qlSpreadedOptionletVolatility as spreadedOptionletVol{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 -- |A swaption vol surface behind a relinkable handle. The result /is/ a
 -- 'SwaptionVolatilityStructure': pass it anywhere one is expected and everything built on it
@@ -704,6 +778,28 @@ swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr s
   qlSwaptionVolatilityMatrix d c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlSwaptionVolatilityMatrix{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
+  ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+
+-- |floating reference date, floating market data. See 'swaptionVolatilityMatrix\'' for the
+-- @shifts@ convention (@Matrix 0 0 []@ for "no shift").
+swaptionVolatilityMatrix :: Calendar -> BusinessDayConvention
+  -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [(Word, TimeUnit)] -- ^swapTenors
+  -> Matrix (GenQuote q) -- ^volatilities
+  -> DayCounter
+  -> Bool -- ^flatExtrapolation
+  -> VolatilityType
+  -> Matrix Double -- ^shifts
+  -> IO SwaptionVolatilityStructure
+swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr sc sd) =
+  qlSwaptionVolatilityMatrix1 c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
+  where (opl, opu) = unzip ot; (spl, spu) = unzip st
+{#fun qlSwaptionVolatilityMatrix1{withCalendar*`Calendar',`BusinessDayConvention'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
