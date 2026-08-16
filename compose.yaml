@@ -23,8 +23,8 @@ services:
       - .:/hasquant:delegated
       - stack-root:/root/.stack
       - ghcup-root:/root/.ghcup
-      - hasquant-work:/hasquant/.stack-work
-    
+      - /hasquant/.stack-work
+      - /hasquant/dist-newstyle 
     stdin_open: true
     tty: true
     #environment:
@@ -36,5 +36,3 @@ volumes:
     name: stack-root
   ghcup-root:
     name: ghcup-root
-  hasquant-work:
-    name: hasquant-work

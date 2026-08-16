@@ -129,7 +129,7 @@ peekAdditionalResults = peekStructArray convertResult (\l p -> qlFreeAdditionalR
 
 composite :: [(Instrument, Double)] -> IO Instrument
 composite = (uncurry qlCompositeInstrument) . unzip
-{#fun qlCompositeInstrument{withInstrumentArray*`[Instrument]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+{#fun qlCompositeInstrument{withInstrumentArray*`[GenInstrument i]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
 {#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`GenInstrument i',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

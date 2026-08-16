@@ -65,8 +65,8 @@ Build example and tests: `cabal configure -f buildExample --enable-tests --disab
 The repo contains docker compose files for a custom Linux x86_64 image. You can use it like this to run tests using GHC-8.10.6:
 `docker compose run --rm -it hasquant stack --resolver lts-18.8 test`
 
-The config mounts `/root/.stack`, `/root/.ghcup` and `/hasquant/.stack-work` as named volumes so
-everything installed with stack/ghcup will persist across runs.
+The config mounts `/root/.stack` and `/root/.ghcup` as named volumes so everything installed with stack/ghcup will persist across runs.
+`/hasquant/.stack-work` and `/hasquant/dist-newstyle` are mounted as anonymous volumes to avoid polluting host filesystem.
 
 # On Types
 
