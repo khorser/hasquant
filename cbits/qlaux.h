@@ -156,6 +156,7 @@ namespace QuantLib {
   class EquityTotalReturnSwap;
   class EuropeanExercise;
   class EuropeanOption;
+  class ExchangeRate;
   class Exercise;
   class ExponentialSplinesFitting;
   class ExtOUWithJumpsProcess;
@@ -418,6 +419,7 @@ using QuantLib::EquityQuantoCashFlowPricer;
 using QuantLib::EquityTotalReturnSwap;
 using QuantLib::EuropeanExercise;
 using QuantLib::EuropeanOption;
+using QuantLib::ExchangeRate;
 using QuantLib::Exercise;
 using QuantLib::ExponentialSplinesFitting;
 using QuantLib::ExtOUWithJumpsProcess;

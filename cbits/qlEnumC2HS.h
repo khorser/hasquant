@@ -213,6 +213,9 @@ enum MoneyConversionType {
                             operand */
 };
 
+// exchangerate.hpp
+enum ExchangeRateType {Direct, Derived};
+
 // exercise.hpp
 enum ExerciseType {American, Bermudan, European};
 

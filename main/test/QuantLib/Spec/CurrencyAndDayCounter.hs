@@ -9,12 +9,12 @@ import Data.List.NonEmpty(NonEmpty, toList, tail)
 
 import QuantLib.Time.Date
 import qualified QuantLib.Settings as Settings
-import QuantLib.Currency(currency, Ccy(..))
+import QuantLib.Currency
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule
 import QuantLib.Math
 
-import QuantLib.Spec.Helpers(listClose, areClose)
+import QuantLib.Spec.Helpers(listClose, areClose, closePrec)
 
 spec :: Spec
 spec = do
@@ -22,6 +22,88 @@ spec = do
       it "GBP name" $ do
         c <- currency GBP
         show c `shouldBe` "British pound sterling"
+
+    describe "exchange rate" $ do
+      it "direct" $ do
+        eur <- currency EUR
+        usd <- currency USD
+        eurUsd <- exchangeRate eur usd 1.2042
+        exchangeRateType eurUsd `shouldReturn` Direct
+
+        (v1, c1) <- exchange eurUsd (50000, eur)
+        v1 `shouldSatisfy` closePrec (50000 * 1.2042) (abs (50000 * 1.2042) * 1.0e-6)
+        show c1 `shouldBe` show usd
+
+        (v2, c2) <- exchange eurUsd (100000, usd)
+        v2 `shouldSatisfy` closePrec (100000 / 1.2042) (abs (100000 / 1.2042) * 1.0e-6)
+        show c2 `shouldBe` show eur
+
+      it "derived (chain)" $ do
+        eur <- currency EUR
+        usd <- currency USD
+        gbp <- currency GBP
+        eurUsd <- exchangeRate eur usd 1.2042
+        eurGbp <- exchangeRate eur gbp 0.6612
+        derived <- chainExchangeRate eurUsd eurGbp
+        exchangeRateType derived `shouldReturn` Derived
+
+        (v1, c1) <- exchange derived (50000, gbp)
+        v1 `shouldSatisfy` closePrec (50000 * 1.2042 / 0.6612) (abs (50000 * 1.2042 / 0.6612) * 1.0e-6)
+        show c1 `shouldBe` show usd
+
+        (v2, c2) <- exchange derived (100000, usd)
+        v2 `shouldSatisfy` closePrec (100000 * 0.6612 / 1.2042) (abs (100000 * 0.6612 / 1.2042) * 1.0e-6)
+        show c2 `shouldBe` show gbp
+
+      it "manager lookup (direct, dated)" $ do
+        clearExchangeRates
+        eur <- currency EUR
+        usd <- currency USD
+        eurUsd1 <- exchangeRate eur usd 1.1983
+        eurUsd2 <- exchangeRate usd eur (1.0 / 1.2042)
+        let d1 = 4 `august` 2004
+            d2 = 5 `august` 2004
+        addExchangeRate eurUsd1 d1 d1
+        addExchangeRate eurUsd2 d2 d2
+
+        r1 <- lookupExchangeRate eur usd (Just d1) Direct
+        (v1, _) <- exchange r1 (50000, eur)
+        v1 `shouldSatisfy` closePrec (50000 * 1.1983) (abs (50000 * 1.1983) * 1.0e-6)
+
+        r2 <- lookupExchangeRate eur usd (Just d2) Direct
+        (v2, _) <- exchange r2 (50000, eur)
+        v2 `shouldSatisfy` closePrec (50000 / (1.0 / 1.2042)) (abs (50000 / (1.0 / 1.2042)) * 1.0e-6)
+
+        r3 <- lookupExchangeRate usd eur (Just d1) Direct
+        (v3, _) <- exchange r3 (100000, usd)
+        v3 `shouldSatisfy` closePrec (100000 / 1.1983) (abs (100000 / 1.1983) * 1.0e-6)
+
+        r4 <- lookupExchangeRate usd eur (Just d2) Direct
+        (v4, _) <- exchange r4 (100000, usd)
+        v4 `shouldSatisfy` closePrec (100000 * (1.0 / 1.2042)) (abs (100000 * (1.0 / 1.2042)) * 1.0e-6)
+        clearExchangeRates
+
+    describe "money settings" $ do
+      it "conversion type round-trips" $ do
+        setMoneyConversionType AutomatedConversion
+        moneyConversionType `shouldReturn` AutomatedConversion
+        setMoneyConversionType NoConversion
+        moneyConversionType `shouldReturn` NoConversion
+
+      it "base currency round-trips, and drives convertToBaseCurrency" $ do
+        usd <- currency USD
+        eur <- currency EUR
+        setMoneyBaseCurrency usd
+        base <- moneyBaseCurrency
+        fmap show base `shouldBe` Just (show usd)
+
+        clearExchangeRates
+        eurUsd <- exchangeRate eur usd 1.2042
+        addExchangeRate eurUsd minDate maxDate
+        (v, c) <- convertToBaseCurrency (50000, eur)
+        v `shouldSatisfy` closePrec (50000 * 1.2042) (abs (50000 * 1.2042) * 1.0e-6)
+        show c `shouldBe` show usd
+        clearExchangeRates
 
     describe "day counter" $ do
       let checkCounter :: DayCounter -> [Day] -> [(Int, TimeUnit)] -> [Double] -> IO ()

@@ -3,6 +3,9 @@
 #include <ql/errors.hpp>
 #include <ql/time/date.hpp>
 #include <ql/currencies/all.hpp>
+#include <ql/currencies/exchangeratemanager.hpp>
+#include <ql/exchangerate.hpp>
+#include <ql/money.hpp>
 #include <ql/interestrate.hpp>
 #include <ql/math/optimization/all.hpp>
 #include <ql/timegrid.hpp>
@@ -248,6 +251,64 @@ Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol
           arg(symbol), arg(fractionSymbol), fractionsPerUnit,
           rounding, triangulationCurrency));
   } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
+
+ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate) {
+  return alloc(new ExchangeRate(*arg(source), *arg(target), rate));
+}
+void qlFreeExchangeRate(ExchangeRate *o) {del(o);}
+double qlExchangeRateRate(ExchangeRate *o) {return arg(o)->rate();}
+int qlExchangeRateType_(ExchangeRate *o) {return arg(o)->type();}
+
+double qlExchangeRateExchange(ExchangeRate *o, double amount, Currency *ccy, Currency **outCcy, char **e) {
+  *outCcy = 0;
+  try {
+    Money m = arg(o)->exchange(Money(amount, *arg(ccy)));
+    *outCcy = ret(new Currency(m.currency()));
+    return m.value();
+  } catch (std::exception& er) {return handleException<double>(e, er);}
+}
+
+ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, char **e) {
+  try {
+    return ret(new ExchangeRate(ExchangeRate::chain(*arg(r1), *arg(r2))));
+  } catch (std::exception& er) {return handleException<ExchangeRate*>(e, er);}
+}
+
+void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial) {
+  ExchangeRateManager::instance().add(*arg(rate), qlNullableDate(startSerial), qlNullableDate(endSerial));
+}
+
+ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, char **e) {
+  try {
+    return ret(new ExchangeRate(ExchangeRateManager::instance().lookup(
+        *arg(source), *arg(target), qlNullableDate(dateSerial), (ExchangeRate::Type)type)));
+  } catch (std::exception& er) {return handleException<ExchangeRate*>(e, er);}
+}
+
+void qlExchangeRateManagerClear() {ExchangeRateManager::instance().clear();}
+
+int qlMoneySettingsConversionType() {return Money::Settings::instance().conversionType();}
+void qlMoneySettingsSetConversionType(int t) {Money::Settings::instance().conversionType() = (Money::ConversionType)t;}
+Currency *qlMoneySettingsBaseCurrency() {
+  const Currency &base = Money::Settings::instance().baseCurrency();
+  return base.empty() ? 0 : ret(new Currency(base));
+}
+void qlMoneySettingsSetBaseCurrency(Currency *c) {Money::Settings::instance().baseCurrency() = *arg(c);}
+
+double qlConvertToBaseCurrency(double amount, Currency *ccy, Currency **outCcy, char **e) {
+  *outCcy = 0;
+  try {
+    const Currency &base = Money::Settings::instance().baseCurrency();
+    QL_REQUIRE(!base.empty(), "no base currency set");
+    Money m(amount, *arg(ccy));
+    if (m.currency() != base) {
+      ExchangeRate rate = ExchangeRateManager::instance().lookup(m.currency(), base);
+      m = rate.exchange(m).rounded();
+    }
+    *outCcy = ret(new Currency(m.currency()));
+    return m.value();
+  } catch (std::exception& er) {return handleException<double>(e, er);}
+}
 
 InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e) {
   try {return alloc(new InterestRate(r, *arg(dc), (Compounding) comp, (Frequency) freq));

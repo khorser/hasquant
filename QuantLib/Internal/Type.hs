@@ -2,10 +2,11 @@
 module QuantLib.Internal.Type where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
-import Foreign.C.Types(CUInt, CInt)
+import Foreign.C.Types(CUInt, CInt, CDouble)
 import Foreign.C.String(CString)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(withMany)
+import Foreign.Storable(peek)
 
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
@@ -72,9 +73,31 @@ withCurrency :: Currency -> (Ptr CCurrency -> IO b) -> IO b
 withCurrency = withStandalone . getCCurrency
 withMaybeCurrency :: Maybe Currency -> (Ptr CCurrency -> IO b) -> IO b
 withMaybeCurrency = withMaybeStandalone . (getCCurrency <$>)
+peekMaybeCurrency :: Ptr CCurrency -> IO (Maybe Currency)
+peekMaybeCurrency p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekCurrency p
+-- |Peek a 'Currency' out of a @Currency**@ out-parameter (as opposed to 'peekCurrency', which
+-- peeks it directly out of a @Currency*@ primary return).
+peekCurrencyPtr :: Ptr (Ptr CCurrency) -> IO Currency
+peekCurrencyPtr = peek >=> peekCurrency
+-- |Split a @(Double, Currency)@ cash amount (QuantLib's 'Money', per the @Period@-as-tuple
+-- convention) into the @(double, Currency*)@ pair of C arguments it marshals to, for use with
+-- the c2hs @&@ splitter -- the input-direction counterpart of 'peekCurrencyPtr'.
+withMoney :: (Double, Currency) -> ((CDouble, Ptr CCurrency) -> IO b) -> IO b
+withMoney (amount, ccy) f = withCurrency ccy (\p -> f (realToFrac amount, p))
 foreign import ccall safe "ql.h qlCurrencyName" qlCurrencyName :: Ptr CCurrency -> IO CString
 instance Show Currency where show x = showStandalone qlCurrencyName (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
+
+data CExchangeRate
+newtype ExchangeRate = ExchangeRate {getCExchangeRate :: Standalone CExchangeRate}
+foreign import ccall unsafe "ql.h &qlFreeExchangeRate" qlFreeExchangeRate :: FinalizerPtr CExchangeRate
+instance Finalizable CExchangeRate where finalize = qlFreeExchangeRate
+peekExchangeRate :: Ptr CExchangeRate -> IO ExchangeRate
+peekExchangeRate = ExchangeRate <.> peekStandalone
+withExchangeRate :: ExchangeRate -> (Ptr CExchangeRate -> IO b) -> IO b
+withExchangeRate = withStandalone . getCExchangeRate
 
 data CRegion
 newtype Region = Region {getCRegion :: Standalone CRegion}

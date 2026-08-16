@@ -6,6 +6,7 @@ typedef struct Period Period;
 typedef struct Schedule Schedule;
 typedef struct InterestRate InterestRate;
 typedef struct Currency Currency;
+typedef struct ExchangeRate ExchangeRate;
 typedef struct Region Region;
 typedef struct Constraint Constraint;
 typedef struct OptimizationMethod OptimizationMethod;

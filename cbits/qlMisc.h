@@ -34,6 +34,23 @@ extern "C" {
   char* qlCurrencySymbol(Currency* o);
   Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, Currency* triangulationCurrency, char **e);
 
+  ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate);
+  void qlFreeExchangeRate(ExchangeRate *o);
+  double qlExchangeRateRate(ExchangeRate *o);
+  int qlExchangeRateType_(ExchangeRate *o);
+  double qlExchangeRateExchange(ExchangeRate *o, double amount, Currency *ccy, Currency **outCcy, char **e);
+  ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, char **e);
+
+  void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial);
+  ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, char **e);
+  void qlExchangeRateManagerClear();
+
+  int qlMoneySettingsConversionType();
+  void qlMoneySettingsSetConversionType(int t);
+  Currency *qlMoneySettingsBaseCurrency();
+  void qlMoneySettingsSetBaseCurrency(Currency *c);
+  double qlConvertToBaseCurrency(double amount, Currency *ccy, Currency **outCcy, char **e);
+
   InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e);
   double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e);
   double qlInterestRateCompoundFactor(InterestRate* o, double t, char **e);
