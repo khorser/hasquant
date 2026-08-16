@@ -37,6 +37,7 @@ module QuantLib.Instrument.Option
   , swingExercise
 
   , barrierOption
+  , partialTimeBarrierOption
   , doubleBarrierOption
   , doubleBarrierOptionImpliedVolatility
   , forwardVanillaOption
@@ -81,7 +82,7 @@ module QuantLib.Instrument.Option
 #include "ql.h"
 
 import QuantLib.Internal
-{#import QuantLib.Instrument#}(AverageType, BarrierType, DoubleBarrierType)
+{#import QuantLib.Instrument#}(AverageType, BarrierType, DoubleBarrierType, PartialBarrierRange)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 
@@ -118,6 +119,11 @@ import QuantLib.Internal.Enum
 {#fun qlBarrierOption as barrierOption{`BarrierType',`Double' -- ^barrier
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`BarrierOption'peekBarrierOption*#}
+{#fun qlPartialTimeBarrierOption as partialTimeBarrierOption{`BarrierType',`PartialBarrierRange'
+  ,`Double' -- ^barrier
+  ,`Double' -- ^rebate
+  ,withDay*`Day' -- ^coverEventDate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 {#fun qlDoubleBarrierOption as doubleBarrierOption{`DoubleBarrierType',`Double' -- ^barrierLo
   ,`Double' -- ^barrierHi
   ,`Double' -- ^rebate

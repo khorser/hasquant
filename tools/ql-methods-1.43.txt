@@ -3943,7 +3943,7 @@
 | |ql/instruments/overnightindexfuture.hpp|const ext::shared_ptr<OvernightIndex> & OvernightIndexFuture::overnightIndex() const;
 | |ql/instruments/overnightindexfuture.hpp|Date OvernightIndexFuture::valueDate() const;
 | |ql/instruments/overnightindexfuture.hpp|Date OvernightIndexFuture::maturityDate() const;
-| |ql/instruments/partialtimebarrieroption.hpp|PartialTimeBarrierOption::PartialTimeBarrierOption(Barrier::Type barrierType, PartialBarrier::Range barrierRange, Real barrier, Real rebate, Date coverEventDate, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
+|v|ql/instruments/partialtimebarrieroption.hpp|PartialTimeBarrierOption::PartialTimeBarrierOption(Barrier::Type barrierType, PartialBarrier::Range barrierRange, Real barrier, Real rebate, Date coverEventDate, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
 | |ql/instruments/partialtimebarrieroption.hpp|arguments::arguments();
 | |ql/instruments/partialtimebarrieroption.hpp|void arguments::validate() const;
 |x|ql/instruments/payoffs.hpp|Option::Type TypePayoff::optionType() const;
@@ -7399,7 +7399,7 @@
 | |ql/pricingengines/barrier/analyticdoublebarrierbinaryengine.hpp|void AnalyticDoubleBarrierBinaryEngine::calculate() const;
 |v|ql/pricingengines/barrier/analyticdoublebarrierengine.hpp|AnalyticDoubleBarrierEngine::AnalyticDoubleBarrierEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, int series = 5);
 | |ql/pricingengines/barrier/analyticdoublebarrierengine.hpp|void AnalyticDoubleBarrierEngine::calculate() const;
-| |ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp|AnalyticPartialTimeBarrierOptionEngine::AnalyticPartialTimeBarrierOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp|AnalyticPartialTimeBarrierOptionEngine::AnalyticPartialTimeBarrierOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp|void AnalyticPartialTimeBarrierOptionEngine::calculate() const;
 | |ql/pricingengines/barrier/analyticsoftbarrierengine.hpp|AnalyticSoftBarrierEngine::AnalyticSoftBarrierEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/barrier/analyticsoftbarrierengine.hpp|void AnalyticSoftBarrierEngine::calculate() const;

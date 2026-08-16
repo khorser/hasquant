@@ -7,6 +7,7 @@ module QuantLib.Instrument
   , OptionType(..)
   , BarrierType(..)
   , DoubleBarrierType(..)
+  , PartialBarrierRange(..)
   , AverageType(..)
   , Seniority(..)
   , PricingModel(..)
@@ -45,6 +46,7 @@ import Foreign.Marshal.Array(peekArray)
 {#enum SettlementMethod{} deriving(Show, Eq)#}
 {#enum BarrierType{} deriving(Show, Eq)#}
 {#enum DoubleBarrierType{} deriving(Show, Eq)#}
+{#enum PartialBarrierRange{} deriving(Show, Eq)#}
 {#enum AverageType{} deriving(Show, Eq)#}
 {#enum Seniority{} deriving(Show, Eq)#}
 {#enum PricingModel{} deriving(Show, Eq)#}

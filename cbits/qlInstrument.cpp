@@ -27,6 +27,7 @@
 #include <ql/instruments/compoundoption.hpp>
 #include <ql/instruments/barrieroption.hpp>
 #include <ql/instruments/doublebarrieroption.hpp>
+#include <ql/instruments/partialtimebarrieroption.hpp>
 #include <ql/instruments/vanillaoption.hpp>
 #include <ql/instruments/swaption.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
@@ -548,6 +549,9 @@ double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGene
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
     return (*arg(o))->impliedVolatility(price, *arg(process), d, accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlOneAssetOption* qlPartialTimeBarrierOption(int barrierType, int barrierRange, double barrier, double rebate, int coverEventDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new PartialTimeBarrierOption((Barrier::Type)barrierType, (PartialBarrier::Range)barrierRange, barrier, rebate, Date(coverEventDate), *arg(payoff), *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 QlDoubleBarrierOption* qlDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlDoubleBarrierOption(alloc(new DoubleBarrierOption((DoubleBarrier::Type)barrierType, barrierLo, barrierHi, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlDoubleBarrierOption*>(e, er);}}

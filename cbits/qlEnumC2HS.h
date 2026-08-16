@@ -267,6 +267,11 @@ enum BarrierType {DownIn, UpIn, DownOut, UpOut};
 // instruments/doublebarriertype.hpp
 enum DoubleBarrierType {KnockIn, KnockOut, KIKO, KOKI};
 
+// instruments/partialtimebarrieroption.hpp -- values are non-consecutive
+// upstream (no 1), must mirror PartialBarrier::Range exactly or EndB1/EndB2
+// silently alias to the wrong case (unchecked cast, see CLAUDE.md).
+enum PartialBarrierRange {Start = 0, EndB1 = 2, EndB2 = 3};
+
 // instruments/swap.hpp
 enum SwapType {Receiver = -1, Payer = 1};
 

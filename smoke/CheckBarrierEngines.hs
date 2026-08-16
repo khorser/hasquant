@@ -48,6 +48,7 @@ main = do
   checkVannaVolgaBarrierEngine
   checkAnalyticDoubleBarrierEngine
   checkOtherEngines
+  checkPartialTimeBarrierOptionEngine
 
 -- Cached (optionType, deltaType, spot, dDf, fDf, stdDev, strike, expectedDelta)
 -- rows from test-suite/blackdeltacalculator.cpp's testDeltaValues -- one per
@@ -237,3 +238,42 @@ checkOtherEngines = do
     npv dblOpt' >>= printf "     MCDoubleBarrierEngine %-24s -> %.6f\n" (show rng)
   where
     today = 1 `january` 2020
+
+-- Reproduces the first row ({95, 90, 1, 0.0393}, DownOut/EndB1) of
+-- test-suite/partialtimebarrieroption.cpp's testAnalyticEngine. Exercises the
+-- non-consecutive PartialBarrierRange enum wiring (EndB1 = 2, not 1 -- see
+-- CLAUDE.md's CPIInterpolationType gotcha) and the Date-typed
+-- coverEventDate argument end-to-end. partialTimeBarrierOption returns
+-- OneAssetOption directly (no dedicated leaf type, unlike barrierOption), so
+-- unlike the checks above there's no asOneAssetOption upcast here.
+checkPartialTimeBarrierOptionEngine :: IO ()
+checkPartialTimeBarrierOptionEngine = do
+  setEvaluationDate (Just today)
+  dc <- dayCounter (Actual360 False)
+  spotQ <- simpleQuote s
+  qQ <- simpleQuote q
+  rQ <- simpleQuote r
+  volQ <- simpleQuote vol
+  qTS <- flatForward today qQ dc Continuous Annual
+  rTS <- flatForward today rQ dc Continuous Annual
+  tgt <- calendar TARGET
+  volTS <- blackConstantVol today tgt volQ dc
+  proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+
+  let payoff = PlainVanilla (PlainVanillaPayoff Call strike)
+      exercise = European (EuropeanExercise (addDays 360 today))
+      coverEventDate = addDays 1 today
+  opt <- partialTimeBarrierOption DownOut EndB1 barrier rebate coverEventDate payoff exercise
+  engine <- analyticPartialTimeBarrierOptionEngine proc
+  setPricingEngine opt engine
+  price <- npv opt
+  checkClose "AnalyticPartialTimeBarrierOptionEngine (DownOut/EndB1)" 0.0393 price 1.0e-4
+  where
+    today = 1 `january` 2020
+    barrier = 100.0
+    rebate = 0.0
+    strike = 90.0
+    s = 95.0
+    q = 0.0
+    r = 0.1
+    vol = 0.25

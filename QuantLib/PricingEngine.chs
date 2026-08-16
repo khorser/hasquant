@@ -22,6 +22,7 @@ module QuantLib.PricingEngine
   , counterpartyAdjSwapEngine
 
   , analyticBarrierEngine
+  , analyticPartialTimeBarrierOptionEngine
   , analyticBinaryBarrierEngine
   , fdBlackScholesBarrierEngine
   , fdHestonBarrierEngine
@@ -307,6 +308,8 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for partial-time barrier options
+{#fun qlAnalyticPartialTimeBarrierOptionEngine as analyticPartialTimeBarrierOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 -- |analytic pricing engine for American binary barrier options (cash-or-nothing/asset-or-nothing)
 {#fun qlAnalyticBinaryBarrierEngine as analyticBinaryBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 -- |/NB/ Timesteps for Cox-Ross-Rubinstein trees are adjusted using the Boyle-Lau algorithm;
