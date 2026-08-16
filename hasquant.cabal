@@ -148,6 +148,7 @@ executable hasquant_example
       QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Replication
       QuantLib.Example.Repo
+      QuantLib.Example.RiskyBond
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
       QuantLib.Example.SyntaxHelpers
@@ -192,6 +193,7 @@ test-suite hasquant_test
       QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Replication
       QuantLib.Example.Repo
+      QuantLib.Example.RiskyBond
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
       QuantLib.Example.SyntaxHelpers

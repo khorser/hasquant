@@ -7693,7 +7693,7 @@
 | |ql/pricingengines/bond/discretizedconvertible.hpp|Array & DiscretizedConvertible::spreadAdjustedRate();
 | |ql/pricingengines/bond/discretizedconvertible.hpp|const Array & DiscretizedConvertible::dividendValues() const;
 | |ql/pricingengines/bond/discretizedconvertible.hpp|Array & DiscretizedConvertible::dividendValues();
-| |ql/pricingengines/bond/riskybondengine.hpp|RiskyBondEngine::RiskyBondEngine(Handle<DefaultProbabilityTermStructure> defaultTS, Real recoveryRate, Handle<YieldTermStructure> yieldTS);
+|v|ql/pricingengines/bond/riskybondengine.hpp|RiskyBondEngine::RiskyBondEngine(Handle<DefaultProbabilityTermStructure> defaultTS, Real recoveryRate, Handle<YieldTermStructure> yieldTS);
 | |ql/pricingengines/bond/riskybondengine.hpp|void RiskyBondEngine::calculate() const;
 | |ql/pricingengines/bond/riskybondengine.hpp|Handle<DefaultProbabilityTermStructure> RiskyBondEngine::defaultTS() const;
 | |ql/pricingengines/bond/riskybondengine.hpp|Real RiskyBondEngine::recoveryRate() const;

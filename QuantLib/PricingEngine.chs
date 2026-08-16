@@ -17,6 +17,7 @@ module QuantLib.PricingEngine
   , asBlackCalculator
 
   , discountingBondEngine
+  , riskyBondEngine
   , discountingSwapEngine
   , discountingFxForwardEngine
   , counterpartyAdjSwapEngine
@@ -286,6 +287,9 @@ import QuantLib.Internal.Enum
 {#pointer *QlPlainVanillaPayoff nocode#}
 
 {#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure y',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlRiskyBondEngine as riskyBondEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
+  ,withYieldTermStructure*`GenYieldTermStructure y'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 {#fun qlDiscountingSwapEngine as discountingSwapEngine{withYieldTermStructure*`GenYieldTermStructure y',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate

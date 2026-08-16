@@ -24,6 +24,7 @@
 #include <ql/pricingengines/blackformula.hpp>
 #include <ql/pricingengines/blackscholescalculator.hpp>
 #include <ql/pricingengines/bond/discountingbondengine.hpp>
+#include <ql/pricingengines/bond/riskybondengine.hpp>
 #include <ql/pricingengines/capfloor/analyticcapfloorengine.hpp>
 #include <ql/pricingengines/capfloor/bacheliercapfloorengine.hpp>
 #include <ql/pricingengines/capfloor/blackcapfloorengine.hpp>
@@ -116,6 +117,9 @@ QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char *
   try {
     return ret(new QlPricingEngine(alloc(new DiscountingBondEngine(*arg(ts), qlOptBool(f)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine *>(e, er);}}
+QlPricingEngine* qlRiskyBondEngine(QlDefaultProbabilityTermStructure* defaultTS, double recoveryRate, QlYieldTermStructure* yieldTS, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new RiskyBondEngine(Handle<DefaultProbabilityTermStructure>(*arg(defaultTS)), recoveryRate, *arg(yieldTS)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return ret(new QlPricingEngine(alloc(new DiscountingSwapEngine(*arg(discountCurve), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}

@@ -15,6 +15,7 @@ import qualified QuantLib.Instrument.Bond as B
 import qualified QuantLib.Index.InterestRate as I
 
 import qualified QuantLib.Example.Bond as BondExample
+import qualified QuantLib.Example.RiskyBond as RiskyBondExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.Repo as RepoExample
@@ -81,6 +82,13 @@ spec = do
         cleanFromYield `shouldSatisfy` closePrec 101.79720 1e-5 -- because of difference in QL versions?
         yieldFromClean `shouldSatisfy` closePrec 0.0220096 1e-7
         tradable `shouldBe` (True, True, False)
+
+    describe "Risky bond example" $
+      it "reproduces upstream's RiskyBondEngine NPV/cleanPrice" $ do
+        -- ported from ~/Src/QuantLib/test-suite/bonds.cpp:testRiskyBondWithGivenDates
+        r <- Settings.keepingSettings' RiskyBondExample.run
+        RiskyBondExample.npvR r `shouldSatisfy` closePrec 888458.819055 1.0
+        RiskyBondExample.cleanPriceR r `shouldSatisfy` closePrec 87.407883 1e-4
 
     describe "some more bonds" $
       it "some statics" $ do
