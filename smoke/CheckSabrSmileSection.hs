@@ -116,3 +116,12 @@ main = do
     error ("Calibration to exact SABR-generated vols should fit near-perfectly, got rms="
       ++ show rms ++ " maxError=" ++ show maxErr)
   putStrLn "SabrInterpolatedSmileSection: OK, calibrated smile reproduces the generating SABR vols"
+
+  -- the upcast escape hatch: volatility through the generic SmileSection interface (only
+  -- reachable this way now that the concrete type has no smileSectionVolatility of its own)
+  -- must still reproduce the generating SABR vols, same as the rms/maxError check above.
+  generic <- sabrInterpolatedSmileSectionAsSmileSection interp
+  forM_ (zip strikes refVols) $ \(k, expected) -> do
+    got <- smileSectionVolatility generic k
+    checkClose (printf "SabrInterpolatedSmileSection upcast strike=%.2f vol" k) expected got 1e-6
+  putStrLn "SabrInterpolatedSmileSection: OK, sabrInterpolatedSmileSectionAsSmileSection upcast works"

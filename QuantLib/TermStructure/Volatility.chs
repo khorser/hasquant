@@ -20,6 +20,7 @@ module QuantLib.TermStructure.Volatility
   , GenOptionletVolatilityStructure
   , RelinkableOptionletVolatilityStructure
   , SmileSection
+  , SabrInterpolatedSmileSection
   , SwaptionVolatilityStructure
   , RelinkableSwaptionVolatilityStructure
   , VolatilityTermStructure
@@ -63,6 +64,7 @@ module QuantLib.TermStructure.Volatility
   , SabrInterpolatedSmileSectionOpts(..)
   , defaultSabrInterpolatedSmileSectionOpts
   , sabrInterpolatedSmileSection
+  , sabrInterpolatedSmileSectionAsSmileSection
   , sabrInterpolatedSmileSectionAlpha
   , sabrInterpolatedSmileSectionBeta
   , sabrInterpolatedSmileSectionNu
@@ -135,6 +137,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
+{#pointer *QlSabrInterpolatedSmileSection as SabrInterpolatedSmileSection foreign -> CSabrInterpolatedSmileSection nocode#}
 
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
@@ -442,7 +445,7 @@ sabrInterpolatedSmileSection :: Day -- ^optionDate
   -> Double -- ^beta
   -> Double -- ^nu
   -> Double -- ^rho
-  -> SabrInterpolatedSmileSectionOpts -> IO SmileSection
+  -> SabrInterpolatedSmileSectionOpts -> IO SabrInterpolatedSmileSection
 sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVolatility vols
   alpha beta nu rho opts = do
   dc <- maybe (dayCounter Actual365FixedStandard) return (sabrDayCounter opts)
@@ -467,24 +470,27 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,`Bool' -- ^vegaWeighted
   ,withDayCounter*`DayCounter'
   ,`Double' -- ^shift
-  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+  ,preErrorCheck-`String'errorCheck*-}->`SabrInterpolatedSmileSection'peekSabrInterpolatedSmileSection*#}
+
+-- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
+-- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
+{#fun qlSabrInterpolatedSmileSectionAsSmileSection as sabrInterpolatedSmileSectionAsSmileSection{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |calibrated alpha (post-fit; can differ from the initial guess passed to
--- 'sabrInterpolatedSmileSection' unless @sabrIsAlphaFixed@ was set). Only valid for a
--- 'SmileSection' built by 'sabrInterpolatedSmileSection'.
-{#fun qlSabrInterpolatedSmileSectionAlpha as sabrInterpolatedSmileSectionAlpha{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- 'sabrInterpolatedSmileSection' unless @sabrIsAlphaFixed@ was set).
+{#fun qlSabrInterpolatedSmileSectionAlpha as sabrInterpolatedSmileSectionAlpha{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |calibrated beta, see 'sabrInterpolatedSmileSectionAlpha'
-{#fun qlSabrInterpolatedSmileSectionBeta as sabrInterpolatedSmileSectionBeta{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionBeta as sabrInterpolatedSmileSectionBeta{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |calibrated nu, see 'sabrInterpolatedSmileSectionAlpha'
-{#fun qlSabrInterpolatedSmileSectionNu as sabrInterpolatedSmileSectionNu{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionNu as sabrInterpolatedSmileSectionNu{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |calibrated rho, see 'sabrInterpolatedSmileSectionAlpha'
-{#fun qlSabrInterpolatedSmileSectionRho as sabrInterpolatedSmileSectionRho{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionRho as sabrInterpolatedSmileSectionRho{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |root-mean-square calibration error
-{#fun qlSabrInterpolatedSmileSectionRmsError as sabrInterpolatedSmileSectionRmsError{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionRmsError as sabrInterpolatedSmileSectionRmsError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |maximum calibration error
-{#fun qlSabrInterpolatedSmileSectionMaxError as sabrInterpolatedSmileSectionMaxError{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionMaxError as sabrInterpolatedSmileSectionMaxError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |the reason the SABR calibration's optimizer stopped
-{#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+{#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^start

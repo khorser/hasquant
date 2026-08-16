@@ -197,6 +197,20 @@ peekSmileSection = SmileSection <.> peekStandalone
 withSmileSection :: SmileSection -> (Ptr CSmileSection -> IO b) -> IO b
 withSmileSection = withStandalone . getCSmileSection
 
+-- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.sabrInterpolatedSmileSection'
+-- returns this concrete type directly so its alpha\/beta\/nu\/rho\/etc getters need no
+-- runtime cast to reach them (see CLAUDE.md's "avoid dynamic_cast unless upstream forces it"
+-- rule). Use 'QuantLib.TermStructure.Volatility.sabrInterpolatedSmileSectionAsSmileSection' to
+-- pass one into anything that wants the generic 'SmileSection' interface.
+data CSabrInterpolatedSmileSection
+newtype SabrInterpolatedSmileSection = SabrInterpolatedSmileSection {getCSabrInterpolatedSmileSection :: Standalone CSabrInterpolatedSmileSection}
+foreign import ccall unsafe "ql.h &qlFreeSabrInterpolatedSmileSection" qlFreeSabrInterpolatedSmileSection :: FinalizerPtr CSabrInterpolatedSmileSection
+instance Finalizable CSabrInterpolatedSmileSection where finalize = qlFreeSabrInterpolatedSmileSection
+peekSabrInterpolatedSmileSection :: Ptr CSabrInterpolatedSmileSection -> IO SabrInterpolatedSmileSection
+peekSabrInterpolatedSmileSection = SabrInterpolatedSmileSection <.> peekStandalone
+withSabrInterpolatedSmileSection :: SabrInterpolatedSmileSection -> (Ptr CSabrInterpolatedSmileSection -> IO b) -> IO b
+withSabrInterpolatedSmileSection = withStandalone . getCSabrInterpolatedSmileSection
+
 data CPricingEngine
 newtype PricingEngine = PricingEngine {getCPricingEngine :: Standalone CPricingEngine}
 foreign import ccall unsafe "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
