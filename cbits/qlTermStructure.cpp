@@ -1161,6 +1161,13 @@ QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDivi
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e) {try {(*arg(i))->addFixing(Date(date), fix, overwrite);} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+double qlIndexFixing(QlIndex *i, int date, int forecastTodaysFixing, char **e) {try {return (*arg(i))->fixing(Date(date), forecastTodaysFixing);} catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlIndexHasHistoricalFixing(QlIndex *i, int date, char **e) {try {return (*arg(i))->hasHistoricalFixing(Date(date));} catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlIndexIsValidFixingDate(QlIndex *i, int date, char **e) {try {return (*arg(i))->isValidFixingDate(Date(date));} catch (std::exception& er) {return handleException<int>(e, er);}}
+void qlIndexAddFixings(QlIndex *i, unsigned datesLen, int *dates, double *values, int overwrite, char **e) {
+  try {std::vector<Date> ds = qlDateVector(dates, datesLen);(*arg(i))->addFixings(ds.begin(), ds.end(), values, overwrite);
+  } catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+void qlIndexClearFixings(QlIndex *i, char **e) {try {(*arg(i))->clearFixings();} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 typedef SwapIndex *(*makeSwapIndex)(const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2);
 // must match with the order of qlEnumObjects.h:LiborSwapIndexType
 static const makeSwapIndex swapIndices[] = {

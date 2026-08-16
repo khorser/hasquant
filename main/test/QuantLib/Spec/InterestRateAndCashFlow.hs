@@ -16,6 +16,7 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
+import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..))
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
@@ -314,3 +315,26 @@ spec tod = do
           Instr.setPricingEngine cms engine
           n <- Instr.npv cms
           n `shouldSatisfy` not . isNaN
+
+    describe "Index fixings" $
+      it "addFixing/fixing round-trip, hasHistoricalFixing/isValidFixingDate, addFixings and clearFixings" $
+        Settings.keepingSettings' $ do
+          idx <- iborIndex (Euribor (6, Months)) Nothing
+          cal <- fixingCalendar idx
+          d1 <- adjust cal (16 `august` 2021) Following
+          d2 <- adjust cal (16 `september` 2021) Following
+          d3 <- adjust cal (18 `october` 2021) Following
+
+          hasHistoricalFixing idx d1 `shouldReturn` False
+          isValidFixingDate idx d1 `shouldReturn` True
+
+          addFixing idx d1 0.01 False
+          hasHistoricalFixing idx d1 `shouldReturn` True
+          fixing idx d1 False `shouldReturn` 0.01
+
+          addFixings idx [d2, d3] [0.02, 0.03] False
+          fixing idx d2 False `shouldReturn` 0.02
+          fixing idx d3 False `shouldReturn` 0.03
+
+          clearFixings idx
+          hasHistoricalFixing idx d1 `shouldReturn` False

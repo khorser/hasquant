@@ -308,6 +308,11 @@ extern "C" {
   QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e);
 
   void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);
+  double qlIndexFixing(QlIndex *i, int date, int forecastTodaysFixing, char **e);
+  int qlIndexHasHistoricalFixing(QlIndex *i, int date, char **e);
+  int qlIndexIsValidFixingDate(QlIndex *i, int date, char **e);
+  void qlIndexAddFixings(QlIndex *i, unsigned datesLen, int *dates, double *values, int overwrite, char **e);
+  void qlIndexClearFixings(QlIndex *i, char **e);
   void qlFreeIndex(QlIndex *i);
   void qlFreeInterestRateIndex(QlInterestRateIndex *o);
   QlIndex* qlInterestRateIndexAsIndex(QlInterestRateIndex *o);
