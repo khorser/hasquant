@@ -1,6 +1,12 @@
 Haskell bindings to [QuantLib](https://www.quantlib.org/), the free/open-source C++ library for quantitative finance — rates, bonds, options, swaps, credit, inflation, and equity derivatives, with the associated term structures, indexes, and pricing engines. Around 1000 constructors and non-trivial methods are bound so far, covering roughly a tenth of QuantLib's surface.
 
-I deliberately kept the API low-level rather than build a framework on top of it, so it composes into whatever higher-level API you actually need instead of imposing one. The only departure from a thin wrapper is enums and ADTs standing in for things that are classes on the C++ side (see "On Types" below) — everything else maps close to 1:1 onto the underlying QuantLib call.
+hasquant gives Haskell direct access to production-grade pricing, curve-building, and risk models from QuantLib. Rather than wrapping it in a new framework, it stays a thin, close-to-1:1 layer over the C++ API, so it composes into whatever architecture you're already building instead of dictating one. Bindings are held to the same bar as the library they wrap: each is checked against upstream signatures and tested against QuantLib's own reference values, not just compiled and eyeballed.
+
+Coverage already spans the parts of QuantLib people actually reach for in practice: yield/credit/inflation/volatility term structures and their bootstrapping helpers, IBOR/overnight/swap/inflation indexes, fixed and floating bonds (including amortizing, callable, and convertible), vanilla and exotic options (barrier, Asian, compound, variance, basket), swaps (vanilla, CMS, OIS, CDS, zero-coupon), and the corresponding pricing engines — analytic, tree, finite-difference, and Monte Carlo, including SABR and Heston. Every bound constructor and method is tracked line-by-line against QuantLib's own headers in `tools/ql-methods-1.43.txt`, so "what's covered" is a checkable fact, not a claim.
+
+Type safety is held to a noticeably higher bar than a typical C++ binding. QuantLib's class hierarchies are mirrored with phantom-typed pointers (`GenBond a`, `GenQuote a`, …) rather than one flat handle type, so passing the wrong kind of object is a compile error, not a runtime crash; upcasting is the only implicit conversion, and it's structurally guaranteed safe. The C++ shim layer has zero `dynamic_cast`/`dynamic_pointer_cast` call sites — classes that need runtime-checked downcasts upstream get a dedicated leaf type instead — and enum-like C++ types are bound with explicit value mirroring rather than an unchecked numeric cast, closing off a whole class of silent-corruption bugs that plain FFI bindings are prone to.
+
+The only departure from a thin wrapper is enums and ADTs standing in for things that are classes on the C++ side (see "On Types" below) — everything else maps close to 1:1 onto the underlying QuantLib call.
 
 This started as a hand-written project in 2012 (see "Project History" below) and has gone through several architecture rewrites since. The core design — the pointer-ownership model, the enum/ADT scheme, the C shim conventions — is hand-designed and predates any AI involvement. More recently I've used AI assistance to extend coverage faster (new classes, methods, day counters, indexes), but every generated binding is reviewed against the pattern it's supposed to follow, checked against the upstream C++ signature, and covered by a test before it's considered done — see "Testing" below for what that actually means in practice.
 
@@ -171,8 +177,8 @@ Polished FFI helpers and reduced technical debt. Updated static data, added infl
 
 ## 0.4.0.0 (2026)
 
-Extended the functionality, added more instruments and asset classes
+Extended the functionality, added more instruments and asset classes: equity index/cash-flow/total-return-swap, variance and compound options, zero-coupon swaps, further inflation-linked instruments, SABR smile sections, and several rate/vol-related bindings. Widened many existing constructors to their full upstream arity, and added Windows build support.
 
 ## 0.5.0.0 (2026)
 
-Support for RelinkableHandle has finally landed. As it turned out the current model is a perfect fit for it.
+Support for RelinkableHandle has finally landed. As it turned out the current model is a perfect fit for it: term structures, quotes, and vol surfaces now relink uniformly, so building on top of a live quote or curve propagates updates correctly. Also removed all remaining `dynamic_cast` usage from the C++ shim in favor of dedicated typed bindings, and added a batch of further instrument/engine bindings (SABR vol cubes, Heston FD engines, CDS/counterparty engines, amortizing bonds, exchange rates, CMS legs, and more).
