@@ -701,6 +701,18 @@ QlBond *qlCmsRateBond(unsigned settlDays, double faceAmount, Schedule *sched, Ql
       (BusinessDayConvention)payConv, fixDays, gs, sps, cs, fs, inArrears, redemption, qlNullableDate(issue)))));
   } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
 
+QlBond *qlAmortizingCmsRateBond(unsigned settlementDays, unsigned notionalsLen, double *notionals, Schedule *sched,
+  QlSwapIndex *index, DayCounter *dc, int payConv, unsigned fixDays, unsigned nGearings, double *gearings,
+  unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+  int inArrears, int issue, unsigned redemptionsLen, double *redemptions, char **e) {
+  try {std::vector<Real> ns(notionals, notionals+notionalsLen);
+    std::vector<Real> gs(gearings, gearings+nGearings); std::vector<Spread> sps(spreads, spreads+nSpreads);
+    std::vector<Rate> cs(caps, caps+nCaps); std::vector<Rate> fs(floors, floors+nFloors);
+    std::vector<Real> reds(redemptions, redemptions+redemptionsLen);
+    return ret(new QlBond(alloc(new AmortizingCmsRateBond(settlementDays, ns, *arg(sched), *arg(index), *arg(dc),
+      (BusinessDayConvention)payConv, fixDays, gs, sps, cs, fs, inArrears, qlNullableDate(issue), reds))));
+  } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
+
 QlBond *qlAmortizingFixedRateBond(unsigned settlementDays, unsigned notionalsLen, double *notionals, Schedule *schedule,
     unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate,
     int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth,

@@ -20,6 +20,7 @@ module QuantLib.Instrument.Bond
   , cmsRateBond
   , cpiBond
   , amortizingFixedRateBond
+  , amortizingCmsRateBond
   , AmortizingFloatingRateBondOpts(..)
   , defaultAmortizingFloatingRateBondOpts
   , amortizingFloatingRateBond
@@ -272,6 +273,24 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,`Bool' -- ^inArrears
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
+-- |amortizing CMS-rate bond (possibly capped and\/or floored) with a per-period
+-- notional schedule instead of a single face amount, and a per-period redemption
+-- schedule instead of a single redemption value.
+{#fun qlAmortizingCmsRateBond as amortizingCmsRateBond{fromIntegral`Word' -- ^settlementDays
+  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withSchedule*`Schedule' -- ^schedule
+  ,withSwapIndex*`GenSwapIndex sidx'
+  ,withDayCounter*`DayCounter' -- ^paymentDayCounter
+  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withDoubleArray*`[Double]'& -- ^gearings
+  ,withDoubleArray*`[Double]'& -- ^spreads
+  ,withDoubleArray*`[Double]'& -- ^caps
+  ,withDoubleArray*`[Double]'& -- ^floors
+  ,`Bool' -- ^inArrears
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,withDoubleArray*`[Double]'& -- ^redemptions
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 -- |amortizing floating-rate bond (possibly capped and\/or floored) with a per-period
 -- notional schedule instead of a single face amount; see 'AmortizingFloatingRateBondOpts'

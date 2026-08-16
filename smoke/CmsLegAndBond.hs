@@ -1,4 +1,5 @@
--- Smoke test for cmsLeg/cmsLegFull, the widened iborLeg/iborLegFull, and cmsRateBond.
+-- Smoke test for cmsLeg/cmsLegFull, the widened iborLeg/iborLegFull, cmsRateBond,
+-- and amortizingCmsRateBond.
 -- Checks (all directional, not just "differs" -- mirrors the CPIInterpolationType
 -- gotcha in CLAUDE.md where a silently-wrong wiring can still produce *some*
 -- different-looking output):
@@ -103,5 +104,32 @@ main = do
   putStrLn $ "cmsRateBond NPV uncapped=" ++ show bondUncapped ++ " capped=" ++ show bondCapped ++ " floored=" ++ show bondFloored
   unless (bondCapped < bondUncapped) $ error "capped cmsRateBond NPV should be lower than uncapped"
   unless (bondFloored > bondUncapped) $ error "floored cmsRateBond NPV should be higher than uncapped"
+
+  -- amortizingCmsRateBond: per-period notionals/redemptions actually wire through
+  -- (not silently collapsed to a single scalar like cmsRateBond's faceAmount/redemption),
+  -- checked directionally: doubling the notional schedule raises the coupon leg NPV,
+  -- and doubling the redemption schedule raises the redemption leg NPV.
+  let notionals = [1000000, 500000, 250000, 100000]
+      redemptions = [0, 0, 0, 100]
+      buildAmortBond ns reds = do
+        amortBond <- Bond.amortizingCmsRateBond 2 ns sched swapBase thirty360bb
+          Following 2 [1.0] [0.0] [] [] False Nothing reds
+        amortLeg <- Bond.cashFlows amortBond
+        CF.setCouponPricer amortLeg pricer
+        couponNpv <- CF.npv amortLeg ts False Nothing Nothing
+        redemptionLeg <- Bond.redemptions amortBond
+        redemptionNpv <- CF.npv redemptionLeg ts False Nothing Nothing
+        return (couponNpv, redemptionNpv)
+
+  (amortNpv, redemptionNpv) <- buildAmortBond notionals redemptions
+  (amortNpvDoubledNotional, _) <- buildAmortBond (map (* 2) notionals) redemptions
+  (_, redemptionNpvDoubled) <- buildAmortBond notionals (map (* 2) redemptions)
+  putStrLn $ "amortizingCmsRateBond coupon NPV=" ++ show amortNpv
+    ++ " doubled-notional coupon NPV=" ++ show amortNpvDoubledNotional
+    ++ " redemption NPV=" ++ show redemptionNpv ++ " doubled-redemption NPV=" ++ show redemptionNpvDoubled
+  unless (amortNpvDoubledNotional > amortNpv) $
+    error "doubling notionals should increase amortizingCmsRateBond coupon leg NPV"
+  unless (redemptionNpvDoubled > redemptionNpv) $
+    error "doubling redemptions should increase amortizingCmsRateBond redemption leg NPV"
 
   putStrLn "OK"

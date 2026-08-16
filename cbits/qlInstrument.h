@@ -341,6 +341,10 @@ extern "C" {
   QlBond *qlCmsRateBond(unsigned settlDays, double faceAmount, Schedule *sched, QlSwapIndex *index, DayCounter *dc,
     int payConv, unsigned fixDays, unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
     unsigned nCaps, double *caps, unsigned nFloors, double *floors, int inArrears, double redemption, int issue, char **e);
+  QlBond *qlAmortizingCmsRateBond(unsigned settlementDays, unsigned notionalsLen, double *notionals, Schedule *sched,
+    QlSwapIndex *index, DayCounter *dc, int payConv, unsigned fixDays, unsigned nGearings, double *gearings,
+    unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+    int inArrears, int issue, unsigned redemptionsLen, double *redemptions, char **e);
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
   QlCPIBond *qlCPIBond(unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, char **e);
   QlBond *qlCPIBondAsBond(QlCPIBond *bond);
