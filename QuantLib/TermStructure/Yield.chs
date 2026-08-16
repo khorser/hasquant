@@ -46,6 +46,7 @@ module QuantLib.TermStructure.Yield
   , forwardSpreadedTermStructure
   , zeroSpreadedTermStructure
   , bmaSwapRateHelper
+  , multipleResetsSwapRateHelper
   , fraIborRateHelper'
   , fraRateHelper'
   , fraIborRateHelper
@@ -62,6 +63,7 @@ module QuantLib.TermStructure.Yield
 
   , piecewiseZeroSpreadedTermStructure
   , quantoTermStructure
+  , ultimateForwardTermStructure
   , minimumCostValue
   , numberOfIterations
 
@@ -77,6 +79,7 @@ module QuantLib.TermStructure.Yield
   , interpolatedZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
+  , interpolatedSpreadDiscountCurve
 
   , MultiCurve
   , multiCurve
@@ -532,6 +535,18 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,fromIntegral`Word' -- ^settlementDAys
   ,withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^bmpPeriod
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+{#fun qlMultipleResetsSwapRateHelper as multipleResetsSwapRateHelper{fromIntegral`Word' -- ^settlementDays
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,withQuote*`GenQuote q1' -- ^fixedRate
+  ,withIborIndex*`GenIborIndex ibor'
+  ,fromIntegral`Word' -- ^resetsPerCoupon
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
+  ,`RateAveragingType' -- ^averagingMethod
+  ,`Double' -- ^spread
+  ,`Frequency' -- ^fixedFrequency
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,`BusinessDayConvention' -- ^fixedConvention
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 {#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote q',fromIntegral`Word' -- ^monthsToStart
   ,withIborIndex*`GenIborIndex ibor'
   ,`PillarChoice' -- ^pillar
@@ -600,6 +615,17 @@ piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure 
   ,`Double' -- ^exchRateATMlevel
   ,`Double' -- ^underlyingExchRateCorrelation
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+{#fun qlUltimateForwardTermStructure as ultimateForwardTermStructure{withYieldTermStructure*`GenYieldTermStructure y' -- ^originalCurve
+  ,withQuote*`GenQuote q1' -- ^lastLiquidForwardRate
+  ,withQuote*`GenQuote q2' -- ^ultimateForwardRate
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^firstSmoothingPoint
+  ,`Double' -- ^alpha
+  ,fromMaybeInt`Maybe Int' -- ^roundingDigits
+  ,`Compounding'
+  ,`Frequency'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
 piecewiseYieldCurve :: Day -- ^referenceDate
   -> [GenRateHelper rh] -- ^instruments
   -> DayCounter -- ^dayCounter
@@ -755,6 +781,16 @@ interpolatedZeroCurve :: [(Day, Double)] -- ^dates, yields
   -> IO YieldTermStructure
 interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip r; (ds, qs) = unzip qd}
 {#fun qlInterpolatedZeroCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Discount factors interpolated as a multiplicative spread applied on top of 'baseCurve'.
+-- Upstream requires the first discount factor to be exactly @1.0@, flagging its date as the
+-- curve's own reference date; a mismatched leading value throws a 'QuantLib.Type.Error'.
+interpolatedSpreadDiscountCurve :: GenYieldTermStructure y
+  -> [(Day, Double)] -- ^dates, dfs
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedSpreadDiscountCurve ts r i = uncurryNested (qlInterpolatedSpreadDiscountCurve ts rs rd) (qlInterpolation i) where (rd, rs) = unzip r
+{#fun qlInterpolatedSpreadDiscountCurve{withYieldTermStructure*`GenYieldTermStructure y',withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 -- |reference date based on current evaluation date
 {#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'

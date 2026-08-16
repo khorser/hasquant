@@ -2,6 +2,7 @@
 module QuantLib.Spec.TermStructure (spec) where
 
 import Control.Monad(replicateM)
+import System.Mem(performGC)
 
 import Test.Hspec hiding(before, after)
 import Test.Hspec.QuickCheck(prop)
@@ -19,6 +20,7 @@ import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
+import QuantLib.Index(addFixing)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr), liborSwapIndex, LiborSwapIndexType(EurLiborSwapIsdaFixA))
 import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, hestonModel)
 import QuantLib.Currency(currency, Ccy(..))
@@ -139,6 +141,60 @@ spec = do
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
+      -- Mirrors upstream's ultimateforwardtermstructure.cpp testZeroRateAtFirstSmoothingPoint:
+      -- below the first smoothing point (fsp) the UFR curve must exactly reproduce the base
+      -- curve's own zero rate, since extrapolation only kicks in past fsp.
+      it "ultimate forward: zero rate at the first smoothing point matches the base curve" $
+        Settings.keepingSettings' $ do
+          (_calendar, _settlementDays, ts) <- setup
+          llfr <- Quote.simpleQuote 0.0125
+          ufr <- Quote.simpleQuote 0.02
+          actual360dc <- dayCounter (Actual360 False)
+          refDate <- asTermStructure ts >>= referenceDate
+          let fsp = (10, Years)
+              cutOffDate = addGregorianYearsClip 10 refDate
+          ufrTs <- ultimateForwardTermStructure ts llfr ufr fsp 0.1 Nothing IR.Compounded Annual
+
+          base <- IR.rate <$> zeroRate' ts cutOffDate actual360dc IR.Continuous NoFrequency True
+          extrap <- IR.rate <$> zeroRate' ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
+
+          extrap `shouldSatisfy` closePrec base 1.0e-8
+
+      -- Mirrors upstream's testExtrapolatedForward: far enough past fsp, the UFR extrapolation
+      -- formula's beta term decays to ~0, so the continuously-compounded zero rate converges to
+      -- the UFR quote itself -- a property only the extrapolation branch can produce.
+      it "ultimate forward: zero rate far past the first smoothing point converges to the UFR" $
+        Settings.keepingSettings' $ do
+          (_calendar, _settlementDays, ts) <- setup
+          llfr <- Quote.simpleQuote 0.0125
+          let ufrVal = 0.02
+          ufr <- Quote.simpleQuote ufrVal
+          actual360dc <- dayCounter (Actual360 False)
+          refDate <- asTermStructure ts >>= referenceDate
+          let fsp = (10, Years)
+              farDate = addGregorianYearsClip 150 refDate
+          ufrTs <- ultimateForwardTermStructure ts llfr ufr fsp 0.1 Nothing IR.Compounded Annual
+
+          farZero <- IR.rate <$> zeroRate' ufrTs farDate actual360dc IR.Continuous NoFrequency True
+          farZero `shouldSatisfy` closePrec ufrVal 3.0e-3
+
+      -- Multiplicative discount spread: at the input node dates the spread curve's own discount
+      -- factor is by construction the given df, so the combined curve's discount there must equal
+      -- baseCurve.discount(date) * df exactly (to interpolation/numerical precision).
+      it "interpolated spread discount curve applies a multiplicative spread over the base curve" $
+        Settings.keepingSettings' $ do
+          (_calendar, _settlementDays, ts) <- setup
+          refDate <- asTermStructure ts >>= referenceDate
+          let d1 = addGregorianYearsClip 1 refDate
+              d2 = addGregorianYearsClip 2 refDate
+              spreadDf1 = 0.95
+          spreaded <- interpolatedSpreadDiscountCurve ts [(refDate, 1.0), (d1, spreadDf1), (d2, 0.90)] Linear
+
+          baseD1 <- discount' ts d1 False
+          spreadedD1 <- discount' spreaded d1 False
+
+          spreadedD1 `shouldSatisfy` closePrec (baseD1 * spreadDf1) 1.0e-8
+
     -- The three rate helpers below build their instrument internally rather than taking
     -- one, so these accessors are the only way to reach it. Checking the instrument's own
     -- maturity against the tenor the helper was given is what catches an accessor wired to
@@ -201,6 +257,34 @@ spec = do
           implied <- impliedQuote rh
           fwdVal <- Quote.value fwdPoint
           implied `shouldSatisfy` closePrec fwdVal 1.0e-8
+
+    -- Adapted from upstream's multipleresetsswap.cpp testRateHelper (a flat-rate quote at 1Y/2Y/3Y
+    -- bootstraps a curve under which each helper's fair rate matches the input). hasquant doesn't
+    -- bind MultipleResetsSwap itself (the helper needs no accessor for it -- see the "don't mirror
+    -- 1:1" rule), so this checks the same property the fx-swap-rate-helper test above does:
+    -- impliedQuote() reproduces the quote each helper was built from once the curve is solved.
+    describe "multiple resets swap rate helper" $
+      it "bootstrapped curve reprices each helper's own fixed rate" $
+        Settings.keepingSettings' $ do
+          let today = 15 `january` 2024
+          Settings.setEvaluationDate (Just today)
+          cal <- calendar TARGET
+          actual360dc <- dayCounter (Actual360 False)
+          ccy <- currency EUR
+          euribor3m <- iborIndex (Ibor "euribor3m" (3, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
+          addFixing euribor3m (11 `january` 2024) 0.05 False
+
+          let inputRate = 0.05
+          q <- Quote.simpleQuote inputRate
+          helpers <- mapM
+            (\tenor -> multipleResetsSwapRateHelper 0 tenor q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing)
+            [(1, Years), (2, Years), (3, Years)]
+
+          ts <- piecewiseYieldCurve today helpers actual360dc [] Discount LogLinear
+          _ <- discount' ts today False
+          implieds <- mapM impliedQuote helpers
+          mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
+          performGC
 
     -- No upstream test-suite fixture exists for OvernightIndexFutureRateHelper/SofrFutureRateHelper
     -- either (checked ~/Src/QuantLib/test-suite for overnightindexfuture/sofrfuture-named files,

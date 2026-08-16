@@ -384,6 +384,59 @@ YieldTermStructure *qlInterpolatedZeroCurveAux(
   }
 }
 
+YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
+    const Handle<YieldTermStructure>& baseCurve,
+    const std::vector<Date>& dates,
+    const std::vector<double>& dfs,
+    int interpolator, int approximator, int approximatorArg) {
+  switch (interpolator) {
+  case hasquant::BackwardFlat:
+    return new InterpolatedSpreadDiscountCurve<BackwardFlat>(baseCurve, dates, dfs);
+  case hasquant::ForwardFlat:
+    return new InterpolatedSpreadDiscountCurve<ForwardFlat>(baseCurve, dates, dfs);
+  case hasquant::Linear:
+    return new InterpolatedSpreadDiscountCurve<Linear>(baseCurve, dates, dfs);
+  case hasquant::LogLinear:
+    return new InterpolatedSpreadDiscountCurve<LogLinear>(baseCurve, dates, dfs);
+  case hasquant::Cubic:
+    switch (approximator) {
+    case hasquant::NaturalSpline:
+      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
+          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    case hasquant::Kruger:
+      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
+          Cubic(CubicInterpolation::Kruger));
+    case hasquant::FritschButland:
+      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
+          Cubic(CubicInterpolation::FritschButland));
+    case hasquant::Parabolic:
+      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
+          Cubic(CubicInterpolation::Parabolic, approximatorArg));
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+  case hasquant::LogCubic:
+    switch(approximator) {
+    case hasquant::NaturalSpline:
+      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
+          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    case hasquant::Kruger:
+      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
+          LogCubic(CubicInterpolation::Kruger));
+    case hasquant::FritschButland:
+      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
+          LogCubic(CubicInterpolation::FritschButland));
+    case hasquant::Parabolic:
+      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
+          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+  default:
+    QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+}
+
 DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
     const std::vector<Date>& dates,
     const std::vector<double>& densities,

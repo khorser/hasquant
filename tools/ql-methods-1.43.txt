@@ -9947,7 +9947,7 @@
 | |ql/termstructures/yield/interpolatedsimplezerocurve.hpp|InterpolatedSimpleZeroCurve<Interpolator>(const std::vector<Date> & dates, const std::vector<Rate> & yields, const DayCounter & dayCounter, const Calendar & calendar, const T & interpolator);
 | |ql/termstructures/yield/interpolatedsimplezerocurve.hpp|InterpolatedSimpleZeroCurve<Interpolator>(const std::vector<Date> & dates, const std::vector<Rate> & yields, const DayCounter & dayCounter, const T & interpolator);
 | |ql/termstructures/yield/interpolatedsimplezerocurve.hpp|void initialize();
-| |ql/termstructures/yield/multipleresetsswaphelper.hpp|MultipleResetsSwapRateHelper::MultipleResetsSwapRateHelper(Natural settlementDays, const Period & tenor, const std::variant<Rate, Handle<Quote>> & fixedRate, const ext::shared_ptr<IborIndex> & iborIndex, Size resetsPerCoupon, Handle<YieldTermStructure> discountingCurve = { }, RateAveraging::Type averagingMethod = RateAveraging::Compound, Spread spread = 0.0, Frequency fixedFrequency = NoFrequency, const DayCounter & fixedDayCount = DayCounter(), BusinessDayConvention fixedConvention = ModifiedFollowing);
+|v|ql/termstructures/yield/multipleresetsswaphelper.hpp|MultipleResetsSwapRateHelper::MultipleResetsSwapRateHelper(Natural settlementDays, const Period & tenor, const std::variant<Rate, Handle<Quote>> & fixedRate, const ext::shared_ptr<IborIndex> & iborIndex, Size resetsPerCoupon, Handle<YieldTermStructure> discountingCurve = { }, RateAveraging::Type averagingMethod = RateAveraging::Compound, Spread spread = 0.0, Frequency fixedFrequency = NoFrequency, const DayCounter & fixedDayCount = DayCounter(), BusinessDayConvention fixedConvention = ModifiedFollowing);
 | |ql/termstructures/yield/multipleresetsswaphelper.hpp|Real MultipleResetsSwapRateHelper::impliedQuote() const;
 | |ql/termstructures/yield/multipleresetsswaphelper.hpp|void MultipleResetsSwapRateHelper::setTermStructure(YieldTermStructure *);
 | |ql/termstructures/yield/multipleresetsswaphelper.hpp|void MultipleResetsSwapRateHelper::accept(AcyclicVisitor &);
@@ -10084,13 +10084,13 @@
 | |ql/termstructures/yield/ratehelpers.hpp|Spread spread() const;
 |?|ql/termstructures/yield/ratehelpers.hpp|ext::shared_ptr<VanillaSwap> swap() const;
 | |ql/termstructures/yield/ratehelpers.hpp|const Period & forwardStart() const;
-| |ql/termstructures/yield/spreaddiscountcurve.hpp|InterpolatedSpreadDiscountCurve::InterpolatedSpreadDiscountCurve<Interpolator>(Handle<YieldTermStructure> baseCurve, std::vector<Date> dates, std::vector<DiscountFactor> dfs, const Interpolator & interpolator = { });
+|v|ql/termstructures/yield/spreaddiscountcurve.hpp|InterpolatedSpreadDiscountCurve::InterpolatedSpreadDiscountCurve<Interpolator>(Handle<YieldTermStructure> baseCurve, std::vector<Date> dates, std::vector<DiscountFactor> dfs, const Interpolator & interpolator = { });
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|const Handle<YieldTermStructure> & InterpolatedSpreadDiscountCurve::baseCurve() const;
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|const std::vector<Time> & InterpolatedSpreadDiscountCurve::times() const;
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|const std::vector<Date> & InterpolatedSpreadDiscountCurve::dates() const;
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|const std::vector<Real> & InterpolatedSpreadDiscountCurve::data() const;
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|std::vector<std::pair<Date, Real>> InterpolatedSpreadDiscountCurve::nodes() const;
-| |ql/termstructures/yield/spreaddiscountcurve.hpp|InterpolatedSpreadDiscountCurve<Interpolator>(Handle<YieldTermStructure> baseCurve, std::vector<Date> dates, std::vector<DiscountFactor> dfs, const T & interpolator);
+|v|ql/termstructures/yield/spreaddiscountcurve.hpp|InterpolatedSpreadDiscountCurve<Interpolator>(Handle<YieldTermStructure> baseCurve, std::vector<Date> dates, std::vector<DiscountFactor> dfs, const T & interpolator);
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|InterpolatedSpreadDiscountCurve<Interpolator>(Handle<YieldTermStructure> baseCurve, const T & interpolator);
 |?|ql/termstructures/yield/spreaddiscountcurve.hpp|DayCounter dayCounter() const;
 |?|ql/termstructures/yield/spreaddiscountcurve.hpp|Calendar calendar() const;
@@ -10106,8 +10106,8 @@
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|DiscountFactor calcSpread(Time t) const;
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|void update();
 | |ql/termstructures/yield/spreaddiscountcurve.hpp|void updateInterpolation();
-| |ql/termstructures/yield/ultimateforwardtermstructure.hpp|UltimateForwardTermStructure::UltimateForwardTermStructure(Handle<YieldTermStructure>, Handle<Quote> lastLiquidForwardRate, Handle<Quote> ultimateForwardRate, const Period & firstSmoothingPoint, Real alpha, const ext::optional<Integer> & roundingDigits = ext::nullopt, Compounding compounding = Compounded, Frequency frequency = Annual);
-| |ql/termstructures/yield/ultimateforwardtermstructure.hpp|UltimateForwardTermStructure(Handle<YieldTermStructure> h, Handle<Quote> lastLiquidForwardRate, Handle<Quote> ultimateForwardRate, const Period & firstSmoothingPoint, Real alpha, const ext::optional<Integer> & roundingDigits, Compounding compounding, Frequency frequency);
+|v|ql/termstructures/yield/ultimateforwardtermstructure.hpp|UltimateForwardTermStructure::UltimateForwardTermStructure(Handle<YieldTermStructure>, Handle<Quote> lastLiquidForwardRate, Handle<Quote> ultimateForwardRate, const Period & firstSmoothingPoint, Real alpha, const ext::optional<Integer> & roundingDigits = ext::nullopt, Compounding compounding = Compounded, Frequency frequency = Annual);
+|v|ql/termstructures/yield/ultimateforwardtermstructure.hpp|UltimateForwardTermStructure(Handle<YieldTermStructure> h, Handle<Quote> lastLiquidForwardRate, Handle<Quote> ultimateForwardRate, const Period & firstSmoothingPoint, Real alpha, const ext::optional<Integer> & roundingDigits, Compounding compounding, Frequency frequency);
 |?|ql/termstructures/yield/ultimateforwardtermstructure.hpp|DayCounter dayCounter() const;
 |?|ql/termstructures/yield/ultimateforwardtermstructure.hpp|Calendar calendar() const;
 | |ql/termstructures/yield/ultimateforwardtermstructure.hpp|Natural settlementDays() const;

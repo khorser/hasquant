@@ -1160,6 +1160,22 @@ QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDivi
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), *arg(underlyingBlackVolTS), strike, *arg(exchRateBlackVolTS), exchRateATMlevel, underlyingExchRateCorrelation)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
+QlYieldTermStructure* qlUltimateForwardTermStructure(QlYieldTermStructure* x0, QlQuote* lastLiquidForwardRate, QlQuote* ultimateForwardRate, int fspLen, int fspUnit, double alpha, int roundingDigits, int compounding, int frequency, char **e) {
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new UltimateForwardTermStructure(*arg(x0), *arg(lastLiquidForwardRate), *arg(ultimateForwardRate), Period(fspLen, (TimeUnit)fspUnit), alpha,
+      roundingDigits == Null<Integer>() ? ext::optional<Integer>() : ext::optional<Integer>(roundingDigits), (Compounding)compounding, (Frequency)frequency)))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+
+QlYieldTermStructure* qlInterpolatedSpreadDiscountCurve(QlYieldTermStructure* baseCurve, unsigned dfsLen, double *dfs, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  try {
+    YieldTermStructure *ts = qlInterpolatedSpreadDiscountCurveAux(qlNullableHandle(arg(baseCurve)), qlDateVector(dates, datesLen), std::vector<double>(dfs, dfs+dfsLen), interpolator, approximator, approximatorArg);
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+
+QlRateHelper* qlMultipleResetsSwapRateHelper(unsigned settlementDays, int tenorLen, int tenorUnit, QlQuote* fixedRate, QlIborIndex* iborIndex, unsigned resetsPerCoupon, QlYieldTermStructure* discountingCurve, int averagingMethod, double spread, int fixedFrequency, DayCounter* fixedDayCount, int fixedConvention, char **e) {
+  try {return ret(new QlRateHelper(alloc(new MultipleResetsSwapRateHelper(settlementDays, Period(tenorLen, (TimeUnit)tenorUnit), *arg(fixedRate), *arg(iborIndex), resetsPerCoupon,
+      qlNullableHandle(arg(discountingCurve)), (RateAveraging::Type)averagingMethod, spread, (Frequency)fixedFrequency, *arg(fixedDayCount), (BusinessDayConvention)fixedConvention))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+
 void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e) {try {(*arg(i))->addFixing(Date(date), fix, overwrite);} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 double qlIndexFixing(QlIndex *i, int date, int forecastTodaysFixing, char **e) {try {return (*arg(i))->fixing(Date(date), forecastTodaysFixing);} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlIndexHasHistoricalFixing(QlIndex *i, int date, char **e) {try {return (*arg(i))->hasHistoricalFixing(Date(date));} catch (std::exception& er) {return handleException<int>(e, er);}}

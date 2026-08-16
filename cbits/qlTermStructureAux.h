@@ -94,6 +94,12 @@ QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
   const std::vector<QuantLib::Date>& jumpDates,
   int interpolator, int approximator, int approximatorArg);
 
+QuantLib::YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
+  const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
+  const std::vector<QuantLib::Date>& dates,
+  const std::vector<double>& dfs,
+  int interpolator, int approximator, int approximatorArg);
+
 // some credit stuff
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
             const std::vector<QuantLib::Date>& dates,

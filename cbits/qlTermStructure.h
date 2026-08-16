@@ -306,6 +306,9 @@ extern "C" {
   QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);
   QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, char **e);
   QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e);
+  QlYieldTermStructure* qlUltimateForwardTermStructure(QlYieldTermStructure* x0, QlQuote* lastLiquidForwardRate, QlQuote* ultimateForwardRate, int fspLen, int fspUnit, double alpha, int roundingDigits, int compounding, int frequency, char **e);
+  QlYieldTermStructure* qlInterpolatedSpreadDiscountCurve(QlYieldTermStructure* baseCurve, unsigned dfsLen, double *dfs, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
+  QlRateHelper* qlMultipleResetsSwapRateHelper(unsigned settlementDays, int tenorLen, int tenorUnit, QlQuote* fixedRate, QlIborIndex* iborIndex, unsigned resetsPerCoupon, QlYieldTermStructure* discountingCurve, int averagingMethod, double spread, int fixedFrequency, DayCounter* fixedDayCount, int fixedConvention, char **e);
 
   void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);
   double qlIndexFixing(QlIndex *i, int date, int forecastTodaysFixing, char **e);
