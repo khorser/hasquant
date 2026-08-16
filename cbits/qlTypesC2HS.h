@@ -96,6 +96,7 @@ typedef struct QlIborIndex QlIborIndex;
 typedef struct QlIndex QlIndex;
 typedef struct QlInflationIndex QlInflationIndex;
 typedef struct QlInstrument QlInstrument;
+typedef struct QlInterpolatedSwaptionVolatilityCube QlInterpolatedSwaptionVolatilityCube;
 typedef struct QlInterestRateIndex QlInterestRateIndex;
 typedef struct QlKlugeExtOUProcess QlKlugeExtOUProcess;
 typedef struct QlLiborForwardModel QlLiborForwardModel;
@@ -131,6 +132,7 @@ typedef struct QlRelinkableOptionletVolatilityStructure QlRelinkableOptionletVol
 typedef struct QlRelinkableQuote QlRelinkableQuote;
 typedef struct QlRelinkableSwaptionVolatilityStructure QlRelinkableSwaptionVolatilityStructure;
 typedef struct QlRelinkableYieldTermStructure QlRelinkableYieldTermStructure;
+typedef struct QlSabrSwaptionVolatilityCube QlSabrSwaptionVolatilityCube;
 typedef struct QlShortRateModel QlShortRateModel;
 typedef struct QlSimpleQuote QlSimpleQuote;
 typedef struct QlSmileSection QlSmileSection;

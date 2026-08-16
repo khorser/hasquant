@@ -102,6 +102,18 @@ module QuantLib.TermStructure.Volatility
   , blackVolSmile
   , blackVolSmile'
   , swaptionVolatilityMatrix'
+  , SabrSwaptionVolatilityCube
+  , InterpolatedSwaptionVolatilityCube
+  , sabrSwaptionVolatilityCube
+  , interpolatedSwaptionVolatilityCube
+  , sparseSabrParameters
+  , denseSabrParameters
+  , marketVolCube
+  , volCubeAtmCalibrated
+  , sabrSwaptionVolatilityCubeAtmStrike'
+  , sabrSwaptionVolatilityCubeAtmStrike
+  , interpolatedSwaptionVolatilityCubeAtmStrike'
+  , interpolatedSwaptionVolatilityCubeAtmStrike
   ) where
 import QuantLib.Internal
 import Foreign.C.Types(CInt)
@@ -138,6 +150,9 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign -> CCapFloorTermVolSurface' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlRelinkableSwaptionVolatilityStructure as RelinkableSwaptionVolatilityStructure foreign -> CRelinkableSwaptionVolatilityStructure' nocode#}
+{#pointer *QlSabrSwaptionVolatilityCube as SabrSwaptionVolatilityCube foreign -> CSabrSwaptionVolatilityCube' nocode#}
+{#pointer *QlInterpolatedSwaptionVolatilityCube as InterpolatedSwaptionVolatilityCube foreign -> CInterpolatedSwaptionVolatilityCube' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
@@ -689,5 +704,151 @@ swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr s
   ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+
+-- |A SABR-calibrated swaption volatility cube: fits a SABR smile at every (option tenor, swap
+-- tenor) node from an ATM surface plus a grid of vol spreads. The result /is/ a
+-- 'SwaptionVolatilityStructure' -- pass it anywhere one is expected (pricing engines,
+-- 'smileSection'\/'volatilityForPeriod''\/etc.) -- but its own extra getters
+-- ('sparseSabrParameters', 'denseSabrParameters', 'marketVolCube', 'volCubeAtmCalibrated',
+-- 'sabrSwaptionVolatilityCubeAtmStrike'\/'\'') only accept this concrete type, not the generic one.
+--
+-- @endCriteria@\/@optMethod@ are not exposed: 'SabrSwaptionVolatilityCube' stores them as
+-- @shared_ptr@ members for its full lifetime, and hasquant's 'EndCriteria'\/'OptimizationMethod'
+-- handles are raw, Haskell-finalized pointers rather than @shared_ptr@ boxes -- the same ownership
+-- hazard already avoided for 'sabrInterpolatedSmileSection' and
+-- 'QuantLib.TermStructure.Yield.fittedBondDiscountCurve''s fitting methods. Upstream's internal
+-- Levenberg-Marquardt\/EndCriteria defaults apply at every calibrated node instead.
+--
+-- @volSpreads@ and @parametersGuess@ are both flattened over the (optionTenor x swapTenor)
+-- product as the *outer* index (row = j*nSwapTenors+k, j over @optionTenors@, k over
+-- @swapTenors@) -- not one row per @optionTenor@ the way 'swaptionVolatilityMatrix'''s grid is:
+-- @matrixRows == length optionTenors * length swapTenors@ for both. @volSpreads@'s columns are
+-- one per @strikeSpreads@ entry; @parametersGuess@'s columns are always exactly 4, in order
+-- alpha\/beta\/nu\/rho.
+--
+-- Calibration is lazy: unlike 'sabrInterpolatedSmileSection', construction here does /not/ force
+-- an eager fit, so this call can succeed even for inputs that will later fail to calibrate -- the
+-- error only surfaces on the first 'smileSection'\/'volatilityForPeriod''\/diagnostic call.
+sabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStructure
+  -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [(Word, TimeUnit)] -- ^swapTenors
+  -> [Double] -- ^strikeSpreads
+  -> Matrix (GenQuote q1) -- ^volSpreads
+  -> GenSwapIndex sidx1 -- ^swapIndexBase
+  -> GenSwapIndex sidx2 -- ^shortSwapIndexBase
+  -> Bool -- ^vegaWeightedSmileFit
+  -> Matrix (GenQuote q2) -- ^parametersGuess (alpha, beta, nu, rho per node)
+  -> Bool -- ^isAlphaFixed
+  -> Bool -- ^isBetaFixed
+  -> Bool -- ^isNuFixed
+  -> Bool -- ^isRhoFixed
+  -> Bool -- ^isAtmCalibrated: if 'True', @atmVolStructure@ must be a discrete grid structure
+  -- (e.g. 'swaptionVolatilityMatrix'' or another cube) -- upstream's ATM-recalibration path
+  -- ('denseSabrParameters'\/one branch of 'volCubeAtmCalibrated') downcasts it to
+  -- @SwaptionVolatilityDiscrete@ and dereferences the result unchecked, which crashes given a
+  -- flat 'constantSwaptionVolatility'\/'\''.
+  -> Maybe Double -- ^maxErrorTolerance
+  -> Maybe Double -- ^errorAccept
+  -> Bool -- ^useMaxError
+  -> Word -- ^maxGuesses
+  -> Bool -- ^backwardFlat
+  -> Double -- ^cutoffStrike
+  -> IO SabrSwaptionVolatilityCube
+sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
+  iaf ibf inf irf iac met eat ume mg bf cs =
+  qlSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
+    iaf ibf inf irf iac met eat ume mg bf cs
+  where (opl, opu) = unzip ot; (spl, spu) = unzip st
+{#fun qlSabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withDoubleArray*`[Double]'&
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q1]'
+  ,withSwapIndex*`GenSwapIndex sidx1',withSwapIndex*`GenSwapIndex sidx2'
+  ,`Bool'
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q2]'
+  ,`Bool',`Bool',`Bool',`Bool'
+  ,`Bool'
+  ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
+  ,`Bool',`Double'
+  ,preErrorCheck-`String'errorCheck*-}->`SabrSwaptionVolatilityCube'peekSabrSwaptionVolatilityCube*#}
+
+-- |The non-SABR, linear-interpolation swaption volatility cube: interpolates the given
+-- @volSpreads@ rather than calibrating a smile model. No 'EndCriteria'\/'OptimizationMethod'
+-- hazard here -- this class never calibrates anything. See 'sabrSwaptionVolatilityCube' for the
+-- @volSpreads@ flattening convention (identical here, minus @parametersGuess@).
+interpolatedSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStructure
+  -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [(Word, TimeUnit)] -- ^swapTenors
+  -> [Double] -- ^strikeSpreads
+  -> Matrix (GenQuote q) -- ^volSpreads
+  -> GenSwapIndex sidx1 -- ^swapIndexBase
+  -> GenSwapIndex sidx2 -- ^shortSwapIndexBase
+  -> Bool -- ^vegaWeightedSmileFit
+  -> IO InterpolatedSwaptionVolatilityCube
+interpolatedSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw =
+  qlInterpolatedSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw
+  where (opl, opu) = unzip ot; (spl, spu) = unzip st
+{#fun qlInterpolatedSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withDoubleArray*`[Double]'&
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
+  ,withSwapIndex*`GenSwapIndex sidx1',withSwapIndex*`GenSwapIndex sidx2'
+  ,`Bool'
+  ,preErrorCheck-`String'errorCheck*-}->`InterpolatedSwaptionVolatilityCube'peekInterpolatedSwaptionVolatilityCube*#}
+
+toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
+toMatrixDouble (r, c, d) = Matrix r c d
+
+-- |Per-node calibrated SABR parameters (alpha, beta, nu, rho columns) before ATM recalibration.
+sparseSabrParameters :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
+sparseSabrParameters sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeSparseSabrParameters sv
+{#fun qlSabrSwaptionVolatilityCubeSparseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Per-node calibrated SABR parameters, meaningfully populated only when the cube was built with
+-- @isAtmCalibrated = True@ (see 'sabrSwaptionVolatilityCube').
+denseSabrParameters :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
+denseSabrParameters sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeDenseSabrParameters sv
+{#fun qlSabrSwaptionVolatilityCubeDenseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |The raw market vol grid the cube's SABR fit targets: ATM vol (interpolated from
+-- @atmVolStructure@ at each node) plus @volSpreads@.
+marketVolCube :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
+marketVolCube sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeMarketVolCube sv
+{#fun qlSabrSwaptionVolatilityCubeMarketVolCube{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Like 'marketVolCube', adjusted so the cube's own ATM row is consistent with @atmVolStructure@;
+-- meaningfully populated only when the cube was built with @isAtmCalibrated = True@.
+volCubeAtmCalibrated :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
+volCubeAtmCalibrated sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
+{#fun qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |ATM strike at a given (option date, swap tenor) node.
+{#fun qlSabrSwaptionVolatilityCubeAtmStrike1 as sabrSwaptionVolatilityCubeAtmStrike'{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |ATM strike at a given (option tenor, swap tenor) node, see 'sabrSwaptionVolatilityCubeAtmStrike\''
+{#fun qlSabrSwaptionVolatilityCubeAtmStrike as sabrSwaptionVolatilityCubeAtmStrike{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |ATM strike at a given (option date, swap tenor) node.
+{#fun qlInterpolatedSwaptionVolatilityCubeAtmStrike1 as interpolatedSwaptionVolatilityCubeAtmStrike'{withInterpolatedSwaptionVolatilityCube*`InterpolatedSwaptionVolatilityCube'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |ATM strike at a given (option tenor, swap tenor) node, see
+-- 'interpolatedSwaptionVolatilityCubeAtmStrike\''
+{#fun qlInterpolatedSwaptionVolatilityCubeAtmStrike as interpolatedSwaptionVolatilityCubeAtmStrike{withInterpolatedSwaptionVolatilityCube*`InterpolatedSwaptionVolatilityCube'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

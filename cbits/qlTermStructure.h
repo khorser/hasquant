@@ -103,6 +103,36 @@ extern "C" {
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
   QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
 
+  QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+      unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
+      unsigned strikeSpreadsLen, double* strikeSpreads,
+      unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+      QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+      int vegaWeightedSmileFit,
+      unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
+      int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed,
+      int isAtmCalibrated,
+      double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
+      int backwardFlat, double cutoffStrike, char **e);
+  void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o);
+  QlSwaptionVolatilityStructure* qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlSabrSwaptionVolatilityCube *o);
+  QlInterpolatedSwaptionVolatilityCube* qlInterpolatedSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+      unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
+      unsigned strikeSpreadsLen, double* strikeSpreads,
+      unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+      QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+      int vegaWeightedSmileFit, char **e);
+  void qlFreeInterpolatedSwaptionVolatilityCube(QlInterpolatedSwaptionVolatilityCube *o);
+  QlSwaptionVolatilityStructure* qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlInterpolatedSwaptionVolatilityCube *o);
+  void qlSabrSwaptionVolatilityCubeSparseSabrParameters(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlSabrSwaptionVolatilityCubeDenseSabrParameters(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlSabrSwaptionVolatilityCubeMarketVolCube(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  double qlSabrSwaptionVolatilityCubeAtmStrike1(QlSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e);
+  double qlSabrSwaptionVolatilityCubeAtmStrike(QlSabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e);
+  double qlInterpolatedSwaptionVolatilityCubeAtmStrike1(QlInterpolatedSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e);
+  double qlInterpolatedSwaptionVolatilityCubeAtmStrike(QlInterpolatedSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e);
+
   void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o);
   QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o);
   QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e);

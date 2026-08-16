@@ -24,7 +24,7 @@ module QuantLib.Math
   , Constraint(..)
   , SobolDirectionIntegers(..)
 
-  , Matrix
+  , Matrix(..)
   , realMatrix
   , objectMatrix
 

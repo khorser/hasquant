@@ -19,7 +19,7 @@ import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
-import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr))
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr), liborSwapIndex, LiborSwapIndexType(EurLiborSwapIsdaFixA))
 import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, hestonModel)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long), additionalResults, AdditionalResultVal(..))
@@ -988,6 +988,110 @@ spec = do
                     v <- Vol.volatilityForPeriod' grid od st 0.02 False
                     abs (v - expected) `shouldSatisfy` (< 1.0e-6)
                 ) nodes
+
+    -- SabrSwaptionVolatilityCube/InterpolatedSwaptionVolatilityCube: no upstream cached fixture
+    -- ported here (test-suite/swaptionvolatilitycube.cpp's CommonVars fixture is shared, nontrivial
+    -- hand-work disproportionate to this item -- see plans/gap-12). Self-consistency checks
+    -- instead: a zero-vol-spread cube should reprice close to its own flat ATM input (SABR
+    -- calibration is a least-squares fit, not exact recovery, so the tolerance here is much looser
+    -- than the exact-grid-recovery checks above), and the diagnostic getters should report
+    -- plausible, correctly-shaped output.
+    describe "swaption volatility cubes" $ do
+      let optionTenors = [(1, Years), (5, Years)]
+          swapTenors = [(2, Years), (10, Years)]
+          strikeSpreads = [-0.01, 0.0, 0.01]
+          refDate = 11 `december` 2012
+          flatVol = 0.20
+          mkFixture = do
+            Settings.setEvaluationDate (Just refDate)
+            cal <- Calendar.calendar TARGET
+            dc <- dayCounter Actual365FixedStandard
+            fwdRateQ <- Quote.simpleQuote 0.03
+            fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+            swapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+            shortSwapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (1, Years) (Just fwdCurve) (Just fwdCurve)
+            volQ <- Quote.simpleQuote flatVol
+            atmVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            zeroSpreadQuotes <- replicateM (length optionTenors * length swapTenors * length strikeSpreads) (Quote.simpleQuote 0)
+            let volSpreads = either error id $ objectMatrix (fromIntegral (length optionTenors * length swapTenors)) (fromIntegral (length strikeSpreads)) zeroSpreadQuotes
+            guessQuotes <- concat <$> replicateM (length optionTenors * length swapTenors) (mapM Quote.simpleQuote [0.03, 0.5, 0.3, 0.0])
+            let parametersGuess = either error id $ objectMatrix (fromIntegral (length optionTenors * length swapTenors)) 4 guessQuotes
+            pure (cal, dc, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess)
+
+      it "sabrSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
+          cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False parametersGuess
+                    -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
+                    -- ("less functions than available variables"), so pin beta at the guess.
+                    False True False False False Nothing Nothing False 50 False 0.0001
+          v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          -- SABR calibration is a least-squares fit, not exact recovery, so this is deliberately a
+          -- much looser tolerance than the exact-grid-recovery checks above -- don't tighten it.
+          abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
+
+      it "sabrSwaptionVolatilityCube's diagnostic getters report plausible, correctly-shaped output" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
+          cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False parametersGuess
+                    -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
+                    -- ("less functions than available variables"), so pin beta at the guess.
+                    -- isAtmCalibrated = False here, deliberately: upstream's isAtmCalibrated=True
+                    -- path (fillVolatilityCube) dynamic_pointer_casts atmVolStructure to
+                    -- SwaptionVolatilityDiscrete and dereferences the result unchecked, which
+                    -- segfaults (boost "px != 0") when atmVolStructure is a flat
+                    -- ConstantSwaptionVolatility, as this fixture's atmVol is -- it would need a
+                    -- discrete grid structure (e.g. swaptionVolatilityMatrix') instead. Exercising
+                    -- that path is out of scope for this shape/sanity test.
+                    False True False False False Nothing Nothing False 50 False 0.0001
+          -- trigger calibration (lazy -- see the shim comment on qlSabrSwaptionVolatilityCube)
+          _ <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          let n = fromIntegral (length optionTenors * length swapTenors)
+          sparse <- Vol.sparseSabrParameters cube
+          matrixRows sparse `shouldBe` n
+          -- 2 metadata columns (swapLength, optionTime) + 4 SABR params + forward/error/maxError/endCriteria
+          matrixColumns sparse `shouldBe` 10
+          -- denseSabrParameters is only ever populated when the cube was built with
+          -- isAtmCalibrated = True (see the ctor body: denseParameters_ is never assigned
+          -- otherwise, staying at its empty default-Cube state) -- assert that documented
+          -- behavior rather than a populated shape. volCubeAtmCalibrated, by contrast, is always
+          -- set to a copy of marketVolCube_ regardless of isAtmCalibrated, so it's populated here.
+          dense <- Vol.denseSabrParameters cube
+          matrixRows dense `shouldBe` 0
+          market <- Vol.marketVolCube cube
+          matrixRows market `shouldBe` n
+          matrixColumns market `shouldBe` (fromIntegral (length strikeSpreads) + 2)
+          atmCalibrated <- Vol.volCubeAtmCalibrated cube
+          matrixRows atmCalibrated `shouldBe` n
+          matrixColumns atmCalibrated `shouldBe` (fromIntegral (length strikeSpreads) + 2)
+          -- alpha/nu are positive, rho within [-1,1] at every calibrated node (columns 2,4,5, 0-indexed)
+          let byRow cols = [matrixData sparse !! (r * fromIntegral (matrixColumns sparse) + c) | r <- [0 .. fromIntegral n - 1], c <- cols]
+          mapM_ (`shouldSatisfy` (> 0)) (byRow [2])
+          mapM_ (`shouldSatisfy` (> 0)) (byRow [4])
+          mapM_ (`shouldSatisfy` (\r -> r >= -1 && r <= 1)) (byRow [5])
+
+      it "sabrSwaptionVolatilityCubeAtmStrike returns a finite, plausible rate" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
+          cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False parametersGuess
+                    -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
+                    -- ("less functions than available variables"), so pin beta at the guess.
+                    False True False False False Nothing Nothing False 50 False 0.0001
+          k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+
+      it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
+          cube <- Vol.interpolatedSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False
+          v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
+          k <- Vol.interpolatedSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
     -- Fixture from QuantLib's test-suite/fdheston.cpp testFdmHestonConvergence (first row of its
     -- HestonTestData table), which compares FdHestonVanillaEngine against AnalyticHestonEngine on

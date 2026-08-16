@@ -49,6 +49,7 @@ module QuantLib.Internal
   , fromMaybeEnum
   , peekIntArray
   , peekUIntArray
+  , peekWord
   , peekStructArray
   , Matrix(..)
   , realMatrix
@@ -118,6 +119,9 @@ peekEnum x = toEnum . fromIntegral <$> peek x
 
 peekDouble :: Ptr CDouble -> IO Double
 peekDouble x = realToFrac <$> peek x
+
+peekWord :: Ptr CUInt -> IO Word
+peekWord x = fromIntegral <$> peek x
 
 -- initialize pointer to a enum with a valid value before passing it to the function
 preEnum :: (Storable a, Bounded a) => (Ptr a -> IO b) -> IO b

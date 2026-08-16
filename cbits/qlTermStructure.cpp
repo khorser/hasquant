@@ -7,6 +7,8 @@
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp>
+#include <ql/termstructures/volatility/swaption/sabrswaptionvolatilitycube.hpp>
+#include <ql/termstructures/volatility/swaption/interpolatedswaptionvolatilitycube.hpp>
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/noarbsabrsmilesection.hpp>
@@ -120,6 +122,11 @@ ext::shared_ptr<SabrInterpolatedSmileSection> asSabrInterpolatedSmileSection(con
   auto s = ext::dynamic_pointer_cast<SabrInterpolatedSmileSection>(o);
   QL_REQUIRE(s, "not a SabrInterpolatedSmileSection");
   return s;
+}
+void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
+  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
+  *vs = qlAllocateDoubles(*len);
+  std::copy(m.begin(), m.end(), *vs);
 }
 }
 
@@ -455,6 +462,127 @@ QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Cal
             qlHandleMatrix(vols, volRows, volCols), *arg(dc), (bool)flatExtrapolation, (VolatilityType)type,
             qlRealMatrix(shifts, shiftRows, shiftCols))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
+
+// SabrSwaptionVolatilityCube and InterpolatedSwaptionVolatilityCube each get their own dedicated
+// Haskell-visible type (QlSabrSwaptionVolatilityCube/QlInterpolatedSwaptionVolatilityCube) rather
+// than returning the generic QlSwaptionVolatilityStructure the way swaptionVolatilityMatrix'/
+// constantSwaptionVolatility do -- deliberate, not the SabrInterpolatedSmileSection-style
+// dynamic_cast-downcast pattern: each class has its own real getters (sparseSabrParameters etc.,
+// atmStrike), so per CLAUDE.md's "introduce a dedicated type when the class has its own
+// calc/getter" rule it earns a leaf, and every diagnostic below takes the concrete pointer
+// directly -- no QL_REQUIRE-guarded dynamic_pointer_cast anywhere in this file for these two
+// classes. Use qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure/
+// qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure (below) to pass either into
+// anything that wants the generic parent (pricing engines, relinkable handles, etc.).
+//
+// endCriteria/optMethod are left at their empty-shared_ptr defaults (letting SABRInterpolation's
+// own internal EndCriteria/LevenbergMarquardt defaults apply at every calibrated node) rather
+// than accepting Haskell-owned EndCriteria/OptimizationMethod handles here: those are raw,
+// Haskell-finalized pointers (see the qlXxxFitting comment above), and this ctor stores them as
+// shared_ptr members for the object's full lifetime, not just for the duration of this call --
+// the same ownership hazard already avoided for FittedBondDiscountCurve's fitting methods and
+// SabrInterpolatedSmileSection above.
+//
+// volSpreads and parametersGuess are both flattened over the (optionTenor x swapTenor) product as
+// the OUTER index (row = j*nSwapTenors+k, j over optionTenors, k over swapTenors) -- not simply
+// "one row per optionTenor" the way qlSwaptionVolatilityMatrix's grid is. volSpreadsCols is
+// strikeSpreadsLen; parametersGuessCols is always 4 (SABR's alpha/beta/nu/rho).
+//
+// Calibration is lazy (XabrSwaptionVolatilityCube is a LazyObject): unlike
+// qlSabrInterpolatedSmileSection, construction here does NOT force an eager fit, so a
+// constructor call can succeed even for inputs that will later fail to calibrate -- the error
+// only surfaces on the first smileSection/volatility/etc. call.
+QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+    unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
+    unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
+    unsigned strikeSpreadsLen, double* strikeSpreads,
+    unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+    QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+    int vegaWeightedSmileFit,
+    unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
+    int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed,
+    int isAtmCalibrated,
+    double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
+    int backwardFlat, double cutoffStrike, char **e) {
+  try {
+    return ret(new QlSabrSwaptionVolatilityCube(alloc(new SabrSwaptionVolatilityCube(
+            *arg(atmVolStructure),
+            qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
+            qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
+            std::vector<Real>(strikeSpreads, strikeSpreads + strikeSpreadsLen),
+            qlHandleMatrix(volSpreads, volSpreadsRows, volSpreadsCols),
+            *arg(swapIndexBase), *arg(shortSwapIndexBase),
+            (bool)vegaWeightedSmileFit,
+            qlHandleMatrix(parametersGuess, parametersGuessRows, parametersGuessCols),
+            std::vector<bool>{(bool)isAlphaFixed, (bool)isBetaFixed, (bool)isNuFixed, (bool)isRhoFixed},
+            (bool)isAtmCalibrated,
+            ext::shared_ptr<EndCriteria>(), maxErrorTolerance, ext::shared_ptr<OptimizationMethod>(),
+            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
+  } catch (std::exception& er) {return handleException<QlSabrSwaptionVolatilityCube*>(e, er);}}
+void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o) {del(o);}
+// Fresh Handle for this newly built object -- same shape as every QlXxxAsSwaptionVolatilityStructure-
+// style upcast that starts from a shared_ptr leaf (e.g. qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure),
+// not a rewrap of an existing Handle.
+QlSwaptionVolatilityStructure* qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlSabrSwaptionVolatilityCube *o) {
+  return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
+
+// No EndCriteria/OptimizationMethod hazard here: InterpolatedSwaptionVolatilityCube only
+// interpolates the given volSpreads, it never calibrates anything.
+QlInterpolatedSwaptionVolatilityCube* qlInterpolatedSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+    unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
+    unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
+    unsigned strikeSpreadsLen, double* strikeSpreads,
+    unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+    QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+    int vegaWeightedSmileFit, char **e) {
+  try {
+    return ret(new QlInterpolatedSwaptionVolatilityCube(alloc(new InterpolatedSwaptionVolatilityCube(
+            *arg(atmVolStructure),
+            qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
+            qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
+            std::vector<Real>(strikeSpreads, strikeSpreads + strikeSpreadsLen),
+            qlHandleMatrix(volSpreads, volSpreadsRows, volSpreadsCols),
+            *arg(swapIndexBase), *arg(shortSwapIndexBase),
+            (bool)vegaWeightedSmileFit))));
+  } catch (std::exception& er) {return handleException<QlInterpolatedSwaptionVolatilityCube*>(e, er);}}
+void qlFreeInterpolatedSwaptionVolatilityCube(QlInterpolatedSwaptionVolatilityCube *o) {del(o);}
+QlSwaptionVolatilityStructure* qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlInterpolatedSwaptionVolatilityCube *o) {
+  return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
+
+// Matrix-out diagnostics, direct on the concrete type -- no downcast needed. Composes the
+// established 1D out-array idiom (qlAllocateDoubles + unsigned*len/double**vs, see
+// qlGsrVolatility/qlCalibratedModelParams) with row/col out-params -- no prior shim in this
+// codebase returns a Matrix outward, every existing Matrix use (qlMatrix/qlHandleMatrix/
+// qlRealMatrix) crosses the boundary inward only.
+void qlSabrSwaptionVolatilityCubeSparseSabrParameters(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->sparseSabrParameters(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlSabrSwaptionVolatilityCubeDenseSabrParameters(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->denseSabrParameters(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlSabrSwaptionVolatilityCubeMarketVolCube(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->marketVolCube(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->volCubeAtmCalibrated(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+// atmStrike is defined on the abstract SwaptionVolatilityCube base (both concrete subtypes
+// inherit it); bound once per concrete leaf rather than via a shared abstract-base type, since
+// neither subtype otherwise needs one and CLAUDE.md's "no dedicated type for a class with no
+// calcs of its own" argues against adding a node just for this.
+double qlSabrSwaptionVolatilityCubeAtmStrike1(QlSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSabrSwaptionVolatilityCubeAtmStrike(QlSabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Period(optionN, (TimeUnit)optionU), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlInterpolatedSwaptionVolatilityCubeAtmStrike1(QlInterpolatedSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlInterpolatedSwaptionVolatilityCubeAtmStrike(QlInterpolatedSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Period(optionN, (TimeUnit)optionU), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) {del(o);}
 QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) {return ret(new QlTermStructure(*arg(o)));}

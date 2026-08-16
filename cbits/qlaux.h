@@ -5,6 +5,11 @@
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
 #include <ql/instruments/varianceswap.hpp>
+// SabrSwaptionVolatilityCube is a typedef of a template instantiation
+// (XabrSwaptionVolatilityCube<SwaptionVolCubeSabrModel>), not an ordinary class -- it cannot be
+// forward-declared the way every other type below is, so its full header is pulled in here
+// instead. InterpolatedSwaptionVolatilityCube is an ordinary class and stays forward-declared.
+#include <ql/termstructures/volatility/swaption/sabrswaptionvolatilitycube.hpp>
 
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
@@ -247,6 +252,7 @@ namespace QuantLib {
   class SuperFundPayoff;
   class SuperSharePayoff;
   class SvenssonFitting;
+  class InterpolatedSwaptionVolatilityCube;
   class Swap;
   class SwapIndex;
   class SwapRateHelper;
@@ -508,6 +514,8 @@ using QuantLib::StulzEngine;
 using QuantLib::SuperFundPayoff;
 using QuantLib::SuperSharePayoff;
 using QuantLib::SvenssonFitting;
+using QuantLib::InterpolatedSwaptionVolatilityCube;
+using QuantLib::SabrSwaptionVolatilityCube;
 using QuantLib::Swap;
 using QuantLib::SwapIndex;
 using QuantLib::SwapRateHelper;
@@ -693,6 +701,8 @@ typedef shared_ptr<Swap> QlSwap;
 typedef shared_ptr<SwapIndex> QlSwapIndex;
 typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
 typedef shared_ptr<Swaption> QlSwaption;
+typedef shared_ptr<SabrSwaptionVolatilityCube> QlSabrSwaptionVolatilityCube;
+typedef shared_ptr<InterpolatedSwaptionVolatilityCube> QlInterpolatedSwaptionVolatilityCube;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
 typedef Handle<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
 typedef RelinkableHandle<SwaptionVolatilityStructure> QlRelinkableSwaptionVolatilityStructure;
@@ -1028,6 +1038,8 @@ template <> class ObjClassName<QlSwapIndex*> {public: static void output(std::os
 template <> class ObjClassName<QlSwapRateHelper*> {public: static void output(std::ostream& os) {os << "QlSwapRateHelper";}};
 template <> class ObjClassName<QlSwaption*> {public: static void output(std::ostream& os) {os << "QlSwaption";}};
 template <> class ObjClassName<QlSwaptionVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlSwaptionVolatilityStructure";}};
+template <> class ObjClassName<QlSabrSwaptionVolatilityCube*> {public: static void output(std::ostream& os) {os << "QlSabrSwaptionVolatilityCube";}};
+template <> class ObjClassName<QlInterpolatedSwaptionVolatilityCube*> {public: static void output(std::ostream& os) {os << "QlInterpolatedSwaptionVolatilityCube";}};
 template <> class ObjClassName<QlSwingExercise*> {public: static void output(std::ostream& os) {os << "QlSwingExercise";}};
 template <> class ObjClassName<QlTermStructure*> {public: static void output(std::ostream& os) {os << "QlTermStructure";}};
 template <> class ObjClassName<QlTypePayoff*> {public: static void output(std::ostream& os) {os << "QlTypePayoff";}};
