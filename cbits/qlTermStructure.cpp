@@ -1324,6 +1324,14 @@ QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
   try {return ret(new QlIborIndex(alloc(new DailyTenorLibor(name, settlDays,
             *arg(ccy), *arg(cal), *arg(dc), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {return handleException<QlIborIndex *>(e, er);}}
+QlIborIndex *qlCustomIborIndex(char *name, int l, int u, unsigned settlDays,
+    Currency *ccy, Calendar *fixingCal, Calendar *valueCal, Calendar *maturityCal,
+    int conv, int eom, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e) {
+  try {
+    return ret(new QlIborIndex(alloc(new CustomIborIndex(name, Period(l, (TimeUnit)u),
+      settlDays, *arg(ccy), *arg(fixingCal), *arg(valueCal), *arg(maturityCal),
+      (BusinessDayConvention) conv, eom, *arg(dayCount), qlNullableHandle(fwd)))));
+  } catch (std::exception& er) {return handleException<QlIborIndex *>(e, er);}}
 QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
     Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e) {
   try {return ret(new QlOvernightIndex(alloc(new OvernightIndex(name, settlDays,

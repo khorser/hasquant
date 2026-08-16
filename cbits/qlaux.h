@@ -56,6 +56,7 @@ namespace QuantLib {
   class DiscountingBondEngine;
   class Instrument;
   class CompositeInstrument;
+  class CustomIborIndex;
   class IborIndex;
   class Index;
   class FloatingRateCouponPricer;
@@ -319,6 +320,7 @@ using QuantLib::PricingEngine;
 using QuantLib::DiscountingBondEngine;
 using QuantLib::Instrument;
 using QuantLib::CompositeInstrument;
+using QuantLib::CustomIborIndex;
 using QuantLib::IborIndex;
 using QuantLib::Index;
 using QuantLib::FloatingRateCouponPricer;

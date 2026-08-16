@@ -10,6 +10,7 @@ import Control.Monad(forM_)
 import Data.Time.Calendar
 
 import QuantLib.Time.Date
+import qualified QuantLib.Time.Date as Date
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar
@@ -17,7 +18,8 @@ import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings)
-import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..))
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), forecastFixing)
+import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
 import qualified QuantLib.Quote as Quote
@@ -338,3 +340,38 @@ spec tod = do
 
           clearFixings idx
           hasHistoricalFixing idx d1 `shouldReturn` False
+
+    describe "CustomIborIndex" $ do
+      it "fixingCalendar reflects the given fixing calendar, not the value/maturity ones" $
+        Settings.keepingSettings' $ do
+          ukCal <- calendar UnitedKingdomSettlement
+          targetCal <- calendar TARGET
+          eur <- currency EUR
+          dc <- dayCounter Actual365FixedStandard
+          idx <- iborIndex (CustomIbor "CustomEuribor" (6, Months) 2 eur ukCal targetCal targetCal
+                              ModifiedFollowing True dc) Nothing
+          cal <- fixingCalendar idx
+          show cal `shouldBe` show ukCal
+          show cal `shouldNotBe` show targetCal
+
+      it "maturityCalendar is actually used to adjust the maturity date, not silently dropped or aliased to fixingCalendar" $
+        Settings.keepingSettings' $ do
+          -- Bespoke calendars with disjoint weekend sets so any date is a business day
+          -- for exactly one of them, making the 3M-forward maturity date's business-day
+          -- adjustment -- and hence the accrual period and forecast fixing -- depend on
+          -- which calendar is actually passed as maturityCalendar.
+          stdCal <- calendar (Bespoke "StdWeekend" [Date.Saturday, Date.Sunday])
+          wedThuCal <- calendar (Bespoke "WedThuWeekend" [Date.Wednesday, Date.Thursday])
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          let refDate = 31 `january` 2024
+          Settings.setEvaluationDate (Just refDate)
+          q <- Quote.simpleQuote 0.03
+          curve <- flatForward refDate q dc IR.Continuous Annual
+          idxStdMaturity <- iborIndex (CustomIbor "TestStd" (3, Months) 0 eur stdCal stdCal stdCal
+                                          ModifiedFollowing False dc) (Just curve)
+          idxWedThuMaturity <- iborIndex (CustomIbor "TestWedThu" (3, Months) 0 eur stdCal stdCal wedThuCal
+                                             ModifiedFollowing False dc) (Just curve)
+          fStd <- forecastFixing idxStdMaturity refDate
+          fWedThu <- forecastFixing idxWedThuMaturity refDate
+          fStd `shouldNotBe` fWedThu

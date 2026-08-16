@@ -355,6 +355,7 @@ extern "C" {
   QlIborIndex *qlIborIndex(char *name, int, int, unsigned settlDays, Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
   QlIborIndex *qlLibor(char *name, int, int, unsigned settlDays, Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd, char **e);
   QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays, Currency *ccy, Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *qlCustomIborIndex(char *name, int, int, unsigned settlDays, Currency *ccy, Calendar *fixingCal, Calendar *valueCal, Calendar *maturityCal, int conv, int eom, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
 
   QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *cur, Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
 

@@ -115,6 +115,16 @@ data IborExtra =
       Currency Calendar DayCounter
     | Extra__DailyTenorLibor String Word -- ^settlementDays
       Currency Calendar DayCounter
+    | Extra__CustomIbor String -- ^familyName
+      (Word, TimeUnit) -- ^tenor
+      Word -- ^settlementDays
+      Currency
+      Calendar -- ^fixingCalendar
+      Calendar -- ^valueCalendar
+      Calendar -- ^maturityCalendar
+      BusinessDayConvention
+      Bool -- ^endOfMonth
+      DayCounter
 
 $(deriveIborConstructor IborConstructorSpec
     { iborTypeName = "IborConstructor"
@@ -221,6 +231,7 @@ iborIndex :: IborConstructor -> Maybe (GenYieldTermStructure y) -> IO IborIndex
 iborIndex (Ibor n p s cr ca bd b dc) ts = qlIborIndex n p s cr ca bd b dc ts
 iborIndex (Libor n p s cr ca dc) ts = qlLibor n p s cr ca dc ts
 iborIndex (DailyTenorLibor n c cr ca dc) ts = qlDailyTenorLibor n c cr ca dc ts
+iborIndex (CustomIbor n p s cr fc vc mc bd b dc) ts = qlCustomIborIndex n p s cr fc vc mc bd b dc ts
 iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 
 {#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
@@ -275,6 +286,15 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 {#fun qlDailyTenorLibor{`String' -- ^familyName
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+{#fun qlCustomIborIndex{`String' -- ^familyName
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCurrency*`Currency',withCalendar*`Calendar' -- ^fixingCalendar
+  ,withCalendar*`Calendar' -- ^valueCalendar
+  ,withCalendar*`Calendar' -- ^maturityCalendar
+  ,`BusinessDayConvention'
+  ,`Bool' -- ^endOfMonth
+  ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 {#fun qlCreateIbor{fromIntegral`Int',fromEnumQuantity`(Word,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 {#fun qlOvernightIndex as overnightIndex{`String',fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
