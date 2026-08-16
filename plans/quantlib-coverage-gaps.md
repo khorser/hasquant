@@ -11,11 +11,10 @@ known unreliable at the per-overload level — see CLAUDE.md).
 
 hasquant's coverage is broad and in places deeper than the documented Python
 surface — multi-curve bootstrapping, a wide exotic-option set, credit, and
-inflation instruments all exceed what QuantLib-Python-Docs shows. But three
+inflation instruments all exceed what QuantLib-Python-Docs shows. But two
 structural gaps stand out as high-value: no swaption volatility cube (only a
-flat matrix), no finite-difference Heston pricing engines, and a real asymmetry
-in the CMS/capped-coupon cashflow layer (pricers bound, nothing to attach them
-to). Below that is a long tail of individually narrow items.
+flat matrix), and no finite-difference Heston pricing engines. Below that is
+a long tail of individually narrow items.
 
 ## Tier 1 — high-value gaps
 
@@ -23,10 +22,10 @@ to). Below that is a long tail of individually narrow items.
 |---|---|---|
 | **Swaption volatility cubes** (`SwaptionVolCube1`, `SwaptionVolCube2`, SABR-based) | Central to any swaption/CMS desk workflow; the single biggest hole in the vol-surface coverage | hasquant only binds the flat `swaptionVolatilityMatrix'`; confirmed absent via grep of `QuantLib/`/`cbits/` |
 | **FD Heston engine family** (`FdHestonVanillaEngine`, `FdHestonBarrierEngine`, `FdHestonDoubleBarrierEngine`, `FdHestonHullWhiteVanillaEngine`) | FD is the standard method for American/barrier payoffs under Heston; hasquant has analytic/MC Heston engines but no FD ones | Confirmed absent via grep |
-| **CMS leg builder (`cmsLeg`) and capped/floored coupon legs** (`CappedFlooredIborCoupon`, `CappedFlooredCmsCoupon`) | hasquant binds the CMS coupon *pricers* (`analyticHaganPricer`, `numericHaganPricer`) but has nothing to attach them to, and no capped/floored wrapping at the leg level (only capped/floored *bonds* exist) | Visible directly in `CashFlow.chs`'s export list; confirmed absent via grep |
 
 ## Tier 2 — medium-value gaps
 
+- ~~**CMS leg builder and pricers**~~ — **closed.** This row was stale even when first written: `cmsLeg`/`cmsLegFull` (including caps/floors, i.e. `CappedFlooredCmsCoupon`) were already bound in `CashFlow.chs` by the time this doc was drafted, alongside `analyticHaganPricer`/`numericHaganPricer`. The one real remaining gap, `LinearTsrPricer`, is now bound too (`linearTsrPricer` in `CashFlow.chs`), and a `makeCms` convenience (in the `makeVanillaSwap` style — plain Haskell composing `schedule`/`cmsLeg`/`iborLeg`/`swap`, not a `MakeCms` C++ binding) is in `QuantLib/Instrument/Swap.chs`.
 - `NonstandardSwap`/`NonstandardSwaption`, `FloatFloatSwap`/`FloatFloatSwaption` — needed for amortizing/accreting or dual-index swaps. Confirmed absent via grep.
 - `Money` and `ExchangeRate`/`ExchangeRateManager` — foundational for multi-currency cashflow amounts, not just curve FX. Only `MoneyConversionType` (an enum tag) exists; no `Money` value type or FX-rate object. Confirmed absent via grep.
 - `PartialTimeBarrierOption` + `AnalyticPartialTimeBarrierOptionEngine` — hasquant has `BarrierOption`/`DoubleBarrierOption` but not the partial-time variant. Confirmed absent via grep.

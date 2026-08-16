@@ -66,6 +66,7 @@
 #include <ql/cashflows/dividend.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/conundrumpricer.hpp>
+#include <ql/cashflows/lineartsrpricer.hpp>
 #include <ql/cashflows/equitycashflow.hpp>
 #include <ql/indexes/equityindex.hpp>
 
@@ -1157,6 +1158,19 @@ QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure*
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion), lowerLimit, upperLimit, precision, hardUpperLimit))));
+  } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+QlFloatingRateCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swaptionVol, QlQuote* meanReversion, QlYieldTermStructure* couponDiscountCurve, int strategy, double param, int haveBounds, double lowerBound, double upperBound, char **e) {
+  try {
+    LinearTsrPricer::Settings settings;
+    switch (strategy) {
+      case 0: haveBounds ? settings.withRateBound(lowerBound, upperBound) : settings.withRateBound(); break;
+      case 1: haveBounds ? settings.withVegaRatio(param, lowerBound, upperBound) : settings.withVegaRatio(param); break;
+      case 2: haveBounds ? settings.withPriceThreshold(param, lowerBound, upperBound) : settings.withPriceThreshold(param); break;
+      case 3: haveBounds ? settings.withBSStdDevs(param, lowerBound, upperBound) : settings.withBSStdDevs(param); break;
+      default: QL_FAIL("unknown LinearTsrPricer strategy " << strategy);
+    }
+    return ret(new QlFloatingRateCouponPricer(alloc(new LinearTsrPricer(*arg(swaptionVol), *arg(meanReversion),
+        qlNullableHandle(couponDiscountCurve), settings))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new RangeAccrualPricerByBgm(correlation, *arg(smilesOnExpiry), *arg(smilesOnPayment), withSmile, byCallSpread))));

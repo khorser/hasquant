@@ -101,6 +101,9 @@ module QuantLib.CashFlow
   , setCouponPricers
   , analyticHaganPricer
   , numericHaganPricer
+  , LinearTsrPricerStrategy(..)
+  , LinearTsrPricerSettings(..)
+  , linearTsrPricer
   , EquityCashFlowPricer
   , equityQuantoCashFlowPricer
   , setEquityLegPricer
@@ -628,6 +631,56 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Double' -- ^upperLimit
   ,`Double' -- ^precision
   ,`Double' -- ^hardUpperLimit
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
+-- |The strategy 'LinearTsrPricer' uses to pick the integration cut-off strike bounds; each
+-- carries the strategy-specific parameter upstream's corresponding @Settings::withX@ takes
+-- ('LinearTsrRateBound' has none). Pass explicit bounds via 'LinearTsrPricerSettings''
+-- /ltsrBounds/ rather than baking upstream's own default bounds in here, since upstream's
+-- no-explicit-bounds overloads aren't just sugar for those same numbers -- they also flip
+-- @Settings::defaultBounds_@, which under a normal-vol swaption surface adjusts the lower
+-- bound to @min(-upperBound, lowerBound)@ (see @ql/cashflows/lineartsrpricer.cpp@). Passing
+-- 'Nothing' reaches that adjustment; passing explicit bounds via 'Just' does not.
+data LinearTsrPricerStrategy
+  = LinearTsrRateBound
+  | LinearTsrVegaRatio Double        -- ^vegaRatio
+  | LinearTsrPriceThreshold Double   -- ^priceThreshold
+  | LinearTsrBSStdDevs Double        -- ^stdDevs
+  deriving (Show, Eq)
+
+-- |'ltsrBounds' of 'Nothing' uses upstream's own default lower\/upper rate bounds (and, for a
+-- normal-vol surface, its default-bounds strike adjustment -- see 'LinearTsrPricerStrategy');
+-- @'Just' (lower, upper)@ pins explicit bounds instead.
+data LinearTsrPricerSettings = LinearTsrPricerSettings
+  { ltsrStrategy :: LinearTsrPricerStrategy
+  , ltsrBounds :: Maybe (Double, Double)
+  } deriving (Show, Eq)
+
+-- |CMS-coupon pricer using a linear terminal swap rate model (Andersen\/Piterbarg 16.3.2).
+-- /couponDiscountCurve/ of 'Nothing' uses the coupon's own discount curve, matching upstream's
+-- default empty 'Handle'. The upstream constructor's trailing /integrator/ parameter (an
+-- advanced numerical-integration override) is not exposed; upstream's own default
+-- (@ext::shared_ptr\<Integrator\>()@) is always used.
+linearTsrPricer :: GenSwaptionVolatilityStructure sv -> GenQuote q -> Maybe (GenYieldTermStructure y)
+  -> LinearTsrPricerSettings -> IO FloatingRateCouponPricer
+linearTsrPricer swaptionVol meanReversion couponDiscountCurve (LinearTsrPricerSettings strat bounds) =
+  linearTsrPricer_ swaptionVol meanReversion couponDiscountCurve strategyTag param
+    (maybe False (const True) bounds) lowerBound upperBound
+  where
+    (strategyTag, param) = case strat of
+      LinearTsrRateBound        -> (0 :: Int, 0)
+      LinearTsrVegaRatio p      -> (1, p)
+      LinearTsrPriceThreshold p -> (2, p)
+      LinearTsrBSStdDevs p      -> (3, p)
+    (lowerBound, upperBound) = fromMaybe (0, 0) bounds
+
+{#fun qlLinearTsrPricer as linearTsrPricer_{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q' -- ^meanReversion
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^couponDiscountCurve
+  ,fromIntegral`Int' -- ^strategy tag: 0=RateBound, 1=VegaRatio, 2=PriceThreshold, 3=BSStdDevs
+  ,`Double' -- ^strategy-specific parameter (unused for RateBound)
+  ,`Bool' -- ^haveBounds
+  ,`Double' -- ^lowerBound (ignored unless haveBounds)
+  ,`Double' -- ^upperBound (ignored unless haveBounds)
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

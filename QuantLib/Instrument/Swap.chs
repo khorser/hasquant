@@ -27,6 +27,7 @@ module QuantLib.Instrument.Swap
   , bmaSwap
   , vanillaSwap
   , makeVanillaSwap
+  , makeCms
   , zeroCouponInflationSwap
   , zcisFairRate
   , yearOnYearInflationSwap
@@ -95,6 +96,7 @@ import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.CashFlow#}(RateAveragingType)
+import QuantLib.CashFlow(cmsLeg, iborLeg)
 {#import QuantLib.Time.Calendar#}(BusinessDayConvention(..), adjust, advance)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
@@ -239,6 +241,73 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
     floatConv floatConv Backward False Nothing Nothing
   vanillaSwap swapType nominal fixedSchedule fixedRate fixedDayCount
     floatSchedule index 0.0 floatDayCount (Just floatConv) Nothing
+
+-- |Haskell equivalent of QuantLib's fluent @MakeCms@ builder, in the style of
+-- 'makeVanillaSwap' above -- not a binding of the @MakeCms@ C++ class at all, but a plain
+-- function composing already-bound primitives ('QuantLib.Time.Schedule.schedule',
+-- 'QuantLib.CashFlow.cmsLeg', 'QuantLib.CashFlow.iborLeg', 'swap''). The result is a plain
+-- 'Swap' (a CMS swap has no calc\/getter of its own beyond generic 'Swap''s), with no
+-- 'FloatingRateCouponPricer' attached -- attach one to the CMS leg afterwards via
+-- @setCouponPricer =<< 'leg' result 0@ ('swap'' is used instead of 'swap' precisely so the
+-- CMS leg is always leg 0, regardless of 'SwapType') and 'QuantLib.CashFlow.setCouponPricer'
+-- before pricing.
+--
+-- Unlike @MakeCms@, @cmsLegTenor@\/@cmsLegDayCount@ are required arguments here rather than
+-- defaulted (upstream hardcodes 3 Months\/@Actual360@); pass those literals to reproduce
+-- @MakeCms@'s own defaults. Not covered at all (no parameter): an explicit effective date
+-- override, CMS-leg\/floating-leg termination-date-convention\/rule\/end-of-month\/
+-- first-date\/next-to-last-date overrides (always @ModifiedFollowing@\/@Backward@\/@False@\/
+-- unset, matching @MakeCms@'s own defaults for the CMS leg), CMS coupon gearing\/caps\/floors
+-- (use 'QuantLib.CashFlow.cmsLegFull' and 'swap' directly for those), an ATM-spread lookup, a
+-- discounting term structure or custom pricing engine (use 'QuantLib.Instrument.setPricingEngine'
+-- on the result instead). A 'Nothing' @settlementDays@ behaves as @Just 0@, rather than
+-- replicating upstream's index-@valueDate@-based spot-date convention (matching
+-- 'makeVanillaSwap''s own choice here).
+makeCms
+  :: (Word, TimeUnit)             -- ^swapTenor
+  -> GenSwapIndex sidx            -- ^cms index
+  -> GenIborIndex ibor            -- ^floating-leg index
+  -> Double                       -- ^floating-leg spread
+  -> (Int, TimeUnit)              -- ^forwardStart
+  -> Maybe Int                    -- ^settlementDays
+  -> (Word, TimeUnit)             -- ^cmsLegTenor
+  -> DayCounter                   -- ^cmsLegDayCount
+  -> Maybe Calendar               -- ^cmsLegCalendar
+  -> Maybe Calendar               -- ^floatingLegCalendar
+  -> Maybe Double                 -- ^nominal
+  -> Maybe SwapType                -- ^'Payer' pays the CMS leg (receives floating); 'Receiver' the reverse
+  -> IO Swap
+makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementDays
+    cmsTenor cmsDayCount mCmsCalendar mFloatCalendar mNominal mType = do
+  idxCalendar <- fixingCalendar swapIndex
+  floatTenor <- tenor iborIndex
+  floatDayCount <- dayCounter iborIndex
+  refDate <- evaluationDate
+  let floatConv = businessDayConvention iborIndex
+      floatCalendar = fromMaybe idxCalendar mFloatCalendar
+      cmsCalendar = fromMaybe idxCalendar mCmsCalendar
+      settlementDays = fromMaybe 0 mSettlementDays
+      nominal = fromMaybe 1.0 mNominal
+      swapType = fromMaybe Payer mType
+      (fsLen, _) = forwardStart
+  spotDate <- advance floatCalendar refDate (settlementDays, Days) Following False
+  startDate0 <- addPeriod spotDate forwardStart
+  swapStartDate <- case compare fsLen 0 of
+    LT -> adjust floatCalendar startDate0 Preceding
+    GT -> adjust floatCalendar startDate0 Following
+    EQ -> pure startDate0
+  endDate <- addPeriod swapStartDate (fromIntegral swLen, swUnit)
+  cmsSchedule <- schedule (Just swapStartDate) endDate cmsTenor cmsCalendar
+    ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+  floatSchedule <- schedule (Just swapStartDate) endDate floatTenor floatCalendar
+    floatConv floatConv Backward False Nothing Nothing
+  cmsLegResult <- cmsLeg cmsSchedule swapIndex [nominal] cmsDayCount ModifiedFollowing
+    [] [] [] [] [] False False
+  floatLegResult <- iborLeg floatSchedule iborIndex [nominal] floatDayCount floatConv
+    [] [] [iborSpread] [] [] False False
+  -- 'swap'' (not 'swap') so the CMS leg is always leg 0 of the result regardless of
+  -- 'SwapType' -- attach a pricer via @setCouponPricer =<< 'leg' result 0@ before pricing.
+  swap' [(cmsLegResult, swapType == Payer), (floatLegResult, swapType == Receiver)]
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap{withLeg*`GenLeg l1',withLeg*`GenLeg l2',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}

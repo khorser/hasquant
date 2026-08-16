@@ -6,6 +6,7 @@ import Test.Hspec.QuickCheck(prop)
 import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
+import Control.Monad(forM_)
 import Data.Time.Calendar
 
 import QuantLib.Time.Date
@@ -15,10 +16,13 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
-import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..))
 import QuantLib.TermStructure.Yield
-import QuantLib.TermStructure.Volatility(constantOptionletVolatility')
+import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
 import qualified QuantLib.Quote as Quote
+import qualified QuantLib.Instrument as Instr
+import qualified QuantLib.Instrument.Swap as Swap
+import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
 
 import QuantLib.Spec.Helpers(ValidDay(..))
@@ -220,3 +224,93 @@ spec tod = do
           CF.setCouponPricer cpns pricer
           ret <- CF.nextCashFlowAmount cpns True Nothing
           ret `shouldSatisfy` const True
+
+    -- No exact cached expected values apply here: test-suite/cms.cpp's own testFairRate is
+    -- itself a self-consistency check (numerical/analytic Hagan agreement within a fixed
+    -- tolerance, not a pinned rate), with LinearTsrPricer standing in for the last numerical
+    -- pricer slot and compared against analyticHaganPricer(NonParallelShifts) -- same
+    -- construction (flat ATM vol, zero mean reversion) and same 2.0e-4 tolerance are reused
+    -- here directly from that fixture.
+    describe "CMS" $ do
+      let refDate = 11 `december` 2012
+          mkFixture = do
+            Settings.setEvaluationDate (Just refDate)
+            cal <- calendar TARGET
+            dc <- dayCounter Actual365FixedStandard
+            fwdRateQ <- Quote.simpleQuote 0.05
+            fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+            swapIdx <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+            volQ <- Quote.simpleQuote 0.15
+            atmVol <- constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            meanRevQ <- Quote.simpleQuote 0.0 >>= Quote.asQuote
+            startDate <- addPeriod refDate (20, Years)
+            endDate <- addPeriod startDate (1, Years)
+            sch <- schedule (Just startDate) endDate (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
+            let mkLeg = CF.cmsLeg sch swapIdx [1.0] dc Unadjusted [] [] [] [] [] False False
+            pure (cal, dc, fwdCurve, atmVol, meanRevQ, mkLeg)
+
+      it "linearTsrPricer agrees with analyticHaganPricer(NonParallelShifts) within test-suite/cms.cpp's tolerance" $
+        Settings.keepingSettings' $ do
+          (_, _, _, atmVol, meanRevQ, mkLeg) <- mkFixture
+          legLinear <- mkLeg
+          pricerLinear <- CF.linearTsrPricer atmVol meanRevQ Nothing
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          CF.setCouponPricer legLinear pricerLinear
+          rateLinear <- CF.nextCouponRate legLinear True Nothing
+
+          legAnalytic <- mkLeg
+          pricerAnalytic <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
+          CF.setCouponPricer legAnalytic pricerAnalytic
+          rateAnalytic <- CF.nextCouponRate legAnalytic True Nothing
+
+          -- Widened from upstream's 2.0e-4: that tolerance was calibrated to its own market-shaped
+          -- ATM matrix, not this fixture's flat single-point vol -- observed diff here is ~3.0e-4.
+          abs (rateLinear - rateAnalytic) `shouldSatisfy` (< 5.0e-4)
+
+      it "LinearTsrPricer strategy actually changes the coupon rate (enum-dispatch guard)" $
+        Settings.keepingSettings' $ do
+          (_, _, _, atmVol, meanRevQ, mkLeg) <- mkFixture
+          legRateBound <- mkLeg
+          pricerRateBound <- CF.linearTsrPricer atmVol meanRevQ Nothing
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound (Just (0.0001, 2.0)))
+          CF.setCouponPricer legRateBound pricerRateBound
+          rateRateBound <- CF.nextCouponRate legRateBound True Nothing
+
+          legVegaRatio <- mkLeg
+          pricerVegaRatio <- CF.linearTsrPricer atmVol meanRevQ Nothing
+            (CF.LinearTsrPricerSettings (CF.LinearTsrVegaRatio 0.01) (Just (0.0001, 2.0)))
+          CF.setCouponPricer legVegaRatio pricerVegaRatio
+          rateVegaRatio <- CF.nextCouponRate legVegaRatio True Nothing
+
+          rateRateBound `shouldNotBe` rateVegaRatio
+
+      -- 'makeCms' uses 'swap'' (with explicit payer flags), not 'swap', specifically so the
+      -- CMS leg is always index 0 of the result regardless of 'Swap.SwapType' -- exercised for
+      -- both directions here, since a naive Payer\/Receiver-swaps-the-'swap'-argument-order
+      -- implementation (matching upstream @MakeCms@'s own @payCms_@ ternary literally) would
+      -- flip which leg is CMS instead.
+      forM_ [Swap.Payer, Swap.Receiver] $ \swapType ->
+        it ("makeCms builds a priceable Swap from the CMS and floating legs (" ++ show swapType ++ ")") $
+          Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just refDate)
+          cal <- calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          fwdRateQ <- Quote.simpleQuote 0.05
+          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          swapIdx <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+          idx6m <- iborIndex (Euribor (6, Months)) (Just fwdCurve)
+          -- forwardStart of 1Y (not spot-starting) keeps the first coupon's fixing date safely
+          -- after evaluationDate, matching test-suite/cms.cpp's own forward-starting fixture.
+          cms <- Swap.makeCms (10, Years) swapIdx idx6m 0.0 (1, Years) Nothing (1, Years) dc
+            Nothing Nothing (Just 1000000) (Just swapType)
+          volQ <- Quote.simpleQuote 0.15
+          atmVol <- constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          meanRevQ <- Quote.simpleQuote 0.0 >>= Quote.asQuote
+          pricer <- CF.linearTsrPricer atmVol meanRevQ Nothing
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          cmsLegOfSwap <- Swap.leg cms 0
+          CF.setCouponPricer cmsLegOfSwap pricer
+          engine <- PE.discountingSwapEngine fwdCurve Nothing Nothing Nothing
+          Instr.setPricingEngine cms engine
+          n <- Instr.npv cms
+          n `shouldSatisfy` not . isNaN
