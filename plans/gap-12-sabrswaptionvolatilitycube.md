@@ -32,3 +32,5 @@ Two new dedicated leaf types under the `SwaptionVolatilityStructure` hierarchy (
 ## Verification
 
 `stack test --ta '--skip LONG'` (new `describe "swaption volatility cubes"` block in `main/test/QuantLib/Spec/TermStructure.hs`), clean `hlint QuantLib smoke test main Setup.hs`, clean `tools/quiet-build.py stack build --test --no-haddock` (28 known hidden c2hs warnings only). lts-18.8 docker gate (GHC 8.10.6) passed: 146 examples, 0 failures, including the new `swaption volatility cubes` block.
+
+**Follow-up verification (2026-08-16, `SabrInterpolatedSmileSection` dynamic_cast removal):** `smoke/CheckSabrSmileSection.hs` re-run and extended to exercise `sabrInterpolatedSmileSectionAsSmileSection`; `make`, `cabal build lib:hasquant`, `stack build --test --no-haddock` (146 examples), `stack test --ta '--skip LONG'` (143 examples), clean `hlint`, and the lts-18.8 docker gate (146 examples, 0 failures) all re-passed after this change.
