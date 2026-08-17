@@ -159,6 +159,7 @@ swap' :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
 swap' = (uncurry qlSwap1) . unzip
 {#fun qlSwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+
 -- |Swap paying Libor against BMA coupons
 {#fun qlBMASwap as bmaSwap{`SwapType',`Double' -- ^nominal
   ,withSchedule*`Schedule' -- ^liborSchedule
@@ -168,6 +169,7 @@ swap' = (uncurry qlSwap1) . unzip
   ,withSchedule*`Schedule' -- ^bmaSchedule
   ,withBMAIndex*`BMAIndex',withDayCounter*`DayCounter' -- ^bmaDayCount
   ,preErrorCheck-`String'errorCheck*-}->`BMASwap'peekBMASwap*#}
+
 -- |Fixed-rate vs floating-rate (Ibor) swap; if no payment convention is given, the floating leg's is used.
 {#fun qlVanillaSwap as vanillaSwap{`SwapType',`Double' -- ^nominal
   ,withSchedule*`Schedule' -- ^fixedSchedule
@@ -312,16 +314,22 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap{withLeg*`GenLeg l1',withLeg*`GenLeg l2',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+
 -- |Discount factor at leg j's end date.
 {#fun qlSwapEndDiscounts as endDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The j-th leg's cash flows.
 {#fun qlSwapLeg as leg{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of leg j.
 {#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of leg j.
 {#fun qlSwapLegNPV as legNPV{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Discount factor at leg j's start date.
 {#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |An option on a 'VanillaSwap'.
 {#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
@@ -352,6 +360,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+
 -- |As 'overnightIndexedSwap', but with a per-period nominal schedule instead of a single flat nominal.
 {#fun qlOvernightIndexedSwap1 as overnightIndexedSwap'{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
   ,withSchedule*`Schedule' -- ^schedule
@@ -367,48 +376,70 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+
 -- |The swap's maturity date, or 'Nothing' if the swap has no legs.
 {#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+
 -- |The swap's start date, or 'Nothing' if the swap has no legs.
 {#fun qlSwapStartDate as startDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+
 -- |Discount factor at the instrument's NPV date.
 {#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The BMA leg's cash flows.
 {#fun qlBMASwapBmaLeg as bmaLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the BMA leg.
 {#fun qlBMASwapBmaLegBPS as bmaLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the BMA leg.
 {#fun qlBMASwapBmaLegNPV as bmaLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The Libor fraction that would make the swap's NPV zero.
 {#fun qlBMASwapFairLiborFraction as fairLiborFraction{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The Libor spread that would make the swap's NPV zero.
 {#fun qlBMASwapFairLiborSpread as fairLiborSpread{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The fraction of the Libor rate paid on the Libor leg.
 {#fun qlBMASwapLiborFraction as liborFraction{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The Libor leg's cash flows.
 {#fun qlBMASwapLiborLeg as liborLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the Libor leg.
 {#fun qlBMASwapLiborLegBPS as liborLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the Libor leg.
 {#fun qlBMASwapLiborLegNPV as liborLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The underlying bond's cash flows.
 {#fun qlAssetSwapBondLeg as bondLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |The bond's clean price, as passed to the constructor.
 {#fun qlAssetSwapCleanPrice as cleanPrice{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The clean price that would make the swap's NPV zero.
 {#fun qlAssetSwapFairCleanPrice as fairCleanPrice{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The non-par repayment that would make the swap's NPV zero.
 {#fun qlAssetSwapFairNonParRepayment as fairNonParRepayment{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The non-par repayment, as passed to the constructor.
 {#fun qlAssetSwapNonParRepayment as nonParRepayment{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Whether this is a par asset swap.
 {#fun qlAssetSwapParSwap as parSwap{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |Whether the bond coupon is paid (rather than netted against the floating leg).
 {#fun qlAssetSwapPayBondCoupon as payBondCoupon{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |The overnight leg's cash flows.
 {#fun qlOvernightIndexedSwapOvernightLeg as overnightLeg{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the overnight leg.
 {#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the overnight leg.
 {#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -430,6 +461,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,withCalendar*`Calendar' -- ^infCalendar
   ,`BusinessDayConvention' -- ^infConvention
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
+
 -- |The fixed rate that would make the swap's NPV zero.
 {#fun qlZeroCouponInflationSwapFairRate as zcisFairRate{withZeroCouponInflationSwap*`ZeroCouponInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -448,8 +480,10 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,`BusinessDayConvention' -- ^paymentConvention
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
+
 -- |The fixed rate that would make the swap's NPV zero.
 {#fun qlYearOnYearInflationSwapFairRate as yoyFairRate{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The spread that would make the swap's NPV zero.
 {#fun qlYearOnYearInflationSwapFairSpread{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -475,8 +509,10 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,fromMaybeDouble`Maybe Double' -- ^inflationNominal
   ,preErrorCheck-`String'errorCheck*-}->`CPISwap'peekCPISwap*#}
+
 -- |The fixed rate that would make the swap's NPV zero.
 {#fun qlCPISwapFairRate as cpiSwapFairRate{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The spread that would make the swap's NPV zero.
 {#fun qlCPISwapFairSpread{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -489,6 +525,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
+
 -- |Zero-coupon swap quoted in terms of a fixed rate.
 {#fun qlZeroCouponSwap1 as zeroCouponSwap'{`SwapType',`Double' -- ^baseNominal
   ,withDay*`Day' -- ^startDate
@@ -499,8 +536,10 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
+
 -- |The fixed payment that would make the swap's NPV zero.
 {#fun qlZeroCouponSwapFairFixedPayment as fairFixedPayment{withZeroCouponSwap*`ZeroCouponSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The fixed rate, under the given day counter, that would make the swap's NPV zero.
 {#fun qlZeroCouponSwapFairFixedRate as fairFixedRate{withZeroCouponSwap*`ZeroCouponSwap',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -517,6 +556,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
+
 -- |As 'equityTotalReturnSwapIbor', but with the floating leg linked to an overnight index instead
 -- -- fixings are compounded over the accrual period.
 {#fun qlEquityTotalReturnSwapOvernight as equityTotalReturnSwapOvernight{`SwapType',`Double' -- ^nominal
@@ -530,10 +570,13 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
+
 -- |NPV of the equity total-return leg.
 {#fun qlEquityTotalReturnSwapEquityLegNPV as equityLegNPV{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the interest-rate leg.
 {#fun qlEquityTotalReturnSwapInterestRateLegNPV as interestRateLegNPV{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The margin that would make the swap's NPV zero.
 {#fun qlEquityTotalReturnSwapFairMargin as fairMargin{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -583,38 +626,55 @@ instance HasFloatingLeg AssetSwap where
 
 -- |The spread that would make the swap's NPV zero.
 {#fun qlVanillaSwapFairSpread{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The spread that would make the swap's NPV zero.
 {#fun qlAssetSwapFairSpread{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The fixed rate that would make the swap's NPV zero.
 {#fun qlVanillaSwapFairRate{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The fixed leg's cash flows.
 {#fun qlVanillaSwapFixedLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the fixed leg.
 {#fun qlVanillaSwapFixedLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the fixed leg.
 {#fun qlVanillaSwapFixedLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The fixed rate that would make the swap's NPV zero.
 {#fun qlOvernightIndexedSwapFairRate{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The fixed leg's cash flows.
 {#fun qlOvernightIndexedSwapFixedLeg{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the fixed leg.
 {#fun qlOvernightIndexedSwapFixedLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the fixed leg.
 {#fun qlOvernightIndexedSwapFixedLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The spread that would make the swap's NPV zero.
 {#fun qlOvernightIndexedSwapFairSpread{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.This calculation does not take any upfront into account, even if one was given.
 {#fun qlCreditDefaultSwapFairSpread{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The floating leg's cash flows.
 {#fun qlVanillaSwapFloatingLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the floating leg.
 {#fun qlVanillaSwapFloatingLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the floating leg.
 {#fun qlVanillaSwapFloatingLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The floating leg's cash flows.
 {#fun qlAssetSwapFloatingLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Basis-point sensitivity of the floating leg.
 {#fun qlAssetSwapFloatingLegBPS{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the floating leg.
 {#fun qlAssetSwapFloatingLegNPV{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 

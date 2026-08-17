@@ -169,14 +169,17 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
+
 -- |'BlackVolatilitySurfaceDelta::SmileInterpolationMethod', local to that class -- not shared
 -- with any other binding, so declared here rather than in 'QuantLib.Internal.Enum'.
 {#enum SmileInterpolationMethod{} deriving(Show, Eq)#}
+
 -- |'BlackVolTimeExtrapolation::Type', consumed only by 'blackVolatilitySurfaceDelta' today --
 -- same local-declaration treatment as 'SmileInterpolationMethod'. Named
 -- @BlackVolTimeExtrapolationType@ (rather than reusing the bare @Type@ c2hs would otherwise
 -- emit) to avoid a top-level name clash.
 {#enum BlackVolTimeExtrapolationType{} deriving(Show, Eq)#}
+
 -- |'FixedLocalVolSurface::Extrapolation', local to that class -- not shared with any other
 -- binding, same local-declaration treatment as 'SmileInterpolationMethod'.
 {#enum FixedLocalVolSurfaceExtrapolation{} deriving(Show, Eq)#}
@@ -308,9 +311,11 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
 -- reason as those: all four relinkable vol types live in this one module.
 {#fun qlRelinkableOptionletVolatilityStructureLinkTo as linkOptionletVolTo{withRelinkableOptionletVolatilityStructure*`RelinkableOptionletVolatilityStructure'
   ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |A constant Black volatility, no time-strike dependence -- floating reference date, floating
 -- market data
 {#fun qlBlackConstantVol1 as blackConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
 -- |as 'blackConstantVol\'', but a fixed reference date
 {#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
@@ -333,6 +338,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+
 -- |floating reference date, floating market data
 {#fun qlConstantSwaptionVolatility as constantSwaptionVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
@@ -346,6 +352,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the Black variance for a given option time and swap tenor
 {#fun qlSwaptionVolatilityStructureBlackVariance2 as blackVarianceForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- optionTime
@@ -353,6 +360,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the Black variance for a given option tenor and swap length
 {#fun qlSwaptionVolatilityStructureBlackVariance3 as blackVarianceForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
@@ -360,6 +368,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the Black variance for a given option date and swap length
 {#fun qlSwaptionVolatilityStructureBlackVariance4 as blackVariance'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
@@ -367,6 +376,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the Black variance for a given option time and swap length
 {#fun qlSwaptionVolatilityStructureBlackVariance5 as blackVariance{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
@@ -374,6 +384,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the Black variance for a given option tenor and swap tenor
 {#fun qlSwaptionVolatilityStructureBlackVariance as blackVarianceForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
@@ -381,46 +392,55 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the largest swapLength for which the term structure can return vols
 {#fun qlSwaptionVolatilityStructureMaxSwapLength as maxSwapLength{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the largest length for which the term structure can return vols
 {#fun qlSwaptionVolatilityStructureMaxSwapTenor as maxSwapTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
+
 -- |returns the smile for a given option date and swap tenor
 {#fun qlSwaptionVolatilityStructureSmileSection1 as smileSectionForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |returns the smile for a given option time and swap tenor
 {#fun qlSwaptionVolatilityStructureSmileSection2 as smileSectionForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |returns the smile for a given option tenor and swap length
 {#fun qlSwaptionVolatilityStructureSmileSection3 as smileSectionForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |returns the smile for a given option date and swap length
 {#fun qlSwaptionVolatilityStructureSmileSection4 as smileSection'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |returns the smile for a given option time and swap length
 {#fun qlSwaptionVolatilityStructureSmileSection5 as smileSection{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
   ,`Double' -- ^swapLength
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |returns the smile for a given option tenor and swap tenor
 {#fun qlSwaptionVolatilityStructureSmileSection as smileSectionForPeriods{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,`Bool' -- ^extr
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |a smile section built directly from SABR parameters (Hagan et al. 2002), rather than
 -- interpolated from a 'SwaptionVolatilityStructure'
 {#fun qlSabrSmileSection as sabrSmileSection{`Double' -- ^timeToExpiry
@@ -432,6 +452,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |as 'sabrSmileSection', but the time to expiry is derived from a date, reference date and day
 -- counter rather than given directly
 {#fun qlSabrSmileSection1 as sabrSmileSection'{withDay*`Day' -- ^optionDate
@@ -445,6 +466,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |an arbitrage-free SABR smile section (Doust's approach via 'NoArbSabrSmileSection'), built
 -- directly from SABR parameters like 'sabrSmileSection' but guaranteeing a proper terminal density
 {#fun qlNoArbSabrSmileSection as noArbSabrSmileSection{`Double' -- ^timeToExpiry
@@ -456,6 +478,7 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |as 'noArbSabrSmileSection', but the time to expiry is derived from a date and day counter
 -- rather than given directly
 {#fun qlNoArbSabrSmileSection1 as noArbSabrSmileSection'{withDay*`Day' -- ^optionDate
@@ -468,14 +491,17 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |the volatility for the given strike, for any 'SmileSection' (however it was constructed)
 {#fun qlSmileSectionVolatility as smileSectionVolatility{withSmileSection*`SmileSection'
   ,`Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the Black variance for the given strike, for any 'SmileSection' (however it was constructed)
 {#fun qlSmileSectionVariance as smileSectionVariance{withSmileSection*`SmileSection'
   ,`Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the ATM level baked into the 'SmileSection' at construction (or later re-anchored via
 -- 'atmSmileSection'), for any 'SmileSection' (however it was constructed)
 {#fun qlSmileSectionAtmLevel as smileSectionAtmLevel{withSmileSection*`SmileSection'
@@ -555,25 +581,34 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- |calibrated alpha (post-fit; can differ from the initial guess passed to
 -- 'sabrInterpolatedSmileSection' unless @sabrIsAlphaFixed@ was set).
 {#fun qlSabrInterpolatedSmileSectionAlpha as sabrInterpolatedSmileSectionAlpha{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |calibrated beta, see 'sabrInterpolatedSmileSectionAlpha'
 {#fun qlSabrInterpolatedSmileSectionBeta as sabrInterpolatedSmileSectionBeta{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |calibrated nu, see 'sabrInterpolatedSmileSectionAlpha'
 {#fun qlSabrInterpolatedSmileSectionNu as sabrInterpolatedSmileSectionNu{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |calibrated rho, see 'sabrInterpolatedSmileSectionAlpha'
 {#fun qlSabrInterpolatedSmileSectionRho as sabrInterpolatedSmileSectionRho{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |root-mean-square calibration error
 {#fun qlSabrInterpolatedSmileSectionRmsError as sabrInterpolatedSmileSectionRmsError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |maximum calibration error
 {#fun qlSabrInterpolatedSmileSectionMaxError as sabrInterpolatedSmileSectionMaxError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the reason the SABR calibration's optimizer stopped
 {#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^start
   ,withDay*`Day' -- ^end
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |implements the conversion between swap tenor and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength as swapLength{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',fromEnumQuantity`(Word,TimeUnit)'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the volatility for a given option date and swap tenor
 {#fun qlSwaptionVolatilityStructureVolatility1 as volatilityForPeriod'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^optionDate
@@ -581,6 +616,7 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the volatility for a given option time and swap tenor
 {#fun qlSwaptionVolatilityStructureVolatility2 as volatilityForPeriod{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,`Double' -- ^optionTime
@@ -588,6 +624,7 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,`Double' -- ^strike
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the volatility for a given option tenor and swap length
 {#fun qlSwaptionVolatilityStructureVolatility3 as volatilityForTenor{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
@@ -623,15 +660,20 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- |A constant callable-bond volatility, no time-strike dependence -- floating reference date,
 -- floating market data
 {#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatility'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+
 -- |as 'callableBondConstantVolatility\'', but a fixed reference date
 {#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+
 -- |fixed reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+
 -- |floating reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+
 -- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
 -- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)
 {#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+
 -- |as 'spreadedSwaptionVolatility', for 'OptionletVolatilityStructure' rather than
 -- 'SwaptionVolatilityStructure'
 {#fun qlSpreadedOptionletVolatility as spreadedOptionletVol{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
@@ -652,15 +694,19 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- not just with 'Yield.chs'\/'Quote.chs'.
 {#fun qlRelinkableSwaptionVolatilityStructureLinkTo as linkSwaptionVolTo{withRelinkableSwaptionVolatilityStructure*`RelinkableSwaptionVolatilityStructure'
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |A constant local volatility, no time-asset dependence -- floating reference date, floating
 -- market data. Local and Black volatility coincide when volatility is at most time dependent, so
 -- this is effectively a proxy for 'blackConstantVol''.
 {#fun qlLocalConstantVol1 as localConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
 -- |as 'localConstantVol\'', but a fixed reference date
 {#fun qlLocalConstantVol as localConstantVol{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
 -- |a local vol term structure derived from a 'BlackVarianceCurve' (no strike dependence): local
 -- vol at time @t@ is the derivative of the Black variance curve's total variance
 {#fun qlLocalVolCurve as localVolCurve{withBlackVarianceCurve*`BlackVarianceCurve',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
 -- |@origTS@ re-anchored to a new reference date, tracking @origTS@ for later changes. Only
 -- financially sensible for a time-dependent (not asset-dependent) source structure.
 {#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
@@ -763,6 +809,7 @@ blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (Matrix mr mc md) dc cal spot 
 {#fun qlBlackVolatilitySurfaceDeltaSmile1 as blackVolSmile{withBlackVolatilitySurfaceDelta*`BlackVolatilitySurfaceDelta'
   ,`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
 -- |As 'blackVolSmile', for a given expiry 'Day' instead of a year fraction.
 {#fun qlBlackVolatilitySurfaceDeltaSmile as blackVolSmile'{withBlackVolatilitySurfaceDelta*`BlackVolatilitySurfaceDelta'
   ,withDay*`Day' -- ^d
@@ -930,6 +977,7 @@ sparseSabrParameters sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeSparseS
 {#fun qlSabrSwaptionVolatilityCubeSparseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
   ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Per-node calibrated SABR parameters, meaningfully populated only when the cube was built with
 -- @isAtmCalibrated = True@ (see 'sabrSwaptionVolatilityCube').
 denseSabrParameters :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
@@ -937,6 +985,7 @@ denseSabrParameters sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeDenseSab
 {#fun qlSabrSwaptionVolatilityCubeDenseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
   ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |The raw market vol grid the cube's SABR fit targets: ATM vol (interpolated from
 -- @atmVolStructure@ at each node) plus @volSpreads@.
 marketVolCube :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
@@ -944,6 +993,7 @@ marketVolCube sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeMarketVolCube 
 {#fun qlSabrSwaptionVolatilityCubeMarketVolCube{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
   ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Like 'marketVolCube', adjusted so the cube's own ATM row is consistent with @atmVolStructure@;
 -- meaningfully populated only when the cube was built with @isAtmCalibrated = True@.
 volCubeAtmCalibrated :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
@@ -957,16 +1007,19 @@ volCubeAtmCalibrated sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeVolCube
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |ATM strike at a given (option tenor, swap tenor) node, see 'sabrSwaptionVolatilityCubeAtmStrike\''
 {#fun qlSabrSwaptionVolatilityCubeAtmStrike as sabrSwaptionVolatilityCubeAtmStrike{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |ATM strike at a given (option date, swap tenor) node.
 {#fun qlInterpolatedSwaptionVolatilityCubeAtmStrike1 as interpolatedSwaptionVolatilityCubeAtmStrike'{withInterpolatedSwaptionVolatilityCube*`InterpolatedSwaptionVolatilityCube'
   ,withDay*`Day' -- ^optionDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |ATM strike at a given (option tenor, swap tenor) node, see
 -- 'interpolatedSwaptionVolatilityCubeAtmStrike\''
 {#fun qlInterpolatedSwaptionVolatilityCubeAtmStrike as interpolatedSwaptionVolatilityCubeAtmStrike{withInterpolatedSwaptionVolatilityCube*`InterpolatedSwaptionVolatilityCube'

@@ -834,6 +834,7 @@ claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
 
 -- |Claim on a notional
 {#fun qlFaceValueClaim{preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
+
 -- |Claim on the notional of a reference security, including accrual
 {#fun qlFaceValueAccrualClaim{withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 

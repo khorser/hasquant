@@ -105,6 +105,7 @@ import QuantLib.Internal.Type
   ,`ProcessDiscretization'
   ,`Bool' -- ^forceDiscretization
   ,preErrorCheck-`String'errorCheck*-}->`BlackProcess'peekBlackProcess*#}
+
 -- |Merton (1973) extension of Black-Scholes for a continuous-dividend-paying stock:
 -- d(ln S) = (r - q - sigma^2\/2) dt + sigma dW.
 {#fun qlBlackScholesMertonProcess as blackScholesMertonProcess{withQuote*`GenQuote q' -- ^x0
@@ -114,6 +115,7 @@ import QuantLib.Internal.Type
   ,`ProcessDiscretization'
   ,`Bool' -- ^forceDiscretization
   ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+
 -- |Black-Scholes (1973) process for a stock: d(ln S) = (r - sigma^2\/2) dt + sigma dW.
 {#fun qlBlackScholesProcess as blackScholesProcess{withQuote*`GenQuote q' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^riskFreeTS
@@ -121,6 +123,7 @@ import QuantLib.Internal.Type
   ,`ProcessDiscretization'
   ,`Bool' -- ^forceDiscretization
   ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+
 -- |'blackScholesMertonProcess' with a choice of evolution scheme (Euler\/Milstein\/predictor-corrector)
 -- on top of the discretization argument.
 {#fun qlExtendedBlackScholesMertonProcess as extendedBlackScholesMertonProcess{withQuote*`GenQuote q' -- ^x0
@@ -128,6 +131,7 @@ import QuantLib.Internal.Type
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^riskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^blackVolTS
   ,`ProcessDiscretization',`ExtendedBlackScholesMertonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+
 -- |Garman-Kohlhagen (1983) process for an exchange rate: d(ln S) = (r - r_f - sigma^2\/2) dt + sigma dW.
 {#fun qlGarmanKohlagenProcess as garmanKohlagenProcess{withQuote*`GenQuote q' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^foreignRiskFreeTS
@@ -136,6 +140,7 @@ import QuantLib.Internal.Type
   ,`ProcessDiscretization'
   ,`Bool' -- ^forceDiscretization
   ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+
 -- |Generalized Black-Scholes process with separate dividend and risk-free curves:
 -- d(ln S) = (r - q - sigma^2\/2) dt + sigma dW.
 {#fun qlGeneralizedBlackScholesProcess as generalizedBlackScholesProcess{withQuote*`GenQuote q' -- ^x0
@@ -145,12 +150,14 @@ import QuantLib.Internal.Type
   ,`ProcessDiscretization'
   ,`Bool' -- ^forceDiscretization
   ,preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+
 -- |square-root process: dx = a (b - x) dt + sigma sqrt(x) dW.
 {#fun qlSquareRootProcess as squareRootProcess{`Double' -- ^b
   ,`Double' -- ^a
   ,`Double' -- ^sigma
   ,`Double' -- ^x0
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
+
 -- |'blackScholesMertonProcess' variant supporting local vega stress tests over a given
 -- time\/asset border and stress level.
 {#fun qlVegaStressedBlackScholesProcess as vegaStressedBlackScholesProcess{withQuote*`GenQuote q' -- ^x0
@@ -163,6 +170,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^upperAssetBorderForStressTest
   ,`Double' -- ^stressLevel
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
+
 -- |square-root stochastic-volatility Bates process: a Heston process plus a compound Poisson
 -- jump component with log-normally distributed jump size.
 {#fun qlBatesProcess as batesProcess{withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeTS
@@ -177,6 +185,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^nu
   ,`Double' -- ^delta
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`BatesProcess'peekBatesProcess*#}
+
 -- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
 -- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN.
 {#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
@@ -184,6 +193,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^jumpIntensity
   ,`Double' -- ^eta
   ,preErrorCheck-`String'errorCheck*-}->`ExtOUWithJumpsProcess'peekExtOUWithJumpsProcess*#}
+
 -- |T-forward-measure counterpart of 'g2Process': the two-factor G2++ short-rate model, with
 -- the simulated state again shifted so its components sum to the short rate.
 {#fun qlG2ForwardProcess as g2ForwardProcess{`Double' -- ^a
@@ -193,6 +203,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^rho
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^termStructure
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
+
 -- |two-factor G2++ short-rate process, state shifted so its two OU components sum to the
 -- short rate; degenerates to a pair of zero-mean OU processes if no term structure is given.
 {#fun qlG2Process as g2Process{`Double' -- ^a
@@ -202,6 +213,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^rho
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^termStructure
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
+
 -- |Geman-Roncoroni process, a mean-reverting jump-diffusion model for electricity spot prices
 -- with a seasonal deterministic mean and an asymmetric jump term.
 {#fun qlGemanRoncoroniProcess as gemanRoncoroniProcess{`Double'-- ^x0
@@ -222,11 +234,13 @@ import QuantLib.Internal.Type
   ,`Double' -- ^theta3
   ,`Double' -- ^psi
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
+
 -- |geometric Brownian motion process: dS = mue S dt + sigma S dW.
 {#fun qlGeometricBrownianMotionProcess as geometricBrownianMotionProcess{`Double' -- ^initialValue
   ,`Double' -- ^mue
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
+
 -- |stochastic-volatility GJR-GARCH(1,1) process; parameters are supplied as daily constants
 -- and annualized internally via daysPerYear.
 {#fun qlGJRGARCHProcess as gjrGARCHProcess{withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeRate
@@ -240,6 +254,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^lambda
   ,`Double' -- ^daysPerYear
   ,`GJRGARCHProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GJRGARCHProcess'peekGJRGARCHProcess*#}
+
 -- |/dividendYield/ may be 'Nothing' (an empty term-structure handle) -- required e.g. by
 -- 'QuantLib.PricingEngine.integralHestonVarianceOptionEngine', which rejects a process with a
 -- non-empty dividend handle.
@@ -252,28 +267,34 @@ import QuantLib.Internal.Type
   ,`Double' -- ^sigma
   ,`Double' -- ^rho
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HestonProcess'peekHestonProcess*#}
+
 -- |T-forward-measure counterpart of 'hullWhiteProcess'.
 {#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess{withYieldTermStructure*`GenYieldTermStructure y' -- ^h
   ,`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteForwardProcess'peekHullWhiteForwardProcess*#}
+
 -- |Hull-White one-factor short-rate process, fitted to the given initial term structure.
 {#fun qlHullWhiteProcess as hullWhiteProcess{withYieldTermStructure*`GenYieldTermStructure y' -- ^h
   ,`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteProcess'peekHullWhiteProcess*#}
+
 -- |three-factor hybrid model combining a Heston equity process with a Hull-White short-rate
 -- process, correlated via corrEquityShortRate.
 {#fun qlHybridHestonHullWhiteProcess as hybridHestonHullWhiteProcess{withHestonProcess*`GenHestonProcess hp',withGenStochasticProcess1D*`HullWhiteForwardProcess'
   ,`Double' -- ^corrEquityShortRate
   ,`HybridHestonHullWhiteProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'peekHybridHestonHullWhiteProcess*#}
+
 -- |joint correlated Kluge ('extOUWithJumpsProcess') and extended Ornstein-Uhlenbeck process.
 {#fun qlKlugeExtOUProcess as klugeExtOUProcess{`Double' -- ^rho
   ,withGenStochasticProcess*`ExtOUWithJumpsProcess',withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
+
 -- |Libor market model process, evolving /size/ forward rates of /index/ under the rolling
 -- forward measure with a predictor-corrector step.
 {#fun qlLiborForwardModelProcess as liborForwardModelProcess{fromIntegral`Word' -- ^size
   ,withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'peekLiborForwardModelProcess*#}
+
 -- |Merton (1976) jump-diffusion process: a Black-Scholes process plus a log-normal jump
 -- component with Poisson jump intensity jumpInt.
 {#fun qlMerton76Process as merton76Process{withQuote*`GenQuote q1' -- ^stateVariable
@@ -284,12 +305,14 @@ import QuantLib.Internal.Type
   ,withQuote*`GenQuote q3' -- ^logJMean
   ,withQuote*`GenQuote q4' -- ^logJVol
   ,`ProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`Merton76Process'peekMerton76Process*#}
+
 -- |Ornstein-Uhlenbeck process: dx = a (level - x) dt + sigma dW.
 {#fun qlOrnsteinUhlenbeckProcess as ornsteinUhlenbeckProcess{`Double' -- ^speed
   ,`Double' -- ^vol
   ,`Double' -- ^x0
   ,`Double' -- ^level
   ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
+
 -- |Variance Gamma process: a Brownian motion db = theta dt + sigma dW time-changed by an
 -- independent Gamma process with mean 1 and variance rate nu.
 {#fun qlVarianceGammaProcess as varianceGammaProcess{withQuote*`GenQuote q' -- ^s0
@@ -299,6 +322,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^nu
   ,`Double' -- ^theta
   ,preErrorCheck-`String'errorCheck*-}->`VarianceGammaProcess'peekVarianceGammaProcess*#}
+
 -- |array of correlated 1-D stochastic processes, driven by a joint correlation matrix.
 stochasticProcessArray :: [GenStochasticProcess1D p1d] -> Matrix Double -- ^correlation
   -> IO StochasticProcessArray

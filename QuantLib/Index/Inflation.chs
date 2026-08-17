@@ -50,6 +50,7 @@ import QuantLib.Internal.Type
 -- |A named zero inflation index (RPI/HICP/CPI family). Constructs with no historical
 -- fixings and no linked term structure -- add fixings via 'QuantLib.Index.addFixing'.
 {#fun qlCreateZeroInflationIndex as zeroInflationIndex{`ZeroInflationIndexType',preErrorCheck-`String'errorCheck*-}->`ZeroInflationIndex'peekZeroInflationIndex*#}
+
 -- |A named quoted year-on-year inflation index.
 {#fun qlCreateYoYInflationIndex as yoyInflationIndex{`YoYInflationIndexType',preErrorCheck-`String'errorCheck*-}->`YoYInflationIndex'peekYoYInflationIndex*#}
 
@@ -57,6 +58,7 @@ import QuantLib.Internal.Type
 -- named indices, e.g. 'UKRPI' uses 'UKRegion' internally). See 'region\'' for an arbitrary
 -- custom region.
 {#fun qlRegion as region{`RegionType',preErrorCheck-`String'errorCheck*-}->`Region'peekRegion*#}
+
 -- |An arbitrary custom region, given its name and ISO code.
 {#fun qlCreateRegion as region'{`String',`String',preErrorCheck-`String'errorCheck*-}->`Region'peekRegion*#}
 
@@ -70,6 +72,7 @@ import QuantLib.Internal.Type
   ,withCurrency*`Currency'
   ,withMaybeZeroInflationTermStructure*`Maybe ZeroInflationTermStructure'
   ,preErrorCheck-`String'errorCheck*-}->`ZeroInflationIndex'peekZeroInflationIndex*#}
+
 -- |A custom quoted year-on-year inflation index (arbitrary family name/region/currency); needs
 -- its own past fixings added via 'QuantLib.Index.addFixing'. See 'yoyInflationIndexFromZero'
 -- for a YoY index defined instead as a ratio of an existing 'ZeroInflationIndex'\'s fixings.
@@ -81,6 +84,7 @@ import QuantLib.Internal.Type
   ,withCurrency*`Currency'
   ,withMaybeYoYInflationTermStructure*`Maybe YoYInflationTermStructure'
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationIndex'peekYoYInflationIndex*#}
+
 -- |A year-on-year index defined as the ratio of an existing 'ZeroInflationIndex'\'s fixings;
 -- stores no fixings of its own.
 {#fun qlYoYInflationIndexFromZero as yoyInflationIndexFromZero{withZeroInflationIndex*`ZeroInflationIndex'
@@ -90,6 +94,7 @@ import QuantLib.Internal.Type
 -- |The (possibly forecast) fixing at the given date; for a date with no linked term
 -- structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
 {#fun qlZeroInflationIndexFixing as fixing{withZeroInflationIndex*`ZeroInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
 -- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
 {#fun qlYoYInflationIndexFixing as yoyFixing{withYoYInflationIndex*`YoYInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}

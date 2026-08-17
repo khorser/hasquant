@@ -54,6 +54,7 @@ import QuantLib.Internal.Enum
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwapHelper'peekZeroCouponInflationSwapHelper*#}
+
 -- |Bootstrap helper for a year-on-year inflation swap. Unlike 'zeroCouponInflationSwapHelper',
 -- also needs the nominal discount curve (the YoY swap's fixed/floating legs discount off it).
 {#fun qlYearOnYearInflationSwapHelper as yearOnYearInflationSwapHelper{withQuote*`GenQuote q' -- ^quote
@@ -71,6 +72,7 @@ import QuantLib.Internal.Enum
 
 -- |The underlying swap the helper builds from its quote, observation lag and maturity.
 {#fun qlZeroCouponInflationSwapHelperSwap as zeroCouponInflationSwapHelperSwap{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
+
 -- |The underlying swap the helper builds from its quote, observation lag and maturity.
 {#fun qlYearOnYearInflationSwapHelperSwap as yearOnYearInflationSwapHelperSwap{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
 
@@ -100,6 +102,7 @@ piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflati
 -- |Zero-coupon inflation rate implied by the curve.
 {#fun qlZeroInflationTermStructureZeroRate as zeroRate{withGenTermStructure*`ZeroInflationTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Year-on-year inflation rate implied by the curve.
 {#fun qlYoYInflationTermStructureYoYRate as yoyRate{withGenTermStructure*`YoYInflationTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

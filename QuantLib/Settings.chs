@@ -31,23 +31,29 @@ import QuantLib.Internal
 -- |returns the current value of the Evaluation Date:
 -- the date at which pricing is to be performed
 {#fun qlSettingsEvaluationDate as evaluationDate{}->`Day'toDay#}
+
 -- |sets the value of the Evaluation Date
 -- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
 {#fun qlSettingsSetEvaluationDate as setEvaluationDate{withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date
 {#fun qlSettingsEnforceTodaysHistoricFixings as enforceTodaysHistoricFixings{}->`Bool'#}
+
 -- |sets the value of the boolean which enforce the usage of historic fixings
 -- for today's date
 {#fun qlSettingsSetEnforceTodaysHistoricFixings as setEnforceTodaysHistoricFixings{`Bool'}->`()'#}
+
 -- |if set, whether CashFlows occurring on today's date should enter the NPV; when the NPV date
 -- equals today's date this overrides includeReferenceDateEvents and cannot be overridden locally
 {#fun qlSettingsIncludeTodaysCashFlows as includeTodaysCashFlows{}->`Maybe Bool' toMaybeBool#}
+
 -- |sets whether CashFlows occurring on today's date should enter the NPV
 {#fun qlSettingsSetIncludeTodaysCashFlows as setIncludeTodaysCashFlows{fromMaybeBool`Maybe Bool'}->`()'#}
 
 -- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
 {#fun qlSettingsIncludeReferenceDateEvents as includeReferenceDateEvents{}->`Bool'#}
+
 -- |sets whether Events occurring on the reference date should, by default, be taken into account as not happened yet
 {#fun qlSettingsSetIncludeReferenceDateEvents as setIncludeReferenceDateEvents{`Bool'}->`()'#}
 

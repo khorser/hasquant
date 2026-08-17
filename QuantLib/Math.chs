@@ -62,6 +62,7 @@ import Data.List.NonEmpty(NonEmpty)
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
+
 -- |rounds a value to the precision and rule carried by the given 'Rounding'
 {#fun pure qlRound as applyRounding{withRounding*`Rounding' -- ^rounding
   ,`Double' -- ^value
@@ -82,12 +83,15 @@ import Data.List.NonEmpty(NonEmpty)
 
 -- |returns the number of times on the grid
 {#fun pure qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
+
 -- |returns the time at the given index of the grid
 {#fun qlTimeGridAt as timeAt{withTimeGrid*`TimeGrid' -- ^grid
   ,fromIntegral`Word' -- ^index
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns all the times on the grid, as a list
 {#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |returns all the times on the grid, as a vector
 {#fun qlTimeGridPoints as points'{withTimeGrid*`TimeGrid',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 

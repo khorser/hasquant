@@ -46,34 +46,47 @@ calendar x = uncurry qlCalendar $ mapCalendar x
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
 {#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',`BusinessDayConvention'}->`Day'toDay#}
+
 -- |Advances the given date of the given number of business days and returns the result using business day convention and the EOM flag
 {#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,`BusinessDayConvention',`Bool' -- ^endOfMonth
   }->`Day'toDay#}
+
 -- |Adds a date to the set of holidays for the given calendar.
 {#fun qlCalendarAddHoliday as addHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Calculates the number of business days between two given dates and returns the result.
 {#fun qlCalendarBusinessDaysBetween as businessDaysBetween{withCalendar*`Calendar',withDay*`Day',withDay*`Day'
   ,`Bool' -- ^includeFirst
   ,`Bool' -- ^includeLast
   ,preErrorCheck-`String'errorCheck*-}->`Int'#}
+
 -- |last business day of the month to which the given date belongs
 {#fun qlCalendarEndOfMonth as endOfMonth{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
 -- |Returns true iff the date is a business day for the given market.
 {#fun qlCalendarIsBusinessDay as isBusinessDay{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |Returns true iff the date is last business day for the month in given market.
 {#fun qlCalendarIsEndOfMonth as isEndOfMonth{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |Returns true iff the date is a holiday for the given market.
 {#fun qlCalendarIsHoliday as isHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |Returns true iff the weekday is part of the weekend for the given market.
 {#fun qlCalendarIsWeekend as isWeekend{withCalendar*`Calendar',`Weekday',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |Removes a date from the set of holidays for the given calendar.
 {#fun qlCalendarRemoveHoliday as removeHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Builds a calendar with no predefined business days; the given weekdays become its weekend.
 {#fun qlBespokeCalendar{`String',withEnumArray*`[Weekday]'&,preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+
 -- |Combines three calendars into one whose business days are the union or intersection of theirs, per the given rule.
 {#fun qlJointCalendar3{withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+
 -- |Combines two calendars into one whose business days are the union or intersection of theirs, per the given rule.
 {#fun qlJointCalendar2{withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+
 -- |Combines four calendars into one whose business days are the union or intersection of theirs, per the given rule.
 {#fun qlJointCalendar4{withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 

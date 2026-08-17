@@ -29,18 +29,22 @@ import QuantLib.Internal.Type
 {#fun qlCap as cap{withLeg*`GenLeg l' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+
 -- |constructs a collar: a cap struck at the cap rates combined with a floor struck at the floor rates
 {#fun qlCollar as collar{withLeg*`GenLeg l' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^capRates
   ,withDoubleArray*`[Double]'& -- ^floorRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+
 -- |constructs a floor: pays the excess of each exercise rate over the floating leg's rate, if positive
 {#fun qlFloor as floor{withLeg*`GenLeg l' -- ^floatingLeg
   ,withDoubleArray*`[Double]'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
+
 -- |returns the fair (at-the-money) rate for the cap/floor's underlying floating leg, discounted on the given curve
 {#fun qlCapFloorAtmRate as atmRate{withGenInstrument*`CapFloor',withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |implied term volatility
 {#fun qlCapFloorImpliedVolatility as impliedVolatility{withGenInstrument*`CapFloor',`Double' -- ^price
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^disc
@@ -52,6 +56,7 @@ import QuantLib.Internal.Type
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
 {#fun qlCapFloorOptionlet as optionlet{withGenInstrument*`CapFloor',fromIntegral`Word' -- ^n
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}

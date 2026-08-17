@@ -189,14 +189,17 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
 {#fun qlLegStartDate as startDate{withLeg*`GenLeg l',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
 -- |return cashflows that will occur after /settlementDate/
 {#fun qlNextCashFlows as nextCashFlows{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |return cashflows that occurred before /settlementDate/
 {#fun qlPreviousCashFlows as previousCashFlows{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Raw binding for 'cashFlows': dates, amounts, and whether each has occurred as of /settlementDate/.
 {#fun qlLegCashFlows{withLeg*`GenLeg l',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
@@ -216,34 +219,42 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Number of days in the accrual period of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsAccrualDays as accrualDays{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Int'#}
+
 -- |End of the accrual period of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsAccrualEndDate as accrualEndDate{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
+
 -- |Length, in years, of the accrual period of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsAccrualPeriod as accrualPeriod{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Start of the accrual period of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsAccrualStartDate as accrualStartDate{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
+
 -- |Accrued amount of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsAccruedAmount as accruedAmount{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Number of days accrued so far on the coupon paying on /settlementDate/.
 {#fun qlCashFlowsAccruedDays as accruedDays{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Int'#}
+
 -- |Fraction of the accrual period elapsed, as of /settlementDate/, for the coupon paying then.
 {#fun qlCashFlowsAccruedPeriod as accruedPeriod{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Basis-point value, as 'basisPointValue'' but taking a plain yield\/day counter\/compounding\/frequency
 -- instead of an 'InterestRate'.
 {#fun qlCashFlowsBasisPointValue1 as basisPointValue{withLeg*`GenLeg l',`Double'
@@ -252,6 +263,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Basis-point value.
 -- Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion.
 {#fun qlCashFlowsBasisPointValue as basisPointValue'{withLeg*`GenLeg l',withInterestRate*`InterestRate'
@@ -259,6 +271,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
 {#fun qlCashFlowsBps1 as bpsFromYield'{withLeg*`GenLeg l',withInterestRate*`InterestRate'
@@ -266,6 +279,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Basis-point sensitivity, as 'bpsFromYield'' but taking a plain yield\/day counter\/compounding\/frequency
 -- instead of an 'InterestRate'.
 {#fun qlCashFlowsBps2 as bpsFromYield{withLeg*`GenLeg l',`Double'
@@ -273,6 +287,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Cash-flow convexity, as 'convexity'' but taking a plain yield\/day counter\/compounding\/frequency
 -- instead of an 'InterestRate'.
 {#fun qlCashFlowsConvexity1 as convexity{withLeg*`GenLeg l',`Double'
@@ -280,6 +295,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
     ,withMaybeDay*`Maybe Day' -- ^settlementDate
     ,withMaybeDay*`Maybe Day' -- ^npvDate
     ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Cash-flow convexity.
 -- The convexity of a string of cash flows is defined as \[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.
 {#fun qlCashFlowsConvexity as convexity'{withLeg*`GenLeg l',withInterestRate*`InterestRate'
@@ -287,6 +303,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Cash-flow duration, as 'duration' but taking a plain yield\/day counter\/compounding\/frequency
 -- instead of an 'InterestRate'.
 {#fun qlCashFlowsDuration1 as duration'{withLeg*`GenLeg l',`Double'
@@ -295,34 +312,42 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Whether every cash flow in the leg has occurred as of /settlementDate/.
 {#fun qlCashFlowsIsExpired as isExpired{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |Date of the leg's last cash flow.
 {#fun qlCashFlowsMaturityDate as maturityDate{withLeg*`GenLeg l',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
 -- |Amount of the first cash flow paying after /settlementDate/.
 {#fun qlCashFlowsNextCashFlowAmount as nextCashFlowAmount{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Date of the first cash flow paying after /settlementDate/.
 {#fun qlCashFlowsNextCashFlowDate as nextCashFlowDate{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+
 -- |Coupon rate of the next cash flow paying after /settlementDate/.
 {#fun qlCashFlowsNextCouponRate as nextCouponRate{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Nominal of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsNominal as nominal{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the cash flows.
 -- The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
 {#fun qlCashFlowsNpv1 as npvFromYield'{withLeg*`GenLeg l',withInterestRate*`InterestRate',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the cash flows, as 'npvFromYield'' but taking a plain yield\/day counter\/compounding\/frequency
 -- instead of an 'InterestRate'.
 {#fun qlCashFlowsNpv2 as npvFromYield{withLeg*`GenLeg l',`Double'
@@ -330,6 +355,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |At-the-money rate of the cash flows.
 -- The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector's NPV is used instead.
 {#fun qlCashFlowsAtmRate as atmRate{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
@@ -337,12 +363,14 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,`Double' -- ^npv
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
 {#fun qlCashFlowsBps as bps{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
 {#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^zSpread
@@ -350,18 +378,21 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV of the cash flows.
 -- The NPV is the sum of the cash flows, each discounted according to the given term structure.
 {#fun qlCashFlowsNpv as npv{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |NPV and BPS of the cash flows.
 -- The NPV and BPS of the cash flows calculated together for performance reason
 {#fun qlCashFlowsNpvbps as npvbps{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
   ,withDay*`Day' -- ^settlementDate
   ,withDay*`Day' -- ^npvDate
   ,prePtr-`Double'peekDouble*,prePtr-`Double'peekDouble*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |implied Z-spread.
 {#fun qlCashFlowsZSpread as zSpread{withLeg*`GenLeg l',`Double' -- ^npv
   ,withYieldTermStructure*`GenYieldTermStructure y',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
@@ -371,26 +402,32 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,fromIntegral`Word' -- ^maxIterations
   ,`Double' -- ^guess
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Amount of the last cash flow that paid before or at /settlementDate/.
 {#fun qlCashFlowsPreviousCashFlowAmount as previousCashFlowAmount{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Date of the last cash flow that paid before or at /settlementDate/.
 {#fun qlCashFlowsPreviousCashFlowDate as previousCashFlowDate{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Maybe Day'toMaybeDay#}
+
 -- |Coupon rate of the last cash flow that paid before or at /settlementDate/.
 {#fun qlCashFlowsPreviousCouponRate as previousCouponRate{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |End of the reference period of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsReferencePeriodEnd as referencePeriodEnd{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
+
 -- |Start of the reference period of the coupon paying on /settlementDate/.
 {#fun qlCashFlowsReferencePeriodStart as referencePeriodStart{withLeg*`GenLeg l',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
+
 -- |Implied internal rate of return.
 -- The function verifies the theoretical existance of an IRR and numerically establishes the IRR to the desired precision.
 {#fun qlCashFlowsYield as yield{withLeg*`GenLeg l',`Double' -- ^npv
@@ -401,6 +438,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,fromIntegral`Word' -- ^maxIterations
   ,`Double' -- ^guess
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Yield value of a basis point, as 'yieldValueBasisPoint'' but taking a plain
 -- yield\/day counter\/compounding\/frequency instead of an 'InterestRate'.
 {#fun qlCashFlowsYieldValueBasisPoint1 as yieldValueBasisPoint{withLeg*`GenLeg l',`Double' -- ^yield
@@ -408,6 +446,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Yield value of a basis point.
 -- The yield value of a one basis point change in price is the derivative of the yield with respect to the price multiplied by 0.01
 {#fun qlCashFlowsYieldValueBasisPoint as yieldValueBasisPoint'{withLeg*`GenLeg l',withInterestRate*`InterestRate' -- ^yield
@@ -415,27 +454,33 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |start of the accrual periods for a coupon leg
 {#fun qlCouponAccrualStartDates as couponAccrualStartDates{withGenLeg*`CouponLeg',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Predetermined cash flow paying a fixed /amount/ at /date/.
 {#fun qlFixedDividend as fixedDividend{`Double' -- ^amount
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
+
 -- |Predetermined cash flow paying /rate/ times /nominal/ at /date/.
 {#fun qlFractionalDividend1 as fractionalDividend'{`Double' -- ^rate
   ,`Double' -- ^nominal
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
+
 -- |Predetermined cash flow paying a fractional /rate/ of the underlying's price at /date/.
 {#fun qlFractionalDividend as fractionalDividend{`Double' -- ^rate
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
+
 -- |Build a leg of average-BMA coupons.
 {#fun qlAverageBMALeg as averageBMALeg{withSchedule*`Schedule',withBMAIndex*`BMAIndex'
   ,withDoubleArray*`[Double]'& -- ^notionals
   ,withDayCounter*`DayCounter',`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Build a leg of fixed-rate coupons.
 {#fun qlFixedRateLeg as fixedRateLeg{withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^notionals
   ,withInterestRateArray*`[InterestRate]'& -- ^couponRates
@@ -443,6 +488,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |iborLeg keeps its original 12-arg signature -- existing callers are unaffected -- but
 -- now delegates to iborLeg_, the raw binding widened to IborLeg's full builder surface,
 -- hardcoding upstream's own defaults for the params iborLeg doesn't expose. Use
@@ -525,11 +571,13 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^exCouponEndOfMonth
   ,`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Build a leg of overnight-index coupons.
 {#fun qlOvernightLeg as overnightLeg{withSchedule*`Schedule',withOvernightIborIndex*`OvernightIborIndex',withDoubleArray*`[Double]'& -- ^notionals'
   ,withDayCounter*`DayCounter',`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Build a leg of range-accrual floating-rate coupons.
 {#fun qlRangeAccrualLeg as rangeAccrualLeg{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withDoubleArray*`[Double]'& -- ^notionals
   ,withDayCounter*`DayCounter',`BusinessDayConvention',withIntArray*`[Word]'& -- ^fixingDays
@@ -539,6 +587,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withDoubleArray*`[Double]'& -- ^upperTriggers
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^observationTenor
   ,`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
 -- (a 'CPICoupon' leg -- caps/floors are not exposed, see README.md's TODO).
 {#fun qlCPILeg as cpiLeg{withSchedule*`Schedule',withZeroInflationIndex*`ZeroInflationIndex'
@@ -552,6 +601,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,`Bool' -- ^subtractInflationNominal
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg -- caps/floors are not
 -- exposed, see README.md's TODO).
 {#fun qlYoYInflationLeg as yoyInflationLeg{withSchedule*`Schedule',withCalendar*`Calendar'
@@ -581,10 +631,13 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withDay*`Day' -- ^paymentDate
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`ZeroInflationCashFlow'peekZeroInflationCashFlow*#}
+
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
 {#fun qlZeroInflationCashFlowAmount as zeroInflationCashFlowAmount{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Fixing used as the base of the ratio (as of /startDate/, lagged).
 {#fun qlZeroInflationCashFlowBaseFixing as zeroInflationCashFlowBaseFixing{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Fixing used as the numerator of the ratio (as of /endDate/, lagged).
 {#fun qlZeroInflationCashFlowIndexFixing as zeroInflationCashFlowIndexFixing{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -600,10 +653,13 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withDay*`Day' -- ^paymentDate
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`CPICashFlow'peekCPICashFlow*#}
+
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
 {#fun qlCPICashFlowAmount as cpiCashFlowAmount{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Fixing used as the base of the ratio: the explicit /baseFixing/ if given at construction, else derived from /baseDate/.
 {#fun qlCPICashFlowBaseFixing as cpiCashFlowBaseFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Fixing used as the numerator of the ratio (as of /observationDate/, lagged).
 {#fun qlCPICashFlowIndexFixing as cpiCashFlowIndexFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -619,13 +675,17 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withDay*`Day' -- ^paymentDate
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`EquityCashFlow'peekEquityCashFlow*#}
+
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly --
 -- or, if a pricer is attached, the notional times the pricer's 'price'.
 {#fun qlEquityCashFlowAmount as equityCashFlowAmount{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Fixing used as the base of the ratio (as of /baseDate/).
 {#fun qlEquityCashFlowBaseFixing as equityCashFlowBaseFixing{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Fixing used as the numerator of the ratio (as of /fixingDate/).
 {#fun qlEquityCashFlowIndexFixing as equityCashFlowIndexFixing{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Attach a pricer (e.g. from 'equityQuantoCashFlowPricer') to a single 'EquityCashFlow'; see
 -- 'setEquityLegPricer' to attach one to every 'EquityCashFlow' in a leg instead.
 {#fun qlEquityCashFlowSetPricer as setEquityCashFlowPricer{withEquityCashFlow*`EquityCashFlow',withEquityCashFlowPricer*`EquityCashFlowPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -637,6 +697,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withBlackVolTermStructure*`GenBlackVolTermStructure bv2' -- ^fxVolatility
   ,withQuote*`GenQuote q' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`EquityCashFlowPricer'peekEquityCashFlowPricer*#}
+
 -- |Attach a pricer to every 'EquityCashFlow' found in /leg/ (non-'EquityCashFlow' entries are left
 -- untouched); see 'setEquityCashFlowPricer' to attach one to a single cash flow instead.
 {#fun qlQuantLibSetEquityCashFlowPricer as setEquityLegPricer{withLeg*`GenLeg l',withEquityCashFlowPricer*`EquityCashFlowPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -656,6 +717,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withMaybeQuote*`Maybe (GenQuote q)' -- ^correlation
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupon
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
 -- |BGM-based pricer for 'RangeAccrualFloatersCoupon's (a 'rangeAccrualLeg')
 {#fun qlRangeAccrualPricerByBgm as rangeAccrualPricerByBgm{`Double' -- ^correlation
   ,withSmileSection*`SmileSection' -- ^smilesOnExpiry
@@ -663,15 +725,19 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^withSmile
   ,`Bool' -- ^byCallSpread
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
 -- |Set the pricer of every floating-rate coupon in /leg/.
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg l',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Set the pricer of every floating-rate coupon in /leg/, picking each coupon's pricer from
 -- /pricers/ by matching coupon type.
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), using an analytic
 -- closed-form approximation of the replication integrals.
 {#fun qlAnalyticHaganPricer as analyticHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',`YieldCurveModel',withQuote*`GenQuote q' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), evaluating the
 -- replication integrals by numerical integration over vanilla swaption prices.
 {#fun qlNumericHaganPricer as numericHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',`YieldCurveModel',withQuote*`GenQuote q' -- ^meanReversion

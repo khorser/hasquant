@@ -58,10 +58,13 @@ import Foreign.Marshal.Array(peekArray)
 
 -- |Returns the net present value of the given Instrument
 {#fun qlInstrumentNPV as npv{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns the error estimate on the NPV when available.
 {#fun qlInstrumentErrorEstimate as errorEstimate{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |returns whether the instrument might have value greater than zero.
 {#fun qlInstrumentIsExpired as isExpired{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
 -- |returns the date the net present value refers to.
 {#fun qlInstrumentValuationDate as valuationDate{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
@@ -135,6 +138,7 @@ composite = (uncurry qlCompositeInstrument) . unzip
 {#fun qlCompositeInstrument{withInstrumentArray*`[GenInstrument i]'& -- ^instruments
   ,withDoubleArray*`[Double]'& -- ^multipliers
   ,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+
 -- |Sets the pricing engine used to compute the instrument's results.
 {#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`GenInstrument i',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
