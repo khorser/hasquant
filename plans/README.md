@@ -41,4 +41,4 @@ Every subplan's execution must satisfy all of the following before it's marked `
 
 ## Project convention established during planning
 
-The options-record threshold (widen-in-place vs. TH-generated options record) is **10 trailing defaulted parameters**, lower than CLAUDE.md's currently-written "~19+". `gap-06` is tasked with updating CLAUDE.md's "Wide constructors" bullet to reflect this — until that edit lands, trust this number over the written one.
+The options-record threshold (widen-in-place vs. TH-generated options record) is **10 trailing defaulted parameters**. CLAUDE.md's "Wide constructors" bullet and the `add-quantlib-options-record` skill now both state this; they are the authority, this line is just the record of where it came from.

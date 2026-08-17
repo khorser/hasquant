@@ -1,11 +1,11 @@
 ---
 name: add-quantlib-options-record
-description: Bind a QuantLib constructor or method that has a very long list of trailing defaulted parameters (OISRateHelper-scale, ~19+) by adding a second, full-arity entry point whose trailing params are bundled into a TH-generated options record. Use when a binding to widen has far more optional parameters than the usual handful, or when asked about deriveOptionsRecord, default<Name> records, or a wide-arity constructor.
+description: Bind a QuantLib constructor or method that has a long list of trailing defaulted parameters (more than 10, OISRateHelper-scale) by adding a second, full-arity entry point whose trailing params are bundled into a TH-generated options record. Use when a binding to widen has far more optional parameters than the usual handful, or when asked about deriveOptionsRecord, default<Name> records, or a wide-arity constructor.
 ---
 
 ## When this applies
 
-Only for a **genuinely wide** trailing-defaulted-param list — roughly `OISRateHelper`-scale, ~19+ params, not a handful. For the common case, widen the existing narrow binding in place (see [[add-quantlib-method]]'s "one full-arity shim, not two"); every defaulted param just becomes a required Haskell argument.
+Only for a **genuinely wide** trailing-defaulted-param list — past **10** trailing defaulted params (`OISRateHelper`-scale), not a handful. `AmortizingFloatingRateBond`'s 14-param options record and `AmortizingFixedRateBond`'s 8-param widen-in-place, both in `QuantLib/Instrument/Bond.chs`, are the pair this threshold was calibrated against. For the common case, widen the existing narrow binding in place (see [[add-quantlib-method]]'s "one full-arity shim, not two"); every defaulted param just becomes a required Haskell argument.
 
 At `OISRateHelper` scale that stops working: the call site becomes an unreadable wall of positional defaults, and every existing caller breaks. So instead: **leave the narrow binding's signature untouched** and add a *second*, full-arity entry point taking an options record.
 

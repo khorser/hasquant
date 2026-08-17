@@ -1075,7 +1075,7 @@ spec = do
 
     -- SabrSwaptionVolatilityCube/InterpolatedSwaptionVolatilityCube: no upstream cached fixture
     -- ported here (test-suite/swaptionvolatilitycube.cpp's CommonVars fixture is shared, nontrivial
-    -- hand-work disproportionate to this item -- see plans/gap-12). Self-consistency checks
+    -- hand-work disproportionate to this item). Self-consistency checks
     -- instead: a zero-vol-spread cube should reprice close to its own flat ATM input (SABR
     -- calibration is a least-squares fit, not exact recovery, so the tolerance here is much looser
     -- than the exact-grid-recovery checks above), and the diagnostic getters should report

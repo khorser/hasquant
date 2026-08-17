@@ -342,8 +342,8 @@ spec = do
         -- Ports the first case (termDate=20 Jun 2010, spread=0.001, recovery=0.2) of
         -- upstream's testIsdaEngine (test-suite/creditdefaultswap.cpp), a real ISDA-fixture
         -- test with cached Markit-published upfront values, rather than falling back to a
-        -- self-consistency check -- see gap-07's plan for why each builder default below
-        -- was transcribed from ql/instruments/makecds.cpp.
+        -- self-consistency check. Each builder default below was transcribed from
+        -- ql/instruments/makecds.cpp.
         (IsdaCdsExample.Result upfront) <- Settings.keepingSettings' IsdaCdsExample.run
         upfront `shouldSatisfy` closePrec (-97798.29358) 0.1
 
