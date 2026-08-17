@@ -6,6 +6,9 @@ cradle:
     - path: "main/exe/QuantLib/MainExample.hs"
       component: "hasquant:exe:hasquant_example"
 
+    - path: "example"
+      component: "hasquant:exe:hasquant_example"
+
     - path: "main/test/QuantLib/MainTest.hs"
       component: "hasquant:test:hasquant_test"
 

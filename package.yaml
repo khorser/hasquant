@@ -114,6 +114,7 @@ tests:
     main: QuantLib/MainTest.hs
     source-dirs:
       - test
+      - example
       - main/test
     dependencies:
       - hasquant
@@ -125,7 +126,7 @@ executables:
   hasquant_example:
     main: QuantLib/MainExample.hs
     source-dirs:
-      - test
+      - example
       - main/exe
     dependencies:
       - hasquant

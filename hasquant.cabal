@@ -157,7 +157,7 @@ executable hasquant_example
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
-      test
+      example
       main/exe
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
@@ -176,6 +176,14 @@ test-suite hasquant_test
   type: exitcode-stdio-1.0
   main-is: QuantLib/MainTest.hs
   other-modules:
+      QuantLib.Spec.Calendars
+      QuantLib.Spec.CurrencyAndDayCounter
+      QuantLib.Spec.DatesAndSchedule
+      QuantLib.Spec.Examples
+      QuantLib.Spec.Helpers
+      QuantLib.Spec.InterestRateAndCashFlow
+      QuantLib.Spec.Syntax
+      QuantLib.Spec.TermStructure
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -198,19 +206,12 @@ test-suite hasquant_test
       QuantLib.Example.Swap
       QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
-      QuantLib.Spec.Calendars
-      QuantLib.Spec.CurrencyAndDayCounter
-      QuantLib.Spec.DatesAndSchedule
-      QuantLib.Spec.Examples
-      QuantLib.Spec.Helpers
-      QuantLib.Spec.InterestRateAndCashFlow
-      QuantLib.Spec.Syntax
-      QuantLib.Spec.TermStructure
       Paths_hasquant
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
       test
+      example
       main/test
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
