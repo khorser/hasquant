@@ -90,6 +90,8 @@ import QuantLib.Internal.Type
 -- |The (possibly forecast) fixing at the given date; for a date with no linked term
 -- structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
 {#fun qlZeroInflationIndexFixing as fixing{withZeroInflationIndex*`ZeroInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
+-- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
 {#fun qlYoYInflationIndexFixing as yoyFixing{withYoYInflationIndex*`YoYInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

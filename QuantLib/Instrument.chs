@@ -131,7 +131,11 @@ peekAdditionalResults = peekStructArray convertResult (\l p -> qlFreeAdditionalR
 
 composite :: [(Instrument, Double)] -> IO Instrument
 composite = (uncurry qlCompositeInstrument) . unzip
-{#fun qlCompositeInstrument{withInstrumentArray*`[GenInstrument i]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+-- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
+{#fun qlCompositeInstrument{withInstrumentArray*`[GenInstrument i]'& -- ^instruments
+  ,withDoubleArray*`[Double]'& -- ^multipliers
+  ,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+-- |Sets the pricing engine used to compute the instrument's results.
 {#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`GenInstrument i',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -30,7 +30,9 @@ import QuantLib.Internal.Type
 {#enum Compounding{} deriving(Show, Eq)#}
 {#enum VolatilityType{} deriving(Show, Eq)#}
 
-{#fun qlInterestRate as interestRate{`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+-- |construct an interest rate from a rate value, a day counter, a compounding convention and a frequency.
+{#fun qlInterestRate as interestRate{`Double' -- ^r
+  ,withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 -- |compound factor implied by the rate compounded between two dates
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
 {#fun qlInterestRateCompoundFactor1 as compoundFactor'{withInterestRate*`InterestRate',withDay*`Day' -- ^d1
@@ -76,6 +78,7 @@ import QuantLib.Internal.Type
 {#fun qlInterestRateImpliedRate as impliedRate{withInterestRate*`InterestRate',`Double' -- ^compound
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+-- |the rate value of an interest rate.
 {#fun pure qlInterestRateRate as rate{withInterestRate*`InterestRate'}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

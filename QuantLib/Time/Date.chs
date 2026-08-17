@@ -111,6 +111,7 @@ november d y = fromGregorian (fromIntegral y) 11 d
 december :: Int -> Int -> Day
 december d y = fromGregorian (fromIntegral y) 12 d
 
+-- |the day of the week for the given date
 {#fun qlWeekday as weekday{withDay*`Day'}->`Weekday'#}
 
 today :: IO Day
@@ -160,7 +161,9 @@ today = do
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 {#fun qlIMMNextDate as nextIMMDate{withDay*`Day',`Bool' -- ^mainCycle
   }->`Day'toDay#}
+-- |the given date advanced by a period
 {#fun qlAddPeriod as addPeriod{withDay*`Day',fromEnumQuantity`Int,TimeUnit'&,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+-- |adds a date to the set of known ECB maintenance period start dates
 {#fun qlECBAddDate as addECBDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).Warning It raises an exception if the input date is not an ECB date
 {#fun qlECBCode as ecbCode{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
@@ -172,6 +175,7 @@ today = do
 {#fun qlECBIsECBcode as isECBCode{`String',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 -- |returns whether or not the given date is a maintenance period start date
 {#fun qlECBIsECBdate as isECBDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+-- |the set of known ECB maintenance period start dates
 {#fun qlECBKnownDates as knownECBDates{preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |next ECB code following the given code
 {#fun qlECBNextCode1 as nextECBCode'{`String',preErrorCheck-`String'errorCheck*-}->`String'#}
@@ -183,7 +187,9 @@ today = do
 {#fun qlECBNextDate as nextECBDate{withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 -- |next maintenance period start dates following the given code
 {#fun qlECBNextDates1 as nextECBDates'{`String',withMaybeDay*`Maybe Day',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |next maintenance period start dates following the given date
 {#fun qlECBNextDates as nextECBDates{withMaybeDay*`Maybe Day',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |removes a date from the set of known ECB maintenance period start dates
 {#fun qlECBRemoveDate as removeECBDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

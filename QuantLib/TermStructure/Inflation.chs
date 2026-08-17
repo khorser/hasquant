@@ -79,6 +79,8 @@ piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Frequency -> DayCounter -> [ZeroCouponInflationSwapHelper] -> Interpolation
   -> IO ZeroInflationTermStructure
 piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflationCurve r b f dc h) (qlInterpolation i)
+-- |Bootstraps a zero-inflation term structure piecewise from a set of helpers, interpolating
+-- between the bootstrapped nodes with the given 'Interpolation'.
 {#fun qlPiecewiseZeroInflationCurve{withDay*`Day',withDay*`Day',`Frequency',withDayCounter*`DayCounter'
   ,withZeroCouponInflationSwapHelperArray*`[ZeroCouponInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
@@ -89,6 +91,8 @@ piecewiseYoYInflationCurve :: Day -- ^referenceDate
   -> Frequency -> DayCounter -> [YearOnYearInflationSwapHelper] -> Interpolation
   -> IO YoYInflationTermStructure
 piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc h) (qlInterpolation i)
+-- |Bootstraps a year-on-year inflation term structure piecewise from a set of helpers,
+-- interpolating between the bootstrapped nodes with the given 'Interpolation'.
 {#fun qlPiecewiseYoYInflationCurve{withDay*`Day',withDay*`Day',`Double',`Frequency',withDayCounter*`DayCounter'
   ,withYearOnYearInflationSwapHelperArray*`[YearOnYearInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}

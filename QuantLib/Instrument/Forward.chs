@@ -46,6 +46,7 @@ import QuantLib.Internal.Type
 {#pointer *QlFxForward as FxForward foreign -> CFxForward' nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
 
+-- |FRA with a par-rate approximation: the forward rate is forecast from valueDate to maturityDate by the index's forecast curve (useIndexedCoupon=false).
 {#fun qlForwardRateAgreement as forwardRateAgreement{withIborIndex*`GenIborIndex ibor'
   ,withDay*`Day' -- ^valueDate
   ,withDay*`Day' -- ^maturityDate
@@ -74,6 +75,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^forwarValue
   ,withDay*`Day' -- ^settlementDate
   ,`Compounding',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+-- |Date on which the forward contract settles.
 {#fun qlForwardSettlementDate as settlementDate{withForward*`GenForward f',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 -- |NPV of income/dividends/storage-costs etc. of underlying instrument.
 {#fun qlForwardSpotIncome as spotIncome{withForward*`GenForward f',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}

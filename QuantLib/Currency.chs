@@ -48,12 +48,20 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
 {#pointer *ExchangeRate foreign -> CExchangeRate nocode#}
 
+-- |Look up one of the built-in ISO 4217 currencies by its enum tag.
 {#fun qlCurrency as currency{`Ccy',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+-- |The currency's ISO 4217 three-letter code, e.g. \"USD\".
 {#fun pure qlCurrencyCode as code{withCurrency*`Currency'}->`String'peekDynString*#}
+-- |The number of fractional units (e.g. cents) in one unit of the currency.
 {#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit{withCurrency*`Currency'}->`Int'#}
+-- |The currency's fractional-unit symbol, e.g. \"¢\".
 {#fun pure qlCurrencyFractionSymbol as fractionSymbol{withCurrency*`Currency'}->`String'#}
+-- |The currency's ISO 4217 numeric code, e.g. 840 for USD.
 {#fun pure qlCurrencyNumericCode as code'{withCurrency*`Currency'}->`Int'#}
+-- |The currency's symbol, e.g. \"$\".
 {#fun pure qlCurrencySymbol as symbol{withCurrency*`Currency'}->`String'#}
+-- |Construct a custom currency from its name, codes, symbols, rounding convention and an
+-- optional triangulation currency used for indirect exchange.
 {#fun qlCreateCurrency as currency'{`String' -- ^name
   ,`String' -- ^code
   ,`Int' -- ^numericCode
@@ -70,7 +78,9 @@ import Foreign.Marshal.Alloc(alloca)
   ,withCurrency*`Currency' -- ^target
   ,`Double' -- ^rate
   }->`ExchangeRate'peekExchangeRate*#}
+-- |The rate itself: a unit of the source currency is worth this many units of the target.
 {#fun qlExchangeRateRate as rate{withExchangeRate*`ExchangeRate'}->`Double'#}
+-- |Whether the rate was given directly or derived by chaining two other rates.
 {#fun qlExchangeRateType_ as exchangeRateType{withExchangeRate*`ExchangeRate'}->`ExchangeRateType'#}
 -- |Apply an exchange rate to a cash amount (a @(Double, Currency)@ pair, standing in for
 -- QuantLib's @Money@), returning the converted amount as a pair in the other currency of the
@@ -103,9 +113,14 @@ import Foreign.Marshal.Alloc(alloca)
 -- discarding anything added via 'addExchangeRate'.
 {#fun qlExchangeRateManagerClear as clearExchangeRates{}->`()'#}
 
+-- |The global 'Money' arithmetic setting controlling how amounts in different currencies are
+-- combined (no conversion, convert to the base currency, or convert automatically).
 {#fun qlMoneySettingsConversionType as moneyConversionType{}->`MoneyConversionType'#}
+-- |Set the global 'Money' arithmetic conversion setting.
 {#fun qlMoneySettingsSetConversionType as setMoneyConversionType{`MoneyConversionType'}->`()'#}
+-- |The global base currency used by 'MoneyConversionType' base-currency conversion, if set.
 {#fun qlMoneySettingsBaseCurrency as moneyBaseCurrency{}->`Maybe Currency'peekMaybeCurrency*#}
+-- |Set the global base currency used by 'MoneyConversionType' base-currency conversion.
 {#fun qlMoneySettingsSetBaseCurrency as setMoneyBaseCurrency{withCurrency*`Currency'}->`()'#}
 -- |Convert a cash amount to the configured base currency (via 'setMoneyBaseCurrency'), using
 -- 'lookupExchangeRate' and rounding the result per the target currency's convention. Throws if

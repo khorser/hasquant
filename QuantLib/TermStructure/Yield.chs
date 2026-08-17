@@ -213,7 +213,9 @@ $(deriveOptionsRecord "IterativeBootstrapOpts" []
 nullableDouble :: Maybe Double -> Double
 nullableDouble = realToFrac . fromMaybeDouble
 
+-- |Rate helper for bootstrapping over deposit rates, taking its conventions from an ibor index.
 {#fun qlDepositRateHelper1 as depositRateHelper'{withQuote*`GenQuote q',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over deposit rates.
 {#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote q' -- ^rate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
@@ -221,7 +223,15 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
-{#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote q',fromIntegral`Word',`Double',withSchedule*`Schedule',withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`BusinessDayConvention',`Double',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
+-- |Fixed-coupon bond helper for curve bootstrap: builds the underlying bond internally from a
+-- schedule and coupons (unlike 'bondHelper', which takes an existing 'Bond').
+{#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote q',fromIntegral`Word' -- ^settlementDays
+  ,`Double' -- ^faceAmount
+  ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
+  ,withDayCounter*`DayCounter',`BusinessDayConvention' -- ^paymentConvention
+  ,`Double' -- ^redemption
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 -- |Bootstrap helper for a 'QuantLib.Instrument.Bond.CPIBond' -- a 'CPIBondHelper', which is a
 -- plain 'BondHelper' subclass with no extra methods, so it's returned as the generic
 -- 'BondHelper' type (same shape as 'fixedRateBondHelper').
@@ -243,6 +253,9 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,withDay*`Day' -- ^d
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Rate helper for bootstrapping over swap rates, built from explicit tenor\/calendar\/
+-- frequency\/day-count\/index conventions rather than a 'GenSwapIndex' bundling them
+-- (as 'swapRateHelper' does).
 {#fun qlSwapRateHelper1 as swapRateHelper'{withQuote*`GenQuote q1' -- ^rate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,withCalendar*`Calendar' -- ^calendar
@@ -261,7 +274,10 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^floatConvention
   ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^couponPricer
   ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+-- |Flat interest-rate curve with a fixed reference date.
 {#fun qlFlatForward as flatForward{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+-- |Flat interest-rate curve whose reference date moves with the evaluation date, offset by
+-- 'settlementDays' on 'calendar'.
 {#fun qlFlatForward1 as flatForward'{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 -- |The resulting interest rate has the required daycounting rule.
@@ -287,6 +303,7 @@ nullableDouble = realToFrac . fromMaybeDouble
 {#fun qlYieldTermStructureDiscount1 as discount{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |Rate helper for bootstrapping over FRA rates.
 {#fun qlFraRateHelper as fraRateHelper{withQuote*`GenQuote q' -- ^rate
   ,fromIntegral`Word' -- ^monthsToStart
   ,fromIntegral`Word' -- ^monthsToEnd
@@ -521,20 +538,32 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
     (oisApplyObservationShift opts) (oisPricer opts) (oisRule opts)
     (fromMaybe cal (oisOvernightCalendar opts)) (oisConvention opts)
 
-{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote q1',withSwapIndex*`GenSwapIndex sidx',withMaybeQuote*`Maybe (GenQuote q2)',fromEnumQuantity`(Int,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)'
+-- |Rate helper for bootstrapping over swap rates, built from a 'GenSwapIndex' bundling the
+-- swap's conventions.
+{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote q1' -- ^rate
+  ,withSwapIndex*`GenSwapIndex sidx',withMaybeQuote*`Maybe (GenQuote q2)' -- ^spread
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,`Bool' -- ^endOfMonth
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
   ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^couponPricer
   ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+-- |A yield curve offset from 'baseCurve' by a spread added to its instantaneous forward rate,
+-- remaining linked to changes in either.
 {#fun qlForwardSpreadedTermStructure as forwardSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+-- |A yield curve offset from 'baseCurve' by a spread added to its zero-yield rate, remaining
+-- linked to changes in either.
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+-- |Rate helper for bootstrapping over BMA swap rates.
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote q' -- ^liborFraction
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDAys
   ,withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^bmpPeriod
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping from multiple-resets swap quotes (a floating leg that resets
+-- several times per fixed-leg coupon period).
 {#fun qlMultipleResetsSwapRateHelper as multipleResetsSwapRateHelper{fromIntegral`Word' -- ^settlementDays
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,withQuote*`GenQuote q1' -- ^fixedRate
@@ -547,12 +576,16 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
   ,`BusinessDayConvention' -- ^fixedConvention
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over FRA rates, taking its fixing/day-count conventions from an
+-- ibor index instead of explicit 'Calendar'\/'BusinessDayConvention'\/'DayCounter' arguments.
 {#fun qlFraRateHelper1 as fraIborRateHelper'{withQuote*`GenQuote q',fromIntegral`Word' -- ^monthsToStart
   ,withIborIndex*`GenIborIndex ibor'
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,`Bool' -- ^useIndexedCoupon
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over FRA rates, with the FRA period given as a start\/length
+-- pair rather than 'fraRateHelper''s monthsToStart\/monthsToEnd.
 {#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote q',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
   ,fromIntegral`Word' -- ^lengthInMonths
   ,fromIntegral`Word' -- ^fixingDays
@@ -562,25 +595,33 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,`Bool' -- ^useIndexedCoupon
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over FRA rates, taking its conventions from an ibor index and
+-- the FRA period as a start\/length pair.
 {#fun qlFraRateHelper3 as fraIborRateHelper{withQuote*`GenQuote q',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
   ,withIborIndex*`GenIborIndex ibor'
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,`Bool' -- ^useIndexedCoupon
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over IborIndex futures prices, given explicit start\/end dates.
 {#fun qlFuturesRateHelper1 as futuresRateHelper'{withQuote*`GenQuote q1',withDay*`Day' -- ^immStartDate
   ,withDay*`Day' -- ^endDate
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
   ,`FuturesType' -- ^type
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over IborIndex futures prices, taking its conventions from an
+-- ibor index.
 {#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^immDate
   ,withIborIndex*`GenIborIndex ibor',withMaybeQuote*`Maybe (GenQuote q2)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over IborIndex futures prices, given explicit
+-- calendar\/convention\/day-counter conventions.
 {#fun qlFuturesRateHelper as futuresRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^immDate
   ,fromIntegral`Word' -- ^lengthInMonths
   ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
   ,`FuturesType' -- ^type
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over overnight-index compounding futures.
 {#fun qlOvernightIndexFutureRateHelper as overnightIndexFutureRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^valueDate
   ,withDay*`Day' -- ^maturityDate
   ,withOvernightIborIndex*`OvernightIborIndex'
@@ -589,6 +630,9 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |Rate helper for bootstrapping over CME SOFR futures. Compounds overnight SOFR from the third
+-- Wednesday of 'referenceMonth'\/'referenceYear' (inclusive) to the third Wednesday of the
+-- following month or quarter (exclusive), per 'referenceFreq'.
 {#fun qlSofrFutureRateHelper as sofrFutureRateHelper{withQuote*`GenQuote q1',`Month' -- ^referenceMonth
   ,fromIntegral`Int' -- ^referenceYear
   ,`Frequency' -- ^referenceFreq
@@ -596,16 +640,25 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |The quote value implied by the current bootstrapped state of the curve the helper was
+-- last used against, i.e. what the helper's own market quote would need to be to make it
+-- reprice exactly.
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper rh',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |A yield curve identical to 'baseCurve' but reporting a different reference date; observes
+-- and stays linked to 'baseCurve'.
 {#fun qlImpliedTermStructure as impliedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |A yield curve with a vector of zero-yield spreads added to 'baseCurve', interpolated linearly
+-- between the given dates. Remains linked to changes in 'baseCurve' or the spread quotes.
 piecewiseZeroSpreadedTermStructure :: GenYieldTermStructure y
   -> [(Day, GenQuote q)]  -- ^spreads
   -> Compounding -> Frequency -> IO YieldTermStructure
 piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure ts qs ds where (ds, qs) = unzip qd
 {#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Quanto term structure, modelling the quanto effect in option pricing. Stays linked to all
+-- four inputs.
 {#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`GenYieldTermStructure y1' -- ^underlyingDividendTS
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^riskFreeTS
   ,withYieldTermStructure*`GenYieldTermStructure y3' -- ^foreignRsikFreeTS
@@ -616,6 +669,8 @@ piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure 
   ,`Double' -- ^underlyingExchRateCorrelation
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Blends 'originalCurve' with an ultimate forward rate beyond the last liquid point, per the
+-- \"UFR\" methodology used for extrapolating long-dated (e.g. Solvency II) curves.
 {#fun qlUltimateForwardTermStructure as ultimateForwardTermStructure{withYieldTermStructure*`GenYieldTermStructure y' -- ^originalCurve
   ,withQuote*`GenQuote q1' -- ^lastLiquidForwardRate
   ,withQuote*`GenQuote q2' -- ^ultimateForwardRate
@@ -626,6 +681,9 @@ piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure 
   ,`Frequency'
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Term structure bootstrapped to reprice a set of 'instruments', one interpolated segment per
+-- instrument, iteratively (pillar by pillar): each bootstrapped instrument's maturity ends its
+-- own segment, and reprices correctly on the resulting curve. Fixed reference date.
 piecewiseYieldCurve :: Day -- ^referenceDate
   -> [GenRateHelper rh] -- ^instruments
   -> DayCounter -- ^dayCounter
@@ -636,6 +694,8 @@ piecewiseYieldCurve :: Day -- ^referenceDate
 piecewiseYieldCurve d r dc qd t i = uncurryNested (qlPiecewiseYieldCurve d r dc qs ds t) (qlInterpolation i) where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurve{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Like 'piecewiseYieldCurve', but with a reference date that moves with the evaluation date
+-- (settlement days on 'calendar'), and lets extrapolation past the curve's max date be enabled.
 piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [GenRateHelper rh] -- ^instruments
@@ -753,6 +813,7 @@ piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' s cal r dc qd ar ad acc 
   qlPiecewiseYieldCurveGlobalBootstrap3 s cal r dc qs ds ar ad acc ex where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Yield curve interpolating discount factors directly between the given dates.
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
@@ -764,6 +825,7 @@ interpolatedDiscountCurve r dc c qd i = uncurryNested (qlInterpolatedDiscountCur
         (ds, qs) = unzip qd
 {#fun qlInterpolatedDiscountCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Yield curve interpolating instantaneous forward rates directly between the given dates.
 interpolatedForwardCurve :: [(Day, Double)] -- ^dates, forwards
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
@@ -773,6 +835,7 @@ interpolatedForwardCurve :: [(Day, Double)] -- ^dates, forwards
 interpolatedForwardCurve r dc c qd i = uncurryNested (qlInterpolatedForwardCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip r; (ds, qs) = unzip qd}
 {#fun qlInterpolatedForwardCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Yield curve interpolating zero-yield rates directly between the given dates.
 interpolatedZeroCurve :: [(Day, Double)] -- ^dates, yields
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal

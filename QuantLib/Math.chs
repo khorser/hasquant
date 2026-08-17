@@ -62,7 +62,10 @@ import Data.List.NonEmpty(NonEmpty)
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
-{#fun pure qlRound as applyRounding{withRounding*`Rounding',`Double'}->`Double'#}
+-- |rounds a value to the precision and rule carried by the given 'Rounding'
+{#fun pure qlRound as applyRounding{withRounding*`Rounding' -- ^rounding
+  ,`Double' -- ^value
+  }->`Double'#}
 
 -- |Regularly spaced time-grid.
 {#fun qlTimeGrid1 as timeGrid{`Double' -- ^end
@@ -77,9 +80,15 @@ import Data.List.NonEmpty(NonEmpty)
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
 {#fun qlTimeGrid3 as timeGridFromList'{withNonEmptyDoubleArray*`NonEmpty Double'&,fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
+-- |returns the number of times on the grid
 {#fun pure qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
-{#fun qlTimeGridAt as timeAt{withTimeGrid*`TimeGrid',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |returns the time at the given index of the grid
+{#fun qlTimeGridAt as timeAt{withTimeGrid*`TimeGrid' -- ^grid
+  ,fromIntegral`Word' -- ^index
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |returns all the times on the grid, as a list
 {#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |returns all the times on the grid, as a vector
 {#fun qlTimeGridPoints as points'{withTimeGrid*`TimeGrid',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

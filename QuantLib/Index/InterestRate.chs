@@ -234,16 +234,23 @@ iborIndex (DailyTenorLibor n c cr ca dc) ts = qlDailyTenorLibor n c cr ca dc ts
 iborIndex (CustomIbor n p s cr fc vc mc bd b dc) ts = qlCustomIborIndex n p s cr fc vc mc bd b dc ts
 iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 
+-- |Creates the BMA (Bond Market Association) short-term tax-exempt index, optionally linked to a forwarding curve.
 {#fun qlBMAIndex as bmaIndex{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`BMAIndex'peekBMAIndex*#}
 -- |This method returns a schedule of fixing dates between start and end.
 {#fun qlBMAIndexFixingSchedule as fixingSchedule{withBMAIndex*`BMAIndex',withDay*`Day',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 -- |It can be overridden to implement particular conventions.
 {#fun qlInterestRateIndexForecastFixing as forecastFixing{withInterestRateIndex*`GenInterestRateIndex ridx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Returns the index's underlying currency.
 {#fun qlInterestRateIndexCurrency as currency{withInterestRateIndex*`GenInterestRateIndex ridx',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+-- |Returns the day counter used by the index.
 {#fun qlInterestRateIndexDayCounter as dayCounter{withInterestRateIndex*`GenInterestRateIndex ridx',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
+-- |Returns the number of business days between a fixing date and the corresponding value date.
 {#fun pure qlInterestRateIndexFixingDays as fixingDays{withInterestRateIndex*`GenInterestRateIndex ridx'}->`Word'fromIntegral#}
+-- |Returns the index's tenor.
 {#fun qlInterestRateIndexTenor as tenor{withInterestRateIndex*`GenInterestRateIndex ridx',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
+-- |Creates one of the built-in overnight indexes (e.g. Sofr, Estr, Sonia), optionally linked to a forwarding curve.
 {#fun qlCreateONIndex as overnightIborIndex{`OvernightIborIndexType',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
+-- |Creates one of the built-in ISDA-fix swap-rate indexes for a given tenor, with separate forwarding and discounting curves.
 {#fun qlCreateLiborSwapIndex as liborSwapIndex{`LiborSwapIndexType',fromEnumQuantity`(Int,TimeUnit)'&
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y1)' -- ^forwarding
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^discounting
@@ -258,14 +265,17 @@ overnightIndexedSwapIndex :: String -> (Int, TimeUnit) -> Word -> Currency
 overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValueDates averagingMethod =
   overnightIndexedSwapIndex_ familyName tenr settlementDays ccy idx telescopicValueDates (fromEnum averagingMethod)
 
+-- |Low-level glue for 'overnightIndexedSwapIndex': constructs the swap-rate index tracking an overnight-indexed swap, taking the rate-averaging method as a plain Int.
 {#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex_{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withOvernightIborIndex*`OvernightIborIndex'
   ,`Bool' -- ^telescopicValueDates
   ,`Int' -- ^averagingMethod
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwapIndex'peekOvernightIndexedSwapIndex*#}
+-- |Creates a swap-rate index whose forwarding and discounting both come from the underlying ibor index's curve.
 {#fun qlSwapIndex as swapIndex{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^fixedLegTenor
   ,`BusinessDayConvention',withDayCounter*`DayCounter',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
+-- |Creates a swap-rate index with a discounting curve distinct from the forwarding curve of the underlying ibor index.
 {#fun qlSwapIndex1 as swapIndex'{`String' -- ^familyName
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
@@ -274,18 +284,22 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withIborIndex*`GenIborIndex ibor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 
+-- |Low-level glue for 'iborIndex': constructs a generic Inter-Bank-Offered-Rate index, optionally linked to a forwarding curve.
 {#fun qlIborIndex{`String' -- ^familyName
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',`BusinessDayConvention'
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+-- |Low-level glue for 'iborIndex': constructs an ICE LIBOR index (all currencies but EUR/O/N/S/N), optionally linked to a forwarding curve.
 {#fun qlLibor{`String' -- ^familyName
   ,fromEnumQuantity`(Word,TimeUnit)'&,fromIntegral`Word' -- settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+-- |Low-level glue for 'iborIndex': constructs a one-day (O/N-S/N) ICE LIBOR index, optionally linked to a forwarding curve.
 {#fun qlDailyTenorLibor{`String' -- ^familyName
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+-- |Low-level glue for 'iborIndex': constructs a LIBOR-like index with independently specified fixing/value/maturity calendars.
 {#fun qlCustomIborIndex{`String' -- ^familyName
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
@@ -295,12 +309,18 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,`BusinessDayConvention'
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+-- |Low-level glue for 'iborIndex': constructs one of the built-in fixed-tenor/daily-tenor/overnight ibor indexes by ordinal, optionally linked to a forwarding curve.
 {#fun qlCreateIbor{fromIntegral`Int',fromEnumQuantity`(Word,TimeUnit)'&,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+-- |Creates a generic overnight index, optionally linked to a forwarding curve.
 {#fun qlOvernightIndex as overnightIndex{`String',fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
+-- |Returns the business day convention used to adjust the index's value/maturity dates.
 {#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex ibor'}->`BusinessDayConvention'#}
+-- |Returns whether the index's date calculations roll to the end of the month.
 {#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex ibor'}->`Bool'#}
+-- |Returns the overnight-indexed swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
 {#fun qlOvernightIndexedSwapIndexUnderlyingSwap as underlyingOIS {withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+-- |Returns the vanilla swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
 {#fun qlSwapIndexUnderlyingSwap as underlyingSwap{withSwapIndex*`GenSwapIndex sidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -141,16 +141,20 @@ import QuantLib.Internal.Enum
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
+-- |Bates stochastic-volatility model: extends Heston with jumps in the underlying's return process.
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
+-- |Black-Karasinski short-rate model: d(ln r) = (theta(t) - a ln r) dt + sigma dW, with constant reversion @a@ and volatility @sigma@.
 {#fun qlBlackKarasinski as blackKarasinski{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
+-- |Cox-Ingersoll-Ross short-rate model: dr = k(theta - r) dt + sigma sqrt(r) dW.
 {#fun qlCoxIngersollRoss as coxIngersollRoss{`Double' -- ^r0
   ,`Double' -- ^theta
   ,`Double' -- ^k
   ,`Double' -- ^sigma
   ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
+-- |Extended CIR model: adds a deterministic term-structure-fitting shift to a standard Cox-Ingersoll-Ross process.
 {#fun qlExtendedCoxIngersollRoss as extendedCoxIngersollRoss{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^theta
   ,`Double' -- ^k
   ,`Double' -- ^sigma
@@ -166,19 +170,24 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^maturity
   ,`Double' -- ^rate
   }->`Double'#}
+-- |Two-additive-factor Gaussian (G2) short-rate model: the sum of two correlated Ornstein-Uhlenbeck factors.
 {#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
   ,`Double' -- ^sigma
   ,`Double' -- ^b
   ,`Double' -- ^eta
   ,`Double' -- ^rho
   ,preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
+-- |Generalized Hull-White model: like 'hullWhite', but reversion and volatility are piecewise-linear functions of time given at @speedstructure@/@volstructure@ dates.
 generalizedHullWhite :: GenYieldTermStructure y -> [(Day, Double)] -- ^speedstructure
   -> [(Day, Double)] -- ^volstructure
   -> IO ShortRateModel
 generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip s; (vd, vq) = unzip v}
 {#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
+-- |GJR-GARCH stochastic-volatility model, extending GARCH(1,1) with an asymmetric response to negative return shocks.
 {#fun qlGJRGARCHModel as gJRGARCHModel{withGenStochasticProcess*`GJRGARCHProcess',preErrorCheck-`String'errorCheck*-}->`GJRGARCHModel'peekGJRGARCHModel*#}
+-- |Heston stochastic-volatility model, calibrated from a 'HestonProcess'.
 {#fun qlHestonModel as hestonModel{withHestonProcess*`GenHestonProcess hp',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
+-- |Single-factor Hull-White (extended Vasicek) short-rate model: dr = (theta(t) - a r) dt + sigma dW, fitted to the given term structure.
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
@@ -192,6 +201,7 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 -- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
 fixedReversion :: [Bool]
 fixedReversion = [True, False]
+-- |One-factor GSR model (formulated in the forward measure), with piecewise-constant volatility steps at @volstepdates@ and a single constant reversion.
 {#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'& -- ^volstepdates
   ,withQuoteArray*`[GenQuote q1]'& -- ^volatilities
   ,withQuote*`GenQuote q2' -- ^reversion
@@ -204,6 +214,7 @@ fixedReversion = [True, False]
   ,withMaybeConstraint*`Maybe Constraint'
   ,withDoubleArray*`[Double]'&
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Markov-functional interest-rate model, calibrated to a swaption volatility cube against @swapIndexBase@.
 markovFunctional :: GenYieldTermStructure y -> Double -- ^reversion
   -> [Day] -- ^volstepdates
   -> [Double] -- ^volatilities
@@ -225,7 +236,9 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
   ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
 -- |Volatility step values, as calibrated so far.
 {#fun qlMarkovFunctionalVolatility as markovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Variance Gamma model for the underlying's log-return process (Madan-Carr-Chang).
 {#fun qlVarianceGammaModel as varianceGammaModel{withGenStochasticProcess1D*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
+-- |Vasicek short-rate model: dr = a(b - r) dt + sigma dW, with an optional risk premium @lambda@.
 {#fun qlVasicek as vasicek{`Double' -- ^r0
   ,`Double' -- ^a
   ,`Double' -- ^b
@@ -233,6 +246,7 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
   ,`Double' -- ^lambda
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
 
+-- |Libor market (BGM) forward-rate model, built from a 'LiborForwardModelProcess' plus volatility and correlation models.
 {#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
@@ -246,6 +260,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
 -- |Objective function value at @params@ for the given calibration instruments.
 {#fun qlCalibratedModelValue as value{withCalibratedModel*`GenCalibratedModel m',withDoubleArray*`[Double]'&,withCalibrationHelperArray*`[GenCalibrationHelper ch]'&,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |Calibration helper for an at-the-money interest-rate cap.
 {#fun qlCapHelper as capHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^length
   ,withQuote*`GenQuote q' -- ^volatility
   ,withIborIndex*`GenIborIndex ibor',`Frequency' -- ^fixedLegFrequency
@@ -254,6 +269,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+-- |Calibration helper for the Heston model, from a European option's market volatility.
 {#fun qlHestonModelHelper as hestonModelHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,withCalendar*`Calendar',withQuote*`GenQuote q1' -- ^s0
   ,`Double' -- ^strikePrice
@@ -261,6 +277,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeRate
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+-- |Calibration helper for a European swaption, with the exercise given as a maturity 'Period' from today.
 {#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
   ,withQuote*`GenQuote q' -- ^maturity
@@ -305,6 +322,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,fromMaybeInt`Maybe Word' -- ^settlementDays
   ,`RateAveragingType' -- ^averagingMethod
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+-- |Times relevant to pricing this calibration helper's instrument, to be added to the model's evolution time grid.
 {#fun qlBlackCalibrationHelperTimes as times{withGenCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -325,6 +343,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
 {#fun qlBlackCalibrationHelperMarketValue as marketValue{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |returns the price of the instrument according to the model
 {#fun qlBlackCalibrationHelperModelValue as modelValue{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Sets the pricing engine used to compute this calibration helper's model value.
 {#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withGenCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

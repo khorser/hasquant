@@ -34,6 +34,7 @@ import QuantLib.Internal.CalendarEnum
 
 {#enum BusinessDayConvention{} deriving(Show, Eq)#}
 
+-- |Constructs the calendar for the given country, with an optional market variant.
 {#fun qlCalendar{`Int',`Int',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
 calendar :: CalendarConstructor -> IO Calendar
@@ -67,9 +68,13 @@ calendar x = uncurry qlCalendar $ mapCalendar x
 {#fun qlCalendarIsWeekend as isWeekend{withCalendar*`Calendar',`Weekday',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 -- |Removes a date from the set of holidays for the given calendar.
 {#fun qlCalendarRemoveHoliday as removeHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Builds a calendar with no predefined business days; the given weekdays become its weekend.
 {#fun qlBespokeCalendar{`String',withEnumArray*`[Weekday]'&,preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+-- |Combines three calendars into one whose business days are the union or intersection of theirs, per the given rule.
 {#fun qlJointCalendar3{withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+-- |Combines two calendars into one whose business days are the union or intersection of theirs, per the given rule.
 {#fun qlJointCalendar2{withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
+-- |Combines four calendars into one whose business days are the union or intersection of theirs, per the given rule.
 {#fun qlJointCalendar4{withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',withCalendar*`Calendar',fromEnumC`JointCalendarRule',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
 -- |Returns the holidays between two dates.

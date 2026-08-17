@@ -221,6 +221,8 @@ $(deriveOptionsRecord "BlackVolatilitySurfaceDeltaOpts" []
   , ("bvsdLongTermAtmDeltaType", [t|Maybe DeltaType|], [|Nothing|])
   ])
 
+-- |A local vol surface derived from a Black vol surface via Dupire's formula (Gatheral's
+-- implementation).
 {#fun qlLocalVolSurface as localVolSurface{withBlackVolTermStructure*`GenBlackVolTermStructure bv'
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeTS
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendTS
@@ -306,7 +308,10 @@ fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
 -- reason as those: all four relinkable vol types live in this one module.
 {#fun qlRelinkableOptionletVolatilityStructureLinkTo as linkOptionletVolTo{withRelinkableOptionletVolatilityStructure*`RelinkableOptionletVolatilityStructure'
   ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |A constant Black volatility, no time-strike dependence -- floating reference date, floating
+-- market data
 {#fun qlBlackConstantVol1 as blackConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+-- |as 'blackConstantVol\'', but a fixed reference date
 {#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |A Black vol surface behind a relinkable handle. The result /is/ a 'BlackVolTermStructure':
@@ -615,12 +620,17 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |A constant callable-bond volatility, no time-strike dependence -- floating reference date,
+-- floating market data
 {#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatility'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+-- |as 'callableBondConstantVolatility\'', but a fixed reference date
 {#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
 -- |fixed reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 -- |floating reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+-- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
+-- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)
 {#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 -- |as 'spreadedSwaptionVolatility', for 'OptionletVolatilityStructure' rather than
 -- 'SwaptionVolatilityStructure'
@@ -642,9 +652,17 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- not just with 'Yield.chs'\/'Quote.chs'.
 {#fun qlRelinkableSwaptionVolatilityStructureLinkTo as linkSwaptionVolTo{withRelinkableSwaptionVolatilityStructure*`RelinkableSwaptionVolatilityStructure'
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |A constant local volatility, no time-asset dependence -- floating reference date, floating
+-- market data. Local and Black volatility coincide when volatility is at most time dependent, so
+-- this is effectively a proxy for 'blackConstantVol''.
 {#fun qlLocalConstantVol1 as localConstantVol'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+-- |as 'localConstantVol\'', but a fixed reference date
 {#fun qlLocalConstantVol as localConstantVol{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+-- |a local vol term structure derived from a 'BlackVarianceCurve' (no strike dependence): local
+-- vol at time @t@ is the derivative of the Black variance curve's total variance
 {#fun qlLocalVolCurve as localVolCurve{withBlackVarianceCurve*`BlackVarianceCurve',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+-- |@origTS@ re-anchored to a new reference date, tracking @origTS@ for later changes. Only
+-- financially sensible for a time-dependent (not asset-dependent) source structure.
 {#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |fixed reference date, floating market data
@@ -657,6 +675,9 @@ capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, Tim
 capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 ntq
 {#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
 
+-- |A Black volatility curve built from time-dependent (ATM) market vols, interpolating on total
+-- variance (linear by default, or the given 'Interpolation') -- no strike dependence; see
+-- 'blackVarianceSurface' for that.
 blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -- ^forceMonotoneVariance
   -> Maybe Interpolation -> IO BlackVarianceCurve
 blackVarianceCurve d dq dc f i = uncurryNested (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i) where (dd, q) = unzip dq

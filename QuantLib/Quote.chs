@@ -74,6 +74,7 @@ import QuantLib.Internal.Type
 -- /NB/ The change will propagate to all users of the quote
 {#fun qlSimpleQuoteSetValue as setValue{withGenQuote*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |implied standard deviation of a Eurodollar future's underlying, solved from its call/put prices
 {#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote q1' -- ^forward
   ,withQuote*`GenQuote q2' -- ^callPrice
   ,withQuote*`GenQuote q3' -- ^putPrice
@@ -82,20 +83,25 @@ import QuantLib.Internal.Type
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIter
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |implied rate of a forward-starting swap on the given swap index, offset by a spread quote
 {#fun qlForwardSwapQuote as forwardSwapQuote{withSwapIndex*`GenSwapIndex sidx',withQuote*`GenQuote q' -- ^spread
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |forward value of an index as of a given fixing date
 {#fun qlForwardValueQuote as forwardValueQuote{withIndex*`GenIndex idx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |futures-convexity adjustment for an Ibor future identified by its IMM code
 {#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote'{withIborIndex*`GenIborIndex ibor',`String' -- ^immCode
   ,withQuote*`GenQuote q1' -- ^futuresQuote
   ,withQuote*`GenQuote q2' -- ^volatility
   ,withQuote*`GenQuote q3' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |futures-convexity adjustment for an Ibor future identified by its futures (IMM) date
 {#fun qlFuturesConvAdjustmentQuote as futuresConvAdjustmentQuote{withIborIndex*`GenIborIndex ibor',withDay*`Day' -- ^futuresDate
   ,withQuote*`GenQuote q1' -- ^futuresQuote
   ,withQuote*`GenQuote q2' -- ^volatility
   ,withQuote*`GenQuote q3' -- ^meanReversion
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |implied standard deviation of an underlying, solved from its option price at a given strike
 {#fun qlImpliedStdDevQuote as impliedStdDevQuote{fromEnumC`OptionType',withQuote*`GenQuote q1' -- ^forward
   ,withQuote*`GenQuote q2' -- ^price
   ,`Double' -- &strike
@@ -103,6 +109,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIter
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |last available fixing of the given index, updating whenever a new fixing is added
 {#fun qlLastFixingQuote as lastFixingQuote{withIndex*`GenIndex idx',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 -- |returns true if the Quote holds a valid value
 {#fun qlQuoteIsValid as isValid{withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`Bool'#}

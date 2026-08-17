@@ -286,15 +286,19 @@ import QuantLib.Internal.Enum
 {#pointer *QlStrikedTypePayoff nocode#}
 {#pointer *QlPlainVanillaPayoff nocode#}
 
+-- |discounts a bond's cash flows off a yield term structure
 {#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure y',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |discounts a bond's cash flows off a default-risky curve and a flat recovery rate
 {#fun qlRiskyBondEngine as riskyBondEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |discounts a swap's legs off a single discount curve
 {#fun qlDiscountingSwapEngine as discountingSwapEngine{withYieldTermStructure*`GenYieldTermStructure y',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |discounts an FX forward's two legs off their respective currency discount curves
 {#fun qlDiscountingFxForwardEngine as discountingFxForwardEngine{withYieldTermStructure*`GenYieldTermStructure y1' -- ^sourceCurrencyDiscountCurve
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^targetCurrencyDiscountCurve
   ,withQuote*`GenQuote q' -- ^spotFx
@@ -311,6 +315,7 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^invstRecoveryRate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |analytic pricing engine for barrier options
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 -- |analytic pricing engine for partial-time barrier options
 {#fun qlAnalyticPartialTimeBarrierOptionEngine as analyticPartialTimeBarrierOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -331,6 +336,7 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^adaptVanDelta
   ,`Double' -- ^bsPriceWithSmile
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for double-barrier European options
 {#fun qlAnalyticDoubleBarrierEngine as analyticDoubleBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Int' -- ^series
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 -- |always uses 'AnalyticDoubleBarrierEngine' as the underlying smile-free double-barrier engine
@@ -344,8 +350,10 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^bsPriceWithSmile
   ,fromIntegral`Int' -- ^series
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |pricing engine for double-barrier options using binomial trees
 {#fun qlBinomialDoubleBarrierEngine as binomialDoubleBarrierEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for double-barrier options
 {#fun qlMCDoubleBarrierEngine as mcDoubleBarrierEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
@@ -355,100 +363,145 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for Cliquet (ratchet) options
 {#fun qlAnalyticCliquetEngine as analyticCliquetEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for compound options
 {#fun qlAnalyticCompoundOptionEngine as analyticCompoundOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for European continuous fixed-strike lookback options
 {#fun qlAnalyticContinuousFixedLookbackEngine as analyticContinuousFixedLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for European continuous floating-strike lookback options
 {#fun qlAnalyticContinuousFloatingLookbackEngine as analyticContinuousFloatingLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for European continuous geometric average-price Asian options
 {#fun qlAnalyticContinuousGeometricAveragePriceAsianEngine as analyticContinuousGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for American digital (cash-or-nothing/asset-or-nothing) options
 {#fun qlAnalyticDigitalAmericanEngine as analyticDigitalAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for European discrete geometric average-price Asian options
 {#fun qlAnalyticDiscreteGeometricAveragePriceAsianEngine as analyticDiscreteGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for European discrete geometric average-strike Asian options
 {#fun qlAnalyticDiscreteGeometricAverageStrikeAsianEngine as analyticDiscreteGeometricAverageStrikeAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for European options with discrete dividends
 {#fun qlAnalyticDividendEuropeanEngine as analyticDividendEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic Black-Scholes pricing engine for European options
 {#fun qlAnalyticEuropeanEngine as analyticEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for performance (return) options
 {#fun qlAnalyticPerformanceEngine as analyticPerformanceEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Black-formula cap\/floor engine, taking an optionlet volatility structure
 {#fun qlBlackCapFloorEngine1 as blackCapFloorEngine'{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Black-formula cap\/floor engine, taking a flat volatility quote
 {#fun qlBlackCapFloorEngine as blackCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |shifted-lognormal Black-formula swaption engine, taking a flat volatility quote
 {#fun qlBlackSwaptionEngine as blackSwaptionEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`Double' -- ^displacement
   ,`CashAnnuityModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |shifted-lognormal Black-formula swaption engine, taking a swaption volatility structure
 {#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Bachelier (normal) cap\/floor engine, taking an optionlet volatility structure
 {#fun qlBachelierCapFloorEngine1 as bachelierCapFloorEngine'{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Bachelier (normal) cap\/floor engine, taking a flat volatility quote
 {#fun qlBachelierCapFloorEngine as bachelierCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Bachelier (normal) swaption engine, taking a flat volatility quote
 {#fun qlBachelierSwaptionEngine as bachelierSwaptionEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',`CashAnnuityModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Bachelier (normal) swaption engine, taking a swaption volatility structure
 {#fun qlBachelierSwaptionEngine1 as bachelierSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic European option pricer including stochastic interest rates (Black-Scholes-Merton + Hull-White)
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
 {#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |analytic pricing engine for vanilla options under a GJR-GARCH process
 {#fun qlAnalyticGJRGARCHEngine as analyticGJRGARCHEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic Heston-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlAnalyticHestonEngine as analyticHestonEngine{withHestonModel*`GenHestonModel hm',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic pricing engine combining a Heston equity model with a Hull-White short-rate model
 {#fun qlAnalyticHestonHullWhiteEngine as analyticHestonHullWhiteEngine{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
   ,fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic pricing engine for the Bates (Heston plus jumps) model, integrating with a fixed order
 {#fun qlBatesEngine as batesEngine{withBatesModel*`GenBatesModel bm'
   ,fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |FFT-based pricing engine for vanilla options under a Black-Scholes process
 {#fun qlFFTVanillaEngine as fftVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^logStrikeSpacing
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |swaption pricing engine for the G2 two-factor short-rate model, priced via the Black formula
 {#fun qlG2SwaptionEngine as g2SwaptionEngine{withG2*`G2',`Double' -- ^range
   ,fromIntegral`Word' -- ^intervals
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |jump-diffusion pricing engine for vanilla options, taking a Merton76 process
 {#fun qlJumpDiffusionEngine as jumpDiffusionEngine{withGenStochasticProcess1D*`Merton76Process'
   ,`Double' -- ^relativeAccuracy
   ,fromIntegral`Word' -- ^maxIterations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for caps\/floors under a short-rate model
 {#fun qlTreeCapFloorEngine as treeCapFloorEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for swaptions under a short-rate model
 {#fun qlTreeSwaptionEngine as treeSwaptionEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for plain vanilla swaps under a short-rate model
 {#fun qlTreeVanillaSwapEngine as treeVanillaSwapEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |pricing engine for European vanilla options using the Variance Gamma model, integrated numerically
 {#fun qlVarianceGammaEngine as varianceGammaEngine{withGenStochasticProcess1D*`VarianceGammaProcess'
   ,`Double' -- ^absoluteError
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic Heston-model pricing engine, integrating with a fixed quadrature order
 {#fun qlAnalyticHestonEngine1 as analyticHestonEngine'{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic Heston/Hull-White engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlAnalyticHestonHullWhiteEngine1 as analyticHestonHullWhiteEngine'{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic Bates-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlBatesEngine1 as batesEngine'{withBatesModel*`GenBatesModel bm',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Barone-Adesi and Whaley (1987) quadratic-approximation engine for American options
 {#fun qlBaroneAdesiWhaleyApproximationEngine as baroneAdesiWhaleyApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic engine for the Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlBatesDetJumpEngine1 as batesDetJumpEngine'{withBatesDetJumpModel*`BatesDetJumpModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic engine for the Bates model with deterministic jumps, integrating with a fixed quadrature order
 {#fun qlBatesDetJumpEngine as batesDetJumpEngine{withBatesDetJumpModel*`BatesDetJumpModel',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlBatesDoubleExpDetJumpEngine1 as batesDoubleExpDetJumpEngine'{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, integrating with a fixed quadrature order
 {#fun qlBatesDoubleExpDetJumpEngine as batesDoubleExpDetJumpEngine{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic engine for the double-exponential-jump Bates model, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlBatesDoubleExpEngine1 as batesDoubleExpEngine'{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |semi-analytic engine for the double-exponential-jump Bates model, integrating with a fixed quadrature order
 {#fun qlBatesDoubleExpEngine as batesDoubleExpEngine{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Bjerksund and Stensland (1993) approximation engine for American options
 {#fun qlBjerksundStenslandApproximationEngine as bjerksundStenslandApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |CDS pricing engine that integrates the default-leg payoff over the CDS's step-wise schedule
 {#fun qlIntegralCdsEngine as integralCdsEngine{fromEnumQuantity`(Word,TimeUnit)'& -- ^integrationStep
   ,withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |pricing engine for European vanilla options using an integral approach
 {#fun qlIntegralEngine as integralEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
 {#fun qlJamshidianSwaptionEngine as jamshidianSwaptionEngine{withOneFactorAffineModel*`GenOneFactorAffineModel om',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |swaption pricing engine for any one-factor Gaussian short-rate model, evaluated by integration over the model's state variable
 {#fun qlGaussian1dSwaptionEngine as gaussian1dSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
@@ -457,13 +510,17 @@ import QuantLib.Internal.Enum
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
   ,`Probabilities' -- ^probabilities
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Ju (1999) quadratic-approximation engine for American options
 {#fun qlJuQuadraticApproximationEngine as juQuadraticApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |pricing engine for a spread option on two futures/assets
 {#fun qlKirkEngine as kirkEngine{withBlackProcess*`BlackProcess',withBlackProcess*`BlackProcess',`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |CDS pricing engine using the mid-point approximation, evaluating the default leg at the mid-point of each accrual period
 {#fun qlMidPointCdsEngine as midPointCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |CDS pricing engine implementing the ISDA standard model
 {#fun qlIsdaCdsEngine as isdaCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
@@ -471,15 +528,21 @@ import QuantLib.Internal.Enum
   ,`AccrualBias' -- ^accrualBias
   ,`ForwardsInCouponPeriod' -- ^forwardsInCouponPeriod
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |variance-swap pricing engine using a replicating portfolio of vanilla options at the given strikes
 {#fun qlReplicatingVarianceSwapEngine as replicatingVarianceSwapEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^dk
   ,withDoubleArray*`[Double]'& -- ^callStrikes
   ,withDoubleArray*`[Double]'& -- ^putStrikes
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |pricing engine for 2D European basket options (Stulz formula)
 {#fun qlStulzEngine as stulzEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Libor forward model swaption engine, priced via the Black formula
 {#fun qlLfmSwaptionEngine as lfmSwaptionEngine{withGenCalibratedModel*`LiborForwardModel',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for caps\/floors under a short-rate model, on an explicit time grid
 {#fun qlTreeCapFloorEngine1 as treeCapFloorEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for swaptions under a short-rate model, on an explicit time grid
 {#fun qlTreeSwaptionEngine1 as treeSwaptionEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for plain vanilla swaps under a short-rate model, on an explicit time grid
 {#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
@@ -495,17 +558,20 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`FdmQuantoHelper'peekFdmQuantoHelper*#}
 
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
+-- |finite-differences swaption pricing engine for the G2 two-factor short-rate model
 {#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withG2*`G2',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^yGrid
   ,fromIntegral`Word' -- ^dampingSpecs
   ,`Double' -- ^invEps
   ,withFdmSchemeDesc*`FdmScheme',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences swaption pricing engine for the Hull-White short-rate model
 {#fun qlFdHullWhiteSwaptionEngine as fdHullWhiteSwaptionEngine{withHullWhite*`HullWhite',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^dampingSpecs
   ,`Double' -- ^invEps
   ,withFdmSchemeDesc*`FdmScheme',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Black-Scholes barrier-option pricing engine
 {#fun qlFdBlackScholesBarrierEngine as fdBlackScholesBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^dampingSteps
@@ -513,6 +579,7 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^localVol
   ,`Double' -- ^illegalLocalVolOverwrite
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model barrier-option pricing engine
 {#fun qlFdHestonBarrierEngine as fdHestonBarrierEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -521,6 +588,7 @@ import QuantLib.Internal.Enum
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model barrier-option pricing engine, with discrete dividends
 {#fun qlFdHestonBarrierEngine1 as fdHestonBarrierEngine'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -530,6 +598,7 @@ import QuantLib.Internal.Enum
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model double-barrier-option pricing engine
 {#fun qlFdHestonDoubleBarrierEngine as fdHestonDoubleBarrierEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -550,6 +619,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word'-- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo (least-squares) pricing engine for American options
 {#fun qlMCAmericanEngine1 as mcAmericanEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word', -- ^timeSteps
   fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
@@ -563,6 +633,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeBool`Maybe Bool' -- ^antitheticVariateCalibration
   ,fromMaybeInt`Maybe Word' -- ^seedCalibration
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for barrier options
 {#fun qlMCBarrierEngine1 as mcBarrierEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
@@ -573,6 +644,7 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^isBiased
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for digital (cash-or-nothing/asset-or-nothing) options
 {#fun qlMCDigitalEngine1 as mcDigitalEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word', -- ^timeStepsPerYear
   `Bool', -- ^brownianBridge
@@ -582,6 +654,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for discrete arithmetic average-price Asian options
 {#fun qlMCDiscreteArithmeticAPEngine1 as mcDiscreteArithmeticAPEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,`Bool' -- ^controlVariate
@@ -590,6 +663,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for discrete arithmetic average-strike Asian options
 {#fun qlMCDiscreteArithmeticASEngine1 as mcDiscreteArithmeticASEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -597,6 +671,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for discrete geometric average-price Asian options
 {#fun qlMCDiscreteGeometricAPEngine1 as mcDiscreteGeometricAPEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -604,6 +679,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for European options under a Black-Scholes process
 {#fun qlMCEuropeanEngine1 as mcEuropeanEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
@@ -613,6 +689,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for European options under a GJR-GARCH process
 {#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGJRGARCHEngine{`RngTrait',withGenStochasticProcess*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
@@ -621,6 +698,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for European options under a Heston process
 {#fun qlMCEuropeanHestonEngine1 as mcEuropeanHestonEngine{`RngTrait',withHestonProcess*`GenHestonProcess hp',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
@@ -631,6 +709,7 @@ import QuantLib.Internal.Enum
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 -- |Prices a 'VarianceOption' by integrating its payoff against the Heston-model transition density.
 {#fun qlIntegralHestonVarianceOptionEngine as integralHestonVarianceOptionEngine{withHestonProcess*`GenHestonProcess hp',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo Hull-White pricing engine for caps\/floors
 {#fun qlMCHullWhiteCapFloorEngine1 as mcHullWhiteCapFloorEngine{`RngTrait',withHullWhite*`HullWhite',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -654,6 +733,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |Monte Carlo pricing engine for performance (return) options
 {#fun qlMCPerformanceEngine1 as mcPerformanceEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -661,6 +741,7 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |variance-swap pricing engine using Monte Carlo simulation
 {#fun qlMCVarianceSwapEngine1 as mcVarianceSwapEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
@@ -670,8 +751,10 @@ import QuantLib.Internal.Enum
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |pricing engine for vanilla options using binomial trees
 {#fun qlBinomialVanillaEngine as binomialVanillaEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Black-Scholes pricing engine for vanilla options
 {#fun qlFdBlackScholesVanillaEngine as fdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
   ,fromIntegral`Word' -- ^gridPoints
   ,fromIntegral`Word' -- ^timeDependent
@@ -680,6 +763,7 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^illegalLocalVolOverwrite
   ,`CashDividendModel' -- ^cashDividendModel
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model pricing engine for vanilla options
 {#fun qlFdHestonVanillaEngine as fdHestonVanillaEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -688,6 +772,7 @@ import QuantLib.Internal.Enum
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model pricing engine for vanilla options, with discrete dividends
 {#fun qlFdHestonVanillaEngine1 as fdHestonVanillaEngine'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -697,6 +782,7 @@ import QuantLib.Internal.Enum
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model pricing engine for vanilla options, with quanto adjustment
 {#fun qlFdHestonVanillaEngine2 as fdHestonVanillaEngineQuanto{withHestonModel*`GenHestonModel hm',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -706,6 +792,7 @@ import QuantLib.Internal.Enum
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences Heston-model pricing engine for vanilla options, with discrete dividends and quanto adjustment
 {#fun qlFdHestonVanillaEngine3 as fdHestonVanillaEngineQuanto'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -715,6 +802,7 @@ import QuantLib.Internal.Enum
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences pricing engine for vanilla options combining a Heston equity model with a Hull-White short-rate model
 {#fun qlFdHestonHullWhiteVanillaEngine as fdHestonHullWhiteVanillaEngine{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess'
   ,`Double' -- ^corrEquityShortRate
   ,fromIntegral`Word' -- ^tGrid
@@ -725,6 +813,7 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^controlVariate, upstream default: true
   ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |finite-differences pricing engine for vanilla options combining a Heston equity model with a Hull-White short-rate model, with discrete dividends
 {#fun qlFdHestonHullWhiteVanillaEngine1 as fdHestonHullWhiteVanillaEngine'{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess',withDividendArray*`[Dividend]'&
   ,`Double' -- ^corrEquityShortRate
   ,fromIntegral`Word' -- ^tGrid
@@ -736,6 +825,7 @@ import QuantLib.Internal.Enum
   ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |binomial Tsiveriotis-Fernandes pricing engine for convertible bonds
 {#fun qlBinomialConvertibleEngine as binomialConvertibleEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
   ,fromIntegral`Word' -- ^timeSteps
   ,withQuote*`GenQuote q' -- ^creditSpread
@@ -754,21 +844,29 @@ import QuantLib.Internal.Enum
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine{withQuote*`GenQuote q',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |numerical-lattice pricing engine for callable fixed-rate bonds, on an explicit time grid
 {#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |numerical-lattice pricing engine for callable fixed-rate bonds
 {#fun qlTreeCallableFixedRateBondEngine as treeCallableFixedRateBondEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for callable zero coupon bonds, on an explicit time grid
 {#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |numerical-lattice pricing engine for callable zero coupon bonds
 {#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+-- |intermediate value N'(d1) (or its sign-flipped equivalent) used internally to derive the calculator's Greeks
 {#fun qlBlackCalculatorAlpha as alpha{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |intermediate value N'(d2) (or its sign-flipped equivalent) used internally to derive the calculator's Greeks
 {#fun qlBlackCalculatorBeta as beta{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Black 1976 option-price calculator, from the option type and strike directly
 {#fun qlBlackCalculator1 as blackCalculator'{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalculator'peekBlackCalculator*#}
 
+-- |Black 1976 option-price calculator, from a striked payoff
 {#fun qlBlackCalculator as blackCalculator{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
@@ -812,6 +910,7 @@ import QuantLib.Internal.Enum
 {#fun qlBlackCalculatorThetaPerDay as blackThetaPerDay{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^spot
   ,`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the option's fair value
 {#fun qlBlackCalculatorValue as value{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity of vega to spot (Vanna).
 {#fun qlBlackCalculatorVanna as vanna{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^spot
@@ -823,12 +922,14 @@ import QuantLib.Internal.Enum
 -- |Sensitivity of vega to volatility (Volga).
 {#fun qlBlackCalculatorVolga as volga{withBlackCalculator*`GenBlackCalculator bc',`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Black-Scholes-Merton option-price calculator, from the option type and strike directly
 {#fun qlBlackScholesCalculator1 as blackScholesCalculator'{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^spot
   ,`Double' -- ^growth
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'peekBlackScholesCalculator*#}
+-- |Black-Scholes-Merton option-price calculator, from a striked payoff and spot price
 {#fun qlBlackScholesCalculator as blackScholesCalculator{withStrikedPayoff*`StrikedPayoff',`Double' -- ^spot
   ,`Double' -- ^growth
   ,`Double' -- ^stdDev
@@ -855,12 +956,15 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BachelierCalculator'peekBachelierCalculator*#}
+-- |Bachelier (normal-model) option-price calculator, from a striked payoff
 {#fun qlBachelierCalculator as bachelierCalculator{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BachelierCalculator'peekBachelierCalculator*#}
+-- |intermediate value used internally to derive the calculator's Greeks
 {#fun qlBachelierCalculatorAlpha as bachelierAlpha{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |intermediate value used internally to derive the calculator's Greeks
 {#fun qlBachelierCalculatorBeta as bachelierBeta{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity to change in the underlying spot price.
 {#fun qlBachelierCalculatorDelta as bachelierDelta{withBachelierCalculator*`BachelierCalculator', `Double' -- ^spot
@@ -899,6 +1003,7 @@ import QuantLib.Internal.Enum
 {#fun qlBachelierCalculatorThetaPerDay as bachelierThetaPerDay{withBachelierCalculator*`BachelierCalculator',`Double' -- ^spot
   ,`Double' -- ^maturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the option's fair value
 {#fun qlBachelierCalculatorValue as bachelierValue{withBachelierCalculator*`BachelierCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Sensitivity of vega to spot (Vanna).
 {#fun qlBachelierCalculatorVanna as bachelierVanna{withBachelierCalculator*`BachelierCalculator',`Double' -- ^maturity
@@ -918,10 +1023,13 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^fDiscount (foreign discount factor)
   ,`Double' -- ^stdDev
   ,preErrorCheck-`String'errorCheck*-}->`BlackDeltaCalculator'peekBlackDeltaCalculator*#}
+-- |the option delta under the calculator's chosen convention, for the given strike
 {#fun qlBlackDeltaCalculatorDeltaFromStrike as deltaFromStrike{withBlackDeltaCalculator*`BlackDeltaCalculator',`Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the strike price corresponding to the given option delta (under the calculator's chosen convention)
 {#fun qlBlackDeltaCalculatorStrikeFromDelta as strikeFromDelta{withBlackDeltaCalculator*`BlackDeltaCalculator',`Double' -- ^delta
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the at-the-money strike under the given ATM convention, independent of the strike passed at construction
 {#fun qlBlackDeltaCalculatorAtmStrike as atmStrike{withBlackDeltaCalculator*`BlackDeltaCalculator',fromEnumC`AtmType'
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 

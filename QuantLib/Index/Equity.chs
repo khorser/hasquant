@@ -37,9 +37,16 @@ import QuantLib.Internal.Type
   ,withMaybeQuote*`Maybe (GenQuote q)' -- ^spot
   ,preErrorCheck-`String'errorCheck*-}->`EquityIndex'peekEquityIndex*#}
 
+-- |The index currency.
 {#fun qlEquityIndexCurrency as currency{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+
+-- |The risk-free interest rate curve used to forecast this index's future fixings.
 {#fun qlEquityIndexInterestRateCurve as equityInterestRateCurve{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |The dividend curve used to forecast this index's future fixings.
 {#fun qlEquityIndexDividendCurve as equityDividendCurve{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |The index's spot quote; when empty, forecasting falls back to today's fixing.
 {#fun qlEquityIndexSpot as spot{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
