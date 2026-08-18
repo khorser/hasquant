@@ -23,6 +23,7 @@ services:
       - .:/hasquant:delegated
       - stack-root:/root/.stack
       - ghcup-root:/root/.ghcup
+      - cabal-root:/root/.cabal
       - /hasquant/.stack-work
       - /hasquant/dist-newstyle 
     stdin_open: true
@@ -36,3 +37,5 @@ volumes:
     name: stack-root
   ghcup-root:
     name: ghcup-root
+  cabal-root:
+    name: cabal-root

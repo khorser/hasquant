@@ -85,4 +85,6 @@ ENTRYPOINT ["/root/entrypoint.sh"]
 
 RUN echo "set auto-load safe-path /" >> /root/.gdbinit
 
+ENV CABAL_DIR=/root/.cabal
+
 RUN ldconfig

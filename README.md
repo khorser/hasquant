@@ -79,7 +79,7 @@ The repo contains docker compose files for a custom Linux x86_64 image. You can 
 
 Drop `-it` when running without a TTY (CI, or a scripted check) — it fails there.
 
-The config mounts `/root/.stack` and `/root/.ghcup` as named volumes so everything installed with stack/ghcup will persist across runs.
+The config mounts `/root/.stack`, `/root/.ghcup`, and `/root/.cabal` as named volumes so everything installed with stack/ghcup/cabal will persist across runs.
 `/hasquant/.stack-work` and `/hasquant/dist-newstyle` are mounted as anonymous volumes to avoid polluting host filesystem.
 
 # On Types

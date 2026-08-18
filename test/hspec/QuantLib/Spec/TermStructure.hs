@@ -266,8 +266,8 @@ spec = do
     describe "multiple resets swap rate helper" $
       it "bootstrapped curve reprices each helper's own fixed rate" $
         Settings.keepingSettings' $ do
-          let today = 15 `january` 2024
-          Settings.setEvaluationDate (Just today)
+          let today' = 15 `january` 2024
+          Settings.setEvaluationDate (Just today')
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
           ccy <- currency EUR
@@ -280,8 +280,8 @@ spec = do
             (\tenor -> multipleResetsSwapRateHelper 0 tenor q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing)
             [(1, Years), (2, Years), (3, Years)]
 
-          ts <- piecewiseYieldCurve today helpers actual360dc [] Discount LogLinear
-          _ <- discount' ts today False
+          ts <- piecewiseYieldCurve today' helpers actual360dc [] Discount LogLinear
+          _ <- discount' ts today' False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
           performGC

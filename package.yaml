@@ -12,6 +12,7 @@ github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
   - GHC == 9.10.3 # lts-24.53
+  - GHC == 9.12.4
 language: Haskell2010
 flags:
   buildExample:
@@ -26,10 +27,9 @@ flags:
 extra-source-files:
   - cbits/*.h
 dependencies:
-  # 4.14 is GHC 8.10.6, the oldest compiler this is actually built and tested against
-  # (the lts-18.8 gate); nothing below that is exercised, so don't claim to support it
+  # 4.14 is GHC 8.10.6
   - base >=4.14 && <5.0
-  - time
+  - time >= 1.9.3 && < 1.15
 ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
 when:
   - condition: flag(trackAllocations)
@@ -37,11 +37,11 @@ when:
 
 library:
   dependencies:
-    - template-haskell
-    - transformers
-    - vector
+    - template-haskell >= 2.16.0 && < 2.24
+    - transformers >= 0.5.6 && < 0.7
+    - vector >= 0.12.3 && < 0.14
   verbatim:
-    - build-tool-depends: c2hs:c2hs
+    - build-tool-depends: c2hs:c2hs >= 0.28.8 && < 0.29
   exposed-modules: # the order is important as it defines the order used by c2hs
     - QuantLib.Type
     - QuantLib.Math
@@ -118,9 +118,9 @@ tests:
       - test/main
     dependencies:
       - hasquant
-      - hspec
-      - HUnit
-      - QuickCheck
+      - hspec >= 2.7.10 && < 2.12
+      - HUnit >= 1.6.2 && < 1.7
+      - QuickCheck >= 2.14.2 && < 2.19
 
 executables:
   hasquant_example:

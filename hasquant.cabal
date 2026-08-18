@@ -19,6 +19,7 @@ build-type:     Simple
 tested-with:
     GHC == 8.10.6
   , GHC == 9.10.3
+  , GHC == 9.12.4
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
@@ -100,10 +101,10 @@ library
       cbits/qlTermStructureAux.cpp
   build-depends:
       base >=4.14 && <5.0
-    , template-haskell
-    , time
-    , transformers
-    , vector
+    , template-haskell >=2.16.0 && <2.24
+    , time >=1.9.3 && <1.15
+    , transformers >=0.5.6 && <0.7
+    , vector >=0.12.3 && <0.14
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3
@@ -126,7 +127,7 @@ library
     cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
     include-dirs:
         /opt/homebrew/include
-  build-tool-depends: c2hs:c2hs
+  build-tool-depends: c2hs:c2hs >= 0.28.8 && < 0.29
 
 executable hasquant_example
   main-is: QuantLib/MainExample.hs
@@ -163,7 +164,7 @@ executable hasquant_example
   build-depends:
       base >=4.14 && <5.0
     , hasquant
-    , time
+    , time >=1.9.3 && <1.15
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3
@@ -215,12 +216,12 @@ test-suite hasquant_test
       test/main
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
-      HUnit
-    , QuickCheck
+      HUnit >=1.6.2 && <1.7
+    , QuickCheck >=2.14.2 && <2.19
     , base >=4.14 && <5.0
     , hasquant
-    , hspec
-    , time
+    , hspec >=2.7.10 && <2.12
+    , time >=1.9.3 && <1.15
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3
