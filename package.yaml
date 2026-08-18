@@ -1,5 +1,5 @@
 name: hasquant
-version: "0.5.0.0"
+version: "0.5.0.1"
 synopsis: Bindings to QuantLib
 license: BSD-3-Clause
 maintainer: Sergei Khorev <sergey.khorev@gmail.com>
@@ -28,7 +28,7 @@ extra-source-files:
   - cbits/*.h
 dependencies:
   # 4.14 is GHC 8.10.6
-  - base >=4.14 && <5.0
+  - base >= 4.14 && < 5.0
   - time >= 1.9.3 && < 1.15
 ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
 when:
