@@ -10,13 +10,13 @@ The main departures from a thin wrapper are enums and ADTs standing in for thing
 
 This started as a hand-written project in 2012 (see "Project History" below) and has gone through several architecture rewrites since. The core design — the pointer-ownership model, the enum/ADT scheme, the C shim conventions — is hand-designed and predates any AI involvement. More recently I've used AI assistance to extend coverage faster: new classes, methods, day counters, indexes. Every generated binding is still reviewed against the pattern it's supposed to follow, checked against the upstream C++ signature, and covered by a test before it counts as done — see "Testing" below for what that means in practice.
 
-Worked examples live in `test/QuantLib/Example`. They're direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style. The test suite proper is `main/test/QuantLib/MainTest.hs`, a dispatcher over the topic modules in `main/test/QuantLib/Spec`.
+Worked examples live in `test/example/QuantLib/Example`. They're direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style. The test suite proper is `test/main/QuantLib/MainTest.hs`, a dispatcher over the topic modules in `test/hspec/QuantLib/Spec`.
 
 Haddock documentation is published at https://khorser.github.io/hasquant
 
 # Testing
 
-Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.cpp` covers a class or scenario, the corresponding hasquant test reuses its inputs and cached expected values directly, rather than deriving numbers by hand or relying on self-consistency alone. Enum-dispatched cases (currencies, calendars, day counters, index variants) get a standalone `smoke/` check that constructs the cases and asserts on the output — this is what caught a real bug where two enum cases silently aliased to the wrong upstream values despite a clean build and a passing test suite.
+Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.cpp` covers a class or scenario, the corresponding hasquant test reuses its inputs and cached expected values directly, rather than deriving numbers by hand or relying on self-consistency alone. Enum-dispatched cases (currencies, calendars, day counters, index variants) get a standalone `test/smoke/` check that constructs the cases and asserts on the output — this is what caught a real bug where two enum cases silently aliased to the wrong upstream values despite a clean build and a passing test suite.
 
 Coverage is tracked rather than claimed: `tools/ql-methods-1.43.txt` is a line-by-line dump of every constructor and non-trivial method in QuantLib's headers, and each new binding flips its line as it lands.
 

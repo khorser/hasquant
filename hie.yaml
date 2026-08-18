@@ -3,13 +3,13 @@ cradle:
     - path: "QuantLib"
       component: "lib:hasquant"
 
-    - path: "main/exe/QuantLib/MainExample.hs"
+    - path: "test/exe/QuantLib/MainExample.hs"
       component: "hasquant:exe:hasquant_example"
 
-    - path: "example"
+    - path: "test/example"
       component: "hasquant:exe:hasquant_example"
 
-    - path: "main/test/QuantLib/MainTest.hs"
+    - path: "test/main/QuantLib/MainTest.hs"
       component: "hasquant:test:hasquant_test"
 
     - path: "test"

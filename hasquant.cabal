@@ -157,8 +157,8 @@ executable hasquant_example
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
-      example
-      main/exe
+      test/example
+      test/exe
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
       base >=4.14 && <5.0
@@ -210,9 +210,9 @@ test-suite hasquant_test
   autogen-modules:
       Paths_hasquant
   hs-source-dirs:
-      test
-      example
-      main/test
+      test/hspec
+      test/example
+      test/main
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
       HUnit
