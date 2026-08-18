@@ -7,25 +7,25 @@ services:
         BOOST_VERSION: "1.91.0-1"
         QL_VERSION: "1.43"
         GHC_VERSION: "9.10.3"
-    
+
     image: hasquant:default
     platform: linux/amd64
     init: true
     working_dir: /hasquant
     container_name: hasquant-dev
-    
+
     cap_add:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
-    
+
     volumes:
       - .:/hasquant:delegated
       - stack-root:/root/.stack
       - ghcup-root:/root/.ghcup
       - cabal-root:/root/.cabal
       - /hasquant/.stack-work
-      - /hasquant/dist-newstyle 
+      - /hasquant/dist-newstyle
     stdin_open: true
     tty: true
     #environment:

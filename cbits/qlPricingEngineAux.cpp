@@ -434,7 +434,7 @@ PolymorphicPathGenerator* qlSobolPathGeneratorAux(SobolRsg::DirectionIntegers di
 }
 
 void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p) {delete p;}
-const Sample<MultiPath>& qlPathGeneratorNextAux(PolymorphicPathGenerator *p) {return p->next();} 
-const Sample<MultiPath>& qlPathGeneratorAntitheticAux(PolymorphicPathGenerator *p) {return p->antithetic();} 
+const Sample<MultiPath>& qlPathGeneratorNextAux(PolymorphicPathGenerator *p) {return p->next();}
+const Sample<MultiPath>& qlPathGeneratorAntitheticAux(PolymorphicPathGenerator *p) {return p->antithetic();}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
