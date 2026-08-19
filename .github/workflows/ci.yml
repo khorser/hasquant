@@ -149,8 +149,10 @@ jobs:
           set -euo pipefail
           mkdir -p "${{ runner.temp }}/cabal-cache"
           # The container's dev user (uid baked at image build) may not match the
-          # runner's uid; open up the bind-mounted cache dir so it can write there.
+          # runner's uid; open up the bind-mounted cache dir and checkout so it
+          # can write there (.stack-work, dist-newstyle, etc).
           chmod -R 777 "${{ runner.temp }}/cabal-cache"
+          chmod -R 777 "$PWD"
 
           # --allow-different-user: the bind-mounted checkout is owned by the
           # runner's uid, not the image's baked-in dev uid; safe to bypass in
