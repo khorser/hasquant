@@ -4,7 +4,7 @@ synopsis: Bindings to QuantLib
 license: BSD-3-Clause
 maintainer: Sergei Khorev <sergey.khorev@gmail.com>
 copyright: (c) 2012-2026 Sergei Khorev
-category: Finance
+category: Finance,FFI,StructuredFinance,Securitisation,Cashflow
 description: |
   Bindings to the QuantLib library.
 build-type: Simple
