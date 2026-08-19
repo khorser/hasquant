@@ -130,7 +130,7 @@ jobs:
             "package hasquant"
             "  extra-include-dirs: $ql/include"
             "  extra-lib-dirs: $ql/lib"
-            "  ghc-options: -pgmcxx $ghc/mingw/bin/clang++ -optl $ghc/mingw/lib/libc++.a -optl $ghc/mingw/lib/libc++abi.a -optl $ghc/mingw/lib/libunwind.a -optcxx-isystem -optcxx${boost}"
+            "  ghc-options: -pgmcxx $ghc/mingw/bin/clang++ -optl $ghc/mingw/lib/libc++.a -optl $ghc/mingw/lib/libc++abi.a -optl $ghc/mingw/lib/libunwind.a -optcxx -isystem -optcxx $boost"
           )
           $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
 
