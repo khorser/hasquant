@@ -52,13 +52,16 @@ jobs:
 
       # windows-latest runners already have MSYS2 at C:\msys64; pointing the
       # action at it (rather than its own D:\a\_temp\msys64 default) reuses that
-      # install instead of fetching a second one.
+      # install instead of fetching a second one. update:false previously left
+      # pacman's package DB stale on a fresh checkout, so boost/cmake/ninja
+      # silently failed to install and later steps fell back to the runner's
+      # preinstalled system CMake with a dangling Boost_INCLUDE_DIR junction.
       - name: Install Boost/cmake/ninja via MSYS2
         uses: msys2/setup-msys2@v2
         with:
           location: ${{ env.MSYS2_ROOT }}
           msystem: MINGW64
-          update: false
+          update: true
           install: >-
             mingw-w64-x86_64-boost
             mingw-w64-x86_64-cmake
@@ -72,6 +75,10 @@ jobs:
         run: |
           mkdir "%BOOST_INC%"
           mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
+          if not exist "%BOOST_INC%\boost\version.hpp" (
+            echo Boost headers not found through the junction - pacman install likely failed >&2
+            exit /b 1
+          )
 
       - name: Cache built QuantLib
         id: cache-ql
