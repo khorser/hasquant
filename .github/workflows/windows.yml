@@ -36,12 +36,15 @@ jobs:
 
       # GHC bundles a complete Clang/libc++ toolchain under <ghc-root>/mingw --
       # that's what everything below is built and linked with, never MSYS2's GCC.
+      # `ghc` on PATH is ghcup's shim at <ghcup-root>\bin\ghc.exe, not the real
+      # versioned install, so Get-Command's path can't be walked up directly --
+      # `--print-libdir` reports the real <ghc-root>\lib instead.
       - name: Locate GHC's bundled clang++ toolchain
         id: ghc-root
         shell: pwsh
         run: |
-          $ghcExe = (Get-Command ghc).Source
-          $ghcRoot = Split-Path (Split-Path $ghcExe -Parent) -Parent
+          $libDir = (ghc --print-libdir).Trim()
+          $ghcRoot = Split-Path $libDir -Parent
           if (-not (Test-Path "$ghcRoot\mingw\bin\clang++.exe")) {
             throw "Expected GHC-bundled clang++ at $ghcRoot\mingw\bin\clang++.exe, not found"
           }
