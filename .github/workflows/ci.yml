@@ -1,0 +1,177 @@
+name: CI
+
+# Test-only CI: builds/tests hasquant against every supported GHC version and
+# QuantLib version, on the latest Boost by default. Never builds or publishes a
+# release artifact. Boost/QuantLib are compiled from source in a Docker image
+# (built by build-image) that's pushed to GHCR purely as an internal CI cache —
+# not a user-facing image.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  # Resolves the "latest" Boost pseudo-version (and passes through any pinned
+  # version literally) to a concrete version string shared by build-image and
+  # test, so image tags/caching stay precise even as "latest" drifts over time.
+  resolve-boost:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.resolve.outputs.versions }}
+    steps:
+      - id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # Edit this list to bisect a Boost regression, e.g. ("latest" "1.87.0").
+          requested=("latest")
+          resolved=()
+          for v in "${requested[@]}"; do
+            if [ "$v" = "latest" ]; then
+              tag=$(gh api repos/boostorg/boost/releases/latest --jq .tag_name)
+              resolved+=("${tag#boost-}")
+            else
+              resolved+=("$v")
+            fi
+          done
+          json=$(printf '%s\n' "${resolved[@]}" | jq -R . | jq -s -c .)
+          echo "Resolved Boost versions: $json"
+          echo "versions=$json" >> "$GITHUB_OUTPUT"
+
+  build-image:
+    needs: resolve-boost
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        ql_version: ["1.43"]
+        ghc_version: ["8.10.6", "9.10.3", "9.12.4"]
+        boost_version: ${{ fromJSON(needs.resolve-boost.outputs.versions) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute image tag
+        id: tag
+        run: |
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "tag=ghcr.io/${owner}/hasquant-ci:ql${{ matrix.ql_version }}-boost${{ matrix.boost_version }}-ghc${{ matrix.ghc_version }}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check whether this image tag already exists
+        id: exists
+        run: |
+          if docker buildx imagetools inspect "${{ steps.tag.outputs.tag }}" > /dev/null 2>&1; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Only builds Boost+QuantLib+GHC when this exact (ql, boost, ghc) triple
+      # hasn't been built before -- this is what keeps "always latest Boost"
+      # from meaning "always a 15-20 minute rebuild".
+      - name: Build and push CI image
+        if: steps.exists.outputs.found == 'false'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.tag.outputs.tag }}
+          build-args: |
+            BOOST_VERSION=${{ matrix.boost_version }}
+            QL_VERSION=${{ matrix.ql_version }}
+            GHC_VERSION=${{ matrix.ghc_version }}
+            BUILD_MODE=ci
+          # Scoped by ql+boost only (not ghc), so the shared base/boost-builder/
+          # ql-builder layers cache-hit across the 3 GHC legs for the same pair.
+          cache-from: type=gha,scope=ql${{ matrix.ql_version }}-boost${{ matrix.boost_version }}
+          cache-to: type=gha,mode=max,scope=ql${{ matrix.ql_version }}-boost${{ matrix.boost_version }}
+
+  test:
+    needs: [resolve-boost, build-image]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    strategy:
+      fail-fast: false
+      matrix:
+        ql_version: ["1.43"]
+        ghc_version: ["8.10.6", "9.10.3", "9.12.4"]
+        boost_version: ${{ fromJSON(needs.resolve-boost.outputs.versions) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute image tag
+        id: tag
+        run: |
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "tag=ghcr.io/${owner}/hasquant-ci:ql${{ matrix.ql_version }}-boost${{ matrix.boost_version }}-ghc${{ matrix.ghc_version }}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull CI image
+        run: docker pull "${{ steps.tag.outputs.tag }}"
+
+      # Only the cabal/stack package store is cached, keyed per GHC version --
+      # GHC itself is baked into the image (BUILD_MODE=ci), and .stack-work/
+      # dist-newstyle are deliberately never cached: a warm build dir here has
+      # twice produced wrong results (see CLAUDE.md) rather than just being slow.
+      - name: Restore package store cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/cabal-cache
+          key: cabal-store-${{ matrix.ghc_version }}-${{ hashFiles('package.yaml', 'stack.yaml.lock') }}
+          restore-keys: |
+            cabal-store-${{ matrix.ghc_version }}-
+
+      - name: Run test suite
+        run: |
+          set -euo pipefail
+          mkdir -p "${{ runner.temp }}/cabal-cache"
+          # The container's dev user (uid baked at image build) may not match the
+          # runner's uid; open up the bind-mounted cache dir so it can write there.
+          chmod -R 777 "${{ runner.temp }}/cabal-cache"
+
+          case "${{ matrix.ghc_version }}" in
+            8.10.6)
+              cmd='stack build --resolver lts-18.8 --flag hasquant:buildExample --no-haddock && stack --resolver lts-18.8 test'
+              ;;
+            9.10.3)
+              cmd='stack build --test --no-haddock'
+              ;;
+            9.12.4)
+              cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
+              ;;
+            *)
+              echo "No test command configured for GHC ${{ matrix.ghc_version }}" >&2
+              exit 1
+              ;;
+          esac
+
+          docker run --rm \
+            -v "$PWD":/hasquant \
+            -v "${{ runner.temp }}/cabal-cache":/home/dev/.cabal \
+            -w /hasquant \
+            "${{ steps.tag.outputs.tag }}" \
+            sh -c "$cmd"
+
+          chmod -R a+rX "${{ runner.temp }}/cabal-cache" || true

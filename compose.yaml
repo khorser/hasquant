@@ -1,3 +1,8 @@
+# The image's dev user must match the host UID/GID that owns the bind-mounted
+# working tree, or it can't write .stack-work/dist-newstyle. bash's $UID is
+# read-only and not exported by default, so run e.g.
+#   UID=$(id -u) GID=$(id -g) docker compose build
+# or export UID/GID in your shell profile.
 services:
   hasquant:
     build:
@@ -7,6 +12,8 @@ services:
         BOOST_VERSION: "1.91.0-1"
         QL_VERSION: "1.43"
         GHC_VERSION: "9.10.3"
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
 
     image: hasquant:default
     platform: linux/amd64
@@ -21,9 +28,9 @@ services:
 
     volumes:
       - .:/hasquant:delegated
-      - stack-root:/root/.stack
-      - ghcup-root:/root/.ghcup
-      - cabal-root:/root/.cabal
+      - stack-root:/home/dev/.stack
+      - ghcup-root:/home/dev/.ghcup
+      - cabal-root:/home/dev/.cabal
       - /hasquant/.stack-work
       - /hasquant/dist-newstyle
     stdin_open: true

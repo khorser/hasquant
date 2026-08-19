@@ -12,10 +12,16 @@ RUN apt-get update \
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
-ENV PATH="/root/.ghcup/bin:/root/.cabal/bin:${PATH}"
-RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | \
-    BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_ADJUST_BASHRC=0 BOOTSTRAP_HASKELL_MINIMAL=1 \
-    sh
+# Non-root user: local dev caches ghcup/cabal/stack in named volumes mounted over
+# this user's $HOME (see compose.yaml), so GHC isn't duplicated between image layers
+# and the volume, and doesn't need re-downloading on every image rebuild. Only the
+# steps that genuinely need root (apt installs above, boost/quantlib "make install"
+# into /usr/local below) run as root.
+ARG USERNAME=dev
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g ${GID} ${USERNAME} \
+    && useradd -m -u ${UID} -g ${GID} -s /bin/zsh ${USERNAME}
 
 ARG BOOST_VERSION=1.91.0-1
 FROM base AS boost-builder
@@ -47,14 +53,40 @@ RUN wget https://github.com/lballabio/QuantLib/releases/download/v${QL_VERSION}/
     make install
 
 FROM base AS development
+ARG USERNAME=dev
 COPY --from=ql-builder /usr/local/lib /usr/local/lib
 COPY --from=ql-builder /usr/local/include /usr/local/include
 COPY --from=ql-builder /usr/local/bin /usr/local/bin
+RUN ldconfig
 
 ARG GHC_VERSION=9.10.3
 ENV GHC_VERSION=${GHC_VERSION}
 
-RUN cat << 'EOF' > /root/entrypoint.sh
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+ENV HOME=/home/${USERNAME}
+ENV PATH="/home/${USERNAME}/.ghcup/bin:/home/${USERNAME}/.cabal/bin:${PATH}"
+ENV CABAL_DIR=/home/${USERNAME}/.cabal
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | \
+    BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_ADJUST_BASHRC=0 BOOTSTRAP_HASKELL_MINIMAL=1 \
+    sh
+
+# BUILD_MODE=local (default): defer GHC/cabal/stack install to entrypoint.sh at
+# container start, into whatever's mounted over $HOME/.ghcup etc (compose.yaml's
+# named volumes) -- keeps the same GHC install from being duplicated between image
+# layers and the volume, and avoids re-downloading it on every image rebuild.
+# BUILD_MODE=ci: no persistent volume across CI runs, so bake GHC/cabal/stack into
+# this layer once instead; entrypoint.sh's own installs then no-op at container start.
+ARG BUILD_MODE=local
+RUN if [ "$BUILD_MODE" = "ci" ]; then \
+      ghcup install ghc "${GHC_VERSION}" && ghcup set ghc "${GHC_VERSION}" && \
+      ghcup install cabal recommended && \
+      ghcup install stack recommended && \
+      stack config set system-ghc true --global; \
+    fi
+
+RUN cat << 'EOF' > /home/${USERNAME}/entrypoint.sh
 #!/bin/bash
 set -e
 if [ -n "$GHC_VERSION" ]; then
@@ -80,11 +112,9 @@ fi
 exec "$@"
 EOF
 
-RUN chmod +x /root/entrypoint.sh
-ENTRYPOINT ["/root/entrypoint.sh"]
+RUN chmod +x /home/${USERNAME}/entrypoint.sh
+# Exec-form ENTRYPOINT doesn't expand ARG/ENV, so route through a shell that expands
+# $HOME at container runtime instead of hardcoding the (overridable) username.
+ENTRYPOINT ["/bin/sh", "-c", "exec \"$HOME/entrypoint.sh\" \"$@\"", "sh"]
 
-RUN echo "set auto-load safe-path /" >> /root/.gdbinit
-
-ENV CABAL_DIR=/root/.cabal
-
-RUN ldconfig
+RUN echo "set auto-load safe-path /" >> /home/${USERNAME}/.gdbinit
