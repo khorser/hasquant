@@ -140,7 +140,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/cabal-cache
-          key: cabal-store-${{ matrix.ghc_version }}-${{ hashFiles('package.yaml', 'stack.yaml.lock') }}
+          # stack.yaml.lock is gitignored (not present in the CI checkout), so
+          # only package.yaml is hashed here.
+          key: cabal-store-${{ matrix.ghc_version }}-${{ hashFiles('package.yaml') }}
           restore-keys: |
             cabal-store-${{ matrix.ghc_version }}-
 
