@@ -22,7 +22,7 @@ Coverage is tracked rather than claimed: `tools/ql-methods-1.43.txt` is a line-b
 
 # Building
 
-Day-to-day development happens on GHC-9.10.3. GHC-8.10.6 (`base >= 4.14`) is the supported floor and is verified on every change against the lts-18.8 Docker image below; newer versions should work too, as the public API sticks to widely available language features.
+Day-to-day development happens on GHC-9.10. GHC-8.10.6 (`base >= 4.14`) is the supported floor and is verified on every change against the lts-18.8 Docker image below; newer versions should work too, as the public API sticks to widely available language features.
 
 First you need QuantLib version 1.43 or higher, see installation documentation for [Linux](https://www.quantlib.org/install/linux.shtml), [MacOS](https://www.quantlib.org/install/macosx.shtml),
 or cross-platform [CMake-based build](https://www.quantlib.org/install/cmake.shtml)

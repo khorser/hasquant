@@ -20,6 +20,7 @@ tested-with:
     GHC == 8.10.6
   , GHC == 9.10.3
   , GHC == 9.12.4
+  , GHC == 9.14.1
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
