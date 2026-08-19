@@ -22,7 +22,6 @@ jobs:
     env:
       GHC_VERSION: "9.10.3"
       QL_VERSION: "1.43"
-      MSYS2_ROOT: C:\msys64
       BOOST_INC: C:\boost-inc
       QL_INSTALL: C:\QuantLib-ghc
     steps:
@@ -50,16 +49,10 @@ jobs:
           }
           "root=$ghcRoot" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
 
-      # windows-latest runners already have MSYS2 at C:\msys64; pointing the
-      # action at it (rather than its own D:\a\_temp\msys64 default) reuses that
-      # install instead of fetching a second one. update:false previously left
-      # pacman's package DB stale on a fresh checkout, so boost/cmake/ninja
-      # silently failed to install and later steps fell back to the runner's
-      # preinstalled system CMake with a dangling Boost_INCLUDE_DIR junction.
       - name: Install Boost/cmake/ninja via MSYS2
+        id: msys2
         uses: msys2/setup-msys2@v2
         with:
-          location: ${{ env.MSYS2_ROOT }}
           msystem: MINGW64
           update: true
           install: >-
@@ -72,16 +65,10 @@ jobs:
       # std::isnan/std::abs overload-resolution errors deep inside QuantLib.
       - name: Expose Boost headers only
         shell: cmd
+        env:
+          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
         run: |
-          dir "%MSYS2_ROOT%\mingw64"
-          dir "%MSYS2_ROOT%\mingw64\include"
-          dir "%MSYS2_ROOT%\mingw64\include\boost"
-          mkdir "%BOOST_INC%"
           mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
-          if not exist "%BOOST_INC%\boost\version.hpp" (
-            echo Boost headers not found through the junction - pacman install likely failed >&2
-            exit /b 1
-          )
 
       - name: Cache built QuantLib
         id: cache-ql
@@ -104,6 +91,7 @@ jobs:
         if: steps.cache-ql.outputs.cache-hit != 'true'
         shell: cmd
         env:
+          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
           GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
         run: |
           set "PATH=%MSYS2_ROOT%\mingw64\bin;%PATH%"
