@@ -10,6 +10,7 @@ on:
   push:
     branches: [master]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   # Resolves the "latest" Boost pseudo-version (and passes through any pinned
