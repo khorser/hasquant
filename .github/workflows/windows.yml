@@ -1,0 +1,155 @@
+name: Windows
+
+# Builds and tests hasquant natively on windows-latest, following the recipe in
+# WINDOWS.md: build QuantLib itself with GHC's bundled clang++/libc++ (not
+# MSYS2's GCC/libstdc++), then compile the cbits shim and link the whole thing
+# against that same toolchain. MSYS2 is used only for Boost's headers, cmake,
+# and ninja -- never for its own C++ compiler, and MSYS2's math.h/stdlib.h are
+# never put on the include path (see WINDOWS.md's "Step 1" note on why not).
+#
+# The QuantLib build (~976 translation units, ~35 min) is cached across runs;
+# bump the cache key's trailing version suffix to force a rebuild.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      GHC_VERSION: "9.10.3"
+      QL_VERSION: "1.43"
+      MSYS2_ROOT: C:\msys64
+      BOOST_INC: C:\boost-inc
+      QL_INSTALL: C:\QuantLib-ghc
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up GHC and cabal
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: ${{ env.GHC_VERSION }}
+          cabal-version: latest
+
+      # GHC bundles a complete Clang/libc++ toolchain under <ghc-root>/mingw --
+      # that's what everything below is built and linked with, never MSYS2's GCC.
+      - name: Locate GHC's bundled clang++ toolchain
+        id: ghc-root
+        shell: pwsh
+        run: |
+          $ghcExe = (Get-Command ghc).Source
+          $ghcRoot = Split-Path (Split-Path $ghcExe -Parent) -Parent
+          if (-not (Test-Path "$ghcRoot\mingw\bin\clang++.exe")) {
+            throw "Expected GHC-bundled clang++ at $ghcRoot\mingw\bin\clang++.exe, not found"
+          }
+          "root=$ghcRoot" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      # windows-latest runners already have MSYS2 at C:\msys64; pointing the
+      # action at it (rather than its own D:\a\_temp\msys64 default) reuses that
+      # install instead of fetching a second one.
+      - name: Install Boost/cmake/ninja via MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          location: ${{ env.MSYS2_ROOT }}
+          msystem: MINGW64
+          update: false
+          install: >-
+            mingw-w64-x86_64-boost
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+
+      # WINDOWS.md Step 1: expose only Boost's headers, not all of
+      # mingw64/include -- MSYS2's math.h/stdlib.h shadow libc++'s and produce
+      # std::isnan/std::abs overload-resolution errors deep inside QuantLib.
+      - name: Expose Boost headers only
+        shell: cmd
+        run: |
+          mkdir "%BOOST_INC%"
+          mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
+
+      - name: Cache built QuantLib
+        id: cache-ql
+        uses: actions/cache@v6
+        with:
+          path: ${{ env.QL_INSTALL }}
+          key: quantlib-windows-${{ env.QL_VERSION }}-ghc${{ env.GHC_VERSION }}-v1
+
+      - name: Download QuantLib source
+        if: steps.cache-ql.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/lballabio/QuantLib/releases/download/v$env:QL_VERSION/QuantLib-$env:QL_VERSION.tar.gz" -OutFile QuantLib.tar.gz
+          tar -xzf QuantLib.tar.gz
+          Rename-Item "QuantLib-$env:QL_VERSION" QuantLib-src
+
+      # WINDOWS.md Step 2 ("Without MSYS2" cmake invocation, since we use MSYS2
+      # only as a package source here, not as the shell/compiler).
+      - name: Build and install QuantLib with GHC's clang++
+        if: steps.cache-ql.outputs.cache-hit != 'true'
+        shell: cmd
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          set "PATH=%MSYS2_ROOT%\mingw64\bin;%PATH%"
+          mkdir QuantLib-src\build
+          cd QuantLib-src\build
+          cmake -G Ninja ^
+            -DCMAKE_CXX_COMPILER=%GHC_ROOT:\=/%/mingw/bin/clang++.exe ^
+            -DCMAKE_BUILD_TYPE=Release ^
+            -DCMAKE_INSTALL_PREFIX=%QL_INSTALL:\=/% ^
+            -DBoost_NO_BOOST_CMAKE=ON ^
+            -DBoost_INCLUDE_DIR=%BOOST_INC:\=/% ^
+            -DCMAKE_CXX_FLAGS="-include vector" ^
+            -DQL_BUILD_EXAMPLES=OFF ^
+            -DQL_BUILD_TEST_SUITE=OFF ^
+            ..
+          ninja
+          ninja install
+
+      # WINDOWS.md Step 3: same flags as cabal.project.local.WINDOWS, with paths
+      # resolved to this runner instead of the hardcoded h:/ example paths.
+      - name: Write cabal.project.local
+        shell: pwsh
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          $ghc = $env:GHC_ROOT -replace '\\','/'
+          $boost = $env:BOOST_INC -replace '\\','/'
+          $ql = $env:QL_INSTALL -replace '\\','/'
+          # Not a here-string: YAML's block indentation would land the closing
+          # "@ mid-line, which PowerShell requires at column 0.
+          $lines = @(
+            "ignore-project: False"
+            "tests: True"
+            "with-compiler: $ghc/bin/ghc"
+            "package hasquant"
+            "  extra-include-dirs: $ql/include"
+            "  extra-lib-dirs: $ql/lib"
+            "  ghc-options: -pgmcxx $ghc/mingw/bin/clang++ -optl $ghc/mingw/lib/libc++.a -optl $ghc/mingw/lib/libc++abi.a -optl $ghc/mingw/lib/libunwind.a -optcxx-isystem -optcxx$boost"
+          )
+          $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
+
+      # dist-newstyle is deliberately not cached here: on the Linux CI job a warm
+      # build dir has twice produced wrong results across runs (see CLAUDE.md).
+      # Only the downloaded/built package store is cached.
+      - name: Cache cabal package store
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~\AppData\Roaming\cabal\packages
+            ~\AppData\Roaming\cabal\store
+          key: cabal-store-windows-${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
+          restore-keys: |
+            cabal-store-windows-${{ env.GHC_VERSION }}-
+
+      # WINDOWS.md Step 4.
+      - name: Build
+        shell: pwsh
+        run: cabal build all
+
+      - name: Test
+        shell: pwsh
+        run: cabal test all
