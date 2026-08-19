@@ -73,9 +73,9 @@ jobs:
       - name: Expose Boost headers only
         shell: cmd
         run: |
-          dir c:\
-          dir "%MSYS2_ROOT%"
           dir "%MSYS2_ROOT%\mingw64"
+          dir "%MSYS2_ROOT%\mingw64\include"
+          dir "%MSYS2_ROOT%\mingw64\include\boost"
           mkdir "%BOOST_INC%"
           mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
           if not exist "%BOOST_INC%\boost\version.hpp" (
