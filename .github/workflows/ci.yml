@@ -152,12 +152,15 @@ jobs:
           # runner's uid; open up the bind-mounted cache dir so it can write there.
           chmod -R 777 "${{ runner.temp }}/cabal-cache"
 
+          # --allow-different-user: the bind-mounted checkout is owned by the
+          # runner's uid, not the image's baked-in dev uid; safe to bypass in
+          # this disposable single-use container (not shared multi-user state).
           case "${{ matrix.ghc_version }}" in
             8.10.6)
-              cmd='stack build --resolver lts-18.8 --flag hasquant:buildExample --no-haddock && stack --resolver lts-18.8 test'
+              cmd='stack --allow-different-user build --resolver lts-18.8 --flag hasquant:buildExample --no-haddock && stack --allow-different-user --resolver lts-18.8 test'
               ;;
             9.10.3)
-              cmd='stack build --test --no-haddock'
+              cmd='stack --allow-different-user build --test --no-haddock'
               ;;
             9.12.4)
               cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
