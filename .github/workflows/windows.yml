@@ -71,6 +71,10 @@ jobs:
           mkdir "%BOOST_INC%"
           mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
 
+      - name: Prepare QuantLib install directory
+        shell: cmd
+        run: if not exist "%QL_INSTALL%" mkdir "%QL_INSTALL%"
+
       - name: Cache built QuantLib
         id: cache-ql
         uses: actions/cache@v6
