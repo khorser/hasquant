@@ -2,6 +2,6 @@ ignore-project: False
 tests: True
 with-compiler: h:/ghc-9.10.3/bin/ghc
 package hasquant
-  extra-include-dirs: H:/QuantLib-ghc/include
+  extra-include-dirs: H:/QuantLib-ghc/include H:/boost-inc
   extra-lib-dirs: H:/QuantLib-ghc/lib
-  ghc-options: -pgmcxx H:/ghc-9.10.3/mingw/bin/clang++ -optl H:/ghc-9.10.3/mingw/lib/libc++.a -optl H:/ghc-9.10.3/mingw/lib/libc++abi.a -optl H:/ghc-9.10.3/mingw/lib/libunwind.a -optcxx-isystem -optcxxH:/boost-inc
+  ghc-options: -pgmcxx H:/ghc-9.10.3/mingw/bin/clang++ -optl H:/ghc-9.10.3/mingw/lib/libc++.a -optl H:/ghc-9.10.3/mingw/lib/libc++abi.a -optl H:/ghc-9.10.3/mingw/lib/libunwind.a -optcxx-isystem -optcxxH:/QuantLib-ghc/include

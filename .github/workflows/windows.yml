@@ -122,9 +122,9 @@ jobs:
         env:
           GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
         run: |
-          $ghc = $env:GHC_ROOT.Replace('\', '/')
-          $boost = $env:BOOST_INC.Replace('\', '/')
-          $ql = $env:QL_INSTALL.Replace('\', '/')
+          $ghc = $env:GHC_ROOT
+          $boost = $env:BOOST_INC
+          $ql = $env:QL_INSTALL
 
           # Not a here-string: YAML's block indentation would land the closing
           # "@ mid-line, which PowerShell requires at column 0.
@@ -133,9 +133,9 @@ jobs:
             "tests: True"
             "with-compiler: $ghc/bin/ghc"
             "package hasquant"
-            "  extra-include-dirs: $ql/include"
+            "  extra-include-dirs: $ql/include $boost"
             "  extra-lib-dirs: $ql/lib"
-            "  ghc-options: -pgmcxx $ghc/mingw/bin/clang++ -optl $ghc/mingw/lib/libc++.a -optl $ghc/mingw/lib/libc++abi.a -optl $ghc/mingw/lib/libunwind.a -optcxx-isystem -optcxx${boost}"
+            "  ghc-options: -pgmcxx $ghc/mingw/bin/clang++ -optl $ghc/mingw/lib/libc++.a -optl $ghc/mingw/lib/libc++abi.a -optl $ghc/mingw/lib/libunwind.a -optcxx-isystem -optcxx${ql}/include"
           )
           $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
 
