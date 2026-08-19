@@ -101,8 +101,8 @@ library
       cbits/qlTermStructureAux.cpp
   build-depends:
       base >=4.14 && <5.0
-    , template-haskell >=2.16.0 && <2.24
-    , time >=1.9.3 && <1.15
+    , template-haskell >=2.16 && <2.25
+    , time >=1.9.3 && <1.16
     , transformers >=0.5.6 && <0.7
     , vector >=0.12.3 && <0.14
   default-language: Haskell2010
@@ -164,7 +164,7 @@ executable hasquant_example
   build-depends:
       base >=4.14 && <5.0
     , hasquant
-    , time >=1.9.3 && <1.15
+    , time >=1.9.3 && <1.16
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3
@@ -221,7 +221,7 @@ test-suite hasquant_test
     , base >=4.14 && <5.0
     , hasquant
     , hspec >=2.7.10 && <2.12
-    , time >=1.9.3 && <1.15
+    , time >=1.9.3 && <1.16
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3

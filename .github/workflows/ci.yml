@@ -51,7 +51,7 @@ jobs:
       fail-fast: false
       matrix:
         ql_version: ["1.43"]
-        ghc_version: ["8.10.6", "9.10.3", "9.12.4"]
+        ghc_version: ["8.10.6", "9.10.3", "9.12.4", "9.14.1"]
         boost_version: ${{ fromJSON(needs.resolve-boost.outputs.versions) }}
     steps:
       - uses: actions/checkout@v7
@@ -111,7 +111,7 @@ jobs:
       fail-fast: false
       matrix:
         ql_version: ["1.43"]
-        ghc_version: ["8.10.6", "9.10.3", "9.12.4"]
+        ghc_version: ["8.10.6", "9.10.3", "9.12.4", "9.14.1"]
         boost_version: ${{ fromJSON(needs.resolve-boost.outputs.versions) }}
     steps:
       - uses: actions/checkout@v7
@@ -167,6 +167,9 @@ jobs:
               cmd='stack --allow-different-user build --test --no-haddock'
               ;;
             9.12.4)
+              cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
+              ;;
+            9.14.1)
               cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
               ;;
             *)
