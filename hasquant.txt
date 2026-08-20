@@ -4,7 +4,7 @@
 
 -- | Bindings to the QuantLib library.
 @package hasquant
-@version 0.5.0.0
+@version 0.5.0.2
 
 module QuantLib.Syntax
 
