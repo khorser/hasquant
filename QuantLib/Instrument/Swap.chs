@@ -199,9 +199,9 @@ swap' = (uncurry qlSwap1) . unzip
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
   ,preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
--- |Converts an existing 'VanillaSwap' into a 'NonstandardSwap' (upstream's own conversion
--- constructor, @NonstandardSwap(const FixedVsFloatingSwap&)@).
-{#fun qlNonstandardSwap1 as nonstandardSwapFromVanilla{withVanillaSwap*`VanillaSwap'
+-- |Converts an existing 'FixedVsFloatingSwap' (e.g. a 'VanillaSwap') into a 'NonstandardSwap'
+-- (upstream's own conversion constructor, @NonstandardSwap(const FixedVsFloatingSwap&)@).
+{#fun qlNonstandardSwap1 as nonstandardSwapFromVanilla{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f'
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |'VanillaSwap' generalized to per-period fixed/floating nominals and fixed rates, plus

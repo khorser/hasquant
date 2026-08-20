@@ -381,9 +381,9 @@ QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, 
   try {return ret(new QlVanillaSwap(alloc(new VanillaSwap((VanillaSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(floatSchedule), *arg(iborIndex), spread, *arg(floatingDayCount), qlOptBusinessDayConvention(paymentConvention), qlOptBool(useIndexedCoupons)))));
   } catch (std::exception& er) {return handleException<QlVanillaSwap*>(e, er);}}
 
-// Converts an existing VanillaSwap into a NonstandardSwap (upstream's own conversion ctor, not a
-// delegating convenience overload -- see NonstandardSwap(const FixedVsFloatingSwap&)).
-QlNonstandardSwap* qlNonstandardSwap1(QlVanillaSwap* v, char **e) {
+// Converts an existing FixedVsFloatingSwap (e.g. a VanillaSwap) into a NonstandardSwap
+// (upstream's own conversion ctor, not a delegating convenience overload).
+QlNonstandardSwap* qlNonstandardSwap1(QlFixedVsFloatingSwap* v, char **e) {
   try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap(**arg(v)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 // Scalar gearing/spread ctor; fixedNominal/floatingNominal/fixedRate are still per-period vectors
