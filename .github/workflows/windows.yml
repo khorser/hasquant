@@ -123,6 +123,7 @@ jobs:
           GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
         run: |
           $ghc = $env:GHC_ROOT
+          $mingw = $ghc/mingw
           $boost = $env:BOOST_INC
           $ql = $env:QL_INSTALL
 
@@ -135,22 +136,9 @@ jobs:
             "package hasquant"
             "  extra-include-dirs: $ql/include $boost"
             "  extra-lib-dirs: $ql/lib"
-            "  ghc-options: -pgmcxx $ghc/mingw/bin/clang++ -optl $ghc/mingw/lib/libc++.a -optl $ghc/mingw/lib/libc++abi.a -optl $ghc/mingw/lib/libunwind.a -optcxx-isystem -optcxx${ql}/include"
+            "  ghc-options: -pgmcxx $mingw/bin/clang++ -optl $mingw/lib/libc++.a -optl $mingw/lib/libc++abi.a -optl $mingw/lib/libunwind.a -optcxx -isystem -optcxx $ql/include"
           )
           $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
-
-      # dist-newstyle is deliberately not cached here: on the Linux CI job a warm
-      # build dir has twice produced wrong results across runs (see CLAUDE.md).
-      # Only the downloaded/built package store is cached.
-      - name: Cache cabal package store
-        uses: actions/cache@v6
-        with:
-          path: |
-            ~\AppData\Roaming\cabal\packages
-            ~\AppData\Roaming\cabal\store
-          key: cabal-store-windows-${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
-          restore-keys: |
-            cabal-store-windows-${{ env.GHC_VERSION }}-
 
       # WINDOWS.md Step 4.
       - name: Build
