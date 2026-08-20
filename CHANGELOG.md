@@ -1,6 +1,7 @@
-## 0.5.0.1 (2026)
+## 0.5.0.2 (2026)
 
 Support for RelinkableHandle has finally landed. As it turned out the current model is a perfect fit for it: term structures, quotes, and vol surfaces now relink uniformly, so building on top of a live quote or curve propagates updates correctly. Also removed all remaining `dynamic_cast` usage from the C++ shim in favor of dedicated typed bindings, and added a batch of further instrument/engine bindings (SABR vol cubes, Heston FD engines, CDS/counterparty engines, amortizing bonds, exchange rates, CMS legs, and more).
+Added GitHub Actions to test various platforms and GHC versions.
 
 ## 0.4.0.0 (2026)
 
