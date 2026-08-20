@@ -19,11 +19,17 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        ghc: ["9.10.3", "9.14.1"]
+
     env:
-      GHC_VERSION: "9.10.3"
       QL_VERSION: "1.43"
       BOOST_INC: C:\boost-inc
       QL_INSTALL: C:\QuantLib-ghc
+      GHC_VERSION: ${{ matrix.ghc }}
 
     steps:
       - uses: actions/checkout@v7
