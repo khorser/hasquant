@@ -19,6 +19,8 @@
 #include <ql/instruments/vanillaswap.hpp>
 #include <ql/instruments/nonstandardswap.hpp>
 #include <ql/instruments/nonstandardswaption.hpp>
+#include <ql/instruments/floatfloatswap.hpp>
+#include <ql/instruments/floatfloatswaption.hpp>
 #include <ql/pricingengines/swaption/basketgeneratingengine.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
@@ -396,6 +398,21 @@ QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double
   try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), std::vector<double>(gearing, gearing+gearingLen), std::vector<double>(spread, spread+spreadLen), *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 
+void qlFreeFloatFloatSwap(QlFloatFloatSwap *o) {del(o);}
+QlSwap* qlFloatFloatSwapAsSwap(QlFloatFloatSwap *o) {return ret(new QlSwap(*arg(o)));}
+// Scalar-nominal ctor. cappedRate1/flooredRate1/cappedRate2/flooredRate2 take Null<Real>()
+// (via fromMaybeDouble's qlNullReal sentinel on the Haskell side) unchanged for "no cap/floor",
+// matching upstream's own default -- no separate presence flag needed.
+QlFloatFloatSwap* qlFloatFloatSwap(int type, double nominal1, double nominal2, Schedule* schedule1, QlInterestRateIndex* index1, DayCounter* dayCount1, Schedule* schedule2, QlInterestRateIndex* index2, DayCounter* dayCount2, int intermediateCapitalExchange, int finalCapitalExchange, double gearing1, double spread1, double cappedRate1, double flooredRate1, double gearing2, double spread2, double cappedRate2, double flooredRate2, int paymentConvention1, int paymentConvention2, char **e) {
+  try {return ret(new QlFloatFloatSwap(alloc(new FloatFloatSwap((Swap::Type)type, nominal1, nominal2, *arg(schedule1), *arg(index1), *arg(dayCount1), *arg(schedule2), *arg(index2), *arg(dayCount2), intermediateCapitalExchange, finalCapitalExchange, gearing1, spread1, cappedRate1, flooredRate1, gearing2, spread2, cappedRate2, flooredRate2, qlOptBusinessDayConvention(paymentConvention1), qlOptBusinessDayConvention(paymentConvention2)))));
+  } catch (std::exception& er) {return handleException<QlFloatFloatSwap*>(e, er);}}
+// Vector-nominal ctor (full coverage; not used by the upstream example).
+QlFloatFloatSwap* qlFloatFloatSwap2(int type, unsigned nominal1Len, double* nominal1, unsigned nominal2Len, double* nominal2, Schedule* schedule1, QlInterestRateIndex* index1, DayCounter* dayCount1, Schedule* schedule2, QlInterestRateIndex* index2, DayCounter* dayCount2, int intermediateCapitalExchange, int finalCapitalExchange, unsigned gearing1Len, double* gearing1, unsigned spread1Len, double* spread1, unsigned cappedRate1Len, double* cappedRate1, unsigned flooredRate1Len, double* flooredRate1, unsigned gearing2Len, double* gearing2, unsigned spread2Len, double* spread2, unsigned cappedRate2Len, double* cappedRate2, unsigned flooredRate2Len, double* flooredRate2, int paymentConvention1, int paymentConvention2, char **e) {
+  try {return ret(new QlFloatFloatSwap(alloc(new FloatFloatSwap((Swap::Type)type, std::vector<double>(nominal1, nominal1+nominal1Len), std::vector<double>(nominal2, nominal2+nominal2Len), *arg(schedule1), *arg(index1), *arg(dayCount1), *arg(schedule2), *arg(index2), *arg(dayCount2), intermediateCapitalExchange, finalCapitalExchange, std::vector<double>(gearing1, gearing1+gearing1Len), std::vector<double>(spread1, spread1+spread1Len), std::vector<double>(cappedRate1, cappedRate1+cappedRate1Len), std::vector<double>(flooredRate1, flooredRate1+flooredRate1Len), std::vector<double>(gearing2, gearing2+gearing2Len), std::vector<double>(spread2, spread2+spread2Len), std::vector<double>(cappedRate2, cappedRate2+cappedRate2Len), std::vector<double>(flooredRate2, flooredRate2+flooredRate2Len), qlOptBusinessDayConvention(paymentConvention1), qlOptBusinessDayConvention(paymentConvention2)))));
+  } catch (std::exception& er) {return handleException<QlFloatFloatSwap*>(e, er);}}
+double qlFloatFloatSwapFairSpread1(QlFloatFloatSwap* o, char **e) {try {return (*arg(o))->fairSpread1();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatFloatSwapFairSpread2(QlFloatFloatSwap* o, char **e) {try {return (*arg(o))->fairSpread2();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
 QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {try {return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));} catch (std::exception& er) {return handleException<QlSwap*>(e, er);} }
 double qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e) {try {return (*arg(o))->endDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
 Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e) {try {return ret(new Leg((*arg(o))->leg(j)));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
@@ -578,6 +595,21 @@ QlNonstandardSwaption* qlNonstandardSwaption(QlNonstandardSwap* swap, QlExercise
 // Basket is computed internally by QuantLib's calibration-basket algorithm (per CalibrationBasketType);
 // *helpers is written before anything can throw so a mid-loop exception still leaves a safe, freeable array.
 void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
+  *len = 0; *helpers = nullptr;
+  try {
+    std::vector<ext::shared_ptr<BlackCalibrationHelper>> basket = (*arg(o))->calibrationBasket(*arg(swapBase), (*arg(swaptionVol)).currentLink(), (BasketGeneratingEngine::CalibrationBasketType)basketType);
+    *helpers = (QlBlackCalibrationHelper**)qlAllocatePointerArray(basket.size());
+    for (size_t i = 0; i < basket.size(); ++i) (*helpers)[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
+    *len = (unsigned)basket.size();
+  } catch (std::exception& er) {handleException<int>(e, er);}}
+
+void qlFreeFloatFloatSwaption(QlFloatFloatSwaption *o) {del(o);}
+QlOption* qlFloatFloatSwaptionAsOption(QlFloatFloatSwaption *o) {return ret(new QlOption(*arg(o)));}
+QlFloatFloatSwaption* qlFloatFloatSwaption(QlFloatFloatSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
+  try {return ret(new QlFloatFloatSwaption(alloc(new FloatFloatSwaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
+  } catch (std::exception& er) {return handleException<QlFloatFloatSwaption*>(e, er);}}
+// Same shape as qlNonstandardSwaptionCalibrationBasket above, retargeted to FloatFloatSwaption.
+void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
   *len = 0; *helpers = nullptr;
   try {
     std::vector<ext::shared_ptr<BlackCalibrationHelper>> basket = (*arg(o))->calibrationBasket(*arg(swapBase), (*arg(swaptionVol)).currentLink(), (BasketGeneratingEngine::CalibrationBasketType)basketType);

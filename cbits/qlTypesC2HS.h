@@ -113,6 +113,8 @@ typedef struct QlMultiAssetOption QlMultiAssetOption;
 typedef struct QlMultiCurve QlMultiCurve;
 typedef struct QlNonstandardSwap QlNonstandardSwap;
 typedef struct QlNonstandardSwaption QlNonstandardSwaption;
+typedef struct QlFloatFloatSwap QlFloatFloatSwap;
+typedef struct QlFloatFloatSwaption QlFloatFloatSwaption;
 typedef struct QlOISRateHelper QlOISRateHelper;
 typedef struct QlOneAssetOption QlOneAssetOption;
 typedef struct QlOneFactorAffineModel QlOneFactorAffineModel;

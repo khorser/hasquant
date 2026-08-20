@@ -139,6 +139,8 @@ extern "C" {
   QlFixedVsFloatingSwap* qlVanillaSwapAsFixedVsFloatingSwap(QlVanillaSwap *o);
   void qlFreeNonstandardSwap(QlNonstandardSwap *o);
   QlSwap* qlNonstandardSwapAsSwap(QlNonstandardSwap *o);
+  void qlFreeFloatFloatSwap(QlFloatFloatSwap *o);
+  QlSwap* qlFloatFloatSwapAsSwap(QlFloatFloatSwap *o);
   void qlFreeBMASwap(QlBMASwap *o);
   QlSwap* qlBMASwapAsSwap(QlBMASwap *o);
   void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
@@ -174,6 +176,10 @@ extern "C" {
   QlNonstandardSwap* qlNonstandardSwap1(QlFixedVsFloatingSwap* v, char **e);
   QlNonstandardSwap* qlNonstandardSwap(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, double gearing, double spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e);
   QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, unsigned gearingLen, double* gearing, unsigned spreadLen, double* spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e);
+  QlFloatFloatSwap* qlFloatFloatSwap(int type, double nominal1, double nominal2, Schedule* schedule1, QlInterestRateIndex* index1, DayCounter* dayCount1, Schedule* schedule2, QlInterestRateIndex* index2, DayCounter* dayCount2, int intermediateCapitalExchange, int finalCapitalExchange, double gearing1, double spread1, double cappedRate1, double flooredRate1, double gearing2, double spread2, double cappedRate2, double flooredRate2, int paymentConvention1, int paymentConvention2, char **e);
+  QlFloatFloatSwap* qlFloatFloatSwap2(int type, unsigned nominal1Len, double* nominal1, unsigned nominal2Len, double* nominal2, Schedule* schedule1, QlInterestRateIndex* index1, DayCounter* dayCount1, Schedule* schedule2, QlInterestRateIndex* index2, DayCounter* dayCount2, int intermediateCapitalExchange, int finalCapitalExchange, unsigned gearing1Len, double* gearing1, unsigned spread1Len, double* spread1, unsigned cappedRate1Len, double* cappedRate1, unsigned flooredRate1Len, double* flooredRate1, unsigned gearing2Len, double* gearing2, unsigned spread2Len, double* spread2, unsigned cappedRate2Len, double* cappedRate2, unsigned flooredRate2Len, double* flooredRate2, int paymentConvention1, int paymentConvention2, char **e);
+  double qlFloatFloatSwapFairSpread1(QlFloatFloatSwap* o, char **e);
+  double qlFloatFloatSwapFairSpread2(QlFloatFloatSwap* o, char **e);
   QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e);
   Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e);
   Leg* qlFixedVsFloatingSwapFixedLeg(QlFixedVsFloatingSwap* o, char **e);
@@ -278,6 +284,10 @@ extern "C" {
   QlNonstandardSwaption* qlNonstandardSwaption1(QlSwaption* fromSwaption, char **e);
   QlNonstandardSwaption* qlNonstandardSwaption(QlNonstandardSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
   void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e);
+  void qlFreeFloatFloatSwaption(QlFloatFloatSwaption *o);
+  QlOption* qlFloatFloatSwaptionAsOption(QlFloatFloatSwaption *o);
+  QlFloatFloatSwaption* qlFloatFloatSwaption(QlFloatFloatSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
+  void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e);
   void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o);
   QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o);
   void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o);

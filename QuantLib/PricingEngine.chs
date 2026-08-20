@@ -100,6 +100,7 @@ module QuantLib.PricingEngine
   , jamshidianSwaptionEngine
   , gaussian1dSwaptionEngine
   , gaussian1dNonstandardSwaptionEngine
+  , gaussian1dFloatFloatSwaptionEngine
   , juQuadraticApproximationEngine
   , kirkEngine
   , midPointCdsEngine
@@ -578,6 +579,20 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^flatPayoffExtrapolation
   ,withMaybeQuote*`Maybe (GenQuote q)' -- ^oas
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,`Probabilities' -- ^probabilities
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |As 'gaussian1dNonstandardSwaptionEngine', for a
+-- 'QuantLib.Instrument.Swap.FloatFloatSwaption'. Adds 'includeTodaysExercise' -- whether a
+-- fixing due exactly \"today\" counts as part of the exercise-into leg.
+{#fun qlGaussian1dFloatFloatSwaptionEngine as gaussian1dFloatFloatSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
+  ,fromIntegral`Int' -- ^integrationPoints
+  ,`Double' -- ^stddevs
+  ,`Bool' -- ^extrapolatePayoff
+  ,`Bool' -- ^flatPayoffExtrapolation
+  ,withMaybeQuote*`Maybe (GenQuote q)' -- ^oas
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,`Bool' -- ^includeTodaysExercise
   ,`Probabilities' -- ^probabilities
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 

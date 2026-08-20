@@ -50,6 +50,7 @@
 #include <ql/pricingengines/swaption/g2swaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dswaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dnonstandardswaptionengine.hpp>
+#include <ql/pricingengines/swaption/gaussian1dfloatfloatswaptionengine.hpp>
 #include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
 #include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
 #include <ql/pricingengines/swaption/treeswaptionengine.hpp>
@@ -691,6 +692,11 @@ QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integr
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int probabilities, char **e) {
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dNonstandardSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(oas), qlNullableHandle(discountCurve), (Gaussian1dNonstandardSwaptionEngine::Probabilities)probabilities))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+// As qlGaussian1dNonstandardSwaptionEngine, plus a trailing includeTodaysExercise bool before
+// probabilities (gaussian1dfloatfloatswaptionengine.hpp).
+QlPricingEngine* qlGaussian1dFloatFloatSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int includeTodaysExercise, int probabilities, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new Gaussian1dFloatFloatSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(oas), qlNullableHandle(discountCurve), includeTodaysExercise, (Gaussian1dFloatFloatSwaptionEngine::Probabilities)probabilities))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) {return ret(new QlCalibratedModel(*arg(o)));}

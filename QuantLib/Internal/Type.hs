@@ -1758,10 +1758,12 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      QuantoBarrierOption
 -- >    Swaption
 -- >    NonstandardSwaption
+-- >    FloatFloatSwaption
 -- >  Swap*
 -- >    FixedVsFloatingSwap*
 -- >      VanillaSwap
 -- >    NonstandardSwap
+-- >    FloatFloatSwap
 -- >    AssetSwap
 -- >    BMASwap
 -- >    OvernightIndexedSwap
@@ -2045,6 +2047,18 @@ peekNonstandardSwap = peekGenSwap
 withNonstandardSwap :: NonstandardSwap -> (Ptr CNonstandardSwap' -> IO b) -> IO b
 withNonstandardSwap = withForeignPtr . ptr . peel . getInstrument
 
+data CFloatFloatSwap'
+type CFloatFloatSwap = ForeignPtr CFloatFloatSwap'
+type FloatFloatSwap = GenSwap CFloatFloatSwap
+foreign import ccall unsafe "ql.h &qlFreeFloatFloatSwap" qlFreeFloatFloatSwap :: FinalizerPtr CFloatFloatSwap'
+instance Finalizable CFloatFloatSwap' where finalize = qlFreeFloatFloatSwap
+foreign import ccall "ql.h qlFloatFloatSwapAsSwap" qlFloatFloatSwapAsSwap :: Ptr CFloatFloatSwap' -> IO (Ptr CSwap')
+instance Upcastable CFloatFloatSwap' where {type Base CFloatFloatSwap' = CSwap'; upcast = qlFloatFloatSwapAsSwap}
+peekFloatFloatSwap :: Ptr CFloatFloatSwap' -> IO FloatFloatSwap
+peekFloatFloatSwap = peekGenSwap
+withFloatFloatSwap :: FloatFloatSwap -> (Ptr CFloatFloatSwap' -> IO b) -> IO b
+withFloatFloatSwap = withForeignPtr . ptr . peel . getInstrument
+
 data CAssetSwap'
 type CAssetSwap = ForeignPtr CAssetSwap'
 type AssetSwap = GenSwap CAssetSwap
@@ -2176,6 +2190,18 @@ peekNonstandardSwaption :: Ptr CNonstandardSwaption' -> IO NonstandardSwaption
 peekNonstandardSwaption = peekGenOption
 withNonstandardSwaption :: NonstandardSwaption -> (Ptr CNonstandardSwaption' -> IO b) -> IO b
 withNonstandardSwaption = withForeignPtr . ptr . peel . getInstrument
+
+data CFloatFloatSwaption'
+type CFloatFloatSwaption = ForeignPtr CFloatFloatSwaption'
+type FloatFloatSwaption = GenOption CFloatFloatSwaption
+foreign import ccall unsafe "ql.h &qlFreeFloatFloatSwaption" qlFreeFloatFloatSwaption :: FinalizerPtr CFloatFloatSwaption'
+instance Finalizable CFloatFloatSwaption' where finalize = qlFreeFloatFloatSwaption
+foreign import ccall "ql.h qlFloatFloatSwaptionAsOption" qlFloatFloatSwaptionAsOption :: Ptr CFloatFloatSwaption' -> IO (Ptr COption')
+instance Upcastable CFloatFloatSwaption' where {type Base CFloatFloatSwaption' = COption'; upcast = qlFloatFloatSwaptionAsOption}
+peekFloatFloatSwaption :: Ptr CFloatFloatSwaption' -> IO FloatFloatSwaption
+peekFloatFloatSwaption = peekGenOption
+withFloatFloatSwaption :: FloatFloatSwaption -> (Ptr CFloatFloatSwaption' -> IO b) -> IO b
+withFloatFloatSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CMultiAssetOption'
 data CMargrabeOption'

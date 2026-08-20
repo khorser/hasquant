@@ -1,4 +1,5 @@
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Instrument.Swap
   (
     Swaption
@@ -7,6 +8,8 @@ module QuantLib.Instrument.Swap
   , FixedVsFloatingSwap
   , VanillaSwap
   , NonstandardSwap
+  , FloatFloatSwap
+  , FloatFloatSwaption
   , AssetSwap
   , OvernightIndexedSwap
   , BMASwap
@@ -25,6 +28,10 @@ module QuantLib.Instrument.Swap
   , SwaptionPriceType(..)
   , CPIInterpolationType(..)
   , CalibrationBasketType(..)
+  , FloatFloatSwapOpts(..)
+  , defaultFloatFloatSwapOpts
+  , FloatFloatSwapVaryingOpts(..)
+  , defaultFloatFloatSwapVaryingOpts
 
   , swap'
   , swap
@@ -33,6 +40,10 @@ module QuantLib.Instrument.Swap
   , nonstandardSwapFromVanilla
   , nonstandardSwap
   , nonstandardSwap'
+  , floatFloatSwap
+  , floatFloatSwap'
+  , fairSpread1
+  , fairSpread2
   , makeVanillaSwap
   , makeCms
   , zeroCouponInflationSwap
@@ -76,7 +87,9 @@ module QuantLib.Instrument.Swap
   , swaption
   , nonstandardSwaptionFromSwaption
   , nonstandardSwaption
+  , floatFloatSwaption
   , calibrationBasket
+  , floatFloatSwaptionCalibrationBasket
 
   -- AssetSwap
   , assetSwap
@@ -102,6 +115,7 @@ module QuantLib.Instrument.Swap
   , HasSpread(..)
   ) where
 import Data.Maybe(fromMaybe)
+import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.InterestRate#}(VolatilityType)
@@ -157,6 +171,48 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlZeroCouponSwap as ZeroCouponSwap foreign -> CZeroCouponSwap' nocode#}
 {#pointer *QlEquityTotalReturnSwap as EquityTotalReturnSwap foreign -> CEquityTotalReturnSwap' nocode#}
 {#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}
+{#pointer *QlFloatFloatSwap as FloatFloatSwap foreign -> CFloatFloatSwap' nocode#}
+{#pointer *QlFloatFloatSwaption as FloatFloatSwaption foreign -> CFloatFloatSwaption' nocode#}
+{#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
+
+-- FloatFloatSwapOpts/FloatFloatSwapVaryingOpts bundle every trailing param of FloatFloatSwap's
+-- two constructors (floatfloatswap.hpp) -- 12 trailing defaulted params each, past the
+-- options-record threshold (see the add-quantlib-options-record skill). Two separate records
+-- (not one shared) since the scalar ctor's gearing/spread/cappedRate/flooredRate are plain
+-- Double/Maybe Double while the vector ctor's are [Double]. This splice must stay textually
+-- before every {#fun#}-generated binding in this file -- see OISRateHelperOpts in
+-- QuantLib/TermStructure/Yield.chs for why (c2hs always appends its raw foreign-import stubs at
+-- the physical end of the generated module regardless of where in the .chs a {#fun#} hook
+-- appears, so a top-level TH splice in between would split the file into declaration groups
+-- that can't see each other).
+$(deriveOptionsRecord "FloatFloatSwapOpts" []
+  [ ("ffsIntermediateCapitalExchange", [t|Bool|], [|False|])
+  , ("ffsFinalCapitalExchange", [t|Bool|], [|False|])
+  , ("ffsGearing1", [t|Double|], [|1.0|])
+  , ("ffsSpread1", [t|Double|], [|0.0|])
+  , ("ffsCappedRate1", [t|Maybe Double|], [|Nothing|])
+  , ("ffsFlooredRate1", [t|Maybe Double|], [|Nothing|])
+  , ("ffsGearing2", [t|Double|], [|1.0|])
+  , ("ffsSpread2", [t|Double|], [|0.0|])
+  , ("ffsCappedRate2", [t|Maybe Double|], [|Nothing|])
+  , ("ffsFlooredRate2", [t|Maybe Double|], [|Nothing|])
+  , ("ffsPaymentConvention1", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  , ("ffsPaymentConvention2", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  ])
+$(deriveOptionsRecord "FloatFloatSwapVaryingOpts" []
+  [ ("ffsvIntermediateCapitalExchange", [t|Bool|], [|False|])
+  , ("ffsvFinalCapitalExchange", [t|Bool|], [|False|])
+  , ("ffsvGearing1", [t|[Double]|], [|[]|])
+  , ("ffsvSpread1", [t|[Double]|], [|[]|])
+  , ("ffsvCappedRate1", [t|[Double]|], [|[]|])
+  , ("ffsvFlooredRate1", [t|[Double]|], [|[]|])
+  , ("ffsvGearing2", [t|[Double]|], [|[]|])
+  , ("ffsvSpread2", [t|[Double]|], [|[]|])
+  , ("ffsvCappedRate2", [t|[Double]|], [|[]|])
+  , ("ffsvFlooredRate2", [t|[Double]|], [|[]|])
+  , ("ffsvPaymentConvention1", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  , ("ffsvPaymentConvention2", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  ])
 
 -- |implied volatility
 {#fun qlSwaptionImpliedVolatility as impliedVolatility{withSwaption*`Swaption',`Double' -- ^price
@@ -239,6 +295,85 @@ swap' = (uncurry qlSwap1) . unzip
   ,`Bool' -- ^finalCapitalExchange
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
+
+-- |Swap exchanging capped\/floored Libor or CMS coupons with a single flat nominal on each leg.
+-- 'FloatFloatSwapOpts' bundles every trailing param the C++ constructor defaults (gearing\/
+-- spread\/cap\/floor per leg, capital exchange, payment conventions); override only what's
+-- needed via record-update syntax on 'defaultFloatFloatSwapOpts'. See 'floatFloatSwap'' for the
+-- per-period-nominal overload.
+floatFloatSwap :: SwapType -> Double -> Double -> Schedule -> GenInterestRateIndex ridx1
+  -> DayCounter -> Schedule -> GenInterestRateIndex ridx2 -> DayCounter -> FloatFloatSwapOpts
+  -> IO FloatFloatSwap
+floatFloatSwap ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
+  floatFloatSwap_ ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2
+    (ffsIntermediateCapitalExchange opts) (ffsFinalCapitalExchange opts)
+    (ffsGearing1 opts) (ffsSpread1 opts) (ffsCappedRate1 opts) (ffsFlooredRate1 opts)
+    (ffsGearing2 opts) (ffsSpread2 opts) (ffsCappedRate2 opts) (ffsFlooredRate2 opts)
+    (ffsPaymentConvention1 opts) (ffsPaymentConvention2 opts)
+
+{#fun qlFloatFloatSwap as floatFloatSwap_{`SwapType'
+  ,`Double' -- ^nominal1
+  ,`Double' -- ^nominal2
+  ,withSchedule*`Schedule' -- ^schedule1
+  ,withInterestRateIndex*`GenInterestRateIndex ridx1'
+  ,withDayCounter*`DayCounter' -- ^dayCount1
+  ,withSchedule*`Schedule' -- ^schedule2
+  ,withInterestRateIndex*`GenInterestRateIndex ridx2'
+  ,withDayCounter*`DayCounter' -- ^dayCount2
+  ,`Bool' -- ^intermediateCapitalExchange
+  ,`Bool' -- ^finalCapitalExchange
+  ,`Double' -- ^gearing1
+  ,`Double' -- ^spread1
+  ,fromMaybeDouble`Maybe Double' -- ^cappedRate1
+  ,fromMaybeDouble`Maybe Double' -- ^flooredRate1
+  ,`Double' -- ^gearing2
+  ,`Double' -- ^spread2
+  ,fromMaybeDouble`Maybe Double' -- ^cappedRate2
+  ,fromMaybeDouble`Maybe Double' -- ^flooredRate2
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention1
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention2
+  ,preErrorCheck-`String'errorCheck*-}->`FloatFloatSwap'peekFloatFloatSwap*#}
+
+-- |As 'floatFloatSwap', but with a per-period nominal on each leg instead of a single flat value
+-- (full coverage; not used by the upstream example).
+floatFloatSwap' :: SwapType -> [Double] -> [Double] -> Schedule -> GenInterestRateIndex ridx1
+  -> DayCounter -> Schedule -> GenInterestRateIndex ridx2 -> DayCounter
+  -> FloatFloatSwapVaryingOpts -> IO FloatFloatSwap
+floatFloatSwap' ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
+  floatFloatSwap2_ ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2
+    (ffsvIntermediateCapitalExchange opts) (ffsvFinalCapitalExchange opts)
+    (ffsvGearing1 opts) (ffsvSpread1 opts) (ffsvCappedRate1 opts) (ffsvFlooredRate1 opts)
+    (ffsvGearing2 opts) (ffsvSpread2 opts) (ffsvCappedRate2 opts) (ffsvFlooredRate2 opts)
+    (ffsvPaymentConvention1 opts) (ffsvPaymentConvention2 opts)
+
+{#fun qlFloatFloatSwap2 as floatFloatSwap2_{`SwapType'
+  ,withDoubleArray*`[Double]'& -- ^nominal1
+  ,withDoubleArray*`[Double]'& -- ^nominal2
+  ,withSchedule*`Schedule' -- ^schedule1
+  ,withInterestRateIndex*`GenInterestRateIndex ridx1'
+  ,withDayCounter*`DayCounter' -- ^dayCount1
+  ,withSchedule*`Schedule' -- ^schedule2
+  ,withInterestRateIndex*`GenInterestRateIndex ridx2'
+  ,withDayCounter*`DayCounter' -- ^dayCount2
+  ,`Bool' -- ^intermediateCapitalExchange
+  ,`Bool' -- ^finalCapitalExchange
+  ,withDoubleArray*`[Double]'& -- ^gearing1
+  ,withDoubleArray*`[Double]'& -- ^spread1
+  ,withDoubleArray*`[Double]'& -- ^cappedRate1
+  ,withDoubleArray*`[Double]'& -- ^flooredRate1
+  ,withDoubleArray*`[Double]'& -- ^gearing2
+  ,withDoubleArray*`[Double]'& -- ^spread2
+  ,withDoubleArray*`[Double]'& -- ^cappedRate2
+  ,withDoubleArray*`[Double]'& -- ^flooredRate2
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention1
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention2
+  ,preErrorCheck-`String'errorCheck*-}->`FloatFloatSwap'peekFloatFloatSwap*#}
+
+-- |The spread on leg 1 that would make the swap's NPV zero.
+{#fun qlFloatFloatSwapFairSpread1 as fairSpread1{withFloatFloatSwap*`FloatFloatSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The spread on leg 2 that would make the swap's NPV zero.
+{#fun qlFloatFloatSwapFairSpread2 as fairSpread2{withFloatFloatSwap*`FloatFloatSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- | Haskell equivalent of QuantLib's fluent @MakeVanillaSwap@ builder -- a
 -- single function with 'Maybe'-wrapped optional parameters instead of
@@ -403,6 +538,17 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 -- swaptions whose maturity\/strike\/nominal match the underlying's NPV, delta and gamma at each
 -- exercise date ('MaturityStrikeByDeltaGamma').
 {#fun qlNonstandardSwaptionCalibrationBasket as calibrationBasket{withNonstandardSwaption*`NonstandardSwaption'
+  ,withSwapIndex*`GenSwapIndex sidx' -- ^standardSwapBase
+  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv' -- ^swaptionVolatility
+  ,fromEnumC`CalibrationBasketType'
+  ,preArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |An option on a 'FloatFloatSwap'.
+{#fun qlFloatFloatSwaption as floatFloatSwaption{withFloatFloatSwap*`FloatFloatSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`FloatFloatSwaption'peekFloatFloatSwaption*#}
+
+-- |As 'calibrationBasket', for a 'FloatFloatSwaption'.
+{#fun qlFloatFloatSwaptionCalibrationBasket as floatFloatSwaptionCalibrationBasket{withFloatFloatSwaption*`FloatFloatSwaption'
   ,withSwapIndex*`GenSwapIndex sidx' -- ^standardSwapBase
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv' -- ^swaptionVolatility
   ,fromEnumC`CalibrationBasketType'
