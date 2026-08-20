@@ -116,8 +116,6 @@ library
     cxx-options: -DQLTRACK_ALLOCATIONS="/dev/fd/2"
   if flag(trackAllocations) && os(linux)
     cxx-options: -DQLTRACK_ALLOCATIONS="/proc/self/fd/2"
-  if impl(ghc < 8.10)
-    cpp-options: -P
   if flag(usePkgConfig) && !os(windows)
     pkgconfig-depends:
         quantlib >= 1.43
