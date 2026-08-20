@@ -29,6 +29,7 @@ flags:
 extra-source-files:
   - cbits/*.h
   - README.md
+extra-doc-files:
   - CHANGELOG.md
   - WINDOWS.md
 dependencies:

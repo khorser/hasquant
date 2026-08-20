@@ -33,7 +33,7 @@ flags want forward slashes — that's why both spellings appear.
 ## Prerequisites
 
 - GHC 9.10.3 and `cabal.exe`. You do **not** need a separate C++ compiler —
-  GHC bundles a complete Clang/libc++ toolchain.
+  GHC bundles a complete Clang/libc++ toolchain. Also this has been tested with GHC 9.14.1
 - QuantLib 1.43 source at `h:\QuantLib-1.43` (update paths in commands below if it's in another directory)
 
 ### If you have MSYS2 installed
