@@ -148,6 +148,7 @@ executable hasquant_example
       QuantLib.Example.FittedBondCurve
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
+      QuantLib.Example.Gaussian1dModels
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
       QuantLib.Example.IsdaCds
@@ -201,6 +202,7 @@ test-suite hasquant_test
       QuantLib.Example.FittedBondCurve
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
+      QuantLib.Example.Gaussian1dModels
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
       QuantLib.Example.IsdaCds

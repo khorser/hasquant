@@ -35,6 +35,7 @@ import qualified QuantLib.Example.MulticurveBootstrapping as MulticurveExample
 import qualified QuantLib.Example.TARF as TARFExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
+import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
@@ -536,3 +537,70 @@ spec = do
         all (> 0) (FittedBondCurveExample.numIterR rates2) `shouldBe` True
         all (> 0) (FittedBondCurveExample.numIterR rates3) `shouldBe` True
         all (> 0) (FittedBondCurveExample.numIterR rates4) `shouldBe` True
+
+    describe "Gaussian1dModels example (LONG)" $
+      it "check values" $ do
+        -- calibrationBasket returns generic BlackCalibrationHelpers (upstream erases to the
+        -- base inside basketgeneratingengine.cpp before the vector is returned), so nominal/
+        -- strike/expiry per basket element aren't recoverable -- see CLAUDE.md's "A C++
+        -- return type erased by upstream itself" note. Checked instead: basket size (Naive
+        -- and MaturityStrikeByDeltaGamma both generate one helper per exercise date, 9 here),
+        -- and -- the strongest reachable calibration-quality signal, what upstream's
+        -- printModelCalibration actually displays -- that each calibrated helper's modelValue
+        -- matches its marketValue and reprices to the 20% flat input vol.
+        r <- Settings.keepingSettings' Gaussian1dModelsExample.run
+        Gaussian1dModelsExample.basketNaiveLen r `shouldBe` 9
+        Gaussian1dModelsExample.basketMsdgLen r `shouldBe` 9
+        Gaussian1dModelsExample.amortizingBasketLen r `shouldBe` 9
+        Gaussian1dModelsExample.callRightBasketLen0 r `shouldBe` 9
+        Gaussian1dModelsExample.callRightBasketLen100 r `shouldBe` 9
+        Gaussian1dModelsExample.floatBasketNaiveLen r `shouldBe` 9
+        let calib = Gaussian1dModelsExample.basketCalibration r
+        length calib `shouldBe` 9
+        -- LM-calibrated, so 1e-6 relative (not absolute) per CLAUDE.md's CDS/G2 precedent.
+        all (\c -> abs (Gaussian1dModelsExample.ccModelValue c - Gaussian1dModelsExample.ccMarketValue c)
+                     < 1.0e-6 * max 1.0 (abs (Gaussian1dModelsExample.ccMarketValue c))) calib
+          `shouldBe` True
+        map Gaussian1dModelsExample.ccImpliedVol calib `shouldSatisfy` listClose id (replicate 9 0.20) 1.0e-3
+
+        -- Recalibrating the model to the deal-strike (MaturityStrikeByDeltaGamma) basket
+        -- moves the bermudan's price -- both values recorded from a run of this code (no
+        -- upstream test-suite fixture for this exact scenario).
+        Gaussian1dModelsExample.npvAtmGsr r `shouldSatisfy` closePrec 3.808059986124608e-3 1.0e-4
+        Gaussian1dModelsExample.npvDealStrikeGsr r `shouldSatisfy` closePrec 7.627284474492891e-3 1.0e-4
+
+        -- Bond call right (rebated-exercise swaption): widening the credit spread (oas
+        -- 0bp -> 100bp) on the discounting side must reduce the call right's value.
+        let npv0 = Gaussian1dModelsExample.npvCallRight0 r
+            npv100 = Gaussian1dModelsExample.npvCallRight100 r
+        npv0 `shouldSatisfy` closePrec 0.115409311734787 1.0e-4
+        npv100 `shouldSatisfy` closePrec 4.497957039959159e-2 1.0e-4
+        npv100 `shouldSatisfy` (< npv0)
+
+        -- CMS-10Y-vs-Euribor-6M underlying swap (LinearTsrPricer-priced): NPV and its two
+        -- leg NPVs must be internally consistent (leg0 - leg1, signed on a Payer swap).
+        Gaussian1dModelsExample.underlyingCmsSwapNpv r `shouldSatisfy` closePrec 4.447180046586008e-3 1.0e-4
+        let cmsLeg = Gaussian1dModelsExample.cmsLegNpv r
+            euriborLeg = Gaussian1dModelsExample.euriborLegNpv r
+        (cmsLeg + euriborLeg) `shouldSatisfy` closePrec (Gaussian1dModelsExample.underlyingCmsSwapNpv r) 1.0e-8
+
+        -- Float-float (CMS vs Euribor) swaption under GSR: NPV and the "underlyingValue"
+        -- additional result (the underlying swap's value in the GSR-implied smile).
+        Gaussian1dModelsExample.npvFloatGsr r `shouldSatisfy` closePrec 4.291181496956639e-3 1.0e-4
+        Gaussian1dModelsExample.underlyingValueGsr r `shouldSatisfy` closePrec 5.25035058083898e-3 1.0e-4
+
+        -- Same swaption under MarkovFunctional: "not too far from the GSR price" (upstream's
+        -- own prose, ex/Gaussian1dModels.cpp:585) -- a wide relative band, not exact digits.
+        let npvGsr = Gaussian1dModelsExample.npvFloatGsr r
+            npvMarkov = Gaussian1dModelsExample.npvFloatMarkov r
+        npvMarkov `shouldSatisfy` closePrec 3.5487633569440007e-3 1.0e-4
+        abs (npvMarkov - npvGsr) / npvGsr `shouldSatisfy` (< 0.5)
+
+        -- Calibrating Markov's own sigma function to the coterminal ATM swaptions basket
+        -- shouldn't move the underlying-smile match much -- "close to the previous value as
+        -- expected" (ex/Gaussian1dModels.cpp:633-634).
+        let preCalib = Gaussian1dModelsExample.underlyingValueMarkovPreCalib r
+            postCalib = Gaussian1dModelsExample.underlyingValueMarkovPostCalib r
+        preCalib `shouldSatisfy` closePrec 4.300762793278117e-3 1.0e-4
+        postCalib `shouldSatisfy` closePrec 4.330369264462356e-3 1.0e-4
+        abs (postCalib - preCalib) / abs preCalib `shouldSatisfy` (< 0.1)
