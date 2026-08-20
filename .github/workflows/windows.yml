@@ -22,12 +22,22 @@ jobs:
     env:
       GHC_VERSION: "9.10.3"
       QL_VERSION: "1.43"
-      BOOST_INC: C:\boost-inc
-      QL_INSTALL: C:\QuantLib-ghc
+      BOOST_INC: "C:\boost-inc"
+      QL_INSTALL: "C:\QuantLib-ghc"
+      GHCUP_INSTALL_BASE_PREFIX: "C:\\"
+
     steps:
       - uses: actions/checkout@v7
 
+      - name: Cache GHCup
+        id: cache-ghc
+        uses: actions/cache@v6
+        with:
+          path: ${{ env.GHCUP_INSTALL_BASE_PREFIX }}ghcup
+          key: ghc-${{ env.GHC_VERSION }}
+
       - name: Set up GHC and cabal
+        if: steps.cache-ghc.outputs.cache-hit != 'true'
         uses: haskell-actions/setup@v2
         with:
           ghc-version: ${{ env.GHC_VERSION }}
@@ -35,15 +45,13 @@ jobs:
 
       # GHC bundles a complete Clang/libc++ toolchain under <ghc-root>/mingw --
       # that's what everything below is built and linked with, never MSYS2's GCC.
-      # `ghc` on PATH is ghcup's shim at <ghcup-root>\bin\ghc.exe, not the real
-      # versioned install, so Get-Command's path can't be walked up directly --
-      # `--print-libdir` reports the real <ghc-root>\lib instead.
       - name: Locate GHC's bundled clang++ toolchain
         id: ghc-root
         shell: pwsh
         run: |
-          $libDir = (ghc --print-libdir).Trim()
-          $ghcRoot = Split-Path $libDir -Parent
+          $ghcExe = (ghcup whereis ghc $env:GHC_VERSION).Trim()
+          $ghcBin = Split-Path $ghcExe -Parent
+          $ghcRoot = Split-Path $ghcBin -Parent
           if (-not (Test-Path "$ghcRoot\mingw\bin\clang++.exe")) {
             throw "Expected GHC-bundled clang++ at $ghcRoot\mingw\bin\clang++.exe, not found"
           }
@@ -71,16 +79,12 @@ jobs:
           mkdir "%BOOST_INC%"
           mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
 
-      - name: Prepare QuantLib install directory
-        shell: cmd
-        run: if not exist "%QL_INSTALL%" mkdir "%QL_INSTALL%"
-
       - name: Cache built QuantLib
         id: cache-ql
         uses: actions/cache@v6
         with:
           path: ${{ env.QL_INSTALL }}
-          key: quantlib-windows-${{ env.QL_VERSION }}-ghc${{ env.GHC_VERSION }}-v1
+          key: quantlib-${{ env.QL_VERSION }}-ghc${{ env.GHC_VERSION }}
 
       - name: Download QuantLib source
         if: steps.cache-ql.outputs.cache-hit != 'true'
