@@ -29,15 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Cache GHCup
-        id: cache-ghc
-        uses: actions/cache@v6
-        with:
-          path: ${{ env.GHCUP_INSTALL_BASE_PREFIX }}ghcup
-          key: ghc-${{ env.GHC_VERSION }}
-
       - name: Set up GHC and cabal
-        if: steps.cache-ghc.outputs.cache-hit != 'true'
         uses: haskell-actions/setup@v2
         with:
           ghc-version: ${{ env.GHC_VERSION }}
