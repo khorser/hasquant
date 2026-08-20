@@ -101,7 +101,7 @@ library
       cbits/qlTermStructure.cpp
       cbits/qlTermStructureAux.cpp
   build-depends:
-      base >=4.14 && <5.0
+      base >=4.14 && <5
     , template-haskell >=2.16 && <2.25
     , time >=1.9.3 && <1.16
     , transformers >=0.5.6 && <0.7
@@ -161,7 +161,7 @@ executable hasquant_example
       test/exe
   ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
   build-depends:
-      base >=4.14 && <5.0
+      base >=4.14 && <5
     , hasquant
     , time >=1.9.3 && <1.16
   default-language: Haskell2010
@@ -217,7 +217,7 @@ test-suite hasquant_test
   build-depends:
       HUnit >=1.6.2 && <1.7
     , QuickCheck >=2.14.2 && <2.19
-    , base >=4.14 && <5.0
+    , base >=4.14 && <5
     , hasquant
     , hspec >=2.7.10 && <2.12
     , time >=1.9.3 && <1.16
