@@ -16,6 +16,7 @@ services:
         GID: "${GID:-1000}"
 
     image: hasquant:default
+    user: "dev"
     platform: linux/amd64
     init: true
     working_dir: /hasquant

@@ -24,7 +24,6 @@ jobs:
       QL_VERSION: "1.43"
       BOOST_INC: C:\boost-inc
       QL_INSTALL: C:\QuantLib-ghc
-      GHCUP_INSTALL_BASE_PREFIX: C:\
 
     steps:
       - uses: actions/checkout@v7

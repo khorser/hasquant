@@ -62,6 +62,9 @@ RUN ldconfig
 ARG GHC_VERSION=9.10.3
 ENV GHC_VERSION=${GHC_VERSION}
 
+RUN mkdir -p /home/${USERNAME}/.ghcup /home/${USERNAME}/.cabal /home/${USERNAME}/.stack /hasquant/.stack-work /hasquant/dist-newstyle \
+    && chown -R ${UID}:${GID} /home/${USERNAME}/.ghcup /home/${USERNAME}/.cabal /home/${USERNAME}/.stack /hasquant/.stack-work /hasquant/dist-newstyle
+
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
 ENV HOME=/home/${USERNAME}
