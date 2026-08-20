@@ -19,7 +19,6 @@ module QuantLib.TermStructure.Inflation
   , yoyRate
   ) where
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Enum
@@ -31,6 +30,7 @@ import QuantLib.Internal.Enum
 
 #include "ql.h"
 
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlZeroInflationTermStructure as ZeroInflationTermStructure foreign -> CZeroInflationTermStructure' nocode#}
@@ -47,7 +47,7 @@ import QuantLib.Internal.Enum
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
   ,withZeroInflationIndex*`ZeroInflationIndex'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
@@ -61,7 +61,7 @@ import QuantLib.Internal.Enum
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
   ,withYoYInflationIndex*`YoYInflationIndex'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation

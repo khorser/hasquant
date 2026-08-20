@@ -85,7 +85,6 @@ module QuantLib.Instrument.Bond
   , convertibleZeroCouponBond
   ) where
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.CashFlow#}(DurationType)
@@ -101,6 +100,7 @@ import Data.Maybe(fromMaybe)
 
 #include "ql.h"
 
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
@@ -174,13 +174,13 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withSchedule*`Schedule' -- ^schedule
   ,withDoubleArray*`[Double]'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
@@ -192,11 +192,11 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withSchedule*`Schedule' -- ^schedule
   ,withDoubleArray*`[Double]'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,withDoubleArray*`[Double]'& -- ^redemptions
   ,fromIntegral`Int' -- ^paymentLag
@@ -228,12 +228,12 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withSchedule*`Schedule'
   ,withDoubleArray*`[Double]'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,preErrorCheck-`String'errorCheck*-}->`CPIBond'peekCPIBond*#}
 
@@ -242,7 +242,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withCalendar*`Calendar'
   ,`Double' -- ^faceAmount
   ,withDay*`Day' -- ^maturityDate
-  ,`BusinessDayConvention'
+  ,fromEnumC`BusinessDayConvention'
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
@@ -253,7 +253,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withSchedule*`Schedule' -- ^schedule
   ,withIborIndex*`GenIborIndex ibor'
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
-  ,`BusinessDayConvention'
+  ,fromEnumC`BusinessDayConvention'
   ,fromIntegral`Word' -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -264,9 +264,9 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
-  ,`BusinessDayConvention' -- ^fixingConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |CMS-rate bond
@@ -275,7 +275,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withSchedule*`Schedule' -- ^schedule
   ,withSwapIndex*`GenSwapIndex sidx'
   ,withDayCounter*`DayCounter' -- ^paymentDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -294,7 +294,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withSchedule*`Schedule' -- ^schedule
   ,withSwapIndex*`GenSwapIndex sidx'
   ,withDayCounter*`DayCounter' -- ^paymentDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -327,7 +327,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,withSchedule*`Schedule' -- ^schedule
   ,withIborIndex*`GenIborIndex ibor'
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -337,7 +337,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,withDoubleArray*`[Double]'& -- ^redemptions
   ,fromIntegral`Int' -- ^paymentLag
@@ -520,13 +520,13 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 {#fun qlCallableFixedRateBond as callableFixedRateBond{fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
   ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
-  ,withDayCounter*`DayCounter',`BusinessDayConvention'
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention'
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,withCallabilityArray*`[Callability]'&
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,preErrorCheck-`String'errorCheck*-}->`CallableBond'peekCallableBond*#}
 
@@ -534,7 +534,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 {#fun qlCallableZeroCouponBond as callableZeroCouponBond{fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
   ,withCalendar*`Calendar',withDay*`Day' -- ^maturityDate
-  ,withDayCounter*`DayCounter',`BusinessDayConvention'
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention'
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,withCallabilityArray*`[Callability]'&,preErrorCheck-`String'errorCheck*-}->`CallableBond'peekCallableBond*#}
@@ -548,7 +548,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,withDayCounter*`DayCounter',withSchedule*`Schedule',`Double' -- ^redemption
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 
@@ -562,7 +562,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,withDayCounter*`DayCounter',withSchedule*`Schedule',`Double' -- ^redemption
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
   ,preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
 

@@ -111,7 +111,6 @@ module QuantLib.CashFlow
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.Time.Schedule#}(Frequency)
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
@@ -124,6 +123,7 @@ import Data.Maybe(fromMaybe)
 
 #include "ql.h"
 
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
@@ -477,14 +477,14 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 -- |Build a leg of average-BMA coupons.
 {#fun qlAverageBMALeg as averageBMALeg{withSchedule*`Schedule',withBMAIndex*`BMAIndex'
   ,withDoubleArray*`[Double]'& -- ^notionals
-  ,withDayCounter*`DayCounter',`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Build a leg of fixed-rate coupons.
 {#fun qlFixedRateLeg as fixedRateLeg{withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^notionals
   ,withInterestRateArray*`[InterestRate]'& -- ^couponRates
-  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
@@ -516,7 +516,7 @@ iborLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floor
 
 -- |Raw binding for 'iborLeg'\/'iborLegFull': builds a leg of capped\/floored Ibor-rate coupons.
 {#fun qlIborLeg as iborLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withDoubleArray*`[Double]'& -- ^notionals
-  ,withDayCounter*`DayCounter',`BusinessDayConvention' -- ^paymentAdjustment
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withIntArray*`[Word]'&  -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -528,9 +528,9 @@ iborLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floor
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
-  ,`BusinessDayConvention' -- ^fixingConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
@@ -557,7 +557,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 
 -- |Raw binding for 'cmsLeg'\/'cmsLegFull': builds a leg of capped\/floored CMS-rate coupons.
 {#fun qlCmsLeg as cmsLeg_{withSchedule*`Schedule',withSwapIndex*`GenSwapIndex sidx',withDoubleArray*`[Double]'& -- ^notionals
-  ,withDayCounter*`DayCounter',`BusinessDayConvention' -- ^paymentAdjustment
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withIntArray*`[Word]'&  -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -567,26 +567,26 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^zeroPayments
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar
-  ,`BusinessDayConvention' -- ^exCouponConvention
+  ,fromEnumC`BusinessDayConvention' -- ^exCouponConvention
   ,`Bool' -- ^exCouponEndOfMonth
-  ,`BusinessDayConvention' -- ^fixingConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Build a leg of overnight-index coupons.
 {#fun qlOvernightLeg as overnightLeg{withSchedule*`Schedule',withOvernightIborIndex*`OvernightIborIndex',withDoubleArray*`[Double]'& -- ^notionals'
-  ,withDayCounter*`DayCounter',`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Build a leg of range-accrual floating-rate coupons.
 {#fun qlRangeAccrualLeg as rangeAccrualLeg{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withDoubleArray*`[Double]'& -- ^notionals
-  ,withDayCounter*`DayCounter',`BusinessDayConvention',withIntArray*`[Word]'& -- ^fixingDays
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'& -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
   ,withDoubleArray*`[Double]'& -- ^lowerTriggers
   ,withDoubleArray*`[Double]'& -- ^upperTriggers
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^observationTenor
-  ,`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+  ,fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
 -- (a 'CPICoupon' leg -- caps/floors are not exposed, see README.md's TODO).
@@ -596,7 +596,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withDoubleArray*`[Double]'& -- ^notionals
   ,withDoubleArray*`[Double]'& -- ^fixedRates
   ,withDayCounter*`DayCounter' -- ^paymentDayCounter
-  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,`Bool' -- ^subtractInflationNominal
@@ -610,7 +610,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,fromEnumC`CPIInterpolationType' -- ^interpolation
   ,withDoubleArray*`[Double]'& -- ^notionals
   ,withDayCounter*`DayCounter' -- ^paymentDayCounter
-  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withIntArray*`[Word]'& -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads

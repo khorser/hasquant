@@ -97,7 +97,7 @@ import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.CashFlow#}(RateAveragingType)
 import QuantLib.CashFlow(cmsLeg, iborLeg)
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..), adjust, advance)
+{#import QuantLib.Time.Calendar#}(adjust, advance)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 import QuantLib.Time.Schedule(schedule, DateGenerationRule(..))
@@ -352,7 +352,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,withDayCounter*`DayCounter' -- ^fixedDC
   ,withOvernightIborIndex*`OvernightIborIndex',`Double' -- ^spread
   ,fromIntegral`Int' -- ^paymentLag
-  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,`Bool' -- ^telescopicValueDates
   ,`RateAveragingType' -- ^averagingMethod
@@ -368,7 +368,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,withDayCounter*`DayCounter' -- ^fixedDC
   ,withOvernightIborIndex*`OvernightIborIndex',`Double' -- ^spread
   ,fromIntegral`Int' -- ^paymentLag
-  ,`BusinessDayConvention' -- ^paymentAdjustment
+  ,fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,`Bool' -- ^telescopicValueDates
   ,`RateAveragingType' -- ^averagingMethod
@@ -451,7 +451,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
   ,`Double' -- ^fixedRate
   ,withZeroInflationIndex*`ZeroInflationIndex'
@@ -459,7 +459,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,`Bool' -- ^adjustInfObsDates
   ,withCalendar*`Calendar' -- ^infCalendar
-  ,`BusinessDayConvention' -- ^infConvention
+  ,fromEnumC`BusinessDayConvention' -- ^infConvention
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
 
 -- |The fixed rate that would make the swap's NPV zero.
@@ -478,7 +478,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`Double' -- ^spread
   ,withDayCounter*`DayCounter' -- ^yoyDayCount
   ,withCalendar*`Calendar' -- ^paymentCalendar
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
 
 -- |The fixed rate that would make the swap's NPV zero.
@@ -496,14 +496,14 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`Double' -- ^spread
   ,withDayCounter*`DayCounter' -- ^floatDayCount
   ,withSchedule*`Schedule' -- ^floatSchedule
-  ,`BusinessDayConvention' -- ^floatRoll
+  ,fromEnumC`BusinessDayConvention' -- ^floatRoll
   ,fromIntegral`Word' -- ^fixingDays
   ,withIborIndex*`GenIborIndex ibor' -- ^floatIndex
   ,`Double' -- ^fixedRate
   ,`Double' -- ^baseCPI
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
   ,withSchedule*`Schedule' -- ^fixedSchedule
-  ,`BusinessDayConvention' -- ^fixedRoll
+  ,fromEnumC`BusinessDayConvention' -- ^fixedRoll
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,withZeroInflationIndex*`ZeroInflationIndex' -- ^fixedIndex
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
@@ -522,7 +522,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,withDay*`Day' -- ^maturityDate
   ,`Double' -- ^fixedPayment
   ,withIborIndex*`GenIborIndex ibor',withCalendar*`Calendar' -- ^paymentCalendar
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
 
@@ -533,7 +533,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDayCounter
   ,withIborIndex*`GenIborIndex ibor',withCalendar*`Calendar' -- ^paymentCalendar
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
 
@@ -553,7 +553,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`Double' -- ^margin
   ,`Double' -- ^gearing
   ,withCalendar*`Calendar' -- ^paymentCalendar
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
 
@@ -567,7 +567,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,`Double' -- ^margin
   ,`Double' -- ^gearing
   ,withCalendar*`Calendar' -- ^paymentCalendar
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,fromIntegral`Word' -- ^paymentDelay
   ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
 

@@ -83,6 +83,7 @@ module QuantLib.Internal.Enum
   , withLmVolatilityModel
 
   , TimeUnit(..)
+  , BusinessDayConvention(..)
 
   , withEuropeanExercise
   , withSwingExercise
@@ -99,6 +100,8 @@ module QuantLib.Internal.Enum
   , percentageStrikePayoff
   , plainVanillaPayoff
   , swingExercise
+
+  , CalibrationBasketType(..)
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.C.Types(CUInt)
@@ -118,6 +121,13 @@ import QuantLib.Internal.Syntax
 
 -- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
 {#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
+-- moved from QuantLib.Time.Calendar, its "natural" home, for the same reason as TimeUnit above --
+-- needed directly here for RebatedExercise's rebatePaymentConvention param. Like TimeUnit, every
+-- cross-module use marshals through a manual fromEnumC/toEnumC/fromMaybeEnum function rather than
+-- a bare c2hs backtick spec: a bare `` `BusinessDayConvention' `` needs the type's own module's
+-- .chi already built, which this other-modules-listed module isn't guaranteed to have by the time
+-- an early exposed-modules file (e.g. QuantLib.Time.Calendar itself) is processed.
+{#enum BusinessDayConvention{} deriving(Show, Eq)#}
 {#enum ApproximationType{} add prefix="Approximation__" deriving(Show, Eq)#}
 {#enum InterpolationType{} add prefix="Interpolation" deriving(Show, Eq)#}
 -- 2-D interpolators for a BlackVarianceSurface. Unlike InterpolationType/ApproximationType
@@ -142,6 +152,7 @@ import QuantLib.Internal.Syntax
 -- module (built before it, or -- for QuantLib.TermStructure.Yield -- mutually dependent with
 -- it already).
 {#enum CPIInterpolationType{} deriving (Show, Eq, Bounded)#}
+{#enum CalibrationBasketType{} deriving (Show, Eq, Bounded)#}
 
 -- Payoff/Exercise pointer hierarchy: the Finalizable/Upcastable instances and raw phantom
 -- tags (CPayoff' etc.) live in QuantLib.Internal.Type alongside every other class hierarchy;
@@ -159,6 +170,7 @@ type QlEuropeanExercise = Ptr CEuropeanExercise'
 type QlAmericanExercise = Ptr CAmericanExercise'
 type QlSwingExercise = Ptr CSwingExercise'
 type QlBermudanExercise = Ptr CBermudanExercise'
+type QlRebatedExercise = Ptr CRebatedExercise'
 -- identity peek function: c2hs {#fun#} return specs always need a named out-marshaller,
 -- even when (as here) construction should just hand back the raw, un-wrapped pointer.
 peekPtr :: Ptr a -> IO (Ptr a)
@@ -174,6 +186,8 @@ peekPtr = pure
 {#pointer *QlAmericanExercise nocode#}
 {#pointer *QlSwingExercise nocode#}
 {#pointer *QlBermudanExercise nocode#}
+{#pointer *QlRebatedExercise nocode#}
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
@@ -264,6 +278,7 @@ data BermudanExercise =
 -- >  EuropeanExercise
 -- >  BermudanExercise
 -- >    SwingExercise
+-- >  Rebated (wraps another Exercise)
 data Exercise =
     American
       !(Maybe Day) -- ^earliestDate
@@ -273,6 +288,12 @@ data Exercise =
     | Vanilla !ExerciseType
     | European !EuropeanExercise
     | Bermudan !BermudanExercise
+    | Rebated
+        !Exercise -- ^wrapped exercise
+        !Double -- ^rebate
+        !Word -- ^rebateSettlementDays
+        !Calendar -- ^rebatePaymentCalendar
+        !BusinessDayConvention -- ^rebatePaymentConvention
 
 {#fun qlExercise{`ExerciseType',preErrorCheck-`String'errorCheck*-}->`QlExercise'peekPtr*#}
 {#fun qlAmericanExercise{withDay*`Day',withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'peekPtr*#}
@@ -282,6 +303,7 @@ data Exercise =
 {#fun qlEuropeanExercise{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlEuropeanExercise'peekPtr*#}
 {#fun qlSwingExercise{withDayArray*`[Day]'&,withIntArray*`[Word]'&,preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'peekPtr*#}
 {#fun qlSwingExercise1{withDay*`Day',withDay*`Day',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`QlSwingExercise'peekPtr*#}
+{#fun qlRebatedExercise{`QlExercise',`Double',fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`QlRebatedExercise'peekPtr*#}
 
 withEuropeanExercise :: EuropeanExercise -> (QlEuropeanExercise -> IO a) -> IO a
 withEuropeanExercise (EuropeanExercise d) f = qlEuropeanExercise d >>= newCastForeignPtr >>= flip withGenForeignPtr f
@@ -301,6 +323,7 @@ withExercise (Early t p) f = qlEarlyExercise t p >>= newCastForeignPtr >>= flip 
 withExercise (Vanilla t) f = qlExercise t >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withExercise (European e) f = withEuropeanExercise e (\ep -> upcast ep >>= \xp -> f xp `finally` freeUpcast xp)
 withExercise (Bermudan e) f = withBermudanExercise e (\bp -> upcast bp >>= \xp -> f xp `finally` freeUpcast xp)
+withExercise (Rebated e rebate days cal bdc) f = withExercise e (\ep -> qlRebatedExercise ep rebate days cal bdc >>= newGenForeignPtr >>= flip withGenForeignPtr f)
 
 -- | use 'percentageStrikePayoff' to construct 'Payoff'
 data PercentageStrikePayoff = PercentageStrikePayoff

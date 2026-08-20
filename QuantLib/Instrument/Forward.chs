@@ -25,8 +25,7 @@ module QuantLib.Instrument.Forward
   , npvTargetCurrency
   ) where
 import QuantLib.Internal
-{#import QuantLib.Instrument#}
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
 {#import QuantLib.InterestRate#}
 
@@ -36,6 +35,7 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlForward as Forward foreign -> CForward' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
@@ -60,7 +60,7 @@ import QuantLib.Internal.Type
   ,withDay*`Day' -- ^maturityDate
   ,fromEnumC`PositionType',`Double' -- ^strike
   ,fromIntegral`Word' -- ^settlementDays
-  ,withDayCounter*`DayCounter',withCalendar*`Calendar',`BusinessDayConvention',withBond*`GenBond b',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y1)' -- ^discountCurve
+  ,withDayCounter*`DayCounter',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withBond*`GenBond b',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y1)' -- ^discountCurve
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^incomeDiscountCurve
   ,preErrorCheck-`String'errorCheck*-}->`BondForward'peekBondForward*#}
 

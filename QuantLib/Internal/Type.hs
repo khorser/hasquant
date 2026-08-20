@@ -600,6 +600,12 @@ instance Finalizable CSwingExercise' where finalize = qlFreeSwingExercise
 instance Upcastable CSwingExercise' where {type Base CSwingExercise' = CBermudanExercise'; upcast = qlSwingExerciseAsBermudanExercise}
 foreign import ccall "ql.h qlSwingExerciseAsBermudanExercise" qlSwingExerciseAsBermudanExercise :: Ptr CSwingExercise' -> IO (Ptr CBermudanExercise')
 
+data CRebatedExercise'
+foreign import ccall unsafe "ql.h &qlFreeRebatedExercise" qlFreeRebatedExercise :: FinalizerPtr CRebatedExercise'
+instance Finalizable CRebatedExercise' where finalize = qlFreeRebatedExercise
+instance Upcastable CRebatedExercise' where {type Base CRebatedExercise' = CExercise'; upcast = qlRebatedExerciseAsExercise}
+foreign import ccall "ql.h qlRebatedExerciseAsExercise" qlRebatedExerciseAsExercise :: Ptr CRebatedExercise' -> IO (Ptr CExercise')
+
 data CLeg'
 data CCouponLeg'
 newtype GenLeg l = GenLeg {getLeg :: GenForeignPtr l CLeg'}

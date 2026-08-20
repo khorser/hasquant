@@ -8622,7 +8622,7 @@
 | |ql/quotes/simplequote.hpp|bool isValid() const;
 | |ql/quotes/simplequote.hpp|Real setValue(Real value);
 | |ql/quotes/simplequote.hpp|void reset();
-| |ql/rebatedexercise.hpp|RebatedExercise::RebatedExercise(const Exercise & exercise, Real rebate = 0.0, Natural rebateSettlementDays = 0, Calendar rebatePaymentCalendar = NullCalendar(), BusinessDayConvention rebatePaymentConvention = Following);
+|v|ql/rebatedexercise.hpp|RebatedExercise::RebatedExercise(const Exercise & exercise, Real rebate = 0.0, Natural rebateSettlementDays = 0, Calendar rebatePaymentCalendar = NullCalendar(), BusinessDayConvention rebatePaymentConvention = Following);
 | |ql/rebatedexercise.hpp|RebatedExercise::RebatedExercise(const Exercise & exercise, const std::vector<Real> & rebates, Natural rebateSettlementDays = 0, Calendar rebatePaymentCalendar = NullCalendar(), BusinessDayConvention rebatePaymentConvention = Following);
 | |ql/rebatedexercise.hpp|Real RebatedExercise::rebate(Size index) const;
 | |ql/rebatedexercise.hpp|Date RebatedExercise::rebatePaymentDate(Size index) const;

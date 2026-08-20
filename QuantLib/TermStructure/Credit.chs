@@ -31,7 +31,6 @@ module QuantLib.TermStructure.Credit
 #include "qlEnumObjects.h"
 
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 {#import QuantLib.Instrument#}(PricingModel)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
@@ -39,6 +38,7 @@ import QuantLib.Internal.Enum
 
 {#enum ProbabilityTrait{} deriving(Show, Eq)#}
 
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
@@ -102,7 +102,7 @@ import QuantLib.Internal.Enum
 {#fun qlSpreadCdsHelper as spreadCdsHelper{withQuote*`GenQuote q' -- ^runningSpread
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
   ,`Int' -- ^settlementDays
-  ,withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule',withDayCounter*`DayCounter'
+  ,withCalendar*`Calendar',`Frequency',fromEnumC`BusinessDayConvention',`DateGenerationRule',withDayCounter*`DayCounter'
   ,`Double' -- recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,`Bool' -- ^settlesAccrual
@@ -118,7 +118,7 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^runningSpread
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
   ,`Int' -- ^settlementDays
-  ,withCalendar*`Calendar',`Frequency',`BusinessDayConvention',`DateGenerationRule',withDayCounter*`DayCounter'
+  ,withCalendar*`Calendar',`Frequency',fromEnumC`BusinessDayConvention',`DateGenerationRule',withDayCounter*`DayCounter'
   ,`Double' -- ^recoveryDate
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,fromIntegral`Word' -- ^upfrontSettlementDays

@@ -62,8 +62,8 @@ module QuantLib.Index.InterestRate
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Syntax
-{#import QuantLib.Time.Schedule#}(TimeUnit(..))
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
+{#import QuantLib.Time.Schedule#}()
+import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
 -- Plain (non-c2hs) import: QuantLib.CashFlow is later in exposed-modules than
 -- this file, so a {#import#} here would need its .chi before it exists.
@@ -78,6 +78,7 @@ import QuantLib.CashFlow (RateAveragingType)
 #include "ql.h"
 
 {#pointer *Currency foreign -> CCurrency nocode#}
+{#pointer *Calendar foreign -> CCalendar nocode#}
 
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
@@ -284,14 +285,14 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 -- |Creates a swap-rate index whose forwarding and discounting both come from the underlying ibor index's curve.
 {#fun qlSwapIndex as swapIndex{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^fixedLegTenor
-  ,`BusinessDayConvention',withDayCounter*`DayCounter',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
+  ,fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 
 -- |Creates a swap-rate index with a discounting curve distinct from the forwarding curve of the underlying ibor index.
 {#fun qlSwapIndex1 as swapIndex'{`String' -- ^familyName
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^fixedLegTenor
-  ,`BusinessDayConvention' -- ^fixedLegConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fixedLegConvention
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withIborIndex*`GenIborIndex ibor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 
@@ -299,7 +300,7 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 {#fun qlIborIndex{`String' -- ^familyName
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
-  ,withCurrency*`Currency',withCalendar*`Calendar',`BusinessDayConvention'
+  ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumC`BusinessDayConvention'
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 
@@ -320,7 +321,7 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,withCurrency*`Currency',withCalendar*`Calendar' -- ^fixingCalendar
   ,withCalendar*`Calendar' -- ^valueCalendar
   ,withCalendar*`Calendar' -- ^maturityCalendar
-  ,`BusinessDayConvention'
+  ,fromEnumC`BusinessDayConvention'
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 
@@ -332,7 +333,7 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
 
 -- |Returns the business day convention used to adjust the index's value/maturity dates.
-{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex ibor'}->`BusinessDayConvention'#}
+{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex ibor'}->`BusinessDayConvention'toEnumC#}
 
 -- |Returns whether the index's date calculations roll to the end of the month.
 {#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex ibor'}->`Bool'#}

@@ -27,7 +27,6 @@ import Prelude hiding(until)
 
 import QuantLib.Time.Date
 import QuantLib.Internal
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 import QuantLib.Internal.CalendarEnum
@@ -43,6 +42,7 @@ import QuantLib.Internal.CalendarEnum
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Schedule foreign -> CSchedule nocode#}
+{#pointer *Calendar foreign -> CCalendar nocode#}
 
 -- |Constructs a day counter of the given type and (where applicable) convention.
 {#fun qlDayCounter{`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
@@ -73,8 +73,8 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
   ,withDay*`Day' -- ^terminationDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^tenor
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
-  ,`BusinessDayConvention' -- ^terminationDateConvention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^terminationDateConvention
   ,`DateGenerationRule' -- ^rule
   ,`Bool' -- ^endOfMonth
   ,withMaybeDay*`Maybe Day' -- ^firstDate
@@ -83,7 +83,7 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 
 -- |Builds a payment schedule from an explicit list of dates, without checking them for plausibility.
 -- TODO add other parameters, provide a more user-friendly way to build schedules
-{#fun qlSchedule1 as fromDates{withDayArray*`[Day]'&,withCalendar*`Calendar',`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
+{#fun qlSchedule1 as fromDates{withDayArray*`[Day]'&,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 
 -- |truncated schedule
 -- TODO Introduce another Schedule type with restricted interface?

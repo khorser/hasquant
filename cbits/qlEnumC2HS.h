@@ -252,6 +252,11 @@ enum SettlementMethod {
   ParYieldCurve
 };
 
+// pricingengines/swaption/basketgeneratingengine.hpp
+// CalibrationBasketNaive is prefixed because plain "Naive" already belongs to Probabilities
+// above -- C enumerators share one namespace per TU.
+enum CalibrationBasketType {CalibrationBasketNaive, MaturityStrikeByDeltaGamma};
+
 // instruments/callabilityschedule.hpp
 enum CallabilityType {Call, Put};
 

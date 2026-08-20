@@ -90,6 +90,10 @@ extern "C" {
   QlSwingExercise* qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e);
   QlExercise* qlSwingExerciseAsExercise(QlSwingExercise *o);
 
+  void qlFreeRebatedExercise(QlRebatedExercise *o);
+  QlExercise* qlRebatedExerciseAsExercise(QlRebatedExercise *o);
+  QlRebatedExercise* qlRebatedExercise(QlExercise* exercise, double rebate, unsigned rebateSettlementDays, Calendar* rebatePaymentCalendar, int rebatePaymentConvention, char **e);
+
   void qlFreeCapFloor(QlCapFloor *o);
   QlInstrument* qlCapFloorAsInstrument(QlCapFloor *o);
   QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e);

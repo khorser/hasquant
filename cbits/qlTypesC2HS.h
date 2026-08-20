@@ -70,6 +70,7 @@ typedef struct QlEquityQuantoCashFlowPricer QlEquityQuantoCashFlowPricer;
 typedef struct QlEquityTotalReturnSwap QlEquityTotalReturnSwap;
 typedef struct QlEuropeanExercise QlEuropeanExercise;
 typedef struct QlExercise QlExercise;
+typedef struct QlRebatedExercise QlRebatedExercise;
 typedef struct QlExtendedOrnsteinUhlenbeckProcess QlExtendedOrnsteinUhlenbeckProcess;
 typedef struct QlExtOUWithJumpsProcess QlExtOUWithJumpsProcess;
 typedef struct QlFdmQuantoHelper QlFdmQuantoHelper;

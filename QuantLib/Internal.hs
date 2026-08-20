@@ -29,6 +29,7 @@ module QuantLib.Internal
   , fromEnumDouble
   , toEnumDouble
   , fromEnumC
+  , toEnumC
 
   , withDay
   , toDay
@@ -302,6 +303,11 @@ objectMatrix rows cols d
 -- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
 fromEnumC :: (Enum a, Integral b) => a -> b
 fromEnumC = fromIntegral . fromEnum
+
+-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
+-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
+toEnumC :: (Enum a, Integral b) => b -> a
+toEnumC = toEnum . fromIntegral
 
 uncurryNested :: (a -> b -> c -> d) -> (a, (b, c)) -> d
 uncurryNested f (x, (y, z)) = f x y z

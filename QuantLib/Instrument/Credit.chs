@@ -26,7 +26,6 @@ import QuantLib.Internal
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
 {#import QuantLib.Instrument#}(PricingModel)
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -52,7 +51,7 @@ import QuantLib.Internal.Type
 -- side Whether the protection is bought or sold. notional Notional value spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract.
 {#fun qlCreditDefaultSwap as creditDefaultSwap{`ProtectionSide',`Double' -- ^notional
   ,`Double' -- ^spread
-  ,withSchedule*`Schedule',`BusinessDayConvention',withDayCounter*`DayCounter',`Bool' -- ^settlesAccrual
+  ,withSchedule*`Schedule',fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',`Bool' -- ^settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime
   ,withMaybeDay*`Maybe Day' -- ^protectionStart
   ,withClaim*`Claim'
@@ -67,7 +66,7 @@ import QuantLib.Internal.Type
 {#fun qlCreditDefaultSwap1 as creditDefaultSwap'{`ProtectionSide',`Double' -- ^notional
   ,`Double' -- ^upfront
   ,`Double' -- ^spread
-  ,withSchedule*`Schedule',`BusinessDayConvention',withDayCounter*`DayCounter',`Bool' -- ^settlesAccrual
+  ,withSchedule*`Schedule',fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',`Bool' -- ^settlesAccrual
   ,`Bool' -- ^paysAtDefaultTime
   ,withMaybeDay*`Maybe Day' -- ^protectionStart
   ,withMaybeDay*`Maybe Day' -- ^upfrontDate

@@ -1,5 +1,6 @@
 #include <ql/instrument.hpp>
 #include <ql/exercise.hpp>
+#include <ql/rebatedexercise.hpp>
 #include <ql/payoff.hpp>
 #include <ql/instruments/basketoption.hpp>
 #include <ql/instruments/compositeinstrument.hpp>
@@ -267,6 +268,12 @@ QlSwingExercise* qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char 
   try {return ret(new QlSwingExercise(alloc(new SwingExercise(Date(from), Date(to), stepSizeSecs))));
   } catch (std::exception& er) {return handleException<QlSwingExercise*>(e, er);}}
 QlExercise* qlSwingExerciseAsExercise(QlSwingExercise *o) {return ret(new QlExercise(*arg(o)));}
+
+void qlFreeRebatedExercise(QlRebatedExercise *o) {del(o);}
+QlExercise* qlRebatedExerciseAsExercise(QlRebatedExercise *o) {return ret(new QlExercise(*arg(o)));}
+QlRebatedExercise* qlRebatedExercise(QlExercise* exercise, double rebate, unsigned rebateSettlementDays, Calendar* rebatePaymentCalendar, int rebatePaymentConvention, char **e) {
+  try {return ret(new QlRebatedExercise(alloc(new RebatedExercise(**arg(exercise), rebate, rebateSettlementDays, *arg(rebatePaymentCalendar), (BusinessDayConvention)rebatePaymentConvention))));
+  } catch (std::exception& er) {return handleException<QlRebatedExercise*>(e, er);}}
 QlAmericanExercise* qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e) {
   try {return ret(new QlAmericanExercise(alloc(new AmericanExercise(Date(latestDate), payoffAtExpiry))));
   } catch (std::exception& er) {return handleException<QlAmericanExercise*>(e, er);}}

@@ -108,7 +108,6 @@ import Data.Maybe(fromMaybe)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.CashFlow#}(RateAveragingType(..))
-{#import QuantLib.Time.Calendar#}(BusinessDayConvention(..))
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency(..), DateGenerationRule(..))
@@ -124,6 +123,7 @@ import QuantLib.Internal.Type
 -- if you put all pointer declarations in a separate module
 -- ch2s will not attach finalizers to foreign ptrs in other modules
 -- I don't want to create extra modules just to workaround the issue with cyclic dependencies and this will not help with finalizers anyway
+{#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
@@ -221,7 +221,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
@@ -230,7 +230,7 @@ nullableDouble = realToFrac . fromMaybeDouble
 {#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote q',fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
   ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
-  ,withDayCounter*`DayCounter',`BusinessDayConvention' -- ^paymentConvention
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
@@ -246,7 +246,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withMaybeDay*`Maybe Day' -- ^issueDate
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
@@ -264,7 +264,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,withCalendar*`Calendar' -- ^calendar
   ,`Frequency' -- ^fixedFrequency
-  ,`BusinessDayConvention' -- ^fixedConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fixedConvention
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
   ,withIborIndex*`GenIborIndex ibor' -- ^iborIndex
   ,withMaybeQuote*`Maybe (GenQuote q2)' -- ^spread
@@ -321,7 +321,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromIntegral`Word' -- ^monthsToEnd
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter'
   ,`PillarChoice' -- ^pillar
@@ -338,7 +338,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withIborIndex*`GenIborIndex ibor1' -- ^baseIndex
   ,withIborIndex*`GenIborIndex ibor2' -- ^otherIndex
@@ -353,7 +353,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withOvernightIborIndex*`OvernightIborIndex' -- ^baseIndex
   ,withIborIndex*`GenIborIndex ibor' -- ^otherIndex
@@ -368,7 +368,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withIborIndex*`GenIborIndex ibor1' -- ^baseCurrencyIndex
   ,withIborIndex*`GenIborIndex ibor2' -- ^quoteCurrencyIndex
@@ -387,7 +387,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,withIborIndex*`GenIborIndex ibor1' -- ^baseCurrencyIndex
   ,withIborIndex*`GenIborIndex ibor2' -- ^quoteCurrencyIndex
@@ -407,7 +407,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,`Frequency' -- ^fixedFrequency
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
@@ -425,7 +425,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
-  ,`BusinessDayConvention' -- ^convention
+  ,fromEnumC`BusinessDayConvention' -- ^convention
   ,`Bool' -- ^endOfMonth
   ,`Bool' -- ^isFxBaseCurrencyCollateralCurrency
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^collateralCurve
@@ -479,7 +479,7 @@ oisRateHelper' startDate endDate fixedRate idx discountingCurve = do
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
   ,`Bool' -- ^telescopicValueDates
   ,fromIntegral`Int' -- ^paymentLag
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,`Frequency' -- ^paymentFrequency
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^forwardStart
@@ -496,7 +496,7 @@ oisRateHelper' startDate endDate fixedRate idx discountingCurve = do
   ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^pricer
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
-  ,`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
+  ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlOISRateHelper2 as oisRateHelper2_{withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
@@ -505,7 +505,7 @@ oisRateHelper' startDate endDate fixedRate idx discountingCurve = do
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
   ,`Bool' -- ^telescopicValueDates
   ,fromIntegral`Int' -- ^paymentLag
-  ,`BusinessDayConvention' -- ^paymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,`Frequency' -- ^paymentFrequency
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,withMaybeQuote*`Maybe (GenQuote q2)' -- ^overnightSpread
@@ -521,7 +521,7 @@ oisRateHelper' startDate endDate fixedRate idx discountingCurve = do
   ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^pricer
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
-  ,`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
+  ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
 oisRateHelperFull :: Word -> (Int, TimeUnit) -> GenQuote q -> OvernightIborIndex
@@ -576,7 +576,7 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDAys
   ,withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^bmpPeriod
-  ,`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',withBMAIndex*`BMAIndex',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Rate helper for bootstrapping from multiple-resets swap quotes (a floating leg that resets
 -- several times per fixed-leg coupon period).
@@ -590,7 +590,7 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
   ,`Double' -- ^spread
   ,`Frequency' -- ^fixedFrequency
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
-  ,`BusinessDayConvention' -- ^fixedConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fixedConvention
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Rate helper for bootstrapping over FRA rates, taking its fixing/day-count conventions from an
@@ -607,7 +607,7 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
 {#fun qlFraRateHelper2 as fraRateHelper'{withQuote*`GenQuote q',fromEnumQuantity`(Int,TimeUnit)'& -- ^periodToStart
   ,fromIntegral`Word' -- ^lengthInMonths
   ,fromIntegral`Word' -- ^fixingDays
-  ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
+  ,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter'
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
@@ -639,7 +639,7 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
 -- calendar\/convention\/day-counter conventions.
 {#fun qlFuturesRateHelper as futuresRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^immDate
   ,fromIntegral`Word' -- ^lengthInMonths
-  ,withCalendar*`Calendar',`BusinessDayConvention',`Bool' -- ^endOfMonth
+  ,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
   ,`FuturesType' -- ^type
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}

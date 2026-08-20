@@ -32,8 +32,6 @@ import QuantLib.Internal.CalendarEnum
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 
-{#enum BusinessDayConvention{} deriving(Show, Eq)#}
-
 -- |Constructs the calendar for the given country, with an optional market variant.
 {#fun qlCalendar{`Int',`Int',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
@@ -45,10 +43,10 @@ calendar (Joint4 c1 c2 c3 c4 r) = qlJointCalendar4 c1 c2 c3 c4 r
 calendar x = uncurry qlCalendar $ mapCalendar x
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
-{#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',`BusinessDayConvention'}->`Day'toDay#}
+{#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',fromEnumC`BusinessDayConvention'}->`Day'toDay#}
 
 -- |Advances the given date of the given number of business days and returns the result using business day convention and the EOM flag
-{#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,`BusinessDayConvention',`Bool' -- ^endOfMonth
+{#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`BusinessDayConvention',`Bool' -- ^endOfMonth
   }->`Day'toDay#}
 
 -- |Adds a date to the set of holidays for the given calendar.
