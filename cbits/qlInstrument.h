@@ -272,7 +272,7 @@ extern "C" {
   double qlCdsOptionImpliedVolatility(QlCdsOption* o, double price, QlYieldTermStructure* termStructure, QlDefaultProbabilityTermStructure* x3, double recoveryRate, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   double qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e);
   double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, int priceType, char **e);
-  QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
+  QlSwaption* qlSwaption(QlFixedVsFloatingSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
   void qlFreeNonstandardSwaption(QlNonstandardSwaption *o);
   QlOption* qlNonstandardSwaptionAsOption(QlNonstandardSwaption *o);
   QlNonstandardSwaption* qlNonstandardSwaption1(QlSwaption* fromSwaption, char **e);

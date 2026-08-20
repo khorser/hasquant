@@ -562,7 +562,7 @@ double qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e) {
 double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, int priceType, char **e) {
   try {return (*arg(o))->impliedVolatility(price, *arg(discountCurve), guess, accuracy, maxEvaluations, minVol, maxVol, (VolatilityType)type, displacement, (Swaption::PriceType)priceType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
+QlSwaption* qlSwaption(QlFixedVsFloatingSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
   try {return ret(new QlSwaption(alloc(new Swaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
 

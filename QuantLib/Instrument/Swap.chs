@@ -388,7 +388,7 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 {#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |An option on a 'VanillaSwap'.
-{#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
+{#fun qlSwaption as swaption{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- |Converts an existing 'Swaption' into a 'NonstandardSwaption' (upstream's own conversion
 -- constructor).
