@@ -28,8 +28,11 @@ module QuantLib.Model
   , LmVolatilityModel(..)
   , CalibrationHelper
   , BlackCalibrationHelper
+  , GenBlackCalibrationHelper
+  , SwaptionHelper
   , GenCalibrationHelper
   , asCalibrationHelper
+  , asBlackCalibrationHelper
 
   , asCalibratedModel
   , asHestonModel
@@ -60,6 +63,8 @@ module QuantLib.Model
   , swaptionHelper
   , swaptionHelperFromDate
   , swaptionHelperFromDates
+  , swaptionHelperUnderlying
+  , swaptionHelperSwaption
   , times
 
   , discountBond
@@ -74,6 +79,7 @@ module QuantLib.Model
   , impliedVolatility
   , marketValue
   , modelValue
+  , volatility
   , setPricingEngine
   ) where
 #include "qlTypesC2HS.h"
@@ -122,6 +128,9 @@ import QuantLib.Internal.Enum
 
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
+{#pointer *QlSwaptionHelper as SwaptionHelper foreign -> CSwaptionHelper' nocode#}
+{#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
+{#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
 
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
@@ -223,7 +232,7 @@ fixedReversion = [True, False]
 {#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
-{#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[BlackCalibrationHelper]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
+{#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[GenBlackCalibrationHelper bch]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
   ,withMaybeConstraint*`Maybe Constraint'
   ,withDoubleArray*`[Double]'&
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -312,7 +321,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,`Double' -- ^shift
   ,fromMaybeInt`Maybe Word' -- ^settlementDays
   ,`RateAveragingType' -- ^averagingMethod
-  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
 
 -- |Like 'swaptionHelper', but the option's exercise is given as an explicit date rather than a maturity 'Period'.
 {#fun qlSwaptionHelperFromDate as swaptionHelperFromDate{withDay*`Day' -- ^exerciseDate
@@ -328,7 +337,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,`Double' -- ^shift
   ,fromMaybeInt`Maybe Word' -- ^settlementDays
   ,`RateAveragingType' -- ^averagingMethod
-  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
 
 -- |Like 'swaptionHelper', but both the option's exercise and the underlying swap's end are given as explicit dates.
 {#fun qlSwaptionHelperFromDates as swaptionHelperFromDates{withDay*`Day' -- ^exerciseDate
@@ -344,23 +353,29 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,`Double' -- ^shift
   ,fromMaybeInt`Maybe Word' -- ^settlementDays
   ,`RateAveragingType' -- ^averagingMethod
-  ,preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
+
+-- |Upstream's own vanilla swap underlying this helper's swaption.
+{#fun qlSwaptionHelperUnderlying as swaptionHelperUnderlying{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
+
+-- |The 'QuantLib.Instrument.Swap.Swaption' this helper prices internally to compute 'modelValue'.
+{#fun qlSwaptionHelperSwaption as swaptionHelperSwaption{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- |Times relevant to pricing this calibration helper's instrument, to be added to the model's evolution time grid.
-{#fun qlBlackCalibrationHelperTimes as times{withGenCalibrationHelper*`BlackCalibrationHelper',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Returns array of arguments on which calibration is done.
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black price given a volatility.
-{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withGenCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^volatility
+{#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',`Double' -- ^volatility
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the error resulting from the model valuation
-{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperCalibrationError as calibrationError{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black volatility implied by the model.
-{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withGenCalibrationHelper*`BlackCalibrationHelper',`Double' -- ^targetValue
+{#fun qlBlackCalibrationHelperImpliedVolatility as impliedVolatility{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',`Double' -- ^targetValue
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,`Double' -- ^minVol
@@ -368,12 +383,15 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the actual price of the instrument (from volatility)
-{#fun qlBlackCalibrationHelperMarketValue as marketValue{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperMarketValue as marketValue{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |returns the price of the instrument according to the model
-{#fun qlBlackCalibrationHelperModelValue as modelValue{withGenCalibrationHelper*`BlackCalibrationHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackCalibrationHelperModelValue as modelValue{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The quoted market volatility this helper was built with.
+{#fun qlBlackCalibrationHelperVolatility as volatility{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- |Sets the pricing engine used to compute this calibration helper's model value.
-{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withGenCalibrationHelper*`BlackCalibrationHelper',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

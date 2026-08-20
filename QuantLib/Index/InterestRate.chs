@@ -62,7 +62,6 @@ module QuantLib.Index.InterestRate
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Syntax
-{#import QuantLib.Time.Schedule#}()
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Type
 -- Plain (non-c2hs) import: QuantLib.CashFlow is later in exposed-modules than
@@ -79,6 +78,8 @@ import QuantLib.CashFlow (RateAveragingType)
 
 {#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *Calendar foreign -> CCalendar nocode#}
+{#pointer *DayCounter foreign -> CDayCounter nocode#}
+{#pointer *Schedule foreign -> CSchedule nocode#}
 
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}

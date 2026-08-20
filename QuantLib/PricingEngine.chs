@@ -99,6 +99,7 @@ module QuantLib.PricingEngine
   , isdaCdsEngine
   , jamshidianSwaptionEngine
   , gaussian1dSwaptionEngine
+  , gaussian1dNonstandardSwaptionEngine
   , juQuadraticApproximationEngine
   , kirkEngine
   , midPointCdsEngine
@@ -563,6 +564,19 @@ import QuantLib.Internal.Enum
   ,`Double' -- ^stddevs
   ,`Bool' -- ^extrapolatePayoff
   ,`Bool' -- ^flatPayoffExtrapolation
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,`Probabilities' -- ^probabilities
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |As 'gaussian1dSwaptionEngine', for a 'QuantLib.Instrument.Swap.NonstandardSwaption'. Adds
+-- an optional OAS ('oas', continuously compounded w.r.t. the discount curve's day counter) on
+-- top of the shared parameters.
+{#fun qlGaussian1dNonstandardSwaptionEngine as gaussian1dNonstandardSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
+  ,fromIntegral`Int' -- ^integrationPoints
+  ,`Double' -- ^stddevs
+  ,`Bool' -- ^extrapolatePayoff
+  ,`Bool' -- ^flatPayoffExtrapolation
+  ,withMaybeQuote*`Maybe (GenQuote q)' -- ^oas
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
   ,`Probabilities' -- ^probabilities
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

@@ -11,7 +11,7 @@ import Foreign.Storable(peek)
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(peekDynString, preArray, peekDayArray)
+import QuantLib.Internal(peekDynString, preArray, peekDayArray, peekPtrArray)
 import Control.Exception (finally, bracket, mask)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
@@ -683,14 +683,23 @@ peekOISRateHelper :: Ptr COISRateHelper' -> IO OISRateHelper
 peekOISRateHelper = GenRateHelper <.> newGenForeignPtr
 
 -- | > CalibrationHelper
--- >   BlackCalibrationHelper
+-- >   BlackCalibrationHelper*
+-- >     SwaptionHelper
+-- BlackCalibrationHelper is a proper one-AnyOf-layer family (mirrors GenSwap/GenOption under
+-- GenInstrument), not a plain leaf directly under CalibrationHelper as before, so a concrete
+-- subtype (SwaptionHelper) can be given its own getters without a runtime cast: SwaptionHelper's
+-- own underlying()/swaption() need the real SwaptionHelper pointer, while the pre-existing
+-- BlackCalibrationHelper-level accessors (times, blackPrice, impliedVolatility, ...) are
+-- generalized to 'GenBlackCalibrationHelper bch' so they keep working on any leaf, SwaptionHelper
+-- included, without an explicit upcast at each call site.
 type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
 data CCalibrationHelper'
 data CBlackCalibrationHelper'
 newtype GenCalibrationHelper ch = GenCalibrationHelper {getCalibrationHelper :: GenForeignPtr ch CCalibrationHelper'}
 type CCalibrationHelper = ForeignPtr CCalibrationHelper'
+type GenBlackCalibrationHelper bch = GenCalibrationHelper (AnyOf CBlackCalibrationHelper' bch)
 type CBlackCalibrationHelper = ForeignPtr CBlackCalibrationHelper'
-type BlackCalibrationHelper = GenCalibrationHelper CBlackCalibrationHelper
+type BlackCalibrationHelper = GenBlackCalibrationHelper CBlackCalibrationHelper
 foreign import ccall unsafe "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper'
 foreign import ccall unsafe "ql.h &qlFreeBlackCalibrationHelper" qlFreeBlackCalibrationHelper :: FinalizerPtr CBlackCalibrationHelper'
 instance Finalizable CCalibrationHelper' where finalize = qlFreeCalibrationHelper
@@ -703,14 +712,42 @@ peekCalibrationHelper :: Ptr CCalibrationHelper' -> IO CalibrationHelper
 peekCalibrationHelper = GenCalibrationHelper <.> newCastForeignPtr
 withCalibrationHelper :: GenCalibrationHelper ch -> (Ptr CCalibrationHelper' -> IO b) -> IO b
 withCalibrationHelper = withGenForeignPtr . getCalibrationHelper
-withGenCalibrationHelper :: GenCalibrationHelper (ForeignPtr ch) -> (Ptr ch -> IO b) -> IO b
-withGenCalibrationHelper = withForeignPtr . ptr . getCalibrationHelper
+-- hands back the raw stored leaf pointer (e.g. Ptr CSwaptionHelper'); for a marshaller that
+-- upcasts to the concrete Ptr CBlackCalibrationHelper', see 'withBlackCalibrationHelper' below.
+withGenCalibrationHelper :: GenBlackCalibrationHelper (ForeignPtr ch) -> (Ptr ch -> IO b) -> IO b
+withGenCalibrationHelper = withForeignPtr . ptr . peel . getCalibrationHelper
+asBlackCalibrationHelper :: GenBlackCalibrationHelper bch -> IO BlackCalibrationHelper
+asBlackCalibrationHelper = transferGenForeignPtr peekBlackCalibrationHelper . peel . getCalibrationHelper
 peekBlackCalibrationHelper :: Ptr CBlackCalibrationHelper' -> IO BlackCalibrationHelper
-peekBlackCalibrationHelper = GenCalibrationHelper <.> newGenForeignPtr
+peekBlackCalibrationHelper = newCastForeignPtr >=> newGenBlackCalibrationHelper
+withBlackCalibrationHelper :: GenBlackCalibrationHelper bch -> (Ptr CBlackCalibrationHelper' -> IO b) -> IO b
+withBlackCalibrationHelper = withGenForeignPtr . peel . getCalibrationHelper
+newGenBlackCalibrationHelper :: GenForeignPtr bch CBlackCalibrationHelper' -> IO (GenBlackCalibrationHelper bch)
+newGenBlackCalibrationHelper = pure . GenCalibrationHelper . newAnyOf
 withCalibrationHelperArray :: [GenCalibrationHelper ch] -> ((CUInt, Ptr (Ptr CCalibrationHelper')) -> IO b) -> IO b
 withCalibrationHelperArray = withGenArray withCalibrationHelper
-withBlackCalibrationHelperArray :: [BlackCalibrationHelper] -> ((CUInt, Ptr (Ptr CBlackCalibrationHelper')) -> IO b) -> IO b
-withBlackCalibrationHelperArray = withGenArray withGenCalibrationHelper
+withBlackCalibrationHelperArray :: [GenBlackCalibrationHelper bch] -> ((CUInt, Ptr (Ptr CBlackCalibrationHelper')) -> IO b) -> IO b
+withBlackCalibrationHelperArray = withGenArray withBlackCalibrationHelper
+peekBlackCalibrationHelperArray :: Ptr CUInt -> Ptr (Ptr (Ptr CBlackCalibrationHelper')) -> IO [BlackCalibrationHelper]
+peekBlackCalibrationHelperArray = peekPtrArray peekBlackCalibrationHelper
+
+-- SwaptionHelper is only reachable as this concrete type when hasquant itself constructs it
+-- (Model.chs's swaptionHelper/swaptionHelperFromDate/swaptionHelperFromDates); a basket returned
+-- by NonstandardSwaption/FloatFloatSwaption's calibrationBasket is erased to plain
+-- BlackCalibrationHelper by QuantLib's own calibrationBasket signature before it ever reaches
+-- this binding, so underlying/swaption are not reachable on basket elements without a cast --
+-- deliberately not offered there.
+data CSwaptionHelper'
+type CSwaptionHelper = ForeignPtr CSwaptionHelper'
+type SwaptionHelper = GenBlackCalibrationHelper CSwaptionHelper
+foreign import ccall unsafe "ql.h &qlFreeSwaptionHelper" qlFreeSwaptionHelper :: FinalizerPtr CSwaptionHelper'
+instance Finalizable CSwaptionHelper' where finalize = qlFreeSwaptionHelper
+foreign import ccall "ql.h qlSwaptionHelperAsBlackCalibrationHelper" qlSwaptionHelperAsBlackCalibrationHelper :: Ptr CSwaptionHelper' -> IO (Ptr CBlackCalibrationHelper')
+instance Upcastable CSwaptionHelper' where {type Base CSwaptionHelper' = CBlackCalibrationHelper'; upcast = qlSwaptionHelperAsBlackCalibrationHelper}
+peekSwaptionHelper :: Ptr CSwaptionHelper' -> IO SwaptionHelper
+peekSwaptionHelper = newGenForeignPtr >=> newGenBlackCalibrationHelper
+withSwaptionHelper :: SwaptionHelper -> (Ptr CSwaptionHelper' -> IO b) -> IO b
+withSwaptionHelper = withForeignPtr . ptr . peel . getCalibrationHelper
 
 -- | > BlackCalculator
 -- >   BlackScholesCalculator
@@ -1720,8 +1757,11 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >      QuantoForwardVanillaOption
 -- >      QuantoBarrierOption
 -- >    Swaption
+-- >    NonstandardSwaption
 -- >  Swap*
--- >    VanillaSwap
+-- >    FixedVsFloatingSwap*
+-- >      VanillaSwap
+-- >    NonstandardSwap
 -- >    AssetSwap
 -- >    BMASwap
 -- >    OvernightIndexedSwap
@@ -1956,17 +1996,54 @@ peekCallableBond = peekGenBond
 withCallableBond :: CallableBond -> (Ptr CCallableBond' -> IO b) -> IO b
 withCallableBond = withForeignPtr . ptr . peel . getInstrument
 
+-- FixedVsFloatingSwap sits between Swap and VanillaSwap (upstream: VanillaSwap, OvernightIndexedSwap
+-- and MultipleResetsSwap all derive from it, but only VanillaSwap is modelled through it here --
+-- the others still upcast straight to Swap, collapsing the intermediate level as usual). It earns
+-- its own family level (mirrors MultiAssetOption/MargrabeOption's one-more-AnyOf-layer shape)
+-- because SwaptionHelper::underlying() (QuantLib/Model.chs) returns exactly this type, and its own
+-- getters (fairRate, fairSpread, fixedLeg*, floatingLeg*) are inherited, not VanillaSwap-specific --
+-- binding them generically over 'GenFixedVsFloatingSwap' avoids a cast to reach them from that
+-- getter's result. FixedVsFloatingSwap itself is abstract upstream (pure virtual
+-- setupFloatingArguments), so hasquant binds no constructor for it directly.
+data CFixedVsFloatingSwap'
+type GenFixedVsFloatingSwap f = GenSwap (AnyOf CFixedVsFloatingSwap' f)
+type CFixedVsFloatingSwap = ForeignPtr CFixedVsFloatingSwap'
+type FixedVsFloatingSwap = GenFixedVsFloatingSwap CFixedVsFloatingSwap
 data CVanillaSwap'
 type CVanillaSwap = ForeignPtr CVanillaSwap'
-type VanillaSwap = GenSwap CVanillaSwap
+type VanillaSwap = GenFixedVsFloatingSwap CVanillaSwap
+foreign import ccall unsafe "ql.h &qlFreeFixedVsFloatingSwap" qlFreeFixedVsFloatingSwap :: FinalizerPtr CFixedVsFloatingSwap'
 foreign import ccall unsafe "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap'
+instance Finalizable CFixedVsFloatingSwap' where finalize = qlFreeFixedVsFloatingSwap
 instance Finalizable CVanillaSwap' where finalize = qlFreeVanillaSwap
-foreign import ccall "ql.h qlVanillaSwapAsSwap" qlVanillaSwapAsSwap :: Ptr CVanillaSwap' -> IO (Ptr CSwap')
-instance Upcastable CVanillaSwap' where {type Base CVanillaSwap' = CSwap'; upcast = qlVanillaSwapAsSwap}
+foreign import ccall "ql.h qlFixedVsFloatingSwapAsSwap" qlFixedVsFloatingSwapAsSwap :: Ptr CFixedVsFloatingSwap' -> IO (Ptr CSwap')
+foreign import ccall "ql.h qlVanillaSwapAsFixedVsFloatingSwap" qlVanillaSwapAsFixedVsFloatingSwap :: Ptr CVanillaSwap' -> IO (Ptr CFixedVsFloatingSwap')
+instance Upcastable CFixedVsFloatingSwap' where {type Base CFixedVsFloatingSwap' = CSwap'; upcast = qlFixedVsFloatingSwapAsSwap}
+instance Upcastable CVanillaSwap' where {type Base CVanillaSwap' = CFixedVsFloatingSwap'; upcast = qlVanillaSwapAsFixedVsFloatingSwap}
+asFixedVsFloatingSwap :: GenFixedVsFloatingSwap f -> IO FixedVsFloatingSwap
+asFixedVsFloatingSwap = transferGenForeignPtr peekFixedVsFloatingSwap . peel . peel . getInstrument
+peekFixedVsFloatingSwap :: Ptr CFixedVsFloatingSwap' -> IO FixedVsFloatingSwap
+peekFixedVsFloatingSwap = newCastForeignPtr >=> newGenFixedVsFloatingSwap
+withFixedVsFloatingSwap :: GenFixedVsFloatingSwap f -> (Ptr CFixedVsFloatingSwap' -> IO b) -> IO b
+withFixedVsFloatingSwap = withGenForeignPtr . peel . peel . getInstrument
+newGenFixedVsFloatingSwap :: GenForeignPtr f CFixedVsFloatingSwap' -> IO (GenFixedVsFloatingSwap f)
+newGenFixedVsFloatingSwap = pure . GenInstrument . newAnyOf . newAnyOf
 peekVanillaSwap :: Ptr CVanillaSwap' -> IO VanillaSwap
-peekVanillaSwap = peekGenSwap
+peekVanillaSwap = newGenForeignPtr >=> newGenFixedVsFloatingSwap
 withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap' -> IO b) -> IO b
-withVanillaSwap = withForeignPtr . ptr . peel . getInstrument
+withVanillaSwap = withForeignPtr . ptr . peel . peel . getInstrument
+
+data CNonstandardSwap'
+type CNonstandardSwap = ForeignPtr CNonstandardSwap'
+type NonstandardSwap = GenSwap CNonstandardSwap
+foreign import ccall unsafe "ql.h &qlFreeNonstandardSwap" qlFreeNonstandardSwap :: FinalizerPtr CNonstandardSwap'
+instance Finalizable CNonstandardSwap' where finalize = qlFreeNonstandardSwap
+foreign import ccall "ql.h qlNonstandardSwapAsSwap" qlNonstandardSwapAsSwap :: Ptr CNonstandardSwap' -> IO (Ptr CSwap')
+instance Upcastable CNonstandardSwap' where {type Base CNonstandardSwap' = CSwap'; upcast = qlNonstandardSwapAsSwap}
+peekNonstandardSwap :: Ptr CNonstandardSwap' -> IO NonstandardSwap
+peekNonstandardSwap = peekGenSwap
+withNonstandardSwap :: NonstandardSwap -> (Ptr CNonstandardSwap' -> IO b) -> IO b
+withNonstandardSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CAssetSwap'
 type CAssetSwap = ForeignPtr CAssetSwap'
@@ -2087,6 +2164,18 @@ peekSwaption :: Ptr CSwaption' -> IO Swaption
 peekSwaption = peekGenOption
 withSwaption :: Swaption -> (Ptr CSwaption' -> IO b) -> IO b
 withSwaption = withForeignPtr . ptr . peel . getInstrument
+
+data CNonstandardSwaption'
+type CNonstandardSwaption = ForeignPtr CNonstandardSwaption'
+type NonstandardSwaption = GenOption CNonstandardSwaption
+foreign import ccall unsafe "ql.h &qlFreeNonstandardSwaption" qlFreeNonstandardSwaption :: FinalizerPtr CNonstandardSwaption'
+instance Finalizable CNonstandardSwaption' where finalize = qlFreeNonstandardSwaption
+foreign import ccall "ql.h qlNonstandardSwaptionAsOption" qlNonstandardSwaptionAsOption :: Ptr CNonstandardSwaption' -> IO (Ptr COption')
+instance Upcastable CNonstandardSwaption' where {type Base CNonstandardSwaption' = COption'; upcast = qlNonstandardSwaptionAsOption}
+peekNonstandardSwaption :: Ptr CNonstandardSwaption' -> IO NonstandardSwaption
+peekNonstandardSwaption = peekGenOption
+withNonstandardSwaption :: NonstandardSwaption -> (Ptr CNonstandardSwaption' -> IO b) -> IO b
+withNonstandardSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CMultiAssetOption'
 data CMargrabeOption'

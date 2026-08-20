@@ -52,6 +52,7 @@ module QuantLib.Internal
   , peekUIntArray
   , peekWord
   , peekStructArray
+  , peekPtrArray
   , Matrix(..)
   , realMatrix
   , objectMatrix
@@ -64,7 +65,7 @@ where
 
 import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
 import Foreign.C.String(CString, peekCString)
-import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.Ptr(Ptr, nullPtr, castPtr)
 import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool)
@@ -136,7 +137,7 @@ foreign import ccall safe "ql.h qlFreeInts" qlFreeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeUInts" qlFreeUInts :: Ptr CUInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> IO ()
 foreign import ccall safe "ql.h &qlFreeDoubles" qlFreeDoublesFin :: FinalizerPtr CDouble
---foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
+foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
 foreign import ccall safe "ql.h qlFreeAdditionalResults" qlFreeAdditionalResults :: CUInt -> Ptr () -> IO ()
 foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
 foreign import ccall safe "ql.h qlFreeSavedSettings" qlFreeSavedSettings :: Ptr () -> IO ()
@@ -223,6 +224,18 @@ peekStructArray convert freeFn pl pp = do
   raws <- peekArray (fromIntegral l) p
   results <- mapM convert raws
   results <$ freeFn l p
+
+-- |Like 'peekStructArray' but for a @T**@ array of C++-owned pointers to live objects: peeks the
+-- length/pointer out-params, converts each raw pointer to a live Haskell value via @peekOne@
+-- (installing that value's own finalizer over the pointee), then frees only the array spine via
+-- 'qlFreePointerArray' -- not the pointees, whose lifetime @peekOne@ has now taken over.
+peekPtrArray :: (Ptr a -> IO b) -> Ptr CUInt -> Ptr (Ptr (Ptr a)) -> IO [b]
+peekPtrArray peekOne pl pp = do
+  l <- peek pl
+  p <- peek pp
+  ptrs <- peekArray (fromIntegral l) p
+  xs <- mapM peekOne ptrs
+  xs <$ qlFreePointerArray (castPtr p)
 
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)

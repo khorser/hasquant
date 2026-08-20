@@ -133,8 +133,12 @@ extern "C" {
 
   void qlFreeSwap(QlSwap *o);
   QlInstrument* qlSwapAsInstrument(QlSwap *o);
+  void qlFreeFixedVsFloatingSwap(QlFixedVsFloatingSwap *o);
+  QlSwap* qlFixedVsFloatingSwapAsSwap(QlFixedVsFloatingSwap *o);
   void qlFreeVanillaSwap(QlVanillaSwap *o);
-  QlSwap* qlVanillaSwapAsSwap(QlVanillaSwap *o);
+  QlFixedVsFloatingSwap* qlVanillaSwapAsFixedVsFloatingSwap(QlVanillaSwap *o);
+  void qlFreeNonstandardSwap(QlNonstandardSwap *o);
+  QlSwap* qlNonstandardSwapAsSwap(QlNonstandardSwap *o);
   void qlFreeBMASwap(QlBMASwap *o);
   QlSwap* qlBMASwapAsSwap(QlBMASwap *o);
   void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
@@ -167,10 +171,13 @@ extern "C" {
   QlAssetSwap* qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, double gearing, double nonParRepayment, int dealMaturity, char **e);
   QlBMASwap* qlBMASwap(int type, double nominal, Schedule* liborSchedule, double liborFraction, double liborSpread, QlIborIndex* liborIndex, DayCounter* liborDayCount, Schedule* bmaSchedule, QlBMAIndex* bmaIndex, DayCounter* bmaDayCount, char **e);
   QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, int useIndexedCoupons, char **e);
+  QlNonstandardSwap* qlNonstandardSwap1(QlVanillaSwap* v, char **e);
+  QlNonstandardSwap* qlNonstandardSwap(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, double gearing, double spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e);
+  QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, unsigned gearingLen, double* gearing, unsigned spreadLen, double* spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e);
   QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e);
   Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e);
-  Leg* qlVanillaSwapFixedLeg(QlVanillaSwap* o, char **e);
-  Leg* qlVanillaSwapFloatingLeg(QlVanillaSwap* o, char **e);
+  Leg* qlFixedVsFloatingSwapFixedLeg(QlFixedVsFloatingSwap* o, char **e);
+  Leg* qlFixedVsFloatingSwapFloatingLeg(QlFixedVsFloatingSwap* o, char **e);
   Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e);
   Leg* qlAssetSwapFloatingLeg(QlAssetSwap* o, char **e);
   Leg* qlBMASwapBmaLeg(QlBMASwap* o, char **e);
@@ -206,12 +213,12 @@ extern "C" {
   double qlSwapNpvDateDiscount(QlSwap* o, char **e);
   int qlSwapStartDate(QlSwap* o, char **e);
   double qlSwapStartDiscounts(QlSwap* o, unsigned j, char **e);
-  double qlVanillaSwapFairRate(QlVanillaSwap* o, char **e);
-  double qlVanillaSwapFairSpread(QlVanillaSwap* o, char **e);
-  double qlVanillaSwapFixedLegBPS(QlVanillaSwap* o, char **e);
-  double qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e);
-  double qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e);
-  double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e);
+  double qlFixedVsFloatingSwapFairRate(QlFixedVsFloatingSwap* o, char **e);
+  double qlFixedVsFloatingSwapFairSpread(QlFixedVsFloatingSwap* o, char **e);
+  double qlFixedVsFloatingSwapFixedLegBPS(QlFixedVsFloatingSwap* o, char **e);
+  double qlFixedVsFloatingSwapFixedLegNPV(QlFixedVsFloatingSwap* o, char **e);
+  double qlFixedVsFloatingSwapFloatingLegBPS(QlFixedVsFloatingSwap* o, char **e);
+  double qlFixedVsFloatingSwapFloatingLegNPV(QlFixedVsFloatingSwap* o, char **e);
 
   void qlFreeEquityTotalReturnSwap(QlEquityTotalReturnSwap *o);
   QlSwap* qlEquityTotalReturnSwapAsSwap(QlEquityTotalReturnSwap *o);
@@ -266,6 +273,11 @@ extern "C" {
   double qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e);
   double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, int type, double displacement, int priceType, char **e);
   QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
+  void qlFreeNonstandardSwaption(QlNonstandardSwaption *o);
+  QlOption* qlNonstandardSwaptionAsOption(QlNonstandardSwaption *o);
+  QlNonstandardSwaption* qlNonstandardSwaption1(QlSwaption* fromSwaption, char **e);
+  QlNonstandardSwaption* qlNonstandardSwaption(QlNonstandardSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e);
+  void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e);
   void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o);
   QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o);
   void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o);

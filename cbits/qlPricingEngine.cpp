@@ -49,6 +49,8 @@
 #include <ql/pricingengines/swaption/fdhullwhiteswaptionengine.hpp>
 #include <ql/pricingengines/swaption/g2swaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dswaptionengine.hpp>
+#include <ql/pricingengines/swaption/gaussian1dnonstandardswaptionengine.hpp>
+#include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
 #include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
 #include <ql/pricingengines/swaption/treeswaptionengine.hpp>
 #include <ql/pricingengines/vanilla/analyticbsmhullwhiteengine.hpp>
@@ -687,6 +689,9 @@ void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double *
 QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, int probabilities, char **e) {
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(discountCurve), (Gaussian1dSwaptionEngine::Probabilities)probabilities))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int probabilities, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new Gaussian1dNonstandardSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(oas), qlNullableHandle(discountCurve), (Gaussian1dNonstandardSwaptionEngine::Probabilities)probabilities))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
@@ -714,15 +719,25 @@ QlBlackCalibrationHelper* qlCapHelper(int l, int u, QlQuote* volatility, QlIborI
 QlBlackCalibrationHelper* qlHestonModelHelper(int l, int u, Calendar* calendar, QlQuote* s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
   try {return ret(new QlBlackCalibrationHelper(alloc(new HestonModelHelper(Period(l, (TimeUnit)u), *arg(calendar), *arg(s0), strikePrice, *arg(volatility), *arg(riskFreeRate), *arg(dividendYield), (BlackCalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
-QlBlackCalibrationHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
-  try {return ret(new QlBlackCalibrationHelper(alloc(new SwaptionHelper(Period(l, (TimeUnit)u), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
-  } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
-QlBlackCalibrationHelper* qlSwaptionHelperFromDate(int exerciseDate, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
-  try {return ret(new QlBlackCalibrationHelper(alloc(new SwaptionHelper(Date(exerciseDate), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
-  } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
-QlBlackCalibrationHelper* qlSwaptionHelperFromDates(int exerciseDate, int endDate, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
-  try {return ret(new QlBlackCalibrationHelper(alloc(new SwaptionHelper(Date(exerciseDate), Date(endDate), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
-  } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
+void qlFreeSwaptionHelper(QlSwaptionHelper *o) {del(o);}
+QlBlackCalibrationHelper* qlSwaptionHelperAsBlackCalibrationHelper(QlSwaptionHelper *o) {return ret(new QlBlackCalibrationHelper(*arg(o)));}
+QlSwaptionHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
+  try {return ret(new QlSwaptionHelper(alloc(new SwaptionHelper(Period(l, (TimeUnit)u), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
+  } catch (std::exception& er) {return handleException<QlSwaptionHelper*>(e, er);}}
+QlSwaptionHelper* qlSwaptionHelperFromDate(int exerciseDate, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
+  try {return ret(new QlSwaptionHelper(alloc(new SwaptionHelper(Date(exerciseDate), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
+  } catch (std::exception& er) {return handleException<QlSwaptionHelper*>(e, er);}}
+QlSwaptionHelper* qlSwaptionHelperFromDates(int exerciseDate, int endDate, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
+  try {return ret(new QlSwaptionHelper(alloc(new SwaptionHelper(Date(exerciseDate), Date(endDate), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
+  } catch (std::exception& er) {return handleException<QlSwaptionHelper*>(e, er);}}
+// Both accessors are cast-free: o is already a genuine SwaptionHelper (constructed as one above),
+// so underlying()/swaption() are plain method calls, not a downcast from a type-erased base.
+QlFixedVsFloatingSwap* qlSwaptionHelperUnderlying(QlSwaptionHelper* o, char **e) {
+  try {return ret(new QlFixedVsFloatingSwap((*arg(o))->underlying()));
+  } catch (std::exception& er) {return handleException<QlFixedVsFloatingSwap*>(e, er);}}
+QlSwaption* qlSwaptionHelperSwaption(QlSwaptionHelper* o, char **e) {
+  try {return ret(new QlSwaption((*arg(o))->swaption()));
+  } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
 void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, double **ts, char **e) {
   try {std::list<double> times;(*arg(o))->addTimesTo(times);*len = times.size();*ts = qlAllocateDoubles(*len);std::copy(times.begin(), times.end(), *ts);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
@@ -736,6 +751,9 @@ double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, do
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalibrationHelperMarketValue(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->marketValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->modelValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlQuote* qlBlackCalibrationHelperVolatility(QlBlackCalibrationHelper* o, char **e) {
+  try {return ret(new QlQuote((*arg(o))->volatility().currentLink()));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 
 void qlFreeStochasticProcess1D(QlStochasticProcess1D *o) {del(o);}
 QlStochasticProcess* qlStochasticProcess1DAsStochasticProcess(QlStochasticProcess1D *o) {return ret(new QlStochasticProcess(*arg(o)));}

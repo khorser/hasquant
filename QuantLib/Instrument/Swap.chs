@@ -2,8 +2,11 @@
 module QuantLib.Instrument.Swap
   (
     Swaption
+  , NonstandardSwaption
   , Swap
+  , FixedVsFloatingSwap
   , VanillaSwap
+  , NonstandardSwap
   , AssetSwap
   , OvernightIndexedSwap
   , BMASwap
@@ -21,11 +24,15 @@ module QuantLib.Instrument.Swap
   , SwapType(..)
   , SwaptionPriceType(..)
   , CPIInterpolationType(..)
+  , CalibrationBasketType(..)
 
   , swap'
   , swap
   , bmaSwap
   , vanillaSwap
+  , nonstandardSwapFromVanilla
+  , nonstandardSwap
+  , nonstandardSwap'
   , makeVanillaSwap
   , makeCms
   , zeroCouponInflationSwap
@@ -67,6 +74,9 @@ module QuantLib.Instrument.Swap
   , liborLegNPV
 
   , swaption
+  , nonstandardSwaptionFromSwaption
+  , nonstandardSwaption
+  , calibrationBasket
 
   -- AssetSwap
   , assetSwap
@@ -131,7 +141,13 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
 {#pointer *QlSwap as Swap foreign -> CSwap' nocode#}
+{#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
+{#pointer *QlNonstandardSwap as NonstandardSwap foreign -> CNonstandardSwap' nocode#}
+{#pointer *QlNonstandardSwaption as NonstandardSwaption foreign -> CNonstandardSwaption' nocode#}
+{#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
+{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
+{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap' nocode#}
 {#pointer *QlBMASwap as BMASwap foreign -> CBMASwap' nocode#}
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
@@ -182,6 +198,47 @@ swap' = (uncurry qlSwap1) . unzip
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
   ,preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+
+-- |Converts an existing 'VanillaSwap' into a 'NonstandardSwap' (upstream's own conversion
+-- constructor, @NonstandardSwap(const FixedVsFloatingSwap&)@).
+{#fun qlNonstandardSwap1 as nonstandardSwapFromVanilla{withVanillaSwap*`VanillaSwap'
+  ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
+
+-- |'VanillaSwap' generalized to per-period fixed/floating nominals and fixed rates, plus
+-- optional intermediate\/final notional exchange -- a single 'Double' gearing\/spread shared
+-- across all floating periods. See 'nonstandardSwap'' for a per-period gearing\/spread.
+{#fun qlNonstandardSwap as nonstandardSwap{`SwapType'
+  ,withDoubleArray*`[Double]'& -- ^fixedNominal
+  ,withDoubleArray*`[Double]'& -- ^floatingNominal
+  ,withSchedule*`Schedule' -- ^fixedSchedule
+  ,withDoubleArray*`[Double]'& -- ^fixedRate
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withSchedule*`Schedule' -- ^floatingSchedule
+  ,withIborIndex*`GenIborIndex ibor'
+  ,`Double' -- ^gearing
+  ,`Double' -- ^spread
+  ,withDayCounter*`DayCounter' -- ^floatingDayCount
+  ,`Bool' -- ^intermediateCapitalExchange
+  ,`Bool' -- ^finalCapitalExchange
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
+  ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
+
+-- |As 'nonstandardSwap', but with a per-period gearing and spread instead of one shared value.
+{#fun qlNonstandardSwap2 as nonstandardSwap'{`SwapType'
+  ,withDoubleArray*`[Double]'& -- ^fixedNominal
+  ,withDoubleArray*`[Double]'& -- ^floatingNominal
+  ,withSchedule*`Schedule' -- ^fixedSchedule
+  ,withDoubleArray*`[Double]'& -- ^fixedRate
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withSchedule*`Schedule' -- ^floatingSchedule
+  ,withIborIndex*`GenIborIndex ibor'
+  ,withDoubleArray*`[Double]'& -- ^gearing
+  ,withDoubleArray*`[Double]'& -- ^spread
+  ,withDayCounter*`DayCounter' -- ^floatingDayCount
+  ,`Bool' -- ^intermediateCapitalExchange
+  ,`Bool' -- ^finalCapitalExchange
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
+  ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- | Haskell equivalent of QuantLib's fluent @MakeVanillaSwap@ builder -- a
 -- single function with 'Maybe'-wrapped optional parameters instead of
@@ -332,6 +389,25 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 
 -- |An option on a 'VanillaSwap'.
 {#fun qlSwaption as swaption{withVanillaSwap*`VanillaSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
+
+-- |Converts an existing 'Swaption' into a 'NonstandardSwaption' (upstream's own conversion
+-- constructor).
+{#fun qlNonstandardSwaption1 as nonstandardSwaptionFromSwaption{withSwaption*`Swaption'
+  ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwaption'peekNonstandardSwaption*#}
+
+-- |An option on a 'NonstandardSwap'.
+{#fun qlNonstandardSwaption as nonstandardSwaption{withNonstandardSwap*`NonstandardSwap',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`NonstandardSwaption'peekNonstandardSwaption*#}
+
+-- |Auto-generates a basket of plain 'Swaption's used to calibrate a model to price a
+-- 'NonstandardSwaption' -- either ATM swaptions adapted to the exercise dates ('Naive') or
+-- swaptions whose maturity\/strike\/nominal match the underlying's NPV, delta and gamma at each
+-- exercise date ('MaturityStrikeByDeltaGamma').
+{#fun qlNonstandardSwaptionCalibrationBasket as calibrationBasket{withNonstandardSwaption*`NonstandardSwaption'
+  ,withSwapIndex*`GenSwapIndex sidx' -- ^standardSwapBase
+  ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv' -- ^swaptionVolatility
+  ,fromEnumC`CalibrationBasketType'
+  ,preArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- AssetSwap
 -- |Bullet bond vs Libor swap (par or market asset swap, per /parAssetSwap/).
@@ -590,16 +666,16 @@ instance HasFixedLeg OvernightIndexedSwap where
   fixedLeg = qlOvernightIndexedSwapFixedLeg
   fixedLegBPS = qlOvernightIndexedSwapFixedLegBPS
   fixedLegNPV = qlOvernightIndexedSwapFixedLegNPV
-instance HasFixedLeg VanillaSwap where
-  fairRate = qlVanillaSwapFairRate
-  fixedLeg = qlVanillaSwapFixedLeg
-  fixedLegBPS = qlVanillaSwapFixedLegBPS
-  fixedLegNPV = qlVanillaSwapFixedLegNPV
+instance HasFixedLeg (GenFixedVsFloatingSwap f) where
+  fairRate = qlFixedVsFloatingSwapFairRate
+  fixedLeg = qlFixedVsFloatingSwapFixedLeg
+  fixedLegBPS = qlFixedVsFloatingSwapFixedLegBPS
+  fixedLegNPV = qlFixedVsFloatingSwapFixedLegNPV
 
 class HasSpread a where
   fairSpread :: a -> IO Double
-instance HasSpread VanillaSwap where
-  fairSpread = qlVanillaSwapFairSpread
+instance HasSpread (GenFixedVsFloatingSwap f) where
+  fairSpread = qlFixedVsFloatingSwapFairSpread
 instance HasSpread OvernightIndexedSwap where
   fairSpread = qlOvernightIndexedSwapFairSpread
 instance HasSpread AssetSwap where
@@ -615,32 +691,32 @@ class HasFloatingLeg a where
   floatingLeg :: a -> IO Leg
   floatingLegBPS :: a -> IO Double
   floatingLegNPV :: a -> IO Double
-instance HasFloatingLeg VanillaSwap where
-  floatingLeg = qlVanillaSwapFloatingLeg
-  floatingLegBPS = qlVanillaSwapFloatingLegBPS
-  floatingLegNPV = qlVanillaSwapFloatingLegNPV
+instance HasFloatingLeg (GenFixedVsFloatingSwap f) where
+  floatingLeg = qlFixedVsFloatingSwapFloatingLeg
+  floatingLegBPS = qlFixedVsFloatingSwapFloatingLegBPS
+  floatingLegNPV = qlFixedVsFloatingSwapFloatingLegNPV
 instance HasFloatingLeg AssetSwap where
   floatingLeg = qlAssetSwapFloatingLeg
   floatingLegBPS = qlAssetSwapFloatingLegBPS
   floatingLegNPV = qlAssetSwapFloatingLegNPV
 
 -- |The spread that would make the swap's NPV zero.
-{#fun qlVanillaSwapFairSpread{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedVsFloatingSwapFairSpread{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The spread that would make the swap's NPV zero.
 {#fun qlAssetSwapFairSpread{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The fixed rate that would make the swap's NPV zero.
-{#fun qlVanillaSwapFairRate{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedVsFloatingSwapFairRate{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The fixed leg's cash flows.
-{#fun qlVanillaSwapFixedLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlFixedVsFloatingSwapFixedLeg{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Basis-point sensitivity of the fixed leg.
-{#fun qlVanillaSwapFixedLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedVsFloatingSwapFixedLegBPS{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the fixed leg.
-{#fun qlVanillaSwapFixedLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedVsFloatingSwapFixedLegNPV{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The fixed rate that would make the swap's NPV zero.
 {#fun qlOvernightIndexedSwapFairRate{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -661,13 +737,13 @@ instance HasFloatingLeg AssetSwap where
 {#fun qlCreditDefaultSwapFairSpread{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The floating leg's cash flows.
-{#fun qlVanillaSwapFloatingLeg{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlFixedVsFloatingSwapFloatingLeg{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Basis-point sensitivity of the floating leg.
-{#fun qlVanillaSwapFloatingLegBPS{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedVsFloatingSwapFloatingLegBPS{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the floating leg.
-{#fun qlVanillaSwapFloatingLegNPV{withVanillaSwap*`VanillaSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFixedVsFloatingSwapFloatingLegNPV{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The floating leg's cash flows.
 {#fun qlAssetSwapFloatingLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}

@@ -87,7 +87,8 @@ run = do
   engine <- discountingSwapEngine ts Nothing Nothing Nothing
   asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
   fixedATMRate <- fairRate swp
-  (swaptions, tms) <- mapAndUnzipM (createHelpers index6m ts) calibrationGrid
+  (swaptionHelpers, tms) <- mapAndUnzipM (createHelpers index6m ts) calibrationGrid
+  swaptions <- mapM Model.asBlackCalibrationHelper swaptionHelpers
   grid <- timeGridFromList' (fromList (concat tms)) 30
 
   (modelG2, g2v, g2p) <- calibrateShortRateModel

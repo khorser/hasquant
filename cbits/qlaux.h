@@ -34,6 +34,7 @@ namespace QuantLib {
   class Quote;
   class Bond;
   class FixedRateBond;
+  class FixedVsFloatingSwap;
   class FloatingRateBond;
   class ZeroCouponBond;
   class Forward;
@@ -220,6 +221,8 @@ namespace QuantLib {
   class MultiCurve;
   class NelsonSiegelFitting;
   class NoConstraint;
+  class NonstandardSwap;
+  class NonstandardSwaption;
   class OISRateHelper;
   class OneAssetOption;
   class OneFactorAffineModel;
@@ -299,6 +302,7 @@ using QuantLib::Quote;
 using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
+using QuantLib::FixedVsFloatingSwap;
 using QuantLib::FloatingRateBond;
 using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
@@ -485,6 +489,8 @@ using QuantLib::MultiAssetOption;
 using QuantLib::MultiCurve;
 using QuantLib::NelsonSiegelFitting;
 using QuantLib::NoConstraint;
+using QuantLib::NonstandardSwap;
+using QuantLib::NonstandardSwaption;
 using QuantLib::OISRateHelper;
 using QuantLib::OneAssetOption;
 using QuantLib::OneFactorAffineModel;
@@ -685,6 +691,8 @@ typedef shared_ptr<MultiAssetOption> QlMultiAssetOption;
 // shared pointer" -- bound as a standalone leaf type (own Finalizable instance, no Upcastable
 // parent: it isn't a TermStructure), same shape as e.g. QlSwapRateHelper.
 typedef shared_ptr<MultiCurve> QlMultiCurve;
+typedef shared_ptr<NonstandardSwap> QlNonstandardSwap;
+typedef shared_ptr<NonstandardSwaption> QlNonstandardSwaption;
 typedef shared_ptr<OISRateHelper> QlOISRateHelper;
 typedef shared_ptr<OneAssetOption> QlOneAssetOption;
 typedef shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
@@ -708,9 +716,11 @@ typedef shared_ptr<StochasticProcess> QlStochasticProcess;
 typedef shared_ptr<StochasticProcessArray> QlStochasticProcessArray;
 typedef shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
 typedef shared_ptr<Swap> QlSwap;
+typedef shared_ptr<FixedVsFloatingSwap> QlFixedVsFloatingSwap;
 typedef shared_ptr<SwapIndex> QlSwapIndex;
 typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
 typedef shared_ptr<Swaption> QlSwaption;
+typedef shared_ptr<SwaptionHelper> QlSwaptionHelper;
 typedef shared_ptr<SabrSwaptionVolatilityCube> QlSabrSwaptionVolatilityCube;
 typedef shared_ptr<InterpolatedSwaptionVolatilityCube> QlInterpolatedSwaptionVolatilityCube;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
@@ -1019,6 +1029,8 @@ template <> class ObjClassName<QlMarkovFunctional*> {public: static void output(
 template <> class ObjClassName<QlMerton76Process*> {public: static void output(std::ostream& os) {os << "QlMerton76Process";}};
 template <> class ObjClassName<QlMultiAssetOption*> {public: static void output(std::ostream& os) {os << "QlMultiAssetOption";}};
 template <> class ObjClassName<QlMultiCurve*> {public: static void output(std::ostream& os) {os << "QlMultiCurve";}};
+template <> class ObjClassName<QlNonstandardSwap*> {public: static void output(std::ostream& os) {os << "QlNonstandardSwap";}};
+template <> class ObjClassName<QlNonstandardSwaption*> {public: static void output(std::ostream& os) {os << "QlNonstandardSwaption";}};
 template <> class ObjClassName<QlOISRateHelper*> {public: static void output(std::ostream& os) {os << "QlOISRateHelper";}};
 template <> class ObjClassName<QlOneAssetOption*> {public: static void output(std::ostream& os) {os << "QlOneAssetOption";}};
 template <> class ObjClassName<QlOneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "QlOneFactorAffineModel";}};
@@ -1045,9 +1057,11 @@ template <> class ObjClassName<QlStochasticProcess1D*> {public: static void outp
 template <> class ObjClassName<QlStochasticProcessArray*> {public: static void output(std::ostream& os) {os << "QlStochasticProcessArray";}};
 template <> class ObjClassName<QlStrikedTypePayoff*> {public: static void output(std::ostream& os) {os << "QlStrikedTypePayoff";}};
 template <> class ObjClassName<QlSwap*> {public: static void output(std::ostream& os) {os << "QlSwap";}};
+template <> class ObjClassName<QlFixedVsFloatingSwap*> {public: static void output(std::ostream& os) {os << "QlFixedVsFloatingSwap";}};
 template <> class ObjClassName<QlSwapIndex*> {public: static void output(std::ostream& os) {os << "QlSwapIndex";}};
 template <> class ObjClassName<QlSwapRateHelper*> {public: static void output(std::ostream& os) {os << "QlSwapRateHelper";}};
 template <> class ObjClassName<QlSwaption*> {public: static void output(std::ostream& os) {os << "QlSwaption";}};
+template <> class ObjClassName<QlSwaptionHelper*> {public: static void output(std::ostream& os) {os << "QlSwaptionHelper";}};
 template <> class ObjClassName<QlSwaptionVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlSwaptionVolatilityStructure";}};
 template <> class ObjClassName<QlSabrSwaptionVolatilityCube*> {public: static void output(std::ostream& os) {os << "QlSabrSwaptionVolatilityCube";}};
 template <> class ObjClassName<QlInterpolatedSwaptionVolatilityCube*> {public: static void output(std::ostream& os) {os << "QlInterpolatedSwaptionVolatilityCube";}};

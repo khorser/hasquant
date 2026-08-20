@@ -17,6 +17,9 @@
 #include <ql/instruments/claim.hpp>
 #include <ql/termstructures/yieldtermstructure.hpp>
 #include <ql/instruments/vanillaswap.hpp>
+#include <ql/instruments/nonstandardswap.hpp>
+#include <ql/instruments/nonstandardswaption.hpp>
+#include <ql/pricingengines/swaption/basketgeneratingengine.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/assetswap.hpp>
@@ -351,8 +354,12 @@ double qlFxForwardNpvTargetCurrency(QlFxForward* o, char **e) {try {return (*arg
 
 void qlFreeSwap(QlSwap *o) {del(o);}
 QlInstrument* qlSwapAsInstrument(QlSwap *o) {return ret(new QlInstrument(*arg(o)));}
+void qlFreeFixedVsFloatingSwap(QlFixedVsFloatingSwap *o) {del(o);}
+QlSwap* qlFixedVsFloatingSwapAsSwap(QlFixedVsFloatingSwap *o) {return ret(new QlSwap(*arg(o)));}
 void qlFreeVanillaSwap(QlVanillaSwap *o) {del(o);}
-QlSwap* qlVanillaSwapAsSwap(QlVanillaSwap *o) {return ret(new QlSwap(*arg(o)));}
+QlFixedVsFloatingSwap* qlVanillaSwapAsFixedVsFloatingSwap(QlVanillaSwap *o) {return ret(new QlFixedVsFloatingSwap(*arg(o)));}
+void qlFreeNonstandardSwap(QlNonstandardSwap *o) {del(o);}
+QlSwap* qlNonstandardSwapAsSwap(QlNonstandardSwap *o) {return ret(new QlSwap(*arg(o)));}
 void qlFreeBMASwap(QlBMASwap *o) {del(o);}
 QlSwap* qlBMASwapAsSwap(QlBMASwap *o) {return ret(new QlSwap(*arg(o)));}
 void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o) {del(o);}
@@ -374,6 +381,21 @@ QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, 
   try {return ret(new QlVanillaSwap(alloc(new VanillaSwap((VanillaSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(floatSchedule), *arg(iborIndex), spread, *arg(floatingDayCount), qlOptBusinessDayConvention(paymentConvention), qlOptBool(useIndexedCoupons)))));
   } catch (std::exception& er) {return handleException<QlVanillaSwap*>(e, er);}}
 
+// Converts an existing VanillaSwap into a NonstandardSwap (upstream's own conversion ctor, not a
+// delegating convenience overload -- see NonstandardSwap(const FixedVsFloatingSwap&)).
+QlNonstandardSwap* qlNonstandardSwap1(QlVanillaSwap* v, char **e) {
+  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap(**arg(v)))));
+  } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
+// Scalar gearing/spread ctor; fixedNominal/floatingNominal/fixedRate are still per-period vectors
+// upstream (see nonstandardswap.hpp).
+QlNonstandardSwap* qlNonstandardSwap(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, double gearing, double spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e) {
+  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), gearing, spread, *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
+  } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
+// Vector gearing/spread ctor (full coverage: the example only uses the scalar form above).
+QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, unsigned gearingLen, double* gearing, unsigned spreadLen, double* spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e) {
+  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), std::vector<double>(gearing, gearing+gearingLen), std::vector<double>(spread, spread+spreadLen), *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
+  } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
+
 QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {try {return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));} catch (std::exception& er) {return handleException<QlSwap*>(e, er);} }
 double qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e) {try {return (*arg(o))->endDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
 Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e) {try {return ret(new Leg((*arg(o))->leg(j)));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
@@ -383,14 +405,14 @@ int qlSwapMaturityDate(QlSwap* o, char **e) {try {return qlNullableDate((*arg(o)
 double qlSwapNpvDateDiscount(QlSwap* o, char **e) {try {return (*arg(o))->npvDateDiscount();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlSwapStartDate(QlSwap* o, char **e) {try {return qlNullableDate((*arg(o))->startDate());} catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwapStartDiscounts(QlSwap* o, unsigned j, char **e) {try {return (*arg(o))->startDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlVanillaSwapFairRate(QlVanillaSwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlVanillaSwapFairSpread(QlVanillaSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
-Leg* qlVanillaSwapFixedLeg(QlVanillaSwap* o, char **e) {try {return ret(new Leg((*arg(o))->fixedLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
-double qlVanillaSwapFixedLegBPS(QlVanillaSwap* o, char **e) {try {return (*arg(o))->fixedLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e) {try {return (*arg(o))->fixedLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
-Leg* qlVanillaSwapFloatingLeg(QlVanillaSwap* o, char **e) {try {return ret(new Leg((*arg(o))->floatingLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
-double qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e) {try {return (*arg(o))->floatingLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e) {try {return (*arg(o))->floatingLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);} }
+double qlFixedVsFloatingSwapFairRate(QlFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFixedVsFloatingSwapFairSpread(QlFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+Leg* qlFixedVsFloatingSwapFixedLeg(QlFixedVsFloatingSwap* o, char **e) {try {return ret(new Leg((*arg(o))->fixedLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+double qlFixedVsFloatingSwapFixedLegBPS(QlFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fixedLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFixedVsFloatingSwapFixedLegNPV(QlFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fixedLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
+Leg* qlFixedVsFloatingSwapFloatingLeg(QlFixedVsFloatingSwap* o, char **e) {try {return ret(new Leg((*arg(o))->floatingLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+double qlFixedVsFloatingSwapFloatingLegBPS(QlFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->floatingLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFixedVsFloatingSwapFloatingLegNPV(QlFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->floatingLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);} }
 
 void qlFreeEquityTotalReturnSwap(QlEquityTotalReturnSwap *o) {del(o);}
 QlSwap* qlEquityTotalReturnSwapAsSwap(QlEquityTotalReturnSwap *o) {return ret(new QlSwap(*arg(o)));}
@@ -543,6 +565,26 @@ double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStruc
 QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
   try {return ret(new QlSwaption(alloc(new Swaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
+
+void qlFreeNonstandardSwaption(QlNonstandardSwaption *o) {del(o);}
+QlOption* qlNonstandardSwaptionAsOption(QlNonstandardSwaption *o) {return ret(new QlOption(*arg(o)));}
+// Converts an existing Swaption into a NonstandardSwaption (upstream's own conversion ctor).
+QlNonstandardSwaption* qlNonstandardSwaption1(QlSwaption* fromSwaption, char **e) {
+  try {return ret(new QlNonstandardSwaption(alloc(new NonstandardSwaption(**arg(fromSwaption)))));
+  } catch (std::exception& er) {return handleException<QlNonstandardSwaption*>(e, er);}}
+QlNonstandardSwaption* qlNonstandardSwaption(QlNonstandardSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
+  try {return ret(new QlNonstandardSwaption(alloc(new NonstandardSwaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
+  } catch (std::exception& er) {return handleException<QlNonstandardSwaption*>(e, er);}}
+// Basket is computed internally by QuantLib's calibration-basket algorithm (per CalibrationBasketType);
+// *helpers is written before anything can throw so a mid-loop exception still leaves a safe, freeable array.
+void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
+  *len = 0; *helpers = nullptr;
+  try {
+    std::vector<ext::shared_ptr<BlackCalibrationHelper>> basket = (*arg(o))->calibrationBasket(*arg(swapBase), (*arg(swaptionVol)).currentLink(), (BasketGeneratingEngine::CalibrationBasketType)basketType);
+    *helpers = (QlBlackCalibrationHelper**)qlAllocatePointerArray(basket.size());
+    for (size_t i = 0; i < basket.size(); ++i) (*helpers)[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
+    *len = (unsigned)basket.size();
+  } catch (std::exception& er) {handleException<int>(e, er);}}
 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
 QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
