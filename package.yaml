@@ -2,6 +2,7 @@ name: hasquant
 version: "0.5.0.1"
 synopsis: Bindings to QuantLib
 license: BSD-3-Clause
+author: Sergei Khorev <sergey.khorev@gmail.com>
 maintainer: Sergei Khorev <sergey.khorev@gmail.com>
 copyright: (c) 2012-2026 Sergei Khorev
 category: Finance,FFI,Library
@@ -27,6 +28,9 @@ flags:
     manual: True
 extra-source-files:
   - cbits/*.h
+  - README.md
+  - CHANGELOG.md
+  - WINDOWS.md
 dependencies:
   # 4.14 is GHC 8.10.6
   - base >= 4.14 && < 5

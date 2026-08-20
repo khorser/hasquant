@@ -11,6 +11,7 @@ description:    Bindings to the QuantLib library.
 category:       Finance,FFI,Library
 homepage:       https://github.com/khorser/hasquant#readme
 bug-reports:    https://github.com/khorser/hasquant/issues
+author:         Sergei Khorev <sergey.khorev@gmail.com>
 maintainer:     Sergei Khorev <sergey.khorev@gmail.com>
 copyright:      (c) 2012-2026 Sergei Khorev
 license:        BSD-3-Clause
@@ -33,6 +34,9 @@ extra-source-files:
     cbits/qlTermStructure.h
     cbits/qlTermStructureAux.h
     cbits/qlTypesC2HS.h
+    README.md
+    CHANGELOG.md
+    WINDOWS.md
 
 source-repository head
   type: git
