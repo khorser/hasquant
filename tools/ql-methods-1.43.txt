@@ -1026,7 +1026,7 @@
 | |ql/experimental/commodities/commodity.hpp|std::ostream & operator<<(std::ostream & out, const PricingError & error);
 | |ql/experimental/commodities/commodity.hpp|std::ostream & operator<<(std::ostream & out, const PricingErrors & errors);
 | |ql/experimental/commodities/commodity.hpp|Commodity::Commodity(ext::shared_ptr<SecondaryCosts> secondaryCosts);
-| |ql/experimental/commodities/commodity.hpp|const ext::shared_ptr<SecondaryCosts> & Commodity::secondaryCosts() const;
+|x|ql/experimental/commodities/commodity.hpp|const ext::shared_ptr<SecondaryCosts> & Commodity::secondaryCosts() const;
 | |ql/experimental/commodities/commodity.hpp|const SecondaryCostAmounts & Commodity::secondaryCostAmounts() const;
 | |ql/experimental/commodities/commodity.hpp|const PricingErrors & Commodity::pricingErrors() const;
 | |ql/experimental/commodities/commodity.hpp|void Commodity::addPricingError(PricingError::Level errorLevel, const std::string & error, const std::string & detail = "") const;
@@ -1149,7 +1149,7 @@
 | |ql/experimental/commodities/energycommodity.hpp|std::ostream & operator<<(std::ostream & out, const EnergyDailyPositions & dailyPositions);
 | |ql/experimental/commodities/energycommodity.hpp|EnergyCommodity::EnergyCommodity(CommodityType commodityType, const ext::shared_ptr<SecondaryCosts> & secondaryCosts);
 | |ql/experimental/commodities/energycommodity.hpp|Quantity EnergyCommodity::quantity() const;
-| |ql/experimental/commodities/energycommodity.hpp|const CommodityType & EnergyCommodity::commodityType() const;
+|x|ql/experimental/commodities/energycommodity.hpp|const CommodityType & EnergyCommodity::commodityType() const;
 | |ql/experimental/commodities/energycommodity.hpp|void arguments::validate() const;
 | |ql/experimental/commodities/energycommodity.hpp|void results::reset();
 | |ql/experimental/commodities/energyfuture.hpp|EnergyFuture::EnergyFuture(Integer buySell, Quantity quantity, CommodityUnitCost tradePrice, ext::shared_ptr<CommodityIndex> index, const CommodityType & commodityType, const ext::shared_ptr<SecondaryCosts> & secondaryCosts);

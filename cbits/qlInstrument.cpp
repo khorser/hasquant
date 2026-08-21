@@ -28,6 +28,7 @@ namespace hasquant {
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/assetswap.hpp>
+#include <ql/experimental/commodities/energycommodity.hpp>
 #include <ql/instruments/zerocouponinflationswap.hpp>
 #include <ql/instruments/yearonyearinflationswap.hpp>
 #include <ql/instruments/cpiswap.hpp>
@@ -1288,5 +1289,15 @@ QlInstrument* qlVarianceOptionAsInstrument(QlVarianceOption *o) {return ret(new 
 QlVarianceOption* qlVarianceOption(QlPayoff* payoff, double notional, int startDate, int maturityDate, char **e) {
   try {return ret(new QlVarianceOption(alloc(new VarianceOption(*arg(payoff), notional, Date(startDate), Date(maturityDate)))));
   } catch (std::exception& er) {return handleException<QlVarianceOption*>(e, er);}}
+
+// Commodity/EnergyCommodity bind no constructor -- both are abstract-here (Commodity is never
+// constructed directly upstream; EnergyCommodity::quantity() is pure virtual). They're reachable
+// only as upcast targets once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap)
+// exists. secondaryCosts()/commodityType() are plain, never-mutated echoes of each class's own
+// constructor argument -- not bound, per CLAUDE.md's trivial-getter rule.
+void qlFreeCommodity(QlCommodity *o) {del(o);}
+QlInstrument* qlCommodityAsInstrument(QlCommodity *o) {return ret(new QlInstrument(*arg(o)));}
+void qlFreeEnergyCommodity(QlEnergyCommodity *o) {del(o);}
+QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o) {return ret(new QlCommodity(*arg(o)));}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

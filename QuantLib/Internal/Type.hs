@@ -1889,6 +1889,8 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    FixedRateBond
 -- >    CallableBond
 -- >    CPIBond
+-- >  Commodity*
+-- >    EnergyCommodity*
 type Instrument = GenInstrument CInstrument
 data CInstrument'
 newtype GenInstrument i = GenInstrument {getInstrument :: GenForeignPtr i CInstrument'}
@@ -2430,6 +2432,35 @@ peekQuantoBarrierOption :: Ptr CQuantoBarrierOption' -> IO QuantoBarrierOption
 peekQuantoBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
 withQuantoBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
+
+-- Commodity/EnergyCommodity are abstract-here: Commodity's own constructor is never called
+-- directly upstream (every concrete instrument goes through EnergyCommodity), and
+-- EnergyCommodity::quantity() is pure virtual, so neither binds a constructor here -- both are
+-- reachable only as upcast targets once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap,
+-- EnergyBasisSwap) exists. Commodity::secondaryCosts()/EnergyCommodity::commodityType() are plain,
+-- never-mutated echoes of each class's own constructor argument (commodity.hpp/energycommodity.hpp's
+-- inline getters each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
+-- secondaryCostAmounts()/pricingErrors()/addPricingError are genuine (mutable, computed during
+-- pricing) but have no producer until a Stage-6 leaf constructs one; their marshalling (and the
+-- SecondaryCosts/PricingError(s)/EnergyDailyPosition/CommodityCashFlow value types) is deferred to
+-- that stage, where a real constructor gives the shim something to verify against.
+data CCommodity'
+type GenCommodity c = GenInstrument (AnyOf CCommodity' c)
+type CCommodity = ForeignPtr CCommodity'
+type Commodity = GenCommodity CCommodity
+foreign import ccall unsafe "ql.h &qlFreeCommodity" qlFreeCommodity :: FinalizerPtr CCommodity'
+instance Finalizable CCommodity' where finalize = qlFreeCommodity
+foreign import ccall "ql.h qlCommodityAsInstrument" qlCommodityAsInstrument :: Ptr CCommodity' -> IO (Ptr CInstrument')
+instance Upcastable CCommodity' where {type Base CCommodity' = CInstrument'; upcast = qlCommodityAsInstrument}
+
+data CEnergyCommodity'
+type GenEnergyCommodity e = GenCommodity (AnyOf CEnergyCommodity' e)
+type CEnergyCommodity = ForeignPtr CEnergyCommodity'
+type EnergyCommodity = GenEnergyCommodity CEnergyCommodity
+foreign import ccall unsafe "ql.h &qlFreeEnergyCommodity" qlFreeEnergyCommodity :: FinalizerPtr CEnergyCommodity'
+instance Finalizable CEnergyCommodity' where finalize = qlFreeEnergyCommodity
+foreign import ccall "ql.h qlEnergyCommodityAsCommodity" qlEnergyCommodityAsCommodity :: Ptr CEnergyCommodity' -> IO (Ptr CCommodity')
+instance Upcastable CEnergyCommodity' where {type Base CEnergyCommodity' = CCommodity'; upcast = qlEnergyCommodityAsCommodity}
 
 withInstrumentArray :: [GenInstrument i] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b
 withInstrumentArray = withGenArray withInstrument

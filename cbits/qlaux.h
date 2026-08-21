@@ -53,6 +53,8 @@ namespace QuantLib {
   class UnitOfMeasureConversion;
   class CommodityCurve;
   class CommodityIndex;
+  class Commodity;
+  class EnergyCommodity;
   class Region;
   class InterestRate;
   class FixedRateBondHelper;
@@ -329,6 +331,8 @@ using QuantLib::PaymentTerm;
 using QuantLib::UnitOfMeasureConversion;
 using QuantLib::CommodityCurve;
 using QuantLib::CommodityIndex;
+using QuantLib::Commodity;
+using QuantLib::EnergyCommodity;
 using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
@@ -664,6 +668,11 @@ typedef shared_ptr<CommodityCurve> QlCommodityCurve;
 // QlEquityIndex above), and CommodityIndex's own forwardCurve_ member is the shared_ptr
 // QlCommodityCurve above, never a Handle.
 typedef shared_ptr<CommodityIndex> QlCommodityIndex;
+// Commodity/EnergyCommodity are abstract-here (no bindable constructor -- Commodity is never
+// constructed directly upstream, and EnergyCommodity::quantity() is pure virtual), reachable only
+// as an upcast target once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap) exists.
+typedef shared_ptr<Commodity> QlCommodity;
+typedef shared_ptr<EnergyCommodity> QlEnergyCommodity;
 typedef shared_ptr<CdsOption> QlCdsOption;
 typedef shared_ptr<Claim> QlClaim;
 typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
@@ -1005,6 +1014,8 @@ template <> class ObjClassName<QlCapFloor*> {public: static void output(std::ost
 template <> class ObjClassName<QlCapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolSurface";}};
 template <> class ObjClassName<QlCommodityCurve*> {public: static void output(std::ostream& os) {os << "QlCommodityCurve";}};
 template <> class ObjClassName<QlCommodityIndex*> {public: static void output(std::ostream& os) {os << "QlCommodityIndex";}};
+template <> class ObjClassName<QlCommodity*> {public: static void output(std::ostream& os) {os << "QlCommodity";}};
+template <> class ObjClassName<QlEnergyCommodity*> {public: static void output(std::ostream& os) {os << "QlEnergyCommodity";}};
 template <> class ObjClassName<QlCdsOption*> {public: static void output(std::ostream& os) {os << "QlCdsOption";}};
 template <> class ObjClassName<QlClaim*> {public: static void output(std::ostream& os) {os << "QlClaim";}};
 template <> class ObjClassName<QlConvertibleBond*> {public: static void output(std::ostream& os) {os << "QlConvertibleBond";}};

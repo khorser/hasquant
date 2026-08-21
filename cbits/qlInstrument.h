@@ -558,6 +558,11 @@ extern "C" {
   void qlFreeVarianceOption(QlVarianceOption *o);
   QlInstrument* qlVarianceOptionAsInstrument(QlVarianceOption *o);
   QlVarianceOption* qlVarianceOption(QlPayoff* payoff, double notional, int startDate, int maturityDate, char **e);
+
+  void qlFreeCommodity(QlCommodity *o);
+  QlInstrument* qlCommodityAsInstrument(QlCommodity *o);
+  void qlFreeEnergyCommodity(QlEnergyCommodity *o);
+  QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o);
 #ifdef __cplusplus
 }
 #endif
