@@ -13,6 +13,10 @@ module QuantLib.TermStructure.Commodity
   , setCommodityCurveBasisOfCurve
   , commodityCurvePrice
   , commodityCurveBasisOfPrice
+  , ExchangeContract
+  , ExchangeContracts
+  , commodityCurvePriceNearby
+  , commodityCurveUnderlyingPriceDate
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -79,13 +83,77 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure)
 -- one 'CommodityCurve' mutator worth binding (unlike @setPrices@, which stays unbound).
 {#fun qlCommodityCurveSetBasisOfCurve as setCommodityCurveBasisOfCurve{withGenTermStructure*`CommodityCurve',withGenTermStructure*`CommodityCurve'}->`()'#}
 
--- |The curve's price for a date, plus any chained basis curve's price. This binds only
--- upstream's @nearbyOffset <= 0@ case (no rolling onto nearby exchange contracts) -- the
--- nearby-rolling overload needs a @std::map<Date,ExchangeContract>@ marshaller that nothing else
--- in this module needs yet, and there's no upstream test to pin it against.
-{#fun qlCommodityCurvePrice as commodityCurvePrice{withGenTermStructure*`CommodityCurve',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |A dated exchange contract: a code, its expiration date, and the start/end dates of the
+-- underlying delivery period it corresponds to. A plain tuple, per the @Money@/'Quantity'-as-tuple
+-- convention -- it carries no calculation of its own upstream, only three inspectors that would
+-- just be tuple projections.
+type ExchangeContract = (String, Day, Day, Day) -- ^code, expirationDate, underlyingStartDate, underlyingEndDate
+
+-- |QuantLib's @std::map\<Date,ExchangeContract\>@: a set of exchange contracts, keyed by the date
+-- 'commodityCurvePriceNearby'\/'commodityCurveUnderlyingPriceDate' roll onto (upstream's own
+-- @lower_bound@ walk finds the first key at or after the query date, then steps @nearbyOffset - 1@
+-- further). Marshalled as an association list, not an actual 'Data.Map.Map' -- the C shim rebuilds
+-- the real @std::map@ itself so key order doesn't need to be pre-sorted on the Haskell side.
+type ExchangeContracts = [(Day, ExchangeContract)]
+
+-- |Split an 'ExchangeContracts' into the five parallel lists the low-level bindings below take.
+-- Not a single combined marshaller: c2hs's @&@ tuple-splitter only ever consumes two C arguments
+-- (confirmed against its source, same reasoning as 'QuantLib.Commodity.Quantity'), so each list is
+-- passed as its own flat, individually-marshalled argument instead of one bundled continuation.
+splitExchangeContracts :: ExchangeContracts -> ([Day], [String], [Day], [Day], [Day])
+splitExchangeContracts ecs =
+  ( map fst ecs
+  , [c | (_, (c, _, _, _)) <- ecs]
+  , [x | (_, (_, x, _, _)) <- ecs]
+  , [s | (_, (_, _, s, _)) <- ecs]
+  , [e | (_, (_, _, _, e)) <- ecs] )
+
+{#fun qlCommodityCurvePrice as qlCommodityCurvePrice_
+  {withGenTermStructure*`CommodityCurve'
+  ,withDay*`Day'
+  ,withDayArray*`[Day]'&
+  ,withStringArray*`[String]'&
+  ,withDayArray*`[Day]'&
+  ,withDayArray*`[Day]'&
+  ,withDayArray*`[Day]'&
+  ,`Int' -- ^nearbyOffset
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The curve's price for a date, plus any chained basis curve's price, rolling forward onto
+-- nearby exchange contracts when @nearbyOffset > 0@ (upstream's own @price@ never touches
+-- @exchangeContracts@ otherwise). 'commodityCurvePrice' is this with no exchange contracts and
+-- offset @0@, which reproduces the flat (no-rolling) case exactly.
+commodityCurvePriceNearby :: CommodityCurve -> Day -> ExchangeContracts -> Int -> IO Double
+commodityCurvePriceNearby curve date ecs nearbyOffset =
+  qlCommodityCurvePrice_ curve date keys codes expirations starts ends nearbyOffset
+  where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs
+
+-- |The curve's price for a date, plus any chained basis curve's price. This is
+-- 'commodityCurvePriceNearby' with no exchange contracts and offset @0@ -- the flat (no
+-- nearby-rolling) case, which never touches @exchangeContracts@ upstream either way.
+commodityCurvePrice :: CommodityCurve -> Day -> IO Double
+commodityCurvePrice curve date = commodityCurvePriceNearby curve date [] 0
 
 -- |The chained basis curve's price alone (excluding this curve's own price), for a date.
 {#fun qlCommodityCurveBasisOfPrice as commodityCurveBasisOfPrice{withGenTermStructure*`CommodityCurve',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+{#fun qlCommodityCurveUnderlyingPriceDate as qlCommodityCurveUnderlyingPriceDate_
+  {withGenTermStructure*`CommodityCurve'
+  ,withDay*`Day'
+  ,withDayArray*`[Day]'&
+  ,withStringArray*`[String]'&
+  ,withDayArray*`[Day]'&
+  ,withDayArray*`[Day]'&
+  ,withDayArray*`[Day]'&
+  ,`Int' -- ^nearbyOffset
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
+-- |The date whose price a nearby roll (@nearbyOffset > 0@) actually reads: the underlying
+-- contract's start date at the @nearbyOffset@\'th exchange contract at or after @date@. Throws if
+-- @nearbyOffset <= 0@, or if fewer than @nearbyOffset@ contracts are available from @date@ onward.
+commodityCurveUnderlyingPriceDate :: CommodityCurve -> Day -> ExchangeContracts -> Int -> IO Day
+commodityCurveUnderlyingPriceDate curve date ecs nearbyOffset =
+  qlCommodityCurveUnderlyingPriceDate_ curve date keys codes expirations starts ends nearbyOffset
+  where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

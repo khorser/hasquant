@@ -348,3 +348,31 @@ method with two same-typed string/numeric params, grep the class's own
 `.cpp` for its out-of-line definition and read the parameter names (and
 any body logic keying off one of them, e.g. a registry `.find(code)`) used
 there -- the header can rename freely and C++ won't complain.
+
+## An array-of-structs input, built into a C++ `std::map` shim-side
+
+**Passing a list of N-field records as a function argument (not a
+returned array) follows the same "flatten past 2 fields" rule as
+`Quantity`, but the C shim reassembles the parallel arrays into whatever
+container upstream actually wants** (`std::map<Date, ExchangeContract>`
+for `CommodityCurve::price`/`underlyingPriceDate`'s `exchangeContracts`
+argument, Stage 7 of the commodities binding). Each field becomes its own
+`{#fun#}` argument marshalled with the usual `withXArray*`[X]'&` (one
+`(count, ptr)` pair per field, per c2hs's 2-argument cap on `&`) --
+there's no single combined marshaller, even though conceptually it's one
+list of tuples. The C shim then takes one `unsigned`/pointer pair per
+field (in the same order the `.chs` argument list declares them) and
+loops once, `Date`-keying a fresh `ext::make_shared<Map>()` from the
+per-index field values -- exactly mirroring `Quantity`'s "flat args, glued
+back together on whichever side actually needs the composite value"
+convention, just building a map instead of a tuple. On the Haskell side, a
+single ordinary (non-`{#fun#}`) function unzips the list-of-tuples
+argument into the N flat lists right before calling the low-level
+`{#fun#}`-generated import, so callers still pass one list of tuples, not
+N parallel lists -- see `splitExchangeContracts`/`commodityCurvePriceNearby`
+in `QuantLib/TermStructure/Commodity.chs`. Get every field's `(count,
+ptr)` pair correctly interleaved in both the `.chs` argument list and the
+C signature/definition -- a field missing its own count parameter (reusing
+a neighboring field's count) type-checks on both sides (all counts equal
+at every real call site) but silently misaligns which C parameter receives
+which pointer once a later field's count position shifts.

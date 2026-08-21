@@ -67,6 +67,44 @@ spec = do
       basisPrice <- commodityCurveBasisOfPrice curve d0
       basisPrice `shouldBe` 1.0
 
+    it "commodityCurvePriceNearby with no contracts and offset 0 reproduces the flat price exactly" $ do
+      ho <- commodityType "HO" "Heating Oil"
+      bbl <- barrelUnitOfMeasure
+      usd <- commoditySettingsCurrency
+      cal <- calendar TARGET
+      dc <- dayCounter Actual365FixedStandard
+      let d0 = 1 `january` 2024
+          d1 = 1 `february` 2024
+      curve <- commodityCurve "HO curve" ho usd bbl cal [d0, d1] [70.0, 71.0] dc
+      flat <- commodityCurvePrice curve d0
+      rolled <- commodityCurvePriceNearby curve d0 [] 0
+      rolled `shouldBe` flat
+
+    it "underlyingPriceDate rolls onto the nearbyOffset'th exchange contract at or after the query date" $ do
+      ho <- commodityType "HO" "Heating Oil"
+      bbl <- barrelUnitOfMeasure
+      usd <- commoditySettingsCurrency
+      cal <- calendar TARGET
+      dc <- dayCounter Actual365FixedStandard
+      let d0 = 1 `january` 2024
+          d1 = 1 `february` 2024
+      curve <- commodityCurve "HO curve" ho usd bbl cal [d0, d1] [70.0, 71.0] dc
+      let jan1 = 1 `january` 2024
+          feb1 = 1 `february` 2024
+          mar1 = 1 `march` 2024
+          us1 = 5 `january` 2024
+          us2 = 5 `february` 2024
+          us3 = 5 `march` 2024
+          ecs = [ (jan1, ("HOF24", jan1, us1, 31 `january` 2024))
+                , (feb1, ("HOG24", feb1, us2, 28 `february` 2024))
+                , (mar1, ("HOH24", mar1, us3, 31 `march` 2024))
+                ]
+      commodityCurveUnderlyingPriceDate curve jan1 ecs 1 `shouldReturn` us1
+      commodityCurveUnderlyingPriceDate curve jan1 ecs 2 `shouldReturn` us2
+      commodityCurveUnderlyingPriceDate curve jan1 ecs 3 `shouldReturn` us3
+      commodityCurveUnderlyingPriceDate curve jan1 ecs 4 `shouldThrow` anyException
+      commodityCurveUnderlyingPriceDate curve jan1 ecs 0 `shouldThrow` anyException
+
   describe "DateInterval" $ do
     it "isDateBetween respects the includeFirst/includeLast flags" $ do
       let d0 = 1 `january` 2024

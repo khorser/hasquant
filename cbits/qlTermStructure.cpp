@@ -777,17 +777,43 @@ void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basi
   (*arg(o))->setBasisOfCurve(*arg(basisOfCurve));
 }
 
-// The nearby-rolling overload (with an ExchangeContracts map and a nearby offset) is not bound:
-// it needs a new array-of-structs-to-std::map marshalling shape that nothing else in this module
-// needs yet, and there's no upstream test to pin it against. This binds the nearbyOffset=0 case,
-// which never touches exchangeContracts upstream (see commoditycurve.hpp's inline price()).
-double qlCommodityCurvePrice(QlCommodityCurve *o, int date, char **e) {
-  try {return (*arg(o))->price(Date(date), shared_ptr<ExchangeContracts>(), 0);
+// Builds the ExchangeContracts map the nearby-rolling price()/underlyingPriceDate() calls take.
+// Always constructed (even when n==0): price() only dereferences it when nearbyOffset>0, and
+// underlyingPriceDate() requires nearbyOffset>0 too (QL_REQUIRE'd before any lower_bound call), so
+// an empty-but-non-null map is exactly as safe as a null one for every reachable call shape here,
+// and skips a conditional the two call sites would otherwise have to repeat.
+static shared_ptr<ExchangeContracts> qlBuildExchangeContracts(
+    unsigned n, int *ecKeys, char **ecCodes, int *ecExpirations, int *ecStarts, int *ecEnds) {
+  auto ecs = ext::make_shared<ExchangeContracts>();
+  for (unsigned i = 0; i < n; ++i)
+    (*ecs)[Date(ecKeys[i])] = ExchangeContract(ecCodes[i], Date(ecExpirations[i]),
+                                                Date(ecStarts[i]), Date(ecEnds[i]));
+  return ecs;
+}
+
+// nearbyOffset<=0 never touches exchangeContracts (see commoditycurve.hpp's inline price()), so
+// this also serves the plain flat-price case when called with an empty map and offset 0.
+double qlCommodityCurvePrice(QlCommodityCurve *o, int date,
+    unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+    unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+    unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e) {
+  try {
+    auto ecs = qlBuildExchangeContracts(ecLen1, ecKeys, ecCodes, ecExpirations, ecStarts, ecEnds);
+    return (*arg(o))->price(Date(date), ecs, nearbyOffset);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e) {
   try {return (*arg(o))->basisOfPrice(Date(date));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+int qlCommodityCurveUnderlyingPriceDate(QlCommodityCurve *o, int date,
+    unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+    unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+    unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e) {
+  try {
+    auto ecs = qlBuildExchangeContracts(ecLen1, ecKeys, ecCodes, ecExpirations, ecStarts, ecEnds);
+    return (*arg(o))->underlyingPriceDate(Date(date), ecs, nearbyOffset).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 
 /* CommodityIndex */
 

@@ -198,8 +198,20 @@ extern "C" {
   int qlCommodityCurveEmpty(QlCommodityCurve *o);
   QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o);
   void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve);
-  double qlCommodityCurvePrice(QlCommodityCurve *o, int date, char **e);
+  /* Full price()/underlyingPriceDate() signature, threading a real ExchangeContracts map (as 5
+     parallel arrays -- map key, code, expirationDate, underlyingStartDate, underlyingEndDate --
+     per the "c2hs's & caps at 2" precedent already used for Quantity's 3 flat args) and a
+     nearbyOffset through to upstream. nearbyOffset<=0 with an empty map reproduces the old
+     flat-price call exactly, since exchangeContracts is never touched on that branch. */
+  double qlCommodityCurvePrice(QlCommodityCurve *o, int date,
+      unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+      unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+      unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e);
   double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e);
+  int qlCommodityCurveUnderlyingPriceDate(QlCommodityCurve *o, int date,
+      unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+      unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+      unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e);
 
   /* CommodityIndex -- an Index leaf, per qlaux.h's QlCommodityIndex comment. The
      ExchangeContracts/nearbyOffset constructor args are not exposed (see Stage 3's
