@@ -51,6 +51,7 @@ namespace QuantLib {
   class UnitOfMeasure;
   class PaymentTerm;
   class UnitOfMeasureConversion;
+  class CommodityCurve;
   class Region;
   class InterestRate;
   class FixedRateBondHelper;
@@ -325,6 +326,7 @@ using QuantLib::CommodityType;
 using QuantLib::UnitOfMeasure;
 using QuantLib::PaymentTerm;
 using QuantLib::UnitOfMeasureConversion;
+using QuantLib::CommodityCurve;
 using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
@@ -652,6 +654,10 @@ typedef shared_ptr<CallableBond> QlCallableBond;
 typedef shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
 typedef shared_ptr<CapFloor> QlCapFloor;
 typedef shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
+// CommodityCurve is a plain TermStructure subclass, constructed and consumed directly by value
+// (basisOfCurve_ is a shared_ptr<CommodityCurve>, never a Handle) -- shared_ptr-wrapped, same
+// reasoning as QlTermStructure/QlCallableBondVolatilityStructure/QlDefaultProbabilityTermStructure.
+typedef shared_ptr<CommodityCurve> QlCommodityCurve;
 typedef shared_ptr<CdsOption> QlCdsOption;
 typedef shared_ptr<Claim> QlClaim;
 typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
@@ -991,6 +997,7 @@ template <> class ObjClassName<QlCallableBond*> {public: static void output(std:
 template <> class ObjClassName<QlCallableBondVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlCallableBondVolatilityStructure";}};
 template <> class ObjClassName<QlCapFloor*> {public: static void output(std::ostream& os) {os << "QlCapFloor";}};
 template <> class ObjClassName<QlCapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolSurface";}};
+template <> class ObjClassName<QlCommodityCurve*> {public: static void output(std::ostream& os) {os << "QlCommodityCurve";}};
 template <> class ObjClassName<QlCdsOption*> {public: static void output(std::ostream& os) {os << "QlCdsOption";}};
 template <> class ObjClassName<QlClaim*> {public: static void output(std::ostream& os) {os << "QlClaim";}};
 template <> class ObjClassName<QlConvertibleBond*> {public: static void output(std::ostream& os) {os << "QlConvertibleBond";}};

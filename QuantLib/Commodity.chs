@@ -40,6 +40,18 @@ module QuantLib.Commodity
 
   , CommodityUnitCost
 
+  , DateInterval
+  , isDateBetween
+  , intersection
+
+  , PricingPeriod
+  , pricingPeriodStartDate
+  , pricingPeriodEndDate
+  , pricingPeriodPaymentDate
+  , pricingPeriodQuantity
+  , PricingPeriods
+  , pricingPeriod
+
   , UnitOfMeasureConversion
   , UnitOfMeasureConversionType(..)
   , unitOfMeasureConversion
@@ -207,6 +219,49 @@ closeEnoughQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityCloseEnoug
 -- QuantLib's @Money@) per 'UnitOfMeasure'. A plain tuple, like 'Quantity' -- it carries no
 -- calculation of its own upstream.
 type CommodityUnitCost = (Double, Currency, UnitOfMeasure)
+
+-- |A date range, inclusive of both ends. No C++ call is needed for either operation below --
+-- 'Day' (from @Data.Time.Calendar@) already has the 'Ord' instance QuantLib's own comparisons rely
+-- on, so both are plain Haskell functions rather than shim calls.
+type DateInterval = (Day, Day)
+
+-- |Whether a date falls within the interval, optionally excluding either end.
+isDateBetween :: DateInterval
+              -> Day -- ^date
+              -> Bool -- ^includeFirst
+              -> Bool -- ^includeLast
+              -> Bool
+isDateBetween (startDate, endDate) date includeFirst includeLast =
+  (if includeFirst then date >= startDate else date > startDate) &&
+  (if includeLast then date <= endDate else date < endDate)
+
+-- |The overlap of two date intervals, or 'Nothing' if they don't overlap at all (upstream returns
+-- a default-constructed, both-dates-null 'DateInterval' in this case; a 'Maybe' is the natural
+-- Haskell equivalent).
+intersection :: DateInterval -> DateInterval -> Maybe DateInterval
+intersection (s1, e1) (s2, e2)
+  | (s1 < s2 && e1 < s2) || (s1 > e2 && e1 > e2) = Nothing
+  | otherwise = Just (max s1 s2, min e1 e2)
+
+-- |A 'DateInterval' over which a fixed 'Quantity' of a commodity is priced, paid on
+-- 'pricingPeriodPaymentDate'. Unlike 'Quantity'\/'CommodityUnitCost', this is a real record
+-- rather than a tuple, per the user's explicit choice -- it's used as a named unit across every
+-- energy-swap constructor (Stage 6), where a flat tuple would be unreadable positionally.
+data PricingPeriod = PricingPeriod
+  { pricingPeriodStartDate :: Day
+  , pricingPeriodEndDate :: Day
+  , pricingPeriodPaymentDate :: Day
+  , pricingPeriodQuantity :: Quantity
+  } deriving (Show, Eq)
+
+type PricingPeriods = [PricingPeriod]
+
+-- |Construct a 'PricingPeriod', enforcing upstream's @DateInterval@ invariant that the end date
+-- is not before the start date.
+pricingPeriod :: Day -> Day -> Day -> Quantity -> PricingPeriod
+pricingPeriod startDate endDate
+  | endDate < startDate = error "pricingPeriod: end date must be >= start date"
+  | otherwise = PricingPeriod startDate endDate
 
 -- |Construct a conversion factor between two units of measure for a given commodity type: a unit
 -- of @source@ is worth @conversionFactor@ units of @target@.

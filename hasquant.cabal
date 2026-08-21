@@ -78,6 +78,7 @@ library
       QuantLib.TermStructure.Inflation
       QuantLib.TermStructure.Credit
       QuantLib.TermStructure.Volatility
+      QuantLib.TermStructure.Commodity
       QuantLib.Index.InterestRate
       QuantLib.Index.Inflation
       QuantLib.Index.Equity
@@ -195,6 +196,7 @@ test-suite hasquant_test
       QuantLib.Spec.InterestRateAndCashFlow
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure
+      QuantLib.Spec.TermStructure.Commodity
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond

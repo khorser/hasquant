@@ -39,6 +39,7 @@
 #include <ql/indexes/inflation/all.hpp>
 #include <ql/termstructures/inflation/inflationhelpers.hpp>
 #include <ql/indexes/equityindex.hpp>
+#include <ql/experimental/commodities/commoditycurve.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -728,6 +729,63 @@ void qlFreeYoYInflationTermStructure(QlYoYInflationTermStructure *o) {del(o);}
 QlTermStructure* qlYoYInflationTermStructureAsTermStructure(QlYoYInflationTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d, int extrapolate, char **e) {
   try {return (*arg(o))->yoyRate(Date(d), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+/* CommodityCurve */
+
+QlCommodityCurve* qlCommodityCurve(char *name, CommodityType *commodityType, Currency *currency,
+                                   UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                   unsigned datesLen, int *dates, unsigned pricesLen, double *prices,
+                                   DayCounter *dayCounter, char **e) {
+  try {return ret(new QlCommodityCurve(alloc(new CommodityCurve(
+      arg(name), *arg(commodityType), *arg(currency), *arg(unitOfMeasure), *arg(calendar),
+      qlDateVector(dates, datesLen), std::vector<Real>(prices, prices+pricesLen), *arg(dayCounter)))));
+  } catch (std::exception& er) {return handleException<QlCommodityCurve*>(e, er);}}
+
+void qlFreeCommodityCurve(QlCommodityCurve *o) {del(o);}
+QlTermStructure* qlCommodityCurveAsTermStructure(QlCommodityCurve *o) {return ret(new QlTermStructure(*arg(o)));}
+char *qlCommodityCurveName(QlCommodityCurve *o) {return DUP((*arg(o))->name().c_str());}
+CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o) {return ret(new CommodityType((*arg(o))->commodityType()));}
+UnitOfMeasure *qlCommodityCurveUnitOfMeasure(QlCommodityCurve *o) {return ret(new UnitOfMeasure((*arg(o))->unitOfMeasure()));}
+Currency *qlCommodityCurveCurrency(QlCommodityCurve *o) {return ret(new Currency((*arg(o))->currency()));}
+
+void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days) {
+  const std::vector<Date> &dates = (*arg(o))->dates();
+  *count = dates.size(); *days = qlAllocateInts(*count);
+  for (size_t i = 0; i < dates.size(); ++i)
+    (*days)[i] = dates[i].serialNumber();
+}
+
+void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices) {
+  const std::vector<Real> &p = (*arg(o))->prices();
+  *count = p.size(); *prices = qlAllocateDoubles(*count);
+  for (size_t i = 0; i < p.size(); ++i)
+    (*prices)[i] = p[i];
+}
+
+int qlCommodityCurveEmpty(QlCommodityCurve *o) {return (*arg(o))->empty();}
+
+// basisOfCurve_ is a nullptr shared_ptr when unset -- returned as-is (not via ret(), nothing new
+// is allocated here) so the Haskell side's peekMaybeCommodityCurve can null-check it directly.
+QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o) {
+  const shared_ptr<CommodityCurve> &b = (*arg(o))->basisOfCurve();
+  return b ? ret(new QlCommodityCurve(b)) : nullptr;
+}
+
+void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve) {
+  (*arg(o))->setBasisOfCurve(*arg(basisOfCurve));
+}
+
+// The nearby-rolling overload (with an ExchangeContracts map and a nearby offset) is not bound:
+// it needs a new array-of-structs-to-std::map marshalling shape that nothing else in this module
+// needs yet, and there's no upstream test to pin it against. This binds the nearbyOffset=0 case,
+// which never touches exchangeContracts upstream (see commoditycurve.hpp's inline price()).
+double qlCommodityCurvePrice(QlCommodityCurve *o, int date, char **e) {
+  try {return (*arg(o))->price(Date(date), shared_ptr<ExchangeContracts>(), 0);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e) {
+  try {return (*arg(o))->basisOfPrice(Date(date));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}

@@ -1065,6 +1065,7 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- >  DefaultProbabilityTermStructure
 -- >  ZeroInflationTermStructure
 -- >  YoYInflationTermStructure
+-- >  CommodityCurve
 type TermStructure = GenTermStructure CTermStructure
 data CTermStructure'
 data CVolatilityTermStructure'
@@ -1087,6 +1088,7 @@ data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
 data CZeroInflationTermStructure'
 data CYoYInflationTermStructure'
+data CCommodityCurve'
 newtype GenTermStructure t = GenTermStructure {getTermStructure :: GenForeignPtr t CTermStructure'}
 type CTermStructure = ForeignPtr CTermStructure'
 type GenYieldTermStructure y = GenTermStructure (AnyOf CYieldTermStructure' y)
@@ -1162,6 +1164,11 @@ type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
 type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'
 type YoYInflationTermStructure = GenTermStructure CYoYInflationTermStructure
+type CCommodityCurve = ForeignPtr CCommodityCurve'
+-- | A plain 'TermStructure' leaf (not a 'YieldTermStructure' -- it has no discount-factor
+-- semantics, just an interpolated price curve), constructed and consumed by @shared_ptr@ like
+-- 'CallableBondVolatilityStructure'\/'DefaultProbabilityTermStructure', never a @Handle@.
+type CommodityCurve = GenTermStructure CCommodityCurve
 foreign import ccall unsafe "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure'
@@ -1183,6 +1190,7 @@ foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFree
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeCommodityCurve" qlFreeCommodityCurve :: FinalizerPtr CCommodityCurve'
 instance Finalizable CTermStructure' where finalize = qlFreeTermStructure
 instance Finalizable CVolatilityTermStructure' where finalize = qlFreeVolatilityTermStructure
 instance Finalizable COptionletVolatilityStructure' where finalize = qlFreeOptionletVolatilityStructure
@@ -1204,6 +1212,7 @@ instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCa
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
+instance Finalizable CCommodityCurve' where finalize = qlFreeCommodityCurve
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlRelinkableYieldTermStructureAsYieldTermStructure" qlRelinkableYieldTermStructureAsYieldTermStructure :: Ptr CRelinkableYieldTermStructure' -> IO (Ptr CYieldTermStructure')
@@ -1224,6 +1233,7 @@ foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlC
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlCommodityCurveAsTermStructure" qlCommodityCurveAsTermStructure :: Ptr CCommodityCurve' -> IO (Ptr CTermStructure')
 instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
 instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; upcast = qlFittedBondDiscountCurveAsYieldTermStructure}
 instance Upcastable CRelinkableYieldTermStructure' where {type Base CRelinkableYieldTermStructure' = CYieldTermStructure'; upcast = qlRelinkableYieldTermStructureAsYieldTermStructure}
@@ -1232,6 +1242,7 @@ instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallable
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
+instance Upcastable CCommodityCurve' where {type Base CCommodityCurve' = CTermStructure'; upcast = qlCommodityCurveAsTermStructure}
 instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
 instance Upcastable CRelinkableBlackVolTermStructure' where {type Base CRelinkableBlackVolTermStructure' = CBlackVolTermStructure'; upcast = qlRelinkableBlackVolTermStructureAsBlackVolTermStructure}
 instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; upcast = qlBlackVarianceCurveAsBlackVolTermStructure}
@@ -1344,6 +1355,17 @@ peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflat
 peekYoYInflationTermStructure = GenTermStructure <.> newGenForeignPtr
 withMaybeYoYInflationTermStructure :: Maybe YoYInflationTermStructure -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
 withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+peekCommodityCurve :: Ptr CCommodityCurve' -> IO CommodityCurve
+peekCommodityCurve = GenTermStructure <.> newGenForeignPtr
+withMaybeCommodityCurve :: Maybe CommodityCurve -> (Ptr CCommodityCurve' -> IO b) -> IO b
+withMaybeCommodityCurve x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+-- |Peek a possibly-null @CommodityCurve*@ -- @basisOfCurve_@ is a @nullptr@ 'shared_ptr' when no
+-- basis curve has been set via 'QuantLib.TermStructure.Commodity.setCommodityCurveBasisOfCurve',
+-- not an empty-'Data'-style placeholder (unlike 'peekMaybeCommodityType' et al.).
+peekMaybeCommodityCurve :: Ptr CCommodityCurve' -> IO (Maybe CommodityCurve)
+peekMaybeCommodityCurve p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekCommodityCurve p
 
 asYieldTermStructure :: GenYieldTermStructure y -> IO YieldTermStructure
 asYieldTermStructure = transferGenForeignPtr peekYieldTermStructure . peel . getTermStructure

@@ -69,6 +69,7 @@ library:
     - QuantLib.TermStructure.Inflation
     - QuantLib.TermStructure.Credit
     - QuantLib.TermStructure.Volatility
+    - QuantLib.TermStructure.Commodity
     - QuantLib.Index.InterestRate
     - QuantLib.Index.Inflation
     - QuantLib.Index.Equity

@@ -182,6 +182,25 @@ extern "C" {
   QlTermStructure* qlYoYInflationTermStructureAsTermStructure(QlYoYInflationTermStructure *o);
   double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d, int extrapolate, char **e);
 
+  /* CommodityCurve -- a plain TermStructure leaf, per qlaux.h's QlCommodityCurve comment. */
+  QlCommodityCurve* qlCommodityCurve(char *name, CommodityType *commodityType, Currency *currency,
+                                     UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                     unsigned datesLen, int *dates, unsigned pricesLen, double *prices,
+                                     DayCounter *dayCounter, char **e);
+  void qlFreeCommodityCurve(QlCommodityCurve *o);
+  QlTermStructure* qlCommodityCurveAsTermStructure(QlCommodityCurve *o);
+  char *qlCommodityCurveName(QlCommodityCurve *o);
+  CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o);
+  UnitOfMeasure *qlCommodityCurveUnitOfMeasure(QlCommodityCurve *o);
+  Currency *qlCommodityCurveCurrency(QlCommodityCurve *o);
+  void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days);
+  void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices);
+  int qlCommodityCurveEmpty(QlCommodityCurve *o);
+  QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o);
+  void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve);
+  double qlCommodityCurvePrice(QlCommodityCurve *o, int date, char **e);
+  double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e);
+
   void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o);
   QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e);
   void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o);
