@@ -30,7 +30,8 @@ jobs:
 
       - name: Install dependencies via Homebrew
         run: |
-          brew update-reset # сбросить локальное дерево формул для ускорения
+          export HOMEBREW_NO_AUTO_UPDATE=0
+          brew update --force
           brew install quantlib boost
 
       - name: Cache cabal package store
