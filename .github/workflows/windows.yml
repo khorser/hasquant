@@ -30,6 +30,7 @@ jobs:
       BOOST_INC: ${{ github.workspace }}\boost-inc
       QL_INSTALL: ${{ github.workspace }}\QuantLib-ghc
       GHC_VERSION: ${{ matrix.ghc }}
+      CABAL_DIR: ${{ github.workspace }}\cabal
 
     steps:
       - uses: actions/checkout@v7
@@ -140,6 +141,16 @@ jobs:
             "  ghc-options: -pgmcxx $mingw/bin/clang++ -optl $mingw/lib/libc++.a -optl $mingw/lib/libc++abi.a -optl $mingw/lib/libunwind.a -optcxx -isystem -optcxx $ql/include"
           )
           $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
+
+      - name: Cache cabal package store
+        uses: actions/cache@v6
+        with:
+          path: |
+            ${{ env.CABAL_DIR }}/packages
+            ${{ env.CABAL_DIR }}/store
+          key: cabal-store-windows-${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
+          restore-keys: |
+            cabal-store-windows-${{ env.GHC_VERSION }}-
 
       # WINDOWS.md Step 4.
       - name: Build
