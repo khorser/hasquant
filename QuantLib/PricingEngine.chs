@@ -43,9 +43,17 @@ module QuantLib.PricingEngine
   , analyticDigitalAmericanEngine
   , analyticDiscreteGeometricAveragePriceAsianEngine
   , analyticDiscreteGeometricAverageStrikeAsianEngine
+  , turnbullWakemanAsianEngine
+  , fdBlackScholesAsianEngine
   , analyticDividendEuropeanEngine
   , analyticEuropeanEngine
   , analyticPerformanceEngine
+  , forwardEuropeanEngine
+  , forwardBaroneAdesiWhaleyEngine
+  , forwardBjerksundStenslandEngine
+  , forwardFdBlackScholesVanillaEngine
+  , mcForwardEuropeanBSEngine
+  , analyticHestonForwardEuropeanEngine
   , blackCapFloorEngine'
   , blackCapFloorEngine
   , blackSwaptionEngine
@@ -404,6 +412,9 @@ import QuantLib.Internal.Enum
 -- |analytic pricing engine for European discrete geometric average-strike Asian options
 {#fun qlAnalyticDiscreteGeometricAverageStrikeAsianEngine as analyticDiscreteGeometricAverageStrikeAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Turnbull-Wakeman moment-matching pricing engine for discrete arithmetic average-price\/-strike Asian options
+{#fun qlTurnbullWakemanAsianEngine as turnbullWakemanAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |analytic pricing engine for European options with discrete dividends
 {#fun qlAnalyticDividendEuropeanEngine as analyticDividendEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -414,6 +425,33 @@ import QuantLib.Internal.Enum
 
 -- |analytic pricing engine for performance (return) options
 {#fun qlAnalyticPerformanceEngine as analyticPerformanceEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for forward-starting European options; binds the @AnalyticEuropeanEngine@ instantiation of upstream's @ForwardVanillaEngine\<Engine\>@ template
+{#fun qlForwardEuropeanEngine as forwardEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Barone-Adesi\/Whaley approximation pricing engine for forward-starting American options; binds the @BaroneAdesiWhaleyApproximationEngine@ instantiation of @ForwardVanillaEngine\<Engine\>@
+{#fun qlForwardBaroneAdesiWhaleyEngine as forwardBaroneAdesiWhaleyEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Bjerksund\/Stensland approximation pricing engine for forward-starting American options; binds the @BjerksundStenslandApproximationEngine@ instantiation of @ForwardVanillaEngine\<Engine\>@
+{#fun qlForwardBjerksundStenslandEngine as forwardBjerksundStenslandEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |finite-differences Black-Scholes pricing engine for forward-starting vanilla options, with the wrapped engine's grid\/scheme params fixed at their QuantLib defaults; binds the @FdBlackScholesVanillaEngine@ instantiation of @ForwardVanillaEngine\<Engine\>@
+{#fun qlForwardFdBlackScholesVanillaEngine as forwardFdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for forward-starting European options under a Black-Scholes process
+{#fun qlMCForwardEuropeanBSEngine1 as mcForwardEuropeanBSEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for forward-starting European options under a Heston process
+{#fun qlAnalyticHestonForwardEuropeanEngine as analyticHestonForwardEuropeanEngine{withHestonProcess*`GenHestonProcess hp',fromIntegral`Word' -- ^integrationOrder
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Black-formula cap\/floor engine, taking an optionlet volatility structure
 {#fun qlBlackCapFloorEngine1 as blackCapFloorEngine'{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -888,6 +926,13 @@ import QuantLib.Internal.Enum
 
 -- |pricing engine for vanilla options using binomial trees
 {#fun qlBinomialVanillaEngine as binomialVanillaEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |finite-differences Black-Scholes pricing engine for discrete-averaging Asian options
+{#fun qlFdBlackScholesAsianEngine as fdBlackScholesAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^aGrid
+  ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Black-Scholes pricing engine for vanilla options

@@ -143,6 +143,7 @@ library
 executable hasquant_example
   main-is: QuantLib/MainExample.hs
   other-modules:
+      QuantLib.Example.AsianOption
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -152,6 +153,7 @@ executable hasquant_example
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
       QuantLib.Example.FittedBondCurve
+      QuantLib.Example.ForwardOption
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
       QuantLib.Example.Gaussian1dModels
@@ -201,6 +203,7 @@ test-suite hasquant_test
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity
+      QuantLib.Example.AsianOption
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -210,6 +213,7 @@ test-suite hasquant_test
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
       QuantLib.Example.FittedBondCurve
+      QuantLib.Example.ForwardOption
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
       QuantLib.Example.Gaussian1dModels

@@ -36,6 +36,8 @@ import qualified QuantLib.Example.TARF as TARFExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
+import qualified QuantLib.Example.AsianOption as AsianOptionExample
+import qualified QuantLib.Example.ForwardOption as ForwardOptionExample
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
@@ -604,3 +606,37 @@ spec = do
         preCalib `shouldSatisfy` closePrec 4.300762793278117e-3 1.0e-4
         postCalib `shouldSatisfy` closePrec 4.330369264462356e-3 1.0e-4
         abs (postCalib - preCalib) / abs preCalib `shouldSatisfy` (< 0.1)
+
+    -- Discrete arithmetic average-price Asian put, reproducing the 26-fixing case from
+    -- ~/Src/QuantLib/test-suite/asianoptions.cpp:testMCDiscreteArithmeticAveragePrice
+    -- (data from Levy 1997 as reproduced by Haug): expected NPV 1.7255070456, upstream's
+    -- own cross-engine tolerances are 2e-2 (MC/PDE) and 3e-2 (Turnbull-Wakeman analytic
+    -- approximation) -- this exercises the two new Asian engines plus the already-bound
+    -- mcDiscreteArithmeticAPEngine on the same instrument.
+    describe "Asian option example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' AsianOptionExample.run
+        AsianOptionExample.twR r `shouldSatisfy` closePrec 1.7255070456 3.0e-2
+        AsianOptionExample.fdR r `shouldSatisfy` closePrec 1.7255070456 3.0e-2
+        AsianOptionExample.mcR r `shouldSatisfy` closePrec 1.7255070456 2.0e-2
+
+    -- Forward-starting vanilla options, reproducing
+    -- ~/Src/QuantLib/test-suite/forwardoption.cpp:testValues (Haug, "Option pricing
+    -- formulas", p.37/VBA code) under forwardEuropeanEngine, then cross-checking the
+    -- other 5 new forward-starting engines against that reference (see
+    -- QuantLib.Example.ForwardOption's haddock for the rationale of each check).
+    describe "Forward option example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' ForwardOptionExample.run
+        let call = ForwardOptionExample.europeanCallR r
+        call `shouldSatisfy` closePrec 4.4064 1.0e-3
+        ForwardOptionExample.europeanPutR r `shouldSatisfy` closePrec 8.2971 1.0e-3
+        -- finite-differences and Monte Carlo should reproduce the same European price
+        ForwardOptionExample.fdEuropeanR r `shouldSatisfy` closePrec call 1.0e-2
+        ForwardOptionExample.mcEuropeanR r `shouldSatisfy` closePrec call 2.0e-2
+        -- Heston (realistic, non-degenerate vol-of-vol) should stay in the same ballpark
+        -- as the BS analytic price, not track it exactly
+        ForwardOptionExample.hestonEuropeanR r `shouldSatisfy` closePrec call (0.1 * call)
+        -- American exercise is never worth less than the otherwise-identical European option
+        ForwardOptionExample.bawAmericanR r `shouldSatisfy` (>= call - 1.0e-6)
+        ForwardOptionExample.bjsAmericanR r `shouldSatisfy` (>= call - 1.0e-6)

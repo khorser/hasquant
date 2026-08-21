@@ -2026,7 +2026,7 @@
 | |ql/experimental/finitedifferences/vanillavppoption.hpp|VanillaVPPOption::VanillaVPPOption(Real heatRate, Real pMin, Real pMax, Size tMinUp, Size tMinDown, Real startUpFuel, Real startUpFixCost, const ext::shared_ptr<SwingExercise> & exercise, Size nStarts = Null<Size>(), Size nRunningHours = Null<Size>());
 | |ql/experimental/finitedifferences/vanillavppoption.hpp|arguments::arguments();
 | |ql/experimental/finitedifferences/vanillavppoption.hpp|void arguments::validate() const;
-| |ql/experimental/forward/analytichestonforwardeuropeanengine.hpp|AnalyticHestonForwardEuropeanEngine::AnalyticHestonForwardEuropeanEngine(ext::shared_ptr<HestonProcess> process, Size integrationOrder = 144);
+|v|ql/experimental/forward/analytichestonforwardeuropeanengine.hpp|AnalyticHestonForwardEuropeanEngine::AnalyticHestonForwardEuropeanEngine(ext::shared_ptr<HestonProcess> process, Size integrationOrder = 144);
 | |ql/experimental/forward/analytichestonforwardeuropeanengine.hpp|void AnalyticHestonForwardEuropeanEngine::calculate() const;
 | |ql/experimental/forward/analytichestonforwardeuropeanengine.hpp|Real AnalyticHestonForwardEuropeanEngine::propagator(Time resetTime, Real varReset) const;
 | |ql/experimental/forward/analytichestonforwardeuropeanengine.hpp|ext::shared_ptr<AnalyticHestonEngine> AnalyticHestonForwardEuropeanEngine::forwardChF(Handle<Quote> & spotReset, Real varReset) const;
@@ -7249,7 +7249,7 @@
 | |ql/pricingengines/asian/continuousarithmeticasianlevyengine.hpp|ContinuousArithmeticAsianLevyEngine::ContinuousArithmeticAsianLevyEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<Quote> currentAverage);
 | |ql/pricingengines/asian/continuousarithmeticasianlevyengine.hpp|ContinuousArithmeticAsianLevyEngine::ContinuousArithmeticAsianLevyEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<Quote> currentAverage, Date startDate);
 | |ql/pricingengines/asian/continuousarithmeticasianlevyengine.hpp|void ContinuousArithmeticAsianLevyEngine::calculate() const;
-| |ql/pricingengines/asian/fdblackscholesasianengine.hpp|FdBlackScholesAsianEngine::FdBlackScholesAsianEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size tGrid = 100, Size xGrid = 100, Size aGrid = 50, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
+|v|ql/pricingengines/asian/fdblackscholesasianengine.hpp|FdBlackScholesAsianEngine::FdBlackScholesAsianEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size tGrid = 100, Size xGrid = 100, Size aGrid = 50, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
 | |ql/pricingengines/asian/fdblackscholesasianengine.hpp|void FdBlackScholesAsianEngine::calculate() const;
 | |ql/pricingengines/asian/mc_discr_arith_av_price_heston.hpp|MCDiscreteArithmeticAPHestonEngine::MCDiscreteArithmeticAPHestonEngine<RNG, S, P>(const ext::shared_ptr<P> & process, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size timeSteps = Null<Size>(), Size timeStepsPerYear = Null<Size>(), bool controlVariate = false);
 | |ql/pricingengines/asian/mc_discr_arith_av_price_heston.hpp|MakeMCDiscreteArithmeticAPHestonEngine::MakeMCDiscreteArithmeticAPHestonEngine<RNG, S, P>(ext::shared_ptr<P> process);
@@ -7362,7 +7362,7 @@
 | |ql/pricingengines/asian/mcdiscreteasianenginebase.hpp|MCDiscreteAveragingAsianEngineBase<MC, RNG, S>(ext::shared_ptr<StochasticProcess> process, bool brownianBridge, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size timeSteps, Size timeStepsPerYear, bool includeExerciseDate);
 |?|ql/pricingengines/asian/mcdiscreteasianenginebase.hpp|TimeGrid timeGrid() const;
 | |ql/pricingengines/asian/mcdiscreteasianenginebase.hpp|Real controlVariateValue() const;
-| |ql/pricingengines/asian/turnbullwakemanasianengine.hpp|TurnbullWakemanAsianEngine::TurnbullWakemanAsianEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/asian/turnbullwakemanasianengine.hpp|TurnbullWakemanAsianEngine::TurnbullWakemanAsianEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/asian/turnbullwakemanasianengine.hpp|void TurnbullWakemanAsianEngine::calculate() const;
 |v|ql/pricingengines/bacheliercalculator.hpp|BachelierCalculator::BachelierCalculator(const ext::shared_ptr<StrikedTypePayoff> & payoff, Real forward, Real stdDev, Real discount = 1.0);
 |v|ql/pricingengines/bacheliercalculator.hpp|BachelierCalculator::BachelierCalculator(Option::Type optionType, Real strike, Real forward, Real stdDev, Real discount = 1.0);
@@ -7794,9 +7794,9 @@
 | |ql/pricingengines/forward/discountingfxforwardengine.hpp|const Handle<YieldTermStructure> & DiscountingFxForwardEngine::sourceCurrencyDiscountCurve() const;
 | |ql/pricingengines/forward/discountingfxforwardengine.hpp|const Handle<YieldTermStructure> & DiscountingFxForwardEngine::targetCurrencyDiscountCurve() const;
 | |ql/pricingengines/forward/discountingfxforwardengine.hpp|const Handle<Quote> & DiscountingFxForwardEngine::spotFx() const;
-| |ql/pricingengines/forward/forwardengine.hpp|ForwardVanillaEngine::ForwardVanillaEngine<Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess>);
+|v|ql/pricingengines/forward/forwardengine.hpp|ForwardVanillaEngine::ForwardVanillaEngine<Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess>);
 | |ql/pricingengines/forward/forwardengine.hpp|void ForwardVanillaEngine::calculate() const;
-| |ql/pricingengines/forward/forwardengine.hpp|ForwardVanillaEngine<Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/forward/forwardengine.hpp|ForwardVanillaEngine<Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/forward/forwardengine.hpp|void setup() const;
 | |ql/pricingengines/forward/forwardengine.hpp|void calculate() const;
 | |ql/pricingengines/forward/forwardengine.hpp|void getOriginalResults() const;
@@ -7804,7 +7804,7 @@
 | |ql/pricingengines/forward/forwardperformanceengine.hpp|ForwardPerformanceVanillaEngine<Engine>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process);
 | |ql/pricingengines/forward/forwardperformanceengine.hpp|void calculate() const;
 | |ql/pricingengines/forward/forwardperformanceengine.hpp|void getOriginalResults() const;
-| |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MCForwardEuropeanBSEngine::MCForwardEuropeanBSEngine<RNG, S>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
+|v|ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MCForwardEuropeanBSEngine::MCForwardEuropeanBSEngine<RNG, S>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 | |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MakeMCForwardEuropeanBSEngine::MakeMCForwardEuropeanBSEngine<RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MakeMCForwardEuropeanBSEngine<RNG, S> & MakeMCForwardEuropeanBSEngine::withSteps(Size steps);
 | |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MakeMCForwardEuropeanBSEngine<RNG, S> & MakeMCForwardEuropeanBSEngine::withStepsPerYear(Size steps);
