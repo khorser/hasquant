@@ -47,6 +47,9 @@ namespace QuantLib {
   class BespokeCalendar;
   class Schedule;
   class Currency;
+  class CommodityType;
+  class UnitOfMeasure;
+  class PaymentTerm;
   class Region;
   class InterestRate;
   class FixedRateBondHelper;
@@ -317,6 +320,9 @@ using QuantLib::JointCalendar;
 using QuantLib::BespokeCalendar;
 using QuantLib::Schedule;
 using QuantLib::Currency;
+using QuantLib::CommodityType;
+using QuantLib::UnitOfMeasure;
+using QuantLib::PaymentTerm;
 using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
@@ -829,6 +835,7 @@ template <> class ObjClassName<CapHelper*> {public: static void output(std::ostr
 template <> class ObjClassName<CashOrNothingPayoff*> {public: static void output(std::ostream& os) {os << "CashOrNothingPayoff";}};
 template <> class ObjClassName<CdsOption*> {public: static void output(std::ostream& os) {os << "CdsOption";}};
 template <> class ObjClassName<Claim*> {public: static void output(std::ostream& os) {os << "Claim";}};
+template <> class ObjClassName<CommodityType*> {public: static void output(std::ostream& os) {os << "CommodityType";}};
 template <> class ObjClassName<CompositeConstraint*> {public: static void output(std::ostream& os) {os << "CompositeConstraint";}};
 template <> class ObjClassName<CompositeInstrument*> {public: static void output(std::ostream& os) {os << "CompositeInstrument";}};
 template <> class ObjClassName<Constraint*> {public: static void output(std::ostream& os) {os << "Constraint";}};
@@ -942,6 +949,7 @@ template <> class ObjClassName<OptionletVolatilityStructure*> {public: static vo
 template <> class ObjClassName<OvernightIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndex";}};
 template <> class ObjClassName<OvernightIndexedSwap*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwap";}};
 template <> class ObjClassName<OvernightIndexedSwapIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwapIndex";}};
+template <> class ObjClassName<PaymentTerm*> {public: static void output(std::ostream& os) {os << "PaymentTerm";}};
 template <> class ObjClassName<Payoff*> {public: static void output(std::ostream& os) {os << "Payoff";}};
 template <> class ObjClassName<PercentageStrikePayoff*> {public: static void output(std::ostream& os) {os << "PercentageStrikePayoff";}};
 template <> class ObjClassName<PiecewiseTimeDependentHestonModel*> {public: static void output(std::ostream& os) {os << "PiecewiseTimeDependentHestonModel";}};
@@ -1133,6 +1141,7 @@ template <> class ObjClassName<TreeSwaptionEngine*> {public: static void output(
 template <> class ObjClassName<TreeVanillaSwapEngine*> {public: static void output(std::ostream& os) {os << "TreeVanillaSwapEngine";}};
 template <> class ObjClassName<TypePayoff*> {public: static void output(std::ostream& os) {os << "TypePayoff";}};
 template <> class ObjClassName<UpfrontCdsHelper*> {public: static void output(std::ostream& os) {os << "UpfrontCdsHelper";}};
+template <> class ObjClassName<UnitOfMeasure*> {public: static void output(std::ostream& os) {os << "UnitOfMeasure";}};
 template <> class ObjClassName<VanillaOption*> {public: static void output(std::ostream& os) {os << "VanillaOption";}};
 template <> class ObjClassName<VanillaSwap*> {public: static void output(std::ostream& os) {os << "VanillaSwap";}};
 template <> class ObjClassName<VarianceGammaEngine*> {public: static void output(std::ostream& os) {os << "VarianceGammaEngine";}};

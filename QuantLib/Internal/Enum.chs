@@ -102,6 +102,9 @@ module QuantLib.Internal.Enum
   , swingExercise
 
   , CalibrationBasketType(..)
+
+  , UnitOfMeasureType(..)
+  , PaymentTermEventType(..)
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.C.Types(CUInt)
@@ -143,6 +146,12 @@ import QuantLib.Internal.Syntax
 {#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
 {#enum FdmSchemeType{} deriving(Show, Eq)#}
 {#enum RoundingType{} deriving (Show, Eq)#}
+-- experimental/commodities: cross-cutting the same way TimeUnit is (UnitOfMeasureType is used by
+-- both UnitOfMeasure itself and, in a later stage, CommodityPricingHelper/EnergyCommodity).
+-- Quantity's C tag is renamed QuantityUnit in cbits/qlEnumC2HS.h to avoid colliding with the
+-- Quantity class bound in QuantLib.Commodity.
+{#enum UnitOfMeasureType{} deriving (Show, Eq, Bounded)#}
+{#enum PaymentTermEventType{} deriving (Show, Eq, Bounded)#}
 -- flat/linear interpolation of a CPI index between its publication dates -- skips the
 -- deprecated AsIndex upstream case, so cbits/qlEnumObjects.h's values (and thus this
 -- c2hs-derived enum's fromEnum) start at 1, not 0; see that header's comment for why a

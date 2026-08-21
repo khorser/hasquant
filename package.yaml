@@ -53,6 +53,7 @@ library:
     - QuantLib.Type
     - QuantLib.Math
     - QuantLib.Currency
+    - QuantLib.Commodity
     - QuantLib.Time.Date
     - QuantLib.Time.Calendar
     - QuantLib.Time.Schedule

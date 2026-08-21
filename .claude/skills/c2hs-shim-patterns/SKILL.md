@@ -326,3 +326,25 @@ g++-16 against QuantLib 1.43 — not a compiler bug). Naming `CurveType`
 first via `::bootstrap_type` makes it the outer instantiation. Don't
 "simplify" the shim back to the direct spelling — it silently
 reintroduces the compile failure.
+
+## A header declaration's parameter names aren't binding
+
+**A C++ out-of-line member function definition is free to use different
+parameter names than its own class's header declaration, and the
+definition's names (and the order upstream actually chose) are the only
+ones that reflect real behavior** -- the header is just documentation at
+that point, and can be wrong. `ql/experimental/commodities/commoditytype.hpp`
+declares `CommodityType(const std::string& code, const std::string&
+name);`, but `commoditytype.cpp` defines it as `CommodityType(const
+std::string& name, const std::string& code) { ... commodityTypes_.find(code)
+... }` -- genuinely `(name, code)`, not `(code, name)` as the header's own
+parameter names claim. A shim written straight from the header (`new
+CommodityType(arg(code), arg(name))`) compiles cleanly and silently swaps
+the two strings; nothing type-checks against this because both parameters
+are `std::string`. It surfaced as a test failure (`commodityTypeCode`
+returning the descriptive name instead of the code), not a build error.
+Before trusting a header's declared parameter names for a constructor or
+method with two same-typed string/numeric params, grep the class's own
+`.cpp` for its out-of-line definition and read the parameter names (and
+any body logic keying off one of them, e.g. a registry `.find(code)`) used
+there -- the header can rename freely and C++ won't complain.

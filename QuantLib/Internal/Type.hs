@@ -90,6 +90,60 @@ foreign import ccall safe "ql.h qlCurrencyName" qlCurrencyName :: Ptr CCurrency 
 instance Show Currency where show x = showStandalone qlCurrencyName (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
 
+data CCommodityType
+newtype CommodityType = CommodityType {getCCommodityType :: Standalone CCommodityType}
+foreign import ccall unsafe "ql.h &qlFreeCommodityType" qlFreeCommodityType :: FinalizerPtr CCommodityType
+instance Finalizable CCommodityType where finalize = qlFreeCommodityType
+peekCommodityType :: Ptr CCommodityType -> IO CommodityType
+peekCommodityType = CommodityType <.> peekStandalone
+withCommodityType :: CommodityType -> (Ptr CCommodityType -> IO b) -> IO b
+withCommodityType = withStandalone . getCCommodityType
+withMaybeCommodityType :: Maybe CommodityType -> (Ptr CCommodityType -> IO b) -> IO b
+withMaybeCommodityType = withMaybeStandalone . (getCCommodityType <$>)
+peekMaybeCommodityType :: Ptr CCommodityType -> IO (Maybe CommodityType)
+peekMaybeCommodityType p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekCommodityType p
+foreign import ccall safe "ql.h qlCommodityTypeCode" qlCommodityTypeCode :: Ptr CCommodityType -> IO CString
+instance Show CommodityType where show x = showStandalone qlCommodityTypeCode (getCCommodityType x)
+instance Eq CommodityType where x == y = show x == show y
+
+data CUnitOfMeasure
+newtype UnitOfMeasure = UnitOfMeasure {getCUnitOfMeasure :: Standalone CUnitOfMeasure}
+foreign import ccall unsafe "ql.h &qlFreeUnitOfMeasure" qlFreeUnitOfMeasure :: FinalizerPtr CUnitOfMeasure
+instance Finalizable CUnitOfMeasure where finalize = qlFreeUnitOfMeasure
+peekUnitOfMeasure :: Ptr CUnitOfMeasure -> IO UnitOfMeasure
+peekUnitOfMeasure = UnitOfMeasure <.> peekStandalone
+withUnitOfMeasure :: UnitOfMeasure -> (Ptr CUnitOfMeasure -> IO b) -> IO b
+withUnitOfMeasure = withStandalone . getCUnitOfMeasure
+withMaybeUnitOfMeasure :: Maybe UnitOfMeasure -> (Ptr CUnitOfMeasure -> IO b) -> IO b
+withMaybeUnitOfMeasure = withMaybeStandalone . (getCUnitOfMeasure <$>)
+peekMaybeUnitOfMeasure :: Ptr CUnitOfMeasure -> IO (Maybe UnitOfMeasure)
+peekMaybeUnitOfMeasure p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekUnitOfMeasure p
+foreign import ccall safe "ql.h qlUnitOfMeasureCode" qlUnitOfMeasureCode :: Ptr CUnitOfMeasure -> IO CString
+instance Show UnitOfMeasure where show x = showStandalone qlUnitOfMeasureCode (getCUnitOfMeasure x)
+instance Eq UnitOfMeasure where x == y = show x == show y
+
+data CPaymentTerm
+newtype PaymentTerm = PaymentTerm {getCPaymentTerm :: Standalone CPaymentTerm}
+foreign import ccall unsafe "ql.h &qlFreePaymentTerm" qlFreePaymentTerm :: FinalizerPtr CPaymentTerm
+instance Finalizable CPaymentTerm where finalize = qlFreePaymentTerm
+peekPaymentTerm :: Ptr CPaymentTerm -> IO PaymentTerm
+peekPaymentTerm = PaymentTerm <.> peekStandalone
+withPaymentTerm :: PaymentTerm -> (Ptr CPaymentTerm -> IO b) -> IO b
+withPaymentTerm = withStandalone . getCPaymentTerm
+withMaybePaymentTerm :: Maybe PaymentTerm -> (Ptr CPaymentTerm -> IO b) -> IO b
+withMaybePaymentTerm = withMaybeStandalone . (getCPaymentTerm <$>)
+peekMaybePaymentTerm :: Ptr CPaymentTerm -> IO (Maybe PaymentTerm)
+peekMaybePaymentTerm p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekPaymentTerm p
+foreign import ccall safe "ql.h qlPaymentTermName" qlPaymentTermName :: Ptr CPaymentTerm -> IO CString
+instance Show PaymentTerm where show x = showStandalone qlPaymentTermName (getCPaymentTerm x)
+instance Eq PaymentTerm where x == y = show x == show y
+
 data CExchangeRate
 newtype ExchangeRate = ExchangeRate {getCExchangeRate :: Standalone CExchangeRate}
 foreign import ccall unsafe "ql.h &qlFreeExchangeRate" qlFreeExchangeRate :: FinalizerPtr CExchangeRate

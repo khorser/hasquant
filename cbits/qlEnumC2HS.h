@@ -532,4 +532,11 @@ enum SmileInterpolationMethod {SmileLinear, NaturalCubic, FinancialCubic, CubicS
 // termstructures/volatility/equityfx/blackvoltimeextrapolation.hpp (BlackVolTimeExtrapolation::Type)
 enum BlackVolTimeExtrapolationType {FlatVolatility, UseInterpolator, LinearVariance};
 
+// experimental/commodities/unitofmeasure.hpp (UnitOfMeasure::Type). Quantity renamed to
+// QuantityUnit -- it would otherwise collide with the Quantity class itself.
+enum UnitOfMeasureType {Mass, Volume, Energy, QuantityUnit};
+
+// experimental/commodities/paymentterm.hpp (PaymentTerm::EventType)
+enum PaymentTermEventType {TradeDate, PricingDate};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
