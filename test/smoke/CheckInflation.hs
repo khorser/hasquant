@@ -107,7 +107,7 @@ main = do
   -- supplied for it -- see ql/indexes/inflationindex.cpp. With today = 2 Jan 2024,
   -- availabilityLag = 1M and obsLag = 3M, CPILinear's forward-bracketing fixing must resolve
   -- to Dec 2023 or earlier, which bounds the coupon date to on/before ~end of Feb 2024.
-  midMonthSchedule <- fromDates [3 `january` 2024, 20 `february` 2024] cal Unadjusted
+  midMonthSchedule <- fromDates [3 `january` 2024, 20 `february` 2024] cal Unadjusted Nothing Nothing Nothing Nothing
   legFlat <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPIFlat True
   legLinear <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPILinear True
   npvFlat <- CF.npv legFlat nominalCurve True Nothing Nothing

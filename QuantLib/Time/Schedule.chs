@@ -82,8 +82,14 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
   ,preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 
 -- |Builds a payment schedule from an explicit list of dates, without checking them for plausibility.
--- TODO add other parameters, provide a more user-friendly way to build schedules
-{#fun qlSchedule1 as fromDates{withDayArray*`[Day]'&,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
+{#fun qlSchedule1 as fromDates{withDayArray*`[Day]'&
+  ,withCalendar*`Calendar' -- ^calendar
+  ,fromEnumC`BusinessDayConvention' -- ^convention
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^terminationDateConvention
+  ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^tenor
+  ,fromMaybeEnum`Maybe DateGenerationRule' -- ^rule
+  ,fromMaybeBool`Maybe Bool' -- ^endOfMonth
+  ,preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 
 -- |truncated schedule
 -- TODO Introduce another Schedule type with restricted interface?

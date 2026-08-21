@@ -48,6 +48,7 @@ module QuantLib.Internal
   , qlFreeSavedSettings
   , fromMaybeDouble
   , fromMaybeEnum
+  , fromMaybeEnumQuantity
   , peekIntArray
   , peekUIntArray
   , peekWord
@@ -109,6 +110,11 @@ fromMaybeDouble = maybe qlNullReal realToFrac
 -- ext::nullopt sentinel -- mirrors fromMaybeBool's convention.
 fromMaybeEnum :: Enum a => Maybe a -> CInt
 fromMaybeEnum = maybe (-1) (fromIntegral . fromEnum)
+
+-- |'Nothing' emits the enum's -1 sentinel (same convention as 'fromMaybeEnum'), paired with a
+-- placeholder quantity of 0 -- for enums like 'TimeUnit' that start at 0 and can't self-sentinel.
+fromMaybeEnumQuantity :: Enum a => Maybe (Word, a) -> (CInt, CInt)
+fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
 
 toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x

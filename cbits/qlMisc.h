@@ -170,7 +170,7 @@ extern "C" {
   void qlFreeCalendar(Calendar *calendar);
 
   Schedule *qlSchedule(int eff, int term, int, int, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e);
-  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **e);
+  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int termConv, int tenorLen, int tenorUnit, int rule, int eom, char **e);
   Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
   void qlScheduleDates(Schedule *sched, unsigned *count, int **days);
   void qlFreeSchedule(Schedule *s);

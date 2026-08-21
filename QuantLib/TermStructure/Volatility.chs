@@ -128,7 +128,6 @@ module QuantLib.TermStructure.Volatility
   , atmSmileSection
   ) where
 import QuantLib.Internal
-import Foreign.C.Types(CInt)
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.Math#}(EndCriteriaType)
 {#import QuantLib.Quote#}(DeltaType(..), AtmType(..))
@@ -274,11 +273,6 @@ fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
-
--- |'Nothing' emits 'TimeUnit''s -1 sentinel (same convention as 'fromMaybeEnum'), since 'TimeUnit'
--- itself starts at 0 and can't self-sentinel -- used for 'optionletStripper1''s optionletFrequency.
-fromMaybeEnumQuantity :: Maybe (Word, TimeUnit) -> (CInt, CInt)
-fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity
 
 -- |Strips a 'CapFloorTermVolSurface' (quoted cap\/floor term vols) into caplet\/floorlet vols via
 -- 'OptionletStripper1', immediately wrapping the result behind 'StrippedOptionletAdapter' in one

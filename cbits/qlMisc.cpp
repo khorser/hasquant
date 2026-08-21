@@ -611,11 +611,15 @@ void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeek
     for (size_t i = 0; i < dates.size(); ++i)
       (*days)[i] = dates[i].serialNumber();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
-Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **e) {
+Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int termConv, int tenorLen, int tenorUnit, int rule, int eom, char **e) {
   try {std::vector<Date> d; d.reserve(len);
     for (unsigned i = 0; i < len; ++i)
       d.push_back(Date(dates[i]));
-    return alloc(new Schedule(d, *arg(cal), (BusinessDayConvention) conv));
+    return alloc(new Schedule(d, *arg(cal), (BusinessDayConvention) conv,
+      qlOptBusinessDayConvention(termConv),
+      tenorUnit < 0 ? ext::optional<Period>() : ext::optional<Period>(Period(tenorLen, (TimeUnit)tenorUnit)),
+      rule < 0 ? ext::optional<DateGeneration::Rule>() : ext::optional<DateGeneration::Rule>((DateGeneration::Rule)rule),
+      qlOptBool(eom)));
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
 Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e) {
   try {return alloc(new Schedule(qlNullableDate(eff), Date(term), Period(l, (TimeUnit)u), *arg(cal),

@@ -121,8 +121,13 @@ spec = do
         \ds ->
           monadicIO $ do
             c <- run $ calendar RussiaSettlement
-            s <- run $ fromDates (map validDay ds) c Unadjusted
+            s <- run $ fromDates (map validDay ds) c Unadjusted Nothing Nothing Nothing Nothing
             run $ dates s `shouldReturn` map validDay ds
+      it "from dates with optional tenor/rule/conventions set" $ do
+        cal <- calendar RussiaSettlement
+        let ds = [20 `december` 2012, 21 `december` 2012, 21 `january` 2013]
+        s <- fromDates ds cal Unadjusted (Just Following) (Just (1, Months)) (Just Forward) (Just False)
+        dates s `shouldReturn` ds
 
       it "daily" $
         Settings.keepingSettings' $ do
