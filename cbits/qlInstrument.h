@@ -563,6 +563,92 @@ extern "C" {
   QlInstrument* qlCommodityAsInstrument(QlCommodity *o);
   void qlFreeEnergyCommodity(QlEnergyCommodity *o);
   QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o);
+
+  /* Commodity -- base-level getters generalized over any leaf (Stage 6). Each output array below
+     is its own independent c2hs `preArray-` out-parameter pair (its own `unsigned*` length cell,
+     even though every array in one call always carries the same length), mirroring
+     qlInstrumentAdditionalResults' own multi-out-param shape. */
+  void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *detail);
+  void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys,
+      unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies);
+  void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
+      unsigned *len2, char ***errors, unsigned *len3, char ***details);
+
+  /* EnergyCommodity -- quantity() is pure virtual upstream; one shim covers every leaf. */
+  double qlEnergyCommodityQuantity(QlEnergyCommodity *o, CommodityType **outCt, UnitOfMeasure **outUom, char **e);
+
+  /* EnergyFuture. secondaryCosts is 5 c2hs-marshalled arrays (keys/isUnitCost/amounts/currencies/
+     uoms), each an independent `withXArray*&` clause -- c2hs emits one length parameter per array
+     clause even though all 5 always carry the same Haskell-side length, so 4 of the 5 `unsigned`s
+     below are deliberately unnamed (same convention as qlCompositeInstrument's `unsigned, double
+     *coeff` above) and only the first (scLen) is read. */
+  QlEnergyFuture* qlEnergyFuture(int buySell,
+      CommodityType *qCt, UnitOfMeasure *qUom, double qAmount,
+      double tpAmount, Currency *tpCcy, UnitOfMeasure *tpUom,
+      QlCommodityIndex *index, CommodityType *commodityType,
+      unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
+      unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
+      char **e);
+
+  /* EnergySwap -- binds no constructor (see qlaux.h); base-level getters generalized over both
+     leaves below. */
+  void qlFreeEnergySwap(QlEnergySwap *o);
+  QlEnergyCommodity* qlEnergySwapAsEnergyCommodity(QlEnergySwap *o);
+  void qlEnergySwapDailyPositions(QlEnergySwap *o, unsigned *len, int **dates,
+      unsigned *len2, double **quantityAmounts, unsigned *len3, double **payLegPrices,
+      unsigned *len4, double **receiveLegPrices, unsigned *len5, double **riskDeltas,
+      unsigned *len6, int **unrealized);
+  void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCashFlow ***out);
+
+  /* EnergyVanillaSwap. pricingPeriods is 6 parallel arrays (start/end/payment dates, quantity
+     type/uom/amount); like secondaryCosts above, only the first length parameter of each group
+     (ppLen, scLen) is read. */
+  void qlFreeEnergyVanillaSwap(QlEnergyVanillaSwap *o);
+  QlEnergySwap* qlEnergyVanillaSwapAsEnergySwap(QlEnergyVanillaSwap *o);
+  QlEnergyVanillaSwap* qlEnergyVanillaSwap(int payer, Calendar *calendar,
+      double fixedPriceAmount, Currency *fixedPriceCurrency, UnitOfMeasure *fixedPriceUnitOfMeasure,
+      QlCommodityIndex *index, Currency *payCurrency, Currency *receiveCurrency,
+      unsigned ppLen, int *ppStartDates, unsigned, int *ppEndDates, unsigned, int *ppPaymentDates,
+      unsigned, CommodityType **ppTypes, unsigned, UnitOfMeasure **ppUoms, unsigned, double *ppAmounts,
+      CommodityType *commodityType,
+      unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
+      unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
+      QlYieldTermStructure *payLegTS, QlYieldTermStructure *receiveLegTS, QlYieldTermStructure *discountTS,
+      char **e);
+
+  /* EnergyBasisSwap -- same pricingPeriods/secondaryCosts array-group shape as EnergyVanillaSwap. */
+  void qlFreeEnergyBasisSwap(QlEnergyBasisSwap *o);
+  QlEnergySwap* qlEnergyBasisSwapAsEnergySwap(QlEnergyBasisSwap *o);
+  QlEnergyBasisSwap* qlEnergyBasisSwap(Calendar *calendar,
+      QlCommodityIndex *spreadIndex, QlCommodityIndex *payIndex, QlCommodityIndex *receiveIndex,
+      int spreadToPayLeg, Currency *payCurrency, Currency *receiveCurrency,
+      unsigned ppLen, int *ppStartDates, unsigned, int *ppEndDates, unsigned, int *ppPaymentDates,
+      unsigned, CommodityType **ppTypes, unsigned, UnitOfMeasure **ppUoms, unsigned, double *ppAmounts,
+      double basisAmount, Currency *basisCurrency, UnitOfMeasure *basisUnitOfMeasure,
+      CommodityType *commodityType,
+      unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
+      unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
+      QlYieldTermStructure *payLegTS, QlYieldTermStructure *receiveLegTS, QlYieldTermStructure *discountTS,
+      char **e);
+
+  /* CommodityCashFlow -- a standalone CashFlow leaf, never Haskell-constructed (only ever produced
+     by EnergySwap::paymentCashFlows()). */
+  void qlFreeCommodityCashFlow(QlCommodityCashFlow *o);
+  int qlCommodityCashFlowDate(QlCommodityCashFlow *o);
+  double qlCommodityCashFlowDiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy);
+  double qlCommodityCashFlowUndiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy);
+  double qlCommodityCashFlowDiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy);
+  double qlCommodityCashFlowUndiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy);
+  double qlCommodityCashFlowDiscountFactor(QlCommodityCashFlow *o);
+  double qlCommodityCashFlowPaymentDiscountFactor(QlCommodityCashFlow *o);
+  int qlCommodityCashFlowFinalized(QlCommodityCashFlow *o);
+
+  /* CommodityPricingHelper::createPricingPeriods */
+  void qlCreatePricingPeriods(int startDate, int endDate, CommodityType *qCt, UnitOfMeasure *qUom, double qAmount,
+      int deliverySchedule, int qtyPeriodicity, PaymentTerm *paymentTerm,
+      unsigned *len, int **ppStartDates, unsigned *len2, int **ppEndDates, unsigned *len3, int **ppPaymentDates,
+      unsigned *len4, CommodityType ***ppTypes, unsigned *len5, UnitOfMeasure ***ppUoms, unsigned *len6, double **ppAmounts,
+      char **e);
 #ifdef __cplusplus
 }
 #endif

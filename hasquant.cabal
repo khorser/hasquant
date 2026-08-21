@@ -91,6 +91,7 @@ library
       QuantLib.Model
       QuantLib.Instrument.Credit
       QuantLib.Instrument.Swap
+      QuantLib.Instrument.Energy
       QuantLib.PricingEngine
       QuantLib.Syntax
   other-modules:
@@ -195,6 +196,7 @@ test-suite hasquant_test
       QuantLib.Spec.Examples
       QuantLib.Spec.Helpers
       QuantLib.Spec.Index.Commodity
+      QuantLib.Spec.Instrument.Energy
       QuantLib.Spec.InterestRateAndCashFlow
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure

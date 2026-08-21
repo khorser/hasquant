@@ -55,6 +55,11 @@ namespace QuantLib {
   class CommodityIndex;
   class Commodity;
   class EnergyCommodity;
+  class EnergyFuture;
+  class EnergySwap;
+  class EnergyVanillaSwap;
+  class EnergyBasisSwap;
+  class CommodityCashFlow;
   class Region;
   class InterestRate;
   class FixedRateBondHelper;
@@ -333,6 +338,11 @@ using QuantLib::CommodityCurve;
 using QuantLib::CommodityIndex;
 using QuantLib::Commodity;
 using QuantLib::EnergyCommodity;
+using QuantLib::EnergyFuture;
+using QuantLib::EnergySwap;
+using QuantLib::EnergyVanillaSwap;
+using QuantLib::EnergyBasisSwap;
+using QuantLib::CommodityCashFlow;
 using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
@@ -673,6 +683,15 @@ typedef shared_ptr<CommodityIndex> QlCommodityIndex;
 // as an upcast target once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap) exists.
 typedef shared_ptr<Commodity> QlCommodity;
 typedef shared_ptr<EnergyCommodity> QlEnergyCommodity;
+typedef shared_ptr<EnergyFuture> QlEnergyFuture;
+// EnergySwap binds no constructor (its own performCalculations is never overridden, so calling it
+// falls through to Instrument::performCalculations's QL_REQUIRE(engine_, ...) and throws) --
+// reachable only as an upcast target from EnergyVanillaSwap/EnergyBasisSwap, exactly like
+// FixedVsFloatingSwap/VanillaSwap.
+typedef shared_ptr<EnergySwap> QlEnergySwap;
+typedef shared_ptr<EnergyVanillaSwap> QlEnergyVanillaSwap;
+typedef shared_ptr<EnergyBasisSwap> QlEnergyBasisSwap;
+typedef shared_ptr<CommodityCashFlow> QlCommodityCashFlow;
 typedef shared_ptr<CdsOption> QlCdsOption;
 typedef shared_ptr<Claim> QlClaim;
 typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
@@ -1016,6 +1035,11 @@ template <> class ObjClassName<QlCommodityCurve*> {public: static void output(st
 template <> class ObjClassName<QlCommodityIndex*> {public: static void output(std::ostream& os) {os << "QlCommodityIndex";}};
 template <> class ObjClassName<QlCommodity*> {public: static void output(std::ostream& os) {os << "QlCommodity";}};
 template <> class ObjClassName<QlEnergyCommodity*> {public: static void output(std::ostream& os) {os << "QlEnergyCommodity";}};
+template <> class ObjClassName<QlEnergyFuture*> {public: static void output(std::ostream& os) {os << "QlEnergyFuture";}};
+template <> class ObjClassName<QlEnergySwap*> {public: static void output(std::ostream& os) {os << "QlEnergySwap";}};
+template <> class ObjClassName<QlEnergyVanillaSwap*> {public: static void output(std::ostream& os) {os << "QlEnergyVanillaSwap";}};
+template <> class ObjClassName<QlEnergyBasisSwap*> {public: static void output(std::ostream& os) {os << "QlEnergyBasisSwap";}};
+template <> class ObjClassName<QlCommodityCashFlow*> {public: static void output(std::ostream& os) {os << "QlCommodityCashFlow";}};
 template <> class ObjClassName<QlCdsOption*> {public: static void output(std::ostream& os) {os << "QlCdsOption";}};
 template <> class ObjClassName<QlClaim*> {public: static void output(std::ostream& os) {os << "QlClaim";}};
 template <> class ObjClassName<QlConvertibleBond*> {public: static void output(std::ostream& os) {os << "QlConvertibleBond";}};

@@ -105,6 +105,9 @@ module QuantLib.Internal.Enum
 
   , UnitOfMeasureType(..)
   , PaymentTermEventType(..)
+  , PricingErrorLevel(..)
+  , DeliverySchedule(..)
+  , QuantityPeriodicity(..)
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.C.Types(CUInt)
@@ -152,6 +155,20 @@ import QuantLib.Internal.Syntax
 -- Quantity class bound in QuantLib.Commodity.
 {#enum UnitOfMeasureType{} deriving (Show, Eq, Bounded)#}
 {#enum PaymentTermEventType{} deriving (Show, Eq, Bounded)#}
+-- experimental/commodities/commodity.hpp (PricingError::Level) and
+-- experimental/commodities/energycommodity.hpp (EnergyCommodity::DeliverySchedule,
+-- EnergyCommodity::QuantityPeriodicity), homed here for the same cross-cutting reason as
+-- UnitOfMeasureType above (used by both EnergyCommodity's leaf constructors and
+-- CommodityPricingHelper::createPricingPeriods, both in QuantLib.Instrument.Energy -- a later
+-- stage than this module).
+{#enum PricingErrorLevel{} deriving (Show, Eq, Bounded)#}
+-- Confirmed clash (a real one, caught by the build, not assumed): 4 of DeliverySchedule's 8 tags
+-- (Daily/Weekly/Monthly/Quarterly) collide with QuantLib.Time.Schedule's own Frequency enum, whose
+-- module this file is imported into unqualified. Prefixed Haskell-side only (c2hs's own "add
+-- prefix", not a cbits/qlEnumC2HS.h rename) -- same targeted-rename convention as
+-- UnitOfMeasureType's Quantity->QuantityUnit above, not a blanket defensive prefix.
+{#enum DeliverySchedule{} add prefix = "Delivery" deriving (Show, Eq, Bounded)#}
+{#enum QuantityPeriodicity{} deriving (Show, Eq, Bounded)#}
 -- flat/linear interpolation of a CPI index between its publication dates -- skips the
 -- deprecated AsIndex upstream case, so cbits/qlEnumObjects.h's values (and thus this
 -- c2hs-derived enum's fromEnum) start at 1, not 0; see that header's comment for why a

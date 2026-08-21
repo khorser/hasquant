@@ -24,6 +24,8 @@ module QuantLib.Internal
   , withNonEmptyDoubleArray
   , withDoubleArrayRaw
   , withDayPtr
+  , withStringArray
+  , peekCStringArray
   , fromEnumQuantity
   , toEnumQuantity
   , fromEnumDouble
@@ -50,6 +52,7 @@ module QuantLib.Internal
   , fromMaybeEnum
   , fromMaybeEnumQuantity
   , peekIntArray
+  , peekIntArray'
   , peekUIntArray
   , peekWord
   , peekStructArray
@@ -65,11 +68,11 @@ module QuantLib.Internal
 where
 
 import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
-import Foreign.C.String(CString, peekCString)
+import Foreign.C.String(CString, peekCString, withCString)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
 import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
-import Foreign.Marshal.Utils(with, toBool, fromBool)
+import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
@@ -145,6 +148,7 @@ foreign import ccall safe "ql.h qlFreeDoubles" qlFreeDoubles :: Ptr CDouble -> I
 foreign import ccall safe "ql.h &qlFreeDoubles" qlFreeDoublesFin :: FinalizerPtr CDouble
 foreign import ccall safe "ql.h qlFreePointerArray" qlFreePointerArray :: Ptr (Ptr ()) -> IO ()
 foreign import ccall safe "ql.h qlFreeAdditionalResults" qlFreeAdditionalResults :: CUInt -> Ptr () -> IO ()
+foreign import ccall safe "ql.h qlFreeStringArray" qlFreeStringArray :: CUInt -> Ptr CString -> IO ()
 foreign import ccall safe "ql.h qlSavedSettings" qlSavedSettings :: IO (Ptr ())
 foreign import ccall safe "ql.h qlFreeSavedSettings" qlFreeSavedSettings :: Ptr () -> IO ()
 
@@ -175,6 +179,12 @@ withDayArray x f = mapM toSerial x >>= (`withArray` (\px -> f (fromIntegral $ le
 withDayPtr :: [Day] -> (Ptr CInt -> IO a) -> IO a
 withDayPtr x f = mapM toSerial x >>= (`withArray` f)
 
+-- |An array of plain C strings, for a function taking a @std::vector<std::string>@-shaped
+-- argument as a flat @(count, char**)@ pair (the input-side counterpart of 'peekCStringArray'
+-- below) -- first needed for @SecondaryCosts@' string keys (@QuantLib.Instrument.Energy@).
+withStringArray :: [String] -> ((CUInt, Ptr CString) -> IO b) -> IO b
+withStringArray xs f = withMany withCString xs (\ps -> withArray ps (\p -> f (fromIntegral (length xs), p)))
+
 prePtr :: (Storable a) => (Ptr a -> IO b) -> IO b
 prePtr = alloca
 
@@ -197,6 +207,18 @@ peekUIntArray pl pp = do
 
 peekIntArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Int]
 peekIntArray = peekIntArray' fromIntegral
+
+-- |An array of freshly heap-allocated (@DUP@'d) C strings -- the output-side counterpart of
+-- 'withStringArray'. Each element is read via 'peekCString' and the whole array (including every
+-- individual string) is then released via 'qlFreeStringArray' in one call, mirroring
+-- 'peekDoubleArray'\/'peekIntArray'\''s read-then-free shape.
+peekCStringArray :: Ptr CUInt -> Ptr (Ptr CString) -> IO [String]
+peekCStringArray pl pp = do
+  l <- peek pl
+  p <- peek pp
+  raws <- peekArray (fromIntegral l) p
+  strs <- mapM peekCString raws
+  strs <$ qlFreeStringArray l p
 
 peekBoolArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Bool]
 peekBoolArray = peekIntArray' toBool

@@ -184,6 +184,11 @@ void qlFreeInts(int *p) {delete[] p;}
 void qlFreeUInts(unsigned *p) {delete[] p;}
 void qlFreeDoubles(double *p) {delete[] p;}
 void qlFreePointerArray(void **p) {delete[] p;}
+void qlFreeStringArray(unsigned n, char **p) {
+  if (!p) return;
+  for (unsigned i = 0; i < n; ++i) qlFreeString(p[i]);
+  delete[] p;
+}
 int qlNullInteger() {return Null<Integer>();}
 double qlNullReal() {return Null<Real>();}
 double qlEpsilon() {return QL_EPSILON;}

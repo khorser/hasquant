@@ -82,6 +82,7 @@ library:
     - QuantLib.Model
     - QuantLib.Instrument.Credit
     - QuantLib.Instrument.Swap
+    - QuantLib.Instrument.Energy
     - QuantLib.PricingEngine
     - QuantLib.Syntax
   other-modules:

@@ -19,6 +19,7 @@ extern "C" {
   void qlFreeUInts(unsigned *p);
   void qlFreeDoubles(double *p);
   void qlFreePointerArray(void **p);
+  void qlFreeStringArray(unsigned n, char **p);
   int qlNullInteger();
   double qlNullReal();
   double qlEpsilon();

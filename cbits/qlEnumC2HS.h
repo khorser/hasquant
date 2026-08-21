@@ -543,4 +543,17 @@ enum PaymentTermEventType {TradeDate, PricingDate};
 // prefixed Uom -- confirmed clash with the already-bound ExchangeRateType{Direct,Derived}.
 enum UnitOfMeasureConversionType {UomDirect, UomDerived};
 
+// experimental/commodities/commodity.hpp (PricingError::Level). Grepped clean of any clash --
+// 'Error' the data constructor doesn't collide with QuantLib.Type's 'Error' type (separate
+// namespaces), and 'Info'/'Warning'/'Fatal' are otherwise unused as constructors here.
+enum PricingErrorLevel {Info, Warning, Error, Fatal};
+
+// experimental/commodities/energycommodity.hpp (EnergyCommodity::DeliverySchedule,
+// EnergyCommodity::QuantityPeriodicity). Cross-cutting the same way UnitOfMeasureType is: both
+// are used by EnergyCommodity's own constructors' callers and by
+// CommodityPricingHelper::createPricingPeriods, so they're homed here rather than hand-rolled in
+// QuantLib.Instrument.Energy.
+enum DeliverySchedule {Constant, Window, Hourly, Daily, Weekly, Monthly, Quarterly, Yearly};
+enum QuantityPeriodicity {Absolute, PerHour, PerDay, PerWeek, PerMonth, PerQuarter, PerYear};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
