@@ -873,6 +873,7 @@ withBachelierCalculator = withStandalone . getCBachelierCalculator
 -- >    YoYInflationIndex
 -- >    ZeroInflationIndex
 -- >  EquityIndex
+-- >  CommodityIndex
 type Index = GenIndex CIndex
 data CIndex'
 data CInterestRateIndex'
@@ -1040,6 +1041,19 @@ peekEquityIndex :: Ptr CEquityIndex' -> IO EquityIndex
 peekEquityIndex = GenIndex <.> newGenForeignPtr
 withEquityIndex :: EquityIndex -> (Ptr CEquityIndex' -> IO b) -> IO b
 withEquityIndex = withForeignPtr . ptr . getIndex
+
+-- | A plain 'Index' leaf, mirroring 'EquityIndex' -- no subclasses upstream.
+data CCommodityIndex'
+type CCommodityIndex = ForeignPtr CCommodityIndex'
+type CommodityIndex = GenIndex CCommodityIndex
+foreign import ccall unsafe "ql.h &qlFreeCommodityIndex" qlFreeCommodityIndex :: FinalizerPtr CCommodityIndex'
+instance Finalizable CCommodityIndex' where finalize = qlFreeCommodityIndex
+foreign import ccall "ql.h qlCommodityIndexAsIndex" qlCommodityIndexAsIndex :: Ptr CCommodityIndex' -> IO (Ptr CIndex')
+instance Upcastable CCommodityIndex' where {type Base CCommodityIndex' = CIndex'; upcast = qlCommodityIndexAsIndex}
+peekCommodityIndex :: Ptr CCommodityIndex' -> IO CommodityIndex
+peekCommodityIndex = GenIndex <.> newGenForeignPtr
+withCommodityIndex :: CommodityIndex -> (Ptr CCommodityIndex' -> IO b) -> IO b
+withCommodityIndex = withForeignPtr . ptr . getIndex
 
 -- | > TermStructure = GenTermStructure t
 -- >  YieldTermStructure = GenYieldTermStructure y = GenTermStructure t

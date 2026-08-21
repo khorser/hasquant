@@ -40,6 +40,7 @@
 #include <ql/termstructures/inflation/inflationhelpers.hpp>
 #include <ql/indexes/equityindex.hpp>
 #include <ql/experimental/commodities/commoditycurve.hpp>
+#include <ql/experimental/commodities/commodityindex.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -787,6 +788,47 @@ double qlCommodityCurvePrice(QlCommodityCurve *o, int date, char **e) {
 double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e) {
   try {return (*arg(o))->basisOfPrice(Date(date));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+/* CommodityIndex */
+
+// exchangeContracts/nearbyOffset are hardcoded to null/0 -- see qlTermStructure.h's comment;
+// forwardCurve is nullable, matching upstream's own nullable ext::shared_ptr<CommodityCurve>.
+QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Currency *currency,
+                                   UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                   double lotQuantity, QlCommodityCurve *forwardCurve, char **e) {
+  try {return ret(new QlCommodityIndex(alloc(new CommodityIndex(
+      name, *arg(commodityType), *arg(currency), *arg(unitOfMeasure), *arg(calendar), lotQuantity,
+      forwardCurve ? *arg(forwardCurve) : shared_ptr<CommodityCurve>(),
+      shared_ptr<ExchangeContracts>(), 0))));
+  } catch (std::exception& er) {return handleException<QlCommodityIndex*>(e, er);}}
+
+void qlFreeCommodityIndex(QlCommodityIndex *o) {del(o);}
+QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o) {return ret(new QlIndex(*arg(o)));}
+CommodityType *qlCommodityIndexCommodityType(QlCommodityIndex *o) {return ret(new CommodityType((*arg(o))->commodityType()));}
+Currency *qlCommodityIndexCurrency(QlCommodityIndex *o) {return ret(new Currency((*arg(o))->currency()));}
+UnitOfMeasure *qlCommodityIndexUnitOfMeasure(QlCommodityIndex *o) {return ret(new UnitOfMeasure((*arg(o))->unitOfMeasure()));}
+
+// forwardCurve() is a nullptr shared_ptr when the index was constructed without one -- same
+// null-check shape as qlCommodityCurveBasisOfCurve above, peeked as Maybe on the Haskell side.
+QlCommodityCurve *qlCommodityIndexForwardCurve(QlCommodityIndex *o) {
+  const shared_ptr<CommodityCurve> &c = (*arg(o))->forwardCurve();
+  return c ? ret(new QlCommodityCurve(c)) : nullptr;
+}
+
+double qlCommodityIndexLotQuantity(QlCommodityIndex *o) {return (*arg(o))->lotQuantity();}
+
+double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e) {
+  try {return (*arg(o))->forwardPrice(Date(date));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+// lastQuoteDate() -> timeSeries().lastDate(), which QL_REQUIREs a non-empty historical fixing
+// series -- check emptiness first (via CommodityIndex::empty(), itself just timeSeries().empty())
+// rather than catching the exception, so callers can check commodityIndexEmpty first if they want.
+int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e) {
+  try {return (*arg(o))->lastQuoteDate().serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlCommodityIndexEmpty(QlCommodityIndex *o) {return (*arg(o))->empty();}
+int qlCommodityIndexForwardCurveEmpty(QlCommodityIndex *o) {return (*arg(o))->forwardCurveEmpty();}
 
 void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}
 QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e) {

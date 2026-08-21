@@ -201,6 +201,26 @@ extern "C" {
   double qlCommodityCurvePrice(QlCommodityCurve *o, int date, char **e);
   double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e);
 
+  /* CommodityIndex -- an Index leaf, per qlaux.h's QlCommodityIndex comment. The
+     ExchangeContracts/nearbyOffset constructor args are not exposed (see Stage 3's
+     CommodityCurve::price binding note): a null exchangeContracts + nearbyOffset 0 are passed
+     to upstream, which is exactly the branch forwardPrice's own price() call never varies on
+     exchangeContracts for. */
+  QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Currency *currency,
+                                     UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                     double lotQuantity, QlCommodityCurve *forwardCurve, char **e);
+  void qlFreeCommodityIndex(QlCommodityIndex *o);
+  QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o);
+  CommodityType *qlCommodityIndexCommodityType(QlCommodityIndex *o);
+  Currency *qlCommodityIndexCurrency(QlCommodityIndex *o);
+  UnitOfMeasure *qlCommodityIndexUnitOfMeasure(QlCommodityIndex *o);
+  QlCommodityCurve *qlCommodityIndexForwardCurve(QlCommodityIndex *o);
+  double qlCommodityIndexLotQuantity(QlCommodityIndex *o);
+  double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e);
+  int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e);
+  int qlCommodityIndexEmpty(QlCommodityIndex *o);
+  int qlCommodityIndexForwardCurveEmpty(QlCommodityIndex *o);
+
   void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o);
   QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e);
   void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o);

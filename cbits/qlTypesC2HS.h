@@ -56,6 +56,7 @@ typedef struct QlCallableBondVolatilityStructure QlCallableBondVolatilityStructu
 typedef struct QlCapFloor QlCapFloor;
 typedef struct QlCapFloorTermVolSurface QlCapFloorTermVolSurface;
 typedef struct QlCommodityCurve QlCommodityCurve;
+typedef struct QlCommodityIndex QlCommodityIndex;
 typedef struct QlCdsOption QlCdsOption;
 typedef struct QlClaim QlClaim;
 typedef struct QlConvertibleBond QlConvertibleBond;
