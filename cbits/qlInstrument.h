@@ -570,9 +570,9 @@ extern "C" {
      qlInstrumentAdditionalResults' own multi-out-param shape. */
   void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *detail);
   void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys,
-      unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies);
+      unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies, char **e);
   void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
-      unsigned *len2, char ***errors, unsigned *len3, char ***details);
+      unsigned *len2, char ***errors, unsigned *len3, char ***details, char **e);
 
   /* EnergyCommodity -- quantity() is pure virtual upstream; one shim covers every leaf. */
   double qlEnergyCommodityQuantity(QlEnergyCommodity *o, CommodityType **outCt, UnitOfMeasure **outUom, char **e);
@@ -597,8 +597,8 @@ extern "C" {
   void qlEnergySwapDailyPositions(QlEnergySwap *o, unsigned *len, int **dates,
       unsigned *len2, double **quantityAmounts, unsigned *len3, double **payLegPrices,
       unsigned *len4, double **receiveLegPrices, unsigned *len5, double **riskDeltas,
-      unsigned *len6, int **unrealized);
-  void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCashFlow ***out);
+      unsigned *len6, int **unrealized, char **e);
+  void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCashFlow ***out, char **e);
 
   /* EnergyVanillaSwap. pricingPeriods is 6 parallel arrays (start/end/payment dates, quantity
      type/uom/amount); like secondaryCosts above, only the first length parameter of each group

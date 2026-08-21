@@ -1347,34 +1347,40 @@ void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *de
 }
 
 void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys,
-    unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies) {
-  const SecondaryCostAmounts &m = (*arg(o))->secondaryCostAmounts();
-  unsigned n = (unsigned)m.size();
-  *keys = (char**)qlAllocatePointerArray(n);
-  *amounts = qlAllocateDoubles(n);
-  *currencies = (Currency**)qlAllocatePointerArray(n);
-  unsigned i = 0;
-  for (SecondaryCostAmounts::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
-    (*keys)[i] = DUP(it->first.c_str());
-    (*amounts)[i] = it->second.value();
-    (*currencies)[i] = ret(new Currency(it->second.currency()));
-  }
-  *len = n; *len2 = n; *len3 = n;
+    unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies, char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *keys = 0; *amounts = 0; *currencies = 0;
+  try {
+    const SecondaryCostAmounts &m = (*arg(o))->secondaryCostAmounts();
+    unsigned n = (unsigned)m.size();
+    *keys = (char**)qlAllocatePointerArray(n);
+    *amounts = qlAllocateDoubles(n);
+    *currencies = (Currency**)qlAllocatePointerArray(n);
+    unsigned i = 0;
+    for (SecondaryCostAmounts::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
+      (*keys)[i] = DUP(it->first.c_str());
+      (*amounts)[i] = it->second.value();
+      (*currencies)[i] = ret(new Currency(it->second.currency()));
+    }
+    *len = n; *len2 = n; *len3 = n;
+  } catch (std::exception& er) {handleException<int>(e, er);}
 }
 
 void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
-    unsigned *len2, char ***errors, unsigned *len3, char ***details) {
-  const PricingErrors &errs = (*arg(o))->pricingErrors();
-  unsigned n = (unsigned)errs.size();
-  *levels = qlAllocateInts(n);
-  *errors = (char**)qlAllocatePointerArray(n);
-  *details = (char**)qlAllocatePointerArray(n);
-  for (unsigned i = 0; i < n; ++i) {
-    (*levels)[i] = errs[i].errorLevel;
-    (*errors)[i] = DUP(errs[i].error.c_str());
-    (*details)[i] = DUP(errs[i].detail.c_str());
-  }
-  *len = n; *len2 = n; *len3 = n;
+    unsigned *len2, char ***errors, unsigned *len3, char ***details, char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *levels = 0; *errors = 0; *details = 0;
+  try {
+    const PricingErrors &errs = (*arg(o))->pricingErrors();
+    unsigned n = (unsigned)errs.size();
+    *levels = qlAllocateInts(n);
+    *errors = (char**)qlAllocatePointerArray(n);
+    *details = (char**)qlAllocatePointerArray(n);
+    for (unsigned i = 0; i < n; ++i) {
+      (*levels)[i] = errs[i].errorLevel;
+      (*errors)[i] = DUP(errs[i].error.c_str());
+      (*details)[i] = DUP(errs[i].detail.c_str());
+    }
+    *len = n; *len2 = n; *len3 = n;
+  } catch (std::exception& er) {handleException<int>(e, er);}
 }
 
 /* EnergyCommodity -- quantity() is pure virtual upstream; one shim, dispatched virtually, covers
@@ -1424,35 +1430,42 @@ QlEnergyCommodity* qlEnergySwapAsEnergyCommodity(QlEnergySwap *o) {return ret(ne
 void qlEnergySwapDailyPositions(QlEnergySwap *o, unsigned *len, int **dates,
     unsigned *len2, double **quantityAmounts, unsigned *len3, double **payLegPrices,
     unsigned *len4, double **receiveLegPrices, unsigned *len5, double **riskDeltas,
-    unsigned *len6, int **unrealized) {
-  const EnergyDailyPositions &m = (*arg(o))->dailyPositions();
-  unsigned n = (unsigned)m.size();
-  *dates = qlAllocateInts(n);
-  *quantityAmounts = qlAllocateDoubles(n);
-  *payLegPrices = qlAllocateDoubles(n);
-  *receiveLegPrices = qlAllocateDoubles(n);
-  *riskDeltas = qlAllocateDoubles(n);
-  *unrealized = qlAllocateInts(n);
-  unsigned i = 0;
-  for (EnergyDailyPositions::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
-    (*dates)[i] = it->first.serialNumber();
-    (*quantityAmounts)[i] = it->second.quantityAmount;
-    (*payLegPrices)[i] = it->second.payLegPrice;
-    (*receiveLegPrices)[i] = it->second.receiveLegPrice;
-    (*riskDeltas)[i] = it->second.riskDelta;
-    (*unrealized)[i] = it->second.unrealized;
-  }
-  *len = n; *len2 = n; *len3 = n; *len4 = n; *len5 = n; *len6 = n;
+    unsigned *len6, int **unrealized, char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *len4 = 0; *len5 = 0; *len6 = 0;
+  *dates = 0; *quantityAmounts = 0; *payLegPrices = 0; *receiveLegPrices = 0; *riskDeltas = 0; *unrealized = 0;
+  try {
+    const EnergyDailyPositions &m = (*arg(o))->dailyPositions();
+    unsigned n = (unsigned)m.size();
+    *dates = qlAllocateInts(n);
+    *quantityAmounts = qlAllocateDoubles(n);
+    *payLegPrices = qlAllocateDoubles(n);
+    *receiveLegPrices = qlAllocateDoubles(n);
+    *riskDeltas = qlAllocateDoubles(n);
+    *unrealized = qlAllocateInts(n);
+    unsigned i = 0;
+    for (EnergyDailyPositions::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
+      (*dates)[i] = it->first.serialNumber();
+      (*quantityAmounts)[i] = it->second.quantityAmount;
+      (*payLegPrices)[i] = it->second.payLegPrice;
+      (*receiveLegPrices)[i] = it->second.receiveLegPrice;
+      (*riskDeltas)[i] = it->second.riskDelta;
+      (*unrealized)[i] = it->second.unrealized;
+    }
+    *len = n; *len2 = n; *len3 = n; *len4 = n; *len5 = n; *len6 = n;
+  } catch (std::exception& er) {handleException<int>(e, er);}
 }
 
-void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCashFlow ***out) {
-  const CommodityCashFlows &m = (*arg(o))->paymentCashFlows();
-  unsigned n = (unsigned)m.size();
-  *out = (QlCommodityCashFlow**)qlAllocatePointerArray(n);
-  unsigned i = 0;
-  for (CommodityCashFlows::const_iterator it = m.begin(); it != m.end(); ++it, ++i)
-    (*out)[i] = ret(new QlCommodityCashFlow(alloc(it->second)));
-  *len = n;
+void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCashFlow ***out, char **e) {
+  *len = 0; *out = 0;
+  try {
+    const CommodityCashFlows &m = (*arg(o))->paymentCashFlows();
+    unsigned n = (unsigned)m.size();
+    *out = (QlCommodityCashFlow**)qlAllocatePointerArray(n);
+    unsigned i = 0;
+    for (CommodityCashFlows::const_iterator it = m.begin(); it != m.end(); ++it, ++i)
+      (*out)[i] = ret(new QlCommodityCashFlow(alloc(it->second)));
+    *len = n;
+  } catch (std::exception& er) {handleException<int>(e, er);}
 }
 
 /* EnergyVanillaSwap -- payReceive()/fixedPrice()/fixedPriceUnitOfMeasure()/index() are all plain,

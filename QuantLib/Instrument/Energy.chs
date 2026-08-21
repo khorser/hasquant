@@ -144,7 +144,8 @@ type CommodityCashFlows = [CommodityCashFlow]
   {withCommodity*`GenCommodity c'
   ,preArray-`[String]'&peekCStringArray*
   ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Currency]'&peekCurrencyArray*}->`()'#}
+  ,preArray-`[Currency]'&peekCurrencyArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The currency-resolved secondary costs computed during the most recent pricing
 -- (@performCalculations()@) of this 'Commodity'\/'EnergyCommodity' leaf -- a plain member read, not
@@ -158,7 +159,8 @@ secondaryCostAmounts o = do
   {withCommodity*`GenCommodity c'
   ,preArray-`[PricingErrorLevel]'&peekPricingErrorLevelArray*
   ,preArray-`[String]'&peekCStringArray*
-  ,preArray-`[String]'&peekCStringArray*}->`()'#}
+  ,preArray-`[String]'&peekCStringArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 peekPricingErrorLevelArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [PricingErrorLevel]
 peekPricingErrorLevelArray = peekIntArray' toEnumC
@@ -223,7 +225,8 @@ energyFuture buySell (qCt, qUom, qAmt) (tpAmt, tpCcy, tpUom) index commodityType
   ,preArray-`[Double]'&peekDoubleArray*
   ,preArray-`[Double]'&peekDoubleArray*
   ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Bool]'&peekBoolArray*}->`()'#}
+  ,preArray-`[Bool]'&peekBoolArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The per-day pricing breakdown computed during this 'EnergySwap' leaf's most recent
 -- @performCalculations()@ -- populated only after pricing (call 'QuantLib.Instrument.npv' first).
@@ -240,7 +243,8 @@ zipWith6 _ _ _ _ _ _ _ = []
 -- recent @performCalculations()@ -- populated only after pricing.
 {#fun qlEnergySwapPaymentCashFlows as paymentCashFlows
   {withEnergySwap*`GenEnergySwap s'
-  ,preArray-`[CommodityCashFlow]'&peekCommodityCashFlowArray*}->`()'#}
+  ,preArray-`[CommodityCashFlow]'&peekCommodityCashFlowArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Split a 'SecondaryCosts' list into the five parallel arrays every energy-instrument
 -- constructor's C shim consumes it as (keys, is-a-'CommodityUnitCost'-flag, amounts, currencies,
