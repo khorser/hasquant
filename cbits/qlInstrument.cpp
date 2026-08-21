@@ -1,5 +1,8 @@
 #include <ql/instrument.hpp>
 #include <ql/exercise.hpp>
+namespace hasquant {
+#include "qlEnumObjects.h"
+}
 #include <ql/rebatedexercise.hpp>
 #include <ql/payoff.hpp>
 #include <ql/instruments/basketoption.hpp>
@@ -1260,10 +1263,10 @@ QlFloatingRateCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swa
   try {
     LinearTsrPricer::Settings settings;
     switch (strategy) {
-      case 0: haveBounds ? settings.withRateBound(lowerBound, upperBound) : settings.withRateBound(); break;
-      case 1: haveBounds ? settings.withVegaRatio(param, lowerBound, upperBound) : settings.withVegaRatio(param); break;
-      case 2: haveBounds ? settings.withPriceThreshold(param, lowerBound, upperBound) : settings.withPriceThreshold(param); break;
-      case 3: haveBounds ? settings.withBSStdDevs(param, lowerBound, upperBound) : settings.withBSStdDevs(param); break;
+      case hasquant::LinearTsrPricerRateBound: haveBounds ? settings.withRateBound(lowerBound, upperBound) : settings.withRateBound(); break;
+      case hasquant::LinearTsrPricerVegaRatio: haveBounds ? settings.withVegaRatio(param, lowerBound, upperBound) : settings.withVegaRatio(param); break;
+      case hasquant::LinearTsrPricerPriceThreshold: haveBounds ? settings.withPriceThreshold(param, lowerBound, upperBound) : settings.withPriceThreshold(param); break;
+      case hasquant::LinearTsrPricerBSStdDevs: haveBounds ? settings.withBSStdDevs(param, lowerBound, upperBound) : settings.withBSStdDevs(param); break;
       default: QL_FAIL("unknown LinearTsrPricer strategy " << strategy);
     }
     return ret(new QlFloatingRateCouponPricer(alloc(new LinearTsrPricer(*arg(swaptionVol), *arg(meanReversion),

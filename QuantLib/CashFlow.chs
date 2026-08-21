@@ -782,17 +782,19 @@ linearTsrPricer swaptionVol meanReversion couponDiscountCurve (LinearTsrPricerSe
     (maybe False (const True) bounds) lowerBound upperBound
   where
     (strategyTag, param) = case strat of
-      LinearTsrRateBound        -> (0 :: Int, 0)
-      LinearTsrVegaRatio p      -> (1, p)
-      LinearTsrPriceThreshold p -> (2, p)
-      LinearTsrBSStdDevs p      -> (3, p)
+      LinearTsrRateBound        -> (fromEnum LinearTsrPricerRateBound, 0)
+      LinearTsrVegaRatio p      -> (fromEnum LinearTsrPricerVegaRatio, p)
+      LinearTsrPriceThreshold p -> (fromEnum LinearTsrPricerPriceThreshold, p)
+      LinearTsrBSStdDevs p      -> (fromEnum LinearTsrPricerBSStdDevs, p)
     (lowerBound, upperBound) = fromMaybe (0, 0) bounds
+
+{#enum LinearTsrPricerStrategyType as LinearTsrPricerStrategyTag {} deriving (Show, Eq)#}
 
 -- |Raw binding for 'linearTsrPricer', taking the 'LinearTsrPricerSettings' unpacked into a
 -- strategy tag\/parameter and an explicit-bounds flag.
 {#fun qlLinearTsrPricer as linearTsrPricer_{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q' -- ^meanReversion
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^couponDiscountCurve
-  ,fromIntegral`Int' -- ^strategy tag: 0=RateBound, 1=VegaRatio, 2=PriceThreshold, 3=BSStdDevs
+  ,fromIntegral`Int' -- ^strategy tag, see 'LinearTsrPricerStrategyTag'
   ,`Double' -- ^strategy-specific parameter (unused for RateBound)
   ,`Bool' -- ^haveBounds
   ,`Double' -- ^lowerBound (ignored unless haveBounds)

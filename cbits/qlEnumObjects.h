@@ -349,6 +349,15 @@ enum ProbabilityTrait {
   , DefaultDensity
 };
 
+// dispatch tag for which LinearTsrPricer::Settings::withX builder to call; see
+// qlInstrument.cpp:qlLinearTsrPricer
+enum LinearTsrPricerStrategyType {
+  LinearTsrPricerRateBound = 0
+  , LinearTsrPricerVegaRatio
+  , LinearTsrPricerPriceThreshold
+  , LinearTsrPricerBSStdDevs
+};
+
 // must match the order of qlTermStructure.cpp:zeroInflationIndices
 enum ZeroInflationIndexType {
   AUCPI = 0
