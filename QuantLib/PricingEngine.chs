@@ -56,6 +56,7 @@ module QuantLib.PricingEngine
   , bachelierSwaptionEngine'
   , analyticBSMHullWhiteEngine
   , analyticCapFloorEngine
+  , gaussian1dCapFloorEngine
   , analyticGJRGARCHEngine
   , analyticHestonEngine
   , analyticHestonHullWhiteEngine
@@ -101,6 +102,7 @@ module QuantLib.PricingEngine
   , gaussian1dSwaptionEngine
   , gaussian1dNonstandardSwaptionEngine
   , gaussian1dFloatFloatSwaptionEngine
+  , gaussian1dJamshidianSwaptionEngine
   , juQuadraticApproximationEngine
   , kirkEngine
   , midPointCdsEngine
@@ -449,6 +451,17 @@ import QuantLib.Internal.Enum
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
 {#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |cap\/floor pricing engine for any one-factor Gaussian short-rate model, evaluated by
+-- integration over the model's state variable. As 'gaussian1dSwaptionEngine', without
+-- 'Probabilities'.
+{#fun qlGaussian1dCapFloorEngine as gaussian1dCapFloorEngine{withGaussian1dModel*`Gaussian1dModel'
+  ,fromIntegral`Int' -- ^integrationPoints
+  ,`Double' -- ^stddevs
+  ,`Bool' -- ^extrapolatePayoff
+  ,`Bool' -- ^flatPayoffExtrapolation
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountCurve
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |analytic pricing engine for vanilla options under a GJR-GARCH process
 {#fun qlAnalyticGJRGARCHEngine as analyticGJRGARCHEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -595,6 +608,10 @@ import QuantLib.Internal.Enum
   ,`Bool' -- ^includeTodaysExercise
   ,`Probabilities' -- ^probabilities
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |swaption pricing engine using Jamshidian's decomposition, for any one-factor Gaussian
+-- short-rate model.
+{#fun qlGaussian1dJamshidianSwaptionEngine as gaussian1dJamshidianSwaptionEngine{withGaussian1dModel*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Ju (1999) quadratic-approximation engine for American options
 {#fun qlJuQuadraticApproximationEngine as juQuadraticApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

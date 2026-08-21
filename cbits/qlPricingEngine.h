@@ -270,6 +270,8 @@ extern "C" {
   QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, int probabilities, char **e);
   QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int probabilities, char **e);
   QlPricingEngine* qlGaussian1dFloatFloatSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int includeTodaysExercise, int probabilities, char **e);
+  QlPricingEngine* qlGaussian1dJamshidianSwaptionEngine(QlGaussian1dModel* model, char **e);
+  QlPricingEngine* qlGaussian1dCapFloorEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, char **e);
 
   QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o);
   QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o);

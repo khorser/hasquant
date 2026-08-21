@@ -8,6 +8,16 @@
 -- 3. gaussian1dSwaptionEngine dispatches correctly for BOTH ADT constructors
 --    (Gsr and MarkovFunctional) -- this is what actually proves the
 --    Upcastable/Gaussian1dModel wiring is right, not just that it compiles.
+-- 4. gaussian1dJamshidianSwaptionEngine reprices a European swaption to the same NPV as
+--    gaussian1dSwaptionEngine's direct integration (mirrors test-suite/gsr.cpp).
+-- 5. gaussian1dCapFloorEngine dispatches correctly for BOTH ADT constructors (Gsr and
+--    MarkovFunctional), pricing a cap to a finite, non-negative NPV under each. Upstream
+--    (test-suite/markovfunctional.cpp:1234) DOES cross-check Gaussian1dCapFloorEngine against
+--    BlackCapFloorEngine to 1bp, but only for a MarkovFunctional calibrated via its
+--    caplet-smile-matching constructor (iborIndex/capletExpiries/capletVts) -- hasquant only
+--    binds MarkovFunctional's swaption/CMS-calibrating constructor (used for basket6/swaption4
+--    above), so that stronger check isn't reachable without binding the other constructor
+--    first (a separate task).
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/Gaussian1dModels.hs -o /tmp/gaussian1dmodels -outputdir /tmp/gaussian1dmodels_build && /tmp/gaussian1dmodels
 import Control.Monad (forM, forM_, replicateM)
@@ -16,7 +26,8 @@ import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.InterestRate
 import QuantLib.Instrument
-import QuantLib.Instrument.Option (BermudanExercise(..))
+import QuantLib.Instrument.CapFloor (cap)
+import QuantLib.Instrument.Option (Exercise(..), BermudanExercise(..), EuropeanExercise(..))
 import QuantLib.Instrument.Swap
 import QuantLib.Math (EndCriteria(..), OptimizationMethod(..))
 import QuantLib.Model hiding (setPricingEngine)
@@ -91,3 +102,45 @@ main = do
   setPricingEngine swpn markovEngine
   npvMarkov <- npv swpn
   putStrLn ("Bermudan swaption NPV under MarkovFunctional: " ++ show npvMarkov)
+
+  -- gaussian1dJamshidianSwaptionEngine: a European (single-exercise) physical-settled
+  -- swaption on the same underlying should reprice identically under direct integration
+  -- (gaussian1dSwaptionEngine) and Jamshidian's decomposition -- mirrors upstream's own
+  -- self-consistency check in test-suite/gsr.cpp's testNonstandardSwaps.
+  let euroEx = European (EuropeanExercise start)
+  euroSwpn <- swaption swp euroEx Physical PhysicalOTC
+  jamEngine <- gaussian1dJamshidianSwaptionEngine (Gsr gsrModel)
+  setPricingEngine euroSwpn gsrEngine
+  npvEuroDirect <- npv euroSwpn
+  setPricingEngine euroSwpn jamEngine
+  npvEuroJam <- npv euroSwpn
+  putStrLn ("European swaption NPV, direct integration: " ++ show npvEuroDirect
+            ++ ", Jamshidian decomposition: " ++ show npvEuroJam)
+  -- upstream's own tolerance for this comparison, test-suite/gsr.cpp's testNonstandardSwaps.
+  if abs (npvEuroDirect - npvEuroJam) > 5.0e-5
+    then error ("gaussian1dJamshidianSwaptionEngine NPV diverges from gaussian1dSwaptionEngine: "
+                ++ show npvEuroDirect ++ " vs " ++ show npvEuroJam)
+    else putStrLn "gaussian1dJamshidianSwaptionEngine: OK, matches direct integration"
+
+  -- gaussian1dCapFloorEngine: a 3% cap on the swap's own floating leg, dispatched over BOTH
+  -- ADT constructors (Gsr and MarkovFunctional) -- as with gaussian1dSwaptionEngine above,
+  -- this is what proves the Upcastable/Gaussian1dModel wiring, not just that it compiles.
+  floatLeg <- floatingLeg swp
+  capfl <- cap floatLeg [0.03]
+  gsrCapFloorEngine <- gaussian1dCapFloorEngine (Gsr gsrModel) 64 7.0 True False (Just ts)
+  setPricingEngine capfl gsrCapFloorEngine
+  npvCapGsr <- npv capfl
+  putStrLn ("Cap NPV under gaussian1dCapFloorEngine (Gsr): " ++ show npvCapGsr)
+  checkPlausibleCapNpv "Gsr" npvCapGsr
+
+  markovCapFloorEngine <- gaussian1dCapFloorEngine (MarkovFunctional markov) 8 5.0 True False (Just ts)
+  setPricingEngine capfl markovCapFloorEngine
+  npvCapMarkov <- npv capfl
+  putStrLn ("Cap NPV under gaussian1dCapFloorEngine (MarkovFunctional): " ++ show npvCapMarkov)
+  checkPlausibleCapNpv "MarkovFunctional" npvCapMarkov
+  where
+    isFinite x = not (isNaN x || isInfinite x)
+    checkPlausibleCapNpv label x =
+      if not (isFinite x) || x < 0
+        then error ("gaussian1dCapFloorEngine (" ++ label ++ "): implausible cap NPV " ++ show x)
+        else putStrLn ("gaussian1dCapFloorEngine (" ++ label ++ "): OK, finite non-negative NPV")

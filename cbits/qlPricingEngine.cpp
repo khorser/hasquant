@@ -48,9 +48,11 @@
 #include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
 #include <ql/pricingengines/swaption/fdhullwhiteswaptionengine.hpp>
 #include <ql/pricingengines/swaption/g2swaptionengine.hpp>
+#include <ql/pricingengines/capfloor/gaussian1dcapfloorengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dswaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dnonstandardswaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dfloatfloatswaptionengine.hpp>
+#include <ql/pricingengines/swaption/gaussian1djamshidianswaptionengine.hpp>
 #include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
 #include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
 #include <ql/pricingengines/swaption/treeswaptionengine.hpp>
@@ -697,6 +699,12 @@ QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model,
 // probabilities (gaussian1dfloatfloatswaptionengine.hpp).
 QlPricingEngine* qlGaussian1dFloatFloatSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int includeTodaysExercise, int probabilities, char **e) {
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dFloatFloatSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(oas), qlNullableHandle(discountCurve), includeTodaysExercise, (Gaussian1dFloatFloatSwaptionEngine::Probabilities)probabilities))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlGaussian1dJamshidianSwaptionEngine(QlGaussian1dModel* model, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new Gaussian1dJamshidianSwaptionEngine(*arg(model)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlGaussian1dCapFloorEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new Gaussian1dCapFloorEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) {return ret(new QlCalibratedModel(*arg(o)));}
