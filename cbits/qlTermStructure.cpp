@@ -804,18 +804,10 @@ QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Cur
 
 void qlFreeCommodityIndex(QlCommodityIndex *o) {del(o);}
 QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o) {return ret(new QlIndex(*arg(o)));}
-CommodityType *qlCommodityIndexCommodityType(QlCommodityIndex *o) {return ret(new CommodityType((*arg(o))->commodityType()));}
-Currency *qlCommodityIndexCurrency(QlCommodityIndex *o) {return ret(new Currency((*arg(o))->currency()));}
-UnitOfMeasure *qlCommodityIndexUnitOfMeasure(QlCommodityIndex *o) {return ret(new UnitOfMeasure((*arg(o))->unitOfMeasure()));}
 
-// forwardCurve() is a nullptr shared_ptr when the index was constructed without one -- same
-// null-check shape as qlCommodityCurveBasisOfCurve above, peeked as Maybe on the Haskell side.
-QlCommodityCurve *qlCommodityIndexForwardCurve(QlCommodityIndex *o) {
-  const shared_ptr<CommodityCurve> &c = (*arg(o))->forwardCurve();
-  return c ? ret(new QlCommodityCurve(c)) : nullptr;
-}
-
-double qlCommodityIndexLotQuantity(QlCommodityIndex *o) {return (*arg(o))->lotQuantity();}
+// commodityType()/currency()/unitOfMeasure()/lotQuantity()/forwardCurve() are all plain,
+// never-mutated echoes of the constructor's own arguments (commodityindex.hpp's inline getters
+// each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
 
 double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e) {
   try {return (*arg(o))->forwardPrice(Date(date));
@@ -828,7 +820,6 @@ int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e) {
   try {return (*arg(o))->lastQuoteDate().serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlCommodityIndexEmpty(QlCommodityIndex *o) {return (*arg(o))->empty();}
-int qlCommodityIndexForwardCurveEmpty(QlCommodityIndex *o) {return (*arg(o))->forwardCurveEmpty();}
 
 void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}
 QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e) {
@@ -1537,18 +1528,9 @@ QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy
   } catch (std::exception& er) {return handleException<QlEquityIndex *>(e, er);}}
 void qlFreeEquityIndex(QlEquityIndex *o) {del(o);}
 QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o) {return ret(new QlIndex(*arg(o)));}
-Currency* qlEquityIndexCurrency(QlEquityIndex* o, char **e) {
-  try {return alloc(new Currency((*arg(o))->currency()));
-  } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
-QlYieldTermStructure* qlEquityIndexInterestRateCurve(QlEquityIndex* o, char **e) {
-  try {return ret(new QlYieldTermStructure((*arg(o))->equityInterestRateCurve().currentLink()));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlYieldTermStructure* qlEquityIndexDividendCurve(QlEquityIndex* o, char **e) {
-  try {return ret(new QlYieldTermStructure((*arg(o))->equityDividendCurve().currentLink()));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlQuote* qlEquityIndexSpot(QlEquityIndex* o, char **e) {
-  try {return ret(new QlQuote((*arg(o))->spot().currentLink()));
-  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+// currency()/equityInterestRateCurve()/equityDividendCurve()/spot() are all plain,
+// never-mutated echoes of the constructor's own arguments (equityindex.hpp's inline getters
+// each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
 
 typedef ZeroInflationIndex *(*makeZeroInflationIndex)();
 // must match the order of qlEnumObjects.h:ZeroInflationIndexType

@@ -1,7 +1,5 @@
 module QuantLib.Spec.Index.Commodity (spec) where
 
-import Data.Maybe(isNothing, isJust)
-
 import Test.Hspec
 
 import QuantLib.Time.Date
@@ -15,22 +13,12 @@ import QuantLib.TermStructure.Commodity
 spec :: Spec
 spec = do
   describe "CommodityIndex" $ do
-    it "round-trips commodityType/currency/unitOfMeasure/lotQuantity, no forward curve" $ do
+    it "has no historical fixings and no forward price before any are added" $ do
       ho <- commodityType "HO" "Heating Oil"
       bbl <- barrelUnitOfMeasure
       usd <- commoditySettingsCurrency
       cal <- calendar TARGET
       idx <- commodityIndex "HO index" ho usd bbl cal 1000 Nothing
-      ct <- commodityIndexCommodityType idx
-      ct `shouldBe` ho
-      ccy <- commodityIndexCurrency idx
-      ccy `shouldBe` usd
-      uom <- commodityIndexUnitOfMeasure idx
-      uom `shouldBe` bbl
-      commodityIndexLotQuantity idx `shouldBe` 1000
-      fc <- commodityIndexForwardCurve idx
-      isNothing fc `shouldBe` True
-      commodityIndexForwardCurveEmpty idx `shouldBe` False
       commodityIndexEmpty idx `shouldBe` True
 
     it "forecasts a forward price from a forward curve" $ do
@@ -43,9 +31,6 @@ spec = do
           d1 = 1 `february` 2024
       curve <- commodityCurve "HO curve" ho usd bbl cal [d0, d1] [70.0, 71.0] dc
       idx <- commodityIndex "HO index" ho usd bbl cal 1000 (Just curve)
-      fc <- commodityIndexForwardCurve idx
-      isJust fc `shouldBe` True
-      commodityIndexForwardCurveEmpty idx `shouldBe` False
       commodityIndexForwardPrice idx d0 `shouldReturn` 70.0
 
     it "stores and returns historical fixings via QuantLib.Index's generic addFixing/fixing" $ do

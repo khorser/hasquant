@@ -4,15 +4,9 @@ module QuantLib.Index.Commodity
 
   , commodityIndex
 
-  , commodityIndexCommodityType
-  , commodityIndexCurrency
-  , commodityIndexUnitOfMeasure
-  , commodityIndexForwardCurve
-  , commodityIndexLotQuantity
   , commodityIndexForwardPrice
   , commodityIndexLastQuoteDate
   , commodityIndexEmpty
-  , commodityIndexForwardCurveEmpty
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -37,6 +31,9 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure)
 -- @ExchangeContracts@\/nearby-offset pair for rolling onto nearby exchange contracts; this binds
 -- only the no-rolling case (a null @exchangeContracts@ and offset 0), the same scope this module's
 -- 'QuantLib.TermStructure.Commodity.CommodityCurve' already narrowed 'commodityCurvePrice' to.
+-- No inspector is bound for commodity type\/currency\/unit of measure\/lot quantity\/forward
+-- curve: each is a plain, never-mutated echo of this constructor's own argument -- the caller
+-- already holds whatever it passed in, so a getter would tell it nothing new.
 {#fun qlCommodityIndex as commodityIndex
   {`String' -- ^name
   ,withCommodityType*`CommodityType'
@@ -47,21 +44,6 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure)
   ,withMaybeCommodityCurve*`Maybe CommodityCurve' -- ^forwardCurve
   ,preErrorCheck-`String'errorCheck*-}->`CommodityIndex'peekCommodityIndex*#}
 
--- |The commodity type this index prices.
-{#fun qlCommodityIndexCommodityType as commodityIndexCommodityType{withCommodityIndex*`CommodityIndex'}->`CommodityType'peekCommodityType*#}
-
--- |The currency this index's prices are quoted in.
-{#fun qlCommodityIndexCurrency as commodityIndexCurrency{withCommodityIndex*`CommodityIndex'}->`Currency'peekCurrency*#}
-
--- |The unit of measure this index's prices are quoted in.
-{#fun qlCommodityIndexUnitOfMeasure as commodityIndexUnitOfMeasure{withCommodityIndex*`CommodityIndex'}->`UnitOfMeasure'peekUnitOfMeasure*#}
-
--- |The forward curve used to forecast this index's future fixings, if any.
-{#fun qlCommodityIndexForwardCurve as commodityIndexForwardCurve{withCommodityIndex*`CommodityIndex'}->`Maybe CommodityCurve'peekMaybeCommodityCurve*#}
-
--- |The lot quantity, as given at construction.
-{#fun pure qlCommodityIndexLotQuantity as commodityIndexLotQuantity{withCommodityIndex*`CommodityIndex'}->`Double'#}
-
 -- |The forecast forward price for a date, from the forward curve.
 {#fun qlCommodityIndexForwardPrice as commodityIndexForwardPrice{withCommodityIndex*`CommodityIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -71,8 +53,5 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure)
 
 -- |Whether this index has any stored historical fixings.
 {#fun pure qlCommodityIndexEmpty as commodityIndexEmpty{withCommodityIndex*`CommodityIndex'}->`Bool'#}
-
--- |Whether this index has no forward curve, or an empty one.
-{#fun pure qlCommodityIndexForwardCurveEmpty as commodityIndexForwardCurveEmpty{withCommodityIndex*`CommodityIndex'}->`Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

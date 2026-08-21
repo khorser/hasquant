@@ -211,15 +211,9 @@ extern "C" {
                                      double lotQuantity, QlCommodityCurve *forwardCurve, char **e);
   void qlFreeCommodityIndex(QlCommodityIndex *o);
   QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o);
-  CommodityType *qlCommodityIndexCommodityType(QlCommodityIndex *o);
-  Currency *qlCommodityIndexCurrency(QlCommodityIndex *o);
-  UnitOfMeasure *qlCommodityIndexUnitOfMeasure(QlCommodityIndex *o);
-  QlCommodityCurve *qlCommodityIndexForwardCurve(QlCommodityIndex *o);
-  double qlCommodityIndexLotQuantity(QlCommodityIndex *o);
   double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e);
   int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e);
   int qlCommodityIndexEmpty(QlCommodityIndex *o);
-  int qlCommodityIndexForwardCurveEmpty(QlCommodityIndex *o);
 
   void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o);
   QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e);
@@ -411,10 +405,6 @@ extern "C" {
   QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy, QlYieldTermStructure *interest, QlYieldTermStructure *dividend, QlQuote *spot, char **e);
   void qlFreeEquityIndex(QlEquityIndex *o);
   QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o);
-  Currency* qlEquityIndexCurrency(QlEquityIndex* o, char **e);
-  QlYieldTermStructure* qlEquityIndexInterestRateCurve(QlEquityIndex* o, char **e);
-  QlYieldTermStructure* qlEquityIndexDividendCurve(QlEquityIndex* o, char **e);
-  QlQuote* qlEquityIndexSpot(QlEquityIndex* o, char **e);
 
   QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e);
   QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e);
