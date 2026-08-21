@@ -16,6 +16,7 @@ typedef struct Rounding Rounding;
 typedef struct CommodityType CommodityType;
 typedef struct UnitOfMeasure UnitOfMeasure;
 typedef struct PaymentTerm PaymentTerm;
+typedef struct UnitOfMeasureConversion UnitOfMeasureConversion;
 typedef struct FdmSchemeDesc FdmSchemeDesc;
 typedef struct BlackDeltaCalculator BlackDeltaCalculator;
 typedef struct CouponLeg CouponLeg;

@@ -2,7 +2,12 @@
 #include <ql/experimental/commodities/unitofmeasure.hpp>
 #include <ql/experimental/commodities/petroleumunitsofmeasure.hpp>
 #include <ql/experimental/commodities/paymentterm.hpp>
+#include <ql/experimental/commodities/quantity.hpp>
+#include <ql/experimental/commodities/unitofmeasureconversion.hpp>
+#include <ql/experimental/commodities/unitofmeasureconversionmanager.hpp>
+#include <ql/experimental/commodities/commoditysettings.hpp>
 #include <ql/time/calendar.hpp>
+#include <ql/currency.hpp>
 #include "qlaux.h"
 #include "qlCommodity.h"
 
@@ -78,3 +83,69 @@ int qlPaymentTermEmpty(PaymentTerm *o) {return arg(o)->empty();}
 int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, char **e) {
   try {return arg(o)->getPaymentDate(qlNullableDate(date)).serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
+
+/* Quantity -- see qlCommodity.h on why this is three flat arguments, not one tuple. */
+
+double qlQuantityRoundedAmount(UnitOfMeasure *uom, double amount) {
+  return arg(uom)->rounding()(amount);}
+
+int qlQuantityClose(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
+                    CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e) {
+  try {return close(Quantity(*arg(ct1), *arg(uom1), amount1),
+                    Quantity(*arg(ct2), *arg(uom2), amount2), n);
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+
+int qlQuantityCloseEnough(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
+                          CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e) {
+  try {return close_enough(Quantity(*arg(ct1), *arg(uom1), amount1),
+                           Quantity(*arg(ct2), *arg(uom2), amount2), n);
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+
+/* UnitOfMeasureConversion */
+
+UnitOfMeasureConversion *qlUnitOfMeasureConversion(CommodityType *commodityType, UnitOfMeasure *source,
+                                                   UnitOfMeasure *target, double conversionFactor, char **e) {
+  try {return alloc(new UnitOfMeasureConversion(*arg(commodityType), *arg(source), *arg(target), conversionFactor));
+  } catch (std::exception& er) {return handleException<UnitOfMeasureConversion*>(e, er);}}
+
+void qlFreeUnitOfMeasureConversion(UnitOfMeasureConversion *o) {del(o);}
+UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o) {return ret(new UnitOfMeasure(arg(o)->source()));}
+UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o) {return ret(new UnitOfMeasure(arg(o)->target()));}
+CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o) {return ret(new CommodityType(arg(o)->commodityType()));}
+int qlUnitOfMeasureConversionType_(UnitOfMeasureConversion *o) {return arg(o)->type();}
+double qlUnitOfMeasureConversionFactor(UnitOfMeasureConversion *o) {return arg(o)->conversionFactor();}
+char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o) {return DUP(arg(o)->code().c_str());}
+
+double qlUnitOfMeasureConversionConvert(UnitOfMeasureConversion *o, CommodityType *ct, UnitOfMeasure *uom,
+                                        double amount, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
+  *outCt = 0; *outUom = 0;
+  try {
+    Quantity r = arg(o)->convert(Quantity(*arg(ct), *arg(uom), amount));
+    *outCt = ret(new CommodityType(r.commodityType()));
+    *outUom = ret(new UnitOfMeasure(r.unitOfMeasure()));
+    return r.amount();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+UnitOfMeasureConversion *qlUnitOfMeasureConversionChain(UnitOfMeasureConversion *r1, UnitOfMeasureConversion *r2, char **e) {
+  try {return alloc(new UnitOfMeasureConversion(UnitOfMeasureConversion::chain(*arg(r1), *arg(r2))));
+  } catch (std::exception& er) {return handleException<UnitOfMeasureConversion*>(e, er);}}
+
+/* UnitOfMeasureConversionManager */
+
+UnitOfMeasureConversion *qlUnitOfMeasureConversionManagerLookup(
+    CommodityType *commodityType, UnitOfMeasure *source, UnitOfMeasure *target, int type, char **e) {
+  try {return alloc(new UnitOfMeasureConversion(UnitOfMeasureConversionManager::instance().lookup(
+      *arg(commodityType), *arg(source), *arg(target), (UnitOfMeasureConversion::Type)type)));
+  } catch (std::exception& er) {return handleException<UnitOfMeasureConversion*>(e, er);}}
+
+void qlUnitOfMeasureConversionManagerAdd(UnitOfMeasureConversion *c) {
+  UnitOfMeasureConversionManager::instance().add(*arg(c));}
+
+void qlUnitOfMeasureConversionManagerClear() {UnitOfMeasureConversionManager::instance().clear();}
+
+/* CommoditySettings */
+
+Currency *qlCommoditySettingsCurrency() {return ret(new Currency(CommoditySettings::instance().currency()));}
+void qlCommoditySettingsSetCurrency(Currency *c) {CommoditySettings::instance().currency() = *arg(c);}
+UnitOfMeasure *qlCommoditySettingsUnitOfMeasure() {return ret(new UnitOfMeasure(CommoditySettings::instance().unitOfMeasure()));}
+void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u) {CommoditySettings::instance().unitOfMeasure() = *arg(u);}

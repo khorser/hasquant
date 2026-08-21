@@ -50,6 +50,7 @@ namespace QuantLib {
   class CommodityType;
   class UnitOfMeasure;
   class PaymentTerm;
+  class UnitOfMeasureConversion;
   class Region;
   class InterestRate;
   class FixedRateBondHelper;
@@ -323,6 +324,7 @@ using QuantLib::Currency;
 using QuantLib::CommodityType;
 using QuantLib::UnitOfMeasure;
 using QuantLib::PaymentTerm;
+using QuantLib::UnitOfMeasureConversion;
 using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
@@ -1142,6 +1144,7 @@ template <> class ObjClassName<TreeVanillaSwapEngine*> {public: static void outp
 template <> class ObjClassName<TypePayoff*> {public: static void output(std::ostream& os) {os << "TypePayoff";}};
 template <> class ObjClassName<UpfrontCdsHelper*> {public: static void output(std::ostream& os) {os << "UpfrontCdsHelper";}};
 template <> class ObjClassName<UnitOfMeasure*> {public: static void output(std::ostream& os) {os << "UnitOfMeasure";}};
+template <> class ObjClassName<UnitOfMeasureConversion*> {public: static void output(std::ostream& os) {os << "UnitOfMeasureConversion";}};
 template <> class ObjClassName<VanillaOption*> {public: static void output(std::ostream& os) {os << "VanillaOption";}};
 template <> class ObjClassName<VanillaSwap*> {public: static void output(std::ostream& os) {os << "VanillaSwap";}};
 template <> class ObjClassName<VarianceGammaEngine*> {public: static void output(std::ostream& os) {os << "VarianceGammaEngine";}};

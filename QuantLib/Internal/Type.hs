@@ -107,6 +107,10 @@ peekMaybeCommodityType p
 foreign import ccall safe "ql.h qlCommodityTypeCode" qlCommodityTypeCode :: Ptr CCommodityType -> IO CString
 instance Show CommodityType where show x = showStandalone qlCommodityTypeCode (getCCommodityType x)
 instance Eq CommodityType where x == y = show x == show y
+-- |Peek a 'CommodityType' out of a @CommodityType**@ out-parameter (as opposed to
+-- 'peekCommodityType', which peeks it directly out of a @CommodityType*@ primary return).
+peekCommodityTypePtr :: Ptr (Ptr CCommodityType) -> IO CommodityType
+peekCommodityTypePtr = peek >=> peekCommodityType
 
 data CUnitOfMeasure
 newtype UnitOfMeasure = UnitOfMeasure {getCUnitOfMeasure :: Standalone CUnitOfMeasure}
@@ -125,6 +129,10 @@ peekMaybeUnitOfMeasure p
 foreign import ccall safe "ql.h qlUnitOfMeasureCode" qlUnitOfMeasureCode :: Ptr CUnitOfMeasure -> IO CString
 instance Show UnitOfMeasure where show x = showStandalone qlUnitOfMeasureCode (getCUnitOfMeasure x)
 instance Eq UnitOfMeasure where x == y = show x == show y
+-- |Peek a 'UnitOfMeasure' out of a @UnitOfMeasure**@ out-parameter (as opposed to
+-- 'peekUnitOfMeasure', which peeks it directly out of a @UnitOfMeasure*@ primary return).
+peekUnitOfMeasurePtr :: Ptr (Ptr CUnitOfMeasure) -> IO UnitOfMeasure
+peekUnitOfMeasurePtr = peek >=> peekUnitOfMeasure
 
 data CPaymentTerm
 newtype PaymentTerm = PaymentTerm {getCPaymentTerm :: Standalone CPaymentTerm}
@@ -143,6 +151,18 @@ peekMaybePaymentTerm p
 foreign import ccall safe "ql.h qlPaymentTermName" qlPaymentTermName :: Ptr CPaymentTerm -> IO CString
 instance Show PaymentTerm where show x = showStandalone qlPaymentTermName (getCPaymentTerm x)
 instance Eq PaymentTerm where x == y = show x == show y
+
+data CUnitOfMeasureConversion
+newtype UnitOfMeasureConversion = UnitOfMeasureConversion {getCUnitOfMeasureConversion :: Standalone CUnitOfMeasureConversion}
+foreign import ccall unsafe "ql.h &qlFreeUnitOfMeasureConversion" qlFreeUnitOfMeasureConversion :: FinalizerPtr CUnitOfMeasureConversion
+instance Finalizable CUnitOfMeasureConversion where finalize = qlFreeUnitOfMeasureConversion
+peekUnitOfMeasureConversion :: Ptr CUnitOfMeasureConversion -> IO UnitOfMeasureConversion
+peekUnitOfMeasureConversion = UnitOfMeasureConversion <.> peekStandalone
+withUnitOfMeasureConversion :: UnitOfMeasureConversion -> (Ptr CUnitOfMeasureConversion -> IO b) -> IO b
+withUnitOfMeasureConversion = withStandalone . getCUnitOfMeasureConversion
+foreign import ccall safe "ql.h qlUnitOfMeasureConversionCode" qlUnitOfMeasureConversionCode :: Ptr CUnitOfMeasureConversion -> IO CString
+instance Show UnitOfMeasureConversion where show x = showStandalone qlUnitOfMeasureConversionCode (getCUnitOfMeasureConversion x)
+instance Eq UnitOfMeasureConversion where x == y = show x == show y
 
 data CExchangeRate
 newtype ExchangeRate = ExchangeRate {getCExchangeRate :: Standalone CExchangeRate}

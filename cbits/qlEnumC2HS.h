@@ -539,4 +539,8 @@ enum UnitOfMeasureType {Mass, Volume, Energy, QuantityUnit};
 // experimental/commodities/paymentterm.hpp (PaymentTerm::EventType)
 enum PaymentTermEventType {TradeDate, PricingDate};
 
+// experimental/commodities/unitofmeasureconversion.hpp (UnitOfMeasureConversion::Type). Tags
+// prefixed Uom -- confirmed clash with the already-bound ExchangeRateType{Direct,Derived}.
+enum UnitOfMeasureConversionType {UomDirect, UomDerived};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

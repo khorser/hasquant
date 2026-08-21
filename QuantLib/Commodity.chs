@@ -32,11 +32,40 @@ module QuantLib.Commodity
   , paymentTermCalendar
   , paymentTermEmpty
   , paymentTermGetPaymentDate
+
+  , Quantity
+  , roundedQuantity
+  , closeQuantity
+  , closeEnoughQuantity
+
+  , CommodityUnitCost
+
+  , UnitOfMeasureConversion
+  , UnitOfMeasureConversionType(..)
+  , unitOfMeasureConversion
+  , unitOfMeasureConversionSource
+  , unitOfMeasureConversionTarget
+  , unitOfMeasureConversionCommodityType
+  , unitOfMeasureConversionType
+  , unitOfMeasureConversionFactor
+  , unitOfMeasureConversionCode
+  , convertQuantity
+  , chainUnitOfMeasureConversion
+
+  , lookupUomConversion
+  , addUomConversion
+  , clearUomConversions
+
+  , commoditySettingsCurrency
+  , setCommoditySettingsCurrency
+  , commoditySettingsUnitOfMeasure
+  , setCommoditySettingsUnitOfMeasure
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
 import QuantLib.Time.Date(Day)
+import Foreign.Marshal.Alloc(alloca)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -45,9 +74,13 @@ import QuantLib.Time.Date(Day)
 #include "ql.h"
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
+{#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *CommodityType foreign -> CCommodityType nocode#}
 {#pointer *UnitOfMeasure foreign -> CUnitOfMeasure nocode#}
 {#pointer *PaymentTerm foreign -> CPaymentTerm nocode#}
+{#pointer *UnitOfMeasureConversion foreign -> CUnitOfMeasureConversion nocode#}
+
+{#enum UnitOfMeasureConversionType{} deriving(Show, Eq)#}
 
 -- |Construct a custom commodity type identified by its code (e.g. \"HO\") and descriptive name
 -- (e.g. \"Heating Oil\"). QuantLib has no fixed enum of commodity types -- every instance is
@@ -132,5 +165,126 @@ import QuantLib.Time.Date(Day)
 -- get the actual payment date.
 {#fun qlPaymentTermGetPaymentDate as paymentTermGetPaymentDate
   {withPaymentTerm*`PaymentTerm',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
+-- |An amount of a commodity: a 'CommodityType', a 'UnitOfMeasure', and a plain amount. Marshalled
+-- as a flat triple rather than a wrapper type (per the @Money@-as-tuple convention) -- and, unlike
+-- 'CommodityUnitCost' below, its three inspectors are just tuple projections, so they need no
+-- binding at all. c2hs's @&@ tuple-splitter only ever consumes two C arguments (confirmed against
+-- its source, not just by trial), so every function below that takes or returns a 'Quantity'
+-- marshals it as three flat 'CommodityType'\/'UnitOfMeasure'\/'Double' arguments instead of one
+-- combined tuple.
+type Quantity = (CommodityType, UnitOfMeasure, Double)
+
+{#fun pure qlQuantityRoundedAmount as quantityRoundedAmount{withUnitOfMeasure*`UnitOfMeasure',`Double'}->`Double'#}
+
+-- |Round a quantity's amount per its unit of measure's rounding convention. The commodity type and
+-- unit of measure are unaffected by rounding, so they're carried straight through in Haskell
+-- rather than round-tripped through the C++ call.
+roundedQuantity :: Quantity -> Quantity
+roundedQuantity (ct, uom, amount) = (ct, uom, quantityRoundedAmount uom amount)
+
+{#fun qlQuantityClose as qlQuantityClose_
+  {withCommodityType*`CommodityType',withUnitOfMeasure*`UnitOfMeasure',`Double'
+  ,withCommodityType*`CommodityType',withUnitOfMeasure*`UnitOfMeasure',`Double'
+  ,`Int',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
+-- |Whether two quantities are close to within @n@ ULPs (default 42 upstream), after converting
+-- the second to the first's unit of measure if their units differ (which throws unless a
+-- conversion is reachable -- see 'lookupUomConversion').
+closeQuantity :: Quantity -> Quantity -> Int -> IO Bool
+closeQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityClose_ ct1 uom1 amt1 ct2 uom2 amt2 n
+
+{#fun qlQuantityCloseEnough as qlQuantityCloseEnough_
+  {withCommodityType*`CommodityType',withUnitOfMeasure*`UnitOfMeasure',`Double'
+  ,withCommodityType*`CommodityType',withUnitOfMeasure*`UnitOfMeasure',`Double'
+  ,`Int',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+
+-- |As 'closeQuantity', but using QuantLib's relative (rather than absolute) closeness test.
+closeEnoughQuantity :: Quantity -> Quantity -> Int -> IO Bool
+closeEnoughQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityCloseEnough_ ct1 uom1 amt1 ct2 uom2 amt2 n
+
+-- |A commodity's unit cost: a cash amount (a @(Double, Currency)@ pair, standing in for
+-- QuantLib's @Money@) per 'UnitOfMeasure'. A plain tuple, like 'Quantity' -- it carries no
+-- calculation of its own upstream.
+type CommodityUnitCost = (Double, Currency, UnitOfMeasure)
+
+-- |Construct a conversion factor between two units of measure for a given commodity type: a unit
+-- of @source@ is worth @conversionFactor@ units of @target@.
+{#fun qlUnitOfMeasureConversion as unitOfMeasureConversion
+  {withCommodityType*`CommodityType'
+  ,withUnitOfMeasure*`UnitOfMeasure' -- ^source
+  ,withUnitOfMeasure*`UnitOfMeasure' -- ^target
+  ,`Double' -- ^conversionFactor
+  ,preErrorCheck-`String'errorCheck*-}->`UnitOfMeasureConversion'peekUnitOfMeasureConversion*#}
+
+-- |The source unit of measure.
+{#fun qlUnitOfMeasureConversionSource as unitOfMeasureConversionSource{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
+-- |The target unit of measure.
+{#fun qlUnitOfMeasureConversionTarget as unitOfMeasureConversionTarget{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
+-- |The commodity type this conversion applies to.
+{#fun qlUnitOfMeasureConversionCommodityType as unitOfMeasureConversionCommodityType{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`CommodityType'peekCommodityType*#}
+
+-- |Whether the conversion was given directly, or derived by chaining two other conversions.
+{#fun pure qlUnitOfMeasureConversionType_ as unitOfMeasureConversionType{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`UnitOfMeasureConversionType'#}
+
+-- |The conversion factor: a unit of the source is worth this many units of the target.
+{#fun pure qlUnitOfMeasureConversionFactor as unitOfMeasureConversionFactor{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`Double'#}
+
+-- |A code identifying the conversion, e.g. \"Heating OilMTBBL\".
+{#fun pure qlUnitOfMeasureConversionCode as unitOfMeasureConversionCode{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`String'peekDynString*#}
+
+{#fun qlUnitOfMeasureConversionConvert as qlUnitOfMeasureConversionConvert_
+  {withUnitOfMeasureConversion*`UnitOfMeasureConversion'
+  ,withCommodityType*`CommodityType',withUnitOfMeasure*`UnitOfMeasure',`Double'
+  ,alloca-`CommodityType'peekCommodityTypePtr*
+  ,alloca-`UnitOfMeasure'peekUnitOfMeasurePtr*
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Apply the conversion factor to a quantity, converting it from the conversion's source to its
+-- target unit of measure (or vice versa). Throws if the quantity's unit of measure is on neither
+-- side of the conversion.
+convertQuantity :: UnitOfMeasureConversion -> Quantity -> IO Quantity
+convertQuantity conv (ct, uom, amount) = do
+  (amount', ct', uom') <- qlUnitOfMeasureConversionConvert_ conv ct uom amount
+  pure (ct', uom', amount')
+
+-- |Combine two conversions sharing a common unit of measure into a derived conversion between
+-- their other two units. Throws if the conversions don't share a common unit.
+{#fun qlUnitOfMeasureConversionChain as chainUnitOfMeasureConversion
+  {withUnitOfMeasureConversion*`UnitOfMeasureConversion'
+  ,withUnitOfMeasureConversion*`UnitOfMeasureConversion'
+  ,preErrorCheck-`String'errorCheck*-}->`UnitOfMeasureConversion'peekUnitOfMeasureConversion*#}
+
+-- |Look up a (possibly derived, via triangulation) conversion between two units of measure for a
+-- given commodity type. Throws if none can be found. Pre-populated with a set of known petroleum
+-- conversion factors even before any 'addUomConversion' call.
+{#fun qlUnitOfMeasureConversionManagerLookup as lookupUomConversion
+  {withCommodityType*`CommodityType'
+  ,withUnitOfMeasure*`UnitOfMeasure' -- ^source
+  ,withUnitOfMeasure*`UnitOfMeasure' -- ^target
+  ,`UnitOfMeasureConversionType'
+  ,preErrorCheck-`String'errorCheck*-}->`UnitOfMeasureConversion'peekUnitOfMeasureConversion*#}
+
+-- |Register a conversion with the global unit-of-measure conversion repository, replacing any
+-- existing conversion between the same commodity type and pair of units.
+{#fun qlUnitOfMeasureConversionManagerAdd as addUomConversion{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`()'#}
+
+-- |Reset the unit-of-measure conversion repository back to its built-in set of known petroleum
+-- conversion factors, discarding anything added via 'addUomConversion'.
+{#fun qlUnitOfMeasureConversionManagerClear as clearUomConversions{}->`()'#}
+
+-- |The global commodity currency setting (defaults to USD).
+{#fun qlCommoditySettingsCurrency as commoditySettingsCurrency{}->`Currency'peekCurrency*#}
+
+-- |Set the global commodity currency setting.
+{#fun qlCommoditySettingsSetCurrency as setCommoditySettingsCurrency{withCurrency*`Currency'}->`()'#}
+
+-- |The global commodity unit-of-measure setting (defaults to barrels).
+{#fun qlCommoditySettingsUnitOfMeasure as commoditySettingsUnitOfMeasure{}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
+-- |Set the global commodity unit-of-measure setting.
+{#fun qlCommoditySettingsSetUnitOfMeasure as setCommoditySettingsUnitOfMeasure{withUnitOfMeasure*`UnitOfMeasure'}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

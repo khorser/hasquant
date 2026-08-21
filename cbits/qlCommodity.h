@@ -34,6 +34,41 @@ extern "C" {
   Calendar *qlPaymentTermCalendar(PaymentTerm *o);
   int qlPaymentTermEmpty(PaymentTerm *o);
   int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, char **e);
+
+  /* Quantity -- marshalled as flat (CommodityType, UnitOfMeasure, double) triples throughout,
+     since c2hs's `&` tuple-splitter caps at two C arguments (confirmed against its source: the
+     `twoCVal` marshaller consumes exactly [ct1, ct2], with no three-way variant). */
+  double qlQuantityRoundedAmount(UnitOfMeasure *uom, double amount);
+  int qlQuantityClose(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
+                      CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e);
+  int qlQuantityCloseEnough(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
+                            CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e);
+
+  /* UnitOfMeasureConversion */
+  UnitOfMeasureConversion *qlUnitOfMeasureConversion(CommodityType *commodityType, UnitOfMeasure *source,
+                                                     UnitOfMeasure *target, double conversionFactor, char **e);
+  void qlFreeUnitOfMeasureConversion(UnitOfMeasureConversion *o);
+  UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o);
+  UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o);
+  CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o);
+  int qlUnitOfMeasureConversionType_(UnitOfMeasureConversion *o);
+  double qlUnitOfMeasureConversionFactor(UnitOfMeasureConversion *o);
+  char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o);
+  double qlUnitOfMeasureConversionConvert(UnitOfMeasureConversion *o, CommodityType *ct, UnitOfMeasure *uom,
+                                          double amount, CommodityType **outCt, UnitOfMeasure **outUom, char **e);
+  UnitOfMeasureConversion *qlUnitOfMeasureConversionChain(UnitOfMeasureConversion *r1, UnitOfMeasureConversion *r2, char **e);
+
+  /* UnitOfMeasureConversionManager (singleton) */
+  UnitOfMeasureConversion *qlUnitOfMeasureConversionManagerLookup(
+      CommodityType *commodityType, UnitOfMeasure *source, UnitOfMeasure *target, int type, char **e);
+  void qlUnitOfMeasureConversionManagerAdd(UnitOfMeasureConversion *c);
+  void qlUnitOfMeasureConversionManagerClear(void);
+
+  /* CommoditySettings (singleton) */
+  Currency *qlCommoditySettingsCurrency(void);
+  void qlCommoditySettingsSetCurrency(Currency *c);
+  UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(void);
+  void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u);
 #ifdef __cplusplus
 }
 #endif
