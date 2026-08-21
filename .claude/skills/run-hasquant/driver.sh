@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Drives hasquant the way this repo actually verifies bindings: compile a
 # standalone smoke/*.hs program against the built library and run it.
-# See ../../CLAUDE.md's "Stale builds, and keeping smoke/ current" section
-# for why this exists (a compiled `stack build` is not proof that generated
-# code, e.g. from an edited cbits/ header or a new enum case, actually
-# changed) -- this script is the harness for that check.
+# See this skill's SKILL.md "Gotchas" section ("A stale build can pass
+# tests against old generated code") for why this exists (a compiled
+# `stack build` is not proof that generated code, e.g. from an edited
+# cbits/ header or a new enum case, actually changed) -- this script is
+# the harness for that check.
 #
 # Usage:
 #   .claude/skills/run-hasquant/driver.sh <smoke/Foo.hs> [-- extra ghc args]

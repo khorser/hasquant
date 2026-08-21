@@ -39,11 +39,11 @@ Prefer **specific, dedicated constructors over a generic parameterized one** her
 
 ### Two more gotchas hit while adding the `ActualActual` schedule case
 
-- **c2hs cross-module `{#import#}` ordering is fragile for internal (`other-modules`) targets — enum types only, and often avoidable.** This is a general project constraint, not specific to day counters — see the relevant bullet in CLAUDE.md for the full explanation and the dedicated-constructor workaround.
+- **c2hs cross-module `{#import#}` ordering is fragile for internal (`other-modules`) targets — enum types only, and often avoidable.** This is a general project constraint, not specific to day counters — see the "Cross-module enum imports" section of the `c2hs-shim-patterns` skill for the full explanation and the dedicated-constructor workaround.
 - **A new `DayCounterExtra` field's type needs `Show`/`Eq`.** `CalendarEnum.chs` has blanket `deriving instance Show DayCounterConstructor` / `deriving instance Eq DayCounterConstructor` at the bottom, which requires every field of every case to support them. `Calendar`, `Bool`, and similar already do; `Schedule` didn't, and needed real instances added in `QuantLib/Internal/Type.hs` (mirroring `Calendar`'s `unsafePerformIO`-based pattern, but built from `qlScheduleDates` + `preArray`/`peekDayArray` since `Schedule` has no simple "name" accessor like `Calendar`/`Currency`/`DayCounter` do). This is unaffected by the dedicated-constructor-vs-generic-argument choice above — either way, a bare `Schedule` field ends up in `DayCounterExtra`.
 
 ## Verification
 
 Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
 
-A `cbits/`-only change touches no `.chs` file, so CLAUDE.md's stale-build gotcha applies: clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new day counters and checks a day-count/year-fraction actually differs the way it should.
+A `cbits/`-only change touches no `.chs` file, so the run-hasquant skill's stale-build gotcha applies: clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new day counters and checks a day-count/year-fraction actually differs the way it should.

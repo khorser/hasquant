@@ -29,7 +29,7 @@ Even though the ADTs live in `Enum.chs`, the C++ pointer-hierarchy machinery for
 
 ### 3. `with*` functions: no `Gen*`/`AnyOf` needed
 
-Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper entirely — there's no long-lived value that needs to satisfy multiple different-specificity consumers, so there's nothing for the phantom to buy. Instead, write one CPS-style `with*` function per ADT level, in `Enum.chs`, with the same signature shape it would have had if hand-rolled: `withX :: X -> (Ptr CX' -> IO a) -> IO a` — in practice spelled via a `type QlX = Ptr CX'` alias kept for backward-compatible signatures, paired with a `{#pointer *QlX nocode#}` declaration and a `peekPtr`-out-marshaller on the raw C constructor bindings (see CLAUDE.md's `{#pointer#}` bullet for exactly why both of those are needed and what happens if you get the pragma flags wrong). Each case in the function body is one of:
+Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper entirely — there's no long-lived value that needs to satisfy multiple different-specificity consumers, so there's nothing for the phantom to buy. Instead, write one CPS-style `with*` function per ADT level, in `Enum.chs`, with the same signature shape it would have had if hand-rolled: `withX :: X -> (Ptr CX' -> IO a) -> IO a` — in practice spelled via a `type QlX = Ptr CX'` alias kept for backward-compatible signatures, paired with a `{#pointer *QlX nocode#}` declaration and a `peekPtr`-out-marshaller on the raw C constructor bindings (see the `c2hs-shim-patterns` skill's `{#pointer#}` section for exactly why both of those are needed and what happens if you get the pragma flags wrong). Each case in the function body is one of:
 
 - **Own-level construction** (the C constructor already returns exactly this level): `qlConstructX ... >>= newCastForeignPtr >>= flip withGenForeignPtr f`.
 - **A different, more-specific leaf constructed directly by this case, one hop from here, with no separate ADT/`with*` function of its own** (e.g. `AmericanExercise` inside `Exercise`, which has no standalone `withAmericanExercise`): `qlConstructLeaf ... >>= newGenForeignPtr >>= flip withGenForeignPtr f` (`newGenForeignPtr` bakes in exactly one `Upcastable` hop).
@@ -38,7 +38,7 @@ Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper 
 
 ### 4. The C++ side is unchanged from every other hierarchy
 
-The `Ql*AsY` upcast shims this needs (`cbits/*.cpp`) are the standard `ret(new QlY(*arg(o)))` shape described in CLAUDE.md. If the type already has them from a previous implementation, nothing there changes.
+The `Ql*AsY` upcast shims this needs (`cbits/*.cpp`) are the standard `ret(new QlY(*arg(o)))` shape described in the `c2hs-shim-patterns` skill. If the type already has them from a previous implementation, nothing there changes.
 
 ## Verification
 
