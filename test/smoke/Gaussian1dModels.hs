@@ -11,13 +11,11 @@
 -- 4. gaussian1dJamshidianSwaptionEngine reprices a European swaption to the same NPV as
 --    gaussian1dSwaptionEngine's direct integration (mirrors test-suite/gsr.cpp).
 -- 5. gaussian1dCapFloorEngine dispatches correctly for BOTH ADT constructors (Gsr and
---    MarkovFunctional), pricing a cap to a finite, non-negative NPV under each. Upstream
---    (test-suite/markovfunctional.cpp:1234) DOES cross-check Gaussian1dCapFloorEngine against
---    BlackCapFloorEngine to 1bp, but only for a MarkovFunctional calibrated via its
---    caplet-smile-matching constructor (iborIndex/capletExpiries/capletVts) -- hasquant only
---    binds MarkovFunctional's swaption/CMS-calibrating constructor (used for basket6/swaption4
---    above), so that stronger check isn't reachable without binding the other constructor
---    first (a separate task).
+--    MarkovFunctional), pricing a cap to a finite, non-negative NPV under each.
+-- 6. For a MarkovFunctional calibrated via its caplet-smile-matching constructor
+--    (markovFunctionalCaplet: iborIndex/capletExpiries/capletVts), gaussian1dCapFloorEngine
+--    reprices the same cap to within upstream's own 1bp tolerance of BlackCapFloorEngine --
+--    mirrors test-suite/markovfunctional.cpp:1234 (testVanillaEngines, "Calibration Basket 2").
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/Gaussian1dModels.hs -o /tmp/gaussian1dmodels -outputdir /tmp/gaussian1dmodels_build && /tmp/gaussian1dmodels
 import Control.Monad (forM, forM_, replicateM)
@@ -138,6 +136,30 @@ main = do
   npvCapMarkov <- npv capfl
   putStrLn ("Cap NPV under gaussian1dCapFloorEngine (MarkovFunctional): " ++ show npvCapMarkov)
   checkPlausibleCapNpv "MarkovFunctional" npvCapMarkov
+
+  -- MarkovFunctional via its caplet-smile-matching constructor: calibrate against the same
+  -- cap's own caplets (accrual start dates = fixing dates, matching upstream's own convention),
+  -- then cross-check gaussian1dCapFloorEngine against BlackCapFloorEngine to upstream's 1bp
+  -- tolerance -- mirrors test-suite/markovfunctional.cpp:1234's testVanillaEngines.
+  capletExpiries <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
+  capletVolQ <- simpleQuote 0.20
+  capletVolTS <- constantOptionletVolatility' 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
+  markovCaplet <- markovFunctionalCaplet ts 0.01 [] [0.01] capletVolTS capletExpiries euribor6m 16
+
+  blackCapEngine <- blackCapFloorEngine' ts capletVolTS
+  setPricingEngine capfl blackCapEngine
+  npvCapBlack <- npv capfl
+
+  markovCapletEngine <- gaussian1dCapFloorEngine (MarkovFunctional markovCaplet) 64 7.0 True False (Just ts)
+  setPricingEngine capfl markovCapletEngine
+  npvCapMarkovCaplet <- npv capfl
+  putStrLn ("Cap NPV, BlackCapFloorEngine: " ++ show npvCapBlack
+            ++ ", gaussian1dCapFloorEngine (MarkovFunctional via caplet ctor): " ++ show npvCapMarkovCaplet)
+  -- upstream's own tolerance for this comparison, test-suite/markovfunctional.cpp's tol1.
+  if abs (npvCapBlack - npvCapMarkovCaplet) > 1.0e-4
+    then error ("gaussian1dCapFloorEngine (MarkovFunctional, caplet ctor) NPV diverges from BlackCapFloorEngine: "
+                ++ show npvCapBlack ++ " vs " ++ show npvCapMarkovCaplet)
+    else putStrLn "gaussian1dCapFloorEngine (MarkovFunctional, caplet ctor): OK, matches BlackCapFloorEngine to 1bp"
   where
     isFinite x = not (isNaN x || isInfinite x)
     checkPlausibleCapNpv label x =

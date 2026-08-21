@@ -55,6 +55,7 @@ module QuantLib.Model
   , liborForwardModel
   , gsr
   , markovFunctional
+  , markovFunctionalCaplet
 
   , calibrate
   , calibrateVolatilitiesIterative
@@ -256,6 +257,16 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,withSwapIndex*`GenSwapIndex sidx'
   ,fromIntegral`Word'
+  ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
+
+-- |Markov-functional interest-rate model, calibrated to a caplet volatility structure against @iborIndex@.
+{#fun qlMarkovFunctionalCaplet as markovFunctionalCaplet{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^reversion
+  ,withDayArray*`[Day]'& -- ^volstepdates
+  ,withDoubleArray*`[Double]'& -- ^volatilities
+  ,withOptionletVolatilityStructure*`OptionletVolatilityStructure' -- ^capletVol
+  ,withDayArray*`[Day]'& -- ^capletExpiries
+  ,withIborIndex*`GenIborIndex ibor' -- ^iborIndex
+  ,fromIntegral`Word' -- ^yGridPoints
   ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
 
 -- |Volatility step values, as calibrated so far.
