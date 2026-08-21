@@ -27,8 +27,8 @@ jobs:
 
     env:
       QL_VERSION: "1.43"
-      BOOST_INC: C:\boost-inc
-      QL_INSTALL: C:\QuantLib-ghc
+      BOOST_INC: ${{ github.workspace }}\boost-inc
+      QL_INSTALL: ${{ github.workspace }}\QuantLib-ghc
       GHC_VERSION: ${{ matrix.ghc }}
 
     steps:
