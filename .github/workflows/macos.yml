@@ -1,0 +1,61 @@
+name: macOS Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14 # Apple Silicon (M1/M2/M3)
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        ghc: ["9.8.2", "9.10.3"]
+
+    env:
+      GHC_VERSION: ${{ matrix.ghc }}
+      CABAL_DIR: ${{ github.workspace }}/.cabal
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up GHC and cabal
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: ${{ env.GHC_VERSION }}
+          cabal-version: 'recommended'
+
+      - name: Install dependencies via Homebrew
+        run: |
+          brew update-reset # сбросить локальное дерево формул для ускорения
+          brew install quantlib boost
+
+      - name: Cache cabal package store
+        uses: actions/cache@v6
+        with:
+          path: |
+            ${{ env.CABAL_DIR }}/packages
+            ${{ env.CABAL_DIR }}/store
+          key: cabal-store-macos-${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
+          restore-keys: |
+            cabal-store-macos-${{ env.GHC_VERSION }}-
+
+      - name: Write cabal.project.local
+        run: |
+          PREFIX=$(brew --prefix)
+          cat <<EOF > cabal.project.local
+          ignore-project: False
+          tests: True
+          package hasquant
+            extra-include-dirs: $PREFIX/include
+            extra-lib-dirs: $PREFIX/lib
+          EOF
+
+      - name: Build
+        run: cabal build all
+
+      - name: Test
+        run: cabal test all
