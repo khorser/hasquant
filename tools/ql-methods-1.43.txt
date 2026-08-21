@@ -7854,9 +7854,9 @@
 | |ql/pricingengines/forward/mcforwardvanillaengine.hpp|MCForwardVanillaEngine::MCForwardVanillaEngine<MC, RNG, S>(ext::shared_ptr<StochasticProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, bool controlVariate = false);
 | |ql/pricingengines/forward/mcforwardvanillaengine.hpp|void MCForwardVanillaEngine::calculate() const;
 | |ql/pricingengines/forward/mcforwardvanillaengine.hpp|MCForwardVanillaEngine<MC, RNG, S>(ext::shared_ptr<StochasticProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, bool controlVariate);
-|?|ql/pricingengines/forward/mcforwardvanillaengine.hpp|TimeGrid timeGrid() const;
-| |ql/pricingengines/forward/mcforwardvanillaengine.hpp|Real controlVariateValue() const;
-|?|ql/pricingengines/forward/mcvarianceswapengine.hpp|MCVarianceSwapEngine::MCVarianceSwapEngine<RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
+|x|ql/pricingengines/forward/mcforwardvanillaengine.hpp|TimeGrid timeGrid() const;
+|x|ql/pricingengines/forward/mcforwardvanillaengine.hpp|Real controlVariateValue() const;
+|u|ql/pricingengines/forward/mcvarianceswapengine.hpp|MCVarianceSwapEngine::MCVarianceSwapEngine<RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 | |ql/pricingengines/forward/mcvarianceswapengine.hpp|void MCVarianceSwapEngine::calculate() const;
 | |ql/pricingengines/forward/mcvarianceswapengine.hpp|MakeMCVarianceSwapEngine::MakeMCVarianceSwapEngine<RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/forward/mcvarianceswapengine.hpp|MakeMCVarianceSwapEngine<RNG, S> & MakeMCVarianceSwapEngine::withSteps(Size steps);
@@ -7884,9 +7884,9 @@
 | |ql/pricingengines/forward/mcvarianceswapengine.hpp|Integrand::Integrand(Path path, ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/forward/mcvarianceswapengine.hpp|Real Integrand::operator()(Time t) const;
 | |ql/pricingengines/forward/mcvarianceswapengine.hpp|Real operator()(const Path & path) const;
-|?|ql/pricingengines/forward/replicatingvarianceswapengine.hpp|ReplicatingVarianceSwapEngine::ReplicatingVarianceSwapEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Real dk = 5.0, const std::vector<Real> & callStrikes = std::vector<Real>(), const std::vector<Real> & putStrikes = std::vector<Real>());
+|v|ql/pricingengines/forward/replicatingvarianceswapengine.hpp|ReplicatingVarianceSwapEngine::ReplicatingVarianceSwapEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Real dk = 5.0, const std::vector<Real> & callStrikes = std::vector<Real>(), const std::vector<Real> & putStrikes = std::vector<Real>());
 | |ql/pricingengines/forward/replicatingvarianceswapengine.hpp|void ReplicatingVarianceSwapEngine::calculate() const;
-|?|ql/pricingengines/forward/replicatingvarianceswapengine.hpp|ReplicatingVarianceSwapEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Real dk, const std::vector<Real> & callStrikes, const std::vector<Real> & putStrikes);
+|x|ql/pricingengines/forward/replicatingvarianceswapengine.hpp|ReplicatingVarianceSwapEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Real dk, const std::vector<Real> & callStrikes, const std::vector<Real> & putStrikes);
 | |ql/pricingengines/forward/replicatingvarianceswapengine.hpp|void computeOptionWeights(const std::vector<Real> & availStrikes, const Option::Type type, weights_type & optionWeights) const;
 | |ql/pricingengines/forward/replicatingvarianceswapengine.hpp|Real computeLogPayoff(const Real strike, const Real callPutStrikeBoundary) const;
 | |ql/pricingengines/forward/replicatingvarianceswapengine.hpp|Real computeReplicatingPortfolio(const weights_type & optionWeights) const;
