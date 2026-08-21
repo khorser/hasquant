@@ -6,6 +6,29 @@ Haskell bindings to QuantLib via c2hs, with a C++ shim layer in `cbits/`.
 
 This codebase has accumulated many special-case patterns for recurring problems (c2hs cross-module enum-import cycles, multi-inheritance secondary interfaces, wide-arity constructors). Before adding a hand-rolled type mirroring a C enum, a new module, or a new abstraction layer, grep this file, the codebase, and `.claude/skills/` for how a similarly-shaped problem was already solved. A plausible-looking one-off fix is usually a rediscovery, and diverging from the established pattern drops that pattern's safety properties — e.g. `CPIInterpolationType` was hand-rolled outside `QuantLib.Internal.Enum` (the existing home for cross-cutting enums like `TimeUnit`, which live there to avoid cyclic deps) before being moved back into it.
 
+## Skills
+
+`.claude/skills/` (grep it and this file before inventing a workaround, per above):
+
+**Adding a binding**
+- `add-quantlib-class` — bind a whole new QuantLib C++ class (hierarchy root or new member of an existing one), shim + Haskell layer.
+- `add-quantlib-method` — bind one more method/getter onto a class that's already bound.
+- `add-quantlib-adt` — decide enum vs. live object vs. nested-ADT (Payoff/Exercise-style) for a new value type, and build the nested-ADT case.
+- `add-quantlib-options-record` — TH-generated options-record entry point for a constructor/method with >10 trailing defaulted params.
+- `add-quantlib-index` — add or reconcile an Ibor/overnight/swap index binding.
+
+**Build, test, platform**
+- `run-hasquant` — build, run the test suite, and smoke-test a binding end-to-end.
+- `build-windows` — build and test natively on Windows (GHC 9.10.3 + MSYS2).
+
+**Reference**
+- `c2hs-shim-patterns` — c2hs pragma flags, C shim marshalling patterns, and gotchas for `.chs`/`cbits/` work.
+
+**Reconciliation audits**
+- `reconcile-calendars` — sync the calendar enum against installed QuantLib's countries/markets.
+- `reconcile-currencies` — sync the currency enum against installed QuantLib.
+- `reconcile-daycounters` — sync the day counter enum and `BusinessDayConvention` against installed QuantLib.
+
 ## Build and test
 
 See the `run-hasquant` skill for build/test commands, the GHC 8.10 gate, `trackAllocations` tracing, `quiet-build.py`, and `test/smoke/` upkeep.
