@@ -36,7 +36,7 @@ import Data.Time.Calendar (fromGregorian)
 import QuantLib.Instrument
 import QuantLib.Instrument.CapFloor
 import QuantLib.Instrument.Option
-import QuantLib.CashFlow hiding (npv)
+import QuantLib.CashFlow hiding(npv)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor6M))
 import QuantLib.Math
 import QuantLib.PricingEngine

@@ -23,7 +23,7 @@ import qualified QuantLib.Instrument as I
 import QuantLib.Instrument
 import QuantLib.Instrument.Option (BermudanExercise(..))
 import QuantLib.Instrument.Swap
-import QuantLib.Model hiding (setPricingEngine)
+import QuantLib.Model hiding(setPricingEngine)
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import QuantLib.TermStructure.Volatility

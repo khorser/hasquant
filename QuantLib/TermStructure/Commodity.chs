@@ -20,8 +20,6 @@ module QuantLib.TermStructure.Commodity
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
-import QuantLib.Time.Date(Day)
-import QuantLib.Commodity(CommodityType, UnitOfMeasure)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

@@ -29,7 +29,7 @@ module QuantLib.Instrument
   , setPricingEngine
   ) where
 import QuantLib.Internal
-import QuantLib.Internal.Type hiding (ptr)
+import QuantLib.Internal.Type hiding(ptr)
 import QuantLib.Internal.Common
 
 #include "qlTypesC2HS.h"

@@ -19,7 +19,7 @@
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckOISRateHelper.hs -o /tmp/checkois -outputdir /tmp/checkois_build && /tmp/checkois
 import QuantLib.CashFlow(RateAveragingType(..))
-import QuantLib.Index.InterestRate hiding (dayCounter)
+import QuantLib.Index.InterestRate hiding(dayCounter)
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)

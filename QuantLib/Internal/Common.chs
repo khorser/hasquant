@@ -126,7 +126,7 @@ import Foreign.Marshal.Array(withArray, peekArray)
 import Control.Exception(finally)
 
 import QuantLib.Internal
-import QuantLib.Internal.Type hiding (ptr)
+import QuantLib.Internal.Type hiding(ptr)
 import QuantLib.Internal.Syntax
 
 #include "qlTypesC2HS.h"

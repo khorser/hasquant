@@ -15,7 +15,7 @@ import QuantLib.Instrument
 import QuantLib.Instrument.Option (BermudanExercise(..))
 import QuantLib.Instrument.Swap
 import QuantLib.Math (EndCriteria(..), OptimizationMethod(..))
-import QuantLib.Model hiding (setPricingEngine)
+import QuantLib.Model hiding(setPricingEngine)
 import qualified QuantLib.Model as Model
 import QuantLib.PricingEngine
 import QuantLib.Quote

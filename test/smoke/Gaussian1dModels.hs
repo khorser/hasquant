@@ -29,7 +29,7 @@ import QuantLib.Instrument.CapFloor (cap)
 import QuantLib.Instrument.Option (Exercise(..), BermudanExercise(..), EuropeanExercise(..))
 import QuantLib.Instrument.Swap
 import QuantLib.Math (EndCriteria(..), OptimizationMethod(..))
-import QuantLib.Model hiding (setPricingEngine)
+import QuantLib.Model hiding(setPricingEngine)
 import qualified QuantLib.Model as Model
 import QuantLib.PricingEngine
 import QuantLib.Quote

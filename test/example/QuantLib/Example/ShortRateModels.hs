@@ -17,7 +17,7 @@ import QuantLib.InterestRate hiding(rate)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Swap hiding(startDate)
 import QuantLib.Math
-import QuantLib.Model hiding (setPricingEngine, value)
+import QuantLib.Model hiding(setPricingEngine, value)
 import qualified QuantLib.Model as Model
 import QuantLib.PricingEngine
 import QuantLib.Quote

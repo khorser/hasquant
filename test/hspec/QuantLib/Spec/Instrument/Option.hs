@@ -11,10 +11,12 @@
 -- LCG plus Box-Muller, both defined below).
 module QuantLib.Spec.Instrument.Option (spec) where
 
+import Prelude hiding(iterate, tail)
 import Test.Hspec
 import Data.Time.Calendar(addDays)
 import Data.Bits(shiftR, xor)
 import Data.Word(Word64)
+import Data.List.NonEmpty(iterate, tail)
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -26,7 +28,7 @@ import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process
 import QuantLib.Instrument(npv, setPricingEngine, BarrierType(..))
-import QuantLib.Instrument.Option
+import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
 
