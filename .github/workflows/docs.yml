@@ -1,0 +1,80 @@
+name: Docs
+
+# Builds Haddock API docs (GHC 9.10.3 / QuantLib 1.43, matching stack.yaml's
+# lts-24.53 resolver) inside the existing hasquant-ci image from linux.yml, and
+# publishes them to the gh-pages branch root, replacing its previous contents.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
+    env:
+      GHC_VERSION: "9.10.3"
+      QL_VERSION: "1.43"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Resolve latest Boost version
+        id: boost
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=$(gh api repos/boostorg/boost/releases/latest --jq .tag_name)
+          echo "version=${tag#boost-}" >> "$GITHUB_OUTPUT"
+
+      - name: Compute image tag
+        id: tag
+        run: |
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "tag=ghcr.io/${owner}/hasquant-ci:ql${{ env.QL_VERSION }}-boost${{ steps.boost.outputs.version }}-ghc${{ env.GHC_VERSION }}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull CI image
+        run: docker pull "${{ steps.tag.outputs.tag }}"
+
+      - name: Build Haddock docs
+        run: |
+          set -euo pipefail
+          # --allow-different-user: the bind-mounted checkout is owned by the
+          # runner's uid, not the image's baked-in dev uid; safe to bypass in
+          # this disposable single-use container (not shared multi-user state).
+          chmod -R 777 "$PWD"
+          docker run --rm \
+            -v "$PWD":/hasquant \
+            -w /hasquant \
+            "${{ steps.tag.outputs.tag }}" \
+            sh -c "cabal update && cabal v2-haddock --enable-doc --haddock-hyperlink-source all"
+
+      - name: Stage docs
+        run: |
+          set -euo pipefail
+          docdir=$(find dist-newstyle -type d -path '*/doc/html/hasquant' | head -1)
+          if [ -z "$docdir" ]; then
+            echo "Could not find generated haddock output under dist-newstyle" >&2
+            exit 1
+          fi
+          mkdir -p staged-docs
+          cp -r "$docdir"/. staged-docs/
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: staged-docs
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: "Rebuild haddock docs (CI)"

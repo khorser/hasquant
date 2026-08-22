@@ -1,0 +1,111 @@
+name: Release
+
+# On-demand release: checks out an existing tag, builds an sdist and
+# hackage-ready Haddock docs (GHC 9.10.3 / QuantLib 1.43, matching stack.yaml's
+# lts-24.53 resolver) inside the existing hasquant-ci image from linux.yml, and
+# publishes both as assets on a GitHub Release for that tag.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to release (e.g. v.0.5.0.2)"
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
+    env:
+      GHC_VERSION: "9.10.3"
+      QL_VERSION: "1.43"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag }}
+
+      - name: Resolve latest Boost version
+        id: boost
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=$(gh api repos/boostorg/boost/releases/latest --jq .tag_name)
+          echo "version=${tag#boost-}" >> "$GITHUB_OUTPUT"
+
+      - name: Compute image tag
+        id: image
+        run: |
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "tag=ghcr.io/${owner}/hasquant-ci:ql${{ env.QL_VERSION }}-boost${{ steps.boost.outputs.version }}-ghc${{ env.GHC_VERSION }}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull CI image
+        run: docker pull "${{ steps.image.outputs.tag }}"
+
+      - name: Build sdist and hackage docs
+        run: |
+          set -euo pipefail
+          # --allow-different-user: the bind-mounted checkout is owned by the
+          # runner's uid, not the image's baked-in dev uid; safe to bypass in
+          # this disposable single-use container (not shared multi-user state).
+          chmod -R 777 "$PWD"
+          docker run --rm \
+            -v "$PWD":/hasquant \
+            -w /hasquant \
+            "${{ steps.image.outputs.tag }}" \
+            sh -c "cabal update && cabal v2-haddock --haddock-for-hackage --enable-doc && cabal v2-sdist"
+
+      - name: Locate build artifacts
+        id: artifacts
+        run: |
+          set -euo pipefail
+          sdist=$(find dist-newstyle/sdist -name 'hasquant-*.tar.gz' | head -1)
+          docs=$(find dist-newstyle -maxdepth 3 -name '*-docs.tar.gz' | head -1)
+          if [ -z "$sdist" ] || [ -z "$docs" ]; then
+            echo "Missing sdist or docs tarball under dist-newstyle" >&2
+            exit 1
+          fi
+          echo "sdist=$sdist" >> "$GITHUB_OUTPUT"
+          echo "docs=$docs" >> "$GITHUB_OUTPUT"
+
+      - name: Extract release notes from CHANGELOG.md
+        id: notes
+        run: |
+          set -euo pipefail
+          ver="${{ inputs.tag }}"
+          ver="${ver#v.}"
+          ver="${ver#v}"
+          awk -v ver="$ver" '
+            $0 ~ "^## " ver " " { found=1; print; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "Release ${{ inputs.tag }}" > release-notes.md
+          fi
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          tag="${{ inputs.tag }}"
+          sdist="${{ steps.artifacts.outputs.sdist }}"
+          docs="${{ steps.artifacts.outputs.docs }}"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            gh release upload "$tag" "$sdist" "$docs" --clobber
+          else
+            gh release create "$tag" "$sdist" "$docs" \
+              --title "$tag" \
+              --notes-file release-notes.md
+          fi
