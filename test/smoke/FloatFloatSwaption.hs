@@ -83,7 +83,8 @@ main = do
   gsrReversionQuote <- simpleQuote 0.01
   stepDates <- forM [1, 2 :: Int] $ \yr -> advance cal today (yr, Years) Following False
   gsrModel <- gsr ts stepDates gsrVolQuotes gsrReversionQuote 60.0
-  engine <- gaussian1dFloatFloatSwaptionEngine (Gsr gsrModel) 64 7.0 True False Nothing (Just ts) True None
+  gsrGm <- gsrAsGaussian1dModel gsrModel
+  engine <- gaussian1dFloatFloatSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ts) True None
   forM_ [swpn1, swpn2] (`setPricingEngine` engine)
 
   -- 2. fairSpread1/fairSpread2 run without crashing once priced (via a plain swap pricing engine).

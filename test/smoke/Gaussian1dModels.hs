@@ -1,16 +1,17 @@
 -- Smoke test for the Gaussian1dModel hierarchy addition (Gsr, MarkovFunctional,
--- the Gaussian1dModel nested ADT, gaussian1dSwaptionEngine). Checks:
+-- gaussian1dSwaptionEngine). Checks:
 -- 1. Gsr materializes, calibrates against a small swaption basket via the
 --    Gsr-specific calibrateVolatilitiesIterative, and its calibrated
 --    volatility array can be read back.
--- 2. MarkovFunctional (the sibling leaf under the same Gaussian1dModel ADT)
+-- 2. MarkovFunctional (the sibling leaf reaching the same Gaussian1dModel interface)
 --    also materializes and its volatility array can be read back.
--- 3. gaussian1dSwaptionEngine dispatches correctly for BOTH ADT constructors
---    (Gsr and MarkovFunctional) -- this is what actually proves the
---    Upcastable/Gaussian1dModel wiring is right, not just that it compiles.
+-- 3. gaussian1dSwaptionEngine dispatches correctly for BOTH leaves (Gsr and
+--    MarkovFunctional, each via its own gsrAsGaussian1dModel/markovFunctionalAsGaussian1dModel
+--    conversion) -- this is what actually proves the Gaussian1dModel wiring is right, not just
+--    that it compiles.
 -- 4. gaussian1dJamshidianSwaptionEngine reprices a European swaption to the same NPV as
 --    gaussian1dSwaptionEngine's direct integration (mirrors test-suite/gsr.cpp).
--- 5. gaussian1dCapFloorEngine dispatches correctly for BOTH ADT constructors (Gsr and
+-- 5. gaussian1dCapFloorEngine dispatches correctly for BOTH leaves (Gsr and
 --    MarkovFunctional), pricing a cap to a finite, non-negative NPV under each.
 -- 6. For a MarkovFunctional calibrated via its caplet-smile-matching constructor
 --    (markovFunctionalCaplet: iborIndex/capletExpiries/capletVts), gaussian1dCapFloorEngine
@@ -74,7 +75,8 @@ main = do
   gsrVolQuotes <- replicateM (length basketData) (simpleQuote 0.01)
   gsrReversionQuote <- simpleQuote 0.01
   gsrModel <- gsr ts stepDates gsrVolQuotes gsrReversionQuote 60.0
-  gsrEngine <- gaussian1dSwaptionEngine (Gsr gsrModel) 32 5.0 True False (Just ts) None
+  gsrGm <- gsrAsGaussian1dModel gsrModel
+  gsrEngine <- gaussian1dSwaptionEngine gsrGm 32 5.0 True False (Just ts) None
   forM_ helpers (`Model.setPricingEngine` gsrEngine)
   let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
       ec = EndCriteria 1000 10 1e-8 1e-8 1e-8
@@ -86,17 +88,18 @@ main = do
   npvGsr <- npv swpn
   putStrLn ("Bermudan swaption NPV under Gsr: " ++ show npvGsr)
 
-  -- MarkovFunctional: the sibling leaf under the same Gaussian1dModel ADT.
+  -- MarkovFunctional: the sibling leaf reaching the same Gaussian1dModel interface.
   swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
   swaptionVolQ <- simpleQuote 0.20
   swaptionVolTS <- constantSwaptionVolatility 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
   cmsExpiries <- forM [1, 2, 3 :: Int] $ \n -> advance cal today (n, Years) Following False
   let cmsTenors = replicate 3 (10, Years) :: [(Word, TimeUnit)]
   markov <- markovFunctional ts 0.01 [] [0.01] swaptionVolTS cmsExpiries cmsTenors swapBase 16
+  markovGm <- markovFunctionalAsGaussian1dModel markov
   markovVols <- markovFunctionalVolatility markov
   putStrLn ("MarkovFunctional volatilities: " ++ show markovVols)
 
-  markovEngine <- gaussian1dSwaptionEngine (MarkovFunctional markov) 8 5.0 True False (Just ts) None
+  markovEngine <- gaussian1dSwaptionEngine markovGm 8 5.0 True False (Just ts) None
   setPricingEngine swpn markovEngine
   npvMarkov <- npv swpn
   putStrLn ("Bermudan swaption NPV under MarkovFunctional: " ++ show npvMarkov)
@@ -107,7 +110,7 @@ main = do
   -- self-consistency check in test-suite/gsr.cpp's testNonstandardSwaps.
   let euroEx = European (EuropeanExercise start)
   euroSwpn <- swaption swp euroEx Physical PhysicalOTC
-  jamEngine <- gaussian1dJamshidianSwaptionEngine (Gsr gsrModel)
+  jamEngine <- gaussian1dJamshidianSwaptionEngine gsrGm
   setPricingEngine euroSwpn gsrEngine
   npvEuroDirect <- npv euroSwpn
   setPricingEngine euroSwpn jamEngine
@@ -121,17 +124,17 @@ main = do
     else putStrLn "gaussian1dJamshidianSwaptionEngine: OK, matches direct integration"
 
   -- gaussian1dCapFloorEngine: a 3% cap on the swap's own floating leg, dispatched over BOTH
-  -- ADT constructors (Gsr and MarkovFunctional) -- as with gaussian1dSwaptionEngine above,
-  -- this is what proves the Upcastable/Gaussian1dModel wiring, not just that it compiles.
+  -- leaves (Gsr and MarkovFunctional) -- as with gaussian1dSwaptionEngine above, this is what
+  -- proves the Gaussian1dModel wiring, not just that it compiles.
   floatLeg <- floatingLeg swp
   capfl <- cap floatLeg [0.03]
-  gsrCapFloorEngine <- gaussian1dCapFloorEngine (Gsr gsrModel) 64 7.0 True False (Just ts)
+  gsrCapFloorEngine <- gaussian1dCapFloorEngine gsrGm 64 7.0 True False (Just ts)
   setPricingEngine capfl gsrCapFloorEngine
   npvCapGsr <- npv capfl
   putStrLn ("Cap NPV under gaussian1dCapFloorEngine (Gsr): " ++ show npvCapGsr)
   checkPlausibleCapNpv "Gsr" npvCapGsr
 
-  markovCapFloorEngine <- gaussian1dCapFloorEngine (MarkovFunctional markov) 8 5.0 True False (Just ts)
+  markovCapFloorEngine <- gaussian1dCapFloorEngine markovGm 8 5.0 True False (Just ts)
   setPricingEngine capfl markovCapFloorEngine
   npvCapMarkov <- npv capfl
   putStrLn ("Cap NPV under gaussian1dCapFloorEngine (MarkovFunctional): " ++ show npvCapMarkov)
@@ -145,12 +148,13 @@ main = do
   capletVolQ <- simpleQuote 0.20
   capletVolTS <- constantOptionletVolatility' 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
   markovCaplet <- markovFunctionalCaplet ts 0.01 [] [0.01] capletVolTS capletExpiries euribor6m 16
+  markovCapletGm <- markovFunctionalAsGaussian1dModel markovCaplet
 
   blackCapEngine <- blackCapFloorEngine' ts capletVolTS
   setPricingEngine capfl blackCapEngine
   npvCapBlack <- npv capfl
 
-  markovCapletEngine <- gaussian1dCapFloorEngine (MarkovFunctional markovCaplet) 64 7.0 True False (Just ts)
+  markovCapletEngine <- gaussian1dCapFloorEngine markovCapletGm 64 7.0 True False (Just ts)
   setPricingEngine capfl markovCapletEngine
   npvCapMarkovCaplet <- npv capfl
   putStrLn ("Cap NPV, BlackCapFloorEngine: " ++ show npvCapBlack

@@ -505,12 +505,12 @@ import QuantLib.Internal.Common
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
-{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withAffineModel*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withStandalone*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |cap\/floor pricing engine for any one-factor Gaussian short-rate model, evaluated by
 -- integration over the model's state variable. As 'gaussian1dSwaptionEngine', without
 -- 'Probabilities'.
-{#fun qlGaussian1dCapFloorEngine as gaussian1dCapFloorEngine{withGaussian1dModel*`Gaussian1dModel'
+{#fun qlGaussian1dCapFloorEngine as gaussian1dCapFloorEngine{withStandalone*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
   ,`Bool' -- ^extrapolatePayoff
@@ -629,7 +629,7 @@ import QuantLib.Internal.Common
 {#fun qlJamshidianSwaptionEngine as jamshidianSwaptionEngine{withOneFactorAffineModel*`GenOneFactorAffineModel om',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |swaption pricing engine for any one-factor Gaussian short-rate model, evaluated by integration over the model's state variable
-{#fun qlGaussian1dSwaptionEngine as gaussian1dSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
+{#fun qlGaussian1dSwaptionEngine as gaussian1dSwaptionEngine{withStandalone*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
   ,`Bool' -- ^extrapolatePayoff
@@ -641,7 +641,7 @@ import QuantLib.Internal.Common
 -- |As 'gaussian1dSwaptionEngine', for a 'QuantLib.Instrument.Swap.NonstandardSwaption'. Adds
 -- an optional OAS ('oas', continuously compounded w.r.t. the discount curve's day counter) on
 -- top of the shared parameters.
-{#fun qlGaussian1dNonstandardSwaptionEngine as gaussian1dNonstandardSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
+{#fun qlGaussian1dNonstandardSwaptionEngine as gaussian1dNonstandardSwaptionEngine{withStandalone*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
   ,`Bool' -- ^extrapolatePayoff
@@ -654,7 +654,7 @@ import QuantLib.Internal.Common
 -- |As 'gaussian1dNonstandardSwaptionEngine', for a
 -- 'QuantLib.Instrument.Swap.FloatFloatSwaption'. Adds 'includeTodaysExercise' -- whether a
 -- fixing due exactly \"today\" counts as part of the exercise-into leg.
-{#fun qlGaussian1dFloatFloatSwaptionEngine as gaussian1dFloatFloatSwaptionEngine{withGaussian1dModel*`Gaussian1dModel'
+{#fun qlGaussian1dFloatFloatSwaptionEngine as gaussian1dFloatFloatSwaptionEngine{withStandalone*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
   ,`Bool' -- ^extrapolatePayoff
@@ -667,7 +667,7 @@ import QuantLib.Internal.Common
 
 -- |swaption pricing engine using Jamshidian's decomposition, for any one-factor Gaussian
 -- short-rate model.
-{#fun qlGaussian1dJamshidianSwaptionEngine as gaussian1dJamshidianSwaptionEngine{withGaussian1dModel*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlGaussian1dJamshidianSwaptionEngine as gaussian1dJamshidianSwaptionEngine{withStandalone*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Ju (1999) quadratic-approximation engine for American options
 {#fun qlJuQuadraticApproximationEngine as juQuadraticApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

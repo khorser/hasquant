@@ -12,7 +12,7 @@ import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(peekDynString, preArray, peekDayArray, peekPtrArray)
-import Control.Exception (finally, bracket, mask)
+import Control.Exception (finally, mask)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
@@ -492,8 +492,9 @@ peekLmVolatilityModel = peekStandalone
 --                upstream but unconstructible here, while Quote/Index/TermStructure are
 --                pure-virtual upstream yet routinely returned by bindings. Marks are
 --                added where established; an unmarked node is not a claim of the opposite.
---   `X + Y'      X also reaches secondary interface Y, via the standalone qlXAsY shim and
---                the hand-written Y ADT (see CAffineModel' below), not via Upcastable.
+--   `X + Y'      X also reaches secondary interface Y, via the standalone qlXAsY shim,
+--                materialized eagerly into a `Standalone Y' value by a per-leaf `xAsY'
+--                function (see CAffineModel' below), not via Upcastable.
 --   X (CFoo')    X's C type, given only where it is not the expected C<X>'.
 -- Payoff and Exercise are documented in the files that define them, not here.
 -- the original pointer to `a' with a way to marshal it to `b'
@@ -536,7 +537,7 @@ newCastForeignPtr x = do
 -- `access' performs the upcast, which allocates a fresh handle that `mfree' must release, so
 -- acquiring it and installing the handler have to be atomic -- `mask' covers the upcast
 -- happening inside `access', and `restore' hands `f' back the caller's masking state. This
--- is `bracket' semantics (cf. `withUpcast' below) expressed around a continuation that
+-- is `bracket' semantics expressed around a continuation that
 -- allocates internally. Nesting is fine: an inner level's `restore' only wraps the
 -- continuation that contains the outer `restore', so `f' still runs unmasked.
 withGenForeignPtr :: GenForeignPtr a b -> (Ptr b -> IO r) -> IO r
@@ -1859,24 +1860,26 @@ foreign import ccall "ql.h qlLiborForwardModelAsAffineModel" qlLiborForwardModel
 foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlHullWhiteAsAffineModel" qlHullWhiteAsAffineModel :: Ptr CHullWhite' -> IO (Ptr CAffineModel')
 
-data AffineModel = HullWhite HullWhite | G2 G2 | OneFactorAffineModel OneFactorAffineModel | LiborForwardModel LiborForwardModel
-withUpcast :: Finalizable b => (Ptr a -> IO (Ptr b)) -> (Ptr b -> IO r) -> Ptr a -> IO r
-withUpcast up f p = bracket (up p) freeUpcast f
-withAffineModel :: AffineModel -> (Ptr CAffineModel' -> IO b) -> IO b
-withAffineModel (HullWhite m) f = withHullWhite m (withUpcast qlHullWhiteAsAffineModel f)
-withAffineModel (G2 m) f = withG2 m (withUpcast qlG2AsAffineModel f)
-withAffineModel (OneFactorAffineModel m) f = withOneFactorAffineModel m (withUpcast qlOneFactorAffineModelAsAffineModel f)
-withAffineModel (LiborForwardModel m) f = withGenCalibratedModel m (withUpcast qlLiborForwardModelAsAffineModel f)
+type AffineModel = Standalone CAffineModel'
+hullWhiteAsAffineModel :: HullWhite -> IO AffineModel
+hullWhiteAsAffineModel m = withHullWhite m qlHullWhiteAsAffineModel >>= peekStandalone
+g2AsAffineModel :: G2 -> IO AffineModel
+g2AsAffineModel m = withG2 m qlG2AsAffineModel >>= peekStandalone
+oneFactorAffineModelAsAffineModel :: OneFactorAffineModel -> IO AffineModel
+oneFactorAffineModelAsAffineModel m = withOneFactorAffineModel m qlOneFactorAffineModelAsAffineModel >>= peekStandalone
+liborForwardModelAsAffineModel :: LiborForwardModel -> IO AffineModel
+liborForwardModelAsAffineModel m = withGenCalibratedModel m qlLiborForwardModelAsAffineModel >>= peekStandalone
 
 data CGaussian1dModel'
 foreign import ccall unsafe "ql.h &qlFreeGaussian1dModel" qlFreeGaussian1dModel :: FinalizerPtr CGaussian1dModel'
 instance Finalizable CGaussian1dModel' where finalize = qlFreeGaussian1dModel
 foreign import ccall "ql.h qlGsrAsGaussian1dModel" qlGsrAsGaussian1dModel :: Ptr CGsr' -> IO (Ptr CGaussian1dModel')
 foreign import ccall "ql.h qlMarkovFunctionalAsGaussian1dModel" qlMarkovFunctionalAsGaussian1dModel :: Ptr CMarkovFunctional' -> IO (Ptr CGaussian1dModel')
-data Gaussian1dModel = Gsr Gsr | MarkovFunctional MarkovFunctional
-withGaussian1dModel :: Gaussian1dModel -> (Ptr CGaussian1dModel' -> IO b) -> IO b
-withGaussian1dModel (Gsr m) f = withGenCalibratedModel m (withUpcast qlGsrAsGaussian1dModel f)
-withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcast qlMarkovFunctionalAsGaussian1dModel f)
+type Gaussian1dModel = Standalone CGaussian1dModel'
+gsrAsGaussian1dModel :: Gsr -> IO Gaussian1dModel
+gsrAsGaussian1dModel m = withGenCalibratedModel m qlGsrAsGaussian1dModel >>= peekStandalone
+markovFunctionalAsGaussian1dModel :: MarkovFunctional -> IO Gaussian1dModel
+markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctionalAsGaussian1dModel >>= peekStandalone
 
 -- | > Instrument*
 -- >  Forward*

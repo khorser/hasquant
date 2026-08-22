@@ -231,19 +231,28 @@ returns); reuse it for a new hierarchy edge without re-deriving it.
 
 **Multiple inheritance where the second base is an interface needed by one
 consumer** (`AffineModel`, needed only by `analyticCapFloorEngine`;
-`Gaussian1dModel`, only by `Gaussian1dSwaptionEngine`): don't add a second
-`Upcastable` node — `Upcastable` is single-parent (one `Base` per type), so
-a second real base has nowhere to go. Mirror the `AffineModel` pattern in
-`Internal/Type.hs` (search `CAffineModel'`): keep the leaf's one
+`Gaussian1dModel`, needed only by the `gaussian1d*Engine` family): don't add
+a second `Upcastable` node — `Upcastable` is single-parent (one `Base` per
+type), so a second real base has nowhere to go. Mirror the `AffineModel`
+pattern in `Internal/Type.hs` (search `CAffineModel'`): keep the leaf's one
 `Upcastable` instance pointed at its true hierarchy parent, and separately
 add a standalone (non-`Upcastable`) `qlXAsInterfaceY :: Ptr CX' -> IO (Ptr
-CInterfaceY')` shim per leaf, a hand-written nested ADT (`data InterfaceY
-= X X | Z Z`), and a `withInterfaceY` that pattern-matches and calls
-`withUpcast qlXAsInterfaceY f` per case. The consuming engine takes the
-concrete ADT directly (`` withAffineModel*`AffineModel' ``), not a
-polymorphic `GenXxx m`. ADT adaptors are for passing an object as an
-argument; common/overloaded methods are mostly modelled as type classes
-instead (`HasImpliedVol`, `HasQuanto`).
+CInterfaceY')` shim per leaf, give the interface itself a `type InterfaceY =
+Standalone CInterfaceY'` (the same `Standalone`/`peekStandalone`/
+`withStandalone` machinery already used for `Calendar`/`Currency`), and one
+`xAsInterfaceY :: X -> IO InterfaceY` per leaf that eagerly materializes the
+upcast: `xAsInterfaceY m = withX m qlXAsInterfaceY >>= peekStandalone`. The
+consuming engine's `.chs` argument marshals with the already-generic
+`` withStandalone*`InterfaceY' `` — no hand-written per-hierarchy marshaller
+needed. This trades a pure wrap at the call site (the old
+`AffineModel (HullWhite hw)`) for an explicit `IO`-sequenced conversion
+(`hw' <- hullWhiteAsAffineModel hw`), and the upcast handle's lifetime moves
+from transient-and-freed-per-call to eagerly-owned-and-GC-finalized — a
+deliberate, small trade for one fewer hand-rolled sum type and no
+`withInterfaceY` pattern-match to maintain per leaf. ADT adaptors and this
+`Standalone`-per-leaf variant are both for passing an object as an argument;
+common/overloaded methods are mostly modelled as type classes instead
+(`HasImpliedVol`, `HasQuanto`).
 
 ## Cross-module enum imports
 

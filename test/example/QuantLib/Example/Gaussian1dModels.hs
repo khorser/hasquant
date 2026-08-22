@@ -120,9 +120,10 @@ run = do
   gsrVolQuotes <- replicateM (length stepDates + 1) (simpleQuote 0.01)
   gsrReversionQuote <- simpleQuote reversion
   gsrModel <- gsr yts6m stepDates gsrVolQuotes gsrReversionQuote 60.0
+  gsrGm <- gsrAsGaussian1dModel gsrModel
 
-  swaptionEngine <- gaussian1dSwaptionEngine (Gsr gsrModel) 64 7.0 True False (Just ytsOis) None
-  nonstandardSwaptionEngine <- gaussian1dNonstandardSwaptionEngine (Gsr gsrModel) 64 7.0 True False Nothing (Just ytsOis) None
+  swaptionEngine <- gaussian1dSwaptionEngine gsrGm 64 7.0 True False (Just ytsOis) None
+  nonstandardSwaptionEngine <- gaussian1dNonstandardSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ytsOis) None
   setPricingEngine swaption1 nonstandardSwaptionEngine
 
   swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just yts6m) (Just ytsOis)
@@ -162,7 +163,7 @@ run = do
   swaption3 <- nonstandardSwaption underlying3 exercise2 Physical PhysicalOTC
 
   oasQuote <- simpleQuote 0.0
-  nonstandardSwaptionEngine2 <- gaussian1dNonstandardSwaptionEngine (Gsr gsrModel) 64 7.0 True False (Just oasQuote) Nothing None -- discount on 6m, not OIS
+  nonstandardSwaptionEngine2 <- gaussian1dNonstandardSwaptionEngine gsrGm 64 7.0 True False (Just oasQuote) Nothing None -- discount on 6m, not OIS
   setPricingEngine swaption3 nonstandardSwaptionEngine2
 
   basket4 <- calibrationBasket swaption3 swapBase swaptionVol MaturityStrikeByDeltaGamma
@@ -181,7 +182,7 @@ run = do
   underlying4 <- floatFloatSwap Payer 1.0 1.0 fixedSchedule swapBase thirty360bb floatSchedule euribor6m act360
     defaultFloatFloatSwapOpts{ffsSpread2 = 0.0010}
   swaption4 <- floatFloatSwaption underlying4 ex Physical PhysicalOTC
-  floatSwaptionEngine <- gaussian1dFloatFloatSwaptionEngine (Gsr gsrModel) 64 7.0 True False Nothing (Just ytsOis) True None
+  floatSwaptionEngine <- gaussian1dFloatFloatSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ytsOis) True None
   setPricingEngine swaption4 floatSwaptionEngine
 
   reversionQuote <- simpleQuote reversion
@@ -211,9 +212,10 @@ run = do
       markovSigmas = replicate (length markovStepDates + 1) 0.01
       cmsTenors = replicate (length markovStepDates) (10, Years) :: [(Word, TimeUnit)]
   markov <- markovFunctional yts6m reversion markovStepDates markovSigmas swaptionVol markovStepDates cmsTenors swapBase 16
+  markovGm <- markovFunctionalAsGaussian1dModel markov
 
-  swaptionEngineMarkov <- gaussian1dSwaptionEngine (MarkovFunctional markov) 8 5.0 True False (Just ytsOis) None
-  floatEngineMarkov <- gaussian1dFloatFloatSwaptionEngine (MarkovFunctional markov) 16 7.0 True False Nothing (Just ytsOis) True None
+  swaptionEngineMarkov <- gaussian1dSwaptionEngine markovGm 8 5.0 True False (Just ytsOis) None
+  floatEngineMarkov <- gaussian1dFloatFloatSwaptionEngine markovGm 16 7.0 True False Nothing (Just ytsOis) True None
   setPricingEngine swaption4 floatEngineMarkov
   npv7 <- npv swaption4
   underlyingValMarkovPre <- underlyingValueOf swaption4

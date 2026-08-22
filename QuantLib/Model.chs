@@ -9,8 +9,8 @@ module QuantLib.Model
   , PiecewiseTimeDependentHestonModel
   , ShortRateModel
   , GenShortRateModel
-  , AffineModel(..)
-  , Gaussian1dModel(..)
+  , AffineModel
+  , Gaussian1dModel
   , OneFactorAffineModel
   , GenOneFactorAffineModel
   , LiborForwardModel
@@ -40,6 +40,12 @@ module QuantLib.Model
   , asOneFactorAffineModel
   , asBatesModel
   , asBatesDoubleExpModel
+  , hullWhiteAsAffineModel
+  , g2AsAffineModel
+  , oneFactorAffineModelAsAffineModel
+  , liborForwardModelAsAffineModel
+  , gsrAsGaussian1dModel
+  , markovFunctionalAsGaussian1dModel
 
   , batesModel
   , blackKarasinski
