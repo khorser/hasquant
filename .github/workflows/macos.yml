@@ -8,12 +8,15 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14 # Apple Silicon (M1/M2/M3)
-    
     strategy:
       fail-fast: false
       matrix:
-        ghc: ["9.8.2", "9.10.3"]
+        ghc: ["9.8.4", "9.10.3"]
+        os:
+          - macos-15-intel
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
 
     env:
       GHC_VERSION: ${{ matrix.ghc }}
@@ -30,9 +33,8 @@ jobs:
 
       - name: Install dependencies via Homebrew
         run: |
-          export HOMEBREW_NO_AUTO_UPDATE=0
-          brew update --force
-          brew install quantlib boost
+          HOMEBREW_NO_AUTO_UPDATE=0 brew update --force
+          brew install quantlib
 
       - name: Cache cabal package store
         uses: actions/cache@v6
@@ -40,20 +42,9 @@ jobs:
           path: |
             ${{ env.CABAL_DIR }}/packages
             ${{ env.CABAL_DIR }}/store
-          key: cabal-store-macos-${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
+          key: cabal-store-${{ matrix.os }}-ghc${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
           restore-keys: |
-            cabal-store-macos-${{ env.GHC_VERSION }}-
-
-      - name: Write cabal.project.local
-        run: |
-          PREFIX=$(brew --prefix)
-          cat <<EOF > cabal.project.local
-          ignore-project: False
-          tests: True
-          package hasquant
-            extra-include-dirs: $PREFIX/include
-            extra-lib-dirs: $PREFIX/lib
-          EOF
+            key: cabal-store-${{ matrix.os }}-ghc${{ env.GHC_VERSION }}-
 
       - name: Build
         run: cabal build all
