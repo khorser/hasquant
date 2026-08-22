@@ -117,13 +117,18 @@ type CommodityCashFlows = [CommodityCashFlow]
 {#fun pure qlCommodityCashFlowDate as commodityCashFlowDate{withCommodityCashFlow*`CommodityCashFlow'}->`Day'toDay#}
 
 -- |The discounted amount, in the global commodity base currency ('QuantLib.Commodity.commoditySettingsCurrency').
-{#fun pure qlCommodityCashFlowDiscountedAmount as commodityCashFlowDiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*}->`Double'#}
+--
+-- Not 'pure': the shim's own @ret(new Currency(...))@ is a 'bad_alloc'-only throw point, and letting
+-- a C++ exception unwind across the FFI boundary from an 'unsafePerformIO'-backed pure binding is
+-- undefined behavior, so this needs the same 'char **e'\/'preErrorCheck' error channel as any other
+-- throwing call.
+{#fun qlCommodityCashFlowDiscountedAmount as commodityCashFlowDiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |As 'commodityCashFlowDiscountedAmount', without the discount factor applied.
-{#fun pure qlCommodityCashFlowUndiscountedAmount as commodityCashFlowUndiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*}->`Double'#}
+{#fun qlCommodityCashFlowUndiscountedAmount as commodityCashFlowUndiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |The discounted amount, in the payment (leg) currency.
-{#fun pure qlCommodityCashFlowDiscountedPaymentAmount as commodityCashFlowDiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*}->`Double'#}
+{#fun qlCommodityCashFlowDiscountedPaymentAmount as commodityCashFlowDiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |As 'commodityCashFlowDiscountedPaymentAmount', without the discount factor applied.
-{#fun pure qlCommodityCashFlowUndiscountedPaymentAmount as commodityCashFlowUndiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*}->`Double'#}
+{#fun qlCommodityCashFlowUndiscountedPaymentAmount as commodityCashFlowUndiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |The discount factor applied to the base-currency amount.
 {#fun pure qlCommodityCashFlowDiscountFactor as commodityCashFlowDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
 -- |The discount factor applied to the payment-currency amount.

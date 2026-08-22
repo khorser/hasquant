@@ -31,7 +31,7 @@ extern "C" {
   char *qlPaymentTermName(PaymentTerm *o);
   int qlPaymentTermEventType_(PaymentTerm *o);
   int qlPaymentTermOffsetDays(PaymentTerm *o);
-  Calendar *qlPaymentTermCalendar(PaymentTerm *o);
+  Calendar *qlPaymentTermCalendar(PaymentTerm *o, char **e);
   int qlPaymentTermEmpty(PaymentTerm *o);
   int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, char **e);
 
@@ -48,9 +48,9 @@ extern "C" {
   UnitOfMeasureConversion *qlUnitOfMeasureConversion(CommodityType *commodityType, UnitOfMeasure *source,
                                                      UnitOfMeasure *target, double conversionFactor, char **e);
   void qlFreeUnitOfMeasureConversion(UnitOfMeasureConversion *o);
-  UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o);
-  UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o);
-  CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o);
+  UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o, char **e);
+  UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o, char **e);
+  CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o, char **e);
   int qlUnitOfMeasureConversionType_(UnitOfMeasureConversion *o);
   double qlUnitOfMeasureConversionFactor(UnitOfMeasureConversion *o);
   char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o);
@@ -65,9 +65,9 @@ extern "C" {
   void qlUnitOfMeasureConversionManagerClear(void);
 
   /* CommoditySettings (singleton) */
-  Currency *qlCommoditySettingsCurrency(void);
+  Currency *qlCommoditySettingsCurrency(char **e);
   void qlCommoditySettingsSetCurrency(Currency *c);
-  UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(void);
+  UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e);
   void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u);
 #ifdef __cplusplus
 }

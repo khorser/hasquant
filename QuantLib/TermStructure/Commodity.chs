@@ -56,21 +56,21 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure)
 {#fun qlCommodityCurveName as commodityCurveName{withGenTermStructure*`CommodityCurve'}->`String'peekDynString*#}
 
 -- |The commodity type this curve prices.
-{#fun qlCommodityCurveCommodityType as commodityCurveCommodityType{withGenTermStructure*`CommodityCurve'}->`CommodityType'peekCommodityType*#}
+{#fun qlCommodityCurveCommodityType as commodityCurveCommodityType{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}
 
 -- |The unit of measure this curve's prices are quoted in.
-{#fun qlCommodityCurveUnitOfMeasure as commodityCurveUnitOfMeasure{withGenTermStructure*`CommodityCurve'}->`UnitOfMeasure'peekUnitOfMeasure*#}
+{#fun qlCommodityCurveUnitOfMeasure as commodityCurveUnitOfMeasure{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 
 -- |The currency this curve's prices are quoted in.
-{#fun qlCommodityCurveCurrency as commodityCurveCurrency{withGenTermStructure*`CommodityCurve'}->`Currency'peekCurrency*#}
+{#fun qlCommodityCurveCurrency as commodityCurveCurrency{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- |The curve's node dates, as given at construction.
-{#fun qlCommodityCurveDates as commodityCurveDates{withGenTermStructure*`CommodityCurve',preArray-`[Day]'&peekDayArray*}->`()'#}
+{#fun qlCommodityCurveDates as commodityCurveDates{withGenTermStructure*`CommodityCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The curve's node prices, as given at construction. Paired positionally with 'commodityCurveDates'
 -- -- upstream's own @nodes()@ getter is just their zip, so it isn't bound separately (per "bind
 -- few inspectors").
-{#fun qlCommodityCurvePrices as commodityCurvePrices{withGenTermStructure*`CommodityCurve',preArray-`[Double]'&peekDoubleArray*}->`()'#}
+{#fun qlCommodityCurvePrices as commodityCurvePrices{withGenTermStructure*`CommodityCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Whether this curve has any nodes.
 {#fun pure qlCommodityCurveEmpty as commodityCurveEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}
@@ -81,7 +81,7 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure)
 -- |Chain this curve to a basis curve: prices returned by 'commodityCurvePrice'\/'commodityCurveBasisOfPrice'
 -- then include the basis curve's price on top of this curve's own. Confirmed with the user as the
 -- one 'CommodityCurve' mutator worth binding (unlike @setPrices@, which stays unbound).
-{#fun qlCommodityCurveSetBasisOfCurve as setCommodityCurveBasisOfCurve{withGenTermStructure*`CommodityCurve',withGenTermStructure*`CommodityCurve'}->`()'#}
+{#fun qlCommodityCurveSetBasisOfCurve as setCommodityCurveBasisOfCurve{withGenTermStructure*`CommodityCurve',withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A dated exchange contract: a code, its expiration date, and the start/end dates of the
 -- underlying delivery period it corresponds to. A plain tuple, per the @Money@/'Quantity'-as-tuple

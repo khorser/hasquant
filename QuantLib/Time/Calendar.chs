@@ -43,11 +43,11 @@ calendar (Joint4 c1 c2 c3 c4 r) = qlJointCalendar4 c1 c2 c3 c4 r
 calendar x = uncurry qlCalendar $ mapCalendar x
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention
-{#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',fromEnumC`BusinessDayConvention'}->`Day'toDay#}
+{#fun qlCalendarAdjust as adjust{withCalendar*`Calendar',withDay*`Day',fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Advances the given date of the given number of business days and returns the result using business day convention and the EOM flag
 {#fun qlCalendarAdvance as advance{withCalendar*`Calendar',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`BusinessDayConvention',`Bool' -- ^endOfMonth
-  }->`Day'toDay#}
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Adds a date to the set of holidays for the given calendar.
 {#fun qlCalendarAddHoliday as addHoliday{withCalendar*`Calendar',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}

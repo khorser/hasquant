@@ -224,8 +224,8 @@ extern "C" {
   void qlFreeShortRateModel(QlShortRateModel *o);
   void qlFreeAffineModel(QlAffineModel *o);
   void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o);
-  double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate);
-  double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a);
+  double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate, char **e);
+  double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e);
   QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o);
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);

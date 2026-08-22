@@ -168,7 +168,7 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun pure qlPaymentTermOffsetDays as paymentTermOffsetDays{withPaymentTerm*`PaymentTerm'}->`Int'#}
 
 -- |The calendar used to adjust the payment date.
-{#fun qlPaymentTermCalendar as paymentTermCalendar{withPaymentTerm*`PaymentTerm'}->`Calendar'peekCalendar*#}
+{#fun qlPaymentTermCalendar as paymentTermCalendar{withPaymentTerm*`PaymentTerm',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
 -- |Whether this is a usable instance (as opposed to one built via a default constructor).
 {#fun pure qlPaymentTermEmpty as paymentTermEmpty{withPaymentTerm*`PaymentTerm'}->`Bool'#}
@@ -273,13 +273,13 @@ pricingPeriod startDate endDate
   ,preErrorCheck-`String'errorCheck*-}->`UnitOfMeasureConversion'peekUnitOfMeasureConversion*#}
 
 -- |The source unit of measure.
-{#fun qlUnitOfMeasureConversionSource as unitOfMeasureConversionSource{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`UnitOfMeasure'peekUnitOfMeasure*#}
+{#fun qlUnitOfMeasureConversionSource as unitOfMeasureConversionSource{withUnitOfMeasureConversion*`UnitOfMeasureConversion',preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 
 -- |The target unit of measure.
-{#fun qlUnitOfMeasureConversionTarget as unitOfMeasureConversionTarget{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`UnitOfMeasure'peekUnitOfMeasure*#}
+{#fun qlUnitOfMeasureConversionTarget as unitOfMeasureConversionTarget{withUnitOfMeasureConversion*`UnitOfMeasureConversion',preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 
 -- |The commodity type this conversion applies to.
-{#fun qlUnitOfMeasureConversionCommodityType as unitOfMeasureConversionCommodityType{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`CommodityType'peekCommodityType*#}
+{#fun qlUnitOfMeasureConversionCommodityType as unitOfMeasureConversionCommodityType{withUnitOfMeasureConversion*`UnitOfMeasureConversion',preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}
 
 -- |Whether the conversion was given directly, or derived by chaining two other conversions.
 {#fun pure qlUnitOfMeasureConversionType_ as unitOfMeasureConversionType{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`UnitOfMeasureConversionType'#}
@@ -331,13 +331,13 @@ convertQuantity conv (ct, uom, amount) = do
 {#fun qlUnitOfMeasureConversionManagerClear as clearUomConversions{}->`()'#}
 
 -- |The global commodity currency setting (defaults to USD).
-{#fun qlCommoditySettingsCurrency as commoditySettingsCurrency{}->`Currency'peekCurrency*#}
+{#fun qlCommoditySettingsCurrency as commoditySettingsCurrency{preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- |Set the global commodity currency setting.
 {#fun qlCommoditySettingsSetCurrency as setCommoditySettingsCurrency{withCurrency*`Currency'}->`()'#}
 
 -- |The global commodity unit-of-measure setting (defaults to barrels).
-{#fun qlCommoditySettingsUnitOfMeasure as commoditySettingsUnitOfMeasure{}->`UnitOfMeasure'peekUnitOfMeasure*#}
+{#fun qlCommoditySettingsUnitOfMeasure as commoditySettingsUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 
 -- |Set the global commodity unit-of-measure setting.
 {#fun qlCommoditySettingsSetUnitOfMeasure as setCommoditySettingsUnitOfMeasure{withUnitOfMeasure*`UnitOfMeasure'}->`()'#}

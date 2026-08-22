@@ -389,7 +389,7 @@ extern "C" {
   Leg* qlBondRedemptions(QlBond* o, char **e);
   int qlBondSettlementDate(QlBond* o, int d, char **e);
   int qlBondStartDate(QlBond* o, char **e);
-  int qlBondMaturityDate(QlBond *bond);
+  int qlBondMaturityDate(QlBond *bond, char **e);
   QlInstrument *qlBondAsInstrument(QlBond *bond);
 
   QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule, unsigned cLen, double *coupons, DayCounter *counter, int payConv, double redemption, int issue, Calendar *payCal, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, DayCounter* firstPeriodDayCounter, char **e);
@@ -668,10 +668,10 @@ extern "C" {
      by EnergySwap::paymentCashFlows()). */
   void qlFreeCommodityCashFlow(QlCommodityCashFlow *o);
   int qlCommodityCashFlowDate(QlCommodityCashFlow *o);
-  double qlCommodityCashFlowDiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy);
-  double qlCommodityCashFlowUndiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy);
-  double qlCommodityCashFlowDiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy);
-  double qlCommodityCashFlowUndiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy);
+  double qlCommodityCashFlowDiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e);
+  double qlCommodityCashFlowUndiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e);
+  double qlCommodityCashFlowDiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e);
+  double qlCommodityCashFlowUndiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e);
   double qlCommodityCashFlowDiscountFactor(QlCommodityCashFlow *o);
   double qlCommodityCashFlowPaymentDiscountFactor(QlCommodityCashFlow *o);
   int qlCommodityCashFlowFinalized(QlCommodityCashFlow *o);

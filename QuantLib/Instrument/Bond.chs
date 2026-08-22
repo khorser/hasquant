@@ -166,7 +166,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |Returns the maturity date of the bond
-{#fun pure qlBondMaturityDate as maturityDate{withBond*`GenBond b'}->`Maybe Day' toMaybeDay#}
+{#fun qlBondMaturityDate as maturityDate{withBond*`GenBond b',preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
 
 -- |generic compounding and frequency InterestRate coupons
 {#fun qlFixedRateBond as fixedRateBond{fromIntegral`Word' -- ^settlementDays

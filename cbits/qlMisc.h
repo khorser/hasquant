@@ -35,20 +35,20 @@ extern "C" {
   char* qlCurrencySymbol(Currency* o);
   Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, Currency* triangulationCurrency, char **e);
 
-  ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate);
+  ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate, char **e);
   void qlFreeExchangeRate(ExchangeRate *o);
   double qlExchangeRateRate(ExchangeRate *o);
   int qlExchangeRateType_(ExchangeRate *o);
   double qlExchangeRateExchange(ExchangeRate *o, double amount, Currency *ccy, Currency **outCcy, char **e);
   ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, char **e);
 
-  void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial);
+  void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial, char **e);
   ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, char **e);
   void qlExchangeRateManagerClear();
 
   int qlMoneySettingsConversionType();
   void qlMoneySettingsSetConversionType(int t);
-  Currency *qlMoneySettingsBaseCurrency();
+  Currency *qlMoneySettingsBaseCurrency(char **e);
   void qlMoneySettingsSetBaseCurrency(Currency *c);
   double qlConvertToBaseCurrency(double amount, Currency *ccy, Currency **outCcy, char **e);
 
@@ -152,8 +152,8 @@ extern "C" {
 
   Calendar *qlCalendar(int country, int market, char **e);
   const char *qlCalendarName(Calendar *calendar);
-  int qlCalendarAdjust(Calendar *c, int date, int conv);
-  int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
+  int qlCalendarAdjust(Calendar *c, int date, int conv, char **e);
+  int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom, char **e);
   void qlCalendarAddHoliday(Calendar* o, int x0, char **e);
   int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e);
   int qlCalendarEndOfMonth(Calendar* o, int d, char **e);

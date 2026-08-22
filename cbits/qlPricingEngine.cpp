@@ -629,8 +629,12 @@ void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
 void qlFreeAffineModel(QlAffineModel *o) {del(o);}
 void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
-double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate) {return (*arg(o))->discountBond(now, maturity, rate);}
-double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a) {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);}
+double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate, char **e) {
+  try {return (*arg(o))->discountBond(now, maturity, rate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e) {
+  try {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o) {return ret(new QlAffineModel(*arg(o)));}
 QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
 void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}

@@ -77,7 +77,9 @@ void qlFreePaymentTerm(PaymentTerm *o) {del(o);}
 char *qlPaymentTermName(PaymentTerm *o) {return DUP(arg(o)->name().c_str());}
 int qlPaymentTermEventType_(PaymentTerm *o) {return arg(o)->eventType();}
 int qlPaymentTermOffsetDays(PaymentTerm *o) {return arg(o)->offsetDays();}
-Calendar *qlPaymentTermCalendar(PaymentTerm *o) {return ret(new Calendar(arg(o)->calendar()));}
+Calendar *qlPaymentTermCalendar(PaymentTerm *o, char **e) {
+  try {return ret(new Calendar(arg(o)->calendar()));
+  } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 int qlPaymentTermEmpty(PaymentTerm *o) {return arg(o)->empty();}
 
 int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, char **e) {
@@ -109,9 +111,15 @@ UnitOfMeasureConversion *qlUnitOfMeasureConversion(CommodityType *commodityType,
   } catch (std::exception& er) {return handleException<UnitOfMeasureConversion*>(e, er);}}
 
 void qlFreeUnitOfMeasureConversion(UnitOfMeasureConversion *o) {del(o);}
-UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o) {return ret(new UnitOfMeasure(arg(o)->source()));}
-UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o) {return ret(new UnitOfMeasure(arg(o)->target()));}
-CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o) {return ret(new CommodityType(arg(o)->commodityType()));}
+UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o, char **e) {
+  try {return ret(new UnitOfMeasure(arg(o)->source()));
+  } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
+UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o, char **e) {
+  try {return ret(new UnitOfMeasure(arg(o)->target()));
+  } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
+CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o, char **e) {
+  try {return ret(new CommodityType(arg(o)->commodityType()));
+  } catch (std::exception& er) {return handleException<CommodityType*>(e, er);}}
 int qlUnitOfMeasureConversionType_(UnitOfMeasureConversion *o) {return arg(o)->type();}
 double qlUnitOfMeasureConversionFactor(UnitOfMeasureConversion *o) {return arg(o)->conversionFactor();}
 char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o) {return DUP(arg(o)->code().c_str());}
@@ -119,12 +127,17 @@ char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o) {return DUP(arg(
 double qlUnitOfMeasureConversionConvert(UnitOfMeasureConversion *o, CommodityType *ct, UnitOfMeasure *uom,
                                         double amount, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
   *outCt = 0; *outUom = 0;
+  CommodityType *ct2 = 0;
   try {
     Quantity r = arg(o)->convert(Quantity(*arg(ct), *arg(uom), amount));
-    *outCt = ret(new CommodityType(r.commodityType()));
-    *outUom = ret(new UnitOfMeasure(r.unitOfMeasure()));
+    ct2 = ret(new CommodityType(r.commodityType()));
+    UnitOfMeasure *uom2 = ret(new UnitOfMeasure(r.unitOfMeasure()));
+    *outCt = ct2; *outUom = uom2;
     return r.amount();
-  } catch (std::exception& er) {return handleException<double>(e, er);}}
+  } catch (std::exception& er) {
+    delete ct2;
+    return handleException<double>(e, er);
+  }}
 
 UnitOfMeasureConversion *qlUnitOfMeasureConversionChain(UnitOfMeasureConversion *r1, UnitOfMeasureConversion *r2, char **e) {
   try {return alloc(new UnitOfMeasureConversion(UnitOfMeasureConversion::chain(*arg(r1), *arg(r2))));
@@ -145,7 +158,11 @@ void qlUnitOfMeasureConversionManagerClear() {UnitOfMeasureConversionManager::in
 
 /* CommoditySettings */
 
-Currency *qlCommoditySettingsCurrency() {return ret(new Currency(CommoditySettings::instance().currency()));}
+Currency *qlCommoditySettingsCurrency(char **e) {
+  try {return ret(new Currency(CommoditySettings::instance().currency()));
+  } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
 void qlCommoditySettingsSetCurrency(Currency *c) {CommoditySettings::instance().currency() = *arg(c);}
-UnitOfMeasure *qlCommoditySettingsUnitOfMeasure() {return ret(new UnitOfMeasure(CommoditySettings::instance().unitOfMeasure()));}
+UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e) {
+  try {return ret(new UnitOfMeasure(CommoditySettings::instance().unitOfMeasure()));
+  } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
 void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u) {CommoditySettings::instance().unitOfMeasure() = *arg(u);}

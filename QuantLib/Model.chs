@@ -183,7 +183,7 @@ import QuantLib.Internal.Enum
 {#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel om',`Double' -- ^now
   ,`Double' -- ^maturity
   ,`Double' -- ^rate
-  }->`Double'#}
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Two-additive-factor Gaussian (G2) short-rate model: the sum of two correlated Ornstein-Uhlenbeck factors.
 {#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
@@ -212,12 +212,15 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
 
 -- |Futures convexity bias (difference between futures implied rate and forward rate), per G. Kirikos, D. Novak, \"Convexity Conundrums\", Risk Magazine, March 1997. @t@/@T@ are in yearfraction using the deposit day counter, @futurePrice@ is the futures' market price.
-{#fun pure qlHullWhiteConvexityBias as convexityBias{`Double' -- ^futurePrice
+-- Not 'pure': 'HullWhite.convexityBias' can throw ('QL_REQUIRE' on its inputs), and letting a C++
+-- exception unwind across the FFI boundary from an 'unsafePerformIO'-backed pure binding is undefined
+-- behavior, so this needs the same 'char **e'/'preErrorCheck' error channel as any other throwing call.
+{#fun qlHullWhiteConvexityBias as convexityBias{`Double' -- ^futurePrice
   ,`Double' -- ^t
   ,`Double' -- ^T
   ,`Double' -- ^sigma
   ,`Double' -- ^a
-  }->`Double'#}
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
 fixedReversion :: [Bool]

@@ -190,14 +190,14 @@ extern "C" {
   void qlFreeCommodityCurve(QlCommodityCurve *o);
   QlTermStructure* qlCommodityCurveAsTermStructure(QlCommodityCurve *o);
   char *qlCommodityCurveName(QlCommodityCurve *o);
-  CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o);
-  UnitOfMeasure *qlCommodityCurveUnitOfMeasure(QlCommodityCurve *o);
-  Currency *qlCommodityCurveCurrency(QlCommodityCurve *o);
-  void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days);
-  void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices);
+  CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o, char **e);
+  UnitOfMeasure *qlCommodityCurveUnitOfMeasure(QlCommodityCurve *o, char **e);
+  Currency *qlCommodityCurveCurrency(QlCommodityCurve *o, char **e);
+  void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days, char **e);
+  void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices, char **e);
   int qlCommodityCurveEmpty(QlCommodityCurve *o);
   QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o);
-  void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve);
+  void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve, char **e);
   /* Full price()/underlyingPriceDate() signature, threading a real ExchangeContracts map (as 5
      parallel arrays -- map key, code, expirationDate, underlyingStartDate, underlyingEndDate --
      per the "c2hs's & caps at 2" precedent already used for Quantity's 3 flat args) and a

@@ -98,7 +98,7 @@ spec = do
         c <- calendar UnitedKingdomSettlement
         l <- CF.leg [(fromGregorian 2013 1 1, 1000)]
         b <- B.bond' 2 c 1000 (Just (fromGregorian 2013 1 1)) (Just (fromGregorian 2012 1 1)) l
-        B.maturityDate b `shouldBe` Just (fromGregorian 2013 1 1)
+        B.maturityDate b `shouldReturn` Just (fromGregorian 2013 1 1)
 
     describe "Amortizing bonds" $ do
       it "AmortizingFixedRateBond reproduces upstream's sinking-fund pmt values" $ do

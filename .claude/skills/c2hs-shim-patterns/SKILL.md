@@ -88,6 +88,90 @@ arity-checking, not type-checking — check which of the two you have
 (primary return + 1 extra out-param, vs. no primary return + a
 length/array pair) before picking the marshaller.
 
+## Exception safety in shims
+
+**A `try`/`catch(std::exception&)` wrapping a shim function is not enough
+on its own if the function commits any output only after a loop, or builds
+more than one heap object before returning.** A mid-loop or mid-sequence
+throw after some but not all outputs are allocated leaves the already-`new`'d
+ones unreachable from Haskell (never assigned to an out-param, so never
+freed) — a partial leak, not a crash, so it's easy to ship undetected.
+Fix pattern (already used throughout `cbits/`, `qlInstrumentAdditionalResults`
+is the original instance):
+
+- Declare every out-param's local pointer/count **outside** the `try`,
+  defaulted to `0`/`nullptr` before entering it.
+- If an output is a pointer-array whose *elements* are individually
+  heap-allocated (`CommodityType*`, `Currency*`, …, not primitives),
+  allocate it with `new T*[n]()` (value-initialized — every unreached slot
+  is guaranteed null) rather than `qlAllocatePointerArray` or a bare `new
+  T*[n]`.
+- Only assign to the real out-params (`*outX = x;`) after every allocation
+  in the function has succeeded — the `catch` block below relies on the
+  out-params still being their pre-`try` default whenever anything failed.
+- In `catch`, free every local pointer that's non-null (`delete`/`delete[]`,
+  or `qlFreeString`/`free` for `DUP`'d strings), looping up to the local
+  count for a pointer array — safe specifically because of the
+  value-initialization above.
+
+The scalar case (a second `ret(new ...)` that can leak the first, e.g.
+`qlUnitOfMeasureConversionConvert`) is the same idea with one local pointer
+instead of an array.
+
+**Converting a `{#fun pure ...#}` binding to add `char **e`/`preErrorCheck`
+requires dropping `pure` too — a pure/`unsafePerformIO`-backed binding
+throwing a C++ exception across the FFI boundary is undefined behavior.**
+There is no existing (nor safe) example of `pure` combined with
+`preErrorCheck` anywhere in the tree — grep for `fun pure.*preErrorCheck`
+before assuming one exists. If the function has downstream call sites that
+consumed it as a pure value (`let x = f a`, a bare application, a `shouldBe`
+test assertion), each one needs to become an `IO`-sequenced call (`x <- f
+a`, `mapM`/`sequence` if inside a list comprehension, `shouldReturn`
+instead of `shouldBe`) — grep the whole tree for the function's Haskell
+name (not just the `.chs` file) before starting, since the ripple is often
+zero (many `{#fun pure#}` bindings with no caller yet) but isn't always.
+
+**`bad_alloc`-only sites are a real, lower-severity tier of the same gap:**
+a shim doing a bare `new`/`ret(new ...)` with no `char **e` at all can only
+really throw `std::bad_alloc`, but the fix (`char **e` + `try`/`catch` +
+`preErrorCheck`) is identical and worth doing wherever a sibling function
+in the same file already has the guard — the inconsistency itself is the
+signal, not the theoretical severity. Two traps found doing this pass:
+
+- **A shim with an *empty* body (no allocation, no throwing call at all) can
+  still gate a real, non-`bad_alloc` exception one level down.**
+  `qlCommodityCurveSetBasisOfCurve`'s shim is a single unguarded call to
+  `CommodityCurve::setBasisOfCurve`, which upstream itself calls
+  `CommodityPricingHelper::calculateUomConversionFactor` →
+  `UnitOfMeasureConversionManager::lookup`, a genuine `QL_REQUIRE`-throw
+  when no matching conversion is registered. Don't classify a
+  no-allocation shim as `bad_alloc`-only (or skip it) without first reading
+  what the one upstream call it makes can itself throw — a thin one-line
+  shim is exactly the shape most likely to be waved through without that
+  check.
+- **`handleException<T>(msg, exc)` (`qlaux.h`) cannot be instantiated at
+  `T = void`** — its body is `*msg = DUP(exc.what()); return 0;`, and
+  `return 0;` in a function returning `void` is a hard compile error (`void
+  function should not return a value`), not silently treated as `return;`.
+  For a `void`-returning shim, inline `*e = DUP(er.what());` directly in
+  the `catch` block instead (precedent: `qlInstrumentAdditionalResults` and
+  others already do this) rather than reaching for the generic helper.
+
+**A bare `DUP(...)`-only string getter, or a bare `ret(new QlY(*arg(o)))`
+upcast shim, is not itself part of this exception-safety sweep even when
+it sits textually next to fixed siblings.** These are a large (~100+
+sites), pre-existing, deliberately uniform convention across `cbits/` —
+none of them takes `char **e`, and the only theoretical throw is
+`bad_alloc` from the wrapping allocation itself. Don't retrofit one just
+because a neighboring function in the same audit bullet or file got fixed
+for a different, real reason (three getters — `qlCommodityCurveName`,
+`qlIndexName`, `qlRegionName` — were flagged this way by file-proximity to
+genuinely-anomalous `ret(new ...)`-based siblings during an earlier audit
+pass, and correctly excluded on closer inspection). If a future pass wants
+to add `char **e` to a new upcast shim or string getter "to be safe,"
+check here first — it's the established, confirmed-with-the-user policy,
+not an oversight.
+
 ## Yield curves are `Handle`s, not `shared_ptr`s
 
 **A yield curve is a `Handle`, not a `shared_ptr`** — `typedef
