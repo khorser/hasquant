@@ -1,4 +1,4 @@
--- Smoke test for RebatedExercise (Internal.Enum's Rebated ADT case), added as part of the
+-- Smoke test for RebatedExercise (Internal.Common's Rebated ADT case), added as part of the
 -- Gaussian1dModels.cpp port. Checks that wrapping a European exercise in Rebated materializes,
 -- upcasts to Exercise, and can be used to build a real instrument (a Swaption) without crashing
 -- -- i.e. the recursive withExercise call and the CRebatedExercise' Upcastable wiring are correct.

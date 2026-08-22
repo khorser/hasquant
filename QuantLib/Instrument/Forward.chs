@@ -25,7 +25,7 @@ module QuantLib.Instrument.Forward
   , npvTargetCurrency
   ) where
 import QuantLib.Internal
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 {#import QuantLib.InterestRate#}
 

@@ -38,7 +38,7 @@ module QuantLib.Math
   , points'
   ) where
 import QuantLib.Internal
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 import Foreign.C.Types(CDouble)
 import Data.Vector.Storable(Vector)

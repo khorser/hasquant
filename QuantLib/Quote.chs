@@ -29,7 +29,7 @@ module QuantLib.Quote
   , linkTo
   ) where
 import QuantLib.Internal
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 
 #include "qlTypesC2HS.h"

@@ -62,7 +62,7 @@ module QuantLib.Index.InterestRate
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 -- Plain (non-c2hs) import: QuantLib.CashFlow is later in exposed-modules than
 -- this file, so a {#import#} here would need its .chi before it exists.

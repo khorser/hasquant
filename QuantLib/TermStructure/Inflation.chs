@@ -5,7 +5,7 @@ module QuantLib.TermStructure.Inflation
   , ZeroCouponInflationSwapHelper
   , YearOnYearInflationSwapHelper
 
-  , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Enum"
+  , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Common"
 
   , zeroCouponInflationSwapHelper
   , yearOnYearInflationSwapHelper
@@ -21,7 +21,7 @@ module QuantLib.TermStructure.Inflation
 import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 {#import QuantLib.TermStructure.Yield#}(PillarChoice)
 
 #include "qlTypesC2HS.h"

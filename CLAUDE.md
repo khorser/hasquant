@@ -4,7 +4,7 @@ Haskell bindings to QuantLib via c2hs, with a C++ shim layer in `cbits/`.
 
 ## Before inventing a workaround
 
-This codebase has accumulated many special-case patterns for recurring problems (c2hs cross-module enum-import cycles, multi-inheritance secondary interfaces, wide-arity constructors). Before adding a hand-rolled type mirroring a C enum, a new module, or a new abstraction layer, grep this file, the codebase, and `.claude/skills/` for how a similarly-shaped problem was already solved. A plausible-looking one-off fix is usually a rediscovery, and diverging from the established pattern drops that pattern's safety properties — e.g. `CPIInterpolationType` was hand-rolled outside `QuantLib.Internal.Enum` (the existing home for cross-cutting enums like `TimeUnit`, which live there to avoid cyclic deps) before being moved back into it.
+This codebase has accumulated many special-case patterns for recurring problems (c2hs cross-module enum-import cycles, multi-inheritance secondary interfaces, wide-arity constructors). Before adding a hand-rolled type mirroring a C enum, a new module, or a new abstraction layer, grep this file, the codebase, and `.claude/skills/` for how a similarly-shaped problem was already solved. A plausible-looking one-off fix is usually a rediscovery, and diverging from the established pattern drops that pattern's safety properties — e.g. `CPIInterpolationType` was hand-rolled outside `QuantLib.Internal.Common` (the existing home for cross-cutting enums like `TimeUnit`, which live there to avoid cyclic deps) before being moved back into it.
 
 ## Skills
 
@@ -61,6 +61,8 @@ See the `run-hasquant` skill for build/test commands, the GHC 8.10 gate, `trackA
 ## c2hs and the C shim
 
 See the `c2hs-shim-patterns` skill for `{#pointer#}` pragma rules, C shim marshalling patterns (`alloca-`/`preArray`), `Handle<YieldTermStructure>` semantics, multiple-inheritance/upcast shims, cross-module enum-import avoidance, and `GenX` mnemonic naming.
+
+- **Avoid raw `foreign import ccall` declarations in binding `.chs` files** — prefer `QuantLib.Internal`/`QuantLib.Internal.Type`/`QuantLib.Internal.Common`, mirroring where their own low-level FFI plumbing (`qlFreeAdditionalResults`, `peekStructArray`, `GenForeignPtr`, ...) already lives. A single, contained, occasional raw call local to one binding module is fine; don't reach for it as a default just because a `{#fun#}` won't fit — that's the shape of problem `Internal`/`Internal.Type`/`Internal.Common` already exist to hold, and scattering raw FFI declarations across binding modules is how a marshaller like `RawResult`/`AdditionalResultVal` ends up hand-rolled in `QuantLib.Instrument` (pulling in five unrelated `Foreign.*` imports) instead of centralized where other cross-cutting marshalling lives.
 
 ## Template Haskell (`QuantLib/Internal/Syntax.hs`)
 

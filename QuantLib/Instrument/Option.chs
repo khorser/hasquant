@@ -84,7 +84,7 @@ module QuantLib.Instrument.Option
 import QuantLib.Internal
 {#import QuantLib.Instrument#}(AverageType, BarrierType, DoubleBarrierType, PartialBarrierRange)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 
 {#pointer *QlOption as Option foreign -> COption' nocode#}
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}

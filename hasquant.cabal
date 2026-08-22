@@ -97,7 +97,7 @@ library
       QuantLib.Syntax
   other-modules:
       QuantLib.Internal
-      QuantLib.Internal.Enum
+      QuantLib.Internal.Common
       QuantLib.Internal.Syntax
       QuantLib.Internal.CalendarEnum
       QuantLib.Internal.Type

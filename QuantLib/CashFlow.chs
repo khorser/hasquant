@@ -113,7 +113,7 @@ import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Data.Maybe(fromMaybe)
 

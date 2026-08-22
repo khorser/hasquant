@@ -89,7 +89,7 @@ import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.CashFlow#}(DurationType)
 {#import QuantLib.InterestRate#}(Compounding)
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import Data.Maybe(fromMaybe)

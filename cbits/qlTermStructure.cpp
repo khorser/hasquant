@@ -105,7 +105,7 @@ void setInterpolation(T* o, int interpolator, int approximator, int approximator
   // hasquant::Abcd (InterpolationType's 7th case) has no case here -- QuantLib's Abcd
   // interpolation isn't wired up to setInterpolation on this codepath; falls through to the
   // default QL_FAIL below. Pre-existing gap, not something the Interpolation/Approximation TH
-  // refactor (see deriveCrossEnum in QuantLib/Internal/Enum.chs) introduced or touches.
+  // refactor (see deriveCrossEnum in QuantLib/Internal/Common.chs) introduced or touches.
   default: QL_FAIL("Unsupported interpolation " << interpolator);
   }
 }

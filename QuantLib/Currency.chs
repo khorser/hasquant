@@ -28,7 +28,7 @@ module QuantLib.Currency
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import Foreign.Marshal.Alloc(alloca)
 
 #include "qlTypesC2HS.h"

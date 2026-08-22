@@ -34,7 +34,7 @@ import QuantLib.Internal
 {#import QuantLib.Instrument#}(PricingModel)
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 
 {#enum ProbabilityTrait{} deriving(Show, Eq)#}
 

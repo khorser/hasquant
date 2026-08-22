@@ -236,7 +236,7 @@ import QuantLib.Internal.Type
 {#import QuantLib.Math#}
 {#import QuantLib.Quote#}(DeltaType, AtmType)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 
 {#enum CashAnnuityModel{} deriving(Show, Eq)#}
 {#enum Probabilities{} deriving(Show, Eq)#}

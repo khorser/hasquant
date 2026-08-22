@@ -132,7 +132,7 @@ import QuantLib.Internal
 {#import QuantLib.Math#}(EndCriteriaType)
 {#import QuantLib.Quote#}(DeltaType(..), AtmType(..))
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 
@@ -170,7 +170,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 
 -- |'BlackVolatilitySurfaceDelta::SmileInterpolationMethod', local to that class -- not shared
--- with any other binding, so declared here rather than in 'QuantLib.Internal.Enum'.
+-- with any other binding, so declared here rather than in 'QuantLib.Internal.Common'.
 {#enum SmileInterpolationMethod{} deriving(Show, Eq)#}
 
 -- |'BlackVolTimeExtrapolation::Type', consumed only by 'blackVolatilitySurfaceDelta' today --
@@ -530,7 +530,7 @@ fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr
 -- are the SABR calibration's initial guess and fixed\/free flags; endCriteria\/optimization
 -- method are left at QuantLib's own internal defaults (a raw, Haskell-finalized EndCriteria or
 -- OptimizationMethod handle can't safely be stored for this object's full lifetime -- see the
--- qlXxxFitting comment in "QuantLib.Internal.Enum" for the same ownership hazard elsewhere).
+-- qlXxxFitting comment in "QuantLib.Internal.Common" for the same ownership hazard elsewhere).
 sabrInterpolatedSmileSection :: Day -- ^optionDate
   -> GenQuote q1 -- ^forward
   -> [Double] -- ^strikes

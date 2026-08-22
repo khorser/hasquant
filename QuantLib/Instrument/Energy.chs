@@ -44,7 +44,7 @@ module QuantLib.Instrument.Energy
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Commodity
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Utils(fromBool)

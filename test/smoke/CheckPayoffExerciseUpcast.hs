@@ -1,5 +1,5 @@
 -- Smoke test for the IsQlPayoff/IsQlExercise/EnumMeta' -> Upcastable/GenForeignPtr
--- rewrite in QuantLib.Internal.Enum. A clean build proves the new code type-checks,
+-- rewrite in QuantLib.Internal.Common. A clean build proves the new code type-checks,
 -- but not that the right number of upcasts happens at runtime (wrong depth would
 -- still compile, e.g. a Payoff silently ending up at the wrong C++ subtype pointer,
 -- or a double-free/use-after-free from mismatched Finalizable instances). This

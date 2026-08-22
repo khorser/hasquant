@@ -15,7 +15,7 @@ hasquant exposes QuantLib concepts through three different shapes. Picking the w
 
 The deciding question: **does anything ever need to hold a constructed value and pass it to more than one place, or query it after construction?** If yes, it's pattern 2 even if it also has nested substructure. If no — built fresh, used immediately by exactly one C call, discarded — pattern 3 applies, and the `Gen*`/`AnyOf` phantom-flexibility machinery can be skipped entirely (see below for why it isn't needed).
 
-## Pattern 3: nested ADT + on-demand materialization (worked example: Payoff/Exercise, `QuantLib/Internal/Enum.chs`)
+## Pattern 3: nested ADT + on-demand materialization (worked example: Payoff/Exercise, `QuantLib/Internal/Common.chs`)
 
 ### 1. The ADTs themselves
 

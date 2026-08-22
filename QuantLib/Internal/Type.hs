@@ -639,7 +639,7 @@ withQuoteArray = withGenArray withQuote
 withQuoteArrayRaw :: [GenQuote q] -> (Ptr (Ptr CQuote') -> IO b) -> IO b
 withQuoteArrayRaw x f = withMany withQuote x (`withArray` f)
 
--- PAYOFF/EXERCISE upcast targets used by QuantLib.Internal.Enum's Payoff/Exercise ADT dispatch
+-- PAYOFF/EXERCISE upcast targets used by QuantLib.Internal.Common's Payoff/Exercise ADT dispatch
 -- (the ADTs themselves stay in Enum.chs; only the pointer hierarchy plumbing lives here,
 -- matching every other hierarchy in this module)
 data CPayoff'

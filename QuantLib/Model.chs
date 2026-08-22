@@ -95,7 +95,7 @@ import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.CashFlow#}(RateAveragingType)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 
 {#enum CalibrationErrorType{} deriving(Show, Eq)#}
 

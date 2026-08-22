@@ -23,7 +23,7 @@ module QuantLib.Instrument.Credit
   , upfrontNPV
   ) where
 import QuantLib.Internal
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 {#import QuantLib.Instrument#}(PricingModel)
 

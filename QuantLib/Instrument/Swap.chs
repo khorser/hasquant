@@ -141,7 +141,7 @@ import QuantLib.Internal
 import QuantLib.CashFlow(cmsLeg, iborLeg)
 {#import QuantLib.Time.Calendar#}(adjust, advance)
 import QuantLib.Internal.Type
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Time.Schedule(schedule, DateGenerationRule(..))
 import QuantLib.Time.Date(addPeriod)
 import QuantLib.Settings(evaluationDate)

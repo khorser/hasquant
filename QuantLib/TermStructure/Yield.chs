@@ -99,7 +99,7 @@ module QuantLib.TermStructure.Yield
   , oisRateHelperSwap
   ) where
 import QuantLib.Internal hiding(maxDate)
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)

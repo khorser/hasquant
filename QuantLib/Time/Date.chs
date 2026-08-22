@@ -64,7 +64,7 @@ import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
 import QuantLib.Internal
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Common
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
