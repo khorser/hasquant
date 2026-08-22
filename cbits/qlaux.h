@@ -5,6 +5,9 @@
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
 #include <ql/instruments/varianceswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencybasisswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyfixedvsfloatingswap.hpp>
 // SabrSwaptionVolatilityCube is a typedef of a template instantiation
 // (XabrSwaptionVolatilityCube<SwaptionVolCubeSabrModel>), not an ordinary class -- it cannot be
 // forward-declared the way every other type below is, so its full header is pulled in here
@@ -161,6 +164,7 @@ namespace QuantLib {
   class DeltaVolQuote;
   class DiscountingFxForwardEngine;
   class DiscountingSwapEngine;
+  class DiscountingConstNotionalCrossCurrencySwapEngine;
   class Dividend;
   class EarlyExercise;
   class EndCriteria;
@@ -318,6 +322,10 @@ using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::FixedVsFloatingSwap;
+using QuantLib::ConstNotionalCrossCurrencySwap;
+using QuantLib::ConstNotionalCrossCurrencyBasisSwap;
+using QuantLib::ConstNotionalCrossCurrencyFixedVsFloatingSwap;
+using QuantLib::DiscountingConstNotionalCrossCurrencySwapEngine;
 using QuantLib::FloatingRateBond;
 using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
@@ -771,6 +779,9 @@ typedef shared_ptr<StochasticProcessArray> QlStochasticProcessArray;
 typedef shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
 typedef shared_ptr<Swap> QlSwap;
 typedef shared_ptr<FixedVsFloatingSwap> QlFixedVsFloatingSwap;
+typedef shared_ptr<ConstNotionalCrossCurrencySwap> QlConstNotionalCrossCurrencySwap;
+typedef shared_ptr<ConstNotionalCrossCurrencyBasisSwap> QlConstNotionalCrossCurrencyBasisSwap;
+typedef shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap> QlConstNotionalCrossCurrencyFixedVsFloatingSwap;
 typedef shared_ptr<SwapIndex> QlSwapIndex;
 typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
 typedef shared_ptr<Swaption> QlSwaption;
@@ -898,6 +909,7 @@ template <> class ObjClassName<DepositRateHelper*> {public: static void output(s
 template <> class ObjClassName<DiscountingBondEngine*> {public: static void output(std::ostream& os) {os << "DiscountingBondEngine";}};
 template <> class ObjClassName<DiscountingFxForwardEngine*> {public: static void output(std::ostream& os) {os << "DiscountingFxForwardEngine";}};
 template <> class ObjClassName<DiscountingSwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingSwapEngine";}};
+template <> class ObjClassName<DiscountingConstNotionalCrossCurrencySwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingConstNotionalCrossCurrencySwapEngine";}};
 template <> class ObjClassName<Dividend*> {public: static void output(std::ostream& os) {os << "Dividend";}};
 template <> class ObjClassName<EarlyExercise*> {public: static void output(std::ostream& os) {os << "EarlyExercise";}};
 template <> class ObjClassName<EndCriteria*> {public: static void output(std::ostream& os) {os << "EndCriteria";}};
@@ -1177,6 +1189,9 @@ template <> class ObjClassName<SuperFundPayoff*> {public: static void output(std
 template <> class ObjClassName<SuperSharePayoff*> {public: static void output(std::ostream& os) {os << "SuperSharePayoff";}};
 template <> class ObjClassName<SvenssonFitting*> {public: static void output(std::ostream& os) {os << "SvenssonFitting";}};
 template <> class ObjClassName<Swap*> {public: static void output(std::ostream& os) {os << "Swap";}};
+template <> class ObjClassName<ConstNotionalCrossCurrencySwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencySwap";}};
+template <> class ObjClassName<ConstNotionalCrossCurrencyBasisSwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencyBasisSwap";}};
+template <> class ObjClassName<ConstNotionalCrossCurrencyFixedVsFloatingSwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencyFixedVsFloatingSwap";}};
 template <> class ObjClassName<SwapIndex*> {public: static void output(std::ostream& os) {os << "SwapIndex";}};
 template <> class ObjClassName<SwapRateHelper*> {public: static void output(std::ostream& os) {os << "SwapRateHelper";}};
 template <> class ObjClassName<Swaption*> {public: static void output(std::ostream& os) {os << "Swaption";}};

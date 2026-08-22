@@ -184,6 +184,39 @@ extern "C" {
   Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e);
   Leg* qlFixedVsFloatingSwapFixedLeg(QlFixedVsFloatingSwap* o, char **e);
   Leg* qlFixedVsFloatingSwapFloatingLeg(QlFixedVsFloatingSwap* o, char **e);
+  void qlFreeConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencySwap *o);
+  QlSwap* qlConstNotionalCrossCurrencySwapAsSwap(QlConstNotionalCrossCurrencySwap *o);
+  QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencySwap(Leg* firstLeg, Currency* firstLegCcy, Leg* secondLeg, Currency* secondLegCcy, char **e);
+  QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencySwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int* payer, unsigned currenciesLen, Currency** currencies, char **e);
+  Currency* qlConstNotionalCrossCurrencySwapLegCurrency(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e);
+  double qlConstNotionalCrossCurrencySwapInCcyLegBPS(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e);
+  double qlConstNotionalCrossCurrencySwapInCcyLegNPV(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e);
+  double qlConstNotionalCrossCurrencySwapNpvDateDiscounts(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e);
+
+  void qlFreeConstNotionalCrossCurrencyBasisSwap(QlConstNotionalCrossCurrencyBasisSwap *o);
+  QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencyBasisSwap *o);
+  QlConstNotionalCrossCurrencyBasisSwap* qlConstNotionalCrossCurrencyBasisSwap(
+    double payNominal, Currency* payCurrency, Schedule* paySchedule, QlIborIndex* payIndex, double paySpread, double payGearing,
+    double recNominal, Currency* recCurrency, Schedule* recSchedule, QlIborIndex* recIndex, double recSpread, double recGearing,
+    int payPaymentLag, int recPaymentLag,
+    int payCompoundSpread, unsigned payLookbackDays, int payObservationShift, unsigned payLockoutDays, int payAveragingMethod,
+    int recCompoundSpread, unsigned recLookbackDays, int recObservationShift, unsigned recLockoutDays, int recAveragingMethod,
+    int telescopicValueDates, char **e);
+  double qlConstNotionalCrossCurrencyBasisSwapFairPaySpread(QlConstNotionalCrossCurrencyBasisSwap* o, char **e);
+  double qlConstNotionalCrossCurrencyBasisSwapFairRecSpread(QlConstNotionalCrossCurrencyBasisSwap* o, char **e);
+
+  void qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap(QlConstNotionalCrossCurrencyFixedVsFloatingSwap *o);
+  QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencyFixedVsFloatingSwap *o);
+  QlConstNotionalCrossCurrencyFixedVsFloatingSwap* qlConstNotionalCrossCurrencyFixedVsFloatingSwap(
+    int type, double fixedNominal, Currency* fixedCurrency, Schedule* fixedSchedule, double fixedRate,
+    DayCounter* fixedDayCount, int fixedPaymentBdc, unsigned fixedPaymentLag, Calendar* fixedPaymentCalendar,
+    double floatNominal, Currency* floatCurrency, Schedule* floatSchedule, QlIborIndex* floatIndex, double floatSpread,
+    int floatPaymentBdc, unsigned floatPaymentLag, Calendar* floatPaymentCalendar,
+    int telescopicValueDates, int floatCompoundSpread, unsigned floatLookbackDays, int floatObservationShift,
+    unsigned floatLockoutDays, int floatAveragingMethod, char **e);
+  double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, char **e);
+  double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, char **e);
+
   Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e);
   Leg* qlAssetSwapFloatingLeg(QlAssetSwap* o, char **e);
   Leg* qlBMASwapBmaLeg(QlBMASwap* o, char **e);

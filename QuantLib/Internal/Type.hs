@@ -1912,6 +1912,9 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    CPISwap
 -- >    ZeroCouponSwap
 -- >    EquityTotalReturnSwap
+-- >    ConstNotionalCrossCurrencySwap
+-- >      ConstNotionalCrossCurrencyBasisSwap
+-- >      ConstNotionalCrossCurrencyFixedVsFloatingSwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
 -- >  Bond
@@ -2180,6 +2183,53 @@ peekVanillaSwap :: Ptr CVanillaSwap' -> IO VanillaSwap
 peekVanillaSwap = newGenForeignPtr >=> newGenFixedVsFloatingSwap
 withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap' -> IO b) -> IO b
 withVanillaSwap = withForeignPtr . ptr . peel . peel . getInstrument
+
+-- ConstNotionalCrossCurrencySwap sits between Swap and its two owned leaves
+-- (ConstNotionalCrossCurrencyBasisSwap, ConstNotionalCrossCurrencyFixedVsFloatingSwap). It earns
+-- its own family level (mirrors FixedVsFloatingSwap/VanillaSwap just above) because its own
+-- getters (legCurrency, inCcyLegBPS, inCcyLegNPV, npvDateDiscounts) are inherited by both leaves
+-- and are bound generically over 'GenConstNotionalCrossCurrencySwap', while each leaf keeps its
+-- own engine-dispatched getters (fairPaySpread/fairRecSpread, fairRate/fairSpread) reachable only
+-- through the real leaf pointer. Unlike FixedVsFloatingSwap, the base class is concrete upstream
+-- and hasquant binds its own 2-leg/N-leg constructors directly at this level.
+data CConstNotionalCrossCurrencySwap'
+type GenConstNotionalCrossCurrencySwap x = GenSwap (AnyOf CConstNotionalCrossCurrencySwap' x)
+type CConstNotionalCrossCurrencySwap = ForeignPtr CConstNotionalCrossCurrencySwap'
+type ConstNotionalCrossCurrencySwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencySwap
+data CConstNotionalCrossCurrencyBasisSwap'
+type CConstNotionalCrossCurrencyBasisSwap = ForeignPtr CConstNotionalCrossCurrencyBasisSwap'
+type ConstNotionalCrossCurrencyBasisSwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencyBasisSwap
+data CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+type CConstNotionalCrossCurrencyFixedVsFloatingSwap = ForeignPtr CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+type ConstNotionalCrossCurrencyFixedVsFloatingSwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencyFixedVsFloatingSwap
+foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencySwap" qlFreeConstNotionalCrossCurrencySwap :: FinalizerPtr CConstNotionalCrossCurrencySwap'
+foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencyBasisSwap" qlFreeConstNotionalCrossCurrencyBasisSwap :: FinalizerPtr CConstNotionalCrossCurrencyBasisSwap'
+foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap" qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap :: FinalizerPtr CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+instance Finalizable CConstNotionalCrossCurrencySwap' where finalize = qlFreeConstNotionalCrossCurrencySwap
+instance Finalizable CConstNotionalCrossCurrencyBasisSwap' where finalize = qlFreeConstNotionalCrossCurrencyBasisSwap
+instance Finalizable CConstNotionalCrossCurrencyFixedVsFloatingSwap' where finalize = qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap
+foreign import ccall "ql.h qlConstNotionalCrossCurrencySwapAsSwap" qlConstNotionalCrossCurrencySwapAsSwap :: Ptr CConstNotionalCrossCurrencySwap' -> IO (Ptr CSwap')
+foreign import ccall "ql.h qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap" qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap :: Ptr CConstNotionalCrossCurrencyBasisSwap' -> IO (Ptr CConstNotionalCrossCurrencySwap')
+foreign import ccall "ql.h qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap" qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap :: Ptr CConstNotionalCrossCurrencyFixedVsFloatingSwap' -> IO (Ptr CConstNotionalCrossCurrencySwap')
+instance Upcastable CConstNotionalCrossCurrencySwap' where {type Base CConstNotionalCrossCurrencySwap' = CSwap'; upcast = qlConstNotionalCrossCurrencySwapAsSwap}
+instance Upcastable CConstNotionalCrossCurrencyBasisSwap' where {type Base CConstNotionalCrossCurrencyBasisSwap' = CConstNotionalCrossCurrencySwap'; upcast = qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap}
+instance Upcastable CConstNotionalCrossCurrencyFixedVsFloatingSwap' where {type Base CConstNotionalCrossCurrencyFixedVsFloatingSwap' = CConstNotionalCrossCurrencySwap'; upcast = qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap}
+asConstNotionalCrossCurrencySwap :: GenConstNotionalCrossCurrencySwap x -> IO ConstNotionalCrossCurrencySwap
+asConstNotionalCrossCurrencySwap = transferGenForeignPtr peekConstNotionalCrossCurrencySwap . peel . peel . getInstrument
+peekConstNotionalCrossCurrencySwap :: Ptr CConstNotionalCrossCurrencySwap' -> IO ConstNotionalCrossCurrencySwap
+peekConstNotionalCrossCurrencySwap = newCastForeignPtr >=> newGenConstNotionalCrossCurrencySwap
+withConstNotionalCrossCurrencySwap :: GenConstNotionalCrossCurrencySwap x -> (Ptr CConstNotionalCrossCurrencySwap' -> IO b) -> IO b
+withConstNotionalCrossCurrencySwap = withGenForeignPtr . peel . peel . getInstrument
+newGenConstNotionalCrossCurrencySwap :: GenForeignPtr x CConstNotionalCrossCurrencySwap' -> IO (GenConstNotionalCrossCurrencySwap x)
+newGenConstNotionalCrossCurrencySwap = pure . GenInstrument . newAnyOf . newAnyOf
+peekConstNotionalCrossCurrencyBasisSwap :: Ptr CConstNotionalCrossCurrencyBasisSwap' -> IO ConstNotionalCrossCurrencyBasisSwap
+peekConstNotionalCrossCurrencyBasisSwap = newGenForeignPtr >=> newGenConstNotionalCrossCurrencySwap
+withConstNotionalCrossCurrencyBasisSwap :: ConstNotionalCrossCurrencyBasisSwap -> (Ptr CConstNotionalCrossCurrencyBasisSwap' -> IO b) -> IO b
+withConstNotionalCrossCurrencyBasisSwap = withForeignPtr . ptr . peel . peel . getInstrument
+peekConstNotionalCrossCurrencyFixedVsFloatingSwap :: Ptr CConstNotionalCrossCurrencyFixedVsFloatingSwap' -> IO ConstNotionalCrossCurrencyFixedVsFloatingSwap
+peekConstNotionalCrossCurrencyFixedVsFloatingSwap = newGenForeignPtr >=> newGenConstNotionalCrossCurrencySwap
+withConstNotionalCrossCurrencyFixedVsFloatingSwap :: ConstNotionalCrossCurrencyFixedVsFloatingSwap -> (Ptr CConstNotionalCrossCurrencyFixedVsFloatingSwap' -> IO b) -> IO b
+withConstNotionalCrossCurrencyFixedVsFloatingSwap = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CNonstandardSwap'
 type CNonstandardSwap = ForeignPtr CNonstandardSwap'

@@ -27,6 +27,9 @@ namespace hasquant {
 #include <ql/pricingengines/swaption/basketgeneratingengine.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencybasisswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyfixedvsfloatingswap.hpp>
 #include <ql/instruments/assetswap.hpp>
 #include <ql/experimental/commodities/energycommodity.hpp>
 #include <ql/experimental/commodities/energyfuture.hpp>
@@ -462,6 +465,59 @@ QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedul
 QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e) {
   try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift))));
   } catch (std::exception& er) {return handleException<QlOvernightIndexedSwap*>(e, er);}}
+void qlFreeConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencySwap *o) {del(o);}
+QlSwap* qlConstNotionalCrossCurrencySwapAsSwap(QlConstNotionalCrossCurrencySwap *o) {return ret(new QlSwap(*arg(o)));}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencySwap(Leg* firstLeg, Currency* firstLegCcy, Leg* secondLeg, Currency* secondLegCcy, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencySwap(alloc(new ConstNotionalCrossCurrencySwap(*arg(firstLeg), *arg(firstLegCcy), *arg(secondLeg), *arg(secondLegCcy)))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencySwap*>(e, er);}}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencySwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int* payer, unsigned currenciesLen, Currency** currencies, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencySwap(alloc(new ConstNotionalCrossCurrencySwap(qlVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen), qlVector(currencies, currenciesLen)))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencySwap*>(e, er);}}
+Currency* qlConstNotionalCrossCurrencySwapLegCurrency(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return alloc(new Currency((*arg(o))->legCurrency(j)));} catch (std::exception& er) {return handleException<Currency*>(e, er);}}
+double qlConstNotionalCrossCurrencySwapInCcyLegBPS(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return (*arg(o))->inCcyLegBPS(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencySwapInCcyLegNPV(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return (*arg(o))->inCcyLegNPV(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencySwapNpvDateDiscounts(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return (*arg(o))->npvDateDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeConstNotionalCrossCurrencyBasisSwap(QlConstNotionalCrossCurrencyBasisSwap *o) {del(o);}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencyBasisSwap *o) {return ret(new QlConstNotionalCrossCurrencySwap(*arg(o)));}
+QlConstNotionalCrossCurrencyBasisSwap* qlConstNotionalCrossCurrencyBasisSwap(
+    double payNominal, Currency* payCurrency, Schedule* paySchedule, QlIborIndex* payIndex, double paySpread, double payGearing,
+    double recNominal, Currency* recCurrency, Schedule* recSchedule, QlIborIndex* recIndex, double recSpread, double recGearing,
+    int payPaymentLag, int recPaymentLag,
+    int payCompoundSpread, unsigned payLookbackDays, int payObservationShift, unsigned payLockoutDays, int payAveragingMethod,
+    int recCompoundSpread, unsigned recLookbackDays, int recObservationShift, unsigned recLockoutDays, int recAveragingMethod,
+    int telescopicValueDates, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencyBasisSwap(alloc(new ConstNotionalCrossCurrencyBasisSwap(
+    payNominal, *arg(payCurrency), *arg(paySchedule), *arg(payIndex), paySpread, payGearing,
+    recNominal, *arg(recCurrency), *arg(recSchedule), *arg(recIndex), recSpread, recGearing,
+    payPaymentLag, recPaymentLag,
+    payCompoundSpread, payLookbackDays, payObservationShift, payLockoutDays, (RateAveraging::Type)payAveragingMethod,
+    recCompoundSpread, recLookbackDays, recObservationShift, recLockoutDays, (RateAveraging::Type)recAveragingMethod,
+    telescopicValueDates))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencyBasisSwap*>(e, er);}}
+double qlConstNotionalCrossCurrencyBasisSwapFairPaySpread(QlConstNotionalCrossCurrencyBasisSwap* o, char **e) {try {return (*arg(o))->fairPaySpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencyBasisSwapFairRecSpread(QlConstNotionalCrossCurrencyBasisSwap* o, char **e) {try {return (*arg(o))->fairRecSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap(QlConstNotionalCrossCurrencyFixedVsFloatingSwap *o) {del(o);}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencyFixedVsFloatingSwap *o) {return ret(new QlConstNotionalCrossCurrencySwap(*arg(o)));}
+QlConstNotionalCrossCurrencyFixedVsFloatingSwap* qlConstNotionalCrossCurrencyFixedVsFloatingSwap(
+    int type, double fixedNominal, Currency* fixedCurrency, Schedule* fixedSchedule, double fixedRate,
+    DayCounter* fixedDayCount, int fixedPaymentBdc, unsigned fixedPaymentLag, Calendar* fixedPaymentCalendar,
+    double floatNominal, Currency* floatCurrency, Schedule* floatSchedule, QlIborIndex* floatIndex, double floatSpread,
+    int floatPaymentBdc, unsigned floatPaymentLag, Calendar* floatPaymentCalendar,
+    int telescopicValueDates, int floatCompoundSpread, unsigned floatLookbackDays, int floatObservationShift,
+    unsigned floatLockoutDays, int floatAveragingMethod, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencyFixedVsFloatingSwap(alloc(new ConstNotionalCrossCurrencyFixedVsFloatingSwap(
+    (Swap::Type)type, fixedNominal, *arg(fixedCurrency), *arg(fixedSchedule), fixedRate, *arg(fixedDayCount),
+    (BusinessDayConvention)fixedPaymentBdc, fixedPaymentLag, *arg(fixedPaymentCalendar),
+    floatNominal, *arg(floatCurrency), *arg(floatSchedule), *arg(floatIndex), floatSpread,
+    (BusinessDayConvention)floatPaymentBdc, floatPaymentLag, *arg(floatPaymentCalendar),
+    telescopicValueDates, floatCompoundSpread, floatLookbackDays, floatObservationShift,
+    floatLockoutDays, (RateAveraging::Type)floatAveragingMethod))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencyFixedVsFloatingSwap*>(e, er);}}
+double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
 Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e) {try {return ret(new Leg((*arg(o))->bondLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlAssetSwapCleanPrice(QlAssetSwap* o, char **e) {try {return (*arg(o))->cleanPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlAssetSwapFairCleanPrice(QlAssetSwap* o, char **e) {try {return (*arg(o))->fairCleanPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}

@@ -20,6 +20,7 @@ module QuantLib.PricingEngine
   , riskyBondEngine
   , discountingSwapEngine
   , discountingFxForwardEngine
+  , discountingConstNotionalCrossCurrencySwapEngine
   , counterpartyAdjSwapEngine
 
   , analyticBarrierEngine
@@ -245,6 +246,7 @@ import QuantLib.Internal.Enum
 {#enum ForwardsInCouponPeriod{} deriving(Show, Eq)#}
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
+{#pointer *Currency foreign -> CCurrency nocode#}
 
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
@@ -317,6 +319,22 @@ import QuantLib.Internal.Enum
 {#fun qlDiscountingFxForwardEngine as discountingFxForwardEngine{withYieldTermStructure*`GenYieldTermStructure y1' -- ^sourceCurrencyDiscountCurve
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^targetCurrencyDiscountCurve
   ,withQuote*`GenQuote q' -- ^spotFx
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Discounts each leg of a 'QuantLib.Instrument.Swap.ConstNotionalCrossCurrencySwap' (or either
+-- of its two leaves) off its own currency's discount curve, converting to @domesticCcy@ via
+-- @spotFX@ (quoted as units of @domesticCcy@ per unit of @foreignCcy@, w.r.t. a settlement equal
+-- to the npv date unless @spotFXSettleDate@ says otherwise). Each leg's stored currency must equal
+-- @domesticCcy@ or @foreignCcy@; the two discount curves must share the same reference date.
+{#fun qlDiscountingConstNotionalCrossCurrencySwapEngine as discountingConstNotionalCrossCurrencySwapEngine{withCurrency*`Currency' -- ^domesticCcy
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticCcyDiscountCurve
+  ,withCurrency*`Currency' -- ^foreignCcy
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignCcyDiscountCurve
+  ,withQuote*`GenQuote q' -- ^spotFX
+  ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,withMaybeDay*`Maybe Day' -- ^settlementDate
+  ,withMaybeDay*`Maybe Day' -- ^npvDate
+  ,withMaybeDay*`Maybe Day' -- ^spotFXSettleDate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- | CVA/DVA-adjusted swap pricing engine. @invstDTS@\/@invstRecoveryRate@ are the
