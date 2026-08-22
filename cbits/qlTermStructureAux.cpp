@@ -14,7 +14,6 @@ using namespace QuantLib;
 // spelling out its own `new PiecewiseYieldCurve<Trait, Interp>(...)` argument list -- which is
 // why adding a bootstrap argument prompted the factoring. Shape borrowed from QuantLib-SWIG's
 // make_bootstrap<Curve>() (SWIG/piecewiseyieldcurve.i).
-namespace {
 
 // Spelled CurveType::bootstrap_type, not IterativeBootstrap<CurveType>, for the same
 // [temp.inst] reason spelled out on the GlobalBootstrap branch further down -- see that
@@ -85,8 +84,6 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
   }
 }
 
-}
-
 // Upstream QuantLib-SWIG's canned-functor GlobalBootstrap construction (SWIG/piecewiseyieldcurve.i
 // :186-282's AdditionalErrors/AdditionalDates), confirmed to compile against both clang and
 // g++-16 by an earlier standalone spike (see README's # TODO). AdditionalErrors is a fixed linear-
@@ -95,7 +92,6 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
 // trait-independent (Traits::helper is BootstrapHelper<YieldTermStructure> == RateHelper for
 // every trait this file dispatches, per ratehelpers.hpp/bootstraptraits.hpp), so they live here
 // once rather than duplicated per trait x interpolator combination that ends up using them.
-namespace {
 
 class AdditionalErrors {
   std::vector<shared_ptr<RateHelper> > additionalHelpers_;
@@ -120,8 +116,6 @@ public:
   AdditionalDates(const std::vector<Date>& additionalDates) : additionalDates_(additionalDates) {}
   std::vector<Date> operator()() const { return additionalDates_; }
 };
-
-}
 
 // PiecewiseYieldCurve<SimpleZeroYield, Linear, GlobalBootstrap> built via GlobalBootstrap's
 // functor-callback constructor, taking additionalHelpers/additionalDates and constructing

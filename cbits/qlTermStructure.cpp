@@ -123,12 +123,10 @@ void setInterpolation2D(T* o, int interpolator) {
   }
 }
 
-namespace {
 void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
   *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
   *vs = qlAllocateDoubles(*len);
   std::copy(m.begin(), m.end(), *vs);
-}
 }
 
 extern "C" {

@@ -1413,9 +1413,6 @@ QlInstrument* qlCommodityAsInstrument(QlCommodity *o) {return ret(new QlInstrume
 void qlFreeEnergyCommodity(QlEnergyCommodity *o) {del(o);}
 QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o) {return ret(new QlCommodity(*arg(o)));}
 
-namespace {
-}
-
 /* Commodity -- base-level getters generalized over any leaf (Stage 6). Neither can throw: both
    are plain reads of (or, for addPricingError, a push_back onto) already-computed mutable state. */
 void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *detail) {
