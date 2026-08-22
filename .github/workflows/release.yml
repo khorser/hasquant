@@ -3,7 +3,9 @@ name: Release
 # On-demand release: checks out an existing tag, builds an sdist and
 # hackage-ready Haddock docs (GHC 9.10.3 / QuantLib 1.43, matching stack.yaml's
 # lts-24.53 resolver) inside the existing hasquant-ci image from linux.yml, and
-# publishes both as assets on a GitHub Release for that tag.
+# publishes both as assets on a GitHub Release for that tag. Defaults to
+# creating the release as a draft (hidden from the public release list) so it
+# can be reviewed before publishing with `gh release edit <tag> --draft=false`.
 
 on:
   workflow_dispatch:
@@ -12,6 +14,11 @@ on:
         description: "Existing tag to release (e.g. v.0.5.0.2)"
         required: true
         type: string
+      draft:
+        description: "Create as a draft (hidden until published)"
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   release:
@@ -102,10 +109,18 @@ jobs:
           tag="${{ inputs.tag }}"
           sdist="${{ steps.artifacts.outputs.sdist }}"
           docs="${{ steps.artifacts.outputs.docs }}"
+          draft_flag=()
+          if [ "${{ inputs.draft }}" = "true" ]; then
+            draft_flag=(--draft)
+          fi
           if gh release view "$tag" > /dev/null 2>&1; then
+            # Release already exists (e.g. re-running after a build fix): only
+            # refresh its assets. Publish state is left alone -- flip it with
+            # `gh release edit <tag> --draft=false` once you're happy with it.
             gh release upload "$tag" "$sdist" "$docs" --clobber
           else
             gh release create "$tag" "$sdist" "$docs" \
               --title "$tag" \
-              --notes-file release-notes.md
+              --notes-file release-notes.md \
+              "${draft_flag[@]}"
           fi
