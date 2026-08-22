@@ -20,7 +20,6 @@ jobs:
 
     env:
       GHC_VERSION: ${{ matrix.ghc }}
-      CABAL_DIR: ${{ github.workspace }}/.cabal
 
     steps:
       - uses: actions/checkout@v7
@@ -35,16 +34,6 @@ jobs:
         run: |
           HOMEBREW_NO_AUTO_UPDATE=0 brew update --force
           brew install quantlib
-
-      - name: Cache cabal package store
-        uses: actions/cache@v6
-        with:
-          path: |
-            ${{ env.CABAL_DIR }}/packages
-            ${{ env.CABAL_DIR }}/store
-          key: cabal-store-${{ matrix.os }}-ghc${{ env.GHC_VERSION }}-${{ hashFiles('package.yaml') }}
-          restore-keys: |
-            key: cabal-store-${{ matrix.os }}-ghc${{ env.GHC_VERSION }}-
 
       - name: Build
         run: cabal build all
