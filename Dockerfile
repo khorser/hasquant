@@ -5,7 +5,7 @@ RUN apt-get update \
     && apt-get install -y \
         build-essential cmake curl wget git python3-dev \
         libgmp-dev libffi-dev libtinfo-dev zlib1g-dev pkg-config \
-        gdb valgrind htop locales vim zsh less vifm \
+        gdb valgrind htop locales vim zsh less \
         libffi8 libgmp10 libncurses-dev libncurses6 libtinfo6 \
     && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
     && locale-gen

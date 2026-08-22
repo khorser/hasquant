@@ -5,6 +5,9 @@
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
 #include <ql/instruments/varianceswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencybasisswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyfixedvsfloatingswap.hpp>
 // SabrSwaptionVolatilityCube is a typedef of a template instantiation
 // (XabrSwaptionVolatilityCube<SwaptionVolCubeSabrModel>), not an ordinary class -- it cannot be
 // forward-declared the way every other type below is, so its full header is pulled in here
@@ -47,6 +50,19 @@ namespace QuantLib {
   class BespokeCalendar;
   class Schedule;
   class Currency;
+  class CommodityType;
+  class UnitOfMeasure;
+  class PaymentTerm;
+  class UnitOfMeasureConversion;
+  class CommodityCurve;
+  class CommodityIndex;
+  class Commodity;
+  class EnergyCommodity;
+  class EnergyFuture;
+  class EnergySwap;
+  class EnergyVanillaSwap;
+  class EnergyBasisSwap;
+  class CommodityCashFlow;
   class Region;
   class InterestRate;
   class FixedRateBondHelper;
@@ -148,6 +164,7 @@ namespace QuantLib {
   class DeltaVolQuote;
   class DiscountingFxForwardEngine;
   class DiscountingSwapEngine;
+  class DiscountingConstNotionalCrossCurrencySwapEngine;
   class Dividend;
   class EarlyExercise;
   class EndCriteria;
@@ -305,6 +322,10 @@ using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::FixedVsFloatingSwap;
+using QuantLib::ConstNotionalCrossCurrencySwap;
+using QuantLib::ConstNotionalCrossCurrencyBasisSwap;
+using QuantLib::ConstNotionalCrossCurrencyFixedVsFloatingSwap;
+using QuantLib::DiscountingConstNotionalCrossCurrencySwapEngine;
 using QuantLib::FloatingRateBond;
 using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
@@ -317,6 +338,19 @@ using QuantLib::JointCalendar;
 using QuantLib::BespokeCalendar;
 using QuantLib::Schedule;
 using QuantLib::Currency;
+using QuantLib::CommodityType;
+using QuantLib::UnitOfMeasure;
+using QuantLib::PaymentTerm;
+using QuantLib::UnitOfMeasureConversion;
+using QuantLib::CommodityCurve;
+using QuantLib::CommodityIndex;
+using QuantLib::Commodity;
+using QuantLib::EnergyCommodity;
+using QuantLib::EnergyFuture;
+using QuantLib::EnergySwap;
+using QuantLib::EnergyVanillaSwap;
+using QuantLib::EnergyBasisSwap;
+using QuantLib::CommodityCashFlow;
 using QuantLib::Region;
 using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
@@ -644,6 +678,28 @@ typedef shared_ptr<CallableBond> QlCallableBond;
 typedef shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
 typedef shared_ptr<CapFloor> QlCapFloor;
 typedef shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
+// CommodityCurve is a plain TermStructure subclass, constructed and consumed directly by value
+// (basisOfCurve_ is a shared_ptr<CommodityCurve>, never a Handle) -- shared_ptr-wrapped, same
+// reasoning as QlTermStructure/QlCallableBondVolatilityStructure/QlDefaultProbabilityTermStructure.
+typedef shared_ptr<CommodityCurve> QlCommodityCurve;
+// CommodityIndex is likewise shared_ptr-wrapped: Index leaves in general are (QlIndex,
+// QlEquityIndex above), and CommodityIndex's own forwardCurve_ member is the shared_ptr
+// QlCommodityCurve above, never a Handle.
+typedef shared_ptr<CommodityIndex> QlCommodityIndex;
+// Commodity/EnergyCommodity are abstract-here (no bindable constructor -- Commodity is never
+// constructed directly upstream, and EnergyCommodity::quantity() is pure virtual), reachable only
+// as an upcast target once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap) exists.
+typedef shared_ptr<Commodity> QlCommodity;
+typedef shared_ptr<EnergyCommodity> QlEnergyCommodity;
+typedef shared_ptr<EnergyFuture> QlEnergyFuture;
+// EnergySwap binds no constructor (its own performCalculations is never overridden, so calling it
+// falls through to Instrument::performCalculations's QL_REQUIRE(engine_, ...) and throws) --
+// reachable only as an upcast target from EnergyVanillaSwap/EnergyBasisSwap, exactly like
+// FixedVsFloatingSwap/VanillaSwap.
+typedef shared_ptr<EnergySwap> QlEnergySwap;
+typedef shared_ptr<EnergyVanillaSwap> QlEnergyVanillaSwap;
+typedef shared_ptr<EnergyBasisSwap> QlEnergyBasisSwap;
+typedef shared_ptr<CommodityCashFlow> QlCommodityCashFlow;
 typedef shared_ptr<CdsOption> QlCdsOption;
 typedef shared_ptr<Claim> QlClaim;
 typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
@@ -723,6 +779,9 @@ typedef shared_ptr<StochasticProcessArray> QlStochasticProcessArray;
 typedef shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
 typedef shared_ptr<Swap> QlSwap;
 typedef shared_ptr<FixedVsFloatingSwap> QlFixedVsFloatingSwap;
+typedef shared_ptr<ConstNotionalCrossCurrencySwap> QlConstNotionalCrossCurrencySwap;
+typedef shared_ptr<ConstNotionalCrossCurrencyBasisSwap> QlConstNotionalCrossCurrencyBasisSwap;
+typedef shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap> QlConstNotionalCrossCurrencyFixedVsFloatingSwap;
 typedef shared_ptr<SwapIndex> QlSwapIndex;
 typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
 typedef shared_ptr<Swaption> QlSwaption;
@@ -829,6 +888,7 @@ template <> class ObjClassName<CapHelper*> {public: static void output(std::ostr
 template <> class ObjClassName<CashOrNothingPayoff*> {public: static void output(std::ostream& os) {os << "CashOrNothingPayoff";}};
 template <> class ObjClassName<CdsOption*> {public: static void output(std::ostream& os) {os << "CdsOption";}};
 template <> class ObjClassName<Claim*> {public: static void output(std::ostream& os) {os << "Claim";}};
+template <> class ObjClassName<CommodityType*> {public: static void output(std::ostream& os) {os << "CommodityType";}};
 template <> class ObjClassName<CompositeConstraint*> {public: static void output(std::ostream& os) {os << "CompositeConstraint";}};
 template <> class ObjClassName<CompositeInstrument*> {public: static void output(std::ostream& os) {os << "CompositeInstrument";}};
 template <> class ObjClassName<Constraint*> {public: static void output(std::ostream& os) {os << "Constraint";}};
@@ -849,6 +909,7 @@ template <> class ObjClassName<DepositRateHelper*> {public: static void output(s
 template <> class ObjClassName<DiscountingBondEngine*> {public: static void output(std::ostream& os) {os << "DiscountingBondEngine";}};
 template <> class ObjClassName<DiscountingFxForwardEngine*> {public: static void output(std::ostream& os) {os << "DiscountingFxForwardEngine";}};
 template <> class ObjClassName<DiscountingSwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingSwapEngine";}};
+template <> class ObjClassName<DiscountingConstNotionalCrossCurrencySwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingConstNotionalCrossCurrencySwapEngine";}};
 template <> class ObjClassName<Dividend*> {public: static void output(std::ostream& os) {os << "Dividend";}};
 template <> class ObjClassName<EarlyExercise*> {public: static void output(std::ostream& os) {os << "EarlyExercise";}};
 template <> class ObjClassName<EndCriteria*> {public: static void output(std::ostream& os) {os << "EndCriteria";}};
@@ -942,6 +1003,7 @@ template <> class ObjClassName<OptionletVolatilityStructure*> {public: static vo
 template <> class ObjClassName<OvernightIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndex";}};
 template <> class ObjClassName<OvernightIndexedSwap*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwap";}};
 template <> class ObjClassName<OvernightIndexedSwapIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwapIndex";}};
+template <> class ObjClassName<PaymentTerm*> {public: static void output(std::ostream& os) {os << "PaymentTerm";}};
 template <> class ObjClassName<Payoff*> {public: static void output(std::ostream& os) {os << "Payoff";}};
 template <> class ObjClassName<PercentageStrikePayoff*> {public: static void output(std::ostream& os) {os << "PercentageStrikePayoff";}};
 template <> class ObjClassName<PiecewiseTimeDependentHestonModel*> {public: static void output(std::ostream& os) {os << "PiecewiseTimeDependentHestonModel";}};
@@ -981,6 +1043,15 @@ template <> class ObjClassName<QlCallableBond*> {public: static void output(std:
 template <> class ObjClassName<QlCallableBondVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlCallableBondVolatilityStructure";}};
 template <> class ObjClassName<QlCapFloor*> {public: static void output(std::ostream& os) {os << "QlCapFloor";}};
 template <> class ObjClassName<QlCapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolSurface";}};
+template <> class ObjClassName<QlCommodityCurve*> {public: static void output(std::ostream& os) {os << "QlCommodityCurve";}};
+template <> class ObjClassName<QlCommodityIndex*> {public: static void output(std::ostream& os) {os << "QlCommodityIndex";}};
+template <> class ObjClassName<QlCommodity*> {public: static void output(std::ostream& os) {os << "QlCommodity";}};
+template <> class ObjClassName<QlEnergyCommodity*> {public: static void output(std::ostream& os) {os << "QlEnergyCommodity";}};
+template <> class ObjClassName<QlEnergyFuture*> {public: static void output(std::ostream& os) {os << "QlEnergyFuture";}};
+template <> class ObjClassName<QlEnergySwap*> {public: static void output(std::ostream& os) {os << "QlEnergySwap";}};
+template <> class ObjClassName<QlEnergyVanillaSwap*> {public: static void output(std::ostream& os) {os << "QlEnergyVanillaSwap";}};
+template <> class ObjClassName<QlEnergyBasisSwap*> {public: static void output(std::ostream& os) {os << "QlEnergyBasisSwap";}};
+template <> class ObjClassName<QlCommodityCashFlow*> {public: static void output(std::ostream& os) {os << "QlCommodityCashFlow";}};
 template <> class ObjClassName<QlCdsOption*> {public: static void output(std::ostream& os) {os << "QlCdsOption";}};
 template <> class ObjClassName<QlClaim*> {public: static void output(std::ostream& os) {os << "QlClaim";}};
 template <> class ObjClassName<QlConvertibleBond*> {public: static void output(std::ostream& os) {os << "QlConvertibleBond";}};
@@ -1118,6 +1189,9 @@ template <> class ObjClassName<SuperFundPayoff*> {public: static void output(std
 template <> class ObjClassName<SuperSharePayoff*> {public: static void output(std::ostream& os) {os << "SuperSharePayoff";}};
 template <> class ObjClassName<SvenssonFitting*> {public: static void output(std::ostream& os) {os << "SvenssonFitting";}};
 template <> class ObjClassName<Swap*> {public: static void output(std::ostream& os) {os << "Swap";}};
+template <> class ObjClassName<ConstNotionalCrossCurrencySwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencySwap";}};
+template <> class ObjClassName<ConstNotionalCrossCurrencyBasisSwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencyBasisSwap";}};
+template <> class ObjClassName<ConstNotionalCrossCurrencyFixedVsFloatingSwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencyFixedVsFloatingSwap";}};
 template <> class ObjClassName<SwapIndex*> {public: static void output(std::ostream& os) {os << "SwapIndex";}};
 template <> class ObjClassName<SwapRateHelper*> {public: static void output(std::ostream& os) {os << "SwapRateHelper";}};
 template <> class ObjClassName<Swaption*> {public: static void output(std::ostream& os) {os << "Swaption";}};
@@ -1133,6 +1207,8 @@ template <> class ObjClassName<TreeSwaptionEngine*> {public: static void output(
 template <> class ObjClassName<TreeVanillaSwapEngine*> {public: static void output(std::ostream& os) {os << "TreeVanillaSwapEngine";}};
 template <> class ObjClassName<TypePayoff*> {public: static void output(std::ostream& os) {os << "TypePayoff";}};
 template <> class ObjClassName<UpfrontCdsHelper*> {public: static void output(std::ostream& os) {os << "UpfrontCdsHelper";}};
+template <> class ObjClassName<UnitOfMeasure*> {public: static void output(std::ostream& os) {os << "UnitOfMeasure";}};
+template <> class ObjClassName<UnitOfMeasureConversion*> {public: static void output(std::ostream& os) {os << "UnitOfMeasureConversion";}};
 template <> class ObjClassName<VanillaOption*> {public: static void output(std::ostream& os) {os << "VanillaOption";}};
 template <> class ObjClassName<VanillaSwap*> {public: static void output(std::ostream& os) {os << "VanillaSwap";}};
 template <> class ObjClassName<VarianceGammaEngine*> {public: static void output(std::ostream& os) {os << "VarianceGammaEngine";}};

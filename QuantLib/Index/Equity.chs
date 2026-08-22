@@ -3,11 +3,6 @@ module QuantLib.Index.Equity
     EquityIndex
 
   , equityIndex
-
-  , currency
-  , equityInterestRateCurve
-  , equityDividendCurve
-  , spot
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -28,7 +23,10 @@ import QuantLib.Internal.Type
 -- |A named equity total-return index, forecasting future fixings from an
 -- optional risk-free interest rate curve and dividend curve, and an optional
 -- spot 'QuantLib.Quote.Quote' -- today's fixing is used when no spot is given.
--- Historical fixings are added via 'QuantLib.Index.addFixing'.
+-- Historical fixings are added via 'QuantLib.Index.addFixing'. No inspector is bound for
+-- currency\/interest curve\/dividend curve\/spot: each is a plain, never-mutated echo of this
+-- constructor's own argument, same shape as the currency\/interest\/dividend\/spot fields on
+-- 'QuantLib.Index.Commodity.CommodityIndex' -- the caller already holds whatever it passed in.
 {#fun qlEquityIndex as equityIndex{`String' -- ^name
   ,withCalendar*`Calendar' -- ^fixingCalendar
   ,withCurrency*`Currency'
@@ -36,17 +34,5 @@ import QuantLib.Internal.Type
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^dividend
   ,withMaybeQuote*`Maybe (GenQuote q)' -- ^spot
   ,preErrorCheck-`String'errorCheck*-}->`EquityIndex'peekEquityIndex*#}
-
--- |The index currency.
-{#fun qlEquityIndexCurrency as currency{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
-
--- |The risk-free interest rate curve used to forecast this index's future fixings.
-{#fun qlEquityIndexInterestRateCurve as equityInterestRateCurve{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-
--- |The dividend curve used to forecast this index's future fixings.
-{#fun qlEquityIndexDividendCurve as equityDividendCurve{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-
--- |The index's spot quote; when empty, forecasting falls back to today's fixing.
-{#fun qlEquityIndexSpot as spot{withEquityIndex*`EquityIndex',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -17,6 +17,7 @@
 #include <ql/methods/montecarlo/multipathgenerator.hpp>
 #include <ql/experimental/exoticoptions/mchimalayaengine.hpp>
 #include <ql/experimental/exoticoptions/mcpagodaengine.hpp>
+#include <ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp>
 
 namespace hasquant {
 #include "qlEnumObjects.h"
@@ -239,6 +240,19 @@ PricingEngine* qlMCDigitalEngine1Aux(int rngtrait, const shared_ptr<GeneralizedB
     return new MCDigitalEngine<LowDiscrepancy>(x0, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   case hasquant::Ziggurat:
     return new MCDigitalEngine<Ziggurat>(x0, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown RNG "<< rngtrait);
+}
+PricingEngine* qlMCForwardEuropeanBSEngine1Aux(int rngtrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  switch (rngtrait) {
+  case hasquant::PseudoRandom:
+    return new MCForwardEuropeanBSEngine<PseudoRandom>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::PoissonPseudoRandom:
+    return new MCForwardEuropeanBSEngine<PoissonPseudoRandom>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::LowDiscrepancy:
+    return new MCForwardEuropeanBSEngine<LowDiscrepancy>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::Ziggurat:
+    return new MCForwardEuropeanBSEngine<Ziggurat>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   };
   QL_FAIL("Unknown RNG "<< rngtrait);
 }

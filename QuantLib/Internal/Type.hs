@@ -90,6 +90,80 @@ foreign import ccall safe "ql.h qlCurrencyName" qlCurrencyName :: Ptr CCurrency 
 instance Show Currency where show x = showStandalone qlCurrencyName (getCCurrency x)
 instance Eq Currency where x == y = show x == show y
 
+data CCommodityType
+newtype CommodityType = CommodityType {getCCommodityType :: Standalone CCommodityType}
+foreign import ccall unsafe "ql.h &qlFreeCommodityType" qlFreeCommodityType :: FinalizerPtr CCommodityType
+instance Finalizable CCommodityType where finalize = qlFreeCommodityType
+peekCommodityType :: Ptr CCommodityType -> IO CommodityType
+peekCommodityType = CommodityType <.> peekStandalone
+withCommodityType :: CommodityType -> (Ptr CCommodityType -> IO b) -> IO b
+withCommodityType = withStandalone . getCCommodityType
+withMaybeCommodityType :: Maybe CommodityType -> (Ptr CCommodityType -> IO b) -> IO b
+withMaybeCommodityType = withMaybeStandalone . (getCCommodityType <$>)
+peekMaybeCommodityType :: Ptr CCommodityType -> IO (Maybe CommodityType)
+peekMaybeCommodityType p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekCommodityType p
+foreign import ccall safe "ql.h qlCommodityTypeCode" qlCommodityTypeCode :: Ptr CCommodityType -> IO CString
+instance Show CommodityType where show x = showStandalone qlCommodityTypeCode (getCCommodityType x)
+instance Eq CommodityType where x == y = show x == show y
+-- |Peek a 'CommodityType' out of a @CommodityType**@ out-parameter (as opposed to
+-- 'peekCommodityType', which peeks it directly out of a @CommodityType*@ primary return).
+peekCommodityTypePtr :: Ptr (Ptr CCommodityType) -> IO CommodityType
+peekCommodityTypePtr = peek >=> peekCommodityType
+
+data CUnitOfMeasure
+newtype UnitOfMeasure = UnitOfMeasure {getCUnitOfMeasure :: Standalone CUnitOfMeasure}
+foreign import ccall unsafe "ql.h &qlFreeUnitOfMeasure" qlFreeUnitOfMeasure :: FinalizerPtr CUnitOfMeasure
+instance Finalizable CUnitOfMeasure where finalize = qlFreeUnitOfMeasure
+peekUnitOfMeasure :: Ptr CUnitOfMeasure -> IO UnitOfMeasure
+peekUnitOfMeasure = UnitOfMeasure <.> peekStandalone
+withUnitOfMeasure :: UnitOfMeasure -> (Ptr CUnitOfMeasure -> IO b) -> IO b
+withUnitOfMeasure = withStandalone . getCUnitOfMeasure
+withMaybeUnitOfMeasure :: Maybe UnitOfMeasure -> (Ptr CUnitOfMeasure -> IO b) -> IO b
+withMaybeUnitOfMeasure = withMaybeStandalone . (getCUnitOfMeasure <$>)
+peekMaybeUnitOfMeasure :: Ptr CUnitOfMeasure -> IO (Maybe UnitOfMeasure)
+peekMaybeUnitOfMeasure p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekUnitOfMeasure p
+foreign import ccall safe "ql.h qlUnitOfMeasureCode" qlUnitOfMeasureCode :: Ptr CUnitOfMeasure -> IO CString
+instance Show UnitOfMeasure where show x = showStandalone qlUnitOfMeasureCode (getCUnitOfMeasure x)
+instance Eq UnitOfMeasure where x == y = show x == show y
+-- |Peek a 'UnitOfMeasure' out of a @UnitOfMeasure**@ out-parameter (as opposed to
+-- 'peekUnitOfMeasure', which peeks it directly out of a @UnitOfMeasure*@ primary return).
+peekUnitOfMeasurePtr :: Ptr (Ptr CUnitOfMeasure) -> IO UnitOfMeasure
+peekUnitOfMeasurePtr = peek >=> peekUnitOfMeasure
+
+data CPaymentTerm
+newtype PaymentTerm = PaymentTerm {getCPaymentTerm :: Standalone CPaymentTerm}
+foreign import ccall unsafe "ql.h &qlFreePaymentTerm" qlFreePaymentTerm :: FinalizerPtr CPaymentTerm
+instance Finalizable CPaymentTerm where finalize = qlFreePaymentTerm
+peekPaymentTerm :: Ptr CPaymentTerm -> IO PaymentTerm
+peekPaymentTerm = PaymentTerm <.> peekStandalone
+withPaymentTerm :: PaymentTerm -> (Ptr CPaymentTerm -> IO b) -> IO b
+withPaymentTerm = withStandalone . getCPaymentTerm
+withMaybePaymentTerm :: Maybe PaymentTerm -> (Ptr CPaymentTerm -> IO b) -> IO b
+withMaybePaymentTerm = withMaybeStandalone . (getCPaymentTerm <$>)
+peekMaybePaymentTerm :: Ptr CPaymentTerm -> IO (Maybe PaymentTerm)
+peekMaybePaymentTerm p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekPaymentTerm p
+foreign import ccall safe "ql.h qlPaymentTermName" qlPaymentTermName :: Ptr CPaymentTerm -> IO CString
+instance Show PaymentTerm where show x = showStandalone qlPaymentTermName (getCPaymentTerm x)
+instance Eq PaymentTerm where x == y = show x == show y
+
+data CUnitOfMeasureConversion
+newtype UnitOfMeasureConversion = UnitOfMeasureConversion {getCUnitOfMeasureConversion :: Standalone CUnitOfMeasureConversion}
+foreign import ccall unsafe "ql.h &qlFreeUnitOfMeasureConversion" qlFreeUnitOfMeasureConversion :: FinalizerPtr CUnitOfMeasureConversion
+instance Finalizable CUnitOfMeasureConversion where finalize = qlFreeUnitOfMeasureConversion
+peekUnitOfMeasureConversion :: Ptr CUnitOfMeasureConversion -> IO UnitOfMeasureConversion
+peekUnitOfMeasureConversion = UnitOfMeasureConversion <.> peekStandalone
+withUnitOfMeasureConversion :: UnitOfMeasureConversion -> (Ptr CUnitOfMeasureConversion -> IO b) -> IO b
+withUnitOfMeasureConversion = withStandalone . getCUnitOfMeasureConversion
+foreign import ccall safe "ql.h qlUnitOfMeasureConversionCode" qlUnitOfMeasureConversionCode :: Ptr CUnitOfMeasureConversion -> IO CString
+instance Show UnitOfMeasureConversion where show x = showStandalone qlUnitOfMeasureConversionCode (getCUnitOfMeasureConversion x)
+instance Eq UnitOfMeasureConversion where x == y = show x == show y
+
 data CExchangeRate
 newtype ExchangeRate = ExchangeRate {getCExchangeRate :: Standalone CExchangeRate}
 foreign import ccall unsafe "ql.h &qlFreeExchangeRate" qlFreeExchangeRate :: FinalizerPtr CExchangeRate
@@ -479,6 +553,36 @@ withGenArray m x f = withMany m x (`withArray` (\p -> f (fromIntegral $ length x
 peel :: GenForeignPtr (AnyOf b a) c -> GenForeignPtr a b
 peel = getAnyOf . ptr
 
+-- |Arrays of 'CommodityType'\/'UnitOfMeasure' values, first needed by 'QuantLib.Instrument.Energy'
+-- for marshalling a 'QuantLib.Commodity.PricingPeriods' list to\/from its C-side
+-- structure-of-parallel-arrays representation (@Quantity@'s @CommodityType@\/@UnitOfMeasure@
+-- component, split out one array per field, alongside 'QuantLib.Internal.withDayArray'\/'peekDayArray'
+-- for the date fields and 'QuantLib.Internal.withDoubleArray'\/'peekDoubleArray' for the amount) --
+-- reusing 'withGenArray'\/'peekPtrArray' exactly as 'withBlackCalibrationHelperArray' does.
+withCommodityTypeArray :: [CommodityType] -> ((CUInt, Ptr (Ptr CCommodityType)) -> IO b) -> IO b
+withCommodityTypeArray = withGenArray withCommodityType
+-- |Output side, first needed by 'QuantLib.Instrument.Energy.createPricingPeriods' (the only
+-- producer of a fresh 'QuantLib.Commodity.PricingPeriods' list -- every constructor instead
+-- *consumes* one via 'withCommodityTypeArray').
+peekCommodityTypeArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityType)) -> IO [CommodityType]
+peekCommodityTypeArray = peekPtrArray peekCommodityType
+
+withUnitOfMeasureArray :: [UnitOfMeasure] -> ((CUInt, Ptr (Ptr CUnitOfMeasure)) -> IO b) -> IO b
+withUnitOfMeasureArray = withGenArray withUnitOfMeasure
+peekUnitOfMeasureArray :: Ptr CUInt -> Ptr (Ptr (Ptr CUnitOfMeasure)) -> IO [UnitOfMeasure]
+peekUnitOfMeasureArray = peekPtrArray peekUnitOfMeasure
+
+-- |A nullable-per-entry array of 'UnitOfMeasure's -- @SecondaryCosts@' per-entry unit of measure,
+-- present only for its @CommodityUnitCost@ alternative (null for its @Money@ alternative).
+withMaybeUnitOfMeasureArray :: [Maybe UnitOfMeasure] -> ((CUInt, Ptr (Ptr CUnitOfMeasure)) -> IO b) -> IO b
+withMaybeUnitOfMeasureArray = withGenArray withMaybeUnitOfMeasure
+
+-- |An array of 'Currency' values -- @SecondaryCosts@'\/@SecondaryCostAmounts@'s per-entry currency.
+withCurrencyArray :: [Currency] -> ((CUInt, Ptr (Ptr CCurrency)) -> IO b) -> IO b
+withCurrencyArray = withGenArray withCurrency
+peekCurrencyArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCurrency)) -> IO [Currency]
+peekCurrencyArray = peekPtrArray peekCurrency
+
 -- | > Quote
 -- >   SimpleQuote
 -- >   DeltaVolQuote
@@ -799,6 +903,7 @@ withBachelierCalculator = withStandalone . getCBachelierCalculator
 -- >    YoYInflationIndex
 -- >    ZeroInflationIndex
 -- >  EquityIndex
+-- >  CommodityIndex
 type Index = GenIndex CIndex
 data CIndex'
 data CInterestRateIndex'
@@ -967,6 +1072,19 @@ peekEquityIndex = GenIndex <.> newGenForeignPtr
 withEquityIndex :: EquityIndex -> (Ptr CEquityIndex' -> IO b) -> IO b
 withEquityIndex = withForeignPtr . ptr . getIndex
 
+-- | A plain 'Index' leaf, mirroring 'EquityIndex' -- no subclasses upstream.
+data CCommodityIndex'
+type CCommodityIndex = ForeignPtr CCommodityIndex'
+type CommodityIndex = GenIndex CCommodityIndex
+foreign import ccall unsafe "ql.h &qlFreeCommodityIndex" qlFreeCommodityIndex :: FinalizerPtr CCommodityIndex'
+instance Finalizable CCommodityIndex' where finalize = qlFreeCommodityIndex
+foreign import ccall "ql.h qlCommodityIndexAsIndex" qlCommodityIndexAsIndex :: Ptr CCommodityIndex' -> IO (Ptr CIndex')
+instance Upcastable CCommodityIndex' where {type Base CCommodityIndex' = CIndex'; upcast = qlCommodityIndexAsIndex}
+peekCommodityIndex :: Ptr CCommodityIndex' -> IO CommodityIndex
+peekCommodityIndex = GenIndex <.> newGenForeignPtr
+withCommodityIndex :: CommodityIndex -> (Ptr CCommodityIndex' -> IO b) -> IO b
+withCommodityIndex = withForeignPtr . ptr . getIndex
+
 -- | > TermStructure = GenTermStructure t
 -- >  YieldTermStructure = GenYieldTermStructure y = GenTermStructure t
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
@@ -991,6 +1109,7 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- >  DefaultProbabilityTermStructure
 -- >  ZeroInflationTermStructure
 -- >  YoYInflationTermStructure
+-- >  CommodityCurve
 type TermStructure = GenTermStructure CTermStructure
 data CTermStructure'
 data CVolatilityTermStructure'
@@ -1013,6 +1132,7 @@ data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
 data CZeroInflationTermStructure'
 data CYoYInflationTermStructure'
+data CCommodityCurve'
 newtype GenTermStructure t = GenTermStructure {getTermStructure :: GenForeignPtr t CTermStructure'}
 type CTermStructure = ForeignPtr CTermStructure'
 type GenYieldTermStructure y = GenTermStructure (AnyOf CYieldTermStructure' y)
@@ -1088,6 +1208,11 @@ type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
 type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'
 type YoYInflationTermStructure = GenTermStructure CYoYInflationTermStructure
+type CCommodityCurve = ForeignPtr CCommodityCurve'
+-- | A plain 'TermStructure' leaf (not a 'YieldTermStructure' -- it has no discount-factor
+-- semantics, just an interpolated price curve), constructed and consumed by @shared_ptr@ like
+-- 'CallableBondVolatilityStructure'\/'DefaultProbabilityTermStructure', never a @Handle@.
+type CommodityCurve = GenTermStructure CCommodityCurve
 foreign import ccall unsafe "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeOptionletVolatilityStructure" qlFreeOptionletVolatilityStructure :: FinalizerPtr COptionletVolatilityStructure'
@@ -1109,6 +1234,7 @@ foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFree
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeCommodityCurve" qlFreeCommodityCurve :: FinalizerPtr CCommodityCurve'
 instance Finalizable CTermStructure' where finalize = qlFreeTermStructure
 instance Finalizable CVolatilityTermStructure' where finalize = qlFreeVolatilityTermStructure
 instance Finalizable COptionletVolatilityStructure' where finalize = qlFreeOptionletVolatilityStructure
@@ -1130,6 +1256,7 @@ instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCa
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
+instance Finalizable CCommodityCurve' where finalize = qlFreeCommodityCurve
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlFittedBondDiscountCurveAsYieldTermStructure" qlFittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlRelinkableYieldTermStructureAsYieldTermStructure" qlRelinkableYieldTermStructureAsYieldTermStructure :: Ptr CRelinkableYieldTermStructure' -> IO (Ptr CYieldTermStructure')
@@ -1150,6 +1277,7 @@ foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlC
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlCommodityCurveAsTermStructure" qlCommodityCurveAsTermStructure :: Ptr CCommodityCurve' -> IO (Ptr CTermStructure')
 instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
 instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; upcast = qlFittedBondDiscountCurveAsYieldTermStructure}
 instance Upcastable CRelinkableYieldTermStructure' where {type Base CRelinkableYieldTermStructure' = CYieldTermStructure'; upcast = qlRelinkableYieldTermStructureAsYieldTermStructure}
@@ -1158,6 +1286,7 @@ instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallable
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
+instance Upcastable CCommodityCurve' where {type Base CCommodityCurve' = CTermStructure'; upcast = qlCommodityCurveAsTermStructure}
 instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
 instance Upcastable CRelinkableBlackVolTermStructure' where {type Base CRelinkableBlackVolTermStructure' = CBlackVolTermStructure'; upcast = qlRelinkableBlackVolTermStructureAsBlackVolTermStructure}
 instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; upcast = qlBlackVarianceCurveAsBlackVolTermStructure}
@@ -1270,6 +1399,17 @@ peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflat
 peekYoYInflationTermStructure = GenTermStructure <.> newGenForeignPtr
 withMaybeYoYInflationTermStructure :: Maybe YoYInflationTermStructure -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
 withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+peekCommodityCurve :: Ptr CCommodityCurve' -> IO CommodityCurve
+peekCommodityCurve = GenTermStructure <.> newGenForeignPtr
+withMaybeCommodityCurve :: Maybe CommodityCurve -> (Ptr CCommodityCurve' -> IO b) -> IO b
+withMaybeCommodityCurve x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+-- |Peek a possibly-null @CommodityCurve*@ -- @basisOfCurve_@ is a @nullptr@ 'shared_ptr' when no
+-- basis curve has been set via 'QuantLib.TermStructure.Commodity.setCommodityCurveBasisOfCurve',
+-- not an empty-'Data'-style placeholder (unlike 'peekMaybeCommodityType' et al.).
+peekMaybeCommodityCurve :: Ptr CCommodityCurve' -> IO (Maybe CommodityCurve)
+peekMaybeCommodityCurve p
+  | p == nullPtr = pure Nothing
+  | otherwise = Just <$> peekCommodityCurve p
 
 asYieldTermStructure :: GenYieldTermStructure y -> IO YieldTermStructure
 asYieldTermStructure = transferGenForeignPtr peekYieldTermStructure . peel . getTermStructure
@@ -1772,6 +1912,9 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    CPISwap
 -- >    ZeroCouponSwap
 -- >    EquityTotalReturnSwap
+-- >    ConstNotionalCrossCurrencySwap
+-- >      ConstNotionalCrossCurrencyBasisSwap
+-- >      ConstNotionalCrossCurrencyFixedVsFloatingSwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
 -- >  Bond
@@ -1779,6 +1922,12 @@ withGaussian1dModel (MarkovFunctional m) f = withGenCalibratedModel m (withUpcas
 -- >    FixedRateBond
 -- >    CallableBond
 -- >    CPIBond
+-- >  Commodity*
+-- >    EnergyCommodity*
+-- >      EnergyFuture
+-- >      EnergySwap*
+-- >        EnergyVanillaSwap
+-- >        EnergyBasisSwap
 type Instrument = GenInstrument CInstrument
 data CInstrument'
 newtype GenInstrument i = GenInstrument {getInstrument :: GenForeignPtr i CInstrument'}
@@ -2034,6 +2183,53 @@ peekVanillaSwap :: Ptr CVanillaSwap' -> IO VanillaSwap
 peekVanillaSwap = newGenForeignPtr >=> newGenFixedVsFloatingSwap
 withVanillaSwap :: VanillaSwap -> (Ptr CVanillaSwap' -> IO b) -> IO b
 withVanillaSwap = withForeignPtr . ptr . peel . peel . getInstrument
+
+-- ConstNotionalCrossCurrencySwap sits between Swap and its two owned leaves
+-- (ConstNotionalCrossCurrencyBasisSwap, ConstNotionalCrossCurrencyFixedVsFloatingSwap). It earns
+-- its own family level (mirrors FixedVsFloatingSwap/VanillaSwap just above) because its own
+-- getters (legCurrency, inCcyLegBPS, inCcyLegNPV, npvDateDiscounts) are inherited by both leaves
+-- and are bound generically over 'GenConstNotionalCrossCurrencySwap', while each leaf keeps its
+-- own engine-dispatched getters (fairPaySpread/fairRecSpread, fairRate/fairSpread) reachable only
+-- through the real leaf pointer. Unlike FixedVsFloatingSwap, the base class is concrete upstream
+-- and hasquant binds its own 2-leg/N-leg constructors directly at this level.
+data CConstNotionalCrossCurrencySwap'
+type GenConstNotionalCrossCurrencySwap x = GenSwap (AnyOf CConstNotionalCrossCurrencySwap' x)
+type CConstNotionalCrossCurrencySwap = ForeignPtr CConstNotionalCrossCurrencySwap'
+type ConstNotionalCrossCurrencySwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencySwap
+data CConstNotionalCrossCurrencyBasisSwap'
+type CConstNotionalCrossCurrencyBasisSwap = ForeignPtr CConstNotionalCrossCurrencyBasisSwap'
+type ConstNotionalCrossCurrencyBasisSwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencyBasisSwap
+data CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+type CConstNotionalCrossCurrencyFixedVsFloatingSwap = ForeignPtr CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+type ConstNotionalCrossCurrencyFixedVsFloatingSwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencyFixedVsFloatingSwap
+foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencySwap" qlFreeConstNotionalCrossCurrencySwap :: FinalizerPtr CConstNotionalCrossCurrencySwap'
+foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencyBasisSwap" qlFreeConstNotionalCrossCurrencyBasisSwap :: FinalizerPtr CConstNotionalCrossCurrencyBasisSwap'
+foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap" qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap :: FinalizerPtr CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+instance Finalizable CConstNotionalCrossCurrencySwap' where finalize = qlFreeConstNotionalCrossCurrencySwap
+instance Finalizable CConstNotionalCrossCurrencyBasisSwap' where finalize = qlFreeConstNotionalCrossCurrencyBasisSwap
+instance Finalizable CConstNotionalCrossCurrencyFixedVsFloatingSwap' where finalize = qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap
+foreign import ccall "ql.h qlConstNotionalCrossCurrencySwapAsSwap" qlConstNotionalCrossCurrencySwapAsSwap :: Ptr CConstNotionalCrossCurrencySwap' -> IO (Ptr CSwap')
+foreign import ccall "ql.h qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap" qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap :: Ptr CConstNotionalCrossCurrencyBasisSwap' -> IO (Ptr CConstNotionalCrossCurrencySwap')
+foreign import ccall "ql.h qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap" qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap :: Ptr CConstNotionalCrossCurrencyFixedVsFloatingSwap' -> IO (Ptr CConstNotionalCrossCurrencySwap')
+instance Upcastable CConstNotionalCrossCurrencySwap' where {type Base CConstNotionalCrossCurrencySwap' = CSwap'; upcast = qlConstNotionalCrossCurrencySwapAsSwap}
+instance Upcastable CConstNotionalCrossCurrencyBasisSwap' where {type Base CConstNotionalCrossCurrencyBasisSwap' = CConstNotionalCrossCurrencySwap'; upcast = qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap}
+instance Upcastable CConstNotionalCrossCurrencyFixedVsFloatingSwap' where {type Base CConstNotionalCrossCurrencyFixedVsFloatingSwap' = CConstNotionalCrossCurrencySwap'; upcast = qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap}
+asConstNotionalCrossCurrencySwap :: GenConstNotionalCrossCurrencySwap x -> IO ConstNotionalCrossCurrencySwap
+asConstNotionalCrossCurrencySwap = transferGenForeignPtr peekConstNotionalCrossCurrencySwap . peel . peel . getInstrument
+peekConstNotionalCrossCurrencySwap :: Ptr CConstNotionalCrossCurrencySwap' -> IO ConstNotionalCrossCurrencySwap
+peekConstNotionalCrossCurrencySwap = newCastForeignPtr >=> newGenConstNotionalCrossCurrencySwap
+withConstNotionalCrossCurrencySwap :: GenConstNotionalCrossCurrencySwap x -> (Ptr CConstNotionalCrossCurrencySwap' -> IO b) -> IO b
+withConstNotionalCrossCurrencySwap = withGenForeignPtr . peel . peel . getInstrument
+newGenConstNotionalCrossCurrencySwap :: GenForeignPtr x CConstNotionalCrossCurrencySwap' -> IO (GenConstNotionalCrossCurrencySwap x)
+newGenConstNotionalCrossCurrencySwap = pure . GenInstrument . newAnyOf . newAnyOf
+peekConstNotionalCrossCurrencyBasisSwap :: Ptr CConstNotionalCrossCurrencyBasisSwap' -> IO ConstNotionalCrossCurrencyBasisSwap
+peekConstNotionalCrossCurrencyBasisSwap = newGenForeignPtr >=> newGenConstNotionalCrossCurrencySwap
+withConstNotionalCrossCurrencyBasisSwap :: ConstNotionalCrossCurrencyBasisSwap -> (Ptr CConstNotionalCrossCurrencyBasisSwap' -> IO b) -> IO b
+withConstNotionalCrossCurrencyBasisSwap = withForeignPtr . ptr . peel . peel . getInstrument
+peekConstNotionalCrossCurrencyFixedVsFloatingSwap :: Ptr CConstNotionalCrossCurrencyFixedVsFloatingSwap' -> IO ConstNotionalCrossCurrencyFixedVsFloatingSwap
+peekConstNotionalCrossCurrencyFixedVsFloatingSwap = newGenForeignPtr >=> newGenConstNotionalCrossCurrencySwap
+withConstNotionalCrossCurrencyFixedVsFloatingSwap :: ConstNotionalCrossCurrencyFixedVsFloatingSwap -> (Ptr CConstNotionalCrossCurrencyFixedVsFloatingSwap' -> IO b) -> IO b
+withConstNotionalCrossCurrencyFixedVsFloatingSwap = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CNonstandardSwap'
 type CNonstandardSwap = ForeignPtr CNonstandardSwap'
@@ -2320,6 +2516,134 @@ peekQuantoBarrierOption :: Ptr CQuantoBarrierOption' -> IO QuantoBarrierOption
 peekQuantoBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
 withQuantoBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
+
+-- Commodity/EnergyCommodity are abstract-here: Commodity's own constructor is never called
+-- directly upstream (every concrete instrument goes through EnergyCommodity), and
+-- EnergyCommodity::quantity() is pure virtual, so neither binds a constructor here -- both are
+-- reachable only as upcast targets once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap,
+-- EnergyBasisSwap) exists. Commodity::secondaryCosts()/EnergyCommodity::commodityType() are plain,
+-- never-mutated echoes of each class's own constructor argument (commodity.hpp/energycommodity.hpp's
+-- inline getters each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
+-- secondaryCostAmounts()/pricingErrors()/addPricingError are genuine (mutable, computed during
+-- pricing); their generalized 'withCommodity' accessor and marshalling live below, next to the
+-- Stage-6 leaves that finally give them a producer to verify against.
+data CCommodity'
+type GenCommodity c = GenInstrument (AnyOf CCommodity' c)
+type CCommodity = ForeignPtr CCommodity'
+type Commodity = GenCommodity CCommodity
+foreign import ccall unsafe "ql.h &qlFreeCommodity" qlFreeCommodity :: FinalizerPtr CCommodity'
+instance Finalizable CCommodity' where finalize = qlFreeCommodity
+foreign import ccall "ql.h qlCommodityAsInstrument" qlCommodityAsInstrument :: Ptr CCommodity' -> IO (Ptr CInstrument')
+instance Upcastable CCommodity' where {type Base CCommodity' = CInstrument'; upcast = qlCommodityAsInstrument}
+
+data CEnergyCommodity'
+type GenEnergyCommodity e = GenCommodity (AnyOf CEnergyCommodity' e)
+type CEnergyCommodity = ForeignPtr CEnergyCommodity'
+type EnergyCommodity = GenEnergyCommodity CEnergyCommodity
+foreign import ccall unsafe "ql.h &qlFreeEnergyCommodity" qlFreeEnergyCommodity :: FinalizerPtr CEnergyCommodity'
+instance Finalizable CEnergyCommodity' where finalize = qlFreeEnergyCommodity
+foreign import ccall "ql.h qlEnergyCommodityAsCommodity" qlEnergyCommodityAsCommodity :: Ptr CEnergyCommodity' -> IO (Ptr CCommodity')
+instance Upcastable CEnergyCommodity' where {type Base CEnergyCommodity' = CCommodity'; upcast = qlEnergyCommodityAsCommodity}
+
+-- |Generalizes 'Commodity's base-level getters (secondaryCostAmounts, pricingErrors,
+-- addPricingError) across every leaf in the Commodity\/EnergyCommodity\/EnergySwap subtree -- the
+-- same move as 'withFixedVsFloatingSwap' generalizing its own base-level getters. One peel:
+-- Commodity is the (only, so far) 'AnyOf' layer directly under 'GenInstrument' here.
+withCommodity :: GenCommodity c -> (Ptr CCommodity' -> IO b) -> IO b
+withCommodity = withGenForeignPtr . peel . getInstrument
+
+-- |'newGenEnergyCommodity' wraps the 2 'AnyOf' layers (Commodity, EnergyCommodity) shared by every
+-- 'EnergyCommodity' leaf -- the same helper role 'newGenFixedVsFloatingSwap' plays for 'VanillaSwap'.
+newGenEnergyCommodity :: GenForeignPtr e CEnergyCommodity' -> IO (GenEnergyCommodity e)
+newGenEnergyCommodity = pure . GenInstrument . newAnyOf . newAnyOf
+
+-- |Generalizes 'EnergyCommodity's one pure-virtual interface method, @quantity()@, across every
+-- leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap): one shim, dispatched virtually on the
+-- C++ side, rather than a per-leaf binding -- EnergyFuture's own override is a plain echo of its
+-- constructor argument, but EnergySwap's is a real computed sum over its pricing periods
+-- (energyswap.cpp), so the binding as a whole is not a redundant echo even though one leaf's
+-- override happens to be.
+withEnergyCommodity :: GenEnergyCommodity e -> (Ptr CEnergyCommodity' -> IO b) -> IO b
+withEnergyCommodity = withGenForeignPtr . peel . peel . getInstrument
+
+-- |'EnergyFuture': a leaf directly under 'EnergyCommodity' (Stage 6). 2 peels reach
+-- 'CEnergyFuture'' -- through the Commodity and EnergyCommodity layers -- the same depth
+-- 'VanillaSwap' needs under 'GenFixedVsFloatingSwap' (Swap + FixedVsFloatingSwap).
+data CEnergyFuture'
+type CEnergyFuture = ForeignPtr CEnergyFuture'
+type EnergyFuture = GenEnergyCommodity CEnergyFuture
+foreign import ccall unsafe "ql.h &qlFreeEnergyFuture" qlFreeEnergyFuture :: FinalizerPtr CEnergyFuture'
+instance Finalizable CEnergyFuture' where finalize = qlFreeEnergyFuture
+foreign import ccall "ql.h qlEnergyFutureAsEnergyCommodity" qlEnergyFutureAsEnergyCommodity :: Ptr CEnergyFuture' -> IO (Ptr CEnergyCommodity')
+instance Upcastable CEnergyFuture' where {type Base CEnergyFuture' = CEnergyCommodity'; upcast = qlEnergyFutureAsEnergyCommodity}
+peekEnergyFuture :: Ptr CEnergyFuture' -> IO EnergyFuture
+peekEnergyFuture = newGenForeignPtr >=> newGenEnergyCommodity
+withEnergyFuture :: EnergyFuture -> (Ptr CEnergyFuture' -> IO b) -> IO b
+withEnergyFuture = withForeignPtr . ptr . peel . peel . getInstrument
+
+-- |'EnergySwap' is abstract-here: it binds a public constructor upstream, but never overrides
+-- 'performCalculations', so calling it directly falls through to 'Instrument's null-engine
+-- @QL_REQUIRE@ and throws -- reachable only as an upcast target from 'EnergyVanillaSwap'\/
+-- 'EnergyBasisSwap', exactly like 'FixedVsFloatingSwap'\/'VanillaSwap'. Its own accessors
+-- (calendar, payCurrency, receiveCurrency, pricingPeriods, dailyPositions, paymentCashFlows,
+-- commodityType, quantity) are bound generically over 'GenEnergySwap' in
+-- 'QuantLib.Instrument.Energy' so both leaves inherit them for free, mirroring
+-- 'GenFixedVsFloatingSwap's fairRate\/fixedLeg*\/floatingLeg* getters.
+data CEnergySwap'
+type GenEnergySwap s = GenEnergyCommodity (AnyOf CEnergySwap' s)
+type CEnergySwap = ForeignPtr CEnergySwap'
+type EnergySwap = GenEnergySwap CEnergySwap
+foreign import ccall unsafe "ql.h &qlFreeEnergySwap" qlFreeEnergySwap :: FinalizerPtr CEnergySwap'
+instance Finalizable CEnergySwap' where finalize = qlFreeEnergySwap
+foreign import ccall "ql.h qlEnergySwapAsEnergyCommodity" qlEnergySwapAsEnergyCommodity :: Ptr CEnergySwap' -> IO (Ptr CEnergyCommodity')
+instance Upcastable CEnergySwap' where {type Base CEnergySwap' = CEnergyCommodity'; upcast = qlEnergySwapAsEnergyCommodity}
+newGenEnergySwap :: GenForeignPtr s CEnergySwap' -> IO (GenEnergySwap s)
+newGenEnergySwap = pure . GenInstrument . newAnyOf . newAnyOf . newAnyOf
+withEnergySwap :: GenEnergySwap s -> (Ptr CEnergySwap' -> IO b) -> IO b
+withEnergySwap = withGenForeignPtr . peel . peel . peel . getInstrument
+
+data CEnergyVanillaSwap'
+type CEnergyVanillaSwap = ForeignPtr CEnergyVanillaSwap'
+type EnergyVanillaSwap = GenEnergySwap CEnergyVanillaSwap
+foreign import ccall unsafe "ql.h &qlFreeEnergyVanillaSwap" qlFreeEnergyVanillaSwap :: FinalizerPtr CEnergyVanillaSwap'
+instance Finalizable CEnergyVanillaSwap' where finalize = qlFreeEnergyVanillaSwap
+foreign import ccall "ql.h qlEnergyVanillaSwapAsEnergySwap" qlEnergyVanillaSwapAsEnergySwap :: Ptr CEnergyVanillaSwap' -> IO (Ptr CEnergySwap')
+instance Upcastable CEnergyVanillaSwap' where {type Base CEnergyVanillaSwap' = CEnergySwap'; upcast = qlEnergyVanillaSwapAsEnergySwap}
+peekEnergyVanillaSwap :: Ptr CEnergyVanillaSwap' -> IO EnergyVanillaSwap
+peekEnergyVanillaSwap = newGenForeignPtr >=> newGenEnergySwap
+withEnergyVanillaSwap :: EnergyVanillaSwap -> (Ptr CEnergyVanillaSwap' -> IO b) -> IO b
+withEnergyVanillaSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument
+
+data CEnergyBasisSwap'
+type CEnergyBasisSwap = ForeignPtr CEnergyBasisSwap'
+type EnergyBasisSwap = GenEnergySwap CEnergyBasisSwap
+foreign import ccall unsafe "ql.h &qlFreeEnergyBasisSwap" qlFreeEnergyBasisSwap :: FinalizerPtr CEnergyBasisSwap'
+instance Finalizable CEnergyBasisSwap' where finalize = qlFreeEnergyBasisSwap
+foreign import ccall "ql.h qlEnergyBasisSwapAsEnergySwap" qlEnergyBasisSwapAsEnergySwap :: Ptr CEnergyBasisSwap' -> IO (Ptr CEnergySwap')
+instance Upcastable CEnergyBasisSwap' where {type Base CEnergyBasisSwap' = CEnergySwap'; upcast = qlEnergyBasisSwapAsEnergySwap}
+peekEnergyBasisSwap :: Ptr CEnergyBasisSwap' -> IO EnergyBasisSwap
+peekEnergyBasisSwap = newGenForeignPtr >=> newGenEnergySwap
+withEnergyBasisSwap :: EnergyBasisSwap -> (Ptr CEnergyBasisSwap' -> IO b) -> IO b
+withEnergyBasisSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument
+
+-- |'CommodityCashFlow': a standalone 'CashFlow' subclass, following the same
+-- ZeroInflationCashFlow\/CPICashFlow\/EquityCashFlow precedent (no polymorphic @CashFlow@ family is
+-- modelled here -- see those types in 'QuantLib.CashFlow' -- each concrete cash flow class is its
+-- own standalone foreign-pointer type instead).
+data CCommodityCashFlow
+newtype CommodityCashFlow = CommodityCashFlow {getCCommodityCashFlow :: Standalone CCommodityCashFlow}
+foreign import ccall unsafe "ql.h &qlFreeCommodityCashFlow" qlFreeCommodityCashFlow :: FinalizerPtr CCommodityCashFlow
+instance Finalizable CCommodityCashFlow where finalize = qlFreeCommodityCashFlow
+peekCommodityCashFlow :: Ptr CCommodityCashFlow -> IO CommodityCashFlow
+peekCommodityCashFlow = CommodityCashFlow <.> peekStandalone
+withCommodityCashFlow :: CommodityCashFlow -> (Ptr CCommodityCashFlow -> IO b) -> IO b
+withCommodityCashFlow = withStandalone . getCCommodityCashFlow
+-- |An array of freshly-constructed 'CommodityCashFlow's -- 'EnergySwap.paymentCashFlows()''s
+-- @map<Date, shared_ptr<CommodityCashFlow>>@, read as a plain list (each element's own
+-- 'QuantLib.Instrument.Energy.commodityCashFlowDate' already carries the map key, so it isn't
+-- duplicated as a separate tuple field).
+peekCommodityCashFlowArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityCashFlow)) -> IO [CommodityCashFlow]
+peekCommodityCashFlowArray = peekPtrArray peekCommodityCashFlow
 
 withInstrumentArray :: [GenInstrument i] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b
 withInstrumentArray = withGenArray withInstrument

@@ -20,6 +20,9 @@ module QuantLib.Instrument.Swap
   , EquityTotalReturnSwap
   , VarianceSwap
   , VarianceOption
+  , ConstNotionalCrossCurrencySwap
+  , ConstNotionalCrossCurrencyBasisSwap
+  , ConstNotionalCrossCurrencyFixedVsFloatingSwap
 
   , asSwap
 
@@ -32,6 +35,8 @@ module QuantLib.Instrument.Swap
   , defaultFloatFloatSwapOpts
   , FloatFloatSwapVaryingOpts(..)
   , defaultFloatFloatSwapVaryingOpts
+  , ConstNotionalCrossCurrencyBasisSwapOpts(..)
+  , defaultConstNotionalCrossCurrencyBasisSwapOpts
 
   , swap'
   , swap
@@ -73,6 +78,19 @@ module QuantLib.Instrument.Swap
   , npvDateDiscount
   , startDate
   , startDiscounts
+
+  -- ConstNotionalCrossCurrencySwap family
+  , constNotionalCrossCurrencySwap
+  , constNotionalCrossCurrencySwap'
+  , legCurrency
+  , inCcyLegBPS
+  , inCcyLegNPV
+  , npvDateDiscounts
+  , constNotionalCrossCurrencyBasisSwap
+  , fairPaySpread
+  , fairRecSpread
+  , constNotionalCrossCurrencyFixedVsFloatingSwap
+  , xccyFairRate
 
   , bmaLeg
   , bmaLegBPS
@@ -119,7 +137,7 @@ import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Internal
 {#import QuantLib.Instrument#}
 {#import QuantLib.InterestRate#}(VolatilityType)
-{#import QuantLib.CashFlow#}(RateAveragingType)
+{#import QuantLib.CashFlow#}(RateAveragingType(..))
 import QuantLib.CashFlow(cmsLeg, iborLeg)
 {#import QuantLib.Time.Calendar#}(adjust, advance)
 import QuantLib.Internal.Type
@@ -174,6 +192,10 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlFloatFloatSwap as FloatFloatSwap foreign -> CFloatFloatSwap' nocode#}
 {#pointer *QlFloatFloatSwaption as FloatFloatSwaption foreign -> CFloatFloatSwaption' nocode#}
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
+{#pointer *QlConstNotionalCrossCurrencySwap as ConstNotionalCrossCurrencySwap foreign -> CConstNotionalCrossCurrencySwap' nocode#}
+{#pointer *QlConstNotionalCrossCurrencyBasisSwap as ConstNotionalCrossCurrencyBasisSwap foreign -> CConstNotionalCrossCurrencyBasisSwap' nocode#}
+{#pointer *QlConstNotionalCrossCurrencyFixedVsFloatingSwap as ConstNotionalCrossCurrencyFixedVsFloatingSwap foreign -> CConstNotionalCrossCurrencyFixedVsFloatingSwap' nocode#}
+{#pointer *Currency foreign -> CCurrency nocode#}
 
 -- FloatFloatSwapOpts/FloatFloatSwapVaryingOpts bundle every trailing param of FloatFloatSwap's
 -- two constructors (floatfloatswap.hpp) -- 12 trailing defaulted params each, past the
@@ -212,6 +234,29 @@ $(deriveOptionsRecord "FloatFloatSwapVaryingOpts" []
   , ("ffsvFlooredRate2", [t|[Double]|], [|[]|])
   , ("ffsvPaymentConvention1", [t|Maybe BusinessDayConvention|], [|Nothing|])
   , ("ffsvPaymentConvention2", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  ])
+
+-- ConstNotionalCrossCurrencyBasisSwapOpts bundles ConstNotionalCrossCurrencyBasisSwap's 13
+-- trailing defaulted params (per-leg OIS-only payment lag, compound-spread, lookback,
+-- observation shift, lockout, averaging method, plus a shared telescopicValueDates), past the
+-- options-record threshold -- see FloatFloatSwapOpts above for why this splice must stay
+-- textually before every {#fun#} in this file. ConstNotionalCrossCurrencyFixedVsFloatingSwap's
+-- constructor has only 6 trailing defaults (under the threshold), so it's widened in place
+-- instead -- see 'constNotionalCrossCurrencyFixedVsFloatingSwap' below.
+$(deriveOptionsRecord "ConstNotionalCrossCurrencyBasisSwapOpts" []
+  [ ("cccbsPayPaymentLag", [t|Int|], [|0|])
+  , ("cccbsRecPaymentLag", [t|Int|], [|0|])
+  , ("cccbsPayCompoundSpread", [t|Bool|], [|False|])
+  , ("cccbsPayLookbackDays", [t|Maybe Word|], [|Nothing|])
+  , ("cccbsPayObservationShift", [t|Bool|], [|False|])
+  , ("cccbsPayLockoutDays", [t|Word|], [|0|])
+  , ("cccbsPayAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
+  , ("cccbsRecCompoundSpread", [t|Bool|], [|False|])
+  , ("cccbsRecLookbackDays", [t|Maybe Word|], [|Nothing|])
+  , ("cccbsRecObservationShift", [t|Bool|], [|False|])
+  , ("cccbsRecLockoutDays", [t|Word|], [|0|])
+  , ("cccbsRecAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
+  , ("cccbsTelescopicValueDates", [t|Bool|], [|False|])
   ])
 
 -- |implied volatility
@@ -521,6 +566,129 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 
 -- |Discount factor at leg j's start date.
 {#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- ConstNotionalCrossCurrencySwap
+-- |Constructs a cross-currency swap from two legs and their currencies; the first leg is paid, the second received.
+{#fun qlConstNotionalCrossCurrencySwap as constNotionalCrossCurrencySwap{withLeg*`GenLeg l1'
+  ,withCurrency*`Currency' -- ^firstLegCcy
+  ,withLeg*`GenLeg l2'
+  ,withCurrency*`Currency' -- ^secondLegCcy
+  ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
+
+-- |Multi-leg constructor.
+constNotionalCrossCurrencySwap' :: [(Leg, Bool)] -- ^(legs, payer)
+  -> [Currency] -> IO ConstNotionalCrossCurrencySwap
+constNotionalCrossCurrencySwap' legsPayer = qlConstNotionalCrossCurrencySwap1 legs payer
+  where (legs, payer) = unzip legsPayer
+{#fun qlConstNotionalCrossCurrencySwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,withCurrencyArray*`[Currency]'&,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
+
+-- |Leg j's currency.
+{#fun qlConstNotionalCrossCurrencySwapLegCurrency as legCurrency{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+
+-- |Basis-point sensitivity of leg j, expressed in the leg's own currency (contrast 'legBPS', in the swap's NPV currency).
+{#fun qlConstNotionalCrossCurrencySwapInCcyLegBPS as inCcyLegBPS{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of leg j, expressed in the leg's own currency (contrast 'legNPV', in the swap's NPV currency).
+{#fun qlConstNotionalCrossCurrencySwapInCcyLegNPV as inCcyLegNPV{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Discount factor at the instrument's NPV date, for leg j.
+{#fun qlConstNotionalCrossCurrencySwapNpvDateDiscounts as npvDateDiscounts{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- ConstNotionalCrossCurrencyBasisSwap
+-- |Cross-currency basis swap: pay-currency cashflows on leg 0, receive-currency on leg 1.
+-- 'ConstNotionalCrossCurrencyBasisSwapOpts' bundles every trailing param the C++ constructor
+-- defaults (all OIS-only -- payment lag, compound-spread, lookback, observation shift, lockout,
+-- averaging method per leg, plus a shared telescopic-value-dates flag; ignored for a plain Ibor
+-- 'payIndex'\/'recIndex', since upstream itself only consults them when the index is an overnight
+-- index); override only what's needed via record-update syntax on
+-- 'defaultConstNotionalCrossCurrencyBasisSwapOpts'.
+constNotionalCrossCurrencyBasisSwap :: Double -> Currency -> Schedule -> GenIborIndex ibor1 -> Double -> Double
+  -> Double -> Currency -> Schedule -> GenIborIndex ibor2 -> Double -> Double
+  -> ConstNotionalCrossCurrencyBasisSwapOpts -> IO ConstNotionalCrossCurrencyBasisSwap
+constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex paySpread payGearing
+    recNominal recCurrency recSchedule recIndex recSpread recGearing opts =
+  constNotionalCrossCurrencyBasisSwap_ payNominal payCurrency paySchedule payIndex paySpread payGearing
+    recNominal recCurrency recSchedule recIndex recSpread recGearing
+    (cccbsPayPaymentLag opts) (cccbsRecPaymentLag opts)
+    (cccbsPayCompoundSpread opts) (cccbsPayLookbackDays opts) (cccbsPayObservationShift opts)
+    (cccbsPayLockoutDays opts) (cccbsPayAveragingMethod opts)
+    (cccbsRecCompoundSpread opts) (cccbsRecLookbackDays opts) (cccbsRecObservationShift opts)
+    (cccbsRecLockoutDays opts) (cccbsRecAveragingMethod opts)
+    (cccbsTelescopicValueDates opts)
+
+{#fun qlConstNotionalCrossCurrencyBasisSwap as constNotionalCrossCurrencyBasisSwap_{`Double' -- ^payNominal
+  ,withCurrency*`Currency' -- ^payCurrency
+  ,withSchedule*`Schedule' -- ^paySchedule
+  ,withIborIndex*`GenIborIndex ibor1' -- ^payIndex
+  ,`Double' -- ^paySpread
+  ,`Double' -- ^payGearing
+  ,`Double' -- ^recNominal
+  ,withCurrency*`Currency' -- ^recCurrency
+  ,withSchedule*`Schedule' -- ^recSchedule
+  ,withIborIndex*`GenIborIndex ibor2' -- ^recIndex
+  ,`Double' -- ^recSpread
+  ,`Double' -- ^recGearing
+  ,fromIntegral`Int' -- ^payPaymentLag
+  ,fromIntegral`Int' -- ^recPaymentLag
+  ,`Bool' -- ^payCompoundSpread
+  ,fromMaybeInt`Maybe Word' -- ^payLookbackDays
+  ,`Bool' -- ^payObservationShift
+  ,fromIntegral`Word' -- ^payLockoutDays
+  ,`RateAveragingType' -- ^payAveragingMethod
+  ,`Bool' -- ^recCompoundSpread
+  ,fromMaybeInt`Maybe Word' -- ^recLookbackDays
+  ,`Bool' -- ^recObservationShift
+  ,fromIntegral`Word' -- ^recLockoutDays
+  ,`RateAveragingType' -- ^recAveragingMethod
+  ,`Bool' -- ^telescopicValueDates
+  ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencyBasisSwap'peekConstNotionalCrossCurrencyBasisSwap*#}
+
+-- |The pay-leg spread that would make the swap's NPV zero.
+{#fun qlConstNotionalCrossCurrencyBasisSwapFairPaySpread as fairPaySpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The receive-leg spread that would make the swap's NPV zero.
+{#fun qlConstNotionalCrossCurrencyBasisSwapFairRecSpread as fairRecSpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- ConstNotionalCrossCurrencyFixedVsFloatingSwap
+-- |Cross-currency fixed-vs-floating swap: 'Payer' pays the fixed leg (leg 0) and receives the
+-- floating leg (leg 1); 'Receiver' the reverse. Every trailing defaulted param of the upstream
+-- constructor is a required argument here (only 6 trailing defaults, under the options-record
+-- threshold -- see 'ConstNotionalCrossCurrencyBasisSwapOpts' above) -- pass @False@\/@False@\/
+-- 'Nothing'\/@False@\/@0@\/'AveragingCompound' to reproduce upstream's own defaults; the
+-- OIS-only ones are ignored for a plain Ibor 'floatIndex'.
+{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwap as constNotionalCrossCurrencyFixedVsFloatingSwap{`SwapType'
+  ,`Double' -- ^fixedNominal
+  ,withCurrency*`Currency' -- ^fixedCurrency
+  ,withSchedule*`Schedule' -- ^fixedSchedule
+  ,`Double' -- ^fixedRate
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,fromEnumC`BusinessDayConvention' -- ^fixedPaymentBdc
+  ,fromIntegral`Word' -- ^fixedPaymentLag
+  ,withCalendar*`Calendar' -- ^fixedPaymentCalendar
+  ,`Double' -- ^floatNominal
+  ,withCurrency*`Currency' -- ^floatCurrency
+  ,withSchedule*`Schedule' -- ^floatSchedule
+  ,withIborIndex*`GenIborIndex ibor' -- ^floatIndex
+  ,`Double' -- ^floatSpread
+  ,fromEnumC`BusinessDayConvention' -- ^floatPaymentBdc
+  ,fromIntegral`Word' -- ^floatPaymentLag
+  ,withCalendar*`Calendar' -- ^floatPaymentCalendar
+  ,`Bool' -- ^telescopicValueDates
+  ,`Bool' -- ^floatCompoundSpread
+  ,fromMaybeInt`Maybe Word' -- ^floatLookbackDays
+  ,`Bool' -- ^floatObservationShift
+  ,fromIntegral`Word' -- ^floatLockoutDays
+  ,`RateAveragingType' -- ^floatAveragingMethod
+  ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencyFixedVsFloatingSwap'peekConstNotionalCrossCurrencyFixedVsFloatingSwap*#}
+
+-- |The fixed rate that would make the swap's NPV zero. Named distinctly from 'fairRate' -- that
+-- name belongs to the 'HasFixedLeg' class, which this type doesn't implement (upstream gives it
+-- no fixedLeg\/fixedLegBPS\/fixedLegNPV getters); 'fairSpread' (via 'HasSpread') is available.
+{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate as xccyFairRate{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
+  fairSpread = qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread
+{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |An option on a 'VanillaSwap'.
 {#fun qlSwaption as swaption{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}

@@ -27,7 +27,17 @@ namespace hasquant {
 #include <ql/pricingengines/swaption/basketgeneratingengine.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencybasisswap.hpp>
+#include <ql/instruments/constnotionalcrosscurrencyfixedvsfloatingswap.hpp>
 #include <ql/instruments/assetswap.hpp>
+#include <ql/experimental/commodities/energycommodity.hpp>
+#include <ql/experimental/commodities/energyfuture.hpp>
+#include <ql/experimental/commodities/energyswap.hpp>
+#include <ql/experimental/commodities/energyvanillaswap.hpp>
+#include <ql/experimental/commodities/energybasisswap.hpp>
+#include <ql/experimental/commodities/commoditypricinghelpers.hpp>
+#include <ql/experimental/commodities/commoditycashflow.hpp>
 #include <ql/instruments/zerocouponinflationswap.hpp>
 #include <ql/instruments/yearonyearinflationswap.hpp>
 #include <ql/instruments/cpiswap.hpp>
@@ -455,6 +465,59 @@ QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedul
 QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, char **e) {
   try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift))));
   } catch (std::exception& er) {return handleException<QlOvernightIndexedSwap*>(e, er);}}
+void qlFreeConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencySwap *o) {del(o);}
+QlSwap* qlConstNotionalCrossCurrencySwapAsSwap(QlConstNotionalCrossCurrencySwap *o) {return ret(new QlSwap(*arg(o)));}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencySwap(Leg* firstLeg, Currency* firstLegCcy, Leg* secondLeg, Currency* secondLegCcy, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencySwap(alloc(new ConstNotionalCrossCurrencySwap(*arg(firstLeg), *arg(firstLegCcy), *arg(secondLeg), *arg(secondLegCcy)))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencySwap*>(e, er);}}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencySwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int* payer, unsigned currenciesLen, Currency** currencies, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencySwap(alloc(new ConstNotionalCrossCurrencySwap(qlVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen), qlVector(currencies, currenciesLen)))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencySwap*>(e, er);}}
+Currency* qlConstNotionalCrossCurrencySwapLegCurrency(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return alloc(new Currency((*arg(o))->legCurrency(j)));} catch (std::exception& er) {return handleException<Currency*>(e, er);}}
+double qlConstNotionalCrossCurrencySwapInCcyLegBPS(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return (*arg(o))->inCcyLegBPS(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencySwapInCcyLegNPV(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return (*arg(o))->inCcyLegNPV(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencySwapNpvDateDiscounts(QlConstNotionalCrossCurrencySwap* o, unsigned j, char **e) {try {return (*arg(o))->npvDateDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeConstNotionalCrossCurrencyBasisSwap(QlConstNotionalCrossCurrencyBasisSwap *o) {del(o);}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencyBasisSwapAsConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencyBasisSwap *o) {return ret(new QlConstNotionalCrossCurrencySwap(*arg(o)));}
+QlConstNotionalCrossCurrencyBasisSwap* qlConstNotionalCrossCurrencyBasisSwap(
+    double payNominal, Currency* payCurrency, Schedule* paySchedule, QlIborIndex* payIndex, double paySpread, double payGearing,
+    double recNominal, Currency* recCurrency, Schedule* recSchedule, QlIborIndex* recIndex, double recSpread, double recGearing,
+    int payPaymentLag, int recPaymentLag,
+    int payCompoundSpread, unsigned payLookbackDays, int payObservationShift, unsigned payLockoutDays, int payAveragingMethod,
+    int recCompoundSpread, unsigned recLookbackDays, int recObservationShift, unsigned recLockoutDays, int recAveragingMethod,
+    int telescopicValueDates, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencyBasisSwap(alloc(new ConstNotionalCrossCurrencyBasisSwap(
+    payNominal, *arg(payCurrency), *arg(paySchedule), *arg(payIndex), paySpread, payGearing,
+    recNominal, *arg(recCurrency), *arg(recSchedule), *arg(recIndex), recSpread, recGearing,
+    payPaymentLag, recPaymentLag,
+    payCompoundSpread, payLookbackDays, payObservationShift, payLockoutDays, (RateAveraging::Type)payAveragingMethod,
+    recCompoundSpread, recLookbackDays, recObservationShift, recLockoutDays, (RateAveraging::Type)recAveragingMethod,
+    telescopicValueDates))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencyBasisSwap*>(e, er);}}
+double qlConstNotionalCrossCurrencyBasisSwapFairPaySpread(QlConstNotionalCrossCurrencyBasisSwap* o, char **e) {try {return (*arg(o))->fairPaySpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencyBasisSwapFairRecSpread(QlConstNotionalCrossCurrencyBasisSwap* o, char **e) {try {return (*arg(o))->fairRecSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlFreeConstNotionalCrossCurrencyFixedVsFloatingSwap(QlConstNotionalCrossCurrencyFixedVsFloatingSwap *o) {del(o);}
+QlConstNotionalCrossCurrencySwap* qlConstNotionalCrossCurrencyFixedVsFloatingSwapAsConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencyFixedVsFloatingSwap *o) {return ret(new QlConstNotionalCrossCurrencySwap(*arg(o)));}
+QlConstNotionalCrossCurrencyFixedVsFloatingSwap* qlConstNotionalCrossCurrencyFixedVsFloatingSwap(
+    int type, double fixedNominal, Currency* fixedCurrency, Schedule* fixedSchedule, double fixedRate,
+    DayCounter* fixedDayCount, int fixedPaymentBdc, unsigned fixedPaymentLag, Calendar* fixedPaymentCalendar,
+    double floatNominal, Currency* floatCurrency, Schedule* floatSchedule, QlIborIndex* floatIndex, double floatSpread,
+    int floatPaymentBdc, unsigned floatPaymentLag, Calendar* floatPaymentCalendar,
+    int telescopicValueDates, int floatCompoundSpread, unsigned floatLookbackDays, int floatObservationShift,
+    unsigned floatLockoutDays, int floatAveragingMethod, char **e) {
+  try {return ret(new QlConstNotionalCrossCurrencyFixedVsFloatingSwap(alloc(new ConstNotionalCrossCurrencyFixedVsFloatingSwap(
+    (Swap::Type)type, fixedNominal, *arg(fixedCurrency), *arg(fixedSchedule), fixedRate, *arg(fixedDayCount),
+    (BusinessDayConvention)fixedPaymentBdc, fixedPaymentLag, *arg(fixedPaymentCalendar),
+    floatNominal, *arg(floatCurrency), *arg(floatSchedule), *arg(floatIndex), floatSpread,
+    (BusinessDayConvention)floatPaymentBdc, floatPaymentLag, *arg(floatPaymentCalendar),
+    telescopicValueDates, floatCompoundSpread, floatLookbackDays, floatObservationShift,
+    floatLockoutDays, (RateAveraging::Type)floatAveragingMethod))));
+  } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencyFixedVsFloatingSwap*>(e, er);}}
+double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, char **e) {try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
 Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e) {try {return ret(new Leg((*arg(o))->bondLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlAssetSwapCleanPrice(QlAssetSwap* o, char **e) {try {return (*arg(o))->cleanPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlAssetSwapFairCleanPrice(QlAssetSwap* o, char **e) {try {return (*arg(o))->fairCleanPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -599,12 +662,22 @@ QlNonstandardSwaption* qlNonstandardSwaption(QlNonstandardSwap* swap, QlExercise
 // *helpers is written before anything can throw so a mid-loop exception still leaves a safe, freeable array.
 void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
   *len = 0; *helpers = nullptr;
+  unsigned n = 0;
+  QlBlackCalibrationHelper **hs = 0;
   try {
     std::vector<ext::shared_ptr<BlackCalibrationHelper>> basket = (*arg(o))->calibrationBasket(*arg(swapBase), (*arg(swaptionVol)).currentLink(), (BasketGeneratingEngine::CalibrationBasketType)basketType);
-    *helpers = (QlBlackCalibrationHelper**)qlAllocatePointerArray(basket.size());
-    for (size_t i = 0; i < basket.size(); ++i) (*helpers)[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
-    *len = (unsigned)basket.size();
-  } catch (std::exception& er) {handleException<int>(e, er);}}
+    n = (unsigned)basket.size();
+    // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
+    // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
+    // how far the loop got.
+    hs = new QlBlackCalibrationHelper*[n]();
+    for (unsigned i = 0; i < n; ++i) hs[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
+    *helpers = hs;
+    *len = n;
+  } catch (std::exception& er) {
+    if (hs) { for (unsigned i = 0; i < n; ++i) delete hs[i]; delete[] hs; }
+    handleException<int>(e, er);
+  }}
 
 void qlFreeFloatFloatSwaption(QlFloatFloatSwaption *o) {del(o);}
 QlOption* qlFloatFloatSwaptionAsOption(QlFloatFloatSwaption *o) {return ret(new QlOption(*arg(o)));}
@@ -614,12 +687,20 @@ QlFloatFloatSwaption* qlFloatFloatSwaption(QlFloatFloatSwap* swap, QlExercise* e
 // Same shape as qlNonstandardSwaptionCalibrationBasket above, retargeted to FloatFloatSwaption.
 void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
   *len = 0; *helpers = nullptr;
+  unsigned n = 0;
+  QlBlackCalibrationHelper **hs = 0;
   try {
     std::vector<ext::shared_ptr<BlackCalibrationHelper>> basket = (*arg(o))->calibrationBasket(*arg(swapBase), (*arg(swaptionVol)).currentLink(), (BasketGeneratingEngine::CalibrationBasketType)basketType);
-    *helpers = (QlBlackCalibrationHelper**)qlAllocatePointerArray(basket.size());
-    for (size_t i = 0; i < basket.size(); ++i) (*helpers)[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
-    *len = (unsigned)basket.size();
-  } catch (std::exception& er) {handleException<int>(e, er);}}
+    n = (unsigned)basket.size();
+    // Same idiom as qlNonstandardSwaptionCalibrationBasket above.
+    hs = new QlBlackCalibrationHelper*[n]();
+    for (unsigned i = 0; i < n; ++i) hs[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
+    *helpers = hs;
+    *len = n;
+  } catch (std::exception& er) {
+    if (hs) { for (unsigned i = 0; i < n; ++i) delete hs[i]; delete[] hs; }
+    handleException<int>(e, er);
+  }}
 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
 QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
@@ -735,7 +816,9 @@ QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount, int m
   try {return ret(new QlBond(alloc(new Bond(settlDays, *arg(calendar), faceAmount, qlNullableDate(maturityDate), qlNullableDate(issueDate), *arg(cashFlows)))));
   } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
 
-int qlBondMaturityDate(QlBond *bond) {return qlNullableDate((*arg(bond))->maturityDate());}
+int qlBondMaturityDate(QlBond *bond, char **e) {
+  try {return qlNullableDate((*arg(bond))->maturityDate());
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeBond(QlBond *bond) {del(bond);}
 void qlFreeFixedRateBond(QlFixedRateBond *bond) {del(bond);}
 QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond) {return ret(new QlBond(*arg(bond)));}
@@ -1130,15 +1213,18 @@ void qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **
 void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e) {try {return setCouponPricers(*arg(leg), qlVector(x1, x1Len));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 void qlCouponAccrualStartDates(CouponLeg* o, unsigned *len, int **days, char **e) {
-  int* dates = 0;
+  *len = 0; *days = 0;
   try {*days = qlAllocateInts(o->size()); *len = o->size();
     for (unsigned i = 0; i < o->size(); ++i)
       (*days)[i] = ((*o)[i]->accrualStartDate()).serialNumber();
-  } catch (std::exception& er) {qlFreeInts(dates);handleException<int*>(e, er);}}
+  } catch (std::exception& er) {
+    qlFreeInts(*days); *days = 0; *len = 0;
+    handleException<int*>(e, er);
+  }}
 
 void qlFreeDividend(QlDividend *o) {del(o);}
 void qlFreeCouponLeg(CouponLeg *o) {del(o);}
-Leg* qlCouponLegAsLeg(CouponLeg *o) {Leg *l = new Leg(); std::copy(o->begin(), o->end(), l->begin()); return alloc(l);}
+Leg* qlCouponLegAsLeg(CouponLeg *o) {return alloc(new Leg(o->begin(), o->end()));}
 void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p) {del(p);}
 
 QlDividend* qlFixedDividend(double amount, int date, char **e) {try {return ret(new QlDividend(alloc(new FixedDividend(amount, Date(date)))));} catch (std::exception& er) {return handleException<QlDividend*>(e, er);} }
@@ -1288,5 +1374,372 @@ QlInstrument* qlVarianceOptionAsInstrument(QlVarianceOption *o) {return ret(new 
 QlVarianceOption* qlVarianceOption(QlPayoff* payoff, double notional, int startDate, int maturityDate, char **e) {
   try {return ret(new QlVarianceOption(alloc(new VarianceOption(*arg(payoff), notional, Date(startDate), Date(maturityDate)))));
   } catch (std::exception& er) {return handleException<QlVarianceOption*>(e, er);}}
+
+// Commodity/EnergyCommodity bind no constructor -- both are abstract-here (Commodity is never
+// constructed directly upstream; EnergyCommodity::quantity() is pure virtual). They're reachable
+// only as upcast targets once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap)
+// exists. secondaryCosts()/commodityType() are plain, never-mutated echoes of each class's own
+// constructor argument -- not bound, per CLAUDE.md's trivial-getter rule.
+void qlFreeCommodity(QlCommodity *o) {del(o);}
+QlInstrument* qlCommodityAsInstrument(QlCommodity *o) {return ret(new QlInstrument(*arg(o)));}
+void qlFreeEnergyCommodity(QlEnergyCommodity *o) {del(o);}
+QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o) {return ret(new QlCommodity(*arg(o)));}
+
+namespace {
+  // SecondaryCosts = map<string, ext::any>, used with exactly two concrete alternatives
+  // (CommodityUnitCost/Money -- see energycommodity.cpp's two any_cast branches), bound as a real
+  // 2-variant sum: scIsUnitCost[i] selects which of (scAmounts[i], scCurrencies[i]) alone (Money)
+  // or paired with scUoms[i] (CommodityUnitCost) fills entry i. An empty (n==0) list stands in for
+  // upstream's nullptr shared_ptr, matching every constructor's own optional-secondaryCosts default.
+  shared_ptr<SecondaryCosts> qlBuildSecondaryCosts(unsigned n, char **keys, int *isUnitCost, double *amounts,
+      Currency **currencies, UnitOfMeasure **uoms) {
+    if (n == 0) return shared_ptr<SecondaryCosts>();
+    auto sc = ext::make_shared<SecondaryCosts>();
+    for (unsigned i = 0; i < n; ++i) {
+      Money amount(*arg(currencies[i]), amounts[i]);
+      if (isUnitCost[i])
+        (*sc)[keys[i]] = CommodityUnitCost(amount, *arg(uoms[i]));
+      else
+        (*sc)[keys[i]] = amount;
+    }
+    return sc;
+  }
+
+  // The structure-of-parallel-arrays representation of a PricingPeriods list, shared by every
+  // EnergySwap-family constructor's own pricingPeriods argument and by createPricingPeriods'
+  // output below.
+  PricingPeriods qlPricingPeriodVector(unsigned n, int *startDates, int *endDates, int *paymentDates,
+      CommodityType **types, UnitOfMeasure **uoms, double *amounts) {
+    PricingPeriods pps;
+    pps.reserve(n);
+    for (unsigned i = 0; i < n; ++i)
+      pps.push_back(ext::make_shared<PricingPeriod>(Date(startDates[i]), Date(endDates[i]), Date(paymentDates[i]),
+                                                     Quantity(*arg(types[i]), *arg(uoms[i]), amounts[i])));
+    return pps;
+  }
+}
+
+/* Commodity -- base-level getters generalized over any leaf (Stage 6). Neither can throw: both
+   are plain reads of (or, for addPricingError, a push_back onto) already-computed mutable state. */
+void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *detail) {
+  (*arg(o))->addPricingError((PricingError::Level)level, arg(error), arg(detail));
+}
+
+void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys,
+    unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies, char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *keys = 0; *amounts = 0; *currencies = 0;
+  unsigned n = 0;
+  char **ks = 0;
+  double *am = 0;
+  Currency **cs = 0;
+  try {
+    const SecondaryCostAmounts &m = (*arg(o))->secondaryCostAmounts();
+    n = (unsigned)m.size();
+    // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
+    // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
+    // how far the loop got.
+    ks = new char*[n]();
+    am = qlAllocateDoubles(n);
+    cs = new Currency*[n]();
+    unsigned i = 0;
+    for (SecondaryCostAmounts::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
+      ks[i] = DUP(it->first.c_str());
+      am[i] = it->second.value();
+      cs[i] = ret(new Currency(it->second.currency()));
+    }
+    *keys = ks; *amounts = am; *currencies = cs;
+    *len = n; *len2 = n; *len3 = n;
+  } catch (std::exception& er) {
+    if (ks) { for (unsigned i = 0; i < n; ++i) qlFreeString(ks[i]); delete[] ks; }
+    delete[] am;
+    if (cs) { for (unsigned i = 0; i < n; ++i) delete cs[i]; delete[] cs; }
+    handleException<int>(e, er);
+  }
+}
+
+void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
+    unsigned *len2, char ***errors, unsigned *len3, char ***details, char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *levels = 0; *errors = 0; *details = 0;
+  unsigned n = 0;
+  int *lv = 0;
+  char **errs2 = 0, **dets = 0;
+  try {
+    const PricingErrors &errs = (*arg(o))->pricingErrors();
+    n = (unsigned)errs.size();
+    lv = qlAllocateInts(n);
+    // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
+    // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
+    // how far the loop got.
+    errs2 = new char*[n]();
+    dets = new char*[n]();
+    for (unsigned i = 0; i < n; ++i) {
+      lv[i] = errs[i].errorLevel;
+      errs2[i] = DUP(errs[i].error.c_str());
+      dets[i] = DUP(errs[i].detail.c_str());
+    }
+    *levels = lv; *errors = errs2; *details = dets;
+    *len = n; *len2 = n; *len3 = n;
+  } catch (std::exception& er) {
+    delete[] lv;
+    if (errs2) { for (unsigned i = 0; i < n; ++i) qlFreeString(errs2[i]); delete[] errs2; }
+    if (dets) { for (unsigned i = 0; i < n; ++i) qlFreeString(dets[i]); delete[] dets; }
+    handleException<int>(e, er);
+  }
+}
+
+/* EnergyCommodity -- quantity() is pure virtual upstream; one shim, dispatched virtually, covers
+   every leaf (EnergyFuture's own override is a plain echo of its constructor argument, but
+   EnergySwap's is a real computed sum -- see energyswap.cpp). */
+double qlEnergyCommodityQuantity(QlEnergyCommodity *o, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
+  *outCt = 0; *outUom = 0;
+  CommodityType *ct = 0;
+  try {
+    Quantity q = (*arg(o))->quantity();
+    ct = ret(new CommodityType(q.commodityType()));
+    UnitOfMeasure *uom = ret(new UnitOfMeasure(q.unitOfMeasure()));
+    *outCt = ct; *outUom = uom;
+    return q.amount();
+  } catch (std::exception& er) {
+    delete ct;
+    return handleException<double>(e, er);
+  }
+}
+
+/* EnergyFuture -- tradePrice()/index() are plain, never-mutated echoes of this constructor's own
+   arguments (energyfuture.hpp's inline getters each just `return foo_;`) -- not bound, per
+   CLAUDE.md's trivial-getter rule (the same call Stage 4 made for CommodityIndex's own
+   constructor-echo getters). quantity() is bound once, generically, above. */
+void qlFreeEnergyFuture(QlEnergyFuture *o) {del(o);}
+QlEnergyCommodity* qlEnergyFutureAsEnergyCommodity(QlEnergyFuture *o) {return ret(new QlEnergyCommodity(*arg(o)));}
+QlEnergyFuture* qlEnergyFuture(int buySell,
+    CommodityType *qCt, UnitOfMeasure *qUom, double qAmount,
+    double tpAmount, Currency *tpCcy, UnitOfMeasure *tpUom,
+    QlCommodityIndex *index, CommodityType *commodityType,
+    unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
+    unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
+    char **e) {
+  try {
+    return ret(new QlEnergyFuture(alloc(new EnergyFuture(
+        buySell,
+        Quantity(*arg(qCt), *arg(qUom), qAmount),
+        CommodityUnitCost(Money(*arg(tpCcy), tpAmount), *arg(tpUom)),
+        *arg(index),
+        *arg(commodityType),
+        qlBuildSecondaryCosts(scLen, scKeys, scIsUnitCost, scAmounts, scCurrencies, scUoms)))));
+  } catch (std::exception& er) {return handleException<QlEnergyFuture*>(e, er);}}
+
+/* EnergySwap -- binds no constructor (falls through to Instrument's null-engine QL_REQUIRE, see
+   qlaux.h); calendar/payCurrency/receiveCurrency/pricingPeriods/commodityType are all plain,
+   never-mutated echoes of (or, for commodityType/quantity, pure functions of) each leaf's own
+   constructor arguments -- not bound. dailyPositions/paymentCashFlows are genuinely computed
+   during performCalculations, so those are the two worth binding, generalized over both leaves. */
+void qlFreeEnergySwap(QlEnergySwap *o) {del(o);}
+QlEnergyCommodity* qlEnergySwapAsEnergyCommodity(QlEnergySwap *o) {return ret(new QlEnergyCommodity(*arg(o)));}
+
+void qlEnergySwapDailyPositions(QlEnergySwap *o, unsigned *len, int **dates,
+    unsigned *len2, double **quantityAmounts, unsigned *len3, double **payLegPrices,
+    unsigned *len4, double **receiveLegPrices, unsigned *len5, double **riskDeltas,
+    unsigned *len6, int **unrealized, char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *len4 = 0; *len5 = 0; *len6 = 0;
+  *dates = 0; *quantityAmounts = 0; *payLegPrices = 0; *receiveLegPrices = 0; *riskDeltas = 0; *unrealized = 0;
+  int *ds = 0, *ur = 0;
+  double *qa = 0, *plp = 0, *rlp = 0, *rd = 0;
+  try {
+    const EnergyDailyPositions &m = (*arg(o))->dailyPositions();
+    unsigned n = (unsigned)m.size();
+    ds = qlAllocateInts(n);
+    qa = qlAllocateDoubles(n);
+    plp = qlAllocateDoubles(n);
+    rlp = qlAllocateDoubles(n);
+    rd = qlAllocateDoubles(n);
+    ur = qlAllocateInts(n);
+    unsigned i = 0;
+    for (EnergyDailyPositions::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
+      ds[i] = it->first.serialNumber();
+      qa[i] = it->second.quantityAmount;
+      plp[i] = it->second.payLegPrice;
+      rlp[i] = it->second.receiveLegPrice;
+      rd[i] = it->second.riskDelta;
+      ur[i] = it->second.unrealized;
+    }
+    *dates = ds; *quantityAmounts = qa; *payLegPrices = plp; *receiveLegPrices = rlp; *riskDeltas = rd; *unrealized = ur;
+    *len = n; *len2 = n; *len3 = n; *len4 = n; *len5 = n; *len6 = n;
+  } catch (std::exception& er) {
+    delete[] ds; delete[] qa; delete[] plp; delete[] rlp; delete[] rd; delete[] ur;
+    handleException<int>(e, er);
+  }
+}
+
+void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCashFlow ***out, char **e) {
+  *len = 0; *out = 0;
+  unsigned n = 0;
+  QlCommodityCashFlow **cs = 0;
+  try {
+    const CommodityCashFlows &m = (*arg(o))->paymentCashFlows();
+    n = (unsigned)m.size();
+    // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
+    // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
+    // how far the loop got.
+    cs = new QlCommodityCashFlow*[n]();
+    unsigned i = 0;
+    for (CommodityCashFlows::const_iterator it = m.begin(); it != m.end(); ++it, ++i)
+      cs[i] = ret(new QlCommodityCashFlow(alloc(it->second)));
+    *out = cs;
+    *len = n;
+  } catch (std::exception& er) {
+    if (cs) { for (unsigned i = 0; i < n; ++i) delete cs[i]; delete[] cs; }
+    handleException<int>(e, er);
+  }
+}
+
+/* EnergyVanillaSwap -- payReceive()/fixedPrice()/fixedPriceUnitOfMeasure()/index() are all plain,
+   never-mutated echoes of this constructor's own arguments -- not bound (payReceive_ is a trivial
+   `payer ? 1 : 0` of the ctor's own bool, reproducible in Haskell with no C++ call at all). */
+void qlFreeEnergyVanillaSwap(QlEnergyVanillaSwap *o) {del(o);}
+QlEnergySwap* qlEnergyVanillaSwapAsEnergySwap(QlEnergyVanillaSwap *o) {return ret(new QlEnergySwap(*arg(o)));}
+QlEnergyVanillaSwap* qlEnergyVanillaSwap(int payer, Calendar *calendar,
+    double fixedPriceAmount, Currency *fixedPriceCurrency, UnitOfMeasure *fixedPriceUnitOfMeasure,
+    QlCommodityIndex *index, Currency *payCurrency, Currency *receiveCurrency,
+    unsigned ppLen, int *ppStartDates, unsigned, int *ppEndDates, unsigned, int *ppPaymentDates,
+    unsigned, CommodityType **ppTypes, unsigned, UnitOfMeasure **ppUoms, unsigned, double *ppAmounts,
+    CommodityType *commodityType,
+    unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
+    unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
+    QlYieldTermStructure *payLegTS, QlYieldTermStructure *receiveLegTS, QlYieldTermStructure *discountTS,
+    char **e) {
+  try {
+    return ret(new QlEnergyVanillaSwap(alloc(new EnergyVanillaSwap(
+        payer,
+        *arg(calendar),
+        Money(*arg(fixedPriceCurrency), fixedPriceAmount),
+        *arg(fixedPriceUnitOfMeasure),
+        *arg(index),
+        *arg(payCurrency),
+        *arg(receiveCurrency),
+        qlPricingPeriodVector(ppLen, ppStartDates, ppEndDates, ppPaymentDates, ppTypes, ppUoms, ppAmounts),
+        *arg(commodityType),
+        qlBuildSecondaryCosts(scLen, scKeys, scIsUnitCost, scAmounts, scCurrencies, scUoms),
+        *arg(payLegTS), *arg(receiveLegTS), *arg(discountTS)))));
+  } catch (std::exception& er) {return handleException<QlEnergyVanillaSwap*>(e, er);}}
+
+/* EnergyBasisSwap -- payIndex()/receiveIndex()/basis() are likewise plain constructor-argument
+   echoes -- not bound. */
+void qlFreeEnergyBasisSwap(QlEnergyBasisSwap *o) {del(o);}
+QlEnergySwap* qlEnergyBasisSwapAsEnergySwap(QlEnergyBasisSwap *o) {return ret(new QlEnergySwap(*arg(o)));}
+QlEnergyBasisSwap* qlEnergyBasisSwap(Calendar *calendar,
+    QlCommodityIndex *spreadIndex, QlCommodityIndex *payIndex, QlCommodityIndex *receiveIndex,
+    int spreadToPayLeg, Currency *payCurrency, Currency *receiveCurrency,
+    unsigned ppLen, int *ppStartDates, unsigned, int *ppEndDates, unsigned, int *ppPaymentDates,
+    unsigned, CommodityType **ppTypes, unsigned, UnitOfMeasure **ppUoms, unsigned, double *ppAmounts,
+    double basisAmount, Currency *basisCurrency, UnitOfMeasure *basisUnitOfMeasure,
+    CommodityType *commodityType,
+    unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
+    unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
+    QlYieldTermStructure *payLegTS, QlYieldTermStructure *receiveLegTS, QlYieldTermStructure *discountTS,
+    char **e) {
+  try {
+    return ret(new QlEnergyBasisSwap(alloc(new EnergyBasisSwap(
+        *arg(calendar),
+        *arg(spreadIndex), *arg(payIndex), *arg(receiveIndex),
+        spreadToPayLeg,
+        *arg(payCurrency), *arg(receiveCurrency),
+        qlPricingPeriodVector(ppLen, ppStartDates, ppEndDates, ppPaymentDates, ppTypes, ppUoms, ppAmounts),
+        CommodityUnitCost(Money(*arg(basisCurrency), basisAmount), *arg(basisUnitOfMeasure)),
+        *arg(commodityType),
+        qlBuildSecondaryCosts(scLen, scKeys, scIsUnitCost, scAmounts, scCurrencies, scUoms),
+        *arg(payLegTS), *arg(receiveLegTS), *arg(discountTS)))));
+  } catch (std::exception& er) {return handleException<QlEnergyBasisSwap*>(e, er);}}
+
+/* CommodityCashFlow -- a standalone CashFlow leaf, never Haskell-constructed (only ever produced
+   by EnergySwap::paymentCashFlows() above). The upstream field reads themselves can't throw, but
+   each shim also does `ret(new Currency(...))`, which is a bad_alloc-only throw point -- char **e
+   guards that, not the upstream call. */
+void qlFreeCommodityCashFlow(QlCommodityCashFlow *o) {del(o);}
+int qlCommodityCashFlowDate(QlCommodityCashFlow *o) {return (*arg(o))->date().serialNumber();}
+double qlCommodityCashFlowDiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e) {
+  *outCcy = 0;
+  try {
+    const Money &m = (*arg(o))->discountedAmount();
+    *outCcy = ret(new Currency(m.currency()));
+    return m.value();
+  } catch (std::exception& er) {return handleException<double>(e, er);}
+}
+double qlCommodityCashFlowUndiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e) {
+  *outCcy = 0;
+  try {
+    const Money &m = (*arg(o))->undiscountedAmount();
+    *outCcy = ret(new Currency(m.currency()));
+    return m.value();
+  } catch (std::exception& er) {return handleException<double>(e, er);}
+}
+double qlCommodityCashFlowDiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e) {
+  *outCcy = 0;
+  try {
+    const Money &m = (*arg(o))->discountedPaymentAmount();
+    *outCcy = ret(new Currency(m.currency()));
+    return m.value();
+  } catch (std::exception& er) {return handleException<double>(e, er);}
+}
+double qlCommodityCashFlowUndiscountedPaymentAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e) {
+  *outCcy = 0;
+  try {
+    const Money &m = (*arg(o))->undiscountedPaymentAmount();
+    *outCcy = ret(new Currency(m.currency()));
+    return m.value();
+  } catch (std::exception& er) {return handleException<double>(e, er);}
+}
+double qlCommodityCashFlowDiscountFactor(QlCommodityCashFlow *o) {return (*arg(o))->discountFactor();}
+double qlCommodityCashFlowPaymentDiscountFactor(QlCommodityCashFlow *o) {return (*arg(o))->paymentDiscountFactor();}
+int qlCommodityCashFlowFinalized(QlCommodityCashFlow *o) {return (*arg(o))->finalized();}
+
+/* CommodityPricingHelper::createPricingPeriods -- the one static method worth binding (the other
+   three -- calculateFxConversionFactor/calculateUomConversionFactor/calculateUnitCost -- duplicate
+   logic already reachable via lookupUomConversion/lookupExchangeRate (Stage 2) and are skipped per
+   minimalism, per the plan). */
+void qlCreatePricingPeriods(int startDate, int endDate, CommodityType *qCt, UnitOfMeasure *qUom, double qAmount,
+    int deliverySchedule, int qtyPeriodicity, PaymentTerm *paymentTerm,
+    unsigned *len, int **ppStartDates, unsigned *len2, int **ppEndDates, unsigned *len3, int **ppPaymentDates,
+    unsigned *len4, CommodityType ***ppTypes, unsigned *len5, UnitOfMeasure ***ppUoms, unsigned *len6, double **ppAmounts,
+    char **e) {
+  *len = 0; *len2 = 0; *len3 = 0; *len4 = 0; *len5 = 0; *len6 = 0;
+  *ppStartDates = 0; *ppEndDates = 0; *ppPaymentDates = 0; *ppTypes = 0; *ppUoms = 0; *ppAmounts = 0;
+  unsigned n = 0;
+  int *starts = 0, *ends = 0, *pays = 0;
+  CommodityType **types = 0;
+  UnitOfMeasure **uoms = 0;
+  double *amounts = 0;
+  try {
+    PricingPeriods pps;
+    CommodityPricingHelper::createPricingPeriods(Date(startDate), Date(endDate),
+        Quantity(*arg(qCt), *arg(qUom), qAmount),
+        (EnergyCommodity::DeliverySchedule)deliverySchedule,
+        (EnergyCommodity::QuantityPeriodicity)qtyPeriodicity,
+        *arg(paymentTerm), pps);
+    n = (unsigned)pps.size();
+    starts = qlAllocateInts(n); ends = qlAllocateInts(n); pays = qlAllocateInts(n);
+    amounts = qlAllocateDoubles(n);
+    // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
+    // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
+    // how far the loop got.
+    types = new CommodityType*[n]();
+    uoms = new UnitOfMeasure*[n]();
+    for (unsigned i = 0; i < n; ++i) {
+      starts[i] = pps[i]->startDate().serialNumber();
+      ends[i] = pps[i]->endDate().serialNumber();
+      pays[i] = pps[i]->paymentDate().serialNumber();
+      types[i] = ret(new CommodityType(pps[i]->quantity().commodityType()));
+      uoms[i] = ret(new UnitOfMeasure(pps[i]->quantity().unitOfMeasure()));
+      amounts[i] = pps[i]->quantity().amount();
+    }
+    *ppStartDates = starts; *ppEndDates = ends; *ppPaymentDates = pays;
+    *ppTypes = types; *ppUoms = uoms; *ppAmounts = amounts;
+    *len = n; *len2 = n; *len3 = n; *len4 = n; *len5 = n; *len6 = n;
+  } catch (std::exception& er) {
+    delete[] starts; delete[] ends; delete[] pays; delete[] amounts;
+    if (types) { for (unsigned i = 0; i < n; ++i) delete types[i]; delete[] types; }
+    if (uoms) { for (unsigned i = 0; i < n; ++i) delete uoms[i]; delete[] uoms; }
+    handleException<int>(e, er);
+  }
+}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

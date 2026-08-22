@@ -83,6 +83,7 @@ import Foreign.Marshal.Alloc(alloca)
   {withCurrency*`Currency' -- ^source
   ,withCurrency*`Currency' -- ^target
   ,`Double' -- ^rate
+  ,preErrorCheck-`String'errorCheck*-
   }->`ExchangeRate'peekExchangeRate*#}
 
 -- |The rate itself: a unit of the source currency is worth this many units of the target.
@@ -111,7 +112,8 @@ import Foreign.Marshal.Alloc(alloca)
 -- |Register an exchange rate with the global exchange-rate repository, valid between the given
 -- dates (inclusive). Use 'minDate'/'maxDate' for an always-valid rate.
 {#fun qlExchangeRateManagerAdd as addExchangeRate
-  {withExchangeRate*`ExchangeRate', withDay*`Day', withDay*`Day'}->`()'#}
+  {withExchangeRate*`ExchangeRate', withDay*`Day', withDay*`Day'
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Look up a (possibly derived) exchange rate between two currencies at a given date (or the
 -- current evaluation date if 'Nothing'). Throws if no rate can be found. Pre-populated with a
@@ -133,7 +135,7 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun qlMoneySettingsSetConversionType as setMoneyConversionType{`MoneyConversionType'}->`()'#}
 
 -- |The global base currency used by 'MoneyConversionType' base-currency conversion, if set.
-{#fun qlMoneySettingsBaseCurrency as moneyBaseCurrency{}->`Maybe Currency'peekMaybeCurrency*#}
+{#fun qlMoneySettingsBaseCurrency as moneyBaseCurrency{preErrorCheck-`String'errorCheck*-}->`Maybe Currency'peekMaybeCurrency*#}
 
 -- |Set the global base currency used by 'MoneyConversionType' base-currency conversion.
 {#fun qlMoneySettingsSetBaseCurrency as setMoneyBaseCurrency{withCurrency*`Currency'}->`()'#}

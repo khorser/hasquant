@@ -70,12 +70,13 @@ run = do
   sw <- runSwaps
   cirDF <- runExtendedCirDiscountFactor
   vasicekDF <- runVasicekSmallMeanReversion
+  fcb <- futuresConvexityChecks
   pure Result
     { cachedHullWhite = hw
     , cachedHullWhiteFixedReversion = hwFixed
     , cachedHullWhite2 = hw2
     , swaps = sw
-    , futuresConvexityBias = futuresConvexityChecks
+    , futuresConvexityBias = fcb
     , extendedCirDiscountFactor = cirDF
     , vasicekDiscountFactorSmallMeanReversion = vasicekDF
     }
@@ -193,8 +194,8 @@ runSwaps = do
     rates = [0.02, 0.04, 0.06]
 
 -- |@testFuturesConvexityBias@: G. Kirikos, D. Novak, \"Convexity Conundrums\", Risk Magazine, March 1997.
-futuresConvexityChecks :: [ConvexityCheck]
-futuresConvexityChecks = map mkCheck convexityData
+futuresConvexityChecks :: IO [ConvexityCheck]
+futuresConvexityChecks = mapM mkCheck convexityData
   where
     futureQuote = 94.0
     sigma = 0.015
@@ -203,11 +204,13 @@ futuresConvexityChecks = map mkCheck convexityData
     convexityData =
       [ (5.25, 0.03, 0.0573037), (5.25, 1e-4, 0.0568627), (5.25, 0.0, 0.0568611)
       , (5.001, 0.03, 0.0575736), (5.0, 0.03, 0.0575747) ]
-    mkCheck (bigT, a, expected) = ConvexityCheck
-      { convexityT = bigT, convexityA = a
-      , expectedForward = expected
-      , calculatedForward = futureImpliedRate - convexityBias futureQuote t bigT sigma a
-      }
+    mkCheck (bigT, a, expected) = do
+      bias <- convexityBias futureQuote t bigT sigma a
+      pure ConvexityCheck
+        { convexityT = bigT, convexityA = a
+        , expectedForward = expected
+        , calculatedForward = futureImpliedRate - bias
+        }
 
 -- |@testExtendedCoxIngersollRossDiscountFactor@.
 runExtendedCirDiscountFactor :: IO DiscountCheck

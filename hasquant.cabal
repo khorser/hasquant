@@ -19,12 +19,14 @@ license-file:   LICENSE
 build-type:     Simple
 tested-with:
     GHC == 8.10.6
+  , GHC == 9.8.4
   , GHC == 9.10.3
   , GHC == 9.12.4
   , GHC == 9.14.1
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
+    cbits/qlCommodity.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
     cbits/qlInstrument.h
@@ -61,6 +63,7 @@ library
       QuantLib.Type
       QuantLib.Math
       QuantLib.Currency
+      QuantLib.Commodity
       QuantLib.Time.Date
       QuantLib.Time.Calendar
       QuantLib.Time.Schedule
@@ -76,9 +79,11 @@ library
       QuantLib.TermStructure.Inflation
       QuantLib.TermStructure.Credit
       QuantLib.TermStructure.Volatility
+      QuantLib.TermStructure.Commodity
       QuantLib.Index.InterestRate
       QuantLib.Index.Inflation
       QuantLib.Index.Equity
+      QuantLib.Index.Commodity
       QuantLib.Instrument.Bond
       QuantLib.Instrument.CapFloor
       QuantLib.Instrument.Forward
@@ -87,6 +92,7 @@ library
       QuantLib.Model
       QuantLib.Instrument.Credit
       QuantLib.Instrument.Swap
+      QuantLib.Instrument.Energy
       QuantLib.PricingEngine
       QuantLib.Syntax
   other-modules:
@@ -100,6 +106,7 @@ library
   include-dirs:
       cbits
   cxx-sources:
+      cbits/qlCommodity.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
       cbits/qlPricingEngine.cpp
@@ -129,14 +136,13 @@ library
     extra-libraries:
         QuantLib
   if os(osx)
-    cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
-    include-dirs:
-        /opt/homebrew/include
+    cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include -isystem/usr/local/opt/quantlib/include -isystem/usr/local/include
   build-tool-depends: c2hs:c2hs >= 0.28.8 && < 0.29
 
 executable hasquant_example
   main-is: QuantLib/MainExample.hs
   other-modules:
+      QuantLib.Example.AsianOption
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -146,6 +152,7 @@ executable hasquant_example
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
       QuantLib.Example.FittedBondCurve
+      QuantLib.Example.ForwardOption
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
       QuantLib.Example.Gaussian1dModels
@@ -184,13 +191,18 @@ test-suite hasquant_test
   main-is: QuantLib/MainTest.hs
   other-modules:
       QuantLib.Spec.Calendars
+      QuantLib.Spec.Commodity
       QuantLib.Spec.CurrencyAndDayCounter
       QuantLib.Spec.DatesAndSchedule
       QuantLib.Spec.Examples
       QuantLib.Spec.Helpers
+      QuantLib.Spec.Index.Commodity
+      QuantLib.Spec.Instrument.Energy
       QuantLib.Spec.InterestRateAndCashFlow
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure
+      QuantLib.Spec.TermStructure.Commodity
+      QuantLib.Example.AsianOption
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -200,6 +212,7 @@ test-suite hasquant_test
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
       QuantLib.Example.FittedBondCurve
+      QuantLib.Example.ForwardOption
       QuantLib.Example.FRA
       QuantLib.Example.FxForward
       QuantLib.Example.Gaussian1dModels

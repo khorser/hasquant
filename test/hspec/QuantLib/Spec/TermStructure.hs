@@ -225,7 +225,7 @@ spec = do
           price <- Quote.simpleQuote 100.0
           bond <- fixedRateBondHelper price 3 100.0 sch [0.04] thirty360dc Following 100.0 Nothing
                     >>= bondHelperBond
-          Bond.maturityDate bond `shouldBe` Just bondMaturity
+          Bond.maturityDate bond `shouldReturn` Just bondMaturity
 
     -- No upstream test-suite fixture exists for FxSwapRateHelper (unlike the other rate
     -- helpers ported elsewhere in this file), so this is a self-consistency check instead of

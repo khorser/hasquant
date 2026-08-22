@@ -9,6 +9,12 @@
 #include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
 #include <ql/pricingengines/asian/analytic_discr_geom_av_strike.hpp>
 #include <ql/pricingengines/asian/mc_discr_arith_av_price.hpp>
+#include <ql/pricingengines/asian/turnbullwakemanasianengine.hpp>
+#include <ql/pricingengines/asian/fdblackscholesasianengine.hpp>
+#include <ql/pricingengines/forward/forwardengine.hpp>
+#include <ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp>
+#include <ql/pricingengines/vanilla/analyticeuropeanengine.hpp>
+#include <ql/experimental/forward/analytichestonforwardeuropeanengine.hpp>
 #include <ql/experimental/barrieroption/vannavolgadoublebarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticbarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp>
@@ -42,6 +48,7 @@
 #include <ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp>
 #include <ql/pricingengines/swap/cvaswapengine.hpp>
 #include <ql/pricingengines/swap/treeswapengine.hpp>
+#include <ql/pricingengines/swap/discountingconstnotionalcrosscurrencyswapengine.hpp>
 #include <ql/pricingengines/swaption/blackswaptionengine.hpp>
 #include <ql/termstructures/volatility/sabr.hpp>
 #include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
@@ -131,6 +138,9 @@ QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, in
 QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e) {
   try {return ret(new QlPricingEngine(alloc(new DiscountingFxForwardEngine(*arg(sourceCurrencyDiscountCurve), *arg(targetCurrencyDiscountCurve), *arg(spotFx)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlDiscountingConstNotionalCrossCurrencySwapEngine(Currency* domesticCcy, QlYieldTermStructure* domesticCcyDiscountCurve, Currency* foreignCcy, QlYieldTermStructure* foreignCcyDiscountCurve, QlQuote* spotFX, int includeSettlementDateFlows, int settlementDate, int npvDate, int spotFXSettleDate, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new DiscountingConstNotionalCrossCurrencySwapEngine(*arg(domesticCcy), *arg(domesticCcyDiscountCurve), *arg(foreignCcy), *arg(foreignCcyDiscountCurve), *arg(spotFX), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate), qlNullableDate(spotFXSettleDate)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, QlQuote* blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e) {
   try {return ret(new QlPricingEngine(alloc(new CounterpartyAdjSwapEngine(*arg(discountCurve), *arg(blackVol), Handle<DefaultProbabilityTermStructure>(*arg(ctptyDTS)), ctptyRecoveryRate, qlNullableHandle(arg(invstDTS)), invstRecoveryRate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -196,6 +206,27 @@ QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralize
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticDiscreteGeometricAverageStrikeAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAverageStrikeAsianEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlTurnbullWakemanAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new TurnbullWakemanAsianEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesAsianEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned aGrid, FdmSchemeDesc *fdScheme, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesAsianEngine(*arg(process), tGrid, xGrid, aGrid, *arg(fdScheme)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<AnalyticEuropeanEngine>(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlForwardBaroneAdesiWhaleyEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<BaroneAdesiWhaleyApproximationEngine>(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlForwardBjerksundStenslandEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<BjerksundStenslandApproximationEngine>(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlForwardFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<FdBlackScholesVanillaEngine>(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticHestonForwardEuropeanEngine(QlHestonProcess* process, unsigned integrationOrder, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticHestonForwardEuropeanEngine(*arg(process), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticDividendEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, unsigned dividendsLen, QlDividend** dividends, char **e) {
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
@@ -487,6 +518,9 @@ QlPricingEngine* qlMCBarrierEngine1(int rngtrait, QlGeneralizedBlackScholesProce
 QlPricingEngine* qlMCDigitalEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCDigitalEngine1Aux(rngtrait, *arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCForwardEuropeanBSEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCForwardEuropeanBSEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticAPEngine1Aux(rngtrait, *arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -595,8 +629,12 @@ void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
 void qlFreeAffineModel(QlAffineModel *o) {del(o);}
 void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
-double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate) {return (*arg(o))->discountBond(now, maturity, rate);}
-double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a) {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);}
+double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate, char **e) {
+  try {return (*arg(o))->discountBond(now, maturity, rate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e) {
+  try {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o) {return ret(new QlAffineModel(*arg(o)));}
 QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
 void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}

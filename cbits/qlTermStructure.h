@@ -182,6 +182,51 @@ extern "C" {
   QlTermStructure* qlYoYInflationTermStructureAsTermStructure(QlYoYInflationTermStructure *o);
   double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d, int extrapolate, char **e);
 
+  /* CommodityCurve -- a plain TermStructure leaf, per qlaux.h's QlCommodityCurve comment. */
+  QlCommodityCurve* qlCommodityCurve(char *name, CommodityType *commodityType, Currency *currency,
+                                     UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                     unsigned datesLen, int *dates, unsigned pricesLen, double *prices,
+                                     DayCounter *dayCounter, char **e);
+  void qlFreeCommodityCurve(QlCommodityCurve *o);
+  QlTermStructure* qlCommodityCurveAsTermStructure(QlCommodityCurve *o);
+  char *qlCommodityCurveName(QlCommodityCurve *o);
+  CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o, char **e);
+  UnitOfMeasure *qlCommodityCurveUnitOfMeasure(QlCommodityCurve *o, char **e);
+  Currency *qlCommodityCurveCurrency(QlCommodityCurve *o, char **e);
+  void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days, char **e);
+  void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices, char **e);
+  int qlCommodityCurveEmpty(QlCommodityCurve *o);
+  QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o);
+  void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve, char **e);
+  /* Full price()/underlyingPriceDate() signature, threading a real ExchangeContracts map (as 5
+     parallel arrays -- map key, code, expirationDate, underlyingStartDate, underlyingEndDate --
+     per the "c2hs's & caps at 2" precedent already used for Quantity's 3 flat args) and a
+     nearbyOffset through to upstream. nearbyOffset<=0 with an empty map reproduces the old
+     flat-price call exactly, since exchangeContracts is never touched on that branch. */
+  double qlCommodityCurvePrice(QlCommodityCurve *o, int date,
+      unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+      unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+      unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e);
+  double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e);
+  int qlCommodityCurveUnderlyingPriceDate(QlCommodityCurve *o, int date,
+      unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+      unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+      unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e);
+
+  /* CommodityIndex -- an Index leaf, per qlaux.h's QlCommodityIndex comment. The
+     ExchangeContracts/nearbyOffset constructor args are not exposed (see Stage 3's
+     CommodityCurve::price binding note): a null exchangeContracts + nearbyOffset 0 are passed
+     to upstream, which is exactly the branch forwardPrice's own price() call never varies on
+     exchangeContracts for. */
+  QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Currency *currency,
+                                     UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                     double lotQuantity, QlCommodityCurve *forwardCurve, char **e);
+  void qlFreeCommodityIndex(QlCommodityIndex *o);
+  QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o);
+  double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e);
+  int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e);
+  int qlCommodityIndexEmpty(QlCommodityIndex *o);
+
   void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o);
   QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e);
   void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o);
@@ -372,10 +417,6 @@ extern "C" {
   QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy, QlYieldTermStructure *interest, QlYieldTermStructure *dividend, QlQuote *spot, char **e);
   void qlFreeEquityIndex(QlEquityIndex *o);
   QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o);
-  Currency* qlEquityIndexCurrency(QlEquityIndex* o, char **e);
-  QlYieldTermStructure* qlEquityIndexInterestRateCurve(QlEquityIndex* o, char **e);
-  QlYieldTermStructure* qlEquityIndexDividendCurve(QlEquityIndex* o, char **e);
-  QlQuote* qlEquityIndexSpot(QlEquityIndex* o, char **e);
 
   QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e);
   QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e);

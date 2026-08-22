@@ -39,6 +39,8 @@
 #include <ql/indexes/inflation/all.hpp>
 #include <ql/termstructures/inflation/inflationhelpers.hpp>
 #include <ql/indexes/equityindex.hpp>
+#include <ql/experimental/commodities/commoditycurve.hpp>
+#include <ql/experimental/commodities/commodityindex.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -659,11 +661,12 @@ QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned da
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
+  DefaultProbabilityTermStructure *ts = 0;
   try {
-    DefaultProbabilityTermStructure *ts = qlInterpolatedHazardRateCurveAux(qlDateVector(dates, datesLen), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg);
+    ts = qlInterpolatedHazardRateCurveAux(qlDateVector(dates, datesLen), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg);
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
-  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
@@ -679,15 +682,17 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+  DefaultProbabilityTermStructure *ts = 0;
   try {
-    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
+    ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
-  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
+  DefaultProbabilityTermStructure *ts = 0;
   try {
-    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
+    ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
     return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
-  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
   try {return (*arg(o))->defaultDensity(t, extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -730,6 +735,141 @@ double qlYoYInflationTermStructureYoYRate(QlYoYInflationTermStructure* o, int d,
   try {return (*arg(o))->yoyRate(Date(d), extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
+/* CommodityCurve */
+
+QlCommodityCurve* qlCommodityCurve(char *name, CommodityType *commodityType, Currency *currency,
+                                   UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                   unsigned datesLen, int *dates, unsigned pricesLen, double *prices,
+                                   DayCounter *dayCounter, char **e) {
+  try {return ret(new QlCommodityCurve(alloc(new CommodityCurve(
+      arg(name), *arg(commodityType), *arg(currency), *arg(unitOfMeasure), *arg(calendar),
+      qlDateVector(dates, datesLen), std::vector<Real>(prices, prices+pricesLen), *arg(dayCounter)))));
+  } catch (std::exception& er) {return handleException<QlCommodityCurve*>(e, er);}}
+
+void qlFreeCommodityCurve(QlCommodityCurve *o) {del(o);}
+QlTermStructure* qlCommodityCurveAsTermStructure(QlCommodityCurve *o) {return ret(new QlTermStructure(*arg(o)));}
+char *qlCommodityCurveName(QlCommodityCurve *o) {return DUP((*arg(o))->name().c_str());}
+CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o, char **e) {
+  try {return ret(new CommodityType((*arg(o))->commodityType()));
+  } catch (std::exception& er) {return handleException<CommodityType*>(e, er);}}
+UnitOfMeasure *qlCommodityCurveUnitOfMeasure(QlCommodityCurve *o, char **e) {
+  try {return ret(new UnitOfMeasure((*arg(o))->unitOfMeasure()));
+  } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
+Currency *qlCommodityCurveCurrency(QlCommodityCurve *o, char **e) {
+  try {return ret(new Currency((*arg(o))->currency()));
+  } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
+
+void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days, char **e) {
+  *count = 0; *days = 0;
+  try {
+    const std::vector<Date> &dates = (*arg(o))->dates();
+    unsigned n = (unsigned)dates.size();
+    int *ds = qlAllocateInts(n);
+    for (size_t i = 0; i < dates.size(); ++i)
+      ds[i] = dates[i].serialNumber();
+    *count = n; *days = ds;
+  } catch (std::exception& er) {*e = DUP(er.what());}
+}
+
+void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices, char **e) {
+  *count = 0; *prices = 0;
+  try {
+    const std::vector<Real> &p = (*arg(o))->prices();
+    unsigned n = (unsigned)p.size();
+    double *ps = qlAllocateDoubles(n);
+    for (size_t i = 0; i < p.size(); ++i)
+      ps[i] = p[i];
+    *count = n; *prices = ps;
+  } catch (std::exception& er) {*e = DUP(er.what());}
+}
+
+int qlCommodityCurveEmpty(QlCommodityCurve *o) {return (*arg(o))->empty();}
+
+// basisOfCurve_ is a nullptr shared_ptr when unset -- returned as-is (not via ret(), nothing new
+// is allocated here) so the Haskell side's peekMaybeCommodityCurve can null-check it directly.
+QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o) {
+  const shared_ptr<CommodityCurve> &b = (*arg(o))->basisOfCurve();
+  return b ? ret(new QlCommodityCurve(b)) : nullptr;
+}
+
+// Not bad_alloc-only: setBasisOfCurve() itself calls
+// CommodityPricingHelper::calculateUomConversionFactor, which QL_REQUIRE-throws via
+// UnitOfMeasureConversionManager::lookup when no matching conversion is registered.
+void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve, char **e) {
+  try {(*arg(o))->setBasisOfCurve(*arg(basisOfCurve));
+  } catch (std::exception& er) {*e = DUP(er.what());}
+}
+
+// Builds the ExchangeContracts map the nearby-rolling price()/underlyingPriceDate() calls take.
+// Always constructed (even when n==0): price() only dereferences it when nearbyOffset>0, and
+// underlyingPriceDate() requires nearbyOffset>0 too (QL_REQUIRE'd before any lower_bound call), so
+// an empty-but-non-null map is exactly as safe as a null one for every reachable call shape here,
+// and skips a conditional the two call sites would otherwise have to repeat.
+static shared_ptr<ExchangeContracts> qlBuildExchangeContracts(
+    unsigned n, int *ecKeys, char **ecCodes, int *ecExpirations, int *ecStarts, int *ecEnds) {
+  auto ecs = ext::make_shared<ExchangeContracts>();
+  for (unsigned i = 0; i < n; ++i)
+    (*ecs)[Date(ecKeys[i])] = ExchangeContract(ecCodes[i], Date(ecExpirations[i]),
+                                                Date(ecStarts[i]), Date(ecEnds[i]));
+  return ecs;
+}
+
+// nearbyOffset<=0 never touches exchangeContracts (see commoditycurve.hpp's inline price()), so
+// this also serves the plain flat-price case when called with an empty map and offset 0.
+double qlCommodityCurvePrice(QlCommodityCurve *o, int date,
+    unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+    unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+    unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e) {
+  try {
+    auto ecs = qlBuildExchangeContracts(ecLen1, ecKeys, ecCodes, ecExpirations, ecStarts, ecEnds);
+    return (*arg(o))->price(Date(date), ecs, nearbyOffset);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e) {
+  try {return (*arg(o))->basisOfPrice(Date(date));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+int qlCommodityCurveUnderlyingPriceDate(QlCommodityCurve *o, int date,
+    unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
+    unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
+    unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e) {
+  try {
+    auto ecs = qlBuildExchangeContracts(ecLen1, ecKeys, ecCodes, ecExpirations, ecStarts, ecEnds);
+    return (*arg(o))->underlyingPriceDate(Date(date), ecs, nearbyOffset).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+
+/* CommodityIndex */
+
+// exchangeContracts/nearbyOffset are hardcoded to null/0 -- see qlTermStructure.h's comment;
+// forwardCurve is nullable, matching upstream's own nullable ext::shared_ptr<CommodityCurve>.
+QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Currency *currency,
+                                   UnitOfMeasure *unitOfMeasure, Calendar *calendar,
+                                   double lotQuantity, QlCommodityCurve *forwardCurve, char **e) {
+  try {return ret(new QlCommodityIndex(alloc(new CommodityIndex(
+      name, *arg(commodityType), *arg(currency), *arg(unitOfMeasure), *arg(calendar), lotQuantity,
+      forwardCurve ? *arg(forwardCurve) : shared_ptr<CommodityCurve>(),
+      shared_ptr<ExchangeContracts>(), 0))));
+  } catch (std::exception& er) {return handleException<QlCommodityIndex*>(e, er);}}
+
+void qlFreeCommodityIndex(QlCommodityIndex *o) {del(o);}
+QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o) {return ret(new QlIndex(*arg(o)));}
+
+// commodityType()/currency()/unitOfMeasure()/lotQuantity()/forwardCurve() are all plain,
+// never-mutated echoes of the constructor's own arguments (commodityindex.hpp's inline getters
+// each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
+
+double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e) {
+  try {return (*arg(o))->forwardPrice(Date(date));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+// lastQuoteDate() -> timeSeries().lastDate(), which QL_REQUIREs a non-empty historical fixing
+// series -- check emptiness first (via CommodityIndex::empty(), itself just timeSeries().empty())
+// rather than catching the exception, so callers can check commodityIndexEmpty first if they want.
+int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e) {
+  try {return (*arg(o))->lastQuoteDate().serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlCommodityIndexEmpty(QlCommodityIndex *o) {return (*arg(o))->empty();}
+
 void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}
 QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e) {
   try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(maturity),
@@ -748,6 +888,7 @@ QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInfla
 QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, char **e) {try {return ret(new QlYearOnYearInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
 
 QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
+  ZeroInflationTermStructure *ts = 0;
   try {
     // instruments[i] is shared_ptr<ZeroCouponInflationSwapHelper>*; push_back upcasts each
     // element to shared_ptr<BootstrapHelper<ZeroInflationTermStructure>> (PiecewiseZeroInflationCurve's
@@ -756,19 +897,20 @@ QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, i
     std::vector<shared_ptr<BootstrapHelper<ZeroInflationTermStructure> > > instr;
     instr.reserve(instrumentsLen);
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
-    ZeroInflationTermStructure *ts = qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
+    ts = qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
         instr, interpolator, approximator, approximatorArg);
     return ret(new QlZeroInflationTermStructure(alloc(ts)));
-  } catch (std::exception& er) {return handleException<QlZeroInflationTermStructure*>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlZeroInflationTermStructure*>(e, er);}}
 QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
+  YoYInflationTermStructure *ts = 0;
   try {
     std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > > instr;
     instr.reserve(instrumentsLen);
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
-    YoYInflationTermStructure *ts = qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
+    ts = qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
         instr, interpolator, approximator, approximatorArg);
     return ret(new QlYoYInflationTermStructure(alloc(ts)));
-  } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {return ret(new QlRateHelper(new DepositRateHelper( *arg(quote), Period(l, (TimeUnit)u), fixDays,
@@ -837,11 +979,12 @@ typedef YieldTermStructure *(*curveBuilder)( const std::vector<Date>& dates, con
 
 QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder, unsigned rateLen, double *rates, unsigned rateDatesLen, int *rateDates,
   DayCounter *dayCount, Calendar *cal, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  YieldTermStructure *ts = 0;
   try {
-    YieldTermStructure *ts = builder(qlDateVector(rateDates, rateDatesLen), std::vector<double>(rates, rates+rateLen), *arg(dayCount), *arg(cal),
+    ts = builder(qlDateVector(rateDates, rateDatesLen), std::vector<double>(rates, rates+rateLen), *arg(dayCount), *arg(cal),
         qlHandleVector(quotes, quoteLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg);
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen, double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
   unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   return qlInterpolatedCurve(&qlInterpolatedDiscountCurveAux, dfsLen, dfs, dfdatesLen, dfsDates,
@@ -859,13 +1002,14 @@ QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen, double *yields,
 }
 static QlYieldTermStructure *piecewiseYieldCurve1Impl(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, int extrapolate, char **e) {
+  YieldTermStructure *ts = 0;
   try {
-    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, /*bootstrap=*/0, /*accuracy=*/0.0,
         std::vector<double>(), b);
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
@@ -882,33 +1026,36 @@ QlYieldTermStructure *qlPiecewiseYieldCurveFull1(unsigned settl, Calendar *cal, 
 }
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
+  YieldTermStructure *ts = 0;
   try {
-    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
         std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts());
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
+  YieldTermStructure *ts = 0;
   try {
-    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::SimpleZeroYield, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
         std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts());
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
   double accuracy, int extrapolate, char **e) {
+  YieldTermStructure *ts = 0;
   try {
-    YieldTermStructure *ts = qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    ts = qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy);
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
 
 // MultiCurve builds a set of curves that form a genuine dependency cycle -- see the class's own
 // doc comment in multicurve.hpp for the 4-step protocol this wraps. It is bound as a standalone
@@ -1437,18 +1584,9 @@ QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy
   } catch (std::exception& er) {return handleException<QlEquityIndex *>(e, er);}}
 void qlFreeEquityIndex(QlEquityIndex *o) {del(o);}
 QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o) {return ret(new QlIndex(*arg(o)));}
-Currency* qlEquityIndexCurrency(QlEquityIndex* o, char **e) {
-  try {return alloc(new Currency((*arg(o))->currency()));
-  } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
-QlYieldTermStructure* qlEquityIndexInterestRateCurve(QlEquityIndex* o, char **e) {
-  try {return ret(new QlYieldTermStructure((*arg(o))->equityInterestRateCurve().currentLink()));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlYieldTermStructure* qlEquityIndexDividendCurve(QlEquityIndex* o, char **e) {
-  try {return ret(new QlYieldTermStructure((*arg(o))->equityDividendCurve().currentLink()));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlQuote* qlEquityIndexSpot(QlEquityIndex* o, char **e) {
-  try {return ret(new QlQuote((*arg(o))->spot().currentLink()));
-  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+// currency()/equityInterestRateCurve()/equityDividendCurve()/spot() are all plain,
+// never-mutated echoes of the constructor's own arguments (equityindex.hpp's inline getters
+// each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
 
 typedef ZeroInflationIndex *(*makeZeroInflationIndex)();
 // must match the order of qlEnumObjects.h:ZeroInflationIndexType

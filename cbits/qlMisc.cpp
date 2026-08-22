@@ -184,6 +184,11 @@ void qlFreeInts(int *p) {delete[] p;}
 void qlFreeUInts(unsigned *p) {delete[] p;}
 void qlFreeDoubles(double *p) {delete[] p;}
 void qlFreePointerArray(void **p) {delete[] p;}
+void qlFreeStringArray(unsigned n, char **p) {
+  if (!p) return;
+  for (unsigned i = 0; i < n; ++i) qlFreeString(p[i]);
+  delete[] p;
+}
 int qlNullInteger() {return Null<Integer>();}
 double qlNullReal() {return Null<Real>();}
 double qlEpsilon() {return QL_EPSILON;}
@@ -252,8 +257,9 @@ Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol
           rounding, triangulationCurrency));
   } catch (std::exception& er) {return handleException<Currency*>(e, er);}}
 
-ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate) {
-  return alloc(new ExchangeRate(*arg(source), *arg(target), rate));
+ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate, char **e) {
+  try {return alloc(new ExchangeRate(*arg(source), *arg(target), rate));
+  } catch (std::exception& er) {return handleException<ExchangeRate*>(e, er);}
 }
 void qlFreeExchangeRate(ExchangeRate *o) {del(o);}
 double qlExchangeRateRate(ExchangeRate *o) {return arg(o)->rate();}
@@ -274,8 +280,9 @@ ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, char **e) 
   } catch (std::exception& er) {return handleException<ExchangeRate*>(e, er);}
 }
 
-void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial) {
-  ExchangeRateManager::instance().add(*arg(rate), qlNullableDate(startSerial), qlNullableDate(endSerial));
+void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial, char **e) {
+  try {ExchangeRateManager::instance().add(*arg(rate), qlNullableDate(startSerial), qlNullableDate(endSerial));
+  } catch (std::exception& er) {*e = DUP(er.what());}
 }
 
 ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, char **e) {
@@ -289,9 +296,11 @@ void qlExchangeRateManagerClear() {ExchangeRateManager::instance().clear();}
 
 int qlMoneySettingsConversionType() {return Money::Settings::instance().conversionType();}
 void qlMoneySettingsSetConversionType(int t) {Money::Settings::instance().conversionType() = (Money::ConversionType)t;}
-Currency *qlMoneySettingsBaseCurrency() {
-  const Currency &base = Money::Settings::instance().baseCurrency();
-  return base.empty() ? 0 : ret(new Currency(base));
+Currency *qlMoneySettingsBaseCurrency(char **e) {
+  try {
+    const Currency &base = Money::Settings::instance().baseCurrency();
+    return base.empty() ? 0 : ret(new Currency(base));
+  } catch (std::exception& er) {return handleException<Currency*>(e, er);}
 }
 void qlMoneySettingsSetBaseCurrency(Currency *c) {Money::Settings::instance().baseCurrency() = *arg(c);}
 
@@ -563,8 +572,12 @@ Calendar *qlCalendar(int country, int market, char **e) {
     return alloc(calendars[country](market));
   } catch (std::exception& er) {return handleException<Calendar *>(e, er);}}
 
-int qlCalendarAdjust(Calendar *c, int date, int conv) {return arg(c)->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();}
-int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom) {return arg(c)->advance(Date(date), n, (TimeUnit) unit,(BusinessDayConvention) conv, eom).serialNumber();}
+int qlCalendarAdjust(Calendar *c, int date, int conv, char **e) {
+  try {return arg(c)->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom, char **e) {
+  try {return arg(c)->advance(Date(date), n, (TimeUnit) unit,(BusinessDayConvention) conv, eom).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlCalendarAddHoliday(Calendar* o, int x0, char **e) {try {arg(o)->addHoliday(Date(x0));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e) {

@@ -6,13 +6,13 @@ Coverage already spans the parts of QuantLib people actually reach for in practi
 
 Type safety is held to a noticeably higher bar than a typical C++ binding. QuantLib's class hierarchies are mirrored with phantom-typed pointers (`GenBond a`, `GenQuote a`, …) rather than one flat handle type, so passing the wrong kind of object is a compile error, not a runtime crash; upcasting is the only implicit conversion, and it's structurally guaranteed safe. Declarations on the C++ and Haskell sides are kept in step by `c2hs` rather than by hand-written FFI stubs. The C++ shim layer has zero `dynamic_cast`/`dynamic_pointer_cast` call sites — classes that need runtime-checked downcasts upstream get a dedicated leaf type instead — and enum-like C++ types are bound with explicit value mirroring rather than an unchecked numeric cast, closing off a whole class of silent-corruption bugs that plain FFI bindings are prone to.
 
-The main departures from a thin wrapper are enums and ADTs standing in for things that are classes on the C++ side (see "On Types" below), and the ownership layer that makes the pointer types safe; individual calls still map close to 1:1 onto the underlying QuantLib call.
+The main departures from a thin wrapper are enums and ADTs standing in for things that are classes on the C++ side (see "On Types" below), and the ownership layer that makes the pointer types safe; individual calls still map close to 1:1 onto the underlying QuantLib call. Coverage is curated rather than exhaustive: getters that only echo a value the caller already passed to the constructor are deliberately left unbound, so the binding surface tracks what's actually useful to call rather than every method QuantLib happens to expose.
 
 This started as a hand-written project in 2012 (see "Project History" below) and has gone through several architecture rewrites since. The core design — the pointer-ownership model, the enum/ADT scheme, the C shim conventions — is hand-designed and predates any AI involvement. More recently I've used AI assistance to extend coverage faster: new classes, methods, day counters, indexes. Every generated binding is still reviewed against the pattern it's supposed to follow, checked against the upstream C++ signature, and covered by a test before it counts as done — see "Testing" below for what that means in practice.
 
 Worked examples live in `test/example/QuantLib/Example`. They're direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style. The test suite proper is `test/main/QuantLib/MainTest.hs`, a dispatcher over the topic modules in `test/hspec/QuantLib/Spec`.
 
-Haddock documentation is published at https://khorser.github.io/hasquant
+The package is published on Hackage at https://hackage.haskell.org/package/hasquant, with Haddock documentation also mirrored at https://khorser.github.io/hasquant
 
 # Testing
 
