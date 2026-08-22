@@ -3,7 +3,7 @@ module QuantLib.Spec.TermStructure.Commodity (spec) where
 import Control.Exception(evaluate)
 import Data.Maybe(isNothing, isJust)
 
-import Test.Hspec
+import Test.Hspec hiding(before)
 
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))

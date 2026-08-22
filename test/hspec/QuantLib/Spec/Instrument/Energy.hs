@@ -137,9 +137,9 @@ spec = do
       pt <- paymentTerm "5 days after pricing end" PricingDate 5 cal
       let startDate = 1 `january` 2024
           endDate = 1 `april` 2024
-      pps <- createPricingPeriods startDate endDate (ct, bbl, 100) DeliveryMonthly PerMonth pt
+      pps@(st: _) <- createPricingPeriods startDate endDate (ct, bbl, 100) DeliveryMonthly PerMonth pt
       length pps `shouldBe` 3
-      pricingPeriodStartDate (head pps) `shouldBe` startDate
+      pricingPeriodStartDate st `shouldBe` startDate
 
     it "silently returns no periods for a DeliverySchedule createPricingPeriods doesn't implement" $ do
       ct <- commodityType "CL" "Crude Oil"
