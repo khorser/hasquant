@@ -19,6 +19,7 @@ license-file:   LICENSE
 build-type:     Simple
 tested-with:
     GHC == 8.10.6
+  , GHC == 9.8.4
   , GHC == 9.10.3
   , GHC == 9.12.4
   , GHC == 9.14.1
@@ -135,9 +136,7 @@ library
     extra-libraries:
         QuantLib
   if os(osx)
-    cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
-    include-dirs:
-        /opt/homebrew/include
+    cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include -isystem/usr/local/opt/quantlib/include -isystem/usr/local/include
   build-tool-depends: c2hs:c2hs >= 0.28.8 && < 0.29
 
 executable hasquant_example

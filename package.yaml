@@ -12,6 +12,7 @@ build-type: Simple
 github: khorser/hasquant
 tested-with:
   - GHC == 8.10.6 # lts-18.8
+  - GHC == 9.8.4
   - GHC == 9.10.3 # lts-24.53
   - GHC == 9.12.4
   - GHC == 9.14.1
@@ -109,14 +110,11 @@ library:
       else:
         extra-libraries: QuantLib
     - condition: os(osx)
-      # include-dirs stays: c2hs/cpp needs it to find the headers at all. The -isystem
-      # duplicates below are what silence QuantLib's and boost's own warnings (~113 under
+      # Hardcoding -isystem to silence QuantLib's and boost's own warnings (~113 under
       # -Wall -Wextra -pedantic, vs none from cbits/) -- -isystem wins over the -I that
       # include-dirs and pkg-config emit for the same directory, and leaves warnings in
-      # cbits/ untouched. QuantLib goes through Homebrew's stable opt/ symlink because
-      # pkg-config points at the version-pinned Cellar path, which -isystem must match.
-      include-dirs: /opt/homebrew/include
-      cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include
+      # cbits/ untouched
+      cxx-options: -isystem/opt/homebrew/opt/quantlib/include -isystem/opt/homebrew/include -isystem/usr/local/opt/quantlib/include -isystem/usr/local/include
 
 tests:
   hasquant_test:
