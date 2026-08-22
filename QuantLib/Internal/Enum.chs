@@ -106,11 +106,12 @@ module QuantLib.Internal.Enum
   , UnitOfMeasureType(..)
   , PaymentTermEventType(..)
   , PricingErrorLevel(..)
+  , peekPricingErrorLevelArray
   , DeliverySchedule(..)
   , QuantityPeriodicity(..)
   ) where
 import Foreign.Ptr(Ptr, nullPtr)
-import Foreign.C.Types(CUInt)
+import Foreign.C.Types(CUInt, CInt)
 import Foreign.Marshal.Utils(withMany)
 import Foreign.Marshal.Array(withArray)
 import Control.Exception(finally)
@@ -162,6 +163,8 @@ import QuantLib.Internal.Syntax
 -- CommodityPricingHelper::createPricingPeriods, both in QuantLib.Instrument.Energy -- a later
 -- stage than this module).
 {#enum PricingErrorLevel{} deriving (Show, Eq, Bounded)#}
+peekPricingErrorLevelArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [PricingErrorLevel]
+peekPricingErrorLevelArray = peekIntArray' toEnumC
 -- Confirmed clash (a real one, caught by the build, not assumed): 4 of DeliverySchedule's 8 tags
 -- (Daily/Weekly/Monthly/Quarterly) collide with QuantLib.Time.Schedule's own Frequency enum, whose
 -- module this file is imported into unqualified. Prefixed Haskell-side only (c2hs's own "add

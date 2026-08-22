@@ -64,6 +64,7 @@ module QuantLib.Internal
   , qlFreeAdditionalResults
 
   , uncurryNested
+  , zipWith6
   )
 where
 
@@ -352,5 +353,11 @@ toEnumC = toEnum . fromIntegral
 
 uncurryNested :: (a -> b -> c -> d) -> (a, (b, c)) -> d
 uncurryNested f (x, (y, z)) = f x y z
+
+-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
+-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
+zipWith6 :: (a -> b -> c -> d -> e -> f -> g) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g]
+zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b c d e g : zipWith6 f as bs cs ds es gs
+zipWith6 _ _ _ _ _ _ _ = []
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

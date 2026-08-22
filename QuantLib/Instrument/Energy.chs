@@ -50,8 +50,6 @@ import QuantLib.Commodity(CommodityType, UnitOfMeasure, PaymentTerm, Quantity, C
   PricingPeriod, PricingPeriods, pricingPeriod,
   pricingPeriodStartDate, pricingPeriodEndDate, pricingPeriodPaymentDate, pricingPeriodQuantity)
 import QuantLib.Index.Commodity(CommodityIndex)
-import Foreign.Ptr(Ptr)
-import Foreign.C.Types(CUInt, CInt)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Utils(fromBool)
 
@@ -167,9 +165,6 @@ secondaryCostAmounts o = do
   ,preArray-`[String]'&peekCStringArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-peekPricingErrorLevelArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [PricingErrorLevel]
-peekPricingErrorLevelArray = peekIntArray' toEnumC
-
 -- |Every pricing diagnostic recorded so far (via upstream's own internal calls, or via
 -- 'addPricingError') against this 'Commodity'\/'EnergyCommodity' leaf.
 pricingErrors :: GenCommodity c -> IO PricingErrors
@@ -239,10 +234,6 @@ dailyPositions :: GenEnergySwap s -> IO EnergyDailyPositions
 dailyPositions s = do
   (dates, qtyAmts, payPrices, recvPrices, riskDeltas, unrealized) <- qlEnergySwapDailyPositions_ s
   pure $ zipWith6 EnergyDailyPosition dates qtyAmts payPrices recvPrices riskDeltas unrealized
-
-zipWith6 :: (a -> b -> c -> d -> e -> f -> g) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g]
-zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b c d e g : zipWith6 f as bs cs ds es gs
-zipWith6 _ _ _ _ _ _ _ = []
 
 -- |The realized\/unrealized payment cash flows computed during this 'EnergySwap' leaf's most
 -- recent @performCalculations()@ -- populated only after pricing.
