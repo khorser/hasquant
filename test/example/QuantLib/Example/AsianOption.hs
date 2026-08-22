@@ -16,7 +16,7 @@ import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date
+import QuantLib.Time.Date hiding(today)
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield

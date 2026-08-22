@@ -104,40 +104,68 @@ template <> class ObjClassName<Leg*> {public: static void output(std::ostream& o
 template <> class ObjClassName<QlAdditionalResult*> {public: static void output(std::ostream& os) {os << "QlAdditionalResult";}};
 #endif
 
+// SecondaryCosts = map<string, ext::any>, used with exactly two concrete alternatives
+// (CommodityUnitCost/Money -- see energycommodity.cpp's two any_cast branches), bound as a real
+// 2-variant sum: scIsUnitCost[i] selects which of (scAmounts[i], scCurrencies[i]) alone (Money)
+// or paired with scUoms[i] (CommodityUnitCost) fills entry i. An empty (n==0) list stands in for
+// upstream's nullptr shared_ptr, matching every constructor's own optional-secondaryCosts default.
+shared_ptr<SecondaryCosts> qlBuildSecondaryCosts(unsigned n, char **keys, int *isUnitCost, double *amounts,
+                                                 Currency **currencies, UnitOfMeasure **uoms) {
+  if (n == 0) return shared_ptr<SecondaryCosts>();
+  auto sc = ext::make_shared<SecondaryCosts>();
+  for (unsigned i = 0; i < n; ++i) {
+    Money amount(*arg(currencies[i]), amounts[i]);
+    if (isUnitCost[i])
+      (*sc)[keys[i]] = CommodityUnitCost(amount, *arg(uoms[i]));
+    else
+      (*sc)[keys[i]] = amount;
+  }
+  return sc;
+}
+
+// The structure-of-parallel-arrays representation of a PricingPeriods list, shared by every
+// EnergySwap-family constructor's own pricingPeriods argument and by createPricingPeriods'
+// output below.
+PricingPeriods qlPricingPeriodVector(unsigned n, int *startDates, int *endDates, int *paymentDates,
+                                     CommodityType **types, UnitOfMeasure **uoms, double *amounts) {
+  PricingPeriods pps;
+  pps.reserve(n);
+  for (unsigned i = 0; i < n; ++i)
+    pps.push_back(ext::make_shared<PricingPeriod>(Date(startDates[i]), Date(endDates[i]), Date(paymentDates[i]),
+                                                  Quantity(*arg(types[i]), *arg(uoms[i]), amounts[i])));
+  return pps;
+}
+// ext::any is std::any in the Homebrew build and boost::any in the Docker build; both expose
+// .type() returning a std::type_info-compatible name, so we classify by typeid equality rather
+// than by a string name (which differs between the two).
+//
+// r's fields are all zero/null on entry (the caller value-initialises the whole array), so any
+// field this leaves untouched is already the correct "unset" value.
+void fillResult(struct QlAdditionalResult &r, const ext::any &v) {
+  if (v.type() == typeid(double)) {
+    r.type = AdditionalResultDouble;
+    r.dval = ext::any_cast<double>(v);
+  } else if (v.type() == typeid(std::string)) {
+    r.type = AdditionalResultString;
+    r.sval = DUP(ext::any_cast<std::string>(v).c_str());
+  } else if (v.type() == typeid(std::vector<double>)) {
+    r.type = AdditionalResultDoubleVector;
+    const std::vector<double> &vec = ext::any_cast<const std::vector<double>&>(v);
+    r.vlen = static_cast<unsigned>(vec.size());
+    if (r.vlen) {
+      double *varr = alloc(new double[r.vlen]);
+      for (unsigned i = 0; i < r.vlen; ++i) varr[i] = vec[i];
+      r.varr = varr;
+    }
+  } else {
+    r.type = AdditionalResultUnknown;
+    r.sval = DUP(v.type().name());
+  }
+}
 extern "C" {
 double qlInstrumentNPV(QlInstrument *instr, char **e) {try {return (*arg(instr))->NPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng, char **e) {try {(*arg(instr))->setPricingEngine(*arg(eng));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlFreeInstrument(QlInstrument *instr) {del(instr);}
-
-namespace {
-  // ext::any is std::any in the Homebrew build and boost::any in the Docker build; both expose
-  // .type() returning a std::type_info-compatible name, so we classify by typeid equality rather
-  // than by a string name (which differs between the two).
-  //
-  // r's fields are all zero/null on entry (the caller value-initialises the whole array), so any
-  // field this leaves untouched is already the correct "unset" value.
-  void fillResult(struct QlAdditionalResult &r, const ext::any &v) {
-    if (v.type() == typeid(double)) {
-      r.type = AdditionalResultDouble;
-      r.dval = ext::any_cast<double>(v);
-    } else if (v.type() == typeid(std::string)) {
-      r.type = AdditionalResultString;
-      r.sval = DUP(ext::any_cast<std::string>(v).c_str());
-    } else if (v.type() == typeid(std::vector<double>)) {
-      r.type = AdditionalResultDoubleVector;
-      const std::vector<double> &vec = ext::any_cast<const std::vector<double>&>(v);
-      r.vlen = static_cast<unsigned>(vec.size());
-      if (r.vlen) {
-        double *varr = alloc(new double[r.vlen]);
-        for (unsigned i = 0; i < r.vlen; ++i) varr[i] = vec[i];
-        r.varr = varr;
-      }
-    } else {
-      r.type = AdditionalResultUnknown;
-      r.sval = DUP(v.type().name());
-    }
-  }
-}
 
 void qlInstrumentAdditionalResults(QlInstrument *instr, unsigned *len,
     struct QlAdditionalResult **out, char **e) {
@@ -1386,37 +1414,6 @@ void qlFreeEnergyCommodity(QlEnergyCommodity *o) {del(o);}
 QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o) {return ret(new QlCommodity(*arg(o)));}
 
 namespace {
-  // SecondaryCosts = map<string, ext::any>, used with exactly two concrete alternatives
-  // (CommodityUnitCost/Money -- see energycommodity.cpp's two any_cast branches), bound as a real
-  // 2-variant sum: scIsUnitCost[i] selects which of (scAmounts[i], scCurrencies[i]) alone (Money)
-  // or paired with scUoms[i] (CommodityUnitCost) fills entry i. An empty (n==0) list stands in for
-  // upstream's nullptr shared_ptr, matching every constructor's own optional-secondaryCosts default.
-  shared_ptr<SecondaryCosts> qlBuildSecondaryCosts(unsigned n, char **keys, int *isUnitCost, double *amounts,
-      Currency **currencies, UnitOfMeasure **uoms) {
-    if (n == 0) return shared_ptr<SecondaryCosts>();
-    auto sc = ext::make_shared<SecondaryCosts>();
-    for (unsigned i = 0; i < n; ++i) {
-      Money amount(*arg(currencies[i]), amounts[i]);
-      if (isUnitCost[i])
-        (*sc)[keys[i]] = CommodityUnitCost(amount, *arg(uoms[i]));
-      else
-        (*sc)[keys[i]] = amount;
-    }
-    return sc;
-  }
-
-  // The structure-of-parallel-arrays representation of a PricingPeriods list, shared by every
-  // EnergySwap-family constructor's own pricingPeriods argument and by createPricingPeriods'
-  // output below.
-  PricingPeriods qlPricingPeriodVector(unsigned n, int *startDates, int *endDates, int *paymentDates,
-      CommodityType **types, UnitOfMeasure **uoms, double *amounts) {
-    PricingPeriods pps;
-    pps.reserve(n);
-    for (unsigned i = 0; i < n; ++i)
-      pps.push_back(ext::make_shared<PricingPeriod>(Date(startDates[i]), Date(endDates[i]), Date(paymentDates[i]),
-                                                     Quantity(*arg(types[i]), *arg(uoms[i]), amounts[i])));
-    return pps;
-  }
 }
 
 /* Commodity -- base-level getters generalized over any leaf (Stage 6). Neither can throw: both

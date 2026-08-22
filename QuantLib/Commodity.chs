@@ -76,7 +76,6 @@ module QuantLib.Commodity
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
-import QuantLib.Time.Date(Day)
 import Foreign.Marshal.Alloc(alloca)
 
 #include "qlTypesC2HS.h"

@@ -817,9 +817,9 @@ static shared_ptr<ExchangeContracts> qlBuildExchangeContracts(
 // nearbyOffset<=0 never touches exchangeContracts (see commoditycurve.hpp's inline price()), so
 // this also serves the plain flat-price case when called with an empty map and offset 0.
 double qlCommodityCurvePrice(QlCommodityCurve *o, int date,
-    unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
-    unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
-    unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e) {
+    unsigned ecLen1, int *ecKeys, unsigned, char **ecCodes,
+    unsigned, int *ecExpirations, unsigned, int *ecStarts,
+    unsigned, int *ecEnds, int nearbyOffset, char **e) {
   try {
     auto ecs = qlBuildExchangeContracts(ecLen1, ecKeys, ecCodes, ecExpirations, ecStarts, ecEnds);
     return (*arg(o))->price(Date(date), ecs, nearbyOffset);
@@ -830,9 +830,9 @@ double qlCommodityCurveBasisOfPrice(QlCommodityCurve *o, int date, char **e) {
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 int qlCommodityCurveUnderlyingPriceDate(QlCommodityCurve *o, int date,
-    unsigned ecLen1, int *ecKeys, unsigned ecLen2, char **ecCodes,
-    unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
-    unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e) {
+    unsigned ecLen1, int *ecKeys, unsigned, char **ecCodes,
+    unsigned, int *ecExpirations, unsigned, int *ecStarts,
+    unsigned, int *ecEnds, int nearbyOffset, char **e) {
   try {
     auto ecs = qlBuildExchangeContracts(ecLen1, ecKeys, ecCodes, ecExpirations, ecStarts, ecEnds);
     return (*arg(o))->underlyingPriceDate(Date(date), ecs, nearbyOffset).serialNumber();

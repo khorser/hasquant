@@ -16,7 +16,7 @@ import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date
+import QuantLib.Time.Date hiding(today)
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
@@ -113,8 +113,8 @@ run = do
     riskFreeRate = 0.08
     vol = 0.30
     -- matches upstream's `timeToDays(t, 360) = lround(t * 360)`
-    timeToDays t = round (t * 360 :: Double)
-    resetDate = addDays (toInteger $ timeToDays (0.25 :: Double)) today
-    maturity = addDays (toInteger $ timeToDays (1.0 :: Double)) today
+    timeToDays t = round (t * 360.0)
+    resetDate = addDays (timeToDays (0.25 :: Double)) today
+    maturity = addDays (timeToDays (1.0 :: Double)) today
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

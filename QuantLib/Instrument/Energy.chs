@@ -45,11 +45,7 @@ module QuantLib.Instrument.Energy
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Enum
-import QuantLib.Time.Date(Day)
-import QuantLib.Commodity(CommodityType, UnitOfMeasure, PaymentTerm, Quantity, CommodityUnitCost,
-  PricingPeriod, PricingPeriods, pricingPeriod,
-  pricingPeriodStartDate, pricingPeriodEndDate, pricingPeriodPaymentDate, pricingPeriodQuantity)
-import QuantLib.Index.Commodity(CommodityIndex)
+import QuantLib.Commodity
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Utils(fromBool)
 
@@ -200,8 +196,8 @@ energyFuture :: Int -- ^buySell
              -> CommodityType
              -> SecondaryCosts
              -> IO EnergyFuture
-energyFuture buySell (qCt, qUom, qAmt) (tpAmt, tpCcy, tpUom) index commodityType secCosts =
-  qlEnergyFuture_ buySell qCt qUom qAmt tpAmt tpCcy tpUom index commodityType
+energyFuture buySell (qCt, qUom, qAmt) (tpAmt, tpCcy, tpUom) index cmdType secCosts =
+  qlEnergyFuture_ buySell qCt qUom qAmt tpAmt tpCcy tpUom index cmdType
     scKeys scIsUnitCost scAmts scCcys scUoms
   where (scKeys, scIsUnitCost, scAmts, scCcys, scUoms) = secondaryCostsFields secCosts
 
@@ -288,11 +284,11 @@ energyVanillaSwap :: Bool -- ^payer
                   -> GenYieldTermStructure y2 -- ^receiveLegTermStructure
                   -> GenYieldTermStructure y3 -- ^discountTermStructure
                   -> IO EnergyVanillaSwap
-energyVanillaSwap payer calendar (fpAmt, fpCcy) fpUom index payCcy receiveCcy pps commodityType secCosts
+energyVanillaSwap payer calendar (fpAmt, fpCcy) fpUom index payCcy receiveCcy pps cmdType secCosts
                   payLegTS receiveLegTS discountTS =
   qlEnergyVanillaSwap_ payer calendar fpAmt fpCcy fpUom index payCcy receiveCcy
     ppStarts ppEnds ppPays ppTypes ppUoms ppAmts
-    commodityType scKeys scIsUnitCost scAmts scCcys scUoms
+    cmdType scKeys scIsUnitCost scAmts scCcys scUoms
     payLegTS receiveLegTS discountTS
   where
     (ppStarts, ppEnds, ppPays, ppTypes, ppUoms, ppAmts) = pricingPeriodsFields pps
@@ -343,11 +339,11 @@ energyBasisSwap :: Calendar
                 -> GenYieldTermStructure y3 -- ^discountTermStructure
                 -> IO EnergyBasisSwap
 energyBasisSwap calendar spreadIndex payIndex receiveIndex spreadToPayLeg payCcy receiveCcy pps
-                (basisAmt, basisCcy, basisUom) commodityType secCosts payLegTS receiveLegTS discountTS =
+                (basisAmt, basisCcy, basisUom) cmdType secCosts payLegTS receiveLegTS discountTS =
   qlEnergyBasisSwap_ calendar spreadIndex payIndex receiveIndex spreadToPayLeg payCcy receiveCcy
     ppStarts ppEnds ppPays ppTypes ppUoms ppAmts
     basisAmt basisCcy basisUom
-    commodityType scKeys scIsUnitCost scAmts scCcys scUoms
+    cmdType scKeys scIsUnitCost scAmts scCcys scUoms
     payLegTS receiveLegTS discountTS
   where
     (ppStarts, ppEnds, ppPays, ppTypes, ppUoms, ppAmts) = pricingPeriodsFields pps
@@ -401,9 +397,9 @@ energyBasisSwap calendar spreadIndex payIndex receiveIndex spreadToPayLeg payCcy
 -- silently returns @[]@ (no periods, no error -- checked directly against
 -- @commoditypricinghelpers.cpp@, not assumed from the header).
 createPricingPeriods :: Day -> Day -> Quantity -> DeliverySchedule -> QuantityPeriodicity -> PaymentTerm -> IO PricingPeriods
-createPricingPeriods startDate endDate (ct, uom, amt) deliverySchedule qtyPeriodicity paymentTerm = do
+createPricingPeriods startDate endDate (ct, uom, amt) deliverySchedule qtyPeriodicity pmtTerm = do
   (starts, ends, pays, types, uoms, amts) <-
-    qlCreatePricingPeriods_ startDate endDate ct uom amt deliverySchedule qtyPeriodicity paymentTerm
+    qlCreatePricingPeriods_ startDate endDate ct uom amt deliverySchedule qtyPeriodicity pmtTerm
   pure $ zipWith6 (\s e p t u a -> pricingPeriod s e p (t, u, a)) starts ends pays types uoms amts
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
