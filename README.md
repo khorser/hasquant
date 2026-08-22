@@ -12,7 +12,7 @@ This started as a hand-written project in 2012 (see "Project History" below) and
 
 Worked examples live in `test/example/QuantLib/Example`. They're direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style. The test suite proper is `test/main/QuantLib/MainTest.hs`, a dispatcher over the topic modules in `test/hspec/QuantLib/Spec`.
 
-The package is published on Hackage at https://hackage.haskell.org/package/hasquant, with Haddock documentation also mirrored at https://khorser.github.io/hasquant
+The package is published on Hackage at https://hackage.haskell.org/package/hasquant, with Haddock documentation for the current `master` available at https://khorser.github.io/hasquant
 
 # Testing
 
