@@ -15,6 +15,7 @@ import qualified QuantLib.Spec.TermStructure as TermStructure
 import qualified QuantLib.Spec.TermStructure.Commodity as TermStructureCommodity
 import qualified QuantLib.Spec.Index.Commodity as IndexCommodity
 import qualified QuantLib.Spec.Instrument.Energy as InstrumentEnergy
+import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
 import qualified QuantLib.Spec.Examples as Examples
 
 main :: IO ()
@@ -36,6 +37,7 @@ main = do
     TermStructureCommodity.spec
     IndexCommodity.spec
     InstrumentEnergy.spec
+    InstrumentOption.spec
     Examples.spec
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

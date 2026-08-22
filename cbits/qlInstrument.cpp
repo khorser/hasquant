@@ -8,6 +8,10 @@ namespace hasquant {
 #include <ql/instruments/basketoption.hpp>
 #include <ql/instruments/compositeinstrument.hpp>
 #include <ql/instruments/stickyratchet.hpp>
+#include <ql/instruments/simplechooseroption.hpp>
+#include <ql/instruments/softbarrieroption.hpp>
+#include <ql/instruments/twoassetcorrelationoption.hpp>
+#include <ql/instruments/writerextensibleoption.hpp>
 #include <ql/instruments/forward.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
 #include <ql/instruments/capfloor.hpp>
@@ -644,6 +648,8 @@ void qlFreeBarrierOption(QlBarrierOption *o) {del(o);}
 QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeDoubleBarrierOption(QlDoubleBarrierOption *o) {del(o);}
 QlOneAssetOption* qlDoubleBarrierOptionAsOneAssetOption(QlDoubleBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
+void qlFreeSoftBarrierOption(QlSoftBarrierOption *o) {del(o);}
+QlOneAssetOption* qlSoftBarrierOptionAsOneAssetOption(QlSoftBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeMargrabeOption(QlMargrabeOption *o) {del(o);}
 QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o) {return ret(new QlMultiAssetOption(*arg(o)));}
 void qlFreeMultiAssetOption(QlMultiAssetOption *o) {del(o);}
@@ -751,6 +757,21 @@ QlDoubleBarrierOption* qlDoubleBarrierOption(int barrierType, double barrierLo, 
 double qlDoubleBarrierOptionImpliedVolatility(QlDoubleBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlSoftBarrierOption* qlSoftBarrierOption(int barrierType, double barrierLo, double barrierHi, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlSoftBarrierOption(alloc(new SoftBarrierOption((Barrier::Type)barrierType, barrierLo, barrierHi, *arg(payoff), *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlSoftBarrierOption*>(e, er);}}
+double qlSoftBarrierOptionImpliedVolatility(QlSoftBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlOneAssetOption* qlSimpleChooserOption(int choosingDate, double strike, QlExercise* exercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new SimpleChooserOption(Date(choosingDate), strike, *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
+QlMultiAssetOption* qlTwoAssetCorrelationOption(int type, double strike1, double strike2, QlExercise* exercise, char **e) {
+  try {return ret(new QlMultiAssetOption(alloc(new TwoAssetCorrelationOption((Option::Type)type, strike1, strike2, *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlMultiAssetOption*>(e, er);}}
+QlOneAssetOption* qlWriterExtensibleOption(QlPlainVanillaPayoff* payoff1, QlExercise* exercise1, QlPlainVanillaPayoff* payoff2, QlExercise* exercise2, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new WriterExtensibleOption(*arg(payoff1), *arg(exercise1), *arg(payoff2), *arg(exercise2)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}

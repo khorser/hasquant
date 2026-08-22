@@ -24,8 +24,12 @@ module QuantLib.PricingEngine
   , counterpartyAdjSwapEngine
 
   , analyticBarrierEngine
+  , analyticSoftBarrierEngine
   , analyticPartialTimeBarrierOptionEngine
   , analyticBinaryBarrierEngine
+  , analyticSimpleChooserEngine
+  , analyticTwoAssetCorrelationEngine
+  , analyticWriterExtensibleOptionEngine
   , fdBlackScholesBarrierEngine
   , fdHestonBarrierEngine
   , fdHestonBarrierEngine'
@@ -351,6 +355,21 @@ import QuantLib.Internal.Common
 
 -- |analytic pricing engine for barrier options
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for soft barrier options, knocked in/out proportionally over a barrier range
+{#fun qlAnalyticSoftBarrierEngine as analyticSoftBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for simple chooser options
+{#fun qlAnalyticSimpleChooserEngine as analyticSimpleChooserEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for two-asset correlation options
+{#fun qlAnalyticTwoAssetCorrelationEngine as analyticTwoAssetCorrelationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process1
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process2
+  ,withQuote*`GenQuote q' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for writer-extensible options
+{#fun qlAnalyticWriterExtensibleOptionEngine as analyticWriterExtensibleOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for partial-time barrier options
 {#fun qlAnalyticPartialTimeBarrierOptionEngine as analyticPartialTimeBarrierOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

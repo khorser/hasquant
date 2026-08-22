@@ -290,6 +290,8 @@ extern "C" {
   QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
   void qlFreeDoubleBarrierOption(QlDoubleBarrierOption *o);
   QlOneAssetOption* qlDoubleBarrierOptionAsOneAssetOption(QlDoubleBarrierOption *o);
+  void qlFreeSoftBarrierOption(QlSoftBarrierOption *o);
+  QlOneAssetOption* qlSoftBarrierOptionAsOneAssetOption(QlSoftBarrierOption *o);
   void qlFreeMargrabeOption(QlMargrabeOption *o);
   QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o);
   void qlFreeMultiAssetOption(QlMultiAssetOption *o);
@@ -331,6 +333,11 @@ extern "C" {
   QlOneAssetOption* qlPartialTimeBarrierOption(int barrierType, int barrierRange, double barrier, double rebate, int coverEventDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlDoubleBarrierOption* qlDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlDoubleBarrierOptionImpliedVolatility(QlDoubleBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  QlSoftBarrierOption* qlSoftBarrierOption(int barrierType, double barrierLo, double barrierHi, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
+  double qlSoftBarrierOptionImpliedVolatility(QlSoftBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  QlOneAssetOption* qlSimpleChooserOption(int choosingDate, double strike, QlExercise* exercise, char **e);
+  QlMultiAssetOption* qlTwoAssetCorrelationOption(int type, double strike1, double strike2, QlExercise* exercise, char **e);
+  QlOneAssetOption* qlWriterExtensibleOption(QlPlainVanillaPayoff* payoff1, QlExercise* exercise1, QlPlainVanillaPayoff* payoff2, QlExercise* exercise2, char **e);
   QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlCompoundOption(QlStrikedTypePayoff* motherPayoff, QlExercise* motherExercise, QlStrikedTypePayoff* daughterPayoff, QlExercise* daughterExercise, char **e);
   double qlMargrabeOptionDelta1(QlMargrabeOption* o, char **e);

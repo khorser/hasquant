@@ -13,6 +13,7 @@ module QuantLib.Instrument.Option
   , QuantoBarrierOption
   , QuantoForwardVanillaOption
   , QuantoVanillaOption
+  , SoftBarrierOption
   , VanillaOption
 
   , ExerciseType(..)
@@ -40,6 +41,8 @@ module QuantLib.Instrument.Option
   , partialTimeBarrierOption
   , doubleBarrierOption
   , doubleBarrierOptionImpliedVolatility
+  , softBarrierOption
+  , softBarrierOptionImpliedVolatility
   , forwardVanillaOption
   , compoundOption
   , delta1
@@ -47,6 +50,9 @@ module QuantLib.Instrument.Option
   , gamma1
   , gamma2
   , margrabeOption
+  , simpleChooserOption
+  , twoAssetCorrelationOption
+  , writerExtensibleOption
 
   , multiAssetOption
   , deltaForward
@@ -91,6 +97,7 @@ import QuantLib.Internal.Common
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption' nocode#}
 {#pointer *QlDoubleBarrierOption as DoubleBarrierOption foreign -> CDoubleBarrierOption' nocode#}
+{#pointer *QlSoftBarrierOption as SoftBarrierOption foreign -> CSoftBarrierOption' nocode#}
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption' nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption' nocode#}
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption' nocode#}
@@ -140,6 +147,20 @@ import QuantLib.Internal.Common
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`DoubleBarrierOption'peekDoubleBarrierOption*#}
 
+-- |Soft barrier option on a single asset: knocked in/out proportionally over a barrier range [barrierLo, barrierHi], rather than in full at a single hard barrier. European exercise only.
+{#fun qlSoftBarrierOption as softBarrierOption{`BarrierType',`Double' -- ^barrierLo
+  ,`Double' -- ^barrierHi
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`SoftBarrierOption'peekSoftBarrierOption*#}
+
+-- |Implied Black-Scholes volatility that reproduces the given price for a SoftBarrierOption; see VanillaOption's implied-volatility for the caveats on reliability.
+{#fun qlSoftBarrierOptionImpliedVolatility as softBarrierOptionImpliedVolatility{withSoftBarrierOption*`SoftBarrierOption',`Double' -- ^price
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess gbs'
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Double' -- ^minVol
+  ,`Double' -- ^maxVol
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Forward-starting (strike-resetting) version of a vanilla option.
 {#fun qlForwardVanillaOption as forwardVanillaOption{`Double' -- ^moneyness
   ,withDay*`Day' -- ^resetDate
@@ -150,6 +171,18 @@ import QuantLib.Internal.Common
   ,withExercise*`Exercise' -- ^motherExercise
   ,withStrikedPayoff*`StrikedPayoff' -- ^daughterPayoff
   ,withExercise*`Exercise' -- ^daughterExercise
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
+-- |Simple chooser option on a single asset: the holder chooses, on the choosing date, whether the option is a call or a put; both share the same strike and exercise date.
+{#fun qlSimpleChooserOption as simpleChooserOption{withDay*`Day' -- ^choosingDate
+  ,`Double' -- ^strike
+  ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
+-- |Writer-extensible option on a single asset: if out of the money at the first exercise, it is extended to a second exercise with an amended payoff.
+{#fun qlWriterExtensibleOption as writerExtensibleOption{withPlainVanillaPayoff*`PlainVanillaPayoff' -- ^payoff1
+  ,withExercise*`Exercise' -- ^exercise1
+  ,withPlainVanillaPayoff*`PlainVanillaPayoff' -- ^payoff2
+  ,withExercise*`Exercise' -- ^exercise2
   ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 
 -- |Sensitivity of a MargrabeOption's value to the price of the first asset.
@@ -183,6 +216,12 @@ import QuantLib.Internal.Common
 
 -- |Base construction for an option on multiple assets.
 {#fun qlMultiAssetOption as multiAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
+
+-- |Two-asset correlation option: pays a payoff based on the second asset's value against strike2 at exercise, but only if the first asset is also in the money against strike1; otherwise pays 0.
+{#fun qlTwoAssetCorrelationOption as twoAssetCorrelationOption{fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^strike1
+  ,`Double' -- ^strike2
+  ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 
 -- |Probability of the option expiring in-the-money in a cash-or-nothing sense.
 {#fun qlOneAssetOptionItmCashProbability as itmCashProbability{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}

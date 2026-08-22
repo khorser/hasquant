@@ -17,6 +17,10 @@
 #include <ql/experimental/forward/analytichestonforwardeuropeanengine.hpp>
 #include <ql/experimental/barrieroption/vannavolgadoublebarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticbarrierengine.hpp>
+#include <ql/pricingengines/barrier/analyticsoftbarrierengine.hpp>
+#include <ql/pricingengines/exotic/analyticsimplechooserengine.hpp>
+#include <ql/pricingengines/exotic/analytictwoassetcorrelationengine.hpp>
+#include <ql/pricingengines/exotic/analyticwriterextensibleoptionengine.hpp>
 #include <ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp>
 #include <ql/pricingengines/barrier/analyticbinarybarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticdoublebarrierengine.hpp>
@@ -146,6 +150,18 @@ QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticSoftBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticSoftBarrierEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticSimpleChooserEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticSimpleChooserEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticTwoAssetCorrelationEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticTwoAssetCorrelationEngine(*arg(process1), *arg(process2), *arg(correlation)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticWriterExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticWriterExtensibleOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticPartialTimeBarrierOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticPartialTimeBarrierOptionEngine(*arg(process)))));

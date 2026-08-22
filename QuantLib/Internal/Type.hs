@@ -1895,6 +1895,7 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >    OneAssetOption
 -- >      BarrierOption
 -- >      DoubleBarrierOption
+-- >      SoftBarrierOption
 -- >      VanillaOption
 -- >      QuantoVanillaOption
 -- >      QuantoForwardVanillaOption
@@ -2459,6 +2460,18 @@ peekBarrierOption :: Ptr CBarrierOption' -> IO BarrierOption
 peekBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withBarrierOption :: BarrierOption -> (Ptr CBarrierOption' -> IO b) -> IO b
 withBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
+
+data CSoftBarrierOption'
+type CSoftBarrierOption = ForeignPtr CSoftBarrierOption'
+type SoftBarrierOption = GenOneAssetOption CSoftBarrierOption
+foreign import ccall unsafe "ql.h &qlFreeSoftBarrierOption" qlFreeSoftBarrierOption :: FinalizerPtr CSoftBarrierOption'
+instance Finalizable CSoftBarrierOption' where finalize = qlFreeSoftBarrierOption
+foreign import ccall "ql.h qlSoftBarrierOptionAsOneAssetOption" qlSoftBarrierOptionAsOneAssetOption :: Ptr CSoftBarrierOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CSoftBarrierOption' where {type Base CSoftBarrierOption' = COneAssetOption'; upcast = qlSoftBarrierOptionAsOneAssetOption}
+peekSoftBarrierOption :: Ptr CSoftBarrierOption' -> IO SoftBarrierOption
+peekSoftBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
+withSoftBarrierOption :: SoftBarrierOption -> (Ptr CSoftBarrierOption' -> IO b) -> IO b
+withSoftBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CDoubleBarrierOption'
 type CDoubleBarrierOption = ForeignPtr CDoubleBarrierOption'

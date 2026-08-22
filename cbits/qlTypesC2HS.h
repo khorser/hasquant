@@ -156,6 +156,7 @@ typedef struct QlSabrSwaptionVolatilityCube QlSabrSwaptionVolatilityCube;
 typedef struct QlShortRateModel QlShortRateModel;
 typedef struct QlSimpleQuote QlSimpleQuote;
 typedef struct QlSmileSection QlSmileSection;
+typedef struct QlSoftBarrierOption QlSoftBarrierOption;
 typedef struct QlStochasticProcess QlStochasticProcess;
 typedef struct QlStochasticProcess1D QlStochasticProcess1D;
 typedef struct QlStochasticProcessArray QlStochasticProcessArray;
