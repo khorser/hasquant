@@ -26,11 +26,8 @@ tested-with:
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
-    cbits/qlCommodity.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
-    cbits/qlInflationCapFloor.h
-    cbits/qlInflationVol.h
     cbits/qlInstrument.h
     cbits/qlMisc.h
     cbits/qlPricingEngine.h
@@ -110,9 +107,6 @@ library
   include-dirs:
       cbits
   cxx-sources:
-      cbits/qlCommodity.cpp
-      cbits/qlInflationCapFloor.cpp
-      cbits/qlInflationVol.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
       cbits/qlPricingEngine.cpp

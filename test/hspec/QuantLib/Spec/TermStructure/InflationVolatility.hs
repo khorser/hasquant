@@ -6,9 +6,7 @@ import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Index.Inflation
-import qualified QuantLib.InterestRate as IR
 import QuantLib.Math(Interpolation(..), Interpolation2D(..), Approximation(..), Matrix(..))
-import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.InflationVolatility
 import QuantLib.TermStructure.Yield(YieldTermStructure, interpolatedZeroCurve)
@@ -206,8 +204,8 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
 
     priceSurf <- yoyCapFloorTermPriceSurface 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
                    cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bilinear Linear
-    dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurf
-    rate <- yoyCapFloorAtmYoYSwapRate priceSurf (fst (head dateRates)) True
+    ((rate1st, _):_) <- yoyCapFloorAtmYoYSwapDateRates priceSurf
+    rate <- yoyCapFloorAtmYoYSwapRate priceSurf rate1st True
     rate `shouldSatisfy` (not . isNaN)
 
   -- No second upstream fixture covers a non-Linear interpolation here, so this is a
@@ -226,10 +224,10 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
                  priceSurfEU yoyIndexEU nominalEUR (-0.5) BackwardFlat
 
-    strikes <- yoyCapFloorStrikes priceSurfEU
+    (strike1st: _) <- yoyCapFloorStrikes priceSurfEU
     baseDate <- yoyCapFloorBaseDate priceSurfEU
     d1 <- advance cal baseDate (1, Years) Unadjusted False
-    vol <- yoyOptionletVolatility yoySurf d1 (head strikes) Nothing True
+    vol <- yoyOptionletVolatility yoySurf d1 strike1st Nothing True
     vol `shouldSatisfy` (not . isNaN)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
