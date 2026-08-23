@@ -42,6 +42,12 @@ extern "C" {
   void qlAbcdAtmVolCurveOptionTenorsInInterpolation(QlAbcdAtmVolCurve* o, unsigned *count, int **n, unsigned *count2, int **u, char **e);
   void qlAbcdAtmVolCurveOptionDates(QlAbcdAtmVolCurve* o, unsigned *count, int **days, char **e);
   void qlAbcdAtmVolCurveOptionTimes(QlAbcdAtmVolCurve* o, unsigned *count, double **times, char **e);
+  QlSabrVolSurface* qlSabrVolSurface(QlInterestRateIndex* index, QlBlackAtmVolCurve* atmCurve, unsigned tenorsLen, int *n, unsigned, int *u, unsigned spreadsLen, double *atmRateSpreads, unsigned volRows, unsigned volCols, QlQuote** volSpreads, char **e);
+  QlBlackAtmVolCurve* qlSabrVolSurfaceAtmCurve(QlSabrVolSurface* o, char **e);
+  void qlSabrVolSurfaceVolatilitySpreadsForPeriod(QlSabrVolSurface* o, int n, int u, unsigned *count, double **vols, char **e);
+  void qlSabrVolSurfaceVolatilitySpreadsForDate(QlSabrVolSurface* o, int date, unsigned *count, double **vols, char **e);
+  QlInterestRateIndex* qlSabrVolSurfaceIndex(QlSabrVolSurface* o, char **e);
+  int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, char **e);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
   QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e);

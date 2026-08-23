@@ -431,6 +431,32 @@ void qlAbcdAtmVolCurveOptionTimes(QlAbcdAtmVolCurve* o, unsigned *count, double 
     *count = t.size(); *times = qlAllocateDoubles(*count);
     for (size_t i = 0; i < t.size(); ++i) (*times)[i] = t[i];
   } catch (std::exception& er) {*count = 0; *times = 0; handleException<int>(e, er);}}
+QlSabrVolSurface* qlSabrVolSurface(QlInterestRateIndex* index, QlBlackAtmVolCurve* atmCurve, unsigned tenorsLen, int *n, unsigned, int *u, unsigned spreadsLen, double *atmRateSpreads, unsigned volRows, unsigned volCols, QlQuote** volSpreads, char **e) {
+  try {return ret(new QlSabrVolSurface(alloc(new SabrVolSurface(*arg(index), Handle<BlackAtmVolCurve>(*arg(atmCurve)),
+      qlPeriodVector(n, u, tenorsLen), std::vector<Spread>(atmRateSpreads, atmRateSpreads+spreadsLen),
+      qlHandleMatrix(volSpreads, volRows, volCols)))));
+  } catch (std::exception& er) {return handleException<QlSabrVolSurface*>(e, er);}}
+QlBlackAtmVolCurve* qlSabrVolSurfaceAtmCurve(QlSabrVolSurface* o, char **e) {
+  try {return ret(new QlBlackAtmVolCurve((*arg(o))->atmCurve().currentLink()));
+  } catch (std::exception& er) {return handleException<QlBlackAtmVolCurve*>(e, er);}}
+void qlSabrVolSurfaceVolatilitySpreadsForPeriod(QlSabrVolSurface* o, int n, int u, unsigned *count, double **vols, char **e) {
+  try {
+    std::vector<Volatility> v = (*arg(o))->volatilitySpreads(Period(n, (TimeUnit)u));
+    *count = v.size(); *vols = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < v.size(); ++i) (*vols)[i] = v[i];
+  } catch (std::exception& er) {*count = 0; *vols = 0; handleException<int>(e, er);}}
+void qlSabrVolSurfaceVolatilitySpreadsForDate(QlSabrVolSurface* o, int date, unsigned *count, double **vols, char **e) {
+  try {
+    std::vector<Volatility> v = (*arg(o))->volatilitySpreads(Date(date));
+    *count = v.size(); *vols = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < v.size(); ++i) (*vols)[i] = v[i];
+  } catch (std::exception& er) {*count = 0; *vols = 0; handleException<int>(e, er);}}
+QlInterestRateIndex* qlSabrVolSurfaceIndex(QlSabrVolSurface* o, char **e) {
+  try {return ret(new QlInterestRateIndex((*arg(o))->index()));
+  } catch (std::exception& er) {return handleException<QlInterestRateIndex*>(e, er);}}
+int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, char **e) {
+  try {return (*arg(o))->optionDateFromTenor(Period(n, (TimeUnit)u)).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
 QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}

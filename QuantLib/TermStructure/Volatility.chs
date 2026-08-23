@@ -34,6 +34,7 @@ module QuantLib.TermStructure.Volatility
   , BlackVolSurface
   , GenBlackVolSurface
   , AbcdAtmVolCurve
+  , SabrVolSurface
 
   , asVolatilityTermStructure
   , asBlackVolTermStructure
@@ -123,6 +124,12 @@ module QuantLib.TermStructure.Volatility
   , abcdAtmVolCurveOptionTenorsInInterpolation
   , abcdAtmVolCurveOptionDates
   , abcdAtmVolCurveOptionTimes
+  , sabrVolSurface
+  , sabrVolSurfaceAtmCurve
+  , sabrVolSurfaceVolatilitySpreadsForPeriod
+  , sabrVolSurfaceVolatilitySpreadsForDate
+  , sabrVolSurfaceIndex
+  , sabrVolSurfaceOptionDateFromTenor
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
   , linkSwaptionVolTo
@@ -208,6 +215,8 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlBlackAtmVolCurve as BlackAtmVolCurve foreign -> CBlackAtmVolCurve' nocode#}
 {#pointer *QlBlackVolSurface as BlackVolSurface foreign -> CBlackVolSurface' nocode#}
 {#pointer *QlAbcdAtmVolCurve as AbcdAtmVolCurve foreign -> CAbcdAtmVolCurve' nocode#}
+{#pointer *QlSabrVolSurface as SabrVolSurface foreign -> CSabrVolSurface' nocode#}
+{#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
@@ -837,6 +846,46 @@ abcdAtmVolCurveOptionTenorsInInterpolation o = do
 
 -- |As 'abcdAtmVolCurveOptionDates', in year fractions from the curve's reference date.
 {#fun qlAbcdAtmVolCurveOptionTimes as abcdAtmVolCurveOptionTimes{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |SABR-smile 'BlackVolSurface' built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
+-- per-tenor ATM-rate spreads\/vol-spread matrix. @volSpreads@'s rows follow @optionTenors@ and
+-- columns follow @atmRateSpreads@ (same row\/column convention as 'sabrSwaptionVolatilityCube's
+-- @volSpreads@).
+sabrVolSurface :: GenInterestRateIndex ix -> GenBlackAtmVolCurve b -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [Double] -- ^atmRateSpreads
+  -> Matrix (GenQuote q) -- ^volSpreads
+  -> IO SabrVolSurface
+sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
+  qlSabrVolSurface ix atm n t spreads vr vc vd
+  where (n, t) = unzip ntenors
+{#fun qlSabrVolSurface{withInterestRateIndex*`GenInterestRateIndex ix',withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withDoubleArray*`[Double]'&
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
+  ,preErrorCheck-`String'errorCheck*-}->`SabrVolSurface'peekSabrVolSurface*#}
+
+-- |the 'BlackAtmVolCurve' this surface's ATM level is anchored to
+{#fun qlSabrVolSurfaceAtmCurve as sabrVolSurfaceAtmCurve{withSabrVolSurface*`SabrVolSurface',preErrorCheck-`String'errorCheck*-}->`BlackAtmVolCurve'peekBlackAtmVolCurve*#}
+
+-- |per-@atmRateSpreads@-column volatility spreads for a given option tenor
+{#fun qlSabrVolSurfaceVolatilitySpreadsForPeriod as sabrVolSurfaceVolatilitySpreadsForPeriod{withSabrVolSurface*`SabrVolSurface'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |as 'sabrVolSurfaceVolatilitySpreadsForPeriod', for a given option date
+{#fun qlSabrVolSurfaceVolatilitySpreadsForDate as sabrVolSurfaceVolatilitySpreadsForDate{withSabrVolSurface*`SabrVolSurface'
+  ,withDay*`Day' -- ^optionDate
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the interest rate index this surface was built from (folded in from upstream's
+-- @InterestRateVolSurface@, not given its own hierarchy level here -- see 'SabrVolSurface').
+{#fun qlSabrVolSurfaceIndex as sabrVolSurfaceIndex{withSabrVolSurface*`SabrVolSurface',preErrorCheck-`String'errorCheck*-}->`InterestRateIndex'peekInterestRateIndex*#}
+
+-- |as 'sabrVolSurfaceIndex', converts an option tenor to its option date (folded in from
+-- @InterestRateVolSurface@)
+{#fun qlSabrVolSurfaceOptionDateFromTenor as sabrVolSurfaceOptionDateFromTenor{withSabrVolSurface*`SabrVolSurface'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
 -- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)
