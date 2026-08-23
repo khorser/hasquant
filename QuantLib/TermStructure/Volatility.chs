@@ -33,6 +33,7 @@ module QuantLib.TermStructure.Volatility
   , GenBlackAtmVolCurve
   , BlackVolSurface
   , GenBlackVolSurface
+  , AbcdAtmVolCurve
 
   , asVolatilityTermStructure
   , asBlackVolTermStructure
@@ -108,6 +109,20 @@ module QuantLib.TermStructure.Volatility
   , blackVolSurfaceSmileSectionForPeriod
   , blackVolSurfaceSmileSectionForDate
   , blackVolSurfaceSmileSectionForTime
+  , abcdAtmVolCurve
+  , abcdAtmVolCurveA
+  , abcdAtmVolCurveB
+  , abcdAtmVolCurveC
+  , abcdAtmVolCurveD
+  , abcdAtmVolCurveRmsError
+  , abcdAtmVolCurveMaxError
+  , abcdAtmVolCurveEndCriteria
+  , abcdAtmVolCurveK
+  , abcdAtmVolCurveKAtTime
+  , abcdAtmVolCurveOptionTenors
+  , abcdAtmVolCurveOptionTenorsInInterpolation
+  , abcdAtmVolCurveOptionDates
+  , abcdAtmVolCurveOptionTimes
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
   , linkSwaptionVolTo
@@ -192,6 +207,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlBlackAtmVolCurve as BlackAtmVolCurve foreign -> CBlackAtmVolCurve' nocode#}
 {#pointer *QlBlackVolSurface as BlackVolSurface foreign -> CBlackVolSurface' nocode#}
+{#pointer *QlAbcdAtmVolCurve as AbcdAtmVolCurve foreign -> CAbcdAtmVolCurve' nocode#}
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
@@ -777,6 +793,50 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,`Double' -- ^optionTime
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |Abcd-interpolated at-the-money (no-smile) volatility curve -- floating reference date,
+-- floating market data. @inclusionInInterpolationFlag@ selects which quotes feed the ABCD fit
+-- (upstream defaults this to all-'True' when omitted; hasquant always requires it explicitly,
+-- per the widen-in-place convention for a handful of trailing defaulted params).
+abcdAtmVolCurve :: Word -> Calendar -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [GenQuote q] -- ^volsHandles
+  -> [Bool] -- ^inclusionInInterpolationFlag
+  -> BusinessDayConvention -> DayCounter -> IO AbcdAtmVolCurve
+abcdAtmVolCurve d c ntenors qs flags bdc dc = qlAbcdAtmVolCurve d c n t qs flags bdc dc
+  where (n, t) = unzip ntenors
+{#fun qlAbcdAtmVolCurve{fromIntegral`Word',withCalendar*`Calendar',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withBoolArray*`[Bool]'&,fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`AbcdAtmVolCurve'peekAbcdAtmVolCurve*#}
+
+{#fun qlAbcdAtmVolCurveA as abcdAtmVolCurveA{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveB as abcdAtmVolCurveB{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveC as abcdAtmVolCurveC{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveD as abcdAtmVolCurveD{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveRmsError as abcdAtmVolCurveRmsError{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveMaxError as abcdAtmVolCurveMaxError{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveEndCriteria as abcdAtmVolCurveEndCriteria{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+
+-- |@k@ adjustment factor at a given time
+{#fun qlAbcdAtmVolCurveKAtTime as abcdAtmVolCurveKAtTime{withAbcdAtmVolCurve*`AbcdAtmVolCurve',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |@k@ adjustment factors for every option tenor used in interpolation
+{#fun qlAbcdAtmVolCurveK as abcdAtmVolCurveK{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+abcdAtmVolCurveOptionTenors :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
+abcdAtmVolCurveOptionTenors o = do
+  (ns, us) <- qlAbcdAtmVolCurveOptionTenors o
+  pure $ zip (map fromIntegral ns) (map toEnum us)
+{#fun qlAbcdAtmVolCurveOptionTenors{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Int]'&peekIntArray*,preArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |As 'abcdAtmVolCurveOptionTenors', but only the tenors actually used in the ABCD fit.
+abcdAtmVolCurveOptionTenorsInInterpolation :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
+abcdAtmVolCurveOptionTenorsInInterpolation o = do
+  (ns, us) <- qlAbcdAtmVolCurveOptionTenorsInInterpolation o
+  pure $ zip (map fromIntegral ns) (map toEnum us)
+{#fun qlAbcdAtmVolCurveOptionTenorsInInterpolation{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Int]'&peekIntArray*,preArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+{#fun qlAbcdAtmVolCurveOptionDates as abcdAtmVolCurveOptionDates{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |As 'abcdAtmVolCurveOptionDates', in year fractions from the curve's reference date.
+{#fun qlAbcdAtmVolCurveOptionTimes as abcdAtmVolCurveOptionTimes{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
 -- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)

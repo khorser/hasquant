@@ -372,6 +372,65 @@ QlSmileSection* qlBlackVolSurfaceSmileSectionForDate(QlBlackVolSurface* o, int d
 QlSmileSection* qlBlackVolSurfaceSmileSectionForTime(QlBlackVolSurface* o, double t, int extrapolate, char **e) {
   try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(t, extrapolate))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlAbcdAtmVolCurve* qlAbcdAtmVolCurve(unsigned settlementDays, Calendar* calendar, unsigned optionTenorsLen, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, unsigned flagsLen, int *flags, int bdc, DayCounter* dc, char **e) {
+  try {return ret(new QlAbcdAtmVolCurve(alloc(new AbcdAtmVolCurve(settlementDays, *arg(calendar),
+              qlPeriodVector(n, u, optionTenorsLen), qlHandleVector(vols, volsLen),
+              std::vector<bool>(flags, flags+flagsLen), (BusinessDayConvention)bdc, *arg(dc)))));
+  } catch (std::exception& er) {return handleException<QlAbcdAtmVolCurve*>(e, er);}}
+double qlAbcdAtmVolCurveA(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (*arg(o))->a();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAbcdAtmVolCurveB(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (*arg(o))->b();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAbcdAtmVolCurveC(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (*arg(o))->c();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAbcdAtmVolCurveD(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (*arg(o))->d();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAbcdAtmVolCurveRmsError(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (*arg(o))->rmsError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAbcdAtmVolCurveMaxError(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (*arg(o))->maxError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlAbcdAtmVolCurveEndCriteria(QlAbcdAtmVolCurve* o, char **e) {
+  try {return (int)(*arg(o))->endCriteria();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+double qlAbcdAtmVolCurveKAtTime(QlAbcdAtmVolCurve* o, double t, char **e) {
+  try {return (*arg(o))->k(t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlAbcdAtmVolCurveK(QlAbcdAtmVolCurve* o, unsigned *count, double **ks, char **e) {
+  try {
+    std::vector<Real> k = (*arg(o))->k();
+    *count = k.size(); *ks = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < k.size(); ++i) (*ks)[i] = k[i];
+  } catch (std::exception& er) {*count = 0; *ks = 0; handleException<int>(e, er);}}
+void qlAbcdAtmVolCurveOptionTenors(QlAbcdAtmVolCurve* o, unsigned *count, int **n, unsigned *count2, int **u, char **e) {
+  try {
+    const std::vector<Period> &p = (*arg(o))->optionTenors();
+    *count = *count2 = p.size(); *n = qlAllocateInts(*count); *u = qlAllocateInts(*count);
+    for (size_t i = 0; i < p.size(); ++i) {(*n)[i] = p[i].length(); (*u)[i] = (int)p[i].units();}
+  } catch (std::exception& er) {*count = *count2 = 0; *n = 0; *u = 0; handleException<int>(e, er);}}
+void qlAbcdAtmVolCurveOptionTenorsInInterpolation(QlAbcdAtmVolCurve* o, unsigned *count, int **n, unsigned *count2, int **u, char **e) {
+  try {
+    const std::vector<Period> &p = (*arg(o))->optionTenorsInInterpolation();
+    *count = *count2 = p.size(); *n = qlAllocateInts(*count); *u = qlAllocateInts(*count);
+    for (size_t i = 0; i < p.size(); ++i) {(*n)[i] = p[i].length(); (*u)[i] = (int)p[i].units();}
+  } catch (std::exception& er) {*count = *count2 = 0; *n = 0; *u = 0; handleException<int>(e, er);}}
+void qlAbcdAtmVolCurveOptionDates(QlAbcdAtmVolCurve* o, unsigned *count, int **days, char **e) {
+  try {
+    const std::vector<Date> &dates = (*arg(o))->optionDates();
+    *count = dates.size(); *days = qlAllocateInts(*count);
+    for (size_t i = 0; i < dates.size(); ++i) (*days)[i] = dates[i].serialNumber();
+  } catch (std::exception& er) {*count = 0; *days = 0; handleException<int>(e, er);}}
+void qlAbcdAtmVolCurveOptionTimes(QlAbcdAtmVolCurve* o, unsigned *count, double **times, char **e) {
+  try {
+    const std::vector<Time> &t = (*arg(o))->optionTimes();
+    *count = t.size(); *times = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < t.size(); ++i) (*times)[i] = t[i];
+  } catch (std::exception& er) {*count = 0; *times = 0; handleException<int>(e, er);}}
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
 QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
