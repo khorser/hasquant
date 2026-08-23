@@ -1120,6 +1120,10 @@ withCommodityIndex = withForeignPtr . ptr . getIndex
 -- >    CapFloorTermVolatilityStructure*
 -- >      CapFloorTermVolCurve
 -- >      CapFloorTermVolSurface
+-- >    BlackAtmVolCurve*
+-- >      AbcdAtmVolCurve
+-- >      BlackVolSurface*
+-- >        SabrVolSurface
 -- >    LocalVolTermStructure
 -- >    YoYOptionletVolatilitySurface
 -- >    CPIVolatilitySurface
@@ -1227,6 +1231,43 @@ type CInterpolatedSwaptionVolatilityCube = ForeignPtr CInterpolatedSwaptionVolat
 -- treatment as 'SabrSwaptionVolatilityCube' for its 'atmStrike' getter (inherited, in upstream,
 -- from the same abstract @SwaptionVolatilityCube@ base both concrete cubes share).
 type InterpolatedSwaptionVolatilityCube = GenSwaptionVolatilityStructure CInterpolatedSwaptionVolatilityCube
+-- | Black at-the-money (no-smile) volatility curve, abstract here (hasquant binds no
+-- @qlBlackAtmVolCurve@ constructor -- @BlackAtmVolCurve@ has no bindable constructor upstream
+-- either, only its concrete subclasses do). A sibling of 'OptionletVolatilityStructure'\/
+-- 'CapFloorTermVolatilityStructure'\/'SwaptionVolatilityStructure' directly off
+-- 'VolatilityTermStructure'. Reachable as a value via 'SabrVolSurface''s @atmCurve@ getter (any
+-- concrete member may be held there), and as the argument type of 'sabrVolSurface'.
+type GenBlackAtmVolCurve b = GenVolatilityTermStructure (AnyOf CBlackAtmVolCurve' b)
+data CBlackAtmVolCurve'
+type CBlackAtmVolCurve = ForeignPtr CBlackAtmVolCurve'
+type BlackAtmVolCurve = GenBlackAtmVolCurve CBlackAtmVolCurve
+-- | Black volatility (smile) surface: adds a strike\/smile dimension over 'BlackAtmVolCurve'.
+-- Abstract here (no bindable constructor of its own -- only 'SabrVolSurface' constructs one in
+-- this binding), but earns its own hierarchy level rather than folding into 'BlackAtmVolCurve'
+-- (unlike @InterestRateVolSurface@, deliberately not given its own level -- see 'SabrVolSurface')
+-- because its own calculation, @smileSection@, is the defining feature of the "surface" vs
+-- "curve" distinction, not a thin pass-through inspector.
+type GenBlackVolSurface b = GenBlackAtmVolCurve (AnyOf CBlackVolSurface' b)
+data CBlackVolSurface'
+type CBlackVolSurface = ForeignPtr CBlackVolSurface'
+type BlackVolSurface = GenBlackVolSurface CBlackVolSurface
+data CAbcdAtmVolCurve'
+type CAbcdAtmVolCurve = ForeignPtr CAbcdAtmVolCurve'
+-- | ABCD-parametric fit to a set of (tenor, quote) at-the-money vols. A dedicated
+-- 'BlackAtmVolCurve' leaf (real calc\/getters of its own -- @a@\/@b@\/@c@\/@d@\/@rmsError@\/etc --
+-- per the API-design rule in CLAUDE.md), one 'AnyOf' layer under 'GenBlackAtmVolCurve', same depth
+-- as 'CapFloorTermVolCurve' under 'GenCapFloorTermVolatilityStructure'.
+type AbcdAtmVolCurve = GenBlackAtmVolCurve CAbcdAtmVolCurve
+data CSabrVolSurface'
+type CSabrVolSurface = ForeignPtr CSabrVolSurface'
+-- | SABR-smile surface built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
+-- per-tenor vol spreads. A dedicated 'BlackVolSurface' leaf (own getters: @atmCurve@,
+-- @volatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
+-- @InterestRateVolSurface@, which is not given its own hierarchy level here since
+-- 'SabrVolSurface' is its only concrete member in this binding -- per CLAUDE.md's "don't mirror
+-- the C++ hierarchy 1:1" rule). Two 'AnyOf' layers under 'GenBlackVolSurface' (mirrors
+-- 'VanillaSwap' under 'FixedVsFloatingSwap' under 'GenSwap').
+type SabrVolSurface = GenBlackVolSurface CSabrVolSurface
 type CLocalVolTermStructure = ForeignPtr CLocalVolTermStructure'
 type LocalVolTermStructure = GenVolatilityTermStructure CLocalVolTermStructure
 type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
@@ -1309,6 +1350,10 @@ foreign import ccall unsafe "ql.h &qlFreeInterpolatedSwaptionVolatilityCube" qlF
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolatilityStructure" qlFreeCapFloorTermVolatilityStructure :: FinalizerPtr CCapFloorTermVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolCurve" qlFreeCapFloorTermVolCurve :: FinalizerPtr CCapFloorTermVolCurve'
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolSurface" qlFreeCapFloorTermVolSurface :: FinalizerPtr CCapFloorTermVolSurface'
+foreign import ccall unsafe "ql.h &qlFreeBlackAtmVolCurve" qlFreeBlackAtmVolCurve :: FinalizerPtr CBlackAtmVolCurve'
+foreign import ccall unsafe "ql.h &qlFreeBlackVolSurface" qlFreeBlackVolSurface :: FinalizerPtr CBlackVolSurface'
+foreign import ccall unsafe "ql.h &qlFreeAbcdAtmVolCurve" qlFreeAbcdAtmVolCurve :: FinalizerPtr CAbcdAtmVolCurve'
+foreign import ccall unsafe "ql.h &qlFreeSabrVolSurface" qlFreeSabrVolSurface :: FinalizerPtr CSabrVolSurface'
 foreign import ccall unsafe "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYOptionletVolatilitySurface" qlFreeYoYOptionletVolatilitySurface :: FinalizerPtr CYoYOptionletVolatilitySurface'
 foreign import ccall unsafe "ql.h &qlFreeCPIVolatilitySurface" qlFreeCPIVolatilitySurface :: FinalizerPtr CCPIVolatilitySurface'
@@ -1337,6 +1382,10 @@ instance Finalizable CInterpolatedSwaptionVolatilityCube' where finalize = qlFre
 instance Finalizable CCapFloorTermVolatilityStructure' where finalize = qlFreeCapFloorTermVolatilityStructure
 instance Finalizable CCapFloorTermVolCurve' where finalize = qlFreeCapFloorTermVolCurve
 instance Finalizable CCapFloorTermVolSurface' where finalize = qlFreeCapFloorTermVolSurface
+instance Finalizable CBlackAtmVolCurve' where finalize = qlFreeBlackAtmVolCurve
+instance Finalizable CBlackVolSurface' where finalize = qlFreeBlackVolSurface
+instance Finalizable CAbcdAtmVolCurve' where finalize = qlFreeAbcdAtmVolCurve
+instance Finalizable CSabrVolSurface' where finalize = qlFreeSabrVolSurface
 instance Finalizable CLocalVolTermStructure' where finalize = qlFreeLocalVolTermStructure
 instance Finalizable CYoYOptionletVolatilitySurface' where finalize = qlFreeYoYOptionletVolatilitySurface
 instance Finalizable CCPIVolatilitySurface' where finalize = qlFreeCPIVolatilitySurface
@@ -1371,6 +1420,10 @@ foreign import ccall "ql.h qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatil
 foreign import ccall "ql.h qlCapFloorTermVolatilityStructureAsVolatilityTermStructure" qlCapFloorTermVolatilityStructureAsVolatilityTermStructure :: Ptr CCapFloorTermVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure" qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure :: Ptr CCapFloorTermVolCurve' -> IO (Ptr CCapFloorTermVolatilityStructure')
 foreign import ccall "ql.h qlCapFloorTermVolSurfaceAsCapFloorTermVolatilityStructure" qlCapFloorTermVolSurfaceAsCapFloorTermVolatilityStructure :: Ptr CCapFloorTermVolSurface' -> IO (Ptr CCapFloorTermVolatilityStructure')
+foreign import ccall "ql.h qlBlackAtmVolCurveAsVolatilityTermStructure" qlBlackAtmVolCurveAsVolatilityTermStructure :: Ptr CBlackAtmVolCurve' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlBlackVolSurfaceAsBlackAtmVolCurve" qlBlackVolSurfaceAsBlackAtmVolCurve :: Ptr CBlackVolSurface' -> IO (Ptr CBlackAtmVolCurve')
+foreign import ccall "ql.h qlAbcdAtmVolCurveAsBlackAtmVolCurve" qlAbcdAtmVolCurveAsBlackAtmVolCurve :: Ptr CAbcdAtmVolCurve' -> IO (Ptr CBlackAtmVolCurve')
+foreign import ccall "ql.h qlSabrVolSurfaceAsBlackVolSurface" qlSabrVolSurfaceAsBlackVolSurface :: Ptr CSabrVolSurface' -> IO (Ptr CBlackVolSurface')
 foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure" qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure :: Ptr CYoYOptionletVolatilitySurface' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCPIVolatilitySurfaceAsVolatilityTermStructure" qlCPIVolatilitySurfaceAsVolatilityTermStructure :: Ptr CCPIVolatilitySurface' -> IO (Ptr CVolatilityTermStructure')
@@ -1405,6 +1458,10 @@ instance Upcastable CInterpolatedSwaptionVolatilityCube' where {type Base CInter
 instance Upcastable CCapFloorTermVolatilityStructure' where {type Base CCapFloorTermVolatilityStructure' = CVolatilityTermStructure'; upcast = qlCapFloorTermVolatilityStructureAsVolatilityTermStructure}
 instance Upcastable CCapFloorTermVolCurve' where {type Base CCapFloorTermVolCurve' = CCapFloorTermVolatilityStructure'; upcast = qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure}
 instance Upcastable CCapFloorTermVolSurface' where {type Base CCapFloorTermVolSurface' = CCapFloorTermVolatilityStructure'; upcast = qlCapFloorTermVolSurfaceAsCapFloorTermVolatilityStructure}
+instance Upcastable CBlackAtmVolCurve' where {type Base CBlackAtmVolCurve' = CVolatilityTermStructure'; upcast = qlBlackAtmVolCurveAsVolatilityTermStructure}
+instance Upcastable CBlackVolSurface' where {type Base CBlackVolSurface' = CBlackAtmVolCurve'; upcast = qlBlackVolSurfaceAsBlackAtmVolCurve}
+instance Upcastable CAbcdAtmVolCurve' where {type Base CAbcdAtmVolCurve' = CBlackAtmVolCurve'; upcast = qlAbcdAtmVolCurveAsBlackAtmVolCurve}
+instance Upcastable CSabrVolSurface' where {type Base CSabrVolSurface' = CBlackVolSurface'; upcast = qlSabrVolSurfaceAsBlackVolSurface}
 instance Upcastable CLocalVolTermStructure' where {type Base CLocalVolTermStructure' = CVolatilityTermStructure'; upcast = qlLocalVolTermStructureAsVolatilityTermStructure}
 instance Upcastable CYoYOptionletVolatilitySurface' where {type Base CYoYOptionletVolatilitySurface' = CVolatilityTermStructure'; upcast = qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure}
 instance Upcastable CCPIVolatilitySurface' where {type Base CCPIVolatilitySurface' = CVolatilityTermStructure'; upcast = qlCPIVolatilitySurfaceAsVolatilityTermStructure}
@@ -1500,6 +1557,24 @@ peekCapFloorTermVolSurface :: Ptr CCapFloorTermVolSurface' -> IO CapFloorTermVol
 peekCapFloorTermVolSurface = newGenForeignPtr >=> newGenCapFloorTermVolatilityStructure
 withCapFloorTermVolSurface :: CapFloorTermVolSurface -> (Ptr CCapFloorTermVolSurface' -> IO b) -> IO b
 withCapFloorTermVolSurface = withForeignPtr . ptr . peel . peel . getTermStructure
+peekBlackAtmVolCurve :: Ptr CBlackAtmVolCurve' -> IO BlackAtmVolCurve
+peekBlackAtmVolCurve = newCastForeignPtr >=> newGenBlackAtmVolCurve
+withGenBlackAtmVolCurve :: GenBlackAtmVolCurve b -> (Ptr CBlackAtmVolCurve' -> IO r) -> IO r
+withGenBlackAtmVolCurve = withGenForeignPtr . peel . peel . getTermStructure
+newGenBlackAtmVolCurve :: GenForeignPtr b CBlackAtmVolCurve' -> IO (GenBlackAtmVolCurve b)
+newGenBlackAtmVolCurve = pure . GenTermStructure . newAnyOf . newAnyOf
+peekAbcdAtmVolCurve :: Ptr CAbcdAtmVolCurve' -> IO AbcdAtmVolCurve
+peekAbcdAtmVolCurve = newGenForeignPtr >=> newGenBlackAtmVolCurve
+withAbcdAtmVolCurve :: AbcdAtmVolCurve -> (Ptr CAbcdAtmVolCurve' -> IO b) -> IO b
+withAbcdAtmVolCurve = withForeignPtr . ptr . peel . peel . getTermStructure
+withGenBlackVolSurface :: GenBlackVolSurface b -> (Ptr CBlackVolSurface' -> IO r) -> IO r
+withGenBlackVolSurface = withGenForeignPtr . peel . peel . peel . getTermStructure
+newGenBlackVolSurface :: GenForeignPtr b CBlackVolSurface' -> IO (GenBlackVolSurface b)
+newGenBlackVolSurface = pure . GenTermStructure . newAnyOf . newAnyOf . newAnyOf
+peekSabrVolSurface :: Ptr CSabrVolSurface' -> IO SabrVolSurface
+peekSabrVolSurface = newGenForeignPtr >=> newGenBlackVolSurface
+withSabrVolSurface :: SabrVolSurface -> (Ptr CSabrVolSurface' -> IO b) -> IO b
+withSabrVolSurface = withForeignPtr . ptr . peel . peel . peel . getTermStructure
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
 peekLocalVolTermStructure = peekGenVolatilityTermStructure
 peekYoYOptionletVolatilityStructure :: Ptr CYoYOptionletVolatilitySurface' -> IO YoYOptionletVolatilitySurface

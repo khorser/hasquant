@@ -16,6 +16,11 @@
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/noarbsabrsmilesection.hpp>
+#include <ql/experimental/volatility/blackatmvolcurve.hpp>
+#include <ql/experimental/volatility/blackvolsurface.hpp>
+#include <ql/experimental/volatility/abcdatmvolcurve.hpp>
+#include <ql/experimental/volatility/sabrvolsurface.hpp>
+#include <ql/termstructures/volatility/optionlet/optionletstripper2.hpp>
 #include <ql/instruments/capfloor.hpp>
 #include <ql/termstructures/volatility/capfloor/all.hpp>
 #include <ql/math/interpolations/all.hpp>
@@ -332,6 +337,14 @@ void qlRelinkableBlackVolTermStructureLinkTo(QlRelinkableBlackVolTermStructure *
 QlBlackVolTermStructure* qlRelinkableBlackVolTermStructureAsBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
 void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) {del(o);}
 QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+void qlFreeBlackAtmVolCurve(QlBlackAtmVolCurve *o) {del(o);}
+QlVolatilityTermStructure* qlBlackAtmVolCurveAsVolatilityTermStructure(QlBlackAtmVolCurve *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+void qlFreeBlackVolSurface(QlBlackVolSurface *o) {del(o);}
+QlBlackAtmVolCurve* qlBlackVolSurfaceAsBlackAtmVolCurve(QlBlackVolSurface *o) {return ret(new QlBlackAtmVolCurve(*arg(o)));}
+void qlFreeAbcdAtmVolCurve(QlAbcdAtmVolCurve *o) {del(o);}
+QlBlackAtmVolCurve* qlAbcdAtmVolCurveAsBlackAtmVolCurve(QlAbcdAtmVolCurve *o) {return ret(new QlBlackAtmVolCurve(*arg(o)));}
+void qlFreeSabrVolSurface(QlSabrVolSurface *o) {del(o);}
+QlBlackVolSurface* qlSabrVolSurfaceAsBlackVolSurface(QlSabrVolSurface *o) {return ret(new QlBlackVolSurface(*arg(o)));}
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
 QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}

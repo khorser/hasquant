@@ -118,6 +118,8 @@ namespace QuantLib {
   class BatesProcess;
   class BermudanExercise;
   class BjerksundStenslandApproximationEngine;
+  class AbcdAtmVolCurve;
+  class BlackAtmVolCurve;
   class BlackCalculator;
   class BlackDeltaCalculator;
   class BlackCalibrationHelper;
@@ -132,6 +134,7 @@ namespace QuantLib {
   class BlackScholesProcess;
   class BlackSwaptionEngine;
   class BlackVarianceCurve;
+  class BlackVolSurface;
   class BlackVolTermStructure;
   class BlackVolatilitySurfaceDelta;
   class BondHelper;
@@ -268,6 +271,7 @@ namespace QuantLib {
   class ReplicatingVarianceSwapEngine;
   class Rounding;
   class SabrInterpolatedSmileSection;
+  class SabrVolSurface;
   class ShortRateModel;
   class SimplePolynomialFitting;
   class SimpleQuote;
@@ -416,6 +420,8 @@ using QuantLib::BatesModel;
 using QuantLib::BatesProcess;
 using QuantLib::BermudanExercise;
 using QuantLib::BjerksundStenslandApproximationEngine;
+using QuantLib::AbcdAtmVolCurve;
+using QuantLib::BlackAtmVolCurve;
 using QuantLib::BlackCalculator;
 using QuantLib::BlackDeltaCalculator;
 using QuantLib::BlackCalibrationHelper;
@@ -430,6 +436,7 @@ using QuantLib::BlackScholesMertonProcess;
 using QuantLib::BlackScholesProcess;
 using QuantLib::BlackSwaptionEngine;
 using QuantLib::BlackVarianceCurve;
+using QuantLib::BlackVolSurface;
 using QuantLib::BlackVolTermStructure;
 using QuantLib::BlackVolatilitySurfaceDelta;
 using QuantLib::BondHelper;
@@ -566,6 +573,7 @@ using QuantLib::RebatedExercise;
 using QuantLib::ReplicatingVarianceSwapEngine;
 using QuantLib::Rounding;
 using QuantLib::SabrInterpolatedSmileSection;
+using QuantLib::SabrVolSurface;
 using QuantLib::ShortRateModel;
 using QuantLib::SimplePolynomialFitting;
 using QuantLib::SimpleQuote;
@@ -679,6 +687,21 @@ typedef shared_ptr<BatesDoubleExpModel> QlBatesDoubleExpModel;
 typedef shared_ptr<BatesModel> QlBatesModel;
 typedef shared_ptr<BatesProcess> QlBatesProcess;
 typedef shared_ptr<BermudanExercise> QlBermudanExercise;
+// BlackAtmVolCurve is the family root: upstream speaks Handle<BlackAtmVolCurve> itself
+// (SabrVolSurface's ctor/atmCurve(), VolatilityCube), same reasoning as
+// QlOptionletVolatilityStructure/QlSwaptionVolatilityStructure/QlBlackVolTermStructure above --
+// Handle, not shared_ptr. AbcdAtmVolCurve/SabrVolSurface are dedicated leaves with their own
+// calc/getters (per CLAUDE.md), so each gets its own shared_ptr-wrapped type, same as
+// QlSabrSwaptionVolatilityCube/QlInterpolatedSwaptionVolatilityCube under the Handle-wrapped
+// QlSwaptionVolatilityStructure root.
+typedef Handle<BlackAtmVolCurve> QlBlackAtmVolCurve;
+typedef shared_ptr<AbcdAtmVolCurve> QlAbcdAtmVolCurve;
+// BlackVolSurface itself is never spoken of as Handle<BlackVolSurface> upstream (grep confirms),
+// so it's a plain shared_ptr intermediate -- only used to route SabrVolSurface's Upcastable chain
+// through its own smileSection getter, exactly like QlFixedVsFloatingSwap routes VanillaSwap's
+// upcast chain up to QlSwap.
+typedef shared_ptr<BlackVolSurface> QlBlackVolSurface;
+typedef shared_ptr<SabrVolSurface> QlSabrVolSurface;
 typedef shared_ptr<BlackCalculator> QlBlackCalculator;
 typedef shared_ptr<BlackCalibrationHelper> QlBlackCalibrationHelper;
 typedef shared_ptr<BlackProcess> QlBlackProcess;
@@ -1074,6 +1097,10 @@ template <> class ObjClassName<QlBatesDoubleExpModel*> {public: static void outp
 template <> class ObjClassName<QlBatesModel*> {public: static void output(std::ostream& os) {os << "QlBatesModel";}};
 template <> class ObjClassName<QlBatesProcess*> {public: static void output(std::ostream& os) {os << "QlBatesProcess";}};
 template <> class ObjClassName<QlBermudanExercise*> {public: static void output(std::ostream& os) {os << "QlBermudanExercise";}};
+template <> class ObjClassName<QlBlackAtmVolCurve*> {public: static void output(std::ostream& os) {os << "QlBlackAtmVolCurve";}};
+template <> class ObjClassName<QlAbcdAtmVolCurve*> {public: static void output(std::ostream& os) {os << "QlAbcdAtmVolCurve";}};
+template <> class ObjClassName<QlBlackVolSurface*> {public: static void output(std::ostream& os) {os << "QlBlackVolSurface";}};
+template <> class ObjClassName<QlSabrVolSurface*> {public: static void output(std::ostream& os) {os << "QlSabrVolSurface";}};
 template <> class ObjClassName<QlBlackCalculator*> {public: static void output(std::ostream& os) {os << "QlBlackCalculator";}};
 template <> class ObjClassName<QlBlackCalibrationHelper*> {public: static void output(std::ostream& os) {os << "QlBlackCalibrationHelper";}};
 template <> class ObjClassName<QlBlackProcess*> {public: static void output(std::ostream& os) {os << "QlBlackProcess";}};

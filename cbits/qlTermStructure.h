@@ -11,6 +11,14 @@ extern "C" {
   QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, char **e);
   void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
   QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
+  void qlFreeBlackAtmVolCurve(QlBlackAtmVolCurve *o);
+  QlVolatilityTermStructure* qlBlackAtmVolCurveAsVolatilityTermStructure(QlBlackAtmVolCurve *o);
+  void qlFreeBlackVolSurface(QlBlackVolSurface *o);
+  QlBlackAtmVolCurve* qlBlackVolSurfaceAsBlackAtmVolCurve(QlBlackVolSurface *o);
+  void qlFreeAbcdAtmVolCurve(QlAbcdAtmVolCurve *o);
+  QlBlackAtmVolCurve* qlAbcdAtmVolCurveAsBlackAtmVolCurve(QlAbcdAtmVolCurve *o);
+  void qlFreeSabrVolSurface(QlSabrVolSurface *o);
+  QlBlackVolSurface* qlSabrVolSurfaceAsBlackVolSurface(QlSabrVolSurface *o);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
   QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e);
