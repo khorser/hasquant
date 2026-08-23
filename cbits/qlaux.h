@@ -144,6 +144,8 @@ namespace QuantLib {
   class CallableFixedRateBond;
   class CallableZeroCouponBond;
   class CapFloor;
+  class CapFloorTermVolatilityStructure;
+  class CapFloorTermVolCurve;
   class CapFloorTermVolSurface;
   class CapHelper;
   class CashOrNothingPayoff;
@@ -440,6 +442,8 @@ using QuantLib::CallableBondVolatilityStructure;
 using QuantLib::CallableFixedRateBond;
 using QuantLib::CallableZeroCouponBond;
 using QuantLib::CapFloor;
+using QuantLib::CapFloorTermVolatilityStructure;
+using QuantLib::CapFloorTermVolCurve;
 using QuantLib::CapFloorTermVolSurface;
 using QuantLib::CapHelper;
 using QuantLib::CashOrNothingPayoff;
@@ -693,6 +697,13 @@ typedef shared_ptr<Callability> QlCallability;
 typedef shared_ptr<CallableBond> QlCallableBond;
 typedef shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
 typedef shared_ptr<CapFloor> QlCapFloor;
+// Unlike QlOptionletVolatilityStructure/QlSwaptionVolatilityStructure/QlBlackVolTermStructure,
+// upstream never speaks Handle<CapFloorTermVolatilityStructure> anywhere (grep confirms only
+// Handle<CapFloorTermVolCurve>, in the still-unbound OptionletStripper2, and
+// shared_ptr<CapFloorTermVolSurface>, in OptionletStripper1) -- shared_ptr, like
+// QlVolatilityTermStructure/QlCapFloorTermVolSurface themselves.
+typedef shared_ptr<CapFloorTermVolatilityStructure> QlCapFloorTermVolatilityStructure;
+typedef shared_ptr<CapFloorTermVolCurve> QlCapFloorTermVolCurve;
 typedef shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
 // CommodityCurve is a plain TermStructure subclass, constructed and consumed directly by value
 // (basisOfCurve_ is a shared_ptr<CommodityCurve>, never a Handle) -- shared_ptr-wrapped, same
@@ -915,6 +926,8 @@ template <> class ObjClassName<CallableBondVolatilityStructure*> {public: static
 template <> class ObjClassName<CallableFixedRateBond*> {public: static void output(std::ostream& os) {os << "CallableFixedRateBond";}};
 template <> class ObjClassName<CallableZeroCouponBond*> {public: static void output(std::ostream& os) {os << "CallableZeroCouponBond";}};
 template <> class ObjClassName<CapFloor*> {public: static void output(std::ostream& os) {os << "CapFloor";}};
+template <> class ObjClassName<CapFloorTermVolatilityStructure*> {public: static void output(std::ostream& os) {os << "CapFloorTermVolatilityStructure";}};
+template <> class ObjClassName<CapFloorTermVolCurve*> {public: static void output(std::ostream& os) {os << "CapFloorTermVolCurve";}};
 template <> class ObjClassName<CapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "CapFloorTermVolSurface";}};
 template <> class ObjClassName<CapHelper*> {public: static void output(std::ostream& os) {os << "CapHelper";}};
 template <> class ObjClassName<CashOrNothingPayoff*> {public: static void output(std::ostream& os) {os << "CashOrNothingPayoff";}};
@@ -1077,6 +1090,8 @@ template <> class ObjClassName<QlCallability*> {public: static void output(std::
 template <> class ObjClassName<QlCallableBond*> {public: static void output(std::ostream& os) {os << "QlCallableBond";}};
 template <> class ObjClassName<QlCallableBondVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlCallableBondVolatilityStructure";}};
 template <> class ObjClassName<QlCapFloor*> {public: static void output(std::ostream& os) {os << "QlCapFloor";}};
+template <> class ObjClassName<QlCapFloorTermVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolatilityStructure";}};
+template <> class ObjClassName<QlCapFloorTermVolCurve*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolCurve";}};
 template <> class ObjClassName<QlCapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolSurface";}};
 template <> class ObjClassName<QlCommodityCurve*> {public: static void output(std::ostream& os) {os << "QlCommodityCurve";}};
 template <> class ObjClassName<QlCommodityIndex*> {public: static void output(std::ostream& os) {os << "QlCommodityIndex";}};

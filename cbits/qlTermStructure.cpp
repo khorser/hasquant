@@ -524,20 +524,29 @@ double qlSwaptionVolatilityStructureVolatility5(QlSwaptionVolatilityStructure* o
 double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o, int n, int u, int n1, int u1, double strike, int extrapolate, char **e) {
   try {return (*arg(o))->volatility(Period(n, (TimeUnit)u), Period(n1, (TimeUnit)u1), strike, extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
-  try {return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc,
+QlCapFloorTermVolCurve* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+  try {return ret(new QlCapFloorTermVolCurve(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc,
               qlPeriodVector(n, u, l), qlHandleVector(vols, volsLen), *arg(dc)))));
-  } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
-QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
-  try {return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
+  } catch (std::exception& er) {return handleException<QlCapFloorTermVolCurve*>(e, er);}}
+QlCapFloorTermVolCurve* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned l, int *n, unsigned, int *u, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+  try {return ret(new QlCapFloorTermVolCurve(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc,
               qlPeriodVector(n, u, l), qlHandleVector(vols, volsLen), *arg(dc)))));
-  } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
-QlVolatilityTermStructure* qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
-  try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
-  } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
-QlVolatilityTermStructure* qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
-  try {return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
-  } catch (std::exception& er) {return handleException<QlVolatilityTermStructure*>(e, er);}}
+  } catch (std::exception& er) {return handleException<QlCapFloorTermVolCurve*>(e, er);}}
+QlCapFloorTermVolatilityStructure* qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
+  try {return ret(new QlCapFloorTermVolatilityStructure(alloc(new ConstantCapFloorTermVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
+  } catch (std::exception& er) {return handleException<QlCapFloorTermVolatilityStructure*>(e, er);}}
+QlCapFloorTermVolatilityStructure* qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
+  try {return ret(new QlCapFloorTermVolatilityStructure(alloc(new ConstantCapFloorTermVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), *arg(dc)))));
+  } catch (std::exception& er) {return handleException<QlCapFloorTermVolatilityStructure*>(e, er);}}
+double qlCapFloorTermVolatilityStructureVolatilityForPeriod(QlCapFloorTermVolatilityStructure* o, int n, int u, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->volatility(Period(n, (TimeUnit)u), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCapFloorTermVolatilityStructureVolatilityForDate(QlCapFloorTermVolatilityStructure* o, int date, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->volatility(Date(date), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCapFloorTermVolatilityStructureVolatilityForTime(QlCapFloorTermVolatilityStructure* o, double t, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->volatility(t, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SpreadedSwaptionVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
@@ -545,8 +554,33 @@ QlOptionletVolatilityStructure* qlSpreadedOptionletVolatility(QlOptionletVolatil
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new SpreadedOptionletVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 
+void qlFreeCapFloorTermVolatilityStructure(QlCapFloorTermVolatilityStructure *o) {del(o);}
+QlVolatilityTermStructure* qlCapFloorTermVolatilityStructureAsVolatilityTermStructure(QlCapFloorTermVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+void qlFreeCapFloorTermVolCurve(QlCapFloorTermVolCurve *o) {del(o);}
+QlCapFloorTermVolatilityStructure* qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure(QlCapFloorTermVolCurve *o) {return ret(new QlCapFloorTermVolatilityStructure(*arg(o)));}
+void qlCapFloorTermVolCurveOptionDates(QlCapFloorTermVolCurve *o, unsigned *count, int **days) {
+  const std::vector<Date> &dates = (*arg(o))->optionDates();
+  *count = dates.size(); *days = qlAllocateInts(*count);
+  for (size_t i = 0; i < dates.size(); ++i) (*days)[i] = dates[i].serialNumber();
+}
+void qlCapFloorTermVolCurveOptionTimes(QlCapFloorTermVolCurve *o, unsigned *count, double **times) {
+  const std::vector<Time> &t = (*arg(o))->optionTimes();
+  *count = t.size(); *times = qlAllocateDoubles(*count);
+  for (size_t i = 0; i < t.size(); ++i) (*times)[i] = t[i];
+}
+
 void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) {del(o);}
-QlVolatilityTermStructure* qlCapFloorTermVolSurfaceAsVolatilityTermStructure(QlCapFloorTermVolSurface *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
+QlCapFloorTermVolatilityStructure* qlCapFloorTermVolSurfaceAsCapFloorTermVolatilityStructure(QlCapFloorTermVolSurface *o) {return ret(new QlCapFloorTermVolatilityStructure(*arg(o)));}
+void qlCapFloorTermVolSurfaceOptionDates(QlCapFloorTermVolSurface *o, unsigned *count, int **days) {
+  const std::vector<Date> &dates = (*arg(o))->optionDates();
+  *count = dates.size(); *days = qlAllocateInts(*count);
+  for (size_t i = 0; i < dates.size(); ++i) (*days)[i] = dates[i].serialNumber();
+}
+void qlCapFloorTermVolSurfaceOptionTimes(QlCapFloorTermVolSurface *o, unsigned *count, double **times) {
+  const std::vector<Time> &t = (*arg(o))->optionTimes();
+  *count = t.size(); *times = qlAllocateDoubles(*count);
+  for (size_t i = 0; i < t.size(); ++i) (*times)[i] = t[i];
+}
 void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o) {del(o);}
 QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
 double qlLocalVolTermStructureLocalVol(QlLocalVolTermStructure* o, int d, double underlyingLevel, int extrapolate, char **e) {

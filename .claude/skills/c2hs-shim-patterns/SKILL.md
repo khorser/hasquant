@@ -337,6 +337,7 @@ Mnemonic table:
 | | | GenStochasticProcess1D | `p1d` | GenOneAssetOption | `oo` |
 | | | GenHestonProcess | `hp` | GenFixedVsFloatingSwap | `fvf` |
 | | | GenBlackCalibrationHelper | `bch` | | |
+| | | GenCapFloorTermVolatilityStructure | `c` | | |
 
 Applies only to the actual type-variable occurrence (inside a backtick
 `` `GenQuote a' `` annotation or an explicit Haskell signature), never to a

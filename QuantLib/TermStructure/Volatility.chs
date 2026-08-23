@@ -15,6 +15,9 @@ module QuantLib.TermStructure.Volatility
   , GenBlackVolTermStructure
   , RelinkableBlackVolTermStructure
   , CallableBondVolatilityStructure
+  , CapFloorTermVolatilityStructure
+  , GenCapFloorTermVolatilityStructure
+  , CapFloorTermVolCurve
   , CapFloorTermVolSurface
   , LocalVolTermStructure
   , OptionletVolatilityStructure
@@ -85,6 +88,13 @@ module QuantLib.TermStructure.Volatility
   , callableBondConstantVolatility
   , constantCapFloorTermVolatility'
   , constantCapFloorTermVolatility
+  , capFloorVolatilityForPeriod
+  , capFloorVolatilityForDate
+  , capFloorVolatilityForTime
+  , capFloorTermVolCurveOptionDates
+  , capFloorTermVolCurveOptionTimes
+  , capFloorTermVolSurfaceOptionDates
+  , capFloorTermVolSurfaceOptionTimes
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
   , linkSwaptionVolTo
@@ -159,6 +169,8 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlRelinkableBlackVolTermStructure as RelinkableBlackVolTermStructure foreign -> CRelinkableBlackVolTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
+{#pointer *QlCapFloorTermVolatilityStructure as CapFloorTermVolatilityStructure foreign -> CCapFloorTermVolatilityStructure' nocode#}
+{#pointer *QlCapFloorTermVolCurve as CapFloorTermVolCurve foreign -> CCapFloorTermVolCurve' nocode#}
 {#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign -> CCapFloorTermVolSurface' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlRelinkableSwaptionVolatilityStructure as RelinkableSwaptionVolatilityStructure foreign -> CRelinkableSwaptionVolatilityStructure' nocode#}
@@ -279,7 +291,7 @@ fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr
 -- step -- 'OptionletStripper1' itself is never exposed as a Haskell type, since none of its own
 -- getters (capFloorPrices\/capletVols\/etc.) are needed beyond feeding the adapter, per the "bind
 -- few inspectors" rule.
-{#fun qlOptionletStripper1 as optionletStripper1{withGenVolatilityTermStructure*`CapFloorTermVolSurface'
+{#fun qlOptionletStripper1 as optionletStripper1{withCapFloorTermVolSurface*`CapFloorTermVolSurface'
   ,withIborIndex*`GenIborIndex ibor'
   ,fromMaybeDouble`Maybe Double' -- ^switchStrikes
   ,`Double' -- ^accuracy
@@ -659,10 +671,43 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 {#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
 
 -- |fixed reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
 
 -- |floating reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatility{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
+
+-- |returns the volatility for a given option tenor and strike
+{#fun qlCapFloorTermVolatilityStructureVolatilityForPeriod as capFloorVolatilityForPeriod{withGenCapFloorTermVolatilityStructure*`GenCapFloorTermVolatilityStructure c'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |returns the volatility for a given option date and strike
+{#fun qlCapFloorTermVolatilityStructureVolatilityForDate as capFloorVolatilityForDate{withGenCapFloorTermVolatilityStructure*`GenCapFloorTermVolatilityStructure c'
+  ,withDay*`Day' -- ^optionDate
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |returns the volatility for a given option time and strike
+{#fun qlCapFloorTermVolatilityStructureVolatilityForTime as capFloorVolatilityForTime{withGenCapFloorTermVolatilityStructure*`GenCapFloorTermVolatilityStructure c'
+  ,`Double' -- ^optionTime
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The option-tenor grid's dates, calendar-advanced from the curve's reference date.
+{#fun qlCapFloorTermVolCurveOptionDates as capFloorTermVolCurveOptionDates{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Day]'&peekDayArray*}->`()'#}
+
+-- |As 'capFloorTermVolCurveOptionDates', in year fractions from the curve's reference date.
+{#fun qlCapFloorTermVolCurveOptionTimes as capFloorTermVolCurveOptionTimes{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Double]'&peekDoubleArray*}->`()'#}
+
+-- |The option-tenor grid's dates, calendar-advanced from the surface's reference date.
+{#fun qlCapFloorTermVolSurfaceOptionDates as capFloorTermVolSurfaceOptionDates{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Day]'&peekDayArray*}->`()'#}
+
+-- |As 'capFloorTermVolSurfaceOptionDates', in year fractions from the surface's reference date.
+{#fun qlCapFloorTermVolSurfaceOptionTimes as capFloorTermVolSurfaceOptionTimes{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Double]'&peekDoubleArray*}->`()'#}
 
 -- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
 -- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)
@@ -706,14 +751,14 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 {#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |fixed reference date, floating market data
-capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO VolatilityTermStructure
+capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO CapFloorTermVolCurve
 capFloorTermVolCurve' d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 ntq
-{#fun qlCapFloorTermVolCurve1{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlCapFloorTermVolCurve1{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
 
 -- |floating reference date, floating market data
-capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO VolatilityTermStructure
+capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO CapFloorTermVolCurve
 capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 ntq
-{#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`VolatilityTermStructure'peekVolatilityTermStructure*#}
+{#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
 
 -- |A Black volatility curve built from time-dependent (ATM) market vols, interpolating on total
 -- variance (linear by default, or the given 'Interpolation') -- no strike dependence; see

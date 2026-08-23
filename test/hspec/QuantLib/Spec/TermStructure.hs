@@ -612,6 +612,42 @@ spec = do
           priceConst `shouldSatisfy` (> 1)
           abs (priceStripped - priceConst) / abs priceConst `shouldSatisfy` (< 1.0e-5)
 
+      -- CapFloorTermVolatilityStructure::volatility isn't declared on the generic
+      -- VolatilityTermStructure, so this exercises the new family root directly across all three
+      -- concrete subclasses (ConstantCapFloorTermVolatility, CapFloorTermVolCurve,
+      -- CapFloorTermVolSurface), plus the calendar/day-counter-derived optionDates/optionTimes
+      -- getters on the two LazyObject leaves.
+      it "queries a flat cap/floor vol surface, curve and constant structure at their own grid" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          let tenors = [(n, Years) | n <- [1 .. 10]]
+
+          flatVolQ <- Quote.simpleQuote 0.18
+          let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
+          capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
+          volFromSurface <- Vol.capFloorVolatilityForPeriod capVolSurface (5, Years) 0.05 False
+          volFromSurface `shouldBe` 0.18
+          surfaceDates <- Vol.capFloorTermVolSurfaceOptionDates capVolSurface
+          surfaceTimes <- Vol.capFloorTermVolSurfaceOptionTimes capVolSurface
+          length surfaceDates `shouldBe` 10
+          length surfaceTimes `shouldBe` 10
+
+          curveVolQ <- mapM (const (Quote.simpleQuote 0.18)) tenors
+          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
+          volFromCurve <- Vol.capFloorVolatilityForPeriod capVolCurve (5, Years) 0.05 False
+          volFromCurve `shouldBe` 0.18
+          curveDates <- Vol.capFloorTermVolCurveOptionDates capVolCurve
+          curveTimes <- Vol.capFloorTermVolCurveOptionTimes capVolCurve
+          length curveDates `shouldBe` 10
+          length curveTimes `shouldBe` 10
+
+          constVolQ <- Quote.simpleQuote 0.18
+          constVol <- Vol.constantCapFloorTermVolatility 0 cal Following constVolQ dc
+          volFromConst <- Vol.capFloorVolatilityForPeriod constVol (5, Years) 0.05 False
+          volFromConst `shouldBe` 0.18
+
       -- Bachelier (normal-vol) engines use a different pricing formula from their Black
       -- (lognormal-vol) siblings; this checks the new bindings are actually wired to that
       -- formula rather than silently aliasing to Black, by repricing the same instrument
