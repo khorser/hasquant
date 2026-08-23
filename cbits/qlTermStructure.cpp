@@ -1357,8 +1357,10 @@ QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int refer
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ImpliedTermStructure(*arg(x0), Date(referenceDate))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
-QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, char **e) {
-  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new PiecewiseZeroSpreadedTermStructure(*arg(x0), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq)))));
+QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, int interpolator, int approximator, int approximatorArg, char **e) {
+  try {
+    YieldTermStructure *ts = qlPiecewiseZeroSpreadedTermStructureAux(qlNullableHandle(arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq, interpolator, approximator, approximatorArg);
+    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), *arg(underlyingBlackVolTS), strike, *arg(exchRateBlackVolTS), exchRateATMlevel, underlyingExchRateCorrelation)))));

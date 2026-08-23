@@ -674,13 +674,16 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
 -- and stays linked to 'baseCurve'.
 {#fun qlImpliedTermStructure as impliedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
--- |A yield curve with a vector of zero-yield spreads added to 'baseCurve', interpolated linearly
--- between the given dates. Remains linked to changes in 'baseCurve' or the spread quotes.
+-- |A yield curve with a vector of zero-yield spreads added to 'baseCurve', interpolating
+-- between the given dates with the given 'Interpolation'. Remains linked to changes in
+-- 'baseCurve' or the spread quotes.
 piecewiseZeroSpreadedTermStructure :: GenYieldTermStructure y
   -> [(Day, GenQuote q)]  -- ^spreads
-  -> Compounding -> Frequency -> IO YieldTermStructure
-piecewiseZeroSpreadedTermStructure ts qd = qlPiecewiseZeroSpreadedTermStructure ts qs ds where (ds, qs) = unzip qd
-{#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  -> Compounding -> Frequency -> Interpolation -> IO YieldTermStructure
+piecewiseZeroSpreadedTermStructure ts qd c f i = uncurryNested (qlPiecewiseZeroSpreadedTermStructure ts qs ds c f) (qlInterpolation i)
+  where (ds, qs) = unzip qd
+{#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Compounding',`Frequency'
+  ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Quanto term structure, modelling the quanto effect in option pricing. Stays linked to all
 -- four inputs.

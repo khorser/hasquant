@@ -431,6 +431,60 @@ YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
   }
 }
 
+YieldTermStructure *qlPiecewiseZeroSpreadedTermStructureAux(
+    const Handle<YieldTermStructure>& baseCurve,
+    const std::vector<Handle<Quote> >& spreads,
+    const std::vector<Date>& dates,
+    Compounding comp, Frequency freq,
+    int interpolator, int approximator, int approximatorArg) {
+  switch (interpolator) {
+  case hasquant::BackwardFlat:
+    return new InterpolatedPiecewiseZeroSpreadedTermStructure<BackwardFlat>(baseCurve, spreads, dates, comp, freq);
+  case hasquant::ForwardFlat:
+    return new InterpolatedPiecewiseZeroSpreadedTermStructure<ForwardFlat>(baseCurve, spreads, dates, comp, freq);
+  case hasquant::Linear:
+    return new InterpolatedPiecewiseZeroSpreadedTermStructure<Linear>(baseCurve, spreads, dates, comp, freq);
+  case hasquant::LogLinear:
+    return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogLinear>(baseCurve, spreads, dates, comp, freq);
+  case hasquant::Cubic:
+    switch (approximator) {
+    case hasquant::NaturalSpline:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
+          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    case hasquant::Kruger:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
+          Cubic(CubicInterpolation::Kruger));
+    case hasquant::FritschButland:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
+          Cubic(CubicInterpolation::FritschButland));
+    case hasquant::Parabolic:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
+          Cubic(CubicInterpolation::Parabolic, approximatorArg));
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+  case hasquant::LogCubic:
+    switch(approximator) {
+    case hasquant::NaturalSpline:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
+          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    case hasquant::Kruger:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
+          LogCubic(CubicInterpolation::Kruger));
+    case hasquant::FritschButland:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
+          LogCubic(CubicInterpolation::FritschButland));
+    case hasquant::Parabolic:
+      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
+          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+  default:
+    QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+}
+
 DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
     const std::vector<Date>& dates,
     const std::vector<double>& densities,

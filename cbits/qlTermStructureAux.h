@@ -101,6 +101,13 @@ QuantLib::YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
   const std::vector<double>& dfs,
   int interpolator, int approximator, int approximatorArg);
 
+QuantLib::YieldTermStructure *qlPiecewiseZeroSpreadedTermStructureAux(
+  const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& spreads,
+  const std::vector<QuantLib::Date>& dates,
+  QuantLib::Compounding comp, QuantLib::Frequency freq,
+  int interpolator, int approximator, int approximatorArg);
+
 // some credit stuff
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
             const std::vector<QuantLib::Date>& dates,

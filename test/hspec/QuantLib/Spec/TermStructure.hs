@@ -141,6 +141,28 @@ spec = do
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
+      -- Same spread value at two nodes bracketing the query date: with 'Linear' interpolation
+      -- of the (piecewise-bootstrapped) spread, the spread at any date between them equals that
+      -- common value, so this reduces to the same check as 'zeroSpreadedTermStructure' above.
+      it "piecewise z-spreaded" $
+        Settings.keepingSettings' $ do
+          (_calendar, _settlementDays, ts) <- setup
+          q <- Quote.simpleQuote 0.01
+          val <- Quote.value q
+          refDate <- asTermStructure ts >>= referenceDate
+          let d1 = addGregorianYearsClip 10 refDate
+          spreaded <- piecewiseZeroSpreadedTermStructure ts [(refDate, q), (d1, q)] IR.Continuous NoFrequency Linear
+          actual360dc <- dayCounter (Actual360 False)
+          let testDate = addGregorianYearsClip 5 refDate
+          zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False
+          spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
+          (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
+
+          -- spot-check a second interpolation builds and queries without crashing
+          spreadedCubic <- piecewiseZeroSpreadedTermStructure ts [(refDate, q), (d1, q)] IR.Continuous NoFrequency (Cubic Kruger)
+          cubicZero <- IR.rate <$> zeroRate' spreadedCubic testDate actual360dc IR.Continuous NoFrequency False
+          cubicZero `shouldSatisfy` (not . isNaN)
+
       -- Mirrors upstream's ultimateforwardtermstructure.cpp testZeroRateAtFirstSmoothingPoint:
       -- below the first smoothing point (fsp) the UFR curve must exactly reproduce the base
       -- curve's own zero rate, since extrapolation only kicks in past fsp.
