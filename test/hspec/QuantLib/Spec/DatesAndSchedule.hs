@@ -3,6 +3,7 @@ module QuantLib.Spec.DatesAndSchedule (spec) where
 
 import Prelude hiding(until, head)
 
+import Control.Exception(SomeException, evaluate, try)
 import Test.Hspec
 import Test.Hspec.QuickCheck(prop)
 import Test.QuickCheck.Monadic as Q(assert, monadicIO, run)
@@ -150,3 +151,45 @@ spec = do
           -- ql.Schedule(ql.Date(28, 3, 2013), ql.Date(30, 3, 2015), ql.Period(1, ql.Years), ql.TARGET(), ql.Unadjusted, ql.Unadjusted, ql.DateGeneration.Forward, True).dates()
           (schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Forward True Nothing Nothing >>= dates)
             `shouldReturn` [28 `march` 2013, 31 `march` 2014, 30 `march` 2015]
+
+    -- regression tests for QuantLib.Settings.keepingSettings/keepingSettings' themselves: every
+    -- other test in this suite trusts these brackets to restore the evaluation date, so their own
+    -- restore behaviour -- including on an exception raised inside the bracketed action -- is
+    -- worth pinning down directly rather than only assuming it from Control.Exception.bracket's
+    -- documented semantics.
+    describe "settings" $ do
+      it "keepingSettings restores the evaluation date set inside it, on normal completion" $ do
+        before' <- Settings.evaluationDate
+        let inside = addDays 365 before'
+        Settings.keepingSettings $ Settings.setEvaluationDate (Just inside)
+        after' <- Settings.evaluationDate
+        after' `shouldBe` before'
+
+      it "keepingSettings' restores the evaluation date set inside it, on normal completion" $ do
+        before' <- Settings.evaluationDate
+        let inside = addDays 365 before'
+        Settings.keepingSettings' $ Settings.setEvaluationDate (Just inside)
+        after' <- Settings.evaluationDate
+        after' `shouldBe` before'
+
+      it "keepingSettings restores the evaluation date even when the bracketed action throws" $ do
+        before' <- Settings.evaluationDate
+        let inside = addDays 365 before'
+        (result :: Either SomeException ()) <- try $ Settings.keepingSettings $ do
+          Settings.setEvaluationDate (Just inside)
+          _ <- evaluate (error "deliberate failure inside keepingSettings" :: ())
+          return ()
+        result `shouldSatisfy` either (const True) (const False)
+        after' <- Settings.evaluationDate
+        after' `shouldBe` before'
+
+      it "keepingSettings' restores the evaluation date even when the bracketed action throws" $ do
+        before' <- Settings.evaluationDate
+        let inside = addDays 365 before'
+        (result :: Either SomeException ()) <- try $ Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just inside)
+          _ <- evaluate (error "deliberate failure inside keepingSettings'" :: ())
+          return ()
+        result `shouldSatisfy` either (const True) (const False)
+        after' <- Settings.evaluationDate
+        after' `shouldBe` before'

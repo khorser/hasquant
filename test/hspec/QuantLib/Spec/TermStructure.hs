@@ -85,7 +85,7 @@ spec = do
 
             ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear
             return (cal, settlementDays, ts)
-      it "referenceChange" $ do
+      it "referenceChange" $ Settings.keepingSettings' $ do
         let ds = [10, 30, 60, 120, 360, 720]
         (_calendar, settlementDays, _ts) <- setup
         flatRate <- Quote.simpleQuote 0.03

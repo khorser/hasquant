@@ -198,6 +198,26 @@ labelled `(LONG)` while running in 0.5s).
   actually run it. This is what catches the staleness above and any
   enum/factory-table order mismatch; `test/` won't, since it doesn't know
   about cases it was never written to check.
+- **A new hspec test that sets `Settings.evaluationDate` must wrap its body in
+  `Settings.keepingSettings'`, not a manual trailing `performGC`.**
+  `QuantLib.Settings.keepingSettings'` is a `bracket`-based helper that
+  already runs `performGC` right before restoring the saved `Settings`
+  singleton — on normal completion *and* on an exception, which a manual
+  trailing call does not cover. Nearly every hspec test that mutates the
+  evaluation date is already wrapped in it
+  (`test/hspec/QuantLib/Spec/DatesAndSchedule.hs` has dozens of examples);
+  don't add a second, redundant `performGC` on top. This matters especially
+  for a test anchored to a fixed historical date with a long internal
+  schedule (a term price surface, a piecewise curve with a maturity decades
+  out): without the bracket's GC, a still-alive `LazyObject` from that test
+  can crash an unrelated *later* test once a subsequent
+  `Settings.setEvaluationDate` call notifies observers and the old object's
+  now-past termination date trips `effective date ... later than or equal
+  to termination date ...` deep in QuantLib. `keepingSettings'`/
+  `keepingSettings`'s own restore-on-exception behavior has a direct
+  regression test in `test/hspec/QuantLib/Spec/DatesAndSchedule.hs`
+  (`describe "settings"`) — extend it, don't re-derive it, if this ever
+  needs re-verifying.
 - **A smoke script must not `try`/`catch` on `QuantLib.Type.Error`.**
   Compiled standalone from the repo root, ghc finds `QuantLib/Type.hs` as
   *source* and recompiles it, so the script's `Error` is a different type

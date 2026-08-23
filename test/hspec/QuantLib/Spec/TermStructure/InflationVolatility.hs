@@ -2,7 +2,6 @@ module QuantLib.Spec.TermStructure.InflationVolatility (spec) where
 
 import Control.Monad(forM_, zipWithM_)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
-import System.Mem(performGC)
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
@@ -173,7 +172,6 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
         vol <- yoyOptionletVolatility yoySurf d3 k Nothing True
         abs (vol - v) `shouldSatisfy` (< eps)
       ) strikes volATyear3
-    performGC
 
   it "recovers upstream's cached ATM YoY swap/inflation curve (testYoYPriceSurfaceToATM)" $ Settings.keepingSettings' $ do
     (_, _, _, _, _, priceSurfEU) <- setup
@@ -189,7 +187,6 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     forM_ (zip (map fst dateRates) atmYoYRates) $ \(d, expected) -> do
       a <- yoyCapFloorAtmYoYRate priceSurfEU d Nothing True
       abs (a - expected) `shouldSatisfy` (< eps)
-    performGC
 
   -- No second upstream fixture covers a non-(Bicubic, Cubic) combination, so this is a
   -- construction/sanity check only, same reasoning as the interpolatedYoYInflationCurve
@@ -212,7 +209,6 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurf
     rate <- yoyCapFloorAtmYoYSwapRate priceSurf (fst (head dateRates)) True
     rate `shouldSatisfy` (not . isNaN)
-    performGC
 
   -- No second upstream fixture covers a non-Linear interpolation here, so this is a
   -- construction/sanity check only, same reasoning as the spot-checks above. LogCubic is
@@ -235,6 +231,5 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     d1 <- advance cal baseDate (1, Years) Unadjusted False
     vol <- yoyOptionletVolatility yoySurf d1 (head strikes) Nothing True
     vol `shouldSatisfy` (not . isNaN)
-    performGC
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

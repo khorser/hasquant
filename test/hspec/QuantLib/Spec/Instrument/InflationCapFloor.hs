@@ -2,7 +2,6 @@ module QuantLib.Spec.Instrument.InflationCapFloor (spec) where
 
 import Control.Monad(forM_, forM)
 import Data.Time.Calendar(toGregorian, fromGregorian)
-import System.Mem(performGC)
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
@@ -159,7 +158,6 @@ spec = do
       setPricingEngine o engine
       npv o
     abs (capNPV - sum caplets) `shouldSatisfy` (< 1e-6)
-    performGC
 
   it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Settings.keepingSettings' $ do
     -- Confirmed by reading inflationcoupon.cpp: InflationCoupon::rate() unconditionally requires
@@ -197,7 +195,6 @@ spec = do
     capNPV <- npv capInst
 
     abs ((uncappedNPV - capNPV) - cappedNPV) `shouldSatisfy` (< 1e-6)
-    performGC
 
  describe "CPI cap/floor" $ do
   -- CPI cap/floor has no vol-driven engine in QL 1.43 -- InterpolatingCPICapFloorEngine prices
@@ -254,7 +251,6 @@ spec = do
     setPricingEngine floorInst engine
     floorNPV <- npv floorInst
     abs (floorNPV - fPriceGrid) `shouldSatisfy` (< 1e-9)
-    performGC
 
   -- No upstream fixture covers a non-Bilinear Interpolation2D, so this is a
   -- construction/sanity check only, same reasoning as the yoyCapFloorTermPriceSurface
@@ -283,4 +279,3 @@ spec = do
     setPricingEngine capInst engine
     capNPV <- npv capInst
     abs (capNPV - cPriceGrid) `shouldSatisfy` (< 1e-9)
-    performGC
