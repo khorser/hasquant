@@ -187,6 +187,7 @@ typedef struct QlYearOnYearInflationSwap QlYearOnYearInflationSwap;
 typedef struct QlYearOnYearInflationSwapHelper QlYearOnYearInflationSwapHelper;
 typedef struct QlYieldTermStructure QlYieldTermStructure;
 typedef struct QlYoYInflationCapFloor QlYoYInflationCapFloor;
+typedef struct QlYoYInflationCouponPricer QlYoYInflationCouponPricer;
 typedef struct QlYoYInflationIndex QlYoYInflationIndex;
 typedef struct QlYoYInflationTermStructure QlYoYInflationTermStructure;
 typedef struct QlYoYOptionletVolatilitySurface QlYoYOptionletVolatilitySurface;

@@ -6,7 +6,8 @@ import System.Mem(performGC)
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
-import QuantLib.CashFlow(Leg, yoyInflationLeg)
+import QuantLib.CashFlow(Leg, yoyInflationLeg, blackYoYInflationCouponPricer, setYoYInflationCouponPricer)
+import qualified QuantLib.CashFlow as CF
 import QuantLib.Currency(currency, Ccy(GBP))
 import QuantLib.Instrument.Option(OptionType(..))
 import QuantLib.TermStructure.Inflation
@@ -79,7 +80,7 @@ setupLeg yii today = do
   dc <- dayCounter Actual365FixedStandard
   endDate <- advance cal today (3, Years) Unadjusted False
   sch <- schedule (Just today) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
-  yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0]
+  yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
 
 -- |Builds the Black engine (constant vol) all cap\/floor\/collar instruments in this module
 -- share -- mirrors 'QuantLib.Spec.TermStructure`'s "Black cap/floor engine" setup, YoY-inflation
@@ -126,7 +127,7 @@ customZeroIndex today = do
 
 spec :: Spec
 spec = do
- describe "YoY inflation cap/floor" $
+ describe "YoY inflation cap/floor" $ do
   it "cap - floor = collar, and the sum of optionlets equals the parent NPV" $ Settings.keepingSettings' $ do
     -- Anchored to the real wall-clock date (like 'QuantLib.Spec.Examples`'s SimpleChooserOption),
     -- not a hardcoded past date: every maturity derived below is then always in the future, so a
@@ -158,6 +159,44 @@ spec = do
       setPricingEngine o engine
       npv o
     abs (capNPV - sum caplets) `shouldSatisfy` (< 1e-6)
+    performGC
+
+  it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Settings.keepingSettings' $ do
+    -- Confirmed by reading inflationcoupon.cpp: InflationCoupon::rate() unconditionally requires
+    -- a pricer (QL_REQUIRE(pricer_, "pricer not set")), capped or not -- yoyInflationLeg's own
+    -- operator Leg() (yoyinflationcoupon.cpp) auto-attaches a default (non-vol) pricer only when
+    -- caps and floors are BOTH empty; a non-empty cap here means 'setYoYInflationCouponPricer'
+    -- must be called explicitly, and this test's NPV assertion below only succeeds if it actually
+    -- ran (leaving it out reproduces "pricer not set", not a silently-wrong number) -- so this
+    -- doubles as the setter's own regression check.
+    todayD <- today
+    Settings.setEvaluationDate (Just todayD)
+    yii <- linkedYoYIndex todayD
+    cal <- calendar Null
+    dc <- dayCounter Actual365FixedStandard
+    endDate <- advance cal todayD (3, Years) Unadjusted False
+    sch <- schedule (Just todayD) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
+
+    let capRate = 0.035
+    cappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [capRate] []
+    uncappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
+
+    nominalQ <- simpleQuote 0.02
+    nominalCurve <- flatForward todayD nominalQ dc IR.Continuous Annual
+    volQ <- simpleQuote 0.02
+    vol <- constantYoYOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
+    pricer <- blackYoYInflationCouponPricer vol nominalCurve
+    setYoYInflationCouponPricer cappedLeg pricer
+
+    cappedNPV <- CF.npv cappedLeg nominalCurve True Nothing Nothing
+    uncappedNPV <- CF.npv uncappedLeg nominalCurve True Nothing Nothing
+
+    capEngine <- yoyInflationBlackCapFloorEngine yii vol nominalCurve
+    capInst <- yoyInflationCap uncappedLeg [capRate]
+    setPricingEngine capInst capEngine
+    capNPV <- npv capInst
+
+    abs ((uncappedNPV - capNPV) - cappedNPV) `shouldSatisfy` (< 1e-6)
     performGC
 
  describe "CPI cap/floor" $

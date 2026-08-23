@@ -348,6 +348,19 @@ peekEquityCashFlowPricer = EquityCashFlowPricer <.> peekStandalone
 withEquityCashFlowPricer :: EquityCashFlowPricer -> (Ptr CEquityCashFlowPricer -> IO b) -> IO b
 withEquityCashFlowPricer = withStandalone . getCEquityCashFlowPricer
 
+data CYoYInflationCouponPricer
+-- | Pricer for capped\/floored 'QuantLib.CashFlow.yoyInflationLeg' coupons. All 3 concrete
+-- upstream pricers (Black\/UnitDisplacedBlack\/Bachelier) share one ctor shape and are bound as
+-- constructors of this single type, mirroring 'FloatingRateCouponPricer'\/'EquityCashFlowPricer'
+-- (a standalone pricer type, not part of any 'GenX' hierarchy).
+newtype YoYInflationCouponPricer = YoYInflationCouponPricer {getCYoYInflationCouponPricer :: Standalone CYoYInflationCouponPricer}
+foreign import ccall unsafe "ql.h &qlFreeYoYInflationCouponPricer" qlFreeYoYInflationCouponPricer :: FinalizerPtr CYoYInflationCouponPricer
+instance Finalizable CYoYInflationCouponPricer where finalize = qlFreeYoYInflationCouponPricer
+peekYoYInflationCouponPricer :: Ptr CYoYInflationCouponPricer -> IO YoYInflationCouponPricer
+peekYoYInflationCouponPricer = YoYInflationCouponPricer <.> peekStandalone
+withYoYInflationCouponPricer :: YoYInflationCouponPricer -> (Ptr CYoYInflationCouponPricer -> IO b) -> IO b
+withYoYInflationCouponPricer = withStandalone . getCYoYInflationCouponPricer
+
 data CDefaultProbabilityHelper
 newtype DefaultProbabilityHelper = DefaultProbabilityHelper {getCDefaultProbabilityHelper :: Standalone CDefaultProbabilityHelper}
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityHelper" qlFreeDefaultProbabilityHelper :: FinalizerPtr CDefaultProbabilityHelper

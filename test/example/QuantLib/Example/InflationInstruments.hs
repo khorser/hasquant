@@ -224,7 +224,7 @@ run = do
   cpiLegNpv <- npv cpiLegBond
 
   -- yoyInflationLeg exercised via the generic Leg-based 'swap'' constructor
-  yoyL <- CF.yoyInflationLeg yoySchedule cal yidx1 obsLag CPILinear [nominal] dc Unadjusted [0] [1.0] [0.0]
+  yoyL <- CF.yoyInflationLeg yoySchedule cal yidx1 obsLag CPILinear [nominal] dc Unadjusted [0] [1.0] [0.0] [] []
   fixedIR <- interestRate flatRate dc Compounded Annual
   fixedL <- CF.fixedRateLeg fixedSchedule [nominal] [fixedIR] Unadjusted dc cal
   yoyLegSwap <- swap' [(fixedL, True), (yoyL, False)]

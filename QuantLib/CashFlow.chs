@@ -76,6 +76,11 @@ module QuantLib.CashFlow
   , rangeAccrualLeg
   , cpiLeg
   , yoyInflationLeg
+  , YoYInflationCouponPricer
+  , blackYoYInflationCouponPricer
+  , unitDisplacedBlackYoYInflationCouponPricer
+  , bachelierYoYInflationCouponPricer
+  , setYoYInflationCouponPricer
   , ZeroInflationCashFlow
   , zeroInflationCashFlow
   , zeroInflationCashFlowAmount
@@ -589,7 +594,8 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
--- (a 'CPICoupon' leg -- caps/floors are not exposed, see README.md's TODO).
+-- (a 'CPICoupon' leg -- no capped\/floored variant, unlike 'yoyInflationLeg': QL 1.43 has no
+-- @CappedFlooredCPICoupon@ class to build one from, see README.md's TODO).
 {#fun qlCPILeg as cpiLeg{withSchedule*`Schedule',withZeroInflationIndex*`ZeroInflationIndex'
   ,`Double' -- ^baseCPI
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
@@ -602,8 +608,14 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^subtractInflationNominal
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
--- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg -- caps/floors are not
--- exposed, see README.md's TODO).
+-- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg). Non-empty /caps/\//floors/
+-- build 'CappedFlooredYoYInflationCoupon's instead of plain ones -- but /any/ resulting coupon
+-- (capped or not) still needs a pricer set via 'setYoYInflationCouponPricer' before its
+-- 'QuantLib.CashFlow.npv'\/'amount' can be computed: upstream's @InflationCoupon::rate()@
+-- requires @pricer_@ unconditionally, not just for the capped\/floored case (confirmed by reading
+-- @inflationcoupon.cpp@). CPI-leg ('cpiLeg') caps\/floors have no equivalent in QL 1.43 (no
+-- @CappedFlooredCPICoupon@ class exists upstream, see README.md's TODO) -- this is a
+-- QuantLib-version limitation, not an unbound feature.
 {#fun qlYoYInflationLeg as yoyInflationLeg{withSchedule*`Schedule',withCalendar*`Calendar'
   ,withYoYInflationIndex*`YoYInflationIndex'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
@@ -614,6 +626,8 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withIntArray*`[Word]'& -- ^fixingDays
   ,withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
+  ,withDoubleArray*`[Double]'& -- ^caps
+  ,withDoubleArray*`[Double]'& -- ^floors
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow nocode#}
 {#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow nocode#}
@@ -710,6 +724,8 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
+{#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
+{#pointer *QlYoYInflationCouponPricer as YoYInflationCouponPricer foreign -> CYoYInflationCouponPricer nocode#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov'
@@ -725,6 +741,28 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^withSmile
   ,`Bool' -- ^byCallSpread
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
+-- |Black-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
+{#fun qlBlackYoYInflationCouponPricer as blackYoYInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCouponPricer'peekYoYInflationCouponPricer*#}
+
+-- |Unit-Displaced-Black-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
+{#fun qlUnitDisplacedBlackYoYInflationCouponPricer as unitDisplacedBlackYoYInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCouponPricer'peekYoYInflationCouponPricer*#}
+
+-- |Bachelier-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
+{#fun qlBachelierYoYInflationCouponPricer as bachelierYoYInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCouponPricer'peekYoYInflationCouponPricer*#}
+
+-- |Set the pricer of every 'QuantLib.Instrument.InflationCapFloor.YoYInflationCapFloor'-ready
+-- 'YoYInflationCoupon'\/'CappedFlooredYoYInflationCoupon' in /leg/. Required before pricing (via
+-- 'QuantLib.CashFlow.npv' or an 'QuantLib.Instrument.setPricingEngine'd instrument built on the
+-- leg) any 'yoyInflationLeg' built with non-empty caps\/floors -- 'yoyInflationLeg' auto-attaches
+-- a default (non-vol) pricer only when caps and floors are both empty.
+{#fun qlSetYoYInflationCouponPricer as setYoYInflationCouponPricer{withLeg*`GenLeg l',withYoYInflationCouponPricer*`YoYInflationCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Set the pricer of every floating-rate coupon in /leg/.
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg l',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}

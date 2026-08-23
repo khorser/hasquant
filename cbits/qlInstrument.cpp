@@ -85,6 +85,8 @@ namespace hasquant {
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/cashflows/cpicoupon.hpp>
 #include <ql/cashflows/yoyinflationcoupon.hpp>
+#include <ql/cashflows/capflooredinflationcoupon.hpp>
+#include <ql/cashflows/inflationcouponpricer.hpp>
 #include <ql/cashflows/zeroinflationcashflow.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/dividend.hpp>
@@ -1327,12 +1329,28 @@ Leg* qlCPILeg(Schedule* schedule, QlZeroInflationIndex* index, double baseCPI, i
         .withPaymentDayCounter(*arg(paymentDayCounter)).withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withPaymentCalendar(*arg(paymentCalendar))
         .withObservationInterpolation((CPI::InterpolationType)observationInterpolation).withSubtractInflationNominal(subtractInflationNominal)));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
-Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e) {
+Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, char **e) {
   try {return alloc(new Leg(yoyInflationLeg(*arg(schedule), *arg(cal), *arg(index), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation)
         .withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
         .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<Natural>(fixingDays, fixingDays+fixingDaysLen))
-        .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))));
+        .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))
+        .withCaps(std::vector<double>(caps, caps+capsLen)).withFloors(std::vector<double>(floors, floors+floorsLen))));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+
+/* YoYInflationCouponPricer -- all 3 concrete pricers share this ctor shape (caplet vol handle,
+   nominal discount curve handle); mirrors the 3 YoY cap/floor engines in qlInflationVol.cpp. */
+QlYoYInflationCouponPricer *qlBlackYoYInflationCouponPricer(QlYoYOptionletVolatilitySurface *vol, QlYieldTermStructure *nominalTs, char **e) {
+  try {return ret(new QlYoYInflationCouponPricer(alloc(new BlackYoYInflationCouponPricer(*arg(vol), *arg(nominalTs)))));
+  } catch (std::exception& er) {return handleException<QlYoYInflationCouponPricer*>(e, er);}}
+QlYoYInflationCouponPricer *qlUnitDisplacedBlackYoYInflationCouponPricer(QlYoYOptionletVolatilitySurface *vol, QlYieldTermStructure *nominalTs, char **e) {
+  try {return ret(new QlYoYInflationCouponPricer(alloc(new UnitDisplacedBlackYoYInflationCouponPricer(*arg(vol), *arg(nominalTs)))));
+  } catch (std::exception& er) {return handleException<QlYoYInflationCouponPricer*>(e, er);}}
+QlYoYInflationCouponPricer *qlBachelierYoYInflationCouponPricer(QlYoYOptionletVolatilitySurface *vol, QlYieldTermStructure *nominalTs, char **e) {
+  try {return ret(new QlYoYInflationCouponPricer(alloc(new BachelierYoYInflationCouponPricer(*arg(vol), *arg(nominalTs)))));
+  } catch (std::exception& er) {return handleException<QlYoYInflationCouponPricer*>(e, er);}}
+void qlFreeYoYInflationCouponPricer(QlYoYInflationCouponPricer *p) {del(p);}
+void qlSetYoYInflationCouponPricer(Leg* leg, QlYoYInflationCouponPricer* pricer, char **e) {
+  try {return setCouponPricer(*arg(leg), *arg(pricer));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o) {del(o);}
 QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e) {

@@ -558,7 +558,14 @@ extern "C" {
 
   CouponLeg* qlLegToCouponLeg(Leg *o, char **e);
   Leg* qlCPILeg(Schedule* schedule, QlZeroInflationIndex* index, double baseCPI, int obsLagLen, int obsLagUnit, unsigned notionalsLen, double* notionals, unsigned fixedRatesLen, double* fixedRates, DayCounter* paymentDayCounter, int paymentAdjustment, Calendar* paymentCalendar, int observationInterpolation, int subtractInflationNominal, char **e);
-  Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, char **e);
+  Leg* qlYoYInflationLeg(Schedule* schedule, Calendar* cal, QlYoYInflationIndex* index, int obsLagLen, int obsLagUnit, int interpolation, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, char **e);
+
+  /* YoYInflationCouponPricer -- all 3 concrete pricers share this ctor shape */
+  QlYoYInflationCouponPricer *qlBlackYoYInflationCouponPricer(QlYoYOptionletVolatilitySurface *vol, QlYieldTermStructure *nominalTs, char **e);
+  QlYoYInflationCouponPricer *qlUnitDisplacedBlackYoYInflationCouponPricer(QlYoYOptionletVolatilitySurface *vol, QlYieldTermStructure *nominalTs, char **e);
+  QlYoYInflationCouponPricer *qlBachelierYoYInflationCouponPricer(QlYoYOptionletVolatilitySurface *vol, QlYieldTermStructure *nominalTs, char **e);
+  void qlFreeYoYInflationCouponPricer(QlYoYInflationCouponPricer *p);
+  void qlSetYoYInflationCouponPricer(Leg* leg, QlYoYInflationCouponPricer* pricer, char **e);
 
   void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o);
   QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e);
