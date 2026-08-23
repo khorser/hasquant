@@ -68,19 +68,48 @@ void qlFreeCPICapFloorTermPriceSurface(QlCPICapFloorTermPriceSurface *o) {del(o)
 QlTermStructure *qlCPICapFloorTermPriceSurfaceAsTermStructure(QlCPICapFloorTermPriceSurface *o) {
   return ret(new QlTermStructure(*arg(o)));}
 
+template <class I2D>
+static CPICapFloorTermPriceSurface *makeCPICapFloorTermPriceSurface(
+    double nominal, double baseRate, const Period &observationLag, const Calendar &cal,
+    BusinessDayConvention bdc, const DayCounter &dc, const shared_ptr<ZeroInflationIndex> &zii,
+    CPI::InterpolationType interpolationType, const Handle<YieldTermStructure> &yts,
+    const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
+    const std::vector<Period> &cfMaturities, const Matrix &cPrice, const Matrix &fPrice) {
+  return new InterpolatedCPICapFloorTermPriceSurface<I2D>(nominal, baseRate, observationLag, cal, bdc,
+      dc, zii, interpolationType, yts, cStrikes, fStrikes, cfMaturities, cPrice, fPrice);
+}
+
 QlCPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurface(double nominal, double baseRate,
     int observationLagLen, int observationLagUnit, Calendar *cal, int bdc, DayCounter *dc,
     QlZeroInflationIndex *zii, int interpolationType, QlYieldTermStructure *yts,
     unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
     unsigned cfMaturitiesLen, int *cfMaturitiesNum, unsigned, int *cfMaturitiesUnit,
     unsigned cPriceRows, unsigned cPriceCols, double *cPriceData,
-    unsigned fPriceRows, unsigned fPriceCols, double *fPriceData, char **e) {
-  try {return ret(new QlCPICapFloorTermPriceSurface(alloc(new InterpolatedCPICapFloorTermPriceSurface<Bilinear>(
-      nominal, baseRate, Period(observationLagLen, (TimeUnit)observationLagUnit), *arg(cal), (BusinessDayConvention)bdc,
-      *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
-      std::vector<Rate>(cStrikes, cStrikes+cStrikesLen), std::vector<Rate>(fStrikes, fStrikes+fStrikesLen),
-      qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen),
-      qlMatrix(cPriceData, cPriceRows, cPriceCols), qlMatrix(fPriceData, fPriceRows, fPriceCols)))));
+    unsigned fPriceRows, unsigned fPriceCols, double *fPriceData,
+    int interpolator2D, char **e) {
+  try {
+    const Period observationLag(observationLagLen, (TimeUnit)observationLagUnit);
+    const std::vector<Rate> cStrikesVec(cStrikes, cStrikes+cStrikesLen);
+    const std::vector<Rate> fStrikesVec(fStrikes, fStrikes+fStrikesLen);
+    const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
+    const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
+    const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
+    CPICapFloorTermPriceSurface *s;
+    switch (interpolator2D) {
+    case hasquant::Bilinear:
+      s = makeCPICapFloorTermPriceSurface<QuantLib::Bilinear>(nominal, baseRate, observationLag, *arg(cal),
+          (BusinessDayConvention)bdc, *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
+          cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat);
+      break;
+    case hasquant::Bicubic:
+      s = makeCPICapFloorTermPriceSurface<QuantLib::Bicubic>(nominal, baseRate, observationLag, *arg(cal),
+          (BusinessDayConvention)bdc, *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
+          cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat);
+      break;
+    default:
+      QL_FAIL("Unsupported 2-D interpolation " << interpolator2D);
+    }
+    return ret(new QlCPICapFloorTermPriceSurface(alloc(s)));
   } catch (std::exception& er) {return handleException<QlCPICapFloorTermPriceSurface*>(e, er);}}
 
 /* InterpolatingCPICapFloorEngine -- the only CPICapFloor engine in QL 1.43 */

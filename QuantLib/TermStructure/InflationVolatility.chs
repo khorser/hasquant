@@ -201,8 +201,7 @@ yoyCapFloorAtmYoYSwapDateRates s = do
   ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
 
 -- |Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity
--- price grid (hardcoded to the @Bilinear@ 'Interpolator2D', the only instantiation upstream's
--- own test-suite uses -- see this type's haddock in "QuantLib.Internal.Type"). @cPrice@\/
+-- price grid. 'Interpolation2D' chooses the cap\/floor price-grid interpolator. @cPrice@\/
 -- @fPrice@ are plain price matrices (rows = strikes, columns = maturities), not quote-linked
 -- like 'QuantLib.TermStructure.Volatility.capFloorTermVolSurface's volatility matrix.
 cpiCapFloorTermPriceSurface :: Double -- ^nominal
@@ -215,9 +214,10 @@ cpiCapFloorTermPriceSurface :: Double -- ^nominal
   -> [(Word, TimeUnit)] -- ^cfMaturities
   -> Matrix Double -- ^cPrice
   -> Matrix Double -- ^fPrice
+  -> Interpolation2D
   -> IO CPICapFloorTermPriceSurface
-cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) =
-  qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd
+cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d =
+  qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)
   where (maturityNums, maturityUnits) = unzip cfMaturities
 {#fun qlCPICapFloorTermPriceSurface{`Double',`Double',fromEnumQuantity`(Word,TimeUnit)'&
   ,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter'
@@ -228,6 +228,7 @@ cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrik
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'& -- ^cfMaturities
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^cPrice
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^fPrice
+  ,`Int' -- ^interpolator2D
   ,preErrorCheck-`String'errorCheck*-}->`CPICapFloorTermPriceSurface'peekCPICapFloorTermPriceSurface*#}
 
 -- |Constant CPI (zero-inflation) volatility surface, no maturity\/strike dependence -- the only

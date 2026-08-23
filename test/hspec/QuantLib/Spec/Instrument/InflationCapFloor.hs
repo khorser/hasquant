@@ -17,7 +17,7 @@ import qualified QuantLib.InterestRate as IR
 import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.InflationCapFloor
-import QuantLib.Math(Interpolation(..), Matrix(..))
+import QuantLib.Math(Interpolation(..), Interpolation2D(..), Matrix(..))
 import QuantLib.PricingEngine(PricingEngine, yoyInflationBlackCapFloorEngine, interpolatingCPICapFloorEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.InflationVolatility
@@ -199,7 +199,7 @@ spec = do
     abs ((uncappedNPV - capNPV) - cappedNPV) `shouldSatisfy` (< 1e-6)
     performGC
 
- describe "CPI cap/floor" $
+ describe "CPI cap/floor" $ do
   -- CPI cap/floor has no vol-driven engine in QL 1.43 -- InterpolatingCPICapFloorEngine prices
   -- purely by interpolating a market price surface (see cbits/qlInflationVol.cpp's
   -- qlInterpolatingCPICapFloorEngine and CPICapFloorTermPriceSurface's own haddock). At an
@@ -242,6 +242,7 @@ spec = do
       [0.03, cStrike] [-0.01, fStrike] [(3, Years), (5, Years), (7, Years)]
       (Matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
       (Matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, fPriceGrid, 0.007704])
+      Bilinear
     engine <- interpolatingCPICapFloorEngine surface
 
     capInst <- cpiCapFloor Call 1.0 today' 100.0 maturity5Y cal Unadjusted cal Unadjusted cStrike zii obsLag CPIFlat
@@ -253,4 +254,33 @@ spec = do
     setPricingEngine floorInst engine
     floorNPV <- npv floorInst
     abs (floorNPV - fPriceGrid) `shouldSatisfy` (< 1e-9)
+    performGC
+
+  -- No upstream fixture covers a non-Bilinear Interpolation2D, so this is a
+  -- construction/sanity check only, same reasoning as the yoyCapFloorTermPriceSurface
+  -- spot-check in QuantLib.Spec.TermStructure.InflationVolatility.
+  it "cpiCapFloorTermPriceSurface: Bicubic builds and reproduces the same grid price" $ Settings.keepingSettings' $ do
+    (y, m, _) <- toGregorian <$> today
+    let today' = fromGregorian y m 1
+    Settings.setEvaluationDate (Just today')
+    cal <- calendar Null
+    dc <- dayCounter Actual365FixedStandard
+    nominalQ <- simpleQuote 0.02
+    nominalCurve <- flatForward today' nominalQ dc IR.Continuous Annual
+    zii <- customZeroIndex today'
+    maturity5Y <- advance cal today' (5, Years) Unadjusted False
+
+    let obsLag = (2, Months)
+        cStrike = 0.04
+        cPriceGrid = 0.01279
+    surface <- cpiCapFloorTermPriceSurface 1.0 cStrike obsLag cal Unadjusted dc zii CPIFlat nominalCurve
+      [0.03, cStrike] [-0.01, 0.01] [(3, Years), (5, Years), (7, Years)]
+      (Matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
+      (Matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, 0.006666, 0.007704])
+      Bicubic
+    engine <- interpolatingCPICapFloorEngine surface
+    capInst <- cpiCapFloor Call 1.0 today' 100.0 maturity5Y cal Unadjusted cal Unadjusted cStrike zii obsLag CPIFlat
+    setPricingEngine capInst engine
+    capNPV <- npv capInst
+    abs (capNPV - cPriceGrid) `shouldSatisfy` (< 1e-9)
     performGC

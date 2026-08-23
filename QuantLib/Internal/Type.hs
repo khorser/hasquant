@@ -1271,8 +1271,10 @@ type CCPICapFloorTermPriceSurface = ForeignPtr CCPICapFloorTermPriceSurface'
 -- price grid, not by any vol model (see 'CPICapFloor's own comment) -- a plain 'TermStructure'
 -- leaf, constructed and consumed by @shared_ptr@ like 'CommodityCurve', never a @Handle@ (wrapped
 -- into one at the point of use, e.g. 'QuantLib.PricingEngine.interpolatingCPICapFloorEngine').
--- Hardcoded to the @Bilinear@ interpolator (the only 'Interpolator2D' instantiation upstream's
--- own test-suite uses); widen to more interpolators only on a concrete need.
+-- Takes an 'Interpolation2D' choice for the cap\/floor price grid -- a different template
+-- (@InterpolatedCPICapFloorTermPriceSurface@) from 'YoYCapFloorTermPriceSurface's
+-- @InterpolatedYoYCapFloorTermPriceSurface@, hence its own single 2-D slot rather than
+-- 'YoYCapFloorTermPriceSurface's separate 2-D\/1-D pair.
 type CPICapFloorTermPriceSurface = GenTermStructure CCPICapFloorTermPriceSurface
 foreign import ccall unsafe "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
