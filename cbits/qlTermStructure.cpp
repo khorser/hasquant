@@ -911,18 +911,20 @@ QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int
     return ret(new QlYoYInflationTermStructure(alloc(ts)));
   } catch (std::exception& er) {delete ts; return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
-// InterpolatedYoYInflationCurve<Linear> -- direct (dates, rates) curve, unlike
-// qlPiecewiseYoYInflationCurve's bootstrap from swap helpers. Hardcoded to Linear (the only
-// interpolator upstream's own test-suite, inflationvolatility.cpp, builds one with); no
-// seasonality (unbound elsewhere in hasquant).
+// InterpolatedYoYInflationCurve<Interpolator> -- direct (dates, rates) curve, unlike
+// qlPiecewiseYoYInflationCurve's bootstrap from swap helpers. No seasonality (unbound elsewhere
+// in hasquant).
 QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate,
-    unsigned datesLen, int *dates, double *rates, int frequency, DayCounter *dayCounter, char **e) {
+    unsigned datesLen, int *dates, double *rates, int frequency, DayCounter *dayCounter,
+    int interpolator, int approximator, int approximatorArg, char **e) {
+  YoYInflationTermStructure *ts = 0;
   try {
     std::vector<Date> ds(datesLen);
     for (unsigned i = 0; i < datesLen; ++i) ds[i] = Date(dates[i]);
-    return ret(new QlYoYInflationTermStructure(alloc(new InterpolatedYoYInflationCurve<Linear>(
-        Date(referenceDate), ds, std::vector<Rate>(rates, rates+datesLen), (Frequency)frequency, *arg(dayCounter)))));
-  } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
+    ts = qlInterpolatedYoYInflationCurveAux(Date(referenceDate), ds, std::vector<Rate>(rates, rates+datesLen),
+        (Frequency)frequency, *arg(dayCounter), interpolator, approximator, approximatorArg);
+    return ret(new QlYoYInflationTermStructure(alloc(ts)));
+  } catch (std::exception& er) {delete ts; return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {return ret(new QlRateHelper(new DepositRateHelper( *arg(quote), Period(l, (TimeUnit)u), fixDays,

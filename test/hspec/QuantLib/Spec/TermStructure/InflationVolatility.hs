@@ -122,7 +122,7 @@ setup = do
   baseDate <- advance cal eval (-1, Months) Unadjusted False
   capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
   yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-  yoyEU <- interpolatedYoYInflationCurve eval (zip yoyDates yoyEURrates) Monthly dc
+  yoyEU <- interpolatedYoYInflationCurve eval (zip yoyDates yoyEURrates) Monthly dc Linear
 
   zii <- zeroInflationIndex EUHICP
   yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
@@ -136,6 +136,23 @@ setup = do
 
 spec :: Spec
 spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurface)" $ do
+  it "interpolatedYoYInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Settings.keepingSettings' $ do
+    let eval = 23 `november` 2007
+    Settings.setEvaluationDate (Just eval)
+    cal <- calendar TARGET
+    dc <- dayCounter Actual365FixedStandard
+    baseDate <- advance cal eval (-1, Months) Unadjusted False
+    capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
+    yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
+    let mid = addDays 180 (yoyDates !! 1)
+    yoyLinear <- interpolatedYoYInflationCurve eval (zip yoyDates yoyEURrates) Monthly dc Linear
+    yoyCubic <- interpolatedYoYInflationCurve eval (zip yoyDates yoyEURrates) Monthly dc (Cubic Kruger)
+    rLinear <- yoyRate yoyLinear mid True
+    rCubic <- yoyRate yoyCubic mid True
+    -- both interpolators agree at the nodes themselves; a mid-node query is where a genuinely
+    -- different interpolation should (and does) diverge from Linear
+    abs (rLinear - rCubic) `shouldSatisfy` (> 1e-8)
+
   it "matches an independent C++ reprise of upstream's testYoYPriceSurfaceToVol fixture" $ Settings.keepingSettings' $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 

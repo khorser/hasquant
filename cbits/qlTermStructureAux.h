@@ -9,6 +9,7 @@
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 #include <ql/termstructures/inflation/piecewisezeroinflationcurve.hpp>
 #include <ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp>
+#include <ql/termstructures/inflation/interpolatedyoyinflationcurve.hpp>
 
 // Every IterativeBootstrap constructor parameter (ql/termstructures/iterativebootstrap.hpp),
 // as one flat POD so the piecewise-curve entry points don't grow nine more positional
@@ -156,6 +157,14 @@ QuantLib::YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
     QuantLib::Frequency frequency,
     const QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::BootstrapHelper<QuantLib::YoYInflationTermStructure> > >& instruments,
+    int interpolator, int approximator, int approximatorArg);
+
+QuantLib::YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
+    const QuantLib::Date &referenceDate,
+    const std::vector<QuantLib::Date> &dates,
+    const std::vector<QuantLib::Rate> &rates,
+    QuantLib::Frequency frequency,
+    const QuantLib::DayCounter& dayCounter,
     int interpolator, int approximator, int approximatorArg);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

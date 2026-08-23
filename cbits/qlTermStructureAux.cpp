@@ -944,4 +944,59 @@ YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
   }
 }
 
+YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
+    const Date &referenceDate,
+    const std::vector<Date> &dates,
+    const std::vector<Rate> &rates,
+    Frequency frequency,
+    const DayCounter& dayCounter,
+    int interpolator, int approximator, int approximatorArg) {
+  switch (interpolator) {
+  case hasquant::BackwardFlat:
+    return new InterpolatedYoYInflationCurve<BackwardFlat>(referenceDate, dates, rates, frequency, dayCounter);
+  case hasquant::ForwardFlat:
+    return new InterpolatedYoYInflationCurve<ForwardFlat>(referenceDate, dates, rates, frequency, dayCounter);
+  case hasquant::Linear:
+    return new InterpolatedYoYInflationCurve<Linear>(referenceDate, dates, rates, frequency, dayCounter);
+  case hasquant::LogLinear:
+    return new InterpolatedYoYInflationCurve<LogLinear>(referenceDate, dates, rates, frequency, dayCounter);
+  case hasquant::Cubic:
+    switch (approximator) {
+    case hasquant::NaturalSpline:
+      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    case hasquant::Kruger:
+      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          Cubic(CubicInterpolation::Kruger));
+    case hasquant::FritschButland:
+      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          Cubic(CubicInterpolation::FritschButland));
+    case hasquant::Parabolic:
+      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          Cubic(CubicInterpolation::Parabolic, approximatorArg));
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+  case hasquant::LogCubic:
+    switch(approximator) {
+    case hasquant::NaturalSpline:
+      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    case hasquant::Kruger:
+      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          LogCubic(CubicInterpolation::Kruger));
+    case hasquant::FritschButland:
+      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          LogCubic(CubicInterpolation::FritschButland));
+    case hasquant::Parabolic:
+      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
+          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
+    default:
+      QL_FAIL("Unsupported approximation " << approximator);
+    }
+  default:
+    QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

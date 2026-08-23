@@ -236,7 +236,8 @@ extern "C" {
 
   QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e);
   QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e);
-  QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter, char **e);
+  QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
+      int interpolator, int approximator, int approximatorArg, char **e);
 
   QlRateHelper *qlDepositRateHelper(QlQuote *quote, int, int, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e);
   QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face, Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e);
