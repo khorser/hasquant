@@ -90,9 +90,8 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Prices YoY cap\/floors by cap\/floor-surface intersection and put\/call parity, deriving an
--- ATM YoY swap curve as a side effect (hardcoded to the @Bicubic@\/@Cubic@ 'Interpolator2D'\/
--- 'Interpolator1D' pair, the only combination upstream's own test-suite,
--- @inflationvolatility.cpp@, uses -- see this type's own haddock in "QuantLib.Internal.Type").
+-- ATM YoY swap curve as a side effect. 'Interpolation2D' chooses the cap\/floor price-grid
+-- interpolator, 'Interpolation' the per-maturity one.
 yoyCapFloorTermPriceSurface :: Word -- ^fixingDays
   -> (Word, TimeUnit) -- ^yyLag
   -> YoYInflationIndex -> CPIInterpolationType -> GenYieldTermStructure y -- ^nominal
@@ -102,9 +101,10 @@ yoyCapFloorTermPriceSurface :: Word -- ^fixingDays
   -> [(Word, TimeUnit)] -- ^cfMaturities
   -> Matrix Double -- ^cPrice
   -> Matrix Double -- ^fPrice
+  -> Interpolation2D -> Interpolation
   -> IO YoYCapFloorTermPriceSurface
-yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) =
-  qlYoYCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd
+yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d i1d =
+  uncurryNested (qlYoYCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)) (qlInterpolation i1d)
   where (maturityNums, maturityUnits) = unzip cfMaturities
 {#fun qlYoYCapFloorTermPriceSurface{fromIntegral`Word' -- ^fixingDays
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^yyLag
@@ -119,6 +119,8 @@ yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStri
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'& -- ^cfMaturities
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^cPrice
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^fPrice
+  ,`Int' -- ^interpolator2D
+  ,`Int',`Int',`Int' -- ^interpolator1D, approximator, approximatorArg
   ,preErrorCheck-`String'errorCheck*-}->`YoYCapFloorTermPriceSurface'peekYoYCapFloorTermPriceSurface*#}
 
 -- |The date the surface's own YoY term structure (and hence any 'YoYOptionletVolatilitySurface'

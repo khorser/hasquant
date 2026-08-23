@@ -8,7 +8,7 @@ import Test.Hspec
 import qualified QuantLib.Settings as Settings
 import QuantLib.Index.Inflation
 import qualified QuantLib.InterestRate as IR
-import QuantLib.Math(Interpolation(..), Approximation(..), Matrix(..))
+import QuantLib.Math(Interpolation(..), Interpolation2D(..), Approximation(..), Matrix(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.InflationVolatility
@@ -130,7 +130,7 @@ setup = do
   let fixingDays = 0
       yyLag = (3, Months)
   priceSurfEU <- yoyCapFloorTermPriceSurface fixingDays yyLag yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
-                   cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU
+                   cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bicubic (Cubic Kruger)
 
   return (eval, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU)
 
@@ -189,6 +189,29 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     forM_ (zip (map fst dateRates) atmYoYRates) $ \(d, expected) -> do
       a <- yoyCapFloorAtmYoYRate priceSurfEU d Nothing True
       abs (a - expected) `shouldSatisfy` (< eps)
+    performGC
+
+  -- No second upstream fixture covers a non-(Bicubic, Cubic) combination, so this is a
+  -- construction/sanity check only, same reasoning as the interpolatedYoYInflationCurve
+  -- spot-check above.
+  it "yoyCapFloorTermPriceSurface: a different (Interpolation2D, Interpolation) pair builds and queries" $ Settings.keepingSettings' $ do
+    let eval = 23 `november` 2007
+    Settings.setEvaluationDate (Just eval)
+    cal <- calendar TARGET
+    dc <- dayCounter Actual365FixedStandard
+    nominalEUR <- nominalCurveFromTimes cal eval dc timesRatesEUR
+    baseDate <- advance cal eval (-1, Months) Unadjusted False
+    capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
+    yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
+    yoyEU <- interpolatedYoYInflationCurve eval (zip yoyDates yoyEURrates) Monthly dc Linear
+    zii <- zeroInflationIndex EUHICP
+    yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
+
+    priceSurf <- yoyCapFloorTermPriceSurface 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
+                   cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bilinear Linear
+    dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurf
+    rate <- yoyCapFloorAtmYoYSwapRate priceSurf (fst (head dateRates)) True
+    rate `shouldSatisfy` (not . isNaN)
     performGC
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

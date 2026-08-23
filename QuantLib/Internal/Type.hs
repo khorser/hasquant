@@ -1259,11 +1259,11 @@ type CYoYCapFloorTermPriceSurface = ForeignPtr CYoYCapFloorTermPriceSurface'
 -- ATM YoY swap curve as a side effect -- the market-data input the YoY optionlet stripper
 -- ('QuantLib.TermStructure.InflationVolatility.kInterpolatedYoYOptionletVolatilitySurfaceBlack'
 -- et al.) bootstraps from. A plain 'TermStructure' leaf, constructed and consumed by
--- @shared_ptr@ like 'CPICapFloorTermPriceSurface', never a @Handle@. Hardcoded to the
--- @Bicubic@\/@Cubic@ 'Interpolator2D'\/'Interpolator1D' pair (the only combination upstream's own
--- test-suite, @inflationvolatility.cpp@, uses) -- a different pair from 'CPICapFloorTermPriceSurface's
--- @Bilinear@, since it's a different template (@InterpolatedYoYCapFloorTermPriceSurface@, not
--- @InterpolatedCPICapFloorTermPriceSurface@); widen to more interpolators only on a concrete need.
+-- @shared_ptr@ like 'CPICapFloorTermPriceSurface', never a @Handle@. Takes independent
+-- 'Interpolation2D' (cap\/floor price grid) and 'Interpolation' (per-maturity) choices --
+-- a different template (@InterpolatedYoYCapFloorTermPriceSurface@) from
+-- 'CPICapFloorTermPriceSurface's @InterpolatedCPICapFloorTermPriceSurface@, hence the separate
+-- 2-D\/1-D pair rather than 'CPICapFloorTermPriceSurface's single 'Interpolation2D'.
 type YoYCapFloorTermPriceSurface = GenTermStructure CYoYCapFloorTermPriceSurface
 data CCPICapFloorTermPriceSurface'
 type CCPICapFloorTermPriceSurface = ForeignPtr CCPICapFloorTermPriceSurface'

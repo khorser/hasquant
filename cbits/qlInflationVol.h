@@ -50,16 +50,15 @@ extern "C" {
   double qlCPIVolatilitySurfaceTotalVariance(QlCPIVolatilitySurface *o, int exerciseDate,
       double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e);
 
-  /* YoYCapFloorTermPriceSurface -- hardcoded to InterpolatedYoYCapFloorTermPriceSurface<Bicubic,Cubic>,
-     the only Interpolator2D/Interpolator1D combination upstream's own test-suite
-     (inflationvolatility.cpp) uses. */
+  /* YoYCapFloorTermPriceSurface */
   QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays,
       int yyLagLen, int yyLagUnit, QlYoYInflationIndex *yii, int interpolationType,
       QlYieldTermStructure *nominal, DayCounter *dc, Calendar *cal, int bdc,
       unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
       unsigned cfMaturitiesLen, int *cfMaturitiesNum, unsigned, int *cfMaturitiesUnit,
       unsigned cPriceRows, unsigned cPriceCols, double *cPriceData,
-      unsigned fPriceRows, unsigned fPriceCols, double *fPriceData, char **e);
+      unsigned fPriceRows, unsigned fPriceCols, double *fPriceData,
+      int interpolator2D, int interpolator1D, int approximator, int approximatorArg, char **e);
   void qlFreeYoYCapFloorTermPriceSurface(QlYoYCapFloorTermPriceSurface *o);
   QlTermStructure *qlYoYCapFloorTermPriceSurfaceAsTermStructure(QlYoYCapFloorTermPriceSurface *o);
   int qlYoYCapFloorTermPriceSurfaceBaseDate(QlYoYCapFloorTermPriceSurface *o, char **e);
