@@ -65,6 +65,9 @@ module QuantLib.PricingEngine
   , blackSwaptionEngine'
   , bachelierCapFloorEngine'
   , bachelierCapFloorEngine
+  , yoyInflationBlackCapFloorEngine
+  , yoyInflationUnitDisplacedBlackCapFloorEngine
+  , yoyInflationBachelierCapFloorEngine
   , bachelierSwaptionEngine
   , bachelierSwaptionEngine'
   , analyticBSMHullWhiteEngine
@@ -261,6 +264,8 @@ import QuantLib.Internal.Common
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
+{#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
+{#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
@@ -512,6 +517,27 @@ import QuantLib.Internal.Common
 
 -- |Bachelier (normal) cap\/floor engine, taking a flat volatility quote
 {#fun qlBachelierCapFloorEngine as bachelierCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Black-formula YoY inflation cap\/floor engine. The nominal discount curve and the index's
+-- own linked 'QuantLib.TermStructure.Inflation.YoYInflationTermStructure' are separate --
+-- @nominalTermStructure@ discounts cashflows, while the index forecasts them.
+{#fun qlYoYInflationBlackCapFloorEngine as yoyInflationBlackCapFloorEngine{withYoYInflationIndex*`GenYoYInflationIndex yidx'
+  ,withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface' -- ^vol
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |as 'yoyInflationBlackCapFloorEngine', but unit-displaced Black
+{#fun qlYoYInflationUnitDisplacedBlackCapFloorEngine as yoyInflationUnitDisplacedBlackCapFloorEngine{withYoYInflationIndex*`GenYoYInflationIndex yidx'
+  ,withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface' -- ^vol
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |as 'yoyInflationBlackCapFloorEngine', but Bachelier (normal model)
+{#fun qlYoYInflationBachelierCapFloorEngine as yoyInflationBachelierCapFloorEngine{withYoYInflationIndex*`GenYoYInflationIndex yidx'
+  ,withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface' -- ^vol
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 
 -- |Bachelier (normal) swaption engine, taking a flat volatility quote
 {#fun qlBachelierSwaptionEngine as bachelierSwaptionEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',`CashAnnuityModel' -- ^model

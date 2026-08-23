@@ -29,6 +29,7 @@ extra-source-files:
     cbits/qlCommodity.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
+    cbits/qlInflationVol.h
     cbits/qlInstrument.h
     cbits/qlMisc.h
     cbits/qlPricingEngine.h
@@ -79,6 +80,7 @@ library
       QuantLib.TermStructure.Inflation
       QuantLib.TermStructure.Credit
       QuantLib.TermStructure.Volatility
+      QuantLib.TermStructure.InflationVolatility
       QuantLib.TermStructure.Commodity
       QuantLib.Index.InterestRate
       QuantLib.Index.Inflation
@@ -107,6 +109,7 @@ library
       cbits
   cxx-sources:
       cbits/qlCommodity.cpp
+      cbits/qlInflationVol.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
       cbits/qlPricingEngine.cpp
