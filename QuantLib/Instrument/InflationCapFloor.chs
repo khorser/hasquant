@@ -6,6 +6,9 @@ module QuantLib.Instrument.InflationCapFloor
   , yoyInflationFloor
   , yoyInflationCapFloorAtmRate
   , yoyInflationCapFloorOptionlet
+
+  , CPICapFloor
+  , cpiCapFloor
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -22,6 +25,8 @@ import QuantLib.Internal.Common
 {#pointer *QlYoYInflationCapFloor as YoYInflationCapFloor foreign -> CYoYInflationCapFloor' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
+{#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
+{#pointer *QlCPICapFloor as CPICapFloor foreign -> CCPICapFloor' nocode#}
 
 -- |Constructs a YoY-inflation cap: pays the excess of the YoY leg's rate over each exercise
 -- rate, if positive. Unlike a nominal cap, the first optionlet is live (YoY inflation sets in
@@ -54,5 +59,25 @@ import QuantLib.Internal.Common
 {#fun qlYoYInflationCapFloorOptionlet as yoyInflationCapFloorOptionlet{withGenInstrument*`YoYInflationCapFloor'
   ,fromIntegral`Word' -- ^n
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCapFloor'peekYoYInflationCapFloor*#}
+
+-- |A CPI cap or floor: a single cumulative option on cumulative inflation up to maturity
+-- (@CPI(T)\/CPI(0)@), not a strip of optionlets like 'YoYInflationCapFloor' -- similar in shape
+-- to a ZCIIS option. No implied-volatility inspector: pricing goes purely through
+-- 'QuantLib.PricingEngine.interpolatingCPICapFloorEngine' off a market price surface, there is
+-- no vol-driven engine for it in QL 1.43.
+{#fun qlCPICapFloor as cpiCapFloor{fromEnumC`OptionType'
+  ,`Double' -- ^nominal
+  ,withDay*`Day' -- ^startDate
+  ,`Double' -- ^baseCPI
+  ,withDay*`Day' -- ^maturity
+  ,withCalendar*`Calendar' -- ^fixCalendar
+  ,fromEnumC`BusinessDayConvention' -- ^fixConvention
+  ,withCalendar*`Calendar' -- ^payCalendar
+  ,fromEnumC`BusinessDayConvention' -- ^payConvention
+  ,`Double' -- ^strike
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,preErrorCheck-`String'errorCheck*-}->`CPICapFloor'peekCPICapFloor*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -6,6 +6,9 @@ module QuantLib.TermStructure.InflationVolatility
 
   , yoyOptionletVolatility
   , yoyOptionletTotalVariance
+
+  , CPICapFloorTermPriceSurface
+  , cpiCapFloorTermPriceSurface
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -24,6 +27,7 @@ import QuantLib.Internal.Common
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
+{#pointer *QlCPICapFloorTermPriceSurface as CPICapFloorTermPriceSurface foreign -> CCPICapFloorTermPriceSurface' nocode#}
 
 -- |Constant YoY-inflation optionlet vol surface, no maturity\/strike dependence -- the only
 -- concrete leaf bound here. Mirrors 'QuantLib.TermStructure.Volatility.constantOptionletVolatility',
@@ -61,3 +65,33 @@ import QuantLib.Internal.Common
   ,fromMaybeEnumQuantity`Maybe (Word,TimeUnit)'& -- ^obsLag
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity
+-- price grid (hardcoded to the @Bilinear@ 'Interpolator2D', the only instantiation upstream's
+-- own test-suite uses -- see this type's haddock in "QuantLib.Internal.Type"). @cPrice@\/
+-- @fPrice@ are plain price matrices (rows = strikes, columns = maturities), not quote-linked
+-- like 'QuantLib.TermStructure.Volatility.capFloorTermVolSurface's volatility matrix.
+cpiCapFloorTermPriceSurface :: Double -- ^nominal
+  -> Double -- ^baseRate
+  -> (Word, TimeUnit) -- ^observationLag
+  -> Calendar -> BusinessDayConvention -> DayCounter
+  -> ZeroInflationIndex -> CPIInterpolationType -> GenYieldTermStructure y
+  -> [Double] -- ^cStrikes
+  -> [Double] -- ^fStrikes
+  -> [(Word, TimeUnit)] -- ^cfMaturities
+  -> Matrix Double -- ^cPrice
+  -> Matrix Double -- ^fPrice
+  -> IO CPICapFloorTermPriceSurface
+cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) =
+  qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd
+  where (maturityNums, maturityUnits) = unzip cfMaturities
+{#fun qlCPICapFloorTermPriceSurface{`Double',`Double',fromEnumQuantity`(Word,TimeUnit)'&
+  ,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter'
+  ,withZeroInflationIndex*`ZeroInflationIndex',fromEnumC`CPIInterpolationType'
+  ,withYieldTermStructure*`GenYieldTermStructure y'
+  ,withDoubleArray*`[Double]'& -- ^cStrikes
+  ,withDoubleArray*`[Double]'& -- ^fStrikes
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'& -- ^cfMaturities
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^cPrice
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^fPrice
+  ,preErrorCheck-`String'errorCheck*-}->`CPICapFloorTermPriceSurface'peekCPICapFloorTermPriceSurface*#}

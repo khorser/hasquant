@@ -156,6 +156,8 @@ namespace QuantLib {
   class ConvertibleFloatingRateBond;
   class ConvertibleZeroCouponBond;
   class CPIBond;
+  class CPICapFloor;
+  class CPICapFloorTermPriceSurface;
   class CPICashFlow;
   class CPISwap;
   class CreditDefaultSwap;
@@ -447,6 +449,8 @@ using QuantLib::ConvertibleFixedCouponBond;
 using QuantLib::ConvertibleFloatingRateBond;
 using QuantLib::ConvertibleZeroCouponBond;
 using QuantLib::CPIBond;
+using QuantLib::CPICapFloor;
+using QuantLib::CPICapFloorTermPriceSurface;
 using QuantLib::CPICashFlow;
 using QuantLib::CPISwap;
 using QuantLib::CreditDefaultSwap;
@@ -710,6 +714,11 @@ typedef shared_ptr<CdsOption> QlCdsOption;
 typedef shared_ptr<Claim> QlClaim;
 typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
 typedef shared_ptr<CPIBond> QlCPIBond;
+typedef shared_ptr<CPICapFloor> QlCPICapFloor;
+// A plain TermStructure leaf like CommodityCurve/ZeroInflationTermStructure -- shared_ptr, not
+// a Handle; wrapped into Handle<CPICapFloorTermPriceSurface> at the point of use
+// (InterpolatingCPICapFloorEngine's ctor).
+typedef shared_ptr<CPICapFloorTermPriceSurface> QlCPICapFloorTermPriceSurface;
 typedef shared_ptr<CPICashFlow> QlCPICashFlow;
 typedef shared_ptr<CPISwap> QlCPISwap;
 typedef shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
@@ -908,6 +917,8 @@ template <> class ObjClassName<ConvertibleFloatingRateBond*> {public: static voi
 template <> class ObjClassName<ConvertibleZeroCouponBond*> {public: static void output(std::ostream& os) {os << "ConvertibleZeroCouponBond";}};
 template <> class ObjClassName<CouponLeg*> {public: static void output(std::ostream& os) {os << "CouponLeg";}};
 template <> class ObjClassName<CPIBond*> {public: static void output(std::ostream& os) {os << "CPIBond";}};
+template <> class ObjClassName<CPICapFloor*> {public: static void output(std::ostream& os) {os << "CPICapFloor";}};
+template <> class ObjClassName<CPICapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "CPICapFloorTermPriceSurface";}};
 template <> class ObjClassName<CPISwap*> {public: static void output(std::ostream& os) {os << "CPISwap";}};
 template <> class ObjClassName<CreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "CreditDefaultSwap";}};
 template <> class ObjClassName<CubicBSplinesFitting*> {public: static void output(std::ostream& os) {os << "CubicBSplinesFitting";}};
@@ -1066,6 +1077,8 @@ template <> class ObjClassName<QlCdsOption*> {public: static void output(std::os
 template <> class ObjClassName<QlClaim*> {public: static void output(std::ostream& os) {os << "QlClaim";}};
 template <> class ObjClassName<QlConvertibleBond*> {public: static void output(std::ostream& os) {os << "QlConvertibleBond";}};
 template <> class ObjClassName<QlCPIBond*> {public: static void output(std::ostream& os) {os << "QlCPIBond";}};
+template <> class ObjClassName<QlCPICapFloor*> {public: static void output(std::ostream& os) {os << "QlCPICapFloor";}};
+template <> class ObjClassName<QlCPICapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "QlCPICapFloorTermPriceSurface";}};
 template <> class ObjClassName<QlCPICashFlow*> {public: static void output(std::ostream& os) {os << "QlCPICashFlow";}};
 template <> class ObjClassName<QlCPISwap*> {public: static void output(std::ostream& os) {os << "QlCPISwap";}};
 template <> class ObjClassName<QlCreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "QlCreditDefaultSwap";}};

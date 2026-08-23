@@ -68,6 +68,7 @@ module QuantLib.PricingEngine
   , yoyInflationBlackCapFloorEngine
   , yoyInflationUnitDisplacedBlackCapFloorEngine
   , yoyInflationBachelierCapFloorEngine
+  , interpolatingCPICapFloorEngine
   , bachelierSwaptionEngine
   , bachelierSwaptionEngine'
   , analyticBSMHullWhiteEngine
@@ -266,6 +267,7 @@ import QuantLib.Internal.Common
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
+{#pointer *QlCPICapFloorTermPriceSurface as CPICapFloorTermPriceSurface foreign -> CCPICapFloorTermPriceSurface' nocode#}
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
@@ -538,6 +540,11 @@ import QuantLib.Internal.Common
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |The only 'QuantLib.Instrument.InflationCapFloor.CPICapFloor' pricing engine in QL 1.43 --
+-- prices purely by interpolating a market price surface, no stochastic-vol model (see that
+-- type's own haddock for the CPI\/YoY asymmetry).
+{#fun qlInterpolatingCPICapFloorEngine as interpolatingCPICapFloorEngine{withGenTermStructure*`CPICapFloorTermPriceSurface'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) swaption engine, taking a flat volatility quote
 {#fun qlBachelierSwaptionEngine as bachelierSwaptionEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',`CashAnnuityModel' -- ^model

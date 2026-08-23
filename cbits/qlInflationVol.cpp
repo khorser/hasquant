@@ -1,5 +1,7 @@
 #include <ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp>
 #include <ql/pricingengines/inflation/inflationcapfloorengines.hpp>
+#include <ql/experimental/inflation/cpicapfloortermpricesurface.hpp>
+#include <ql/experimental/inflation/cpicapfloorengines.hpp>
 #include "qlaux.h"
 using namespace QuantLib;
 #include "qlInflationVol.h"
@@ -50,6 +52,33 @@ QlPricingEngine *qlYoYInflationUnitDisplacedBlackCapFloorEngine(QlYoYInflationIn
 QlPricingEngine *qlYoYInflationBachelierCapFloorEngine(QlYoYInflationIndex *index, QlYoYOptionletVolatilitySurface *vol,
     QlYieldTermStructure *nominalTs, char **e) {
   try {return ret(new QlPricingEngine(alloc(new YoYInflationBachelierCapFloorEngine(*arg(index), *arg(vol), *arg(nominalTs)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+
+/* CPICapFloorTermPriceSurface */
+
+void qlFreeCPICapFloorTermPriceSurface(QlCPICapFloorTermPriceSurface *o) {del(o);}
+QlTermStructure *qlCPICapFloorTermPriceSurfaceAsTermStructure(QlCPICapFloorTermPriceSurface *o) {
+  return ret(new QlTermStructure(*arg(o)));}
+
+QlCPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurface(double nominal, double baseRate,
+    int observationLagLen, int observationLagUnit, Calendar *cal, int bdc, DayCounter *dc,
+    QlZeroInflationIndex *zii, int interpolationType, QlYieldTermStructure *yts,
+    unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
+    unsigned cfMaturitiesLen, int *cfMaturitiesNum, unsigned, int *cfMaturitiesUnit,
+    unsigned cPriceRows, unsigned cPriceCols, double *cPriceData,
+    unsigned fPriceRows, unsigned fPriceCols, double *fPriceData, char **e) {
+  try {return ret(new QlCPICapFloorTermPriceSurface(alloc(new InterpolatedCPICapFloorTermPriceSurface<Bilinear>(
+      nominal, baseRate, Period(observationLagLen, (TimeUnit)observationLagUnit), *arg(cal), (BusinessDayConvention)bdc,
+      *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
+      std::vector<Rate>(cStrikes, cStrikes+cStrikesLen), std::vector<Rate>(fStrikes, fStrikes+fStrikesLen),
+      qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen),
+      qlMatrix(cPriceData, cPriceRows, cPriceCols), qlMatrix(fPriceData, fPriceRows, fPriceCols)))));
+  } catch (std::exception& er) {return handleException<QlCPICapFloorTermPriceSurface*>(e, er);}}
+
+/* InterpolatingCPICapFloorEngine -- the only CPICapFloor engine in QL 1.43 */
+
+QlPricingEngine *qlInterpolatingCPICapFloorEngine(QlCPICapFloorTermPriceSurface *surface, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new InterpolatingCPICapFloorEngine(Handle<CPICapFloorTermPriceSurface>(*arg(surface))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

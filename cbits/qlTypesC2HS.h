@@ -68,6 +68,8 @@ typedef struct QlCdsOption QlCdsOption;
 typedef struct QlClaim QlClaim;
 typedef struct QlConvertibleBond QlConvertibleBond;
 typedef struct QlCPIBond QlCPIBond;
+typedef struct QlCPICapFloor QlCPICapFloor;
+typedef struct QlCPICapFloorTermPriceSurface QlCPICapFloorTermPriceSurface;
 typedef struct QlCPICashFlow QlCPICashFlow;
 typedef struct QlCPISwap QlCPISwap;
 typedef struct QlCreditDefaultSwap QlCreditDefaultSwap;
