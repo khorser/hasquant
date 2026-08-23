@@ -345,6 +345,33 @@ void qlFreeAbcdAtmVolCurve(QlAbcdAtmVolCurve *o) {del(o);}
 QlBlackAtmVolCurve* qlAbcdAtmVolCurveAsBlackAtmVolCurve(QlAbcdAtmVolCurve *o) {return ret(new QlBlackAtmVolCurve(*arg(o)));}
 void qlFreeSabrVolSurface(QlSabrVolSurface *o) {del(o);}
 QlBlackVolSurface* qlSabrVolSurfaceAsBlackVolSurface(QlSabrVolSurface *o) {return ret(new QlBlackVolSurface(*arg(o)));}
+double qlBlackAtmVolCurveAtmVolForPeriod(QlBlackAtmVolCurve* o, int n, int u, int extrapolate, char **e) {
+  try {return (*arg(o))->atmVol(Period(n, (TimeUnit)u), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackAtmVolCurveAtmVolForDate(QlBlackAtmVolCurve* o, int date, int extrapolate, char **e) {
+  try {return (*arg(o))->atmVol(Date(date), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackAtmVolCurveAtmVolForTime(QlBlackAtmVolCurve* o, double t, int extrapolate, char **e) {
+  try {return (*arg(o))->atmVol(t, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackAtmVolCurveAtmVarianceForPeriod(QlBlackAtmVolCurve* o, int n, int u, int extrapolate, char **e) {
+  try {return (*arg(o))->atmVariance(Period(n, (TimeUnit)u), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackAtmVolCurveAtmVarianceForDate(QlBlackAtmVolCurve* o, int date, int extrapolate, char **e) {
+  try {return (*arg(o))->atmVariance(Date(date), extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackAtmVolCurveAtmVarianceForTime(QlBlackAtmVolCurve* o, double t, int extrapolate, char **e) {
+  try {return (*arg(o))->atmVariance(t, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlSmileSection* qlBlackVolSurfaceSmileSectionForPeriod(QlBlackVolSurface* o, int n, int u, int extrapolate, char **e) {
+  try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Period(n, (TimeUnit)u), extrapolate))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlBlackVolSurfaceSmileSectionForDate(QlBlackVolSurface* o, int date, int extrapolate, char **e) {
+  try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(date), extrapolate))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlBlackVolSurfaceSmileSectionForTime(QlBlackVolSurface* o, double t, int extrapolate, char **e) {
+  try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(t, extrapolate))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
 QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}

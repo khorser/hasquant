@@ -19,6 +19,15 @@ extern "C" {
   QlBlackAtmVolCurve* qlAbcdAtmVolCurveAsBlackAtmVolCurve(QlAbcdAtmVolCurve *o);
   void qlFreeSabrVolSurface(QlSabrVolSurface *o);
   QlBlackVolSurface* qlSabrVolSurfaceAsBlackVolSurface(QlSabrVolSurface *o);
+  double qlBlackAtmVolCurveAtmVolForPeriod(QlBlackAtmVolCurve* o, int n, int u, int extrapolate, char **e);
+  double qlBlackAtmVolCurveAtmVolForDate(QlBlackAtmVolCurve* o, int date, int extrapolate, char **e);
+  double qlBlackAtmVolCurveAtmVolForTime(QlBlackAtmVolCurve* o, double t, int extrapolate, char **e);
+  double qlBlackAtmVolCurveAtmVarianceForPeriod(QlBlackAtmVolCurve* o, int n, int u, int extrapolate, char **e);
+  double qlBlackAtmVolCurveAtmVarianceForDate(QlBlackAtmVolCurve* o, int date, int extrapolate, char **e);
+  double qlBlackAtmVolCurveAtmVarianceForTime(QlBlackAtmVolCurve* o, double t, int extrapolate, char **e);
+  QlSmileSection* qlBlackVolSurfaceSmileSectionForPeriod(QlBlackVolSurface* o, int n, int u, int extrapolate, char **e);
+  QlSmileSection* qlBlackVolSurfaceSmileSectionForDate(QlBlackVolSurface* o, int date, int extrapolate, char **e);
+  QlSmileSection* qlBlackVolSurfaceSmileSectionForTime(QlBlackVolSurface* o, double t, int extrapolate, char **e);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
   QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e);

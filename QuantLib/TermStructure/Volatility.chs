@@ -29,6 +29,10 @@ module QuantLib.TermStructure.Volatility
   , RelinkableSwaptionVolatilityStructure
   , VolatilityTermStructure
   , GenVolatilityTermStructure
+  , BlackAtmVolCurve
+  , GenBlackAtmVolCurve
+  , BlackVolSurface
+  , GenBlackVolSurface
 
   , asVolatilityTermStructure
   , asBlackVolTermStructure
@@ -95,6 +99,15 @@ module QuantLib.TermStructure.Volatility
   , capFloorTermVolCurveOptionTimes
   , capFloorTermVolSurfaceOptionDates
   , capFloorTermVolSurfaceOptionTimes
+  , atmVolForPeriod
+  , atmVolForDate
+  , atmVolForTime
+  , atmVarianceForPeriod
+  , atmVarianceForDate
+  , atmVarianceForTime
+  , blackVolSurfaceSmileSectionForPeriod
+  , blackVolSurfaceSmileSectionForDate
+  , blackVolSurfaceSmileSectionForTime
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
   , linkSwaptionVolTo
@@ -177,6 +190,8 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlSabrSwaptionVolatilityCube as SabrSwaptionVolatilityCube foreign -> CSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlInterpolatedSwaptionVolatilityCube as InterpolatedSwaptionVolatilityCube foreign -> CInterpolatedSwaptionVolatilityCube' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
+{#pointer *QlBlackAtmVolCurve as BlackAtmVolCurve foreign -> CBlackAtmVolCurve' nocode#}
+{#pointer *QlBlackVolSurface as BlackVolSurface foreign -> CBlackVolSurface' nocode#}
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
@@ -708,6 +723,60 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 
 -- |As 'capFloorTermVolSurfaceOptionDates', in year fractions from the surface's reference date.
 {#fun qlCapFloorTermVolSurfaceOptionTimes as capFloorTermVolSurfaceOptionTimes{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Double]'&peekDoubleArray*}->`()'#}
+
+-- |spot at-the-money volatility for a given option tenor
+{#fun qlBlackAtmVolCurveAtmVolForPeriod as atmVolForPeriod{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |spot at-the-money volatility for a given option maturity date
+{#fun qlBlackAtmVolCurveAtmVolForDate as atmVolForDate{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,withDay*`Day' -- ^maturity
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |spot at-the-money volatility for a given option maturity time
+{#fun qlBlackAtmVolCurveAtmVolForTime as atmVolForTime{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,`Double' -- ^maturity
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |spot at-the-money variance for a given option tenor
+{#fun qlBlackAtmVolCurveAtmVarianceForPeriod as atmVarianceForPeriod{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |spot at-the-money variance for a given option maturity date
+{#fun qlBlackAtmVolCurveAtmVarianceForDate as atmVarianceForDate{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,withDay*`Day' -- ^maturity
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |spot at-the-money variance for a given option maturity time
+{#fun qlBlackAtmVolCurveAtmVarianceForTime as atmVarianceForTime{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
+  ,`Double' -- ^maturity
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |returns the smile for a given option tenor
+{#fun qlBlackVolSurfaceSmileSectionForPeriod as blackVolSurfaceSmileSectionForPeriod{withGenBlackVolSurface*`GenBlackVolSurface b'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |returns the smile for a given option date
+{#fun qlBlackVolSurfaceSmileSectionForDate as blackVolSurfaceSmileSectionForDate{withGenBlackVolSurface*`GenBlackVolSurface b'
+  ,withDay*`Day' -- ^optionDate
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |returns the smile for a given option time
+{#fun qlBlackVolSurfaceSmileSectionForTime as blackVolSurfaceSmileSectionForTime{withGenBlackVolSurface*`GenBlackVolSurface b'
+  ,`Double' -- ^optionTime
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
 -- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)
