@@ -648,6 +648,106 @@ spec = do
           volFromConst <- Vol.capFloorVolatilityForPeriod constVol (5, Years) 0.05 False
           volFromConst `shouldBe` 0.18
 
+      -- OptionletStripper2 reconciles OptionletStripper1's forward-forward stripping against an
+      -- ATM CapFloorTermVolCurve (upstream: optionletstripper.cpp's testFlatTermVolatilityStripping2).
+      -- With flat term-vol inputs on both the surface and the ATM curve, stripping via either path
+      -- must produce the same caplet vols, so pricing the same cap through each stripped
+      -- structure's engine gives matching NPVs -- a real self-consistency check, not a hand-derived
+      -- golden value.
+      it "OptionletStripper2 reprices a cap the same as OptionletStripper1 on flat term vol inputs" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          (_, discountH, forecastH) <- setupSwap
+          cal <- Calendar.calendar TARGET
+          settle <- advance cal (11 `december` 2012) (2, Days) Following False
+          floatDC <- dayCounter (Actual360 False)
+          floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
+            ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+          idx <- iborIndex Euribor6M (Just forecastH)
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.05]
+          dc <- dayCounter Actual365FixedStandard
+          let tenors = [(n, Years) | n <- [1 .. 10]]
+
+          flatVolQ <- Quote.simpleQuote 0.18
+          let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
+          capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
+          curveVolQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
+          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
+
+          stripper1 <- Vol.optionletStripper1 capVolSurface idx Nothing 1.0e-6 100
+            (Just discountH) IR.ShiftedLognormal 0 False Nothing
+          stripper2 <- Vol.optionletStripper2 capVolSurface idx Nothing 1.0e-6 100
+            (Just discountH) IR.ShiftedLognormal 0 False Nothing capVolCurve
+          vol2 <- Vol.optionletStripper2AsOptionletVolatilityStructure stripper2
+
+          eng1 <- blackCapFloorEngine' discountH stripper1
+          setPricingEngine capfl eng1
+          price1 <- npv capfl
+
+          eng2 <- blackCapFloorEngine' discountH vol2
+          setPricingEngine capfl eng2
+          price2 <- npv capfl
+
+          price1 `shouldSatisfy` (> 1)
+          abs (price1 - price2) / abs price1 `shouldSatisfy` (< 1.0e-5)
+
+          atmStrikes <- Vol.optionletStripper2AtmCapFloorStrikes stripper2
+          atmPrices <- Vol.optionletStripper2AtmCapFloorPrices stripper2
+          spreadsVol <- Vol.optionletStripper2SpreadsVol stripper2
+          length atmStrikes `shouldBe` 10
+          length atmPrices `shouldBe` 10
+          length spreadsVol `shouldBe` 10
+
+      -- AbcdAtmVolCurve fits an ABCD functional form to quoted ATM vols. No cached upstream
+      -- fixture matches hasquant's binding shape (see the plan's Tests section), so this is a
+      -- construction-plus-getters smoke test: with flat input quotes the fit should stay close to
+      -- flat and converge with a small rms error.
+      it "constructs an AbcdAtmVolCurve and queries its fit diagnostics" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          let tenors = [(n, Years) | n <- [1 .. 10]]
+          qs <- mapM (const (Quote.simpleQuote 0.18)) tenors
+          curve <- Vol.abcdAtmVolCurve 0 cal tenors qs (replicate 10 True) Following dc
+          rmsErr <- Vol.abcdAtmVolCurveRmsError curve
+          rmsErr `shouldSatisfy` (< 0.05)
+          ks <- Vol.abcdAtmVolCurveK curve
+          length ks `shouldBe` 10
+          returnedTenors <- Vol.abcdAtmVolCurveOptionTenors curve
+          length returnedTenors `shouldBe` 10
+          atmv <- Vol.atmVolForPeriod curve (5, Years) False
+          atmv `shouldSatisfy` (\v -> v > 0.1 && v < 0.3)
+
+      -- SabrVolSurface's own volatilitySpreads(Date) linearly interpolates the raw quoted
+      -- vol-spread quotes across optionTenors -- at a date that lands exactly on a grid tenor,
+      -- that interpolation is the identity, so with flat spread quotes the surface must echo the
+      -- input value back exactly. Real self-consistency check, not a hand-derived value.
+      it "constructs a SabrVolSurface anchored to an AbcdAtmVolCurve and echoes its vol spreads at a grid tenor" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (11 `december` 2012))
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          (_, _, forecastH) <- setupSwap
+          idx <- iborIndex Euribor6M (Just forecastH)
+          let tenors = [(n, Years) | n <- [1 .. 5]]
+          atmQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
+          atmCurve <- Vol.abcdAtmVolCurve 0 cal tenors atmQs (replicate 5 True) Following dc
+          let spreads = [-0.01, 0, 0.01]
+          spreadQs <- mapM (const (Quote.simpleQuote 0.02)) [1 .. (5 * 3 :: Int)]
+          let volSpreads = either error id $ objectMatrix 5 3 spreadQs
+          surf <- Vol.sabrVolSurface idx atmCurve tenors spreads volSpreads
+          vs <- Vol.sabrVolSurfaceVolatilitySpreadsForPeriod surf (3, Years)
+          length vs `shouldBe` 3
+          vs `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
+          _ <- Vol.sabrVolSurfaceIndex surf
+          d <- Vol.sabrVolSurfaceOptionDateFromTenor surf (3, Years)
+          d `shouldSatisfy` (> 11 `december` 2012)
+          curveBack <- Vol.sabrVolSurfaceAtmCurve surf
+          v <- Vol.atmVolForPeriod curveBack (3, Years) False
+          abs (v - 0.18) `shouldSatisfy` (< 1.0e-6)
+
       -- Bachelier (normal-vol) engines use a different pricing formula from their Black
       -- (lognormal-vol) siblings; this checks the new bindings are actually wired to that
       -- formula rather than silently aliasing to Black, by repricing the same instrument
