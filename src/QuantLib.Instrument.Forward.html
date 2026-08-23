@@ -80,11 +80,11 @@
 </span><span id="line-47"></span><span>
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span class="annot"><span class="hs-comment">-- |FRA with a par-rate approximation: the forward rate is forecast from valueDate to maturityDate by the index's forecast curve (useIndexedCoupon=false).</span></span><span>
-</span><span id="line-50"></span><span id="local-6989586621679999280"><span id="local-6989586621679999284"><span class="annot"><a href="QuantLib.Instrument.Forward.html#forwardRateAgreement"><span class="hs-identifier hs-type">forwardRateAgreement</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenIborIndex"><span class="hs-identifier hs-type">GenIborIndex</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679999280"><span class="hs-identifier hs-type">ibor</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^valueDate</span></span><span>
+</span><span id="line-50"></span><span id="local-6989586621680009972"><span id="local-6989586621680009976"><span class="annot"><a href="QuantLib.Instrument.Forward.html#forwardRateAgreement"><span class="hs-identifier hs-type">forwardRateAgreement</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenIborIndex"><span class="hs-identifier hs-type">GenIborIndex</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680009972"><span class="hs-identifier hs-type">ibor</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^valueDate</span></span><span>
 </span><span id="line-51"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^maturityDate</span></span><span>
 </span><span id="line-52"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Common.html#PositionType"><span class="hs-identifier hs-type">PositionType</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^strikeForwardRate</span></span><span>
 </span><span id="line-53"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^notionalAmount</span></span><span>
-</span><span id="line-54"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenYieldTermStructure"><span class="hs-identifier hs-type">GenYieldTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679999284"><span class="hs-identifier hs-type">y</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^discountCurve</span></span><span>
+</span><span id="line-54"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenYieldTermStructure"><span class="hs-identifier hs-type">GenYieldTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680009976"><span class="hs-identifier hs-type">y</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^discountCurve</span></span><span>
 </span><span id="line-55"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#ForwardRateAgreement"><span class="hs-identifier hs-type">ForwardRateAgreement</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span></span><span>
 </span><span id="line-56"></span><span id="forwardRateAgreement"><span class="annot"><span class="annottext">forwardRateAgreement :: forall ibor y.
 GenIborIndex ibor
@@ -95,58 +95,58 @@ GenIborIndex ibor
 -&gt; Double
 -&gt; Maybe (GenYieldTermStructure y)
 -&gt; IO ForwardRateAgreement
-</span><a href="QuantLib.Instrument.Forward.html#forwardRateAgreement"><span class="hs-identifier hs-var hs-var">forwardRateAgreement</span></a></span></span><span> </span><span id="local-6989586621679999394"><span class="annot"><span class="annottext">GenIborIndex ibor
-</span><a href="#local-6989586621679999394"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621679999395"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621679999395"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621679999396"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621679999396"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621679999397"><span class="annot"><span class="annottext">PositionType
-</span><a href="#local-6989586621679999397"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621679999398"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999398"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621679999399"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999399"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621679999400"><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y)
-</span><a href="#local-6989586621679999400"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Instrument.Forward.html#forwardRateAgreement"><span class="hs-identifier hs-var hs-var">forwardRateAgreement</span></a></span></span><span> </span><span id="local-6989586621680010086"><span class="annot"><span class="annottext">GenIborIndex ibor
+</span><a href="#local-6989586621680010086"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680010087"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680010087"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680010088"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680010088"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680010089"><span class="annot"><span class="annottext">PositionType
+</span><a href="#local-6989586621680010089"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680010090"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680010090"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680010091"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680010091"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680010092"><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y)
+</span><a href="#local-6989586621680010092"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-57"></span><span>  </span><span class="annot"><span class="annottext">GenIborIndex ibor
 -&gt; (Ptr CIborIndex' -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall ibor b.
 GenIborIndex ibor -&gt; (Ptr CIborIndex' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withIborIndex"><span class="hs-identifier hs-var">withIborIndex</span></a></span><span> </span><span class="annot"><span class="annottext">GenIborIndex ibor
-</span><a href="#local-6989586621679999394"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CIborIndex' -&gt; IO ForwardRateAgreement)
+</span><a href="#local-6989586621680010086"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CIborIndex' -&gt; IO ForwardRateAgreement)
  -&gt; IO ForwardRateAgreement)
 -&gt; (Ptr CIborIndex' -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999402"><span class="annot"><span class="annottext">Ptr CIborIndex'
-</span><a href="#local-6989586621679999402"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010094"><span class="annot"><span class="annottext">Ptr CIborIndex'
+</span><a href="#local-6989586621680010094"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-58"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; (CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621679999395"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement)
+</span><a href="#local-6989586621680010087"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement)
 -&gt; (CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999404"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999404"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621679999405"><span id="local-6989586621679999406"><span id="local-6989586621679999407"></span></span></span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010096"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010096"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680010097"><span id="local-6989586621680010098"><span id="local-6989586621680010099"></span></span></span><span> </span><span>
 </span><span id="line-59"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; (CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621679999396"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement)
+</span><a href="#local-6989586621680010088"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement)
 -&gt; (CInt -&gt; IO ForwardRateAgreement) -&gt; IO ForwardRateAgreement
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999410"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999410"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-60"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999425"><span class="annot"><span class="annottext">a4' :: CInt
-</span><a href="#local-6989586621679999425"><span class="hs-identifier hs-var hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">PositionType -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010102"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010102"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010117"><span class="annot"><span class="annottext">a4' :: CInt
+</span><a href="#local-6989586621680010117"><span class="hs-identifier hs-var hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">PositionType -&gt; CInt
 forall a b. (Enum a, Integral b) =&gt; a -&gt; b
 </span><a href="QuantLib.Internal.html#fromEnumC"><span class="hs-identifier hs-var">fromEnumC</span></a></span><span> </span><span class="annot"><span class="annottext">PositionType
-</span><a href="#local-6989586621679999397"><span class="hs-identifier hs-var">a4</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999433"><span class="annot"><span class="annottext">a5' :: CDouble
-</span><a href="#local-6989586621679999433"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="#local-6989586621680010089"><span class="hs-identifier hs-var">a4</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010125"><span class="annot"><span class="annottext">a5' :: CDouble
+</span><a href="#local-6989586621680010125"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999398"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-62"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999437"><span class="annot"><span class="annottext">a6' :: CDouble
-</span><a href="#local-6989586621679999437"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="#local-6989586621680010090"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010129"><span class="annot"><span class="annottext">a6' :: CDouble
+</span><a href="#local-6989586621680010129"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999399"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680010091"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-63"></span><span>  </span><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
@@ -154,13 +154,13 @@ forall y b.
 Maybe (GenYieldTermStructure y)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withMaybeYieldTermStructure"><span class="hs-identifier hs-var">withMaybeYieldTermStructure</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y)
-</span><a href="#local-6989586621679999400"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO ForwardRateAgreement)
+</span><a href="#local-6989586621680010092"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO ForwardRateAgreement)
  -&gt; IO ForwardRateAgreement)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999439"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621679999439"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010131"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680010131"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-64"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
@@ -169,8 +169,8 @@ forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 -&gt; (Ptr (Ptr CChar) -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999441"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679999441"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010133"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680010133"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-65"></span><span>  </span><span class="annot"><span class="annottext">Ptr CIborIndex'
 -&gt; CInt
 -&gt; CInt
@@ -181,32 +181,32 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CForwardRateAgreement')
 </span><a href="QuantLib.Instrument.Forward.html#forwardRateAgreement%27_"><span class="hs-identifier hs-var">forwardRateAgreement'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CIborIndex'
-</span><a href="#local-6989586621679999402"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999404"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999410"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999425"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621679999433"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621679999437"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621679999439"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679999441"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CForwardRateAgreement')
+</span><a href="#local-6989586621680010094"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010096"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010102"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010117"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680010125"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680010129"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680010131"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680010133"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CForwardRateAgreement')
 -&gt; (Ptr CForwardRateAgreement' -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999443"><span class="annot"><span class="annottext">Ptr CForwardRateAgreement'
-</span><a href="#local-6989586621679999443"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010135"><span class="annot"><span class="annottext">Ptr CForwardRateAgreement'
+</span><a href="#local-6989586621680010135"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-66"></span><span>  </span><span class="annot"><span class="annottext">Ptr CForwardRateAgreement' -&gt; IO ForwardRateAgreement
 </span><a href="QuantLib.Internal.Type.html#peekForwardRateAgreement"><span class="hs-identifier hs-var">peekForwardRateAgreement</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CForwardRateAgreement'
-</span><a href="#local-6989586621679999443"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO ForwardRateAgreement
+</span><a href="#local-6989586621680010135"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO ForwardRateAgreement
 -&gt; (ForwardRateAgreement -&gt; IO ForwardRateAgreement)
 -&gt; IO ForwardRateAgreement
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999445"><span class="annot"><span class="annottext">ForwardRateAgreement
-</span><a href="#local-6989586621679999445"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010137"><span class="annot"><span class="annottext">ForwardRateAgreement
+</span><a href="#local-6989586621680010137"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-67"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679999441"><span class="hs-identifier hs-var">a8'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO ForwardRateAgreement -&gt; IO ForwardRateAgreement
+</span><a href="#local-6989586621680010133"><span class="hs-identifier hs-var">a8'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO ForwardRateAgreement -&gt; IO ForwardRateAgreement
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -214,7 +214,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ForwardRateAgreement
-</span><a href="#local-6989586621679999445"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680010137"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-69"></span><span>
 </span><span id="line-70"></span><span class="hs-pragma">{-# LINE 56 &quot;./QuantLib/Instrument/Forward.chs&quot; #-}</span><span>
 </span><span id="line-56"></span><span>
@@ -381,74 +381,74 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 -&gt; Word
 -&gt; Calendar
 -&gt; IO FxForward
-</span><a href="QuantLib.Instrument.Forward.html#fxForward"><span class="hs-identifier hs-var hs-var">fxForward</span></a></span></span><span> </span><span id="local-6989586621679999484"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999484"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621679999485"><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621679999485"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621679999486"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999486"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621679999487"><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621679999487"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621679999488"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621679999488"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621679999489"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621679999489"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621679999490"><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621679999490"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621679999491"><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621679999491"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-106"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999495"><span class="annot"><span class="annottext">a1' :: CDouble
-</span><a href="#local-6989586621679999495"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="QuantLib.Instrument.Forward.html#fxForward"><span class="hs-identifier hs-var hs-var">fxForward</span></a></span></span><span> </span><span id="local-6989586621680010176"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680010176"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680010177"><span class="annot"><span class="annottext">Currency
+</span><a href="#local-6989586621680010177"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680010178"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680010178"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680010179"><span class="annot"><span class="annottext">Currency
+</span><a href="#local-6989586621680010179"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680010180"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680010180"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680010181"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680010181"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680010182"><span class="annot"><span class="annottext">Word
+</span><a href="#local-6989586621680010182"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680010183"><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680010183"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-106"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010187"><span class="annot"><span class="annottext">a1' :: CDouble
+</span><a href="#local-6989586621680010187"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999484"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680010176"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-107"></span><span>  </span><span class="annot"><span class="annottext">Currency -&gt; (Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward
 forall b. Currency -&gt; (Ptr CCurrency -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCurrency"><span class="hs-identifier hs-var">withCurrency</span></a></span><span> </span><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621679999485"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward)
+</span><a href="#local-6989586621680010177"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward)
 -&gt; (Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999497"><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621679999497"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-108"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999501"><span class="annot"><span class="annottext">a3' :: CDouble
-</span><a href="#local-6989586621679999501"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010189"><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680010189"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-108"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010193"><span class="annot"><span class="annottext">a3' :: CDouble
+</span><a href="#local-6989586621680010193"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621679999486"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680010178"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-109"></span><span>  </span><span class="annot"><span class="annottext">Currency -&gt; (Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward
 forall b. Currency -&gt; (Ptr CCurrency -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCurrency"><span class="hs-identifier hs-var">withCurrency</span></a></span><span> </span><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621679999487"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward)
+</span><a href="#local-6989586621680010179"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward)
 -&gt; (Ptr CCurrency -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999502"><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621679999502"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010194"><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680010194"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-110"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; (CInt -&gt; IO FxForward) -&gt; IO FxForward
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621679999488"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO FxForward) -&gt; IO FxForward)
+</span><a href="#local-6989586621680010180"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO FxForward) -&gt; IO FxForward)
 -&gt; (CInt -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999503"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999503"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-111"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999505"><span class="annot"><span class="annottext">a6' :: CInt
-</span><a href="#local-6989586621679999505"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010195"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010195"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-111"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010197"><span class="annot"><span class="annottext">a6' :: CInt
+</span><a href="#local-6989586621680010197"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621679999489"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-112"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679999511"><span class="annot"><span class="annottext">a7' :: CUInt
-</span><a href="#local-6989586621679999511"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
+</span><a href="#local-6989586621680010181"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-112"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680010203"><span class="annot"><span class="annottext">a7' :: CUInt
+</span><a href="#local-6989586621680010203"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621679999490"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680010182"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-113"></span><span>  </span><span class="annot"><span class="annottext">Calendar -&gt; (Ptr CCalendar -&gt; IO FxForward) -&gt; IO FxForward
 forall b. Calendar -&gt; (Ptr CCalendar -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCalendar"><span class="hs-identifier hs-var">withCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621679999491"><span class="hs-identifier hs-var">a8</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO FxForward) -&gt; IO FxForward)
+</span><a href="#local-6989586621680010183"><span class="hs-identifier hs-var">a8</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO FxForward) -&gt; IO FxForward)
 -&gt; (Ptr CCalendar -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999513"><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621679999513"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010205"><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680010205"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-114"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO FxForward) -&gt; IO FxForward)
 -&gt; (Ptr (Ptr CChar) -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999514"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679999514"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010206"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680010206"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-115"></span><span>  </span><span class="annot"><span class="annottext">CDouble
 -&gt; Ptr CCurrency
 -&gt; CDouble
@@ -460,30 +460,30 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CFxForward')
 </span><a href="QuantLib.Instrument.Forward.html#fxForward%27_"><span class="hs-identifier hs-var">fxForward'_</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621679999495"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621679999497"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621679999501"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621679999502"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999503"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679999505"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621679999511"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621679999513"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679999514"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CFxForward')
+</span><a href="#local-6989586621680010187"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680010189"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680010193"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680010194"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010195"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680010197"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680010203"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680010205"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680010206"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CFxForward')
 -&gt; (Ptr CFxForward' -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999516"><span class="annot"><span class="annottext">Ptr CFxForward'
-</span><a href="#local-6989586621679999516"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010208"><span class="annot"><span class="annottext">Ptr CFxForward'
+</span><a href="#local-6989586621680010208"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-116"></span><span>  </span><span class="annot"><span class="annottext">Ptr CFxForward' -&gt; IO FxForward
 </span><a href="QuantLib.Internal.Type.html#peekFxForward"><span class="hs-identifier hs-var">peekFxForward</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CFxForward'
-</span><a href="#local-6989586621679999516"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO FxForward -&gt; (FxForward -&gt; IO FxForward) -&gt; IO FxForward
+</span><a href="#local-6989586621680010208"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO FxForward -&gt; (FxForward -&gt; IO FxForward) -&gt; IO FxForward
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679999518"><span class="annot"><span class="annottext">FxForward
-</span><a href="#local-6989586621679999518"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680010210"><span class="annot"><span class="annottext">FxForward
+</span><a href="#local-6989586621680010210"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-117"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679999514"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO FxForward -&gt; IO FxForward
+</span><a href="#local-6989586621680010206"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO FxForward -&gt; IO FxForward
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -491,7 +491,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">FxForward
-</span><a href="#local-6989586621679999518"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680010210"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-119"></span><span>
 </span><span id="line-120"></span><span class="hs-pragma">{-# LINE 104 &quot;./QuantLib/Instrument/Forward.chs&quot; #-}</span><span>
 </span><span id="line-104"></span><span>
