@@ -157,7 +157,7 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
     yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
-                 priceSurfEU yoyIndexEU nominalEUR (-0.5)
+                 priceSurfEU yoyIndexEU nominalEUR (-0.5) Linear
 
     strikes <- yoyCapFloorStrikes priceSurfEU
     baseDate <- yoyCapFloorBaseDate priceSurfEU
@@ -212,6 +212,29 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurf
     rate <- yoyCapFloorAtmYoYSwapRate priceSurf (fst (head dateRates)) True
     rate `shouldSatisfy` (not . isNaN)
+    performGC
+
+  -- No second upstream fixture covers a non-Linear interpolation here, so this is a
+  -- construction/sanity check only, same reasoning as the spot-checks above. LogCubic is
+  -- deliberately not exercised: it can't back this template at all (see the comment on the
+  -- LogCubic case in qlInflationVol.cpp's dispatchKInterpolatedYoYOptionletVolatilitySurface).
+  -- Cubic/LogLinear are also skipped here: this fixture's sparse (3-maturity) per-strike vol
+  -- bootstrap (PiecewiseYoYOptionletVolatilityCurve, one per strike, see initialize() in
+  -- interpolatedyoyoptionletstripper.hpp) fails to converge under Cubic's default-constructed
+  -- Kruger derivative estimate with so few points ("root not bracketed") -- a real numerical
+  -- fragility of the bootstrap with this data, not a hasquant bug. BackwardFlat has no derivative
+  -- estimation so it bootstraps fine and still exercises a genuinely different interpolator.
+  it "kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Settings.keepingSettings' $ do
+    (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
+
+    yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
+                 priceSurfEU yoyIndexEU nominalEUR (-0.5) BackwardFlat
+
+    strikes <- yoyCapFloorStrikes priceSurfEU
+    baseDate <- yoyCapFloorBaseDate priceSurfEU
+    d1 <- advance cal baseDate (1, Years) Unadjusted False
+    vol <- yoyOptionletVolatility yoySurf d1 (head strikes) Nothing True
+    vol `shouldSatisfy` (not . isNaN)
     performGC
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -160,15 +160,25 @@ yoyCapFloorAtmYoYSwapDateRates s = do
 
 -- |Strips a 'YoYOptionletVolatilitySurface' from a 'YoYCapFloorTermPriceSurface' by bootstrapping
 -- a per-strike vol curve against Black-priced YoY caps\/floors (mirrors upstream's own
--- @testYoYPriceSurfaceToVol@: an @InterpolatedYoYOptionletStripper\<Linear\>@ solving each
--- strike's initial vol, then a @KInterpolatedYoYOptionletVolatilitySurface\<Linear\>@
--- interpolating across strikes -- neither is exposed as its own type, since nothing in upstream
--- reaches them from outside this one bootstrap; see this function's C shim for the full pipeline).
--- /index/\//nominalTermStructure/ price the null-vol engine the stripper solves against; /slope/
--- is the assumed initial caplet-vol slope for strikes past the edge of good price data (a
--- negative slope for typically low\/flat short-dated extreme-strike prices, per upstream's own
--- comment -- too extreme a slope can leave no arbitrage-free solution).
-{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceBlack as kInterpolatedYoYOptionletVolatilitySurfaceBlack{fromIntegral`Word' -- ^settlementDays
+-- @testYoYPriceSurfaceToVol@: an @InterpolatedYoYOptionletStripper@ solving each strike's initial
+-- vol, then a @KInterpolatedYoYOptionletVolatilitySurface@ interpolating across strikes, both
+-- sharing the given 'Interpolation' -- neither is exposed as its own type, since nothing in
+-- upstream reaches them from outside this one bootstrap; see this function's C shim for the full
+-- pipeline). /index/\//nominalTermStructure/ price the null-vol engine the stripper solves
+-- against; /slope/ is the assumed initial caplet-vol slope for strikes past the edge of good
+-- price data (a negative slope for typically low\/flat short-dated extreme-strike prices, per
+-- upstream's own comment -- too extreme a slope can leave no arbitrage-free solution).
+kInterpolatedYoYOptionletVolatilitySurfaceBlack :: Word -- ^settlementDays
+  -> Calendar -> BusinessDayConvention -> DayCounter
+  -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
+  -> YoYInflationIndex -- ^index
+  -> GenYieldTermStructure y -- ^nominalTermStructure
+  -> Double -- ^slope
+  -> Interpolation
+  -> IO YoYOptionletVolatilitySurface
+kInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =
+  uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)
+{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceBlack{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar'
   ,fromEnumC`BusinessDayConvention'
   ,withDayCounter*`DayCounter'
@@ -176,10 +186,21 @@ yoyCapFloorAtmYoYSwapDateRates s = do
   ,withYoYInflationIndex*`YoYInflationIndex' -- ^index
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`Double' -- ^slope
+  ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
   ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
 
 -- |As 'kInterpolatedYoYOptionletVolatilitySurfaceBlack', but unit-displaced Black.
-{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack as kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack{fromIntegral`Word' -- ^settlementDays
+kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack :: Word -- ^settlementDays
+  -> Calendar -> BusinessDayConvention -> DayCounter
+  -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
+  -> YoYInflationIndex -- ^index
+  -> GenYieldTermStructure y -- ^nominalTermStructure
+  -> Double -- ^slope
+  -> Interpolation
+  -> IO YoYOptionletVolatilitySurface
+kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =
+  uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)
+{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar'
   ,fromEnumC`BusinessDayConvention'
   ,withDayCounter*`DayCounter'
@@ -187,10 +208,21 @@ yoyCapFloorAtmYoYSwapDateRates s = do
   ,withYoYInflationIndex*`YoYInflationIndex' -- ^index
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`Double' -- ^slope
+  ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
   ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
 
 -- |As 'kInterpolatedYoYOptionletVolatilitySurfaceBlack', but Bachelier (normal model).
-{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier as kInterpolatedYoYOptionletVolatilitySurfaceBachelier{fromIntegral`Word' -- ^settlementDays
+kInterpolatedYoYOptionletVolatilitySurfaceBachelier :: Word -- ^settlementDays
+  -> Calendar -> BusinessDayConvention -> DayCounter
+  -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
+  -> YoYInflationIndex -- ^index
+  -> GenYieldTermStructure y -- ^nominalTermStructure
+  -> Double -- ^slope
+  -> Interpolation
+  -> IO YoYOptionletVolatilitySurface
+kInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =
+  uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)
+{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar'
   ,fromEnumC`BusinessDayConvention'
   ,withDayCounter*`DayCounter'
@@ -198,6 +230,7 @@ yoyCapFloorAtmYoYSwapDateRates s = do
   ,withYoYInflationIndex*`YoYInflationIndex' -- ^index
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`Double' -- ^slope
+  ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
   ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
 
 -- |Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity

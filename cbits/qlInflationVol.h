@@ -80,15 +80,18 @@ extern "C" {
   QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBlack(
       unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
       QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-      QlYieldTermStructure *nominalTs, double slope, char **e);
+      QlYieldTermStructure *nominalTs, double slope,
+      int interpolator, int approximator, int approximatorArg, char **e);
   QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack(
       unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
       QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-      QlYieldTermStructure *nominalTs, double slope, char **e);
+      QlYieldTermStructure *nominalTs, double slope,
+      int interpolator, int approximator, int approximatorArg, char **e);
   QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier(
       unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
       QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-      QlYieldTermStructure *nominalTs, double slope, char **e);
+      QlYieldTermStructure *nominalTs, double slope,
+      int interpolator, int approximator, int approximatorArg, char **e);
 #ifdef __cplusplus
 }
 #endif

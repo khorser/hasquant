@@ -279,7 +279,7 @@ void qlYoYCapFloorTermPriceSurfaceStrikes(QlYoYCapFloorTermPriceSurface *o, unsi
   for (unsigned i = 0; i < *sl; ++i) (*strike)[i] = ks[i];
 }
 
-/* KInterpolatedYoYOptionletVolatilitySurface<Linear> */
+/* KInterpolatedYoYOptionletVolatilitySurface */
 
 namespace {
   // The stripper sets the real vol on this engine as it bootstraps each strike's curve
@@ -288,48 +288,121 @@ namespace {
   Handle<YoYOptionletVolatilitySurface> qlNullYoYOptionletVolatilitySurfaceHandle() {
     return Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(), false);
   }
+
+  // The stripper's own internal PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> always
+  // default-constructs its interpolator (interpolatedyoyoptionletstripper.hpp's initialize()
+  // never passes one) -- only the surface's own K-direction interpolator (factory1D_) takes an
+  // explicit instance, so only that one needs the Cubic/LogCubic approximator-specific
+  // construction, mirroring makeYoYCapFloorTermPriceSurface's shape above.
+  template <class Interpolator1D>
+  YoYOptionletVolatilitySurface *makeKInterpolatedYoYOptionletVolatilitySurface(
+      unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
+      const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
+      const shared_ptr<YoYInflationCapFloorEngine> &engine,
+      const shared_ptr<YoYOptionletStripper> &stripper, double slope,
+      const Interpolator1D &interpolator) {
+    return new KInterpolatedYoYOptionletVolatilitySurface<Interpolator1D>(
+        settlementDays, cal, bdc, dc, capFloorPrices->observationLag(), capFloorPrices, engine, stripper,
+        slope, interpolator);
+  }
+
+  YoYOptionletVolatilitySurface *dispatchKInterpolatedYoYOptionletVolatilitySurface(
+      unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
+      const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
+      const shared_ptr<YoYInflationCapFloorEngine> &engine, double slope,
+      int interpolator1D, int approximator, int approximatorArg) {
+    switch (interpolator1D) {
+    case hasquant::BackwardFlat:
+      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
+          shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<BackwardFlat>()), slope, BackwardFlat());
+    case hasquant::ForwardFlat:
+      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
+          shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<ForwardFlat>()), slope, ForwardFlat());
+    case hasquant::Linear:
+      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
+          shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<Linear>()), slope, Linear());
+    case hasquant::LogLinear:
+      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
+          shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<LogLinear>()), slope, LogLinear());
+    case hasquant::Cubic: {
+      shared_ptr<YoYOptionletStripper> stripper(new InterpolatedYoYOptionletStripper<Cubic>());
+      switch (approximator) {
+      case hasquant::NaturalSpline:
+        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
+            Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+      case hasquant::Kruger:
+        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
+            Cubic(CubicInterpolation::Kruger));
+      case hasquant::FritschButland:
+        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
+            Cubic(CubicInterpolation::FritschButland));
+      case hasquant::Parabolic:
+        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
+            Cubic(CubicInterpolation::Parabolic, approximatorArg));
+      default:
+        QL_FAIL("Unsupported approximation " << approximator);
+      }
+    }
+    // LogCubic is deliberately not instantiated here: unlike Cubic, QuantLib's LogCubic
+    // (ql/math/interpolations/loginterpolation.hpp) has no default constructor -- its
+    // DerivativeApprox parameter is required, no default value. InterpolatedYoYOptionletStripper's
+    // own initialize() (interpolatedyoyoptionletstripper.hpp) builds a
+    // PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> via that curve's own default-arg'd
+    // Interpolator1D ctor parameter -- and since that's a virtual member, instantiating
+    // InterpolatedYoYOptionletStripper<LogCubic> at all (even just to hold it in a shared_ptr,
+    // never calling initialize) forces the compiler to instantiate initialize() to build the
+    // vtable, which fails to compile: "no matching constructor for initialization of
+    // QuantLib::LogCubic". This is a real upstream restriction, not a hasquant gap -- confirmed
+    // by reading loginterpolation.hpp's LogCubic ctor (no default 'da' argument, unlike Cubic's).
+    case hasquant::LogCubic:
+      QL_FAIL("LogCubic cannot back InterpolatedYoYOptionletStripper/KInterpolatedYoYOptionletVolatilitySurface -- "
+              "see the comment above this case");
+    default:
+      QL_FAIL("Unsupported interpolation " << interpolator1D);
+    }
+  }
 }
 
 QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBlack(
     unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
     QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-    QlYieldTermStructure *nominalTs, double slope, char **e) {
+    QlYieldTermStructure *nominalTs, double slope,
+    int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBlackCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    shared_ptr<YoYOptionletStripper> stripper(new InterpolatedYoYOptionletStripper<Linear>());
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(
-        shared_ptr<YoYOptionletVolatilitySurface>(alloc(new KInterpolatedYoYOptionletVolatilitySurface<Linear>(
-            settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc),
-            (*arg(capFloorPrices))->observationLag(), *arg(capFloorPrices), engine, stripper, slope))))));
+    YoYOptionletVolatilitySurface *s = dispatchKInterpolatedYoYOptionletVolatilitySurface(
+        settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
+        interpolator, approximator, approximatorArg);
+    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 
 QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack(
     unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
     QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-    QlYieldTermStructure *nominalTs, double slope, char **e) {
+    QlYieldTermStructure *nominalTs, double slope,
+    int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationUnitDisplacedBlackCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    shared_ptr<YoYOptionletStripper> stripper(new InterpolatedYoYOptionletStripper<Linear>());
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(
-        shared_ptr<YoYOptionletVolatilitySurface>(alloc(new KInterpolatedYoYOptionletVolatilitySurface<Linear>(
-            settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc),
-            (*arg(capFloorPrices))->observationLag(), *arg(capFloorPrices), engine, stripper, slope))))));
+    YoYOptionletVolatilitySurface *s = dispatchKInterpolatedYoYOptionletVolatilitySurface(
+        settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
+        interpolator, approximator, approximatorArg);
+    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 
 QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier(
     unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
     QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-    QlYieldTermStructure *nominalTs, double slope, char **e) {
+    QlYieldTermStructure *nominalTs, double slope,
+    int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBachelierCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    shared_ptr<YoYOptionletStripper> stripper(new InterpolatedYoYOptionletStripper<Linear>());
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(
-        shared_ptr<YoYOptionletVolatilitySurface>(alloc(new KInterpolatedYoYOptionletVolatilitySurface<Linear>(
-            settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc),
-            (*arg(capFloorPrices))->observationLag(), *arg(capFloorPrices), engine, stripper, slope))))));
+    YoYOptionletVolatilitySurface *s = dispatchKInterpolatedYoYOptionletVolatilitySurface(
+        settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
+        interpolator, approximator, approximatorArg);
+    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
