@@ -29,6 +29,7 @@ extra-source-files:
     cbits/qlCommodity.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
+    cbits/qlInflationCapFloor.h
     cbits/qlInflationVol.h
     cbits/qlInstrument.h
     cbits/qlMisc.h
@@ -88,6 +89,7 @@ library
       QuantLib.Index.Commodity
       QuantLib.Instrument.Bond
       QuantLib.Instrument.CapFloor
+      QuantLib.Instrument.InflationCapFloor
       QuantLib.Instrument.Forward
       QuantLib.Process
       QuantLib.Instrument.Option
@@ -109,6 +111,7 @@ library
       cbits
   cxx-sources:
       cbits/qlCommodity.cpp
+      cbits/qlInflationCapFloor.cpp
       cbits/qlInflationVol.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
@@ -201,6 +204,7 @@ test-suite hasquant_test
       QuantLib.Spec.Helpers
       QuantLib.Spec.Index.Commodity
       QuantLib.Spec.Instrument.Energy
+      QuantLib.Spec.Instrument.InflationCapFloor
       QuantLib.Spec.Instrument.Option
       QuantLib.Spec.InterestRateAndCashFlow
       QuantLib.Spec.Syntax

@@ -15,6 +15,7 @@ import qualified QuantLib.Spec.TermStructure as TermStructure
 import qualified QuantLib.Spec.TermStructure.Commodity as TermStructureCommodity
 import qualified QuantLib.Spec.Index.Commodity as IndexCommodity
 import qualified QuantLib.Spec.Instrument.Energy as InstrumentEnergy
+import qualified QuantLib.Spec.Instrument.InflationCapFloor as InstrumentInflationCapFloor
 import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
 import qualified QuantLib.Spec.Examples as Examples
 
@@ -37,6 +38,7 @@ main = do
     TermStructureCommodity.spec
     IndexCommodity.spec
     InstrumentEnergy.spec
+    InstrumentInflationCapFloor.spec
     InstrumentOption.spec
     Examples.spec
 

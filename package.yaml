@@ -78,6 +78,7 @@ library:
     - QuantLib.Index.Commodity
     - QuantLib.Instrument.Bond
     - QuantLib.Instrument.CapFloor
+    - QuantLib.Instrument.InflationCapFloor
     - QuantLib.Instrument.Forward
     - QuantLib.Process
     - QuantLib.Instrument.Option

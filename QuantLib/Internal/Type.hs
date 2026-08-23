@@ -1938,6 +1938,7 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >      ConstNotionalCrossCurrencyFixedVsFloatingSwap
 -- >  CreditDefaultSwap
 -- >  CapFloor
+-- >  YoYInflationCapFloor
 -- >  Bond
 -- >    ConvertibleBond
 -- >    FixedRateBond
@@ -2023,6 +2024,22 @@ foreign import ccall "ql.h qlCapFloorAsInstrument" qlCapFloorAsInstrument :: Ptr
 instance Upcastable CCapFloor' where {type Base CCapFloor' = CInstrument'; upcast = qlCapFloorAsInstrument}
 peekCapFloor :: Ptr CCapFloor' -> IO CapFloor
 peekCapFloor = GenInstrument <.> newGenForeignPtr
+
+data CYoYInflationCapFloor'
+type CYoYInflationCapFloor = ForeignPtr CYoYInflationCapFloor'
+-- | A YoY-inflation cap\/floor\/collar (all three are thin ctor-only subclasses upstream with
+-- no logic of their own, so 'QuantLib.Instrument.InflationCapFloor.yoyInflationCap'\/
+-- 'yoyInflationCollar'\/'yoyInflationFloor' each construct this one flat leaf directly, mirroring
+-- how 'CapFloor' collapses @Cap@\/@Collar@\/@Floor@). Unlike 'CapFloor', it shares no C++ base
+-- below 'Instrument' with the nominal cap/floor, so it's a separate sibling leaf, not a subtype.
+type YoYInflationCapFloor = GenInstrument CYoYInflationCapFloor
+foreign import ccall unsafe "ql.h &qlFreeYoYInflationCapFloor" qlFreeYoYInflationCapFloor :: FinalizerPtr CYoYInflationCapFloor'
+instance Finalizable CYoYInflationCapFloor' where finalize = qlFreeYoYInflationCapFloor
+foreign import ccall "ql.h qlYoYInflationCapFloorAsInstrument" qlYoYInflationCapFloorAsInstrument :: Ptr CYoYInflationCapFloor' -> IO (Ptr CInstrument')
+instance Upcastable CYoYInflationCapFloor' where {type Base CYoYInflationCapFloor' = CInstrument'; upcast = qlYoYInflationCapFloorAsInstrument}
+peekYoYInflationCapFloor :: Ptr CYoYInflationCapFloor' -> IO YoYInflationCapFloor
+peekYoYInflationCapFloor = GenInstrument <.> newGenForeignPtr
+
 
 data CForward'
 type GenForward f = GenInstrument (AnyOf CForward' f)
