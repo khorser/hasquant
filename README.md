@@ -1,4 +1,4 @@
-Haskell bindings to [QuantLib](https://www.quantlib.org/), the free/open-source C++ library for quantitative finance — rates, bonds, options, swaps, credit, inflation, and equity derivatives, with the associated term structures, indexes, and pricing engines. 1100+ constructors and non-trivial methods are bound so far, covering roughly a tenth of QuantLib's surface.
+Haskell bindings to [QuantLib](https://www.quantlib.org/), the free/open-source C++ library for quantitative finance — rates, bonds, options, swaps, credit, inflation, and equity derivatives, with the associated term structures, indexes, and pricing engines. 1300+ constructors and non-trivial methods are bound so far, covering roughly a tenth of QuantLib's surface.
 
 hasquant gives Haskell direct access to production-grade pricing, curve-building, and risk models from QuantLib. Rather than wrapping it in a new framework, it stays a thin, close-to-1:1 layer over the C++ API, so it composes into whatever architecture you're already building instead of dictating one.
 
