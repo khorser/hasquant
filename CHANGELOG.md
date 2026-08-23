@@ -1,3 +1,7 @@
+## 0.6.0.0 (2026)
+
+Rethought multiple inheritance for secondary interfaces (`AffineModel`, `Gaussian1dModel`): instead of a second `Upcastable` node, each leaf now gets a standalone, eagerly-materialized upcast (e.g. `hullWhiteAsAffineModel`). This traded a pure wrap at the call site for an explicit `IO`-sequenced conversion, so a few call sites that used to be pure functions are now `IO` actions — a small, deliberate cost for one fewer hand-rolled sum type per interface. Also generalized several accessor return types one `AnyOf` layer deeper (`SwaptionHelper`, `FixedVsFloatingSwap`) to keep them cast-free, and added a further batch of bindings: Gaussian1d model instruments/engines, YoY/CPI inflation vol surfaces and cap/floors, commodities, cross-currency swaps, and BlackAtmVolCurve/SabrVolSurface/OptionletStripper2.
+
 ## 0.5.0.2 (2026)
 
 Support for RelinkableHandle has finally landed. As it turned out the current model is a perfect fit for it: term structures, quotes, and vol surfaces now relink uniformly, so building on top of a live quote or curve propagates updates correctly. Also removed all remaining `dynamic_cast` usage from the C++ shim in favor of dedicated typed bindings, and added a batch of further instrument/engine bindings (SABR vol cubes, Heston FD engines, CDS/counterparty engines, amortizing bonds, exchange rates, CMS legs, and more).
