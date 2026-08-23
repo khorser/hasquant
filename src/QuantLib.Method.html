@@ -49,7 +49,7 @@
 </span><span id="line-29"></span><span>
 </span><span id="line-30"></span><span>
 </span><span id="line-31"></span><span class="hs-comment">-- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.</span><span>
-</span><span id="line-32"></span><span id="local-6989586621679983464"><span class="annot"><a href="QuantLib.Method.html#pathGenerator"><span class="hs-identifier hs-type">pathGenerator</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Math.html#RngTrait"><span class="hs-identifier hs-type">RngTrait</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenStochasticProcess"><span class="hs-identifier hs-type">GenStochasticProcess</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679983464"><span class="hs-identifier hs-type">p</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#TimeGrid"><span class="hs-identifier hs-type">TimeGrid</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Word</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^seed</span></span><span>
+</span><span id="line-32"></span><span id="local-6989586621679995288"><span class="annot"><a href="QuantLib.Method.html#pathGenerator"><span class="hs-identifier hs-type">pathGenerator</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Math.html#RngTrait"><span class="hs-identifier hs-type">RngTrait</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenStochasticProcess"><span class="hs-identifier hs-type">GenStochasticProcess</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679995288"><span class="hs-identifier hs-type">p</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#TimeGrid"><span class="hs-identifier hs-type">TimeGrid</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Word</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^seed</span></span><span>
 </span><span id="line-33"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Word</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^dimension</span></span><span>
 </span><span id="line-34"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^brownian bridge</span></span><span>
 </span><span id="line-35"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#PathGenerator"><span class="hs-identifier hs-type">PathGenerator</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
@@ -61,60 +61,60 @@ RngTrait
 -&gt; Word
 -&gt; Bool
 -&gt; IO PathGenerator
-</span><a href="QuantLib.Method.html#pathGenerator"><span class="hs-identifier hs-var hs-var">pathGenerator</span></a></span></span><span> </span><span id="local-6989586621679983544"><span class="annot"><span class="annottext">RngTrait
-</span><a href="#local-6989586621679983544"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621679983545"><span class="annot"><span class="annottext">GenStochasticProcess p
-</span><a href="#local-6989586621679983545"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621679983546"><span class="annot"><span class="annottext">TimeGrid
-</span><a href="#local-6989586621679983546"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621679983547"><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621679983547"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621679983548"><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621679983548"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621679983549"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621679983549"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-37"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679983564"><span class="annot"><span class="annottext">a1' :: CInt
-</span><a href="#local-6989586621679983564"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RngTrait -&gt; CInt
+</span><a href="QuantLib.Method.html#pathGenerator"><span class="hs-identifier hs-var hs-var">pathGenerator</span></a></span></span><span> </span><span id="local-6989586621679995368"><span class="annot"><span class="annottext">RngTrait
+</span><a href="#local-6989586621679995368"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621679995369"><span class="annot"><span class="annottext">GenStochasticProcess p
+</span><a href="#local-6989586621679995369"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621679995370"><span class="annot"><span class="annottext">TimeGrid
+</span><a href="#local-6989586621679995370"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621679995371"><span class="annot"><span class="annottext">Word
+</span><a href="#local-6989586621679995371"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621679995372"><span class="annot"><span class="annottext">Word
+</span><a href="#local-6989586621679995372"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621679995373"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679995373"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-37"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679995388"><span class="annot"><span class="annottext">a1' :: CInt
+</span><a href="#local-6989586621679995388"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">RngTrait -&gt; CInt
 forall a b. (Enum a, Integral b) =&gt; a -&gt; b
 </span><a href="QuantLib.Internal.html#fromEnumC"><span class="hs-identifier hs-var">fromEnumC</span></a></span><span> </span><span class="annot"><span class="annottext">RngTrait
-</span><a href="#local-6989586621679983544"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621679995368"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-38"></span><span>  </span><span class="annot"><span class="annottext">GenStochasticProcess p
 -&gt; (Ptr CStochasticProcess' -&gt; IO PathGenerator)
 -&gt; IO PathGenerator
 forall p b.
 GenStochasticProcess p -&gt; (Ptr CStochasticProcess' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withStochasticProcess"><span class="hs-identifier hs-var">withStochasticProcess</span></a></span><span> </span><span class="annot"><span class="annottext">GenStochasticProcess p
-</span><a href="#local-6989586621679983545"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CStochasticProcess' -&gt; IO PathGenerator) -&gt; IO PathGenerator)
+</span><a href="#local-6989586621679995369"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CStochasticProcess' -&gt; IO PathGenerator) -&gt; IO PathGenerator)
 -&gt; (Ptr CStochasticProcess' -&gt; IO PathGenerator)
 -&gt; IO PathGenerator
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679983567"><span class="annot"><span class="annottext">Ptr CStochasticProcess'
-</span><a href="#local-6989586621679983567"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621679983568"></span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679995391"><span class="annot"><span class="annottext">Ptr CStochasticProcess'
+</span><a href="#local-6989586621679995391"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621679995392"></span><span> </span><span>
 </span><span id="line-39"></span><span>  </span><span class="annot"><span class="annottext">TimeGrid -&gt; (Ptr CTimeGrid -&gt; IO PathGenerator) -&gt; IO PathGenerator
 forall b. TimeGrid -&gt; (Ptr CTimeGrid -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withTimeGrid"><span class="hs-identifier hs-var">withTimeGrid</span></a></span><span> </span><span class="annot"><span class="annottext">TimeGrid
-</span><a href="#local-6989586621679983546"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CTimeGrid -&gt; IO PathGenerator) -&gt; IO PathGenerator)
+</span><a href="#local-6989586621679995370"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CTimeGrid -&gt; IO PathGenerator) -&gt; IO PathGenerator)
 -&gt; (Ptr CTimeGrid -&gt; IO PathGenerator) -&gt; IO PathGenerator
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679983571"><span class="annot"><span class="annottext">Ptr CTimeGrid
-</span><a href="#local-6989586621679983571"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-40"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679983576"><span class="annot"><span class="annottext">a4' :: CUInt
-</span><a href="#local-6989586621679983576"><span class="hs-identifier hs-var hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679995395"><span class="annot"><span class="annottext">Ptr CTimeGrid
+</span><a href="#local-6989586621679995395"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679995400"><span class="annot"><span class="annottext">a4' :: CUInt
+</span><a href="#local-6989586621679995400"><span class="hs-identifier hs-var hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621679983547"><span class="hs-identifier hs-var">a4</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-41"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679983579"><span class="annot"><span class="annottext">a5' :: CUInt
-</span><a href="#local-6989586621679983579"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
+</span><a href="#local-6989586621679995371"><span class="hs-identifier hs-var">a4</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679995403"><span class="annot"><span class="annottext">a5' :: CUInt
+</span><a href="#local-6989586621679995403"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621679983548"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-42"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679983581"><span class="annot"><span class="annottext">a6' :: CInt
-</span><a href="#local-6989586621679983581"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><a href="#local-6989586621679995372"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621679995405"><span class="annot"><span class="annottext">a6' :: CInt
+</span><a href="#local-6989586621679995405"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621679983549"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621679995373"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-43"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO PathGenerator) -&gt; IO PathGenerator
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO PathGenerator) -&gt; IO PathGenerator)
 -&gt; (Ptr (Ptr CChar) -&gt; IO PathGenerator) -&gt; IO PathGenerator
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679983584"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679983584"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679995408"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621679995408"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-44"></span><span>  </span><span class="annot"><span class="annottext">CInt
 -&gt; Ptr CStochasticProcess'
 -&gt; Ptr CTimeGrid
@@ -124,29 +124,29 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CPathGenerator)
 </span><a href="QuantLib.Method.html#pathGenerator%27_"><span class="hs-identifier hs-var">pathGenerator'_</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679983564"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CStochasticProcess'
-</span><a href="#local-6989586621679983567"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CTimeGrid
-</span><a href="#local-6989586621679983571"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621679983576"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621679983579"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621679983581"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679983584"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CPathGenerator)
+</span><a href="#local-6989586621679995388"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CStochasticProcess'
+</span><a href="#local-6989586621679995391"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CTimeGrid
+</span><a href="#local-6989586621679995395"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621679995400"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621679995403"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621679995405"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621679995408"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CPathGenerator)
 -&gt; (Ptr CPathGenerator -&gt; IO PathGenerator) -&gt; IO PathGenerator
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679983586"><span class="annot"><span class="annottext">Ptr CPathGenerator
-</span><a href="#local-6989586621679983586"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679995410"><span class="annot"><span class="annottext">Ptr CPathGenerator
+</span><a href="#local-6989586621679995410"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-45"></span><span>  </span><span class="annot"><span class="annottext">Ptr CPathGenerator -&gt; IO PathGenerator
 </span><a href="QuantLib.Internal.Type.html#peekPathGenerator"><span class="hs-identifier hs-var">peekPathGenerator</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CPathGenerator
-</span><a href="#local-6989586621679983586"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO PathGenerator
+</span><a href="#local-6989586621679995410"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO PathGenerator
 -&gt; (PathGenerator -&gt; IO PathGenerator) -&gt; IO PathGenerator
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679983589"><span class="annot"><span class="annottext">PathGenerator
-</span><a href="#local-6989586621679983589"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679995413"><span class="annot"><span class="annottext">PathGenerator
+</span><a href="#local-6989586621679995413"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-46"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621679983584"><span class="hs-identifier hs-var">a7'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO PathGenerator -&gt; IO PathGenerator
+</span><a href="#local-6989586621679995408"><span class="hs-identifier hs-var">a7'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO PathGenerator -&gt; IO PathGenerator
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -154,7 +154,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">PathGenerator
-</span><a href="#local-6989586621679983589"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621679995413"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span class="hs-pragma">{-# LINE 36 &quot;./QuantLib/Method.chs&quot; #-}</span><span>
 </span><span id="line-36"></span><span>
