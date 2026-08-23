@@ -37,6 +37,18 @@ extern "C" {
   /* The only CPICapFloor pricing engine in QL 1.43: prices purely by interpolating a price
      surface, no stochastic-vol model (see plan Item 3's note on the CPI/YoY asymmetry). */
   QlPricingEngine *qlInterpolatingCPICapFloorEngine(QlCPICapFloorTermPriceSurface *surface, char **e);
+
+  /* CPIVolatilitySurface -- no consumer (engine/pricer) in QL 1.43, see this type's own haddock
+     in QuantLib.Internal.Type; stands alone as a queryable surface. */
+  QlCPIVolatilitySurface *qlConstantCPIVolatility(QlQuote *v, unsigned settlementDays, Calendar *cal,
+      int bdc, DayCounter *dc, int observationLagLen, int observationLagUnit, int frequency,
+      int indexIsInterpolated, char **e);
+  void qlFreeCPIVolatilitySurface(QlCPIVolatilitySurface *p);
+  QlVolatilityTermStructure *qlCPIVolatilitySurfaceAsVolatilityTermStructure(QlCPIVolatilitySurface *o);
+  double qlCPIVolatilitySurfaceVolatility(QlCPIVolatilitySurface *o, int maturityDate,
+      double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e);
+  double qlCPIVolatilitySurfaceTotalVariance(QlCPIVolatilitySurface *o, int exerciseDate,
+      double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e);
 #ifdef __cplusplus
 }
 #endif

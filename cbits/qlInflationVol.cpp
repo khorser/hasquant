@@ -2,6 +2,7 @@
 #include <ql/pricingengines/inflation/inflationcapfloorengines.hpp>
 #include <ql/experimental/inflation/cpicapfloortermpricesurface.hpp>
 #include <ql/experimental/inflation/cpicapfloorengines.hpp>
+#include <ql/termstructures/volatility/inflation/constantcpivolatility.hpp>
 #include "qlaux.h"
 using namespace QuantLib;
 #include "qlInflationVol.h"
@@ -80,5 +81,35 @@ QlCPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurface(double nominal, dou
 QlPricingEngine *qlInterpolatingCPICapFloorEngine(QlCPICapFloorTermPriceSurface *surface, char **e) {
   try {return ret(new QlPricingEngine(alloc(new InterpolatingCPICapFloorEngine(Handle<CPICapFloorTermPriceSurface>(*arg(surface))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+
+/* CPIVolatilitySurface -- no consumer (engine/pricer) in QL 1.43, see qlaux.h/Internal.Type's own
+   note; this type stands alone as a queryable surface. */
+
+QlCPIVolatilitySurface *qlConstantCPIVolatility(QlQuote *v, unsigned settlementDays, Calendar *cal,
+    int bdc, DayCounter *dc, int observationLagLen, int observationLagUnit, int frequency,
+    int indexIsInterpolated, char **e) {
+  try {return ret(new QlCPIVolatilitySurface(Handle<CPIVolatilitySurface>(
+      shared_ptr<CPIVolatilitySurface>(alloc(new ConstantCPIVolatility(*arg(v), settlementDays, *arg(cal), (BusinessDayConvention)bdc,
+        *arg(dc), Period(observationLagLen, (TimeUnit)observationLagUnit), (Frequency)frequency,
+        (bool)indexIsInterpolated))))));
+  } catch (std::exception& er) {return handleException<QlCPIVolatilitySurface*>(e, er);}}
+
+void qlFreeCPIVolatilitySurface(QlCPIVolatilitySurface *p) {del(p);}
+
+// Deliberate snapshot detach, same reasoning as qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure.
+QlVolatilityTermStructure *qlCPIVolatilitySurfaceAsVolatilityTermStructure(QlCPIVolatilitySurface *o) {
+  return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+
+double qlCPIVolatilitySurfaceVolatility(QlCPIVolatilitySurface *o, int maturityDate,
+    double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e) {
+  try {return handleRef(arg(o)).volatility(Date(maturityDate), strike,
+      obsLagUnit < 0 ? Period(-1, Days) : Period(obsLagLen, (TimeUnit)obsLagUnit), (bool)extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+double qlCPIVolatilitySurfaceTotalVariance(QlCPIVolatilitySurface *o, int exerciseDate,
+    double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e) {
+  try {return handleRef(arg(o)).totalVariance(Date(exerciseDate), strike,
+      obsLagUnit < 0 ? Period(-1, Days) : Period(obsLagLen, (TimeUnit)obsLagUnit), (bool)extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

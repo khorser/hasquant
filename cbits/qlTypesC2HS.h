@@ -72,6 +72,7 @@ typedef struct QlCPICapFloor QlCPICapFloor;
 typedef struct QlCPICapFloorTermPriceSurface QlCPICapFloorTermPriceSurface;
 typedef struct QlCPICashFlow QlCPICashFlow;
 typedef struct QlCPISwap QlCPISwap;
+typedef struct QlCPIVolatilitySurface QlCPIVolatilitySurface;
 typedef struct QlCreditDefaultSwap QlCreditDefaultSwap;
 typedef struct QlDefaultProbabilityHelper QlDefaultProbabilityHelper;
 typedef struct QlDefaultProbabilityTermStructure QlDefaultProbabilityTermStructure;

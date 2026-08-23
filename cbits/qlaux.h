@@ -160,6 +160,7 @@ namespace QuantLib {
   class CPICapFloorTermPriceSurface;
   class CPICashFlow;
   class CPISwap;
+  class CPIVolatilitySurface;
   class CreditDefaultSwap;
   class CubicBSplinesFitting;
   class DefaultProbabilityTermStructure;
@@ -453,6 +454,7 @@ using QuantLib::CPICapFloor;
 using QuantLib::CPICapFloorTermPriceSurface;
 using QuantLib::CPICashFlow;
 using QuantLib::CPISwap;
+using QuantLib::CPIVolatilitySurface;
 using QuantLib::CreditDefaultSwap;
 using QuantLib::CubicBSplinesFitting;
 using QuantLib::DefaultProbabilityTermStructure;
@@ -721,6 +723,9 @@ typedef shared_ptr<CPICapFloor> QlCPICapFloor;
 typedef shared_ptr<CPICapFloorTermPriceSurface> QlCPICapFloorTermPriceSurface;
 typedef shared_ptr<CPICashFlow> QlCPICashFlow;
 typedef shared_ptr<CPISwap> QlCPISwap;
+// A VolatilityTermStructure family member like YoYOptionletVolatilitySurface -- Handle, not a
+// plain shared_ptr.
+typedef Handle<CPIVolatilitySurface> QlCPIVolatilitySurface;
 typedef shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
 typedef shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityTermStructure;
 typedef shared_ptr<DeltaVolQuote> QlDeltaVolQuote;
@@ -920,6 +925,7 @@ template <> class ObjClassName<CPIBond*> {public: static void output(std::ostrea
 template <> class ObjClassName<CPICapFloor*> {public: static void output(std::ostream& os) {os << "CPICapFloor";}};
 template <> class ObjClassName<CPICapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "CPICapFloorTermPriceSurface";}};
 template <> class ObjClassName<CPISwap*> {public: static void output(std::ostream& os) {os << "CPISwap";}};
+template <> class ObjClassName<CPIVolatilitySurface*> {public: static void output(std::ostream& os) {os << "CPIVolatilitySurface";}};
 template <> class ObjClassName<CreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "CreditDefaultSwap";}};
 template <> class ObjClassName<CubicBSplinesFitting*> {public: static void output(std::ostream& os) {os << "CubicBSplinesFitting";}};
 template <> class ObjClassName<Currency*> {public: static void output(std::ostream& os) {os << "Currency";}};
@@ -1081,6 +1087,7 @@ template <> class ObjClassName<QlCPICapFloor*> {public: static void output(std::
 template <> class ObjClassName<QlCPICapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "QlCPICapFloorTermPriceSurface";}};
 template <> class ObjClassName<QlCPICashFlow*> {public: static void output(std::ostream& os) {os << "QlCPICashFlow";}};
 template <> class ObjClassName<QlCPISwap*> {public: static void output(std::ostream& os) {os << "QlCPISwap";}};
+template <> class ObjClassName<QlCPIVolatilitySurface*> {public: static void output(std::ostream& os) {os << "QlCPIVolatilitySurface";}};
 template <> class ObjClassName<QlCreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "QlCreditDefaultSwap";}};
 template <> class ObjClassName<QlDefaultProbabilityTermStructure*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityTermStructure";}};
 template <> class ObjClassName<QlDeltaVolQuote*> {public: static void output(std::ostream& os) {os << "QlDeltaVolQuote";}};

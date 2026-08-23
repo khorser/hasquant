@@ -9,6 +9,12 @@ module QuantLib.TermStructure.InflationVolatility
 
   , CPICapFloorTermPriceSurface
   , cpiCapFloorTermPriceSurface
+
+  , CPIVolatilitySurface
+  , constantCPIVolatility
+
+  , cpiVolatility
+  , cpiTotalVariance
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -28,6 +34,7 @@ import QuantLib.Internal.Common
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
 {#pointer *QlCPICapFloorTermPriceSurface as CPICapFloorTermPriceSurface foreign -> CCPICapFloorTermPriceSurface' nocode#}
+{#pointer *QlCPIVolatilitySurface as CPIVolatilitySurface foreign -> CCPIVolatilitySurface' nocode#}
 
 -- |Constant YoY-inflation optionlet vol surface, no maturity\/strike dependence -- the only
 -- concrete leaf bound here. Mirrors 'QuantLib.TermStructure.Volatility.constantOptionletVolatility',
@@ -95,3 +102,35 @@ cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrik
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^cPrice
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^fPrice
   ,preErrorCheck-`String'errorCheck*-}->`CPICapFloorTermPriceSurface'peekCPICapFloorTermPriceSurface*#}
+
+-- |Constant CPI (zero-inflation) volatility surface, no maturity\/strike dependence -- the only
+-- concrete leaf bound here, mirroring 'constantYoYOptionletVolatility'. No engine or coupon
+-- pricer consumes this in QL 1.43 (see this type's own haddock in "QuantLib.Internal.Type"), so
+-- it is queryable via 'cpiVolatility'\/'cpiTotalVariance' but not otherwise wired up.
+{#fun qlConstantCPIVolatility as constantCPIVolatility{withQuote*`GenQuote q'
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar'
+  ,fromEnumC`BusinessDayConvention'
+  ,withDayCounter*`DayCounter'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,`Frequency'
+  ,`Bool' -- ^indexIsInterpolated
+  ,preErrorCheck-`String'errorCheck*-}->`CPIVolatilitySurface'peekCPIVolatilitySurface*#}
+
+-- |The volatility for a given maturity date and strike, observed with the given observation
+-- lag (or the surface's own lag when 'Nothing').
+{#fun qlCPIVolatilitySurfaceVolatility as cpiVolatility{withGenVolatilityTermStructure*`CPIVolatilitySurface'
+  ,withDay*`Day'
+  ,`Double' -- ^strike
+  ,fromMaybeEnumQuantity`Maybe (Word,TimeUnit)'& -- ^obsLag
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The total integrated variance for a given exercise date and strike. As 'cpiVolatility', a
+-- 'Nothing' observation lag uses the surface's own.
+{#fun qlCPIVolatilitySurfaceTotalVariance as cpiTotalVariance{withGenVolatilityTermStructure*`CPIVolatilitySurface'
+  ,withDay*`Day'
+  ,`Double' -- ^strike
+  ,fromMaybeEnumQuantity`Maybe (Word,TimeUnit)'& -- ^obsLag
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}

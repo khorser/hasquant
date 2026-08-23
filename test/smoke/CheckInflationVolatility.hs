@@ -43,5 +43,15 @@ main = do
   _ <- yoyInflationUnitDisplacedBlackCapFloorEngine yii vol nominalCurve
   _ <- yoyInflationBachelierCapFloorEngine yii vol nominalCurve
   putStrLn "all 3 YoY inflation cap/floor engines constructed OK"
+
+  -- ConstantCPIVolatility: no engine/pricer consumes it in QL 1.43 (see this type's own
+  -- haddock in QuantLib.Internal.Type), so this only exercises construction + query.
+  cpiVolQ <- simpleQuote 0.04
+  cpiVol <- constantCPIVolatility cpiVolQ 0 cal Unadjusted dc (2, Months) Monthly False
+  cv <- cpiVolatility cpiVol (2 `january` 2025) 0.03 Nothing True
+  putStrLn ("cpiVolatility -> " ++ show cv ++ " (should be ~0.04)")
+  checkWith "cpiVolatility" "should equal the constant quote" (abs (cv - 0.04) < 1e-10)
+  ctv <- cpiTotalVariance cpiVol (2 `january` 2025) 0.03 Nothing True
+  putStrLn ("cpiTotalVariance -> " ++ show ctv)
   where
     today = 2 `january` 2024
