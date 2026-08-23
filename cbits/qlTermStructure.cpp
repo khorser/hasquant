@@ -457,6 +457,43 @@ QlInterestRateIndex* qlSabrVolSurfaceIndex(QlSabrVolSurface* o, char **e) {
 int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, char **e) {
   try {return (*arg(o))->optionDateFromTenor(Period(n, (TimeUnit)u)).serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
+
+// OptionletStripper2 builds an OptionletStripper1 internally (never exposed to Haskell, same
+// fusion as qlOptionletStripper1 above) then wraps OptionletStripper2 itself around it, keeping
+// the OptionletStripper2 shared_ptr so its own diagnostic getters below are reachable with no cast.
+QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, char **e) {
+  try {
+    auto stripper1 = shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index),
+        switchStrikes, accuracy, maxIter, qlNullableHandle(arg(discount)), (VolatilityType)type, displacement,
+        (bool)dontThrow, optionletFrequencyUnit < 0 ? ext::optional<Period>() : ext::optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit)))));
+    return ret(new QlOptionletStripper2(alloc(new OptionletStripper2(stripper1, Handle<CapFloorTermVolCurve>(*arg(atmCurve))))));
+  } catch (std::exception& er) {return handleException<QlOptionletStripper2*>(e, er);}}
+void qlFreeOptionletStripper2(QlOptionletStripper2 *o) {del(o);}
+// Fresh construction (StrippedOptionletAdapter around the OptionletStripper2 itself), never a
+// cast -- same idiom as qlSabrInterpolatedSmileSectionAsSmileSection.
+QlOptionletVolatilityStructure* qlOptionletStripper2AsOptionletVolatilityStructure(QlOptionletStripper2 *o, char **e) {
+  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(
+      alloc(new StrippedOptionletAdapter(*arg(o))))));
+  } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
+void qlOptionletStripper2AtmCapFloorStrikes(QlOptionletStripper2* o, unsigned *count, double **vs, char **e) {
+  try {
+    const std::vector<Rate> &v = (*arg(o))->atmCapFloorStrikes();
+    *count = v.size(); *vs = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < v.size(); ++i) (*vs)[i] = v[i];
+  } catch (std::exception& er) {*count = 0; *vs = 0; handleException<int>(e, er);}}
+void qlOptionletStripper2AtmCapFloorPrices(QlOptionletStripper2* o, unsigned *count, double **vs, char **e) {
+  try {
+    const std::vector<Real> &v = (*arg(o))->atmCapFloorPrices();
+    *count = v.size(); *vs = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < v.size(); ++i) (*vs)[i] = v[i];
+  } catch (std::exception& er) {*count = 0; *vs = 0; handleException<int>(e, er);}}
+void qlOptionletStripper2SpreadsVol(QlOptionletStripper2* o, unsigned *count, double **vs, char **e) {
+  try {
+    const std::vector<Volatility> &v = (*arg(o))->spreadsVol();
+    *count = v.size(); *vs = qlAllocateDoubles(*count);
+    for (size_t i = 0; i < v.size(); ++i) (*vs)[i] = v[i];
+  } catch (std::exception& er) {*count = 0; *vs = 0; handleException<int>(e, er);}}
+
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
 QlVolatilityTermStructure* qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}

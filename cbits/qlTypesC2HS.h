@@ -142,6 +142,7 @@ typedef struct QlOneAssetOption QlOneAssetOption;
 typedef struct QlOneFactorAffineModel QlOneFactorAffineModel;
 typedef struct QlOption QlOption;
 typedef struct QlOptionletVolatilityStructure QlOptionletVolatilityStructure;
+typedef struct QlOptionletStripper2 QlOptionletStripper2;
 typedef struct QlOvernightIndex QlOvernightIndex;
 typedef struct QlOvernightIndexedSwap QlOvernightIndexedSwap;
 typedef struct QlOvernightIndexedSwapIndex QlOvernightIndexedSwapIndex;

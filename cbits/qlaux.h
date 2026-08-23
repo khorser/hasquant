@@ -78,6 +78,7 @@ namespace QuantLib {
   class Index;
   class FloatingRateCouponPricer;
   class OptionletVolatilityStructure;
+  class OptionletStripper2;
   class Coupon;
   class AffineModel;
   class AmericanExercise;
@@ -380,6 +381,7 @@ using QuantLib::IborIndex;
 using QuantLib::Index;
 using QuantLib::FloatingRateCouponPricer;
 using QuantLib::OptionletVolatilityStructure;
+using QuantLib::OptionletStripper2;
 using QuantLib::Coupon;
 using QuantLib::AffineModel;
 using QuantLib::AmericanExercise;
@@ -817,6 +819,10 @@ typedef shared_ptr<OISRateHelper> QlOISRateHelper;
 typedef shared_ptr<OneAssetOption> QlOneAssetOption;
 typedef shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
 typedef shared_ptr<Option> QlOption;
+// OptionletStripper1 is never exposed to Haskell (see qlOptionletStripper1 above), but
+// OptionletStripper2 has its own diagnostic getters (atmCapFloorStrikes/atmCapFloorPrices/
+// spreadsVol), so it gets its own shared_ptr-wrapped leaf, same as QlSabrInterpolatedSmileSection.
+typedef shared_ptr<OptionletStripper2> QlOptionletStripper2;
 typedef shared_ptr<OvernightIndex> QlOvernightIndex;
 typedef shared_ptr<OvernightIndexedSwap> QlOvernightIndexedSwap;
 typedef shared_ptr<OvernightIndexedSwapIndex> QlOvernightIndexedSwapIndex;
@@ -1071,6 +1077,7 @@ template <> class ObjClassName<OneFactorAffineModel*> {public: static void outpu
 template <> class ObjClassName<OptimizationMethod*> {public: static void output(std::ostream& os) {os << "OptimizationMethod";}};
 template <> class ObjClassName<Option*> {public: static void output(std::ostream& os) {os << "Option";}};
 template <> class ObjClassName<OptionletVolatilityStructure*> {public: static void output(std::ostream& os) {os << "OptionletVolatilityStructure";}};
+template <> class ObjClassName<OptionletStripper2*> {public: static void output(std::ostream& os) {os << "OptionletStripper2";}};
 template <> class ObjClassName<OvernightIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndex";}};
 template <> class ObjClassName<OvernightIndexedSwap*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwap";}};
 template <> class ObjClassName<OvernightIndexedSwapIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwapIndex";}};
@@ -1195,6 +1202,7 @@ template <> class ObjClassName<QlOneAssetOption*> {public: static void output(st
 template <> class ObjClassName<QlOneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "QlOneFactorAffineModel";}};
 template <> class ObjClassName<QlOption*> {public: static void output(std::ostream& os) {os << "QlOption";}};
 template <> class ObjClassName<QlOptionletVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlOptionletVolatilityStructure";}};
+template <> class ObjClassName<QlOptionletStripper2*> {public: static void output(std::ostream& os) {os << "QlOptionletStripper2";}};
 template <> class ObjClassName<QlOvernightIndex*> {public: static void output(std::ostream& os) {os << "QlOvernightIndex";}};
 template <> class ObjClassName<QlOvernightIndexedSwap*> {public: static void output(std::ostream& os) {os << "QlOvernightIndexedSwap";}};
 template <> class ObjClassName<QlOvernightIndexedSwapIndex*> {public: static void output(std::ostream& os) {os << "QlOvernightIndexedSwapIndex";}};

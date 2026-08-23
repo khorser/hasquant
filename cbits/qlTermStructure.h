@@ -48,6 +48,12 @@ extern "C" {
   void qlSabrVolSurfaceVolatilitySpreadsForDate(QlSabrVolSurface* o, int date, unsigned *count, double **vols, char **e);
   QlInterestRateIndex* qlSabrVolSurfaceIndex(QlSabrVolSurface* o, char **e);
   int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, char **e);
+  QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, char **e);
+  void qlFreeOptionletStripper2(QlOptionletStripper2 *o);
+  QlOptionletVolatilityStructure* qlOptionletStripper2AsOptionletVolatilityStructure(QlOptionletStripper2 *o, char **e);
+  void qlOptionletStripper2AtmCapFloorStrikes(QlOptionletStripper2* o, unsigned *count, double **vs, char **e);
+  void qlOptionletStripper2AtmCapFloorPrices(QlOptionletStripper2* o, unsigned *count, double **vs, char **e);
+  void qlOptionletStripper2SpreadsVol(QlOptionletStripper2* o, unsigned *count, double **vs, char **e);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
   QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e);

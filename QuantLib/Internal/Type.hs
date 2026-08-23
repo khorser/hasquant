@@ -308,6 +308,22 @@ peekSabrInterpolatedSmileSection = SabrInterpolatedSmileSection <.> peekStandalo
 withSabrInterpolatedSmileSection :: SabrInterpolatedSmileSection -> (Ptr CSabrInterpolatedSmileSection -> IO b) -> IO b
 withSabrInterpolatedSmileSection = withStandalone . getCSabrInterpolatedSmileSection
 
+-- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.optionletStripper2'
+-- fuses construction of an 'OptionletStripper1' underneath (never exposed to Haskell, mirroring
+-- 'QuantLib.TermStructure.Volatility.optionletStripper1') and stores the resulting
+-- @OptionletStripper2@ itself, so its own diagnostic getters (atmCapFloorStrikes\/atmCapFloorPrices\/
+-- spreadsVol) need no runtime cast. Use
+-- 'QuantLib.TermStructure.Volatility.optionletStripper2AsOptionletVolatilityStructure' to pass one
+-- into anything that wants the generic 'OptionletVolatilityStructure' interface.
+data COptionletStripper2
+newtype OptionletStripper2 = OptionletStripper2 {getCOptionletStripper2 :: Standalone COptionletStripper2}
+foreign import ccall unsafe "ql.h &qlFreeOptionletStripper2" qlFreeOptionletStripper2 :: FinalizerPtr COptionletStripper2
+instance Finalizable COptionletStripper2 where finalize = qlFreeOptionletStripper2
+peekOptionletStripper2 :: Ptr COptionletStripper2 -> IO OptionletStripper2
+peekOptionletStripper2 = OptionletStripper2 <.> peekStandalone
+withOptionletStripper2 :: OptionletStripper2 -> (Ptr COptionletStripper2 -> IO b) -> IO b
+withOptionletStripper2 = withStandalone . getCOptionletStripper2
+
 data CPricingEngine
 newtype PricingEngine = PricingEngine {getCPricingEngine :: Standalone CPricingEngine}
 foreign import ccall unsafe "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine

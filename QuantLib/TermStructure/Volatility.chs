@@ -35,6 +35,7 @@ module QuantLib.TermStructure.Volatility
   , GenBlackVolSurface
   , AbcdAtmVolCurve
   , SabrVolSurface
+  , OptionletStripper2
 
   , asVolatilityTermStructure
   , asBlackVolTermStructure
@@ -43,6 +44,11 @@ module QuantLib.TermStructure.Volatility
   , constantOptionletVolatility
   , constantOptionletVolatility'
   , optionletStripper1
+  , optionletStripper2
+  , optionletStripper2AsOptionletVolatilityStructure
+  , optionletStripper2AtmCapFloorStrikes
+  , optionletStripper2AtmCapFloorPrices
+  , optionletStripper2SpreadsVol
 
   , impliedVolTermStructure
   , blackConstantVol'
@@ -217,6 +223,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlAbcdAtmVolCurve as AbcdAtmVolCurve foreign -> CAbcdAtmVolCurve' nocode#}
 {#pointer *QlSabrVolSurface as SabrVolSurface foreign -> CSabrVolSurface' nocode#}
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
+{#pointer *QlOptionletStripper2 as OptionletStripper2 foreign -> COptionletStripper2 nocode#}
 
 {#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
 {#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
@@ -342,6 +349,37 @@ fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr
   ,`Bool' -- ^dontThrow
   ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
+
+-- |Extends an 'OptionletStripper1' (built internally, never exposed as its own Haskell type --
+-- same fusion as 'optionletStripper1') by reconciling it against an ATM 'CapFloorTermVolCurve',
+-- producing forward-forward optionlet vols. Unlike 'optionletStripper1', this keeps its own
+-- concrete 'OptionletStripper2' object around, since it has real diagnostic getters
+-- ('optionletStripper2AtmCapFloorStrikes'\/'optionletStripper2AtmCapFloorPrices'\/
+-- 'optionletStripper2SpreadsVol') not reachable through the generic
+-- 'OptionletVolatilityStructure' interface. Use 'optionletStripper2AsOptionletVolatilityStructure'
+-- to pass one into anything expecting the generic interface.
+{#fun qlOptionletStripper2 as optionletStripper2{withCapFloorTermVolSurface*`CapFloorTermVolSurface'
+  ,withIborIndex*`GenIborIndex ibor'
+  ,fromMaybeDouble`Maybe Double' -- ^switchStrikes
+  ,`Double' -- ^accuracy
+  ,fromIntegral`Word' -- ^maxIter
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discount
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^displacement
+  ,`Bool' -- ^dontThrow
+  ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
+  ,withCapFloorTermVolCurve*`CapFloorTermVolCurve' -- ^atmCapFloorTermVolCurve
+  ,preErrorCheck-`String'errorCheck*-}->`OptionletStripper2'peekOptionletStripper2*#}
+
+-- |Fresh construction (a 'StrippedOptionletAdapter' wrapping the 'OptionletStripper2' itself),
+-- never a cast -- same idiom as 'sabrInterpolatedSmileSectionAsSmileSection'.
+{#fun qlOptionletStripper2AsOptionletVolatilityStructure as optionletStripper2AsOptionletVolatilityStructure{withOptionletStripper2*`OptionletStripper2',preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
+
+{#fun qlOptionletStripper2AtmCapFloorStrikes as optionletStripper2AtmCapFloorStrikes{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+{#fun qlOptionletStripper2AtmCapFloorPrices as optionletStripper2AtmCapFloorPrices{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+{#fun qlOptionletStripper2SpreadsVol as optionletStripper2SpreadsVol{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |An optionlet vol surface behind a relinkable handle. The result /is/ an
 -- 'OptionletVolatilityStructure': pass it anywhere one is expected and everything built on it
