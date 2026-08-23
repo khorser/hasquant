@@ -1125,6 +1125,7 @@ withCommodityIndex = withForeignPtr . ptr . getIndex
 -- >  DefaultProbabilityTermStructure
 -- >  ZeroInflationTermStructure
 -- >  YoYInflationTermStructure
+-- >  YoYCapFloorTermPriceSurface
 -- >  CPICapFloorTermPriceSurface
 -- >  CommodityCurve
 type TermStructure = GenTermStructure CTermStructure
@@ -1252,6 +1253,18 @@ type CCommodityCurve = ForeignPtr CCommodityCurve'
 -- semantics, just an interpolated price curve), constructed and consumed by @shared_ptr@ like
 -- 'CallableBondVolatilityStructure'\/'DefaultProbabilityTermStructure', never a @Handle@.
 type CommodityCurve = GenTermStructure CCommodityCurve
+data CYoYCapFloorTermPriceSurface'
+type CYoYCapFloorTermPriceSurface = ForeignPtr CYoYCapFloorTermPriceSurface'
+-- | Prices YoY cap\/floors by cap\/floor-surface intersection and put\/call parity, deriving an
+-- ATM YoY swap curve as a side effect -- the market-data input the YoY optionlet stripper
+-- ('QuantLib.TermStructure.InflationVolatility.kInterpolatedYoYOptionletVolatilitySurfaceBlack'
+-- et al.) bootstraps from. A plain 'TermStructure' leaf, constructed and consumed by
+-- @shared_ptr@ like 'CPICapFloorTermPriceSurface', never a @Handle@. Hardcoded to the
+-- @Bicubic@\/@Cubic@ 'Interpolator2D'\/'Interpolator1D' pair (the only combination upstream's own
+-- test-suite, @inflationvolatility.cpp@, uses) -- a different pair from 'CPICapFloorTermPriceSurface's
+-- @Bilinear@, since it's a different template (@InterpolatedYoYCapFloorTermPriceSurface@, not
+-- @InterpolatedCPICapFloorTermPriceSurface@); widen to more interpolators only on a concrete need.
+type YoYCapFloorTermPriceSurface = GenTermStructure CYoYCapFloorTermPriceSurface
 data CCPICapFloorTermPriceSurface'
 type CCPICapFloorTermPriceSurface = ForeignPtr CCPICapFloorTermPriceSurface'
 -- | Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity
@@ -1284,6 +1297,7 @@ foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFree
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeYoYCapFloorTermPriceSurface" qlFreeYoYCapFloorTermPriceSurface :: FinalizerPtr CYoYCapFloorTermPriceSurface'
 foreign import ccall unsafe "ql.h &qlFreeCPICapFloorTermPriceSurface" qlFreeCPICapFloorTermPriceSurface :: FinalizerPtr CCPICapFloorTermPriceSurface'
 foreign import ccall unsafe "ql.h &qlFreeCommodityCurve" qlFreeCommodityCurve :: FinalizerPtr CCommodityCurve'
 instance Finalizable CTermStructure' where finalize = qlFreeTermStructure
@@ -1309,6 +1323,7 @@ instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCa
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
+instance Finalizable CYoYCapFloorTermPriceSurface' where finalize = qlFreeYoYCapFloorTermPriceSurface
 instance Finalizable CCPICapFloorTermPriceSurface' where finalize = qlFreeCPICapFloorTermPriceSurface
 instance Finalizable CCommodityCurve' where finalize = qlFreeCommodityCurve
 foreign import ccall "ql.h qlYieldTermStructureAsTermStructure" qlYieldTermStructureAsTermStructure :: Ptr CYieldTermStructure' -> IO (Ptr CTermStructure')
@@ -1333,6 +1348,7 @@ foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlC
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlYoYCapFloorTermPriceSurfaceAsTermStructure" qlYoYCapFloorTermPriceSurfaceAsTermStructure :: Ptr CYoYCapFloorTermPriceSurface' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlCPICapFloorTermPriceSurfaceAsTermStructure" qlCPICapFloorTermPriceSurfaceAsTermStructure :: Ptr CCPICapFloorTermPriceSurface' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlCommodityCurveAsTermStructure" qlCommodityCurveAsTermStructure :: Ptr CCommodityCurve' -> IO (Ptr CTermStructure')
 instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; upcast = qlYieldTermStructureAsTermStructure}
@@ -1343,6 +1359,7 @@ instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallable
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
+instance Upcastable CYoYCapFloorTermPriceSurface' where {type Base CYoYCapFloorTermPriceSurface' = CTermStructure'; upcast = qlYoYCapFloorTermPriceSurfaceAsTermStructure}
 instance Upcastable CCPICapFloorTermPriceSurface' where {type Base CCPICapFloorTermPriceSurface' = CTermStructure'; upcast = qlCPICapFloorTermPriceSurfaceAsTermStructure}
 instance Upcastable CCommodityCurve' where {type Base CCommodityCurve' = CTermStructure'; upcast = qlCommodityCurveAsTermStructure}
 instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; upcast = qlBlackVolTermStructureAsVolatilityTermStructure}
@@ -1463,6 +1480,8 @@ peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflat
 peekYoYInflationTermStructure = GenTermStructure <.> newGenForeignPtr
 withMaybeYoYInflationTermStructure :: Maybe YoYInflationTermStructure -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
 withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+peekYoYCapFloorTermPriceSurface :: Ptr CYoYCapFloorTermPriceSurface' -> IO YoYCapFloorTermPriceSurface
+peekYoYCapFloorTermPriceSurface = GenTermStructure <.> newGenForeignPtr
 peekCPICapFloorTermPriceSurface :: Ptr CCPICapFloorTermPriceSurface' -> IO CPICapFloorTermPriceSurface
 peekCPICapFloorTermPriceSurface = GenTermStructure <.> newGenForeignPtr
 peekCommodityCurve :: Ptr CCommodityCurve' -> IO CommodityCurve

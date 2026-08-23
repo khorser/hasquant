@@ -49,6 +49,48 @@ extern "C" {
       double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e);
   double qlCPIVolatilitySurfaceTotalVariance(QlCPIVolatilitySurface *o, int exerciseDate,
       double strike, int obsLagLen, int obsLagUnit, int extrapolate, char **e);
+
+  /* YoYCapFloorTermPriceSurface -- hardcoded to InterpolatedYoYCapFloorTermPriceSurface<Bicubic,Cubic>,
+     the only Interpolator2D/Interpolator1D combination upstream's own test-suite
+     (inflationvolatility.cpp) uses. */
+  QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays,
+      int yyLagLen, int yyLagUnit, QlYoYInflationIndex *yii, int interpolationType,
+      QlYieldTermStructure *nominal, DayCounter *dc, Calendar *cal, int bdc,
+      unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
+      unsigned cfMaturitiesLen, int *cfMaturitiesNum, unsigned, int *cfMaturitiesUnit,
+      unsigned cPriceRows, unsigned cPriceCols, double *cPriceData,
+      unsigned fPriceRows, unsigned fPriceCols, double *fPriceData, char **e);
+  void qlFreeYoYCapFloorTermPriceSurface(QlYoYCapFloorTermPriceSurface *o);
+  QlTermStructure *qlYoYCapFloorTermPriceSurfaceAsTermStructure(QlYoYCapFloorTermPriceSurface *o);
+  int qlYoYCapFloorTermPriceSurfaceBaseDate(QlYoYCapFloorTermPriceSurface *o, char **e);
+  void qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates(QlYoYCapFloorTermPriceSurface *o,
+      unsigned *dl, int **date, unsigned *rl, double **rate);
+  double qlYoYCapFloorTermPriceSurfaceAtmYoYSwapRate(QlYoYCapFloorTermPriceSurface *o, int d,
+      int extrapolate, char **e);
+  double qlYoYCapFloorTermPriceSurfaceAtmYoYRate(QlYoYCapFloorTermPriceSurface *o, int d,
+      int obsLagLen, int obsLagUnit, int extrapolate, char **e);
+  void qlYoYCapFloorTermPriceSurfaceStrikes(QlYoYCapFloorTermPriceSurface *o, unsigned *sl, double **strike);
+
+  /* KInterpolatedYoYOptionletVolatilitySurface<Linear> -- another concrete leaf constructor for
+     YoYOptionletVolatilitySurface (Item 1), built by internally wiring up an
+     InterpolatedYoYOptionletStripper<Linear> and one of the 3 YoYInflationCapFloorEngine
+     descendants (constructed here with a null vol handle -- the stripper sets the real vol as
+     it bootstraps each strike's curve, see interpolatedyoyoptionletstripper.hpp). Neither the
+     stripper nor the per-strike PiecewiseYoYOptionletVolatilityCurve/YoYOptionletHelper it
+     builds internally are ever exposed: nothing in upstream reaches them from outside
+     YoYOptionletStripper::initialize, so there is nothing for a Haskell binding to return. */
+  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBlack(
+      unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
+      QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
+      QlYieldTermStructure *nominalTs, double slope, char **e);
+  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack(
+      unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
+      QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
+      QlYieldTermStructure *nominalTs, double slope, char **e);
+  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier(
+      unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
+      QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
+      QlYieldTermStructure *nominalTs, double slope, char **e);
 #ifdef __cplusplus
 }
 #endif

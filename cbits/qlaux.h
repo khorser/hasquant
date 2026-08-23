@@ -308,6 +308,7 @@ namespace QuantLib {
   class VolatilityTermStructure;
   class YearOnYearInflationSwap;
   class YearOnYearInflationSwapHelper;
+  class YoYCapFloorTermPriceSurface;
   class YoYInflationCapFloor;
   class YoYInflationCouponPricer;
   class YoYInflationIndex;
@@ -606,6 +607,7 @@ using QuantLib::VegaStressedBlackScholesProcess;
 using QuantLib::VolatilityTermStructure;
 using QuantLib::YearOnYearInflationSwap;
 using QuantLib::YearOnYearInflationSwapHelper;
+using QuantLib::YoYCapFloorTermPriceSurface;
 using QuantLib::YoYInflationCapFloor;
 using QuantLib::YoYInflationCouponPricer;
 using QuantLib::YoYInflationIndex;
@@ -825,6 +827,8 @@ typedef shared_ptr<VarianceSwap> QlVarianceSwap;
 typedef shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
 typedef shared_ptr<YearOnYearInflationSwap> QlYearOnYearInflationSwap;
 typedef shared_ptr<YearOnYearInflationSwapHelper> QlYearOnYearInflationSwapHelper;
+// A plain TermStructure leaf like CPICapFloorTermPriceSurface -- shared_ptr, not a Handle.
+typedef shared_ptr<YoYCapFloorTermPriceSurface> QlYoYCapFloorTermPriceSurface;
 typedef shared_ptr<YoYInflationCapFloor> QlYoYInflationCapFloor;
 // A standalone pricer type like FloatingRateCouponPricer -- shared_ptr, not a Handle.
 typedef shared_ptr<YoYInflationCouponPricer> QlYoYInflationCouponPricer;
@@ -1191,6 +1195,7 @@ template <> class ObjClassName<QlVolatilityTermStructure*> {public: static void 
 template <> class ObjClassName<QlYearOnYearInflationSwap*> {public: static void output(std::ostream& os) {os << "QlYearOnYearInflationSwap";}};
 template <> class ObjClassName<QlYearOnYearInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "QlYearOnYearInflationSwapHelper";}};
 template <> class ObjClassName<QlYieldTermStructure*> {public: static void output(std::ostream& os) {os << "QlYieldTermStructure";}};
+template <> class ObjClassName<QlYoYCapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "QlYoYCapFloorTermPriceSurface";}};
 template <> class ObjClassName<QlYoYInflationCapFloor*> {public: static void output(std::ostream& os) {os << "QlYoYInflationCapFloor";}};
 template <> class ObjClassName<QlYoYInflationCouponPricer*> {public: static void output(std::ostream& os) {os << "QlYoYInflationCouponPricer";}};
 template <> class ObjClassName<QlYoYInflationIndex*> {public: static void output(std::ostream& os) {os << "QlYoYInflationIndex";}};
@@ -1258,6 +1263,7 @@ template <> class ObjClassName<VolatilityTermStructure*> {public: static void ou
 template <> class ObjClassName<YearOnYearInflationSwap*> {public: static void output(std::ostream& os) {os << "YearOnYearInflationSwap";}};
 template <> class ObjClassName<YearOnYearInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "YearOnYearInflationSwapHelper";}};
 template <> class ObjClassName<YieldTermStructure*> {public: static void output(std::ostream& os) {os << "YieldTermStructure";}};
+template <> class ObjClassName<YoYCapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "YoYCapFloorTermPriceSurface";}};
 template <> class ObjClassName<YoYInflationCapFloor*> {public: static void output(std::ostream& os) {os << "YoYInflationCapFloor";}};
 template <> class ObjClassName<YoYInflationCouponPricer*> {public: static void output(std::ostream& os) {os << "YoYInflationCouponPricer";}};
 template <> class ObjClassName<YoYInflationIndex*> {public: static void output(std::ostream& os) {os << "YoYInflationIndex";}};
