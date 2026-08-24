@@ -14,6 +14,7 @@ Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Ha
 2. **`cbits/qlTypesC2HS.h`** — add a fake `typedef struct QlXxx QlXxx;` def. This is a c2hs-only stand-in type (the real definition lives in C++; c2hs just needs something to point at).
 
 3. **`cbits/<some>.cpp`** (ask the user which file if not already specified) — add `qlFreeXxx` (the finalizer, freeing the `shared_ptr` wrapper) plus any constructor/method C shims needed for this class, following the existing `try { ... } catch (std::exception& er) { return handleException<T>(e, er); }` pattern used throughout. Avoid creating new C++ files unless a new concept is introduced.
+Do not create new files unless asked. Use one corresponding to the domain: TermStructure, Instrument, PricingEngine, Misc. Aux files are used to instantiate templates.
 
 4. **`QuantLib/Internal/Type.hs`** — add type and marshalling boilerplate. The shape differs depending on whether this is a **new hierarchy root** or a **class in an existing hierarchy**:
 

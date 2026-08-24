@@ -166,10 +166,7 @@ jobs:
             9.10.3)
               cmd='stack --allow-different-user build --test --no-haddock'
               ;;
-            9.12.4)
-              cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
-              ;;
-            9.14.1)
+            9.12.*|9.14.*)
               cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
               ;;
             *)
