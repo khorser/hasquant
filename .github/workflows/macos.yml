@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ghc: ["9.8.4", "9.10.3"]
+        ghc: ["9.6.7", "9.8.4", "9.10.3"]
         os:
           - macos-15-intel
           - macos-latest
@@ -29,14 +29,19 @@ jobs:
         with:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: 'recommended'
+          stack-version: 'recommended'
 
       - name: Install dependencies via Homebrew
         run: |
           HOMEBREW_NO_AUTO_UPDATE=0 brew update --force
           brew install quantlib
 
-      - name: Build
-        run: cabal build all
-
-      - name: Test
-        run: cabal test all
+      - name: Build and test
+        run: |
+          case "${{ matrix.ghc }}" in
+            9.6.7)
+              stack build --resolver lts-22.44 --test ;;
+            *)
+              cabal build all ;;
+              cabal test all ;;
+          esac
