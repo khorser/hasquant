@@ -159,6 +159,7 @@ executables:
       - containers
       - directory
       - filepath
+      - process
     when:
       - condition: flag(buildSofrXva)
         then:

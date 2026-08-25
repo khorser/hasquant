@@ -1,7 +1,7 @@
 -- |Wiring for the SOFR-OIS exposure-profile pipeline: loads the vendor-format CSV
 -- dumps (via 'SofrXva.Data'), prices the swap on every (scenario, timestep) pair (via
--- 'SofrXva.Pricing'), and compares against the reference NPV file, printing a summary
--- and writing @_NPVDiff.csv@.
+-- 'SofrXva.Pricing'), renders an NPV profile plot (via 'SofrXva.Plot'), and compares
+-- against the reference NPV file, printing a summary and writing @_NPVDiff.csv@.
 --
 -- The curve\/quote\/index name fields each loader filters rows by (see 'SofrXva.Data')
 -- are a source-specific naming convention, not something this program can guess --
@@ -18,6 +18,7 @@ import System.FilePath ((</>))
 import Text.Printf (printf)
 
 import SofrXva.Data (loadIndexHist, loadNpvComparison, loadSofrCurve, loadSofrQuote)
+import SofrXva.Plot (plotNpvProfile)
 import SofrXva.Pricing (buildSofrProfile)
 
 -- |Which files to load. A real data source's on-disk file names are as much a
@@ -26,12 +27,15 @@ import SofrXva.Pricing (buildSofrProfile)
 -- are only defaults -- @--curve-file@\/@--quote-file@\/@--history-file@\/@--npv-file@
 -- override them for any other source. @--quote-file@ may be repeated (a source may
 -- split its quote dump across several files); repeating it replaces the default
--- single-file list rather than appending to it.
+-- single-file list rather than appending to it. @--plot-file@ likewise overrides where
+-- the NPV profile plot (see 'SofrXva.Plot') is written -- its @.dat@\/@.gp@ gnuplot
+-- inputs land alongside it, under the same path with a different extension.
 data FilePaths = FilePaths
   { fpCurve :: FilePath
   , fpQuotes :: [FilePath]
   , fpHistory :: FilePath
   , fpNpv :: FilePath
+  , fpPlot :: FilePath
   }
 
 defaultPaths :: FilePath -> FilePaths
@@ -40,6 +44,7 @@ defaultPaths dataDir = FilePaths
   , fpQuotes = [dataDir </> "quotes.csv"]
   , fpHistory = dataDir </> "history.csv"
   , fpNpv = dataDir </> "npv.csv"
+  , fpPlot = dataDir </> "_NPVProfile.png"
   }
 
 -- |The row-level name fields 'SofrXva.Data''s loaders filter by. A real data source
@@ -65,6 +70,7 @@ data Args = Args
   , aQuoteFiles :: Maybe [FilePath]
   , aHistoryFile :: Maybe FilePath
   , aNpvFile :: Maybe FilePath
+  , aPlotFile :: Maybe FilePath
   , aCurveName :: Maybe String
   , aQuoteName :: Maybe String
   , aQuoteNameFull :: Maybe String
@@ -78,6 +84,7 @@ defaultArgs = Args
   , aQuoteFiles = Nothing
   , aHistoryFile = Nothing
   , aNpvFile = Nothing
+  , aPlotFile = Nothing
   , aCurveName = Nothing
   , aQuoteName = Nothing
   , aQuoteNameFull = Nothing
@@ -86,6 +93,7 @@ defaultArgs = Args
 usage :: String
 usage = "usage: sofr-xva [--data-dir DIR | --example] "
   ++ "[--curve-file FILE] [--quote-file FILE]... [--history-file FILE] [--npv-file FILE] "
+  ++ "[--plot-file FILE] "
   ++ "[--curve-name NAME] [--quote-name NAME] [--quote-name-full NAME]"
 
 parseArgs :: [String] -> Args
@@ -99,6 +107,7 @@ parseArgs = go defaultArgs
       go acc{aQuoteFiles = Just (concat (aQuoteFiles acc) ++ [f])} rest
     go acc ("--history-file" : f : rest) = go acc{aHistoryFile = Just f} rest
     go acc ("--npv-file" : f : rest) = go acc{aNpvFile = Just f} rest
+    go acc ("--plot-file" : f : rest) = go acc{aPlotFile = Just f} rest
     go acc ("--curve-name" : n : rest) = go acc{aCurveName = Just n} rest
     go acc ("--quote-name" : n : rest) = go acc{aQuoteName = Just n} rest
     go acc ("--quote-name-full" : n : rest) = go acc{aQuoteNameFull = Just n} rest
@@ -114,6 +123,7 @@ main = do
         , fpQuotes = maybe (fpQuotes base) id (aQuoteFiles args)
         , fpHistory = maybe (fpHistory base) id (aHistoryFile args)
         , fpNpv = maybe (fpNpv base) id (aNpvFile args)
+        , fpPlot = maybe (fpPlot base) id (aPlotFile args)
         }
       names = defaultNames
         { nCurve = maybe (nCurve defaultNames) id (aCurveName args)
@@ -127,6 +137,8 @@ main = do
   refNpvMap <- loadNpvComparison (fpNpv paths)
 
   npvMap <- buildSofrProfile curveMap histMap quoteMap
+
+  plotNpvProfile (fpPlot paths) npvMap
 
   -- refNpvMap is keyed (TS,Scen) (loadNpvComparison's file layout), npvMap (Scen,TS)
   -- (buildSofrProfile's natural iteration order) -- transpose here rather than in
