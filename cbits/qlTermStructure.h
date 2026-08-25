@@ -387,7 +387,7 @@ extern "C" {
 
   QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen,
     double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
-    unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
+    unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e);
   QlYieldTermStructure *qlInterpolatedForwardCurve(unsigned fwdLen,
     double *fwds, unsigned fwddatesLen, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
     QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e);

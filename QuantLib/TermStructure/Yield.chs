@@ -847,11 +847,12 @@ interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> Calendar -- ^cal
   -> [(Day, GenQuote q)] -- ^jumps
   -> Interpolation -- ^interpolator
+  -> Bool -- ^extrapolate past the curve's max date
   -> IO YieldTermStructure
-interpolatedDiscountCurve r dc c qd i = uncurryNested (qlInterpolatedDiscountCurve rs rd dc c qs ds) (qlInterpolation i)
+interpolatedDiscountCurve r dc c qd i ex = uncurryNested (qlInterpolatedDiscountCurve rs rd dc c qs ds) (qlInterpolation i) ex
   where (rd, rs) = unzip r
         (ds, qs) = unzip qd
-{#fun qlInterpolatedDiscountCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlInterpolatedDiscountCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Yield curve interpolating instantaneous forward rates directly between the given dates.
 interpolatedForwardCurve :: [(Day, Double)] -- ^dates, forwards
