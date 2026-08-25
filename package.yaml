@@ -22,6 +22,9 @@ flags:
   buildExample:
     default: False
     manual: True
+  buildSofrXva:
+    default: False
+    manual: True
   trackAllocations:
     default: False
     manual: True
@@ -142,6 +145,22 @@ executables:
       - hasquant
     when:
       - condition: flag(buildExample)
+        then:
+          buildable: True
+        else:
+          buildable: False
+
+  sofr-xva:
+    main: SofrXva/Main.hs
+    source-dirs:
+      - app
+    dependencies:
+      - hasquant
+      - containers
+      - directory
+      - filepath
+    when:
+      - condition: flag(buildSofrXva)
         then:
           buildable: True
         else:

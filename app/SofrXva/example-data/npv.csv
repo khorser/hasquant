@@ -1,0 +1,4 @@
+NettingKey: SOFR-OIS-EXAMPLE
+TimeStep_down | Scen_across,0,1
+0: 01/12/2021,1234.56,2345.67
+1: 02/12/2021,1345.67,2456.78

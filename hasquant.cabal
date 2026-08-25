@@ -50,6 +50,10 @@ flag buildExample
   manual: True
   default: False
 
+flag buildSofrXva
+  manual: True
+  default: False
+
 flag trackAllocations
   manual: True
   default: False
@@ -183,6 +187,33 @@ executable hasquant_example
   if flag(trackAllocations)
     ghc-options: -g3
   if flag(buildExample)
+    buildable: True
+  else
+    buildable: False
+
+executable sofr-xva
+  main-is: SofrXva/Main.hs
+  other-modules:
+      SofrXva.Csv
+      SofrXva.Data
+      SofrXva.Pricing
+      Paths_hasquant
+  autogen-modules:
+      Paths_hasquant
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  build-depends:
+      base >=4.14 && <5
+    , containers
+    , directory
+    , filepath
+    , hasquant
+    , time >=1.9.3 && <1.16
+  default-language: Haskell2010
+  if flag(trackAllocations)
+    ghc-options: -g3
+  if flag(buildSofrXva)
     buildable: True
   else
     buildable: False
