@@ -29,6 +29,11 @@ jobs:
         with:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: 'recommended'
+
+      - name: Set up Stack
+        if: matrix.ghc == '9.6.7'
+        uses: haskell-actions/setup@v2
+        with:
           enable-stack: true
           stack-version: 'latest'
 
@@ -43,5 +48,5 @@ jobs:
             9.6.7)
               stack build --resolver lts-22.44 --system-ghc --test ;;
             *)
-              cabal update && cabal build all && cabal test all ;;
+              cabal build all && cabal test all ;;
           esac
