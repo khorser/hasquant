@@ -29,7 +29,8 @@ jobs:
         with:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: 'recommended'
-          stack-version: 'recommended'
+          enable-stack: true
+          stack-version: 'latest'
 
       - name: Install dependencies via Homebrew
         run: |
@@ -40,7 +41,7 @@ jobs:
         run: |
           case "${{ matrix.ghc }}" in
             9.6.7)
-              stack build --resolver lts-22.44 --test ;;
+              stack build --resolver lts-22.44 --system-ghc --test ;;
             *)
               cabal build all && cabal test all ;;
           esac
