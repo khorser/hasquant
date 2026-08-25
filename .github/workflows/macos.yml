@@ -29,7 +29,6 @@ jobs:
         with:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: 'recommended'
-          cabal-update: true
           enable-stack: true
           stack-version: 'latest'
 
@@ -44,5 +43,5 @@ jobs:
             9.6.7)
               stack build --resolver lts-22.44 --system-ghc --test ;;
             *)
-              cabal build all && cabal test all ;;
+              cabal update && cabal build all && cabal test all ;;
           esac
