@@ -42,6 +42,5 @@ jobs:
             9.6.7)
               stack build --resolver lts-22.44 --test ;;
             *)
-              cabal build all ;;
-              cabal test all ;;
+              cabal build all && cabal test all ;;
           esac
