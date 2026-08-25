@@ -29,6 +29,7 @@ jobs:
         with:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: 'recommended'
+          cabal-update: true
           enable-stack: true
           stack-version: 'latest'
 
