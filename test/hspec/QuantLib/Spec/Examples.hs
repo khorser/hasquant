@@ -38,6 +38,7 @@ import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
 import qualified QuantLib.Example.AsianOption as AsianOptionExample
 import qualified QuantLib.Example.ForwardOption as ForwardOptionExample
+import qualified QuantLib.Example.OvernightIndexedSwap as OvernightIndexedSwapExample
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
@@ -640,3 +641,13 @@ spec = do
         -- American exercise is never worth less than the otherwise-identical European option
         ForwardOptionExample.bawAmericanR r `shouldSatisfy` (>= call - 1.0e-6)
         ForwardOptionExample.bjsAmericanR r `shouldSatisfy` (>= call - 1.0e-6)
+
+    -- ~/Src/QuantLib/test-suite/overnightindexedswap.cpp:testCachedValue: a 1yr
+    -- ESTR-based OIS against a flat 5% discount curve, checked with both
+    -- telescopic and non-telescopic value dates.
+    describe "OvernightIndexedSwap example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' OvernightIndexedSwapExample.run
+        let cachedNPV = 0.001730450147
+        OvernightIndexedSwapExample.npvNonTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
+        OvernightIndexedSwapExample.npvTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6

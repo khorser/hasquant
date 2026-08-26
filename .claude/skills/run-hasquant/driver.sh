@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Drives hasquant the way this repo actually verifies bindings: compile a
-# standalone smoke/*.hs program against the built library and run it.
+# standalone test/smoke/*.hs program against the built library and run it.
 # See this skill's SKILL.md "Gotchas" section ("A stale build can pass
 # tests against old generated code") for why this exists (a compiled
 # `stack build` is not proof that generated code, e.g. from an edited
@@ -8,7 +8,7 @@
 # the harness for that check.
 #
 # Usage:
-#   .claude/skills/run-hasquant/driver.sh <smoke/Foo.hs> [-- extra ghc args]
+#   .claude/skills/run-hasquant/driver.sh <test/smoke/Foo.hs> [-- extra ghc args]
 #   .claude/skills/run-hasquant/driver.sh --build-only   # just (re)build + register lib:hasquant
 #
 # Run from the repo root (paths below are relative to it).
@@ -27,7 +27,7 @@ if [ "${1:-}" = "--build-only" ]; then
   exit 0
 fi
 
-SCRIPT="${1:?usage: driver.sh <smoke/Foo.hs> [-- extra ghc args]}"
+SCRIPT="${1:?usage: driver.sh <test/smoke/Foo.hs> [-- extra ghc args]}"
 shift
 [ "${1:-}" = "--" ] && shift
 
@@ -36,7 +36,7 @@ OUT="/tmp/hasquant-smoke-${NAME}"
 BUILD_DIR="${OUT}_build"
 
 echo "==> compiling ${SCRIPT}" >&2
-cabal exec -- ghc -ismoke -package hasquant "$SCRIPT" -o "$OUT" -outputdir "$BUILD_DIR" "$@"
+cabal exec -- ghc -itest/smoke -package hasquant "$SCRIPT" -o "$OUT" -outputdir "$BUILD_DIR" "$@"
 
 echo "==> running ${OUT}" >&2
 "$OUT"

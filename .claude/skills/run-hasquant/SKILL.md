@@ -6,8 +6,8 @@ description: Build hasquant, run its test suite, and drive it via a compiled smo
 `hasquant` is a Haskell library (FFI bindings to QuantLib via c2hs, with a
 C++ shim in `cbits/`) — there is no server or GUI to launch. "Running" it
 means: build the C++ shim + Haskell layer, run the hspec test suite, and
-(the part a README won't tell you) compile-and-run a standalone `smoke/*.hs`
-program against the built library — this repo's own established way to
+(the part a README won't tell you) compile-and-run a standalone
+`test/smoke/*.hs` program against the built library — this repo's own established way to
 prove a binding actually works, not just that the build succeeded. Drive it
 via `.claude/skills/run-hasquant/driver.sh`.
 
@@ -48,16 +48,16 @@ explicit signature).
 
 The driver builds `lib:hasquant` via `cabal`, registers it in a global GHC
 environment file (not written into the repo), then compiles and runs a
-`smoke/*.hs` program against it:
+`test/smoke/*.hs` program against it:
 
 ```bash
-.claude/skills/run-hasquant/driver.sh smoke/CheckSabrSmileSection.hs
+.claude/skills/run-hasquant/driver.sh test/smoke/CheckSabrSmileSection.hs
 ```
 
 ```
 ==> cabal build lib:hasquant
 ==> cabal install --lib hasquant (registers a global GHC environment file, not in-repo)
-==> compiling smoke/CheckSabrSmileSection.hs
+==> compiling test/smoke/CheckSabrSmileSection.hs
 ==> running /tmp/hasquant-smoke-CheckSabrSmileSection
 OK   ShiftedLognormal strike=0.01 vol   0.4197993819773641
 ...
@@ -71,7 +71,7 @@ Just build and register the library (no smoke script) with:
 ```
 
 There's no existing smoke script for what you're checking? Write one in
-`smoke/` (see any file there for the pattern: import the relevant
+`test/smoke/` (see any file there for the pattern: import the relevant
 `QuantLib.*` modules, construct objects, assert on the results, `error` on
 failure) and pass its path to the driver — that's the whole point of the
 harness.
@@ -86,7 +86,7 @@ Same idea, spelled out manually (this is what the driver automates):
 ```bash
 cabal build lib:hasquant
 cabal install --lib hasquant --force-reinstalls   # only needed once, or after an API change
-cabal exec -- ghc -ismoke -package hasquant smoke/CheckSabrSmileSection.hs \
+cabal exec -- ghc -itest/smoke -package hasquant test/smoke/CheckSabrSmileSection.hs \
   -o /tmp/checksabr -outputdir /tmp/checksabr_build
 /tmp/checksabr
 ```
