@@ -161,7 +161,7 @@ jobs:
           # this disposable single-use container (not shared multi-user state).
           case "${{ matrix.ghc_version }}" in
             8.10.6)
-              cmd='stack --allow-different-user build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --allow-different-user --resolver lts-18.8 test'
+              cmd='stack --allow-different-user build --resolver lts-18.8 --test --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock'
               ;;
             9.10.3)
               cmd='stack --allow-different-user build --test --no-haddock'
