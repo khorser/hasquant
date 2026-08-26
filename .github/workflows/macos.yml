@@ -46,7 +46,7 @@ jobs:
         run: |
           case "${{ matrix.ghc }}" in
             9.6.7)
-              stack build --resolver lts-22.44 --system-ghc --test ;;
+              stack build --flag hasquant:buildExample --flag hasquant:buildSofrXva --resolver lts-22.44 --system-ghc --test ;;
             *)
-              cabal build all && cabal test all ;;
+              cabal build all -f buildExample -f buildSofrXva --enable-tests && cabal test all ;;
           esac
