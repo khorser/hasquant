@@ -39,6 +39,7 @@ import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
 import qualified QuantLib.Example.AsianOption as AsianOptionExample
 import qualified QuantLib.Example.ForwardOption as ForwardOptionExample
 import qualified QuantLib.Example.OvernightIndexedSwap as OvernightIndexedSwapExample
+import qualified QuantLib.Example.Swaption as SwaptionExample
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
@@ -651,3 +652,12 @@ spec = do
         let cachedNPV = 0.001730450147
         OvernightIndexedSwapExample.npvNonTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
         OvernightIndexedSwapExample.npvTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
+
+    -- ~/Src/QuantLib/test-suite/swaption.cpp:testCachedValue (VanillaSwap half):
+    -- a physically-settled European payer swaption on a 5y-into-10y EUR
+    -- fixed-vs-Euribor6M swap, priced with a flat 20% Black vol against a
+    -- flat 5% discount curve.
+    describe "Swaption example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' SwaptionExample.run
+        SwaptionExample.npv1 r `shouldSatisfy` closePrec 0.036418158579 1.0e-9

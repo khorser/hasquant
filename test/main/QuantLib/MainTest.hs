@@ -18,6 +18,7 @@ import qualified QuantLib.Spec.Index.Commodity as IndexCommodity
 import qualified QuantLib.Spec.Instrument.Energy as InstrumentEnergy
 import qualified QuantLib.Spec.Instrument.InflationCapFloor as InstrumentInflationCapFloor
 import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
+import qualified QuantLib.Spec.Quote as Quote
 import qualified QuantLib.Spec.Examples as Examples
 
 main :: IO ()
@@ -42,6 +43,7 @@ main = do
     InstrumentEnergy.spec
     InstrumentInflationCapFloor.spec
     InstrumentOption.spec
+    Quote.spec
     Examples.spec
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

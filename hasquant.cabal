@@ -171,6 +171,7 @@ executable hasquant_example
       QuantLib.Example.RiskyBond
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
+      QuantLib.Example.Swaption
       QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
       Paths_hasquant
@@ -237,6 +238,7 @@ test-suite hasquant_test
       QuantLib.Spec.Instrument.InflationCapFloor
       QuantLib.Spec.Instrument.Option
       QuantLib.Spec.InterestRateAndCashFlow
+      QuantLib.Spec.Quote
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity
@@ -265,6 +267,7 @@ test-suite hasquant_test
       QuantLib.Example.RiskyBond
       QuantLib.Example.ShortRateModels
       QuantLib.Example.Swap
+      QuantLib.Example.Swaption
       QuantLib.Example.SyntaxHelpers
       QuantLib.Example.TARF
       Paths_hasquant
