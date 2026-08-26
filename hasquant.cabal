@@ -198,6 +198,7 @@ executable sofr-xva
       SofrXva.Data
       SofrXva.Plot
       SofrXva.Pricing
+      SofrXva.Xva
       Paths_hasquant
   autogen-modules:
       Paths_hasquant

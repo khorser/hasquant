@@ -19,7 +19,8 @@ import Text.Printf (printf)
 
 import SofrXva.Data (loadIndexHist, loadNpvComparison, loadSofrCurve, loadSofrQuote)
 import SofrXva.Plot (plotNpvProfile)
-import SofrXva.Pricing (buildSofrProfile)
+import SofrXva.Pricing (SofrProfile(..), buildSofrProfile)
+import SofrXva.Xva (XvaResult(..), computeXva)
 
 -- |Which files to load. A real data source's on-disk file names are as much a
 -- source-specific convention as the row-level name fields below, so these generic
@@ -54,6 +55,8 @@ data Names = Names
   { nCurve :: String
   , nQuote :: String
   , nQuoteFull :: String
+  , nCptyCurve :: String
+  , nOwnCurve :: String
   }
 
 defaultNames :: Names
@@ -61,6 +64,8 @@ defaultNames = Names
   { nCurve = "USD.SOFR.1D"
   , nQuote = "USD.SOFR.1D"
   , nQuoteFull = "INDEX.USD.SOFR.1D"
+  , nCptyCurve = "CPTY"
+  , nOwnCurve = "OWN"
   }
 
 data Args = Args
@@ -74,6 +79,11 @@ data Args = Args
   , aCurveName :: Maybe String
   , aQuoteName :: Maybe String
   , aQuoteNameFull :: Maybe String
+  , aCptyCurveName :: Maybe String
+  , aOwnCurveName :: Maybe String
+  , aCptyRecovery :: Double
+  , aOwnRecovery :: Double
+  , aPercentile :: Double
   }
 
 defaultArgs :: Args
@@ -88,13 +98,20 @@ defaultArgs = Args
   , aCurveName = Nothing
   , aQuoteName = Nothing
   , aQuoteNameFull = Nothing
+  , aCptyCurveName = Nothing
+  , aOwnCurveName = Nothing
+  , aCptyRecovery = 0.4
+  , aOwnRecovery = 0.4
+  , aPercentile = 0.95
   }
 
 usage :: String
 usage = "usage: sofr-xva [--data-dir DIR | --example] "
   ++ "[--curve-file FILE] [--quote-file FILE]... [--history-file FILE] [--npv-file FILE] "
   ++ "[--plot-file FILE] "
-  ++ "[--curve-name NAME] [--quote-name NAME] [--quote-name-full NAME]"
+  ++ "[--curve-name NAME] [--quote-name NAME] [--quote-name-full NAME] "
+  ++ "[--cpty-curve-name NAME] [--cpty-recovery R] [--own-curve-name NAME] [--own-recovery R] "
+  ++ "[--percentile P]"
 
 parseArgs :: [String] -> Args
 parseArgs = go defaultArgs
@@ -107,6 +124,11 @@ parseArgs = go defaultArgs
       go acc{aQuoteFiles = Just (concat (aQuoteFiles acc) ++ [f])} rest
     go acc ("--history-file" : f : rest) = go acc{aHistoryFile = Just f} rest
     go acc ("--npv-file" : f : rest) = go acc{aNpvFile = Just f} rest
+    go acc ("--cpty-curve-name" : n : rest) = go acc{aCptyCurveName = Just n} rest
+    go acc ("--own-curve-name" : n : rest) = go acc{aOwnCurveName = Just n} rest
+    go acc ("--cpty-recovery" : r : rest) = go acc{aCptyRecovery = read r} rest
+    go acc ("--own-recovery" : r : rest) = go acc{aOwnRecovery = read r} rest
+    go acc ("--percentile" : p : rest) = go acc{aPercentile = read p} rest
     go acc ("--plot-file" : f : rest) = go acc{aPlotFile = Just f} rest
     go acc ("--curve-name" : n : rest) = go acc{aCurveName = Just n} rest
     go acc ("--quote-name" : n : rest) = go acc{aQuoteName = Just n} rest
@@ -129,16 +151,30 @@ main = do
         { nCurve = maybe (nCurve defaultNames) id (aCurveName args)
         , nQuote = maybe (nQuote defaultNames) id (aQuoteName args)
         , nQuoteFull = maybe (nQuoteFull defaultNames) id (aQuoteNameFull args)
+        , nCptyCurve = maybe (nCptyCurve defaultNames) id (aCptyCurveName args)
+        , nOwnCurve = maybe (nOwnCurve defaultNames) id (aOwnCurveName args)
         }
 
   curveMap <- loadSofrCurve (fpCurve paths) (nCurve names)
   quoteMap <- loadSofrQuote (fpQuotes paths) (nQuote names)
   histMap <- loadIndexHist (fpHistory paths) (nQuoteFull names)
   refNpvMap <- loadNpvComparison (fpNpv paths)
+  cptyCurveMap <- loadSofrCurve (fpCurve paths) (nCptyCurve names)
+  ownCurveMap <- loadSofrCurve (fpCurve paths) (nOwnCurve names)
 
-  npvMap <- buildSofrProfile curveMap histMap quoteMap
+  profile <- buildSofrProfile curveMap histMap quoteMap
+  let npvMap = spNpvs profile
 
   plotNpvProfile (fpPlot paths) npvMap
+
+  xva <- computeXva npvMap curveMap (spT0DiscountCurve profile)
+    (snd (cptyCurveMap Map.! (0, 0))) (snd (ownCurveMap Map.! (0, 0)))
+    (aCptyRecovery args) (aOwnRecovery args) (aPercentile args)
+  printf "sofr-xva: CVA = %.6f, DVA = %.6f (percentile=%.2f)\n"
+    (xvaCva xva) (xvaDva xva) (aPercentile args)
+  writeFile (dataDir </> "_PFE.csv") $ unlines $
+    "TS,Date,PFE" : [ printf "%d,%s,%.10f" ts (show d) v
+                    | (ts, (d, v)) <- zip [(0 :: Int) ..] (xvaPfe xva) ]
 
   -- refNpvMap is keyed (TS,Scen) (loadNpvComparison's file layout), npvMap (Scen,TS)
   -- (buildSofrProfile's natural iteration order) -- transpose here rather than in

@@ -5,6 +5,7 @@
 -- relink is enough to move the whole pricing setup to the next timestep's curve.
 module SofrXva.Pricing
   ( buildSofrProfile
+  , SofrProfile(..)
   ) where
 
 import Control.Monad (filterM, forM, when)
@@ -24,6 +25,14 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar (CalendarConstructor(..), calendar, BusinessDayConvention(..))
 import QuantLib.Time.Schedule (DayCounterConstructor(..), DateGenerationRule(..), TimeUnit(..), dayCounter, schedule)
 
+-- |'buildSofrProfile''s result: the per-(scenario, timestep) NPVs, plus the t0
+-- ((scen, ts) = (0, 0)) discount curve, reusable by an XVA step that needs to
+-- discount future timestep dates back to the valuation date without rebuilding it.
+data SofrProfile = SofrProfile
+  { spNpvs :: Map.Map (Int, Int) Double
+  , spT0DiscountCurve :: TS.YieldTermStructure
+  }
+
 -- |Prices the swap on every (scenario, timestep) pair present in 'curves'. 'curves'
 -- gives, per (scen, ts), the valuation date and its (pillar date, discount factor)
 -- points (see 'SofrXva.Data.loadSofrCurve'); 'hist' the historical SOFR fixings;
@@ -32,7 +41,7 @@ buildSofrProfile
   :: Map.Map (Int, Int) (Day, [(Day, Double)])
   -> Map.Map Day Double
   -> Map.Map (Int, Int, Day) Double
-  -> IO (Map.Map (Int, Int) Double)
+  -> IO SofrProfile
 buildSofrProfile curves hist quotes = do
   tsh <- TS.relinkableYieldTermStructure (Nothing :: Maybe TS.YieldTermStructure)
   index <- IR.overnightIborIndex IR.Sofr (Just tsh)
@@ -76,7 +85,12 @@ buildSofrProfile curves hist quotes = do
       v <- npv swap
       pure (d2, ((scen, ts), v))
     pure npvs
-  pure (Map.fromList (concat results))
+  t0DiscountCurve <- TS.interpolatedDiscountCurve (snd (curves Map.! (0, 0)))
+    dc cal [] LogLinear True
+  pure SofrProfile
+    { spNpvs = Map.fromList (concat results)
+    , spT0DiscountCurve = t0DiscountCurve
+    }
   where
     foldDates :: Monad m => Day -> [Int] -> (Day -> Int -> m (Day, a)) -> m (Day, [a])
     foldDates d0 xs f = go d0 xs []
