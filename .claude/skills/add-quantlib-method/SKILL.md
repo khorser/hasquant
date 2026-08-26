@@ -7,6 +7,8 @@ Adding one method to an already-bound class only touches the shim `.h`/`.cpp` an
 
 `arg()`, `ret()`, `alloc()` (in `cbits/qlaux.h`) are pure identity/tracing passthroughs — `template <class T> T arg(T p) {return TP("arg", p);}`. They do **no** dereferencing themselves; getting the pointer indirection right is on you, and it depends on the parameter's type.
 
+The shims should be defined inside extern "C"` blocks in `CPP` files. If you define C++ helpers, they should be outside the block, don't create anonymous namespaces for this.
+
 ## 0. Get the real signature from QuantLib itself — don't guess it
 
 Before writing anything, find the method's actual declaration in QuantLib's own header under `/opt/homebrew/include/ql/` (the class's base-class header specifically — per project convention, bind base-class methods only, not overloads on concrete subclasses). Read off, verbatim: the exact method name, parameter types and order, constness, and return type. Everything in steps 1-3 below is a mechanical consequence of that real signature, not something to infer from the method name alone or from a superficially similar sibling binding.
