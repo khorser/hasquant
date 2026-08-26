@@ -32,6 +32,7 @@ Out of scope, deliberately:
 - Evaluate whether some [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
 - Add more nonempty lists or vectors for some functions where applicable
 - A declarative embedded DSL for composing hasquant calls, as a separate sibling project — not started, kept here so the intent stays visible
+- An agent-callable tool interface over the composition DSL above, so an LLM builds and prices products by calling into validated hasquant algorithms instead of generating pricing logic itself — e.g. an agent parses a term sheet's free text, then calls the tool to actually construct and price the product. Term-sheet parsing stays LLM territory; product construction and pricing goes through the tool. Depends on the DSL existing first, since the tool would be the DSL's agent-facing entry point. Open questions: tool grain (one coarse "build and price" call vs. several narrower calls the agent chains itself — coarse is safer against hallucinated intermediate steps) and transport (MCP or similar, as a thin wrapper — this wrapper lives in the sibling project, not inside hasquant itself, per the scope split above)
 - Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
