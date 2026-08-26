@@ -165,8 +165,6 @@ main = do
   profile <- buildSofrProfile curveMap histMap quoteMap
   let npvMap = spNpvs profile
 
-  plotNpvProfile (fpPlot paths) npvMap
-
   xva <- computeXva npvMap curveMap (spT0DiscountCurve profile)
     (snd (cptyCurveMap Map.! (0, 0))) (snd (ownCurveMap Map.! (0, 0)))
     (aCptyRecovery args) (aOwnRecovery args) (aPercentile args)
@@ -175,6 +173,8 @@ main = do
   writeFile (dataDir </> "_PFE.csv") $ unlines $
     "TS,Date,PFE" : [ printf "%d,%s,%.10f" ts (show d) v
                     | (ts, (d, v)) <- zip [(0 :: Int) ..] (xvaPfe xva) ]
+
+  plotNpvProfile (fpPlot paths) npvMap (map snd (xvaPfe xva))
 
   -- refNpvMap is keyed (TS,Scen) (loadNpvComparison's file layout), npvMap (Scen,TS)
   -- (buildSofrProfile's natural iteration order) -- transpose here rather than in
