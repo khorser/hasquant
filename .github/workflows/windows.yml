@@ -144,7 +144,7 @@ jobs:
       # WINDOWS.md Step 4.
       - name: Build
         shell: pwsh
-        run: cabal build all
+        run: cabal build all --enable-tests -f buildExample -f buildSofrXva
 
       - name: Test
         shell: pwsh
