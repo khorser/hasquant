@@ -96,11 +96,10 @@ loadIndexHist path histName = do
   pure $ Map.fromList
     [ (date, value)
     | l <- drop 1 ls -- skip header
-    , dateField : fs <- [splitComma l]
-    , length fs > 5
-    , fs !! 0 == histName
+    , dateField : nameField : typeField : _bid : _ask : _open : closeField : _ <- [splitComma l]
+    , nameField == histName
     , let date = parseDMY dateField
-    , let value = read (fs !! 5) / quoteScale (fs !! 1)
+    , let value = read closeField / quoteScale typeField
     ]
 
 -- |Reference NPV file: @NettingKey: ...@, then a header row

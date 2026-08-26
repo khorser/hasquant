@@ -8,7 +8,7 @@ module SofrXva.Pricing
   , SofrProfile(..)
   ) where
 
-import Control.Monad (filterM, forM, when)
+import Control.Monad (filterM, forM, unless)
 import Data.List (nub, sort)
 import Data.Time.Calendar (Day, addDays, addGregorianYearsClip, diffDays, fromGregorian)
 import qualified Data.Map.Strict as Map
@@ -47,7 +47,7 @@ buildSofrProfile curves hist quotes = do
   index <- IR.overnightIborIndex IR.Sofr (Just tsh)
 
   histBDs <- filterM (isValidFixingDate index) (Map.keys hist)
-  when (not (null histBDs)) $
+  unless (null histBDs) $
     addFixings index histBDs (map (hist Map.!) histBDs) True
 
   cal <- fixingCalendar index
@@ -109,7 +109,7 @@ addInterpolatedFixings index d1 d2 v1 v2 = do
       allDates = [addDays i d1 | i <- [0 .. fromIntegral n]]
       values = linspace v1 v2 (n + 1)
   pairs <- filterM (\(d, _) -> isValidFixingDate index d) (zip allDates values)
-  when (not (null pairs)) $
+  unless (null pairs) $
     addFixings index (map fst pairs) (map snd pairs) True
 
 -- |@numpy.linspace@'s behaviour for the cases this module needs: 'num' evenly spaced

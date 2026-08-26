@@ -12,6 +12,7 @@ module Main (main) where
 
 import Control.Monad (forM_, unless)
 import Data.List (sortOn)
+import Data.Maybe (fromMaybe)
 import qualified Data.Map.Strict as Map
 import System.Environment (getArgs)
 import System.FilePath ((</>))
@@ -141,18 +142,18 @@ main = do
   let dataDir = if aExample args then "app/SofrXva/example-data" else aDataDir args
       base = defaultPaths dataDir
       paths = base
-        { fpCurve = maybe (fpCurve base) id (aCurveFile args)
-        , fpQuotes = maybe (fpQuotes base) id (aQuoteFiles args)
-        , fpHistory = maybe (fpHistory base) id (aHistoryFile args)
-        , fpNpv = maybe (fpNpv base) id (aNpvFile args)
-        , fpPlot = maybe (fpPlot base) id (aPlotFile args)
+        { fpCurve = fromMaybe (fpCurve base) (aCurveFile args)
+        , fpQuotes = fromMaybe (fpQuotes base) (aQuoteFiles args)
+        , fpHistory = fromMaybe (fpHistory base) (aHistoryFile args)
+        , fpNpv = fromMaybe (fpNpv base) (aNpvFile args)
+        , fpPlot = fromMaybe (fpPlot base) (aPlotFile args)
         }
       names = defaultNames
-        { nCurve = maybe (nCurve defaultNames) id (aCurveName args)
-        , nQuote = maybe (nQuote defaultNames) id (aQuoteName args)
-        , nQuoteFull = maybe (nQuoteFull defaultNames) id (aQuoteNameFull args)
-        , nCptyCurve = maybe (nCptyCurve defaultNames) id (aCptyCurveName args)
-        , nOwnCurve = maybe (nOwnCurve defaultNames) id (aOwnCurveName args)
+        { nCurve = fromMaybe (nCurve defaultNames) (aCurveName args)
+        , nQuote = fromMaybe (nQuote defaultNames) (aQuoteName args)
+        , nQuoteFull = fromMaybe (nQuoteFull defaultNames) (aQuoteNameFull args)
+        , nCptyCurve = fromMaybe (nCptyCurve defaultNames) (aCptyCurveName args)
+        , nOwnCurve = fromMaybe (nOwnCurve defaultNames) (aOwnCurveName args)
         }
 
   curveMap <- loadSofrCurve (fpCurve paths) (nCurve names)
