@@ -14,6 +14,27 @@ Worked examples live in `test/example/QuantLib/Example`. They're direct translat
 
 The package is published on Hackage at https://hackage.haskell.org/package/hasquant, with Haddock documentation for the current `master` available at https://khorser.github.io/hasquant
 
+# Goals and Scope
+
+hasquant's job is to be the pricing/curve-building/risk kernel other things call into — a building block and backend "calculator" for higher-level actions, from cash flow discounting up through Monte Carlo exposure simulations — not a framework that dictates how those actions get orchestrated. `app/SofrXva` is the model of that split in practice: it owns its own CSV parsing and pipeline wiring, and calls into hasquant only for curve construction and discounting.
+
+Two things follow from that split:
+
+- **Reference data is a first-class use, not a side effect of pricing.** The calendar/currency/day-counter/index enums (kept in sync with installed QuantLib via the `reconcile-*` skills) are useful on their own — a consumer can depend on hasquant purely for holiday calendars or index conventions and never touch a pricing engine.
+- **Same inputs, reproducible outputs.** Monte Carlo bindings and examples are built on a fixed nonzero RNG seed (never `seed = 0`, which QuantLib treats as "seed from entropy") specifically so a calculator built on hasquant gets consistent results run to run.
+
+Out of scope, deliberately:
+- QuantLib's own numerical backbone — interpolation, optimization, linear algebra, RNG internals. Haskell already has libraries for that; hasquant won't reimplement or independently bind them unless a concrete binding actually needs one exposed.
+- A declarative embedded DSL for composing actions — that would mean hasquant deciding how callers compose pricing calls, which cuts against staying a thin backend. If it happens, it's a sibling project built on top of hasquant rather than something inside it (see Roadmap below).
+
+## Roadmap
+- (Perpetual) Add more classes and methods. You will need to update `cbits/qlaux.h`, `cbits/qlTypesC2HS.h`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
+- Evaluate whether some [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
+- Add more nonempty lists or vectors for some functions where applicable
+- A declarative embedded DSL for composing hasquant calls, as a separate sibling project — not started, kept here so the intent stays visible
+- Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
+- See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
+
 # Testing
 
 Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.cpp` covers a class or scenario, the corresponding hasquant test reuses its inputs and cached expected values directly, rather than deriving numbers by hand or relying on self-consistency alone. Enum-dispatched cases (currencies, calendars, day counters, index variants) get a standalone `test/smoke/` check that constructs the cases and asserts on the output — this is what caught a real bug where two enum cases silently aliased to the wrong upstream values despite a clean build and a passing test suite.
@@ -100,11 +121,3 @@ type CallableBond = GenBond CCallableBond
 
 And if a function accepts `GenInstrument a` (like `npv`), you can pass any instrument at all.
 While this is convenient, it leads to some allocation and deallocation on each call, so you might consider using `asBond` and `asInstrument` to get an object of the required type.
-
-# TODO
-- (Perpetual) Add more classes and methods. You will need to update `cbits/qlaux.h`, `cbits/qlTypesC2HS.h`, and then add some boilerplate to corresponding `.h`, `.cpp`, `Internal/Type.hs` and `.chs` files. This can be simplified with scripting/LLMs. Refer to `CLAUDE.md`, `.claude/skills`, and `tools` for more detailed information useful even for manual steps.
-- Evaluate whether some [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
-- Add more nonempty lists or vectors for some functions where applicable
-- Design a declarative embedded DSL
-- Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
-- See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
