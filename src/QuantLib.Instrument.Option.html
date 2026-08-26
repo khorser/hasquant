@@ -187,52 +187,52 @@
 -&gt; StrikedPayoff
 -&gt; Exercise
 -&gt; IO QuantoForwardVanillaOption
-</span><a href="QuantLib.Instrument.Option.html#quantoForwardVanillaOption"><span class="hs-identifier hs-var hs-var">quantoForwardVanillaOption</span></a></span></span><span> </span><span id="local-6989586621680011774"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680011774"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680011775"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680011775"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680011776"><span class="annot"><span class="annottext">StrikedPayoff
-</span><a href="#local-6989586621680011776"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680011777"><span class="annot"><span class="annottext">Exercise
-</span><a href="#local-6989586621680011777"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-126"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011784"><span class="annot"><span class="annottext">a1' :: CDouble
-</span><a href="#local-6989586621680011784"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="QuantLib.Instrument.Option.html#quantoForwardVanillaOption"><span class="hs-identifier hs-var hs-var">quantoForwardVanillaOption</span></a></span></span><span> </span><span id="local-6989586621680011806"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680011806"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680011807"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680011807"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680011808"><span class="annot"><span class="annottext">StrikedPayoff
+</span><a href="#local-6989586621680011808"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680011809"><span class="annot"><span class="annottext">Exercise
+</span><a href="#local-6989586621680011809"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-126"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011816"><span class="annot"><span class="annottext">a1' :: CDouble
+</span><a href="#local-6989586621680011816"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680011774"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680011806"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-127"></span><span>  </span><span class="annot"><span class="annottext">Day
 -&gt; (CInt -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680011775"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO QuantoForwardVanillaOption)
+</span><a href="#local-6989586621680011807"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO QuantoForwardVanillaOption)
  -&gt; IO QuantoForwardVanillaOption)
 -&gt; (CInt -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011786"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011786"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011818"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011818"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-128"></span><span>  </span><span class="annot"><span class="annottext">StrikedPayoff
 -&gt; (QlStrikedTypePayoff -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a. StrikedPayoff -&gt; (QlStrikedTypePayoff -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.Common.html#withStrikedPayoff"><span class="hs-identifier hs-var">withStrikedPayoff</span></a></span><span> </span><span class="annot"><span class="annottext">StrikedPayoff
-</span><a href="#local-6989586621680011776"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((QlStrikedTypePayoff -&gt; IO QuantoForwardVanillaOption)
+</span><a href="#local-6989586621680011808"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((QlStrikedTypePayoff -&gt; IO QuantoForwardVanillaOption)
  -&gt; IO QuantoForwardVanillaOption)
 -&gt; (QlStrikedTypePayoff -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011788"><span class="annot"><span class="annottext">QlStrikedTypePayoff
-</span><a href="#local-6989586621680011788"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011820"><span class="annot"><span class="annottext">QlStrikedTypePayoff
+</span><a href="#local-6989586621680011820"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-129"></span><span>  </span><span class="annot"><span class="annottext">Exercise
 -&gt; (QlExercise -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a. Exercise -&gt; (QlExercise -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.Common.html#withExercise"><span class="hs-identifier hs-var">withExercise</span></a></span><span> </span><span class="annot"><span class="annottext">Exercise
-</span><a href="#local-6989586621680011777"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((QlExercise -&gt; IO QuantoForwardVanillaOption)
+</span><a href="#local-6989586621680011809"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((QlExercise -&gt; IO QuantoForwardVanillaOption)
  -&gt; IO QuantoForwardVanillaOption)
 -&gt; (QlExercise -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011790"><span class="annot"><span class="annottext">QlExercise
-</span><a href="#local-6989586621680011790"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011822"><span class="annot"><span class="annottext">QlExercise
+</span><a href="#local-6989586621680011822"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-130"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
@@ -241,8 +241,8 @@ forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 -&gt; (Ptr (Ptr CChar) -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011792"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680011792"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011824"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680011824"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-131"></span><span>  </span><span class="annot"><span class="annottext">CDouble
 -&gt; CInt
 -&gt; QlStrikedTypePayoff
@@ -250,30 +250,30 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CQuantoForwardVanillaOption')
 </span><a href="QuantLib.Instrument.Option.html#quantoForwardVanillaOption%27_"><span class="hs-identifier hs-var">quantoForwardVanillaOption'_</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680011784"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011786"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">QlStrikedTypePayoff
-</span><a href="#local-6989586621680011788"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">QlExercise
-</span><a href="#local-6989586621680011790"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680011792"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CQuantoForwardVanillaOption')
+</span><a href="#local-6989586621680011816"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011818"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">QlStrikedTypePayoff
+</span><a href="#local-6989586621680011820"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">QlExercise
+</span><a href="#local-6989586621680011822"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680011824"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CQuantoForwardVanillaOption')
 -&gt; (Ptr CQuantoForwardVanillaOption'
     -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011794"><span class="annot"><span class="annottext">Ptr CQuantoForwardVanillaOption'
-</span><a href="#local-6989586621680011794"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011826"><span class="annot"><span class="annottext">Ptr CQuantoForwardVanillaOption'
+</span><a href="#local-6989586621680011826"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-132"></span><span>  </span><span class="annot"><span class="annottext">Ptr CQuantoForwardVanillaOption' -&gt; IO QuantoForwardVanillaOption
 </span><a href="QuantLib.Internal.Type.html#peekQuantoForwardVanillaOption"><span class="hs-identifier hs-var">peekQuantoForwardVanillaOption</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQuantoForwardVanillaOption'
-</span><a href="#local-6989586621680011794"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO QuantoForwardVanillaOption
+</span><a href="#local-6989586621680011826"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO QuantoForwardVanillaOption
 -&gt; (QuantoForwardVanillaOption -&gt; IO QuantoForwardVanillaOption)
 -&gt; IO QuantoForwardVanillaOption
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011800"><span class="annot"><span class="annottext">QuantoForwardVanillaOption
-</span><a href="#local-6989586621680011800"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011832"><span class="annot"><span class="annottext">QuantoForwardVanillaOption
+</span><a href="#local-6989586621680011832"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-133"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680011792"><span class="hs-identifier hs-var">a5'</span></a></span><span class="annot"><span class="annottext">IO ()
+</span><a href="#local-6989586621680011824"><span class="hs-identifier hs-var">a5'</span></a></span><span class="annot"><span class="annottext">IO ()
 -&gt; IO QuantoForwardVanillaOption -&gt; IO QuantoForwardVanillaOption
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
@@ -282,7 +282,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">QuantoForwardVanillaOption
-</span><a href="#local-6989586621680011800"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680011832"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-135"></span><span>
 </span><span id="line-136"></span><span id="barrierOption"><span class="hs-pragma">{-# LINE 124 &quot;./QuantLib/Instrument/Option.chs&quot; #-}</span></span><span>
 </span><span id="line-124"></span><span>
@@ -896,69 +896,69 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-302"></span><span>  </span><span class="hs-identifier">dividendRho</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">qlMultiAssetOptionDividendRho</span><span>
 </span><span id="line-303"></span><span>
 </span><span id="line-304"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="QuantLib.Instrument.Option.html#HasGreeks"><span class="hs-identifier hs-type">HasGreeks</span></a></span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html#OneAssetOption"><span class="hs-identifier hs-type">OneAssetOption</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-305"></span><span>  </span><span id="local-6989586621680012148"><span class="annot"><span class="annottext">delta :: OneAssetOption -&gt; IO Double
+</span><span id="line-305"></span><span>  </span><span id="local-6989586621680012180"><span class="annot"><span class="annottext">delta :: OneAssetOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#delta"><span class="hs-identifier hs-var hs-var hs-var">delta</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OneAssetOption -&gt; IO Double
 forall oo. GenOneAssetOption oo -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlOneAssetOptionDelta"><span class="hs-identifier hs-var">qlOneAssetOptionDelta</span></a></span><span>
-</span><span id="line-306"></span><span>  </span><span id="local-6989586621680012150"><span class="annot"><span class="annottext">gamma :: OneAssetOption -&gt; IO Double
+</span><span id="line-306"></span><span>  </span><span id="local-6989586621680012182"><span class="annot"><span class="annottext">gamma :: OneAssetOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#gamma"><span class="hs-identifier hs-var hs-var hs-var">gamma</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OneAssetOption -&gt; IO Double
 forall oo. GenOneAssetOption oo -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlOneAssetOptionGamma"><span class="hs-identifier hs-var">qlOneAssetOptionGamma</span></a></span><span>
-</span><span id="line-307"></span><span>  </span><span id="local-6989586621680012152"><span class="annot"><span class="annottext">rho :: OneAssetOption -&gt; IO Double
+</span><span id="line-307"></span><span>  </span><span id="local-6989586621680012184"><span class="annot"><span class="annottext">rho :: OneAssetOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#rho"><span class="hs-identifier hs-var hs-var hs-var">rho</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OneAssetOption -&gt; IO Double
 forall oo. GenOneAssetOption oo -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlOneAssetOptionRho"><span class="hs-identifier hs-var">qlOneAssetOptionRho</span></a></span><span>
-</span><span id="line-308"></span><span>  </span><span id="local-6989586621680012154"><span class="annot"><span class="annottext">theta :: OneAssetOption -&gt; IO Double
+</span><span id="line-308"></span><span>  </span><span id="local-6989586621680012186"><span class="annot"><span class="annottext">theta :: OneAssetOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#theta"><span class="hs-identifier hs-var hs-var hs-var">theta</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OneAssetOption -&gt; IO Double
 forall oo. GenOneAssetOption oo -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlOneAssetOptionTheta"><span class="hs-identifier hs-var">qlOneAssetOptionTheta</span></a></span><span>
-</span><span id="line-309"></span><span>  </span><span id="local-6989586621680012156"><span class="annot"><span class="annottext">vega :: OneAssetOption -&gt; IO Double
+</span><span id="line-309"></span><span>  </span><span id="local-6989586621680012188"><span class="annot"><span class="annottext">vega :: OneAssetOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#vega"><span class="hs-identifier hs-var hs-var hs-var">vega</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OneAssetOption -&gt; IO Double
 forall oo. GenOneAssetOption oo -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlOneAssetOptionVega"><span class="hs-identifier hs-var">qlOneAssetOptionVega</span></a></span><span>
-</span><span id="line-310"></span><span>  </span><span id="local-6989586621680012158"><span class="annot"><span class="annottext">dividendRho :: OneAssetOption -&gt; IO Double
+</span><span id="line-310"></span><span>  </span><span id="local-6989586621680012190"><span class="annot"><span class="annottext">dividendRho :: OneAssetOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#dividendRho"><span class="hs-identifier hs-var hs-var hs-var">dividendRho</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">OneAssetOption -&gt; IO Double
 forall oo. GenOneAssetOption oo -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlOneAssetOptionDividendRho"><span class="hs-identifier hs-var">qlOneAssetOptionDividendRho</span></a></span><span>
 </span><span id="line-311"></span><span>
 </span><span id="line-312"></span><span class="annot"><span class="hs-comment">-- |Sensitivity of a multi-asset option's value to the price of its underlying assets.</span></span><span>
-</span><span id="line-313"></span><span id="local-6989586621680011544"><span class="annot"><a href="QuantLib.Instrument.Option.html#qlMultiAssetOptionDelta"><span class="hs-identifier hs-type">qlMultiAssetOptionDelta</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenMultiAssetOption"><span class="hs-identifier hs-type">GenMultiAssetOption</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680011544"><span class="hs-identifier hs-type">mo</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-313"></span><span id="local-6989586621680011576"><span class="annot"><a href="QuantLib.Instrument.Option.html#qlMultiAssetOptionDelta"><span class="hs-identifier hs-type">qlMultiAssetOptionDelta</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenMultiAssetOption"><span class="hs-identifier hs-type">GenMultiAssetOption</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680011576"><span class="hs-identifier hs-type">mo</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-314"></span><span id="qlMultiAssetOptionDelta"><span class="annot"><span class="annottext">qlMultiAssetOptionDelta :: forall mo. GenMultiAssetOption mo -&gt; IO Double
-</span><a href="QuantLib.Instrument.Option.html#qlMultiAssetOptionDelta"><span class="hs-identifier hs-var hs-var">qlMultiAssetOptionDelta</span></a></span></span><span> </span><span id="local-6989586621680012163"><span class="annot"><span class="annottext">GenMultiAssetOption mo
-</span><a href="#local-6989586621680012163"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Instrument.Option.html#qlMultiAssetOptionDelta"><span class="hs-identifier hs-var hs-var">qlMultiAssetOptionDelta</span></a></span></span><span> </span><span id="local-6989586621680012195"><span class="annot"><span class="annottext">GenMultiAssetOption mo
+</span><a href="#local-6989586621680012195"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-315"></span><span>  </span><span class="annot"><span class="annottext">GenMultiAssetOption mo
 -&gt; (Ptr CMultiAssetOption' -&gt; IO Double) -&gt; IO Double
 forall mo b.
 GenMultiAssetOption mo -&gt; (Ptr CMultiAssetOption' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withMultiAssetOption"><span class="hs-identifier hs-var">withMultiAssetOption</span></a></span><span> </span><span class="annot"><span class="annottext">GenMultiAssetOption mo
-</span><a href="#local-6989586621680012163"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CMultiAssetOption' -&gt; IO Double) -&gt; IO Double)
+</span><a href="#local-6989586621680012195"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CMultiAssetOption' -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr CMultiAssetOption' -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012165"><span class="annot"><span class="annottext">Ptr CMultiAssetOption'
-</span><a href="#local-6989586621680012165"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680012166"></span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012197"><span class="annot"><span class="annottext">Ptr CMultiAssetOption'
+</span><a href="#local-6989586621680012197"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680012198"></span><span> </span><span>
 </span><span id="line-316"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012167"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012167"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012199"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680012199"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-317"></span><span>  </span><span class="annot"><span class="annottext">Ptr CMultiAssetOption' -&gt; Ptr (Ptr CChar) -&gt; IO CDouble
 </span><a href="QuantLib.Instrument.Option.html#qlMultiAssetOptionDelta%27_"><span class="hs-identifier hs-var">qlMultiAssetOptionDelta'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CMultiAssetOption'
-</span><a href="#local-6989586621680012165"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012167"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CDouble -&gt; (CDouble -&gt; IO Double) -&gt; IO Double
+</span><a href="#local-6989586621680012197"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680012199"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CDouble -&gt; (CDouble -&gt; IO Double) -&gt; IO Double
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012169"><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012169"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-318"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012173"><span class="annot"><span class="annottext">res' :: Double
-</span><a href="#local-6989586621680012173"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CDouble -&gt; Double
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012201"><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012201"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-318"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012205"><span class="annot"><span class="annottext">res' :: Double
+</span><a href="#local-6989586621680012205"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CDouble -&gt; Double
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012169"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680012174"></span><span>
+</span><a href="#local-6989586621680012201"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680012206"></span><span>
 </span><span id="line-319"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012167"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Double -&gt; IO Double
+</span><a href="#local-6989586621680012199"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Double -&gt; IO Double
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -966,7 +966,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012173"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680012205"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-321"></span><span>
 </span><span id="line-322"></span><span class="hs-pragma">{-# LINE 313 &quot;./QuantLib/Instrument/Option.chs&quot; #-}</span><span>
 </span><span id="line-313"></span><span>
@@ -1109,7 +1109,7 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-350"></span><span>  </span><span class="hs-identifier">qlOneAssetOptionVega'_</span><span> </span><span class="hs-identifier">a1'</span><span> </span><span class="hs-identifier">a2'</span><span> </span><span class="hs-operator">&gt;&gt;=</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">res</span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-351"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-identifier">res'</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">realToFrac</span><span> </span><span class="hs-identifier">res</span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
 </span><span id="line-352"></span><span>  </span><span class="hs-identifier">errorCheck</span><span>  </span><span class="hs-identifier">a2'</span><span class="hs-operator">&gt;&gt;</span><span>
-</span><span id="line-353"></span><span>  </span><span id="local-6989586621680012214"></span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">res'</span><span class="hs-special">)</span><span>
+</span><span id="line-353"></span><span>  </span><span id="local-6989586621680012246"></span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">res'</span><span class="hs-special">)</span><span>
 </span><span id="line-354"></span><span>
 </span><span id="line-355"></span><span class="hs-pragma">{-# LINE 346 &quot;./QuantLib/Instrument/Option.chs&quot; #-}</span><span>
 </span><span id="line-346"></span><span>
@@ -1123,29 +1123,29 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-354"></span><span>  </span><span class="hs-identifier">qvega</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">qlQuantoBarrierOptionQvega</span><span>
 </span><span id="line-355"></span><span>  </span><span class="hs-identifier">qlambda</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">qlQuantoBarrierOptionQlambda</span><span>
 </span><span id="line-356"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="QuantLib.Instrument.Option.html#HasQuanto"><span class="hs-identifier hs-type">HasQuanto</span></a></span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html#QuantoForwardVanillaOption"><span class="hs-identifier hs-type">QuantoForwardVanillaOption</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-357"></span><span>  </span><span id="local-6989586621680012228"><span class="annot"><span class="annottext">qrho :: QuantoForwardVanillaOption -&gt; IO Double
+</span><span id="line-357"></span><span>  </span><span id="local-6989586621680012260"><span class="annot"><span class="annottext">qrho :: QuantoForwardVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qrho"><span class="hs-identifier hs-var hs-var hs-var">qrho</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QuantoForwardVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoForwardVanillaOptionQrho"><span class="hs-identifier hs-var">qlQuantoForwardVanillaOptionQrho</span></a></span><span>
-</span><span id="line-358"></span><span>  </span><span id="local-6989586621680012230"><span class="annot"><span class="annottext">qvega :: QuantoForwardVanillaOption -&gt; IO Double
+</span><span id="line-358"></span><span>  </span><span id="local-6989586621680012262"><span class="annot"><span class="annottext">qvega :: QuantoForwardVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qvega"><span class="hs-identifier hs-var hs-var hs-var">qvega</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QuantoForwardVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoForwardVanillaOptionQvega"><span class="hs-identifier hs-var">qlQuantoForwardVanillaOptionQvega</span></a></span><span>
-</span><span id="line-359"></span><span>  </span><span id="local-6989586621680012232"><span class="annot"><span class="annottext">qlambda :: QuantoForwardVanillaOption -&gt; IO Double
+</span><span id="line-359"></span><span>  </span><span id="local-6989586621680012264"><span class="annot"><span class="annottext">qlambda :: QuantoForwardVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlambda"><span class="hs-identifier hs-var hs-var hs-var">qlambda</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QuantoForwardVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoForwardVanillaOptionQlambda"><span class="hs-identifier hs-var">qlQuantoForwardVanillaOptionQlambda</span></a></span><span>
 </span><span id="line-360"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="QuantLib.Instrument.Option.html#HasQuanto"><span class="hs-identifier hs-type">HasQuanto</span></a></span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html#QuantoVanillaOption"><span class="hs-identifier hs-type">QuantoVanillaOption</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-361"></span><span>  </span><span id="local-6989586621680012238"><span class="annot"><span class="annottext">qrho :: QuantoVanillaOption -&gt; IO Double
+</span><span id="line-361"></span><span>  </span><span id="local-6989586621680012270"><span class="annot"><span class="annottext">qrho :: QuantoVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qrho"><span class="hs-identifier hs-var hs-var hs-var">qrho</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QuantoVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoVanillaOptionQrho"><span class="hs-identifier hs-var">qlQuantoVanillaOptionQrho</span></a></span><span>
-</span><span id="line-362"></span><span>  </span><span id="local-6989586621680012240"><span class="annot"><span class="annottext">qvega :: QuantoVanillaOption -&gt; IO Double
+</span><span id="line-362"></span><span>  </span><span id="local-6989586621680012272"><span class="annot"><span class="annottext">qvega :: QuantoVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qvega"><span class="hs-identifier hs-var hs-var hs-var">qvega</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QuantoVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoVanillaOptionQvega"><span class="hs-identifier hs-var">qlQuantoVanillaOptionQvega</span></a></span><span>
-</span><span id="line-363"></span><span>  </span><span id="local-6989586621680012242"><span class="annot"><span class="annottext">qlambda :: QuantoVanillaOption -&gt; IO Double
+</span><span id="line-363"></span><span>  </span><span id="local-6989586621680012274"><span class="annot"><span class="annottext">qlambda :: QuantoVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlambda"><span class="hs-identifier hs-var hs-var hs-var">qlambda</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">QuantoVanillaOption -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoVanillaOptionQlambda"><span class="hs-identifier hs-var">qlQuantoVanillaOptionQlambda</span></a></span><span>
 </span><span id="line-364"></span><span>
-</span><span id="line-365"></span><span class="hs-keyword">class</span><span> </span><span id="HasImpliedVol"><span class="annot"><a href="QuantLib.Instrument.Option.html#HasImpliedVol"><span class="hs-identifier hs-var">HasImpliedVol</span></a></span></span><span> </span><span id="local-6989586621680011557"><span class="annot"><a href="#local-6989586621680011557"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-365"></span><span class="hs-keyword">class</span><span> </span><span id="HasImpliedVol"><span class="annot"><a href="QuantLib.Instrument.Option.html#HasImpliedVol"><span class="hs-identifier hs-var">HasImpliedVol</span></a></span></span><span> </span><span id="local-6989586621680011589"><span class="annot"><a href="#local-6989586621680011589"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
 </span><span id="line-366"></span><span class="hs-comment">-- /Warning/ currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)Warningoptions with a gamma that changes sign (e.g., binary options) have values that are not monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options.</span><span>
-</span><span id="line-367"></span><span>  </span><span id="impliedVolatility"><span class="annot"><a href="QuantLib.Instrument.Option.html#impliedVolatility"><span class="hs-identifier hs-type">impliedVolatility</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="#local-6989586621680011557"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-367"></span><span>  </span><span id="impliedVolatility"><span class="annot"><a href="QuantLib.Instrument.Option.html#impliedVolatility"><span class="hs-identifier hs-type">impliedVolatility</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="#local-6989586621680011589"><span class="hs-identifier hs-type">a</span></a></span><span>
 </span><span id="line-368"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span> </span><span class="annot"><span class="hs-comment">-- ^price</span></span><span>
 </span><span id="line-369"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html#GeneralizedBlackScholesProcess"><span class="hs-identifier hs-type">GeneralizedBlackScholesProcess</span></a></span><span> </span><span class="annot"><span class="hs-comment">-- ^process</span></span><span>
 </span><span id="line-370"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="QuantLib.Internal.Type.html#Dividend"><span class="hs-identifier hs-type">Dividend</span></a></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-comment">-- ^dividends</span></span><span>
@@ -1155,7 +1155,7 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-374"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span> </span><span class="annot"><span class="hs-comment">-- ^maxVol</span></span><span>
 </span><span id="line-375"></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span>
 </span><span id="line-376"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="QuantLib.Instrument.Option.html#HasImpliedVol"><span class="hs-identifier hs-type">HasImpliedVol</span></a></span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html#VanillaOption"><span class="hs-identifier hs-type">VanillaOption</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-377"></span><span>  </span><span id="local-6989586621680012248"><span class="annot"><span class="annottext">impliedVolatility :: VanillaOption
+</span><span id="line-377"></span><span>  </span><span id="local-6989586621680012280"><span class="annot"><span class="annottext">impliedVolatility :: VanillaOption
 -&gt; Double
 -&gt; GeneralizedBlackScholesProcess
 -&gt; [Dividend]
@@ -1185,7 +1185,7 @@ VanillaOption
 -&gt; IO Double
 </span><a href="QuantLib.Instrument.Option.html#qlVanillaOptionImpliedVolatility"><span class="hs-identifier hs-var">qlVanillaOptionImpliedVolatility</span></a></span><span>
 </span><span id="line-378"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="QuantLib.Instrument.Option.html#HasImpliedVol"><span class="hs-identifier hs-type">HasImpliedVol</span></a></span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html#BarrierOption"><span class="hs-identifier hs-type">BarrierOption</span></a></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-379"></span><span>  </span><span id="local-6989586621680012252"><span class="annot"><span class="annottext">impliedVolatility :: BarrierOption
+</span><span id="line-379"></span><span>  </span><span id="local-6989586621680012284"><span class="annot"><span class="annottext">impliedVolatility :: BarrierOption
 -&gt; Double
 -&gt; GeneralizedBlackScholesProcess
 -&gt; [Dividend]
@@ -1218,41 +1218,41 @@ BarrierOption
 </span><span id="line-381"></span><span class="annot"><span class="hs-comment">-- |Sensitivity of a QuantoBarrierOption's value to the correlation-driven quanto adjustment's foreign rate.</span></span><span>
 </span><span id="line-382"></span><span class="annot"><a href="QuantLib.Instrument.Option.html#qlQuantoBarrierOptionQrho"><span class="hs-identifier hs-type">qlQuantoBarrierOptionQrho</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#QuantoBarrierOption"><span class="hs-identifier hs-type">QuantoBarrierOption</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-383"></span><span id="qlQuantoBarrierOptionQrho"><span class="annot"><span class="annottext">qlQuantoBarrierOptionQrho :: QuantoBarrierOption -&gt; IO Double
-</span><a href="QuantLib.Instrument.Option.html#qlQuantoBarrierOptionQrho"><span class="hs-identifier hs-var hs-var">qlQuantoBarrierOptionQrho</span></a></span></span><span> </span><span id="local-6989586621680012254"><span class="annot"><span class="annottext">QuantoBarrierOption
-</span><a href="#local-6989586621680012254"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Instrument.Option.html#qlQuantoBarrierOptionQrho"><span class="hs-identifier hs-var hs-var">qlQuantoBarrierOptionQrho</span></a></span></span><span> </span><span id="local-6989586621680012286"><span class="annot"><span class="annottext">QuantoBarrierOption
+</span><a href="#local-6989586621680012286"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-384"></span><span>  </span><span class="annot"><span class="annottext">QuantoBarrierOption
 -&gt; (Ptr CQuantoBarrierOption' -&gt; IO Double) -&gt; IO Double
 forall b.
 QuantoBarrierOption -&gt; (Ptr CQuantoBarrierOption' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withQuantoBarrierOption"><span class="hs-identifier hs-var">withQuantoBarrierOption</span></a></span><span> </span><span class="annot"><span class="annottext">QuantoBarrierOption
-</span><a href="#local-6989586621680012254"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuantoBarrierOption' -&gt; IO Double) -&gt; IO Double)
+</span><a href="#local-6989586621680012286"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuantoBarrierOption' -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr CQuantoBarrierOption' -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012256"><span class="annot"><span class="annottext">Ptr CQuantoBarrierOption'
-</span><a href="#local-6989586621680012256"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012288"><span class="annot"><span class="annottext">Ptr CQuantoBarrierOption'
+</span><a href="#local-6989586621680012288"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-385"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012257"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012257"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012289"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680012289"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-386"></span><span>  </span><span class="annot"><span class="annottext">Ptr CQuantoBarrierOption' -&gt; Ptr (Ptr CChar) -&gt; IO CDouble
 </span><a href="QuantLib.Instrument.Option.html#qlQuantoBarrierOptionQrho%27_"><span class="hs-identifier hs-var">qlQuantoBarrierOptionQrho'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQuantoBarrierOption'
-</span><a href="#local-6989586621680012256"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012257"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CDouble -&gt; (CDouble -&gt; IO Double) -&gt; IO Double
+</span><a href="#local-6989586621680012288"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680012289"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CDouble -&gt; (CDouble -&gt; IO Double) -&gt; IO Double
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012259"><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012259"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-387"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012263"><span class="annot"><span class="annottext">res' :: Double
-</span><a href="#local-6989586621680012263"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CDouble -&gt; Double
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012291"><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012291"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-387"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012295"><span class="annot"><span class="annottext">res' :: Double
+</span><a href="#local-6989586621680012295"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CDouble -&gt; Double
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012259"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
+</span><a href="#local-6989586621680012291"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
 </span><span id="line-388"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012257"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Double -&gt; IO Double
+</span><a href="#local-6989586621680012289"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Double -&gt; IO Double
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -1260,7 +1260,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012263"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680012295"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-390"></span><span>
 </span><span id="line-391"></span><span class="hs-pragma">{-# LINE 382 &quot;./QuantLib/Instrument/Option.chs&quot; #-}</span><span>
 </span><span id="line-382"></span><span>
@@ -1387,77 +1387,77 @@ VanillaOption
 -&gt; Double
 -&gt; Double
 -&gt; IO Double
-</span><a href="QuantLib.Instrument.Option.html#qlVanillaOptionImpliedVolatility"><span class="hs-identifier hs-var hs-var">qlVanillaOptionImpliedVolatility</span></a></span></span><span> </span><span id="local-6989586621680012288"><span class="annot"><span class="annottext">VanillaOption
-</span><a href="#local-6989586621680012288"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680012289"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012289"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680012290"><span class="annot"><span class="annottext">GenGeneralizedBlackScholesProcess gbs
-</span><a href="#local-6989586621680012290"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680012291"><span class="annot"><span class="annottext">[Dividend]
-</span><a href="#local-6989586621680012291"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680012292"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012292"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680012293"><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621680012293"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680012294"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012294"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680012295"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012295"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Instrument.Option.html#qlVanillaOptionImpliedVolatility"><span class="hs-identifier hs-var hs-var">qlVanillaOptionImpliedVolatility</span></a></span></span><span> </span><span id="local-6989586621680012320"><span class="annot"><span class="annottext">VanillaOption
+</span><a href="#local-6989586621680012320"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680012321"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680012321"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680012322"><span class="annot"><span class="annottext">GenGeneralizedBlackScholesProcess gbs
+</span><a href="#local-6989586621680012322"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680012323"><span class="annot"><span class="annottext">[Dividend]
+</span><a href="#local-6989586621680012323"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680012324"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680012324"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680012325"><span class="annot"><span class="annottext">Word
+</span><a href="#local-6989586621680012325"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680012326"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680012326"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680012327"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680012327"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-417"></span><span>  </span><span class="annot"><span class="annottext">VanillaOption -&gt; (Ptr CVanillaOption' -&gt; IO Double) -&gt; IO Double
 forall b. VanillaOption -&gt; (Ptr CVanillaOption' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withVanillaOption"><span class="hs-identifier hs-var">withVanillaOption</span></a></span><span> </span><span class="annot"><span class="annottext">VanillaOption
-</span><a href="#local-6989586621680012288"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CVanillaOption' -&gt; IO Double) -&gt; IO Double)
+</span><a href="#local-6989586621680012320"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CVanillaOption' -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr CVanillaOption' -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012297"><span class="annot"><span class="annottext">Ptr CVanillaOption'
-</span><a href="#local-6989586621680012297"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-418"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012301"><span class="annot"><span class="annottext">a2' :: CDouble
-</span><a href="#local-6989586621680012301"><span class="hs-identifier hs-var hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012329"><span class="annot"><span class="annottext">Ptr CVanillaOption'
+</span><a href="#local-6989586621680012329"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-418"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012333"><span class="annot"><span class="annottext">a2' :: CDouble
+</span><a href="#local-6989586621680012333"><span class="hs-identifier hs-var hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012289"><span class="hs-identifier hs-var">a2</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680011559"></span><span> </span><span>
+</span><a href="#local-6989586621680012321"><span class="hs-identifier hs-var">a2</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680011591"></span><span> </span><span>
 </span><span id="line-419"></span><span>  </span><span class="annot"><span class="annottext">GenGeneralizedBlackScholesProcess gbs
 -&gt; (Ptr CGeneralizedBlackScholesProcess' -&gt; IO Double) -&gt; IO Double
 forall gbs b.
 GenGeneralizedBlackScholesProcess gbs
 -&gt; (Ptr CGeneralizedBlackScholesProcess' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withGeneralizedBlackScholesProcess"><span class="hs-identifier hs-var">withGeneralizedBlackScholesProcess</span></a></span><span> </span><span class="annot"><span class="annottext">GenGeneralizedBlackScholesProcess gbs
-</span><a href="#local-6989586621680012290"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CGeneralizedBlackScholesProcess' -&gt; IO Double) -&gt; IO Double)
+</span><a href="#local-6989586621680012322"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CGeneralizedBlackScholesProcess' -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr CGeneralizedBlackScholesProcess' -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012302"><span class="annot"><span class="annottext">Ptr CGeneralizedBlackScholesProcess'
-</span><a href="#local-6989586621680012302"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012334"><span class="annot"><span class="annottext">Ptr CGeneralizedBlackScholesProcess'
+</span><a href="#local-6989586621680012334"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-420"></span><span>  </span><span class="annot"><span class="annottext">[Dividend]
 -&gt; ((CUInt, Ptr (Ptr CDividend)) -&gt; IO Double) -&gt; IO Double
 forall b.
 [Dividend] -&gt; ((CUInt, Ptr (Ptr CDividend)) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withDividendArray"><span class="hs-identifier hs-var">withDividendArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Dividend]
-</span><a href="#local-6989586621680012291"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">(((CUInt, Ptr (Ptr CDividend)) -&gt; IO Double) -&gt; IO Double)
+</span><a href="#local-6989586621680012323"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">(((CUInt, Ptr (Ptr CDividend)) -&gt; IO Double) -&gt; IO Double)
 -&gt; ((CUInt, Ptr (Ptr CDividend)) -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680012304"><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680012304"><span class="hs-identifier hs-var">a4'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680012305"><span class="annot"><span class="annottext">Ptr (Ptr CDividend)
-</span><a href="#local-6989586621680012305"><span class="hs-identifier hs-var">a4'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-421"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012309"><span class="annot"><span class="annottext">a5' :: CDouble
-</span><a href="#local-6989586621680012309"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680012336"><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680012336"><span class="hs-identifier hs-var">a4'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680012337"><span class="annot"><span class="annottext">Ptr (Ptr CDividend)
+</span><a href="#local-6989586621680012337"><span class="hs-identifier hs-var">a4'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-421"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012341"><span class="annot"><span class="annottext">a5' :: CDouble
+</span><a href="#local-6989586621680012341"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012292"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-422"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012312"><span class="annot"><span class="annottext">a6' :: CUInt
-</span><a href="#local-6989586621680012312"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
+</span><a href="#local-6989586621680012324"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-422"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012344"><span class="annot"><span class="annottext">a6' :: CUInt
+</span><a href="#local-6989586621680012344"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Word -&gt; CUInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Word
-</span><a href="#local-6989586621680012293"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-423"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012316"><span class="annot"><span class="annottext">a7' :: CDouble
-</span><a href="#local-6989586621680012316"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="#local-6989586621680012325"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-423"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012348"><span class="annot"><span class="annottext">a7' :: CDouble
+</span><a href="#local-6989586621680012348"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012294"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-424"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012320"><span class="annot"><span class="annottext">a8' :: CDouble
-</span><a href="#local-6989586621680012320"><span class="hs-identifier hs-var hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="#local-6989586621680012326"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-424"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012352"><span class="annot"><span class="annottext">a8' :: CDouble
+</span><a href="#local-6989586621680012352"><span class="hs-identifier hs-var hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012295"><span class="hs-identifier hs-var">a8</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680012327"><span class="hs-identifier hs-var">a8</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-425"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double)
 -&gt; (Ptr (Ptr CChar) -&gt; IO Double) -&gt; IO Double
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012321"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012321"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012353"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680012353"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-426"></span><span>  </span><span class="annot"><span class="annottext">Ptr CVanillaOption'
 -&gt; CDouble
 -&gt; Ptr CGeneralizedBlackScholesProcess'
@@ -1470,28 +1470,28 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO CDouble
 </span><a href="QuantLib.Instrument.Option.html#qlVanillaOptionImpliedVolatility%27_"><span class="hs-identifier hs-var">qlVanillaOptionImpliedVolatility'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CVanillaOption'
-</span><a href="#local-6989586621680012297"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012301"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CGeneralizedBlackScholesProcess'
-</span><a href="#local-6989586621680012302"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680012304"><span class="hs-identifier hs-var">a4'1</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CDividend)
-</span><a href="#local-6989586621680012305"><span class="hs-identifier hs-var">a4'2</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012309"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680012312"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012316"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012320"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012321"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CDouble -&gt; (CDouble -&gt; IO Double) -&gt; IO Double
+</span><a href="#local-6989586621680012329"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012333"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CGeneralizedBlackScholesProcess'
+</span><a href="#local-6989586621680012334"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680012336"><span class="hs-identifier hs-var">a4'1</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CDividend)
+</span><a href="#local-6989586621680012337"><span class="hs-identifier hs-var">a4'2</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012341"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680012344"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012348"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012352"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680012353"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CDouble -&gt; (CDouble -&gt; IO Double) -&gt; IO Double
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012323"><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012323"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-427"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012327"><span class="annot"><span class="annottext">res' :: Double
-</span><a href="#local-6989586621680012327"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CDouble -&gt; Double
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680012355"><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680012355"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-427"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680012359"><span class="annot"><span class="annottext">res' :: Double
+</span><a href="#local-6989586621680012359"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CDouble -&gt; Double
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680012323"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
+</span><a href="#local-6989586621680012355"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
 </span><span id="line-428"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680012321"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Double -&gt; IO Double
+</span><a href="#local-6989586621680012353"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Double -&gt; IO Double
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -1499,7 +1499,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680012327"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680012359"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-430"></span><span>
 </span><span id="line-431"></span><span class="hs-pragma">{-# LINE 416 &quot;./QuantLib/Instrument/Option.chs&quot; #-}</span><span>
 </span><span id="line-416"></span><span>

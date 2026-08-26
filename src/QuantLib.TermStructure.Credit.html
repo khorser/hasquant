@@ -50,7 +50,7 @@
 </span><span id="line-45"></span><span class="hs-keyword">data</span><span> </span><span id="ProbabilityTrait"><span class="annot"><a href="QuantLib.TermStructure.Credit.html#ProbabilityTrait"><span class="hs-identifier hs-var">ProbabilityTrait</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="SurvivalProbability"><span class="annot"><a href="QuantLib.TermStructure.Credit.html#SurvivalProbability"><span class="hs-identifier hs-var">SurvivalProbability</span></a></span></span><span>
 </span><span id="line-46"></span><span>                      </span><span class="hs-glyph">|</span><span> </span><span id="HazardRate"><span class="annot"><a href="QuantLib.TermStructure.Credit.html#HazardRate"><span class="hs-identifier hs-var">HazardRate</span></a></span></span><span>
 </span><span id="line-47"></span><span>                      </span><span class="hs-glyph">|</span><span> </span><span id="DefaultDensity"><span class="annot"><a href="QuantLib.TermStructure.Credit.html#DefaultDensity"><span class="hs-identifier hs-var">DefaultDensity</span></a></span></span><span>
-</span><span id="line-48"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680011110"><span id="local-6989586621680011112"><span id="local-6989586621680011116"><span class="annot"><span class="annottext">Int -&gt; ProbabilityTrait -&gt; ShowS
+</span><span id="line-48"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680011142"><span id="local-6989586621680011144"><span id="local-6989586621680011148"><span class="annot"><span class="annottext">Int -&gt; ProbabilityTrait -&gt; ShowS
 [ProbabilityTrait] -&gt; ShowS
 ProbabilityTrait -&gt; String
 (Int -&gt; ProbabilityTrait -&gt; ShowS)
@@ -65,7 +65,7 @@ $cshow :: ProbabilityTrait -&gt; String
 show :: ProbabilityTrait -&gt; String
 $cshowList :: [ProbabilityTrait] -&gt; ShowS
 showList :: [ProbabilityTrait] -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span id="local-6989586621680011121"><span id="local-6989586621680011126"><span class="annot"><span class="annottext">ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span id="local-6989586621680011153"><span id="local-6989586621680011158"><span class="annot"><span class="annottext">ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool
 (ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool)
 -&gt; (ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool)
 -&gt; Eq ProbabilityTrait
@@ -75,21 +75,21 @@ $c== :: ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool
 $c/= :: ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool
 /= :: ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
-</span><span id="line-49"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680011136"><span id="local-6989586621680011141"><span class="annot"><span class="hs-identifier hs-type">Enum</span></span><span> </span><span class="annot"><a href="QuantLib.TermStructure.Credit.html#ProbabilityTrait"><span class="hs-identifier hs-type">ProbabilityTrait</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span id="local-6989586621680011144"></span><span id="local-6989586621680011144"></span><span id="local-6989586621680011144"></span><span>
+</span><span id="line-49"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680011168"><span id="local-6989586621680011173"><span class="annot"><span class="hs-identifier hs-type">Enum</span></span><span> </span><span class="annot"><a href="QuantLib.TermStructure.Credit.html#ProbabilityTrait"><span class="hs-identifier hs-type">ProbabilityTrait</span></a></span></span></span><span> </span><span class="hs-keyword">where</span><span id="local-6989586621680011176"></span><span id="local-6989586621680011176"></span><span id="local-6989586621680011176"></span><span>
 </span><span id="line-50"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">SurvivalProbability</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">HazardRate</span><span>
 </span><span id="line-51"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">HazardRate</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">DefaultDensity</span><span>
-</span><span id="line-52"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">DefaultDensity</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">error</span><span> </span><span class="hs-string">&quot;ProbabilityTrait.succ: DefaultDensity has no successor&quot;</span><span id="local-6989586621680010971"></span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">DefaultDensity</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">error</span><span> </span><span class="hs-string">&quot;ProbabilityTrait.succ: DefaultDensity has no successor&quot;</span><span id="local-6989586621680011003"></span><span>
 </span><span id="line-53"></span><span>
 </span><span id="line-54"></span><span>  </span><span class="hs-identifier">pred</span><span> </span><span class="hs-identifier">HazardRate</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">SurvivalProbability</span><span>
 </span><span id="line-55"></span><span>  </span><span class="hs-identifier">pred</span><span> </span><span class="hs-identifier">DefaultDensity</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">HazardRate</span><span>
 </span><span id="line-56"></span><span>  </span><span class="hs-identifier">pred</span><span> </span><span class="hs-identifier">SurvivalProbability</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">error</span><span> </span><span class="hs-string">&quot;ProbabilityTrait.pred: SurvivalProbability has no predecessor&quot;</span><span>
 </span><span id="line-57"></span><span>
-</span><span id="line-58"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var hs-var">enumFromTo</span></span><span> </span><span id="local-6989586621680011177"><span class="annot"><a href="#local-6989586621680011177"><span class="hs-identifier hs-var">from</span></a></span></span><span> </span><span id="local-6989586621680011178"><span class="annot"><a href="#local-6989586621680011178"><span class="hs-identifier hs-var">to</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="#local-6989586621680011179"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680011177"><span class="hs-identifier hs-type">from</span></a></span><span id="local-6989586621680011180"></span><span>
+</span><span id="line-58"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var hs-var">enumFromTo</span></span><span> </span><span id="local-6989586621680011209"><span class="annot"><a href="#local-6989586621680011209"><span class="hs-identifier hs-var">from</span></a></span></span><span> </span><span id="local-6989586621680011210"><span class="annot"><a href="#local-6989586621680011210"><span class="hs-identifier hs-var">to</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="#local-6989586621680011211"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680011209"><span class="hs-identifier hs-type">from</span></a></span><span id="local-6989586621680011212"></span><span>
 </span><span id="line-59"></span><span>    </span><span class="hs-keyword">where</span><span>
-</span><span id="line-60"></span><span>      </span><span id="local-6989586621680011181"><span class="annot"><a href="#local-6989586621680011181"><span class="hs-identifier hs-var hs-var">end</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">fromEnum</span></span><span> </span><span class="annot"><a href="#local-6989586621680011178"><span class="hs-identifier hs-type">to</span></a></span><span>
-</span><span id="line-61"></span><span>      </span><span id="local-6989586621680011179"><span class="annot"><a href="#local-6989586621680011179"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span id="local-6989586621680011183"><span class="annot"><a href="#local-6989586621680011183"><span class="hs-identifier hs-var">v</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="hs-identifier hs-type">compare</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">fromEnum</span></span><span> </span><span class="annot"><a href="#local-6989586621680011183"><span class="hs-identifier hs-type">v</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><a href="#local-6989586621680011181"><span class="hs-identifier hs-type">end</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-62"></span><span>                 </span><span class="annot"><span class="hs-identifier hs-type">LT</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680011183"><span class="hs-identifier hs-type">v</span></a></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span class="annot"><a href="#local-6989586621680011179"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">succ</span></span><span> </span><span class="annot"><a href="#local-6989586621680011183"><span class="hs-identifier hs-type">v</span></a></span><span class="hs-special">)</span><span>
-</span><span id="line-63"></span><span>                 </span><span class="annot"><span class="hs-identifier hs-type">EQ</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="#local-6989586621680011183"><span class="hs-identifier hs-type">v</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-60"></span><span>      </span><span id="local-6989586621680011213"><span class="annot"><a href="#local-6989586621680011213"><span class="hs-identifier hs-var hs-var">end</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">fromEnum</span></span><span> </span><span class="annot"><a href="#local-6989586621680011210"><span class="hs-identifier hs-type">to</span></a></span><span>
+</span><span id="line-61"></span><span>      </span><span id="local-6989586621680011211"><span class="annot"><a href="#local-6989586621680011211"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span id="local-6989586621680011215"><span class="annot"><a href="#local-6989586621680011215"><span class="hs-identifier hs-var">v</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="hs-identifier hs-type">compare</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">fromEnum</span></span><span> </span><span class="annot"><a href="#local-6989586621680011215"><span class="hs-identifier hs-type">v</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><a href="#local-6989586621680011213"><span class="hs-identifier hs-type">end</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-62"></span><span>                 </span><span class="annot"><span class="hs-identifier hs-type">LT</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680011215"><span class="hs-identifier hs-type">v</span></a></span><span> </span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span> </span><span class="annot"><a href="#local-6989586621680011211"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">succ</span></span><span> </span><span class="annot"><a href="#local-6989586621680011215"><span class="hs-identifier hs-type">v</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-63"></span><span>                 </span><span class="annot"><span class="hs-identifier hs-type">EQ</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="#local-6989586621680011215"><span class="hs-identifier hs-type">v</span></a></span><span class="hs-special">]</span><span>
 </span><span id="line-64"></span><span>                 </span><span class="annot"><span class="hs-identifier hs-type">GT</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
 </span><span id="line-65"></span><span>
 </span><span id="line-66"></span><span>  </span><span class="hs-identifier">enumFrom</span><span> </span><span class="hs-identifier">from</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">enumFromTo</span><span> </span><span class="hs-identifier">from</span><span> </span><span class="hs-identifier">DefaultDensity</span><span>
@@ -101,7 +101,7 @@ $c/= :: ProbabilityTrait -&gt; ProbabilityTrait -&gt; Bool
 </span><span id="line-72"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var hs-var">toEnum</span></span><span> </span><span class="annot"><span class="hs-number">0</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="QuantLib.TermStructure.Credit.html#SurvivalProbability"><span class="hs-identifier hs-type">SurvivalProbability</span></a></span><span>
 </span><span id="line-73"></span><span>  </span><span class="hs-identifier">toEnum</span><span> </span><span class="hs-number">1</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">HazardRate</span><span>
 </span><span id="line-74"></span><span>  </span><span class="hs-identifier">toEnum</span><span> </span><span class="hs-number">2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">DefaultDensity</span><span>
-</span><span id="line-75"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">toEnum</span></span><span> </span><span id="local-6989586621680011187"><span class="annot"><a href="#local-6989586621680011187"><span class="hs-identifier hs-var">unmatched</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">error</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;ProbabilityTrait.toEnum: Cannot match &quot;</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">++</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">show</span></span><span> </span><span class="annot"><a href="#local-6989586621680011187"><span class="hs-identifier hs-type">unmatched</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-75"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">toEnum</span></span><span> </span><span id="local-6989586621680011219"><span class="annot"><a href="#local-6989586621680011219"><span class="hs-identifier hs-var">unmatched</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="hs-identifier hs-type">error</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-string">&quot;ProbabilityTrait.toEnum: Cannot match &quot;</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">++</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">show</span></span><span> </span><span class="annot"><a href="#local-6989586621680011219"><span class="hs-identifier hs-type">unmatched</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-76"></span><span>
 </span><span id="line-77"></span><span class="hs-pragma">{-# LINE 39 &quot;./QuantLib/TermStructure/Credit.chs&quot; #-}</span><span>
 </span><span id="line-39"></span><span>
@@ -378,76 +378,76 @@ GenQuote q
 -&gt; Bool
 -&gt; PricingModel
 -&gt; IO DefaultProbabilityHelper
-</span><a href="QuantLib.TermStructure.Credit.html#spreadCdsHelper"><span class="hs-identifier hs-var hs-var">spreadCdsHelper</span></a></span></span><span> </span><span id="local-6989586621680011261"><span class="annot"><span class="annottext">GenQuote q
-</span><a href="#local-6989586621680011261"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680011262"><span class="annot"><span class="annottext">(Word, TimeUnit)
-</span><a href="#local-6989586621680011262"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680011263"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680011263"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680011264"><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680011264"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680011265"><span class="annot"><span class="annottext">Frequency
-</span><a href="#local-6989586621680011265"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680011266"><span class="annot"><span class="annottext">BusinessDayConvention
-</span><a href="#local-6989586621680011266"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680011267"><span class="annot"><span class="annottext">DateGenerationRule
-</span><a href="#local-6989586621680011267"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680011268"><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680011268"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span id="local-6989586621680011269"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680011269"><span class="hs-identifier hs-var">a9</span></a></span></span><span> </span><span id="local-6989586621680011270"><span class="annot"><span class="annottext">GenYieldTermStructure y
-</span><a href="#local-6989586621680011270"><span class="hs-identifier hs-var">a10</span></a></span></span><span> </span><span id="local-6989586621680011271"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680011271"><span class="hs-identifier hs-var">a11</span></a></span></span><span> </span><span id="local-6989586621680011272"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680011272"><span class="hs-identifier hs-var">a12</span></a></span></span><span> </span><span id="local-6989586621680011273"><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680011273"><span class="hs-identifier hs-var">a13</span></a></span></span><span> </span><span id="local-6989586621680011274"><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680011274"><span class="hs-identifier hs-var">a14</span></a></span></span><span> </span><span id="local-6989586621680011275"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680011275"><span class="hs-identifier hs-var">a15</span></a></span></span><span> </span><span id="local-6989586621680011276"><span class="annot"><span class="annottext">PricingModel
-</span><a href="#local-6989586621680011276"><span class="hs-identifier hs-var">a16</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.TermStructure.Credit.html#spreadCdsHelper"><span class="hs-identifier hs-var hs-var">spreadCdsHelper</span></a></span></span><span> </span><span id="local-6989586621680011293"><span class="annot"><span class="annottext">GenQuote q
+</span><a href="#local-6989586621680011293"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680011294"><span class="annot"><span class="annottext">(Word, TimeUnit)
+</span><a href="#local-6989586621680011294"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680011295"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680011295"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680011296"><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680011296"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680011297"><span class="annot"><span class="annottext">Frequency
+</span><a href="#local-6989586621680011297"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680011298"><span class="annot"><span class="annottext">BusinessDayConvention
+</span><a href="#local-6989586621680011298"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680011299"><span class="annot"><span class="annottext">DateGenerationRule
+</span><a href="#local-6989586621680011299"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680011300"><span class="annot"><span class="annottext">DayCounter
+</span><a href="#local-6989586621680011300"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span id="local-6989586621680011301"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680011301"><span class="hs-identifier hs-var">a9</span></a></span></span><span> </span><span id="local-6989586621680011302"><span class="annot"><span class="annottext">GenYieldTermStructure y
+</span><a href="#local-6989586621680011302"><span class="hs-identifier hs-var">a10</span></a></span></span><span> </span><span id="local-6989586621680011303"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680011303"><span class="hs-identifier hs-var">a11</span></a></span></span><span> </span><span id="local-6989586621680011304"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680011304"><span class="hs-identifier hs-var">a12</span></a></span></span><span> </span><span id="local-6989586621680011305"><span class="annot"><span class="annottext">Maybe Day
+</span><a href="#local-6989586621680011305"><span class="hs-identifier hs-var">a13</span></a></span></span><span> </span><span id="local-6989586621680011306"><span class="annot"><span class="annottext">DayCounter
+</span><a href="#local-6989586621680011306"><span class="hs-identifier hs-var">a14</span></a></span></span><span> </span><span id="local-6989586621680011307"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680011307"><span class="hs-identifier hs-var">a15</span></a></span></span><span> </span><span id="local-6989586621680011308"><span class="annot"><span class="annottext">PricingModel
+</span><a href="#local-6989586621680011308"><span class="hs-identifier hs-var">a16</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-115"></span><span>  </span><span class="annot"><span class="annottext">GenQuote q
 -&gt; (Ptr CQuote' -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall q b. GenQuote q -&gt; (Ptr CQuote' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withQuote"><span class="hs-identifier hs-var">withQuote</span></a></span><span> </span><span class="annot"><span class="annottext">GenQuote q
-</span><a href="#local-6989586621680011261"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuote' -&gt; IO DefaultProbabilityHelper)
+</span><a href="#local-6989586621680011293"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuote' -&gt; IO DefaultProbabilityHelper)
  -&gt; IO DefaultProbabilityHelper)
 -&gt; (Ptr CQuote' -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011277"><span class="annot"><span class="annottext">Ptr CQuote'
-</span><a href="#local-6989586621680011277"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-116"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-special">(</span><span id="local-6989586621680011292"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011292"><span class="hs-identifier hs-var">a2'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680011293"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011293"><span class="hs-identifier hs-var">a2'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word, TimeUnit) -&gt; (CInt, CInt)
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011309"><span class="annot"><span class="annottext">Ptr CQuote'
+</span><a href="#local-6989586621680011309"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-116"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-special">(</span><span id="local-6989586621680011324"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011324"><span class="hs-identifier hs-var">a2'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680011325"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011325"><span class="hs-identifier hs-var">a2'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word, TimeUnit) -&gt; (CInt, CInt)
 forall a b c.
 (Enum a, Integral b, Integral c) =&gt;
 (b, a) -&gt; (CInt, c)
 </span><a href="QuantLib.Internal.html#fromEnumQuantity"><span class="hs-identifier hs-var">fromEnumQuantity</span></a></span><span> </span><span class="annot"><span class="annottext">(Word, TimeUnit)
-</span><a href="#local-6989586621680011262"><span class="hs-identifier hs-var">a2</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680011295"><span id="local-6989586621680011296"></span></span><span> </span><span>
-</span><span id="line-117"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011300"><span class="annot"><span class="annottext">a3' :: CInt
-</span><a href="#local-6989586621680011300"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><a href="#local-6989586621680011294"><span class="hs-identifier hs-var">a2</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680011327"><span id="local-6989586621680011328"></span></span><span> </span><span>
+</span><span id="line-117"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011332"><span class="annot"><span class="annottext">a3' :: CInt
+</span><a href="#local-6989586621680011332"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680011263"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680011295"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-118"></span><span>  </span><span class="annot"><span class="annottext">Calendar
 -&gt; (Ptr CCalendar -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall b. Calendar -&gt; (Ptr CCalendar -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCalendar"><span class="hs-identifier hs-var">withCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680011264"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO DefaultProbabilityHelper)
+</span><a href="#local-6989586621680011296"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO DefaultProbabilityHelper)
  -&gt; IO DefaultProbabilityHelper)
 -&gt; (Ptr CCalendar -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011301"><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680011301"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-119"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011306"><span class="annot"><span class="annottext">a5' :: CInt
-</span><a href="#local-6989586621680011306"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011333"><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680011333"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-119"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011338"><span class="annot"><span class="annottext">a5' :: CInt
+</span><a href="#local-6989586621680011338"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">(Int -&gt; CInt) -&gt; (Frequency -&gt; Int) -&gt; Frequency -&gt; CInt
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Frequency -&gt; Int
 forall a. Enum a =&gt; a -&gt; Int
 </span><span class="hs-identifier hs-var">fromEnum</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Frequency
-</span><a href="#local-6989586621680011265"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-120"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011316"><span class="annot"><span class="annottext">a6' :: CInt
-</span><a href="#local-6989586621680011316"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention -&gt; CInt
+</span><a href="#local-6989586621680011297"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-120"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011348"><span class="annot"><span class="annottext">a6' :: CInt
+</span><a href="#local-6989586621680011348"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention -&gt; CInt
 forall a b. (Enum a, Integral b) =&gt; a -&gt; b
 </span><a href="QuantLib.Internal.html#fromEnumC"><span class="hs-identifier hs-var">fromEnumC</span></a></span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention
-</span><a href="#local-6989586621680011266"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-121"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011322"><span class="annot"><span class="annottext">a7' :: CInt
-</span><a href="#local-6989586621680011322"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><a href="#local-6989586621680011298"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-121"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011354"><span class="annot"><span class="annottext">a7' :: CInt
+</span><a href="#local-6989586621680011354"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">(Int -&gt; CInt)
 -&gt; (DateGenerationRule -&gt; Int) -&gt; DateGenerationRule -&gt; CInt
@@ -455,24 +455,24 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">DateGenerationRule -&gt; Int
 forall a. Enum a =&gt; a -&gt; Int
 </span><span class="hs-identifier hs-var">fromEnum</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">DateGenerationRule
-</span><a href="#local-6989586621680011267"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680011299"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-122"></span><span>  </span><span class="annot"><span class="annottext">DayCounter
 -&gt; (Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall b. DayCounter -&gt; (Ptr CDayCounter -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withDayCounter"><span class="hs-identifier hs-var">withDayCounter</span></a></span><span> </span><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680011268"><span class="hs-identifier hs-var">a8</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
+</span><a href="#local-6989586621680011300"><span class="hs-identifier hs-var">a8</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
  -&gt; IO DefaultProbabilityHelper)
 -&gt; (Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011323"><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680011323"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-123"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011327"><span class="annot"><span class="annottext">a9' :: CDouble
-</span><a href="#local-6989586621680011327"><span class="hs-identifier hs-var hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011355"><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680011355"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-123"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011359"><span class="annot"><span class="annottext">a9' :: CDouble
+</span><a href="#local-6989586621680011359"><span class="hs-identifier hs-var hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680011269"><span class="hs-identifier hs-var">a9</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680011301"><span class="hs-identifier hs-var">a9</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-124"></span><span>  </span><span class="annot"><span class="annottext">GenYieldTermStructure y
 -&gt; (Ptr CYieldTermStructure' -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
@@ -480,61 +480,61 @@ forall y b.
 GenYieldTermStructure y
 -&gt; (Ptr CYieldTermStructure' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withYieldTermStructure"><span class="hs-identifier hs-var">withYieldTermStructure</span></a></span><span> </span><span class="annot"><span class="annottext">GenYieldTermStructure y
-</span><a href="#local-6989586621680011270"><span class="hs-identifier hs-var">a10</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO DefaultProbabilityHelper)
+</span><a href="#local-6989586621680011302"><span class="hs-identifier hs-var">a10</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO DefaultProbabilityHelper)
  -&gt; IO DefaultProbabilityHelper)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011329"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621680011329"><span class="hs-identifier hs-var">a10'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-125"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011331"><span class="annot"><span class="annottext">a11' :: CInt
-</span><a href="#local-6989586621680011331"><span class="hs-identifier hs-var hs-var">a11'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011361"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680011361"><span class="hs-identifier hs-var">a10'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-125"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011363"><span class="annot"><span class="annottext">a11' :: CInt
+</span><a href="#local-6989586621680011363"><span class="hs-identifier hs-var hs-var">a11'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680011271"><span class="hs-identifier hs-var">a11</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-126"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011333"><span class="annot"><span class="annottext">a12' :: CInt
-</span><a href="#local-6989586621680011333"><span class="hs-identifier hs-var hs-var">a12'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><a href="#local-6989586621680011303"><span class="hs-identifier hs-var">a11</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-126"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011365"><span class="annot"><span class="annottext">a12' :: CInt
+</span><a href="#local-6989586621680011365"><span class="hs-identifier hs-var hs-var">a12'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680011272"><span class="hs-identifier hs-var">a12</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680011304"><span class="hs-identifier hs-var">a12</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-127"></span><span>  </span><span class="annot"><span class="annottext">Maybe Day
 -&gt; (CInt -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a. Maybe Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withMaybeDay"><span class="hs-identifier hs-var">withMaybeDay</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680011273"><span class="hs-identifier hs-var">a13</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO DefaultProbabilityHelper)
+</span><a href="#local-6989586621680011305"><span class="hs-identifier hs-var">a13</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO DefaultProbabilityHelper)
  -&gt; IO DefaultProbabilityHelper)
 -&gt; (CInt -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011335"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011335"><span class="hs-identifier hs-var">a13'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011367"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011367"><span class="hs-identifier hs-var">a13'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-128"></span><span>  </span><span class="annot"><span class="annottext">DayCounter
 -&gt; (Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall b. DayCounter -&gt; (Ptr CDayCounter -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withDayCounter"><span class="hs-identifier hs-var">withDayCounter</span></a></span><span> </span><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680011274"><span class="hs-identifier hs-var">a14</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
+</span><a href="#local-6989586621680011306"><span class="hs-identifier hs-var">a14</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
  -&gt; IO DefaultProbabilityHelper)
 -&gt; (Ptr CDayCounter -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011336"><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680011336"><span class="hs-identifier hs-var">a14'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-129"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011338"><span class="annot"><span class="annottext">a15' :: CInt
-</span><a href="#local-6989586621680011338"><span class="hs-identifier hs-var hs-var">a15'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011368"><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680011368"><span class="hs-identifier hs-var">a14'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-129"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011370"><span class="annot"><span class="annottext">a15' :: CInt
+</span><a href="#local-6989586621680011370"><span class="hs-identifier hs-var hs-var">a15'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680011275"><span class="hs-identifier hs-var">a15</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-130"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011343"><span class="annot"><span class="annottext">a16' :: CInt
-</span><a href="#local-6989586621680011343"><span class="hs-identifier hs-var hs-var">a16'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><a href="#local-6989586621680011307"><span class="hs-identifier hs-var">a15</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-130"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680011375"><span class="annot"><span class="annottext">a16' :: CInt
+</span><a href="#local-6989586621680011375"><span class="hs-identifier hs-var hs-var">a16'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">(Int -&gt; CInt) -&gt; (PricingModel -&gt; Int) -&gt; PricingModel -&gt; CInt
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">PricingModel -&gt; Int
 forall a. Enum a =&gt; a -&gt; Int
 </span><span class="hs-identifier hs-var">fromEnum</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">PricingModel
-</span><a href="#local-6989586621680011276"><span class="hs-identifier hs-var">a16</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680011308"><span class="hs-identifier hs-var">a16</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-131"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
@@ -543,8 +543,8 @@ forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 -&gt; (Ptr (Ptr CChar) -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011344"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680011344"><span class="hs-identifier hs-var">a17'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011376"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680011376"><span class="hs-identifier hs-var">a17'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-132"></span><span>  </span><span class="annot"><span class="annottext">Ptr CQuote'
 -&gt; CInt
 -&gt; CInt
@@ -565,42 +565,42 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CDefaultProbabilityHelper)
 </span><a href="QuantLib.TermStructure.Credit.html#spreadCdsHelper%27_"><span class="hs-identifier hs-var">spreadCdsHelper'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQuote'
-</span><a href="#local-6989586621680011277"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011292"><span class="hs-identifier hs-var">a2'1</span></a></span><span>  </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011293"><span class="hs-identifier hs-var">a2'2</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011300"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680011301"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011306"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011316"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011322"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680011323"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680011327"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621680011329"><span class="hs-identifier hs-var">a10'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011331"><span class="hs-identifier hs-var">a11'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011333"><span class="hs-identifier hs-var">a12'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011335"><span class="hs-identifier hs-var">a13'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680011336"><span class="hs-identifier hs-var">a14'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011338"><span class="hs-identifier hs-var">a15'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680011343"><span class="hs-identifier hs-var">a16'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680011344"><span class="hs-identifier hs-var">a17'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CDefaultProbabilityHelper)
+</span><a href="#local-6989586621680011309"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011324"><span class="hs-identifier hs-var">a2'1</span></a></span><span>  </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011325"><span class="hs-identifier hs-var">a2'2</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011332"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680011333"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011338"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011348"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011354"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680011355"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680011359"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680011361"><span class="hs-identifier hs-var">a10'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011363"><span class="hs-identifier hs-var">a11'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011365"><span class="hs-identifier hs-var">a12'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011367"><span class="hs-identifier hs-var">a13'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680011368"><span class="hs-identifier hs-var">a14'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011370"><span class="hs-identifier hs-var">a15'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680011375"><span class="hs-identifier hs-var">a16'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680011376"><span class="hs-identifier hs-var">a17'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CDefaultProbabilityHelper)
 -&gt; (Ptr CDefaultProbabilityHelper -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011346"><span class="annot"><span class="annottext">Ptr CDefaultProbabilityHelper
-</span><a href="#local-6989586621680011346"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680011347"></span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011378"><span class="annot"><span class="annottext">Ptr CDefaultProbabilityHelper
+</span><a href="#local-6989586621680011378"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680011379"></span><span>
 </span><span id="line-133"></span><span>  </span><span class="annot"><span class="annottext">Ptr CDefaultProbabilityHelper -&gt; IO DefaultProbabilityHelper
 </span><a href="QuantLib.Internal.Type.html#peekDefaultProbabilityHelper"><span class="hs-identifier hs-var">peekDefaultProbabilityHelper</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDefaultProbabilityHelper
-</span><a href="#local-6989586621680011346"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO DefaultProbabilityHelper
+</span><a href="#local-6989586621680011378"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO DefaultProbabilityHelper
 -&gt; (DefaultProbabilityHelper -&gt; IO DefaultProbabilityHelper)
 -&gt; IO DefaultProbabilityHelper
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011349"><span class="annot"><span class="annottext">DefaultProbabilityHelper
-</span><a href="#local-6989586621680011349"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680011381"><span class="annot"><span class="annottext">DefaultProbabilityHelper
+</span><a href="#local-6989586621680011381"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-134"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680011344"><span class="hs-identifier hs-var">a17'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO DefaultProbabilityHelper -&gt; IO DefaultProbabilityHelper
+</span><a href="#local-6989586621680011376"><span class="hs-identifier hs-var">a17'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO DefaultProbabilityHelper -&gt; IO DefaultProbabilityHelper
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -608,7 +608,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">DefaultProbabilityHelper
-</span><a href="#local-6989586621680011349"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680011381"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-136"></span><span>
 </span><span id="line-137"></span><span class="hs-pragma">{-# LINE 114 &quot;./QuantLib/TermStructure/Credit.chs&quot; #-}</span><span>
 </span><span id="line-114"></span><span>
