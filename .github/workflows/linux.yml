@@ -161,13 +161,13 @@ jobs:
           # this disposable single-use container (not shared multi-user state).
           case "${{ matrix.ghc_version }}" in
             8.10.6)
-              cmd='stack --allow-different-user build --resolver lts-18.8 --flag hasquant:buildExample --no-haddock && stack --allow-different-user --resolver lts-18.8 test'
+              cmd='stack --allow-different-user build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --allow-different-user --resolver lts-18.8 test'
               ;;
             9.10.3)
               cmd='stack --allow-different-user build --test --no-haddock'
               ;;
             9.12.*|9.14.*)
-              cmd='cabal update && cabal build all --enable-tests -fbuildExample && cabal test all'
+              cmd='cabal update && cabal build all --enable-tests -f buildExample -f buildSofrXva && cabal test all'
               ;;
             *)
               echo "No test command configured for GHC ${{ matrix.ghc_version }}" >&2
