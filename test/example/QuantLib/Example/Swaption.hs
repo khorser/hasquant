@@ -29,9 +29,9 @@ newtype Result = Result
 
 run :: IO Result
 run = do
-  let today = 13 `march` 2002
+  let valueDate = 13 `march` 2002
       settlementDate = 15 `march` 2002
-  setEvaluationDate (Just today)
+  setEvaluationDate (Just valueDate)
 
   act365 <- dayCounter Actual365FixedStandard
   flatQuote <- simpleQuote 0.05
@@ -43,12 +43,12 @@ run = do
 
   exerciseDate <- advance cal settlementDate (5, Years) Following False
   startDate <- advance cal exerciseDate (2, Days) Following False
-  let maturityDate = addGregorianYearsClip 10 startDate
+  let endDate = addGregorianYearsClip 10 startDate
 
   fixedDC <- dayCounter Thirty360BondBasis
-  fixedSchedule <- schedule (Just startDate) maturityDate (1, Years) cal
+  fixedSchedule <- schedule (Just startDate) endDate (1, Years) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
-  floatSchedule <- schedule (Just startDate) maturityDate (6, Months) cal
+  floatSchedule <- schedule (Just startDate) endDate (6, Months) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
   swp <- vanillaSwap Payer 1.0 fixedSchedule 0.06 fixedDC floatSchedule

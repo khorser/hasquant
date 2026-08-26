@@ -28,19 +28,19 @@ data Result = Result
 
 run :: IO Result
 run = do
-  let today = 5 `february` 2009
-  setEvaluationDate (Just today)
+  let valueDate = 5 `february` 2009
+  setEvaluationDate (Just valueDate)
 
   cal <- calendar TARGET
-  settlementDate <- advance cal today (2, Days) Following False
-  let maturityDate = addGregorianYearsClip 1 settlementDate
+  settlementDate <- advance cal valueDate (2, Days) Following False
+  let endDate = addGregorianYearsClip 1 settlementDate
 
   act360 <- dayCounter (Actual360 False)
   flatQuote <- simpleQuote 0.05
   estrTS <- TS.flatForward settlementDate flatQuote act360 Continuous Annual
   estrIndex <- IR.overnightIborIndex IR.Estr (Just estrTS)
 
-  sched <- schedule (Just settlementDate) maturityDate (1, Years) cal
+  sched <- schedule (Just settlementDate) endDate (1, Years) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
   let fixedRate = exp 0.05 - 1
