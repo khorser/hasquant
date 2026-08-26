@@ -156,10 +156,10 @@ executables:
       - app
     dependencies:
       - hasquant
-      - containers
-      - directory
-      - filepath
-      - process
+      - containers >= 0.6.5.1 && < 0.9
+      - directory >= 1.3.6.0 && < 1.4
+      - filepath >= 1.4.2.1 && < 1.5
+      - process >= 1.6.13.2 && < 1.7
     when:
       - condition: flag(buildSofrXva)
         then:
