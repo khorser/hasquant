@@ -63,7 +63,11 @@ jobs:
       - name: Build coverage report
         run: |
           set -euo pipefail
-          chmod -R 777 "$PWD"
+          # sudo: the prior Haddock step already left dist-newstyle owned by
+          # the image's baked-in dev uid (created inside that docker run), not
+          # the runner's uid, so a plain chmod here fails with "Operation not
+          # permitted" on those paths.
+          sudo chmod -R 777 "$PWD"
           docker run --rm \
             -v "$PWD":/hasquant \
             -w /hasquant \
