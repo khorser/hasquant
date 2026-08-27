@@ -40,7 +40,7 @@ Out of scope, deliberately:
 
 Bindings aren't just compiled and eyeballed. Where QuantLib's own `test-suite/*.cpp` covers a class or scenario, the corresponding hasquant test reuses its inputs and cached expected values directly, rather than deriving numbers by hand or relying on self-consistency alone. Enum-dispatched cases (currencies, calendars, day counters, index variants) get a standalone `test/smoke/` check that constructs the cases and asserts on the output — this is what caught a real bug where two enum cases silently aliased to the wrong upstream values despite a clean build and a passing test suite.
 
-Coverage is tracked rather than claimed: `tools/ql-methods-1.43.txt` is a line-by-line dump of every constructor and non-trivial method in QuantLib's headers, and each new binding flips its line as it lands.
+Coverage is tracked rather than claimed: `tools/ql-methods-1.43.txt` is a line-by-line dump of every constructor and non-trivial method in QuantLib's headers, and each new binding flips its line as it lands. An HPC coverage report for the test suite against `master` is published at https://khorser.github.io/hasquant/coverage/hpc_index.html
 
 # Building
 

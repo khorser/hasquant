@@ -1,8 +1,9 @@
 name: Docs
 
-# Builds Haddock API docs (GHC 9.10.3 / QuantLib 1.43, matching stack.yaml's
-# lts-24.53 resolver) inside the existing hasquant-ci image from linux.yml, and
-# publishes them to the gh-pages branch root, replacing its previous contents.
+# Builds Haddock API docs and an HPC coverage report (GHC 9.10.3 / QuantLib
+# 1.43, matching stack.yaml's lts-24.53 resolver) inside the existing
+# hasquant-ci image from linux.yml, and publishes them to the gh-pages branch
+# root (docs) and gh-pages/coverage (HPC report), replacing previous contents.
 
 on:
   push:
@@ -59,6 +60,17 @@ jobs:
             "${{ steps.tag.outputs.tag }}" \
             sh -c "cabal update && cabal v2-haddock --enable-doc --haddock-hyperlink-source all"
 
+      - name: Build coverage report
+        run: |
+          set -euo pipefail
+          chmod -R 777 "$PWD"
+          docker run --rm \
+            -v "$PWD":/hasquant \
+            -w /hasquant \
+            -e STACK_ALLOW_DIFFERENT_USER=true \
+            "${{ steps.tag.outputs.tag }}" \
+            sh -c "stack --allow-different-user update && python3 tools/hpc-coverage.py"
+
       - name: Stage docs
         run: |
           set -euo pipefail
@@ -70,6 +82,17 @@ jobs:
           mkdir -p staged-docs
           cp -r "$docdir"/. staged-docs/
 
+          # per-component report; the hpc/combined/all one's totals don't
+          # reconcile with the sum of its own per-module rows (see the
+          # run-hasquant skill's Coverage section), so don't publish that one.
+          covdir=$(find .stack-work -type d -path '*/hpc/hasquant/hasquant_test' | head -1)
+          if [ -z "$covdir" ]; then
+            echo "Could not find generated HPC coverage report under .stack-work" >&2
+            exit 1
+          fi
+          mkdir -p staged-docs/coverage
+          cp -r "$covdir"/. staged-docs/coverage/
+
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -77,4 +100,4 @@ jobs:
           publish_dir: staged-docs
           publish_branch: gh-pages
           keep_files: false
-          commit_message: "Rebuild haddock docs (CI)"
+          commit_message: "Rebuild haddock docs and coverage report (CI)"
