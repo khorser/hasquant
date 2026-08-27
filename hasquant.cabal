@@ -147,6 +147,7 @@ library
 executable hasquant_example
   main-is: QuantLib/MainExample.hs
   other-modules:
+      QuantLib.Example.AmericanLSM
       QuantLib.Example.AsianOption
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
@@ -243,6 +244,7 @@ test-suite hasquant_test
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity
       QuantLib.Spec.TermStructure.InflationVolatility
+      QuantLib.Example.AmericanLSM
       QuantLib.Example.AsianOption
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond

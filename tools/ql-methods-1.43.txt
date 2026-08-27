@@ -4501,7 +4501,7 @@
 | |ql/math/fastfouriertransform.hpp|static std::size_t FastFourierTransform::min_order(std::size_t inputSize);
 | |ql/math/fastfouriertransform.hpp|FastFourierTransform::FastFourierTransform(std::size_t order);
 | |ql/math/fastfouriertransform.hpp|std::size_t FastFourierTransform::output_size() const;
-| |ql/math/generallinearleastsquares.hpp|const Array & GeneralLinearLeastSquares::coefficients() const;
+|u|ql/math/generallinearleastsquares.hpp|const Array & GeneralLinearLeastSquares::coefficients() const;
 | |ql/math/generallinearleastsquares.hpp|const Array & GeneralLinearLeastSquares::residuals() const;
 | |ql/math/generallinearleastsquares.hpp|const Array & GeneralLinearLeastSquares::standardErrors() const;
 | |ql/math/generallinearleastsquares.hpp|const Array & GeneralLinearLeastSquares::error() const;
@@ -6191,7 +6191,7 @@
 | |ql/methods/montecarlo/longstaffschwartzpathpricer.hpp|Real operator()(const PathType & path) const;
 | |ql/methods/montecarlo/longstaffschwartzpathpricer.hpp|void calibrate();
 | |ql/methods/montecarlo/longstaffschwartzpathpricer.hpp|Real exerciseProbability() const;
-| |ql/methods/montecarlo/lsmbasissystem.hpp|static std::vector<std::function<Real (Real)>> LsmBasisSystem::pathBasisSystem(Size order, PolynomialType type);
+|u|ql/methods/montecarlo/lsmbasissystem.hpp|static std::vector<std::function<Real (Real)>> LsmBasisSystem::pathBasisSystem(Size order, PolynomialType type);
 | |ql/methods/montecarlo/lsmbasissystem.hpp|static std::vector<std::function<Real (Array)>> LsmBasisSystem::multiPathBasisSystem(Size dim, Size order, PolynomialType type);
 | |ql/methods/montecarlo/montecarlomodel.hpp|MonteCarloModel::MonteCarloModel<MC, RNG, S>(ext::shared_ptr<path_generator_type> pathGenerator, ext::shared_ptr<path_pricer_type> pathPricer, stats_type sampleAccumulator, bool antitheticVariate, ext::shared_ptr<path_pricer_type> cvPathPricer = ext::shared_ptr<path_pricer_type>(), result_type cvOptionValue = result_type(), ext::shared_ptr<path_generator_type> cvPathGenerator = ext::shared_ptr<path_generator_type>());
 | |ql/methods/montecarlo/montecarlomodel.hpp|void MonteCarloModel::addSamples(Size samples);

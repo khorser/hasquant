@@ -33,6 +33,7 @@ import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.CVAIRS as CVAIRSExample
 import qualified QuantLib.Example.MulticurveBootstrapping as MulticurveExample
 import qualified QuantLib.Example.TARF as TARFExample
+import qualified QuantLib.Example.AmericanLSM as AmericanLSMExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
@@ -464,6 +465,25 @@ spec = do
         simFwds `shouldSatisfy` listCloseRel id
           [3.3084, 3.3113, 3.3129, 3.3153, 3.3177, 3.3196, 3.3217, 3.3229, 3.3235,
            3.3247, 3.3253, 3.3267, 3.3278] 1.0e-4
+
+    describe "American LSM example" $
+      it "check values" $ do
+        (AmericanLSMExample.Result lsmP calibP mcP exProb) <- Settings.keepingSettings' AmericanLSMExample.run
+        -- lsmP prices a Haskell-defined max(K-S,0) payoff via the custom lsmRegress backward
+        -- induction loop (out-of-sample pricing paths, coefficients fit only on the calibration
+        -- paths). It should land close to both mcP -- QuantLib's own mcAmericanEngine pricing the
+        -- equivalent bound vanilla option on the same process/grid/seed -- and the well-known
+        -- Longstaff-Schwartz (2001) reference value (~4.478) for this exact fixture
+        -- (S=36, K=40, r=6%, vol=20%, T=1, American put).
+        lsmP `shouldSatisfy` closePrec 4.4774 0.01
+        mcP `shouldSatisfy` closePrec 4.4569 0.01
+        abs (lsmP - mcP) `shouldSatisfy` (< 0.02 * mcP)
+        -- calibP prices the calibration paths against their own (in-sample) fit -- a biased
+        -- estimate, kept only as a sanity check that the two-pass split runs at all, not asserted
+        -- against lsmP: the two use different path sets/counts, so their difference is a mix of
+        -- in-sample bias and ordinary MC noise, not a clean bias-only comparison.
+        calibP `shouldSatisfy` closePrec 4.4625 0.01
+        exProb `shouldSatisfy` closePrec 0.7322 0.01
 
     describe "Short rate models example" $
       it "check values" $ do
