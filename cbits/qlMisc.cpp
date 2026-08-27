@@ -390,6 +390,41 @@ EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIt
   try {return alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon));
   } catch (std::exception& er) {return handleException<EndCriteria*>(e, er);}}
 
+// Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
+// Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
+// QuantLib CostFunction. value() crosses back into Haskell once per outer optimizer iteration,
+// over the whole parameter vector, mirroring QuantLib-SWIG's PyCostFunction (SWIG/functions.i)
+// rather than a per-component callback; see the CLAUDE.md "coarsen the language-boundary
+// crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
+// same as PyCostFunction's own -- no bound caller needs it yet.
+namespace {
+  class HsCostFunction : public CostFunction {
+    public:
+      explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
+      Real value(const Array& x) const override {
+        std::vector<double> xs(x.begin(), x.end());
+        return fn_(xs.data(), (unsigned)xs.size());
+      }
+      Array values(const Array&) const override {
+        QL_FAIL("HsCostFunction::values not implemented");
+      }
+    private:
+      double (*fn_)(double*, unsigned);
+  };
+}
+
+void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, OptimizationMethod* method, EndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e) {
+  try {
+    HsCostFunction cf(costFn);
+    Problem problem(cf, constraint ? *arg(constraint) : NoConstraint(), Array(x0, x0+x0Len));
+    *outEndCriteriaType = (int)arg(method)->minimize(problem, *arg(endCriteria));
+    const Array& sol = problem.currentValue();
+    *outCost = problem.functionValue();
+    *outLen = (unsigned)sol.size();
+    *outValues = qlAllocateDoubles(*outLen);
+    std::copy(sol.begin(), sol.end(), *outValues);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+
 TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e) {
   try {return alloc(new TimeGrid(end, steps));
   } catch (std::exception& er) {return handleException<TimeGrid*>(e, er);}}

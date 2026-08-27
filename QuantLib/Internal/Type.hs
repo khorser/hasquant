@@ -1,10 +1,10 @@
 {-# LANGUAGE RankNTypes, TypeFamilies, TypeOperators, FlexibleContexts, FlexibleInstances #-}
 module QuantLib.Internal.Type where
-import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.Ptr(Ptr, FunPtr, nullPtr, freeHaskellFunPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types(CUInt, CInt, CDouble)
 import Foreign.C.String(CString)
-import Foreign.Marshal.Array(withArray)
+import Foreign.Marshal.Array(withArray, peekArray)
 import Foreign.Marshal.Utils(withMany)
 import Foreign.Storable(peek)
 
@@ -49,6 +49,25 @@ showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
 --     already dominated by the QuantLib call they precede, so leave them `safe' absent a
 --     measurement; a per-shim rule would break the first time one grows logic.
 -- If a Haskell callback is ever passed into C++, every import on that path must be `safe'.
+--
+-- 'withCostFunction' below is the first such callback: it turns a Haskell @[Double] -> Double@
+-- into a C function pointer QuantLib's optimizer calls back into once per outer iteration (the
+-- whole parameter vector, not per component) -- the coarsened-callback shape documented in
+-- CLAUDE.md's "coarsen the language-boundary crossing" bullet, modeled on QuantLib-SWIG's own
+-- @PyCostFunction@ (@SWIG/functions.i@).
+foreign import ccall "wrapper" mkCostFunPtr
+  :: (Ptr CDouble -> CUInt -> IO CDouble) -> IO (FunPtr (Ptr CDouble -> CUInt -> IO CDouble))
+-- Build a C function pointer around a Haskell cost function for the duration of one 'optimize'
+-- call, freeing it with 'freeHaskellFunPtr' once the continuation returns, whether normally or
+-- via exception.
+withCostFunction :: ([Double] -> Double) -> (FunPtr (Ptr CDouble -> CUInt -> IO CDouble) -> IO b) -> IO b
+withCostFunction f g = mask $ \restore -> do
+  fp <- mkCostFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call xs n = do
+      x <- peekArray (fromIntegral n) xs
+      pure (realToFrac (f (map realToFrac x)))
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
