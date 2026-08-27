@@ -167,6 +167,7 @@ executable hasquant_example
       QuantLib.Example.InflationInstruments
       QuantLib.Example.IsdaCds
       QuantLib.Example.MulticurveBootstrapping
+      QuantLib.Example.Optimizer
       QuantLib.Example.OvernightIndexedSwap
       QuantLib.Example.Replication
       QuantLib.Example.Repo
@@ -265,6 +266,7 @@ test-suite hasquant_test
       QuantLib.Example.InflationInstruments
       QuantLib.Example.IsdaCds
       QuantLib.Example.MulticurveBootstrapping
+      QuantLib.Example.Optimizer
       QuantLib.Example.OvernightIndexedSwap
       QuantLib.Example.Replication
       QuantLib.Example.Repo

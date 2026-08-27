@@ -416,7 +416,8 @@ namespace {
 void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, OptimizationMethod* method, EndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e) {
   try {
     HsCostFunction cf(costFn);
-    Problem problem(cf, constraint ? *arg(constraint) : NoConstraint(), Array(x0, x0+x0Len));
+    NoConstraint noConstraint;
+    Problem problem(cf, constraint ? *arg(constraint) : static_cast<Constraint&>(noConstraint), Array(x0, x0+x0Len));
     *outEndCriteriaType = (int)arg(method)->minimize(problem, *arg(endCriteria));
     const Array& sol = problem.currentValue();
     *outCost = problem.functionValue();

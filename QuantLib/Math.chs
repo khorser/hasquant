@@ -3,6 +3,7 @@ module QuantLib.Math
     RoundingType(..)
   , Rounding(..)
   , applyRounding
+  , optimize
 
   , EndCriteriaType(..)
   , HistogramAlgorithm(..)
@@ -41,6 +42,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 import Foreign.C.Types(CDouble)
+import Foreign.Marshal.Alloc(alloca)
 import Data.Vector.Storable(Vector)
 import Data.List.NonEmpty(NonEmpty)
 
@@ -62,11 +64,31 @@ import Data.List.NonEmpty(NonEmpty)
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
+{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 
 -- |rounds a value to the precision and rule carried by the given 'Rounding'
 {#fun pure qlRound as applyRounding{withRounding*`Rounding' -- ^rounding
   ,`Double' -- ^value
   }->`Double'#}
+
+-- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
+-- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
+-- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
+-- 'QuantLib.Model.CalibrationHelper's, this takes any @[Double] -> Double@ objective. The cost
+-- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
+-- vector, not once per component -- see CLAUDE.md's "coarsen the language-boundary crossing"
+-- bullet and 'QuantLib.Internal.Type.withCostFunction'.
+{#fun qlOptimize as optimize{withCostFunction*`[Double] -> Double' -- ^cost function
+  ,withDoubleArray*`[Double]'& -- ^initial guess
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,withOptimizationMethod*`OptimizationMethod'
+  ,withEndCriteria*`EndCriteria'
+  ,preArray-`[Double]'&peekDoubleArray* -- ^solution
+  ,alloca-`Double'peekDouble* -- ^achieved cost
+  ,alloca-`EndCriteriaType'peekEnum* -- ^end criteria reached
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Regularly spaced time-grid.
 {#fun qlTimeGrid1 as timeGrid{`Double' -- ^end

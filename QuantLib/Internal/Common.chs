@@ -821,30 +821,6 @@ endCriteria :: EndCriteria -> IO QlEndCriteria
 endCriteria (EndCriteria m1 m2 e f g) = qlEndCriteria m1 m2 e f g
 {#fun qlEndCriteria{fromIntegral`Word',fromIntegral`Word',`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlEndCriteria'peekEndCriteria*#}
 
--- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
--- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
--- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
--- 'QuantLib.Model.CalibrationHelper's, this takes any @[Double] -> Double@ objective. The cost
--- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
--- vector, not once per component -- see CLAUDE.md's "coarsen the language-boundary crossing"
--- bullet and 'QuantLib.Internal.Type.withCostFunction'.
-optimize :: ([Double] -> Double) -- ^cost function
-  -> [Double] -- ^initial guess
-  -> Maybe Constraint
-  -> OptimizationMethod
-  -> EndCriteria
-  -> IO ([Double], Double, EndCriteriaType) -- ^solution, achieved cost, end criteria reached
-optimize f x0 c m e = qlOptimize f x0 c m e
-{#fun qlOptimize{withCostFunction*`[Double] -> Double'
-  ,withDoubleArray*`[Double]'& -- ^initial guess
-  ,withMaybeConstraint*`Maybe Constraint'
-  ,withOptimizationMethod*`OptimizationMethod'
-  ,withEndCriteria*`EndCriteria'
-  ,preArray-`[Double]'&peekDoubleArray* -- ^solution
-  ,alloca-`Double'peekDouble* -- ^achieved cost
-  ,alloca-`EndCriteriaType'peekEnum* -- ^end criteria reached
-  ,preErrorCheck-`String'errorCheck*-}->`()'#}
-
 data Rounding = NoRounding
   | Rounding
     !Int -- ^precision

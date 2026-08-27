@@ -42,6 +42,8 @@ import qualified QuantLib.Example.AsianOption as AsianOptionExample
 import qualified QuantLib.Example.ForwardOption as ForwardOptionExample
 import qualified QuantLib.Example.OvernightIndexedSwap as OvernightIndexedSwapExample
 import qualified QuantLib.Example.Swaption as SwaptionExample
+import qualified QuantLib.Example.Optimizer as OptimizerExample
+import QuantLib.Math(EndCriteriaType(..))
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
 
@@ -711,3 +713,18 @@ spec = do
       it "check values" $ do
         r <- Settings.keepingSettings' SwaptionExample.run
         SwaptionExample.npv1 r `shouldSatisfy` closePrec 0.036418158579 1.0e-9
+
+    -- Minimizes the classic 2D Rosenbrock function (global minimum f=0 at (1,1)) via
+    -- QuantLib.Math.optimize, exercising hasquant's first real Haskell-callback FFI plumbing
+    -- (QuantLib.Internal.Type.withCostFunction). The minimum's location/value is a standard
+    -- analytic fact about this function, independent of which optimizer is used.
+    describe "Optimizer example (Rosenbrock via optimize)" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' OptimizerExample.run
+        case OptimizerExample.solution r of
+          [x, y] -> do
+            x `shouldSatisfy` closePrec 1.0 1.0e-3
+            y `shouldSatisfy` closePrec 1.0 1.0e-3
+          _ -> expectationFailure "expected a 2-element solution"
+        OptimizerExample.cost r `shouldSatisfy` (< 1.0e-6)
+        OptimizerExample.endCriteriaType r `shouldNotBe` EndNone

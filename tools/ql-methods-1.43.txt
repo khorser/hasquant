@@ -5156,7 +5156,7 @@
 |v|ql/math/optimization/constraint.hpp|CompositeConstraint::CompositeConstraint(const Constraint & c1, const Constraint & c2);
 | |ql/math/optimization/constraint.hpp|Impl::Impl(Array low, Array high);
 | |ql/math/optimization/constraint.hpp|NonhomogeneousBoundaryConstraint::NonhomogeneousBoundaryConstraint(const Array & low, const Array & high);
-| |ql/math/optimization/costfunction.hpp|Real CostFunction::value(const Array & x) const;
+|u|ql/math/optimization/costfunction.hpp|Real CostFunction::value(const Array & x) const;
 | |ql/math/optimization/costfunction.hpp|Array CostFunction::values(const Array & x) const;
 | |ql/math/optimization/costfunction.hpp|void CostFunction::gradient(Array & grad, const Array & x) const;
 | |ql/math/optimization/costfunction.hpp|Real CostFunction::valueAndGradient(Array & grad, const Array & x) const;
@@ -5226,8 +5226,8 @@
 | |ql/math/optimization/lmdif.hpp|void lmdif(int m, int n, Real * x, Real * fvec, Real ftol, Real xtol, Real gtol, int maxfev, Real epsfcn, Real * diag, int mode, Real factor, int nprint, int * info, int * nfev, Real * fjac, int ldfjac, int * ipvt, Real * qtf, Real * wa1, Real * wa2, Real * wa3, Real * wa4, const LmdifCostFunction & fcn, const LmdifCostFunction & jacFcn);
 | |ql/math/optimization/lmdif.hpp|void qrsolv(int n, Real * r, int ldr, const int * ipvt, const Real * diag, const Real * qtb, Real * x, Real * sdiag, Real * wa);
 | |ql/math/optimization/lmdif.hpp|void qrfac(int m, int n, Real * a, int, int pivot, int * ipvt, int, Real * rdiag, Real * acnorm, Real * wa);
-| |ql/math/optimization/method.hpp|EndCriteria::Type OptimizationMethod::minimize(Problem & P, const EndCriteria & endCriteria);
-| |ql/math/optimization/problem.hpp|Problem::Problem(CostFunction & costFunction, Constraint & constraint, Array initialValue = Array());
+|v|ql/math/optimization/method.hpp|EndCriteria::Type OptimizationMethod::minimize(Problem & P, const EndCriteria & endCriteria);
+|v|ql/math/optimization/problem.hpp|Problem::Problem(CostFunction & costFunction, Constraint & constraint, Array initialValue = Array());
 | |ql/math/optimization/problem.hpp|void Problem::reset();
 | |ql/math/optimization/problem.hpp|Real Problem::value(const Array & x);
 | |ql/math/optimization/problem.hpp|Array Problem::values(const Array & x);

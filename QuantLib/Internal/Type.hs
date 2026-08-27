@@ -2,7 +2,7 @@
 module QuantLib.Internal.Type where
 import Foreign.Ptr(Ptr, FunPtr, nullPtr, freeHaskellFunPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
-import Foreign.C.Types(CUInt, CInt, CDouble)
+import Foreign.C.Types(CUInt(..), CInt, CDouble(..))
 import Foreign.C.String(CString)
 import Foreign.Marshal.Array(withArray, peekArray)
 import Foreign.Marshal.Utils(withMany)
