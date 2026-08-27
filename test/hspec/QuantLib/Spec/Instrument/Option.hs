@@ -28,7 +28,7 @@ import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process
 import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..))
-import QuantLib.Instrument(npv, setPricingEngine, BarrierType(..))
+import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
@@ -182,12 +182,21 @@ spec = do
         setPricingEngine euOpt euEngine
         euNpv <- npv euOpt
         euNpv `shouldSatisfy` closePrec expected 1.0
+        -- errorEstimate is Instrument's generic MC std-error accessor (populated by any
+        -- McSimulation-based engine's results_.errorEstimate, not just this basket engine);
+        -- checking it here is cheap coverage that it round-trips through the FFI at all.
+        euErr <- errorEstimate euOpt
+        euErr `shouldSatisfy` (> 0)
+        euErr `shouldSatisfy` (< 1.0)
 
         amEngine <- mcAmericanBasketEngine PseudoRandom procs (Just 50) Nothing False True (Just 10000) Nothing Nothing 43 (Just 2500) 2 Monomial
         amOpt <- basketOption payoff (American Nothing (addDays 360 evalDate) False)
         setPricingEngine amOpt amEngine
         amNpv <- npv amOpt
         amNpv `shouldSatisfy` closePrec expected 1.5
+        amErr <- errorEstimate amOpt
+        amErr `shouldSatisfy` (> 0)
+        amErr `shouldSatisfy` (< 1.5)
 
   describe "WriterExtensibleOption" $
     it "matches an independent Monte Carlo simulation of its own payoff definition" $
