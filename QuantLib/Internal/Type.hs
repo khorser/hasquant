@@ -1035,6 +1035,8 @@ withIndex :: GenIndex idx -> (Ptr CIndex' -> IO b) -> IO b
 withIndex = withGenForeignPtr . getIndex
 peekIndex :: Ptr CIndex' -> IO Index
 peekIndex = GenIndex <.> newCastForeignPtr
+withIndexArray :: [Index] -> ((CUInt, Ptr (Ptr CIndex')) -> IO b) -> IO b
+withIndexArray = withGenArray withIndex
 
 asInterestRateIndex :: GenInterestRateIndex ridx -> IO InterestRateIndex
 asInterestRateIndex = transferGenForeignPtr peekInterestRateIndex . peel . getIndex

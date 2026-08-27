@@ -28,8 +28,8 @@
 #include <ql/experimental/commodities/unitofmeasureconversion.hpp>
 #include <ql/experimental/commodities/unitofmeasureconversionmanager.hpp>
 #include <ql/experimental/commodities/commoditysettings.hpp>
-#include <ql/indexes/interestrateindex.hpp>
-#include <ql/models/marketmodels/historicalratesanalysis.hpp>
+#include <ql/indexes/index.hpp>
+#include <ql/math/statistics/sequencestatistics.hpp>
 
 #ifdef QLTRACK_ALLOCATIONS
 # include <cstdlib>
@@ -871,7 +871,29 @@ UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e) {
   } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
 void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u) {CommoditySettings::instance().unitOfMeasure() = *arg(u);}
 
-/* HistoricalRatesAnalysis */
+/* HistoricalIndexAnalysis */
+
+namespace QuantLib {
+  // hasquant-local: generalizes upstream's HistoricalRatesAnalysis (InterestRateIndex-only,
+  // ql/models/marketmodels/historicalratesanalysis.hpp) to any Index. Mirrors that class's own
+  // accessor shape (stats()/skippedDates()/skippedDatesErrorMessage()) so the shim functions
+  // below read identically to how they read the upstream class before this generalization.
+  class HistoricalIndexAnalysis {
+    public:
+      HistoricalIndexAnalysis(shared_ptr<SequenceStatistics> stats,
+                               std::vector<Date> skippedDates,
+                               std::vector<std::string> skippedDatesErrorMessage)
+        : stats_(std::move(stats)), skippedDates_(std::move(skippedDates)),
+          skippedDatesErrorMessage_(std::move(skippedDatesErrorMessage)) {}
+      const shared_ptr<SequenceStatistics>& stats() const {return stats_;}
+      const std::vector<Date>& skippedDates() const {return skippedDates_;}
+      const std::vector<std::string>& skippedDatesErrorMessage() const {return skippedDatesErrorMessage_;}
+    private:
+      shared_ptr<SequenceStatistics> stats_;
+      std::vector<Date> skippedDates_;
+      std::vector<std::string> skippedDatesErrorMessage_;
+  };
+}
 
 static void fillVectorOut(const std::vector<Real>& a, unsigned* len, double** vs) {
   *len = (unsigned)a.size();
@@ -885,24 +907,52 @@ static void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsig
   std::copy(m.begin(), m.end(), *vs);
 }
 
-QlHistoricalRatesAnalysis *qlHistoricalRatesAnalysis(unsigned dimension, int startDate, int endDate,
-    int stepLen, int stepUnit, unsigned indexesLen, QlInterestRateIndex **indexes, char **e) {
+QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
+    int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e) {
   try {
-    shared_ptr<SequenceStatistics> stats = ext::make_shared<SequenceStatistics>(dimension);
-    return ret(new QlHistoricalRatesAnalysis(alloc(new HistoricalRatesAnalysis(
-        stats, Date(startDate), Date(endDate), Period(stepLen, (TimeUnit)stepUnit),
-        qlVector<QlInterestRateIndex>(indexes, indexesLen)))));
-  } catch (std::exception& er) {return handleException<QlHistoricalRatesAnalysis*>(e, er);}}
+    Size nIdx = indexesLen;
+    shared_ptr<SequenceStatistics> stats = ext::make_shared<SequenceStatistics>(nIdx);
+    std::vector<Date> skippedDates;
+    std::vector<std::string> skippedDatesErrorMessage;
 
-void qlFreeHistoricalRatesAnalysis(QlHistoricalRatesAnalysis *o) {del(o);}
+    // Transcribed from ql/models/marketmodels/historicalratesanalysis.cpp's free function,
+    // generalized from InterestRateIndex to the generic Index base (fixing/fixingCalendar are
+    // both declared there already) so it isn't limited to interest-rate underlyings.
+    std::vector<Real> sample(nIdx), prevSample(nIdx), sampleDiff(nIdx);
+    Calendar cal = (*arg(indexes[0]))->fixingCalendar();
+    Date currentDate = cal.advance(Date(startDate), 1*Days, Following);
+    bool isFirst = true;
+    for (; currentDate <= Date(endDate);
+        currentDate = cal.advance(currentDate, Period(stepLen, (TimeUnit)stepUnit), Following)) {
+      try {
+        for (Size i = 0; i < nIdx; ++i)
+          sample[i] = (*arg(indexes[i]))->fixing(currentDate, false);
+      } catch (std::exception& er) {
+        skippedDates.push_back(currentDate);
+        skippedDatesErrorMessage.emplace_back(er.what());
+        continue;
+      }
+      if (!isFirst) {
+        for (Size i = 0; i < nIdx; ++i)
+          sampleDiff[i] = sample[i]/prevSample[i] - 1.0;
+        stats->add(sampleDiff.begin(), sampleDiff.end());
+      } else isFirst = false;
+      std::swap(prevSample, sample);
+    }
 
-void qlHistoricalRatesAnalysisSkippedDates(QlHistoricalRatesAnalysis *o, unsigned *count, int **days) {
+    return ret(new QlHistoricalIndexAnalysis(alloc(new HistoricalIndexAnalysis(
+        stats, skippedDates, skippedDatesErrorMessage))));
+  } catch (std::exception& er) {return handleException<QlHistoricalIndexAnalysis*>(e, er);}}
+
+void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o) {del(o);}
+
+void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days) {
   const std::vector<Date> &dates = (*arg(o))->skippedDates();
   *count = (unsigned)dates.size(); *days = qlAllocateInts(*count);
   for (unsigned i = 0; i < *count; ++i) (*days)[i] = dates[i].serialNumber();
 }
 
-void qlHistoricalRatesAnalysisSkippedDatesErrorMessage(QlHistoricalRatesAnalysis *o, unsigned *count, char ***msgs) {
+void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs) {
   *count = 0; *msgs = 0;
   const std::vector<std::string> &m = (*arg(o))->skippedDatesErrorMessage();
   unsigned n = (unsigned)m.size();
@@ -911,15 +961,75 @@ void qlHistoricalRatesAnalysisSkippedDatesErrorMessage(QlHistoricalRatesAnalysis
   *msgs = ms; *count = n;
 }
 
-void qlHistoricalRatesAnalysisMean(QlHistoricalRatesAnalysis *o, unsigned *len, double **vs, char **e) {
+void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
   try {fillVectorOut((*arg(o))->stats()->mean(), len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
-void qlHistoricalRatesAnalysisCovariance(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+void qlHistoricalIndexAnalysisStandardDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->standardDeviation(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisSkewness(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->skewness(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisKurtosis(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->kurtosis(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisMin(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->min(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisMax(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->max(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisSemiVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->semiVariance(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisSemiDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->semiDeviation(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisDownsideVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->downsideVariance(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisDownsideDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->downsideDeviation(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->percentile(y), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianPercentile(y), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->valueAtRisk(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianValueAtRisk(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->expectedShortfall(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianExpectedShortfall(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
   try {fillMatrixOut((*arg(o))->stats()->covariance(), rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
-void qlHistoricalRatesAnalysisCorrelation(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
   try {fillMatrixOut((*arg(o))->stats()->correlation(), rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 }

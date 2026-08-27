@@ -263,20 +263,37 @@ extern "C" {
   UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e);
   void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u);
 
-  /* HistoricalRatesAnalysis -- computes SequenceStatistics (mean/covariance/correlation) over
-     historical fixings of the given indexes between startDate and endDate, sampled every step.
-     SequenceStatistics itself isn't given a dedicated Haskell type: it's only ever the
-     caller-supplied accumulator this constructor fills in-place and returns via stats(), with no
-     other use in hasquant, so its own mean/covariance/correlation are exposed here directly as
-     HistoricalRatesAnalysis accessors (see CLAUDE.md's "don't mirror the C++ hierarchy 1:1"). */
-  QlHistoricalRatesAnalysis *qlHistoricalRatesAnalysis(unsigned dimension, int startDate, int endDate,
-      int stepLen, int stepUnit, unsigned indexesLen, QlInterestRateIndex **indexes, char **e);
-  void qlFreeHistoricalRatesAnalysis(QlHistoricalRatesAnalysis *o);
-  void qlHistoricalRatesAnalysisSkippedDates(QlHistoricalRatesAnalysis *o, unsigned *count, int **days);
-  void qlHistoricalRatesAnalysisSkippedDatesErrorMessage(QlHistoricalRatesAnalysis *o, unsigned *count, char ***msgs);
-  void qlHistoricalRatesAnalysisMean(QlHistoricalRatesAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalRatesAnalysisCovariance(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
-  void qlHistoricalRatesAnalysisCorrelation(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+  /* HistoricalIndexAnalysis -- computes a SequenceStatistics (one dimension per index) over the
+     relative fixing-to-fixing returns of the given indexes between startDate and endDate, sampled
+     every step, generalizing upstream's InterestRateIndex-only HistoricalRatesAnalysis
+     (ql/models/marketmodels/historicalratesanalysis.hpp) to any Index -- see CLAUDE.md's "don't
+     mirror the C++ hierarchy 1:1". SequenceStatistics is, per dimension, a full
+     GenericRiskStatistics<GaussianStatistics> (ql/math/statistics/riskstatistics.hpp), so both its
+     empirical and gaussian-assumption risk measures are exposed here directly as
+     HistoricalIndexAnalysis accessors rather than introducing a dedicated Statistics Haskell type. */
+  QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
+      int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e);
+  void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o);
+  void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days);
+  void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs);
+  void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisStandardDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisSkewness(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisKurtosis(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisMin(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisMax(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisSemiVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisSemiDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisDownsideVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisDownsideDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
 #ifdef __cplusplus
 }
 #endif

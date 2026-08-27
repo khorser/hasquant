@@ -112,7 +112,7 @@ typedef struct QlGJRGARCHProcess QlGJRGARCHProcess;
 typedef struct QlGsr QlGsr;
 typedef struct QlHestonModel QlHestonModel;
 typedef struct QlHestonProcess QlHestonProcess;
-typedef struct QlHistoricalRatesAnalysis QlHistoricalRatesAnalysis;
+typedef struct QlHistoricalIndexAnalysis QlHistoricalIndexAnalysis;
 typedef struct QlHullWhite QlHullWhite;
 typedef struct QlHullWhiteForwardProcess QlHullWhiteForwardProcess;
 typedef struct QlHullWhiteProcess QlHullWhiteProcess;
