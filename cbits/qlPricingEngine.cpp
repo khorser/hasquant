@@ -992,6 +992,28 @@ void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double
     }
   } catch (std::exception& er) {*e = DUP(er.what());}}
 
+// Multi-asset counterpart of qlLsmRegress, via LsmBasisSystem::multiPathBasisSystem: fitStates/evalStates
+// are row-major (one row per path, fitCols/evalCols columns = underlyings, which must agree).
+void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsigned fitCols, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalRows, unsigned evalCols, double *evalStates, unsigned *outLen, double **outValues, char **e) {
+  try {
+    QL_REQUIRE(fitCols == evalCols, "fit states and eval states must have the same number of columns (underlyings)");
+    QL_REQUIRE(fitRows == fitTargetsLen, "fit states and fit targets must have the same number of rows");
+    std::vector<std::function<Real(Array)> > v = LsmBasisSystem::multiPathBasisSystem(fitCols, order, (LsmBasisSystem::PolynomialType)polynomType);
+    std::vector<Array> x; x.reserve(fitRows);
+    for (unsigned i = 0; i < fitRows; ++i) x.emplace_back(fitStates + i*fitCols, fitStates + (i+1)*fitCols);
+    std::vector<Real> y(fitTargets, fitTargets + fitTargetsLen);
+    Array coeff = GeneralLinearLeastSquares(x, y, v).coefficients();
+    unsigned len = evalRows;
+    double *values = qlAllocateDoubles(len);
+    for (unsigned i = 0; i < evalRows; ++i) {
+      Array row(evalStates + i*evalCols, evalStates + (i+1)*evalCols);
+      Real cont = 0.0;
+      for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](row);
+      values[i] = cont;
+    }
+    *outLen = len; *outValues = values;
+  } catch (std::exception& er) {*e = DUP(er.what());}}
+
 double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
   try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
   } catch (std::exception& er) {return handleException<double>(e, er);}}

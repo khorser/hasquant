@@ -149,6 +149,7 @@ executable hasquant_example
   other-modules:
       QuantLib.Example.AmericanLSM
       QuantLib.Example.AsianOption
+      QuantLib.Example.BasketLSM
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond
@@ -246,6 +247,7 @@ test-suite hasquant_test
       QuantLib.Spec.TermStructure.InflationVolatility
       QuantLib.Example.AmericanLSM
       QuantLib.Example.AsianOption
+      QuantLib.Example.BasketLSM
       QuantLib.Example.BermudanSwaption
       QuantLib.Example.Bond
       QuantLib.Example.CallableBond

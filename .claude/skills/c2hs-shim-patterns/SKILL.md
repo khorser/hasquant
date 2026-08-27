@@ -470,3 +470,18 @@ C signature/definition -- a field missing its own count parameter (reusing
 a neighboring field's count) type-checks on both sides (all counts equal
 at every real call site) but silently misaligns which C parameter receives
 which pointer once a later field's count position shifts.
+
+## A multi-dimensional regression basis has a combinatorial, not linear, term count
+
+**`LsmBasisSystem::multiPathBasisSystem(dim, order, type)`'s returned basis has
+`C(dim+order, order)` terms (a binomial coefficient), not `order+1`** -- confirmed by reading
+`lsmbasissystem.cpp`'s `next_order_tuples`/tuple-counting logic (`pathBasisSystem`'s scalar case,
+`dim=1`, is the one point where `order+1 == C(1+order, order)` coincide, which is easy to
+over-generalize from). Any caller that needs "are there enough fit points to run the regression"
+(here: `GeneralLinearLeastSquares` throws if `x.size() < v.size()`) needs the real term count, not
+`order+1`, once `dim>1` -- hasquant exposes it as a pure `lsmBasisSize :: Word -> Word -> Word`
+(`QuantLib/Method.chs`) computed directly in Haskell rather than round-tripped through C, precisely
+so callers can guard *before* the call instead of discovering the mismatch as a thrown exception.
+Any future multi-dimensional regression/interpolation binding built on a per-order term-counting
+basis should check whether its own term count is linear-in-order or combinatorial before assuming
+the scalar case's shape generalizes.

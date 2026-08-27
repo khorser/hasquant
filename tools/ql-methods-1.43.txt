@@ -6192,7 +6192,7 @@
 | |ql/methods/montecarlo/longstaffschwartzpathpricer.hpp|void calibrate();
 | |ql/methods/montecarlo/longstaffschwartzpathpricer.hpp|Real exerciseProbability() const;
 |u|ql/methods/montecarlo/lsmbasissystem.hpp|static std::vector<std::function<Real (Real)>> LsmBasisSystem::pathBasisSystem(Size order, PolynomialType type);
-| |ql/methods/montecarlo/lsmbasissystem.hpp|static std::vector<std::function<Real (Array)>> LsmBasisSystem::multiPathBasisSystem(Size dim, Size order, PolynomialType type);
+|u|ql/methods/montecarlo/lsmbasissystem.hpp|static std::vector<std::function<Real (Array)>> LsmBasisSystem::multiPathBasisSystem(Size dim, Size order, PolynomialType type);
 | |ql/methods/montecarlo/montecarlomodel.hpp|MonteCarloModel::MonteCarloModel<MC, RNG, S>(ext::shared_ptr<path_generator_type> pathGenerator, ext::shared_ptr<path_pricer_type> pathPricer, stats_type sampleAccumulator, bool antitheticVariate, ext::shared_ptr<path_pricer_type> cvPathPricer = ext::shared_ptr<path_pricer_type>(), result_type cvOptionValue = result_type(), ext::shared_ptr<path_generator_type> cvPathGenerator = ext::shared_ptr<path_generator_type>());
 | |ql/methods/montecarlo/montecarlomodel.hpp|void MonteCarloModel::addSamples(Size samples);
 | |ql/methods/montecarlo/montecarlomodel.hpp|const stats_type & MonteCarloModel::sampleAccumulator() const;

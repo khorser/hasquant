@@ -34,6 +34,7 @@ import qualified QuantLib.Example.CVAIRS as CVAIRSExample
 import qualified QuantLib.Example.MulticurveBootstrapping as MulticurveExample
 import qualified QuantLib.Example.TARF as TARFExample
 import qualified QuantLib.Example.AmericanLSM as AmericanLSMExample
+import qualified QuantLib.Example.BasketLSM as BasketLSMExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
@@ -484,6 +485,35 @@ spec = do
         -- in-sample bias and ordinary MC noise, not a clean bias-only comparison.
         calibP `shouldSatisfy` closePrec 4.4625 0.01
         exProb `shouldSatisfy` closePrec 0.7322 0.01
+
+    describe "Basket LSM example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' BasketLSMExample.run
+        -- Multi-asset counterpart of the American LSM example above: lsmPrice drives early
+        -- exercise of a Haskell-defined max(K-max(S1,S2,S3),0) basket payoff via the custom
+        -- lsmRegressMulti backward-induction loop, generalizing lsmRegress from a scalar to a
+        -- 3-underlying regression state. Fixture and golden value are QuantLib's own
+        -- test-suite/basketoption.cpp testBarraquandThreeValues case (Barraquand & Martineau
+        -- 1995): S=40 (all three), K=40, r=5%, vol=20%/30%/50%, rho=0, T=1 month, American=0.23.
+        --
+        -- Tolerance matches upstream's own convention for this exact fixture --
+        -- relativeError(calculated, expected, value.s1), i.e. an absolute tolerance of spot*1%
+        -- (0.4), not a tolerance relative to the tiny option value itself.
+        let spotTol = 0.4
+        BasketLSMExample.lsmPrice r `shouldSatisfy` closePrec (BasketLSMExample.referencePrice r) spotTol
+        BasketLSMExample.mcPrice r `shouldSatisfy` closePrec (BasketLSMExample.referencePrice r) spotTol
+        abs (BasketLSMExample.lsmPrice r - BasketLSMExample.mcPrice r) `shouldSatisfy` (< spotTol)
+        -- calibPrice is the naive in-sample (biased) estimate, kept only as a sanity check that
+        -- the calibration/pricing path split runs at all -- see the American LSM example's own
+        -- comment on why it isn't asserted against lsmPrice directly.
+        BasketLSMExample.calibPrice r `shouldSatisfy` closePrec (BasketLSMExample.referencePrice r) spotTol
+        BasketLSMExample.exerciseProb r `shouldSatisfy` (\p -> p > 0 && p < 1)
+        -- martingale self-consistency: each simulated asset's mean terminal spot should match the
+        -- curve-implied forward (spot/discount(T), q=0) -- guards against a process/curve wiring
+        -- mistake the way the TARF example's own check does.
+        let close a b = abs (a - b) < spotTol
+        (BasketLSMExample.simulatedForwards r, BasketLSMExample.impliedForwards r)
+          `shouldSatisfy` (\(sims, implieds) -> and (zipWith close sims implieds))
 
     describe "Short rate models example" $
       it "check values" $ do
