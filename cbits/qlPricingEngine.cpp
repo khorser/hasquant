@@ -84,6 +84,18 @@
 #include <ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp>
 #include <ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp>
 #include <ql/methods/finitedifferences/utilities/fdmquantohelper.hpp>
+#include <ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp>
+#include <ql/methods/finitedifferences/meshers/fdmmesher.hpp>
+#include <ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp>
+#include <ql/methods/finitedifferences/meshers/fdmmeshercomposite.hpp>
+#include <ql/methods/finitedifferences/meshers/predefined1dmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/uniform1dmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/concentrating1dmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/fdmcev1dmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp>
+#include <ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp>
 #include <ql/pricingengines/vanilla/fdhestonvanillaengine.hpp>
 #include <ql/pricingengines/vanilla/fdhestonhullwhitevanillaengine.hpp>
 #include <ql/models/all.hpp>
@@ -736,6 +748,124 @@ void qlFdmRollback(unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun ap
     FdmBackwardSolver solver(map, FdmBoundaryConditionSet(), condition, *arg(schemeDesc));
     Array a(grid, grid + gridLen);
     solver.rollback(a, from, to, steps, dampingSteps);
+    *outLen = (unsigned)a.size();
+    *outValues = qlAllocateDoubles(*outLen);
+    std::copy(a.begin(), a.end(), *outValues);
+  } catch (std::exception& er) {*e = DUP(er.what());}}
+
+void qlFreeFdm1dMesher(QlFdm1dMesher *o) {del(o);}
+void qlFreeFdmMesher(QlFdmMesher *o) {del(o);}
+
+QlFdm1dMesher* qlPredefined1dMesher(unsigned len, double* points, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new Predefined1dMesher(std::vector<Real>(points, points + len)))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlUniform1dMesher(double start, double end, unsigned size, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new Uniform1dMesher(start, end, size))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlConcentrating1dMesher(double start, double end, unsigned size, double cPointLoc, double cPointDensity, int requireCPoint, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new Concentrating1dMesher(start, end, size, std::pair<Real, Real>(cPointLoc, cPointDensity), requireCPoint))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlConcentrating1dMesherMulti(double start, double end, unsigned size, unsigned cPointsLen, double* cPointLoc, double* cPointDensity, int* cPointRequire, double tol, char **e) {
+  try {std::vector<std::tuple<Real, Real, bool> > cPoints;
+    cPoints.reserve(cPointsLen);
+    for (unsigned i = 0; i < cPointsLen; ++i)
+      cPoints.push_back(std::make_tuple(cPointLoc[i], cPointDensity[i], cPointRequire[i] != 0));
+    return ret(new QlFdm1dMesher(alloc(new Concentrating1dMesher(start, end, size, cPoints, tol))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlFdmBlackScholesMesher(unsigned size, QlGeneralizedBlackScholesProcess* process, double maturity, double strike,
+    double xMinConstraint, double xMaxConstraint, double eps, double scaleFactor, double cPointLoc, double cPointDensity,
+    unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* fdmQuantoHelper, double spotAdjustment, char **e) {
+  try {DividendSchedule d = qlVector(dividends, dividendsLen);
+    return ret(new QlFdm1dMesher(alloc(new FdmBlackScholesMesher(size, *arg(process), maturity, strike,
+      xMinConstraint, xMaxConstraint, eps, scaleFactor, std::pair<Real, Real>(cPointLoc, cPointDensity), d,
+      fdmQuantoHelper ? *arg(fdmQuantoHelper) : shared_ptr<FdmQuantoHelper>(), spotAdjustment))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlFdmCev1dMesher(unsigned size, double f0, double alpha, double beta, double maturity, double eps, double scaleFactor, double cPointLoc, double cPointDensity, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new FdmCEV1dMesher(size, f0, alpha, beta, maturity, eps, scaleFactor, std::pair<Real, Real>(cPointLoc, cPointDensity)))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlExponentialJump1dMesher(unsigned steps, double beta, double jumpIntensity, double eta, double eps, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new ExponentialJump1dMesher(steps, beta, jumpIntensity, eta, eps))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlFdmSimpleProcess1dMesher(unsigned size, QlStochasticProcess1D* process, double maturity, unsigned tAvgSteps, double epsilon, double mandatoryPoint, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new FdmSimpleProcess1dMesher(size, *arg(process), maturity, tAvgSteps, epsilon, mandatoryPoint))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlFdmHestonVarianceMesher(unsigned size, QlHestonProcess* process, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new FdmHestonVarianceMesher(size, *arg(process), maturity, tAvgSteps, epsilon, mixingFactor))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlFdmHestonLocalVolatilityVarianceMesher(unsigned size, QlHestonProcess* process, QlLocalVolTermStructure* leverageFct, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new FdmHestonLocalVolatilityVarianceMesher(size, *arg(process), *arg(leverageFct), maturity, tAvgSteps, epsilon, mixingFactor))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdmMesher* qlFdmMesherComposite(unsigned meshersLen, QlFdm1dMesher** meshers, char **e) {
+  try {return ret(new QlFdmMesher(alloc(new FdmMesherComposite(qlVector(meshers, meshersLen)))));
+  } catch (std::exception& er) {return handleException<QlFdmMesher*>(e, er);}}
+void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* outLen, double** outValues, char **e) {
+  try {Array locs = (*arg(mesher))->locations(direction);
+    *outLen = (unsigned)locs.size();
+    *outValues = qlAllocateDoubles(*outLen);
+    std::copy(locs.begin(), locs.end(), *outValues);
+  } catch (std::exception& er) {*e = DUP(er.what());}}
+
+// Genuine per-grid-node Haskell callback -- see QuantLib.Method's haddock ("coarsen the
+// language-boundary crossing" exception case) and CLAUDE.md's own note on this hook. Unlike
+// HsFdmLinearOpComposite/HsFdmStepCondition above, this cannot be coarsened to cross once per
+// outer iteration: FdmInnerValueCalculator::innerValue/avgInnerValue is called once per mesher
+// node (see qlFdmSolve below, mirroring Fdm1DimSolver's/FdmNdimSolver's own constructor loop),
+// and QuantLib's own step conditions (e.g. FdmAmericanStepCondition, not bound here) call it
+// again per node at every exercise date -- matching QuantLib-SWIG's own
+// FdmInnerValueCalculatorDelegate (SWIG/fdm.i), which accepts the same real per-call cost.
+typedef double (*FdmInnerValueFun)(const double* loc, unsigned n, double t);
+
+namespace {
+  class HsFdmInnerValueCalculator : public FdmInnerValueCalculator {
+    public:
+      HsFdmInnerValueCalculator(shared_ptr<FdmMesher> mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn)
+        : mesher_(std::move(mesher)), innerValueFn_(innerValueFn), avgInnerValueFn_(avgInnerValueFn) {}
+
+      Real innerValue(const FdmLinearOpIterator& iter, Time t) override {return call(innerValueFn_, iter, t);}
+      Real avgInnerValue(const FdmLinearOpIterator& iter, Time t) override {return call(avgInnerValueFn_, iter, t);}
+    private:
+      // Converts the node's grid-index iterator into its real-valued location per dimension --
+      // the reason this whole feature needs a mesher, unlike qlFdmRollback's raw-index callbacks.
+      Real call(FdmInnerValueFun fn, const FdmLinearOpIterator& iter, Time t) const {
+        const Size n = mesher_->layout()->dim().size();
+        std::vector<Real> loc(n);
+        for (Size d = 0; d < n; ++d) loc[d] = mesher_->location(iter, d);
+        return fn(loc.data(), (unsigned)n, t);
+      }
+      shared_ptr<FdmMesher> mesher_;
+      FdmInnerValueFun innerValueFn_, avgInnerValueFn_;
+  };
+}
+
+// Sibling of qlFdmRollback that derives its own initial grid from a mesher + Haskell-defined
+// FdmInnerValueCalculator (calc.avgInnerValue(iter, maturity) per node) instead of taking a
+// precomputed array -- everything else (operator/step-condition/scheme/rollback) is identical,
+// reusing HsFdmLinearOpComposite/HsFdmStepCondition verbatim. Fdm1DimSolver/FdmNdimSolver
+// themselves (their own LazyObject caching and spline interpolation) are not bound; a caller
+// wanting interpolation combines this function's result with qlFdmMesherLocations itself.
+void qlFdmSolve(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn,
+                unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn,
+                FdmStepConditionFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
+                FdmSchemeDesc* schemeDesc,
+                double maturity, double to, unsigned steps, unsigned dampingSteps,
+                unsigned* outLen, double** outValues, char **e) {
+  try {
+    shared_ptr<FdmMesher> m = *arg(mesher);
+    HsFdmInnerValueCalculator calc(m, innerValueFn, avgInnerValueFn);
+    Array a(m->layout()->size());
+    for (const auto& iter : *m->layout())
+      a[iter.index()] = calc.avgInnerValue(iter, maturity);
+
+    ext::shared_ptr<FdmLinearOpComposite> map(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn));
+    FdmStepConditionComposite::Conditions conditions;
+    std::list<std::vector<Time> > stoppingTimesList;
+    if (stepCondFn) {
+      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(new HsFdmStepCondition(stepCondFn)));
+      stoppingTimesList.push_back(std::vector<Time>(stoppingTimes, stoppingTimes + stoppingTimesLen));
+    }
+    ext::shared_ptr<FdmStepConditionComposite> condition(new FdmStepConditionComposite(stoppingTimesList, conditions));
+    FdmBackwardSolver solver(map, FdmBoundaryConditionSet(), condition, *arg(schemeDesc));
+    solver.rollback(a, maturity, to, steps, dampingSteps);
     *outLen = (unsigned)a.size();
     *outValues = qlAllocateDoubles(*outLen);
     std::copy(a.begin(), a.end(), *outValues);

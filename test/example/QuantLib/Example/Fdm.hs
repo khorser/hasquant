@@ -12,12 +12,22 @@
 -- end to end). The grid is centred so @log(spot)@ falls exactly on a node, avoiding a need for any
 -- interpolation binding to read the answer back off the grid.
 --
--- Two checks:
+-- Three checks:
 --
 -- * European call, rolled back with 'fdmRollback' (no step condition), against
 --   'QuantLib.PricingEngine.analyticEuropeanEngine''s closed-form price.
 -- * American call, rolled back with an early-exercise step condition (@max(v, intrinsic)@ at
 --   every step), against hasquant's already-bound 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine'.
+-- * The same European\/American rollbacks again, this time via 'fdmSolve' -- a 'predefined1dMesher'
+--   built from the exact same @xs@ grid, wrapped in an 'fdmMesherComposite', driving a
+--   Haskell-defined @FdmInnerValueCalculator@ (@avgInnerValue@\/@innerValue@ both just
+--   'intrinsicAt') instead of the hand-built @grid0@ -- reusing the identical operator\/
+--   step-condition\/scheme. This is a strong self-consistency check that 'fdmSolve''s
+--   mesher-driven initial condition reproduces 'fdmRollback''s hand-built one exactly (bit-for-bit,
+--   both American and European), on top of the reference-engine checks above. See CLAUDE.md's
+--   "coarsen the language-boundary crossing" bullet for why 'fdmSolve''s
+--   'QuantLib.Internal.Type.withFdmInnerValue' callback, unlike every other one here, is a genuine
+--   per-grid-node crossing rather than a whole-grid one.
 module QuantLib.Example.Fdm
   (
     Result(..)
@@ -46,6 +56,8 @@ data Result = Result
   , analyticEuropeanR :: !Double
   , fdmAmericanR :: !Double
   , fdAmericanR :: !Double
+  , fdmSolveEuropeanR :: !Double
+  , fdmSolveAmericanR :: !Double
   }
 
 -- |Thomas-algorithm solve of the tridiagonal system @M x = rhs@, @M@'s sub-\/super-diagonals
@@ -134,11 +146,19 @@ run = do
       stepCond _t u = zipWith max u grid0
   fdmAmerican <- fdmRollback 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas grid0 tMat 0 nSteps 0
 
+  mesh1d <- predefined1dMesher xs
+  mesher <- fdmMesherComposite [mesh1d]
+  let ivFn _t loc = case loc of [x] -> intrinsicAt x; _ -> error "fdmSolve: expected a 1D location"
+  fdmSolveEuro <- fdmSolve mesher ivFn ivFn 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+  fdmSolveAmerican <- fdmSolve mesher ivFn ivFn 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas tMat 0 nSteps 0
+
   return Result
     { fdmEuropeanR = fdmEuro !! centerIdx
     , analyticEuropeanR = analytic
     , fdmAmericanR = fdmAmerican !! centerIdx
     , fdAmericanR = fdRef
+    , fdmSolveEuropeanR = fdmSolveEuro !! centerIdx
+    , fdmSolveAmericanR = fdmSolveAmerican !! centerIdx
     }
   where
     tod = 1 `january` 2020

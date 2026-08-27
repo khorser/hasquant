@@ -73,6 +73,21 @@ module QuantLib.Method
   , lsmBasisSize
   , lsmRegressMulti
   , fdmRollback
+  , Fdm1dMesher
+  , FdmMesher
+  , predefined1dMesher
+  , uniform1dMesher
+  , concentrating1dMesher
+  , concentrating1dMesherMulti
+  , fdmBlackScholesMesher
+  , fdmCev1dMesher
+  , exponentialJump1dMesher
+  , fdmSimpleProcess1dMesher
+  , fdmHestonVarianceMesher
+  , fdmHestonLocalVolatilityVarianceMesher
+  , fdmMesherComposite
+  , fdmMesherLocations
+  , fdmSolve
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -93,6 +108,16 @@ import Data.Vector.Storable(Vector)
 -- pointer-type import needs the pointee type known in *this* file (see the c2hs-shim-patterns
 -- skill's "Cross-module enum imports" section); QuantLib.PricingEngine has the same declaration.
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
+-- Local redeclarations for the mesher-constructor argument types, same reasoning as
+-- FdmSchemeDesc above -- QuantLib.PricingEngine has the same declarations.
+{#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
+{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
+{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
+{#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
+{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
+{#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
+{#pointer *QlFdm1dMesher as Fdm1dMesher foreign -> CFdm1dMesher nocode#}
+{#pointer *QlFdmMesher as FdmMesher foreign -> CFdmMesher nocode#}
 
 -- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
 {#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
@@ -210,6 +235,164 @@ lsmRegressMulti p order (Matrix fr fc fd) t (Matrix er ec ed) = qlLsmRegressMult
   ,withFdmSchemeDesc*`FdmScheme' -- ^the finite-difference scheme (see the haddock above for which schemes are actually safe to use here)
   ,withDoubleArray*`[Double]'& -- ^initial grid values, at time \'from\'
   ,`Double' -- ^from (start time of the rollback, e.g. option maturity)
+  ,`Double' -- ^to (end time of the rollback, e.g. 0)
+  ,fromIntegral`Int' -- ^steps
+  ,fromIntegral`Int' -- ^dampingSteps
+  ,preArray-`[Double]'&peekDoubleArray* -- ^grid values at time \'to\'
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |'Predefined1dMesher(points)' -- an 'Fdm1dMesher' over an explicit, caller-supplied set of grid points.
+{#fun qlPredefined1dMesher as predefined1dMesher{withDoubleArray*`[Double]'& -- ^points
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'Uniform1dMesher(start, end, size)' -- an evenly spaced 'Fdm1dMesher'.
+{#fun qlUniform1dMesher as uniform1dMesher{`Double' -- ^start
+  ,`Double' -- ^end
+  ,fromIntegral`Word' -- ^size
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'Concentrating1dMesher(start, end, size, cPoint, requireCPoint)' -- an 'Fdm1dMesher' with grid
+-- points concentrated near @cPoint@ (e.g. a strike or barrier), or plain uniform spacing when
+-- @cPoint@ is 'Nothing' for both coordinates.
+{#fun qlConcentrating1dMesher as concentrating1dMesher{`Double' -- ^start
+  ,`Double' -- ^end
+  ,fromIntegral`Word' -- ^size
+  ,fromMaybeDouble`Maybe Double' -- ^concentration point location
+  ,fromMaybeDouble`Maybe Double' -- ^concentration point density
+  ,`Bool' -- ^requireCPoint: force the concentration point itself onto the grid
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |Multi-concentration-point overload of 'concentrating1dMesher'
+-- (@Concentrating1dMesher(start, end, size, cPoints, tol)@) -- a distinct upstream constructor,
+-- not a defaulted-arg variant of the single-point one.
+concentrating1dMesherMulti :: Double -> Double -> Word
+  -> [(Double, Double, Bool)] -- ^concentration points: (location, density, requireCPoint)
+  -> Double -- ^tol
+  -> IO Fdm1dMesher
+concentrating1dMesherMulti start end size cPoints tol =
+  let (locs, densities, reqs) = unzip3 cPoints
+  in qlConcentrating1dMesherMulti start end size (fromIntegral (length cPoints)) locs densities reqs tol
+{#fun qlConcentrating1dMesherMulti{`Double',`Double',fromIntegral`Word'
+  ,fromIntegral`Word' -- ^number of concentration points
+  ,withDoubleArrayRaw*`[Double]' -- ^locations
+  ,withDoubleArrayRaw*`[Double]' -- ^densities
+  ,withBoolArrayRaw*`[Bool]' -- ^requireCPoint per point
+  ,`Double' -- ^tol
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'FdmBlackScholesMesher(size, process, maturity, strike, ...)' -- the standard log-spot mesher
+-- for a Black-Scholes-family process, reusing the same 'GeneralizedBlackScholesProcess'\/
+-- 'Dividend'\/'FdmQuantoHelper' plumbing "QuantLib.PricingEngine"'s @fd*@ engines already use.
+{#fun qlFdmBlackScholesMesher as fdmBlackScholesMesher{fromIntegral`Word' -- ^size
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,`Double' -- ^maturity
+  ,`Double' -- ^strike
+  ,fromMaybeDouble`Maybe Double' -- ^xMinConstraint
+  ,fromMaybeDouble`Maybe Double' -- ^xMaxConstraint
+  ,`Double' -- ^eps
+  ,`Double' -- ^scaleFactor
+  ,fromMaybeDouble`Maybe Double' -- ^concentration point location
+  ,fromMaybeDouble`Maybe Double' -- ^concentration point density
+  ,withDividendArray*`[Dividend]'&
+  ,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+  ,`Double' -- ^spotAdjustment
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'FdmCEV1dMesher(size, f0, alpha, beta, maturity, eps, scaleFactor, cPoint)' -- the standard
+-- mesher for a CEV process.
+{#fun qlFdmCev1dMesher as fdmCev1dMesher{fromIntegral`Word' -- ^size
+  ,`Double' -- ^f0
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^maturity
+  ,`Double' -- ^eps
+  ,`Double' -- ^scaleFactor
+  ,fromMaybeDouble`Maybe Double' -- ^concentration point location
+  ,fromMaybeDouble`Maybe Double' -- ^concentration point density
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'ExponentialJump1dMesher(steps, beta, jumpIntensity, eta, eps)' -- mesher for the jump-diffusion
+-- component of a jump-diffusion process.
+{#fun qlExponentialJump1dMesher as exponentialJump1dMesher{fromIntegral`Word' -- ^steps
+  ,`Double' -- ^beta
+  ,`Double' -- ^jumpIntensity
+  ,`Double' -- ^eta
+  ,`Double' -- ^eps
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'FdmSimpleProcess1dMesher(size, process, maturity, tAvgSteps, epsilon, mandatoryPoint)' --
+-- generic mesher for any bound one-dimensional 'StochasticProcess1D'.
+{#fun qlFdmSimpleProcess1dMesher as fdmSimpleProcess1dMesher{fromIntegral`Word' -- ^size
+  ,withStochasticProcess1D*`StochasticProcess1D'
+  ,`Double' -- ^maturity
+  ,fromIntegral`Word' -- ^tAvgSteps
+  ,`Double' -- ^epsilon
+  ,fromMaybeDouble`Maybe Double' -- ^mandatoryPoint
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'FdmHestonVarianceMesher(size, process, maturity, tAvgSteps, epsilon, mixingFactor)' -- variance
+-- mesher for a Heston-family process.
+{#fun qlFdmHestonVarianceMesher as fdmHestonVarianceMesher{fromIntegral`Word' -- ^size
+  ,withHestonProcess*`GenHestonProcess hp'
+  ,`Double' -- ^maturity
+  ,fromIntegral`Word' -- ^tAvgSteps
+  ,`Double' -- ^epsilon
+  ,`Double' -- ^mixingFactor
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'FdmHestonLocalVolatilityVarianceMesher(size, process, leverageFct, maturity, tAvgSteps, epsilon, mixingFactor)'
+-- -- Heston variance mesher accounting for a local-volatility leverage function.
+{#fun qlFdmHestonLocalVolatilityVarianceMesher as fdmHestonLocalVolatilityVarianceMesher{fromIntegral`Word' -- ^size
+  ,withHestonProcess*`GenHestonProcess hp'
+  ,withLocalVolTermStructure*`LocalVolTermStructure' -- ^leverageFct
+  ,`Double' -- ^maturity
+  ,fromIntegral`Word' -- ^tAvgSteps
+  ,`Double' -- ^epsilon
+  ,`Double' -- ^mixingFactor
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'FdmMesherComposite' -- combine one or more 'Fdm1dMesher's into the multi-dimensional
+-- 'FdmMesher' the operator\/step-condition callbacks and 'fdmSolve' operate over; the sole
+-- concrete 'FdmMesher' upstream.
+{#fun qlFdmMesherComposite as fdmMesherComposite{withFdm1dMesherArray*`[Fdm1dMesher]'&
+  ,preErrorCheck-`String'errorCheck*-}->`FdmMesher'peekFdmMesher*#}
+
+-- |Real-valued node locations along one dimension of a mesher, e.g. to map 'fdmSolve''s flat
+-- result array back to coordinates (mirrors how @Fdm1DimSolver@\/@FdmNdimSolver@ build their own
+-- @x_@ arrays from this same call upstream).
+{#fun qlFdmMesherLocations as fdmMesherLocations{withFdmMesher*`FdmMesher'
+  ,fromIntegral`Int' -- ^direction
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Sibling of 'fdmRollback' that derives its own initial grid from a mesher and a Haskell-defined
+-- @FdmInnerValueCalculator@ (@avgInnerValue(t, location)@ per node, called once per mesher node at
+-- @t = maturity@ -- mirroring @Fdm1DimSolver@\/@FdmNdimSolver@'s own constructor loop) instead of
+-- taking a precomputed grid array. Everything else (operator\/step-condition\/scheme\/rollback) is
+-- identical to 'fdmRollback', reusing the same callback machinery.
+--
+-- Unlike every callback 'fdmRollback' takes, 'withFdmInnerValue' crosses the language boundary
+-- once /per grid node/, not once per outer iteration over the whole grid -- there is no batched
+-- \"whole-grid inner value\" shape anywhere in QuantLib or QuantLib-SWIG. Per CLAUDE.md's
+-- \"coarsen the language-boundary crossing\" bullet, this is the one case where that coarsening
+-- isn't available, so the real per-call FFI cost across every node (and, if a step condition also
+-- calls the calculator, every node at every exercise date) is accepted -- matching QuantLib-SWIG's
+-- own accepted-cost precedent, @FdmInnerValueCalculatorDelegate@ (@SWIG\/fdm.i@).
+--
+-- @Fdm1DimSolver@\/@FdmNdimSolver@ themselves (their own @LazyObject@ caching and cubic-spline
+-- interpolation) are /not/ bound; combine this function's result with 'fdmMesherLocations' for
+-- interpolation.
+{#fun qlFdmSolve as fdmSolve{withFdmMesher*`FdmMesher'
+  ,withFdmInnerValue*`Double -> [Double] -> Double' -- ^innerValue(t, location)
+  ,withFdmInnerValue*`Double -> [Double] -> Double' -- ^avgInnerValue(t, location)
+  ,fromIntegral`Int' -- ^number of PDE directions\/dimensions the operator has
+  ,withFdmApply*`(Double,Double) -> [Double] -> [Double]' -- ^@apply(r)@
+  ,withFdmApplyDirection*`Int -> (Double,Double) -> [Double] -> [Double]' -- ^@apply_direction(direction, r)@
+  ,withFdmSolveSplitting*`Int -> Double -> (Double,Double) -> [Double] -> [Double]' -- ^@solve_splitting(direction, r, s)@
+  ,withMaybeFdmStepCondition*`Maybe (Double -> [Double] -> [Double])' -- ^optional step condition
+  ,withDoubleArray*`[Double]'& -- ^stopping times at which the step condition above is applied
+  ,withFdmSchemeDesc*`FdmScheme' -- ^the finite-difference scheme
+  ,`Double' -- ^maturity (start time of the rollback, and the time at which avgInnerValue builds the initial grid)
   ,`Double' -- ^to (end time of the rollback, e.g. 0)
   ,fromIntegral`Int' -- ^steps
   ,fromIntegral`Int' -- ^dampingSteps

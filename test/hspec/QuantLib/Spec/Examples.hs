@@ -740,3 +740,8 @@ spec = do
         r <- Settings.keepingSettings' FdmExample.run
         FdmExample.fdmEuropeanR r `shouldSatisfy` closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
         FdmExample.fdmAmericanR r `shouldSatisfy` closePrec (FdmExample.fdAmericanR r) (2.0e-3 * FdmExample.fdAmericanR r)
+        -- fdmSolve's mesher-driven initial condition must reproduce fdmRollback's hand-built
+        -- grid0 exactly -- same operator/step-condition/scheme, only the initial-condition
+        -- construction path differs (see QuantLib.Method.fdmSolve's haddock).
+        FdmExample.fdmSolveEuropeanR r `shouldBe` FdmExample.fdmEuropeanR r
+        FdmExample.fdmSolveAmericanR r `shouldBe` FdmExample.fdmAmericanR r

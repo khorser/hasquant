@@ -23,6 +23,7 @@ module QuantLib.Internal
   , withDoubleArray
   , withNonEmptyDoubleArray
   , withDoubleArrayRaw
+  , withBoolArrayRaw
   , withDayPtr
   , withStringArray
   , peekCStringArray
@@ -173,6 +174,9 @@ withNonEmptyDoubleArray x = withLArray realToFrac (toList x)
 
 withDoubleArrayRaw :: [Double] -> (Ptr CDouble -> IO b) -> IO b
 withDoubleArrayRaw x = withArray (map realToFrac x)
+
+withBoolArrayRaw :: [Bool] -> (Ptr CInt -> IO b) -> IO b
+withBoolArrayRaw x = withArray (map fromBool x)
 
 withDayArray :: [Day] -> ((CUInt, Ptr CInt) -> IO b) -> IO b
 withDayArray x f = mapM toSerial x >>= (`withArray` (\px -> f (fromIntegral $ length x, px)))

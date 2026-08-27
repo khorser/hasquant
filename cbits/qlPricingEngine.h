@@ -230,6 +230,41 @@ extern "C" {
   FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e);
   FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e);
 
+  void qlFreeFdm1dMesher(QlFdm1dMesher *o);
+  void qlFreeFdmMesher(QlFdmMesher *o);
+  QlFdm1dMesher* qlPredefined1dMesher(unsigned len, double* points, char **e);
+  QlFdm1dMesher* qlUniform1dMesher(double start, double end, unsigned size, char **e);
+  QlFdm1dMesher* qlConcentrating1dMesher(double start, double end, unsigned size, double cPointLoc, double cPointDensity, int requireCPoint, char **e);
+  QlFdm1dMesher* qlConcentrating1dMesherMulti(double start, double end, unsigned size, unsigned cPointsLen, double* cPointLoc, double* cPointDensity, int* cPointRequire, double tol, char **e);
+  QlFdm1dMesher* qlFdmBlackScholesMesher(unsigned size, QlGeneralizedBlackScholesProcess* process, double maturity, double strike,
+    double xMinConstraint, double xMaxConstraint, double eps, double scaleFactor, double cPointLoc, double cPointDensity,
+    unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* fdmQuantoHelper, double spotAdjustment, char **e);
+  QlFdm1dMesher* qlFdmCev1dMesher(unsigned size, double f0, double alpha, double beta, double maturity, double eps, double scaleFactor, double cPointLoc, double cPointDensity, char **e);
+  QlFdm1dMesher* qlExponentialJump1dMesher(unsigned steps, double beta, double jumpIntensity, double eta, double eps, char **e);
+  QlFdm1dMesher* qlFdmSimpleProcess1dMesher(unsigned size, QlStochasticProcess1D* process, double maturity, unsigned tAvgSteps, double epsilon, double mandatoryPoint, char **e);
+  QlFdm1dMesher* qlFdmHestonVarianceMesher(unsigned size, QlHestonProcess* process, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, char **e);
+  QlFdm1dMesher* qlFdmHestonLocalVolatilityVarianceMesher(unsigned size, QlHestonProcess* process, QlLocalVolTermStructure* leverageFct, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, char **e);
+  QlFdmMesher* qlFdmMesherComposite(unsigned meshersLen, QlFdm1dMesher** meshers, char **e);
+  void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* outLen, double** outValues, char **e);
+
+  // Genuine per-grid-node Haskell callback -- see QuantLib.Method's haddock ("coarsen the
+  // language-boundary crossing" exception case) and HsFdmInnerValueCalculator in
+  // qlPricingEngine.cpp. Unlike qlFdmRollback's callbacks, these cross once per mesher node
+  // (there is no batched "whole-grid inner value" shape, mirroring QuantLib-SWIG's own
+  // FdmInnerValueCalculatorDelegate).
+  void qlFdmSolve(QlFdmMesher* mesher,
+    double (*innerValueFn)(const double* loc, unsigned n, double t),
+    double (*avgInnerValueFn)(const double* loc, unsigned n, double t),
+    unsigned opSize,
+    void (*applyFn)(const double* in, unsigned n, double t1, double t2, double* out),
+    void (*applyDirFn)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out),
+    void (*solveSplitFn)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out),
+    void (*stepCondFn)(const double* in, unsigned n, double t, double* out),
+    unsigned stoppingTimesLen, double* stoppingTimes,
+    FdmSchemeDesc* schemeDesc,
+    double maturity, double to, unsigned steps, unsigned dampingSteps,
+    unsigned* outLen, double** outValues, char **e);
+
   void qlFreeFdmQuantoHelper(QlFdmQuantoHelper *o);
   QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStructure* fTS, QlBlackVolTermStructure* fxVolTS, double equityFxCorrelation, double exchRateATMlevel, char **e);
 

@@ -146,6 +146,25 @@ withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
       x <- peekArray (fromIntegral n) xs
       pokeBoundedFdmResult n out (f (realToFrac t) (map realToFrac x))
 
+type FdmInnerValueFun = Ptr CDouble -> CUInt -> CDouble -> IO CDouble
+foreign import ccall "wrapper" mkFdmInnerValueFunPtr :: FdmInnerValueFun -> IO (FunPtr FdmInnerValueFun)
+-- |Wrap a Haskell @t -> nodeLocation -> value@ function as an 'FdmInnerValueFun' C callback, for
+-- either of @FdmInnerValueCalculator::innerValue@\/@avgInnerValue@ -- the one hook in this file
+-- that is a genuine, uncoarsened per-grid-node callback rather than a whole-grid one (see
+-- 'QuantLib.Method.fdmSolve' and its accompanying haddock for why no batched shape exists here,
+-- matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@). Reuses the same
+-- mask\/finally\/freeHaskellFunPtr bracket as 'withCostFunction' above; unlike the
+-- 'FdmApplyFun'-family callbacks, this one returns a single scalar so has no
+-- 'pokeBoundedFdmResult'-style output-length hazard.
+withFdmInnerValue :: (Double -> [Double] -> Double) -> (FunPtr FdmInnerValueFun -> IO b) -> IO b
+withFdmInnerValue f g = mask $ \restore -> do
+  fp <- mkFdmInnerValueFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call locPtr n t = do
+      loc <- peekArray (fromIntegral n) locPtr
+      pure (realToFrac (f (realToFrac t) (map realToFrac loc)))
+
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
@@ -365,6 +384,26 @@ withFdmQuantoHelper :: FdmQuantoHelper -> (Ptr CFdmQuantoHelper -> IO b) -> IO b
 withFdmQuantoHelper = withStandalone . getCFdmQuantoHelper
 withMaybeFdmQuantoHelper :: Maybe FdmQuantoHelper -> (Ptr CFdmQuantoHelper -> IO b) -> IO b
 withMaybeFdmQuantoHelper = withMaybeStandalone . (getCFdmQuantoHelper <$>)
+
+data CFdm1dMesher
+newtype Fdm1dMesher = Fdm1dMesher {getCFdm1dMesher :: Standalone CFdm1dMesher}
+foreign import ccall unsafe "ql.h &qlFreeFdm1dMesher" qlFreeFdm1dMesher :: FinalizerPtr CFdm1dMesher
+instance Finalizable CFdm1dMesher where finalize = qlFreeFdm1dMesher
+peekFdm1dMesher :: Ptr CFdm1dMesher -> IO Fdm1dMesher
+peekFdm1dMesher = Fdm1dMesher <.> peekStandalone
+withFdm1dMesher :: Fdm1dMesher -> (Ptr CFdm1dMesher -> IO b) -> IO b
+withFdm1dMesher = withStandalone . getCFdm1dMesher
+withFdm1dMesherArray :: [Fdm1dMesher] -> ((CUInt, Ptr (Ptr CFdm1dMesher)) -> IO b) -> IO b
+withFdm1dMesherArray = withStandaloneArray getCFdm1dMesher
+
+data CFdmMesher
+newtype FdmMesher = FdmMesher {getCFdmMesher :: Standalone CFdmMesher}
+foreign import ccall unsafe "ql.h &qlFreeFdmMesher" qlFreeFdmMesher :: FinalizerPtr CFdmMesher
+instance Finalizable CFdmMesher where finalize = qlFreeFdmMesher
+peekFdmMesher :: Ptr CFdmMesher -> IO FdmMesher
+peekFdmMesher = FdmMesher <.> peekStandalone
+withFdmMesher :: FdmMesher -> (Ptr CFdmMesher -> IO b) -> IO b
+withFdmMesher = withStandalone . getCFdmMesher
 
 data CZeroInflationCashFlow
 newtype ZeroInflationCashFlow = ZeroInflationCashFlow {getCZeroInflationCashFlow :: Standalone CZeroInflationCashFlow}
