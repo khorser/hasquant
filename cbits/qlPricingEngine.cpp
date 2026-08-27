@@ -81,6 +81,8 @@
 #include <ql/pricingengines/vanilla/juquadraticengine.hpp>
 #include <ql/instruments/dividendschedule.hpp>
 #include <ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp>
+#include <ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp>
+#include <ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp>
 #include <ql/methods/finitedifferences/utilities/fdmquantohelper.hpp>
 #include <ql/pricingengines/vanilla/fdhestonvanillaengine.hpp>
 #include <ql/pricingengines/vanilla/fdhestonhullwhitevanillaengine.hpp>
@@ -639,6 +641,106 @@ FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e) {try {return alloc(new Fdm
 FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedCraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
+
+// Wraps 3 Haskell-defined callbacks (produced by QuantLib.Internal.Type's withFdmApply/
+// withFdmApplyDirection/withFdmSolveSplitting, mirroring qlOptimize's HsCostFunction above) as a
+// QuantLib FdmLinearOpComposite driving FdmBackwardSolver::rollback -- see the "coarsen the
+// language-boundary crossing" bullet in CLAUDE.md and qlFdmRollback below. Only the 3 virtuals
+// DouglasScheme::step actually calls (size/setTime are plain state, not callbacks -- see below)
+// are implemented; apply_mixed/preconditioner QL_FAIL, so only schemes that never need them
+// (Douglas, Crank-Nicolson in 1D) work through this hook.
+typedef void (*FdmApplyFun)(const double* in, unsigned n, double t1, double t2, double* out);
+typedef void (*FdmApplyDirectionFun)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out);
+typedef void (*FdmSolveSplittingFun)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out);
+typedef void (*FdmStepConditionFun)(const double* in, unsigned n, double t, double* out);
+
+namespace {
+  class HsFdmLinearOpComposite : public FdmLinearOpComposite {
+    public:
+      HsFdmLinearOpComposite(Size size, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn)
+        : size_(size), applyFn_(applyFn), applyDirFn_(applyDirFn), solveSplitFn_(solveSplitFn), t1_(0.0), t2_(0.0) {}
+
+      Size size() const override {return size_;}
+      // Not a callback: DouglasScheme (and every scheme) calls setTime once per outer step, then
+      // makes several apply*/solve_splitting calls against the *same* (t1,t2) -- so the C++
+      // wrapper just stores them as mutable state and passes them as extra scalar args to every
+      // apply*/solve_splitting callback below, keeping the Haskell callbacks themselves pure.
+      void setTime(Time t1, Time t2) override {t1_ = t1; t2_ = t2;}
+
+      Array apply(const Array& r) const override {
+        Array out(r.size());
+        applyFn_(r.begin(), (unsigned)r.size(), t1_, t2_, out.begin());
+        return out;
+      }
+      Array apply_direction(Size direction, const Array& r) const override {
+        Array out(r.size());
+        applyDirFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, t1_, t2_, out.begin());
+        return out;
+      }
+      Array solve_splitting(Size direction, const Array& r, Real s) const override {
+        Array out(r.size());
+        solveSplitFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, s, t1_, t2_, out.begin());
+        return out;
+      }
+      Array apply_mixed(const Array&) const override {
+        QL_FAIL("HsFdmLinearOpComposite::apply_mixed not implemented -- fdmRollback only supports schemes that never need mixed derivatives (Douglas, Crank-Nicolson in 1D)");
+      }
+      Array preconditioner(const Array&, Real) const override {
+        QL_FAIL("HsFdmLinearOpComposite::preconditioner not implemented -- fdmRollback only supports schemes that never need it (Douglas, Crank-Nicolson in 1D)");
+      }
+    private:
+      Size size_;
+      FdmApplyFun applyFn_;
+      FdmApplyDirectionFun applyDirFn_;
+      FdmSolveSplittingFun solveSplitFn_;
+      mutable Time t1_, t2_;
+  };
+
+  // Wraps one optional Haskell-defined step condition (withMaybeFdmStepCondition) as a
+  // StepCondition<Array>. applyTo's caller-supplied `a' buffer is both the read source and the
+  // write destination -- safe because the Haskell-side callback fully reads its input (peekArray)
+  // before writing any of its output (pokeArray), so an in-place update never reads
+  // already-overwritten data.
+  class HsFdmStepCondition : public StepCondition<Array> {
+    public:
+      explicit HsFdmStepCondition(FdmStepConditionFun fn) : fn_(fn) {}
+      void applyTo(Array& a, Time t) const override {
+        fn_(a.begin(), (unsigned)a.size(), t, a.begin());
+      }
+    private:
+      FdmStepConditionFun fn_;
+  };
+}
+
+// Drives FdmBackwardSolver::rollback with a Haskell-defined operator/step condition instead of a
+// bound mesher+FdmInnerValueCalculator -- see QuantLib.Method.fdmRollback's haddock and the
+// HsFdmLinearOpComposite/HsFdmStepCondition comments above. bcSet is always the empty
+// FdmBoundaryConditionSet(); boundary conditions are not bound. A null stepCondFn means no step
+// condition at all (matches FdmBackwardSolver's own null-condition default, an empty
+// FdmStepConditionComposite({}, {})).
+void qlFdmRollback(unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn,
+                    FdmStepConditionFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
+                    FdmSchemeDesc* schemeDesc,
+                    unsigned gridLen, double* grid,
+                    double from, double to, unsigned steps, unsigned dampingSteps,
+                    unsigned* outLen, double** outValues, char **e) {
+  try {
+    ext::shared_ptr<FdmLinearOpComposite> map(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn));
+    FdmStepConditionComposite::Conditions conditions;
+    std::list<std::vector<Time> > stoppingTimesList;
+    if (stepCondFn) {
+      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(new HsFdmStepCondition(stepCondFn)));
+      stoppingTimesList.push_back(std::vector<Time>(stoppingTimes, stoppingTimes + stoppingTimesLen));
+    }
+    ext::shared_ptr<FdmStepConditionComposite> condition(new FdmStepConditionComposite(stoppingTimesList, conditions));
+    FdmBackwardSolver solver(map, FdmBoundaryConditionSet(), condition, *arg(schemeDesc));
+    Array a(grid, grid + gridLen);
+    solver.rollback(a, from, to, steps, dampingSteps);
+    *outLen = (unsigned)a.size();
+    *outValues = qlAllocateDoubles(*outLen);
+    std::copy(a.begin(), a.end(), *outValues);
+  } catch (std::exception& er) {*e = DUP(er.what());}}
+
 void qlFreeFdmQuantoHelper(QlFdmQuantoHelper *o) {del(o);}
 QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStructure* fTS, QlBlackVolTermStructure* fxVolTS, double equityFxCorrelation, double exchRateATMlevel, char **e) {
   try {shared_ptr<YieldTermStructure> r = (*arg(rTS)).currentLink(), f = (*arg(fTS)).currentLink();

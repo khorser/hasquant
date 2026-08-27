@@ -72,6 +72,7 @@ module QuantLib.Method
   , lsmRegress
   , lsmBasisSize
   , lsmRegressMulti
+  , fdmRollback
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -80,6 +81,7 @@ module QuantLib.Method
 
 import QuantLib.Internal
 import QuantLib.Internal.Type
+import QuantLib.Internal.Common
 {#import QuantLib.Math#}
 import Foreign.C.Types(CDouble)
 import Data.Vector.Storable(Vector)
@@ -87,6 +89,10 @@ import Data.Vector.Storable(Vector)
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
+-- Local redeclaration needed for fdmRollback's FdmScheme argument -- c2hs's cross-module enum\/
+-- pointer-type import needs the pointee type known in *this* file (see the c2hs-shim-patterns
+-- skill's "Cross-module enum imports" section); QuantLib.PricingEngine has the same declaration.
+{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 
 -- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
 {#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
@@ -173,6 +179,41 @@ lsmRegressMulti p order (Matrix fr fc fd) t (Matrix er ec ed) = qlLsmRegressMult
   ,fromIntegral`Word' -- ^eval columns (underlyings)
   ,withDoubleArrayRaw*`[Double]' -- ^eval states, row-major
   ,preArray-`[Double]'&peekDoubleArray* -- ^continuation value estimate per eval row
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Drive @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (the
+-- @apply@\/@apply_direction@\/@solve_splitting@ callbacks) and an optional Haskell-defined step
+-- condition (e.g. American\/Bermudan early exercise, or a barrier), instead of a bound mesher +
+-- @FdmInnerValueCalculator@ as every concrete FDM pricing engine in "QuantLib.PricingEngine"
+-- uses. This is the coarsened-callback shape from CLAUDE.md's \"coarsen the language-boundary
+-- crossing\" bullet, modeled on QuantLib-SWIG's @FdmLinearOpCompositeDelegate@\/
+-- @FdmStepConditionDelegate@ (@SWIG\/fdm.i@): each callback crosses once per outer iteration over
+-- the whole grid array, not once per grid node.
+--
+-- The grid is a plain @[Double]@ in and out -- no mesher, no @FdmInnerValueCalculator@, no
+-- @FdmSolverDesc@ is bound; callers manage their own grid geometry entirely in Haskell. Boundary
+-- conditions are always the empty @FdmBoundaryConditionSet()@ (not bound).
+--
+-- /Only DouglasScheme::step's three virtuals are implemented -- 'apply', 'apply_direction' and/
+-- /'solve_splitting'; @apply_mixed@\/@preconditioner@ are unimplemented and @QL_FAIL@ at the C++/
+-- /level if called./ This makes 'fdmRollback' safe to drive with 'QuantLib.Internal.Common.Douglas'
+-- or 'QuantLib.Internal.Common.CrankNicolson' in one dimension (the two schemes
+-- @DouglasScheme::step@ itself is used for) -- anything needing mixed derivatives across more than
+-- one PDE direction (Craig-Sneyd, Hundsdorfer, or any genuinely multi-dimensional operator) will
+-- throw partway through 'fdmRollback' rather than silently mispricing.
+{#fun qlFdmRollback as fdmRollback{fromIntegral`Int' -- ^number of PDE directions\/dimensions the operator has (e.g. 1 for a 1D Black-Scholes-in-log-spot operator) -- /not/ the grid array length, which is the length of every @[Double]@ passed to\/returned from the callbacks below
+  ,withFdmApply*`(Double,Double) -> [Double] -> [Double]' -- ^@apply(r)@: whole-grid operator application at the current @(t1,t2)@ time pair (no direction argument -- QuantLib's own 'FdmLinearOp' base method)
+  ,withFdmApplyDirection*`Int -> (Double,Double) -> [Double] -> [Double]' -- ^@apply_direction(direction, r)@
+  ,withFdmSolveSplitting*`Int -> Double -> (Double,Double) -> [Double] -> [Double]' -- ^@solve_splitting(direction, r, s)@ -- the implicit per-direction solve (e.g. a tridiagonal\/Thomas-algorithm solve for a 1D operator)
+  ,withMaybeFdmStepCondition*`Maybe (Double -> [Double] -> [Double])' -- ^optional step condition @applyTo(a, t)@, e.g. American\/Bermudan early exercise (@max(a_i, intrinsic_i)@ at every step) or a barrier knockout
+  ,withDoubleArray*`[Double]'& -- ^stopping times at which the step condition above is applied (ignored if there is no step condition); pass every rollback step's time to apply it at every step
+  ,withFdmSchemeDesc*`FdmScheme' -- ^the finite-difference scheme (see the haddock above for which schemes are actually safe to use here)
+  ,withDoubleArray*`[Double]'& -- ^initial grid values, at time \'from\'
+  ,`Double' -- ^from (start time of the rollback, e.g. option maturity)
+  ,`Double' -- ^to (end time of the rollback, e.g. 0)
+  ,fromIntegral`Int' -- ^steps
+  ,fromIntegral`Int' -- ^dampingSteps
+  ,preArray-`[Double]'&peekDoubleArray* -- ^grid values at time \'to\'
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

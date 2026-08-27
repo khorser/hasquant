@@ -1,10 +1,10 @@
 {-# LANGUAGE RankNTypes, TypeFamilies, TypeOperators, FlexibleContexts, FlexibleInstances #-}
 module QuantLib.Internal.Type where
-import Foreign.Ptr(Ptr, FunPtr, nullPtr, freeHaskellFunPtr)
+import Foreign.Ptr(Ptr, FunPtr, nullPtr, nullFunPtr, freeHaskellFunPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types(CUInt(..), CInt, CDouble(..))
 import Foreign.C.String(CString)
-import Foreign.Marshal.Array(withArray, peekArray)
+import Foreign.Marshal.Array(withArray, peekArray, pokeArray)
 import Foreign.Marshal.Utils(withMany)
 import Foreign.Storable(peek)
 
@@ -68,6 +68,84 @@ withCostFunction f g = mask $ \restore -> do
     call xs n = do
       x <- peekArray (fromIntegral n) xs
       pure (realToFrac (f (map realToFrac x)))
+
+-- 'fdmRollback' (QuantLib.Method) is the second callback-into-Haskell hook, driving
+-- @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (three callbacks:
+-- apply/apply_direction/solve_splitting) and an optional step condition -- see CLAUDE.md's
+-- "coarsen the language-boundary crossing" bullet and 'withCostFunction' above, whose
+-- mask\/finally\/freeHaskellFunPtr bracket this reuses verbatim, once per callback (four
+-- independent with-style marshallers, not a single tuple-returning one, so each composes as an
+-- ordinary c2hs @{#fun#}@ argument exactly like 'withCostFunction' does for 'optimize').
+--
+-- Every callback's raw C signature is @(in, n, <extra scalar args>, out)@: a caller-owned input
+-- buffer of length @n@, then whatever scalars the specific virtual takes (direction, the
+-- splitting parameter @s@, the @(t1,t2)@ time pair QuantLib's own @setTime@ stashes and threads
+-- through -- never a callback of its own, since it only ever stores two doubles), then a
+-- caller-owned *output* buffer also of length @n@. 'pokeBoundedFdmResult' is the one new safety
+-- property beyond 'withCostFunction' (which returns a single scalar, so has no analogous hazard):
+-- the C++ side's output buffer is exactly @n@ doubles, so a too-long Haskell result list must
+-- never be poked past that -- 'pokeBoundedFdmResult' truncates (a too-short list numerically
+-- wrong but safe, implicit-zero-padded).
+pokeBoundedFdmResult :: CUInt -> Ptr CDouble -> [Double] -> IO ()
+pokeBoundedFdmResult n out result = pokeArray out (map realToFrac (take (fromIntegral n) (result ++ repeat 0)))
+
+type FdmApplyFun = Ptr CDouble -> CUInt -> CDouble -> CDouble -> Ptr CDouble -> IO ()
+foreign import ccall "wrapper" mkFdmApplyFunPtr :: FdmApplyFun -> IO (FunPtr FdmApplyFun)
+-- |Wrap a Haskell @(t1,t2) -> grid -> grid'@ function (QuantLib's @FdmLinearOp::apply@\/
+-- @FdmLinearOpComposite::apply@, no direction argument) as a 'FdmApplyFun' C callback for the
+-- duration of one 'QuantLib.Method.fdmRollback' call.
+withFdmApply :: ((Double, Double) -> [Double] -> [Double]) -> (FunPtr FdmApplyFun -> IO b) -> IO b
+withFdmApply f g = mask $ \restore -> do
+  fp <- mkFdmApplyFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call xs n t1 t2 out = do
+      x <- peekArray (fromIntegral n) xs
+      pokeBoundedFdmResult n out (f (realToFrac t1, realToFrac t2) (map realToFrac x))
+
+type FdmApplyDirectionFun = Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> Ptr CDouble -> IO ()
+foreign import ccall "wrapper" mkFdmApplyDirectionFunPtr :: FdmApplyDirectionFun -> IO (FunPtr FdmApplyDirectionFun)
+-- |Wrap a Haskell @direction -> (t1,t2) -> grid -> grid'@ function
+-- (@FdmLinearOpComposite::apply_direction@) as an 'FdmApplyDirectionFun' C callback.
+withFdmApplyDirection :: (Int -> (Double, Double) -> [Double] -> [Double]) -> (FunPtr FdmApplyDirectionFun -> IO b) -> IO b
+withFdmApplyDirection f g = mask $ \restore -> do
+  fp <- mkFdmApplyDirectionFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call xs n dir t1 t2 out = do
+      x <- peekArray (fromIntegral n) xs
+      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac t1, realToFrac t2) (map realToFrac x))
+
+type FdmSolveSplittingFun = Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> CDouble -> Ptr CDouble -> IO ()
+foreign import ccall "wrapper" mkFdmSolveSplittingFunPtr :: FdmSolveSplittingFun -> IO (FunPtr FdmSolveSplittingFun)
+-- |Wrap a Haskell @direction -> s -> (t1,t2) -> grid -> grid'@ function
+-- (@FdmLinearOpComposite::solve_splitting@) as an 'FdmSolveSplittingFun' C callback.
+withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> [Double] -> [Double]) -> (FunPtr FdmSolveSplittingFun -> IO b) -> IO b
+withFdmSolveSplitting f g = mask $ \restore -> do
+  fp <- mkFdmSolveSplittingFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call xs n dir s t1 t2 out = do
+      x <- peekArray (fromIntegral n) xs
+      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac s) (realToFrac t1, realToFrac t2) (map realToFrac x))
+
+type FdmStepConditionFun = Ptr CDouble -> CUInt -> CDouble -> Ptr CDouble -> IO ()
+foreign import ccall "wrapper" mkFdmStepConditionFunPtr :: FdmStepConditionFun -> IO (FunPtr FdmStepConditionFun)
+-- |Wrap an optional Haskell @t -> grid -> grid'@ early-exercise\/barrier-style step condition
+-- (@StepCondition\<Array\>::applyTo@) as an 'FdmStepConditionFun' C callback, or a null 'FunPtr'
+-- when there is no step condition -- mirrors the existing @withMaybeX@ convention (e.g.
+-- 'withMaybeCurrency' above) of passing a null pointer for 'Nothing' rather than a separate
+-- present\/absent flag.
+withMaybeFdmStepCondition :: Maybe (Double -> [Double] -> [Double]) -> (FunPtr FdmStepConditionFun -> IO b) -> IO b
+withMaybeFdmStepCondition Nothing g = g nullFunPtr
+withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
+  fp <- mkFdmStepConditionFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call xs n t out = do
+      x <- peekArray (fromIntegral n) xs
+      pokeBoundedFdmResult n out (f (realToFrac t) (map realToFrac x))
+
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar

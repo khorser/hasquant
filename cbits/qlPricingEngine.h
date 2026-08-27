@@ -211,6 +211,16 @@ extern "C" {
   QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
 
   void qlFreeFdmSchemeDesc(FdmSchemeDesc *o);
+  void qlFdmRollback(unsigned opSize,
+    void (*applyFn)(const double* in, unsigned n, double t1, double t2, double* out),
+    void (*applyDirFn)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out),
+    void (*solveSplitFn)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out),
+    void (*stepCondFn)(const double* in, unsigned n, double t, double* out),
+    unsigned stoppingTimesLen, double* stoppingTimes,
+    FdmSchemeDesc* schemeDesc,
+    unsigned gridLen, double* grid,
+    double from, double to, unsigned steps, unsigned dampingSteps,
+    unsigned* outLen, double** outValues, char **e);
   FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e);
   FdmSchemeDesc* qlFdmSchemeDescCraigSneyd(char **e);
   FdmSchemeDesc* qlFdmSchemeDescDouglas(char **e);
