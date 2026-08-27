@@ -6,9 +6,11 @@ module QuantLib.Internal.CalendarEnum
     mapCalendar
   , CalendarConstructor(..)
   , JointCalendarRule(..)
+  , readCalendarConstructorPlain
 
   , mapDayCounter
   , DayCounterConstructor(..)
+  , readDayCounterConstructorPlain
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -55,6 +57,8 @@ $(deriveCrossEnum CrossEnumSpec
 deriving instance Show CalendarConstructor
 deriving instance Eq CalendarConstructor
 
+$(deriveReadPlain "readCalendarConstructorPlain" ''CalendarConstructor)
+
 {#enum DayCounterType{} add prefix = "DayCounter__" deriving(Show, Eq, Read)#}
 {#enum ActualActualConvention{} add prefix = "ActualActual__" deriving(Show, Eq, Read)#}
 {#enum Thirty360Convention{} add prefix = "Thirty360__" deriving(Show, Eq, Read)#}
@@ -80,5 +84,7 @@ $(deriveCrossEnum CrossEnumSpec
 
 deriving instance Show DayCounterConstructor
 deriving instance Eq DayCounterConstructor
+
+$(deriveReadPlain "readDayCounterConstructorPlain" ''DayCounterConstructor)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -8,11 +8,16 @@ module QuantLib.Internal.Syntax
   , IborConstructorSpec(..)
   , deriveIborConstructor
   , deriveOptionsRecord
+  , deriveReadPlain
+  , deriveReadInstance
   ) where
 import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib(DecsQ, TypeQ, ExpQ, conP, plainTV)
 import Data.List(isPrefixOf, isSuffixOf)
+import Data.Maybe(catMaybes)
+import Data.Char(toUpper)
 import Control.Monad((>=>))
+import System.IO.Unsafe(unsafePerformIO)
 
 -- All three derive functions below build their output as raw Dec/Con/Exp/Pat constructors
 -- rather than quotation brackets or the Q combinators from TH.Lib, so the shape of what is
@@ -314,5 +319,207 @@ deriveOptionsRecord recName tyVarNames fields = do
     fieldNames = [mkName n | (n, _, _) <- fields]
     -- lazy fields, unlike the strict (!) ones the two enum-merging functions above generate
     strictness = Bang NoSourceUnpackedness NoSourceStrictness
+
+-- A merged ADT from deriveCrossEnum/deriveIborConstructor can't get a plain `deriving
+-- (Read)` when any of its "extra" constructors carries a live QuantLib object (Calendar,
+-- Currency, DayCounter, Schedule -- see the newtype declarations in QuantLib.Internal.Type):
+-- those are opaque ForeignPtr handles with no Read instance and no realistic way to acquire
+-- one, and GHC's stock deriving needs Read for every field type across *every* constructor
+-- of the type, not just the ones actually being parsed.
+--
+-- This generates a plain `Int -> ReadS <targetTy>` function, *not* a `Read` instance, that
+-- covers every constructor whose fields are all directly Read (every deriveCrossEnum
+-- cross-product tag, every BoolSub case, and any "extra" constructor with no live-object
+-- field -- Bespoke, for CalendarConstructor). Constructors with a
+-- Calendar/Currency/DayCounter/Schedule field are left out entirely: the actual `Read
+-- <targetTy>` instance is hand-written at the splice site that has the live-object
+-- materializer in scope (`calendar`/`currency`/`dayCounter`), as this generated function's
+-- alternatives `++`-ed with one hand-written alternative per proxy-backed live field, e.g.
+--   instance Read CalendarConstructor where
+--     readsPrec d r = readCalendarConstructorPlain d r
+--       ++ readParen (d > 10) (\r' -> [(Joint2 c1 c2 rule, s3)
+--            | ("Joint2", s0) <- lex r', (p1, s1) <- readsPrec 11 s0
+--            , let c1 = unsafePerformIO (calendar p1), (p2, s2) <- readsPrec 11 s1
+--            , let c2 = unsafePerformIO (calendar p2), (rule, s3) <- readsPrec 11 s2]) r
+-- (`unsafePerformIO` here mirrors `Show Calendar`/`Show Currency`/`Show DayCounter`'s own
+-- `showStandalone`, `QuantLib/Internal/Type.hs` -- calling into C++ from pure code is already
+-- this codebase's idiom for these types, and the shim functions underneath already catch
+-- `std::exception` and turn it into an ordinary `throwIO`, `errorCheck` in
+-- `QuantLib/Internal.hs`, so no raw C++ exception crosses it.) Skipping
+-- ActualActualBond'/ActualActualISMA' (Schedule fields, no readable proxy at all) from
+-- DayCounterConstructor's hand-written instance leaves them permanently unparseable by
+-- design: no alternative means `read`/`reads` falls through to the standard "no parse".
+--
+-- Generating the *function* here but hand-writing the *instance* elsewhere (rather than
+-- generating the whole instance in one place, as deriveReadInstance below does for
+-- IborConstructor) works around a genuine c2hs constraint: c2hs appends every
+-- `{#fun#}`-generated `foreign import ..._'_` stub at the *physical end* of the file it
+-- preprocesses, regardless of where the `{#fun#}` pragma establishing it sits. A top-level TH
+-- splice forces GHC to split the module into declaration groups at that point, so any
+-- `{#fun#}` wrapper function textually before the splice loses sight of its own stub (still
+-- to come, in the final group) -- "Variable not in scope: qlJointCalendar2'_" and
+-- similarly-named errors, in a module (QuantLib.Time.Calendar) that compiled fine before a
+-- splice referencing `calendar` was added there. A splice is only safe in a `.chs` file if it
+-- comes before every `{#fun#}` pragma in that file, or the file has none at all. CalendarEnum
+-- has no `{#fun#}` pragmas, but the *instance* needs `calendar`/`dayCounter` -- defined in
+-- Calendar.chs/Schedule.chs, which both have `{#fun#}` pragmas splattered throughout and
+-- already import CalendarEnum back (so splicing the instance there too would also be a
+-- cycle) -- hence generating only the live-object-free *function* here, splicing that where
+-- it's declared, and hand-writing the *instance* where the materializer lives.
+liveObjectTypeNames :: [String]
+liveObjectTypeNames = ["Calendar", "Currency", "DayCounter", "Schedule"]
+
+isDirectlyReadable :: Type -> Bool
+isDirectlyReadable (ConT n) = nameBase n `notElem` liveObjectTypeNames
+isDirectlyReadable _ = True
+
+deriveReadPlain :: String -> Name -> DecsQ
+deriveReadPlain fnName targetTy = do
+  cons <- getConstructors targetTy
+  let readableCons = [(con, map snd args) | (con, args) <- cons, all (isDirectlyReadable . snd) args]
+  d <- newName "d"
+  r <- newName "r"
+  alts <- mapM (mkAlt d) readableCons
+  let appliedAlts = [AppE a (VarE r) | a <- alts]
+      body = case appliedAlts of
+        [] -> ListE []
+        (a0:as) -> foldl (\acc x -> InfixE (Just acc) (VarE '(++)) (Just x)) a0 as
+      resultTy = AppT ListT (pairT (ConT targetTy) (ConT ''String))
+      sig = SigD fn (arrowT (ConT ''Int) (arrowT (ConT ''String) resultTy))
+      def = FunD fn [Clause [VarP d, VarP r] (NormalB body) []]
+  return [sig, def]
+  where
+    fn = mkName fnName
+    appPrec = 10 :: Integer
+
+    mkAlt :: Name -> (Name, [Type]) -> Q Exp
+    mkAlt d (con, tys) = do
+      r0 <- newName "r0"
+      r1 <- newName "r1"
+      let lexStmt = BindS (TupP [LitP (StringL (nameBase con)), VarP r1]) (AppE (VarE 'lex) (VarE r0))
+      (fieldStmts, xs, sLast) <- foldFields r1 tys
+      let yieldExp = pairE (foldl AppE (ConE con) (map VarE xs)) (VarE sLast)
+          comp = CompE (lexStmt : fieldStmts ++ [NoBindS yieldExp])
+          lam = LamE [VarP r0] comp
+          cond | null tys = ConE 'False
+               | otherwise = InfixE (Just (VarE d)) (VarE '(>)) (Just (LitE (IntegerL appPrec)))
+      return (AppE (AppE (VarE 'readParen) cond) lam)
+
+    -- threads the "remaining input" variable through one readsPrec call per field, returning
+    -- the field-binding Stmts, the Names holding each field's parsed value (in order), and
+    -- the Name holding what's left of the input.
+    foldFields :: Name -> [Type] -> Q ([Stmt], [Name], Name)
+    foldFields cur [] = return ([], [], cur)
+    foldFields cur (_:tys) = do
+      x <- newName "x"
+      sNext <- newName "s"
+      let readStmt = BindS (TupP [VarP x, VarP sNext])
+                           (AppE (AppE (VarE 'readsPrec) (LitE (IntegerL (appPrec + 1)))) (VarE cur))
+      (restStmts, restXs, finalS) <- foldFields sNext tys
+      return (readStmt : restStmts, x : restXs, finalS)
+
+-- Generates a *full* `Read <targetTy>` instance in one splice, unlike deriveReadPlain above
+-- (whose function still needs a hand-written instance layered on top elsewhere). This is only
+-- legal where deriveReadPlain's comment says a splice is safe (before any `{#fun#}` pragma in
+-- the file, or none at all) *and* the field materializers named in `table` (e.g. `[("Calendar",
+-- 'calendar)]`) already live in other, separately-compiled modules -- so this file isn't the
+-- one closing an import cycle by needing them. IborConstructor (spliced from
+-- QuantLib.Index.InterestRate, before that file's first `{#fun#}`, needing
+-- `calendar`/`currency`/`dayCounter` from three *other* already-compiled modules) is the one
+-- user of this today; CalendarConstructor/DayCounterConstructor can't use it precisely because
+-- their materializers are declared in modules that import CalendarEnum back.
+--
+-- A field whose type name is in `table` is parsed as its proxy type and materialized via a
+-- generated top-level `unsafe<Fn>` binding (`unsafeCalendar = unsafePerformIO . calendar`,
+-- etc, one per distinct materializer, each NOINLINE for the same reason as
+-- `showStandalone`/the hand-written `unsafeCalendar`s in Calendar.chs/Schedule.chs). A field
+-- whose type name is in `liveObjectTypeNames` but not `table` (or any other live type this
+-- table doesn't cover) makes its whole constructor unparseable, exactly as in deriveReadPlain.
+deriveReadInstance :: Name -> [(String, Name)] -> DecsQ
+deriveReadInstance targetTy table = do
+  cons <- getConstructors targetTy
+  d <- newName "d"
+  r <- newName "r"
+  altsMaybe <- mapM (\(con, args) -> mkAlt d (map snd args) con) cons
+  wrapperDecs <- concat <$> mapM mkWrapper (nubNames (map snd table))
+  let alts = catMaybes altsMaybe
+      appliedAlts = [AppE a (VarE r) | a <- alts]
+      body = case appliedAlts of
+        [] -> ListE []
+        (a0:as) -> foldl (\acc x -> InfixE (Just acc) (VarE '(++)) (Just x)) a0 as
+      readsPrecDec = FunD 'readsPrec [Clause [VarP d, VarP r] (NormalB body) []]
+      instanceDec = InstanceD Nothing [] (AppT (ConT ''Read) (ConT targetTy)) [readsPrecDec]
+  return (wrapperDecs ++ [instanceDec])
+  where
+    appPrec = 10 :: Integer
+
+    nubNames = foldr (\n acc -> if n `elem` acc then acc else n : acc) []
+
+    wrapperName :: Name -> Name
+    wrapperName fn = mkName ("unsafe" ++ capitalize (nameBase fn))
+      where capitalize (c:cs) = toUpper c : cs
+            capitalize [] = []
+
+    -- reifies `fn :: <proxy> -> IO <live>` to give the generated `unsafe<Fn>` wrapper an
+    -- explicit signature (a bare `deriving`-adjacent, unsigned top-level binding would trip
+    -- -Wmissing-signatures) without having to thread the proxy type's own Name through
+    -- `table` -- `table` only ever needs to name the materializer, this recovers its type.
+    mkWrapper :: Name -> Q [Dec]
+    mkWrapper fn = do
+      (dom, cod) <- reifyFnType fn
+      let wname = wrapperName fn
+      return
+        [ SigD wname (arrowT dom cod)
+        , FunD wname [Clause [] (NormalB (InfixE (Just (VarE 'unsafePerformIO)) (VarE '(.)) (Just (VarE fn)))) []]
+        , PragmaD (InlineP wname NoInline FunLike AllPhases)
+        ]
+
+    reifyFnType :: Name -> Q (Type, Type)
+    reifyFnType fn = reify fn >>= \case
+      VarI _ (AppT (AppT ArrowT dom) (AppT (ConT io) cod)) _ | io == ''IO -> return (dom, cod)
+      info -> fail $ "deriveReadInstance: expected `<proxy> -> IO <live>` for "
+                       ++ show fn ++ ", got: " ++ show info
+
+    classifyReadField :: Type -> Maybe FieldReadPlan
+    classifyReadField (ConT n)
+      | Just fn <- lookup (nameBase n) table = Just (ReadViaProxy fn)
+      | nameBase n `elem` liveObjectTypeNames = Nothing
+    classifyReadField _ = Just ReadDirect
+
+    mkAlt :: Name -> [Type] -> Name -> Q (Maybe Exp)
+    mkAlt d tys con = case mapM classifyReadField tys of
+      Nothing -> return Nothing
+      Just plans -> do
+          r0 <- newName "r0"
+          r1 <- newName "r1"
+          let lexStmt = BindS (TupP [LitP (StringL (nameBase con)), VarP r1]) (AppE (VarE 'lex) (VarE r0))
+          (fieldStmts, xs, sLast) <- foldFieldsProxy r1 plans
+          let yieldExp = pairE (foldl AppE (ConE con) (map VarE xs)) (VarE sLast)
+              comp = CompE (lexStmt : fieldStmts ++ [NoBindS yieldExp])
+              lam = LamE [VarP r0] comp
+              cond | null tys = ConE 'False
+                   | otherwise = InfixE (Just (VarE d)) (VarE '(>)) (Just (LitE (IntegerL appPrec)))
+          return (Just (AppE (AppE (VarE 'readParen) cond) lam))
+
+    -- like deriveReadPlain's foldFields, but a ReadViaProxy field also materializes the
+    -- parsed proxy value via the field's generated `unsafe<Fn>` wrapper.
+    foldFieldsProxy :: Name -> [FieldReadPlan] -> Q ([Stmt], [Name], Name)
+    foldFieldsProxy cur [] = return ([], [], cur)
+    foldFieldsProxy cur (p:ps) = do
+      xRaw <- newName "x"
+      sNext <- newName "s"
+      let readStmt = BindS (TupP [VarP xRaw, VarP sNext])
+                           (AppE (AppE (VarE 'readsPrec) (LitE (IntegerL (appPrec + 1)))) (VarE cur))
+      case p of
+        ReadDirect -> do
+          (restStmts, restXs, finalS) <- foldFieldsProxy sNext ps
+          return (readStmt : restStmts, xRaw : restXs, finalS)
+        ReadViaProxy fn -> do
+          xVal <- newName "x"
+          let letStmt = LetS [ValD (VarP xVal) (NormalB (AppE (VarE (wrapperName fn)) (VarE xRaw))) []]
+          (restStmts, restXs, finalS) <- foldFieldsProxy sNext ps
+          return (readStmt : letStmt : restStmts, xVal : restXs, finalS)
+
+data FieldReadPlan = ReadDirect | ReadViaProxy Name
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

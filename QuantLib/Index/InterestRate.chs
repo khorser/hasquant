@@ -77,6 +77,13 @@ import QuantLib.Internal.Type
 -- overnightIndexedSwapIndex below marshals RateAveragingType as a plain Int
 -- via fromEnum instead, per CLAUDE.md's cross-module enum-import workaround.
 import QuantLib.CashFlow (RateAveragingType)
+-- Only for IborConstructor's Read instance below (deriveReadInstance's materializer
+-- table): this module already defines its own `currency`/`dayCounter` (an
+-- InterestRateIndex's currency/day counter, unrelated), so these come in qualified to
+-- avoid clashing with them.
+import QuantLib.Time.Calendar (calendar)
+import qualified QuantLib.Currency as Ccy (currency)
+import qualified QuantLib.Time.Schedule as Sched (dayCounter)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -148,6 +155,17 @@ $(deriveIborConstructor IborConstructorSpec
 
 deriving instance Show IborConstructor
 deriving instance Eq IborConstructor
+
+-- Spliced here rather than alongside IborConstructor's declaration just above: this needs
+-- `calendar`/`Ccy.currency`/`Sched.dayCounter`, none of which InterestRate.chs's own
+-- declaration site could import without a cycle back through this module. See
+-- deriveReadInstance's comment in Internal/Syntax.hs for the general shape; Schedule.chs and
+-- Calendar.chs use the identical pattern for DayCounterConstructor/CalendarConstructor.
+$(deriveReadInstance ''IborConstructor
+    [ ("Calendar", 'calendar)
+    , ("Currency", 'Ccy.currency)
+    , ("DayCounter", 'Sched.dayCounter)
+    ])
 
 -- Fixed-tenor shortcuts, mirroring upstream's thin @Euribor3M@-style subclasses (whose
 -- constructors only delegate to the parameterized one). They are bidirectional pattern

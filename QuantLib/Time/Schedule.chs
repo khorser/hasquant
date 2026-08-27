@@ -1,3 +1,8 @@
+-- DayCounterConstructor is declared in QuantLib.Internal.CalendarEnum, but its Read instance
+-- needs `calendar` (QuantLib.Time.Calendar), and CalendarEnum -> Schedule -> CalendarEnum
+-- would be a cycle if the instance lived there instead -- see deriveReadPlain's comment in
+-- Internal/Syntax.hs. Deliberate, not a stray orphan.
+{-# OPTIONS_GHC -Wno-orphans #-}
 module QuantLib.Time.Schedule
   (
     DayCounterConstructor(..)
@@ -30,6 +35,8 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.CalendarEnum
+import QuantLib.Time.Calendar (calendar)
+import System.IO.Unsafe(unsafePerformIO)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -122,5 +129,27 @@ add = addPeriods
 
 -- |Normalizes a period to the coarsest equivalent time unit (e.g. 12M to 1Y).
 {#fun qlPeriodNormalize1 as normalize{fromEnumQuantity`Int,TimeUnit'&,preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
+
+-- Same NOINLINE reasoning as QuantLib.Time.Calendar's own unsafeCalendar (which this can't
+-- reuse: DayCounterConstructor's Read instance needs its own top-level NOINLINE binding, not
+-- a shared one, so GHC can't float/duplicate-inline this call site independently of that
+-- one's).
+unsafeCalendar :: CalendarConstructor -> Calendar
+unsafeCalendar = unsafePerformIO . calendar
+{-# NOINLINE unsafeCalendar #-}
+
+-- Hand-written, not `deriving`/TH-spliced: DayCounterConstructor's Business252 case carries a
+-- live Calendar field (see QuantLib.Internal.Syntax.deriveReadPlain's comment for why the
+-- generated part is spliced back in CalendarEnum.chs instead of here).
+-- ActualActualBond'/ActualActualISMA' carry a Schedule, which has no small enum-shaped
+-- readable proxy at all -- they get no alternative here, so parsing their name deliberately
+-- falls through to the standard Read "no parse" failure.
+instance Read DayCounterConstructor where
+  readsPrec d r = readDayCounterConstructorPlain d r
+    ++ readParen (d > 10) (\r' ->
+         [ (Business252 c, s1)
+         | ("Business252", s0) <- lex r'
+         , (p, s1) <- readsPrec 11 s0, let c = unsafeCalendar p
+         ]) r
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
