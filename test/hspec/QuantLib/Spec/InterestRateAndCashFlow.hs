@@ -17,10 +17,17 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
-import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings)
+import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings
+  ,historicalIndexAnalysisSkippedDates, historicalIndexAnalysisMean, historicalIndexAnalysisStandardDeviation
+  ,historicalIndexAnalysisSkewness, historicalIndexAnalysisKurtosis, historicalIndexAnalysisMin, historicalIndexAnalysisMax
+  ,historicalIndexAnalysisSemiVariance, historicalIndexAnalysisSemiDeviation
+  ,historicalIndexAnalysisDownsideVariance, historicalIndexAnalysisDownsideDeviation
+  ,historicalIndexAnalysisPercentile, historicalIndexAnalysisGaussianPercentile
+  ,historicalIndexAnalysisValueAtRisk, historicalIndexAnalysisGaussianValueAtRisk
+  ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
+  ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), forecastFixing
-  ,historicalRatesAnalysis, historicalRatesAnalysisSkippedDates, historicalRatesAnalysisMean
-  ,historicalRatesAnalysisCovariance, historicalRatesAnalysisCorrelation)
+  ,historicalRatesAnalysis)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
@@ -493,16 +500,20 @@ spec tod = do
       -- ql/models/marketmodels/historicalratesanalysis.cpp) -- passing the same index
       -- twice sidesteps having to hand-derive QuantLib's variance normalisation: with two
       -- identical series, every covariance/correlation entry must come out equal
-      -- regardless of that normalisation, which is what this checks.
-      it "mean matches a hand-computed average of relative fixing changes; covariance/correlation are self-consistent for a series against itself" $
+      -- regardless of that normalisation, which is what this checks. The fixing series
+      -- oscillates (via 'sin') rather than moving monotonically so that the relative
+      -- returns have both signs -- otherwise valueAtRisk/expectedShortfall at a
+      -- [0.9, 1.0) centile would find no samples below their target and throw "no data
+      -- below the target" (see ql/math/statistics/riskstatistics.hpp).
+      it "mean/standardDeviation/min/max match hand-computed values; VaR/ES/gaussian* don't throw and are self-consistent; covariance/correlation are self-consistent for a series against itself" $
         Settings.keepingSettings' $ do
           idx <- iborIndex (Euribor (6, Months)) Nothing
           cal <- fixingCalendar idx
           clearFixings idx
 
           let startDate = 1 `january` 2021
-              n = 12 :: Int
-              fixingAt k = 0.010 + 0.0007 * fromIntegral (k :: Int)
+              n = 30 :: Int
+              fixingAt k = 0.010 + 0.004 * sin (fromIntegral (k :: Int))
               genDates :: Int -> Day -> IO [Day]
               genDates 0 d = return [d]
               genDates k d = (d :) <$> (advance cal d (1, Months) Following False >>= genDates (k - 1))
@@ -512,21 +523,54 @@ spec tod = do
           forM_ (zip [0 ..] ds) $ \(k, d) -> addFixing idx d (fixingAt k) False
 
           let rels = [fixingAt k / fixingAt (k - 1) - 1 | k <- [1 .. n]]
-              expectedMean = sum rels / fromIntegral (length rels)
+              nD = fromIntegral (length rels)
+              expectedMean = sum rels / nD
+              expectedStdDev = sqrt (sum [(r - expectedMean) ^ (2 :: Int) | r <- rels] / (nD - 1))
 
-          hra <- historicalRatesAnalysis 2 startDate (last ds) (1, Months) [idx, idx]
-          historicalRatesAnalysisSkippedDates hra `shouldReturn` []
+          hra <- historicalRatesAnalysis startDate (last ds) (1, Months) [idx, idx]
+          historicalIndexAnalysisSkippedDates hra `shouldReturn` []
 
-          means <- historicalRatesAnalysisMean hra
+          means <- historicalIndexAnalysisMean hra
           means `shouldSatisfy` all (closePrec expectedMean 1.0e-9)
 
-          Matrix cRows cCols cov <- historicalRatesAnalysisCovariance hra
+          stdDevs <- historicalIndexAnalysisStandardDeviation hra
+          stdDevs `shouldSatisfy` all (closePrec expectedStdDev 1.0e-9)
+
+          mins <- historicalIndexAnalysisMin hra
+          maxs <- historicalIndexAnalysisMax hra
+          mins `shouldSatisfy` all (closePrec (minimum rels) 1.0e-9)
+          maxs `shouldSatisfy` all (closePrec (maximum rels) 1.0e-9)
+
+          -- exercise the remaining core/semi-/downside stats: just confirm they don't throw
+          -- and come back as sane (non-negative, finite) numbers.
+          _ <- historicalIndexAnalysisSkewness hra
+          _ <- historicalIndexAnalysisKurtosis hra
+          semiVars <- historicalIndexAnalysisSemiVariance hra
+          semiDevs <- historicalIndexAnalysisSemiDeviation hra
+          downVars <- historicalIndexAnalysisDownsideVariance hra
+          downDevs <- historicalIndexAnalysisDownsideDeviation hra
+          mapM_ (`shouldSatisfy` all (>= 0)) [semiVars, semiDevs, downVars, downDevs]
+
+          let centile = 0.9 :: Double
+          vars <- historicalIndexAnalysisValueAtRisk hra centile
+          ess <- historicalIndexAnalysisExpectedShortfall hra centile
+          gVars <- historicalIndexAnalysisGaussianValueAtRisk hra centile
+          gEss <- historicalIndexAnalysisGaussianExpectedShortfall hra centile
+          _ <- historicalIndexAnalysisPercentile hra centile
+          _ <- historicalIndexAnalysisGaussianPercentile hra centile
+          -- VaR/expected shortfall are losses, capped at 0.0 -- expected shortfall (the
+          -- average loss beyond the VaR threshold) must be at least as large as VaR itself.
+          mapM_ (`shouldSatisfy` all (>= 0)) [vars, ess, gVars, gEss]
+          zipWith (>=) ess vars `shouldSatisfy` and
+          zipWith (>=) gEss gVars `shouldSatisfy` and
+
+          Matrix cRows cCols cov <- historicalIndexAnalysisCovariance hra
           (cRows, cCols) `shouldBe` (2, 2)
           case cov of
             [c00, _, _, _] -> cov `shouldSatisfy` all (closePrec c00 1.0e-9)
             _ -> expectationFailure "covariance matrix did not have 4 entries"
 
-          Matrix rRows rCols corr <- historicalRatesAnalysisCorrelation hra
+          Matrix rRows rCols corr <- historicalIndexAnalysisCorrelation hra
           (rRows, rCols) `shouldBe` (2, 2)
           corr `shouldSatisfy` all (closePrec 1.0 1.0e-9)
 

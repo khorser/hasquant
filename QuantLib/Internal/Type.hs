@@ -238,14 +238,14 @@ withTimeGrid = withStandalone . getCTimeGrid
 
 -- |Never subclassed and never passed polymorphically elsewhere, so it gets the plain
 -- 'Standalone' shape (like 'TimeGrid') rather than a 'GenX'/'AnyOf' hierarchy root.
-data CHistoricalRatesAnalysis
-newtype HistoricalRatesAnalysis = HistoricalRatesAnalysis {getCHistoricalRatesAnalysis :: Standalone CHistoricalRatesAnalysis}
-foreign import ccall unsafe "ql.h &qlFreeHistoricalRatesAnalysis" qlFreeHistoricalRatesAnalysis :: FinalizerPtr CHistoricalRatesAnalysis
-instance Finalizable CHistoricalRatesAnalysis where finalize = qlFreeHistoricalRatesAnalysis
-peekHistoricalRatesAnalysis :: Ptr CHistoricalRatesAnalysis -> IO HistoricalRatesAnalysis
-peekHistoricalRatesAnalysis = HistoricalRatesAnalysis <.> peekStandalone
-withHistoricalRatesAnalysis :: HistoricalRatesAnalysis -> (Ptr CHistoricalRatesAnalysis -> IO b) -> IO b
-withHistoricalRatesAnalysis = withStandalone . getCHistoricalRatesAnalysis
+data CHistoricalIndexAnalysis
+newtype HistoricalIndexAnalysis = HistoricalIndexAnalysis {getCHistoricalIndexAnalysis :: Standalone CHistoricalIndexAnalysis}
+foreign import ccall unsafe "ql.h &qlFreeHistoricalIndexAnalysis" qlFreeHistoricalIndexAnalysis :: FinalizerPtr CHistoricalIndexAnalysis
+instance Finalizable CHistoricalIndexAnalysis where finalize = qlFreeHistoricalIndexAnalysis
+peekHistoricalIndexAnalysis :: Ptr CHistoricalIndexAnalysis -> IO HistoricalIndexAnalysis
+peekHistoricalIndexAnalysis = HistoricalIndexAnalysis <.> peekStandalone
+withHistoricalIndexAnalysis :: HistoricalIndexAnalysis -> (Ptr CHistoricalIndexAnalysis -> IO b) -> IO b
+withHistoricalIndexAnalysis = withStandalone . getCHistoricalIndexAnalysis
 
 data CDividend
 newtype Dividend = Dividend {getCDividend :: Standalone CDividend}

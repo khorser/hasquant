@@ -60,18 +60,13 @@ module QuantLib.Index.InterestRate
   , underlyingSwap
   , underlyingOIS
 
-  , HistoricalRatesAnalysis
   , historicalRatesAnalysis
-  , historicalRatesAnalysisSkippedDates
-  , historicalRatesAnalysisSkippedDatesErrorMessage
-  , historicalRatesAnalysisMean
-  , historicalRatesAnalysisCovariance
-  , historicalRatesAnalysisCorrelation
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Common
 import QuantLib.Internal.Type
+import QuantLib.Index (historicalIndexAnalysis)
 -- Plain (non-c2hs) import: QuantLib.CashFlow is later in exposed-modules than
 -- this file, so a {#import#} here would need its .chi before it exists.
 -- overnightIndexedSwapIndex below marshals RateAveragingType as a plain Int
@@ -371,47 +366,9 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 -- |Returns the vanilla swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
 {#fun qlSwapIndexUnderlyingSwap as underlyingSwap{withSwapIndex*`GenSwapIndex sidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
-{#pointer *QlHistoricalRatesAnalysis as HistoricalRatesAnalysis foreign -> CHistoricalRatesAnalysis nocode#}
-
--- |Computes 'SequenceStatistics' (mean\/covariance\/correlation) over historical fixings of the
--- given indexes, sampled every @step@ between @startDate@ and @endDate@. @dimension@ must equal
--- the number of indexes; a date/index pair whose fixing is unavailable is recorded in
--- 'historicalRatesAnalysisSkippedDates'\/'historicalRatesAnalysisSkippedDatesErrorMessage' rather
--- than failing the whole analysis. 'SequenceStatistics' itself isn't given a dedicated Haskell
--- type: it's only ever the accumulator this constructor fills internally, with no other use in
--- hasquant, so its mean\/covariance\/correlation are exposed directly as accessors here (see
--- CLAUDE.md's \"don't mirror the C++ hierarchy 1:1\").
-{#fun qlHistoricalRatesAnalysis as historicalRatesAnalysis{fromIntegral`Word' -- ^dimension
-  ,withDay*`Day' -- ^startDate
-  ,withDay*`Day' -- ^endDate
-  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^step
-  ,withInterestRateIndexArray*`[GenInterestRateIndex ridx]'&
-  ,preErrorCheck-`String'errorCheck*-}->`HistoricalRatesAnalysis'peekHistoricalRatesAnalysis*#}
-
--- |Fixing dates skipped because no historical fixing was available for at least one index.
-{#fun qlHistoricalRatesAnalysisSkippedDates as historicalRatesAnalysisSkippedDates{withHistoricalRatesAnalysis*`HistoricalRatesAnalysis',preArray-`[Day]'&peekDayArray*}->`()'#}
-
--- |The error message recorded for each date in 'historicalRatesAnalysisSkippedDates', in the same order.
-{#fun qlHistoricalRatesAnalysisSkippedDatesErrorMessage as historicalRatesAnalysisSkippedDatesErrorMessage{withHistoricalRatesAnalysis*`HistoricalRatesAnalysis',preArray-`[String]'&peekCStringArray*}->`()'#}
-
--- |Per-index mean of the historical fixings actually sampled.
-{#fun qlHistoricalRatesAnalysisMean as historicalRatesAnalysisMean{withHistoricalRatesAnalysis*`HistoricalRatesAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
-toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
-toMatrixDouble (r, c, d) = Matrix r c d
-
--- |Covariance matrix of the historical fixings across indexes.
-historicalRatesAnalysisCovariance :: HistoricalRatesAnalysis -> IO (Matrix Double)
-historicalRatesAnalysisCovariance hra = toMatrixDouble <$> qlHistoricalRatesAnalysisCovariance hra
-{#fun qlHistoricalRatesAnalysisCovariance{withHistoricalRatesAnalysis*`HistoricalRatesAnalysis'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
-  ,preErrorCheck-`String'errorCheck*-}->`()'#}
-
--- |Correlation matrix of the historical fixings across indexes.
-historicalRatesAnalysisCorrelation :: HistoricalRatesAnalysis -> IO (Matrix Double)
-historicalRatesAnalysisCorrelation hra = toMatrixDouble <$> qlHistoricalRatesAnalysisCorrelation hra
-{#fun qlHistoricalRatesAnalysisCorrelation{withHistoricalRatesAnalysis*`HistoricalRatesAnalysis'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
-  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Convenience wrapper: 'historicalIndexAnalysis' specialised to interest-rate indexes.
+historicalRatesAnalysis :: Day -> Day -> (Int, TimeUnit) -> [GenInterestRateIndex ridx] -> IO HistoricalIndexAnalysis
+historicalRatesAnalysis startDate endDate step ridxs =
+  mapM asIndex ridxs >>= historicalIndexAnalysis startDate endDate step
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

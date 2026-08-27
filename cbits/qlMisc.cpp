@@ -28,7 +28,7 @@
 #include <ql/experimental/commodities/unitofmeasureconversion.hpp>
 #include <ql/experimental/commodities/unitofmeasureconversionmanager.hpp>
 #include <ql/experimental/commodities/commoditysettings.hpp>
-#include <ql/indexes/index.hpp>
+#include <ql/index.hpp>
 #include <ql/math/statistics/sequencestatistics.hpp>
 
 #ifdef QLTRACK_ALLOCATIONS
