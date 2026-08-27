@@ -64,8 +64,8 @@ import Data.List.NonEmpty(NonEmpty)
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
-{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *QlOptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *QlEndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 
 -- |rounds a value to the precision and rule carried by the given 'Rounding'

@@ -157,9 +157,9 @@ run = do
         fittings
       where
         noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")
-        fittings = [TS.ExponentialSplines True [] [] 0.0 noCutoff 9 Nothing Nothing,
-                      TS.SimplePolynomial 3 True [] [] 0.0 noCutoff Nothing,
-                      TS.NelsonSiegel [] [] 0.0 noCutoff Nothing,
-                      TS.CubicBSplines [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True [] [] 0.0 noCutoff Nothing,
-                      TS.Svensson [] [] 0.0 noCutoff Nothing]
+        fittings = [TS.ExponentialSplines True [] [] 0.0 noCutoff 9 Nothing Nothing Nothing,
+                      TS.SimplePolynomial 3 True [] [] 0.0 noCutoff Nothing Nothing,
+                      TS.NelsonSiegel [] [] 0.0 noCutoff Nothing Nothing,
+                      TS.CubicBSplines [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True [] [] 0.0 noCutoff Nothing Nothing,
+                      TS.Svensson [] [] 0.0 noCutoff Nothing Nothing]
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

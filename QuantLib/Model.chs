@@ -109,8 +109,8 @@ import QuantLib.Internal.Common
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
-{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *QlOptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *QlEndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}

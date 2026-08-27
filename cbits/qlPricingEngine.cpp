@@ -843,8 +843,8 @@ QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int*
 void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
   try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
-  try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), *arg(method), *arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
+void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
+  try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e) {
   try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(*arg(termStructure), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), *arg(swaptionVol), qlDateVector(swaptionExpiries, expiriesLen), qlPeriodVector(tenorQuantity, tenorUnit, tenorsLen), *arg(swapIndexBase), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
@@ -884,8 +884,8 @@ void qlFreeCalibrationHelper(QlCalibrationHelper *o) {del(o);}
 void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
 QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
-void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, unsigned fpLen, int* fixParameters, char **e) {
-  try {(*arg(o))->calibrate(qlVector(x1, x1Len), *arg(method), *arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+wLen), std::vector<bool>(fixParameters, fixParameters+fpLen));
+void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned fpLen, int* fixParameters, char **e) {
+  try {(*arg(o))->calibrate(qlVector(x1, x1Len), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+wLen), std::vector<bool>(fixParameters, fixParameters+fpLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 double qlCalibratedModelValue(QlCalibratedModel* o, unsigned pLen, double* p, unsigned hLen, QlCalibrationHelper** h, char **e) {
   try {return (*arg(o))->value(Array(p, p+pLen), qlVector(h, hLen));

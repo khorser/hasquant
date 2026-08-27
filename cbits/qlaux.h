@@ -861,6 +861,15 @@ typedef Handle<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
 typedef RelinkableHandle<SwaptionVolatilityStructure> QlRelinkableSwaptionVolatilityStructure;
 typedef shared_ptr<SwingExercise> QlSwingExercise;
 typedef shared_ptr<TermStructure> QlTermStructure;
+// EndCriteria/OptimizationMethod are boxed as shared_ptr (not left raw/single-owner) because
+// FittedBondDiscountCurve's fitting methods, SabrInterpolatedSmileSection, and
+// SabrSwaptionVolatilityCube all store one as a shared_ptr member for their own full lifetime --
+// a raw Haskell-finalized pointer handed into that slot would dangle once Haskell's own
+// ForeignPtr is collected. The two purely-synchronous consumers (qlOptimize,
+// qlGsrCalibrateVolatilitiesIterative/qlCalibratedModelCalibrate's method/endCriteria args) are
+// unaffected -- they only ever dereference the box within one call.
+typedef shared_ptr<OptimizationMethod> QlOptimizationMethod;
+typedef shared_ptr<EndCriteria> QlEndCriteria;
 typedef shared_ptr<TypePayoff> QlTypePayoff;
 typedef shared_ptr<VanillaOption> QlVanillaOption;
 typedef shared_ptr<VanillaSwap> QlVanillaSwap;
@@ -992,7 +1001,7 @@ template <> class ObjClassName<DiscountingSwapEngine*> {public: static void outp
 template <> class ObjClassName<DiscountingConstNotionalCrossCurrencySwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingConstNotionalCrossCurrencySwapEngine";}};
 template <> class ObjClassName<Dividend*> {public: static void output(std::ostream& os) {os << "Dividend";}};
 template <> class ObjClassName<EarlyExercise*> {public: static void output(std::ostream& os) {os << "EarlyExercise";}};
-template <> class ObjClassName<EndCriteria*> {public: static void output(std::ostream& os) {os << "EndCriteria";}};
+template <> class ObjClassName<QlEndCriteria*> {public: static void output(std::ostream& os) {os << "QlEndCriteria";}};
 template <> class ObjClassName<EquityCashFlow*> {public: static void output(std::ostream& os) {os << "EquityCashFlow";}};
 template <> class ObjClassName<EquityCashFlowPricer*> {public: static void output(std::ostream& os) {os << "EquityCashFlowPricer";}};
 template <> class ObjClassName<EquityIndex*> {public: static void output(std::ostream& os) {os << "EquityIndex";}};
@@ -1077,7 +1086,7 @@ template <> class ObjClassName<NoConstraint*> {public: static void output(std::o
 template <> class ObjClassName<OISRateHelper*> {public: static void output(std::ostream& os) {os << "OISRateHelper";}};
 template <> class ObjClassName<OneAssetOption*> {public: static void output(std::ostream& os) {os << "OneAssetOption";}};
 template <> class ObjClassName<OneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "OneFactorAffineModel";}};
-template <> class ObjClassName<OptimizationMethod*> {public: static void output(std::ostream& os) {os << "OptimizationMethod";}};
+template <> class ObjClassName<QlOptimizationMethod*> {public: static void output(std::ostream& os) {os << "QlOptimizationMethod";}};
 template <> class ObjClassName<Option*> {public: static void output(std::ostream& os) {os << "Option";}};
 template <> class ObjClassName<OptionletVolatilityStructure*> {public: static void output(std::ostream& os) {os << "OptionletVolatilityStructure";}};
 template <> class ObjClassName<OptionletStripper2*> {public: static void output(std::ostream& os) {os << "OptionletStripper2";}};

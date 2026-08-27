@@ -379,16 +379,16 @@ Constraint* qlPositiveConstraint(char **e) {
   try {return alloc(new PositiveConstraint());
   } catch (std::exception& er) {return handleException<Constraint*>(e, er);}}
 
-OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e) {
-  try {return alloc(new LevenbergMarquardt(epsfcn, xtol, gtol, useCostFunctionsJacobian));
-  } catch (std::exception& er) {return handleException<OptimizationMethod*>(e, er);}}
-OptimizationMethod* qlSimplex(double lambda, char **e) {
-  try {return alloc(new Simplex(lambda));
-  } catch (std::exception& er) {return handleException<OptimizationMethod*>(e, er);}}
+QlOptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e) {
+  try {return ret(new QlOptimizationMethod(shared_ptr<OptimizationMethod>(alloc(new LevenbergMarquardt(epsfcn, xtol, gtol, useCostFunctionsJacobian)))));
+  } catch (std::exception& er) {return handleException<QlOptimizationMethod*>(e, er);}}
+QlOptimizationMethod* qlSimplex(double lambda, char **e) {
+  try {return ret(new QlOptimizationMethod(shared_ptr<OptimizationMethod>(alloc(new Simplex(lambda)))));
+  } catch (std::exception& er) {return handleException<QlOptimizationMethod*>(e, er);}}
 
-EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e) {
-  try {return alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon));
-  } catch (std::exception& er) {return handleException<EndCriteria*>(e, er);}}
+QlEndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e) {
+  try {return ret(new QlEndCriteria(shared_ptr<EndCriteria>(alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon)))));
+  } catch (std::exception& er) {return handleException<QlEndCriteria*>(e, er);}}
 
 // Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
 // Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
@@ -413,12 +413,12 @@ namespace {
   };
 }
 
-void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, OptimizationMethod* method, EndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e) {
+void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, QlOptimizationMethod* method, QlEndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e) {
   try {
     HsCostFunction cf(costFn);
     NoConstraint noConstraint;
     Problem problem(cf, constraint ? *arg(constraint) : static_cast<Constraint&>(noConstraint), Array(x0, x0+x0Len));
-    *outEndCriteriaType = (int)arg(method)->minimize(problem, *arg(endCriteria));
+    *outEndCriteriaType = (int)(*arg(method))->minimize(problem, **arg(endCriteria));
     const Array& sol = problem.currentValue();
     *outCost = problem.functionValue();
     *outLen = (unsigned)sol.size();
@@ -482,10 +482,10 @@ void qlRelinkableQuoteLinkTo(QlRelinkableQuote *o, QlQuote *c, char **e) {
 // same T, so link_ is shared and relinking through the original still reaches everything built
 // on the upcast copy.
 QlQuote* qlRelinkableQuoteAsQuote(QlRelinkableQuote *o) {return ret(new QlQuote(*arg(o)));}
-void qlFreeEndCriteria(EndCriteria *o) {del(o);}
+void qlFreeEndCriteria(QlEndCriteria *o) {del(o);}
 double qlInterestRateRate(InterestRate* o) {return arg(o)->rate();}
 void qlFreeConstraint(Constraint *o) {del(o);}
-void qlFreeOptimizationMethod(OptimizationMethod *o) {del(o);}
+void qlFreeOptimizationMethod(QlOptimizationMethod *o) {del(o);}
 void qlFreeTimeGrid(TimeGrid *o) {del(o);}
 void qlFreeRounding(Rounding *o) {del(o);}
 double qlRound(Rounding *r, double val) {return (*r)(val);}

@@ -249,6 +249,38 @@ spec = do
                     >>= bondHelperBond
           Bond.maturityDate bond `shouldReturn` Just bondMaturity
 
+    -- Proves the QlOptimizationMethod shared_ptr boxing keeps the optimizer alive for a fitting
+    -- method's -- and, once FittedBondDiscountCurve clones it, the curve's -- full lifetime:
+    -- unlike a Nothing (letting the fit fall back to QuantLib's internal LevenbergMarquardt),
+    -- this passes a real OptimizationMethod, lets Haskell's own reference to it go out of scope,
+    -- and forces a collection before the resulting curve is queried. Under the old raw-pointer/
+    -- Standalone scheme this is exactly the sequence that would use-after-free -- Haskell's
+    -- ForeignPtr finalizer would delete the OptimizationMethod out from under the fitting
+    -- method's (and then the curve's cloned fitting method's) own shared_ptr member.
+    describe "fitted bond discount curve fitting methods" $
+      it "keeps a caller-supplied OptimizationMethod alive past Haskell's own GC" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar Null
+          thirty360dc <- dayCounter Thirty360BondBasis
+          helpers <- mapM
+            (\(tenor, coupon) -> do
+              maturity <- advance cal (2 `january` 2024) tenor Unadjusted False
+              sch <- schedule (Just (2 `january` 2024)) maturity (1, Years) cal Unadjusted Unadjusted
+                       Backward False Nothing Nothing
+              price <- Quote.simpleQuote 100.0
+              fixedRateBondHelper price 3 100.0 sch [coupon] thirty360dc Following 100.0 Nothing)
+            [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
+          curve <- do
+            let optMethod = Simplex 0.1
+            fittedBondDiscountCurve 3 cal helpers thirty360dc
+              (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
+              1.0e-10 10000 [] 1.0
+          performGC
+          performGC
+          d <- discount' curve (5 `january` 2029) False
+          d `shouldSatisfy` (\x -> x > 0 && x < 1)
+
     -- No upstream test-suite fixture exists for FxSwapRateHelper (unlike the other rate
     -- helpers ported elsewhere in this file), so this is a self-consistency check instead of
     -- a cached-value comparison: bootstrapping a curve from a single FxSwapRateHelper pillar
@@ -1267,7 +1299,7 @@ spec = do
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
-                    False True False False False Nothing Nothing False 50 False 0.0001
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
           v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
           -- SABR calibration is a least-squares fit, not exact recovery, so this is deliberately a
           -- much looser tolerance than the exact-grid-recovery checks above -- don't tighten it.
@@ -1287,7 +1319,7 @@ spec = do
                     -- ConstantSwaptionVolatility, as this fixture's atmVol is -- it would need a
                     -- discrete grid structure (e.g. swaptionVolatilityMatrix') instead. Exercising
                     -- that path is out of scope for this shape/sanity test.
-                    False True False False False Nothing Nothing False 50 False 0.0001
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
           -- trigger calibration (lazy -- see the shim comment on qlSabrSwaptionVolatilityCube)
           _ <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
           let n = fromIntegral (length optionTenors * length swapTenors)
@@ -1321,7 +1353,31 @@ spec = do
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
-                    False True False False False Nothing Nothing False 50 False 0.0001
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+          k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+
+      -- Proves the QlEndCriteria/QlOptimizationMethod shared_ptr boxing actually keeps the
+      -- calibration objects alive for the cube's full lifetime: unlike every test above (which
+      -- passes Nothing/Nothing, letting SabrSwaptionVolatilityCube fall back to its own internal
+      -- defaults and never touch a Haskell-owned EndCriteria/OptimizationMethod at all), this
+      -- passes real values and lets Haskell's own reference to them go out of scope (the `do`
+      -- block computing the cube ends and the endCriteria/optMethod bindings are never used
+      -- again) before forcing a collection. Under the old raw-pointer/Standalone scheme this is
+      -- exactly the sequence that would use-after-free -- Haskell's ForeignPtr finalizer would
+      -- delete the EndCriteria/OptimizationMethod out from under the cube's own shared_ptr member.
+      it "keeps a caller-supplied EndCriteria/OptimizationMethod alive past Haskell's own GC" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
+          cube <- do
+            let endCriteria = EndCriteria 1000 100 1.0e-8 1.0e-8 1.0e-8
+                optMethod = Simplex 0.1
+            Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+              swapIndexBase shortSwapIndexBase False parametersGuess
+              False True False False False Nothing Nothing False 50 False 0.0001
+              (Just endCriteria) (Just optMethod)
+          performGC
+          performGC
           k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 

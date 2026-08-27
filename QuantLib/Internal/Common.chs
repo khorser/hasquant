@@ -62,9 +62,11 @@ module QuantLib.Internal.Common
   , OptimizationMethod(..)
   , QlOptimizationMethod
   , withOptimizationMethod
+  , withMaybeOptimizationMethod
   , EndCriteria(..)
   , QlEndCriteria
   , withEndCriteria
+  , withMaybeEndCriteria
 
   , QlRounding
   , RoundingType(..)
@@ -227,8 +229,8 @@ peekPtr = pure
 {#pointer *QlRebatedExercise nocode#}
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
-{#pointer *OptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
-{#pointer *EndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
+{#pointer *QlOptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *QlEndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
@@ -635,6 +637,9 @@ endCriteriaMeta = EnumMeta endCriteria
 withEndCriteria :: EndCriteria -> (Ptr CEndCriteria -> IO a) -> IO a
 withEndCriteria = withEnumType endCriteriaMeta
 
+withMaybeEndCriteria :: Maybe EndCriteria -> (Ptr CEndCriteria -> IO a) -> IO a
+withMaybeEndCriteria = withMaybeEnumType endCriteriaMeta
+
 fdmSchemeDescMeta :: EnumMeta FdmScheme CFdmSchemeDesc
 fdmSchemeDescMeta = EnumMeta fdmScheme
 
@@ -647,6 +652,9 @@ optimizationMethodMeta = EnumMeta optimizationMethod
 withOptimizationMethod :: OptimizationMethod -> (Ptr COptimizationMethod -> IO a) -> IO a
 withOptimizationMethod = withEnumType optimizationMethodMeta
 
+withMaybeOptimizationMethod :: Maybe OptimizationMethod -> (Ptr COptimizationMethod -> IO a) -> IO a
+withMaybeOptimizationMethod = withMaybeEnumType optimizationMethodMeta
+
 -- Payoff/Exercise with* functions are now defined directly, near their ADTs, using
 -- Upcastable/GenForeignPtr (see QuantLib.Internal.Type) instead of EnumMeta'/IsQlPayoff/IsQlExercise.
 
@@ -654,12 +662,14 @@ withOptimizationMethod = withEnumType optimizationMethodMeta
 {#fun qlSoftCallability{`Double',`BondPriceType',withDay*`Day',`Double',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 {#fun qlCallability{`Double',`BondPriceType',`CallabilityType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`QlCallability'peekCallability*#}
 
--- Every constructor below binds the QuantLib overload that omits the leading
--- optimizationMethod param (see the qlTermStructure.cpp comment above the
--- qlXxxFitting shims for why: OptimizationMethod's hasquant-side handle is a
--- raw, Haskell-finalized pointer, not a QlXxx shared_ptr box, and
--- FittedBondDiscountCurve additionally clones its fitting method -- passing
--- one through safely needs a real ownership-representation change).
+-- Every constructor below binds the QuantLib overload's leading optimizationMethod param via a
+-- trailing Maybe OptimizationMethod field (Nothing -> upstream's own empty-shared_ptr default,
+-- letting the fit fall back to LevenbergMarquardt). OptimizationMethod's hasquant-side handle
+-- (QlOptimizationMethod) is a shared_ptr box, not a raw Haskell-finalized pointer -- see the
+-- qlaux.h comment above the QlEndCriteria/QlOptimizationMethod typedefs -- so a caller-supplied
+-- one can safely be copied into FittingMethod's own shared_ptr member (and survive
+-- FittedBondDiscountCurve cloning the fitting method) regardless of when Haskell's own box is
+-- collected.
 data FittingMethod =
   CubicBSplines
     ![Double] -- ^knotVector (year fraction)
@@ -669,6 +679,7 @@ data FittingMethod =
     !Double -- ^minCutoffTime
     !Double -- ^maxCutoffTime
     !(Maybe Constraint)
+    !(Maybe OptimizationMethod)
   | ExponentialSplines
     !Bool -- ^constrainAtZero
     ![Double] -- ^weights
@@ -678,12 +689,14 @@ data FittingMethod =
     !Word -- ^numCoeffs
     !(Maybe Double) -- ^fixedKappa
     !(Maybe Constraint)
+    !(Maybe OptimizationMethod)
   | NelsonSiegel
     ![Double] -- ^weights
     ![Double] -- ^l2
     !Double -- ^minCutoffTime
     !Double -- ^maxCutoffTime
     !(Maybe Constraint)
+    !(Maybe OptimizationMethod)
   | SimplePolynomial
     !Word -- ^degree
     !Bool -- ^constrainAtZero
@@ -692,25 +705,28 @@ data FittingMethod =
     !Double -- ^minCutoffTime
     !Double -- ^maxCutoffTime
     !(Maybe Constraint)
+    !(Maybe OptimizationMethod)
   | Svensson
     ![Double] -- ^weights
     ![Double] -- ^l2
     !Double -- ^minCutoffTime
     !Double -- ^maxCutoffTime
     !(Maybe Constraint)
+    !(Maybe OptimizationMethod)
 
 fittingMethod :: FittingMethod -> IO QlFittedBondDiscountCurveFittingMethod
-fittingMethod (CubicBSplines k c w l2 mn mx cn) = qlCubicBSplinesFitting k c w l2 mn mx cn
-fittingMethod (ExponentialSplines c w l2 mn mx n fk cn) = qlExponentialSplinesFitting c w l2 mn mx n fk cn
-fittingMethod (NelsonSiegel w l2 mn mx cn) = qlNelsonSiegelFitting w l2 mn mx cn
-fittingMethod (SimplePolynomial d c w l2 mn mx cn) = qlSimplePolynomialFitting d c w l2 mn mx cn
-fittingMethod (Svensson w l2 mn mx cn) = qlSvenssonFitting w l2 mn mx cn
+fittingMethod (CubicBSplines k c w l2 mn mx cn om) = qlCubicBSplinesFitting k c w l2 mn mx om cn
+fittingMethod (ExponentialSplines c w l2 mn mx n fk cn om) = qlExponentialSplinesFitting c w l2 mn mx n fk om cn
+fittingMethod (NelsonSiegel w l2 mn mx cn om) = qlNelsonSiegelFitting w l2 mn mx om cn
+fittingMethod (SimplePolynomial d c w l2 mn mx cn om) = qlSimplePolynomialFitting d c w l2 mn mx om cn
+fittingMethod (Svensson w l2 mn mx cn om) = qlSvenssonFitting w l2 mn mx om cn
 
 {#fun qlCubicBSplinesFitting{withDoubleArray*`[Double]'&,`Bool'
   ,withDoubleArray*`[Double]'& -- ^weights
   ,withDoubleArray*`[Double]'& -- ^l2
   ,`Double' -- ^minCutoffTime
   ,`Double' -- ^maxCutoffTime
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,withMaybeConstraint*`Maybe Constraint'
   ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlExponentialSplinesFitting{`Bool'
@@ -720,12 +736,14 @@ fittingMethod (Svensson w l2 mn mx cn) = qlSvenssonFitting w l2 mn mx cn
   ,`Double' -- ^maxCutoffTime
   ,fromIntegral`Word' -- ^numCoeffs
   ,fromMaybeDouble`Maybe Double' -- ^fixedKappa
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,withMaybeConstraint*`Maybe Constraint'
   ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlNelsonSiegelFitting{withDoubleArray*`[Double]'& -- ^weights
   ,withDoubleArray*`[Double]'& -- ^l2
   ,`Double' -- ^minCutoffTime
   ,`Double' -- ^maxCutoffTime
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,withMaybeConstraint*`Maybe Constraint'
   ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlSimplePolynomialFitting{fromIntegral`Word',`Bool'
@@ -733,12 +751,14 @@ fittingMethod (Svensson w l2 mn mx cn) = qlSvenssonFitting w l2 mn mx cn
   ,withDoubleArray*`[Double]'& -- ^l2
   ,`Double' -- ^minCutoffTime
   ,`Double' -- ^maxCutoffTime
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,withMaybeConstraint*`Maybe Constraint'
   ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 {#fun qlSvenssonFitting{withDoubleArray*`[Double]'& -- ^weights
   ,withDoubleArray*`[Double]'& -- ^l2
   ,`Double' -- ^minCutoffTime
   ,`Double' -- ^maxCutoffTime
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,withMaybeConstraint*`Maybe Constraint'
   ,preErrorCheck-`String'errorCheck*-}->`QlFittedBondDiscountCurveFittingMethod'peekFittedBondDiscountCurveFittingMethod*#}
 

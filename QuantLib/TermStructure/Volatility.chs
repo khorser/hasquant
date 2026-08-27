@@ -259,6 +259,8 @@ $(deriveOptionsRecord "SabrInterpolatedSmileSectionOpts" []
   , ("sabrIsNuFixed", [t|Bool|], [|False|])
   , ("sabrIsRhoFixed", [t|Bool|], [|False|])
   , ("sabrVegaWeighted", [t|Bool|], [|True|])
+  , ("sabrEndCriteria", [t|Maybe EndCriteria|], [|Nothing|])
+  , ("sabrOptimizationMethod", [t|Maybe OptimizationMethod|], [|Nothing|])
   , ("sabrDayCounter", [t|Maybe DayCounter|], [|Nothing|])
   , ("sabrShift", [t|Double|], [|0.0|])
   ])
@@ -617,10 +619,12 @@ fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr
 
 -- |a smile section calibrated to a market smile (strikes/vols given directly, not as live
 -- quotes -- calibration runs once, eagerly, at construction). alpha\/beta\/nu\/rho\/vegaWeighted
--- are the SABR calibration's initial guess and fixed\/free flags; endCriteria\/optimization
--- method are left at QuantLib's own internal defaults (a raw, Haskell-finalized EndCriteria or
--- OptimizationMethod handle can't safely be stored for this object's full lifetime -- see the
--- qlXxxFitting comment in "QuantLib.Internal.Common" for the same ownership hazard elsewhere).
+-- are the SABR calibration's initial guess and fixed\/free flags; 'sabrEndCriteria'\/
+-- 'sabrOptimizationMethod' default to 'Nothing', which falls back to QuantLib's own internal
+-- defaults -- a caller-supplied 'EndCriteria'\/'OptimizationMethod' is safe to pass here since
+-- both are shared_ptr-boxed on the C++ side (see the qlaux.h comment above the
+-- QlEndCriteria\/QlOptimizationMethod typedefs), so the copy this object's constructor keeps
+-- survives regardless of when Haskell's own handle is collected.
 sabrInterpolatedSmileSection :: Day -- ^optionDate
   -> GenQuote q1 -- ^forward
   -> [Double] -- ^strikes
@@ -637,7 +641,8 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   dc <- maybe (dayCounter Actual365FixedStandard) return (sabrDayCounter opts)
   sabrInterpolatedSmileSection_ optionDate forward strikes hasFloatingStrikes atmVolatility vols
     alpha beta nu rho (sabrIsAlphaFixed opts) (sabrIsBetaFixed opts) (sabrIsNuFixed opts)
-    (sabrIsRhoFixed opts) (sabrVegaWeighted opts) dc (sabrShift opts)
+    (sabrIsRhoFixed opts) (sabrVegaWeighted opts) (sabrEndCriteria opts) (sabrOptimizationMethod opts)
+    dc (sabrShift opts)
 
 {#fun qlSabrInterpolatedSmileSection as sabrInterpolatedSmileSection_{withDay*`Day'
   ,withQuote*`GenQuote q1' -- ^forward
@@ -654,6 +659,8 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,`Bool' -- ^isNuFixed
   ,`Bool' -- ^isRhoFixed
   ,`Bool' -- ^vegaWeighted
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,withDayCounter*`DayCounter'
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`SabrInterpolatedSmileSection'peekSabrInterpolatedSmileSection*#}
@@ -1137,12 +1144,13 @@ swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr sc s
 -- ('sparseSabrParameters', 'denseSabrParameters', 'marketVolCube', 'volCubeAtmCalibrated',
 -- 'sabrSwaptionVolatilityCubeAtmStrike'\/'\'') only accept this concrete type, not the generic one.
 --
--- @endCriteria@\/@optMethod@ are not exposed: 'SabrSwaptionVolatilityCube' stores them as
--- @shared_ptr@ members for its full lifetime, and hasquant's 'EndCriteria'\/'OptimizationMethod'
--- handles are raw, Haskell-finalized pointers rather than @shared_ptr@ boxes -- the same ownership
--- hazard already avoided for 'sabrInterpolatedSmileSection' and
--- 'QuantLib.TermStructure.Yield.fittedBondDiscountCurve''s fitting methods. Upstream's internal
--- Levenberg-Marquardt\/EndCriteria defaults apply at every calibrated node instead.
+-- @endCriteria@\/@optMethod@ default to 'Nothing', which falls back to upstream's own internal
+-- Levenberg-Marquardt\/EndCriteria defaults at every calibrated node. A caller-supplied
+-- 'EndCriteria'\/'OptimizationMethod' is safe here since both are @shared_ptr@-boxed on the C++
+-- side (see the qlaux.h comment above the QlEndCriteria\/QlOptimizationMethod typedefs) -- the
+-- copy 'SabrSwaptionVolatilityCube' keeps as its own @shared_ptr@ member survives regardless of
+-- when Haskell's own handle is collected, same as 'sabrInterpolatedSmileSection' and
+-- 'QuantLib.TermStructure.Yield.fittedBondDiscountCurve''s fitting methods.
 --
 -- @volSpreads@ and @parametersGuess@ are both flattened over the (optionTenor x swapTenor)
 -- product as the *outer* index (row = j*nSwapTenors+k, j over @optionTenors@, k over
@@ -1178,11 +1186,13 @@ sabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStruct
   -> Word -- ^maxGuesses
   -> Bool -- ^backwardFlat
   -> Double -- ^cutoffStrike
+  -> Maybe EndCriteria -- ^endCriteria
+  -> Maybe OptimizationMethod -- ^optMethod
   -> IO SabrSwaptionVolatilityCube
 sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
-  iaf ibf inf irf iac met eat ume mg bf cs =
+  iaf ibf inf irf iac met eat ume mg bf cs ec om =
   qlSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
-    iaf ibf inf irf iac met eat ume mg bf cs
+    iaf ibf inf irf iac ec om met eat ume mg bf cs
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlSabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
@@ -1194,6 +1204,8 @@ sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix
   ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q2]'
   ,`Bool',`Bool',`Bool',`Bool'
   ,`Bool'
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
   ,preErrorCheck-`String'errorCheck*-}->`SabrSwaptionVolatilityCube'peekSabrSwaptionVolatilityCube*#}

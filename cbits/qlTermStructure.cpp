@@ -614,15 +614,13 @@ QlSmileSection* qlSpreadedSmileSection(QlSmileSection* source, QlQuote* spread, 
 QlSmileSection* qlAtmSmileSection(QlSmileSection* source, double atm, char **e) {
   try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new AtmSmileSection(*arg(source), atm)))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
-QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, DayCounter* dc, double shift, char **e) {
+QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, double shift, char **e) {
   try {
-    // endCriteria/optMethod are left at their empty-shared_ptr defaults (SABRInterpolation's
-    // own internal EndCriteria/LevenbergMarquardt defaults apply) rather than accepting
-    // Haskell-owned EndCriteria/OptimizationMethod handles here: those are raw,
-    // Haskell-finalized pointers (see the qlXxxFitting comment above), and this ctor stores
-    // them as shared_ptr members for the object's full lifetime, not just for the duration of
-    // this call -- the same ownership hazard already avoided for FittedBondDiscountCurve's
-    // fitting methods.
+    // endCriteria/method are nullable (NULL -> empty shared_ptr, letting SABRInterpolation's
+    // own internal EndCriteria/LevenbergMarquardt defaults apply); when given, copying the
+    // shared_ptr out of Haskell's QlEndCriteria/QlOptimizationMethod box into this ctor's own
+    // shared_ptr member is safe regardless of when Haskell's box is later collected -- see the
+    // qlaux.h comment above the QlEndCriteria/QlOptimizationMethod typedefs.
     // Returns the concrete type directly (not QlSmileSection) so alpha/beta/nu/rho/etc below
     // need no dynamic_pointer_cast -- see the CLAUDE.md API-design rule on preferring a
     // dedicated leaf over a runtime downcast. qlSabrInterpolatedSmileSectionAsSmileSection
@@ -631,7 +629,8 @@ QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, Q
         Date(optionDate), *arg(forward), std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
         *arg(atmVolatility), qlHandleVector(vols, volsLen), alpha, beta, nu, rho,
         isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, vegaWeighted,
-        ext::shared_ptr<EndCriteria>(), ext::shared_ptr<OptimizationMethod>(), *arg(dc), shift));
+        endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(),
+        method ? *arg(method) : shared_ptr<OptimizationMethod>(), *arg(dc), shift));
     section->atmLevel(); // force calibration now, surfacing failures at construction
     return ret(new QlSabrInterpolatedSmileSection(alloc(section)));
   } catch (std::exception& er) {return handleException<QlSabrInterpolatedSmileSection*>(e, er);}}
@@ -877,13 +876,13 @@ QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix1(Calendar* calendar, i
 // qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure (below) to pass either into
 // anything that wants the generic parent (pricing engines, relinkable handles, etc.).
 //
-// endCriteria/optMethod are left at their empty-shared_ptr defaults (letting SABRInterpolation's
-// own internal EndCriteria/LevenbergMarquardt defaults apply at every calibrated node) rather
-// than accepting Haskell-owned EndCriteria/OptimizationMethod handles here: those are raw,
-// Haskell-finalized pointers (see the qlXxxFitting comment above), and this ctor stores them as
-// shared_ptr members for the object's full lifetime, not just for the duration of this call --
-// the same ownership hazard already avoided for FittedBondDiscountCurve's fitting methods and
-// SabrInterpolatedSmileSection above.
+// endCriteria/method are nullable (NULL -> empty shared_ptr, letting SABRInterpolation's own
+// internal EndCriteria/LevenbergMarquardt defaults apply at every calibrated node); when given,
+// `endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>()` copies a shared reference into
+// this ctor's own shared_ptr member -- safe regardless of when Haskell's own EndCriteria/
+// OptimizationMethod box is collected, since QlEndCriteria/QlOptimizationMethod are themselves
+// shared_ptr boxes (see qlLevenbergMarquardt/qlSimplex/qlEndCriteria in qlMisc.cpp): the
+// underlying object is only freed once every shared_ptr referencing it has gone away.
 //
 // volSpreads and parametersGuess are both flattened over the (optionTenor x swapTenor) product as
 // the OUTER index (row = j*nSwapTenors+k, j over optionTenors, k over swapTenors) -- not simply
@@ -904,6 +903,7 @@ QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityS
     unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
     int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed,
     int isAtmCalibrated,
+    QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
     int backwardFlat, double cutoffStrike, char **e) {
   try {
@@ -918,7 +918,8 @@ QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityS
             qlHandleMatrix(parametersGuess, parametersGuessRows, parametersGuessCols),
             std::vector<bool>{(bool)isAlphaFixed, (bool)isBetaFixed, (bool)isNuFixed, (bool)isRhoFixed},
             (bool)isAtmCalibrated,
-            ext::shared_ptr<EndCriteria>(), maxErrorTolerance, ext::shared_ptr<OptimizationMethod>(),
+            endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(), maxErrorTolerance,
+            method ? *arg(method) : shared_ptr<OptimizationMethod>(),
             errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
   } catch (std::exception& er) {return handleException<QlSabrSwaptionVolatilityCube*>(e, er);}}
 void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o) {del(o);}
@@ -1557,29 +1558,30 @@ double qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extr
 QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
   try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), monthsToStart, monthsToEnd, fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
-// Each shim below binds the sibling overload that omits the leading
-// `optimizationMethod` param, not the primary ctor -- OptimizationMethod's
-// hasquant-side handle is a raw, Haskell-finalized pointer (see
-// qlLevenbergMarquardt/qlSimplex), not a QlXxx shared_ptr box, and
-// FittedBondDiscountCurve additionally clones its fitting method, so there
-// is no safe way to hand it into a `const ext::shared_ptr<OptimizationMethod>&`
-// slot without a real ownership-representation change (would also touch
-// qlGsrCalibrateVolatilitiesIterative/qlCalibratedModelCalibrate) -- see the
-// README TODO.
-FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
-  try {return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero, Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
+// Each shim below now binds the primary ctor overload (including the leading
+// `optimizationMethod` param): OptimizationMethod is a shared_ptr box
+// (QlOptimizationMethod, see qlLevenbergMarquardt/qlSimplex) rather than a raw
+// Haskell-finalized pointer, so `method ? *arg(method) : shared_ptr<...>()`
+// safely copies a shared reference into FittingMethod's own shared_ptr member
+// -- correct even though FittedBondDiscountCurve additionally clones its
+// fitting method, since cloning just copies that member (bumping the
+// refcount), and correct regardless of when Haskell's own box is collected,
+// since the object is only actually freed once every shared_ptr referencing
+// it (Haskell's box included) has gone away.
+FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, QlOptimizationMethod* method, Constraint* constraint, char **e) {
+  try {return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero, Array(weights, weights+weightsLen), method ? *arg(method) : shared_ptr<OptimizationMethod>(), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, unsigned numCoeffs, double fixedKappa, Constraint* constraint, char **e) {
-  try {return alloc(new ExponentialSplinesFitting(constrainAtZero, Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, numCoeffs, fixedKappa, constraint ? *arg(constraint) : Constraint(NoConstraint())));
+FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, unsigned numCoeffs, double fixedKappa, QlOptimizationMethod* method, Constraint* constraint, char **e) {
+  try {return alloc(new ExponentialSplinesFitting(constrainAtZero, Array(weights, weights+weightsLen), method ? *arg(method) : shared_ptr<OptimizationMethod>(), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, numCoeffs, fixedKappa, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlNelsonSiegelFitting(unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
-  try {return alloc(new NelsonSiegelFitting(Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
+FittedBondDiscountCurveFittingMethod* qlNelsonSiegelFitting(unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, QlOptimizationMethod* method, Constraint* constraint, char **e) {
+  try {return alloc(new NelsonSiegelFitting(Array(weights, weights+weightsLen), method ? *arg(method) : shared_ptr<OptimizationMethod>(), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
-  try {return alloc(new SimplePolynomialFitting(degree, constrainAtZero, Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
+FittedBondDiscountCurveFittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, QlOptimizationMethod* method, Constraint* constraint, char **e) {
+  try {return alloc(new SimplePolynomialFitting(degree, constrainAtZero, Array(weights, weights+weightsLen), method ? *arg(method) : shared_ptr<OptimizationMethod>(), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
-FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, Constraint* constraint, char **e) {
-  try {return alloc(new SvenssonFitting(Array(weights, weights+weightsLen), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
+FittedBondDiscountCurveFittingMethod* qlSvenssonFitting(unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, QlOptimizationMethod* method, Constraint* constraint, char **e) {
+  try {return alloc(new SvenssonFitting(Array(weights, weights+weightsLen), method ? *arg(method) : shared_ptr<OptimizationMethod>(), Array(l2, l2+l2Len), minCutoffTime, maxCutoffTime, constraint ? *arg(constraint) : Constraint(NoConstraint())));
   } catch (std::exception& er) {return handleException<FittedBondDiscountCurveFittingMethod*>(e, er);}}
 QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e) {
   try {return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(settlementDays, *arg(calendar), qlVector(bonds, bondsLen), *arg(dayCounter), *arg(fittingMethod), accuracy, maxEvaluations, Array(guess, guess+guessLen), simplexLambda))));

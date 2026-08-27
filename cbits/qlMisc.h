@@ -70,16 +70,16 @@ extern "C" {
   Constraint* qlNoConstraint(char **e);
   Constraint* qlPositiveConstraint(char **e);
 
-  void qlFreeOptimizationMethod(OptimizationMethod *o);
-  OptimizationMethod* qlSimplex(double lambda, char **e);
-  OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e);
-  void qlFreeEndCriteria(EndCriteria *o);
-  EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e);
+  void qlFreeOptimizationMethod(QlOptimizationMethod *o);
+  QlOptimizationMethod* qlSimplex(double lambda, char **e);
+  QlOptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e);
+  void qlFreeEndCriteria(QlEndCriteria *o);
+  QlEndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e);
 
   // Minimizes a Haskell-defined cost function (called once per outer optimizer iteration, over
   // the whole parameter vector -- see the HsCostFunction comment in qlMisc.cpp) via QuantLib's
   // general-purpose Problem/OptimizationMethod machinery.
-  void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, OptimizationMethod* method, EndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e);
+  void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, QlOptimizationMethod* method, QlEndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e);
   void qlFreeTimeGrid(TimeGrid *o);
   TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e);
   TimeGrid* qlTimeGrid2(unsigned x0Len, double* x0, char **e);
