@@ -43,6 +43,7 @@ import qualified QuantLib.Example.ForwardOption as ForwardOptionExample
 import qualified QuantLib.Example.OvernightIndexedSwap as OvernightIndexedSwapExample
 import qualified QuantLib.Example.Swaption as SwaptionExample
 import qualified QuantLib.Example.Optimizer as OptimizerExample
+import qualified QuantLib.Example.Fdm as FdmExample
 import QuantLib.Math(EndCriteriaType(..))
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
@@ -728,3 +729,14 @@ spec = do
           _ -> expectationFailure "expected a 2-element solution"
         OptimizerExample.cost r `shouldSatisfy` (< 1.0e-6)
         OptimizerExample.endCriteriaType r `shouldNotBe` EndNone
+
+    -- Rolls a hand-rolled 1D Black-Scholes operator back via QuantLib.Method.fdmRollback --
+    -- hasquant's second real Haskell-callback FFI plumbing, this time coarsened to a whole-grid
+    -- crossing per timestep (QuantLib.Internal.Type.withFdmApply et al.). Checked against
+    -- analyticEuropeanEngine (European, no step condition) and fdBlackScholesVanillaEngine
+    -- (American, with an early-exercise step condition), both already-bound reference engines.
+    describe "Fdm example (Haskell-driven PDE rollback via fdmRollback)" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' FdmExample.run
+        FdmExample.fdmEuropeanR r `shouldSatisfy` closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
+        FdmExample.fdmAmericanR r `shouldSatisfy` closePrec (FdmExample.fdAmericanR r) (2.0e-3 * FdmExample.fdAmericanR r)

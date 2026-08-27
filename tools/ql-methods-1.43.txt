@@ -5717,13 +5717,13 @@
 | |ql/methods/finitedifferences/operators/fdmhestonop.hpp|Array FdmHestonOp::apply(const Array & r) const;
 | |ql/methods/finitedifferences/operators/fdmhullwhiteop.hpp|FdmHullWhiteOp::FdmHullWhiteOp(const ext::shared_ptr<FdmMesher> & mesher, const ext::shared_ptr<HullWhite> & model, Size direction);
 | |ql/methods/finitedifferences/operators/fdmhullwhiteop.hpp|Array FdmHullWhiteOp::apply(const Array & r) const;
-| |ql/methods/finitedifferences/operators/fdmlinearop.hpp|array_type FdmLinearOp::apply(const array_type & r) const;
+|u|ql/methods/finitedifferences/operators/fdmlinearop.hpp|array_type FdmLinearOp::apply(const array_type & r) const;
 | |ql/methods/finitedifferences/operators/fdmlinearop.hpp|SparseMatrix FdmLinearOp::toMatrix() const;
-| |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Size FdmLinearOpComposite::size() const;
-| |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|void FdmLinearOpComposite::setTime(Time t1, Time t2);
+|u|ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Size FdmLinearOpComposite::size() const;
+|u|ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|void FdmLinearOpComposite::setTime(Time t1, Time t2);
 | |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Array FdmLinearOpComposite::apply_mixed(const Array & r) const;
-| |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Array FdmLinearOpComposite::apply_direction(Size direction, const Array & r) const;
-| |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Array FdmLinearOpComposite::solve_splitting(Size direction, const Array & r, Real s) const;
+|u|ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Array FdmLinearOpComposite::apply_direction(Size direction, const Array & r) const;
+|u|ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Array FdmLinearOpComposite::solve_splitting(Size direction, const Array & r, Real s) const;
 | |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|Array FdmLinearOpComposite::preconditioner(const Array & r, Real s) const;
 | |ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp|std::vector<SparseMatrix> FdmLinearOpComposite::toMatrixDecomp() const;
 | |ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp|FdmLinearOpIterator::FdmLinearOpIterator(Size index = 0);
@@ -5882,8 +5882,8 @@
 |v|ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|static FdmSchemeDesc FdmSchemeDesc::ModifiedHundsdorfer();
 | |ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|static FdmSchemeDesc FdmSchemeDesc::MethodOfLines(Real eps = 0.001, Real relInitStepSize = 0.01);
 | |ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|static FdmSchemeDesc FdmSchemeDesc::TrBDF2();
-| |ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|FdmBackwardSolver::FdmBackwardSolver(ext::shared_ptr<FdmLinearOpComposite> map, FdmBoundaryConditionSet bcSet, const ext::shared_ptr<FdmStepConditionComposite> & condition, const FdmSchemeDesc & schemeDesc);
-| |ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|void FdmBackwardSolver::rollback(array_type & a, Time from, Time to, Size steps, Size dampingSteps);
+|u|ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|FdmBackwardSolver::FdmBackwardSolver(ext::shared_ptr<FdmLinearOpComposite> map, FdmBoundaryConditionSet bcSet, const ext::shared_ptr<FdmStepConditionComposite> & condition, const FdmSchemeDesc & schemeDesc);
+|v|ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp|void FdmBackwardSolver::rollback(array_type & a, Time from, Time to, Size steps, Size dampingSteps);
 | |ql/methods/finitedifferences/solvers/fdmbatessolver.hpp|FdmBatesSolver::FdmBatesSolver(Handle<BatesProcess> process, FdmSolverDesc solverDesc, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Hundsdorfer(), Size integroIntegrationOrder = 12, Handle<FdmQuantoHelper> quantoHelper = Handle<FdmQuantoHelper>());
 | |ql/methods/finitedifferences/solvers/fdmbatessolver.hpp|Real FdmBatesSolver::valueAt(Real s, Real v) const;
 | |ql/methods/finitedifferences/solvers/fdmbatessolver.hpp|Real FdmBatesSolver::thetaAt(Real s, Real v) const;
@@ -5929,7 +5929,7 @@
 | |ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp|Real FdmSimple2dBSSolver::deltaAt(Real s, Real a, Real eps) const;
 | |ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp|Real FdmSimple2dBSSolver::gammaAt(Real s, Real a, Real eps) const;
 | |ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp|Real FdmSimple2dBSSolver::thetaAt(Real s, Real a) const;
-| |ql/methods/finitedifferences/stepcondition.hpp|void StepCondition::applyTo(array_type & a, Time t) const;
+|u|ql/methods/finitedifferences/stepcondition.hpp|void StepCondition::applyTo(array_type & a, Time t) const;
 | |ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp|FdmAmericanStepCondition::FdmAmericanStepCondition(ext::shared_ptr<FdmMesher> mesher, ext::shared_ptr<FdmInnerValueCalculator> calculator, Time exerciseStart = 0.0);
 | |ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp|void FdmAmericanStepCondition::applyTo(Array & a, Time t) const;
 | |ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp|FdmArithmeticAverageCondition::FdmArithmeticAverageCondition(std::vector<Time> averageTimes, Real, Size pastFixings, const ext::shared_ptr<FdmMesher> & mesher, Size equityDirection);
@@ -5945,7 +5945,7 @@
 | |ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp|void FdmSnapshotCondition::applyTo(Array & a, Time t) const;
 | |ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp|Time FdmSnapshotCondition::getTime() const;
 | |ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp|const Array & FdmSnapshotCondition::getValues() const;
-| |ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp|FdmStepConditionComposite::FdmStepConditionComposite(const std::list<std::vector<Time>> & stoppingTimes, Conditions conditions);
+|u|ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp|FdmStepConditionComposite::FdmStepConditionComposite(const std::list<std::vector<Time>> & stoppingTimes, Conditions conditions);
 | |ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp|void FdmStepConditionComposite::applyTo(Array & a, Time t) const;
 | |ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp|const std::vector<Time> & FdmStepConditionComposite::stoppingTimes() const;
 | |ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp|const Conditions & FdmStepConditionComposite::conditions() const;

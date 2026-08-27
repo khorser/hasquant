@@ -164,6 +164,18 @@ insufficient.
 
 ## Gotchas
 
+- **`cabal repl`/`ghci` can silently return wrong numeric results (often exactly `0.0`) from
+  pricing engine `npv`/calculators, even for known-good code.** Reproduced on both a new example
+  and the pre-existing `QuantLib.Example.EquityOption` (whose compiled-binary hspec test passes)
+  by running `Settings.keepingSettings' EquityOption.run` from a `cabal repl test:hasquant_test`
+  session — every price came back `0.0`. The same call in the actual compiled `hasquant_test`
+  binary (`cabal run test:hasquant_test`) gives the correct values. Root cause not chased down
+  (plausibly GHC's bytecode interpreter and the C++ shared library disagreeing about some
+  QuantLib static-initialization or singleton-state timing), but the fix is procedural: never
+  trust a numeric result read through `cabal repl`/`ghci` for anything that crosses into
+  `cbits/`. To eyeball intermediate values while developing, add a temporary
+  `Debug.Trace.traceShowM` in the hspec spec (or any code path already run via `cabal run
+  test:hasquant_test`/`cabal test`) and read it from that compiled run, then remove it.
 - **Build through `tools/quiet-build.py` to see warnings that matter** —
   `tools/quiet-build.py stack build --test --no-haddock`, or pipe into it.
   c2hs emits `import qualified Foreign.ForeignPtr as C2HSImp` into every

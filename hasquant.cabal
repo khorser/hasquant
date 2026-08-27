@@ -158,6 +158,7 @@ executable hasquant_example
       QuantLib.Example.CVAIRS
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
+      QuantLib.Example.Fdm
       QuantLib.Example.FittedBondCurve
       QuantLib.Example.ForwardOption
       QuantLib.Example.FRA
@@ -257,6 +258,7 @@ test-suite hasquant_test
       QuantLib.Example.CVAIRS
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
+      QuantLib.Example.Fdm
       QuantLib.Example.FittedBondCurve
       QuantLib.Example.ForwardOption
       QuantLib.Example.FRA
