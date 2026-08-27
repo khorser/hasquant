@@ -27,6 +27,7 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process
+import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..))
 import QuantLib.Instrument(npv, setPricingEngine, BarrierType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.PricingEngine
@@ -154,6 +155,39 @@ spec = do
         setPricingEngine opt eng
         v <- npv opt
         v `shouldSatisfy` closePrec 4.7073 1e-4
+
+  describe "Basket options (MC engines)" $
+    -- cached reference from QuantLib test-suite/basketoption.cpp::testEuroTwoValues, the
+    -- {MaxBasket, Call, strike=100, s1=s2=100, q=0, r=0.05, t=1, v1=v2=0.30, rho=0.5} row
+    -- (expected 21.619, checked there against StulzEngine's closed-form value). Reused here
+    -- for both engines: with no dividend yield, an American call is never optimal to exercise
+    -- early (true for a max-of-two-assets call by the same convexity argument as the
+    -- single-asset case), so the American engine is expected to land on the same value as the
+    -- European one, not a materially higher one.
+    it "European and American two-asset max-basket MC engines both reproduce Haug's analytic value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process1 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
+        process2 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
+        procs <- stochasticProcessArray [process1, process2] (Matrix 2 2 [1.0, 0.5, 0.5, 1.0])
+        let payoff = Max (plainVanillaPayoff (PlainVanillaPayoff Call 100.0))
+            expected = 21.619
+
+        -- tolerance matches upstream's own check here: relativeError(calculated, expected,
+        -- value.s1) there compares against the *spot* (100), i.e. an absolute tolerance of
+        -- spot*1% = 1.0, not a tolerance relative to the option value itself.
+        euEngine <- mcEuropeanBasketEngine PseudoRandom procs Nothing (Just 1) False False (Just 10000) Nothing Nothing 42
+        euOpt <- basketOption payoff (europeanIn 360 evalDate)
+        setPricingEngine euOpt euEngine
+        euNpv <- npv euOpt
+        euNpv `shouldSatisfy` closePrec expected 1.0
+
+        amEngine <- mcAmericanBasketEngine PseudoRandom procs (Just 50) Nothing False True (Just 10000) Nothing Nothing 43 (Just 2500) 2 Monomial
+        amOpt <- basketOption payoff (American Nothing (addDays 360 evalDate) False)
+        setPricingEngine amOpt amEngine
+        amNpv <- npv amOpt
+        amNpv `shouldSatisfy` closePrec expected 1.5
 
   describe "WriterExtensibleOption" $
     it "matches an independent Monte Carlo simulation of its own payoff definition" $

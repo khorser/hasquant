@@ -262,6 +262,21 @@ extern "C" {
   void qlCommoditySettingsSetCurrency(Currency *c);
   UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e);
   void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u);
+
+  /* HistoricalRatesAnalysis -- computes SequenceStatistics (mean/covariance/correlation) over
+     historical fixings of the given indexes between startDate and endDate, sampled every step.
+     SequenceStatistics itself isn't given a dedicated Haskell type: it's only ever the
+     caller-supplied accumulator this constructor fills in-place and returns via stats(), with no
+     other use in hasquant, so its own mean/covariance/correlation are exposed here directly as
+     HistoricalRatesAnalysis accessors (see CLAUDE.md's "don't mirror the C++ hierarchy 1:1"). */
+  QlHistoricalRatesAnalysis *qlHistoricalRatesAnalysis(unsigned dimension, int startDate, int endDate,
+      int stepLen, int stepUnit, unsigned indexesLen, QlInterestRateIndex **indexes, char **e);
+  void qlFreeHistoricalRatesAnalysis(QlHistoricalRatesAnalysis *o);
+  void qlHistoricalRatesAnalysisSkippedDates(QlHistoricalRatesAnalysis *o, unsigned *count, int **days);
+  void qlHistoricalRatesAnalysisSkippedDatesErrorMessage(QlHistoricalRatesAnalysis *o, unsigned *count, char ***msgs);
+  void qlHistoricalRatesAnalysisMean(QlHistoricalRatesAnalysis *o, unsigned *len, double **vs, char **e);
+  void qlHistoricalRatesAnalysisCovariance(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+  void qlHistoricalRatesAnalysisCorrelation(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
 #ifdef __cplusplus
 }
 #endif

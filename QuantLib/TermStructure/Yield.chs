@@ -148,9 +148,9 @@ import QuantLib.Internal.Type
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
 
-{#enum BootstrapTrait{} deriving(Show, Eq)#}
-{#enum PillarChoice{} deriving(Show, Eq)#}
-{#enum FuturesType{} deriving(Show, Eq)#}
+{#enum BootstrapTrait{} deriving(Show, Eq, Read)#}
+{#enum PillarChoice{} deriving(Show, Eq, Read)#}
+{#enum FuturesType{} deriving(Show, Eq, Read)#}
 
 -- OISRateHelperOpts bundles every trailing param oisRateHelper/oisRateHelper' hardcode
 -- (see the comment above them, further down), pre-populated with upstream's own

@@ -217,6 +217,7 @@ namespace QuantLib {
   class HestonModel;
   class HestonModelHelper;
   class HestonProcess;
+  class HistoricalRatesAnalysis;
   class HullWhite;
   class HullWhiteForwardProcess;
   class HullWhiteProcess;
@@ -519,6 +520,7 @@ using QuantLib::Gsr;
 using QuantLib::HestonModel;
 using QuantLib::HestonModelHelper;
 using QuantLib::HestonProcess;
+using QuantLib::HistoricalRatesAnalysis;
 using QuantLib::HullWhite;
 using QuantLib::HullWhiteForwardProcess;
 using QuantLib::HullWhiteProcess;
@@ -791,6 +793,7 @@ typedef shared_ptr<GeneralizedBlackScholesProcess> QlGeneralizedBlackScholesProc
 typedef shared_ptr<Gsr> QlGsr;
 typedef shared_ptr<HestonModel> QlHestonModel;
 typedef shared_ptr<HestonProcess> QlHestonProcess;
+typedef shared_ptr<HistoricalRatesAnalysis> QlHistoricalRatesAnalysis;
 typedef shared_ptr<HullWhite> QlHullWhite;
 typedef shared_ptr<HullWhiteForwardProcess> QlHullWhiteForwardProcess;
 typedef shared_ptr<HullWhiteProcess> QlHullWhiteProcess;
@@ -1173,6 +1176,7 @@ template <> class ObjClassName<QlGeneralizedBlackScholesProcess*> {public: stati
 template <> class ObjClassName<QlGsr*> {public: static void output(std::ostream& os) {os << "QlGsr";}};
 template <> class ObjClassName<QlHestonModel*> {public: static void output(std::ostream& os) {os << "QlHestonModel";}};
 template <> class ObjClassName<QlHestonProcess*> {public: static void output(std::ostream& os) {os << "QlHestonProcess";}};
+template <> class ObjClassName<QlHistoricalRatesAnalysis*> {public: static void output(std::ostream& os) {os << "QlHistoricalRatesAnalysis";}};
 template <> class ObjClassName<QlHullWhite*> {public: static void output(std::ostream& os) {os << "QlHullWhite";}};
 template <> class ObjClassName<QlHullWhiteForwardProcess*> {public: static void output(std::ostream& os) {os << "QlHullWhiteForwardProcess";}};
 template <> class ObjClassName<QlHullWhiteProcess*> {public: static void output(std::ostream& os) {os << "QlHullWhiteProcess";}};

@@ -33,7 +33,7 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#enum ProtectionSide{} deriving(Show, Eq)#}
+{#enum ProtectionSide{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}

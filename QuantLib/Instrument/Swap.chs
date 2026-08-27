@@ -167,8 +167,8 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 
 #include "ql.h"
 
-{#enum SwapType{} deriving(Show, Eq)#}
-{#enum SwaptionPriceType{} add prefix="Swaption" deriving(Show, Eq)#}
+{#enum SwapType{} deriving(Show, Eq, Read)#}
+{#enum SwaptionPriceType{} add prefix="Swaption" deriving(Show, Eq, Read)#}
 
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}

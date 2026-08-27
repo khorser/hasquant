@@ -71,9 +71,9 @@ import QuantLib.Internal.Common
 
 #include "qlEnumC2HS.h"
 
-{#enum Month{} deriving(Show, Eq, Bounded, Ord)#}
-{#enum Weekday{} deriving(Show, Eq, Bounded, Ord)#}
-{#enum ImmMonth{} deriving(Show, Eq, Bounded, Ord)#}
+{#enum Month{} deriving(Show, Eq, Read, Bounded, Ord)#}
+{#enum Weekday{} deriving(Show, Eq, Read, Bounded, Ord)#}
+{#enum ImmMonth{} deriving(Show, Eq, Read, Bounded, Ord)#}
 
 year :: Day -> Int
 year x = fromIntegral y where (y, _, _) = toGregorian x

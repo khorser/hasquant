@@ -37,16 +37,16 @@ import QuantLib.Internal.Common
 
 #include "ql.h"
 
-{#enum SettlementType{} deriving(Show, Eq)#}
-{#enum SettlementMethod{} deriving(Show, Eq)#}
-{#enum BarrierType{} deriving(Show, Eq)#}
-{#enum DoubleBarrierType{} deriving(Show, Eq)#}
-{#enum PartialBarrierRange{} deriving(Show, Eq)#}
-{#enum AverageType{} deriving(Show, Eq)#}
-{#enum Seniority{} deriving(Show, Eq)#}
-{#enum PricingModel{} deriving(Show, Eq)#}
-{#enum RestructuringType{} deriving(Show, Eq)#}
-{#enum AtomicDefaultType{} deriving(Show, Eq)#}
+{#enum SettlementType{} deriving(Show, Eq, Read)#}
+{#enum SettlementMethod{} deriving(Show, Eq, Read)#}
+{#enum BarrierType{} deriving(Show, Eq, Read)#}
+{#enum DoubleBarrierType{} deriving(Show, Eq, Read)#}
+{#enum PartialBarrierRange{} deriving(Show, Eq, Read)#}
+{#enum AverageType{} deriving(Show, Eq, Read)#}
+{#enum Seniority{} deriving(Show, Eq, Read)#}
+{#enum PricingModel{} deriving(Show, Eq, Read)#}
+{#enum RestructuringType{} deriving(Show, Eq, Read)#}
+{#enum AtomicDefaultType{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}

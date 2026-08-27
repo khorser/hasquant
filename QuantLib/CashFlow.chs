@@ -146,9 +146,9 @@ import Data.Maybe(fromMaybe)
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 
-{#enum DurationType{} deriving(Show, Eq)#}
-{#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq)#}
-{#enum TimingAdjustment{} deriving(Show, Eq)#}
+{#enum DurationType{} deriving(Show, Eq, Read)#}
+{#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq, Read)#}
+{#enum TimingAdjustment{} deriving(Show, Eq, Read)#}
 
 -- IborLegOpts/CmsLegOpts bundle every IborLeg/CmsLeg builder-method param beyond
 -- iborLeg/cmsLeg's original 12-arg shape, pre-populated with upstream's own defaults via
@@ -720,7 +720,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 -- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as toCouponLeg{withLeg*`GenLeg l',preErrorCheck-`String'errorCheck*-}->`CouponLeg'peekCouponLeg*#}
 
-{#enum YieldCurveModel{} deriving(Show, Eq)#}
+{#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
@@ -826,7 +826,7 @@ linearTsrPricer swaptionVol meanReversion couponDiscountCurve (LinearTsrPricerSe
       LinearTsrBSStdDevs p      -> (fromEnum LinearTsrPricerBSStdDevs, p)
     (lowerBound, upperBound) = fromMaybe (0, 0) bounds
 
-{#enum LinearTsrPricerStrategyType as LinearTsrPricerStrategyTag {} deriving (Show, Eq)#}
+{#enum LinearTsrPricerStrategyType as LinearTsrPricerStrategyTag {} deriving (Show, Eq, Read)#}
 
 -- |Raw binding for 'linearTsrPricer', taking the 'LinearTsrPricerSettings' unpacked into a
 -- strategy tag\/parameter and an explicit-bounds flag.

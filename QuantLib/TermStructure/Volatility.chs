@@ -225,22 +225,22 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlOptionletStripper2 as OptionletStripper2 foreign -> COptionletStripper2 nocode#}
 
-{#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
-{#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq)#}
+{#enum BlackVarianceSurfaceExtrapolation{} deriving(Show, Eq, Read)#}
+{#enum ExtendedBlackVarianceSurfaceExtrapolation{} deriving(Show, Eq, Read)#}
 
 -- |'BlackVolatilitySurfaceDelta::SmileInterpolationMethod', local to that class -- not shared
 -- with any other binding, so declared here rather than in 'QuantLib.Internal.Common'.
-{#enum SmileInterpolationMethod{} deriving(Show, Eq)#}
+{#enum SmileInterpolationMethod{} deriving(Show, Eq, Read)#}
 
 -- |'BlackVolTimeExtrapolation::Type', consumed only by 'blackVolatilitySurfaceDelta' today --
 -- same local-declaration treatment as 'SmileInterpolationMethod'. Named
 -- @BlackVolTimeExtrapolationType@ (rather than reusing the bare @Type@ c2hs would otherwise
 -- emit) to avoid a top-level name clash.
-{#enum BlackVolTimeExtrapolationType{} deriving(Show, Eq)#}
+{#enum BlackVolTimeExtrapolationType{} deriving(Show, Eq, Read)#}
 
 -- |'FixedLocalVolSurface::Extrapolation', local to that class -- not shared with any other
 -- binding, same local-declaration treatment as 'SmileInterpolationMethod'.
-{#enum FixedLocalVolSurfaceExtrapolation{} deriving(Show, Eq)#}
+{#enum FixedLocalVolSurfaceExtrapolation{} deriving(Show, Eq, Read)#}
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
 -- sabrInterpolatedSmileSection_ hardcodes, pre-populated with upstream's own defaults,

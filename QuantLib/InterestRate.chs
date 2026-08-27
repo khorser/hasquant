@@ -27,8 +27,8 @@ import QuantLib.Internal.Type
 
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 
-{#enum Compounding{} deriving(Show, Eq)#}
-{#enum VolatilityType{} deriving(Show, Eq)#}
+{#enum Compounding{} deriving(Show, Eq, Read)#}
+{#enum VolatilityType{} deriving(Show, Eq, Read)#}
 
 -- |construct an interest rate from a rate value, a day counter, a compounding convention and a frequency.
 {#fun qlInterestRate as interestRate{`Double' -- ^r

@@ -136,42 +136,42 @@ import QuantLib.Internal.Syntax
 #include "qlEnumObjects.h"
 
 -- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
-{#enum TimeUnit{} deriving(Show, Eq, Bounded)#}
+{#enum TimeUnit{} deriving(Show, Eq, Read, Bounded)#}
 -- moved from QuantLib.Time.Calendar, its "natural" home, for the same reason as TimeUnit above --
 -- needed directly here for RebatedExercise's rebatePaymentConvention param. Like TimeUnit, every
 -- cross-module use marshals through a manual fromEnumC/toEnumC/fromMaybeEnum function rather than
 -- a bare c2hs backtick spec: a bare `` `BusinessDayConvention' `` needs the type's own module's
 -- .chi already built, which this other-modules-listed module isn't guaranteed to have by the time
 -- an early exposed-modules file (e.g. QuantLib.Time.Calendar itself) is processed.
-{#enum BusinessDayConvention{} deriving(Show, Eq)#}
-{#enum ApproximationType{} add prefix="Approximation__" deriving(Show, Eq)#}
-{#enum InterpolationType{} add prefix="Interpolation" deriving(Show, Eq)#}
+{#enum BusinessDayConvention{} deriving(Show, Eq, Read)#}
+{#enum ApproximationType{} add prefix="Approximation__" deriving(Show, Eq, Read)#}
+{#enum InterpolationType{} add prefix="Interpolation" deriving(Show, Eq, Read)#}
 -- 2-D interpolators for a BlackVarianceSurface. Unlike InterpolationType/ApproximationType
 -- above (merged into the public Interpolation ADT by deriveCrossEnum), this enum is itself the
 -- public type: setInterpolation on a surface is a member template over a default-constructed
 -- interpolator, so there is no approximator to pair it with. Declared here rather than in
 -- QuantLib.TermStructure.Volatility for the usual cross-module {#import#} ordering reason.
-{#enum Interpolation2D{} deriving (Show, Eq, Bounded)#}
-{#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq)#}
-{#enum OptionType{} deriving (Show, Eq)#}
-{#enum PositionType{} deriving (Show, Eq)#}
-{#enum BondPriceType{} deriving (Show, Eq)#}
-{#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq)#}
-{#enum FdmSchemeType{} deriving(Show, Eq)#}
-{#enum RoundingType{} deriving (Show, Eq)#}
+{#enum Interpolation2D{} deriving (Show, Eq, Read, Bounded)#}
+{#enum ExerciseType{} add prefix = "ExerciseType" deriving (Show, Eq, Read)#}
+{#enum OptionType{} deriving (Show, Eq, Read)#}
+{#enum PositionType{} deriving (Show, Eq, Read)#}
+{#enum BondPriceType{} deriving (Show, Eq, Read)#}
+{#enum CallabilityType{} add prefix="Callability" deriving(Show, Eq, Read)#}
+{#enum FdmSchemeType{} deriving(Show, Eq, Read)#}
+{#enum RoundingType{} deriving (Show, Eq, Read)#}
 -- experimental/commodities: cross-cutting the same way TimeUnit is (UnitOfMeasureType is used by
 -- both UnitOfMeasure itself and, in a later stage, CommodityPricingHelper/EnergyCommodity).
 -- Quantity's C tag is renamed QuantityUnit in cbits/qlEnumC2HS.h to avoid colliding with the
 -- Quantity class bound in QuantLib.Commodity.
-{#enum UnitOfMeasureType{} deriving (Show, Eq, Bounded)#}
-{#enum PaymentTermEventType{} deriving (Show, Eq, Bounded)#}
+{#enum UnitOfMeasureType{} deriving (Show, Eq, Read, Bounded)#}
+{#enum PaymentTermEventType{} deriving (Show, Eq, Read, Bounded)#}
 -- experimental/commodities/commodity.hpp (PricingError::Level) and
 -- experimental/commodities/energycommodity.hpp (EnergyCommodity::DeliverySchedule,
 -- EnergyCommodity::QuantityPeriodicity), homed here for the same cross-cutting reason as
 -- UnitOfMeasureType above (used by both EnergyCommodity's leaf constructors and
 -- CommodityPricingHelper::createPricingPeriods, both in QuantLib.Instrument.Energy -- a later
 -- stage than this module).
-{#enum PricingErrorLevel{} deriving (Show, Eq, Bounded)#}
+{#enum PricingErrorLevel{} deriving (Show, Eq, Read, Bounded)#}
 peekPricingErrorLevelArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [PricingErrorLevel]
 peekPricingErrorLevelArray = peekIntArray' toEnumC
 -- Confirmed clash (a real one, caught by the build, not assumed): 4 of DeliverySchedule's 8 tags
@@ -179,8 +179,8 @@ peekPricingErrorLevelArray = peekIntArray' toEnumC
 -- module this file is imported into unqualified. Prefixed Haskell-side only (c2hs's own "add
 -- prefix", not a cbits/qlEnumC2HS.h rename) -- same targeted-rename convention as
 -- UnitOfMeasureType's Quantity->QuantityUnit above, not a blanket defensive prefix.
-{#enum DeliverySchedule{} add prefix = "Delivery" deriving (Show, Eq, Bounded)#}
-{#enum QuantityPeriodicity{} deriving (Show, Eq, Bounded)#}
+{#enum DeliverySchedule{} add prefix = "Delivery" deriving (Show, Eq, Read, Bounded)#}
+{#enum QuantityPeriodicity{} deriving (Show, Eq, Read, Bounded)#}
 -- flat/linear interpolation of a CPI index between its publication dates -- skips the
 -- deprecated AsIndex upstream case, so cbits/qlEnumObjects.h's values (and thus this
 -- c2hs-derived enum's fromEnum) start at 1, not 0; see that header's comment for why a
@@ -189,8 +189,8 @@ peekPricingErrorLevelArray = peekIntArray' toEnumC
 -- TimeUnit above: needed by several modules whose build order can't all safely {#import#} that
 -- module (built before it, or -- for QuantLib.TermStructure.Yield -- mutually dependent with
 -- it already).
-{#enum CPIInterpolationType{} deriving (Show, Eq, Bounded)#}
-{#enum CalibrationBasketType{} deriving (Show, Eq, Bounded)#}
+{#enum CPIInterpolationType{} deriving (Show, Eq, Read, Bounded)#}
+{#enum CalibrationBasketType{} deriving (Show, Eq, Read, Bounded)#}
 
 -- Payoff/Exercise pointer hierarchy: the Finalizable/Upcastable instances and raw phantom
 -- tags (CPayoff' etc.) live in QuantLib.Internal.Type alongside every other class hierarchy;
@@ -263,6 +263,7 @@ $(deriveCrossEnum CrossEnumSpec
 
 deriving instance Show Approximation
 deriving instance Eq Approximation
+deriving instance Read Approximation
 
 -- Remaining cpp<->hs lockstep, unlike CalendarConstructor/DayCounterConstructor/IborConstructor:
 -- those own a full C-side array/table, so *every* lockstep edit needed for a new value stays
@@ -920,7 +921,7 @@ data AdditionalResultVal = RealVal Double | StringVal String | RealVectorVal [Do
 
 -- |Discriminants for `QlAdditionalResult.type`, bound from `enum AdditionalResultType` in
 -- `cbits/qlInstrument.h` (read from the header, not hardcoded).
-{#enum AdditionalResultType {} deriving (Show, Eq) #}
+{#enum AdditionalResultType {} deriving (Show, Eq, Read) #}
 
 -- |Registers `struct QlAdditionalResult*` with c2hs as `RawResultPtr`, `nocode` since we supply
 -- the Haskell type ourselves (below) rather than a c2hs-generated wrapper. This is what lets the

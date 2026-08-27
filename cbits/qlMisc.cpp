@@ -28,6 +28,8 @@
 #include <ql/experimental/commodities/unitofmeasureconversion.hpp>
 #include <ql/experimental/commodities/unitofmeasureconversionmanager.hpp>
 #include <ql/experimental/commodities/commoditysettings.hpp>
+#include <ql/indexes/interestrateindex.hpp>
+#include <ql/models/marketmodels/historicalratesanalysis.hpp>
 
 #ifdef QLTRACK_ALLOCATIONS
 # include <cstdlib>
@@ -868,5 +870,57 @@ UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e) {
   try {return ret(new UnitOfMeasure(CommoditySettings::instance().unitOfMeasure()));
   } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
 void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u) {CommoditySettings::instance().unitOfMeasure() = *arg(u);}
+
+/* HistoricalRatesAnalysis */
+
+static void fillVectorOut(const std::vector<Real>& a, unsigned* len, double** vs) {
+  *len = (unsigned)a.size();
+  *vs = qlAllocateDoubles(*len);
+  std::copy(a.begin(), a.end(), *vs);
+}
+
+static void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
+  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
+  *vs = qlAllocateDoubles(*len);
+  std::copy(m.begin(), m.end(), *vs);
+}
+
+QlHistoricalRatesAnalysis *qlHistoricalRatesAnalysis(unsigned dimension, int startDate, int endDate,
+    int stepLen, int stepUnit, unsigned indexesLen, QlInterestRateIndex **indexes, char **e) {
+  try {
+    shared_ptr<SequenceStatistics> stats = ext::make_shared<SequenceStatistics>(dimension);
+    return ret(new QlHistoricalRatesAnalysis(alloc(new HistoricalRatesAnalysis(
+        stats, Date(startDate), Date(endDate), Period(stepLen, (TimeUnit)stepUnit),
+        qlVector<QlInterestRateIndex>(indexes, indexesLen)))));
+  } catch (std::exception& er) {return handleException<QlHistoricalRatesAnalysis*>(e, er);}}
+
+void qlFreeHistoricalRatesAnalysis(QlHistoricalRatesAnalysis *o) {del(o);}
+
+void qlHistoricalRatesAnalysisSkippedDates(QlHistoricalRatesAnalysis *o, unsigned *count, int **days) {
+  const std::vector<Date> &dates = (*arg(o))->skippedDates();
+  *count = (unsigned)dates.size(); *days = qlAllocateInts(*count);
+  for (unsigned i = 0; i < *count; ++i) (*days)[i] = dates[i].serialNumber();
+}
+
+void qlHistoricalRatesAnalysisSkippedDatesErrorMessage(QlHistoricalRatesAnalysis *o, unsigned *count, char ***msgs) {
+  *count = 0; *msgs = 0;
+  const std::vector<std::string> &m = (*arg(o))->skippedDatesErrorMessage();
+  unsigned n = (unsigned)m.size();
+  char **ms = new char*[n]();
+  for (unsigned i = 0; i < n; ++i) ms[i] = DUP(m[i].c_str());
+  *msgs = ms; *count = n;
+}
+
+void qlHistoricalRatesAnalysisMean(QlHistoricalRatesAnalysis *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->mean(), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalRatesAnalysisCovariance(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  try {fillMatrixOut((*arg(o))->stats()->covariance(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalRatesAnalysisCorrelation(QlHistoricalRatesAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  try {fillMatrixOut((*arg(o))->stats()->correlation(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

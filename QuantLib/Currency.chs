@@ -39,9 +39,9 @@ import Foreign.Marshal.Alloc(alloca)
 
 {#pointer *Rounding as QlRounding foreign newtype nocode#}
 
-{#enum MoneyConversionType{} deriving(Show, Eq)#}
-{#enum ExchangeRateType{} deriving(Show, Eq)#}
-{#enum Ccy{} deriving(Show, Eq)#}
+{#enum MoneyConversionType{} deriving(Show, Eq, Read)#}
+{#enum ExchangeRateType{} deriving(Show, Eq, Read)#}
+{#enum Ccy{} deriving(Show, Eq, Read, Bounded)#}
 
 {#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}

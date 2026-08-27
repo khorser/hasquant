@@ -103,7 +103,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 
-{#enum CalibrationErrorType{} deriving(Show, Eq)#}
+{#enum CalibrationErrorType{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}

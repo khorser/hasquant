@@ -37,8 +37,8 @@ import QuantLib.Internal.CalendarEnum
 
 #include "ql.h"
 
-{#enum DateGenerationRule{} deriving(Show, Eq)#}
-{#enum Frequency{} deriving(Show, Eq, Bounded)#}
+{#enum DateGenerationRule{} deriving(Show, Eq, Read)#}
+{#enum Frequency{} deriving(Show, Eq, Read, Bounded)#}
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Schedule foreign -> CSchedule nocode#}

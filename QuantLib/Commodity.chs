@@ -91,7 +91,7 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *PaymentTerm foreign -> CPaymentTerm nocode#}
 {#pointer *UnitOfMeasureConversion foreign -> CUnitOfMeasureConversion nocode#}
 
-{#enum UnitOfMeasureConversionType{} deriving(Show, Eq)#}
+{#enum UnitOfMeasureConversionType{} deriving(Show, Eq, Read)#}
 
 -- |Construct a custom commodity type identified by its code (e.g. \"HO\") and descriptive name
 -- (e.g. \"Heating Oil\"). QuantLib has no fixed enum of commodity types -- every instance is

@@ -229,3 +229,18 @@ spec = do
         mapM_ (\(x, p, _x1, _x2, _x3, x4, _x5) -> testRounding Floor x p x4) testData
       it "celing" $
         mapM_ (\(x, p, _x1, _x2, _x3, _x4, x5) -> testRounding Ceiling x p x5) testData
+
+    -- Read instances exist so a future text/JSON-driven caller (e.g. a term-sheet
+    -- parser) has a name->value path into these enums; spot-check the round-trip
+    -- rather than assuming c2hs's derived Show output is Read's exact inverse.
+    describe "enum Read instances round-trip through Show" $ do
+      it "Ccy" $
+        mapM_ (\c -> read (show c) `shouldBe` c) ([minBound .. maxBound] :: [Ccy])
+      it "TimeUnit" $
+        mapM_ (\u -> read (show u) `shouldBe` u) ([minBound .. maxBound] :: [TimeUnit])
+      it "Frequency" $
+        mapM_ (\f -> read (show f) `shouldBe` f) ([minBound .. maxBound] :: [Frequency])
+      it "Month" $
+        mapM_ (\m -> read (show m) `shouldBe` m) ([minBound .. maxBound] :: [Month])
+      it "Weekday" $
+        mapM_ (\w -> read (show w) `shouldBe` w) ([minBound .. maxBound] :: [Weekday])

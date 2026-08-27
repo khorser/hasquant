@@ -18,7 +18,9 @@ import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings)
-import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), forecastFixing)
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), forecastFixing
+  ,historicalRatesAnalysis, historicalRatesAnalysisSkippedDates, historicalRatesAnalysisMean
+  ,historicalRatesAnalysisCovariance, historicalRatesAnalysisCorrelation)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
@@ -28,7 +30,7 @@ import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
 
-import QuantLib.Spec.Helpers(ValidDay(..))
+import QuantLib.Spec.Helpers(ValidDay(..), closePrec)
 
 spec :: Day -> Spec
 spec tod = do
@@ -340,6 +342,51 @@ spec tod = do
 
           clearFixings idx
           hasHistoricalFixing idx d1 `shouldReturn` False
+
+    describe "HistoricalRatesAnalysis" $
+      -- historicalRatesAnalysis accumulates statistics over *relative changes* between
+      -- consecutive sampled fixings, not the fixings themselves (see
+      -- ql/models/marketmodels/historicalratesanalysis.cpp) -- passing the same index
+      -- twice sidesteps having to hand-derive QuantLib's variance normalisation: with two
+      -- identical series, every covariance/correlation entry must come out equal
+      -- regardless of that normalisation, which is what this checks.
+      it "mean matches a hand-computed average of relative fixing changes; covariance/correlation are self-consistent for a series against itself" $
+        Settings.keepingSettings' $ do
+          idx <- iborIndex (Euribor (6, Months)) Nothing
+          cal <- fixingCalendar idx
+          clearFixings idx
+
+          let startDate = 1 `january` 2021
+              n = 12 :: Int
+              fixingAt k = 0.010 + 0.0007 * fromIntegral (k :: Int)
+              genDates :: Int -> Day -> IO [Day]
+              genDates 0 d = return [d]
+              genDates k d = (d :) <$> (advance cal d (1, Months) Following False >>= genDates (k - 1))
+
+          d0 <- advance cal startDate (1, Days) Following False
+          ds <- genDates n d0
+          forM_ (zip [0 ..] ds) $ \(k, d) -> addFixing idx d (fixingAt k) False
+
+          let rels = [fixingAt k / fixingAt (k - 1) - 1 | k <- [1 .. n]]
+              expectedMean = sum rels / fromIntegral (length rels)
+
+          hra <- historicalRatesAnalysis 2 startDate (last ds) (1, Months) [idx, idx]
+          historicalRatesAnalysisSkippedDates hra `shouldReturn` []
+
+          means <- historicalRatesAnalysisMean hra
+          means `shouldSatisfy` all (closePrec expectedMean 1.0e-9)
+
+          Matrix cRows cCols cov <- historicalRatesAnalysisCovariance hra
+          (cRows, cCols) `shouldBe` (2, 2)
+          case cov of
+            [c00, _, _, _] -> cov `shouldSatisfy` all (closePrec c00 1.0e-9)
+            _ -> expectationFailure "covariance matrix did not have 4 entries"
+
+          Matrix rRows rCols corr <- historicalRatesAnalysisCorrelation hra
+          (rRows, rCols) `shouldBe` (2, 2)
+          corr `shouldSatisfy` all (closePrec 1.0 1.0e-9)
+
+          clearFixings idx
 
     describe "CustomIborIndex" $ do
       it "fixingCalendar reflects the given fixing calendar, not the value/maturity ones" $

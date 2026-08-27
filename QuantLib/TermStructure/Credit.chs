@@ -36,7 +36,7 @@ import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
 import QuantLib.Internal.Common
 
-{#enum ProbabilityTrait{} deriving(Show, Eq)#}
+{#enum ProbabilityTrait{} deriving(Show, Eq, Read)#}
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}

@@ -236,6 +236,17 @@ peekTimeGrid = TimeGrid <.> peekStandalone
 withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
 withTimeGrid = withStandalone . getCTimeGrid
 
+-- |Never subclassed and never passed polymorphically elsewhere, so it gets the plain
+-- 'Standalone' shape (like 'TimeGrid') rather than a 'GenX'/'AnyOf' hierarchy root.
+data CHistoricalRatesAnalysis
+newtype HistoricalRatesAnalysis = HistoricalRatesAnalysis {getCHistoricalRatesAnalysis :: Standalone CHistoricalRatesAnalysis}
+foreign import ccall unsafe "ql.h &qlFreeHistoricalRatesAnalysis" qlFreeHistoricalRatesAnalysis :: FinalizerPtr CHistoricalRatesAnalysis
+instance Finalizable CHistoricalRatesAnalysis where finalize = qlFreeHistoricalRatesAnalysis
+peekHistoricalRatesAnalysis :: Ptr CHistoricalRatesAnalysis -> IO HistoricalRatesAnalysis
+peekHistoricalRatesAnalysis = HistoricalRatesAnalysis <.> peekStandalone
+withHistoricalRatesAnalysis :: HistoricalRatesAnalysis -> (Ptr CHistoricalRatesAnalysis -> IO b) -> IO b
+withHistoricalRatesAnalysis = withStandalone . getCHistoricalRatesAnalysis
+
 data CDividend
 newtype Dividend = Dividend {getCDividend :: Standalone CDividend}
 foreign import ccall unsafe "ql.h &qlFreeDividend" qlFreeDividend :: FinalizerPtr CDividend
@@ -1033,6 +1044,8 @@ newGenInterestRateIndex :: GenForeignPtr ridx CInterestRateIndex' -> IO (GenInte
 newGenInterestRateIndex = pure . GenIndex . newAnyOf
 withInterestRateIndex :: GenInterestRateIndex ridx -> (Ptr CInterestRateIndex' -> IO b) -> IO b
 withInterestRateIndex = withGenForeignPtr . peel . getIndex
+withInterestRateIndexArray :: [GenInterestRateIndex ridx] -> ((CUInt, Ptr (Ptr CInterestRateIndex')) -> IO b) -> IO b
+withInterestRateIndexArray = withGenArray withInterestRateIndex
 
 asInflationIndex :: GenInflationIndex iidx -> IO InflationIndex
 asInflationIndex = transferGenForeignPtr peekInflationIndex . peel . getIndex

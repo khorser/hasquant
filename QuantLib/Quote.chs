@@ -37,10 +37,10 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq)#}
-{#enum AtmType{} deriving(Show, Eq)#}
-{#enum PriceType{} deriving(Show, Eq)#}
-{#enum DeltaType{} deriving(Show, Eq)#}
+{#enum IntervalPriceType{} add prefix="IntervalPrice" deriving(Show, Eq, Read)#}
+{#enum AtmType{} deriving(Show, Eq, Read)#}
+{#enum PriceType{} deriving(Show, Eq, Read)#}
+{#enum DeltaType{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}

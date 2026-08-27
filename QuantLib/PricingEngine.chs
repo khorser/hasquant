@@ -102,6 +102,8 @@ module QuantLib.PricingEngine
   , mcHullWhiteCapFloorEngine
   , mcHimalayaEngine
   , mcPagodaEngine
+  , mcEuropeanBasketEngine
+  , mcAmericanBasketEngine
   , mcPerformanceEngine
   , mcVarianceSwapEngine
   , baroneAdesiWhaleyApproximationEngine
@@ -246,12 +248,12 @@ import QuantLib.Internal.Type
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
 import QuantLib.Internal.Common
 
-{#enum CashAnnuityModel{} deriving(Show, Eq)#}
-{#enum Probabilities{} deriving(Show, Eq)#}
-{#enum CashDividendModel{} add prefix="CashDividend" deriving(Show, Eq)#}
-{#enum NumericalFix{} deriving(Show, Eq)#}
-{#enum AccrualBias{} deriving(Show, Eq)#}
-{#enum ForwardsInCouponPeriod{} deriving(Show, Eq)#}
+{#enum CashAnnuityModel{} deriving(Show, Eq, Read)#}
+{#enum Probabilities{} deriving(Show, Eq, Read)#}
+{#enum CashDividendModel{} add prefix="CashDividend" deriving(Show, Eq, Read)#}
+{#enum NumericalFix{} deriving(Show, Eq, Read)#}
+{#enum AccrualBias{} deriving(Show, Eq, Read)#}
+{#enum ForwardsInCouponPeriod{} deriving(Show, Eq, Read)#}
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
@@ -972,6 +974,31 @@ import QuantLib.Internal.Common
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for a European 'basketOption'.
+{#fun qlMCEuropeanBasketEngine1 as mcEuropeanBasketEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo (least-squares) pricing engine for an American 'basketOption'.
+{#fun qlMCAmericanBasketEngine1 as mcAmericanBasketEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,fromMaybeInt`Maybe Word' -- ^nCalibrationSamples
+  ,fromIntegral`Word' -- ^polynomialOrder
+  ,`PolynomialType' -- ^polynomialType
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for performance (return) options

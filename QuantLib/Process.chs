@@ -69,11 +69,11 @@ module QuantLib.Process
 import QuantLib.Internal
 import QuantLib.Internal.Type
 
-{#enum ProcessDiscretization{} deriving(Show,Eq)#}
-{#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq)#}
-{#enum HestonProcessDiscretization{} deriving(Show, Eq)#}
-{#enum GJRGARCHProcessDiscretization{} deriving(Show, Eq)#}
-{#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq)#}
+{#enum ProcessDiscretization{} deriving(Show,Eq, Read)#}
+{#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq, Read)#}
+{#enum HestonProcessDiscretization{} deriving(Show, Eq, Read)#}
+{#enum GJRGARCHProcessDiscretization{} deriving(Show, Eq, Read)#}
+{#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}

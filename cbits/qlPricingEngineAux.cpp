@@ -18,6 +18,8 @@
 #include <ql/experimental/exoticoptions/mchimalayaengine.hpp>
 #include <ql/experimental/exoticoptions/mcpagodaengine.hpp>
 #include <ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp>
+#include <ql/pricingengines/basket/mceuropeanbasketengine.hpp>
+#include <ql/pricingengines/basket/mcamericanbasketengine.hpp>
 
 namespace hasquant {
 #include "qlEnumObjects.h"
@@ -370,6 +372,32 @@ PricingEngine* qlMCPagodaEngine1Aux(int rngtrait, const shared_ptr<StochasticPro
     return new MCPagodaEngine<LowDiscrepancy>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   case hasquant::Ziggurat:
     return new MCPagodaEngine<Ziggurat>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown RNG "<< rngtrait);
+}
+PricingEngine* qlMCEuropeanBasketEngine1Aux(int rngtrait, const shared_ptr<StochasticProcessArray> processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  switch (rngtrait) {
+  case hasquant::PseudoRandom:
+    return new MCEuropeanBasketEngine<PseudoRandom>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::PoissonPseudoRandom:
+    return new MCEuropeanBasketEngine<PoissonPseudoRandom>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::LowDiscrepancy:
+    return new MCEuropeanBasketEngine<LowDiscrepancy>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::Ziggurat:
+    return new MCEuropeanBasketEngine<Ziggurat>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown RNG "<< rngtrait);
+}
+PricingEngine* qlMCAmericanBasketEngine1Aux(int rngtrait, const shared_ptr<StochasticProcessArray> processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned nCalibrationSamples, unsigned polynomialOrder, LsmBasisSystem::PolynomialType polynomialType) {
+  switch (rngtrait) {
+  case hasquant::PseudoRandom:
+    return new MCAmericanBasketEngine<PseudoRandom>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, nCalibrationSamples, polynomialOrder, polynomialType);
+  case hasquant::PoissonPseudoRandom:
+    return new MCAmericanBasketEngine<PoissonPseudoRandom>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, nCalibrationSamples, polynomialOrder, polynomialType);
+  case hasquant::LowDiscrepancy:
+    return new MCAmericanBasketEngine<LowDiscrepancy>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, nCalibrationSamples, polynomialOrder, polynomialType);
+  case hasquant::Ziggurat:
+    return new MCAmericanBasketEngine<Ziggurat>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, nCalibrationSamples, polynomialOrder, polynomialType);
   };
   QL_FAIL("Unknown RNG "<< rngtrait);
 }

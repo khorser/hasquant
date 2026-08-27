@@ -43,9 +43,9 @@ import QuantLib.Internal.Type
 {#pointer *QlZeroInflationTermStructure as ZeroInflationTermStructure foreign -> CZeroInflationTermStructure' nocode#}
 {#pointer *QlYoYInflationTermStructure as YoYInflationTermStructure foreign -> CYoYInflationTermStructure' nocode#}
 
-{#enum ZeroInflationIndexType{} deriving (Show, Eq)#}
-{#enum YoYInflationIndexType{} deriving (Show, Eq)#}
-{#enum RegionType{} deriving (Show, Eq, Bounded)#}
+{#enum ZeroInflationIndexType{} deriving (Show, Eq, Read)#}
+{#enum YoYInflationIndexType{} deriving (Show, Eq, Read)#}
+{#enum RegionType{} deriving (Show, Eq, Read, Bounded)#}
 
 -- |A named zero inflation index (RPI/HICP/CPI family). Constructs with no historical
 -- fixings and no linked term structure -- add fixings via 'QuantLib.Index.addFixing'.

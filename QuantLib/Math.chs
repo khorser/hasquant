@@ -50,15 +50,15 @@ import Data.List.NonEmpty(NonEmpty)
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
-{#enum EndCriteriaType{} deriving(Show, Eq)#}
-{#enum HistogramAlgorithm{} deriving(Show, Eq)#}
-{#enum RngTrait{} deriving(Show, Eq)#}
-{#enum BinomialTree{} deriving(Show, Eq)#}
-{#enum BoundaryConditionSide{} deriving(Show, Eq)#}
-{#enum PolynomialType{} deriving(Show, Eq)#}
-{#enum ComplexLogFormula{} deriving(Show, Eq)#}
-{#enum CmsMarketCalibrationType{} deriving(Show, Eq)#}
-{#enum SobolDirectionIntegers{} deriving(Show, Eq)#}
+{#enum EndCriteriaType{} deriving(Show, Eq, Read)#}
+{#enum HistogramAlgorithm{} deriving(Show, Eq, Read)#}
+{#enum RngTrait{} deriving(Show, Eq, Read)#}
+{#enum BinomialTree{} deriving(Show, Eq, Read)#}
+{#enum BoundaryConditionSide{} deriving(Show, Eq, Read)#}
+{#enum PolynomialType{} deriving(Show, Eq, Read)#}
+{#enum ComplexLogFormula{} deriving(Show, Eq, Read)#}
+{#enum CmsMarketCalibrationType{} deriving(Show, Eq, Read)#}
+{#enum SobolDirectionIntegers{} deriving(Show, Eq, Read)#}
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
