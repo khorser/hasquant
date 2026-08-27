@@ -105,6 +105,63 @@ description. The effective threshold is ~2.5s, not tens of seconds: measure
 before labelling, and re-check existing labels (the equity option block was
 labelled `(LONG)` while running in 0.5s).
 
+## Coverage
+
+Plain `stack test --coverage --ta '--skip LONG'` runs, but is close to
+useless here: every c2hs-generated binding module (`QuantLib.CashFlow`,
+`QuantLib.Instrument.*`, `QuantLib.Time.Calendar`, …) reports `0/0` — not
+low coverage, *zero instrumentable expressions* — even though these
+modules contain real monadic marshalling code (`withLeg a1 $ \a1' -> ...
+>>= \res -> ...`), not bare `foreign import`s. The generated `.hs` carries
+`{-# LINE n "Foo.chs" #-}` pragmas remapping every declaration back to
+`.chs` source positions; GHC's HPC pass assigns tick locations respecting
+those pragmas, then can't reconcile a tick claiming to be in `Foo.chs` (a
+preprocessor input, never itself compiled) with the module it's
+instrumenting, and silently records nothing rather than erroring. Confirmed
+by hand: stripping the `LINE` pragmas from one generated module's `.hs` and
+recompiling it standalone with `-fhpc` took its `.mix` file from 0 tick
+entries to 3170.
+
+`tools/hpc-coverage.py` automates the fix — for every c2hs-generated
+module, force a clean rebuild, strip the `LINE` pragmas from the generated
+`.hs` before GHC compiles it, then run the suite:
+
+```bash
+python3 tools/hpc-coverage.py                    # default: --ta '--skip LONG'
+python3 tools/hpc-coverage.py --ta ''             # pass through other stack test args
+```
+
+It always starts with `stack clean hasquant` (needs a clean build to
+regenerate `.chs → .hs` output before it can strip anything) and runs two
+full library builds, so budget the time of two `stack build`s plus a test
+run — not something to run on every edit. Report locations print at the
+end; the useful one is the per-component report for `hasquant_test`, e.g.:
+
+```
+.stack-work/install/<arch>/<snapshot>/<ghc>/hpc/hasquant/hasquant_test/hpc_index.html
+```
+
+(there's also a `hpc/combined/all/hpc_index.html` "unified" report, but its
+totals don't reconcile with the sum of its own listed per-module rows on
+this codebase — something about how stack merges `.tix` data across
+components inflates it; don't trust it as a percentage). `.stack-work` is
+already gitignored, so the report needs no separate cleanup — but note the
+generated `.hs` files under `.stack-work` now permanently have their `LINE`
+pragmas stripped until the next `stack clean`/fresh c2hs run, which makes
+GHC error locations for anything compiled from them point at the `.hs`
+instead of the `.chs` in the meantime (irrelevant for a passing build, only
+matters if you're mid-debugging a `.chs`-side compile error when you run
+this).
+
+A **gcov/`--coverage`-on-`cbits/`** route was tried first and abandoned:
+GHC's in-process TH interpreter segfaults loading a `--coverage`-
+instrumented `.dylib` for any module with a real TH splice (i.e. any
+`$(free1st/free2nd/...)` use from `QuantLib.Syntax`, which is most of
+`test/example/`), and forcing `-fexternal-interpreter` swaps that for a
+"duplicate object code" load error from gcov's global counter symbols
+instead. Not revisited unless the Haskell-side HPC route above turns out
+insufficient.
+
 ## Gotchas
 
 - **Build through `tools/quiet-build.py` to see warnings that matter** —
