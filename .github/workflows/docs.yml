@@ -71,7 +71,6 @@ jobs:
           docker run --rm \
             -v "$PWD":/hasquant \
             -w /hasquant \
-            -e STACK_ALLOW_DIFFERENT_USER=true \
             "${{ steps.tag.outputs.tag }}" \
             sh -c "stack --allow-different-user update && python3 tools/hpc-coverage.py"
 

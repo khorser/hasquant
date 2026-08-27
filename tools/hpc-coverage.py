@@ -42,9 +42,12 @@ def run(cmd, **kw):
     subprocess.run(cmd, check=True, **kw)
 
 
+STACK = ["stack", "--allow-different-user"]
+
+
 def stack_path(what):
     return subprocess.run(
-        ["stack", "path", what], check=True, capture_output=True, text=True
+        [*STACK, "path", what], check=True, capture_output=True, text=True
     ).stdout.strip()
 
 
@@ -72,8 +75,8 @@ def clear_compiled_outputs(hs_files):
 def main():
     extra_test_args = sys.argv[1:] or ["--ta", "--skip LONG"]
 
-    run(["stack", "clean", "hasquant"])
-    run(["stack", "build", "--coverage", "--no-haddock"])
+    run([*STACK, "clean", "hasquant"])
+    run([*STACK, "build", "--coverage", "--no-haddock"])
 
     dist_dir = Path(stack_path("--dist-dir"))
     build_dir = dist_dir / "build"
@@ -85,9 +88,9 @@ def main():
         sys.exit(1)
 
     clear_compiled_outputs(touched)
-    run(["stack", "build", "--coverage", "--no-haddock"])
+    run([*STACK, "build", "--coverage", "--no-haddock"])
 
-    run(["stack", "test", "--coverage", *extra_test_args])
+    run([*STACK, "test", "--coverage", *extra_test_args])
 
 
 if __name__ == "__main__":
