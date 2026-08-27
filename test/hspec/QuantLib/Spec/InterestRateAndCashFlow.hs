@@ -230,6 +230,150 @@ spec tod = do
           ret <- CF.nextCashFlowAmount cpns True Nothing
           ret `shouldSatisfy` const True
 
+    -- Exercises the CashFlow.chs analytics that InterestRateAndCashFlow's other tests never
+    -- touch: the accrual-window/previous-next-flow getters, and the six function pairs that
+    -- expose the same computation twice (once taking an 'IR.InterestRate', once taking its
+    -- rate/day-counter/compounding/frequency unpacked) -- checked here by construction rather
+    -- than against a golden value, since both entry points must agree to FP precision on the
+    -- exact same fixture.
+    describe "cash flow analytics" $ do
+      let mkFixedLeg = do
+            td <- Settings.evaluationDate
+            cal <- calendar TARGET
+            sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+            dc <- dayCounter (Actual360 False)
+            cpn <- IR.interestRate 0.03 dc IR.Simple Annual
+            l <- CF.fixedRateLeg sch [100.0] [cpn] Following dc cal
+            pure (l, dc, cpn)
+
+          relClose :: Double -> Double -> Double -> Bool
+          relClose eps expected actual = abs (actual - expected) <= eps * max 1.0 (abs expected)
+
+      it "accrual-window and next-cash-flow getters agree with the coupon's own schedule" $
+        Settings.keepingSettings' $ do
+          (l, _, _) <- mkFixedLeg
+          aStart <- CF.accrualStartDate l False Nothing
+          aEnd <- CF.accrualEndDate l False Nothing
+          case (aStart, aEnd) of
+            (Just s, Just e) -> do
+              s `shouldSatisfy` (< e)
+              aDays <- CF.accrualDays l False Nothing
+              aDays `shouldSatisfy` (> 0)
+              aPeriod <- CF.accrualPeriod l False Nothing
+              aPeriod `shouldSatisfy` (> 0)
+              refStart <- CF.referencePeriodStart l False Nothing
+              refEnd <- CF.referencePeriodEnd l False Nothing
+              (refStart, refEnd) `shouldBe` (Just s, Just e)
+            _ -> expectationFailure "single-coupon leg has no accrual window"
+
+          nom <- CF.nominal l False Nothing
+          nom `shouldBe` 100.0
+
+          exp1 <- CF.isExpired l False Nothing
+          exp1 `shouldBe` False
+
+          -- 'maturityDate' is the coupon's own (unadjusted) accrual end, not the
+          -- business-day-adjusted payment date 'nextCashFlowDate' returns.
+          mat <- CF.maturityDate l
+          Just mat `shouldBe` aEnd
+
+          nextD <- CF.nextCashFlowDate l False Nothing
+          nextLeg <- CF.nextCashFlows l False Nothing
+          nextFlows <- CF.cashFlows nextLeg Nothing Nothing
+          case nextFlows of
+            [(flowDate, flowAmt, _)] -> do
+              nextD `shouldBe` Just flowDate
+              flowAmt `shouldSatisfy` (> 0)
+            _ -> expectationFailure "single-coupon leg's next cash flows should have exactly one entry"
+
+      it "previous-cash-flow getters and isExpired agree once settlement is past maturity" $
+        Settings.keepingSettings' $ do
+          (l, _, _) <- mkFixedLeg
+          nextD0 <- CF.nextCashFlowDate l False Nothing
+          case nextD0 of
+            Nothing -> expectationFailure "single-coupon leg has no next cash flow"
+            Just payDate -> do
+              let afterD = addDays 1 payDate
+
+              exp2 <- CF.isExpired l False (Just afterD)
+              exp2 `shouldBe` True
+
+              prevAmt <- CF.previousCashFlowAmount l False (Just afterD)
+              prevAmt `shouldSatisfy` (> 0)
+              prevDate <- CF.previousCashFlowDate l False (Just afterD)
+              prevDate `shouldBe` Just payDate
+              prevRate <- CF.previousCouponRate l False (Just afterD)
+              prevRate `shouldSatisfy` closePrec 0.03 1.0e-9
+
+              prevLeg <- CF.previousCashFlows l False (Just afterD)
+              prevFlows <- CF.cashFlows prevLeg Nothing Nothing
+              length prevFlows `shouldBe` 1
+
+      it "InterestRate-taking and flat-param-taking entry points agree (basisPointValue, bpsFromYield, convexity, duration, npvFromYield, yieldValueBasisPoint)" $
+        Settings.keepingSettings' $ do
+          (l, dc, cpn) <- mkFixedLeg
+          let r = 0.03; comp = IR.Simple; freq = Annual
+
+          bpv' <- CF.basisPointValue' l cpn False Nothing Nothing
+          bpv  <- CF.basisPointValue l r dc comp freq False Nothing Nothing
+          bpv `shouldSatisfy` relClose 1.0e-9 bpv'
+
+          bfy' <- CF.bpsFromYield' l cpn False Nothing Nothing
+          bfy  <- CF.bpsFromYield l r dc comp freq False Nothing Nothing
+          bfy `shouldSatisfy` relClose 1.0e-9 bfy'
+
+          cvx' <- CF.convexity' l cpn False Nothing Nothing
+          cvx  <- CF.convexity l r dc comp freq False Nothing Nothing
+          cvx `shouldSatisfy` relClose 1.0e-9 cvx'
+
+          -- duration/duration' are named the opposite way round from the other pairs here:
+          -- 'duration' takes the InterestRate, 'duration'' takes the flat params.
+          durIR   <- CF.duration l cpn CF.Simple False Nothing Nothing
+          durFlat <- CF.duration' l r dc comp freq CF.Simple False Nothing Nothing
+          durFlat `shouldSatisfy` relClose 1.0e-9 durIR
+
+          npv1 <- CF.npvFromYield' l cpn False Nothing Nothing
+          npv2 <- CF.npvFromYield l r dc comp freq False Nothing Nothing
+          npv2 `shouldSatisfy` relClose 1.0e-9 npv1
+
+          yvbp' <- CF.yieldValueBasisPoint' l cpn False Nothing Nothing
+          yvbp  <- CF.yieldValueBasisPoint l r dc comp freq False Nothing Nothing
+          yvbp `shouldSatisfy` relClose 1.0e-9 yvbp'
+
+      it "yield recovers the coupon rate from the leg's own NPV" $
+        Settings.keepingSettings' $ do
+          (l, dc, cpn) <- mkFixedLeg
+          npv0 <- CF.npvFromYield' l cpn False Nothing Nothing
+          impliedYield <- CF.yield l npv0 dc IR.Simple Annual False Nothing Nothing 1.0e-10 1000 0.03
+          impliedYield `shouldSatisfy` relClose 1.0e-6 0.03
+
+      it "term-structure NPV analytics: npv vs npv' (zero z-spread), npvbps decomposition, zSpread round-trip, atmRate repricing" $
+        Settings.keepingSettings' $ do
+          (l, dc, _) <- mkFixedLeg
+          td <- Settings.evaluationDate
+          q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
+          curve <- flatForward td q dc IR.Continuous Annual
+
+          n1 <- CF.npv l curve False Nothing Nothing
+          n2 <- CF.npv' l curve 0.0 IR.Continuous Annual False Nothing Nothing
+          n2 `shouldSatisfy` relClose 1.0e-6 n1
+
+          (npvbpsN, npvbpsB) <- CF.npvbps l curve False td td
+          npvbpsN `shouldSatisfy` relClose 1.0e-9 n1
+          b1 <- CF.bps l curve False Nothing Nothing
+          npvbpsB `shouldSatisfy` relClose 1.0e-9 b1
+
+          zs <- CF.zSpread l n1 curve IR.Continuous Annual False Nothing Nothing 1.0e-10 1000 0.0
+          zs `shouldSatisfy` relClose 1.0e-6 0.0
+
+          atm <- CF.atmRate l curve False Nothing Nothing n1
+          cal <- calendar TARGET
+          sch2 <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+          cpnAtm <- IR.interestRate atm dc IR.Simple Annual
+          lAtm <- CF.fixedRateLeg sch2 [100.0] [cpnAtm] Following dc cal
+          nAtm <- CF.npv lAtm curve False Nothing Nothing
+          nAtm `shouldSatisfy` relClose 1.0e-6 n1
+
     -- No exact cached expected values apply here: test-suite/cms.cpp's own testFairRate is
     -- itself a self-consistency check (numerical/analytic Hagan agreement within a fixed
     -- tolerance, not a pinned rate), with LinearTsrPricer standing in for the last numerical
