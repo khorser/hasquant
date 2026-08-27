@@ -12,6 +12,7 @@ module QuantLib.Method
   , assetAt
   , asset
   , asset'
+  , lsmRegress
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -67,5 +68,18 @@ import Data.Vector.Storable(Vector)
 
 -- |the full simulated path (values at every time step) of a single asset, as a storable vector.
 {#fun qlSamplePathAssetPath as asset'{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |one step of Longstaff-Schwartz early-exercise regression: fit a polynomial basis of the given
+-- order/type against the (in-the-money) fit states and their continuation targets, then evaluate the
+-- fitted continuation value at each of the given eval states. This is the same per-exercise-date
+-- regression 'LongstaffSchwartzPathPricer' performs internally against a bound 'Payoff', exposed so it
+-- can be driven from a Haskell-defined payoff instead: call it once per exercise date, walking dates
+-- strictly backward, batched across all paths rather than per path.
+{#fun qlLsmRegress as lsmRegress{`PolynomialType',fromIntegral`Word' -- ^basis order
+  ,withDoubleArray*`[Double]'& -- ^fit states (in-the-money paths only)
+  ,withDoubleArray*`[Double]'& -- ^fit targets (continuation value at these states)
+  ,withDoubleArray*`[Double]'& -- ^eval states (all paths' state at this date)
+  ,preArray-`[Double]'&peekDoubleArray* -- ^continuation value estimate per eval state
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

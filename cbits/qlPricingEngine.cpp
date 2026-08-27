@@ -6,6 +6,7 @@
 #include <ql/experimental/varianceoption/integralhestonvarianceoptionengine.hpp>
 #include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 #include <ql/methods/montecarlo/lsmbasissystem.hpp>
+#include <ql/math/generallinearleastsquares.hpp>
 #include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
 #include <ql/pricingengines/asian/analytic_discr_geom_av_strike.hpp>
 #include <ql/pricingengines/asian/mc_discr_arith_av_price.hpp>
@@ -972,6 +973,24 @@ double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {
 void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
   try {*len = arg(s)->value.pathSize(); *p = qlAllocateDoubles(*len);std::copy(s->value.at(asset).begin(), s->value.at(asset).end(), *p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+
+// Runs one Longstaff-Schwartz basis-function regression (fitStates -> fitTargets) and evaluates the
+// fitted continuation value at each evalState -- the cross-path regression step LongstaffSchwartzPathPricer
+// performs once per exercise date, with the payoff/exercise values supplied from Haskell instead of a
+// bound Payoff.
+void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, char **e) {
+  try {
+    QL_REQUIRE(fitStatesLen == fitTargetsLen, "fit states and fit targets must have the same length");
+    std::vector<std::function<Real(Real)> > v = LsmBasisSystem::pathBasisSystem(order, (LsmBasisSystem::PolynomialType)polynomType);
+    std::vector<Real> x(fitStates, fitStates + fitStatesLen), y(fitTargets, fitTargets + fitTargetsLen);
+    Array coeff = GeneralLinearLeastSquares(x, y, v).coefficients();
+    *outLen = evalLen; *outValues = qlAllocateDoubles(evalLen);
+    for (unsigned i = 0; i < evalLen; ++i) {
+      Real cont = 0.0;
+      for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](evalStates[i]);
+      (*outValues)[i] = cont;
+    }
+  } catch (std::exception& er) {*e = DUP(er.what());}}
 
 double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
   try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
