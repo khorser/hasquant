@@ -76,6 +76,7 @@ module QuantLib.TermStructure.Yield
   , piecewiseYieldCurveGlobalBootstrap'
   , piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear'
   , piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull'
+  , piecewiseYieldCurveLocalBootstrap'
   , interpolatedZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
@@ -840,6 +841,41 @@ piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' :: Word -- ^settlementDa
 piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' s cal r dc qd ar ad acc ex =
   qlPiecewiseYieldCurveGlobalBootstrap3 s cal r dc qs ds ar ad acc ex where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Like 'piecewiseYieldCurve'', but bootstraps with QuantLib's @LocalBootstrap@ instead of
+-- @IterativeBootstrap@ -- each interpolated segment is solved from a local window of
+-- @localisation@ neighbouring instruments rather than pillar-by-pillar over the whole curve,
+-- giving a localised risk profile with a smoother (non-local) interpolation method.
+-- @LocalBootstrap@'s upstream 'localInterpolate' requirement is met only by @ConvexMonotone@
+-- (Hagan\/West \"Interpolation Methods for Curve Construction\"), so the interpolator is
+-- hardcoded to @ConvexMonotone@ in the shim -- not a 'Interpolation' parameter here, the same
+-- way 'piecewiseYieldCurveGlobalBootstrap'' hardcodes its own interpolator. @localisation@\/
+-- @forcePositive@\/@accuracy@ are @LocalBootstrap@'s own constructor parameters;
+-- @quadraticity@\/@monotonicity@\/@convexForcePositive@ are @ConvexMonotone@'s (upstream
+-- defaults 0.3\/0.7\/'True'). 'Discount' is rejected with a 'QuantLib.Type.Error': verified
+-- (against a standalone reproduction with the same installed QuantLib, independent of hasquant)
+-- to return numerically wrong discount factors with this bootstrapper\/interpolator pair,
+-- regardless of @accuracy@ or the input quotes -- use 'ForwardRate', 'ZeroYield' or
+-- 'SimpleZeroYield' instead, all three of which reprice correctly. Matches upstream's own
+-- @test-suite\/piecewiseyieldcurve.cpp@, whose only @LocalBootstrap@+@ConvexMonotone@ coverage
+-- uses 'ForwardRate', never 'Discount'.
+piecewiseYieldCurveLocalBootstrap' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper rh] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> BootstrapTrait -- ^bootstrap trait ('Discount' is rejected, see above)
+  -> Word -- ^localisation
+  -> Bool -- ^forcePositive (LocalBootstrap's)
+  -> Double -- ^accuracy
+  -> Double -- ^quadraticity (ConvexMonotone's)
+  -> Double -- ^monotonicity (ConvexMonotone's)
+  -> Bool -- ^convexForcePositive (ConvexMonotone's)
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveLocalBootstrap' s cal r dc qd t loc fp acc q m cfp ex =
+  qlPiecewiseYieldCurveLocalBootstrap1 s cal r dc qs ds t loc fp acc q m cfp ex where (ds, qs) = unzip qd
+{#fun qlPiecewiseYieldCurveLocalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Yield curve interpolating discount factors directly between the given dates.
 interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs

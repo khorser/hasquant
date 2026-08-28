@@ -4670,7 +4670,7 @@
 | |ql/math/interpolations/convexmonotoneinterpolation.hpp|ConvexMonotoneInterpolation::ConvexMonotoneInterpolation<I1, I2>(const I1 & xBegin, const I1 & xEnd, const I2 & yBegin, Real quadraticity, Real monotonicity, bool forcePositive, bool flatFinalPeriod = false, const helper_map & preExistingHelpers = { }, bool update = true);
 | |ql/math/interpolations/convexmonotoneinterpolation.hpp|ConvexMonotoneInterpolation::ConvexMonotoneInterpolation<I1, I2>(const Interpolation & interp);
 | |ql/math/interpolations/convexmonotoneinterpolation.hpp|std::map<Real, ext::shared_ptr<detail::SectionHelper>> ConvexMonotoneInterpolation::getExistingHelpers();
-| |ql/math/interpolations/convexmonotoneinterpolation.hpp|ConvexMonotone::ConvexMonotone(Real quadraticity = 0.3, Real monotonicity = 0.7, bool forcePositive = true);
+|u|ql/math/interpolations/convexmonotoneinterpolation.hpp|ConvexMonotone::ConvexMonotone(Real quadraticity = 0.3, Real monotonicity = 0.7, bool forcePositive = true);
 | |ql/math/interpolations/convexmonotoneinterpolation.hpp|Real SectionHelper::value(Real x) const;
 | |ql/math/interpolations/convexmonotoneinterpolation.hpp|Real SectionHelper::primitive(Real x) const;
 | |ql/math/interpolations/convexmonotoneinterpolation.hpp|Real SectionHelper::fNext() const;
@@ -9033,10 +9033,10 @@
 | |ql/termstructures/iterativebootstrap.hpp|void initialize() const;
 | |ql/termstructures/iterativebootstrap.hpp|void calculate() const;
 | |ql/termstructures/localbootstrap.hpp|PenaltyFunction::PenaltyFunction<Curve>(Curve * curve, Size initialIndex, helper_iterator rateHelpersStart, helper_iterator rateHelpersEnd);
-| |ql/termstructures/localbootstrap.hpp|LocalBootstrap::LocalBootstrap<Curve>(Size localisation = 2, bool forcePositive = true, Real accuracy = Null<Real>());
+|u|ql/termstructures/localbootstrap.hpp|LocalBootstrap::LocalBootstrap<Curve>(Size localisation = 2, bool forcePositive = true, Real accuracy = Null<Real>());
 | |ql/termstructures/localbootstrap.hpp|void LocalBootstrap::setup(Curve * ts);
 | |ql/termstructures/localbootstrap.hpp|void LocalBootstrap::calculate() const;
-| |ql/termstructures/localbootstrap.hpp|LocalBootstrap<Curve>(Size localisation, bool forcePositive, Real accuracy);
+|u|ql/termstructures/localbootstrap.hpp|LocalBootstrap<Curve>(Size localisation, bool forcePositive, Real accuracy);
 | |ql/termstructures/localbootstrap.hpp|void setup(Curve * ts);
 | |ql/termstructures/localbootstrap.hpp|void calculate() const;
 | |ql/termstructures/localbootstrap.hpp|Real value(const Array & x) const;

@@ -319,6 +319,12 @@ extern "C" {
   // constructor (canned AdditionalErrors/AdditionalDates -- see qlTermStructureAux.cpp).
   // additionalDatesLen must equal additionalRateLen - 2.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, char **e);
+  // Dedicated LocalBootstrap entry point: interpolator is always ConvexMonotone (the only
+  // upstream interpolator LocalBootstrap works with -- see qlTermStructureAux.cpp), so trait is
+  // the only Haskell-visible dispatch axis here; localisation/forcePositive/accuracy are
+  // LocalBootstrap's own constructor params, quadraticity/monotonicity/convexForcePositive are
+  // ConvexMonotone's.
+  QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, unsigned localisation, int forcePositive, double accuracy, double quadraticity, double monotonicity, int convexForcePositive, int extrapolate, char **e);
 
   QlMultiCurve *qlMultiCurve(double accuracy, char **e);
   void qlFreeMultiCurve(QlMultiCurve *o);

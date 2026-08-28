@@ -1,5 +1,6 @@
 #include <ql/termstructures/yield/all.hpp>
 #include <ql/termstructures/globalbootstrap.hpp>
+#include <ql/termstructures/localbootstrap.hpp>
 #include <ql/math/interpolations/all.hpp>
 #include <ql/time/calendar.hpp>
 #include <ql/termstructures/credit/interpolateddefaultdensitycurve.hpp>
@@ -67,6 +68,22 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& additionalHelpers,
   const std::vector<QuantLib::Date>& additionalDates,
   double accuracy);
+
+// PiecewiseYieldCurve<Trait, ConvexMonotone, LocalBootstrap>, dispatched over
+// ForwardRate/ZeroYield/SimpleZeroYield -- Discount is rejected (QL_FAIL) at trait=Discount:
+// verified numerically incorrect with this bootstrapper/interpolator pair, see
+// qlTermStructureAux.cpp. ConvexMonotone is the only upstream interpolator LocalBootstrap works
+// with -- see qlTermStructureAux.cpp for why -- so it's implicit, not a Haskell-visible choice;
+// quadraticity/monotonicity/convexForcePositive are its own constructor params, distinct from
+// localisation/forcePositive/accuracy (LocalBootstrap's own).
+QuantLib::YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(
+  unsigned settl, const QuantLib::Calendar &cal,
+  const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
+  const QuantLib::DayCounter& dayCount,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date>& jumpDates,
+  int trait, QuantLib::Size localisation, bool forcePositive, double accuracy,
+  double quadraticity, double monotonicity, bool convexForcePositive);
 
 QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const std::vector<QuantLib::Date>& dates,

@@ -155,6 +155,62 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl, 
           AdditionalErrors(additionalHelpers), accuracy, nullptr, nullptr));
 }
 
+// LocalBootstrap requires its Interpolator to provide localInterpolate(), which upstream only
+// ConvexMonotoneInterpolation (ql/math/interpolations/convexmonotoneinterpolation.hpp) supplies
+// -- Linear/LogLinear/Cubic/LogCubic/BackwardFlat/ForwardFlat do not. So unlike dispatchTrait
+// (interpolator-generic), this dispatches trait only, with the interpolator fixed to
+// ConvexMonotone.
+//
+// Discount is deliberately excluded, unlike dispatchTrait's IterativeBootstrap dispatch (which
+// includes it): a standalone raw-C++ reproduction against this same installed libQuantLib (no
+// hasquant involved) showed PiecewiseYieldCurve<Discount, ConvexMonotone, LocalBootstrap>
+// returning wildly wrong discount factors (>1, growing with maturity) for ordinary deposit-rate
+// inputs, reproducibly across both a flat 3% quote and varied per-tenor quotes, and independent
+// of LocalBootstrap's accuracy parameter -- not a hasquant marshalling bug, a genuine numerical
+// incompatibility between Discount's discount-factor-space guess/updateGuess and ConvexMonotone's
+// localInterpolate. ForwardRate, ZeroYield and SimpleZeroYield all reproduce the expected
+// 1/(1+rate*tau) values correctly under the same fixture. This matches upstream's own
+// test-suite/piecewiseyieldcurve.cpp, whose only LocalBootstrap+ConvexMonotone coverage
+// (testLocalBootstrapConsistency) uses ForwardRate, never Discount.
+template <class Trait, class... Args>
+YieldTermStructure *makeCurveLocalBootstrap(const ConvexMonotone& interp, Size localisation,
+    bool forcePositive, double accuracy, Args&&... args) {
+  using CurveType = PiecewiseYieldCurve<Trait, QuantLib::ConvexMonotone, QuantLib::LocalBootstrap>;
+  // CurveType::bootstrap_type(...) naming order -- see the comment on the GlobalBootstrap branch
+  // in qlPiecewiseYieldCurveAux1, same [temp.inst] reasoning applied defensively here too.
+  return new CurveType(std::forward<Args>(args)..., interp,
+      typename CurveType::bootstrap_type(localisation, forcePositive, accuracy));
+}
+
+template <class... Args>
+YieldTermStructure *dispatchTraitLocalBootstrap(int trait, const ConvexMonotone& interp,
+    Size localisation, bool forcePositive, double accuracy, Args&&... args) {
+  switch (trait) {
+  case hasquant::ForwardRate:
+    return makeCurveLocalBootstrap<QuantLib::ForwardRate>(interp, localisation, forcePositive, accuracy, std::forward<Args>(args)...);
+  case hasquant::ZeroYield:
+    return makeCurveLocalBootstrap<QuantLib::ZeroYield>(interp, localisation, forcePositive, accuracy, std::forward<Args>(args)...);
+  case hasquant::SimpleZeroYield:
+    return makeCurveLocalBootstrap<QuantLib::SimpleZeroYield>(interp, localisation, forcePositive, accuracy, std::forward<Args>(args)...);
+  case hasquant::Discount:
+    QL_FAIL("LocalBootstrap-based PiecewiseYieldCurve construction with trait=Discount produces "
+        "numerically incorrect results with ConvexMonotone (verified independently against "
+        "upstream QuantLib) -- use ForwardRate, ZeroYield or SimpleZeroYield instead");
+  default:
+    QL_FAIL("Unsupported trait" << trait);
+  }
+}
+
+YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(unsigned settl, const Calendar &cal,
+    const std::vector<shared_ptr<RateHelper> >& instr,
+    const DayCounter& dayCount,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    int trait, Size localisation, bool forcePositive, double accuracy,
+    double quadraticity, double monotonicity, bool convexForcePositive) {
+  return dispatchTraitLocalBootstrap(trait, ConvexMonotone(quadraticity, monotonicity, convexForcePositive),
+      localisation, forcePositive, accuracy, settl, cal, instr, dayCount, jumps, jumpDates);
+}
+
 // extracted some template-heavy stuff into a separate file to speed up the compilation
 YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
     const std::vector<shared_ptr<RateHelper> >& instr,

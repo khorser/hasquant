@@ -1146,6 +1146,33 @@ spec = do
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) [1 .. 5 :: Int]
 
+      -- LocalBootstrap only works with an interpolator providing localInterpolate(), which
+      -- upstream only ConvexMonotone supplies -- so piecewiseYieldCurveLocalBootstrap' hardcodes
+      -- ConvexMonotone rather than taking an Interpolation argument. No cached upstream fixture
+      -- reuses this exact combination, so this checks the same reprices-its-own-instruments
+      -- property as the GlobalBootstrapFull test above: each deposit still solves back to its
+      -- own input quote via the standard simple-compounding relation. trait=ForwardRate, not
+      -- Discount: a standalone raw-QuantLib reproduction (independent of hasquant) showed
+      -- trait=Discount returns numerically wrong discount factors with LocalBootstrap+
+      -- ConvexMonotone -- see the QL_FAIL for that combination in qlTermStructureAux.cpp, and
+      -- upstream's own testLocalBootstrapConsistency, which likewise only exercises ForwardRate.
+      it "LocalBootstrap reprices its own instruments correctly" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          settleFix <- advance cal curveToday (2, Days) Following False
+          q <- Quote.simpleQuote 0.03
+          qVal <- Quote.value q
+          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          curve <- piecewiseYieldCurveLocalBootstrap' 2 cal helpers euriborDC [] ForwardRate 2 True 1.0e-10 0.3 0.7 True False
+          mapM_ (\i -> do
+              pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
+              let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
+              df <- discount' curve pillar False
+              df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
+            ) [1 .. 5 :: Int]
+
     -- PiecewiseBlackVarianceSurface::makeFromGrid: upstream's testMakeFromGrid
     -- (test-suite/piecewiseblackvariancesurface.cpp) has no cached NPV fixture, only
     -- analytical self-consistency checks (exact reprice at grid nodes, etc). hasquant has no
