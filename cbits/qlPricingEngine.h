@@ -30,6 +30,7 @@ extern "C" {
   QlPricingEngine* qlAnalyticContinuousFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* qlAnalyticDigitalAmericanKOEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticDiscreteGeometricAverageStrikeAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlTurnbullWakemanAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);

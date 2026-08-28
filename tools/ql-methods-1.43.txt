@@ -8060,7 +8060,7 @@
 |v|ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp|AnalyticDigitalAmericanEngine::AnalyticDigitalAmericanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>);
 |x|ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp|void AnalyticDigitalAmericanEngine::calculate() const;
 | |ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp|bool AnalyticDigitalAmericanEngine::knock_in() const;
-| |ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp|AnalyticDigitalAmericanKOEngine::AnalyticDigitalAmericanKOEngine(const ext::shared_ptr<GeneralizedBlackScholesProcess> & engine);
+|v|ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp|AnalyticDigitalAmericanKOEngine::AnalyticDigitalAmericanKOEngine(const ext::shared_ptr<GeneralizedBlackScholesProcess> & engine);
 |?|ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp|AnalyticDividendEuropeanEngine::AnalyticDividendEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, DividendSchedule dividends);
 |x|ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp|void AnalyticDividendEuropeanEngine::calculate() const;
 |v|ql/pricingengines/vanilla/analyticeuropeanengine.hpp|AnalyticEuropeanEngine::AnalyticEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>);

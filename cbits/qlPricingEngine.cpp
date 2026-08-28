@@ -361,6 +361,9 @@ QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGenerali
 QlPricingEngine* qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticDigitalAmericanEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticDigitalAmericanKOEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticDigitalAmericanKOEngine(*arg(x0)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAveragePriceAsianEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}

@@ -46,6 +46,7 @@ module QuantLib.PricingEngine
   , analyticContinuousFloatingLookbackEngine
   , analyticContinuousGeometricAveragePriceAsianEngine
   , analyticDigitalAmericanEngine
+  , analyticDigitalAmericanKOEngine
   , analyticDiscreteGeometricAveragePriceAsianEngine
   , analyticDiscreteGeometricAverageStrikeAsianEngine
   , turnbullWakemanAsianEngine
@@ -451,6 +452,9 @@ import QuantLib.Internal.Common
 
 -- |analytic pricing engine for American digital (cash-or-nothing/asset-or-nothing) options
 {#fun qlAnalyticDigitalAmericanEngine as analyticDigitalAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for American knock-out digital (cash-or-nothing/asset-or-nothing) options
+{#fun qlAnalyticDigitalAmericanKOEngine as analyticDigitalAmericanKOEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for European discrete geometric average-price Asian options
 {#fun qlAnalyticDiscreteGeometricAveragePriceAsianEngine as analyticDiscreteGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
