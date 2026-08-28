@@ -2,6 +2,14 @@
 
 Haskell bindings to QuantLib via c2hs, with a C++ shim layer in `cbits/`.
 
+hasquant is a custom wrapper built directly against QuantLib's C++ API — it does not use, wrap, or
+depend on QuantLib-SWIG. When code comments or haddock cite "QuantLib-SWIG" (frequent in `cbits/`
+and the `.chs` files), they are citing prior art for an API-shape decision — which callback shape
+to bind, which overload of a templated class to expose, which enum values a class actually needs —
+not describing a dependency. QuantLib-SWIG is a useful reference precisely because it's another
+mature, long-lived per-language QuantLib wrapper that has already made and documented the same
+category of call in its own `.i` interface files.
+
 ## Before inventing a workaround
 
 This codebase has accumulated many special-case patterns for recurring problems (c2hs cross-module enum-import cycles, multi-inheritance secondary interfaces, wide-arity constructors). Before adding a hand-rolled type mirroring a C enum, a new module, or a new abstraction layer, grep this file, the codebase, and `.claude/skills/` for how a similarly-shaped problem was already solved. A plausible-looking one-off fix is usually a rediscovery, and diverging from the established pattern drops that pattern's safety properties — e.g. `CPIInterpolationType` was hand-rolled outside `QuantLib.Internal.Common` (the existing home for cross-cutting enums like `TimeUnit`, which live there to avoid cyclic deps) before being moved back into it.
