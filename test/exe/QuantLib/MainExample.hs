@@ -7,6 +7,7 @@ import Data.List(intercalate)
 import QuantLib.Settings
 import QuantLib.Time.Date
 
+import qualified QuantLib.Example.QuickStart as QuickStart
 import qualified QuantLib.Example.FRA as FRA
 import qualified QuantLib.Example.Bond as Bond
 import qualified QuantLib.Example.Swap as SwapExample
@@ -29,6 +30,11 @@ main = do
   t <- today
   wd <- weekday t
   putStrLn $ "Today is " ++ show wd
+
+  putStrLn "\n*** QuickStart Example ***"
+  qr <- keepingSettings' QuickStart.run
+  putStrLn $ "NPV: " ++ show (QuickStart.quickNpv qr)
+  putStrLn $ "Fair rate: " ++ show (QuickStart.quickFairRate qr)
 
   putStrLn "\n*** Bond Example ***"
   br <- keepingSettings' Bond.run

@@ -10,9 +10,47 @@ The main departures from a thin wrapper are enums and ADTs standing in for thing
 
 This started as a hand-written project in 2012 (see "Project History" below) and has gone through several architecture rewrites since. The core design — the pointer-ownership model, the enum/ADT scheme, the C shim conventions — is hand-designed and predates any AI involvement. More recently I've used AI assistance to extend coverage faster: new classes, methods, day counters, indexes. Every generated binding is still reviewed against the pattern it's supposed to follow, checked against the upstream C++ signature, and covered by a test before it counts as done — see "Testing" below for what that means in practice.
 
-Worked examples live in `test/example/QuantLib/Example`. They're direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style. The test suite proper is `test/main/QuantLib/MainTest.hs`, a dispatcher over the topic modules in `test/hspec/QuantLib/Spec`.
+Worked examples live in `test/example/QuantLib/Example`. Most are direct translations of QuantLib's own examples and test suite, not idiomatic Haskell — the goal there is fidelity to a known-correct reference, not style; `QuickStart` (see "Quick Example" below) is the one written for readability instead. The test suite proper is `test/main/QuantLib/MainTest.hs`, a dispatcher over the topic modules in `test/hspec/QuantLib/Spec`.
 
 The package is published on Hackage at https://hackage.haskell.org/package/hasquant, with Haddock documentation for the current `master` available at https://khorser.github.io/hasquant
+
+# Quick Example
+
+Build a hand-generated schedule, a discount curve from a handful of hardcoded zero rates, an overnight-indexed swap off both, and price it:
+
+``` haskell
+let today = 2 `january` 2024
+setEvaluationDate (Just today)
+
+cal <- calendar TARGET
+settle <- advance cal today (2, Days) Following False
+let maturity = addGregorianYearsClip 5 settle
+
+dc <- dayCounter (Actual360 False)
+curve <- interpolatedZeroCurve
+  [ (settle, 0.030)
+  , (addGregorianYearsClip 1 settle, 0.032)
+  , (addGregorianYearsClip 2 settle, 0.034)
+  , (addGregorianYearsClip 5 settle, 0.036)
+  , (addGregorianYearsClip 10 settle, 0.038)
+  ] dc cal [] Linear
+
+sofr <- overnightIborIndex Sofr (Just curve)
+
+sched <- schedule (Just settle) maturity (1, Years) cal
+  ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+
+ois <- overnightIndexedSwap Payer 10000000 sched 0.035 dc sofr 0.0
+  0 Following cal False AveragingCompound Nothing 0 False
+
+engine <- discountingSwapEngine curve (Just False) Nothing Nothing
+setPricingEngine ois engine
+
+npv ois >>= print       -- 70994.8441727506
+fairRate ois >>= print  -- 3.6554153626327204e-2
+```
+
+This is `QuantLib.Example.QuickStart`'s `run` (`test/example/QuantLib/Example/QuickStart.hs`), a real, compiled, tested example — not just illustrative prose — wired into `stack exec hasquant_example` and pinned by a test in `test/hspec/QuantLib/Spec/Examples.hs`, so this snippet can't silently drift from working code.
 
 # Goals and Scope
 

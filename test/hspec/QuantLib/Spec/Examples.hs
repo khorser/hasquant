@@ -41,6 +41,7 @@ import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
 import qualified QuantLib.Example.AsianOption as AsianOptionExample
 import qualified QuantLib.Example.ForwardOption as ForwardOptionExample
 import qualified QuantLib.Example.OvernightIndexedSwap as OvernightIndexedSwapExample
+import qualified QuantLib.Example.QuickStart as QuickStartExample
 import qualified QuantLib.Example.Swaption as SwaptionExample
 import qualified QuantLib.Example.Optimizer as OptimizerExample
 import qualified QuantLib.Example.Fdm as FdmExample
@@ -705,6 +706,15 @@ spec = do
         let cachedNPV = 0.001730450147
         OvernightIndexedSwapExample.npvNonTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
         OvernightIndexedSwapExample.npvTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
+
+    -- The README's Quick Example: not a QuantLib test-suite port, just a
+    -- self-consistency pin on this demo's own hardcoded zero curve/swap terms,
+    -- so this stays in sync if either the demo or the binding changes.
+    describe "QuickStart example" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' QuickStartExample.run
+        QuickStartExample.quickNpv r `shouldSatisfy` closePrec 70994.8441727506 1.0e-2
+        QuickStartExample.quickFairRate r `shouldSatisfy` closePrec 3.6554153626327204e-2 1.0e-8
 
     -- ~/Src/QuantLib/test-suite/swaption.cpp:testCachedValue (VanillaSwap half):
     -- a physically-settled European payer swaption on a 5y-into-10y EUR
