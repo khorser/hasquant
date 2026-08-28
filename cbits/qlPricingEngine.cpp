@@ -122,25 +122,152 @@ using namespace QuantLib;
 template <> class ObjClassName<SamplePath*> {public: static void output(std::ostream& os) {os << "SamplePath";}};
 #endif
 
-shared_ptr<StochasticProcess::discretization> createDiscretization(int n) {
-  switch (n) {
-  case hasquant::EulerDiscretization:
-    return shared_ptr<StochasticProcess::discretization>(new EulerDiscretization());
-  case hasquant::EndEulerDiscretization:
-    return shared_ptr<StochasticProcess::discretization>(new EndEulerDiscretization());
-  default:
+namespace {
+  shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
+    switch (n) {
+    case hasquant::EulerDiscretization:
+      return shared_ptr<StochasticProcess1D::discretization>(new EulerDiscretization());
+    case hasquant::EndEulerDiscretization:
+      return shared_ptr<StochasticProcess1D::discretization>(new EndEulerDiscretization());
+    default:
       QL_FAIL("Invalid discretization: " << n);
+    }
   }
-}
 
-shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
-  switch (n) {
-  case hasquant::EulerDiscretization:
-    return shared_ptr<StochasticProcess1D::discretization>(new EulerDiscretization());
-  case hasquant::EndEulerDiscretization:
-    return shared_ptr<StochasticProcess1D::discretization>(new EndEulerDiscretization());
-  default:
-    QL_FAIL("Invalid discretization: " << n);
+  // Wraps 3 Haskell-defined callbacks (produced by QuantLib.Internal.Type's withFdmApply/
+  // withFdmApplyDirection/withFdmSolveSplitting, mirroring qlOptimize's HsCostFunction above) as a
+  // QuantLib FdmLinearOpComposite driving FdmBackwardSolver::rollback -- see the "coarsen the
+  // language-boundary crossing" bullet in CLAUDE.md and qlFdmRollback below. Only the 3 virtuals
+  // DouglasScheme::step actually calls (size/setTime are plain state, not callbacks -- see below)
+  // are implemented; apply_mixed/preconditioner QL_FAIL, so only schemes that never need them
+  // (Douglas, Crank-Nicolson in 1D) work through this hook.
+  typedef void (*FdmApplyFun)(const double* in, unsigned n, double t1, double t2, double* out);
+  typedef void (*FdmApplyDirectionFun)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out);
+  typedef void (*FdmSolveSplittingFun)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out);
+  typedef void (*FdmStepConditionFun)(const double* in, unsigned n, double t, double* out);
+
+  class HsFdmLinearOpComposite : public FdmLinearOpComposite {
+  public:
+    HsFdmLinearOpComposite(Size size, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn)
+    : size_(size), applyFn_(applyFn), applyDirFn_(applyDirFn), solveSplitFn_(solveSplitFn), t1_(0.0), t2_(0.0) {}
+
+    Size size() const override {return size_;}
+    // Not a callback: DouglasScheme (and every scheme) calls setTime once per outer step, then
+    // makes several apply*/solve_splitting calls against the *same* (t1,t2) -- so the C++
+    // wrapper just stores them as mutable state and passes them as extra scalar args to every
+    // apply*/solve_splitting callback below, keeping the Haskell callbacks themselves pure.
+    void setTime(Time t1, Time t2) override {t1_ = t1; t2_ = t2;}
+
+    Array apply(const Array& r) const override {
+      Array out(r.size());
+      applyFn_(r.begin(), (unsigned)r.size(), t1_, t2_, out.begin());
+      return out;
+    }
+    Array apply_direction(Size direction, const Array& r) const override {
+      Array out(r.size());
+      applyDirFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, t1_, t2_, out.begin());
+      return out;
+    }
+    Array solve_splitting(Size direction, const Array& r, Real s) const override {
+      Array out(r.size());
+      solveSplitFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, s, t1_, t2_, out.begin());
+      return out;
+    }
+    Array apply_mixed(const Array&) const override {
+      QL_FAIL("HsFdmLinearOpComposite::apply_mixed not implemented -- fdmRollback only supports schemes that never need mixed derivatives (Douglas, Crank-Nicolson in 1D)");
+    }
+    Array preconditioner(const Array&, Real) const override {
+      QL_FAIL("HsFdmLinearOpComposite::preconditioner not implemented -- fdmRollback only supports schemes that never need it (Douglas, Crank-Nicolson in 1D)");
+    }
+  private:
+    Size size_;
+    FdmApplyFun applyFn_;
+    FdmApplyDirectionFun applyDirFn_;
+    FdmSolveSplittingFun solveSplitFn_;
+    mutable Time t1_, t2_;
+  };
+
+  // Wraps one optional Haskell-defined step condition (withMaybeFdmStepCondition) as a
+  // StepCondition<Array>. applyTo's caller-supplied `a' buffer is both the read source and the
+  // write destination -- safe because the Haskell-side callback fully reads its input (peekArray)
+  // before writing any of its output (pokeArray), so an in-place update never reads
+  // already-overwritten data.
+  class HsFdmStepCondition : public StepCondition<Array> {
+  public:
+    explicit HsFdmStepCondition(FdmStepConditionFun fn) : fn_(fn) {}
+    void applyTo(Array& a, Time t) const override {
+      fn_(a.begin(), (unsigned)a.size(), t, a.begin());
+    }
+  private:
+    FdmStepConditionFun fn_;
+  };
+  // Genuine per-grid-node Haskell callback -- see QuantLib.Method's haddock ("coarsen the
+  // language-boundary crossing" exception case) and CLAUDE.md's own note on this hook. Unlike
+  // HsFdmLinearOpComposite/HsFdmStepCondition above, this cannot be coarsened to cross once per
+  // outer iteration: FdmInnerValueCalculator::innerValue/avgInnerValue is called once per mesher
+  // node (see qlFdmSolve below, mirroring Fdm1DimSolver's/FdmNdimSolver's own constructor loop),
+  // and QuantLib's own step conditions (e.g. FdmAmericanStepCondition, not bound here) call it
+  // again per node at every exercise date -- matching QuantLib-SWIG's own
+  // FdmInnerValueCalculatorDelegate (SWIG/fdm.i), which accepts the same real per-call cost.
+  typedef double (*FdmInnerValueFun)(const double* loc, unsigned n, double t);
+
+  class HsFdmInnerValueCalculator : public FdmInnerValueCalculator {
+  public:
+    HsFdmInnerValueCalculator(shared_ptr<FdmMesher> mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn)
+    : mesher_(std::move(mesher)), innerValueFn_(innerValueFn), avgInnerValueFn_(avgInnerValueFn) {}
+
+    Real innerValue(const FdmLinearOpIterator& iter, Time t) override {return call(innerValueFn_, iter, t);}
+    Real avgInnerValue(const FdmLinearOpIterator& iter, Time t) override {return call(avgInnerValueFn_, iter, t);}
+  private:
+    // Converts the node's grid-index iterator into its real-valued location per dimension --
+    // the reason this whole feature needs a mesher, unlike qlFdmRollback's raw-index callbacks.
+    Real call(FdmInnerValueFun fn, const FdmLinearOpIterator& iter, Time t) const {
+      const Size n = mesher_->layout()->dim().size();
+      std::vector<Real> loc(n);
+      for (Size d = 0; d < n; ++d) loc[d] = mesher_->location(iter, d);
+      return fn(loc.data(), (unsigned)n, t);
+    }
+    shared_ptr<FdmMesher> mesher_;
+    FdmInnerValueFun innerValueFn_, avgInnerValueFn_;
+  };
+
+  // Builds the FdmLinearOpIterator for the node at `coords` (one index per dimension) from
+  // mesher's own layout dim(), the reverse of what HsFdmInnerValueCalculator::call does above --
+  // lets any bound FdmInnerValueCalculator (native or Haskell-callback-driven) be inspected
+  // node-by-node without assembling a whole PDE solve.
+  // extern "C++": this whole file sits inside qlPricingEngine.h's extern "C" block, but a free
+  // function returning a non-POD C++ class by value (rather than only pointers, as every C-linkage
+  // shim function here does) needs real C++ linkage or GHC's C++ frontend warns
+  // (-Wreturn-type-c-linkage).
+  FdmLinearOpIterator fdmIteratorAt(QlFdmMesher* mesher, unsigned ndims, unsigned* coords) {
+    const shared_ptr<FdmLinearOpLayout>& layout = (*arg(mesher))->layout();
+    std::vector<Size> dim = layout->dim();
+    std::vector<Size> coordinates(coords, coords + ndims);
+    Size index = 0, stride = 1;
+    for (Size d = 0; d < dim.size(); ++d) {
+      index += coordinates[d] * stride;
+      stride *= dim[d];
+    }
+    return FdmLinearOpIterator(dim, coordinates, index);
+  }
+  // FdmAffineModelSwapInnerValue<ModelType> -- template isn't crossable into a C signature, so one
+  // concrete shim per ModelType (G2/HullWhite), matching how those two models are already separate
+  // plain pointer types (QlG2/QlHullWhite), not a shared family. exerciseDates (upstream's
+  // std::map<Time, Date>) is marshalled as two parallel arrays, zipped back into the map here --
+  // same array-pair convention as every other multi-field marshaller in this codebase.
+  // extern "C++": templates can't have C linkage (this file sits inside qlPricingEngine.h's
+  // extern "C" block) -- same reasoning as fdmIteratorAt above.
+  template <class ModelType>
+  QlFdmInnerValueCalculator* fdmAffineModelSwapInnerValue(
+                                                          shared_ptr<ModelType>* disModel, shared_ptr<ModelType>* fwdModel, QlFixedVsFloatingSwap* swap,
+                                                          unsigned exDatesLen, double* exerciseTimes, int* exerciseDates,
+                                                          QlFdmMesher* mesher, unsigned direction, char **e) {
+    try {
+      std::map<Time, Date> t2d;
+      for (unsigned i = 0; i < exDatesLen; ++i) t2d[exerciseTimes[i]] = Date(exerciseDates[i]);
+      return ret(new QlFdmInnerValueCalculator(alloc(new FdmAffineModelSwapInnerValue<ModelType>(
+                                                                                                 *arg(disModel), *arg(fwdModel), *arg(swap), t2d, *arg(mesher), direction))));
+    } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}
   }
 }
 
@@ -655,76 +782,6 @@ FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e) {try {return alloc(ne
 FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 
-// Wraps 3 Haskell-defined callbacks (produced by QuantLib.Internal.Type's withFdmApply/
-// withFdmApplyDirection/withFdmSolveSplitting, mirroring qlOptimize's HsCostFunction above) as a
-// QuantLib FdmLinearOpComposite driving FdmBackwardSolver::rollback -- see the "coarsen the
-// language-boundary crossing" bullet in CLAUDE.md and qlFdmRollback below. Only the 3 virtuals
-// DouglasScheme::step actually calls (size/setTime are plain state, not callbacks -- see below)
-// are implemented; apply_mixed/preconditioner QL_FAIL, so only schemes that never need them
-// (Douglas, Crank-Nicolson in 1D) work through this hook.
-typedef void (*FdmApplyFun)(const double* in, unsigned n, double t1, double t2, double* out);
-typedef void (*FdmApplyDirectionFun)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out);
-typedef void (*FdmSolveSplittingFun)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out);
-typedef void (*FdmStepConditionFun)(const double* in, unsigned n, double t, double* out);
-
-namespace {
-  class HsFdmLinearOpComposite : public FdmLinearOpComposite {
-    public:
-      HsFdmLinearOpComposite(Size size, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn)
-        : size_(size), applyFn_(applyFn), applyDirFn_(applyDirFn), solveSplitFn_(solveSplitFn), t1_(0.0), t2_(0.0) {}
-
-      Size size() const override {return size_;}
-      // Not a callback: DouglasScheme (and every scheme) calls setTime once per outer step, then
-      // makes several apply*/solve_splitting calls against the *same* (t1,t2) -- so the C++
-      // wrapper just stores them as mutable state and passes them as extra scalar args to every
-      // apply*/solve_splitting callback below, keeping the Haskell callbacks themselves pure.
-      void setTime(Time t1, Time t2) override {t1_ = t1; t2_ = t2;}
-
-      Array apply(const Array& r) const override {
-        Array out(r.size());
-        applyFn_(r.begin(), (unsigned)r.size(), t1_, t2_, out.begin());
-        return out;
-      }
-      Array apply_direction(Size direction, const Array& r) const override {
-        Array out(r.size());
-        applyDirFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, t1_, t2_, out.begin());
-        return out;
-      }
-      Array solve_splitting(Size direction, const Array& r, Real s) const override {
-        Array out(r.size());
-        solveSplitFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, s, t1_, t2_, out.begin());
-        return out;
-      }
-      Array apply_mixed(const Array&) const override {
-        QL_FAIL("HsFdmLinearOpComposite::apply_mixed not implemented -- fdmRollback only supports schemes that never need mixed derivatives (Douglas, Crank-Nicolson in 1D)");
-      }
-      Array preconditioner(const Array&, Real) const override {
-        QL_FAIL("HsFdmLinearOpComposite::preconditioner not implemented -- fdmRollback only supports schemes that never need it (Douglas, Crank-Nicolson in 1D)");
-      }
-    private:
-      Size size_;
-      FdmApplyFun applyFn_;
-      FdmApplyDirectionFun applyDirFn_;
-      FdmSolveSplittingFun solveSplitFn_;
-      mutable Time t1_, t2_;
-  };
-
-  // Wraps one optional Haskell-defined step condition (withMaybeFdmStepCondition) as a
-  // StepCondition<Array>. applyTo's caller-supplied `a' buffer is both the read source and the
-  // write destination -- safe because the Haskell-side callback fully reads its input (peekArray)
-  // before writing any of its output (pokeArray), so an in-place update never reads
-  // already-overwritten data.
-  class HsFdmStepCondition : public StepCondition<Array> {
-    public:
-      explicit HsFdmStepCondition(FdmStepConditionFun fn) : fn_(fn) {}
-      void applyTo(Array& a, Time t) const override {
-        fn_(a.begin(), (unsigned)a.size(), t, a.begin());
-      }
-    private:
-      FdmStepConditionFun fn_;
-  };
-}
-
 // Drives FdmBackwardSolver::rollback with a Haskell-defined operator/step condition instead of a
 // bound mesher+FdmInnerValueCalculator -- see QuantLib.Method.fdmRollback's haddock and the
 // HsFdmLinearOpComposite/HsFdmStepCondition comments above. bcSet is always the empty
@@ -806,38 +863,6 @@ void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* out
     std::copy(locs.begin(), locs.end(), *outValues);
   } catch (std::exception& er) {*e = DUP(er.what());}}
 
-// Genuine per-grid-node Haskell callback -- see QuantLib.Method's haddock ("coarsen the
-// language-boundary crossing" exception case) and CLAUDE.md's own note on this hook. Unlike
-// HsFdmLinearOpComposite/HsFdmStepCondition above, this cannot be coarsened to cross once per
-// outer iteration: FdmInnerValueCalculator::innerValue/avgInnerValue is called once per mesher
-// node (see qlFdmSolve below, mirroring Fdm1DimSolver's/FdmNdimSolver's own constructor loop),
-// and QuantLib's own step conditions (e.g. FdmAmericanStepCondition, not bound here) call it
-// again per node at every exercise date -- matching QuantLib-SWIG's own
-// FdmInnerValueCalculatorDelegate (SWIG/fdm.i), which accepts the same real per-call cost.
-typedef double (*FdmInnerValueFun)(const double* loc, unsigned n, double t);
-
-namespace {
-  class HsFdmInnerValueCalculator : public FdmInnerValueCalculator {
-    public:
-      HsFdmInnerValueCalculator(shared_ptr<FdmMesher> mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn)
-        : mesher_(std::move(mesher)), innerValueFn_(innerValueFn), avgInnerValueFn_(avgInnerValueFn) {}
-
-      Real innerValue(const FdmLinearOpIterator& iter, Time t) override {return call(innerValueFn_, iter, t);}
-      Real avgInnerValue(const FdmLinearOpIterator& iter, Time t) override {return call(avgInnerValueFn_, iter, t);}
-    private:
-      // Converts the node's grid-index iterator into its real-valued location per dimension --
-      // the reason this whole feature needs a mesher, unlike qlFdmRollback's raw-index callbacks.
-      Real call(FdmInnerValueFun fn, const FdmLinearOpIterator& iter, Time t) const {
-        const Size n = mesher_->layout()->dim().size();
-        std::vector<Real> loc(n);
-        for (Size d = 0; d < n; ++d) loc[d] = mesher_->location(iter, d);
-        return fn(loc.data(), (unsigned)n, t);
-      }
-      shared_ptr<FdmMesher> mesher_;
-      FdmInnerValueFun innerValueFn_, avgInnerValueFn_;
-  };
-}
-
 void qlFreeFdmInnerValueCalculator(QlFdmInnerValueCalculator *o) {del(o);}
 
 // Heap-allocates the same HsFdmInnerValueCalculator qlFdmSolve used to build stack-locally,
@@ -848,29 +873,6 @@ QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* m
   try {return ret(new QlFdmInnerValueCalculator(alloc(new HsFdmInnerValueCalculator(*arg(mesher), innerValueFn, avgInnerValueFn))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
-// Builds the FdmLinearOpIterator for the node at `coords` (one index per dimension) from
-// mesher's own layout dim(), the reverse of what HsFdmInnerValueCalculator::call does above --
-// lets any bound FdmInnerValueCalculator (native or Haskell-callback-driven) be inspected
-// node-by-node without assembling a whole PDE solve.
-// extern "C++": this whole file sits inside qlPricingEngine.h's extern "C" block, but a free
-// function returning a non-POD C++ class by value (rather than only pointers, as every C-linkage
-// shim function here does) needs real C++ linkage or GHC's C++ frontend warns
-// (-Wreturn-type-c-linkage).
-extern "C++" {
-namespace {
-  FdmLinearOpIterator fdmIteratorAt(QlFdmMesher* mesher, unsigned ndims, unsigned* coords) {
-    const shared_ptr<FdmLinearOpLayout>& layout = (*arg(mesher))->layout();
-    std::vector<Size> dim = layout->dim();
-    std::vector<Size> coordinates(coords, coords + ndims);
-    Size index = 0, stride = 1;
-    for (Size d = 0; d < dim.size(); ++d) {
-      index += coordinates[d] * stride;
-      stride *= dim[d];
-    }
-    return FdmLinearOpIterator(dim, coordinates, index);
-  }
-}
-}
 double qlFdmInnerValueCalculatorEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
   try {return (*arg(calc))->innerValue(fdmIteratorAt(mesher, ndims, coords), t);
   } catch (std::exception& er) {*e = DUP(er.what()); return 0.0;}}
@@ -946,29 +948,6 @@ QlFdmInnerValueCalculator* qlFdmLogBasketInnerValue(QlBasketPayoff* payoff, QlFd
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmLogBasketInnerValue(*arg(payoff), *arg(mesher)))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
-// FdmAffineModelSwapInnerValue<ModelType> -- template isn't crossable into a C signature, so one
-// concrete shim per ModelType (G2/HullWhite), matching how those two models are already separate
-// plain pointer types (QlG2/QlHullWhite), not a shared family. exerciseDates (upstream's
-// std::map<Time, Date>) is marshalled as two parallel arrays, zipped back into the map here --
-// same array-pair convention as every other multi-field marshaller in this codebase.
-// extern "C++": templates can't have C linkage (this file sits inside qlPricingEngine.h's
-// extern "C" block) -- same reasoning as fdmIteratorAt above.
-extern "C++" {
-namespace {
-  template <class ModelType>
-  QlFdmInnerValueCalculator* fdmAffineModelSwapInnerValue(
-      shared_ptr<ModelType>* disModel, shared_ptr<ModelType>* fwdModel, QlFixedVsFloatingSwap* swap,
-      unsigned exDatesLen, double* exerciseTimes, int* exerciseDates,
-      QlFdmMesher* mesher, unsigned direction, char **e) {
-    try {
-      std::map<Time, Date> t2d;
-      for (unsigned i = 0; i < exDatesLen; ++i) t2d[exerciseTimes[i]] = Date(exerciseDates[i]);
-      return ret(new QlFdmInnerValueCalculator(alloc(new FdmAffineModelSwapInnerValue<ModelType>(
-        *arg(disModel), *arg(fwdModel), *arg(swap), t2d, *arg(mesher), direction))));
-    } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}
-  }
-}
-}
 QlFdmInnerValueCalculator* qlFdmAffineG2ModelSwapInnerValue(QlG2* disModel, QlG2* fwdModel, QlFixedVsFloatingSwap* swap,
     unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e) {
   return fdmAffineModelSwapInnerValue<G2>(disModel, fwdModel, swap, exDatesLen, exerciseTimes, exerciseDates, mesher, direction, e);

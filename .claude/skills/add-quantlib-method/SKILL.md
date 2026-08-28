@@ -7,7 +7,7 @@ Adding one method to an already-bound class only touches the shim `.h`/`.cpp` an
 
 `arg()`, `ret()`, `alloc()` (in `cbits/qlaux.h`) are pure identity/tracing passthroughs — `template <class T> T arg(T p) {return TP("arg", p);}`. They do **no** dereferencing themselves; getting the pointer indirection right is on you, and it depends on the parameter's type.
 
-The shims should be defined inside extern "C"` blocks in `CPP` files. If you define C++ helpers, they should be outside the block, don't create anonymous namespaces for this.
+The shims should be defined inside extern "C"` blocks in `CPP` files for type checking to work. If you define C++ helpers, they should be outside the block inside an anonymous namespace, usually you can find it above the `extern "C"` block.
 
 ## 0. Get the real signature from QuantLib itself — don't guess it
 
