@@ -58,7 +58,10 @@ LINE = re.compile(r'^(?P<verb>\w+(?: \w+)?) (?P<cls>[^:]+): (?P<ptr>0x[0-9a-f]+|
 # would report every object as double-freed.
 ACQUIRE = {'returned', 'allocated', 'Duplicate string'}
 RELEASE = {'deleting', 'Freeing string'}
-IGNORE = {'deleted', 'arg'}
+# `Duplicating string'/`Freed string' are the leading halves of the same DUP()/qlFreeString()
+# pairs whose `Duplicate string'/`Freeing string' halves are counted above -- same reason
+# `deleted' is ignored. Without them here every string event inflates the unparsed count.
+IGNORE = {'deleted', 'arg', 'Duplicating string', 'Freed string'}
 # The verb that may legitimately go unpaired, when the pointer went into a shared_ptr.
 SHARED = 'allocated'
 

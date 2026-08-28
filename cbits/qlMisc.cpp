@@ -71,7 +71,6 @@ char *tracedup(const char *p) {
   return dup;
 }
 
-void **qlAllocatePointerArray(size_t size) {return ret(new void*[size]);}
 typedef Currency *(*makeCcy)();
 
 // must match the order of qlEnumObjects.h:Ccy
@@ -873,14 +872,18 @@ double qlUnitOfMeasureConversionConvert(UnitOfMeasureConversion *o, CommodityTyp
                                         double amount, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
   *outCt = 0; *outUom = 0;
   CommodityType *ct2 = 0;
+  UnitOfMeasure *uom2 = 0;
   try {
     Quantity r = arg(o)->convert(Quantity(*arg(ct), *arg(uom), amount));
     ct2 = ret(new CommodityType(r.commodityType()));
-    UnitOfMeasure *uom2 = ret(new UnitOfMeasure(r.unitOfMeasure()));
+    uom2 = ret(new UnitOfMeasure(r.unitOfMeasure()));
     *outCt = ct2; *outUom = uom2;
     return r.amount();
   } catch (std::exception& er) {
-    delete ct2;
+    // del(), not a raw delete: both are already traced as "returned" by the time the second
+    // allocation can throw, so a silent delete here would read as a leak in alloc-summary.py.
+    // (Unlike the `raw = new X; ... alloc(raw)` shape, where the catch's pointer was never traced.)
+    del(ct2); del(uom2);
     return handleException<double>(e, er);
   }}
 
@@ -997,7 +1000,9 @@ void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis
   *count = 0; *msgs = 0;
   const std::vector<std::string> &m = (*arg(o))->skippedDatesErrorMessage();
   unsigned n = (unsigned)m.size();
-  char **ms = new char*[n]();
+  // ret() (not retPtrArray()): this spine is released by qlFreeStringArray, whose char**
+  // parameter is what its own trace names -- see qlCommodityPricingErrors for the same pairing.
+  char **ms = ret(new char*[n]());
   for (unsigned i = 0; i < n; ++i) ms[i] = DUP(m[i].c_str());
   *msgs = ms; *count = n;
 }

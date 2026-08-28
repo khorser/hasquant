@@ -231,6 +231,15 @@ namespace {
   };
 }
 
+#ifdef QLTRACK_ALLOCATIONS
+// Same reason as qlPricingEngine.cpp's Hs* labels: these live in the anonymous namespace above and
+// so cannot be named in qlaux.h's table, and without a specialization ObjClassName falls back to
+// typeid().name(). All three are shared_ptr payloads -- alloc() only, never freed.
+template <> class ObjClassName<HsPayoff*> {public: static void output(std::ostream& os) {os << "HsPayoff";}};
+template <> class ObjClassName<HsStrikedPayoff*> {public: static void output(std::ostream& os) {os << "HsStrikedPayoff";}};
+template <> class ObjClassName<HsBasketPayoff*> {public: static void output(std::ostream& os) {os << "HsBasketPayoff";}};
+#endif
+
 extern "C" {
 double qlInstrumentNPV(QlInstrument *instr, char **e) {try {return (*arg(instr))->NPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng, char **e) {try {(*arg(instr))->setPricingEngine(*arg(eng));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
@@ -1599,14 +1608,17 @@ void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
 double qlEnergyCommodityQuantity(QlEnergyCommodity *o, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
   *outCt = 0; *outUom = 0;
   CommodityType *ct = 0;
+  UnitOfMeasure *uom = 0;
   try {
     Quantity q = (*arg(o))->quantity();
     ct = ret(new CommodityType(q.commodityType()));
-    UnitOfMeasure *uom = ret(new UnitOfMeasure(q.unitOfMeasure()));
+    uom = ret(new UnitOfMeasure(q.unitOfMeasure()));
     *outCt = ct; *outUom = uom;
     return q.amount();
   } catch (std::exception& er) {
-    delete ct;
+    // Same reasoning as qlUnitOfMeasureConversionConvert (qlMisc.cpp): these are ret()-traced
+    // before the second allocation's throw point, so the catch must free them through del().
+    del(ct); del(uom);
     return handleException<double>(e, er);
   }
 }

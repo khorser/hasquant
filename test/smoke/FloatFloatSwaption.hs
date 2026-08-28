@@ -7,7 +7,7 @@
 -- 2. fairSpread1/fairSpread2 run without crashing once a pricing engine is attached.
 -- 3. FloatFloatSwaption materializes from both underlyings and calibrationBasket returns a
 --    non-empty basket in both CalibrationBasketNaive/MaturityStrikeByDeltaGamma modes -- reusing
---    the same peekPtrArray/qlAllocatePointerArray plumbing increment 1 built and tested.
+--    the same peekPtrArray/retPtrArray plumbing increment 1 built and tested.
 -- 4. Gaussian1dFloatFloatSwaptionEngine prices the swaption without crashing.
 -- 5. additionalResults reports "underlyingValue" (Gaussian1dFloatFloatSwaptionEngine-specific).
 --

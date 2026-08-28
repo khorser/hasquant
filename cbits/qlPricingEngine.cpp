@@ -280,6 +280,17 @@ namespace {
   }
 }
 
+#ifdef QLTRACK_ALLOCATIONS
+// These live in the anonymous namespace above, so -- unlike PolymorphicPathGenerator, which is
+// forward-declared in qlaux.h precisely so its label can sit beside the rest -- they cannot be
+// named there. Specialize here instead; without it ObjClassName's primary template falls back to
+// typeid().name() and the trace carries a mangled name. All three are shared_ptr payloads: alloc()
+// only, never freed, so alloc-summary.py --census lists them rather than flagging a leak.
+template <> class ObjClassName<HsFdmLinearOpComposite*> {public: static void output(std::ostream& os) {os << "HsFdmLinearOpComposite";}};
+template <> class ObjClassName<HsFdmStepCondition*> {public: static void output(std::ostream& os) {os << "HsFdmStepCondition";}};
+template <> class ObjClassName<HsFdmInnerValueCalculator*> {public: static void output(std::ostream& os) {os << "HsFdmInnerValueCalculator";}};
+#endif
+
 extern "C" {
 QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e) {
   try {
@@ -807,14 +818,14 @@ void qlFdmRollback(unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun ap
                     double from, double to, unsigned steps, unsigned dampingSteps,
                     unsigned* outLen, double** outValues, char **e) {
   try {
-    ext::shared_ptr<FdmLinearOpComposite> map(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn));
+    ext::shared_ptr<FdmLinearOpComposite> map(alloc(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn)));
     FdmStepConditionComposite::Conditions conditions;
     std::list<std::vector<Time> > stoppingTimesList;
     if (stepCondFn) {
-      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(new HsFdmStepCondition(stepCondFn)));
+      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(alloc(new HsFdmStepCondition(stepCondFn))));
       stoppingTimesList.push_back(std::vector<Time>(stoppingTimes, stoppingTimes + stoppingTimesLen));
     }
-    ext::shared_ptr<FdmStepConditionComposite> condition(new FdmStepConditionComposite(stoppingTimesList, conditions));
+    ext::shared_ptr<FdmStepConditionComposite> condition(alloc(new FdmStepConditionComposite(stoppingTimesList, conditions)));
     FdmBackwardSolver solver(map, FdmBoundaryConditionSet(), condition, *arg(schemeDesc));
     Array a(grid, grid + gridLen);
     solver.rollback(a, from, to, steps, dampingSteps);
@@ -915,14 +926,14 @@ void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
     for (const auto& iter : *m->layout())
       a[iter.index()] = calc->avgInnerValue(iter, maturity);
 
-    ext::shared_ptr<FdmLinearOpComposite> map(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn));
+    ext::shared_ptr<FdmLinearOpComposite> map(alloc(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn)));
     FdmStepConditionComposite::Conditions conditions;
     std::list<std::vector<Time> > stoppingTimesList;
     if (stepCondFn) {
-      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(new HsFdmStepCondition(stepCondFn)));
+      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(alloc(new HsFdmStepCondition(stepCondFn))));
       stoppingTimesList.push_back(std::vector<Time>(stoppingTimes, stoppingTimes + stoppingTimesLen));
     }
-    ext::shared_ptr<FdmStepConditionComposite> condition(new FdmStepConditionComposite(stoppingTimesList, conditions));
+    ext::shared_ptr<FdmStepConditionComposite> condition(alloc(new FdmStepConditionComposite(stoppingTimesList, conditions)));
     FdmBackwardSolver solver(map, FdmBoundaryConditionSet(), condition, *arg(schemeDesc));
     solver.rollback(a, maturity, to, steps, dampingSteps);
     *outLen = (unsigned)a.size();
@@ -1282,7 +1293,9 @@ QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticP
 // is only forward-declared here, so del()'s own `delete` can't run in this translation
 // unit) -- trace around it by hand so freed generators don't look permanently live.
 void qlFreePathGenerator(PolymorphicPathGenerator *gen) {
-  (void)TP("deleting", gen); qlFreePolymorphicPathGeneratorAux(gen); TP2("deleted", gen);
+  // Null is skipped rather than traced, exactly as del() and qlFreeGaussianRsg below do -- an
+  // untraced null free has no matching ret(), so tracing it would read as a permanent over-free.
+  if (gen) {(void)TP("deleting", gen); qlFreePolymorphicPathGeneratorAux(gen); TP2("deleted", gen);}
 }
 PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
   try {return ret(qlPathGeneratorAux(rngtrait, *arg(p), *arg(t), seed, dim, brownianBridge));

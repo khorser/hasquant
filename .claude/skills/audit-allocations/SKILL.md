@@ -56,8 +56,7 @@ each and check the exceptions:
   `reinterpret_cast`) rather than duplicating the body under the wrong label.
 
 **2. Hand-rolled `T*[n]`/`T**[n]` local spines freed via a *different* generic free function.**
-Any local pointer-array built with plain `new T*[n]` (not `qlAllocatePointerArray`) that Haskell
-frees via `peekPtrArray`/`peekCStringArray`-style helpers in `QuantLib/Internal.hs` — which call
+Any local pointer-array built with plain `new T*[n]` that Haskell frees via `peekPtrArray`/`peekCStringArray`-style helpers in `QuantLib/Internal.hs` — which call
 the generic `qlFreePointerArray`/`qlFreeStringArray` — needs its allocation traced under the
 *generic* function's label, not its own concrete type, or the alloc and free land under different
 class names. Use `retPtrArray(new T*[n]())` (in `cbits/qlaux.h`) for this rather than a raw cast:
@@ -91,6 +90,29 @@ value-initialised array (`new T[n]()`, trailing `()`) makes every not-yet-filled
 pass to a null-guarded free, which is the standard idiom here (see `qlInstrumentAdditionalResults`
 and its many siblings for the pattern).
 
+**4b. An exception path that frees an already-`ret()`/`alloc()`-traced pointer must use `del()`,
+not a raw `delete` — and this is the one exception-path shape point 5 below does *not* cover.**
+The two look almost identical, and the difference is *when* the tracing verb runs relative to the
+throw point:
+
+```cpp
+// Point 5's accepted shape: `raw' is traced only on the success path, so the catch's silent
+// `delete' is CORRECT -- no "allocated" line exists to pair with.
+X *raw = 0; try { raw = new X(...); return ret(new QlX(alloc(raw))); } catch (...) { delete raw; }
+
+// This shape: `ct' is ALREADY traced as "returned" before the second allocation can throw, so a
+// raw `delete' in the catch escapes tracing and reports as a permanent leak of that class.
+CommodityType *ct = 0; UnitOfMeasure *uom = 0;
+try { ct = ret(new CommodityType(...)); uom = ret(new UnitOfMeasure(...)); ... }
+catch (...) { del(ct); del(uom); }   // del(), not delete
+```
+
+Both out-params must also be hoisted above the `try` and null-initialised, so the catch can release
+whichever ones got as far as being traced — the same value-initialisation reasoning as point 4, one
+scalar at a time instead of an array. `qlUnitOfMeasureConversionConvert` (`cbits/qlMisc.cpp`) and
+`qlEnergyCommodityQuantity` (`cbits/qlInstrument.cpp`) are the worked examples. Rule of thumb: scan
+the `try` for the *last* tracing verb that runs before each throw point, not just for `new`.
+
 **5. The narrow "double-free on `shared_ptr` control-block `bad_alloc`" pattern is known,
 accepted, and not worth re-flagging.** `X *raw = 0; try { raw = new X(...); ...; return
 ret(new QlX(alloc(raw))); } catch (...) { delete raw; }` has a theoretical double-free window if
@@ -107,6 +129,23 @@ for that class (`alloc-summary.py` reports pointer `"0"` specifically). `del()` 
 array-free helpers in `cbits/qlMisc.cpp` all guard with `if (p) {...}` before tracing (still
 performing the delete/`delete[]` unconditionally, since that's already a no-op on null) — keep any
 new free function consistent with this.
+
+**7. A `cbits`-local type used with `alloc()`/`ret()` needs its own `ObjClassName` label, or the
+trace carries a mangled `typeid().name()`.** `ObjClassName`'s primary template (`cbits/qlaux.h`)
+falls back to `typeid(T).name()`, so a missing specialization compiles fine and only degrades the
+trace — which is why these go unnoticed. Two placements, and the choice is forced:
+- A type nameable from `qlaux.h` — declared by a QuantLib header, or forward-declarable there —
+  gets its specialization in `qlaux.h`'s own table, adding a forward declaration to the
+  `namespace QuantLib { ... }` block plus a `using` if needed (`FdmStepConditionComposite`), or a
+  bare `class Foo;` for a `cbits`-local one (`PolymorphicPathGenerator`, `qlaux.h:650`/`:1111`).
+- A type in a **anonymous namespace** cannot be named from `qlaux.h` at all. Its specialization has
+  to live in the same `.cpp`, at namespace scope, after the class definitions and before the first
+  `alloc()` use, guarded by `#ifdef QLTRACK_ALLOCATIONS` — see the `Hs*` callback classes in
+  `cbits/qlPricingEngine.cpp` and `cbits/qlInstrument.cpp`.
+
+`char**`/`void**` deliberately have no specialization (only `void*` does): both sides of a spine's
+lifecycle get the same fallback label, and `alloc-summary.py` pairs per `(class, pointer)`, so they
+balance correctly under the mangled name.
 
 ## Two label helpers (avoid raw casts)
 

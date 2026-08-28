@@ -103,9 +103,10 @@ is the original instance):
   defaulted to `0`/`nullptr` before entering it.
 - If an output is a pointer-array whose *elements* are individually
   heap-allocated (`CommodityType*`, `Currency*`, …, not primitives),
-  allocate it with `new T*[n]()` (value-initialized — every unreached slot
-  is guaranteed null) rather than `qlAllocatePointerArray` or a bare `new
-  T*[n]`.
+  allocate it with `retPtrArray(new T*[n]())` — value-initialized, so every
+  unreached slot is guaranteed null — rather than a bare `new T*[n]`. See
+  `audit-allocations` for why the `retPtrArray` wrapper (and not a plain
+  `ret`) is what makes the spine's trace label match its free.
 - Only assign to the real out-params (`*outX = x;`) after every allocation
   in the function has succeeded — the `catch` block below relies on the
   out-params still being their pre-`try` default whenever anything failed.

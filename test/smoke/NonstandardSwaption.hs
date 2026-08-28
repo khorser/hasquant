@@ -4,9 +4,9 @@
 --    gearing/spread with per-period nominal/rate, vector gearing/spread).
 -- 2. Both NonstandardSwaption constructors materialize (from-Swaption, swap+exercise).
 -- 3. calibrationBasket in both Naive and MaturityStrikeByDeltaGamma modes returns a
---    non-empty basket -- this is what actually proves the peekPtrArray/
---    qlAllocatePointerArray/qlFreePointerArray array marshalling built for this increment
---    works end-to-end, not just that it compiles (run under trackAllocations separately).
+--    non-empty basket -- this is what actually proves the peekPtrArray/retPtrArray/
+--    qlFreePointerArray array marshalling built for this increment works end-to-end,
+--    not just that it compiles (run under trackAllocations separately).
 -- 4. Gaussian1dNonstandardSwaptionEngine prices the NonstandardSwaption without crashing.
 --
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/NonstandardSwaption.hs

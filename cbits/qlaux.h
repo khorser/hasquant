@@ -16,7 +16,6 @@
 
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
-void **qlAllocatePointerArray(size_t size);
 
 char *tracedup(const char *p);
 #define DUP(p) tracedup((p))
@@ -200,6 +199,7 @@ namespace QuantLib {
   class FdmMesher;
   class FdmQuantoHelper;
   struct FdmSchemeDesc;
+  class FdmStepConditionComposite;
   class FittedBondDiscountCurve;
   class FixedDividend;
   class ForwardSpreadedTermStructure;
@@ -506,6 +506,7 @@ using QuantLib::FdmInnerValueCalculator;
 using QuantLib::FdmMesher;
 using QuantLib::FdmQuantoHelper;
 using QuantLib::FdmSchemeDesc;
+using QuantLib::FdmStepConditionComposite;
 using QuantLib::FittedBondDiscountCurve;
 using QuantLib::FixedDividend;
 using QuantLib::ForwardSpreadedTermStructure;
@@ -1031,6 +1032,7 @@ template <> class ObjClassName<FaceValueClaim*> {public: static void output(std:
 template <> class ObjClassName<FdG2SwaptionEngine*> {public: static void output(std::ostream& os) {os << "FdG2SwaptionEngine";}};
 template <> class ObjClassName<FdHullWhiteSwaptionEngine*> {public: static void output(std::ostream& os) {os << "FdHullWhiteSwaptionEngine";}};
 template <> class ObjClassName<FdmSchemeDesc*> {public: static void output(std::ostream& os) {os << "FdmSchemeDesc";}};
+template <> class ObjClassName<FdmStepConditionComposite*> {public: static void output(std::ostream& os) {os << "FdmStepConditionComposite";}};
 template <> class ObjClassName<FittedBondDiscountCurve*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurve";}};
 template <> class ObjClassName<FixedDividend*> {public: static void output(std::ostream& os) {os << "FixedDividend";}};
 template <> class ObjClassName<FixedRateBond*> {public: static void output(std::ostream& os) {os << "FixedRateBond";}};

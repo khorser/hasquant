@@ -46,6 +46,12 @@ main = do
   skipped <- historicalIndexAnalysisSkippedDates hia
   checkWith "no skipped dates for a fully-fixed mixed index list" "expected []" (null skipped)
 
+  -- The char** spine this returns is the only one in cbits/ that used to escape trackAllocations
+  -- tracing; nothing else in the suite calls it, so the trace has no other way to reach the fix.
+  skippedMsgs <- historicalIndexAnalysisSkippedDatesErrorMessage hia
+  checkWith "skipped-date messages agree with the skipped-date list"
+    ("expected " ++ show (length skipped) ++ " message(s)") (length skippedMsgs == length skipped)
+
   means <- historicalIndexAnalysisMean hia
   checkWith "mean has one entry per index" "expected length 2" (length means == 2)
 
