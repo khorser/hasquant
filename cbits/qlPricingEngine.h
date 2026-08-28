@@ -252,9 +252,32 @@ extern "C" {
   // qlPricingEngine.cpp. Unlike qlFdmRollback's callbacks, these cross once per mesher node
   // (there is no batched "whole-grid inner value" shape, mirroring QuantLib-SWIG's own
   // FdmInnerValueCalculatorDelegate).
-  void qlFdmSolve(QlFdmMesher* mesher,
+  void qlFreeFdmInnerValueCalculator(QlFdmInnerValueCalculator *o);
+  QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* mesher,
     double (*innerValueFn)(const double* loc, unsigned n, double t),
     double (*avgInnerValueFn)(const double* loc, unsigned n, double t),
+    char **e);
+  // Evaluates calc->innerValue/avgInnerValue at the node given by coords (one index per
+  // dimension), building the FdmLinearOpIterator from mesher's own layout.
+  double qlFdmInnerValueCalculatorEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e);
+  double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e);
+
+  // Native FdmInnerValueCalculator subclasses -- see qlPricingEngine.cpp for why none need a
+  // dedicated leaf type.
+  QlFdmInnerValueCalculator* qlFdmZeroInnerValue(char **e);
+  QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, char **e);
+  QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValueMapped(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, double (*mappingFn)(double x), char **e);
+  QlFdmInnerValueCalculator* qlFdmLogInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, char **e);
+  QlFdmInnerValueCalculator* qlFdmLogBasketInnerValue(QlBasketPayoff* payoff, QlFdmMesher* mesher, char **e);
+  // exerciseTimes/exerciseDates are parallel arrays of length exDatesLen, zipped into upstream's
+  // std::map<Time, Date> exerciseDates argument.
+  QlFdmInnerValueCalculator* qlFdmAffineG2ModelSwapInnerValue(QlG2* disModel, QlG2* fwdModel, QlFixedVsFloatingSwap* swap,
+    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e);
+  QlFdmInnerValueCalculator* qlFdmAffineHullWhiteModelSwapInnerValue(QlHullWhite* disModel, QlHullWhite* fwdModel, QlFixedVsFloatingSwap* swap,
+    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e);
+
+  void qlFdmSolve(QlFdmMesher* mesher,
+    QlFdmInnerValueCalculator* calculator,
     unsigned opSize,
     void (*applyFn)(const double* in, unsigned n, double t1, double t2, double* out),
     void (*applyDirFn)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out),

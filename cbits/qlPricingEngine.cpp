@@ -85,6 +85,7 @@
 #include <ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp>
 #include <ql/methods/finitedifferences/utilities/fdmquantohelper.hpp>
 #include <ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp>
+#include <ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp>
 #include <ql/methods/finitedifferences/meshers/fdmmesher.hpp>
 #include <ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp>
 #include <ql/methods/finitedifferences/meshers/fdmmeshercomposite.hpp>
@@ -837,13 +838,54 @@ namespace {
   };
 }
 
-// Sibling of qlFdmRollback that derives its own initial grid from a mesher + Haskell-defined
-// FdmInnerValueCalculator (calc.avgInnerValue(iter, maturity) per node) instead of taking a
-// precomputed array -- everything else (operator/step-condition/scheme/rollback) is identical,
-// reusing HsFdmLinearOpComposite/HsFdmStepCondition verbatim. Fdm1DimSolver/FdmNdimSolver
-// themselves (their own LazyObject caching and spline interpolation) are not bound; a caller
-// wanting interpolation combines this function's result with qlFdmMesherLocations itself.
-void qlFdmSolve(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn,
+void qlFreeFdmInnerValueCalculator(QlFdmInnerValueCalculator *o) {del(o);}
+
+// Heap-allocates the same HsFdmInnerValueCalculator qlFdmSolve used to build stack-locally,
+// so a Haskell-defined calculator can be surfaced as a real QlFdmInnerValueCalculator and reused
+// wherever a native one (FdmZeroInnerValue etc., bound alongside this) can be used -- see
+// QuantLib.Method.fdmInnerValueCalculator's haddock.
+QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn, char **e) {
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new HsFdmInnerValueCalculator(*arg(mesher), innerValueFn, avgInnerValueFn))));
+  } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
+
+// Builds the FdmLinearOpIterator for the node at `coords` (one index per dimension) from
+// mesher's own layout dim(), the reverse of what HsFdmInnerValueCalculator::call does above --
+// lets any bound FdmInnerValueCalculator (native or Haskell-callback-driven) be inspected
+// node-by-node without assembling a whole PDE solve.
+// extern "C++": this whole file sits inside qlPricingEngine.h's extern "C" block, but a free
+// function returning a non-POD C++ class by value (rather than only pointers, as every C-linkage
+// shim function here does) needs real C++ linkage or GHC's C++ frontend warns
+// (-Wreturn-type-c-linkage).
+extern "C++" {
+namespace {
+  FdmLinearOpIterator fdmIteratorAt(QlFdmMesher* mesher, unsigned ndims, unsigned* coords) {
+    const shared_ptr<FdmLinearOpLayout>& layout = (*arg(mesher))->layout();
+    std::vector<Size> dim = layout->dim();
+    std::vector<Size> coordinates(coords, coords + ndims);
+    Size index = 0, stride = 1;
+    for (Size d = 0; d < dim.size(); ++d) {
+      index += coordinates[d] * stride;
+      stride *= dim[d];
+    }
+    return FdmLinearOpIterator(dim, coordinates, index);
+  }
+}
+}
+double qlFdmInnerValueCalculatorEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
+  try {return (*arg(calc))->innerValue(fdmIteratorAt(mesher, ndims, coords), t);
+  } catch (std::exception& er) {*e = DUP(er.what()); return 0.0;}}
+double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
+  try {return (*arg(calc))->avgInnerValue(fdmIteratorAt(mesher, ndims, coords), t);
+  } catch (std::exception& er) {*e = DUP(er.what()); return 0.0;}}
+
+// Sibling of qlFdmRollback that derives its own initial grid from a mesher + a (native or
+// Haskell-callback-driven) FdmInnerValueCalculator (calc->avgInnerValue(iter, maturity) per node)
+// instead of taking a precomputed array -- everything else (operator/step-condition/scheme/
+// rollback) is identical, reusing HsFdmLinearOpComposite/HsFdmStepCondition verbatim.
+// Fdm1DimSolver/FdmNdimSolver themselves (their own LazyObject caching and spline interpolation)
+// are not bound; a caller wanting interpolation combines this function's result with
+// qlFdmMesherLocations itself.
+void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
                 unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn,
                 FdmStepConditionFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
                 FdmSchemeDesc* schemeDesc,
@@ -851,10 +893,10 @@ void qlFdmSolve(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValu
                 unsigned* outLen, double** outValues, char **e) {
   try {
     shared_ptr<FdmMesher> m = *arg(mesher);
-    HsFdmInnerValueCalculator calc(m, innerValueFn, avgInnerValueFn);
+    shared_ptr<FdmInnerValueCalculator> calc = *arg(calculator);
     Array a(m->layout()->size());
     for (const auto& iter : *m->layout())
-      a[iter.index()] = calc.avgInnerValue(iter, maturity);
+      a[iter.index()] = calc->avgInnerValue(iter, maturity);
 
     ext::shared_ptr<FdmLinearOpComposite> map(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn));
     FdmStepConditionComposite::Conditions conditions;
@@ -870,6 +912,71 @@ void qlFdmSolve(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValu
     *outValues = qlAllocateDoubles(*outLen);
     std::copy(a.begin(), a.end(), *outValues);
   } catch (std::exception& er) {*e = DUP(er.what());}}
+
+// Native (non-Haskell-callback) FdmInnerValueCalculator subclasses -- QuantLib's own concrete
+// implementations, bound as a peer to qlFdmInnerValueCalculatorFromFunctions above so common cases
+// (a vanilla/basket payoff on the grid) don't pay any per-node FFI cost. All upcast directly to
+// QlFdmInnerValueCalculator at construction, like every other pricing-engine-family constructor
+// here -- none of these classes have their own public methods beyond the ctor, so no dedicated
+// leaf type is needed (see CLAUDE.md's "don't mirror the hierarchy 1:1").
+QlFdmInnerValueCalculator* qlFdmZeroInnerValue(char **e) {
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmZeroInnerValue())));
+  } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
+
+QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, char **e) {
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmCellAveragingInnerValue(*arg(payoff), *arg(mesher), direction))));
+  } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
+
+// gridMapping is a genuine per-node Haskell callback (invoked from inside avgInnerValueCalc's
+// Simpson integration and from every innerValue call), unlike the identity-mapping ctor above --
+// see QuantLib.Method.withCustomCellAveragingInnerValue's haddock for why its Haskell wrapper must
+// be continuation-style, same reasoning as qlFdmInnerValueCalculatorFromFunctions/
+// withCustomFdmInnerValueCalculator.
+typedef double (*FdmGridMappingFun)(double x);
+QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValueMapped(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, FdmGridMappingFun mappingFn, char **e) {
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmCellAveragingInnerValue(*arg(payoff), *arg(mesher), direction,
+    [mappingFn](Real x) -> Real { return mappingFn(x); }))));
+  } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
+
+QlFdmInnerValueCalculator* qlFdmLogInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, char **e) {
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmLogInnerValue(*arg(payoff), *arg(mesher), direction))));
+  } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
+
+QlFdmInnerValueCalculator* qlFdmLogBasketInnerValue(QlBasketPayoff* payoff, QlFdmMesher* mesher, char **e) {
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmLogBasketInnerValue(*arg(payoff), *arg(mesher)))));
+  } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
+
+// FdmAffineModelSwapInnerValue<ModelType> -- template isn't crossable into a C signature, so one
+// concrete shim per ModelType (G2/HullWhite), matching how those two models are already separate
+// plain pointer types (QlG2/QlHullWhite), not a shared family. exerciseDates (upstream's
+// std::map<Time, Date>) is marshalled as two parallel arrays, zipped back into the map here --
+// same array-pair convention as every other multi-field marshaller in this codebase.
+// extern "C++": templates can't have C linkage (this file sits inside qlPricingEngine.h's
+// extern "C" block) -- same reasoning as fdmIteratorAt above.
+extern "C++" {
+namespace {
+  template <class ModelType>
+  QlFdmInnerValueCalculator* fdmAffineModelSwapInnerValue(
+      shared_ptr<ModelType>* disModel, shared_ptr<ModelType>* fwdModel, QlFixedVsFloatingSwap* swap,
+      unsigned exDatesLen, double* exerciseTimes, int* exerciseDates,
+      QlFdmMesher* mesher, unsigned direction, char **e) {
+    try {
+      std::map<Time, Date> t2d;
+      for (unsigned i = 0; i < exDatesLen; ++i) t2d[exerciseTimes[i]] = Date(exerciseDates[i]);
+      return ret(new QlFdmInnerValueCalculator(alloc(new FdmAffineModelSwapInnerValue<ModelType>(
+        *arg(disModel), *arg(fwdModel), *arg(swap), t2d, *arg(mesher), direction))));
+    } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}
+  }
+}
+}
+QlFdmInnerValueCalculator* qlFdmAffineG2ModelSwapInnerValue(QlG2* disModel, QlG2* fwdModel, QlFixedVsFloatingSwap* swap,
+    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e) {
+  return fdmAffineModelSwapInnerValue<G2>(disModel, fwdModel, swap, exDatesLen, exerciseTimes, exerciseDates, mesher, direction, e);
+}
+QlFdmInnerValueCalculator* qlFdmAffineHullWhiteModelSwapInnerValue(QlHullWhite* disModel, QlHullWhite* fwdModel, QlFixedVsFloatingSwap* swap,
+    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e) {
+  return fdmAffineModelSwapInnerValue<HullWhite>(disModel, fwdModel, swap, exDatesLen, exerciseTimes, exerciseDates, mesher, direction, e);
+}
 
 void qlFreeFdmQuantoHelper(QlFdmQuantoHelper *o) {del(o);}
 QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStructure* fTS, QlBlackVolTermStructure* fxVolTS, double equityFxCorrelation, double exchRateATMlevel, char **e) {

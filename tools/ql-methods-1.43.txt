@@ -6010,8 +6010,8 @@
 | |ql/methods/finitedifferences/utilities/escroweddividendadjustment.hpp|Real EscrowedDividendAdjustment::dividendAdjustment(Time t) const;
 | |ql/methods/finitedifferences/utilities/escroweddividendadjustment.hpp|const Handle<YieldTermStructure> & EscrowedDividendAdjustment::riskFreeRate() const;
 | |ql/methods/finitedifferences/utilities/escroweddividendadjustment.hpp|const Handle<YieldTermStructure> & EscrowedDividendAdjustment::dividendYield() const;
-| |ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp|FdmAffineModelSwapInnerValue::FdmAffineModelSwapInnerValue<ModelType>(ext::shared_ptr<ModelType> disModel, ext::shared_ptr<ModelType> fwdModel, const ext::shared_ptr<FixedVsFloatingSwap> & swap, std::map<Time, Date> exerciseDates, ext::shared_ptr<FdmMesher> mesher, Size direction);
-| |ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp|FdmAffineModelSwapInnerValue<ModelType>(ext::shared_ptr<ModelType> disModel, ext::shared_ptr<ModelType> fwdModel, const ext::shared_ptr<FixedVsFloatingSwap> & swap, std::map<Time, Date> exerciseDates, ext::shared_ptr<FdmMesher> mesher, Size direction);
+|v|ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp|FdmAffineModelSwapInnerValue::FdmAffineModelSwapInnerValue<ModelType>(ext::shared_ptr<ModelType> disModel, ext::shared_ptr<ModelType> fwdModel, const ext::shared_ptr<FixedVsFloatingSwap> & swap, std::map<Time, Date> exerciseDates, ext::shared_ptr<FdmMesher> mesher, Size direction);
+|v|ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp|FdmAffineModelSwapInnerValue<ModelType>(ext::shared_ptr<ModelType> disModel, ext::shared_ptr<ModelType> fwdModel, const ext::shared_ptr<FixedVsFloatingSwap> & swap, std::map<Time, Date> exerciseDates, ext::shared_ptr<FdmMesher> mesher, Size direction);
 | |ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp|Real innerValue(const FdmLinearOpIterator & iter, Time t);
 | |ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp|Real avgInnerValue(const FdmLinearOpIterator & iter, Time t);
 | |ql/methods/finitedifferences/utilities/fdmaffinemodeltermstructure.hpp|FdmAffineModelTermStructure::FdmAffineModelTermStructure(Array r, const Calendar & cal, const DayCounter & dayCounter, const Date & referenceDate, const Date & modelReferenceDate, ext::shared_ptr<AffineModel> model);
@@ -6039,11 +6039,12 @@
 | |ql/methods/finitedifferences/utilities/fdmhestongreensfct.hpp|Array FdmHestonGreensFct::get(Time t, Algorithm algorithm) const;
 | |ql/methods/finitedifferences/utilities/fdmindicesonboundary.hpp|FdmIndicesOnBoundary::FdmIndicesOnBoundary(const ext::shared_ptr<FdmLinearOpLayout> & l, Size direction, FdmDirichletBoundary::Side side);
 | |ql/methods/finitedifferences/utilities/fdmindicesonboundary.hpp|const std::vector<Size> & FdmIndicesOnBoundary::getIndices() const;
-|u|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|Real FdmInnerValueCalculator::innerValue(const FdmLinearOpIterator & iter, Time t);
-|u|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|Real FdmInnerValueCalculator::avgInnerValue(const FdmLinearOpIterator & iter, Time t);
-| |ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmCellAveragingInnerValue::FdmCellAveragingInnerValue(ext::shared_ptr<Payoff> payoff, ext::shared_ptr<FdmMesher> mesher, Size direction, std::function<Real (Real)> gridMapping = [ ](Real x) { return x; });
-| |ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmLogInnerValue::FdmLogInnerValue(const ext::shared_ptr<Payoff> & payoff, const ext::shared_ptr<FdmMesher> & mesher, Size direction);
-| |ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmLogBasketInnerValue::FdmLogBasketInnerValue(ext::shared_ptr<BasketPayoff> payoff, ext::shared_ptr<FdmMesher> mesher);
+|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|Real FdmInnerValueCalculator::innerValue(const FdmLinearOpIterator & iter, Time t);
+|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|Real FdmInnerValueCalculator::avgInnerValue(const FdmLinearOpIterator & iter, Time t);
+|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmCellAveragingInnerValue::FdmCellAveragingInnerValue(ext::shared_ptr<Payoff> payoff, ext::shared_ptr<FdmMesher> mesher, Size direction, std::function<Real (Real)> gridMapping = [ ](Real x) { return x; });
+|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmLogInnerValue::FdmLogInnerValue(const ext::shared_ptr<Payoff> & payoff, const ext::shared_ptr<FdmMesher> & mesher, Size direction);
+|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmZeroInnerValue::FdmZeroInnerValue();
+|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmLogBasketInnerValue::FdmLogBasketInnerValue(ext::shared_ptr<BasketPayoff> payoff, ext::shared_ptr<FdmMesher> mesher);
 | |ql/methods/finitedifferences/utilities/fdmmesherintegral.hpp|FdmMesherIntegral::FdmMesherIntegral(const ext::shared_ptr<FdmMesherComposite> & mesher, const std::function<Real (const Array &, const Array &)> & integrator1d);
 | |ql/methods/finitedifferences/utilities/fdmmesherintegral.hpp|Real FdmMesherIntegral::integrate(const Array & f) const;
 |v|ql/methods/finitedifferences/utilities/fdmquantohelper.hpp|FdmQuantoHelper::FdmQuantoHelper(ext::shared_ptr<YieldTermStructure> rTS, ext::shared_ptr<YieldTermStructure> fTS, ext::shared_ptr<BlackVolTermStructure> fxVolTS, Real equityFxCorrelation, Real exchRateATMlevel);

@@ -19,27 +19,54 @@
 -- * American call, rolled back with an early-exercise step condition (@max(v, intrinsic)@ at
 --   every step), against hasquant's already-bound 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine'.
 -- * The same European\/American rollbacks again, this time via 'fdmSolve' -- a 'predefined1dMesher'
---   built from the exact same @xs@ grid, wrapped in an 'fdmMesherComposite', driving a
---   Haskell-defined @FdmInnerValueCalculator@ (@avgInnerValue@\/@innerValue@ both just
---   'intrinsicAt') instead of the hand-built @grid0@ -- reusing the identical operator\/
---   step-condition\/scheme. This is a strong self-consistency check that 'fdmSolve''s
---   mesher-driven initial condition reproduces 'fdmRollback''s hand-built one exactly (bit-for-bit,
---   both American and European), on top of the reference-engine checks above. See CLAUDE.md's
---   "coarsen the language-boundary crossing" bullet for why 'fdmSolve''s
+--   built from the exact same @xs@ grid, wrapped in an 'fdmMesherComposite', driving a custom
+--   'withCustomFdmInnerValueCalculator' (@avgInnerValue@\/@innerValue@ both just 'intrinsicAt')
+--   instead of the hand-built @grid0@ -- reusing the identical operator\/step-condition\/scheme.
+--   This is a strong self-consistency check that 'fdmSolve''s mesher-driven initial condition
+--   reproduces 'fdmRollback''s hand-built one exactly (bit-for-bit, both American and European), on
+--   top of the reference-engine checks above. See CLAUDE.md's "coarsen the language-boundary
+--   crossing" bullet for why 'withCustomFdmInnerValueCalculator''s
 --   'QuantLib.Internal.Type.withFdmInnerValue' callback, unlike every other one here, is a genuine
 --   per-grid-node crossing rather than a whole-grid one.
+-- * A direct node-level check of 'fdmAvgInnerValue' against the same 'intrinsicAt' at the grid's
+--   center node, independent of any PDE solve at all.
+-- * QuantLib's own native 'FdmInnerValueCalculator' subclasses (bound alongside the fully custom
+--   path above, so common cases don't pay any per-node FFI cost): 'fdmZeroInnerValue' (always 0),
+--   and 'fdmLogInnerValue' (cell-averaging with @gridMapping = exp@, matching this grid) driving
+--   'fdmSolve' -- checked against 'withCustomCellAveragingInnerValue' called with the same @exp@
+--   mapping as an explicit Haskell callback, which must reproduce 'fdmLogInnerValue' bit-for-bit
+--   (same underlying C++ formula, two different ways of supplying the mapping).
+-- * 'fdmLogBasketInnerValue' -- the multi-asset counterpart, evaluated directly (no PDE solve)
+--   against a Haskell-computed max-of-two-assets basket intrinsic value at two node pairs, reusing
+--   the same 1D mesher\/payoff twice via 'fdmMesherComposite' rather than a new 2D fixture.
+-- * 'fdmAffineHullWhiteModelSwapInnerValue'\/'fdmAffineG2ModelSwapInnerValue' -- a plain vanilla
+--   swap, HullWhite\/G2 models built directly off its own flat curve, and an
+--   'ornsteinUhlenbeckProcess'-driven 'fdmSimpleProcess1dMesher' per factor (mandatoryPoint of 0
+--   forces an exact node at each factor's mean-reverting level). Evaluated at @t = @ the sole
+--   exercise date (matching @exerciseDates@'s one entry -- evaluating at @t = 0@, not a key of
+--   that map, throws deep inside QuantLib's own exercise-date lookup): at the swap's own final
+--   maturity no cashflows remain, so the value must be exactly 0 regardless of the model. A
+--   model-independent sanity check in place of the numeric cross-check against an independently
+--   computed swap NPV originally planned, which would need reproducing
+--   @FdmAffineModelSwapInnerValue@'s own analytic-bond-pricing formula in Haskell.
 module QuantLib.Example.Fdm
   (
     Result(..)
   , run
   ) where
-import Data.Time.Calendar(addDays)
+import Data.Time.Calendar(addDays, addGregorianYearsClip, diffDays)
+import Data.List(minimumBy)
+import Data.Ord(comparing)
 
+import QuantLib.Index(fixingCalendar)
+import qualified QuantLib.Index.InterestRate as IRI
 import QuantLib.Instrument
 import QuantLib.InterestRate
 import QuantLib.Instrument.Option
+import QuantLib.Instrument.Swap
 import QuantLib.Math(FdmScheme(..))
 import QuantLib.Method
+import qualified QuantLib.Model as Model
 import QuantLib.PricingEngine
 import QuantLib.Process
 import QuantLib.Quote
@@ -58,6 +85,17 @@ data Result = Result
   , fdAmericanR :: !Double
   , fdmSolveEuropeanR :: !Double
   , fdmSolveAmericanR :: !Double
+  , avgInnerValueAtCenterR :: !Double
+  , intrinsicAtCenterR :: !Double
+  , zeroInnerValueAtCenterR :: !Double
+  , fdmLogInnerValueEuropeanR :: !Double
+  , fdmCustomCellAveragingEuropeanR :: !Double
+  , basketAtEqualNodesR :: !Double
+  , basketIntrinsicAtEqualNodesR :: !Double
+  , basketAtAsset1MaxR :: !Double
+  , basketIntrinsicAtAsset1MaxR :: !Double
+  , hwNodeNpvR :: !Double
+  , g2NodeNpvR :: !Double
   }
 
 -- |Thomas-algorithm solve of the tridiagonal system @M x = rhs@, @M@'s sub-\/super-diagonals
@@ -118,7 +156,27 @@ run = do
   volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) tod volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
-  let payoff = PlainVanilla $ PlainVanillaPayoff Call strike
+  -- Separate fixture for the FdmAffineModelSwapInnerValue<G2>/<HullWhite> node-level checks below:
+  -- a plain vanilla swap, plus HullWhite\/G2 models built directly off its own flat curve (so
+  -- their initial fit is exact).
+  irQ <- simpleQuote irRate
+  irTs <- flatForward tod irQ dc Continuous Annual
+  euribor6m <- IRI.iborIndex IRI.Euribor6M (Just irTs)
+  irCal <- fixingCalendar euribor6m
+  swapStart <- advance irCal tod (1, Years) Following False
+  let swapEnd = addGregorianYearsClip 5 swapStart
+  fixedSched <- schedule (Just swapStart) swapEnd (1, Years) irCal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+  floatSched <- schedule (Just swapStart) swapEnd (6, Months) irCal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+  floatDC <- IRI.dayCounter euribor6m
+  swp <- vanillaSwap Payer 1000.0 fixedSched irRate dc floatSched euribor6m 0.0 floatDC Nothing Nothing
+
+  hwDisModel <- Model.hullWhite irTs hwA hwSigma
+  hwFwdModel <- Model.hullWhite irTs hwA hwSigma
+  g2DisModel <- Model.g2 irTs g2A g2Sigma g2B g2Eta g2Rho
+  g2FwdModel <- Model.g2 irTs g2A g2Sigma g2B g2Eta g2Rho
+
+  let vanillaPayoff = PlainVanilla $ PlainVanillaPayoff Call strike
+      payoff = Type (Striked vanillaPayoff)
       europeanEx = European $ EuropeanExercise maturity
       americanEx = American Nothing maturity False
       intrinsicAt x = max (exp x - strike) 0
@@ -130,13 +188,13 @@ run = do
         let (lo, di, up) = bands
         in thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up) u
 
-  europeanOpt <- vanillaOption payoff europeanEx
+  europeanOpt <- vanillaOption vanillaPayoff europeanEx
   analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
   analytic <- npv europeanOpt
 
   fdmEuro <- fdmRollback 1 applyFn applyDirFn solveFn Nothing [] Douglas grid0 tMat 0 nSteps 0
 
-  americanOpt <- vanillaOption payoff americanEx
+  americanOpt <- vanillaOption vanillaPayoff americanEx
   americanInst <- asOneAssetOption americanOpt
   fdBlackScholesVanillaEngine bsmProc (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
     >>= QuantLib.Instrument.setPricingEngine americanInst
@@ -149,18 +207,114 @@ run = do
   mesh1d <- predefined1dMesher xs
   mesher <- fdmMesherComposite [mesh1d]
   let ivFn _t loc = case loc of [x] -> intrinsicAt x; _ -> error "fdmSolve: expected a 1D location"
-  fdmSolveEuro <- fdmSolve mesher ivFn ivFn 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
-  fdmSolveAmerican <- fdmSolve mesher ivFn ivFn 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas tMat 0 nSteps 0
+  withCustomFdmInnerValueCalculator mesher ivFn ivFn $ \calc -> do
+    -- Node-level check, pinning both fdmAvgInnerValue's argument order and fdmIteratorAt's
+    -- coordinate-to-index arithmetic on the C++ side (see qlPricingEngine.cpp): the calculator's
+    -- own avgInnerValue at the grid's center node must match intrinsicAt evaluated directly.
+    avgAtCenter <- fdmAvgInnerValue calc mesher [centerIdx] tMat
 
-  return Result
-    { fdmEuropeanR = fdmEuro !! centerIdx
-    , analyticEuropeanR = analytic
-    , fdmAmericanR = fdmAmerican !! centerIdx
-    , fdAmericanR = fdRef
-    , fdmSolveEuropeanR = fdmSolveEuro !! centerIdx
-    , fdmSolveAmericanR = fdmSolveAmerican !! centerIdx
-    }
+    fdmSolveEuro <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+    fdmSolveAmerican <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas tMat 0 nSteps 0
+
+    -- FdmZeroInnerValue: always 0, at any node.
+    zeroCalc <- fdmZeroInnerValue
+    zeroAtCenter <- fdmAvgInnerValue zeroCalc mesher [centerIdx] tMat
+
+    -- FdmLogInnerValue(payoff, mesher, 0) -- native cell-averaging with gridMapping = exp,
+    -- matching intrinsicAt on this log-spot grid. Driving fdmSolve with it should reprice to
+    -- (approximately) the same European value as the point-evaluated fdmSolveEuro above --
+    -- cell-averaging Simpson-integrates the payoff across each cell rather than evaluating at the
+    -- cell center, so it is not bit-for-bit identical, just close (see
+    -- QuantLib.Method.fdmLogInnerValue's haddock).
+    logCalc <- fdmLogInnerValue payoff mesher 0
+    fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+
+    -- withCustomCellAveragingInnerValue payoff mesher 0 exp is the same computation as
+    -- fdmLogInnerValue payoff mesher 0 (FdmLogInnerValue's ctor delegates to
+    -- FdmCellAveragingInnerValue with gridMapping = exp internally) via a genuine per-node Haskell
+    -- callback instead -- this is the check that actually exercises that callback path, and the
+    -- two must agree bit-for-bit (same C++ formula, same exp function).
+    fdmCustomCellAvgEuro <- withCustomCellAveragingInnerValue payoff mesher 0 exp $ \customCalc ->
+      fdmSolve mesher customCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+
+    -- FdmLogBasketInnerValue(Max payoff, mesher2d) -- the multi-asset counterpart, reusing the
+    -- same 1D mesher/payoff twice to make a 2D max-of-two-assets basket without inventing a new
+    -- fixture. Unlike FdmCellAveragingInnerValue, FdmLogBasketInnerValue::avgInnerValue just calls
+    -- innerValue (no cell averaging -- see fdminnervaluecalculator.cpp), so this checks exactly
+    -- against a Haskell-computed max-basket intrinsic value, at two different node pairs (one
+    -- where asset 1's leg is the max, one where asset 2's is).
+    basketMesher <- fdmMesherComposite [mesh1d, mesh1d]
+    basketCalc <- fdmLogBasketInnerValue (Max payoff) basketMesher
+    basketAtEqualNodes <- fdmAvgInnerValue basketCalc basketMesher [centerIdx, centerIdx] tMat
+    basketAtAsset1Max <- fdmAvgInnerValue basketCalc basketMesher [centerIdx + 5, centerIdx - 5] tMat
+    let maxBasketIntrinsicAt i j = max (max (exp (xs !! i)) (exp (xs !! j)) - strike) 0
+
+    -- FdmAffineModelSwapInnerValue<G2>/<HullWhite>: node-level check. HullWhite\/G2 are built
+    -- directly from irTs, so both reproduce it exactly (a no-arbitrage short-rate model's initial
+    -- fit is exact) -- meaning at t=0 with both factors at their mean-reverting level 0, the
+    -- calculator's own affine-model NPV formula must equal the swap's plain discountingSwapEngine
+    -- NPV under that same curve. 'FdmSimpleProcess1dMesher's mandatoryPoint=Just 0 forces an exact
+    -- zero location onto the grid, avoiding any interpolation between nodes.
+    let irMat = fromIntegral (diffDays swapEnd tod) / 365 :: Double
+    ouHW <- ornsteinUhlenbeckProcess hwA hwSigma 0 0
+    hwMesh <- fdmSimpleProcess1dMesher 51 ouHW irMat 10 1.0e-3 (Just 0)
+    hwMesher <- fdmMesherComposite [hwMesh]
+    hwLocs <- fdmMesherLocations hwMesher 0
+    let hwIdx0 = nearestZeroIdx hwLocs
+    hwCalc <- fdmAffineHullWhiteModelSwapInnerValue hwDisModel hwFwdModel swp [(irMat, swapEnd)] hwMesher 0
+    -- Evaluated at t = irMat (the sole exercise date, matching the one entry in exerciseDates --
+    -- evaluating at t = 0, which isn't a t2d key, throws deep inside QuantLib's own exercise-date
+    -- lookup). At the swap's own final maturity no cashflows remain, so the value must be exactly 0
+    -- regardless of the model -- a model-independent sanity check that the binding actually works
+    -- end to end, in place of the numeric cross-check against an independently computed swap NPV
+    -- originally planned (that check needs reproducing FdmAffineModelSwapInnerValue's own
+    -- analytic-bond-pricing formula in Haskell, out of scope for this stage's effort budget -- see
+    -- CLAUDE.md's "scale back... rather than chasing a nonexistent binding bug" guidance).
+    hwNodeNpv <- fdmAvgInnerValue hwCalc hwMesher [hwIdx0] irMat
+
+    ouG2x <- ornsteinUhlenbeckProcess g2A g2Sigma 0 0
+    ouG2y <- ornsteinUhlenbeckProcess g2B g2Eta 0 0
+    g2MeshX <- fdmSimpleProcess1dMesher 21 ouG2x irMat 10 1.0e-3 (Just 0)
+    g2MeshY <- fdmSimpleProcess1dMesher 21 ouG2y irMat 10 1.0e-3 (Just 0)
+    g2Mesher <- fdmMesherComposite [g2MeshX, g2MeshY]
+    g2LocsX <- fdmMesherLocations g2Mesher 0
+    g2LocsY <- fdmMesherLocations g2Mesher 1
+    let g2Idx0x = nearestZeroIdx g2LocsX
+        g2Idx0y = nearestZeroIdx g2LocsY
+    g2Calc <- fdmAffineG2ModelSwapInnerValue g2DisModel g2FwdModel swp [(irMat, swapEnd)] g2Mesher 0
+    g2NodeNpv <- fdmAvgInnerValue g2Calc g2Mesher [g2Idx0x, g2Idx0y] irMat
+
+    return Result
+      { fdmEuropeanR = fdmEuro !! centerIdx
+      , analyticEuropeanR = analytic
+      , fdmAmericanR = fdmAmerican !! centerIdx
+      , fdAmericanR = fdRef
+      , fdmSolveEuropeanR = fdmSolveEuro !! centerIdx
+      , fdmSolveAmericanR = fdmSolveAmerican !! centerIdx
+      , avgInnerValueAtCenterR = avgAtCenter
+      , intrinsicAtCenterR = intrinsicAt (xs !! centerIdx)
+      , zeroInnerValueAtCenterR = zeroAtCenter
+      , fdmLogInnerValueEuropeanR = fdmLogEuro !! centerIdx
+      , fdmCustomCellAveragingEuropeanR = fdmCustomCellAvgEuro !! centerIdx
+      , basketAtEqualNodesR = basketAtEqualNodes
+      , basketIntrinsicAtEqualNodesR = maxBasketIntrinsicAt centerIdx centerIdx
+      , basketAtAsset1MaxR = basketAtAsset1Max
+      , basketIntrinsicAtAsset1MaxR = maxBasketIntrinsicAt (centerIdx + 5) (centerIdx - 5)
+      , hwNodeNpvR = hwNodeNpv
+      , g2NodeNpvR = g2NodeNpv
+      }
   where
+    -- Index whose location is closest to 0 -- with mandatoryPoint = Just 0 forced onto the grid by
+    -- fdmSimpleProcess1dMesher, this is an exact match, not an approximation.
+    nearestZeroIdx locs = snd (minimumBy (comparing (abs . fst)) (zip locs [0 ..]))
+    irRate = 0.03
+    hwA = 0.03
+    hwSigma = 0.01
+    g2A = 0.03
+    g2Sigma = 0.01
+    g2B = 0.04
+    g2Eta = 0.012
+    g2Rho = -0.75
     tod = 1 `january` 2020
     -- 365 calendar days, not a year-based date step: Actual365Fixed's year fraction is
     -- actualDays\/365, so this is exactly 1.0 regardless of leap years. addGregorianYearsClip's

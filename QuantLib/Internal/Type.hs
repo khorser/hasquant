@@ -165,6 +165,19 @@ withFdmInnerValue f g = mask $ \restore -> do
       loc <- peekArray (fromIntegral n) locPtr
       pure (realToFrac (f (realToFrac t) (map realToFrac loc)))
 
+type FdmGridMappingFun = CDouble -> IO CDouble
+foreign import ccall "wrapper" mkFdmGridMappingFunPtr :: FdmGridMappingFun -> IO (FunPtr FdmGridMappingFun)
+-- |Wrap a Haskell @Double -> Double@ function as an 'FdmGridMappingFun' C callback, for
+-- @FdmCellAveragingInnerValue@'s optional @gridMapping@ (@QuantLib.Method.withCustomCellAveragingInnerValue@)
+-- -- another genuine per-node callback (invoked from inside @avgInnerValueCalc@'s Simpson
+-- integration and from every @innerValue@ call), same reasoning as 'withFdmInnerValue' above.
+withFdmGridMapping :: (Double -> Double) -> (FunPtr FdmGridMappingFun -> IO b) -> IO b
+withFdmGridMapping f g = mask $ \restore -> do
+  fp <- mkFdmGridMappingFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call x = pure (realToFrac (f (realToFrac x)))
+
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
@@ -404,6 +417,15 @@ peekFdmMesher :: Ptr CFdmMesher -> IO FdmMesher
 peekFdmMesher = FdmMesher <.> peekStandalone
 withFdmMesher :: FdmMesher -> (Ptr CFdmMesher -> IO b) -> IO b
 withFdmMesher = withStandalone . getCFdmMesher
+
+data CFdmInnerValueCalculator
+newtype FdmInnerValueCalculator = FdmInnerValueCalculator {getCFdmInnerValueCalculator :: Standalone CFdmInnerValueCalculator}
+foreign import ccall unsafe "ql.h &qlFreeFdmInnerValueCalculator" qlFreeFdmInnerValueCalculator :: FinalizerPtr CFdmInnerValueCalculator
+instance Finalizable CFdmInnerValueCalculator where finalize = qlFreeFdmInnerValueCalculator
+peekFdmInnerValueCalculator :: Ptr CFdmInnerValueCalculator -> IO FdmInnerValueCalculator
+peekFdmInnerValueCalculator = FdmInnerValueCalculator <.> peekStandalone
+withFdmInnerValueCalculator :: FdmInnerValueCalculator -> (Ptr CFdmInnerValueCalculator -> IO b) -> IO b
+withFdmInnerValueCalculator = withStandalone . getCFdmInnerValueCalculator
 
 data CZeroInflationCashFlow
 newtype ZeroInflationCashFlow = ZeroInflationCashFlow {getCZeroInflationCashFlow :: Standalone CZeroInflationCashFlow}

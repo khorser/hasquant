@@ -745,3 +745,18 @@ spec = do
         -- construction path differs (see QuantLib.Method.fdmSolve's haddock).
         FdmExample.fdmSolveEuropeanR r `shouldBe` FdmExample.fdmEuropeanR r
         FdmExample.fdmSolveAmericanR r `shouldBe` FdmExample.fdmAmericanR r
+        -- Node-level check: fdmAvgInnerValue's argument order and fdmIteratorAt's coordinate
+        -- arithmetic (qlPricingEngine.cpp) both round-trip correctly.
+        FdmExample.avgInnerValueAtCenterR r `shouldBe` FdmExample.intrinsicAtCenterR r
+        -- Native FdmInnerValueCalculator subclasses (see QuantLib.Method.fdmLogInnerValue et al.).
+        FdmExample.zeroInnerValueAtCenterR r `shouldBe` 0
+        FdmExample.fdmLogInnerValueEuropeanR r `shouldSatisfy`
+          closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
+        FdmExample.fdmCustomCellAveragingEuropeanR r `shouldBe` FdmExample.fdmLogInnerValueEuropeanR r
+        -- FdmLogBasketInnerValue (max-of-two-assets basket, no cell averaging so exact).
+        FdmExample.basketAtEqualNodesR r `shouldBe` FdmExample.basketIntrinsicAtEqualNodesR r
+        FdmExample.basketAtAsset1MaxR r `shouldBe` FdmExample.basketIntrinsicAtAsset1MaxR r
+        -- FdmAffineModelSwapInnerValue<G2>/<HullWhite>: at the swap's own final maturity (the sole
+        -- exercise date), no cashflows remain, so the value must be exactly 0 regardless of model.
+        FdmExample.hwNodeNpvR r `shouldBe` 0
+        FdmExample.g2NodeNpvR r `shouldBe` 0

@@ -55,6 +55,55 @@
 -- for every underlying (still with 'asset'\/'assetAt', once per underlying) into a 'Matrix' of one
 -- row per path, and guard the ITM-fit-size check with 'lsmBasisSize' instead of the basis order --
 -- the multi-asset basis has combinatorially many more terms than the scalar case.
+--
+-- === Finite-difference PDE solving
+--
+-- This module also binds a full-grid finite-difference (FDM) driver, built up across two related
+-- issues (custom step-condition\/operator hooks, then custom inner-value calculators) and spread
+-- across several functions with no single overview until now. Worked in full in
+-- @test\/example\/QuantLib\/Example\/Fdm.hs@.
+--
+-- [@Rolling a grid back@] 'fdmRollback' takes a precomputed initial grid (a plain @[Double]@) and
+--   rolls it back through time via three Haskell-defined operator callbacks
+--   ('QuantLib.Internal.Type.withFdmApply' et al.) plus an optional step condition (e.g.
+--   American\/Bermudan early exercise). These callbacks cross the language boundary once per outer
+--   timestep, over the /whole/ grid -- CLAUDE.md's \"coarsen the language-boundary crossing\"
+--   pattern. 'fdmSolve' is the sibling that instead derives its own initial grid from a mesher and
+--   an 'FdmInnerValueCalculator' (below), reusing the same operator\/step-condition machinery.
+--
+-- [@Building a grid@] 'Fdm1dMesher's ('predefined1dMesher', 'uniform1dMesher',
+--   'concentrating1dMesher', 'fdmBlackScholesMesher', and the other process-specific meshers) each
+--   describe one PDE dimension; 'fdmMesherComposite' combines one or more into the multi-dimensional
+--   'FdmMesher' 'fdmSolve' and 'FdmInnerValueCalculator' operate over. 'fdmMesherLocations' reads a
+--   dimension's real-valued node locations back out, e.g. to map a flat result array back to
+--   coordinates.
+--
+-- [@Custom inner values, fully general@] 'withCustomFdmInnerValueCalculator' wraps a Haskell
+--   @t -> location -> value@ pair of functions as an 'FdmInnerValueCalculator'. Unlike every
+--   callback above, this one crosses the language boundary once /per grid node/ -- there is no
+--   batched shape for it anywhere in QuantLib or QuantLib-SWIG, so the real per-call cost is
+--   accepted, matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@ precedent. Because the
+--   two callbacks are stored /inside/ the returned calculator and invoked again on every later
+--   'fdmSolve'\/'fdmInnerValue' call (not just during construction), the calculator is only valid
+--   /inside/ this continuation -- it cannot be built with a plain @IO FdmInnerValueCalculator@
+--   smart constructor the way the native calculators below can.
+--
+-- [@Custom inner values, native@] QuantLib's own concrete 'FdmInnerValueCalculator' subclasses are
+--   bound directly, for the common cases that don't need a per-node Haskell callback at all:
+--   'fdmZeroInnerValue' (always 0), 'fdmCellAveragingInnerValue'\/'fdmLogInnerValue' (a payoff
+--   cell-averaged -- Simpson-integrated across each grid cell, not just evaluated at its center --
+--   with an identity or @exp@ value mapping respectively), and 'fdmLogBasketInnerValue' (the
+--   multi-asset counterpart, one @exp@ mapping per dimension). These hold no Haskell callback, so
+--   they're plain @IO FdmInnerValueCalculator@ constructors -- except
+--   'withCustomCellAveragingInnerValue', the one native constructor that /does/ take an explicit
+--   @gridMapping@ callback, which needs the same continuation treatment as the fully custom case
+--   above. 'fdmAffineG2ModelSwapInnerValue'\/'fdmAffineHullWhiteModelSwapInnerValue' price a swap
+--   under a calibrated 'QuantLib.Model.G2'\/'QuantLib.Model.HullWhite' model directly -- the same
+--   calculator @fdG2SwaptionEngine@\/@fdHullWhiteSwaptionEngine@ use internally.
+--
+-- [@Inspecting a calculator directly@] 'fdmInnerValue'\/'fdmAvgInnerValue' evaluate any bound
+--   calculator (custom or native) at a single mesher node, without assembling a whole 'fdmSolve' --
+--   useful for a targeted self-consistency check, as @Fdm.hs@'s own tests do throughout.
 module QuantLib.Method
   (
     PathGenerator
@@ -87,6 +136,17 @@ module QuantLib.Method
   , fdmHestonLocalVolatilityVarianceMesher
   , fdmMesherComposite
   , fdmMesherLocations
+  , FdmInnerValueCalculator
+  , withCustomFdmInnerValueCalculator
+  , fdmZeroInnerValue
+  , fdmCellAveragingInnerValue
+  , withCustomCellAveragingInnerValue
+  , fdmLogInnerValue
+  , fdmLogBasketInnerValue
+  , fdmAffineG2ModelSwapInnerValue
+  , fdmAffineHullWhiteModelSwapInnerValue
+  , fdmInnerValue
+  , fdmAvgInnerValue
   , fdmSolve
   ) where
 #include "qlTypesC2HS.h"
@@ -98,7 +158,10 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
-import Foreign.C.Types(CDouble)
+import Foreign.C.Types(CDouble, CUInt)
+import Foreign.C.String(CString)
+import Foreign.Ptr(Ptr, FunPtr)
+import Data.Time.Calendar(Day)
 import Data.Vector.Storable(Vector)
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
@@ -116,8 +179,20 @@ import Data.Vector.Storable(Vector)
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
+-- Local redeclaration for Payoff arguments (fdmCellAveragingInnerValue/fdmLogInnerValue/
+-- fdmLogBasketInnerValue), same reasoning as the redeclarations above -- QuantLib.Internal.Common
+-- has the same declaration.
+{#pointer *QlPayoff nocode#}
+{#pointer *QlBasketPayoff nocode#}
+-- Local redeclarations for fdmAffineG2ModelSwapInnerValue/fdmAffineHullWhiteModelSwapInnerValue's
+-- argument types, same reasoning as the redeclarations above -- QuantLib.Model and
+-- QuantLib.Instrument.Swap have the same declarations.
+{#pointer *QlG2 as G2 foreign -> CG2' nocode#}
+{#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
+{#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
 {#pointer *QlFdm1dMesher as Fdm1dMesher foreign -> CFdm1dMesher nocode#}
 {#pointer *QlFdmMesher as FdmMesher foreign -> CFdmMesher nocode#}
+{#pointer *QlFdmInnerValueCalculator as FdmInnerValueCalculator foreign -> CFdmInnerValueCalculator nocode#}
 
 -- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
 {#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
@@ -365,26 +440,157 @@ concentrating1dMesherMulti start end size cPoints tol =
   ,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Sibling of 'fdmRollback' that derives its own initial grid from a mesher and a Haskell-defined
--- @FdmInnerValueCalculator@ (@avgInnerValue(t, location)@ per node, called once per mesher node at
+-- Raw import, not a {#fun#}: 'withCustomFdmInnerValueCalculator' below needs the two
+-- 'FunPtr's kept alive for as long as the returned 'FdmInnerValueCalculator' can be called into
+-- (i.e. across the whole continuation, which typically includes a later 'fdmSolve' call), not
+-- just for the duration of this one construction call the way a plain {#fun#}-generated
+-- 'withFdmInnerValue' bracket would provide -- see the haddock below.
+foreign import ccall "ql.h qlFdmInnerValueCalculatorFromFunctions"
+  c_qlFdmInnerValueCalculatorFromFunctions :: Ptr CFdmMesher -> FunPtr FdmInnerValueFun -> FunPtr FdmInnerValueFun
+    -> Ptr CString -> IO (Ptr CFdmInnerValueCalculator)
+
+-- |Wraps a Haskell @t -> location -> value@ pair of @innerValue@\/@avgInnerValue@ functions as a
+-- real 'FdmInnerValueCalculator' object, valid only inside the continuation -- the fully custom
+-- counterpart to constructors built from QuantLib's own concrete subclasses (bound alongside
+-- this, which need no such bracket: they hold no Haskell callback). Unlike every callback
+-- 'fdmRollback' takes, this crosses the language boundary once /per grid node/, not once per outer
+-- iteration over the whole grid -- there is no batched \"whole-grid inner value\" shape anywhere
+-- in QuantLib or QuantLib-SWIG. Per CLAUDE.md's \"coarsen the language-boundary crossing\" bullet,
+-- this is the one case where that coarsening isn't available, so the real per-call FFI cost across
+-- every node (and, if a step condition also calls the calculator, every node at every exercise
+-- date) is accepted -- matching QuantLib-SWIG's own accepted-cost precedent,
+-- @FdmInnerValueCalculatorDelegate@ (@SWIG\/fdm.i@).
+withCustomFdmInnerValueCalculator :: FdmMesher
+  -> (Double -> [Double] -> Double) -- ^innerValue(t, location)
+  -> (Double -> [Double] -> Double) -- ^avgInnerValue(t, location)
+  -> (FdmInnerValueCalculator -> IO b) -> IO b
+withCustomFdmInnerValueCalculator mesher iv aiv k =
+  withFdmMesher mesher $ \mesher' ->
+  withFdmInnerValue iv $ \ivFp ->
+  withFdmInnerValue aiv $ \aivFp ->
+  preErrorCheck $ \errPtr -> do
+    res <- c_qlFdmInnerValueCalculatorFromFunctions mesher' ivFp aivFp errPtr
+    errorCheck errPtr
+    peekFdmInnerValueCalculator res >>= k
+
+-- |'FdmZeroInnerValue' -- an 'FdmInnerValueCalculator' whose @innerValue@\/@avgInnerValue@ are
+-- always 0.
+{#fun qlFdmZeroInnerValue as fdmZeroInnerValue{preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
+
+-- |'FdmCellAveragingInnerValue(payoff, mesher, direction)' -- cell-averages @payoff@ over each
+-- grid cell along @direction@ (Simpson-integrating across the cell straddling a kink, e.g. a
+-- strike, rather than just evaluating at the cell center), with the identity value mapping. See
+-- 'withCustomCellAveragingInnerValue' for the @gridMapping@-taking overload (e.g. to reproduce
+-- 'fdmLogInnerValue' by hand), and 'fdmLogInnerValue' for the common log-mapped case QuantLib
+-- itself gives its own dedicated subclass.
+{#fun qlFdmCellAveragingInnerValue as fdmCellAveragingInnerValue{withPayoff*`Payoff'
+  ,withFdmMesher*`FdmMesher'
+  ,fromIntegral`Int' -- ^direction
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
+
+-- Raw import, not a {#fun#}: same FunPtr-lifetime hazard as
+-- 'c_qlFdmInnerValueCalculatorFromFunctions' above -- 'gridMapping' is stored inside the C++
+-- object and invoked again on every later 'innerValue'\/'avgInnerValue' call, not just during
+-- construction.
+foreign import ccall "ql.h qlFdmCellAveragingInnerValueMapped"
+  c_qlFdmCellAveragingInnerValueMapped :: QlPayoff -> Ptr CFdmMesher -> CUInt -> FunPtr FdmGridMappingFun
+    -> Ptr CString -> IO (Ptr CFdmInnerValueCalculator)
+
+-- |As 'fdmCellAveragingInnerValue', but with an explicit @gridMapping :: Double -> Double@ applied
+-- to each node's location before the payoff sees it (e.g. @exp@ on a log-spot grid, reproducing
+-- 'fdmLogInnerValue' by hand) -- a genuine per-node Haskell callback (see CLAUDE.md's "coarsen the
+-- language-boundary crossing" bullet and 'withCustomFdmInnerValueCalculator' above), so the
+-- resulting 'FdmInnerValueCalculator' is only valid inside this continuation.
+withCustomCellAveragingInnerValue :: Payoff -> FdmMesher -> Int -> (Double -> Double)
+  -> (FdmInnerValueCalculator -> IO b) -> IO b
+withCustomCellAveragingInnerValue payoff mesher direction mapping k =
+  withPayoff payoff $ \payoff' ->
+  withFdmMesher mesher $ \mesher' ->
+  withFdmGridMapping mapping $ \mappingFp ->
+  preErrorCheck $ \errPtr -> do
+    res <- c_qlFdmCellAveragingInnerValueMapped payoff' mesher' (fromIntegral direction) mappingFp errPtr
+    errorCheck errPtr
+    peekFdmInnerValueCalculator res >>= k
+
+-- |'FdmLogInnerValue(payoff, mesher, direction)' -- 'fdmCellAveragingInnerValue' with the
+-- @gridMapping = exp@ QuantLib itself gives its own dedicated subclass (the standard shape for a
+-- log-spot grid, e.g. 'fdmBlackScholesMesher''s own grid).
+{#fun qlFdmLogInnerValue as fdmLogInnerValue{withPayoff*`Payoff'
+  ,withFdmMesher*`FdmMesher'
+  ,fromIntegral`Int' -- ^direction
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
+
+-- |'FdmLogBasketInnerValue(payoff, mesher)' -- the multi-asset counterpart to 'fdmLogInnerValue':
+-- evaluates a 'BasketPayoff' with each dimension's location exponentiated first (@exp@ on every
+-- mesher direction, i.e. a log-spot grid per underlying), no cell averaging.
+{#fun qlFdmLogBasketInnerValue as fdmLogBasketInnerValue{withBasketPayoff*`BasketPayoff'
+  ,withFdmMesher*`FdmMesher'
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
+
+-- |'FdmAffineModelSwapInnerValue\<G2\>(disModel, fwdModel, swap, exerciseDates, mesher, direction)'
+-- -- the swap-NPV-under-the-model 'FdmInnerValueCalculator' used internally by
+-- 'QuantLib.PricingEngine.fdG2SwaptionEngine'. @exerciseDates@ pairs each exercise time (the same
+-- @Time@-as-@Double@ year-fraction convention used throughout, not a dedicated type) with the
+-- 'Data.Time.Calendar.Day' it corresponds to (upstream's @std::map\<Time, Date\>@).
+fdmAffineG2ModelSwapInnerValue :: G2 -> G2 -> GenFixedVsFloatingSwap f -> [(Double, Day)] -> FdmMesher -> Int -> IO FdmInnerValueCalculator
+fdmAffineG2ModelSwapInnerValue disModel fwdModel swap exerciseDates =
+  let (times, dates) = unzip exerciseDates
+  in qlFdmAffineG2ModelSwapInnerValue disModel fwdModel swap (fromIntegral (length exerciseDates)) times dates
+{#fun qlFdmAffineG2ModelSwapInnerValue{withG2*`G2'
+  ,withG2*`G2'
+  ,withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f'
+  ,fromIntegral`Int' -- ^number of exercise dates
+  ,withDoubleArrayRaw*`[Double]' -- ^exercise times
+  ,withDayPtr*`[Day]' -- ^exercise dates
+  ,withFdmMesher*`FdmMesher'
+  ,fromIntegral`Int' -- ^direction
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
+
+-- |As 'fdmAffineG2ModelSwapInnerValue', but for 'HullWhite' -- used internally by
+-- 'QuantLib.PricingEngine.fdHullWhiteSwaptionEngine'.
+fdmAffineHullWhiteModelSwapInnerValue :: HullWhite -> HullWhite -> GenFixedVsFloatingSwap f -> [(Double, Day)] -> FdmMesher -> Int -> IO FdmInnerValueCalculator
+fdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap exerciseDates =
+  let (times, dates) = unzip exerciseDates
+  in qlFdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap (fromIntegral (length exerciseDates)) times dates
+{#fun qlFdmAffineHullWhiteModelSwapInnerValue{withHullWhite*`HullWhite'
+  ,withHullWhite*`HullWhite'
+  ,withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f'
+  ,fromIntegral`Int' -- ^number of exercise dates
+  ,withDoubleArrayRaw*`[Double]' -- ^exercise times
+  ,withDayPtr*`[Day]' -- ^exercise dates
+  ,withFdmMesher*`FdmMesher'
+  ,fromIntegral`Int' -- ^direction
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
+
+-- |Evaluate an 'FdmInnerValueCalculator''s @innerValue@ at the mesher node given by its
+-- coordinates (one index per PDE dimension), at time @t@ -- lets any bound calculator (native or
+-- built via 'withCustomFdmInnerValueCalculator') be inspected directly without assembling a whole
+-- 'fdmSolve'.
+{#fun qlFdmInnerValueCalculatorEval as fdmInnerValue{withFdmInnerValueCalculator*`FdmInnerValueCalculator'
+  ,withFdmMesher*`FdmMesher'
+  ,withIntArray*`[Int]'& -- ^node coordinates
+  ,`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |As 'fdmInnerValue', but for @avgInnerValue@.
+{#fun qlFdmInnerValueCalculatorAvgEval as fdmAvgInnerValue{withFdmInnerValueCalculator*`FdmInnerValueCalculator'
+  ,withFdmMesher*`FdmMesher'
+  ,withIntArray*`[Int]'& -- ^node coordinates
+  ,`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Sibling of 'fdmRollback' that derives its own initial grid from a mesher and an
+-- 'FdmInnerValueCalculator' (@avgInnerValue(t, location)@ per node, called once per mesher node at
 -- @t = maturity@ -- mirroring @Fdm1DimSolver@\/@FdmNdimSolver@'s own constructor loop) instead of
 -- taking a precomputed grid array. Everything else (operator\/step-condition\/scheme\/rollback) is
--- identical to 'fdmRollback', reusing the same callback machinery.
---
--- Unlike every callback 'fdmRollback' takes, 'withFdmInnerValue' crosses the language boundary
--- once /per grid node/, not once per outer iteration over the whole grid -- there is no batched
--- \"whole-grid inner value\" shape anywhere in QuantLib or QuantLib-SWIG. Per CLAUDE.md's
--- \"coarsen the language-boundary crossing\" bullet, this is the one case where that coarsening
--- isn't available, so the real per-call FFI cost across every node (and, if a step condition also
--- calls the calculator, every node at every exercise date) is accepted -- matching QuantLib-SWIG's
--- own accepted-cost precedent, @FdmInnerValueCalculatorDelegate@ (@SWIG\/fdm.i@).
+-- identical to 'fdmRollback', reusing the same callback machinery. The calculator can be either
+-- fully custom ('fdmInnerValueCalculator') or one of QuantLib's own native subclasses.
 --
 -- @Fdm1DimSolver@\/@FdmNdimSolver@ themselves (their own @LazyObject@ caching and cubic-spline
 -- interpolation) are /not/ bound; combine this function's result with 'fdmMesherLocations' for
 -- interpolation.
 {#fun qlFdmSolve as fdmSolve{withFdmMesher*`FdmMesher'
-  ,withFdmInnerValue*`Double -> [Double] -> Double' -- ^innerValue(t, location)
-  ,withFdmInnerValue*`Double -> [Double] -> Double' -- ^avgInnerValue(t, location)
+  ,withFdmInnerValueCalculator*`FdmInnerValueCalculator'
   ,fromIntegral`Int' -- ^number of PDE directions\/dimensions the operator has
   ,withFdmApply*`(Double,Double) -> [Double] -> [Double]' -- ^@apply(r)@
   ,withFdmApplyDirection*`Int -> (Double,Double) -> [Double] -> [Double]' -- ^@apply_direction(direction, r)@
