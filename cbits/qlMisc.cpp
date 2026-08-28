@@ -54,8 +54,8 @@ std::ofstream ofs(qlTrackDestination());
 #endif
 using namespace QuantLib;
 
-int *qlAllocateInts(size_t size) {return new int[size];}
-double *qlAllocateDoubles(size_t size) {return new double[size];}
+int *qlAllocateInts(size_t size) {return ret(new int[size]);}
+double *qlAllocateDoubles(size_t size) {return ret(new double[size]);}
 const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Date() : Date(serialNumber);}
 int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
 ext::optional<bool> qlOptBool(int b) {return b == -1 ? ext::nullopt : ext::optional<bool>(b);}
@@ -71,7 +71,7 @@ char *tracedup(const char *p) {
   return dup;
 }
 
-void **qlAllocatePointerArray(size_t size) {return new void*[size];}
+void **qlAllocatePointerArray(size_t size) {return ret(new void*[size]);}
 typedef Currency *(*makeCcy)();
 
 // must match the order of qlEnumObjects.h:Ccy
@@ -190,14 +190,19 @@ static const makeCcy ccys[] = {
 };
 
 extern "C" {
-void qlFreeInts(int *p) {delete[] p;}
-void qlFreeUInts(unsigned *p) {delete[] p;}
-void qlFreeDoubles(double *p) {delete[] p;}
-void qlFreePointerArray(void **p) {delete[] p;}
+// A null pointer is skipped rather than traced -- see del()'s identical reasoning in qlaux.h;
+// these hand-roll the same guard since delete[] (not del()'s scalar delete) applies here.
+void qlFreeInts(int *p) {if (p) {TP2("deleting", p); delete[] p; TP2("deleted", p);}}
+// Every unsigned* out-array is actually allocated as int* via qlAllocateInts (there is no
+// qlAllocateUInts) -- delegate rather than duplicate so it's traced under the type it was
+// really allocated as.
+void qlFreeUInts(unsigned *p) {qlFreeInts(reinterpret_cast<int*>(p));}
+void qlFreeDoubles(double *p) {if (p) {TP2("deleting", p); delete[] p; TP2("deleted", p);}}
+void qlFreePointerArray(void **p) {if (p) {TP2("deleting", p); delete[] p; TP2("deleted", p);}}
 void qlFreeStringArray(unsigned n, char **p) {
   if (!p) return;
   for (unsigned i = 0; i < n; ++i) qlFreeString(p[i]);
-  delete[] p;
+  TP2("deleting", p); delete[] p; TP2("deleted", p);
 }
 int qlNullInteger() {return Null<Integer>();}
 double qlNullReal() {return Null<Real>();}
@@ -233,8 +238,8 @@ int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().in
 void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
 int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
 void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
-void *qlSavedSettings() {return new SavedSettings();}
-void qlFreeSavedSettings(void *settings) {delete (SavedSettings *)settings;}
+void *qlSavedSettings() {return ret(new SavedSettings());}
+void qlFreeSavedSettings(void *settings) {del((SavedSettings *)settings);}
 const char *qlVersion() {return QL_VERSION;}
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 

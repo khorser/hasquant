@@ -711,12 +711,12 @@ void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapInde
     // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
     // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
     // how far the loop got.
-    hs = new QlBlackCalibrationHelper*[n]();
+    hs = retPtrArray(new QlBlackCalibrationHelper*[n]());
     for (unsigned i = 0; i < n; ++i) hs[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
     *helpers = hs;
     *len = n;
   } catch (std::exception& er) {
-    if (hs) { for (unsigned i = 0; i < n; ++i) delete hs[i]; delete[] hs; }
+    if (hs) { for (unsigned i = 0; i < n; ++i) del(hs[i]); qlFreePointerArray((void**)hs); }
     handleException<int>(e, er);
   }}
 
@@ -734,12 +734,12 @@ void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex*
     std::vector<ext::shared_ptr<BlackCalibrationHelper>> basket = (*arg(o))->calibrationBasket(*arg(swapBase), (*arg(swaptionVol)).currentLink(), (BasketGeneratingEngine::CalibrationBasketType)basketType);
     n = (unsigned)basket.size();
     // Same idiom as qlNonstandardSwaptionCalibrationBasket above.
-    hs = new QlBlackCalibrationHelper*[n]();
+    hs = retPtrArray(new QlBlackCalibrationHelper*[n]());
     for (unsigned i = 0; i < n; ++i) hs[i] = ret(new QlBlackCalibrationHelper(alloc(basket[i])));
     *helpers = hs;
     *len = n;
   } catch (std::exception& er) {
-    if (hs) { for (unsigned i = 0; i < n; ++i) delete hs[i]; delete[] hs; }
+    if (hs) { for (unsigned i = 0; i < n; ++i) del(hs[i]); qlFreePointerArray((void**)hs); }
     handleException<int>(e, er);
   }}
 
@@ -1132,13 +1132,13 @@ Leg *qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDat
   try {const Leg &l = *arg(leg);
     Leg::const_iterator i = CashFlows::nextCashFlow(l,
         includeSettlementDateFlows, qlNullableDate(settlementDate));
-    return new Leg(i, l.end());
+    return alloc(new Leg(i, l.end()));
   } catch (std::exception& er) {return handleException<Leg *>(e, er);}}
 Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e) {
   try {const Leg &l = *arg(leg);
     Leg::const_reverse_iterator i = CashFlows::previousCashFlow(l,
         includeSettlementDateFlows, qlNullableDate(settlementDate));
-    return new Leg(l.begin(), i.base());
+    return alloc(new Leg(l.begin(), i.base()));
   } catch (std::exception& er) {return handleException<Leg *>(e, er);}}
 void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
    unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e) {
@@ -1476,9 +1476,9 @@ void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys
     // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
     // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
     // how far the loop got.
-    ks = new char*[n]();
+    ks = ret(new char*[n]());
     am = qlAllocateDoubles(n);
-    cs = new Currency*[n]();
+    cs = retPtrArray(new Currency*[n]());
     unsigned i = 0;
     for (SecondaryCostAmounts::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
       ks[i] = DUP(it->first.c_str());
@@ -1488,9 +1488,9 @@ void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys
     *keys = ks; *amounts = am; *currencies = cs;
     *len = n; *len2 = n; *len3 = n;
   } catch (std::exception& er) {
-    if (ks) { for (unsigned i = 0; i < n; ++i) qlFreeString(ks[i]); delete[] ks; }
-    delete[] am;
-    if (cs) { for (unsigned i = 0; i < n; ++i) delete cs[i]; delete[] cs; }
+    if (ks) qlFreeStringArray(n, ks);
+    qlFreeDoubles(am);
+    if (cs) { for (unsigned i = 0; i < n; ++i) del(cs[i]); qlFreePointerArray((void**)cs); }
     handleException<int>(e, er);
   }
 }
@@ -1508,8 +1508,8 @@ void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
     // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
     // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
     // how far the loop got.
-    errs2 = new char*[n]();
-    dets = new char*[n]();
+    errs2 = ret(new char*[n]());
+    dets = ret(new char*[n]());
     for (unsigned i = 0; i < n; ++i) {
       lv[i] = errs[i].errorLevel;
       errs2[i] = DUP(errs[i].error.c_str());
@@ -1518,9 +1518,9 @@ void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
     *levels = lv; *errors = errs2; *details = dets;
     *len = n; *len2 = n; *len3 = n;
   } catch (std::exception& er) {
-    delete[] lv;
-    if (errs2) { for (unsigned i = 0; i < n; ++i) qlFreeString(errs2[i]); delete[] errs2; }
-    if (dets) { for (unsigned i = 0; i < n; ++i) qlFreeString(dets[i]); delete[] dets; }
+    qlFreeInts(lv);
+    if (errs2) qlFreeStringArray(n, errs2);
+    if (dets) qlFreeStringArray(n, dets);
     handleException<int>(e, er);
   }
 }
@@ -1603,7 +1603,7 @@ void qlEnergySwapDailyPositions(QlEnergySwap *o, unsigned *len, int **dates,
     *dates = ds; *quantityAmounts = qa; *payLegPrices = plp; *receiveLegPrices = rlp; *riskDeltas = rd; *unrealized = ur;
     *len = n; *len2 = n; *len3 = n; *len4 = n; *len5 = n; *len6 = n;
   } catch (std::exception& er) {
-    delete[] ds; delete[] qa; delete[] plp; delete[] rlp; delete[] rd; delete[] ur;
+    qlFreeInts(ds); qlFreeDoubles(qa); qlFreeDoubles(plp); qlFreeDoubles(rlp); qlFreeDoubles(rd); qlFreeInts(ur);
     handleException<int>(e, er);
   }
 }
@@ -1618,14 +1618,14 @@ void qlEnergySwapPaymentCashFlows(QlEnergySwap *o, unsigned *len, QlCommodityCas
     // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
     // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
     // how far the loop got.
-    cs = new QlCommodityCashFlow*[n]();
+    cs = retPtrArray(new QlCommodityCashFlow*[n]());
     unsigned i = 0;
     for (CommodityCashFlows::const_iterator it = m.begin(); it != m.end(); ++it, ++i)
       cs[i] = ret(new QlCommodityCashFlow(alloc(it->second)));
     *out = cs;
     *len = n;
   } catch (std::exception& er) {
-    if (cs) { for (unsigned i = 0; i < n; ++i) delete cs[i]; delete[] cs; }
+    if (cs) { for (unsigned i = 0; i < n; ++i) del(cs[i]); qlFreePointerArray((void**)cs); }
     handleException<int>(e, er);
   }
 }
@@ -1759,8 +1759,8 @@ void qlCreatePricingPeriods(int startDate, int endDate, CommodityType *qCt, Unit
     // Value-initialised, like qlInstrumentAdditionalResults above: a mid-loop exception leaves
     // every not-yet-filled slot null, so the catch below can free exactly `n` slots regardless of
     // how far the loop got.
-    types = new CommodityType*[n]();
-    uoms = new UnitOfMeasure*[n]();
+    types = retPtrArray(new CommodityType*[n]());
+    uoms = retPtrArray(new UnitOfMeasure*[n]());
     for (unsigned i = 0; i < n; ++i) {
       starts[i] = pps[i]->startDate().serialNumber();
       ends[i] = pps[i]->endDate().serialNumber();
@@ -1773,9 +1773,9 @@ void qlCreatePricingPeriods(int startDate, int endDate, CommodityType *qCt, Unit
     *ppTypes = types; *ppUoms = uoms; *ppAmounts = amounts;
     *len = n; *len2 = n; *len3 = n; *len4 = n; *len5 = n; *len6 = n;
   } catch (std::exception& er) {
-    delete[] starts; delete[] ends; delete[] pays; delete[] amounts;
-    if (types) { for (unsigned i = 0; i < n; ++i) delete types[i]; delete[] types; }
-    if (uoms) { for (unsigned i = 0; i < n; ++i) delete uoms[i]; delete[] uoms; }
+    qlFreeInts(starts); qlFreeInts(ends); qlFreeInts(pays); qlFreeDoubles(amounts);
+    if (types) { for (unsigned i = 0; i < n; ++i) del(types[i]); qlFreePointerArray((void**)types); }
+    if (uoms) { for (unsigned i = 0; i < n; ++i) del(uoms[i]); qlFreePointerArray((void**)uoms); }
     handleException<int>(e, er);
   }
 }

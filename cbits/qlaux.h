@@ -1361,12 +1361,43 @@ T traceval(const char *text, T val) {
   ofs << text << " "; ObjClassName<T>::output(ofs); ofs << ": " << val << std::endl;
   return val;
 }
+// Like traceval, but the trace label comes from a caller-supplied Label rather than from val's
+// own type -- for the handful of places where what actually gets freed later is traced under a
+// different (usually less-derived, or type-erased) static type than what's allocated here. Never
+// changes val itself, only which ObjClassName the log line names.
+template <class Label, class T>
+T tracevalAs(const char *text, T val) {
+  ofs << text << " "; ObjClassName<Label>::output(ofs); ofs << ": " << val << std::endl;
+  return val;
+}
+# define TPAS(label, text, p) tracevalAs<label>((text), (p))
+#else
+# define TPAS(label, text, p) (p)
 #endif
 
 template <class T> T arg(T p) {return TP("arg", p);}
-template <class T> void del(T p) {delete TP("deleting", p); TP2("deleted", p);}
+// A null pointer is never traced as "allocated"/"returned" (alloc()/ret() only ever wrap a
+// freshly-constructed object), so tracing a null free here would be permanently unmatched noise
+// in alloc-summary.py -- skip the trace (the delete itself is already a no-op on null).
+template <class T> void del(T p) {if (p) {delete TP("deleting", p); TP2("deleted", p);} else delete p;}
 template <class T> T alloc(T p) {return TP("allocated", p);}
 template <class T> T ret(T p) {return TP("returned", p);}
+
+// Trace a `new T*[n]` pointer-array spine under void** -- the type it is actually freed as via
+// qlFreePointerArray (declared `void**`, which can't recover the original element type), so
+// tracing it under T** here would leave the allocation forever unmatched to its own free. `p`
+// itself stays T** throughout -- only the trace label is void**, no cast involved.
+template <class T> T** retPtrArray(T **p) {return TPAS(void**, "returned", p);}
+
+// Trace `new Derived(...)` under a Base* label (Base named unstarred at the call site, e.g.
+// allocAs<FittedBondDiscountCurveFittingMethod>(new CubicBSplinesFitting(...))) while returning
+// it as Derived* -- the caller's own `return` then upcasts it to Base* itself, a compiler-
+// checked conversion, not a cast here. alloc()'s label would otherwise come from the argument's
+// own static type, so a bare `alloc(new Derived(...))` returned as `Base*` traces the allocation
+// under Derived while the matching qlFreeBase's del() (parameter-typed as Base*) traces the free
+// under Base -- a spurious leak/over-free pair in alloc-summary.py despite correct actual memory
+// behavior.
+template <class Base, class Derived> Derived* allocAs(Derived *p) {return TPAS(Base*, "allocated", p);}
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);
