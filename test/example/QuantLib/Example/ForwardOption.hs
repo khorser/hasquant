@@ -78,7 +78,7 @@ run = do
   QuantLib.Instrument.setPricingEngine callOpt fdEng
   fdEuropean <- npv callOpt
 
-  mcEng <- mcForwardEuropeanBSEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
+  mcEng <- mcForwardEuropeanBSEngine LowDiscrepancy Statistics bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
   QuantLib.Instrument.setPricingEngine callOpt mcEng
   mcEuropean <- npv callOpt
 

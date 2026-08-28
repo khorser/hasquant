@@ -123,7 +123,7 @@ run = do
   let payoffQL = PlainVanilla $ PlainVanillaPayoff Put strike
       americanEx = American Nothing maturity False
   americanOpt <- vanillaOption payoffQL americanEx
-  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just timeSteps) Nothing True False Nothing (Just 0.02) Nothing seedCalib order polyT (Just (fromIntegral nCalib)) Nothing Nothing
+  mcaEng <- mcAmericanEngine PseudoRandom Statistics bsmProc (Just timeSteps) Nothing True False Nothing (Just 0.02) Nothing seedCalib order polyT (Just (fromIntegral nCalib)) Nothing Nothing
   QuantLib.Instrument.setPricingEngine americanOpt mcaEng
   mcA <- npv americanOpt
 

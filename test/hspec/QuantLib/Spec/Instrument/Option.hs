@@ -27,7 +27,7 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process
-import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..))
+import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..), StatisticsTrait(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.PricingEngine
@@ -177,7 +177,7 @@ spec = do
         -- tolerance matches upstream's own check here: relativeError(calculated, expected,
         -- value.s1) there compares against the *spot* (100), i.e. an absolute tolerance of
         -- spot*1% = 1.0, not a tolerance relative to the option value itself.
-        euEngine <- mcEuropeanBasketEngine PseudoRandom procs Nothing (Just 1) False False (Just 10000) Nothing Nothing 42
+        euEngine <- mcEuropeanBasketEngine PseudoRandom Statistics procs Nothing (Just 1) False False (Just 10000) Nothing Nothing 42
         euOpt <- basketOption payoff (europeanIn 360 evalDate)
         setPricingEngine euOpt euEngine
         euNpv <- npv euOpt

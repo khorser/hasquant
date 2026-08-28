@@ -234,7 +234,7 @@ checkOtherEngines = do
 
   forM_ [PseudoRandom, LowDiscrepancy] $ \rng -> do
     dblOpt' <- doubleBarrierOption KnockOut 70 130 0 payoff exercise >>= asOneAssetOption
-    mcDoubleBarrierEngine rng proc (Just 20) Nothing False False (Just 1024) Nothing Nothing 42 >>= setPricingEngine dblOpt'
+    mcDoubleBarrierEngine rng Statistics proc (Just 20) Nothing False False (Just 1024) Nothing Nothing 42 >>= setPricingEngine dblOpt'
     npv dblOpt' >>= printf "     MCDoubleBarrierEngine %-24s -> %.6f\n" (show rng)
   where
     today = 1 `january` 2020

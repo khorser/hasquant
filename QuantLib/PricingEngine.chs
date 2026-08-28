@@ -424,7 +424,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for double-barrier options
-{#fun qlMCDoubleBarrierEngine as mcDoubleBarrierEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCDoubleBarrierEngine as mcDoubleBarrierEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
@@ -485,7 +485,7 @@ import QuantLib.Internal.Common
 {#fun qlForwardFdBlackScholesVanillaEngine as forwardFdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for forward-starting European options under a Black-Scholes process
-{#fun qlMCForwardEuropeanBSEngine1 as mcForwardEuropeanBSEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCForwardEuropeanBSEngine1 as mcForwardEuropeanBSEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
@@ -837,10 +837,12 @@ import QuantLib.Internal.Common
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |/NB/ C++ classes Monte Carlo engines are additionally parameterised via statistic template argument
--- Functions below use default value of Statistics (the sole exception is 'mcVarianceSwapEngine',
--- which does expose the 'StatisticsTrait' axis -- see its own doc comment for why)
-{#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine{`RngTrait',withGenStochasticProcess*`HybridHestonHullWhiteProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+-- |/NB/ every Monte Carlo engine in this module is C++-templated on both an RNG policy and a
+-- statistics accumulator; all of them (bar 'mcAmericanBasketEngine', see its own doc comment)
+-- take an explicit 'StatisticsTrait' argument for the latter, letting the caller pick
+-- 'Statistics'\/'GaussianStatistics'\/'GeneralStatistics'\/'IncrementalStatistics' instead of being
+-- pinned to upstream's default @Statistics@.
+{#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`HybridHestonHullWhiteProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,`Bool' -- ^controlVariate
@@ -851,7 +853,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo (least-squares) pricing engine for American options
-{#fun qlMCAmericanEngine1 as mcAmericanEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word', -- ^timeSteps
+{#fun qlMCAmericanEngine1 as mcAmericanEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word', -- ^timeSteps
   fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,`Bool' -- ^controlVariate
@@ -866,7 +868,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for barrier options
-{#fun qlMCBarrierEngine1 as mcBarrierEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCBarrierEngine1 as mcBarrierEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
@@ -878,7 +880,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for digital (cash-or-nothing/asset-or-nothing) options
-{#fun qlMCDigitalEngine1 as mcDigitalEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCDigitalEngine1 as mcDigitalEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word', -- ^timeStepsPerYear
   `Bool', -- ^brownianBridge
   `Bool', -- ^antitheticVariate
@@ -889,7 +891,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for discrete arithmetic average-price Asian options
-{#fun qlMCDiscreteArithmeticAPEngine1 as mcDiscreteArithmeticAPEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCDiscreteArithmeticAPEngine1 as mcDiscreteArithmeticAPEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,`Bool' -- ^controlVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -899,7 +901,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for discrete arithmetic average-strike Asian options
-{#fun qlMCDiscreteArithmeticASEngine1 as mcDiscreteArithmeticASEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCDiscreteArithmeticASEngine1 as mcDiscreteArithmeticASEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -908,7 +910,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for discrete geometric average-price Asian options
-{#fun qlMCDiscreteGeometricAPEngine1 as mcDiscreteGeometricAPEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCDiscreteGeometricAPEngine1 as mcDiscreteGeometricAPEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -917,7 +919,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for European options under a Black-Scholes process
-{#fun qlMCEuropeanEngine1 as mcEuropeanEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanEngine1 as mcEuropeanEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
@@ -928,7 +930,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for European options under a GJR-GARCH process
-{#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGJRGARCHEngine{`RngTrait',withGenStochasticProcess*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGJRGARCHEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -938,7 +940,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for European options under a Heston process
-{#fun qlMCEuropeanHestonEngine1 as mcEuropeanHestonEngine{`RngTrait',withHestonProcess*`GenHestonProcess hp',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanHestonEngine1 as mcEuropeanHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -951,7 +953,7 @@ import QuantLib.Internal.Common
 {#fun qlIntegralHestonVarianceOptionEngine as integralHestonVarianceOptionEngine{withHestonProcess*`GenHestonProcess hp',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo Hull-White pricing engine for caps\/floors
-{#fun qlMCHullWhiteCapFloorEngine1 as mcHullWhiteCapFloorEngine{`RngTrait',withHullWhite*`HullWhite',`Bool' -- ^brownianBridge
+{#fun qlMCHullWhiteCapFloorEngine1 as mcHullWhiteCapFloorEngine{`RngTrait',`StatisticsTrait',withHullWhite*`HullWhite',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -960,7 +962,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for 'himalayaOption'
-{#fun qlMCHimalayaEngine1 as mcHimalayaEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',`Bool' -- ^brownianBridge
+{#fun qlMCHimalayaEngine1 as mcHimalayaEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`StochasticProcessArray',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -969,7 +971,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for 'pagodaOption'
-{#fun qlMCPagodaEngine1 as mcPagodaEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',`Bool' -- ^brownianBridge
+{#fun qlMCPagodaEngine1 as mcPagodaEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`StochasticProcessArray',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -978,7 +980,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for a European 'basketOption'.
-{#fun qlMCEuropeanBasketEngine1 as mcEuropeanBasketEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanBasketEngine1 as mcEuropeanBasketEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
@@ -988,7 +990,12 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |Monte Carlo (least-squares) pricing engine for an American 'basketOption'.
+-- |Monte Carlo (least-squares) pricing engine for an American 'basketOption'. /NB/ unlike every
+-- other MC engine in this module, this one has no 'StatisticsTrait' parameter: upstream's
+-- @MCAmericanBasketEngine\<RNG\>@ is templated on @RNG@ only -- its base
+-- @MCLongstaffSchwartzEngine\<BasketOption::engine,MultiVariate,RNG\>@ never forwards a second
+-- template argument, so there is no @S@ to expose here (a real upstream limitation, not an
+-- oversight).
 {#fun qlMCAmericanBasketEngine1 as mcAmericanBasketEngine{`RngTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
@@ -1003,7 +1010,7 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for performance (return) options
-{#fun qlMCPerformanceEngine1 as mcPerformanceEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCPerformanceEngine1 as mcPerformanceEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -1011,9 +1018,8 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |variance-swap pricing engine using Monte Carlo simulation. /NB/ unlike the other MC engines
--- in this module (see the note above 'mcHestonHullWhiteEngine'), this one does take an explicit
--- 'StatisticsTrait' rather than defaulting to 'Statistics' -- an intentional, one-off exception.
+-- |variance-swap pricing engine using Monte Carlo simulation (see the note above
+-- 'mcHestonHullWhiteEngine' for the 'StatisticsTrait' parameter shared by every MC engine here).
 {#fun qlMCVarianceSwapEngine1 as mcVarianceSwapEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge

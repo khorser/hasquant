@@ -60,7 +60,7 @@ run = do
   QuantLib.Instrument.setPricingEngine option fdEng
   fd <- npv option
 
-  mcEng <- mcDiscreteArithmeticAPEngine LowDiscrepancy bsmProc False False True (Just 2047) Nothing Nothing 0
+  mcEng <- mcDiscreteArithmeticAPEngine LowDiscrepancy Statistics bsmProc False False True (Just 2047) Nothing Nothing 0
   QuantLib.Instrument.setPricingEngine option mcEng
   mc <- npv option
 

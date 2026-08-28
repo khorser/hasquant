@@ -89,15 +89,15 @@ binomialPrice proc inst timeSteps tree = do
 
 monteCarloNpvs :: GeneralizedBlackScholesProcess -> VanillaOption -> VanillaOption -> IO (Double, Double, Double)
 monteCarloNpvs bsmProc europeanOpt americanOpt = do
-  mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
+  mceEng <- mcEuropeanEngine PseudoRandom Statistics bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
   QuantLib.Instrument.setPricingEngine europeanOpt mceEng
   mcE <- npv europeanOpt
 
-  mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
+  mceEng2 <- mcEuropeanEngine LowDiscrepancy Statistics bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
   QuantLib.Instrument.setPricingEngine europeanOpt mceEng2
   mcE2 <- npv europeanOpt
 
-  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096) Nothing Nothing
+  mcaEng <- mcAmericanEngine PseudoRandom Statistics bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096) Nothing Nothing
   QuantLib.Instrument.setPricingEngine americanOpt mcaEng
   mcA <- npv americanOpt
 
