@@ -13,6 +13,7 @@ module QuantLib.Math
   , Interpolation2D(..)
 
   , RngTrait(..)
+  , StatisticsTrait(..)
   , BinomialTree(..)
   , BoundaryConditionSide(..)
   , FdmSchemeType(..)
@@ -55,6 +56,7 @@ import Data.List.NonEmpty(NonEmpty)
 {#enum EndCriteriaType{} deriving(Show, Eq, Read)#}
 {#enum HistogramAlgorithm{} deriving(Show, Eq, Read)#}
 {#enum RngTrait{} deriving(Show, Eq, Read)#}
+{#enum StatisticsTrait{} deriving(Show, Eq, Read)#}
 {#enum BinomialTree{} deriving(Show, Eq, Read)#}
 {#enum BoundaryConditionSide{} deriving(Show, Eq, Read)#}
 {#enum PolynomialType{} deriving(Show, Eq, Read)#}

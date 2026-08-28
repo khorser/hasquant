@@ -534,8 +534,8 @@ QlPricingEngine* qlFdG2SwaptionEngine(QlG2* model, unsigned tGrid, unsigned xGri
 QlPricingEngine* qlFdHullWhiteSwaptionEngine(QlHullWhite* model, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, char **e) {
   try {return ret(new QlPricingEngine(alloc(new FdHullWhiteSwaptionEngine(*arg(model), tGrid, xGrid, dampingSteps, invEps, *arg(schemeDesc)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCVarianceSwapEngine1(int rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
-  try {return ret(new QlPricingEngine(alloc(qlMCVarianceSwapEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+QlPricingEngine* qlMCVarianceSwapEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCVarianceSwapEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCHestonHullWhiteEngine1(int rngtrait, QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCHestonHullWhiteEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));

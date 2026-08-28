@@ -20,6 +20,7 @@
 #include <ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp>
 #include <ql/pricingengines/basket/mceuropeanbasketengine.hpp>
 #include <ql/pricingengines/basket/mcamericanbasketengine.hpp>
+#include <ql/math/statistics/incrementalstatistics.hpp>
 
 namespace hasquant {
 #include "qlEnumObjects.h"
@@ -179,17 +180,31 @@ PricingEngine* qlMCDoubleBarrierEngineAux(int rngtrait, const shared_ptr<General
   QL_FAIL("Unknown RNG "<< rngtrait);
 }
 
-// TODO use second template argument (Statistics)
-PricingEngine* qlMCVarianceSwapEngine1Aux(int rngtrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+template <class RNG>
+PricingEngine* qlMCVarianceSwapEngine1AuxStat(int stattrait, const shared_ptr<GeneralizedBlackScholesProcess>& process, unsigned timeSteps, unsigned timeStepsPerYear, bool brownianBridge, bool antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  switch (stattrait) {
+  case hasquant::Statistics:
+    return new MCVarianceSwapEngine<RNG, QuantLib::Statistics>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::GaussianStatistics:
+    return new MCVarianceSwapEngine<RNG, QuantLib::GaussianStatistics>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::GeneralStatistics:
+    return new MCVarianceSwapEngine<RNG, QuantLib::GeneralStatistics>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  case hasquant::IncrementalStatistics:
+    return new MCVarianceSwapEngine<RNG, QuantLib::IncrementalStatistics>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  };
+  QL_FAIL("Unknown Statistics "<< stattrait);
+}
+
+PricingEngine* qlMCVarianceSwapEngine1Aux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
   switch (rngtrait) {
   case hasquant::PseudoRandom:
-    return new MCVarianceSwapEngine<PseudoRandom>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+    return qlMCVarianceSwapEngine1AuxStat<PseudoRandom>(stattrait, process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   case hasquant::PoissonPseudoRandom:
-    return new MCVarianceSwapEngine<PoissonPseudoRandom>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+    return qlMCVarianceSwapEngine1AuxStat<PoissonPseudoRandom>(stattrait, process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   case hasquant::LowDiscrepancy:
-    return new MCVarianceSwapEngine<LowDiscrepancy>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+    return qlMCVarianceSwapEngine1AuxStat<LowDiscrepancy>(stattrait, process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   case hasquant::Ziggurat:
-    return new MCVarianceSwapEngine<Ziggurat>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+    return qlMCVarianceSwapEngine1AuxStat<Ziggurat>(stattrait, process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   };
   QL_FAIL("Unknown RNG "<< rngtrait);
 }

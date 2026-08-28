@@ -838,7 +838,8 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |/NB/ C++ classes Monte Carlo engines are additionally parameterised via statistic template argument
--- Functions below use default value of Statistics
+-- Functions below use default value of Statistics (the sole exception is 'mcVarianceSwapEngine',
+-- which does expose the 'StatisticsTrait' axis -- see its own doc comment for why)
 {#fun qlMCHestonHullWhiteEngine1 as mcHestonHullWhiteEngine{`RngTrait',withGenStochasticProcess*`HybridHestonHullWhiteProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timStepsPerYear
   ,`Bool' -- ^antitheticVariate
@@ -1010,8 +1011,10 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |variance-swap pricing engine using Monte Carlo simulation
-{#fun qlMCVarianceSwapEngine1 as mcVarianceSwapEngine{`RngTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+-- |variance-swap pricing engine using Monte Carlo simulation. /NB/ unlike the other MC engines
+-- in this module (see the note above 'mcHestonHullWhiteEngine'), this one does take an explicit
+-- 'StatisticsTrait' rather than defaulting to 'Statistics' -- an intentional, one-off exception.
+{#fun qlMCVarianceSwapEngine1 as mcVarianceSwapEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate

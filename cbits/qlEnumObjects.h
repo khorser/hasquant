@@ -282,6 +282,13 @@ enum RngTrait {
   , Ziggurat
 };
 
+enum StatisticsTrait {
+  Statistics = 0
+  , GaussianStatistics
+  , GeneralStatistics
+  , IncrementalStatistics
+};
+
 enum BinomialTree {
   JarrowRudd = 0
   , CoxRossRubinstein
