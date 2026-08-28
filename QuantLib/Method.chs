@@ -66,7 +66,89 @@
 -- This module also binds a full-grid finite-difference (FDM) driver, built up across two related
 -- issues (custom step-condition\/operator hooks, then custom inner-value calculators) and spread
 -- across several functions with no single overview until now. Worked in full in
--- @test\/example\/QuantLib\/Example\/Fdm.hs@.
+-- @test\/example\/QuantLib\/Example\/Fdm.hs@ -- every snippet below is a trimmed extract from that
+-- file; read it end to end for the full picture (discounting, fixtures, imports).
+--
+-- In one sentence, for anyone new to FDM pricing: instead of an integral (Monte Carlo) or a
+-- closed-form formula (an @analytic*Engine@), you discretize the underlying's state space (e.g.
+-- log-spot) into a grid of points, put the option's payoff on the grid at maturity, and step it
+-- /backward/ to today, solving a small local linear system at each timestep. Reach for it when you
+-- need American\/Bermudan-style early exercise (a plain Monte Carlo run can't do backward induction
+-- the way a grid can) or a process\/payoff with no closed-form price. If a bound @analytic*Engine@
+-- or @mc*Engine@ already covers your case (see "QuantLib.PricingEngine"), prefer that instead --
+-- it's simpler, and this module's own examples validate their FDM results against exactly those
+-- engines.
+--
+-- ==== Walkthrough: which function do I actually want?
+--
+-- Start here rather than at the reference list below -- picking the right entry point up front
+-- avoids reading five functions' haddock only to discover a sixth was the one you needed.
+--
+-- [@\"I have a grid already, just roll it back\"@] 'fdmRollback'. Supply the grid as a plain
+--   @[Double]@ (one value per state, at maturity) plus three Haskell closures describing the PDE
+--   operator, and get the same grid rolled back to today -- no mesher, no
+--   'FdmInnerValueCalculator', the simplest possible entry point:
+--
+--   > let grid0 = map (\x -> max (exp x - strike) 0) xs   -- payoff at maturity, one value per grid point
+--   > fdmEuro <- fdmRollback 1 applyFn applyDirFn solveFn Nothing [] Douglas grid0 tMat 0 nSteps 0
+--
+-- [@\"...and I need early exercise\"@] the same 'fdmRollback' call, plus a /step condition/: a
+--   @t -> [Double] -> [Double]@ closure called once per outer timestep with the whole current grid,
+--   returning it clamped to whatever the early-exercise rule requires:
+--
+--   > let stepCond _t u = zipWith max u grid0   -- American: value can never fall below intrinsic
+--   > fdmAmerican <- fdmRollback 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas grid0 tMat 0 nSteps 0
+--
+-- [@\"I'd rather not hand-build the initial grid myself\"@] 'fdmSolve' -- 'fdmRollback''s sibling.
+--   Same operator\/step-condition\/scheme machinery, but the initial condition comes from an
+--   'FdmMesher' plus an 'FdmInnerValueCalculator' evaluated at each node, instead of a grid you
+--   assembled by hand. Worth it once the mesher is doing real work (e.g. concentrating points near
+--   a strike or barrier) rather than just wrapping a list you already had:
+--
+--   > mesh1d <- predefined1dMesher xs
+--   > mesher <- fdmMesherComposite [mesh1d]
+--   > let ivFn _t loc = case loc of [x] -> intrinsicAt x; _ -> error "expected a 1D location"
+--   > withCustomFdmInnerValueCalculator mesher ivFn ivFn $ \calc ->
+--   >   fdmSolve mesher calc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+--
+-- [@\"my payoff is a standard vanilla\/log payoff, I don't want a per-node callback\"@] skip
+--   'withCustomFdmInnerValueCalculator' and reach for one of the /native/ calculators instead --
+--   QuantLib's own built-in 'FdmInnerValueCalculator' subclasses, bound directly so pricing a plain
+--   payoff doesn't pay a Haskell round-trip per grid node:
+--
+--   > logCalc <- fdmLogInnerValue payoff mesher 0        -- striked payoff on a log-spot grid
+--   > fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+--
+--   'fdmZeroInnerValue' (always 0), 'fdmCellAveragingInnerValue'\/'withCustomCellAveragingInnerValue'
+--   (identity or custom @gridMapping@), and 'fdmLogInnerValue' (@gridMapping = exp@, the common case
+--   on a log-spot grid) round out the set -- see the reference entries below for the exact
+--   cell-averaging-vs-point-evaluation contract each one has. Reach for
+--   'withCustomFdmInnerValueCalculator' only once none of these fit your payoff shape.
+--
+-- [@\"my payoff depends on more than one underlying\"@] build one 'Fdm1dMesher' per underlying and
+--   combine them with 'fdmMesherComposite'; 'fdmLogBasketInnerValue' takes a basket payoff (e.g.
+--   @Max@, see "QuantLib.Instrument.Option") evaluated across all dimensions at once:
+--
+--   > basketMesher <- fdmMesherComposite [mesh1d, mesh1d]   -- two correlated log-spot dimensions
+--   > basketCalc <- fdmLogBasketInnerValue (Max payoff) basketMesher
+--   > val <- fdmAvgInnerValue basketCalc basketMesher [i, j] tMat   -- inspect one node directly
+--
+-- [@\"I want to price a swap\/swaption under a calibrated short-rate model\"@] the most specialized
+--   entry points here: 'fdmAffineG2ModelSwapInnerValue'\/'fdmAffineHullWhiteModelSwapInnerValue'
+--   drive the same calculator @fdG2SwaptionEngine@\/@fdHullWhiteSwaptionEngine@ already use
+--   internally. Reach for these directly only when composing your own custom FDM pipeline around
+--   this calculator; if a plain Bermudan-swaption NPV is all you need, prefer those two
+--   already-bound black-box engines from "QuantLib.PricingEngine" instead.
+--
+-- [@\"I just want one node's value, no PDE solve\"@] 'fdmInnerValue'\/'fdmAvgInnerValue' evaluate
+--   any bound calculator -- custom or native -- at a single mesher node directly, without
+--   assembling a whole 'fdmSolve'. Handy as a sanity check while developing (as @Fdm.hs@'s own
+--   tests do throughout), or whenever a single point's intrinsic value is all you actually need.
+--
+-- ==== Technical reference
+--
+-- The terse version of the above, for a reader who already knows the vocabulary and wants the
+-- exact contract rather than the walkthrough's prose.
 --
 -- [@Rolling a grid back@] 'fdmRollback' takes a precomputed initial grid (a plain @[Double]@) and
 --   rolls it back through time via three Haskell-defined operator callbacks
