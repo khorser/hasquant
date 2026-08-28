@@ -31,6 +31,8 @@
 #include <ql/index.hpp>
 #include <ql/math/statistics/sequencestatistics.hpp>
 
+#include <cstdint>
+
 #ifdef QLTRACK_ALLOCATIONS
 # include <cstdlib>
 #endif
@@ -44,13 +46,19 @@
 // env var the only way to send a trace to a file was to recompile with a different
 // -DQLTRACK_ALLOCATIONS, and redirecting stderr also swallows the program's own
 // output -- which matters here because a trace is only useful next to the values it
-// explains. Reading it at static-init is deliberate: ofs must be open before any
-// traced allocation runs.
+// explains.
 static const char *qlTrackDestination() {
   const char *env = std::getenv("QLTRACK_ALLOCATIONS");
   return env && *env ? env : QLTRACK_ALLOCATIONS;
 }
-std::ofstream ofs(qlTrackDestination());
+std::ostream &traceStream() {
+  // Opened on first use, so it cannot lose a race with another translation unit's static
+  // initialization -- which a plain global std::ofstream, constructed in this one, could.
+  // Deliberately never destroyed: a trace emitted from a late static destructor must not
+  // write to an already-closed stream, and the process is exiting anyway.
+  static std::ofstream *stream = new std::ofstream(qlTrackDestination());
+  return *stream;
+}
 #endif
 using namespace QuantLib;
 
@@ -63,145 +71,166 @@ int qlOptBool(optional<bool> b) {return b ? *b : -1;}
 ext::optional<BusinessDayConvention> qlOptBusinessDayConvention(int c) {return c == -1 ? ext::nullopt : ext::optional<BusinessDayConvention>((BusinessDayConvention)c);}
 
 char *tracedup(const char *p) {
-  TP2("Duplicating string", (void *)p);
+  trace("Duplicating string", (void *)p);
   char *dup = strdup(p);
-#ifdef QLTRACK_ALLOCATIONS
-  (void)traceval("Duplicate string", (void *)dup);
-#endif
+  trace("Duplicate string", (void *)dup);
   return dup;
 }
 
-typedef Currency *(*makeCcy)();
+// The named-currency table. Each entry is a function pointer that heap-allocates one
+// QuantLib currency subclass; the enum index into it is what Haskell passes.
+//
+// The return type is spelled `Currency *', not `C *': alloc() takes its trace label from its
+// argument's static type, and the matching qlFreeCurrency frees through a `Currency *'. A
+// deduced or derived return type here would silently label every allocation with its concrete
+// subclass and leave all of them unmatched in alloc-summary.py.
+template <class C> Currency *makeCurrency() {return new C();}
+
+using makeCcy = Currency *(*)();
+
+// The calendar table, in two flavours: a calendar with no market variants ignores the market
+// argument, one with them maps it onto its own nested Market enum. Return type spelled as the
+// base for the same reason as makeCurrency above.
+template <class C> Calendar *makeCalendar(int) {return new C();}
+template <class C> Calendar *makeMarketCalendar(int market) {return new C(static_cast<typename C::Market>(market));}
+
+using makeCal = Calendar *(*)(int market);
+
+// The day counter table: three constructor shapes -- no argument, a bool flag, or the class's
+// own nested Convention enum. Return type spelled as the base, as with makeCurrency above.
+template <class D> DayCounter *makeDayCounter(int) {return new D();}
+template <class D> DayCounter *makeFlagDayCounter(int flag) {return new D(flag != 0);}
+template <class D> DayCounter *makeConvDayCounter(int convention) {return new D(static_cast<typename D::Convention>(convention));}
+
+using makeDc = DayCounter *(*)(int convention);
 
 // must match the order of qlEnumObjects.h:Ccy
 static const makeCcy ccys[] = {
-    [](){return static_cast<Currency *>(new ARSCurrency());}
-  , [](){return static_cast<Currency *>(new ATSCurrency());}
-  , [](){return static_cast<Currency *>(new AUDCurrency());}
-  , [](){return static_cast<Currency *>(new BCHCurrency());}
-  , [](){return static_cast<Currency *>(new BDTCurrency());}
-  , [](){return static_cast<Currency *>(new BEFCurrency());}
-  , [](){return static_cast<Currency *>(new BGLCurrency());}
-  , [](){return static_cast<Currency *>(new BRLCurrency());}
-  , [](){return static_cast<Currency *>(new BTCCurrency());}
-  , [](){return static_cast<Currency *>(new BYRCurrency());}
-  , [](){return static_cast<Currency *>(new CADCurrency());}
-  , [](){return static_cast<Currency *>(new CHFCurrency());}
-  , [](){return static_cast<Currency *>(new CLPCurrency());}
-  , [](){return static_cast<Currency *>(new CNYCurrency());}
-  , [](){return static_cast<Currency *>(new COPCurrency());}
-  , [](){return static_cast<Currency *>(new CYPCurrency());}
-  , [](){return static_cast<Currency *>(new CZKCurrency());}
-  , [](){return static_cast<Currency *>(new DASHCurrency());}
-  , [](){return static_cast<Currency *>(new DEMCurrency());}
-  , [](){return static_cast<Currency *>(new DKKCurrency());}
-  , [](){return static_cast<Currency *>(new EEKCurrency());}
-  , [](){return static_cast<Currency *>(new ESPCurrency());}
-  , [](){return static_cast<Currency *>(new ETCCurrency());}
-  , [](){return static_cast<Currency *>(new ETHCurrency());}
-  , [](){return static_cast<Currency *>(new EURCurrency());}
-  , [](){return static_cast<Currency *>(new FIMCurrency());}
-  , [](){return static_cast<Currency *>(new FRFCurrency());}
-  , [](){return static_cast<Currency *>(new GBPCurrency());}
-  , [](){return static_cast<Currency *>(new GRDCurrency());}
-  , [](){return static_cast<Currency *>(new HKDCurrency());}
-  , [](){return static_cast<Currency *>(new HUFCurrency());}
-  , [](){return static_cast<Currency *>(new IDRCurrency());}
-  , [](){return static_cast<Currency *>(new IEPCurrency());}
-  , [](){return static_cast<Currency *>(new ILSCurrency());}
-  , [](){return static_cast<Currency *>(new INRCurrency());}
-  , [](){return static_cast<Currency *>(new IQDCurrency());}
-  , [](){return static_cast<Currency *>(new IRRCurrency());}
-  , [](){return static_cast<Currency *>(new ISKCurrency());}
-  , [](){return static_cast<Currency *>(new ITLCurrency());}
-  , [](){return static_cast<Currency *>(new JPYCurrency());}
-  , [](){return static_cast<Currency *>(new KRWCurrency());}
-  , [](){return static_cast<Currency *>(new KWDCurrency());}
-  , [](){return static_cast<Currency *>(new KZTCurrency());}
-  , [](){return static_cast<Currency *>(new LTCCurrency());}
-  , [](){return static_cast<Currency *>(new LTLCurrency());}
-  , [](){return static_cast<Currency *>(new LUFCurrency());}
-  , [](){return static_cast<Currency *>(new LVLCurrency());}
-  , [](){return static_cast<Currency *>(new MTLCurrency());}
-  , [](){return static_cast<Currency *>(new MXNCurrency());}
-  , [](){return static_cast<Currency *>(new MYRCurrency());}
-  , [](){return static_cast<Currency *>(new NGNCurrency());}
-  , [](){return static_cast<Currency *>(new NLGCurrency());}
-  , [](){return static_cast<Currency *>(new NOKCurrency());}
-  , [](){return static_cast<Currency *>(new NPRCurrency());}
-  , [](){return static_cast<Currency *>(new NZDCurrency());}
-  , [](){return static_cast<Currency *>(new PEHCurrency());}
-  , [](){return static_cast<Currency *>(new PEICurrency());}
-  , [](){return static_cast<Currency *>(new PENCurrency());}
-  , [](){return static_cast<Currency *>(new PKRCurrency());}
-  , [](){return static_cast<Currency *>(new PLNCurrency());}
-  , [](){return static_cast<Currency *>(new PTECurrency());}
-  , [](){return static_cast<Currency *>(new ROLCurrency());}
-  , [](){return static_cast<Currency *>(new RONCurrency());}
-  , [](){return static_cast<Currency *>(new RUBCurrency());}
-  , [](){return static_cast<Currency *>(new SARCurrency());}
-  , [](){return static_cast<Currency *>(new SEKCurrency());}
-  , [](){return static_cast<Currency *>(new SGDCurrency());}
-  , [](){return static_cast<Currency *>(new SITCurrency());}
-  , [](){return static_cast<Currency *>(new SKKCurrency());}
-  , [](){return static_cast<Currency *>(new THBCurrency());}
-  , [](){return static_cast<Currency *>(new TRLCurrency());}
-  , [](){return static_cast<Currency *>(new TRYCurrency());}
-  , [](){return static_cast<Currency *>(new TTDCurrency());}
-  , [](){return static_cast<Currency *>(new TWDCurrency());}
-  , [](){return static_cast<Currency *>(new UAHCurrency());}
-  , [](){return static_cast<Currency *>(new USDCurrency());}
-  , [](){return static_cast<Currency *>(new VEBCurrency());}
-  , [](){return static_cast<Currency *>(new VNDCurrency());}
-  , [](){return static_cast<Currency *>(new XRPCurrency());}
-  , [](){return static_cast<Currency *>(new ZARCurrency());}
-  , [](){return static_cast<Currency *>(new ZECCurrency());}
-  , [](){return static_cast<Currency *>(new AEDCurrency());}
-  , [](){return static_cast<Currency *>(new AOACurrency());}
-  , [](){return static_cast<Currency *>(new BGNCurrency());}
-  , [](){return static_cast<Currency *>(new BHDCurrency());}
-  , [](){return static_cast<Currency *>(new BWPCurrency());}
-  , [](){return static_cast<Currency *>(new CLFCurrency());}
-  , [](){return static_cast<Currency *>(new CNHCurrency());}
-  , [](){return static_cast<Currency *>(new COUCurrency());}
-  , [](){return static_cast<Currency *>(new EGPCurrency());}
-  , [](){return static_cast<Currency *>(new ETBCurrency());}
-  , [](){return static_cast<Currency *>(new GELCurrency());}
-  , [](){return static_cast<Currency *>(new GHSCurrency());}
-  , [](){return static_cast<Currency *>(new HRKCurrency());}
-  , [](){return static_cast<Currency *>(new JODCurrency());}
-  , [](){return static_cast<Currency *>(new KESCurrency());}
-  , [](){return static_cast<Currency *>(new LKRCurrency());}
-  , [](){return static_cast<Currency *>(new MADCurrency());}
-  , [](){return static_cast<Currency *>(new MKDCurrency());}
-  , [](){return static_cast<Currency *>(new MURCurrency());}
-  , [](){return static_cast<Currency *>(new MXVCurrency());}
-  , [](){return static_cast<Currency *>(new OMRCurrency());}
-  , [](){return static_cast<Currency *>(new PHPCurrency());}
-  , [](){return static_cast<Currency *>(new QARCurrency());}
-  , [](){return static_cast<Currency *>(new RSDCurrency());}
-  , [](){return static_cast<Currency *>(new TNDCurrency());}
-  , [](){return static_cast<Currency *>(new UGXCurrency());}
-  , [](){return static_cast<Currency *>(new UYUCurrency());}
-  , [](){return static_cast<Currency *>(new UZSCurrency());}
-  , [](){return static_cast<Currency *>(new XOFCurrency());}
-  , [](){return static_cast<Currency *>(new ZMWCurrency());}
+    &makeCurrency<ARSCurrency>
+  , &makeCurrency<ATSCurrency>
+  , &makeCurrency<AUDCurrency>
+  , &makeCurrency<BCHCurrency>
+  , &makeCurrency<BDTCurrency>
+  , &makeCurrency<BEFCurrency>
+  , &makeCurrency<BGLCurrency>
+  , &makeCurrency<BRLCurrency>
+  , &makeCurrency<BTCCurrency>
+  , &makeCurrency<BYRCurrency>
+  , &makeCurrency<CADCurrency>
+  , &makeCurrency<CHFCurrency>
+  , &makeCurrency<CLPCurrency>
+  , &makeCurrency<CNYCurrency>
+  , &makeCurrency<COPCurrency>
+  , &makeCurrency<CYPCurrency>
+  , &makeCurrency<CZKCurrency>
+  , &makeCurrency<DASHCurrency>
+  , &makeCurrency<DEMCurrency>
+  , &makeCurrency<DKKCurrency>
+  , &makeCurrency<EEKCurrency>
+  , &makeCurrency<ESPCurrency>
+  , &makeCurrency<ETCCurrency>
+  , &makeCurrency<ETHCurrency>
+  , &makeCurrency<EURCurrency>
+  , &makeCurrency<FIMCurrency>
+  , &makeCurrency<FRFCurrency>
+  , &makeCurrency<GBPCurrency>
+  , &makeCurrency<GRDCurrency>
+  , &makeCurrency<HKDCurrency>
+  , &makeCurrency<HUFCurrency>
+  , &makeCurrency<IDRCurrency>
+  , &makeCurrency<IEPCurrency>
+  , &makeCurrency<ILSCurrency>
+  , &makeCurrency<INRCurrency>
+  , &makeCurrency<IQDCurrency>
+  , &makeCurrency<IRRCurrency>
+  , &makeCurrency<ISKCurrency>
+  , &makeCurrency<ITLCurrency>
+  , &makeCurrency<JPYCurrency>
+  , &makeCurrency<KRWCurrency>
+  , &makeCurrency<KWDCurrency>
+  , &makeCurrency<KZTCurrency>
+  , &makeCurrency<LTCCurrency>
+  , &makeCurrency<LTLCurrency>
+  , &makeCurrency<LUFCurrency>
+  , &makeCurrency<LVLCurrency>
+  , &makeCurrency<MTLCurrency>
+  , &makeCurrency<MXNCurrency>
+  , &makeCurrency<MYRCurrency>
+  , &makeCurrency<NGNCurrency>
+  , &makeCurrency<NLGCurrency>
+  , &makeCurrency<NOKCurrency>
+  , &makeCurrency<NPRCurrency>
+  , &makeCurrency<NZDCurrency>
+  , &makeCurrency<PEHCurrency>
+  , &makeCurrency<PEICurrency>
+  , &makeCurrency<PENCurrency>
+  , &makeCurrency<PKRCurrency>
+  , &makeCurrency<PLNCurrency>
+  , &makeCurrency<PTECurrency>
+  , &makeCurrency<ROLCurrency>
+  , &makeCurrency<RONCurrency>
+  , &makeCurrency<RUBCurrency>
+  , &makeCurrency<SARCurrency>
+  , &makeCurrency<SEKCurrency>
+  , &makeCurrency<SGDCurrency>
+  , &makeCurrency<SITCurrency>
+  , &makeCurrency<SKKCurrency>
+  , &makeCurrency<THBCurrency>
+  , &makeCurrency<TRLCurrency>
+  , &makeCurrency<TRYCurrency>
+  , &makeCurrency<TTDCurrency>
+  , &makeCurrency<TWDCurrency>
+  , &makeCurrency<UAHCurrency>
+  , &makeCurrency<USDCurrency>
+  , &makeCurrency<VEBCurrency>
+  , &makeCurrency<VNDCurrency>
+  , &makeCurrency<XRPCurrency>
+  , &makeCurrency<ZARCurrency>
+  , &makeCurrency<ZECCurrency>
+  , &makeCurrency<AEDCurrency>
+  , &makeCurrency<AOACurrency>
+  , &makeCurrency<BGNCurrency>
+  , &makeCurrency<BHDCurrency>
+  , &makeCurrency<BWPCurrency>
+  , &makeCurrency<CLFCurrency>
+  , &makeCurrency<CNHCurrency>
+  , &makeCurrency<COUCurrency>
+  , &makeCurrency<EGPCurrency>
+  , &makeCurrency<ETBCurrency>
+  , &makeCurrency<GELCurrency>
+  , &makeCurrency<GHSCurrency>
+  , &makeCurrency<HRKCurrency>
+  , &makeCurrency<JODCurrency>
+  , &makeCurrency<KESCurrency>
+  , &makeCurrency<LKRCurrency>
+  , &makeCurrency<MADCurrency>
+  , &makeCurrency<MKDCurrency>
+  , &makeCurrency<MURCurrency>
+  , &makeCurrency<MXVCurrency>
+  , &makeCurrency<OMRCurrency>
+  , &makeCurrency<PHPCurrency>
+  , &makeCurrency<QARCurrency>
+  , &makeCurrency<RSDCurrency>
+  , &makeCurrency<TNDCurrency>
+  , &makeCurrency<UGXCurrency>
+  , &makeCurrency<UYUCurrency>
+  , &makeCurrency<UZSCurrency>
+  , &makeCurrency<XOFCurrency>
+  , &makeCurrency<ZMWCurrency>
 };
 
 extern "C" {
-// A null pointer is skipped rather than traced -- see del()'s identical reasoning in qlaux.h;
-// these hand-roll the same guard since delete[] (not del()'s scalar delete) applies here.
-void qlFreeInts(int *p) {if (p) {TP2("deleting", p); delete[] p; TP2("deleted", p);}}
+void qlFreeInts(int *p) {delArray(p);}
 // Every unsigned* out-array is actually allocated as int* via qlAllocateInts (there is no
 // qlAllocateUInts) -- delegate rather than duplicate so it's traced under the type it was
 // really allocated as.
 void qlFreeUInts(unsigned *p) {qlFreeInts(reinterpret_cast<int*>(p));}
-void qlFreeDoubles(double *p) {if (p) {TP2("deleting", p); delete[] p; TP2("deleted", p);}}
-void qlFreePointerArray(void **p) {if (p) {TP2("deleting", p); delete[] p; TP2("deleted", p);}}
+void qlFreeDoubles(double *p) {delArray(p);}
+void qlFreePointerArray(void **p) {delArray(p);}
 void qlFreeStringArray(unsigned n, char **p) {
   if (!p) return;
   for (unsigned i = 0; i < n; ++i) qlFreeString(p[i]);
-  TP2("deleting", p); delete[] p; TP2("deleted", p);
+  delArray(p);
 }
 int qlNullInteger() {return Null<Integer>();}
 double qlNullReal() {return Null<Real>();}
@@ -209,19 +238,24 @@ double qlEpsilon() {return QL_EPSILON;}
 
 Currency *qlCurrency(int ccy, char **e) {
   try {
-    if (ccy < 0 || ccy >= (int)LENGTH(ccys))
+    if (ccy < 0 || ccy >= (int)std::size(ccys))
       QL_FAIL("Invalid currency index: " << ccy);
     return alloc(ccys[ccy]());
   } catch (std::exception& er) {return handleException<Currency *>(e, er);}}
 
 void qlFreeString(char *p) {
-#ifdef QLTRACK_ALLOCATIONS
-  (void)traceval("Freeing string", (void *)p);
-#endif
+  // The address is captured as an integer *before* the free and cast back only for printing.
+  // Reading a freed pointer's value is implementation-defined ([basic.stc]/4 -- printing it is
+  // the benign case, not UB), but GCC's -Wuse-after-free rejects it anyway, and a plain
+  // `void *addr = p;' copy does not help: every copy of the pointer goes invalid too, and GCC
+  // flags that form as well. Only the integer round trip satisfies it. Both spellings reach
+  // operator<<(const void*), so the printed form stays byte-identical to every other trace
+  // line. (del()/delArray() keep the plain `trace("deleted", p)' -- same implementation-defined
+  // read, but after `delete' rather than free(), which GCC does not track.)
+  const auto addr = reinterpret_cast<std::uintptr_t>(p);
+  trace("Freeing string", reinterpret_cast<void *>(addr));
   free(p);
-#ifdef QLTRACK_ALLOCATIONS
-  (void)traceval("Freed string", (void *)p);
-#endif
+  trace("Freed string", reinterpret_cast<void *>(addr));
 }
 
 /* dates are passed as int = serial number of the date, the code assumes that Haskell bindings validate date */
@@ -244,12 +278,12 @@ const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
-const char *qlCurrencyName(Currency *currency) {return DUP(arg(currency)->name().c_str());}
-char* qlCurrencyCode(Currency* o) {return DUP(arg(o)->code().c_str());}
+const char *qlCurrencyName(Currency *currency) {return tracedup(arg(currency)->name().c_str());}
+char* qlCurrencyCode(Currency* o) {return tracedup(arg(o)->code().c_str());}
 int qlCurrencyFractionsPerUnit(Currency* o) {return arg(o)->fractionsPerUnit();}
-char* qlCurrencyFractionSymbol(Currency* o) {return DUP(arg(o)->fractionSymbol().c_str());}
+char* qlCurrencyFractionSymbol(Currency* o) {return tracedup(arg(o)->fractionSymbol().c_str());}
 int qlCurrencyNumericCode(Currency* o) {return arg(o)->numericCode();}
-char* qlCurrencySymbol(Currency* o) {return DUP(arg(o)->symbol().c_str());}
+char* qlCurrencySymbol(Currency* o) {return tracedup(arg(o)->symbol().c_str());}
 void qlFreeInterestRate(InterestRate *rate) {del(rate);}
 
 class CustomCurrency : public Currency {
@@ -296,7 +330,7 @@ ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, char **e) 
 
 void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial, char **e) {
   try {ExchangeRateManager::instance().add(*arg(rate), qlNullableDate(startSerial), qlNullableDate(endSerial));
-  } catch (std::exception& er) {*e = DUP(er.what());}
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, char **e) {
@@ -518,21 +552,21 @@ int qlDateNextWeekday(int d, int w) {return Date::nextWeekday(Date(d), (Weekday)
 int qlDateNthWeekday(unsigned n, int w, int m, int y) {return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();}
 int qlIMMIsIMMcode(char* in, int mainCycle) {return IMM::isIMMcode(std::string(arg(in)), mainCycle);}
 int qlIMMIsIMMdate(int d, int mainCycle) {return IMM::isIMMdate(Date(d), mainCycle);}
-char* qlIMMNextCode(int d, int mainCycle) {return DUP(IMM::nextCode(Date(d), mainCycle).c_str());}
+char* qlIMMNextCode(int d, int mainCycle) {return tracedup(IMM::nextCode(Date(d), mainCycle).c_str());}
 int qlIMMNextDate(int d, int mainCycle) {return IMM::nextDate(Date(d), mainCycle).serialNumber();}
 
-char* qlIMMCode(int immDate, char **e) {try {return DUP((IMM::code(Date(immDate))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
+char* qlIMMCode(int immDate, char **e) {try {return tracedup((IMM::code(Date(immDate))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
 int qlIMMDate(char* immCode, int referenceDate, char **e) {
   try {return (IMM::date(std::string(immCode), Date(referenceDate))).serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) {
-  try {return DUP(IMM::nextCode(std::string(arg(immCode)), mainCycle, Date(referenceDate)).c_str());
+  try {return tracedup(IMM::nextCode(std::string(arg(immCode)), mainCycle, Date(referenceDate)).c_str());
   } catch (std::exception& er) {return handleException<char*>(e, er);}}
 
 int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {try {return (IMM::nextDate(std::string(arg(immCode)), mainCycle, Date(referenceDate))).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlAddPeriod(int d, int n, int u, char **e) {try {return (Date(d) + Period(n, (TimeUnit)u)).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlECBAddDate(int d, char **e) {try {ECB::addDate(Date(d));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
-char* qlECBCode(int ecbDate, char **e) {try {return DUP((ECB::code(Date(ecbDate))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
+char* qlECBCode(int ecbDate, char **e) {try {return tracedup((ECB::code(Date(ecbDate))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
 int qlECBDate1(char* ecbCode, int referenceDate, char **e) {try {return (ECB::date(std::string(arg(ecbCode)), qlNullableDate(referenceDate))).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlECBDate(int m, int y, char **e) {try {return (ECB::date((Month)m, y)).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlECBIsECBcode(char* in, char **e) {try {return ECB::isECBcode(arg(in));} catch (std::exception& er) {return handleException<int>(e, er);}}
@@ -541,8 +575,8 @@ void qlECBKnownDates(unsigned *count, int **ds, char **e) {
   try { const std::set<Date> &dates = ECB::knownDates(); *count = dates.size(); *ds = qlAllocateInts(*count);
     std::transform(dates.begin(), dates.end(), *ds, std::mem_fn(&Date::serialNumber));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
-char* qlECBNextCode1(char* ecbCode, char **e) {try {return DUP((ECB::nextCode(std::string(arg(ecbCode)))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
-char* qlECBNextCode(int d, char **e) {try {return DUP((ECB::nextCode(qlNullableDate(d))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
+char* qlECBNextCode1(char* ecbCode, char **e) {try {return tracedup((ECB::nextCode(std::string(arg(ecbCode)))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
+char* qlECBNextCode(int d, char **e) {try {return tracedup((ECB::nextCode(qlNullableDate(d))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
 int qlECBNextDate1(char* ecbCode, int referenceDate, char **e) {
   try {return (ECB::nextDate(std::string(arg(ecbCode)), qlNullableDate(referenceDate))).serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
@@ -559,65 +593,64 @@ void qlECBNextDates(int d, unsigned *count, int **ds, char **e) {
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlECBRemoveDate(int d, char **e) {try {ECB::removeDate(Date(d));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
-const char *qlCalendarName(Calendar *calendar) {std::string name = arg(calendar)->name(); return DUP(name.c_str());}
-typedef Calendar *(*makeCalendar)(int market);
+const char *qlCalendarName(Calendar *calendar) {std::string name = arg(calendar)->name(); return tracedup(name.c_str());}
 // must match with the order of qlEnumObjects.h:CalendarCountry
-static const makeCalendar calendars[] = {
-  [](int){return static_cast<Calendar *>(new Argentina());}
-  , [](int market){return static_cast<Calendar *>(new Australia((Australia::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Austria((Austria::Market) market));}
-  , [](int){return static_cast<Calendar *>(new Botswana());}
-  , [](int market){return static_cast<Calendar *>(new Brazil((Brazil::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Canada((Canada::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new China((China::Market) market));}
-  , [](int){return static_cast<Calendar *>(new CzechRepublic());}
-  , [](int){return static_cast<Calendar *>(new Denmark());}
-  , [](int){return static_cast<Calendar *>(new Finland());}
-  , [](int market){return static_cast<Calendar *>(new France((France::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Germany((Germany::Market) market));}
-  , [](int){return static_cast<Calendar *>(new HongKong());}
-  , [](int){return static_cast<Calendar *>(new Hungary());}
-  , [](int){return static_cast<Calendar *>(new Iceland());}
-  , [](int){return static_cast<Calendar *>(new India());}
-  , [](int market){return static_cast<Calendar *>(new Indonesia((Indonesia::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Israel((Israel::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Italy((Italy::Market) market));}
-  , [](int){return static_cast<Calendar *>(new Japan());}
-  , [](int){return static_cast<Calendar *>(new Mexico());}
-  , [](int market){return static_cast<Calendar *>(new NewZealand((NewZealand::Market) market));}
-  , [](int){return static_cast<Calendar *>(new Norway());}
-  , [](int){return static_cast<Calendar *>(new NullCalendar());}
-  , [](int market){return static_cast<Calendar *>(new Poland((Poland::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Romania((Romania::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new Russia((Russia::Market) market));}
-  , [](int){return static_cast<Calendar *>(new SaudiArabia());}
-  , [](int){return static_cast<Calendar *>(new Singapore());}
-  , [](int){return static_cast<Calendar *>(new Slovakia());}
-  , [](int){return static_cast<Calendar *>(new SouthAfrica());}
-  , [](int market){return static_cast<Calendar *>(new SouthKorea((SouthKorea::Market) market));}
-  , [](int){return static_cast<Calendar *>(new Sweden());}
-  , [](int){return static_cast<Calendar *>(new Switzerland());}
-  , [](int){return static_cast<Calendar *>(new Taiwan());}
-  , [](int){return static_cast<Calendar *>(new TARGET());}
-  , [](int){return static_cast<Calendar *>(new Thailand());}
-  , [](int){return static_cast<Calendar *>(new Turkey());}
-  , [](int){return static_cast<Calendar *>(new Ukraine());}
-  , [](int market){return static_cast<Calendar *>(new UnitedKingdom((UnitedKingdom::Market) market));}
-  , [](int market){return static_cast<Calendar *>(new UnitedStates((UnitedStates::Market) market));}
-  , [](int){return static_cast<Calendar *>(new WeekendsOnly());}
-  , [](int){return static_cast<Calendar *>(new Chile());}
-  , [](int){return static_cast<Calendar *>(new Croatia());}
-  , [](int){return static_cast<Calendar *>(new Malta());}
-  , [](int){return static_cast<Calendar *>(new Montenegro());}
-  , [](int){return static_cast<Calendar *>(new NorthMacedonia());}
-  , [](int){return static_cast<Calendar *>(new Serbia());}
-  , [](int){return static_cast<Calendar *>(new Slovenia());}
-  , [](int){return static_cast<Calendar *>(new Uzbekistan());}
+static const makeCal calendars[] = {
+  &makeCalendar<Argentina>
+  , &makeMarketCalendar<Australia>
+  , &makeMarketCalendar<Austria>
+  , &makeCalendar<Botswana>
+  , &makeMarketCalendar<Brazil>
+  , &makeMarketCalendar<Canada>
+  , &makeMarketCalendar<China>
+  , &makeCalendar<CzechRepublic>
+  , &makeCalendar<Denmark>
+  , &makeCalendar<Finland>
+  , &makeMarketCalendar<France>
+  , &makeMarketCalendar<Germany>
+  , &makeCalendar<HongKong>
+  , &makeCalendar<Hungary>
+  , &makeCalendar<Iceland>
+  , &makeCalendar<India>
+  , &makeMarketCalendar<Indonesia>
+  , &makeMarketCalendar<Israel>
+  , &makeMarketCalendar<Italy>
+  , &makeCalendar<Japan>
+  , &makeCalendar<Mexico>
+  , &makeMarketCalendar<NewZealand>
+  , &makeCalendar<Norway>
+  , &makeCalendar<NullCalendar>
+  , &makeMarketCalendar<Poland>
+  , &makeMarketCalendar<Romania>
+  , &makeMarketCalendar<Russia>
+  , &makeCalendar<SaudiArabia>
+  , &makeCalendar<Singapore>
+  , &makeCalendar<Slovakia>
+  , &makeCalendar<SouthAfrica>
+  , &makeMarketCalendar<SouthKorea>
+  , &makeCalendar<Sweden>
+  , &makeCalendar<Switzerland>
+  , &makeCalendar<Taiwan>
+  , &makeCalendar<TARGET>
+  , &makeCalendar<Thailand>
+  , &makeCalendar<Turkey>
+  , &makeCalendar<Ukraine>
+  , &makeMarketCalendar<UnitedKingdom>
+  , &makeMarketCalendar<UnitedStates>
+  , &makeCalendar<WeekendsOnly>
+  , &makeCalendar<Chile>
+  , &makeCalendar<Croatia>
+  , &makeCalendar<Malta>
+  , &makeCalendar<Montenegro>
+  , &makeCalendar<NorthMacedonia>
+  , &makeCalendar<Serbia>
+  , &makeCalendar<Slovenia>
+  , &makeCalendar<Uzbekistan>
 };
 
 Calendar *qlCalendar(int country, int market, char **e) {
   try {
-    if (country < 0 || country >= (int)LENGTH(calendars))
+    if (country < 0 || country >= (int)std::size(calendars))
       QL_FAIL("Invalid country index: " << country);
     return alloc(calendars[country](market));
   } catch (std::exception& er) {return handleException<Calendar *>(e, er);}}
@@ -660,13 +693,13 @@ Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 
 Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e) {
-  try {return alloc(static_cast<Calendar*>(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), *arg(x2), (JointCalendarRule)x3)));
+  try {return allocAs<Calendar>(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), *arg(x2), (JointCalendarRule)x3));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e) {
-  try {return alloc(static_cast<Calendar*>(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), (JointCalendarRule)x2)));
+  try {return allocAs<Calendar>(new JointCalendar(*arg(x_1), *arg(x0), *arg(x1), (JointCalendarRule)x2));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
-  try {return alloc(static_cast<Calendar*>(new JointCalendar(*arg(x_1), *arg(x0), (JointCalendarRule)x1)));
+  try {return allocAs<Calendar>(new JointCalendar(*arg(x_1), *arg(x0), (JointCalendarRule)x1));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, int **days, char **e) {
   try {const std::vector<Date> dates = arg(calendar)->holidayList(Date(from), Date(to), includeWeekEnds);
@@ -721,36 +754,35 @@ int qlPeriodsLT1(int n1, int u1, int n2, int u2, char **e) {
   try {Period p1(n1, (TimeUnit)u1); Period p2(n2, (TimeUnit)u2); return p1 < p2;
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 
-typedef DayCounter *(*makeDayCounter)(int convention);
 
 // must match with the order of qlEnumObjects.h:DayCounterType
-static const makeDayCounter dayCounters[] = {
-  [](int b) {return static_cast<DayCounter *>(new Actual360((bool) b));}
-  , [](int) {return static_cast<DayCounter *>(new Actual364());}
-  , [](int conv) {return static_cast<DayCounter *>(new Actual365Fixed((Actual365Fixed::Convention) conv));}
-  , [](int conv) {return static_cast<DayCounter *>(new ActualActual((ActualActual::Convention) conv));}
-  , [](int) {return static_cast<DayCounter *>(new OneDayCounter());}
-  , [](int) {return static_cast<DayCounter *>(new SimpleDayCounter());}
-  , [](int conv) {return static_cast<DayCounter *>(new Thirty360((Thirty360::Convention) conv));}
-  , [](int) {return static_cast<DayCounter *>(new Thirty365());}
-  , [](int b) {return static_cast<DayCounter *>(new Actual36525((bool) b));}
-  , [](int b) {return static_cast<DayCounter *>(new Actual366((bool) b));}
+static const makeDc dayCounters[] = {
+  &makeFlagDayCounter<Actual360>
+  , &makeDayCounter<Actual364>
+  , &makeConvDayCounter<Actual365Fixed>
+  , &makeConvDayCounter<ActualActual>
+  , &makeDayCounter<OneDayCounter>
+  , &makeDayCounter<SimpleDayCounter>
+  , &makeConvDayCounter<Thirty360>
+  , &makeDayCounter<Thirty365>
+  , &makeFlagDayCounter<Actual36525>
+  , &makeFlagDayCounter<Actual366>
 };
 
 DayCounter *qlDayCounter(int type, int convention, char **e) {
   try {
-    if (type < 0 || type >= (int)LENGTH(dayCounters))
+    if (type < 0 || type >= (int)std::size(dayCounters))
       QL_FAIL("Invalid DayCounter type: " << type);
     return alloc(dayCounters[type](convention));
   } catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 
-DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {try {return alloc(static_cast<DayCounter *>(new Business252(*arg(cal))));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e) {try {return alloc(static_cast<DayCounter *>(new ActualActual(ActualActual::Bond, *arg(schedule))));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
-DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e) {try {return alloc(static_cast<DayCounter *>(new ActualActual(ActualActual::ISMA, *arg(schedule))));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {try {return allocAs<DayCounter>(new Business252(*arg(cal)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e) {try {return allocAs<DayCounter>(new ActualActual(ActualActual::Bond, *arg(schedule)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
+DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e) {try {return allocAs<DayCounter>(new ActualActual(ActualActual::ISMA, *arg(schedule)));} catch (std::exception& er) {return handleException<DayCounter *>(e, er);}}
 void qlFreeCalendar(Calendar *calendar) {del(calendar);}
 void qlFreeSchedule(Schedule *s) {del(s);}
 void  qlFreeDayCounter(DayCounter *counter) {del(counter);}
-const char *qlDayCounterName(DayCounter *counter) {std::string name = arg(counter)->name(); return DUP(name.c_str());}
+const char *qlDayCounterName(DayCounter *counter) {std::string name = arg(counter)->name(); return tracedup(name.c_str());}
 int qlDayCounterDayCount(DayCounter* o, int x0, int x1) {return arg(o)->dayCount(Date(x0), Date(x1));}
 
 double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
@@ -770,8 +802,8 @@ CommodityType *qlNullCommodityType(char **e) {
   } catch (std::exception& er) {return handleException<CommodityType*>(e, er);}}
 
 void qlFreeCommodityType(CommodityType *o) {del(o);}
-char *qlCommodityTypeCode(CommodityType *o) {return DUP(arg(o)->code().c_str());}
-char *qlCommodityTypeName(CommodityType *o) {return DUP(arg(o)->name().c_str());}
+char *qlCommodityTypeCode(CommodityType *o) {return tracedup(arg(o)->code().c_str());}
+char *qlCommodityTypeName(CommodityType *o) {return tracedup(arg(o)->name().c_str());}
 int qlCommodityTypeEmpty(CommodityType *o) {return arg(o)->empty();}
 
 /* UnitOfMeasure */
@@ -781,8 +813,8 @@ UnitOfMeasure *qlUnitOfMeasure(char *name, char *code, int unitType, char **e) {
   } catch (std::exception& er) {return handleException<UnitOfMeasure*>(e, er);}}
 
 void qlFreeUnitOfMeasure(UnitOfMeasure *o) {del(o);}
-char *qlUnitOfMeasureName(UnitOfMeasure *o) {return DUP(arg(o)->name().c_str());}
-char *qlUnitOfMeasureCode(UnitOfMeasure *o) {return DUP(arg(o)->code().c_str());}
+char *qlUnitOfMeasureName(UnitOfMeasure *o) {return tracedup(arg(o)->name().c_str());}
+char *qlUnitOfMeasureCode(UnitOfMeasure *o) {return tracedup(arg(o)->code().c_str());}
 int qlUnitOfMeasureUnitType(UnitOfMeasure *o) {return arg(o)->unitType();}
 int qlUnitOfMeasureEmpty(UnitOfMeasure *o) {return arg(o)->empty();}
 
@@ -818,7 +850,7 @@ PaymentTerm *qlPaymentTerm(char *name, int eventType, int offsetDays, Calendar *
   } catch (std::exception& er) {return handleException<PaymentTerm*>(e, er);}}
 
 void qlFreePaymentTerm(PaymentTerm *o) {del(o);}
-char *qlPaymentTermName(PaymentTerm *o) {return DUP(arg(o)->name().c_str());}
+char *qlPaymentTermName(PaymentTerm *o) {return tracedup(arg(o)->name().c_str());}
 int qlPaymentTermEventType_(PaymentTerm *o) {return arg(o)->eventType();}
 int qlPaymentTermOffsetDays(PaymentTerm *o) {return arg(o)->offsetDays();}
 Calendar *qlPaymentTermCalendar(PaymentTerm *o, char **e) {
@@ -866,24 +898,22 @@ CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o
   } catch (std::exception& er) {return handleException<CommodityType*>(e, er);}}
 int qlUnitOfMeasureConversionType_(UnitOfMeasureConversion *o) {return arg(o)->type();}
 double qlUnitOfMeasureConversionFactor(UnitOfMeasureConversion *o) {return arg(o)->conversionFactor();}
-char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o) {return DUP(arg(o)->code().c_str());}
+char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o) {return tracedup(arg(o)->code().c_str());}
 
 double qlUnitOfMeasureConversionConvert(UnitOfMeasureConversion *o, CommodityType *ct, UnitOfMeasure *uom,
                                         double amount, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
   *outCt = 0; *outUom = 0;
-  CommodityType *ct2 = 0;
-  UnitOfMeasure *uom2 = 0;
   try {
     Quantity r = arg(o)->convert(Quantity(*arg(ct), *arg(uom), amount));
-    ct2 = ret(new CommodityType(r.commodityType()));
-    uom2 = ret(new UnitOfMeasure(r.unitOfMeasure()));
-    *outCt = ct2; *outUom = uom2;
+    // unique_ptr until both allocations have succeeded -- same shape as qlEnergyCommodityQuantity
+    // (qlInstrument.cpp): a throw from the second releases the first with no cleanup in the catch,
+    // and ret() runs only on the pointers actually handed out.
+    std::unique_ptr<CommodityType> ct2(new CommodityType(r.commodityType()));
+    std::unique_ptr<UnitOfMeasure> uom2(new UnitOfMeasure(r.unitOfMeasure()));
+    *outCt = ret(ct2.release());
+    *outUom = ret(uom2.release());
     return r.amount();
   } catch (std::exception& er) {
-    // del(), not a raw delete: both are already traced as "returned" by the time the second
-    // allocation can throw, so a silent delete here would read as a leak in alloc-summary.py.
-    // (Unlike the `raw = new X; ... alloc(raw)` shape, where the catch's pointer was never traced.)
-    del(ct2); del(uom2);
     return handleException<double>(e, er);
   }}
 
@@ -1003,7 +1033,7 @@ void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis
   // ret() (not retPtrArray()): this spine is released by qlFreeStringArray, whose char**
   // parameter is what its own trace names -- see qlCommodityPricingErrors for the same pairing.
   char **ms = ret(new char*[n]());
-  for (unsigned i = 0; i < n; ++i) ms[i] = DUP(m[i].c_str());
+  for (unsigned i = 0; i < n; ++i) ms[i] = tracedup(m[i].c_str());
   *msgs = ms; *count = n;
 }
 

@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """Pair up a QLTRACK_ALLOCATIONS trace and report what was never freed.
 
-The trace is a flat log emitted by the alloc/ret/arg/del helpers in cbits/qlaux.h
-when the library is built with -DQLTRACK_ALLOCATIONS (the `trackAllocations` cabal
-flag). Raw, it is thousands of interleaved lines and answers nothing on its own.
+The trace is a flat log emitted by the tracing verbs in cbits/qlaux.h (arg, alloc,
+allocShared, ret, del, delArray, delWith, retPtrArray, allocAs, tracedup) when the
+library is built with -DQLTRACK_ALLOCATIONS (the `trackAllocations` cabal flag). Raw,
+it is thousands of interleaved lines and answers nothing on its own.
+
+Several helpers share one verb string, and only the string reaches the log: del(),
+delArray() and delWith() all write the same `deleting'/`deleted' pair; alloc() and
+allocShared() both write `allocated'; retPtrArray() writes `returned' and allocAs()
+`allocated', differing only in which class name they name. So this script pairs on the
+verb strings and never needs to know which helper ran.
 
 There are two *independent* lifecycles in the trace, and conflating them makes every
 object look either leaked or double-freed:
 
   returned Foo: 0x...   <- ret(): a pointer handed out to Haskell
   allocated Foo: 0x...  <- alloc(): a heap object, see below
-  deleting Foo: 0x...   <- del(): freed, normally by a ForeignPtr finalizer
-  deleted  Foo: 0x...   <- del() again, after the delete; the SAME event as `deleting'
+  deleting Foo: 0x...   <- del()/delArray()/delWith(): freed, normally by a ForeignPtr finalizer
+  deleted  Foo: 0x...   <- the same free again, after it happened; the SAME event as `deleting'
   arg Foo: 0x...        <- arg(): pure pass-through, not a lifecycle event
 
 The subtlety is that alloc() serves two purposes and only the pointer tells them
@@ -51,14 +58,17 @@ import sys
 
 # "returned Foo: 0x...", "deleting Foo: 0x...", "allocated Foo: 0x..."
 # A null pointer prints as a bare "0", not "0x0" -- accept it so those lines don't
-# inflate the unparsed count and make a healthy trace look half-unreadable.
+# inflate the unparsed count and make a healthy trace look half-unreadable. Since the
+# null guard moved into traceAs() (cbits/qlaux.h), only `arg' can carry a null: every
+# lifecycle verb skips the trace entirely for one, which is why a "0" pointer never
+# reaches the ledger below.
 LINE = re.compile(r'^(?P<verb>\w+(?: \w+)?) (?P<cls>[^:]+): (?P<ptr>0x[0-9a-f]+|0)\s*$')
 
 # `deleted' is the second trace of the same del() call as `deleting' -- counting both
 # would report every object as double-freed.
 ACQUIRE = {'returned', 'allocated', 'Duplicate string'}
 RELEASE = {'deleting', 'Freeing string'}
-# `Duplicating string'/`Freed string' are the leading halves of the same DUP()/qlFreeString()
+# `Duplicating string'/`Freed string' are the leading halves of the same tracedup()/qlFreeString()
 # pairs whose `Duplicate string'/`Freeing string' halves are counted above -- same reason
 # `deleted' is ignored. Without them here every string event inflates the unparsed count.
 IGNORE = {'deleted', 'arg', 'Duplicating string', 'Freed string'}
@@ -121,7 +131,21 @@ def main():
                     help='also list the shared_ptr-owned payloads (never freed by design)')
     args = ap.parse_args()
 
-    balance, acquired, shared_only, freed_kinds, unparsed = parse(args.trace)
+    try:
+        balance, acquired, shared_only, freed_kinds, unparsed = parse(args.trace)
+    except FileNotFoundError:
+        # The trace stream is opened on first use, so a run that traced *nothing* leaves
+        # no file at all rather than an empty one. That is never a clean result: either
+        # tracing was not compiled in (the usual cause -- the trackAllocations flag alone
+        # does not force cbits to recompile, see the audit-allocations skill), or the
+        # program exited before reaching any bound call. Say so instead of reporting a
+        # balanced ledger or dying with a traceback.
+        print(f'no trace at {args.trace} -- nothing was ever traced.\n'
+              'Either tracing was not compiled in (delete .stack-work/dist/*/build/cbits and\n'
+              'the stale libHShasquant* artifacts, rebuild with the trackAllocations flag, and\n'
+              "confirm with `strings <built .o> | grep -c allocated'), or the program exited\n"
+              'before calling anything in cbits/.', file=sys.stderr)
+        return 1
 
     names = demangle(set(acquired) | {c for c, _ in balance})
     keep = args.only.split(',') if args.only else None

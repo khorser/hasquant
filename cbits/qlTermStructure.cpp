@@ -58,10 +58,10 @@
 
 #include "qlaux.h"
 using namespace QuantLib;
-// these are typedefs so we cannot use their forward declarations in qlaux.h without including all relevant header files
-typedef shared_ptr<DefaultProbabilityHelper> QlDefaultProbabilityHelper;
-typedef shared_ptr<RateHelper> QlRateHelper;
-typedef FittedBondDiscountCurve::FittingMethod FittedBondDiscountCurveFittingMethod;
+// these are type aliases so we cannot use their forward declarations in qlaux.h without including all relevant header files
+using QlDefaultProbabilityHelper = shared_ptr<DefaultProbabilityHelper>;
+using QlRateHelper = shared_ptr<RateHelper>;
+using FittedBondDiscountCurveFittingMethod = FittedBondDiscountCurve::FittingMethod;
 #include "qlTermStructure.h"
 #include "qlTermStructureAux.h"
 
@@ -70,12 +70,12 @@ namespace hasquant {
 }
 
 #ifdef QLTRACK_ALLOCATIONS
-template <> class ObjClassName<DefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityHelper";}};
-template <> class ObjClassName<QlDefaultProbabilityHelper*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityHelper";}};
-template <> class ObjClassName<RateHelper*> {public: static void output(std::ostream& os) {os << "RateHelper";}};
-template <> class ObjClassName<QlRateHelper*> {public: static void output(std::ostream& os) {os << "QlRateHelper";}};
-template <> class ObjClassName<FittedBondDiscountCurveFittingMethod*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurveFittingMethod";}};
-template <> class ObjClassName<PiecewiseZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "PiecewiseZeroSpreadedTermStructure";}};
+QL_TRACE_NAME(DefaultProbabilityHelper)
+QL_TRACE_NAME(QlDefaultProbabilityHelper)
+QL_TRACE_NAME(RateHelper)
+QL_TRACE_NAME(QlRateHelper)
+QL_TRACE_NAME(FittedBondDiscountCurveFittingMethod)
+QL_TRACE_NAME(PiecewiseZeroSpreadedTermStructure)
 #endif
 
 namespace {
@@ -292,6 +292,29 @@ namespace {
       QL_FAIL("Unsupported interpolation " << interpolator1D);
     }
   }
+
+// The named-index factory tables below live inside the extern "C" block with the shims that
+// use them, but a template cannot be declared with C linkage, so their element constructors
+// sit here instead.
+// Return type spelled as the base (not the concrete subclass): alloc() takes its trace label
+// from its argument's static type, and these are freed through the base -- see makeCurrency
+// in qlMisc.cpp for the same reasoning spelled out in full.
+template <class I> SwapIndex *makeSwapIndex(const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2) {return new I(p, h1, h2);}
+// Three constructor shapes upstream: a tenor Period, a bare curve, or a plain number of months.
+template <class I> IborIndex *makeIborIndex(int l, int u, const QlYieldTermStructure &ts) {return new I(Period(l, (TimeUnit)u), ts);}
+template <class I> IborIndex *makeIborIndexTS(int, int, const QlYieldTermStructure &ts) {return new I(ts);}
+template <class I> IborIndex *makeIborIndexMonths(int l, int, const QlYieldTermStructure &ts) {return new I(l, ts);}
+template <class I> OvernightIndex *makeONIndex(const QlYieldTermStructure &ts) {return new I(ts);}
+template <class I> ZeroInflationIndex *makeZeroInflationIndex() {return new I();}
+template <class I> YoYInflationIndex *makeYoYInflationIndex() {return new I();}
+template <class R> Region *makeRegion() {return new R();}
+
+using makeSwapIdx = SwapIndex *(*)(const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2);
+using makeIborIdx = IborIndex *(*)(int l, int u, const QlYieldTermStructure &ts);
+using makeOnIdx = OvernightIndex *(*)(const QlYieldTermStructure &ts);
+using makeZeroInflIdx = ZeroInflationIndex *(*)();
+using makeYoYInflIdx = YoYInflationIndex *(*)();
+using makeReg = Region *(*)();
 }
 
 extern "C" {
@@ -622,7 +645,7 @@ QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, Q
     // own internal EndCriteria/LevenbergMarquardt defaults apply); when given, copying the
     // shared_ptr out of Haskell's QlEndCriteria/QlOptimizationMethod box into this ctor's own
     // shared_ptr member is safe regardless of when Haskell's box is later collected -- see the
-    // qlaux.h comment above the QlEndCriteria/QlOptimizationMethod typedefs.
+    // qlaux.h comment above the QlEndCriteria/QlOptimizationMethod aliases.
     // Returns the concrete type directly (not QlSmileSection) so alpha/beta/nu/rho/etc below
     // need no dynamic_pointer_cast -- see the CLAUDE.md API-design rule on preferring a
     // dedicated leaf over a runtime downcast. qlSabrInterpolatedSmileSectionAsSmileSection
@@ -776,25 +799,22 @@ QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* orig
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 
 QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e) {
-  BlackVarianceCurve *c = 0;
   try {
-    c = new BlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance);
+    auto c = allocShared(new BlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance));
     if (interpolator != Null<Integer>())
-      setInterpolation(c, interpolator, approximator, approximatorArg);
-    return ret(new QlBlackVarianceCurve(alloc(c)));
+      setInterpolation(c.get(), interpolator, approximator, approximatorArg);
+    return ret(new QlBlackVarianceCurve(c));
   } catch (std::exception& er) {
-    delete c;
     return handleException<QlBlackVarianceCurve*>(e, er);
   }
 }
 
 QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, int interpolator, char **e) {
-  BlackVarianceSurface *s = 0;
   try {
-    s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(dates, datesLen), std::vector<double>(strikes, strikes+strikesLen), qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);
-    setInterpolation2D(s, interpolator);
-    return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(s))));
-  } catch (std::exception& er) {delete s; return handleException<QlBlackVolTermStructure*>(e, er);}}
+    auto s = allocShared(new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(dates, datesLen), std::vector<double>(strikes, strikes+strikesLen), qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation));
+    setInterpolation2D(s.get(), interpolator);
+    return ret(new QlBlackVolTermStructure(s));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e) {
   try {
     return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(
@@ -1016,12 +1036,11 @@ QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned da
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
-  DefaultProbabilityTermStructure *ts = 0;
   try {
-    ts = qlInterpolatedHazardRateCurveAux(qlDateVector(dates, datesLen), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg);
+    auto ts = allocShared(qlInterpolatedHazardRateCurveAux(qlDateVector(dates, datesLen), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(cal), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
-  } catch (std::exception& er) {delete ts; return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+    return ret(new QlDefaultProbabilityTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
@@ -1037,17 +1056,15 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
-  DefaultProbabilityTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
-    return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
-  } catch (std::exception& er) {delete ts; return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+    auto ts = allocShared(qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg));
+    return ret(new QlDefaultProbabilityTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
-  DefaultProbabilityTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg);
-    return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
-  } catch (std::exception& er) {delete ts; return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+    auto ts = allocShared(qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg));
+    return ret(new QlDefaultProbabilityTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
   try {return (*arg(o))->defaultDensity(t, extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1103,7 +1120,7 @@ QlCommodityCurve* qlCommodityCurve(char *name, CommodityType *commodityType, Cur
 
 void qlFreeCommodityCurve(QlCommodityCurve *o) {del(o);}
 QlTermStructure* qlCommodityCurveAsTermStructure(QlCommodityCurve *o) {return ret(new QlTermStructure(*arg(o)));}
-char *qlCommodityCurveName(QlCommodityCurve *o) {return DUP((*arg(o))->name().c_str());}
+char *qlCommodityCurveName(QlCommodityCurve *o) {return tracedup((*arg(o))->name().c_str());}
 CommodityType *qlCommodityCurveCommodityType(QlCommodityCurve *o, char **e) {
   try {return ret(new CommodityType((*arg(o))->commodityType()));
   } catch (std::exception& er) {return handleException<CommodityType*>(e, er);}}
@@ -1123,7 +1140,7 @@ void qlCommodityCurveDates(QlCommodityCurve *o, unsigned *count, int **days, cha
     for (size_t i = 0; i < dates.size(); ++i)
       ds[i] = dates[i].serialNumber();
     *count = n; *days = ds;
-  } catch (std::exception& er) {*e = DUP(er.what());}
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **prices, char **e) {
@@ -1135,7 +1152,7 @@ void qlCommodityCurvePrices(QlCommodityCurve *o, unsigned *count, double **price
     for (size_t i = 0; i < p.size(); ++i)
       ps[i] = p[i];
     *count = n; *prices = ps;
-  } catch (std::exception& er) {*e = DUP(er.what());}
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 int qlCommodityCurveEmpty(QlCommodityCurve *o) {return (*arg(o))->empty();}
@@ -1152,7 +1169,7 @@ QlCommodityCurve *qlCommodityCurveBasisOfCurve(QlCommodityCurve *o) {
 // UnitOfMeasureConversionManager::lookup when no matching conversion is registered.
 void qlCommodityCurveSetBasisOfCurve(QlCommodityCurve *o, QlCommodityCurve *basisOfCurve, char **e) {
   try {(*arg(o))->setBasisOfCurve(*arg(basisOfCurve));
-  } catch (std::exception& er) {*e = DUP(er.what());}
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 // Builds the ExchangeContracts map the nearby-rolling price()/underlyingPriceDate() calls take.
@@ -1243,7 +1260,6 @@ QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInfla
 QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, char **e) {try {return ret(new QlYearOnYearInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
 
 QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
-  ZeroInflationTermStructure *ts = 0;
   try {
     // instruments[i] is shared_ptr<ZeroCouponInflationSwapHelper>*; push_back upcasts each
     // element to shared_ptr<BootstrapHelper<ZeroInflationTermStructure>> (PiecewiseZeroInflationCurve's
@@ -1252,20 +1268,19 @@ QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, i
     std::vector<shared_ptr<BootstrapHelper<ZeroInflationTermStructure> > > instr;
     instr.reserve(instrumentsLen);
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
-    ts = qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
-        instr, interpolator, approximator, approximatorArg);
-    return ret(new QlZeroInflationTermStructure(alloc(ts)));
-  } catch (std::exception& er) {delete ts; return handleException<QlZeroInflationTermStructure*>(e, er);}}
+    auto ts = allocShared(qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
+        instr, interpolator, approximator, approximatorArg));
+    return ret(new QlZeroInflationTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlZeroInflationTermStructure*>(e, er);}}
 QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
-  YoYInflationTermStructure *ts = 0;
   try {
     std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > > instr;
     instr.reserve(instrumentsLen);
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
-    ts = qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
-        instr, interpolator, approximator, approximatorArg);
-    return ret(new QlYoYInflationTermStructure(alloc(ts)));
-  } catch (std::exception& er) {delete ts; return handleException<QlYoYInflationTermStructure*>(e, er);}}
+    auto ts = allocShared(qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
+        instr, interpolator, approximator, approximatorArg));
+    return ret(new QlYoYInflationTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
 // InterpolatedYoYInflationCurve<Interpolator> -- direct (dates, rates) curve, unlike
 // qlPiecewiseYoYInflationCurve's bootstrap from swap helpers. No seasonality (unbound elsewhere
@@ -1273,14 +1288,13 @@ QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int
 QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate,
     unsigned datesLen, int *dates, double *rates, int frequency, DayCounter *dayCounter,
     int interpolator, int approximator, int approximatorArg, char **e) {
-  YoYInflationTermStructure *ts = 0;
   try {
     std::vector<Date> ds(datesLen);
     for (unsigned i = 0; i < datesLen; ++i) ds[i] = Date(dates[i]);
-    ts = qlInterpolatedYoYInflationCurveAux(Date(referenceDate), ds, std::vector<Rate>(rates, rates+datesLen),
-        (Frequency)frequency, *arg(dayCounter), interpolator, approximator, approximatorArg);
-    return ret(new QlYoYInflationTermStructure(alloc(ts)));
-  } catch (std::exception& er) {delete ts; return handleException<QlYoYInflationTermStructure*>(e, er);}}
+    auto ts = allocShared(qlInterpolatedYoYInflationCurveAux(Date(referenceDate), ds, std::vector<Rate>(rates, rates+datesLen),
+        (Frequency)frequency, *arg(dayCounter), interpolator, approximator, approximatorArg));
+    return ret(new QlYoYInflationTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {return ret(new QlRateHelper(new DepositRateHelper( *arg(quote), Period(l, (TimeUnit)u), fixDays,
@@ -1325,12 +1339,11 @@ static QlIterativeBootstrapOpts bootstrapOpts(double accuracy, double minValue, 
 }
 
 static QlYieldTermStructure *piecewiseYieldCurveImpl(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, char **e) {
-  YieldTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, b);
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+    auto ts = allocShared(qlPiecewiseYieldCurveAux(Date(date), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, b));
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
   return piecewiseYieldCurveImpl(date, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
@@ -1344,18 +1357,17 @@ QlYieldTermStructure *qlPiecewiseYieldCurveFull(int date, unsigned rateLen, QlRa
       bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations), e);
 }
 
-typedef YieldTermStructure *(*curveBuilder)( const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
+using curveBuilder = YieldTermStructure *(*)( const std::vector<Date>& dates, const std::vector<double>& dfs, const DayCounter& dayCount, const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates, int interpolator, int approximator, int approximatorArg);
 
 QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder, unsigned rateLen, double *rates, unsigned rateDatesLen, int *rateDates,
   DayCounter *dayCount, Calendar *cal, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
-  YieldTermStructure *ts = 0;
   try {
-    ts = builder(qlDateVector(rateDates, rateDatesLen), std::vector<double>(rates, rates+rateLen), *arg(dayCount), *arg(cal),
-        qlHandleVector(quotes, quoteLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg);
+    auto ts = allocShared(builder(qlDateVector(rateDates, rateDatesLen), std::vector<double>(rates, rates+rateLen), *arg(dayCount), *arg(cal),
+        qlHandleVector(quotes, quoteLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 QlYieldTermStructure *qlInterpolatedDiscountCurve(unsigned dfsLen, double *dfs, unsigned dfdatesLen, int *dfsDates, DayCounter *dayCount, Calendar *cal,
   unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
   return qlInterpolatedCurve(&qlInterpolatedDiscountCurveAux, dfsLen, dfs, dfdatesLen, dfsDates,
@@ -1373,14 +1385,13 @@ QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen, double *yields,
 }
 static QlYieldTermStructure *piecewiseYieldCurve1Impl(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, int extrapolate, char **e) {
-  YieldTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, approximator, approximatorArg, /*bootstrap=*/0, /*accuracy=*/0.0,
-        std::vector<double>(), b);
+        std::vector<double>(), b));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
@@ -1397,40 +1408,37 @@ QlYieldTermStructure *qlPiecewiseYieldCurveFull1(unsigned settl, Calendar *cal, 
 }
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
-  YieldTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts());
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
-  YieldTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+    auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::SimpleZeroYield, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts());
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
   double accuracy, int extrapolate, char **e) {
-  YieldTermStructure *ts = 0;
   try {
-    ts = qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy);
+    auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
-  } catch (std::exception& er) {delete ts; return handleException<QlYieldTermStructure *>(e, er);}}
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 // MultiCurve builds a set of curves that form a genuine dependency cycle -- see the class's own
 // doc comment in multicurve.hpp for the 4-step protocol this wraps. It is bound as a standalone
-// leaf (see QlMultiCurve's typedef comment in qlaux.h), not part of the TermStructure hierarchy.
+// leaf (see QlMultiCurve's alias comment in qlaux.h), not part of the TermStructure hierarchy.
 QlMultiCurve *qlMultiCurve(double accuracy, char **e) {
   try {return ret(new QlMultiCurve(shared_ptr<MultiCurve>(alloc(new MultiCurve(accuracy)))));
   } catch (std::exception& er) {return handleException<QlMultiCurve*>(e, er);}}
@@ -1752,26 +1760,25 @@ void qlIndexAddFixings(QlIndex *i, unsigned datesLen, int *dates, double *values
   try {std::vector<Date> ds = qlDateVector(dates, datesLen);(*arg(i))->addFixings(ds.begin(), ds.end(), values, overwrite);
   } catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 void qlIndexClearFixings(QlIndex *i, char **e) {try {(*arg(i))->clearFixings();} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
-typedef SwapIndex *(*makeSwapIndex)(const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2);
 // must match with the order of qlEnumObjects.h:LiborSwapIndexType
-static const makeSwapIndex swapIndices[] = {
-    [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new ChfLiborSwapIsdaFix(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EurLiborSwapIfrFix(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixA(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EurLiborSwapIsdaFixB(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EuriborSwapIfrFix(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixA(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new EuriborSwapIsdaFixB(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new GbpLiborSwapIsdaFix(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixAm(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new JpyLiborSwapIsdaFixPm(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixAm(p, h1, h2));}
-  , [](const Period &p, const QlYieldTermStructure &h1, const QlYieldTermStructure &h2){return static_cast<SwapIndex *>(new UsdLiborSwapIsdaFixPm(p, h1, h2));}
+static const makeSwapIdx swapIndices[] = {
+    &makeSwapIndex<ChfLiborSwapIsdaFix>
+  , &makeSwapIndex<EurLiborSwapIfrFix>
+  , &makeSwapIndex<EurLiborSwapIsdaFixA>
+  , &makeSwapIndex<EurLiborSwapIsdaFixB>
+  , &makeSwapIndex<EuriborSwapIfrFix>
+  , &makeSwapIndex<EuriborSwapIsdaFixA>
+  , &makeSwapIndex<EuriborSwapIsdaFixB>
+  , &makeSwapIndex<GbpLiborSwapIsdaFix>
+  , &makeSwapIndex<JpyLiborSwapIsdaFixAm>
+  , &makeSwapIndex<JpyLiborSwapIsdaFixPm>
+  , &makeSwapIndex<UsdLiborSwapIsdaFixAm>
+  , &makeSwapIndex<UsdLiborSwapIsdaFixPm>
 };
 
 QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
   try {
-    if (index < 0 || index >= (int)LENGTH(swapIndices))
+    if (index < 0 || index >= (int)std::size(swapIndices))
       QL_FAIL("Invalid swap index index" << index);
     QlYieldTermStructure ts1 = qlNullableHandle(h1);
     QlYieldTermStructure ts2 = qlNullableHandle(h2);
@@ -1835,7 +1842,7 @@ QlIborIndex *qlIborIndex(char *name, int l, int u, unsigned settlDays, Currency 
 	  eom, *arg(dayCount), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {return handleException<QlIborIndex *>(e, er);}}
 
-const char* qlIndexName(QlIndex *index) {std::string name = (*arg(index))->name(); return DUP(name.c_str());}
+const char* qlIndexName(QlIndex *index) {std::string name = (*arg(index))->name(); return tracedup(name.c_str());}
 void qlFreeIborIndex(QlIborIndex *i) {del(i);}
 
 QlIborIndex *qlLibor(char *name, int l, int u, unsigned settlDays,
@@ -1863,86 +1870,84 @@ QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy
             *arg(ccy), *arg(cal), *arg(dayCount), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {return handleException<QlOvernightIndex *>(e, er);}}
 
-typedef IborIndex *(*makeIborIndex)(int l, int u, const QlYieldTermStructure& ts);
 // must match the order of qlEnumObjects.h:IborIndexType (Standard block), then
 // IborDailyTenorIndexType (DailyTenor block), then IborONIndexType (Overnight block) --
 // see deriveIborConstructor in QuantLib/Internal/Syntax.hs for how the three Haskell-side
 // enums are stitched back into a single flat offset into this array.
-static const makeIborIndex iborIndices[] = {
+static const makeIborIdx iborIndices[] = {
     // -- Standard block (IborIndexType) --
-    [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Bbsw(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Bibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Bkbm(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Cdor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new EURLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new AUDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new CADLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new CHFLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DKKLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new GBPLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new JPYLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new NZDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new SEKLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new USDLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Euribor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Euribor365(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Jibar(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Mosprime(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Pribor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Robor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Shibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new THBFIX(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new TRLibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Tibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Wibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Zibor(Period(l, (TimeUnit)u), ts));}
-  , [](int l, int u, const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new Nibor(Period(l, (TimeUnit)u), ts));}
+    &makeIborIndex<Bbsw>
+  , &makeIborIndex<Bibor>
+  , &makeIborIndex<Bkbm>
+  , &makeIborIndex<Cdor>
+  , &makeIborIndex<EURLibor>
+  , &makeIborIndex<AUDLibor>
+  , &makeIborIndex<CADLibor>
+  , &makeIborIndex<CHFLibor>
+  , &makeIborIndex<DKKLibor>
+  , &makeIborIndex<GBPLibor>
+  , &makeIborIndex<JPYLibor>
+  , &makeIborIndex<NZDLibor>
+  , &makeIborIndex<SEKLibor>
+  , &makeIborIndex<USDLibor>
+  , &makeIborIndex<Euribor>
+  , &makeIborIndex<Euribor365>
+  , &makeIborIndex<Jibar>
+  , &makeIborIndex<Mosprime>
+  , &makeIborIndex<Pribor>
+  , &makeIborIndex<Robor>
+  , &makeIborIndex<Shibor>
+  , &makeIborIndex<THBFIX>
+  , &makeIborIndex<TRLibor>
+  , &makeIborIndex<Tibor>
+  , &makeIborIndex<Wibor>
+  , &makeIborIndex<Zibor>
+  , &makeIborIndex<Nibor>
     // -- DailyTenor block (IborDailyTenorIndexType) --
-  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorEURLibor(l, ts));}
-  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorCHFLibor(l, ts));}
-  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorGBPLibor(l, ts));}
-  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorJPYLibor(l, ts));}
-  , [](int l, int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new DailyTenorUSDLibor(l, ts));}
+  , &makeIborIndexMonths<DailyTenorEURLibor>
+  , &makeIborIndexMonths<DailyTenorCHFLibor>
+  , &makeIborIndexMonths<DailyTenorGBPLibor>
+  , &makeIborIndexMonths<DailyTenorJPYLibor>
+  , &makeIborIndexMonths<DailyTenorUSDLibor>
     // -- Overnight block (IborONIndexType) --
-  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new CADLiborON(ts));}
-  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new EURLiborON(ts));}
-  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new GBPLiborON(ts));}
-  , [](int  , int  , const QlYieldTermStructure& ts) {return static_cast<IborIndex *>(new USDLiborON(ts));}
+  , &makeIborIndexTS<CADLiborON>
+  , &makeIborIndexTS<EURLiborON>
+  , &makeIborIndexTS<GBPLiborON>
+  , &makeIborIndexTS<USDLiborON>
 };
 
 QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, char **e) {
   try {
-    if (index < 0 || index >= (int)LENGTH(iborIndices))
+    if (index < 0 || index >= (int)std::size(iborIndices))
       QL_FAIL("Invalid IBOR index index: " << index);
     QlYieldTermStructure ts = qlNullableHandle(fwd);
     IborIndex *i = iborIndices[index](l, u, ts);
     return ret(new QlIborIndex(alloc(i)));
   } catch (std::exception& er) {return handleException<QlIborIndex *>(e, er);}}
 
-typedef OvernightIndex *(*makeONIndex)(const QlYieldTermStructure &ts);
 // should match the order of qlEnumObjects.h:OvernightIborIndexType
-static const makeONIndex onIndices[] = {
-    [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Aonia(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Eonia(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Estr(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new FedFunds(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Nzocr(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Sofr(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Sonia(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Cdi(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Corra(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Kofr(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Destr(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Swestr(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Shir(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Tonar(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Saron(ts));}
-  , [](const QlYieldTermStructure &ts){return static_cast<OvernightIndex *>(new Zaronia(ts));}
+static const makeOnIdx onIndices[] = {
+    &makeONIndex<Aonia>
+  , &makeONIndex<Eonia>
+  , &makeONIndex<Estr>
+  , &makeONIndex<FedFunds>
+  , &makeONIndex<Nzocr>
+  , &makeONIndex<Sofr>
+  , &makeONIndex<Sonia>
+  , &makeONIndex<Cdi>
+  , &makeONIndex<Corra>
+  , &makeONIndex<Kofr>
+  , &makeONIndex<Destr>
+  , &makeONIndex<Swestr>
+  , &makeONIndex<Shir>
+  , &makeONIndex<Tonar>
+  , &makeONIndex<Saron>
+  , &makeONIndex<Zaronia>
 };
 
 QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e) {
   try {
-    if (index < 0 || index >= (int)LENGTH(onIndices))
+    if (index < 0 || index >= (int)std::size(onIndices))
       QL_FAIL("Invalid O/N index index" << index);
     QlYieldTermStructure ts = qlNullableHandle(fwd);
     OvernightIndex *i = onIndices[index](ts);
@@ -1966,65 +1971,62 @@ QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o) {return ret(new QlIndex(*arg(o))
 // never-mutated echoes of the constructor's own arguments (equityindex.hpp's inline getters
 // each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
 
-typedef ZeroInflationIndex *(*makeZeroInflationIndex)();
 // must match the order of qlEnumObjects.h:ZeroInflationIndexType
-static const makeZeroInflationIndex zeroInflationIndices[] = {
+static const makeZeroInflIdx zeroInflationIndices[] = {
     []{return static_cast<ZeroInflationIndex *>(new AUCPI(Quarterly, false));} // AU CPI is published quarterly, unlike the other (monthly) named indices
-  , []{return static_cast<ZeroInflationIndex *>(new EUHICP());}
-  , []{return static_cast<ZeroInflationIndex *>(new EUHICPXT());}
-  , []{return static_cast<ZeroInflationIndex *>(new FRHICP());}
-  , []{return static_cast<ZeroInflationIndex *>(new UKHICP());}
-  , []{return static_cast<ZeroInflationIndex *>(new UKRPI());}
-  , []{return static_cast<ZeroInflationIndex *>(new USCPI());}
-  , []{return static_cast<ZeroInflationIndex *>(new ZACPI());}
+  , &makeZeroInflationIndex<EUHICP>
+  , &makeZeroInflationIndex<EUHICPXT>
+  , &makeZeroInflationIndex<FRHICP>
+  , &makeZeroInflationIndex<UKHICP>
+  , &makeZeroInflationIndex<UKRPI>
+  , &makeZeroInflationIndex<USCPI>
+  , &makeZeroInflationIndex<ZACPI>
 };
 
 QlZeroInflationIndex *qlCreateZeroInflationIndex(int index, char **e) {
   try {
-    if (index < 0 || index >= (int)LENGTH(zeroInflationIndices))
+    if (index < 0 || index >= (int)std::size(zeroInflationIndices))
       QL_FAIL("Invalid zero inflation index index" << index);
     return ret(new QlZeroInflationIndex(alloc(zeroInflationIndices[index]())));
   } catch (std::exception& er) {return handleException<QlZeroInflationIndex *>(e, er);}}
 
-typedef YoYInflationIndex *(*makeYoYInflationIndex)();
 // must match the order of qlEnumObjects.h:YoYInflationIndexType
-static const makeYoYInflationIndex yoyInflationIndices[] = {
+static const makeYoYInflIdx yoyInflationIndices[] = {
     []{return static_cast<YoYInflationIndex *>(new YYAUCPI(Quarterly, false));}
-  , []{return static_cast<YoYInflationIndex *>(new YYEUHICP());}
-  , []{return static_cast<YoYInflationIndex *>(new YYEUHICPXT());}
-  , []{return static_cast<YoYInflationIndex *>(new YYFRHICP());}
-  , []{return static_cast<YoYInflationIndex *>(new YYUKRPI());}
-  , []{return static_cast<YoYInflationIndex *>(new YYUSCPI());}
-  , []{return static_cast<YoYInflationIndex *>(new YYZACPI());}
+  , &makeYoYInflationIndex<YYEUHICP>
+  , &makeYoYInflationIndex<YYEUHICPXT>
+  , &makeYoYInflationIndex<YYFRHICP>
+  , &makeYoYInflationIndex<YYUKRPI>
+  , &makeYoYInflationIndex<YYUSCPI>
+  , &makeYoYInflationIndex<YYZACPI>
 };
 
 QlYoYInflationIndex *qlCreateYoYInflationIndex(int index, char **e) {
   try {
-    if (index < 0 || index >= (int)LENGTH(yoyInflationIndices))
+    if (index < 0 || index >= (int)std::size(yoyInflationIndices))
       QL_FAIL("Invalid year-on-year inflation index index" << index);
     return ret(new QlYoYInflationIndex(alloc(yoyInflationIndices[index]())));
   } catch (std::exception& er) {return handleException<QlYoYInflationIndex *>(e, er);}}
 
-typedef Region *(*makeRegion)();
 // must match the order of qlEnumObjects.h:RegionType
-static const makeRegion regions[] = {
-    []{return static_cast<Region *>(new AustraliaRegion());}
-  , []{return static_cast<Region *>(new EURegion());}
-  , []{return static_cast<Region *>(new FranceRegion());}
-  , []{return static_cast<Region *>(new UKRegion());}
-  , []{return static_cast<Region *>(new USRegion());}
-  , []{return static_cast<Region *>(new ZARegion());}
+static const makeReg regions[] = {
+    &makeRegion<AustraliaRegion>
+  , &makeRegion<EURegion>
+  , &makeRegion<FranceRegion>
+  , &makeRegion<UKRegion>
+  , &makeRegion<USRegion>
+  , &makeRegion<ZARegion>
 };
 Region *qlRegion(int r, char **e) {
   try {
-    if (r < 0 || r >= (int)LENGTH(regions)) QL_FAIL("Invalid region index " << r);
+    if (r < 0 || r >= (int)std::size(regions)) QL_FAIL("Invalid region index " << r);
     return alloc(regions[r]());
   } catch (std::exception& er) {return handleException<Region*>(e, er);}}
 Region *qlCreateRegion(char* name, char* code, char **e) {
-  try {return alloc(static_cast<Region*>(new CustomRegion(arg(name), arg(code))));
+  try {return allocAs<Region>(new CustomRegion(arg(name), arg(code)));
   } catch (std::exception& er) {return handleException<Region*>(e, er);}}
 void qlFreeRegion(Region *o) {del(o);}
-const char *qlRegionName(Region *o) {return DUP(arg(o)->name().c_str());}
+const char *qlRegionName(Region *o) {return tracedup(arg(o)->name().c_str());}
 
 QlZeroInflationIndex *qlZeroInflationIndex(char *familyName, Region *region, int revised, int frequency,
     int availLagN, int availLagU, Currency *currency, QlZeroInflationTermStructure *ts, char **e) {

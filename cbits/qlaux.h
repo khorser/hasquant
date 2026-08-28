@@ -1,6 +1,8 @@
 #include <ql/time/date.hpp>
 #include <ql/errors.hpp>
 #include <string.h>
+#include <iterator>
+#include <memory>
 #include <vector>
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
@@ -17,18 +19,13 @@
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
 
+// strdup() for the FFI boundary (Haskell releases it through qlFreeString), tracing both
+// halves of the string's lifecycle. The tracing verbs themselves are at the bottom of this
+// file, below the ObjClassName table they name their subjects from.
 char *tracedup(const char *p);
-#define DUP(p) tracedup((p))
 
 #ifdef QLTRACK_ALLOCATIONS
-template <class T> T traceval(const char *text, T val);
-/* trace a pointer */
-# define TP(text, p) traceval((text), (p))
-# define TP2(text, p) (void)traceval((text), (p));
 # include <fstream>
-#else
-# define TP(text, p) (p)
-# define TP2(text, p)
 #endif
 
 namespace QuantLib {
@@ -658,47 +655,47 @@ class PolymorphicGaussianRsg;
 // propagate to everything already built on it. Handle constructs implicitly from nothing (the
 // ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed. Mirrors
 // QlYieldTermStructure below; see the invariant note there before touching either.
-typedef Handle<Quote> QlQuote;
+using QlQuote = Handle<Quote>;
 // RelinkableHandle publicly inherits Handle, so a relinkable quote IS a QlQuote and needs no
 // separate parameter type -- same reasoning as QlRelinkableYieldTermStructure below.
-typedef RelinkableHandle<Quote> QlRelinkableQuote;
+using QlRelinkableQuote = RelinkableHandle<Quote>;
 // A curve is a Handle, not a bare shared_ptr, so that a RelinkableHandle can be passed
 // wherever a curve is expected: copies of a Handle share one Link, which is what makes a
 // linkTo() propagate to everything already built on it. Handle constructs implicitly from
 // nothing (the ctor is explicit) but *arg(x) recovers the shared_ptr where one is needed.
-typedef Handle<YieldTermStructure> QlYieldTermStructure;
+using QlYieldTermStructure = Handle<YieldTermStructure>;
 // RelinkableHandle publicly inherits Handle, so a relinkable curve IS a QlYieldTermStructure
 // and needs no separate parameter type: it goes wherever a curve goes, through the ordinary
 // Upcastable machinery, and the upcast copy shares its Link so relinking still propagates.
-typedef RelinkableHandle<YieldTermStructure> QlRelinkableYieldTermStructure;
-typedef shared_ptr<PricingEngine> QlPricingEngine;
-typedef shared_ptr<IborIndex> QlIborIndex;
-typedef shared_ptr<Index> QlIndex;
-typedef shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
+using QlRelinkableYieldTermStructure = RelinkableHandle<YieldTermStructure>;
+using QlPricingEngine = shared_ptr<PricingEngine>;
+using QlIborIndex = shared_ptr<IborIndex>;
+using QlIndex = shared_ptr<Index>;
+using QlFloatingRateCouponPricer = shared_ptr<FloatingRateCouponPricer>;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure/QlSwaptionVolatilityStructure below.
-typedef Handle<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
-typedef RelinkableHandle<OptionletVolatilityStructure> QlRelinkableOptionletVolatilityStructure;
-typedef shared_ptr<Instrument> QlInstrument;
-typedef shared_ptr<Bond> QlBond;
-typedef shared_ptr<FixedRateBond> QlFixedRateBond;
-typedef shared_ptr<Forward> QlForward;
-typedef shared_ptr<BondForward> QlBondForward;
-typedef shared_ptr<ForwardRateAgreement> QlForwardRateAgreement;
-typedef shared_ptr<AffineModel> QlAffineModel;
-typedef shared_ptr<AmericanExercise> QlAmericanExercise;
-typedef shared_ptr<AssetSwap> QlAssetSwap;
-typedef shared_ptr<BMAIndex> QlBMAIndex;
-typedef shared_ptr<BMASwap> QlBMASwap;
-typedef shared_ptr<BarrierOption> QlBarrierOption;
-typedef shared_ptr<DoubleBarrierOption> QlDoubleBarrierOption;
-typedef shared_ptr<BachelierCalculator> QlBachelierCalculator;
-typedef shared_ptr<BasketPayoff> QlBasketPayoff;
-typedef shared_ptr<BatesDetJumpModel> QlBatesDetJumpModel;
-typedef shared_ptr<BatesDoubleExpDetJumpModel> QlBatesDoubleExpDetJumpModel;
-typedef shared_ptr<BatesDoubleExpModel> QlBatesDoubleExpModel;
-typedef shared_ptr<BatesModel> QlBatesModel;
-typedef shared_ptr<BatesProcess> QlBatesProcess;
-typedef shared_ptr<BermudanExercise> QlBermudanExercise;
+using QlOptionletVolatilityStructure = Handle<OptionletVolatilityStructure>;
+using QlRelinkableOptionletVolatilityStructure = RelinkableHandle<OptionletVolatilityStructure>;
+using QlInstrument = shared_ptr<Instrument>;
+using QlBond = shared_ptr<Bond>;
+using QlFixedRateBond = shared_ptr<FixedRateBond>;
+using QlForward = shared_ptr<Forward>;
+using QlBondForward = shared_ptr<BondForward>;
+using QlForwardRateAgreement = shared_ptr<ForwardRateAgreement>;
+using QlAffineModel = shared_ptr<AffineModel>;
+using QlAmericanExercise = shared_ptr<AmericanExercise>;
+using QlAssetSwap = shared_ptr<AssetSwap>;
+using QlBMAIndex = shared_ptr<BMAIndex>;
+using QlBMASwap = shared_ptr<BMASwap>;
+using QlBarrierOption = shared_ptr<BarrierOption>;
+using QlDoubleBarrierOption = shared_ptr<DoubleBarrierOption>;
+using QlBachelierCalculator = shared_ptr<BachelierCalculator>;
+using QlBasketPayoff = shared_ptr<BasketPayoff>;
+using QlBatesDetJumpModel = shared_ptr<BatesDetJumpModel>;
+using QlBatesDoubleExpDetJumpModel = shared_ptr<BatesDoubleExpDetJumpModel>;
+using QlBatesDoubleExpModel = shared_ptr<BatesDoubleExpModel>;
+using QlBatesModel = shared_ptr<BatesModel>;
+using QlBatesProcess = shared_ptr<BatesProcess>;
+using QlBermudanExercise = shared_ptr<BermudanExercise>;
 // BlackAtmVolCurve is the family root: upstream speaks Handle<BlackAtmVolCurve> itself
 // (SabrVolSurface's ctor/atmCurve(), VolatilityCube), same reasoning as
 // QlOptionletVolatilityStructure/QlSwaptionVolatilityStructure/QlBlackVolTermStructure above --
@@ -706,172 +703,172 @@ typedef shared_ptr<BermudanExercise> QlBermudanExercise;
 // calc/getters (per CLAUDE.md), so each gets its own shared_ptr-wrapped type, same as
 // QlSabrSwaptionVolatilityCube/QlInterpolatedSwaptionVolatilityCube under the Handle-wrapped
 // QlSwaptionVolatilityStructure root.
-typedef Handle<BlackAtmVolCurve> QlBlackAtmVolCurve;
-typedef shared_ptr<AbcdAtmVolCurve> QlAbcdAtmVolCurve;
+using QlBlackAtmVolCurve = Handle<BlackAtmVolCurve>;
+using QlAbcdAtmVolCurve = shared_ptr<AbcdAtmVolCurve>;
 // BlackVolSurface itself is never spoken of as Handle<BlackVolSurface> upstream (grep confirms),
 // so it's a plain shared_ptr intermediate -- only used to route SabrVolSurface's Upcastable chain
 // through its own smileSection getter, exactly like QlFixedVsFloatingSwap routes VanillaSwap's
 // upcast chain up to QlSwap.
-typedef shared_ptr<BlackVolSurface> QlBlackVolSurface;
-typedef shared_ptr<SabrVolSurface> QlSabrVolSurface;
-typedef shared_ptr<BlackCalculator> QlBlackCalculator;
-typedef shared_ptr<BlackCalibrationHelper> QlBlackCalibrationHelper;
-typedef shared_ptr<BlackProcess> QlBlackProcess;
-typedef shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
-typedef shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
-typedef shared_ptr<BlackVolatilitySurfaceDelta> QlBlackVolatilitySurfaceDelta;
+using QlBlackVolSurface = shared_ptr<BlackVolSurface>;
+using QlSabrVolSurface = shared_ptr<SabrVolSurface>;
+using QlBlackCalculator = shared_ptr<BlackCalculator>;
+using QlBlackCalibrationHelper = shared_ptr<BlackCalibrationHelper>;
+using QlBlackProcess = shared_ptr<BlackProcess>;
+using QlBlackScholesCalculator = shared_ptr<BlackScholesCalculator>;
+using QlBlackVarianceCurve = shared_ptr<BlackVarianceCurve>;
+using QlBlackVolatilitySurfaceDelta = shared_ptr<BlackVolatilitySurfaceDelta>;
 // A vol structure is a Handle, same reasoning as QlYieldTermStructure/QlQuote above -- upstream
 // itself speaks Handle<BlackVolTermStructure> throughout, unlike the VolatilityTermStructure
 // base (never a Handle upstream, confirmed by grep; stays shared_ptr, same as QlTermStructure).
-typedef Handle<BlackVolTermStructure> QlBlackVolTermStructure;
-typedef RelinkableHandle<BlackVolTermStructure> QlRelinkableBlackVolTermStructure;
-typedef shared_ptr<BondHelper> QlBondHelper;
-typedef shared_ptr<CalibratedModel> QlCalibratedModel;
-typedef shared_ptr<CalibrationHelper> QlCalibrationHelper;
-typedef shared_ptr<Callability> QlCallability;
-typedef shared_ptr<CallableBond> QlCallableBond;
-typedef shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
-typedef shared_ptr<CapFloor> QlCapFloor;
+using QlBlackVolTermStructure = Handle<BlackVolTermStructure>;
+using QlRelinkableBlackVolTermStructure = RelinkableHandle<BlackVolTermStructure>;
+using QlBondHelper = shared_ptr<BondHelper>;
+using QlCalibratedModel = shared_ptr<CalibratedModel>;
+using QlCalibrationHelper = shared_ptr<CalibrationHelper>;
+using QlCallability = shared_ptr<Callability>;
+using QlCallableBond = shared_ptr<CallableBond>;
+using QlCallableBondVolatilityStructure = shared_ptr<CallableBondVolatilityStructure>;
+using QlCapFloor = shared_ptr<CapFloor>;
 // Unlike QlOptionletVolatilityStructure/QlSwaptionVolatilityStructure/QlBlackVolTermStructure,
 // upstream never speaks Handle<CapFloorTermVolatilityStructure> anywhere (grep confirms only
 // Handle<CapFloorTermVolCurve>, in the still-unbound OptionletStripper2, and
 // shared_ptr<CapFloorTermVolSurface>, in OptionletStripper1) -- shared_ptr, like
 // QlVolatilityTermStructure/QlCapFloorTermVolSurface themselves.
-typedef shared_ptr<CapFloorTermVolatilityStructure> QlCapFloorTermVolatilityStructure;
-typedef shared_ptr<CapFloorTermVolCurve> QlCapFloorTermVolCurve;
-typedef shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
+using QlCapFloorTermVolatilityStructure = shared_ptr<CapFloorTermVolatilityStructure>;
+using QlCapFloorTermVolCurve = shared_ptr<CapFloorTermVolCurve>;
+using QlCapFloorTermVolSurface = shared_ptr<CapFloorTermVolSurface>;
 // CommodityCurve is a plain TermStructure subclass, constructed and consumed directly by value
 // (basisOfCurve_ is a shared_ptr<CommodityCurve>, never a Handle) -- shared_ptr-wrapped, same
 // reasoning as QlTermStructure/QlCallableBondVolatilityStructure/QlDefaultProbabilityTermStructure.
-typedef shared_ptr<CommodityCurve> QlCommodityCurve;
+using QlCommodityCurve = shared_ptr<CommodityCurve>;
 // CommodityIndex is likewise shared_ptr-wrapped: Index leaves in general are (QlIndex,
 // QlEquityIndex above), and CommodityIndex's own forwardCurve_ member is the shared_ptr
 // QlCommodityCurve above, never a Handle.
-typedef shared_ptr<CommodityIndex> QlCommodityIndex;
+using QlCommodityIndex = shared_ptr<CommodityIndex>;
 // Commodity/EnergyCommodity are abstract-here (no bindable constructor -- Commodity is never
 // constructed directly upstream, and EnergyCommodity::quantity() is pure virtual), reachable only
 // as an upcast target once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap) exists.
-typedef shared_ptr<Commodity> QlCommodity;
-typedef shared_ptr<EnergyCommodity> QlEnergyCommodity;
-typedef shared_ptr<EnergyFuture> QlEnergyFuture;
+using QlCommodity = shared_ptr<Commodity>;
+using QlEnergyCommodity = shared_ptr<EnergyCommodity>;
+using QlEnergyFuture = shared_ptr<EnergyFuture>;
 // EnergySwap binds no constructor (its own performCalculations is never overridden, so calling it
 // falls through to Instrument::performCalculations's QL_REQUIRE(engine_, ...) and throws) --
 // reachable only as an upcast target from EnergyVanillaSwap/EnergyBasisSwap, exactly like
 // FixedVsFloatingSwap/VanillaSwap.
-typedef shared_ptr<EnergySwap> QlEnergySwap;
-typedef shared_ptr<EnergyVanillaSwap> QlEnergyVanillaSwap;
-typedef shared_ptr<EnergyBasisSwap> QlEnergyBasisSwap;
-typedef shared_ptr<CommodityCashFlow> QlCommodityCashFlow;
-typedef shared_ptr<CdsOption> QlCdsOption;
-typedef shared_ptr<Claim> QlClaim;
-typedef shared_ptr<ConvertibleBond> QlConvertibleBond;
-typedef shared_ptr<CPIBond> QlCPIBond;
-typedef shared_ptr<CPICapFloor> QlCPICapFloor;
+using QlEnergySwap = shared_ptr<EnergySwap>;
+using QlEnergyVanillaSwap = shared_ptr<EnergyVanillaSwap>;
+using QlEnergyBasisSwap = shared_ptr<EnergyBasisSwap>;
+using QlCommodityCashFlow = shared_ptr<CommodityCashFlow>;
+using QlCdsOption = shared_ptr<CdsOption>;
+using QlClaim = shared_ptr<Claim>;
+using QlConvertibleBond = shared_ptr<ConvertibleBond>;
+using QlCPIBond = shared_ptr<CPIBond>;
+using QlCPICapFloor = shared_ptr<CPICapFloor>;
 // A plain TermStructure leaf like CommodityCurve/ZeroInflationTermStructure -- shared_ptr, not
 // a Handle; wrapped into Handle<CPICapFloorTermPriceSurface> at the point of use
 // (InterpolatingCPICapFloorEngine's ctor).
-typedef shared_ptr<CPICapFloorTermPriceSurface> QlCPICapFloorTermPriceSurface;
-typedef shared_ptr<CPICashFlow> QlCPICashFlow;
-typedef shared_ptr<CPISwap> QlCPISwap;
+using QlCPICapFloorTermPriceSurface = shared_ptr<CPICapFloorTermPriceSurface>;
+using QlCPICashFlow = shared_ptr<CPICashFlow>;
+using QlCPISwap = shared_ptr<CPISwap>;
 // A VolatilityTermStructure family member like YoYOptionletVolatilitySurface -- Handle, not a
 // plain shared_ptr.
-typedef Handle<CPIVolatilitySurface> QlCPIVolatilitySurface;
-typedef shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
-typedef shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityTermStructure;
-typedef shared_ptr<DeltaVolQuote> QlDeltaVolQuote;
-typedef shared_ptr<Dividend> QlDividend;
-typedef shared_ptr<EquityCashFlow> QlEquityCashFlow;
-typedef shared_ptr<EquityCashFlowPricer> QlEquityCashFlowPricer;
-typedef shared_ptr<EquityIndex> QlEquityIndex;
-typedef shared_ptr<EquityQuantoCashFlowPricer> QlEquityQuantoCashFlowPricer;
-typedef shared_ptr<EquityTotalReturnSwap> QlEquityTotalReturnSwap;
-typedef shared_ptr<EuropeanExercise> QlEuropeanExercise;
-typedef shared_ptr<Exercise> QlExercise;
-typedef shared_ptr<RebatedExercise> QlRebatedExercise;
-typedef shared_ptr<ExtOUWithJumpsProcess> QlExtOUWithJumpsProcess;
-typedef shared_ptr<ExtendedOrnsteinUhlenbeckProcess> QlExtendedOrnsteinUhlenbeckProcess;
-typedef shared_ptr<Fdm1dMesher> QlFdm1dMesher;
-typedef shared_ptr<FdmInnerValueCalculator> QlFdmInnerValueCalculator;
-typedef shared_ptr<FdmMesher> QlFdmMesher;
-typedef shared_ptr<FdmQuantoHelper> QlFdmQuantoHelper;
-typedef shared_ptr<FittedBondDiscountCurve> QlFittedBondDiscountCurve;
-typedef shared_ptr<FxForward> QlFxForward;
-typedef shared_ptr<G2> QlG2;
-typedef shared_ptr<GJRGARCHModel> QlGJRGARCHModel;
-typedef shared_ptr<GJRGARCHProcess> QlGJRGARCHProcess;
-typedef shared_ptr<Gaussian1dModel> QlGaussian1dModel;
-typedef shared_ptr<GeneralizedBlackScholesProcess> QlGeneralizedBlackScholesProcess;
-typedef shared_ptr<Gsr> QlGsr;
-typedef shared_ptr<HestonModel> QlHestonModel;
-typedef shared_ptr<HestonProcess> QlHestonProcess;
-typedef shared_ptr<HistoricalIndexAnalysis> QlHistoricalIndexAnalysis;
-typedef shared_ptr<HullWhite> QlHullWhite;
-typedef shared_ptr<HullWhiteForwardProcess> QlHullWhiteForwardProcess;
-typedef shared_ptr<HullWhiteProcess> QlHullWhiteProcess;
-typedef shared_ptr<HybridHestonHullWhiteProcess> QlHybridHestonHullWhiteProcess;
-typedef shared_ptr<InflationIndex> QlInflationIndex;
-typedef shared_ptr<InterestRateIndex> QlInterestRateIndex;
-typedef shared_ptr<KlugeExtOUProcess> QlKlugeExtOUProcess;
-typedef shared_ptr<LiborForwardModel> QlLiborForwardModel;
-typedef shared_ptr<LiborForwardModelProcess> QlLiborForwardModelProcess;
-typedef shared_ptr<LmCorrelationModel> QlLmCorrelationModel;
-typedef shared_ptr<LmVolatilityModel> QlLmVolatilityModel;
-typedef shared_ptr<LocalVolTermStructure> QlLocalVolTermStructure;
-typedef shared_ptr<MargrabeOption> QlMargrabeOption;
-typedef shared_ptr<MarkovFunctional> QlMarkovFunctional;
-typedef shared_ptr<Merton76Process> QlMerton76Process;
-typedef shared_ptr<MultiAssetOption> QlMultiAssetOption;
+using QlCPIVolatilitySurface = Handle<CPIVolatilitySurface>;
+using QlCreditDefaultSwap = shared_ptr<CreditDefaultSwap>;
+using QlDefaultProbabilityTermStructure = shared_ptr<DefaultProbabilityTermStructure>;
+using QlDeltaVolQuote = shared_ptr<DeltaVolQuote>;
+using QlDividend = shared_ptr<Dividend>;
+using QlEquityCashFlow = shared_ptr<EquityCashFlow>;
+using QlEquityCashFlowPricer = shared_ptr<EquityCashFlowPricer>;
+using QlEquityIndex = shared_ptr<EquityIndex>;
+using QlEquityQuantoCashFlowPricer = shared_ptr<EquityQuantoCashFlowPricer>;
+using QlEquityTotalReturnSwap = shared_ptr<EquityTotalReturnSwap>;
+using QlEuropeanExercise = shared_ptr<EuropeanExercise>;
+using QlExercise = shared_ptr<Exercise>;
+using QlRebatedExercise = shared_ptr<RebatedExercise>;
+using QlExtOUWithJumpsProcess = shared_ptr<ExtOUWithJumpsProcess>;
+using QlExtendedOrnsteinUhlenbeckProcess = shared_ptr<ExtendedOrnsteinUhlenbeckProcess>;
+using QlFdm1dMesher = shared_ptr<Fdm1dMesher>;
+using QlFdmInnerValueCalculator = shared_ptr<FdmInnerValueCalculator>;
+using QlFdmMesher = shared_ptr<FdmMesher>;
+using QlFdmQuantoHelper = shared_ptr<FdmQuantoHelper>;
+using QlFittedBondDiscountCurve = shared_ptr<FittedBondDiscountCurve>;
+using QlFxForward = shared_ptr<FxForward>;
+using QlG2 = shared_ptr<G2>;
+using QlGJRGARCHModel = shared_ptr<GJRGARCHModel>;
+using QlGJRGARCHProcess = shared_ptr<GJRGARCHProcess>;
+using QlGaussian1dModel = shared_ptr<Gaussian1dModel>;
+using QlGeneralizedBlackScholesProcess = shared_ptr<GeneralizedBlackScholesProcess>;
+using QlGsr = shared_ptr<Gsr>;
+using QlHestonModel = shared_ptr<HestonModel>;
+using QlHestonProcess = shared_ptr<HestonProcess>;
+using QlHistoricalIndexAnalysis = shared_ptr<HistoricalIndexAnalysis>;
+using QlHullWhite = shared_ptr<HullWhite>;
+using QlHullWhiteForwardProcess = shared_ptr<HullWhiteForwardProcess>;
+using QlHullWhiteProcess = shared_ptr<HullWhiteProcess>;
+using QlHybridHestonHullWhiteProcess = shared_ptr<HybridHestonHullWhiteProcess>;
+using QlInflationIndex = shared_ptr<InflationIndex>;
+using QlInterestRateIndex = shared_ptr<InterestRateIndex>;
+using QlKlugeExtOUProcess = shared_ptr<KlugeExtOUProcess>;
+using QlLiborForwardModel = shared_ptr<LiborForwardModel>;
+using QlLiborForwardModelProcess = shared_ptr<LiborForwardModelProcess>;
+using QlLmCorrelationModel = shared_ptr<LmCorrelationModel>;
+using QlLmVolatilityModel = shared_ptr<LmVolatilityModel>;
+using QlLocalVolTermStructure = shared_ptr<LocalVolTermStructure>;
+using QlMargrabeOption = shared_ptr<MargrabeOption>;
+using QlMarkovFunctional = shared_ptr<MarkovFunctional>;
+using QlMerton76Process = shared_ptr<Merton76Process>;
+using QlMultiAssetOption = shared_ptr<MultiAssetOption>;
 // MultiCurve is enable_shared_from_this and upstream's own doc comment says "This must be a
 // shared pointer" -- bound as a standalone leaf type (own Finalizable instance, no Upcastable
 // parent: it isn't a TermStructure), same shape as e.g. QlSwapRateHelper.
-typedef shared_ptr<MultiCurve> QlMultiCurve;
-typedef shared_ptr<NonstandardSwap> QlNonstandardSwap;
-typedef shared_ptr<NonstandardSwaption> QlNonstandardSwaption;
-typedef shared_ptr<FloatFloatSwap> QlFloatFloatSwap;
-typedef shared_ptr<FloatFloatSwaption> QlFloatFloatSwaption;
-typedef shared_ptr<OISRateHelper> QlOISRateHelper;
-typedef shared_ptr<OneAssetOption> QlOneAssetOption;
-typedef shared_ptr<OneFactorAffineModel> QlOneFactorAffineModel;
-typedef shared_ptr<Option> QlOption;
+using QlMultiCurve = shared_ptr<MultiCurve>;
+using QlNonstandardSwap = shared_ptr<NonstandardSwap>;
+using QlNonstandardSwaption = shared_ptr<NonstandardSwaption>;
+using QlFloatFloatSwap = shared_ptr<FloatFloatSwap>;
+using QlFloatFloatSwaption = shared_ptr<FloatFloatSwaption>;
+using QlOISRateHelper = shared_ptr<OISRateHelper>;
+using QlOneAssetOption = shared_ptr<OneAssetOption>;
+using QlOneFactorAffineModel = shared_ptr<OneFactorAffineModel>;
+using QlOption = shared_ptr<Option>;
 // OptionletStripper1 is never exposed to Haskell (see qlOptionletStripper1 above), but
 // OptionletStripper2 has its own diagnostic getters (atmCapFloorStrikes/atmCapFloorPrices/
 // spreadsVol), so it gets its own shared_ptr-wrapped leaf, same as QlSabrInterpolatedSmileSection.
-typedef shared_ptr<OptionletStripper2> QlOptionletStripper2;
-typedef shared_ptr<OvernightIndex> QlOvernightIndex;
-typedef shared_ptr<OvernightIndexedSwap> QlOvernightIndexedSwap;
-typedef shared_ptr<OvernightIndexedSwapIndex> QlOvernightIndexedSwapIndex;
-typedef shared_ptr<Payoff> QlPayoff;
-typedef shared_ptr<PercentageStrikePayoff> QlPercentageStrikePayoff;
-typedef shared_ptr<PiecewiseTimeDependentHestonModel> QlPiecewiseTimeDependentHestonModel;
-typedef shared_ptr<PlainVanillaPayoff> QlPlainVanillaPayoff;
-typedef shared_ptr<QuantoBarrierOption> QlQuantoBarrierOption;
-typedef shared_ptr<QuantoForwardVanillaOption> QlQuantoForwardVanillaOption;
-typedef shared_ptr<QuantoVanillaOption> QlQuantoVanillaOption;
-typedef shared_ptr<SabrInterpolatedSmileSection> QlSabrInterpolatedSmileSection;
-typedef shared_ptr<ShortRateModel> QlShortRateModel;
-typedef shared_ptr<SimpleQuote> QlSimpleQuote;
-typedef shared_ptr<SmileSection> QlSmileSection;
-typedef shared_ptr<SoftBarrierOption> QlSoftBarrierOption;
-typedef shared_ptr<StochasticProcess1D> QlStochasticProcess1D;
-typedef shared_ptr<StochasticProcess> QlStochasticProcess;
-typedef shared_ptr<StochasticProcessArray> QlStochasticProcessArray;
-typedef shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
-typedef shared_ptr<Swap> QlSwap;
-typedef shared_ptr<FixedVsFloatingSwap> QlFixedVsFloatingSwap;
-typedef shared_ptr<ConstNotionalCrossCurrencySwap> QlConstNotionalCrossCurrencySwap;
-typedef shared_ptr<ConstNotionalCrossCurrencyBasisSwap> QlConstNotionalCrossCurrencyBasisSwap;
-typedef shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap> QlConstNotionalCrossCurrencyFixedVsFloatingSwap;
-typedef shared_ptr<SwapIndex> QlSwapIndex;
-typedef shared_ptr<SwapRateHelper> QlSwapRateHelper;
-typedef shared_ptr<Swaption> QlSwaption;
-typedef shared_ptr<SwaptionHelper> QlSwaptionHelper;
-typedef shared_ptr<SabrSwaptionVolatilityCube> QlSabrSwaptionVolatilityCube;
-typedef shared_ptr<InterpolatedSwaptionVolatilityCube> QlInterpolatedSwaptionVolatilityCube;
+using QlOptionletStripper2 = shared_ptr<OptionletStripper2>;
+using QlOvernightIndex = shared_ptr<OvernightIndex>;
+using QlOvernightIndexedSwap = shared_ptr<OvernightIndexedSwap>;
+using QlOvernightIndexedSwapIndex = shared_ptr<OvernightIndexedSwapIndex>;
+using QlPayoff = shared_ptr<Payoff>;
+using QlPercentageStrikePayoff = shared_ptr<PercentageStrikePayoff>;
+using QlPiecewiseTimeDependentHestonModel = shared_ptr<PiecewiseTimeDependentHestonModel>;
+using QlPlainVanillaPayoff = shared_ptr<PlainVanillaPayoff>;
+using QlQuantoBarrierOption = shared_ptr<QuantoBarrierOption>;
+using QlQuantoForwardVanillaOption = shared_ptr<QuantoForwardVanillaOption>;
+using QlQuantoVanillaOption = shared_ptr<QuantoVanillaOption>;
+using QlSabrInterpolatedSmileSection = shared_ptr<SabrInterpolatedSmileSection>;
+using QlShortRateModel = shared_ptr<ShortRateModel>;
+using QlSimpleQuote = shared_ptr<SimpleQuote>;
+using QlSmileSection = shared_ptr<SmileSection>;
+using QlSoftBarrierOption = shared_ptr<SoftBarrierOption>;
+using QlStochasticProcess1D = shared_ptr<StochasticProcess1D>;
+using QlStochasticProcess = shared_ptr<StochasticProcess>;
+using QlStochasticProcessArray = shared_ptr<StochasticProcessArray>;
+using QlStrikedTypePayoff = shared_ptr<StrikedTypePayoff>;
+using QlSwap = shared_ptr<Swap>;
+using QlFixedVsFloatingSwap = shared_ptr<FixedVsFloatingSwap>;
+using QlConstNotionalCrossCurrencySwap = shared_ptr<ConstNotionalCrossCurrencySwap>;
+using QlConstNotionalCrossCurrencyBasisSwap = shared_ptr<ConstNotionalCrossCurrencyBasisSwap>;
+using QlConstNotionalCrossCurrencyFixedVsFloatingSwap = shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap>;
+using QlSwapIndex = shared_ptr<SwapIndex>;
+using QlSwapRateHelper = shared_ptr<SwapRateHelper>;
+using QlSwaption = shared_ptr<Swaption>;
+using QlSwaptionHelper = shared_ptr<SwaptionHelper>;
+using QlSabrSwaptionVolatilityCube = shared_ptr<SabrSwaptionVolatilityCube>;
+using QlInterpolatedSwaptionVolatilityCube = shared_ptr<InterpolatedSwaptionVolatilityCube>;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
-typedef Handle<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
-typedef RelinkableHandle<SwaptionVolatilityStructure> QlRelinkableSwaptionVolatilityStructure;
-typedef shared_ptr<SwingExercise> QlSwingExercise;
-typedef shared_ptr<TermStructure> QlTermStructure;
+using QlSwaptionVolatilityStructure = Handle<SwaptionVolatilityStructure>;
+using QlRelinkableSwaptionVolatilityStructure = RelinkableHandle<SwaptionVolatilityStructure>;
+using QlSwingExercise = shared_ptr<SwingExercise>;
+using QlTermStructure = shared_ptr<TermStructure>;
 // EndCriteria/OptimizationMethod are boxed as shared_ptr (not left raw/single-owner) because
 // FittedBondDiscountCurve's fitting methods, SabrInterpolatedSmileSection, and
 // SabrSwaptionVolatilityCube all store one as a shared_ptr member for their own full lifetime --
@@ -879,519 +876,557 @@ typedef shared_ptr<TermStructure> QlTermStructure;
 // ForeignPtr is collected. The two purely-synchronous consumers (qlOptimize,
 // qlGsrCalibrateVolatilitiesIterative/qlCalibratedModelCalibrate's method/endCriteria args) are
 // unaffected -- they only ever dereference the box within one call.
-typedef shared_ptr<OptimizationMethod> QlOptimizationMethod;
-typedef shared_ptr<EndCriteria> QlEndCriteria;
-typedef shared_ptr<TypePayoff> QlTypePayoff;
-typedef shared_ptr<VanillaOption> QlVanillaOption;
-typedef shared_ptr<VanillaSwap> QlVanillaSwap;
-typedef shared_ptr<VarianceGammaProcess> QlVarianceGammaProcess;
-typedef shared_ptr<VarianceOption> QlVarianceOption;
-typedef shared_ptr<VarianceSwap> QlVarianceSwap;
-typedef shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
-typedef shared_ptr<YearOnYearInflationSwap> QlYearOnYearInflationSwap;
-typedef shared_ptr<YearOnYearInflationSwapHelper> QlYearOnYearInflationSwapHelper;
+using QlOptimizationMethod = shared_ptr<OptimizationMethod>;
+using QlEndCriteria = shared_ptr<EndCriteria>;
+using QlTypePayoff = shared_ptr<TypePayoff>;
+using QlVanillaOption = shared_ptr<VanillaOption>;
+using QlVanillaSwap = shared_ptr<VanillaSwap>;
+using QlVarianceGammaProcess = shared_ptr<VarianceGammaProcess>;
+using QlVarianceOption = shared_ptr<VarianceOption>;
+using QlVarianceSwap = shared_ptr<VarianceSwap>;
+using QlVolatilityTermStructure = shared_ptr<VolatilityTermStructure>;
+using QlYearOnYearInflationSwap = shared_ptr<YearOnYearInflationSwap>;
+using QlYearOnYearInflationSwapHelper = shared_ptr<YearOnYearInflationSwapHelper>;
 // A plain TermStructure leaf like CPICapFloorTermPriceSurface -- shared_ptr, not a Handle.
-typedef shared_ptr<YoYCapFloorTermPriceSurface> QlYoYCapFloorTermPriceSurface;
-typedef shared_ptr<YoYInflationCapFloor> QlYoYInflationCapFloor;
+using QlYoYCapFloorTermPriceSurface = shared_ptr<YoYCapFloorTermPriceSurface>;
+using QlYoYInflationCapFloor = shared_ptr<YoYInflationCapFloor>;
 // A standalone pricer type like FloatingRateCouponPricer -- shared_ptr, not a Handle.
-typedef shared_ptr<YoYInflationCouponPricer> QlYoYInflationCouponPricer;
-typedef shared_ptr<YoYInflationIndex> QlYoYInflationIndex;
-typedef shared_ptr<YoYInflationTermStructure> QlYoYInflationTermStructure;
+using QlYoYInflationCouponPricer = shared_ptr<YoYInflationCouponPricer>;
+using QlYoYInflationIndex = shared_ptr<YoYInflationIndex>;
+using QlYoYInflationTermStructure = shared_ptr<YoYInflationTermStructure>;
 // A vol structure is a Handle, same reasoning as QlOptionletVolatilityStructure above.
-typedef Handle<YoYOptionletVolatilitySurface> QlYoYOptionletVolatilitySurface;
-typedef shared_ptr<ZeroCouponInflationSwap> QlZeroCouponInflationSwap;
-typedef shared_ptr<ZeroCouponInflationSwapHelper> QlZeroCouponInflationSwapHelper;
-typedef shared_ptr<ZeroCouponSwap> QlZeroCouponSwap;
-typedef shared_ptr<ZeroInflationCashFlow> QlZeroInflationCashFlow;
-typedef shared_ptr<ZeroInflationIndex> QlZeroInflationIndex;
-typedef shared_ptr<ZeroInflationTermStructure> QlZeroInflationTermStructure;
-typedef std::vector<shared_ptr<Coupon> > CouponLeg;
+using QlYoYOptionletVolatilitySurface = Handle<YoYOptionletVolatilitySurface>;
+using QlZeroCouponInflationSwap = shared_ptr<ZeroCouponInflationSwap>;
+using QlZeroCouponInflationSwapHelper = shared_ptr<ZeroCouponInflationSwapHelper>;
+using QlZeroCouponSwap = shared_ptr<ZeroCouponSwap>;
+using QlZeroInflationCashFlow = shared_ptr<ZeroInflationCashFlow>;
+using QlZeroInflationIndex = shared_ptr<ZeroInflationIndex>;
+using QlZeroInflationTermStructure = shared_ptr<ZeroInflationTermStructure>;
+using CouponLeg = std::vector<shared_ptr<Coupon> >;
 
 #ifdef QLTRACK_ALLOCATIONS
-template <class T> class ObjClassName {public: static void output(std::ostream& os) {os << typeid(T).name();}};
-template <> class ObjClassName<AffineModel*> {public: static void output(std::ostream& os) {os << "AffineModel";}};
-template <> class ObjClassName<AmericanExercise*> {public: static void output(std::ostream& os) {os << "AmericanExercise";}};
-template <> class ObjClassName<AnalyticBSMHullWhiteEngine*> {public: static void output(std::ostream& os) {os << "AnalyticBSMHullWhiteEngine";}};
-template <> class ObjClassName<AnalyticBarrierEngine*> {public: static void output(std::ostream& os) {os << "AnalyticBarrierEngine";}};
-template <> class ObjClassName<AnalyticCapFloorEngine*> {public: static void output(std::ostream& os) {os << "AnalyticCapFloorEngine";}};
-template <> class ObjClassName<AnalyticCliquetEngine*> {public: static void output(std::ostream& os) {os << "AnalyticCliquetEngine";}};
-template <> class ObjClassName<AnalyticContinuousFixedLookbackEngine*> {public: static void output(std::ostream& os) {os << "AnalyticContinuousFixedLookbackEngine";}};
-template <> class ObjClassName<AnalyticContinuousFloatingLookbackEngine*> {public: static void output(std::ostream& os) {os << "AnalyticContinuousFloatingLookbackEngine";}};
-template <> class ObjClassName<AnalyticContinuousGeometricAveragePriceAsianEngine*> {public: static void output(std::ostream& os) {os << "AnalyticContinuousGeometricAveragePriceAsianEngine";}};
-template <> class ObjClassName<AnalyticDigitalAmericanEngine*> {public: static void output(std::ostream& os) {os << "AnalyticDigitalAmericanEngine";}};
-template <> class ObjClassName<AnalyticDiscreteGeometricAveragePriceAsianEngine*> {public: static void output(std::ostream& os) {os << "AnalyticDiscreteGeometricAveragePriceAsianEngine";}};
-template <> class ObjClassName<AnalyticDiscreteGeometricAverageStrikeAsianEngine*> {public: static void output(std::ostream& os) {os << "AnalyticDiscreteGeometricAverageStrikeAsianEngine";}};
-template <> class ObjClassName<AnalyticDividendEuropeanEngine*> {public: static void output(std::ostream& os) {os << "AnalyticDividendEuropeanEngine";}};
-template <> class ObjClassName<AnalyticEuropeanEngine*> {public: static void output(std::ostream& os) {os << "AnalyticEuropeanEngine";}};
-template <> class ObjClassName<AnalyticGJRGARCHEngine*> {public: static void output(std::ostream& os) {os << "AnalyticGJRGARCHEngine";}};
-template <> class ObjClassName<AnalyticHestonEngine*> {public: static void output(std::ostream& os) {os << "AnalyticHestonEngine";}};
-template <> class ObjClassName<AnalyticHestonHullWhiteEngine*> {public: static void output(std::ostream& os) {os << "AnalyticHestonHullWhiteEngine";}};
-template <> class ObjClassName<AnalyticPerformanceEngine*> {public: static void output(std::ostream& os) {os << "AnalyticPerformanceEngine";}};
-template <> class ObjClassName<AssetOrNothingPayoff*> {public: static void output(std::ostream& os) {os << "AssetOrNothingPayoff";}};
-template <> class ObjClassName<AssetSwap*> {public: static void output(std::ostream& os) {os << "AssetSwap";}};
-template <> class ObjClassName<BMAIndex*> {public: static void output(std::ostream& os) {os << "BMAIndex";}};
-template <> class ObjClassName<BMASwap*> {public: static void output(std::ostream& os) {os << "BMASwap";}};
-template <> class ObjClassName<BMASwapRateHelper*> {public: static void output(std::ostream& os) {os << "BMASwapRateHelper";}};
-template <> class ObjClassName<BachelierCalculator*> {public: static void output(std::ostream& os) {os << "BachelierCalculator";}};
-template <> class ObjClassName<BaroneAdesiWhaleyApproximationEngine*> {public: static void output(std::ostream& os) {os << "BaroneAdesiWhaleyApproximationEngine";}};
-template <> class ObjClassName<BarrierOption*> {public: static void output(std::ostream& os) {os << "BarrierOption";}};
-template <> class ObjClassName<DoubleBarrierOption*> {public: static void output(std::ostream& os) {os << "DoubleBarrierOption";}};
-template <> class ObjClassName<BasketPayoff*> {public: static void output(std::ostream& os) {os << "BasketPayoff";}};
-template <> class ObjClassName<BatesDetJumpEngine*> {public: static void output(std::ostream& os) {os << "BatesDetJumpEngine";}};
-template <> class ObjClassName<BatesDetJumpModel*> {public: static void output(std::ostream& os) {os << "BatesDetJumpModel";}};
-template <> class ObjClassName<BatesDoubleExpDetJumpEngine*> {public: static void output(std::ostream& os) {os << "BatesDoubleExpDetJumpEngine";}};
-template <> class ObjClassName<BatesDoubleExpDetJumpModel*> {public: static void output(std::ostream& os) {os << "BatesDoubleExpDetJumpModel";}};
-template <> class ObjClassName<BatesDoubleExpEngine*> {public: static void output(std::ostream& os) {os << "BatesDoubleExpEngine";}};
-template <> class ObjClassName<BatesDoubleExpModel*> {public: static void output(std::ostream& os) {os << "BatesDoubleExpModel";}};
-template <> class ObjClassName<BatesEngine*> {public: static void output(std::ostream& os) {os << "BatesEngine";}};
-template <> class ObjClassName<BatesModel*> {public: static void output(std::ostream& os) {os << "BatesModel";}};
-template <> class ObjClassName<BatesProcess*> {public: static void output(std::ostream& os) {os << "BatesProcess";}};
-template <> class ObjClassName<BermudanExercise*> {public: static void output(std::ostream& os) {os << "BermudanExercise";}};
-template <> class ObjClassName<BespokeCalendar*> {public: static void output(std::ostream& os) {os << "BespokeCalendar";}};
-template <> class ObjClassName<BjerksundStenslandApproximationEngine*> {public: static void output(std::ostream& os) {os << "BjerksundStenslandApproximationEngine";}};
-template <> class ObjClassName<BlackCalculator*> {public: static void output(std::ostream& os) {os << "BlackCalculator";}};
-template <> class ObjClassName<BlackDeltaCalculator*> {public: static void output(std::ostream& os) {os << "BlackDeltaCalculator";}};
-template <> class ObjClassName<BlackCalibrationHelper*> {public: static void output(std::ostream& os) {os << "BlackCalibrationHelper";}};
-template <> class ObjClassName<BlackCallableFixedRateBondEngine*> {public: static void output(std::ostream& os) {os << "BlackCallableFixedRateBondEngine";}};
-template <> class ObjClassName<BlackCallableZeroCouponBondEngine*> {public: static void output(std::ostream& os) {os << "BlackCallableZeroCouponBondEngine";}};
-template <> class ObjClassName<BlackCapFloorEngine*> {public: static void output(std::ostream& os) {os << "BlackCapFloorEngine";}};
-template <> class ObjClassName<BlackConstantVol*> {public: static void output(std::ostream& os) {os << "BlackConstantVol";}};
-template <> class ObjClassName<BlackKarasinski*> {public: static void output(std::ostream& os) {os << "BlackKarasinski";}};
-template <> class ObjClassName<BlackProcess*> {public: static void output(std::ostream& os) {os << "BlackProcess";}};
-template <> class ObjClassName<BlackScholesCalculator*> {public: static void output(std::ostream& os) {os << "BlackScholesCalculator";}};
-template <> class ObjClassName<BlackScholesMertonProcess*> {public: static void output(std::ostream& os) {os << "BlackScholesMertonProcess";}};
-template <> class ObjClassName<BlackScholesProcess*> {public: static void output(std::ostream& os) {os << "BlackScholesProcess";}};
-template <> class ObjClassName<BlackSwaptionEngine*> {public: static void output(std::ostream& os) {os << "BlackSwaptionEngine";}};
-template <> class ObjClassName<BlackVarianceCurve*> {public: static void output(std::ostream& os) {os << "BlackVarianceCurve";}};
-template <> class ObjClassName<BlackVolTermStructure*> {public: static void output(std::ostream& os) {os << "BlackVolTermStructure";}};
-template <> class ObjClassName<Bond*> {public: static void output(std::ostream& os) {os << "Bond";}};
-template <> class ObjClassName<BondForward*> {public: static void output(std::ostream& os) {os << "BondForward";}};
-template <> class ObjClassName<BondHelper*> {public: static void output(std::ostream& os) {os << "BondHelper";}};
-template <> class ObjClassName<BoundaryConstraint*> {public: static void output(std::ostream& os) {os << "BoundaryConstraint";}};
-template <> class ObjClassName<Business252*> {public: static void output(std::ostream& os) {os << "Business252";}};
-template <> class ObjClassName<Calendar*> {public: static void output(std::ostream& os) {os << "Calendar";}};
-template <> class ObjClassName<CalibratedModel*> {public: static void output(std::ostream& os) {os << "CalibratedModel";}};
-template <> class ObjClassName<CalibrationHelper*> {public: static void output(std::ostream& os) {os << "CalibrationHelper";}};
-template <> class ObjClassName<Callability*> {public: static void output(std::ostream& os) {os << "Callability";}};
-template <> class ObjClassName<CallableBond*> {public: static void output(std::ostream& os) {os << "CallableBond";}};
-template <> class ObjClassName<CallableBondVolatilityStructure*> {public: static void output(std::ostream& os) {os << "CallableBondVolatilityStructure";}};
-template <> class ObjClassName<CallableFixedRateBond*> {public: static void output(std::ostream& os) {os << "CallableFixedRateBond";}};
-template <> class ObjClassName<CallableZeroCouponBond*> {public: static void output(std::ostream& os) {os << "CallableZeroCouponBond";}};
-template <> class ObjClassName<CapFloor*> {public: static void output(std::ostream& os) {os << "CapFloor";}};
-template <> class ObjClassName<CapFloorTermVolatilityStructure*> {public: static void output(std::ostream& os) {os << "CapFloorTermVolatilityStructure";}};
-template <> class ObjClassName<CapFloorTermVolCurve*> {public: static void output(std::ostream& os) {os << "CapFloorTermVolCurve";}};
-template <> class ObjClassName<CapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "CapFloorTermVolSurface";}};
-template <> class ObjClassName<CapHelper*> {public: static void output(std::ostream& os) {os << "CapHelper";}};
-template <> class ObjClassName<CashOrNothingPayoff*> {public: static void output(std::ostream& os) {os << "CashOrNothingPayoff";}};
-template <> class ObjClassName<CdsOption*> {public: static void output(std::ostream& os) {os << "CdsOption";}};
-template <> class ObjClassName<Claim*> {public: static void output(std::ostream& os) {os << "Claim";}};
-template <> class ObjClassName<CommodityType*> {public: static void output(std::ostream& os) {os << "CommodityType";}};
-template <> class ObjClassName<CompositeConstraint*> {public: static void output(std::ostream& os) {os << "CompositeConstraint";}};
-template <> class ObjClassName<CompositeInstrument*> {public: static void output(std::ostream& os) {os << "CompositeInstrument";}};
-template <> class ObjClassName<Constraint*> {public: static void output(std::ostream& os) {os << "Constraint";}};
-template <> class ObjClassName<ConvertibleBond*> {public: static void output(std::ostream& os) {os << "ConvertibleBond";}};
-template <> class ObjClassName<ConvertibleFixedCouponBond*> {public: static void output(std::ostream& os) {os << "ConvertibleFixedCouponBond";}};
-template <> class ObjClassName<ConvertibleFloatingRateBond*> {public: static void output(std::ostream& os) {os << "ConvertibleFloatingRateBond";}};
-template <> class ObjClassName<ConvertibleZeroCouponBond*> {public: static void output(std::ostream& os) {os << "ConvertibleZeroCouponBond";}};
-template <> class ObjClassName<CouponLeg*> {public: static void output(std::ostream& os) {os << "CouponLeg";}};
-template <> class ObjClassName<CPIBond*> {public: static void output(std::ostream& os) {os << "CPIBond";}};
-template <> class ObjClassName<CPICapFloor*> {public: static void output(std::ostream& os) {os << "CPICapFloor";}};
-template <> class ObjClassName<CPICapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "CPICapFloorTermPriceSurface";}};
-template <> class ObjClassName<CPISwap*> {public: static void output(std::ostream& os) {os << "CPISwap";}};
-template <> class ObjClassName<CPIVolatilitySurface*> {public: static void output(std::ostream& os) {os << "CPIVolatilitySurface";}};
-template <> class ObjClassName<CreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "CreditDefaultSwap";}};
-template <> class ObjClassName<CubicBSplinesFitting*> {public: static void output(std::ostream& os) {os << "CubicBSplinesFitting";}};
-template <> class ObjClassName<Currency*> {public: static void output(std::ostream& os) {os << "Currency";}};
-template <> class ObjClassName<DayCounter*> {public: static void output(std::ostream& os) {os << "DayCounter";}};
-template <> class ObjClassName<DefaultProbabilityTermStructure*> {public: static void output(std::ostream& os) {os << "DefaultProbabilityTermStructure";}};
-template <> class ObjClassName<DeltaVolQuote*> {public: static void output(std::ostream& os) {os << "DeltaVolQuote";}};
-template <> class ObjClassName<DepositRateHelper*> {public: static void output(std::ostream& os) {os << "DepositRateHelper";}};
-template <> class ObjClassName<DiscountingBondEngine*> {public: static void output(std::ostream& os) {os << "DiscountingBondEngine";}};
-template <> class ObjClassName<DiscountingFxForwardEngine*> {public: static void output(std::ostream& os) {os << "DiscountingFxForwardEngine";}};
-template <> class ObjClassName<DiscountingSwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingSwapEngine";}};
-template <> class ObjClassName<DiscountingConstNotionalCrossCurrencySwapEngine*> {public: static void output(std::ostream& os) {os << "DiscountingConstNotionalCrossCurrencySwapEngine";}};
-template <> class ObjClassName<Dividend*> {public: static void output(std::ostream& os) {os << "Dividend";}};
-template <> class ObjClassName<EarlyExercise*> {public: static void output(std::ostream& os) {os << "EarlyExercise";}};
-template <> class ObjClassName<EndCriteria*> {public: static void output(std::ostream& os) {os << "EndCriteria";}};
-template <> class ObjClassName<EquityCashFlow*> {public: static void output(std::ostream& os) {os << "EquityCashFlow";}};
-template <> class ObjClassName<EquityCashFlowPricer*> {public: static void output(std::ostream& os) {os << "EquityCashFlowPricer";}};
-template <> class ObjClassName<EquityIndex*> {public: static void output(std::ostream& os) {os << "EquityIndex";}};
-template <> class ObjClassName<EquityQuantoCashFlowPricer*> {public: static void output(std::ostream& os) {os << "EquityQuantoCashFlowPricer";}};
-template <> class ObjClassName<EquityTotalReturnSwap*> {public: static void output(std::ostream& os) {os << "EquityTotalReturnSwap";}};
-template <> class ObjClassName<EuropeanExercise*> {public: static void output(std::ostream& os) {os << "EuropeanExercise";}};
-template <> class ObjClassName<EuropeanOption*> {public: static void output(std::ostream& os) {os << "EuropeanOption";}};
-template <> class ObjClassName<Exercise*> {public: static void output(std::ostream& os) {os << "Exercise";}};
-template <> class ObjClassName<ExponentialSplinesFitting*> {public: static void output(std::ostream& os) {os << "ExponentialSplinesFitting";}};
-template <> class ObjClassName<ExtOUWithJumpsProcess*> {public: static void output(std::ostream& os) {os << "ExtOUWithJumpsProcess";}};
-template <> class ObjClassName<ExtendedBlackScholesMertonProcess*> {public: static void output(std::ostream& os) {os << "ExtendedBlackScholesMertonProcess";}};
-template <> class ObjClassName<ExtendedOrnsteinUhlenbeckProcess*> {public: static void output(std::ostream& os) {os << "ExtendedOrnsteinUhlenbeckProcess";}};
-template <> class ObjClassName<FdmQuantoHelper*> {public: static void output(std::ostream& os) {os << "FdmQuantoHelper";}};
-template <> class ObjClassName<FFTVanillaEngine*> {public: static void output(std::ostream& os) {os << "FFTVanillaEngine";}};
-template <> class ObjClassName<FaceValueAccrualClaim*> {public: static void output(std::ostream& os) {os << "FaceValueAccrualClaim";}};
-template <> class ObjClassName<FaceValueClaim*> {public: static void output(std::ostream& os) {os << "FaceValueClaim";}};
-template <> class ObjClassName<FdG2SwaptionEngine*> {public: static void output(std::ostream& os) {os << "FdG2SwaptionEngine";}};
-template <> class ObjClassName<FdHullWhiteSwaptionEngine*> {public: static void output(std::ostream& os) {os << "FdHullWhiteSwaptionEngine";}};
-template <> class ObjClassName<FdmSchemeDesc*> {public: static void output(std::ostream& os) {os << "FdmSchemeDesc";}};
-template <> class ObjClassName<FdmStepConditionComposite*> {public: static void output(std::ostream& os) {os << "FdmStepConditionComposite";}};
-template <> class ObjClassName<FittedBondDiscountCurve*> {public: static void output(std::ostream& os) {os << "FittedBondDiscountCurve";}};
-template <> class ObjClassName<FixedDividend*> {public: static void output(std::ostream& os) {os << "FixedDividend";}};
-template <> class ObjClassName<FixedRateBond*> {public: static void output(std::ostream& os) {os << "FixedRateBond";}};
-template <> class ObjClassName<FixedRateBondHelper*> {public: static void output(std::ostream& os) {os << "FixedRateBondHelper";}};
-template <> class ObjClassName<FlatForward*> {public: static void output(std::ostream& os) {os << "FlatForward";}};
-template <> class ObjClassName<FloatingRateBond*> {public: static void output(std::ostream& os) {os << "FloatingRateBond";}};
-template <> class ObjClassName<FloatingRateCouponPricer*> {public: static void output(std::ostream& os) {os << "FloatingRateCouponPricer";}};
-template <> class ObjClassName<Forward*> {public: static void output(std::ostream& os) {os << "Forward";}};
-template <> class ObjClassName<ForwardRateAgreement*> {public: static void output(std::ostream& os) {os << "ForwardRateAgreement";}};
-template <> class ObjClassName<ForwardSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "ForwardSpreadedTermStructure";}};
-template <> class ObjClassName<FraRateHelper*> {public: static void output(std::ostream& os) {os << "FraRateHelper";}};
-template <> class ObjClassName<FractionalDividend*> {public: static void output(std::ostream& os) {os << "FractionalDividend";}};
-template <> class ObjClassName<FuturesRateHelper*> {public: static void output(std::ostream& os) {os << "FuturesRateHelper";}};
-template <> class ObjClassName<FxForward*> {public: static void output(std::ostream& os) {os << "FxForward";}};
-template <> class ObjClassName<G2*> {public: static void output(std::ostream& os) {os << "G2";}};
-template <> class ObjClassName<G2SwaptionEngine*> {public: static void output(std::ostream& os) {os << "G2SwaptionEngine";}};
-template <> class ObjClassName<GJRGARCHModel*> {public: static void output(std::ostream& os) {os << "GJRGARCHModel";}};
-template <> class ObjClassName<GJRGARCHProcess*> {public: static void output(std::ostream& os) {os << "GJRGARCHProcess";}};
-template <> class ObjClassName<GapPayoff*> {public: static void output(std::ostream& os) {os << "GapPayoff";}};
-template <> class ObjClassName<GarmanKohlagenProcess*> {public: static void output(std::ostream& os) {os << "GarmanKohlagenProcess";}};
-template <> class ObjClassName<Gaussian1dModel*> {public: static void output(std::ostream& os) {os << "Gaussian1dModel";}};
-template <> class ObjClassName<GeneralizedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "GeneralizedBlackScholesProcess";}};
-template <> class ObjClassName<GeneralizedHullWhite*> {public: static void output(std::ostream& os) {os << "GeneralizedHullWhite";}};
-template <> class ObjClassName<Gsr*> {public: static void output(std::ostream& os) {os << "Gsr";}};
-template <> class ObjClassName<HestonModel*> {public: static void output(std::ostream& os) {os << "HestonModel";}};
-template <> class ObjClassName<HestonModelHelper*> {public: static void output(std::ostream& os) {os << "HestonModelHelper";}};
-template <> class ObjClassName<HestonProcess*> {public: static void output(std::ostream& os) {os << "HestonProcess";}};
-template <> class ObjClassName<HullWhite*> {public: static void output(std::ostream& os) {os << "HullWhite";}};
-template <> class ObjClassName<HullWhiteForwardProcess*> {public: static void output(std::ostream& os) {os << "HullWhiteForwardProcess";}};
-template <> class ObjClassName<HullWhiteProcess*> {public: static void output(std::ostream& os) {os << "HullWhiteProcess";}};
-template <> class ObjClassName<HybridHestonHullWhiteProcess*> {public: static void output(std::ostream& os) {os << "HybridHestonHullWhiteProcess";}};
-template <> class ObjClassName<IborIndex*> {public: static void output(std::ostream& os) {os << "IborIndex";}};
-template <> class ObjClassName<ImpliedTermStructure*> {public: static void output(std::ostream& os) {os << "ImpliedTermStructure";}};
-template <> class ObjClassName<ImpliedVolTermStructure*> {public: static void output(std::ostream& os) {os << "ImpliedVolTermStructure";}};
-template <> class ObjClassName<Index*> {public: static void output(std::ostream& os) {os << "Index";}};
-template <> class ObjClassName<InflationIndex*> {public: static void output(std::ostream& os) {os << "InflationIndex";}};
-template <> class ObjClassName<Instrument*> {public: static void output(std::ostream& os) {os << "Instrument";}};
-template <> class ObjClassName<IntegralCdsEngine*> {public: static void output(std::ostream& os) {os << "IntegralCdsEngine";}};
-template <> class ObjClassName<IntegralEngine*> {public: static void output(std::ostream& os) {os << "IntegralEngine";}};
-template <> class ObjClassName<InterestRate*> {public: static void output(std::ostream& os) {os << "InterestRate";}};
-template <> class ObjClassName<InterestRateIndex*> {public: static void output(std::ostream& os) {os << "InterestRateIndex";}};
-template <> class ObjClassName<JamshidianSwaptionEngine*> {public: static void output(std::ostream& os) {os << "JamshidianSwaptionEngine";}};
-template <> class ObjClassName<JointCalendar*> {public: static void output(std::ostream& os) {os << "JointCalendar";}};
-template <> class ObjClassName<JuQuadraticApproximationEngine*> {public: static void output(std::ostream& os) {os << "JuQuadraticApproximationEngine";}};
-template <> class ObjClassName<JumpDiffusionEngine*> {public: static void output(std::ostream& os) {os << "JumpDiffusionEngine";}};
-template <> class ObjClassName<KirkEngine*> {public: static void output(std::ostream& os) {os << "KirkEngine";}};
-template <> class ObjClassName<KlugeExtOUProcess*> {public: static void output(std::ostream& os) {os << "KlugeExtOUProcess";}};
-template <> class ObjClassName<LevenbergMarquardt*> {public: static void output(std::ostream& os) {os << "LevenbergMarquardt";}};
-template <> class ObjClassName<LfmSwaptionEngine*> {public: static void output(std::ostream& os) {os << "LfmSwaptionEngine";}};
-template <> class ObjClassName<LiborForwardModel*> {public: static void output(std::ostream& os) {os << "LiborForwardModel";}};
-template <> class ObjClassName<LiborForwardModelProcess*> {public: static void output(std::ostream& os) {os << "LiborForwardModelProcess";}};
-template <> class ObjClassName<LmCorrelationModel*> {public: static void output(std::ostream& os) {os << "LmCorrelationModel";}};
-template <> class ObjClassName<LmVolatilityModel*> {public: static void output(std::ostream& os) {os << "LmVolatilityModel";}};
-template <> class ObjClassName<LocalVolTermStructure*> {public: static void output(std::ostream& os) {os << "LocalVolTermStructure";}};
-template <> class ObjClassName<MargrabeOption*> {public: static void output(std::ostream& os) {os << "MargrabeOption";}};
-template <> class ObjClassName<MarkovFunctional*> {public: static void output(std::ostream& os) {os << "MarkovFunctional";}};
-template <> class ObjClassName<Merton76Process*> {public: static void output(std::ostream& os) {os << "Merton76Process";}};
-template <> class ObjClassName<MidPointCdsEngine*> {public: static void output(std::ostream& os) {os << "MidPointCdsEngine";}};
-template <> class ObjClassName<MultiAssetOption*> {public: static void output(std::ostream& os) {os << "MultiAssetOption";}};
-template <> class ObjClassName<MultiCurve*> {public: static void output(std::ostream& os) {os << "MultiCurve";}};
-template <> class ObjClassName<NelsonSiegelFitting*> {public: static void output(std::ostream& os) {os << "NelsonSiegelFitting";}};
-template <> class ObjClassName<NoConstraint*> {public: static void output(std::ostream& os) {os << "NoConstraint";}};
-template <> class ObjClassName<OISRateHelper*> {public: static void output(std::ostream& os) {os << "OISRateHelper";}};
-template <> class ObjClassName<OneAssetOption*> {public: static void output(std::ostream& os) {os << "OneAssetOption";}};
-template <> class ObjClassName<OneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "OneFactorAffineModel";}};
-template <> class ObjClassName<OptimizationMethod*> {public: static void output(std::ostream& os) {os << "OptimizationMethod";}};
-template <> class ObjClassName<Option*> {public: static void output(std::ostream& os) {os << "Option";}};
-template <> class ObjClassName<OptionletVolatilityStructure*> {public: static void output(std::ostream& os) {os << "OptionletVolatilityStructure";}};
-template <> class ObjClassName<OptionletStripper2*> {public: static void output(std::ostream& os) {os << "OptionletStripper2";}};
-template <> class ObjClassName<OvernightIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndex";}};
-template <> class ObjClassName<OvernightIndexedSwap*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwap";}};
-template <> class ObjClassName<OvernightIndexedSwapIndex*> {public: static void output(std::ostream& os) {os << "OvernightIndexedSwapIndex";}};
-template <> class ObjClassName<PaymentTerm*> {public: static void output(std::ostream& os) {os << "PaymentTerm";}};
-template <> class ObjClassName<Payoff*> {public: static void output(std::ostream& os) {os << "Payoff";}};
-template <> class ObjClassName<PercentageStrikePayoff*> {public: static void output(std::ostream& os) {os << "PercentageStrikePayoff";}};
-template <> class ObjClassName<PiecewiseTimeDependentHestonModel*> {public: static void output(std::ostream& os) {os << "PiecewiseTimeDependentHestonModel";}};
-template <> class ObjClassName<PlainVanillaPayoff*> {public: static void output(std::ostream& os) {os << "PlainVanillaPayoff";}};
-template <> class ObjClassName<PolymorphicPathGenerator*> {public: static void output(std::ostream& os) {os << "PolymorphicPathGenerator";}};
-template <> class ObjClassName<PolymorphicGaussianRsg*> {public: static void output(std::ostream& os) {os << "PolymorphicGaussianRsg";}};
-template <> class ObjClassName<PositiveConstraint*> {public: static void output(std::ostream& os) {os << "PositiveConstraint";}};
-template <> class ObjClassName<PricingEngine*> {public: static void output(std::ostream& os) {os << "PricingEngine";}};
-template <> class ObjClassName<QlAffineModel*> {public: static void output(std::ostream& os) {os << "QlAffineModel";}};
-template <> class ObjClassName<QlAmericanExercise*> {public: static void output(std::ostream& os) {os << "QlAmericanExercise";}};
-template <> class ObjClassName<QlAssetSwap*> {public: static void output(std::ostream& os) {os << "QlAssetSwap";}};
-template <> class ObjClassName<QlBMAIndex*> {public: static void output(std::ostream& os) {os << "QlBMAIndex";}};
-template <> class ObjClassName<QlBMASwap*> {public: static void output(std::ostream& os) {os << "QlBMASwap";}};
-template <> class ObjClassName<QlBarrierOption*> {public: static void output(std::ostream& os) {os << "QlBarrierOption";}};
-template <> class ObjClassName<QlDoubleBarrierOption*> {public: static void output(std::ostream& os) {os << "QlDoubleBarrierOption";}};
-template <> class ObjClassName<QlBachelierCalculator*> {public: static void output(std::ostream& os) {os << "QlBachelierCalculator";}};
-template <> class ObjClassName<QlBasketPayoff*> {public: static void output(std::ostream& os) {os << "QlBasketPayoff";}};
-template <> class ObjClassName<QlBatesDetJumpModel*> {public: static void output(std::ostream& os) {os << "QlBatesDetJumpModel";}};
-template <> class ObjClassName<QlBatesDoubleExpDetJumpModel*> {public: static void output(std::ostream& os) {os << "QlBatesDoubleExpDetJumpModel";}};
-template <> class ObjClassName<QlBatesDoubleExpModel*> {public: static void output(std::ostream& os) {os << "QlBatesDoubleExpModel";}};
-template <> class ObjClassName<QlBatesModel*> {public: static void output(std::ostream& os) {os << "QlBatesModel";}};
-template <> class ObjClassName<QlBatesProcess*> {public: static void output(std::ostream& os) {os << "QlBatesProcess";}};
-template <> class ObjClassName<QlBermudanExercise*> {public: static void output(std::ostream& os) {os << "QlBermudanExercise";}};
-template <> class ObjClassName<QlBlackAtmVolCurve*> {public: static void output(std::ostream& os) {os << "QlBlackAtmVolCurve";}};
-template <> class ObjClassName<QlAbcdAtmVolCurve*> {public: static void output(std::ostream& os) {os << "QlAbcdAtmVolCurve";}};
-template <> class ObjClassName<QlBlackVolSurface*> {public: static void output(std::ostream& os) {os << "QlBlackVolSurface";}};
-template <> class ObjClassName<QlSabrVolSurface*> {public: static void output(std::ostream& os) {os << "QlSabrVolSurface";}};
-template <> class ObjClassName<QlBlackCalculator*> {public: static void output(std::ostream& os) {os << "QlBlackCalculator";}};
-template <> class ObjClassName<QlBlackCalibrationHelper*> {public: static void output(std::ostream& os) {os << "QlBlackCalibrationHelper";}};
-template <> class ObjClassName<QlBlackProcess*> {public: static void output(std::ostream& os) {os << "QlBlackProcess";}};
-template <> class ObjClassName<QlBlackScholesCalculator*> {public: static void output(std::ostream& os) {os << "QlBlackScholesCalculator";}};
-template <> class ObjClassName<QlBlackVarianceCurve*> {public: static void output(std::ostream& os) {os << "QlBlackVarianceCurve";}};
-template <> class ObjClassName<QlBlackVolatilitySurfaceDelta*> {public: static void output(std::ostream& os) {os << "QlBlackVolatilitySurfaceDelta";}};
-template <> class ObjClassName<QlBlackVolTermStructure*> {public: static void output(std::ostream& os) {os << "QlBlackVolTermStructure";}};
-template <> class ObjClassName<QlBond*> {public: static void output(std::ostream& os) {os << "QlBond";}};
-template <> class ObjClassName<QlBondForward*> {public: static void output(std::ostream& os) {os << "QlBondForward";}};
-template <> class ObjClassName<QlBondHelper*> {public: static void output(std::ostream& os) {os << "QlBondHelper";}};
-template <> class ObjClassName<QlCalibratedModel*> {public: static void output(std::ostream& os) {os << "QlCalibratedModel";}};
-template <> class ObjClassName<QlCalibrationHelper*> {public: static void output(std::ostream& os) {os << "QlCalibrationHelper";}};
-template <> class ObjClassName<QlCallability*> {public: static void output(std::ostream& os) {os << "QlCallability";}};
-template <> class ObjClassName<QlCallableBond*> {public: static void output(std::ostream& os) {os << "QlCallableBond";}};
-template <> class ObjClassName<QlCallableBondVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlCallableBondVolatilityStructure";}};
-template <> class ObjClassName<QlCapFloor*> {public: static void output(std::ostream& os) {os << "QlCapFloor";}};
-template <> class ObjClassName<QlCapFloorTermVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolatilityStructure";}};
-template <> class ObjClassName<QlCapFloorTermVolCurve*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolCurve";}};
-template <> class ObjClassName<QlCapFloorTermVolSurface*> {public: static void output(std::ostream& os) {os << "QlCapFloorTermVolSurface";}};
-template <> class ObjClassName<QlCommodityCurve*> {public: static void output(std::ostream& os) {os << "QlCommodityCurve";}};
-template <> class ObjClassName<QlCommodityIndex*> {public: static void output(std::ostream& os) {os << "QlCommodityIndex";}};
-template <> class ObjClassName<QlCommodity*> {public: static void output(std::ostream& os) {os << "QlCommodity";}};
-template <> class ObjClassName<QlEnergyCommodity*> {public: static void output(std::ostream& os) {os << "QlEnergyCommodity";}};
-template <> class ObjClassName<QlEnergyFuture*> {public: static void output(std::ostream& os) {os << "QlEnergyFuture";}};
-template <> class ObjClassName<QlEnergySwap*> {public: static void output(std::ostream& os) {os << "QlEnergySwap";}};
-template <> class ObjClassName<QlEnergyVanillaSwap*> {public: static void output(std::ostream& os) {os << "QlEnergyVanillaSwap";}};
-template <> class ObjClassName<QlEnergyBasisSwap*> {public: static void output(std::ostream& os) {os << "QlEnergyBasisSwap";}};
-template <> class ObjClassName<QlCommodityCashFlow*> {public: static void output(std::ostream& os) {os << "QlCommodityCashFlow";}};
-template <> class ObjClassName<QlCdsOption*> {public: static void output(std::ostream& os) {os << "QlCdsOption";}};
-template <> class ObjClassName<QlClaim*> {public: static void output(std::ostream& os) {os << "QlClaim";}};
-template <> class ObjClassName<QlConvertibleBond*> {public: static void output(std::ostream& os) {os << "QlConvertibleBond";}};
-template <> class ObjClassName<QlCPIBond*> {public: static void output(std::ostream& os) {os << "QlCPIBond";}};
-template <> class ObjClassName<QlCPICapFloor*> {public: static void output(std::ostream& os) {os << "QlCPICapFloor";}};
-template <> class ObjClassName<QlCPICapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "QlCPICapFloorTermPriceSurface";}};
-template <> class ObjClassName<QlCPICashFlow*> {public: static void output(std::ostream& os) {os << "QlCPICashFlow";}};
-template <> class ObjClassName<QlCPISwap*> {public: static void output(std::ostream& os) {os << "QlCPISwap";}};
-template <> class ObjClassName<QlCPIVolatilitySurface*> {public: static void output(std::ostream& os) {os << "QlCPIVolatilitySurface";}};
-template <> class ObjClassName<QlCreditDefaultSwap*> {public: static void output(std::ostream& os) {os << "QlCreditDefaultSwap";}};
-template <> class ObjClassName<QlDefaultProbabilityTermStructure*> {public: static void output(std::ostream& os) {os << "QlDefaultProbabilityTermStructure";}};
-template <> class ObjClassName<QlDeltaVolQuote*> {public: static void output(std::ostream& os) {os << "QlDeltaVolQuote";}};
-template <> class ObjClassName<QlDividend*> {public: static void output(std::ostream& os) {os << "QlDividend";}};
-template <> class ObjClassName<QlEndCriteria*> {public: static void output(std::ostream& os) {os << "QlEndCriteria";}};
-template <> class ObjClassName<QlEquityCashFlow*> {public: static void output(std::ostream& os) {os << "QlEquityCashFlow";}};
-template <> class ObjClassName<QlEquityCashFlowPricer*> {public: static void output(std::ostream& os) {os << "QlEquityCashFlowPricer";}};
-template <> class ObjClassName<QlEquityIndex*> {public: static void output(std::ostream& os) {os << "QlEquityIndex";}};
-template <> class ObjClassName<QlEquityQuantoCashFlowPricer*> {public: static void output(std::ostream& os) {os << "QlEquityQuantoCashFlowPricer";}};
-template <> class ObjClassName<QlEquityTotalReturnSwap*> {public: static void output(std::ostream& os) {os << "QlEquityTotalReturnSwap";}};
-template <> class ObjClassName<QlEuropeanExercise*> {public: static void output(std::ostream& os) {os << "QlEuropeanExercise";}};
-template <> class ObjClassName<QlExercise*> {public: static void output(std::ostream& os) {os << "QlExercise";}};
-template <> class ObjClassName<QlExtOUWithJumpsProcess*> {public: static void output(std::ostream& os) {os << "QlExtOUWithJumpsProcess";}};
-template <> class ObjClassName<QlExtendedOrnsteinUhlenbeckProcess*> {public: static void output(std::ostream& os) {os << "QlExtendedOrnsteinUhlenbeckProcess";}};
-template <> class ObjClassName<QlFdm1dMesher*> {public: static void output(std::ostream& os) {os << "QlFdm1dMesher";}};
-template <> class ObjClassName<QlFdmInnerValueCalculator*> {public: static void output(std::ostream& os) {os << "QlFdmInnerValueCalculator";}};
-template <> class ObjClassName<QlFdmMesher*> {public: static void output(std::ostream& os) {os << "QlFdmMesher";}};
-template <> class ObjClassName<QlFdmQuantoHelper*> {public: static void output(std::ostream& os) {os << "QlFdmQuantoHelper";}};
-template <> class ObjClassName<QlFittedBondDiscountCurve*> {public: static void output(std::ostream& os) {os << "QlFittedBondDiscountCurve";}};
-template <> class ObjClassName<QlFixedRateBond*> {public: static void output(std::ostream& os) {os << "QlFixedRateBond";}};
-template <> class ObjClassName<QlFloatingRateCouponPricer*> {public: static void output(std::ostream& os) {os << "QlFloatingRateCouponPricer";}};
-template <> class ObjClassName<QlForward*> {public: static void output(std::ostream& os) {os << "QlForward";}};
-template <> class ObjClassName<QlForwardRateAgreement*> {public: static void output(std::ostream& os) {os << "QlForwardRateAgreement";}};
-template <> class ObjClassName<QlFxForward*> {public: static void output(std::ostream& os) {os << "QlFxForward";}};
-template <> class ObjClassName<QlG2*> {public: static void output(std::ostream& os) {os << "QlG2";}};
-template <> class ObjClassName<QlGJRGARCHModel*> {public: static void output(std::ostream& os) {os << "QlGJRGARCHModel";}};
-template <> class ObjClassName<QlGJRGARCHProcess*> {public: static void output(std::ostream& os) {os << "QlGJRGARCHProcess";}};
-template <> class ObjClassName<QlGaussian1dModel*> {public: static void output(std::ostream& os) {os << "QlGaussian1dModel";}};
-template <> class ObjClassName<QlGeneralizedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "QlGeneralizedBlackScholesProcess";}};
-template <> class ObjClassName<QlGsr*> {public: static void output(std::ostream& os) {os << "QlGsr";}};
-template <> class ObjClassName<QlHestonModel*> {public: static void output(std::ostream& os) {os << "QlHestonModel";}};
-template <> class ObjClassName<QlHestonProcess*> {public: static void output(std::ostream& os) {os << "QlHestonProcess";}};
-template <> class ObjClassName<QlHistoricalIndexAnalysis*> {public: static void output(std::ostream& os) {os << "QlHistoricalIndexAnalysis";}};
-template <> class ObjClassName<QlHullWhite*> {public: static void output(std::ostream& os) {os << "QlHullWhite";}};
-template <> class ObjClassName<QlHullWhiteForwardProcess*> {public: static void output(std::ostream& os) {os << "QlHullWhiteForwardProcess";}};
-template <> class ObjClassName<QlHullWhiteProcess*> {public: static void output(std::ostream& os) {os << "QlHullWhiteProcess";}};
-template <> class ObjClassName<QlHybridHestonHullWhiteProcess*> {public: static void output(std::ostream& os) {os << "QlHybridHestonHullWhiteProcess";}};
-template <> class ObjClassName<QlIborIndex*> {public: static void output(std::ostream& os) {os << "QlIborIndex";}};
-template <> class ObjClassName<QlIndex*> {public: static void output(std::ostream& os) {os << "QlIndex";}};
-template <> class ObjClassName<QlInflationIndex*> {public: static void output(std::ostream& os) {os << "QlInflationIndex";}};
-template <> class ObjClassName<QlInstrument*> {public: static void output(std::ostream& os) {os << "QlInstrument";}};
-template <> class ObjClassName<QlInterestRateIndex*> {public: static void output(std::ostream& os) {os << "QlInterestRateIndex";}};
-template <> class ObjClassName<QlKlugeExtOUProcess*> {public: static void output(std::ostream& os) {os << "QlKlugeExtOUProcess";}};
-template <> class ObjClassName<QlLiborForwardModel*> {public: static void output(std::ostream& os) {os << "QlLiborForwardModel";}};
-template <> class ObjClassName<QlLiborForwardModelProcess*> {public: static void output(std::ostream& os) {os << "QlLiborForwardModelProcess";}};
-template <> class ObjClassName<QlLmCorrelationModel*> {public: static void output(std::ostream& os) {os << "QlLmCorrelationModel";}};
-template <> class ObjClassName<QlLmVolatilityModel*> {public: static void output(std::ostream& os) {os << "QlLmVolatilityModel";}};
-template <> class ObjClassName<QlLocalVolTermStructure*> {public: static void output(std::ostream& os) {os << "QlLocalVolTermStructure";}};
-template <> class ObjClassName<QlMargrabeOption*> {public: static void output(std::ostream& os) {os << "QlMargrabeOption";}};
-template <> class ObjClassName<QlMarkovFunctional*> {public: static void output(std::ostream& os) {os << "QlMarkovFunctional";}};
-template <> class ObjClassName<QlMerton76Process*> {public: static void output(std::ostream& os) {os << "QlMerton76Process";}};
-template <> class ObjClassName<QlMultiAssetOption*> {public: static void output(std::ostream& os) {os << "QlMultiAssetOption";}};
-template <> class ObjClassName<QlMultiCurve*> {public: static void output(std::ostream& os) {os << "QlMultiCurve";}};
-template <> class ObjClassName<QlNonstandardSwap*> {public: static void output(std::ostream& os) {os << "QlNonstandardSwap";}};
-template <> class ObjClassName<QlNonstandardSwaption*> {public: static void output(std::ostream& os) {os << "QlNonstandardSwaption";}};
-template <> class ObjClassName<QlFloatFloatSwap*> {public: static void output(std::ostream& os) {os << "QlFloatFloatSwap";}};
-template <> class ObjClassName<QlFloatFloatSwaption*> {public: static void output(std::ostream& os) {os << "QlFloatFloatSwaption";}};
-template <> class ObjClassName<QlOISRateHelper*> {public: static void output(std::ostream& os) {os << "QlOISRateHelper";}};
-template <> class ObjClassName<QlOneAssetOption*> {public: static void output(std::ostream& os) {os << "QlOneAssetOption";}};
-template <> class ObjClassName<QlOneFactorAffineModel*> {public: static void output(std::ostream& os) {os << "QlOneFactorAffineModel";}};
-template <> class ObjClassName<QlOption*> {public: static void output(std::ostream& os) {os << "QlOption";}};
-template <> class ObjClassName<QlOptionletVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlOptionletVolatilityStructure";}};
-template <> class ObjClassName<QlOptionletStripper2*> {public: static void output(std::ostream& os) {os << "QlOptionletStripper2";}};
-template <> class ObjClassName<QlOptimizationMethod*> {public: static void output(std::ostream& os) {os << "QlOptimizationMethod";}};
-template <> class ObjClassName<QlOvernightIndex*> {public: static void output(std::ostream& os) {os << "QlOvernightIndex";}};
-template <> class ObjClassName<QlOvernightIndexedSwap*> {public: static void output(std::ostream& os) {os << "QlOvernightIndexedSwap";}};
-template <> class ObjClassName<QlOvernightIndexedSwapIndex*> {public: static void output(std::ostream& os) {os << "QlOvernightIndexedSwapIndex";}};
-template <> class ObjClassName<QlPayoff*> {public: static void output(std::ostream& os) {os << "QlPayoff";}};
-template <> class ObjClassName<QlPercentageStrikePayoff*> {public: static void output(std::ostream& os) {os << "QlPercentageStrikePayoff";}};
-template <> class ObjClassName<QlPiecewiseTimeDependentHestonModel*> {public: static void output(std::ostream& os) {os << "QlPiecewiseTimeDependentHestonModel";}};
-template <> class ObjClassName<QlPlainVanillaPayoff*> {public: static void output(std::ostream& os) {os << "QlPlainVanillaPayoff";}};
-template <> class ObjClassName<QlPricingEngine*> {public: static void output(std::ostream& os) {os << "QlPricingEngine";}};
-template <> class ObjClassName<QlQuantoBarrierOption*> {public: static void output(std::ostream& os) {os << "QlQuantoBarrierOption";}};
-template <> class ObjClassName<QlQuantoForwardVanillaOption*> {public: static void output(std::ostream& os) {os << "QlQuantoForwardVanillaOption";}};
-template <> class ObjClassName<QlQuantoVanillaOption*> {public: static void output(std::ostream& os) {os << "QlQuantoVanillaOption";}};
-template <> class ObjClassName<QlQuote*> {public: static void output(std::ostream& os) {os << "QlQuote";}};
-template <> class ObjClassName<QlSabrInterpolatedSmileSection*> {public: static void output(std::ostream& os) {os << "QlSabrInterpolatedSmileSection";}};
-template <> class ObjClassName<QlShortRateModel*> {public: static void output(std::ostream& os) {os << "QlShortRateModel";}};
-template <> class ObjClassName<QlSimpleQuote*> {public: static void output(std::ostream& os) {os << "QlSimpleQuote";}};
-template <> class ObjClassName<QlSmileSection*> {public: static void output(std::ostream& os) {os << "QlSmileSection";}};
-template <> class ObjClassName<QlSoftBarrierOption*> {public: static void output(std::ostream& os) {os << "QlSoftBarrierOption";}};
-template <> class ObjClassName<QlStochasticProcess*> {public: static void output(std::ostream& os) {os << "QlStochasticProcess";}};
-template <> class ObjClassName<QlStochasticProcess1D*> {public: static void output(std::ostream& os) {os << "QlStochasticProcess1D";}};
-template <> class ObjClassName<QlStochasticProcessArray*> {public: static void output(std::ostream& os) {os << "QlStochasticProcessArray";}};
-template <> class ObjClassName<QlStrikedTypePayoff*> {public: static void output(std::ostream& os) {os << "QlStrikedTypePayoff";}};
-template <> class ObjClassName<QlSwap*> {public: static void output(std::ostream& os) {os << "QlSwap";}};
-template <> class ObjClassName<QlFixedVsFloatingSwap*> {public: static void output(std::ostream& os) {os << "QlFixedVsFloatingSwap";}};
-template <> class ObjClassName<QlSwapIndex*> {public: static void output(std::ostream& os) {os << "QlSwapIndex";}};
-template <> class ObjClassName<QlSwapRateHelper*> {public: static void output(std::ostream& os) {os << "QlSwapRateHelper";}};
-template <> class ObjClassName<QlSwaption*> {public: static void output(std::ostream& os) {os << "QlSwaption";}};
-template <> class ObjClassName<QlSwaptionHelper*> {public: static void output(std::ostream& os) {os << "QlSwaptionHelper";}};
-template <> class ObjClassName<QlSwaptionVolatilityStructure*> {public: static void output(std::ostream& os) {os << "QlSwaptionVolatilityStructure";}};
-template <> class ObjClassName<QlSabrSwaptionVolatilityCube*> {public: static void output(std::ostream& os) {os << "QlSabrSwaptionVolatilityCube";}};
-template <> class ObjClassName<QlInterpolatedSwaptionVolatilityCube*> {public: static void output(std::ostream& os) {os << "QlInterpolatedSwaptionVolatilityCube";}};
-template <> class ObjClassName<QlSwingExercise*> {public: static void output(std::ostream& os) {os << "QlSwingExercise";}};
-template <> class ObjClassName<QlTermStructure*> {public: static void output(std::ostream& os) {os << "QlTermStructure";}};
-template <> class ObjClassName<QlTypePayoff*> {public: static void output(std::ostream& os) {os << "QlTypePayoff";}};
-template <> class ObjClassName<QlVanillaOption*> {public: static void output(std::ostream& os) {os << "QlVanillaOption";}};
-template <> class ObjClassName<QlVanillaSwap*> {public: static void output(std::ostream& os) {os << "QlVanillaSwap";}};
-template <> class ObjClassName<QlVarianceGammaProcess*> {public: static void output(std::ostream& os) {os << "QlVarianceGammaProcess";}};
-template <> class ObjClassName<QlVarianceOption*> {public: static void output(std::ostream& os) {os << "QlVarianceOption";}};
-template <> class ObjClassName<QlVarianceSwap*> {public: static void output(std::ostream& os) {os << "QlVarianceSwap";}};
-template <> class ObjClassName<QlVolatilityTermStructure*> {public: static void output(std::ostream& os) {os << "QlVolatilityTermStructure";}};
-template <> class ObjClassName<QlYearOnYearInflationSwap*> {public: static void output(std::ostream& os) {os << "QlYearOnYearInflationSwap";}};
-template <> class ObjClassName<QlYearOnYearInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "QlYearOnYearInflationSwapHelper";}};
-template <> class ObjClassName<QlYieldTermStructure*> {public: static void output(std::ostream& os) {os << "QlYieldTermStructure";}};
-template <> class ObjClassName<QlYoYCapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "QlYoYCapFloorTermPriceSurface";}};
-template <> class ObjClassName<QlYoYInflationCapFloor*> {public: static void output(std::ostream& os) {os << "QlYoYInflationCapFloor";}};
-template <> class ObjClassName<QlYoYInflationCouponPricer*> {public: static void output(std::ostream& os) {os << "QlYoYInflationCouponPricer";}};
-template <> class ObjClassName<QlYoYInflationIndex*> {public: static void output(std::ostream& os) {os << "QlYoYInflationIndex";}};
-template <> class ObjClassName<QlYoYInflationTermStructure*> {public: static void output(std::ostream& os) {os << "QlYoYInflationTermStructure";}};
-template <> class ObjClassName<QlYoYOptionletVolatilitySurface*> {public: static void output(std::ostream& os) {os << "QlYoYOptionletVolatilitySurface";}};
-template <> class ObjClassName<QlZeroCouponInflationSwap*> {public: static void output(std::ostream& os) {os << "QlZeroCouponInflationSwap";}};
-template <> class ObjClassName<QlZeroCouponSwap*> {public: static void output(std::ostream& os) {os << "QlZeroCouponSwap";}};
-template <> class ObjClassName<QlZeroCouponInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "QlZeroCouponInflationSwapHelper";}};
-template <> class ObjClassName<QlZeroInflationCashFlow*> {public: static void output(std::ostream& os) {os << "QlZeroInflationCashFlow";}};
-template <> class ObjClassName<QlZeroInflationIndex*> {public: static void output(std::ostream& os) {os << "QlZeroInflationIndex";}};
-template <> class ObjClassName<QlZeroInflationTermStructure*> {public: static void output(std::ostream& os) {os << "QlZeroInflationTermStructure";}};
-template <> class ObjClassName<QuantoBarrierOption*> {public: static void output(std::ostream& os) {os << "QuantoBarrierOption";}};
-template <> class ObjClassName<QuantoForwardVanillaOption*> {public: static void output(std::ostream& os) {os << "QuantoForwardVanillaOption";}};
-template <> class ObjClassName<QuantoTermStructure*> {public: static void output(std::ostream& os) {os << "QuantoTermStructure";}};
-template <> class ObjClassName<QuantoVanillaOption*> {public: static void output(std::ostream& os) {os << "QuantoVanillaOption";}};
-template <> class ObjClassName<Quote*> {public: static void output(std::ostream& os) {os << "Quote";}};
-template <> class ObjClassName<Region*> {public: static void output(std::ostream& os) {os << "Region";}};
-template <> class ObjClassName<ReplicatingVarianceSwapEngine*> {public: static void output(std::ostream& os) {os << "ReplicatingVarianceSwapEngine";}};
-template <> class ObjClassName<Rounding*> {public: static void output(std::ostream& os) {os << "Rounding";}};
-template <> class ObjClassName<Schedule*> {public: static void output(std::ostream& os) {os << "Schedule";}};
-template <> class ObjClassName<ShortRateModel*> {public: static void output(std::ostream& os) {os << "ShortRateModel";}};
-template <> class ObjClassName<SimplePolynomialFitting*> {public: static void output(std::ostream& os) {os << "SimplePolynomialFitting";}};
-template <> class ObjClassName<SimpleQuote*> {public: static void output(std::ostream& os) {os << "SimpleQuote";}};
-template <> class ObjClassName<Simplex*> {public: static void output(std::ostream& os) {os << "Simplex";}};
-template <> class ObjClassName<SmileSection*> {public: static void output(std::ostream& os) {os << "SmileSection";}};
-template <> class ObjClassName<SoftBarrierOption*> {public: static void output(std::ostream& os) {os << "SoftBarrierOption";}};
-template <> class ObjClassName<SoftCallability*> {public: static void output(std::ostream& os) {os << "SoftCallability";}};
-template <> class ObjClassName<SpreadCdsHelper*> {public: static void output(std::ostream& os) {os << "SpreadCdsHelper";}};
-template <> class ObjClassName<StochasticProcess*> {public: static void output(std::ostream& os) {os << "StochasticProcess";}};
-template <> class ObjClassName<StochasticProcess1D*> {public: static void output(std::ostream& os) {os << "StochasticProcess1D";}};
-template <> class ObjClassName<StochasticProcessArray*> {public: static void output(std::ostream& os) {os << "StochasticProcessArray";}};
-template <> class ObjClassName<StrikedTypePayoff*> {public: static void output(std::ostream& os) {os << "StrikedTypePayoff";}};
-template <> class ObjClassName<StulzEngine*> {public: static void output(std::ostream& os) {os << "StulzEngine";}};
-template <> class ObjClassName<SuperFundPayoff*> {public: static void output(std::ostream& os) {os << "SuperFundPayoff";}};
-template <> class ObjClassName<SuperSharePayoff*> {public: static void output(std::ostream& os) {os << "SuperSharePayoff";}};
-template <> class ObjClassName<SvenssonFitting*> {public: static void output(std::ostream& os) {os << "SvenssonFitting";}};
-template <> class ObjClassName<Swap*> {public: static void output(std::ostream& os) {os << "Swap";}};
-template <> class ObjClassName<ConstNotionalCrossCurrencySwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencySwap";}};
-template <> class ObjClassName<ConstNotionalCrossCurrencyBasisSwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencyBasisSwap";}};
-template <> class ObjClassName<ConstNotionalCrossCurrencyFixedVsFloatingSwap*> {public: static void output(std::ostream& os) {os << "ConstNotionalCrossCurrencyFixedVsFloatingSwap";}};
-template <> class ObjClassName<SwapIndex*> {public: static void output(std::ostream& os) {os << "SwapIndex";}};
-template <> class ObjClassName<SwapRateHelper*> {public: static void output(std::ostream& os) {os << "SwapRateHelper";}};
-template <> class ObjClassName<Swaption*> {public: static void output(std::ostream& os) {os << "Swaption";}};
-template <> class ObjClassName<SwaptionHelper*> {public: static void output(std::ostream& os) {os << "SwaptionHelper";}};
-template <> class ObjClassName<SwaptionVolatilityStructure*> {public: static void output(std::ostream& os) {os << "SwaptionVolatilityStructure";}};
-template <> class ObjClassName<SwingExercise*> {public: static void output(std::ostream& os) {os << "SwingExercise";}};
-template <> class ObjClassName<TermStructure*> {public: static void output(std::ostream& os) {os << "TermStructure";}};
-template <> class ObjClassName<TimeGrid*> {public: static void output(std::ostream& os) {os << "TimeGrid";}};
-template <> class ObjClassName<TreeCallableFixedRateBondEngine*> {public: static void output(std::ostream& os) {os << "TreeCallableFixedRateBondEngine";}};
-template <> class ObjClassName<TreeCallableZeroCouponBondEngine*> {public: static void output(std::ostream& os) {os << "TreeCallableZeroCouponBondEngine";}};
-template <> class ObjClassName<TreeCapFloorEngine*> {public: static void output(std::ostream& os) {os << "TreeCapFloorEngine";}};
-template <> class ObjClassName<TreeSwaptionEngine*> {public: static void output(std::ostream& os) {os << "TreeSwaptionEngine";}};
-template <> class ObjClassName<TreeVanillaSwapEngine*> {public: static void output(std::ostream& os) {os << "TreeVanillaSwapEngine";}};
-template <> class ObjClassName<TypePayoff*> {public: static void output(std::ostream& os) {os << "TypePayoff";}};
-template <> class ObjClassName<UpfrontCdsHelper*> {public: static void output(std::ostream& os) {os << "UpfrontCdsHelper";}};
-template <> class ObjClassName<UnitOfMeasure*> {public: static void output(std::ostream& os) {os << "UnitOfMeasure";}};
-template <> class ObjClassName<UnitOfMeasureConversion*> {public: static void output(std::ostream& os) {os << "UnitOfMeasureConversion";}};
-template <> class ObjClassName<VanillaOption*> {public: static void output(std::ostream& os) {os << "VanillaOption";}};
-template <> class ObjClassName<VanillaSwap*> {public: static void output(std::ostream& os) {os << "VanillaSwap";}};
-template <> class ObjClassName<VarianceGammaEngine*> {public: static void output(std::ostream& os) {os << "VarianceGammaEngine";}};
-template <> class ObjClassName<VarianceGammaProcess*> {public: static void output(std::ostream& os) {os << "VarianceGammaProcess";}};
-template <> class ObjClassName<VarianceSwap*> {public: static void output(std::ostream& os) {os << "VarianceSwap";}};
-template <> class ObjClassName<VegaStressedBlackScholesProcess*> {public: static void output(std::ostream& os) {os << "VegaStressedBlackScholesProcess";}};
-template <> class ObjClassName<VolatilityTermStructure*> {public: static void output(std::ostream& os) {os << "VolatilityTermStructure";}};
-template <> class ObjClassName<YearOnYearInflationSwap*> {public: static void output(std::ostream& os) {os << "YearOnYearInflationSwap";}};
-template <> class ObjClassName<YearOnYearInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "YearOnYearInflationSwapHelper";}};
-template <> class ObjClassName<YieldTermStructure*> {public: static void output(std::ostream& os) {os << "YieldTermStructure";}};
-template <> class ObjClassName<YoYCapFloorTermPriceSurface*> {public: static void output(std::ostream& os) {os << "YoYCapFloorTermPriceSurface";}};
-template <> class ObjClassName<YoYInflationCapFloor*> {public: static void output(std::ostream& os) {os << "YoYInflationCapFloor";}};
-template <> class ObjClassName<YoYInflationCouponPricer*> {public: static void output(std::ostream& os) {os << "YoYInflationCouponPricer";}};
-template <> class ObjClassName<YoYInflationIndex*> {public: static void output(std::ostream& os) {os << "YoYInflationIndex";}};
-template <> class ObjClassName<YoYInflationTermStructure*> {public: static void output(std::ostream& os) {os << "YoYInflationTermStructure";}};
-template <> class ObjClassName<YoYOptionletVolatilitySurface*> {public: static void output(std::ostream& os) {os << "YoYOptionletVolatilitySurface";}};
-template <> class ObjClassName<ZeroCouponBond*> {public: static void output(std::ostream& os) {os << "ZeroCouponBond";}};
-template <> class ObjClassName<ZeroCouponInflationSwap*> {public: static void output(std::ostream& os) {os << "ZeroCouponInflationSwap";}};
-template <> class ObjClassName<ZeroCouponSwap*> {public: static void output(std::ostream& os) {os << "ZeroCouponSwap";}};
-template <> class ObjClassName<ZeroCouponInflationSwapHelper*> {public: static void output(std::ostream& os) {os << "ZeroCouponInflationSwapHelper";}};
-template <> class ObjClassName<ZeroInflationIndex*> {public: static void output(std::ostream& os) {os << "ZeroInflationIndex";}};
-template <> class ObjClassName<ZeroInflationTermStructure*> {public: static void output(std::ostream& os) {os << "ZeroInflationTermStructure";}};
-template <> class ObjClassName<ZeroSpreadedTermStructure*> {public: static void output(std::ostream& os) {os << "ZeroSpreadedTermStructure";}};
-template <> class ObjClassName<void*> {public: static void output(std::ostream& os) {os << "Ptr";}};
+// The trace label for a pointer type. The primary template's typeid() fallback is what makes a
+// missing specialization degrade the trace rather than break the build -- alloc-summary.py runs
+// the resulting mangled names through c++filt. Specializations are written through the macros
+// below rather than spelled out: stringizing the type is what guarantees the label and the type
+// cannot drift apart, which a hand-written pair of them silently can.
+template <class T> struct ObjClassName {static const char *name() {return typeid(T).name();}};
+#define QL_TRACE_NAME_AS(T, S) template <> struct ObjClassName<T*> {static constexpr const char *name() {return S;}};
+#define QL_TRACE_NAME(T) QL_TRACE_NAME_AS(T, #T)
+QL_TRACE_NAME(AffineModel)
+QL_TRACE_NAME(AmericanExercise)
+QL_TRACE_NAME(AnalyticBSMHullWhiteEngine)
+QL_TRACE_NAME(AnalyticBarrierEngine)
+QL_TRACE_NAME(AnalyticCapFloorEngine)
+QL_TRACE_NAME(AnalyticCliquetEngine)
+QL_TRACE_NAME(AnalyticContinuousFixedLookbackEngine)
+QL_TRACE_NAME(AnalyticContinuousFloatingLookbackEngine)
+QL_TRACE_NAME(AnalyticContinuousGeometricAveragePriceAsianEngine)
+QL_TRACE_NAME(AnalyticDigitalAmericanEngine)
+QL_TRACE_NAME(AnalyticDiscreteGeometricAveragePriceAsianEngine)
+QL_TRACE_NAME(AnalyticDiscreteGeometricAverageStrikeAsianEngine)
+QL_TRACE_NAME(AnalyticDividendEuropeanEngine)
+QL_TRACE_NAME(AnalyticEuropeanEngine)
+QL_TRACE_NAME(AnalyticGJRGARCHEngine)
+QL_TRACE_NAME(AnalyticHestonEngine)
+QL_TRACE_NAME(AnalyticHestonHullWhiteEngine)
+QL_TRACE_NAME(AnalyticPerformanceEngine)
+QL_TRACE_NAME(AssetOrNothingPayoff)
+QL_TRACE_NAME(AssetSwap)
+QL_TRACE_NAME(BMAIndex)
+QL_TRACE_NAME(BMASwap)
+QL_TRACE_NAME(BMASwapRateHelper)
+QL_TRACE_NAME(BachelierCalculator)
+QL_TRACE_NAME(BaroneAdesiWhaleyApproximationEngine)
+QL_TRACE_NAME(BarrierOption)
+QL_TRACE_NAME(DoubleBarrierOption)
+QL_TRACE_NAME(BasketPayoff)
+QL_TRACE_NAME(BatesDetJumpEngine)
+QL_TRACE_NAME(BatesDetJumpModel)
+QL_TRACE_NAME(BatesDoubleExpDetJumpEngine)
+QL_TRACE_NAME(BatesDoubleExpDetJumpModel)
+QL_TRACE_NAME(BatesDoubleExpEngine)
+QL_TRACE_NAME(BatesDoubleExpModel)
+QL_TRACE_NAME(BatesEngine)
+QL_TRACE_NAME(BatesModel)
+QL_TRACE_NAME(BatesProcess)
+QL_TRACE_NAME(BermudanExercise)
+QL_TRACE_NAME(BespokeCalendar)
+QL_TRACE_NAME(BjerksundStenslandApproximationEngine)
+QL_TRACE_NAME(BlackCalculator)
+QL_TRACE_NAME(BlackDeltaCalculator)
+QL_TRACE_NAME(BlackCalibrationHelper)
+QL_TRACE_NAME(BlackCallableFixedRateBondEngine)
+QL_TRACE_NAME(BlackCallableZeroCouponBondEngine)
+QL_TRACE_NAME(BlackCapFloorEngine)
+QL_TRACE_NAME(BlackConstantVol)
+QL_TRACE_NAME(BlackKarasinski)
+QL_TRACE_NAME(BlackProcess)
+QL_TRACE_NAME(BlackScholesCalculator)
+QL_TRACE_NAME(BlackScholesMertonProcess)
+QL_TRACE_NAME(BlackScholesProcess)
+QL_TRACE_NAME(BlackSwaptionEngine)
+QL_TRACE_NAME(BlackVarianceCurve)
+QL_TRACE_NAME(BlackVolTermStructure)
+QL_TRACE_NAME(Bond)
+QL_TRACE_NAME(BondForward)
+QL_TRACE_NAME(BondHelper)
+QL_TRACE_NAME(BoundaryConstraint)
+QL_TRACE_NAME(Business252)
+QL_TRACE_NAME(Calendar)
+QL_TRACE_NAME(CalibratedModel)
+QL_TRACE_NAME(CalibrationHelper)
+QL_TRACE_NAME(Callability)
+QL_TRACE_NAME(CallableBond)
+QL_TRACE_NAME(CallableBondVolatilityStructure)
+QL_TRACE_NAME(CallableFixedRateBond)
+QL_TRACE_NAME(CallableZeroCouponBond)
+QL_TRACE_NAME(CapFloor)
+QL_TRACE_NAME(CapFloorTermVolatilityStructure)
+QL_TRACE_NAME(CapFloorTermVolCurve)
+QL_TRACE_NAME(CapFloorTermVolSurface)
+QL_TRACE_NAME(CapHelper)
+QL_TRACE_NAME(CashOrNothingPayoff)
+QL_TRACE_NAME(CdsOption)
+QL_TRACE_NAME(Claim)
+QL_TRACE_NAME(CommodityType)
+QL_TRACE_NAME(CompositeConstraint)
+QL_TRACE_NAME(CompositeInstrument)
+QL_TRACE_NAME(Constraint)
+QL_TRACE_NAME(ConvertibleBond)
+QL_TRACE_NAME(ConvertibleFixedCouponBond)
+QL_TRACE_NAME(ConvertibleFloatingRateBond)
+QL_TRACE_NAME(ConvertibleZeroCouponBond)
+QL_TRACE_NAME(CouponLeg)
+QL_TRACE_NAME(CPIBond)
+QL_TRACE_NAME(CPICapFloor)
+QL_TRACE_NAME(CPICapFloorTermPriceSurface)
+QL_TRACE_NAME(CPISwap)
+QL_TRACE_NAME(CPIVolatilitySurface)
+QL_TRACE_NAME(CreditDefaultSwap)
+QL_TRACE_NAME(CubicBSplinesFitting)
+QL_TRACE_NAME(Currency)
+QL_TRACE_NAME(DayCounter)
+QL_TRACE_NAME(DefaultProbabilityTermStructure)
+QL_TRACE_NAME(DeltaVolQuote)
+QL_TRACE_NAME(DepositRateHelper)
+QL_TRACE_NAME(DiscountingBondEngine)
+QL_TRACE_NAME(DiscountingFxForwardEngine)
+QL_TRACE_NAME(DiscountingSwapEngine)
+QL_TRACE_NAME(DiscountingConstNotionalCrossCurrencySwapEngine)
+QL_TRACE_NAME(Dividend)
+QL_TRACE_NAME(EarlyExercise)
+QL_TRACE_NAME(EndCriteria)
+QL_TRACE_NAME(EquityCashFlow)
+QL_TRACE_NAME(EquityCashFlowPricer)
+QL_TRACE_NAME(EquityIndex)
+QL_TRACE_NAME(EquityQuantoCashFlowPricer)
+QL_TRACE_NAME(EquityTotalReturnSwap)
+QL_TRACE_NAME(EuropeanExercise)
+QL_TRACE_NAME(EuropeanOption)
+QL_TRACE_NAME(Exercise)
+QL_TRACE_NAME(ExponentialSplinesFitting)
+QL_TRACE_NAME(ExtOUWithJumpsProcess)
+QL_TRACE_NAME(ExtendedBlackScholesMertonProcess)
+QL_TRACE_NAME(ExtendedOrnsteinUhlenbeckProcess)
+QL_TRACE_NAME(FdmQuantoHelper)
+QL_TRACE_NAME(FFTVanillaEngine)
+QL_TRACE_NAME(FaceValueAccrualClaim)
+QL_TRACE_NAME(FaceValueClaim)
+QL_TRACE_NAME(FdG2SwaptionEngine)
+QL_TRACE_NAME(FdHullWhiteSwaptionEngine)
+QL_TRACE_NAME(FdmSchemeDesc)
+QL_TRACE_NAME(FdmStepConditionComposite)
+QL_TRACE_NAME(FittedBondDiscountCurve)
+QL_TRACE_NAME(FixedDividend)
+QL_TRACE_NAME(FixedRateBond)
+QL_TRACE_NAME(FixedRateBondHelper)
+QL_TRACE_NAME(FlatForward)
+QL_TRACE_NAME(FloatingRateBond)
+QL_TRACE_NAME(FloatingRateCouponPricer)
+QL_TRACE_NAME(Forward)
+QL_TRACE_NAME(ForwardRateAgreement)
+QL_TRACE_NAME(ForwardSpreadedTermStructure)
+QL_TRACE_NAME(FraRateHelper)
+QL_TRACE_NAME(FractionalDividend)
+QL_TRACE_NAME(FuturesRateHelper)
+QL_TRACE_NAME(FxForward)
+QL_TRACE_NAME(G2)
+QL_TRACE_NAME(G2SwaptionEngine)
+QL_TRACE_NAME(GJRGARCHModel)
+QL_TRACE_NAME(GJRGARCHProcess)
+QL_TRACE_NAME(GapPayoff)
+QL_TRACE_NAME(GarmanKohlagenProcess)
+QL_TRACE_NAME(Gaussian1dModel)
+QL_TRACE_NAME(GeneralizedBlackScholesProcess)
+QL_TRACE_NAME(GeneralizedHullWhite)
+QL_TRACE_NAME(Gsr)
+QL_TRACE_NAME(HestonModel)
+QL_TRACE_NAME(HestonModelHelper)
+QL_TRACE_NAME(HestonProcess)
+QL_TRACE_NAME(HullWhite)
+QL_TRACE_NAME(HullWhiteForwardProcess)
+QL_TRACE_NAME(HullWhiteProcess)
+QL_TRACE_NAME(HybridHestonHullWhiteProcess)
+QL_TRACE_NAME(IborIndex)
+QL_TRACE_NAME(ImpliedTermStructure)
+QL_TRACE_NAME(ImpliedVolTermStructure)
+QL_TRACE_NAME(Index)
+QL_TRACE_NAME(InflationIndex)
+QL_TRACE_NAME(Instrument)
+QL_TRACE_NAME(IntegralCdsEngine)
+QL_TRACE_NAME(IntegralEngine)
+QL_TRACE_NAME(InterestRate)
+QL_TRACE_NAME(InterestRateIndex)
+QL_TRACE_NAME(JamshidianSwaptionEngine)
+QL_TRACE_NAME(JointCalendar)
+QL_TRACE_NAME(JuQuadraticApproximationEngine)
+QL_TRACE_NAME(JumpDiffusionEngine)
+QL_TRACE_NAME(KirkEngine)
+QL_TRACE_NAME(KlugeExtOUProcess)
+QL_TRACE_NAME(LevenbergMarquardt)
+QL_TRACE_NAME(LfmSwaptionEngine)
+QL_TRACE_NAME(LiborForwardModel)
+QL_TRACE_NAME(LiborForwardModelProcess)
+QL_TRACE_NAME(LmCorrelationModel)
+QL_TRACE_NAME(LmVolatilityModel)
+QL_TRACE_NAME(LocalVolTermStructure)
+QL_TRACE_NAME(MargrabeOption)
+QL_TRACE_NAME(MarkovFunctional)
+QL_TRACE_NAME(Merton76Process)
+QL_TRACE_NAME(MidPointCdsEngine)
+QL_TRACE_NAME(MultiAssetOption)
+QL_TRACE_NAME(MultiCurve)
+QL_TRACE_NAME(NelsonSiegelFitting)
+QL_TRACE_NAME(NoConstraint)
+QL_TRACE_NAME(OISRateHelper)
+QL_TRACE_NAME(OneAssetOption)
+QL_TRACE_NAME(OneFactorAffineModel)
+QL_TRACE_NAME(OptimizationMethod)
+QL_TRACE_NAME(Option)
+QL_TRACE_NAME(OptionletVolatilityStructure)
+QL_TRACE_NAME(OptionletStripper2)
+QL_TRACE_NAME(OvernightIndex)
+QL_TRACE_NAME(OvernightIndexedSwap)
+QL_TRACE_NAME(OvernightIndexedSwapIndex)
+QL_TRACE_NAME(PaymentTerm)
+QL_TRACE_NAME(Payoff)
+QL_TRACE_NAME(PercentageStrikePayoff)
+QL_TRACE_NAME(PiecewiseTimeDependentHestonModel)
+QL_TRACE_NAME(PlainVanillaPayoff)
+QL_TRACE_NAME(PolymorphicPathGenerator)
+QL_TRACE_NAME(PolymorphicGaussianRsg)
+QL_TRACE_NAME(PositiveConstraint)
+QL_TRACE_NAME(PricingEngine)
+QL_TRACE_NAME(QlAffineModel)
+QL_TRACE_NAME(QlAmericanExercise)
+QL_TRACE_NAME(QlAssetSwap)
+QL_TRACE_NAME(QlBMAIndex)
+QL_TRACE_NAME(QlBMASwap)
+QL_TRACE_NAME(QlBarrierOption)
+QL_TRACE_NAME(QlDoubleBarrierOption)
+QL_TRACE_NAME(QlBachelierCalculator)
+QL_TRACE_NAME(QlBasketPayoff)
+QL_TRACE_NAME(QlBatesDetJumpModel)
+QL_TRACE_NAME(QlBatesDoubleExpDetJumpModel)
+QL_TRACE_NAME(QlBatesDoubleExpModel)
+QL_TRACE_NAME(QlBatesModel)
+QL_TRACE_NAME(QlBatesProcess)
+QL_TRACE_NAME(QlBermudanExercise)
+QL_TRACE_NAME(QlBlackAtmVolCurve)
+QL_TRACE_NAME(QlAbcdAtmVolCurve)
+QL_TRACE_NAME(QlBlackVolSurface)
+QL_TRACE_NAME(QlSabrVolSurface)
+QL_TRACE_NAME(QlBlackCalculator)
+QL_TRACE_NAME(QlBlackCalibrationHelper)
+QL_TRACE_NAME(QlBlackProcess)
+QL_TRACE_NAME(QlBlackScholesCalculator)
+QL_TRACE_NAME(QlBlackVarianceCurve)
+QL_TRACE_NAME(QlBlackVolatilitySurfaceDelta)
+QL_TRACE_NAME(QlBlackVolTermStructure)
+QL_TRACE_NAME(QlBond)
+QL_TRACE_NAME(QlBondForward)
+QL_TRACE_NAME(QlBondHelper)
+QL_TRACE_NAME(QlCalibratedModel)
+QL_TRACE_NAME(QlCalibrationHelper)
+QL_TRACE_NAME(QlCallability)
+QL_TRACE_NAME(QlCallableBond)
+QL_TRACE_NAME(QlCallableBondVolatilityStructure)
+QL_TRACE_NAME(QlCapFloor)
+QL_TRACE_NAME(QlCapFloorTermVolatilityStructure)
+QL_TRACE_NAME(QlCapFloorTermVolCurve)
+QL_TRACE_NAME(QlCapFloorTermVolSurface)
+QL_TRACE_NAME(QlCommodityCurve)
+QL_TRACE_NAME(QlCommodityIndex)
+QL_TRACE_NAME(QlCommodity)
+QL_TRACE_NAME(QlEnergyCommodity)
+QL_TRACE_NAME(QlEnergyFuture)
+QL_TRACE_NAME(QlEnergySwap)
+QL_TRACE_NAME(QlEnergyVanillaSwap)
+QL_TRACE_NAME(QlEnergyBasisSwap)
+QL_TRACE_NAME(QlCommodityCashFlow)
+QL_TRACE_NAME(QlCdsOption)
+QL_TRACE_NAME(QlClaim)
+QL_TRACE_NAME(QlConvertibleBond)
+QL_TRACE_NAME(QlCPIBond)
+QL_TRACE_NAME(QlCPICapFloor)
+QL_TRACE_NAME(QlCPICapFloorTermPriceSurface)
+QL_TRACE_NAME(QlCPICashFlow)
+QL_TRACE_NAME(QlCPISwap)
+QL_TRACE_NAME(QlCPIVolatilitySurface)
+QL_TRACE_NAME(QlCreditDefaultSwap)
+QL_TRACE_NAME(QlDefaultProbabilityTermStructure)
+QL_TRACE_NAME(QlDeltaVolQuote)
+QL_TRACE_NAME(QlDividend)
+QL_TRACE_NAME(QlEndCriteria)
+QL_TRACE_NAME(QlEquityCashFlow)
+QL_TRACE_NAME(QlEquityCashFlowPricer)
+QL_TRACE_NAME(QlEquityIndex)
+QL_TRACE_NAME(QlEquityQuantoCashFlowPricer)
+QL_TRACE_NAME(QlEquityTotalReturnSwap)
+QL_TRACE_NAME(QlEuropeanExercise)
+QL_TRACE_NAME(QlExercise)
+QL_TRACE_NAME(QlExtOUWithJumpsProcess)
+QL_TRACE_NAME(QlExtendedOrnsteinUhlenbeckProcess)
+QL_TRACE_NAME(QlFdm1dMesher)
+QL_TRACE_NAME(QlFdmInnerValueCalculator)
+QL_TRACE_NAME(QlFdmMesher)
+QL_TRACE_NAME(QlFdmQuantoHelper)
+QL_TRACE_NAME(QlFittedBondDiscountCurve)
+QL_TRACE_NAME(QlFixedRateBond)
+QL_TRACE_NAME(QlFloatingRateCouponPricer)
+QL_TRACE_NAME(QlForward)
+QL_TRACE_NAME(QlForwardRateAgreement)
+QL_TRACE_NAME(QlFxForward)
+QL_TRACE_NAME(QlG2)
+QL_TRACE_NAME(QlGJRGARCHModel)
+QL_TRACE_NAME(QlGJRGARCHProcess)
+QL_TRACE_NAME(QlGaussian1dModel)
+QL_TRACE_NAME(QlGeneralizedBlackScholesProcess)
+QL_TRACE_NAME(QlGsr)
+QL_TRACE_NAME(QlHestonModel)
+QL_TRACE_NAME(QlHestonProcess)
+QL_TRACE_NAME(QlHistoricalIndexAnalysis)
+QL_TRACE_NAME(QlHullWhite)
+QL_TRACE_NAME(QlHullWhiteForwardProcess)
+QL_TRACE_NAME(QlHullWhiteProcess)
+QL_TRACE_NAME(QlHybridHestonHullWhiteProcess)
+QL_TRACE_NAME(QlIborIndex)
+QL_TRACE_NAME(QlIndex)
+QL_TRACE_NAME(QlInflationIndex)
+QL_TRACE_NAME(QlInstrument)
+QL_TRACE_NAME(QlInterestRateIndex)
+QL_TRACE_NAME(QlKlugeExtOUProcess)
+QL_TRACE_NAME(QlLiborForwardModel)
+QL_TRACE_NAME(QlLiborForwardModelProcess)
+QL_TRACE_NAME(QlLmCorrelationModel)
+QL_TRACE_NAME(QlLmVolatilityModel)
+QL_TRACE_NAME(QlLocalVolTermStructure)
+QL_TRACE_NAME(QlMargrabeOption)
+QL_TRACE_NAME(QlMarkovFunctional)
+QL_TRACE_NAME(QlMerton76Process)
+QL_TRACE_NAME(QlMultiAssetOption)
+QL_TRACE_NAME(QlMultiCurve)
+QL_TRACE_NAME(QlNonstandardSwap)
+QL_TRACE_NAME(QlNonstandardSwaption)
+QL_TRACE_NAME(QlFloatFloatSwap)
+QL_TRACE_NAME(QlFloatFloatSwaption)
+QL_TRACE_NAME(QlOISRateHelper)
+QL_TRACE_NAME(QlOneAssetOption)
+QL_TRACE_NAME(QlOneFactorAffineModel)
+QL_TRACE_NAME(QlOption)
+QL_TRACE_NAME(QlOptionletVolatilityStructure)
+QL_TRACE_NAME(QlOptionletStripper2)
+QL_TRACE_NAME(QlOptimizationMethod)
+QL_TRACE_NAME(QlOvernightIndex)
+QL_TRACE_NAME(QlOvernightIndexedSwap)
+QL_TRACE_NAME(QlOvernightIndexedSwapIndex)
+QL_TRACE_NAME(QlPayoff)
+QL_TRACE_NAME(QlPercentageStrikePayoff)
+QL_TRACE_NAME(QlPiecewiseTimeDependentHestonModel)
+QL_TRACE_NAME(QlPlainVanillaPayoff)
+QL_TRACE_NAME(QlPricingEngine)
+QL_TRACE_NAME(QlQuantoBarrierOption)
+QL_TRACE_NAME(QlQuantoForwardVanillaOption)
+QL_TRACE_NAME(QlQuantoVanillaOption)
+QL_TRACE_NAME(QlQuote)
+QL_TRACE_NAME(QlSabrInterpolatedSmileSection)
+QL_TRACE_NAME(QlShortRateModel)
+QL_TRACE_NAME(QlSimpleQuote)
+QL_TRACE_NAME(QlSmileSection)
+QL_TRACE_NAME(QlSoftBarrierOption)
+QL_TRACE_NAME(QlStochasticProcess)
+QL_TRACE_NAME(QlStochasticProcess1D)
+QL_TRACE_NAME(QlStochasticProcessArray)
+QL_TRACE_NAME(QlStrikedTypePayoff)
+QL_TRACE_NAME(QlSwap)
+QL_TRACE_NAME(QlFixedVsFloatingSwap)
+QL_TRACE_NAME(QlSwapIndex)
+QL_TRACE_NAME(QlSwapRateHelper)
+QL_TRACE_NAME(QlSwaption)
+QL_TRACE_NAME(QlSwaptionHelper)
+QL_TRACE_NAME(QlSwaptionVolatilityStructure)
+QL_TRACE_NAME(QlSabrSwaptionVolatilityCube)
+QL_TRACE_NAME(QlInterpolatedSwaptionVolatilityCube)
+QL_TRACE_NAME(QlSwingExercise)
+QL_TRACE_NAME(QlTermStructure)
+QL_TRACE_NAME(QlTypePayoff)
+QL_TRACE_NAME(QlVanillaOption)
+QL_TRACE_NAME(QlVanillaSwap)
+QL_TRACE_NAME(QlVarianceGammaProcess)
+QL_TRACE_NAME(QlVarianceOption)
+QL_TRACE_NAME(QlVarianceSwap)
+QL_TRACE_NAME(QlVolatilityTermStructure)
+QL_TRACE_NAME(QlYearOnYearInflationSwap)
+QL_TRACE_NAME(QlYearOnYearInflationSwapHelper)
+QL_TRACE_NAME(QlYieldTermStructure)
+QL_TRACE_NAME(QlYoYCapFloorTermPriceSurface)
+QL_TRACE_NAME(QlYoYInflationCapFloor)
+QL_TRACE_NAME(QlYoYInflationCouponPricer)
+QL_TRACE_NAME(QlYoYInflationIndex)
+QL_TRACE_NAME(QlYoYInflationTermStructure)
+QL_TRACE_NAME(QlYoYOptionletVolatilitySurface)
+QL_TRACE_NAME(QlZeroCouponInflationSwap)
+QL_TRACE_NAME(QlZeroCouponSwap)
+QL_TRACE_NAME(QlZeroCouponInflationSwapHelper)
+QL_TRACE_NAME(QlZeroInflationCashFlow)
+QL_TRACE_NAME(QlZeroInflationIndex)
+QL_TRACE_NAME(QlZeroInflationTermStructure)
+QL_TRACE_NAME(QuantoBarrierOption)
+QL_TRACE_NAME(QuantoForwardVanillaOption)
+QL_TRACE_NAME(QuantoTermStructure)
+QL_TRACE_NAME(QuantoVanillaOption)
+QL_TRACE_NAME(Quote)
+QL_TRACE_NAME(Region)
+QL_TRACE_NAME(ReplicatingVarianceSwapEngine)
+QL_TRACE_NAME(Rounding)
+QL_TRACE_NAME(Schedule)
+QL_TRACE_NAME(ShortRateModel)
+QL_TRACE_NAME(SimplePolynomialFitting)
+QL_TRACE_NAME(SimpleQuote)
+QL_TRACE_NAME(Simplex)
+QL_TRACE_NAME(SmileSection)
+QL_TRACE_NAME(SoftBarrierOption)
+QL_TRACE_NAME(SoftCallability)
+QL_TRACE_NAME(SpreadCdsHelper)
+QL_TRACE_NAME(StochasticProcess)
+QL_TRACE_NAME(StochasticProcess1D)
+QL_TRACE_NAME(StochasticProcessArray)
+QL_TRACE_NAME(StrikedTypePayoff)
+QL_TRACE_NAME(StulzEngine)
+QL_TRACE_NAME(SuperFundPayoff)
+QL_TRACE_NAME(SuperSharePayoff)
+QL_TRACE_NAME(SvenssonFitting)
+QL_TRACE_NAME(Swap)
+QL_TRACE_NAME(ConstNotionalCrossCurrencySwap)
+QL_TRACE_NAME(ConstNotionalCrossCurrencyBasisSwap)
+QL_TRACE_NAME(ConstNotionalCrossCurrencyFixedVsFloatingSwap)
+QL_TRACE_NAME(SwapIndex)
+QL_TRACE_NAME(SwapRateHelper)
+QL_TRACE_NAME(Swaption)
+QL_TRACE_NAME(SwaptionHelper)
+QL_TRACE_NAME(SwaptionVolatilityStructure)
+QL_TRACE_NAME(SwingExercise)
+QL_TRACE_NAME(TermStructure)
+QL_TRACE_NAME(TimeGrid)
+QL_TRACE_NAME(TreeCallableFixedRateBondEngine)
+QL_TRACE_NAME(TreeCallableZeroCouponBondEngine)
+QL_TRACE_NAME(TreeCapFloorEngine)
+QL_TRACE_NAME(TreeSwaptionEngine)
+QL_TRACE_NAME(TreeVanillaSwapEngine)
+QL_TRACE_NAME(TypePayoff)
+QL_TRACE_NAME(UpfrontCdsHelper)
+QL_TRACE_NAME(UnitOfMeasure)
+QL_TRACE_NAME(UnitOfMeasureConversion)
+QL_TRACE_NAME(VanillaOption)
+QL_TRACE_NAME(VanillaSwap)
+QL_TRACE_NAME(VarianceGammaEngine)
+QL_TRACE_NAME(VarianceGammaProcess)
+QL_TRACE_NAME(VarianceSwap)
+QL_TRACE_NAME(VegaStressedBlackScholesProcess)
+QL_TRACE_NAME(VolatilityTermStructure)
+QL_TRACE_NAME(YearOnYearInflationSwap)
+QL_TRACE_NAME(YearOnYearInflationSwapHelper)
+QL_TRACE_NAME(YieldTermStructure)
+QL_TRACE_NAME(YoYCapFloorTermPriceSurface)
+QL_TRACE_NAME(YoYInflationCapFloor)
+QL_TRACE_NAME(YoYInflationCouponPricer)
+QL_TRACE_NAME(YoYInflationIndex)
+QL_TRACE_NAME(YoYInflationTermStructure)
+QL_TRACE_NAME(YoYOptionletVolatilitySurface)
+QL_TRACE_NAME(ZeroCouponBond)
+QL_TRACE_NAME(ZeroCouponInflationSwap)
+QL_TRACE_NAME(ZeroCouponSwap)
+QL_TRACE_NAME(ZeroCouponInflationSwapHelper)
+QL_TRACE_NAME(ZeroInflationIndex)
+QL_TRACE_NAME(ZeroInflationTermStructure)
+QL_TRACE_NAME(ZeroSpreadedTermStructure)
+QL_TRACE_NAME_AS(void, "Ptr")
 
-extern std::ofstream ofs;
-template <class T>
-T traceval(const char *text, T val) {
-  ofs << text << " "; ObjClassName<T>::output(ofs); ofs << ": " << val << std::endl;
-  return val;
+// The trace destination, opened on first use -- see qlMisc.cpp.
+std::ostream &traceStream();
+
+// One line of trace: the verb, the label ObjClassName gives `Label', and the pointer.
+template <class Label, class T> void emit(const char *what, T p) {
+  traceStream() << what << " " << ObjClassName<Label>::name() << ": " << p << std::endl;
 }
-// Like traceval, but the trace label comes from a caller-supplied Label rather than from val's
-// own type -- for the handful of places where what actually gets freed later is traced under a
-// different (usually less-derived, or type-erased) static type than what's allocated here. Never
-// changes val itself, only which ObjClassName the log line names.
-template <class Label, class T>
-T tracevalAs(const char *text, T val) {
-  ofs << text << " "; ObjClassName<Label>::output(ofs); ofs << ": " << val << std::endl;
-  return val;
-}
-# define TPAS(label, text, p) tracevalAs<label>((text), (p))
+inline constexpr bool trackAllocations = true;
 #else
-# define TPAS(label, text, p) (p)
+// Never called when tracing is off (every caller guards with `if constexpr'); declared so that
+// nothing outside this header needs to know whether the flag is set.
+template <class Label, class T> void emit(const char *, T) {}
+inline constexpr bool trackAllocations = false;
 #endif
 
-template <class T> T arg(T p) {return TP("arg", p);}
-// A null pointer is never traced as "allocated"/"returned" (alloc()/ret() only ever wrap a
-// freshly-constructed object), so tracing a null free here would be permanently unmatched noise
-// in alloc-summary.py -- skip the trace (the delete itself is already a no-op on null).
-template <class T> void del(T p) {if (p) {delete TP("deleting", p); TP2("deleted", p);} else delete p;}
-template <class T> T alloc(T p) {return TP("allocated", p);}
-template <class T> T ret(T p) {return TP("returned", p);}
+// The one place tracing is switched on or off. `if constexpr' discards the entire body when the
+// flag is off -- and because these are templates, the discarded statement is never instantiated,
+// so the null test below does not merely optimize away, it is never compiled. That is why the
+// guard lives here and not in each free function: a non-template caller hosting the `if constexpr'
+// itself would still have its discarded branch fully checked.
+//
+// A null pointer is never traced: alloc()/ret() only ever wrap a freshly-constructed object, so a
+// traced null free would be permanently unmatched noise in alloc-summary.py. (Every free below
+// still runs unconditionally -- delete/delete[] on null is a no-op anyway.)
+template <class Label, class T> void traceAs(const char *what, T p) {
+  if constexpr (trackAllocations) {if (p) emit<Label>(what, p);}
+  else {(void)what; (void)p;}
+}
+// Trace under the pointer's own static type -- the usual case.
+template <class T> void trace(const char *what, T p) {traceAs<T>(what, p);}
+
+// arg() is the pass-through read of a pointer received from Haskell, not a lifecycle event: it
+// traces unconditionally, nulls included, since alloc-summary.py ignores "arg" lines outright.
+template <class T> T arg(T p) {
+  if constexpr (trackAllocations) emit<T>("arg", p);
+  return p;
+}
+template <class T> T alloc(T p) {trace("allocated", p); return p;}
+// alloc() for an object that is about to be owned by a shared_ptr: the adoption happens in the
+// same full-expression as the `new', so no exception between the two can leak it. Prefer this
+// over a raw pointer held across a try block -- the trace label is still taken from the argument's
+// static type, so the pointer handed in must already have the type the object is freed through
+// (see makeCurrency in qlMisc.cpp for what goes wrong otherwise).
+template <class T> shared_ptr<T> allocShared(T *p) {return shared_ptr<T>(alloc(p));}
+template <class T> T ret(T p) {trace("returned", p); return p;}
+template <class T> void del(T p) {trace("deleting", p); delete p; trace("deleted", p);}
+// The delete[] counterpart of del(), for the array types Haskell frees through qlFreeInts and
+// friends. Separate rather than a flag on del() because the array/scalar delete form has to be
+// chosen at the call site anyway.
+template <class T> void delArray(T p) {trace("deleting", p); delete[] p; trace("deleted", p);}
+// del() for an object whose actual `delete' has to happen elsewhere -- a type only
+// forward-declared here, freed through a function in the translation unit that defines it. The
+// null test here is real (freeFn need not be null-safe), unlike the tracing-only one in traceAs.
+template <class T, class F> void delWith(T p, F freeFn) {
+  trace("deleting", p);
+  if (p) freeFn(p);
+  trace("deleted", p);
+}
 
 // Trace a `new T*[n]` pointer-array spine under void** -- the type it is actually freed as via
 // qlFreePointerArray (declared `void**`, which can't recover the original element type), so
 // tracing it under T** here would leave the allocation forever unmatched to its own free. `p`
 // itself stays T** throughout -- only the trace label is void**, no cast involved.
-template <class T> T** retPtrArray(T **p) {return TPAS(void**, "returned", p);}
+template <class T> T** retPtrArray(T **p) {traceAs<void**>("returned", p); return p;}
 
 // Trace `new Derived(...)` under a Base* label (Base named unstarred at the call site, e.g.
 // allocAs<FittedBondDiscountCurveFittingMethod>(new CubicBSplinesFitting(...))) while returning
@@ -1401,7 +1436,7 @@ template <class T> T** retPtrArray(T **p) {return TPAS(void**, "returned", p);}
 // under Derived while the matching qlFreeBase's del() (parameter-typed as Base*) traces the free
 // under Base -- a spurious leak/over-free pair in alloc-summary.py despite correct actual memory
 // behavior.
-template <class Base, class Derived> Derived* allocAs(Derived *p) {return TPAS(Base*, "allocated", p);}
+template <class Base, class Derived> Derived* allocAs(Derived *p) {traceAs<Base*>("allocated", p); return p;}
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);
@@ -1483,20 +1518,9 @@ inline std::vector<Handle<T> > qlHandleVector(Handle<T> **vals, size_t len) {
 }
 
 template <class T>
-T *handleException(char **msg, std::exception &e, T *t) {
-  *msg = DUP(e.what());
-  if (t)
-    delete t;
-  return 0;
-}
-
-template <class T>
 T handleException(char **msg, std::exception &e) {
-  *msg = DUP(e.what());
+  *msg = tracedup(e.what());
   return 0;
 }
-
-#define LENGTH(a) (sizeof(a)/sizeof(a[0]))
-#define LAST(a) (a + sizeof(a)/sizeof(a[0]))
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

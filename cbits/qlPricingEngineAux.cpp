@@ -692,10 +692,10 @@ PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlac
 
 class PolymorphicPathGenerator {
 private:
-  typedef MultiPathGenerator<PseudoRandom::rsg_type> PseudoRandomPathGenerator;
-  typedef MultiPathGenerator<LowDiscrepancy::rsg_type> SobolPathGenerator;
-  typedef MultiPathGenerator<PoissonPseudoRandom::rsg_type> PoissonPathGenerator;
-  typedef MultiPathGenerator<Ziggurat::rsg_type> ZigguratPathGenerator;
+  using PseudoRandomPathGenerator = MultiPathGenerator<PseudoRandom::rsg_type>;
+  using SobolPathGenerator = MultiPathGenerator<LowDiscrepancy::rsg_type>;
+  using PoissonPathGenerator = MultiPathGenerator<PoissonPseudoRandom::rsg_type>;
+  using ZigguratPathGenerator = MultiPathGenerator<Ziggurat::rsg_type>;
 public:
   PolymorphicPathGenerator(int rngtrait, const shared_ptr<StochasticProcess> p, const TimeGrid &t, unsigned seed, unsigned dim, bool brownianBridge) {
     init(rngtrait, p, t, seed, dim, brownianBridge, SobolRsg::Jaeckel);
@@ -757,10 +757,10 @@ PolymorphicPathGenerator* qlSobolPathGeneratorAux(SobolRsg::DirectionIntegers di
 // against pathGenerator's own.
 class PolymorphicGaussianRsg {
 private:
-  typedef PseudoRandom::rsg_type PseudoRandomRsg;
-  typedef LowDiscrepancy::rsg_type SobolRsgType;
-  typedef PoissonPseudoRandom::rsg_type PoissonRsg;
-  typedef Ziggurat::rsg_type ZigguratRsg;
+  using PseudoRandomRsg = PseudoRandom::rsg_type;
+  using SobolRsgType = LowDiscrepancy::rsg_type;
+  using PoissonRsg = PoissonPseudoRandom::rsg_type;
+  using ZigguratRsg = Ziggurat::rsg_type;
 public:
   PolymorphicGaussianRsg(int rngtrait, unsigned dim, unsigned seed) {
     init(rngtrait, dim, seed, SobolRsg::Jaeckel);

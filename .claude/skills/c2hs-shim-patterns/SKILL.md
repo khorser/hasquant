@@ -151,14 +151,14 @@ signal, not the theoretical severity. Two traps found doing this pass:
   shim is exactly the shape most likely to be waved through without that
   check.
 - **`handleException<T>(msg, exc)` (`qlaux.h`) cannot be instantiated at
-  `T = void`** — its body is `*msg = DUP(exc.what()); return 0;`, and
+  `T = void`** — its body is `*msg = tracedup(exc.what()); return 0;`, and
   `return 0;` in a function returning `void` is a hard compile error (`void
   function should not return a value`), not silently treated as `return;`.
-  For a `void`-returning shim, inline `*e = DUP(er.what());` directly in
+  For a `void`-returning shim, inline `*e = tracedup(er.what());` directly in
   the `catch` block instead (precedent: `qlInstrumentAdditionalResults` and
   others already do this) rather than reaching for the generic helper.
 
-**A bare `DUP(...)`-only string getter, or a bare `ret(new QlY(*arg(o)))`
+**A bare `tracedup(...)`-only string getter, or a bare `ret(new QlY(*arg(o)))`
 upcast shim, is not itself part of this exception-safety sweep even when
 it sits textually next to fixed siblings.** These are a large (~100+
 sites), pre-existing, deliberately uniform convention across `cbits/` —

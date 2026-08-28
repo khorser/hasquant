@@ -148,14 +148,11 @@ def render_qlaux(nodes):
         lines.append(f"using QuantLib::{n.name};")
     lines.append("")
     for n in gen:
-        lines.append(f"typedef shared_ptr<{n.name}> Ql{n.name};")
+        lines.append(f"using Ql{n.name} = shared_ptr<{n.name}>;")
     lines.append("")
     lines.append("#ifdef QLTRACK_ALLOCATIONS")
     for n in gen:
-        lines.append(
-            f'template <> class ObjClassName<{n.name}*> {{public: '
-            f'static void output(std::ostream& os) {{os << "{n.name}";}}}};'
-        )
+        lines.append(f"QL_TRACE_NAME({n.name})")
     lines.append("#endif")
     return "\n".join(lines)
 

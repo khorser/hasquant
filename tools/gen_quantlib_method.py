@@ -406,7 +406,7 @@ def classify_return(type_str: str, reg: Registries) -> Marshal:
     if t in BOOL_TYPES:
         return Marshal(True, c_ret_type="int", cpp_wrap="return {expr};", chs_ret="`Bool'")
     if t in STRING_TYPES:
-        return Marshal(True, c_ret_type="const char*", cpp_wrap="return DUP(({expr}).c_str());", chs_ret="`String'")
+        return Marshal(True, c_ret_type="const char*", cpp_wrap="return tracedup(({expr}).c_str());", chs_ret="`String'")
     if t == "Date":
         return Marshal(True, c_ret_type="int", cpp_wrap="return ({expr}).serialNumber();", chs_ret="`Day'toDay")
 

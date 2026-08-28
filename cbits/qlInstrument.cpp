@@ -108,8 +108,8 @@ using namespace QuantLib;
 #include <typeinfo>
 
 #ifdef QLTRACK_ALLOCATIONS
-template <> class ObjClassName<Leg*> {public: static void output(std::ostream& os) {os << "Leg";}};
-template <> class ObjClassName<QlAdditionalResult*> {public: static void output(std::ostream& os) {os << "QlAdditionalResult";}};
+QL_TRACE_NAME(Leg)
+QL_TRACE_NAME(QlAdditionalResult)
 #endif
 
 namespace {
@@ -156,7 +156,7 @@ namespace {
       r.dval = ext::any_cast<double>(v);
     } else if (v.type() == typeid(std::string)) {
       r.type = AdditionalResultString;
-      r.sval = DUP(ext::any_cast<std::string>(v).c_str());
+      r.sval = tracedup(ext::any_cast<std::string>(v).c_str());
     } else if (v.type() == typeid(std::vector<double>)) {
       r.type = AdditionalResultDoubleVector;
       const std::vector<double> &vec = ext::any_cast<const std::vector<double>&>(v);
@@ -168,7 +168,7 @@ namespace {
       }
     } else {
       r.type = AdditionalResultUnknown;
-      r.sval = DUP(v.type().name());
+      r.sval = tracedup(v.type().name());
     }
   }
   // Payoff has exactly three pure virtuals (ql/payoff.hpp), so a Haskell-defined one needs only
@@ -179,8 +179,8 @@ namespace {
   // uncoarsenable case of CLAUDE.md's "coarsen the language-boundary crossing" bullet, same
   // accepted cost as HsFdmInnerValueCalculator (qlPricingEngine.cpp) and QuantLib-SWIG's own
   // FdmInnerValueCalculatorDelegate.
-  typedef double (*PayoffFun)(double price);
-  typedef double (*BasketAccumulateFun)(const double* a, unsigned n);
+  using PayoffFun = double (*)(double price);
+  using BasketAccumulateFun = double (*)(const double* a, unsigned n);
 
   class HsPayoff : public Payoff {
   public:
@@ -235,9 +235,9 @@ namespace {
 // Same reason as qlPricingEngine.cpp's Hs* labels: these live in the anonymous namespace above and
 // so cannot be named in qlaux.h's table, and without a specialization ObjClassName falls back to
 // typeid().name(). All three are shared_ptr payloads -- alloc() only, never freed.
-template <> class ObjClassName<HsPayoff*> {public: static void output(std::ostream& os) {os << "HsPayoff";}};
-template <> class ObjClassName<HsStrikedPayoff*> {public: static void output(std::ostream& os) {os << "HsStrikedPayoff";}};
-template <> class ObjClassName<HsBasketPayoff*> {public: static void output(std::ostream& os) {os << "HsBasketPayoff";}};
+QL_TRACE_NAME(HsPayoff)
+QL_TRACE_NAME(HsStrikedPayoff)
+QL_TRACE_NAME(HsBasketPayoff)
 #endif
 
 extern "C" {
@@ -261,14 +261,14 @@ void qlInstrumentAdditionalResults(QlInstrument *instr, unsigned *len,
     arr = alloc(new QlAdditionalResult[n]());
     unsigned i = 0;
     for (std::map<std::string, ext::any>::const_iterator it = res.begin(); it != res.end(); ++it, ++i) {
-      arr[i].key = DUP(it->first.c_str());
+      arr[i].key = tracedup(it->first.c_str());
       fillResult(arr[i], it->second);
     }
     *out = arr;
     *len = n;
   } catch (std::exception& er) {
     qlFreeAdditionalResults(n, arr);
-    *e = DUP(er.what());
+    *e = tracedup(er.what());
   }
 }
 
@@ -277,24 +277,18 @@ void qlFreeAdditionalResults(unsigned len, struct QlAdditionalResult *out) {
   for (unsigned i = 0; i < len; ++i) {
     qlFreeString(out[i].key);
     if (out[i].sval) qlFreeString(out[i].sval);
-    if (out[i].varr) {
-      TP2("deleting", out[i].varr);
-      delete[] out[i].varr;
-      TP2("deleted", out[i].varr);
-    }
+    delArray(out[i].varr);
   }
-  TP2("deleting", out);
-  delete[] out;
-  TP2("deleted", out);
+  delArray(out);
 }
 
 QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, unsigned, double *coeff, char **e) {
-  CompositeInstrument *ci = 0;
-  try {ci = new CompositeInstrument();
+  try {auto ci = ext::make_shared<CompositeInstrument>();
     for (unsigned i = 0; i < instrLen; ++i)
         ci->add(*(instrs[i]), coeff[i]);
-    return ret(new QlInstrument(alloc(ci)));
-  } catch (std::exception& er) {delete ci; return handleException<QlInstrument*>(e, er);}}
+    alloc(ci.get());
+    return ret(new QlInstrument(ci));
+  } catch (std::exception& er) {return handleException<QlInstrument*>(e, er);}}
 
 double qlInstrumentErrorEstimate(QlInstrument* o, char **e) {try {return (*arg(o))->errorEstimate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlInstrumentIsExpired(QlInstrument* o, char **e) {try {return (*arg(o))->isExpired();} catch (std::exception& er) {return handleException<int>(e, er);}}
@@ -1195,12 +1189,11 @@ QlCallability* qlSoftCallability(double price, int priceType, int date, double t
   try {Bond::Price p(price, (Bond::Price::Type)priceType); return ret(new QlCallability(alloc(new SoftCallability(p, Date(date), trigger))));
   } catch (std::exception& er) {return handleException<QlCallability*>(e, er);}}
 Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
-  Leg *leg = 0;
-  try {leg = new Leg(); leg->reserve(len);
+  try {std::unique_ptr<Leg> leg(new Leg()); leg->reserve(len);
     for (unsigned i = 0; i < len; ++i)
       leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
-    return alloc(leg);
-  } catch (std::exception& er) {return handleException(e, er, leg);}}
+    return alloc(leg.release());
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
 int qlLegStartDate(Leg *leg, char **e) {try {Date d = CashFlows::startDate(*arg(leg)); return d.serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeLeg(Leg *leg) {del(leg);}
@@ -1227,7 +1220,7 @@ void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate
       (*hasOccurred)[i] = l[i]->hasOccurred(qlNullableDate(settlementDate), qlOptBool(includeSettlementDateFlows));
     }
     *al = l.size(); *dl = l.size(); *hl = l.size();
-  } catch (std::exception& er) {qlFreeDoubles(*amount); qlFreeInts(*date); qlFreeInts(*hasOccurred); *e = DUP(er.what());}}
+  } catch (std::exception& er) {qlFreeDoubles(*amount); qlFreeInts(*date); qlFreeInts(*hasOccurred); *e = tracedup(er.what());}}
 
 double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return CashFlows::duration(*arg(leg), *arg(yield), (Duration::Type)type, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
@@ -1474,15 +1467,14 @@ void qlQuantLibSetEquityCashFlowPricer(Leg* leg, QlEquityCashFlowPricer* pricer,
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
-  CouponLeg *cl = 0;
-  try {cl = new CouponLeg(); cl->reserve(o->size());
+  try {std::unique_ptr<CouponLeg> cl(new CouponLeg()); cl->reserve(o->size());
     for (unsigned i = 0; i < o->size(); ++i) {
       shared_ptr<Coupon> c = coupon_cast((*o)[i]);
       if (c != nullptr) cl->push_back(c);
       else QL_FAIL("Cash flow #" << i << " is not a coupon");
     }
-    return alloc(cl);
-  } catch (std::exception& er) {return handleException(e, er, cl);}}
+    return alloc(cl.release());
+  } catch (std::exception& er) {return handleException<CouponLeg*>(e, er);}}
 
 QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e) {
   try {Handle<Quote> corr = qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(new SimpleQuote(1.0)); });
@@ -1558,7 +1550,7 @@ void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys
     cs = retPtrArray(new Currency*[n]());
     unsigned i = 0;
     for (SecondaryCostAmounts::const_iterator it = m.begin(); it != m.end(); ++it, ++i) {
-      ks[i] = DUP(it->first.c_str());
+      ks[i] = tracedup(it->first.c_str());
       am[i] = it->second.value();
       cs[i] = ret(new Currency(it->second.currency()));
     }
@@ -1589,8 +1581,8 @@ void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
     dets = ret(new char*[n]());
     for (unsigned i = 0; i < n; ++i) {
       lv[i] = errs[i].errorLevel;
-      errs2[i] = DUP(errs[i].error.c_str());
-      dets[i] = DUP(errs[i].detail.c_str());
+      errs2[i] = tracedup(errs[i].error.c_str());
+      dets[i] = tracedup(errs[i].detail.c_str());
     }
     *levels = lv; *errors = errs2; *details = dets;
     *len = n; *len2 = n; *len3 = n;
@@ -1607,18 +1599,17 @@ void qlCommodityPricingErrors(QlCommodity *o, unsigned *len, int **levels,
    EnergySwap's is a real computed sum -- see energyswap.cpp). */
 double qlEnergyCommodityQuantity(QlEnergyCommodity *o, CommodityType **outCt, UnitOfMeasure **outUom, char **e) {
   *outCt = 0; *outUom = 0;
-  CommodityType *ct = 0;
-  UnitOfMeasure *uom = 0;
   try {
     Quantity q = (*arg(o))->quantity();
-    ct = ret(new CommodityType(q.commodityType()));
-    uom = ret(new UnitOfMeasure(q.unitOfMeasure()));
-    *outCt = ct; *outUom = uom;
+    // unique_ptr until both allocations have succeeded, so a throw from the second one releases
+    // the first without any cleanup in the catch -- and ret() runs only on the pointers actually
+    // handed out, so nothing half-built is ever traced as returned.
+    std::unique_ptr<CommodityType> ct(new CommodityType(q.commodityType()));
+    std::unique_ptr<UnitOfMeasure> uom(new UnitOfMeasure(q.unitOfMeasure()));
+    *outCt = ret(ct.release());
+    *outUom = ret(uom.release());
     return q.amount();
   } catch (std::exception& er) {
-    // Same reasoning as qlUnitOfMeasureConversionConvert (qlMisc.cpp): these are ret()-traced
-    // before the second allocation's throw point, so the catch must free them through del().
-    del(ct); del(uom);
     return handleException<double>(e, er);
   }
 }

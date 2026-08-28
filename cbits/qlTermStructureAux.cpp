@@ -42,7 +42,7 @@ C makeCubic(int approximator, int approximatorArg) {
 // interpolator and the bootstrapper, so those two go last here.
 template <class Trait, class Interp, class... Args>
 YieldTermStructure *makeCurve(const QlIterativeBootstrapOpts& b, const Interp& i, Args&&... args) {
-  typedef PiecewiseYieldCurve<Trait, Interp> CurveType;
+  using CurveType = PiecewiseYieldCurve<Trait, Interp>;
   return new CurveType(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
 }
 
@@ -145,7 +145,7 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl, 
       "GlobalBootstrap's canned AdditionalErrors formula (got " << additionalHelpers.size() <<
       " additionalHelpers and " << additionalDates.size() << " additionalDates, expected " <<
       (additionalHelpers.size() - 2) << " additionalDates)");
-  typedef PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap> CurveType;
+  using CurveType = PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap>;
   // CurveType::bootstrap_type(...) naming order -- see the comment on the plain-constructor
   // GlobalBootstrap branch in qlPiecewiseYieldCurveAux1, same [temp.inst] reason.
   return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::Linear(),
@@ -194,7 +194,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
       QL_REQUIRE(interpolator == hasquant::Linear,
           "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=SimpleZeroYield "
           "only supports interpolator=Linear (got interpolator " << interpolator << ")");
-      typedef PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap> CurveType;
+      using CurveType = PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap>;
       return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::Linear(),
           CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
     }
@@ -202,7 +202,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
         "GlobalBootstrap-based PiecewiseYieldCurve construction is only supported for "
         "trait=Discount, interpolator=LogLinear or trait=SimpleZeroYield, interpolator=Linear "
         "(got trait " << trait << ", interpolator " << interpolator << ")");
-    typedef PiecewiseYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap> CurveType;
+    using CurveType = PiecewiseYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap>;
     return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::LogLinear(),
         CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
   }

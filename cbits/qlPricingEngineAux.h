@@ -26,7 +26,7 @@ QuantLib::PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, int stattrait, 
 QuantLib::PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<QuantLib::GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const QuantLib::FdmSchemeDesc &fdScheme, bool localVol, double illegalLocalVolOverwrite, int cashDividendModel);
 
 class PolymorphicPathGenerator;
-typedef QuantLib::Sample<QuantLib::MultiPath> SamplePath;
+using SamplePath = QuantLib::Sample<QuantLib::MultiPath>;
 PolymorphicPathGenerator* qlPathGeneratorAux(int rngtrait, const shared_ptr<QuantLib::StochasticProcess> p, const QuantLib::TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBrdige);
 PolymorphicPathGenerator* qlSobolPathGeneratorAux(QuantLib::SobolRsg::DirectionIntegers dir, const shared_ptr<QuantLib::StochasticProcess> p, const QuantLib::TimeGrid &grid, unsigned seed, unsigned dim, bool brownianBridge);
 void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p);

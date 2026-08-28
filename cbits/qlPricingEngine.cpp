@@ -120,7 +120,7 @@ namespace hasquant {
 using namespace QuantLib;
 
 #ifdef QLTRACK_ALLOCATIONS
-template <> class ObjClassName<SamplePath*> {public: static void output(std::ostream& os) {os << "SamplePath";}};
+QL_TRACE_NAME(SamplePath)
 #endif
 
 namespace {
@@ -142,10 +142,10 @@ namespace {
   // DouglasScheme::step actually calls (size/setTime are plain state, not callbacks -- see below)
   // are implemented; apply_mixed/preconditioner QL_FAIL, so only schemes that never need them
   // (Douglas, Crank-Nicolson in 1D) work through this hook.
-  typedef void (*FdmApplyFun)(const double* in, unsigned n, double t1, double t2, double* out);
-  typedef void (*FdmApplyDirectionFun)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out);
-  typedef void (*FdmSolveSplittingFun)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out);
-  typedef void (*FdmStepConditionFun)(const double* in, unsigned n, double t, double* out);
+  using FdmApplyFun = void (*)(const double* in, unsigned n, double t1, double t2, double* out);
+  using FdmApplyDirectionFun = void (*)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out);
+  using FdmSolveSplittingFun = void (*)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out);
+  using FdmStepConditionFun = void (*)(const double* in, unsigned n, double t, double* out);
 
   class HsFdmLinearOpComposite : public FdmLinearOpComposite {
   public:
@@ -210,7 +210,7 @@ namespace {
   // and QuantLib's own step conditions (e.g. FdmAmericanStepCondition, not bound here) call it
   // again per node at every exercise date -- matching QuantLib-SWIG's own
   // FdmInnerValueCalculatorDelegate (SWIG/fdm.i), which accepts the same real per-call cost.
-  typedef double (*FdmInnerValueFun)(const double* loc, unsigned n, double t);
+  using FdmInnerValueFun = double (*)(const double* loc, unsigned n, double t);
 
   class HsFdmInnerValueCalculator : public FdmInnerValueCalculator {
   public:
@@ -286,9 +286,9 @@ namespace {
 // named there. Specialize here instead; without it ObjClassName's primary template falls back to
 // typeid().name() and the trace carries a mangled name. All three are shared_ptr payloads: alloc()
 // only, never freed, so alloc-summary.py --census lists them rather than flagging a leak.
-template <> class ObjClassName<HsFdmLinearOpComposite*> {public: static void output(std::ostream& os) {os << "HsFdmLinearOpComposite";}};
-template <> class ObjClassName<HsFdmStepCondition*> {public: static void output(std::ostream& os) {os << "HsFdmStepCondition";}};
-template <> class ObjClassName<HsFdmInnerValueCalculator*> {public: static void output(std::ostream& os) {os << "HsFdmInnerValueCalculator";}};
+QL_TRACE_NAME(HsFdmLinearOpComposite)
+QL_TRACE_NAME(HsFdmStepCondition)
+QL_TRACE_NAME(HsFdmInnerValueCalculator)
 #endif
 
 extern "C" {
@@ -832,7 +832,7 @@ void qlFdmRollback(unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun ap
     *outLen = (unsigned)a.size();
     *outValues = qlAllocateDoubles(*outLen);
     std::copy(a.begin(), a.end(), *outValues);
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 void qlFreeFdm1dMesher(QlFdm1dMesher *o) {del(o);}
 void qlFreeFdmMesher(QlFdmMesher *o) {del(o);}
@@ -887,7 +887,7 @@ void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* out
     *outLen = (unsigned)locs.size();
     *outValues = qlAllocateDoubles(*outLen);
     std::copy(locs.begin(), locs.end(), *outValues);
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 void qlFreeFdmInnerValueCalculator(QlFdmInnerValueCalculator *o) {del(o);}
 
@@ -901,10 +901,10 @@ QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* m
 
 double qlFdmInnerValueCalculatorEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
   try {return (*arg(calc))->innerValue(fdmIteratorAt(mesher, ndims, coords), t);
-  } catch (std::exception& er) {*e = DUP(er.what()); return 0.0;}}
+  } catch (std::exception& er) {*e = tracedup(er.what()); return 0.0;}}
 double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
   try {return (*arg(calc))->avgInnerValue(fdmIteratorAt(mesher, ndims, coords), t);
-  } catch (std::exception& er) {*e = DUP(er.what()); return 0.0;}}
+  } catch (std::exception& er) {*e = tracedup(er.what()); return 0.0;}}
 
 // Sibling of qlFdmRollback that derives its own initial grid from a mesher + a (native or
 // Haskell-callback-driven) FdmInnerValueCalculator (calc->avgInnerValue(iter, maturity) per node)
@@ -939,7 +939,7 @@ void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
     *outLen = (unsigned)a.size();
     *outValues = qlAllocateDoubles(*outLen);
     std::copy(a.begin(), a.end(), *outValues);
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 // Native (non-Haskell-callback) FdmInnerValueCalculator subclasses -- QuantLib's own concrete
 // implementations, bound as a peer to qlFdmInnerValueCalculatorFromFunctions above so common cases
@@ -960,7 +960,7 @@ QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValue(QlPayoff* payoff, QlFdmM
 // see QuantLib.Method.withCustomCellAveragingInnerValue's haddock for why its Haskell wrapper must
 // be continuation-style, same reasoning as qlFdmInnerValueCalculatorFromFunctions/
 // withCustomFdmInnerValueCalculator.
-typedef double (*FdmGridMappingFun)(double x);
+using FdmGridMappingFun = double (*)(double x);
 QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValueMapped(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, FdmGridMappingFun mappingFn, char **e) {
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmCellAveragingInnerValue(*arg(payoff), *arg(mesher), direction,
     [mappingFn](Real x) -> Real { return mappingFn(x); }))));
@@ -1289,14 +1289,9 @@ QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticP
   try {return ret(new QlStochasticProcessArray(alloc(new StochasticProcessArray(qlVector(x0, x0Len), qlMatrix(correlation, correlationRows, correlationCols)))));
   } catch (std::exception& er) {return handleException<QlStochasticProcessArray*>(e, er);}}
 
-// qlFreePolymorphicPathGeneratorAux does the actual `delete` (PolymorphicPathGenerator
-// is only forward-declared here, so del()'s own `delete` can't run in this translation
-// unit) -- trace around it by hand so freed generators don't look permanently live.
-void qlFreePathGenerator(PolymorphicPathGenerator *gen) {
-  // Null is skipped rather than traced, exactly as del() and qlFreeGaussianRsg below do -- an
-  // untraced null free has no matching ret(), so tracing it would read as a permanent over-free.
-  if (gen) {(void)TP("deleting", gen); qlFreePolymorphicPathGeneratorAux(gen); TP2("deleted", gen);}
-}
+// delWith rather than del(): qlFreePolymorphicPathGeneratorAux does the actual `delete`, since
+// PolymorphicPathGenerator is only forward-declared in this translation unit.
+void qlFreePathGenerator(PolymorphicPathGenerator *gen) {delWith(gen, qlFreePolymorphicPathGeneratorAux);}
 PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
   try {return ret(qlPathGeneratorAux(rngtrait, *arg(p), *arg(t), seed, dim, brownianBridge));
   } catch (std::exception& er) {return handleException<PolymorphicPathGenerator*>(e, er);}}
@@ -1316,12 +1311,8 @@ unsigned qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
 void qlFreeSamplePath(SamplePath *p) {del(p);}
 double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {try {return arg(p)->value.at(asset).at(point);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
-// Null-guarded like del() in qlaux.h, and for the same reason: alloc()/ret() never wrap a null,
-// so tracing a null free would be permanently unmatched noise in alloc-summary.py. (The delete
-// itself is a no-op on null either way.)
-void qlFreeGaussianRsg(PolymorphicGaussianRsg *g) {
-  if (g) {(void)TP("deleting", g); qlFreePolymorphicGaussianRsgAux(g); TP2("deleted", g);}
-}
+// delWith, for the same reason as qlFreePathGenerator above.
+void qlFreeGaussianRsg(PolymorphicGaussianRsg *g) {delWith(g, qlFreePolymorphicGaussianRsgAux);}
 // ret() only, no alloc(): the generator is a standalone heap object handed straight to Haskell and
 // freed by qlFreeGaussianRsg -- not a shared_ptr payload. Wrapping it in both verbs would trace one
 // pointer as two acquisitions against a single release, which alloc-summary.py reports as a leak.
@@ -1336,10 +1327,10 @@ unsigned qlGaussianRsgDimension(PolymorphicGaussianRsg *g) {return qlGaussianRsg
 
 void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e) {
   try {copySequence(qlGaussianRsgNextSequenceAux(arg(g)), len, values, weight);
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e) {
   try {copySequence(qlGaussianRsgLastSequenceAux(arg(g)), len, values, weight);
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
   try {*len = arg(s)->value.pathSize(); *p = qlAllocateDoubles(*len);std::copy(s->value.at(asset).begin(), s->value.at(asset).end(), *p);
@@ -1361,7 +1352,7 @@ void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double
       for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](evalStates[i]);
       (*outValues)[i] = cont;
     }
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 // Multi-asset counterpart of qlLsmRegress, via LsmBasisSystem::multiPathBasisSystem: fitStates/evalStates
 // are row-major (one row per path, fitCols/evalCols columns = underlyings, which must agree).
@@ -1383,7 +1374,7 @@ void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsign
       values[i] = cont;
     }
     *outLen = len; *outValues = values;
-  } catch (std::exception& er) {*e = DUP(er.what());}}
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
   try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);

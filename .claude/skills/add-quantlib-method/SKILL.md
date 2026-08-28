@@ -19,7 +19,7 @@ If the method you're being asked for doesn't exist verbatim in the upstream head
 
 ## 1. Argument marshalling — pick the right dereference depth
 
-- **Parameter is `QlXxx* o`** (a hierarchy/polymorphic class — check `cbits/qlaux.h` for an existing `typedef shared_ptr<Xxx> QlXxx;`): `o` is a pointer to a `shared_ptr<Xxx>`, so you need one extra dereference to reach the object: `(*arg(o))->method(...)`.
+- **Parameter is `QlXxx* o`** (a hierarchy/polymorphic class — check `cbits/qlaux.h` for an existing `using QlXxx = shared_ptr<Xxx>;`): `o` is a pointer to a `shared_ptr<Xxx>`, so you need one extra dereference to reach the object: `(*arg(o))->method(...)`.
   Example: `qlTermStructureReferenceDate`: `(*arg(o))->referenceDate()`.
 - **Parameter is `Xxx* o`** (a plain value type — listed with no `Ql` prefix in `cbits/qlTypesC2HS.h`'s "fake typedefs" block, e.g. `Calendar`, `DayCounter`, `InterestRate`, `Period`, `Schedule`, `Currency`): `o` is a direct pointer to the object, one level shallower: `arg(o)->method(...)`.
   Example: `qlInterestRateRate`: `arg(o)->rate()`.
@@ -29,7 +29,7 @@ Getting this wrong (using the wrong dereference depth for the type) compiles fin
 ## 2. Return value construction
 
 - **Primitive** (`double`, `int`, `bool`) — return directly, no wrapping. A `Date` return is serialized: `.serialNumber()` (mirrors every other date-returning binding).
-- **`std::string`/`const char*`** — must be heap-duplicated for the FFI boundary: `DUP(arg(o)->name().c_str())`.
+- **`std::string`/`const char*`** — must be heap-duplicated for the FFI boundary: `tracedup(arg(o)->name().c_str())`.
 - **New QuantLib object** — construct then wrap through `ret()`:
   - Hierarchy/polymorphic class: `ret(new QlXxx(alloc(new Xxx(...))))` (or `alloc(dynamic_cast<Xxx*>(...))` if downcasting from an existing pointer).
   - Plain value type: `ret(new Xxx(...))` directly, no `Ql`/`alloc()` wrapper needed.
