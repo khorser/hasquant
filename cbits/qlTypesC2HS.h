@@ -210,4 +210,5 @@ typedef struct QlZeroInflationCashFlow QlZeroInflationCashFlow;
 typedef struct QlZeroInflationIndex QlZeroInflationIndex;
 typedef struct QlZeroInflationTermStructure QlZeroInflationTermStructure;
 typedef struct PolymorphicPathGenerator PolymorphicPathGenerator;
+typedef struct PolymorphicGaussianRsg PolymorphicGaussianRsg;
 typedef struct SamplePath SamplePath;

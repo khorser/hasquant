@@ -28,6 +28,13 @@
 --   crossing" bullet for why 'withCustomFdmInnerValueCalculator''s
 --   'QuantLib.Internal.Type.withFdmInnerValue' callback, unlike every other one here, is a genuine
 --   per-grid-node crossing rather than a whole-grid one.
+-- * 'QuantLib.Instrument.Option.withCustomStrikedPayoff' driving
+--   'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' -- the engine that reaches past the
+--   @Payoff@ interface, downcasting to @StrikedTypePayoff@ with no null check to read a strike for
+--   its mesher. A payoff from 'QuantLib.Instrument.Option.withCustomPayoff' crashes there; one
+--   carrying an advisory strike makes the cast succeed and the engine prices the Haskell function
+--   itself. Checked against the native @PlainVanilla@ payoff through the same engine (identical
+--   lambda, identical strike, so identical price).
 -- * A direct node-level check of 'fdmAvgInnerValue' against the same 'intrinsicAt' at the grid's
 --   center node, independent of any PDE solve at all.
 -- * QuantLib's own native 'FdmInnerValueCalculator' subclasses (bound alongside the fully custom
@@ -89,6 +96,7 @@ data Result = Result
   , analyticEuropeanR :: !Double
   , fdmAmericanR :: !Double
   , fdAmericanR :: !Double
+  , fdCustomStrikedAmericanR :: !Double
   , fdmSolveEuropeanR :: !Double
   , fdmSolveAmericanR :: !Double
   , avgInnerValueAtCenterR :: !Double
@@ -96,10 +104,12 @@ data Result = Result
   , zeroInnerValueAtCenterR :: !Double
   , fdmLogInnerValueEuropeanR :: !Double
   , fdmCustomCellAveragingEuropeanR :: !Double
+  , fdmCustomPayoffEuropeanR :: !Double
   , basketAtEqualNodesR :: !Double
   , basketIntrinsicAtEqualNodesR :: !Double
   , basketAtAsset1MaxR :: !Double
   , basketIntrinsicAtAsset1MaxR :: !Double
+  , customBasketAtAsset1MaxR :: !Double
   , hwNodeNpvR :: !Double
   , g2NodeNpvR :: !Double
   , meshLocationsR :: ![Double]
@@ -209,6 +219,20 @@ run = do
     >>= QuantLib.Instrument.setPricingEngine americanInst
   fdRef <- npv americanInst
 
+  -- withCustomStrikedPayoff through the very engine a plain withCustomPayoff cannot survive:
+  -- FdBlackScholesVanillaEngine dynamic_pointer_casts arguments_.payoff to StrikedTypePayoff with
+  -- no null check and calls ->strike() twice (fdblackscholesvanillaengine.cpp:154-166) -- once for
+  -- the mesher's extent, once for its concentration point -- before handing the payoff itself to
+  -- FdmLogInnerValue, which takes a plain Payoff. Deriving from StrikedTypePayoff makes that cast
+  -- succeed, so the engine sizes its grid from the advisory strike and then prices the *Haskell*
+  -- function. Same lambda, same strike as vanillaPayoff, so the result must equal fdRef exactly.
+  fdCustomStrikedRef <- withCustomStrikedPayoff Call strike "HaskellCall" (\s -> max (s - strike) 0) $ \custom -> do
+    opt <- vanillaOption custom americanEx
+    inst <- asOneAssetOption opt
+    fdBlackScholesVanillaEngine bsmProc (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
+      >>= QuantLib.Instrument.setPricingEngine inst
+    npv inst
+
   let stepTimes = [tMat * fromIntegral i / fromIntegral nSteps | i <- [1 .. nSteps]]
       stepCond _t u = zipWith max u grid0
   fdmAmerican <- fdmRollback 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas grid0 tMat 0 nSteps 0
@@ -271,6 +295,22 @@ run = do
     basketAtAsset1Max <- fdmAvgInnerValue basketCalc basketMesher [centerIdx + 5, centerIdx - 5] tMat
     let maxBasketIntrinsicAt i j = max (max (exp (xs !! i)) (exp (xs !! j)) - strike) 0
 
+    -- withCustomPayoff / withCustomBasketPayoff: the same call payoff written as a Haskell lambda
+    -- instead of assembled from the concrete PlainVanilla constructor, driven through two
+    -- payoff-generic consumers. Both must reproduce their native counterparts bit-for-bit -- same
+    -- C++ code path, only the source of the payoff value differs. The lambda sees *spot*, not
+    -- log-spot: fdmLogInnerValue/fdmLogBasketInnerValue apply gridMapping = exp before the payoff
+    -- is called. Note the continuation spans the whole use, not just construction: the calculator
+    -- stores the payoff and calls back into it during fdmSolve (see withCustomPayoff's haddock).
+    (fdmCustomPayoffEuro, customBasketAtAsset1Max) <-
+      withCustomPayoff "HaskellCall" "max(S - K, 0), defined in Haskell" (\s -> max (s - strike) 0) $ \custom -> do
+        customPayoffCalc <- fdmLogInnerValue custom mesher 0
+        euro <- fdmSolve mesher customPayoffCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+        basket <- withCustomBasketPayoff custom maximum $ \customBasket -> do
+          customBasketCalc <- fdmLogBasketInnerValue customBasket basketMesher
+          fdmAvgInnerValue customBasketCalc basketMesher [centerIdx + 5, centerIdx - 5] tMat
+        pure (euro, basket)
+
     -- FdmAffineModelSwapInnerValue<G2>/<HullWhite>: node-level check. HullWhite\/G2 are built
     -- directly from irTs, so both reproduce it exactly (a no-arbitrage short-rate model's initial
     -- fit is exact) -- meaning at t=0 with both factors at their mean-reverting level 0, the
@@ -311,6 +351,7 @@ run = do
       , analyticEuropeanR = analytic
       , fdmAmericanR = fdmAmerican !! centerIdx
       , fdAmericanR = fdRef
+      , fdCustomStrikedAmericanR = fdCustomStrikedRef
       , fdmSolveEuropeanR = fdmSolveEuro !! centerIdx
       , fdmSolveAmericanR = fdmSolveAmerican !! centerIdx
       , avgInnerValueAtCenterR = avgAtCenter
@@ -318,10 +359,12 @@ run = do
       , zeroInnerValueAtCenterR = zeroAtCenter
       , fdmLogInnerValueEuropeanR = fdmLogEuro !! centerIdx
       , fdmCustomCellAveragingEuropeanR = fdmCustomCellAvgEuro !! centerIdx
+      , fdmCustomPayoffEuropeanR = fdmCustomPayoffEuro !! centerIdx
       , basketAtEqualNodesR = basketAtEqualNodes
       , basketIntrinsicAtEqualNodesR = maxBasketIntrinsicAt centerIdx centerIdx
       , basketAtAsset1MaxR = basketAtAsset1Max
       , basketIntrinsicAtAsset1MaxR = maxBasketIntrinsicAt (centerIdx + 5) (centerIdx - 5)
+      , customBasketAtAsset1MaxR = customBasketAtAsset1Max
       , hwNodeNpvR = hwNodeNpv
       , g2NodeNpvR = g2NodeNpv
       , meshLocationsR = meshLocations

@@ -748,6 +748,77 @@ PolymorphicPathGenerator* qlSobolPathGeneratorAux(SobolRsg::DirectionIntegers di
   return new PolymorphicPathGenerator(dir, p, grid, seed, dim, brownianBridge);
 }
 
+// The gaussian sequence generator that PolymorphicPathGenerator's MultiPathGenerator merely
+// consumes, lifted out so Haskell can drive its own SDE evolution with no callback in the hot
+// loop -- shape 1 of CLAUDE.md's "coarsen the language-boundary crossing" bullet, the same trick
+// lsmRegress plays on LongstaffSchwartzPathPricer. Same four-way RngTrait switch and the same
+// SobolRsg::DirectionIntegers overload as PolymorphicPathGenerator above, deliberately: the two
+// construct their rsg identically, so a Haskell-evolved path can be compared draw-for-draw
+// against pathGenerator's own.
+class PolymorphicGaussianRsg {
+private:
+  typedef PseudoRandom::rsg_type PseudoRandomRsg;
+  typedef LowDiscrepancy::rsg_type SobolRsgType;
+  typedef PoissonPseudoRandom::rsg_type PoissonRsg;
+  typedef Ziggurat::rsg_type ZigguratRsg;
+public:
+  PolymorphicGaussianRsg(int rngtrait, unsigned dim, unsigned seed) {
+    init(rngtrait, dim, seed, SobolRsg::Jaeckel);
+  }
+  PolymorphicGaussianRsg(SobolRsg::DirectionIntegers dir, unsigned dim, unsigned seed) {
+    init(hasquant::LowDiscrepancy, dim, seed, dir);
+  }
+  const Sample<std::vector<Real> >& nextSequence() const {return _next();}
+  const Sample<std::vector<Real> >& lastSequence() const {return _last();}
+  unsigned dimension() const {return _dimension();}
+private:
+  void init(int rngtrait, unsigned dim, unsigned seed, SobolRsg::DirectionIntegers dir) {
+    switch (rngtrait) {
+    case hasquant::PseudoRandom:
+      _pseudoRandom.reset(new PseudoRandomRsg(PseudoRandom::ursg_type(dim, PseudoRandom::urng_type(seed))));
+      bind(_pseudoRandom.get());
+      break;
+    case hasquant::PoissonPseudoRandom:
+      _poisson.reset(new PoissonRsg(PoissonPseudoRandom::ursg_type(dim, PoissonPseudoRandom::urng_type(seed))));
+      bind(_poisson.get());
+      break;
+    case hasquant::LowDiscrepancy:
+      _sobol.reset(new SobolRsgType(SobolRsg(dim, seed, dir)));
+      bind(_sobol.get());
+      break;
+    case hasquant::Ziggurat:
+      _ziggurat.reset(new ZigguratRsg(dim, ZigguratRng(seed)));
+      bind(_ziggurat.get());
+      break;
+    default:
+      QL_FAIL("Unknown RNG "<< rngtrait);
+    }
+  }
+  template <class Rsg> void bind(Rsg* r) {
+    _next = [r]() -> const Sample<std::vector<Real> >& {return r->nextSequence();};
+    _last = [r]() -> const Sample<std::vector<Real> >& {return r->lastSequence();};
+    _dimension = [r]() {return (unsigned)r->dimension();};
+  }
+  std::unique_ptr<PseudoRandomRsg> _pseudoRandom;
+  std::unique_ptr<SobolRsgType> _sobol;
+  std::unique_ptr<PoissonRsg> _poisson;
+  std::unique_ptr<ZigguratRsg> _ziggurat;
+  std::function<const Sample<std::vector<Real> >& ()> _next;
+  std::function<const Sample<std::vector<Real> >& ()> _last;
+  std::function<unsigned ()> _dimension;
+};
+
+PolymorphicGaussianRsg* qlGaussianRsgAux(int rngtrait, unsigned dimension, unsigned seed) {
+  return new PolymorphicGaussianRsg(rngtrait, dimension, seed);
+}
+PolymorphicGaussianRsg* qlSobolGaussianRsgAux(SobolRsg::DirectionIntegers dir, unsigned dimension, unsigned seed) {
+  return new PolymorphicGaussianRsg(dir, dimension, seed);
+}
+void qlFreePolymorphicGaussianRsgAux(PolymorphicGaussianRsg* g) {delete g;}
+const Sample<std::vector<Real> >& qlGaussianRsgNextSequenceAux(PolymorphicGaussianRsg* g) {return g->nextSequence();}
+const Sample<std::vector<Real> >& qlGaussianRsgLastSequenceAux(PolymorphicGaussianRsg* g) {return g->lastSequence();}
+unsigned qlGaussianRsgDimensionAux(PolymorphicGaussianRsg* g) {return g->dimension();}
+
 void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p) {delete p;}
 const Sample<MultiPath>& qlPathGeneratorNextAux(PolymorphicPathGenerator *p) {return p->next();}
 const Sample<MultiPath>& qlPathGeneratorAntitheticAux(PolymorphicPathGenerator *p) {return p->antithetic();}

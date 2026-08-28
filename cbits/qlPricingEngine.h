@@ -467,6 +467,18 @@ extern "C" {
   double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e);
   void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e);
 
+  // Standalone gaussian sequence generator -- the primitive MultiPathGenerator consumes, exposed
+  // on its own so a Haskell-defined SDE can be evolved in Haskell with no callback per timestep.
+  void qlFreeGaussianRsg(PolymorphicGaussianRsg *g);
+  PolymorphicGaussianRsg *qlGaussianRsg(int rngtrait, unsigned dimension, unsigned seed, char **e);
+  PolymorphicGaussianRsg *qlSobolGaussianRsg(int dir, unsigned dimension, unsigned seed, char **e);
+  unsigned qlGaussianRsgDimension(PolymorphicGaussianRsg *g);
+  // Draws the next sequence: *values is a fresh qlAllocateDoubles array of *len draws, *weight
+  // the sample's weight (1 for every trait bound here, carried through for completeness).
+  void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e);
+  // Re-reads the sequence last drawn, without advancing the generator.
+  void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e);
+
   void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, char **e);
   void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsigned fitCols, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalRows, unsigned evalCols, double *evalStates, unsigned *outLen, double **outValues, char **e);
 

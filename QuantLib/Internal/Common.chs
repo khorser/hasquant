@@ -97,6 +97,9 @@ module QuantLib.Internal.Common
   , withTypePayoff
   , withBasketPayoff
   , withPayoff
+  , withCustomPayoff
+  , withCustomStrikedPayoff
+  , withCustomBasketPayoff
 
   , strikedPayoff
   , percentageStrikePayoff
@@ -119,7 +122,7 @@ module QuantLib.Internal.Common
   , convertResult
   , peekAdditionalResults
   ) where
-import Foreign.Ptr(Ptr, nullPtr, castPtr)
+import Foreign.Ptr(Ptr, FunPtr, nullPtr, castPtr)
 import Foreign.C.Types(CUInt, CInt, CDouble)
 import Foreign.C.String(CString, peekCString)
 import Foreign.Storable(Storable(..))
@@ -398,6 +401,13 @@ data StrikedPayoff =
       !Double -- ^strike
       !Double -- ^secondStrike
       !Double -- ^cashPayoff
+  -- |A Haskell-defined payoff carrying an advisory @(type, strike)@ pair. Build it with
+  -- 'withCustomStrikedPayoff'.
+  | CustomStriked
+      !OptionType -- ^type
+      !Double -- ^strike
+      !String -- ^name
+      !(FunPtr PayoffFun)
 
 withPercentageStrikePayoff :: PercentageStrikePayoff -> (QlPercentageStrikePayoff -> IO a) -> IO a
 withPercentageStrikePayoff (PercentageStrikePayoff t m) f = qlPercentageStrikePayoff t m >>= newCastForeignPtr >>= flip withGenForeignPtr f
@@ -413,6 +423,7 @@ withStrikedPayoff (PercentageStrike p) f = withPercentageStrikePayoff p (\pp -> 
 withStrikedPayoff (PlainVanilla p) f = withPlainVanillaPayoff p (\pp -> upcast pp >>= \sp -> f sp `finally` freeUpcast sp)
 withStrikedPayoff (SuperFund s ss) f = qlSuperFundPayoff s ss >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withStrikedPayoff (SuperSharePayoff s ss c) f = qlSuperSharePayoff s ss c >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withStrikedPayoff (CustomStriked t k n fp) f = qlStrikedPayoffFromFunction t k n fp >>= newCastForeignPtr >>= flip withGenForeignPtr f
 
 data TypePayoff = Striked !StrikedPayoff
   | Floating !OptionType -- ^type
@@ -429,6 +440,11 @@ data BasketPayoff =
       !Payoff -- ^p
   | Spread
       !Payoff -- ^p
+  -- |A Haskell-defined @accumulate@ over the underlying-state vector, wrapped around a base
+  -- 'Payoff' exactly as 'Max'\/'Min'\/'Spread' are. Build it with 'withCustomBasketPayoff'.
+  | CustomAccumulate
+      !Payoff -- ^base payoff, applied to the accumulated value
+      !(FunPtr BasketAccumulateFun)
 
 withTypePayoff :: TypePayoff -> (QlTypePayoff -> IO a) -> IO a
 withTypePayoff (Floating t) f = qlFloatingTypePayoff t >>= newCastForeignPtr >>= flip withGenForeignPtr f
@@ -440,6 +456,7 @@ withBasketPayoff (AverageMultiple p a) f = withPayoff p (\pp -> qlAverageBasketP
 withBasketPayoff (Max p) f = withPayoff p (\pp -> qlMaxBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
 withBasketPayoff (Min p) f = withPayoff p (\pp -> qlMinBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
 withBasketPayoff (Spread p) f = withPayoff p (\pp -> qlSpreadBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
+withBasketPayoff (CustomAccumulate p fp) f = withPayoff p (\pp -> qlBasketPayoffFromFunction pp fp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
 
 -- | > Payoff
 -- >  DoubleStickyRatchet
@@ -449,6 +466,7 @@ withBasketPayoff (Spread p) f = withPayoff p (\pp -> qlSpreadBasketPayoff pp >>=
 -- >  StickyMax
 -- >  StickyMin
 -- >  Sticky
+-- >  Custom
 -- >  TypePayoff
 -- >    Floating
 -- >    Striked
@@ -459,12 +477,14 @@ withBasketPayoff (Spread p) f = withPayoff p (\pp -> qlSpreadBasketPayoff pp >>=
 -- >      PlainVanilla
 -- >      SuperFund
 -- >      SuperSharePayoff
+-- >      CustomStriked
 -- >  BasketPayoff
 -- >    Average
 -- >    AverageMultiple
 -- >    Max
 -- >    Min
 -- >    Spread
+-- >    CustomAccumulate
 data Payoff =
     DoubleStickyRatchet
       !Double -- ^type1
@@ -537,6 +557,13 @@ data Payoff =
       !Double -- ^accrualFactor
   | Type !TypePayoff
   | Basket !BasketPayoff
+  -- |A Haskell-defined payoff. Build it with 'withCustomPayoff' rather than by hand: the
+  -- 'FunPtr' must stay alive for as long as anything can still call the payoff, which
+  -- 'withCustomPayoff' arranges and a hand-built value does not.
+  | Custom
+      !String -- ^name
+      !String -- ^description
+      !(FunPtr PayoffFun)
 
 
 {#fun qlAssetOrNothingPayoff{`OptionType',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
@@ -560,6 +587,9 @@ data Payoff =
 {#fun qlSuperFundPayoff{`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
 {#fun qlSuperSharePayoff{`Double',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
 {#fun qlAverageBasketPayoff1{`QlPayoff',withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
+{#fun qlPayoffFromFunction{`String',`String',id`FunPtr PayoffFun',preErrorCheck-`String'errorCheck*-}->`QlPayoff'peekPtr*#}
+{#fun qlBasketPayoffFromFunction{`QlPayoff',id`FunPtr BasketAccumulateFun',preErrorCheck-`String'errorCheck*-}->`QlBasketPayoff'peekPtr*#}
+{#fun qlStrikedPayoffFromFunction{`OptionType',`Double',`String',id`FunPtr PayoffFun',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
 
 withPayoff :: Payoff -> (QlPayoff -> IO a) -> IO a
 withPayoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
@@ -572,6 +602,78 @@ withPayoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlStickyMinPayoff g1 g2 g3 
 withPayoff (Sticky g1 g2 s1 s2 i a) f = qlStickyPayoff g1 g2 s1 s2 i a >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withPayoff (Type t) f = withTypePayoff t (\tp -> upcast tp >>= \pp -> f pp `finally` freeUpcast pp)
 withPayoff (Basket b) f = withBasketPayoff b (\bp -> upcast bp >>= \pp -> f pp `finally` freeUpcast pp)
+withPayoff (Custom n d fp) f = qlPayoffFromFunction n d fp >>= newCastForeignPtr >>= flip withGenForeignPtr f
+
+-- |Wrap a Haskell @price -> value@ function as a real QuantLib @Payoff@, usable anywhere a
+-- 'Payoff' is (@QuantLib.Instrument.Option.oneAssetOption@, @multiAssetOption@,
+-- @QuantLib.Instrument.Swap.varianceOption@, @QuantLib.Method.fdmLogInnerValue@,
+-- @fdmCellAveragingInnerValue@, ...) -- the fully custom counterpart to the concrete
+-- pre-implemented payoffs listed by the 'Payoff' constructors above.
+--
+-- The payoff is valid only inside the continuation, and the continuation must span the whole
+-- /use/, not just the construction: every consumer stores the payoff and calls back into it
+-- later (an @Instrument@ at @NPV@ time, an @FdmInnerValueCalculator@ at @fdmSolve@ time), so
+-- pricing must happen before this function returns. Same lifetime rule, and the same reason, as
+-- @QuantLib.Method.withCustomFdmInnerValueCalculator@.
+--
+-- @name@ and @description@ are what QuantLib's own error messages and @Payoff::name@ report; they
+-- are not interpreted.
+--
+-- __Not every engine accepts a non-standard payoff.__ QuantLib's analytic, binomial, finite-
+-- difference and @MCEuropeanEngine@ families all recover the strike by downcasting to
+-- @StrikedTypePayoff@\/@PlainVanillaPayoff@ first, and a further ~30 engines route through
+-- @BlackCalculator@, whose @AcyclicVisitor@ knows only the four built-in striked payoffs. Most of
+-- these fail with a clean QuantLib exception, but
+-- @QuantLib.PricingEngine.fdBlackScholesVanillaEngine@ and
+-- @QuantLib.PricingEngine.fdHestonVanillaEngine@ perform that downcast /unchecked/ upstream and
+-- will __crash the process__, not throw, on a custom payoff. Confirmed-generic consumers:
+-- @QuantLib.Method.fdmLogInnerValue@\/@fdmCellAveragingInnerValue@ (and hence @fdmSolve@), and
+-- @QuantLib.PricingEngine.mcAmericanEngine@ with @controlVariate = False@.
+withCustomPayoff :: String -- ^name
+  -> String -- ^description
+  -> (Double -> Double) -- ^payoff(price)
+  -> (Payoff -> IO b) -> IO b
+withCustomPayoff n d f k = withPayoffFun f (k . Custom n d)
+
+-- |As 'withCustomPayoff', but produces a real QuantLib @StrikedTypePayoff@ carrying an
+-- @(optionType, strike)@ pair alongside the Haskell function.
+--
+-- __The pair is advisory: it does not define the payoff__ -- @payoff(price)@ alone does, exactly
+-- as for 'withCustomPayoff'. It exists because QuantLib's finite-difference vanilla engines reach
+-- past the @Payoff@ interface for a strike when sizing their grid:
+-- @FdBlackScholesVanillaEngine@ @dynamic_pointer_cast@s to @StrikedTypePayoff@ /without/ a check
+-- and calls @strike()@ twice -- once for the mesher's extent, once for its node-concentration
+-- point -- then hands the payoff itself to @FdmLogInnerValue@, which takes a plain @Payoff@. So a
+-- payoff built here prices correctly through
+-- 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' and
+-- 'QuantLib.PricingEngine.fdHestonVanillaEngine', where one built by 'withCustomPayoff' would
+-- crash the process on that unchecked cast. Pass the strike you want the grid centred on.
+--
+-- Everything else matches 'withCustomPayoff', including the continuation-lifetime rule: the
+-- payoff is valid only inside the continuation, which must span the whole use (pricing included),
+-- not just construction. @description@ is not a parameter here -- @StrikedTypePayoff@ derives it
+-- from the type and strike itself.
+--
+-- Engines routing through @BlackCalculator@ (the @analytic*@ family) still reject this, as they
+-- must: its @AcyclicVisitor@ knows only the four built-in striked payoffs, and there is no
+-- closed-form price for an arbitrary function. That rejection is a clean QuantLib exception.
+withCustomStrikedPayoff :: OptionType -- ^advisory option type
+  -> Double -- ^advisory strike (grid centring only)
+  -> String -- ^name
+  -> (Double -> Double) -- ^payoff(price)
+  -> (StrikedPayoff -> IO b) -> IO b
+withCustomStrikedPayoff t k n f g = withPayoffFun f (g . CustomStriked t k n)
+
+-- |Wrap a Haskell @underlyings -> accumulated@ function as a real QuantLib @BasketPayoff@ around
+-- @base@ (which is applied to the accumulated value, exactly as for 'Max'\/'Min'\/'Spread') --
+-- usable with @QuantLib.Instrument.Option.basketOption@ and
+-- @QuantLib.Method.fdmLogBasketInnerValue@. Same continuation-lifetime rule as 'withCustomPayoff';
+-- unlike it, this callback crosses once per evaluation with the whole underlying-state vector,
+-- because that is the shape @BasketPayoff::accumulate@ already has upstream.
+withCustomBasketPayoff :: Payoff -- ^base payoff
+  -> ([Double] -> Double) -- ^accumulate(underlyings)
+  -> (BasketPayoff -> IO b) -> IO b
+withCustomBasketPayoff base f k = withBasketAccumulateFun f (k . CustomAccumulate base)
 
 data Callability =
   Soft

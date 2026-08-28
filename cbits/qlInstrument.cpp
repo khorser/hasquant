@@ -171,6 +171,64 @@ namespace {
       r.sval = DUP(v.type().name());
     }
   }
+  // Payoff has exactly three pure virtuals (ql/payoff.hpp), so a Haskell-defined one needs only
+  // one callback plus two strings. Unlike qlFdmRollback's whole-grid callbacks, operator() is
+  // genuinely per scalar price everywhere upstream -- DiscretizedVanillaOption loops it node by
+  // node, FdmCellAveragingInnerValue calls it inside a per-cell Simpson integral, AmericanPathPricer
+  // calls it per path per exercise index -- and nothing anywhere batches an Array. So this is the
+  // uncoarsenable case of CLAUDE.md's "coarsen the language-boundary crossing" bullet, same
+  // accepted cost as HsFdmInnerValueCalculator (qlPricingEngine.cpp) and QuantLib-SWIG's own
+  // FdmInnerValueCalculatorDelegate.
+  typedef double (*PayoffFun)(double price);
+  typedef double (*BasketAccumulateFun)(const double* a, unsigned n);
+
+  class HsPayoff : public Payoff {
+  public:
+    HsPayoff(std::string name, std::string description, PayoffFun fn)
+    : name_(std::move(name)), description_(std::move(description)), fn_(fn) {}
+    std::string name() const override {return name_;}
+    std::string description() const override {return description_;}
+    Real operator()(Real price) const override {return fn_(price);}
+  private:
+    std::string name_, description_;
+    PayoffFun fn_;
+  };
+
+  // Same callback, but derived from StrikedTypePayoff instead of Payoff, carrying an advisory
+  // (type, strike) pair. This is what makes a Haskell payoff usable with the FD vanilla engines:
+  // FdBlackScholesVanillaEngine/FdHestonVanillaEngine dynamic_pointer_cast the payoff to
+  // StrikedTypePayoff *without* a QL_REQUIRE and immediately call ->strike()
+  // (fdblackscholesvanillaengine.cpp:154-166), so a plain HsPayoff null-derefs there. They need
+  // the strike only for mesher geometry -- grid extent and the node-concentration point -- and
+  // hand the payoff itself to FdmLogInnerValue, which takes a generic Payoff. So supplying a real
+  // strike makes the cast succeed and the engine price the Haskell payoff correctly, rather than
+  // being a guard bolted on around a crash. StrikedTypePayoff adds no pure virtuals over Payoff
+  // (it supplies description(), and TypePayoff supplies optionType()), so only operator() and
+  // name() are overridden here.
+  class HsStrikedPayoff : public StrikedTypePayoff {
+  public:
+    HsStrikedPayoff(Option::Type type, Real strike, std::string name, PayoffFun fn)
+    : StrikedTypePayoff(type, strike), name_(std::move(name)), fn_(fn) {}
+    std::string name() const override {return name_;}
+    Real operator()(Real price) const override {return fn_(price);}
+  private:
+    std::string name_;
+    PayoffFun fn_;
+  };
+
+  // BasketPayoff's only pure virtual is accumulate(const Array&) -- the whole underlying-state
+  // vector per call -- so this hook is already the coarsened shape; name()/description()/
+  // operator()(Real) all delegate to the base payoff upstream and need no override.
+  class HsBasketPayoff : public BasketPayoff {
+  public:
+    HsBasketPayoff(const shared_ptr<Payoff>& base, BasketAccumulateFun fn)
+    : BasketPayoff(base), fn_(fn) {}
+    Real accumulate(const Array& a) const override {
+      return fn_(a.begin(), (unsigned)a.size());
+    }
+  private:
+    BasketAccumulateFun fn_;
+  };
 }
 
 extern "C" {
@@ -243,6 +301,16 @@ void qlFreePercentageStrikePayoff(QlPercentageStrikePayoff *o) {del(o);}
 QlStrikedTypePayoff* qlPercentageStrikePayoffAsStrikedTypePayoff(QlPercentageStrikePayoff *o) {return ret(new QlStrikedTypePayoff(*arg(o)));}
 void qlFreePlainVanillaPayoff(QlPlainVanillaPayoff *o) {del(o);}
 QlStrikedTypePayoff* qlPlainVanillaPayoffAsStrikedTypePayoff(QlPlainVanillaPayoff *o) {return ret(new QlStrikedTypePayoff(*arg(o)));}
+
+QlPayoff* qlPayoffFromFunction(const char* name, const char* description, PayoffFun fn, char **e) {
+  try {return ret(new QlPayoff(alloc(new HsPayoff(name, description, fn))));
+  } catch (std::exception& er) {return handleException<QlPayoff*>(e, er);}}
+QlStrikedTypePayoff* qlStrikedPayoffFromFunction(int type, double strike, const char* name, PayoffFun fn, char **e) {
+  try {return ret(new QlStrikedTypePayoff(alloc(new HsStrikedPayoff((Option::Type)type, strike, name, fn))));
+  } catch (std::exception& er) {return handleException<QlStrikedTypePayoff*>(e, er);}}
+QlBasketPayoff* qlBasketPayoffFromFunction(QlPayoff* base, BasketAccumulateFun fn, char **e) {
+  try {return ret(new QlBasketPayoff(alloc(new HsBasketPayoff(*arg(base), fn))));
+  } catch (std::exception& er) {return handleException<QlBasketPayoff*>(e, er);}}
 
 QlStrikedTypePayoff* qlAssetOrNothingPayoff(int type, double strike, char **e) {
   try {return ret(new QlStrikedTypePayoff(alloc(new AssetOrNothingPayoff((Option::Type)type, strike))));

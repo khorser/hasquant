@@ -46,6 +46,7 @@ import qualified QuantLib.Example.Swaption as SwaptionExample
 import qualified QuantLib.Example.Optimizer as OptimizerExample
 import qualified QuantLib.Example.Fdm as FdmExample
 import qualified QuantLib.Example.HaskellLSM as HaskellLSMExample
+import qualified QuantLib.Example.CustomSDE as CustomSDEExample
 import QuantLib.Math(EndCriteriaType(..))
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
@@ -535,6 +536,27 @@ spec = do
         HaskellLSMExample.haskellSeconds r `shouldSatisfy` (>= 0)
         HaskellLSMExample.lsmSeconds r `shouldSatisfy` (>= 0)
 
+    -- gaussianRsg: a stochastic process QuantLib does not bind, evolved entirely in Haskell from
+    -- the same gaussian sequence generator MultiPathGenerator consumes internally (issue #18's
+    -- StochasticProcess half -- the inner primitive rather than a per-timestep callback).
+    describe "Custom SDE example (gaussianRsg-driven path evolution)" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' CustomSDEExample.run
+        -- The strongest check here: with the exact lognormal step QuantLib's own
+        -- GeneralizedBlackScholesProcess::evolve uses, a Haskell-evolved path must reproduce
+        -- pathGenerator's own path for the same trait/dimension/seed. That pins the draw order
+        -- MultiPathGenerator consumes (offset (i-1)*factors per timestep), not just the binding.
+        CustomSDEExample.gbmPathMaxDiffR r `shouldSatisfy` (< 1.0e-10)
+        -- Pricing off those paths with lsmRegress must agree with mcAmericanEngine on the
+        -- equivalent bound option -- two independent Monte Carlo runs, so an MC-scale tolerance.
+        CustomSDEExample.gbmLsmPriceR r `shouldSatisfy`
+          closePrec (CustomSDEExample.mcPriceR r) (0.05 * CustomSDEExample.mcPriceR r)
+        -- The unbound CEV SDE at beta = 0.7 prices at all, and its beta = 1 degenerate case (Euler
+        -- GBM) sits close to the exact-lognormal price above -- differing only by discretization.
+        CustomSDEExample.cevLsmPriceR r `shouldSatisfy` (> 0)
+        CustomSDEExample.cevAtBeta1PriceR r `shouldSatisfy`
+          closePrec (CustomSDEExample.gbmLsmPriceR r) (0.05 * CustomSDEExample.gbmLsmPriceR r)
+
     describe "Short rate models example" $
       it "check values" $ do
         r <- Settings.keepingSettings' ShortRateModelsExample.run
@@ -766,6 +788,10 @@ spec = do
         r <- Settings.keepingSettings' FdmExample.run
         FdmExample.fdmEuropeanR r `shouldSatisfy` closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
         FdmExample.fdmAmericanR r `shouldSatisfy` closePrec (FdmExample.fdAmericanR r) (2.0e-3 * FdmExample.fdAmericanR r)
+        -- withCustomStrikedPayoff driving fdBlackScholesVanillaEngine -- the engine that
+        -- downcasts the payoff unchecked, so a plain withCustomPayoff would crash here rather
+        -- than throw. Same lambda and strike as the native payoff, so the price is identical.
+        FdmExample.fdCustomStrikedAmericanR r `shouldBe` FdmExample.fdAmericanR r
         -- fdmSolve's mesher-driven initial condition must reproduce fdmRollback's hand-built
         -- grid0 exactly -- same operator/step-condition/scheme, only the initial-condition
         -- construction path differs (see QuantLib.Method.fdmSolve's haddock).
@@ -779,9 +805,16 @@ spec = do
         FdmExample.fdmLogInnerValueEuropeanR r `shouldSatisfy`
           closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
         FdmExample.fdmCustomCellAveragingEuropeanR r `shouldBe` FdmExample.fdmLogInnerValueEuropeanR r
+        -- withCustomPayoff: a Haskell lambda standing in for the PlainVanilla payoff must give
+        -- bit-for-bit the same answer through the same fdmLogInnerValue/fdmSolve path -- only the
+        -- source of the payoff value differs (see QuantLib.Internal.Common.withCustomPayoff).
+        FdmExample.fdmCustomPayoffEuropeanR r `shouldBe` FdmExample.fdmLogInnerValueEuropeanR r
         -- FdmLogBasketInnerValue (max-of-two-assets basket, no cell averaging so exact).
         FdmExample.basketAtEqualNodesR r `shouldBe` FdmExample.basketIntrinsicAtEqualNodesR r
         FdmExample.basketAtAsset1MaxR r `shouldBe` FdmExample.basketIntrinsicAtAsset1MaxR r
+        -- withCustomBasketPayoff: a Haskell `maximum` in place of the native MaxBasketPayoff's
+        -- accumulate, same node, same answer.
+        FdmExample.customBasketAtAsset1MaxR r `shouldBe` FdmExample.basketAtAsset1MaxR r
         -- FdmAffineModelSwapInnerValue<G2>/<HullWhite>: at the swap's own final maturity (the sole
         -- exercise date), no cashflows remain, so the value must be exactly 0 regardless of model.
         FdmExample.hwNodeNpvR r `shouldBe` 0

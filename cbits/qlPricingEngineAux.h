@@ -33,4 +33,14 @@ void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p);
 const SamplePath& qlPathGeneratorNextAux(PolymorphicPathGenerator* gen);
 const SamplePath& qlPathGeneratorAntitheticAux(PolymorphicPathGenerator* gen);
 
+// The gaussian sequence generator MultiPathGenerator merely consumes, exposed standalone so a
+// Haskell-defined SDE can be evolved entirely in Haskell -- see QuantLib.Method.gaussianRsg.
+class PolymorphicGaussianRsg;
+PolymorphicGaussianRsg* qlGaussianRsgAux(int rngtrait, unsigned dimension, unsigned seed);
+PolymorphicGaussianRsg* qlSobolGaussianRsgAux(QuantLib::SobolRsg::DirectionIntegers dir, unsigned dimension, unsigned seed);
+void qlFreePolymorphicGaussianRsgAux(PolymorphicGaussianRsg* g);
+const QuantLib::Sample<std::vector<QuantLib::Real> >& qlGaussianRsgNextSequenceAux(PolymorphicGaussianRsg* g);
+const QuantLib::Sample<std::vector<QuantLib::Real> >& qlGaussianRsgLastSequenceAux(PolymorphicGaussianRsg* g);
+unsigned qlGaussianRsgDimensionAux(PolymorphicGaussianRsg* g);
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -35,6 +35,9 @@ module QuantLib.Instrument.Option
   , strikedPayoff
   , plainVanillaPayoff
   , percentageStrikePayoff
+  , withCustomPayoff
+  , withCustomStrikedPayoff
+  , withCustomBasketPayoff
   , swingExercise
 
   , barrierOption

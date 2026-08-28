@@ -178,6 +178,36 @@ withFdmGridMapping f g = mask $ \restore -> do
   where
     call x = pure (realToFrac (f (realToFrac x)))
 
+type PayoffFun = CDouble -> IO CDouble
+foreign import ccall "wrapper" mkPayoffFunPtr :: PayoffFun -> IO (FunPtr PayoffFun)
+-- |Wrap a Haskell @price -> value@ function as a 'PayoffFun' C callback, for
+-- @QuantLib.Internal.Common.withCustomPayoff@. Another genuine, uncoarsened callback: QuantLib's
+-- @Payoff::operator()@ takes one scalar price everywhere it is called -- per tree node in
+-- @DiscretizedVanillaOption@, inside @FdmCellAveragingInnerValue@'s per-cell Simpson integral, per
+-- path per exercise index in @AmericanPathPricer@ -- and nothing upstream batches an @Array@, so
+-- there is no whole-vector shape to coarsen to (same situation as 'withFdmInnerValue' above).
+withPayoffFun :: (Double -> Double) -> (FunPtr PayoffFun -> IO b) -> IO b
+withPayoffFun f g = mask $ \restore -> do
+  fp <- mkPayoffFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call x = pure (realToFrac (f (realToFrac x)))
+
+type BasketAccumulateFun = Ptr CDouble -> CUInt -> IO CDouble
+foreign import ccall "wrapper" mkBasketAccumulateFunPtr :: BasketAccumulateFun -> IO (FunPtr BasketAccumulateFun)
+-- |Wrap a Haskell @underlyings -> accumulated@ function as a 'BasketAccumulateFun' C callback, for
+-- @QuantLib.Internal.Common.withCustomBasketPayoff@. Unlike 'withPayoffFun' this one /is/ already
+-- coarsened by upstream's own interface: @BasketPayoff::accumulate@ takes the whole underlying-state
+-- @Array@ per call, not one component at a time.
+withBasketAccumulateFun :: ([Double] -> Double) -> (FunPtr BasketAccumulateFun -> IO b) -> IO b
+withBasketAccumulateFun f g = mask $ \restore -> do
+  fp <- mkBasketAccumulateFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call xs n = do
+      x <- peekArray (fromIntegral n) xs
+      pure (realToFrac (f (map realToFrac x)))
+
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
@@ -596,6 +626,19 @@ peekSamplePath :: Ptr CSamplePath -> IO SamplePath
 peekSamplePath = SamplePath <.> peekStandalone
 withSamplePath :: SamplePath -> (Ptr CSamplePath -> IO b) -> IO b
 withSamplePath = withStandalone . getCSamplePath
+
+-- The gaussian sequence generator a 'PathGenerator' consumes internally, exposed on its own so a
+-- Haskell-defined SDE can be evolved without a per-timestep callback -- see
+-- 'QuantLib.Method.gaussianRsg'. A plain standalone object like 'PathGenerator', not a hierarchy
+-- root: it has no bound subtypes and is never an argument type elsewhere.
+data CGaussianRsg
+newtype GaussianRsg = GaussianRsg {getCGaussianRsg :: Standalone CGaussianRsg}
+foreign import ccall unsafe "ql.h &qlFreeGaussianRsg" qlFreeGaussianRsg :: FinalizerPtr CGaussianRsg
+instance Finalizable CGaussianRsg where finalize = qlFreeGaussianRsg
+peekGaussianRsg :: Ptr CGaussianRsg -> IO GaussianRsg
+peekGaussianRsg = GaussianRsg <.> peekStandalone
+withGaussianRsg :: GaussianRsg -> (Ptr CGaussianRsg -> IO b) -> IO b
+withGaussianRsg = withStandalone . getCGaussianRsg
 
 -- MultiCurve is enable_shared_from_this upstream ("This must be a shared pointer") and builds a
 -- set of curves that form a genuine dependency cycle; bound as a standalone leaf, not part of

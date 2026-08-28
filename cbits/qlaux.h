@@ -648,6 +648,7 @@ using QuantLib::ext::shared_ptr;
 using QuantLib::ext::optional;
 
 class PolymorphicPathGenerator;
+class PolymorphicGaussianRsg;
 
 // Haskell CRateHelper is actually a pointer to a shared_ptr, because rate helpers are used via
 // shared_ptr in QuantLib and have no Handle-based counterpart upstream.
@@ -1108,6 +1109,7 @@ template <> class ObjClassName<PercentageStrikePayoff*> {public: static void out
 template <> class ObjClassName<PiecewiseTimeDependentHestonModel*> {public: static void output(std::ostream& os) {os << "PiecewiseTimeDependentHestonModel";}};
 template <> class ObjClassName<PlainVanillaPayoff*> {public: static void output(std::ostream& os) {os << "PlainVanillaPayoff";}};
 template <> class ObjClassName<PolymorphicPathGenerator*> {public: static void output(std::ostream& os) {os << "PolymorphicPathGenerator";}};
+template <> class ObjClassName<PolymorphicGaussianRsg*> {public: static void output(std::ostream& os) {os << "PolymorphicGaussianRsg";}};
 template <> class ObjClassName<PositiveConstraint*> {public: static void output(std::ostream& os) {os << "PositiveConstraint";}};
 template <> class ObjClassName<PricingEngine*> {public: static void output(std::ostream& os) {os << "PricingEngine";}};
 template <> class ObjClassName<QlAffineModel*> {public: static void output(std::ostream& os) {os << "QlAffineModel";}};

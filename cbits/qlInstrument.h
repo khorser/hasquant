@@ -50,6 +50,24 @@ extern "C" {
   void qlFreePlainVanillaPayoff(QlPlainVanillaPayoff *o);
   QlStrikedTypePayoff* qlPlainVanillaPayoffAsStrikedTypePayoff(QlPlainVanillaPayoff *o);
 
+  // Haskell-defined payoffs. Unlike every other constructor here, the returned object keeps
+  // calling back into Haskell through `fn' for its whole lifetime (Payoff::operator() is invoked
+  // per scalar price, from wherever the payoff was stored -- an Instrument at NPV time, an
+  // FdmInnerValueCalculator at solve time), so the caller must keep the FunPtr alive until the
+  // payoff itself is gone. See QuantLib.Internal.Common.withCustomPayoff.
+  QlPayoff* qlPayoffFromFunction(const char* name, const char* description,
+    double (*fn)(double price), char **e);
+  // accumulate() takes the whole underlying-state vector at once, so this one crosses the
+  // language boundary once per evaluation, not once per component.
+  QlBasketPayoff* qlBasketPayoffFromFunction(QlPayoff* base,
+    double (*fn)(const double* a, unsigned n), char **e);
+  // As qlPayoffFromFunction, but a real StrikedTypePayoff: the (type, strike) pair is advisory --
+  // it does not define the payoff, it is what QuantLib's FD vanilla engines downcast to reach for
+  // when sizing their mesher. description() comes from StrikedTypePayoff itself, so unlike
+  // qlPayoffFromFunction there is no description argument.
+  QlStrikedTypePayoff* qlStrikedPayoffFromFunction(int type, double strike, const char* name,
+    double (*fn)(double price), char **e);
+
   QlStrikedTypePayoff* qlAssetOrNothingPayoff(int type, double strike, char **e);
   QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e);
   QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e);

@@ -270,6 +270,14 @@ namespace {
                                                                                                  *arg(disModel), *arg(fwdModel), *arg(swap), t2d, *arg(mesher), direction))));
     } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}
   }
+  // Flattens one drawn gaussian sequence (qlGaussianRsgNextSequence/LastSequence below) into the
+  // caller-owned array + weight pair every other array-returning shim here uses.
+  void copySequence(const Sample<std::vector<Real> >& s, unsigned *len, double **values, double *weight) {
+    *len = (unsigned)s.value.size();
+    *values = qlAllocateDoubles(*len);
+    std::copy(s.value.begin(), s.value.end(), *values);
+    *weight = s.weight;
+  }
 }
 
 extern "C" {
@@ -1294,6 +1302,31 @@ unsigned qlSamplePathAssetNumber(SamplePath *p) {return arg(p)->value.assetNumbe
 unsigned qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
 void qlFreeSamplePath(SamplePath *p) {del(p);}
 double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {try {return arg(p)->value.at(asset).at(point);} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+// Null-guarded like del() in qlaux.h, and for the same reason: alloc()/ret() never wrap a null,
+// so tracing a null free would be permanently unmatched noise in alloc-summary.py. (The delete
+// itself is a no-op on null either way.)
+void qlFreeGaussianRsg(PolymorphicGaussianRsg *g) {
+  if (g) {(void)TP("deleting", g); qlFreePolymorphicGaussianRsgAux(g); TP2("deleted", g);}
+}
+// ret() only, no alloc(): the generator is a standalone heap object handed straight to Haskell and
+// freed by qlFreeGaussianRsg -- not a shared_ptr payload. Wrapping it in both verbs would trace one
+// pointer as two acquisitions against a single release, which alloc-summary.py reports as a leak.
+// Same shape as qlPathGenerator below.
+PolymorphicGaussianRsg *qlGaussianRsg(int rngtrait, unsigned dimension, unsigned seed, char **e) {
+  try {return ret(qlGaussianRsgAux(rngtrait, dimension, seed));
+  } catch (std::exception& er) {return handleException<PolymorphicGaussianRsg*>(e, er);}}
+PolymorphicGaussianRsg *qlSobolGaussianRsg(int dir, unsigned dimension, unsigned seed, char **e) {
+  try {return ret(qlSobolGaussianRsgAux((SobolRsg::DirectionIntegers)dir, dimension, seed));
+  } catch (std::exception& er) {return handleException<PolymorphicGaussianRsg*>(e, er);}}
+unsigned qlGaussianRsgDimension(PolymorphicGaussianRsg *g) {return qlGaussianRsgDimensionAux(arg(g));}
+
+void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e) {
+  try {copySequence(qlGaussianRsgNextSequenceAux(arg(g)), len, values, weight);
+  } catch (std::exception& er) {*e = DUP(er.what());}}
+void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e) {
+  try {copySequence(qlGaussianRsgLastSequenceAux(arg(g)), len, values, weight);
+  } catch (std::exception& er) {*e = DUP(er.what());}}
 
 void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
   try {*len = arg(s)->value.pathSize(); *p = qlAllocateDoubles(*len);std::copy(s->value.at(asset).begin(), s->value.at(asset).end(), *p);

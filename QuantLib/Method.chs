@@ -229,6 +229,12 @@ module QuantLib.Method
   , assetAt
   , asset
   , asset'
+  , GaussianRsg
+  , gaussianRsg
+  , sobolGaussianRsg
+  , rsgDimension
+  , nextSequence
+  , lastSequence
   , lsmRegress
   , lsmBasisSize
   , lsmRegressMulti
@@ -273,10 +279,12 @@ import QuantLib.Internal.Common
 import Foreign.C.Types(CDouble, CUInt)
 import Foreign.C.String(CString)
 import Foreign.Ptr(Ptr, FunPtr)
+import Foreign.Marshal.Alloc(alloca)
 import Data.Vector.Storable(Vector)
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
+{#pointer *PolymorphicGaussianRsg as GaussianRsg foreign -> CGaussianRsg nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
 -- Local redeclaration needed for fdmRollback's FdmScheme argument -- c2hs's cross-module enum\/
 -- pointer-type import needs the pointee type known in *this* file (see the c2hs-shim-patterns
@@ -318,6 +326,52 @@ import Data.Vector.Storable(Vector)
   ,fromIntegral`Word' -- ^dimension
   ,`Bool' -- ^brownian bridge
   ,preErrorCheck-`String'errorCheck*-}->`PathGenerator'peekPathGenerator*#}
+
+-- |The gaussian sequence generator a 'pathGenerator' drives its evolution with, exposed on its own
+-- so a Haskell-defined SDE can be simulated with no FFI call in the inner loop -- the same
+-- decomposition 'lsmRegress' applies to @LongstaffSchwartzPathPricer@, one level lower down.
+--
+-- QuantLib's @StochasticProcess@ has no Haskell-subclassable hook here by design: @MultiPathGenerator@
+-- (which 'pathGenerator' wraps) calls @process->evolve@ once per timestep /per path/, so binding
+-- that virtual as a callback would put an FFI crossing in the hottest loop there is. Drawing the
+-- normals with 'nextSequence' and writing @evolve@ in Haskell instead costs one crossing per
+-- /path/, and the result composes with 'lsmRegress' into a complete custom-SDE American Monte
+-- Carlo. The trade-off is that the result is a set of paths, not a @StochasticProcess@ object, so
+-- it cannot be fed to 'fdmSimpleProcess1dMesher' or to a pricing engine -- but no stock QuantLib
+-- engine would have accepted a custom process anyway: their constructors are typed on concrete
+-- process classes (@GeneralizedBlackScholesProcess@ and friends), not on the abstract base.
+--
+-- @dimension@ is the length of each drawn sequence -- for a path set, @assets * timesteps@,
+-- matching what 'pathGenerator' is passed. The construction mirrors 'pathGenerator''s exactly
+-- (same trait, same seed, same direction integers), so a Haskell-evolved path can be compared
+-- draw for draw against a 'pathGenerator' one on a bound process.
+{#fun qlGaussianRsg as gaussianRsg{fromEnumC`RngTrait'
+  ,fromIntegral`Word' -- ^dimension
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`GaussianRsg'peekGaussianRsg*#}
+
+-- |'gaussianRsg' driven by a low-discrepancy (Sobol) sequence with the given direction integers --
+-- the 'sobolPathGenerator' counterpart.
+{#fun qlSobolGaussianRsg as sobolGaussianRsg{fromEnumC`SobolDirectionIntegers'
+  ,fromIntegral`Word' -- ^dimension
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`GaussianRsg'peekGaussianRsg*#}
+
+-- |the length of each sequence the generator draws.
+{#fun pure qlGaussianRsgDimension as rsgDimension{withGaussianRsg*`GaussianRsg'}->`Word'fromIntegral#}
+
+-- |draw the next sequence of standard normal variates, with its sample weight (1 for every trait
+-- bound here, carried through for symmetry with 'weight').
+{#fun qlGaussianRsgNextSequence as nextSequence{withGaussianRsg*`GaussianRsg'
+  ,preArray-`[Double]'&peekDoubleArray* -- ^draws
+  ,alloca-`Double'peekDouble* -- ^weight
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |re-read the sequence 'nextSequence' last drew, without advancing the generator.
+{#fun qlGaussianRsgLastSequence as lastSequence{withGaussianRsg*`GaussianRsg'
+  ,preArray-`[Double]'&peekDoubleArray* -- ^draws
+  ,alloca-`Double'peekDouble* -- ^weight
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |draw the next weighted sample path from the generator.
 {#fun qlPathGeneratorNext as next{withPathGenerator*`PathGenerator',preErrorCheck-`String'errorCheck*-}->`SamplePath'peekSamplePath*#}
