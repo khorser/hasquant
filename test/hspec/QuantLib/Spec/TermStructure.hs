@@ -1173,6 +1173,41 @@ spec = do
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) [1 .. 5 :: Int]
 
+      -- piecewiseYieldCurve2' unifies all five bootstrapper choices tested above behind one
+      -- Bootstrap ADT instead of one function per bootstrapper: piecewiseYieldCurve'/
+      -- piecewiseYieldCurveGlobalBootstrap'/piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear'/
+      -- ...Full' are now one-line wrappers over it (piecewiseYieldCurveLocalBootstrap' is the one
+      -- exception -- it still accepts the full BootstrapTrait including the rejected Discount,
+      -- which Bootstrap's Local constructor can't represent, so it keeps its own direct
+      -- implementation; see Bootstrap's haddock). Exercises every Bootstrap constructor directly
+      -- through piecewiseYieldCurve2' itself, checking the same reprices-its-own-instruments
+      -- property as the individual-function tests above -- passing here, together with those
+      -- tests still passing unchanged, is the evidence that the unification didn't change any
+      -- bootstrapper's behaviour.
+      it "piecewiseYieldCurve2' dispatches every Bootstrap constructor to a curve that reprices its own instruments" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          settleFix <- advance cal curveToday (2, Days) Following False
+          q <- Quote.simpleQuote 0.03
+          qVal <- Quote.value q
+          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          -- additionalDates for GlobalSimpleZeroLinearFull below: deliberately not coincident
+          -- with the primary monthly pillars, same reasoning as the GlobalBootstrapFull test above.
+          extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
+          let checkCurve curve = mapM_ (\i -> do
+                  pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
+                  let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
+                  df <- discount' curve pillar False
+                  df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
+                ) [1 .. 5 :: Int]
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
+
     -- PiecewiseBlackVarianceSurface::makeFromGrid: upstream's testMakeFromGrid
     -- (test-suite/piecewiseblackvariancesurface.cpp) has no cached NPV fixture, only
     -- analytical self-consistency checks (exact reprice at grid nodes, etc). hasquant has no

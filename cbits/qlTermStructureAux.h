@@ -45,6 +45,15 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
 // accuracy and instrumentWeights are only used by the GlobalBootstrap branch (instrumentWeights
 // empty means upstream's default, equal weighting); conversely bootstrapOpts is only used by the
 // IterativeBootstrap branch.
+//
+// The Haskell-visible choice of bootstrapper (IterativeBootstrap/GlobalBootstrap/
+// LocalBootstrap) is unified on the Haskell side instead, by QuantLib/TermStructure/Yield.chs's
+// `Bootstrap` ADT and its `piecewiseYieldCurve2'` entry point: it pattern-matches on `Bootstrap`
+// and calls straight through to whichever already-existing C shim wrapper matches (this
+// function's qlPiecewiseYieldCurveFull1 wrapper for `Iterative`, qlPiecewiseYieldCurveGlobalBootstrap1/2/3
+// for the `Global*` constructors, qlPiecewiseYieldCurveLocalBootstrap1 for `Local`), rather than
+// threading a fourth case through this C-side `bootstrap` int. So this int still only ever takes
+// 0 or 1, and still isn't the place a third (Local) or unified value would go.
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
