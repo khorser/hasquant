@@ -28,7 +28,7 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   underlyingQuote <- simpleQuote initialSpot
   riskFreeRate <- simpleQuote 0.04
   vol <- simpleQuote 0.20
@@ -58,7 +58,7 @@ run = do
   portfolio3 <- foldM (addInstrument europeanEngine underlyingQuote) p
     (zip maturities3 killDates3) >>= composite
 
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
 
   -- naming the three spots directly, rather than pattern-matching a 3-element list out
   -- of a mapM over `underlyingValues`, which hid which result belonged to which spot
@@ -79,8 +79,8 @@ run = do
   }
   where barrierType = DownOut
         optionType = Put
-        tod = 29 `may` 2006
-        maturity = addGregorianYearsClip 1 tod
+        evalDate = 29 `may` 2006
+        maturity = addGregorianYearsClip 1 evalDate
         barrier = 70.0
         rebate = 0.0
         initialSpot, outOfTheMoneySpot, inTheMoneySpot :: Double
@@ -89,14 +89,14 @@ run = do
         inTheMoneySpot = 90.0
         strike = 100.0
         i1 = [12, 11 .. 1]
-        maturities1 = map (`addGregorianMonthsClip` tod) i1
-        killDates1 = map (\i -> addGregorianMonthsClip (i-1) tod) i1
+        maturities1 = map (`addGregorianMonthsClip` evalDate) i1
+        killDates1 = map (\i -> addGregorianMonthsClip (i-1) evalDate) i1
         i2 = [52, 50 .. 2]
-        maturities2 = map (\i -> addDays (i*7) tod) i2
-        killDates2 = map (\i -> addDays ((i-2)*7) tod) i2
+        maturities2 = map (\i -> addDays (i*7) evalDate) i2
+        killDates2 = map (\i -> addDays ((i-2)*7) evalDate) i2
         i3 = [52, 51 .. 1]
-        maturities3 = map (\i -> addDays (i*7) tod) i3
-        killDates3 = map (\i -> addDays ((i-1)*7) tod) i3
+        maturities3 = map (\i -> addDays (i*7) evalDate) i3
+        killDates3 = map (\i -> addDays ((i-1)*7) evalDate) i3
 
 
         addInstrument engine underlyingQuote pp (m, k) = do

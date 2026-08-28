@@ -40,7 +40,7 @@ import QuantLib.Math
 import QuantLib.Spec.Helpers(ValidDay(..), closePrec)
 
 spec :: Day -> Spec
-spec tod = do
+spec evalDate = do
     describe "Interest rate" $ do
       let cases :: [(Double, IR.Compounding, Frequency, Double, IR.Compounding, Frequency, Double, Int)]
           cases = [ (0.0800, IR.Compounded,        Quarterly,   1.00, IR.Continuous,            Annual, 0.0792, 4),
@@ -198,13 +198,13 @@ spec tod = do
         (CF.leg [] >>= CF.startDate) `shouldThrow` cPlusPlusEx
 
       it "single leg today" $ do
-        (CF.leg [(tod, 100)] >>= CF.startDate) `shouldReturn` tod
+        (CF.leg [(evalDate, 100)] >>= CF.startDate) `shouldReturn` evalDate
 
       it "two legs unsorted" $ do
-        (CF.leg [(tod, 100), (addDays (-10) tod, -1000)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
+        (CF.leg [(evalDate, 100), (addDays (-10) evalDate, -1000)] >>= CF.startDate) `shouldReturn` addDays (-10) evalDate
 
       it "three legs sorted" $ do
-        (CF.leg [(tod, 100), (addDays (-10) tod, 1000), (addDays 10 tod, -2000)] >>= CF.startDate) `shouldReturn` addDays (-10) tod
+        (CF.leg [(evalDate, 100), (addDays (-10) evalDate, 1000), (addDays 10 evalDate, -2000)] >>= CF.startDate) `shouldReturn` addDays (-10) evalDate
 
       prop "random single let start date" $
         \(a, ValidDay d) -> monadicIO $ do

@@ -70,7 +70,7 @@ bjerksundStenslandCheck :: IO ()
 bjerksundStenslandCheck = do
   setEvaluationDate $ Just (fromGregorian 1998 5 15)
   dc <- dayCounter Actual365FixedStandard
-  let tod = 17 `may` 1998
+  let evalDate = 17 `may` 1998
       maturity = 17 `may` 1999
       under = 36
       strike = 40
@@ -80,11 +80,11 @@ bjerksundStenslandCheck = do
       optType = Put
   underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate
-  ts <- flatForward tod riskFreeQ dc Continuous Annual
+  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
   divQ <- simpleQuote dividend
-  divTS <- flatForward tod divQ dc Continuous Annual
+  divTS <- flatForward evalDate divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) tod volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
   americanOpt <- vanillaOption payoff (American Nothing maturity False)

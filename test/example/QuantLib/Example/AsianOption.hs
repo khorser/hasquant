@@ -10,13 +10,12 @@ import QuantLib.Instrument
 import QuantLib.InterestRate
 import QuantLib.Instrument.Option
 import QuantLib.Math
-import QuantLib.Model()
 import QuantLib.PricingEngine
 import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
@@ -37,15 +36,15 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just today
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter (Actual360 False)
   underQ <- simpleQuote 90
   divQ <- simpleQuote 0.06
   riskFreeQ <- simpleQuote 0.025
-  ts <- flatForward today riskFreeQ dc Continuous Annual
-  divTS <- flatForward today divQ dc Continuous Annual
+  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
+  divTS <- flatForward evalDate divQ dc Continuous Annual
   volQ <- simpleQuote 0.13
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) today volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   let payoff = PlainVanilla $ PlainVanillaPayoff Put strike
@@ -66,14 +65,14 @@ run = do
 
   return Result { twR = tw, fdR = fd, mcR = mc }
   where
-    today = 1 `january` 2020
+    evalDate = 1 `january` 2020
     strike = 87
     fixings = 26 :: Int
     len = 11 / 12 :: Double
     dt = len / fromIntegral (fixings - 1)
-    -- matches upstream's `timeToDays(t, 360) = lround(t * 360)`
-    timeToDays t = round (t * 360 :: Double)
-    fixingDates = [addDays (timeToDays (fromIntegral i * dt)) today | i <- [0 .. fixings - 1]]
+    -- matches upstream's `timeEvalDates(t, 360) = lround(t * 360)`
+    timeEvalDates t = round (t * 360 :: Double)
+    fixingDates = [addDays (timeEvalDates (fromIntegral i * dt)) evalDate | i <- [0 .. fixings - 1]]
     maturity = last fixingDates
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

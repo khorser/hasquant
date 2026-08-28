@@ -16,7 +16,7 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 
 -- |Port of QuantLib's test-suite/equitytotalreturnswap.cpp testFairMargin: build a
@@ -33,20 +33,20 @@ data Result = Result
 run :: IO Result
 run = do
   cal <- calendar UnitedStatesGovernmentBond
-  today <- adjust cal (27 `january` 2023) Following
-  setEvaluationDate $ Just today
+  evalDate <- adjust cal (27 `january` 2023) Following
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   usd <- currency USD
 
   interestQ <- simpleQuote 0.0375
   dividendQ <- simpleQuote 0.005
-  interestCurve <- flatForward today interestQ dc IR2.Continuous Annual
-  dividendCurve <- flatForward today dividendQ dc IR2.Continuous Annual
+  interestCurve <- flatForward evalDate interestQ dc IR2.Continuous Annual
+  dividendCurve <- flatForward evalDate dividendQ dc IR2.Continuous Annual
 
   spotQ <- simpleQuote 8700.0
   eqIndex <- equityIndex "eqIndex" cal usd (Just interestCurve) (Just dividendCurve) (Just spotQ)
   addFixing eqIndex (5 `january` 2023) 9010.0 False
-  addFixing eqIndex today 8690.0 False
+  addFixing eqIndex evalDate 8690.0 False
 
   sofr <- IR.overnightIborIndex IR.Sofr (Just interestCurve)
   mapM_ (\(d, r) -> addFixing sofr d r False) sofrFixings

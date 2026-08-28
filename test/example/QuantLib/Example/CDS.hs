@@ -33,12 +33,12 @@ data Result = Result
 run :: IO Result
 run = do
   cal <- calendar TARGET
-  tod <- adjust cal (15 `may` 2007) Following
-  setEvaluationDate $ Just tod
+  evalDate <- adjust cal (15 `may` 2007) Following
+  setEvaluationDate $ Just evalDate
   flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
-  ts <- flatForward tod flatRate dc Continuous Annual
-  settlementDate <- advance cal tod (1, Days) Following False
+  ts <- flatForward evalDate flatRate dc Continuous Annual
+  settlementDate <- advance cal evalDate (1, Days) Following False
   maturities <- mapM (addPeriod settlementDate . (, Months)) [3, 6, 12, 24] >>= mapM (\d -> adjust cal d Following)
 
   instruments <- mapM
@@ -46,8 +46,8 @@ run = do
         $(free1st 'spreadCdsHelper) (t, Months) 1 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
       [3, 6, 12, 24]
 
-  hts <- piecewiseDefaultCurve tod instruments dc [] HazardRate BackwardFlat
-  probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y tod) False) [1, 2]
+  hts <- piecewiseDefaultCurve evalDate instruments dc [] HazardRate BackwardFlat
+  probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y evalDate) False) [1, 2]
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
 
   sched <- forM maturities

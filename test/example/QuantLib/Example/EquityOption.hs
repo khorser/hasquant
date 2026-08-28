@@ -105,7 +105,7 @@ monteCarloNpvs bsmProc europeanOpt americanOpt = do
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   let europeanEx = European $ EuropeanExercise maturity
       bermudanEx = Bermudan $ BermudanExercise exDates False
@@ -151,7 +151,7 @@ run = do
   , fdR = fd
   , mcR = (mcE, mcE2, mcA)
   }
-  where tod = 15 `may` 1998
+  where evalDate = 15 `may` 1998
         settl = 17 `may` 1998
         under = 36
         strike = 40

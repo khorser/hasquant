@@ -27,10 +27,10 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   bbdc <- dayCounter ActualActualBond
   q <- simpleQuote 0.055
-  flatRate <- flatForward tod q bbdc Compounded Semiannual
+  flatRate <- flatForward evalDate q bbdc Compounded Semiannual
 
   callDates <- (firstCallDate :) <$> buildSchedule 23 firstCallDate
   let callSchedule = map (Callability (100.0, Clean) CallabilityCall) callDates
@@ -46,7 +46,7 @@ run = do
     pricesR = ps
   , yieldsR = ys
   }
-  where tod = 16 `october` 2007
+  where evalDate = 16 `october` 2007
         firstCallDate = 15 `september` 2006
 
         -- the k call dates following `prev`, each 3 months after the one before.

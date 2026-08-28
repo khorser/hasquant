@@ -208,7 +208,7 @@ splitMaturity states = case reverse states of
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate
@@ -260,7 +260,7 @@ run = do
 
   return $ Result lsmP haskellP lsmT haskellT
   where
-    tod = 15 `may` 1998
+    evalDate = 15 `may` 1998
     settl = 17 `may` 1998
     under = 36
     strike = 40

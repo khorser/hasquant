@@ -13,7 +13,7 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 
 data Result = Result
@@ -26,17 +26,17 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just today
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
   sourceQ <- simpleQuote sourceRate
   targetQ <- simpleQuote targetRate
-  sourceCurve <- flatForward today sourceQ dc IR.Continuous Annual
-  targetCurve <- flatForward today targetQ dc IR.Continuous Annual
+  sourceCurve <- flatForward evalDate sourceQ dc IR.Continuous Annual
+  targetCurve <- flatForward evalDate targetQ dc IR.Continuous Annual
   spotFxQ <- simpleQuote spotFx
   eur <- currency EUR
   usd <- currency USD
-  maturity <- advance cal today (1, Years) Unadjusted False
+  maturity <- advance cal evalDate (1, Years) Unadjusted False
 
   fwd <- fxForward sourceNominal eur targetNominal usd maturity True 2 cal
   engine <- discountingFxForwardEngine sourceCurve targetCurve spotFxQ
@@ -62,7 +62,7 @@ run = do
     , npvAtFairRateR = npvFair
     }
   where
-    today = 2 `january` 2024
+    evalDate = 2 `january` 2024
     sourceRate = 0.03
     targetRate = 0.05
     spotFx = 1.10

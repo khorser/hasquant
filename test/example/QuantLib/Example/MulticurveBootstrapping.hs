@@ -33,13 +33,13 @@ import Data.Time.Calendar(addGregorianYearsClip)
 import QuantLib.Math
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
-import QuantLib.Instrument.Swap hiding(swap)
+import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
-import QuantLib.Time.Schedule hiding(years)
+import QuantLib.Time.Schedule
 import QuantLib.Settings(setEvaluationDate)
 
 data SwapResult = SwapResult { swapNpv :: Double
@@ -100,9 +100,9 @@ run = do
           q <- simpleQuote rate
           TS.fraRateHelper q monthsToStart (monthsToStart + 6) 2 cal ModifiedFollowing
             False depositDC TS.LastRelevantDate Nothing True
-        swaps <- forM swapQuotes $ \(years, rate) -> do
+        swaps <- forM swapQuotes $ \(yrs, rate) -> do
           q <- simpleQuote rate
-          TS.swapRateHelper' q (years, Years) cal Annual Unadjusted fixedLegDC euribor6M
+          TS.swapRateHelper' q (yrs, Years) cal Annual Unadjusted fixedLegDC euribor6M
             Nothing (0, Days) discounting
             Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
             >>= TS.asRateHelper
@@ -124,11 +124,11 @@ run = do
           Forward False Nothing Nothing
         floatSch <- schedule (Just start) maturity (6, Months) cal ModifiedFollowing
           ModifiedFollowing Forward False Nothing Nothing
-        swap <- vanillaSwap Payer 1000000 fixedSch 0.007 fixedLegDC floatSch idx 0
+        swp <- vanillaSwap Payer 1000000 fixedSch 0.007 fixedLegDC floatSch idx 0
           depositDC Nothing Nothing
         engine <- discountingSwapEngine eoniaCurve Nothing Nothing Nothing
-        setPricingEngine swap engine
-        SwapResult <$> npv swap <*> fairSpread swap <*> fairRate swap
+        setPricingEngine swp engine
+        SwapResult <$> npv swp <*> fairSpread swp <*> fairRate swp
 
   fwdStart <- advance cal settlementDate (1, Years) Following False
 

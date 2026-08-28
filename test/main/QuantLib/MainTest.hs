@@ -25,17 +25,17 @@ main :: IO ()
 main = do
   putStrLn ">>>"
   putStrLn $ "QuantLib version " ++ Settings.version ++ ", Boost " ++ Settings.boostVersion
-  tod <- today
-  w <- weekday tod
+  evalDate <- today
+  w <- weekday evalDate
   putStrLn $ "Today is " ++ show w
 
   hspec $ do
     Syntax.spec
     DatesAndSchedule.spec
-    Calendars.spec tod
+    Calendars.spec evalDate
     CurrencyAndDayCounter.spec
     Commodity.spec
-    InterestRateAndCashFlow.spec tod
+    InterestRateAndCashFlow.spec evalDate
     TermStructure.spec
     TermStructureCommodity.spec
     TermStructureInflationVolatility.spec

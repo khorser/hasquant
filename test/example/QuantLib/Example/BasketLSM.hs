@@ -96,22 +96,22 @@ goBack polyT order strike dim i dfs calibPaths pricePaths calibCF priceCF exFlag
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter (Actual360 False)
   cal <- calendar TARGET
   underQs <- mapM simpleQuote spots
   riskFreeQ <- simpleQuote riskFreeRate
-  ts <- flatForward tod riskFreeQ dc Continuous Annual
+  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
   divQ <- simpleQuote 0.0
-  divTS <- flatForward tod divQ dc Continuous Annual
+  divTS <- flatForward evalDate divQ dc Continuous Annual
   volQs <- mapM simpleQuote vols
-  volTSs <- mapM (\vq -> $(free2nd 'blackConstantVol) tod vq dc cal) volQs
+  volTSs <- mapM (\vq -> $(free2nd 'blackConstantVol) evalDate vq dc cal) volQs
   procs1D <- zipWithM (\uq vts -> blackScholesMertonProcess uq divTS ts vts EulerDiscretization False) underQs volTSs
   let corrFlat = concat [ [ if i == j then 1 else assetCorrelation | j <- [0 .. dim-1] ] | i <- [0 .. dim-1] ]
       corrMat = Matrix (fromIntegral dim) (fromIntegral dim) corrFlat
   procs <- stochasticProcessArray procs1D corrMat
 
-  t <- years dc tod maturity Nothing Nothing
+  t <- years dc evalDate maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
   discFactors@(df0h:_) <- mapM (\x -> discount ts x False) times
@@ -151,14 +151,14 @@ run = do
 
   return $ Result lsmP calibP mcA referenceAmerican exProb simFwds impliedFwds
   where
-    tod = 1 `may` 2024
+    evalDate = 1 `may` 2024
     dim = 3 :: Int
     spots = [40, 40, 40] :: [Double]
     vols = [0.20, 0.30, 0.50] :: [Double]
     assetCorrelation = 0.0 :: Double
     strike = 40 :: Double
     riskFreeRate = 0.05
-    maturity = addDays 30 tod  -- upstream: today + 1 (month) * 30 days
+    maturity = addDays 30 evalDate  -- upstream: today + 1 (month) * 30 days
     timeSteps = 50 :: Word
     order = 2 :: Word
     polyT = Monomial

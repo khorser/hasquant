@@ -37,9 +37,9 @@ data Result = Result
 run :: IO Result
 run = do
   cal <- calendar TARGET
-  tod <- adjust cal (6 `november` 2013) Following
-  setEvaluationDate $ Just tod
-  settl <- advance cal tod (fromIntegral settlementDays, Days) Following False
+  evalDate <- adjust cal (6 `november` 2013) Following
+  setEvaluationDate $ Just evalDate
+  settl <- advance cal evalDate (fromIntegral settlementDays, Days) Following False
   exec <- advance cal settl (len, Years) Following False
   issue <- advance cal exec (-len, Years) Following False
 
@@ -60,7 +60,7 @@ run = do
   callability2 <- zipWithM (\pp y -> pp CallabilityPut <$> schedDateAt y) putPrices putLength
   let callabilities = callability1 ++ callability2
 
-  let divDates = [d | m <- [6, 12 .. 1000], let d = addGregorianMonthsClip m tod, d < exec]
+  let divDates = [d | m <- [6, 12 .. 1000], let d = addGregorianMonthsClip m evalDate, d < exec]
   dividends <- mapM (CF.fixedDividend 1.0) divDates
   dc <- dayCounter Actual365FixedStandard
 

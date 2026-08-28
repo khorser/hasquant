@@ -15,7 +15,7 @@ import QuantLib.Instrument.Swap(zcisFairRate, yoyFairRate)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 
 data Result = Result
@@ -29,7 +29,7 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just today
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
 
@@ -43,7 +43,7 @@ run = do
   q2 <- simpleQuote flatRate
   h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
-  zeroCurve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Linear
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
   z1 <- zeroRate zeroCurve maturity1 True
   z2 <- zeroRate zeroCurve maturity2 True
   -- the helper builds its swap internally, so this accessor is the only way to reach it;
@@ -53,12 +53,12 @@ run = do
   yii <- yoyInflationIndex YYUKRPI
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii d (flatRate + i * 0.0001) False
   nominalQ <- simpleQuote 0.02
-  nominalCurve <- flatForward today nominalQ dc IR.Continuous Annual
+  nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
   qy1 <- simpleQuote flatRate
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoYInflationCurve today baseDate flatRate Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
   y1 <- yoyRate yoyCurve maturity1 True
   y2 <- yoyRate yoyCurve maturity2 True
   yoyFair <- yoyFairRate =<< yearOnYearInflationSwapHelperSwap hy1
@@ -72,7 +72,7 @@ run = do
     , yoyHelperFairRate = yoyFair
     }
   where
-    today = 2 `january` 2024
+    evalDate = 2 `january` 2024
     baseDate = 1 `october` 2023
     obsLag = (3, Months)
     maturity1 = 2 `january` 2025

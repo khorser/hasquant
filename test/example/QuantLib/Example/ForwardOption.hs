@@ -16,7 +16,7 @@ import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
@@ -50,15 +50,15 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just today
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter (Actual360 False)
   spotQ <- simpleQuote spot
   qQ <- simpleQuote divYield
   rQ <- simpleQuote riskFreeRate
-  qTS <- flatForward today qQ dc Continuous Annual
-  rTS <- flatForward today rQ dc Continuous Annual
+  qTS <- flatForward evalDate qQ dc Continuous Annual
+  rTS <- flatForward evalDate rQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) today volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   bsmProc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
   let payoff t = PlainVanilla $ PlainVanillaPayoff t 0.0
@@ -106,15 +106,15 @@ run = do
     , bjsAmericanR = bjsAmerican
     }
   where
-    today = 1 `january` 2020
+    evalDate = 1 `january` 2020
     moneyness = 1.1
     spot = 60
     divYield = 0.04
     riskFreeRate = 0.08
     vol = 0.30
-    -- matches upstream's `timeToDays(t, 360) = lround(t * 360)`
-    timeToDays t = round (t * 360.0)
-    resetDate = addDays (timeToDays (0.25 :: Double)) today
-    maturity = addDays (timeToDays (1.0 :: Double)) today
+    -- matches upstream's `timeEvalDates(t, 360) = lround(t * 360)`
+    timeEvalDates t = round (t * 360.0)
+    resetDate = addDays (timeEvalDates (0.25 :: Double)) evalDate
+    maturity = addDays (timeEvalDates (1.0 :: Double)) evalDate
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

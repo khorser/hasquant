@@ -154,25 +154,25 @@ applyOp (lo, di, up) u = go lo di up (0 : u) u (drop 1 u ++ [0])
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote spot
   riskFreeQ <- simpleQuote r
   divQ <- simpleQuote q
   volQ <- simpleQuote vol
-  ts <- flatForward tod riskFreeQ dc Continuous Annual
-  divTS <- flatForward tod divQ dc Continuous Annual
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) tod volQ dc
+  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
+  divTS <- flatForward evalDate divQ dc Continuous Annual
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   -- Separate fixture for the FdmAffineModelSwapInnerValue<G2>/<HullWhite> node-level checks below:
   -- a plain vanilla swap, plus HullWhite\/G2 models built directly off its own flat curve (so
   -- their initial fit is exact).
   irQ <- simpleQuote irRate
-  irTs <- flatForward tod irQ dc Continuous Annual
+  irTs <- flatForward evalDate irQ dc Continuous Annual
   euribor6m <- IRI.iborIndex IRI.Euribor6M (Just irTs)
   irCal <- fixingCalendar euribor6m
-  swapStart <- advance irCal tod (1, Years) Following False
+  swapStart <- advance irCal evalDate (1, Years) Following False
   let swapEnd = addGregorianYearsClip 5 swapStart
   fixedSched <- schedule (Just swapStart) swapEnd (1, Years) irCal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
   floatSched <- schedule (Just swapStart) swapEnd (6, Months) irCal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
@@ -277,7 +277,7 @@ run = do
     -- calculator's own affine-model NPV formula must equal the swap's plain discountingSwapEngine
     -- NPV under that same curve. 'FdmSimpleProcess1dMesher's mandatoryPoint=Just 0 forces an exact
     -- zero location onto the grid, avoiding any interpolation between nodes.
-    let irMat = fromIntegral (diffDays swapEnd tod) / 365 :: Double
+    let irMat = fromIntegral (diffDays swapEnd evalDate) / 365 :: Double
     ouHW <- ornsteinUhlenbeckProcess hwA hwSigma 0 0
     hwMesh <- fdmSimpleProcess1dMesher 51 ouHW irMat 10 1.0e-3 (Just 0)
     hwMesher <- fdmMesherComposite [hwMesh]
@@ -340,12 +340,12 @@ run = do
     g2B = 0.04
     g2Eta = 0.012
     g2Rho = -0.75
-    tod = 1 `january` 2020
+    evalDate = 1 `january` 2020
     -- 365 calendar days, not a year-based date step: Actual365Fixed's year fraction is
     -- actualDays\/365, so this is exactly 1.0 regardless of leap years. addGregorianYearsClip's
     -- 366-day span in a leap year would instead give T ~ 1.00274, silently biasing the operator's
     -- own tMat against what analyticEuropeanEngine\/fdBlackScholesVanillaEngine compute from dc.
-    maturity = addDays 365 tod
+    maturity = addDays 365 evalDate
     tMat = 1.0
     spot = 100
     strike = 100

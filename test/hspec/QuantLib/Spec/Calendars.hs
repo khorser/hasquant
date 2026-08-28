@@ -13,7 +13,7 @@ import QuantLib.Time.Calendar as Calendar
 import QuantLib.Time.Schedule(TimeUnit(..))
 
 spec :: Day -> Spec
-spec tod = do
+spec evalDate = do
     describe "calendars" $ do
       it "adjust" $ do
         c <- calendar RussiaSettlement
@@ -79,7 +79,7 @@ spec tod = do
           b1 || b2 || b3 `shouldBe` c123bb
           b1 && b2 && b3 && b4 `shouldBe` c1234hb
           b1 || b2 || b3 || b4 `shouldBe` c1234bb)
-          ([tod .. addGregorianYearsClip 1 tod] :: [Day])
+          ([evalDate .. addGregorianYearsClip 1 evalDate] :: [Day])
 
       it "US Settlement" $ do
         cal <- calendar UnitedStatesSettlement

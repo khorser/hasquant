@@ -21,7 +21,7 @@ import QuantLib.Settings
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 
 -- |Two 'ZeroInflationIndex' instances sharing a name/region/currency/frequency/lag share
@@ -42,8 +42,8 @@ data Result = Result
   , yoyLegSwapNpv :: Double
   } deriving Show
 
-today :: Day
-today = 2 `january` 2024
+evalDate :: Day
+evalDate = 2 `january` 2024
 
 baseDate :: Day
 baseDate = 1 `october` 2023
@@ -84,12 +84,12 @@ settlementDays = 2
 -- latter reprices to ~0 in one step, unlike the CPISwap refinement below.
 priceZcis :: DayCounter -> Calendar -> ZeroInflationIndex -> PricingEngine -> IO (Double, Double)
 priceZcis dc cal idx1 swapEngine = do
-  zcis0 <- zeroCouponInflationSwap Payer nominal today maturity5Y cal Unadjusted dc flatRate idx1 obsLag CPILinear False cal Following
+  zcis0 <- zeroCouponInflationSwap Payer nominal evalDate maturity5Y cal Unadjusted dc flatRate idx1 obsLag CPILinear False cal Following
   zcis0Inst <- asInstrument zcis0
   setPricingEngine zcis0Inst swapEngine
   npvBefore <- npv zcis0Inst
   fairZcisRate <- zcisFairRate zcis0
-  zcis1 <- zeroCouponInflationSwap Payer nominal today maturity5Y cal Unadjusted dc fairZcisRate idx1 obsLag CPILinear False cal Following
+  zcis1 <- zeroCouponInflationSwap Payer nominal evalDate maturity5Y cal Unadjusted dc fairZcisRate idx1 obsLag CPILinear False cal Following
   zcis1Inst <- asInstrument zcis1
   setPricingEngine zcis1Inst swapEngine
   npvAtFair <- npv zcis1Inst
@@ -132,7 +132,7 @@ refineCpiSwapRate ctx n r = do
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just today
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
   gbp <- currency GBP
@@ -147,12 +147,12 @@ run = do
   q2 <- simpleQuote flatRate
   h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity2Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
-  zeroCurve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Linear
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
   -- curve-linked index (same name/region/etc, picks up idx0's fixings automatically)
   idx1 <- zeroInflationIndex' "WL CPI" reg False Monthly obsLagI gbp (Just zeroCurve)
 
   nominalQ <- simpleQuote nominalRate
-  nominalCurve <- flatForward today nominalQ dc Continuous Annual
+  nominalCurve <- flatForward evalDate nominalQ dc Continuous Annual
   swapEngine <- discountingSwapEngine nominalCurve Nothing Nothing Nothing
   bondEngine <- discountingBondEngine nominalCurve Nothing
 
@@ -160,10 +160,10 @@ run = do
   (npvBefore, npvAtFair) <- priceZcis dc cal idx1 swapEngine
 
   -- CPISwap: same self-consistency discipline, exercising the 19-arg shim end to end.
-  floatSchedule <- schedule (Just today) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
-  fixedSchedule <- schedule (Just today) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+  floatSchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+  fixedSchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   floatIdx <- I.iborIndex (I.GbpLibor (6, Months)) (Just nominalCurve)
-  baseCPI0 <- fixing idx1 today
+  baseCPI0 <- fixing idx1 evalDate
   let cpiSwapCtx = CpiSwapContext
         { cpiSwapDc = dc
         , cpiSwapFloatSchedule = floatSchedule
@@ -182,9 +182,9 @@ run = do
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity2Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity5Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoYInflationCurve today baseDate flatRate Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
   yidx1 <- yoyInflationIndex' "WL YoY CPI" reg False Monthly obsLagI gbp (Just yoyCurve)
-  yoySchedule <- schedule (Just today) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+  yoySchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   yoySwap0 <- yearOnYearInflationSwap Payer nominal fixedSchedule flatRate dc yoySchedule yidx1 obsLag CPILinear 0.0 dc cal Unadjusted
   yoySwap0Inst <- asInstrument yoySwap0
   setPricingEngine yoySwap0Inst swapEngine
@@ -195,23 +195,23 @@ run = do
   yoySwapNpv <- npv yoySwap1Inst
 
   -- CPIBond: dirty/clean/accrued self-consistency, plus a directional inflation bump
-  cpiBondSchedule <- schedule (Just today) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+  cpiBondSchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   cb <- cpiBond settlementDays faceAmount baseCPI0 obsLag idx1 CPILinear cpiBondSchedule [couponRate]
-    dc Unadjusted (Just today) cal (0, Days) cal Unadjusted False
+    dc Unadjusted (Just evalDate) cal (0, Days) cal Unadjusted False
   cbInst <- asBond cb >>= asInstrument
   setPricingEngine cbInst bondEngine
   _ <- npv cbInst
-  cbSettlement <- advance cal today (fromIntegral settlementDays, Days) Following False
+  cbSettlement <- advance cal evalDate (fromIntegral settlementDays, Days) Following False
   cbClean <- currentCleanPrice cb
   cbDirty <- currentDirtyPrice cb
   cbAccrued <- accruedAmount cb cbSettlement
 
   q3 <- simpleQuote (flatRate + 0.02) -- higher expected inflation
   h3 <- zeroCouponInflationSwapHelper q3 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
-  hiZeroCurve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h3] Linear
+  hiZeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h3] Linear
   hiIdx <- zeroInflationIndex' "WL CPI" reg False Monthly obsLagI gbp (Just hiZeroCurve)
   cbHi <- cpiBond settlementDays faceAmount baseCPI0 obsLag hiIdx CPILinear cpiBondSchedule [couponRate]
-    dc Unadjusted (Just today) cal (0, Days) cal Unadjusted False
+    dc Unadjusted (Just evalDate) cal (0, Days) cal Unadjusted False
   cbHiInst <- asBond cbHi >>= asInstrument
   setPricingEngine cbHiInst bondEngine
   _ <- npv cbHiInst
@@ -219,7 +219,7 @@ run = do
 
   -- cpiLeg exercised directly via the generic Leg-based 'bond' constructor
   cpiL <- CF.cpiLeg cpiBondSchedule idx1 baseCPI0 obsLag [faceAmount] [couponRate] dc Unadjusted cal CPILinear True
-  cpiLegBond <- bond settlementDays cal (Just today) cpiL >>= asInstrument
+  cpiLegBond <- bond settlementDays cal (Just evalDate) cpiL >>= asInstrument
   setPricingEngine cpiLegBond bondEngine
   cpiLegNpv <- npv cpiLegBond
 

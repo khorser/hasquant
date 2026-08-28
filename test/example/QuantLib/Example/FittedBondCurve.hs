@@ -37,18 +37,18 @@ run :: IO Result
 run = do
   cal <- calendar Null
   tod1 <- today
-  tod <- adjust cal tod1 Following
-  setEvaluationDate $ Just tod
+  evalDate <- adjust cal tod1 Following
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Simple
 
-  bondSettle <- advance cal tod (bondSettleDays, Days) Following False
+  bondSettle <- advance cal evalDate (bondSettleDays, Days) Following False
   cleanQuotes <- mapM simpleQuote cleanPrices
 
-  (rates1, ts0, instrA, instrB, curves) <- step1 tod dc cal bondSettle cleanQuotes
-  rates2 <- step2 tod dc cal ts0 instrA instrB curves
+  (rates1, ts0, instrA, instrB, curves) <- step1 evalDate dc cal bondSettle cleanQuotes
+  rates2 <- step2 evalDate dc cal ts0 instrA instrB curves
   let (iA, iB) = (drop 1 instrA, drop 1 instrB)
 
-  newtod <- advance cal tod (24, Months) ModifiedFollowing False
+  newtod <- advance cal evalDate (24, Months) ModifiedFollowing False
   setEvaluationDate $ Just newtod
   newBondSettle <- advance cal newtod (bondSettleDays, Days) Following False
 
@@ -87,7 +87,7 @@ run = do
       return $ 100.0 * (df1 - df2) / sum dfs
 
     rates :: TS.YieldTermStructure -> DayCounter -> Day -> Day -> [TS.FittedBondDiscountCurve] -> [TS.BondHelper] -> IO Rate
-    rates ts0 dc bondSettle tod curves instrA = do
+    rates ts0 dc bondSettle evalDate curves instrA = do
       refDate <- referenceDate ts0
       numIter <- forM curves TS.numberOfIterations
 
@@ -100,7 +100,7 @@ run = do
               -- NonEmpty that already includes bondSettle keeps this total, and shares
               -- the one value the two parRate calls below both need
               cfDates = bondSettle :| ds
-          m <- years dc tod (maximum cfDates) Nothing Nothing
+          m <- years dc evalDate (maximum cfDates) Nothing Nothing
           r1 <- parRate ts0 cfDates dc
           r2 <- forM curves $ $(free1st' 3) parRate cfDates dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)
@@ -108,7 +108,7 @@ run = do
       return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rs}
 
     step1 :: Day -> DayCounter -> Calendar -> Day -> [SimpleQuote] -> IO (Rate, TS.YieldTermStructure, [TS.BondHelper], [TS.RateHelper], [TS.FittedBondDiscountCurve])
-    step1 tod dc cal bondSettle cleanQuotes = do
+    step1 evalDate dc cal bondSettle cleanQuotes = do
       helpers <- mapM (\(q, l, c) -> do
         mat <- advance cal bondSettle (l, Years) Following False
         s <- schedule (Just bondSettle) mat (1, Years) cal
@@ -125,13 +125,13 @@ run = do
       ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] TS.Discount LogLinear False
 
       curves <- fitCurves cal dc instrA
-      rs <- rates ts0 dc bondSettle tod curves instrA
+      rs <- rates ts0 dc bondSettle evalDate curves instrA
       return (rs, ts0, instrA, instrB, curves)
 
     step2 :: Day -> DayCounter -> Calendar -> TS.YieldTermStructure -> [TS.BondHelper]
              -> [TS.RateHelper] -> [TS.FittedBondDiscountCurve] -> IO Rate
-    step2 tod dc cal ts0 instrA _ curves = do
-      newtoday <- advance cal tod (23, Months) ModifiedFollowing False
+    step2 evalDate dc cal ts0 instrA _ curves = do
+      newtoday <- advance cal evalDate (23, Months) ModifiedFollowing False
       setEvaluationDate $ Just newtoday
       bondSettle <- advance cal newtoday (bondSettleDays, Days) Following False
 
@@ -140,11 +140,11 @@ run = do
 
     step3 :: Day -> DayCounter -> Calendar -> Day -> [TS.BondHelper] -> [TS.RateHelper]
              -> IO (Rate, TS.YieldTermStructure, [TS.FittedBondDiscountCurve])
-    step3 tod dc cal bondSettle iA iB = do
+    step3 evalDate dc cal bondSettle iA iB = do
       ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal iB dc [] TS.Discount LogLinear False
 
       curves <- fitCurves cal dc iA
-      rs <- rates ts00 dc bondSettle tod curves iA
+      rs <- rates ts00 dc bondSettle evalDate curves iA
       return (rs, ts00, curves)
 
     -- the five fitting methods the example compares, and the curves fitted with them.

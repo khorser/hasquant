@@ -71,7 +71,7 @@ calibrateShortRateModel buildModel attachEngine toCalibratable swaptions = do
 run :: IO Result
 run = do
   cal <- calendar TARGET
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   flatRate <- simpleQuote 0.04875825 >>= asQuote -- just to test that explicit casting works
   dc365 <- dayCounter Actual365FixedStandard
   ts <- flatForward settl flatRate dc365 Continuous Annual
@@ -154,7 +154,7 @@ run = do
   , npvOtm = npvO
   , npvItm = npvI
   }
-  where tod = 15 `february` 2002
+  where evalDate = 15 `february` 2002
         settl = 19 `february` 2002
         swapLengths :: [Word]
         swapLengths = [1, 2, 3, 4, 5]

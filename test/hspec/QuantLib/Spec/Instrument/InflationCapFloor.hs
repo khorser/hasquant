@@ -48,7 +48,7 @@ customYoYIndex mts = do
 -- construct a second, curve-linked index sharing the same family name (fixing history is keyed
 -- by name, not object identity, so it's shared automatically).
 linkedYoYIndex :: Day -> IO YoYInflationIndex
-linkedYoYIndex tod = do
+linkedYoYIndex evalDate = do
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
   yii0 <- customYoYIndex Nothing
@@ -56,40 +56,40 @@ linkedYoYIndex tod = do
   -- working as the real wall-clock 'today' advances across future runs -- an absolute
   -- 2018-01..2026-01 window (this test's original form) silently falls out of range once
   -- 'today' itself passes 2026, since 'baseDate' below is derived from 'today'.
-  fixingDates <- mapM (\n -> advance cal tod (n, Months) Unadjusted False) [-96 .. 12 :: Int]
+  fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii0 d (0.03 + i * 0.0001) False
   nominalQ <- simpleQuote 0.02
-  nominalCurve <- flatForward tod nominalQ dc IR.Continuous Annual
-  maturity1 <- advance cal tod (2, Years) Unadjusted False
-  maturity2 <- advance cal tod (5, Years) Unadjusted False
+  nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
+  maturity1 <- advance cal evalDate (2, Years) Unadjusted False
+  maturity2 <- advance cal evalDate (5, Years) Unadjusted False
   q1 <- simpleQuote 0.03
   q2 <- simpleQuote 0.03
   h1 <- yearOnYearInflationSwapHelper q1 (3, Months) maturity1 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   h2 <- yearOnYearInflationSwapHelper q2 (3, Months) maturity2 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
-  baseDate <- advance cal tod (-2, Months) Unadjusted False
-  yoyCurve <- piecewiseYoYInflationCurve tod baseDate 0.03 Monthly dc [h1, h2] Linear
+  baseDate <- advance cal evalDate (-2, Months) Unadjusted False
+  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate 0.03 Monthly dc [h1, h2] Linear
   customYoYIndex (Just yoyCurve)
 
 -- |A short YoY-inflation leg (3 annual coupons) on the given (curve-linked) index -- mirrors
 -- the fixture in upstream's inflationcapfloor.cpp's CommonVars, trimmed to what a fast
 -- structural-consistency check needs.
 setupLeg :: YoYInflationIndex -> Day -> IO Leg
-setupLeg yii tod = do
+setupLeg yii evalDate = do
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
-  endDate <- advance cal tod (3, Years) Unadjusted False
-  sch <- schedule (Just tod) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
+  endDate <- advance cal evalDate (3, Years) Unadjusted False
+  sch <- schedule (Just evalDate) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
   yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
 
 -- |Builds the Black engine (constant vol) all cap\/floor\/collar instruments in this module
 -- share -- mirrors 'QuantLib.Spec.TermStructure`'s "Black cap/floor engine" setup, YoY-inflation
 -- flavoured.
 setupEngine :: YoYInflationIndex -> Day -> IO PricingEngine
-setupEngine yii tod = do
+setupEngine yii evalDate = do
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
   nominalQ <- simpleQuote 0.02
-  nominalCurve <- flatForward tod nominalQ dc IR.Continuous Annual
+  nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
   volQ <- simpleQuote 0.02
   vol <- constantYoYOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
   yoyInflationBlackCapFloorEngine yii vol nominalCurve
@@ -102,26 +102,26 @@ setupEngine yii tod = do
 -- type's own C++ haddock), which throws "ZITS missing from index" if unset -- mirrors upstream's
 -- own CommonVars building 'PiecewiseZeroInflationCurve' before the price surface.
 customZeroIndex :: Day -> IO ZeroInflationIndex
-customZeroIndex tod = do
+customZeroIndex evalDate = do
   gbp <- currency GBP
   r <- region' "InflationCapFloor CPI Test" "ICFCT"
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
   zii0 <- zeroInflationIndex' "ICFCT Zero" r False Monthly (1, Months) gbp Nothing
   -- Same today-relative fixing window as 'linkedYoYIndex', for the same reason.
-  fixingDates <- mapM (\n -> advance cal tod (n, Months) Unadjusted False) [-96 .. 12 :: Int]
+  fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing zii0 d (100.0 + i * 0.1) False
-  maturity1 <- advance cal tod (2, Years) Unadjusted False
+  maturity1 <- advance cal evalDate (2, Years) Unadjusted False
   -- 10y, not 5y: this curve must reach past the price surface's own widest grid maturity (7y,
   -- see the CPI cap/floor test below) since 'InterpolatedCPICapFloorTermPriceSurface's
   -- performCalculations computes each grid column's ATM level off this index's linked curve.
-  maturity2 <- advance cal tod (10, Years) Unadjusted False
+  maturity2 <- advance cal evalDate (10, Years) Unadjusted False
   q1 <- simpleQuote 0.03
   q2 <- simpleQuote 0.03
   h1 <- zeroCouponInflationSwapHelper q1 (2, Months) maturity1 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 (2, Months) maturity2 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
-  baseDate <- advance cal tod (-2, Months) Unadjusted False
-  zeroCurve <- piecewiseZeroInflationCurve tod baseDate Monthly dc [h1, h2] Linear
+  baseDate <- advance cal evalDate (-2, Months) Unadjusted False
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
   zeroInflationIndex' "ICFCT Zero" r False Monthly (1, Months) gbp (Just zeroCurve)
 
 spec :: Spec

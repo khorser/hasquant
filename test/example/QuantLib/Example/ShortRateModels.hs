@@ -15,7 +15,7 @@ import QuantLib.Index(fixingCalendar, addFixing)
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.InterestRate hiding(rate)
 import QuantLib.Instrument(npv, setPricingEngine)
-import QuantLib.Instrument.Swap hiding(startDate)
+import QuantLib.Instrument.Swap
 import QuantLib.Math
 import QuantLib.Model hiding(setPricingEngine, value)
 import qualified QuantLib.Model as Model
@@ -23,7 +23,7 @@ import QuantLib.PricingEngine
 import QuantLib.Quote
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date hiding(today)
+import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.Settings
 
@@ -81,8 +81,8 @@ run = do
     , vasicekDiscountFactorSmallMeanReversion = vasicekDF
     }
 
-calibrationToday :: Day
-calibrationToday = 15 `february` 2002
+calibrationEvalDate :: Day
+calibrationEvalDate = 15 `february` 2002
 
 calibrationSettlement :: Day
 calibrationSettlement = 19 `february` 2002
@@ -99,7 +99,7 @@ runCachedHullWhite :: [Bool] -- ^fixParameters, e.g. 'fixedReversion'
   -> Double -> Double -- ^cached expected (a, sigma)
   -> IO CalibrationResult
 runCachedHullWhite fixParams a0 sigma0 cachedAv cachedSigmaV = do
-  setEvaluationDate (Just calibrationToday)
+  setEvaluationDate (Just calibrationEvalDate)
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote 0.04875825
   ts <- TS.flatForward calibrationSettlement q ac365 Continuous Annual
@@ -111,7 +111,7 @@ runCachedHullWhite fixParams a0 sigma0 cachedAv cachedSigmaV = do
 -- zero-fixing-days variant of the index (no start delay).
 runCachedHullWhite2 :: IO CalibrationResult
 runCachedHullWhite2 = do
-  setEvaluationDate (Just calibrationToday)
+  setEvaluationDate (Just calibrationEvalDate)
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote 0.04875825
   ts <- TS.flatForward calibrationSettlement q ac365 Continuous Annual
@@ -153,9 +153,9 @@ runCalibration model index ts fixParams cachedAv cachedSigmaV = do
 runSwaps :: IO [SwapCheck]
 runSwaps = do
   cal <- calendar TARGET
-  today <- evaluationDate >>= \d -> adjust cal d Following
-  setEvaluationDate (Just today)
-  settlement <- advance cal today (2, Days) Following False
+  evalDate <- evaluationDate >>= \d -> adjust cal d Following
+  setEvaluationDate (Just evalDate)
+  settlement <- advance cal evalDate (2, Days) Following False
   ac365 <- dayCounter Actual365FixedStandard
   curveDates <- (settlement :) <$> mapM (\(n, u) -> advance cal settlement (n, u) Following False)
     [(1, Weeks), (1, Months), (3, Months), (6, Months), (9, Months)
@@ -171,12 +171,12 @@ runSwaps = do
   thirty360bb <- dayCounter Thirty360BondBasis
   act360 <- dayCounter (Actual360 False)
   results <- forM starts $ \s -> do
-    startDate <- advance cal settlement (s, Months) Following False
-    when (startDate < today) $ advance cal startDate (-2, Days) Following False >>= \fd -> addFixing euribor fd 0.03 False
+    start <- advance cal settlement (s, Months) Following False
+    when (start< evalDate) $ advance cal start (-2, Days) Following False >>= \fd -> addFixing euribor fd 0.03 False
     forM lengths $ \l -> do
-      maturity <- advance cal startDate (l, Years) Following False
-      fixedSchedule <- schedule (Just startDate) maturity (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
-      floatSchedule <- schedule (Just startDate) maturity (6, Months) cal Following Following Forward False Nothing Nothing
+      maturity <- advance cal start(l, Years) Following False
+      fixedSchedule <- schedule (Just start) maturity (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
+      floatSchedule <- schedule (Just start) maturity (6, Months) cal Following Following Forward False Nothing Nothing
       forM rates $ \r -> do
         swp <- vanillaSwap Payer 1000000.0 fixedSchedule r thirty360bb floatSchedule euribor 0.0 act360 (Just Following) Nothing
         setPricingEngine swp riskFreeEngine
@@ -215,10 +215,10 @@ futuresConvexityChecks = mapM mkCheck convexityData
 -- |@testExtendedCoxIngersollRossDiscountFactor@.
 runExtendedCirDiscountFactor :: IO DiscountCheck
 runExtendedCirDiscountFactor = do
-  today <- evaluationDate
+  evalDate <- evaluationDate
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote rate
-  rts <- TS.flatForward today q ac365 Continuous Annual
+  rts <- TS.flatForward evalDate q ac365 Continuous Annual
   model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate True
   dNow <- TS.discount rts now False
   dMat <- TS.discount rts maturity False

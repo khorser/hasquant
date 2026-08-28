@@ -32,15 +32,15 @@ import QuantLib.TermStructure.Yield
 
 main :: IO ()
 main = do
-  setEvaluationDate (Just tod)
+  setEvaluationDate (Just evalDate)
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote spot
   riskFreeQ <- simpleQuote r
   divQ <- simpleQuote q
   volQ <- simpleQuote vol
-  ts <- flatForward tod riskFreeQ dc Continuous Annual
-  divTS <- flatForward tod divQ dc Continuous Annual
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) tod volQ dc
+  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
+  divTS <- flatForward evalDate divQ dc Continuous Annual
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   let vanillaPayoff = PlainVanilla (PlainVanillaPayoff Call strike)
@@ -92,8 +92,8 @@ main = do
   putStrLn "OK: native FdmInnerValueCalculator subclasses and gluedMesher (issue #20) all work end to end"
   where
     check label cond = if cond then putStrLn ("OK  " ++ label) else error ("FAILED: " ++ label)
-    tod = 1 `january` 2020
-    maturity = addDays 365 tod
+    evalDate = 1 `january` 2020
+    maturity = addDays 365 evalDate
     tMat = 1.0
     spot = 100 :: Double
     strike = 100 :: Double

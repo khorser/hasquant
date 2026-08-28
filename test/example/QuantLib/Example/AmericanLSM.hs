@@ -83,7 +83,7 @@ goBack polyT order strike i dfs calibRest priceRest calibCF priceCF exFlags
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just tod
+  setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate
@@ -97,7 +97,7 @@ run = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors <- mapM (\x -> discount ts x False) times
+  discFactors@(d0: d1: _) <- mapM (\x -> discount ts x False) times
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
 
   genCalib <- pathGenerator PseudoRandom bsmProc grid seedCalib (size grid - 1) False
@@ -115,7 +115,7 @@ run = do
   (calibFinal, priceFinal, exFlags) <- goBack polyT order strike (nSteps - 1) dfs
     (init (drop 1 calibStates)) (init (drop 1 priceStates)) calibCF0 priceCF0 (replicate nPrice False)
 
-  let df0 = discFactors !! 1 / head discFactors
+  let df0 = d1 / d0
       lsmP = mean (map (* df0) priceFinal)
       calibP = mean (map (* df0) calibFinal)
       exProb = fromIntegral (length (filter id exFlags)) / fromIntegral nPrice
@@ -129,7 +129,7 @@ run = do
 
   return $ Result lsmP calibP mcA exProb
   where
-    tod = 15 `may` 1998
+    evalDate = 15 `may` 1998
     settl = 17 `may` 1998
     under = 36
     strike = 40
