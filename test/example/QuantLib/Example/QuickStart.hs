@@ -27,11 +27,11 @@ data Result = Result
 
 run :: IO Result
 run = do
-  let today = 2 `january` 2024
-  setEvaluationDate (Just today)
+  let evalDate = 2 `january` 2024
+  setEvaluationDate (Just evalDate)
 
   cal <- calendar TARGET
-  settle <- advance cal today (2, Days) Following False
+  settle <- advance cal evalDate (2, Days) Following False
   let maturity = addGregorianYearsClip 5 settle
 
   dc <- dayCounter (Actual360 False)

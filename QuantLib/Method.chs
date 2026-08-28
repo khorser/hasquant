@@ -273,7 +273,6 @@ import QuantLib.Internal.Common
 import Foreign.C.Types(CDouble, CUInt)
 import Foreign.C.String(CString)
 import Foreign.Ptr(Ptr, FunPtr)
-import Data.Time.Calendar(Day)
 import Data.Vector.Storable(Vector)
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
@@ -456,9 +455,9 @@ concentrating1dMesherMulti :: Double -> Double -> Word
   -> [(Double, Double, Bool)] -- ^concentration points: (location, density, requireCPoint)
   -> Double -- ^tol
   -> IO Fdm1dMesher
-concentrating1dMesherMulti start end size cPoints tol =
+concentrating1dMesherMulti start end sz cPoints tol =
   let (locs, densities, reqs) = unzip3 cPoints
-  in qlConcentrating1dMesherMulti start end size (fromIntegral (length cPoints)) locs densities reqs tol
+  in qlConcentrating1dMesherMulti start end sz (fromIntegral (length cPoints)) locs densities reqs tol
 {#fun qlConcentrating1dMesherMulti{`Double',`Double',fromIntegral`Word'
   ,fromIntegral`Word' -- ^number of concentration points
   ,withDoubleArrayRaw*`[Double]' -- ^locations
@@ -656,7 +655,7 @@ withCustomCellAveragingInnerValue payoff mesher direction mapping k =
 fdmAffineG2ModelSwapInnerValue :: G2 -> G2 -> GenFixedVsFloatingSwap f -> [(Double, Day)] -> FdmMesher -> Int -> IO FdmInnerValueCalculator
 fdmAffineG2ModelSwapInnerValue disModel fwdModel swap exerciseDates =
   let (times, dates) = unzip exerciseDates
-  in qlFdmAffineG2ModelSwapInnerValue disModel fwdModel swap (fromIntegral (length exerciseDates)) times dates
+  in qlFdmAffineG2ModelSwapInnerValue disModel fwdModel swap (length exerciseDates) times dates
 {#fun qlFdmAffineG2ModelSwapInnerValue{withG2*`G2'
   ,withG2*`G2'
   ,withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f'
@@ -672,7 +671,7 @@ fdmAffineG2ModelSwapInnerValue disModel fwdModel swap exerciseDates =
 fdmAffineHullWhiteModelSwapInnerValue :: HullWhite -> HullWhite -> GenFixedVsFloatingSwap f -> [(Double, Day)] -> FdmMesher -> Int -> IO FdmInnerValueCalculator
 fdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap exerciseDates =
   let (times, dates) = unzip exerciseDates
-  in qlFdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap (fromIntegral (length exerciseDates)) times dates
+  in qlFdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap (length exerciseDates) times dates
 {#fun qlFdmAffineHullWhiteModelSwapInnerValue{withHullWhite*`HullWhite'
   ,withHullWhite*`HullWhite'
   ,withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f'

@@ -42,13 +42,13 @@ run = do
   floatDayCount <- IR.dayCounter euribor6m
 
   exerciseDate <- advance cal settlementDate (5, Years) Following False
-  startDate <- advance cal exerciseDate (2, Days) Following False
-  let endDate = addGregorianYearsClip 10 startDate
+  start<- advance cal exerciseDate (2, Days) Following False
+  let endDate = addGregorianYearsClip 10 start
 
   fixedDC <- dayCounter Thirty360BondBasis
-  fixedSchedule <- schedule (Just startDate) endDate (1, Years) cal
+  fixedSchedule <- schedule (Just start) endDate (1, Years) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
-  floatSchedule <- schedule (Just startDate) endDate (6, Months) cal
+  floatSchedule <- schedule (Just start) endDate (6, Months) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
   swp <- vanillaSwap Payer 1.0 fixedSchedule 0.06 fixedDC floatSchedule
