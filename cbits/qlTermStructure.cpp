@@ -1426,6 +1426,26 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Cale
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), hasquant::ForwardRate, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), hasquant::ZeroYield, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
 QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, unsigned localisation, int forcePositive, double accuracy,
   double quadraticity, double monotonicity, int convexForcePositive, int extrapolate, char **e) {

@@ -119,6 +119,72 @@ public:
   std::vector<Date> operator()() const { return additionalDates_; }
 };
 
+// Spelled CurveType::bootstrap_type(accuracy), not GlobalBootstrap<CurveType>(accuracy):
+// GlobalBootstrap overrides pure-virtual methods from MultiCurveBootstrapContributor, and
+// [temp.inst] instantiates a class's virtual member function bodies together with the class
+// itself. Naming GlobalBootstrap<CurveType> directly starts instantiating *that* specialization
+// first, which then needs CurveType complete -- but CurveType is simultaneously mid-instantiation
+// because of this very argument (its bootstrap_ field has type GlobalBootstrap<CurveType>),
+// producing a hard "incomplete type" error (reproduced independently with clang and g++-16).
+// Naming CurveType (via ::bootstrap_type) first instead makes CurveType the outer instantiation,
+// so GlobalBootstrap<CurveType>'s virtual bodies are only instantiated once CurveType is
+// complete. Don't "simplify" this back to the direct spelling -- it silently reintroduces the
+// compile failure. Templated over Trait/Interp (same shape makeCurveLocalBootstrap already uses
+// for LocalBootstrap below) so each trait/interpolator combination is one dispatch arm instead of
+// a hand-duplicated block.
+template <class Trait, class Interp>
+YieldTermStructure *makeGlobalBootstrapCurve(unsigned settl, const Calendar &cal,
+    const std::vector<shared_ptr<RateHelper> >& instr, const DayCounter& dayCount,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    const Interp& interp, double accuracy, const std::vector<double>& instrumentWeights) {
+  using CurveType = PiecewiseYieldCurve<Trait, Interp, QuantLib::GlobalBootstrap>;
+  return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, interp,
+      typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
+}
+
+// GlobalBootstrap is wired up only for the combinations concrete use cases have asked for --
+// Discount/LogLinear (the multi-curve relinkable-handle test), SimpleZeroYield/Linear (upstream
+// QuantLib-SWIG's GlobalLinearSimpleZeroCurve), and ForwardRate/Linear and ZeroYield/Linear (the
+// other two IterativeBootstrap traits paired with the cheapest interpolator, see issue #15) --
+// not the full trait x interpolator matrix; CLAUDE.md is explicit about not building dispatch for
+// hypothetical future combinations.
+YieldTermStructure *dispatchTraitGlobalBootstrap(int trait, int interpolator, unsigned settl,
+    const Calendar &cal, const std::vector<shared_ptr<RateHelper> >& instr,
+    const DayCounter& dayCount, const std::vector<Handle<Quote> >& jumps,
+    const std::vector<Date>& jumpDates, double accuracy, const std::vector<double>& instrumentWeights) {
+  switch (trait) {
+  case hasquant::Discount:
+    QL_REQUIRE(interpolator == hasquant::LogLinear,
+        "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=Discount only "
+        "supports interpolator=LogLinear (got interpolator " << interpolator << ")");
+    return makeGlobalBootstrapCurve<QuantLib::Discount>(settl, cal, instr, dayCount, jumps,
+        jumpDates, QuantLib::LogLinear(), accuracy, instrumentWeights);
+  case hasquant::SimpleZeroYield:
+    QL_REQUIRE(interpolator == hasquant::Linear,
+        "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=SimpleZeroYield "
+        "only supports interpolator=Linear (got interpolator " << interpolator << ")");
+    return makeGlobalBootstrapCurve<QuantLib::SimpleZeroYield>(settl, cal, instr, dayCount, jumps,
+        jumpDates, QuantLib::Linear(), accuracy, instrumentWeights);
+  case hasquant::ForwardRate:
+    QL_REQUIRE(interpolator == hasquant::Linear,
+        "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=ForwardRate only "
+        "supports interpolator=Linear (got interpolator " << interpolator << ")");
+    return makeGlobalBootstrapCurve<QuantLib::ForwardRate>(settl, cal, instr, dayCount, jumps,
+        jumpDates, QuantLib::Linear(), accuracy, instrumentWeights);
+  case hasquant::ZeroYield:
+    QL_REQUIRE(interpolator == hasquant::Linear,
+        "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=ZeroYield only "
+        "supports interpolator=Linear (got interpolator " << interpolator << ")");
+    return makeGlobalBootstrapCurve<QuantLib::ZeroYield>(settl, cal, instr, dayCount, jumps,
+        jumpDates, QuantLib::Linear(), accuracy, instrumentWeights);
+  default:
+    QL_FAIL("GlobalBootstrap-based PiecewiseYieldCurve construction is only supported for "
+        "trait=Discount/interpolator=LogLinear, trait=ForwardRate/interpolator=Linear, "
+        "trait=ZeroYield/interpolator=Linear, or trait=SimpleZeroYield/interpolator=Linear "
+        "(got trait " << trait << ", interpolator " << interpolator << ")");
+  }
+}
+
 // PiecewiseYieldCurve<SimpleZeroYield, Linear, GlobalBootstrap> built via GlobalBootstrap's
 // functor-callback constructor, taking additionalHelpers/additionalDates and constructing
 // AdditionalErrors/AdditionalDates internally -- the same GlobalLinearSimpleZeroCurve combination
@@ -230,39 +296,8 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
     const QlIterativeBootstrapOpts& bootstrapOpts) {
   if (bootstrap == 1) {
-    // GlobalBootstrap is wired up only for the two combinations concrete use cases have asked
-    // for -- Discount/LogLinear (the multi-curve relinkable-handle test) and SimpleZeroYield/
-    // Linear (upstream QuantLib-SWIG's GlobalLinearSimpleZeroCurve) -- not the full trait x
-    // interpolator matrix; CLAUDE.md is explicit about not building dispatch for hypothetical
-    // future combinations.
-    //
-    // Spelled CurveType::bootstrap_type(accuracy), not GlobalBootstrap<CurveType>(accuracy), in
-    // both branches below: GlobalBootstrap overrides pure-virtual methods from
-    // MultiCurveBootstrapContributor, and [temp.inst] instantiates a class's virtual member
-    // function bodies together with the class itself. Naming GlobalBootstrap<CurveType> directly
-    // starts instantiating *that* specialization first, which then needs CurveType complete --
-    // but CurveType is simultaneously mid-instantiation because of this very argument (its
-    // bootstrap_ field has type GlobalBootstrap<CurveType>), producing a hard "incomplete type"
-    // error (reproduced independently with clang and g++-16). Naming CurveType (via
-    // ::bootstrap_type) first instead makes CurveType the outer instantiation, so
-    // GlobalBootstrap<CurveType>'s virtual bodies are only instantiated once CurveType is
-    // complete. Don't "simplify" this back to the direct spelling -- it silently reintroduces
-    // the compile failure.
-    if (trait == hasquant::SimpleZeroYield) {
-      QL_REQUIRE(interpolator == hasquant::Linear,
-          "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=SimpleZeroYield "
-          "only supports interpolator=Linear (got interpolator " << interpolator << ")");
-      using CurveType = PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap>;
-      return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::Linear(),
-          CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
-    }
-    QL_REQUIRE(trait == hasquant::Discount && interpolator == hasquant::LogLinear,
-        "GlobalBootstrap-based PiecewiseYieldCurve construction is only supported for "
-        "trait=Discount, interpolator=LogLinear or trait=SimpleZeroYield, interpolator=Linear "
-        "(got trait " << trait << ", interpolator " << interpolator << ")");
-    using CurveType = PiecewiseYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap>;
-    return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::LogLinear(),
-        CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
+    return dispatchTraitGlobalBootstrap(trait, interpolator, settl, cal, instr, dayCount, jumps,
+        jumpDates, accuracy, instrumentWeights);
   }
   return dispatchTrait(trait, interpolator, approximator, approximatorArg, bootstrapOpts,
       settl, cal, instr, dayCount, jumps, jumpDates);

@@ -1206,7 +1206,33 @@ spec = do
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 []) False >>= checkCurve
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
+
+      -- issue #15: GlobalBootstrap widened to ForwardRate/Linear and ZeroYield/Linear, the other
+      -- two IterativeBootstrap traits paired with the cheapest interpolator. Same
+      -- reprices-its-own-instruments property as the SimpleZeroYield GlobalBootstrap test above,
+      -- through their own dedicated named entry points rather than piecewiseYieldCurve2' directly.
+      it "ForwardRate/ZeroYield GlobalBootstrap curves reprice to the same pillar discount factors as Discount" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          settleFix <- advance cal curveToday (2, Days) Following False
+          q <- Quote.simpleQuote 0.03
+          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [] False
+          forwardCurve <- piecewiseYieldCurveGlobalBootstrapForwardRateLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
+          zeroCurve <- piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
+          mapM_ (\i -> do
+              pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
+              dfDiscount <- discount' discountCurve pillar False
+              dfForward <- discount' forwardCurve pillar False
+              dfZero <- discount' zeroCurve pillar False
+              dfForward `shouldSatisfy` closePrec dfDiscount tolerance
+              dfZero `shouldSatisfy` closePrec dfDiscount tolerance
+            ) [1 .. 5 :: Int]
 
     -- PiecewiseBlackVarianceSurface::makeFromGrid: upstream's testMakeFromGrid
     -- (test-suite/piecewiseblackvariancesurface.cpp) has no cached NPV fixture, only

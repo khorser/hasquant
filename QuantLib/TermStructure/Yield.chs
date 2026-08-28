@@ -76,6 +76,8 @@ module QuantLib.TermStructure.Yield
   , piecewiseYieldCurveGlobalBootstrap'
   , piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear'
   , piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull'
+  , piecewiseYieldCurveGlobalBootstrapForwardRateLinear'
+  , piecewiseYieldCurveGlobalBootstrapZeroYieldLinear'
   , piecewiseYieldCurveLocalBootstrap'
   , Bootstrap(..)
   , LocalBootstrapTrait(..)
@@ -851,6 +853,37 @@ piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' s cal r dc qd ar ad acc 
   piecewiseYieldCurve2' s cal r dc qd (GlobalSimpleZeroLinearFull ar ad acc) ex
 {#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |Like 'piecewiseYieldCurveGlobalBootstrap'', but hardcodes trait=ForwardRate\/interpolator=Linear
+-- instead of trait=Discount\/interpolator=LogLinear -- the other two 'IterativeBootstrap' traits
+-- paired with the cheapest interpolator (github issue #15).
+piecewiseYieldCurveGlobalBootstrapForwardRateLinear' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper rh] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> Double -- ^accuracy
+  -> [Double] -- ^instrumentWeights (empty for upstream's default equal weighting)
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveGlobalBootstrapForwardRateLinear' s cal r dc qd acc w ex =
+  piecewiseYieldCurve2' s cal r dc qd (GlobalForwardRateLinear acc w) ex
+{#fun qlPiecewiseYieldCurveGlobalBootstrap4{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Like 'piecewiseYieldCurveGlobalBootstrap'', but hardcodes trait=ZeroYield\/interpolator=Linear
+-- instead of trait=Discount\/interpolator=LogLinear.
+piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [GenRateHelper rh] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps
+  -> Double -- ^accuracy
+  -> [Double] -- ^instrumentWeights (empty for upstream's default equal weighting)
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' s cal r dc qd acc w ex =
+  piecewiseYieldCurve2' s cal r dc qd (GlobalZeroYieldLinear acc w) ex
+{#fun qlPiecewiseYieldCurveGlobalBootstrap5{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
 -- |Like 'piecewiseYieldCurve'', but bootstraps with QuantLib's @LocalBootstrap@ instead of
 -- @IterativeBootstrap@ -- each interpolated segment is solved from a local window of
 -- @localisation@ neighbouring instruments rather than pillar-by-pillar over the whole curve,
@@ -898,7 +931,9 @@ piecewiseYieldCurveLocalBootstrap' s cal r dc qd t loc fp acc q m cfp ex =
 -- constructor for it). 'Iterative' is upstream's default bootstrapper (see 'piecewiseYieldCurve''\/
 -- 'piecewiseYieldCurveFull''); the three 'Global*' constructors and 'Local' mirror
 -- 'piecewiseYieldCurveGlobalBootstrap''\/'piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear''\/
--- 'piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull''\/'piecewiseYieldCurveLocalBootstrap''
+-- 'piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull''\/
+-- 'piecewiseYieldCurveGlobalBootstrapForwardRateLinear''\/
+-- 'piecewiseYieldCurveGlobalBootstrapZeroYieldLinear''\/'piecewiseYieldCurveLocalBootstrap''
 -- respectively -- see those functions' haddock for what each field means, since 'piecewiseYieldCurve2''
 -- dispatches straight through to the same shims they use.
 data Bootstrap rh2
@@ -906,6 +941,8 @@ data Bootstrap rh2
   | GlobalDiscountLogLinear Double [Double] -- ^accuracy, instrumentWeights
   | GlobalSimpleZeroLinear Double [Double] -- ^accuracy, instrumentWeights
   | GlobalSimpleZeroLinearFull [GenRateHelper rh2] [Day] Double -- ^additionalHelpers, additionalDates, accuracy
+  | GlobalForwardRateLinear Double [Double] -- ^accuracy, instrumentWeights
+  | GlobalZeroYieldLinear Double [Double] -- ^accuracy, instrumentWeights
   | Local LocalBootstrapTrait Word Bool Double Double Double Bool
     -- ^trait, localisation, forcePositive (LocalBootstrap's), accuracy, quadraticity, monotonicity, convexForcePositive (ConvexMonotone's)
 
@@ -945,6 +982,8 @@ piecewiseYieldCurve2' s cal r dc qd bootstrap ex = case bootstrap of
   GlobalDiscountLogLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap1 s cal r dc qs ds acc w ex
   GlobalSimpleZeroLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap2 s cal r dc qs ds acc w ex
   GlobalSimpleZeroLinearFull ah ad acc -> qlPiecewiseYieldCurveGlobalBootstrap3 s cal r dc qs ds ah ad acc ex
+  GlobalForwardRateLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap4 s cal r dc qs ds acc w ex
+  GlobalZeroYieldLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap5 s cal r dc qs ds acc w ex
   Local t loc fp acc q m cfp -> qlPiecewiseYieldCurveLocalBootstrap1 s cal r dc qs ds (fromBootstrapTrait t) loc fp acc q m cfp ex
   where (ds, qs) = unzip qd
 

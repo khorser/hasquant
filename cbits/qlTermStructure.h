@@ -315,6 +315,11 @@ extern "C" {
   // interpolator=Linear instead -- QuantLib-SWIG's only bound GlobalBootstrap combination
   // (GlobalLinearSimpleZeroCurve).
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1/2, hardcoding trait=ForwardRate/
+  // interpolator=Linear and trait=ZeroYield/interpolator=Linear respectively -- issue #15's two
+  // next-cheapest, most generically useful GlobalBootstrap combinations.
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   // trait=SimpleZeroYield/interpolator=Linear via GlobalBootstrap's functor-callback
   // constructor (canned AdditionalErrors/AdditionalDates -- see qlTermStructureAux.cpp).
   // additionalDatesLen must equal additionalRateLen - 2.
