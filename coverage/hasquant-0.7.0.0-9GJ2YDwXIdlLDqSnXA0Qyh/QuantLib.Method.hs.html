@@ -21,219 +21,1278 @@ span.spaces    { background: white }
 <span class="lineno">    2 </span>-- Edit the ORIGNAL .chs file instead!
 <span class="lineno">    3 </span>
 <span class="lineno">    4 </span>
-<span class="lineno">    5 </span>module QuantLib.Method
-<span class="lineno">    6 </span>  (
-<span class="lineno">    7 </span>    PathGenerator
-<span class="lineno">    8 </span>  , SamplePath
-<span class="lineno">    9 </span>  , pathGenerator
-<span class="lineno">   10 </span>  , sobolPathGenerator
-<span class="lineno">   11 </span>  , next
-<span class="lineno">   12 </span>  , antithetic
-<span class="lineno">   13 </span>  , weight
-<span class="lineno">   14 </span>  , assetNumber
-<span class="lineno">   15 </span>  , pathSize
-<span class="lineno">   16 </span>  , assetAt
-<span class="lineno">   17 </span>  , asset
-<span class="lineno">   18 </span>  , asset'
-<span class="lineno">   19 </span>  ) where
-<span class="lineno">   20 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   21 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   22 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   23 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   24 </span>import qualified System.IO.Unsafe as C2HSImp
-<span class="lineno">   25 </span>
-<span class="lineno">   26 </span>
-<span class="lineno">   27 </span>
-<span class="lineno">   28 </span>
-<span class="lineno">   29 </span>
-<span class="lineno">   30 </span>
-<span class="lineno">   31 </span>
-<span class="lineno">   32 </span>import QuantLib.Internal
-<span class="lineno">   33 </span>import QuantLib.Internal.Type
-<span class="lineno">   34 </span>import QuantLib.Math
-<span class="lineno">   35 </span>
-<span class="lineno">   36 </span>import Foreign.C.Types(CDouble)
-<span class="lineno">   37 </span>import Data.Vector.Storable(Vector)
-<span class="lineno">   38 </span>
-<span class="lineno">   39 </span>
-<span class="lineno">   40 </span>
-<span class="lineno">   41 </span>
-<span class="lineno">   42 </span>
-<span class="lineno">   43 </span>
-<span class="lineno">   44 </span>
-<span class="lineno">   45 </span>
-<span class="lineno">   46 </span>-- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
-<span class="lineno">   47 </span>pathGenerator :: (RngTrait) -&gt; (GenStochasticProcess p) -&gt; (TimeGrid) -&gt; (Word) -- ^seed
-<span class="lineno">   48 </span> -&gt; (Word) -- ^dimension
-<span class="lineno">   49 </span> -&gt; (Bool) -- ^brownian bridge
-<span class="lineno">   50 </span> -&gt; IO ((PathGenerator))
-<span class="lineno">   51 </span><span class="decl"><span class="istickedoff">pathGenerator a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">   52 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">   53 </span><span class="spaces">  </span><span class="istickedoff">withStochasticProcess a2 $ \a2' -&gt; </span>
-<span class="lineno">   54 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a3 $ \a3' -&gt; </span>
-<span class="lineno">   55 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
-<span class="lineno">   56 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromIntegral a5} in </span>
-<span class="lineno">   57 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno">   58 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno">   59 </span><span class="spaces">  </span><span class="istickedoff">pathGenerator'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   60 </span><span class="spaces">  </span><span class="istickedoff">peekPathGenerator res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   61 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
-<span class="lineno">   62 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   63 </span>
-<span class="lineno">   64 </span>
-<span class="lineno">   65 </span>
-<span class="lineno">   66 </span>-- |build a multi-asset path generator driven by a low-discrepancy (Sobol) sequence, using the given direction integers, over the given process and time grid.
-<span class="lineno">   67 </span>sobolPathGenerator :: (SobolDirectionIntegers) -&gt; (GenStochasticProcess p) -&gt; (TimeGrid) -&gt; (Word) -- ^seed
-<span class="lineno">   68 </span> -&gt; (Word) -- ^dimension
-<span class="lineno">   69 </span> -&gt; (Bool) -- ^brownian bridge
-<span class="lineno">   70 </span> -&gt; IO ((PathGenerator))
-<span class="lineno">   71 </span><span class="decl"><span class="nottickedoff">sobolPathGenerator a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">   72 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">   73 </span><span class="spaces">  </span><span class="nottickedoff">withStochasticProcess a2 $ \a2' -&gt; </span>
-<span class="lineno">   74 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a3 $ \a3' -&gt; </span>
-<span class="lineno">   75 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
-<span class="lineno">   76 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromIntegral a5} in </span>
-<span class="lineno">   77 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="nottickedoff">sobolPathGenerator'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="nottickedoff">peekPathGenerator res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
-<span class="lineno">   82 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">   83 </span>
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>
-<span class="lineno">   86 </span>-- |draw the next weighted sample path from the generator.
-<span class="lineno">   87 </span>next :: (PathGenerator) -&gt; IO ((SamplePath))
-<span class="lineno">   88 </span><span class="decl"><span class="istickedoff">next a1 =</span>
-<span class="lineno">   89 </span><span class="spaces">  </span><span class="istickedoff">withPathGenerator a1 $ \a1' -&gt; </span>
-<span class="lineno">   90 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">next'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">peekSamplePath res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   95 </span>
-<span class="lineno">   96 </span>
-<span class="lineno">   97 </span>
-<span class="lineno">   98 </span>-- |draw the antithetic (sign-flipped) counterpart of the last drawn sample path.
-<span class="lineno">   99 </span>antithetic :: (PathGenerator) -&gt; IO ((SamplePath))
-<span class="lineno">  100 </span><span class="decl"><span class="nottickedoff">antithetic a1 =</span>
-<span class="lineno">  101 </span><span class="spaces">  </span><span class="nottickedoff">withPathGenerator a1 $ \a1' -&gt; </span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="nottickedoff">antithetic'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  104 </span><span class="spaces">  </span><span class="nottickedoff">peekSamplePath res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  105 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  106 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  107 </span>
-<span class="lineno">  108 </span>
-<span class="lineno">  109 </span>
-<span class="lineno">  110 </span>-- |the weight associated with a sample path.
-<span class="lineno">  111 </span>weight :: (SamplePath) -&gt; (Double)
-<span class="lineno">  112 </span><span class="decl"><span class="nottickedoff">weight a1 =</span>
-<span class="lineno">  113 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="nottickedoff">weight'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  116 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  117 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  118 </span>
-<span class="lineno">  119 </span>
-<span class="lineno">  120 </span>
-<span class="lineno">  121 </span>-- |the number of correlated asset paths in a sample.
-<span class="lineno">  122 </span>assetNumber :: (SamplePath) -&gt; (Word)
-<span class="lineno">  123 </span><span class="decl"><span class="nottickedoff">assetNumber a1 =</span>
-<span class="lineno">  124 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  125 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
-<span class="lineno">  126 </span><span class="spaces">  </span><span class="nottickedoff">assetNumber'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  127 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  129 </span>
-<span class="lineno">  130 </span>
-<span class="lineno">  131 </span>
-<span class="lineno">  132 </span>-- |the number of time steps in each asset path of a sample.
-<span class="lineno">  133 </span>pathSize :: (SamplePath) -&gt; (Word)
-<span class="lineno">  134 </span><span class="decl"><span class="nottickedoff">pathSize a1 =</span>
-<span class="lineno">  135 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
-<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">pathSize'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  140 </span>
-<span class="lineno">  141 </span>
-<span class="lineno">  142 </span>
-<span class="lineno">  143 </span>-- |the value of one asset's path at a given time step.
-<span class="lineno">  144 </span>assetAt :: (SamplePath) -&gt; (Word) -- ^asset
-<span class="lineno">  145 </span> -&gt; (Word) -- ^point
-<span class="lineno">  146 </span> -&gt; IO ((Double))
-<span class="lineno">  147 </span><span class="decl"><span class="nottickedoff">assetAt a1 a2 a3 =</span>
-<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
-<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  150 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
-<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">assetAt'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  153 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  154 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  155 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  156 </span>
-<span class="lineno">  157 </span>
-<span class="lineno">  158 </span>
-<span class="lineno">  159 </span>-- |the full simulated path (values at every time step) of a single asset, as a list.
-<span class="lineno">  160 </span>asset :: (SamplePath) -&gt; (Word) -&gt; IO (([Double]))
-<span class="lineno">  161 </span><span class="decl"><span class="istickedoff">asset a1 a2 =</span>
-<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">withSamplePath a1 $ \a1' -&gt; </span>
-<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">asset'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  168 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  169 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
-<span class="lineno">  170 </span>
-<span class="lineno">  171 </span>
-<span class="lineno">  172 </span>
-<span class="lineno">  173 </span>-- |the full simulated path (values at every time step) of a single asset, as a storable vector.
-<span class="lineno">  174 </span>asset' :: (SamplePath) -&gt; (Word) -&gt; IO ((Vector CDouble))
-<span class="lineno">  175 </span><span class="decl"><span class="nottickedoff">asset' a1 a2 =</span>
-<span class="lineno">  176 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
-<span class="lineno">  177 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  178 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  179 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  180 </span><span class="spaces">  </span><span class="nottickedoff">asset''_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  181 </span><span class="spaces">  </span><span class="nottickedoff">peekDoubleVector  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  182 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  183 </span><span class="spaces">  </span><span class="nottickedoff">return (a3'')</span></span>
-<span class="lineno">  184 </span>
-<span class="lineno">  185 </span>
-<span class="lineno">  186 </span>
-<span class="lineno">  187 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  188 </span>
-<span class="lineno">  189 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPathGenerator&quot;
-<span class="lineno">  190 </span>  pathGenerator'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CStochasticProcess')) -&gt; ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPathGenerator))))))))))
-<span class="lineno">  191 </span>
-<span class="lineno">  192 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSobolPathGenerator&quot;
-<span class="lineno">  193 </span>  sobolPathGenerator'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CStochasticProcess')) -&gt; ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPathGenerator))))))))))
-<span class="lineno">  194 </span>
-<span class="lineno">  195 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPathGeneratorNext&quot;
-<span class="lineno">  196 </span>  next'_ :: ((C2HSImp.Ptr (CPathGenerator)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSamplePath)))))
-<span class="lineno">  197 </span>
-<span class="lineno">  198 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPathGeneratorAntithetic&quot;
-<span class="lineno">  199 </span>  antithetic'_ :: ((C2HSImp.Ptr (CPathGenerator)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSamplePath)))))
-<span class="lineno">  200 </span>
-<span class="lineno">  201 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathWeight&quot;
-<span class="lineno">  202 </span>  weight'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  203 </span>
-<span class="lineno">  204 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAssetNumber&quot;
-<span class="lineno">  205 </span>  assetNumber'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (IO C2HSImp.CUInt))
-<span class="lineno">  206 </span>
-<span class="lineno">  207 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathSize&quot;
-<span class="lineno">  208 </span>  pathSize'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (IO C2HSImp.CUInt))
-<span class="lineno">  209 </span>
-<span class="lineno">  210 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAt&quot;
-<span class="lineno">  211 </span>  assetAt'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  212 </span>
-<span class="lineno">  213 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAssetPath&quot;
-<span class="lineno">  214 </span>  asset'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  215 </span>
-<span class="lineno">  216 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAssetPath&quot;
-<span class="lineno">  217 </span>  asset''_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">    5 </span>-- |Monte Carlo path generation ('pathGenerator'\/'sobolPathGenerator'\/'next'\/'asset') plus
+<span class="lineno">    6 </span>-- 'lsmRegress', a standalone Longstaff-Schwartz early-exercise regression primitive.
+<span class="lineno">    7 </span>--
+<span class="lineno">    8 </span>-- === Custom early exercise with a Haskell payoff
+<span class="lineno">    9 </span>--
+<span class="lineno">   10 </span>-- 'lsmRegress' lets a Haskell-defined payoff drive early exercise, something no bound pricing
+<span class="lineno">   11 </span>-- engine offers: every early-exercise engine in &quot;QuantLib.PricingEngine&quot; (e.g.
+<span class="lineno">   12 </span>-- @mcAmericanEngine@) computes its payoff entirely on the C++ side against a bound @Payoff@.
+<span class="lineno">   13 </span>-- 'lsmRegress' is pure regression -- it never sees a payoff at all, so it works for any
+<span class="lineno">   14 </span>-- underlying-state-dependent early-exercise payoff, not just a vanilla put\/call. The pattern,
+<span class="lineno">   15 </span>-- worked in full in @test\/example\/QuantLib\/Example\/AmericanLSM.hs@:
+<span class="lineno">   16 </span>--
+<span class="lineno">   17 </span>-- 1. Draw two path sets with 'pathGenerator': a /calibration/ set used only to fit each date's
+<span class="lineno">   18 </span>--    regression, and a separate /pricing/ set evaluated against the frozen fit. Splitting the
+<span class="lineno">   19 </span>--    sets avoids the in-sample bias a single-pass fit-and-price would have (the same reason
+<span class="lineno">   20 </span>--    @mcAmericanEngine@ exposes its own @nCalibrationSamples@ parameter). Use a fixed nonzero
+<span class="lineno">   21 </span>--    seed for each -- seed @0@ means \&quot;seed from entropy\&quot; for 'PseudoRandom'.
+<span class="lineno">   22 </span>-- 2. Read out the state at every exercise date, across all paths, with 'asset' (or 'assetAt'),
+<span class="lineno">   23 </span>--    and transpose ('Data.List.transpose') into one state list per exercise date.
+<span class="lineno">   24 </span>-- 3. Walk exercise dates *strictly backward*. At each date:
+<span class="lineno">   25 </span>--
+<span class="lineno">   26 </span>--     * discount both the calibration and pricing cashflow vectors by the one-step discount
+<span class="lineno">   27 </span>--       factor (@discount(t[i+1]) \/ discount(t[i])@ from the underlying yield curve);
+<span class="lineno">   28 </span>--     * compute the Haskell payoff at this date for every path in both sets;
+<span class="lineno">   29 </span>--     * restrict the regression's fit inputs to *in-the-money calibration paths only*
+<span class="lineno">   30 </span>--       (@fitStates@\/@fitTargets@ below);
+<span class="lineno">   31 </span>--     * call 'lsmRegress' twice against that one fit -- once evaluating at the calibration
+<span class="lineno">   32 </span>--       states (to keep the backward recursion's own targets self-consistent), once at the
+<span class="lineno">   33 </span>--       pricing states (the actual out-of-sample continuation-value estimate);
+<span class="lineno">   34 </span>--     * exercise wherever @payoff &gt; continuationValue@ (@max(exercise, continuation)@), on each
+<span class="lineno">   35 </span>--       path set independently.
+<span class="lineno">   36 </span>--
+<span class="lineno">   37 </span>-- 4. The pricing set's cashflows, discounted all the way back and averaged, are the estimated
+<span class="lineno">   38 </span>--    price. Never evaluate the fit on the calibration set's own state for the reported price --
+<span class="lineno">   39 </span>--    that reintroduces the in-sample bias step 1 split the paths to avoid.
+<span class="lineno">   40 </span>--
+<span class="lineno">   41 </span>-- A rough sketch (see the full example for discounting, ITM filtering, and the backward
+<span class="lineno">   42 </span>-- recursion itself):
+<span class="lineno">   43 </span>--
+<span class="lineno">   44 </span>-- &gt; step df calibS priceS calibCF priceCF = do
+<span class="lineno">   45 </span>-- &gt;   let calibTargets = map (* df) calibCF  -- discount to this date
+<span class="lineno">   46 </span>-- &gt;       (fitStates, fitTargets) = -- ITM calibration paths only
+<span class="lineno">   47 </span>-- &gt;         unzip $ filter (inTheMoney . fst) $ zip calibS calibTargets
+<span class="lineno">   48 </span>-- &gt;   contCalib &lt;- lsmRegress Monomial order fitStates fitTargets calibS
+<span class="lineno">   49 </span>-- &gt;   contPrice &lt;- lsmRegress Monomial order fitStates fitTargets priceS
+<span class="lineno">   50 </span>-- &gt;   -- exercise wherever payoff &gt; continuation, on each path set
+<span class="lineno">   51 </span>-- &gt;   ...
+<span class="lineno">   52 </span>--
+<span class="lineno">   53 </span>-- Validated in the example against both @mcAmericanEngine@ pricing the equivalent bound vanilla
+<span class="lineno">   54 </span>-- option (same process\/grid\/seed) and the published Longstaff-Schwartz (2001) reference value
+<span class="lineno">   55 </span>-- for the same benchmark fixture.
+<span class="lineno">   56 </span>--
+<span class="lineno">   57 </span>-- The same pattern extends to a Haskell-defined /basket/ payoff (several correlated underlyings)
+<span class="lineno">   58 </span>-- via 'lsmRegressMulti' \/ 'lsmBasisSize' in place of 'lsmRegress': read each exercise date's state
+<span class="lineno">   59 </span>-- for every underlying (still with 'asset'\/'assetAt', once per underlying) into a 'Matrix' of one
+<span class="lineno">   60 </span>-- row per path, and guard the ITM-fit-size check with 'lsmBasisSize' instead of the basis order --
+<span class="lineno">   61 </span>-- the multi-asset basis has combinatorially many more terms than the scalar case.
+<span class="lineno">   62 </span>--
+<span class="lineno">   63 </span>-- @test\/example\/QuantLib\/Example\/HaskellLSM.hs@ benchmarks 'lsmRegress' against the same
+<span class="lineno">   64 </span>-- backward induction with the per-date regression reimplemented from scratch in plain Haskell
+<span class="lineno">   65 </span>-- (QuantLib used only for path generation) -- a worked illustration of why this module exposes
+<span class="lineno">   66 </span>-- the regression as a batched primitive instead of leaving callers to reinvent it.
+<span class="lineno">   67 </span>--
+<span class="lineno">   68 </span>-- === Finite-difference PDE solving
+<span class="lineno">   69 </span>--
+<span class="lineno">   70 </span>-- This module also binds a full-grid finite-difference (FDM) driver, built up across two related
+<span class="lineno">   71 </span>-- issues (custom step-condition\/operator hooks, then custom inner-value calculators) and spread
+<span class="lineno">   72 </span>-- across several functions with no single overview until now. Worked in full in
+<span class="lineno">   73 </span>-- @test\/example\/QuantLib\/Example\/Fdm.hs@ -- every snippet below is a trimmed extract from that
+<span class="lineno">   74 </span>-- file; read it end to end for the full picture (discounting, fixtures, imports).
+<span class="lineno">   75 </span>--
+<span class="lineno">   76 </span>-- In one sentence, for anyone new to FDM pricing: instead of an integral (Monte Carlo) or a
+<span class="lineno">   77 </span>-- closed-form formula (an @analytic*Engine@), you discretize the underlying's state space (e.g.
+<span class="lineno">   78 </span>-- log-spot) into a grid of points, put the option's payoff on the grid at maturity, and step it
+<span class="lineno">   79 </span>-- /backward/ to today, solving a small local linear system at each timestep. Reach for it when you
+<span class="lineno">   80 </span>-- need American\/Bermudan-style early exercise (a plain Monte Carlo run can't do backward induction
+<span class="lineno">   81 </span>-- the way a grid can) or a process\/payoff with no closed-form price. If a bound @analytic*Engine@
+<span class="lineno">   82 </span>-- or @mc*Engine@ already covers your case (see &quot;QuantLib.PricingEngine&quot;), prefer that instead --
+<span class="lineno">   83 </span>-- it's simpler, and this module's own examples validate their FDM results against exactly those
+<span class="lineno">   84 </span>-- engines.
+<span class="lineno">   85 </span>--
+<span class="lineno">   86 </span>-- ==== Walkthrough: which function do I actually want?
+<span class="lineno">   87 </span>--
+<span class="lineno">   88 </span>-- Start here rather than at the reference list below -- picking the right entry point up front
+<span class="lineno">   89 </span>-- avoids reading five functions' haddock only to discover a sixth was the one you needed.
+<span class="lineno">   90 </span>--
+<span class="lineno">   91 </span>-- [@\&quot;I have a grid already, just roll it back\&quot;@] 'fdmRollback'. Supply the grid as a plain
+<span class="lineno">   92 </span>--   @[Double]@ (one value per state, at maturity) plus three Haskell closures describing the PDE
+<span class="lineno">   93 </span>--   operator, and get the same grid rolled back to today -- no mesher, no
+<span class="lineno">   94 </span>--   'FdmInnerValueCalculator', the simplest possible entry point:
+<span class="lineno">   95 </span>--
+<span class="lineno">   96 </span>--   &gt; let grid0 = map (\x -&gt; max (exp x - strike) 0) xs   -- payoff at maturity, one value per grid point
+<span class="lineno">   97 </span>--   &gt; fdmEuro &lt;- fdmRollback 1 applyFn applyDirFn solveFn Nothing [] Douglas grid0 tMat 0 nSteps 0
+<span class="lineno">   98 </span>--
+<span class="lineno">   99 </span>-- [@\&quot;...and I need early exercise\&quot;@] the same 'fdmRollback' call, plus a /step condition/: a
+<span class="lineno">  100 </span>--   @t -&gt; [Double] -&gt; [Double]@ closure called once per outer timestep with the whole current grid,
+<span class="lineno">  101 </span>--   returning it clamped to whatever the early-exercise rule requires:
+<span class="lineno">  102 </span>--
+<span class="lineno">  103 </span>--   &gt; let stepCond _t u = zipWith max u grid0   -- American: value can never fall below intrinsic
+<span class="lineno">  104 </span>--   &gt; fdmAmerican &lt;- fdmRollback 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas grid0 tMat 0 nSteps 0
+<span class="lineno">  105 </span>--
+<span class="lineno">  106 </span>-- [@\&quot;I'd rather not hand-build the initial grid myself\&quot;@] 'fdmSolve' -- 'fdmRollback''s sibling.
+<span class="lineno">  107 </span>--   Same operator\/step-condition\/scheme machinery, but the initial condition comes from an
+<span class="lineno">  108 </span>--   'FdmMesher' plus an 'FdmInnerValueCalculator' evaluated at each node, instead of a grid you
+<span class="lineno">  109 </span>--   assembled by hand. Worth it once the mesher is doing real work (e.g. concentrating points near
+<span class="lineno">  110 </span>--   a strike or barrier) rather than just wrapping a list you already had:
+<span class="lineno">  111 </span>--
+<span class="lineno">  112 </span>--   &gt; mesh1d &lt;- predefined1dMesher xs
+<span class="lineno">  113 </span>--   &gt; mesher &lt;- fdmMesherComposite [mesh1d]
+<span class="lineno">  114 </span>--   &gt; let ivFn _t loc = case loc of [x] -&gt; intrinsicAt x; _ -&gt; error &quot;expected a 1D location&quot;
+<span class="lineno">  115 </span>--   &gt; withCustomFdmInnerValueCalculator mesher ivFn ivFn $ \calc -&gt;
+<span class="lineno">  116 </span>--   &gt;   fdmSolve mesher calc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+<span class="lineno">  117 </span>--
+<span class="lineno">  118 </span>-- [@\&quot;my payoff is a standard vanilla\/log payoff, I don't want a per-node callback\&quot;@] skip
+<span class="lineno">  119 </span>--   'withCustomFdmInnerValueCalculator' and reach for one of the /native/ calculators instead --
+<span class="lineno">  120 </span>--   QuantLib's own built-in 'FdmInnerValueCalculator' subclasses, bound directly so pricing a plain
+<span class="lineno">  121 </span>--   payoff doesn't pay a Haskell round-trip per grid node:
+<span class="lineno">  122 </span>--
+<span class="lineno">  123 </span>--   &gt; logCalc &lt;- fdmLogInnerValue payoff mesher 0        -- striked payoff on a log-spot grid
+<span class="lineno">  124 </span>--   &gt; fdmLogEuro &lt;- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+<span class="lineno">  125 </span>--
+<span class="lineno">  126 </span>--   'fdmZeroInnerValue' (always 0), 'fdmCellAveragingInnerValue'\/'withCustomCellAveragingInnerValue'
+<span class="lineno">  127 </span>--   (identity or custom @gridMapping@), and 'fdmLogInnerValue' (@gridMapping = exp@, the common case
+<span class="lineno">  128 </span>--   on a log-spot grid) round out the set -- see the reference entries below for the exact
+<span class="lineno">  129 </span>--   cell-averaging-vs-point-evaluation contract each one has. Reach for
+<span class="lineno">  130 </span>--   'withCustomFdmInnerValueCalculator' only once none of these fit your payoff shape.
+<span class="lineno">  131 </span>--
+<span class="lineno">  132 </span>-- [@\&quot;my payoff depends on more than one underlying\&quot;@] build one 'Fdm1dMesher' per underlying and
+<span class="lineno">  133 </span>--   combine them with 'fdmMesherComposite'; 'fdmLogBasketInnerValue' takes a basket payoff (e.g.
+<span class="lineno">  134 </span>--   @Max@, see &quot;QuantLib.Instrument.Option&quot;) evaluated across all dimensions at once:
+<span class="lineno">  135 </span>--
+<span class="lineno">  136 </span>--   &gt; basketMesher &lt;- fdmMesherComposite [mesh1d, mesh1d]   -- two correlated log-spot dimensions
+<span class="lineno">  137 </span>--   &gt; basketCalc &lt;- fdmLogBasketInnerValue (Max payoff) basketMesher
+<span class="lineno">  138 </span>--   &gt; val &lt;- fdmAvgInnerValue basketCalc basketMesher [i, j] tMat   -- inspect one node directly
+<span class="lineno">  139 </span>--
+<span class="lineno">  140 </span>-- [@\&quot;I want to price a swap\/swaption under a calibrated short-rate model\&quot;@] the most specialized
+<span class="lineno">  141 </span>--   entry points here: 'fdmAffineG2ModelSwapInnerValue'\/'fdmAffineHullWhiteModelSwapInnerValue'
+<span class="lineno">  142 </span>--   drive the same calculator @fdG2SwaptionEngine@\/@fdHullWhiteSwaptionEngine@ already use
+<span class="lineno">  143 </span>--   internally. Reach for these directly only when composing your own custom FDM pipeline around
+<span class="lineno">  144 </span>--   this calculator; if a plain Bermudan-swaption NPV is all you need, prefer those two
+<span class="lineno">  145 </span>--   already-bound black-box engines from &quot;QuantLib.PricingEngine&quot; instead.
+<span class="lineno">  146 </span>--
+<span class="lineno">  147 </span>-- [@\&quot;I just want one node's value, no PDE solve\&quot;@] 'fdmInnerValue'\/'fdmAvgInnerValue' evaluate
+<span class="lineno">  148 </span>--   any bound calculator -- custom or native -- at a single mesher node directly, without
+<span class="lineno">  149 </span>--   assembling a whole 'fdmSolve'. Handy as a sanity check while developing (as @Fdm.hs@'s own
+<span class="lineno">  150 </span>--   tests do throughout), or whenever a single point's intrinsic value is all you actually need.
+<span class="lineno">  151 </span>--
+<span class="lineno">  152 </span>-- ==== Technical reference
+<span class="lineno">  153 </span>--
+<span class="lineno">  154 </span>-- The terse version of the above, for a reader who already knows the vocabulary and wants the
+<span class="lineno">  155 </span>-- exact contract rather than the walkthrough's prose.
+<span class="lineno">  156 </span>--
+<span class="lineno">  157 </span>-- [@Rolling a grid back@] 'fdmRollback' takes a precomputed initial grid (a plain @[Double]@) and
+<span class="lineno">  158 </span>--   rolls it back through time via three Haskell-defined operator callbacks
+<span class="lineno">  159 </span>--   ('QuantLib.Internal.Type.withFdmApply' et al.) plus an optional step condition (e.g.
+<span class="lineno">  160 </span>--   American\/Bermudan early exercise). These callbacks cross the language boundary once per outer
+<span class="lineno">  161 </span>--   timestep, over the /whole/ grid -- CLAUDE.md's \&quot;coarsen the language-boundary crossing\&quot;
+<span class="lineno">  162 </span>--   pattern. 'fdmSolve' is the sibling that instead derives its own initial grid from a mesher and
+<span class="lineno">  163 </span>--   an 'FdmInnerValueCalculator' (below), reusing the same operator\/step-condition machinery.
+<span class="lineno">  164 </span>--
+<span class="lineno">  165 </span>-- [@Building a grid@] 'Fdm1dMesher's ('predefined1dMesher', 'uniform1dMesher',
+<span class="lineno">  166 </span>--   'concentrating1dMesher', 'fdmBlackScholesMesher', and the other process-specific meshers) each
+<span class="lineno">  167 </span>--   describe one PDE dimension; 'fdmMesherComposite' combines one or more into the multi-dimensional
+<span class="lineno">  168 </span>--   'FdmMesher' 'fdmSolve' and 'FdmInnerValueCalculator' operate over. 'fdmMesherLocations' reads a
+<span class="lineno">  169 </span>--   dimension's real-valued node locations back out, e.g. to map a flat result array back to
+<span class="lineno">  170 </span>--   coordinates. 'gluedMesher' splices two 'Fdm1dMesher's end to end (e.g. a fine mesh near a
+<span class="lineno">  171 </span>--   barrier glued to a coarse one further out) -- their ranges must already be ordered and
+<span class="lineno">  172 </span>--   non-overlapping, and a shared boundary point is deduplicated automatically.
+<span class="lineno">  173 </span>--
+<span class="lineno">  174 </span>-- [@Custom inner values, fully general@] 'withCustomFdmInnerValueCalculator' wraps a Haskell
+<span class="lineno">  175 </span>--   @t -&gt; location -&gt; value@ pair of functions as an 'FdmInnerValueCalculator'. Unlike every
+<span class="lineno">  176 </span>--   callback above, this one crosses the language boundary once /per grid node/ -- there is no
+<span class="lineno">  177 </span>--   batched shape for it anywhere in QuantLib or QuantLib-SWIG, so the real per-call cost is
+<span class="lineno">  178 </span>--   accepted, matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@ precedent. Because the
+<span class="lineno">  179 </span>--   two callbacks are stored /inside/ the returned calculator and invoked again on every later
+<span class="lineno">  180 </span>--   'fdmSolve'\/'fdmInnerValue' call (not just during construction), the calculator is only valid
+<span class="lineno">  181 </span>--   /inside/ this continuation -- it cannot be built with a plain @IO FdmInnerValueCalculator@
+<span class="lineno">  182 </span>--   smart constructor the way the native calculators below can.
+<span class="lineno">  183 </span>--
+<span class="lineno">  184 </span>-- [@Custom inner values, native@] QuantLib's own concrete 'FdmInnerValueCalculator' subclasses are
+<span class="lineno">  185 </span>--   bound directly, for the common cases that don't need a per-node Haskell callback at all:
+<span class="lineno">  186 </span>--   'fdmZeroInnerValue' (always 0), 'fdmCellAveragingInnerValue'\/'fdmLogInnerValue' (a payoff
+<span class="lineno">  187 </span>--   cell-averaged -- Simpson-integrated across each grid cell, not just evaluated at its center --
+<span class="lineno">  188 </span>--   with an identity or @exp@ value mapping respectively), and 'fdmLogBasketInnerValue' (the
+<span class="lineno">  189 </span>--   multi-asset counterpart, one @exp@ mapping per dimension). These hold no Haskell callback, so
+<span class="lineno">  190 </span>--   they're plain @IO FdmInnerValueCalculator@ constructors -- except
+<span class="lineno">  191 </span>--   'withCustomCellAveragingInnerValue', the one native constructor that /does/ take an explicit
+<span class="lineno">  192 </span>--   @gridMapping@ callback, which needs the same continuation treatment as the fully custom case
+<span class="lineno">  193 </span>--   above. 'fdmAffineG2ModelSwapInnerValue'\/'fdmAffineHullWhiteModelSwapInnerValue' price a swap
+<span class="lineno">  194 </span>--   under a calibrated 'QuantLib.Model.G2'\/'QuantLib.Model.HullWhite' model directly -- the same
+<span class="lineno">  195 </span>--   calculator @fdG2SwaptionEngine@\/@fdHullWhiteSwaptionEngine@ use internally.
+<span class="lineno">  196 </span>--
+<span class="lineno">  197 </span>-- [@Inspecting a calculator directly@] 'fdmInnerValue'\/'fdmAvgInnerValue' evaluate any bound
+<span class="lineno">  198 </span>--   calculator (custom or native) at a single mesher node, without assembling a whole 'fdmSolve' --
+<span class="lineno">  199 </span>--   useful for a targeted self-consistency check, as @Fdm.hs@'s own tests do throughout.
+<span class="lineno">  200 </span>--
+<span class="lineno">  201 </span>-- === What's deliberately not bound: operators, schemes, boundary conditions
+<span class="lineno">  202 </span>--
+<span class="lineno">  203 </span>-- QuantLib-SWIG also exposes QuantLib's concrete 'FdmLinearOpComposite' subclasses (@FdmBlackScholesOp@,
+<span class="lineno">  204 </span>-- @FdmHestonOp@, @FdmG2Op@, ...), its scheme objects (@DouglasScheme@, @CraigSneydScheme@,
+<span class="lineno">  205 </span>-- @HundsdorferScheme@, ...), and its @FdmBoundaryCondition@ family as real C++ objects. hasquant does
+<span class="lineno">  206 </span>-- not mirror these, and won't by default -- it's a design boundary already crossed once, not a gap.
+<span class="lineno">  207 </span>--
+<span class="lineno">  208 </span>-- 'fdmRollback'\/'fdmSolve' take the operator, the implicit-solve step, and the scheme all as Haskell
+<span class="lineno">  209 </span>-- closures instead (@applyFn@\/@applyDirFn@\/@solveFn@ above). That's the same &quot;coarsen the
+<span class="lineno">  210 </span>-- language-boundary crossing&quot; call already made for step conditions: bind the reusable numerical
+<span class="lineno">  211 </span>-- /primitive/ (rollback through a fixed timestep, of an arbitrary tridiagonal\/multi-dimensional
+<span class="lineno">  212 </span>-- operator) and let Haskell drive it, rather than bind every concrete operator\/scheme QuantLib ships
+<span class="lineno">  213 </span>-- as its own object. @test\/example\/QuantLib\/Example\/Fdm.hs@'s hand-rolled 'operatorBands'\/'applyOp'
+<span class="lineno">  214 </span>-- /is/ the replacement for @FdmBlackScholesOp@ + @DouglasScheme@, not a stand-in waiting for those to
+<span class="lineno">  215 </span>-- get bound -- pricing a new payoff\/process combination here means writing its operator once in
+<span class="lineno">  216 </span>-- Haskell, not calling into fifteen QuantLib operator classes one by one.
+<span class="lineno">  217 </span>--
+<span class="lineno">  218 </span>-- Binding the operator\/scheme family as objects would add a second, redundant way to drive the same
+<span class="lineno">  219 </span>-- 'fdmSolve'\/'fdmRollback' backbone, without extending what's actually solvable -- anything a bound
+<span class="lineno">  220 </span>-- @FdmXxxOp@ could do, a Haskell @applyFn@ already can. Revisit only if a concrete need shows up that
+<span class="lineno">  221 </span>-- the callback shape genuinely can't express (none has, so far).
+<span class="lineno">  222 </span>module QuantLib.Method
+<span class="lineno">  223 </span>  (
+<span class="lineno">  224 </span>    PathGenerator
+<span class="lineno">  225 </span>  , SamplePath
+<span class="lineno">  226 </span>  , pathGenerator
+<span class="lineno">  227 </span>  , sobolPathGenerator
+<span class="lineno">  228 </span>  , next
+<span class="lineno">  229 </span>  , antithetic
+<span class="lineno">  230 </span>  , weight
+<span class="lineno">  231 </span>  , assetNumber
+<span class="lineno">  232 </span>  , pathSize
+<span class="lineno">  233 </span>  , assetAt
+<span class="lineno">  234 </span>  , asset
+<span class="lineno">  235 </span>  , asset'
+<span class="lineno">  236 </span>  , lsmRegress
+<span class="lineno">  237 </span>  , lsmBasisSize
+<span class="lineno">  238 </span>  , lsmRegressMulti
+<span class="lineno">  239 </span>  , fdmRollback
+<span class="lineno">  240 </span>  , Fdm1dMesher
+<span class="lineno">  241 </span>  , FdmMesher
+<span class="lineno">  242 </span>  , predefined1dMesher
+<span class="lineno">  243 </span>  , uniform1dMesher
+<span class="lineno">  244 </span>  , concentrating1dMesher
+<span class="lineno">  245 </span>  , concentrating1dMesherMulti
+<span class="lineno">  246 </span>  , gluedMesher
+<span class="lineno">  247 </span>  , fdmBlackScholesMesher
+<span class="lineno">  248 </span>  , fdmCev1dMesher
+<span class="lineno">  249 </span>  , exponentialJump1dMesher
+<span class="lineno">  250 </span>  , fdmSimpleProcess1dMesher
+<span class="lineno">  251 </span>  , fdmHestonVarianceMesher
+<span class="lineno">  252 </span>  , fdmHestonLocalVolatilityVarianceMesher
+<span class="lineno">  253 </span>  , fdmMesherComposite
+<span class="lineno">  254 </span>  , fdmMesherLocations
+<span class="lineno">  255 </span>  , FdmInnerValueCalculator
+<span class="lineno">  256 </span>  , withCustomFdmInnerValueCalculator
+<span class="lineno">  257 </span>  , fdmZeroInnerValue
+<span class="lineno">  258 </span>  , fdmCellAveragingInnerValue
+<span class="lineno">  259 </span>  , withCustomCellAveragingInnerValue
+<span class="lineno">  260 </span>  , fdmLogInnerValue
+<span class="lineno">  261 </span>  , fdmLogBasketInnerValue
+<span class="lineno">  262 </span>  , fdmAffineG2ModelSwapInnerValue
+<span class="lineno">  263 </span>  , fdmAffineHullWhiteModelSwapInnerValue
+<span class="lineno">  264 </span>  , fdmInnerValue
+<span class="lineno">  265 </span>  , fdmAvgInnerValue
+<span class="lineno">  266 </span>  , fdmSolve
+<span class="lineno">  267 </span>  ) where
+<span class="lineno">  268 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">  269 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">  270 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">  271 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">  272 </span>import qualified System.IO.Unsafe as C2HSImp
+<span class="lineno">  273 </span>
+<span class="lineno">  274 </span>
+<span class="lineno">  275 </span>
+<span class="lineno">  276 </span>
+<span class="lineno">  277 </span>
+<span class="lineno">  278 </span>
+<span class="lineno">  279 </span>
+<span class="lineno">  280 </span>import QuantLib.Internal
+<span class="lineno">  281 </span>import QuantLib.Internal.Type
+<span class="lineno">  282 </span>import QuantLib.Internal.Common
+<span class="lineno">  283 </span>import QuantLib.Math
+<span class="lineno">  284 </span>
+<span class="lineno">  285 </span>import Foreign.C.Types(CDouble, CUInt)
+<span class="lineno">  286 </span>import Foreign.C.String(CString)
+<span class="lineno">  287 </span>import Foreign.Ptr(Ptr, FunPtr)
+<span class="lineno">  288 </span>import Data.Time.Calendar(Day)
+<span class="lineno">  289 </span>import Data.Vector.Storable(Vector)
+<span class="lineno">  290 </span>
+<span class="lineno">  291 </span>
+<span class="lineno">  292 </span>
+<span class="lineno">  293 </span>
+<span class="lineno">  294 </span>
+<span class="lineno">  295 </span>
+<span class="lineno">  296 </span>
+<span class="lineno">  297 </span>-- Local redeclaration needed for fdmRollback's FdmScheme argument -- c2hs's cross-module enum\/
+<span class="lineno">  298 </span>-- pointer-type import needs the pointee type known in *this* file (see the c2hs-shim-patterns
+<span class="lineno">  299 </span>-- skill's &quot;Cross-module enum imports&quot; section); QuantLib.PricingEngine has the same declaration.
+<span class="lineno">  300 </span>
+<span class="lineno">  301 </span>
+<span class="lineno">  302 </span>-- Local redeclarations for the mesher-constructor argument types, same reasoning as
+<span class="lineno">  303 </span>-- FdmSchemeDesc above -- QuantLib.PricingEngine has the same declarations.
+<span class="lineno">  304 </span>
+<span class="lineno">  305 </span>
+<span class="lineno">  306 </span>
+<span class="lineno">  307 </span>
+<span class="lineno">  308 </span>
+<span class="lineno">  309 </span>
+<span class="lineno">  310 </span>
+<span class="lineno">  311 </span>
+<span class="lineno">  312 </span>
+<span class="lineno">  313 </span>
+<span class="lineno">  314 </span>
+<span class="lineno">  315 </span>
+<span class="lineno">  316 </span>-- Local redeclaration for Payoff arguments (fdmCellAveragingInnerValue/fdmLogInnerValue/
+<span class="lineno">  317 </span>-- fdmLogBasketInnerValue), same reasoning as the redeclarations above -- QuantLib.Internal.Common
+<span class="lineno">  318 </span>-- has the same declaration.
+<span class="lineno">  319 </span>
+<span class="lineno">  320 </span>
+<span class="lineno">  321 </span>
+<span class="lineno">  322 </span>
+<span class="lineno">  323 </span>-- Local redeclarations for fdmAffineG2ModelSwapInnerValue/fdmAffineHullWhiteModelSwapInnerValue's
+<span class="lineno">  324 </span>-- argument types, same reasoning as the redeclarations above -- QuantLib.Model and
+<span class="lineno">  325 </span>-- QuantLib.Instrument.Swap have the same declarations.
+<span class="lineno">  326 </span>
+<span class="lineno">  327 </span>
+<span class="lineno">  328 </span>
+<span class="lineno">  329 </span>
+<span class="lineno">  330 </span>
+<span class="lineno">  331 </span>
+<span class="lineno">  332 </span>
+<span class="lineno">  333 </span>
+<span class="lineno">  334 </span>
+<span class="lineno">  335 </span>
+<span class="lineno">  336 </span>
+<span class="lineno">  337 </span>
+<span class="lineno">  338 </span>
+<span class="lineno">  339 </span>-- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
+<span class="lineno">  340 </span>pathGenerator :: (RngTrait) -&gt; (GenStochasticProcess p) -&gt; (TimeGrid) -&gt; (Word) -- ^seed
+<span class="lineno">  341 </span> -&gt; (Word) -- ^dimension
+<span class="lineno">  342 </span> -&gt; (Bool) -- ^brownian bridge
+<span class="lineno">  343 </span> -&gt; IO ((PathGenerator))
+<span class="lineno">  344 </span><span class="decl"><span class="istickedoff">pathGenerator a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">withStochasticProcess a2 $ \a2' -&gt; </span>
+<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a3 $ \a3' -&gt; </span>
+<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromIntegral a5} in </span>
+<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">pathGenerator'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  353 </span><span class="spaces">  </span><span class="istickedoff">peekPathGenerator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  356 </span>
+<span class="lineno">  357 </span>
+<span class="lineno">  358 </span>
+<span class="lineno">  359 </span>-- |build a multi-asset path generator driven by a low-discrepancy (Sobol) sequence, using the given direction integers, over the given process and time grid.
+<span class="lineno">  360 </span>sobolPathGenerator :: (SobolDirectionIntegers) -&gt; (GenStochasticProcess p) -&gt; (TimeGrid) -&gt; (Word) -- ^seed
+<span class="lineno">  361 </span> -&gt; (Word) -- ^dimension
+<span class="lineno">  362 </span> -&gt; (Bool) -- ^brownian bridge
+<span class="lineno">  363 </span> -&gt; IO ((PathGenerator))
+<span class="lineno">  364 </span><span class="decl"><span class="nottickedoff">sobolPathGenerator a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  365 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  366 </span><span class="spaces">  </span><span class="nottickedoff">withStochasticProcess a2 $ \a2' -&gt; </span>
+<span class="lineno">  367 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a3 $ \a3' -&gt; </span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  369 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromIntegral a5} in </span>
+<span class="lineno">  370 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  371 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="nottickedoff">sobolPathGenerator'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="nottickedoff">peekPathGenerator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  375 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  376 </span>
+<span class="lineno">  377 </span>
+<span class="lineno">  378 </span>
+<span class="lineno">  379 </span>-- |draw the next weighted sample path from the generator.
+<span class="lineno">  380 </span>next :: (PathGenerator) -&gt; IO ((SamplePath))
+<span class="lineno">  381 </span><span class="decl"><span class="istickedoff">next a1 =</span>
+<span class="lineno">  382 </span><span class="spaces">  </span><span class="istickedoff">withPathGenerator a1 $ \a1' -&gt; </span>
+<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">next'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">peekSamplePath res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  388 </span>
+<span class="lineno">  389 </span>
+<span class="lineno">  390 </span>
+<span class="lineno">  391 </span>-- |draw the antithetic (sign-flipped) counterpart of the last drawn sample path.
+<span class="lineno">  392 </span>antithetic :: (PathGenerator) -&gt; IO ((SamplePath))
+<span class="lineno">  393 </span><span class="decl"><span class="nottickedoff">antithetic a1 =</span>
+<span class="lineno">  394 </span><span class="spaces">  </span><span class="nottickedoff">withPathGenerator a1 $ \a1' -&gt; </span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">antithetic'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">peekSamplePath res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  400 </span>
+<span class="lineno">  401 </span>
+<span class="lineno">  402 </span>
+<span class="lineno">  403 </span>-- |the weight associated with a sample path.
+<span class="lineno">  404 </span>weight :: (SamplePath) -&gt; (Double)
+<span class="lineno">  405 </span><span class="decl"><span class="nottickedoff">weight a1 =</span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="nottickedoff">weight'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  411 </span>
+<span class="lineno">  412 </span>
+<span class="lineno">  413 </span>
+<span class="lineno">  414 </span>-- |the number of correlated asset paths in a sample.
+<span class="lineno">  415 </span>assetNumber :: (SamplePath) -&gt; (Word)
+<span class="lineno">  416 </span><span class="decl"><span class="nottickedoff">assetNumber a1 =</span>
+<span class="lineno">  417 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  418 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
+<span class="lineno">  419 </span><span class="spaces">  </span><span class="nottickedoff">assetNumber'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  422 </span>
+<span class="lineno">  423 </span>
+<span class="lineno">  424 </span>
+<span class="lineno">  425 </span>-- |the number of time steps in each asset path of a sample.
+<span class="lineno">  426 </span>pathSize :: (SamplePath) -&gt; (Word)
+<span class="lineno">  427 </span><span class="decl"><span class="nottickedoff">pathSize a1 =</span>
+<span class="lineno">  428 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  429 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
+<span class="lineno">  430 </span><span class="spaces">  </span><span class="nottickedoff">pathSize'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  431 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  432 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  433 </span>
+<span class="lineno">  434 </span>
+<span class="lineno">  435 </span>
+<span class="lineno">  436 </span>-- |the value of one asset's path at a given time step.
+<span class="lineno">  437 </span>assetAt :: (SamplePath) -&gt; (Word) -- ^asset
+<span class="lineno">  438 </span> -&gt; (Word) -- ^point
+<span class="lineno">  439 </span> -&gt; IO ((Double))
+<span class="lineno">  440 </span><span class="decl"><span class="nottickedoff">assetAt a1 a2 a3 =</span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  444 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="nottickedoff">assetAt'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  449 </span>
+<span class="lineno">  450 </span>
+<span class="lineno">  451 </span>
+<span class="lineno">  452 </span>-- |the full simulated path (values at every time step) of a single asset, as a list.
+<span class="lineno">  453 </span>asset :: (SamplePath) -&gt; (Word) -&gt; IO (([Double]))
+<span class="lineno">  454 </span><span class="decl"><span class="istickedoff">asset a1 a2 =</span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">withSamplePath a1 $ \a1' -&gt; </span>
+<span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">asset'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
+<span class="lineno">  463 </span>
+<span class="lineno">  464 </span>
+<span class="lineno">  465 </span>
+<span class="lineno">  466 </span>-- |the full simulated path (values at every time step) of a single asset, as a storable vector.
+<span class="lineno">  467 </span>asset' :: (SamplePath) -&gt; (Word) -&gt; IO ((Vector CDouble))
+<span class="lineno">  468 </span><span class="decl"><span class="nottickedoff">asset' a1 a2 =</span>
+<span class="lineno">  469 </span><span class="spaces">  </span><span class="nottickedoff">withSamplePath a1 $ \a1' -&gt; </span>
+<span class="lineno">  470 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  471 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  472 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="nottickedoff">asset''_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="nottickedoff">peekDoubleVector  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="nottickedoff">return (a3'')</span></span>
+<span class="lineno">  477 </span>
+<span class="lineno">  478 </span>
+<span class="lineno">  479 </span>
+<span class="lineno">  480 </span>-- |one step of Longstaff-Schwartz early-exercise regression: fit a polynomial basis of the given
+<span class="lineno">  481 </span>-- order/type against the (in-the-money) fit states and their continuation targets, then evaluate the
+<span class="lineno">  482 </span>-- fitted continuation value at each of the given eval states. This is the same per-exercise-date
+<span class="lineno">  483 </span>-- regression @LongstaffSchwartzPathPricer@ performs internally against a bound @Payoff@, exposed so it
+<span class="lineno">  484 </span>-- can be driven from a Haskell-defined payoff instead: call it once per exercise date, walking dates
+<span class="lineno">  485 </span>-- strictly backward, batched across all paths rather than per path. See this module's header for the
+<span class="lineno">  486 </span>-- full backward-induction pattern.
+<span class="lineno">  487 </span>lsmRegress :: (PolynomialType) -&gt; (Word) -- ^basis order
+<span class="lineno">  488 </span> -&gt; ([Double]) -- ^fit states (in-the-money paths only)
+<span class="lineno">  489 </span> -&gt; ([Double]) -- ^fit targets (continuation value at these states)
+<span class="lineno">  490 </span> -&gt; ([Double]) -- ^eval states (all paths' state at this date)
+<span class="lineno">  491 </span> -&gt; IO (([Double]))
+<span class="lineno">  492 </span><span class="decl"><span class="istickedoff">lsmRegress a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  493 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  494 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">lsmRegress'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7' &gt;&gt;</span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a6'1  a6'2&gt;&gt;= \a6'' -&gt; </span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">return (a6'')</span></span>
+<span class="lineno">  504 </span>
+<span class="lineno">  505 </span>
+<span class="lineno">  506 </span>
+<span class="lineno">  507 </span>-- |number of basis terms 'lsmRegressMulti' fits for a given number of underlyings and order --
+<span class="lineno">  508 </span>-- @C(dim+order, order)@, the binomial coefficient @LsmBasisSystem::multiPathBasisSystem@ actually
+<span class="lineno">  509 </span>-- returns (not @order+1@, which only coincides at @dim=1@ -- 'lsmRegress' uses that special case
+<span class="lineno">  510 </span>-- directly rather than calling this). Use it to size the \&quot;enough in-the-money calibration paths to
+<span class="lineno">  511 </span>-- fit\&quot; guard before calling 'lsmRegressMulti': the underlying least-squares solve requires at least
+<span class="lineno">  512 </span>-- this many fit rows, and undershooting it throws rather than returning a degenerate fit.
+<span class="lineno">  513 </span>lsmBasisSize :: Word -&gt; Word -&gt; Word
+<span class="lineno">  514 </span><span class="decl"><span class="istickedoff">lsmBasisSize dim order = fromInteger $ binomial (toInteger dim + toInteger order) (toInteger order)</span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">where binomial n k = product [n - k + 1 .. n] `div` product [1 .. k]</span></span>
+<span class="lineno">  516 </span>
+<span class="lineno">  517 </span>-- |multi-asset counterpart of 'lsmRegress', for a Haskell-defined basket (several correlated
+<span class="lineno">  518 </span>-- underlyings) early-exercise payoff -- 'lsmRegress' itself only regresses against one state
+<span class="lineno">  519 </span>-- variable. Fit\/eval states are 'Matrix' rows: one row per path, one column per underlying, and the
+<span class="lineno">  520 </span>-- two matrices' column counts must agree. Regresses against
+<span class="lineno">  521 </span>-- @LsmBasisSystem::multiPathBasisSystem@'s combinatorial basis; see 'lsmBasisSize' for its size and
+<span class="lineno">  522 </span>-- this module's header for the surrounding backward-induction pattern (identical to the scalar case,
+<span class="lineno">  523 </span>-- just with 'Matrix'-shaped states).
+<span class="lineno">  524 </span>lsmRegressMulti :: PolynomialType -&gt; Word -&gt; Matrix Double -- ^fit states (in-the-money paths only)
+<span class="lineno">  525 </span>  -&gt; [Double] -- ^fit targets (continuation value at these states)
+<span class="lineno">  526 </span>  -&gt; Matrix Double -- ^eval states (all paths' state at this date)
+<span class="lineno">  527 </span>  -&gt; IO [Double] -- ^continuation value estimate per eval row
+<span class="lineno">  528 </span><span class="decl"><span class="istickedoff">lsmRegressMulti p order (Matrix fr fc fd) t (Matrix er ec ed) = qlLsmRegressMulti p order fr fc fd t er ec ed</span></span>
+<span class="lineno">  529 </span>qlLsmRegressMulti :: (PolynomialType) -&gt; (Word) -- ^basis order
+<span class="lineno">  530 </span> -&gt; (Word) -- ^fit rows
+<span class="lineno">  531 </span> -&gt; (Word) -- ^fit columns (underlyings)
+<span class="lineno">  532 </span> -&gt; ([Double]) -- ^fit states, row-major
+<span class="lineno">  533 </span> -&gt; ([Double]) -- ^fit targets
+<span class="lineno">  534 </span> -&gt; (Word) -- ^eval rows
+<span class="lineno">  535 </span> -&gt; (Word) -- ^eval columns (underlyings)
+<span class="lineno">  536 </span> -&gt; ([Double]) -- ^eval states, row-major
+<span class="lineno">  537 </span> -&gt; IO (([Double]))
+<span class="lineno">  538 </span><span class="decl"><span class="istickedoff">qlLsmRegressMulti a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno">  539 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  540 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  541 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  542 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  543 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a5 $ \a5' -&gt; </span>
+<span class="lineno">  544 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  545 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  546 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  547 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a9 $ \a9' -&gt; </span>
+<span class="lineno">  548 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a10'1, a10'2) -&gt; </span>
+<span class="lineno">  549 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
+<span class="lineno">  550 </span><span class="spaces">  </span><span class="istickedoff">qlLsmRegressMulti'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7' a8' a9' a10'1  a10'2 a11' &gt;&gt;</span>
+<span class="lineno">  551 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a10'1  a10'2&gt;&gt;= \a10'' -&gt; </span>
+<span class="lineno">  552 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
+<span class="lineno">  553 </span><span class="spaces">  </span><span class="istickedoff">return (a10'')</span></span>
+<span class="lineno">  554 </span>
+<span class="lineno">  555 </span>
+<span class="lineno">  556 </span>
+<span class="lineno">  557 </span>-- |Drive @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (the
+<span class="lineno">  558 </span>-- @apply@\/@apply_direction@\/@solve_splitting@ callbacks) and an optional Haskell-defined step
+<span class="lineno">  559 </span>-- condition (e.g. American\/Bermudan early exercise, or a barrier), instead of a bound mesher +
+<span class="lineno">  560 </span>-- @FdmInnerValueCalculator@ as every concrete FDM pricing engine in &quot;QuantLib.PricingEngine&quot;
+<span class="lineno">  561 </span>-- uses. This is the coarsened-callback shape from CLAUDE.md's \&quot;coarsen the language-boundary
+<span class="lineno">  562 </span>-- crossing\&quot; bullet, modeled on QuantLib-SWIG's @FdmLinearOpCompositeDelegate@\/
+<span class="lineno">  563 </span>-- @FdmStepConditionDelegate@ (@SWIG\/fdm.i@): each callback crosses once per outer iteration over
+<span class="lineno">  564 </span>-- the whole grid array, not once per grid node.
+<span class="lineno">  565 </span>--
+<span class="lineno">  566 </span>-- The grid is a plain @[Double]@ in and out -- no mesher, no @FdmInnerValueCalculator@, no
+<span class="lineno">  567 </span>-- @FdmSolverDesc@ is bound; callers manage their own grid geometry entirely in Haskell. Boundary
+<span class="lineno">  568 </span>-- conditions are always the empty @FdmBoundaryConditionSet()@ (not bound).
+<span class="lineno">  569 </span>--
+<span class="lineno">  570 </span>-- /Only DouglasScheme::step's three virtuals are implemented -- 'apply', 'apply_direction' and/
+<span class="lineno">  571 </span>-- /'solve_splitting'; @apply_mixed@\/@preconditioner@ are unimplemented and @QL_FAIL@ at the C++/
+<span class="lineno">  572 </span>-- /level if called./ This makes 'fdmRollback' safe to drive with 'QuantLib.Internal.Common.Douglas'
+<span class="lineno">  573 </span>-- or 'QuantLib.Internal.Common.CrankNicolson' in one dimension (the two schemes
+<span class="lineno">  574 </span>-- @DouglasScheme::step@ itself is used for) -- anything needing mixed derivatives across more than
+<span class="lineno">  575 </span>-- one PDE direction (Craig-Sneyd, Hundsdorfer, or any genuinely multi-dimensional operator) will
+<span class="lineno">  576 </span>-- throw partway through 'fdmRollback' rather than silently mispricing.
+<span class="lineno">  577 </span>fdmRollback :: (Int) -- ^number of PDE directions\/dimensions the operator has (e.g. 1 for a 1D Black-Scholes-in-log-spot operator) -- /not/ the grid array length, which is the length of every @[Double]@ passed to\/returned from the callbacks below
+<span class="lineno">  578 </span> -&gt; ((Double,Double) -&gt; [Double] -&gt; [Double]) -- ^@apply(r)@: whole-grid operator application at the current @(t1,t2)@ time pair (no direction argument -- QuantLib's own 'FdmLinearOp' base method)
+<span class="lineno">  579 </span> -&gt; (Int -&gt; (Double,Double) -&gt; [Double] -&gt; [Double]) -- ^@apply_direction(direction, r)@
+<span class="lineno">  580 </span> -&gt; (Int -&gt; Double -&gt; (Double,Double) -&gt; [Double] -&gt; [Double]) -- ^@solve_splitting(direction, r, s)@ -- the implicit per-direction solve (e.g. a tridiagonal\/Thomas-algorithm solve for a 1D operator)
+<span class="lineno">  581 </span> -&gt; (Maybe (Double -&gt; [Double] -&gt; [Double])) -- ^optional step condition @applyTo(a, t)@, e.g. American\/Bermudan early exercise (@max(a_i, intrinsic_i)@ at every step) or a barrier knockout
+<span class="lineno">  582 </span> -&gt; ([Double]) -- ^stopping times at which the step condition above is applied (ignored if there is no step condition); pass every rollback step's time to apply it at every step
+<span class="lineno">  583 </span> -&gt; (FdmScheme) -- ^the finite-difference scheme (see the haddock above for which schemes are actually safe to use here)
+<span class="lineno">  584 </span> -&gt; ([Double]) -- ^initial grid values, at time \'from\'
+<span class="lineno">  585 </span> -&gt; (Double) -- ^from (start time of the rollback, e.g. option maturity)
+<span class="lineno">  586 </span> -&gt; (Double) -- ^to (end time of the rollback, e.g. 0)
+<span class="lineno">  587 </span> -&gt; (Int) -- ^steps
+<span class="lineno">  588 </span> -&gt; (Int) -- ^dampingSteps
+<span class="lineno">  589 </span> -&gt; IO (([Double]))
+<span class="lineno">  590 </span><span class="decl"><span class="istickedoff">fdmRollback a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 =</span>
+<span class="lineno">  591 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  592 </span><span class="spaces">  </span><span class="istickedoff">withFdmApply a2 $ \a2' -&gt; </span>
+<span class="lineno">  593 </span><span class="spaces">  </span><span class="istickedoff">withFdmApplyDirection a3 $ \a3' -&gt; </span>
+<span class="lineno">  594 </span><span class="spaces">  </span><span class="istickedoff">withFdmSolveSplitting a4 $ \a4' -&gt; </span>
+<span class="lineno">  595 </span><span class="spaces">  </span><span class="istickedoff">withMaybeFdmStepCondition a5 $ \a5' -&gt; </span>
+<span class="lineno">  596 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  597 </span><span class="spaces">  </span><span class="istickedoff">withFdmSchemeDesc a7 $ \a7' -&gt; </span>
+<span class="lineno">  598 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a8 $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  599 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = realToFrac a9} in </span>
+<span class="lineno">  600 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno">  601 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = fromIntegral a11} in </span>
+<span class="lineno">  602 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = fromIntegral a12} in </span>
+<span class="lineno">  603 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a13'1, a13'2) -&gt; </span>
+<span class="lineno">  604 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a14' -&gt; </span>
+<span class="lineno">  605 </span><span class="spaces">  </span><span class="istickedoff">fdmRollback'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7' a8'1  a8'2 a9' a10' a11' a12' a13'1  a13'2 a14' &gt;&gt;</span>
+<span class="lineno">  606 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a13'1  a13'2&gt;&gt;= \a13'' -&gt; </span>
+<span class="lineno">  607 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a14'&gt;&gt;</span>
+<span class="lineno">  608 </span><span class="spaces">  </span><span class="istickedoff">return (a13'')</span></span>
+<span class="lineno">  609 </span>
+<span class="lineno">  610 </span>
+<span class="lineno">  611 </span>
+<span class="lineno">  612 </span>-- |'Predefined1dMesher(points)' -- an 'Fdm1dMesher' over an explicit, caller-supplied set of grid points.
+<span class="lineno">  613 </span>predefined1dMesher :: ([Double]) -- ^points
+<span class="lineno">  614 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  615 </span><span class="decl"><span class="istickedoff">predefined1dMesher a1 =</span>
+<span class="lineno">  616 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  617 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  618 </span><span class="spaces">  </span><span class="istickedoff">predefined1dMesher'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  619 </span><span class="spaces">  </span><span class="istickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  620 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  621 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  622 </span>
+<span class="lineno">  623 </span>
+<span class="lineno">  624 </span>
+<span class="lineno">  625 </span>-- |'Uniform1dMesher(start, end, size)' -- an evenly spaced 'Fdm1dMesher'.
+<span class="lineno">  626 </span>uniform1dMesher :: (Double) -- ^start
+<span class="lineno">  627 </span> -&gt; (Double) -- ^end
+<span class="lineno">  628 </span> -&gt; (Word) -- ^size
+<span class="lineno">  629 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  630 </span><span class="decl"><span class="nottickedoff">uniform1dMesher a1 a2 a3 =</span>
+<span class="lineno">  631 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  632 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  633 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  634 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  635 </span><span class="spaces">  </span><span class="nottickedoff">uniform1dMesher'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  636 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  637 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  638 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  639 </span>
+<span class="lineno">  640 </span>
+<span class="lineno">  641 </span>
+<span class="lineno">  642 </span>-- |'Concentrating1dMesher(start, end, size, cPoint, requireCPoint)' -- an 'Fdm1dMesher' with grid
+<span class="lineno">  643 </span>-- points concentrated near @cPoint@ (e.g. a strike or barrier), or plain uniform spacing when
+<span class="lineno">  644 </span>-- @cPoint@ is 'Nothing' for both coordinates.
+<span class="lineno">  645 </span>concentrating1dMesher :: (Double) -- ^start
+<span class="lineno">  646 </span> -&gt; (Double) -- ^end
+<span class="lineno">  647 </span> -&gt; (Word) -- ^size
+<span class="lineno">  648 </span> -&gt; (Maybe Double) -- ^concentration point location
+<span class="lineno">  649 </span> -&gt; (Maybe Double) -- ^concentration point density
+<span class="lineno">  650 </span> -&gt; (Bool) -- ^requireCPoint: force the concentration point itself onto the grid
+<span class="lineno">  651 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  652 </span><span class="decl"><span class="nottickedoff">concentrating1dMesher a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  653 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  654 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  655 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  656 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromMaybeDouble a4} in </span>
+<span class="lineno">  657 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromMaybeDouble a5} in </span>
+<span class="lineno">  658 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  659 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  660 </span><span class="spaces">  </span><span class="nottickedoff">concentrating1dMesher'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  661 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  662 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  663 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  664 </span>
+<span class="lineno">  665 </span>
+<span class="lineno">  666 </span>
+<span class="lineno">  667 </span>-- |Multi-concentration-point overload of 'concentrating1dMesher'
+<span class="lineno">  668 </span>-- (@Concentrating1dMesher(start, end, size, cPoints, tol)@) -- a distinct upstream constructor,
+<span class="lineno">  669 </span>-- not a defaulted-arg variant of the single-point one.
+<span class="lineno">  670 </span>concentrating1dMesherMulti :: Double -&gt; Double -&gt; Word
+<span class="lineno">  671 </span>  -&gt; [(Double, Double, Bool)] -- ^concentration points: (location, density, requireCPoint)
+<span class="lineno">  672 </span>  -&gt; Double -- ^tol
+<span class="lineno">  673 </span>  -&gt; IO Fdm1dMesher
+<span class="lineno">  674 </span><span class="decl"><span class="nottickedoff">concentrating1dMesherMulti start end size cPoints tol =</span>
+<span class="lineno">  675 </span><span class="spaces">  </span><span class="nottickedoff">let (locs, densities, reqs) = unzip3 cPoints</span>
+<span class="lineno">  676 </span><span class="spaces">  </span><span class="nottickedoff">in qlConcentrating1dMesherMulti start end size (fromIntegral (length cPoints)) locs densities reqs tol</span></span>
+<span class="lineno">  677 </span>qlConcentrating1dMesherMulti :: (Double) -&gt; (Double) -&gt; (Word) -&gt; (Word) -- ^number of concentration points
+<span class="lineno">  678 </span> -&gt; ([Double]) -- ^locations
+<span class="lineno">  679 </span> -&gt; ([Double]) -- ^densities
+<span class="lineno">  680 </span> -&gt; ([Bool]) -- ^requireCPoint per point
+<span class="lineno">  681 </span> -&gt; (Double) -- ^tol
+<span class="lineno">  682 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  683 </span><span class="decl"><span class="nottickedoff">qlConcentrating1dMesherMulti a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  684 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  685 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  686 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  687 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  688 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArrayRaw a5 $ \a5' -&gt; </span>
+<span class="lineno">  689 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArrayRaw a6 $ \a6' -&gt; </span>
+<span class="lineno">  690 </span><span class="spaces">  </span><span class="nottickedoff">withBoolArrayRaw a7 $ \a7' -&gt; </span>
+<span class="lineno">  691 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  692 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  693 </span><span class="spaces">  </span><span class="nottickedoff">qlConcentrating1dMesherMulti'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  694 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  695 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  696 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  697 </span>
+<span class="lineno">  698 </span>
+<span class="lineno">  699 </span>
+<span class="lineno">  700 </span>-- |'Glued1dMesher(leftMesher, rightMesher)' -- splices two 'Fdm1dMesher's into one, deduplicating
+<span class="lineno">  701 </span>-- their shared boundary point if @leftMesher@'s rightmost location and @rightMesher@'s leftmost
+<span class="lineno">  702 </span>-- location coincide (within QuantLib's usual @close@ tolerance). Throws if @leftMesher@'s rightmost
+<span class="lineno">  703 </span>-- point is strictly greater than @rightMesher@'s leftmost point -- the two ranges may touch or be
+<span class="lineno">  704 </span>-- disjoint-but-ordered, never overlap or reverse.
+<span class="lineno">  705 </span>gluedMesher :: (Fdm1dMesher) -- ^leftMesher
+<span class="lineno">  706 </span> -&gt; (Fdm1dMesher) -- ^rightMesher
+<span class="lineno">  707 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  708 </span><span class="decl"><span class="istickedoff">gluedMesher a1 a2 =</span>
+<span class="lineno">  709 </span><span class="spaces">  </span><span class="istickedoff">withFdm1dMesher a1 $ \a1' -&gt; </span>
+<span class="lineno">  710 </span><span class="spaces">  </span><span class="istickedoff">withFdm1dMesher a2 $ \a2' -&gt; </span>
+<span class="lineno">  711 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  712 </span><span class="spaces">  </span><span class="istickedoff">gluedMesher'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  713 </span><span class="spaces">  </span><span class="istickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  714 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  715 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  716 </span>
+<span class="lineno">  717 </span>
+<span class="lineno">  718 </span>
+<span class="lineno">  719 </span>-- |'FdmBlackScholesMesher(size, process, maturity, strike, ...)' -- the standard log-spot mesher
+<span class="lineno">  720 </span>-- for a Black-Scholes-family process, reusing the same 'GeneralizedBlackScholesProcess'\/
+<span class="lineno">  721 </span>-- 'Dividend'\/'FdmQuantoHelper' plumbing &quot;QuantLib.PricingEngine&quot;'s @fd*@ engines already use.
+<span class="lineno">  722 </span>fdmBlackScholesMesher :: (Word) -- ^size
+<span class="lineno">  723 </span> -&gt; (GeneralizedBlackScholesProcess) -&gt; (Double) -- ^maturity
+<span class="lineno">  724 </span> -&gt; (Double) -- ^strike
+<span class="lineno">  725 </span> -&gt; (Maybe Double) -- ^xMinConstraint
+<span class="lineno">  726 </span> -&gt; (Maybe Double) -- ^xMaxConstraint
+<span class="lineno">  727 </span> -&gt; (Double) -- ^eps
+<span class="lineno">  728 </span> -&gt; (Double) -- ^scaleFactor
+<span class="lineno">  729 </span> -&gt; (Maybe Double) -- ^concentration point location
+<span class="lineno">  730 </span> -&gt; (Maybe Double) -- ^concentration point density
+<span class="lineno">  731 </span> -&gt; ([Dividend]) -&gt; (Maybe FdmQuantoHelper) -&gt; (Double) -- ^spotAdjustment
+<span class="lineno">  732 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  733 </span><span class="decl"><span class="nottickedoff">fdmBlackScholesMesher a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
+<span class="lineno">  734 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  735 </span><span class="spaces">  </span><span class="nottickedoff">withGeneralizedBlackScholesProcess a2 $ \a2' -&gt; </span>
+<span class="lineno">  736 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  737 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  738 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromMaybeDouble a5} in </span>
+<span class="lineno">  739 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = fromMaybeDouble a6} in </span>
+<span class="lineno">  740 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = realToFrac a7} in </span>
+<span class="lineno">  741 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  742 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromMaybeDouble a9} in </span>
+<span class="lineno">  743 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromMaybeDouble a10} in </span>
+<span class="lineno">  744 </span><span class="spaces">  </span><span class="nottickedoff">withDividendArray a11 $ \(a11'1, a11'2) -&gt; </span>
+<span class="lineno">  745 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeFdmQuantoHelper a12 $ \a12' -&gt; </span>
+<span class="lineno">  746 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = realToFrac a13} in </span>
+<span class="lineno">  747 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a14' -&gt; </span>
+<span class="lineno">  748 </span><span class="spaces">  </span><span class="nottickedoff">fdmBlackScholesMesher'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11'1  a11'2 a12' a13' a14' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  749 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  750 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a14'&gt;&gt;</span>
+<span class="lineno">  751 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  752 </span>
+<span class="lineno">  753 </span>
+<span class="lineno">  754 </span>
+<span class="lineno">  755 </span>-- |'FdmCEV1dMesher(size, f0, alpha, beta, maturity, eps, scaleFactor, cPoint)' -- the standard
+<span class="lineno">  756 </span>-- mesher for a CEV process.
+<span class="lineno">  757 </span>fdmCev1dMesher :: (Word) -- ^size
+<span class="lineno">  758 </span> -&gt; (Double) -- ^f0
+<span class="lineno">  759 </span> -&gt; (Double) -- ^alpha
+<span class="lineno">  760 </span> -&gt; (Double) -- ^beta
+<span class="lineno">  761 </span> -&gt; (Double) -- ^maturity
+<span class="lineno">  762 </span> -&gt; (Double) -- ^eps
+<span class="lineno">  763 </span> -&gt; (Double) -- ^scaleFactor
+<span class="lineno">  764 </span> -&gt; (Maybe Double) -- ^concentration point location
+<span class="lineno">  765 </span> -&gt; (Maybe Double) -- ^concentration point density
+<span class="lineno">  766 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  767 </span><span class="decl"><span class="nottickedoff">fdmCev1dMesher a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno">  768 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  769 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  770 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  771 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  772 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  773 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  774 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = realToFrac a7} in </span>
+<span class="lineno">  775 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromMaybeDouble a8} in </span>
+<span class="lineno">  776 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromMaybeDouble a9} in </span>
+<span class="lineno">  777 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a10' -&gt; </span>
+<span class="lineno">  778 </span><span class="spaces">  </span><span class="nottickedoff">fdmCev1dMesher'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  779 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  780 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a10'&gt;&gt;</span>
+<span class="lineno">  781 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  782 </span>
+<span class="lineno">  783 </span>
+<span class="lineno">  784 </span>
+<span class="lineno">  785 </span>-- |'ExponentialJump1dMesher(steps, beta, jumpIntensity, eta, eps)' -- mesher for the jump-diffusion
+<span class="lineno">  786 </span>-- component of a jump-diffusion process.
+<span class="lineno">  787 </span>exponentialJump1dMesher :: (Word) -- ^steps
+<span class="lineno">  788 </span> -&gt; (Double) -- ^beta
+<span class="lineno">  789 </span> -&gt; (Double) -- ^jumpIntensity
+<span class="lineno">  790 </span> -&gt; (Double) -- ^eta
+<span class="lineno">  791 </span> -&gt; (Double) -- ^eps
+<span class="lineno">  792 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  793 </span><span class="decl"><span class="nottickedoff">exponentialJump1dMesher a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  794 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  795 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  796 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  797 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  798 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  799 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  800 </span><span class="spaces">  </span><span class="nottickedoff">exponentialJump1dMesher'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  801 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  802 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  803 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  804 </span>
+<span class="lineno">  805 </span>
+<span class="lineno">  806 </span>
+<span class="lineno">  807 </span>-- |'FdmSimpleProcess1dMesher(size, process, maturity, tAvgSteps, epsilon, mandatoryPoint)' --
+<span class="lineno">  808 </span>-- generic mesher for any bound one-dimensional 'StochasticProcess1D'.
+<span class="lineno">  809 </span>fdmSimpleProcess1dMesher :: (Word) -- ^size
+<span class="lineno">  810 </span> -&gt; (StochasticProcess1D) -&gt; (Double) -- ^maturity
+<span class="lineno">  811 </span> -&gt; (Word) -- ^tAvgSteps
+<span class="lineno">  812 </span> -&gt; (Double) -- ^epsilon
+<span class="lineno">  813 </span> -&gt; (Maybe Double) -- ^mandatoryPoint
+<span class="lineno">  814 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  815 </span><span class="decl"><span class="istickedoff">fdmSimpleProcess1dMesher a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  816 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  817 </span><span class="spaces">  </span><span class="istickedoff">withStochasticProcess1D a2 $ \a2' -&gt; </span>
+<span class="lineno">  818 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  819 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  820 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  821 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromMaybeDouble a6} in </span>
+<span class="lineno">  822 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  823 </span><span class="spaces">  </span><span class="istickedoff">fdmSimpleProcess1dMesher'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  824 </span><span class="spaces">  </span><span class="istickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  825 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  826 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  827 </span>
+<span class="lineno">  828 </span>
+<span class="lineno">  829 </span>
+<span class="lineno">  830 </span>-- |'FdmHestonVarianceMesher(size, process, maturity, tAvgSteps, epsilon, mixingFactor)' -- variance
+<span class="lineno">  831 </span>-- mesher for a Heston-family process.
+<span class="lineno">  832 </span>fdmHestonVarianceMesher :: (Word) -- ^size
+<span class="lineno">  833 </span> -&gt; (GenHestonProcess hp) -&gt; (Double) -- ^maturity
+<span class="lineno">  834 </span> -&gt; (Word) -- ^tAvgSteps
+<span class="lineno">  835 </span> -&gt; (Double) -- ^epsilon
+<span class="lineno">  836 </span> -&gt; (Double) -- ^mixingFactor
+<span class="lineno">  837 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  838 </span><span class="decl"><span class="nottickedoff">fdmHestonVarianceMesher a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  839 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  840 </span><span class="spaces">  </span><span class="nottickedoff">withHestonProcess a2 $ \a2' -&gt; </span>
+<span class="lineno">  841 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  842 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  843 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  844 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  845 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  846 </span><span class="spaces">  </span><span class="nottickedoff">fdmHestonVarianceMesher'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  847 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  848 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  849 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  850 </span>
+<span class="lineno">  851 </span>
+<span class="lineno">  852 </span>
+<span class="lineno">  853 </span>-- |'FdmHestonLocalVolatilityVarianceMesher(size, process, leverageFct, maturity, tAvgSteps, epsilon, mixingFactor)'
+<span class="lineno">  854 </span>-- -- Heston variance mesher accounting for a local-volatility leverage function.
+<span class="lineno">  855 </span>fdmHestonLocalVolatilityVarianceMesher :: (Word) -- ^size
+<span class="lineno">  856 </span> -&gt; (GenHestonProcess hp) -&gt; (LocalVolTermStructure) -- ^leverageFct
+<span class="lineno">  857 </span> -&gt; (Double) -- ^maturity
+<span class="lineno">  858 </span> -&gt; (Word) -- ^tAvgSteps
+<span class="lineno">  859 </span> -&gt; (Double) -- ^epsilon
+<span class="lineno">  860 </span> -&gt; (Double) -- ^mixingFactor
+<span class="lineno">  861 </span> -&gt; IO ((Fdm1dMesher))
+<span class="lineno">  862 </span><span class="decl"><span class="nottickedoff">fdmHestonLocalVolatilityVarianceMesher a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  863 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  864 </span><span class="spaces">  </span><span class="nottickedoff">withHestonProcess a2 $ \a2' -&gt; </span>
+<span class="lineno">  865 </span><span class="spaces">  </span><span class="nottickedoff">withLocalVolTermStructure a3 $ \a3' -&gt; </span>
+<span class="lineno">  866 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  867 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromIntegral a5} in </span>
+<span class="lineno">  868 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  869 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = realToFrac a7} in </span>
+<span class="lineno">  870 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  871 </span><span class="spaces">  </span><span class="nottickedoff">fdmHestonLocalVolatilityVarianceMesher'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  872 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  873 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  874 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  875 </span>
+<span class="lineno">  876 </span>
+<span class="lineno">  877 </span>
+<span class="lineno">  878 </span>-- |'FdmMesherComposite' -- combine one or more 'Fdm1dMesher's into the multi-dimensional
+<span class="lineno">  879 </span>-- 'FdmMesher' the operator\/step-condition callbacks and 'fdmSolve' operate over; the sole
+<span class="lineno">  880 </span>-- concrete 'FdmMesher' upstream.
+<span class="lineno">  881 </span>fdmMesherComposite :: ([Fdm1dMesher]) -&gt; IO ((FdmMesher))
+<span class="lineno">  882 </span><span class="decl"><span class="istickedoff">fdmMesherComposite a1 =</span>
+<span class="lineno">  883 </span><span class="spaces">  </span><span class="istickedoff">withFdm1dMesherArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  884 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  885 </span><span class="spaces">  </span><span class="istickedoff">fdmMesherComposite'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  886 </span><span class="spaces">  </span><span class="istickedoff">peekFdmMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  887 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  888 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  889 </span>
+<span class="lineno">  890 </span>
+<span class="lineno">  891 </span>
+<span class="lineno">  892 </span>-- |Real-valued node locations along one dimension of a mesher, e.g. to map 'fdmSolve''s flat
+<span class="lineno">  893 </span>-- result array back to coordinates (mirrors how @Fdm1DimSolver@\/@FdmNdimSolver@ build their own
+<span class="lineno">  894 </span>-- @x_@ arrays from this same call upstream).
+<span class="lineno">  895 </span>fdmMesherLocations :: (FdmMesher) -&gt; (Int) -- ^direction
+<span class="lineno">  896 </span> -&gt; IO (([Double]))
+<span class="lineno">  897 </span><span class="decl"><span class="istickedoff">fdmMesherLocations a1 a2 =</span>
+<span class="lineno">  898 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a1 $ \a1' -&gt; </span>
+<span class="lineno">  899 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  900 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  901 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  902 </span><span class="spaces">  </span><span class="istickedoff">fdmMesherLocations'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  903 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  904 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  905 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
+<span class="lineno">  906 </span>
+<span class="lineno">  907 </span>
+<span class="lineno">  908 </span>
+<span class="lineno">  909 </span>-- Raw import, not a {#fun#}: 'withCustomFdmInnerValueCalculator' below needs the two
+<span class="lineno">  910 </span>-- 'FunPtr's kept alive for as long as the returned 'FdmInnerValueCalculator' can be called into
+<span class="lineno">  911 </span>-- (i.e. across the whole continuation, which typically includes a later 'fdmSolve' call), not
+<span class="lineno">  912 </span>-- just for the duration of this one construction call the way a plain {#fun#}-generated
+<span class="lineno">  913 </span>-- 'withFdmInnerValue' bracket would provide -- see the haddock below.
+<span class="lineno">  914 </span>foreign import ccall &quot;ql.h qlFdmInnerValueCalculatorFromFunctions&quot;
+<span class="lineno">  915 </span>  c_qlFdmInnerValueCalculatorFromFunctions :: Ptr CFdmMesher -&gt; FunPtr FdmInnerValueFun -&gt; FunPtr FdmInnerValueFun
+<span class="lineno">  916 </span>    -&gt; Ptr CString -&gt; IO (Ptr CFdmInnerValueCalculator)
+<span class="lineno">  917 </span>
+<span class="lineno">  918 </span>-- |Wraps a Haskell @t -&gt; location -&gt; value@ pair of @innerValue@\/@avgInnerValue@ functions as a
+<span class="lineno">  919 </span>-- real 'FdmInnerValueCalculator' object, valid only inside the continuation -- the fully custom
+<span class="lineno">  920 </span>-- counterpart to constructors built from QuantLib's own concrete subclasses (bound alongside
+<span class="lineno">  921 </span>-- this, which need no such bracket: they hold no Haskell callback). Unlike every callback
+<span class="lineno">  922 </span>-- 'fdmRollback' takes, this crosses the language boundary once /per grid node/, not once per outer
+<span class="lineno">  923 </span>-- iteration over the whole grid -- there is no batched \&quot;whole-grid inner value\&quot; shape anywhere
+<span class="lineno">  924 </span>-- in QuantLib or QuantLib-SWIG. Per CLAUDE.md's \&quot;coarsen the language-boundary crossing\&quot; bullet,
+<span class="lineno">  925 </span>-- this is the one case where that coarsening isn't available, so the real per-call FFI cost across
+<span class="lineno">  926 </span>-- every node (and, if a step condition also calls the calculator, every node at every exercise
+<span class="lineno">  927 </span>-- date) is accepted -- matching QuantLib-SWIG's own accepted-cost precedent,
+<span class="lineno">  928 </span>-- @FdmInnerValueCalculatorDelegate@ (@SWIG\/fdm.i@).
+<span class="lineno">  929 </span>withCustomFdmInnerValueCalculator :: FdmMesher
+<span class="lineno">  930 </span>  -&gt; (Double -&gt; [Double] -&gt; Double) -- ^innerValue(t, location)
+<span class="lineno">  931 </span>  -&gt; (Double -&gt; [Double] -&gt; Double) -- ^avgInnerValue(t, location)
+<span class="lineno">  932 </span>  -&gt; (FdmInnerValueCalculator -&gt; IO b) -&gt; IO b
+<span class="lineno">  933 </span><span class="decl"><span class="istickedoff">withCustomFdmInnerValueCalculator mesher iv aiv k =</span>
+<span class="lineno">  934 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher mesher $ \mesher' -&gt;</span>
+<span class="lineno">  935 </span><span class="spaces">  </span><span class="istickedoff">withFdmInnerValue <span class="nottickedoff">iv</span> $ \ivFp -&gt;</span>
+<span class="lineno">  936 </span><span class="spaces">  </span><span class="istickedoff">withFdmInnerValue aiv $ \aivFp -&gt;</span>
+<span class="lineno">  937 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \errPtr -&gt; do</span>
+<span class="lineno">  938 </span><span class="spaces">    </span><span class="istickedoff">res &lt;- c_qlFdmInnerValueCalculatorFromFunctions mesher' ivFp aivFp errPtr</span>
+<span class="lineno">  939 </span><span class="spaces">    </span><span class="istickedoff">errorCheck errPtr</span>
+<span class="lineno">  940 </span><span class="spaces">    </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= k</span></span>
+<span class="lineno">  941 </span>
+<span class="lineno">  942 </span>-- |'FdmZeroInnerValue' -- an 'FdmInnerValueCalculator' whose @innerValue@\/@avgInnerValue@ are
+<span class="lineno">  943 </span>-- always 0.
+<span class="lineno">  944 </span>fdmZeroInnerValue :: IO ((FdmInnerValueCalculator))
+<span class="lineno">  945 </span><span class="decl"><span class="istickedoff">fdmZeroInnerValue =</span>
+<span class="lineno">  946 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a1' -&gt; </span>
+<span class="lineno">  947 </span><span class="spaces">  </span><span class="istickedoff">fdmZeroInnerValue'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  948 </span><span class="spaces">  </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  949 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a1'&gt;&gt;</span>
+<span class="lineno">  950 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  951 </span>
+<span class="lineno">  952 </span>
+<span class="lineno">  953 </span>
+<span class="lineno">  954 </span>-- |'FdmCellAveragingInnerValue(payoff, mesher, direction)' -- cell-averages @payoff@ over each
+<span class="lineno">  955 </span>-- grid cell along @direction@ (Simpson-integrating across the cell straddling a kink, e.g. a
+<span class="lineno">  956 </span>-- strike, rather than just evaluating at the cell center), with the identity value mapping. See
+<span class="lineno">  957 </span>-- 'withCustomCellAveragingInnerValue' for the @gridMapping@-taking overload (e.g. to reproduce
+<span class="lineno">  958 </span>-- 'fdmLogInnerValue' by hand), and 'fdmLogInnerValue' for the common log-mapped case QuantLib
+<span class="lineno">  959 </span>-- itself gives its own dedicated subclass.
+<span class="lineno">  960 </span>fdmCellAveragingInnerValue :: (Payoff) -&gt; (FdmMesher) -&gt; (Int) -- ^direction
+<span class="lineno">  961 </span> -&gt; IO ((FdmInnerValueCalculator))
+<span class="lineno">  962 </span><span class="decl"><span class="nottickedoff">fdmCellAveragingInnerValue a1 a2 a3 =</span>
+<span class="lineno">  963 </span><span class="spaces">  </span><span class="nottickedoff">withPayoff a1 $ \a1' -&gt; </span>
+<span class="lineno">  964 </span><span class="spaces">  </span><span class="nottickedoff">withFdmMesher a2 $ \a2' -&gt; </span>
+<span class="lineno">  965 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  966 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  967 </span><span class="spaces">  </span><span class="nottickedoff">fdmCellAveragingInnerValue'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  968 </span><span class="spaces">  </span><span class="nottickedoff">peekFdmInnerValueCalculator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  969 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  970 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  971 </span>
+<span class="lineno">  972 </span>
+<span class="lineno">  973 </span>
+<span class="lineno">  974 </span>-- Raw import, not a {#fun#}: same FunPtr-lifetime hazard as
+<span class="lineno">  975 </span>-- 'c_qlFdmInnerValueCalculatorFromFunctions' above -- 'gridMapping' is stored inside the C++
+<span class="lineno">  976 </span>-- object and invoked again on every later 'innerValue'\/'avgInnerValue' call, not just during
+<span class="lineno">  977 </span>-- construction.
+<span class="lineno">  978 </span>foreign import ccall &quot;ql.h qlFdmCellAveragingInnerValueMapped&quot;
+<span class="lineno">  979 </span>  c_qlFdmCellAveragingInnerValueMapped :: QlPayoff -&gt; Ptr CFdmMesher -&gt; CUInt -&gt; FunPtr FdmGridMappingFun
+<span class="lineno">  980 </span>    -&gt; Ptr CString -&gt; IO (Ptr CFdmInnerValueCalculator)
+<span class="lineno">  981 </span>
+<span class="lineno">  982 </span>-- |As 'fdmCellAveragingInnerValue', but with an explicit @gridMapping :: Double -&gt; Double@ applied
+<span class="lineno">  983 </span>-- to each node's location before the payoff sees it (e.g. @exp@ on a log-spot grid, reproducing
+<span class="lineno">  984 </span>-- 'fdmLogInnerValue' by hand) -- a genuine per-node Haskell callback (see CLAUDE.md's &quot;coarsen the
+<span class="lineno">  985 </span>-- language-boundary crossing&quot; bullet and 'withCustomFdmInnerValueCalculator' above), so the
+<span class="lineno">  986 </span>-- resulting 'FdmInnerValueCalculator' is only valid inside this continuation.
+<span class="lineno">  987 </span>withCustomCellAveragingInnerValue :: Payoff -&gt; FdmMesher -&gt; Int -&gt; (Double -&gt; Double)
+<span class="lineno">  988 </span>  -&gt; (FdmInnerValueCalculator -&gt; IO b) -&gt; IO b
+<span class="lineno">  989 </span><span class="decl"><span class="istickedoff">withCustomCellAveragingInnerValue payoff mesher direction mapping k =</span>
+<span class="lineno">  990 </span><span class="spaces">  </span><span class="istickedoff">withPayoff payoff $ \payoff' -&gt;</span>
+<span class="lineno">  991 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher mesher $ \mesher' -&gt;</span>
+<span class="lineno">  992 </span><span class="spaces">  </span><span class="istickedoff">withFdmGridMapping mapping $ \mappingFp -&gt;</span>
+<span class="lineno">  993 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \errPtr -&gt; do</span>
+<span class="lineno">  994 </span><span class="spaces">    </span><span class="istickedoff">res &lt;- c_qlFdmCellAveragingInnerValueMapped payoff' mesher' (fromIntegral direction) mappingFp errPtr</span>
+<span class="lineno">  995 </span><span class="spaces">    </span><span class="istickedoff">errorCheck errPtr</span>
+<span class="lineno">  996 </span><span class="spaces">    </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= k</span></span>
+<span class="lineno">  997 </span>
+<span class="lineno">  998 </span>-- |'FdmLogInnerValue(payoff, mesher, direction)' -- 'fdmCellAveragingInnerValue' with the
+<span class="lineno">  999 </span>-- @gridMapping = exp@ QuantLib itself gives its own dedicated subclass (the standard shape for a
+<span class="lineno"> 1000 </span>-- log-spot grid, e.g. 'fdmBlackScholesMesher''s own grid).
+<span class="lineno"> 1001 </span>fdmLogInnerValue :: (Payoff) -&gt; (FdmMesher) -&gt; (Int) -- ^direction
+<span class="lineno"> 1002 </span> -&gt; IO ((FdmInnerValueCalculator))
+<span class="lineno"> 1003 </span><span class="decl"><span class="istickedoff">fdmLogInnerValue a1 a2 a3 =</span>
+<span class="lineno"> 1004 </span><span class="spaces">  </span><span class="istickedoff">withPayoff a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1005 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1006 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno"> 1007 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno"> 1008 </span><span class="spaces">  </span><span class="istickedoff">fdmLogInnerValue'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1009 </span><span class="spaces">  </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1010 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno"> 1011 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno"> 1012 </span>
+<span class="lineno"> 1013 </span>
+<span class="lineno"> 1014 </span>
+<span class="lineno"> 1015 </span>-- |'FdmLogBasketInnerValue(payoff, mesher)' -- the multi-asset counterpart to 'fdmLogInnerValue':
+<span class="lineno"> 1016 </span>-- evaluates a 'BasketPayoff' with each dimension's location exponentiated first (@exp@ on every
+<span class="lineno"> 1017 </span>-- mesher direction, i.e. a log-spot grid per underlying), no cell averaging.
+<span class="lineno"> 1018 </span>fdmLogBasketInnerValue :: (BasketPayoff) -&gt; (FdmMesher) -&gt; IO ((FdmInnerValueCalculator))
+<span class="lineno"> 1019 </span><span class="decl"><span class="istickedoff">fdmLogBasketInnerValue a1 a2 =</span>
+<span class="lineno"> 1020 </span><span class="spaces">  </span><span class="istickedoff">withBasketPayoff a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1021 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1022 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 1023 </span><span class="spaces">  </span><span class="istickedoff">fdmLogBasketInnerValue'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1024 </span><span class="spaces">  </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1025 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 1026 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno"> 1027 </span>
+<span class="lineno"> 1028 </span>
+<span class="lineno"> 1029 </span>
+<span class="lineno"> 1030 </span>-- |'FdmAffineModelSwapInnerValue\&lt;G2\&gt;(disModel, fwdModel, swap, exerciseDates, mesher, direction)'
+<span class="lineno"> 1031 </span>-- -- the swap-NPV-under-the-model 'FdmInnerValueCalculator' used internally by
+<span class="lineno"> 1032 </span>-- 'QuantLib.PricingEngine.fdG2SwaptionEngine'. @exerciseDates@ pairs each exercise time (the same
+<span class="lineno"> 1033 </span>-- @Time@-as-@Double@ year-fraction convention used throughout, not a dedicated type) with the
+<span class="lineno"> 1034 </span>-- 'Data.Time.Calendar.Day' it corresponds to (upstream's @std::map\&lt;Time, Date\&gt;@).
+<span class="lineno"> 1035 </span>fdmAffineG2ModelSwapInnerValue :: G2 -&gt; G2 -&gt; GenFixedVsFloatingSwap f -&gt; [(Double, Day)] -&gt; FdmMesher -&gt; Int -&gt; IO FdmInnerValueCalculator
+<span class="lineno"> 1036 </span><span class="decl"><span class="istickedoff">fdmAffineG2ModelSwapInnerValue disModel fwdModel swap exerciseDates =</span>
+<span class="lineno"> 1037 </span><span class="spaces">  </span><span class="istickedoff">let (times, dates) = unzip exerciseDates</span>
+<span class="lineno"> 1038 </span><span class="spaces">  </span><span class="istickedoff">in qlFdmAffineG2ModelSwapInnerValue disModel fwdModel swap (fromIntegral (length exerciseDates)) times dates</span></span>
+<span class="lineno"> 1039 </span>qlFdmAffineG2ModelSwapInnerValue :: (G2) -&gt; (G2) -&gt; (GenFixedVsFloatingSwap f) -&gt; (Int) -- ^number of exercise dates
+<span class="lineno"> 1040 </span> -&gt; ([Double]) -- ^exercise times
+<span class="lineno"> 1041 </span> -&gt; ([Day]) -- ^exercise dates
+<span class="lineno"> 1042 </span> -&gt; (FdmMesher) -&gt; (Int) -- ^direction
+<span class="lineno"> 1043 </span> -&gt; IO ((FdmInnerValueCalculator))
+<span class="lineno"> 1044 </span><span class="decl"><span class="istickedoff">qlFdmAffineG2ModelSwapInnerValue a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno"> 1045 </span><span class="spaces">  </span><span class="istickedoff">withG2 a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1046 </span><span class="spaces">  </span><span class="istickedoff">withG2 a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1047 </span><span class="spaces">  </span><span class="istickedoff">withFixedVsFloatingSwap a3 $ \a3' -&gt; </span>
+<span class="lineno"> 1048 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno"> 1049 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a5 $ \a5' -&gt; </span>
+<span class="lineno"> 1050 </span><span class="spaces">  </span><span class="istickedoff">withDayPtr a6 $ \a6' -&gt; </span>
+<span class="lineno"> 1051 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a7 $ \a7' -&gt; </span>
+<span class="lineno"> 1052 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno"> 1053 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno"> 1054 </span><span class="spaces">  </span><span class="istickedoff">qlFdmAffineG2ModelSwapInnerValue'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1055 </span><span class="spaces">  </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1056 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno"> 1057 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno"> 1058 </span>
+<span class="lineno"> 1059 </span>
+<span class="lineno"> 1060 </span>
+<span class="lineno"> 1061 </span>-- |As 'fdmAffineG2ModelSwapInnerValue', but for 'HullWhite' -- used internally by
+<span class="lineno"> 1062 </span>-- 'QuantLib.PricingEngine.fdHullWhiteSwaptionEngine'.
+<span class="lineno"> 1063 </span>fdmAffineHullWhiteModelSwapInnerValue :: HullWhite -&gt; HullWhite -&gt; GenFixedVsFloatingSwap f -&gt; [(Double, Day)] -&gt; FdmMesher -&gt; Int -&gt; IO FdmInnerValueCalculator
+<span class="lineno"> 1064 </span><span class="decl"><span class="istickedoff">fdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap exerciseDates =</span>
+<span class="lineno"> 1065 </span><span class="spaces">  </span><span class="istickedoff">let (times, dates) = unzip exerciseDates</span>
+<span class="lineno"> 1066 </span><span class="spaces">  </span><span class="istickedoff">in qlFdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap (fromIntegral (length exerciseDates)) times dates</span></span>
+<span class="lineno"> 1067 </span>qlFdmAffineHullWhiteModelSwapInnerValue :: (HullWhite) -&gt; (HullWhite) -&gt; (GenFixedVsFloatingSwap f) -&gt; (Int) -- ^number of exercise dates
+<span class="lineno"> 1068 </span> -&gt; ([Double]) -- ^exercise times
+<span class="lineno"> 1069 </span> -&gt; ([Day]) -- ^exercise dates
+<span class="lineno"> 1070 </span> -&gt; (FdmMesher) -&gt; (Int) -- ^direction
+<span class="lineno"> 1071 </span> -&gt; IO ((FdmInnerValueCalculator))
+<span class="lineno"> 1072 </span><span class="decl"><span class="istickedoff">qlFdmAffineHullWhiteModelSwapInnerValue a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno"> 1073 </span><span class="spaces">  </span><span class="istickedoff">withHullWhite a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1074 </span><span class="spaces">  </span><span class="istickedoff">withHullWhite a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1075 </span><span class="spaces">  </span><span class="istickedoff">withFixedVsFloatingSwap a3 $ \a3' -&gt; </span>
+<span class="lineno"> 1076 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno"> 1077 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a5 $ \a5' -&gt; </span>
+<span class="lineno"> 1078 </span><span class="spaces">  </span><span class="istickedoff">withDayPtr a6 $ \a6' -&gt; </span>
+<span class="lineno"> 1079 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a7 $ \a7' -&gt; </span>
+<span class="lineno"> 1080 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno"> 1081 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno"> 1082 </span><span class="spaces">  </span><span class="istickedoff">qlFdmAffineHullWhiteModelSwapInnerValue'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1083 </span><span class="spaces">  </span><span class="istickedoff">peekFdmInnerValueCalculator res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1084 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno"> 1085 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno"> 1086 </span>
+<span class="lineno"> 1087 </span>
+<span class="lineno"> 1088 </span>
+<span class="lineno"> 1089 </span>-- |Evaluate an 'FdmInnerValueCalculator''s @innerValue@ at the mesher node given by its
+<span class="lineno"> 1090 </span>-- coordinates (one index per PDE dimension), at time @t@ -- lets any bound calculator (native or
+<span class="lineno"> 1091 </span>-- built via 'withCustomFdmInnerValueCalculator') be inspected directly without assembling a whole
+<span class="lineno"> 1092 </span>-- 'fdmSolve'.
+<span class="lineno"> 1093 </span>fdmInnerValue :: (FdmInnerValueCalculator) -&gt; (FdmMesher) -&gt; ([Int]) -- ^node coordinates
+<span class="lineno"> 1094 </span> -&gt; (Double) -- ^t
+<span class="lineno"> 1095 </span> -&gt; IO ((Double))
+<span class="lineno"> 1096 </span><span class="decl"><span class="nottickedoff">fdmInnerValue a1 a2 a3 a4 =</span>
+<span class="lineno"> 1097 </span><span class="spaces">  </span><span class="nottickedoff">withFdmInnerValueCalculator a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1098 </span><span class="spaces">  </span><span class="nottickedoff">withFdmMesher a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1099 </span><span class="spaces">  </span><span class="nottickedoff">withIntArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 1100 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno"> 1101 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno"> 1102 </span><span class="spaces">  </span><span class="nottickedoff">fdmInnerValue'_ a1' a2' a3'1  a3'2 a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1103 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 1104 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno"> 1105 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1106 </span>
+<span class="lineno"> 1107 </span>
+<span class="lineno"> 1108 </span>
+<span class="lineno"> 1109 </span>-- |As 'fdmInnerValue', but for @avgInnerValue@.
+<span class="lineno"> 1110 </span>fdmAvgInnerValue :: (FdmInnerValueCalculator) -&gt; (FdmMesher) -&gt; ([Int]) -- ^node coordinates
+<span class="lineno"> 1111 </span> -&gt; (Double) -- ^t
+<span class="lineno"> 1112 </span> -&gt; IO ((Double))
+<span class="lineno"> 1113 </span><span class="decl"><span class="istickedoff">fdmAvgInnerValue a1 a2 a3 a4 =</span>
+<span class="lineno"> 1114 </span><span class="spaces">  </span><span class="istickedoff">withFdmInnerValueCalculator a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1115 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1116 </span><span class="spaces">  </span><span class="istickedoff">withIntArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 1117 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno"> 1118 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno"> 1119 </span><span class="spaces">  </span><span class="istickedoff">fdmAvgInnerValue'_ a1' a2' a3'1  a3'2 a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1120 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 1121 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno"> 1122 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno"> 1123 </span>
+<span class="lineno"> 1124 </span>
+<span class="lineno"> 1125 </span>
+<span class="lineno"> 1126 </span>-- |Sibling of 'fdmRollback' that derives its own initial grid from a mesher and an
+<span class="lineno"> 1127 </span>-- 'FdmInnerValueCalculator' (@avgInnerValue(t, location)@ per node, called once per mesher node at
+<span class="lineno"> 1128 </span>-- @t = maturity@ -- mirroring @Fdm1DimSolver@\/@FdmNdimSolver@'s own constructor loop) instead of
+<span class="lineno"> 1129 </span>-- taking a precomputed grid array. Everything else (operator\/step-condition\/scheme\/rollback) is
+<span class="lineno"> 1130 </span>-- identical to 'fdmRollback', reusing the same callback machinery. The calculator can be either
+<span class="lineno"> 1131 </span>-- fully custom ('fdmInnerValueCalculator') or one of QuantLib's own native subclasses.
+<span class="lineno"> 1132 </span>--
+<span class="lineno"> 1133 </span>-- @Fdm1DimSolver@\/@FdmNdimSolver@ themselves (their own @LazyObject@ caching and cubic-spline
+<span class="lineno"> 1134 </span>-- interpolation) are /not/ bound; combine this function's result with 'fdmMesherLocations' for
+<span class="lineno"> 1135 </span>-- interpolation.
+<span class="lineno"> 1136 </span>fdmSolve :: (FdmMesher) -&gt; (FdmInnerValueCalculator) -&gt; (Int) -- ^number of PDE directions\/dimensions the operator has
+<span class="lineno"> 1137 </span> -&gt; ((Double,Double) -&gt; [Double] -&gt; [Double]) -- ^@apply(r)@
+<span class="lineno"> 1138 </span> -&gt; (Int -&gt; (Double,Double) -&gt; [Double] -&gt; [Double]) -- ^@apply_direction(direction, r)@
+<span class="lineno"> 1139 </span> -&gt; (Int -&gt; Double -&gt; (Double,Double) -&gt; [Double] -&gt; [Double]) -- ^@solve_splitting(direction, r, s)@
+<span class="lineno"> 1140 </span> -&gt; (Maybe (Double -&gt; [Double] -&gt; [Double])) -- ^optional step condition
+<span class="lineno"> 1141 </span> -&gt; ([Double]) -- ^stopping times at which the step condition above is applied
+<span class="lineno"> 1142 </span> -&gt; (FdmScheme) -- ^the finite-difference scheme
+<span class="lineno"> 1143 </span> -&gt; (Double) -- ^maturity (start time of the rollback, and the time at which avgInnerValue builds the initial grid)
+<span class="lineno"> 1144 </span> -&gt; (Double) -- ^to (end time of the rollback, e.g. 0)
+<span class="lineno"> 1145 </span> -&gt; (Int) -- ^steps
+<span class="lineno"> 1146 </span> -&gt; (Int) -- ^dampingSteps
+<span class="lineno"> 1147 </span> -&gt; IO (([Double]))
+<span class="lineno"> 1148 </span><span class="decl"><span class="istickedoff">fdmSolve a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
+<span class="lineno"> 1149 </span><span class="spaces">  </span><span class="istickedoff">withFdmMesher a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1150 </span><span class="spaces">  </span><span class="istickedoff">withFdmInnerValueCalculator a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1151 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno"> 1152 </span><span class="spaces">  </span><span class="istickedoff">withFdmApply a4 $ \a4' -&gt; </span>
+<span class="lineno"> 1153 </span><span class="spaces">  </span><span class="istickedoff">withFdmApplyDirection a5 $ \a5' -&gt; </span>
+<span class="lineno"> 1154 </span><span class="spaces">  </span><span class="istickedoff">withFdmSolveSplitting a6 $ \a6' -&gt; </span>
+<span class="lineno"> 1155 </span><span class="spaces">  </span><span class="istickedoff">withMaybeFdmStepCondition a7 $ \a7' -&gt; </span>
+<span class="lineno"> 1156 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a8 $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno"> 1157 </span><span class="spaces">  </span><span class="istickedoff">withFdmSchemeDesc a9 $ \a9' -&gt; </span>
+<span class="lineno"> 1158 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno"> 1159 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = realToFrac a11} in </span>
+<span class="lineno"> 1160 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = fromIntegral a12} in </span>
+<span class="lineno"> 1161 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = fromIntegral a13} in </span>
+<span class="lineno"> 1162 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a14'1, a14'2) -&gt; </span>
+<span class="lineno"> 1163 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a15' -&gt; </span>
+<span class="lineno"> 1164 </span><span class="spaces">  </span><span class="istickedoff">fdmSolve'_ a1' a2' a3' a4' a5' a6' a7' a8'1  a8'2 a9' a10' a11' a12' a13' a14'1  a14'2 a15' &gt;&gt;</span>
+<span class="lineno"> 1165 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a14'1  a14'2&gt;&gt;= \a14'' -&gt; </span>
+<span class="lineno"> 1166 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a15'&gt;&gt;</span>
+<span class="lineno"> 1167 </span><span class="spaces">  </span><span class="istickedoff">return (a14'')</span></span>
+<span class="lineno"> 1168 </span>
+<span class="lineno"> 1169 </span>
+<span class="lineno"> 1170 </span>
+<span class="lineno"> 1171 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno"> 1172 </span>
+<span class="lineno"> 1173 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPathGenerator&quot;
+<span class="lineno"> 1174 </span>  pathGenerator'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CStochasticProcess')) -&gt; ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPathGenerator))))))))))
+<span class="lineno"> 1175 </span>
+<span class="lineno"> 1176 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSobolPathGenerator&quot;
+<span class="lineno"> 1177 </span>  sobolPathGenerator'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CStochasticProcess')) -&gt; ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPathGenerator))))))))))
+<span class="lineno"> 1178 </span>
+<span class="lineno"> 1179 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPathGeneratorNext&quot;
+<span class="lineno"> 1180 </span>  next'_ :: ((C2HSImp.Ptr (CPathGenerator)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSamplePath)))))
+<span class="lineno"> 1181 </span>
+<span class="lineno"> 1182 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPathGeneratorAntithetic&quot;
+<span class="lineno"> 1183 </span>  antithetic'_ :: ((C2HSImp.Ptr (CPathGenerator)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSamplePath)))))
+<span class="lineno"> 1184 </span>
+<span class="lineno"> 1185 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathWeight&quot;
+<span class="lineno"> 1186 </span>  weight'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno"> 1187 </span>
+<span class="lineno"> 1188 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAssetNumber&quot;
+<span class="lineno"> 1189 </span>  assetNumber'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (IO C2HSImp.CUInt))
+<span class="lineno"> 1190 </span>
+<span class="lineno"> 1191 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathSize&quot;
+<span class="lineno"> 1192 </span>  pathSize'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (IO C2HSImp.CUInt))
+<span class="lineno"> 1193 </span>
+<span class="lineno"> 1194 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAt&quot;
+<span class="lineno"> 1195 </span>  assetAt'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 1196 </span>
+<span class="lineno"> 1197 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAssetPath&quot;
+<span class="lineno"> 1198 </span>  asset'_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno"> 1199 </span>
+<span class="lineno"> 1200 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlSamplePathAssetPath&quot;
+<span class="lineno"> 1201 </span>  asset''_ :: ((C2HSImp.Ptr (CSamplePath)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno"> 1202 </span>
+<span class="lineno"> 1203 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlLsmRegress&quot;
+<span class="lineno"> 1204 </span>  lsmRegress'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
+<span class="lineno"> 1205 </span>
+<span class="lineno"> 1206 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlLsmRegressMulti&quot;
+<span class="lineno"> 1207 </span>  qlLsmRegressMulti'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))
+<span class="lineno"> 1208 </span>
+<span class="lineno"> 1209 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmRollback&quot;
+<span class="lineno"> 1210 </span>  fdmRollback'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ()))))))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ())))))))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ()))))))))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ())))))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CFdmSchemeDesc)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
+<span class="lineno"> 1211 </span>
+<span class="lineno"> 1212 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlPredefined1dMesher&quot;
+<span class="lineno"> 1213 </span>  predefined1dMesher'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))
+<span class="lineno"> 1214 </span>
+<span class="lineno"> 1215 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlUniform1dMesher&quot;
+<span class="lineno"> 1216 </span>  uniform1dMesher'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher)))))))
+<span class="lineno"> 1217 </span>
+<span class="lineno"> 1218 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlConcentrating1dMesher&quot;
+<span class="lineno"> 1219 </span>  concentrating1dMesher'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))))))
+<span class="lineno"> 1220 </span>
+<span class="lineno"> 1221 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlConcentrating1dMesherMulti&quot;
+<span class="lineno"> 1222 </span>  qlConcentrating1dMesherMulti'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))))))))
+<span class="lineno"> 1223 </span>
+<span class="lineno"> 1224 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlGluedMesher&quot;
+<span class="lineno"> 1225 </span>  gluedMesher'_ :: ((C2HSImp.Ptr (CFdm1dMesher)) -&gt; ((C2HSImp.Ptr (CFdm1dMesher)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))
+<span class="lineno"> 1226 </span>
+<span class="lineno"> 1227 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmBlackScholesMesher&quot;
+<span class="lineno"> 1228 </span>  fdmBlackScholesMesher'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDividend))) -&gt; ((C2HSImp.Ptr (CFdmQuantoHelper)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))))))))))))))
+<span class="lineno"> 1229 </span>
+<span class="lineno"> 1230 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmCev1dMesher&quot;
+<span class="lineno"> 1231 </span>  fdmCev1dMesher'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher)))))))))))))
+<span class="lineno"> 1232 </span>
+<span class="lineno"> 1233 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlExponentialJump1dMesher&quot;
+<span class="lineno"> 1234 </span>  exponentialJump1dMesher'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher)))))))))
+<span class="lineno"> 1235 </span>
+<span class="lineno"> 1236 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmSimpleProcess1dMesher&quot;
+<span class="lineno"> 1237 </span>  fdmSimpleProcess1dMesher'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CStochasticProcess1D')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))))))
+<span class="lineno"> 1238 </span>
+<span class="lineno"> 1239 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmHestonVarianceMesher&quot;
+<span class="lineno"> 1240 </span>  fdmHestonVarianceMesher'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher))))))))))
+<span class="lineno"> 1241 </span>
+<span class="lineno"> 1242 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmHestonLocalVolatilityVarianceMesher&quot;
+<span class="lineno"> 1243 </span>  fdmHestonLocalVolatilityVarianceMesher'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; ((C2HSImp.Ptr (CLocalVolTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdm1dMesher)))))))))))
+<span class="lineno"> 1244 </span>
+<span class="lineno"> 1245 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmMesherComposite&quot;
+<span class="lineno"> 1246 </span>  fdmMesherComposite'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CFdm1dMesher))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmMesher))))))
+<span class="lineno"> 1247 </span>
+<span class="lineno"> 1248 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmMesherLocations&quot;
+<span class="lineno"> 1249 </span>  fdmMesherLocations'_ :: ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno"> 1250 </span>
+<span class="lineno"> 1251 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmZeroInnerValue&quot;
+<span class="lineno"> 1252 </span>  fdmZeroInnerValue'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmInnerValueCalculator))))
+<span class="lineno"> 1253 </span>
+<span class="lineno"> 1254 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmCellAveragingInnerValue&quot;
+<span class="lineno"> 1255 </span>  fdmCellAveragingInnerValue'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmInnerValueCalculator)))))))
+<span class="lineno"> 1256 </span>
+<span class="lineno"> 1257 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmLogInnerValue&quot;
+<span class="lineno"> 1258 </span>  fdmLogInnerValue'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmInnerValueCalculator)))))))
+<span class="lineno"> 1259 </span>
+<span class="lineno"> 1260 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmLogBasketInnerValue&quot;
+<span class="lineno"> 1261 </span>  fdmLogBasketInnerValue'_ :: ((QlBasketPayoff) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmInnerValueCalculator))))))
+<span class="lineno"> 1262 </span>
+<span class="lineno"> 1263 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmAffineG2ModelSwapInnerValue&quot;
+<span class="lineno"> 1264 </span>  qlFdmAffineG2ModelSwapInnerValue'_ :: ((C2HSImp.Ptr (CG2')) -&gt; ((C2HSImp.Ptr (CG2')) -&gt; ((C2HSImp.Ptr (CFixedVsFloatingSwap')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmInnerValueCalculator))))))))))))
+<span class="lineno"> 1265 </span>
+<span class="lineno"> 1266 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmAffineHullWhiteModelSwapInnerValue&quot;
+<span class="lineno"> 1267 </span>  qlFdmAffineHullWhiteModelSwapInnerValue'_ :: ((C2HSImp.Ptr (CHullWhite')) -&gt; ((C2HSImp.Ptr (CHullWhite')) -&gt; ((C2HSImp.Ptr (CFixedVsFloatingSwap')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmInnerValueCalculator))))))))))))
+<span class="lineno"> 1268 </span>
+<span class="lineno"> 1269 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmInnerValueCalculatorEval&quot;
+<span class="lineno"> 1270 </span>  fdmInnerValue'_ :: ((C2HSImp.Ptr (CFdmInnerValueCalculator)) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 1271 </span>
+<span class="lineno"> 1272 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmInnerValueCalculatorAvgEval&quot;
+<span class="lineno"> 1273 </span>  fdmAvgInnerValue'_ :: ((C2HSImp.Ptr (CFdmInnerValueCalculator)) -&gt; ((C2HSImp.Ptr (CFdmMesher)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 1274 </span>
+<span class="lineno"> 1275 </span>foreign import ccall safe &quot;QuantLib/Method.chs.h qlFdmSolve&quot;
+<span class="lineno"> 1276 </span>  fdmSolve'_ :: ((C2HSImp.Ptr (CFdmMesher)) -&gt; ((C2HSImp.Ptr (CFdmInnerValueCalculator)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ()))))))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ())))))))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ()))))))))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (IO ())))))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CFdmSchemeDesc)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
 
 </pre>
 </body>

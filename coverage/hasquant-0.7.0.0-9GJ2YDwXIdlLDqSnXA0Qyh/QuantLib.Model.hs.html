@@ -339,18 +339,18 @@ span.spaces    { background: white }
 <span class="lineno">  320 </span> -&gt; (Double) -- ^eta
 <span class="lineno">  321 </span> -&gt; (Double) -- ^rho
 <span class="lineno">  322 </span> -&gt; IO ((G2))
-<span class="lineno">  323 </span><span class="decl"><span class="nottickedoff">g2 a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  324 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  325 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="nottickedoff">g2'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="nottickedoff">peekG2 res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  323 </span><span class="decl"><span class="istickedoff">g2 a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">g2'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">peekG2 res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  335 </span>
 <span class="lineno">  336 </span>
 <span class="lineno">  337 </span>

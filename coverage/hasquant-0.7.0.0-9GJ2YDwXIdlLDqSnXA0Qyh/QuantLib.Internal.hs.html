@@ -42,344 +42,348 @@ span.spaces    { background: white }
 <span class="lineno">   23 </span>  , withDoubleArray
 <span class="lineno">   24 </span>  , withNonEmptyDoubleArray
 <span class="lineno">   25 </span>  , withDoubleArrayRaw
-<span class="lineno">   26 </span>  , withDayPtr
-<span class="lineno">   27 </span>  , withStringArray
-<span class="lineno">   28 </span>  , peekCStringArray
-<span class="lineno">   29 </span>  , fromEnumQuantity
-<span class="lineno">   30 </span>  , toEnumQuantity
-<span class="lineno">   31 </span>  , fromEnumDouble
-<span class="lineno">   32 </span>  , toEnumDouble
-<span class="lineno">   33 </span>  , fromEnumC
-<span class="lineno">   34 </span>  , toEnumC
-<span class="lineno">   35 </span>
-<span class="lineno">   36 </span>  , withDay
-<span class="lineno">   37 </span>  , toDay
-<span class="lineno">   38 </span>  , withMaybeDay
-<span class="lineno">   39 </span>  , fromMaybeInt
-<span class="lineno">   40 </span>  , toMaybeDay
-<span class="lineno">   41 </span>  , peekDayArray
-<span class="lineno">   42 </span>  , peekBoolArray
-<span class="lineno">   43 </span>  , withDayArray
-<span class="lineno">   44 </span>  , peekDoubleArray
-<span class="lineno">   45 </span>  , peekDoubleVector
-<span class="lineno">   46 </span>
-<span class="lineno">   47 </span>  , toSerial
-<span class="lineno">   48 </span>  , fromSerial
-<span class="lineno">   49 </span>  , qlSavedSettings
-<span class="lineno">   50 </span>  , qlFreeSavedSettings
-<span class="lineno">   51 </span>  , fromMaybeDouble
-<span class="lineno">   52 </span>  , fromMaybeEnum
-<span class="lineno">   53 </span>  , fromMaybeEnumQuantity
-<span class="lineno">   54 </span>  , peekIntArray
-<span class="lineno">   55 </span>  , peekIntArray'
-<span class="lineno">   56 </span>  , peekUIntArray
-<span class="lineno">   57 </span>  , peekWord
-<span class="lineno">   58 </span>  , peekStructArray
-<span class="lineno">   59 </span>  , peekPtrArray
-<span class="lineno">   60 </span>  , Matrix(..)
-<span class="lineno">   61 </span>  , realMatrix
-<span class="lineno">   62 </span>  , objectMatrix
-<span class="lineno">   63 </span>  , qlNullInteger
-<span class="lineno">   64 </span>  , qlFreeAdditionalResults
-<span class="lineno">   65 </span>
-<span class="lineno">   66 </span>  , uncurryNested
-<span class="lineno">   67 </span>  , zipWith6
-<span class="lineno">   68 </span>  )
-<span class="lineno">   69 </span>where
-<span class="lineno">   70 </span>
-<span class="lineno">   71 </span>import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
-<span class="lineno">   72 </span>import Foreign.C.String(CString, peekCString, withCString)
-<span class="lineno">   73 </span>import Foreign.Ptr(Ptr, nullPtr, castPtr)
-<span class="lineno">   74 </span>import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
-<span class="lineno">   75 </span>import Foreign.Marshal.Array(peekArray, withArray)
-<span class="lineno">   76 </span>import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
-<span class="lineno">   77 </span>import Foreign.Storable(peek, Storable)
-<span class="lineno">   78 </span>import Foreign.Marshal.Alloc(alloca)
-<span class="lineno">   79 </span>
-<span class="lineno">   80 </span>import Control.Exception(throwIO)
-<span class="lineno">   81 </span>import Control.Monad(when)
-<span class="lineno">   82 </span>import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
-<span class="lineno">   83 </span>import Data.List.NonEmpty(NonEmpty, toList)
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
-<span class="lineno">   86 </span>
-<span class="lineno">   87 </span>import QuantLib.Type(Error(DateConversion, CPlusPlusException))
-<span class="lineno">   88 </span>
-<span class="lineno">   89 </span>errorCheck :: Ptr CString -&gt; IO ()
-<span class="lineno">   90 </span><span class="decl"><span class="istickedoff">errorCheck p = do</span>
-<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">a &lt;- peek p</span>
-<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">when</span>
-<span class="lineno">   93 </span><span class="spaces">    </span><span class="istickedoff">(a /= nullPtr)</span>
-<span class="lineno">   94 </span><span class="spaces">    </span><span class="istickedoff">((peekCString a &lt;* qlFreeString a) &gt;&gt;= throwIO . CPlusPlusException)</span></span>
-<span class="lineno">   95 </span>
-<span class="lineno">   96 </span>-- like alloca but initializes the allocated pointer with zero
-<span class="lineno">   97 </span>preErrorCheck :: (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
-<span class="lineno">   98 </span><span class="decl"><span class="istickedoff">preErrorCheck = with nullPtr</span></span>
-<span class="lineno">   99 </span>
-<span class="lineno">  100 </span>fromMaybeBool :: Maybe Bool -&gt; CInt
-<span class="lineno">  101 </span><span class="decl"><span class="istickedoff">fromMaybeBool = maybe (-1) fromBool</span></span>
-<span class="lineno">  102 </span>
-<span class="lineno">  103 </span>foreign import ccall safe &quot;ql.h qlNullInteger&quot; qlNullInteger :: CInt
-<span class="lineno">  104 </span>foreign import ccall safe &quot;ql.h qlNullReal&quot; qlNullReal :: CDouble
-<span class="lineno">  105 </span>
-<span class="lineno">  106 </span>fromMaybeInt :: (Integral a, Integral b) =&gt; Maybe a -&gt; b
-<span class="lineno">  107 </span><span class="decl"><span class="istickedoff">fromMaybeInt = maybe (fromIntegral qlNullInteger) fromIntegral</span></span>
-<span class="lineno">  108 </span>
-<span class="lineno">  109 </span>fromMaybeDouble :: Maybe Double -&gt; CDouble
-<span class="lineno">  110 </span><span class="decl"><span class="istickedoff">fromMaybeDouble = maybe qlNullReal realToFrac</span></span>
-<span class="lineno">  111 </span>
-<span class="lineno">  112 </span>-- |Marshals a Maybe of a plain by-value C++ enum whose lowest member maps to 0
-<span class="lineno">  113 </span>-- (true of every by-value enum bound so far) as a C int, using -1 as the
-<span class="lineno">  114 </span>-- ext::nullopt sentinel -- mirrors fromMaybeBool's convention.
-<span class="lineno">  115 </span>fromMaybeEnum :: Enum a =&gt; Maybe a -&gt; CInt
-<span class="lineno">  116 </span><span class="decl"><span class="istickedoff">fromMaybeEnum = maybe (-1) (fromIntegral . fromEnum)</span></span>
-<span class="lineno">  117 </span>
-<span class="lineno">  118 </span>-- |'Nothing' emits the enum's -1 sentinel (same convention as 'fromMaybeEnum'), paired with a
-<span class="lineno">  119 </span>-- placeholder quantity of 0 -- for enums like 'TimeUnit' that start at 0 and can't self-sentinel.
-<span class="lineno">  120 </span>fromMaybeEnumQuantity :: Enum a =&gt; Maybe (Word, a) -&gt; (CInt, CInt)
-<span class="lineno">  121 </span><span class="decl"><span class="istickedoff">fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity</span></span>
-<span class="lineno">  122 </span>
-<span class="lineno">  123 </span>toMaybeBool :: CInt -&gt; Maybe Bool
-<span class="lineno">  124 </span><span class="decl"><span class="istickedoff">toMaybeBool x = if x == -1 then Nothing else Just $ toBool x</span></span>
-<span class="lineno">  125 </span>
-<span class="lineno">  126 </span>peekDynString :: CString -&gt; IO String
-<span class="lineno">  127 </span><span class="decl"><span class="istickedoff">peekDynString x = peekCString x &lt;* qlFreeString x</span></span>
-<span class="lineno">  128 </span>
-<span class="lineno">  129 </span>peekEnum :: (Enum a) =&gt; Ptr CInt -&gt; IO a
-<span class="lineno">  130 </span><span class="decl"><span class="istickedoff">peekEnum x = toEnum . fromIntegral &lt;$&gt; peek x</span></span>
-<span class="lineno">  131 </span>
-<span class="lineno">  132 </span>peekDouble :: Ptr CDouble -&gt; IO Double
-<span class="lineno">  133 </span><span class="decl"><span class="istickedoff">peekDouble x = realToFrac &lt;$&gt; peek x</span></span>
-<span class="lineno">  134 </span>
-<span class="lineno">  135 </span>peekWord :: Ptr CUInt -&gt; IO Word
-<span class="lineno">  136 </span><span class="decl"><span class="istickedoff">peekWord x = fromIntegral &lt;$&gt; peek x</span></span>
-<span class="lineno">  137 </span>
-<span class="lineno">  138 </span>-- initialize pointer to a enum with a valid value before passing it to the function
-<span class="lineno">  139 </span>preEnum :: (Storable a, Bounded a) =&gt; (Ptr a -&gt; IO b) -&gt; IO b
-<span class="lineno">  140 </span><span class="decl"><span class="istickedoff">preEnum = with minBound</span></span>
-<span class="lineno">  141 </span>
-<span class="lineno">  142 </span>preNum :: (Storable a, Num a) =&gt; (Ptr a -&gt; IO b) -&gt; IO b
-<span class="lineno">  143 </span><span class="decl"><span class="nottickedoff">preNum = with 0</span></span>
-<span class="lineno">  144 </span>
-<span class="lineno">  145 </span>foreign import ccall safe &quot;ql.h qlFreeString&quot; qlFreeString :: CString -&gt; IO ()
-<span class="lineno">  146 </span>foreign import ccall safe &quot;ql.h qlFreeInts&quot; qlFreeInts :: Ptr CInt -&gt; IO ()
-<span class="lineno">  147 </span>foreign import ccall safe &quot;ql.h qlFreeUInts&quot; qlFreeUInts :: Ptr CUInt -&gt; IO ()
-<span class="lineno">  148 </span>foreign import ccall safe &quot;ql.h qlFreeDoubles&quot; qlFreeDoubles :: Ptr CDouble -&gt; IO ()
-<span class="lineno">  149 </span>foreign import ccall safe &quot;ql.h &amp;qlFreeDoubles&quot; qlFreeDoublesFin :: FinalizerPtr CDouble
-<span class="lineno">  150 </span>foreign import ccall safe &quot;ql.h qlFreePointerArray&quot; qlFreePointerArray :: Ptr (Ptr ()) -&gt; IO ()
-<span class="lineno">  151 </span>foreign import ccall safe &quot;ql.h qlFreeAdditionalResults&quot; qlFreeAdditionalResults :: CUInt -&gt; Ptr () -&gt; IO ()
-<span class="lineno">  152 </span>foreign import ccall safe &quot;ql.h qlFreeStringArray&quot; qlFreeStringArray :: CUInt -&gt; Ptr CString -&gt; IO ()
-<span class="lineno">  153 </span>foreign import ccall safe &quot;ql.h qlSavedSettings&quot; qlSavedSettings :: IO (Ptr ())
-<span class="lineno">  154 </span>foreign import ccall safe &quot;ql.h qlFreeSavedSettings&quot; qlFreeSavedSettings :: Ptr () -&gt; IO ()
-<span class="lineno">  155 </span>
-<span class="lineno">  156 </span>withLArray :: (Storable b) =&gt; (a -&gt; b) -&gt; [a] -&gt; ((CUInt, Ptr b) -&gt; IO c) -&gt; IO c
-<span class="lineno">  157 </span><span class="decl"><span class="istickedoff">withLArray c x f = withArray (map c x) (\px -&gt; f (fromIntegral $ length x, px))</span></span>
-<span class="lineno">  158 </span>
-<span class="lineno">  159 </span>withEnumArray :: (Enum a) =&gt; [a] -&gt; ((CUInt, Ptr CInt) -&gt; IO b) -&gt; IO b
-<span class="lineno">  160 </span><span class="decl"><span class="istickedoff">withEnumArray = withLArray (fromIntegral . fromEnum)</span></span>
-<span class="lineno">  161 </span>
-<span class="lineno">  162 </span>withIntArray :: (Integral a, Num n, Storable n) =&gt; [a] -&gt; ((CUInt, Ptr n) -&gt; IO b) -&gt; IO b
-<span class="lineno">  163 </span><span class="decl"><span class="istickedoff">withIntArray = withLArray fromIntegral</span></span>
-<span class="lineno">  164 </span>
-<span class="lineno">  165 </span>withBoolArray :: [Bool] -&gt; ((CUInt, Ptr CInt) -&gt; IO b) -&gt; IO b
-<span class="lineno">  166 </span><span class="decl"><span class="istickedoff">withBoolArray = withLArray fromBool</span></span>
-<span class="lineno">  167 </span>
-<span class="lineno">  168 </span>withDoubleArray :: [Double] -&gt; ((CUInt, Ptr CDouble) -&gt; IO b) -&gt; IO b
-<span class="lineno">  169 </span><span class="decl"><span class="istickedoff">withDoubleArray = withLArray realToFrac</span></span>
-<span class="lineno">  170 </span>
-<span class="lineno">  171 </span>withNonEmptyDoubleArray :: NonEmpty Double -&gt; ((CUInt, Ptr CDouble) -&gt; IO b) -&gt; IO b
-<span class="lineno">  172 </span><span class="decl"><span class="istickedoff">withNonEmptyDoubleArray x = withLArray realToFrac (toList x)</span></span>
-<span class="lineno">  173 </span>
-<span class="lineno">  174 </span>withDoubleArrayRaw :: [Double] -&gt; (Ptr CDouble -&gt; IO b) -&gt; IO b
-<span class="lineno">  175 </span><span class="decl"><span class="istickedoff">withDoubleArrayRaw x = withArray (map realToFrac x)</span></span>
-<span class="lineno">  176 </span>
-<span class="lineno">  177 </span>withDayArray :: [Day] -&gt; ((CUInt, Ptr CInt) -&gt; IO b) -&gt; IO b
-<span class="lineno">  178 </span><span class="decl"><span class="istickedoff">withDayArray x f = mapM toSerial x &gt;&gt;= (`withArray` (\px -&gt; f (fromIntegral $ length x, px)))</span></span>
-<span class="lineno">  179 </span>
-<span class="lineno">  180 </span>withDayPtr :: [Day] -&gt; (Ptr CInt -&gt; IO a) -&gt; IO a
-<span class="lineno">  181 </span><span class="decl"><span class="istickedoff">withDayPtr x f = mapM toSerial x &gt;&gt;= (`withArray` f)</span></span>
-<span class="lineno">  182 </span>
-<span class="lineno">  183 </span>-- |An array of plain C strings, for a function taking a @std::vector&lt;std::string&gt;@-shaped
-<span class="lineno">  184 </span>-- argument as a flat @(count, char**)@ pair (the input-side counterpart of 'peekCStringArray'
-<span class="lineno">  185 </span>-- below) -- first needed for @SecondaryCosts@' string keys (@QuantLib.Instrument.Energy@).
-<span class="lineno">  186 </span>withStringArray :: [String] -&gt; ((CUInt, Ptr CString) -&gt; IO b) -&gt; IO b
-<span class="lineno">  187 </span><span class="decl"><span class="istickedoff">withStringArray xs f = withMany withCString xs (\ps -&gt; withArray ps (\p -&gt; f (fromIntegral (length xs), p)))</span></span>
-<span class="lineno">  188 </span>
-<span class="lineno">  189 </span>prePtr :: (Storable a) =&gt; (Ptr a -&gt; IO b) -&gt; IO b
-<span class="lineno">  190 </span><span class="decl"><span class="istickedoff">prePtr = alloca</span></span>
-<span class="lineno">  191 </span>
-<span class="lineno">  192 </span>preArray :: ((Ptr CUInt, Ptr (Ptr a)) -&gt; IO b) -&gt; IO b
-<span class="lineno">  193 </span><span class="decl"><span class="istickedoff">preArray f = with 0 $</span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">\x -&gt; with nullPtr $</span>
-<span class="lineno">  195 </span><span class="spaces">    </span><span class="istickedoff">\y -&gt; f (x, y)</span></span>
-<span class="lineno">  196 </span>
-<span class="lineno">  197 </span>peekIntArray' :: (CInt -&gt; b) -&gt; Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [b]
-<span class="lineno">  198 </span><span class="decl"><span class="istickedoff">peekIntArray' f pl pp = do</span>
-<span class="lineno">  199 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
-<span class="lineno">  200 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
-<span class="lineno">  201 </span><span class="spaces">  </span><span class="istickedoff">map f &lt;$&gt; peekArray (fromIntegral l) p &lt;* qlFreeInts p</span></span>
-<span class="lineno">  202 </span>
-<span class="lineno">  203 </span>peekUIntArray :: Ptr CUInt -&gt; Ptr (Ptr CUInt) -&gt; IO [Word]
-<span class="lineno">  204 </span><span class="decl"><span class="nottickedoff">peekUIntArray pl pp = do</span>
-<span class="lineno">  205 </span><span class="spaces">  </span><span class="nottickedoff">l &lt;- peek pl</span>
-<span class="lineno">  206 </span><span class="spaces">  </span><span class="nottickedoff">p &lt;- peek pp</span>
-<span class="lineno">  207 </span><span class="spaces">  </span><span class="nottickedoff">map fromIntegral &lt;$&gt; peekArray (fromIntegral l) p &lt;* qlFreeUInts p</span></span>
-<span class="lineno">  208 </span>
-<span class="lineno">  209 </span>peekIntArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Int]
-<span class="lineno">  210 </span><span class="decl"><span class="istickedoff">peekIntArray = peekIntArray' <span class="nottickedoff">fromIntegral</span></span></span>
-<span class="lineno">  211 </span>
-<span class="lineno">  212 </span>-- |An array of freshly heap-allocated (@DUP@'d) C strings -- the output-side counterpart of
-<span class="lineno">  213 </span>-- 'withStringArray'. Each element is read via 'peekCString' and the whole array (including every
-<span class="lineno">  214 </span>-- individual string) is then released via 'qlFreeStringArray' in one call, mirroring
-<span class="lineno">  215 </span>-- 'peekDoubleArray'\/'peekIntArray'\''s read-then-free shape.
-<span class="lineno">  216 </span>peekCStringArray :: Ptr CUInt -&gt; Ptr (Ptr CString) -&gt; IO [String]
-<span class="lineno">  217 </span><span class="decl"><span class="nottickedoff">peekCStringArray pl pp = do</span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="nottickedoff">l &lt;- peek pl</span>
-<span class="lineno">  219 </span><span class="spaces">  </span><span class="nottickedoff">p &lt;- peek pp</span>
-<span class="lineno">  220 </span><span class="spaces">  </span><span class="nottickedoff">raws &lt;- peekArray (fromIntegral l) p</span>
-<span class="lineno">  221 </span><span class="spaces">  </span><span class="nottickedoff">strs &lt;- mapM peekCString raws</span>
-<span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">strs &lt;$ qlFreeStringArray l p</span></span>
-<span class="lineno">  223 </span>
-<span class="lineno">  224 </span>peekBoolArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Bool]
-<span class="lineno">  225 </span><span class="decl"><span class="istickedoff">peekBoolArray = peekIntArray' toBool</span></span>
-<span class="lineno">  226 </span>
-<span class="lineno">  227 </span>peekDayArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Day]
-<span class="lineno">  228 </span><span class="decl"><span class="istickedoff">peekDayArray = peekIntArray' fromSerial</span></span>
-<span class="lineno">  229 </span>
-<span class="lineno">  230 </span>peekDoubleArray :: Ptr CUInt -&gt; Ptr (Ptr CDouble) -&gt; IO [Double]
-<span class="lineno">  231 </span><span class="decl"><span class="istickedoff">peekDoubleArray pl pp = do</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">map realToFrac &lt;$&gt; peekArray (fromIntegral l) p &lt;* qlFreeDoubles p</span></span>
-<span class="lineno">  235 </span>
-<span class="lineno">  236 </span>peekDoubleVector :: Ptr CUInt -&gt; Ptr (Ptr CDouble) -&gt; IO (Vector CDouble)
-<span class="lineno">  237 </span><span class="decl"><span class="nottickedoff">peekDoubleVector pl pp = unsafeFromForeignPtr0 &lt;$&gt; (peek pp &gt;&gt;= newForeignPtr qlFreeDoublesFin) &lt;*&gt; (fromIntegral &lt;$&gt; peek pl)</span></span>
-<span class="lineno">  238 </span>
-<span class="lineno">  239 </span>-- |Like 'peekIntArray'\''/'peekDoubleArray', but for an array of a C struct rather than a C
-<span class="lineno">  240 </span>-- primitive: reads the length and pointer out-params, walks the array via 'peekArray' (so the
-<span class="lineno">  241 </span>-- element type just needs a 'Storable' instance -- e.g. one built from c2hs @{#get#}@/@{#sizeof#}@
-<span class="lineno">  242 </span>-- hooks), converts every element via @convert@, /then/ hands the whole array to @freeFn@ to
-<span class="lineno">  243 </span>-- release. The conversion must run before the free -- unlike 'peekIntArray'\''/'peekDoubleArray',
-<span class="lineno">  244 </span>-- whose elements are self-contained primitives, a struct element read here may itself own
-<span class="lineno">  245 </span>-- further heap buffers (e.g. a @char*@/@double*@ field) that @convert@ still needs to dereference
-<span class="lineno">  246 </span>-- (via 'peekCString'/'peekArray' etc.); freeing first would leave it reading already-freed
-<span class="lineno">  247 </span>-- memory. @freeFn@ takes the element count because some frees need it (e.g.
-<span class="lineno">  248 </span>-- 'qlFreeAdditionalResults'); one that doesn't can ignore it.
-<span class="lineno">  249 </span>peekStructArray :: Storable a =&gt; (a -&gt; IO b) -&gt; (CUInt -&gt; Ptr a -&gt; IO ()) -&gt; Ptr CUInt -&gt; Ptr (Ptr a) -&gt; IO [b]
-<span class="lineno">  250 </span><span class="decl"><span class="istickedoff">peekStructArray convert freeFn pl pp = do</span>
-<span class="lineno">  251 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
-<span class="lineno">  252 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
-<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">raws &lt;- peekArray (fromIntegral l) p</span>
-<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">results &lt;- mapM convert raws</span>
-<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">results &lt;$ freeFn l p</span></span>
-<span class="lineno">  256 </span>
-<span class="lineno">  257 </span>-- |Like 'peekStructArray' but for a @T**@ array of C++-owned pointers to live objects: peeks the
-<span class="lineno">  258 </span>-- length/pointer out-params, converts each raw pointer to a live Haskell value via @peekOne@
-<span class="lineno">  259 </span>-- (installing that value's own finalizer over the pointee), then frees only the array spine via
-<span class="lineno">  260 </span>-- 'qlFreePointerArray' -- not the pointees, whose lifetime @peekOne@ has now taken over.
-<span class="lineno">  261 </span>peekPtrArray :: (Ptr a -&gt; IO b) -&gt; Ptr CUInt -&gt; Ptr (Ptr (Ptr a)) -&gt; IO [b]
-<span class="lineno">  262 </span><span class="decl"><span class="istickedoff">peekPtrArray peekOne pl pp = do</span>
-<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
-<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
-<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">ptrs &lt;- peekArray (fromIntegral l) p</span>
-<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">xs &lt;- mapM peekOne ptrs</span>
-<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">xs &lt;$ qlFreePointerArray (castPtr p)</span></span>
-<span class="lineno">  268 </span>
-<span class="lineno">  269 </span>fromEnumQuantity :: (Enum a, Integral b, Integral c) =&gt; (b, a) -&gt; (CInt, c)
-<span class="lineno">  270 </span><span class="decl"><span class="istickedoff">fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)</span></span>
-<span class="lineno">  271 </span>
-<span class="lineno">  272 </span>toEnumQuantity :: (Enum a, Integral b, Integral c) =&gt; (CInt, c) -&gt; (b, a)
-<span class="lineno">  273 </span><span class="decl"><span class="nottickedoff">toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)</span></span>
-<span class="lineno">  274 </span>
-<span class="lineno">  275 </span>fromEnumDouble :: (Enum a, Integral c) =&gt; (Double, a) -&gt; (CDouble, c)
-<span class="lineno">  276 </span><span class="decl"><span class="istickedoff">fromEnumDouble (x, u) = (realToFrac x, fromIntegral $ fromEnum u)</span></span>
-<span class="lineno">  277 </span>
-<span class="lineno">  278 </span>toEnumDouble :: (Enum a, Integral c) =&gt; (CDouble, c) -&gt; (Double, a)
-<span class="lineno">  279 </span><span class="decl"><span class="nottickedoff">toEnumDouble (x, u) = (realToFrac x, toEnum $ fromIntegral u)</span></span>
-<span class="lineno">  280 </span>
-<span class="lineno">  281 </span>foreign import ccall safe &quot;ql.h qlMinYear&quot; qlMinYear :: CInt
-<span class="lineno">  282 </span>foreign import ccall safe &quot;ql.h qlMinMonth&quot; qlMinMonth :: CInt
-<span class="lineno">  283 </span>foreign import ccall safe &quot;ql.h qlMinDay&quot; qlMinDay :: CInt
-<span class="lineno">  284 </span>foreign import ccall safe &quot;ql.h qlMinDateSerialNumber&quot; qlMinDateSerialNumber :: CInt
-<span class="lineno">  285 </span>foreign import ccall safe &quot;ql.h qlMaxDateSerialNumber&quot; qlMaxDateSerialNumber :: CInt
-<span class="lineno">  286 </span>
-<span class="lineno">  287 </span>-- |Julian day of the QuantLib zero date
-<span class="lineno">  288 </span>qlStart :: CInt
-<span class="lineno">  289 </span><span class="decl"><span class="istickedoff">qlStart = minDateJulianDays - qlMinDateSerialNumber</span>
-<span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">where minDateJulianDays = toModifiedJulianDay' $ fromGregorian (fromIntegral qlMinYear) (fromIntegral qlMinMonth) (fromIntegral qlMinDay)</span></span>
-<span class="lineno">  291 </span>
-<span class="lineno">  292 </span>toModifiedJulianDay' :: Day -&gt; CInt
-<span class="lineno">  293 </span><span class="decl"><span class="istickedoff">toModifiedJulianDay' = fromIntegral . toModifiedJulianDay</span></span>
-<span class="lineno">  294 </span>
-<span class="lineno">  295 </span>fromSerial :: CInt -&gt; Day
-<span class="lineno">  296 </span><span class="decl"><span class="istickedoff">fromSerial x = ModifiedJulianDay $ fromIntegral (x + qlStart)</span></span>
-<span class="lineno">  297 </span>
-<span class="lineno">  298 </span>dayIsValid :: Day -&gt; Bool
-<span class="lineno">  299 </span><span class="decl"><span class="istickedoff">dayIsValid x = s &gt;= qlMinDateSerialNumber &amp;&amp; s &lt;= qlMaxDateSerialNumber</span>
-<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">where s = toModifiedJulianDay' x - qlStart</span></span>
+<span class="lineno">   26 </span>  , withBoolArrayRaw
+<span class="lineno">   27 </span>  , withDayPtr
+<span class="lineno">   28 </span>  , withStringArray
+<span class="lineno">   29 </span>  , peekCStringArray
+<span class="lineno">   30 </span>  , fromEnumQuantity
+<span class="lineno">   31 </span>  , toEnumQuantity
+<span class="lineno">   32 </span>  , fromEnumDouble
+<span class="lineno">   33 </span>  , toEnumDouble
+<span class="lineno">   34 </span>  , fromEnumC
+<span class="lineno">   35 </span>  , toEnumC
+<span class="lineno">   36 </span>
+<span class="lineno">   37 </span>  , withDay
+<span class="lineno">   38 </span>  , toDay
+<span class="lineno">   39 </span>  , withMaybeDay
+<span class="lineno">   40 </span>  , fromMaybeInt
+<span class="lineno">   41 </span>  , toMaybeDay
+<span class="lineno">   42 </span>  , peekDayArray
+<span class="lineno">   43 </span>  , peekBoolArray
+<span class="lineno">   44 </span>  , withDayArray
+<span class="lineno">   45 </span>  , peekDoubleArray
+<span class="lineno">   46 </span>  , peekDoubleVector
+<span class="lineno">   47 </span>
+<span class="lineno">   48 </span>  , toSerial
+<span class="lineno">   49 </span>  , fromSerial
+<span class="lineno">   50 </span>  , qlSavedSettings
+<span class="lineno">   51 </span>  , qlFreeSavedSettings
+<span class="lineno">   52 </span>  , fromMaybeDouble
+<span class="lineno">   53 </span>  , fromMaybeEnum
+<span class="lineno">   54 </span>  , fromMaybeEnumQuantity
+<span class="lineno">   55 </span>  , peekIntArray
+<span class="lineno">   56 </span>  , peekIntArray'
+<span class="lineno">   57 </span>  , peekUIntArray
+<span class="lineno">   58 </span>  , peekWord
+<span class="lineno">   59 </span>  , peekStructArray
+<span class="lineno">   60 </span>  , peekPtrArray
+<span class="lineno">   61 </span>  , Matrix(..)
+<span class="lineno">   62 </span>  , realMatrix
+<span class="lineno">   63 </span>  , objectMatrix
+<span class="lineno">   64 </span>  , qlNullInteger
+<span class="lineno">   65 </span>  , qlFreeAdditionalResults
+<span class="lineno">   66 </span>
+<span class="lineno">   67 </span>  , uncurryNested
+<span class="lineno">   68 </span>  , zipWith6
+<span class="lineno">   69 </span>  )
+<span class="lineno">   70 </span>where
+<span class="lineno">   71 </span>
+<span class="lineno">   72 </span>import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
+<span class="lineno">   73 </span>import Foreign.C.String(CString, peekCString, withCString)
+<span class="lineno">   74 </span>import Foreign.Ptr(Ptr, nullPtr, castPtr)
+<span class="lineno">   75 </span>import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
+<span class="lineno">   76 </span>import Foreign.Marshal.Array(peekArray, withArray)
+<span class="lineno">   77 </span>import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
+<span class="lineno">   78 </span>import Foreign.Storable(peek, Storable)
+<span class="lineno">   79 </span>import Foreign.Marshal.Alloc(alloca)
+<span class="lineno">   80 </span>
+<span class="lineno">   81 </span>import Control.Exception(throwIO)
+<span class="lineno">   82 </span>import Control.Monad(when)
+<span class="lineno">   83 </span>import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
+<span class="lineno">   84 </span>import Data.List.NonEmpty(NonEmpty, toList)
+<span class="lineno">   85 </span>
+<span class="lineno">   86 </span>import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
+<span class="lineno">   87 </span>
+<span class="lineno">   88 </span>import QuantLib.Type(Error(DateConversion, CPlusPlusException))
+<span class="lineno">   89 </span>
+<span class="lineno">   90 </span>errorCheck :: Ptr CString -&gt; IO ()
+<span class="lineno">   91 </span><span class="decl"><span class="istickedoff">errorCheck p = do</span>
+<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">a &lt;- peek p</span>
+<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">when</span>
+<span class="lineno">   94 </span><span class="spaces">    </span><span class="istickedoff">(a /= nullPtr)</span>
+<span class="lineno">   95 </span><span class="spaces">    </span><span class="istickedoff">((peekCString a &lt;* qlFreeString a) &gt;&gt;= throwIO . CPlusPlusException)</span></span>
+<span class="lineno">   96 </span>
+<span class="lineno">   97 </span>-- like alloca but initializes the allocated pointer with zero
+<span class="lineno">   98 </span>preErrorCheck :: (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
+<span class="lineno">   99 </span><span class="decl"><span class="istickedoff">preErrorCheck = with nullPtr</span></span>
+<span class="lineno">  100 </span>
+<span class="lineno">  101 </span>fromMaybeBool :: Maybe Bool -&gt; CInt
+<span class="lineno">  102 </span><span class="decl"><span class="istickedoff">fromMaybeBool = maybe (-1) fromBool</span></span>
+<span class="lineno">  103 </span>
+<span class="lineno">  104 </span>foreign import ccall safe &quot;ql.h qlNullInteger&quot; qlNullInteger :: CInt
+<span class="lineno">  105 </span>foreign import ccall safe &quot;ql.h qlNullReal&quot; qlNullReal :: CDouble
+<span class="lineno">  106 </span>
+<span class="lineno">  107 </span>fromMaybeInt :: (Integral a, Integral b) =&gt; Maybe a -&gt; b
+<span class="lineno">  108 </span><span class="decl"><span class="istickedoff">fromMaybeInt = maybe (fromIntegral qlNullInteger) fromIntegral</span></span>
+<span class="lineno">  109 </span>
+<span class="lineno">  110 </span>fromMaybeDouble :: Maybe Double -&gt; CDouble
+<span class="lineno">  111 </span><span class="decl"><span class="istickedoff">fromMaybeDouble = maybe qlNullReal realToFrac</span></span>
+<span class="lineno">  112 </span>
+<span class="lineno">  113 </span>-- |Marshals a Maybe of a plain by-value C++ enum whose lowest member maps to 0
+<span class="lineno">  114 </span>-- (true of every by-value enum bound so far) as a C int, using -1 as the
+<span class="lineno">  115 </span>-- ext::nullopt sentinel -- mirrors fromMaybeBool's convention.
+<span class="lineno">  116 </span>fromMaybeEnum :: Enum a =&gt; Maybe a -&gt; CInt
+<span class="lineno">  117 </span><span class="decl"><span class="istickedoff">fromMaybeEnum = maybe (-1) (fromIntegral . fromEnum)</span></span>
+<span class="lineno">  118 </span>
+<span class="lineno">  119 </span>-- |'Nothing' emits the enum's -1 sentinel (same convention as 'fromMaybeEnum'), paired with a
+<span class="lineno">  120 </span>-- placeholder quantity of 0 -- for enums like 'TimeUnit' that start at 0 and can't self-sentinel.
+<span class="lineno">  121 </span>fromMaybeEnumQuantity :: Enum a =&gt; Maybe (Word, a) -&gt; (CInt, CInt)
+<span class="lineno">  122 </span><span class="decl"><span class="istickedoff">fromMaybeEnumQuantity = maybe (0, -1) fromEnumQuantity</span></span>
+<span class="lineno">  123 </span>
+<span class="lineno">  124 </span>toMaybeBool :: CInt -&gt; Maybe Bool
+<span class="lineno">  125 </span><span class="decl"><span class="istickedoff">toMaybeBool x = if x == -1 then Nothing else Just $ toBool x</span></span>
+<span class="lineno">  126 </span>
+<span class="lineno">  127 </span>peekDynString :: CString -&gt; IO String
+<span class="lineno">  128 </span><span class="decl"><span class="istickedoff">peekDynString x = peekCString x &lt;* qlFreeString x</span></span>
+<span class="lineno">  129 </span>
+<span class="lineno">  130 </span>peekEnum :: (Enum a) =&gt; Ptr CInt -&gt; IO a
+<span class="lineno">  131 </span><span class="decl"><span class="istickedoff">peekEnum x = toEnum . fromIntegral &lt;$&gt; peek x</span></span>
+<span class="lineno">  132 </span>
+<span class="lineno">  133 </span>peekDouble :: Ptr CDouble -&gt; IO Double
+<span class="lineno">  134 </span><span class="decl"><span class="istickedoff">peekDouble x = realToFrac &lt;$&gt; peek x</span></span>
+<span class="lineno">  135 </span>
+<span class="lineno">  136 </span>peekWord :: Ptr CUInt -&gt; IO Word
+<span class="lineno">  137 </span><span class="decl"><span class="istickedoff">peekWord x = fromIntegral &lt;$&gt; peek x</span></span>
+<span class="lineno">  138 </span>
+<span class="lineno">  139 </span>-- initialize pointer to a enum with a valid value before passing it to the function
+<span class="lineno">  140 </span>preEnum :: (Storable a, Bounded a) =&gt; (Ptr a -&gt; IO b) -&gt; IO b
+<span class="lineno">  141 </span><span class="decl"><span class="istickedoff">preEnum = with minBound</span></span>
+<span class="lineno">  142 </span>
+<span class="lineno">  143 </span>preNum :: (Storable a, Num a) =&gt; (Ptr a -&gt; IO b) -&gt; IO b
+<span class="lineno">  144 </span><span class="decl"><span class="nottickedoff">preNum = with 0</span></span>
+<span class="lineno">  145 </span>
+<span class="lineno">  146 </span>foreign import ccall safe &quot;ql.h qlFreeString&quot; qlFreeString :: CString -&gt; IO ()
+<span class="lineno">  147 </span>foreign import ccall safe &quot;ql.h qlFreeInts&quot; qlFreeInts :: Ptr CInt -&gt; IO ()
+<span class="lineno">  148 </span>foreign import ccall safe &quot;ql.h qlFreeUInts&quot; qlFreeUInts :: Ptr CUInt -&gt; IO ()
+<span class="lineno">  149 </span>foreign import ccall safe &quot;ql.h qlFreeDoubles&quot; qlFreeDoubles :: Ptr CDouble -&gt; IO ()
+<span class="lineno">  150 </span>foreign import ccall safe &quot;ql.h &amp;qlFreeDoubles&quot; qlFreeDoublesFin :: FinalizerPtr CDouble
+<span class="lineno">  151 </span>foreign import ccall safe &quot;ql.h qlFreePointerArray&quot; qlFreePointerArray :: Ptr (Ptr ()) -&gt; IO ()
+<span class="lineno">  152 </span>foreign import ccall safe &quot;ql.h qlFreeAdditionalResults&quot; qlFreeAdditionalResults :: CUInt -&gt; Ptr () -&gt; IO ()
+<span class="lineno">  153 </span>foreign import ccall safe &quot;ql.h qlFreeStringArray&quot; qlFreeStringArray :: CUInt -&gt; Ptr CString -&gt; IO ()
+<span class="lineno">  154 </span>foreign import ccall safe &quot;ql.h qlSavedSettings&quot; qlSavedSettings :: IO (Ptr ())
+<span class="lineno">  155 </span>foreign import ccall safe &quot;ql.h qlFreeSavedSettings&quot; qlFreeSavedSettings :: Ptr () -&gt; IO ()
+<span class="lineno">  156 </span>
+<span class="lineno">  157 </span>withLArray :: (Storable b) =&gt; (a -&gt; b) -&gt; [a] -&gt; ((CUInt, Ptr b) -&gt; IO c) -&gt; IO c
+<span class="lineno">  158 </span><span class="decl"><span class="istickedoff">withLArray c x f = withArray (map c x) (\px -&gt; f (fromIntegral $ length x, px))</span></span>
+<span class="lineno">  159 </span>
+<span class="lineno">  160 </span>withEnumArray :: (Enum a) =&gt; [a] -&gt; ((CUInt, Ptr CInt) -&gt; IO b) -&gt; IO b
+<span class="lineno">  161 </span><span class="decl"><span class="istickedoff">withEnumArray = withLArray (fromIntegral . fromEnum)</span></span>
+<span class="lineno">  162 </span>
+<span class="lineno">  163 </span>withIntArray :: (Integral a, Num n, Storable n) =&gt; [a] -&gt; ((CUInt, Ptr n) -&gt; IO b) -&gt; IO b
+<span class="lineno">  164 </span><span class="decl"><span class="istickedoff">withIntArray = withLArray fromIntegral</span></span>
+<span class="lineno">  165 </span>
+<span class="lineno">  166 </span>withBoolArray :: [Bool] -&gt; ((CUInt, Ptr CInt) -&gt; IO b) -&gt; IO b
+<span class="lineno">  167 </span><span class="decl"><span class="istickedoff">withBoolArray = withLArray fromBool</span></span>
+<span class="lineno">  168 </span>
+<span class="lineno">  169 </span>withDoubleArray :: [Double] -&gt; ((CUInt, Ptr CDouble) -&gt; IO b) -&gt; IO b
+<span class="lineno">  170 </span><span class="decl"><span class="istickedoff">withDoubleArray = withLArray realToFrac</span></span>
+<span class="lineno">  171 </span>
+<span class="lineno">  172 </span>withNonEmptyDoubleArray :: NonEmpty Double -&gt; ((CUInt, Ptr CDouble) -&gt; IO b) -&gt; IO b
+<span class="lineno">  173 </span><span class="decl"><span class="istickedoff">withNonEmptyDoubleArray x = withLArray realToFrac (toList x)</span></span>
+<span class="lineno">  174 </span>
+<span class="lineno">  175 </span>withDoubleArrayRaw :: [Double] -&gt; (Ptr CDouble -&gt; IO b) -&gt; IO b
+<span class="lineno">  176 </span><span class="decl"><span class="istickedoff">withDoubleArrayRaw x = withArray (map realToFrac x)</span></span>
+<span class="lineno">  177 </span>
+<span class="lineno">  178 </span>withBoolArrayRaw :: [Bool] -&gt; (Ptr CInt -&gt; IO b) -&gt; IO b
+<span class="lineno">  179 </span><span class="decl"><span class="nottickedoff">withBoolArrayRaw x = withArray (map fromBool x)</span></span>
+<span class="lineno">  180 </span>
+<span class="lineno">  181 </span>withDayArray :: [Day] -&gt; ((CUInt, Ptr CInt) -&gt; IO b) -&gt; IO b
+<span class="lineno">  182 </span><span class="decl"><span class="istickedoff">withDayArray x f = mapM toSerial x &gt;&gt;= (`withArray` (\px -&gt; f (fromIntegral $ length x, px)))</span></span>
+<span class="lineno">  183 </span>
+<span class="lineno">  184 </span>withDayPtr :: [Day] -&gt; (Ptr CInt -&gt; IO a) -&gt; IO a
+<span class="lineno">  185 </span><span class="decl"><span class="istickedoff">withDayPtr x f = mapM toSerial x &gt;&gt;= (`withArray` f)</span></span>
+<span class="lineno">  186 </span>
+<span class="lineno">  187 </span>-- |An array of plain C strings, for a function taking a @std::vector&lt;std::string&gt;@-shaped
+<span class="lineno">  188 </span>-- argument as a flat @(count, char**)@ pair (the input-side counterpart of 'peekCStringArray'
+<span class="lineno">  189 </span>-- below) -- first needed for @SecondaryCosts@' string keys (@QuantLib.Instrument.Energy@).
+<span class="lineno">  190 </span>withStringArray :: [String] -&gt; ((CUInt, Ptr CString) -&gt; IO b) -&gt; IO b
+<span class="lineno">  191 </span><span class="decl"><span class="istickedoff">withStringArray xs f = withMany withCString xs (\ps -&gt; withArray ps (\p -&gt; f (fromIntegral (length xs), p)))</span></span>
+<span class="lineno">  192 </span>
+<span class="lineno">  193 </span>prePtr :: (Storable a) =&gt; (Ptr a -&gt; IO b) -&gt; IO b
+<span class="lineno">  194 </span><span class="decl"><span class="istickedoff">prePtr = alloca</span></span>
+<span class="lineno">  195 </span>
+<span class="lineno">  196 </span>preArray :: ((Ptr CUInt, Ptr (Ptr a)) -&gt; IO b) -&gt; IO b
+<span class="lineno">  197 </span><span class="decl"><span class="istickedoff">preArray f = with 0 $</span>
+<span class="lineno">  198 </span><span class="spaces">  </span><span class="istickedoff">\x -&gt; with nullPtr $</span>
+<span class="lineno">  199 </span><span class="spaces">    </span><span class="istickedoff">\y -&gt; f (x, y)</span></span>
+<span class="lineno">  200 </span>
+<span class="lineno">  201 </span>peekIntArray' :: (CInt -&gt; b) -&gt; Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [b]
+<span class="lineno">  202 </span><span class="decl"><span class="istickedoff">peekIntArray' f pl pp = do</span>
+<span class="lineno">  203 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
+<span class="lineno">  204 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
+<span class="lineno">  205 </span><span class="spaces">  </span><span class="istickedoff">map f &lt;$&gt; peekArray (fromIntegral l) p &lt;* qlFreeInts p</span></span>
+<span class="lineno">  206 </span>
+<span class="lineno">  207 </span>peekUIntArray :: Ptr CUInt -&gt; Ptr (Ptr CUInt) -&gt; IO [Word]
+<span class="lineno">  208 </span><span class="decl"><span class="nottickedoff">peekUIntArray pl pp = do</span>
+<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">l &lt;- peek pl</span>
+<span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">p &lt;- peek pp</span>
+<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">map fromIntegral &lt;$&gt; peekArray (fromIntegral l) p &lt;* qlFreeUInts p</span></span>
+<span class="lineno">  212 </span>
+<span class="lineno">  213 </span>peekIntArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Int]
+<span class="lineno">  214 </span><span class="decl"><span class="istickedoff">peekIntArray = peekIntArray' <span class="nottickedoff">fromIntegral</span></span></span>
+<span class="lineno">  215 </span>
+<span class="lineno">  216 </span>-- |An array of freshly heap-allocated (@DUP@'d) C strings -- the output-side counterpart of
+<span class="lineno">  217 </span>-- 'withStringArray'. Each element is read via 'peekCString' and the whole array (including every
+<span class="lineno">  218 </span>-- individual string) is then released via 'qlFreeStringArray' in one call, mirroring
+<span class="lineno">  219 </span>-- 'peekDoubleArray'\/'peekIntArray'\''s read-then-free shape.
+<span class="lineno">  220 </span>peekCStringArray :: Ptr CUInt -&gt; Ptr (Ptr CString) -&gt; IO [String]
+<span class="lineno">  221 </span><span class="decl"><span class="nottickedoff">peekCStringArray pl pp = do</span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">l &lt;- peek pl</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">p &lt;- peek pp</span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="nottickedoff">raws &lt;- peekArray (fromIntegral l) p</span>
+<span class="lineno">  225 </span><span class="spaces">  </span><span class="nottickedoff">strs &lt;- mapM peekCString raws</span>
+<span class="lineno">  226 </span><span class="spaces">  </span><span class="nottickedoff">strs &lt;$ qlFreeStringArray l p</span></span>
+<span class="lineno">  227 </span>
+<span class="lineno">  228 </span>peekBoolArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Bool]
+<span class="lineno">  229 </span><span class="decl"><span class="istickedoff">peekBoolArray = peekIntArray' toBool</span></span>
+<span class="lineno">  230 </span>
+<span class="lineno">  231 </span>peekDayArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Day]
+<span class="lineno">  232 </span><span class="decl"><span class="istickedoff">peekDayArray = peekIntArray' fromSerial</span></span>
+<span class="lineno">  233 </span>
+<span class="lineno">  234 </span>peekDoubleArray :: Ptr CUInt -&gt; Ptr (Ptr CDouble) -&gt; IO [Double]
+<span class="lineno">  235 </span><span class="decl"><span class="istickedoff">peekDoubleArray pl pp = do</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
+<span class="lineno">  238 </span><span class="spaces">  </span><span class="istickedoff">map realToFrac &lt;$&gt; peekArray (fromIntegral l) p &lt;* qlFreeDoubles p</span></span>
+<span class="lineno">  239 </span>
+<span class="lineno">  240 </span>peekDoubleVector :: Ptr CUInt -&gt; Ptr (Ptr CDouble) -&gt; IO (Vector CDouble)
+<span class="lineno">  241 </span><span class="decl"><span class="nottickedoff">peekDoubleVector pl pp = unsafeFromForeignPtr0 &lt;$&gt; (peek pp &gt;&gt;= newForeignPtr qlFreeDoublesFin) &lt;*&gt; (fromIntegral &lt;$&gt; peek pl)</span></span>
+<span class="lineno">  242 </span>
+<span class="lineno">  243 </span>-- |Like 'peekIntArray'\''/'peekDoubleArray', but for an array of a C struct rather than a C
+<span class="lineno">  244 </span>-- primitive: reads the length and pointer out-params, walks the array via 'peekArray' (so the
+<span class="lineno">  245 </span>-- element type just needs a 'Storable' instance -- e.g. one built from c2hs @{#get#}@/@{#sizeof#}@
+<span class="lineno">  246 </span>-- hooks), converts every element via @convert@, /then/ hands the whole array to @freeFn@ to
+<span class="lineno">  247 </span>-- release. The conversion must run before the free -- unlike 'peekIntArray'\''/'peekDoubleArray',
+<span class="lineno">  248 </span>-- whose elements are self-contained primitives, a struct element read here may itself own
+<span class="lineno">  249 </span>-- further heap buffers (e.g. a @char*@/@double*@ field) that @convert@ still needs to dereference
+<span class="lineno">  250 </span>-- (via 'peekCString'/'peekArray' etc.); freeing first would leave it reading already-freed
+<span class="lineno">  251 </span>-- memory. @freeFn@ takes the element count because some frees need it (e.g.
+<span class="lineno">  252 </span>-- 'qlFreeAdditionalResults'); one that doesn't can ignore it.
+<span class="lineno">  253 </span>peekStructArray :: Storable a =&gt; (a -&gt; IO b) -&gt; (CUInt -&gt; Ptr a -&gt; IO ()) -&gt; Ptr CUInt -&gt; Ptr (Ptr a) -&gt; IO [b]
+<span class="lineno">  254 </span><span class="decl"><span class="istickedoff">peekStructArray convert freeFn pl pp = do</span>
+<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
+<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">raws &lt;- peekArray (fromIntegral l) p</span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">results &lt;- mapM convert raws</span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">results &lt;$ freeFn l p</span></span>
+<span class="lineno">  260 </span>
+<span class="lineno">  261 </span>-- |Like 'peekStructArray' but for a @T**@ array of C++-owned pointers to live objects: peeks the
+<span class="lineno">  262 </span>-- length/pointer out-params, converts each raw pointer to a live Haskell value via @peekOne@
+<span class="lineno">  263 </span>-- (installing that value's own finalizer over the pointee), then frees only the array spine via
+<span class="lineno">  264 </span>-- 'qlFreePointerArray' -- not the pointees, whose lifetime @peekOne@ has now taken over.
+<span class="lineno">  265 </span>peekPtrArray :: (Ptr a -&gt; IO b) -&gt; Ptr CUInt -&gt; Ptr (Ptr (Ptr a)) -&gt; IO [b]
+<span class="lineno">  266 </span><span class="decl"><span class="istickedoff">peekPtrArray peekOne pl pp = do</span>
+<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
+<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">ptrs &lt;- peekArray (fromIntegral l) p</span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">xs &lt;- mapM peekOne ptrs</span>
+<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">xs &lt;$ qlFreePointerArray (castPtr p)</span></span>
+<span class="lineno">  272 </span>
+<span class="lineno">  273 </span>fromEnumQuantity :: (Enum a, Integral b, Integral c) =&gt; (b, a) -&gt; (CInt, c)
+<span class="lineno">  274 </span><span class="decl"><span class="istickedoff">fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)</span></span>
+<span class="lineno">  275 </span>
+<span class="lineno">  276 </span>toEnumQuantity :: (Enum a, Integral b, Integral c) =&gt; (CInt, c) -&gt; (b, a)
+<span class="lineno">  277 </span><span class="decl"><span class="nottickedoff">toEnumQuantity (x, u) = (fromIntegral x, toEnum $ fromIntegral u)</span></span>
+<span class="lineno">  278 </span>
+<span class="lineno">  279 </span>fromEnumDouble :: (Enum a, Integral c) =&gt; (Double, a) -&gt; (CDouble, c)
+<span class="lineno">  280 </span><span class="decl"><span class="istickedoff">fromEnumDouble (x, u) = (realToFrac x, fromIntegral $ fromEnum u)</span></span>
+<span class="lineno">  281 </span>
+<span class="lineno">  282 </span>toEnumDouble :: (Enum a, Integral c) =&gt; (CDouble, c) -&gt; (Double, a)
+<span class="lineno">  283 </span><span class="decl"><span class="nottickedoff">toEnumDouble (x, u) = (realToFrac x, toEnum $ fromIntegral u)</span></span>
+<span class="lineno">  284 </span>
+<span class="lineno">  285 </span>foreign import ccall safe &quot;ql.h qlMinYear&quot; qlMinYear :: CInt
+<span class="lineno">  286 </span>foreign import ccall safe &quot;ql.h qlMinMonth&quot; qlMinMonth :: CInt
+<span class="lineno">  287 </span>foreign import ccall safe &quot;ql.h qlMinDay&quot; qlMinDay :: CInt
+<span class="lineno">  288 </span>foreign import ccall safe &quot;ql.h qlMinDateSerialNumber&quot; qlMinDateSerialNumber :: CInt
+<span class="lineno">  289 </span>foreign import ccall safe &quot;ql.h qlMaxDateSerialNumber&quot; qlMaxDateSerialNumber :: CInt
+<span class="lineno">  290 </span>
+<span class="lineno">  291 </span>-- |Julian day of the QuantLib zero date
+<span class="lineno">  292 </span>qlStart :: CInt
+<span class="lineno">  293 </span><span class="decl"><span class="istickedoff">qlStart = minDateJulianDays - qlMinDateSerialNumber</span>
+<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">where minDateJulianDays = toModifiedJulianDay' $ fromGregorian (fromIntegral qlMinYear) (fromIntegral qlMinMonth) (fromIntegral qlMinDay)</span></span>
+<span class="lineno">  295 </span>
+<span class="lineno">  296 </span>toModifiedJulianDay' :: Day -&gt; CInt
+<span class="lineno">  297 </span><span class="decl"><span class="istickedoff">toModifiedJulianDay' = fromIntegral . toModifiedJulianDay</span></span>
+<span class="lineno">  298 </span>
+<span class="lineno">  299 </span>fromSerial :: CInt -&gt; Day
+<span class="lineno">  300 </span><span class="decl"><span class="istickedoff">fromSerial x = ModifiedJulianDay $ fromIntegral (x + qlStart)</span></span>
 <span class="lineno">  301 </span>
-<span class="lineno">  302 </span>toSerial :: Day -&gt; IO CInt
-<span class="lineno">  303 </span><span class="decl"><span class="istickedoff">toSerial x | dayIsValid x = return $ toModifiedJulianDay' x - qlStart</span>
-<span class="lineno">  304 </span><span class="spaces">           </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = throwIO $ DateConversion x</span></span>
+<span class="lineno">  302 </span>dayIsValid :: Day -&gt; Bool
+<span class="lineno">  303 </span><span class="decl"><span class="istickedoff">dayIsValid x = s &gt;= qlMinDateSerialNumber &amp;&amp; s &lt;= qlMaxDateSerialNumber</span>
+<span class="lineno">  304 </span><span class="spaces">  </span><span class="istickedoff">where s = toModifiedJulianDay' x - qlStart</span></span>
 <span class="lineno">  305 </span>
-<span class="lineno">  306 </span>withDay :: Day -&gt; (CInt -&gt; IO a) -&gt; IO a
-<span class="lineno">  307 </span><span class="decl"><span class="istickedoff">withDay x f = toSerial x &gt;&gt;= f</span></span>
-<span class="lineno">  308 </span>
-<span class="lineno">  309 </span>toDay :: CInt -&gt; Day
-<span class="lineno">  310 </span><span class="decl"><span class="istickedoff">toDay = fromSerial</span></span>
-<span class="lineno">  311 </span>
-<span class="lineno">  312 </span>withMaybeDay :: Maybe Day -&gt; (CInt -&gt; IO a) -&gt; IO a
-<span class="lineno">  313 </span><span class="decl"><span class="istickedoff">withMaybeDay x f = maybe (f 0) (`withDay` f) x</span></span>
-<span class="lineno">  314 </span>
-<span class="lineno">  315 </span>-- |Unlike the -1 sentinel used by 'fromMaybeBool'/'fromMaybeEnum'/'toMaybeBool', the
-<span class="lineno">  316 </span>-- absent-date sentinel is 0: QuantLib serial 0 is not a representable date (serials
-<span class="lineno">  317 </span>-- start at 'qlMinDateSerialNumber'), so it is free to mean &quot;no date&quot;. This matches
-<span class="lineno">  318 </span>-- 'withMaybeDay', which passes 0 in the other direction.
-<span class="lineno">  319 </span>toMaybeDay :: CInt -&gt; Maybe Day
-<span class="lineno">  320 </span><span class="decl"><span class="istickedoff">toMaybeDay 0 = <span class="nottickedoff">Nothing</span></span>
-<span class="lineno">  321 </span><span class="spaces"></span><span class="istickedoff">toMaybeDay x = Just $ fromSerial x</span></span>
-<span class="lineno">  322 </span>
-<span class="lineno">  323 </span>-- |earliest allowed date in QuantLib
-<span class="lineno">  324 </span>minDate :: Day
-<span class="lineno">  325 </span><span class="decl"><span class="istickedoff">minDate = fromSerial qlMinDateSerialNumber</span></span>
+<span class="lineno">  306 </span>toSerial :: Day -&gt; IO CInt
+<span class="lineno">  307 </span><span class="decl"><span class="istickedoff">toSerial x | dayIsValid x = return $ toModifiedJulianDay' x - qlStart</span>
+<span class="lineno">  308 </span><span class="spaces">           </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = throwIO $ DateConversion x</span></span>
+<span class="lineno">  309 </span>
+<span class="lineno">  310 </span>withDay :: Day -&gt; (CInt -&gt; IO a) -&gt; IO a
+<span class="lineno">  311 </span><span class="decl"><span class="istickedoff">withDay x f = toSerial x &gt;&gt;= f</span></span>
+<span class="lineno">  312 </span>
+<span class="lineno">  313 </span>toDay :: CInt -&gt; Day
+<span class="lineno">  314 </span><span class="decl"><span class="istickedoff">toDay = fromSerial</span></span>
+<span class="lineno">  315 </span>
+<span class="lineno">  316 </span>withMaybeDay :: Maybe Day -&gt; (CInt -&gt; IO a) -&gt; IO a
+<span class="lineno">  317 </span><span class="decl"><span class="istickedoff">withMaybeDay x f = maybe (f 0) (`withDay` f) x</span></span>
+<span class="lineno">  318 </span>
+<span class="lineno">  319 </span>-- |Unlike the -1 sentinel used by 'fromMaybeBool'/'fromMaybeEnum'/'toMaybeBool', the
+<span class="lineno">  320 </span>-- absent-date sentinel is 0: QuantLib serial 0 is not a representable date (serials
+<span class="lineno">  321 </span>-- start at 'qlMinDateSerialNumber'), so it is free to mean &quot;no date&quot;. This matches
+<span class="lineno">  322 </span>-- 'withMaybeDay', which passes 0 in the other direction.
+<span class="lineno">  323 </span>toMaybeDay :: CInt -&gt; Maybe Day
+<span class="lineno">  324 </span><span class="decl"><span class="istickedoff">toMaybeDay 0 = <span class="nottickedoff">Nothing</span></span>
+<span class="lineno">  325 </span><span class="spaces"></span><span class="istickedoff">toMaybeDay x = Just $ fromSerial x</span></span>
 <span class="lineno">  326 </span>
-<span class="lineno">  327 </span>-- |latest date allowed in QuantLib
-<span class="lineno">  328 </span>maxDate :: Day
-<span class="lineno">  329 </span><span class="decl"><span class="istickedoff">maxDate = fromSerial qlMaxDateSerialNumber</span></span>
+<span class="lineno">  327 </span>-- |earliest allowed date in QuantLib
+<span class="lineno">  328 </span>minDate :: Day
+<span class="lineno">  329 </span><span class="decl"><span class="istickedoff">minDate = fromSerial qlMinDateSerialNumber</span></span>
 <span class="lineno">  330 </span>
-<span class="lineno">  331 </span>data Matrix a = Matrix {<span class="istickedoff"><span class="decl"><span class="istickedoff">matrixRows</span></span></span>::Word, <span class="istickedoff"><span class="decl"><span class="istickedoff">matrixColumns</span></span></span>::Word, <span class="istickedoff"><span class="decl"><span class="istickedoff">matrixData</span></span></span>::[a]}
-<span class="lineno">  332 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
-<span class="lineno">  333 </span>
-<span class="lineno">  334 </span>-- |'objectMatrix' specialised to 'Double'. Kept as a separate name for callers that
-<span class="lineno">  335 </span>-- need the element type pinned; the check and construction are identical.
-<span class="lineno">  336 </span>realMatrix :: Word -&gt; Word -&gt; [Double] -&gt; Either String (Matrix Double)
-<span class="lineno">  337 </span><span class="decl"><span class="istickedoff">realMatrix = objectMatrix</span></span>
-<span class="lineno">  338 </span>
-<span class="lineno">  339 </span>objectMatrix :: Word -&gt; Word -&gt; [a] -&gt; Either String (Matrix a)
-<span class="lineno">  340 </span><span class="decl"><span class="istickedoff">objectMatrix rows cols d</span>
-<span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">rows * cols == fromIntegral (length d)</span> = Right $ Matrix rows cols d</span>
-<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Left $ &quot;Data length &quot; ++ show (length d)</span></span>
-<span class="lineno">  343 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span></span>
-<span class="lineno">  344 </span>
-<span class="lineno">  345 </span>-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
-<span class="lineno">  346 </span>fromEnumC :: (Enum a, Integral b) =&gt; a -&gt; b
-<span class="lineno">  347 </span><span class="decl"><span class="istickedoff">fromEnumC = fromIntegral . fromEnum</span></span>
+<span class="lineno">  331 </span>-- |latest date allowed in QuantLib
+<span class="lineno">  332 </span>maxDate :: Day
+<span class="lineno">  333 </span><span class="decl"><span class="istickedoff">maxDate = fromSerial qlMaxDateSerialNumber</span></span>
+<span class="lineno">  334 </span>
+<span class="lineno">  335 </span>data Matrix a = Matrix {<span class="istickedoff"><span class="decl"><span class="istickedoff">matrixRows</span></span></span>::Word, <span class="istickedoff"><span class="decl"><span class="istickedoff">matrixColumns</span></span></span>::Word, <span class="istickedoff"><span class="decl"><span class="istickedoff">matrixData</span></span></span>::[a]}
+<span class="lineno">  336 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">  337 </span>
+<span class="lineno">  338 </span>-- |'objectMatrix' specialised to 'Double'. Kept as a separate name for callers that
+<span class="lineno">  339 </span>-- need the element type pinned; the check and construction are identical.
+<span class="lineno">  340 </span>realMatrix :: Word -&gt; Word -&gt; [Double] -&gt; Either String (Matrix Double)
+<span class="lineno">  341 </span><span class="decl"><span class="istickedoff">realMatrix = objectMatrix</span></span>
+<span class="lineno">  342 </span>
+<span class="lineno">  343 </span>objectMatrix :: Word -&gt; Word -&gt; [a] -&gt; Either String (Matrix a)
+<span class="lineno">  344 </span><span class="decl"><span class="istickedoff">objectMatrix rows cols d</span>
+<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">rows * cols == fromIntegral (length d)</span> = Right $ Matrix rows cols d</span>
+<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Left $ &quot;Data length &quot; ++ show (length d)</span></span>
+<span class="lineno">  347 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span></span>
 <span class="lineno">  348 </span>
-<span class="lineno">  349 </span>-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
-<span class="lineno">  350 </span>-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
-<span class="lineno">  351 </span>toEnumC :: (Enum a, Integral b) =&gt; b -&gt; a
-<span class="lineno">  352 </span><span class="decl"><span class="istickedoff">toEnumC = toEnum . fromIntegral</span></span>
-<span class="lineno">  353 </span>
-<span class="lineno">  354 </span>uncurryNested :: (a -&gt; b -&gt; c -&gt; d) -&gt; (a, (b, c)) -&gt; d
-<span class="lineno">  355 </span><span class="decl"><span class="istickedoff">uncurryNested f (x, (y, z)) = f x y z</span></span>
-<span class="lineno">  356 </span>
-<span class="lineno">  357 </span>-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
-<span class="lineno">  358 </span>-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
-<span class="lineno">  359 </span>zipWith6 :: (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g) -&gt; [a] -&gt; [b] -&gt; [c] -&gt; [d] -&gt; [e] -&gt; [f] -&gt; [g]
-<span class="lineno">  360 </span><span class="decl"><span class="istickedoff">zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b <span class="nottickedoff">c</span> <span class="nottickedoff">d</span> <span class="nottickedoff">e</span> <span class="nottickedoff">g</span> : zipWith6 <span class="nottickedoff">f</span> as bs cs ds es gs</span>
-<span class="lineno">  361 </span><span class="spaces"></span><span class="istickedoff">zipWith6 _ _ _ _ _ _ _ = []</span></span>
-<span class="lineno">  362 </span>
-<span class="lineno">  363 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  349 </span>-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
+<span class="lineno">  350 </span>fromEnumC :: (Enum a, Integral b) =&gt; a -&gt; b
+<span class="lineno">  351 </span><span class="decl"><span class="istickedoff">fromEnumC = fromIntegral . fromEnum</span></span>
+<span class="lineno">  352 </span>
+<span class="lineno">  353 </span>-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
+<span class="lineno">  354 </span>-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
+<span class="lineno">  355 </span>toEnumC :: (Enum a, Integral b) =&gt; b -&gt; a
+<span class="lineno">  356 </span><span class="decl"><span class="istickedoff">toEnumC = toEnum . fromIntegral</span></span>
+<span class="lineno">  357 </span>
+<span class="lineno">  358 </span>uncurryNested :: (a -&gt; b -&gt; c -&gt; d) -&gt; (a, (b, c)) -&gt; d
+<span class="lineno">  359 </span><span class="decl"><span class="istickedoff">uncurryNested f (x, (y, z)) = f x y z</span></span>
+<span class="lineno">  360 </span>
+<span class="lineno">  361 </span>-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
+<span class="lineno">  362 </span>-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
+<span class="lineno">  363 </span>zipWith6 :: (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g) -&gt; [a] -&gt; [b] -&gt; [c] -&gt; [d] -&gt; [e] -&gt; [f] -&gt; [g]
+<span class="lineno">  364 </span><span class="decl"><span class="istickedoff">zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b <span class="nottickedoff">c</span> <span class="nottickedoff">d</span> <span class="nottickedoff">e</span> <span class="nottickedoff">g</span> : zipWith6 <span class="nottickedoff">f</span> as bs cs ds es gs</span>
+<span class="lineno">  365 </span><span class="spaces"></span><span class="istickedoff">zipWith6 _ _ _ _ _ _ _ = []</span></span>
+<span class="lineno">  366 </span>
+<span class="lineno">  367 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 
 </pre>
 </body>

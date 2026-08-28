@@ -50,11 +50,11 @@
 </span><span id="line-27"></span><span class="hs-comment">-- currency\/interest curve\/dividend curve\/spot: each is a plain, never-mutated echo of this</span><span>
 </span><span id="line-28"></span><span class="hs-comment">-- constructor's own argument, same shape as the currency\/interest\/dividend\/spot fields on</span><span>
 </span><span id="line-29"></span><span class="hs-comment">-- 'QuantLib.Index.Commodity.CommodityIndex' -- the caller already holds whatever it passed in.</span><span>
-</span><span id="line-30"></span><span id="local-6989586621680193026"><span id="local-6989586621680193028"><span id="local-6989586621680193029"><span class="annot"><a href="QuantLib.Index.Equity.html#equityIndex"><span class="hs-identifier hs-type">equityIndex</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^name</span></span><span>
+</span><span id="line-30"></span><span id="local-6989586621680223219"><span id="local-6989586621680223221"><span id="local-6989586621680223222"><span class="annot"><a href="QuantLib.Index.Equity.html#equityIndex"><span class="hs-identifier hs-type">equityIndex</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^name</span></span><span>
 </span><span id="line-31"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#Calendar"><span class="hs-identifier hs-type">Calendar</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^fixingCalendar</span></span><span>
-</span><span id="line-32"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#Currency"><span class="hs-identifier hs-type">Currency</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenYieldTermStructure"><span class="hs-identifier hs-type">GenYieldTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680193026"><span class="hs-identifier hs-type">y1</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^interest</span></span><span>
-</span><span id="line-33"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenYieldTermStructure"><span class="hs-identifier hs-type">GenYieldTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680193028"><span class="hs-identifier hs-type">y2</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^dividend</span></span><span>
-</span><span id="line-34"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenQuote"><span class="hs-identifier hs-type">GenQuote</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680193029"><span class="hs-identifier hs-type">q</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^spot</span></span><span>
+</span><span id="line-32"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#Currency"><span class="hs-identifier hs-type">Currency</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenYieldTermStructure"><span class="hs-identifier hs-type">GenYieldTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680223219"><span class="hs-identifier hs-type">y1</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^interest</span></span><span>
+</span><span id="line-33"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenYieldTermStructure"><span class="hs-identifier hs-type">GenYieldTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680223221"><span class="hs-identifier hs-type">y2</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^dividend</span></span><span>
+</span><span id="line-34"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenQuote"><span class="hs-identifier hs-type">GenQuote</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680223222"><span class="hs-identifier hs-type">q</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^spot</span></span><span>
 </span><span id="line-35"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#EquityIndex"><span class="hs-identifier hs-type">EquityIndex</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span></span></span></span><span>
 </span><span id="line-36"></span><span id="equityIndex"><span class="annot"><span class="annottext">equityIndex :: forall y1 y2 q.
 String
@@ -64,75 +64,75 @@ String
 -&gt; Maybe (GenYieldTermStructure y2)
 -&gt; Maybe (GenQuote q)
 -&gt; IO EquityIndex
-</span><a href="QuantLib.Index.Equity.html#equityIndex"><span class="hs-identifier hs-var hs-var">equityIndex</span></a></span></span><span> </span><span id="local-6989586621680193066"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680193066"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680193067"><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680193067"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680193068"><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621680193068"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680193069"><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y1)
-</span><a href="#local-6989586621680193069"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680193070"><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y2)
-</span><a href="#local-6989586621680193070"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680193071"><span class="annot"><span class="annottext">Maybe (GenQuote q)
-</span><a href="#local-6989586621680193071"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Index.Equity.html#equityIndex"><span class="hs-identifier hs-var hs-var">equityIndex</span></a></span></span><span> </span><span id="local-6989586621680223259"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680223259"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680223260"><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680223260"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680223261"><span class="annot"><span class="annottext">Currency
+</span><a href="#local-6989586621680223261"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680223262"><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y1)
+</span><a href="#local-6989586621680223262"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680223263"><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y2)
+</span><a href="#local-6989586621680223263"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680223264"><span class="annot"><span class="annottext">Maybe (GenQuote q)
+</span><a href="#local-6989586621680223264"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-37"></span><span>  </span><span class="annot"><span class="annottext">String -&gt; (CString -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a. String -&gt; (CString -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var">C2HSImp.withCString</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680193066"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CString -&gt; IO EquityIndex) -&gt; IO EquityIndex)
+</span><a href="#local-6989586621680223259"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CString -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (CString -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193073"><span class="annot"><span class="annottext">CString
-</span><a href="#local-6989586621680193073"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223266"><span class="annot"><span class="annottext">CString
+</span><a href="#local-6989586621680223266"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-38"></span><span>  </span><span class="annot"><span class="annottext">Calendar -&gt; (Ptr CCalendar -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall b. Calendar -&gt; (Ptr CCalendar -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCalendar"><span class="hs-identifier hs-var">withCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680193067"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO EquityIndex) -&gt; IO EquityIndex)
+</span><a href="#local-6989586621680223260"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (Ptr CCalendar -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193075"><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680193075"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223268"><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680223268"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-39"></span><span>  </span><span class="annot"><span class="annottext">Currency -&gt; (Ptr CCurrency -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall b. Currency -&gt; (Ptr CCurrency -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCurrency"><span class="hs-identifier hs-var">withCurrency</span></a></span><span> </span><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621680193068"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO EquityIndex) -&gt; IO EquityIndex)
+</span><a href="#local-6989586621680223261"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (Ptr CCurrency -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193077"><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621680193077"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223270"><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680223270"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-40"></span><span>  </span><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y1)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall y b.
 Maybe (GenYieldTermStructure y)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withMaybeYieldTermStructure"><span class="hs-identifier hs-var">withMaybeYieldTermStructure</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y1)
-</span><a href="#local-6989586621680193069"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex)
+</span><a href="#local-6989586621680223262"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193081"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621680193081"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223274"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680223274"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-41"></span><span>  </span><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y2)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall y b.
 Maybe (GenYieldTermStructure y)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withMaybeYieldTermStructure"><span class="hs-identifier hs-var">withMaybeYieldTermStructure</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe (GenYieldTermStructure y2)
-</span><a href="#local-6989586621680193070"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex)
+</span><a href="#local-6989586621680223263"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (Ptr CYieldTermStructure' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193082"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621680193082"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223275"><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680223275"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-42"></span><span>  </span><span class="annot"><span class="annottext">Maybe (GenQuote q)
 -&gt; (Ptr CQuote' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall q b. Maybe (GenQuote q) -&gt; (Ptr CQuote' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withMaybeQuote"><span class="hs-identifier hs-var">withMaybeQuote</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe (GenQuote q)
-</span><a href="#local-6989586621680193071"><span class="hs-identifier hs-var">a6</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuote' -&gt; IO EquityIndex) -&gt; IO EquityIndex)
+</span><a href="#local-6989586621680223264"><span class="hs-identifier hs-var">a6</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuote' -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (Ptr CQuote' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193084"><span class="annot"><span class="annottext">Ptr CQuote'
-</span><a href="#local-6989586621680193084"><span class="hs-identifier hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223277"><span class="annot"><span class="annottext">Ptr CQuote'
+</span><a href="#local-6989586621680223277"><span class="hs-identifier hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-43"></span><span>  </span><span class="annot"><span class="annottext">(Ptr CString -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CString -&gt; IO EquityIndex) -&gt; IO EquityIndex)
 -&gt; (Ptr CString -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193086"><span class="annot"><span class="annottext">Ptr CString
-</span><a href="#local-6989586621680193086"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223279"><span class="annot"><span class="annottext">Ptr CString
+</span><a href="#local-6989586621680223279"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-44"></span><span>  </span><span class="annot"><span class="annottext">CString
 -&gt; Ptr CCalendar
 -&gt; Ptr CCurrency
@@ -142,28 +142,28 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr CString
 -&gt; IO (Ptr CEquityIndex')
 </span><a href="QuantLib.Index.Equity.html#equityIndex%27_"><span class="hs-identifier hs-var">equityIndex'_</span></a></span><span> </span><span class="annot"><span class="annottext">CString
-</span><a href="#local-6989586621680193073"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680193075"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621680193077"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621680193081"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
-</span><a href="#local-6989586621680193082"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQuote'
-</span><a href="#local-6989586621680193084"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CString
-</span><a href="#local-6989586621680193086"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CEquityIndex')
+</span><a href="#local-6989586621680223266"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680223268"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680223270"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680223274"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CYieldTermStructure'
+</span><a href="#local-6989586621680223275"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQuote'
+</span><a href="#local-6989586621680223277"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CString
+</span><a href="#local-6989586621680223279"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CEquityIndex')
 -&gt; (Ptr CEquityIndex' -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193087"><span class="annot"><span class="annottext">Ptr CEquityIndex'
-</span><a href="#local-6989586621680193087"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223280"><span class="annot"><span class="annottext">Ptr CEquityIndex'
+</span><a href="#local-6989586621680223280"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-45"></span><span>  </span><span class="annot"><span class="annottext">Ptr CEquityIndex' -&gt; IO EquityIndex
 </span><a href="QuantLib.Internal.Type.html#peekEquityIndex"><span class="hs-identifier hs-var">peekEquityIndex</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CEquityIndex'
-</span><a href="#local-6989586621680193087"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO EquityIndex -&gt; (EquityIndex -&gt; IO EquityIndex) -&gt; IO EquityIndex
+</span><a href="#local-6989586621680223280"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO EquityIndex -&gt; (EquityIndex -&gt; IO EquityIndex) -&gt; IO EquityIndex
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680193089"><span class="annot"><span class="annottext">EquityIndex
-</span><a href="#local-6989586621680193089"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680223282"><span class="annot"><span class="annottext">EquityIndex
+</span><a href="#local-6989586621680223282"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-46"></span><span>  </span><span class="annot"><span class="annottext">Ptr CString -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr CString
-</span><a href="#local-6989586621680193086"><span class="hs-identifier hs-var">a7'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO EquityIndex -&gt; IO EquityIndex
+</span><a href="#local-6989586621680223279"><span class="hs-identifier hs-var">a7'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO EquityIndex -&gt; IO EquityIndex
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -171,7 +171,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">EquityIndex
-</span><a href="#local-6989586621680193089"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680223282"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span class="hs-pragma">{-# LINE 36 &quot;./QuantLib/Index/Equity.chs&quot; #-}</span><span>
 </span><span id="line-36"></span><span>

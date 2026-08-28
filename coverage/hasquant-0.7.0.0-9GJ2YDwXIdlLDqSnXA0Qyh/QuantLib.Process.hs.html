@@ -725,16 +725,16 @@ span.spaces    { background: white }
 <span class="lineno">  706 </span> -&gt; (Double) -- ^x0
 <span class="lineno">  707 </span> -&gt; (Double) -- ^level
 <span class="lineno">  708 </span> -&gt; IO ((StochasticProcess1D))
-<span class="lineno">  709 </span><span class="decl"><span class="nottickedoff">ornsteinUhlenbeckProcess a1 a2 a3 a4 =</span>
-<span class="lineno">  710 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  711 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  712 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  713 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  714 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  715 </span><span class="spaces">  </span><span class="nottickedoff">ornsteinUhlenbeckProcess'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  716 </span><span class="spaces">  </span><span class="nottickedoff">peekStochasticProcess1D res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  717 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  718 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  709 </span><span class="decl"><span class="istickedoff">ornsteinUhlenbeckProcess a1 a2 a3 a4 =</span>
+<span class="lineno">  710 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  711 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  712 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  713 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  714 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  715 </span><span class="spaces">  </span><span class="istickedoff">ornsteinUhlenbeckProcess'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  716 </span><span class="spaces">  </span><span class="istickedoff">peekStochasticProcess1D res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  717 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  718 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  719 </span>
 <span class="lineno">  720 </span>
 <span class="lineno">  721 </span>
