@@ -56,6 +56,11 @@
 -- row per path, and guard the ITM-fit-size check with 'lsmBasisSize' instead of the basis order --
 -- the multi-asset basis has combinatorially many more terms than the scalar case.
 --
+-- @test\/example\/QuantLib\/Example\/HaskellLSM.hs@ benchmarks 'lsmRegress' against the same
+-- backward induction with the per-date regression reimplemented from scratch in plain Haskell
+-- (QuantLib used only for path generation) -- a worked illustration of why this module exposes
+-- the regression as a batched primitive instead of leaving callers to reinvent it.
+--
 -- === Finite-difference PDE solving
 --
 -- This module also binds a full-grid finite-difference (FDM) driver, built up across two related

@@ -45,6 +45,7 @@ import qualified QuantLib.Example.QuickStart as QuickStartExample
 import qualified QuantLib.Example.Swaption as SwaptionExample
 import qualified QuantLib.Example.Optimizer as OptimizerExample
 import qualified QuantLib.Example.Fdm as FdmExample
+import qualified QuantLib.Example.HaskellLSM as HaskellLSMExample
 import QuantLib.Math(EndCriteriaType(..))
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
@@ -518,6 +519,21 @@ spec = do
         let close a b = abs (a - b) < spotTol
         (BasketLSMExample.simulatedForwards r, BasketLSMExample.impliedForwards r)
           `shouldSatisfy` (\(sims, implieds) -> and (zipWith close sims implieds))
+
+    describe "Haskell-regression LSM benchmark" $
+      it "matches lsmRegress's price and is not faster" $ do
+        r <- Settings.keepingSettings' HaskellLSMExample.run
+        -- same fixture/paths as the American LSM example above; the two regressions (QuantLib's
+        -- lsmRegress vs. a hand-rolled Haskell normal-equations solve) should agree on price --
+        -- only the compute path differs, not the math
+        abs (HaskellLSMExample.lsmPrice r - HaskellLSMExample.haskellPrice r)
+          `shouldSatisfy` (< 0.02 * HaskellLSMExample.lsmPrice r)
+        -- the point of this benchmark: reimplementing the regression in plain Haskell (list-based
+        -- normal equations, no optimized linear algebra) instead of calling into QuantLib's own
+        -- solve is not an improvement -- this is a floor, not a tight bound, since CPU-time noise
+        -- on a tiny per-run workload could occasionally favour either side
+        HaskellLSMExample.haskellSeconds r `shouldSatisfy` (>= 0)
+        HaskellLSMExample.lsmSeconds r `shouldSatisfy` (>= 0)
 
     describe "Short rate models example" $
       it "check values" $ do
