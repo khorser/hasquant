@@ -49,11 +49,16 @@
 --   model-independent sanity check in place of the numeric cross-check against an independently
 --   computed swap NPV originally planned, which would need reproducing
 --   @FdmAffineModelSwapInnerValue@'s own analytic-bond-pricing formula in Haskell.
+-- * 'gluedMesher' -- splices the grid's left and right halves (split at the center node) back
+--   together, checked against the original @xs@ list (the shared boundary node must be
+--   deduplicated, not doubled); and a negative check that gluing the same two halves in the wrong
+--   order (right before left, an overlapping\/reversed range) is rejected.
 module QuantLib.Example.Fdm
   (
     Result(..)
   , run
   ) where
+import Control.Exception(try)
 import Data.Time.Calendar(addDays, addGregorianYearsClip, diffDays)
 import Data.List(minimumBy)
 import Data.Ord(comparing)
@@ -77,6 +82,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
+import QuantLib.Type(Error)
 
 data Result = Result
   { fdmEuropeanR :: !Double
@@ -96,6 +102,9 @@ data Result = Result
   , basketIntrinsicAtAsset1MaxR :: !Double
   , hwNodeNpvR :: !Double
   , g2NodeNpvR :: !Double
+  , meshLocationsR :: ![Double]
+  , gluedLocationsR :: ![Double]
+  , gluedOverlapRejectedR :: !Bool
   }
 
 -- |Thomas-algorithm solve of the tridiagonal system @M x = rhs@, @M@'s sub-\/super-diagonals
@@ -206,6 +215,19 @@ run = do
 
   mesh1d <- predefined1dMesher xs
   mesher <- fdmMesherComposite [mesh1d]
+
+  -- gluedMesher: splice the grid's left half and right half back together at the shared node
+  -- xs!!centerIdx, and confirm the result reproduces xs exactly -- deduplicating that shared
+  -- boundary point rather than doubling it. Also confirm the ordering requirement is enforced:
+  -- gluing the two halves in the wrong order (right, then left) must throw.
+  meshLocations <- fdmMesherLocations mesher 0
+  leftHalf <- predefined1dMesher (take (centerIdx + 1) xs)
+  rightHalf <- predefined1dMesher (drop centerIdx xs)
+  glued <- gluedMesher leftHalf rightHalf
+  gluedMesherComposite <- fdmMesherComposite [glued]
+  gluedLocations <- fdmMesherLocations gluedMesherComposite 0
+  overlapResult <- try (gluedMesher rightHalf leftHalf) :: IO (Either Error Fdm1dMesher)
+  let gluedOverlapRejected = either (const True) (const False) overlapResult
   let ivFn _t loc = case loc of [x] -> intrinsicAt x; _ -> error "fdmSolve: expected a 1D location"
   withCustomFdmInnerValueCalculator mesher ivFn ivFn $ \calc -> do
     -- Node-level check, pinning both fdmAvgInnerValue's argument order and fdmIteratorAt's
@@ -302,6 +324,9 @@ run = do
       , basketIntrinsicAtAsset1MaxR = maxBasketIntrinsicAt (centerIdx + 5) (centerIdx - 5)
       , hwNodeNpvR = hwNodeNpv
       , g2NodeNpvR = g2NodeNpv
+      , meshLocationsR = meshLocations
+      , gluedLocationsR = gluedLocations
+      , gluedOverlapRejectedR = gluedOverlapRejected
       }
   where
     -- Index whose location is closest to 0 -- with mandatoryPoint = Just 0 forced onto the grid by

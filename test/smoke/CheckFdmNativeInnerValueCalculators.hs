@@ -5,11 +5,14 @@
 -- 2. fdmLogInnerValue (native, cell-averaging with gridMapping = exp) driving fdmSolve reprices a
 --    European call close to analyticEuropeanEngine's closed-form value.
 -- 3. fdmLogBasketInnerValue evaluates a max-of-two-assets basket payoff exactly at a node.
+-- 4. gluedMesher splices two Fdm1dMeshers back into the original grid (dedup'd shared node), and
+--    rejects an overlapping/reversed pair.
 --
 -- Run with:
 --   cabal exec -- ghc -package hasquant test/smoke/CheckFdmNativeInnerValueCalculators.hs \
 --     -o /tmp/checkfdm -outputdir /tmp/checkfdm_build && /tmp/checkfdm
 {-# LANGUAGE TemplateHaskell #-}
+import Control.Exception(SomeException, try)
 import Data.Time.Calendar(addDays)
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -76,7 +79,17 @@ main = do
   putStrLn ("fdmLogBasketInnerValue at node: " ++ show basketAt ++ ", expected: " ++ show expected)
   check "fdmLogBasketInnerValue exact max-basket intrinsic" (basketAt == expected)
 
-  putStrLn "OK: native FdmInnerValueCalculator subclasses (issue #20) all work end to end"
+  leftHalf <- predefined1dMesher (take (centerIdx + 1) xs)
+  rightHalf <- predefined1dMesher (drop centerIdx xs)
+  glued <- gluedMesher leftHalf rightHalf
+  gluedComposite <- fdmMesherComposite [glued]
+  gluedLocations <- fdmMesherLocations gluedComposite 0
+  meshLocations <- fdmMesherLocations mesher 0
+  check "gluedMesher reproduces the un-split grid, deduplicating the shared node" (gluedLocations == meshLocations)
+  overlapResult <- try (gluedMesher rightHalf leftHalf) :: IO (Either SomeException Fdm1dMesher)
+  check "gluedMesher rejects an overlapping/reversed range" (either (const True) (const False) overlapResult)
+
+  putStrLn "OK: native FdmInnerValueCalculator subclasses and gluedMesher (issue #20) all work end to end"
   where
     check label cond = if cond then putStrLn ("OK  " ++ label) else error ("FAILED: " ++ label)
     tod = 1 `january` 2020

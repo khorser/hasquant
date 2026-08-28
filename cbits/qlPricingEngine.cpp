@@ -97,6 +97,7 @@
 #include <ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp>
 #include <ql/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp>
 #include <ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp>
+#include <ql/experimental/finitedifferences/glued1dmesher.hpp>
 #include <ql/pricingengines/vanilla/fdhestonvanillaengine.hpp>
 #include <ql/pricingengines/vanilla/fdhestonhullwhitevanillaengine.hpp>
 #include <ql/models/all.hpp>
@@ -829,6 +830,9 @@ QlFdm1dMesher* qlConcentrating1dMesherMulti(double start, double end, unsigned s
     for (unsigned i = 0; i < cPointsLen; ++i)
       cPoints.push_back(std::make_tuple(cPointLoc[i], cPointDensity[i], cPointRequire[i] != 0));
     return ret(new QlFdm1dMesher(alloc(new Concentrating1dMesher(start, end, size, cPoints, tol))));
+  } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
+QlFdm1dMesher* qlGluedMesher(QlFdm1dMesher* left, QlFdm1dMesher* right, char **e) {
+  try {return ret(new QlFdm1dMesher(alloc(new Glued1dMesher(**arg(left), **arg(right)))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
 QlFdm1dMesher* qlFdmBlackScholesMesher(unsigned size, QlGeneralizedBlackScholesProcess* process, double maturity, double strike,
     double xMinConstraint, double xMaxConstraint, double eps, double scaleFactor, double cPointLoc, double cPointDensity,

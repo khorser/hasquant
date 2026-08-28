@@ -770,3 +770,8 @@ spec = do
         -- exercise date), no cashflows remain, so the value must be exactly 0 regardless of model.
         FdmExample.hwNodeNpvR r `shouldBe` 0
         FdmExample.g2NodeNpvR r `shouldBe` 0
+        -- gluedMesher: splicing the grid's left/right halves back together at their shared node
+        -- must reproduce the original mesher's locations exactly (the shared point deduplicated,
+        -- not doubled), and gluing them in the wrong order must be rejected.
+        FdmExample.gluedLocationsR r `shouldBe` FdmExample.meshLocationsR r
+        FdmExample.gluedOverlapRejectedR r `shouldBe` True

@@ -2022,7 +2022,7 @@
 |x|ql/experimental/finitedifferences/fdsimpleextoustorageengine.hpp|void FdSimpleExtOUStorageEngine::calculate() const;
 | |ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp|FdSimpleKlugeExtOUVPPEngine::FdSimpleKlugeExtOUVPPEngine(ext::shared_ptr<KlugeExtOUProcess> process, ext::shared_ptr<YieldTermStructure> rTS, ext::shared_ptr<Shape> fuelShape, ext::shared_ptr<Shape> powerShape, Real fuelCostAddon, Size tGrid = 1, Size xGrid = 50, Size yGrid = 10, Size gGrid = 20, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Hundsdorfer());
 |x|ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp|void FdSimpleKlugeExtOUVPPEngine::calculate() const;
-|x|ql/experimental/finitedifferences/glued1dmesher.hpp|Glued1dMesher::Glued1dMesher(const Fdm1dMesher & leftMesher, const Fdm1dMesher & rightMesher);
+|v|ql/experimental/finitedifferences/glued1dmesher.hpp|Glued1dMesher::Glued1dMesher(const Fdm1dMesher & leftMesher, const Fdm1dMesher & rightMesher);
 | |ql/experimental/finitedifferences/vanillavppoption.hpp|VanillaVPPOption::VanillaVPPOption(Real heatRate, Real pMin, Real pMax, Size tMinUp, Size tMinDown, Real startUpFuel, Real startUpFixCost, const ext::shared_ptr<SwingExercise> & exercise, Size nStarts = Null<Size>(), Size nRunningHours = Null<Size>());
 | |ql/experimental/finitedifferences/vanillavppoption.hpp|arguments::arguments();
 | |ql/experimental/finitedifferences/vanillavppoption.hpp|void arguments::validate() const;

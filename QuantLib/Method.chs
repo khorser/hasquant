@@ -76,7 +76,9 @@
 --   describe one PDE dimension; 'fdmMesherComposite' combines one or more into the multi-dimensional
 --   'FdmMesher' 'fdmSolve' and 'FdmInnerValueCalculator' operate over. 'fdmMesherLocations' reads a
 --   dimension's real-valued node locations back out, e.g. to map a flat result array back to
---   coordinates.
+--   coordinates. 'gluedMesher' splices two 'Fdm1dMesher's end to end (e.g. a fine mesh near a
+--   barrier glued to a coarse one further out) -- their ranges must already be ordered and
+--   non-overlapping, and a shared boundary point is deduplicated automatically.
 --
 -- [@Custom inner values, fully general@] 'withCustomFdmInnerValueCalculator' wraps a Haskell
 --   @t -> location -> value@ pair of functions as an 'FdmInnerValueCalculator'. Unlike every
@@ -104,6 +106,28 @@
 -- [@Inspecting a calculator directly@] 'fdmInnerValue'\/'fdmAvgInnerValue' evaluate any bound
 --   calculator (custom or native) at a single mesher node, without assembling a whole 'fdmSolve' --
 --   useful for a targeted self-consistency check, as @Fdm.hs@'s own tests do throughout.
+--
+-- === What's deliberately not bound: operators, schemes, boundary conditions
+--
+-- QuantLib-SWIG also exposes QuantLib's concrete 'FdmLinearOpComposite' subclasses (@FdmBlackScholesOp@,
+-- @FdmHestonOp@, @FdmG2Op@, ...), its scheme objects (@DouglasScheme@, @CraigSneydScheme@,
+-- @HundsdorferScheme@, ...), and its @FdmBoundaryCondition@ family as real C++ objects. hasquant does
+-- not mirror these, and won't by default -- it's a design boundary already crossed once, not a gap.
+--
+-- 'fdmRollback'\/'fdmSolve' take the operator, the implicit-solve step, and the scheme all as Haskell
+-- closures instead (@applyFn@\/@applyDirFn@\/@solveFn@ above). That's the same "coarsen the
+-- language-boundary crossing" call already made for step conditions: bind the reusable numerical
+-- /primitive/ (rollback through a fixed timestep, of an arbitrary tridiagonal\/multi-dimensional
+-- operator) and let Haskell drive it, rather than bind every concrete operator\/scheme QuantLib ships
+-- as its own object. @test\/example\/QuantLib\/Example\/Fdm.hs@'s hand-rolled 'operatorBands'\/'applyOp'
+-- /is/ the replacement for @FdmBlackScholesOp@ + @DouglasScheme@, not a stand-in waiting for those to
+-- get bound -- pricing a new payoff\/process combination here means writing its operator once in
+-- Haskell, not calling into fifteen QuantLib operator classes one by one.
+--
+-- Binding the operator\/scheme family as objects would add a second, redundant way to drive the same
+-- 'fdmSolve'\/'fdmRollback' backbone, without extending what's actually solvable -- anything a bound
+-- @FdmXxxOp@ could do, a Haskell @applyFn@ already can. Revisit only if a concrete need shows up that
+-- the callback shape genuinely can't express (none has, so far).
 module QuantLib.Method
   (
     PathGenerator
@@ -128,6 +152,7 @@ module QuantLib.Method
   , uniform1dMesher
   , concentrating1dMesher
   , concentrating1dMesherMulti
+  , gluedMesher
   , fdmBlackScholesMesher
   , fdmCev1dMesher
   , exponentialJump1dMesher
@@ -353,6 +378,15 @@ concentrating1dMesherMulti start end size cPoints tol =
   ,withDoubleArrayRaw*`[Double]' -- ^densities
   ,withBoolArrayRaw*`[Bool]' -- ^requireCPoint per point
   ,`Double' -- ^tol
+  ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
+
+-- |'Glued1dMesher(leftMesher, rightMesher)' -- splices two 'Fdm1dMesher's into one, deduplicating
+-- their shared boundary point if @leftMesher@'s rightmost location and @rightMesher@'s leftmost
+-- location coincide (within QuantLib's usual @close@ tolerance). Throws if @leftMesher@'s rightmost
+-- point is strictly greater than @rightMesher@'s leftmost point -- the two ranges may touch or be
+-- disjoint-but-ordered, never overlap or reverse.
+{#fun qlGluedMesher as gluedMesher{withFdm1dMesher*`Fdm1dMesher' -- ^leftMesher
+  ,withFdm1dMesher*`Fdm1dMesher' -- ^rightMesher
   ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
 
 -- |'FdmBlackScholesMesher(size, process, maturity, strike, ...)' -- the standard log-spot mesher

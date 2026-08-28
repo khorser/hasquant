@@ -236,6 +236,7 @@ extern "C" {
   QlFdm1dMesher* qlUniform1dMesher(double start, double end, unsigned size, char **e);
   QlFdm1dMesher* qlConcentrating1dMesher(double start, double end, unsigned size, double cPointLoc, double cPointDensity, int requireCPoint, char **e);
   QlFdm1dMesher* qlConcentrating1dMesherMulti(double start, double end, unsigned size, unsigned cPointsLen, double* cPointLoc, double* cPointDensity, int* cPointRequire, double tol, char **e);
+  QlFdm1dMesher* qlGluedMesher(QlFdm1dMesher* left, QlFdm1dMesher* right, char **e);
   QlFdm1dMesher* qlFdmBlackScholesMesher(unsigned size, QlGeneralizedBlackScholesProcess* process, double maturity, double strike,
     double xMinConstraint, double xMaxConstraint, double eps, double scaleFactor, double cPointLoc, double cPointDensity,
     unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* fdmQuantoHelper, double spotAdjustment, char **e);
