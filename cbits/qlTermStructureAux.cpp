@@ -79,6 +79,8 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
     return dispatchInterpolator<QuantLib::ForwardRate>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
   case hasquant::ZeroYield:
     return dispatchInterpolator<QuantLib::ZeroYield>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
+  case hasquant::SimpleZeroYield:
+    return dispatchInterpolator<QuantLib::SimpleZeroYield>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
   default:
     QL_FAIL("Unsupported trait" << trait);
   }

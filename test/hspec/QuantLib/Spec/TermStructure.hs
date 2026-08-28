@@ -1071,6 +1071,32 @@ spec = do
               dZero `shouldSatisfy` closePrec dDiscount tolerance
             ) [1 .. 5 :: Int]
 
+      -- dispatchTrait (cbits/qlTermStructureAux.cpp) used to have switch arms for
+      -- Discount/ForwardRate/ZeroYield only, so SimpleZeroYield -- a BootstrapTrait value with
+      -- no structural reason to be excluded, since IterativeBootstrap is PiecewiseYieldCurve's
+      -- default Bootstrap for any Traits/Interpolator combination -- was reachable only through
+      -- the GlobalBootstrap-specific entry points above, never with plain IterativeBootstrap.
+      -- Same pillar-discount-factor comparison as the GlobalBootstrap test above, but through
+      -- piecewiseYieldCurve' directly (no GlobalBootstrap involved), to confirm the trait now
+      -- dispatches instead of hitting dispatchTrait's "Unsupported trait" QL_FAIL.
+      it "SimpleZeroYield reprices to the same pillar discount factors as Discount under IterativeBootstrap" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just curveToday)
+          cal <- Calendar.calendar TARGET
+          euriborDC <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          discountCurve <- piecewiseYieldCurve' 0 cal helpersDiscount euriborDC [] Discount Linear False
+          zeroCurve <- piecewiseYieldCurve' 0 cal helpersZero euriborDC [] SimpleZeroYield Linear False
+          settleFix <- advance cal curveToday (2, Days) Following False
+          mapM_ (\i -> do
+              pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
+              dDiscount <- discount' discountCurve pillar False
+              dZero <- discount' zeroCurve pillar False
+              dZero `shouldSatisfy` closePrec dDiscount tolerance
+            ) [1 .. 5 :: Int]
+
       -- GlobalBootstrap's functor-callback constructor (upstream QuantLib-SWIG's canned
       -- AdditionalErrors/AdditionalDates), bound only for SimpleZeroYield x Linear -- the same
       -- combination its GlobalLinearSimpleZeroCurve demonstrates. testGlobalBootstrap
