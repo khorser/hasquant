@@ -10,18 +10,18 @@
 -- self-consistency check (not upstream's cached NPV, see that describe block's own comment) built
 -- around test-suite/libormarketmodel.cpp::testCapletPricing's fixture shape.
 --
--- G2Process/G2ForwardProcess now bind @phi@/@shortRate@/@factors@ (test-suite/g2process.cpp),
--- and HullWhiteForwardProcess now binds the required post-construction
--- @setForwardMeasureTime@ call -- see this module's "G2Process"/"G2ForwardProcess" describe
--- blocks below. Only the subset of upstream's 8 g2process.cpp cases reachable without a generic
--- @drift@\/@diffusion@\/@expectation@ binding (still unbound, out of scope here) is ported:
--- 'testG2ProcessObservesTermStructure', 'testG2ForwardProcessPhiAndShortRate', and
--- 'testG2ProcessPathGeneratorMatchesCurve'. 'testG2ProcessDriftIncludesTermStructure' and
--- 'testG2ProcessExpectationConsistentWithCurve' need @drift@\/@diffusion@\/@expectation@
--- directly; 'testG2ProcessPhiAndShortRate' and 'testG2ProcessPhiRequiresTermStructure' need
--- @initialValues@ -- none of the three are bound yet. HybridHestonHullWhiteProcess's own
--- tests (test-suite/hybridhestonhullwhiteprocess.cpp) are a separate follow-up: they need a
--- 'QuantLib.Model.hestonModel'-shaped construction path plus the same @initialValues@ gap.
+-- G2Process/G2ForwardProcess bind @phi@/@shortRate@/@factors@ (test-suite/g2process.cpp),
+-- 'QuantLib.Process' now also binds generic @drift@\/@diffusion@\/@expectation@\/@initialValues@
+-- on 'QuantLib.Process.StochasticProcess', and HullWhiteForwardProcess binds the required
+-- post-construction @setForwardMeasureTime@ call -- see this module's "G2Process"/
+-- "G2ForwardProcess" and "HybridHestonHullWhiteProcess" describe blocks below. 7 of upstream's
+-- 8 g2process.cpp cases are now ported; 'testG2ProcessPhiMatchesG2Model' is the sole holdout
+-- -- it needs 'G2'\'s own @dynamics()@\/@ShortRateDynamics@, a genuinely new nested type, not
+-- bound here. Of test-suite/hybridhestonhullwhiteprocess.cpp's 10 cases,
+-- 'testAnalyticHestonHullWhitePricing' is ported (an MC-vs-analytic cross-check with the
+-- short-rate leg decorrelated); the rest need bindings this module doesn't have
+-- ('numeraire', 'SobolBrownianBridgeRsg', 'HullWhite.discountBond'\/'discountBondOption', a
+-- bound 'FdmHestonHullWhiteVanillaEngine', ...) and are left as a further follow-up.
 module QuantLib.Spec.Process (spec) where
 
 import Test.Hspec
@@ -30,15 +30,18 @@ import Data.Time.Calendar(addDays)
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date(today, addPeriod)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
-import QuantLib.InterestRate(Compounding(..))
+import QuantLib.InterestRate(Compounding(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(flatForward, forwardRate, YieldTermStructure)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..))
-import QuantLib.Process(g2Process, g2ForwardProcess, g2Phi, g2ForwardPhi, g2ForwardShortRate, factors)
+import QuantLib.Process(g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, factors, drift, diffusion, expectation, initialValues, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..))
+import QuantLib.Model(hullWhite)
+import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine)
+import QuantLib.TermStructure.Yield(interpolatedZeroCurve)
 import QuantLib.Method(pathGenerator, next, asset)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid)
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Matrix(..), Interpolation(..))
 import Control.Monad(replicateM)
 import QuantLib.Model(hestonModel, batesModel, gJRGARCHModel)
 import QuantLib.PricingEngine(analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula)
@@ -46,7 +49,7 @@ import QuantLib.PricingEngine(analyticHestonEngine', batesEngine, analyticGJRGAR
 import QuantLib.CashFlow(cashFlows)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Index(fixingCalendar, addFixing)
-import QuantLib.Time.Calendar(advance, BusinessDayConvention(..))
+import QuantLib.Time.Calendar(advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
 import QuantLib.Process(liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows, liborForwardModelProcessIndex)
@@ -269,6 +272,140 @@ spec = do
         expected <- mapM (\i -> g2Phi process (horizon * fromIntegral i / fromIntegral steps)) [0 .. steps]
         sequence_ (zipWith (\m e -> m `shouldSatisfy` closePrec e 1.5e-3) meanR expected)
 
+    -- ported from test-suite/g2process.cpp::testG2ProcessPhiAndShortRate (minus its x0()/y0()
+    -- checks -- those OU-component getters aren't bound, per "bind few inspectors"):
+    -- phi(t) must match the closed-form G2++ fitting-parameter formula directly (not just react
+    -- correctly to a bump, as the first case above checks), shortRate(t, z1, z2) is just z1+z2,
+    -- and initialValues sums to phi(0).
+    it "phi(t) matches the closed-form G2 fitting-parameter formula" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
+        rateQ <- simpleQuote 0.03
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2Process a sigma b eta rho (Just curve)
+
+        mapM_ (\t -> do
+            expected <- referencePhi curve t a sigma b eta rho
+            actual <- g2Phi process t
+            actual `shouldSatisfy` closePrec expected 1.0e-12)
+          [0.25, 1.0, 5.0, 10.0]
+
+        mapM_ (\(z1, z2) -> g2ShortRate process 1.0 z1 z2 `shouldSatisfy` closePrec (z1 + z2) 1.0e-12)
+          [(z1, z2) | z1 <- [-0.01, 0.0, 0.005], z2 <- [-0.002, 0.0, 0.004]]
+
+        iv <- initialValues process
+        expected0 <- referencePhi curve 0.0 a sigma b eta rho
+        sum iv `shouldSatisfy` closePrec expected0 1.0e-12
+
+    -- ported from test-suite/g2process.cpp::testG2ProcessPhiRequiresTermStructure: without a
+    -- term structure, phi throws but shortRate still works (it no longer touches the curve),
+    -- and the process degenerates to two zero-mean OU factors -- initialValues is (0,0).
+    it "phi throws and initialValues degenerate to (0,0) without a term structure" $ do
+      process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) Nothing
+      g2Phi process 1.0 `shouldThrow` anyException
+      g2ShortRate process 1.0 0.01 0.02 `shouldSatisfy` closePrec 0.03 1.0e-14
+      iv <- initialValues process
+      iv `shouldSatisfy` all ((< 1.0e-14) . abs)
+
+    -- ported from test-suite/g2process.cpp::testG2ProcessDriftIncludesTermStructure: drift's
+    -- y-component and diffusion are entirely curve-independent; drift's x-component differs
+    -- from the curveless case by exactly a*phi(t) + phi'(t) (a numerical derivative, matching
+    -- G2Process's own implementation), the same shift 'g2Phi' reports.
+    it "drift/diffusion pick up the term-structure shift only in the x-component" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
+        rateQ <- simpleQuote 0.04
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        paramOnly <- g2Process a sigma b eta rho Nothing
+        withCurve <- g2Process a sigma b eta rho (Just curve)
+        let t = 1.5; z = [0.002, -0.003]
+
+        d1 <- drift paramOnly t z
+        d2 <- drift withCurve t z
+        (d2 !! 1) `shouldSatisfy` closePrec (d1 !! 1) 1.0e-12
+
+        let h = 1.0e-4
+        phiT <- g2Phi withCurve t
+        phiTh <- g2Phi withCurve (t + h)
+        let expectedDelta = a * phiT + (phiTh - phiT) / h
+        ((d2 !! 0) - (d1 !! 0)) `shouldSatisfy` closePrec expectedDelta 1.0e-10
+
+        diff1 <- diffusion paramOnly t z
+        diff2 <- diffusion withCurve t z
+        matrixData diff1 `shouldSatisfy` \xs -> and (zipWith (\x y -> closePrec y 1.0e-14 x) xs (matrixData diff2))
+
+    -- ported from test-suite/g2process.cpp::testG2ProcessExpectationConsistentWithCurve:
+    -- starting from the process's own initial state, E[z1(t)+z2(t)] must equal phi(t) --
+    -- z2(0) is zero and y is a zero-mean OU factor, so the whole expected shift lands on phi.
+    it "expectation from the initial state reproduces phi(t)" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        rateQ <- simpleQuote 0.035
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2Process 0.1 0.01 0.2 0.013 (-0.4) (Just curve)
+        iv <- initialValues process
+
+        mapM_ (\t -> do
+            expT <- expectation process 0.0 iv t
+            expected <- g2Phi process t
+            sum expT `shouldSatisfy` closePrec expected 1.0e-12)
+          [0.1, 0.5, 2.0, 5.0, 10.0]
+
+  describe "HybridHestonHullWhiteProcess (AnalyticHestonHullWhiteEngine vs. MCHestonHullWhiteEngine)" $
+    -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:
+    -- with the equity/short-rate correlation set to 0, an MC price on the joint
+    -- Heston/Hull-White process must reproduce the semi-analytic AnalyticHestonHullWhiteEngine
+    -- price for the corresponding pure-Heston-with-Hull-White-discounting model. Uses literal
+    -- a=sigma=0.01 for both the forward process and the matching HullWhite model (upstream
+    -- reads them back off the forward process via a()/sigma(), which aren't bound here -- but
+    -- the fixture already knows the values it constructed the process with).
+    it "MC and analytic engines agree once the short-rate leg is decorrelated" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter (Actual360 False)
+        cal <- calendar TARGET
+        let yrs = [0 .. 40 :: Int]
+        dates <- mapM (\i -> addPeriod evalDate (i, Years)) yrs
+        let rates = [0.03 + 0.0001 * exp (sin (fromIntegral i / 4.0)) | i <- yrs]
+            divRates = [0.02 + 0.0002 * exp (sin (fromIntegral i / 3.0)) | i <- yrs]
+        rTS <- interpolatedZeroCurve (zip dates rates) dc cal [] Linear
+        qTS <- interpolatedZeroCurve (zip dates divRates) dc cal [] Linear
+
+        maturity <- addPeriod evalDate (5, Years)
+        s0 <- simpleQuote 100.0
+        hProcess <- hestonProcess rTS (Just qTS) s0 0.08 1.5 0.0625 0.5 (-0.8) QuadraticExponentialMartingale
+        hModel <- hestonModel hProcess
+
+        hwFwdProcess <- hullWhiteForwardProcess rTS 0.01 0.01
+        maturityT <- years dc evalDate maturity Nothing Nothing
+        setForwardMeasureTime hwFwdProcess maturityT
+        hwModel <- hullWhite rTS 0.01 0.01
+        analyticEng <- analyticHestonHullWhiteEngine hModel hwModel 128
+
+        sequence_ [ do
+            jointProcess <- hybridHestonHullWhiteProcess hProcess hwFwdProcess 0.0 HybridHestonHullWhiteEuler
+            mcEng <- mcHestonHullWhiteEngine PseudoRandom Statistics jointProcess (Just 1) Nothing True True Nothing (Just 0.002) Nothing 42
+
+            optMC <- europeanOption (PlainVanilla (PlainVanillaPayoff typ strike)) (European (EuropeanExercise maturity))
+            setPricingEngine optMC mcEng
+            mcNpv <- npv optMC
+
+            optAnalytic <- europeanOption (PlainVanilla (PlainVanillaPayoff typ strike)) (European (EuropeanExercise maturity))
+            setPricingEngine optAnalytic analyticEng
+            analyticNpv <- npv optAnalytic
+
+            mcNpv `shouldSatisfy` closePrec analyticNpv 1.0e-4
+          | typ <- [Put, Call], strike <- [80.0, 120.0] ]
+
   where
     -- Abramowitz & Stegun 7.1.26 approximation, accurate to ~1.5e-7 -- ample for this
     -- table's 0.15 tolerance; avoids a new dependency for a single-call use.
@@ -281,5 +418,16 @@ spec = do
           t' = 1 / (1 + p * ax)
           y = 1 - (((((a5 * t' + a4) * t') + a3) * t' + a2) * t' + a1) * t' * exp (-ax * ax)
       in sign * y
+
+    -- reference implementation of the G2++ deterministic offset phi(t), copied from
+    -- G2::FittingParameter::Impl::value in ql/models/shortrate/twofactormodels/g2.hpp; used to
+    -- check 'g2Phi' against a closed form independent of G2Process's own implementation.
+    referencePhi :: YieldTermStructure -> Double -> Double -> Double -> Double -> Double -> Double -> IO Double
+    referencePhi curve t a sigma b eta rho = do
+      fwdIR <- forwardRate curve t t Continuous NoFrequency True
+      let fwd = rate fwdIR
+          temp1 = sigma * (1 - exp (-a * t)) / a
+          temp2 = eta * (1 - exp (-b * t)) / b
+      pure (0.5 * temp1 * temp1 + 0.5 * temp2 * temp2 + rho * temp1 * temp2 + fwd)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
