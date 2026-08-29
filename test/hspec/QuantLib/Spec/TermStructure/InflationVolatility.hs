@@ -19,6 +19,8 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 
+import QuantLib.Spec.Helpers(closePrec)
+
 -- |Builds an 'InterpolatedZeroCurve'-style nominal EUR curve from (time-from-eval, rate) pairs,
 -- converting each time to a date the same way upstream's own fixture does (@eval +
 -- Period(years,Years) + Period(days,Days)@, i.e. calendar-correct year steps plus a residual day
@@ -272,7 +274,5 @@ spec = do
     cv `shouldSatisfy` closePrec 0.04 1.0e-10
     ctv <- cpiTotalVariance cpiVol queryDate 0.03 Nothing True
     ctv `shouldSatisfy` (not . isNaN)
-  where
-    closePrec r p x = abs (x - r) < p
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

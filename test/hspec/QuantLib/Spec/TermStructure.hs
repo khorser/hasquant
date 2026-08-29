@@ -745,6 +745,13 @@ spec = do
           curve <- Vol.abcdAtmVolCurve 0 cal tenors qs (replicate 10 True) Following dc
           rmsErr <- Vol.abcdAtmVolCurveRmsError curve
           rmsErr `shouldSatisfy` (< 0.05)
+          maxErr <- Vol.abcdAtmVolCurveMaxError curve
+          maxErr `shouldSatisfy` (< 0.05)
+          _ <- Vol.abcdAtmVolCurveA curve
+          _ <- Vol.abcdAtmVolCurveB curve
+          _ <- Vol.abcdAtmVolCurveC curve
+          _ <- Vol.abcdAtmVolCurveD curve
+          _ <- Vol.abcdAtmVolCurveEndCriteria curve
           ks <- Vol.abcdAtmVolCurveK curve
           length ks `shouldBe` 10
           returnedTenors <- Vol.abcdAtmVolCurveOptionTenors curve
