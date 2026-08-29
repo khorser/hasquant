@@ -15,6 +15,10 @@
 // forward-declared the way every other type below is, so its full header is pulled in here
 // instead. InterpolatedSwaptionVolatilityCube is an ordinary class and stays forward-declared.
 #include <ql/termstructures/volatility/swaption/sabrswaptionvolatilitycube.hpp>
+// TwoFactorModel::ShortRateDynamics is a nested class -- referring to it (even just as a
+// shared_ptr<> template argument below) requires TwoFactorModel to be a complete type, so
+// (like SabrSwaptionVolatilityCube above) it can't be left as a forward declaration.
+#include <ql/models/shortrate/twofactormodel.hpp>
 
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
@@ -620,6 +624,7 @@ using QuantLib::TreeCallableZeroCouponBondEngine;
 using QuantLib::TreeCapFloorEngine;
 using QuantLib::TreeSwaptionEngine;
 using QuantLib::TreeVanillaSwapEngine;
+using QuantLib::TwoFactorModel;
 using QuantLib::TypePayoff;
 using QuantLib::UpfrontCdsHelper;
 using QuantLib::VanillaOption;
@@ -852,6 +857,7 @@ using QlQuantoBarrierOption = shared_ptr<QuantoBarrierOption>;
 using QlQuantoForwardVanillaOption = shared_ptr<QuantoForwardVanillaOption>;
 using QlQuantoVanillaOption = shared_ptr<QuantoVanillaOption>;
 using QlSabrInterpolatedSmileSection = shared_ptr<SabrInterpolatedSmileSection>;
+using QlShortRateDynamics = shared_ptr<TwoFactorModel::ShortRateDynamics>;
 using QlShortRateModel = shared_ptr<ShortRateModel>;
 using QlSimpleQuote = shared_ptr<SimpleQuote>;
 using QlSmileSection = shared_ptr<SmileSection>;
@@ -1258,6 +1264,7 @@ QL_TRACE_NAME(QlQuantoForwardVanillaOption)
 QL_TRACE_NAME(QlQuantoVanillaOption)
 QL_TRACE_NAME(QlQuote)
 QL_TRACE_NAME(QlSabrInterpolatedSmileSection)
+QL_TRACE_NAME(QlShortRateDynamics)
 QL_TRACE_NAME(QlShortRateModel)
 QL_TRACE_NAME(QlSimpleQuote)
 QL_TRACE_NAME(QlSmileSection)

@@ -2155,6 +2155,7 @@ data COneFactorAffineModel'
 data CHullWhite'
 data CG2'
 data CAffineModel'
+data CShortRateDynamics'
 newtype GenCalibratedModel m = GenCalibratedModel {getCalibratedModel :: GenForeignPtr m CCalibratedModel'}
 type CCalibratedModel = ForeignPtr CCalibratedModel'
 type CLiborForwardModel = ForeignPtr CLiborForwardModel'
@@ -2204,6 +2205,7 @@ foreign import ccall unsafe "ql.h &qlFreeBatesDoubleExpModel" qlFreeBatesDoubleE
 foreign import ccall unsafe "ql.h &qlFreeBatesDoubleExpDetJumpModel" qlFreeBatesDoubleExpDetJumpModel :: FinalizerPtr CBatesDoubleExpDetJumpModel'
 foreign import ccall unsafe "ql.h &qlFreeG2" qlFreeG2 :: FinalizerPtr CG2'
 foreign import ccall unsafe "ql.h &qlFreeAffineModel" qlFreeAffineModel :: FinalizerPtr CAffineModel'
+foreign import ccall unsafe "ql.h &qlFreeShortRateDynamics" qlFreeShortRateDynamics :: FinalizerPtr CShortRateDynamics'
 foreign import ccall unsafe "ql.h &qlFreeOneFactorAffineModel" qlFreeOneFactorAffineModel :: FinalizerPtr COneFactorAffineModel'
 foreign import ccall unsafe "ql.h &qlFreeHullWhite" qlFreeHullWhite :: FinalizerPtr CHullWhite'
 foreign import ccall "ql.h qlPiecewiseTimeDependentHestonModelAsCalibratedModel" qlPiecewiseTimeDependentHestonModelAsCalibratedModel :: Ptr CPiecewiseTimeDependentHestonModel' -> IO (Ptr CCalibratedModel')
@@ -2236,6 +2238,7 @@ instance Finalizable COneFactorAffineModel' where finalize = qlFreeOneFactorAffi
 instance Finalizable CHullWhite' where finalize = qlFreeHullWhite
 instance Finalizable CG2' where finalize = qlFreeG2
 instance Finalizable CAffineModel' where finalize = qlFreeAffineModel
+instance Finalizable CShortRateDynamics' where finalize = qlFreeShortRateDynamics
 instance Upcastable CLiborForwardModel' where {type Base CLiborForwardModel' = CCalibratedModel'; upcast = qlLiborForwardModelAsCalibratedModel}
 instance Upcastable CPiecewiseTimeDependentHestonModel' where {type Base CPiecewiseTimeDependentHestonModel' = CCalibratedModel'; upcast = qlPiecewiseTimeDependentHestonModelAsCalibratedModel}
 instance Upcastable CGJRGARCHModel' where {type Base CGJRGARCHModel' = CCalibratedModel'; upcast = qlGJRGARCHModelAsCalibratedModel}
@@ -2348,6 +2351,10 @@ oneFactorAffineModelAsAffineModel :: OneFactorAffineModel -> IO AffineModel
 oneFactorAffineModelAsAffineModel m = withOneFactorAffineModel m qlOneFactorAffineModelAsAffineModel >>= peekStandalone
 liborForwardModelAsAffineModel :: LiborForwardModel -> IO AffineModel
 liborForwardModelAsAffineModel m = withGenCalibratedModel m qlLiborForwardModelAsAffineModel >>= peekStandalone
+
+-- |The two-factor short-rate dynamics (state variables @x@, @y@ with @r_t = phi(t) + x_t + y_t@)
+-- underlying a 'G2' model, as returned by @TwoFactorModel::dynamics()@.
+type ShortRateDynamics = Standalone CShortRateDynamics'
 
 data CGaussian1dModel'
 foreign import ccall unsafe "ql.h &qlFreeGaussian1dModel" qlFreeGaussian1dModel :: FinalizerPtr CGaussian1dModel'

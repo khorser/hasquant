@@ -323,6 +323,9 @@ extern "C" {
   void qlFreeG2(QlG2 *o);
   QlAffineModel* qlG2AsAffineModel(QlG2 *o);
   QlShortRateModel* qlG2AsShortRateModel(QlG2 *o);
+  void qlFreeShortRateDynamics(QlShortRateDynamics *o);
+  QlShortRateDynamics* qlG2Dynamics(QlG2 *o, char **e);
+  double qlShortRateDynamicsShortRate(QlShortRateDynamics *o, double t, double x, double y, char **e);
   void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o);
   QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o);
   void qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o);

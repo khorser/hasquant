@@ -20,6 +20,9 @@ module QuantLib.Model
   , CalibratedModel
   , GenCalibratedModel
   , G2
+  , ShortRateDynamics
+  , g2Dynamics
+  , shortRate
   , BatesDetJumpModel
   , BatesDoubleExpDetJumpModel
   , BatesDoubleExpModel
@@ -125,6 +128,7 @@ import QuantLib.Internal.Common
 {#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
 {#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel' nocode#}
 {#pointer *QlG2 as G2 foreign -> CG2' nocode#}
+{#pointer *QlShortRateDynamics as ShortRateDynamics foreign -> CShortRateDynamics' nocode#}
 {#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
@@ -198,6 +202,16 @@ import QuantLib.Internal.Common
   ,`Double' -- ^eta
   ,`Double' -- ^rho
   ,preErrorCheck-`String'errorCheck*-}->`G2'peekG2*#}
+
+-- |The two-factor short-rate dynamics underlying a 'G2' model (@TwoFactorModel::dynamics()@).
+{#fun qlG2Dynamics as g2Dynamics{withG2*`G2',preErrorCheck-`String'errorCheck*-}->`ShortRateDynamics'peekStandalone*#}
+
+-- |Short rate implied by a 'ShortRateDynamics''s two state variables x, y at time t: @fitting_(t) + x + y@. At @x = y = 0@ this collapses to the model's fitting parameter @phi(t)@.
+{#fun qlShortRateDynamicsShortRate as shortRate{withStandalone*`ShortRateDynamics'
+  ,`Double' -- ^t
+  ,`Double' -- ^x
+  ,`Double' -- ^y
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Generalized Hull-White model: like 'hullWhite', but reversion and volatility are piecewise-linear functions of time given at @speedstructure@/@volstructure@ dates.
 generalizedHullWhite :: GenYieldTermStructure y -> [(Day, Double)] -- ^speedstructure

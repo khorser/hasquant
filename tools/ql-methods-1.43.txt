@@ -7018,9 +7018,9 @@
 | |ql/models/shortrate/onefactormodels/vasicek.hpp|Dynamics::Dynamics(Real a, Real b, Real sigma, Real r0);
 | |ql/models/shortrate/onefactormodels/vasicek.hpp|ext::shared_ptr<OneFactorModel::ShortRateDynamics> dynamics() const;
 | |ql/models/shortrate/twofactormodel.hpp|TwoFactorModel::TwoFactorModel(Size nParams);
-| |ql/models/shortrate/twofactormodel.hpp|ext::shared_ptr<ShortRateDynamics> TwoFactorModel::dynamics() const;
+|v|ql/models/shortrate/twofactormodel.hpp|ext::shared_ptr<ShortRateDynamics> TwoFactorModel::dynamics() const;
 | |ql/models/shortrate/twofactormodel.hpp|ShortRateDynamics::ShortRateDynamics(ext::shared_ptr<StochasticProcess1D> xProcess, ext::shared_ptr<StochasticProcess1D> yProcess, Real correlation);
-| |ql/models/shortrate/twofactormodel.hpp|Rate ShortRateDynamics::shortRate(Time t, Real x, Real y) const;
+|v|ql/models/shortrate/twofactormodel.hpp|Rate ShortRateDynamics::shortRate(Time t, Real x, Real y) const;
 |x|ql/models/shortrate/twofactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::xProcess() const;
 |x|ql/models/shortrate/twofactormodel.hpp|const ext::shared_ptr<StochasticProcess1D> & ShortRateDynamics::yProcess() const;
 |x|ql/models/shortrate/twofactormodel.hpp|Real ShortRateDynamics::correlation() const;

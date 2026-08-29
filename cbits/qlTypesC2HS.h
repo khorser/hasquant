@@ -169,6 +169,7 @@ typedef struct QlRelinkableSwaptionVolatilityStructure QlRelinkableSwaptionVolat
 typedef struct QlRelinkableYieldTermStructure QlRelinkableYieldTermStructure;
 typedef struct QlSabrInterpolatedSmileSection QlSabrInterpolatedSmileSection;
 typedef struct QlSabrSwaptionVolatilityCube QlSabrSwaptionVolatilityCube;
+typedef struct QlShortRateDynamics QlShortRateDynamics;
 typedef struct QlShortRateModel QlShortRateModel;
 typedef struct QlSimpleQuote QlSimpleQuote;
 typedef struct QlSmileSection QlSmileSection;

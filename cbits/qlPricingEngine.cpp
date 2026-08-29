@@ -1041,6 +1041,13 @@ QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, d
 void qlFreeG2(QlG2 *o) {del(o);}
 QlAffineModel* qlG2AsAffineModel(QlG2 *o) {return ret(new QlAffineModel(*arg(o)));}
 QlShortRateModel* qlG2AsShortRateModel(QlG2 *o) {return ret(new QlShortRateModel(*arg(o)));}
+void qlFreeShortRateDynamics(QlShortRateDynamics *o) {del(o);}
+QlShortRateDynamics* qlG2Dynamics(QlG2 *o, char **e) {
+  try {return ret(new QlShortRateDynamics((*arg(o))->dynamics()));
+  } catch (std::exception& er) {return handleException<QlShortRateDynamics*>(e, er);}}
+double qlShortRateDynamicsShortRate(QlShortRateDynamics *o, double t, double x, double y, char **e) {
+  try {return (*arg(o))->shortRate(t, x, y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) {del(o);}
 QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o) {return ret(new QlBatesModel(*arg(o)));}
 void qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o) {del(o);}
