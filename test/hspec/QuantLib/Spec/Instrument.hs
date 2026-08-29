@@ -21,7 +21,7 @@ import Test.Hspec
 import QuantLib.Instrument
 import QuantLib.Instrument.CapFloor
 import QuantLib.Instrument.Option
-import QuantLib.CashFlow hiding(npv)
+import QuantLib.CashFlow hiding(npv, leg)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor6M))
 import QuantLib.PricingEngine
 import QuantLib.Process

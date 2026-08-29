@@ -19,7 +19,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.Currency
+import QuantLib.Currency hiding(rate)
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Quote
 import QuantLib.TermStructure.Yield
@@ -54,10 +54,10 @@ makeSwap today' lengthYears fixedRate floatingSpread = do
   fixedSch <- schedule (Just settle) maturity (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
   floatSch <- schedule (Just settle) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing
     Forward False Nothing Nothing
-  swap <- vanillaSwap Payer 100 fixedSch fixedRate fixedDC floatSch idx floatingSpread floatDC Nothing Nothing
+  swp <- vanillaSwap Payer 100 fixedSch fixedRate fixedDC floatSch idx floatingSpread floatDC Nothing Nothing
   eng <- discountingSwapEngine ts Nothing Nothing Nothing
-  setPricingEngine swap eng
-  pure swap
+  setPricingEngine swp eng
+  pure swp
 
 spec :: Spec
 spec = do
@@ -66,8 +66,8 @@ spec = do
        \ index-fixing coupon pricing, since hasquant has no binding to select between them)" $
       Settings.keepingSettings' $ do
         Settings.setEvaluationDate (Just (17 `june` 2002))
-        swap <- makeSwap (17 `june` 2002) 10 0.06 0.001
-        v <- npv swap
+        swp <- makeSwap (17 `june` 2002) 10 0.06 0.001
+        v <- npv swp
         v `shouldSatisfy` (\x -> closePrec (-5.872863313209) 1e-8 x || closePrec (-5.872342992212) 1e-8 x)
 
     it "testFairRate: rebuilding at the swap's own fairRate reprices it to ~0" $

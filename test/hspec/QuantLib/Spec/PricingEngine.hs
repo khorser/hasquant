@@ -56,15 +56,15 @@ spec = do
   -- bachelierBlackFormula free functions, and closed-form vanna/volga checks from
   -- blackcalculator.cpp's own documented formula.
   describe "BlackCalculator / BlackScholesCalculator / BachelierCalculator" $ do
-    let strike = 100.0; forward = 105.0; stdDev = 0.25; discount = 0.97
+    let strike = 100.0; forward = 105.0; stdDev = 0.25; disc = 0.97
         spot = 103.0; maturity = 2.0
 
     it "BlackCalculator: ctors agree, put-call parity holds, Call/Put share second-order greeks,\
        \ value matches blackFormula, vanna/volga match their closed forms" $ do
-      callBC <- blackCalculator' Call strike forward stdDev discount
-      putBC <- blackCalculator' Put strike forward stdDev discount
-      callBC2 <- blackCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward stdDev discount
-      putBC2 <- blackCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward stdDev discount
+      callBC <- blackCalculator' Call strike forward stdDev disc
+      putBC <- blackCalculator' Put strike forward stdDev disc
+      callBC2 <- blackCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward stdDev disc
+      putBC2 <- blackCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward stdDev disc
 
       callVal <- value callBC
       callVal2 <- value callBC2
@@ -73,20 +73,20 @@ spec = do
       putVal2 <- value putBC2
       putVal2 `shouldBe` putVal
 
-      (callVal - putVal) `shouldSatisfy` closePrec (discount * (forward - strike)) 1e-10
+      (callVal - putVal) `shouldSatisfy` closePrec (disc * (forward - strike)) 1e-10
 
       callDF <- deltaForward callBC
       putDF <- deltaForward putBC
-      (callDF - putDF) `shouldSatisfy` closePrec discount 1e-10
+      (callDF - putDF) `shouldSatisfy` closePrec disc 1e-10
 
       forM_ [gammaForward, (`vega` maturity), strikeGamma] $ \f -> do
         c <- f callBC
         p <- f putBC
         p `shouldBe` c
 
-      refCallVal <- blackFormula Call strike forward stdDev discount 0.0
+      refCallVal <- blackFormula Call strike forward stdDev disc 0.0
       callVal `shouldSatisfy` closePrec refCallVal 1e-12
-      refPutVal <- blackFormula Put strike forward stdDev discount 0.0
+      refPutVal <- blackFormula Put strike forward stdDev disc 0.0
       putVal `shouldSatisfy` closePrec refPutVal 1e-12
 
       let d1 = log (forward / strike) / stdDev + 0.5 * stdDev
@@ -100,12 +100,12 @@ spec = do
     it "BlackScholesCalculator: ctors agree, inherited GenBlackCalculator methods match the\
        \ equivalent BlackCalculator exactly, and its own no-spot overrides match BlackCalculator's\
        \ spot-taking versions at its stored spot" $ do
-      callBC <- blackCalculator' Call strike forward stdDev discount
+      callBC <- blackCalculator' Call strike forward stdDev disc
       callVal <- value callBC
       let growth = 1.0
-          bscSpot = forward * discount / growth
-      callBSC <- blackScholesCalculator' Call strike bscSpot growth stdDev discount
-      callBSC2 <- blackScholesCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) bscSpot growth stdDev discount
+          bscSpot = forward * disc / growth
+      callBSC <- blackScholesCalculator' Call strike bscSpot growth stdDev disc
+      callBSC2 <- blackScholesCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) bscSpot growth stdDev disc
       callBSCVal <- value callBSC
       callBSCVal2 <- value callBSC2
       callBSCVal2 `shouldBe` callBSCVal
@@ -154,10 +154,10 @@ spec = do
       -- forward/strike spread is needed or every second-order greek degenerates to ~1e-87
       -- in the tail, passing every check without exercising the formula.
       let bachelierStdDev = 8.0
-      callNC <- bachelierCalculator' Call strike forward bachelierStdDev discount
-      putNC <- bachelierCalculator' Put strike forward bachelierStdDev discount
-      callNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward bachelierStdDev discount
-      putNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward bachelierStdDev discount
+      callNC <- bachelierCalculator' Call strike forward bachelierStdDev disc
+      putNC <- bachelierCalculator' Put strike forward bachelierStdDev disc
+      callNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward bachelierStdDev disc
+      putNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward bachelierStdDev disc
 
       callNVal <- bachelierValue callNC
       callNVal2 <- bachelierValue callNC2
@@ -166,11 +166,11 @@ spec = do
       putNVal2 <- bachelierValue putNC2
       putNVal2 `shouldBe` putNVal
 
-      (callNVal - putNVal) `shouldSatisfy` closePrec (discount * (forward - strike)) 1e-10
+      (callNVal - putNVal) `shouldSatisfy` closePrec (disc * (forward - strike)) 1e-10
 
       callNDF <- bachelierDeltaForward callNC
       putNDF <- bachelierDeltaForward putNC
-      (callNDF - putNDF) `shouldSatisfy` closePrec discount 1e-10
+      (callNDF - putNDF) `shouldSatisfy` closePrec disc 1e-10
 
       forM_ [ bachelierGammaForward, (`bachelierVega` maturity)
             , bachelierStrikeGamma, (`bachelierVanna` maturity), (`bachelierVolga` maturity)
@@ -179,9 +179,9 @@ spec = do
         p <- f putNC
         p `shouldBe` c
 
-      refCallNVal <- bachelierBlackFormula Call strike forward bachelierStdDev discount
+      refCallNVal <- bachelierBlackFormula Call strike forward bachelierStdDev disc
       callNVal `shouldSatisfy` closePrec refCallNVal 1e-12
-      refPutNVal <- bachelierBlackFormula Put strike forward bachelierStdDev discount
+      refPutNVal <- bachelierBlackFormula Put strike forward bachelierStdDev disc
       putNVal `shouldSatisfy` closePrec refPutNVal 1e-12
 
       let d = (forward - strike) / bachelierStdDev
@@ -191,7 +191,7 @@ spec = do
       callNVanna `shouldSatisfy` closePrec (-d * nd * sqrt maturity / bachelierStdDev) 1e-9
       callNVolga <- bachelierVolga callNC maturity
       callNVolga `shouldSatisfy` closePrec (d * d / bachelierStdDev * callNVega) 1e-9
-      callNVega `shouldSatisfy` closePrec (discount * sqrt maturity * nd) 1e-9
+      callNVega `shouldSatisfy` closePrec (disc * sqrt maturity * nd) 1e-9
 
   -- Ported from test/smoke/CheckSabrSmileSection.hs. volatility(strike)/variance(strike) must
   -- exactly match the already-bound unsafeShiftedSabrVolatility formula (enum-dispatched
@@ -201,22 +201,22 @@ spec = do
   -- SabrInterpolatedSmileSection must calibrate back to the SABR parameters that generated its
   -- input vols.
   describe "SabrSmileSection / NoArbSabrSmileSection / SabrInterpolatedSmileSection" $ do
-    let forward = 0.03; expiry = 5.0; alpha = 0.04; beta = 0.5; nu = 0.4; rho = -0.2; shift = 0.0
+    let forward = 0.03; expiry = 5.0; alpha_ = 0.04; beta_ = 0.5; nu = 0.4; rho_ = -0.2; shift = 0.0
 
     it "matches unsafeShiftedSabrVolatility for both VolatilityType cases, and Normal /= ShiftedLognormal" $
       Settings.keepingSettings' $ do
         forM_ [ShiftedLognormal, Normal] $ \volType -> do
-          section <- sabrSmileSection expiry forward alpha beta nu rho shift volType
+          section <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift volType
           forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
             got <- smileSectionVolatility section strike
-            expected <- unsafeShiftedSabrVolatility strike forward expiry alpha beta nu rho shift volType
+            expected <- unsafeShiftedSabrVolatility strike forward expiry alpha_ beta_ nu rho_ shift volType
             got `shouldBe` expected
             var <- smileSectionVariance section strike
             var `shouldSatisfy` closePrec (expected * expected * expiry) 1e-12
 
-        volShiftedLognormal <- sabrSmileSection expiry forward alpha beta nu rho shift ShiftedLognormal
+        volShiftedLognormal <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift ShiftedLognormal
         volAtAtm1 <- smileSectionVolatility volShiftedLognormal forward
-        volNormal <- sabrSmileSection expiry forward alpha beta nu rho shift Normal
+        volNormal <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift Normal
         volAtAtm2 <- smileSectionVolatility volNormal forward
         volAtAtm1 `shouldNotBe` volAtAtm2
 
@@ -230,15 +230,15 @@ spec = do
         optionDate <- addPeriod refDate (expiryDays, Days)
         act365 <- dayCounter Actual365FixedStandard
 
-        sectionByTime <- sabrSmileSection expiryFromDays forward alpha beta nu rho shift ShiftedLognormal
-        sectionByDate <- sabrSmileSection' optionDate forward alpha beta nu rho (Just refDate) act365 shift ShiftedLognormal
+        sectionByTime <- sabrSmileSection expiryFromDays forward alpha_ beta_ nu rho_ shift ShiftedLognormal
+        sectionByDate <- sabrSmileSection' optionDate forward alpha_ beta_ nu rho_ (Just refDate) act365 shift ShiftedLognormal
         forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
           volT <- smileSectionVolatility sectionByTime strike
           volD <- smileSectionVolatility sectionByDate strike
           volD `shouldSatisfy` closePrec volT 1e-12
 
-        noArbByTime <- noArbSabrSmileSection expiryFromDays forward alpha beta nu rho shift ShiftedLognormal
-        noArbByDate <- noArbSabrSmileSection' optionDate forward alpha beta nu rho act365 shift ShiftedLognormal
+        noArbByTime <- noArbSabrSmileSection expiryFromDays forward alpha_ beta_ nu rho_ shift ShiftedLognormal
+        noArbByDate <- noArbSabrSmileSection' optionDate forward alpha_ beta_ nu rho_ act365 shift ShiftedLognormal
         differences <- forM [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
           volT <- smileSectionVolatility noArbByTime strike
           volD <- smileSectionVolatility noArbByDate strike
@@ -251,16 +251,16 @@ spec = do
        \ including through the AsSmileSection upcast" $
       Settings.keepingSettings' $ do
         let strikes = [0.01, 0.02, 0.03, 0.04, 0.05]
-        refVols <- mapM (\k -> unsafeShiftedSabrVolatility k forward expiry alpha beta nu rho shift ShiftedLognormal) strikes
-        atmVol <- unsafeShiftedSabrVolatility forward forward expiry alpha beta nu rho shift ShiftedLognormal
+        refVols <- mapM (\k -> unsafeShiftedSabrVolatility k forward expiry alpha_ beta_ nu rho_ shift ShiftedLognormal) strikes
+        atmVol <- unsafeShiftedSabrVolatility forward forward expiry alpha_ beta_ nu rho_ shift ShiftedLognormal
         now <- today
         Settings.setEvaluationDate (Just now)
         optionDate <- addPeriod now (round (expiry * 365) :: Int, Days)
         forwardQuote <- simpleQuote forward
-        atmVolQuote <- simpleQuote atmVol
+        atmVolQ <- simpleQuote atmVol
         refVolQuotes <- mapM simpleQuote refVols
-        interp <- sabrInterpolatedSmileSection optionDate forwardQuote strikes False atmVolQuote refVolQuotes
-          alpha beta nu rho defaultSabrInterpolatedSmileSectionOpts
+        interp <- sabrInterpolatedSmileSection optionDate forwardQuote strikes False atmVolQ refVolQuotes
+          alpha_ beta_ nu rho_ defaultSabrInterpolatedSmileSectionOpts
         rms <- sabrInterpolatedSmileSectionRmsError interp
         maxErr <- sabrInterpolatedSmileSectionMaxError interp
         rms `shouldSatisfy` (< 1e-6)
@@ -355,8 +355,8 @@ spec = do
     it "BlackDeltaCalculator reproduces cached deltas per DeltaType, and AtmType/DeltaType do not alias" $ do
       let checkOne ot dt spot dDf fDf stdDev strike expected = do
             calc <- blackDeltaCalculator ot dt spot dDf fDf stdDev
-            delta <- deltaFromStrike calc strike
-            delta `shouldSatisfy` closePrec expected 0.15
+            delta_ <- deltaFromStrike calc strike
+            delta_ `shouldSatisfy` closePrec expected 0.15
       checkOne Call Spot   1.421 0.997306 0.992266 0.1180654 1.608080 0.15
       checkOne Call PaSpot 1.421 0.997306 0.992266 0.1180654 1.600545 0.15
       checkOne Call Fwd    1.421 0.997306 0.992266 0.1180654 1.609029 0.15
@@ -739,8 +739,8 @@ spec = do
             _ <- setValue fxRateQ fxr
             _ <- setValue fxVolQ fxv
             _ <- setValue corrQ corr
-            value <- npv optInst
-            when (value > u * 1.0e-5) $ do
+            val <- npv optInst
+            when (val > u * 1.0e-5) $ do
               calcDelta <- delta optInst
               calcGamma <- gamma optInst
               calcTheta <- theta optInst
@@ -883,8 +883,8 @@ spec = do
               _ <- setValue fxRateQ fxr
               _ <- setValue fxVolQ fxv
               _ <- setValue corrQ corr
-              value <- npv optInst
-              when (value > u * 1.0e-5) $ do
+              val <- npv optInst
+              when (val > u * 1.0e-5) $ do
                 calcDelta <- delta optInst
                 calcGamma <- gamma optInst
                 calcTheta <- theta optInst
@@ -1062,7 +1062,7 @@ spec = do
             scalingFactor = 1.25 :: Double
         mesher1d <- fdmBlackScholesMesher 3 bsmProcess maturityTime s Nothing Nothing eps scalingFactor Nothing Nothing [] (Just fdmHelper) 0.0
         fdmMesher <- fdmMesherComposite [mesher1d]
-        loc <- fdmMesherLocations fdmMesher 0
+        loc@(loc0:_) <- fdmMesherLocations fdmMesher 0
 
         -- InverseCumulativeNormal()(1 - eps), eps = 0.0002 -- a fixed literal (like the other
         -- ported golden values) rather than re-deriving boost's inverse normal CDF here.
@@ -1073,7 +1073,7 @@ spec = do
             logFwd = log s + expectedDriftRate * maturityTime
             xMin = logFwd - sigmaSqrtT * normInvEps * scalingFactor
             xMax = log s + sigmaSqrtT * normInvEps * scalingFactor
-        head loc `shouldSatisfy` closePrec xMin 1.0e-6
+        loc0 `shouldSatisfy` closePrec xMin 1.0e-6
         last loc `shouldSatisfy` closePrec xMax 1.0e-6
 
     it "fdBlackScholesVanillaEngineQuanto reproduces QuantoEngine<VanillaOption,AnalyticEuropeanEngine> (testPDEOptionValues)" $ do

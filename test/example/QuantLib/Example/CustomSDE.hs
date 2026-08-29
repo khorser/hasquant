@@ -47,7 +47,7 @@ import QuantLib.Instrument.Option
 import QuantLib.InterestRate
 import QuantLib.Math
 import QuantLib.Method
-import QuantLib.Process
+import QuantLib.Process hiding(drift)
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import QuantLib.Settings

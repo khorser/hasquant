@@ -14,7 +14,7 @@ import Data.Time.Calendar
 import QuantLib.Time.Date
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar as Calendar
-import QuantLib.Time.Schedule
+import QuantLib.Time.Schedule hiding(dates)
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield

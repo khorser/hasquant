@@ -20,7 +20,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.Quote
+import QuantLib.Quote hiding(value)
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Credit
 import QuantLib.Instrument(npv, setPricingEngine, PricingModel(..))

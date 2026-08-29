@@ -17,7 +17,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..))
-import QuantLib.Quote
+import QuantLib.Quote hiding(value)
 import QuantLib.TermStructure.Yield
 import QuantLib.CashFlow(iborLeg, Leg)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor6M))
