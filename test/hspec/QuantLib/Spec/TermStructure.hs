@@ -1,7 +1,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module QuantLib.Spec.TermStructure (spec) where
 
-import Control.Monad(replicateM)
+import Control.Monad(replicateM, forM_)
 import System.Mem(performGC)
 
 import Test.Hspec hiding(before, after)
@@ -1400,6 +1400,32 @@ spec = do
           constant <- localVolUnder Vol.FixedLocalVolSurfaceConstantExtrapolation
           interpDefault <- localVolUnder Vol.FixedLocalVolSurfaceInterpolatorDefaultExtrapolation
           abs (constant - interpDefault) / constant `shouldSatisfy` (> 1e-4)
+
+    -- ported from test-suite/noarbsabr.cpp::testConsistencyWithHagan (params from Doust's paper,
+    -- figure 3): a proper (arbitrage-free, Doust) 'noArbSabrSmileSection' should closely reproduce
+    -- Hagan's classic 'sabrSmileSection' formula away from the singular low-strike region where
+    -- the two are known to diverge. upstream's own 'testAbsorptionMatrix' case and the
+    -- absorptionProbability check inside this same case aren't ported: both need
+    -- NoArbSabrModel::absorptionProbability/the internal detail::D0Interpolator, neither of which
+    -- is part of any public QuantLib API to bind.
+    describe "NoArbSabrSmileSection vs. SabrSmileSection (Hagan) consistency" $
+      it "prices/digital-prices/densities agree closely across a strike sweep" $ do
+        let tau = 1.0; beta = 0.5; alpha = 0.026; rho = -0.1; nu = 0.4; f = 0.0488
+            strikes = [0.0001, 0.0011 .. 0.1491] :: [Double]
+        sabr <- Vol.sabrSmileSection tau f alpha beta nu rho 0 IR.ShiftedLognormal
+        noarb <- Vol.noArbSabrSmileSection tau f alpha beta nu rho 0 IR.ShiftedLognormal
+        forM_ strikes $ \strike -> do
+          sabrPrice <- Vol.smileSectionOptionPrice sabr strike Call 1.0
+          noarbPrice <- Vol.smileSectionOptionPrice noarb strike Call 1.0
+          abs (sabrPrice - noarbPrice) `shouldSatisfy` (< 1e-5)
+
+          sabrDigital <- Vol.smileSectionDigitalOptionPrice sabr strike Call 1.0 1.0e-5
+          noarbDigital <- Vol.smileSectionDigitalOptionPrice noarb strike Call 1.0 1.0e-5
+          abs (sabrDigital - noarbDigital) `shouldSatisfy` (< 1e-3)
+
+          sabrDensity <- Vol.smileSectionDensity sabr strike 1.0 1.0e-4
+          noarbDensity <- Vol.smileSectionDensity noarb strike 1.0 1.0e-4
+          abs (sabrDensity - noarbDensity) `shouldSatisfy` (< 1.0)
 
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the

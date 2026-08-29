@@ -540,6 +540,7 @@ using QuantLib::JuQuadraticApproximationEngine;
 using QuantLib::JumpDiffusionEngine;
 using QuantLib::KirkEngine;
 using QuantLib::KlugeExtOUProcess;
+using QuantLib::Leg;
 using QuantLib::LevenbergMarquardt;
 using QuantLib::LfmSwaptionEngine;
 using QuantLib::LiborForwardModel;

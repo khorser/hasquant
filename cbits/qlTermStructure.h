@@ -93,6 +93,9 @@ extern "C" {
   double qlSmileSectionVolatility(QlSmileSection* o, double strike, char **e);
   double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e);
   double qlSmileSectionAtmLevel(QlSmileSection* o, char **e);
+  double qlSmileSectionOptionPrice(QlSmileSection* o, double strike, int type, double discount, char **e);
+  double qlSmileSectionDigitalOptionPrice(QlSmileSection* o, double strike, int type, double discount, double gap, char **e);
+  double qlSmileSectionDensity(QlSmileSection* o, double strike, double discount, double gap, char **e);
   QlSmileSection* qlFlatSmileSection(int d, double vol, DayCounter* dc, int referenceDate, double atmLevel, int type, double shift, char **e);
   QlSmileSection* qlSpreadedSmileSection(QlSmileSection* source, QlQuote* spread, char **e);
   QlSmileSection* qlAtmSmileSection(QlSmileSection* source, double atm, char **e);

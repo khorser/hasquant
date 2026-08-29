@@ -1276,6 +1276,24 @@ QlKlugeExtOUProcess* qlKlugeExtOUProcess(double rho, QlExtOUWithJumpsProcess* kl
 QlLiborForwardModelProcess* qlLiborForwardModelProcess(unsigned size, QlIborIndex* index, char **e) {
   try {return ret(new QlLiborForwardModelProcess(alloc(new LiborForwardModelProcess(size, *arg(index)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModelProcess*>(e, er);}}
+void qlLiborForwardModelProcessFixingDates(QlLiborForwardModelProcess* o, unsigned *len, int **dates, char **e) {
+  *len = 0; *dates = 0;
+  try {const std::vector<Date>& fixingDates = (*arg(o))->fixingDates();
+    *dates = qlAllocateInts(fixingDates.size()); *len = fixingDates.size();
+    for (unsigned i = 0; i < fixingDates.size(); ++i) (*dates)[i] = fixingDates[i].serialNumber();
+  } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
+void qlLiborForwardModelProcessFixingTimes(QlLiborForwardModelProcess* o, unsigned *len, double **times, char **e) {
+  *len = 0; *times = 0;
+  try {const std::vector<Time>& fixingTimes = (*arg(o))->fixingTimes();
+    *times = qlAllocateDoubles(fixingTimes.size()); *len = fixingTimes.size();
+    std::copy(fixingTimes.begin(), fixingTimes.end(), *times);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+Leg* qlLiborForwardModelProcessCashFlows(QlLiborForwardModelProcess* o, double amount, char **e) {
+  try {return ret(new Leg((*arg(o))->cashFlows(amount)));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+QlIborIndex* qlLiborForwardModelProcessIndex(QlLiborForwardModelProcess* o, char **e) {
+  try {return ret(new QlIborIndex((*arg(o))->index()));
+  } catch (std::exception& er) {return handleException<QlIborIndex*>(e, er);}}
 QlMerton76Process* qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, int d, char **e) {
   try {return ret(new QlMerton76Process(alloc(new Merton76Process(*arg(stateVariable), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), *arg(jumpInt), *arg(logJMean), *arg(logJVol), createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlMerton76Process*>(e, er);}}

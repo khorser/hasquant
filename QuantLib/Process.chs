@@ -54,6 +54,10 @@ module QuantLib.Process
   , hybridHestonHullWhiteProcess
   , klugeExtOUProcess
   , liborForwardModelProcess
+  , liborForwardModelProcessFixingDates
+  , liborForwardModelProcessFixingTimes
+  , liborForwardModelProcessCashFlows
+  , liborForwardModelProcessIndex
   , merton76Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
@@ -77,6 +81,7 @@ import QuantLib.Internal.Type
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
@@ -294,6 +299,25 @@ import QuantLib.Internal.Type
 -- forward measure with a predictor-corrector step.
 {#fun qlLiborForwardModelProcess as liborForwardModelProcess{fromIntegral`Word' -- ^size
   ,withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'peekLiborForwardModelProcess*#}
+
+-- |the reset (fixing) dates of the forward rates this process evolves
+{#fun qlLiborForwardModelProcessFixingDates as liborForwardModelProcessFixingDates{withGenStochasticProcess*`LiborForwardModelProcess'
+  ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the reset (fixing) times of the forward rates this process evolves, in the process's own
+-- day count fraction from the evaluation date
+{#fun qlLiborForwardModelProcessFixingTimes as liborForwardModelProcessFixingTimes{withGenStochasticProcess*`LiborForwardModelProcess'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the leg of Ibor coupons (notional @amount@ each) this process's forward rates reset -- used
+-- e.g. to build the 'QuantLib.Instrument.CapFloor.cap' this process prices via 'liborForwardModel'
+{#fun qlLiborForwardModelProcessCashFlows as liborForwardModelProcessCashFlows{withGenStochasticProcess*`LiborForwardModelProcess'
+  ,`Double' -- ^amount
+  ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
+-- |the underlying 'IborIndex' this process was constructed with
+{#fun qlLiborForwardModelProcessIndex as liborForwardModelProcessIndex{withGenStochasticProcess*`LiborForwardModelProcess'
+  ,preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 
 -- |Merton (1976) jump-diffusion process: a Black-Scholes process plus a log-normal jump
 -- component with Poisson jump intensity jumpInt.

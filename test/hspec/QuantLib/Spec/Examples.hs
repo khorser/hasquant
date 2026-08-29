@@ -47,6 +47,7 @@ import qualified QuantLib.Example.Optimizer as OptimizerExample
 import qualified QuantLib.Example.Fdm as FdmExample
 import qualified QuantLib.Example.HaskellLSM as HaskellLSMExample
 import qualified QuantLib.Example.CustomSDE as CustomSDEExample
+import qualified QuantLib.Example.DiscreteHedging as DiscreteHedgingExample
 import QuantLib.Math(EndCriteriaType(..))
 
 import QuantLib.Spec.Helpers(closePrec, listClose, listCloseRel, binomialsClose)
@@ -824,3 +825,12 @@ spec = do
         -- not doubled), and gluing them in the wrong order must be rejected.
         FdmExample.gluedLocationsR r `shouldBe` FdmExample.meshLocationsR r
         FdmExample.gluedOverlapRejectedR r `shouldBe` True
+
+    describe "Discrete hedging example (LONG)" $
+      it "check values" $ do
+        r <- Settings.keepingSettings' DiscreteHedgingExample.run
+        -- discretely-hedged P&L should scatter around 0 on average, and -- Derman & Kamal's own
+        -- qualitative point -- scatter less as the hedger rebalances more often.
+        abs (DiscreteHedgingExample.plMean21 r) `shouldSatisfy` (< 0.1 * DiscreteHedgingExample.optionValue r)
+        abs (DiscreteHedgingExample.plMean84 r) `shouldSatisfy` (< 0.1 * DiscreteHedgingExample.optionValue r)
+        DiscreteHedgingExample.plStdDev84 r `shouldSatisfy` (< DiscreteHedgingExample.plStdDev21 r)

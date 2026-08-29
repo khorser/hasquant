@@ -441,6 +441,15 @@ double qlSmileSectionVariance(QlSmileSection* o, double strike, char **e) {
 double qlSmileSectionAtmLevel(QlSmileSection* o, char **e) {
   try {return (*arg(o))->atmLevel();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionOptionPrice(QlSmileSection* o, double strike, int type, double discount, char **e) {
+  try {return (*arg(o))->optionPrice(strike, (Option::Type)type, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionDigitalOptionPrice(QlSmileSection* o, double strike, int type, double discount, double gap, char **e) {
+  try {return (*arg(o))->digitalOptionPrice(strike, (Option::Type)type, discount, gap);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionDensity(QlSmileSection* o, double strike, double discount, double gap, char **e) {
+  try {return (*arg(o))->density(strike, discount, gap);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlSmileSection* qlFlatSmileSection(int d, double vol, DayCounter* dc, int referenceDate, double atmLevel, int type, double shift, char **e) {
   try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new FlatSmileSection(
       Date(d), vol, *arg(dc), qlNullableDate(referenceDate), atmLevel, (VolatilityType)type, shift)))));

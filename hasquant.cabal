@@ -157,6 +157,7 @@ executable hasquant_example
       QuantLib.Example.ConvertibleBond
       QuantLib.Example.CustomSDE
       QuantLib.Example.CVAIRS
+      QuantLib.Example.DiscreteHedging
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
       QuantLib.Example.Fdm
@@ -266,6 +267,7 @@ test-suite hasquant_test
       QuantLib.Example.ConvertibleBond
       QuantLib.Example.CustomSDE
       QuantLib.Example.CVAIRS
+      QuantLib.Example.DiscreteHedging
       QuantLib.Example.EquityOption
       QuantLib.Example.EquityTotalReturnSwap
       QuantLib.Example.Fdm

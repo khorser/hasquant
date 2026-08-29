@@ -174,6 +174,9 @@ module QuantLib.TermStructure.Volatility
   , spreadedOptionletVol
   , localVol
   , smileSectionAtmLevel
+  , smileSectionOptionPrice
+  , smileSectionDigitalOptionPrice
+  , smileSectionDensity
   , flatSmileSection
   , spreadedSmileSection
   , atmSmileSection
@@ -591,6 +594,31 @@ fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr
 -- |the ATM level baked into the 'SmileSection' at construction (or later re-anchored via
 -- 'atmSmileSection'), for any 'SmileSection' (however it was constructed)
 {#fun qlSmileSectionAtmLevel as smileSectionAtmLevel{withSmileSection*`SmileSection'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the (non-discounted-by-default) price of a European option with the given strike\/type,
+-- for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionOptionPrice as smileSectionOptionPrice{withSmileSection*`SmileSection'
+  ,`Double' -- ^strike
+  ,fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^discount
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the price of a cash-or-nothing digital option with the given strike\/type, approximated via a
+-- call\/put spread of width @gap@, for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionDigitalOptionPrice as smileSectionDigitalOptionPrice{withSmileSection*`SmileSection'
+  ,`Double' -- ^strike
+  ,fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^discount
+  ,`Double' -- ^gap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the risk-neutral probability density at the given strike, approximated via a finite difference
+-- of width @gap@ on 'smileSectionOptionPrice', for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionDensity as smileSectionDensity{withSmileSection*`SmileSection'
+  ,`Double' -- ^strike
+  ,`Double' -- ^discount
+  ,`Double' -- ^gap
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |a flat-volatility smile section: 'volatility' returns @vol@ for every strike.
