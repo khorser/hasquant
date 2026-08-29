@@ -11,6 +11,13 @@
 #include <ql/termstructures/inflation/piecewisezeroinflationcurve.hpp>
 #include <ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp>
 #include <ql/termstructures/inflation/interpolatedyoyinflationcurve.hpp>
+#include <ql/termstructures/volatility/equityfx/blackvariancecurve.hpp>
+#include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
+#include <ql/experimental/inflation/cpicapfloortermpricesurface.hpp>
+#include <ql/experimental/inflation/yoycapfloortermpricesurface.hpp>
+#include <ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp>
+#include <ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp>
+#include <ql/pricingengines/inflation/inflationcapfloorengines.hpp>
 
 // Every IterativeBootstrap constructor parameter (ql/termstructures/iterativebootstrap.hpp),
 // as one flat POD so the piecewise-curve entry points don't grow nine more positional
@@ -199,5 +206,51 @@ QuantLib::YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
     QuantLib::Frequency frequency,
     const QuantLib::DayCounter& dayCounter,
     int interpolator, int approximator, int approximatorArg);
+
+// Everything below is here for the same reason as the curves above -- it instantiates a QuantLib
+// class template once per Interpolation (and, for the two price surfaces, per 2-D interpolator
+// too), which is the expensive kind of code to have sitting in the 2000-line qlTermStructure.cpp
+// TU. The `int interpolator*`/`approximator`/`approximatorArg` dispatch that used to live at each
+// call site there is absorbed into these entry points, so the caller passes the raw enum values
+// straight through and never names an interpolator type.
+
+// BlackVarianceCurve/BlackVarianceSurface configure their interpolation after construction rather
+// than through a template parameter, so these are setters rather than factories; the
+// instantiation cost is the same, one member-template body per Interpolation.
+void qlSetBlackVarianceCurveInterpolationAux(QuantLib::BlackVarianceCurve *o,
+    int interpolator, int approximator, int approximatorArg);
+void qlSetBlackVarianceSurfaceInterpolationAux(QuantLib::BlackVarianceSurface *o, int interpolator);
+
+QuantLib::CPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurfaceAux(
+    double nominal, double baseRate, const QuantLib::Period &observationLag, const QuantLib::Calendar &cal,
+    QuantLib::BusinessDayConvention bdc, const QuantLib::DayCounter &dc,
+    const QuantLib::ext::shared_ptr<QuantLib::ZeroInflationIndex> &zii,
+    QuantLib::CPI::InterpolationType interpolationType,
+    const QuantLib::Handle<QuantLib::YieldTermStructure> &yts,
+    const std::vector<QuantLib::Rate> &cStrikes, const std::vector<QuantLib::Rate> &fStrikes,
+    const std::vector<QuantLib::Period> &cfMaturities,
+    const QuantLib::Matrix &cPrice, const QuantLib::Matrix &fPrice,
+    int interpolator2D);
+
+// Two interpolator axes: the 2-D cap/floor price grid, and the 1-D per-maturity curve.
+QuantLib::YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
+    QuantLib::Natural fixingDays, const QuantLib::Period &yyLag,
+    const QuantLib::ext::shared_ptr<QuantLib::YoYInflationIndex> &yii,
+    QuantLib::CPI::InterpolationType interpolation,
+    const QuantLib::Handle<QuantLib::YieldTermStructure> &nominal,
+    const QuantLib::DayCounter &dc, const QuantLib::Calendar &cal, QuantLib::BusinessDayConvention bdc,
+    const std::vector<QuantLib::Rate> &cStrikes, const std::vector<QuantLib::Rate> &fStrikes,
+    const std::vector<QuantLib::Period> &cfMaturities,
+    const QuantLib::Matrix &cPrice, const QuantLib::Matrix &fPrice,
+    int interpolator2D, int interpolator1D, int approximator, int approximatorArg);
+
+// Builds the InterpolatedYoYOptionletStripper and the KInterpolatedYoYOptionletVolatilitySurface
+// over it, both on the same Interpolator1D. LogCubic is rejected -- see qlTermStructureAux.cpp.
+QuantLib::YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
+    unsigned settlementDays, const QuantLib::Calendar &cal, QuantLib::BusinessDayConvention bdc,
+    const QuantLib::DayCounter &dc,
+    const QuantLib::ext::shared_ptr<QuantLib::YoYCapFloorTermPriceSurface> &capFloorPrices,
+    const QuantLib::ext::shared_ptr<QuantLib::YoYInflationCapFloorEngine> &engine, double slope,
+    int interpolator1D, int approximator, int approximatorArg);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

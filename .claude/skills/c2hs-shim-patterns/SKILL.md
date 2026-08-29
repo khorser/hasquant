@@ -398,6 +398,87 @@ more-specific overload with hardcoded defaults — and cover it with a
 a flat-vol/lognormal fixture may make them indistinguishable and hide a
 broken `haveX` wire-through.
 
+## Runtime-int-to-template-argument dispatch (the `cbits/*Aux.cpp` files)
+
+**A QuantLib class template selected by a runtime enum int is dispatched
+with a generic-lambda dispatcher, not a hand-written switch per call
+site.** `cbits/qlTermStructureAux.cpp` and `cbits/qlPricingEngineAux.cpp`
+exist to hold exactly this kind of code, and each has one dispatcher per
+axis:
+
+| dispatcher | file | axis |
+| --- | --- | --- |
+| `dispatchInterpolation` | `qlTermStructureAux.cpp` | `Interpolation` x `Approximation` (constructs the interpolator instance) |
+| `dispatchInterpolation2D` | `qlTermStructureAux.cpp` | `Bilinear`/`Bicubic` |
+| `dispatchTree` | `qlPricingEngineAux.cpp` | the 14 binomial tree kinds |
+| `dispatchRng` / `dispatchStat` / `dispatchRngStat` | `qlPricingEngineAux.cpp` | `RngTrait`, `StatTrait`, and their product |
+
+Each takes its **result type as an explicit leading template argument** plus
+a callable, and invokes the callable once with the selected type — as a
+*value* where the type carries constructor arguments (`dispatchInterpolation`
+hands over a built `Cubic(...)`), otherwise as an empty
+`Tag<T>` whose type is recovered inside as `typename decltype(t)::type`.
+The caller's lambda then spells its `new SomeTemplate<...>(args)` **once**:
+
+```cpp
+return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+    [&](auto i) {
+      return new InterpolatedZeroCurve<decltype(i)>(dates, yields, dc, cal, jumps, jumpDates, i);
+    });
+```
+
+Three things to get right:
+
+- **The explicit `Ret` template argument is load-bearing — never replace it
+  with a trailing `-> decltype(make(Linear()))`.** A trailing return type is
+  an *unevaluated* operand, so the probe call it names becomes the first
+  instantiation of the caller's lambda for that one type; clang then emits
+  the constructed class's constructor but never marks its **vtable** used,
+  leaving `~T()` and its thunks undefined. Nothing fails at compile time —
+  it surfaces much later as `symbol not found in flat namespace
+  '...MCPagodaEngine<...,Statistics>...D0Ev'` when GHC dlopens the built
+  dylib, and *only* for whichever type the probe named (`Statistics`,
+  `Linear`), so it reads like a QuantLib packaging problem rather than a bug
+  in the shim. With `Ret` explicit, each arm's lambda deduces its own
+  concrete pointer type in an evaluated context and converts on the way out
+  — so the lambda needs no return annotation either. To check a change here,
+  diff the object's unresolved-symbol closure (`nm -m` undefined minus
+  defined) against the same closure built from `git show HEAD:` — a
+  compile-clean file proves nothing.
+- **Pass the selected instance explicitly even where the constructor
+  defaults it.** The flat interpolators (`BackwardFlat`/`ForwardFlat`/
+  `Linear`/`LogLinear`) used to rely on `const Interpolator& i =
+  Interpolator()`; spelling them out is what makes one lambda cover all
+  six arms. Where a constructor has parameters *between* the data and the
+  interpolator (`PiecewiseZeroInflationCurve`'s `seasonality`/`accuracy`),
+  check the header and spell upstream's own defaults — `{}, 1.0e-14` —
+  rather than guessing.
+- **Not every site may use the shared dispatcher.** Anything that must
+  exclude an arm keeps its own switch;
+  `qlKInterpolatedYoYOptionletVolatilitySurfaceAux` is the standing
+  example (LogCubic has no default constructor, and the stripper's vtable
+  forces it — see the comment there). Say so at the site, since "why
+  isn't this one using `dispatchInterpolation`" is otherwise invisible.
+
+Before this, the two files were ~2000 lines of the same `new X<T>(same,
+long, argument, list)` repeated once per enum value per template. Adding a
+curve now costs one function; adding an `Interpolation` value costs one
+`case` in `dispatchInterpolation`.
+
+**Prefer the Aux TU for anything that instantiates a template per enum
+value**, even when the class it belongs to is bound in
+`qlTermStructure.cpp`/`qlPricingEngine.cpp`: the Aux entry point takes the
+raw `int interpolator, int approximator, int approximatorArg` and the
+calling shim never names an interpolator type. `qlCPICapFloorTermPriceSurfaceAux`,
+`qlYoYCapFloorTermPriceSurfaceAux`, `qlKInterpolatedYoYOptionletVolatilitySurfaceAux`
+and the two `qlSetBlackVariance*InterpolationAux` setters were moved out of
+`qlTermStructure.cpp` on exactly this rule (~1.7s vs ~2.2s for that TU
+afterwards). The limit is whether the helper can present a **non-template
+signature** at the TU boundary — a helper templated on the *target object*
+type can only cross with an enumerated explicit-instantiation list, so
+check the call-site count first: the two `setInterpolation` helpers had one
+call site each, on one concrete type, and became plain overloads.
+
 ## `PiecewiseYieldCurve` with `GlobalBootstrap`
 
 **`PiecewiseYieldCurve<Traits, Interpolator, GlobalBootstrap>` must be

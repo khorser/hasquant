@@ -37,31 +37,35 @@ C makeCubic(int approximator, int approximatorArg) {
   }
 }
 
-// Args is the entry-point-specific prefix (a Date, or settlementDays + Calendar) followed by
-// instruments/dayCounter/jumps/jumpDates; every PiecewiseYieldCurve constructor ends with the
-// interpolator and the bootstrapper, so those two go last here.
-template <class Trait, class Interp, class... Args>
-YieldTermStructure *makeCurve(const QlIterativeBootstrapOpts& b, const Interp& i, Args&&... args) {
-  using CurveType = PiecewiseYieldCurve<Trait, Interp>;
-  return new CurveType(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
-}
+// Type-only tag, for the dispatchers whose selected type is a trait (no runtime state to carry,
+// unlike an interpolator instance). `make(Tag<QuantLib::Discount>())` reaches the type inside the
+// callable as `typename decltype(t)::type`.
+template <class T> struct Tag { using type = T; };
 
-template <class Trait, class... Args>
-YieldTermStructure *dispatchInterpolator(int interpolator, int approximator, int approximatorArg,
-    const QlIterativeBootstrapOpts& b, Args&&... args) {
+// The single interpolator x approximation dispatch for this whole file. `make` is a generic
+// lambda; it is called once, with a *constructed* interpolator instance of the selected type, and
+// spells its own `new SomeCurve<decltype(i)>(..., i)`. Before this there were ~18 hand-duplicated
+// copies of this two-level switch, one per curve template, each repeating its constructor
+// argument list six to ten times.
+//
+// The result type is an explicit leading template argument
+// (`dispatchInterpolation<YieldTermStructure*>(...)`), not a trailing
+// `-> decltype(make(Linear()))`. That is load-bearing: a trailing return type is an *unevaluated*
+// operand, so the probe call it names becomes the first instantiation of the caller's lambda for
+// that interpolator -- and clang then emits the curve's constructor but never marks its vtable
+// used, leaving the destructor and its thunks undefined. It surfaces as a link/dlopen failure for
+// one arm only (whichever type the probe named), which reads like a QuantLib packaging problem
+// rather than a bug here. Keep the explicit `Ret`; the same rule applies to every dispatcher in
+// cbits/qlPricingEngineAux.cpp.
+template <class Ret, class F>
+Ret dispatchInterpolation(int interpolator, int approximator, int approximatorArg, F&& make) {
   switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return makeCurve<Trait>(b, BackwardFlat(), std::forward<Args>(args)...);
-  case hasquant::ForwardFlat:
-    return makeCurve<Trait>(b, ForwardFlat(), std::forward<Args>(args)...);
-  case hasquant::Linear:
-    return makeCurve<Trait>(b, Linear(), std::forward<Args>(args)...);
-  case hasquant::LogLinear:
-    return makeCurve<Trait>(b, LogLinear(), std::forward<Args>(args)...);
-  case hasquant::Cubic:
-    return makeCurve<Trait>(b, makeCubic<Cubic>(approximator, approximatorArg), std::forward<Args>(args)...);
-  case hasquant::LogCubic:
-    return makeCurve<Trait>(b, makeCubic<LogCubic>(approximator, approximatorArg), std::forward<Args>(args)...);
+  case hasquant::BackwardFlat: return make(BackwardFlat());
+  case hasquant::ForwardFlat: return make(ForwardFlat());
+  case hasquant::Linear: return make(Linear());
+  case hasquant::LogLinear: return make(LogLinear());
+  case hasquant::Cubic: return make(makeCubic<Cubic>(approximator, approximatorArg));
+  case hasquant::LogCubic: return make(makeCubic<LogCubic>(approximator, approximatorArg));
   // hasquant::Abcd (InterpolationType's 7th case) has no arm: QuantLib's Abcd interpolation
   // isn't usable as a PiecewiseYieldCurve interpolator. Pre-existing gap, preserved.
   default:
@@ -69,18 +73,25 @@ YieldTermStructure *dispatchInterpolator(int interpolator, int approximator, int
   }
 }
 
+// Args is the entry-point-specific prefix (a Date, or settlementDays + Calendar) followed by
+// instruments/dayCounter/jumps/jumpDates; every PiecewiseYieldCurve constructor ends with the
+// interpolator and the bootstrapper, so those two go last in the lambda below.
 template <class... Args>
 YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator, int approximatorArg,
     const QlIterativeBootstrapOpts& b, Args&&... args) {
+  auto makeForTrait = [&](auto t) -> YieldTermStructure* {
+    using Trait = typename decltype(t)::type;
+    return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+          using CurveType = PiecewiseYieldCurve<Trait, decltype(i)>;
+          return new CurveType(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
+        });
+  };
   switch (trait) {
-  case hasquant::Discount:
-    return dispatchInterpolator<QuantLib::Discount>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
-  case hasquant::ForwardRate:
-    return dispatchInterpolator<QuantLib::ForwardRate>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
-  case hasquant::ZeroYield:
-    return dispatchInterpolator<QuantLib::ZeroYield>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
-  case hasquant::SimpleZeroYield:
-    return dispatchInterpolator<QuantLib::SimpleZeroYield>(interpolator, approximator, approximatorArg, b, std::forward<Args>(args)...);
+  case hasquant::Discount: return makeForTrait(Tag<QuantLib::Discount>());
+  case hasquant::ForwardRate: return makeForTrait(Tag<QuantLib::ForwardRate>());
+  case hasquant::ZeroYield: return makeForTrait(Tag<QuantLib::ZeroYield>());
+  case hasquant::SimpleZeroYield: return makeForTrait(Tag<QuantLib::SimpleZeroYield>());
   default:
     QL_FAIL("Unsupported trait" << trait);
   }
@@ -303,6 +314,19 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
       settl, cal, instr, dayCount, jumps, jumpDates);
 }
 
+
+// Every function below is one `dispatchInterpolation` call whose generic lambda spells the
+// curve's own constructor once, with `decltype(i)` as the Interpolator template argument. The
+// curve's base-class pointer is the dispatcher's explicit `Ret` argument, so each of the six arms
+// deduces its own concrete pointer type and converts on the way out.
+//
+// The interpolator instance is now passed explicitly in every arm, including the four that used
+// to rely on the constructor's `const Interpolator& i = Interpolator()` default argument -- a
+// default-constructed BackwardFlat/ForwardFlat/Linear/LogLinear is exactly what that default
+// produced. Where a constructor has parameters *between* the data and the interpolator
+// (seasonality/accuracy on the inflation curves), those are likewise spelled out with the same
+// values upstream defaults them to, checked against the headers.
+
 YieldTermStructure *qlInterpolatedDiscountCurveAux(
     const std::vector<Date> &dfDates,
     const std::vector<double>& dfs,
@@ -311,52 +335,14 @@ YieldTermStructure *qlInterpolatedDiscountCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedDiscountCurve<BackwardFlat>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
-  case hasquant::ForwardFlat:
-    return new InterpolatedDiscountCurve<ForwardFlat>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
-  case hasquant::Linear:
-    return new InterpolatedDiscountCurve<Linear>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
-  case hasquant::LogLinear:
-    return new InterpolatedDiscountCurve<LogLinear>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  // NB: this function's LogCubic/NaturalSpline arm used to hardcode `false` for
+  // CubicInterpolation's `monotonic` flag where every sibling passes approximatorArg -- i.e. it
+  // silently ignored the Bool the Haskell-side `LogCubic (NaturalSpline monotonic)` carries.
+  // Routing through makeCubic<LogCubic> honours it, matching every other curve here.
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedDiscountCurve<decltype(i)>(dfDates, dfs, dayCount, cal, jumps, jumpDates, i);
+      });
 }
 
 YieldTermStructure *qlInterpolatedForwardCurveAux(
@@ -367,52 +353,10 @@ YieldTermStructure *qlInterpolatedForwardCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedForwardCurve<BackwardFlat>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
-  case hasquant::ForwardFlat:
-    return new InterpolatedForwardCurve<ForwardFlat>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
-  case hasquant::Linear:
-    return new InterpolatedForwardCurve<Linear>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
-  case hasquant::LogLinear:
-    return new InterpolatedForwardCurve<LogLinear>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedForwardCurve<decltype(i)>(fwdDates, fwds, dayCount, cal, jumps, jumpDates, i);
+      });
 }
 
 YieldTermStructure *qlInterpolatedZeroCurveAux(
@@ -423,52 +367,10 @@ YieldTermStructure *qlInterpolatedZeroCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedZeroCurve<BackwardFlat>(yDates, yields, dayCount, cal, jumps, jumpDates);
-  case hasquant::ForwardFlat:
-    return new InterpolatedZeroCurve<ForwardFlat>(yDates, yields, dayCount, cal, jumps, jumpDates);
-  case hasquant::Linear:
-    return new InterpolatedZeroCurve<Linear>(yDates, yields, dayCount, cal, jumps, jumpDates);
-  case hasquant::LogLinear:
-    return new InterpolatedZeroCurve<LogLinear>(yDates, yields, dayCount, cal, jumps, jumpDates);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedZeroCurve<decltype(i)>(yDates, yields, dayCount, cal, jumps, jumpDates, i);
+      });
 }
 
 YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
@@ -476,52 +378,10 @@ YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
     const std::vector<Date>& dates,
     const std::vector<double>& dfs,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedSpreadDiscountCurve<BackwardFlat>(baseCurve, dates, dfs);
-  case hasquant::ForwardFlat:
-    return new InterpolatedSpreadDiscountCurve<ForwardFlat>(baseCurve, dates, dfs);
-  case hasquant::Linear:
-    return new InterpolatedSpreadDiscountCurve<Linear>(baseCurve, dates, dfs);
-  case hasquant::LogLinear:
-    return new InterpolatedSpreadDiscountCurve<LogLinear>(baseCurve, dates, dfs);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedSpreadDiscountCurve<Cubic>(baseCurve, dates, dfs,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedSpreadDiscountCurve<LogCubic>(baseCurve, dates, dfs,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedSpreadDiscountCurve<decltype(i)>(baseCurve, dates, dfs, i);
+      });
 }
 
 YieldTermStructure *qlPiecewiseZeroSpreadedTermStructureAux(
@@ -530,54 +390,13 @@ YieldTermStructure *qlPiecewiseZeroSpreadedTermStructureAux(
     const std::vector<Date>& dates,
     Compounding comp, Frequency freq,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedPiecewiseZeroSpreadedTermStructure<BackwardFlat>(baseCurve, spreads, dates, comp, freq);
-  case hasquant::ForwardFlat:
-    return new InterpolatedPiecewiseZeroSpreadedTermStructure<ForwardFlat>(baseCurve, spreads, dates, comp, freq);
-  case hasquant::Linear:
-    return new InterpolatedPiecewiseZeroSpreadedTermStructure<Linear>(baseCurve, spreads, dates, comp, freq);
-  case hasquant::LogLinear:
-    return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogLinear>(baseCurve, spreads, dates, comp, freq);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<Cubic>(baseCurve, spreads, dates, comp, freq,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedPiecewiseZeroSpreadedTermStructure<LogCubic>(baseCurve, spreads, dates, comp, freq,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedPiecewiseZeroSpreadedTermStructure<decltype(i)>(baseCurve, spreads, dates, comp, freq, i);
+      });
 }
 
+// some credit stuff
 DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
     const std::vector<Date>& dates,
     const std::vector<double>& densities,
@@ -586,46 +405,11 @@ DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedDefaultDensityCurve<BackwardFlat>(dates, densities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::ForwardFlat:
-    return new InterpolatedDefaultDensityCurve<ForwardFlat>(dates, densities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::Linear:
-    return new InterpolatedDefaultDensityCurve<Linear>(dates, densities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::LogLinear:
-    return new InterpolatedDefaultDensityCurve<LogLinear>(dates, densities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedDefaultDensityCurve<Cubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedDefaultDensityCurve<Cubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedDefaultDensityCurve<Cubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedDefaultDensityCurve<Cubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedDefaultDensityCurve<LogCubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedDefaultDensityCurve<LogCubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedDefaultDensityCurve<LogCubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedDefaultDensityCurve<LogCubic>(dates, densities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<DefaultProbabilityTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedDefaultDensityCurve<decltype(i)>(dates, densities, dayCounter, calendar, jumps, jumpDates, i);
+      });
 }
-
 
 DefaultProbabilityTermStructure *qlInterpolatedHazardRateCurveAux(
     const std::vector<Date>& dates,
@@ -635,44 +419,10 @@ DefaultProbabilityTermStructure *qlInterpolatedHazardRateCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedHazardRateCurve<BackwardFlat>(dates, hazardRates, dayCounter, cal, jumps, jumpDates);
-  case hasquant::ForwardFlat:
-    return new InterpolatedHazardRateCurve<ForwardFlat>(dates, hazardRates, dayCounter, cal, jumps, jumpDates);
-  case hasquant::Linear:
-    return new InterpolatedHazardRateCurve<Linear>(dates, hazardRates, dayCounter, cal, jumps, jumpDates);
-  case hasquant::LogLinear:
-    return new InterpolatedHazardRateCurve<LogLinear>(dates, hazardRates, dayCounter, cal, jumps, jumpDates);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedHazardRateCurve<Cubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedHazardRateCurve<Cubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedHazardRateCurve<Cubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedHazardRateCurve<Cubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedHazardRateCurve<LogCubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedHazardRateCurve<LogCubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedHazardRateCurve<LogCubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedHazardRateCurve<LogCubic>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<DefaultProbabilityTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedHazardRateCurve<decltype(i)>(dates, hazardRates, dayCounter, cal, jumps, jumpDates, i);
+      });
 }
 
 DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurveAux(
@@ -683,44 +433,39 @@ DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedSurvivalProbabilityCurve<BackwardFlat>(dates, probabilities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::ForwardFlat:
-    return new InterpolatedSurvivalProbabilityCurve<ForwardFlat>(dates, probabilities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::Linear:
-    return new InterpolatedSurvivalProbabilityCurve<Linear>(dates, probabilities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::LogLinear:
-    return new InterpolatedSurvivalProbabilityCurve<LogLinear>(dates, probabilities, dayCounter, calendar, jumps, jumpDates);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedSurvivalProbabilityCurve<Cubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedSurvivalProbabilityCurve<Cubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedSurvivalProbabilityCurve<Cubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedSurvivalProbabilityCurve<Cubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedSurvivalProbabilityCurve<LogCubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedSurvivalProbabilityCurve<LogCubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedSurvivalProbabilityCurve<LogCubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedSurvivalProbabilityCurve<LogCubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
+  return dispatchInterpolation<DefaultProbabilityTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedSurvivalProbabilityCurve<decltype(i)>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, i);
+      });
+}
+
+// PiecewiseDefaultCurve's own trait axis (HazardRate/DefaultDensity/SurvivalProbability) --
+// entirely separate from the yield curve's Discount/ForwardRate/ZeroYield/SimpleZeroYield above,
+// hence its own dispatcher. Both entry points below differ only in their leading constructor
+// arguments (a Date, or settlementDays + Calendar), so the nested trait x interpolator dispatch
+// is written once and the difference lives in the lambda each passes.
+template <class Ret, class F>
+Ret dispatchDefaultTrait(int trait, F&& make) {
+  switch (trait) {
+  case hasquant::HazardRate: return make(Tag<QuantLib::HazardRate>());
+  case hasquant::DefaultDensity: return make(Tag<QuantLib::DefaultDensity>());
+  case hasquant::SurvivalProbability: return make(Tag<QuantLib::SurvivalProbability>());
+  default: QL_FAIL("Unsupported trait" << trait);
   }
+}
+
+// The trait x interpolator product, with the entry-point-specific constructor prefix forwarded
+// as a variadic pack -- same shape as dispatchTrait's for PiecewiseYieldCurve above.
+template <class... Args>
+DefaultProbabilityTermStructure *makePiecewiseDefaultCurve(int trait, int interpolator,
+    int approximator, int approximatorArg, Args&&... args) {
+  return dispatchDefaultTrait<DefaultProbabilityTermStructure*>(trait, [&](auto t) {
+    using Trait = typename decltype(t)::type;
+    return dispatchInterpolation<DefaultProbabilityTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+          return new PiecewiseDefaultCurve<Trait, decltype(i)>(std::forward<Args>(args)..., i);
+        });
+  });
 }
 
 DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenceDate,
@@ -728,258 +473,23 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenc
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg) {
-  switch (trait) {
-  case hasquant::HazardRate:
-    switch (interpolator) {
-    case hasquant::BackwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, BackwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::ForwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, ForwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Linear:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, Linear>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::LogLinear:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogLinear>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  case hasquant::SurvivalProbability:
-    switch (interpolator) {
-    case hasquant::BackwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, BackwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::ForwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, ForwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Linear:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Linear>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::LogLinear:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogLinear>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  case hasquant::DefaultDensity:
-    switch (interpolator) {
-    case hasquant::BackwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, BackwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::ForwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, ForwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Linear:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Linear>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::LogLinear:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogLinear>(referenceDate, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  default:
-    QL_FAIL("Unsupported trait" << trait);
-  }
+  return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg,
+      referenceDate, instruments, dayCounter, jumps, jumpDates);
 }
 
-QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
-    const QuantLib::Calendar& calendar,
+DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
+    const Calendar& calendar,
     const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     int trait, int interpolator, int approximator, int approximatorArg) {
-  switch (trait) {
-  case hasquant::HazardRate:
-    switch (interpolator) {
-    case hasquant::BackwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, BackwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::ForwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, ForwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Linear:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, Linear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::LogLinear:
-      return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogLinear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  case hasquant::SurvivalProbability:
-    switch (interpolator) {
-    case hasquant::BackwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, BackwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::ForwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, ForwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Linear:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Linear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::LogLinear:
-      return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogLinear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  case hasquant::DefaultDensity:
-    switch (interpolator) {
-    case hasquant::BackwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, BackwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::ForwardFlat:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, ForwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Linear:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Linear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::LogLinear:
-      return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogLinear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new PiecewiseDefaultCurve<QuantLib::DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  default:
-    QL_FAIL("Unsupported trait" << trait);
-  }
+  return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg,
+      settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
 }
 
+// The `{}` seasonality and the 1.0e-14 / 1.0e-12 accuracy below are upstream's own default
+// arguments, spelled explicitly only because the interpolator sits after them
+// (piecewisezeroinflationcurve.hpp / piecewiseyoyinflationcurve.hpp).
 ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     const Date &referenceDate,
     const Date &baseDate,
@@ -987,52 +497,11 @@ ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     const DayCounter& dayCounter,
     const std::vector<shared_ptr<BootstrapHelper<ZeroInflationTermStructure> > >& instruments,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new PiecewiseZeroInflationCurve<BackwardFlat>(referenceDate, baseDate, frequency, dayCounter, instruments);
-  case hasquant::ForwardFlat:
-    return new PiecewiseZeroInflationCurve<ForwardFlat>(referenceDate, baseDate, frequency, dayCounter, instruments);
-  case hasquant::Linear:
-    return new PiecewiseZeroInflationCurve<Linear>(referenceDate, baseDate, frequency, dayCounter, instruments);
-  case hasquant::LogLinear:
-    return new PiecewiseZeroInflationCurve<LogLinear>(referenceDate, baseDate, frequency, dayCounter, instruments);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new PiecewiseZeroInflationCurve<Cubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new PiecewiseZeroInflationCurve<Cubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new PiecewiseZeroInflationCurve<Cubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new PiecewiseZeroInflationCurve<Cubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new PiecewiseZeroInflationCurve<LogCubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new PiecewiseZeroInflationCurve<LogCubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new PiecewiseZeroInflationCurve<LogCubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new PiecewiseZeroInflationCurve<LogCubic>(referenceDate, baseDate, frequency, dayCounter, instruments, {}, 1.0e-14,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<ZeroInflationTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new PiecewiseZeroInflationCurve<decltype(i)>(referenceDate, baseDate, frequency,
+            dayCounter, instruments, {}, 1.0e-14, i);
+      });
 }
 
 YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
@@ -1043,52 +512,11 @@ YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
     const DayCounter& dayCounter,
     const std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > >& instruments,
     int interpolator, int approximator, int approximatorArg) {
-  switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new PiecewiseYoYInflationCurve<BackwardFlat>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments);
-  case hasquant::ForwardFlat:
-    return new PiecewiseYoYInflationCurve<ForwardFlat>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments);
-  case hasquant::Linear:
-    return new PiecewiseYoYInflationCurve<Linear>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments);
-  case hasquant::LogLinear:
-    return new PiecewiseYoYInflationCurve<LogLinear>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new PiecewiseYoYInflationCurve<Cubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new PiecewiseYoYInflationCurve<Cubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new PiecewiseYoYInflationCurve<Cubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new PiecewiseYoYInflationCurve<Cubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new PiecewiseYoYInflationCurve<LogCubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new PiecewiseYoYInflationCurve<LogCubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new PiecewiseYoYInflationCurve<LogCubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new PiecewiseYoYInflationCurve<LogCubic>(referenceDate, baseDate, baseYoYRate, frequency, dayCounter, instruments, {}, 1.0e-12,
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
-  default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
-  }
+  return dispatchInterpolation<YoYInflationTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new PiecewiseYoYInflationCurve<decltype(i)>(referenceDate, baseDate, baseYoYRate,
+            frequency, dayCounter, instruments, {}, 1.0e-12, i);
+      });
 }
 
 YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
@@ -1098,51 +526,138 @@ YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
     Frequency frequency,
     const DayCounter& dayCounter,
     int interpolator, int approximator, int approximatorArg) {
+  return dispatchInterpolation<YoYInflationTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedYoYInflationCurve<decltype(i)>(referenceDate, dates, rates,
+            frequency, dayCounter, {}, i);
+      });
+}
+
+// ---------------------------------------------------------------------------------------------
+// Moved here from qlTermStructure.cpp (see qlTermStructureAux.h): these instantiate a QuantLib
+// class template per Interpolation, which is exactly the kind of work this TU exists to hold.
+// Each takes the raw interpolator/approximator enum ints, so the caller over there no longer
+// names an interpolator type at all.
+// ---------------------------------------------------------------------------------------------
+
+// Interpolation set after construction rather than through a template parameter -- these two
+// classes take a member template instead. Same one-body-per-Interpolation cost, so the same
+// dispatchInterpolation shape applies, with Ret = void.
+void qlSetBlackVarianceCurveInterpolationAux(BlackVarianceCurve *o,
+    int interpolator, int approximator, int approximatorArg) {
+  dispatchInterpolation<void>(interpolator, approximator, approximatorArg,
+      [&](auto i) { o->setInterpolation<decltype(i)>(i); });
+}
+
+// 2-D counterpart, for BlackVarianceSurface. setInterpolation is a member *template* taking a
+// default-constructed Interpolator, so there is no approximator or approximatorArg to thread and
+// no Interpolation2D object to marshal -- just a two-case switch. Same set QuantLib-SWIG exposes
+// (SWIG/volatilities.i).
+void qlSetBlackVarianceSurfaceInterpolationAux(BlackVarianceSurface *o, int interpolator) {
   switch (interpolator) {
-  case hasquant::BackwardFlat:
-    return new InterpolatedYoYInflationCurve<BackwardFlat>(referenceDate, dates, rates, frequency, dayCounter);
-  case hasquant::ForwardFlat:
-    return new InterpolatedYoYInflationCurve<ForwardFlat>(referenceDate, dates, rates, frequency, dayCounter);
-  case hasquant::Linear:
-    return new InterpolatedYoYInflationCurve<Linear>(referenceDate, dates, rates, frequency, dayCounter);
-  case hasquant::LogLinear:
-    return new InterpolatedYoYInflationCurve<LogLinear>(referenceDate, dates, rates, frequency, dayCounter);
-  case hasquant::Cubic:
-    switch (approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          Cubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          Cubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedYoYInflationCurve<Cubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          Cubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
+  case hasquant::Bilinear: o->setInterpolation<QuantLib::Bilinear>(); break;
+  case hasquant::Bicubic: o->setInterpolation<QuantLib::Bicubic>(); break;
+  default: QL_FAIL("Unsupported 2-D interpolation " << interpolator);
+  }
+}
+
+// The 2-D (cap/floor price grid) interpolator axis, shared by both price surfaces below.
+// Bilinear/Bicubic are the only two QuantLib offers here, and neither carries constructor
+// arguments, so this is a plain Tag dispatch with no approximator to thread.
+template <class Ret, class F>
+Ret dispatchInterpolation2D(int interpolator2D, F&& make) {
+  switch (interpolator2D) {
+  case hasquant::Bilinear: return make(Tag<QuantLib::Bilinear>());
+  case hasquant::Bicubic: return make(Tag<QuantLib::Bicubic>());
+  default: QL_FAIL("Unsupported 2-D interpolation " << interpolator2D);
+  }
+}
+
+CPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurfaceAux(
+    double nominal, double baseRate, const Period &observationLag, const Calendar &cal,
+    BusinessDayConvention bdc, const DayCounter &dc, const shared_ptr<ZeroInflationIndex> &zii,
+    CPI::InterpolationType interpolationType, const Handle<YieldTermStructure> &yts,
+    const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
+    const std::vector<Period> &cfMaturities, const Matrix &cPrice, const Matrix &fPrice,
+    int interpolator2D) {
+  return dispatchInterpolation2D<CPICapFloorTermPriceSurface*>(interpolator2D, [&](auto i2d) {
+    return new InterpolatedCPICapFloorTermPriceSurface<typename decltype(i2d)::type>(nominal, baseRate,
+        observationLag, cal, bdc, dc, zii, interpolationType, yts, cStrikes, fStrikes, cfMaturities,
+        cPrice, fPrice);
+  });
+}
+
+// Both interpolator axes at once: the 2-D price grid and the inner 1-D per-maturity curve. The
+// four non-cubic 1-D arms used to omit the trailing `I2D(), interp` pair and rely on the
+// constructor's defaults; passing them explicitly is the same default-constructed value.
+YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
+    Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex> &yii,
+    CPI::InterpolationType interpolation, const Handle<YieldTermStructure> &nominal,
+    const DayCounter &dc, const Calendar &cal, BusinessDayConvention bdc,
+    const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
+    const std::vector<Period> &cfMaturities, const Matrix &cPrice, const Matrix &fPrice,
+    int interpolator2D, int interpolator1D, int approximator, int approximatorArg) {
+  return dispatchInterpolation2D<YoYCapFloorTermPriceSurface*>(interpolator2D, [&](auto i2d) {
+    using I2D = typename decltype(i2d)::type;
+    return dispatchInterpolation<YoYCapFloorTermPriceSurface*>(interpolator1D, approximator, approximatorArg,
+[&](auto i) {
+          return new InterpolatedYoYCapFloorTermPriceSurface<I2D, decltype(i)>(fixingDays, yyLag, yii,
+              interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
+              I2D(), i);
+        });
+  });
+}
+
+// The stripper's own internal PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> always
+// default-constructs its interpolator (interpolatedyoyoptionletstripper.hpp's initialize()
+// never passes one) -- only the surface's own K-direction interpolator (factory1D_) takes an
+// explicit instance, so only that one needs the Cubic/LogCubic approximator-specific
+// construction.
+template <class Interpolator1D>
+YoYOptionletVolatilitySurface *makeKInterpolatedYoYOptionletVolatilitySurface(
+    unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
+    const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
+    const shared_ptr<YoYInflationCapFloorEngine> &engine, double slope,
+    const Interpolator1D &interpolator) {
+  return new KInterpolatedYoYOptionletVolatilitySurface<Interpolator1D>(
+      settlementDays, cal, bdc, dc, capFloorPrices->observationLag(), capFloorPrices, engine,
+      shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<Interpolator1D>()),
+      slope, interpolator);
+}
+
+// Not written in terms of dispatchInterpolation, unlike everything else in this file: that
+// dispatcher has a LogCubic arm and this one must not.
+YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
+    unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
+    const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
+    const shared_ptr<YoYInflationCapFloorEngine> &engine, double slope,
+    int interpolator1D, int approximator, int approximatorArg) {
+  auto make = [&](auto i) -> YoYOptionletVolatilitySurface* {
+    return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc,
+        capFloorPrices, engine, slope, i);
+  };
+  switch (interpolator1D) {
+  case hasquant::BackwardFlat: return make(BackwardFlat());
+  case hasquant::ForwardFlat: return make(ForwardFlat());
+  case hasquant::Linear: return make(Linear());
+  case hasquant::LogLinear: return make(LogLinear());
+  case hasquant::Cubic: return make(makeCubic<Cubic>(approximator, approximatorArg));
+  // LogCubic is deliberately not instantiated here: unlike Cubic, QuantLib's LogCubic
+  // (ql/math/interpolations/loginterpolation.hpp) has no default constructor -- its
+  // DerivativeApprox parameter is required, no default value. InterpolatedYoYOptionletStripper's
+  // own initialize() (interpolatedyoyoptionletstripper.hpp) builds a
+  // PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> via that curve's own default-arg'd
+  // Interpolator1D ctor parameter -- and since that's a virtual member, instantiating
+  // InterpolatedYoYOptionletStripper<LogCubic> at all (even just to hold it in a shared_ptr,
+  // never calling initialize) forces the compiler to instantiate initialize() to build the
+  // vtable, which fails to compile: "no matching constructor for initialization of
+  // QuantLib::LogCubic". This is a real upstream restriction, not a hasquant gap -- confirmed
+  // by reading loginterpolation.hpp's LogCubic ctor (no default 'da' argument, unlike Cubic's).
   case hasquant::LogCubic:
-    switch(approximator) {
-    case hasquant::NaturalSpline:
-      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-    case hasquant::Kruger:
-      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          LogCubic(CubicInterpolation::Kruger));
-    case hasquant::FritschButland:
-      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          LogCubic(CubicInterpolation::FritschButland));
-    case hasquant::Parabolic:
-      return new InterpolatedYoYInflationCurve<LogCubic>(referenceDate, dates, rates, frequency, dayCounter, {},
-          LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-    default:
-      QL_FAIL("Unsupported approximation " << approximator);
-    }
+    QL_FAIL("LogCubic cannot back InterpolatedYoYOptionletStripper/KInterpolatedYoYOptionletVolatilitySurface -- "
+            "see the comment above this case");
   default:
-    QL_FAIL("Unsupported interpolation " << interpolator);
+    QL_FAIL("Unsupported interpolation " << interpolator1D);
   }
 }
 

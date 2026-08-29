@@ -91,126 +91,10 @@ namespace {
     return r;
   }
 
-  // move into qlTSAux?
-  template <class T>
-  void setInterpolation(T* o, int interpolator, int approximator, int approximatorArg) {
-    switch (interpolator) {
-    case hasquant::BackwardFlat: o->setInterpolation(BackwardFlat()); break;
-    case hasquant::ForwardFlat: o->setInterpolation(ForwardFlat()); break;
-    case hasquant::Linear: o->setInterpolation(Linear()); break;
-    case hasquant::LogLinear: o->setInterpolation(LogLinear()); break;
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline: o->setInterpolation(Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0)); break;
-      case hasquant::Kruger: o->setInterpolation(Cubic(CubicInterpolation::Kruger)); break;
-      case hasquant::FritschButland: o->setInterpolation(Cubic(CubicInterpolation::FritschButland)); break;
-      case hasquant::Parabolic: o->setInterpolation(Cubic(CubicInterpolation::Parabolic, approximatorArg)); break;
-      default: QL_FAIL("Unsupported approximation " << approximator);
-      }
-      break;
-    case hasquant::LogCubic:
-      switch(approximator) {
-      case hasquant::NaturalSpline: o->setInterpolation(LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0)); break;
-      case hasquant::Kruger: o->setInterpolation(LogCubic(CubicInterpolation::Kruger)); break;
-      case hasquant::FritschButland: o->setInterpolation(LogCubic(CubicInterpolation::FritschButland)); break;
-      case hasquant::Parabolic: o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, approximatorArg)); break;
-      default: QL_FAIL("Unsupported approximation " << approximator);
-      }
-      break;
-    // hasquant::Abcd (InterpolationType's 7th case) has no case here -- QuantLib's Abcd
-    // interpolation isn't wired up to setInterpolation on this codepath; falls through to the
-    // default QL_FAIL below. Pre-existing gap, not something the Interpolation/Approximation TH
-    // refactor (see deriveCrossEnum in QuantLib/Internal/Common.chs) introduced or touches.
-    default: QL_FAIL("Unsupported interpolation " << interpolator);
-    }
-  }
-
-  // 2-D counterpart of the above, for BlackVarianceSurface. setInterpolation is a member
-  // *template* taking a default-constructed Interpolator, so there is no approximator or
-  // approximatorArg to thread and no Interpolation2D object to marshal -- just a two-case
-  // switch. Same set QuantLib-SWIG exposes (SWIG/volatilities.i).
-  template <class T>
-  void setInterpolation2D(T* o, int interpolator) {
-    switch (interpolator) {
-    case hasquant::Bilinear: o->template setInterpolation<QuantLib::Bilinear>(); break;
-    case hasquant::Bicubic: o->template setInterpolation<QuantLib::Bicubic>(); break;
-    default: QL_FAIL("Unsupported 2-D interpolation " << interpolator);
-    }
-  }
-
   void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
     *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
     *vs = qlAllocateDoubles(*len);
     std::copy(m.begin(), m.end(), *vs);
-  }
-
-  template <class I2D>
-  static CPICapFloorTermPriceSurface *makeCPICapFloorTermPriceSurface(
-                                                                      double nominal, double baseRate, const Period &observationLag, const Calendar &cal,
-                                                                      BusinessDayConvention bdc, const DayCounter &dc, const shared_ptr<ZeroInflationIndex> &zii,
-                                                                      CPI::InterpolationType interpolationType, const Handle<YieldTermStructure> &yts,
-                                                                      const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
-                                                                      const std::vector<Period> &cfMaturities, const Matrix &cPrice, const Matrix &fPrice) {
-    return new InterpolatedCPICapFloorTermPriceSurface<I2D>(nominal, baseRate, observationLag, cal, bdc,
-                                                            dc, zii, interpolationType, yts, cStrikes, fStrikes, cfMaturities, cPrice, fPrice);
-  }
-
-  // Inner (1-D, per-maturity) interpolator dispatch, templated on the already-resolved 2-D
-  // (cap/floor price grid) interpolator -- mirrors qlInterpolatedZeroCurveAux's switch shape.
-  template <class I2D>
-  YoYCapFloorTermPriceSurface *makeYoYCapFloorTermPriceSurface(
-                                                               Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex>& yii,
-                                                               CPI::InterpolationType interpolation, const Handle<YieldTermStructure> &nominal,
-                                                               const DayCounter &dc, const Calendar &cal, BusinessDayConvention bdc,
-                                                               const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
-                                                               const std::vector<Period> &cfMaturities, const Matrix &cPrice, const Matrix &fPrice,
-                                                               int interpolator1D, int approximator, int approximatorArg) {
-    switch (interpolator1D) {
-    case hasquant::BackwardFlat:
-      return new InterpolatedYoYCapFloorTermPriceSurface<I2D, BackwardFlat>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice);
-    case hasquant::ForwardFlat:
-      return new InterpolatedYoYCapFloorTermPriceSurface<I2D, ForwardFlat>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice);
-    case hasquant::Linear:
-      return new InterpolatedYoYCapFloorTermPriceSurface<I2D, Linear>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice);
-    case hasquant::LogLinear:
-      return new InterpolatedYoYCapFloorTermPriceSurface<I2D, LogLinear>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice);
-    case hasquant::Cubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, Cubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                       I2D(), Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, Cubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                       I2D(), Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, Cubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                       I2D(), Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, Cubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                       I2D(), Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    case hasquant::LogCubic:
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, LogCubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                          I2D(), LogCubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, LogCubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                          I2D(), LogCubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, LogCubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                          I2D(), LogCubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return new InterpolatedYoYCapFloorTermPriceSurface<I2D, LogCubic>(fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-                                                                          I2D(), LogCubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator1D);
-    }
   }
 
   // The stripper sets the real vol on this engine as it bootstraps each strike's curve
@@ -220,78 +104,6 @@ namespace {
     return Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(), false);
   }
 
-  // The stripper's own internal PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> always
-  // default-constructs its interpolator (interpolatedyoyoptionletstripper.hpp's initialize()
-  // never passes one) -- only the surface's own K-direction interpolator (factory1D_) takes an
-  // explicit instance, so only that one needs the Cubic/LogCubic approximator-specific
-  // construction, mirroring makeYoYCapFloorTermPriceSurface's shape above.
-  template <class Interpolator1D>
-  YoYOptionletVolatilitySurface *makeKInterpolatedYoYOptionletVolatilitySurface(
-                                                                                unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
-                                                                                const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
-                                                                                const shared_ptr<YoYInflationCapFloorEngine> &engine,
-                                                                                const shared_ptr<YoYOptionletStripper> &stripper, double slope,
-                                                                                const Interpolator1D &interpolator) {
-    return new KInterpolatedYoYOptionletVolatilitySurface<Interpolator1D>(
-                                                                          settlementDays, cal, bdc, dc, capFloorPrices->observationLag(), capFloorPrices, engine, stripper,
-                                                                          slope, interpolator);
-  }
-
-  YoYOptionletVolatilitySurface *dispatchKInterpolatedYoYOptionletVolatilitySurface(
-                                                                                    unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
-                                                                                    const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
-                                                                                    const shared_ptr<YoYInflationCapFloorEngine> &engine, double slope,
-                                                                                    int interpolator1D, int approximator, int approximatorArg) {
-    switch (interpolator1D) {
-    case hasquant::BackwardFlat:
-      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
-                                                            shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<BackwardFlat>()), slope, BackwardFlat());
-    case hasquant::ForwardFlat:
-      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
-                                                            shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<ForwardFlat>()), slope, ForwardFlat());
-    case hasquant::Linear:
-      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
-                                                            shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<Linear>()), slope, Linear());
-    case hasquant::LogLinear:
-      return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine,
-                                                            shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<LogLinear>()), slope, LogLinear());
-    case hasquant::Cubic: {
-      shared_ptr<YoYOptionletStripper> stripper(new InterpolatedYoYOptionletStripper<Cubic>());
-      switch (approximator) {
-      case hasquant::NaturalSpline:
-        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
-                                                              Cubic(CubicInterpolation::Spline, approximatorArg, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      case hasquant::Kruger:
-        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
-                                                              Cubic(CubicInterpolation::Kruger));
-      case hasquant::FritschButland:
-        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
-                                                              Cubic(CubicInterpolation::FritschButland));
-      case hasquant::Parabolic:
-        return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc, capFloorPrices, engine, stripper, slope,
-                                                              Cubic(CubicInterpolation::Parabolic, approximatorArg));
-      default:
-        QL_FAIL("Unsupported approximation " << approximator);
-      }
-    }
-    // LogCubic is deliberately not instantiated here: unlike Cubic, QuantLib's LogCubic
-    // (ql/math/interpolations/loginterpolation.hpp) has no default constructor -- its
-    // DerivativeApprox parameter is required, no default value. InterpolatedYoYOptionletStripper's
-    // own initialize() (interpolatedyoyoptionletstripper.hpp) builds a
-    // PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> via that curve's own default-arg'd
-    // Interpolator1D ctor parameter -- and since that's a virtual member, instantiating
-    // InterpolatedYoYOptionletStripper<LogCubic> at all (even just to hold it in a shared_ptr,
-    // never calling initialize) forces the compiler to instantiate initialize() to build the
-    // vtable, which fails to compile: "no matching constructor for initialization of
-    // QuantLib::LogCubic". This is a real upstream restriction, not a hasquant gap -- confirmed
-    // by reading loginterpolation.hpp's LogCubic ctor (no default 'da' argument, unlike Cubic's).
-    case hasquant::LogCubic:
-      QL_FAIL("LogCubic cannot back InterpolatedYoYOptionletStripper/KInterpolatedYoYOptionletVolatilitySurface -- "
-              "see the comment above this case");
-    default:
-      QL_FAIL("Unsupported interpolation " << interpolator1D);
-    }
-  }
 
 // The named-index factory tables below live inside the extern "C" block with the shims that
 // use them, but a template cannot be declared with C linkage, so their element constructors
@@ -802,7 +614,7 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
   try {
     auto c = allocShared(new BlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance));
     if (interpolator != Null<Integer>())
-      setInterpolation(c.get(), interpolator, approximator, approximatorArg);
+      qlSetBlackVarianceCurveInterpolationAux(c.get(), interpolator, approximator, approximatorArg);
     return ret(new QlBlackVarianceCurve(c));
   } catch (std::exception& er) {
     return handleException<QlBlackVarianceCurve*>(e, er);
@@ -812,7 +624,7 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
 QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, int interpolator, char **e) {
   try {
     auto s = allocShared(new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(dates, datesLen), std::vector<double>(strikes, strikes+strikesLen), qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation));
-    setInterpolation2D(s.get(), interpolator);
+    qlSetBlackVarianceSurfaceInterpolationAux(s.get(), interpolator);
     return ret(new QlBlackVolTermStructure(s));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e) {
@@ -2155,21 +1967,9 @@ QlCPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurface(double nominal, dou
     const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
     const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
     const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
-    CPICapFloorTermPriceSurface *s;
-    switch (interpolator2D) {
-    case hasquant::Bilinear:
-      s = makeCPICapFloorTermPriceSurface<QuantLib::Bilinear>(nominal, baseRate, observationLag, *arg(cal),
-          (BusinessDayConvention)bdc, *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
-          cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat);
-      break;
-    case hasquant::Bicubic:
-      s = makeCPICapFloorTermPriceSurface<QuantLib::Bicubic>(nominal, baseRate, observationLag, *arg(cal),
-          (BusinessDayConvention)bdc, *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
-          cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat);
-      break;
-    default:
-      QL_FAIL("Unsupported 2-D interpolation " << interpolator2D);
-    }
+    CPICapFloorTermPriceSurface *s = qlCPICapFloorTermPriceSurfaceAux(nominal, baseRate, observationLag, *arg(cal),
+        (BusinessDayConvention)bdc, *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
+        cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat, interpolator2D);
     return ret(new QlCPICapFloorTermPriceSurface(alloc(s)));
   } catch (std::exception& er) {return handleException<QlCPICapFloorTermPriceSurface*>(e, er);}}
 
@@ -2232,21 +2032,10 @@ QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays
     const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
     const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
     const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
-    YoYCapFloorTermPriceSurface *s;
-    switch (interpolator2D) {
-    case hasquant::Bilinear:
-      s = makeYoYCapFloorTermPriceSurface<QuantLib::Bilinear>(fixingDays, yyLag, yiiRef, (CPI::InterpolationType)interpolationType,
-          nominalRef, *arg(dc), *arg(cal), (BusinessDayConvention)bdc, cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat,
-          interpolator1D, approximator, approximatorArg);
-      break;
-    case hasquant::Bicubic:
-      s = makeYoYCapFloorTermPriceSurface<QuantLib::Bicubic>(fixingDays, yyLag, yiiRef, (CPI::InterpolationType)interpolationType,
-          nominalRef, *arg(dc), *arg(cal), (BusinessDayConvention)bdc, cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat,
-          interpolator1D, approximator, approximatorArg);
-      break;
-    default:
-      QL_FAIL("Unsupported 2-D interpolation " << interpolator2D);
-    }
+    YoYCapFloorTermPriceSurface *s = qlYoYCapFloorTermPriceSurfaceAux(fixingDays, yyLag, yiiRef,
+        (CPI::InterpolationType)interpolationType, nominalRef, *arg(dc), *arg(cal), (BusinessDayConvention)bdc,
+        cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat,
+        interpolator2D, interpolator1D, approximator, approximatorArg);
     return ret(new QlYoYCapFloorTermPriceSurface(alloc(s)));
   } catch (std::exception& er) {return handleException<QlYoYCapFloorTermPriceSurface*>(e, er);}}
 
@@ -2292,7 +2081,7 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBla
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBlackCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    YoYOptionletVolatilitySurface *s = dispatchKInterpolatedYoYOptionletVolatilitySurface(
+    YoYOptionletVolatilitySurface *s = qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
         interpolator, approximator, approximatorArg);
     return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
@@ -2306,7 +2095,7 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUni
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationUnitDisplacedBlackCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    YoYOptionletVolatilitySurface *s = dispatchKInterpolatedYoYOptionletVolatilitySurface(
+    YoYOptionletVolatilitySurface *s = qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
         interpolator, approximator, approximatorArg);
     return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
@@ -2320,7 +2109,7 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBac
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBachelierCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    YoYOptionletVolatilitySurface *s = dispatchKInterpolatedYoYOptionletVolatilitySurface(
+    YoYOptionletVolatilitySurface *s = qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
         interpolator, approximator, approximatorArg);
     return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));

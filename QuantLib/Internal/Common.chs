@@ -273,15 +273,16 @@ deriving instance Read Approximation
 -- Remaining cpp<->hs lockstep, unlike CalendarConstructor/DayCounterConstructor/IborConstructor:
 -- those own a full C-side array/table, so *every* lockstep edit needed for a new value stays
 -- inside cbits/. Approximation/Interpolation instead get dispatched via symbolic switch-case on
--- the shared enum (cbits/qlTermStructure.cpp's setInterpolation, and ~18 duplicated
--- switch(interpolator){switch(approximator){...}} sites in cbits/qlTermStructureAux.cpp, one per
--- PiecewiseYieldCurve trait/interpolator instantiation). Adding a new ApproximationType/
--- InterpolationType value to cbits/qlEnumObjects.h is zero-touch here on the Haskell side
--- (deriveCrossEnum picks it up automatically, defaulting to a nullary constructor unless a
--- <Value>Monotonic marker is added above), but each cbits switch still needs a matching
--- `case hasquant::NewValue:` by hand -- a missed one isn't a compile error, just a runtime
--- QL_FAIL("Unsupported ..."), exactly the pre-existing gap Abcd fell into (see the comment next
--- to setInterpolation's default case in qlTermStructure.cpp).
+-- the shared enum -- now in exactly one place, cbits/qlTermStructureAux.cpp's
+-- `dispatchInterpolation`, which every interpolator-parametrized curve/surface entry point in
+-- cbits/ routes through (it used to be ~18 hand-duplicated
+-- switch(interpolator){switch(approximator){...}} sites, one per curve template). Adding a new
+-- ApproximationType/InterpolationType value to cbits/qlEnumObjects.h is zero-touch here on the
+-- Haskell side (deriveCrossEnum picks it up automatically, defaulting to a nullary constructor
+-- unless a <Value>Monotonic marker is added above), but dispatchInterpolation (and makeCubic,
+-- for a new approximation) still needs a matching `case hasquant::NewValue:` by hand -- a missed
+-- one isn't a compile error, just a runtime QL_FAIL("Unsupported ..."), exactly the pre-existing
+-- gap Abcd fell into (see the comment on dispatchInterpolation's Cubic/LogCubic arms).
 
 qlInterpolation :: Interpolation -> (Int, (Int, Int))
 qlInterpolation BackwardFlat = (fromEnum InterpolationBackwardFlat, (0, 0))
