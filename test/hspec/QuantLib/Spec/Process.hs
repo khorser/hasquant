@@ -1,9 +1,12 @@
 -- | Coverage for model-level self-consistency/golden-value checks that don't fit naturally
--- under 'QuantLib.Instrument' or 'QuantLib.PricingEngine' -- 'HestonModel'/'HestonProcess'
--- against a closed-form Black price, and 'GJRGARCHModel'/'GJRGARCHProcess' analytic vs. Monte
--- Carlo. Ported from QuantLib's own test-suite/hestonmodel.cpp::testAnalyticVsBlack and
--- test-suite/gjrgarchmodel.cpp::testEngines (a small representative subset of the latter's
--- 3x2x6 case table, to keep the MC engine's runtime reasonable).
+-- under 'QuantLib.Instrument' or 'QuantLib.PricingEngine' -- 'HestonModel'/'HestonProcess' and
+-- 'BatesModel'/'BatesProcess' against a closed-form Black price, and
+-- 'GJRGARCHModel'/'GJRGARCHProcess' analytic vs. Monte Carlo. Ported from QuantLib's own
+-- test-suite/hestonmodel.cpp::testAnalyticVsBlack, test-suite/batesmodel.cpp::testAnalyticVsBlack
+-- (its 'BatesEngine'/plain-'BatesModel' case only -- 'BatesDetJumpModel'/'BatesDoubleExpModel'/
+-- 'BatesDoubleExpDetJumpModel' have no hasquant constructor, only their pointer types and
+-- engines are bound) and test-suite/gjrgarchmodel.cpp::testEngines (a small representative
+-- subset of the latter's 3x2x6 case table, to keep the MC engine's runtime reasonable).
 --
 -- G2Process/G2ForwardProcess and HybridHestonHullWhiteProcess were investigated for this
 -- module and dropped: neither exposes the accessors upstream's own tests need
@@ -24,10 +27,10 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
-import QuantLib.Process(hestonProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..))
-import QuantLib.Model(hestonModel, gJRGARCHModel)
+import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..))
+import QuantLib.Model(hestonModel, batesModel, gJRGARCHModel)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..))
-import QuantLib.PricingEngine(analyticHestonEngine', analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula)
+import QuantLib.PricingEngine(analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula)
 
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -61,6 +64,39 @@ spec = do
         process <- hestonProcess rTS (Just qTS) s0 v0 5.0 0.05 1.0e-4 0.0 QuadraticExponentialMartingale
         model <- hestonModel process
         eng <- analyticHestonEngine' model 144
+        let exerciseDate = addDays exerciseDays evalDate
+        opt <- europeanOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise exerciseDate))
+        setPricingEngine opt eng
+        calculated <- npv opt
+
+        let forwardPrice = spot * exp ((r - q) * t)
+        expected <- blackFormula Put strike forwardPrice (sqrt (v0 * t)) (exp (-r * t)) 0.0
+        calculated `shouldSatisfy` closePrec expected 2.0e-7
+
+  describe "BatesModel (BatesEngine vs. Black formula)" $
+    -- cached reference from test-suite/batesmodel.cpp::testAnalyticVsBlack: same near-zero
+    -- vol-of-vol setup as the Heston case above, plus a near-zero jump intensity/size so the
+    -- Bates (Heston-plus-jumps) price should likewise reproduce the flat-vol Black price.
+    it "reproduces the Black price at near-zero vol-of-vol and jump intensity" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        let exerciseDays = round (0.5 * 365 :: Double) :: Integer
+            t = fromIntegral exerciseDays / 365 :: Double
+            strike = 30.0
+            spot = 32.0
+            r = 0.1
+            q = 0.04
+            v0 = 0.05
+        rQ <- simpleQuote r
+        qQ <- simpleQuote q
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        s0 <- simpleQuote spot
+        process <- batesProcess rTS qTS s0 v0 5.0 0.05 1.0e-4 0.0 0.0001 0.0 0.0001 QuadraticExponentialMartingale
+        model <- batesModel process
+        eng <- batesEngine model 64
         let exerciseDate = addDays exerciseDays evalDate
         opt <- europeanOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise exerciseDate))
         setPricingEngine opt eng
