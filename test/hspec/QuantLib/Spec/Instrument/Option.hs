@@ -28,10 +28,19 @@ import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process
 import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..), StatisticsTrait(..))
-import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..))
+import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
+
+dateOffset :: Day -> Double -> Day
+dateOffset d t = addDays (round (t * 360 :: Double)) d
+
+-- |10 future fixings, evenly spaced every round(360\/10)=36 days out to a 360-day maturity --
+-- matches asianoptions.cpp's own @dt = lround(360.0 \/ futureFixings)@ construction, shared by
+-- the discrete-geometric-average-price\/strike Asian cases below.
+discreteAsianFixingDates :: Day -> [Day]
+discreteAsianFixingDates evalDate = [addDays (36 * i) evalDate | i <- [1 .. 10]]
 
 -- |A flat Black-Scholes-Merton process: spot/dividend-yield/risk-free-rate/vol all constant.
 flatProcess :: Day -> Double -> Double -> Double -> Double -> IO GeneralizedBlackScholesProcess
@@ -214,3 +223,139 @@ spec = do
         let mcNpv = writerExtensibleMcNpv 100000 s0 q r vol t1 t2
                       (\s -> max 0 (s - x1)) (\s -> max 0 (s - x2))
         mcNpv `shouldSatisfy` closePrec analytic (0.03 * analytic)
+
+  describe "Geometric-average Asian options" $ do
+    -- cached reference from QuantLib test-suite/asianoptions.cpp::testAnalyticContinuousGeometricAveragePrice
+    -- (Haug, "Option Pricing Formulas", pp.96-97).
+    it "reproduces Haug's continuous geometric average-price value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 80.0 (-0.03) 0.05 0.20
+        eng <- analyticContinuousGeometricAveragePriceAsianEngine process
+        opt <- continuousAveragingAsianOption Geometric (PlainVanilla (PlainVanillaPayoff Put 85.0))
+                                               (europeanIn 90 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 4.6922 1e-4
+
+    -- cached reference from QuantLib test-suite/asianoptions.cpp::testAnalyticDiscreteGeometricAveragePrice
+    -- (Clewlow & Strickland, "Implementing Derivatives Model", pp.118-123): 10 future fixings,
+    -- evenly spaced every round(360/10)=36 days out to a 360-day maturity.
+    it "reproduces Clewlow & Strickland's discrete geometric average-price value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 100.0 0.03 0.06 0.20
+        eng <- analyticDiscreteGeometricAveragePriceAsianEngine process
+        opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
+                                             (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                             (europeanIn 360 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 5.3425606635 1e-6
+
+    it "reproduces the discrete geometric average-strike value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 100.0 0.03 0.06 0.20
+        eng <- analyticDiscreteGeometricAverageStrikeAsianEngine process
+        opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
+                                             (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                             (europeanIn 360 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 4.97109 1e-5
+
+    -- cached reference from QuantLib test-suite/asianoptions.cpp::testMCDiscreteGeometricAveragePrice:
+    -- the MC engine is checked against the analytic one above, not an independent literal (upstream
+    -- does the same -- both engines price the identical option/process pair).
+    it "MC discrete geometric average-price engine matches its own analytic engine" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 100.0 0.03 0.06 0.20
+        opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
+                                             (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                             (europeanIn 360 evalDate)
+        mcEng <- mcDiscreteGeometricAPEngine LowDiscrepancy Statistics process True False (Just 8191) Nothing Nothing 42
+        setPricingEngine opt mcEng
+        mc <- npv opt
+        mc `shouldSatisfy` closePrec 5.3425606635 4.0e-3
+
+  describe "Arithmetic-average Asian option (MC average-strike engine)" $
+    -- cached references from QuantLib test-suite/asianoptions.cpp::testMCDiscreteArithmeticAverageStrike
+    -- (Levy 1997, as reproduced in Clewlow & Strickland's "Exotic Options"): a two-row subset of
+    -- upstream's 27-case table (spot 90, strike 87, q 6%, r 2.5%, vol 13%, first fixing at t=0,
+    -- 11/12y to maturity), at 26 and 100 equally spaced fixings.
+    mapM_ (\(fixings, expected) ->
+      it ("matches Levy's value at " ++ show fixings ++ " fixings") $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate 90.0 0.06 0.025 0.13
+          let len = 11 / 12 :: Double
+              dt = len / fromIntegral (fixings - 1 :: Int)
+              fixingDates = [dateOffset evalDate (fromIntegral i * dt) | i <- [0 .. fixings - 1 :: Int]]
+          eng <- mcDiscreteArithmeticASEngine LowDiscrepancy Statistics process True False (Just 1023) Nothing Nothing 3456789
+          opt <- discreteAveragingAsianOption Arithmetic 0.0 0 fixingDates
+                                               (PlainVanilla (PlainVanillaPayoff Call 87.0))
+                                               (europeanIn (round (len * 360)) evalDate)
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec expected 2.0e-2)
+      [(26 :: Int, 1.81430536630 :: Double), (100, 1.83822402464)]
+
+  describe "Continuous lookback options" $ do
+    -- cached references from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousFloatingLookback
+    -- (Haug 1998 pp.61-62; Broadie/Glasserman/Kou 1999 pp.70-74). q=0, r constant per row.
+    mapM_ (\(typ, minmax, s, q, r, t, vol, expected) ->
+      it ("matches the floating-strike lookback value at s=" ++ show s ++ " t=" ++ show t) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate s q r vol
+          eng <- analyticContinuousFloatingLookbackEngine process
+          opt <- continuousFloatingLookbackOption minmax (Floating (typ :: OptionType))
+                                                   (europeanIn (round (t * 360 :: Double)) evalDate)
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec expected 1.0e-4)
+      [ (Call, 100.0, 120.0, 0.06, 0.10, 0.50, 0.30, 25.3533 :: Double)
+      , (Call, 100.0, 100.0, 0.00, 0.05, 1.00, 0.30, 23.7884)
+      , (Put,  100.0, 100.0, 0.00, 0.10, 0.50, 0.30, 15.3526)
+      ]
+
+    -- cached references from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousFixedLookback
+    -- (Haug 1998 pp.63-64).
+    mapM_ (\(strike, minmax, s, q, r, t, vol, expected) ->
+      it ("matches the fixed-strike lookback value at strike=" ++ show strike ++ " vol=" ++ show vol) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate s q r vol
+          eng <- analyticContinuousFixedLookbackEngine process
+          opt <- continuousFixedLookbackOption minmax (PlainVanilla (PlainVanillaPayoff Call strike))
+                                                (europeanIn (round (t * 360 :: Double)) evalDate)
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec expected 1.0e-4)
+      [ (95.0 :: Double, 100.0 :: Double, 100.0 :: Double, 0.0 :: Double, 0.10 :: Double, 0.50 :: Double, 0.10 :: Double, 13.2687 :: Double)
+      , (100.0, 100.0, 100.0, 0.0, 0.10, 0.50, 0.20, 14.1702)
+      , (105.0, 100.0, 100.0, 0.0, 0.10, 0.50, 0.30, 15.8512)
+      ]
+
+  describe "CliquetOption" $
+    -- cached reference from QuantLib test-suite/cliquetoption.cpp::testValues (Haug, p.37).
+    it "reproduces Haug's cliquet option value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 60.0 0.04 0.08 0.30
+        eng <- analyticCliquetEngine process
+        opt <- cliquetOption (PercentageStrikePayoff Call 1.1) (EuropeanExercise (addDays 360 evalDate))
+                              [addDays 90 evalDate]
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 4.4064 1e-4
