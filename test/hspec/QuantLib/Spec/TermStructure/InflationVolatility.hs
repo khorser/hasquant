@@ -5,11 +5,16 @@ import Data.Time.Calendar(addDays, addGregorianYearsClip)
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
+import QuantLib.Index(addFixing)
 import QuantLib.Index.Inflation
+import qualified QuantLib.InterestRate as IR
+import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.Math(Interpolation(..), Interpolation2D(..), Approximation(..), Matrix(..))
+import QuantLib.PricingEngine(yoyInflationUnitDisplacedBlackCapFloorEngine, yoyInflationBachelierCapFloorEngine)
+import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.InflationVolatility
-import QuantLib.TermStructure.Yield(YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(YieldTermStructure, interpolatedZeroCurve, flatForward)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -132,7 +137,8 @@ setup = do
   return (eval, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU)
 
 spec :: Spec
-spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurface)" $ do
+spec = do
+ describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurface)" $ do
   it "interpolatedYoYInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Settings.keepingSettings' $ do
     let eval = 23 `november` 2007
     Settings.setEvaluationDate (Just eval)
@@ -229,5 +235,44 @@ spec = describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurf
     d1 <- advance cal baseDate (1, Years) Unadjusted False
     vol <- yoyOptionletVolatility yoySurf d1 strike1st Nothing True
     vol `shouldSatisfy` (not . isNaN)
+
+ -- Ported from test/smoke/CheckInflationVolatility.hs's UnitDisplacedBlack/Bachelier half
+ -- (the Black engine + constantYoYOptionletVolatility path is already covered in
+ -- Instrument/InflationCapFloor.hs) -- constructs the two remaining YoY inflation cap/floor
+ -- engines against the same constant vol surface, confirming the shim signatures actually work.
+ describe "ConstantYoYOptionletVolatility: UnitDisplacedBlack/Bachelier cap/floor engines" $
+  it "both engines construct against a constant YoY vol surface" $ Settings.keepingSettings' $ do
+    evalDate <- today
+    Settings.setEvaluationDate (Just evalDate)
+    dc <- dayCounter Actual365FixedStandard
+    cal <- calendar Null
+    volQ <- simpleQuote 0.03
+    vol <- constantYoYOptionletVolatility volQ 0 cal Unadjusted dc (0, Months) Monthly False (-1.0) 100.0 ShiftedLognormal 0.0
+    yii <- yoyInflationIndex YYUKRPI
+    addFixing yii (1 `january` 2020) 0.03 False
+    nominalQ <- simpleQuote 0.02
+    nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
+    _ <- yoyInflationUnitDisplacedBlackCapFloorEngine yii vol nominalCurve
+    _ <- yoyInflationBachelierCapFloorEngine yii vol nominalCurve
+    pure ()
+
+ -- Ported from test/smoke/CheckInflationVolatility.hs: ConstantCPIVolatility has no engine/
+ -- pricer consuming it in QL 1.43 (see its own haddock in QuantLib.Internal.Type), so this only
+ -- exercises construction + query, same as the smoke script did.
+ describe "ConstantCPIVolatility" $
+  it "echoes its constant quote via cpiVolatility/cpiTotalVariance" $ Settings.keepingSettings' $ do
+    evalDate <- today
+    Settings.setEvaluationDate (Just evalDate)
+    dc <- dayCounter Actual365FixedStandard
+    cal <- calendar Null
+    cpiVolQ <- simpleQuote 0.04
+    cpiVol <- constantCPIVolatility cpiVolQ 0 cal Unadjusted dc (2, Months) Monthly False
+    let queryDate = addDays 365 evalDate
+    cv <- cpiVolatility cpiVol queryDate 0.03 Nothing True
+    cv `shouldSatisfy` closePrec 0.04 1.0e-10
+    ctv <- cpiTotalVariance cpiVol queryDate 0.03 Nothing True
+    ctv `shouldSatisfy` (not . isNaN)
+  where
+    closePrec r p x = abs (x - r) < p
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

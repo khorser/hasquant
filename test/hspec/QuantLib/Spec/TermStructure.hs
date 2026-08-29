@@ -1326,6 +1326,74 @@ spec = do
           volLow `shouldSatisfy` closePrec 0.1411379628132 tolerance
           volHigh `shouldSatisfy` closePrec 0.136291154962 tolerance
 
+    -- Ported from test/smoke/CheckBlackVolatilitySurfaceDelta.hs: the plain-Matrix constructor
+    -- above always uses SmileLinear; this guards that 'Vol.CubicSpline' (reached only via the
+    -- full options-record entry point) is actually wired to a different upstream enum value --
+    -- an off-grid strike is where the two interpolation schemes have room to disagree, so an
+    -- equal result there would mean SmileInterpolationMethod's mapping had gone stale.
+    describe "black volatility surface delta (SmileInterpolationMethod)" $
+      it "CubicSpline disagrees with SmileLinear at an off-grid strike" $
+        Settings.keepingSettings' $ do
+          let refDate = 1 `january` 2010
+              offGridStrike = 1.15
+          Settings.setEvaluationDate (Just refDate)
+          d1M <- addPeriod refDate (1, Months)
+          d6M <- addPeriod refDate (6, Months)
+          d1Y <- addPeriod refDate (1, Years)
+          d2Y <- addPeriod refDate (2, Years)
+          dc <- dayCounter ActualActualISDA
+          cal <- Calendar.calendar TARGET
+          spot <- Quote.simpleQuote 1.18
+          dtsQ <- Quote.simpleQuote 0.02
+          dts <- flatForward' 0 cal dtsQ dc IR.Continuous Annual
+          ftsQ <- Quote.simpleQuote 0.035
+          fts <- flatForward' 0 cal ftsQ dc IR.Continuous Annual
+          let vols = either error id $ realMatrix 4 3
+                [ 0.15, 0.13, 0.135
+                , 0.14, 0.11, 0.125
+                , 0.13, 0.10, 0.12
+                , 0.125, 0.095, 0.115
+                ]
+              linearOpts = Vol.defaultBlackVolatilitySurfaceDeltaOpts
+              cubicOpts = linearOpts { Vol.bvsdInterpolationMethod = Vol.CubicSpline }
+          surfaceLinear <- Vol.blackVolatilitySurfaceDeltaFull refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
+                             dc cal spot dts fts linearOpts
+          surfaceCubic <- Vol.blackVolatilitySurfaceDeltaFull refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
+                             dc cal spot dts fts cubicOpts
+          smileLinear <- Vol.blackVolSmile' surfaceLinear d6M
+          smileCubic <- Vol.blackVolSmile' surfaceCubic d6M
+          volLinear <- Vol.smileSectionVolatility smileLinear offGridStrike
+          volCubic <- Vol.smileSectionVolatility smileCubic offGridStrike
+          volLinear `shouldNotBe` volCubic
+
+    -- Ported from test/smoke/CheckFixedLocalVolSurfaceExtrapolation.hs. ConstantExtrapolation
+    -- and InterpolatorDefaultExtrapolation agree everywhere *inside* the strike grid (both
+    -- reproduce the interpolated surface there), so an in-grid query would pass no matter how
+    -- the enum is wired -- this queries a strike strictly above the grid's maximum strike,
+    -- where the two diverge. Same shape of guard as the SmileInterpolationMethod check above.
+    describe "FixedLocalVolSurface extrapolation" $
+      it "ConstantExtrapolation and InterpolatorDefaultExtrapolation disagree off-grid" $
+        Settings.keepingSettings' $ do
+          let refDate = 15 `january` 2024
+              queryDate = 15 `july` 2025
+              offGridStrike = 200
+          dates <- mapM (\y -> addPeriod refDate (y, Years)) [1, 2, 3 :: Int]
+          let strikes = [80, 100, 120]
+              -- deliberately curved along both axes -- an affine surface would extrapolate
+              -- identically under either scheme, which would make the check vacuous
+              localVolMatrix = either error id $ realMatrix 3 3
+                [ 0.30, 0.26, 0.24
+                , 0.20, 0.18, 0.17
+                , 0.28, 0.25, 0.23
+                ]
+          dc <- dayCounter Actual365FixedStandard
+          let localVolUnder extrap = do
+                surf <- Vol.fixedLocalVolSurface refDate dates strikes localVolMatrix dc extrap extrap
+                Vol.localVol surf queryDate offGridStrike True
+          constant <- localVolUnder Vol.FixedLocalVolSurfaceConstantExtrapolation
+          interpDefault <- localVolUnder Vol.FixedLocalVolSurfaceInterpolatorDefaultExtrapolation
+          abs (constant - interpDefault) / constant `shouldSatisfy` (> 1e-4)
+
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
     -- Handle<Quote>-based ("floating market data") overload, not the plain-Matrix one bound
