@@ -727,13 +727,13 @@ span.spaces    { background: white }
 <span class="lineno">  708 </span>      !(FunPtr PayoffFun)
 <span class="lineno">  709 </span>
 <span class="lineno">  710 </span>withPercentageStrikePayoff :: PercentageStrikePayoff -&gt; (QlPercentageStrikePayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  711 </span><span class="decl"><span class="nottickedoff">withPercentageStrikePayoff (PercentageStrikePayoff t m) f = qlPercentageStrikePayoff t m &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  711 </span><span class="decl"><span class="istickedoff">withPercentageStrikePayoff (PercentageStrikePayoff t m) f = qlPercentageStrikePayoff t m &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
 <span class="lineno">  712 </span>
 <span class="lineno">  713 </span>withPlainVanillaPayoff :: PlainVanillaPayoff -&gt; (QlPlainVanillaPayoff -&gt; IO a) -&gt; IO a
 <span class="lineno">  714 </span><span class="decl"><span class="istickedoff">withPlainVanillaPayoff (PlainVanillaPayoff t s) f = qlPlainVanillaPayoff t s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
 <span class="lineno">  715 </span>
 <span class="lineno">  716 </span>withStrikedPayoff :: StrikedPayoff -&gt; (QlStrikedTypePayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  717 </span><span class="decl"><span class="istickedoff">withStrikedPayoff (AssetOrNothing t s) f = <span class="nottickedoff">qlAssetOrNothingPayoff t s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  717 </span><span class="decl"><span class="istickedoff">withStrikedPayoff (AssetOrNothing t s) f = qlAssetOrNothingPayoff t s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
 <span class="lineno">  718 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (CashOrNothing t s c) f = qlCashOrNothingPayoff t s c &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
 <span class="lineno">  719 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (Gap t s ss) f = <span class="nottickedoff">qlGapPayoff t s ss &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
 <span class="lineno">  720 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (PercentageStrike p) f = <span class="nottickedoff">withPercentageStrikePayoff p (\pp -&gt; upcast pp &gt;&gt;= \sp -&gt; f sp `finally` freeUpcast sp)</span></span>
@@ -764,7 +764,7 @@ span.spaces    { background: white }
 <span class="lineno">  745 </span>      !(FunPtr BasketAccumulateFun)
 <span class="lineno">  746 </span>
 <span class="lineno">  747 </span>withTypePayoff :: TypePayoff -&gt; (QlTypePayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  748 </span><span class="decl"><span class="istickedoff">withTypePayoff (Floating t) f = <span class="nottickedoff">qlFloatingTypePayoff t &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  748 </span><span class="decl"><span class="istickedoff">withTypePayoff (Floating t) f = qlFloatingTypePayoff t &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
 <span class="lineno">  749 </span><span class="spaces"></span><span class="istickedoff">withTypePayoff (Striked s) f = withStrikedPayoff s (\sp -&gt; upcast sp &gt;&gt;= \tp -&gt; f tp `finally` freeUpcast tp)</span></span>
 <span class="lineno">  750 </span>
 <span class="lineno">  751 </span>withBasketPayoff :: BasketPayoff -&gt; (QlBasketPayoff -&gt; IO a) -&gt; IO a
@@ -884,14 +884,14 @@ span.spaces    { background: white }
 <span class="lineno">  865 </span>
 <span class="lineno">  866 </span>
 <span class="lineno">  867 </span>qlAssetOrNothingPayoff :: (OptionType) -&gt; (Double) -&gt; IO ((QlStrikedTypePayoff))
-<span class="lineno">  868 </span><span class="decl"><span class="nottickedoff">qlAssetOrNothingPayoff a1 a2 =</span>
-<span class="lineno">  869 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  870 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  871 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  872 </span><span class="spaces">  </span><span class="nottickedoff">qlAssetOrNothingPayoff'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  873 </span><span class="spaces">  </span><span class="nottickedoff">peekPtr res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  874 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  875 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  868 </span><span class="decl"><span class="istickedoff">qlAssetOrNothingPayoff a1 a2 =</span>
+<span class="lineno">  869 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  870 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  871 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  872 </span><span class="spaces">  </span><span class="istickedoff">qlAssetOrNothingPayoff'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  873 </span><span class="spaces">  </span><span class="istickedoff">peekPtr res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  874 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  875 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  876 </span>
 <span class="lineno">  877 </span>
 <span class="lineno">  878 </span>qlAverageBasketPayoff :: (QlPayoff) -&gt; (Word) -&gt; IO ((QlBasketPayoff))
@@ -938,13 +938,13 @@ span.spaces    { background: white }
 <span class="lineno">  919 </span>
 <span class="lineno">  920 </span>
 <span class="lineno">  921 </span>qlFloatingTypePayoff :: (OptionType) -&gt; IO ((QlTypePayoff))
-<span class="lineno">  922 </span><span class="decl"><span class="nottickedoff">qlFloatingTypePayoff a1 =</span>
-<span class="lineno">  923 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  924 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  925 </span><span class="spaces">  </span><span class="nottickedoff">qlFloatingTypePayoff'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  926 </span><span class="spaces">  </span><span class="nottickedoff">peekPtr res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  927 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  928 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  922 </span><span class="decl"><span class="istickedoff">qlFloatingTypePayoff a1 =</span>
+<span class="lineno">  923 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  924 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  925 </span><span class="spaces">  </span><span class="istickedoff">qlFloatingTypePayoff'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  926 </span><span class="spaces">  </span><span class="istickedoff">peekPtr res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  927 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  928 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  929 </span>
 <span class="lineno">  930 </span>
 <span class="lineno">  931 </span>qlForwardTypePayoff :: (PositionType) -&gt; (Double) -&gt; IO ((QlPayoff))
@@ -991,14 +991,14 @@ span.spaces    { background: white }
 <span class="lineno">  972 </span>
 <span class="lineno">  973 </span>
 <span class="lineno">  974 </span>qlPercentageStrikePayoff :: (OptionType) -&gt; (Double) -&gt; IO ((QlPercentageStrikePayoff))
-<span class="lineno">  975 </span><span class="decl"><span class="nottickedoff">qlPercentageStrikePayoff a1 a2 =</span>
-<span class="lineno">  976 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  977 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  978 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  979 </span><span class="spaces">  </span><span class="nottickedoff">qlPercentageStrikePayoff'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  980 </span><span class="spaces">  </span><span class="nottickedoff">peekPtr res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  981 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  982 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  975 </span><span class="decl"><span class="istickedoff">qlPercentageStrikePayoff a1 a2 =</span>
+<span class="lineno">  976 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  977 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  978 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  979 </span><span class="spaces">  </span><span class="istickedoff">qlPercentageStrikePayoff'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  980 </span><span class="spaces">  </span><span class="istickedoff">peekPtr res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  981 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  982 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  983 </span>
 <span class="lineno">  984 </span>
 <span class="lineno">  985 </span>qlPlainVanillaPayoff :: (OptionType) -&gt; (Double) -&gt; IO ((QlPlainVanillaPayoff))
@@ -1825,14 +1825,14 @@ span.spaces    { background: white }
 <span class="lineno"> 1806 </span>
 <span class="lineno"> 1807 </span>
 <span class="lineno"> 1808 </span>qlLmExponentialCorrelationModel :: (Word) -&gt; (Double) -&gt; IO ((QlLmCorrelationModel))
-<span class="lineno"> 1809 </span><span class="decl"><span class="nottickedoff">qlLmExponentialCorrelationModel a1 a2 =</span>
-<span class="lineno"> 1810 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno"> 1811 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno"> 1812 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1813 </span><span class="spaces">  </span><span class="nottickedoff">qlLmExponentialCorrelationModel'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1814 </span><span class="spaces">  </span><span class="nottickedoff">peekLmCorrelationModel res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1815 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 1816 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1809 </span><span class="decl"><span class="istickedoff">qlLmExponentialCorrelationModel a1 a2 =</span>
+<span class="lineno"> 1810 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno"> 1811 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno"> 1812 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 1813 </span><span class="spaces">  </span><span class="istickedoff">qlLmExponentialCorrelationModel'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1814 </span><span class="spaces">  </span><span class="istickedoff">peekLmCorrelationModel res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1815 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 1816 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1817 </span>
 <span class="lineno"> 1818 </span>
 <span class="lineno"> 1819 </span>qlLmLinearExponentialCorrelationModel :: (Word) -&gt; (Double) -&gt; (Double) -&gt; (Word) -&gt; IO ((QlLmCorrelationModel))
@@ -1850,15 +1850,15 @@ span.spaces    { background: white }
 <span class="lineno"> 1831 </span>
 <span class="lineno"> 1832 </span>
 <span class="lineno"> 1833 </span>correlationModel :: LmCorrelationModel -&gt; IO QlLmCorrelationModel
-<span class="lineno"> 1834 </span><span class="decl"><span class="nottickedoff">correlationModel (ConstWrapperCorrelation m) = correlationModel m &gt;&gt;= qlLmConstWrapperCorrelationModel</span>
-<span class="lineno"> 1835 </span><span class="spaces"></span><span class="nottickedoff">correlationModel (ExponentialCorrelation s r) = qlLmExponentialCorrelationModel s r</span>
-<span class="lineno"> 1836 </span><span class="spaces"></span><span class="nottickedoff">correlationModel (LinearExponentialCorrelation s r b f) = qlLmLinearExponentialCorrelationModel s r b f</span></span>
+<span class="lineno"> 1834 </span><span class="decl"><span class="istickedoff">correlationModel (ConstWrapperCorrelation m) = <span class="nottickedoff">correlationModel m &gt;&gt;= qlLmConstWrapperCorrelationModel</span></span>
+<span class="lineno"> 1835 </span><span class="spaces"></span><span class="istickedoff">correlationModel (ExponentialCorrelation s r) = qlLmExponentialCorrelationModel s r</span>
+<span class="lineno"> 1836 </span><span class="spaces"></span><span class="istickedoff">correlationModel (LinearExponentialCorrelation s r b f) = <span class="nottickedoff">qlLmLinearExponentialCorrelationModel s r b f</span></span></span>
 <span class="lineno"> 1837 </span>
 <span class="lineno"> 1838 </span>correlationModelMeta :: EnumMeta LmCorrelationModel CLmCorrelationModel
-<span class="lineno"> 1839 </span><span class="decl"><span class="nottickedoff">correlationModelMeta = EnumMeta correlationModel</span></span>
+<span class="lineno"> 1839 </span><span class="decl"><span class="istickedoff">correlationModelMeta = EnumMeta correlationModel</span></span>
 <span class="lineno"> 1840 </span>
 <span class="lineno"> 1841 </span>withLmCorrelationModel :: LmCorrelationModel -&gt; (Ptr CLmCorrelationModel -&gt; IO a) -&gt; IO a
-<span class="lineno"> 1842 </span><span class="decl"><span class="nottickedoff">withLmCorrelationModel = withEnumType correlationModelMeta</span></span>
+<span class="lineno"> 1842 </span><span class="decl"><span class="istickedoff">withLmCorrelationModel = withEnumType correlationModelMeta</span></span>
 <span class="lineno"> 1843 </span>
 <span class="lineno"> 1844 </span>data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
 <span class="lineno"> 1845 </span>  | FixedVolatility ![Double] ![Double]
@@ -1880,14 +1880,14 @@ span.spaces    { background: white }
 <span class="lineno"> 1861 </span>
 <span class="lineno"> 1862 </span>
 <span class="lineno"> 1863 </span>qlLmFixedVolatilityModel :: ([Double]) -&gt; ([Double]) -&gt; IO ((QlLmVolatilityModel))
-<span class="lineno"> 1864 </span><span class="decl"><span class="nottickedoff">qlLmFixedVolatilityModel a1 a2 =</span>
-<span class="lineno"> 1865 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno"> 1866 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 1867 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1868 </span><span class="spaces">  </span><span class="nottickedoff">qlLmFixedVolatilityModel'_ a1'1  a1'2 a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1869 </span><span class="spaces">  </span><span class="nottickedoff">peekLmVolatilityModel res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1870 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 1871 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1864 </span><span class="decl"><span class="istickedoff">qlLmFixedVolatilityModel a1 a2 =</span>
+<span class="lineno"> 1865 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno"> 1866 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1867 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 1868 </span><span class="spaces">  </span><span class="istickedoff">qlLmFixedVolatilityModel'_ a1'1  a1'2 a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1869 </span><span class="spaces">  </span><span class="istickedoff">peekLmVolatilityModel res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1870 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 1871 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1872 </span>
 <span class="lineno"> 1873 </span>
 <span class="lineno"> 1874 </span>qlLmLinearExponentialVolatilityModel :: ([Double]) -&gt; (Double) -&gt; (Double) -&gt; (Double) -&gt; (Double) -&gt; IO ((QlLmVolatilityModel))
@@ -1906,15 +1906,15 @@ span.spaces    { background: white }
 <span class="lineno"> 1887 </span>
 <span class="lineno"> 1888 </span>
 <span class="lineno"> 1889 </span>volatilityModel :: LmVolatilityModel -&gt; IO QlLmVolatilityModel
-<span class="lineno"> 1890 </span><span class="decl"><span class="nottickedoff">volatilityModel (ConstWrapperVolatility m) = volatilityModel m &gt;&gt;= qlLmConstWrapperVolatilityModel</span>
-<span class="lineno"> 1891 </span><span class="spaces"></span><span class="nottickedoff">volatilityModel (FixedVolatility d1 d2) = qlLmFixedVolatilityModel d1 d2</span>
-<span class="lineno"> 1892 </span><span class="spaces"></span><span class="nottickedoff">volatilityModel (LinearExponentialVolatility s a b c d) = qlLmLinearExponentialVolatilityModel s a b c d</span></span>
+<span class="lineno"> 1890 </span><span class="decl"><span class="istickedoff">volatilityModel (ConstWrapperVolatility m) = <span class="nottickedoff">volatilityModel m &gt;&gt;= qlLmConstWrapperVolatilityModel</span></span>
+<span class="lineno"> 1891 </span><span class="spaces"></span><span class="istickedoff">volatilityModel (FixedVolatility d1 d2) = qlLmFixedVolatilityModel d1 d2</span>
+<span class="lineno"> 1892 </span><span class="spaces"></span><span class="istickedoff">volatilityModel (LinearExponentialVolatility s a b c d) = <span class="nottickedoff">qlLmLinearExponentialVolatilityModel s a b c d</span></span></span>
 <span class="lineno"> 1893 </span>
 <span class="lineno"> 1894 </span>volatilityModelMeta :: EnumMeta LmVolatilityModel CLmVolatilityModel
-<span class="lineno"> 1895 </span><span class="decl"><span class="nottickedoff">volatilityModelMeta = EnumMeta volatilityModel</span></span>
+<span class="lineno"> 1895 </span><span class="decl"><span class="istickedoff">volatilityModelMeta = EnumMeta volatilityModel</span></span>
 <span class="lineno"> 1896 </span>
 <span class="lineno"> 1897 </span>withLmVolatilityModel :: LmVolatilityModel -&gt; (Ptr CLmVolatilityModel -&gt; IO a) -&gt; IO a
-<span class="lineno"> 1898 </span><span class="decl"><span class="nottickedoff">withLmVolatilityModel = withEnumType volatilityModelMeta</span></span>
+<span class="lineno"> 1898 </span><span class="decl"><span class="istickedoff">withLmVolatilityModel = withEnumType volatilityModelMeta</span></span>
 <span class="lineno"> 1899 </span>
 <span class="lineno"> 1900 </span>data Claim = FaceValue | FaceValueAccrual Bond
 <span class="lineno"> 1901 </span>claimMeta :: EnumMeta Claim CQlClaim

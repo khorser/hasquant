@@ -545,18 +545,18 @@ span.spaces    { background: white }
 <span class="lineno">  526 </span>-- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
 <span class="lineno">  527 </span>forwardRate :: (GenYieldTermStructure y) -&gt; (Double) -&gt; (Double) -&gt; (Compounding) -&gt; (Frequency) -&gt; (Bool) -- ^extrapolate
 <span class="lineno">  528 </span> -&gt; IO ((InterestRate))
-<span class="lineno">  529 </span><span class="decl"><span class="nottickedoff">forwardRate a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  530 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  531 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  532 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  533 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
-<span class="lineno">  534 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
-<span class="lineno">  535 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno">  536 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno">  537 </span><span class="spaces">  </span><span class="nottickedoff">forwardRate'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  538 </span><span class="spaces">  </span><span class="nottickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  539 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
-<span class="lineno">  540 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  529 </span><span class="decl"><span class="istickedoff">forwardRate a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  531 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  532 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  533 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
+<span class="lineno">  534 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
+<span class="lineno">  535 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  536 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  537 </span><span class="spaces">  </span><span class="istickedoff">forwardRate'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  538 </span><span class="spaces">  </span><span class="istickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  539 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  540 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  541 </span>
 <span class="lineno">  542 </span>
 <span class="lineno">  543 </span>

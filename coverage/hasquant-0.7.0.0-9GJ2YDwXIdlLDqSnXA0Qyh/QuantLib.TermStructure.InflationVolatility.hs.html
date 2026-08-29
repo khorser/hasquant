@@ -487,20 +487,20 @@ span.spaces    { background: white }
 <span class="lineno">  468 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; ((Word,TimeUnit)) -- ^observationLag
 <span class="lineno">  469 </span> -&gt; (Frequency) -&gt; (Bool) -- ^indexIsInterpolated
 <span class="lineno">  470 </span> -&gt; IO ((CPIVolatilitySurface))
-<span class="lineno">  471 </span><span class="decl"><span class="nottickedoff">constantCPIVolatility a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  472 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a3 $ \a3' -&gt; </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a5 $ \a5' -&gt; </span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="nottickedoff">let {(a6'1, a6'2) = fromEnumQuantity a6} in </span>
-<span class="lineno">  478 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = C2HSImp.fromBool a8} in </span>
-<span class="lineno">  480 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  481 </span><span class="spaces">  </span><span class="nottickedoff">constantCPIVolatility'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  482 </span><span class="spaces">  </span><span class="nottickedoff">peekCPIVolatilitySurface res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  483 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  484 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  471 </span><span class="decl"><span class="istickedoff">constantCPIVolatility a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a3 $ \a3' -&gt; </span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">let {(a6'1, a6'2) = fromEnumQuantity a6} in </span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = C2HSImp.fromBool a8} in </span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  481 </span><span class="spaces">  </span><span class="istickedoff">constantCPIVolatility'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  482 </span><span class="spaces">  </span><span class="istickedoff">peekCPIVolatilitySurface res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  483 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  484 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  485 </span>
 <span class="lineno">  486 </span>
 <span class="lineno">  487 </span>
@@ -510,17 +510,17 @@ span.spaces    { background: white }
 <span class="lineno">  491 </span> -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
 <span class="lineno">  492 </span> -&gt; (Bool) -- ^extrapolate
 <span class="lineno">  493 </span> -&gt; IO ((Double))
-<span class="lineno">  494 </span><span class="decl"><span class="nottickedoff">cpiVolatility a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  495 </span><span class="spaces">  </span><span class="nottickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="nottickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="nottickedoff">cpiVolatility'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  503 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  504 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  494 </span><span class="decl"><span class="istickedoff">cpiVolatility a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">cpiVolatility'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  505 </span>
 <span class="lineno">  506 </span>
 <span class="lineno">  507 </span>
@@ -530,17 +530,17 @@ span.spaces    { background: white }
 <span class="lineno">  511 </span> -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
 <span class="lineno">  512 </span> -&gt; (Bool) -- ^extrapolate
 <span class="lineno">  513 </span> -&gt; IO ((Double))
-<span class="lineno">  514 </span><span class="decl"><span class="nottickedoff">cpiTotalVariance a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  515 </span><span class="spaces">  </span><span class="nottickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  516 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  517 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  518 </span><span class="spaces">  </span><span class="nottickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
-<span class="lineno">  519 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
-<span class="lineno">  520 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  521 </span><span class="spaces">  </span><span class="nottickedoff">cpiTotalVariance'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  522 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  523 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  524 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  514 </span><span class="decl"><span class="istickedoff">cpiTotalVariance a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  517 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
+<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  521 </span><span class="spaces">  </span><span class="istickedoff">cpiTotalVariance'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  522 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  525 </span>
 <span class="lineno">  526 </span>
 <span class="lineno">  527 </span>

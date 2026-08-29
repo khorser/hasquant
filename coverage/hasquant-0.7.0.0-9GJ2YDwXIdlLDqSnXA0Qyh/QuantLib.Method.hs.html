@@ -849,25 +849,25 @@ span.spaces    { background: white }
 <span class="lineno">  830 </span> -&gt; (Maybe Double) -- ^concentration point density
 <span class="lineno">  831 </span> -&gt; ([Dividend]) -&gt; (Maybe FdmQuantoHelper) -&gt; (Double) -- ^spotAdjustment
 <span class="lineno">  832 </span> -&gt; IO ((Fdm1dMesher))
-<span class="lineno">  833 </span><span class="decl"><span class="nottickedoff">fdmBlackScholesMesher a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
-<span class="lineno">  834 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  835 </span><span class="spaces">  </span><span class="nottickedoff">withGeneralizedBlackScholesProcess a2 $ \a2' -&gt; </span>
-<span class="lineno">  836 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  837 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  838 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromMaybeDouble a5} in </span>
-<span class="lineno">  839 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = fromMaybeDouble a6} in </span>
-<span class="lineno">  840 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = realToFrac a7} in </span>
-<span class="lineno">  841 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
-<span class="lineno">  842 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromMaybeDouble a9} in </span>
-<span class="lineno">  843 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromMaybeDouble a10} in </span>
-<span class="lineno">  844 </span><span class="spaces">  </span><span class="nottickedoff">withDividendArray a11 $ \(a11'1, a11'2) -&gt; </span>
-<span class="lineno">  845 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeFdmQuantoHelper a12 $ \a12' -&gt; </span>
-<span class="lineno">  846 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = realToFrac a13} in </span>
-<span class="lineno">  847 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a14' -&gt; </span>
-<span class="lineno">  848 </span><span class="spaces">  </span><span class="nottickedoff">fdmBlackScholesMesher'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11'1  a11'2 a12' a13' a14' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  849 </span><span class="spaces">  </span><span class="nottickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  850 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a14'&gt;&gt;</span>
-<span class="lineno">  851 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  833 </span><span class="decl"><span class="istickedoff">fdmBlackScholesMesher a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
+<span class="lineno">  834 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  835 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a2 $ \a2' -&gt; </span>
+<span class="lineno">  836 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  837 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  838 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromMaybeDouble a5} in </span>
+<span class="lineno">  839 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromMaybeDouble a6} in </span>
+<span class="lineno">  840 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = realToFrac a7} in </span>
+<span class="lineno">  841 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  842 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromMaybeDouble a9} in </span>
+<span class="lineno">  843 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromMaybeDouble a10} in </span>
+<span class="lineno">  844 </span><span class="spaces">  </span><span class="istickedoff">withDividendArray a11 $ \(a11'1, a11'2) -&gt; </span>
+<span class="lineno">  845 </span><span class="spaces">  </span><span class="istickedoff">withMaybeFdmQuantoHelper a12 $ \a12' -&gt; </span>
+<span class="lineno">  846 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = realToFrac a13} in </span>
+<span class="lineno">  847 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a14' -&gt; </span>
+<span class="lineno">  848 </span><span class="spaces">  </span><span class="istickedoff">fdmBlackScholesMesher'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11'1  a11'2 a12' a13' a14' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  849 </span><span class="spaces">  </span><span class="istickedoff">peekFdm1dMesher res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  850 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a14'&gt;&gt;</span>
+<span class="lineno">  851 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  852 </span>
 <span class="lineno">  853 </span>
 <span class="lineno">  854 </span>
