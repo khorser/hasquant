@@ -343,10 +343,13 @@ extern "C" {
   void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e);
   void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o);
   QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o);
+  void qlFreeQuantoDoubleBarrierOption(QlQuantoDoubleBarrierOption *o);
+  QlOneAssetOption* qlQuantoDoubleBarrierOptionAsOneAssetOption(QlQuantoDoubleBarrierOption *o);
   void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o);
   QlOption* qlQuantoForwardVanillaOptionAsOption(QlQuantoForwardVanillaOption *o);
 
   QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
+  QlInstrument* qlTwoAssetBarrierOption(int barrierType, double barrier, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlOneAssetOption* qlPartialTimeBarrierOption(int barrierType, int barrierRange, double barrier, double rebate, int coverEventDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlDoubleBarrierOption* qlDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
@@ -386,6 +389,10 @@ extern "C" {
   double qlQuantoBarrierOptionQrho(QlQuantoBarrierOption* o, char **e);
   QlQuantoBarrierOption* qlQuantoBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlQuantoBarrierOptionQvega(QlQuantoBarrierOption* o, char **e);
+  double qlQuantoDoubleBarrierOptionQlambda(QlQuantoDoubleBarrierOption* o, char **e);
+  double qlQuantoDoubleBarrierOptionQrho(QlQuantoDoubleBarrierOption* o, char **e);
+  QlQuantoDoubleBarrierOption* qlQuantoDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
+  double qlQuantoDoubleBarrierOptionQvega(QlQuantoDoubleBarrierOption* o, char **e);
   double qlQuantoForwardVanillaOptionQlambda(QlQuantoForwardVanillaOption* o, char **e);
   double qlQuantoForwardVanillaOptionQrho(QlQuantoForwardVanillaOption* o, char **e);
   QlQuantoForwardVanillaOption* qlQuantoForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* x2, QlExercise* x3, char **e);

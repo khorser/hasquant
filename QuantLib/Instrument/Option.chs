@@ -11,6 +11,7 @@ module QuantLib.Instrument.Option
   , MultiAssetOption
   , OneAssetOption
   , QuantoBarrierOption
+  , QuantoDoubleBarrierOption
   , QuantoForwardVanillaOption
   , QuantoVanillaOption
   , SoftBarrierOption
@@ -65,8 +66,10 @@ module QuantLib.Instrument.Option
   , strikeSensitivity
   , thetaPerDay
   , quantoBarrierOption
+  , quantoDoubleBarrierOption
   , quantoForwardVanillaOption
   , quantoVanillaOption
+  , twoAssetBarrierOption
   , vanillaOption
   , basketOption
   , himalayaOption
@@ -105,6 +108,7 @@ import QuantLib.Internal.Common
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption' nocode#}
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption' nocode#}
 {#pointer *QlQuantoBarrierOption as QuantoBarrierOption foreign -> CQuantoBarrierOption' nocode#}
+{#pointer *QlQuantoDoubleBarrierOption as QuantoDoubleBarrierOption foreign -> CQuantoDoubleBarrierOption' nocode#}
 {#pointer *QlQuantoForwardVanillaOption as QuantoForwardVanillaOption foreign -> CQuantoForwardVanillaOption' nocode#}
 {#pointer *QlQuantoVanillaOption as QuantoVanillaOption foreign -> CQuantoVanillaOption' nocode#}
 {#pointer *QlVanillaOption as VanillaOption foreign -> CVanillaOption' nocode#}
@@ -217,6 +221,11 @@ import QuantLib.Internal.Common
   ,`Int' -- ^Q2
   ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MargrabeOption'peekMargrabeOption*#}
 
+-- |Barrier option on two assets: the first asset's value is compared to the strike to determine the payoff, while the second asset's value is monitored against the barrier.
+{#fun qlTwoAssetBarrierOption as twoAssetBarrierOption{`BarrierType'
+  ,`Double' -- ^barrier
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+
 -- |Base construction for an option on multiple assets.
 {#fun qlMultiAssetOption as multiAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 
@@ -237,6 +246,13 @@ import QuantLib.Internal.Common
   ,`Double' -- ^barrier
   ,`Double' -- ^rebate
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoBarrierOption'peekQuantoBarrierOption*#}
+
+-- |Quanto version of a double-barrier option on a single asset, with a lower and an upper barrier.
+{#fun qlQuantoDoubleBarrierOption as quantoDoubleBarrierOption{`DoubleBarrierType'
+  ,`Double' -- ^barrierLo
+  ,`Double' -- ^barrierHi
+  ,`Double' -- ^rebate
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`QuantoDoubleBarrierOption'peekQuantoDoubleBarrierOption*#}
 
 -- |Basket option on a number of assets, combined by the given basket payoff (e.g. min/max/spread/average).
 {#fun qlBasketOption as basketOption{withBasketPayoff*`BasketPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
@@ -356,6 +372,10 @@ instance HasQuanto QuantoBarrierOption where
   qrho = qlQuantoBarrierOptionQrho
   qvega = qlQuantoBarrierOptionQvega
   qlambda = qlQuantoBarrierOptionQlambda
+instance HasQuanto QuantoDoubleBarrierOption where
+  qrho = qlQuantoDoubleBarrierOptionQrho
+  qvega = qlQuantoDoubleBarrierOptionQvega
+  qlambda = qlQuantoDoubleBarrierOptionQlambda
 instance HasQuanto QuantoForwardVanillaOption where
   qrho = qlQuantoForwardVanillaOptionQrho
   qvega = qlQuantoForwardVanillaOptionQvega
@@ -389,6 +409,15 @@ instance HasImpliedVol BarrierOption where
 
 -- |Sensitivity of a QuantoBarrierOption's value to the correlation between the underlying and the exchange rate.
 {#fun qlQuantoBarrierOptionQlambda{withQuantoBarrierOption*`QuantoBarrierOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Sensitivity of a QuantoDoubleBarrierOption's value to the correlation-driven quanto adjustment's foreign rate.
+{#fun qlQuantoDoubleBarrierOptionQrho{withQuantoDoubleBarrierOption*`QuantoDoubleBarrierOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Sensitivity of a QuantoDoubleBarrierOption's value to the exchange-rate volatility.
+{#fun qlQuantoDoubleBarrierOptionQvega{withQuantoDoubleBarrierOption*`QuantoDoubleBarrierOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Sensitivity of a QuantoDoubleBarrierOption's value to the correlation between the underlying and the exchange rate.
+{#fun qlQuantoDoubleBarrierOptionQlambda{withQuantoDoubleBarrierOption*`QuantoDoubleBarrierOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity of a QuantoForwardVanillaOption's value to the correlation-driven quanto adjustment's foreign rate.
 {#fun qlQuantoForwardVanillaOptionQrho{withQuantoForwardVanillaOption*`QuantoForwardVanillaOption',preErrorCheck-`String'errorCheck*-}->`Double'#}

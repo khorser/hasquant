@@ -3050,6 +3050,18 @@ peekQuantoBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withQuantoBarrierOption :: QuantoBarrierOption -> (Ptr CQuantoBarrierOption' -> IO b) -> IO b
 withQuantoBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
+data CQuantoDoubleBarrierOption'
+type CQuantoDoubleBarrierOption = ForeignPtr CQuantoDoubleBarrierOption'
+type QuantoDoubleBarrierOption = GenOneAssetOption CQuantoDoubleBarrierOption
+foreign import ccall unsafe "ql.h &qlFreeQuantoDoubleBarrierOption" qlFreeQuantoDoubleBarrierOption :: FinalizerPtr CQuantoDoubleBarrierOption'
+instance Finalizable CQuantoDoubleBarrierOption' where finalize = qlFreeQuantoDoubleBarrierOption
+foreign import ccall "ql.h qlQuantoDoubleBarrierOptionAsOneAssetOption" qlQuantoDoubleBarrierOptionAsOneAssetOption :: Ptr CQuantoDoubleBarrierOption' -> IO (Ptr COneAssetOption')
+instance Upcastable CQuantoDoubleBarrierOption' where {type Base CQuantoDoubleBarrierOption' = COneAssetOption'; upcast = qlQuantoDoubleBarrierOptionAsOneAssetOption}
+peekQuantoDoubleBarrierOption :: Ptr CQuantoDoubleBarrierOption' -> IO QuantoDoubleBarrierOption
+peekQuantoDoubleBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
+withQuantoDoubleBarrierOption :: QuantoDoubleBarrierOption -> (Ptr CQuantoDoubleBarrierOption' -> IO b) -> IO b
+withQuantoDoubleBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
+
 -- Commodity/EnergyCommodity are abstract-here: Commodity's own constructor is never called
 -- directly upstream (every concrete instrument goes through EnergyCommodity), and
 -- EnergyCommodity::quantity() is pure virtual, so neither binds a constructor here -- both are

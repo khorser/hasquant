@@ -158,6 +158,7 @@ typedef struct QlPiecewiseTimeDependentHestonModel QlPiecewiseTimeDependentHesto
 typedef struct QlPlainVanillaPayoff QlPlainVanillaPayoff;
 typedef struct QlPricingEngine QlPricingEngine;
 typedef struct QlQuantoBarrierOption QlQuantoBarrierOption;
+typedef struct QlQuantoDoubleBarrierOption QlQuantoDoubleBarrierOption;
 typedef struct QlQuantoForwardVanillaOption QlQuantoForwardVanillaOption;
 typedef struct QlQuantoVanillaOption QlQuantoVanillaOption;
 typedef struct QlQuote QlQuote;

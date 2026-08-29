@@ -57,6 +57,8 @@ namespace hasquant {
 #include <ql/instruments/forwardvanillaoption.hpp>
 #include <ql/instruments/quantoforwardvanillaoption.hpp>
 #include <ql/instruments/quantobarrieroption.hpp>
+#include <ql/experimental/barrieroption/quantodoublebarrieroption.hpp>
+#include <ql/instruments/twoassetbarrieroption.hpp>
 #include <ql/instruments/europeanoption.hpp>
 #include <ql/instruments/varianceswap.hpp>
 #include <ql/experimental/varianceoption/varianceoption.hpp>
@@ -816,12 +818,17 @@ void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex*
 
 void qlFreeQuantoBarrierOption(QlQuantoBarrierOption *o) {del(o);}
 QlOneAssetOption* qlQuantoBarrierOptionAsOneAssetOption(QlQuantoBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
+void qlFreeQuantoDoubleBarrierOption(QlQuantoDoubleBarrierOption *o) {del(o);}
+QlOneAssetOption* qlQuantoDoubleBarrierOptionAsOneAssetOption(QlQuantoDoubleBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeQuantoForwardVanillaOption(QlQuantoForwardVanillaOption *o) {del(o);}
 QlOneAssetOption* qlQuantoForwardVanillaOptionAsOneAssetOption(QlQuantoForwardVanillaOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlBarrierOption*>(e, er);}}
+QlInstrument* qlTwoAssetBarrierOption(int barrierType, double barrier, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlInstrument(alloc(new TwoAssetBarrierOption((Barrier::Type)barrierType, barrier, *arg(payoff), (*arg(exercise))))));
+  } catch (std::exception& er) {return handleException<QlInstrument*>(e, er);}}
 double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
     return (*arg(o))->impliedVolatility(price, *arg(process), d, accuracy, maxEvaluations, minVol, maxVol);
@@ -886,6 +893,12 @@ QlQuantoBarrierOption* qlQuantoBarrierOption(int barrierType, double barrier, do
   try {return ret(new QlQuantoBarrierOption(alloc(new QuantoBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlQuantoBarrierOption*>(e, er);}}
 double qlQuantoBarrierOptionQvega(QlQuantoBarrierOption* o, char **e) {try {return (*arg(o))->qvega();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantoDoubleBarrierOptionQlambda(QlQuantoDoubleBarrierOption* o, char **e) {try {return (*arg(o))->qlambda();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantoDoubleBarrierOptionQrho(QlQuantoDoubleBarrierOption* o, char **e) {try {return (*arg(o))->qrho();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlQuantoDoubleBarrierOption* qlQuantoDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlQuantoDoubleBarrierOption(alloc(new QuantoDoubleBarrierOption((DoubleBarrier::Type)barrierType, barrierLo, barrierHi, rebate, *arg(payoff), (*arg(exercise))))));
+  } catch (std::exception& er) {return handleException<QlQuantoDoubleBarrierOption*>(e, er);}}
+double qlQuantoDoubleBarrierOptionQvega(QlQuantoDoubleBarrierOption* o, char **e) {try {return (*arg(o))->qvega();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlQuantoForwardVanillaOptionQlambda(QlQuantoForwardVanillaOption* o, char **e) {try {return (*arg(o))->qlambda();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlQuantoForwardVanillaOptionQrho(QlQuantoForwardVanillaOption* o, char **e) {try {return (*arg(o))->qrho();} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlQuantoForwardVanillaOption* qlQuantoForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* x2, QlExercise* x3, char **e) {

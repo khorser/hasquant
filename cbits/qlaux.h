@@ -272,6 +272,7 @@ namespace QuantLib {
   class PlainVanillaPayoff;
   class PositiveConstraint;
   class QuantoBarrierOption;
+  class QuantoDoubleBarrierOption;
   class QuantoForwardVanillaOption;
   class QuantoTermStructure;
   class QuantoVanillaOption;
@@ -583,6 +584,7 @@ using QuantLib::PiecewiseTimeDependentHestonModel;
 using QuantLib::PlainVanillaPayoff;
 using QuantLib::PositiveConstraint;
 using QuantLib::QuantoBarrierOption;
+using QuantLib::QuantoDoubleBarrierOption;
 using QuantLib::QuantoForwardVanillaOption;
 using QuantLib::QuantoTermStructure;
 using QuantLib::QuantoVanillaOption;
@@ -854,6 +856,7 @@ using QlPercentageStrikePayoff = shared_ptr<PercentageStrikePayoff>;
 using QlPiecewiseTimeDependentHestonModel = shared_ptr<PiecewiseTimeDependentHestonModel>;
 using QlPlainVanillaPayoff = shared_ptr<PlainVanillaPayoff>;
 using QlQuantoBarrierOption = shared_ptr<QuantoBarrierOption>;
+using QlQuantoDoubleBarrierOption = shared_ptr<QuantoDoubleBarrierOption>;
 using QlQuantoForwardVanillaOption = shared_ptr<QuantoForwardVanillaOption>;
 using QlQuantoVanillaOption = shared_ptr<QuantoVanillaOption>;
 using QlSabrInterpolatedSmileSection = shared_ptr<SabrInterpolatedSmileSection>;
@@ -1260,6 +1263,7 @@ QL_TRACE_NAME(QlPiecewiseTimeDependentHestonModel)
 QL_TRACE_NAME(QlPlainVanillaPayoff)
 QL_TRACE_NAME(QlPricingEngine)
 QL_TRACE_NAME(QlQuantoBarrierOption)
+QL_TRACE_NAME(QlQuantoDoubleBarrierOption)
 QL_TRACE_NAME(QlQuantoForwardVanillaOption)
 QL_TRACE_NAME(QlQuantoVanillaOption)
 QL_TRACE_NAME(QlQuote)
