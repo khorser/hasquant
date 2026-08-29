@@ -14,10 +14,10 @@
 -- 'QuantLib.Process' now also binds generic @drift@\/@diffusion@\/@expectation@\/@initialValues@
 -- on 'QuantLib.Process.StochasticProcess', and HullWhiteForwardProcess binds the required
 -- post-construction @setForwardMeasureTime@ call -- see this module's "G2Process"/
--- "G2ForwardProcess" and "HybridHestonHullWhiteProcess" describe blocks below. 7 of upstream's
--- 8 g2process.cpp cases are now ported; 'testG2ProcessPhiMatchesG2Model' is the sole holdout
--- -- it needs 'G2'\'s own @dynamics()@\/@ShortRateDynamics@, a genuinely new nested type, not
--- bound here. Of test-suite/hybridhestonhullwhiteprocess.cpp's 10 cases,
+-- "G2ForwardProcess" and "HybridHestonHullWhiteProcess" describe blocks below. 'QuantLib.Model'
+-- also binds 'G2'\'s @dynamics()@ (as 'g2Dynamics', returning the new 'ShortRateDynamics' type)
+-- and its @shortRate@ method, closing the last holdout -- all 8 of upstream's g2process.cpp
+-- cases are now ported. Of test-suite/hybridhestonhullwhiteprocess.cpp's 10 cases,
 -- 'testAnalyticHestonHullWhitePricing' is ported (an MC-vs-analytic cross-check with the
 -- short-rate leg decorrelated); the rest need bindings this module doesn't have
 -- ('numeraire', 'SobolBrownianBridgeRsg', 'HullWhite.discountBond'\/'discountBondOption', a
@@ -37,7 +37,7 @@ import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..))
 import QuantLib.Process(g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, factors, drift, diffusion, expectation, initialValues, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..))
-import QuantLib.Model(hullWhite)
+import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate)
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine)
 import QuantLib.TermStructure.Yield(interpolatedZeroCurve)
 import QuantLib.Method(pathGenerator, next, asset)
@@ -299,6 +299,27 @@ spec = do
         iv <- initialValues process
         expected0 <- referencePhi curve 0.0 a sigma b eta rho
         sum iv `shouldSatisfy` closePrec expected0 1.0e-12
+
+    -- ported from test-suite/g2process.cpp::testG2ProcessPhiMatchesG2Model: G2Process::phi
+    -- must match G2's own short-rate dynamics fitting parameter -- dyn->shortRate(t, 0, 0)
+    -- collapses to fitting_(t), i.e. phi(t), since shortRate(t, x, y) = fitting_(t) + x + y.
+    it "phi matches the G2 model's own short-rate dynamics at x=y=0" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        let a = 0.12; sigma = 0.011; b = 0.17; eta = 0.009; rho = -0.3
+        rateQ <- simpleQuote 0.025
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2Process a sigma b eta rho (Just curve)
+        model <- g2 curve a sigma b eta rho
+        dyn <- g2Dynamics model
+
+        mapM_ (\t -> do
+            fromModel <- shortRate dyn t 0.0 0.0
+            fromProcess <- g2Phi process t
+            fromProcess `shouldSatisfy` closePrec fromModel 1.0e-12)
+          [0.1, 0.5, 2.0, 7.5, 20.0]
 
     -- ported from test-suite/g2process.cpp::testG2ProcessPhiRequiresTermStructure: without a
     -- term structure, phi throws but shortRate still works (it no longer touches the curve),
