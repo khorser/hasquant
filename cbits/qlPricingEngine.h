@@ -8,6 +8,7 @@ extern "C" {
   QlPricingEngine* qlDiscountingConstNotionalCrossCurrencySwapEngine(Currency* domesticCcy, QlYieldTermStructure* domesticCcyDiscountCurve, Currency* foreignCcy, QlYieldTermStructure* foreignCcyDiscountCurve, QlQuote* spotFX, int includeSettlementDateFlows, int settlementDate, int npvDate, int spotFXSettleDate, char **e);
   QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, QlQuote* blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e);
   QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* qlAnalyticTwoAssetBarrierEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* rho, char **e);
   QlPricingEngine* qlAnalyticSoftBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticSimpleChooserEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticTwoAssetCorrelationEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* correlation, char **e);
@@ -42,6 +43,11 @@ extern "C" {
   QlPricingEngine* qlForwardBaroneAdesiWhaleyEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlForwardBjerksundStenslandEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlForwardFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* qlQuantoEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e);
+  QlPricingEngine* qlQuantoForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e);
+  QlPricingEngine* qlQuantoForwardPerformanceEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e);
+  QlPricingEngine* qlQuantoBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e);
+  QlPricingEngine* qlQuantoDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e);
   QlPricingEngine* qlMCForwardEuropeanBSEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* qlAnalyticHestonForwardEuropeanEngine(QlHestonProcess* process, unsigned integrationOrder, char **e);
   QlPricingEngine* qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e);
@@ -194,6 +200,9 @@ extern "C" {
   QlPricingEngine* qlMCPerformanceEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
   QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e);
+  QlPricingEngine* qlFdBlackScholesVanillaEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e);
+  QlPricingEngine* qlFdBlackScholesVanillaEngine2(QlGeneralizedBlackScholesProcess* process, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e);
+  QlPricingEngine* qlFdBlackScholesVanillaEngine3(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e);
   QlPricingEngine* qlFdHestonVanillaEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e);
   QlPricingEngine* qlFdHestonVanillaEngine1(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e);
   QlPricingEngine* qlFdHestonVanillaEngine2(QlHestonModel* model, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e);

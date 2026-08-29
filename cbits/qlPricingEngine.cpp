@@ -18,7 +18,12 @@
 #include <ql/experimental/forward/analytichestonforwardeuropeanengine.hpp>
 #include <ql/experimental/barrieroption/vannavolgadoublebarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticbarrierengine.hpp>
+#include <ql/pricingengines/barrier/analytictwoassetbarrierengine.hpp>
 #include <ql/pricingengines/barrier/analyticsoftbarrierengine.hpp>
+#include <ql/pricingengines/quanto/quantoengine.hpp>
+#include <ql/instruments/quantovanillaoption.hpp>
+#include <ql/instruments/forwardvanillaoption.hpp>
+#include <ql/pricingengines/forward/forwardperformanceengine.hpp>
 #include <ql/pricingengines/exotic/analyticsimplechooserengine.hpp>
 #include <ql/pricingengines/exotic/analytictwoassetcorrelationengine.hpp>
 #include <ql/pricingengines/exotic/analyticwriterextensibleoptionengine.hpp>
@@ -314,6 +319,9 @@ QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve
 QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticTwoAssetBarrierEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* rho, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticTwoAssetBarrierEngine(*arg(process1), *arg(process2), *arg(rho)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticSoftBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticSoftBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -406,6 +414,21 @@ QlPricingEngine* qlForwardBjerksundStenslandEngine(QlGeneralizedBlackScholesProc
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlForwardFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<FdBlackScholesVanillaEngine>(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQuantoEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new QuantoEngine<VanillaOption, AnalyticEuropeanEngine>(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQuantoForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new QuantoEngine<ForwardVanillaOption, ForwardVanillaEngine<AnalyticEuropeanEngine> >(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQuantoForwardPerformanceEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new QuantoEngine<ForwardVanillaOption, ForwardPerformanceVanillaEngine<AnalyticEuropeanEngine> >(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQuantoBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new QuantoEngine<BarrierOption, AnalyticBarrierEngine>(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQuantoDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new QuantoEngine<DoubleBarrierOption, AnalyticDoubleBarrierEngine>(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticHestonForwardEuropeanEngine(QlHestonProcess* process, unsigned integrationOrder, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonForwardEuropeanEngine(*arg(process), integrationOrder))));
@@ -747,6 +770,15 @@ QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProc
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlFdBlackScholesVanillaEngineAux(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, cashDividendModel))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesVanillaEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesVanillaEngine(*arg(process), qlVector(dividends, dividendsLen), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesVanillaEngine2(QlGeneralizedBlackScholesProcess* process, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesVanillaEngine(*arg(process), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesVanillaEngine3(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesVanillaEngine(*arg(process), qlVector(dividends, dividendsLen), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlFdHestonVanillaEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
   try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));

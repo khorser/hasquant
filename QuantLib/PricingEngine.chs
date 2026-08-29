@@ -24,6 +24,7 @@ module QuantLib.PricingEngine
   , counterpartyAdjSwapEngine
 
   , analyticBarrierEngine
+  , analyticTwoAssetBarrierEngine
   , analyticSoftBarrierEngine
   , analyticPartialTimeBarrierOptionEngine
   , analyticBinaryBarrierEngine
@@ -60,6 +61,11 @@ module QuantLib.PricingEngine
   , forwardFdBlackScholesVanillaEngine
   , mcForwardEuropeanBSEngine
   , analyticHestonForwardEuropeanEngine
+  , quantoEuropeanEngine
+  , quantoForwardEuropeanEngine
+  , quantoForwardPerformanceEuropeanEngine
+  , quantoBarrierEngine
+  , quantoDoubleBarrierEngine
   , blackCapFloorEngine'
   , blackCapFloorEngine
   , blackSwaptionEngine
@@ -137,6 +143,9 @@ module QuantLib.PricingEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
   , fdBlackScholesVanillaEngine
+  , fdBlackScholesVanillaEngine'
+  , fdBlackScholesVanillaEngineQuanto
+  , fdBlackScholesVanillaEngineQuanto'
   , fdmQuantoHelper
   , fdHestonVanillaEngine
   , fdHestonVanillaEngine'
@@ -366,6 +375,12 @@ import QuantLib.Internal.Common
 -- |analytic pricing engine for barrier options
 {#fun qlAnalyticBarrierEngine as analyticBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |analytic (Heynen and Kat) pricing engine for a barrier option on two assets, where the first asset's value is compared to the strike and the second's is monitored against the barrier
+{#fun qlAnalyticTwoAssetBarrierEngine as analyticTwoAssetBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process1
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process2
+  ,withQuote*`GenQuote q' -- ^rho
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |analytic pricing engine for soft barrier options, knocked in/out proportionally over a barrier range
 {#fun qlAnalyticSoftBarrierEngine as analyticSoftBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -501,6 +516,41 @@ import QuantLib.Internal.Common
 
 -- |analytic pricing engine for forward-starting European options under a Heston process
 {#fun qlAnalyticHestonForwardEuropeanEngine as analyticHestonForwardEuropeanEngine{withHestonProcess*`GenHestonProcess hp',fromIntegral`Word' -- ^integrationOrder
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |quanto-adjusts a European vanilla option's price and greeks for a payoff paid in a currency other than the underlying's; binds the @VanillaOption@\/@AnalyticEuropeanEngine@ instantiation of upstream's @QuantoEngine\<Instr,Engine\>@ template
+{#fun qlQuantoEuropeanEngine as quantoEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^foreignRiskFreeRate
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^exchangeRateVolatility
+  ,withQuote*`GenQuote q' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |quanto-adjusts a forward-starting vanilla option; binds the @ForwardVanillaOption@\/@ForwardVanillaEngine\<AnalyticEuropeanEngine\>@ instantiation of @QuantoEngine\<Instr,Engine\>@
+{#fun qlQuantoForwardEuropeanEngine as quantoForwardEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^foreignRiskFreeRate
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^exchangeRateVolatility
+  ,withQuote*`GenQuote q' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |quanto-adjusts a forward-starting performance (strike-resetting, percentage-payoff) vanilla option; binds the @ForwardVanillaOption@\/@ForwardPerformanceVanillaEngine\<AnalyticEuropeanEngine\>@ instantiation of @QuantoEngine\<Instr,Engine\>@
+{#fun qlQuantoForwardPerformanceEuropeanEngine as quantoForwardPerformanceEuropeanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^foreignRiskFreeRate
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^exchangeRateVolatility
+  ,withQuote*`GenQuote q' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |quanto-adjusts a single-barrier option; binds the @BarrierOption@\/@AnalyticBarrierEngine@ instantiation of @QuantoEngine\<Instr,Engine\>@
+{#fun qlQuantoBarrierEngine as quantoBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^foreignRiskFreeRate
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^exchangeRateVolatility
+  ,withQuote*`GenQuote q' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |quanto-adjusts a double-barrier option; binds the @DoubleBarrierOption@\/@AnalyticDoubleBarrierEngine@ instantiation of @QuantoEngine\<Instr,Engine\>@
+{#fun qlQuantoDoubleBarrierEngine as quantoDoubleBarrierEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^foreignRiskFreeRate
+  ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^exchangeRateVolatility
+  ,withQuote*`GenQuote q' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Black-formula cap\/floor engine, taking an optionlet volatility structure
@@ -1047,6 +1097,39 @@ import QuantLib.Internal.Common
 
 -- |finite-differences Black-Scholes pricing engine for vanilla options
 {#fun qlFdBlackScholesVanillaEngine as fdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
+  ,fromIntegral`Word' -- ^gridPoints
+  ,fromIntegral`Word' -- ^timeDependent
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,`Bool' -- ^localVol
+  ,`Double' -- ^illegalLocalVolOverwrite
+  ,`CashDividendModel' -- ^cashDividendModel
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |finite-differences Black-Scholes pricing engine for vanilla options, with discrete dividends
+{#fun qlFdBlackScholesVanillaEngine1 as fdBlackScholesVanillaEngine'{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&
+  ,fromIntegral`Word' -- ^timeSteps
+  ,fromIntegral`Word' -- ^gridPoints
+  ,fromIntegral`Word' -- ^timeDependent
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,`Bool' -- ^localVol
+  ,`Double' -- ^illegalLocalVolOverwrite
+  ,`CashDividendModel' -- ^cashDividendModel
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |finite-differences Black-Scholes pricing engine for vanilla options, with quanto adjustment
+{#fun qlFdBlackScholesVanillaEngine2 as fdBlackScholesVanillaEngineQuanto{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+  ,fromIntegral`Word' -- ^timeSteps
+  ,fromIntegral`Word' -- ^gridPoints
+  ,fromIntegral`Word' -- ^timeDependent
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,`Bool' -- ^localVol
+  ,`Double' -- ^illegalLocalVolOverwrite
+  ,`CashDividendModel' -- ^cashDividendModel
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |finite-differences Black-Scholes pricing engine for vanilla options, with discrete dividends and quanto adjustment
+{#fun qlFdBlackScholesVanillaEngine3 as fdBlackScholesVanillaEngineQuanto'{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+  ,fromIntegral`Word' -- ^timeSteps
   ,fromIntegral`Word' -- ^gridPoints
   ,fromIntegral`Word' -- ^timeDependent
   ,withFdmSchemeDesc*`FdmScheme'
