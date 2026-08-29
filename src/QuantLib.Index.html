@@ -48,7 +48,7 @@
 </span><span id="line-43"></span><span>
 </span><span id="line-44"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.html"><span class="hs-identifier">QuantLib.Internal</span></a></span><span>
 </span><span id="line-45"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.Common.html"><span class="hs-identifier">QuantLib.Internal.Common</span></a></span><span>
-</span><span id="line-46"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html"><span class="hs-identifier">QuantLib.Internal.Type</span></a></span><span id="local-6989586621680229702"></span><span>
+</span><span id="line-46"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html"><span class="hs-identifier">QuantLib.Internal.Type</span></a></span><span id="local-6989586621680230620"></span><span>
 </span><span id="line-47"></span><span>
 </span><span id="line-48"></span><span>
 </span><span id="line-49"></span><span>
@@ -68,56 +68,56 @@
 </span><span id="line-53"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">Bool</span><span class="hs-special">)</span><span> </span><span class="hs-comment">-- ^forceOverwrite</span><span>
 </span><span id="line-54"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier">IO</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-55"></span><span id="addFixing"><span class="annot"><span class="annottext">addFixing :: forall idx. GenIndex idx -&gt; Day -&gt; Double -&gt; Bool -&gt; IO ()
-</span><a href="QuantLib.Index.html#addFixing"><span class="hs-identifier hs-var hs-var">addFixing</span></a></span></span><span> </span><span id="local-6989586621680229875"><span class="annot"><span class="annottext">GenIndex idx
-</span><a href="#local-6989586621680229875"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680229876"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680229876"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680229877"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680229877"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680229878"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680229878"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Index.html#addFixing"><span class="hs-identifier hs-var hs-var">addFixing</span></a></span></span><span> </span><span id="local-6989586621680230793"><span class="annot"><span class="annottext">GenIndex idx
+</span><a href="#local-6989586621680230793"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680230794"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680230794"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680230795"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680230795"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680230796"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680230796"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-56"></span><span>  </span><span class="annot"><span class="annottext">GenIndex idx -&gt; (Ptr CIndex' -&gt; IO ()) -&gt; IO ()
 forall idx b. GenIndex idx -&gt; (Ptr CIndex' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withIndex"><span class="hs-identifier hs-var">withIndex</span></a></span><span> </span><span class="annot"><span class="annottext">GenIndex idx
-</span><a href="#local-6989586621680229875"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CIndex' -&gt; IO ()) -&gt; IO ())
+</span><a href="#local-6989586621680230793"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CIndex' -&gt; IO ()) -&gt; IO ())
 -&gt; (Ptr CIndex' -&gt; IO ()) -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680229880"><span class="annot"><span class="annottext">Ptr CIndex'
-</span><a href="#local-6989586621680229880"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680229881"></span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680230798"><span class="annot"><span class="annottext">Ptr CIndex'
+</span><a href="#local-6989586621680230798"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680230799"></span><span> </span><span>
 </span><span id="line-57"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; (CInt -&gt; IO ()) -&gt; IO ()
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680229876"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ()) -&gt; IO ()) -&gt; (CInt -&gt; IO ()) -&gt; IO ()
+</span><a href="#local-6989586621680230794"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ()) -&gt; IO ()) -&gt; (CInt -&gt; IO ()) -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680229884"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229884"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680229891"><span class="annot"><span class="annottext">a3' :: CDouble
-</span><a href="#local-6989586621680229891"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680230802"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230802"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680230809"><span class="annot"><span class="annottext">a3' :: CDouble
+</span><a href="#local-6989586621680230809"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680229877"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680229894"><span class="annot"><span class="annottext">a4' :: CInt
-</span><a href="#local-6989586621680229894"><span class="hs-identifier hs-var hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><a href="#local-6989586621680230795"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680230812"><span class="annot"><span class="annottext">a4' :: CInt
+</span><a href="#local-6989586621680230812"><span class="hs-identifier hs-var hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680229878"><span class="hs-identifier hs-var">a4</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680229896"></span><span> </span><span>
+</span><a href="#local-6989586621680230796"><span class="hs-identifier hs-var">a4</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680230814"></span><span> </span><span>
 </span><span id="line-60"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO ()) -&gt; IO ()
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO ()) -&gt; IO ())
 -&gt; (Ptr (Ptr CChar) -&gt; IO ()) -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680229898"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680229898"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680230816"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680230816"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-61"></span><span>  </span><span class="annot"><span class="annottext">Ptr CIndex' -&gt; CInt -&gt; CDouble -&gt; CInt -&gt; Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Index.html#addFixing%27_"><span class="hs-identifier hs-var">addFixing'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CIndex'
-</span><a href="#local-6989586621680229880"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229884"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680229891"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229894"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680229898"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621680230798"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230802"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680230809"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230812"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680230816"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
 </span><span id="line-62"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680229898"><span class="hs-identifier hs-var">a5'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621680230816"><span class="hs-identifier hs-var">a5'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -234,43 +234,43 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-91"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-special">[</span><span class="annot"><a href="QuantLib.Internal.Type.html#Index"><span class="hs-identifier hs-type">Index</span></a></span><span class="hs-special">]</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#HistoricalIndexAnalysis"><span class="hs-identifier hs-type">HistoricalIndexAnalysis</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-92"></span><span id="historicalIndexAnalysis"><span class="annot"><span class="annottext">historicalIndexAnalysis :: Day
 -&gt; Day -&gt; (Int, TimeUnit) -&gt; [Index] -&gt; IO HistoricalIndexAnalysis
-</span><a href="QuantLib.Index.html#historicalIndexAnalysis"><span class="hs-identifier hs-var hs-var">historicalIndexAnalysis</span></a></span></span><span> </span><span id="local-6989586621680229917"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680229917"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680229918"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680229918"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680229919"><span class="annot"><span class="annottext">(Int, TimeUnit)
-</span><a href="#local-6989586621680229919"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680229920"><span class="annot"><span class="annottext">[Index]
-</span><a href="#local-6989586621680229920"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Index.html#historicalIndexAnalysis"><span class="hs-identifier hs-var hs-var">historicalIndexAnalysis</span></a></span></span><span> </span><span id="local-6989586621680230835"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680230835"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680230836"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680230836"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680230837"><span class="annot"><span class="annottext">(Int, TimeUnit)
+</span><a href="#local-6989586621680230837"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680230838"><span class="annot"><span class="annottext">[Index]
+</span><a href="#local-6989586621680230838"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-93"></span><span>  </span><span class="annot"><span class="annottext">Day
 -&gt; (CInt -&gt; IO HistoricalIndexAnalysis)
 -&gt; IO HistoricalIndexAnalysis
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680229917"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO HistoricalIndexAnalysis)
+</span><a href="#local-6989586621680230835"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO HistoricalIndexAnalysis)
  -&gt; IO HistoricalIndexAnalysis)
 -&gt; (CInt -&gt; IO HistoricalIndexAnalysis)
 -&gt; IO HistoricalIndexAnalysis
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680229921"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229921"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680230839"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230839"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-94"></span><span>  </span><span class="annot"><span class="annottext">Day
 -&gt; (CInt -&gt; IO HistoricalIndexAnalysis)
 -&gt; IO HistoricalIndexAnalysis
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680229918"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO HistoricalIndexAnalysis)
+</span><a href="#local-6989586621680230836"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO HistoricalIndexAnalysis)
  -&gt; IO HistoricalIndexAnalysis)
 -&gt; (CInt -&gt; IO HistoricalIndexAnalysis)
 -&gt; IO HistoricalIndexAnalysis
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680229922"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229922"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-95"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-special">(</span><span id="local-6989586621680229937"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229937"><span class="hs-identifier hs-var">a3'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680229938"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680229938"><span class="hs-identifier hs-var">a3'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Int, TimeUnit) -&gt; (CInt, CInt)
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680230840"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230840"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-95"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-special">(</span><span id="local-6989586621680230855"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230855"><span class="hs-identifier hs-var">a3'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680230856"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680230856"><span class="hs-identifier hs-var">a3'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Int, TimeUnit) -&gt; (CInt, CInt)
 forall a b c.
 (Enum a, Integral b, Integral c) =&gt;
 (b, a) -&gt; (CInt, c)
 </span><a href="QuantLib.Internal.html#fromEnumQuantity"><span class="hs-identifier hs-var">fromEnumQuantity</span></a></span><span> </span><span class="annot"><span class="annottext">(Int, TimeUnit)
-</span><a href="#local-6989586621680229919"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680230837"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-96"></span><span>  </span><span class="hs-identifier">withIndexArray</span><span> </span><span class="hs-identifier">a4</span><span> </span><span class="hs-operator">$</span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span class="hs-identifier">a4'1</span><span class="hs-special">,</span><span> </span><span class="hs-identifier">a4'2</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-97"></span><span>  </span><span class="hs-identifier">preErrorCheck</span><span> </span><span class="hs-operator">$</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">a5'</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-98"></span><span>  </span><span class="hs-identifier">historicalIndexAnalysis'_</span><span> </span><span class="hs-identifier">a1'</span><span> </span><span class="hs-identifier">a2'</span><span> </span><span class="hs-identifier">a3'1</span><span>  </span><span class="hs-identifier">a3'2</span><span> </span><span class="hs-identifier">a4'1</span><span>  </span><span class="hs-identifier">a4'2</span><span> </span><span class="hs-identifier">a5'</span><span> </span><span class="hs-operator">&gt;&gt;=</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">res</span><span> </span><span class="hs-glyph">-&gt;</span><span>
