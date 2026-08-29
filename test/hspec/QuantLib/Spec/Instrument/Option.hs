@@ -27,9 +27,11 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process
-import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..), StatisticsTrait(..))
-import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
+import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
+import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..), PositionType(..))
 import QuantLib.Instrument.Option hiding(theta)
+import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
+import QuantLib.TermStructure.Volatility(blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
 import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -359,3 +361,57 @@ spec = do
         setPricingEngine opt eng
         v <- npv opt
         v `shouldSatisfy` closePrec 4.4064 1e-4
+
+  describe "VarianceOption (IntegralHestonVarianceOptionEngine)" $
+    -- cached references from QuantLib test-suite/varianceoption.cpp::testIntegralHeston. The
+    -- Heston process's dividendYield is 'Nothing' (an empty term-structure handle), exactly
+    -- matching upstream's default-constructed Handle<YieldTermStructure> -- this engine rejects
+    -- a process with a non-empty dividend handle, per hestonProcess's own haddock.
+    mapM_ (\(v0, strike, ty, t, expected) ->
+      it ("reproduces the cached NPV at v0=" ++ show v0 ++ " strike=" ++ show strike) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          dc <- dayCounter (Actual360 False)
+          s0 <- simpleQuote 1.0
+          rTS <- simpleQuote 0.0 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
+          process <- hestonProcess rTS Nothing s0 v0 2.0 0.01 0.1 (-0.5) QuadraticExponentialMartingale
+          eng <- integralHestonVarianceOptionEngine process
+          opt <- varianceOption (Type (Striked (PlainVanilla (PlainVanillaPayoff ty strike))))
+                                 1.0 evalDate (dateOffset evalDate t)
+          setPricingEngine opt eng
+          nv <- npv opt
+          nv `shouldSatisfy` closePrec expected 1.0e-6)
+      [ (2.0 :: Double, 0.05 :: Double, Call, 1.5 :: Double, 0.9104619 :: Double)
+      , (1.5, 0.7, Put, 1.0, 0.0466796)
+      ]
+
+  describe "VarianceSwap (ReplicatingVarianceSwapEngine)" $
+    -- cached reference from QuantLib test-suite/varianceswaps.cpp::testReplicatingVarianceSwap
+    -- (Derman, Kamal & Zou 1999). The replicating strip's 11 put strikes (50..100) and 8 call
+    -- strikes (100..135) come straight from upstream's own two data tables.
+    it "reproduces the Derman/Kamal/Zou replicating-cost variance" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        spotQ <- simpleQuote 100.0
+        qTS <- simpleQuote 0.0 >>= \qQ -> flatForward evalDate qQ dc Continuous Annual
+        rTS <- simpleQuote 0.05 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
+        let exDate = addDays (round (0.246575 * 365 :: Double)) evalDate
+            putStrikes  = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 :: Double]
+            putVols     = [0.30, 0.29, 0.28, 0.27, 0.26, 0.25, 0.24, 0.23, 0.22, 0.21, 0.20 :: Double]
+            callStrikes = [100, 105, 110, 115, 120, 125, 130, 135 :: Double]
+            callVols    = [0.20, 0.19, 0.18, 0.17, 0.16, 0.15, 0.14, 0.13 :: Double]
+            strikes = putStrikes ++ drop 1 callStrikes
+            vols = putVols ++ drop 1 callVols
+        cal <- calendar Null
+        volTS <- blackVarianceSurface evalDate cal [exDate] strikes (Matrix (fromIntegral (length strikes)) 1 vols)
+                                       dc BlackVarianceSurfaceConstantExtrapolation
+                                       BlackVarianceSurfaceConstantExtrapolation Bilinear
+        process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+        eng <- replicatingVarianceSwapEngine process 5.0 callStrikes putStrikes
+        swp <- varianceSwap Long 0.04 50000 evalDate exDate
+        setPricingEngine swp eng
+        v <- variance swp
+        v `shouldSatisfy` closePrec 0.04189 1.0e-4

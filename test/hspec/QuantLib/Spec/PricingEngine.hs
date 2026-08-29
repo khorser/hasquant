@@ -23,6 +23,7 @@ import QuantLib.Instrument
 import QuantLib.Instrument.Option hiding(deltaForward, vega, rho, dividendRho, strikeSensitivity, itmCashProbability)
 import QuantLib.Instrument.Swap(varianceSwap)
 import QuantLib.Process hiding(blackScholesTheta)
+import QuantLib.Model(hestonModel)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..))
 import QuantLib.PricingEngine
 
@@ -522,6 +523,49 @@ spec = do
           npv dblOpt'
         allFinite mcDblNpvs `shouldBe` True
 
+        -- fdHestonBarrierEngine/fdHestonDoubleBarrierEngine are otherwise untested: no upstream
+        -- golden fixture was found reachable through hasquant's current Heston-model bindings,
+        -- so (matching the "constructs and prices finitely" precedent just above) this just
+        -- confirms both actually price rather than crash/NaN.
+        hp <- hestonProcess rTS (Just qTS) spotQ 0.04 2.0 0.04 0.5 (-0.5) QuadraticExponentialMartingale
+        hm <- hestonModel hp
+        fdHBarOpt <- barrierOption UpOut 130 0 payoff exercise >>= asOneAssetOption
+        fdHestonBarrierEngine hm 20 100 20 0 Douglas Nothing 1.0 >>= setPricingEngine fdHBarOpt
+        fdHBarNpv <- npv fdHBarOpt
+        fdHBarNpv `shouldSatisfy` (\v -> not (isNaN v) && not (isInfinite v))
+
+        fdHDblOpt <- doubleBarrierOption KnockOut 70 130 0 payoff exercise >>= asOneAssetOption
+        fdHestonDoubleBarrierEngine hm 20 100 20 0 Douglas Nothing 1.0 >>= setPricingEngine fdHDblOpt
+        fdHDblNpv <- npv fdHDblOpt
+        fdHDblNpv `shouldSatisfy` (\v -> not (isNaN v) && not (isInfinite v))
+
+    it "mcBarrierEngine reproduces the cached DownIn call value from barrieroption.cpp" $
+      -- cached reference from testHaugValues's Barrier::DownIn row (barrier=90, vol=0.10,
+      -- expected 0.07187): analytic (AnalyticBarrierEngine) and MC (MakeMCBarrierEngine) are
+      -- both checked against the same literal there, so the MC engine is checked here too,
+      -- at upstream's own relative tolerance.
+      Settings.keepingSettings' $ do
+        let today' = 1 `january` 2020
+            expected = 0.07187 :: Double
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        spotQ <- simpleQuote 100.0
+        qQ <- simpleQuote 0.02
+        rQ <- simpleQuote 0.05
+        volQ <- simpleQuote 0.10
+        qTS <- flatForward today' qQ dc Continuous Annual
+        rTS <- flatForward today' rQ dc Continuous Annual
+        tgt <- calendar TARGET
+        volTS <- blackConstantVol today' tgt volQ dc
+        proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+        let payoff = PlainVanilla (PlainVanillaPayoff Call 100.0)
+            exercise = European (EuropeanExercise (addDays 360 today'))
+        opt <- barrierOption DownIn 90.0 0 payoff exercise >>= asOneAssetOption
+        eng <- mcBarrierEngine LowDiscrepancy Statistics proc Nothing (Just 1) True False (Just 131071) Nothing (Just 1048575) False 5
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec expected (2.0e-2 * expected)
+
   -- Ported from test/smoke/CheckDigitalAmericanKO.hs. Golden values are lifted verbatim from
   -- digitaloption.cpp's testCashAtExpiryOrNothingAmericanValues and
   -- testAssetAtExpiryOrNothingAmericanValues, on a payoff-at-expiry American exercise --
@@ -571,3 +615,32 @@ spec = do
       forM_ assetOrNothingCases $ \c@(_,_,_,_,_,_,_,_,expected) -> do
         v <- priceCase (\ty s -> AssetOrNothing ty s) c
         v `shouldSatisfy` closePrec expected 1e-4
+
+    -- cached references from digitaloption.cpp::testMCCashAtHit: cash-(at-hit)-or-nothing
+    -- American digital, priced via MakeMCDigitalEngine (default payoffAtExpiry=False, i.e. the
+    -- cash is paid at the moment the strike is hit, not at exercise).
+    it "mcDigitalEngine reproduces digitaloption.cpp's cash-at-hit values" $
+      Settings.keepingSettings' $ do
+        let evalDate' = 1 `january` 2020
+            cases = [ (Put, 100.0, 105.0, 0.20, 0.10, 0.5 :: Double, 0.20, 12.2715 :: Double)
+                    , (Call, 100.0, 95.0, 0.20, 0.10, 0.5, 0.20, 8.9109)
+                    ]
+        Settings.setEvaluationDate (Just evalDate')
+        dc <- dayCounter (Actual360 False)
+        forM_ cases $ \(ty, strike, spot, q, r, t, vol, expected) -> do
+          spotQ <- simpleQuote spot
+          qQ <- simpleQuote q
+          rQ <- simpleQuote r
+          volQ <- simpleQuote vol
+          qTS <- flatForward evalDate' qQ dc Continuous Annual
+          rTS <- flatForward evalDate' rQ dc Continuous Annual
+          tgt <- calendar TARGET
+          volTS <- blackConstantVol evalDate' tgt volQ dc
+          proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+          let exDate = addDays (round (t * 360 :: Double)) evalDate'
+          opt <- europeanOption (CashOrNothing ty strike 15.0) (American (Just evalDate') exDate False)
+            >>= asOneAssetOption >>= asOption >>= asInstrument
+          eng <- mcDigitalEngine LowDiscrepancy Statistics proc Nothing (Just 90) True False (Just 16383) Nothing (Just 1000000) 1
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec expected 1.0e-2
