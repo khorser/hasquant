@@ -10,12 +10,18 @@
 -- self-consistency check (not upstream's cached NPV, see that describe block's own comment) built
 -- around test-suite/libormarketmodel.cpp::testCapletPricing's fixture shape.
 --
--- G2Process/G2ForwardProcess and HybridHestonHullWhiteProcess were investigated for this
--- module and dropped: neither exposes the accessors upstream's own tests need
--- (@phi@/@shortRate@/@factors@ for G2, @HullWhiteForwardProcess::setForwardMeasureTime@ for
--- the hybrid process -- a required post-construction call with no hasquant binding), so no
--- meaningful self-consistency check is reachable through the current binding surface without
--- adding a new binding, which is out of scope for a test-porting task.
+-- G2Process/G2ForwardProcess now bind @phi@/@shortRate@/@factors@ (test-suite/g2process.cpp),
+-- and HullWhiteForwardProcess now binds the required post-construction
+-- @setForwardMeasureTime@ call -- see this module's "G2Process"/"G2ForwardProcess" describe
+-- blocks below. Only the subset of upstream's 8 g2process.cpp cases reachable without a generic
+-- @drift@\/@diffusion@\/@expectation@ binding (still unbound, out of scope here) is ported:
+-- 'testG2ProcessObservesTermStructure', 'testG2ForwardProcessPhiAndShortRate', and
+-- 'testG2ProcessPathGeneratorMatchesCurve'. 'testG2ProcessDriftIncludesTermStructure' and
+-- 'testG2ProcessExpectationConsistentWithCurve' need @drift@\/@diffusion@\/@expectation@
+-- directly; 'testG2ProcessPhiAndShortRate' and 'testG2ProcessPhiRequiresTermStructure' need
+-- @initialValues@ -- none of the three are bound yet. HybridHestonHullWhiteProcess's own
+-- tests (test-suite/hybridhestonhullwhiteprocess.cpp) are a separate follow-up: they need a
+-- 'QuantLib.Model.hestonModel'-shaped construction path plus the same @initialValues@ gap.
 module QuantLib.Spec.Process (spec) where
 
 import Test.Hspec
@@ -25,13 +31,16 @@ import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date(today, addPeriod)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.Quote(simpleQuote)
+import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..))
+import QuantLib.Process(g2Process, g2ForwardProcess, g2Phi, g2ForwardPhi, g2ForwardShortRate, factors)
+import QuantLib.Method(pathGenerator, next, asset)
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid)
+import Control.Monad(replicateM)
 import QuantLib.Model(hestonModel, batesModel, gJRGARCHModel)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..))
 import QuantLib.PricingEngine(analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula)
 
 import QuantLib.CashFlow(cashFlows)
@@ -198,6 +207,67 @@ spec = do
         setPricingEngine capInstr eng
         capNpv <- npv capInstr
         capNpv `shouldSatisfy` (>= 0)
+
+  describe "G2Process/G2ForwardProcess (phi/shortRate/factors self-consistency)" $ do
+    -- ported from test-suite/g2process.cpp::testG2ProcessObservesTermStructure: under a flat
+    -- curve, phi(t) is (up to the deterministic OU variance/covariance terms, which don't move)
+    -- just the curve's forward rate at t -- so bumping a flat rate by 300bp must raise phi by
+    -- the same 300bp.
+    it "phi(t) tracks a term-structure bump one-for-one" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        rateQ <- simpleQuote 0.02
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
+        let t = 2.0
+        phiBefore <- g2Phi process t
+        _ <- setValue rateQ 0.05
+        phiAfter <- g2Phi process t
+        (phiAfter - phiBefore) `shouldSatisfy` closePrec 0.03 1.0e-10
+
+    -- ported from test-suite/g2process.cpp::testG2ForwardProcessPhiAndShortRate: shortRate(t,
+    -- z1, z2) is just z1+z2 regardless of the curve (or its absence -- unlike phi, which throws
+    -- with no term structure).
+    it "shortRate sums the simulated components, with or without a curve" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        rateQ <- simpleQuote 0.035
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        fwd <- g2ForwardProcess 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
+        g2ForwardShortRate fwd 1.0 0.002 (-0.001) `shouldSatisfy` closePrec 0.001 1.0e-12
+
+        paramOnly <- g2ForwardProcess 0.1 0.01 0.2 0.013 (-0.5) Nothing
+        g2ForwardPhi paramOnly 1.0 `shouldThrow` anyException
+        g2ForwardShortRate paramOnly 1.0 0.01 0.01 `shouldSatisfy` closePrec 0.02 1.0e-12
+
+    -- ported from test-suite/g2process.cpp::testG2ProcessPathGeneratorMatchesCurve: the
+    -- empirical mean of r(t) = state[0]+state[1] along simulated paths must converge to the
+    -- curve-implied phi(t). Sample count reduced from upstream's 20000 to keep this fast (see
+    -- CLAUDE.md on DiscreteHedging for the same reduction, and its tolerance scaled up by the
+    -- resulting ~1/sqrt(n) increase in MC standard error).
+    it "MC path mean of r(t) converges to phi(t)" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        rateQ <- simpleQuote 0.03
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2Process 0.1 0.01 0.2 0.013 (-0.3) (Just curve)
+        nf <- factors process
+        nf `shouldBe` 2
+
+        let horizon = 5.0; steps = 50 :: Word; nPaths = 4000 :: Int
+        tg <- timeGrid horizon steps
+        pg <- pathGenerator PseudoRandom process tg 42 (nf * steps) False
+        paths <- replicateM nPaths (next pg >>= \sp -> mapM (asset sp) [0, 1])
+        let sumR = foldr1 (zipWith (+)) [zipWith (+) r0 r1 | [r0, r1] <- paths]
+            meanR = map (/ fromIntegral nPaths) sumR
+        expected <- mapM (\i -> g2Phi process (horizon * fromIntegral i / fromIntegral steps)) [0 .. steps]
+        sequence_ (zipWith (\m e -> m `shouldSatisfy` closePrec e 1.5e-3) meanR expected)
 
   where
     -- Abramowitz & Stegun 7.1.26 approximation, accurate to ~1.5e-7 -- ample for this
