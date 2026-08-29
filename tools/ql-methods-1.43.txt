@@ -8659,10 +8659,10 @@
 | |ql/stochasticprocess.hpp|Matrix discretization::covariance(const StochasticProcess &, Time t0, const Array & x0, Time dt) const;
 | |ql/stochasticprocess.hpp|Size StochasticProcess::size() const;
 |v|ql/stochasticprocess.hpp|Size StochasticProcess::factors() const;
-| |ql/stochasticprocess.hpp|Array StochasticProcess::initialValues() const;
-| |ql/stochasticprocess.hpp|Array StochasticProcess::drift(Time t, const Array & x) const;
-| |ql/stochasticprocess.hpp|Matrix StochasticProcess::diffusion(Time t, const Array & x) const;
-| |ql/stochasticprocess.hpp|Array StochasticProcess::expectation(Time t0, const Array & x0, Time dt) const;
+|v|ql/stochasticprocess.hpp|Array StochasticProcess::initialValues() const;
+|v|ql/stochasticprocess.hpp|Array StochasticProcess::drift(Time t, const Array & x) const;
+|v|ql/stochasticprocess.hpp|Matrix StochasticProcess::diffusion(Time t, const Array & x) const;
+|v|ql/stochasticprocess.hpp|Array StochasticProcess::expectation(Time t0, const Array & x0, Time dt) const;
 | |ql/stochasticprocess.hpp|Matrix StochasticProcess::stdDeviation(Time t0, const Array & x0, Time dt) const;
 | |ql/stochasticprocess.hpp|Matrix StochasticProcess::covariance(Time t0, const Array & x0, Time dt) const;
 | |ql/stochasticprocess.hpp|Array StochasticProcess::evolve(Time t0, const Array & x0, Time dt, const Array & dw) const;

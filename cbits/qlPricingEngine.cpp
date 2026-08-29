@@ -1187,6 +1187,19 @@ void qlFreeStochasticProcess(QlStochasticProcess *o) {del(o);}
 unsigned qlStochasticProcessFactors(QlStochasticProcess* o, char **e) {
   try {return (*arg(o))->factors();
   } catch (std::exception& er) {return handleException<unsigned>(e, er);}}
+void qlStochasticProcessInitialValues(QlStochasticProcess* o, unsigned *len, double **vs, char **e) {
+  try {Array iv = (*arg(o))->initialValues(); *len = iv.size(); *vs = qlAllocateDoubles(*len); std::copy(iv.begin(), iv.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessDrift(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *len, double **vs, char **e) {
+  try {Array d = (*arg(o))->drift(t, Array(x, x+xLen)); *len = d.size(); *vs = qlAllocateDoubles(*len); std::copy(d.begin(), d.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessDiffusion(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  try {Matrix m = (*arg(o))->diffusion(t, Array(x, x+xLen)); *rows = m.rows(); *cols = m.columns(); *len = m.rows()*m.columns();
+    *vs = qlAllocateDoubles(*len); std::copy(m.begin(), m.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessExpectation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *len, double **vs, char **e) {
+  try {Array ex = (*arg(o))->expectation(t0, Array(x0, x0+x0Len), dt); *len = ex.size(); *vs = qlAllocateDoubles(*len); std::copy(ex.begin(), ex.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
   try {return ret(new QlBlackProcess(alloc(new BlackProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));

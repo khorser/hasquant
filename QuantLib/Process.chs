@@ -44,8 +44,12 @@ module QuantLib.Process
   , vegaStressedBlackScholesProcess
 
   , batesProcess
+  , diffusion
+  , drift
+  , expectation
   , extOUWithJumpsProcess
   , factors
+  , initialValues
   , g2ForwardProcess
   , g2Process
   , gemanRoncoroniProcess
@@ -258,6 +262,39 @@ import QuantLib.Internal.Type
 -- 'g2Process', matching its state size; used to size a 'QuantLib.Method.pathGenerator''s
 -- underlying sequence generator (@process->factors() * steps@, mirroring upstream's own usage).
 {#fun qlStochasticProcessFactors as factors{withStochasticProcess*`GenStochasticProcess p',preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
+
+-- |the process's state at time 0, e.g. @(0, 0)@ for a curveless 'g2Process' or
+-- @(phi(0), 0)@ once a term structure is given.
+{#fun qlStochasticProcessInitialValues as initialValues{withStochasticProcess*`GenStochasticProcess p',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the drift part of the process's SDE at state /x/ and time /t/, i.e. @mu(t, x_t)@ in
+-- @dx_t = mu(t, x_t) dt + sigma(t, x_t) dW_t@.
+{#fun qlStochasticProcessDrift as drift{withStochasticProcess*`GenStochasticProcess p'
+  ,`Double' -- ^t
+  ,withDoubleArray*`[Double]'& -- ^x
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
+toMatrixDouble (r, c, d) = Matrix r c d
+
+-- |the diffusion part of the process's SDE at state /x/ and time /t/, i.e. @sigma(t, x_t)@ in
+-- @dx_t = mu(t, x_t) dt + sigma(t, x_t) dW_t@.
+diffusion :: GenStochasticProcess p -> Double -> [Double] -> IO (Matrix Double)
+diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
+{#fun qlStochasticProcessDiffusion{withStochasticProcess*`GenStochasticProcess p'
+  ,`Double' -- ^t
+  ,withDoubleArray*`[Double]'& -- ^x
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |E[x_(t0+dt) | x_t0 = x0], the expected state at /t0+dt/ given state /x0/ at time /t0/.
+{#fun qlStochasticProcessExpectation as expectation{withStochasticProcess*`GenStochasticProcess p'
+  ,`Double' -- ^t0
+  ,withDoubleArray*`[Double]'& -- ^x0
+  ,`Double' -- ^dt
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Geman-Roncoroni process, a mean-reverting jump-diffusion model for electricity spot prices
 -- with a seasonal deterministic mean and an asymmetric jump term.
