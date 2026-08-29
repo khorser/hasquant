@@ -644,3 +644,164 @@ spec = do
           setPricingEngine opt eng
           v <- npv opt
           v `shouldSatisfy` closePrec expected 1.0e-2
+
+  -- Ported from test-suite/quantooption.cpp. Each case wires a QuantoEngine<Instr,Engine>
+  -- instantiation (a GeneralizedBlackScholesProcess plus a foreign risk-free curve, an
+  -- exchange-rate vol surface, and a correlation quote) around the matching base engine, and
+  -- checks the resulting quanto-adjusted NPV against Haug's cached literature values.
+  describe "Quanto engines" $ do
+    let today' = 1 `january` 2020
+        setupFlat dc tgt s q r vol fxr fxv corr = do
+          spotQ <- simpleQuote s
+          qQ <- simpleQuote q
+          rQ <- simpleQuote r
+          volQ <- simpleQuote vol
+          fxrQ <- simpleQuote fxr
+          fxvQ <- simpleQuote fxv
+          corrQ <- simpleQuote corr
+          qTS <- flatForward today' qQ dc Continuous Annual
+          rTS <- flatForward today' rQ dc Continuous Annual
+          volTS <- blackConstantVol today' tgt volQ dc
+          fxrTS <- flatForward today' fxrQ dc Continuous Annual
+          fxVolTS <- blackConstantVol today' tgt fxvQ dc
+          proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+          return (proc, fxrTS, fxVolTS, corrQ)
+
+    it "QuantoEngine<VanillaOption,AnalyticEuropeanEngine> reproduces testValues" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        let cases = [ (Call, 105.0, 100.0, 0.04, 0.08, 0.5 :: Double, 0.2, 0.05, 0.10, 0.3, 5.3280 / 1.5 :: Double)
+                    , (Put,  105.0, 100.0, 0.04, 0.08, 0.5, 0.2, 0.05, 0.10, 0.3, 8.1636)
+                    ]
+        forM_ cases $ \(ty, strike, s, q, r, t, vol, fxr, fxv, corr, expected) -> do
+          (proc, fxrTS, fxVolTS, corrQ) <- setupFlat dc tgt s q r vol fxr fxv corr
+          engine <- quantoEuropeanEngine proc fxrTS fxVolTS corrQ
+          let exDate = addDays (round (t * 360 :: Double)) today'
+          opt <- quantoVanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
+          optInst <- asOneAssetOption opt
+          setPricingEngine optInst engine
+          v <- npv optInst
+          v `shouldSatisfy` closePrec expected 1.0e-4
+
+    it "QuantoEngine<ForwardVanillaOption,ForwardVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardValues" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        let cases = [ (Call, 1.05 :: Double, 100.0, 0.04, 0.08, 0.00 :: Double, 0.5 :: Double, 0.20, 0.05, 0.10, 0.3, 5.3280 / 1.5 :: Double)
+                    , (Put,  1.05, 100.0, 0.04, 0.08, 0.00, 0.5, 0.20, 0.05, 0.10, 0.3, 8.1636)
+                    , (Call, 1.05, 100.0, 0.04, 0.08, 0.25, 0.5, 0.20, 0.05, 0.10, 0.3, 2.0171)
+                    , (Put,  1.05, 100.0, 0.04, 0.08, 0.25, 0.5, 0.20, 0.05, 0.10, 0.3, 6.7296)
+                    ]
+        forM_ cases $ \(ty, moneyness, s, q, r, start, t, vol, fxr, fxv, corr, expected) -> do
+          (proc, fxrTS, fxVolTS, corrQ) <- setupFlat dc tgt s q r vol fxr fxv corr
+          engine <- quantoForwardEuropeanEngine proc fxrTS fxVolTS corrQ
+          let exDate = addDays (round (t * 360 :: Double)) today'
+              resetDate = addDays (round (start * 360 :: Double)) today'
+          opt <- quantoForwardVanillaOption moneyness resetDate (PlainVanilla (PlainVanillaPayoff ty 0.0)) (European (EuropeanExercise exDate))
+          optInst <- asOneAssetOption opt
+          setPricingEngine optInst engine
+          v <- npv optInst
+          v `shouldSatisfy` closePrec expected 1.0e-4
+
+    it "QuantoEngine<ForwardVanillaOption,ForwardPerformanceVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardPerformanceValues" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        let cases = [ (Call, 1.05 :: Double, 100.0, 0.04, 0.08, 0.00 :: Double, 0.5 :: Double, 0.20, 0.05, 0.10, 0.3, 5.3280 / 150 :: Double)
+                    , (Put,  1.05, 100.0, 0.04, 0.08, 0.00, 0.5, 0.20, 0.05, 0.10, 0.3, 0.0816)
+                    , (Call, 1.05, 100.0, 0.04, 0.08, 0.25, 0.5, 0.20, 0.05, 0.10, 0.3, 0.0201)
+                    , (Put,  1.05, 100.0, 0.04, 0.08, 0.25, 0.5, 0.20, 0.05, 0.10, 0.3, 0.0672)
+                    ]
+        forM_ cases $ \(ty, moneyness, s, q, r, start, t, vol, fxr, fxv, corr, expected) -> do
+          (proc, fxrTS, fxVolTS, corrQ) <- setupFlat dc tgt s q r vol fxr fxv corr
+          engine <- quantoForwardPerformanceEuropeanEngine proc fxrTS fxVolTS corrQ
+          let exDate = addDays (round (t * 360 :: Double)) today'
+              resetDate = addDays (round (start * 360 :: Double)) today'
+          opt <- quantoForwardVanillaOption moneyness resetDate (PlainVanilla (PlainVanillaPayoff ty 0.0)) (European (EuropeanExercise exDate))
+          optInst <- asOneAssetOption opt
+          setPricingEngine optInst engine
+          v <- npv optInst
+          v `shouldSatisfy` closePrec expected 1.0e-4
+
+    it "QuantoEngine<BarrierOption,AnalyticBarrierEngine> reproduces testBarrierValues" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        let cases = [ (DownOut, 95.0 :: Double, 3.0 :: Double, Call, 100.0 :: Double, 90.0 :: Double, 0.04, 0.0212, 0.50 :: Double, 0.25, 0.05, 0.2, 0.3, 8.247 :: Double, 0.5 :: Double)
+                    , (DownOut, 95.0, 3.0, Put,  100.0, 90.0, 0.04, 0.0212, 0.50, 0.25, 0.05, 0.2, 0.3, 2.274, 0.5)
+                    , (DownIn,  95.0, 0.0, Put,  100.0, 90.0, 0.04, 0.0212, 0.50, 0.25, 0.05, 0.2, 0.3, 2.85,  0.5)
+                    ]
+        forM_ cases $ \(barType, barrier, rebate, ty, s, strike, q, r, t, vol, fxr, fxv, corr, expected, tol) -> do
+          (proc, fxrTS, fxVolTS, corrQ) <- setupFlat dc tgt s q r vol fxr fxv corr
+          engine <- quantoBarrierEngine proc fxrTS fxVolTS corrQ
+          let exDate = addDays (round (t * 360 :: Double)) today'
+          opt <- quantoBarrierOption barType barrier rebate (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
+          optInst <- asOneAssetOption opt
+          setPricingEngine optInst engine
+          v <- npv optInst
+          v `shouldSatisfy` closePrec expected tol
+
+    it "QuantoEngine<DoubleBarrierOption,AnalyticDoubleBarrierEngine> reproduces testDoubleBarrierValues" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        let cases = [ (KnockOut, 50.0 :: Double, 150.0 :: Double, 0.0 :: Double, Call, 100.0 :: Double, 100.0 :: Double, 0.00 :: Double, 0.1 :: Double, 0.25 :: Double, 0.15, 0.05, 0.2, 0.3, 3.4623 :: Double)
+                    , (KnockOut, 90.0, 110.0, 0.0, Call, 100.0, 100.0, 0.00, 0.1, 0.50, 0.15, 0.05, 0.2, 0.3, 0.5236)
+                    , (KnockOut, 90.0, 110.0, 0.0, Put,  100.0, 100.0, 0.00, 0.1, 0.25, 0.15, 0.05, 0.2, 0.3, 1.1320)
+                    , (KnockIn,  80.0, 120.0, 0.0, Call, 100.0, 102.0, 0.00, 0.1, 0.25, 0.25, 0.05, 0.2, 0.3, 2.6313)
+                    , (KnockIn,  80.0, 120.0, 0.0, Call, 100.0, 102.0, 0.00, 0.1, 0.50, 0.15, 0.05, 0.2, 0.3, 1.9305)
+                    ]
+        forM_ cases $ \(barType, barLo, barHi, rebate, ty, s, strike, q, r, t, vol, fxr, fxv, corr, expected) -> do
+          (proc, fxrTS, fxVolTS, corrQ) <- setupFlat dc tgt s q r vol fxr fxv corr
+          engine <- quantoDoubleBarrierEngine proc fxrTS fxVolTS corrQ
+          let exDate = addDays (round (t * 360 :: Double)) today'
+          opt <- quantoDoubleBarrierOption barType barLo barHi rebate (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
+          optInst <- asOneAssetOption opt
+          setPricingEngine optInst engine
+          v <- npv optInst
+          v `shouldSatisfy` closePrec expected 1.0e-4
+
+  -- Ported from test-suite/twoassetbarrieroption.cpp's testHaugValues: a barrier option on two
+  -- correlated assets, where the first asset's value is compared to the strike and the second's
+  -- is monitored against the barrier (Heynen and Kat's formulas via AnalyticTwoAssetBarrierEngine).
+  describe "Two-asset barrier engine" $
+    it "AnalyticTwoAssetBarrierEngine reproduces twoassetbarrieroption.cpp's testHaugValues" $
+      Settings.keepingSettings' $ do
+        let today' = 1 `january` 2020
+            cases = [ (DownOut, Call, 95.0 :: Double, 90.0 :: Double, 0.5 :: Double, 0.08 :: Double, 6.6592 :: Double)
+                    , (UpOut,   Call, 105.0, 90.0, -0.5, 0.08, 4.6670)
+                    , (DownOut, Put,  95.0, 90.0, -0.5, 0.08, 0.6184)
+                    , (UpOut,   Put,  105.0, 100.0, 0.0, 0.08, 0.8246)
+                    ]
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        rQ <- simpleQuote (0.0 :: Double)
+        rTS <- flatForward today' rQ dc Continuous Annual
+        forM_ cases $ \(barType, ty, barrier, strike, corr, r, expected) -> do
+          _ <- setValue rQ r
+          s1Q <- simpleQuote (100.0 :: Double)
+          q1Q <- simpleQuote (0.0 :: Double)
+          v1Q <- simpleQuote (0.2 :: Double)
+          s2Q <- simpleQuote (100.0 :: Double)
+          q2Q <- simpleQuote (0.0 :: Double)
+          v2Q <- simpleQuote (0.2 :: Double)
+          rhoQ <- simpleQuote corr
+          q1TS <- flatForward today' q1Q dc Continuous Annual
+          q2TS <- flatForward today' q2Q dc Continuous Annual
+          vol1TS <- blackConstantVol today' tgt v1Q dc
+          vol2TS <- blackConstantVol today' tgt v2Q dc
+          proc1 <- blackScholesMertonProcess s1Q q1TS rTS vol1TS EulerDiscretization False
+          proc2 <- blackScholesMertonProcess s2Q q2TS rTS vol2TS EulerDiscretization False
+          engine <- analyticTwoAssetBarrierEngine proc1 proc2 rhoQ
+          let exDate = addDays 180 today'
+          inst <- twoAssetBarrierOption barType barrier (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
+          setPricingEngine inst engine
+          v <- npv inst
+          v `shouldSatisfy` closePrec expected 4.0e-3
