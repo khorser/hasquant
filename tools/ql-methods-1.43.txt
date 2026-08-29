@@ -6048,7 +6048,7 @@
 | |ql/methods/finitedifferences/utilities/fdmmesherintegral.hpp|FdmMesherIntegral::FdmMesherIntegral(const ext::shared_ptr<FdmMesherComposite> & mesher, const std::function<Real (const Array &, const Array &)> & integrator1d);
 | |ql/methods/finitedifferences/utilities/fdmmesherintegral.hpp|Real FdmMesherIntegral::integrate(const Array & f) const;
 |v|ql/methods/finitedifferences/utilities/fdmquantohelper.hpp|FdmQuantoHelper::FdmQuantoHelper(ext::shared_ptr<YieldTermStructure> rTS, ext::shared_ptr<YieldTermStructure> fTS, ext::shared_ptr<BlackVolTermStructure> fxVolTS, Real equityFxCorrelation, Real exchRateATMlevel);
-| |ql/methods/finitedifferences/utilities/fdmquantohelper.hpp|Rate FdmQuantoHelper::quantoAdjustment(Volatility equityVol, Time t1, Time t2) const;
+|v|ql/methods/finitedifferences/utilities/fdmquantohelper.hpp|Rate FdmQuantoHelper::quantoAdjustment(Volatility equityVol, Time t1, Time t2) const;
 | |ql/methods/finitedifferences/utilities/fdmquantohelper.hpp|Array FdmQuantoHelper::quantoAdjustment(const Array & equityVol, Time t1, Time t2) const;
 | |ql/methods/finitedifferences/utilities/fdmshoutloginnervaluecalculator.hpp|FdmShoutLogInnerValueCalculator::FdmShoutLogInnerValueCalculator(Handle<BlackVolTermStructure> blackVolatility, ext::shared_ptr<EscrowedDividendAdjustment> escrowedDividendAdj, Time maturity, ext::shared_ptr<PlainVanillaPayoff> payoff, ext::shared_ptr<FdmMesher> mesher, Size direction);
 | |ql/methods/finitedifferences/utilities/fdmtimedepdirichletboundary.hpp|FdmTimeDepDirichletBoundary::FdmTimeDepDirichletBoundary(const ext::shared_ptr<FdmMesher> & mesher, std::function<Real (Real)> valueOnBoundary, Size direction, Side side);

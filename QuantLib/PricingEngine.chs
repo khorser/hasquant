@@ -147,6 +147,7 @@ module QuantLib.PricingEngine
   , fdBlackScholesVanillaEngineQuanto
   , fdBlackScholesVanillaEngineQuanto'
   , fdmQuantoHelper
+  , fdmQuantoHelperQuantoAdjustment
   , fdHestonVanillaEngine
   , fdHestonVanillaEngine'
   , fdHestonVanillaEngineQuanto
@@ -833,6 +834,13 @@ import QuantLib.Internal.Common
   ,`Double' -- ^equityFxCorrelation
   ,`Double' -- ^exchRateATMlevel
   ,preErrorCheck-`String'errorCheck*-}->`FdmQuantoHelper'peekFdmQuantoHelper*#}
+
+-- |quanto drift adjustment @domesticRate - foreignRate + equityFxCorrelation*equityVol*fxVol@ over @[t1,t2]@
+{#fun qlFdmQuantoHelperQuantoAdjustment as fdmQuantoHelperQuantoAdjustment{withFdmQuantoHelper*`FdmQuantoHelper'
+  ,`Double' -- ^equityVol
+  ,`Double' -- ^t1
+  ,`Double' -- ^t2
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 

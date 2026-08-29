@@ -1021,6 +1021,9 @@ QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStruc
     shared_ptr<BlackVolTermStructure> fxVol = (*arg(fxVolTS)).currentLink();
     return ret(new QlFdmQuantoHelper(alloc(new FdmQuantoHelper(r, f, fxVol, equityFxCorrelation, exchRateATMlevel))));
   } catch (std::exception& er) {return handleException<QlFdmQuantoHelper*>(e, er);}}
+double qlFdmQuantoHelperQuantoAdjustment(QlFdmQuantoHelper* helper, double equityVol, double t1, double t2, char **e) {
+  try {return (*arg(helper))->quantoAdjustment(equityVol, t1, t2);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeGJRGARCHModel(QlGJRGARCHModel *o) {del(o);}
 void qlFreeHestonModel(QlHestonModel *o) {del(o);}
 void qlFreeBatesModel(QlBatesModel *o) {del(o);}

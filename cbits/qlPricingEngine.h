@@ -301,6 +301,7 @@ extern "C" {
 
   void qlFreeFdmQuantoHelper(QlFdmQuantoHelper *o);
   QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStructure* fTS, QlBlackVolTermStructure* fxVolTS, double equityFxCorrelation, double exchRateATMlevel, char **e);
+  double qlFdmQuantoHelperQuantoAdjustment(QlFdmQuantoHelper* helper, double equityVol, double t1, double t2, char **e);
 
   void qlFreeGJRGARCHModel(QlGJRGARCHModel *o);
   void qlFreeHestonModel(QlHestonModel *o);

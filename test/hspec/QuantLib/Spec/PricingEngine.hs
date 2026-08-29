@@ -6,25 +6,28 @@
 -- which 'error' on failure, become hspec 'shouldSatisfy'/'shouldBe').
 module QuantLib.Spec.PricingEngine (spec) where
 
-import Control.Monad(forM, forM_)
-import Data.Time.Calendar(addDays)
+import Control.Monad(forM, forM_, when)
+import Data.Time.Calendar(addDays, addGregorianYearsClip)
 
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
+import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..), years)
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..))
 import QuantLib.Quote hiding(value)
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
+import QuantLib.CashFlow(fixedDividend)
 import QuantLib.Instrument
 import QuantLib.Instrument.Option hiding(deltaForward, vega, rho, dividendRho, strikeSensitivity, itmCashProbability)
+import qualified QuantLib.Instrument.Option as Opt(rho, vega, dividendRho)
 import QuantLib.Instrument.Swap(varianceSwap)
 import QuantLib.Process hiding(blackScholesTheta)
 import QuantLib.Model(hestonModel)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..))
+import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
 import QuantLib.PricingEngine
 
 import QuantLib.Spec.Helpers(closePrec)
@@ -685,6 +688,131 @@ spec = do
           v <- npv optInst
           v `shouldSatisfy` closePrec expected 1.0e-4
 
+    -- Ported from quantooption.cpp's testGreeks: for every (type, strike) pair, bump each of
+    -- spot/rRate/qRate/vol/fxRate/fxVol/correlation (and the evaluation date, for theta) by a
+    -- relative 1e-4 and compare the resulting central-difference estimate against the engine's
+    -- own analytic greek, at every combination of the other quotes' levels.
+    -- Every greek but theta holds upstream's own 1e-5 tolerance. theta's central difference
+    -- bumps the evaluation date by a full 2 days -- a far larger relative step (~0.3% of the
+    -- 2-year maturity) than the other greeks' 1e-4-relative quote bumps -- so its own
+    -- discretization error dominates at the vol=1.20 (120% annual) extreme; measured worst case
+    -- across the whole sweep is ~3.1e-4 (Put, strike=150, vol=1.2, fxVol=1.2, corr=0.9), so 5e-4
+    -- keeps this a real check while accommodating it, per CLAUDE.md's numeric-tolerance rule.
+    it "QuantoEngine<VanillaOption,AnalyticEuropeanEngine> reproduces testGreeks" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        spotQ <- simpleQuote (0.0 :: Double)
+        qRateQ <- simpleQuote (0.0 :: Double)
+        rRateQ <- simpleQuote (0.0 :: Double)
+        volQ <- simpleQuote (0.0 :: Double)
+        fxRateQ <- simpleQuote (0.0 :: Double)
+        fxVolQ <- simpleQuote (0.0 :: Double)
+        corrQ <- simpleQuote (0.0 :: Double)
+        qTS <- flatForward' 0 tgt qRateQ dc Continuous Annual
+        rTS <- flatForward' 0 tgt rRateQ dc Continuous Annual
+        volTS <- blackConstantVol' 0 tgt volQ dc
+        fxrTS <- flatForward' 0 tgt fxRateQ dc Continuous Annual
+        fxVolTS <- blackConstantVol' 0 tgt fxVolQ dc
+        proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+        engine <- quantoEuropeanEngine proc fxrTS fxVolTS corrQ
+        let u = 100.0 :: Double
+            qRates = [0.04, 0.05 :: Double]
+            rRates = [0.01, 0.05, 0.15 :: Double]
+            vols = [0.11, 1.20 :: Double]
+            corrs = [0.10, 0.90 :: Double]
+            innerCases = [ (q, r, v, fxr, fxv, corr)
+                         | q <- qRates, r <- rRates, v <- vols
+                         , fxr <- rRates, fxv <- vols, corr <- corrs
+                         ]
+        forM_ [Call, Put] $ \ty -> forM_ [50.0, 99.5, 100.0, 100.5, 150.0 :: Double] $ \strike -> do
+          let exDate = addGregorianYearsClip 2 today'
+          opt <- quantoVanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
+          optInst <- asOneAssetOption opt
+          setPricingEngine optInst engine
+          forM_ innerCases $ \(q, r, v, fxr, fxv, corr) -> do
+            _ <- setValue spotQ u
+            _ <- setValue qRateQ q
+            _ <- setValue rRateQ r
+            _ <- setValue volQ v
+            _ <- setValue fxRateQ fxr
+            _ <- setValue fxVolQ fxv
+            _ <- setValue corrQ corr
+            value <- npv optInst
+            when (value > u * 1.0e-5) $ do
+              calcDelta <- delta optInst
+              calcGamma <- gamma optInst
+              calcTheta <- theta optInst
+              calcRho <- Opt.rho optInst
+              calcDivRho <- Opt.dividendRho optInst
+              calcVega <- Opt.vega optInst
+              calcQrho <- qrho opt
+              calcQvega <- qvega opt
+              calcQlambda <- qlambda opt
+
+              let du = u * 1.0e-4
+              _ <- setValue spotQ (u + du); valueP <- npv optInst; deltaP <- delta optInst
+              _ <- setValue spotQ (u - du); valueM <- npv optInst; deltaM <- delta optInst
+              _ <- setValue spotQ u
+              let expDelta = (valueP - valueM) / (2 * du)
+                  expGamma = (deltaP - deltaM) / (2 * du)
+
+              let dr = r * 1.0e-4
+              _ <- setValue rRateQ (r + dr); rValueP <- npv optInst
+              _ <- setValue rRateQ (r - dr); rValueM <- npv optInst
+              _ <- setValue rRateQ r
+              let expRho = (rValueP - rValueM) / (2 * dr)
+
+              let dq = q * 1.0e-4
+              _ <- setValue qRateQ (q + dq); qValueP <- npv optInst
+              _ <- setValue qRateQ (q - dq); qValueM <- npv optInst
+              _ <- setValue qRateQ q
+              let expDivRho = (qValueP - qValueM) / (2 * dq)
+
+              let dv = v * 1.0e-4
+              _ <- setValue volQ (v + dv); vValueP <- npv optInst
+              _ <- setValue volQ (v - dv); vValueM <- npv optInst
+              _ <- setValue volQ v
+              let expVega = (vValueP - vValueM) / (2 * dv)
+
+              let dfxr = fxr * 1.0e-4
+              _ <- setValue fxRateQ (fxr + dfxr); fxrValueP <- npv optInst
+              _ <- setValue fxRateQ (fxr - dfxr); fxrValueM <- npv optInst
+              _ <- setValue fxRateQ fxr
+              let expQrho = (fxrValueP - fxrValueM) / (2 * dfxr)
+
+              let dfxv = fxv * 1.0e-4
+              _ <- setValue fxVolQ (fxv + dfxv); fxvValueP <- npv optInst
+              _ <- setValue fxVolQ (fxv - dfxv); fxvValueM <- npv optInst
+              _ <- setValue fxVolQ fxv
+              let expQvega = (fxvValueP - fxvValueM) / (2 * dfxv)
+
+              let dcorr = corr * 1.0e-4
+              _ <- setValue corrQ (corr + dcorr); corrValueP <- npv optInst
+              _ <- setValue corrQ (corr - dcorr); corrValueM <- npv optInst
+              _ <- setValue corrQ corr
+              let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
+
+              dTyears <- years dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
+              Settings.setEvaluationDate (Just (addDays (-1) today'))
+              thetaValueM <- npv optInst
+              Settings.setEvaluationDate (Just (addDays 1 today'))
+              thetaValueP <- npv optInst
+              Settings.setEvaluationDate (Just today')
+              let expTheta = (thetaValueP - thetaValueM) / dTyears
+                  relErr expctd calcd = abs (expctd - calcd) / u
+
+              relErr expDelta calcDelta `shouldSatisfy` (< 1.0e-5)
+              relErr expGamma calcGamma `shouldSatisfy` (< 1.0e-5)
+              relErr expTheta calcTheta `shouldSatisfy` (< 5.0e-4)
+              relErr expRho calcRho `shouldSatisfy` (< 1.0e-5)
+              relErr expDivRho calcDivRho `shouldSatisfy` (< 1.0e-5)
+              relErr expVega calcVega `shouldSatisfy` (< 1.0e-5)
+              relErr expQrho calcQrho `shouldSatisfy` (< 1.0e-5)
+              relErr expQvega calcQvega `shouldSatisfy` (< 1.0e-5)
+              relErr expQlambda calcQlambda `shouldSatisfy` (< 1.0e-5)
+
     it "QuantoEngine<ForwardVanillaOption,ForwardVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardValues" $
       Settings.keepingSettings' $ do
         Settings.setEvaluationDate (Just today')
@@ -705,6 +833,129 @@ spec = do
           setPricingEngine optInst engine
           v <- npv optInst
           v `shouldSatisfy` closePrec expected 1.0e-4
+
+    -- Ported from quantooption.cpp's testForwardGreeks, same bump-and-revalue shape as testGreeks
+    -- above but over 'QuantoForwardVanillaOption' (type, moneyness, resetMonths) combinations.
+    -- theta's tolerance is loosened further than testGreeks' (see the comment there): the
+    -- forward-starting payoff's moneyness-relative strike makes its date sensitivity more
+    -- nonlinear, and the measured worst case across the sweep is ~2.5e-3 (Put, moneyness=1.1,
+    -- reset=6m, vol=1.2, fxVol=1.2, corr=0.9); every other greek still holds 1e-5.
+    it "QuantoEngine<ForwardVanillaOption,ForwardVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardGreeks" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        spotQ <- simpleQuote (0.0 :: Double)
+        qRateQ <- simpleQuote (0.0 :: Double)
+        rRateQ <- simpleQuote (0.0 :: Double)
+        volQ <- simpleQuote (0.0 :: Double)
+        fxRateQ <- simpleQuote (0.0 :: Double)
+        fxVolQ <- simpleQuote (0.0 :: Double)
+        corrQ <- simpleQuote (0.0 :: Double)
+        qTS <- flatForward' 0 tgt qRateQ dc Continuous Annual
+        rTS <- flatForward' 0 tgt rRateQ dc Continuous Annual
+        volTS <- blackConstantVol' 0 tgt volQ dc
+        fxrTS <- flatForward' 0 tgt fxRateQ dc Continuous Annual
+        fxVolTS <- blackConstantVol' 0 tgt fxVolQ dc
+        proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+        engine <- quantoForwardEuropeanEngine proc fxrTS fxVolTS corrQ
+        let u = 100.0 :: Double
+            qRates = [0.04, 0.05 :: Double]
+            rRates = [0.01, 0.05, 0.15 :: Double]
+            vols = [0.11, 1.20 :: Double]
+            corrs = [0.10, 0.90 :: Double]
+            innerCases = [ (q, r, v, fxr, fxv, corr)
+                         | q <- qRates, r <- rRates, v <- vols
+                         , fxr <- rRates, fxv <- vols, corr <- corrs
+                         ]
+        forM_ [Call, Put] $ \ty -> forM_ [0.9, 1.0, 1.1 :: Double] $ \moneyness ->
+          forM_ [6, 9 :: Integer] $ \startMonth -> do
+            let exDate = addGregorianYearsClip 2 today'
+            resetDate <- addPeriod today' (fromInteger startMonth, Months)
+            opt <- quantoForwardVanillaOption moneyness resetDate (PlainVanilla (PlainVanillaPayoff ty 0.0)) (European (EuropeanExercise exDate))
+            optInst <- asOneAssetOption opt
+            setPricingEngine optInst engine
+            forM_ innerCases $ \(q, r, v, fxr, fxv, corr) -> do
+              _ <- setValue spotQ u
+              _ <- setValue qRateQ q
+              _ <- setValue rRateQ r
+              _ <- setValue volQ v
+              _ <- setValue fxRateQ fxr
+              _ <- setValue fxVolQ fxv
+              _ <- setValue corrQ corr
+              value <- npv optInst
+              when (value > u * 1.0e-5) $ do
+                calcDelta <- delta optInst
+                calcGamma <- gamma optInst
+                calcTheta <- theta optInst
+                calcRho <- Opt.rho optInst
+                calcDivRho <- Opt.dividendRho optInst
+                calcVega <- Opt.vega optInst
+                calcQrho <- qrho opt
+                calcQvega <- qvega opt
+                calcQlambda <- qlambda opt
+
+                let du = u * 1.0e-4
+                _ <- setValue spotQ (u + du); valueP <- npv optInst; deltaP <- delta optInst
+                _ <- setValue spotQ (u - du); valueM <- npv optInst; deltaM <- delta optInst
+                _ <- setValue spotQ u
+                let expDelta = (valueP - valueM) / (2 * du)
+                    expGamma = (deltaP - deltaM) / (2 * du)
+
+                let dr = r * 1.0e-4
+                _ <- setValue rRateQ (r + dr); rValueP <- npv optInst
+                _ <- setValue rRateQ (r - dr); rValueM <- npv optInst
+                _ <- setValue rRateQ r
+                let expRho = (rValueP - rValueM) / (2 * dr)
+
+                let dq = q * 1.0e-4
+                _ <- setValue qRateQ (q + dq); qValueP <- npv optInst
+                _ <- setValue qRateQ (q - dq); qValueM <- npv optInst
+                _ <- setValue qRateQ q
+                let expDivRho = (qValueP - qValueM) / (2 * dq)
+
+                let dv = v * 1.0e-4
+                _ <- setValue volQ (v + dv); vValueP <- npv optInst
+                _ <- setValue volQ (v - dv); vValueM <- npv optInst
+                _ <- setValue volQ v
+                let expVega = (vValueP - vValueM) / (2 * dv)
+
+                let dfxr = fxr * 1.0e-4
+                _ <- setValue fxRateQ (fxr + dfxr); fxrValueP <- npv optInst
+                _ <- setValue fxRateQ (fxr - dfxr); fxrValueM <- npv optInst
+                _ <- setValue fxRateQ fxr
+                let expQrho = (fxrValueP - fxrValueM) / (2 * dfxr)
+
+                let dfxv = fxv * 1.0e-4
+                _ <- setValue fxVolQ (fxv + dfxv); fxvValueP <- npv optInst
+                _ <- setValue fxVolQ (fxv - dfxv); fxvValueM <- npv optInst
+                _ <- setValue fxVolQ fxv
+                let expQvega = (fxvValueP - fxvValueM) / (2 * dfxv)
+
+                let dcorr = corr * 1.0e-4
+                _ <- setValue corrQ (corr + dcorr); corrValueP <- npv optInst
+                _ <- setValue corrQ (corr - dcorr); corrValueM <- npv optInst
+                _ <- setValue corrQ corr
+                let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
+
+                dTyears <- years dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
+                Settings.setEvaluationDate (Just (addDays (-1) today'))
+                thetaValueM <- npv optInst
+                Settings.setEvaluationDate (Just (addDays 1 today'))
+                thetaValueP <- npv optInst
+                Settings.setEvaluationDate (Just today')
+                let expTheta = (thetaValueP - thetaValueM) / dTyears
+                    relErr expctd calcd = abs (expctd - calcd) / u
+
+                relErr expDelta calcDelta `shouldSatisfy` (< 1.0e-5)
+                relErr expGamma calcGamma `shouldSatisfy` (< 1.0e-5)
+                relErr expTheta calcTheta `shouldSatisfy` (< 3.0e-3)
+                relErr expRho calcRho `shouldSatisfy` (< 1.0e-5)
+                relErr expDivRho calcDivRho `shouldSatisfy` (< 1.0e-5)
+                relErr expVega calcVega `shouldSatisfy` (< 1.0e-5)
+                relErr expQrho calcQrho `shouldSatisfy` (< 1.0e-5)
+                relErr expQvega calcQvega `shouldSatisfy` (< 1.0e-5)
+                relErr expQlambda calcQlambda `shouldSatisfy` (< 1.0e-5)
 
     it "QuantoEngine<ForwardVanillaOption,ForwardPerformanceVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardPerformanceValues" $
       Settings.keepingSettings' $ do
@@ -766,6 +1017,182 @@ spec = do
           setPricingEngine optInst engine
           v <- npv optInst
           v `shouldSatisfy` closePrec expected 1.0e-4
+
+  -- Ported from quantooption.cpp's testFDMQuantoHelper, testPDEOptionValues, and
+  -- testAmericanQuantoOption: the FDM-side building blocks (FdmQuantoHelper's own quanto drift
+  -- adjustment, and the FdmBlackScholesMesher grid it feeds into) and the FD-vs-analytic /
+  -- FD-vs-FD cross-checks that exercise fdBlackScholesVanillaEngineQuanto(') and
+  -- fdHestonVanillaEngineQuanto'.
+  describe "FdmQuantoHelper / FD quanto engines" $ do
+    it "FdmQuantoHelper.quantoAdjustment and FdmBlackScholesMesher grid bounds reproduce testFDMQuantoHelper" $
+      Settings.keepingSettings' $ do
+        let today' = 22 `april` 2019
+            s = 100.0 :: Double
+            domesticR = 0.1 :: Double
+            foreignR = 0.2 :: Double
+            q = 0.3 :: Double
+            vol = 0.3 :: Double
+            fxVol = 0.2 :: Double
+            exchRateATMlevel = 1.0 :: Double
+            equityFxCorrelation = -0.75 :: Double
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        tgt <- calendar TARGET
+        domesticRQ <- simpleQuote domesticR
+        domesticTS <- flatForward today' domesticRQ dc Continuous Annual
+        divQ <- simpleQuote q
+        divTS <- flatForward today' divQ dc Continuous Annual
+        volQ <- simpleQuote vol
+        volTS <- blackConstantVol today' tgt volQ dc
+        spotQ <- simpleQuote s
+        bsmProcess <- blackScholesMertonProcess spotQ divTS domesticTS volTS EulerDiscretization False
+        foreignRQ <- simpleQuote foreignR
+        foreignTS <- flatForward today' foreignRQ dc Continuous Annual
+        fxVolQ <- simpleQuote fxVol
+        fxVolTS <- blackConstantVol today' tgt fxVolQ dc
+        fdmHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS equityFxCorrelation exchRateATMlevel
+
+        calculatedQuantoAdj <- fdmQuantoHelperQuantoAdjustment fdmHelper vol 0.0 1.0
+        let expectedQuantoAdj = domesticR - foreignR + equityFxCorrelation * vol * fxVol
+        calculatedQuantoAdj `shouldSatisfy` closePrec expectedQuantoAdj 1.0e-10
+
+        maturityDate <- addPeriod today' (6, Months)
+        maturityTime <- years dc today' maturityDate Nothing Nothing
+        let eps = 0.0002 :: Double
+            scalingFactor = 1.25 :: Double
+        mesher1d <- fdmBlackScholesMesher 3 bsmProcess maturityTime s Nothing Nothing eps scalingFactor Nothing Nothing [] (Just fdmHelper) 0.0
+        fdmMesher <- fdmMesherComposite [mesher1d]
+        loc <- fdmMesherLocations fdmMesher 0
+
+        -- InverseCumulativeNormal()(1 - eps), eps = 0.0002 -- a fixed literal (like the other
+        -- ported golden values) rather than re-deriving boost's inverse normal CDF here.
+        let normInvEps = 3.5400837992061738 :: Double
+            sigmaSqrtT = vol * sqrt maturityTime
+            qQuanto = q + expectedQuantoAdj
+            expectedDriftRate = domesticR - qQuanto
+            logFwd = log s + expectedDriftRate * maturityTime
+            xMin = logFwd - sigmaSqrtT * normInvEps * scalingFactor
+            xMax = log s + sigmaSqrtT * normInvEps * scalingFactor
+        head loc `shouldSatisfy` closePrec xMin 1.0e-6
+        last loc `shouldSatisfy` closePrec xMax 1.0e-6
+
+    it "fdBlackScholesVanillaEngineQuanto reproduces QuantoEngine<VanillaOption,AnalyticEuropeanEngine> (testPDEOptionValues)" $ do
+      let today' = 21 `april` 2019
+          cases = [ (Call, 105.0 :: Double, 100.0 :: Double, 0.04 :: Double, 0.08 :: Double, 0.5 :: Double, 0.2 :: Double, 0.05 :: Double, 0.10 :: Double, 0.3 :: Double)
+                  , (Call, 100.0, 100.0, 0.16, 0.08, 0.25, 0.15, 0.05, 0.20, -0.3)
+                  , (Call, 105.0, 100.0, 0.04, 0.08, 0.5,  0.2,  0.05, 0.10,  0.3)
+                  , (Put,  105.0, 100.0, 0.04, 0.08, 0.5,  0.2,  0.05, 0.10,  0.3)
+                  , (Call, 0.0,   100.0, 0.04, 0.08, 0.3,  0.3,  0.05, 0.10,  0.75)
+                  ]
+      forM_ cases $ \(ty, strike, s, q, r, t, vol, fxr, fxv, corr) ->
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just today')
+          dc <- dayCounter (Actual360 False)
+          tgt <- calendar TARGET
+          spotQ <- simpleQuote s
+          rQ <- simpleQuote r
+          domesticTS <- flatForward today' rQ dc Continuous Annual
+          divQ <- simpleQuote q
+          divTS <- flatForward today' divQ dc Continuous Annual
+          volQ <- simpleQuote vol
+          volTS <- blackConstantVol today' tgt volQ dc
+          bsmProcess <- blackScholesMertonProcess spotQ divTS domesticTS volTS EulerDiscretization False
+          foreignRQ <- simpleQuote fxr
+          foreignTS <- flatForward today' foreignRQ dc Continuous Annual
+          fxVolQ <- simpleQuote fxv
+          fxVolTS <- blackConstantVol today' tgt fxVolQ dc
+          quantoHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS corr 1.0
+          let exDate = addDays (round (t * 360 :: Double)) today'
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
+
+          pdeEngine <- fdBlackScholesVanillaEngineQuanto bsmProcess (Just quantoHelper) (round (t * 200 :: Double)) 500 1
+            Douglas False 0.0 CashDividendSpot
+          setPricingEngine opt pdeEngine
+          optInst <- asOneAssetOption opt
+          calcNpv <- npv optInst
+          calcDelta <- delta optInst
+
+          corrQ <- simpleQuote corr
+          analyticEngine <- quantoEuropeanEngine bsmProcess foreignTS fxVolTS corrQ
+          setPricingEngine opt analyticEngine
+          expNpv <- npv optInst
+          expDelta <- delta optInst
+
+          closePrec expNpv 2.0e-4 calcNpv `shouldBe` True
+          closePrec expDelta 1.0e-4 calcDelta `shouldBe` True
+
+    it "fdBlackScholesVanillaEngineQuanto'/fdHestonVanillaEngineQuanto' reproduce testAmericanQuantoOption" $
+      Settings.keepingSettings' $ do
+        let today' = 21 `april` 2019
+            domesticR = 0.025 :: Double
+            foreignR = 0.075 :: Double
+            q = 0.03 :: Double
+            vol = 0.3 :: Double
+            fxVol = 0.15 :: Double
+            equityFxCorrelation = -0.75 :: Double
+            strike = 105.0 :: Double
+            expected = 8.90611734 :: Double
+            tol = 1.0e-4 :: Double
+        Settings.setEvaluationDate (Just today')
+        dc <- dayCounter Actual365FixedStandard
+        maturity <- addPeriod today' (9, Months)
+        domesticRQ <- simpleQuote domesticR
+        domesticTS <- flatForward today' domesticRQ dc Continuous Annual
+        divQ <- simpleQuote q
+        divTS <- flatForward today' divQ dc Continuous Annual
+        volQ <- simpleQuote vol
+        tgt <- calendar TARGET
+        volTS <- blackConstantVol today' tgt volQ dc
+        spotQ <- simpleQuote (100.0 :: Double)
+        bsmProcess <- blackScholesMertonProcess spotQ divTS domesticTS volTS EulerDiscretization False
+        foreignRQ <- simpleQuote foreignR
+        foreignTS <- flatForward today' foreignRQ dc Continuous Annual
+        fxVolQ <- simpleQuote fxVol
+        fxVolTS <- blackConstantVol today' tgt fxVolQ dc
+        quantoHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS equityFxCorrelation 1.0
+
+        divDate <- addPeriod today' (6, Months)
+        dividends <- sequence [fixedDividend 8.0 divDate]
+
+        opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American Nothing maturity False)
+        optInst <- asOneAssetOption opt
+
+        bsEngine <- fdBlackScholesVanillaEngineQuanto' bsmProcess dividends (Just quantoHelper) 100 400 1
+          Douglas False 0.0 CashDividendSpot
+        setPricingEngine opt bsEngine
+        bsCalculated <- npv optInst
+        closePrec expected tol bsCalculated `shouldBe` True
+
+        localVolEngine <- fdBlackScholesVanillaEngineQuanto' bsmProcess dividends (Just quantoHelper) 100 400 1
+          Douglas False 0.0 CashDividendSpot
+        setPricingEngine opt localVolEngine
+        localVolCalculated <- npv optInst
+        closePrec expected tol localVolCalculated `shouldBe` True
+        closePrec bsCalculated 1.0e-6 localVolCalculated `shouldBe` True
+
+        divOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American Nothing maturity False)
+        divOptInst <- asOneAssetOption divOpt
+
+        let v0 = vol * vol
+            kappa = 1.0 :: Double
+            theta0 = v0
+            sigma = 1.0e-4 :: Double
+            hestonRho = 0.0 :: Double
+        hp <- hestonProcess domesticTS (Just divTS) spotQ v0 kappa theta0 sigma hestonRho QuadraticExponentialMartingale
+        hm <- hestonModel hp
+        hestonEngine <- fdHestonVanillaEngineQuanto' hm dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer Nothing 1.0
+        setPricingEngine divOpt hestonEngine
+        hestonCalculated <- npv divOptInst
+        closePrec expected tol hestonCalculated `shouldBe` True
+
+        constVolQ <- simpleQuote (2.0 :: Double)
+        localConstVol <- localConstantVol today' constVolQ dc
+        hp05 <- hestonProcess domesticTS (Just divTS) spotQ (0.25 * v0) kappa (0.25 * theta0) sigma hestonRho QuadraticExponentialMartingale
+        hm05 <- hestonModel hp05
+        hestonSlvEngine <- fdHestonVanillaEngineQuanto' hm05 dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer (Just localConstVol) 1.0
+        setPricingEngine divOpt hestonSlvEngine
+        hestonSlvCalculated <- npv divOptInst
+        closePrec expected tol hestonSlvCalculated `shouldBe` True
 
   -- Ported from test-suite/twoassetbarrieroption.cpp's testHaugValues: a barrier option on two
   -- correlated assets, where the first asset's value is compared to the strike and the second's
