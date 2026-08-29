@@ -241,10 +241,15 @@ test-suite hasquant_test
       QuantLib.Spec.Examples
       QuantLib.Spec.Helpers
       QuantLib.Spec.Index.Commodity
+      QuantLib.Spec.Instrument
+      QuantLib.Spec.Instrument.CapFloor
+      QuantLib.Spec.Instrument.Credit
       QuantLib.Spec.Instrument.Energy
       QuantLib.Spec.Instrument.InflationCapFloor
       QuantLib.Spec.Instrument.Option
+      QuantLib.Spec.Instrument.Swap
       QuantLib.Spec.InterestRateAndCashFlow
+      QuantLib.Spec.PricingEngine
       QuantLib.Spec.Quote
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure

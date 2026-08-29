@@ -15,9 +15,14 @@ import qualified QuantLib.Spec.TermStructure as TermStructure
 import qualified QuantLib.Spec.TermStructure.Commodity as TermStructureCommodity
 import qualified QuantLib.Spec.TermStructure.InflationVolatility as TermStructureInflationVolatility
 import qualified QuantLib.Spec.Index.Commodity as IndexCommodity
+import qualified QuantLib.Spec.Instrument as Instrument
+import qualified QuantLib.Spec.Instrument.CapFloor as InstrumentCapFloor
+import qualified QuantLib.Spec.Instrument.Credit as InstrumentCredit
 import qualified QuantLib.Spec.Instrument.Energy as InstrumentEnergy
 import qualified QuantLib.Spec.Instrument.InflationCapFloor as InstrumentInflationCapFloor
 import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
+import qualified QuantLib.Spec.Instrument.Swap as InstrumentSwap
+import qualified QuantLib.Spec.PricingEngine as PricingEngine
 import qualified QuantLib.Spec.Quote as Quote
 import qualified QuantLib.Spec.Examples as Examples
 
@@ -40,9 +45,14 @@ main = do
     TermStructureCommodity.spec
     TermStructureInflationVolatility.spec
     IndexCommodity.spec
+    Instrument.spec
+    InstrumentCapFloor.spec
+    InstrumentCredit.spec
     InstrumentEnergy.spec
     InstrumentInflationCapFloor.spec
     InstrumentOption.spec
+    InstrumentSwap.spec
+    PricingEngine.spec
     Quote.spec
     Examples.spec
 

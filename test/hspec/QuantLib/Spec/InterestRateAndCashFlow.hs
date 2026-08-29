@@ -423,22 +423,63 @@ spec evalDate = do
           -- ATM matrix, not this fixture's flat single-point vol -- observed diff here is ~3.0e-4.
           abs (rateLinear - rateAnalytic) `shouldSatisfy` (< 5.0e-4)
 
+      -- Ported from test/smoke/CheckLinearTsrPricer.hs: LinearTsrPricer's Settings strategy is
+      -- dispatched through a plain int switch in cbits/qlInstrument.cpp (qlLinearTsrPricer), not
+      -- a c2hs {#enum#} -- see the CPIInterpolationType gotcha in CLAUDE.md for why an
+      -- enum-dispatched shim needs an end-to-end value check, not just a clean build. Builds the
+      -- same CMS coupon leg under each LinearTsrPricerStrategy value and checks the resulting
+      -- coupon rates pairwise differ; a stale/misordered switch case would silently alias two
+      -- strategies to the same behaviour instead.
       it "LinearTsrPricer strategy actually changes the coupon rate (enum-dispatch guard)" $
         Settings.keepingSettings' $ do
           (_, _, _, atmVol, meanRevQ, mkLeg) <- mkFixture
-          legRateBound <- mkLeg
-          pricerRateBound <- CF.linearTsrPricer atmVol meanRevQ Nothing
-            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound (Just (0.0001, 2.0)))
-          CF.setCouponPricer legRateBound pricerRateBound
-          rateRateBound <- CF.nextCouponRate legRateBound True Nothing
+          let bounds = Just (0.0001, 2.0)
+              rateUnder settings = do
+                leg <- mkLeg
+                pricer <- CF.linearTsrPricer atmVol meanRevQ Nothing settings
+                CF.setCouponPricer leg pricer
+                CF.nextCouponRate leg True Nothing
 
-          legVegaRatio <- mkLeg
-          pricerVegaRatio <- CF.linearTsrPricer atmVol meanRevQ Nothing
-            (CF.LinearTsrPricerSettings (CF.LinearTsrVegaRatio 0.01) (Just (0.0001, 2.0)))
-          CF.setCouponPricer legVegaRatio pricerVegaRatio
-          rateVegaRatio <- CF.nextCouponRate legVegaRatio True Nothing
+          rateRateBound <- rateUnder (CF.LinearTsrPricerSettings CF.LinearTsrRateBound bounds)
+          rateVegaRatio <- rateUnder (CF.LinearTsrPricerSettings (CF.LinearTsrVegaRatio 0.01) bounds)
+          ratePriceThreshold <- rateUnder (CF.LinearTsrPricerSettings (CF.LinearTsrPriceThreshold 1.0e-8) bounds)
+          rateBSStdDevs <- rateUnder (CF.LinearTsrPricerSettings (CF.LinearTsrBSStdDevs 3.0) bounds)
 
           rateRateBound `shouldNotBe` rateVegaRatio
+          rateVegaRatio `shouldNotBe` ratePriceThreshold
+          ratePriceThreshold `shouldNotBe` rateBSStdDevs
+
+      -- 'Nothing' (upstream's own default-bounds overload) must reach a genuinely different code
+      -- path from 'Just' explicit bounds -- see the defaultBounds_/normal-vol-adjustment note on
+      -- LinearTsrPricerSettings in QuantLib.CashFlow. That adjustment (lower bound ->
+      -- min(-upper, lower)) only fires under Normal vol -- under ShiftedLognormal (the fixture
+      -- above), Just/Nothing are indistinguishable by design, so this needs its own Normal-vol
+      -- fixture to actually exercise the haveBounds branch. Deliberately NOT upstream's own
+      -- default bounds (0.0001, 2.0) as the explicit Just: passing those exact numbers would make
+      -- Just and Nothing coincide even with haveBounds wired correctly, since defaultBounds_'s
+      -- min(-upper, lower) adjustment (only applied when Nothing) would then be computed from the
+      -- very same numbers this Just already pins, collapsing both to the identical adjusted lower
+      -- bound (-2.0) and masking the wiring entirely.
+      it "LinearTsrPricerSettings Just vs Nothing bounds differ under Normal vol (haveBounds/defaultBounds_ wiring guard)" $
+        Settings.keepingSettings' $ do
+          (_, dc, _, _, meanRevQ, mkLeg) <- mkFixture
+          normalVolQ <- Quote.simpleQuote 0.008
+          cal <- calendar TARGET
+          atmVolNormal <- constantSwaptionVolatility' refDate cal ModifiedFollowing normalVolQ dc IR.Normal 0
+
+          legExplicitBounds <- mkLeg
+          pricerExplicitBounds <- CF.linearTsrPricer atmVolNormal meanRevQ Nothing
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound (Just (0.001, 1.0)))
+          CF.setCouponPricer legExplicitBounds pricerExplicitBounds
+          rateExplicitBounds <- CF.nextCouponRate legExplicitBounds True Nothing
+
+          legDefaultBounds <- mkLeg
+          pricerDefaultBounds <- CF.linearTsrPricer atmVolNormal meanRevQ Nothing
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          CF.setCouponPricer legDefaultBounds pricerDefaultBounds
+          rateDefaultBounds <- CF.nextCouponRate legDefaultBounds True Nothing
+
+          rateExplicitBounds `shouldNotBe` rateDefaultBounds
 
       -- 'makeCms' uses 'swap'' (with explicit payer flags), not 'swap', specifically so the
       -- CMS leg is always index 0 of the result regardless of 'Swap.SwapType' -- exercised for
