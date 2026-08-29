@@ -22,8 +22,8 @@ import Test.Hspec
 import Data.Time.Calendar(addDays)
 
 import qualified QuantLib.Settings as Settings
-import QuantLib.Time.Date
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
+import QuantLib.Time.Date(today, addPeriod)
+import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
@@ -56,14 +56,8 @@ spec = do
       Settings.keepingSettings' $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
-        dc <- dayCounter Actual365FixedStandard
-        let exerciseDays = round (0.5 * 365 :: Double) :: Integer
-            -- the *exact* Actual365Fixed year fraction the process's own date-based
-            -- discounting will use for a 'round(0.5*365)'-day exercise -- not exactly 0.5, so
-            -- computing 'expected' at a hardcoded 0.5 would miss the 2e-7 tolerance below by a
-            -- day-rounding amount many orders of magnitude larger.
-            t = fromIntegral exerciseDays / 365 :: Double
-            strike = 30.0
+        dc <- dayCounter ActualActualISDA
+        let strike = 30.0
             spot = 32.0
             r = 0.1
             q = 0.04
@@ -76,11 +70,16 @@ spec = do
         process <- hestonProcess rTS (Just qTS) s0 v0 5.0 0.05 1.0e-4 0.0 QuadraticExponentialMartingale
         model <- hestonModel process
         eng <- analyticHestonEngine' model 144
-        let exerciseDate = addDays exerciseDays evalDate
+        exerciseDate <- addPeriod evalDate (6, Months)
         opt <- europeanOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise exerciseDate))
         setPricingEngine opt eng
         calculated <- npv opt
 
+        -- the *exact* year fraction the process's own date-based discounting uses for this
+        -- exercise date -- matches test-suite/hestonmodel.cpp::testAnalyticVsBlack exactly now
+        -- that 'years' (DayCounter::yearFraction) is bound, rather than a hand-picked t=0.5
+        -- reconciled against a day-rounded exercise date.
+        t <- years dc evalDate exerciseDate Nothing Nothing
         let forwardPrice = spot * exp ((r - q) * t)
         expected <- blackFormula Put strike forwardPrice (sqrt (v0 * t)) (exp (-r * t)) 0.0
         calculated `shouldSatisfy` closePrec expected 2.0e-7
@@ -93,10 +92,8 @@ spec = do
       Settings.keepingSettings' $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
-        dc <- dayCounter Actual365FixedStandard
-        let exerciseDays = round (0.5 * 365 :: Double) :: Integer
-            t = fromIntegral exerciseDays / 365 :: Double
-            strike = 30.0
+        dc <- dayCounter ActualActualISDA
+        let strike = 30.0
             spot = 32.0
             r = 0.1
             q = 0.04
@@ -109,11 +106,12 @@ spec = do
         process <- batesProcess rTS qTS s0 v0 5.0 0.05 1.0e-4 0.0 0.0001 0.0 0.0001 QuadraticExponentialMartingale
         model <- batesModel process
         eng <- batesEngine model 64
-        let exerciseDate = addDays exerciseDays evalDate
+        exerciseDate <- addPeriod evalDate (6, Months)
         opt <- europeanOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise exerciseDate))
         setPricingEngine opt eng
         calculated <- npv opt
 
+        t <- years dc evalDate exerciseDate Nothing Nothing
         let forwardPrice = spot * exp ((r - q) * t)
         expected <- blackFormula Put strike forwardPrice (sqrt (v0 * t)) (exp (-r * t)) 0.0
         calculated `shouldSatisfy` closePrec expected 2.0e-7

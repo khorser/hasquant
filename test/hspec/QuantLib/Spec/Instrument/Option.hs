@@ -398,7 +398,9 @@ spec = do
         spotQ <- simpleQuote 100.0
         qTS <- simpleQuote 0.0 >>= \qQ -> flatForward evalDate qQ dc Continuous Annual
         rTS <- simpleQuote 0.05 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
-        let exDate = addDays (round (0.246575 * 365 :: Double)) evalDate
+        -- upstream: "maturity t corrected from 0.25 to 0.246575, corresponding to Jan 1, 1999
+        -- to Apr 1, 1999" -- i.e. exactly 90 calendar days, not a t=0.246575 day-fraction to round.
+        let exDate = addDays 90 evalDate
             putStrikes  = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 :: Double]
             putVols     = [0.30, 0.29, 0.28, 0.27, 0.26, 0.25, 0.24, 0.23, 0.22, 0.21, 0.20 :: Double]
             callStrikes = [100, 105, 110, 115, 120, 125, 130, 135 :: Double]
