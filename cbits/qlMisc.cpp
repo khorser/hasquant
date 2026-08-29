@@ -30,6 +30,10 @@
 #include <ql/experimental/commodities/commoditysettings.hpp>
 #include <ql/index.hpp>
 #include <ql/math/statistics/sequencestatistics.hpp>
+#include <ql/math/array.hpp>
+
+#include <numeric>
+#include <functional>
 
 #include <cstdint>
 
@@ -506,6 +510,119 @@ QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, 
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlLastFixingQuote(QlIndex* index, char **e) {try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new LastFixingQuote(*arg(index))))));} catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 int qlQuoteIsValid(QlQuote* o, char **e) {try {return (*arg(o))->isValid();} catch (std::exception& er) {return handleException<int>(e, er);}}
+
+// Quote composition. DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an
+// arbitrary functor; each is instantiated exactly twice here -- once over a functor that
+// switches on a QuoteOp/MultiQuoteOp at runtime (the fixed catalogue), once over a plain C
+// function pointer (an arbitrary Haskell function). The enum does *not* select a template
+// argument, so this needs no generic-lambda dispatcher in an *Aux.cpp: one instantiation
+// covers the whole catalogue.
+//
+// These are the only quotes here that are not leaf values: they registerWith() their inputs and
+// notifyObservers() on update, which is the entire reason they are bound at all -- a Haskell-side
+// recomputation cannot join QuantLib's Observer graph, so a curve bootstrapped off one would
+// silently keep a stale number when the underlying quote moves.
+namespace {
+  // Local mirrors of qlEnumObjects.h's QuoteOp/MultiQuoteOp -- must match their order. That
+  // header cannot be included in this TU: its Calendar/Currency enumerators (CzechRepublic,
+  // Denmark, ...) collide by name with QuantLib's own classes, which the calendar/currency
+  // factory tables below name directly.
+  enum {OpAdd = 0, OpSubtract, OpMultiply, OpDivide};
+  enum {OpSum = 0, OpProduct, OpNorm2};
+
+  struct QuoteUnaryOp {
+    int op;
+    Real operand;
+    Real operator()(Real x) const {
+      switch (op) {
+        case OpAdd: return x + operand;
+        case OpSubtract: return x - operand;
+        case OpMultiply: return x * operand;
+        case OpDivide: return x / operand;
+      }
+      QL_FAIL("unknown QuoteOp " << op);
+    }
+  };
+
+  struct QuoteBinaryOp {
+    int op;
+    Real operator()(Real x, Real y) const {
+      switch (op) {
+        case OpAdd: return x + y;
+        case OpSubtract: return x - y;
+        case OpMultiply: return x * y;
+        case OpDivide: return x / y;
+      }
+      QL_FAIL("unknown QuoteOp " << op);
+    }
+  };
+
+  // MultiCompositeQuote imposes no non-empty requirement (isValid() is all_of over the elements,
+  // vacuously true), so an empty input is accepted and yields the fold's identity.
+  struct QuoteArrayOp {
+    int op;
+    Real operator()(const Array& a) const {
+      switch (op) {
+        case OpSum: return std::accumulate(a.begin(), a.end(), Real(0.0));
+        case OpProduct: return std::accumulate(a.begin(), a.end(), Real(1.0), std::multiplies<Real>());
+        case OpNorm2: return Norm2(a);
+      }
+      QL_FAIL("unknown MultiQuoteOp " << op);
+    }
+  };
+
+  // Named aliases rather than the instantiations spelled inline, because QL_TRACE_NAME is a macro
+  // and CompositeQuote<double (*)(double, double)> reads as two macro arguments.
+  using OpDerivedQuote = DerivedQuote<QuoteUnaryOp>;
+  using OpCompositeQuote = CompositeQuote<QuoteBinaryOp>;
+  using OpMultiCompositeQuote = MultiCompositeQuote<QuoteArrayOp>;
+  using HsDerivedQuote = DerivedQuote<double (*)(double)>;
+  using HsCompositeQuote = CompositeQuote<double (*)(double, double)>;
+  // MultiCompositeQuote calls its ArrayFunction with an Array, so unlike the unary/binary cases
+  // (where a plain double(*)(double...) is already a usable functor) the C function pointer needs
+  // a thin adapter. It is still handed the whole state vector per evaluation, so this crosses the
+  // language boundary once per value(), not once per element.
+  struct HsArrayFun {
+    double (*fn)(const double*, unsigned);
+    Real operator()(const Array& a) const {return fn(a.begin(), (unsigned)a.size());}
+  };
+  using HsMultiCompositeQuote = MultiCompositeQuote<HsArrayFun>;
+
+}
+
+#ifdef QLTRACK_ALLOCATIONS
+// Same reason as qlInstrument.cpp's Hs* labels: these live in the anonymous namespace above and
+// so cannot be named in qlaux.h's table, and without a specialization ObjClassName falls back to
+// typeid().name() -- which for a template instantiation is especially unreadable. All six are
+// shared_ptr payloads, alloc()-only and never explicitly freed, so alloc-summary.py shows them
+// with no matching del by design.
+QL_TRACE_NAME(OpDerivedQuote)
+QL_TRACE_NAME(OpCompositeQuote)
+QL_TRACE_NAME(OpMultiCompositeQuote)
+QL_TRACE_NAME(HsDerivedQuote)
+QL_TRACE_NAME(HsCompositeQuote)
+QL_TRACE_NAME(HsMultiCompositeQuote)
+#endif
+
+QlQuote* qlDerivedQuote(int op, QlQuote* element, double operand, char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new OpDerivedQuote(*arg(element), QuoteUnaryOp{op, operand})))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote* qlCompositeQuote(int op, QlQuote* element1, QlQuote* element2, char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new OpCompositeQuote(*arg(element1), *arg(element2), QuoteBinaryOp{op})))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote* qlMultiCompositeQuote(int op, unsigned elementsLen, QlQuote** elements, char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new OpMultiCompositeQuote(qlHandleVector(elements, elementsLen), QuoteArrayOp{op})))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+
+QlQuote* qlDerivedQuoteFromFunction(QlQuote* element, double (*fn)(double), char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new HsDerivedQuote(*arg(element), fn)))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote* qlCompositeQuoteFromFunction(QlQuote* element1, QlQuote* element2, double (*fn)(double, double), char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new HsCompositeQuote(*arg(element1), *arg(element2), fn)))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote* qlMultiCompositeQuoteFromFunction(unsigned elementsLen, QlQuote** elements, double (*fn)(const double*, unsigned), char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new HsMultiCompositeQuote(qlHandleVector(elements, elementsLen), HsArrayFun{fn})))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 
 // A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure
 // in cbits/qlTermStructure.cpp; see its comments for the rationale.

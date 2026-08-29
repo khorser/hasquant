@@ -365,6 +365,29 @@ enum LinearTsrPricerStrategyType {
   , LinearTsrPricerBSStdDevs
 };
 
+// The catalogues of functors offered by the quote-composition bindings
+// (qlDerivedQuote/qlCompositeQuote/qlMultiCompositeQuote in qlMisc.cpp). NOT QuantLib enums:
+// upstream's DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an arbitrary
+// functor, and these are the fixed sets hasquant offers for the common cases -- an arbitrary
+// Haskell function goes through the *FromFunction entry points instead. Must match the
+// switch in qlMisc.cpp's QuoteUnaryOp/QuoteBinaryOp/QuoteArrayOp.
+//
+// QuoteOp is applied as `x op operand' by DerivedQuote and as `x1 op x2' by CompositeQuote.
+// The reversed unary forms (operand / x, i.e. FX inversion) are deliberately absent: that is
+// what qlDerivedQuoteFromFunction is for.
+enum QuoteOp {
+  QuoteAdd = 0
+  , QuoteSubtract
+  , QuoteMultiply
+  , QuoteDivide
+};
+
+enum MultiQuoteOp {
+  QuoteSum = 0
+  , QuoteProduct
+  , QuoteNorm2
+};
+
 // must match the order of qlTermStructure.cpp:zeroInflationIndices
 enum ZeroInflationIndexType {
   AUCPI = 0

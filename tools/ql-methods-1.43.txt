@@ -8573,10 +8573,10 @@
 |v|ql/quote.hpp|Real Quote::value() const;
 |v|ql/quote.hpp|bool Quote::isValid() const;
 | |ql/quote.hpp|Handle<Quote> handleFromVariant(const std::variant<Real, Handle<Quote>> & value);
-| |ql/quotes/compositequote.hpp|CompositeQuote::CompositeQuote<BinaryFunction>(Handle<Quote> element1, Handle<Quote> element2, BinaryFunction f);
-| |ql/quotes/compositequote.hpp|Real CompositeQuote::value1() const;
-| |ql/quotes/compositequote.hpp|Real CompositeQuote::value2() const;
-| |ql/quotes/compositequote.hpp|CompositeQuote<BinaryFunction>(Handle<Quote> element1, Handle<Quote> element2, BinaryFunction f);
+|v|ql/quotes/compositequote.hpp|CompositeQuote::CompositeQuote<BinaryFunction>(Handle<Quote> element1, Handle<Quote> element2, BinaryFunction f);
+|x|ql/quotes/compositequote.hpp|Real CompositeQuote::value1() const;
+|x|ql/quotes/compositequote.hpp|Real CompositeQuote::value2() const;
+|v|ql/quotes/compositequote.hpp|CompositeQuote<BinaryFunction>(Handle<Quote> element1, Handle<Quote> element2, BinaryFunction f);
 | |ql/quotes/compositequote.hpp|Real value() const;
 | |ql/quotes/compositequote.hpp|bool isValid() const;
 | |ql/quotes/compositequote.hpp|void update();
@@ -8586,8 +8586,8 @@
 |x|ql/quotes/deltavolquote.hpp|Time DeltaVolQuote::maturity() const;
 |x|ql/quotes/deltavolquote.hpp|AtmType DeltaVolQuote::atmType() const;
 |x|ql/quotes/deltavolquote.hpp|DeltaType DeltaVolQuote::deltaType() const;
-| |ql/quotes/derivedquote.hpp|DerivedQuote::DerivedQuote<UnaryFunction>(Handle<Quote> element, UnaryFunction f);
-| |ql/quotes/derivedquote.hpp|DerivedQuote<UnaryFunction>(Handle<Quote> element, UnaryFunction f);
+|v|ql/quotes/derivedquote.hpp|DerivedQuote::DerivedQuote<UnaryFunction>(Handle<Quote> element, UnaryFunction f);
+|v|ql/quotes/derivedquote.hpp|DerivedQuote<UnaryFunction>(Handle<Quote> element, UnaryFunction f);
 | |ql/quotes/derivedquote.hpp|Real value() const;
 | |ql/quotes/derivedquote.hpp|bool isValid() const;
 | |ql/quotes/derivedquote.hpp|void update();
@@ -8608,9 +8608,9 @@
 |v|ql/quotes/lastfixingquote.hpp|LastFixingQuote::LastFixingQuote(ext::shared_ptr<Index> index);
 | |ql/quotes/lastfixingquote.hpp|const ext::shared_ptr<Index> & LastFixingQuote::index() const;
 | |ql/quotes/lastfixingquote.hpp|Date LastFixingQuote::referenceDate() const;
-| |ql/quotes/multicompositequote.hpp|MultiCompositeQuote::MultiCompositeQuote<ArrayFunction>(std::vector<Handle<Quote>> elements, ArrayFunction f);
-| |ql/quotes/multicompositequote.hpp|Real MultiCompositeQuote::inputValue(Size i) const;
-| |ql/quotes/multicompositequote.hpp|MultiCompositeQuote<ArrayFunction>(std::vector<Handle<Quote>> elements, ArrayFunction f);
+|v|ql/quotes/multicompositequote.hpp|MultiCompositeQuote::MultiCompositeQuote<ArrayFunction>(std::vector<Handle<Quote>> elements, ArrayFunction f);
+|x|ql/quotes/multicompositequote.hpp|Real MultiCompositeQuote::inputValue(Size i) const;
+|v|ql/quotes/multicompositequote.hpp|MultiCompositeQuote<ArrayFunction>(std::vector<Handle<Quote>> elements, ArrayFunction f);
 | |ql/quotes/multicompositequote.hpp|Real value() const;
 | |ql/quotes/multicompositequote.hpp|bool isValid() const;
 | |ql/quotes/multicompositequote.hpp|void update();

@@ -27,13 +27,25 @@ module QuantLib.Quote
   , lastFixingQuote
   , relinkableQuote
   , linkTo
+
+  , QuoteOp(..)
+  , MultiQuoteOp(..)
+  , derivedQuote
+  , compositeQuote
+  , multiCompositeQuote
+  , withDerivedQuote
+  , withCompositeQuote
+  , withMultiCompositeQuote
   ) where
+import Foreign.Ptr(FunPtr)
+
 import QuantLib.Internal
 import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
+#include "qlEnumObjects.h"
 
 #include "ql.h"
 
@@ -41,6 +53,15 @@ import QuantLib.Internal.Type
 {#enum AtmType{} deriving(Show, Eq, Read)#}
 {#enum PriceType{} deriving(Show, Eq, Read)#}
 {#enum DeltaType{} deriving(Show, Eq, Read)#}
+
+-- |Which binary operation a catalogue 'derivedQuote'\/'compositeQuote' applies. 'derivedQuote'
+-- applies it as @quote \`op\` operand@; 'compositeQuote' as @quote1 \`op\` quote2@. The reversed
+-- unary forms (@operand \/ quote@, i.e. an FX inversion) are deliberately absent -- that is what
+-- 'withDerivedQuote' is for.
+{#enum QuoteOp{} deriving(Show, Eq, Read, Bounded)#}
+
+-- |Which fold a catalogue 'multiCompositeQuote' applies over its elements.
+{#enum MultiQuoteOp{} deriving(Show, Eq, Read, Bounded)#}
 
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
@@ -139,5 +160,69 @@ import QuantLib.Internal.Type
 -- so this buys swapping in a different quote object, not a different value.
 {#fun qlRelinkableQuoteLinkTo as linkTo{withRelinkableQuote*`RelinkableQuote'
   ,withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- The quotes below are the only ones here that are not leaf values: they register with their
+-- inputs and notify their own observers when one moves. That is the whole reason they are bound
+-- rather than done in Haskell -- a quote hasquant hands out is a live node in QuantLib's observer
+-- graph, so a curve or instrument built on one of these keeps tracking its inputs, where a value
+-- recomputed on the Haskell side would be a dead snapshot the curve never hears about.
+
+-- |A quote derived from another by applying @quote \`op\` operand@, live: it recomputes whenever
+-- the underlying quote moves, and notifies everything built on it.
+--
+-- @'derivedQuote' 'QuoteAdd' base 0.0005@ is the "base plus 5bp" spread quote for a rate helper.
+-- For anything outside the 'QuoteOp' catalogue -- @1\/x@, a cap, a nonlinear transform -- use
+-- 'withDerivedQuote'.
+{#fun qlDerivedQuote as derivedQuote{fromEnumC`QuoteOp',withQuote*`GenQuote q'
+  ,`Double' -- ^operand
+  ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+
+-- |A quote combining two others as @quote1 \`op\` quote2@, live in both: it recomputes whenever
+-- either moves. Use 'withCompositeQuote' for an operation outside the 'QuoteOp' catalogue.
+{#fun qlCompositeQuote as compositeQuote{fromEnumC`QuoteOp',withQuote*`GenQuote q1'
+  ,withQuote*`GenQuote q2',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+
+-- |A quote folding any number of others, live in all of them. An empty list is accepted and
+-- gives the fold's identity (@0@ for 'QuoteSum' and 'QuoteNorm2', @1@ for 'QuoteProduct') --
+-- upstream imposes no non-empty requirement. Use 'withMultiCompositeQuote' for a fold outside
+-- the 'MultiQuoteOp' catalogue.
+{#fun qlMultiCompositeQuote as multiCompositeQuote{fromEnumC`MultiQuoteOp'
+  ,withQuoteArray*`[GenQuote q]'&,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+
+{#fun qlDerivedQuoteFromFunction{withQuote*`GenQuote q',id`FunPtr QuoteUnaryFun'
+  ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlCompositeQuoteFromFunction{withQuote*`GenQuote q1',withQuote*`GenQuote q2'
+  ,id`FunPtr QuoteBinaryFun',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+{#fun qlMultiCompositeQuoteFromFunction{withQuoteArray*`[GenQuote q]'&
+  ,id`FunPtr QuoteArrayFun',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+
+-- |As 'derivedQuote', but applying an arbitrary Haskell function to the underlying quote's value.
+--
+-- __The quote is valid only inside the continuation, which must span the whole use -- not just
+-- construction.__ QuantLib calls back into @f@ from @Quote::value()@, from wherever the quote was
+-- stored, so everything built on it -- every curve, rate helper and instrument, and every pricing
+-- call -- must happen before the continuation returns. Leaving it frees the underlying function
+-- pointer, and a later read crashes the process. Same rule and same reason as
+-- 'QuantLib.Internal.Common.withCustomPayoff'.
+--
+-- @f@ must be total: an exception thrown inside it propagates out through C++, potentially from
+-- the middle of a curve bootstrap. Prefer 'derivedQuote' whenever its 'QuoteOp' catalogue fits --
+-- it has neither restriction.
+withDerivedQuote :: (Double -> Double) -- ^f(value)
+  -> GenQuote q -> (Quote -> IO b) -> IO b
+withDerivedQuote f q k = withPayoffFun f (\fp -> qlDerivedQuoteFromFunction q fp >>= k)
+
+-- |As 'compositeQuote', but combining the two quotes with an arbitrary Haskell function. Same
+-- continuation-lifetime and totality rules as 'withDerivedQuote'.
+withCompositeQuote :: (Double -> Double -> Double) -- ^f(value1, value2)
+  -> GenQuote q1 -> GenQuote q2 -> (Quote -> IO b) -> IO b
+withCompositeQuote f q1 q2 k = withQuoteBinaryFun f (\fp -> qlCompositeQuoteFromFunction q1 q2 fp >>= k)
+
+-- |As 'multiCompositeQuote', but folding with an arbitrary Haskell function. The whole element
+-- vector is passed per evaluation, so this crosses into Haskell once per value, not once per
+-- element. Same continuation-lifetime and totality rules as 'withDerivedQuote'.
+withMultiCompositeQuote :: ([Double] -> Double) -- ^f(values)
+  -> [GenQuote q] -> (Quote -> IO b) -> IO b
+withMultiCompositeQuote f qs k = withBasketAccumulateFun f (\fp -> qlMultiCompositeQuoteFromFunction qs fp >>= k)
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

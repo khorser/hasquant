@@ -112,6 +112,22 @@ extern "C" {
   QlQuote* qlLastFixingQuote(QlIndex* index, char **e);
   int qlQuoteIsValid(QlQuote* o, char **e);
 
+  // Quote composition. The op forms select a functor from the QuoteOp/MultiQuoteOp catalogue in
+  // qlEnumObjects.h; DerivedQuote's is applied as `x op operand'.
+  QlQuote* qlDerivedQuote(int op, QlQuote* element, double operand, char **e);
+  QlQuote* qlCompositeQuote(int op, QlQuote* element1, QlQuote* element2, char **e);
+  QlQuote* qlMultiCompositeQuote(int op, unsigned elementsLen, QlQuote** elements, char **e);
+  // As above, but over an arbitrary Haskell function. Same lifetime rule as
+  // qlPayoffFromFunction (cbits/qlInstrument.h): the returned quote keeps calling back through
+  // `fn' for its whole lifetime -- Quote::value() is invoked from wherever the quote was stored,
+  // including mid-bootstrap -- so the caller must keep the FunPtr alive until the quote is gone.
+  // See QuantLib.Quote.withDerivedQuote and friends.
+  QlQuote* qlDerivedQuoteFromFunction(QlQuote* element, double (*fn)(double), char **e);
+  QlQuote* qlCompositeQuoteFromFunction(QlQuote* element1, QlQuote* element2, double (*fn)(double, double), char **e);
+  // accumulate() takes the whole element vector at once, so this crosses the language boundary
+  // once per evaluation, not once per element.
+  QlQuote* qlMultiCompositeQuoteFromFunction(unsigned elementsLen, QlQuote** elements, double (*fn)(const double*, unsigned), char **e);
+
   QlRelinkableQuote* qlRelinkableQuote(QlQuote *initial, char **e);
   void qlFreeRelinkableQuote(QlRelinkableQuote *o);
   void qlRelinkableQuoteLinkTo(QlRelinkableQuote *o, QlQuote *c, char **e);

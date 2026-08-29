@@ -208,6 +208,30 @@ withBasketAccumulateFun f g = mask $ \restore -> do
       x <- peekArray (fromIntegral n) xs
       pure (realToFrac (f (map realToFrac x)))
 
+-- |The unary callback a Haskell-defined @DerivedQuote@ crosses on, for
+-- @QuantLib.Quote.withDerivedQuote@. Same C signature as 'PayoffFun', so it reuses
+-- 'withPayoffFun' rather than duplicating the @wrapper@ import; the alias exists so the quote
+-- bindings read in their own terms.
+type QuoteUnaryFun = PayoffFun
+
+-- |As 'QuoteUnaryFun', but for @MultiCompositeQuote@ (@QuantLib.Quote.withMultiCompositeQuote@):
+-- same C signature as 'BasketAccumulateFun', and coarsened the same way -- upstream hands the
+-- whole element vector over per evaluation.
+type QuoteArrayFun = BasketAccumulateFun
+
+type QuoteBinaryFun = CDouble -> CDouble -> IO CDouble
+foreign import ccall "wrapper" mkQuoteBinaryFunPtr :: QuoteBinaryFun -> IO (FunPtr QuoteBinaryFun)
+-- |Wrap a Haskell @value1 -> value2 -> value@ function as a 'QuoteBinaryFun' C callback, for
+-- @QuantLib.Quote.withCompositeQuote@. The genuinely new arity of the three: @CompositeQuote@'s
+-- @BinaryFunction@ takes both element values at once, so there is nothing to coarsen -- one
+-- crossing per @Quote::value()@ evaluation is already the whole computation.
+withQuoteBinaryFun :: (Double -> Double -> Double) -> (FunPtr QuoteBinaryFun -> IO b) -> IO b
+withQuoteBinaryFun f g = mask $ \restore -> do
+  fp <- mkQuoteBinaryFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call x y = pure (realToFrac (f (realToFrac x) (realToFrac y)))
+
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}
 instance Finalizable CCalendar where finalize = qlFreeCalendar
