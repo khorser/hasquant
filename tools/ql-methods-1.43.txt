@@ -895,10 +895,10 @@
 | |ql/experimental/barrieroption/mcdoublebarrierengine.hpp|MakeMCDoubleBarrierEngine<RNG, S> & withSeed(BigNatural seed);
 | |ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp|PerturbativeBarrierOptionEngine::PerturbativeBarrierOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Natural order = 1, bool zeroGamma = false);
 |x|ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp|void PerturbativeBarrierOptionEngine::calculate() const;
-| |ql/experimental/barrieroption/quantodoublebarrieroption.hpp|QuantoDoubleBarrierOption::QuantoDoubleBarrierOption(DoubleBarrier::Type barrierType, Real barrier_lo, Real barrier_hi, Real rebate, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
-| |ql/experimental/barrieroption/quantodoublebarrieroption.hpp|Real QuantoDoubleBarrierOption::qvega() const;
-| |ql/experimental/barrieroption/quantodoublebarrieroption.hpp|Real QuantoDoubleBarrierOption::qrho() const;
-| |ql/experimental/barrieroption/quantodoublebarrieroption.hpp|Real QuantoDoubleBarrierOption::qlambda() const;
+|v|ql/experimental/barrieroption/quantodoublebarrieroption.hpp|QuantoDoubleBarrierOption::QuantoDoubleBarrierOption(DoubleBarrier::Type barrierType, Real barrier_lo, Real barrier_hi, Real rebate, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
+|v|ql/experimental/barrieroption/quantodoublebarrieroption.hpp|Real QuantoDoubleBarrierOption::qvega() const;
+|v|ql/experimental/barrieroption/quantodoublebarrieroption.hpp|Real QuantoDoubleBarrierOption::qrho() const;
+|v|ql/experimental/barrieroption/quantodoublebarrieroption.hpp|Real QuantoDoubleBarrierOption::qlambda() const;
 | |ql/experimental/barrieroption/suowangdoublebarrierengine.hpp|SuoWangDoubleBarrierEngine::SuoWangDoubleBarrierEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, int series = 5);
 |x|ql/experimental/barrieroption/suowangdoublebarrierengine.hpp|void SuoWangDoubleBarrierEngine::calculate() const;
 |v|ql/experimental/barrieroption/vannavolgabarrierengine.hpp|VannaVolgaBarrierEngine::VannaVolgaBarrierEngine(Handle<DeltaVolQuote> atmVol, Handle<DeltaVolQuote> vol25Put, Handle<DeltaVolQuote> vol25Call, Handle<Quote> spotFX, Handle<YieldTermStructure> domesticTS, Handle<YieldTermStructure> foreignTS, bool adaptVanDelta = false, Real bsPriceWithSmile = 0.0);
@@ -4025,7 +4025,7 @@
 |v|ql/instruments/swaption.hpp|Volatility Swaption::impliedVolatility(Real price, const Handle<YieldTermStructure> & discountCurve, Volatility guess, Real accuracy = 1.0e-4, Natural maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0, VolatilityType type = ShiftedLognormal, Real displacement = 0.0, PriceType priceType = Spot) const;
 | |ql/instruments/swaption.hpp|arguments::arguments();
 | |ql/instruments/swaption.hpp|void arguments::validate() const;
-| |ql/instruments/twoassetbarrieroption.hpp|TwoAssetBarrierOption::TwoAssetBarrierOption(Barrier::Type barrierType, Real barrier, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
+|v|ql/instruments/twoassetbarrieroption.hpp|TwoAssetBarrierOption::TwoAssetBarrierOption(Barrier::Type barrierType, Real barrier, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
 | |ql/instruments/twoassetbarrieroption.hpp|arguments::arguments();
 | |ql/instruments/twoassetbarrieroption.hpp|void arguments::validate() const;
 |v|ql/instruments/twoassetcorrelationoption.hpp|TwoAssetCorrelationOption::TwoAssetCorrelationOption(Option::Type type, Real strike1, Real strike2, const ext::shared_ptr<Exercise> &);
@@ -7404,7 +7404,7 @@
 |x|ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp|void AnalyticPartialTimeBarrierOptionEngine::calculate() const;
 |v|ql/pricingengines/barrier/analyticsoftbarrierengine.hpp|AnalyticSoftBarrierEngine::AnalyticSoftBarrierEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/barrier/analyticsoftbarrierengine.hpp|void AnalyticSoftBarrierEngine::calculate() const;
-| |ql/pricingengines/barrier/analytictwoassetbarrierengine.hpp|AnalyticTwoAssetBarrierEngine::AnalyticTwoAssetBarrierEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Handle<Quote> rho);
+|v|ql/pricingengines/barrier/analytictwoassetbarrierengine.hpp|AnalyticTwoAssetBarrierEngine::AnalyticTwoAssetBarrierEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Handle<Quote> rho);
 |x|ql/pricingengines/barrier/analytictwoassetbarrierengine.hpp|void AnalyticTwoAssetBarrierEngine::calculate() const;
 |v|ql/pricingengines/barrier/binomialbarrierengine.hpp|BinomialBarrierEngine::BinomialBarrierEngine<T, D>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, Size maxTimeSteps = 0);
 |x|ql/pricingengines/barrier/binomialbarrierengine.hpp|void BinomialBarrierEngine::calculate() const;
@@ -7801,8 +7801,8 @@
 | |ql/pricingengines/forward/forwardengine.hpp|void setup() const;
 | |ql/pricingengines/forward/forwardengine.hpp|void calculate() const;
 | |ql/pricingengines/forward/forwardengine.hpp|void getOriginalResults() const;
-| |ql/pricingengines/forward/forwardperformanceengine.hpp|ForwardPerformanceVanillaEngine::ForwardPerformanceVanillaEngine<Engine>(const ext::shared_ptr<GeneralizedBlackScholesProcess> &);
-| |ql/pricingengines/forward/forwardperformanceengine.hpp|ForwardPerformanceVanillaEngine<Engine>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process);
+|v|ql/pricingengines/forward/forwardperformanceengine.hpp|ForwardPerformanceVanillaEngine::ForwardPerformanceVanillaEngine<Engine>(const ext::shared_ptr<GeneralizedBlackScholesProcess> &);
+|v|ql/pricingengines/forward/forwardperformanceengine.hpp|ForwardPerformanceVanillaEngine<Engine>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process);
 | |ql/pricingengines/forward/forwardperformanceengine.hpp|void calculate() const;
 | |ql/pricingengines/forward/forwardperformanceengine.hpp|void getOriginalResults() const;
 |v|ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MCForwardEuropeanBSEngine::MCForwardEuropeanBSEngine<RNG, S>(const ext::shared_ptr<GeneralizedBlackScholesProcess> & process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
@@ -7976,8 +7976,8 @@
 | |ql/pricingengines/mcsimulation.hpp|void calculate(Real requiredTolerance, Size requiredSamples, Size maxSamples) const;
 | |ql/pricingengines/mcsimulation.hpp|typename McSimulation<MC, RNG, S>::result_type errorEstimate() const;
 | |ql/pricingengines/mcsimulation.hpp|const typename McSimulation<MC, RNG, S>::stats_type & sampleAccumulator() const;
-| |ql/pricingengines/quanto/quantoengine.hpp|QuantoEngine::QuantoEngine<Instr, Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess>, Handle<YieldTermStructure> foreignRiskFreeRate, Handle<BlackVolTermStructure> exchangeRateVolatility, Handle<Quote> correlation);
-| |ql/pricingengines/quanto/quantoengine.hpp|QuantoEngine<Instr, Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<YieldTermStructure> foreignRiskFreeRate, Handle<BlackVolTermStructure> exchangeRateVolatility, Handle<Quote> correlation);
+|v|ql/pricingengines/quanto/quantoengine.hpp|QuantoEngine::QuantoEngine<Instr, Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess>, Handle<YieldTermStructure> foreignRiskFreeRate, Handle<BlackVolTermStructure> exchangeRateVolatility, Handle<Quote> correlation);
+|v|ql/pricingengines/quanto/quantoengine.hpp|QuantoEngine<Instr, Engine>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<YieldTermStructure> foreignRiskFreeRate, Handle<BlackVolTermStructure> exchangeRateVolatility, Handle<Quote> correlation);
 | |ql/pricingengines/quanto/quantoengine.hpp|void calculate() const;
 | |ql/pricingengines/swap/cvaswapengine.hpp|CounterpartyAdjSwapEngine::CounterpartyAdjSwapEngine(const Handle<YieldTermStructure> & discountCurve, const Handle<PricingEngine> & swaptionEngine, const Handle<DefaultProbabilityTermStructure> & ctptyDTS, Real ctptyRecoveryRate, const Handle<DefaultProbabilityTermStructure> & invstDTS = Handle<DefaultProbabilityTermStructure>(), Real invstRecoveryRate = 0.999);
 |x|ql/pricingengines/swap/cvaswapengine.hpp|CounterpartyAdjSwapEngine::CounterpartyAdjSwapEngine(const Handle<YieldTermStructure> & discountCurve, Volatility blackVol, const Handle<DefaultProbabilityTermStructure> & ctptyDTS, Real ctptyRecoveryRate, const Handle<DefaultProbabilityTermStructure> & invstDTS = Handle<DefaultProbabilityTermStructure>(), Real invstRecoveryRate = 0.999);
@@ -8167,9 +8167,9 @@
 | |ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|FdBlackScholesShoutEngine::FdBlackScholesShoutEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
 |x|ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|void FdBlackScholesShoutEngine::calculate() const;
 |v|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
-|u|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
-|u|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, ext::shared_ptr<FdmQuantoHelper> quantoHelper, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
-|u|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, ext::shared_ptr<FdmQuantoHelper> quantoHelper, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
+|v|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
+|v|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, ext::shared_ptr<FdmQuantoHelper> quantoHelper, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
+|v|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, ext::shared_ptr<FdmQuantoHelper> quantoHelper, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
 |x|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|void FdBlackScholesVanillaEngine::calculate() const;
 | |ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|MakeFdBlackScholesVanillaEngine::MakeFdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 | |ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|MakeFdBlackScholesVanillaEngine & MakeFdBlackScholesVanillaEngine::withQuantoHelper(const ext::shared_ptr<FdmQuantoHelper> & quantoHelper);

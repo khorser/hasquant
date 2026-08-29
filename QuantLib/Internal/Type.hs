@@ -2386,6 +2386,7 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >      QuantoVanillaOption
 -- >      QuantoForwardVanillaOption
 -- >      QuantoBarrierOption
+-- >      QuantoDoubleBarrierOption
 -- >    Swaption
 -- >    NonstandardSwaption
 -- >    FloatFloatSwaption
