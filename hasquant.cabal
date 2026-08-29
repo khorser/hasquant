@@ -250,6 +250,7 @@ test-suite hasquant_test
       QuantLib.Spec.Instrument.Swap
       QuantLib.Spec.InterestRateAndCashFlow
       QuantLib.Spec.PricingEngine
+      QuantLib.Spec.Process
       QuantLib.Spec.Quote
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure
