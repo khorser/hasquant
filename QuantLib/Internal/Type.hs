@@ -1901,6 +1901,8 @@ withFittedBondDiscountCurve = withForeignPtr . ptr . peel . getTermStructure
 -- >   KlugeExtOUProcess
 -- >   LiborForwardModelProcess
 -- >   StochasticProcessArray
+-- >   G2Process
+-- >   G2ForwardProcess
 -- >   HestonProcess
 -- >     BatesProcess
 -- >   StochasticProcess1D
@@ -1919,6 +1921,8 @@ data CHybridHestonHullWhiteProcess'
 data CKlugeExtOUProcess'
 data CLiborForwardModelProcess'
 data CStochasticProcessArray'
+data CG2Process'
+data CG2ForwardProcess'
 data CHestonProcess'
 data CStochasticProcess1D'
 data CBatesProcess'
@@ -1943,6 +1947,10 @@ type CLiborForwardModelProcess = ForeignPtr CLiborForwardModelProcess'
 type LiborForwardModelProcess = GenStochasticProcess CLiborForwardModelProcess
 type CStochasticProcessArray = ForeignPtr CStochasticProcessArray'
 type StochasticProcessArray = GenStochasticProcess CStochasticProcessArray
+type CG2Process = ForeignPtr CG2Process'
+type G2Process = GenStochasticProcess CG2Process
+type CG2ForwardProcess = ForeignPtr CG2ForwardProcess'
+type G2ForwardProcess = GenStochasticProcess CG2ForwardProcess
 type GenHestonProcess hp = GenStochasticProcess (AnyOf CHestonProcess' hp)
 type CHestonProcess = ForeignPtr CHestonProcess'
 type HestonProcess = GenHestonProcess CHestonProcess
@@ -1973,6 +1981,8 @@ foreign import ccall unsafe "ql.h &qlFreeHybridHestonHullWhiteProcess" qlFreeHyb
 foreign import ccall unsafe "ql.h &qlFreeKlugeExtOUProcess" qlFreeKlugeExtOUProcess :: FinalizerPtr CKlugeExtOUProcess'
 foreign import ccall unsafe "ql.h &qlFreeLiborForwardModelProcess" qlFreeLiborForwardModelProcess :: FinalizerPtr CLiborForwardModelProcess'
 foreign import ccall unsafe "ql.h &qlFreeStochasticProcessArray" qlFreeStochasticProcessArray :: FinalizerPtr CStochasticProcessArray'
+foreign import ccall unsafe "ql.h &qlFreeG2Process" qlFreeG2Process :: FinalizerPtr CG2Process'
+foreign import ccall unsafe "ql.h &qlFreeG2ForwardProcess" qlFreeG2ForwardProcess :: FinalizerPtr CG2ForwardProcess'
 foreign import ccall unsafe "ql.h &qlFreeHestonProcess" qlFreeHestonProcess :: FinalizerPtr CHestonProcess'
 foreign import ccall unsafe "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D :: FinalizerPtr CStochasticProcess1D'
 foreign import ccall unsafe "ql.h &qlFreeBatesProcess" qlFreeBatesProcess :: FinalizerPtr CBatesProcess'
@@ -1990,6 +2000,8 @@ instance Finalizable CHybridHestonHullWhiteProcess' where finalize = qlFreeHybri
 instance Finalizable CKlugeExtOUProcess' where finalize = qlFreeKlugeExtOUProcess
 instance Finalizable CLiborForwardModelProcess' where finalize = qlFreeLiborForwardModelProcess
 instance Finalizable CStochasticProcessArray' where finalize = qlFreeStochasticProcessArray
+instance Finalizable CG2Process' where finalize = qlFreeG2Process
+instance Finalizable CG2ForwardProcess' where finalize = qlFreeG2ForwardProcess
 instance Finalizable CHestonProcess' where finalize = qlFreeHestonProcess
 instance Finalizable CStochasticProcess1D' where finalize = qlFreeStochasticProcess1D
 instance Finalizable CBatesProcess' where finalize = qlFreeBatesProcess
@@ -2006,6 +2018,8 @@ foreign import ccall "ql.h qlHybridHestonHullWhiteProcessAsStochasticProcess" ql
 foreign import ccall "ql.h qlKlugeExtOUProcessAsStochasticProcess" qlKlugeExtOUProcessAsStochasticProcess :: Ptr CKlugeExtOUProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlLiborForwardModelProcessAsStochasticProcess" qlLiborForwardModelProcessAsStochasticProcess :: Ptr CLiborForwardModelProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlStochasticProcessArrayAsStochasticProcess" qlStochasticProcessArrayAsStochasticProcess :: Ptr CStochasticProcessArray' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlG2ProcessAsStochasticProcess" qlG2ProcessAsStochasticProcess :: Ptr CG2Process' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlG2ForwardProcessAsStochasticProcess" qlG2ForwardProcessAsStochasticProcess :: Ptr CG2ForwardProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlHestonProcessAsStochasticProcess" qlHestonProcessAsStochasticProcess :: Ptr CHestonProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlStochasticProcess1DAsStochasticProcess" qlStochasticProcess1DAsStochasticProcess :: Ptr CStochasticProcess1D' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlBatesProcessAsHestonProcess" qlBatesProcessAsHestonProcess :: Ptr CBatesProcess' -> IO (Ptr CHestonProcess')
@@ -2022,6 +2036,8 @@ instance Upcastable CHybridHestonHullWhiteProcess' where {type Base CHybridHesto
 instance Upcastable CKlugeExtOUProcess' where {type Base CKlugeExtOUProcess' = CStochasticProcess'; upcast = qlKlugeExtOUProcessAsStochasticProcess}
 instance Upcastable CLiborForwardModelProcess' where {type Base CLiborForwardModelProcess' = CStochasticProcess'; upcast = qlLiborForwardModelProcessAsStochasticProcess}
 instance Upcastable CStochasticProcessArray' where {type Base CStochasticProcessArray' = CStochasticProcess'; upcast = qlStochasticProcessArrayAsStochasticProcess}
+instance Upcastable CG2Process' where {type Base CG2Process' = CStochasticProcess'; upcast = qlG2ProcessAsStochasticProcess}
+instance Upcastable CG2ForwardProcess' where {type Base CG2ForwardProcess' = CStochasticProcess'; upcast = qlG2ForwardProcessAsStochasticProcess}
 instance Upcastable CHestonProcess' where {type Base CHestonProcess' = CStochasticProcess'; upcast = qlHestonProcessAsStochasticProcess}
 instance Upcastable CStochasticProcess1D' where {type Base CStochasticProcess1D' = CStochasticProcess'; upcast = qlStochasticProcess1DAsStochasticProcess}
 instance Upcastable CBatesProcess' where {type Base CBatesProcess' = CHestonProcess'; upcast = qlBatesProcessAsHestonProcess}
@@ -2052,6 +2068,10 @@ peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess' -> IO LiborForwar
 peekLiborForwardModelProcess = GenStochasticProcess <.> newGenForeignPtr
 peekStochasticProcessArray :: Ptr CStochasticProcessArray' -> IO StochasticProcessArray
 peekStochasticProcessArray = GenStochasticProcess <.> newGenForeignPtr
+peekG2Process :: Ptr CG2Process' -> IO G2Process
+peekG2Process = GenStochasticProcess <.> newGenForeignPtr
+peekG2ForwardProcess :: Ptr CG2ForwardProcess' -> IO G2ForwardProcess
+peekG2ForwardProcess = GenStochasticProcess <.> newGenForeignPtr
 asHestonProcess :: GenHestonProcess hp -> IO HestonProcess
 asHestonProcess = transferGenForeignPtr peekHestonProcess . peel . getStochasticProcess
 peekHestonProcess :: Ptr CHestonProcess' -> IO HestonProcess

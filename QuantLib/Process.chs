@@ -18,6 +18,8 @@ module QuantLib.Process
   , HestonProcess
   , GenHestonProcess
   , BatesProcess
+  , G2Process
+  , G2ForwardProcess
   , HybridHestonHullWhiteProcess
   , KlugeExtOUProcess
   , LiborForwardModelProcess
@@ -43,6 +45,7 @@ module QuantLib.Process
 
   , batesProcess
   , extOUWithJumpsProcess
+  , factors
   , g2ForwardProcess
   , g2Process
   , gemanRoncoroniProcess
@@ -62,6 +65,12 @@ module QuantLib.Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
   , stochasticProcessArray
+
+  , g2Phi
+  , g2ShortRate
+  , g2ForwardPhi
+  , g2ForwardShortRate
+  , setForwardMeasureTime
 
   , blackScholesTheta
   ) where
@@ -93,6 +102,8 @@ import QuantLib.Internal.Type
 {#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
 {#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
+{#pointer *QlG2Process as G2Process foreign -> CG2Process' nocode#}
+{#pointer *QlG2ForwardProcess as G2ForwardProcess foreign -> CG2ForwardProcess' nocode#}
 {#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
 {#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
 {#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
@@ -207,7 +218,7 @@ import QuantLib.Internal.Type
   ,`Double' -- ^eta
   ,`Double' -- ^rho
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^termStructure
-  ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
+  ,preErrorCheck-`String'errorCheck*-}->`G2ForwardProcess'peekG2ForwardProcess*#}
 
 -- |two-factor G2++ short-rate process, state shifted so its two OU components sum to the
 -- short rate; degenerates to a pair of zero-mean OU processes if no term structure is given.
@@ -217,7 +228,36 @@ import QuantLib.Internal.Type
   ,`Double' -- ^eta
   ,`Double' -- ^rho
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^termStructure
-  ,preErrorCheck-`String'errorCheck*-}->`StochasticProcess'peekStochasticProcess*#}
+  ,preErrorCheck-`String'errorCheck*-}->`G2Process'peekG2Process*#}
+
+-- |the deterministic offset phi(t) that fits 'g2Process''s initial term structure -- throws if
+-- the process was constructed with no term structure.
+{#fun qlG2ProcessPhi as g2Phi{withGenStochasticProcess*`G2Process',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the short rate implied by a simulated 'g2Process' state @(z1, z2)@ at time /t/: just
+-- @z1 + z2@, since 'g2Phi''s offset is already baked into the first simulated component.
+{#fun pure qlG2ProcessShortRate as g2ShortRate{withGenStochasticProcess*`G2Process',`Double' -- ^t
+  ,`Double' -- ^z1
+  ,`Double' -- ^z2
+  }->`Double'#}
+
+-- |the deterministic offset phi(t) that fits 'g2ForwardProcess''s initial term structure --
+-- throws if the process was constructed with no term structure.
+{#fun qlG2ForwardProcessPhi as g2ForwardPhi{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the short rate implied by a simulated 'g2ForwardProcess' state @(z1, z2)@ at time /t/: just
+-- @z1 + z2@, since 'g2ForwardPhi''s offset is already baked into the first simulated component.
+{#fun pure qlG2ForwardProcessShortRate as g2ForwardShortRate{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
+  ,`Double' -- ^z1
+  ,`Double' -- ^z2
+  }->`Double'#}
+
+-- |the number of independent Brownian factors driving a stochastic process -- e.g. 2 for
+-- 'g2Process', matching its state size; used to size a 'QuantLib.Method.pathGenerator''s
+-- underlying sequence generator (@process->factors() * steps@, mirroring upstream's own usage).
+{#fun qlStochasticProcessFactors as factors{withStochasticProcess*`GenStochasticProcess p',preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
 
 -- |Geman-Roncoroni process, a mean-reverting jump-diffusion model for electricity spot prices
 -- with a seasonal deterministic mean and an asymmetric jump term.
@@ -278,6 +318,13 @@ import QuantLib.Internal.Type
   ,`Double' -- ^y
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteForwardProcess'peekHullWhiteForwardProcess*#}
+
+-- |sets the T-forward measure's maturity time: a required post-construction call before a
+-- 'hullWhiteForwardProcess' can be used for forward-measure pricing (e.g. as the short-rate leg
+-- of 'hybridHestonHullWhiteProcess') -- upstream calls it immediately after construction, once
+-- the pricing horizon is known.
+{#fun qlHullWhiteForwardProcessSetForwardMeasureTime as setForwardMeasureTime{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Hull-White one-factor short-rate process, fitted to the given initial term structure.
 {#fun qlHullWhiteProcess as hullWhiteProcess{withYieldTermStructure*`GenYieldTermStructure y' -- ^h

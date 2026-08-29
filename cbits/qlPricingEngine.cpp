@@ -1184,6 +1184,9 @@ QlGeneralizedBlackScholesProcess* qlBlackProcessAsGeneralizedBlackScholesProcess
 void qlFreeGeneralizedBlackScholesProcess(QlGeneralizedBlackScholesProcess *o) {del(o);}
 QlStochasticProcess1D* qlGeneralizedBlackScholesProcessAsStochasticProcess1D(QlGeneralizedBlackScholesProcess *o) {return ret(new QlStochasticProcess1D(*arg(o)));}
 void qlFreeStochasticProcess(QlStochasticProcess *o) {del(o);}
+unsigned qlStochasticProcessFactors(QlStochasticProcess* o, char **e) {
+  try {return (*arg(o))->factors();
+  } catch (std::exception& er) {return handleException<unsigned>(e, er);}}
 
 QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
   try {return ret(new QlBlackProcess(alloc(new BlackProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
@@ -1236,6 +1239,23 @@ void qlFreeHullWhiteProcess(QlHullWhiteProcess *o) {del(o);}
 QlStochasticProcess1D* qlHullWhiteProcessAsStochasticProcess1D(QlHullWhiteProcess *o) {return ret(new QlStochasticProcess1D(*arg(o)));}
 void qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o) {del(o);}
 QlStochasticProcess1D* qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o) {return ret(new QlStochasticProcess1D(*arg(o)));}
+void qlHullWhiteForwardProcessSetForwardMeasureTime(QlHullWhiteForwardProcess* o, double t, char **e) {
+  try {(*arg(o))->setForwardMeasureTime(t);
+  } catch (std::exception& er) {(void)handleException<double>(e, er);}}
+
+void qlFreeG2Process(QlG2Process *o) {del(o);}
+QlStochasticProcess* qlG2ProcessAsStochasticProcess(QlG2Process *o) {return ret(new QlStochasticProcess(*arg(o)));}
+double qlG2ProcessPhi(QlG2Process* o, double t, char **e) {
+  try {return (*arg(o))->phi(t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlG2ProcessShortRate(QlG2Process* o, double t, double x, double y) {return (*arg(o))->shortRate(t, x, y);}
+
+void qlFreeG2ForwardProcess(QlG2ForwardProcess *o) {del(o);}
+QlStochasticProcess* qlG2ForwardProcessAsStochasticProcess(QlG2ForwardProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
+double qlG2ForwardProcessPhi(QlG2ForwardProcess* o, double t, char **e) {
+  try {return (*arg(o))->phi(t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlG2ForwardProcessShortRate(QlG2ForwardProcess* o, double t, double x, double y) {return (*arg(o))->shortRate(t, x, y);}
 
 QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e) {
   try {return ret(new QlBatesProcess(alloc(new BatesProcess(*arg(riskFreeRate), *arg(dividendYield), *arg(s0), v0, kappa, theta, sigma, rho, lambda, nu, delta, (HestonProcess::Discretization)d))));
@@ -1243,12 +1263,12 @@ QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermSt
 QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e) {
   try {return ret(new QlExtOUWithJumpsProcess(alloc(new ExtOUWithJumpsProcess(*arg(process), Y0, beta, jumpIntensity, eta))));
   } catch (std::exception& er) {return handleException<QlExtOUWithJumpsProcess*>(e, er);}}
-QlStochasticProcess* qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e) {
-  try {return ret(new QlStochasticProcess(alloc(new G2ForwardProcess(a, sigma, b, eta, rho, qlNullableHandle(arg(termStructure))))));
-  } catch (std::exception& er) {return handleException<QlStochasticProcess*>(e, er);}}
-QlStochasticProcess* qlG2Process(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e) {
-  try {return ret(new QlStochasticProcess(alloc(new G2Process(a, sigma, b, eta, rho, qlNullableHandle(arg(termStructure))))));
-  } catch (std::exception& er) {return handleException<QlStochasticProcess*>(e, er);}}
+QlG2ForwardProcess* qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e) {
+  try {return ret(new QlG2ForwardProcess(alloc(new G2ForwardProcess(a, sigma, b, eta, rho, qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {return handleException<QlG2ForwardProcess*>(e, er);}}
+QlG2Process* qlG2Process(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e) {
+  try {return ret(new QlG2Process(alloc(new G2Process(a, sigma, b, eta, rho, qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {return handleException<QlG2Process*>(e, er);}}
 QlStochasticProcess1D* qlGemanRoncoroniProcess(double x0, double alpha, double beta, double gamma, double delta, double eps, double zeta, double d, double k, double tau, double sig2, double a, double b, double theta1, double theta2, double theta3, double psi, char **e) {
   try {return ret(new QlStochasticProcess1D(alloc(new GemanRoncoroniProcess(x0, alpha, beta, gamma, delta, eps, zeta, d, k, tau, sig2, a, b, theta1, theta2, theta3, psi))));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}

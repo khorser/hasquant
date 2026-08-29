@@ -400,6 +400,7 @@ extern "C" {
   void qlFreeStochasticProcess(QlStochasticProcess *o);
   void qlFreeStochasticProcess1D(QlStochasticProcess1D *o);
   QlStochasticProcess* qlStochasticProcess1DAsStochasticProcess(QlStochasticProcess1D *o);
+  unsigned qlStochasticProcessFactors(QlStochasticProcess* o, char **e);
 
   QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e);
   QlGeneralizedBlackScholesProcess* qlBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e);
@@ -436,11 +437,21 @@ extern "C" {
   QlStochasticProcess1D* qlHullWhiteProcessAsStochasticProcess1D(QlHullWhiteProcess *o);
   void qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o);
   QlStochasticProcess1D* qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o);
+  void qlHullWhiteForwardProcessSetForwardMeasureTime(QlHullWhiteForwardProcess* o, double t, char **e);
+
+  void qlFreeG2Process(QlG2Process *o);
+  QlStochasticProcess* qlG2ProcessAsStochasticProcess(QlG2Process *o);
+  double qlG2ProcessPhi(QlG2Process* o, double t, char **e);
+  double qlG2ProcessShortRate(QlG2Process* o, double t, double x, double y);
+  void qlFreeG2ForwardProcess(QlG2ForwardProcess *o);
+  QlStochasticProcess* qlG2ForwardProcessAsStochasticProcess(QlG2ForwardProcess *o);
+  double qlG2ForwardProcessPhi(QlG2ForwardProcess* o, double t, char **e);
+  double qlG2ForwardProcessShortRate(QlG2ForwardProcess* o, double t, double x, double y);
 
   QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e);
   QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e);
-  QlStochasticProcess* qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e);
-  QlStochasticProcess* qlG2Process(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e);
+  QlG2ForwardProcess* qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e);
+  QlG2Process* qlG2Process(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e);
   QlStochasticProcess1D* qlGemanRoncoroniProcess(double x0, double alpha, double beta, double gamma, double delta, double eps, double zeta, double d, double k, double tau, double sig2, double a, double b, double theta1, double theta2, double theta3, double psi, char **e);
   QlStochasticProcess1D* qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, char **e);
   QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, char **e);

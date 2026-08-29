@@ -108,6 +108,8 @@ typedef struct QlForwardRateAgreement QlForwardRateAgreement;
 typedef struct QlForwardVanillaOption QlForwardVanillaOption;
 typedef struct QlFxForward QlFxForward;
 typedef struct QlG2 QlG2;
+typedef struct QlG2ForwardProcess QlG2ForwardProcess;
+typedef struct QlG2Process QlG2Process;
 typedef struct QlGaussian1dModel QlGaussian1dModel;
 typedef struct QlGeneralizedBlackScholesProcess QlGeneralizedBlackScholesProcess;
 typedef struct QlGJRGARCHModel QlGJRGARCHModel;

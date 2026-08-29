@@ -8447,7 +8447,7 @@
 | |ql/processes/coxingersollrossprocess.hpp|Real evolve(Time t0, Real x0, Time dt, Real dw) const;
 | |ql/processes/forwardmeasureprocess.hpp|void ForwardMeasureProcess::setForwardMeasureTime(Time);
 | |ql/processes/forwardmeasureprocess.hpp|Time ForwardMeasureProcess::getForwardMeasureTime() const;
-| |ql/processes/forwardmeasureprocess.hpp|void ForwardMeasureProcess1D::setForwardMeasureTime(Time);
+|v|ql/processes/forwardmeasureprocess.hpp|void ForwardMeasureProcess1D::setForwardMeasureTime(Time);
 | |ql/processes/forwardmeasureprocess.hpp|Time ForwardMeasureProcess1D::getForwardMeasureTime() const;
 |v|ql/processes/g2process.hpp|G2Process::G2Process(Real a, Real sigma, Real b, Real eta, Real rho, const Handle<YieldTermStructure> & termStructure = { });
 | |ql/processes/g2process.hpp|Real G2Process::x0() const;
@@ -8458,12 +8458,12 @@
 | |ql/processes/g2process.hpp|Real G2Process::eta() const;
 | |ql/processes/g2process.hpp|Real G2Process::rho() const;
 | |ql/processes/g2process.hpp|const Handle<YieldTermStructure> & G2Process::termStructure() const;
-| |ql/processes/g2process.hpp|Real G2Process::phi(Time t) const;
-| |ql/processes/g2process.hpp|Rate G2Process::shortRate(Time t, Real x, Real y) const;
+|v|ql/processes/g2process.hpp|Real G2Process::phi(Time t) const;
+|v|ql/processes/g2process.hpp|Rate G2Process::shortRate(Time t, Real x, Real y) const;
 |v|ql/processes/g2process.hpp|G2ForwardProcess::G2ForwardProcess(Real a, Real sigma, Real b, Real eta, Real rho, const Handle<YieldTermStructure> & termStructure = { });
 | |ql/processes/g2process.hpp|const Handle<YieldTermStructure> & G2ForwardProcess::termStructure() const;
-| |ql/processes/g2process.hpp|Real G2ForwardProcess::phi(Time t) const;
-| |ql/processes/g2process.hpp|Rate G2ForwardProcess::shortRate(Time t, Real x, Real y) const;
+|v|ql/processes/g2process.hpp|Real G2ForwardProcess::phi(Time t) const;
+|v|ql/processes/g2process.hpp|Rate G2ForwardProcess::shortRate(Time t, Real x, Real y) const;
 |v|ql/processes/geometricbrownianprocess.hpp|GeometricBrownianMotionProcess::GeometricBrownianMotionProcess(Real initialValue, Real mue, Real sigma);
 |v|ql/processes/gjrgarchprocess.hpp|GJRGARCHProcess::GJRGARCHProcess(Handle<YieldTermStructure> riskFreeRate, Handle<YieldTermStructure> dividendYield, Handle<Quote> s0, Real v0, Real omega, Real alpha, Real beta, Real gamma, Real lambda, Real daysPerYear = 252.0, Discretization d = FullTruncation);
 | |ql/processes/gjrgarchprocess.hpp|Real GJRGARCHProcess::v0() const;
@@ -8658,7 +8658,7 @@
 | |ql/stochasticprocess.hpp|Matrix discretization::diffusion(const StochasticProcess &, Time t0, const Array & x0, Time dt) const;
 | |ql/stochasticprocess.hpp|Matrix discretization::covariance(const StochasticProcess &, Time t0, const Array & x0, Time dt) const;
 | |ql/stochasticprocess.hpp|Size StochasticProcess::size() const;
-| |ql/stochasticprocess.hpp|Size StochasticProcess::factors() const;
+|v|ql/stochasticprocess.hpp|Size StochasticProcess::factors() const;
 | |ql/stochasticprocess.hpp|Array StochasticProcess::initialValues() const;
 | |ql/stochasticprocess.hpp|Array StochasticProcess::drift(Time t, const Array & x) const;
 | |ql/stochasticprocess.hpp|Matrix StochasticProcess::diffusion(Time t, const Array & x) const;
