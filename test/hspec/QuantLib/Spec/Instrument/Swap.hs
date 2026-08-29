@@ -25,6 +25,7 @@ import QuantLib.Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Instrument
+import QuantLib.Instrument.Bond(fixedRateBond, asBond, settlementDate)
 import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 
@@ -150,3 +151,89 @@ spec = do
         setPricingEngine priced engine
         pricedNPV <- npv priced
         pricedNPV `shouldSatisfy` closePrec 0 1e-6
+
+  -- Ported from test-suite/assetswap.cpp::testConsistency's par-asset-swap portion (the
+  -- NpvDate-sensitivity half of that test, and the market/non-par asset-swap cases from later
+  -- in the same file, are left as follow-up work). The float schedule is rebuilt from the
+  -- bond's own start/maturity here rather than passed as upstream's empty default Schedule (no
+  -- hasquant binding exposes that "derive the schedule from the bond" constructor path) -- a
+  -- self-consistency check either way, so any valid schedule matching the index's tenor works.
+  describe "AssetSwap" $
+    it "fairCleanPrice and fairSpread both reprice the par asset swap to zero NPV" $
+      Settings.keepingSettings' $ do
+        let evalDate = 24 `april` 2007
+        Settings.setEvaluationDate (Just evalDate)
+        cal <- calendar TARGET
+        discDC <- dayCounter Actual365FixedStandard
+        q <- simpleQuote 0.05
+        ts <- flatForward evalDate q discDC Continuous Annual
+        euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+        floatDC <- dayCounter (Actual360 False)
+
+        let bondStart = 4 `january` 2005
+            bondMaturity = 4 `january` 2037
+        bondSch <- schedule (Just bondStart) bondMaturity (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
+        aaISDA <- dayCounter ActualActualISDA
+        bond <- fixedRateBond 3 100.0 bondSch [0.04] aaISDA Following 100.0 (Just bondStart) cal
+          (0, Days) cal Unadjusted False aaISDA >>= asBond
+        settle <- settlementDate bond evalDate
+
+        floatSch <- schedule (Just settle) bondMaturity (6, Months) cal ModifiedFollowing ModifiedFollowing
+          Forward False Nothing Nothing
+
+        swapEngine <- discountingSwapEngine ts (Just True) (Just settle) (Just evalDate)
+
+        let bondPrice = 95.0
+        parAssetSwap <- assetSwap True bond bondPrice euribor6m 0.0 floatSch floatDC True 1.0 Nothing Nothing
+        setPricingEngine parAssetSwap swapEngine
+        fcp <- fairCleanPrice parAssetSwap
+        fsp <- fairSpread parAssetSwap
+
+        assetSwap2 <- assetSwap True bond fcp euribor6m 0.0 floatSch floatDC True 1.0 Nothing Nothing
+        setPricingEngine assetSwap2 swapEngine
+        npv2 <- npv assetSwap2
+        npv2 `shouldSatisfy` closePrec 0 1e-6
+        fcp2 <- fairCleanPrice assetSwap2
+        fcp2 `shouldSatisfy` closePrec fcp 1e-6
+        fsp2 <- fairSpread assetSwap2
+        fsp2 `shouldSatisfy` closePrec 0.0 1e-6
+
+        assetSwap3 <- assetSwap True bond bondPrice euribor6m fsp floatSch floatDC True 1.0 Nothing Nothing
+        setPricingEngine assetSwap3 swapEngine
+        npv3 <- npv assetSwap3
+        npv3 `shouldSatisfy` closePrec 0 1e-6
+
+  -- Ported from test-suite/zerocouponswap.cpp's spot-starting cases only (checkFairFixedPayment
+  -- and checkFairFixedRate): a swap starting exactly at settlement needs no historical Euribor
+  -- fixing, unlike the "ongoing" cases in the same functions, which are left as follow-up work.
+  describe "ZeroCouponSwap" $
+    it "fairFixedPayment and fairFixedRate both reprice a spot-starting swap to zero NPV" $
+      Settings.keepingSettings' $ do
+        let today' = 15 `march` 2021
+        Settings.setEvaluationDate (Just today')
+        cal <- calendar TARGET
+        dc <- dayCounter Actual365FixedStandard
+        settle <- advance cal today' (2, Days) Following False
+        q <- simpleQuote 0.007
+        ts <- flatForward settle q dc Continuous Annual
+        euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+
+        let paymentDelay = 1 :: Word
+            end = 12 `february` 2041
+
+        engine <- discountingSwapEngine ts Nothing Nothing Nothing
+
+        zc <- zeroCouponSwap Payer 1.0e6 settle end 1.2e6 euribor6m cal ModifiedFollowing paymentDelay
+        setPricingEngine zc engine
+        fairPmt <- fairFixedPayment zc
+
+        parZc <- zeroCouponSwap Payer 1.0e6 settle end fairPmt euribor6m cal ModifiedFollowing paymentDelay
+        setPricingEngine parZc engine
+        parNpv <- npv parZc
+        parNpv `shouldSatisfy` closePrec 0 1e-6
+
+        fairRt <- fairFixedRate zc dc
+        parZc' <- zeroCouponSwap' Receiver 1.0e6 settle end fairRt dc euribor6m cal ModifiedFollowing paymentDelay
+        setPricingEngine parZc' engine
+        parNpv' <- npv parZc'
+        parNpv' `shouldSatisfy` closePrec 0 1e-6
