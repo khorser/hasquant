@@ -1,3 +1,5 @@
+enum ReplicationType { ReplicationSub = 0, ReplicationCentral = 1, ReplicationSuper = 2 };
+
 // Enumerations to be mapped to specific QuantLib classes
 // must match with the order of qlMisc.cpp:ccys
 enum Ccy {ARS = 0

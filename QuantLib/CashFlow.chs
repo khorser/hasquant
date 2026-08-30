@@ -8,6 +8,7 @@ module QuantLib.CashFlow
   , DurationType(..)
   , RateAveragingType(..)
   , TimingAdjustment(..)
+  , PositionType(..)
   , CPIInterpolationType(..)
   , GenLeg
 
@@ -72,6 +73,27 @@ module QuantLib.CashFlow
   , cmsLegFull
   , CmsLegOpts(..)
   , defaultCmsLegOpts
+  , FloatingRateCoupon
+  , GenFloatingRateCoupon
+  , asFloatingRateCoupon
+  , floatingRateCouponRate
+  , floatingRateCouponAmount
+  , setFloatingRateCouponPricer
+  , CmsCoupon
+  , cmsCoupon
+  , cappedFlooredCmsCoupon
+  , ReplicationType(..)
+  , DigitalReplication
+  , digitalReplication
+  , digitalReplicationType
+  , digitalReplicationGap
+  , DigitalCmsCoupon
+  , digitalCmsCoupon
+  , digitalCmsCouponCallOptionRate
+  , digitalCmsCouponPutOptionRate
+  , digitalCmsLeg
+  , DigitalCmsLegOpts(..)
+  , defaultDigitalCmsLegOpts
   , overnightLeg
   , rangeAccrualLeg
   , cpiLeg
@@ -183,6 +205,19 @@ $(deriveOptionsRecord "CmsLegOpts" []
   , ("cmslExCouponConvention", [t|BusinessDayConvention|], [|Unadjusted|])
   , ("cmslExCouponEndOfMonth", [t|Bool|], [|False|])
   , ("cmslFixingConvention", [t|BusinessDayConvention|], [|Preceding|])
+  ])
+
+$(deriveOptionsRecord "DigitalCmsLegOpts" []
+  [ ("dcmlCallStrikes", [t|[Double]|], [|[]|])
+  , ("dcmlCallPosition", [t|PositionType|], [|Long|])
+  , ("dcmlCallATM", [t|Bool|], [|False|])
+  , ("dcmlCallPayoffs", [t|[Double]|], [|[]|])
+  , ("dcmlPutStrikes", [t|[Double]|], [|[]|])
+  , ("dcmlPutPosition", [t|PositionType|], [|Long|])
+  , ("dcmlPutATM", [t|Bool|], [|False|])
+  , ("dcmlPutPayoffs", [t|[Double]|], [|[]|])
+  , ("dcmlReplication", [t|Maybe DigitalReplication|], [|Nothing|])
+  , ("dcmlNakedOption", [t|Bool|], [|False|])
   ])
 
 -- |Build a 'Leg' of plain, predetermined cash flows from parallel amount\/date arrays.
@@ -723,9 +758,14 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 {#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
+{#pointer *QlFloatingRateCoupon as FloatingRateCoupon foreign -> CFloatingRateCoupon' nocode#}
+{#pointer *QlCmsCoupon as CmsCoupon foreign -> CCmsCoupon' nocode#}
+{#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
+{#pointer *QlDigitalCmsCoupon as DigitalCmsCoupon foreign -> CDigitalCmsCoupon' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
 {#pointer *QlYoYInflationCouponPricer as YoYInflationCouponPricer foreign -> CYoYInflationCouponPricer nocode#}
+{#enum ReplicationType{} deriving(Show, Eq, Read)#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov'
@@ -770,6 +810,46 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 -- |Set the pricer of every floating-rate coupon in /leg/, picking each coupon's pricer from
 -- /pricers/ by matching coupon type.
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |A single CMS coupon. Attach one of the existing CMS pricers before asking for its rate or amount.
+{#fun qlCmsCoupon as cmsCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapIndex*`GenSwapIndex sidx'
+  ,`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
+  ,preErrorCheck-`String'errorCheck*-}->`CmsCoupon'peekCmsCoupon*#}
+
+{#fun qlFloatingRateCouponRate as floatingRateCouponRate{withFloatingRateCoupon*`GenFloatingRateCoupon frc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFloatingRateCouponAmount as floatingRateCouponAmount{withFloatingRateCoupon*`GenFloatingRateCoupon frc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFloatingRateCouponSetPricer as setFloatingRateCouponPricer{withFloatingRateCoupon*`GenFloatingRateCoupon frc',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |A CMS coupon with optional cap and floor. 'Nothing' means no cap or floor.
+{#fun qlCappedFlooredCmsCoupon as cappedFlooredCmsCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapIndex*`GenSwapIndex sidx'
+  ,`Double',`Double',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |Replication convention and gap for the embedded digital option.
+{#fun qlDigitalReplication as digitalReplication{`ReplicationType',`Double',preErrorCheck-`String'errorCheck*-}->`DigitalReplication'peekDigitalReplication*#}
+{#fun pure qlDigitalReplicationType as digitalReplicationType{withDigitalReplication*`DigitalReplication'}->`ReplicationType'#}
+{#fun pure qlDigitalReplicationGap as digitalReplicationGap{withDigitalReplication*`DigitalReplication'}->`Double'#}
+
+-- |A CMS coupon with embedded digital call and put options. Optional strikes/payoffs use 'Nothing' for QuantLib's null-rate sentinel.
+{#fun qlDigitalCmsCoupon as digitalCmsCoupon{withCmsCoupon*`CmsCoupon',fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double'
+  ,fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double',withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool'
+  ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsCoupon'peekDigitalCmsCoupon*#}
+{#fun qlDigitalCmsCouponCallOptionRate as digitalCmsCouponCallOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCmsCouponPutOptionRate as digitalCmsCouponPutOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Build a digital CMS leg. The options record covers all digital call/put and replication choices.
+digitalCmsLeg :: Schedule -> GenSwapIndex sidx -> [Double] -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalCmsLegOpts -> IO Leg
+digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
+  digitalCmsLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears
+    (dcmlCallStrikes opts) (dcmlCallPosition opts) (dcmlCallATM opts) (dcmlCallPayoffs opts)
+    (dcmlPutStrikes opts) (dcmlPutPosition opts) (dcmlPutATM opts) (dcmlPutPayoffs opts)
+    (dcmlReplication opts) (dcmlNakedOption opts)
+
+{#fun qlDigitalCmsLeg as digitalCmsLeg_{withSchedule*`Schedule',withSwapIndex*`GenSwapIndex sidx',withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention'
+  ,withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,`Bool'
+  ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
+  ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
+  ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), using an analytic
 -- closed-form approximation of the replication integrals.

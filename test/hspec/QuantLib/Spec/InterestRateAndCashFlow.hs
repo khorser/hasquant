@@ -28,6 +28,7 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), forecastFixing
   ,historicalRatesAnalysis)
+import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
@@ -403,11 +404,11 @@ spec evalDate = do
             endDate <- addPeriod startDate (1, Years)
             sch <- schedule (Just startDate) endDate (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
             let mkLeg = CF.cmsLeg sch swapIdx [1.0] dc Unadjusted [] [] [] [] [] False False
-            pure (cal, dc, fwdCurve, atmVol, meanRevQ, mkLeg)
+            pure (cal, dc, fwdCurve, atmVol, meanRevQ, mkLeg, swapIdx, startDate, endDate)
 
       it "linearTsrPricer agrees with analyticHaganPricer(NonParallelShifts) within test-suite/cms.cpp's tolerance" $
         Settings.keepingSettings' $ do
-          (_, _, _, atmVol, meanRevQ, mkLeg) <- mkFixture
+          (_, _, _, atmVol, meanRevQ, mkLeg, _, _, _) <- mkFixture
           legLinear <- mkLeg
           pricerLinear <- CF.linearTsrPricer atmVol meanRevQ Nothing
             (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
@@ -423,6 +424,47 @@ spec evalDate = do
           -- ATM matrix, not this fixture's flat single-point vol -- observed diff here is ~3.0e-4.
           abs (rateLinear - rateAnalytic) `shouldSatisfy` (< 5.0e-4)
 
+      -- Ported from test-suite/cms.cpp's testFairRate, using its flat-vol fixture but a single
+      -- NonParallelShifts model. This targets the direct constructor: an unbounded
+      -- CappedFlooredCmsCoupon is intentionally returned as FloatingRateCoupon, so both the
+      -- construction result and its inherited pricing methods must marshal correctly.
+      it "direct cappedFlooredCmsCoupon agrees between numerical and analytic Hagan pricers" $
+        Settings.keepingSettings' $ do
+          (_, dc, _, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
+          let fixingDays = Ibor.fixingDays swapIdx
+              coupon = CF.cappedFlooredCmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
+                1.0 0.0 Nothing Nothing (Just startDate) (Just endDate) dc False Nothing Preceding
+          numerical <- CF.numericHaganPricer atmVol CF.NonParallelShifts meanRevQ 0.0 1.0 1.0e-6 1.0e100
+          couponNumerical <- coupon
+          CF.setFloatingRateCouponPricer couponNumerical numerical
+          rateNumerical <- CF.floatingRateCouponRate couponNumerical
+          analytic <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
+          couponAnalytic <- coupon
+          CF.setFloatingRateCouponPricer couponAnalytic analytic
+          rateAnalytic <- CF.floatingRateCouponRate couponAnalytic
+          abs (rateNumerical - rateAnalytic) `shouldSatisfy` (< 2.0e-4)
+
+      -- Ported from test-suite/cms.cpp's testParity. All coupons share nominal, dates and
+      -- day count, so its discounted-price identity reduces to this rate identity. The test
+      -- specifically verifies that capped/floored constructors erased to FloatingRateCoupon
+      -- retain their concrete QuantLib behaviour through the shared accessors.
+      it "direct capped/floored CMS coupons satisfy put-call parity" $
+        Settings.keepingSettings' $ do
+          (_, dc, _, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
+          let fixingDays = Ibor.fixingDays swapIdx
+              strike = 0.03
+              coupon mCap mFloor = CF.cappedFlooredCmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
+                1.0 0.0 mCap mFloor (Just startDate) (Just endDate) dc False Nothing Preceding
+              priced mCap mFloor = do
+                c <- coupon mCap mFloor
+                p <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
+                CF.setFloatingRateCouponPricer c p
+                CF.floatingRateCouponRate c
+          plainRate <- priced Nothing Nothing
+          cappedRate <- priced (Just strike) Nothing
+          flooredRate <- priced Nothing (Just strike)
+          abs (cappedRate + flooredRate - plainRate - strike) `shouldSatisfy` (< 1.0e-4)
+
       -- Ported from test/smoke/CheckLinearTsrPricer.hs: LinearTsrPricer's Settings strategy is
       -- dispatched through a plain int switch in cbits/qlInstrument.cpp (qlLinearTsrPricer), not
       -- a c2hs {#enum#} -- see the CPIInterpolationType gotcha in CLAUDE.md for why an
@@ -432,7 +474,7 @@ spec evalDate = do
       -- strategies to the same behaviour instead.
       it "LinearTsrPricer strategy actually changes the coupon rate (enum-dispatch guard)" $
         Settings.keepingSettings' $ do
-          (_, _, _, atmVol, meanRevQ, mkLeg) <- mkFixture
+          (_, _, _, atmVol, meanRevQ, mkLeg, _, _, _) <- mkFixture
           let bounds = Just (0.0001, 2.0)
               rateUnder settings = do
                 leg <- mkLeg
@@ -462,7 +504,7 @@ spec evalDate = do
       -- bound (-2.0) and masking the wiring entirely.
       it "LinearTsrPricerSettings Just vs Nothing bounds differ under Normal vol (haveBounds/defaultBounds_ wiring guard)" $
         Settings.keepingSettings' $ do
-          (_, dc, _, _, meanRevQ, mkLeg) <- mkFixture
+          (_, dc, _, _, meanRevQ, mkLeg, _, _, _) <- mkFixture
           normalVolQ <- Quote.simpleQuote 0.008
           cal <- calendar TARGET
           atmVolNormal <- constantSwaptionVolatility' refDate cal ModifiedFollowing normalVolQ dc IR.Normal 0

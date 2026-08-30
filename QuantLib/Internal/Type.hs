@@ -578,6 +578,56 @@ withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPr
 withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
 withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
 
+-- | A floating coupon, represented at the most useful hierarchy level. Concrete
+-- CMS coupons remain concrete only because 'digitalCmsCoupon' requires one.
+data CFloatingRateCoupon'
+newtype GenFloatingRateCoupon frc = GenFloatingRateCoupon {getFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon'}
+type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'
+type FloatingRateCoupon = GenFloatingRateCoupon CFloatingRateCoupon
+foreign import ccall unsafe "ql.h &qlFreeFloatingRateCoupon" qlFreeFloatingRateCoupon :: FinalizerPtr CFloatingRateCoupon'
+instance Finalizable CFloatingRateCoupon' where finalize = qlFreeFloatingRateCoupon
+asFloatingRateCoupon :: GenFloatingRateCoupon frc -> IO FloatingRateCoupon
+asFloatingRateCoupon = transferGenForeignPtr peekFloatingRateCoupon . getFloatingRateCoupon
+peekFloatingRateCoupon :: Ptr CFloatingRateCoupon' -> IO FloatingRateCoupon
+peekFloatingRateCoupon = GenFloatingRateCoupon <.> newCastForeignPtr
+withFloatingRateCoupon :: GenFloatingRateCoupon frc -> (Ptr CFloatingRateCoupon' -> IO b) -> IO b
+withFloatingRateCoupon = withGenForeignPtr . getFloatingRateCoupon
+
+data CCmsCoupon'
+type CCmsCoupon = ForeignPtr CCmsCoupon'
+type CmsCoupon = GenFloatingRateCoupon CCmsCoupon
+foreign import ccall unsafe "ql.h &qlFreeCmsCoupon" qlFreeCmsCoupon :: FinalizerPtr CCmsCoupon'
+instance Finalizable CCmsCoupon' where finalize = qlFreeCmsCoupon
+foreign import ccall "ql.h qlCmsCouponAsFloatingRateCoupon" qlCmsCouponAsFloatingRateCoupon :: Ptr CCmsCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CCmsCoupon' where {type Base CCmsCoupon' = CFloatingRateCoupon'; upcast = qlCmsCouponAsFloatingRateCoupon}
+peekCmsCoupon :: Ptr CCmsCoupon' -> IO CmsCoupon
+peekCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withCmsCoupon :: CmsCoupon -> (Ptr CCmsCoupon' -> IO b) -> IO b
+withCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+data CDigitalReplication
+newtype DigitalReplication = DigitalReplication {getCDigitalReplication :: Standalone CDigitalReplication}
+foreign import ccall unsafe "ql.h &qlFreeDigitalReplication" qlFreeDigitalReplication :: FinalizerPtr CDigitalReplication
+instance Finalizable CDigitalReplication where finalize = qlFreeDigitalReplication
+peekDigitalReplication :: Ptr CDigitalReplication -> IO DigitalReplication
+peekDigitalReplication = DigitalReplication <.> peekStandalone
+withDigitalReplication :: DigitalReplication -> (Ptr CDigitalReplication -> IO b) -> IO b
+withDigitalReplication = withStandalone . getCDigitalReplication
+withMaybeDigitalReplication :: Maybe DigitalReplication -> (Ptr CDigitalReplication -> IO b) -> IO b
+withMaybeDigitalReplication = maybe ($ nullPtr) withDigitalReplication
+
+data CDigitalCmsCoupon'
+type CDigitalCmsCoupon = ForeignPtr CDigitalCmsCoupon'
+type DigitalCmsCoupon = GenFloatingRateCoupon CDigitalCmsCoupon
+foreign import ccall unsafe "ql.h &qlFreeDigitalCmsCoupon" qlFreeDigitalCmsCoupon :: FinalizerPtr CDigitalCmsCoupon'
+instance Finalizable CDigitalCmsCoupon' where finalize = qlFreeDigitalCmsCoupon
+foreign import ccall "ql.h qlDigitalCmsCouponAsFloatingRateCoupon" qlDigitalCmsCouponAsFloatingRateCoupon :: Ptr CDigitalCmsCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CDigitalCmsCoupon' where {type Base CDigitalCmsCoupon' = CFloatingRateCoupon'; upcast = qlDigitalCmsCouponAsFloatingRateCoupon}
+peekDigitalCmsCoupon :: Ptr CDigitalCmsCoupon' -> IO DigitalCmsCoupon
+peekDigitalCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withDigitalCmsCoupon :: DigitalCmsCoupon -> (Ptr CDigitalCmsCoupon' -> IO b) -> IO b
+withDigitalCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
 data CEquityCashFlowPricer
 newtype EquityCashFlowPricer = EquityCashFlowPricer {getCEquityCashFlowPricer :: Standalone CEquityCashFlowPricer}
 foreign import ccall unsafe "ql.h &qlFreeEquityCashFlowPricer" qlFreeEquityCashFlowPricer :: FinalizerPtr CEquityCashFlowPricer

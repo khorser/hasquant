@@ -82,6 +82,9 @@ namespace hasquant {
 #include <ql/cashflows/fixedratecoupon.hpp>
 #include <ql/cashflows/iborcoupon.hpp>
 #include <ql/cashflows/cmscoupon.hpp>
+#include <ql/cashflows/capflooredcoupon.hpp>
+#include <ql/cashflows/digitalcmscoupon.hpp>
+#include <ql/cashflows/replication.hpp>
 #include <ql/cashflows/overnightindexedcoupon.hpp>
 #include <ql/cashflows/rangeaccrual.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
@@ -115,6 +118,14 @@ QL_TRACE_NAME(QlAdditionalResult)
 #endif
 
 namespace {
+  Replication::Type qlReplicationType(int type) {
+    switch (type) {
+      case hasquant::ReplicationSub: return Replication::Sub;
+      case hasquant::ReplicationCentral: return Replication::Central;
+      case hasquant::ReplicationSuper: return Replication::Super;
+      default: QL_FAIL("unknown replication type " << type);
+    }
+  }
   // SecondaryCosts = map<string, ext::any>, used with exactly two concrete alternatives
   // (CommodityUnitCost/Money -- see energycommodity.cpp's two any_cast branches), bound as a real
   // 2-variant sum: scIsUnitCost[i] selects which of (scAmounts[i], scCurrencies[i]) alone (Money)
@@ -1515,6 +1526,58 @@ QlFloatingRateCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swa
 QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new RangeAccrualPricerByBgm(correlation, *arg(smilesOnExpiry), *arg(smilesOnPayment), withSmile, byCallSpread))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+
+void qlFreeFloatingRateCoupon(QlFloatingRateCoupon *o) {del(o);}
+double qlFloatingRateCouponRate(QlFloatingRateCoupon* o, char **e) {try {return (*arg(o))->rate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponAmount(QlFloatingRateCoupon* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCouponPricer* pricer, char **e) {
+  try {(*arg(o))->setPricer(*arg(pricer));
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+
+void qlFreeCmsCoupon(QlCmsCoupon *o) {del(o);}
+QlFloatingRateCoupon* qlCmsCouponAsFloatingRateCoupon(QlCmsCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlCmsCoupon* qlCmsCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlCmsCoupon(alloc(new CmsCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,
+      *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears,
+      qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlCmsCoupon*>(e, er);}}
+
+QlFloatingRateCoupon* qlCappedFlooredCmsCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredCmsCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,
+      *arg(index), gearing, spread, cap, floor, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears,
+      qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+
+void qlFreeDigitalReplication(QlDigitalReplication *o) {del(o);}
+QlDigitalReplication* qlDigitalReplication(int type, double gap, char **e) {
+  try {return ret(new QlDigitalReplication(alloc(new DigitalReplication(qlReplicationType(type), gap))));
+  } catch (std::exception& er) {return handleException<QlDigitalReplication*>(e, er);}}
+int qlDigitalReplicationType(QlDigitalReplication* o) {return (*arg(o))->replicationType();}
+double qlDigitalReplicationGap(QlDigitalReplication* o) {return (*arg(o))->gap();}
+
+void qlFreeDigitalCmsCoupon(QlDigitalCmsCoupon *o) {del(o);}
+QlFloatingRateCoupon* qlDigitalCmsCouponAsFloatingRateCoupon(QlDigitalCmsCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlDigitalCmsCoupon* qlDigitalCmsCoupon(QlCmsCoupon* underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication* replication, int nakedOption, char **e) {
+  try {return ret(new QlDigitalCmsCoupon(alloc(new DigitalCmsCoupon(*arg(underlying), callStrike, (Position::Type)callPosition, callATM,
+      callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
+  } catch (std::exception& er) {return handleException<QlDigitalCmsCoupon*>(e, er);}}
+double qlDigitalCmsCouponCallOptionRate(QlDigitalCmsCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlDigitalCmsCouponPutOptionRate(QlDigitalCmsCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+
+Leg* qlDigitalCmsLeg(Schedule* schedule, QlSwapIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, int inArrears, unsigned callStrikesLen, double* callStrikes, int callPosition, int callATM, unsigned callPayoffsLen, double* callPayoffs, unsigned putStrikesLen, double* putStrikes, int putPosition, int putATM, unsigned putPayoffsLen, double* putPayoffs, QlDigitalReplication* replication, int nakedOption, char **e) {
+  try {DigitalCmsLeg builder(*arg(schedule), *arg(index));
+    builder.withNotionals(std::vector<Real>(notionals, notionals + notionalsLen))
+      .withPaymentDayCounter(*arg(paymentDayCounter)).withPaymentAdjustment((BusinessDayConvention)paymentAdjustment)
+      .withFixingDays(std::vector<Natural>(fixingDays, fixingDays + fixingDaysLen))
+      .withGearings(std::vector<Real>(gearings, gearings + gearingsLen)).withSpreads(std::vector<Spread>(spreads, spreads + spreadsLen))
+      .inArrears(inArrears).withCallStrikes(std::vector<Rate>(callStrikes, callStrikes + callStrikesLen))
+      .withLongCallOption((Position::Type)callPosition).withCallATM(callATM)
+      .withCallPayoffs(std::vector<Rate>(callPayoffs, callPayoffs + callPayoffsLen))
+      .withPutStrikes(std::vector<Rate>(putStrikes, putStrikes + putStrikesLen)).withLongPutOption((Position::Type)putPosition)
+      .withPutATM(putATM).withPutPayoffs(std::vector<Rate>(putPayoffs, putPayoffs + putPayoffsLen))
+      .withReplication(replication ? *arg(replication) : shared_ptr<DigitalReplication>()).withNakedOption(nakedOption);
+    return ret(new Leg(builder));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
 void qlFreeVarianceSwap(QlVarianceSwap *o) {del(o);}
 QlInstrument* qlVarianceSwapAsInstrument(QlVarianceSwap *o) {return ret(new QlInstrument(*arg(o)));}
