@@ -500,26 +500,26 @@ span.spaces    { background: white }
 <span class="lineno">  481 </span> -&gt; (Double) -- ^redemption
 <span class="lineno">  482 </span> -&gt; (Maybe Day) -- ^issueDate
 <span class="lineno">  483 </span> -&gt; IO ((Bond))
-<span class="lineno">  484 </span><span class="decl"><span class="nottickedoff">cmsRateBond a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 =</span>
-<span class="lineno">  485 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  486 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  487 </span><span class="spaces">  </span><span class="nottickedoff">withSchedule a3 $ \a3' -&gt; </span>
-<span class="lineno">  488 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a4 $ \a4' -&gt; </span>
-<span class="lineno">  489 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a5 $ \a5' -&gt; </span>
-<span class="lineno">  490 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = fromEnumC a6} in </span>
-<span class="lineno">  491 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  492 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a8 $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  493 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a9 $ \(a9'1, a9'2) -&gt; </span>
-<span class="lineno">  494 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a10 $ \(a10'1, a10'2) -&gt; </span>
-<span class="lineno">  495 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a11 $ \(a11'1, a11'2) -&gt; </span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="nottickedoff">let {a12' = C2HSImp.fromBool a12} in </span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = realToFrac a13} in </span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a14 $ \a14' -&gt; </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a15' -&gt; </span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="nottickedoff">cmsRateBond'_ a1' a2' a3' a4' a5' a6' a7' a8'1  a8'2 a9'1  a9'2 a10'1  a10'2 a11'1  a11'2 a12' a13' a14' a15' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="nottickedoff">peekBond res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a15'&gt;&gt;</span>
-<span class="lineno">  503 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  484 </span><span class="decl"><span class="istickedoff">cmsRateBond a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 =</span>
+<span class="lineno">  485 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  486 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  487 </span><span class="spaces">  </span><span class="istickedoff">withSchedule a3 $ \a3' -&gt; </span>
+<span class="lineno">  488 </span><span class="spaces">  </span><span class="istickedoff">withSwapIndex a4 $ \a4' -&gt; </span>
+<span class="lineno">  489 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
+<span class="lineno">  490 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromEnumC a6} in </span>
+<span class="lineno">  491 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  492 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a8 $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  493 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a9 $ \(a9'1, a9'2) -&gt; </span>
+<span class="lineno">  494 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a10 $ \(a10'1, a10'2) -&gt; </span>
+<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a11 $ \(a11'1, a11'2) -&gt; </span>
+<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = C2HSImp.fromBool a12} in </span>
+<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = realToFrac a13} in </span>
+<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a14 $ \a14' -&gt; </span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a15' -&gt; </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">cmsRateBond'_ a1' a2' a3' a4' a5' a6' a7' a8'1  a8'2 a9'1  a9'2 a10'1  a10'2 a11'1  a11'2 a12' a13' a14' a15' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">peekBond res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a15'&gt;&gt;</span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  504 </span>
 <span class="lineno">  505 </span>
 <span class="lineno">  506 </span>
@@ -540,26 +540,26 @@ span.spaces    { background: white }
 <span class="lineno">  521 </span> -&gt; (Maybe Day) -- ^issueDate
 <span class="lineno">  522 </span> -&gt; ([Double]) -- ^redemptions
 <span class="lineno">  523 </span> -&gt; IO ((Bond))
-<span class="lineno">  524 </span><span class="decl"><span class="nottickedoff">amortizingCmsRateBond a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 =</span>
-<span class="lineno">  525 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  526 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  527 </span><span class="spaces">  </span><span class="nottickedoff">withSchedule a3 $ \a3' -&gt; </span>
-<span class="lineno">  528 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a4 $ \a4' -&gt; </span>
-<span class="lineno">  529 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a5 $ \a5' -&gt; </span>
-<span class="lineno">  530 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = fromEnumC a6} in </span>
-<span class="lineno">  531 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  532 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a8 $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  533 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a9 $ \(a9'1, a9'2) -&gt; </span>
-<span class="lineno">  534 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a10 $ \(a10'1, a10'2) -&gt; </span>
-<span class="lineno">  535 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a11 $ \(a11'1, a11'2) -&gt; </span>
-<span class="lineno">  536 </span><span class="spaces">  </span><span class="nottickedoff">let {a12' = C2HSImp.fromBool a12} in </span>
-<span class="lineno">  537 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
-<span class="lineno">  538 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a14 $ \(a14'1, a14'2) -&gt; </span>
-<span class="lineno">  539 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a15' -&gt; </span>
-<span class="lineno">  540 </span><span class="spaces">  </span><span class="nottickedoff">amortizingCmsRateBond'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8'1  a8'2 a9'1  a9'2 a10'1  a10'2 a11'1  a11'2 a12' a13' a14'1  a14'2 a15' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  541 </span><span class="spaces">  </span><span class="nottickedoff">peekBond res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  542 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a15'&gt;&gt;</span>
-<span class="lineno">  543 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  524 </span><span class="decl"><span class="istickedoff">amortizingCmsRateBond a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 =</span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  526 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="istickedoff">withSchedule a3 $ \a3' -&gt; </span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="istickedoff">withSwapIndex a4 $ \a4' -&gt; </span>
+<span class="lineno">  529 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromEnumC a6} in </span>
+<span class="lineno">  531 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  532 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a8 $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  533 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a9 $ \(a9'1, a9'2) -&gt; </span>
+<span class="lineno">  534 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a10 $ \(a10'1, a10'2) -&gt; </span>
+<span class="lineno">  535 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a11 $ \(a11'1, a11'2) -&gt; </span>
+<span class="lineno">  536 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = C2HSImp.fromBool a12} in </span>
+<span class="lineno">  537 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
+<span class="lineno">  538 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a14 $ \(a14'1, a14'2) -&gt; </span>
+<span class="lineno">  539 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a15' -&gt; </span>
+<span class="lineno">  540 </span><span class="spaces">  </span><span class="istickedoff">amortizingCmsRateBond'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8'1  a8'2 a9'1  a9'2 a10'1  a10'2 a11'1  a11'2 a12' a13' a14'1  a14'2 a15' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  541 </span><span class="spaces">  </span><span class="istickedoff">peekBond res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  542 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a15'&gt;&gt;</span>
+<span class="lineno">  543 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  544 </span>
 <span class="lineno">  545 </span>
 <span class="lineno">  546 </span>

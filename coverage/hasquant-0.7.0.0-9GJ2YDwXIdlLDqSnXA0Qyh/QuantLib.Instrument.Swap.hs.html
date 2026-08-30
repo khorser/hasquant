@@ -2058,7 +2058,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2039 </span>  floatingLegBPS :: a -&gt; IO Double
 <span class="lineno"> 2040 </span>  floatingLegNPV :: a -&gt; IO Double
 <span class="lineno"> 2041 </span>instance HasFloatingLeg (GenFixedVsFloatingSwap f) where
-<span class="lineno"> 2042 </span>  <span class="decl"><span class="nottickedoff">floatingLeg = qlFixedVsFloatingSwapFloatingLeg</span></span>
+<span class="lineno"> 2042 </span>  <span class="decl"><span class="istickedoff">floatingLeg = qlFixedVsFloatingSwapFloatingLeg</span></span>
 <span class="lineno"> 2043 </span>  <span class="decl"><span class="nottickedoff">floatingLegBPS = qlFixedVsFloatingSwapFloatingLegBPS</span></span>
 <span class="lineno"> 2044 </span>  <span class="decl"><span class="nottickedoff">floatingLegNPV = qlFixedVsFloatingSwapFloatingLegNPV</span></span>
 <span class="lineno"> 2045 </span>instance HasFloatingLeg AssetSwap where
@@ -2212,13 +2212,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2193 </span>
 <span class="lineno"> 2194 </span>-- |The floating leg's cash flows.
 <span class="lineno"> 2195 </span>qlFixedVsFloatingSwapFloatingLeg :: (GenFixedVsFloatingSwap f) -&gt; IO ((Leg))
-<span class="lineno"> 2196 </span><span class="decl"><span class="nottickedoff">qlFixedVsFloatingSwapFloatingLeg a1 =</span>
-<span class="lineno"> 2197 </span><span class="spaces">  </span><span class="nottickedoff">withFixedVsFloatingSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2198 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2199 </span><span class="spaces">  </span><span class="nottickedoff">qlFixedVsFloatingSwapFloatingLeg'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2200 </span><span class="spaces">  </span><span class="nottickedoff">peekLeg res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 2201 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2202 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2196 </span><span class="decl"><span class="istickedoff">qlFixedVsFloatingSwapFloatingLeg a1 =</span>
+<span class="lineno"> 2197 </span><span class="spaces">  </span><span class="istickedoff">withFixedVsFloatingSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2198 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2199 </span><span class="spaces">  </span><span class="istickedoff">qlFixedVsFloatingSwapFloatingLeg'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2200 </span><span class="spaces">  </span><span class="istickedoff">peekLeg res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 2201 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2202 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2203 </span>
 <span class="lineno"> 2204 </span>
 <span class="lineno"> 2205 </span>

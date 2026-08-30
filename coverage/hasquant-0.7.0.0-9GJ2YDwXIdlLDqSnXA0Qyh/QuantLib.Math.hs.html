@@ -279,35 +279,35 @@ span.spaces    { background: white }
 <span class="lineno">  260 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  261 </span>
 <span class="lineno">  262 </span>
-<span class="lineno">  263 </span>data ComplexLogFormula = Gatheral
-<span class="lineno">  264 </span>                       | BranchCorrection
-<span class="lineno">  265 </span>                       | AndersenPiterbarg
-<span class="lineno">  266 </span>                       | AndersenPiterbargOptCV
-<span class="lineno">  267 </span>                       | AsymptoticChF
-<span class="lineno">  268 </span>                       | OptimalCV
-<span class="lineno">  269 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  270 </span>
-<span class="lineno">  271 </span>
-<span class="lineno">  272 </span>data CmsMarketCalibrationType = OnSpread
-<span class="lineno">  273 </span>                              | OnPrice
-<span class="lineno">  274 </span>                              | OnForwardCmsPrice
-<span class="lineno">  275 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  276 </span>
-<span class="lineno">  277 </span>
-<span class="lineno">  278 </span>data SobolDirectionIntegers = Unit
-<span class="lineno">  279 </span>                            | Jaeckel
-<span class="lineno">  280 </span>                            | SobolLevitan
-<span class="lineno">  281 </span>                            | SobolLevitanLemieux
-<span class="lineno">  282 </span>                            | JoeKuoD5
-<span class="lineno">  283 </span>                            | JoeKuoD6
-<span class="lineno">  284 </span>                            | JoeKuoD7
-<span class="lineno">  285 </span>                            | Kuo
-<span class="lineno">  286 </span>                            | Kuo2
-<span class="lineno">  287 </span>                            | Kuo3
-<span class="lineno">  288 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  289 </span>
-<span class="lineno">  290 </span>
-<span class="lineno">  291 </span>
+<span class="lineno">  263 </span>-- |Characteristic-function contour/control-variate choice used by Heston integrations.
+<span class="lineno">  264 </span>data ComplexLogFormula = Gatheral
+<span class="lineno">  265 </span>                       | BranchCorrection
+<span class="lineno">  266 </span>                       | AndersenPiterbarg
+<span class="lineno">  267 </span>                       | AndersenPiterbargOptCV
+<span class="lineno">  268 </span>                       | AsymptoticChF
+<span class="lineno">  269 </span>                       | AngledContour
+<span class="lineno">  270 </span>                       | AngledContourNoCV
+<span class="lineno">  271 </span>                       | OptimalCV
+<span class="lineno">  272 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  273 </span>
+<span class="lineno">  274 </span>
+<span class="lineno">  275 </span>data CmsMarketCalibrationType = OnSpread
+<span class="lineno">  276 </span>                              | OnPrice
+<span class="lineno">  277 </span>                              | OnForwardCmsPrice
+<span class="lineno">  278 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  279 </span>
+<span class="lineno">  280 </span>
+<span class="lineno">  281 </span>data SobolDirectionIntegers = Unit
+<span class="lineno">  282 </span>                            | Jaeckel
+<span class="lineno">  283 </span>                            | SobolLevitan
+<span class="lineno">  284 </span>                            | SobolLevitanLemieux
+<span class="lineno">  285 </span>                            | JoeKuoD5
+<span class="lineno">  286 </span>                            | JoeKuoD6
+<span class="lineno">  287 </span>                            | JoeKuoD7
+<span class="lineno">  288 </span>                            | Kuo
+<span class="lineno">  289 </span>                            | Kuo2
+<span class="lineno">  290 </span>                            | Kuo3
+<span class="lineno">  291 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  292 </span>
 <span class="lineno">  293 </span>
 <span class="lineno">  294 </span>
@@ -319,171 +319,174 @@ span.spaces    { background: white }
 <span class="lineno">  300 </span>
 <span class="lineno">  301 </span>
 <span class="lineno">  302 </span>
-<span class="lineno">  303 </span>-- |rounds a value to the precision and rule carried by the given 'Rounding'
-<span class="lineno">  304 </span>applyRounding :: (Rounding) -- ^rounding
-<span class="lineno">  305 </span> -&gt; (Double) -- ^value
-<span class="lineno">  306 </span> -&gt; (Double)
-<span class="lineno">  307 </span><span class="decl"><span class="istickedoff">applyRounding a1 a2 =</span>
-<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">withRounding a1 $ \a1' -&gt; </span>
-<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">applyRounding'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  314 </span>
-<span class="lineno">  315 </span>
-<span class="lineno">  316 </span>
-<span class="lineno">  317 </span>-- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
-<span class="lineno">  318 </span>-- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
-<span class="lineno">  319 </span>-- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
-<span class="lineno">  320 </span>-- 'QuantLib.Model.CalibrationHelper's, this takes any @[Double] -&gt; Double@ objective. The cost
-<span class="lineno">  321 </span>-- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
-<span class="lineno">  322 </span>-- vector, not once per component -- see CLAUDE.md's &quot;coarsen the language-boundary crossing&quot;
-<span class="lineno">  323 </span>-- bullet and 'QuantLib.Internal.Type.withCostFunction'.
-<span class="lineno">  324 </span>optimize :: ([Double] -&gt; Double) -- ^cost function
-<span class="lineno">  325 </span> -&gt; ([Double]) -- ^initial guess
-<span class="lineno">  326 </span> -&gt; (Maybe Constraint) -&gt; (OptimizationMethod) -&gt; (EndCriteria) -&gt; IO (([Double]), (Double), (EndCriteriaType))
-<span class="lineno">  327 </span><span class="decl"><span class="istickedoff">optimize a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">withCostFunction a1 $ \a1' -&gt; </span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">withMaybeConstraint a3 $ \a3' -&gt; </span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">withOptimizationMethod a4 $ \a4' -&gt; </span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">withEndCriteria a5 $ \a5' -&gt; </span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a7' -&gt; </span>
-<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a8' -&gt; </span>
-<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">optimize'_ a1' a2'1  a2'2 a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;</span>
-<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a6'1  a6'2&gt;&gt;= \a6'' -&gt; </span>
-<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">peekDouble  a7'&gt;&gt;= \a7'' -&gt; </span>
-<span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a8'&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">return (a6'', a7'', a8'')</span></span>
-<span class="lineno">  343 </span>
-<span class="lineno">  344 </span>
-<span class="lineno">  345 </span>
-<span class="lineno">  346 </span>-- |Regularly spaced time-grid.
-<span class="lineno">  347 </span>timeGrid :: (Double) -- ^end
-<span class="lineno">  348 </span> -&gt; (Word) -- ^steps
-<span class="lineno">  349 </span> -&gt; IO ((TimeGrid))
-<span class="lineno">  350 </span><span class="decl"><span class="istickedoff">timeGrid a1 a2 =</span>
-<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  353 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">timeGrid'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  358 </span>
-<span class="lineno">  359 </span>
-<span class="lineno">  360 </span>
-<span class="lineno">  361 </span>-- |Time grid with mandatory time points.
-<span class="lineno">  362 </span>-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
-<span class="lineno">  363 </span>timeGridFromList :: (NonEmpty Double) -&gt; IO ((TimeGrid))
-<span class="lineno">  364 </span><span class="decl"><span class="istickedoff">timeGridFromList a1 =</span>
-<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromList'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  371 </span>
-<span class="lineno">  372 </span>
-<span class="lineno">  373 </span>
-<span class="lineno">  374 </span>-- |Time grid with mandatory time points.
-<span class="lineno">  375 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-<span class="lineno">  376 </span>timeGridFromList' :: (NonEmpty Double) -&gt; (Word) -&gt; IO ((TimeGrid))
-<span class="lineno">  377 </span><span class="decl"><span class="nottickedoff">timeGridFromList' a1 a2 =</span>
-<span class="lineno">  378 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  379 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  380 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  381 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromList''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  382 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  383 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  384 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  385 </span>
-<span class="lineno">  386 </span>
-<span class="lineno">  387 </span>
-<span class="lineno">  388 </span>-- |returns the number of times on the grid
-<span class="lineno">  389 </span>size :: (TimeGrid) -&gt; (Word)
-<span class="lineno">  390 </span><span class="decl"><span class="istickedoff">size a1 =</span>
-<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">size'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  396 </span>
-<span class="lineno">  397 </span>
-<span class="lineno">  398 </span>
-<span class="lineno">  399 </span>-- |returns the time at the given index of the grid
-<span class="lineno">  400 </span>timeAt :: (TimeGrid) -- ^grid
-<span class="lineno">  401 </span> -&gt; (Word) -- ^index
-<span class="lineno">  402 </span> -&gt; IO ((Double))
-<span class="lineno">  403 </span><span class="decl"><span class="nottickedoff">timeAt a1 a2 =</span>
-<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  405 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  406 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  407 </span><span class="spaces">  </span><span class="nottickedoff">timeAt'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  408 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  409 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  410 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  411 </span>
-<span class="lineno">  412 </span>
-<span class="lineno">  413 </span>
-<span class="lineno">  414 </span>-- |returns all the times on the grid, as a list
-<span class="lineno">  415 </span>points :: (TimeGrid) -&gt; IO (([Double]))
-<span class="lineno">  416 </span><span class="decl"><span class="istickedoff">points a1 =</span>
-<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">points'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  424 </span>
-<span class="lineno">  425 </span>
-<span class="lineno">  426 </span>
-<span class="lineno">  427 </span>-- |returns all the times on the grid, as a vector
-<span class="lineno">  428 </span>points' :: (TimeGrid) -&gt; IO ((Vector CDouble))
-<span class="lineno">  429 </span><span class="decl"><span class="nottickedoff">points' a1 =</span>
-<span class="lineno">  430 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  431 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  432 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  433 </span><span class="spaces">  </span><span class="nottickedoff">points''_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  434 </span><span class="spaces">  </span><span class="nottickedoff">peekDoubleVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  435 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  436 </span><span class="spaces">  </span><span class="nottickedoff">return (a2'')</span></span>
-<span class="lineno">  437 </span>
-<span class="lineno">  438 </span>
-<span class="lineno">  439 </span>
-<span class="lineno">  440 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  303 </span>
+<span class="lineno">  304 </span>
+<span class="lineno">  305 </span>
+<span class="lineno">  306 </span>-- |rounds a value to the precision and rule carried by the given 'Rounding'
+<span class="lineno">  307 </span>applyRounding :: (Rounding) -- ^rounding
+<span class="lineno">  308 </span> -&gt; (Double) -- ^value
+<span class="lineno">  309 </span> -&gt; (Double)
+<span class="lineno">  310 </span><span class="decl"><span class="istickedoff">applyRounding a1 a2 =</span>
+<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">withRounding a1 $ \a1' -&gt; </span>
+<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">applyRounding'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  317 </span>
+<span class="lineno">  318 </span>
+<span class="lineno">  319 </span>
+<span class="lineno">  320 </span>-- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
+<span class="lineno">  321 </span>-- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
+<span class="lineno">  322 </span>-- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
+<span class="lineno">  323 </span>-- 'QuantLib.Model.CalibrationHelper's, this takes any @[Double] -&gt; Double@ objective. The cost
+<span class="lineno">  324 </span>-- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
+<span class="lineno">  325 </span>-- vector, not once per component -- see CLAUDE.md's &quot;coarsen the language-boundary crossing&quot;
+<span class="lineno">  326 </span>-- bullet and 'QuantLib.Internal.Type.withCostFunction'.
+<span class="lineno">  327 </span>optimize :: ([Double] -&gt; Double) -- ^cost function
+<span class="lineno">  328 </span> -&gt; ([Double]) -- ^initial guess
+<span class="lineno">  329 </span> -&gt; (Maybe Constraint) -&gt; (OptimizationMethod) -&gt; (EndCriteria) -&gt; IO (([Double]), (Double), (EndCriteriaType))
+<span class="lineno">  330 </span><span class="decl"><span class="istickedoff">optimize a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">withCostFunction a1 $ \a1' -&gt; </span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">withMaybeConstraint a3 $ \a3' -&gt; </span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">withOptimizationMethod a4 $ \a4' -&gt; </span>
+<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">withEndCriteria a5 $ \a5' -&gt; </span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a7' -&gt; </span>
+<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a8' -&gt; </span>
+<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">optimize'_ a1' a2'1  a2'2 a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;</span>
+<span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a6'1  a6'2&gt;&gt;= \a6'' -&gt; </span>
+<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">peekDouble  a7'&gt;&gt;= \a7'' -&gt; </span>
+<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a8'&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">return (a6'', a7'', a8'')</span></span>
+<span class="lineno">  346 </span>
+<span class="lineno">  347 </span>
+<span class="lineno">  348 </span>
+<span class="lineno">  349 </span>-- |Regularly spaced time-grid.
+<span class="lineno">  350 </span>timeGrid :: (Double) -- ^end
+<span class="lineno">  351 </span> -&gt; (Word) -- ^steps
+<span class="lineno">  352 </span> -&gt; IO ((TimeGrid))
+<span class="lineno">  353 </span><span class="decl"><span class="istickedoff">timeGrid a1 a2 =</span>
+<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">timeGrid'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  361 </span>
+<span class="lineno">  362 </span>
+<span class="lineno">  363 </span>
+<span class="lineno">  364 </span>-- |Time grid with mandatory time points.
+<span class="lineno">  365 </span>-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
+<span class="lineno">  366 </span>timeGridFromList :: (NonEmpty Double) -&gt; IO ((TimeGrid))
+<span class="lineno">  367 </span><span class="decl"><span class="istickedoff">timeGridFromList a1 =</span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromList'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  374 </span>
+<span class="lineno">  375 </span>
+<span class="lineno">  376 </span>
+<span class="lineno">  377 </span>-- |Time grid with mandatory time points.
+<span class="lineno">  378 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+<span class="lineno">  379 </span>timeGridFromList' :: (NonEmpty Double) -&gt; (Word) -&gt; IO ((TimeGrid))
+<span class="lineno">  380 </span><span class="decl"><span class="nottickedoff">timeGridFromList' a1 a2 =</span>
+<span class="lineno">  381 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  382 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  383 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromList''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  387 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  388 </span>
+<span class="lineno">  389 </span>
+<span class="lineno">  390 </span>
+<span class="lineno">  391 </span>-- |returns the number of times on the grid
+<span class="lineno">  392 </span>size :: (TimeGrid) -&gt; (Word)
+<span class="lineno">  393 </span><span class="decl"><span class="istickedoff">size a1 =</span>
+<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">size'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  398 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  399 </span>
+<span class="lineno">  400 </span>
+<span class="lineno">  401 </span>
+<span class="lineno">  402 </span>-- |returns the time at the given index of the grid
+<span class="lineno">  403 </span>timeAt :: (TimeGrid) -- ^grid
+<span class="lineno">  404 </span> -&gt; (Word) -- ^index
+<span class="lineno">  405 </span> -&gt; IO ((Double))
+<span class="lineno">  406 </span><span class="decl"><span class="nottickedoff">timeAt a1 a2 =</span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="nottickedoff">timeAt'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  411 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  412 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  413 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  414 </span>
+<span class="lineno">  415 </span>
+<span class="lineno">  416 </span>
+<span class="lineno">  417 </span>-- |returns all the times on the grid, as a list
+<span class="lineno">  418 </span>points :: (TimeGrid) -&gt; IO (([Double]))
+<span class="lineno">  419 </span><span class="decl"><span class="istickedoff">points a1 =</span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">points'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  427 </span>
+<span class="lineno">  428 </span>
+<span class="lineno">  429 </span>
+<span class="lineno">  430 </span>-- |returns all the times on the grid, as a vector
+<span class="lineno">  431 </span>points' :: (TimeGrid) -&gt; IO ((Vector CDouble))
+<span class="lineno">  432 </span><span class="decl"><span class="nottickedoff">points' a1 =</span>
+<span class="lineno">  433 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="nottickedoff">points''_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  437 </span><span class="spaces">  </span><span class="nottickedoff">peekDoubleVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  438 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="nottickedoff">return (a2'')</span></span>
+<span class="lineno">  440 </span>
 <span class="lineno">  441 </span>
-<span class="lineno">  442 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRound&quot;
-<span class="lineno">  443 </span>  applyRounding'_ :: ((C2HSImp.Ptr (CRounding)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  442 </span>
+<span class="lineno">  443 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  444 </span>
-<span class="lineno">  445 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlOptimize&quot;
-<span class="lineno">  446 </span>  optimize'_ :: ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CEndCriteria)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
+<span class="lineno">  445 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRound&quot;
+<span class="lineno">  446 </span>  applyRounding'_ :: ((C2HSImp.Ptr (CRounding)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  447 </span>
-<span class="lineno">  448 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid1&quot;
-<span class="lineno">  449 </span>  timeGrid'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  448 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlOptimize&quot;
+<span class="lineno">  449 </span>  optimize'_ :: ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CEndCriteria)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
 <span class="lineno">  450 </span>
-<span class="lineno">  451 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid2&quot;
-<span class="lineno">  452 </span>  timeGridFromList'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  451 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid1&quot;
+<span class="lineno">  452 </span>  timeGrid'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
 <span class="lineno">  453 </span>
-<span class="lineno">  454 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
-<span class="lineno">  455 </span>  timeGridFromList''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
+<span class="lineno">  454 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid2&quot;
+<span class="lineno">  455 </span>  timeGridFromList'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
 <span class="lineno">  456 </span>
-<span class="lineno">  457 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
-<span class="lineno">  458 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))
+<span class="lineno">  457 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
+<span class="lineno">  458 </span>  timeGridFromList''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
 <span class="lineno">  459 </span>
-<span class="lineno">  460 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridAt&quot;
-<span class="lineno">  461 </span>  timeAt'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  460 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
+<span class="lineno">  461 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))
 <span class="lineno">  462 </span>
-<span class="lineno">  463 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
-<span class="lineno">  464 </span>  points'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  463 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridAt&quot;
+<span class="lineno">  464 </span>  timeAt'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  465 </span>
 <span class="lineno">  466 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
-<span class="lineno">  467 </span>  points''_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  467 </span>  points'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  468 </span>
+<span class="lineno">  469 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
+<span class="lineno">  470 </span>  points''_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
 
 </pre>
 </body>

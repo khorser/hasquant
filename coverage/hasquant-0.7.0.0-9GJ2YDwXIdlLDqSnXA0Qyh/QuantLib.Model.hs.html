@@ -482,17 +482,17 @@ span.spaces    { background: white }
 <span class="lineno">  463 </span> -&gt; (GenQuote q2) -- ^reversion
 <span class="lineno">  464 </span> -&gt; (Double) -- ^T
 <span class="lineno">  465 </span> -&gt; IO ((Gsr))
-<span class="lineno">  466 </span><span class="decl"><span class="nottickedoff">gsr a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  467 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  468 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  469 </span><span class="spaces">  </span><span class="nottickedoff">withQuoteArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  470 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a4 $ \a4' -&gt; </span>
-<span class="lineno">  471 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno">  472 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="nottickedoff">gsr'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="nottickedoff">peekGsr res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  466 </span><span class="decl"><span class="istickedoff">gsr a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  467 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  468 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  469 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  470 </span><span class="spaces">  </span><span class="istickedoff">withQuote a4 $ \a4' -&gt; </span>
+<span class="lineno">  471 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">gsr'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">peekGsr res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  477 </span>
 <span class="lineno">  478 </span>
 <span class="lineno">  479 </span>
@@ -535,25 +535,25 @@ span.spaces    { background: white }
 <span class="lineno">  516 </span>  -&gt; GenSwapIndex sidx -- ^swapIndexBase
 <span class="lineno">  517 </span>  -&gt; Word -- ^yGridPoints
 <span class="lineno">  518 </span>  -&gt; IO MarkovFunctional
-<span class="lineno">  519 </span><span class="decl"><span class="nottickedoff">markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reversion vsd vs svol se tq tu</span>
-<span class="lineno">  520 </span><span class="spaces">  </span><span class="nottickedoff">where (tq, tu) = unzip tenors</span></span>
+<span class="lineno">  519 </span><span class="decl"><span class="istickedoff">markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reversion vsd vs svol se tq tu</span>
+<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">where (tq, tu) = unzip tenors</span></span>
 <span class="lineno">  521 </span>qlMarkovFunctional :: (GenYieldTermStructure y) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; (GenSwaptionVolatilityStructure sv) -&gt; ([Day]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; (GenSwapIndex sidx) -&gt; (Word) -&gt; IO ((MarkovFunctional))
-<span class="lineno">  522 </span><span class="decl"><span class="nottickedoff">qlMarkovFunctional a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
-<span class="lineno">  523 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  524 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  525 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  526 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  527 </span><span class="spaces">  </span><span class="nottickedoff">withSwaptionVolatilityStructure a5 $ \a5' -&gt; </span>
-<span class="lineno">  528 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  529 </span><span class="spaces">  </span><span class="nottickedoff">withIntArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  530 </span><span class="spaces">  </span><span class="nottickedoff">withEnumArray a8 $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  531 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a9 $ \a9' -&gt; </span>
-<span class="lineno">  532 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
-<span class="lineno">  533 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno">  534 </span><span class="spaces">  </span><span class="nottickedoff">qlMarkovFunctional'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5' a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' a10' a11' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  535 </span><span class="spaces">  </span><span class="nottickedoff">peekMarkovFunctional res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  536 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a11'&gt;&gt;</span>
-<span class="lineno">  537 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  522 </span><span class="decl"><span class="istickedoff">qlMarkovFunctional a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  526 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="istickedoff">withSwaptionVolatilityStructure a5 $ \a5' -&gt; </span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  529 </span><span class="spaces">  </span><span class="istickedoff">withIntArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="istickedoff">withEnumArray a8 $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  531 </span><span class="spaces">  </span><span class="istickedoff">withSwapIndex a9 $ \a9' -&gt; </span>
+<span class="lineno">  532 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
+<span class="lineno">  533 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
+<span class="lineno">  534 </span><span class="spaces">  </span><span class="istickedoff">qlMarkovFunctional'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5' a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  535 </span><span class="spaces">  </span><span class="istickedoff">peekMarkovFunctional res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  536 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
+<span class="lineno">  537 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  538 </span>
 <span class="lineno">  539 </span>
 <span class="lineno">  540 </span>
@@ -566,20 +566,20 @@ span.spaces    { background: white }
 <span class="lineno">  547 </span> -&gt; (GenIborIndex ibor) -- ^iborIndex
 <span class="lineno">  548 </span> -&gt; (Word) -- ^yGridPoints
 <span class="lineno">  549 </span> -&gt; IO ((MarkovFunctional))
-<span class="lineno">  550 </span><span class="decl"><span class="nottickedoff">markovFunctionalCaplet a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  551 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  552 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  553 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  554 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  555 </span><span class="spaces">  </span><span class="nottickedoff">withOptionletVolatilityStructure a5 $ \a5' -&gt; </span>
-<span class="lineno">  556 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  557 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a7 $ \a7' -&gt; </span>
-<span class="lineno">  558 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  559 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  560 </span><span class="spaces">  </span><span class="nottickedoff">markovFunctionalCaplet'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  561 </span><span class="spaces">  </span><span class="nottickedoff">peekMarkovFunctional res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  562 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  563 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  550 </span><span class="decl"><span class="istickedoff">markovFunctionalCaplet a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  551 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  552 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  553 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  554 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  555 </span><span class="spaces">  </span><span class="istickedoff">withOptionletVolatilityStructure a5 $ \a5' -&gt; </span>
+<span class="lineno">  556 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  557 </span><span class="spaces">  </span><span class="istickedoff">withIborIndex a7 $ \a7' -&gt; </span>
+<span class="lineno">  558 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  559 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  560 </span><span class="spaces">  </span><span class="istickedoff">markovFunctionalCaplet'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  561 </span><span class="spaces">  </span><span class="istickedoff">peekMarkovFunctional res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  562 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  563 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  564 </span>
 <span class="lineno">  565 </span>
 <span class="lineno">  566 </span>
