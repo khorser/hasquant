@@ -45,6 +45,7 @@ module QuantLib.TermStructure.Yield
   , swapRateHelper
   , forwardSpreadedTermStructure
   , zeroSpreadedTermStructure
+  , withCompositeZeroYieldStructure
   , bmaSwapRateHelper
   , multipleResetsSwapRateHelper
   , fraIborRateHelper'
@@ -111,6 +112,7 @@ import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
 import Data.Maybe(fromMaybe)
+import Foreign.Ptr(FunPtr)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.CashFlow#}(RateAveragingType(..))
@@ -576,6 +578,26 @@ oisRateHelperFull' startDate endDate fixedRate idx discountingCurve opts = do
 -- |A yield curve offset from 'baseCurve' by a spread added to its zero-yield rate, remaining
 -- linked to changes in either.
 {#fun qlZeroSpreadedTermStructure as zeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |A yield curve whose zero rate is @f rate1 rate2@, where @rate1@ and @rate2@ are the
+-- input curves' zero rates expressed with the given compounding and frequency. The result is
+-- live in both inputs.
+--
+-- __The resulting curve is valid only inside the continuation, which must span its whole use.__
+-- QuantLib stores @f@ and calls it whenever the curve is queried, including from any object that
+-- stores the curve. Leaving the continuation frees its function pointer; a later query crashes
+-- the process. @f@ must be total: an exception escaping it crosses C++ unsafely.
+withCompositeZeroYieldStructure :: (Double -> Double -> Double) -- ^f(rate1, rate2)
+  -> GenYieldTermStructure y1 -- ^curve1
+  -> GenYieldTermStructure y2 -- ^curve2
+  -> Compounding
+  -> Frequency
+  -> (YieldTermStructure -> IO a)
+  -> IO a
+withCompositeZeroYieldStructure f c1 c2 comp freq k =
+  withQuoteBinaryFun f $ \fp -> qlCompositeZeroYieldStructure c1 c2 fp comp freq >>= k
+{#fun qlCompositeZeroYieldStructure{withYieldTermStructure*`GenYieldTermStructure y1',withYieldTermStructure*`GenYieldTermStructure y2'
+  ,id`FunPtr QuoteBinaryFun',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Rate helper for bootstrapping over BMA swap rates.
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote q' -- ^liborFraction

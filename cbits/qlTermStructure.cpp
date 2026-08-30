@@ -1394,6 +1394,9 @@ try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ne
 QlYieldTermStructure* qlFlatForward1(unsigned settlementDays, Calendar* calendar, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
 try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(settlementDays, *arg(calendar), *arg(forward), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlYieldTermStructure* qlCompositeZeroYieldStructure(QlYieldTermStructure* curve1, QlYieldTermStructure* curve2, double (*fn)(double, double), int compounding, int frequency, char **e) {
+  try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new CompositeZeroYieldStructure<double (*)(double, double)>(*arg(curve1), *arg(curve2), fn, (Compounding)compounding, (Frequency)frequency)))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o) {del(o);}
 

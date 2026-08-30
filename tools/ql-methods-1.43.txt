@@ -9806,8 +9806,8 @@
 | |ql/termstructures/yield/bootstraptraits.hpp|static Real SimpleZeroYield::initialValue(const YieldTermStructure *);
 | |ql/termstructures/yield/bootstraptraits.hpp|static void SimpleZeroYield::updateGuess(std::vector<Real> & data, Real rate, Size i);
 | |ql/termstructures/yield/bootstraptraits.hpp|static Size SimpleZeroYield::maxIterations();
-| |ql/termstructures/yield/compositezeroyieldstructure.hpp|CompositeZeroYieldStructure::CompositeZeroYieldStructure<BinaryFunction>(Handle<YieldTermStructure> h1, Handle<YieldTermStructure> h2, const BinaryFunction & f, Compounding comp = Continuous, Frequency freq = NoFrequency);
-| |ql/termstructures/yield/compositezeroyieldstructure.hpp|CompositeZeroYieldStructure<BinaryFunction>(Handle<YieldTermStructure> h1, Handle<YieldTermStructure> h2, const BinaryFunction & f, Compounding comp, Frequency freq);
+|v|ql/termstructures/yield/compositezeroyieldstructure.hpp|CompositeZeroYieldStructure::CompositeZeroYieldStructure<BinaryFunction>(Handle<YieldTermStructure> h1, Handle<YieldTermStructure> h2, const BinaryFunction & f, Compounding comp = Continuous, Frequency freq = NoFrequency);
+|v|ql/termstructures/yield/compositezeroyieldstructure.hpp|CompositeZeroYieldStructure<BinaryFunction>(Handle<YieldTermStructure> h1, Handle<YieldTermStructure> h2, const BinaryFunction & f, Compounding comp, Frequency freq);
 |?|ql/termstructures/yield/compositezeroyieldstructure.hpp|DayCounter dayCounter() const;
 |?|ql/termstructures/yield/compositezeroyieldstructure.hpp|Calendar calendar() const;
 | |ql/termstructures/yield/compositezeroyieldstructure.hpp|Natural settlementDays() const;

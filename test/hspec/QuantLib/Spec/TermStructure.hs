@@ -141,6 +141,23 @@ spec = do
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
+      it "composite zero yield" $
+        Settings.keepingSettings' $ do
+          let refDate = 11 `december` 2012
+              queryDate = addGregorianYearsClip 5 refDate
+          Settings.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          q1 <- Quote.simpleQuote 0.03
+          q2 <- Quote.simpleQuote 0.01
+          c1 <- flatForward refDate q1 dc IR.Continuous NoFrequency
+          c2 <- flatForward refDate q2 dc IR.Continuous NoFrequency
+          withCompositeZeroYieldStructure (-) c1 c2 IR.Continuous NoFrequency $ \composite -> do
+            initial <- IR.rate <$> zeroRate' composite queryDate dc IR.Continuous NoFrequency False
+            _ <- Quote.setValue q1 0.04
+            updated <- IR.rate <$> zeroRate' composite queryDate dc IR.Continuous NoFrequency False
+            initial `shouldSatisfy` closePrec 0.02 (1.0e-6 * 0.02)
+            updated `shouldSatisfy` closePrec 0.03 (1.0e-6 * 0.03)
+
       -- Same spread value at two nodes bracketing the query date: with 'Linear' interpolation
       -- of the (piecewise-bootstrapped) spread, the spread at any date between them equals that
       -- common value, so this reduces to the same check as 'zeroSpreadedTermStructure' above.
