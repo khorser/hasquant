@@ -360,8 +360,10 @@ extern "C" {
   QlSoftBarrierOption* qlSoftBarrierOption(int barrierType, double barrierLo, double barrierHi, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   double qlSoftBarrierOptionImpliedVolatility(QlSoftBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlOneAssetOption* qlSimpleChooserOption(int choosingDate, double strike, QlExercise* exercise, char **e);
+  QlOneAssetOption* qlComplexChooserOption(int choosingDate, double strikeCall, double strikePut, QlExercise* exerciseCall, QlExercise* exercisePut, char **e);
   QlMultiAssetOption* qlTwoAssetCorrelationOption(int type, double strike1, double strike2, QlExercise* exercise, char **e);
   QlOneAssetOption* qlWriterExtensibleOption(QlPlainVanillaPayoff* payoff1, QlExercise* exercise1, QlPlainVanillaPayoff* payoff2, QlExercise* exercise2, char **e);
+  QlOneAssetOption* qlHolderExtensibleOption(int type, double premium, int secondExpiryDate, double secondStrike, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlCompoundOption(QlStrikedTypePayoff* motherPayoff, QlExercise* motherExercise, QlStrikedTypePayoff* daughterPayoff, QlExercise* daughterExercise, char **e);
   double qlMargrabeOptionDelta1(QlMargrabeOption* o, char **e);

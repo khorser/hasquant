@@ -18,6 +18,7 @@
 #include <ql/experimental/exoticoptions/mchimalayaengine.hpp>
 #include <ql/experimental/exoticoptions/mcpagodaengine.hpp>
 #include <ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp>
+#include <ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp>
 #include <ql/pricingengines/basket/mceuropeanbasketengine.hpp>
 #include <ql/pricingengines/basket/mcamericanbasketengine.hpp>
 #include <ql/math/statistics/incrementalstatistics.hpp>
@@ -170,6 +171,12 @@ PricingEngine* qlMCDigitalEngine1Aux(int rngtrait, int stattrait, const shared_p
 PricingEngine* qlMCForwardEuropeanBSEngine1Aux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
   return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
     return new MCForwardEuropeanBSEngine<typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
+PricingEngine* qlMCForwardEuropeanHestonEngine1Aux(int rngtrait, int stattrait, const shared_ptr<HestonProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, int controlVariate) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCForwardEuropeanHestonEngine<typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, controlVariate);
   });
 }
 

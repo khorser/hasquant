@@ -3320,7 +3320,7 @@
 |?|ql/instruments/cliquetoption.hpp|CliquetOption::CliquetOption(const ext::shared_ptr<PercentageStrikePayoff> &, const ext::shared_ptr<EuropeanExercise> & maturity, std::vector<Date> resetDates);
 | |ql/instruments/cliquetoption.hpp|arguments::arguments();
 | |ql/instruments/cliquetoption.hpp|void arguments::validate() const;
-| |ql/instruments/complexchooseroption.hpp|ComplexChooserOption::ComplexChooserOption(Date choosingDate, Real strikeCall, Real strikePut, const ext::shared_ptr<Exercise> & exerciseCall, ext::shared_ptr<Exercise> exercisePut);
+|v|ql/instruments/complexchooseroption.hpp|ComplexChooserOption::ComplexChooserOption(Date choosingDate, Real strikeCall, Real strikePut, const ext::shared_ptr<Exercise> & exerciseCall, ext::shared_ptr<Exercise> exercisePut);
 | |ql/instruments/complexchooseroption.hpp|void arguments::validate() const;
 | |ql/instruments/compositeinstrument.hpp|void CompositeInstrument::add(const ext::shared_ptr<Instrument> & instrument, Real multiplier = 1.0);
 | |ql/instruments/compositeinstrument.hpp|void CompositeInstrument::subtract(const ext::shared_ptr<Instrument> & instrument, Real multiplier = 1.0);
@@ -3640,7 +3640,7 @@
 |v|ql/instruments/fxforward.hpp|Real FxForward::npvTargetCurrency() const;
 | |ql/instruments/fxforward.hpp|void arguments::validate() const;
 | |ql/instruments/fxforward.hpp|void results::reset();
-| |ql/instruments/holderextensibleoption.hpp|HolderExtensibleOption::HolderExtensibleOption(Option::Type type, Real premium, Date secondExpiryDate, Real secondStrike, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
+|v|ql/instruments/holderextensibleoption.hpp|HolderExtensibleOption::HolderExtensibleOption(Option::Type type, Real premium, Date secondExpiryDate, Real secondStrike, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
 | |ql/instruments/holderextensibleoption.hpp|void arguments::validate() const;
 | |ql/instruments/impliedvolatility.hpp|static Volatility ImpliedVolatilityHelper::calculate(const Instrument & instrument, const PricingEngine & engine, SimpleQuote & volQuote, Real targetValue, Real accuracy, Natural maxEvaluations, Volatility minVol, Volatility maxVol);
 | |ql/instruments/impliedvolatility.hpp|static ext::shared_ptr<GeneralizedBlackScholesProcess> ImpliedVolatilityHelper::clone(const ext::shared_ptr<GeneralizedBlackScholesProcess> &, const ext::shared_ptr<SimpleQuote> &);
@@ -7776,13 +7776,13 @@
 |x|ql/pricingengines/credit/midpointcdsengine.hpp|void MidPointCdsEngine::calculate() const;
 | |ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp|AnalyticAmericanMargrabeEngine::AnalyticAmericanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
 |x|ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp|void AnalyticAmericanMargrabeEngine::calculate() const;
-| |ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|AnalyticComplexChooserEngine::AnalyticComplexChooserEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|AnalyticComplexChooserEngine::AnalyticComplexChooserEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|void AnalyticComplexChooserEngine::calculate() const;
 |v|ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|AnalyticCompoundOptionEngine::AnalyticCompoundOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|void AnalyticCompoundOptionEngine::calculate() const;
 | |ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|AnalyticEuropeanMargrabeEngine::AnalyticEuropeanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
 |x|ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|void AnalyticEuropeanMargrabeEngine::calculate() const;
-| |ql/pricingengines/exotic/analyticholderextensibleoptionengine.hpp|AnalyticHolderExtensibleOptionEngine::AnalyticHolderExtensibleOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/exotic/analyticholderextensibleoptionengine.hpp|AnalyticHolderExtensibleOptionEngine::AnalyticHolderExtensibleOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticholderextensibleoptionengine.hpp|void AnalyticHolderExtensibleOptionEngine::calculate() const;
 |v|ql/pricingengines/exotic/analyticsimplechooserengine.hpp|AnalyticSimpleChooserEngine::AnalyticSimpleChooserEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticsimplechooserengine.hpp|void AnalyticSimpleChooserEngine::calculate() const;
@@ -7828,7 +7828,7 @@
 | |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MakeMCForwardEuropeanBSEngine<RNG, S> & withSeed(BigNatural seed);
 | |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MakeMCForwardEuropeanBSEngine<RNG, S> & withBrownianBridge(bool b);
 | |ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp|MakeMCForwardEuropeanBSEngine<RNG, S> & withAntitheticVariate(bool b);
-| |ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp|MCForwardEuropeanHestonEngine::MCForwardEuropeanHestonEngine<RNG, S, P>(const ext::shared_ptr<P> & process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, bool controlVariate = false);
+|v|ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp|MCForwardEuropeanHestonEngine::MCForwardEuropeanHestonEngine<RNG, S, P>(const ext::shared_ptr<P> & process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, bool controlVariate = false);
 | |ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp|MakeMCForwardEuropeanHestonEngine::MakeMCForwardEuropeanHestonEngine<RNG, S, P>(ext::shared_ptr<P> process);
 | |ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp|MakeMCForwardEuropeanHestonEngine<RNG, S, P> & MakeMCForwardEuropeanHestonEngine::withSteps(Size steps);
 | |ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp|MakeMCForwardEuropeanHestonEngine<RNG, S, P> & MakeMCForwardEuropeanHestonEngine::withStepsPerYear(Size steps);
@@ -8116,7 +8116,7 @@
 |v|ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp|AnalyticHestonHullWhiteEngine::AnalyticHestonHullWhiteEngine(const ext::shared_ptr<HestonModel> & model, ext::shared_ptr<HullWhite> hullWhiteModel, Real relTolerance, Size maxEvaluations);
 | |ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp|void AnalyticHestonHullWhiteEngine::update();
 | |ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp|std::complex<Real> addOnTerm(Real u, Time, Size j) const;
-| |ql/pricingengines/vanilla/analyticpdfhestonengine.hpp|AnalyticPDFHestonEngine::AnalyticPDFHestonEngine(ext::shared_ptr<HestonModel> model, Real gaussLobattoEps = 1e-6, Size gaussLobattoIntegrationOrder = 10000UL);
+|v|ql/pricingengines/vanilla/analyticpdfhestonengine.hpp|AnalyticPDFHestonEngine::AnalyticPDFHestonEngine(ext::shared_ptr<HestonModel> model, Real gaussLobattoEps = 1e-6, Size gaussLobattoIntegrationOrder = 10000UL);
 |x|ql/pricingengines/vanilla/analyticpdfhestonengine.hpp|void AnalyticPDFHestonEngine::calculate() const;
 | |ql/pricingengines/vanilla/analyticpdfhestonengine.hpp|Real AnalyticPDFHestonEngine::Pv(Real x_t, Time t) const;
 | |ql/pricingengines/vanilla/analyticpdfhestonengine.hpp|Real AnalyticPDFHestonEngine::cdf(Real X, Time t) const;
@@ -8145,7 +8145,7 @@
 |x|ql/pricingengines/vanilla/bjerksundstenslandengine.hpp|void BjerksundStenslandApproximationEngine::calculate() const;
 | |ql/pricingengines/vanilla/cashdividendeuropeanengine.hpp|CashDividendEuropeanEngine::CashDividendEuropeanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, DividendSchedule dividends, CashDividendModel cashDividendModel = Spot);
 |x|ql/pricingengines/vanilla/cashdividendeuropeanengine.hpp|void CashDividendEuropeanEngine::calculate() const;
-| |ql/pricingengines/vanilla/coshestonengine.hpp|COSHestonEngine::COSHestonEngine(const ext::shared_ptr<HestonModel> & model, Real L = 16, Size N = 200);
+|v|ql/pricingengines/vanilla/coshestonengine.hpp|COSHestonEngine::COSHestonEngine(const ext::shared_ptr<HestonModel> & model, Real L = 16, Size N = 200);
 | |ql/pricingengines/vanilla/coshestonengine.hpp|void COSHestonEngine::update();
 |x|ql/pricingengines/vanilla/coshestonengine.hpp|void COSHestonEngine::calculate() const;
 | |ql/pricingengines/vanilla/coshestonengine.hpp|std::complex<Real> COSHestonEngine::chF(Real u, Real t) const;
@@ -8160,11 +8160,11 @@
 | |ql/pricingengines/vanilla/discretizedvanillaoption.hpp|DiscretizedVanillaOption::DiscretizedVanillaOption(const VanillaOption::arguments &, const StochasticProcess & process, const TimeGrid & grid = TimeGrid());
 | |ql/pricingengines/vanilla/exponentialfittinghestonengine.hpp|ExponentialFittingHestonEngine::ExponentialFittingHestonEngine(const ext::shared_ptr<HestonModel> & model, ControlVariate cv = ControlVariate::OptimalCV, Real scaling = Null<Real>(), Real alpha = - 0.5);
 |x|ql/pricingengines/vanilla/exponentialfittinghestonengine.hpp|void ExponentialFittingHestonEngine::calculate() const;
-| |ql/pricingengines/vanilla/fdbatesvanillaengine.hpp|FdBatesVanillaEngine::FdBatesVanillaEngine(const ext::shared_ptr<BatesModel> & model, Size tGrid = 100, Size xGrid = 100, Size vGrid = 50, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Hundsdorfer());
-| |ql/pricingengines/vanilla/fdbatesvanillaengine.hpp|FdBatesVanillaEngine::FdBatesVanillaEngine(const ext::shared_ptr<BatesModel> & model, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size vGrid = 50, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Hundsdorfer());
+|v|ql/pricingengines/vanilla/fdbatesvanillaengine.hpp|FdBatesVanillaEngine::FdBatesVanillaEngine(const ext::shared_ptr<BatesModel> & model, Size tGrid = 100, Size xGrid = 100, Size vGrid = 50, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Hundsdorfer());
+|v|ql/pricingengines/vanilla/fdbatesvanillaengine.hpp|FdBatesVanillaEngine::FdBatesVanillaEngine(const ext::shared_ptr<BatesModel> & model, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size vGrid = 50, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Hundsdorfer());
 |x|ql/pricingengines/vanilla/fdbatesvanillaengine.hpp|void FdBatesVanillaEngine::calculate() const;
-| |ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|FdBlackScholesShoutEngine::FdBlackScholesShoutEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
-| |ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|FdBlackScholesShoutEngine::FdBlackScholesShoutEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
+|v|ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|FdBlackScholesShoutEngine::FdBlackScholesShoutEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
+|v|ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|FdBlackScholesShoutEngine::FdBlackScholesShoutEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas());
 |x|ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp|void FdBlackScholesShoutEngine::calculate() const;
 |v|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);
 |v|ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp|FdBlackScholesVanillaEngine::FdBlackScholesVanillaEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, DividendSchedule dividends, Size tGrid = 100, Size xGrid = 100, Size dampingSteps = 0, const FdmSchemeDesc & schemeDesc = FdmSchemeDesc::Douglas(), bool localVol = false, Real illegalLocalVolOverwrite = - Null<Real>(), CashDividendModel cashDividendModel = Spot);

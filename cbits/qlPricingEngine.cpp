@@ -106,6 +106,12 @@
 #include <ql/experimental/finitedifferences/glued1dmesher.hpp>
 #include <ql/pricingengines/vanilla/fdhestonvanillaengine.hpp>
 #include <ql/pricingengines/vanilla/fdhestonhullwhitevanillaengine.hpp>
+#include <ql/pricingengines/exotic/analyticcomplexchooserengine.hpp>
+#include <ql/pricingengines/exotic/analyticholderextensibleoptionengine.hpp>
+#include <ql/pricingengines/vanilla/coshestonengine.hpp>
+#include <ql/pricingengines/vanilla/analyticpdfhestonengine.hpp>
+#include <ql/pricingengines/vanilla/fdbatesvanillaengine.hpp>
+#include <ql/pricingengines/vanilla/fdblackscholesshoutengine.hpp>
 #include <ql/models/all.hpp>
 #include <ql/legacy/libormarketmodels/all.hpp>
 #include <ql/experimental/shortrate/generalizedhullwhite.hpp>
@@ -341,11 +347,17 @@ QlPricingEngine* qlAnalyticSoftBarrierEngine(QlGeneralizedBlackScholesProcess* p
 QlPricingEngine* qlAnalyticSimpleChooserEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticSimpleChooserEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticComplexChooserEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticComplexChooserEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticTwoAssetCorrelationEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* correlation, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticTwoAssetCorrelationEngine(*arg(process1), *arg(process2), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticWriterExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticWriterExtensibleOptionEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticHolderExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticHolderExtensibleOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticPartialTimeBarrierOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticPartialTimeBarrierOptionEngine(*arg(process)))));
@@ -739,6 +751,9 @@ QlPricingEngine* qlMCDigitalEngine1(int rngtrait, int stattrait, QlGeneralizedBl
 QlPricingEngine* qlMCForwardEuropeanBSEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCForwardEuropeanBSEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCForwardEuropeanHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, int controlVariate, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCForwardEuropeanHestonEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, controlVariate))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticAPEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -798,6 +813,24 @@ QlPricingEngine* qlFdHestonVanillaEngine(QlHestonModel* model, unsigned tGrid, u
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlFdHestonVanillaEngine1(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
   try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), qlVector(dividends, dividendsLen), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlCOSHestonEngine(QlHestonModel* model, double L, unsigned N, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new COSHestonEngine(*arg(model), L, N))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticPDFHestonEngine(QlHestonModel* model, double eps, unsigned integrationOrder, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticPDFHestonEngine(*arg(model), eps, integrationOrder))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBatesVanillaEngine(QlBatesModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBatesVanillaEngine(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBatesVanillaEngine1(QlBatesModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBatesVanillaEngine(*arg(model), qlVector(dividends, dividendsLen), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesShoutEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesShoutEngine(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdBlackScholesShoutEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesShoutEngine(*arg(process), qlVector(dividends, dividendsLen), tGrid, xGrid, dampingSteps, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlFdHestonVanillaEngine2(QlHestonModel* model, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
   try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));

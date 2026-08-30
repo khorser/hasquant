@@ -31,8 +31,10 @@ module QuantLib.PricingEngine
   , analyticPartialTimeBarrierOptionEngine
   , analyticBinaryBarrierEngine
   , analyticSimpleChooserEngine
+  , analyticComplexChooserEngine
   , analyticTwoAssetCorrelationEngine
   , analyticWriterExtensibleOptionEngine
+  , analyticHolderExtensibleOptionEngine
   , fdBlackScholesBarrierEngine
   , fdHestonBarrierEngine
   , fdHestonBarrierEngine'
@@ -62,6 +64,7 @@ module QuantLib.PricingEngine
   , forwardBjerksundStenslandEngine
   , forwardFdBlackScholesVanillaEngine
   , mcForwardEuropeanBSEngine
+  , mcForwardEuropeanHestonEngine
   , analyticHestonForwardEuropeanEngine
   , quantoEuropeanEngine
   , quantoForwardEuropeanEngine
@@ -152,6 +155,12 @@ module QuantLib.PricingEngine
   , fdmQuantoHelperQuantoAdjustment
   , fdHestonVanillaEngine
   , fdHestonVanillaEngine'
+  , cosHestonEngine
+  , analyticPdfHestonEngine
+  , fdBatesVanillaEngine
+  , fdBatesVanillaEngine'
+  , fdBlackScholesShoutEngine
+  , fdBlackScholesShoutEngine'
   , fdHestonVanillaEngineQuanto
   , fdHestonVanillaEngineQuanto'
   , fdHestonHullWhiteVanillaEngine
@@ -407,6 +416,9 @@ import QuantLib.Internal.Common
 -- |analytic pricing engine for simple chooser options
 {#fun qlAnalyticSimpleChooserEngine as analyticSimpleChooserEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Analytic Black-Scholes engine for a 'complexChooserOption'. Both alternatives must have European exercise.
+{#fun qlAnalyticComplexChooserEngine as analyticComplexChooserEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |analytic pricing engine for two-asset correlation options
 {#fun qlAnalyticTwoAssetCorrelationEngine as analyticTwoAssetCorrelationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process1
   ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process2
@@ -415,6 +427,9 @@ import QuantLib.Internal.Common
 
 -- |analytic pricing engine for writer-extensible options
 {#fun qlAnalyticWriterExtensibleOptionEngine as analyticWriterExtensibleOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Analytic Black-Scholes engine for a 'holderExtensibleOption'. The original option must have European exercise.
+{#fun qlAnalyticHolderExtensibleOptionEngine as analyticHolderExtensibleOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for partial-time barrier options
 {#fun qlAnalyticPartialTimeBarrierOptionEngine as analyticPartialTimeBarrierOptionEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -532,6 +547,17 @@ import QuantLib.Internal.Common
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo engine for European 'forwardVanillaOption's under a Heston process. Supply either @requiredSamples@ or @requiredTolerance@, and use a fixed nonzero @seed@ for reproducible results.
+{#fun qlMCForwardEuropeanHestonEngine1 as mcForwardEuropeanHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,`Bool' -- ^controlVariate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for forward-starting European options under a Heston process
@@ -1184,6 +1210,48 @@ import QuantLib.Internal.Common
   ,withFdmSchemeDesc*`FdmScheme'
   ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Fourier-cosine-series Heston engine for European vanilla options. @L@ controls the truncation range and @n@ the number of cosine terms.
+{#fun qlCOSHestonEngine as cosHestonEngine{withHestonModel*`GenHestonModel hm',`Double' -- ^L
+  ,fromIntegral`Word' -- ^n
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Heston transition-density integration engine for European vanilla options. @eps@ and @integrationOrder@ control Gauss-Lobatto integration accuracy and its iteration limit.
+{#fun qlAnalyticPDFHestonEngine as analyticPdfHestonEngine{withHestonModel*`GenHestonModel hm',`Double' -- ^eps
+  ,fromIntegral`Word' -- ^integrationOrder
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Partial-integro finite-difference Bates-model engine for vanilla options.
+{#fun qlFdBatesVanillaEngine as fdBatesVanillaEngine{withBatesModel*`GenBatesModel bm',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Partial-integro finite-difference Bates-model engine for vanilla options with discrete dividends.
+{#fun qlFdBatesVanillaEngine1 as fdBatesVanillaEngine'{withBatesModel*`GenBatesModel bm',withDividendArray*`[Dividend]'&
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Finite-difference Black-Scholes engine for American shout options.
+{#fun qlFdBlackScholesShoutEngine as fdBlackScholesShoutEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Finite-difference Black-Scholes engine for American shout options with discrete dividends.
+{#fun qlFdBlackScholesShoutEngine1 as fdBlackScholesShoutEngine'{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Heston-model pricing engine for vanilla options, with quanto adjustment

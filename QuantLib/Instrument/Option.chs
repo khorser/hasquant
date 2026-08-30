@@ -55,8 +55,10 @@ module QuantLib.Instrument.Option
   , gamma2
   , margrabeOption
   , simpleChooserOption
+  , complexChooserOption
   , twoAssetCorrelationOption
   , writerExtensibleOption
+  , holderExtensibleOption
 
   , multiAssetOption
   , deltaForward
@@ -185,11 +187,28 @@ import QuantLib.Internal.Common
   ,`Double' -- ^strike
   ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 
+-- |Complex chooser option: on the choosing date the holder selects between a call and a put with independent strikes and exercise dates.
+{#fun qlComplexChooserOption as complexChooserOption{withDay*`Day' -- ^choosingDate
+  ,`Double' -- ^strikeCall
+  ,`Double' -- ^strikePut
+  ,withExercise*`Exercise' -- ^exerciseCall
+  ,withExercise*`Exercise' -- ^exercisePut
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
 -- |Writer-extensible option on a single asset: if out of the money at the first exercise, it is extended to a second exercise with an amended payoff.
 {#fun qlWriterExtensibleOption as writerExtensibleOption{withPlainVanillaPayoff*`PlainVanillaPayoff' -- ^payoff1
   ,withExercise*`Exercise' -- ^exercise1
   ,withPlainVanillaPayoff*`PlainVanillaPayoff' -- ^payoff2
   ,withExercise*`Exercise' -- ^exercise2
+  ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
+-- |Holder-extensible option: the holder may pay @premium@ at the first exercise to replace its payoff with an option at @secondExpiryDate@ and @secondStrike@.
+{#fun qlHolderExtensibleOption as holderExtensibleOption{fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^premium
+  ,withDay*`Day' -- ^secondExpiryDate
+  ,`Double' -- ^secondStrike
+  ,withStrikedPayoff*`StrikedPayoff'
+  ,withExercise*`Exercise'
   ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 
 -- |Sensitivity of a MargrabeOption's value to the price of the first asset.

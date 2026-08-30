@@ -9,9 +9,11 @@ namespace hasquant {
 #include <ql/instruments/compositeinstrument.hpp>
 #include <ql/instruments/stickyratchet.hpp>
 #include <ql/instruments/simplechooseroption.hpp>
+#include <ql/instruments/complexchooseroption.hpp>
 #include <ql/instruments/softbarrieroption.hpp>
 #include <ql/instruments/twoassetcorrelationoption.hpp>
 #include <ql/instruments/writerextensibleoption.hpp>
+#include <ql/instruments/holderextensibleoption.hpp>
 #include <ql/instruments/forward.hpp>
 #include <ql/instruments/perpetualfutures.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
@@ -876,11 +878,17 @@ double qlSoftBarrierOptionImpliedVolatility(QlSoftBarrierOption* o, double price
 QlOneAssetOption* qlSimpleChooserOption(int choosingDate, double strike, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new SimpleChooserOption(Date(choosingDate), strike, *arg(exercise)))));
   } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
+QlOneAssetOption* qlComplexChooserOption(int choosingDate, double strikeCall, double strikePut, QlExercise* exerciseCall, QlExercise* exercisePut, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new ComplexChooserOption(Date(choosingDate), strikeCall, strikePut, *arg(exerciseCall), *arg(exercisePut)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 QlMultiAssetOption* qlTwoAssetCorrelationOption(int type, double strike1, double strike2, QlExercise* exercise, char **e) {
   try {return ret(new QlMultiAssetOption(alloc(new TwoAssetCorrelationOption((Option::Type)type, strike1, strike2, *arg(exercise)))));
   } catch (std::exception& er) {return handleException<QlMultiAssetOption*>(e, er);}}
 QlOneAssetOption* qlWriterExtensibleOption(QlPlainVanillaPayoff* payoff1, QlExercise* exercise1, QlPlainVanillaPayoff* payoff2, QlExercise* exercise2, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new WriterExtensibleOption(*arg(payoff1), *arg(exercise1), *arg(payoff2), *arg(exercise2)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
+QlOneAssetOption* qlHolderExtensibleOption(int type, double premium, int secondExpiryDate, double secondStrike, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new HolderExtensibleOption((Option::Type)type, premium, Date(secondExpiryDate), secondStrike, *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 QlOneAssetOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));

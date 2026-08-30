@@ -118,6 +118,20 @@ spec = do
         v <- npv opt
         v `shouldSatisfy` closePrec 6.1071 3e-5
 
+  describe "ComplexChooserOption" $
+    -- cached reference from QuantLib test-suite/chooseroption.cpp::testAnalyticComplexChooserEngine
+    it "reproduces Haug's complex chooser option value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 50.0 0.05 0.10 0.35
+        eng <- analyticComplexChooserEngine process
+        opt <- complexChooserOption (addDays 90 evalDate) 55.0 48.0
+                 (europeanIn 270 evalDate) (europeanIn 300 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 6.0508 1e-4
+
   describe "SoftBarrierOption" $ do
     -- cached reference from QuantLib test-suite/softbarrieroption.cpp::testSoftBarrierHaug
     -- (Haug 2nd ed., p.166; first DownOut/Call row). Pinned to the upstream test's own
@@ -224,6 +238,20 @@ spec = do
         let mcNpv = writerExtensibleMcNpv 100000 s0 q r vol t1 t2
                       (\s -> max 0 (s - x1)) (\s -> max 0 (s - x2))
         mcNpv `shouldSatisfy` closePrec analytic (0.03 * analytic)
+
+  describe "HolderExtensibleOption" $
+    -- cached reference from QuantLib test-suite/extensibleoptions.cpp::testAnalyticHolderExtensibleOptionEngine
+    it "reproduces the upstream holder-extensible option value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 100.0 0.0 0.08 0.25
+        eng <- analyticHolderExtensibleOptionEngine process
+        opt <- holderExtensibleOption Call 1.0 (addDays 270 evalDate) 105.0
+                 (PlainVanilla (PlainVanillaPayoff Call 100.0)) (europeanIn 180 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 9.4233 1e-4
 
   describe "Geometric-average Asian options" $ do
     -- cached reference from QuantLib test-suite/asianoptions.cpp::testAnalyticContinuousGeometricAveragePrice
