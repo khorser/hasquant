@@ -238,6 +238,12 @@ insufficient.
   `stack` does not make `cabal exec` see the new code. Rebuild with
   `cabal build lib:hasquant` (the driver's first step) before running a
   smoke script, even right after a `stack build`.
+- **The fixed-date and floating-date swaption-volatility constructors have
+  nearly identical names but different first arguments.**
+  `constantSwaptionVolatility'` takes a `Day` reference date;
+  `constantSwaptionVolatility` takes a `Word` year offset. A smoke test
+  using an actual date must call the apostrophe-suffixed fixed-date binding,
+  otherwise standalone compilation fails with a `Day`/`Word` mismatch.
 - **`cabal install --lib hasquant` fails if already registered**
   ("Packages requested to install already exist in environment file") —
   the driver passes `--force-reinstalls` to make re-registering after an

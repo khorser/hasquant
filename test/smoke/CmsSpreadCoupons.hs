@@ -25,7 +25,7 @@ main = do
   cms2y <- IR.liborSwapIndex IR.EurLiborSwapIsdaFixA (2, Years) (Just curve) (Just curve)
   spreadIndex <- IR.swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
   volQuote <- Quote.simpleQuote 0.20
-  vol <- Vol.constantSwaptionVolatility refDate cal Following volQuote dc ShiftedLognormal 0
+  vol <- Vol.constantSwaptionVolatility' refDate cal Following volQuote dc ShiftedLognormal 0
   meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
   correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
   cmsPricer <- CF.linearTsrPricer vol meanReversion (Just curve)
