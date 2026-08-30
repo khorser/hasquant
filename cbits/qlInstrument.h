@@ -616,6 +616,7 @@ extern "C" {
   void qlQuantLibSetEquityCashFlowPricer(Leg* leg, QlEquityCashFlowPricer* pricer, char **e);
 
   QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e);
+  QlFloatingRateCouponPricer *qlBlackIborQuantoCouponPricer(QlBlackVolTermStructure *fxRateBlackVolatility, QlQuote *underlyingFxCorrelation, QlOptionletVolatilityStructure *capletVolatility, char **e);
   void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
   void qlFreeCmsCouponPricer(QlCmsCouponPricer *p);
   QlFloatingRateCouponPricer* qlCmsCouponPricerAsFloatingRateCouponPricer(QlCmsCouponPricer *p);

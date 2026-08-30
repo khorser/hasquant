@@ -31,7 +31,7 @@ import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapInde
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
-import QuantLib.TermStructure.Volatility(constantOptionletVolatility', constantSwaptionVolatility')
+import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility', constantSwaptionVolatility')
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Instrument as Instr
 import qualified QuantLib.Instrument.Swap as Swap
@@ -237,6 +237,32 @@ spec evalDate = do
           CF.setCouponPricer cpns pricer
           ret <- CF.nextCashFlowAmount cpns True Nothing
           ret `shouldSatisfy` const True
+
+      it "prices an Ibor coupon with a quanto Black pricer" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just $ 7 `april` 2010)
+          cal <- calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
+          ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
+          v <- Quote.simpleQuote 0.10
+          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
+          let p = (3, Months)
+          index3m <- iborIndex (UsdLibor p) (Just ts)
+          pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
+          fxVolQ <- Quote.simpleQuote 0.20 >>= Quote.asQuote
+          fxVol <- blackConstantVol' 2 cal fxVolQ dc
+          correlation <- Quote.simpleQuote 0.50 >>= Quote.asQuote
+          quantoPricer <- CF.blackIborQuantoCouponPricer fxVol correlation vol
+          sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
+          let buildCoupon couponPricer = do
+                cpns <- CF.iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
+                CF.setCouponPricer cpns couponPricer
+                CF.nextCashFlowAmount cpns True Nothing
+          ordinaryAmount <- buildCoupon pricer
+          quantoAmount <- buildCoupon quantoPricer
+          quantoAmount `shouldSatisfy` (/= 0)
+          abs (quantoAmount - ordinaryAmount) `shouldSatisfy` (> 1e-12)
 
     -- Exercises the CashFlow.chs analytics that InterestRateAndCashFlow's other tests never
     -- touch: the accrual-window/previous-next-flow getters, and the six function pairs that

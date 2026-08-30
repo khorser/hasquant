@@ -128,6 +128,7 @@ module QuantLib.CashFlow
   , asFloatingRateCouponPricer
   , CmsCouponPricer
   , blackIborCouponPricer
+  , blackIborQuantoCouponPricer
   , rangeAccrualPricerByBgm
   , setCouponPricer
   , setCouponPricers
@@ -780,6 +781,16 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`TimingAdjustment'
   ,withMaybeQuote*`Maybe (GenQuote q)' -- ^correlation
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
+-- |Experimental quanto-adjusted Black-formula pricer for capped/floored Ibor coupons.
+-- The FX Black volatility and underlying/FX correlation determine the quanto adjustment;
+-- the caplet volatility supplies the ordinary Ibor optionlet pricing inputs.  The three
+-- handles are retained by QuantLib, so relinking their underlying quotes or term structures
+-- updates the pricer in the usual way.
+{#fun qlBlackIborQuantoCouponPricer as blackIborQuantoCouponPricer{withBlackVolTermStructure*`GenBlackVolTermStructure bv'
+  ,withQuote*`GenQuote q' -- ^underlyingFxCorrelation
+  ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov' -- ^capletVolatility
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- |BGM-based pricer for 'RangeAccrualFloatersCoupon's (a 'rangeAccrualLeg')
