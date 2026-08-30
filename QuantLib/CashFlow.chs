@@ -811,33 +811,56 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 -- /pricers/ by matching coupon type.
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |A single CMS coupon. Attach one of the existing CMS pricers before asking for its rate or amount.
+-- |Constant-maturity-swap (CMS) coupon.
+--
+-- The start and end dates are used as supplied: QuantLib performs no business-day adjustment
+-- when constructing this coupon, so callers must supply already adjusted dates.  Attach a CMS
+-- pricer before asking for its rate or amount.
 {#fun qlCmsCoupon as cmsCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapIndex*`GenSwapIndex sidx'
   ,`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
   ,preErrorCheck-`String'errorCheck*-}->`CmsCoupon'peekCmsCoupon*#}
 
+-- |The coupon rate.  It is calculated by the attached 'FloatingRateCouponPricer'.
 {#fun qlFloatingRateCouponRate as floatingRateCouponRate{withFloatingRateCoupon*`GenFloatingRateCoupon frc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Cash-flow amount, equal to @rate * accrualPeriod * nominal@.
 {#fun qlFloatingRateCouponAmount as floatingRateCouponAmount{withFloatingRateCoupon*`GenFloatingRateCoupon frc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Set the coupon pricer used to calculate a floating-rate coupon's rate.
 {#fun qlFloatingRateCouponSetPricer as setFloatingRateCouponPricer{withFloatingRateCoupon*`GenFloatingRateCoupon frc',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |A CMS coupon with optional cap and floor. 'Nothing' means no cap or floor.
+-- |CMS coupon with optional cap and floor.  This is QuantLib's
+-- @CappedFlooredCmsCoupon@: it wraps a 'CmsCoupon' in a capped/floored coupon and returns it at
+-- the useful 'FloatingRateCoupon' level.  'Nothing' means no cap or floor.
 {#fun qlCappedFlooredCmsCoupon as cappedFlooredCmsCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapIndex*`GenSwapIndex sidx'
   ,`Double',`Double',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
--- |Replication convention and gap for the embedded digital option.
+-- |Digital-option replication strategy.  It specifies the sub, central, or super replication
+-- used to price the embedded digital option in a digital coupon; /gap/ is the call/put-spread
+-- width used by that replication.
 {#fun qlDigitalReplication as digitalReplication{`ReplicationType',`Double',preErrorCheck-`String'errorCheck*-}->`DigitalReplication'peekDigitalReplication*#}
 {#fun pure qlDigitalReplicationType as digitalReplicationType{withDigitalReplication*`DigitalReplication'}->`ReplicationType'#}
 {#fun pure qlDigitalReplicationGap as digitalReplicationGap{withDigitalReplication*`DigitalReplication'}->`Double'#}
 
--- |A CMS coupon with embedded digital call and put options. Optional strikes/payoffs use 'Nothing' for QuantLib's null-rate sentinel.
+-- |CMS-rate coupon with embedded digital call and put options.
+--
+-- QuantLib evaluates the digital options by call/put-spread replication.  A supplied digital
+-- payoff produces a cash-or-nothing option; without one the option is asset-or-nothing.  When
+-- /nakedOption/ is true, the underlying coupon rate is excluded from the payoff.  Optional
+-- strikes and payoffs use 'Nothing' for QuantLib's null-rate sentinel.
 {#fun qlDigitalCmsCoupon as digitalCmsCoupon{withCmsCoupon*`CmsCoupon',fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double'
   ,fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double',withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool'
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsCoupon'peekDigitalCmsCoupon*#}
+
+-- |Call-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
 {#fun qlDigitalCmsCouponCallOptionRate as digitalCmsCouponCallOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
 {#fun qlDigitalCmsCouponPutOptionRate as digitalCmsCouponPutOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Build a digital CMS leg. The options record covers all digital call/put and replication choices.
+-- |Build a sequence of digital CMS-rate coupons.  The options record covers all digital call/put
+-- and replication choices.
 digitalCmsLeg :: Schedule -> GenSwapIndex sidx -> [Double] -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalCmsLegOpts -> IO Leg
 digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
   digitalCmsLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears

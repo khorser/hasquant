@@ -578,8 +578,9 @@ withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPr
 withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
 withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
 
--- | A floating coupon, represented at the most useful hierarchy level. Concrete
--- CMS coupons remain concrete only because 'digitalCmsCoupon' requires one.
+-- | Base floating-rate coupon class.  Its cash-flow amount is its rate times accrual period and
+-- nominal.  The binding represents coupons at this useful hierarchy level; CMS coupons remain
+-- concrete only because 'digitalCmsCoupon' requires one.
 data CFloatingRateCoupon'
 newtype GenFloatingRateCoupon frc = GenFloatingRateCoupon {getFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon'}
 type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'

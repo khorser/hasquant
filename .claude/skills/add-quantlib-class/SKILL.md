@@ -7,6 +7,8 @@ Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Ha
 
 **First, check whether the class needs a dedicated Haskell type at all** — apply CLAUDE.md's "don't mirror the C++ hierarchy 1:1" rule. If it doesn't (most `PricingEngine` subclasses, for instance), just bind a constructing function returning the existing parent/grandparent type, e.g. `discountingSwapEngine :: ... -> IO PricingEngine`: no type boilerplate (step 4) and no `AsParent` upcast shim (step 3), since there's no dedicated type to upcast from.
 
+Before binding, read the upstream Doxygen documentation for the class and every constructor or method being exposed. Add upstream-derived `-- |` Haddock comments to the public Haskell entry points, preserving material behavior, formulas, units, warnings, and limitations in clear Haskell-facing language. Do not use a generic label in place of the documentation, and document intentional scope cuts where relevant.
+
 ## Steps
 
 1. **`cbits/qlaux.h`** — add the `using QlXxx = shared_ptr<Xxx>;` line (alongside the existing alphabetical block of `using Ql... = shared_ptr<...>;` lines), plus any other declarations the wrapper needs in this file. Also add `QL_TRACE_NAME(Xxx)` and `QL_TRACE_NAME(QlXxx)` to the trace-label table guarded by `QLTRACK_ALLOCATIONS`.

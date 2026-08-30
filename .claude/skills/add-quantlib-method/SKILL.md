@@ -9,9 +9,11 @@ Adding one method to an already-bound class only touches the shim `.h`/`.cpp` an
 
 The shims should be defined inside `extern "C"` blocks in `CPP` files for type checking to work. If you define C++ helpers, they should be outside the block inside an anonymous namespace, usually you can find it above the `extern "C"` block, don't create a new one.
 
-## 0. Get the real signature from QuantLib itself — don't guess it
+## 0. Read the upstream declaration and documentation — don't guess either
 
 Before writing anything, find the method's actual declaration in QuantLib's own header under `/opt/homebrew/include/ql/` (the class's base-class header specifically — per project convention, bind base-class methods only, not overloads on concrete subclasses). Read off, verbatim: the exact method name, parameter types and order, constness, and return type. Everything in steps 1-3 below is a mechanical consequence of that real signature, not something to infer from the method name alone or from a superficially similar sibling binding.
+
+Read the upstream Doxygen comment for both the method and its class while that header is open. Add a `-- |` Haddock comment to every public new binding, carrying the relevant behavior, formulas, warnings, and units in clear Haskell-facing language. Do not replace it with a generic label or omit upstream caveats; document intentional scope cuts too. A constructor binding needs the class-level documentation as well as any constructor-specific notes. Constructor-echo inspectors that are deliberately not bound need no documentation.
 
 Default to assuming the method **can throw** — QuantLib almost universally validates via `QL_REQUIRE`/`QL_ENSURE` internally even when the header gives no hint. Only treat it as non-throwing (step 3) if the header shows a trivial inline field return with no validation, like `qlInterestRateRate`/`InterestRate::rate()`. When in doubt, throw: a spuriously `pure` Haskell import over a function that actually throws is undefined behavior once the C++ exception unwinds past the FFI boundary, whereas a throwing convention on a method that never throws just costs an unused `try/catch`.
 
@@ -62,7 +64,7 @@ Two edits, not one — easy to forget the first:
    - Plain value: just `` `Type' ``, e.g. `` `Double' ``.
    - Needs conversion: `` `Type'convFn* ``, e.g. `` `Day'toDay `` (serial-number date), `` `InterestRate'peekInterestRate* `` (wrap a returned foreign object — `peekXxx` must exist in `Internal/Type.hs`, same as `withXxx`).
 
-   Add a `-- |` doc comment line above it — the existing modules do this for every binding, usually paraphrasing QuantLib's own doc comment for that method from the upstream header.
+   Add the upstream-derived `-- |` Haddock comment immediately above it, as required by step 0. It should explain useful semantics and caveats, not merely repeat the Haskell function name.
 
 ## 5. Less-common parameter/return shapes
 
