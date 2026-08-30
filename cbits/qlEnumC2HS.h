@@ -461,9 +461,15 @@ enum ComplexLogFormula {
   // Gatheral form with asymptotic expansion of the characteristic function as control variate
   // https://hpcquantlib.wordpress.com/2020/08/30/a-novel-control-variate-for-the-heston-model
   AsymptoticChF,
+  AngledContour,
+  AngledContourNoCV,
   // auto selection of best control variate algorithm from above
   OptimalCV
 };
+
+// termstructures/volatility/equityfx/andreasenhugevolatilityinterpl.hpp
+enum AndreasenHugeInterpolationType {PiecewiseConstant, Linear, CubicSpline};
+enum AndreasenHugeCalibrationType {AndreasenHugeCall = 1, AndreasenHugePut = -1, CallPut};
 
 // experimental/processes/extendedblackscholesprocess.hpp
 enum ExtendedBlackScholesMertonProcessDiscretization {ExtendedBSMEuler, Milstein, PredictorCorrector};

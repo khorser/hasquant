@@ -593,7 +593,7 @@ concentrating1dMesherMulti start end sz cPoints tol =
 -- -- Heston variance mesher accounting for a local-volatility leverage function.
 {#fun qlFdmHestonLocalVolatilityVarianceMesher as fdmHestonLocalVolatilityVarianceMesher{fromIntegral`Word' -- ^size
   ,withHestonProcess*`GenHestonProcess hp'
-  ,withLocalVolTermStructure*`LocalVolTermStructure' -- ^leverageFct
+  ,withGenLocalVolTermStructure*`GenLocalVolTermStructure lv' -- ^leverageFct
   ,`Double' -- ^maturity
   ,fromIntegral`Word' -- ^tAvgSteps
   ,`Double' -- ^epsilon

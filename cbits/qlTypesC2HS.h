@@ -121,6 +121,8 @@ typedef struct QlGeneralizedBlackScholesProcess QlGeneralizedBlackScholesProcess
 typedef struct QlGJRGARCHModel QlGJRGARCHModel;
 typedef struct QlGJRGARCHProcess QlGJRGARCHProcess;
 typedef struct QlGsr QlGsr;
+typedef struct QlGridModelLocalVolSurface QlGridModelLocalVolSurface;
+typedef struct QlHestonBlackVolSurface QlHestonBlackVolSurface;
 typedef struct QlHestonModel QlHestonModel;
 typedef struct QlHestonProcess QlHestonProcess;
 typedef struct QlHistoricalIndexAnalysis QlHistoricalIndexAnalysis;
@@ -140,6 +142,9 @@ typedef struct QlLiborForwardModelProcess QlLiborForwardModelProcess;
 typedef struct QlLmCorrelationModel QlLmCorrelationModel;
 typedef struct QlLmVolatilityModel QlLmVolatilityModel;
 typedef struct QlLocalVolTermStructure QlLocalVolTermStructure;
+typedef struct QlAndreasenHugeLocalVolAdapter QlAndreasenHugeLocalVolAdapter;
+typedef struct QlAndreasenHugeVolatilityAdapter QlAndreasenHugeVolatilityAdapter;
+typedef struct QlAndreasenHugeVolatilityInterpl QlAndreasenHugeVolatilityInterpl;
 typedef struct QlMargrabeOption QlMargrabeOption;
 typedef struct QlMarkovFunctional QlMarkovFunctional;
 typedef struct QlMerton76Process QlMerton76Process;

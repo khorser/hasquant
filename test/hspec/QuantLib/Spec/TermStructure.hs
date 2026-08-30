@@ -22,7 +22,7 @@ import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index(addFixing)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr), liborSwapIndex, LiborSwapIndexType(EurLiborSwapIsdaFixA))
-import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, hestonModel)
+import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, hestonModel, params)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long), additionalResults, AdditionalResultVal(..))
 import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
@@ -1649,6 +1649,79 @@ spec = do
           fdHestonVanillaEngine model 60 101 51 0 Hundsdorfer Nothing 1.0 >>= setPricingEngine opt
           calculated <- npv opt
           abs (calculated - expected) `shouldSatisfy` (< max 0.002 (0.02 * abs expected))
+
+    describe "equity-model volatility surfaces" $ do
+      it "HestonBlackVolSurface reproduces a Heston European price through Black-Scholes" $
+        Settings.keepingSettings' $ do
+          let refDate = 28 `march` 2004
+          Settings.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          rQ <- Quote.simpleQuote 0.025
+          rTS <- flatForward refDate rQ dc IR.Continuous Annual
+          qQ <- Quote.simpleQuote 0.0
+          qTS <- flatForward refDate qQ dc IR.Continuous Annual
+          s0 <- Quote.simpleQuote 75
+          proc <- hestonProcess rTS (Just qTS) s0 0.04 1.5 0.04 0.3 (-0.9) QuadraticExponentialMartingale
+          model <- hestonModel proc
+          exerciseDate <- addPeriod refDate (365, Days)
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100))
+                               (European (EuropeanExercise exerciseDate))
+          analyticHestonEngine' model 144 >>= setPricingEngine opt
+          hestonPrice <- npv opt
+          surface <- Vol.hestonBlackVolSurface model AngledContour 160
+          bsProcess <- blackScholesMertonProcess s0 qTS rTS surface EulerDiscretization False
+          analyticEuropeanEngine bsProcess Nothing >>= setPricingEngine opt
+          blackPrice <- npv opt
+          blackPrice `shouldSatisfy` closePrec hestonPrice (1.0e-6 * abs hestonPrice)
+
+      it "GridModelLocalVolSurface marshals strike rows and exposes CalibratedModel" $
+        Settings.keepingSettings' $ do
+          let refDate = 1 `march` 2010
+          dc <- dayCounter Actual365FixedStandard
+          d1 <- addPeriod refDate (90, Days)
+          d2 <- addPeriod refDate (180, Days)
+          grid <- Vol.gridModelLocalVolSurface refDate [d1, d2] [[80, 100, 120], [75, 100, 125]] dc
+                    Vol.FixedLocalVolSurfaceConstantExtrapolation Vol.FixedLocalVolSurfaceConstantExtrapolation
+          model <- Vol.gridModelLocalVolSurfaceAsCalibratedModel grid
+          params model `shouldReturn` replicate 6 1.0
+
+      it "Andreasen-Huge calibrates option-vol quotes and constructs both adapters" $
+        Settings.keepingSettings' $ do
+          let refDate = 1 `march` 2010
+              optSpec strike typ = do
+                expiry <- addPeriod refDate (365, Days)
+                vanillaOption (PlainVanilla (PlainVanillaPayoff typ strike))
+                  (European (EuropeanExercise expiry))
+          Settings.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          zero <- Quote.simpleQuote 0.0
+          rTS <- flatForward refDate zero dc IR.Continuous Annual
+          qZero <- Quote.simpleQuote 0.0
+          qTS <- flatForward refDate qZero dc IR.Continuous Annual
+          spot <- Quote.simpleQuote 100
+          o1 <- optSpec 90 Put
+          o2 <- optSpec 100 Call
+          o3 <- optSpec 110 Call
+          v1 <- Quote.simpleQuote 0.20
+          v2 <- Quote.simpleQuote 0.20
+          v3 <- Quote.simpleQuote 0.20
+          interpl <- Vol.andreasenHugeVolatilityInterpl [(o1, v1), (o2, v2), (o3, v3)] spot rTS qTS
+            Vol.AndreasenHugeInterpolationCubicSpline Vol.AndreasenHugeCalibrationAndreasenHugeCall 100
+            Nothing Nothing (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
+            (EndCriteria 100 20 1.0e-10 1.0e-10 1.0e-10)
+          (_, maxError, avgError) <- Vol.andreasenHugeVolatilityInterplCalibrationError interpl
+          maxError `shouldSatisfy` (< 0.05)
+          avgError `shouldSatisfy` (< 0.05)
+          fwd <- Vol.andreasenHugeVolatilityInterplFwd interpl 1.0
+          fwd `shouldSatisfy` closePrec 100.0 1.0e-10
+          price <- Vol.andreasenHugeVolatilityInterplOptionPrice interpl 1.0 100 Call
+          price `shouldSatisfy` (> 0.0)
+          directLocal <- Vol.andreasenHugeVolatilityInterplLocalVol interpl 1.0 100
+          directLocal `shouldSatisfy` (> 0.0)
+          _ <- Vol.andreasenHugeVolatilityAdapter interpl 1.0e-6
+          local <- Vol.andreasenHugeLocalVolAdapter interpl
+          adaptedLocal <- Vol.localVol local (1 `march` 2011) 100 True
+          adaptedLocal `shouldSatisfy` (> 0.0)
 
     -- Instrument.additionalResults() marshals four discriminants: Real, std::string,
     -- vector<Real>, and an Unsupported fallback (RTTI name) for anything else. The Real/String

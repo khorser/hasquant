@@ -4,6 +4,8 @@ module QuantLib.TermStructure.Volatility
     BlackVarianceSurfaceExtrapolation(..)
   , ExtendedBlackVarianceSurfaceExtrapolation(..)
   , FixedLocalVolSurfaceExtrapolation(..)
+  , AndreasenHugeInterpolationType(..)
+  , AndreasenHugeCalibrationType(..)
 
   , BlackVarianceCurve
   , BlackVolatilitySurfaceDelta
@@ -20,6 +22,9 @@ module QuantLib.TermStructure.Volatility
   , CapFloorTermVolCurve
   , CapFloorTermVolSurface
   , LocalVolTermStructure
+  , GenLocalVolTermStructure
+  , GridModelLocalVolSurface
+  , AndreasenHugeVolatilityInterpl
   , OptionletVolatilityStructure
   , GenOptionletVolatilityStructure
   , RelinkableOptionletVolatilityStructure
@@ -171,6 +176,16 @@ module QuantLib.TermStructure.Volatility
   , swaptionVolatilityMatrix
   , noExceptLocalVolSurface
   , fixedLocalVolSurface
+  , gridModelLocalVolSurface
+  , gridModelLocalVolSurfaceAsCalibratedModel
+  , hestonBlackVolSurface
+  , andreasenHugeVolatilityInterpl
+  , andreasenHugeVolatilityInterplCalibrationError
+  , andreasenHugeVolatilityInterplFwd
+  , andreasenHugeVolatilityInterplOptionPrice
+  , andreasenHugeVolatilityInterplLocalVol
+  , andreasenHugeVolatilityAdapter
+  , andreasenHugeLocalVolAdapter
   , spreadedOptionletVol
   , localVol
   , smileSectionAtmLevel
@@ -183,7 +198,7 @@ module QuantLib.TermStructure.Volatility
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
-{#import QuantLib.Math#}(EndCriteriaType)
+{#import QuantLib.Math#}(EndCriteriaType, ComplexLogFormula)
 {#import QuantLib.Quote#}(DeltaType(..), AtmType(..))
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
@@ -208,6 +223,13 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlRelinkableOptionletVolatilityStructure as RelinkableOptionletVolatilityStructure foreign -> CRelinkableOptionletVolatilityStructure' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
+{#pointer *QlGridModelLocalVolSurface as GridModelLocalVolSurface foreign -> CGridModelLocalVolSurface' nocode#}
+{#pointer *QlAndreasenHugeVolatilityInterpl as AndreasenHugeVolatilityInterpl foreign -> CAndreasenHugeVolatilityInterpl nocode#}
+{#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel' nocode#}
+{#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
+{#pointer *QlVanillaOption as VanillaOption foreign -> CVanillaOption' nocode#}
+{#pointer *QlOptimizationMethod as OptimizationMethod foreign -> COptimizationMethod nocode#}
+{#pointer *QlEndCriteria as EndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *QlBlackVarianceCurve as BlackVarianceCurve foreign -> CBlackVarianceCurve' nocode#}
 {#pointer *QlBlackVolatilitySurfaceDelta as BlackVolatilitySurfaceDelta foreign -> CBlackVolatilitySurfaceDelta' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
@@ -244,6 +266,8 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 -- |'FixedLocalVolSurface::Extrapolation', local to that class -- not shared with any other
 -- binding, same local-declaration treatment as 'SmileInterpolationMethod'.
 {#enum FixedLocalVolSurfaceExtrapolation{} deriving(Show, Eq, Read)#}
+{#enum AndreasenHugeInterpolationType{} add prefix="AndreasenHugeInterpolation" deriving(Show, Eq, Read)#}
+{#enum AndreasenHugeCalibrationType{} add prefix="AndreasenHugeCalibration" deriving(Show, Eq, Read)#}
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
 -- sabrInterpolatedSmileSection_ hardcodes, pre-populated with upstream's own defaults,
@@ -317,9 +341,60 @@ fixedLocalVolSurface :: Day -> [Day] -- ^dates
 fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr mc md
 {#fun qlFixedLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
+-- |A local-volatility surface whose node values are model parameters. Each date has its own
+-- strike row; use 'gridModelLocalVolSurfaceAsCalibratedModel' to access QuantLib's generic
+-- calibrated-model operations.
+gridModelLocalVolSurface :: Day -> [Day] -> [[Double]] -> DayCounter
+  -> FixedLocalVolSurfaceExtrapolation -> FixedLocalVolSurfaceExtrapolation
+  -> IO GridModelLocalVolSurface
+gridModelLocalVolSurface d ds strikeRows = qlGridModelLocalVolSurface d ds (map (fromIntegral . length) strikeRows) (concat strikeRows)
+{#fun qlGridModelLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withIntArray*`[Word]'&,withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`GridModelLocalVolSurface'peekGridModelLocalVolSurface*#}
+
+-- |View a grid local-vol surface through its secondary 'CalibratedModel' interface. This is a
+-- safe C++ multiple-inheritance upcast, materialized as an independently owned shared pointer.
+{#fun qlGridModelLocalVolSurfaceAsCalibratedModel as gridModelLocalVolSurfaceAsCalibratedModel{withGridModelLocalVolSurface*`GridModelLocalVolSurface',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
+
+-- |A Black implied-volatility surface computed from a Heston model. The integration argument is
+-- the order of QuantLib's Gauss-Laguerre quadrature; the supplied complex-log formula controls
+-- the characteristic-function representation.
+{#fun qlHestonBlackVolSurface as hestonBlackVolSurface{withHestonModel*`GenHestonModel hm',`ComplexLogFormula',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- |Interpolation choice for Andreasen-Huge local-volatility calibration.
+-- |Calibration choice for Andreasen-Huge local-volatility calibration.
+andreasenHugeVolatilityInterpl :: [(VanillaOption, GenQuote q)] -> GenQuote q
+  -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
+  -> AndreasenHugeInterpolationType -> AndreasenHugeCalibrationType -> Word
+  -> Maybe Double -> Maybe Double -> OptimizationMethod -> EndCriteria
+  -> IO AndreasenHugeVolatilityInterpl
+andreasenHugeVolatilityInterpl xs spot r q = qlAndreasenHugeVolatilityInterpl os qs spot r q
+  where (os, qs) = unzip xs
+{#fun qlAndreasenHugeVolatilityInterpl{withVanillaOptionArray*`[VanillaOption]'&,withQuoteArrayRaw*`[GenQuote q1]'
+  ,withQuote*`GenQuote q2',withYieldTermStructure*`GenYieldTermStructure y1',withYieldTermStructure*`GenYieldTermStructure y2'
+  ,`AndreasenHugeInterpolationType',`AndreasenHugeCalibrationType',fromIntegral`Word',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double'
+  ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',preErrorCheck-`String'errorCheck*-}->`AndreasenHugeVolatilityInterpl'peekAndreasenHugeVolatilityInterpl*#}
+
+-- |Minimum, maximum, and average calibration errors, expressed in volatility units.
+andreasenHugeVolatilityInterplCalibrationError :: AndreasenHugeVolatilityInterpl -> IO (Double, Double, Double)
+andreasenHugeVolatilityInterplCalibrationError x = do
+  [mn, mx, av] <- qlAndreasenHugeVolatilityInterplCalibrationError x
+  pure (mn, mx, av)
+{#fun qlAndreasenHugeVolatilityInterplCalibrationError{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Forward level implied by an Andreasen-Huge calibration at time @t@.
+{#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeVolatilityInterplFwd{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Calibrated option price at time, strike, and put/call type.
+{#fun qlAndreasenHugeVolatilityInterplOptionPrice as andreasenHugeVolatilityInterplOptionPrice{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',`Double',`Double',fromEnumC`OptionType',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Calibrated local volatility at time and strike.
+{#fun qlAndreasenHugeVolatilityInterplLocalVol as andreasenHugeVolatilityInterplLocalVol{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Adapts an Andreasen-Huge interpolation to QuantLib's Black-volatility term-structure interface.
+{#fun qlAndreasenHugeVolatilityAdapter as andreasenHugeVolatilityAdapter{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',`Double',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+-- |Adapts an Andreasen-Huge interpolation to QuantLib's local-volatility term-structure interface.
+{#fun qlAndreasenHugeLocalVolAdapter as andreasenHugeLocalVolAdapter{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
 -- |the local vol at a given date and underlying level, for any 'LocalVolTermStructure' (however
 -- it was constructed) -- the only way to observe what a local vol surface actually computes.
-{#fun qlLocalVolTermStructureLocalVol as localVol{withLocalVolTermStructure*`LocalVolTermStructure'
+{#fun qlLocalVolTermStructureLocalVol as localVol{withGenLocalVolTermStructure*`GenLocalVolTermStructure lv'
   ,withDay*`Day'
   ,`Double' -- ^underlyingLevel
   ,`Bool' -- ^extrapolate

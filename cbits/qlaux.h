@@ -227,6 +227,8 @@ namespace QuantLib {
   class GeneralizedBlackScholesProcess;
   class GeneralizedHullWhite;
   class Gsr;
+  class GridModelLocalVolSurface;
+  class HestonBlackVolSurface;
   class HestonModel;
   class HestonModelHelper;
   class HestonProcess;
@@ -253,6 +255,9 @@ namespace QuantLib {
   class LmCorrelationModel;
   class LmVolatilityModel;
   class LocalVolTermStructure;
+  class AndreasenHugeLocalVolAdapter;
+  class AndreasenHugeVolatilityAdapter;
+  class AndreasenHugeVolatilityInterpl;
   class MargrabeOption;
   class MarkovFunctional;
   class Merton76Process;
@@ -544,6 +549,8 @@ using QuantLib::Gaussian1dModel;
 using QuantLib::GeneralizedBlackScholesProcess;
 using QuantLib::GeneralizedHullWhite;
 using QuantLib::Gsr;
+using QuantLib::GridModelLocalVolSurface;
+using QuantLib::HestonBlackVolSurface;
 using QuantLib::HestonModel;
 using QuantLib::HestonModelHelper;
 using QuantLib::HestonProcess;
@@ -571,6 +578,9 @@ using QuantLib::LiborForwardModelProcess;
 using QuantLib::LmCorrelationModel;
 using QuantLib::LmVolatilityModel;
 using QuantLib::LocalVolTermStructure;
+using QuantLib::AndreasenHugeLocalVolAdapter;
+using QuantLib::AndreasenHugeVolatilityAdapter;
+using QuantLib::AndreasenHugeVolatilityInterpl;
 using QuantLib::MargrabeOption;
 using QuantLib::MarkovFunctional;
 using QuantLib::Merton76Process;
@@ -833,6 +843,8 @@ using QlGJRGARCHProcess = shared_ptr<GJRGARCHProcess>;
 using QlGaussian1dModel = shared_ptr<Gaussian1dModel>;
 using QlGeneralizedBlackScholesProcess = shared_ptr<GeneralizedBlackScholesProcess>;
 using QlGsr = shared_ptr<Gsr>;
+using QlGridModelLocalVolSurface = shared_ptr<GridModelLocalVolSurface>;
+using QlHestonBlackVolSurface = shared_ptr<HestonBlackVolSurface>;
 using QlHestonModel = shared_ptr<HestonModel>;
 using QlHestonProcess = shared_ptr<HestonProcess>;
 using QlHistoricalIndexAnalysis = shared_ptr<HistoricalIndexAnalysis>;
@@ -848,6 +860,9 @@ using QlLiborForwardModelProcess = shared_ptr<LiborForwardModelProcess>;
 using QlLmCorrelationModel = shared_ptr<LmCorrelationModel>;
 using QlLmVolatilityModel = shared_ptr<LmVolatilityModel>;
 using QlLocalVolTermStructure = shared_ptr<LocalVolTermStructure>;
+using QlAndreasenHugeLocalVolAdapter = shared_ptr<AndreasenHugeLocalVolAdapter>;
+using QlAndreasenHugeVolatilityAdapter = shared_ptr<AndreasenHugeVolatilityAdapter>;
+using QlAndreasenHugeVolatilityInterpl = shared_ptr<AndreasenHugeVolatilityInterpl>;
 using QlMargrabeOption = shared_ptr<MargrabeOption>;
 using QlMarkovFunctional = shared_ptr<MarkovFunctional>;
 using QlMerton76Process = shared_ptr<Merton76Process>;
@@ -1101,6 +1116,8 @@ QL_TRACE_NAME(Gaussian1dModel)
 QL_TRACE_NAME(GeneralizedBlackScholesProcess)
 QL_TRACE_NAME(GeneralizedHullWhite)
 QL_TRACE_NAME(Gsr)
+QL_TRACE_NAME(GridModelLocalVolSurface)
+QL_TRACE_NAME(HestonBlackVolSurface)
 QL_TRACE_NAME(HestonModel)
 QL_TRACE_NAME(HestonModelHelper)
 QL_TRACE_NAME(HestonProcess)
@@ -1131,6 +1148,9 @@ QL_TRACE_NAME(LiborForwardModelProcess)
 QL_TRACE_NAME(LmCorrelationModel)
 QL_TRACE_NAME(LmVolatilityModel)
 QL_TRACE_NAME(LocalVolTermStructure)
+QL_TRACE_NAME(AndreasenHugeLocalVolAdapter)
+QL_TRACE_NAME(AndreasenHugeVolatilityAdapter)
+QL_TRACE_NAME(AndreasenHugeVolatilityInterpl)
 QL_TRACE_NAME(MargrabeOption)
 QL_TRACE_NAME(MarkovFunctional)
 QL_TRACE_NAME(Merton76Process)
@@ -1248,6 +1268,8 @@ QL_TRACE_NAME(QlGJRGARCHProcess)
 QL_TRACE_NAME(QlGaussian1dModel)
 QL_TRACE_NAME(QlGeneralizedBlackScholesProcess)
 QL_TRACE_NAME(QlGsr)
+QL_TRACE_NAME(QlGridModelLocalVolSurface)
+QL_TRACE_NAME(QlHestonBlackVolSurface)
 QL_TRACE_NAME(QlHestonModel)
 QL_TRACE_NAME(QlHestonProcess)
 QL_TRACE_NAME(QlHistoricalIndexAnalysis)
@@ -1266,6 +1288,9 @@ QL_TRACE_NAME(QlLiborForwardModelProcess)
 QL_TRACE_NAME(QlLmCorrelationModel)
 QL_TRACE_NAME(QlLmVolatilityModel)
 QL_TRACE_NAME(QlLocalVolTermStructure)
+QL_TRACE_NAME(QlAndreasenHugeLocalVolAdapter)
+QL_TRACE_NAME(QlAndreasenHugeVolatilityAdapter)
+QL_TRACE_NAME(QlAndreasenHugeVolatilityInterpl)
 QL_TRACE_NAME(QlMargrabeOption)
 QL_TRACE_NAME(QlMarkovFunctional)
 QL_TRACE_NAME(QlMerton76Process)

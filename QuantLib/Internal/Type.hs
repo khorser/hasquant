@@ -1464,6 +1464,7 @@ withCommodityIndex = withForeignPtr . ptr . getIndex
 -- >      BlackVolSurface*
 -- >        SabrVolSurface
 -- >    LocalVolTermStructure
+-- >      GridModelLocalVolSurface
 -- >    YoYOptionletVolatilitySurface
 -- >    CPIVolatilitySurface
 -- >  CallableBondVolatilityStructure
@@ -1486,6 +1487,8 @@ data CCapFloorTermVolatilityStructure'
 data CCapFloorTermVolCurve'
 data CCapFloorTermVolSurface'
 data CLocalVolTermStructure'
+data CGridModelLocalVolSurface'
+data CAndreasenHugeVolatilityInterpl
 data CYoYOptionletVolatilitySurface'
 data CCPIVolatilitySurface'
 data CBlackVolTermStructure'
@@ -1607,8 +1610,12 @@ type CSabrVolSurface = ForeignPtr CSabrVolSurface'
 -- the C++ hierarchy 1:1" rule). Two 'AnyOf' layers under 'GenBlackVolSurface' (mirrors
 -- 'VanillaSwap' under 'FixedVsFloatingSwap' under 'GenSwap').
 type SabrVolSurface = GenBlackVolSurface CSabrVolSurface
+type GenLocalVolTermStructure lv = GenVolatilityTermStructure (AnyOf CLocalVolTermStructure' lv)
 type CLocalVolTermStructure = ForeignPtr CLocalVolTermStructure'
-type LocalVolTermStructure = GenVolatilityTermStructure CLocalVolTermStructure
+type LocalVolTermStructure = GenLocalVolTermStructure CLocalVolTermStructure
+type CGridModelLocalVolSurface = ForeignPtr CGridModelLocalVolSurface'
+type GridModelLocalVolSurface = GenLocalVolTermStructure CGridModelLocalVolSurface
+type AndreasenHugeVolatilityInterpl = Standalone CAndreasenHugeVolatilityInterpl
 type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
 -- | A YoY-inflation optionlet vol surface, quoted via 'volatility'\/'totalVariance' at
 -- (maturity, strike) pairs rather than QuantLib's usual (option date, tenor, strike) grid, since
@@ -1694,6 +1701,8 @@ foreign import ccall unsafe "ql.h &qlFreeBlackVolSurface" qlFreeBlackVolSurface 
 foreign import ccall unsafe "ql.h &qlFreeAbcdAtmVolCurve" qlFreeAbcdAtmVolCurve :: FinalizerPtr CAbcdAtmVolCurve'
 foreign import ccall unsafe "ql.h &qlFreeSabrVolSurface" qlFreeSabrVolSurface :: FinalizerPtr CSabrVolSurface'
 foreign import ccall unsafe "ql.h &qlFreeLocalVolTermStructure" qlFreeLocalVolTermStructure :: FinalizerPtr CLocalVolTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeGridModelLocalVolSurface" qlFreeGridModelLocalVolSurface :: FinalizerPtr CGridModelLocalVolSurface'
+foreign import ccall unsafe "ql.h &qlFreeAndreasenHugeVolatilityInterpl" qlFreeAndreasenHugeVolatilityInterpl :: FinalizerPtr CAndreasenHugeVolatilityInterpl
 foreign import ccall unsafe "ql.h &qlFreeYoYOptionletVolatilitySurface" qlFreeYoYOptionletVolatilitySurface :: FinalizerPtr CYoYOptionletVolatilitySurface'
 foreign import ccall unsafe "ql.h &qlFreeCPIVolatilitySurface" qlFreeCPIVolatilitySurface :: FinalizerPtr CCPIVolatilitySurface'
 foreign import ccall unsafe "ql.h &qlFreeBlackVolTermStructure" qlFreeBlackVolTermStructure :: FinalizerPtr CBlackVolTermStructure'
@@ -1726,6 +1735,8 @@ instance Finalizable CBlackVolSurface' where finalize = qlFreeBlackVolSurface
 instance Finalizable CAbcdAtmVolCurve' where finalize = qlFreeAbcdAtmVolCurve
 instance Finalizable CSabrVolSurface' where finalize = qlFreeSabrVolSurface
 instance Finalizable CLocalVolTermStructure' where finalize = qlFreeLocalVolTermStructure
+instance Finalizable CGridModelLocalVolSurface' where finalize = qlFreeGridModelLocalVolSurface
+instance Finalizable CAndreasenHugeVolatilityInterpl where finalize = qlFreeAndreasenHugeVolatilityInterpl
 instance Finalizable CYoYOptionletVolatilitySurface' where finalize = qlFreeYoYOptionletVolatilitySurface
 instance Finalizable CCPIVolatilitySurface' where finalize = qlFreeCPIVolatilitySurface
 instance Finalizable CBlackVolTermStructure' where finalize = qlFreeBlackVolTermStructure
@@ -1764,6 +1775,7 @@ foreign import ccall "ql.h qlBlackVolSurfaceAsBlackAtmVolCurve" qlBlackVolSurfac
 foreign import ccall "ql.h qlAbcdAtmVolCurveAsBlackAtmVolCurve" qlAbcdAtmVolCurveAsBlackAtmVolCurve :: Ptr CAbcdAtmVolCurve' -> IO (Ptr CBlackAtmVolCurve')
 foreign import ccall "ql.h qlSabrVolSurfaceAsBlackVolSurface" qlSabrVolSurfaceAsBlackVolSurface :: Ptr CSabrVolSurface' -> IO (Ptr CBlackVolSurface')
 foreign import ccall "ql.h qlLocalVolTermStructureAsVolatilityTermStructure" qlLocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure' -> IO (Ptr CVolatilityTermStructure')
+foreign import ccall "ql.h qlGridModelLocalVolSurfaceAsLocalVolTermStructure" qlGridModelLocalVolSurfaceAsLocalVolTermStructure :: Ptr CGridModelLocalVolSurface' -> IO (Ptr CLocalVolTermStructure')
 foreign import ccall "ql.h qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure" qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure :: Ptr CYoYOptionletVolatilitySurface' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCPIVolatilitySurfaceAsVolatilityTermStructure" qlCPIVolatilitySurfaceAsVolatilityTermStructure :: Ptr CCPIVolatilitySurface' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure' -> IO (Ptr CTermStructure')
@@ -1802,6 +1814,7 @@ instance Upcastable CBlackVolSurface' where {type Base CBlackVolSurface' = CBlac
 instance Upcastable CAbcdAtmVolCurve' where {type Base CAbcdAtmVolCurve' = CBlackAtmVolCurve'; upcast = qlAbcdAtmVolCurveAsBlackAtmVolCurve}
 instance Upcastable CSabrVolSurface' where {type Base CSabrVolSurface' = CBlackVolSurface'; upcast = qlSabrVolSurfaceAsBlackVolSurface}
 instance Upcastable CLocalVolTermStructure' where {type Base CLocalVolTermStructure' = CVolatilityTermStructure'; upcast = qlLocalVolTermStructureAsVolatilityTermStructure}
+instance Upcastable CGridModelLocalVolSurface' where {type Base CGridModelLocalVolSurface' = CLocalVolTermStructure'; upcast = qlGridModelLocalVolSurfaceAsLocalVolTermStructure}
 instance Upcastable CYoYOptionletVolatilitySurface' where {type Base CYoYOptionletVolatilitySurface' = CVolatilityTermStructure'; upcast = qlYoYOptionletVolatilitySurfaceAsVolatilityTermStructure}
 instance Upcastable CCPIVolatilitySurface' where {type Base CCPIVolatilitySurface' = CVolatilityTermStructure'; upcast = qlCPIVolatilitySurfaceAsVolatilityTermStructure}
 asTermStructure :: GenTermStructure t -> IO TermStructure
@@ -1915,15 +1928,27 @@ peekSabrVolSurface = newGenForeignPtr >=> newGenBlackVolSurface
 withSabrVolSurface :: SabrVolSurface -> (Ptr CSabrVolSurface' -> IO b) -> IO b
 withSabrVolSurface = withForeignPtr . ptr . peel . peel . peel . getTermStructure
 peekLocalVolTermStructure :: Ptr CLocalVolTermStructure' -> IO LocalVolTermStructure
-peekLocalVolTermStructure = peekGenVolatilityTermStructure
+peekLocalVolTermStructure = newCastForeignPtr >=> newGenLocalVolTermStructure
+withGenLocalVolTermStructure :: GenLocalVolTermStructure lv -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
+withGenLocalVolTermStructure = withGenForeignPtr . peel . peel . getTermStructure
+newGenLocalVolTermStructure :: GenForeignPtr lv CLocalVolTermStructure' -> IO (GenLocalVolTermStructure lv)
+newGenLocalVolTermStructure = pure . GenTermStructure . newAnyOf . newAnyOf
+peekGridModelLocalVolSurface :: Ptr CGridModelLocalVolSurface' -> IO GridModelLocalVolSurface
+peekGridModelLocalVolSurface = newGenForeignPtr >=> newGenLocalVolTermStructure
+withGridModelLocalVolSurface :: GridModelLocalVolSurface -> (Ptr CGridModelLocalVolSurface' -> IO b) -> IO b
+withGridModelLocalVolSurface = withForeignPtr . ptr . peel . peel . getTermStructure
+peekAndreasenHugeVolatilityInterpl :: Ptr CAndreasenHugeVolatilityInterpl -> IO AndreasenHugeVolatilityInterpl
+peekAndreasenHugeVolatilityInterpl = peekStandalone
+withAndreasenHugeVolatilityInterpl :: AndreasenHugeVolatilityInterpl -> (Ptr CAndreasenHugeVolatilityInterpl -> IO b) -> IO b
+withAndreasenHugeVolatilityInterpl = withStandalone
 peekYoYOptionletVolatilityStructure :: Ptr CYoYOptionletVolatilitySurface' -> IO YoYOptionletVolatilitySurface
 peekYoYOptionletVolatilityStructure = peekGenVolatilityTermStructure
 peekCPIVolatilitySurface :: Ptr CCPIVolatilitySurface' -> IO CPIVolatilitySurface
 peekCPIVolatilitySurface = peekGenVolatilityTermStructure
 withLocalVolTermStructure :: LocalVolTermStructure -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
-withLocalVolTermStructure = withGenVolatilityTermStructure
-withMaybeLocalVolTermStructure :: Maybe LocalVolTermStructure -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
-withMaybeLocalVolTermStructure x f = maybe (f nullPtr) (`withGenVolatilityTermStructure` f) x
+withLocalVolTermStructure = withGenLocalVolTermStructure
+withMaybeLocalVolTermStructure :: Maybe (GenLocalVolTermStructure lv) -> (Ptr CLocalVolTermStructure' -> IO b) -> IO b
+withMaybeLocalVolTermStructure x f = maybe (f nullPtr) (`withGenLocalVolTermStructure` f) x
 peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
 peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
@@ -3121,6 +3146,8 @@ peekVanillaOption :: Ptr CVanillaOption' -> IO VanillaOption
 peekVanillaOption = newGenForeignPtr >=> newGenOneAssetOption
 withVanillaOption :: VanillaOption -> (Ptr CVanillaOption' -> IO b) -> IO b
 withVanillaOption = withForeignPtr . ptr . peel . peel . getInstrument
+withVanillaOptionArray :: [VanillaOption] -> ((CUInt, Ptr (Ptr CVanillaOption')) -> IO b) -> IO b
+withVanillaOptionArray = withGenArray withVanillaOption
 
 data CQuantoBarrierOption'
 type CQuantoBarrierOption = ForeignPtr CQuantoBarrierOption'

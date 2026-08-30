@@ -919,7 +919,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -930,7 +930,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -940,7 +940,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -1197,7 +1197,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -1208,7 +1208,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -1261,7 +1261,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -1272,7 +1272,7 @@ import QuantLib.Internal.Common
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
-  ,withMaybeLocalVolTermStructure*`Maybe LocalVolTermStructure' -- ^leverageFct
+  ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 

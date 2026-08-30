@@ -6,6 +6,11 @@
 #include <ql/termstructures/volatility/spreadedsmilesection.hpp>
 #include <ql/termstructures/volatility/atmsmilesection.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
+#include <ql/termstructures/volatility/equityfx/andreasenhugelocalvoladapter.hpp>
+#include <ql/termstructures/volatility/equityfx/andreasenhugevolatilityadapter.hpp>
+#include <ql/termstructures/volatility/equityfx/andreasenhugevolatilityinterpl.hpp>
+#include <ql/termstructures/volatility/equityfx/gridmodellocalvolsurface.hpp>
+#include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
@@ -614,6 +619,65 @@ QlLocalVolTermStructure* qlFixedLocalVolSurface(int referenceDate, unsigned date
   try {return ret(new QlLocalVolTermStructure(alloc(new FixedLocalVolSurface(Date(referenceDate), qlDateVector(dates, datesLen),
       std::vector<Real>(strikes, strikes+strikesLen), ext::make_shared<Matrix>(qlMatrix(matrixData, matrixRows, matrixCols)),
       *arg(dayCounter), (FixedLocalVolSurface::Extrapolation)lowerExtrapolation, (FixedLocalVolSurface::Extrapolation)upperExtrapolation))));
+  } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
+void qlFreeGridModelLocalVolSurface(QlGridModelLocalVolSurface *o) {del(o);}
+QlLocalVolTermStructure* qlGridModelLocalVolSurfaceAsLocalVolTermStructure(QlGridModelLocalVolSurface *o) {return ret(new QlLocalVolTermStructure(*arg(o)));}
+QlCalibratedModel* qlGridModelLocalVolSurfaceAsCalibratedModel(QlGridModelLocalVolSurface *o, char **e) {
+  try {return ret(new QlCalibratedModel(*arg(o)));
+  } catch (std::exception& er) {return handleException<QlCalibratedModel*>(e, er);}}
+QlGridModelLocalVolSurface* qlGridModelLocalVolSurface(int referenceDate, unsigned datesLen, int* dates, unsigned rows, unsigned* strikeLengths, double* strikes, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, char **e) {
+  try {
+    std::vector<ext::shared_ptr<std::vector<Real>>> strikeRows;
+    strikeRows.reserve(rows);
+    size_t offset = 0;
+    for (size_t i = 0; i < rows; ++i) {
+      strikeRows.push_back(ext::make_shared<std::vector<Real>>(strikes + offset, strikes + offset + strikeLengths[i]));
+      offset += strikeLengths[i];
+    }
+    return ret(new QlGridModelLocalVolSurface(alloc(new GridModelLocalVolSurface(
+        Date(referenceDate), qlDateVector(dates, datesLen), strikeRows, *arg(dayCounter),
+        (FixedLocalVolSurface::Extrapolation)lowerExtrapolation,
+        (FixedLocalVolSurface::Extrapolation)upperExtrapolation))));
+  } catch (std::exception& er) {return handleException<QlGridModelLocalVolSurface*>(e, er);}}
+QlBlackVolTermStructure* qlHestonBlackVolSurface(QlHestonModel* model, int cpxLogFormula, unsigned integrationOrder, char **e) {
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new HestonBlackVolSurface(
+      Handle<HestonModel>(*arg(model)), (AnalyticHestonEngine::ComplexLogFormula)cpxLogFormula,
+      AnalyticHestonEngine::Integration::gaussLaguerre(integrationOrder))))));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+void qlFreeAndreasenHugeVolatilityInterpl(QlAndreasenHugeVolatilityInterpl *o) {del(o);}
+QlAndreasenHugeVolatilityInterpl* qlAndreasenHugeVolatilityInterpl(unsigned calibrationLen, QlVanillaOption** options, QlQuote** quotes, QlQuote* spot, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int interpolationType, int calibrationType, unsigned nGridPoints, double minStrike, double maxStrike, QlOptimizationMethod* optimizationMethod, QlEndCriteria* endCriteria, char **e) {
+  try {
+    AndreasenHugeVolatilityInterpl::CalibrationSet calibrationSet;
+    calibrationSet.reserve(calibrationLen);
+    for (size_t i = 0; i < calibrationLen; ++i)
+      calibrationSet.emplace_back(*arg(options[i]), handlePtr(arg(quotes[i])));
+    return ret(new QlAndreasenHugeVolatilityInterpl(alloc(new AndreasenHugeVolatilityInterpl(
+        calibrationSet, *arg(spot), *arg(riskFreeRate), *arg(dividendYield),
+        (AndreasenHugeVolatilityInterpl::InterpolationType)interpolationType,
+        (AndreasenHugeVolatilityInterpl::CalibrationType)calibrationType, nGridPoints,
+        minStrike, maxStrike, *arg(optimizationMethod), **arg(endCriteria)))));
+  } catch (std::exception& er) {return handleException<QlAndreasenHugeVolatilityInterpl*>(e, er);}}
+void qlAndreasenHugeVolatilityInterplCalibrationError(QlAndreasenHugeVolatilityInterpl* o, unsigned* count, double** values, char **e) {
+  *count = 0; *values = nullptr;
+  try {
+    const auto errors = (*arg(o))->calibrationError();
+    auto out = qlAllocateDoubles(3); out[0] = std::get<0>(errors); out[1] = std::get<1>(errors); out[2] = std::get<2>(errors);
+    *count = 3; *values = out;
+  } catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+double qlAndreasenHugeVolatilityInterplFwd(QlAndreasenHugeVolatilityInterpl* o, double t, char **e) {
+  try {return (*arg(o))->fwd(t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAndreasenHugeVolatilityInterplOptionPrice(QlAndreasenHugeVolatilityInterpl* o, double t, double strike, int optionType, char **e) {
+  try {return (*arg(o))->optionPrice(t, strike, (Option::Type)optionType);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAndreasenHugeVolatilityInterplLocalVol(QlAndreasenHugeVolatilityInterpl* o, double t, double strike, char **e) {
+  try {return (*arg(o))->localVol(t, strike);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlBlackVolTermStructure* qlAndreasenHugeVolatilityAdapter(QlAndreasenHugeVolatilityInterpl* o, double eps, char **e) {
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new AndreasenHugeVolatilityAdapter(*arg(o), eps)))));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+QlLocalVolTermStructure* qlAndreasenHugeLocalVolAdapter(QlAndreasenHugeVolatilityInterpl* o, char **e) {
+  try {return ret(new QlLocalVolTermStructure(alloc(new AndreasenHugeLocalVolAdapter(*arg(o)))));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
   try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new ImpliedVolTermStructure(*arg(origTS), Date(referenceDate))))));

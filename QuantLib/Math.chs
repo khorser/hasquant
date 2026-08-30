@@ -60,6 +60,7 @@ import Data.List.NonEmpty(NonEmpty)
 {#enum BinomialTree{} deriving(Show, Eq, Read)#}
 {#enum BoundaryConditionSide{} deriving(Show, Eq, Read)#}
 {#enum PolynomialType{} deriving(Show, Eq, Read)#}
+-- |Characteristic-function contour/control-variate choice used by Heston integrations.
 {#enum ComplexLogFormula{} deriving(Show, Eq, Read)#}
 {#enum CmsMarketCalibrationType{} deriving(Show, Eq, Read)#}
 {#enum SobolDirectionIntegers{} deriving(Show, Eq, Read)#}
