@@ -617,9 +617,11 @@ extern "C" {
 
   QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e);
   void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
-  QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);
-  QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e);
-  QlFloatingRateCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swaptionVol, QlQuote* meanReversion, QlYieldTermStructure* couponDiscountCurve, int strategy, double param, int haveBounds, double lowerBound, double upperBound, char **e);
+  void qlFreeCmsCouponPricer(QlCmsCouponPricer *p);
+  QlFloatingRateCouponPricer* qlCmsCouponPricerAsFloatingRateCouponPricer(QlCmsCouponPricer *p);
+  QlCmsCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);
+  QlCmsCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e);
+  QlCmsCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swaptionVol, QlQuote* meanReversion, QlYieldTermStructure* couponDiscountCurve, int strategy, double param, int haveBounds, double lowerBound, double upperBound, char **e);
   QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e);
 
   void qlFreeFloatingRateCoupon(QlFloatingRateCoupon *o);
@@ -630,6 +632,14 @@ extern "C" {
   void qlFreeCmsCoupon(QlCmsCoupon *o);
   QlFloatingRateCoupon* qlCmsCouponAsFloatingRateCoupon(QlCmsCoupon *o);
   QlCmsCoupon* qlCmsCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
+
+  QlFloatingRateCoupon* qlCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
+  QlFloatingRateCoupon* qlCappedFlooredCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
+  QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPricer, QlQuote* correlation, QlYieldTermStructure* couponDiscountCurve, unsigned integrationPoints, int haveVolatilityType, int volatilityType, double shift1, double shift2, char **e);
+
+  void qlFreeSwapSpreadIndex(QlSwapSpreadIndex *o);
+  QlInterestRateIndex* qlSwapSpreadIndexAsInterestRateIndex(QlSwapSpreadIndex *o);
+  QlSwapSpreadIndex* qlSwapSpreadIndex(const char* familyName, QlSwapIndex* swapIndex1, QlSwapIndex* swapIndex2, double gearing1, double gearing2, char **e);
 
   QlFloatingRateCoupon* qlCappedFlooredCmsCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
 

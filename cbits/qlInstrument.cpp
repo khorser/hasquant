@@ -98,6 +98,9 @@ namespace hasquant {
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/cashflows/conundrumpricer.hpp>
 #include <ql/cashflows/lineartsrpricer.hpp>
+#include <ql/experimental/coupons/cmsspreadcoupon.hpp>
+#include <ql/experimental/coupons/lognormalcmsspreadpricer.hpp>
+#include <ql/experimental/coupons/swapspreadindex.hpp>
 #include <ql/cashflows/equitycashflow.hpp>
 #include <ql/indexes/equityindex.hpp>
 #include <ql/instruments/inflationcapfloor.hpp>
@@ -1504,13 +1507,15 @@ QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructu
   try {Handle<Quote> corr = qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(new SimpleQuote(1.0)); });
     return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(*arg(vol), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
-QlFloatingRateCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new AnalyticHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion)))));
-  } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
-QlFloatingRateCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e) {
-  try {return ret(new QlFloatingRateCouponPricer(alloc(new NumericHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion), lowerLimit, upperLimit, precision, hardUpperLimit))));
-  } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
-QlFloatingRateCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swaptionVol, QlQuote* meanReversion, QlYieldTermStructure* couponDiscountCurve, int strategy, double param, int haveBounds, double lowerBound, double upperBound, char **e) {
+void qlFreeCmsCouponPricer(QlCmsCouponPricer *p) {del(p);}
+QlFloatingRateCouponPricer* qlCmsCouponPricerAsFloatingRateCouponPricer(QlCmsCouponPricer* p) {return ret(new QlFloatingRateCouponPricer(*arg(p)));}
+QlCmsCouponPricer* qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e) {
+  try {return ret(new QlCmsCouponPricer(alloc(new AnalyticHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion)))));
+  } catch (std::exception& er) {return handleException<QlCmsCouponPricer*>(e, er);}}
+QlCmsCouponPricer* qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, double hardUpperLimit, char **e) {
+  try {return ret(new QlCmsCouponPricer(alloc(new NumericHaganPricer(*arg(swaptionVol), (GFunctionFactory::YieldCurveModel)modelOfYieldCurve, *arg(meanReversion), lowerLimit, upperLimit, precision, hardUpperLimit))));
+  } catch (std::exception& er) {return handleException<QlCmsCouponPricer*>(e, er);}}
+QlCmsCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swaptionVol, QlQuote* meanReversion, QlYieldTermStructure* couponDiscountCurve, int strategy, double param, int haveBounds, double lowerBound, double upperBound, char **e) {
   try {
     LinearTsrPricer::Settings settings;
     switch (strategy) {
@@ -1520,9 +1525,9 @@ QlFloatingRateCouponPricer* qlLinearTsrPricer(QlSwaptionVolatilityStructure* swa
       case hasquant::LinearTsrPricerBSStdDevs: haveBounds ? settings.withBSStdDevs(param, lowerBound, upperBound) : settings.withBSStdDevs(param); break;
       default: QL_FAIL("unknown LinearTsrPricer strategy " << strategy);
     }
-    return ret(new QlFloatingRateCouponPricer(alloc(new LinearTsrPricer(*arg(swaptionVol), *arg(meanReversion),
+    return ret(new QlCmsCouponPricer(alloc(new LinearTsrPricer(*arg(swaptionVol), *arg(meanReversion),
         qlNullableHandle(couponDiscountCurve), settings))));
-  } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+  } catch (std::exception& er) {return handleException<QlCmsCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlRangeAccrualPricerByBgm(double correlation, QlSmileSection* smilesOnExpiry, QlSmileSection* smilesOnPayment, int withSmile, int byCallSpread, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new RangeAccrualPricerByBgm(correlation, *arg(smilesOnExpiry), *arg(smilesOnPayment), withSmile, byCallSpread))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
@@ -1541,6 +1546,25 @@ QlCmsCoupon* qlCmsCoupon(int paymentDate, double nominal, int startDate, int end
       *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears,
       qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlCmsCoupon*>(e, er);}}
+
+QlFloatingRateCoupon* qlCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlFloatingRateCoupon(alloc(new CmsSpreadCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,
+      *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+QlFloatingRateCoupon* qlCappedFlooredCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredCmsSpreadCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,
+      *arg(index), gearing, spread, cap, floor, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPricer, QlQuote* correlation, QlYieldTermStructure* couponDiscountCurve, unsigned integrationPoints, int haveVolatilityType, int volatilityType, double shift1, double shift2, char **e) {
+  try {return ret(new QlFloatingRateCouponPricer(alloc(new LognormalCmsSpreadPricer(*arg(cmsPricer), *arg(correlation), qlNullableHandle(couponDiscountCurve), integrationPoints,
+      haveVolatilityType ? ext::optional<VolatilityType>((VolatilityType)volatilityType) : ext::nullopt, shift1, shift2))));
+  } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+
+void qlFreeSwapSpreadIndex(QlSwapSpreadIndex *o) {del(o);}
+QlInterestRateIndex* qlSwapSpreadIndexAsInterestRateIndex(QlSwapSpreadIndex* o) {return ret(new QlInterestRateIndex(*arg(o)));}
+QlSwapSpreadIndex* qlSwapSpreadIndex(const char* familyName, QlSwapIndex* swapIndex1, QlSwapIndex* swapIndex2, double gearing1, double gearing2, char **e) {
+  try {return ret(new QlSwapSpreadIndex(alloc(new SwapSpreadIndex(familyName, *arg(swapIndex1), *arg(swapIndex2), gearing1, gearing2))));
+  } catch (std::exception& er) {return handleException<QlSwapSpreadIndex*>(e, er);}}
 
 QlFloatingRateCoupon* qlCappedFlooredCmsCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredCmsCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,

@@ -565,18 +565,38 @@ peekBlackDeltaCalculator = BlackDeltaCalculator <.> peekStandalone
 withBlackDeltaCalculator :: BlackDeltaCalculator -> (Ptr CBlackDeltaCalculator -> IO b) -> IO b
 withBlackDeltaCalculator = withStandalone . getCBlackDeltaCalculator
 
-data CFloatingRateCouponPricer
-newtype FloatingRateCouponPricer = FloatingRateCouponPricer {getCFloatingRateCouponPricer :: Standalone CFloatingRateCouponPricer}
-foreign import ccall unsafe "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer
-instance Finalizable CFloatingRateCouponPricer where finalize = qlFreeFloatingRateCouponPricer
-peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer -> IO FloatingRateCouponPricer
-peekFloatingRateCouponPricer = FloatingRateCouponPricer <.> peekStandalone
-withFloatingRateCouponPricer :: FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
-withFloatingRateCouponPricer = withStandalone . getCFloatingRateCouponPricer
-withFloatingRateCouponPricerArray :: [FloatingRateCouponPricer] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer)) -> IO b) -> IO b
-withFloatingRateCouponPricerArray = withStandaloneArray getCFloatingRateCouponPricer
-withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer -> IO b) -> IO b
+-- | Generic floating-rate coupon pricer.  CMS-specific pricers form the concrete
+-- 'GenCmsCouponPricer' subfamily, so they retain all generic pricer wiring without a cast.
+data CFloatingRateCouponPricer'
+newtype GenFloatingRateCouponPricer frcp = GenFloatingRateCouponPricer {getFloatingRateCouponPricer :: GenForeignPtr frcp CFloatingRateCouponPricer'}
+type CFloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer'
+type FloatingRateCouponPricer = GenFloatingRateCouponPricer CFloatingRateCouponPricer
+foreign import ccall unsafe "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer'
+instance Finalizable CFloatingRateCouponPricer' where finalize = qlFreeFloatingRateCouponPricer
+asFloatingRateCouponPricer :: GenFloatingRateCouponPricer frcp -> IO FloatingRateCouponPricer
+asFloatingRateCouponPricer = transferGenForeignPtr peekFloatingRateCouponPricer . getFloatingRateCouponPricer
+peekFloatingRateCouponPricer :: Ptr CFloatingRateCouponPricer' -> IO FloatingRateCouponPricer
+peekFloatingRateCouponPricer = GenFloatingRateCouponPricer <.> newCastForeignPtr
+withFloatingRateCouponPricer :: GenFloatingRateCouponPricer frcp -> (Ptr CFloatingRateCouponPricer' -> IO b) -> IO b
+withFloatingRateCouponPricer = withGenForeignPtr . getFloatingRateCouponPricer
+withFloatingRateCouponPricerArray :: [GenFloatingRateCouponPricer frcp] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer')) -> IO b) -> IO b
+withFloatingRateCouponPricerArray = withGenArray withFloatingRateCouponPricer
+withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer' -> IO b) -> IO b
 withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
+
+-- | Vanilla CMS coupon pricer.  QuantLib consumers such as 'lognormalCmsSpreadPricer' require
+-- this exact base class, so it is retained as a leaf under 'FloatingRateCouponPricer'.
+data CCmsCouponPricer'
+type CCmsCouponPricer = ForeignPtr CCmsCouponPricer'
+type CmsCouponPricer = GenFloatingRateCouponPricer CCmsCouponPricer
+foreign import ccall unsafe "ql.h &qlFreeCmsCouponPricer" qlFreeCmsCouponPricer :: FinalizerPtr CCmsCouponPricer'
+instance Finalizable CCmsCouponPricer' where finalize = qlFreeCmsCouponPricer
+foreign import ccall "ql.h qlCmsCouponPricerAsFloatingRateCouponPricer" qlCmsCouponPricerAsFloatingRateCouponPricer :: Ptr CCmsCouponPricer' -> IO (Ptr CFloatingRateCouponPricer')
+instance Upcastable CCmsCouponPricer' where {type Base CCmsCouponPricer' = CFloatingRateCouponPricer'; upcast = qlCmsCouponPricerAsFloatingRateCouponPricer}
+peekCmsCouponPricer :: Ptr CCmsCouponPricer' -> IO CmsCouponPricer
+peekCmsCouponPricer = GenFloatingRateCouponPricer <.> newGenForeignPtr
+withCmsCouponPricer :: CmsCouponPricer -> (Ptr CCmsCouponPricer' -> IO b) -> IO b
+withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 
 -- | Base floating-rate coupon class.  Its cash-flow amount is its rate times accrual period and
 -- nominal.  The binding represents coupons at this useful hierarchy level; CMS coupons remain
@@ -1231,6 +1251,7 @@ data CBMAIndex'
 data CIborIndex'
 data COvernightIndex'
 data CSwapIndex'
+data CSwapSpreadIndex'
 data COvernightIndexedSwapIndex'
 newtype GenIndex idx = GenIndex {getIndex :: GenForeignPtr idx CIndex'}
 type CIndex = ForeignPtr CIndex'
@@ -1262,6 +1283,8 @@ type COvernightIndex = ForeignPtr COvernightIndex'
 type OvernightIborIndex = GenIborIndex COvernightIndex
 type CSwapIndex = ForeignPtr CSwapIndex'
 type SwapIndex = GenSwapIndex CSwapIndex
+type CSwapSpreadIndex = ForeignPtr CSwapSpreadIndex'
+type SwapSpreadIndex = GenInterestRateIndex CSwapSpreadIndex
 type GenIborIndex ibor = GenInterestRateIndex (AnyOf CIborIndex' ibor)
 type GenSwapIndex sidx = GenInterestRateIndex (AnyOf CSwapIndex' sidx)
 type COvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex'
@@ -1275,6 +1298,7 @@ foreign import ccall unsafe "ql.h &qlFreeBMAIndex" qlFreeBMAIndex :: FinalizerPt
 foreign import ccall unsafe "ql.h &qlFreeIborIndex" qlFreeIborIndex :: FinalizerPtr CIborIndex'
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndex" qlFreeOvernightIborIndex :: FinalizerPtr COvernightIndex'
 foreign import ccall unsafe "ql.h &qlFreeSwapIndex" qlFreeSwapIndex :: FinalizerPtr CSwapIndex'
+foreign import ccall unsafe "ql.h &qlFreeSwapSpreadIndex" qlFreeSwapSpreadIndex :: FinalizerPtr CSwapSpreadIndex'
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndexedSwapIndex" qlFreeOvernightIndexedSwapIndex :: FinalizerPtr COvernightIndexedSwapIndex'
 instance Finalizable CIndex' where finalize = qlFreeIndex
 instance Finalizable CInterestRateIndex' where finalize = qlFreeInterestRateIndex
@@ -1285,6 +1309,7 @@ instance Finalizable CBMAIndex' where finalize = qlFreeBMAIndex
 instance Finalizable CIborIndex' where finalize = qlFreeIborIndex
 instance Finalizable COvernightIndex' where finalize = qlFreeOvernightIborIndex
 instance Finalizable CSwapIndex' where finalize = qlFreeSwapIndex
+instance Finalizable CSwapSpreadIndex' where finalize = qlFreeSwapSpreadIndex
 instance Finalizable COvernightIndexedSwapIndex' where finalize = qlFreeOvernightIndexedSwapIndex
 foreign import ccall "ql.h qlInterestRateIndexAsIndex" qlInterestRateIndexAsIndex :: Ptr CInterestRateIndex' -> IO (Ptr CIndex')
 foreign import ccall "ql.h qlInflationIndexAsIndex" qlInflationIndexAsIndex :: Ptr CInflationIndex' -> IO (Ptr CIndex')
@@ -1294,6 +1319,7 @@ foreign import ccall "ql.h qlBMAIndexAsInterestRateIndex" qlBMAIndexAsInterestRa
 foreign import ccall "ql.h qlIborIndexAsInterestRateIndex" qlIborIndexAsInterestRateIndex :: Ptr CIborIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlOvernightIndexAsIborIndex" qlOvernightIndexAsIborIndex :: Ptr COvernightIndex' -> IO (Ptr CIborIndex')
 foreign import ccall "ql.h qlSwapIndexAsInterestRateIndex" qlSwapIndexAsInterestRateIndex :: Ptr CSwapIndex' -> IO (Ptr CInterestRateIndex')
+foreign import ccall "ql.h qlSwapSpreadIndexAsInterestRateIndex" qlSwapSpreadIndexAsInterestRateIndex :: Ptr CSwapSpreadIndex' -> IO (Ptr CInterestRateIndex')
 foreign import ccall "ql.h qlOvernightIndexedSwapIndexAsSwapIndex" qlOvernightIndexedSwapIndexAsSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO (Ptr CSwapIndex')
 instance Upcastable CInterestRateIndex' where {type Base CInterestRateIndex' = CIndex'; upcast = qlInterestRateIndexAsIndex}
 instance Upcastable CInflationIndex' where {type Base CInflationIndex' = CIndex'; upcast = qlInflationIndexAsIndex}
@@ -1303,6 +1329,7 @@ instance Upcastable CBMAIndex' where {type Base CBMAIndex' = CInterestRateIndex'
 instance Upcastable CIborIndex' where {type Base CIborIndex' = CInterestRateIndex'; upcast = qlIborIndexAsInterestRateIndex}
 instance Upcastable COvernightIndex' where {type Base COvernightIndex' = CIborIndex'; upcast = qlOvernightIndexAsIborIndex}
 instance Upcastable CSwapIndex' where {type Base CSwapIndex' = CInterestRateIndex'; upcast = qlSwapIndexAsInterestRateIndex}
+instance Upcastable CSwapSpreadIndex' where {type Base CSwapSpreadIndex' = CInterestRateIndex'; upcast = qlSwapSpreadIndexAsInterestRateIndex}
 instance Upcastable COvernightIndexedSwapIndex' where {type Base COvernightIndexedSwapIndex' = CSwapIndex'; upcast = qlOvernightIndexedSwapIndexAsSwapIndex}
 
 asIndex :: GenIndex idx -> IO Index
@@ -1375,6 +1402,11 @@ withSwapIndex :: GenSwapIndex sidx -> (Ptr CSwapIndex' -> IO b) -> IO b
 withSwapIndex  = withGenForeignPtr . peel . peel . getIndex
 newGenSwapIndex :: GenForeignPtr sidx CSwapIndex' -> IO (GenSwapIndex sidx)
 newGenSwapIndex = pure . GenIndex . newAnyOf . newAnyOf
+
+peekSwapSpreadIndex :: Ptr CSwapSpreadIndex' -> IO SwapSpreadIndex
+peekSwapSpreadIndex = newGenForeignPtr >=> newGenInterestRateIndex
+withSwapSpreadIndex :: SwapSpreadIndex -> (Ptr CSwapSpreadIndex' -> IO b) -> IO b
+withSwapSpreadIndex = withForeignPtr . ptr . peel . getIndex
 
 peekOvernightIndexedSwapIndex :: Ptr COvernightIndexedSwapIndex' -> IO OvernightIndexedSwapIndex
 peekOvernightIndexedSwapIndex = newGenForeignPtr >=> newGenSwapIndex

@@ -38,6 +38,8 @@ Do not create new files unless asked. Use one corresponding to the domain: TermS
 
    - **Leaf class with no subclasses of its own**, e.g. `ForwardRateAgreement`/`FxForward` under `Instrument`: same as above but skip the `AnyOf` polymorphism entirely, since nothing ever needs to treat it as "some more-specific-than-parent type, exact subtype unknown" — `type Xxx = GenParent CXxx` (mirror `ForwardRateAgreement`/`FxForward` in `Internal/Type.hs`). Simpler than the `AnyOf` shape above; use this whenever the class is a dead end in the hierarchy.
 
+   **Choose hierarchy levels from actual consumer signatures, not from constructor implementation classes.** If a downstream QuantLib API takes a concrete intermediate base, that base must be a real Haskell type/family member so it can be passed without a downcast; make constructors for its implementation subclasses return that required type. Do not add separate leaves for those implementation subclasses unless a bound API takes one specifically, or it has a calculation/getter that must remain concrete. For example, `LognormalCmsSpreadPricer` takes `CmsCouponPricer`, so CMS pricer constructors return a `CmsCouponPricer` leaf under `FloatingRateCouponPricer`; no separate `LinearTsrPricer` leaf is warranted merely because that is the class constructed.
+
 5. **`QuantLib/<Module>.chs`** — add the `{#pointer}` boilerplate, e.g.:
    `{#pointer *QlXxx as Xxx foreign -> CParent' nocode#}`
    then the `{#fun ...#}` bindings for the class's own methods. Ask the user which module if not already specified; otherwise pick by topical family, per CLAUDE.md's module-placement rule.

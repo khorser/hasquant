@@ -26,7 +26,7 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,historicalIndexAnalysisValueAtRisk, historicalIndexAnalysisGaussianValueAtRisk
   ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
   ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
-import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), forecastFixing
+import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
   ,historicalRatesAnalysis)
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
 import QuantLib.Currency(currency, Ccy(..))
@@ -464,6 +464,55 @@ spec evalDate = do
           cappedRate <- priced (Just strike) Nothing
           flooredRate <- priced Nothing (Just strike)
           abs (cappedRate + flooredRate - plainRate - strike) `shouldSatisfy` (< 1.0e-4)
+
+      -- Ported from test-suite/cmsspread.cpp's testFixings and the first part of
+      -- testCouponPricing.  The same LinearTsrPricer is accepted both by the generic CMS
+      -- coupon wiring and by LognormalCmsSpreadPricer, whose result is then accepted by the
+      -- generic floating-rate coupon wiring.  This is the concrete-base hierarchy path that
+      -- requires CmsCouponPricer without exposing implementation-specific Hagan/TSR leaves.
+      it "CMS-spread coupons reproduce the geared component fixing, including caps" $
+        Settings.keepingSettings' $ do
+          let spreadRefDate = 23 `february` 2018
+          Settings.setEvaluationDate (Just spreadRefDate)
+          cal <- calendar TARGET
+          dc <- dayCounter (Actual360 False)
+          fwdRateQ <- Quote.simpleQuote 0.02
+          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+          cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
+          cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
+          volQ <- Quote.simpleQuote 0.20
+          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
+          cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          spreadPricer <- CF.lognormalCmsSpreadPricer cmsPricer correlation (Just fwdCurve) 32 Nothing Nothing Nothing
+          valueDate <- advance cal spreadRefDate (2, Days) Following False
+          payDate <- addPeriod valueDate (1, Years)
+          let coupon idx = CF.cmsCoupon payDate 10000 valueDate payDate 2 idx
+                1.0 0.0 Nothing Nothing dc False Nothing Preceding
+              spreadCoupon mCap = CF.cappedFlooredCmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
+                1.0 0.0 mCap Nothing Nothing Nothing dc False Nothing Preceding
+          cms10Coupon <- coupon cms10y
+          cms2Coupon <- coupon cms2y
+          plainCoupon <- CF.cmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
+            1.0 0.0 Nothing Nothing dc False Nothing Preceding
+          cappedCoupon <- spreadCoupon (Just 0.015)
+          CF.setFloatingRateCouponPricer cms10Coupon cmsPricer
+          CF.setFloatingRateCouponPricer cms2Coupon cmsPricer
+          CF.setFloatingRateCouponPricer plainCoupon spreadPricer
+          CF.setFloatingRateCouponPricer cappedCoupon spreadPricer
+          addFixing cms10y spreadRefDate 0.05 False
+          addFixing cms2y spreadRefDate 0.03 False
+          rate10 <- CF.floatingRateCouponRate cms10Coupon
+          rate2 <- CF.floatingRateCouponRate cms2Coupon
+          plainRate <- CF.floatingRateCouponRate plainCoupon
+          cappedRate <- CF.floatingRateCouponRate cappedCoupon
+          plainRate `shouldSatisfy` closePrec 1.0e-12 (rate10 - rate2)
+          cappedRate `shouldSatisfy` closePrec 1.0e-12 0.015
+          clearFixings cms10y
+          clearFixings cms2y
 
       -- Ported from test/smoke/CheckLinearTsrPricer.hs: LinearTsrPricer's Settings strategy is
       -- dispatched through a plain int switch in cbits/qlInstrument.cpp (qlLinearTsrPricer), not

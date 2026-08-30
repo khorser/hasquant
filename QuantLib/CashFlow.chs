@@ -82,6 +82,8 @@ module QuantLib.CashFlow
   , CmsCoupon
   , cmsCoupon
   , cappedFlooredCmsCoupon
+  , cmsSpreadCoupon
+  , cappedFlooredCmsSpreadCoupon
   , ReplicationType(..)
   , DigitalReplication
   , digitalReplication
@@ -122,6 +124,9 @@ module QuantLib.CashFlow
   , YieldCurveModel(..)
 
   , FloatingRateCouponPricer
+  , GenFloatingRateCouponPricer
+  , asFloatingRateCouponPricer
+  , CmsCouponPricer
   , blackIborCouponPricer
   , rangeAccrualPricerByBgm
   , setCouponPricer
@@ -131,12 +136,13 @@ module QuantLib.CashFlow
   , LinearTsrPricerStrategy(..)
   , LinearTsrPricerSettings(..)
   , linearTsrPricer
+  , lognormalCmsSpreadPricer
   , EquityCashFlowPricer
   , equityQuantoCashFlowPricer
   , setEquityLegPricer
   ) where
 import QuantLib.Internal
-{#import QuantLib.InterestRate#}(Compounding)
+{#import QuantLib.InterestRate#}(Compounding, VolatilityType)
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
@@ -757,9 +763,11 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 
 {#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
 
-{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer nocode#}
+{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer' nocode#}
+{#pointer *QlCmsCouponPricer as CmsCouponPricer foreign -> CCmsCouponPricer' nocode#}
 {#pointer *QlFloatingRateCoupon as FloatingRateCoupon foreign -> CFloatingRateCoupon' nocode#}
 {#pointer *QlCmsCoupon as CmsCoupon foreign -> CCmsCoupon' nocode#}
+{#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
 {#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
 {#pointer *QlDigitalCmsCoupon as DigitalCmsCoupon foreign -> CDigitalCmsCoupon' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
@@ -805,11 +813,11 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 {#fun qlSetYoYInflationCouponPricer as setYoYInflationCouponPricer{withLeg*`GenLeg l',withYoYInflationCouponPricer*`YoYInflationCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Set the pricer of every floating-rate coupon in /leg/.
-{#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg l',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg l',withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Set the pricer of every floating-rate coupon in /leg/, picking each coupon's pricer from
 -- /pricers/ by matching coupon type.
-{#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[FloatingRateCouponPricer]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[GenFloatingRateCouponPricer frcp]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Constant-maturity-swap (CMS) coupon.
 --
@@ -820,6 +828,12 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
   ,preErrorCheck-`String'errorCheck*-}->`CmsCoupon'peekCmsCoupon*#}
 
+-- |Constant-maturity-swap-spread coupon.  Its index is the geared difference of two swap rates.
+-- QuantLib does no date adjustment at construction, so callers must provide business dates.
+{#fun qlCmsSpreadCoupon as cmsSpreadCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapSpreadIndex*`SwapSpreadIndex'
+  ,`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
 -- |The coupon rate.  It is calculated by the attached 'FloatingRateCouponPricer'.
 {#fun qlFloatingRateCouponRate as floatingRateCouponRate{withFloatingRateCoupon*`GenFloatingRateCoupon frc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -827,12 +841,18 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 {#fun qlFloatingRateCouponAmount as floatingRateCouponAmount{withFloatingRateCoupon*`GenFloatingRateCoupon frc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Set the coupon pricer used to calculate a floating-rate coupon's rate.
-{#fun qlFloatingRateCouponSetPricer as setFloatingRateCouponPricer{withFloatingRateCoupon*`GenFloatingRateCoupon frc',withFloatingRateCouponPricer*`FloatingRateCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlFloatingRateCouponSetPricer as setFloatingRateCouponPricer{withFloatingRateCoupon*`GenFloatingRateCoupon frc',withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |CMS coupon with optional cap and floor.  This is QuantLib's
 -- @CappedFlooredCmsCoupon@: it wraps a 'CmsCoupon' in a capped/floored coupon and returns it at
 -- the useful 'FloatingRateCoupon' level.  'Nothing' means no cap or floor.
 {#fun qlCappedFlooredCmsCoupon as cappedFlooredCmsCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapIndex*`GenSwapIndex sidx'
+  ,`Double',`Double',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |Capped/floored CMS-spread coupon, returned at the useful 'FloatingRateCoupon' level.
+-- 'Nothing' represents QuantLib's absent cap or floor.
+{#fun qlCappedFlooredCmsSpreadCoupon as cappedFlooredCmsSpreadCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withSwapSpreadIndex*`SwapSpreadIndex'
   ,`Double',`Double',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
@@ -877,7 +897,7 @@ digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), using an analytic
 -- closed-form approximation of the replication integrals.
 {#fun qlAnalyticHaganPricer as analyticHaganPricer{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',`YieldCurveModel',withQuote*`GenQuote q' -- ^meanReversion
-  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+  ,preErrorCheck-`String'errorCheck*-}->`CmsCouponPricer'peekCmsCouponPricer*#}
 
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), evaluating the
 -- replication integrals by numerical integration over vanilla swaption prices.
@@ -886,7 +906,7 @@ digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads
   ,`Double' -- ^upperLimit
   ,`Double' -- ^precision
   ,`Double' -- ^hardUpperLimit
-  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+  ,preErrorCheck-`String'errorCheck*-}->`CmsCouponPricer'peekCmsCouponPricer*#}
 
 -- |The strategy 'LinearTsrPricer' uses to pick the integration cut-off strike bounds; each
 -- carries the strategy-specific parameter upstream's corresponding @Settings::withX@ takes
@@ -917,7 +937,7 @@ data LinearTsrPricerSettings = LinearTsrPricerSettings
 -- advanced numerical-integration override) is not exposed; upstream's own default
 -- (@ext::shared_ptr\<Integrator\>()@) is always used.
 linearTsrPricer :: GenSwaptionVolatilityStructure sv -> GenQuote q -> Maybe (GenYieldTermStructure y)
-  -> LinearTsrPricerSettings -> IO FloatingRateCouponPricer
+  -> LinearTsrPricerSettings -> IO CmsCouponPricer
 linearTsrPricer swaptionVol meanReversion couponDiscountCurve (LinearTsrPricerSettings strat bounds) =
   linearTsrPricer_ swaptionVol meanReversion couponDiscountCurve strategyTag param
     (maybe False (const True) bounds) lowerBound upperBound
@@ -940,6 +960,19 @@ linearTsrPricer swaptionVol meanReversion couponDiscountCurve (LinearTsrPricerSe
   ,`Bool' -- ^haveBounds
   ,`Double' -- ^lowerBound (ignored unless haveBounds)
   ,`Double' -- ^upperBound (ignored unless haveBounds)
+  ,preErrorCheck-`String'errorCheck*-}->`CmsCouponPricer'peekCmsCouponPricer*#}
+
+-- |CMS-spread pricer using the Brigo--Mercurio bivariate model, with extensions for shifted
+-- lognormal and normal dynamics.  /volatilityType/ of 'Nothing' inherits the type and shifts
+-- from the component swaption volatility structures; in that case both shifts must be 'Nothing'.
+lognormalCmsSpreadPricer :: CmsCouponPricer -> GenQuote q -> Maybe (GenYieldTermStructure y) -> Word
+  -> Maybe VolatilityType -> Maybe Double -> Maybe Double -> IO FloatingRateCouponPricer
+lognormalCmsSpreadPricer cmsPricer correlation discountCurve integrationPoints volatilityType shift1 shift2 =
+  lognormalCmsSpreadPricer_ cmsPricer correlation discountCurve integrationPoints
+    (maybe False (const True) volatilityType) (maybe 0 fromEnum volatilityType) shift1 shift2
+
+{#fun qlLognormalCmsSpreadPricer as lognormalCmsSpreadPricer_{withCmsCouponPricer*`CmsCouponPricer',withQuote*`GenQuote q',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)'
+  ,fromIntegral`Word',`Bool',`Int',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double'
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -8,6 +8,7 @@ module QuantLib.Index.InterestRate
   , OvernightIborIndex
   , IborIndex
   , SwapIndex
+  , SwapSpreadIndex
   , OvernightIndexedSwapIndex
   , GenInterestRateIndex
   , GenIborIndex
@@ -35,6 +36,7 @@ module QuantLib.Index.InterestRate
   , overnightIndexedSwapIndex
   , swapIndex
   , swapIndex'
+  , swapSpreadIndex
 
   -- The bundled names are the fixed-tenor shortcut pattern synonyms defined below;
   -- @Euribor3M@ and @Euribor (3, Months)@ are the same value, usable interchangeably
@@ -97,6 +99,7 @@ import qualified QuantLib.Time.Schedule as Sched (dayCounter)
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
+{#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign -> COvernightIndexedSwapIndex' nocode#}
 
@@ -317,6 +320,16 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,fromEnumC`BusinessDayConvention' -- ^fixedLegConvention
   ,withDayCounter*`DayCounter' -- ^fixedLegDayCounter
   ,withIborIndex*`GenIborIndex ibor',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
+
+-- |Interest-rate index equal to @gearing1 * swapIndex1 + gearing2 * swapIndex2@.  It has no
+-- native fixing history: a historical fixing is available only when both component swap indexes
+-- have one.
+{#fun qlSwapSpreadIndex as swapSpreadIndex{`String' -- ^familyName
+  ,withSwapIndex*`GenSwapIndex sidx1'
+  ,withSwapIndex*`GenSwapIndex sidx2'
+  ,`Double' -- ^gearing1
+  ,`Double' -- ^gearing2
+  ,preErrorCheck-`String'errorCheck*-}->`SwapSpreadIndex'peekSwapSpreadIndex*#}
 
 -- |Low-level glue for 'iborIndex': constructs a generic Inter-Bank-Offered-Rate index, optionally linked to a forwarding curve.
 {#fun qlIborIndex{`String' -- ^familyName
