@@ -50,11 +50,11 @@ main = do
 
   let nativePayoff = Type (Striked (PlainVanilla (PlainVanillaPayoff Call strike)))
       bands = operatorBands nPts h mu sigma2 r
-      applyFn _ u = applyOp bands u
-      applyDirFn _dir _t u = applyOp bands u
-      solveFn _dir s _t u =
+      applyFn _ = applyOp bands
+      applyDirFn _dir _t = applyOp bands
+      solveFn _dir s _t =
         let (lo, di, up) = bands
-        in thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up) u
+        in thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up)
 
   mesh1d <- predefined1dMesher xs
   mesher <- fdmMesherComposite [mesh1d]

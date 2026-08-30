@@ -25,13 +25,12 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(.
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
-import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.Process hiding(drift)
 import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
-import QuantLib.TermStructure.Volatility(blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
+import QuantLib.TermStructure.Volatility(blackConstantVol, blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
 import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
 

@@ -616,7 +616,7 @@ spec = do
 
     it "asset-(at-expiry)-or-nothing American digital reproduces digitaloption.cpp" $
       forM_ assetOrNothingCases $ \c@(_,_,_,_,_,_,_,_,expected) -> do
-        v <- priceCase (\ty s -> AssetOrNothing ty s) c
+        v <- priceCase AssetOrNothing c
         v `shouldSatisfy` closePrec expected 1e-4
 
     -- cached references from digitaloption.cpp::testMCCashAtHit: cash-(at-hit)-or-nothing

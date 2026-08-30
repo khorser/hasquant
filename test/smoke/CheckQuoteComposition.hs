@@ -62,7 +62,7 @@ main = do
   -- 2. Same, through an arbitrary Haskell function. Everything that reads the quote -- curve
   -- construction *and* every discount call -- stays inside the continuation.
   base' <- simpleQuote 0.03
-  withDerivedQuote (\x -> x * 1.5) base' $ \dq -> do
+  withDerivedQuote (* 1.5) base' $ \dq -> do
     checkClose "derived quote value" 0.045 `flip` 1.0e-12 =<< value dq
     curve' <- flatForward evalDate dq dc Continuous Annual
     dfA <- discount' curve' maturity True

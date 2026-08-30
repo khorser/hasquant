@@ -32,29 +32,26 @@ import QuantLib.Time.Date(today, addPeriod)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(flatForward, forwardRate, YieldTermStructure)
+import QuantLib.TermStructure.Yield(flatForward, forwardRate, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
-import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..))
-import QuantLib.Process(g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, factors, drift, diffusion, expectation, initialValues, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..))
-import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate)
-import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine)
-import QuantLib.TermStructure.Yield(interpolatedZeroCurve)
+import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
+ , g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, factors, drift, diffusion, expectation, initialValues, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
+ , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows, liborForwardModelProcessIndex)
+import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
+ , hestonModel, batesModel, gJRGARCHModel
+ , liborForwardModel, liborForwardModelAsAffineModel, LmVolatilityModel(..), LmCorrelationModel(..))
+import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
+ , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Matrix(..), Interpolation(..))
-import Control.Monad(replicateM)
-import QuantLib.Model(hestonModel, batesModel, gJRGARCHModel)
-import QuantLib.PricingEngine(analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula)
-
+import Control.Monad(replicateM, zipWithM_)
 import QuantLib.CashFlow(cashFlows)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Index(fixingCalendar, addFixing)
 import QuantLib.Time.Calendar(advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
-import QuantLib.Process(liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows, liborForwardModelProcessIndex)
-import QuantLib.Model(liborForwardModel, liborForwardModelAsAffineModel, LmVolatilityModel(..), LmCorrelationModel(..))
-import QuantLib.PricingEngine(analyticCapFloorEngine)
 
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -270,7 +267,7 @@ spec = do
         let sumR = foldr1 (zipWith (+)) [zipWith (+) r0 r1 | [r0, r1] <- paths]
             meanR = map (/ fromIntegral nPaths) sumR
         expected <- mapM (\i -> g2Phi process (horizon * fromIntegral i / fromIntegral steps)) [0 .. steps]
-        sequence_ (zipWith (\m e -> m `shouldSatisfy` closePrec e 1.5e-3) meanR expected)
+        zipWithM_ (\ m e -> m `shouldSatisfy` closePrec e 1.5e-3) meanR expected
 
     -- ported from test-suite/g2process.cpp::testG2ProcessPhiAndShortRate (minus its x0()/y0()
     -- checks -- those OU-component getters aren't bound, per "bind few inspectors"):
@@ -347,15 +344,15 @@ spec = do
         withCurve <- g2Process a sigma b eta rho (Just curve)
         let t = 1.5; z = [0.002, -0.003]
 
-        d1 <- drift paramOnly t z
-        d2 <- drift withCurve t z
-        (d2 !! 1) `shouldSatisfy` closePrec (d1 !! 1) 1.0e-12
+        d10:d11:_ <- drift paramOnly t z
+        d20:d21:_ <- drift withCurve t z
+        d21 `shouldSatisfy` closePrec d11 1.0e-12
 
         let h = 1.0e-4
         phiT <- g2Phi withCurve t
         phiTh <- g2Phi withCurve (t + h)
         let expectedDelta = a * phiT + (phiTh - phiT) / h
-        ((d2 !! 0) - (d1 !! 0)) `shouldSatisfy` closePrec expectedDelta 1.0e-10
+        (d20 - d10) `shouldSatisfy` closePrec expectedDelta 1.0e-10
 
         diff1 <- diffusion paramOnly t z
         diff2 <- diffusion withCurve t z
