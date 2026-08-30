@@ -13,19 +13,22 @@ import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
-import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..), years)
+import QuantLib.Time.Calendar
+import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..))
 import QuantLib.Quote hiding(value)
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
 import QuantLib.CashFlow(fixedDividend)
+import qualified QuantLib.CashFlow as CF
+import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
 import QuantLib.Instrument.Option hiding(deltaForward, vega, rho, dividendRho, strikeSensitivity, itmCashProbability)
 import qualified QuantLib.Instrument.Option as Opt(rho, vega, dividendRho)
-import QuantLib.Instrument.Swap(varianceSwap)
+import QuantLib.Instrument.CapFloor(cap)
+import QuantLib.Instrument.Swap(varianceSwap, vanillaSwap, floatingLeg, SwapType(..))
 import QuantLib.Process hiding(blackScholesTheta)
-import QuantLib.Model(hestonModel)
+import QuantLib.Model hiding(setPricingEngine, value)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..))
 import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
 import QuantLib.PricingEngine
@@ -1232,3 +1235,62 @@ spec = do
           setPricingEngine inst engine
           v <- npv inst
           v `shouldSatisfy` closePrec expected 4.0e-3
+
+  -- The Gaussian1dModels example already covers the model calibration and swaption paths.
+  -- These are its distinct cap/floor-engine scenarios, including the caplet-smile constructor
+  -- used by test-suite/markovfunctional.cpp's testVanillaEngines.
+  describe "Gaussian1d cap/floor engine" $
+    it "prices a cap for GSR and MarkovFunctional, and the caplet-calibrated Markov model agrees with Black" $
+      Settings.keepingSettings' $ do
+        cal <- calendar TARGET
+        originalEvalDate <- Settings.evaluationDate
+        evalDate <- adjust cal originalEvalDate Following
+        Settings.setEvaluationDate (Just evalDate)
+        settlement <- advance cal evalDate (2, Days) Following False
+        dc365 <- dayCounter Actual365FixedStandard
+        thirty360bb <- dayCounter Thirty360BondBasis
+        act360 <- dayCounter (Actual360 False)
+        flatQ <- simpleQuote 0.03
+        ts <- flatForward settlement flatQ dc365 Continuous Annual
+        euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+        start <- advance cal settlement (1, Years) ModifiedFollowing False
+        maturity <- advance cal start (10, Years) ModifiedFollowing False
+        fixedSchedule <- schedule (Just start) maturity (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+        floatSchedule <- schedule (Just start) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+        swp <- vanillaSwap Payer 1.0 fixedSchedule 0.03 thirty360bb floatSchedule euribor6m 0.0 act360 (Just ModifiedFollowing) Nothing
+        floatLeg <- floatingLeg swp
+        capfl <- cap floatLeg [0.03]
+
+        stepDates <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2 :: Int]
+        gsrVolQuotes <- mapM simpleQuote [0.01, 0.01, 0.01]
+        gsrReversionQuote <- simpleQuote 0.01
+        gsrModel <- gsr ts stepDates gsrVolQuotes gsrReversionQuote 60.0
+        gsrModel' <- gsrAsGaussian1dModel gsrModel
+        gsrEngine <- gaussian1dCapFloorEngine gsrModel' 64 7.0 True False (Just ts)
+        setPricingEngine capfl gsrEngine
+        gsrNpv <- npv capfl
+        gsrNpv `shouldSatisfy` (\x -> not (isNaN x || isInfinite x) && x >= 0)
+
+        swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
+        swaptionVolQ <- simpleQuote 0.20
+        swaptionVol <- constantSwaptionVolatility' evalDate cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+        cmsExpiries <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2, 3 :: Int]
+        markov <- markovFunctional ts 0.01 [] [0.01] swaptionVol cmsExpiries (replicate 3 (10, Years)) swapBase 16
+        markovModel <- markovFunctionalAsGaussian1dModel markov
+        markovEngine <- gaussian1dCapFloorEngine markovModel 8 5.0 True False (Just ts)
+        setPricingEngine capfl markovEngine
+        markovNpv <- npv capfl
+        markovNpv `shouldSatisfy` (\x -> not (isNaN x || isInfinite x) && x >= 0)
+
+        capletExpiries <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
+        capletVolQ <- simpleQuote 0.20
+        capletVol <- constantOptionletVolatility' 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
+        markovCaplet <- markovFunctionalCaplet ts 0.01 [] [0.01] capletVol capletExpiries euribor6m 16
+        markovCapletModel <- markovFunctionalAsGaussian1dModel markovCaplet
+        blackEngine <- blackCapFloorEngine' ts capletVol
+        setPricingEngine capfl blackEngine
+        blackNpv <- npv capfl
+        markovCapletEngine <- gaussian1dCapFloorEngine markovCapletModel 64 7.0 True False (Just ts)
+        setPricingEngine capfl markovCapletEngine
+        markovCapletNpv <- npv capfl
+        markovCapletNpv `shouldSatisfy` closePrec blackNpv 1.0e-4

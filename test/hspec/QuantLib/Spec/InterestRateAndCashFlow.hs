@@ -34,6 +34,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility', constantSwaptionVolatility')
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Instrument as Instr
+import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
@@ -491,6 +492,48 @@ spec evalDate = do
           flooredRate <- priced Nothing (Just strike)
           abs (cappedRate + flooredRate - plainRate - strike) `shouldSatisfy` (< 1.0e-4)
 
+      -- The direct coupon tests above cover plain and capped/floored CMS coupons.  This keeps
+      -- the remaining unique coverage: a digital coupon's embedded call and the DigitalCmsLeg
+      -- options record must both affect the priced result.
+      it "digital CMS coupon and leg options affect the priced result" $
+        Settings.keepingSettings' $ do
+          (cal, dc, curve, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
+          pricer <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
+          let fixingDays = Ibor.fixingDays swapIdx
+              coupon = CF.cmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
+                1.0 0.0 Nothing Nothing dc False Nothing Preceding
+          plain <- coupon
+          CF.setFloatingRateCouponPricer plain pricer
+          plainRate <- CF.floatingRateCouponRate plain
+          plainAmount <- CF.floatingRateCouponAmount plain
+          plainRate `shouldSatisfy` (> 0)
+          plainAmount `shouldSatisfy` (> 0)
+
+          replication <- CF.digitalReplication CF.ReplicationCentral 1.0e-4
+          digital <- CF.digitalCmsCoupon plain (Just 0.03) CF.Long False (Just 0.005)
+            Nothing CF.Long False Nothing (Just replication) False
+          CF.setFloatingRateCouponPricer digital pricer
+          digitalRate <- CF.floatingRateCouponRate digital
+          callRate <- CF.digitalCmsCouponCallOptionRate digital
+          callRate `shouldSatisfy` (> 0)
+          digitalRate `shouldSatisfy` (> plainRate)
+
+          sch <- schedule (Just startDate) endDate (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
+          let opts = CF.defaultDigitalCmsLegOpts
+                { CF.dcmlCallStrikes = [0.03]
+                , CF.dcmlCallPayoffs = [0.005]
+                , CF.dcmlReplication = Just replication
+                }
+              priceLeg legOpts = do
+                leg <- CF.digitalCmsLeg sch swapIdx [1.0] dc Unadjusted [fixingDays] [1.0] [0.0] False legOpts
+                CF.setCouponPricer leg pricer
+                CF.npv leg curve False Nothing Nothing
+          defaultNpv <- priceLeg opts
+          explicitFalseNpv <- priceLeg (opts { CF.dcmlNakedOption = False })
+          nakedNpv <- priceLeg (opts { CF.dcmlNakedOption = True })
+          explicitFalseNpv `shouldSatisfy` closePrec defaultNpv 1.0e-12
+          nakedNpv `shouldSatisfy` (< defaultNpv)
+
       -- Ported from test-suite/cmsspread.cpp's testFixings and the first part of
       -- testCouponPricing.  The same LinearTsrPricer is accepted both by the generic CMS
       -- coupon wiring and by LognormalCmsSpreadPricer, whose result is then accepted by the
@@ -539,6 +582,86 @@ spec evalDate = do
           cappedRate `shouldSatisfy` closePrec 1.0e-12 0.015
           clearFixings cms10y
           clearFixings cms2y
+
+      it "CMS and Ibor legs, CMS-rate bonds, and their full options price with effective caps, floors, and amortization" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just refDate)
+          cal <- calendar TARGET
+          settlement <- advance cal refDate (2, Days) Following False
+          dc365 <- dayCounter Actual365FixedStandard
+          thirty360bb <- dayCounter Thirty360BondBasis
+          flatQ <- Quote.simpleQuote 0.03
+          ts <- flatForward refDate flatQ dc365 IR.Continuous Annual
+          swapBase <- liborSwapIndex EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
+          euribor6m <- iborIndex Euribor6M (Just ts)
+          volQ <- Quote.simpleQuote 0.20
+          swaptionVol <- constantSwaptionVolatility' refDate cal Following volQ dc365 IR.ShiftedLognormal 0.0
+          reversionQ <- Quote.simpleQuote 0.01
+          cmsPricer <- CF.analyticHaganPricer swaptionVol CF.Standard reversionQ
+          optionletVol <- constantOptionletVolatility' 0 cal Following volQ dc365 IR.ShiftedLognormal 0.0
+          iborPricer <- CF.blackIborCouponPricer optionletVol CF.Black76 Nothing Nothing
+          start <- advance cal settlement (1, Years) ModifiedFollowing False
+          maturity <- advance cal start (10, Years) ModifiedFollowing False
+          sch <- schedule (Just start) maturity (1, Years) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+
+          let priceCmsLeg caps floors = do
+                leg <- CF.cmsLeg sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] caps floors False False
+                CF.setCouponPricer leg cmsPricer
+                CF.npv leg ts False Nothing Nothing
+              priceIborLeg caps floors = do
+                leg <- CF.iborLeg sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] caps floors False False
+                CF.setCouponPricer leg iborPricer
+                CF.npv leg ts False Nothing Nothing
+              priceCmsBond caps floors = do
+                bond <- Bond.cmsRateBond 2 100 sch swapBase thirty360bb Following 2 [1.0] [0.0] caps floors False 100 Nothing
+                leg <- Bond.cashFlows bond
+                CF.setCouponPricer leg cmsPricer
+                CF.npv leg ts False Nothing Nothing
+
+          cmsUncapped <- priceCmsLeg [] []
+          cmsCapped <- priceCmsLeg [0.03] []
+          cmsFloored <- priceCmsLeg [] [0.03]
+          cmsCapped `shouldSatisfy` (< cmsUncapped)
+          cmsFloored `shouldSatisfy` (> cmsUncapped)
+
+          iborUncapped <- priceIborLeg [] []
+          iborCapped <- priceIborLeg [0.03] []
+          iborFloored <- priceIborLeg [] [0.03]
+          iborCapped `shouldSatisfy` (< iborUncapped)
+          iborFloored `shouldSatisfy` (> iborUncapped)
+
+          iborFull <- CF.iborLegFull sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
+            CF.defaultIborLegOpts { CF.ilgPaymentLag = 2, CF.ilgExCouponPeriod = (2, Days) }
+          CF.setCouponPricer iborFull iborPricer
+          iborFullNpv <- CF.npv iborFull ts False Nothing Nothing
+          iborFullNpv `shouldSatisfy` (> 0)
+          cmsFull <- CF.cmsLegFull sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
+            CF.defaultCmsLegOpts { CF.cmslExCouponPeriod = (2, Days) }
+          CF.setCouponPricer cmsFull cmsPricer
+          cmsFullNpv <- CF.npv cmsFull ts False Nothing Nothing
+          cmsFullNpv `shouldSatisfy` (> 0)
+
+          bondUncapped <- priceCmsBond [] []
+          bondCapped <- priceCmsBond [0.03] []
+          bondFloored <- priceCmsBond [] [0.03]
+          bondCapped `shouldSatisfy` (< bondUncapped)
+          bondFloored `shouldSatisfy` (> bondUncapped)
+
+          let notionals = [1000000, 500000, 250000, 100000]
+              redemptions = [0, 0, 0, 100]
+              priceAmortizing ns rs = do
+                bond <- Bond.amortizingCmsRateBond 2 ns sch swapBase thirty360bb Following 2 [1.0] [0.0] [] [] False Nothing rs
+                couponLeg <- Bond.cashFlows bond
+                CF.setCouponPricer couponLeg cmsPricer
+                couponNpv <- CF.npv couponLeg ts False Nothing Nothing
+                redemptionLeg <- Bond.redemptions bond
+                redemptionNpv <- CF.npv redemptionLeg ts False Nothing Nothing
+                pure (couponNpv, redemptionNpv)
+          (couponNpv, redemptionNpv) <- priceAmortizing notionals redemptions
+          (doubledCouponNpv, _) <- priceAmortizing (map (* 2) notionals) redemptions
+          (_, doubledRedemptionNpv) <- priceAmortizing notionals (map (* 2) redemptions)
+          doubledCouponNpv `shouldSatisfy` (> couponNpv)
+          doubledRedemptionNpv `shouldSatisfy` (> redemptionNpv)
 
       -- Ported from test/smoke/CheckLinearTsrPricer.hs: LinearTsrPricer's Settings strategy is
       -- dispatched through a plain int switch in cbits/qlInstrument.cpp (qlLinearTsrPricer), not

@@ -41,6 +41,8 @@ This codebase has accumulated many special-case patterns for recurring problems 
 
 See the `run-hasquant` skill for build/test commands, the GHC 8.10 gate, `trackAllocations` tracing, `quiet-build.py`, and `test/smoke/` upkeep.
 
+**Test placement:** put normal product, pricing, and behavioral regression tests in the Cabal-run Hspec suite under `test/hspec/`, where they run in CI and contribute to coverage. Reserve `test/smoke/` for small standalone end-to-end probes of binding-specific behavior that the regular suite cannot reliably expose: generated-enum/factory-table dispatch, direct C++/Haskell marshalling, pointer lifetime, array ownership, constructor argument ordering, and hierarchy/upcast wiring. Before adding a smoke script, check whether its behavior is already covered by Hspec; move or extend general coverage there rather than duplicating it.
+
 ## API design
 
 - **When adding a new binding, consider a neighboring one if it's low-effort and doesn't context-switch.** Minimalism (bind only what's asked) is still the default, but a sibling that reuses plumbing you just built — same marshalling shape, same fixture, same header already open — is often nearly free. `InterpolatedSwaptionVolatilityCube` alongside `SabrSwaptionVolatilityCube` is the model: it reused every piece of the SABR cube's `Handle`/tenor/`Matrix`/`SwapIndex` marshalling and needed no new infrastructure. If the neighbor needs its own investigation, its own fixture, or a genuinely different marshalling shape, it's a separate task.
