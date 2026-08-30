@@ -6,6 +6,7 @@ import Test.Hspec.QuickCheck(prop)
 import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
+import Control.Exception(bracket_)
 import Control.Monad(forM_)
 import Data.Time.Calendar
 
@@ -18,6 +19,7 @@ import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings
+  ,fixingHistory, fixingHistoryNames, clearAllFixingHistories
   ,historicalIndexAnalysisSkippedDates, historicalIndexAnalysisMean, historicalIndexAnalysisStandardDeviation
   ,historicalIndexAnalysisSkewness, historicalIndexAnalysisKurtosis, historicalIndexAnalysisMin, historicalIndexAnalysisMax
   ,historicalIndexAnalysisSemiVariance, historicalIndexAnalysisSemiDeviation
@@ -752,7 +754,7 @@ spec evalDate = do
           n <- Instr.npv cms
           n `shouldSatisfy` not . isNaN
 
-    describe "Index fixings" $
+    describe "Index fixings" $ do
       it "addFixing/fixing round-trip, hasHistoricalFixing/isValidFixingDate, addFixings and clearFixings" $
         Settings.keepingSettings' $ do
           idx <- iborIndex (Euribor (6, Months)) Nothing
@@ -774,6 +776,23 @@ spec evalDate = do
 
           clearFixings idx
           hasHistoricalFixing idx d1 `shouldReturn` False
+
+      it "exports a zipped fixing history, inventories it globally, and clears all histories" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ do
+          idx <- iborIndex (Euribor (6, Months)) Nothing
+          cal <- fixingCalendar idx
+          d1 <- adjust cal (16 `august` 2021) Following
+          d2 <- adjust cal (16 `september` 2021) Following
+          fixingHistory idx `shouldReturn` []
+          fixingHistoryNames `shouldReturn` []
+          addFixings idx [d2, d1] [0.02, 0.01] False
+
+          fixingHistory idx `shouldReturn` [(d1, 0.01), (d2, 0.02)]
+          names <- fixingHistoryNames
+          show idx `shouldSatisfy` (`elem` names)
+
+          clearAllFixingHistories
+          fixingHistoryNames `shouldReturn` []
 
     describe "HistoricalRatesAnalysis" $
       -- historicalRatesAnalysis accumulates statistics over *relative changes* between

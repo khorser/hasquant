@@ -456,6 +456,9 @@ extern "C" {
   int qlIndexIsValidFixingDate(QlIndex *i, int date, char **e);
   void qlIndexAddFixings(QlIndex *i, unsigned datesLen, int *dates, double *values, int overwrite, char **e);
   void qlIndexClearFixings(QlIndex *i, char **e);
+  void qlIndexFixingHistory(QlIndex *i, unsigned *datesLen, int **dates, unsigned *valuesLen, double **values, char **e);
+  void qlIndexManagerHistories(unsigned *count, char ***names, char **e);
+  void qlIndexManagerClearHistories(char **e);
   void qlFreeIndex(QlIndex *i);
   void qlFreeInterestRateIndex(QlInterestRateIndex *o);
   QlIndex* qlInterestRateIndexAsIndex(QlInterestRateIndex *o);

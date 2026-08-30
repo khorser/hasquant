@@ -10,6 +10,9 @@ module QuantLib.Index
   , isValidFixingDate
   , addFixings
   , clearFixings
+  , fixingHistory
+  , fixingHistoryNames
+  , clearAllFixingHistories
   , asIndex
 
   , HistoricalIndexAnalysis
@@ -72,6 +75,24 @@ import QuantLib.Internal.Type
 
 -- |clears all stored historical fixings for this index
 {#fun qlIndexClearFixings as clearFixings{withIndex*`GenIndex idx',preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Returns every stored native fixing for this index, in ascending date order.  This is a
+-- snapshot copied out of QuantLib's process-global fixing store; it has no forecasting behavior.
+fixingHistory :: GenIndex idx -> IO [(Day, Double)]
+fixingHistory i = do
+  (ds, vs) <- qlIndexFixingHistory i
+  return $ zip ds vs
+{#fun qlIndexFixingHistory{withIndex*`GenIndex idx'
+  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Returns the names with an entry in QuantLib's process-global fixing store.  Names are
+-- case-insensitive in that store and can be shared by separate index instances.
+{#fun qlIndexManagerHistories as fixingHistoryNames{preArray-`[String]'&peekCStringArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Clears every native fixing history in QuantLib's process-global store, for all index names.
+-- This affects other index instances and is intended for explicit session or test cleanup.
+{#fun qlIndexManagerClearHistories as clearAllFixingHistories{preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#pointer *QlHistoricalIndexAnalysis as HistoricalIndexAnalysis foreign -> CHistoricalIndexAnalysis nocode#}
 

@@ -41,6 +41,7 @@
 #include <ql/experimental/termstructures/crosscurrencyratehelpers.hpp>
 #include <ql/math/interpolations/all.hpp>
 #include <ql/index.hpp>
+#include <ql/indexes/indexmanager.hpp>
 #include <ql/indexes/swapindex.hpp>
 #include <ql/indexes/bmaindex.hpp>
 #include <ql/indexes/swap/all.hpp>
@@ -62,6 +63,7 @@
 #include <ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp>
 
 #include "qlaux.h"
+#include "qlMisc.h"
 using namespace QuantLib;
 // these are type aliases so we cannot use their forward declarations in qlaux.h without including all relevant header files
 using QlDefaultProbabilityHelper = shared_ptr<DefaultProbabilityHelper>;
@@ -84,6 +86,13 @@ QL_TRACE_NAME(PiecewiseZeroSpreadedTermStructure)
 #endif
 
 namespace {
+  bool sameIndexName(const std::string& s1, const std::string& s2) {
+    return s1.size() == s2.size() && std::equal(s1.begin(), s1.end(), s2.begin(),
+      [](const auto& c1, const auto& c2) {
+        return std::toupper(static_cast<unsigned char>(c1)) == std::toupper(static_cast<unsigned char>(c2));
+      });
+  }
+
   template <class T>
   inline std::vector< std::vector<Handle<T> > > qlHandleMatrix(Handle<T> **vals, size_t rows, size_t cols) {
     std::vector< std::vector<Handle<T> > > r; r.reserve(rows);
@@ -1678,6 +1687,44 @@ void qlIndexAddFixings(QlIndex *i, unsigned datesLen, int *dates, double *values
   try {std::vector<Date> ds = qlDateVector(dates, datesLen);(*arg(i))->addFixings(ds.begin(), ds.end(), values, overwrite);
   } catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 void qlIndexClearFixings(QlIndex *i, char **e) {try {(*arg(i))->clearFixings();} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
+void qlIndexFixingHistory(QlIndex *i, unsigned *datesLen, int **dates, unsigned *valuesLen, double **values, char **e) {
+  int *ds = 0;
+  double *vs = 0;
+  *datesLen = 0; *dates = 0; *valuesLen = 0; *values = 0;
+  try {
+    const std::string& name = (*arg(i))->name();
+    const std::vector<std::string> names = IndexManager::instance().histories();
+    if (std::none_of(names.begin(), names.end(), [&](const std::string& candidate) {
+          return sameIndexName(candidate, name);
+        }))
+      return;
+    const TimeSeries<Real>& history = (*arg(i))->timeSeries();
+    const std::vector<Date> historyDates = history.dates();
+    const std::vector<Real> historyValues = history.values();
+    ds = qlAllocateInts(historyDates.size());
+    vs = qlAllocateDoubles(historyValues.size());
+    for (unsigned n = 0; n < historyDates.size(); ++n) ds[n] = historyDates[n].serialNumber();
+    for (unsigned n = 0; n < historyValues.size(); ++n) vs[n] = historyValues[n];
+    *datesLen = historyDates.size(); *dates = ds;
+    *valuesLen = historyValues.size(); *values = vs;
+  } catch (std::exception& er) {
+    qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
+  }}
+void qlIndexManagerHistories(unsigned *count, char ***names, char **e) {
+  char **ns = 0;
+  unsigned n = 0;
+  *count = 0; *names = 0;
+  try {
+    const std::vector<std::string> histories = IndexManager::instance().histories();
+    ns = ret(new char*[histories.size()]());
+    for (; n < histories.size(); ++n) ns[n] = tracedup(histories[n].c_str());
+    *count = histories.size(); *names = ns;
+  } catch (std::exception& er) {
+    qlFreeStringArray(n, ns); *e = tracedup(er.what());
+  }}
+void qlIndexManagerClearHistories(char **e) {
+  try {IndexManager::instance().clearHistories();}
+  catch (std::exception& er) {*e = tracedup(er.what());}}
 // must match with the order of qlEnumObjects.h:LiborSwapIndexType
 static const makeSwapIdx swapIndices[] = {
     &makeSwapIndex<ChfLiborSwapIsdaFix>

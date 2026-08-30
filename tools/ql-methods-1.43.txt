@@ -2855,7 +2855,7 @@
 |v|ql/index.hpp|bool Index::hasHistoricalFixing(const Date & fixingDate) const;
 |v|ql/index.hpp|Real Index::fixing(const Date & fixingDate, bool forecastTodaysFixing = false) const;
 | |ql/index.hpp|Real Index::pastFixing(const Date & fixingDate) const;
-| |ql/index.hpp|const TimeSeries<Real> & Index::timeSeries() const;
+|v|ql/index.hpp|const TimeSeries<Real> & Index::timeSeries() const;
 | |ql/index.hpp|bool Index::allowsNativeFixings();
 |v|ql/index.hpp|void Index::addFixing(const Date & fixingDate, Real fixing, bool forceOverwrite = false);
 | |ql/index.hpp|void Index::addFixings(const TimeSeries<Real> & t, bool forceOverwrite = false);
@@ -2968,8 +2968,8 @@
 | |ql/indexes/iborindex.hpp|BusinessDayConvention businessDayConvention() const;
 | |ql/indexes/iborindex.hpp|Handle<YieldTermStructure> forwardingTermStructure() const;
 | |ql/indexes/iborindex.hpp|Rate forecastFixing(const Date & d1, const Date & d2, Time t) const;
-| |ql/indexes/indexmanager.hpp|std::vector<std::string> IndexManager::histories() const;
-| |ql/indexes/indexmanager.hpp|void IndexManager::clearHistories();
+|v|ql/indexes/indexmanager.hpp|std::vector<std::string> IndexManager::histories() const;
+|v|ql/indexes/indexmanager.hpp|void IndexManager::clearHistories();
 | |ql/indexes/indexmanager.hpp|bool CaseInsensitiveCompare::operator()(const std::string & s1, const std::string & s2) const;
 |v|ql/indexes/inflation/aucpi.hpp|AUCPI::AUCPI(Frequency frequency, bool revised, const Handle<ZeroInflationTermStructure> & ts = { });
 |v|ql/indexes/inflation/aucpi.hpp|YYAUCPI::YYAUCPI(Frequency frequency, bool revised, const Handle<YoYInflationTermStructure> & ts = { });
