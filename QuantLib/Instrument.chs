@@ -11,6 +11,8 @@ module QuantLib.Instrument
   , AverageType(..)
   , Seniority(..)
   , PricingModel(..)
+  , PerpetualFuturesPayoffType(..)
+  , PerpetualFuturesFundingType(..)
 
   , Instrument
   , asInstrument
@@ -20,6 +22,7 @@ module QuantLib.Instrument
   , ExerciseType(..)
 
   , AdditionalResultVal(..)
+  , perpetualFutures
   , npv
   , errorEstimate
   , isExpired
@@ -34,6 +37,7 @@ import QuantLib.Internal.Common
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
+#include "qlEnumObjects.h"
 
 #include "ql.h"
 
@@ -47,9 +51,24 @@ import QuantLib.Internal.Common
 {#enum PricingModel{} deriving(Show, Eq, Read)#}
 {#enum RestructuringType{} deriving(Show, Eq, Read)#}
 {#enum AtomicDefaultType{} deriving(Show, Eq, Read)#}
+{#enum PerpetualFuturesPayoffType{} deriving(Show, Eq, Read)#}
+{#enum PerpetualFuturesFundingType{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
+{#pointer *Calendar foreign -> CCalendar nocode#}
+{#pointer *DayCounter foreign -> CDayCounter nocode#}
+
+-- |Constructs a perpetual future. Linear contracts settle and margin in the
+-- domestic currency of the underlying FOR/DOM pair; Inverse contracts do so
+-- in the foreign currency; Quanto contracts use a separate quanto currency.
+-- A zero-length funding frequency selects continuous funding; otherwise
+-- funding is discrete at the supplied period.
+{#fun qlPerpetualFutures as perpetualFutures{fromEnumC`PerpetualFuturesPayoffType'
+  ,fromEnumC`PerpetualFuturesFundingType'
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fundingFrequency
+  ,withCalendar*`Calendar',withDayCounter*`DayCounter'
+  ,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
 
 -- |Returns the net present value of the given Instrument
 {#fun qlInstrumentNPV as npv{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Double'#}

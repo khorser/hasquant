@@ -32,6 +32,9 @@ extern "C" {
 
   void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
     char **e);
+  QlInstrument* qlPerpetualFutures(int payoffType, int fundingType,
+    int fundingFrequencyLength, int fundingFrequencyUnit, Calendar* cal,
+    DayCounter* dc, char **e);
   double qlInstrumentNPV(QlInstrument *instr, char **e);
   void qlFreeInstrument(QlInstrument *instr);
   QlInstrument* qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, unsigned cLen, double *coeff, char **e);

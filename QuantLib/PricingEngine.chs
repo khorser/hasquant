@@ -22,6 +22,8 @@ module QuantLib.PricingEngine
   , discountingFxForwardEngine
   , discountingConstNotionalCrossCurrencySwapEngine
   , counterpartyAdjSwapEngine
+  , PerpetualFuturesInterpolationType(..)
+  , discountingPerpetualFuturesEngine
 
   , analyticBarrierEngine
   , analyticTwoAssetBarrierEngine
@@ -248,6 +250,7 @@ module QuantLib.PricingEngine
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
+#include "qlEnumObjects.h"
 #include "ql.h"
 #include "qlEnumObjects.h"
 
@@ -265,6 +268,7 @@ import QuantLib.Internal.Common
 {#enum NumericalFix{} deriving(Show, Eq, Read)#}
 {#enum AccrualBias{} deriving(Show, Eq, Read)#}
 {#enum ForwardsInCouponPeriod{} deriving(Show, Eq, Read)#}
+{#enum PerpetualFuturesInterpolationType{} deriving(Show, Eq, Read)#}
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
@@ -326,6 +330,21 @@ import QuantLib.Internal.Common
 
 -- |discounts a bond's cash flows off a yield term structure
 {#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure y',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Discounts perpetual-futures cashflows to the curves' reference date. The
+-- three funding vectors must be non-empty and have identical lengths. The
+-- engine supports only 'PerpetualFuturesLinear' and 'PerpetualFuturesInverse'
+-- payoffs; QuantLib rejects a Quanto payoff at pricing time.
+{#fun qlDiscountingPerpetualFuturesEngine as discountingPerpetualFuturesEngine{
+   withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticDiscountCurve
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignDiscountCurve
+  ,withQuote*`GenQuote q' -- ^assetSpot
+  ,withDoubleArray*`[Double]'& -- ^fundingTimes
+  ,withDoubleArray*`[Double]'& -- ^fundingRates
+  ,withDoubleArray*`[Double]'& -- ^interestRateDiffs
+  ,fromEnumC`PerpetualFuturesInterpolationType' -- ^fundingInterpType
+  ,`Double' -- ^maxT
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |discounts a bond's cash flows off a default-risky curve and a flat recovery rate

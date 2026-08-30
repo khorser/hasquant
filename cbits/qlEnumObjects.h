@@ -330,6 +330,26 @@ enum InterpolationType {
   , Abcd
 };
 
+// These names are deliberately qualified: PerpetualFutures and its engine both
+// use common words such as Linear and CubicSpline that would collide with the
+// cross-cutting interpolation enums above in Haskell.
+enum PerpetualFuturesPayoffType {
+  PerpetualFuturesLinear = 0
+  , PerpetualFuturesInverse
+  , PerpetualFuturesQuanto
+};
+
+enum PerpetualFuturesFundingType {
+  PerpetualFuturesFundingWithPreviousSpot = 0
+  , PerpetualFuturesFundingWithCurrentSpot
+};
+
+enum PerpetualFuturesInterpolationType {
+  PerpetualFuturesPiecewiseConstant = 0
+  , PerpetualFuturesLinearInterpolation
+  , PerpetualFuturesCubicSpline
+};
+
 enum ApproximationType {
   NaturalSpline
   , Parabolic

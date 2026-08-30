@@ -13,6 +13,7 @@ namespace hasquant {
 #include <ql/instruments/twoassetcorrelationoption.hpp>
 #include <ql/instruments/writerextensibleoption.hpp>
 #include <ql/instruments/forward.hpp>
+#include <ql/instruments/perpetualfutures.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
 #include <ql/instruments/capfloor.hpp>
 #include <ql/instruments/callabilityschedule.hpp>
@@ -258,6 +259,15 @@ QL_TRACE_NAME(HsBasketPayoff)
 #endif
 
 extern "C" {
+QlInstrument* qlPerpetualFutures(int payoffType, int fundingType,
+                                 int fundingFrequencyLength, int fundingFrequencyUnit,
+                                 Calendar* cal, DayCounter* dc, char **e) {
+  try {return ret(new QlInstrument(alloc(new PerpetualFutures(
+      (PerpetualFutures::PayoffType)payoffType,
+      (PerpetualFutures::FundingType)fundingType,
+      Period(fundingFrequencyLength, (TimeUnit)fundingFrequencyUnit), *arg(cal), *arg(dc)))));
+  } catch (std::exception& er) {return handleException<QlInstrument*>(e, er);}}
+
 double qlInstrumentNPV(QlInstrument *instr, char **e) {try {return (*arg(instr))->NPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng, char **e) {try {(*arg(instr))->setPricingEngine(*arg(eng));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlFreeInstrument(QlInstrument *instr) {del(instr);}

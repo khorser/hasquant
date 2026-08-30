@@ -15,6 +15,7 @@
 module QuantLib.Spec.Instrument (spec) where
 
 import Data.Time.Calendar(fromGregorian)
+import Control.Monad(forM_)
 
 import Test.Hspec
 
@@ -36,7 +37,7 @@ import QuantLib.Quote
 import QuantLib.InterestRate
 
 spec :: Spec
-spec =
+spec = do
   describe "additionalResults" $ do
     it "Bjerksund-Stensland American option engine: exerciseType (StringVal) and strikeGamma (RealVal, > 0)" $
       Settings.keepingSettings' $ do
@@ -95,3 +96,59 @@ spec =
             xs `shouldSatisfy` (not . null)
             xs `shouldSatisfy` all (>= 0)
           other -> expectationFailure ("expected optionletsPrice present as RealVectorVal, got " ++ show other)
+
+  describe "PerpetualFutures" $
+    it "reproduces perpetualfutures.cpp's constant-parameter analytic values" $
+      Settings.keepingSettings' $ do
+        let evalDate = fromGregorian 2024 1 2
+            spot = 10000.0
+            domesticRate = 0.04
+            foreignRate = 0.02
+            fundingRate = 0.01
+            interestRateDiff = 0.005
+            cases =
+              [ (PerpetualFuturesLinear, PerpetualFuturesFundingWithPreviousSpot, (3, Months))
+              , (PerpetualFuturesLinear, PerpetualFuturesFundingWithCurrentSpot, (3, Months))
+              , (PerpetualFuturesInverse, PerpetualFuturesFundingWithPreviousSpot, (3, Months))
+              , (PerpetualFuturesInverse, PerpetualFuturesFundingWithCurrentSpot, (3, Months))
+              , (PerpetualFuturesLinear, PerpetualFuturesFundingWithPreviousSpot, (0, Months))
+              , (PerpetualFuturesInverse, PerpetualFuturesFundingWithPreviousSpot, (0, Months))
+              ]
+            expected payoff fundingType (frequency, _) =
+              let dt = fromIntegral frequency / 12.0
+               in if frequency == 0
+                    then case payoff of
+                      PerpetualFuturesLinear -> spot * (fundingRate - interestRateDiff) /
+                        (foreignRate - domesticRate + fundingRate)
+                      PerpetualFuturesInverse -> spot * (domesticRate - foreignRate + fundingRate) /
+                        (fundingRate - interestRateDiff)
+                      PerpetualFuturesQuanto -> error "Quanto is unsupported by the engine"
+                    else case (payoff, fundingType) of
+                      (PerpetualFuturesLinear, PerpetualFuturesFundingWithPreviousSpot) ->
+                        spot * (fundingRate - interestRateDiff) * exp (foreignRate * dt) /
+                        (exp (foreignRate * dt) - exp (domesticRate * dt) + fundingRate * exp (foreignRate * dt))
+                      (PerpetualFuturesLinear, PerpetualFuturesFundingWithCurrentSpot) ->
+                        spot * (fundingRate - interestRateDiff) * exp (domesticRate * dt) /
+                        (exp (foreignRate * dt) - exp (domesticRate * dt) + fundingRate * exp (domesticRate * dt))
+                      (PerpetualFuturesInverse, PerpetualFuturesFundingWithPreviousSpot) ->
+                        spot * (exp (domesticRate * dt) - exp (foreignRate * dt) + fundingRate * exp (domesticRate * dt)) /
+                        (fundingRate - interestRateDiff) / exp (domesticRate * dt)
+                      (PerpetualFuturesInverse, PerpetualFuturesFundingWithCurrentSpot) ->
+                        spot * (exp (domesticRate * dt) - exp (foreignRate * dt) + fundingRate * exp (foreignRate * dt)) /
+                        (fundingRate - interestRateDiff) / exp (foreignRate * dt)
+                      (_, _) -> error "Quanto is unsupported by the engine"
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter ActualActualISDA
+        cal <- calendar (Bespoke "PerpetualFutures" [])
+        domesticQuote <- simpleQuote domesticRate
+        foreignQuote <- simpleQuote foreignRate
+        domesticCurve <- flatForward evalDate domesticQuote dc Continuous Annual
+        foreignCurve <- flatForward evalDate foreignQuote dc Continuous Annual
+        spotQuote <- simpleQuote spot
+        forM_ cases $ \(payoff, fundingType, frequency) -> do
+          future <- perpetualFutures payoff fundingType frequency cal dc
+          engine <- discountingPerpetualFuturesEngine domesticCurve foreignCurve spotQuote
+            [0] [fundingRate] [interestRateDiff] PerpetualFuturesPiecewiseConstant 60
+          setPricingEngine future engine
+          actual <- npv future
+          abs (actual / expected payoff fundingType frequency - 1) `shouldSatisfy` (< 1.0e-6)

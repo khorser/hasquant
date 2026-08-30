@@ -2,6 +2,11 @@
 extern "C" {
 #endif
   QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
+  QlPricingEngine* qlDiscountingPerpetualFuturesEngine(
+    QlYieldTermStructure* domesticDiscountCurve, QlYieldTermStructure* foreignDiscountCurve,
+    QlQuote* assetSpot, unsigned fundingTimesLen, double* fundingTimes,
+    unsigned fundingRatesLen, double* fundingRates, unsigned interestRateDiffsLen,
+    double* interestRateDiffs, int fundingInterpType, double maxT, char **e);
   QlPricingEngine* qlRiskyBondEngine(QlDefaultProbabilityTermStructure* defaultTS, double recoveryRate, QlYieldTermStructure* yieldTS, char **e);
   QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e);

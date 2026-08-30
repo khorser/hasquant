@@ -40,6 +40,7 @@
 #include <ql/pricingengines/blackformula.hpp>
 #include <ql/pricingengines/blackscholescalculator.hpp>
 #include <ql/pricingengines/bond/discountingbondengine.hpp>
+#include <ql/pricingengines/futures/discountingperpetualfuturesengine.hpp>
 #include <ql/pricingengines/bond/riskybondengine.hpp>
 #include <ql/pricingengines/capfloor/analyticcapfloorengine.hpp>
 #include <ql/pricingengines/capfloor/bacheliercapfloorengine.hpp>
@@ -301,6 +302,18 @@ QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char *
   try {
     return ret(new QlPricingEngine(alloc(new DiscountingBondEngine(*arg(ts), qlOptBool(f)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine *>(e, er);}}
+QlPricingEngine* qlDiscountingPerpetualFuturesEngine(
+    QlYieldTermStructure* domesticDiscountCurve, QlYieldTermStructure* foreignDiscountCurve,
+    QlQuote* assetSpot, unsigned fundingTimesLen, double* fundingTimes,
+    unsigned fundingRatesLen, double* fundingRates, unsigned interestRateDiffsLen,
+    double* interestRateDiffs, int fundingInterpType, double maxT, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new DiscountingPerpetualFuturesEngine(
+      *arg(domesticDiscountCurve), *arg(foreignDiscountCurve), *arg(assetSpot),
+      std::vector<Time>(fundingTimes, fundingTimes + fundingTimesLen),
+      std::vector<Rate>(fundingRates, fundingRates + fundingRatesLen),
+      std::vector<Spread>(interestRateDiffs, interestRateDiffs + interestRateDiffsLen),
+      (DiscountingPerpetualFuturesEngine::InterpolationType)fundingInterpType, maxT))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlRiskyBondEngine(QlDefaultProbabilityTermStructure* defaultTS, double recoveryRate, QlYieldTermStructure* yieldTS, char **e) {
   try {return ret(new QlPricingEngine(alloc(new RiskyBondEngine(Handle<DefaultProbabilityTermStructure>(*arg(defaultTS)), recoveryRate, *arg(yieldTS)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
