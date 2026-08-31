@@ -70,7 +70,6 @@ Out of scope:
 - Add classes and methods using the repository skills.
 - Evaluate whether some [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
 - Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib) and [hql](https://github.com/pcaspers/hql)
-- Add more nonempty lists or vectors for some functions where applicable
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
 - Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
