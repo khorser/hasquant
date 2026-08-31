@@ -1049,6 +1049,16 @@ foreign import ccall "ql.h qlRebatedExerciseAsExercise" qlRebatedExerciseAsExerc
 
 data CLeg'
 data CCouponLeg'
+data CCashFlow
+newtype CashFlow = CashFlow {getCCashFlow :: Standalone CCashFlow}
+foreign import ccall unsafe "ql.h &qlFreeCashFlow" qlFreeCashFlow :: FinalizerPtr CCashFlow
+instance Finalizable CCashFlow where finalize = qlFreeCashFlow
+peekCashFlow :: Ptr CCashFlow -> IO CashFlow
+peekCashFlow = CashFlow <.> peekStandalone
+withCashFlow :: CashFlow -> (Ptr CCashFlow -> IO b) -> IO b
+withCashFlow = withStandalone . getCCashFlow
+withCashFlowArray :: [CashFlow] -> ((CUInt, Ptr (Ptr CCashFlow)) -> IO b) -> IO b
+withCashFlowArray = withStandaloneArray getCCashFlow
 newtype GenLeg l = GenLeg {getLeg :: GenForeignPtr l CLeg'}
 type CLeg = ForeignPtr CLeg'
 type Leg = GenLeg CLeg

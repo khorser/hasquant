@@ -11,8 +11,15 @@ module QuantLib.CashFlow
   , PositionType(..)
   , CPIInterpolationType(..)
   , GenLeg
+  , CashFlow
 
   , leg
+  , simpleCashFlow
+  , indexedCashFlow
+  , fixedRateCoupon
+  , floatingRateCoupon
+  , iborCoupon
+  , cashFlowLeg
   , startDate
   , nextCashFlows
   , previousCashFlows
@@ -107,16 +114,19 @@ module QuantLib.CashFlow
   , setYoYInflationCouponPricer
   , ZeroInflationCashFlow
   , zeroInflationCashFlow
+  , zeroInflationCashFlowAsCashFlow
   , zeroInflationCashFlowAmount
   , zeroInflationCashFlowBaseFixing
   , zeroInflationCashFlowIndexFixing
   , CPICashFlow
   , cpiCashFlow
+  , cpiCashFlowAsCashFlow
   , cpiCashFlowAmount
   , cpiCashFlowBaseFixing
   , cpiCashFlowIndexFixing
   , EquityCashFlow
   , equityCashFlow
+  , equityCashFlowAsCashFlow
   , equityCashFlowAmount
   , equityCashFlowBaseFixing
   , equityCashFlowIndexFixing
@@ -161,7 +171,10 @@ import Data.Maybe(fromMaybe)
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
+{#pointer *QlCashFlow as CashFlow foreign -> CCashFlow nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
+{#pointer *QlIndex as Index foreign -> CIndex' nocode#}
+{#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
@@ -172,6 +185,9 @@ import Data.Maybe(fromMaybe)
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}
+{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow nocode#}
+{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow nocode#}
+{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 
@@ -233,6 +249,70 @@ $(deriveOptionsRecord "DigitalCmsLegOpts" []
 leg :: [(Day, Double)] -- ^amounts and dates
   -> IO Leg
 leg f = qlLeg fs ds where (ds, fs) = unzip f
+
+-- |A predetermined payment, suitable for mixing with other cash-flow kinds in
+-- 'cashFlowLeg'.  For a leg made entirely of such payments, 'leg' is a more concise API.
+{#fun qlSimpleCashFlow as simpleCashFlow{`Double' -- ^amount
+  ,withDay*`Day' -- ^payment date
+  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+
+-- |A payment of @notional * i(fixingDate) \/ i(baseDate)@, or the same ratio minus one when
+-- /growthOnly/ is true.  QuantLib does no date adjustment here; callers supply the already
+-- adjusted fixing and payment dates.  This is the generic building block behind the specialized
+-- CPI and equity cash flows, and accepts any bound 'GenIndex'.
+{#fun qlIndexedCashFlow as indexedCashFlow{`Double' -- ^notional
+  ,withIndex*`GenIndex idx' -- ^index
+  ,withDay*`Day' -- ^base date
+  ,withDay*`Day' -- ^fixing date
+  ,withDay*`Day' -- ^payment date
+  ,`Bool' -- ^growthOnly
+  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+
+-- |A fixed coupon with explicitly supplied payment, accrual, reference-period, and ex-coupon
+-- dates.  'Nothing' for a reference or ex-coupon date passes QuantLib's empty @Date()@.
+{#fun qlFixedRateCoupon as fixedRateCoupon{withDay*`Day' -- ^payment date
+  ,`Double' -- ^nominal
+  ,`Double' -- ^rate
+  ,withDayCounter*`DayCounter'
+  ,withDay*`Day' -- ^accrual start
+  ,withDay*`Day' -- ^accrual end
+  ,withMaybeDay*`Maybe Day' -- ^reference-period start
+  ,withMaybeDay*`Maybe Day' -- ^reference-period end
+  ,withMaybeDay*`Maybe Day' -- ^ex-coupon date
+  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+
+-- |A generic floating-rate coupon.  Attach a 'FloatingRateCouponPricer' to the resulting leg
+-- with 'setCouponPricer' before evaluating a coupon whose rate requires one.  'Nothing' dates
+-- pass QuantLib's empty @Date()@; all other constructor parameters are explicit.
+{#fun qlFloatingRateCoupon as floatingRateCoupon{withDay*`Day' -- ^payment date
+  ,`Double' -- ^nominal
+  ,withDay*`Day' -- ^accrual start
+  ,withDay*`Day' -- ^accrual end
+  ,fromIntegral`Word' -- ^fixing days
+  ,withInterestRateIndex*`GenInterestRateIndex ridx'
+  ,`Double' -- ^gearing
+  ,`Double' -- ^spread
+  ,withMaybeDay*`Maybe Day' -- ^reference-period start
+  ,withMaybeDay*`Maybe Day' -- ^reference-period end
+  ,withDayCounter*`DayCounter'
+  ,`Bool' -- ^in arrears
+  ,withMaybeDay*`Maybe Day' -- ^ex-coupon date
+  ,fromEnumC`BusinessDayConvention' -- ^fixing convention
+  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+
+-- |An Ibor-specific floating coupon.  Prefer this to 'floatingRateCoupon' when the index is
+-- Ibor: QuantLib then uses IborCoupon's fixing value/maturity-date logic rather than the base
+-- floating-coupon implementation.  Date and pricer handling are as in 'floatingRateCoupon'.
+{#fun qlIborCoupon as iborCoupon{withDay*`Day'
+  ,`Double',withDay*`Day',withDay*`Day',fromIntegral`Word'
+  ,withIborIndex*`GenIborIndex ibor',`Double',`Double'
+  ,withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter'
+  ,`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
+  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+
+-- |Build a heterogeneous 'Leg' from cash-flow building blocks.  The leg takes shared ownership
+-- of each flow, so it remains valid when the individual 'CashFlow' values are no longer retained.
+{#fun qlCashFlowLeg as cashFlowLeg{withCashFlowArray*`[CashFlow]'&,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
 {#fun qlLegStartDate as startDate{withLeg*`GenLeg l',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
@@ -688,6 +768,10 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`ZeroInflationCashFlow'peekZeroInflationCashFlow*#}
 
+-- |Use this zero-inflation cash flow in a heterogeneous 'cashFlowLeg'. The returned generic
+-- 'CashFlow' shares ownership with the original, so both values remain valid independently.
+{#fun qlZeroInflationCashFlowAsCashFlow as zeroInflationCashFlowAsCashFlow{withZeroInflationCashFlow*`ZeroInflationCashFlow'}->`CashFlow'peekCashFlow*#}
+
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
 {#fun qlZeroInflationCashFlowAmount as zeroInflationCashFlowAmount{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -710,6 +794,10 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`CPICashFlow'peekCPICashFlow*#}
 
+-- |Use this CPI cash flow in a heterogeneous 'cashFlowLeg'. The returned generic 'CashFlow'
+-- shares ownership with the original, so both values remain valid independently.
+{#fun qlCPICashFlowAsCashFlow as cpiCashFlowAsCashFlow{withCPICashFlow*`CPICashFlow'}->`CashFlow'peekCashFlow*#}
+
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
 {#fun qlCPICashFlowAmount as cpiCashFlowAmount{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -731,6 +819,10 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withDay*`Day' -- ^paymentDate
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`EquityCashFlow'peekEquityCashFlow*#}
+
+-- |Use this equity cash flow in a heterogeneous 'cashFlowLeg'. The returned generic 'CashFlow'
+-- shares ownership with the original, so both values remain valid independently.
+{#fun qlEquityCashFlowAsCashFlow as equityCashFlowAsCashFlow{withEquityCashFlow*`EquityCashFlow'}->`CashFlow'peekCashFlow*#}
 
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly --
 -- or, if a pricer is attached, the notional times the pricer's 'price'.

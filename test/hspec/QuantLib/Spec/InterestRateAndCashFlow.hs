@@ -31,6 +31,8 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
   ,historicalRatesAnalysis)
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
+import qualified QuantLib.Index.Inflation as Inflation
+import qualified QuantLib.Index.Equity as Equity
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility', constantSwaptionVolatility')
@@ -41,7 +43,7 @@ import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
 
-import QuantLib.Spec.Helpers(ValidDay(..), closePrec)
+import QuantLib.Spec.Helpers(ValidDay(..), closePrec, listCloseRel)
 
 spec :: Day -> Spec
 spec evalDate = do
@@ -209,6 +211,78 @@ spec evalDate = do
 
       it "three legs sorted" $ do
         (CF.leg [(evalDate, 100), (addDays (-10) evalDate, 1000), (addDays 10 evalDate, -2000)] >>= CF.startDate) `shouldReturn` addDays (-10) evalDate
+
+      it "builds a mixed custom leg from simple, indexed, and coupon cash flows" $
+        Settings.keepingSettings' $ do
+          let baseDate = 7 `april` 2010
+              fixingDate = 8 `april` 2010
+              paymentDate = 7 `april` 2011
+              accrualEnd = addDays 180 paymentDate
+          Settings.setEvaluationDate (Just baseDate)
+          dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
+          curve <- flatForward baseDate q dc IR.Continuous Annual
+          idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
+          addFixing idx baseDate 100.0 True
+          addFixing idx fixingDate 120.0 True
+          Settings.setEvaluationDate (Just $ addDays 1 fixingDate)
+          simple <- CF.simpleCashFlow 10.0 paymentDate
+          indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate False
+          growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate True
+          fixed <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
+          mixed <- CF.cashFlowLeg [simple, indexed, growth, fixed]
+          flows <- CF.cashFlows mixed Nothing Nothing
+          let expected = [10.0, 120.0, 20.0, 2.5]
+          listCloseRel id expected 1.0e-12 (map (\(_, amount, _) -> amount) flows) `shouldBe` True
+          other <- CF.leg [(accrualEnd, 1.0)]
+          s <- Swap.swap mixed other
+          receivedLeg <- Swap.leg s 0
+          received <- CF.cashFlows receivedLeg Nothing Nothing
+          listCloseRel id expected 1.0e-12 (map (\(_, amount, _) -> amount) received) `shouldBe` True
+
+      it "constructs generic floating and Ibor coupons for a custom leg" $
+        Settings.keepingSettings' $ do
+          let start = 7 `april` 2010
+              end = addGregorianMonthsClip 3 start
+          Settings.setEvaluationDate (Just start)
+          dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
+          curve <- flatForward start q dc IR.Continuous Annual
+          idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
+          floating <- CF.floatingRateCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
+          ibor <- CF.iborCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
+          customLeg <- CF.cashFlowLeg [floating, ibor]
+          CF.startDate customLeg `shouldReturn` start
+
+      it "uses CPI, zero-inflation, and equity cash flows in a custom leg" $
+        Settings.keepingSettings' $ do
+          let baseDate = 1 `january` 2010
+              fixingDate = 1 `january` 2011
+              paymentDate = 1 `february` 2011
+          Settings.setEvaluationDate (Just paymentDate)
+          inflation <- Inflation.zeroInflationIndex Inflation.UKRPI
+          addFixing inflation (1 `november` 2009) 100.0 False
+          addFixing inflation baseDate 100.0 False
+          addFixing inflation (1 `november` 2010) 120.0 False
+          addFixing inflation fixingDate 120.0 False
+          zero <- CF.zeroInflationCashFlow 100.0 inflation CPIFlat baseDate fixingDate (2, Months) paymentDate False
+          cpi <- CF.cpiCashFlow 100.0 inflation (Just baseDate) Nothing fixingDate (2, Months) CPIFlat paymentDate False
+          cal <- calendar Null
+          usd <- currency USD
+          equityIndex <- Equity.equityIndex "custom-leg-equity" cal usd Nothing Nothing Nothing
+          addFixing equityIndex baseDate 80.0 False
+          addFixing equityIndex fixingDate 100.0 False
+          equity <- CF.equityCashFlow 100.0 equityIndex baseDate fixingDate paymentDate False
+          zeroAmount <- CF.zeroInflationCashFlowAmount zero
+          cpiAmount <- CF.cpiCashFlowAmount cpi
+          equityAmount <- CF.equityCashFlowAmount equity
+          listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 [zeroAmount, cpiAmount, equityAmount] `shouldBe` True
+          zeroFlow <- CF.zeroInflationCashFlowAsCashFlow zero
+          cpiFlow <- CF.cpiCashFlowAsCashFlow cpi
+          equityFlow <- CF.equityCashFlowAsCashFlow equity
+          customLeg <- CF.cashFlowLeg [zeroFlow, cpiFlow, equityFlow]
+          flows <- CF.cashFlows customLeg Nothing Nothing
+          listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 (map (\(_, amount, _) -> amount) flows) `shouldBe` True
 
       prop "random single let start date" $
         \(a, ValidDay d) -> monadicIO $ do

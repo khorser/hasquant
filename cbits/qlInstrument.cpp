@@ -91,6 +91,7 @@ namespace hasquant {
 #include <ql/cashflows/overnightindexedcoupon.hpp>
 #include <ql/cashflows/rangeaccrual.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
+#include <ql/cashflows/indexedcashflow.hpp>
 #include <ql/cashflows/cpicoupon.hpp>
 #include <ql/cashflows/yoyinflationcoupon.hpp>
 #include <ql/cashflows/capflooredinflationcoupon.hpp>
@@ -1241,6 +1242,26 @@ Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
     return alloc(leg.release());
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
+void qlFreeCashFlow(QlCashFlow *o) {del(o);}
+QlCashFlow *qlSimpleCashFlow(double amount, int date, char **e) {
+  try {return ret(new QlCashFlow(alloc(new SimpleCashFlow(amount, Date(date)))));
+  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+QlCashFlow *qlIndexedCashFlow(double notional, QlIndex *index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
+  try {return ret(new QlCashFlow(alloc(new IndexedCashFlow(notional, *arg(index), Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));
+  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+QlCashFlow *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e) {
+  try {return ret(new QlCashFlow(alloc(new FixedRateCoupon(Date(paymentDate), nominal, rate, *arg(dayCounter), Date(accrualStartDate), Date(accrualEndDate), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), qlNullableDate(exCouponDate)))));
+  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+QlCashFlow *qlFloatingRateCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlInterestRateIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlCashFlow(alloc(new FloatingRateCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+QlCashFlow *qlIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlCashFlow(alloc(new IborCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+Leg *qlCashFlowLeg(unsigned len, QlCashFlow **cashFlows, char **e) {
+  try {return ret(new Leg(qlVector(cashFlows, len)));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
+
 int qlLegStartDate(Leg *leg, char **e) {try {Date d = CashFlows::startDate(*arg(leg)); return d.serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeLeg(Leg *leg) {del(leg);}
 
@@ -1474,6 +1495,7 @@ void qlSetYoYInflationCouponPricer(Leg* leg, QlYoYInflationCouponPricer* pricer,
   try {return setCouponPricer(*arg(leg), *arg(pricer));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o) {del(o);}
+QlCashFlow *qlZeroInflationCashFlowAsCashFlow(QlZeroInflationCashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
 QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlZeroInflationCashFlow(alloc(new ZeroInflationCashFlow(notional, *arg(index), (CPI::InterpolationType)observationInterpolation,
         Date(startDate), Date(endDate), Period(obsLagLen, (TimeUnit)obsLagUnit), Date(paymentDate), growthOnly))));
@@ -1483,6 +1505,7 @@ double qlZeroInflationCashFlowBaseFixing(QlZeroInflationCashFlow* o, char **e) {
 double qlZeroInflationCashFlowIndexFixing(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeCPICashFlow(QlCPICashFlow *o) {del(o);}
+QlCashFlow *qlCPICashFlowAsCashFlow(QlCPICashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
 QlCPICashFlow* qlCPICashFlow(double notional, QlZeroInflationIndex* index, int baseDate, double baseFixing, int observationDate, int obsLagLen, int obsLagUnit, int interpolation, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlCPICashFlow(alloc(new CPICashFlow(notional, *arg(index), qlNullableDate(baseDate), baseFixing,
         Date(observationDate), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation, Date(paymentDate), growthOnly))));
@@ -1492,6 +1515,7 @@ double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o)
 double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeEquityCashFlow(QlEquityCashFlow *o) {del(o);}
+QlCashFlow *qlEquityCashFlowAsCashFlow(QlEquityCashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
 QlEquityCashFlow* qlEquityCashFlow(double notional, QlEquityIndex* index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlEquityCashFlow(alloc(new EquityCashFlow(notional, *arg(index),
         Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));

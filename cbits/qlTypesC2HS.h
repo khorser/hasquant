@@ -52,6 +52,7 @@ typedef struct QlBMASwap QlBMASwap;
 typedef struct QlBond QlBond;
 typedef struct QlBondHelper QlBondHelper;
 typedef struct QlCalibratedModel QlCalibratedModel;
+typedef struct QlCashFlow QlCashFlow;
 typedef struct QlCalibrationHelper QlCalibrationHelper;
 typedef struct QlBlackCalibrationHelper QlBlackCalibrationHelper;
 typedef struct QlCallability QlCallability;

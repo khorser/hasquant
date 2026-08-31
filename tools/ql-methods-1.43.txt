@@ -324,7 +324,7 @@
 |x|ql/cashflows/equitycashflow.hpp|Real EquityCashFlowPricer::price() const;
 |x|ql/cashflows/equitycashflow.hpp|void EquityCashFlowPricer::initialize(const EquityCashFlow &);
 |v|ql/cashflows/equitycashflow.hpp|EquityQuantoCashFlowPricer::EquityQuantoCashFlowPricer(Handle<YieldTermStructure> quantoCurrencyTermStructure, Handle<BlackVolTermStructure> equityVolatility, Handle<BlackVolTermStructure> fxVolatility, Handle<Quote> correlation);
-| |ql/cashflows/fixedratecoupon.hpp|FixedRateCoupon::FixedRateCoupon(const Date & paymentDate, Real nominal, Rate rate, const DayCounter & dayCounter, const Date & accrualStartDate, const Date & accrualEndDate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
+|v|ql/cashflows/fixedratecoupon.hpp|FixedRateCoupon::FixedRateCoupon(const Date & paymentDate, Real nominal, Rate rate, const DayCounter & dayCounter, const Date & accrualStartDate, const Date & accrualEndDate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
 | |ql/cashflows/fixedratecoupon.hpp|FixedRateCoupon::FixedRateCoupon(const Date & paymentDate, Real nominal, InterestRate interestRate, const Date & accrualStartDate, const Date & accrualEndDate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
 | |ql/cashflows/fixedratecoupon.hpp|InterestRate FixedRateCoupon::interestRate() const;
 |?|ql/cashflows/fixedratecoupon.hpp|FixedRateLeg::FixedRateLeg(Schedule schedule);
@@ -341,7 +341,7 @@
 | |ql/cashflows/fixedratecoupon.hpp|FixedRateLeg & FixedRateLeg::withPaymentLag(Integer lag);
 | |ql/cashflows/fixedratecoupon.hpp|FixedRateLeg & FixedRateLeg::withExCouponPeriod(const Period &, const Calendar &, BusinessDayConvention, bool endOfMonth = false);
 | |ql/cashflows/fixedratecoupon.hpp|void accept(AcyclicVisitor & v);
-| |ql/cashflows/floatingratecoupon.hpp|FloatingRateCoupon::FloatingRateCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<InterestRateIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), DayCounter dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
+|v|ql/cashflows/floatingratecoupon.hpp|FloatingRateCoupon::FloatingRateCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<InterestRateIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), DayCounter dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
 | |ql/cashflows/floatingratecoupon.hpp|Real FloatingRateCoupon::price(const Handle<YieldTermStructure> & discountingCurve) const;
 | |ql/cashflows/floatingratecoupon.hpp|const ext::shared_ptr<InterestRateIndex> & FloatingRateCoupon::index() const;
 | |ql/cashflows/floatingratecoupon.hpp|Natural FloatingRateCoupon::fixingDays() const;
@@ -361,7 +361,7 @@
 | |ql/cashflows/floatingratecoupon.hpp|ext::shared_ptr<FloatingRateCouponPricer> pricer() const;
 | |ql/cashflows/floatingratecoupon.hpp|Rate convexityAdjustmentImpl(Rate fixing) const;
 | |ql/cashflows/floatingratecoupon.hpp|void accept(AcyclicVisitor & v);
-| |ql/cashflows/iborcoupon.hpp|IborCoupon::IborCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
+|v|ql/cashflows/iborcoupon.hpp|IborCoupon::IborCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
 | |ql/cashflows/iborcoupon.hpp|const ext::shared_ptr<IborIndex> & IborCoupon::iborIndex() const;
 | |ql/cashflows/iborcoupon.hpp|bool IborCoupon::hasFixed() const;
 | |ql/cashflows/iborcoupon.hpp|const Date & IborCoupon::fixingValueDate() const;
@@ -396,7 +396,7 @@
 | |ql/cashflows/iborcoupon.hpp|IborLeg & IborLeg::withFixingConvention(BusinessDayConvention);
 | |ql/cashflows/iborcoupon.hpp|IborLeg & IborLeg::withIndexedCoupons(ext::optional<bool> b = true);
 | |ql/cashflows/iborcoupon.hpp|IborLeg & IborLeg::withAtParCoupons(bool b = true);
-| |ql/cashflows/indexedcashflow.hpp|IndexedCashFlow::IndexedCashFlow(Real notional, ext::shared_ptr<Index> index, const Date & baseDate, const Date & fixingDate, const Date & paymentDate, bool growthOnly = false);
+|v|ql/cashflows/indexedcashflow.hpp|IndexedCashFlow::IndexedCashFlow(Real notional, ext::shared_ptr<Index> index, const Date & baseDate, const Date & fixingDate, const Date & paymentDate, bool growthOnly = false);
 | |ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::notional() const;
 | |ql/cashflows/indexedcashflow.hpp|Date IndexedCashFlow::baseDate() const;
 | |ql/cashflows/indexedcashflow.hpp|Date IndexedCashFlow::fixingDate() const;
@@ -610,7 +610,7 @@
 | |ql/cashflows/replication.hpp|DigitalReplication::DigitalReplication(Replication::Type t = Replication::Central, Real gap = 1e-4);
 | |ql/cashflows/replication.hpp|Replication::Type DigitalReplication::replicationType() const;
 | |ql/cashflows/replication.hpp|Real DigitalReplication::gap() const;
-| |ql/cashflows/simplecashflow.hpp|SimpleCashFlow::SimpleCashFlow(Real amount, const Date & date);
+|v|ql/cashflows/simplecashflow.hpp|SimpleCashFlow::SimpleCashFlow(Real amount, const Date & date);
 | |ql/cashflows/simplecashflow.hpp|Redemption::Redemption(Real amount, const Date & date);
 | |ql/cashflows/simplecashflow.hpp|AmortizingPayment::AmortizingPayment(Real amount, const Date & date);
 |x|ql/cashflows/simplecashflow.hpp|void accept(AcyclicVisitor & v);

@@ -520,6 +520,13 @@ extern "C" {
   QlCallability* qlSoftCallability(double price, int priceType, int date, double trigger, char **e);
 
   Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e);
+  void qlFreeCashFlow(QlCashFlow *o);
+  QlCashFlow *qlSimpleCashFlow(double amount, int date, char **e);
+  QlCashFlow *qlIndexedCashFlow(double notional, QlIndex *index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e);
+  QlCashFlow *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e);
+  QlCashFlow *qlFloatingRateCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlInterestRateIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
+  QlCashFlow *qlIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
+  Leg *qlCashFlowLeg(unsigned len, QlCashFlow **cashFlows, char **e);
   int qlLegStartDate(Leg *leg, char **e);
 
   void qlFreeLeg(Leg *leg);
@@ -598,18 +605,21 @@ extern "C" {
   void qlSetYoYInflationCouponPricer(Leg* leg, QlYoYInflationCouponPricer* pricer, char **e);
 
   void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o);
+  QlCashFlow *qlZeroInflationCashFlowAsCashFlow(QlZeroInflationCashFlow *o);
   QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e);
   double qlZeroInflationCashFlowAmount(QlZeroInflationCashFlow* o, char **e);
   double qlZeroInflationCashFlowBaseFixing(QlZeroInflationCashFlow* o, char **e);
   double qlZeroInflationCashFlowIndexFixing(QlZeroInflationCashFlow* o, char **e);
 
   void qlFreeCPICashFlow(QlCPICashFlow *o);
+  QlCashFlow *qlCPICashFlowAsCashFlow(QlCPICashFlow *o);
   QlCPICashFlow* qlCPICashFlow(double notional, QlZeroInflationIndex* index, int baseDate, double baseFixing, int observationDate, int obsLagLen, int obsLagUnit, int interpolation, int paymentDate, int growthOnly, char **e);
   double qlCPICashFlowAmount(QlCPICashFlow* o, char **e);
   double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e);
   double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e);
 
   void qlFreeEquityCashFlow(QlEquityCashFlow *o);
+  QlCashFlow *qlEquityCashFlowAsCashFlow(QlEquityCashFlow *o);
   QlEquityCashFlow* qlEquityCashFlow(double notional, QlEquityIndex* index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e);
   double qlEquityCashFlowAmount(QlEquityCashFlow* o, char **e);
   double qlEquityCashFlowBaseFixing(QlEquityCashFlow* o, char **e);

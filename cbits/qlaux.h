@@ -37,6 +37,8 @@ namespace QuantLib {
   class Quote;
   class Bond;
   class FixedRateBond;
+  class FixedRateCoupon;
+  class CashFlow;
   class FixedVsFloatingSwap;
   class FloatingRateBond;
   class ZeroCouponBond;
@@ -75,6 +77,7 @@ namespace QuantLib {
   class CompositeInstrument;
   class CustomIborIndex;
   class IborIndex;
+  class IborCoupon;
   class Index;
   class FloatingRateCouponPricer;
   class CmsCouponPricer;
@@ -356,6 +359,7 @@ using QuantLib::Quote;
 using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
+using QuantLib::FixedRateCoupon;
 using QuantLib::FixedVsFloatingSwap;
 using QuantLib::ConstNotionalCrossCurrencySwap;
 using QuantLib::ConstNotionalCrossCurrencyBasisSwap;
@@ -398,6 +402,7 @@ using QuantLib::Instrument;
 using QuantLib::CompositeInstrument;
 using QuantLib::CustomIborIndex;
 using QuantLib::IborIndex;
+using QuantLib::IborCoupon;
 using QuantLib::Index;
 using QuantLib::FloatingRateCouponPricer;
 using QuantLib::CmsCouponPricer;
@@ -410,6 +415,7 @@ using QuantLib::SwapSpreadIndex;
 using QuantLib::OptionletVolatilityStructure;
 using QuantLib::OptionletStripper2;
 using QuantLib::Coupon;
+using QuantLib::CashFlow;
 using QuantLib::AffineModel;
 using QuantLib::AmericanExercise;
 using QuantLib::AnalyticBSMHullWhiteEngine;
@@ -779,6 +785,7 @@ using QlCapFloor = shared_ptr<CapFloor>;
 using QlCapFloorTermVolatilityStructure = shared_ptr<CapFloorTermVolatilityStructure>;
 using QlCapFloorTermVolCurve = shared_ptr<CapFloorTermVolCurve>;
 using QlCapFloorTermVolSurface = shared_ptr<CapFloorTermVolSurface>;
+using QlCashFlow = shared_ptr<CashFlow>;
 // CommodityCurve is a plain TermStructure subclass, constructed and consumed directly by value
 // (basisOfCurve_ is a shared_ptr<CommodityCurve>, never a Handle) -- shared_ptr-wrapped, same
 // reasoning as QlTermStructure/QlCallableBondVolatilityStructure/QlDefaultProbabilityTermStructure.
@@ -1036,6 +1043,7 @@ QL_TRACE_NAME(CapFloor)
 QL_TRACE_NAME(CapFloorTermVolatilityStructure)
 QL_TRACE_NAME(CapFloorTermVolCurve)
 QL_TRACE_NAME(CapFloorTermVolSurface)
+QL_TRACE_NAME(CashFlow)
 QL_TRACE_NAME(CapHelper)
 QL_TRACE_NAME(CashOrNothingPayoff)
 QL_TRACE_NAME(CdsOption)
@@ -1216,6 +1224,7 @@ QL_TRACE_NAME(QlCapFloor)
 QL_TRACE_NAME(QlCapFloorTermVolatilityStructure)
 QL_TRACE_NAME(QlCapFloorTermVolCurve)
 QL_TRACE_NAME(QlCapFloorTermVolSurface)
+QL_TRACE_NAME(QlCashFlow)
 QL_TRACE_NAME(QlCommodityCurve)
 QL_TRACE_NAME(QlCommodityIndex)
 QL_TRACE_NAME(QlCommodity)
