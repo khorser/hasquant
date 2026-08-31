@@ -139,6 +139,5 @@ h:\cabal.exe test
 
 ## Versions this was last verified against
 
-GHC 9.10.3 (bundled Clang 14.0.6 and `ld.lld` 14.0.6), cabal-install
-3.16.1.0, CMake 4.3.3, Ninja, MSYS2 with Boost 1.91, QuantLib 1.43 — clean
-build of all three stages, 84/84 tests passing.
+GHC 9.10.3 (bundled Clang 14.0.6 and `ld.lld` 14.0.6) and GHC 9.14.1, cabal-install
+3.16.1.0, CMake 4.3.3, Ninja, MSYS2 with Boost 1.91, QuantLib 1.43 — clean build of all three stages
