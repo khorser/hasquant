@@ -47,6 +47,100 @@ namespace hasquant {
 #include "qlEnumObjects.h"
 }
 
+using namespace QuantLib;
+
+// Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
+// Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
+// QuantLib CostFunction. value() crosses back into Haskell once per outer optimizer iteration,
+// over the whole parameter vector, mirroring QuantLib-SWIG's PyCostFunction (SWIG/functions.i)
+// rather than a per-component callback; see the CLAUDE.md "coarsen the language-boundary
+// crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
+// same as PyCostFunction's own -- no bound caller needs it yet.
+namespace {
+  class HsCostFunction : public CostFunction {
+    public:
+      explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
+      Real value(const Array& x) const override {
+        std::vector<double> xs(x.begin(), x.end());
+        return fn_(xs.data(), (unsigned)xs.size());
+      }
+      Array values(const Array&) const override {
+        QL_FAIL("HsCostFunction::values not implemented");
+      }
+    private:
+      double (*fn_)(double*, unsigned);
+  };
+
+// Quote composition. DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an
+// arbitrary functor; each is instantiated exactly twice here -- once over a functor that
+// switches on a QuoteOp/MultiQuoteOp at runtime (the fixed catalogue), once over a plain C
+// function pointer (an arbitrary Haskell function). The enum does *not* select a template
+// argument, so this needs no generic-lambda dispatcher in an *Aux.cpp: one instantiation
+// covers the whole catalogue.
+//
+// These are the only quotes here that are not leaf values: they registerWith() their inputs and
+// notifyObservers() on update, which is the entire reason they are bound at all -- a Haskell-side
+// recomputation cannot join QuantLib's Observer graph, so a curve bootstrapped off one would
+// silently keep a stale number when the underlying quote moves.
+  struct QuoteUnaryOp {
+    int op;
+    Real operand;
+    Real operator()(Real x) const {
+      switch (op) {
+      case hasquant::QuoteAdd: return x + operand;
+      case hasquant::QuoteSubtract: return x - operand;
+      case hasquant::QuoteMultiply: return x * operand;
+      case hasquant::QuoteDivide: return x / operand;
+      }
+      QL_FAIL("unknown QuoteOp " << op);
+    }
+  };
+
+  struct QuoteBinaryOp {
+    int op;
+    Real operator()(Real x, Real y) const {
+      switch (op) {
+      case hasquant::QuoteAdd: return x + y;
+      case hasquant::QuoteSubtract: return x - y;
+      case hasquant::QuoteMultiply: return x * y;
+      case hasquant::QuoteDivide: return x / y;
+      }
+      QL_FAIL("unknown QuoteOp " << op);
+    }
+  };
+
+  // MultiCompositeQuote imposes no non-empty requirement (isValid() is all_of over the elements,
+  // vacuously true), so an empty input is accepted and yields the fold's identity.
+  struct QuoteArrayOp {
+    int op;
+    Real operator()(const Array& a) const {
+      switch (op) {
+      case hasquant::QuoteSum: return std::accumulate(a.begin(), a.end(), Real(0.0));
+      case hasquant::QuoteProduct: return std::accumulate(a.begin(), a.end(), Real(1.0), std::multiplies<Real>());
+      case hasquant::QuoteNorm2: return Norm2(a);
+      }
+      QL_FAIL("unknown MultiQuoteOp " << op);
+    }
+  };
+
+  // Named aliases rather than the instantiations spelled inline, because QL_TRACE_NAME is a macro
+  // and CompositeQuote<double (*)(double, double)> reads as two macro arguments.
+  using OpDerivedQuote = DerivedQuote<QuoteUnaryOp>;
+  using OpCompositeQuote = CompositeQuote<QuoteBinaryOp>;
+  using OpMultiCompositeQuote = MultiCompositeQuote<QuoteArrayOp>;
+  using HsDerivedQuote = DerivedQuote<double (*)(double)>;
+  using HsCompositeQuote = CompositeQuote<double (*)(double, double)>;
+  // MultiCompositeQuote calls its ArrayFunction with an Array, so unlike the unary/binary cases
+  // (where a plain double(*)(double...) is already a usable functor) the C function pointer needs
+  // a thin adapter. It is still handed the whole state vector per evaluation, so this crosses the
+  // language boundary once per value(), not once per element.
+  struct HsArrayFun {
+    double (*fn)(const double*, unsigned);
+    Real operator()(const Array& a) const {return fn(a.begin(), (unsigned)a.size());}
+  };
+  using HsMultiCompositeQuote = MultiCompositeQuote<HsArrayFun>;
+}
+
 #ifdef QLTRACK_ALLOCATIONS
 // Destination is the QLTRACK_ALLOCATIONS env var when set, else the compile-time
 // default the flag bakes in (stderr, spelled differently per platform). Without the
@@ -78,7 +172,6 @@ QL_TRACE_NAME(HsDerivedQuote)
 QL_TRACE_NAME(HsCompositeQuote)
 QL_TRACE_NAME(HsMultiCompositeQuote)
 #endif
-using namespace QuantLib;
 
 int *qlAllocateInts(size_t size) {return ret(new int[size]);}
 double *qlAllocateDoubles(size_t size) {return ret(new double[size]);}
@@ -445,98 +538,6 @@ QlOptimizationMethod* qlSimplex(double lambda, char **e) {
 QlEndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e) {
   try {return ret(new QlEndCriteria(shared_ptr<EndCriteria>(alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon)))));
   } catch (std::exception& er) {return handleException<QlEndCriteria*>(e, er);}}
-
-// Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
-// Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
-// QuantLib CostFunction. value() crosses back into Haskell once per outer optimizer iteration,
-// over the whole parameter vector, mirroring QuantLib-SWIG's PyCostFunction (SWIG/functions.i)
-// rather than a per-component callback; see the CLAUDE.md "coarsen the language-boundary
-// crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
-// same as PyCostFunction's own -- no bound caller needs it yet.
-namespace {
-  class HsCostFunction : public CostFunction {
-    public:
-      explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
-      Real value(const Array& x) const override {
-        std::vector<double> xs(x.begin(), x.end());
-        return fn_(xs.data(), (unsigned)xs.size());
-      }
-      Array values(const Array&) const override {
-        QL_FAIL("HsCostFunction::values not implemented");
-      }
-    private:
-      double (*fn_)(double*, unsigned);
-  };
-
-// Quote composition. DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an
-// arbitrary functor; each is instantiated exactly twice here -- once over a functor that
-// switches on a QuoteOp/MultiQuoteOp at runtime (the fixed catalogue), once over a plain C
-// function pointer (an arbitrary Haskell function). The enum does *not* select a template
-// argument, so this needs no generic-lambda dispatcher in an *Aux.cpp: one instantiation
-// covers the whole catalogue.
-//
-// These are the only quotes here that are not leaf values: they registerWith() their inputs and
-// notifyObservers() on update, which is the entire reason they are bound at all -- a Haskell-side
-// recomputation cannot join QuantLib's Observer graph, so a curve bootstrapped off one would
-// silently keep a stale number when the underlying quote moves.
-  struct QuoteUnaryOp {
-    int op;
-    Real operand;
-    Real operator()(Real x) const {
-      switch (op) {
-      case hasquant::QuoteAdd: return x + operand;
-      case hasquant::QuoteSubtract: return x - operand;
-      case hasquant::QuoteMultiply: return x * operand;
-      case hasquant::QuoteDivide: return x / operand;
-      }
-      QL_FAIL("unknown QuoteOp " << op);
-    }
-  };
-
-  struct QuoteBinaryOp {
-    int op;
-    Real operator()(Real x, Real y) const {
-      switch (op) {
-      case hasquant::QuoteAdd: return x + y;
-      case hasquant::QuoteSubtract: return x - y;
-      case hasquant::QuoteMultiply: return x * y;
-      case hasquant::QuoteDivide: return x / y;
-      }
-      QL_FAIL("unknown QuoteOp " << op);
-    }
-  };
-
-  // MultiCompositeQuote imposes no non-empty requirement (isValid() is all_of over the elements,
-  // vacuously true), so an empty input is accepted and yields the fold's identity.
-  struct QuoteArrayOp {
-    int op;
-    Real operator()(const Array& a) const {
-      switch (op) {
-      case hasquant::QuoteSum: return std::accumulate(a.begin(), a.end(), Real(0.0));
-      case hasquant::QuoteProduct: return std::accumulate(a.begin(), a.end(), Real(1.0), std::multiplies<Real>());
-      case hasquant::QuoteNorm2: return Norm2(a);
-      }
-      QL_FAIL("unknown MultiQuoteOp " << op);
-    }
-  };
-
-  // Named aliases rather than the instantiations spelled inline, because QL_TRACE_NAME is a macro
-  // and CompositeQuote<double (*)(double, double)> reads as two macro arguments.
-  using OpDerivedQuote = DerivedQuote<QuoteUnaryOp>;
-  using OpCompositeQuote = CompositeQuote<QuoteBinaryOp>;
-  using OpMultiCompositeQuote = MultiCompositeQuote<QuoteArrayOp>;
-  using HsDerivedQuote = DerivedQuote<double (*)(double)>;
-  using HsCompositeQuote = CompositeQuote<double (*)(double, double)>;
-  // MultiCompositeQuote calls its ArrayFunction with an Array, so unlike the unary/binary cases
-  // (where a plain double(*)(double...) is already a usable functor) the C function pointer needs
-  // a thin adapter. It is still handed the whole state vector per evaluation, so this crosses the
-  // language boundary once per value(), not once per element.
-  struct HsArrayFun {
-    double (*fn)(const double*, unsigned);
-    Real operator()(const Array& a) const {return fn(a.begin(), (unsigned)a.size());}
-  };
-  using HsMultiCompositeQuote = MultiCompositeQuote<HsArrayFun>;
-}
 
 void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, QlOptimizationMethod* method, QlEndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e) {
   try {
