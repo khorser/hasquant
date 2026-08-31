@@ -131,13 +131,13 @@ extern "C" {
   double qlCapFloorTermVolatilityStructureVolatilityForTime(QlCapFloorTermVolatilityStructure* o, double t, double strike, int extrapolate, char **e);
   void qlFreeCapFloorTermVolCurve(QlCapFloorTermVolCurve *o);
   QlCapFloorTermVolatilityStructure* qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure(QlCapFloorTermVolCurve *o);
-  void qlCapFloorTermVolCurveOptionDates(QlCapFloorTermVolCurve *o, unsigned *count, int **days);
-  void qlCapFloorTermVolCurveOptionTimes(QlCapFloorTermVolCurve *o, unsigned *count, double **times);
+  void qlCapFloorTermVolCurveOptionDates(QlCapFloorTermVolCurve *o, unsigned *count, int **days, char **e);
+  void qlCapFloorTermVolCurveOptionTimes(QlCapFloorTermVolCurve *o, unsigned *count, double **times, char **e);
 
   void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o);
   QlCapFloorTermVolatilityStructure* qlCapFloorTermVolSurfaceAsCapFloorTermVolatilityStructure(QlCapFloorTermVolSurface *o);
-  void qlCapFloorTermVolSurfaceOptionDates(QlCapFloorTermVolSurface *o, unsigned *count, int **days);
-  void qlCapFloorTermVolSurfaceOptionTimes(QlCapFloorTermVolSurface *o, unsigned *count, double **times);
+  void qlCapFloorTermVolSurfaceOptionDates(QlCapFloorTermVolSurface *o, unsigned *count, int **days, char **e);
+  void qlCapFloorTermVolSurfaceOptionTimes(QlCapFloorTermVolSurface *o, unsigned *count, double **times, char **e);
   void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o);
   QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o);
   void qlFreeGridModelLocalVolSurface(QlGridModelLocalVolSurface *o);
@@ -592,12 +592,12 @@ extern "C" {
   QlTermStructure *qlYoYCapFloorTermPriceSurfaceAsTermStructure(QlYoYCapFloorTermPriceSurface *o);
   int qlYoYCapFloorTermPriceSurfaceBaseDate(QlYoYCapFloorTermPriceSurface *o, char **e);
   void qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates(QlYoYCapFloorTermPriceSurface *o,
-      unsigned *dl, int **date, unsigned *rl, double **rate);
+      unsigned *dl, int **date, unsigned *rl, double **rate, char **e);
   double qlYoYCapFloorTermPriceSurfaceAtmYoYSwapRate(QlYoYCapFloorTermPriceSurface *o, int d,
       int extrapolate, char **e);
   double qlYoYCapFloorTermPriceSurfaceAtmYoYRate(QlYoYCapFloorTermPriceSurface *o, int d,
       int obsLagLen, int obsLagUnit, int extrapolate, char **e);
-  void qlYoYCapFloorTermPriceSurfaceStrikes(QlYoYCapFloorTermPriceSurface *o, unsigned *sl, double **strike);
+  void qlYoYCapFloorTermPriceSurfaceStrikes(QlYoYCapFloorTermPriceSurface *o, unsigned *sl, double **strike, char **e);
 
   /* KInterpolatedYoYOptionletVolatilitySurface<Linear> -- another concrete leaf constructor for
      YoYOptionletVolatilitySurface (Item 1), built by internally wiring up an

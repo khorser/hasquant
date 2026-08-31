@@ -1547,8 +1547,8 @@ CouponLeg* qlLegToCouponLeg(Leg *o, char **e) {
   } catch (std::exception& er) {return handleException<CouponLeg*>(e, er);}}
 
 QlFloatingRateCouponPricer *qlBlackIborCouponPricer(QlOptionletVolatilityStructure *vol, int timingAdjustment, QlQuote *correlation, int useIndexedCoupon, char **e) {
-  try {Handle<Quote> corr = qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(new SimpleQuote(1.0)); });
-    return ret(new QlFloatingRateCouponPricer(new BlackIborCouponPricer(*arg(vol), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon))));
+  try {Handle<Quote> corr = qlNullableHandleOr(correlation, [] { return shared_ptr<Quote>(alloc(new SimpleQuote(1.0))); });
+    return ret(new QlFloatingRateCouponPricer(alloc(new BlackIborCouponPricer(*arg(vol), (BlackIborCouponPricer::TimingAdjustment)timingAdjustment, corr, qlOptBool(useIndexedCoupon)))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer *>(e, er);}}
 QlFloatingRateCouponPricer *qlBlackIborQuantoCouponPricer(QlBlackVolTermStructure *fxRateBlackVolatility, QlQuote *underlyingFxCorrelation, QlOptionletVolatilityStructure *capletVolatility, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new BlackIborQuantoCouponPricer(*arg(fxRateBlackVolatility), *arg(underlyingFxCorrelation), *arg(capletVolatility)))));

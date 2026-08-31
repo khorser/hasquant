@@ -66,6 +66,17 @@ std::ostream &traceStream() {
   static std::ofstream *stream = new std::ofstream(qlTrackDestination());
   return *stream;
 }
+// Same reason as qlInstrument.cpp's Hs* labels: these live in the anonymous namespace above and
+// so cannot be named in qlaux.h's table, and without a specialization ObjClassName falls back to
+// typeid().name() -- which for a template instantiation is especially unreadable. All six are
+// shared_ptr payloads, alloc()-only and never explicitly freed, so alloc-summary.py shows them
+// with no matching del by design.
+QL_TRACE_NAME(OpDerivedQuote)
+QL_TRACE_NAME(OpCompositeQuote)
+QL_TRACE_NAME(OpMultiCompositeQuote)
+QL_TRACE_NAME(HsDerivedQuote)
+QL_TRACE_NAME(HsCompositeQuote)
+QL_TRACE_NAME(HsMultiCompositeQuote)
 #endif
 using namespace QuantLib;
 
@@ -558,7 +569,7 @@ void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e) {
 Rounding* qlRounding(char **e) {try {return alloc(new Rounding());} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}
 Rounding* qlRounding1(int precision, int type, int digit, char **e) {try {return alloc(new Rounding(precision, (Rounding::Type)type, digit));} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}
 
-QlSimpleQuote *qlSimpleQuote(double value, char **e) {try {return ret(new QlSimpleQuote(new SimpleQuote(value)));} catch (std::exception& er) {return handleException<QlSimpleQuote *>(e, er);}}
+QlSimpleQuote *qlSimpleQuote(double value, char **e) {try {return ret(new QlSimpleQuote(alloc(new SimpleQuote(value))));} catch (std::exception& er) {return handleException<QlSimpleQuote *>(e, er);}}
 double qlQuoteValue(QlQuote *quote, char **e) {try {return (*arg(quote))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e) {try {return (*arg(o))->setValue(value);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
@@ -582,21 +593,6 @@ QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, 
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlLastFixingQuote(QlIndex* index, char **e) {try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new LastFixingQuote(*arg(index))))));} catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 int qlQuoteIsValid(QlQuote* o, char **e) {try {return (*arg(o))->isValid();} catch (std::exception& er) {return handleException<int>(e, er);}}
-
-#ifdef QLTRACK_ALLOCATIONS
-// Same reason as qlInstrument.cpp's Hs* labels: these live in the anonymous namespace above and
-// so cannot be named in qlaux.h's table, and without a specialization ObjClassName falls back to
-// typeid().name() -- which for a template instantiation is especially unreadable. All six are
-// shared_ptr payloads, alloc()-only and never explicitly freed, so alloc-summary.py shows them
-// with no matching del by design.
-QL_TRACE_NAME(OpDerivedQuote)
-QL_TRACE_NAME(OpCompositeQuote)
-QL_TRACE_NAME(OpMultiCompositeQuote)
-QL_TRACE_NAME(HsDerivedQuote)
-QL_TRACE_NAME(HsCompositeQuote)
-QL_TRACE_NAME(HsMultiCompositeQuote)
-#endif
-
 QlQuote* qlDerivedQuote(int op, QlQuote* element, double operand, char **e) {
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new OpDerivedQuote(*arg(element), QuoteUnaryOp{op, operand})))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}

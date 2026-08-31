@@ -886,16 +886,16 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The option-tenor grid's dates, calendar-advanced from the curve's reference date.
-{#fun qlCapFloorTermVolCurveOptionDates as capFloorTermVolCurveOptionDates{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Day]'&peekDayArray*}->`()'#}
+{#fun qlCapFloorTermVolCurveOptionDates as capFloorTermVolCurveOptionDates{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'capFloorTermVolCurveOptionDates', in year fractions from the curve's reference date.
-{#fun qlCapFloorTermVolCurveOptionTimes as capFloorTermVolCurveOptionTimes{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Double]'&peekDoubleArray*}->`()'#}
+{#fun qlCapFloorTermVolCurveOptionTimes as capFloorTermVolCurveOptionTimes{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The option-tenor grid's dates, calendar-advanced from the surface's reference date.
-{#fun qlCapFloorTermVolSurfaceOptionDates as capFloorTermVolSurfaceOptionDates{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Day]'&peekDayArray*}->`()'#}
+{#fun qlCapFloorTermVolSurfaceOptionDates as capFloorTermVolSurfaceOptionDates{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'capFloorTermVolSurfaceOptionDates', in year fractions from the surface's reference date.
-{#fun qlCapFloorTermVolSurfaceOptionTimes as capFloorTermVolSurfaceOptionTimes{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Double]'&peekDoubleArray*}->`()'#}
+{#fun qlCapFloorTermVolSurfaceOptionTimes as capFloorTermVolSurfaceOptionTimes{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |spot at-the-money volatility for a given option tenor
 {#fun qlBlackAtmVolCurveAtmVolForPeriod as atmVolForPeriod{withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
