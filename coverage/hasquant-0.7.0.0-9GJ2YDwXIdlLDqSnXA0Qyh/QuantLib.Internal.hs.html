@@ -421,51 +421,58 @@ span.spaces    { background: white }
 <span class="lineno">  402 </span>-- regression, diffusion/correlation, and volatility-surface data; object
 <span class="lineno">  403 </span>-- matrices retain 'Matrix' because their elements need continuation-based FFI
 <span class="lineno">  404 </span>-- marshalling rather than a raw contiguous pointer.
-<span class="lineno">  405 </span>data RealMatrix = RealMatrix
-<span class="lineno">  406 </span>  { <span class="nottickedoff"><span class="decl"><span class="nottickedoff">realMatrixRows</span></span></span> :: Word
-<span class="lineno">  407 </span>  , <span class="nottickedoff"><span class="decl"><span class="nottickedoff">realMatrixColumns</span></span></span> :: Word
-<span class="lineno">  408 </span>  , <span class="nottickedoff"><span class="decl"><span class="nottickedoff">realMatrixData</span></span></span> :: RealVector
-<span class="lineno">  409 </span>  }
-<span class="lineno">  410 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
-<span class="lineno">  411 </span>
-<span class="lineno">  412 </span>-- |List-backed numeric matrix retained for curve, surface, and object-matrix APIs that have not
-<span class="lineno">  413 </span>-- yet migrated their public representation.  Use 'realMatrixFromVector' for a dense numerical
-<span class="lineno">  414 </span>-- calculation such as multi-asset LSM.
-<span class="lineno">  415 </span>realMatrix :: Word -&gt; Word -&gt; [Double] -&gt; Either String (Matrix Double)
-<span class="lineno">  416 </span><span class="decl"><span class="istickedoff">realMatrix = objectMatrix</span></span>
-<span class="lineno">  417 </span>
-<span class="lineno">  418 </span>-- |Construct a row-major numeric matrix backed by contiguous storage.
-<span class="lineno">  419 </span>realMatrixFromVector :: Word -&gt; Word -&gt; RealVector -&gt; Either String RealMatrix
-<span class="lineno">  420 </span><span class="decl"><span class="istickedoff">realMatrixFromVector rows cols d</span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">rows * cols == fromIntegral (V.length d)</span> = Right $ RealMatrix rows cols d</span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Left $ &quot;Data length &quot; ++ show (V.length d)</span></span>
-<span class="lineno">  423 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span></span>
+<span class="lineno">  405 </span>--
+<span class="lineno">  406 </span>-- This representation interoperates directly with @hmatrix@ without making
+<span class="lineno">  407 </span>-- @hasquant@ depend on it: @Numeric.LinearAlgebra.reshape cols
+<span class="lineno">  408 </span>-- realMatrixData@ makes a row-major hmatrix matrix view with no element copy.
+<span class="lineno">  409 </span>-- The reverse conversion through @flatten@ is zero-copy only for a contiguous
+<span class="lineno">  410 </span>-- row-major hmatrix matrix; BLAS-produced or sliced matrices can require a
+<span class="lineno">  411 </span>-- reorder/copy.
+<span class="lineno">  412 </span>data RealMatrix = RealMatrix
+<span class="lineno">  413 </span>  { <span class="nottickedoff"><span class="decl"><span class="nottickedoff">realMatrixRows</span></span></span> :: Word
+<span class="lineno">  414 </span>  , <span class="nottickedoff"><span class="decl"><span class="nottickedoff">realMatrixColumns</span></span></span> :: Word
+<span class="lineno">  415 </span>  , <span class="nottickedoff"><span class="decl"><span class="nottickedoff">realMatrixData</span></span></span> :: RealVector
+<span class="lineno">  416 </span>  }
+<span class="lineno">  417 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">  418 </span>
+<span class="lineno">  419 </span>-- |List-backed numeric matrix retained for curve, surface, and object-matrix APIs that have not
+<span class="lineno">  420 </span>-- yet migrated their public representation.  Use 'realMatrixFromVector' for a dense numerical
+<span class="lineno">  421 </span>-- calculation such as multi-asset LSM.
+<span class="lineno">  422 </span>realMatrix :: Word -&gt; Word -&gt; [Double] -&gt; Either String (Matrix Double)
+<span class="lineno">  423 </span><span class="decl"><span class="istickedoff">realMatrix = objectMatrix</span></span>
 <span class="lineno">  424 </span>
-<span class="lineno">  425 </span>objectMatrix :: Word -&gt; Word -&gt; [a] -&gt; Either String (Matrix a)
-<span class="lineno">  426 </span><span class="decl"><span class="istickedoff">objectMatrix rows cols d</span>
-<span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">rows * cols == fromIntegral (length d)</span> = Right $ Matrix rows cols d</span>
-<span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Left $ &quot;Data length &quot; ++ show (length d)</span></span>
-<span class="lineno">  429 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span></span>
-<span class="lineno">  430 </span>
-<span class="lineno">  431 </span>-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
-<span class="lineno">  432 </span>fromEnumC :: (Enum a, Integral b) =&gt; a -&gt; b
-<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">fromEnumC = fromIntegral . fromEnum</span></span>
-<span class="lineno">  434 </span>
-<span class="lineno">  435 </span>-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
-<span class="lineno">  436 </span>-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
-<span class="lineno">  437 </span>toEnumC :: (Enum a, Integral b) =&gt; b -&gt; a
-<span class="lineno">  438 </span><span class="decl"><span class="istickedoff">toEnumC = toEnum . fromIntegral</span></span>
-<span class="lineno">  439 </span>
-<span class="lineno">  440 </span>uncurryNested :: (a -&gt; b -&gt; c -&gt; d) -&gt; (a, (b, c)) -&gt; d
-<span class="lineno">  441 </span><span class="decl"><span class="istickedoff">uncurryNested f (x, (y, z)) = f x y z</span></span>
-<span class="lineno">  442 </span>
-<span class="lineno">  443 </span>-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
-<span class="lineno">  444 </span>-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
-<span class="lineno">  445 </span>zipWith6 :: (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g) -&gt; [a] -&gt; [b] -&gt; [c] -&gt; [d] -&gt; [e] -&gt; [f] -&gt; [g]
-<span class="lineno">  446 </span><span class="decl"><span class="istickedoff">zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b <span class="nottickedoff">c</span> <span class="nottickedoff">d</span> <span class="nottickedoff">e</span> <span class="nottickedoff">g</span> : zipWith6 <span class="nottickedoff">f</span> as bs cs ds es gs</span>
-<span class="lineno">  447 </span><span class="spaces"></span><span class="istickedoff">zipWith6 _ _ _ _ _ _ _ = []</span></span>
-<span class="lineno">  448 </span>
-<span class="lineno">  449 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  425 </span>-- |Construct a row-major numeric matrix backed by contiguous storage.
+<span class="lineno">  426 </span>realMatrixFromVector :: Word -&gt; Word -&gt; RealVector -&gt; Either String RealMatrix
+<span class="lineno">  427 </span><span class="decl"><span class="istickedoff">realMatrixFromVector rows cols d</span>
+<span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">rows * cols == fromIntegral (V.length d)</span> = Right $ RealMatrix rows cols d</span>
+<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Left $ &quot;Data length &quot; ++ show (V.length d)</span></span>
+<span class="lineno">  430 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span></span>
+<span class="lineno">  431 </span>
+<span class="lineno">  432 </span>objectMatrix :: Word -&gt; Word -&gt; [a] -&gt; Either String (Matrix a)
+<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">objectMatrix rows cols d</span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">rows * cols == fromIntegral (length d)</span> = Right $ Matrix rows cols d</span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Left $ &quot;Data length &quot; ++ show (length d)</span></span>
+<span class="lineno">  436 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span></span>
+<span class="lineno">  437 </span>
+<span class="lineno">  438 </span>-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
+<span class="lineno">  439 </span>fromEnumC :: (Enum a, Integral b) =&gt; a -&gt; b
+<span class="lineno">  440 </span><span class="decl"><span class="istickedoff">fromEnumC = fromIntegral . fromEnum</span></span>
+<span class="lineno">  441 </span>
+<span class="lineno">  442 </span>-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
+<span class="lineno">  443 </span>-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
+<span class="lineno">  444 </span>toEnumC :: (Enum a, Integral b) =&gt; b -&gt; a
+<span class="lineno">  445 </span><span class="decl"><span class="istickedoff">toEnumC = toEnum . fromIntegral</span></span>
+<span class="lineno">  446 </span>
+<span class="lineno">  447 </span>uncurryNested :: (a -&gt; b -&gt; c -&gt; d) -&gt; (a, (b, c)) -&gt; d
+<span class="lineno">  448 </span><span class="decl"><span class="istickedoff">uncurryNested f (x, (y, z)) = f x y z</span></span>
+<span class="lineno">  449 </span>
+<span class="lineno">  450 </span>-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
+<span class="lineno">  451 </span>-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
+<span class="lineno">  452 </span>zipWith6 :: (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g) -&gt; [a] -&gt; [b] -&gt; [c] -&gt; [d] -&gt; [e] -&gt; [f] -&gt; [g]
+<span class="lineno">  453 </span><span class="decl"><span class="istickedoff">zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b <span class="nottickedoff">c</span> <span class="nottickedoff">d</span> <span class="nottickedoff">e</span> <span class="nottickedoff">g</span> : zipWith6 <span class="nottickedoff">f</span> as bs cs ds es gs</span>
+<span class="lineno">  454 </span><span class="spaces"></span><span class="istickedoff">zipWith6 _ _ _ _ _ _ _ = []</span></span>
+<span class="lineno">  455 </span>
+<span class="lineno">  456 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 
 </pre>
 </body>
