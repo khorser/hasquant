@@ -84,7 +84,7 @@ Tests reuse QuantLib fixtures and cached values when available. Enum-dispatched 
 
 # Building
 
-GHC 9.10 is the primary development version. GHC 8.10.6 (`base >= 4.14`) is the supported floor and is checked with lts-18.8.
+GHC 9.10 is the primary development version. GHC 8.10.6 (`base >= 4.14`) is the supported floor and is checked with lts-18.8. GitHub CI also tests with GHC 9.6.7, 9.8.4, 9.12.4, 9.14.1.
 
 Install QuantLib 1.43 or later: [Linux](https://www.quantlib.org/install/linux.shtml), [macOS](https://www.quantlib.org/install/macosx.shtml), or [CMake](https://www.quantlib.org/install/cmake.shtml).
 
