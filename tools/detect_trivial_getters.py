@@ -78,6 +78,9 @@ def get_mac_clang_args():
 DECL_RE = re.compile(
     r"(?:([\w]+)::)?(~?[\w]+|operator\S*)\s*(?:<[^>]*>)?\s*\((.*)\)\s*(const)?\s*;?\s*$"
 )
+RETURN_FIELD_RE = re.compile(
+    r"\breturn\s+[A-Za-z_]\w*_\s*(?:;|\[)"
+)
 
 
 def split_top_level_commas(s):
@@ -120,6 +123,26 @@ def read_tracking_lines():
         _, status, header, decl = parts
         parsed.append((status, header, decl))
     return lines, parsed
+
+
+def may_contain_supported_return(header_rel):
+    """Whether the header or its sibling implementation can contain a
+    return expression supported by get_trivial_return.
+
+    This is a completeness-preserving parse prefilter: every eligible method
+    has source spelling `return field_;` or `return field_[index];`.  Headers
+    with neither form cannot contribute a candidate, so there is no reason to
+    pay libclang's full translation-unit cost for them.
+    """
+    hpp_path = QL_ROOT / header_rel
+    paths = (hpp_path, hpp_path.with_suffix(".cpp"))
+    for path in paths:
+        try:
+            if path.exists() and RETURN_FIELD_RE.search(path.read_text()):
+                return True
+        except UnicodeDecodeError:
+            continue
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -298,6 +321,16 @@ def get_trivial_return(method_cursor, param_names):
         return None
     inner = unwrap(ret_children[0])
 
+    # Returning a class-typed field by value is represented as an implicit
+    # copy-constructor CALL_EXPR, even though the source is just
+    # `return field_;` (e.g. `Date baseDate() { return baseDate_; }`).
+    # Accept only the token-free implicit wrapper: an explicit conversion or
+    # construction such as `return Date(field_);` remains non-trivial.
+    if inner.kind == CK.CALL_EXPR:
+        args = list(inner.get_arguments())
+        if len(args) == 1 and token_text(inner) == token_text(args[0]):
+            inner = unwrap(args[0])
+
     if inner.kind in (CK.MEMBER_REF_EXPR, CK.DECL_REF_EXPR):
         return inner.spelling, None
 
@@ -341,11 +374,46 @@ def analyze_header(header_rel, index, clang_args):
         return {}
     cpp_path = hpp_path.with_suffix(".cpp")
 
-    tu = index.parse(str(hpp_path), args=clang_args)
-    extra_children = []
+    # A sibling implementation includes its header, so one .cpp translation
+    # unit gives us both the class declaration/inline bodies from the header
+    # and the out-of-line definitions.  Parsing each separately roughly
+    # doubled the cost of a repository-wide audit.
+    tu_source = cpp_path if cpp_path.exists() else hpp_path
+    tu = index.parse(str(tu_source), args=clang_args)
+    def source_definitions(cursor, source_path):
+        """Implementation cursors physically defined in source_path."""
+        result = []
+        source_resolved = source_path.resolve()
+
+        def collect(cursor):
+            for child in cursor.get_children():
+                if child.location.file:
+                    try:
+                        in_source = Path(str(child.location.file)).resolve() == source_resolved
+                    except OSError:
+                        in_source = False
+                    if in_source and child.kind in (
+                            CK.CONSTRUCTOR, CK.CXX_METHOD, CK.DESTRUCTOR):
+                        result.append(child)
+                collect(child)
+
+        collect(cursor)
+        return result
+
+    # A header can put an inline definition after the class body, at namespace
+    # scope (Coupon's inspectors do).  Such a definition is not a child of
+    # the class cursor either, so collect it by semantic parent just like the
+    # sibling .cpp definitions.
+    extra_definitions = source_definitions(tu.cursor, hpp_path)
     if cpp_path.exists():
-        cpp_tu = index.parse(str(cpp_path), args=clang_args)
-        extra_children = list(cpp_tu.cursor.get_children())
+        # Methods and constructors defined in a .cpp nested under
+        # `namespace QuantLib` are not children of the translation-unit
+        # cursor.  The previous top-level-only collection therefore made the
+        # out-of-line half of the analysis a no-op for normal QuantLib code.
+        # Restrict the recursive walk to cursors physically defined by this
+        # .cpp: its included headers contain declarations (and often inline
+        # definitions) which the header TU already supplies.
+        extra_definitions.extend(source_definitions(tu.cursor, cpp_path))
 
     results = {}
 
@@ -361,7 +429,8 @@ def analyze_header(header_rel, index, clang_args):
 
     def handle_class(class_cursor):
         cls_usr = class_cursor.get_usr()
-        my_extra = [c for c in extra_children if c.semantic_parent and c.semantic_parent.get_usr() == cls_usr]
+        my_extra = [c for c in extra_definitions
+                    if c.semantic_parent and c.semantic_parent.get_usr() == cls_usr]
 
         field_types = {f.spelling: f.type for f in class_cursor.get_children() if f.kind == CK.FIELD_DECL}
         direct_fields = collect_ctor_direct_fields(class_cursor, my_extra, field_types)
@@ -415,6 +484,18 @@ def analyze_header(header_rel, index, clang_args):
 def main():
     mode_apply = "--apply" in sys.argv
     mode_check_existing = "--check-existing" in sys.argv
+    shard = None
+    if "--shard" in sys.argv:
+        try:
+            shard_arg = sys.argv[sys.argv.index("--shard") + 1]
+            shard_index, shard_count = (int(part) for part in shard_arg.split("/", 1))
+            if not (0 <= shard_index < shard_count):
+                raise ValueError
+            shard = (shard_index, shard_count)
+        except (IndexError, ValueError):
+            raise SystemExit("--shard expects INDEX/COUNT, with 0 <= INDEX < COUNT")
+    if mode_apply and shard is not None:
+        raise SystemExit("--apply cannot be combined with --shard")
 
     _, parsed = read_tracking_lines()
 
@@ -433,7 +514,12 @@ def main():
     clang_args = get_mac_clang_args()
 
     all_candidates = []
-    headers = sorted(by_header)
+    headers = [header for header in sorted(by_header)
+               if may_contain_supported_return(header)]
+    if shard is not None:
+        shard_index, shard_count = shard
+        headers = [header for i, header in enumerate(headers)
+                   if i % shard_count == shard_index]
     for n, header in enumerate(headers, 1):
         sys.stderr.write(f"\r[{n}/{len(headers)}] {header}" + " " * 20)
         sys.stderr.flush()
@@ -456,6 +542,16 @@ def main():
     if mode_apply:
         lines, parsed2 = read_tracking_lines()
         decl_to_cand = {c[0]: c[1] for c in all_candidates}
+        # Preserve the evidence for this exact apply run.  Once statuses are
+        # changed there are intentionally no longer blank/? candidates to
+        # reconstruct the report from.
+        with REPORT_PATH.open("w") as f:
+            for decl, cand in all_candidates:
+                f.write(
+                    f"{cand.header}\t{cand.cls}::{cand.method}\t"
+                    f"field={cand.field}\tctor_init={cand.ctor_evidence}\t"
+                    f"getter_body={cand.getter_evidence}\tdecl={decl}\n"
+                )
         out = []
         changed = 0
         for line, entry in zip(lines, parsed2):
@@ -474,6 +570,11 @@ def main():
         return
 
     label = "|v| lines flagged (should be ~0)" if mode_check_existing else "candidates"
+    # Calibration shards are intentionally report-free so several can run in
+    # parallel without racing on trivial_getters_report.txt.
+    if mode_check_existing and shard is not None:
+        print(f"{len(all_candidates)} {label} in shard {shard_index}/{shard_count}.")
+        return
     out_path = REPORT_PATH
     with out_path.open("w") as f:
         for decl, cand in all_candidates:
