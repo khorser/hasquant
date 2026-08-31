@@ -134,6 +134,7 @@ tests:
       - hspec >= 2.7.10 && < 2.12
       - HUnit >= 1.6.2 && < 1.7
       - QuickCheck >= 2.14.2 && < 2.19
+      - vector >= 0.12.3 && < 0.14
 
 executables:
   hasquant_example:
@@ -143,6 +144,7 @@ executables:
       - test/exe
     dependencies:
       - hasquant
+      - vector >= 0.12.3 && < 0.14
     when:
       - condition: flag(buildExample)
         then:

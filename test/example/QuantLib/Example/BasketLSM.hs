@@ -13,6 +13,7 @@ module QuantLib.Example.BasketLSM
   ) where
 import Control.Monad(replicateM, zipWithM)
 import Data.Time.Calendar(addDays)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -48,14 +49,15 @@ mean xs = sum xs / fromIntegral (length xs)
 
 -- |every asset's full simulated time series for one drawn path.
 pathAssets :: Int -> PathGenerator -> IO [[Double]]
-pathAssets dim gen = next gen >>= \s -> mapM (asset s) [0 .. fromIntegral dim - 1]
+pathAssets dim gen = next gen >>= \s -> mapM (fmap V.toList . asset s) [0 .. fromIntegral dim - 1]
 
 -- |all paths' state at exercise-date index @t@, one row (of @dim@ underlyings) per path.
 statesAt :: Int -> Int -> [[[Double]]] -> [[Double]]
 statesAt dim t paths = [ [ p !! a !! t | a <- [0 .. dim-1] ] | p <- paths ]
 
-toMatrix :: Int -> [[Double]] -> Matrix Double
-toMatrix dim rows = Matrix (fromIntegral (length rows)) (fromIntegral dim) (concat rows)
+toMatrix :: Int -> [[Double]] -> RealMatrix
+toMatrix dim rows = either error id $
+  realMatrixFromVector (fromIntegral (length rows)) (fromIntegral dim) (V.fromList (concat rows))
 
 -- |one backward-induction step, generalizing "QuantLib.Example.AmericanLSM"'s 'step' from a
 -- scalar state to an @dim@-underlying state vector per path (via 'lsmRegressMulti' instead of
@@ -75,8 +77,8 @@ step polyT order strike dim df t calibPaths pricePaths calibCF0 priceCF0 exFlags
     then return (calibCF, priceCF, exFlags0)
     else do
       let fitMat = toMatrix dim fitStates
-      contCalib <- lsmRegressMulti polyT order fitMat fitTargets (toMatrix dim calibS)
-      contPrice <- lsmRegressMulti polyT order fitMat fitTargets (toMatrix dim priceS)
+      contCalib <- V.toList <$> lsmRegressMulti polyT order fitMat (V.fromList fitTargets) (toMatrix dim calibS)
+      contPrice <- V.toList <$> lsmRegressMulti polyT order fitMat (V.fromList fitTargets) (toMatrix dim priceS)
       let calibCF' = zipWith3 (\cf ex cont -> if ex > 0 && ex > cont then ex else cf) calibCF calibEx contCalib
           decidePrice cf ex cont = if ex > 0 && ex > cont then (ex, True) else (cf, False)
           (priceCF', exercisedNow) = unzip $ zipWith3 decidePrice priceCF priceEx contPrice
@@ -113,7 +115,7 @@ run = do
 
   t <- years dc evalDate maturity Nothing Nothing
   grid <- timeGrid t timeSteps
-  times <- points grid
+  times <- V.toList <$> points grid
   discFactors@(df0h:_) <- mapM (\x -> discount ts x False) times
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
 

@@ -10,6 +10,7 @@ module QuantLib.Example.Optimizer
   , run
   ) where
 import QuantLib.Math
+import qualified Data.Vector.Storable as V
 
 data Result = Result
   { solution :: ![Double]
@@ -17,16 +18,20 @@ data Result = Result
   , endCriteriaType :: !EndCriteriaType
   }
 
-rosenbrock :: [Double] -> Double
-rosenbrock [x, y] = (1 - x)^(2 :: Int) + 100 * (y - x * x)^(2 :: Int)
-rosenbrock _ = error "rosenbrock: expected 2 arguments"
+rosenbrock :: RealVector -> Double
+rosenbrock v
+  | V.length v == 2 = (1 - x)^(2 :: Int) + 100 * (y - x * x)^(2 :: Int)
+  | otherwise = error "rosenbrock: expected 2 arguments"
+  where
+    x = v V.! 0
+    y = v V.! 1
 
 run :: IO Result
 run = do
   (sol, c, ec) <- optimize rosenbrock x0 Nothing method endCrit
-  return $ Result sol c ec
+  return $ Result (V.toList sol) c ec
   where
-    x0 = [-1.2, 1.0]
+    x0 = V.fromList [-1.2, 1.0]
     method = Simplex 0.1
     endCrit = EndCriteria 1000 100 1e-8 1e-8 1e-8
 

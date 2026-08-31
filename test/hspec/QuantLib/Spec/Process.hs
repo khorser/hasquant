@@ -25,6 +25,7 @@
 module QuantLib.Spec.Process (spec) where
 
 import Test.Hspec
+import qualified Data.Vector.Storable as V
 import Data.Time.Calendar(addDays)
 import qualified Data.List.NonEmpty as NE
 
@@ -264,7 +265,7 @@ spec = do
         let horizon = 5.0; steps = 50 :: Word; nPaths = 4000 :: Int
         tg <- timeGrid horizon steps
         pg <- pathGenerator PseudoRandom process tg 42 (nf * steps) False
-        paths <- replicateM nPaths (next pg >>= \sp -> mapM (asset sp) [0, 1])
+        paths <- replicateM nPaths (next pg >>= \sp -> mapM (fmap V.toList . asset sp) [0, 1])
         let sumR = foldr1 (zipWith (+)) [zipWith (+) r0 r1 | [r0, r1] <- paths]
             meanR = map (/ fromIntegral nPaths) sumR
         expected <- mapM (\i -> g2Phi process (horizon * fromIntegral i / fromIntegral steps)) [0 .. steps]

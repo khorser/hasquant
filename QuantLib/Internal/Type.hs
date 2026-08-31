@@ -1,17 +1,18 @@
 {-# LANGUAGE RankNTypes, TypeFamilies, TypeOperators, FlexibleContexts, FlexibleInstances #-}
 module QuantLib.Internal.Type where
-import Foreign.Ptr(Ptr, FunPtr, nullPtr, nullFunPtr, freeHaskellFunPtr)
+import Foreign.Ptr(Ptr, FunPtr, nullPtr, nullFunPtr, freeHaskellFunPtr, plusPtr, castPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types(CUInt(..), CInt, CDouble(..))
 import Foreign.C.String(CString)
-import Foreign.Marshal.Array(withArray, peekArray, pokeArray)
-import Foreign.Marshal.Utils(withMany)
-import Foreign.Storable(peek)
+import Foreign.Marshal.Array(withArray, peekArray, copyArray)
+import Foreign.Marshal.Utils(withMany, fillBytes)
+import Foreign.Storable(peek, sizeOf)
 
-import Control.Monad((>=>))
+import Control.Monad((>=>), when)
 import System.IO.Unsafe(unsafePerformIO)
+import qualified Data.Vector.Storable as V
 
-import QuantLib.Internal(peekDynString, preArray, peekDayArray, peekPtrArray)
+import QuantLib.Internal(RealVector, borrowRealVector, peekDynString, preArray, peekDayArray, peekPtrArray)
 import Control.Exception (finally, mask)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
@@ -60,14 +61,14 @@ foreign import ccall "wrapper" mkCostFunPtr
 -- Build a C function pointer around a Haskell cost function for the duration of one 'optimize'
 -- call, freeing it with 'freeHaskellFunPtr' once the continuation returns, whether normally or
 -- via exception.
-withCostFunction :: ([Double] -> Double) -> (FunPtr (Ptr CDouble -> CUInt -> IO CDouble) -> IO b) -> IO b
+withCostFunction :: (RealVector -> Double) -> (FunPtr (Ptr CDouble -> CUInt -> IO CDouble) -> IO b) -> IO b
 withCostFunction f g = mask $ \restore -> do
   fp <- mkCostFunPtr call
   restore (g fp) `finally` freeHaskellFunPtr fp
   where
     call xs n = do
-      x <- peekArray (fromIntegral n) xs
-      pure (realToFrac (f (map realToFrac x)))
+      x <- borrowRealVector xs n
+      pure (realToFrac (f x))
 
 -- 'fdmRollback' (QuantLib.Method) is the second callback-into-Haskell hook, driving
 -- @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (three callbacks:
@@ -86,48 +87,52 @@ withCostFunction f g = mask $ \restore -> do
 -- the C++ side's output buffer is exactly @n@ doubles, so a too-long Haskell result list must
 -- never be poked past that -- 'pokeBoundedFdmResult' truncates (a too-short list numerically
 -- wrong but safe, implicit-zero-padded).
-pokeBoundedFdmResult :: CUInt -> Ptr CDouble -> [Double] -> IO ()
-pokeBoundedFdmResult n out result = pokeArray out (map realToFrac (take (fromIntegral n) (result ++ repeat 0)))
+pokeBoundedFdmResult :: CUInt -> Ptr CDouble -> RealVector -> IO ()
+pokeBoundedFdmResult n out result = do
+  let expected = fromIntegral n
+      copied = min expected (V.length result)
+  V.unsafeWith result $ \p -> copyArray out (castPtr p) copied
+  when (copied < expected) $ fillBytes (out `plusPtr` (copied * sizeOf (undefined :: CDouble))) 0 ((expected - copied) * sizeOf (undefined :: CDouble))
 
 type FdmApplyFun = Ptr CDouble -> CUInt -> CDouble -> CDouble -> Ptr CDouble -> IO ()
 foreign import ccall "wrapper" mkFdmApplyFunPtr :: FdmApplyFun -> IO (FunPtr FdmApplyFun)
 -- |Wrap a Haskell @(t1,t2) -> grid -> grid'@ function (QuantLib's @FdmLinearOp::apply@\/
 -- @FdmLinearOpComposite::apply@, no direction argument) as a 'FdmApplyFun' C callback for the
 -- duration of one 'QuantLib.Method.fdmRollback' call.
-withFdmApply :: ((Double, Double) -> [Double] -> [Double]) -> (FunPtr FdmApplyFun -> IO b) -> IO b
+withFdmApply :: ((Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmApplyFun -> IO b) -> IO b
 withFdmApply f g = mask $ \restore -> do
   fp <- mkFdmApplyFunPtr call
   restore (g fp) `finally` freeHaskellFunPtr fp
   where
     call xs n t1 t2 out = do
-      x <- peekArray (fromIntegral n) xs
-      pokeBoundedFdmResult n out (f (realToFrac t1, realToFrac t2) (map realToFrac x))
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (realToFrac t1, realToFrac t2) x)
 
 type FdmApplyDirectionFun = Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> Ptr CDouble -> IO ()
 foreign import ccall "wrapper" mkFdmApplyDirectionFunPtr :: FdmApplyDirectionFun -> IO (FunPtr FdmApplyDirectionFun)
 -- |Wrap a Haskell @direction -> (t1,t2) -> grid -> grid'@ function
 -- (@FdmLinearOpComposite::apply_direction@) as an 'FdmApplyDirectionFun' C callback.
-withFdmApplyDirection :: (Int -> (Double, Double) -> [Double] -> [Double]) -> (FunPtr FdmApplyDirectionFun -> IO b) -> IO b
+withFdmApplyDirection :: (Int -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmApplyDirectionFun -> IO b) -> IO b
 withFdmApplyDirection f g = mask $ \restore -> do
   fp <- mkFdmApplyDirectionFunPtr call
   restore (g fp) `finally` freeHaskellFunPtr fp
   where
     call xs n dir t1 t2 out = do
-      x <- peekArray (fromIntegral n) xs
-      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac t1, realToFrac t2) (map realToFrac x))
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac t1, realToFrac t2) x)
 
 type FdmSolveSplittingFun = Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> CDouble -> Ptr CDouble -> IO ()
 foreign import ccall "wrapper" mkFdmSolveSplittingFunPtr :: FdmSolveSplittingFun -> IO (FunPtr FdmSolveSplittingFun)
 -- |Wrap a Haskell @direction -> s -> (t1,t2) -> grid -> grid'@ function
 -- (@FdmLinearOpComposite::solve_splitting@) as an 'FdmSolveSplittingFun' C callback.
-withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> [Double] -> [Double]) -> (FunPtr FdmSolveSplittingFun -> IO b) -> IO b
+withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmSolveSplittingFun -> IO b) -> IO b
 withFdmSolveSplitting f g = mask $ \restore -> do
   fp <- mkFdmSolveSplittingFunPtr call
   restore (g fp) `finally` freeHaskellFunPtr fp
   where
     call xs n dir s t1 t2 out = do
-      x <- peekArray (fromIntegral n) xs
-      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac s) (realToFrac t1, realToFrac t2) (map realToFrac x))
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac s) (realToFrac t1, realToFrac t2) x)
 
 type FdmStepConditionFun = Ptr CDouble -> CUInt -> CDouble -> Ptr CDouble -> IO ()
 foreign import ccall "wrapper" mkFdmStepConditionFunPtr :: FdmStepConditionFun -> IO (FunPtr FdmStepConditionFun)
@@ -136,15 +141,15 @@ foreign import ccall "wrapper" mkFdmStepConditionFunPtr :: FdmStepConditionFun -
 -- when there is no step condition -- mirrors the existing @withMaybeX@ convention (e.g.
 -- 'withMaybeCurrency' above) of passing a null pointer for 'Nothing' rather than a separate
 -- present\/absent flag.
-withMaybeFdmStepCondition :: Maybe (Double -> [Double] -> [Double]) -> (FunPtr FdmStepConditionFun -> IO b) -> IO b
+withMaybeFdmStepCondition :: Maybe (Double -> RealVector -> RealVector) -> (FunPtr FdmStepConditionFun -> IO b) -> IO b
 withMaybeFdmStepCondition Nothing g = g nullFunPtr
 withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
   fp <- mkFdmStepConditionFunPtr call
   restore (g fp) `finally` freeHaskellFunPtr fp
   where
     call xs n t out = do
-      x <- peekArray (fromIntegral n) xs
-      pokeBoundedFdmResult n out (f (realToFrac t) (map realToFrac x))
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (realToFrac t) x)
 
 type FdmInnerValueFun = Ptr CDouble -> CUInt -> CDouble -> IO CDouble
 foreign import ccall "wrapper" mkFdmInnerValueFunPtr :: FdmInnerValueFun -> IO (FunPtr FdmInnerValueFun)

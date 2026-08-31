@@ -27,13 +27,22 @@ module QuantLib.Math
   , SobolDirectionIntegers(..)
 
   , Matrix(..)
+  , RealMatrix(..)
   , realMatrix
+  , realMatrixFromVector
   , objectMatrix
+
+  , RealVector
+  , NonEmptyVector
+  , singletonNonEmptyVector
+  , consNonEmptyVector
+  , nonEmptyVector
+  , nonEmptyVectorToVector
 
   , TimeGrid
   , timeGrid
-  , timeGridFromList
-  , timeGridFromList'
+  , timeGridFromVector
+  , timeGridFromVector'
   , timeAt
   , size
   , points
@@ -42,7 +51,6 @@ import QuantLib.Internal
 import QuantLib.Internal.Common
 import QuantLib.Internal.Type
 import Foreign.Marshal.Alloc(alloca)
-import Data.List.NonEmpty(NonEmpty)
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
@@ -76,16 +84,16 @@ import Data.List.NonEmpty(NonEmpty)
 -- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
 -- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
 -- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
--- 'QuantLib.Model.CalibrationHelper's, this takes any @[Double] -> Double@ objective. The cost
+-- 'QuantLib.Model.CalibrationHelper's, this takes any 'RealVector -> Double' objective. The cost
 -- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
 -- vector, not once per component -- see CLAUDE.md's "coarsen the language-boundary crossing"
 -- bullet and 'QuantLib.Internal.Type.withCostFunction'.
-{#fun qlOptimize as optimize{withCostFunction*`[Double] -> Double' -- ^cost function
-  ,withDoubleArray*`[Double]'& -- ^initial guess
+{#fun qlOptimize as optimize{withCostFunction*`RealVector -> Double' -- ^cost function
+  ,withRealVector*`RealVector'& -- ^initial guess
   ,withMaybeConstraint*`Maybe Constraint'
   ,withOptimizationMethod*`OptimizationMethod'
   ,withEndCriteria*`EndCriteria'
-  ,preArray-`[Double]'&peekDoubleArray* -- ^solution
+  ,preArray-`RealVector'&peekRealVector* -- ^solution
   ,alloca-`Double'peekDouble* -- ^achieved cost
   ,alloca-`EndCriteriaType'peekEnum* -- ^end criteria reached
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -97,11 +105,11 @@ import Data.List.NonEmpty(NonEmpty)
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. No additional points are added.
-{#fun qlTimeGrid2 as timeGridFromList{withNonEmptyDoubleArray*`NonEmpty Double'&,preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
+{#fun qlTimeGrid2 as timeGridFromVector{withNonEmptyRealVector*`NonEmptyVector Double'&,preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-{#fun qlTimeGrid3 as timeGridFromList'{withNonEmptyDoubleArray*`NonEmpty Double'&,fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
+{#fun qlTimeGrid3 as timeGridFromVector'{withNonEmptyRealVector*`NonEmptyVector Double'&,fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 
 -- |returns the number of times on the grid
 {#fun pure qlTimeGridSize as size{withTimeGrid*`TimeGrid'}->`Word'fromIntegral#}
@@ -111,7 +119,7 @@ import Data.List.NonEmpty(NonEmpty)
   ,fromIntegral`Word' -- ^index
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |returns all the times on the grid, as a list
-{#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Returns all times on the grid in contiguous storage.
+{#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

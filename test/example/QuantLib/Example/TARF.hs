@@ -7,6 +7,7 @@ module QuantLib.Example.TARF
 import Control.Monad(replicateM)
 import Data.Time.Calendar(fromGregorian)
 import Data.List.NonEmpty(fromList, toList)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -40,14 +41,15 @@ run = do
   sched <- schedule (Just $ 2 `november` 2022) (2 `october` 2023) (1, Months) calEUR ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
   ds_ <- dates sched
   let ds = fromList ds_
-  grid <- mapM (\x -> years dcILS valDate x Nothing Nothing) ds >>= timeGridFromList
+  mandatory <- V.fromList <$> mapM (\x -> years dcILS valDate x Nothing Nothing) (toList ds)
+  grid <- maybe (fail "TARF: empty mandatory time grid") timeGridFromVector (nonEmptyVector mandatory)
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
   volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear)
   ycILS <- interpolatedDiscountCurve (fromList dfILS) dcILS calILS [] LogLinear False
   ycEUR <- interpolatedDiscountCurve (fromList dfEUR) dcEUR calEUR [] LogLinear False
 
-  dfILS' <- points grid >>= mapM (\d -> discount ycILS d False)
-  dfEUR' <- points grid >>= mapM (\d -> discount ycEUR d False)
+  dfILS' <- points grid >>= mapM (\d -> discount ycILS d False) . V.toList
+  dfEUR' <- points grid >>= mapM (\d -> discount ycEUR d False) . V.toList
   let fwds = map ((`roundTo` fxrateDigits) . (* spot)) $ zipWith (/) dfEUR' dfILS'
   -- -- alternatively you can use Black-Scholes process
   -- let dsILS = map fst dfILS
@@ -88,10 +90,10 @@ run = do
     nextNPV g ds yc = do
       s <- next g
       sim <- asset s 0
-      let State _ fs = foldl genFlows (State ilsTarget []) $ map (`roundTo` fxrateDigits) sim
+      let State _ fs = foldl genFlows (State ilsTarget []) $ map (`roundTo` fxrateDigits) (V.toList sim)
       l <- leg $ zip ds fs
       v <- (`roundTo` notionalDigits) <$> npv l yc True Nothing Nothing
-      return (v, sim)
+      return (v, V.toList sim)
 
     genFlows :: State -> Double -> State
     genFlows s@(State 0 _) _ = s

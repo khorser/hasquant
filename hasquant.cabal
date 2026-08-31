@@ -193,6 +193,7 @@ executable hasquant_example
       base >=4.14 && <5
     , hasquant
     , time >=1.9.3 && <1.16
+    , vector >=0.12.3 && <0.14
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3
@@ -307,6 +308,7 @@ test-suite hasquant_test
     , hasquant
     , hspec >=2.7.10 && <2.12
     , time >=1.9.3 && <1.16
+    , vector >=0.12.3 && <0.14
   default-language: Haskell2010
   if flag(trackAllocations)
     ghc-options: -g3

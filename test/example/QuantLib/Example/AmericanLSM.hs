@@ -11,8 +11,9 @@ module QuantLib.Example.AmericanLSM
     Result(..)
   , run
   ) where
-import Control.Monad(replicateM)
-import Data.List(transpose)
+import qualified Data.Vector as BV
+import qualified Data.Vector.Storable as V
+import qualified Data.Vector.Unboxed as U
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -40,46 +41,57 @@ data Result = Result
 payoff :: Double -> Double -> Double
 payoff strike s = max (strike - s) 0
 
-mean :: [Double] -> Double
-mean xs = sum xs / fromIntegral (length xs)
+mean :: RealVector -> Double
+mean xs = V.sum xs / fromIntegral (V.length xs)
 
 -- |one backward-induction step: discount both cashflow sets to this exercise date, fit the
 -- continuation value against the (in-the-money) calibration paths, then decide early exercise on
 -- both the calibration paths (to keep the recursion's own targets consistent) and the pricing
 -- paths (using the calibration fit only -- never their own state -- to stay unbiased).
-step :: PolynomialType -> Word -> Double -> Double -> [Double] -> [Double] -> [Double] -> [Double] -> [Bool]
-     -> IO ([Double], [Double], [Bool])
+step :: PolynomialType -> Word -> Double -> Double
+     -> RealVector -> RealVector -> RealVector -> RealVector -> U.Vector Bool
+     -> IO (RealVector, RealVector, U.Vector Bool)
 step polyT order strike df calibS priceS calibCF0 priceCF0 exFlags0 = do
-  let calibCF = map (* df) calibCF0
-      priceCF = map (* df) priceCF0
-      calibEx = map (payoff strike) calibS
-      priceEx = map (payoff strike) priceS
-      (fitStates, fitTargets, _) = unzip3 $ filter (\(_, _, e) -> e > 0) $ zip3 calibS calibCF calibEx
-  if length fitStates <= fromIntegral order
+  let calibCF = V.map (* df) calibCF0
+      priceCF = V.map (* df) priceCF0
+      calibEx = V.map (payoff strike) calibS
+      priceEx = V.map (payoff strike) priceS
+      fitStates = V.ifilter (\i _ -> calibEx V.! i > 0) calibS
+      fitTargets = V.ifilter (\i _ -> calibEx V.! i > 0) calibCF
+  if V.length fitStates <= fromIntegral order
     then return (calibCF, priceCF, exFlags0)
     else do
       contCalib <- lsmRegress polyT order fitStates fitTargets calibS
       contPrice <- lsmRegress polyT order fitStates fitTargets priceS
-      let calibCF' = zipWith3 (\cf ex cont -> if ex > 0 && ex > cont then ex else cf) calibCF calibEx contCalib
-          decidePrice cf ex cont = if ex > 0 && ex > cont then (ex, True) else (cf, False)
-          (priceCF', exercisedNow) = unzip $ zipWith3 decidePrice priceCF priceEx contPrice
-          exFlags' = zipWith (||) exFlags0 exercisedNow
+      let exercise _ ex cont = ex > 0 && ex > cont
+          calibCF' = V.zipWith3 (\cf ex cont -> if exercise cf ex cont then ex else cf) calibCF calibEx contCalib
+          priceCF' = V.zipWith3 (\cf ex cont -> if exercise cf ex cont then ex else cf) priceCF priceEx contPrice
+          exercisedNow = U.generate (V.length priceCF) $ \i ->
+            exercise (priceCF V.! i) (priceEx V.! i) (contPrice V.! i)
+          exFlags' = U.zipWith (||) exFlags0 exercisedNow
       return (calibCF', priceCF', exFlags')
 
 -- |walk exercise dates strictly backward, from the second-to-last grid point (index
 -- @timeSteps-1@) down to index 1; index 0 (the valuation date) is discounted to but is never
 -- itself an exercise opportunity. @dfs !! i@ is the one-step discount factor bringing a
 -- cashflow observed at index @i+1@ back to index @i@.
-goBack :: PolynomialType -> Word -> Double -> Int -> [Double] -> [[Double]] -> [[Double]] -> [Double] -> [Double]
-       -> [Bool] -> IO ([Double], [Double], [Bool])
-goBack polyT order strike i dfs calibRest priceRest calibCF priceCF exFlags
+goBack :: PolynomialType -> Word -> Double -> Int -> RealVector -> BV.Vector RealVector -> BV.Vector RealVector
+       -> RealVector -> RealVector -> U.Vector Bool -> IO (RealVector, RealVector, U.Vector Bool)
+goBack polyT order strike i dfs calibStates priceStates calibCF priceCF exFlags
   | i < 1 = return (calibCF, priceCF, exFlags)
   | otherwise = do
-      let calibS = last calibRest
-          priceS = last priceRest
-          df = dfs !! i
+      let calibS = calibStates BV.! i
+          priceS = priceStates BV.! i
+          df = dfs V.! i
       (calibCF', priceCF', exFlags') <- step polyT order strike df calibS priceS calibCF priceCF exFlags
-      goBack polyT order strike (i - 1) dfs (init calibRest) (init priceRest) calibCF' priceCF' exFlags'
+      goBack polyT order strike (i - 1) dfs calibStates priceStates calibCF' priceCF' exFlags'
+
+-- |Turn path-major samples into time-major state vectors without ever materialising a list of
+-- path values.  The outer boxed vector is deliberately small (one entry per grid point); every
+-- path-wise numerical calculation stays in a contiguous storable vector.
+timeMajor :: Int -> BV.Vector RealVector -> BV.Vector RealVector
+timeMajor nTimes paths = BV.generate nTimes $ \timeIndex ->
+  V.generate (BV.length paths) $ \pathIndex -> (paths BV.! pathIndex) V.! timeIndex
 
 run :: IO Result
 run = do
@@ -97,28 +109,30 @@ run = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors@(d0: d1: _) <- mapM (\x -> discount ts x False) times
-  let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
+  discFactors <- V.mapM (\x -> discount ts x False) times
+  let dfs = V.zipWith (flip (/)) discFactors (V.tail discFactors)
+      d0 = discFactors V.! 0
+      d1 = discFactors V.! 1
 
   genCalib <- pathGenerator PseudoRandom bsmProc grid seedCalib (size grid - 1) False
-  calibPaths <- replicateM nCalib (next genCalib >>= \s -> asset s 0)
+  calibPaths <- BV.replicateM nCalib (next genCalib >>= \s -> asset s 0)
   genPrice <- pathGenerator PseudoRandom bsmProc grid seedPrice (size grid - 1) False
-  pricePaths <- replicateM nPrice (next genPrice >>= \s -> asset s 0)
-  let calibStates = transpose calibPaths
-      priceStates = transpose pricePaths
+  pricePaths <- BV.replicateM nPrice (next genPrice >>= \s -> asset s 0)
+  let calibStates = timeMajor (fromIntegral timeSteps + 1) calibPaths
+      priceStates = timeMajor (fromIntegral timeSteps + 1) pricePaths
       nSteps = fromIntegral timeSteps
-      calibCF0 = map (payoff strike) (calibStates !! nSteps)
-      priceCF0 = map (payoff strike) (priceStates !! nSteps)
+      calibCF0 = V.map (payoff strike) (calibStates BV.! nSteps)
+      priceCF0 = V.map (payoff strike) (priceStates BV.! nSteps)
 
   -- indices 1..nSteps-1: excludes index 0 (valuation date, never an exercise opportunity) and
   -- index nSteps (maturity, already consumed above to seed calibCF0/priceCF0)
   (calibFinal, priceFinal, exFlags) <- goBack polyT order strike (nSteps - 1) dfs
-    (init (drop 1 calibStates)) (init (drop 1 priceStates)) calibCF0 priceCF0 (replicate nPrice False)
+    calibStates priceStates calibCF0 priceCF0 (U.replicate nPrice False)
 
   let df0 = d1 / d0
-      lsmP = mean (map (* df0) priceFinal)
-      calibP = mean (map (* df0) calibFinal)
-      exProb = fromIntegral (length (filter id exFlags)) / fromIntegral nPrice
+      lsmP = mean (V.map (* df0) priceFinal)
+      calibP = mean (V.map (* df0) calibFinal)
+      exProb = fromIntegral (U.length (U.filter id exFlags)) / fromIntegral nPrice
 
   let payoffQL = PlainVanilla $ PlainVanillaPayoff Put strike
       americanEx = American Nothing maturity False

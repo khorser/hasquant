@@ -19,6 +19,7 @@ module QuantLib.Example.DiscreteHedging
   , run
   ) where
 import Control.Monad(replicateM)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Instrument.Option(OptionType(Call))
 import QuantLib.Math(RngTrait(PseudoRandom), timeGrid)
@@ -111,7 +112,7 @@ run = do
     compute process' nTimeSteps n = do
       tg <- timeGrid maturity nTimeSteps
       pg <- pathGenerator PseudoRandom process' tg seed nTimeSteps False
-      paths <- replicateM n (next pg >>= \sp -> asset sp 0)
+      paths <- replicateM n (V.toList <$> (next pg >>= \sp -> asset sp 0))
       pls <- mapM plOfPath paths
       return (mean pls, stdDev pls)
 

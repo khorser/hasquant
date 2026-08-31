@@ -69,6 +69,7 @@ import Control.Exception(try)
 import Data.Time.Calendar(addDays, addGregorianYearsClip, diffDays)
 import Data.List(minimumBy)
 import Data.Ord(comparing)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Index(fixingCalendar)
 import qualified QuantLib.Index.InterestRate as IRI
@@ -199,19 +200,19 @@ run = do
       europeanEx = European $ EuropeanExercise maturity
       americanEx = American Nothing maturity False
       intrinsicAt x = max (exp x - strike) 0
-      grid0 = map intrinsicAt xs
+      grid0 = V.fromList (map intrinsicAt xs)
       bands = operatorBands nPts h mu sigma2 r
-      applyFn _ = applyOp bands
-      applyDirFn _dir _t = applyOp bands
+      applyFn _ u = V.fromList (applyOp bands (V.toList u))
+      applyDirFn _dir _t u = V.fromList (applyOp bands (V.toList u))
       solveFn _dir s _t u =
         let (lo, di, up) = bands
-        in thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up) u
+        in V.fromList (thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up) (V.toList u))
 
   europeanOpt <- vanillaOption vanillaPayoff europeanEx
   analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
   analytic <- npv europeanOpt
 
-  fdmEuro <- fdmRollback 1 applyFn applyDirFn solveFn Nothing [] Douglas grid0 tMat 0 nSteps 0
+  fdmEuro <- fdmRollback 1 applyFn applyDirFn solveFn Nothing V.empty Douglas grid0 tMat 0 nSteps 0
 
   americanOpt <- vanillaOption vanillaPayoff americanEx
   americanInst <- asOneAssetOption americanOpt
@@ -233,11 +234,11 @@ run = do
       >>= QuantLib.Instrument.setPricingEngine inst
     npv inst
 
-  let stepTimes = [tMat * fromIntegral i / fromIntegral nSteps | i <- [1 .. nSteps]]
-      stepCond _t u = zipWith max u grid0
+  let stepTimes = V.fromList [tMat * fromIntegral i / fromIntegral nSteps | i <- [1 .. nSteps]]
+      stepCond _t u = V.zipWith max u grid0
   fdmAmerican <- fdmRollback 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas grid0 tMat 0 nSteps 0
 
-  mesh1d <- predefined1dMesher xs
+  mesh1d <- predefined1dMesher (V.fromList xs)
   mesher <- fdmMesherComposite [mesh1d]
 
   -- gluedMesher: splice the grid's left half and right half back together at the shared node
@@ -245,8 +246,8 @@ run = do
   -- boundary point rather than doubling it. Also confirm the ordering requirement is enforced:
   -- gluing the two halves in the wrong order (right, then left) must throw.
   meshLocations <- fdmMesherLocations mesher 0
-  leftHalf <- predefined1dMesher (take (centerIdx + 1) xs)
-  rightHalf <- predefined1dMesher (drop centerIdx xs)
+  leftHalf <- predefined1dMesher (V.fromList (take (centerIdx + 1) xs))
+  rightHalf <- predefined1dMesher (V.fromList (drop centerIdx xs))
   glued <- gluedMesher leftHalf rightHalf
   gluedMesherComposite <- fdmMesherComposite [glued]
   gluedLocations <- fdmMesherLocations gluedMesherComposite 0
@@ -259,7 +260,7 @@ run = do
     -- own avgInnerValue at the grid's center node must match intrinsicAt evaluated directly.
     avgAtCenter <- fdmAvgInnerValue calc mesher [centerIdx] tMat
 
-    fdmSolveEuro <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+    fdmSolveEuro <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
     fdmSolveAmerican <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas tMat 0 nSteps 0
 
     -- FdmZeroInnerValue: always 0, at any node.
@@ -273,7 +274,7 @@ run = do
     -- cell center, so it is not bit-for-bit identical, just close (see
     -- QuantLib.Method.fdmLogInnerValue's haddock).
     logCalc <- fdmLogInnerValue payoff mesher 0
-    fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+    fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
 
     -- withCustomCellAveragingInnerValue payoff mesher 0 exp is the same computation as
     -- fdmLogInnerValue payoff mesher 0 (FdmLogInnerValue's ctor delegates to
@@ -281,7 +282,7 @@ run = do
     -- callback instead -- this is the check that actually exercises that callback path, and the
     -- two must agree bit-for-bit (same C++ formula, same exp function).
     fdmCustomCellAvgEuro <- withCustomCellAveragingInnerValue payoff mesher 0 exp $ \customCalc ->
-      fdmSolve mesher customCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+      fdmSolve mesher customCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
 
     -- FdmLogBasketInnerValue(Max payoff, mesher2d) -- the multi-asset counterpart, reusing the
     -- same 1D mesher/payoff twice to make a 2D max-of-two-assets basket without inventing a new
@@ -305,7 +306,7 @@ run = do
     (fdmCustomPayoffEuro, customBasketAtAsset1Max) <-
       withCustomPayoff "HaskellCall" "max(S - K, 0), defined in Haskell" (\s -> max (s - strike) 0) $ \custom -> do
         customPayoffCalc <- fdmLogInnerValue custom mesher 0
-        euro <- fdmSolve mesher customPayoffCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+        euro <- fdmSolve mesher customPayoffCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
         basket <- withCustomBasketPayoff custom maximum $ \customBasket -> do
           customBasketCalc <- fdmLogBasketInnerValue customBasket basketMesher
           fdmAvgInnerValue customBasketCalc basketMesher [centerIdx + 5, centerIdx - 5] tMat
@@ -322,7 +323,7 @@ run = do
     hwMesh <- fdmSimpleProcess1dMesher 51 ouHW irMat 10 1.0e-3 (Just 0)
     hwMesher <- fdmMesherComposite [hwMesh]
     hwLocs <- fdmMesherLocations hwMesher 0
-    let hwIdx0 = nearestZeroIdx hwLocs
+    let hwIdx0 = nearestZeroIdx (V.toList hwLocs)
     hwCalc <- fdmAffineHullWhiteModelSwapInnerValue hwDisModel hwFwdModel swp [(irMat, swapEnd)] hwMesher 0
     -- Evaluated at t = irMat (the sole exercise date, matching the one entry in exerciseDates --
     -- evaluating at t = 0, which isn't a t2d key, throws deep inside QuantLib's own exercise-date
@@ -341,25 +342,25 @@ run = do
     g2Mesher <- fdmMesherComposite [g2MeshX, g2MeshY]
     g2LocsX <- fdmMesherLocations g2Mesher 0
     g2LocsY <- fdmMesherLocations g2Mesher 1
-    let g2Idx0x = nearestZeroIdx g2LocsX
-        g2Idx0y = nearestZeroIdx g2LocsY
+    let g2Idx0x = nearestZeroIdx (V.toList g2LocsX)
+        g2Idx0y = nearestZeroIdx (V.toList g2LocsY)
     g2Calc <- fdmAffineG2ModelSwapInnerValue g2DisModel g2FwdModel swp [(irMat, swapEnd)] g2Mesher 0
     g2NodeNpv <- fdmAvgInnerValue g2Calc g2Mesher [g2Idx0x, g2Idx0y] irMat
 
     return Result
-      { fdmEuropeanR = fdmEuro !! centerIdx
+      { fdmEuropeanR = fdmEuro V.! centerIdx
       , analyticEuropeanR = analytic
-      , fdmAmericanR = fdmAmerican !! centerIdx
+      , fdmAmericanR = fdmAmerican V.! centerIdx
       , fdAmericanR = fdRef
       , fdCustomStrikedAmericanR = fdCustomStrikedRef
-      , fdmSolveEuropeanR = fdmSolveEuro !! centerIdx
-      , fdmSolveAmericanR = fdmSolveAmerican !! centerIdx
+      , fdmSolveEuropeanR = fdmSolveEuro V.! centerIdx
+      , fdmSolveAmericanR = fdmSolveAmerican V.! centerIdx
       , avgInnerValueAtCenterR = avgAtCenter
       , intrinsicAtCenterR = intrinsicAt (xs !! centerIdx)
       , zeroInnerValueAtCenterR = zeroAtCenter
-      , fdmLogInnerValueEuropeanR = fdmLogEuro !! centerIdx
-      , fdmCustomCellAveragingEuropeanR = fdmCustomCellAvgEuro !! centerIdx
-      , fdmCustomPayoffEuropeanR = fdmCustomPayoffEuro !! centerIdx
+      , fdmLogInnerValueEuropeanR = fdmLogEuro V.! centerIdx
+      , fdmCustomCellAveragingEuropeanR = fdmCustomCellAvgEuro V.! centerIdx
+      , fdmCustomPayoffEuropeanR = fdmCustomPayoffEuro V.! centerIdx
       , basketAtEqualNodesR = basketAtEqualNodes
       , basketIntrinsicAtEqualNodesR = maxBasketIntrinsicAt centerIdx centerIdx
       , basketAtAsset1MaxR = basketAtAsset1Max
@@ -367,8 +368,8 @@ run = do
       , customBasketAtAsset1MaxR = customBasketAtAsset1Max
       , hwNodeNpvR = hwNodeNpv
       , g2NodeNpvR = g2NodeNpv
-      , meshLocationsR = meshLocations
-      , gluedLocationsR = gluedLocations
+      , meshLocationsR = V.toList meshLocations
+      , gluedLocationsR = V.toList gluedLocations
       , gluedOverlapRejectedR = gluedOverlapRejected
       }
   where

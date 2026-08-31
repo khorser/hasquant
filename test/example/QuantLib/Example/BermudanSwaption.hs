@@ -5,7 +5,7 @@ module QuantLib.Example.BermudanSwaption
   , run
   ) where
 import Control.Monad((>=>), forM_, mapAndUnzipM)
-import Data.List.NonEmpty(fromList)
+import qualified Data.Vector.Storable as V
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IRI
@@ -89,7 +89,7 @@ run = do
   fixedATMRate <- fairRate swp
   (swaptionHelpers, tms) <- mapAndUnzipM (createHelpers index6m ts) calibrationGrid
   swaptions <- mapM Model.asBlackCalibrationHelper swaptionHelpers
-  grid <- timeGridFromList' (fromList (concat tms)) 30
+  grid <- maybe (fail "BermudanSwaption: empty calibration grid") (flip timeGridFromVector' 30) (nonEmptyVector (V.fromList (concat tms)))
 
   (modelG2, g2v, g2p) <- calibrateShortRateModel
     (Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75))

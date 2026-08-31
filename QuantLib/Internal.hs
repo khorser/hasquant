@@ -21,6 +21,8 @@ module QuantLib.Internal
   , withIntArray
   , withBoolArray
   , withDoubleArray
+  , withRealVector
+  , withRealVectorRaw
   , withNonEmptyDoubleArray
   , withDoubleArrayRaw
   , withBoolArrayRaw
@@ -43,7 +45,15 @@ module QuantLib.Internal
   , peekBoolArray
   , withDayArray
   , peekDoubleArray
-  , peekDoubleVector
+  , peekRealVector
+  , borrowRealVector
+  , RealVector
+  , NonEmptyVector
+  , singletonNonEmptyVector
+  , consNonEmptyVector
+  , nonEmptyVector
+  , nonEmptyVectorToVector
+  , withNonEmptyRealVector
 
   , toSerial
   , fromSerial
@@ -59,7 +69,9 @@ module QuantLib.Internal
   , peekStructArray
   , peekPtrArray
   , Matrix(..)
+  , RealMatrix(..)
   , realMatrix
+  , realMatrixFromVector
   , objectMatrix
   , qlNullInteger
   , qlFreeAdditionalResults
@@ -72,7 +84,7 @@ where
 import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
 import Foreign.C.String(CString, peekCString, withCString)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
-import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr)
+import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr, newForeignPtr_, castForeignPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
@@ -84,6 +96,7 @@ import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGrego
 import Data.List.NonEmpty(NonEmpty, toList)
 
 import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Type(Error(DateConversion, CPlusPlusException))
 
@@ -169,6 +182,42 @@ withBoolArray = withLArray fromBool
 withDoubleArray :: [Double] -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
 withDoubleArray = withLArray realToFrac
 
+-- |Contiguous numeric data for APIs whose natural size is hundreds or thousands
+-- of values.  The public element type stays 'Double'; C's @double@ representation
+-- is used only at the FFI boundary.
+type RealVector = Vector Double
+
+-- |A storable vector known not to be empty.  The constructor is deliberately
+-- hidden; build one with 'singletonNonEmptyVector', 'consNonEmptyVector', or
+-- 'nonEmptyVector'.
+newtype NonEmptyVector a = NonEmptyVector (Vector a)
+
+singletonNonEmptyVector :: Storable a => a -> NonEmptyVector a
+singletonNonEmptyVector = NonEmptyVector . V.singleton
+
+consNonEmptyVector :: Storable a => a -> Vector a -> NonEmptyVector a
+consNonEmptyVector x = NonEmptyVector . V.cons x
+
+nonEmptyVector :: Storable a => Vector a -> Maybe (NonEmptyVector a)
+nonEmptyVector x
+  | V.null x = Nothing
+  | otherwise = Just (NonEmptyVector x)
+
+nonEmptyVectorToVector :: NonEmptyVector a -> Vector a
+nonEmptyVectorToVector (NonEmptyVector x) = x
+
+withNonEmptyRealVector :: NonEmptyVector Double -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
+withNonEmptyRealVector (NonEmptyVector x) = withRealVector x
+
+-- |Borrows the vector's storage for one FFI call.  QuantLib copies every
+-- input vector it receives, so the vector need not outlive the continuation.
+withRealVector :: RealVector -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
+withRealVector x f = V.unsafeWith x $ \p -> f (fromIntegral (V.length x), castPtr p)
+
+-- |Like 'withRealVector', for an FFI argument whose length is carried separately.
+withRealVectorRaw :: RealVector -> (Ptr CDouble -> IO b) -> IO b
+withRealVectorRaw x f = V.unsafeWith x $ f . castPtr
+
 withNonEmptyDoubleArray :: NonEmpty Double -> ((CUInt, Ptr CDouble) -> IO b) -> IO b
 withNonEmptyDoubleArray x = withLArray realToFrac (toList x)
 
@@ -237,8 +286,22 @@ peekDoubleArray pl pp = do
   p <- peek pp
   map realToFrac <$> peekArray (fromIntegral l) p <* qlFreeDoubles p
 
-peekDoubleVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO (Vector CDouble)
-peekDoubleVector pl pp = unsafeFromForeignPtr0 <$> (peek pp >>= newForeignPtr qlFreeDoublesFin) <*> (fromIntegral <$> peek pl)
+-- |Takes ownership of a C++-allocated @double[]@ result without copying it.
+-- The vector's finalizer is the same @qlFreeDoubles@ path used by
+-- 'peekDoubleArray'.
+peekRealVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO RealVector
+peekRealVector pl pp = do
+  n <- fromIntegral <$> peek pl
+  p <- peek pp
+  fp <- castForeignPtr <$> newForeignPtr qlFreeDoublesFin p
+  pure (unsafeFromForeignPtr0 fp n)
+
+-- |A non-owning vector view valid only for the continuation that receives the
+-- C++ callback buffer.  It deliberately has no finalizer.
+borrowRealVector :: Ptr CDouble -> CUInt -> IO RealVector
+borrowRealVector p n = do
+  fp <- castForeignPtr <$> newForeignPtr_ p
+  pure (unsafeFromForeignPtr0 fp (fromIntegral n))
 
 -- |Like 'peekIntArray'\''/'peekDoubleArray', but for an array of a C struct rather than a C
 -- primitive: reads the length and pointer out-params, walks the array via 'peekArray' (so the
@@ -335,10 +398,29 @@ maxDate = fromSerial qlMaxDateSerialNumber
 data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
   deriving (Eq, Show)
 
--- |'objectMatrix' specialised to 'Double'. Kept as a separate name for callers that
--- need the element type pinned; the check and construction are identical.
+-- |Row-major numeric matrix backed by contiguous storage.  Use this for
+-- regression, diffusion/correlation, and volatility-surface data; object
+-- matrices retain 'Matrix' because their elements need continuation-based FFI
+-- marshalling rather than a raw contiguous pointer.
+data RealMatrix = RealMatrix
+  { realMatrixRows :: Word
+  , realMatrixColumns :: Word
+  , realMatrixData :: RealVector
+  }
+  deriving (Eq, Show)
+
+-- |List-backed numeric matrix retained for curve, surface, and object-matrix APIs that have not
+-- yet migrated their public representation.  Use 'realMatrixFromVector' for a dense numerical
+-- calculation such as multi-asset LSM.
 realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
 realMatrix = objectMatrix
+
+-- |Construct a row-major numeric matrix backed by contiguous storage.
+realMatrixFromVector :: Word -> Word -> RealVector -> Either String RealMatrix
+realMatrixFromVector rows cols d
+  | rows * cols == fromIntegral (V.length d) = Right $ RealMatrix rows cols d
+  | otherwise = Left $ "Data length " ++ show (V.length d)
+      ++ " does not match dimensions " ++ show rows ++ "x" ++ show cols
 
 objectMatrix :: Word -> Word -> [a] -> Either String (Matrix a)
 objectMatrix rows cols d

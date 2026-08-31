@@ -28,6 +28,7 @@ module QuantLib.Example.HaskellLSM
   ) where
 import Control.Monad(replicateM)
 import Data.List(transpose)
+import qualified Data.Vector.Storable as V
 import Data.List.NonEmpty(NonEmpty(..))
 import qualified Data.List.NonEmpty as NE
 import System.CPUTime(getCPUTime)
@@ -180,8 +181,8 @@ lsmStep polyT order strike df calibS priceS calibCF0 priceCF0 exFlags0 = do
   if length fitStates <= fromIntegral order
     then return (calibCF, priceCF, exFlags0)
     else do
-      contCalib <- lsmRegress polyT order fitStates fitTargets calibS
-      contPrice <- lsmRegress polyT order fitStates fitTargets priceS
+      contCalib <- V.toList <$> lsmRegress polyT order (V.fromList fitStates) (V.fromList fitTargets) (V.fromList calibS)
+      contPrice <- V.toList <$> lsmRegress polyT order (V.fromList fitStates) (V.fromList fitTargets) (V.fromList priceS)
       let calibCF' = zipWith3 (\cf ex cont -> if ex > 0 && ex > cont then ex else cf) calibCF calibEx contCalib
           decidePrice cf ex cont = if ex > 0 && ex > cont then (ex, True) else (cf, False)
           (priceCF', exercisedNow) = unzip $ zipWith3 decidePrice priceCF priceEx contPrice
@@ -222,7 +223,7 @@ run = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors <- mapM (\x -> discount ts x False) times
+  discFactors <- mapM (\x -> discount ts x False) (V.toList times)
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
       dfsRev = reverse (drop 1 dfs) -- one-step discount factors for exercise dates, latest first
       df0 = case discFactors of
@@ -230,9 +231,9 @@ run = do
               _             -> 1 -- unreachable: timeSteps >= 1 below gives at least two entries
 
   genCalib <- pathGenerator PseudoRandom bsmProc grid seedCalib (size grid - 1) False
-  calibPaths <- replicateM nCalib (next genCalib >>= \s -> asset s 0)
+  calibPaths <- replicateM nCalib (V.toList <$> (next genCalib >>= \s -> asset s 0))
   genPrice <- pathGenerator PseudoRandom bsmProc grid seedPrice (size grid - 1) False
-  pricePaths <- replicateM nPrice (next genPrice >>= \s -> asset s 0)
+  pricePaths <- replicateM nPrice (V.toList <$> (next genPrice >>= \s -> asset s 0))
   let calibStates = transpose calibPaths
       priceStates = transpose pricePaths
       (calibMaturity, calibRestRev) = splitMaturity calibStates

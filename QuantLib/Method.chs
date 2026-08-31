@@ -361,13 +361,13 @@ import Foreign.Marshal.Alloc(alloca)
 -- |draw the next sequence of standard normal variates, with its sample weight (1 for every trait
 -- bound here, carried through for symmetry with 'weight').
 {#fun qlGaussianRsgNextSequence as nextSequence{withGaussianRsg*`GaussianRsg'
-  ,preArray-`[Double]'&peekDoubleArray* -- ^draws
+  ,preArray-`RealVector'&peekRealVector* -- ^draws
   ,alloca-`Double'peekDouble* -- ^weight
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |re-read the sequence 'nextSequence' last drew, without advancing the generator.
 {#fun qlGaussianRsgLastSequence as lastSequence{withGaussianRsg*`GaussianRsg'
-  ,preArray-`[Double]'&peekDoubleArray* -- ^draws
+  ,preArray-`RealVector'&peekRealVector* -- ^draws
   ,alloca-`Double'peekDouble* -- ^weight
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
@@ -391,8 +391,8 @@ import Foreign.Marshal.Alloc(alloca)
   ,fromIntegral`Word' -- ^point
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |the full simulated path (values at every time step) of a single asset, as a list.
-{#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |The full simulated path (values at every time step) of a single asset.
+{#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |one step of Longstaff-Schwartz early-exercise regression: fit a polynomial basis of the given
 -- order/type against the (in-the-money) fit states and their continuation targets, then evaluate the
@@ -402,10 +402,10 @@ import Foreign.Marshal.Alloc(alloca)
 -- strictly backward, batched across all paths rather than per path. See this module's header for the
 -- full backward-induction pattern.
 {#fun qlLsmRegress as lsmRegress{`PolynomialType',fromIntegral`Word' -- ^basis order
-  ,withDoubleArray*`[Double]'& -- ^fit states (in-the-money paths only)
-  ,withDoubleArray*`[Double]'& -- ^fit targets (continuation value at these states)
-  ,withDoubleArray*`[Double]'& -- ^eval states (all paths' state at this date)
-  ,preArray-`[Double]'&peekDoubleArray* -- ^continuation value estimate per eval state
+  ,withRealVector*`RealVector'& -- ^fit states (in-the-money paths only)
+  ,withRealVector*`RealVector'& -- ^fit targets (continuation value at these states)
+  ,withRealVector*`RealVector'& -- ^eval states (all paths' state at this date)
+  ,preArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval state
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |number of basis terms 'lsmRegressMulti' fits for a given number of underlyings and order --
@@ -420,25 +420,25 @@ lsmBasisSize dim order = fromInteger $ binomial (toInteger dim + toInteger order
 
 -- |multi-asset counterpart of 'lsmRegress', for a Haskell-defined basket (several correlated
 -- underlyings) early-exercise payoff -- 'lsmRegress' itself only regresses against one state
--- variable. Fit\/eval states are 'Matrix' rows: one row per path, one column per underlying, and the
+-- variable. Fit\/eval states are contiguous row-major 'RealMatrix' values: one row per path, one column per underlying, and the
 -- two matrices' column counts must agree. Regresses against
 -- @LsmBasisSystem::multiPathBasisSystem@'s combinatorial basis; see 'lsmBasisSize' for its size and
 -- this module's header for the surrounding backward-induction pattern (identical to the scalar case,
 -- just with 'Matrix'-shaped states).
-lsmRegressMulti :: PolynomialType -> Word -> Matrix Double -- ^fit states (in-the-money paths only)
-  -> [Double] -- ^fit targets (continuation value at these states)
-  -> Matrix Double -- ^eval states (all paths' state at this date)
-  -> IO [Double] -- ^continuation value estimate per eval row
-lsmRegressMulti p order (Matrix fr fc fd) t (Matrix er ec ed) = qlLsmRegressMulti p order fr fc fd t er ec ed
+lsmRegressMulti :: PolynomialType -> Word -> RealMatrix -- ^fit states (in-the-money paths only)
+  -> RealVector -- ^fit targets (continuation value at these states)
+  -> RealMatrix -- ^eval states (all paths' state at this date)
+  -> IO RealVector -- ^continuation value estimate per eval row
+lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmRegressMulti p order fr fc fd t er ec ed
 {#fun qlLsmRegressMulti{`PolynomialType',fromIntegral`Word' -- ^basis order
   ,fromIntegral`Word' -- ^fit rows
   ,fromIntegral`Word' -- ^fit columns (underlyings)
-  ,withDoubleArrayRaw*`[Double]' -- ^fit states, row-major
-  ,withDoubleArray*`[Double]'& -- ^fit targets
+  ,withRealVectorRaw*`RealVector' -- ^fit states, row-major
+  ,withRealVector*`RealVector'& -- ^fit targets
   ,fromIntegral`Word' -- ^eval rows
   ,fromIntegral`Word' -- ^eval columns (underlyings)
-  ,withDoubleArrayRaw*`[Double]' -- ^eval states, row-major
-  ,preArray-`[Double]'&peekDoubleArray* -- ^continuation value estimate per eval row
+  ,withRealVectorRaw*`RealVector' -- ^eval states, row-major
+  ,preArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval row
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Drive @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (the
@@ -462,22 +462,22 @@ lsmRegressMulti p order (Matrix fr fc fd) t (Matrix er ec ed) = qlLsmRegressMult
 -- one PDE direction (Craig-Sneyd, Hundsdorfer, or any genuinely multi-dimensional operator) will
 -- throw partway through 'fdmRollback' rather than silently mispricing.
 {#fun qlFdmRollback as fdmRollback{fromIntegral`Int' -- ^number of PDE directions\/dimensions the operator has (e.g. 1 for a 1D Black-Scholes-in-log-spot operator) -- /not/ the grid array length, which is the length of every @[Double]@ passed to\/returned from the callbacks below
-  ,withFdmApply*`(Double,Double) -> [Double] -> [Double]' -- ^@apply(r)@: whole-grid operator application at the current @(t1,t2)@ time pair (no direction argument -- QuantLib's own 'FdmLinearOp' base method)
-  ,withFdmApplyDirection*`Int -> (Double,Double) -> [Double] -> [Double]' -- ^@apply_direction(direction, r)@
-  ,withFdmSolveSplitting*`Int -> Double -> (Double,Double) -> [Double] -> [Double]' -- ^@solve_splitting(direction, r, s)@ -- the implicit per-direction solve (e.g. a tridiagonal\/Thomas-algorithm solve for a 1D operator)
-  ,withMaybeFdmStepCondition*`Maybe (Double -> [Double] -> [Double])' -- ^optional step condition @applyTo(a, t)@, e.g. American\/Bermudan early exercise (@max(a_i, intrinsic_i)@ at every step) or a barrier knockout
-  ,withDoubleArray*`[Double]'& -- ^stopping times at which the step condition above is applied (ignored if there is no step condition); pass every rollback step's time to apply it at every step
+  ,withFdmApply*`(Double,Double) -> RealVector -> RealVector' -- ^@apply(r)@: whole-grid operator application at the current @(t1,t2)@ time pair (no direction argument -- QuantLib's own 'FdmLinearOp' base method)
+  ,withFdmApplyDirection*`Int -> (Double,Double) -> RealVector -> RealVector' -- ^@apply_direction(direction, r)@
+  ,withFdmSolveSplitting*`Int -> Double -> (Double,Double) -> RealVector -> RealVector' -- ^@solve_splitting(direction, r, s)@ -- the implicit per-direction solve (e.g. a tridiagonal\/Thomas-algorithm solve for a 1D operator)
+  ,withMaybeFdmStepCondition*`Maybe (Double -> RealVector -> RealVector)' -- ^optional step condition @applyTo(a, t)@, e.g. American\/Bermudan early exercise (@max(a_i, intrinsic_i)@ at every step) or a barrier knockout
+  ,withRealVector*`RealVector'& -- ^stopping times at which the step condition above is applied (ignored if there is no step condition); pass every rollback step's time to apply it at every step
   ,withFdmSchemeDesc*`FdmScheme' -- ^the finite-difference scheme (see the haddock above for which schemes are actually safe to use here)
-  ,withDoubleArray*`[Double]'& -- ^initial grid values, at time \'from\'
+  ,withRealVector*`RealVector'& -- ^initial grid values, at time \'from\'
   ,`Double' -- ^from (start time of the rollback, e.g. option maturity)
   ,`Double' -- ^to (end time of the rollback, e.g. 0)
   ,fromIntegral`Int' -- ^steps
   ,fromIntegral`Int' -- ^dampingSteps
-  ,preArray-`[Double]'&peekDoubleArray* -- ^grid values at time \'to\'
+  ,preArray-`RealVector'&peekRealVector* -- ^grid values at time \'to\'
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |'Predefined1dMesher(points)' -- an 'Fdm1dMesher' over an explicit, caller-supplied set of grid points.
-{#fun qlPredefined1dMesher as predefined1dMesher{withDoubleArray*`[Double]'& -- ^points
+{#fun qlPredefined1dMesher as predefined1dMesher{withRealVector*`RealVector'& -- ^points
   ,preErrorCheck-`String'errorCheck*-}->`Fdm1dMesher'peekFdm1dMesher*#}
 
 -- |'Uniform1dMesher(start, end, size)' -- an evenly spaced 'Fdm1dMesher'.
@@ -606,7 +606,7 @@ concentrating1dMesherMulti start end sz cPoints tol =
 -- @x_@ arrays from this same call upstream).
 {#fun qlFdmMesherLocations as fdmMesherLocations{withFdmMesher*`FdmMesher'
   ,fromIntegral`Int' -- ^direction
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- Raw import, not a {#fun#}: 'withCustomFdmInnerValueCalculator' below needs the two
@@ -761,17 +761,17 @@ fdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap exerciseDates =
 {#fun qlFdmSolve as fdmSolve{withFdmMesher*`FdmMesher'
   ,withFdmInnerValueCalculator*`FdmInnerValueCalculator'
   ,fromIntegral`Int' -- ^number of PDE directions\/dimensions the operator has
-  ,withFdmApply*`(Double,Double) -> [Double] -> [Double]' -- ^@apply(r)@
-  ,withFdmApplyDirection*`Int -> (Double,Double) -> [Double] -> [Double]' -- ^@apply_direction(direction, r)@
-  ,withFdmSolveSplitting*`Int -> Double -> (Double,Double) -> [Double] -> [Double]' -- ^@solve_splitting(direction, r, s)@
-  ,withMaybeFdmStepCondition*`Maybe (Double -> [Double] -> [Double])' -- ^optional step condition
-  ,withDoubleArray*`[Double]'& -- ^stopping times at which the step condition above is applied
+  ,withFdmApply*`(Double,Double) -> RealVector -> RealVector' -- ^@apply(r)@
+  ,withFdmApplyDirection*`Int -> (Double,Double) -> RealVector -> RealVector' -- ^@apply_direction(direction, r)@
+  ,withFdmSolveSplitting*`Int -> Double -> (Double,Double) -> RealVector -> RealVector' -- ^@solve_splitting(direction, r, s)@
+  ,withMaybeFdmStepCondition*`Maybe (Double -> RealVector -> RealVector)' -- ^optional step condition
+  ,withRealVector*`RealVector'& -- ^stopping times at which the step condition above is applied
   ,withFdmSchemeDesc*`FdmScheme' -- ^the finite-difference scheme
   ,`Double' -- ^maturity (start time of the rollback, and the time at which avgInnerValue builds the initial grid)
   ,`Double' -- ^to (end time of the rollback, e.g. 0)
   ,fromIntegral`Int' -- ^steps
   ,fromIntegral`Int' -- ^dampingSteps
-  ,preArray-`[Double]'&peekDoubleArray* -- ^grid values at time \'to\'
+  ,preArray-`RealVector'&peekRealVector* -- ^grid values at time \'to\'
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

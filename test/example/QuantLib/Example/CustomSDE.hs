@@ -41,6 +41,7 @@ module QuantLib.Example.CustomSDE
   ) where
 import Control.Monad(replicateM)
 import Data.List(transpose)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -95,7 +96,7 @@ evolveCEV drift sigma expo dt x dw = max 0 (x + drift * x * dt + sigma * (x ** e
 drawPath :: GaussianRsg -> Evolve -> Double -> Double -> IO [Double]
 drawPath rsg step x0 dt = do
   (draws, _weight) <- nextSequence rsg
-  pure (scanl (step dt) x0 draws)
+  pure (scanl (step dt) x0 (V.toList draws))
 
 -- |One backward-induction step of the Longstaff-Schwartz recursion, over a single path set (this
 -- example prices in-sample for brevity -- "QuantLib.Example.AmericanLSM" shows the unbiased
@@ -108,7 +109,7 @@ lsmStep polyT order strike df states cashflows = do
   if length fitStates <= fromIntegral order
     then pure discounted
     else do
-      continuation <- lsmRegress polyT order fitStates fitTargets states
+      continuation <- V.toList <$> lsmRegress polyT order (V.fromList fitStates) (V.fromList fitTargets) (V.fromList states)
       pure (zipWith3 (\cf ex cont -> if ex > 0 && ex > cont then ex else cf) discounted exercise continuation)
 
 -- |Walk exercise dates strictly backward, from the second-to-last grid index down to index 1.
@@ -148,7 +149,7 @@ run = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors <- mapM (\x -> discount ts x False) times
+  discFactors <- mapM (\x -> discount ts x False) (V.toList times)
   -- dfs !! i brings a cashflow observed at grid index i+1 back to index i.
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
       dt = t / fromIntegral timeSteps
@@ -157,7 +158,7 @@ run = do
 
   -- Check 1: the same normals QuantLib's own path generator consumes, in the same order.
   qlGen <- pathGenerator PseudoRandom bsmProc grid seedPaths dimension False
-  qlPath <- next qlGen >>= \s -> asset s 0
+  qlPath <- V.toList <$> (next qlGen >>= \s -> asset s 0)
   hsRsg <- gaussianRsg PseudoRandom dimension seedPaths
   hsPath <- drawPath hsRsg (evolveGBM drift vol) under dt
   let pathMaxDiff = maximum (0 : zipWith (\a b -> abs (a - b)) qlPath hsPath)

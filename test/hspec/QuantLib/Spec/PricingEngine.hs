@@ -10,6 +10,7 @@ import Control.Monad(forM, forM_, when)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
 
 import Test.Hspec
+import qualified Data.Vector.Storable as V
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -1065,7 +1066,8 @@ spec = do
             scalingFactor = 1.25 :: Double
         mesher1d <- fdmBlackScholesMesher 3 bsmProcess maturityTime s Nothing Nothing eps scalingFactor Nothing Nothing [] (Just fdmHelper) 0.0
         fdmMesher <- fdmMesherComposite [mesher1d]
-        loc@(loc0:_) <- fdmMesherLocations fdmMesher 0
+        loc <- fdmMesherLocations fdmMesher 0
+        let loc0 = loc V.! 0
 
         -- InverseCumulativeNormal()(1 - eps), eps = 0.0002 -- a fixed literal (like the other
         -- ported golden values) rather than re-deriving boost's inverse normal CDF here.
@@ -1077,7 +1079,7 @@ spec = do
             xMin = logFwd - sigmaSqrtT * normInvEps * scalingFactor
             xMax = log s + sigmaSqrtT * normInvEps * scalingFactor
         loc0 `shouldSatisfy` closePrec xMin 1.0e-6
-        last loc `shouldSatisfy` closePrec xMax 1.0e-6
+        V.last loc `shouldSatisfy` closePrec xMax 1.0e-6
 
     it "fdBlackScholesVanillaEngineQuanto reproduces QuantoEngine<VanillaOption,AnalyticEuropeanEngine> (testPDEOptionValues)" $ do
       let today' = 21 `april` 2019
