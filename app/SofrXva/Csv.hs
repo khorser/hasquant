@@ -1,7 +1,4 @@
--- |Ad-hoc, minimal line/field parsing for the fixed vendor-specific CSV layouts consumed by
--- 'SofrXva.Data'. Deliberately not a general CSV library -- these files never quote or escape
--- fields, so a plain comma-split is enough. This module (and the loaders built on it) is interim
--- and expected to be superseded by proper dataframe support later.
+-- |Minimal parsing for the fixed CSV layouts consumed by 'SofrXva.Data'. They contain no quoted or escaped fields, so comma splitting is sufficient.
 module SofrXva.Csv
   ( splitComma
   , parseDMY

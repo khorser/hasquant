@@ -426,7 +426,7 @@ spec = do
 
     -- The three blocks below close the "smaller related gap" noted in issue #11:
     -- QuantLib.Example.{CVAIRS,TARF,FittedBondCurve} are wired into
-    -- main/exe/QuantLib/MainExample.hs but previously had no automated assertions.
+    -- The example executable does not assert these results.
     describe "CVA IRS example" $
       it "check values" $ do
         (CVAIRSExample.Result rows) <- Settings.keepingSettings' CVAIRSExample.run

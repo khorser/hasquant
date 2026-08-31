@@ -52,8 +52,7 @@ run = do
 
   imm1 <- nextIMMDate settleDate True
   -- chain of IMM dates, each derived from the one before. Written as an explicit
-  -- unfold rather than foldM over an accumulator list, which needed a partial `last`
-  -- to see the previous date and rebuilt the list with `++` on every step.
+  -- Avoid a partial `last` and repeated list append.
   let nextIMMs :: Int -> Day -> IO [Day]
       nextIMMs 0 _ = pure []
       nextIMMs k prev = do

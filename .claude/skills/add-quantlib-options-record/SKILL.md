@@ -5,9 +5,9 @@ description: Bind a QuantLib constructor or method that has a long list of trail
 
 ## When this applies
 
-Only for a **genuinely wide** trailing-defaulted-param list — past **10** trailing defaulted params (`OISRateHelper`-scale), not a handful. `AmortizingFloatingRateBond`'s 14-param options record and `AmortizingFixedRateBond`'s 8-param widen-in-place, both in `QuantLib/Instrument/Bond.chs`, are the pair this threshold was calibrated against. For the common case, widen the existing narrow binding in place (see [[add-quantlib-method]]'s "one full-arity shim, not two"); every defaulted param just becomes a required Haskell argument.
+Use only for more than **10** trailing defaulted parameters. Otherwise widen the existing binding and make each defaulted parameter required.
 
-At `OISRateHelper` scale that stops working: the call site becomes an unreadable wall of positional defaults, and every existing caller breaks. So instead: **leave the narrow binding's signature untouched** and add a *second*, full-arity entry point taking an options record.
+For a wide constructor, keep the narrow signature and add a second full-arity function taking an options record.
 
 ## Shape
 

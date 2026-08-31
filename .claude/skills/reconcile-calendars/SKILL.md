@@ -3,7 +3,7 @@ name: reconcile-calendars
 description: Check whether hasquant's calendar enum is missing any countries/markets that exist in the installed QuantLib, or is out of sync with it. Use when asked to reconcile, audit, sync, or add support for a calendar, country, or market.
 ---
 
-Trickier than [[reconcile-currencies]]: calendars are keyed by country, but several countries have multiple sub-markets (e.g. `UnitedStates::Market` has `Settlement`, `NYSE`, `GovernmentBond`, `NERC`, `LiborImpact`, `FederalReserve`), so there's an extra layer of per-country enums to keep in sync, and a Template Haskell macro that stitches them together.
+Calendars are keyed by country. Countries with multiple markets add a per-country enum; Template Haskell combines them.
 
 ## Files involved
 

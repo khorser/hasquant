@@ -3,7 +3,7 @@ name: reconcile-daycounters
 description: Check whether hasquant's day counter enum and BusinessDayConvention are missing anything that exists in the installed QuantLib. Use when asked to reconcile, audit, sync, or add support for a day counter or business day convention.
 ---
 
-Two mostly-unrelated things to check; do both.
+Check both independent parts.
 
 ## BusinessDayConvention
 

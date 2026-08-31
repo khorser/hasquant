@@ -5,7 +5,7 @@
 -- a wrong dispatch in `mapDayCounter`/`qlDayCounter` that a successful
 -- build alone wouldn't reveal. All three are routed through deriveCrossEnum's
 -- Bool sub-choice into the generic qlDayCounter(Int,Int) dispatch table --
--- Actual360's flag used to be silently ignored before that.
+-- This also checks that Actual360's flag reaches QuantLib.
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/CheckDayCounters.hs -o /tmp/checkdc -outputdir /tmp/checkdc_build && /tmp/checkdc
 import QuantLib.Time.Schedule

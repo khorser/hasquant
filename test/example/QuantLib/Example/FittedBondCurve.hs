@@ -147,10 +147,8 @@ run = do
       rs <- rates ts00 dc bondSettle evalDate curves iA
       return (rs, ts00, curves)
 
-    -- the five fitting methods the example compares, and the curves fitted with them.
-    -- step1 and step3 each used to spell this list out in full (including the eleven
-    -- CubicBSplines knots) and repeat the mapM below verbatim.
-    -- NB results depend on the optimization options used to build QLC.
+    -- The five fitting methods and their fitted curves.
+    -- Keep the fixture in one place. Results depend on QLC's optimization options.
     fitCurves :: Calendar -> DayCounter -> [TS.BondHelper] -> IO [TS.FittedBondDiscountCurve]
     fitCurves cal dc instr = mapM
         (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instr dc f tolerance maxEvals [] 1.0)

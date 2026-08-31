@@ -3,7 +3,7 @@ name: add-quantlib-method
 description: Add a single new method binding to a QuantLib class that already has a hasquant binding (shim .h/.cpp + c2hs .chs import). Use when asked to bind, add, or expose one more method/getter on an existing bound class — not for adding a whole new class (see add-quantlib-class for that).
 ---
 
-Adding one method to an already-bound class only touches the shim `.h`/`.cpp` and the `.chs` module — `cbits/qlaux.h`, `cbits/qlTypesC2HS.h`, and `QuantLib/Internal/Type.hs` are already set up for the class and don't need changes (see [[add-quantlib-class]] if the class itself is missing).
+Adding a method to an existing class normally changes only its `.h`, `.cpp`, and `.chs` files. Use [[add-quantlib-class]] if the class is missing.
 
 `arg()`, `ret()`, `alloc()` (in `cbits/qlaux.h`) are pure identity/tracing passthroughs — `template <class T> T arg(T p) {return TP("arg", p);}`. They do **no** dereferencing themselves; getting the pointer indirection right is on you, and it depends on the parameter's type.
 
@@ -145,7 +145,7 @@ When a class has multiple real overloads of the same name, each gets its own C s
 
 ### Static methods, and default values, are now visible in the dump
 
-`tools/dump_signatures.py` now prints the `static` keyword (`static Rate CashFlows::yield(...)`) and each parameter's C++ default value (`Date settlementDate = Date()`) — a bare declaration line from a *current* run of it is not ambiguous about either. `tools/ql-methods-1.43.txt`, however, predates both and never captured them (`tools/reconcile_signatures.py` accounts for this: it strips `static`/defaults before comparing old and new dump entries for equality, so an otherwise-unchanged method still matches and gets the richer text folded in). If you're working from that old dump directly rather than a fresh extraction, treat both as still unknown and check the header by hand.
+`tools/dump_signatures.py` includes `static` and parameter defaults. `tools/ql-methods-1.43.txt` does not, so check the header when working from that dump; `tools/reconcile_signatures.py` ignores those fields when matching entries.
 
 A true static/singleton accessor takes no self-parameter at all: `Settings::instance()`'s shim is `int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate()...;}`, bound as `{#fun qlSettingsEvaluationDate as evaluationDate{}->\`Day'toDay#}` — the empty `{}` argument list is the tell. `tools/gen_quantlib_method.py` now does this automatically when it sees a `static` prefix: no receiver pointer/bound-class requirement, and the C++ call is qualified directly as `Class::member(...)` rather than dereferencing a receiver — see `qlCashFlowsYield` (generated from the `static Rate CashFlows::yield(...)` declaration above) for the shape. It also flags every defaulted parameter with a note pointing at the "one full-arity shim" convention above, rather than silently guessing whether to `Maybe`-wrap it — auto-generating the nullable marshalling for an arbitrary parameter type isn't reliable without an existing `Handle<T>`/`ext::optional<T>`-style convention for that specific type, so it's left as a flagged, human judgment call.
 

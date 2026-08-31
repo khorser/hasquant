@@ -110,7 +110,7 @@ unenumerableError fnName = NormalB (AppE (VarE 'error) (LitE (StringL msg)))
 -- subEnum suffix "Market" and UnitedStatesMarket = UnitedStates__NYSE | UnitedStates__Settlement
 -- NB I use prefixes separated from the main entry with underscore, in final enum they are stripped off
 -- the function will build Australia | UnitedStatesNYSE | UnitedStatesSettlement
--- initially I constructed calendars with Australia | ...| UnitedStates UnitedStatesMarket where UnitedStatesMarket = NYSE | Settlement
+-- Calendar market choices are represented by a separate per-country type.
 -- but too many country calendars contain Settlement and UnitedStates UnitedStatesSettlement
 -- (or Actual365Fixed Actual365FixedStandard) looks really awful
 --

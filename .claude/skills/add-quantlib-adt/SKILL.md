@@ -5,7 +5,7 @@ description: Decide whether a new QuantLib value type needs a flat tag-based enu
 
 ## First: which of the three patterns actually fits?
 
-hasquant exposes QuantLib concepts through three different shapes. Picking the wrong one is expensive to unwind — Payoff/Exercise itself used to be a bespoke `IsQlPayoff`/`IsQlExercise`/`EnumMeta'` mechanism before being rebuilt on the pattern described below; reuse that finding rather than re-deriving it from scratch.
+Choose the representation before binding a value type. Reuse these patterns rather than inventing another one.
 
 1. **Flat tag, no real substructure** — the QuantLib type is fully described by picking one of a fixed set of variants, each with at most a couple of scalar/enum parameters (`DayCounter`, `Calendar`, `Currency`, `BusinessDayConvention`). See `[[reconcile-daycounters]]` for the full mechanism (`mergeEnums` TH machinery, int-indexed factory tables, the `*Extra` escape hatch for non-enum parameters).
 

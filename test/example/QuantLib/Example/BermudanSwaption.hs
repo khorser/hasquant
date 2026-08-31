@@ -158,10 +158,7 @@ run = do
         settl = 19 `february` 2002
         swapLengths :: [Word]
         swapLengths = [1, 2, 3, 4, 5]
-        -- Market swaption vols. Rows are option expiries (1y..5y), columns are swap
-        -- lengths (1y..5y) as given by swapLengths. This used to be a flat 25-element
-        -- list indexed with hand-rolled `i * numCols + j` arithmetic, which silently
-        -- reads the wrong cell if the literal is ever re-wrapped.
+        -- Market swaption vols: rows are option expiries; columns are swap lengths.
         swaptionVolTable = [
           [0.1490, 0.1340, 0.1228, 0.1189, 0.1148],
           [0.1290, 0.1201, 0.1146, 0.1108, 0.1040],

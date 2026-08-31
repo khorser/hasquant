@@ -3,7 +3,7 @@ name: reconcile-currencies
 description: Check whether hasquant's currency enum is missing any currencies that exist in the installed QuantLib, or contains stale/renamed ones. Use when asked to reconcile, audit, sync, or update the list of supported currencies.
 ---
 
-hasquant represents currencies as a fixed enum + a matching factory table, not individual bindings. Three things must be compared and kept in lockstep:
+Currencies use a fixed enum and matching factory table. Keep these in lockstep:
 
 1. **`enum Ccy`** in `cbits/qlEnumObjects.h` — the ordered list of currency codes hasquant knows about.
 2. **`ccys[]`** (an array of `makeCcy` function pointers) in `cbits/qlMisc.cpp` — one `&makeCurrency<XxxCurrency>` entry per enum value, in the **same order**. `makeCurrency` is the one-line function template just above the table; its return type is spelled `Currency *` rather than `C *` on purpose, since `alloc()` takes the trace label from its argument's static type and these are freed through `Currency *`. The comment above each says as much: `enum Ccy` must match the order of `ccys[]` and vice versa.

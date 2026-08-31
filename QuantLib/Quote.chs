@@ -54,10 +54,9 @@ import QuantLib.Internal.Type
 {#enum PriceType{} deriving(Show, Eq, Read)#}
 {#enum DeltaType{} deriving(Show, Eq, Read)#}
 
--- |Which binary operation a catalogue 'derivedQuote'\/'compositeQuote' applies. 'derivedQuote'
--- applies it as @quote \`op\` operand@; 'compositeQuote' as @quote1 \`op\` quote2@. The reversed
--- unary forms (@operand \/ quote@, i.e. an FX inversion) are deliberately absent -- that is what
--- 'withDerivedQuote' is for.
+-- |Operation used by 'derivedQuote' or 'compositeQuote'. The former applies
+-- @quote \`op\` operand@; the latter applies @quote1 \`op\` quote2@. Use
+-- 'withDerivedQuote' for reversed unary operations such as FX inversion.
 {#enum QuoteOp{} deriving(Show, Eq, Read, Bounded)#}
 
 -- |Which fold a catalogue 'multiCompositeQuote' applies over its elements.
@@ -142,30 +141,17 @@ import QuantLib.Internal.Type
 -- |returns true if the Quote holds a valid value
 {#fun qlQuoteIsValid as isValid{withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
--- |A quote behind a relinkable handle. The result /is/ a 'Quote': pass it to any quote-taking
--- function and everything built on it keeps tracking whatever the handle currently points at,
--- so a later 'linkTo' reprices already-constructed instruments without rebuilding them.
--- 'Nothing' gives an empty handle -- meaningful rather than an error -- but reading a value
--- through one throws until it is linked. Mirrors 'QuantLib.TermStructure.Yield.relinkableYieldTermStructure'.
+-- |A relinkable quote handle. Objects built from it follow later 'linkTo' calls.
+-- 'Nothing' creates an empty handle; reading it throws until linked.
 {#fun qlRelinkableQuote as relinkableQuote{withMaybeQuote*`Maybe (GenQuote q)'
   ,preErrorCheck-`String'errorCheck*-}->`RelinkableQuote'peekRelinkableQuote*#}
 
--- |Point a relinkable handle at a different quote. Everything already built on the handle
--- reprices against the new quote, with no object rebuilt.
---
--- This is the one mutator in the module besides 'setValue'. The API rules here otherwise
--- forbid new setters and prefer constructing a fresh object, but relinking /is/ the capability
--- being bound -- the same justification as 'QuantLib.TermStructure.Yield.linkTo'. Note the
--- narrower payoff versus curves: 'SimpleQuote.setValue' already covers the common bump case,
--- so this buys swapping in a different quote object, not a different value.
+-- |Point a relinkable handle at another quote. Existing dependents reprice without reconstruction.
+-- Use 'setValue' for a value bump; this swaps the quote object.
 {#fun qlRelinkableQuoteLinkTo as linkTo{withRelinkableQuote*`RelinkableQuote'
   ,withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- The quotes below are the only ones here that are not leaf values: they register with their
--- inputs and notify their own observers when one moves. That is the whole reason they are bound
--- rather than done in Haskell -- a quote hasquant hands out is a live node in QuantLib's observer
--- graph, so a curve or instrument built on one of these keeps tracking its inputs, where a value
--- recomputed on the Haskell side would be a dead snapshot the curve never hears about.
+-- These composite quotes are live observer-graph nodes. Haskell-side recomputation would be a snapshot and would not notify dependent curves or instruments.
 
 -- |A quote derived from another by applying @quote \`op\` operand@, live: it recomputes whenever
 -- the underlying quote moves, and notifies everything built on it.
@@ -196,18 +182,11 @@ import QuantLib.Internal.Type
 {#fun qlMultiCompositeQuoteFromFunction{withQuoteArray*`[GenQuote q]'&
   ,id`FunPtr QuoteArrayFun',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
--- |As 'derivedQuote', but applying an arbitrary Haskell function to the underlying quote's value.
+-- |As 'derivedQuote', with an arbitrary Haskell function.
 --
--- __The quote is valid only inside the continuation, which must span the whole use -- not just
--- construction.__ QuantLib calls back into @f@ from @Quote::value()@, from wherever the quote was
--- stored, so everything built on it -- every curve, rate helper and instrument, and every pricing
--- call -- must happen before the continuation returns. Leaving it frees the underlying function
--- pointer, and a later read crashes the process. Same rule and same reason as
--- 'QuantLib.Internal.Common.withCustomPayoff'.
+-- __The continuation must span the whole use, not only construction.__ QuantLib calls @f@ later from @Quote::value()@. Returning frees its function pointer, so a later read crashes.
 --
--- @f@ must be total: an exception thrown inside it propagates out through C++, potentially from
--- the middle of a curve bootstrap. Prefer 'derivedQuote' whenever its 'QuoteOp' catalogue fits --
--- it has neither restriction.
+-- @f@ must be total: exceptions cross C++, including during bootstrap. Prefer 'derivedQuote' when its 'QuoteOp' fits.
 withDerivedQuote :: (Double -> Double) -- ^f(value)
   -> GenQuote q -> (Quote -> IO b) -> IO b
 withDerivedQuote f q k = withPayoffFun f (\fp -> qlDerivedQuoteFromFunction q fp >>= k)

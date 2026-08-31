@@ -233,8 +233,7 @@ main = do
 
     -- The equity option table has three columns (European, Bermudan, American) but
     -- most engines price only one or two of them. 'Nothing' is the absent cell.
-    -- This used to pad with 0.0 and print "N/A" for any value equal to 0.0, which
-    -- would have hidden a legitimately-zero NPV.
+    -- Keep an absent result distinct from a legitimate zero NPV.
     europeanOnly, americanOnly, allExercises :: [Double] -> [Maybe Double]
     europeanOnly v = map Just v ++ [Nothing, Nothing]
     americanOnly v = [Nothing, Nothing] ++ map Just v
@@ -254,4 +253,3 @@ main = do
       void $ printf mf m
       mapM_ (printf vf) v
       putStrLn ""
-

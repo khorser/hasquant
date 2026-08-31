@@ -3,7 +3,7 @@ name: add-quantlib-index
 description: Add a new QuantLib index (Ibor, overnight, or swap index) binding, or reconcile hasquant's index enums against what's actually available upstream. Use when asked to add, bind, or expose a market index (e.g. a new IBOR tenor/currency, an overnight rate index like SOFR/SONIA, or a swap-rate index), or to check/audit/sync the list of supported indexes — sourced from /opt/homebrew/include/ql/indexes/.
 ---
 
-QuantLib index classes fall into two shapes in this codebase, and which one applies isn't always obvious from the class name alone — **ask the user** if it's not clear which applies before starting.
+QuantLib indexes use two shapes here. Inspect the constructor when the class name is ambiguous.
 
 ## Which kind is it?
 

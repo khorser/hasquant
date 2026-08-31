@@ -34,14 +34,8 @@ using namespace QuantLib;
 // ---------------------------------------------------------------------------------------------
 // Trait dispatchers.
 //
-// Every engine below is a QuantLib class template selected by one or two runtime ints (a binomial
-// tree kind; an RNG trait and a statistics trait). Written out longhand that is 14 or 4x4 nearly
-// identical `new Engine<T...>(same, long, argument, list)` arms *per engine* -- what this file
-// used to be, ~800 lines of it, plus a per-engine `<class RNG> ...AuxStat` helper to get the two
-// axes nested.
-//
-// Instead each dispatcher takes a generic lambda and calls it with an empty `Tag<T>` per axis;
-// the lambda spells the engine's constructor exactly once, recovering the types as
+// Each engine is selected by one or two runtime traits. Dispatchers call a generic lambda with
+// an empty `Tag<T>` per axis, so each constructor is written once and recovers types through
 // `typename decltype(r)::type`.
 //
 // Every dispatcher takes its return type as an explicit leading template argument

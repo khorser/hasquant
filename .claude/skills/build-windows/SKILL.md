@@ -5,9 +5,7 @@ description: Build and test hasquant natively on Windows (GHC 9.10.3 + MSYS2). U
 
 # Building hasquant on Windows
 
-The full, tested recipe lives in the repo's user-facing documentation:
-[`WINDOWS.md`](../../../WINDOWS.md). Read that file — it is the
-single source of truth. Do not duplicate its steps here; fix them there.
+[`WINDOWS.md`](../../../WINDOWS.md) is the build recipe. Do not duplicate its steps here; update it when they change.
 
 Notes that are only relevant when an agent drives the build:
 

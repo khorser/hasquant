@@ -3,12 +3,7 @@ name: c2hs-shim-patterns
 description: Reference for c2hs pragma flags, C shim marshalling patterns, and known gotchas when writing or debugging a .chs binding or a cbits/ C++ shim function. Use when writing a {#fun#}/{#pointer#} declaration, adding a shim in cbits/, choosing a marshaller (alloca-, preArray, a with*/peek* pair), naming a GenX type variable, or hitting a cryptic c2hs/GHC type-mismatch error while binding a QuantLib method.
 ---
 
-Patterns and gotchas for the c2hs (`.chs`) layer and the C++ shim layer
-(`cbits/`) that binds QuantLib. These are referenced by the
-`add-quantlib-class`, `add-quantlib-adt`, `add-quantlib-method`, and
-`add-quantlib-options-record` skills — read this one directly when you're
-past "what class am I binding" and into "why won't this pragma/marshaller
-compile."
+Reference patterns for `.chs` pragmas and `cbits/` marshalling. Use it when a binding's pointer declaration, marshaller, or generated type fails to compile.
 
 ## `{#pointer#}` flags and bare-backtick return specs
 

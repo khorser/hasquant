@@ -1,10 +1,4 @@
--- |Renders the NPV profile (NPV vs. timestep, one line per scenario), optionally
--- overlaid with a PFE percentile profile, by shelling out to an installed @gnuplot@
--- binary -- the simplest way to get a plot out of this small executable without
--- pulling in a native Haskell charting library and its graphics dependencies.
--- Plotting is optional: if @gnuplot@ is missing or fails, this prints a warning and
--- does not fail the whole program, since the NPV diff summary/CSV (see "Main") are
--- the primary output.
+-- |Renders NPV-by-timestep lines and an optional PFE profile with @gnuplot@. A plotting failure warns but does not fail the program; the summary and CSV remain available.
 module SofrXva.Plot
   ( plotNpvProfile
   ) where

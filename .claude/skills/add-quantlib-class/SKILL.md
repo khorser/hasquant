@@ -3,11 +3,11 @@ name: add-quantlib-class
 description: Add a new QuantLib class binding (new hierarchy root or a class in an existing hierarchy) across the cbits/ C shim and the Haskell QuantLib/ layer. Use when asked to bind a new QuantLib C++ class, add a wrapper for a QuantLib type, or extend an existing binding hierarchy (e.g. TermStructure, Instrument, Index).
 ---
 
-Adding `QlXXX` (and its wrapper) touches both the C++ shim (`cbits/`) and the Haskell FFI layer (`QuantLib/`). Before starting, ask the user (if not already clear) which concrete `.cpp` file the new definitions belong in, and which `QuantLib/*.chs` module should hold the `{#pointer}` boilerplate — these are chosen per class, not fixed.
+Adding `QlXXX` touches `cbits/` and `QuantLib/`. Select the matching domain `.cpp` and `.chs` module before starting.
 
 **First, check whether the class needs a dedicated Haskell type at all** — apply CLAUDE.md's "don't mirror the C++ hierarchy 1:1" rule. If it doesn't (most `PricingEngine` subclasses, for instance), just bind a constructing function returning the existing parent/grandparent type, e.g. `discountingSwapEngine :: ... -> IO PricingEngine`: no type boilerplate (step 4) and no `AsParent` upcast shim (step 3), since there's no dedicated type to upcast from.
 
-Before binding, read the upstream Doxygen documentation for the class and every constructor or method being exposed. Add upstream-derived `-- |` Haddock comments to the public Haskell entry points, preserving material behavior, formulas, units, warnings, and limitations in clear Haskell-facing language. Do not use a generic label in place of the documentation, and document intentional scope cuts where relevant.
+Read upstream documentation for every exposed constructor and method. Add concise Haddock covering behavior, units, formulas, warnings, limitations, and intentional scope cuts.
 
 ## Steps
 

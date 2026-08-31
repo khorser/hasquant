@@ -3,13 +3,7 @@ name: run-hasquant
 description: Build hasquant, run its test suite, and drive it via a compiled smoke-test program. Use when asked to build hasquant, run its tests, verify a new QuantLib binding actually works, or exercise a specific function end-to-end.
 ---
 
-`hasquant` is a Haskell library (FFI bindings to QuantLib via c2hs, with a
-C++ shim in `cbits/`) — there is no server or GUI to launch. "Running" it
-means: build the C++ shim + Haskell layer, run the hspec test suite, and
-(the part a README won't tell you) compile-and-run a standalone
-`test/smoke/*.hs` program against the built library — this repo's own established way to
-prove a binding actually works, not just that the build succeeded. Drive it
-via `.claude/skills/run-hasquant/driver.sh`.
+hasquant is a library, not a service. Running it means building the shim and Haskell layer, running Hspec, and compiling a standalone smoke program with `.claude/skills/run-hasquant/driver.sh` when end-to-end binding coverage is needed.
 
 All paths below are relative to the repo root.
 

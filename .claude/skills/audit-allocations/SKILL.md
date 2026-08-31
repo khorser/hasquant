@@ -3,11 +3,7 @@ name: audit-allocations
 description: Audit cbits/ for gaps in the trackAllocations tracing instrumentation (untracked new/delete/malloc/free sites, alloc/free class-name mismatches, partial-construction exception safety) and verify with tools/alloc-summary.py. Use when asked to review, extend, or fix trackAllocations coverage, or to check cbits/ for memory leaks/double-frees.
 ---
 
-Procedure for auditing whether every allocation/deallocation in the C++ shim (`cbits/`) is
-visible to the `trackAllocations` tracing mechanism, and for checking `cbits/` for real
-leaks/double-frees along the way. Read `c2hs-shim-patterns` first if you're new to `cbits/`
-marshalling conventions generally — this skill is specifically about the tracing/memory-safety
-angle, not shim-writing mechanics.
+Audit whether every `cbits/` allocation and deallocation is visible to `trackAllocations`, then check for real leaks and double frees. Read `c2hs-shim-patterns` first for general marshalling.
 
 ## The tracing mechanism
 
