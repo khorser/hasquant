@@ -10,6 +10,8 @@ module SofrXva.Pricing
 
 import Control.Monad (filterM, forM, unless)
 import Data.List (nub, sort)
+import Data.List.NonEmpty (NonEmpty(..))
+import qualified Data.List.NonEmpty as NE
 import Data.Time.Calendar (Day, addDays, addGregorianYearsClip, diffDays, fromGregorian)
 import qualified Data.Map.Strict as Map
 
@@ -38,7 +40,7 @@ data SofrProfile = SofrProfile
 -- points (see 'SofrXva.Data.loadSofrCurve'); 'hist' the historical SOFR fixings;
 -- 'quotes' the per-(scen, ts, date) SOFR quotes.
 buildSofrProfile
-  :: Map.Map (Int, Int) (Day, [(Day, Double)])
+  :: Map.Map (Int, Int) (Day, NonEmpty (Day, Double))
   -> Map.Map Day Double
   -> Map.Map (Int, Int, Day) Double
   -> IO SofrProfile
@@ -108,12 +110,13 @@ addInterpolatedFixings index d1 d2 v1 v2 = do
   let n = fromIntegral (diffDays d2 d1) :: Int
       allDates = [addDays i d1 | i <- [0 .. fromIntegral n]]
       values = linspace v1 v2 (n + 1)
-  pairs <- filterM (\(d, _) -> isValidFixingDate index d) (zip allDates values)
+  pairs <- filterM (\(d, _) -> isValidFixingDate index d) (zip allDates (NE.toList values))
   unless (null pairs) $
     addFixings index pairs True
 
 -- |@numpy.linspace@'s behaviour for the cases this module needs: 'num' evenly spaced
 -- points from 'a' to 'b' inclusive, with 'num' == 1 returning just 'a'.
-linspace :: Double -> Double -> Int -> [Double]
-linspace a _ 1 = [a]
-linspace a b num = [a + (b - a) * fromIntegral i / fromIntegral (num - 1) | i <- [0 .. num - 1]]
+linspace :: Double -> Double -> Int -> NonEmpty Double
+linspace a _ 1 = a :| []
+linspace _ _ num | num <= 0 = error "SofrXva.Pricing.linspace: point count must be positive"
+linspace a b num = a :| [a + (b - a) * fromIntegral i / fromIntegral (num - 1) | i <- [1 .. num - 1]]

@@ -402,6 +402,13 @@ data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
 -- regression, diffusion/correlation, and volatility-surface data; object
 -- matrices retain 'Matrix' because their elements need continuation-based FFI
 -- marshalling rather than a raw contiguous pointer.
+--
+-- This representation interoperates directly with @hmatrix@ without making
+-- @hasquant@ depend on it: @Numeric.LinearAlgebra.reshape cols
+-- realMatrixData@ makes a row-major hmatrix matrix view with no element copy.
+-- The reverse conversion through @flatten@ is zero-copy only for a contiguous
+-- row-major hmatrix matrix; BLAS-produced or sliced matrices can require a
+-- reorder/copy.
 data RealMatrix = RealMatrix
   { realMatrixRows :: Word
   , realMatrixColumns :: Word

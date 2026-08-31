@@ -3,13 +3,14 @@
 -- rule prescribes -- one batched regression call per exercise date, using QuantLib's own
 -- Eigen-backed least-squares solve) against the naive alternative: the identical backward
 -- induction, but with the per-date regression re-implemented from scratch in plain Haskell
--- (normal equations solved by hand-rolled Gauss-Jordan elimination over @[[Double]]@, no
+-- (normal equations solved by hand-rolled Gauss-Jordan elimination over small lists, no
 -- optimized linear algebra). QuantLib is used only for path generation -- both loops walk the
 -- exact same calibration\/pricing path sets from "QuantLib.Example.AmericanLSM"'s fixture, so
 -- any timing difference is the regression implementation, not the paths.
 --
 -- This is deliberately an apples-to-oranges comparison, not a controlled microbenchmark: the
--- Haskell side uses lists and a textbook (unoptimized, non-pivoted-for-speed) solve, while
+-- Haskell side uses contiguous vectors for the large path arrays and a textbook
+-- (unoptimized, non-pivoted-for-speed) solve over the small regression system, while
 -- 'lsmRegress' calls into QuantLib's C++ least-squares machinery. That gap is the point -- it
 -- illustrates why CLAUDE.md's "coarsen the language-boundary crossing" pattern reuses QuantLib's
 -- own regression primitive instead of shipping the state across the FFI boundary once per path
@@ -26,9 +27,10 @@ module QuantLib.Example.HaskellLSM
     Result(..)
   , run
   ) where
-import Control.Monad(replicateM)
 import Data.List(transpose)
 import qualified Data.Vector.Storable as V
+import qualified Data.Vector as BV
+import qualified Data.Vector.Unboxed as U
 import Data.List.NonEmpty(NonEmpty(..))
 import qualified Data.List.NonEmpty as NE
 import System.CPUTime(getCPUTime)
@@ -56,8 +58,8 @@ data Result = Result
 payoff :: Double -> Double -> Double
 payoff strike s = max (strike - s) 0
 
-mean :: [Double] -> Double
-mean xs = sum xs / fromIntegral (length xs)
+mean :: RealVector -> Double
+mean xs = V.sum xs / fromIntegral (V.length xs)
 
 cpuSeconds :: IO a -> IO (a, Double)
 cpuSeconds act = do
@@ -79,14 +81,14 @@ dot xs ys = sum (zipWith (*) xs ys)
 -- (@(A^T A) c = A^T y@). The @A^T A@\/@A^T y@ entries are read off column-by-column via
 -- 'transpose' (total, unlike indexing each row with @(!!)@) -- no optimized linear algebra,
 -- unlike 'lsmRegress''s underlying C++ solve.
-haskellRegress :: Word -> [Double] -> [Double] -> [Double] -> [Double]
+haskellRegress :: Word -> RealVector -> RealVector -> RealVector -> RealVector
 haskellRegress order fitStates fitTargets evalStates =
-  let basisRows = map (NE.toList . monomialBasis order) fitStates
+  let basisRows = map (NE.toList . monomialBasis order) (V.toList fitStates)
       cols = transpose basisRows -- one column per basis term, [] if fitStates is []
       ata = [ [ dot c1 c2 | c2 <- cols ] | c1 <- cols ]
-      aty = [ dot c fitTargets | c <- cols ]
+      aty = [ dot c (V.toList fitTargets) | c <- cols ]
       coeffs = gaussSolve ata aty
-  in map (dot coeffs . NE.toList . monomialBasis order) evalStates
+  in V.fromList (map (dot coeffs . NE.toList . monomialBasis order) (V.toList evalStates))
 
 -- |value at column @k@ (0-based) of a row, via 'drop' rather than @(!!)@ -- total regardless of
 -- @k@\/row length, though every call site here only ever asks for a column the row actually has.
@@ -138,30 +140,32 @@ gaussSolve rows y = case zipWith (\r yi -> r ++ [yi]) rows y of
 
 -- |one backward-induction step, structurally identical to 'QuantLib.Example.AmericanLSM.step'
 -- except the continuation-value estimate comes from 'haskellRegress' instead of 'lsmRegress'.
-haskellStep :: Word -> Double -> Double -> [Double] -> [Double] -> [Double] -> [Double] -> [Bool]
-            -> ([Double], [Double], [Bool])
+haskellStep :: Word -> Double -> Double -> RealVector -> RealVector -> RealVector -> RealVector -> U.Vector Bool
+            -> (RealVector, RealVector, U.Vector Bool)
 haskellStep order strike df calibS priceS calibCF0 priceCF0 exFlags0 =
-  let calibCF = map (* df) calibCF0
-      priceCF = map (* df) priceCF0
-      calibEx = map (payoff strike) calibS
-      priceEx = map (payoff strike) priceS
-      (fitStates, fitTargets, _) = unzip3 $ filter (\(_, _, e) -> e > 0) $ zip3 calibS calibCF calibEx
-  in if length fitStates <= fromIntegral order
+  let calibCF = V.map (* df) calibCF0
+      priceCF = V.map (* df) priceCF0
+      calibEx = V.map (payoff strike) calibS
+      priceEx = V.map (payoff strike) priceS
+      fitStates = V.ifilter (\i _ -> calibEx V.! i > 0) calibS
+      fitTargets = V.ifilter (\i _ -> calibEx V.! i > 0) calibCF
+  in if V.length fitStates <= fromIntegral order
        then (calibCF, priceCF, exFlags0)
        else
          let contCalib = haskellRegress order fitStates fitTargets calibS
              contPrice = haskellRegress order fitStates fitTargets priceS
-             calibCF' = zipWith3 (\cf ex cont -> if ex > 0 && ex > cont then ex else cf) calibCF calibEx contCalib
-             decidePrice cf ex cont = if ex > 0 && ex > cont then (ex, True) else (cf, False)
-             (priceCF', exercisedNow) = unzip $ zipWith3 decidePrice priceCF priceEx contPrice
-             exFlags' = zipWith (||) exFlags0 exercisedNow
+             exercise ex cont = ex > 0 && ex > cont
+             calibCF' = V.zipWith3 (\cf ex cont -> if exercise ex cont then ex else cf) calibCF calibEx contCalib
+             priceCF' = V.zipWith3 (\cf ex cont -> if exercise ex cont then ex else cf) priceCF priceEx contPrice
+             exercisedNow = U.generate (V.length priceCF) $ \i -> exercise (priceEx V.! i) (contPrice V.! i)
+             exFlags' = U.zipWith (||) exFlags0 exercisedNow
          in (calibCF', priceCF', exFlags')
 
 -- |walk the exercise dates strictly backward, given as a list of @(discount factor, calibration
 -- states, pricing states)@ triples already in backward (latest-exercise-date-first) order --
 -- see 'exerciseSteps' for how that list is built without 'last'\/'init'.
-haskellGoBack :: Word -> Double -> [(Double, [Double], [Double])] -> [Double] -> [Double] -> [Bool]
-              -> ([Double], [Double], [Bool])
+haskellGoBack :: Word -> Double -> [(Double, RealVector, RealVector)] -> RealVector -> RealVector -> U.Vector Bool
+              -> (RealVector, RealVector, U.Vector Bool)
 haskellGoBack order strike steps calibCF priceCF exFlags = case steps of
   [] -> (calibCF, priceCF, exFlags)
   ((df, calibS, priceS) : rest) ->
@@ -170,28 +174,30 @@ haskellGoBack order strike steps calibCF priceCF exFlags = case steps of
 
 -- |lsmRegress-driven step, copied from "QuantLib.Example.AmericanLSM" so this module can time it
 -- head-to-head against 'haskellStep' over the exact same paths.
-lsmStep :: PolynomialType -> Word -> Double -> Double -> [Double] -> [Double] -> [Double] -> [Double] -> [Bool]
-        -> IO ([Double], [Double], [Bool])
+lsmStep :: PolynomialType -> Word -> Double -> Double -> RealVector -> RealVector -> RealVector -> RealVector -> U.Vector Bool
+        -> IO (RealVector, RealVector, U.Vector Bool)
 lsmStep polyT order strike df calibS priceS calibCF0 priceCF0 exFlags0 = do
-  let calibCF = map (* df) calibCF0
-      priceCF = map (* df) priceCF0
-      calibEx = map (payoff strike) calibS
-      priceEx = map (payoff strike) priceS
-      (fitStates, fitTargets, _) = unzip3 $ filter (\(_, _, e) -> e > 0) $ zip3 calibS calibCF calibEx
-  if length fitStates <= fromIntegral order
+  let calibCF = V.map (* df) calibCF0
+      priceCF = V.map (* df) priceCF0
+      calibEx = V.map (payoff strike) calibS
+      priceEx = V.map (payoff strike) priceS
+      fitStates = V.ifilter (\i _ -> calibEx V.! i > 0) calibS
+      fitTargets = V.ifilter (\i _ -> calibEx V.! i > 0) calibCF
+  if V.length fitStates <= fromIntegral order
     then return (calibCF, priceCF, exFlags0)
     else do
-      contCalib <- V.toList <$> lsmRegress polyT order (V.fromList fitStates) (V.fromList fitTargets) (V.fromList calibS)
-      contPrice <- V.toList <$> lsmRegress polyT order (V.fromList fitStates) (V.fromList fitTargets) (V.fromList priceS)
-      let calibCF' = zipWith3 (\cf ex cont -> if ex > 0 && ex > cont then ex else cf) calibCF calibEx contCalib
-          decidePrice cf ex cont = if ex > 0 && ex > cont then (ex, True) else (cf, False)
-          (priceCF', exercisedNow) = unzip $ zipWith3 decidePrice priceCF priceEx contPrice
-          exFlags' = zipWith (||) exFlags0 exercisedNow
+      contCalib <- lsmRegress polyT order fitStates fitTargets calibS
+      contPrice <- lsmRegress polyT order fitStates fitTargets priceS
+      let exercise ex cont = ex > 0 && ex > cont
+          calibCF' = V.zipWith3 (\cf ex cont -> if exercise ex cont then ex else cf) calibCF calibEx contCalib
+          priceCF' = V.zipWith3 (\cf ex cont -> if exercise ex cont then ex else cf) priceCF priceEx contPrice
+          exercisedNow = U.generate (V.length priceCF) $ \i -> exercise (priceEx V.! i) (contPrice V.! i)
+          exFlags' = U.zipWith (||) exFlags0 exercisedNow
       return (calibCF', priceCF', exFlags')
 
 -- |'lsmStep' counterpart of 'haskellGoBack', walking the same backward-ordered triples.
-lsmGoBack :: PolynomialType -> Word -> Double -> [(Double, [Double], [Double])] -> [Double] -> [Double] -> [Bool]
-          -> IO ([Double], [Double], [Bool])
+lsmGoBack :: PolynomialType -> Word -> Double -> [(Double, RealVector, RealVector)] -> RealVector -> RealVector -> U.Vector Bool
+          -> IO (RealVector, RealVector, U.Vector Bool)
 lsmGoBack polyT order strike steps calibCF priceCF exFlags = case steps of
   [] -> return (calibCF, priceCF, exFlags)
   ((df, calibS, priceS) : rest) -> do
@@ -199,13 +205,13 @@ lsmGoBack polyT order strike steps calibCF priceCF exFlags = case steps of
     lsmGoBack polyT order strike rest calibCF' priceCF' exFlags'
 
 -- |split a per-date state matrix (ascending, one row per date including both endpoints) into its
--- last row (maturity) and every earlier row, in backward (latest-first) order -- via 'reverse'
--- and pattern matching, rather than 'last'\/'init'. @[]@ only if the process is sampled at zero
--- dates, which never happens ('timeSteps' is fixed and positive below).
-splitMaturity :: [[Double]] -> ([Double], [[Double]])
-splitMaturity states = case reverse states of
-  (m : rest) -> (m, rest)
-  []         -> ([], [])
+-- last row (maturity) and every earlier row.  The earlier rows remain ascending here; the caller
+-- reverses them once when constructing the backward exercise-step list.  @[]@ only if the process
+-- is sampled at zero dates, which never happens ('timeSteps' is fixed and positive below).
+splitMaturity :: BV.Vector RealVector -> (RealVector, BV.Vector RealVector)
+splitMaturity states
+  | BV.null states = (V.empty, BV.empty)
+  | otherwise = (BV.last states, BV.init states)
 
 run :: IO Result
 run = do
@@ -231,32 +237,34 @@ run = do
               _             -> 1 -- unreachable: timeSteps >= 1 below gives at least two entries
 
   genCalib <- pathGenerator PseudoRandom bsmProc grid seedCalib (size grid - 1) False
-  calibPaths <- replicateM nCalib (V.toList <$> (next genCalib >>= \s -> asset s 0))
+  calibPaths <- BV.replicateM nCalib (next genCalib >>= \s -> asset s 0)
   genPrice <- pathGenerator PseudoRandom bsmProc grid seedPrice (size grid - 1) False
-  pricePaths <- replicateM nPrice (V.toList <$> (next genPrice >>= \s -> asset s 0))
-  let calibStates = transpose calibPaths
-      priceStates = transpose pricePaths
+  pricePaths <- BV.replicateM nPrice (next genPrice >>= \s -> asset s 0)
+  let timeMajor nTimes paths = BV.generate nTimes $ \timeIndex ->
+        V.generate (BV.length paths) $ \pathIndex -> (paths BV.! pathIndex) V.! timeIndex
+      calibStates = timeMajor (fromIntegral timeSteps + 1) calibPaths
+      priceStates = timeMajor (fromIntegral timeSteps + 1) pricePaths
       (calibMaturity, calibRestRev) = splitMaturity calibStates
       (priceMaturity, priceRestRev) = splitMaturity priceStates
-      calibCF0 = map (payoff strike) calibMaturity
-      priceCF0 = map (payoff strike) priceMaturity
+      calibCF0 = V.map (payoff strike) calibMaturity
+      priceCF0 = V.map (payoff strike) priceMaturity
       -- backward-ordered (discount factor, calibration state, pricing state) triples
       -- 'haskellGoBack'\/'lsmGoBack' walk. dfsRev already excludes the valuation-date step and is
       -- one shorter than calibRestRev\/priceRestRev (which still include the valuation date as
       -- their final entry); zip3 truncates to the shortest list, dropping that trailing entry for
       -- free -- the total-function replacement for the 'init' this would otherwise need.
-      steps = zip3 dfsRev calibRestRev priceRestRev
+      steps = zip3 dfsRev (BV.toList (BV.reverse calibRestRev)) (BV.toList (BV.reverse priceRestRev))
 
   -- 'mean' (via 'sum') fully forces each backward-induction result inside the timed block --
   -- without it, the lazily-built cashflow lists would only be forced later, when 'Result' is
   -- printed, and the CPU time captured here would be meaningless.
   (lsmP, lsmT) <- cpuSeconds $ do
-    (_, priceFinal, _) <- lsmGoBack polyT order strike steps calibCF0 priceCF0 (replicate nPrice False)
-    let p = mean (map (* df0) priceFinal)
+    (_, priceFinal, _) <- lsmGoBack polyT order strike steps calibCF0 priceCF0 (U.replicate nPrice False)
+    let p = mean (V.map (* df0) priceFinal)
     p `seq` return p
   (haskellP, haskellT) <- cpuSeconds $ do
-    let (_, priceFinal, _) = haskellGoBack order strike steps calibCF0 priceCF0 (replicate nPrice False)
-        p = mean (map (* df0) priceFinal)
+    let (_, priceFinal, _) = haskellGoBack order strike steps calibCF0 priceCF0 (U.replicate nPrice False)
+        p = mean (V.map (* df0) priceFinal)
     p `seq` return p
 
   return $ Result lsmP haskellP lsmT haskellT

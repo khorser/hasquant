@@ -19,6 +19,7 @@ module SofrXva.Xva
 
 import Control.Monad (forM)
 import Data.List (nub, sort)
+import Data.List.NonEmpty (NonEmpty)
 import Data.Time.Calendar (Day)
 import qualified Data.Map.Strict as Map
 
@@ -41,10 +42,10 @@ data XvaResult = XvaResult
 -- @xva_val.py@ both already treat scenario 0's dates as shared across all scenarios.
 computeXva
   :: Map.Map (Int, Int) Double -- ^NPVs, keyed (scen, ts) (see 'SofrXva.Pricing.SofrProfile')
-  -> Map.Map (Int, Int) (Day, [(Day, Double)]) -- ^curve map, for its (scen, ts) -> date lookup
+  -> Map.Map (Int, Int) (Day, NonEmpty (Day, Double)) -- ^curve map, for its (scen, ts) -> date lookup
   -> TS.YieldTermStructure -- ^t0 discount curve (see 'SofrXva.Pricing.SofrProfile')
-  -> [(Day, Double)] -- ^counterparty survival-probability curve points
-  -> [(Day, Double)] -- ^own survival-probability curve points
+  -> NonEmpty (Day, Double) -- ^counterparty survival-probability curve points
+  -> NonEmpty (Day, Double) -- ^own survival-probability curve points
   -> Double -- ^counterparty recovery rate
   -> Double -- ^own recovery rate
   -> Double -- ^percentile for the PFE report, e.g. 0.95

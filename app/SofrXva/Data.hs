@@ -12,6 +12,7 @@ module SofrXva.Data
   ) where
 
 import Data.Time.Calendar (Day)
+import Data.List.NonEmpty (NonEmpty(..))
 import qualified Data.Map.Strict as Map
 
 import SofrXva.Csv (parseDMY, splitComma)
@@ -23,7 +24,7 @@ import SofrXva.Csv (parseDMY, splitComma)
 -- the valuation date and its (pillar date, discount factor) pairs -- with a synthetic
 -- @(valDate, 1.0)@ point prepended, since the source discount factors are relative to
 -- the valuation date rather than including it.
-loadSofrCurve :: FilePath -> String -> IO (Map.Map (Int, Int) (Day, [(Day, Double)]))
+loadSofrCurve :: FilePath -> String -> IO (Map.Map (Int, Int) (Day, NonEmpty (Day, Double)))
 loadSofrCurve path curveName = do
   rows <- curveRows curveName <$> readFile path
   pure (Map.fromList (pairCurveRows rows))
@@ -50,9 +51,9 @@ curveRows curveName content =
   , let rest = drop 9 fs
   ]
 
-pairCurveRows :: [CurveRow] -> [((Int, Int), (Day, [(Day, Double)]))]
+pairCurveRows :: [CurveRow] -> [((Int, Int), (Day, NonEmpty (Day, Double)))]
 pairCurveRows rows =
-  [ ((crScen dr, crTS dr), (crValDate dr, (crValDate dr, 1.0) : zip (map parseDMY (crData dr)) (map read (crData pr))))
+  [ ((crScen dr, crTS dr), (crValDate dr, (crValDate dr, 1.0) :| zip (map parseDMY (crData dr)) (map read (crData pr))))
   | (dr, pr) <- zip rows (drop 1 rows)
   , crCol dr == "CurveDate", crCol pr == "CurvePoint"
   , crScen dr == crScen pr, crTS dr == crTS pr

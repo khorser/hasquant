@@ -22,6 +22,7 @@ import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.TARF as TARF
 import qualified QuantLib.Example.CVAIRS as CVAIRSExample
 import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
+import qualified QuantLib.Example.HaskellLSM as HaskellLSMExample
 
 main :: IO ()
 main = do
@@ -167,6 +168,14 @@ main = do
   putStrLn $ "NPV: " ++ show tnpv
   putStrLn $ "Forward Rates:           " ++ show fwds
   putStrLn $ "Simulated Forward Rates: " ++ show simFwds
+
+  putStrLn "\n*** LSM Regression Benchmark ***"
+  lsmBench <- keepingSettings' HaskellLSMExample.run
+  printf "lsmRegress (QuantLib solve): %.6fs, price %.6f\n"
+    (HaskellLSMExample.lsmSeconds lsmBench) (HaskellLSMExample.lsmPrice lsmBench)
+  printf "Haskell normal equations: %.6fs, price %.6f\n"
+    (HaskellLSMExample.haskellSeconds lsmBench) (HaskellLSMExample.haskellPrice lsmBench)
+  putStrLn "(CPU time covers backward induction only; both use identical pre-generated paths.)"
 
   putStrLn "\n*** CVA IRS Example ***"
   (CVAIRSExample.Result rows) <- keepingSettings' CVAIRSExample.run
