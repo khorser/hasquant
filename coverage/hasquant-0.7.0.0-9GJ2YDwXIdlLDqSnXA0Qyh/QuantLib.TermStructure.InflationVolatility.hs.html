@@ -247,350 +247,354 @@ span.spaces    { background: white }
 <span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates'_ a1' a2'1  a2'2 a3'1  a3'2 &gt;&gt;</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'')</span></span>
-<span class="lineno">  235 </span>
-<span class="lineno">  236 </span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'')</span></span>
 <span class="lineno">  237 </span>
-<span class="lineno">  238 </span>-- |The ATM YoY swap rate at the given maturity date, from put\/call parity on the surface's
-<span class="lineno">  239 </span>-- cap\/floor price data.
-<span class="lineno">  240 </span>yoyCapFloorAtmYoYSwapRate :: (YoYCapFloorTermPriceSurface) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  241 </span> -&gt; IO ((Double))
-<span class="lineno">  242 </span><span class="decl"><span class="istickedoff">yoyCapFloorAtmYoYSwapRate a1 a2 a3 =</span>
-<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">yoyCapFloorAtmYoYSwapRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  251 </span>
-<span class="lineno">  252 </span>
+<span class="lineno">  238 </span>
+<span class="lineno">  239 </span>
+<span class="lineno">  240 </span>-- |The ATM YoY swap rate at the given maturity date, from put\/call parity on the surface's
+<span class="lineno">  241 </span>-- cap\/floor price data.
+<span class="lineno">  242 </span>yoyCapFloorAtmYoYSwapRate :: (YoYCapFloorTermPriceSurface) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  243 </span> -&gt; IO ((Double))
+<span class="lineno">  244 </span><span class="decl"><span class="istickedoff">yoyCapFloorAtmYoYSwapRate a1 a2 a3 =</span>
+<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">yoyCapFloorAtmYoYSwapRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  251 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  252 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  253 </span>
-<span class="lineno">  254 </span>-- |The ATM YoY inflation rate at the given maturity date and observation lag (or the surface's
-<span class="lineno">  255 </span>-- own lag when 'Nothing'), derived from the swap-rate curve above.
-<span class="lineno">  256 </span>yoyCapFloorAtmYoYRate :: (YoYCapFloorTermPriceSurface) -&gt; (Day) -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
-<span class="lineno">  257 </span> -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  258 </span> -&gt; IO ((Double))
-<span class="lineno">  259 </span><span class="decl"><span class="istickedoff">yoyCapFloorAtmYoYRate a1 a2 a3 a4 =</span>
-<span class="lineno">  260 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  261 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromMaybeEnumQuantity a3} in </span>
-<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
-<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">yoyCapFloorAtmYoYRate'_ a1' a2' a3'1  a3'2 a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  269 </span>
-<span class="lineno">  270 </span>
+<span class="lineno">  254 </span>
+<span class="lineno">  255 </span>
+<span class="lineno">  256 </span>-- |The ATM YoY inflation rate at the given maturity date and observation lag (or the surface's
+<span class="lineno">  257 </span>-- own lag when 'Nothing'), derived from the swap-rate curve above.
+<span class="lineno">  258 </span>yoyCapFloorAtmYoYRate :: (YoYCapFloorTermPriceSurface) -&gt; (Day) -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
+<span class="lineno">  259 </span> -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  260 </span> -&gt; IO ((Double))
+<span class="lineno">  261 </span><span class="decl"><span class="istickedoff">yoyCapFloorAtmYoYRate a1 a2 a3 a4 =</span>
+<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromMaybeEnumQuantity a3} in </span>
+<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
+<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">yoyCapFloorAtmYoYRate'_ a1' a2' a3'1  a3'2 a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  271 </span>
-<span class="lineno">  272 </span>-- |The union of cap and floor strikes in the surface's price grid -- the strikes a stripped
-<span class="lineno">  273 </span>-- 'YoYOptionletVolatilitySurface' (via 'kInterpolatedYoYOptionletVolatilitySurfaceBlack' et al.)
-<span class="lineno">  274 </span>-- has a bootstrapped vol curve for.
-<span class="lineno">  275 </span>yoyCapFloorStrikes :: (YoYCapFloorTermPriceSurface) -&gt; IO (([Double]))
-<span class="lineno">  276 </span><span class="decl"><span class="istickedoff">yoyCapFloorStrikes a1 =</span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">yoyCapFloorStrikes'_ a1' a2'1  a2'2 &gt;&gt;</span>
-<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  282 </span>
-<span class="lineno">  283 </span>
-<span class="lineno">  284 </span>
-<span class="lineno">  285 </span>-- |Strips a 'YoYOptionletVolatilitySurface' from a 'YoYCapFloorTermPriceSurface' by bootstrapping
-<span class="lineno">  286 </span>-- a per-strike vol curve against Black-priced YoY caps\/floors (mirrors upstream's own
-<span class="lineno">  287 </span>-- @testYoYPriceSurfaceToVol@: an @InterpolatedYoYOptionletStripper@ solving each strike's initial
-<span class="lineno">  288 </span>-- vol, then a @KInterpolatedYoYOptionletVolatilitySurface@ interpolating across strikes, both
-<span class="lineno">  289 </span>-- sharing the given 'Interpolation' -- neither is exposed as its own type, since nothing in
-<span class="lineno">  290 </span>-- upstream reaches them from outside this one bootstrap; see this function's C shim for the full
-<span class="lineno">  291 </span>-- pipeline). /index/\//nominalTermStructure/ price the null-vol engine the stripper solves
-<span class="lineno">  292 </span>-- against; /slope/ is the assumed initial caplet-vol slope for strikes past the edge of good
-<span class="lineno">  293 </span>-- price data (a negative slope for typically low\/flat short-dated extreme-strike prices, per
-<span class="lineno">  294 </span>-- upstream's own comment -- too extreme a slope can leave no arbitrage-free solution).
-<span class="lineno">  295 </span>kInterpolatedYoYOptionletVolatilitySurfaceBlack :: Word -- ^settlementDays
-<span class="lineno">  296 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
-<span class="lineno">  297 </span>  -&gt; YoYCapFloorTermPriceSurface -- ^capFloorPrices
-<span class="lineno">  298 </span>  -&gt; YoYInflationIndex -- ^index
-<span class="lineno">  299 </span>  -&gt; GenYieldTermStructure y -- ^nominalTermStructure
-<span class="lineno">  300 </span>  -&gt; Double -- ^slope
-<span class="lineno">  301 </span>  -&gt; Interpolation
-<span class="lineno">  302 </span>  -&gt; IO YoYOptionletVolatilitySurface
-<span class="lineno">  303 </span><span class="decl"><span class="nottickedoff">kInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =</span>
-<span class="lineno">  304 </span><span class="spaces">  </span><span class="nottickedoff">uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)</span></span>
-<span class="lineno">  305 </span>qlKInterpolatedYoYOptionletVolatilitySurfaceBlack :: (Word) -- ^settlementDays
-<span class="lineno">  306 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (YoYCapFloorTermPriceSurface) -- ^capFloorPrices
-<span class="lineno">  307 </span> -&gt; (YoYInflationIndex) -- ^index
-<span class="lineno">  308 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
-<span class="lineno">  309 </span> -&gt; (Double) -- ^slope
-<span class="lineno">  310 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator, approximator, approximatorArg
-<span class="lineno">  311 </span> -&gt; IO ((YoYOptionletVolatilitySurface))
-<span class="lineno">  312 </span><span class="decl"><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBlack a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
-<span class="lineno">  313 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  314 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno">  315 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromEnumC a3} in </span>
-<span class="lineno">  316 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a4 $ \a4' -&gt; </span>
-<span class="lineno">  317 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a5 $ \a5' -&gt; </span>
-<span class="lineno">  318 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
-<span class="lineno">  319 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno">  320 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
-<span class="lineno">  321 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  322 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
-<span class="lineno">  323 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = fromIntegral a11} in </span>
-<span class="lineno">  324 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno">  325 </span><span class="spaces">  </span><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBlack'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYOptionletVolatilityStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a12'&gt;&gt;</span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  329 </span>
-<span class="lineno">  330 </span>
-<span class="lineno">  331 </span>
-<span class="lineno">  332 </span>-- |As 'kInterpolatedYoYOptionletVolatilitySurfaceBlack', but unit-displaced Black.
-<span class="lineno">  333 </span>kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack :: Word -- ^settlementDays
-<span class="lineno">  334 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
-<span class="lineno">  335 </span>  -&gt; YoYCapFloorTermPriceSurface -- ^capFloorPrices
-<span class="lineno">  336 </span>  -&gt; YoYInflationIndex -- ^index
-<span class="lineno">  337 </span>  -&gt; GenYieldTermStructure y -- ^nominalTermStructure
-<span class="lineno">  338 </span>  -&gt; Double -- ^slope
-<span class="lineno">  339 </span>  -&gt; Interpolation
-<span class="lineno">  340 </span>  -&gt; IO YoYOptionletVolatilitySurface
-<span class="lineno">  341 </span><span class="decl"><span class="istickedoff">kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =</span>
-<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)</span></span>
-<span class="lineno">  343 </span>qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack :: (Word) -- ^settlementDays
-<span class="lineno">  344 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (YoYCapFloorTermPriceSurface) -- ^capFloorPrices
-<span class="lineno">  345 </span> -&gt; (YoYInflationIndex) -- ^index
-<span class="lineno">  346 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
-<span class="lineno">  347 </span> -&gt; (Double) -- ^slope
-<span class="lineno">  348 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator, approximator, approximatorArg
-<span class="lineno">  349 </span> -&gt; IO ((YoYOptionletVolatilitySurface))
-<span class="lineno">  350 </span><span class="decl"><span class="istickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
-<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno">  353 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromEnumC a3} in </span>
-<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a4 $ \a4' -&gt; </span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a5 $ \a5' -&gt; </span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
-<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
-<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = fromIntegral a11} in </span>
-<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno">  363 </span><span class="spaces">  </span><span class="istickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">peekYoYOptionletVolatilityStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
-<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  367 </span>
-<span class="lineno">  368 </span>
-<span class="lineno">  369 </span>
-<span class="lineno">  370 </span>-- |As 'kInterpolatedYoYOptionletVolatilitySurfaceBlack', but Bachelier (normal model).
-<span class="lineno">  371 </span>kInterpolatedYoYOptionletVolatilitySurfaceBachelier :: Word -- ^settlementDays
-<span class="lineno">  372 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
-<span class="lineno">  373 </span>  -&gt; YoYCapFloorTermPriceSurface -- ^capFloorPrices
-<span class="lineno">  374 </span>  -&gt; YoYInflationIndex -- ^index
-<span class="lineno">  375 </span>  -&gt; GenYieldTermStructure y -- ^nominalTermStructure
-<span class="lineno">  376 </span>  -&gt; Double -- ^slope
-<span class="lineno">  377 </span>  -&gt; Interpolation
-<span class="lineno">  378 </span>  -&gt; IO YoYOptionletVolatilitySurface
-<span class="lineno">  379 </span><span class="decl"><span class="nottickedoff">kInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =</span>
-<span class="lineno">  380 </span><span class="spaces">  </span><span class="nottickedoff">uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)</span></span>
-<span class="lineno">  381 </span>qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier :: (Word) -- ^settlementDays
-<span class="lineno">  382 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (YoYCapFloorTermPriceSurface) -- ^capFloorPrices
-<span class="lineno">  383 </span> -&gt; (YoYInflationIndex) -- ^index
-<span class="lineno">  384 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
-<span class="lineno">  385 </span> -&gt; (Double) -- ^slope
-<span class="lineno">  386 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator, approximator, approximatorArg
-<span class="lineno">  387 </span> -&gt; IO ((YoYOptionletVolatilitySurface))
-<span class="lineno">  388 </span><span class="decl"><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
-<span class="lineno">  389 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  390 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno">  391 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromEnumC a3} in </span>
-<span class="lineno">  392 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a4 $ \a4' -&gt; </span>
-<span class="lineno">  393 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a5 $ \a5' -&gt; </span>
-<span class="lineno">  394 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = fromIntegral a11} in </span>
-<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  402 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYOptionletVolatilityStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  403 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a12'&gt;&gt;</span>
-<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  405 </span>
-<span class="lineno">  406 </span>
-<span class="lineno">  407 </span>
-<span class="lineno">  408 </span>-- |Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity
-<span class="lineno">  409 </span>-- price grid. 'Interpolation2D' chooses the cap\/floor price-grid interpolator. @cPrice@\/
-<span class="lineno">  410 </span>-- @fPrice@ are plain price matrices (rows = strikes, columns = maturities), not quote-linked
-<span class="lineno">  411 </span>-- like 'QuantLib.TermStructure.Volatility.capFloorTermVolSurface's volatility matrix.
-<span class="lineno">  412 </span>cpiCapFloorTermPriceSurface :: Double -- ^nominal
-<span class="lineno">  413 </span>  -&gt; Double -- ^baseRate
-<span class="lineno">  414 </span>  -&gt; (Word, TimeUnit) -- ^observationLag
-<span class="lineno">  415 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
-<span class="lineno">  416 </span>  -&gt; ZeroInflationIndex -&gt; CPIInterpolationType -&gt; GenYieldTermStructure y
-<span class="lineno">  417 </span>  -&gt; [Double] -- ^cStrikes
-<span class="lineno">  418 </span>  -&gt; [Double] -- ^fStrikes
-<span class="lineno">  419 </span>  -&gt; [(Word, TimeUnit)] -- ^cfMaturities
-<span class="lineno">  420 </span>  -&gt; Matrix Double -- ^cPrice
-<span class="lineno">  421 </span>  -&gt; Matrix Double -- ^fPrice
-<span class="lineno">  422 </span>  -&gt; Interpolation2D
-<span class="lineno">  423 </span>  -&gt; IO CPICapFloorTermPriceSurface
-<span class="lineno">  424 </span><span class="decl"><span class="istickedoff">cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d =</span>
-<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)</span>
-<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">where (maturityNums, maturityUnits) = unzip cfMaturities</span></span>
-<span class="lineno">  427 </span>qlCPICapFloorTermPriceSurface :: (Double) -&gt; (Double) -&gt; ((Word,TimeUnit)) -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -&gt; (GenYieldTermStructure y) -&gt; ([Double]) -- ^cStrikes
-<span class="lineno">  428 </span> -&gt; ([Double]) -- ^fStrikes
-<span class="lineno">  429 </span> -&gt; ([Word]) -&gt; ([TimeUnit]) -- ^cfMaturities
-<span class="lineno">  430 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^cPrice
-<span class="lineno">  431 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^fPrice
-<span class="lineno">  432 </span> -&gt; (Int) -- ^interpolator2D
-<span class="lineno">  433 </span> -&gt; IO ((CPICapFloorTermPriceSurface))
-<span class="lineno">  434 </span><span class="decl"><span class="istickedoff">qlCPICapFloorTermPriceSurface a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 =</span>
-<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
-<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromEnumC a5} in </span>
-<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a6 $ \a6' -&gt; </span>
-<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a7 $ \a7' -&gt; </span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromEnumC a8} in </span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a9 $ \a9' -&gt; </span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a10 $ \(a10'1, a10'2) -&gt; </span>
-<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a11 $ \(a11'1, a11'2) -&gt; </span>
-<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">withIntArray a12 $ \(a12'1, a12'2) -&gt; </span>
-<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">withEnumArray a13 $ \(a13'1, a13'2) -&gt; </span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromIntegral a14} in </span>
-<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = fromIntegral a15} in </span>
-<span class="lineno">  450 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a16 $ \a16' -&gt; </span>
-<span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = fromIntegral a17} in </span>
-<span class="lineno">  452 </span><span class="spaces">  </span><span class="istickedoff">let {a18' = fromIntegral a18} in </span>
-<span class="lineno">  453 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a19 $ \a19' -&gt; </span>
-<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">let {a20' = fromIntegral a20} in </span>
-<span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a21' -&gt; </span>
-<span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">qlCPICapFloorTermPriceSurface'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10'1  a10'2 a11'1  a11'2 a12'1  a12'2 a13'1  a13'2 a14' a15' a16' a17' a18' a19' a20' a21' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">peekCPICapFloorTermPriceSurface res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a21'&gt;&gt;</span>
-<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  460 </span>
-<span class="lineno">  461 </span>
-<span class="lineno">  462 </span>
-<span class="lineno">  463 </span>-- |Constant CPI (zero-inflation) volatility surface, no maturity\/strike dependence -- the only
-<span class="lineno">  464 </span>-- concrete leaf bound here, mirroring 'constantYoYOptionletVolatility'. No engine or coupon
-<span class="lineno">  465 </span>-- pricer consumes this in QL 1.43 (see this type's own haddock in &quot;QuantLib.Internal.Type&quot;), so
-<span class="lineno">  466 </span>-- it is queryable via 'cpiVolatility'\/'cpiTotalVariance' but not otherwise wired up.
-<span class="lineno">  467 </span>constantCPIVolatility :: (GenQuote q) -&gt; (Word) -- ^settlementDays
-<span class="lineno">  468 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; ((Word,TimeUnit)) -- ^observationLag
-<span class="lineno">  469 </span> -&gt; (Frequency) -&gt; (Bool) -- ^indexIsInterpolated
-<span class="lineno">  470 </span> -&gt; IO ((CPIVolatilitySurface))
-<span class="lineno">  471 </span><span class="decl"><span class="istickedoff">constantCPIVolatility a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a3 $ \a3' -&gt; </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">let {(a6'1, a6'2) = fromEnumQuantity a6} in </span>
-<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = C2HSImp.fromBool a8} in </span>
-<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  481 </span><span class="spaces">  </span><span class="istickedoff">constantCPIVolatility'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  482 </span><span class="spaces">  </span><span class="istickedoff">peekCPIVolatilitySurface res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  483 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  484 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  485 </span>
-<span class="lineno">  486 </span>
-<span class="lineno">  487 </span>
-<span class="lineno">  488 </span>-- |The volatility for a given maturity date and strike, observed with the given observation
-<span class="lineno">  489 </span>-- lag (or the surface's own lag when 'Nothing').
-<span class="lineno">  490 </span>cpiVolatility :: (CPIVolatilitySurface) -&gt; (Day) -&gt; (Double) -- ^strike
-<span class="lineno">  491 </span> -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
-<span class="lineno">  492 </span> -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  493 </span> -&gt; IO ((Double))
-<span class="lineno">  494 </span><span class="decl"><span class="istickedoff">cpiVolatility a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">cpiVolatility'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  505 </span>
-<span class="lineno">  506 </span>
-<span class="lineno">  507 </span>
-<span class="lineno">  508 </span>-- |The total integrated variance for a given exercise date and strike. As 'cpiVolatility', a
-<span class="lineno">  509 </span>-- 'Nothing' observation lag uses the surface's own.
-<span class="lineno">  510 </span>cpiTotalVariance :: (CPIVolatilitySurface) -&gt; (Day) -&gt; (Double) -- ^strike
-<span class="lineno">  511 </span> -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
-<span class="lineno">  512 </span> -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  513 </span> -&gt; IO ((Double))
-<span class="lineno">  514 </span><span class="decl"><span class="istickedoff">cpiTotalVariance a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  517 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
-<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
-<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  521 </span><span class="spaces">  </span><span class="istickedoff">cpiTotalVariance'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  522 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  525 </span>
-<span class="lineno">  526 </span>
-<span class="lineno">  527 </span>
-<span class="lineno">  528 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlConstantYoYOptionletVolatility&quot;
-<span class="lineno">  529 </span>  constantYoYOptionletVolatility'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))))
+<span class="lineno">  272 </span>
+<span class="lineno">  273 </span>
+<span class="lineno">  274 </span>-- |The union of cap and floor strikes in the surface's price grid -- the strikes a stripped
+<span class="lineno">  275 </span>-- 'YoYOptionletVolatilitySurface' (via 'kInterpolatedYoYOptionletVolatilitySurfaceBlack' et al.)
+<span class="lineno">  276 </span>-- has a bootstrapped vol curve for.
+<span class="lineno">  277 </span>yoyCapFloorStrikes :: (YoYCapFloorTermPriceSurface) -&gt; IO (([Double]))
+<span class="lineno">  278 </span><span class="decl"><span class="istickedoff">yoyCapFloorStrikes a1 =</span>
+<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">yoyCapFloorStrikes'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  286 </span>
+<span class="lineno">  287 </span>
+<span class="lineno">  288 </span>
+<span class="lineno">  289 </span>-- |Strips a 'YoYOptionletVolatilitySurface' from a 'YoYCapFloorTermPriceSurface' by bootstrapping
+<span class="lineno">  290 </span>-- a per-strike vol curve against Black-priced YoY caps\/floors (mirrors upstream's own
+<span class="lineno">  291 </span>-- @testYoYPriceSurfaceToVol@: an @InterpolatedYoYOptionletStripper@ solving each strike's initial
+<span class="lineno">  292 </span>-- vol, then a @KInterpolatedYoYOptionletVolatilitySurface@ interpolating across strikes, both
+<span class="lineno">  293 </span>-- sharing the given 'Interpolation' -- neither is exposed as its own type, since nothing in
+<span class="lineno">  294 </span>-- upstream reaches them from outside this one bootstrap; see this function's C shim for the full
+<span class="lineno">  295 </span>-- pipeline). /index/\//nominalTermStructure/ price the null-vol engine the stripper solves
+<span class="lineno">  296 </span>-- against; /slope/ is the assumed initial caplet-vol slope for strikes past the edge of good
+<span class="lineno">  297 </span>-- price data (a negative slope for typically low\/flat short-dated extreme-strike prices, per
+<span class="lineno">  298 </span>-- upstream's own comment -- too extreme a slope can leave no arbitrage-free solution).
+<span class="lineno">  299 </span>kInterpolatedYoYOptionletVolatilitySurfaceBlack :: Word -- ^settlementDays
+<span class="lineno">  300 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
+<span class="lineno">  301 </span>  -&gt; YoYCapFloorTermPriceSurface -- ^capFloorPrices
+<span class="lineno">  302 </span>  -&gt; YoYInflationIndex -- ^index
+<span class="lineno">  303 </span>  -&gt; GenYieldTermStructure y -- ^nominalTermStructure
+<span class="lineno">  304 </span>  -&gt; Double -- ^slope
+<span class="lineno">  305 </span>  -&gt; Interpolation
+<span class="lineno">  306 </span>  -&gt; IO YoYOptionletVolatilitySurface
+<span class="lineno">  307 </span><span class="decl"><span class="nottickedoff">kInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =</span>
+<span class="lineno">  308 </span><span class="spaces">  </span><span class="nottickedoff">uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)</span></span>
+<span class="lineno">  309 </span>qlKInterpolatedYoYOptionletVolatilitySurfaceBlack :: (Word) -- ^settlementDays
+<span class="lineno">  310 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (YoYCapFloorTermPriceSurface) -- ^capFloorPrices
+<span class="lineno">  311 </span> -&gt; (YoYInflationIndex) -- ^index
+<span class="lineno">  312 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
+<span class="lineno">  313 </span> -&gt; (Double) -- ^slope
+<span class="lineno">  314 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator, approximator, approximatorArg
+<span class="lineno">  315 </span> -&gt; IO ((YoYOptionletVolatilitySurface))
+<span class="lineno">  316 </span><span class="decl"><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBlack a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno">  317 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  318 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno">  319 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromEnumC a3} in </span>
+<span class="lineno">  320 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a4 $ \a4' -&gt; </span>
+<span class="lineno">  321 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a5 $ \a5' -&gt; </span>
+<span class="lineno">  322 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
+<span class="lineno">  323 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  325 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  326 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
+<span class="lineno">  327 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = fromIntegral a11} in </span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a12' -&gt; </span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBlack'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  330 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYOptionletVolatilityStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a12'&gt;&gt;</span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  333 </span>
+<span class="lineno">  334 </span>
+<span class="lineno">  335 </span>
+<span class="lineno">  336 </span>-- |As 'kInterpolatedYoYOptionletVolatilitySurfaceBlack', but unit-displaced Black.
+<span class="lineno">  337 </span>kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack :: Word -- ^settlementDays
+<span class="lineno">  338 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
+<span class="lineno">  339 </span>  -&gt; YoYCapFloorTermPriceSurface -- ^capFloorPrices
+<span class="lineno">  340 </span>  -&gt; YoYInflationIndex -- ^index
+<span class="lineno">  341 </span>  -&gt; GenYieldTermStructure y -- ^nominalTermStructure
+<span class="lineno">  342 </span>  -&gt; Double -- ^slope
+<span class="lineno">  343 </span>  -&gt; Interpolation
+<span class="lineno">  344 </span>  -&gt; IO YoYOptionletVolatilitySurface
+<span class="lineno">  345 </span><span class="decl"><span class="istickedoff">kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =</span>
+<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)</span></span>
+<span class="lineno">  347 </span>qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack :: (Word) -- ^settlementDays
+<span class="lineno">  348 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (YoYCapFloorTermPriceSurface) -- ^capFloorPrices
+<span class="lineno">  349 </span> -&gt; (YoYInflationIndex) -- ^index
+<span class="lineno">  350 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
+<span class="lineno">  351 </span> -&gt; (Double) -- ^slope
+<span class="lineno">  352 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator, approximator, approximatorArg
+<span class="lineno">  353 </span> -&gt; IO ((YoYOptionletVolatilitySurface))
+<span class="lineno">  354 </span><span class="decl"><span class="istickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromEnumC a3} in </span>
+<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a4 $ \a4' -&gt; </span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a5 $ \a5' -&gt; </span>
+<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
+<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  363 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
+<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = fromIntegral a11} in </span>
+<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
+<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">peekYoYOptionletVolatilityStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
+<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  371 </span>
+<span class="lineno">  372 </span>
+<span class="lineno">  373 </span>
+<span class="lineno">  374 </span>-- |As 'kInterpolatedYoYOptionletVolatilitySurfaceBlack', but Bachelier (normal model).
+<span class="lineno">  375 </span>kInterpolatedYoYOptionletVolatilitySurfaceBachelier :: Word -- ^settlementDays
+<span class="lineno">  376 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
+<span class="lineno">  377 </span>  -&gt; YoYCapFloorTermPriceSurface -- ^capFloorPrices
+<span class="lineno">  378 </span>  -&gt; YoYInflationIndex -- ^index
+<span class="lineno">  379 </span>  -&gt; GenYieldTermStructure y -- ^nominalTermStructure
+<span class="lineno">  380 </span>  -&gt; Double -- ^slope
+<span class="lineno">  381 </span>  -&gt; Interpolation
+<span class="lineno">  382 </span>  -&gt; IO YoYOptionletVolatilitySurface
+<span class="lineno">  383 </span><span class="decl"><span class="nottickedoff">kInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =</span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="nottickedoff">uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)</span></span>
+<span class="lineno">  385 </span>qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier :: (Word) -- ^settlementDays
+<span class="lineno">  386 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (YoYCapFloorTermPriceSurface) -- ^capFloorPrices
+<span class="lineno">  387 </span> -&gt; (YoYInflationIndex) -- ^index
+<span class="lineno">  388 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
+<span class="lineno">  389 </span> -&gt; (Double) -- ^slope
+<span class="lineno">  390 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator, approximator, approximatorArg
+<span class="lineno">  391 </span> -&gt; IO ((YoYOptionletVolatilitySurface))
+<span class="lineno">  392 </span><span class="decl"><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno">  393 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  394 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromEnumC a3} in </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a4 $ \a4' -&gt; </span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a5 $ \a5' -&gt; </span>
+<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
+<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  402 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
+<span class="lineno">  403 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = fromIntegral a11} in </span>
+<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a12' -&gt; </span>
+<span class="lineno">  405 </span><span class="spaces">  </span><span class="nottickedoff">qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYOptionletVolatilityStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a12'&gt;&gt;</span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  409 </span>
+<span class="lineno">  410 </span>
+<span class="lineno">  411 </span>
+<span class="lineno">  412 </span>-- |Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity
+<span class="lineno">  413 </span>-- price grid. 'Interpolation2D' chooses the cap\/floor price-grid interpolator. @cPrice@\/
+<span class="lineno">  414 </span>-- @fPrice@ are plain price matrices (rows = strikes, columns = maturities), not quote-linked
+<span class="lineno">  415 </span>-- like 'QuantLib.TermStructure.Volatility.capFloorTermVolSurface's volatility matrix.
+<span class="lineno">  416 </span>cpiCapFloorTermPriceSurface :: Double -- ^nominal
+<span class="lineno">  417 </span>  -&gt; Double -- ^baseRate
+<span class="lineno">  418 </span>  -&gt; (Word, TimeUnit) -- ^observationLag
+<span class="lineno">  419 </span>  -&gt; Calendar -&gt; BusinessDayConvention -&gt; DayCounter
+<span class="lineno">  420 </span>  -&gt; ZeroInflationIndex -&gt; CPIInterpolationType -&gt; GenYieldTermStructure y
+<span class="lineno">  421 </span>  -&gt; [Double] -- ^cStrikes
+<span class="lineno">  422 </span>  -&gt; [Double] -- ^fStrikes
+<span class="lineno">  423 </span>  -&gt; [(Word, TimeUnit)] -- ^cfMaturities
+<span class="lineno">  424 </span>  -&gt; Matrix Double -- ^cPrice
+<span class="lineno">  425 </span>  -&gt; Matrix Double -- ^fPrice
+<span class="lineno">  426 </span>  -&gt; Interpolation2D
+<span class="lineno">  427 </span>  -&gt; IO CPICapFloorTermPriceSurface
+<span class="lineno">  428 </span><span class="decl"><span class="istickedoff">cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d =</span>
+<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)</span>
+<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">where (maturityNums, maturityUnits) = unzip cfMaturities</span></span>
+<span class="lineno">  431 </span>qlCPICapFloorTermPriceSurface :: (Double) -&gt; (Double) -&gt; ((Word,TimeUnit)) -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -&gt; (GenYieldTermStructure y) -&gt; ([Double]) -- ^cStrikes
+<span class="lineno">  432 </span> -&gt; ([Double]) -- ^fStrikes
+<span class="lineno">  433 </span> -&gt; ([Word]) -&gt; ([TimeUnit]) -- ^cfMaturities
+<span class="lineno">  434 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^cPrice
+<span class="lineno">  435 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^fPrice
+<span class="lineno">  436 </span> -&gt; (Int) -- ^interpolator2D
+<span class="lineno">  437 </span> -&gt; IO ((CPICapFloorTermPriceSurface))
+<span class="lineno">  438 </span><span class="decl"><span class="istickedoff">qlCPICapFloorTermPriceSurface a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 =</span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromEnumC a5} in </span>
+<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a6 $ \a6' -&gt; </span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a7 $ \a7' -&gt; </span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromEnumC a8} in </span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a9 $ \a9' -&gt; </span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a10 $ \(a10'1, a10'2) -&gt; </span>
+<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a11 $ \(a11'1, a11'2) -&gt; </span>
+<span class="lineno">  450 </span><span class="spaces">  </span><span class="istickedoff">withIntArray a12 $ \(a12'1, a12'2) -&gt; </span>
+<span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">withEnumArray a13 $ \(a13'1, a13'2) -&gt; </span>
+<span class="lineno">  452 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromIntegral a14} in </span>
+<span class="lineno">  453 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = fromIntegral a15} in </span>
+<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a16 $ \a16' -&gt; </span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = fromIntegral a17} in </span>
+<span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">let {a18' = fromIntegral a18} in </span>
+<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a19 $ \a19' -&gt; </span>
+<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">let {a20' = fromIntegral a20} in </span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a21' -&gt; </span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">qlCPICapFloorTermPriceSurface'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10'1  a10'2 a11'1  a11'2 a12'1  a12'2 a13'1  a13'2 a14' a15' a16' a17' a18' a19' a20' a21' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">peekCPICapFloorTermPriceSurface res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a21'&gt;&gt;</span>
+<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  464 </span>
+<span class="lineno">  465 </span>
+<span class="lineno">  466 </span>
+<span class="lineno">  467 </span>-- |Constant CPI (zero-inflation) volatility surface, no maturity\/strike dependence -- the only
+<span class="lineno">  468 </span>-- concrete leaf bound here, mirroring 'constantYoYOptionletVolatility'. No engine or coupon
+<span class="lineno">  469 </span>-- pricer consumes this in QL 1.43 (see this type's own haddock in &quot;QuantLib.Internal.Type&quot;), so
+<span class="lineno">  470 </span>-- it is queryable via 'cpiVolatility'\/'cpiTotalVariance' but not otherwise wired up.
+<span class="lineno">  471 </span>constantCPIVolatility :: (GenQuote q) -&gt; (Word) -- ^settlementDays
+<span class="lineno">  472 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; ((Word,TimeUnit)) -- ^observationLag
+<span class="lineno">  473 </span> -&gt; (Frequency) -&gt; (Bool) -- ^indexIsInterpolated
+<span class="lineno">  474 </span> -&gt; IO ((CPIVolatilitySurface))
+<span class="lineno">  475 </span><span class="decl"><span class="istickedoff">constantCPIVolatility a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a3 $ \a3' -&gt; </span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
+<span class="lineno">  481 </span><span class="spaces">  </span><span class="istickedoff">let {(a6'1, a6'2) = fromEnumQuantity a6} in </span>
+<span class="lineno">  482 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
+<span class="lineno">  483 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = C2HSImp.fromBool a8} in </span>
+<span class="lineno">  484 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  485 </span><span class="spaces">  </span><span class="istickedoff">constantCPIVolatility'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  486 </span><span class="spaces">  </span><span class="istickedoff">peekCPIVolatilitySurface res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  487 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  488 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  489 </span>
+<span class="lineno">  490 </span>
+<span class="lineno">  491 </span>
+<span class="lineno">  492 </span>-- |The volatility for a given maturity date and strike, observed with the given observation
+<span class="lineno">  493 </span>-- lag (or the surface's own lag when 'Nothing').
+<span class="lineno">  494 </span>cpiVolatility :: (CPIVolatilitySurface) -&gt; (Day) -&gt; (Double) -- ^strike
+<span class="lineno">  495 </span> -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
+<span class="lineno">  496 </span> -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  497 </span> -&gt; IO ((Double))
+<span class="lineno">  498 </span><span class="decl"><span class="istickedoff">cpiVolatility a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
+<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  505 </span><span class="spaces">  </span><span class="istickedoff">cpiVolatility'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  506 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  507 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  508 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  509 </span>
+<span class="lineno">  510 </span>
+<span class="lineno">  511 </span>
+<span class="lineno">  512 </span>-- |The total integrated variance for a given exercise date and strike. As 'cpiVolatility', a
+<span class="lineno">  513 </span>-- 'Nothing' observation lag uses the surface's own.
+<span class="lineno">  514 </span>cpiTotalVariance :: (CPIVolatilitySurface) -&gt; (Day) -&gt; (Double) -- ^strike
+<span class="lineno">  515 </span> -&gt; (Maybe (Word,TimeUnit)) -- ^obsLag
+<span class="lineno">  516 </span> -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  517 </span> -&gt; IO ((Double))
+<span class="lineno">  518 </span><span class="decl"><span class="istickedoff">cpiTotalVariance a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  521 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  522 </span><span class="spaces">  </span><span class="istickedoff">let {(a4'1, a4'2) = fromMaybeEnumQuantity a4} in </span>
+<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
+<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="istickedoff">cpiTotalVariance'_ a1' a2' a3' a4'1  a4'2 a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  526 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  529 </span>
 <span class="lineno">  530 </span>
-<span class="lineno">  531 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYOptionletVolatilitySurfaceVolatility&quot;
-<span class="lineno">  532 </span>  yoyOptionletVolatility'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
-<span class="lineno">  533 </span>
-<span class="lineno">  534 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYOptionletVolatilitySurfaceTotalVariance&quot;
-<span class="lineno">  535 </span>  yoyOptionletTotalVariance'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
-<span class="lineno">  536 </span>
-<span class="lineno">  537 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurface&quot;
-<span class="lineno">  538 </span>  qlYoYCapFloorTermPriceSurface'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')))))))))))))))))))))))))))))))
-<span class="lineno">  539 </span>
-<span class="lineno">  540 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceBaseDate&quot;
-<span class="lineno">  541 </span>  yoyCapFloorBaseDate'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  542 </span>
-<span class="lineno">  543 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates&quot;
-<span class="lineno">  544 </span>  qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; (IO ()))))))
-<span class="lineno">  545 </span>
-<span class="lineno">  546 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceAtmYoYSwapRate&quot;
-<span class="lineno">  547 </span>  yoyCapFloorAtmYoYSwapRate'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  548 </span>
-<span class="lineno">  549 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceAtmYoYRate&quot;
-<span class="lineno">  550 </span>  yoyCapFloorAtmYoYRate'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
-<span class="lineno">  551 </span>
-<span class="lineno">  552 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceStrikes&quot;
-<span class="lineno">  553 </span>  yoyCapFloorStrikes'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; (IO ()))))
-<span class="lineno">  554 </span>
-<span class="lineno">  555 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlKInterpolatedYoYOptionletVolatilitySurfaceBlack&quot;
-<span class="lineno">  556 </span>  qlKInterpolatedYoYOptionletVolatilitySurfaceBlack'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))
-<span class="lineno">  557 </span>
-<span class="lineno">  558 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack&quot;
-<span class="lineno">  559 </span>  qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))
-<span class="lineno">  560 </span>
-<span class="lineno">  561 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier&quot;
-<span class="lineno">  562 </span>  qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))
-<span class="lineno">  563 </span>
-<span class="lineno">  564 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlCPICapFloorTermPriceSurface&quot;
-<span class="lineno">  565 </span>  qlCPICapFloorTermPriceSurface'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCPICapFloorTermPriceSurface')))))))))))))))))))))))))))))
-<span class="lineno">  566 </span>
-<span class="lineno">  567 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlConstantCPIVolatility&quot;
-<span class="lineno">  568 </span>  constantCPIVolatility'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCPIVolatilitySurface')))))))))))))
-<span class="lineno">  569 </span>
-<span class="lineno">  570 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlCPIVolatilitySurfaceVolatility&quot;
-<span class="lineno">  571 </span>  cpiVolatility'_ :: ((C2HSImp.Ptr (CCPIVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
-<span class="lineno">  572 </span>
-<span class="lineno">  573 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlCPIVolatilitySurfaceTotalVariance&quot;
-<span class="lineno">  574 </span>  cpiTotalVariance'_ :: ((C2HSImp.Ptr (CCPIVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno">  531 </span>
+<span class="lineno">  532 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlConstantYoYOptionletVolatility&quot;
+<span class="lineno">  533 </span>  constantYoYOptionletVolatility'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))))
+<span class="lineno">  534 </span>
+<span class="lineno">  535 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYOptionletVolatilitySurfaceVolatility&quot;
+<span class="lineno">  536 </span>  yoyOptionletVolatility'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno">  537 </span>
+<span class="lineno">  538 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYOptionletVolatilitySurfaceTotalVariance&quot;
+<span class="lineno">  539 </span>  yoyOptionletTotalVariance'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno">  540 </span>
+<span class="lineno">  541 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurface&quot;
+<span class="lineno">  542 </span>  qlYoYCapFloorTermPriceSurface'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')))))))))))))))))))))))))))))))
+<span class="lineno">  543 </span>
+<span class="lineno">  544 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceBaseDate&quot;
+<span class="lineno">  545 </span>  yoyCapFloorBaseDate'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  546 </span>
+<span class="lineno">  547 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates&quot;
+<span class="lineno">  548 </span>  qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
+<span class="lineno">  549 </span>
+<span class="lineno">  550 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceAtmYoYSwapRate&quot;
+<span class="lineno">  551 </span>  yoyCapFloorAtmYoYSwapRate'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  552 </span>
+<span class="lineno">  553 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceAtmYoYRate&quot;
+<span class="lineno">  554 </span>  yoyCapFloorAtmYoYRate'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno">  555 </span>
+<span class="lineno">  556 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlYoYCapFloorTermPriceSurfaceStrikes&quot;
+<span class="lineno">  557 </span>  yoyCapFloorStrikes'_ :: ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  558 </span>
+<span class="lineno">  559 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlKInterpolatedYoYOptionletVolatilitySurfaceBlack&quot;
+<span class="lineno">  560 </span>  qlKInterpolatedYoYOptionletVolatilitySurfaceBlack'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))
+<span class="lineno">  561 </span>
+<span class="lineno">  562 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack&quot;
+<span class="lineno">  563 </span>  qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))
+<span class="lineno">  564 </span>
+<span class="lineno">  565 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier&quot;
+<span class="lineno">  566 </span>  qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CYoYCapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYOptionletVolatilitySurface')))))))))))))))
+<span class="lineno">  567 </span>
+<span class="lineno">  568 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlCPICapFloorTermPriceSurface&quot;
+<span class="lineno">  569 </span>  qlCPICapFloorTermPriceSurface'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCPICapFloorTermPriceSurface')))))))))))))))))))))))))))))
+<span class="lineno">  570 </span>
+<span class="lineno">  571 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlConstantCPIVolatility&quot;
+<span class="lineno">  572 </span>  constantCPIVolatility'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCPIVolatilitySurface')))))))))))))
+<span class="lineno">  573 </span>
+<span class="lineno">  574 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlCPIVolatilitySurfaceVolatility&quot;
+<span class="lineno">  575 </span>  cpiVolatility'_ :: ((C2HSImp.Ptr (CCPIVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno">  576 </span>
+<span class="lineno">  577 </span>foreign import ccall safe &quot;QuantLib/TermStructure/InflationVolatility.chs.h qlCPIVolatilitySurfaceTotalVariance&quot;
+<span class="lineno">  578 </span>  cpiTotalVariance'_ :: ((C2HSImp.Ptr (CCPIVolatilitySurface')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 
 </pre>
 </body>

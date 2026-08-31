@@ -237,12 +237,12 @@ span.spaces    { background: white }
 <span class="lineno">  218 </span>-- individual string) is then released via 'qlFreeStringArray' in one call, mirroring
 <span class="lineno">  219 </span>-- 'peekDoubleArray'\/'peekIntArray'\''s read-then-free shape.
 <span class="lineno">  220 </span>peekCStringArray :: Ptr CUInt -&gt; Ptr (Ptr CString) -&gt; IO [String]
-<span class="lineno">  221 </span><span class="decl"><span class="nottickedoff">peekCStringArray pl pp = do</span>
-<span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">l &lt;- peek pl</span>
-<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">p &lt;- peek pp</span>
-<span class="lineno">  224 </span><span class="spaces">  </span><span class="nottickedoff">raws &lt;- peekArray (fromIntegral l) p</span>
-<span class="lineno">  225 </span><span class="spaces">  </span><span class="nottickedoff">strs &lt;- mapM peekCString raws</span>
-<span class="lineno">  226 </span><span class="spaces">  </span><span class="nottickedoff">strs &lt;$ qlFreeStringArray l p</span></span>
+<span class="lineno">  221 </span><span class="decl"><span class="istickedoff">peekCStringArray pl pp = do</span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">l &lt;- peek pl</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">p &lt;- peek pp</span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff">raws &lt;- peekArray (fromIntegral l) p</span>
+<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff">strs &lt;- mapM peekCString raws</span>
+<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff">strs &lt;$ qlFreeStringArray l p</span></span>
 <span class="lineno">  227 </span>
 <span class="lineno">  228 </span>peekBoolArray :: Ptr CUInt -&gt; Ptr (Ptr CInt) -&gt; IO [Bool]
 <span class="lineno">  229 </span><span class="decl"><span class="istickedoff">peekBoolArray = peekIntArray' toBool</span></span>
