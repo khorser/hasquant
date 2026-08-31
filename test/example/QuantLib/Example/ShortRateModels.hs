@@ -9,6 +9,7 @@ module QuantLib.Example.ShortRateModels
   , run
   ) where
 import Control.Monad(forM, when)
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Index(fixingCalendar, addFixing)
@@ -163,7 +164,7 @@ runSwaps = do
   let discounts =
         [1.0, 0.999258, 0.996704, 0.990809, 0.981798, 0.972570
         ,0.963430, 0.929532, 0.889267, 0.803693, 0.596903, 0.433022]
-  ts <- TS.interpolatedDiscountCurve (zip curveDates discounts) ac365 cal [] LogLinear False
+  ts <- TS.interpolatedDiscountCurve (NE.fromList (zip curveDates discounts)) ac365 cal [] LogLinear False
   model <- hullWhite ts 0.1 0.01
   euribor <- IR.iborIndex IR.Euribor6M (Just ts)
   riskFreeEngine <- discountingSwapEngine ts Nothing Nothing Nothing

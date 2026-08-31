@@ -1,6 +1,7 @@
 module QuantLib.Spec.Index.Commodity (spec) where
 
 import Test.Hspec
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
@@ -29,7 +30,7 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal [d0, d1] [70.0, 71.0] dc
+      curve <- commodityCurve "HO curve" ho usd bbl cal (NE.fromList [(d0, 70.0), (d1, 71.0)]) dc
       idx <- commodityIndex "HO index" ho usd bbl cal 1000 (Just curve)
       commodityIndexForwardPrice idx d0 `shouldReturn` 70.0
 

@@ -228,7 +228,6 @@ module QuantLib.Method
   , pathSize
   , assetAt
   , asset
-  , asset'
   , GaussianRsg
   , gaussianRsg
   , sobolGaussianRsg
@@ -276,11 +275,10 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
-import Foreign.C.Types(CDouble, CUInt)
 import Foreign.C.String(CString)
+import Foreign.C.Types(CUInt)
 import Foreign.Ptr(Ptr, FunPtr)
 import Foreign.Marshal.Alloc(alloca)
-import Data.Vector.Storable(Vector)
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
@@ -395,9 +393,6 @@ import Data.Vector.Storable(Vector)
 
 -- |the full simulated path (values at every time step) of a single asset, as a list.
 {#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
--- |the full simulated path (values at every time step) of a single asset, as a storable vector.
-{#fun qlSamplePathAssetPath as asset'{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |one step of Longstaff-Schwartz early-exercise regression: fit a polynomial basis of the given
 -- order/type against the (in-the-money) fit states and their continuation targets, then evaluate the

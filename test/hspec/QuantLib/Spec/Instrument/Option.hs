@@ -26,13 +26,16 @@ import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Process hiding(drift)
-import QuantLib.Math(Matrix(..), PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
+import QuantLib.Math(Matrix(..), realMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
 import QuantLib.TermStructure.Volatility(blackConstantVol, blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
 import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
+
+matrix :: Word -> Word -> [Double] -> Matrix Double
+matrix rows columns = either error id . realMatrix rows columns
 
 dateOffset :: Day -> Double -> Day
 dateOffset d t = addDays (round (t * 360 :: Double)) d
@@ -194,7 +197,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         process1 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
         process2 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
-        procs <- stochasticProcessArray [process1, process2] (Matrix 2 2 [1.0, 0.5, 0.5, 1.0])
+        procs <- stochasticProcessArray [process1, process2] (matrix 2 2 [1.0, 0.5, 0.5, 1.0])
         let payoff = Max (plainVanillaPayoff (PlainVanillaPayoff Call 100.0))
             expected = 21.619
 
@@ -435,7 +438,7 @@ spec = do
             strikes = putStrikes ++ drop 1 callStrikes
             vols = putVols ++ drop 1 callVols
         cal <- calendar Null
-        volTS <- blackVarianceSurface evalDate cal [exDate] strikes (Matrix (fromIntegral (length strikes)) 1 vols)
+        volTS <- blackVarianceSurface evalDate cal [exDate] strikes (matrix (fromIntegral (length strikes)) 1 vols)
                                        dc BlackVarianceSurfaceConstantExtrapolation
                                        BlackVarianceSurfaceConstantExtrapolation Bilinear
         process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False

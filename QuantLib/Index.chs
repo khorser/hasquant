@@ -17,8 +17,7 @@ module QuantLib.Index
 
   , HistoricalIndexAnalysis
   , historicalIndexAnalysis
-  , historicalIndexAnalysisSkippedDates
-  , historicalIndexAnalysisSkippedDatesErrorMessage
+  , historicalIndexAnalysisSkipped
   , historicalIndexAnalysisMean
   , historicalIndexAnalysisStandardDeviation
   , historicalIndexAnalysisSkewness
@@ -69,8 +68,11 @@ import QuantLib.Internal.Type
 -- |whether the given date is a valid fixing date for this index
 {#fun qlIndexIsValidFixingDate as isValidFixingDate{withIndex*`GenIndex idx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
--- |stores historical fixings at the given dates; the date and value lists must have equal length
-{#fun qlIndexAddFixings as addFixings{withIndex*`GenIndex idx',withDayArray*`[Day]'&,withDoubleArrayRaw*`[Double]',`Bool' -- ^forceOverwrite
+-- |Stores historical fixings as @(date, value)@ pairs; the date is the actual fixing date.
+addFixings :: GenIndex idx -> [(Day, Double)] -> Bool -> IO ()
+addFixings idx fixings forceOverwrite = qlIndexAddFixings idx dates values forceOverwrite
+  where (dates, values) = unzip fixings
+{#fun qlIndexAddFixings{withIndex*`GenIndex idx',withDayArray*`[Day]'&,withDoubleArrayRaw*`[Double]',`Bool' -- ^forceOverwrite
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |clears all stored historical fixings for this index
@@ -100,8 +102,7 @@ fixingHistory i = do
 -- and downside-variance and -deviation\/percentiles\/value-at-risk\/expected shortfall,
 -- empirical and gaussian-assumption\/covariance\/correlation) over historical fixings of the
 -- given indexes, sampled every @step@ between @startDate@ and @endDate@. A date/index pair whose
--- fixing is unavailable is recorded in 'historicalIndexAnalysisSkippedDates'\/
--- 'historicalIndexAnalysisSkippedDatesErrorMessage' rather than failing the whole analysis.
+-- fixing is unavailable is recorded in 'historicalIndexAnalysisSkipped' rather than failing the whole analysis.
 -- 'SequenceStatistics' itself isn't given a dedicated Haskell type: it's only ever the
 -- accumulator this constructor fills internally, with no other use in hasquant, so its full
 -- risk-statistics surface is exposed directly as accessors here (see CLAUDE.md's \"don't mirror
@@ -112,11 +113,14 @@ fixingHistory i = do
   ,withIndexArray*`[Index]'&
   ,preErrorCheck-`String'errorCheck*-}->`HistoricalIndexAnalysis'peekHistoricalIndexAnalysis*#}
 
--- |Fixing dates skipped because no historical fixing was available for at least one index.
-{#fun qlHistoricalIndexAnalysisSkippedDates as historicalIndexAnalysisSkippedDates{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Day]'&peekDayArray*}->`()'#}
-
--- |The error message recorded for each date in 'historicalIndexAnalysisSkippedDates', in the same order.
-{#fun qlHistoricalIndexAnalysisSkippedDatesErrorMessage as historicalIndexAnalysisSkippedDatesErrorMessage{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[String]'&peekCStringArray*}->`()'#}
+-- |Skipped fixing dates paired with the reason no complete fixing vector was available.
+historicalIndexAnalysisSkipped :: HistoricalIndexAnalysis -> IO [(Day, String)]
+historicalIndexAnalysisSkipped analysis = do
+  dates <- qlHistoricalIndexAnalysisSkippedDates analysis
+  messages <- qlHistoricalIndexAnalysisSkippedMessages analysis
+  pure (zip dates messages)
+{#fun qlHistoricalIndexAnalysisSkippedDates as qlHistoricalIndexAnalysisSkippedDates{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Day]'&peekDayArray*}->`()'#}
+{#fun qlHistoricalIndexAnalysisSkippedDatesErrorMessage as qlHistoricalIndexAnalysisSkippedMessages{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[String]'&peekCStringArray*}->`()'#}
 
 -- |Per-index mean of the historical relative returns actually sampled.
 {#fun qlHistoricalIndexAnalysisMean as historicalIndexAnalysisMean{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}

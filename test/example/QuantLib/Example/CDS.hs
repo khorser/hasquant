@@ -5,6 +5,7 @@ module QuantLib.Example.CDS
   , run
   ) where
 import Control.Monad(forM, (>=>))
+import qualified Data.List.NonEmpty as NE
 import Data.Time.Calendar
 
 import QuantLib.InterestRate
@@ -46,7 +47,7 @@ run = do
         $(free1st 'spreadCdsHelper) (t, Months) 1 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
       [3, 6, 12, 24]
 
-  hts <- piecewiseDefaultCurve evalDate instruments dc [] HazardRate BackwardFlat
+  hts <- piecewiseDefaultCurve evalDate (NE.fromList instruments) dc [] HazardRate BackwardFlat
   probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y evalDate) False) [1, 2]
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
 

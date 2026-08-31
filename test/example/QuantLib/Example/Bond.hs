@@ -6,6 +6,7 @@ module QuantLib.Example.Bond
 import Control.Monad((>=>))
 
 import Data.List(zip4)
+import qualified Data.List.NonEmpty as NE
 import Data.Time.Calendar(fromGregorian)
 
 import qualified QuantLib.CashFlow as CF
@@ -115,7 +116,7 @@ buildMarketData = do
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
           settlDate'
-          (discDepoHelpers ++ discBondHelpers)
+          (NE.fromList (discDepoHelpers ++ discBondHelpers))
           actActISDA'
           []
           Discount
@@ -194,7 +195,7 @@ buildBonds md = do
 
   fwdCurve <- piecewiseYieldCurve
                 (settlDate md)
-                (depoLiborHelpers ++ swapLiborHelpers)
+                (NE.fromList (depoLiborHelpers ++ swapLiborHelpers))
                 (actActISDA md)
                 []
                 Discount

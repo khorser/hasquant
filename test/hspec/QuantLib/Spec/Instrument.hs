@@ -16,6 +16,7 @@ module QuantLib.Spec.Instrument (spec) where
 
 import Data.Time.Calendar(fromGregorian)
 import Control.Monad(forM_)
+import qualified Data.List.NonEmpty as NE
 
 import Test.Hspec
 
@@ -148,7 +149,7 @@ spec = do
         forM_ cases $ \(payoff, fundingType, frequency) -> do
           future <- perpetualFutures payoff fundingType frequency cal dc
           engine <- discountingPerpetualFuturesEngine domesticCurve foreignCurve spotQuote
-            [0] [fundingRate] [interestRateDiff] PerpetualFuturesPiecewiseConstant 60
+            ((0, fundingRate, interestRateDiff) NE.:| []) PerpetualFuturesPiecewiseConstant 60
           setPricingEngine future engine
           actual <- npv future
           abs (actual / expected payoff fundingType frequency - 1) `shouldSatisfy` (< 1.0e-6)

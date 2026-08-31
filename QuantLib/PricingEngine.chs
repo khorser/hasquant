@@ -270,6 +270,7 @@ import QuantLib.Internal.Type
 {#import QuantLib.Quote#}(DeltaType, AtmType)
 {#import QuantLib.Instrument.Option#} hiding(itmCashProbability, deltaForward, strikeSensitivity, dividendRho, rho, vega)
 import QuantLib.Internal.Common
+import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum CashAnnuityModel{} deriving(Show, Eq, Read)#}
 {#enum Probabilities{} deriving(Show, Eq, Read)#}
@@ -345,7 +346,15 @@ import QuantLib.Internal.Common
 -- three funding vectors must be non-empty and have identical lengths. The
 -- engine supports only 'PerpetualFuturesLinear' and 'PerpetualFuturesInverse'
 -- payoffs; QuantLib rejects a Quanto payoff at pricing time.
-{#fun qlDiscountingPerpetualFuturesEngine as discountingPerpetualFuturesEngine{
+discountingPerpetualFuturesEngine
+  :: GenYieldTermStructure y1 -> GenYieldTermStructure y2 -> GenQuote q
+  -> NonEmpty (Double, Double, Double) -- ^@(fundingTime, fundingRate, interestRateDiff)@
+  -> PerpetualFuturesInterpolationType -> Double -> IO PricingEngine
+discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolation maxT =
+  qlDiscountingPerpetualFuturesEngine domestic foreignCurve spot times rates diffs interpolation maxT
+  where (times, rates, diffs) = unzip3 (toList funding)
+
+{#fun qlDiscountingPerpetualFuturesEngine{
    withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticDiscountCurve
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignDiscountCurve
   ,withQuote*`GenQuote q' -- ^assetSpot

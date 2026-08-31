@@ -48,7 +48,7 @@ buildSofrProfile curves hist quotes = do
 
   histBDs <- filterM (isValidFixingDate index) (Map.keys hist)
   unless (null histBDs) $
-    addFixings index histBDs (map (hist Map.!) histBDs) True
+    addFixings index (zip histBDs (map (hist Map.!) histBDs)) True
 
   cal <- fixingCalendar index
   dc <- dayCounter (Actual360 False)
@@ -110,7 +110,7 @@ addInterpolatedFixings index d1 d2 v1 v2 = do
       values = linspace v1 v2 (n + 1)
   pairs <- filterM (\(d, _) -> isValidFixingDate index d) (zip allDates values)
   unless (null pairs) $
-    addFixings index (map fst pairs) (map snd pairs) True
+    addFixings index pairs True
 
 -- |@numpy.linspace@'s behaviour for the cases this module needs: 'num' evenly spaced
 -- points from 'a' to 'b' inclusive, with 'num' == 1 returning just 'a'.

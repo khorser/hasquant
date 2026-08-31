@@ -4,6 +4,7 @@ module QuantLib.Example.IsdaCds
   , run
   ) where
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Currency
 import QuantLib.Instrument
@@ -56,7 +57,7 @@ run = do
     (zip swapTenors swapQuotes)
 
   swapHelpers' <- mapM asRateHelper swapHelpers
-  discountCurve <- piecewiseYieldCurve' 0 weekendsOnly (depositHelpers ++ swapHelpers')
+  discountCurve <- piecewiseYieldCurve' 0 weekendsOnly (NE.fromList (depositHelpers ++ swapHelpers'))
     act365Fixed [] Discount LogLinear False
 
   let termDate = fromGregorian 2010 6 20

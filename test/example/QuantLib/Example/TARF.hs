@@ -43,8 +43,8 @@ run = do
   grid <- mapM (\x -> years dcILS valDate x Nothing Nothing) ds >>= timeGridFromList
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
   volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear)
-  ycILS <- interpolatedDiscountCurve dfILS dcILS calILS [] LogLinear False
-  ycEUR <- interpolatedDiscountCurve dfEUR dcEUR calEUR [] LogLinear False
+  ycILS <- interpolatedDiscountCurve (fromList dfILS) dcILS calILS [] LogLinear False
+  ycEUR <- interpolatedDiscountCurve (fromList dfEUR) dcEUR calEUR [] LogLinear False
 
   dfILS' <- points grid >>= mapM (\d -> discount ycILS d False)
   dfEUR' <- points grid >>= mapM (\d -> discount ycEUR d False)

@@ -8,7 +8,7 @@ module QuantLib.Example.FittedBondCurve
 import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
-import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last)
+import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last, fromList)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR
@@ -122,7 +122,7 @@ run = do
 
       let (instrA, instrB) = unzip helpers
 
-      ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] TS.Discount LogLinear False
+      ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal (fromList instrB) dc [] TS.Discount LogLinear False
 
       curves <- fitCurves cal dc instrA
       rs <- rates ts0 dc bondSettle evalDate curves instrA
@@ -141,7 +141,7 @@ run = do
     step3 :: Day -> DayCounter -> Calendar -> Day -> [TS.BondHelper] -> [TS.RateHelper]
              -> IO (Rate, TS.YieldTermStructure, [TS.FittedBondDiscountCurve])
     step3 evalDate dc cal bondSettle iA iB = do
-      ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal iB dc [] TS.Discount LogLinear False
+      ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal (fromList iB) dc [] TS.Discount LogLinear False
 
       curves <- fitCurves cal dc iA
       rs <- rates ts00 dc bondSettle evalDate curves iA

@@ -2,6 +2,7 @@ module QuantLib.Spec.Instrument.Energy (spec) where
 
 import Test.Hspec
 import Data.Time.Calendar(addDays)
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -36,7 +37,7 @@ flatIndex :: CommodityType -> UnitOfMeasure -> Day -> Double -> IO CommodityInde
 flatIndex ct bbl evalDate price = do
   usd <- commoditySettingsCurrency
   cal <- calendar Null
-  curve <- commodityCurve "flat curve" ct usd bbl cal [evalDate, addDays 400 evalDate] [price, price]
+  curve <- commodityCurve "flat curve" ct usd bbl cal (NE.fromList [(evalDate, price), (addDays 400 evalDate, price)])
              =<< dayCounter Actual365FixedStandard
   idx <- commodityIndex "flat index" ct usd bbl cal 1 (Just curve)
   addFixing idx (addDays (-30) evalDate) price False

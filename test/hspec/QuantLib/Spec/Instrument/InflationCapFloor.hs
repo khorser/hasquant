@@ -2,6 +2,7 @@ module QuantLib.Spec.Instrument.InflationCapFloor (spec) where
 
 import Control.Monad(forM_, forM)
 import Data.Time.Calendar(toGregorian, fromGregorian)
+import qualified Data.List.NonEmpty as NE
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
@@ -16,7 +17,7 @@ import qualified QuantLib.InterestRate as IR
 import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.InflationCapFloor
-import QuantLib.Math(Interpolation(..), Interpolation2D(..), Matrix(..))
+import QuantLib.Math(Interpolation(..), Interpolation2D(..), Matrix(..), realMatrix)
 import QuantLib.PricingEngine(PricingEngine, yoyInflationBlackCapFloorEngine, interpolatingCPICapFloorEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.InflationVolatility
@@ -24,6 +25,9 @@ import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
+
+matrix :: Word -> Word -> [Double] -> Matrix Double
+matrix rows columns = either error id . realMatrix rows columns
 
 -- |A custom-named YoY index (rather than a shared named singleton like 'YYUKRPI') so this
 -- module's made-up fixings and curve link can't collide with another test's fixings on the
@@ -67,7 +71,7 @@ linkedYoYIndex evalDate = do
   h1 <- yearOnYearInflationSwapHelper q1 (3, Months) maturity1 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   h2 <- yearOnYearInflationSwapHelper q2 (3, Months) maturity2 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
-  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate 0.03 Monthly dc [h1, h2] Linear
+  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate 0.03 Monthly dc (h1 NE.:| [h2]) Linear
   customYoYIndex (Just yoyCurve)
 
 -- |A short YoY-inflation leg (3 annual coupons) on the given (curve-linked) index -- mirrors
@@ -121,7 +125,7 @@ customZeroIndex evalDate = do
   h1 <- zeroCouponInflationSwapHelper q1 (2, Months) maturity1 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 (2, Months) maturity2 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
-  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc (h1 NE.:| [h2]) Linear
   zeroInflationIndex' "ICFCT Zero" r False Monthly (1, Months) gbp (Just zeroCurve)
 
 spec :: Spec
@@ -237,8 +241,8 @@ spec = do
     -- rather than only the corner a transposed 2x2 grid would still get right by accident.
     surface <- cpiCapFloorTermPriceSurface 1.0 cStrike obsLag cal Unadjusted dc zii CPIFlat nominalCurve
       [0.03, cStrike] [-0.01, fStrike] [(3, Years), (5, Years), (7, Years)]
-      (Matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
-      (Matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, fPriceGrid, 0.007704])
+      (matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
+      (matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, fPriceGrid, 0.007704])
       Bilinear
     engine <- interpolatingCPICapFloorEngine surface
 
@@ -271,8 +275,8 @@ spec = do
         cPriceGrid = 0.01279
     surface <- cpiCapFloorTermPriceSurface 1.0 cStrike obsLag cal Unadjusted dc zii CPIFlat nominalCurve
       [0.03, cStrike] [-0.01, 0.01] [(3, Years), (5, Years), (7, Years)]
-      (Matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
-      (Matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, 0.006666, 0.007704])
+      (matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
+      (matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, 0.006666, 0.007704])
       Bicubic
     engine <- interpolatingCPICapFloorEngine surface
     capInst <- cpiCapFloor Call 1.0 today' 100.0 maturity5Y cal Unadjusted cal Unadjusted cStrike zii obsLag CPIFlat

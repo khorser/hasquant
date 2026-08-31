@@ -10,6 +10,7 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Time.Date
 import qualified QuantLib.Settings as Settings
@@ -83,7 +84,7 @@ spec = do
                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
               swapData
 
-            ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] Discount LogLinear
+            ts <- piecewiseYieldCurve settlement (NE.fromList (deposits ++ swaps)) actual360dc [] Discount LogLinear
             return (cal, settlementDays, ts)
       it "referenceChange" $ Settings.keepingSettings' $ do
         let ds = [10, 30, 60, 120, 360, 720]
@@ -227,7 +228,7 @@ spec = do
           let d1 = addGregorianYearsClip 1 refDate
               d2 = addGregorianYearsClip 2 refDate
               spreadDf1 = 0.95
-          spreaded <- interpolatedSpreadDiscountCurve ts [(refDate, 1.0), (d1, spreadDf1), (d2, 0.90)] Linear
+          spreaded <- interpolatedSpreadDiscountCurve ts ((refDate, 1.0) NE.:| [(d1, spreadDf1), (d2, 0.90)]) Linear
 
           baseD1 <- discount' ts d1 False
           spreadedD1 <- discount' spreaded d1 False
@@ -320,7 +321,7 @@ spec = do
           fwdPoint <- Quote.simpleQuote 0.0025
           rh <- fxSwapRateHelper fwdPoint spotFx (1, Years) fixingDays cal ModifiedFollowing False
                   True collateralCurve tradingCal
-          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve settlement (rh NE.:| []) actual360dc [] Discount LogLinear
           -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
           -- setTermStructure call on each helper) only runs on first calculation, not on
           -- construction, so the curve must be queried before impliedQuote is meaningful.
@@ -351,7 +352,7 @@ spec = do
             (\tenor -> multipleResetsSwapRateHelper 0 tenor q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing)
             [(1, Years), (2, Years), (3, Years)]
 
-          ts <- piecewiseYieldCurve today' helpers actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve today' (NE.fromList helpers) actual360dc [] Discount LogLinear
           _ <- discount' ts today' False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
@@ -376,7 +377,7 @@ spec = do
           maturityDate <- advance cal valueDate (3, Months) ModifiedFollowing False
           price <- Quote.simpleQuote 95.0
           rh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
-          ts <- piecewiseYieldCurve valueDate [rh] actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve valueDate (rh NE.:| []) actual360dc [] Discount LogLinear
           _ <- discount' ts valueDate False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
@@ -390,7 +391,7 @@ spec = do
           let settlement = 2 `january` 2024
           price <- Quote.simpleQuote 95.0
           rh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
-          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve settlement (rh NE.:| []) actual360dc [] Discount LogLinear
           _ <- discount' ts settlement False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
@@ -414,11 +415,11 @@ spec = do
           price <- Quote.simpleQuote 95.0
 
           sofrRh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
-          sofrTs <- piecewiseYieldCurve settlement [sofrRh] actual360dc [] Discount LogLinear
+          sofrTs <- piecewiseYieldCurve settlement (sofrRh NE.:| []) actual360dc [] Discount LogLinear
           sofrDf <- discount' sofrTs maturityDate False
 
           explicitRh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
-          explicitTs <- piecewiseYieldCurve settlement [explicitRh] actual360dc [] Discount LogLinear
+          explicitTs <- piecewiseYieldCurve settlement (explicitRh NE.:| []) actual360dc [] Discount LogLinear
           explicitDf <- discount' explicitTs maturityDate False
 
           sofrDf `shouldSatisfy` closePrec explicitDf 1.0e-8
@@ -927,8 +928,8 @@ spec = do
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurve' (IterativeBootstrap) can't resolve.
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 [] False
-            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 [] False
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList (helpers3mFra ++ helpers3mBasis)) euriborDC [] 1.0e-10 [] False
+            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC [] 1.0e-10 [] False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -1004,7 +1005,7 @@ spec = do
             helpers3m <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
                                         Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers3m euriborDC [] 1.0e-10 [] False
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList helpers3m) euriborDC [] 1.0e-10 [] False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             ptrois <- zeroSpreadedTermStructure intcurve3m b IR.Continuous NoFrequency
@@ -1049,7 +1050,7 @@ spec = do
           q2 <- Quote.simpleQuote 0.02
           h1 <- depositRateHelper q1 (6, Months) 2 cal ModifiedFollowing True euriborDC
           h2 <- depositRateHelper q2 (6, Months) 2 cal ModifiedFollowing True euriborDC
-          let helpers = [h1, h2]
+          let helpers = h1 NE.:| [h2]
           curveMostlyQ2 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.1, 0.9] False
           curveMostlyQ1 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.9, 0.1] False
           settleFix <- advance cal curveToday (2, Days) Following False
@@ -1085,8 +1086,8 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpersDiscount euriborDC [] 1.0e-10 [] False
-          zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal helpersZero euriborDC [] 1.0e-10 [] False
+          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList helpersDiscount) euriborDC [] 1.0e-10 [] False
+          zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal (NE.fromList helpersZero) euriborDC [] 1.0e-10 [] False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1111,8 +1112,8 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurve' 0 cal helpersDiscount euriborDC [] Discount Linear False
-          zeroCurve <- piecewiseYieldCurve' 0 cal helpersZero euriborDC [] SimpleZeroYield Linear False
+          discountCurve <- piecewiseYieldCurve' 0 cal (NE.fromList helpersDiscount) euriborDC [] Discount Linear False
+          zeroCurve <- piecewiseYieldCurve' 0 cal (NE.fromList helpersZero) euriborDC [] SimpleZeroYield Linear False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1146,7 +1147,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           -- Deliberately *not* coincident with the primary monthly pillars above (45/75/105
           -- days sit between the 1m/2m/3m/4m pillars): reusing the same dates as additionalDates
           -- gave GlobalBootstrap two unknowns pinned to the same time, which visibly perturbed
@@ -1188,7 +1189,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           curve <- piecewiseYieldCurveLocalBootstrap' 2 cal helpers euriborDC [] ForwardRate 2 True 1.0e-10 0.3 0.7 True False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1216,7 +1217,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           -- additionalDates for GlobalSimpleZeroLinearFull below: deliberately not coincident
           -- with the primary monthly pillars, same reasoning as the GlobalBootstrapFull test above.
           extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
@@ -1245,7 +1246,7 @@ spec = do
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
-          helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [] False
           forwardCurve <- piecewiseYieldCurveGlobalBootstrapForwardRateLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
           zeroCurve <- piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
@@ -1680,7 +1681,8 @@ spec = do
           dc <- dayCounter Actual365FixedStandard
           d1 <- addPeriod refDate (90, Days)
           d2 <- addPeriod refDate (180, Days)
-          grid <- Vol.gridModelLocalVolSurface refDate [d1, d2] [[80, 100, 120], [75, 100, 125]] dc
+          grid <- Vol.gridModelLocalVolSurface refDate
+            ((d1, 80 NE.:| [100, 120]) NE.:| [(d2, 75 NE.:| [100, 125])]) dc
                     Vol.FixedLocalVolSurfaceConstantExtrapolation Vol.FixedLocalVolSurfaceConstantExtrapolation
           model <- Vol.gridModelLocalVolSurfaceAsCalibratedModel grid
           params model `shouldReturn` replicate 6 1.0

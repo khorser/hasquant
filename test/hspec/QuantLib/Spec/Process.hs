@@ -26,6 +26,7 @@ module QuantLib.Spec.Process (spec) where
 
 import Test.Hspec
 import Data.Time.Calendar(addDays)
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date(today, addPeriod)
@@ -395,8 +396,8 @@ spec = do
         dates <- mapM (\i -> addPeriod evalDate (i, Years)) yrs
         let rates = [0.03 + 0.0001 * exp (sin (fromIntegral i / 4.0)) | i <- yrs]
             divRates = [0.02 + 0.0002 * exp (sin (fromIntegral i / 3.0)) | i <- yrs]
-        rTS <- interpolatedZeroCurve (zip dates rates) dc cal [] Linear
-        qTS <- interpolatedZeroCurve (zip dates divRates) dc cal [] Linear
+        rTS <- interpolatedZeroCurve (NE.fromList (zip dates rates)) dc cal [] Linear
+        qTS <- interpolatedZeroCurve (NE.fromList (zip dates divRates)) dc cal [] Linear
 
         maturity <- addPeriod evalDate (5, Years)
         s0 <- simpleQuote 100.0

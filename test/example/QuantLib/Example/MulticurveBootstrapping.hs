@@ -29,6 +29,7 @@ module QuantLib.Example.MulticurveBootstrapping
   ) where
 import Control.Monad(forM)
 import Data.Time.Calendar(addGregorianYearsClip)
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Math
 import qualified QuantLib.Index.InterestRate as IR
@@ -87,7 +88,7 @@ run = do
     TS.oisRateHelper' start end q eonia (Nothing :: Maybe TS.YieldTermStructure)
       >>= TS.asRateHelper
 
-  eoniaCurve <- TS.piecewiseYieldCurve' 0 cal (depoHelpers ++ oisHelpers ++ datedOisHelpers)
+  eoniaCurve <- TS.piecewiseYieldCurve' 0 cal (NE.fromList (depoHelpers ++ oisHelpers ++ datedOisHelpers))
     termStructureDC [] TS.Discount monotonicLogCubic True
 
   -- Euribor 6M curve: one deposit, FRAs, and swaps discounted off the EONIA curve
@@ -109,12 +110,12 @@ run = do
         pure (d6M : fras ++ swaps)
 
   dualHelpers <- euriborHelpers (Just eoniaCurve)
-  euriborCurve <- TS.piecewiseYieldCurve' 2 cal dualHelpers termStructureDC []
+  euriborCurve <- TS.piecewiseYieldCurve' 2 cal (NE.fromList dualHelpers) termStructureDC []
     TS.Discount monotonicLogCubic True
 
   -- the negative control: same helpers, no discounting curve
   singleHelpers <- euriborHelpers (Nothing :: Maybe TS.YieldTermStructure)
-  singleCurve <- TS.piecewiseYieldCurve' 2 cal singleHelpers termStructureDC []
+  singleCurve <- TS.piecewiseYieldCurve' 2 cal (NE.fromList singleHelpers) termStructureDC []
     TS.Discount monotonicLogCubic True
 
   let priceOn forecastCurve start = do

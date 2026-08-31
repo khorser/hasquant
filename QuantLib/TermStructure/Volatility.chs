@@ -204,6 +204,7 @@ import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
+import Data.List.NonEmpty(NonEmpty, toList)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -341,13 +342,19 @@ fixedLocalVolSurface :: Day -> [Day] -- ^dates
 fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr mc md
 {#fun qlFixedLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
--- |A local-volatility surface whose node values are model parameters. Each date has its own
--- strike row; use 'gridModelLocalVolSurfaceAsCalibratedModel' to access QuantLib's generic
+-- |A local-volatility surface whose node values are model parameters. Each date is paired with
+-- its non-empty strike row, so this genuinely ragged grid does not masquerade as a rectangular
+-- 'Matrix'. Use 'gridModelLocalVolSurfaceAsCalibratedModel' to access QuantLib's generic
 -- calibrated-model operations.
-gridModelLocalVolSurface :: Day -> [Day] -> [[Double]] -> DayCounter
+gridModelLocalVolSurface :: Day -> NonEmpty (Day, NonEmpty Double) -> DayCounter
   -> FixedLocalVolSurfaceExtrapolation -> FixedLocalVolSurfaceExtrapolation
   -> IO GridModelLocalVolSurface
-gridModelLocalVolSurface d ds strikeRows = qlGridModelLocalVolSurface d ds (map (fromIntegral . length) strikeRows) (concat strikeRows)
+gridModelLocalVolSurface d nodes = qlGridModelLocalVolSurface d dates rowSizes values
+  where
+    (dates, rows) = unzip (toList nodes)
+    rowLists = map toList rows
+    rowSizes = map (fromIntegral . length) rowLists
+    values = concat rowLists
 {#fun qlGridModelLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withIntArray*`[Word]'&,withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`GridModelLocalVolSurface'peekGridModelLocalVolSurface*#}
 
 -- |View a grid local-vol surface through its secondary 'CalibratedModel' interface. This is a

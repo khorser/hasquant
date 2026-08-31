@@ -34,7 +34,7 @@ main = do
   v1 <- fixing idx d1 False
   checkClose "fixing round-trips addFixing" 0.01 v1 1e-12
 
-  addFixings idx [d2, d3] [0.02, 0.03] False
+  addFixings idx [(d2, 0.02), (d3, 0.03)] False
   v2 <- fixing idx d2 False
   checkClose "fixing after addFixings (d2)" 0.02 v2 1e-12
   v3 <- fixing idx d3 False

@@ -20,7 +20,7 @@ import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings
   ,fixingHistory, fixingHistoryNames, clearAllFixingHistories
-  ,historicalIndexAnalysisSkippedDates, historicalIndexAnalysisMean, historicalIndexAnalysisStandardDeviation
+  ,historicalIndexAnalysisSkipped, historicalIndexAnalysisMean, historicalIndexAnalysisStandardDeviation
   ,historicalIndexAnalysisSkewness, historicalIndexAnalysisKurtosis, historicalIndexAnalysisMin, historicalIndexAnalysisMax
   ,historicalIndexAnalysisSemiVariance, historicalIndexAnalysisSemiDeviation
   ,historicalIndexAnalysisDownsideVariance, historicalIndexAnalysisDownsideDeviation
@@ -844,7 +844,7 @@ spec evalDate = do
           hasHistoricalFixing idx d1 `shouldReturn` True
           fixing idx d1 False `shouldReturn` 0.01
 
-          addFixings idx [d2, d3] [0.02, 0.03] False
+          addFixings idx [(d2, 0.02), (d3, 0.03)] False
           fixing idx d2 False `shouldReturn` 0.02
           fixing idx d3 False `shouldReturn` 0.03
 
@@ -859,7 +859,7 @@ spec evalDate = do
           d2 <- adjust cal (16 `september` 2021) Following
           fixingHistory idx `shouldReturn` []
           fixingHistoryNames `shouldReturn` []
-          addFixings idx [d2, d1] [0.02, 0.01] False
+          addFixings idx [(d2, 0.02), (d1, 0.01)] False
 
           fixingHistory idx `shouldReturn` [(d1, 0.01), (d2, 0.02)]
           names <- fixingHistoryNames
@@ -902,7 +902,7 @@ spec evalDate = do
               expectedStdDev = sqrt (sum [(r - expectedMean) ^ (2 :: Int) | r <- rels] / (nD - 1))
 
           hra <- historicalRatesAnalysis startDate (last ds) (1, Months) [idx, idx]
-          historicalIndexAnalysisSkippedDates hra `shouldReturn` []
+          historicalIndexAnalysisSkipped hra `shouldReturn` []
 
           means <- historicalIndexAnalysisMean hra
           means `shouldSatisfy` all (closePrec expectedMean 1.0e-9)

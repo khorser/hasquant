@@ -6,8 +6,7 @@ module QuantLib.TermStructure.Commodity
   , commodityCurveCommodityType
   , commodityCurveUnitOfMeasure
   , commodityCurveCurrency
-  , commodityCurveDates
-  , commodityCurvePrices
+  , commodityCurveNodes
   , commodityCurveEmpty
   , commodityCurveBasisOfCurve
   , setCommodityCurveBasisOfCurve
@@ -20,6 +19,7 @@ module QuantLib.TermStructure.Commodity
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
+import Data.List.NonEmpty(NonEmpty, toList)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -39,7 +39,12 @@ import QuantLib.Internal.Type
 -- constructor (populated later via the mutator @setPrices@) is not bound -- per the standing
 -- setter-confirmation rule, only 'setCommodityCurveBasisOfCurve' was confirmed, not @setPrices@ --
 -- so this with-dates constructor is the only way to build one.
-{#fun qlCommodityCurve as commodityCurve
+commodityCurve :: String -> CommodityType -> Currency -> UnitOfMeasure -> Calendar
+  -> NonEmpty (Day, Double) -> DayCounter -> IO CommodityCurve
+commodityCurve name ct ccy uom cal nodes dc = qlCommodityCurve name ct ccy uom cal dates prices dc
+  where (dates, prices) = unzip (toList nodes)
+
+{#fun qlCommodityCurve
   {`String' -- ^name
   ,withCommodityType*`CommodityType'
   ,withCurrency*`Currency'
@@ -62,13 +67,14 @@ import QuantLib.Internal.Type
 -- |The currency this curve's prices are quoted in.
 {#fun qlCommodityCurveCurrency as commodityCurveCurrency{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
--- |The curve's node dates, as given at construction.
-{#fun qlCommodityCurveDates as commodityCurveDates{withGenTermStructure*`CommodityCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
--- |The curve's node prices, as given at construction. Paired positionally with 'commodityCurveDates'
--- -- upstream's own @nodes()@ getter is just their zip, so it isn't bound separately (per "bind
--- few inspectors").
-{#fun qlCommodityCurvePrices as commodityCurvePrices{withGenTermStructure*`CommodityCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |The curve's nodes, as @(date, price)@ pairs in construction order.
+commodityCurveNodes :: CommodityCurve -> IO [(Day, Double)]
+commodityCurveNodes curve = do
+  dates <- qlCommodityCurveDates curve
+  prices <- qlCommodityCurvePrices curve
+  pure (zip dates prices)
+{#fun qlCommodityCurveDates as qlCommodityCurveDates{withGenTermStructure*`CommodityCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCommodityCurvePrices as qlCommodityCurvePrices{withGenTermStructure*`CommodityCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Whether this curve has any nodes.
 {#fun pure qlCommodityCurveEmpty as commodityCurveEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}

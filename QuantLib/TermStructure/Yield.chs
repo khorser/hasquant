@@ -112,6 +112,7 @@ import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
 import Data.Maybe(fromMaybe)
+import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(FunPtr)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
@@ -741,13 +742,13 @@ piecewiseZeroSpreadedTermStructure ts qd c f i = uncurryNested (qlPiecewiseZeroS
 -- instrument, iteratively (pillar by pillar): each bootstrapped instrument's maturity ends its
 -- own segment, and reprices correctly on the resulting curve. Fixed reference date.
 piecewiseYieldCurve :: Day -- ^referenceDate
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-piecewiseYieldCurve d r dc qd t i = uncurryNested (qlPiecewiseYieldCurve d r dc qs ds t) (qlInterpolation i) where (ds, qs) = unzip qd
+piecewiseYieldCurve d r dc qd t i = uncurryNested (qlPiecewiseYieldCurve d (toList r) dc qs ds t) (qlInterpolation i) where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurve{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Like 'piecewiseYieldCurve', but with a reference date that moves with the evaluation date
@@ -758,7 +759,7 @@ piecewiseYieldCurve d r dc qd t i = uncurryNested (qlPiecewiseYieldCurve d r dc 
 -- @piecewiseYieldCurve2' ... ('Iterative' trait interpolator 'defaultIterativeBootstrapOpts') ...@.
 piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
@@ -777,7 +778,7 @@ piecewiseYieldCurve' s cal r dc qd t i ex =
 -- bootstrap: it substitutes the best value found so far for a pillar that won't solve,
 -- rather than throwing.
 piecewiseYieldCurveFull :: Day -- ^referenceDate
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
@@ -785,7 +786,7 @@ piecewiseYieldCurveFull :: Day -- ^referenceDate
   -> IterativeBootstrapOpts -- ^bootstrap settings
   -> IO YieldTermStructure
 piecewiseYieldCurveFull d r dc qd t i b =
-  uncurryNested (qlPiecewiseYieldCurveFull d r dc qs ds t) (qlInterpolation i)
+  uncurryNested (qlPiecewiseYieldCurveFull d (toList r) dc qs ds t) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
   where (ds, qs) = unzip qd
@@ -795,7 +796,7 @@ piecewiseYieldCurveFull d r dc qd t i b =
 -- exposes; see there for what they mean.
 piecewiseYieldCurveFull' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait
@@ -804,7 +805,7 @@ piecewiseYieldCurveFull' :: Word -- ^settlementDays
   -> Bool -- ^extrapolate past the curve's max date
   -> IO YieldTermStructure
 piecewiseYieldCurveFull' s cal r dc qd t i b ex =
-  uncurryNested (qlPiecewiseYieldCurveFull1 s cal r dc qs ds t) (qlInterpolation i)
+  uncurryNested (qlPiecewiseYieldCurveFull1 s cal (toList r) dc qs ds t) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
   where (ds, qs) = unzip qd
@@ -825,7 +826,7 @@ piecewiseYieldCurveFull' s cal r dc qd t i b ex =
 -- README's # TODO.
 piecewiseYieldCurveGlobalBootstrap' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> Double -- ^accuracy
@@ -841,7 +842,7 @@ piecewiseYieldCurveGlobalBootstrap' s cal r dc qd acc w ex =
 -- bound @GlobalBootstrap@ combination (@GlobalLinearSimpleZeroCurve@).
 piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> Double -- ^accuracy
@@ -863,10 +864,10 @@ piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' s cal r dc qd acc w ex =
 -- 'QuantLib.Type.Error' naming both counts.
 piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh1] -- ^instruments
+  -> NonEmpty (GenRateHelper rh1) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
-  -> [GenRateHelper rh2] -- ^additionalHelpers
+  -> NonEmpty (GenRateHelper rh2) -- ^additionalHelpers
   -> [Day] -- ^additionalDates (length must be @length additionalHelpers - 2@)
   -> Double -- ^accuracy
   -> Bool -- ^extrapolate past the curve's max date
@@ -880,7 +881,7 @@ piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' s cal r dc qd ar ad acc 
 -- paired with the cheapest interpolator (github issue #15).
 piecewiseYieldCurveGlobalBootstrapForwardRateLinear' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> Double -- ^accuracy
@@ -895,7 +896,7 @@ piecewiseYieldCurveGlobalBootstrapForwardRateLinear' s cal r dc qd acc w ex =
 -- instead of trait=Discount\/interpolator=LogLinear.
 piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> Double -- ^accuracy
@@ -925,7 +926,7 @@ piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' s cal r dc qd acc w ex =
 -- uses 'ForwardRate', never 'Discount'.
 piecewiseYieldCurveLocalBootstrap' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> BootstrapTrait -- ^bootstrap trait ('Discount' is rejected, see above)
@@ -942,7 +943,7 @@ piecewiseYieldCurveLocalBootstrap' :: Word -- ^settlementDays
 -- 'QuantLib.Type.Error' for it at runtime via the C shim's own QL_FAIL, whereas 'Local' takes
 -- 'LocalBootstrapTrait', which has no 'Discount' case to convert from -- see 'Bootstrap'.
 piecewiseYieldCurveLocalBootstrap' s cal r dc qd t loc fp acc q m cfp ex =
-  qlPiecewiseYieldCurveLocalBootstrap1 s cal r dc qs ds t loc fp acc q m cfp ex where (ds, qs) = unzip qd
+  qlPiecewiseYieldCurveLocalBootstrap1 s cal (toList r) dc qs ds t loc fp acc q m cfp ex where (ds, qs) = unzip qd
 {#fun qlPiecewiseYieldCurveLocalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Selects which of QuantLib's three @PiecewiseYieldCurve@ bootstrappers 'piecewiseYieldCurve2''
@@ -962,7 +963,7 @@ data Bootstrap rh2
   = Iterative BootstrapTrait Interpolation IterativeBootstrapOpts
   | GlobalDiscountLogLinear Double [Double] -- ^accuracy, instrumentWeights
   | GlobalSimpleZeroLinear Double [Double] -- ^accuracy, instrumentWeights
-  | GlobalSimpleZeroLinearFull [GenRateHelper rh2] [Day] Double -- ^additionalHelpers, additionalDates, accuracy
+  | GlobalSimpleZeroLinearFull (NonEmpty (GenRateHelper rh2)) [Day] Double -- ^additionalHelpers, additionalDates, accuracy
   | GlobalForwardRateLinear Double [Double] -- ^accuracy, instrumentWeights
   | GlobalZeroYieldLinear Double [Double] -- ^accuracy, instrumentWeights
   | Local LocalBootstrapTrait Word Bool Double Double Double Bool
@@ -991,26 +992,27 @@ fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
 -- only exist in this settlementDays-taking shape.
 piecewiseYieldCurve2' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
-  -> [GenRateHelper rh] -- ^instruments
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps
   -> Bootstrap rh2 -- ^bootstrapper choice
   -> Bool -- ^extrapolate past the curve's max date
   -> IO YieldTermStructure
 piecewiseYieldCurve2' s cal r dc qd bootstrap ex = case bootstrap of
-  Iterative t i b -> uncurryNested (qlPiecewiseYieldCurveFull1 s cal r dc qs ds t) (qlInterpolation i)
+  Iterative t i b -> uncurryNested (qlPiecewiseYieldCurveFull1 s cal rs dc qs ds t) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
-  GlobalDiscountLogLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap1 s cal r dc qs ds acc w ex
-  GlobalSimpleZeroLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap2 s cal r dc qs ds acc w ex
-  GlobalSimpleZeroLinearFull ah ad acc -> qlPiecewiseYieldCurveGlobalBootstrap3 s cal r dc qs ds ah ad acc ex
-  GlobalForwardRateLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap4 s cal r dc qs ds acc w ex
-  GlobalZeroYieldLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap5 s cal r dc qs ds acc w ex
-  Local t loc fp acc q m cfp -> qlPiecewiseYieldCurveLocalBootstrap1 s cal r dc qs ds (fromBootstrapTrait t) loc fp acc q m cfp ex
+  GlobalDiscountLogLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap1 s cal rs dc qs ds acc w ex
+  GlobalSimpleZeroLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap2 s cal rs dc qs ds acc w ex
+  GlobalSimpleZeroLinearFull ah ad acc -> qlPiecewiseYieldCurveGlobalBootstrap3 s cal rs dc qs ds (toList ah) ad acc ex
+  GlobalForwardRateLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap4 s cal rs dc qs ds acc w ex
+  GlobalZeroYieldLinear acc w -> qlPiecewiseYieldCurveGlobalBootstrap5 s cal rs dc qs ds acc w ex
+  Local t loc fp acc q m cfp -> qlPiecewiseYieldCurveLocalBootstrap1 s cal rs dc qs ds (fromBootstrapTrait t) loc fp acc q m cfp ex
   where (ds, qs) = unzip qd
+        rs = toList r
 
 -- |Yield curve interpolating discount factors directly between the given dates.
-interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
+interpolatedDiscountCurve :: NonEmpty (Day, Double) -- ^dates, dfs
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
   -> [(Day, GenQuote q)] -- ^jumps
@@ -1018,38 +1020,38 @@ interpolatedDiscountCurve :: [(Day, Double)] -- ^dates, dfs
   -> Bool -- ^extrapolate past the curve's max date
   -> IO YieldTermStructure
 interpolatedDiscountCurve r dc c qd i ex = uncurryNested (qlInterpolatedDiscountCurve rs rd dc c qs ds) (qlInterpolation i) ex
-  where (rd, rs) = unzip r
+  where (rd, rs) = unzip (toList r)
         (ds, qs) = unzip qd
 {#fun qlInterpolatedDiscountCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Yield curve interpolating instantaneous forward rates directly between the given dates.
-interpolatedForwardCurve :: [(Day, Double)] -- ^dates, forwards
+interpolatedForwardCurve :: NonEmpty (Day, Double) -- ^dates, forwards
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
   -> [(Day, GenQuote q)] -- ^jumps
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-interpolatedForwardCurve r dc c qd i = uncurryNested (qlInterpolatedForwardCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip r; (ds, qs) = unzip qd}
+interpolatedForwardCurve r dc c qd i = uncurryNested (qlInterpolatedForwardCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip (toList r); (ds, qs) = unzip qd}
 {#fun qlInterpolatedForwardCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Yield curve interpolating zero-yield rates directly between the given dates.
-interpolatedZeroCurve :: [(Day, Double)] -- ^dates, yields
+interpolatedZeroCurve :: NonEmpty (Day, Double) -- ^dates, yields
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
   -> [(Day, GenQuote q)] -- ^jumps, jumpDates
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip r; (ds, qs) = unzip qd}
+interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip (toList r); (ds, qs) = unzip qd}
 {#fun qlInterpolatedZeroCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Discount factors interpolated as a multiplicative spread applied on top of 'baseCurve'.
 -- Upstream requires the first discount factor to be exactly @1.0@, flagging its date as the
 -- curve's own reference date; a mismatched leading value throws a 'QuantLib.Type.Error'.
 interpolatedSpreadDiscountCurve :: GenYieldTermStructure y
-  -> [(Day, Double)] -- ^dates, dfs
+  -> NonEmpty (Day, Double) -- ^dates, dfs
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-interpolatedSpreadDiscountCurve ts r i = uncurryNested (qlInterpolatedSpreadDiscountCurve ts rs rd) (qlInterpolation i) where (rd, rs) = unzip r
+interpolatedSpreadDiscountCurve ts r i = uncurryNested (qlInterpolatedSpreadDiscountCurve ts rs rd) (qlInterpolation i) where (rd, rs) = unzip (toList r)
 {#fun qlInterpolatedSpreadDiscountCurve{withYieldTermStructure*`GenYieldTermStructure y',withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |reference date based on current evaluation date

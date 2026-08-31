@@ -37,14 +37,11 @@ module QuantLib.Math
   , timeAt
   , size
   , points
-  , points'
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Common
 import QuantLib.Internal.Type
-import Foreign.C.Types(CDouble)
 import Foreign.Marshal.Alloc(alloca)
-import Data.Vector.Storable(Vector)
 import Data.List.NonEmpty(NonEmpty)
 
 #include "qlTypesC2HS.h"
@@ -116,8 +113,5 @@ import Data.List.NonEmpty(NonEmpty)
 
 -- |returns all the times on the grid, as a list
 {#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
--- |returns all the times on the grid, as a vector
-{#fun qlTimeGridPoints as points'{withTimeGrid*`TimeGrid',preArray-`Vector CDouble'&peekDoubleVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
