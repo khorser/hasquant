@@ -2,7 +2,7 @@ Haskell bindings to [QuantLib](https://www.quantlib.org/).
 
 Supported functionality includes yield, credit, inflation, and volatility curves; IBOR, overnight, swap, and inflation indexes; fixed, floating, amortizing, callable, and convertible bonds; vanilla, barrier, Asian, compound, variance, and basket options; vanilla, CMS, OIS, CDS, and zero-coupon swaps; and analytic, tree, finite-difference, and Monte Carlo engines from Black-Scholes through SABR and Heston.
 
-hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,500+ constructors and non-trivial methods—about 15% of QuantLib's surface—and deliberately excludes 1,300+ getters that only repeat constructor inputs.
+hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,500+ constructors and non-trivial methods (about 15% of QuantLib's surface) and deliberately excludes 2000+ methods (mostly mutators or getters that only repeat constructor inputs).
 
 Type safety is a primary API goal. Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) preserve the relevant part of QuantLib's object hierarchy in Haskell, so invalid object combinations are compile-time errors rather than failed casts at runtime. The C++ shim uses no runtime downcasts; bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
 
