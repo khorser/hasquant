@@ -78,6 +78,9 @@ namespace QuantLib {
   class CustomIborIndex;
   class IborIndex;
   class IborCoupon;
+  class OvernightIndexedCoupon;
+  class CPICoupon;
+  class CPICouponPricer;
   class Index;
   class FloatingRateCouponPricer;
   class CmsCouponPricer;
@@ -403,6 +406,9 @@ using QuantLib::CompositeInstrument;
 using QuantLib::CustomIborIndex;
 using QuantLib::IborIndex;
 using QuantLib::IborCoupon;
+using QuantLib::OvernightIndexedCoupon;
+using QuantLib::CPICoupon;
+using QuantLib::CPICouponPricer;
 using QuantLib::Index;
 using QuantLib::FloatingRateCouponPricer;
 using QuantLib::CmsCouponPricer;
@@ -717,6 +723,10 @@ using QlFloatingRateCouponPricer = shared_ptr<FloatingRateCouponPricer>;
 using QlCmsCouponPricer = shared_ptr<CmsCouponPricer>;
 using QlFloatingRateCoupon = shared_ptr<FloatingRateCoupon>;
 using QlCmsCoupon = shared_ptr<CmsCoupon>;
+using QlIborCoupon = shared_ptr<IborCoupon>;
+using QlOvernightIndexedCoupon = shared_ptr<OvernightIndexedCoupon>;
+using QlCPICoupon = shared_ptr<CPICoupon>;
+using QlCPICouponPricer = shared_ptr<CPICouponPricer>;
 using QlDigitalCmsCoupon = shared_ptr<DigitalCmsCoupon>;
 using QlDigitalReplication = shared_ptr<DigitalReplication>;
 using QlSwapSpreadIndex = shared_ptr<SwapSpreadIndex>;
@@ -1105,6 +1115,10 @@ QL_TRACE_NAME(FloatingRateBond)
 QL_TRACE_NAME(FloatingRateCouponPricer)
 QL_TRACE_NAME(FloatingRateCoupon)
 QL_TRACE_NAME(CmsCoupon)
+QL_TRACE_NAME(IborCoupon)
+QL_TRACE_NAME(OvernightIndexedCoupon)
+QL_TRACE_NAME(CPICoupon)
+QL_TRACE_NAME(CPICouponPricer)
 QL_TRACE_NAME(DigitalCmsCoupon)
 QL_TRACE_NAME(DigitalReplication)
 QL_TRACE_NAME(Forward)

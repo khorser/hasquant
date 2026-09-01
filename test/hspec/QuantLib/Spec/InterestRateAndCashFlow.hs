@@ -251,7 +251,8 @@ spec evalDate = do
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           floating <- CF.floatingRateCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
           ibor <- CF.iborCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
-          customLeg <- CF.cashFlowLeg [floating, ibor]
+          iborFlow <- CF.iborCouponAsCashFlow ibor
+          customLeg <- CF.cashFlowLeg [floating, iborFlow]
           CF.startDate customLeg `shouldReturn` start
 
       it "uses CPI, zero-inflation, and equity cash flows in a custom leg" $

@@ -3,7 +3,7 @@
 | |ql/cashflow.hpp|bool CashFlow::tradingExCoupon(const Date & refDate = Date()) const;
 | |ql/cashflow.hpp|ext::shared_ptr<Coupon> CashFlow::coupon_cast(const ext::shared_ptr<CashFlow> &);
 | |ql/cashflow.hpp|bool earlier_than::operator()(const CashFlow & c1, const CashFlow & c2) const;
-| |ql/cashflows/averagebmacoupon.hpp|AverageBMACoupon::AverageBMACoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<BMAIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter());
+|v|ql/cashflows/averagebmacoupon.hpp|AverageBMACoupon::AverageBMACoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<BMAIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter());
 | |ql/cashflows/averagebmacoupon.hpp|std::vector<Date> AverageBMACoupon::fixingDates() const;
 | |ql/cashflows/averagebmacoupon.hpp|std::vector<Rate> AverageBMACoupon::indexFixings() const;
 |?|ql/cashflows/averagebmacoupon.hpp|AverageBMALeg::AverageBMALeg(Schedule schedule, ext::shared_ptr<BMAIndex> index);
@@ -15,9 +15,9 @@
 | |ql/cashflows/averagebmacoupon.hpp|AverageBMALeg & AverageBMALeg::withGearings(const std::vector<Real> & gearings);
 | |ql/cashflows/averagebmacoupon.hpp|AverageBMALeg & AverageBMALeg::withSpreads(Spread spread);
 | |ql/cashflows/averagebmacoupon.hpp|AverageBMALeg & AverageBMALeg::withSpreads(const std::vector<Spread> & spreads);
-| |ql/cashflows/blackovernightindexedcouponpricer.hpp|BlackCompoundingOvernightIndexedCouponPricer::BlackCompoundingOvernightIndexedCouponPricer(Handle<OptionletVolatilityStructure> v = Handle<OptionletVolatilityStructure>(), bool effectiveVolatilityInput = false);
-| |ql/cashflows/blackovernightindexedcouponpricer.hpp|BlackAveragingOvernightIndexedCouponPricer::BlackAveragingOvernightIndexedCouponPricer(Handle<OptionletVolatilityStructure> v = Handle<OptionletVolatilityStructure>(), bool effectiveVolatilityInput = false);
-| |ql/cashflows/capflooredcoupon.hpp|CappedFlooredCoupon::CappedFlooredCoupon(const ext::shared_ptr<FloatingRateCoupon> & underlying, Rate cap = Null<Rate>(), Rate floor = Null<Rate>());
+|v|ql/cashflows/blackovernightindexedcouponpricer.hpp|BlackCompoundingOvernightIndexedCouponPricer::BlackCompoundingOvernightIndexedCouponPricer(Handle<OptionletVolatilityStructure> v = Handle<OptionletVolatilityStructure>(), bool effectiveVolatilityInput = false);
+|v|ql/cashflows/blackovernightindexedcouponpricer.hpp|BlackAveragingOvernightIndexedCouponPricer::BlackAveragingOvernightIndexedCouponPricer(Handle<OptionletVolatilityStructure> v = Handle<OptionletVolatilityStructure>(), bool effectiveVolatilityInput = false);
+|v|ql/cashflows/capflooredcoupon.hpp|CappedFlooredCoupon::CappedFlooredCoupon(const ext::shared_ptr<FloatingRateCoupon> & underlying, Rate cap = Null<Rate>(), Rate floor = Null<Rate>());
 | |ql/cashflows/capflooredcoupon.hpp|Rate CappedFlooredCoupon::cap() const;
 | |ql/cashflows/capflooredcoupon.hpp|Rate CappedFlooredCoupon::floor() const;
 | |ql/cashflows/capflooredcoupon.hpp|Rate CappedFlooredCoupon::effectiveCap() const;
@@ -25,8 +25,8 @@
 | |ql/cashflows/capflooredcoupon.hpp|bool CappedFlooredCoupon::isCapped() const;
 | |ql/cashflows/capflooredcoupon.hpp|bool CappedFlooredCoupon::isFloored() const;
 |x|ql/cashflows/capflooredcoupon.hpp|ext::shared_ptr<FloatingRateCoupon> CappedFlooredCoupon::underlying();
-| |ql/cashflows/capflooredcoupon.hpp|CappedFlooredIborCoupon::CappedFlooredIborCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Spread spread = 0.0, Rate cap = Null<Rate>(), Rate floor = Null<Rate>(), const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
-| |ql/cashflows/capflooredcoupon.hpp|CappedFlooredCmsCoupon::CappedFlooredCmsCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<SwapIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Rate cap = Null<Rate>(), const Rate floor = Null<Rate>(), const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
+|v|ql/cashflows/capflooredcoupon.hpp|CappedFlooredIborCoupon::CappedFlooredIborCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Spread spread = 0.0, Rate cap = Null<Rate>(), Rate floor = Null<Rate>(), const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
+|v|ql/cashflows/capflooredcoupon.hpp|CappedFlooredCmsCoupon::CappedFlooredCmsCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<SwapIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Rate cap = Null<Rate>(), const Rate floor = Null<Rate>(), const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
 |x|ql/cashflows/capflooredinflationcoupon.hpp|CappedFlooredYoYInflationCoupon::CappedFlooredYoYInflationCoupon(const ext::shared_ptr<YoYInflationCoupon> & underlying, Rate cap = Null<Rate>(), Rate floor = Null<Rate>());
 |x|ql/cashflows/capflooredinflationcoupon.hpp|CappedFlooredYoYInflationCoupon::CappedFlooredYoYInflationCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<YoYInflationIndex> & index, const Period & observationLag, const CPI::InterpolationType interpolation, const DayCounter & dayCounter, Real gearing = 1.0, Spread spread = 0.0, const Rate cap = Null<Rate>(), const Rate floor = Null<Rate>(), const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date());
 |x|ql/cashflows/capflooredinflationcoupon.hpp|Rate CappedFlooredYoYInflationCoupon::cap() const;
@@ -89,7 +89,7 @@
 |x|ql/cashflows/cashflows.hpp|static Spread CashFlows::zSpread(const Leg & leg, Real npv, const ext::shared_ptr<YieldTermStructure> &, const DayCounter & dayCounter, Compounding compounding, Frequency frequency, const ext::optional<bool> & includeSettlementDateFlows = ext::nullopt, Date settlementDate = Date(), Date npvDate = Date(), Real accuracy = 1.0e-10, Size maxIterations = 100, Rate guess = 0.0);
 | |ql/cashflows/cashflowvectors.hpp|Rate effectiveFixedRate(const std::vector<Spread> & spreads, const std::vector<Rate> & caps, const std::vector<Rate> & floors, Size i);
 | |ql/cashflows/cashflowvectors.hpp|bool noOption(const std::vector<Rate> & caps, const std::vector<Rate> & floors, Size i);
-| |ql/cashflows/cmscoupon.hpp|CmsCoupon::CmsCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<SwapIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
+|v|ql/cashflows/cmscoupon.hpp|CmsCoupon::CmsCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<SwapIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
 |x|ql/cashflows/cmscoupon.hpp|const ext::shared_ptr<SwapIndex> & CmsCoupon::swapIndex() const;
 |?|ql/cashflows/cmscoupon.hpp|CmsLeg::CmsLeg(Schedule schedule, ext::shared_ptr<SwapIndex> swapIndex);
 | |ql/cashflows/cmscoupon.hpp|CmsLeg & CmsLeg::withNotionals(Real notional);
@@ -188,9 +188,9 @@
 | |ql/cashflows/couponpricer.hpp|Rate capletRate(Rate effectiveCap) const;
 | |ql/cashflows/couponpricer.hpp|Real floorletPrice(Rate effectiveFloor) const;
 | |ql/cashflows/couponpricer.hpp|Rate floorletRate(Rate effectiveFloor) const;
-| |ql/cashflows/cpicoupon.hpp|CPICoupon::CPICoupon(Real baseCPI, const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<ZeroInflationIndex> & index, const Period & observationLag, CPI::InterpolationType observationInterpolation, const DayCounter & dayCounter, Real fixedRate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
-| |ql/cashflows/cpicoupon.hpp|CPICoupon::CPICoupon(const Date & baseDate, const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<ZeroInflationIndex> & index, const Period & observationLag, CPI::InterpolationType observationInterpolation, const DayCounter & dayCounter, Real fixedRate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
-| |ql/cashflows/cpicoupon.hpp|CPICoupon::CPICoupon(Real baseCPI, const Date & baseDate, const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<ZeroInflationIndex> & index, const Period & observationLag, CPI::InterpolationType observationInterpolation, const DayCounter & dayCounter, Real fixedRate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
+|v|ql/cashflows/cpicoupon.hpp|CPICoupon::CPICoupon(Real baseCPI, const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<ZeroInflationIndex> & index, const Period & observationLag, CPI::InterpolationType observationInterpolation, const DayCounter & dayCounter, Real fixedRate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
+|v|ql/cashflows/cpicoupon.hpp|CPICoupon::CPICoupon(const Date & baseDate, const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<ZeroInflationIndex> & index, const Period & observationLag, CPI::InterpolationType observationInterpolation, const DayCounter & dayCounter, Real fixedRate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
+|v|ql/cashflows/cpicoupon.hpp|CPICoupon::CPICoupon(Real baseCPI, const Date & baseDate, const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<ZeroInflationIndex> & index, const Period & observationLag, CPI::InterpolationType observationInterpolation, const DayCounter & dayCounter, Real fixedRate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
 |x|ql/cashflows/cpicoupon.hpp|Real CPICoupon::fixedRate() const;
 |x|ql/cashflows/cpicoupon.hpp|Rate CPICoupon::baseCPI() const;
 |x|ql/cashflows/cpicoupon.hpp|Date CPICoupon::baseDate() const;
@@ -227,8 +227,8 @@
 | |ql/cashflows/cpicoupon.hpp|Date baseDate() const;
 | |ql/cashflows/cpicoupon.hpp|CPI::InterpolationType observationInterpolation() const;
 | |ql/cashflows/cpicoupon.hpp|ext::shared_ptr<ZeroInflationIndex> cpiIndex() const;
-|x|ql/cashflows/cpicouponpricer.hpp|CPICouponPricer::CPICouponPricer(Handle<YieldTermStructure> nominalTermStructure = Handle<YieldTermStructure>());
-|x|ql/cashflows/cpicouponpricer.hpp|CPICouponPricer::CPICouponPricer(Handle<CPIVolatilitySurface> capletVol, Handle<YieldTermStructure> nominalTermStructure = Handle<YieldTermStructure>());
+|v|ql/cashflows/cpicouponpricer.hpp|CPICouponPricer::CPICouponPricer(Handle<YieldTermStructure> nominalTermStructure = Handle<YieldTermStructure>());
+|v|ql/cashflows/cpicouponpricer.hpp|CPICouponPricer::CPICouponPricer(Handle<CPIVolatilitySurface> capletVol, Handle<YieldTermStructure> nominalTermStructure = Handle<YieldTermStructure>());
 |x|ql/cashflows/cpicouponpricer.hpp|Handle<CPIVolatilitySurface> CPICouponPricer::capletVolatility() const;
 |x|ql/cashflows/cpicouponpricer.hpp|Handle<YieldTermStructure> CPICouponPricer::nominalTermStructure() const;
 |x|ql/cashflows/cpicouponpricer.hpp|void CPICouponPricer::setCapletVolatility(const Handle<CPIVolatilitySurface> & capletVol);
@@ -279,7 +279,7 @@
 | |ql/cashflows/digitalcoupon.hpp|Rate DigitalCoupon::putOptionRate() const;
 | |ql/cashflows/digitalcoupon.hpp|void DigitalCoupon::accept(AcyclicVisitor &);
 | |ql/cashflows/digitalcoupon.hpp|void DigitalCoupon::setPricer(const ext::shared_ptr<FloatingRateCouponPricer> & pricer);
-| |ql/cashflows/digitaliborcoupon.hpp|DigitalIborCoupon::DigitalIborCoupon(const ext::shared_ptr<IborCoupon> & underlying, Rate callStrike = Null<Rate>(), Position::Type callPosition = Position::Long, bool isCallATMIncluded = false, Rate callDigitalPayoff = Null<Rate>(), Rate putStrike = Null<Rate>(), Position::Type putPosition = Position::Long, bool isPutATMIncluded = false, Rate putDigitalPayoff = Null<Rate>(), const ext::shared_ptr<DigitalReplication> & replication = { }, bool nakedOption = false);
+|v|ql/cashflows/digitaliborcoupon.hpp|DigitalIborCoupon::DigitalIborCoupon(const ext::shared_ptr<IborCoupon> & underlying, Rate callStrike = Null<Rate>(), Position::Type callPosition = Position::Long, bool isCallATMIncluded = false, Rate callDigitalPayoff = Null<Rate>(), Rate putStrike = Null<Rate>(), Position::Type putPosition = Position::Long, bool isPutATMIncluded = false, Rate putDigitalPayoff = Null<Rate>(), const ext::shared_ptr<DigitalReplication> & replication = { }, bool nakedOption = false);
 | |ql/cashflows/digitaliborcoupon.hpp|DigitalIborLeg::DigitalIborLeg(Schedule schedule, ext::shared_ptr<IborIndex> index);
 | |ql/cashflows/digitaliborcoupon.hpp|DigitalIborLeg & DigitalIborLeg::withNotionals(Real notional);
 | |ql/cashflows/digitaliborcoupon.hpp|DigitalIborLeg & DigitalIborLeg::withNotionals(const std::vector<Real> & notionals);
@@ -453,7 +453,7 @@
 | |ql/cashflows/lineartsrpricer.hpp|Real VegaRatioHelper::operator()(Real strike) const;
 | |ql/cashflows/lineartsrpricer.hpp|PriceHelper::PriceHelper(const SmileSection * section, const Option::Type type, const Real targetPrice);
 | |ql/cashflows/lineartsrpricer.hpp|Real PriceHelper::operator()(Real strike) const;
-| |ql/cashflows/multipleresetscoupon.hpp|MultipleResetsCoupon::MultipleResetsCoupon(const Date & paymentDate, Real nominal, const Schedule & resetSchedule, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Rate couponSpread = 0.0, Rate rateSpread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), const Date & exCouponDate = Date());
+|v|ql/cashflows/multipleresetscoupon.hpp|MultipleResetsCoupon::MultipleResetsCoupon(const Date & paymentDate, Real nominal, const Schedule & resetSchedule, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Rate couponSpread = 0.0, Rate rateSpread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), const Date & exCouponDate = Date());
 | |ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::fixingDates() const;
 | |ql/cashflows/multipleresetscoupon.hpp|const std::vector<Time> & MultipleResetsCoupon::dt() const;
 | |ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::valueDates() const;
@@ -611,8 +611,8 @@
 |x|ql/cashflows/replication.hpp|Replication::Type DigitalReplication::replicationType() const;
 |x|ql/cashflows/replication.hpp|Real DigitalReplication::gap() const;
 |v|ql/cashflows/simplecashflow.hpp|SimpleCashFlow::SimpleCashFlow(Real amount, const Date & date);
-| |ql/cashflows/simplecashflow.hpp|Redemption::Redemption(Real amount, const Date & date);
-| |ql/cashflows/simplecashflow.hpp|AmortizingPayment::AmortizingPayment(Real amount, const Date & date);
+|v|ql/cashflows/simplecashflow.hpp|Redemption::Redemption(Real amount, const Date & date);
+|v|ql/cashflows/simplecashflow.hpp|AmortizingPayment::AmortizingPayment(Real amount, const Date & date);
 |x|ql/cashflows/simplecashflow.hpp|void accept(AcyclicVisitor & v);
 | |ql/cashflows/timebasket.hpp|TimeBasket::TimeBasket();
 | |ql/cashflows/timebasket.hpp|TimeBasket::TimeBasket(const std::vector<Date> & dates, const std::vector<Real> & values);

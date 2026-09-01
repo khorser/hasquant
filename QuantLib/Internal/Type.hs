@@ -631,6 +631,50 @@ peekCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withCmsCoupon :: CmsCoupon -> (Ptr CCmsCoupon' -> IO b) -> IO b
 withCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
+-- | Concrete Ibor coupon retained for constructors, such as 'DigitalIborCoupon',
+-- that require QuantLib's exact subtype.
+data CIborCoupon'
+type CIborCoupon = ForeignPtr CIborCoupon'
+type IborCoupon = GenFloatingRateCoupon CIborCoupon
+foreign import ccall unsafe "ql.h &qlFreeIborCoupon" qlFreeIborCoupon :: FinalizerPtr CIborCoupon'
+instance Finalizable CIborCoupon' where finalize = qlFreeIborCoupon
+foreign import ccall "ql.h qlIborCouponAsFloatingRateCoupon" qlIborCouponAsFloatingRateCoupon :: Ptr CIborCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CIborCoupon' where {type Base CIborCoupon' = CFloatingRateCoupon'; upcast = qlIborCouponAsFloatingRateCoupon}
+peekIborCoupon :: Ptr CIborCoupon' -> IO IborCoupon
+peekIborCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withIborCoupon :: IborCoupon -> (Ptr CIborCoupon' -> IO b) -> IO b
+withIborCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+data COvernightIndexedCoupon'
+type COvernightIndexedCoupon = ForeignPtr COvernightIndexedCoupon'
+type OvernightIndexedCoupon = GenFloatingRateCoupon COvernightIndexedCoupon
+foreign import ccall unsafe "ql.h &qlFreeOvernightIndexedCoupon" qlFreeOvernightIndexedCoupon :: FinalizerPtr COvernightIndexedCoupon'
+instance Finalizable COvernightIndexedCoupon' where finalize = qlFreeOvernightIndexedCoupon
+foreign import ccall "ql.h qlOvernightIndexedCouponAsFloatingRateCoupon" qlOvernightIndexedCouponAsFloatingRateCoupon :: Ptr COvernightIndexedCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable COvernightIndexedCoupon' where {type Base COvernightIndexedCoupon' = CFloatingRateCoupon'; upcast = qlOvernightIndexedCouponAsFloatingRateCoupon}
+peekOvernightIndexedCoupon :: Ptr COvernightIndexedCoupon' -> IO OvernightIndexedCoupon
+peekOvernightIndexedCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withOvernightIndexedCoupon :: OvernightIndexedCoupon -> (Ptr COvernightIndexedCoupon' -> IO b) -> IO b
+withOvernightIndexedCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+data CCPICoupon
+newtype CPICoupon = CPICoupon {getCCPICoupon :: Standalone CCPICoupon}
+foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon
+instance Finalizable CCPICoupon where finalize = qlFreeCPICoupon
+peekCPICoupon :: Ptr CCPICoupon -> IO CPICoupon
+peekCPICoupon = CPICoupon <.> peekStandalone
+withCPICoupon :: CPICoupon -> (Ptr CCPICoupon -> IO b) -> IO b
+withCPICoupon = withStandalone . getCCPICoupon
+
+data CCPICouponPricer
+newtype CPICouponPricer = CPICouponPricer {getCCPICouponPricer :: Standalone CCPICouponPricer}
+foreign import ccall unsafe "ql.h &qlFreeCPICouponPricer" qlFreeCPICouponPricer :: FinalizerPtr CCPICouponPricer
+instance Finalizable CCPICouponPricer where finalize = qlFreeCPICouponPricer
+peekCPICouponPricer :: Ptr CCPICouponPricer -> IO CPICouponPricer
+peekCPICouponPricer = CPICouponPricer <.> peekStandalone
+withCPICouponPricer :: CPICouponPricer -> (Ptr CCPICouponPricer -> IO b) -> IO b
+withCPICouponPricer = withStandalone . getCCPICouponPricer
+
 data CDigitalReplication
 newtype DigitalReplication = DigitalReplication {getCDigitalReplication :: Standalone CDigitalReplication}
 foreign import ccall unsafe "ql.h &qlFreeDigitalReplication" qlFreeDigitalReplication :: FinalizerPtr CDigitalReplication

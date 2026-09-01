@@ -19,6 +19,32 @@ module QuantLib.CashFlow
   , fixedRateCoupon
   , floatingRateCoupon
   , iborCoupon
+  , IborCoupon
+  , iborCouponAsCashFlow
+  , averageBMACoupon
+  , cappedFlooredCoupon
+  , cappedFlooredIborCoupon
+  , digitalIborCoupon
+  , multipleResetsCoupon
+  , averagingMultipleResetsPricer
+  , compoundingMultipleResetsPricer
+  , OvernightIndexedCoupon
+  , overnightIndexedCoupon
+  , cappedFlooredOvernightIndexedCoupon
+  , compoundingOvernightIndexedCouponPricer
+  , arithmeticAveragedOvernightIndexedCouponPricer
+  , blackCompoundingOvernightIndexedCouponPricer
+  , blackAveragingOvernightIndexedCouponPricer
+  , CPICoupon
+  , cpiCoupon
+  , cpiCouponFromBaseDate
+  , cpiCouponWithBaseDate
+  , CPICouponPricer
+  , cpiCouponPricer
+  , cpiCouponPricerWithVol
+  , setCpiCouponPricer
+  , redemption
+  , amortizingPayment
   , cashFlowLeg
   , startDate
   , nextCashFlows
@@ -191,6 +217,14 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
+{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer' nocode#}
+{#pointer *QlFloatingRateCoupon as FloatingRateCoupon foreign -> CFloatingRateCoupon' nocode#}
+{#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
+{#pointer *QlIborCoupon as IborCoupon foreign -> CIborCoupon' nocode#}
+{#pointer *QlOvernightIndexedCoupon as OvernightIndexedCoupon foreign -> COvernightIndexedCoupon' nocode#}
+{#pointer *QlCPICoupon as CPICoupon foreign -> CCPICoupon nocode#}
+{#pointer *QlCPICouponPricer as CPICouponPricer foreign -> CCPICouponPricer nocode#}
+{#pointer *QlCPIVolatilitySurface as CPIVolatilitySurface foreign -> CCPIVolatilitySurface' nocode#}
 
 {#enum DurationType{} deriving(Show, Eq, Read)#}
 {#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq, Read)#}
@@ -304,12 +338,38 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 -- |An Ibor-specific floating coupon.  Prefer this to 'floatingRateCoupon' when the index is
 -- Ibor: QuantLib then uses IborCoupon's fixing value/maturity-date logic rather than the base
 -- floating-coupon implementation.  Date and pricer handling are as in 'floatingRateCoupon'.
-{#fun qlIborCoupon as iborCoupon{withDay*`Day'
+{#fun qlIborCouponExact as iborCoupon{withDay*`Day'
   ,`Double',withDay*`Day',withDay*`Day',fromIntegral`Word'
   ,withIborIndex*`GenIborIndex ibor',`Double',`Double'
   ,withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter'
   ,`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention'
-  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+  ,preErrorCheck-`String'errorCheck*-}->`IborCoupon'peekIborCoupon*#}
+
+-- |Convert a concrete Ibor coupon to the generic cash-flow representation used by
+-- heterogeneous 'cashFlowLeg' inputs.
+{#fun qlIborCouponAsCashFlow as iborCouponAsCashFlow{withIborCoupon*`IborCoupon'}->`CashFlow'peekCashFlow*#}
+
+{#fun qlAverageBMACoupon as averageBMACoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',withBMAIndex*`BMAIndex',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlCappedFlooredCoupon as cappedFlooredCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlCappedFlooredIborCoupon as cappedFlooredIborCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withIborIndex*`GenIborIndex ibor',`Double',`Double',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',withMaybeDay*`Maybe Day',fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlDigitalIborCoupon as digitalIborCoupon{withIborCoupon*`IborCoupon',fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double',withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlMultipleResetsCoupon as multipleResetsCoupon{withDay*`Day',`Double',withSchedule*`Schedule',fromIntegral`Word',withIborIndex*`GenIborIndex ibor',`Double',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlAveragingMultipleResetsPricer as averagingMultipleResetsPricer{preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlCompoundingMultipleResetsPricer as compoundingMultipleResetsPricer{preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlOvernightIndexedCoupon as overnightIndexedCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',withOvernightIborIndex*`OvernightIborIndex',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withDayCounter*`DayCounter',`Bool',fromEnumC`RateAveragingType',fromIntegral`Word',fromIntegral`Word',`Bool',`Bool',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',fromMaybeInt`Maybe Int',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedCoupon'peekOvernightIndexedCoupon*#}
+{#fun qlCappedFlooredOvernightIndexedCoupon as cappedFlooredOvernightIndexedCoupon{withOvernightIndexedCoupon*`OvernightIndexedCoupon',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlCompoundingOvernightIndexedCouponPricer as compoundingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure',`Bool',preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlArithmeticAveragedOvernightIndexedCouponPricer as arithmeticAveragedOvernightIndexedCouponPricer{`Double',`Double',`Bool',withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure',`Bool',preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlBlackCompoundingOvernightIndexedCouponPricer as blackCompoundingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure',`Bool',preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlBlackAveragingOvernightIndexedCouponPricer as blackAveragingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure',`Bool',preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+{#fun qlCPICoupon as cpiCoupon{`Double',withDay*`Day',`Double',withDay*`Day',withDay*`Day',withZeroInflationIndex*`GenZeroInflationIndex zidx',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`CPICoupon'peekCPICoupon*#}
+{#fun qlCPICouponFromBaseDate as cpiCouponFromBaseDate{withDay*`Day',withDay*`Day',`Double',withDay*`Day',withDay*`Day',withZeroInflationIndex*`GenZeroInflationIndex zidx',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`CPICoupon'peekCPICoupon*#}
+{#fun qlCPICouponWithBaseDate as cpiCouponWithBaseDate{`Double',withDay*`Day',withDay*`Day',`Double',withDay*`Day',withDay*`Day',withZeroInflationIndex*`GenZeroInflationIndex zidx',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`CPICoupon'peekCPICoupon*#}
+{#fun qlCPICouponPricer as cpiCouponPricer{withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`CPICouponPricer'peekCPICouponPricer*#}
+{#fun qlCPICouponPricerWithVol as cpiCouponPricerWithVol{withGenVolatilityTermStructure*`CPIVolatilitySurface',withMaybeYieldTermStructure*`Maybe YieldTermStructure',preErrorCheck-`String'errorCheck*-}->`CPICouponPricer'peekCPICouponPricer*#}
+{#fun qlCPICouponSetPricer as setCpiCouponPricer{withCPICoupon*`CPICoupon',withCPICouponPricer*`CPICouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlRedemption as redemption{`Double',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+{#fun qlAmortizingPayment as amortizingPayment{`Double',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
 
 -- |Build a heterogeneous 'Leg' from cash-flow building blocks.  The leg takes shared ownership
 -- of each flow, so it remains valid when the individual 'CashFlow' values are no longer retained.
@@ -859,12 +919,9 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 
 {#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
 
-{#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer' nocode#}
 {#pointer *QlCmsCouponPricer as CmsCouponPricer foreign -> CCmsCouponPricer' nocode#}
-{#pointer *QlFloatingRateCoupon as FloatingRateCoupon foreign -> CFloatingRateCoupon' nocode#}
 {#pointer *QlCmsCoupon as CmsCoupon foreign -> CCmsCoupon' nocode#}
 {#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
-{#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
 {#pointer *QlDigitalCmsCoupon as DigitalCmsCoupon foreign -> CDigitalCmsCoupon' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
