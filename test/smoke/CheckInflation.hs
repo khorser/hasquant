@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedLists #-}
+
 -- Smoke test: construct every named zero/YoY inflation index and CPI
 -- interpolation-type enum case, then bootstrap a tiny zero-coupon and
 -- year-on-year inflation curve end-to-end and print the implied rates, so a
@@ -7,7 +9,6 @@
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckInflation.hs -o /tmp/checkinfl -outputdir /tmp/checkinfl_build && /tmp/checkinfl
 import Control.Monad
-import qualified Data.List.NonEmpty as NE
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Currency(currency, Ccy(GBP))
@@ -74,7 +75,7 @@ main = do
   q2 <- simpleQuote 0.03
   h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
-  curve <- piecewiseZeroInflationCurve today baseDate Monthly dc (h1 NE.:| [h2]) Linear
+  curve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Linear
   r1 <- zeroRate curve maturity1 True
   r2 <- zeroRate curve maturity2 True
   putStrLn ("zeroRate @1Y = " ++ show r1 ++ ", @2Y = " ++ show r2 ++ " (both should be ~0.03)")
@@ -87,7 +88,7 @@ main = do
   qy2 <- simpleQuote 0.03
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoYInflationCurve today baseDate 0.03 Monthly dc (hy1 NE.:| [hy2]) Linear
+  yoyCurve <- piecewiseYoYInflationCurve today baseDate 0.03 Monthly dc [hy1, hy2] Linear
   ry1 <- yoyRate yoyCurve maturity1 True
   ry2 <- yoyRate yoyCurve maturity2 True
   putStrLn ("yoyRate @1Y = " ++ show ry1 ++ ", @2Y = " ++ show ry2 ++ " (both should be ~0.03)")
@@ -109,8 +110,8 @@ main = do
   -- availabilityLag = 1M and obsLag = 3M, CPILinear's forward-bracketing fixing must resolve
   -- to Dec 2023 or earlier, which bounds the coupon date to on/before ~end of Feb 2024.
   midMonthSchedule <- fromDates [3 `january` 2024, 20 `february` 2024] cal Unadjusted Nothing Nothing Nothing Nothing
-  legFlat <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag (100.0 NE.:| []) (0.05 NE.:| []) dc Unadjusted cal CPIFlat True
-  legLinear <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag (100.0 NE.:| []) (0.05 NE.:| []) dc Unadjusted cal CPILinear True
+  legFlat <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPIFlat True
+  legLinear <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPILinear True
   npvFlat <- CF.npv legFlat nominalCurve True Nothing Nothing
   npvLinear <- CF.npv legLinear nominalCurve True Nothing Nothing
   putStrLn ("cpiLeg NPV: CPIFlat=" ++ show npvFlat ++ ", CPILinear=" ++ show npvLinear ++ " (must differ)")

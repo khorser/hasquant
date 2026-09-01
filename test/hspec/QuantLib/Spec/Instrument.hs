@@ -11,12 +11,11 @@
 -- engine stores a type this binding can't name, so the fourth discriminant ('UnsupportedVal',
 -- the RTTI-name fallback) isn't exercised here -- its C++ side is a trivial, visibly-correct
 -- @else@, and its Haskell side is a compiler-checked exhaustive @case@.
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell, OverloadedLists #-}
 module QuantLib.Spec.Instrument (spec) where
 
 import Data.Time.Calendar(fromGregorian)
 import Control.Monad(forM_)
-import qualified Data.List.NonEmpty as NE
 
 import Test.Hspec
 
@@ -83,8 +82,8 @@ spec = do
         floatDC <- dayCounter (Actual360 False)
         floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
           ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
-        leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-        capfl <- cap leg (0.03 NE.:| [])
+        leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+        capfl <- cap leg [0.03]
         volQ <- simpleQuote 0.20
         vol0 <- constantOptionletVolatility today' cal ModifiedFollowing volQ dc ShiftedLognormal 0
         eng <- blackCapFloorEngine' discountTS vol0
@@ -107,6 +106,7 @@ spec = do
             foreignRate = 0.02
             fundingRate = 0.01
             interestRateDiff = 0.005
+            cases :: [(PerpetualFuturesPayoffType, PerpetualFuturesFundingType, (Int, TimeUnit))]
             cases =
               [ (PerpetualFuturesLinear, PerpetualFuturesFundingWithPreviousSpot, (3, Months))
               , (PerpetualFuturesLinear, PerpetualFuturesFundingWithCurrentSpot, (3, Months))
@@ -149,7 +149,7 @@ spec = do
         forM_ cases $ \(payoff, fundingType, frequency) -> do
           future <- perpetualFutures payoff fundingType frequency cal dc
           engine <- discountingPerpetualFuturesEngine domesticCurve foreignCurve spotQuote
-            ((0, fundingRate, interestRateDiff) NE.:| []) PerpetualFuturesPiecewiseConstant 60
+            [(0, fundingRate, interestRateDiff)] PerpetualFuturesPiecewiseConstant 60
           setPricingEngine future engine
           actual <- npv future
           abs (actual / expected payoff fundingType frequency - 1) `shouldSatisfy` (< 1.0e-6)

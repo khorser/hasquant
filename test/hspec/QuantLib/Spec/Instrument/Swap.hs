@@ -10,10 +10,11 @@
 -- both legs built from the same index/schedule/nominal/spread, matching discount curves, and
 -- spotFX=1, the pay and receive legs must have equal in-currency NPV, so the swap's total NPV
 -- (and, for the basis swap, its fair pay/rec spreads) must come out at zero.
+{-# LANGUAGE OverloadedLists #-}
+
 module QuantLib.Spec.Instrument.Swap (spec) where
 
 import Test.Hspec
-import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -175,7 +176,7 @@ spec = do
             bondMaturity = 4 `january` 2037
         bondSch <- schedule (Just bondStart) bondMaturity (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
         aaISDA <- dayCounter ActualActualISDA
-        bond <- fixedRateBond 3 100.0 bondSch (0.04 NE.:| []) aaISDA Following 100.0 (Just bondStart) cal
+        bond <- fixedRateBond 3 100.0 bondSch [0.04] aaISDA Following 100.0 (Just bondStart) cal
           (0, Days) cal Unadjusted False aaISDA >>= asBond
         settle <- settlementDate bond evalDate
 

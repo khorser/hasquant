@@ -7,7 +7,7 @@ module QuantLib.Example.Swap
   ) where
 import Control.Monad(void, forM)
 import Data.Time.Calendar
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import QuantLib.Math
 import qualified QuantLib.Index.InterestRate as IR
@@ -74,9 +74,9 @@ run = do
 
   tsDC <- dayCounter ActualActualISDA
 
-  depoSwapTS <- TS.piecewiseYieldCurve settleDate (NE.fromList (depoHelpers++swapHelpers)) tsDC [] TS.Discount LogLinear
-  depoFutSwapTS <- TS.piecewiseYieldCurve settleDate (NE.fromList (take 2 depoHelpers++futHelpers++drop 1 swapHelpers)) tsDC [] TS.Discount LogLinear
-  depoFraSwapTS <- TS.piecewiseYieldCurve settleDate (NE.fromList (take 3 depoHelpers++fraHelpers++swapHelpers)) tsDC [] TS.Discount LogLinear
+  depoSwapTS <- TS.piecewiseYieldCurve settleDate (fromList (depoHelpers++swapHelpers)) tsDC [] TS.Discount LogLinear
+  depoFutSwapTS <- TS.piecewiseYieldCurve settleDate (fromList (take 2 depoHelpers++futHelpers++drop 1 swapHelpers)) tsDC [] TS.Discount LogLinear
+  depoFraSwapTS <- TS.piecewiseYieldCurve settleDate (fromList (take 3 depoHelpers++fraHelpers++swapHelpers)) tsDC [] TS.Discount LogLinear
 
   i1 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 

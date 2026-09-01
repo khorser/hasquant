@@ -1,10 +1,11 @@
+{-# LANGUAGE OverloadedLists #-}
+
 module QuantLib.Example.QuickStart
   (
     Result(..)
   , run
   ) where
 import Data.Time.Calendar(addGregorianYearsClip)
-import qualified Data.List.NonEmpty as NE
 
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Math(Interpolation(..))
@@ -37,12 +38,12 @@ run = do
 
   dc <- dayCounter (Actual360 False)
   curve <- TS.interpolatedZeroCurve
-    ((settle, 0.030) NE.:|
-    [ (addGregorianYearsClip 1 settle, 0.032)
+    [ (settle, 0.030)
+    , (addGregorianYearsClip 1 settle, 0.032)
     , (addGregorianYearsClip 2 settle, 0.034)
     , (addGregorianYearsClip 5 settle, 0.036)
     , (addGregorianYearsClip 10 settle, 0.038)
-    ]) dc cal [] Linear
+    ] dc cal [] Linear
 
   sofr <- IR.overnightIborIndex IR.Sofr (Just curve)
 

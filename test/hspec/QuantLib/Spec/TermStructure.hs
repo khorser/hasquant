@@ -1,4 +1,4 @@
-{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE ScopedTypeVariables, OverloadedLists #-}
 module QuantLib.Spec.TermStructure (spec) where
 
 import Control.Monad(replicateM, forM_)
@@ -229,7 +229,7 @@ spec = do
           let d1 = addGregorianYearsClip 1 refDate
               d2 = addGregorianYearsClip 2 refDate
               spreadDf1 = 0.95
-          spreaded <- interpolatedSpreadDiscountCurve ts ((refDate, 1.0) NE.:| [(d1, spreadDf1), (d2, 0.90)]) Linear
+          spreaded <- interpolatedSpreadDiscountCurve ts [(refDate, 1.0), (d1, spreadDf1), (d2, 0.90)] Linear
 
           baseD1 <- discount' ts d1 False
           spreadedD1 <- discount' spreaded d1 False
@@ -264,7 +264,7 @@ spec = do
           sch <- schedule (Just (2 `january` 2024)) bondMaturity (1, Years) cal Unadjusted Unadjusted
                    Backward False Nothing Nothing
           price <- Quote.simpleQuote 100.0
-          bond <- fixedRateBondHelper price 3 100.0 sch (0.04 NE.:| []) thirty360dc Following 100.0 Nothing
+          bond <- fixedRateBondHelper price 3 100.0 sch [0.04] thirty360dc Following 100.0 Nothing
                     >>= bondHelperBond
           Bond.maturityDate bond `shouldReturn` Just bondMaturity
 
@@ -288,7 +288,7 @@ spec = do
               sch <- schedule (Just (2 `january` 2024)) maturity (1, Years) cal Unadjusted Unadjusted
                        Backward False Nothing Nothing
               price <- Quote.simpleQuote 100.0
-              fixedRateBondHelper price 3 100.0 sch (coupon NE.:| []) thirty360dc Following 100.0 Nothing)
+              fixedRateBondHelper price 3 100.0 sch [coupon] thirty360dc Following 100.0 Nothing)
             [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
           curve <- do
             let optMethod = Simplex 0.1
@@ -322,7 +322,7 @@ spec = do
           fwdPoint <- Quote.simpleQuote 0.0025
           rh <- fxSwapRateHelper fwdPoint spotFx (1, Years) fixingDays cal ModifiedFollowing False
                   True collateralCurve tradingCal
-          ts <- piecewiseYieldCurve settlement (rh NE.:| []) actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
           -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
           -- setTermStructure call on each helper) only runs on first calculation, not on
           -- construction, so the curve must be queried before impliedQuote is meaningful.
@@ -378,7 +378,7 @@ spec = do
           maturityDate <- advance cal valueDate (3, Months) ModifiedFollowing False
           price <- Quote.simpleQuote 95.0
           rh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
-          ts <- piecewiseYieldCurve valueDate (rh NE.:| []) actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve valueDate [rh] actual360dc [] Discount LogLinear
           _ <- discount' ts valueDate False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
@@ -392,7 +392,7 @@ spec = do
           let settlement = 2 `january` 2024
           price <- Quote.simpleQuote 95.0
           rh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
-          ts <- piecewiseYieldCurve settlement (rh NE.:| []) actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
           _ <- discount' ts settlement False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
@@ -416,11 +416,11 @@ spec = do
           price <- Quote.simpleQuote 95.0
 
           sofrRh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
-          sofrTs <- piecewiseYieldCurve settlement (sofrRh NE.:| []) actual360dc [] Discount LogLinear
+          sofrTs <- piecewiseYieldCurve settlement [sofrRh] actual360dc [] Discount LogLinear
           sofrDf <- discount' sofrTs maturityDate False
 
           explicitRh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
-          explicitTs <- piecewiseYieldCurve settlement (explicitRh NE.:| []) actual360dc [] Discount LogLinear
+          explicitTs <- piecewiseYieldCurve settlement [explicitRh] actual360dc [] Discount LogLinear
           explicitDf <- discount' explicitTs maturityDate False
 
           sofrDf `shouldSatisfy` closePrec explicitDf 1.0e-8
@@ -599,8 +599,8 @@ spec = do
             floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
               ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
             idx <- iborIndex Euribor6M (Just forecastH)
-            leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-            capfl <- cap leg (0.03 NE.:| [])
+            leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+            capfl <- cap leg [0.03]
             dc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20
             vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
@@ -639,8 +639,8 @@ spec = do
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
           idx <- iborIndex Euribor6M (Just forecastH)
-          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg (0.05 NE.:| [])
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.05]
           dc <- dayCounter Actual365FixedStandard
 
           flatVolQ <- Quote.simpleQuote 0.18
@@ -715,8 +715,8 @@ spec = do
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
           idx <- iborIndex Euribor6M (Just forecastH)
-          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg (0.05 NE.:| [])
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.05]
           dc <- dayCounter Actual365FixedStandard
           let tenors = [(n, Years) | n <- [1 .. 10]]
 
@@ -848,8 +848,8 @@ spec = do
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
           idx <- iborIndex Euribor6M (Just forecastH)
-          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg (0.03 NE.:| [])
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.03]
           dc <- dayCounter Actual365FixedStandard
 
           normalVolQ <- Quote.simpleQuote 0.0075
@@ -951,7 +951,7 @@ spec = do
               fra <- Fwd.forwardRateAgreement euribor3m start maturity Long qVal 1.0 (Just curve3m)
               rate <- IR.rate <$> Fwd.forwardRate fra
               rate `shouldSatisfy` closePrec qVal tolerance
-            ) [1 .. 9 :: Int]
+            ) ([1 .. 9] :: [Int])
 
       it "3m/6m ibor-ibor basis swaps built from the bootstrapped curves reprice to zero" $
         Settings.keepingSettings' $ do
@@ -962,14 +962,14 @@ spec = do
                 maturity <- advance cal settleFix tenor ModifiedFollowing True
                 baseSchedule <- schedule (Just settleFix) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
                 otherSchedule <- schedule (Just settleFix) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
-                baseLeg <- iborLeg baseSchedule euribor3m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
-                otherLeg <- iborLeg otherSchedule euribor6m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [] [] [] False False
+                baseLeg <- iborLeg baseSchedule euribor3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
+                otherLeg <- iborLeg otherSchedule euribor6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
                 sw <- swap baseLeg otherLeg
                 setPricingEngine sw eng
                 v <- npv sw
                 v `shouldSatisfy` closePrec 0 tolerance
-          mapM_ (\i -> checkBasisSwap (i, Years)) [2 .. 10 :: Int]
-          mapM_ (\i -> checkBasisSwap (i * 6, Months)) [1 .. 3 :: Int]
+          mapM_ (\i -> checkBasisSwap (i, Years)) ([2 .. 10] :: [Int])
+          mapM_ (\i -> checkBasisSwap (i * 6, Months)) ([1 .. 3] :: [Int])
 
       it "a makeVanillaSwap-built 6m swap on the bootstrapped curves reprices to zero" $
         Settings.keepingSettings' $ do
@@ -982,7 +982,7 @@ spec = do
               setPricingEngine sw eng
               v <- npv sw
               v `shouldSatisfy` closePrec 0 tolerance
-            ) [2 .. 10 :: Word]
+            ) ([2 .. 10] :: [Word])
 
       -- A MultiCurve member that is not itself solved by the optimizer -- a deterministic
       -- function (here, a fixed spread) of another member curve. Ports upstream's
@@ -1032,7 +1032,7 @@ spec = do
               setPricingEngine sw eng
               v <- npv sw
               v `shouldSatisfy` closePrec 0 tolerance
-            ) [1 .. 10 :: Word]
+            ) ([1 .. 10] :: [Word])
 
       -- GlobalBootstrap's instrumentWeights: overdetermined instrument sets (more instruments
       -- than pillars) are fitted by least squares, weighted per instrument. Ports (the
@@ -1051,7 +1051,7 @@ spec = do
           q2 <- Quote.simpleQuote 0.02
           h1 <- depositRateHelper q1 (6, Months) 2 cal ModifiedFollowing True euriborDC
           h2 <- depositRateHelper q2 (6, Months) 2 cal ModifiedFollowing True euriborDC
-          let helpers = h1 NE.:| [h2]
+          let helpers = [h1, h2]
           curveMostlyQ2 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.1, 0.9] False
           curveMostlyQ1 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.9, 0.1] False
           settleFix <- advance cal curveToday (2, Days) Following False
@@ -1095,7 +1095,7 @@ spec = do
               dDiscount <- discount' discountCurve pillar False
               dZero <- discount' zeroCurve pillar False
               dZero `shouldSatisfy` closePrec dDiscount tolerance
-            ) [1 .. 5 :: Int]
+            ) ([1 .. 5] :: [Int])
 
       -- dispatchTrait (cbits/qlTermStructureAux.cpp) used to have switch arms for
       -- Discount/ForwardRate/ZeroYield only, so SimpleZeroYield -- a BootstrapTrait value with
@@ -1121,7 +1121,7 @@ spec = do
               dDiscount <- discount' discountCurve pillar False
               dZero <- discount' zeroCurve pillar False
               dZero `shouldSatisfy` closePrec dDiscount tolerance
-            ) [1 .. 5 :: Int]
+            ) ([1 .. 5] :: [Int])
 
       -- GlobalBootstrap's functor-callback constructor (upstream QuantLib-SWIG's canned
       -- AdditionalErrors/AdditionalDates), bound only for SimpleZeroYield x Linear -- the same
@@ -1170,7 +1170,7 @@ spec = do
               df <- discount' curve pillar False
               -- simple-compounding deposit relation: df = 1 / (1 + qVal * tau)
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
-            ) [1 .. 5 :: Int]
+            ) ([1 .. 5] :: [Int])
 
       -- LocalBootstrap only works with an interpolator providing localInterpolate(), which
       -- upstream only ConvexMonotone supplies -- so piecewiseYieldCurveLocalBootstrap' hardcodes
@@ -1197,7 +1197,7 @@ spec = do
               let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
               df <- discount' curve pillar False
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
-            ) [1 .. 5 :: Int]
+            ) ([1 .. 5] :: [Int])
 
       -- piecewiseYieldCurve2' unifies all five bootstrapper choices tested above behind one
       -- Bootstrap ADT instead of one function per bootstrapper: piecewiseYieldCurve'/
@@ -1227,7 +1227,7 @@ spec = do
                   let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
                   df <- discount' curve pillar False
                   df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
-                ) [1 .. 5 :: Int]
+                ) ([1 .. 5] :: [Int])
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
           piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
@@ -1258,7 +1258,7 @@ spec = do
               dfZero <- discount' zeroCurve pillar False
               dfForward `shouldSatisfy` closePrec dfDiscount tolerance
               dfZero `shouldSatisfy` closePrec dfDiscount tolerance
-            ) [1 .. 5 :: Int]
+            ) ([1 .. 5] :: [Int])
 
     -- PiecewiseBlackVarianceSurface::makeFromGrid: upstream's testMakeFromGrid
     -- (test-suite/piecewiseblackvariancesurface.cpp) has no cached NPV fixture, only
@@ -1683,7 +1683,7 @@ spec = do
           d1 <- addPeriod refDate (90, Days)
           d2 <- addPeriod refDate (180, Days)
           grid <- Vol.gridModelLocalVolSurface refDate
-            ((d1, 80 NE.:| [100, 120]) NE.:| [(d2, 75 NE.:| [100, 125])]) dc
+            [(d1, [80, 100, 120]), (d2, [75, 100, 125])] dc
                     Vol.FixedLocalVolSurfaceConstantExtrapolation Vol.FixedLocalVolSurfaceConstantExtrapolation
           model <- Vol.gridModelLocalVolSurfaceAsCalibratedModel grid
           params model `shouldReturn` replicate 6 1.0
@@ -1708,7 +1708,7 @@ spec = do
           v1 <- Quote.simpleQuote 0.20
           v2 <- Quote.simpleQuote 0.20
           v3 <- Quote.simpleQuote 0.20
-          interpl <- Vol.andreasenHugeVolatilityInterpl ((o1, v1) NE.:| [(o2, v2), (o3, v3)]) spot rTS qTS
+          interpl <- Vol.andreasenHugeVolatilityInterpl [(o1, v1), (o2, v2), (o3, v3)] spot rTS qTS
             Vol.AndreasenHugeInterpolationCubicSpline Vol.AndreasenHugeCalibrationAndreasenHugeCall 100
             Nothing Nothing (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
             (EndCriteria 100 20 1.0e-10 1.0e-10 1.0e-10)
@@ -1774,8 +1774,8 @@ spec = do
           floatDC <- dayCounter (Actual360 False)
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
-          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg (0.03 NE.:| [])
+          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg [0.03]
           volQ <- Quote.simpleQuote 0.20
           vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           eng <- blackCapFloorEngine' discountTS vol0

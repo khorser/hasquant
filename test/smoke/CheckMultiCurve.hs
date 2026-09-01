@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedLists #-}
+
 -- Stale-build guard for the GlobalBootstrap dispatch branch and MultiCurve binding.
 --
 -- The behavioural checks live in the "multi-curve bootstrap (GlobalBootstrap + MultiCurve
@@ -15,6 +17,7 @@
 --   cabal exec -- ghc -ismoke -package hasquant smoke/CheckMultiCurve.hs -o /tmp/mc_smoke -outputdir /tmp/mc_smoke_build && /tmp/mc_smoke
 
 import QuantLib.CashFlow(iborLeg)
+
 import qualified Data.List.NonEmpty as NE
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor3M, Euribor6M))
 import QuantLib.Instrument(npv, setPricingEngine)
@@ -81,8 +84,8 @@ main = do
   maturity <- advance cal settleFix (2, Years) ModifiedFollowing True
   baseSchedule <- schedule (Just settleFix) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
   otherSchedule <- schedule (Just settleFix) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
-  baseLeg <- iborLeg baseSchedule euribor3m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
-  otherLeg <- iborLeg otherSchedule euribor6m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [] [] [] False False
+  baseLeg <- iborLeg baseSchedule euribor3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
+  otherLeg <- iborLeg otherSchedule euribor6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
   sw <- swap baseLeg otherLeg
   eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
   setPricingEngine sw eng

@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedLists #-}
+
 -- Smoke test for the IsQlPayoff/IsQlExercise/EnumMeta' -> Upcastable/GenForeignPtr
 -- rewrite in QuantLib.Internal.Common. A clean build proves the new code type-checks,
 -- but not that the right number of upcasts happens at runtime (wrong depth would
@@ -16,7 +18,6 @@
 -- cbits/ for this exact pattern. Nothing in the test suite or examples had ever constructed a
 -- SwingExercise via either constructor before this was found, so it went uncaught until now.
 import Data.Time.Calendar (fromGregorian)
-import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -45,7 +46,7 @@ main = do
 
   -- 4: SwingListExercise (qlSwingExercise, the array-marshalled constructor) -- the
   -- original repro for the qlInstrument.cpp empty-vector segfault, now fixed.
-  let listSwingEx = SwingListExercise ((maturity, 0) NE.:| [])
+  let listSwingEx = SwingListExercise [(maturity, 0)]
   swingOpt <- vanillaSwingOption (PlainVanilla (PlainVanillaPayoff Call 100)) listSwingEx 0 1
   expired3 <- isExpired swingOpt
   putStrLn ("vanillaSwingOption (SwingListExercise): isExpired = " ++ show expired3)

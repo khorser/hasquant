@@ -1,8 +1,9 @@
+{-# LANGUAGE OverloadedLists #-}
+
 module QuantLib.Spec.Instrument.InflationCapFloor (spec) where
 
 import Control.Monad(forM_, forM)
 import Data.Time.Calendar(toGregorian, fromGregorian)
-import qualified Data.List.NonEmpty as NE
 import qualified Data.Vector.Storable as V
 import Test.Hspec
 
@@ -72,7 +73,7 @@ linkedYoYIndex evalDate = do
   h1 <- yearOnYearInflationSwapHelper q1 (3, Months) maturity1 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   h2 <- yearOnYearInflationSwapHelper q2 (3, Months) maturity2 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
-  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate 0.03 Monthly dc (h1 NE.:| [h2]) Linear
+  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate 0.03 Monthly dc [h1, h2] Linear
   customYoYIndex (Just yoyCurve)
 
 -- |A short YoY-inflation leg (3 annual coupons) on the given (curve-linked) index -- mirrors
@@ -84,7 +85,7 @@ setupLeg yii evalDate = do
   dc <- dayCounter Actual365FixedStandard
   endDate <- advance cal evalDate (3, Years) Unadjusted False
   sch <- schedule (Just evalDate) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
-  yoyInflationLeg sch cal yii (3, Months) CPIFlat (1000000 NE.:| []) dc Unadjusted [0] [1.0] [0.0] [] []
+  yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
 
 -- |Builds the Black engine (constant vol) all cap\/floor\/collar instruments in this module
 -- share -- mirrors 'QuantLib.Spec.TermStructure`'s "Black cap/floor engine" setup, YoY-inflation
@@ -126,7 +127,7 @@ customZeroIndex evalDate = do
   h1 <- zeroCouponInflationSwapHelper q1 (2, Months) maturity1 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 (2, Months) maturity2 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
-  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc (h1 NE.:| [h2]) Linear
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
   zeroInflationIndex' "ICFCT Zero" r False Monthly (1, Months) gbp (Just zeroCurve)
 
 spec :: Spec
@@ -148,17 +149,17 @@ spec = do
 
     let capRate = 0.035
         floorRate = 0.025
-    capInst <- yoyInflationCap leg (capRate NE.:| [])
-    floorInst <- yoyInflationFloor leg (floorRate NE.:| [])
-    collarInst <- yoyInflationCollar leg (capRate NE.:| []) (floorRate NE.:| [])
-    mapM_ (`setPricingEngine` engine) [capInst, floorInst, collarInst]
+    capInst <- yoyInflationCap leg [capRate]
+    floorInst <- yoyInflationFloor leg [floorRate]
+    collarInst <- yoyInflationCollar leg [capRate] [floorRate]
+    mapM_ (`setPricingEngine` engine) ([capInst, floorInst, collarInst] :: [YoYInflationCapFloor])
 
     capNPV <- npv capInst
     floorNPV <- npv floorInst
     collarNPV <- npv collarInst
     abs ((capNPV - floorNPV) - collarNPV) `shouldSatisfy` (< 1e-6)
 
-    caplets <- forM [0 .. 2 :: Word] $ \n -> do
+    caplets <- forM ([0 .. 2] :: [Word]) $ \n -> do
       o <- yoyInflationCapFloorOptionlet capInst n
       setPricingEngine o engine
       npv o
@@ -181,8 +182,8 @@ spec = do
     sch <- schedule (Just todayD) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
 
     let capRate = 0.035
-    cappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat (1000000 NE.:| []) dc Unadjusted [0] [1.0] [0.0] [capRate] []
-    uncappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat (1000000 NE.:| []) dc Unadjusted [0] [1.0] [0.0] [] []
+    cappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [capRate] []
+    uncappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
 
     nominalQ <- simpleQuote 0.02
     nominalCurve <- flatForward todayD nominalQ dc IR.Continuous Annual
@@ -195,7 +196,7 @@ spec = do
     uncappedNPV <- CF.npv uncappedLeg nominalCurve True Nothing Nothing
 
     capEngine <- yoyInflationBlackCapFloorEngine yii vol nominalCurve
-    capInst <- yoyInflationCap uncappedLeg (capRate NE.:| [])
+    capInst <- yoyInflationCap uncappedLeg [capRate]
     setPricingEngine capInst capEngine
     capNPV <- npv capInst
 

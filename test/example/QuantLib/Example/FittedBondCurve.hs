@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell, OverloadedLists #-}
 module QuantLib.Example.FittedBondCurve
   (
     Result(..)
@@ -115,8 +115,8 @@ run = do
         s <- schedule (Just bondSettle) mat (1, Years) cal
           ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
-        hA <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s (c NE.:| []) dc ModifiedFollowing 100.0 Nothing
-        hB <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s (c NE.:| []) dc ModifiedFollowing 100.0 Nothing
+        hA <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
+        hB <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
                 >>= TS.asRateHelper
         return (hA, hB)) $
           zip3 cleanQuotes lengths coupons

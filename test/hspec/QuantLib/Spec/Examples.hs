@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedLists #-}
+
 module QuantLib.Spec.Examples (spec) where
 
 import Test.Hspec
@@ -128,7 +130,7 @@ spec = do
         forM_ (zip rates amounts) $ \(rate, expectedAmount) -> do
           sched <- B.sinkingSchedule refDate (30, Years) Monthly nullCal
           ns <- B.sinkingNotionals (30, Years) Monthly rate 100.0
-          bnd <- B.amortizingFixedRateBond 0 (NE.fromList ns) sched (rate NE.:| []) dc
+          bnd <- B.amortizingFixedRateBond 0 (NE.fromList ns) sched [rate] dc
                    Following Nothing (0, Days) nullCal Unadjusted False [100.0] 0
           cf <- B.cashFlows bnd
           flows <- CF.cashFlows cf Nothing Nothing
