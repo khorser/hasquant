@@ -68,9 +68,25 @@ Two edits, not one — easy to forget the first:
 
 ## 5. Less-common parameter/return shapes
 
+### Choose the public collection type before choosing a marshaller
+
+An upstream `std::vector<T>` does not imply a Haskell `[T]`. Choose among the established public shapes using three separate concerns:
+
+1. **Ergonomics — `[a]`.** Use an ordinary list for small collections that may validly be empty: optional/default schedules, exclusions, constraints, and similar inputs callers commonly construct with list syntax. Do not force `NonEmpty` merely because the successful examples happen to contain elements.
+2. **Semantic invariant — `NonEmpty a`.** Use `NonEmpty` when upstream requires at least one element, construction with zero elements is meaningless, or the implementation would otherwise call `head`/depend on a first node. Typical cases are curve/bootstrap helpers, required notionals or coupons, exercise dates, calibration helpers, and required surface nodes. Marshal with an existing `withNonEmpty*Array` helper, or add the direct `toList`-based counterpart beside the matching list marshaller.
+3. **Performance — `RealVector` / `RealMatrix`.** Use the storable numeric containers for homogeneous `Double` data that can contain hundreds, thousands, or tens of thousands of values: Monte Carlo paths, regression data, PDE vectors, and dense volatility/local-vol grids. Destructure `RealMatrix` into its row/column counts and `RealVector` payload, and marshal with `withRealVectorRaw`; return numeric bulk data with `peekRealVector`. Do not mechanically convert small fixed-dimensional correlation/covariance matrices where boxed `Matrix Double` is clearer and allocation volume is negligible.
+
+These choices can combine: a required set of a few object pointers is normally `NonEmpty (GenX a)`, while a required dense numeric grid is still `RealMatrix` because its dimensions already carry the structural invariant and performance dominates.
+
+### Prefer zipped records to parallel public collections
+
+When two or more upstream arrays describe the same observations positionally, expose one collection of tuples and unzip it only in the Haskell wrapper immediately before the raw c2hs hook. Examples include `(date, value)`, `(strike, quote)`, `(helper, weight)`, and `(tenor, quote, flag)`. Use `NonEmpty (a, b)` when the observation set must also be non-empty. This prevents unequal lengths by construction and keeps related data together at call sites.
+
+Do not zip independent matrix axes: expiries, strikes, and a volatility matrix describe a Cartesian grid, not pairwise observations, so they remain separate axis collections plus `RealMatrix`. Likewise, do not zip parameters whose lengths intentionally follow different QuantLib broadcasting/default rules.
+
 ### `std::vector<T>` parameters
 
-Primitive element type (`double`, `int`/`Date`, ...): the C shim takes a `(len, T*)` pair built from a raw array, not a real `std::vector` at the boundary. Example, `Cap`'s `vector<double>` ctor arg (`cbits/qlInstrument.h`/`.cpp`):
+After making the public-shape decision above, the C shim still takes a `(len, T*)` pair built from a raw array, not a real `std::vector` at the boundary. `Cap` shows the `NonEmpty` shape for required exercise rates:
 ```cpp
 QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e) {
   try {return ret(new QlCapFloor(alloc(new Cap(*arg(floatingLeg), std::vector<double>(exerciseRates, exerciseRates+exerciseRatesLen)))));
@@ -78,10 +94,10 @@ QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseR
 ```
 ```
 {#fun qlCap as cap{withLeg*`GenLeg a' -- ^floatingLeg
-  ,withDoubleArray*`[Double]'& -- ^exerciseRates
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`CapFloor'peekCapFloor*#}
 ```
-The `&` after `withDoubleArray*` splices the marshaller's `(CUInt, Ptr CDouble)` pair into two consecutive C params — one Haskell `[Double]` argument, two C arguments. A `vector<Date>` param uses the same shape via the `qlaux.h` helper `qlDateVector(int *dates, unsigned len)` on the C++ side.
+The `&` after `withNonEmptyDoubleArray*` splices the marshaller's `(CUInt, Ptr CDouble)` pair into two consecutive C params — one Haskell `NonEmpty Double` argument, two C arguments. An empty-valid list uses the corresponding `withDoubleArray`; a `vector<Date>` uses the same boundary shape via the `qlaux.h` helper `qlDateVector(int *dates, unsigned len)` on the C++ side.
 
 Object-pointer element type (`vector<shared_ptr<T>>`): the C shim takes `(len, QlT**)`, built into a real vector via `qlaux.h`'s `template <class T> std::vector<T> qlVector(T **vals, size_t len)`. Example, `Swap`'s multi-leg constructor:
 ```cpp
