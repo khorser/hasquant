@@ -6,6 +6,8 @@ Also added callbacks for custom `Payoff` objects which can be priced through FD,
 
 Added more functionality in FD area to reach more parity with SWIG bingings, added historical analysis for indices, `app/SofrXva` grew into a real standalone SOFR-OIS exposure-profile executable. An HPC coverage report now publishes alongside Haddock. Added 200+ new constructors/methods, ported more upstream tests (300+ in total).
 
+Reworked API to use NonEmpty lists and unboxed vectors and matrices where seemed applicable.
+
 ## 0.6.0.0 (2026)
 
 Rethought multiple inheritance for secondary interfaces (`AffineModel`, `Gaussian1dModel`): instead of a second `Upcastable` node, each leaf now gets a standalone, eagerly-materialized upcast (e.g. `hullWhiteAsAffineModel`). This traded a pure wrap at the call site for an explicit `IO`-sequenced conversion, so a few call sites that used to be pure functions are now `IO` actions — a small, deliberate cost for one fewer hand-rolled sum type per interface. Also generalized several accessor return types one `AnyOf` layer deeper (`SwaptionHelper`, `FixedVsFloatingSwap`) to keep them cast-free, and added a further batch of bindings: Gaussian1d model instruments/engines, YoY/CPI inflation vol surfaces and cap/floors, commodities, cross-currency swaps, and BlackAtmVolCurve/SabrVolSurface/OptionletStripper2.

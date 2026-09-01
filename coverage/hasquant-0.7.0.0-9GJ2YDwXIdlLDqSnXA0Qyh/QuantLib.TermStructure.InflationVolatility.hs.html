@@ -174,11 +174,11 @@ span.spaces    { background: white }
 <span class="lineno">  155 </span>  -&gt; [Double] -- ^cStrikes
 <span class="lineno">  156 </span>  -&gt; [Double] -- ^fStrikes
 <span class="lineno">  157 </span>  -&gt; [(Word, TimeUnit)] -- ^cfMaturities
-<span class="lineno">  158 </span>  -&gt; Matrix Double -- ^cPrice
-<span class="lineno">  159 </span>  -&gt; Matrix Double -- ^fPrice
+<span class="lineno">  158 </span>  -&gt; RealMatrix -- ^cPrice
+<span class="lineno">  159 </span>  -&gt; RealMatrix -- ^fPrice
 <span class="lineno">  160 </span>  -&gt; Interpolation2D -&gt; Interpolation
 <span class="lineno">  161 </span>  -&gt; IO YoYCapFloorTermPriceSurface
-<span class="lineno">  162 </span><span class="decl"><span class="istickedoff">yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d i1d =</span>
+<span class="lineno">  162 </span><span class="decl"><span class="istickedoff">yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (RealMatrix cr cc cd) (RealMatrix fr fc fd) i2d i1d =</span>
 <span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">uncurryNested (qlYoYCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)) (qlInterpolation i1d)</span>
 <span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">where (maturityNums, maturityUnits) = unzip cfMaturities</span></span>
 <span class="lineno">  165 </span>qlYoYCapFloorTermPriceSurface :: (Word) -- ^fixingDays
@@ -187,8 +187,8 @@ span.spaces    { background: white }
 <span class="lineno">  168 </span> -&gt; (DayCounter) -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; ([Double]) -- ^cStrikes
 <span class="lineno">  169 </span> -&gt; ([Double]) -- ^fStrikes
 <span class="lineno">  170 </span> -&gt; ([Word]) -&gt; ([TimeUnit]) -- ^cfMaturities
-<span class="lineno">  171 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^cPrice
-<span class="lineno">  172 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^fPrice
+<span class="lineno">  171 </span> -&gt; (Word) -&gt; (Word) -&gt; (RealVector) -- ^cPrice
+<span class="lineno">  172 </span> -&gt; (Word) -&gt; (Word) -&gt; (RealVector) -- ^fPrice
 <span class="lineno">  173 </span> -&gt; (Int) -- ^interpolator2D
 <span class="lineno">  174 </span> -&gt; (Int) -&gt; (Int) -&gt; (Int) -- ^interpolator1D, approximator, approximatorArg
 <span class="lineno">  175 </span> -&gt; IO ((YoYCapFloorTermPriceSurface))
@@ -207,10 +207,10 @@ span.spaces    { background: white }
 <span class="lineno">  188 </span><span class="spaces">  </span><span class="istickedoff">withEnumArray a12 $ \(a12'1, a12'2) -&gt; </span>
 <span class="lineno">  189 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = fromIntegral a13} in </span>
 <span class="lineno">  190 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromIntegral a14} in </span>
-<span class="lineno">  191 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a15 $ \a15' -&gt; </span>
+<span class="lineno">  191 </span><span class="spaces">  </span><span class="istickedoff">withRealVectorRaw a15 $ \a15' -&gt; </span>
 <span class="lineno">  192 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = fromIntegral a16} in </span>
 <span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = fromIntegral a17} in </span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a18 $ \a18' -&gt; </span>
+<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">withRealVectorRaw a18 $ \a18' -&gt; </span>
 <span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">let {a19' = fromIntegral a19} in </span>
 <span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">let {a20' = fromIntegral a20} in </span>
 <span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">let {a21' = fromIntegral a21} in </span>
@@ -440,18 +440,18 @@ span.spaces    { background: white }
 <span class="lineno">  421 </span>  -&gt; [Double] -- ^cStrikes
 <span class="lineno">  422 </span>  -&gt; [Double] -- ^fStrikes
 <span class="lineno">  423 </span>  -&gt; [(Word, TimeUnit)] -- ^cfMaturities
-<span class="lineno">  424 </span>  -&gt; Matrix Double -- ^cPrice
-<span class="lineno">  425 </span>  -&gt; Matrix Double -- ^fPrice
+<span class="lineno">  424 </span>  -&gt; RealMatrix -- ^cPrice
+<span class="lineno">  425 </span>  -&gt; RealMatrix -- ^fPrice
 <span class="lineno">  426 </span>  -&gt; Interpolation2D
 <span class="lineno">  427 </span>  -&gt; IO CPICapFloorTermPriceSurface
-<span class="lineno">  428 </span><span class="decl"><span class="istickedoff">cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d =</span>
+<span class="lineno">  428 </span><span class="decl"><span class="istickedoff">cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (RealMatrix cr cc cd) (RealMatrix fr fc fd) i2d =</span>
 <span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)</span>
 <span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">where (maturityNums, maturityUnits) = unzip cfMaturities</span></span>
 <span class="lineno">  431 </span>qlCPICapFloorTermPriceSurface :: (Double) -&gt; (Double) -&gt; ((Word,TimeUnit)) -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -&gt; (GenYieldTermStructure y) -&gt; ([Double]) -- ^cStrikes
 <span class="lineno">  432 </span> -&gt; ([Double]) -- ^fStrikes
 <span class="lineno">  433 </span> -&gt; ([Word]) -&gt; ([TimeUnit]) -- ^cfMaturities
-<span class="lineno">  434 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^cPrice
-<span class="lineno">  435 </span> -&gt; (Word) -&gt; (Word) -&gt; ([Double]) -- ^fPrice
+<span class="lineno">  434 </span> -&gt; (Word) -&gt; (Word) -&gt; (RealVector) -- ^cPrice
+<span class="lineno">  435 </span> -&gt; (Word) -&gt; (Word) -&gt; (RealVector) -- ^fPrice
 <span class="lineno">  436 </span> -&gt; (Int) -- ^interpolator2D
 <span class="lineno">  437 </span> -&gt; IO ((CPICapFloorTermPriceSurface))
 <span class="lineno">  438 </span><span class="decl"><span class="istickedoff">qlCPICapFloorTermPriceSurface a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 =</span>
@@ -470,10 +470,10 @@ span.spaces    { background: white }
 <span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">withEnumArray a13 $ \(a13'1, a13'2) -&gt; </span>
 <span class="lineno">  452 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromIntegral a14} in </span>
 <span class="lineno">  453 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = fromIntegral a15} in </span>
-<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a16 $ \a16' -&gt; </span>
+<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">withRealVectorRaw a16 $ \a16' -&gt; </span>
 <span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = fromIntegral a17} in </span>
 <span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">let {a18' = fromIntegral a18} in </span>
-<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArrayRaw a19 $ \a19' -&gt; </span>
+<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">withRealVectorRaw a19 $ \a19' -&gt; </span>
 <span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">let {a20' = fromIntegral a20} in </span>
 <span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a21' -&gt; </span>
 <span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">qlCPICapFloorTermPriceSurface'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10'1  a10'2 a11'1  a11'2 a12'1  a12'2 a13'1  a13'2 a14' a15' a16' a17' a18' a19' a20' a21' &gt;&gt;= \res -&gt;</span>

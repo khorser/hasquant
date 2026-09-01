@@ -40,8 +40,8 @@ span.spaces    { background: white }
 <span class="lineno">   21 </span>
 <span class="lineno">   22 </span>import QuantLib.Internal
 <span class="lineno">   23 </span>import QuantLib.Internal.Type
-<span class="lineno">   24 </span>import QuantLib.InterestRate(VolatilityType)
-<span class="lineno">   25 </span>
+<span class="lineno">   24 </span>import Data.List.NonEmpty(NonEmpty)
+<span class="lineno">   25 </span>import QuantLib.InterestRate(VolatilityType)
 <span class="lineno">   26 </span>
 <span class="lineno">   27 </span>
 <span class="lineno">   28 </span>
@@ -57,130 +57,131 @@ span.spaces    { background: white }
 <span class="lineno">   38 </span>
 <span class="lineno">   39 </span>
 <span class="lineno">   40 </span>
-<span class="lineno">   41 </span>-- |constructs a cap: pays the excess of the floating leg's rate over each exercise rate, if positive
-<span class="lineno">   42 </span>cap :: (GenLeg l) -- ^floatingLeg
-<span class="lineno">   43 </span> -&gt; ([Double]) -- ^exerciseRates
-<span class="lineno">   44 </span> -&gt; IO ((CapFloor))
-<span class="lineno">   45 </span><span class="decl"><span class="istickedoff">cap a1 a2 =</span>
-<span class="lineno">   46 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno">   47 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">   48 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">   49 </span><span class="spaces">  </span><span class="istickedoff">cap'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   50 </span><span class="spaces">  </span><span class="istickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   51 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">   52 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   53 </span>
+<span class="lineno">   41 </span>
+<span class="lineno">   42 </span>-- |constructs a cap: pays the excess of the floating leg's rate over each exercise rate, if positive
+<span class="lineno">   43 </span>cap :: (GenLeg l) -- ^floatingLeg
+<span class="lineno">   44 </span> -&gt; (NonEmpty Double) -- ^exerciseRates
+<span class="lineno">   45 </span> -&gt; IO ((CapFloor))
+<span class="lineno">   46 </span><span class="decl"><span class="istickedoff">cap a1 a2 =</span>
+<span class="lineno">   47 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
+<span class="lineno">   48 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">   49 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">   50 </span><span class="spaces">  </span><span class="istickedoff">cap'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   51 </span><span class="spaces">  </span><span class="istickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   52 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">   53 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   54 </span>
 <span class="lineno">   55 </span>
-<span class="lineno">   56 </span>-- |constructs a collar: a cap struck at the cap rates combined with a floor struck at the floor rates
-<span class="lineno">   57 </span>collar :: (GenLeg l) -- ^floatingLeg
-<span class="lineno">   58 </span> -&gt; ([Double]) -- ^capRates
-<span class="lineno">   59 </span> -&gt; ([Double]) -- ^floorRates
-<span class="lineno">   60 </span> -&gt; IO ((CapFloor))
-<span class="lineno">   61 </span><span class="decl"><span class="nottickedoff">collar a1 a2 a3 =</span>
-<span class="lineno">   62 </span><span class="spaces">  </span><span class="nottickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno">   63 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">   64 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">   65 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">   66 </span><span class="spaces">  </span><span class="nottickedoff">collar'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   67 </span><span class="spaces">  </span><span class="nottickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   68 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">   70 </span>
+<span class="lineno">   56 </span>
+<span class="lineno">   57 </span>-- |constructs a collar: a cap struck at the cap rates combined with a floor struck at the floor rates
+<span class="lineno">   58 </span>collar :: (GenLeg l) -- ^floatingLeg
+<span class="lineno">   59 </span> -&gt; (NonEmpty Double) -- ^capRates
+<span class="lineno">   60 </span> -&gt; (NonEmpty Double) -- ^floorRates
+<span class="lineno">   61 </span> -&gt; IO ((CapFloor))
+<span class="lineno">   62 </span><span class="decl"><span class="nottickedoff">collar a1 a2 a3 =</span>
+<span class="lineno">   63 </span><span class="spaces">  </span><span class="nottickedoff">withLeg a1 $ \a1' -&gt; </span>
+<span class="lineno">   64 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">   65 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">   66 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">   67 </span><span class="spaces">  </span><span class="nottickedoff">collar'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   68 </span><span class="spaces">  </span><span class="nottickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   69 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">   70 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">   71 </span>
 <span class="lineno">   72 </span>
-<span class="lineno">   73 </span>-- |constructs a floor: pays the excess of each exercise rate over the floating leg's rate, if positive
-<span class="lineno">   74 </span>floor :: (GenLeg l) -- ^floatingLeg
-<span class="lineno">   75 </span> -&gt; ([Double]) -- ^exerciseRates
-<span class="lineno">   76 </span> -&gt; IO ((CapFloor))
-<span class="lineno">   77 </span><span class="decl"><span class="istickedoff">floor a1 a2 =</span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">floor'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   85 </span>
+<span class="lineno">   73 </span>
+<span class="lineno">   74 </span>-- |constructs a floor: pays the excess of each exercise rate over the floating leg's rate, if positive
+<span class="lineno">   75 </span>floor :: (GenLeg l) -- ^floatingLeg
+<span class="lineno">   76 </span> -&gt; (NonEmpty Double) -- ^exerciseRates
+<span class="lineno">   77 </span> -&gt; IO ((CapFloor))
+<span class="lineno">   78 </span><span class="decl"><span class="istickedoff">floor a1 a2 =</span>
+<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
+<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">floor'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   86 </span>
 <span class="lineno">   87 </span>
-<span class="lineno">   88 </span>-- |returns the fair (at-the-money) rate for the cap/floor's underlying floating leg, discounted on the given curve
-<span class="lineno">   89 </span>atmRate :: (CapFloor) -&gt; (GenYieldTermStructure y) -- ^discountCurve
-<span class="lineno">   90 </span> -&gt; IO ((Double))
-<span class="lineno">   91 </span><span class="decl"><span class="istickedoff">atmRate a1 a2 =</span>
-<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
-<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">atmRate'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   99 </span>
+<span class="lineno">   88 </span>
+<span class="lineno">   89 </span>-- |returns the fair (at-the-money) rate for the cap/floor's underlying floating leg, discounted on the given curve
+<span class="lineno">   90 </span>atmRate :: (CapFloor) -&gt; (GenYieldTermStructure y) -- ^discountCurve
+<span class="lineno">   91 </span> -&gt; IO ((Double))
+<span class="lineno">   92 </span><span class="decl"><span class="istickedoff">atmRate a1 a2 =</span>
+<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
+<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">atmRate'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">   99 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  100 </span>
 <span class="lineno">  101 </span>
-<span class="lineno">  102 </span>-- |implied term volatility
-<span class="lineno">  103 </span>impliedVolatility :: (CapFloor) -&gt; (Double) -- ^price
-<span class="lineno">  104 </span> -&gt; (GenYieldTermStructure y) -- ^disc
-<span class="lineno">  105 </span> -&gt; (Double) -- ^guess
-<span class="lineno">  106 </span> -&gt; (Double) -- ^accuracy
-<span class="lineno">  107 </span> -&gt; (Word) -- ^maxEvaluations
-<span class="lineno">  108 </span> -&gt; (Double) -- ^minVol
-<span class="lineno">  109 </span> -&gt; (Double) -- ^maxVol
-<span class="lineno">  110 </span> -&gt; (VolatilityType) -- ^type
-<span class="lineno">  111 </span> -&gt; (Double) -- ^displacement
-<span class="lineno">  112 </span> -&gt; IO ((Double))
-<span class="lineno">  113 </span><span class="decl"><span class="istickedoff">impliedVolatility a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a3 $ \a3' -&gt; </span>
-<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromIntegral a6} in </span>
-<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = realToFrac a7} in </span>
-<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
-<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = (fromIntegral . fromEnum) a9} in </span>
-<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
-<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">impliedVolatility'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  126 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  127 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  129 </span>
+<span class="lineno">  102 </span>
+<span class="lineno">  103 </span>-- |implied term volatility
+<span class="lineno">  104 </span>impliedVolatility :: (CapFloor) -&gt; (Double) -- ^price
+<span class="lineno">  105 </span> -&gt; (GenYieldTermStructure y) -- ^disc
+<span class="lineno">  106 </span> -&gt; (Double) -- ^guess
+<span class="lineno">  107 </span> -&gt; (Double) -- ^accuracy
+<span class="lineno">  108 </span> -&gt; (Word) -- ^maxEvaluations
+<span class="lineno">  109 </span> -&gt; (Double) -- ^minVol
+<span class="lineno">  110 </span> -&gt; (Double) -- ^maxVol
+<span class="lineno">  111 </span> -&gt; (VolatilityType) -- ^type
+<span class="lineno">  112 </span> -&gt; (Double) -- ^displacement
+<span class="lineno">  113 </span> -&gt; IO ((Double))
+<span class="lineno">  114 </span><span class="decl"><span class="istickedoff">impliedVolatility a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a3 $ \a3' -&gt; </span>
+<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromIntegral a6} in </span>
+<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = realToFrac a7} in </span>
+<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = (fromIntegral . fromEnum) a9} in </span>
+<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
+<span class="lineno">  126 </span><span class="spaces">  </span><span class="istickedoff">impliedVolatility'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  127 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  128 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
+<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  130 </span>
 <span class="lineno">  131 </span>
-<span class="lineno">  132 </span>-- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
-<span class="lineno">  133 </span>optionlet :: (CapFloor) -&gt; (Word) -- ^n
-<span class="lineno">  134 </span> -&gt; IO ((CapFloor))
-<span class="lineno">  135 </span><span class="decl"><span class="nottickedoff">optionlet a1 a2 =</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">optionlet'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  141 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  142 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  143 </span>
+<span class="lineno">  132 </span>
+<span class="lineno">  133 </span>-- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
+<span class="lineno">  134 </span>optionlet :: (CapFloor) -&gt; (Word) -- ^n
+<span class="lineno">  135 </span> -&gt; IO ((CapFloor))
+<span class="lineno">  136 </span><span class="decl"><span class="nottickedoff">optionlet a1 a2 =</span>
+<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">optionlet'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  141 </span><span class="spaces">  </span><span class="nottickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  142 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  143 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  144 </span>
 <span class="lineno">  145 </span>
-<span class="lineno">  146 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  147 </span>
-<span class="lineno">  148 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCap&quot;
-<span class="lineno">  149 </span>  cap'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
-<span class="lineno">  150 </span>
-<span class="lineno">  151 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCollar&quot;
-<span class="lineno">  152 </span>  collar'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))))
-<span class="lineno">  153 </span>
-<span class="lineno">  154 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlFloor&quot;
-<span class="lineno">  155 </span>  floor'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
-<span class="lineno">  156 </span>
-<span class="lineno">  157 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorAtmRate&quot;
-<span class="lineno">  158 </span>  atmRate'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  159 </span>
-<span class="lineno">  160 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorImpliedVolatility&quot;
-<span class="lineno">  161 </span>  impliedVolatility'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
-<span class="lineno">  162 </span>
-<span class="lineno">  163 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorOptionlet&quot;
-<span class="lineno">  164 </span>  optionlet'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor'))))))
+<span class="lineno">  146 </span>
+<span class="lineno">  147 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  148 </span>
+<span class="lineno">  149 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCap&quot;
+<span class="lineno">  150 </span>  cap'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
+<span class="lineno">  151 </span>
+<span class="lineno">  152 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCollar&quot;
+<span class="lineno">  153 </span>  collar'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))))
+<span class="lineno">  154 </span>
+<span class="lineno">  155 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlFloor&quot;
+<span class="lineno">  156 </span>  floor'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
+<span class="lineno">  157 </span>
+<span class="lineno">  158 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorAtmRate&quot;
+<span class="lineno">  159 </span>  atmRate'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  160 </span>
+<span class="lineno">  161 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorImpliedVolatility&quot;
+<span class="lineno">  162 </span>  impliedVolatility'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
+<span class="lineno">  163 </span>
+<span class="lineno">  164 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorOptionlet&quot;
+<span class="lineno">  165 </span>  optionlet'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor'))))))
 
 </pre>
 </body>
