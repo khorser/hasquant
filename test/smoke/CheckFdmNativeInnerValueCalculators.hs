@@ -14,6 +14,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 import Control.Exception(SomeException, try)
 import Data.Time.Calendar(addDays)
+import qualified Data.Vector.Storable as V
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
 import QuantLib.InterestRate
@@ -48,17 +49,17 @@ main = do
       europeanEx = European (EuropeanExercise maturity)
       intrinsicAt x = max (exp x - strike) 0
       bands = operatorBands nPts h mu sigma2 r
-      applyFn _ = applyOp bands
-      applyDirFn _dir _t = applyOp bands
+      applyFn _ = V.fromList . applyOp bands . V.toList
+      applyDirFn _dir _t = V.fromList . applyOp bands . V.toList
       solveFn _dir s _t =
         let (lo, di, up) = bands
-        in thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up)
+        in V.fromList . thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up) . V.toList
 
   europeanOpt <- vanillaOption vanillaPayoff europeanEx
   analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
   analytic <- npv europeanOpt
 
-  mesh1d <- predefined1dMesher xs
+  mesh1d <- predefined1dMesher (V.fromList xs)
   mesher <- fdmMesherComposite [mesh1d]
 
   zeroCalc <- fdmZeroInnerValue
@@ -66,8 +67,8 @@ main = do
   check "FdmZeroInnerValue is always 0" (zeroAtCenter == 0)
 
   logCalc <- fdmLogInnerValue payoff mesher 0
-  fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
-  let fdmLogPrice = fdmLogEuro !! centerIdx
+  fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
+  let fdmLogPrice = fdmLogEuro V.! centerIdx
   putStrLn ("fdmLogInnerValue European price: " ++ show fdmLogPrice ++ ", analytic: " ++ show analytic)
   check "fdmLogInnerValue reprices close to analyticEuropeanEngine"
     (abs (fdmLogPrice - analytic) < 2.0e-3 * analytic)
@@ -79,8 +80,8 @@ main = do
   putStrLn ("fdmLogBasketInnerValue at node: " ++ show basketAt ++ ", expected: " ++ show expected)
   check "fdmLogBasketInnerValue exact max-basket intrinsic" (basketAt == expected)
 
-  leftHalf <- predefined1dMesher (take (centerIdx + 1) xs)
-  rightHalf <- predefined1dMesher (drop centerIdx xs)
+  leftHalf <- predefined1dMesher (V.fromList $ take (centerIdx + 1) xs)
+  rightHalf <- predefined1dMesher (V.fromList $ drop centerIdx xs)
   glued <- gluedMesher leftHalf rightHalf
   gluedComposite <- fdmMesherComposite [glued]
   gluedLocations <- fdmMesherLocations gluedComposite 0

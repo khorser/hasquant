@@ -202,10 +202,10 @@ spec = do
         idx' <- liborForwardModelProcessIndex process
         Ibor.fixingDays idx' `shouldBe` Ibor.fixingDays idx
 
-        model <- liborForwardModel process (FixedVolatility (replicate (fromIntegral size) 0.15) fixingTimes) (ExponentialCorrelation size 0.3)
+        model <- liborForwardModel process (FixedVolatility (NE.fromList $ zip fixingTimes $ replicate (fromIntegral size) 0.15)) (ExponentialCorrelation size 0.3)
         affineModel <- liborForwardModelAsAffineModel model
         eng <- analyticCapFloorEngine affineModel (Just rTS)
-        capInstr <- cap leg (replicate (length flows) 0.04)
+        capInstr <- cap leg (NE.fromList $ replicate (length flows) 0.04)
         setPricingEngine capInstr eng
         capNpv <- npv capInstr
         capNpv `shouldSatisfy` (>= 0)

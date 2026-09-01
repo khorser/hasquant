@@ -142,6 +142,7 @@ import QuantLib.CashFlow(cmsLeg, iborLeg)
 {#import QuantLib.Time.Calendar#}(adjust, advance)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
+import Data.List.NonEmpty(NonEmpty((:|)))
 import QuantLib.Time.Schedule(schedule, DateGenerationRule(..))
 import QuantLib.Time.Date(addPeriod)
 import QuantLib.Settings(evaluationDate)
@@ -541,9 +542,9 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
   floatSchedule <- schedule (Just swapStartDate) endDate floatTenor floatCalendar
     floatConv floatConv Backward False Nothing Nothing
-  cmsLegResult <- cmsLeg cmsSchedule swapIndex [nominal] cmsDayCount ModifiedFollowing
+  cmsLegResult <- cmsLeg cmsSchedule swapIndex (nominal :| []) cmsDayCount ModifiedFollowing
     [] [] [] [] [] False False
-  floatLegResult <- iborLeg floatSchedule iborIndex [nominal] floatDayCount floatConv
+  floatLegResult <- iborLeg floatSchedule iborIndex (nominal :| []) floatDayCount floatConv
     [] [] [iborSpread] [] [] False False
   -- 'swap'' (not 'swap') so the CMS leg is always leg 0 of the result regardless of
   -- 'SwapType' -- attach a pricer via @setCouponPricer =<< 'leg' result 0@ before pricing.

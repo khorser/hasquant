@@ -111,7 +111,7 @@ buildMarketData = do
     (\(q, c, i, m) -> do
       s <- schedule i m (6, Months) usGovBondCal' Unadjusted
              Unadjusted Backward False Nothing Nothing
-      fixedRateBondHelper q settlementDays 100.0 s [c]
+      fixedRateBondHelper q settlementDays 100.0 s (c NE.:| [])
             actActBond' Unadjusted redemption i >>= asRateHelper)
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
@@ -159,7 +159,7 @@ buildBonds md = do
   fixedBond <- fixedRateBond settlementDays
                                   faceAmount
                                   fixedSchedule
-                                  [0.045]
+                                  (0.045 NE.:| [])
                                   (actActBond md)
                                   ModifiedFollowing
                                   100.0

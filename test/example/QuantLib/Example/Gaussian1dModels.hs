@@ -7,6 +7,7 @@ module QuantLib.Example.Gaussian1dModels
   ) where
 import Control.Monad (forM, forM_, replicateM)
 import Data.Maybe (mapMaybe)
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IR
@@ -112,14 +113,15 @@ run = do
   -- i = 1..9 over the *schedule*'s own dates, not the underlying's coupon accrual starts.
   fixedDates <- dates fixedSchedule
   exerciseDates <- forM (take 9 (drop 1 fixedDates)) $ \d -> advance cal d (-2, Days) Following False
-  let ex = Bermudan (BermudanExercise exerciseDates False)
+  let ex = Bermudan (BermudanExercise (NE.fromList exerciseDates) False)
   swaption1 <- nonstandardSwaption underlying ex Physical PhysicalOTC
 
   -- One-factor GSR model with piecewise volatility adapted to the exercise dates.
   let stepDates = init exerciseDates
-  gsrVolQuotes <- replicateM (length stepDates + 1) (simpleQuote 0.01)
+  gsrInitialVolQuote <- simpleQuote 0.01
+  gsrStepVolQuotes <- replicateM (length stepDates) (simpleQuote 0.01)
   gsrReversionQuote <- simpleQuote reversion
-  gsrModel <- gsr yts6m stepDates gsrVolQuotes gsrReversionQuote 60.0
+  gsrModel <- gsr yts6m gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
   gsrGm <- gsrAsGaussian1dModel gsrModel
 
   swaptionEngine <- gaussian1dSwaptionEngine gsrGm 64 7.0 True False (Just ytsOis) None
@@ -209,9 +211,11 @@ run = do
   -- (via its step-date/tenor/swapIndexBase construction), unlike GSR which only sees the
   -- coterminal calibration basket.
   let markovStepDates = exerciseDates
-      markovSigmas = replicate (length markovStepDates + 1) 0.01
+      markovInitialSigma = 0.01
+      markovStepSigmas = replicate (length markovStepDates) 0.01
       cmsTenors = replicate (length markovStepDates) (10, Years) :: [(Word, TimeUnit)]
-  markov <- markovFunctional yts6m reversion markovStepDates markovSigmas swaptionVol markovStepDates cmsTenors swapBase 16
+  markov <- markovFunctional yts6m reversion markovInitialSigma (zip markovStepDates markovStepSigmas)
+    swaptionVol (NE.fromList $ zip markovStepDates cmsTenors) swapBase 16
   markovGm <- markovFunctionalAsGaussian1dModel markov
 
   swaptionEngineMarkov <- gaussian1dSwaptionEngine markovGm 8 5.0 True False (Just ytsOis) None
@@ -225,7 +229,7 @@ run = do
   -- was already fixed by the model's construction.
   basket6ch <- mapM Model.asCalibrationHelper basket6
   forM_ basket6 (`Model.setPricingEngine` swaptionEngineMarkov)
-  Model.calibrate markov (map (, 1.0) basket6ch) lmMethod lmEndCriteria Nothing []
+  Model.calibrate markov (NE.fromList $ map (, 1.0) basket6ch) lmMethod lmEndCriteria Nothing []
   underlyingValMarkovPost <- underlyingValueOf swaption4
 
   return Result

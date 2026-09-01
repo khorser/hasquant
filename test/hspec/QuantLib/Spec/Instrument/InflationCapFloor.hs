@@ -3,6 +3,7 @@ module QuantLib.Spec.Instrument.InflationCapFloor (spec) where
 import Control.Monad(forM_, forM)
 import Data.Time.Calendar(toGregorian, fromGregorian)
 import qualified Data.List.NonEmpty as NE
+import qualified Data.Vector.Storable as V
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
@@ -17,7 +18,7 @@ import qualified QuantLib.InterestRate as IR
 import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.InflationCapFloor
-import QuantLib.Math(Interpolation(..), Interpolation2D(..), Matrix(..), realMatrix)
+import QuantLib.Math(Interpolation(..), Interpolation2D(..), RealMatrix, realMatrixFromVector)
 import QuantLib.PricingEngine(PricingEngine, yoyInflationBlackCapFloorEngine, interpolatingCPICapFloorEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.InflationVolatility
@@ -26,8 +27,8 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 
-matrix :: Word -> Word -> [Double] -> Matrix Double
-matrix rows columns = either error id . realMatrix rows columns
+matrix :: Word -> Word -> [Double] -> RealMatrix
+matrix rows columns = either error id . realMatrixFromVector rows columns . V.fromList
 
 -- |A custom-named YoY index (rather than a shared named singleton like 'YYUKRPI') so this
 -- module's made-up fixings and curve link can't collide with another test's fixings on the
@@ -83,7 +84,7 @@ setupLeg yii evalDate = do
   dc <- dayCounter Actual365FixedStandard
   endDate <- advance cal evalDate (3, Years) Unadjusted False
   sch <- schedule (Just evalDate) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
-  yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
+  yoyInflationLeg sch cal yii (3, Months) CPIFlat (1000000 NE.:| []) dc Unadjusted [0] [1.0] [0.0] [] []
 
 -- |Builds the Black engine (constant vol) all cap\/floor\/collar instruments in this module
 -- share -- mirrors 'QuantLib.Spec.TermStructure`'s "Black cap/floor engine" setup, YoY-inflation
@@ -147,9 +148,9 @@ spec = do
 
     let capRate = 0.035
         floorRate = 0.025
-    capInst <- yoyInflationCap leg [capRate]
-    floorInst <- yoyInflationFloor leg [floorRate]
-    collarInst <- yoyInflationCollar leg [capRate] [floorRate]
+    capInst <- yoyInflationCap leg (capRate NE.:| [])
+    floorInst <- yoyInflationFloor leg (floorRate NE.:| [])
+    collarInst <- yoyInflationCollar leg (capRate NE.:| []) (floorRate NE.:| [])
     mapM_ (`setPricingEngine` engine) [capInst, floorInst, collarInst]
 
     capNPV <- npv capInst
@@ -180,8 +181,8 @@ spec = do
     sch <- schedule (Just todayD) endDate (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
 
     let capRate = 0.035
-    cappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [capRate] []
-    uncappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
+    cappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat (1000000 NE.:| []) dc Unadjusted [0] [1.0] [0.0] [capRate] []
+    uncappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat (1000000 NE.:| []) dc Unadjusted [0] [1.0] [0.0] [] []
 
     nominalQ <- simpleQuote 0.02
     nominalCurve <- flatForward todayD nominalQ dc IR.Continuous Annual
@@ -194,7 +195,7 @@ spec = do
     uncappedNPV <- CF.npv uncappedLeg nominalCurve True Nothing Nothing
 
     capEngine <- yoyInflationBlackCapFloorEngine yii vol nominalCurve
-    capInst <- yoyInflationCap uncappedLeg [capRate]
+    capInst <- yoyInflationCap uncappedLeg (capRate NE.:| [])
     setPricingEngine capInst capEngine
     capNPV <- npv capInst
 

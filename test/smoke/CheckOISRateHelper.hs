@@ -18,6 +18,7 @@
 -- so the override case below sticks to fields that don't change the accrual schedule.
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckOISRateHelper.hs -o /tmp/checkois -outputdir /tmp/checkois_build && /tmp/checkois
+import qualified Data.List.NonEmpty as NE
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Index.InterestRate hiding(dayCounter)
 import QuantLib.Math(Interpolation(..))
@@ -40,7 +41,7 @@ main = do
   endDate <- advance cal today (13, Months) ModifiedFollowing False
 
   let endToEndDiscount h = do
-        curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
+        curve <- piecewiseYieldCurve today (h NE.:| []) dc [] Discount LogLinear
         discount' curve endDate True
 
   hNarrow <- oisRateHelper 2 (1, Years) q idx Nothing

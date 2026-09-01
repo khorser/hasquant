@@ -16,6 +16,7 @@
 -- cbits/ for this exact pattern. Nothing in the test suite or examples had ever constructed a
 -- SwingExercise via either constructor before this was found, so it went uncaught until now.
 import Data.Time.Calendar (fromGregorian)
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -44,7 +45,7 @@ main = do
 
   -- 4: SwingListExercise (qlSwingExercise, the array-marshalled constructor) -- the
   -- original repro for the qlInstrument.cpp empty-vector segfault, now fixed.
-  let listSwingEx = SwingListExercise [(maturity, 0)]
+  let listSwingEx = SwingListExercise ((maturity, 0) NE.:| [])
   swingOpt <- vanillaSwingOption (PlainVanilla (PlainVanillaPayoff Call 100)) listSwingEx 0 1
   expired3 <- isExpired swingOpt
   putStrLn ("vanillaSwingOption (SwingListExercise): isExpired = " ++ show expired3)

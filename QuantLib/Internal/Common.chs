@@ -129,6 +129,7 @@ import Foreign.Storable(Storable(..))
 import Foreign.Marshal.Utils(withMany)
 import Foreign.Marshal.Array(withArray, peekArray)
 import Control.Exception(finally)
+import Data.List.NonEmpty(NonEmpty, toList)
 
 import QuantLib.Internal
 import QuantLib.Internal.Type hiding(ptr)
@@ -300,10 +301,10 @@ data Interpolation =
 data EuropeanExercise = EuropeanExercise Day
 -- | Use 'swingExerice' to construct 'Exercise'
 data SwingExercise =
-    SwingListExercise ![(Day, Word)] -- ^(dates, seconds)
+    SwingListExercise !(NonEmpty (Day, Word)) -- ^(dates, seconds)
     | SwingIntervalExercise !Day !Day !Word -- ^stepSizeSecs
 data BermudanExercise =
-    BermudanExercise ![Day] !Bool
+    BermudanExercise !(NonEmpty Day) !Bool
     | Swing SwingExercise
 
 -- | > Exercise
@@ -344,11 +345,11 @@ withEuropeanExercise :: EuropeanExercise -> (QlEuropeanExercise -> IO a) -> IO a
 withEuropeanExercise (EuropeanExercise d) f = qlEuropeanExercise d >>= newCastForeignPtr >>= flip withGenForeignPtr f
 
 withSwingExercise :: SwingExercise -> (QlSwingExercise -> IO a) -> IO a
-withSwingExercise (SwingListExercise ds) f = uncurry qlSwingExercise (unzip ds) >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withSwingExercise (SwingListExercise ds) f = uncurry qlSwingExercise (unzip (toList ds)) >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withSwingExercise (SwingIntervalExercise d1 d2 s) f = qlSwingExercise1 d1 d2 s >>= newCastForeignPtr >>= flip withGenForeignPtr f
 
 withBermudanExercise :: BermudanExercise -> (QlBermudanExercise -> IO a) -> IO a
-withBermudanExercise (BermudanExercise d p) f = qlBermudanExercise d p >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withBermudanExercise (BermudanExercise d p) f = qlBermudanExercise (toList d) p >>= newCastForeignPtr >>= flip withGenForeignPtr f
 withBermudanExercise (Swing e) f = withSwingExercise e (\sp -> upcast sp >>= \bp -> f bp `finally` freeUpcast bp)
 
 withExercise :: Exercise -> (QlExercise -> IO a) -> IO a
@@ -973,7 +974,7 @@ withLmCorrelationModel :: LmCorrelationModel -> (Ptr CLmCorrelationModel -> IO a
 withLmCorrelationModel = withEnumType correlationModelMeta
 
 data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
-  | FixedVolatility ![Double] ![Double]
+  | FixedVolatility !(NonEmpty (Double, Double)) -- ^(start time, volatility)
   | LinearExponentialVolatility ![Double] -- ^fixing times
     !Double -- ^a
     !Double -- ^b
@@ -987,7 +988,8 @@ data LmVolatilityModel = ConstWrapperVolatility LmVolatilityModel
 
 volatilityModel :: LmVolatilityModel -> IO QlLmVolatilityModel
 volatilityModel (ConstWrapperVolatility m) = volatilityModel m >>= qlLmConstWrapperVolatilityModel
-volatilityModel (FixedVolatility d1 d2) = qlLmFixedVolatilityModel d1 d2
+volatilityModel (FixedVolatility tv) = qlLmFixedVolatilityModel vols times
+  where (times, vols) = unzip (toList tv)
 volatilityModel (LinearExponentialVolatility s a b c d) = qlLmLinearExponentialVolatilityModel s a b c d
 
 volatilityModelMeta :: EnumMeta LmVolatilityModel CLmVolatilityModel

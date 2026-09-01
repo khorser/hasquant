@@ -105,6 +105,7 @@ import QuantLib.Internal
 {#import QuantLib.CashFlow#}(RateAveragingType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
+import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum CalibrationErrorType{} deriving(Show, Eq, Read)#}
 
@@ -214,10 +215,10 @@ import QuantLib.Internal.Common
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Generalized Hull-White model: like 'hullWhite', but reversion and volatility are piecewise-linear functions of time given at @speedstructure@/@volstructure@ dates.
-generalizedHullWhite :: GenYieldTermStructure y -> [(Day, Double)] -- ^speedstructure
-  -> [(Day, Double)] -- ^volstructure
+generalizedHullWhite :: GenYieldTermStructure y -> NonEmpty (Day, Double) -- ^speedstructure
+  -> NonEmpty (Day, Double) -- ^volstructure
   -> IO ShortRateModel
-generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip s; (vd, vq) = unzip v}
+generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, sq) = unzip (toList s); (vd, vq) = unzip (toList v)}
 {#fun qlGeneralizedHullWhite{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'&,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,preErrorCheck-`String'errorCheck*-}->`ShortRateModel'peekShortRateModel*#}
 
 -- |GJR-GARCH stochastic-volatility model, extending GARCH(1,1) with an asymmetric response to negative return shocks.
@@ -245,8 +246,13 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 -- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
 fixedReversion :: [Bool]
 fixedReversion = [True, False]
--- |One-factor GSR model (formulated in the forward measure), with piecewise-constant volatility steps at @volstepdates@ and a single constant reversion.
-{#fun qlGsr as gsr{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'& -- ^volstepdates
+-- |One-factor GSR model (formulated in the forward measure), with an initial volatility and
+-- piecewise-constant changes at the given dates, plus a single constant reversion.
+gsr :: GenYieldTermStructure y -> GenQuote q1 -> [(Day, GenQuote q1)] -> GenQuote q2 -> Double -> IO Gsr
+gsr ts initialVol subsequentVols reversion horizon =
+  qlGsr ts dates (initialVol : vols) reversion horizon
+  where (dates, vols) = unzip subsequentVols
+{#fun qlGsr{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'& -- ^volstepdates
   ,withQuoteArray*`[GenQuote q1]'& -- ^volatilities
   ,withQuote*`GenQuote q2' -- ^reversion
   ,`Double' -- ^T
@@ -263,16 +269,17 @@ fixedReversion = [True, False]
 
 -- |Markov-functional interest-rate model, calibrated to a swaption volatility cube against @swapIndexBase@.
 markovFunctional :: GenYieldTermStructure y -> Double -- ^reversion
-  -> [Day] -- ^volstepdates
-  -> [Double] -- ^volatilities
+  -> Double -- ^initial volatility
+  -> [(Day, Double)] -- ^subsequent volatility steps
   -> SwaptionVolatilityStructure
-  -> [Day] -- ^swaptionExpiries
-  -> [(Word, TimeUnit)] -- ^swaptionTenors
+  -> NonEmpty (Day, (Word, TimeUnit)) -- ^swaption expiry/tenor calibration points
   -> GenSwapIndex sidx -- ^swapIndexBase
   -> Word -- ^yGridPoints
   -> IO MarkovFunctional
-markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reversion vsd vs svol se tq tu
-  where (tq, tu) = unzip tenors
+markovFunctional ts reversion initialVol steps svol points = qlMarkovFunctional ts reversion dates (initialVol : vols) svol expiries tq tu
+  where (dates, vols) = unzip steps
+        (expiries, tenors) = unzip (toList points)
+        (tq, tu) = unzip tenors
 {#fun qlMarkovFunctional{withYieldTermStructure*`GenYieldTermStructure y',`Double'
   ,withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
@@ -283,7 +290,12 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
   ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
 
 -- |Markov-functional interest-rate model, calibrated to a caplet volatility structure against @iborIndex@.
-{#fun qlMarkovFunctionalCaplet as markovFunctionalCaplet{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^reversion
+markovFunctionalCaplet :: GenYieldTermStructure y -> Double -> Double -> [(Day, Double)]
+  -> OptionletVolatilityStructure -> NonEmpty Day -> GenIborIndex ibor -> Word -> IO MarkovFunctional
+markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gridPoints =
+  qlMarkovFunctionalCaplet ts reversion dates (initialVol : vols) capletVol (toList expiries) ibor gridPoints
+  where (dates, vols) = unzip steps
+{#fun qlMarkovFunctionalCaplet{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^reversion
   ,withDayArray*`[Day]'& -- ^volstepdates
   ,withDoubleArray*`[Double]'& -- ^volatilities
   ,withOptionletVolatilityStructure*`OptionletVolatilityStructure' -- ^capletVol
@@ -311,11 +323,11 @@ markovFunctional ts reversion vsd vs svol se tenors = qlMarkovFunctional ts reve
 
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
-calibrate :: GenCalibratedModel m -> [(GenCalibrationHelper ch, Double)] -- ^(instrument, weight)
+calibrate :: GenCalibratedModel m -> NonEmpty (GenCalibrationHelper ch, Double) -- ^(instrument, weight)
   -> OptimizationMethod -> EndCriteria -> Maybe Constraint
   -> [Bool] -- ^fixParameters, e.g. 'fixedReversion'; @[]@ leaves nothing fixed
   -> IO ()
-calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, hw) = unzip h
+calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, hw) = unzip (toList h)
 {#fun qlCalibratedModelCalibrate{withCalibratedModel*`GenCalibratedModel m',withCalibrationHelperArray*`[GenCalibrationHelper ch]'&,withDoubleArray*`[Double]'&
   ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',withMaybeConstraint*`Maybe Constraint',withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 

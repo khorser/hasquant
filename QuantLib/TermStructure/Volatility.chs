@@ -334,13 +334,13 @@ $(deriveOptionsRecord "BlackVolatilitySurfaceDeltaOpts" []
 -- same shape as 'blackVarianceSurface'.
 fixedLocalVolSurface :: Day -> [Day] -- ^dates
   -> [Double] -- ^strikes
-  -> Matrix Double -- ^localVolMatrix
+  -> RealMatrix -- ^localVolMatrix
   -> DayCounter
   -> FixedLocalVolSurfaceExtrapolation -- ^lowerExtrapolation
   -> FixedLocalVolSurfaceExtrapolation -- ^upperExtrapolation
   -> IO LocalVolTermStructure
-fixedLocalVolSurface d ds s (Matrix mr mc md) = qlFixedLocalVolSurface d ds s mr mc md
-{#fun qlFixedLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+fixedLocalVolSurface d ds s (RealMatrix mr mc md) = qlFixedLocalVolSurface d ds s mr mc md
+{#fun qlFixedLocalVolSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector',withDayCounter*`DayCounter',`FixedLocalVolSurfaceExtrapolation',`FixedLocalVolSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
 -- |A local-volatility surface whose node values are model parameters. Each date is paired with
 -- its non-empty strike row, so this genuinely ragged grid does not masquerade as a rectangular
@@ -368,13 +368,13 @@ gridModelLocalVolSurface d nodes = qlGridModelLocalVolSurface d dates rowSizes v
 
 -- |Interpolation choice for Andreasen-Huge local-volatility calibration.
 -- |Calibration choice for Andreasen-Huge local-volatility calibration.
-andreasenHugeVolatilityInterpl :: [(VanillaOption, GenQuote q)] -> GenQuote q
+andreasenHugeVolatilityInterpl :: NonEmpty (VanillaOption, GenQuote q) -> GenQuote q
   -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
   -> AndreasenHugeInterpolationType -> AndreasenHugeCalibrationType -> Word
   -> Maybe Double -> Maybe Double -> OptimizationMethod -> EndCriteria
   -> IO AndreasenHugeVolatilityInterpl
 andreasenHugeVolatilityInterpl xs spot r q = qlAndreasenHugeVolatilityInterpl os qs spot r q
-  where (os, qs) = unzip xs
+  where (os, qs) = unzip (toList xs)
 {#fun qlAndreasenHugeVolatilityInterpl{withVanillaOptionArray*`[VanillaOption]'&,withQuoteArrayRaw*`[GenQuote q1]'
   ,withQuote*`GenQuote q2',withYieldTermStructure*`GenYieldTermStructure y1',withYieldTermStructure*`GenYieldTermStructure y2'
   ,`AndreasenHugeInterpolationType',`AndreasenHugeCalibrationType',fromIntegral`Word',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double'
@@ -737,22 +737,22 @@ andreasenHugeVolatilityInterplCalibrationError x = do
 -- survives regardless of when Haskell's own handle is collected.
 sabrInterpolatedSmileSection :: Day -- ^optionDate
   -> GenQuote q1 -- ^forward
-  -> [Double] -- ^strikes
+  -> NonEmpty (Double, GenQuote q3) -- ^strike/volatility quotes
   -> Bool -- ^hasFloatingStrikes
   -> GenQuote q2 -- ^atmVolatility
-  -> [GenQuote q3] -- ^vols
   -> Double -- ^alpha
   -> Double -- ^beta
   -> Double -- ^nu
   -> Double -- ^rho
   -> SabrInterpolatedSmileSectionOpts -> IO SabrInterpolatedSmileSection
-sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVolatility vols
+sabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes atmVolatility
   alpha beta nu rho opts = do
   dc <- maybe (dayCounter Actual365FixedStandard) return (sabrDayCounter opts)
   sabrInterpolatedSmileSection_ optionDate forward strikes hasFloatingStrikes atmVolatility vols
     alpha beta nu rho (sabrIsAlphaFixed opts) (sabrIsBetaFixed opts) (sabrIsNuFixed opts)
     (sabrIsRhoFixed opts) (sabrVegaWeighted opts) (sabrEndCriteria opts) (sabrOptimizationMethod opts)
     dc (sabrShift opts)
+  where (strikes, vols) = unzip (toList strikeVols)
 
 {#fun qlSabrInterpolatedSmileSection as sabrInterpolatedSmileSection_{withDay*`Day'
   ,withQuote*`GenQuote q1' -- ^forward
@@ -962,12 +962,12 @@ sabrInterpolatedSmileSection optionDate forward strikes hasFloatingStrikes atmVo
 -- floating market data. @inclusionInInterpolationFlag@ selects which quotes feed the ABCD fit
 -- (upstream defaults this to all-'True' when omitted; hasquant always requires it explicitly,
 -- per the widen-in-place convention for a handful of trailing defaulted params).
-abcdAtmVolCurve :: Word -> Calendar -> [(Word, TimeUnit)] -- ^optionTenors
-  -> [GenQuote q] -- ^volsHandles
-  -> [Bool] -- ^inclusionInInterpolationFlag
+abcdAtmVolCurve :: Word -> Calendar
+  -> NonEmpty ((Word, TimeUnit), GenQuote q, Bool) -- ^tenor, volatility, inclusion flag
   -> BusinessDayConvention -> DayCounter -> IO AbcdAtmVolCurve
-abcdAtmVolCurve d c ntenors qs flags bdc dc = qlAbcdAtmVolCurve d c n t qs flags bdc dc
-  where (n, t) = unzip ntenors
+abcdAtmVolCurve d c points bdc dc = qlAbcdAtmVolCurve d c n t qs flags bdc dc
+  where (ntenors, qs, flags) = unzip3 (toList points)
+        (n, t) = unzip ntenors
 {#fun qlAbcdAtmVolCurve{fromIntegral`Word',withCalendar*`Calendar',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withBoolArray*`[Bool]'&,fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`AbcdAtmVolCurve'peekAbcdAtmVolCurve*#}
 
 {#fun qlAbcdAtmVolCurveA as abcdAtmVolCurveA{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -1006,13 +1006,13 @@ abcdAtmVolCurveOptionTenorsInInterpolation o = do
 -- per-tenor ATM-rate spreads\/vol-spread matrix. @volSpreads@'s rows follow @optionTenors@ and
 -- columns follow @atmRateSpreads@ (same row\/column convention as 'sabrSwaptionVolatilityCube's
 -- @volSpreads@).
-sabrVolSurface :: GenInterestRateIndex ix -> GenBlackAtmVolCurve b -> [(Word, TimeUnit)] -- ^optionTenors
-  -> [Double] -- ^atmRateSpreads
+sabrVolSurface :: GenInterestRateIndex ix -> GenBlackAtmVolCurve b -> NonEmpty (Word, TimeUnit) -- ^optionTenors
+  -> NonEmpty Double -- ^atmRateSpreads
   -> Matrix (GenQuote q) -- ^volSpreads
   -> IO SabrVolSurface
 sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
-  qlSabrVolSurface ix atm n t spreads vr vc vd
-  where (n, t) = unzip ntenors
+  qlSabrVolSurface ix atm n t (toList spreads) vr vc vd
+  where (n, t) = unzip (toList ntenors)
 {#fun qlSabrVolSurface{withInterestRateIndex*`GenInterestRateIndex ix',withGenBlackAtmVolCurve*`GenBlackAtmVolCurve b'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,withDoubleArray*`[Double]'&
@@ -1084,21 +1084,21 @@ sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
 {#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |fixed reference date, floating market data
-capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO CapFloorTermVolCurve
-capFloorTermVolCurve' d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 ntq
+capFloorTermVolCurve' :: Day -> Calendar -> BusinessDayConvention -> NonEmpty (Word, TimeUnit, GenQuote q) -> DayCounter -> IO CapFloorTermVolCurve
+capFloorTermVolCurve' d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 (toList ntq)
 {#fun qlCapFloorTermVolCurve1{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
 
 -- |floating reference date, floating market data
-capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit, GenQuote q)] -> DayCounter -> IO CapFloorTermVolCurve
-capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 ntq
+capFloorTermVolCurve :: Word -> Calendar -> BusinessDayConvention -> NonEmpty (Word, TimeUnit, GenQuote q) -> DayCounter -> IO CapFloorTermVolCurve
+capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 (toList ntq)
 {#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
 
 -- |A Black volatility curve built from time-dependent (ATM) market vols, interpolating on total
 -- variance (linear by default, or the given 'Interpolation') -- no strike dependence; see
 -- 'blackVarianceSurface' for that.
-blackVarianceCurve :: Day -> [(Day, Double)] -> DayCounter -> Bool -- ^forceMonotoneVariance
+blackVarianceCurve :: Day -> NonEmpty (Day, Double) -> DayCounter -> Bool -- ^forceMonotoneVariance
   -> Maybe Interpolation -> IO BlackVarianceCurve
-blackVarianceCurve d dq dc f i = uncurryNested (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i) where (dd, q) = unzip dq
+blackVarianceCurve d dq dc f i = uncurryNested (qlBlackVarianceCurve d dd q dc f) (qlInterpolation' i) where (dd, q) = unzip (toList dq)
 {#fun qlBlackVarianceCurve{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',`Bool',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`BlackVarianceCurve'peekBlackVarianceCurve*#}
 
 -- |The @interpolator@ is applied through @BlackVarianceSurface::setInterpolation@ right after
@@ -1106,14 +1106,14 @@ blackVarianceCurve d dq dc f i = uncurryNested (qlBlackVarianceCurve d dd q dc f
 -- @blackVolMatrix@ exactly at its own (date, strike) nodes -- they only differ between them.
 blackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
   -> [Double] -- ^strikes
-  -> Matrix Double -- ^blackVolMatrix
+  -> RealMatrix -- ^blackVolMatrix
   -> DayCounter
   -> BlackVarianceSurfaceExtrapolation -- ^lowerExtrapolation
   -> BlackVarianceSurfaceExtrapolation -- ^upperExtrapolation
   -> Interpolation2D -- ^interpolator
   -> IO BlackVolTermStructure
-blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
-{#fun qlBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`BlackVarianceSurfaceExtrapolation',`BlackVarianceSurfaceExtrapolation',fromEnumC`Interpolation2D',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+blackVarianceSurface d c ds s (RealMatrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
+{#fun qlBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector',withDayCounter*`DayCounter',`BlackVarianceSurfaceExtrapolation',`BlackVarianceSurfaceExtrapolation',fromEnumC`Interpolation2D',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |Builds a Black volatility surface from a rectangular vol grid via
 -- 'PiecewiseBlackVarianceSurface::makeFromGrid': one interpolated smile section per date
@@ -1121,11 +1121,11 @@ blackVarianceSurface d c ds s (Matrix mr mc md) = qlBlackVarianceSurface d c ds 
 -- 'blackVarianceSurface''s configurable 2-D interpolator.
 piecewiseBlackVarianceSurface :: Day -> [Day] -- ^dates
   -> [Double] -- ^strikes
-  -> Matrix Double -- ^blackVols
+  -> RealMatrix -- ^blackVols
   -> DayCounter
   -> IO BlackVolTermStructure
-piecewiseBlackVarianceSurface d ds s (Matrix mr mc md) dc = qlPiecewiseBlackVarianceSurface d ds s mr mc md dc
-{#fun qlPiecewiseBlackVarianceSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+piecewiseBlackVarianceSurface d ds s (RealMatrix mr mc md) dc = qlPiecewiseBlackVarianceSurface d ds s mr mc md dc
+{#fun qlPiecewiseBlackVarianceSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |A Black volatility surface parameterized by market deltas (put\/call deltas and, optionally,
 -- an ATM quote) rather than fixed strikes -- the standard FX vol quoting convention. Constructed
@@ -1135,21 +1135,21 @@ blackVolatilitySurfaceDelta :: Day -> [Day] -- ^dates
   -> [Double] -- ^putDeltas
   -> [Double] -- ^callDeltas
   -> Bool -- ^hasAtm
-  -> Matrix Double -- ^blackVolMatrix
+  -> RealMatrix -- ^blackVolMatrix
   -> DayCounter -> Calendar -> GenQuote q -- ^spot
   -> GenYieldTermStructure y1 -- ^domesticTS
   -> GenYieldTermStructure y2 -- ^foreignTS
   -> IO BlackVolatilitySurfaceDelta
-blackVolatilitySurfaceDelta d ds pd cd hasAtm (Matrix mr mc md) dc cal spot dts fts =
+blackVolatilitySurfaceDelta d ds pd cd hasAtm (RealMatrix mr mc md) dc cal spot dts fts =
   blackVolatilitySurfaceDelta_ d ds pd cd hasAtm mr mc md dc cal spot dts fts
     Spot AtmDeltaNeutral Nothing SmileLinear False FlatVolatility (0, Days) Fwd AtmDeltaNeutral Nothing
 
 -- |As 'blackVolatilitySurfaceDelta', but takes a 'BlackVolatilitySurfaceDeltaOpts' record for
 -- the trailing options instead of hardcoding upstream's defaults.
-blackVolatilitySurfaceDeltaFull :: Day -> [Day] -> [Double] -> [Double] -> Bool -> Matrix Double
+blackVolatilitySurfaceDeltaFull :: Day -> [Day] -> [Double] -> [Double] -> Bool -> RealMatrix
   -> DayCounter -> Calendar -> GenQuote q -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
   -> BlackVolatilitySurfaceDeltaOpts -> IO BlackVolatilitySurfaceDelta
-blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (Matrix mr mc md) dc cal spot dts fts opts =
+blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (RealMatrix mr mc md) dc cal spot dts fts opts =
   blackVolatilitySurfaceDelta_ d ds pd cd hasAtm mr mc md dc cal spot dts fts
     (bvsdDeltaType opts) (bvsdAtmType opts) (bvsdAtmDeltaType opts)
     (bvsdInterpolationMethod opts) (bvsdFlatStrikeExtrapolation opts) (bvsdTimeExtrapolationType opts)
@@ -1159,7 +1159,7 @@ blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (Matrix mr mc md) dc cal spot 
   ,withDoubleArray*`[Double]'& -- ^putDeltas
   ,withDoubleArray*`[Double]'& -- ^callDeltas
   ,`Bool' -- ^hasAtm
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^blackVolMatrix
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector' -- ^blackVolMatrix
   ,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuote*`GenQuote q' -- ^spot
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticTS
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignTS
@@ -1203,7 +1203,8 @@ capFloorTermVolSurface' :: Day -> Calendar -> BusinessDayConvention -> [(Word, T
 capFloorTermVolSurface' d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t
 {#fun qlCapFloorTermVolSurface1{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
 
--- |fixed reference date, floating market data. Pass an empty 'Matrix' (@Matrix 0 0 []@) for @shifts@
+-- |fixed reference date, floating market data. Pass an empty 'RealMatrix'
+-- (@realMatrixFromVector 0 0 Data.Vector.Storable.empty@) for @shifts@
 -- when no shift is needed -- upstream treats a zero-row shift matrix as all-zero.
 swaptionVolatilityMatrix' :: Day -> Calendar -> BusinessDayConvention
   -> [(Word, TimeUnit)] -- ^optionTenors
@@ -1212,9 +1213,9 @@ swaptionVolatilityMatrix' :: Day -> Calendar -> BusinessDayConvention
   -> DayCounter
   -> Bool -- ^flatExtrapolation
   -> VolatilityType
-  -> Matrix Double -- ^shifts
+  -> RealMatrix -- ^shifts
   -> IO SwaptionVolatilityStructure
-swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr sc sd) =
+swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix sr sc sd) =
   qlSwaptionVolatilityMatrix d c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlSwaptionVolatilityMatrix{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention'
@@ -1222,11 +1223,12 @@ swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr s
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
   ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector'
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- |floating reference date, floating market data. See 'swaptionVolatilityMatrix\'' for the
--- @shifts@ convention (@Matrix 0 0 []@ for "no shift").
+-- @shifts@ convention
+-- (@realMatrixFromVector 0 0 Data.Vector.Storable.empty@ for "no shift").
 swaptionVolatilityMatrix :: Calendar -> BusinessDayConvention
   -> [(Word, TimeUnit)] -- ^optionTenors
   -> [(Word, TimeUnit)] -- ^swapTenors
@@ -1234,9 +1236,9 @@ swaptionVolatilityMatrix :: Calendar -> BusinessDayConvention
   -> DayCounter
   -> Bool -- ^flatExtrapolation
   -> VolatilityType
-  -> Matrix Double -- ^shifts
+  -> RealMatrix -- ^shifts
   -> IO SwaptionVolatilityStructure
-swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr sc sd) =
+swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix sr sc sd) =
   qlSwaptionVolatilityMatrix1 c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlSwaptionVolatilityMatrix1{withCalendar*`Calendar',fromEnumC`BusinessDayConvention'
@@ -1244,7 +1246,7 @@ swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (Matrix sr sc s
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
   ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
   ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector'
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- |A SABR-calibrated swaption volatility cube: fits a SABR smile at every (option tenor, swap
@@ -1345,38 +1347,38 @@ interpolatedSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw
   ,`Bool'
   ,preErrorCheck-`String'errorCheck*-}->`InterpolatedSwaptionVolatilityCube'peekInterpolatedSwaptionVolatilityCube*#}
 
-toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
-toMatrixDouble (r, c, d) = Matrix r c d
+toRealMatrix :: (Word, Word, RealVector) -> RealMatrix
+toRealMatrix (r, c, d) = RealMatrix r c d
 
 -- |Per-node calibrated SABR parameters (alpha, beta, nu, rho columns) before ATM recalibration.
-sparseSabrParameters :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
-sparseSabrParameters sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeSparseSabrParameters sv
+sparseSabrParameters :: SabrSwaptionVolatilityCube -> IO RealMatrix
+sparseSabrParameters sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeSparseSabrParameters sv
 {#fun qlSabrSwaptionVolatilityCubeSparseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-node calibrated SABR parameters, meaningfully populated only when the cube was built with
 -- @isAtmCalibrated = True@ (see 'sabrSwaptionVolatilityCube').
-denseSabrParameters :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
-denseSabrParameters sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeDenseSabrParameters sv
+denseSabrParameters :: SabrSwaptionVolatilityCube -> IO RealMatrix
+denseSabrParameters sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeDenseSabrParameters sv
 {#fun qlSabrSwaptionVolatilityCubeDenseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The raw market vol grid the cube's SABR fit targets: ATM vol (interpolated from
 -- @atmVolStructure@ at each node) plus @volSpreads@.
-marketVolCube :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
-marketVolCube sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeMarketVolCube sv
+marketVolCube :: SabrSwaptionVolatilityCube -> IO RealMatrix
+marketVolCube sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeMarketVolCube sv
 {#fun qlSabrSwaptionVolatilityCubeMarketVolCube{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Like 'marketVolCube', adjusted so the cube's own ATM row is consistent with @atmVolStructure@;
 -- meaningfully populated only when the cube was built with @isAtmCalibrated = True@.
-volCubeAtmCalibrated :: SabrSwaptionVolatilityCube -> IO (Matrix Double)
-volCubeAtmCalibrated sv = toMatrixDouble <$> qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
+volCubeAtmCalibrated :: SabrSwaptionVolatilityCube -> IO RealMatrix
+volCubeAtmCalibrated sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
 {#fun qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |ATM strike at a given (option date, swap tenor) node.

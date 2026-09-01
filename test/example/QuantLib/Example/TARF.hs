@@ -44,7 +44,7 @@ run = do
   mandatory <- V.fromList <$> mapM (\x -> years dcILS valDate x Nothing Nothing) (toList ds)
   grid <- maybe (fail "TARF: empty mandatory time grid") timeGridFromVector (nonEmptyVector mandatory)
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
-  volEURILS <- blackVarianceCurve valDate vols dcILS True (Just Linear)
+  volEURILS <- blackVarianceCurve valDate (fromList vols) dcILS True (Just Linear)
   ycILS <- interpolatedDiscountCurve (fromList dfILS) dcILS calILS [] LogLinear False
   ycEUR <- interpolatedDiscountCurve (fromList dfEUR) dcEUR calEUR [] LogLinear False
 

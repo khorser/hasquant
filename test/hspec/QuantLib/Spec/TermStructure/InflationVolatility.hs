@@ -3,6 +3,7 @@ module QuantLib.Spec.TermStructure.InflationVolatility (spec) where
 import Control.Monad(forM_, zipWithM_)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
 import qualified Data.List.NonEmpty as NE
+import qualified Data.Vector.Storable as V
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
@@ -10,7 +11,7 @@ import QuantLib.Index(addFixing)
 import QuantLib.Index.Inflation
 import qualified QuantLib.InterestRate as IR
 import QuantLib.InterestRate(VolatilityType(..))
-import QuantLib.Math(Interpolation(..), Interpolation2D(..), Approximation(..), Matrix(..))
+import QuantLib.Math(Interpolation(..), Interpolation2D(..), Approximation(..), RealMatrix(..))
 import QuantLib.PricingEngine(yoyInflationUnitDisplacedBlackCapFloorEngine, yoyInflationBachelierCapFloorEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Inflation
@@ -76,15 +77,15 @@ fStrikesEU = [-0.01, 0.00, 0.005, 0.01, 0.015, 0.02]
 cfMaturitiesEU :: [(Word, TimeUnit)]
 cfMaturitiesEU = [(3, Years), (5, Years), (7, Years), (10, Years), (15, Years), (20, Years), (30, Years)]
 
-capPricesEU, floorPricesEU :: Matrix Double
-capPricesEU = Matrix 6 7
+capPricesEU, floorPricesEU :: RealMatrix
+capPricesEU = RealMatrix 6 7 $ V.fromList
   [ 116.225, 204.945, 296.285, 434.29, 654.47, 844.775, 1132.33
   , 34.305, 71.575, 114.1, 184.33, 307.595, 421.395, 602.35
   , 6.37, 19.085, 35.635, 66.42, 127.69, 189.685, 296.195
   , 1.325, 5.745, 12.585, 26.945, 58.95, 94.08, 158.985
   , 0.501, 2.37, 5.38, 13.065, 31.91, 53.95, 96.97
   , 0.501, 0.695, 1.47, 4.415, 12.86, 23.75, 46.7 ]
-floorPricesEU = Matrix 6 7
+floorPricesEU = RealMatrix 6 7 $ V.fromList
   [ 0.501, 0.851, 2.44, 6.645, 16.23, 26.85, 46.365
   , 0.501, 2.236, 5.555, 13.075, 28.46, 44.525, 73.08
   , 1.025, 3.935, 9.095, 19.64, 39.93, 60.375, 96.02

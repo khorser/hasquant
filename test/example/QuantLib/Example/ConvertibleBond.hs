@@ -6,6 +6,7 @@ module QuantLib.Example.ConvertibleBond
   ) where
 import Control.Monad(zipWithM)
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Instrument
@@ -77,8 +78,8 @@ run = do
 
   let euEx = European $ EuropeanExercise exec
       amEx = American (Just settl) exec False
-  euBond <- convertibleFixedCouponBond euEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption (0, Days) cal Unadjusted False
-  amBond <- convertibleFixedCouponBond amEx conversionRatio callabilities issue settlementDays coupons bdc sched redemption (0, Days) cal Unadjusted False
+  euBond <- convertibleFixedCouponBond euEx conversionRatio callabilities issue settlementDays (NE.fromList coupons) bdc sched redemption (0, Days) cal Unadjusted False
+  amBond <- convertibleFixedCouponBond amEx conversionRatio callabilities issue settlementDays (NE.fromList coupons) bdc sched redemption (0, Days) cal Unadjusted False
 
   [jr, crr, ad, tr, ti, lr, j] <- mapM
     (priceBonds euBond amBond bsmProc creditSpreadQ dividends)

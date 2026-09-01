@@ -8,6 +8,7 @@
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/CheckRateHelperEnums.hs -o /tmp/checkrhe -outputdir /tmp/checkrhe_build && /tmp/checkrhe
 import Control.Monad
+import qualified Data.List.NonEmpty as NE
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
@@ -29,7 +30,7 @@ main = do
     customPillarDate <- advance cal today (3, Months) ModifiedFollowing False
     h <- fraRateHelper q 1 4 2 cal ModifiedFollowing True dc pillar
       (if pillar == CustomDate then Just customPillarDate else Nothing) True
-    curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
+    curve <- piecewiseYieldCurve today (h NE.:| []) dc [] Discount LogLinear
     endDate <- advance cal today (5, Months) ModifiedFollowing False
     d <- discount' curve endDate True
     putStrLn (show pillar ++ " -> discount " ++ show d)
@@ -38,7 +39,7 @@ main = do
   forM_ [(IMM, imm), (ASX, 8 `march` 2024), (Custom, imm)] $ \(ty, futDate) -> do
     q <- simpleQuote 99.0
     h <- futuresRateHelper q futDate 3 cal ModifiedFollowing True dc Nothing ty
-    curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
+    curve <- piecewiseYieldCurve today (h NE.:| []) dc [] Discount LogLinear
     d <- discount' curve futDate True
     putStrLn (show ty ++ " -> discount " ++ show d)
   where

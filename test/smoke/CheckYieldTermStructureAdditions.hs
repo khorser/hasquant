@@ -7,6 +7,7 @@
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckYieldTermStructureAdditions.hs -o /tmp/checkyts -outputdir /tmp/checkyts_build && /tmp/checkyts
 import Data.Time.Calendar(addGregorianYearsClip)
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Currency(currency, Ccy(..))
@@ -52,7 +53,7 @@ main = do
   --    baseCurve.discount(date) * the given spread df exactly.
   let d1 = addYears 1 refDate
       spreadDf1 = 0.95
-  spreaded <- interpolatedSpreadDiscountCurve base [(refDate, 1.0), (d1, spreadDf1), (addYears 2 refDate, 0.90)] Linear
+  spreaded <- interpolatedSpreadDiscountCurve base ((refDate, 1.0) NE.:| [(d1, spreadDf1), (addYears 2 refDate, 0.90)]) Linear
   baseD1 <- discount' base d1 False
   spreadedD1 <- discount' spreaded d1 False
   report "spread discount curve at 1y node" (show spreadedD1)
@@ -66,7 +67,7 @@ main = do
   let inputRate = 0.05
   q <- Quote.simpleQuote inputRate
   rh <- multipleResetsSwapRateHelper 0 (2, Years) q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing
-  ts <- piecewiseYieldCurve curveToday [rh] actual360dc [] Discount LogLinear
+  ts <- piecewiseYieldCurve curveToday (rh NE.:| []) actual360dc [] Discount LogLinear
   _ <- discount' ts curveToday False
   implied <- impliedQuote rh
   report "multiple-resets swap rate helper implied quote" (show implied)

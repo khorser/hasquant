@@ -81,6 +81,7 @@ import QuantLib.CashFlow (RateAveragingType)
 import QuantLib.Time.Calendar (calendar)
 import qualified QuantLib.Currency as Ccy (currency)
 import qualified QuantLib.Time.Schedule as Sched (dayCounter)
+import Data.List.NonEmpty(NonEmpty, toList)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -380,8 +381,8 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 {#fun qlSwapIndexUnderlyingSwap as underlyingSwap{withSwapIndex*`GenSwapIndex sidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
 
 -- |Convenience wrapper: 'historicalIndexAnalysis' specialised to interest-rate indexes.
-historicalRatesAnalysis :: Day -> Day -> (Int, TimeUnit) -> [GenInterestRateIndex ridx] -> IO HistoricalIndexAnalysis
+historicalRatesAnalysis :: Day -> Day -> (Int, TimeUnit) -> NonEmpty (GenInterestRateIndex ridx) -> IO HistoricalIndexAnalysis
 historicalRatesAnalysis startDate endDate step ridxs =
-  mapM asIndex ridxs >>= historicalIndexAnalysis startDate endDate step
+  mapM asIndex (toList ridxs) >>= historicalIndexAnalysis startDate endDate step
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

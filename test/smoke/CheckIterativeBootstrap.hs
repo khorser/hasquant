@@ -13,6 +13,7 @@
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckIterativeBootstrap.hs -o /tmp/checkib -outputdir /tmp/checkib_build && /tmp/checkib
 import Control.Exception (try, evaluate, SomeException)
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Math (Interpolation(..))
 import qualified QuantLib.Quote as Quote
@@ -37,7 +38,7 @@ buildCurve opts = do
   q <- Quote.simpleQuote 0.03
   helpers <- mapM (\n -> depositRateHelper q (n, Months) 2 cal ModifiedFollowing False dc)
                   [1, 3, 6, 12]
-  piecewiseYieldCurveFull' 0 cal helpers dc [] Discount Linear opts False
+  piecewiseYieldCurveFull' 0 cal (NE.fromList helpers) dc [] Discount Linear opts False
 
 -- Force the lazy bootstrap and report whether it survived. The `try` spans construction as
 -- well as the discount call: which of the two a failing bootstrap surfaces from is

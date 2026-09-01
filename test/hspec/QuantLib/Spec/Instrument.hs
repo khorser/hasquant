@@ -83,8 +83,8 @@ spec = do
         floatDC <- dayCounter (Actual360 False)
         floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
           ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
-        leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-        capfl <- cap leg [0.03]
+        leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+        capfl <- cap leg (0.03 NE.:| [])
         volQ <- simpleQuote 0.20
         vol0 <- constantOptionletVolatility today' cal ModifiedFollowing volQ dc ShiftedLognormal 0
         eng <- blackCapFloorEngine' discountTS vol0

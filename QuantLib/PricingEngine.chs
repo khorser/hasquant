@@ -856,8 +856,8 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 
 -- |variance-swap pricing engine using a replicating portfolio of vanilla options at the given strikes
 {#fun qlReplicatingVarianceSwapEngine as replicatingVarianceSwapEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^dk
-  ,withDoubleArray*`[Double]'& -- ^callStrikes
-  ,withDoubleArray*`[Double]'& -- ^putStrikes
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^callStrikes
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^putStrikes
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |pricing engine for 2D European basket options (Stulz formula)

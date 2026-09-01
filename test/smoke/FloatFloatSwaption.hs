@@ -14,6 +14,7 @@
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/FloatFloatSwaption.hs
 import Control.Monad (forM, forM_)
 import Data.Maybe (mapMaybe)
+import qualified Data.List.NonEmpty as NE
 import System.Exit (exitFailure)
 
 import qualified QuantLib.CashFlow as CF
@@ -66,7 +67,7 @@ main = do
     swapBase thirty360bb floatSchedule euribor6m act360
     defaultFloatFloatSwapVaryingOpts{ffsvSpread2 = replicate (2 * n) 0.0010}
 
-  let ex = Bermudan (BermudanExercise bermudanDates False)
+  let ex = Bermudan (BermudanExercise (NE.fromList bermudanDates) False)
   swpn1 <- floatFloatSwaption underlying1 ex Physical PhysicalOTC
   swpn2 <- floatFloatSwaption underlying2 ex Physical PhysicalOTC
 
@@ -79,10 +80,11 @@ main = do
     (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
   forM_ [underlying1, underlying2] $ \u -> leg u 0 >>= (`CF.setCouponPricer` cmsPricer)
 
-  gsrVolQuotes <- forM [1 :: Int ..3] $ \_ -> simpleQuote 0.01
+  gsrInitialVolQuote <- simpleQuote 0.01
+  gsrStepVolQuotes <- forM [1 :: Int ..2] $ \_ -> simpleQuote 0.01
   gsrReversionQuote <- simpleQuote 0.01
   stepDates <- forM [1, 2 :: Int] $ \yr -> advance cal today (yr, Years) Following False
-  gsrModel <- gsr ts stepDates gsrVolQuotes gsrReversionQuote 60.0
+  gsrModel <- gsr ts gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
   gsrGm <- gsrAsGaussian1dModel gsrModel
   engine <- gaussian1dFloatFloatSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ts) True None
   forM_ [swpn1, swpn2] (`setPricingEngine` engine)

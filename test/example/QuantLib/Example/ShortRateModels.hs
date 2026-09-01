@@ -139,7 +139,7 @@ runCalibration model index ts fixParams cachedAv cachedSigmaV = do
     asCalibrationHelper h
   let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
       ec = EndCriteria 10000 100 1e-6 1e-8 1e-8
-  calibrate model (map (, 1.0) helpers) method ec Nothing fixParams
+  calibrate model (NE.fromList $ map (, 1.0) helpers) method ec Nothing fixParams
   ps@[calcA, calcSigma] <- params model
   calcValue <- Model.value model ps helpers
   cachedVal <- Model.value model [cachedAv, cachedSigmaV] helpers

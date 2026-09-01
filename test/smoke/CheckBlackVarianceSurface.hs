@@ -10,11 +10,12 @@
 --
 -- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckBlackVarianceSurface.hs -o /tmp/checkbvs -outputdir /tmp/checkbvs_build && /tmp/checkbvs
 import Control.Monad (forM)
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Instrument (setPricingEngine, npv)
 import QuantLib.Instrument.Option
 import QuantLib.InterestRate (Compounding(..))
-import QuantLib.Math (Matrix, realMatrix, Interpolation2D(..))
+import QuantLib.Math (RealMatrix, realMatrixFromVector, Interpolation2D(..))
 import QuantLib.PricingEngine (analyticEuropeanEngine)
 import QuantLib.Process (blackScholesProcess, ProcessDiscretization(..))
 import QuantLib.Quote (simpleQuote)
@@ -40,8 +41,8 @@ strikes = [80, 100, 120]
 -- Deliberately curved along both axes -- a surface that is affine in either direction is
 -- reproduced identically by bilinear and bicubic, which would make the check vacuous.
 -- Rows are strikes, columns are expiries (QuantLib's BlackVarianceSurface convention).
-volMatrix :: Matrix Double
-volMatrix = either error id $ realMatrix 3 3
+volMatrix :: RealMatrix
+volMatrix = either error id $ realMatrixFromVector 3 3 $ V.fromList
   [ 0.30, 0.26, 0.24
   , 0.20, 0.18, 0.17
   , 0.28, 0.25, 0.23

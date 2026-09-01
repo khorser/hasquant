@@ -93,6 +93,7 @@ import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import Data.Maybe(fromMaybe)
+import Data.List.NonEmpty(NonEmpty)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -172,7 +173,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
 {#fun qlFixedRateBond as fixedRateBond{fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
   ,withSchedule*`Schedule' -- ^schedule
-  ,withDoubleArray*`[Double]'& -- ^coupons
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,`Double' -- ^redemption
@@ -188,9 +189,9 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
 -- |amortizing fixed-rate bond: like 'fixedRateBond' but with a per-period notional schedule
 -- instead of a single face amount (see 'sinkingSchedule'\/'sinkingNotionals' for building one).
 {#fun qlAmortizingFixedRateBond as amortizingFixedRateBond{fromIntegral`Word' -- ^settlementDays
-  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
   ,withSchedule*`Schedule' -- ^schedule
-  ,withDoubleArray*`[Double]'& -- ^coupons
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withMaybeDay*`Maybe Day' -- ^issueDate
@@ -226,7 +227,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,withZeroInflationIndex*`ZeroInflationIndex'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withSchedule*`Schedule'
-  ,withDoubleArray*`[Double]'& -- ^coupons
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withMaybeDay*`Maybe Day' -- ^issueDate
@@ -290,7 +291,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
 -- notional schedule instead of a single face amount, and a per-period redemption
 -- schedule instead of a single redemption value.
 {#fun qlAmortizingCmsRateBond as amortizingCmsRateBond{fromIntegral`Word' -- ^settlementDays
-  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
   ,withSchedule*`Schedule' -- ^schedule
   ,withSwapIndex*`GenSwapIndex sidx'
   ,withDayCounter*`DayCounter' -- ^paymentDayCounter
@@ -309,7 +310,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
 -- notional schedule instead of a single face amount; see 'AmortizingFloatingRateBondOpts'
 -- for the trailing optional parameters (default via 'defaultAmortizingFloatingRateBondOpts',
 -- override with record-update syntax).
-amortizingFloatingRateBond :: Word -> [Double] -> Schedule -> GenIborIndex ibor -> DayCounter
+amortizingFloatingRateBond :: Word -> NonEmpty Double -> Schedule -> GenIborIndex ibor -> DayCounter
   -> AmortizingFloatingRateBondOpts -> IO Bond
 amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCounter opts = do
   cal <- calendar Null
@@ -323,7 +324,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 -- |raw entry point for 'amortizingFloatingRateBond', taking every trailing option as a
 -- separate flat argument; see 'AmortizingFloatingRateBondOpts' for the public wrapper.
 {#fun qlAmortizingFloatingRateBond as amortizingFloatingRateBond_{fromIntegral`Word' -- ^settlementDays
-  ,withDoubleArray*`[Double]'& -- ^notionals
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
   ,withSchedule*`Schedule' -- ^schedule
   ,withIborIndex*`GenIborIndex ibor'
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
@@ -519,7 +520,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 -- |fixed-rate bond with an embedded call\/put schedule
 {#fun qlCallableFixedRateBond as callableFixedRateBond{fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
-  ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
+  ,withSchedule*`Schedule',withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention'
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
@@ -544,7 +545,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,withCallabilityArray*`[Callability]'&
   ,withDay*`Day' -- ^issueDate
   ,fromIntegral`Word' -- ^settlementDays
-  ,withDoubleArray*`[Double]'& -- ^coupons
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter',withSchedule*`Schedule',`Double' -- ^redemption
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^exCouponPeriod
   ,withCalendar*`Calendar' -- ^exCouponCalendar

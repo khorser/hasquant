@@ -9,6 +9,7 @@ import Control.Monad(void, when)
 import System.Mem(performGC)
 import System.IO (hPutStrLn, stderr)
 import Control.Concurrent (threadDelay)
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
@@ -100,7 +101,7 @@ run gc = do
         -- make sure bond forward reference is scoped (for GC checks)
         doBond :: Calendar -> Schedule -> SimpleQuote -> DayCounter -> DayCounter -> YieldTermStructure -> IO (Forward, Double, Double, Double, Double, Double, Double)
         doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve = do
-          b <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
+          b <- fixedRateBond bondSettlementDays faceAmount bondSchedule (bondCoupon NE.:| [])
             bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate) bondCalendar
             (0, Days) bondCalendar Unadjusted False bondDayCountConvention
           -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]

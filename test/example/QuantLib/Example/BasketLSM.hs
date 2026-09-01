@@ -14,6 +14,7 @@ module QuantLib.Example.BasketLSM
 import Control.Monad(replicateM, zipWithM)
 import Data.Time.Calendar(addDays)
 import qualified Data.Vector.Storable as V
+import qualified Data.List.NonEmpty as NE
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
@@ -111,7 +112,7 @@ run = do
   procs1D <- zipWithM (\uq vts -> blackScholesMertonProcess uq divTS ts vts EulerDiscretization False) underQs volTSs
   let corrFlat = concat [ [ if i == j then 1 else assetCorrelation | j <- [0 .. dim-1] ] | i <- [0 .. dim-1] ]
       corrMat = Matrix (fromIntegral dim) (fromIntegral dim) corrFlat
-  procs <- stochasticProcessArray procs1D corrMat
+  procs <- stochasticProcessArray (NE.fromList procs1D) corrMat
 
   t <- years dc evalDate maturity Nothing Nothing
   grid <- timeGrid t timeSteps

@@ -399,7 +399,8 @@ data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
   deriving (Eq, Show)
 
 -- |Row-major numeric matrix backed by contiguous storage.  Use this for
--- regression, diffusion/correlation, and volatility-surface data; object
+-- large dense grids such as regression and volatility-surface data; small
+-- process/correlation matrices remain boxed 'Matrix' values; object
 -- matrices retain 'Matrix' because their elements need continuation-based FFI
 -- marshalling rather than a raw contiguous pointer.
 --
@@ -416,9 +417,9 @@ data RealMatrix = RealMatrix
   }
   deriving (Eq, Show)
 
--- |List-backed numeric matrix retained for curve, surface, and object-matrix APIs that have not
--- yet migrated their public representation.  Use 'realMatrixFromVector' for a dense numerical
--- calculation such as multi-asset LSM.
+-- |Construct a list-backed numeric matrix for small-dimensional APIs such as process
+-- correlation and diffusion matrices. Use 'realMatrixFromVector' for large dense numerical
+-- grids such as volatility surfaces and multi-asset LSM data.
 realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
 realMatrix = objectMatrix
 

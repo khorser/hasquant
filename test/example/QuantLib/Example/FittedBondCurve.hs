@@ -8,6 +8,7 @@ module QuantLib.Example.FittedBondCurve
 import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last, fromList)
 
 import qualified QuantLib.CashFlow as CF
@@ -114,8 +115,8 @@ run = do
         s <- schedule (Just bondSettle) mat (1, Years) cal
           ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
-        hA <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
-        hB <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
+        hA <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s (c NE.:| []) dc ModifiedFollowing 100.0 Nothing
+        hB <- TS.fixedRateBondHelper q (fromIntegral bondSettleDays) 100.0 s (c NE.:| []) dc ModifiedFollowing 100.0 Nothing
                 >>= TS.asRateHelper
         return (hA, hB)) $
           zip3 cleanQuotes lengths coupons
@@ -151,7 +152,7 @@ run = do
     -- Keep the fixture in one place. Results depend on QLC's optimization options.
     fitCurves :: Calendar -> DayCounter -> [TS.BondHelper] -> IO [TS.FittedBondDiscountCurve]
     fitCurves cal dc instr = mapM
-        (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instr dc f tolerance maxEvals [] 1.0)
+        (\f -> TS.fittedBondDiscountCurve curveSettleDays cal (NE.fromList instr) dc f tolerance maxEvals [] 1.0)
         fittings
       where
         noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")

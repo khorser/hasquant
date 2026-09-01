@@ -19,6 +19,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 import Control.Monad(unless)
 import Data.Time.Calendar(addDays, fromGregorian)
+import qualified Data.Vector.Storable as V
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
 import QuantLib.InterestRate
@@ -50,18 +51,18 @@ main = do
 
   let nativePayoff = Type (Striked (PlainVanilla (PlainVanillaPayoff Call strike)))
       bands = operatorBands nPts h mu sigma2 r
-      applyFn _ = applyOp bands
-      applyDirFn _dir _t = applyOp bands
+      applyFn _ = V.fromList . applyOp bands . V.toList
+      applyDirFn _dir _t = V.fromList . applyOp bands . V.toList
       solveFn _dir s _t =
         let (lo, di, up) = bands
-        in thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up)
+        in V.fromList . thomasSolve (map (s *) lo) (map (\d -> 1 + s * d) di) (map (s *) up) . V.toList
 
-  mesh1d <- predefined1dMesher xs
+  mesh1d <- predefined1dMesher (V.fromList xs)
   mesher <- fdmMesherComposite [mesh1d]
   basketMesher <- fdmMesherComposite [mesh1d, mesh1d]
 
   nativeCalc <- fdmLogInnerValue nativePayoff mesher 0
-  nativeEuro <- fdmSolve mesher nativeCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+  nativeEuro <- fdmSolve mesher nativeCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
   nativeBasketCalc <- fdmLogBasketInnerValue (Max nativePayoff) basketMesher
   nativeBasket <- fdmAvgInnerValue nativeBasketCalc basketMesher [centerIdx + 5, centerIdx - 5] tMat
 
@@ -70,14 +71,14 @@ main = do
   (customEuro, customBasket) <-
     withCustomPayoff "HaskellCall" "max(S - K, 0), defined in Haskell" (\s -> max (s - strike) 0) $ \custom -> do
       customCalc <- fdmLogInnerValue custom mesher 0
-      euro <- fdmSolve mesher customCalc 1 applyFn applyDirFn solveFn Nothing [] Douglas tMat 0 nSteps 0
+      euro <- fdmSolve mesher customCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
       basket <- withCustomBasketPayoff custom maximum $ \customBasketPayoff -> do
         calc <- fdmLogBasketInnerValue customBasketPayoff basketMesher
         fdmAvgInnerValue calc basketMesher [centerIdx + 5, centerIdx - 5] tMat
       pure (euro, basket)
 
   check "custom payoff vs native, through fdmLogInnerValue + fdmSolve"
-    (nativeEuro !! centerIdx) (customEuro !! centerIdx) 0
+    (nativeEuro V.! centerIdx) (customEuro V.! centerIdx) 0
   check "custom basket accumulate vs native Max, through fdmLogBasketInnerValue"
     nativeBasket customBasket 0
 
@@ -126,11 +127,11 @@ main = do
   (draws, _w) <- nextSequence rsg
   let dt = tMat / fromIntegral nSteps
       logDrift = r - q - 0.5 * vol * vol
-      hsPath = scanl (\x dw -> x * exp (logDrift * dt + vol * sqrt dt * dw)) spot draws
-  unless (length qlPath == length hsPath) $
-    fail ("path length mismatch: " ++ show (length qlPath, length hsPath))
+      hsPath = V.scanl (\x dw -> x * exp (logDrift * dt + vol * sqrt dt * dw)) spot draws
+  unless (V.length qlPath == V.length hsPath) $
+    fail ("path length mismatch: " ++ show (V.length qlPath, V.length hsPath))
   mapM_ (\(i, a, b) -> check ("gaussianRsg-evolved path, step " ++ show i) a b 1e-10)
-    (zip3 [(0 :: Int) ..] qlPath hsPath)
+    (zip3 [(0 :: Int) ..] (V.toList qlPath) (V.toList hsPath))
 
   -- rsgDimension/lastSequence round-trip: lastSequence must re-read what nextSequence just drew.
   (again, _) <- lastSequence rsg

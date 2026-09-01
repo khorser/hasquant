@@ -11,6 +11,7 @@ import Prelude hiding(floor)
 import Control.Monad(forM_)
 
 import Test.Hspec
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -49,7 +50,7 @@ cachedFixture = do
   sch <- schedule (Just startDate) endDate (6, Months) cal ModifiedFollowing ModifiedFollowing
     Forward False Nothing Nothing
   iborDC <- dayCounter (Actual360 False)
-  iborLeg sch idx [100] iborDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+  iborLeg sch idx (100 NE.:| []) iborDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
 
 spec :: Spec
 spec = do
@@ -63,11 +64,11 @@ spec = do
         ts <- flatForward (18 `march` 2002) q dc Continuous Annual
         volDC <- dayCounter Actual365FixedStandard
         eng <- blackCapFloorEngine ts volQ volDC 0.0
-        capfl <- cap leg [0.07]
+        capfl <- cap leg (0.07 NE.:| [])
         setPricingEngine capfl eng
         capNPV <- npv capfl
         capNPV `shouldSatisfy` closeToEither 6.87630307745 6.87570026732
-        flr <- floor leg [0.03]
+        flr <- floor leg (0.03 NE.:| [])
         setPricingEngine flr eng
         flrNPV <- npv flr
         flrNPV `shouldSatisfy` closeToEither 2.65796764715 2.65812927959
@@ -83,7 +84,7 @@ spec = do
         volDC <- dayCounter Actual365FixedStandard
         eng <- blackCapFloorEngine ts volQ volDC 0.0
 
-        capfl <- cap leg [0.07]
+        capfl <- cap leg (0.07 NE.:| [])
         setPricingEngine capfl eng
         _ <- npv capfl
         capAddl <- additionalResults capfl
@@ -93,7 +94,7 @@ spec = do
             sum xs `shouldSatisfy` closeToEither 6.87630307745 6.87570026732
           other -> expectationFailure ("expected optionletsPrice as RealVectorVal, got " ++ show other)
 
-        flr <- floor leg [0.03]
+        flr <- floor leg (0.03 NE.:| [])
         setPricingEngine flr eng
         _ <- npv flr
         flrAddl <- additionalResults flr
@@ -115,10 +116,10 @@ spec = do
         sch <- schedule (Just settle) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing
           Forward False Nothing Nothing
         iborDC <- dayCounter (Actual360 False)
-        leg <- iborLeg sch idx [100] iborDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+        leg <- iborLeg sch idx (100 NE.:| []) iborDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
 
-        capfl <- cap leg [0.05]
-        flr <- floor leg [0.05]
+        capfl <- cap leg (0.05 NE.:| [])
+        flr <- floor leg (0.05 NE.:| [])
         capATM <- atmRate capfl ts
         floorATM <- atmRate flr ts
         floorATM `shouldSatisfy` closePrec capATM 1.0e-10
@@ -142,8 +143,8 @@ spec = do
         maturity <- advance cal settle (10, Years) ModifiedFollowing False
         sch <- schedule (Just settle) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing
           Forward False Nothing Nothing
-        leg <- iborLeg sch idx [100] dc ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-        capfl <- cap leg [0.03]
+        leg <- iborLeg sch idx (100 NE.:| []) dc ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+        capfl <- cap leg (0.03 NE.:| [])
         volDC <- dayCounter Actual365FixedStandard
 
         forM_ [0.10, 0.20, 0.30 :: Double] $ \v -> do

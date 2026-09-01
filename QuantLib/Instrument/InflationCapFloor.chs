@@ -13,6 +13,7 @@ module QuantLib.Instrument.InflationCapFloor
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
+import Data.List.NonEmpty(NonEmpty)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -33,20 +34,20 @@ import QuantLib.Internal.Common
 -- arrears, so there is no reason to omit it -- see upstream's own note on
 -- 'YoYInflationCapFloor').
 {#fun qlYoYInflationCap as yoyInflationCap{withLeg*`GenLeg l' -- ^yoyLeg
-  ,withDoubleArray*`[Double]'& -- ^exerciseRates
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCapFloor'peekYoYInflationCapFloor*#}
 
 -- |Constructs a YoY-inflation collar: a cap struck at the cap rates combined with a floor
 -- struck at the floor rates.
 {#fun qlYoYInflationCollar as yoyInflationCollar{withLeg*`GenLeg l' -- ^yoyLeg
-  ,withDoubleArray*`[Double]'& -- ^capRates
-  ,withDoubleArray*`[Double]'& -- ^floorRates
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^capRates
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^floorRates
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCapFloor'peekYoYInflationCapFloor*#}
 
 -- |Constructs a YoY-inflation floor: pays the excess of each exercise rate over the YoY leg's
 -- rate, if positive.
 {#fun qlYoYInflationFloor as yoyInflationFloor{withLeg*`GenLeg l' -- ^yoyLeg
-  ,withDoubleArray*`[Double]'& -- ^exerciseRates
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^exerciseRates
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCapFloor'peekYoYInflationCapFloor*#}
 
 -- |The fair (at-the-money) rate for the cap\/floor's underlying YoY leg, discounted on the

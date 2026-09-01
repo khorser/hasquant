@@ -11,6 +11,7 @@ import Data.Time.Calendar(addDays, addGregorianYearsClip)
 
 import Test.Hspec
 import qualified Data.Vector.Storable as V
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -263,7 +264,7 @@ spec = do
         forwardQuote <- simpleQuote forward
         atmVolQ <- simpleQuote atmVol
         refVolQuotes <- mapM simpleQuote refVols
-        interp <- sabrInterpolatedSmileSection optionDate forwardQuote strikes False atmVolQ refVolQuotes
+        interp <- sabrInterpolatedSmileSection optionDate forwardQuote (NE.fromList $ zip strikes refVolQuotes) False atmVolQ
           alpha_ beta_ nu rho_ defaultSabrInterpolatedSmileSectionOpts
         rms <- sabrInterpolatedSmileSectionRmsError interp
         maxErr <- sabrInterpolatedSmileSectionMaxError interp
@@ -1261,12 +1262,13 @@ spec = do
         floatSchedule <- schedule (Just start) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
         swp <- vanillaSwap Payer 1.0 fixedSchedule 0.03 thirty360bb floatSchedule euribor6m 0.0 act360 (Just ModifiedFollowing) Nothing
         floatLeg <- floatingLeg swp
-        capfl <- cap floatLeg [0.03]
+        capfl <- cap floatLeg (0.03 NE.:| [])
 
         stepDates <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2 :: Int]
-        gsrVolQuotes <- mapM simpleQuote [0.01, 0.01, 0.01]
+        gsrInitialVolQuote <- simpleQuote 0.01
+        gsrStepVolQuotes <- mapM simpleQuote [0.01, 0.01]
         gsrReversionQuote <- simpleQuote 0.01
-        gsrModel <- gsr ts stepDates gsrVolQuotes gsrReversionQuote 60.0
+        gsrModel <- gsr ts gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
         gsrModel' <- gsrAsGaussian1dModel gsrModel
         gsrEngine <- gaussian1dCapFloorEngine gsrModel' 64 7.0 True False (Just ts)
         setPricingEngine capfl gsrEngine
@@ -1277,7 +1279,7 @@ spec = do
         swaptionVolQ <- simpleQuote 0.20
         swaptionVol <- constantSwaptionVolatility' evalDate cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
         cmsExpiries <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2, 3 :: Int]
-        markov <- markovFunctional ts 0.01 [] [0.01] swaptionVol cmsExpiries (replicate 3 (10, Years)) swapBase 16
+        markov <- markovFunctional ts 0.01 0.01 [] swaptionVol (NE.fromList $ zip cmsExpiries $ replicate 3 (10, Years)) swapBase 16
         markovModel <- markovFunctionalAsGaussian1dModel markov
         markovEngine <- gaussian1dCapFloorEngine markovModel 8 5.0 True False (Just ts)
         setPricingEngine capfl markovEngine
@@ -1287,7 +1289,7 @@ spec = do
         capletExpiries <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
         capletVolQ <- simpleQuote 0.20
         capletVol <- constantOptionletVolatility' 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
-        markovCaplet <- markovFunctionalCaplet ts 0.01 [] [0.01] capletVol capletExpiries euribor6m 16
+        markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVol (NE.fromList capletExpiries) euribor6m 16
         markovCapletModel <- markovFunctionalAsGaussian1dModel markovCaplet
         blackEngine <- blackCapFloorEngine' ts capletVol
         setPricingEngine capfl blackEngine

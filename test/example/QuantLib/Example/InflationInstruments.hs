@@ -197,7 +197,7 @@ run = do
 
   -- CPIBond: dirty/clean/accrued self-consistency, plus a directional inflation bump
   cpiBondSchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
-  cb <- cpiBond settlementDays faceAmount baseCPI0 obsLag idx1 CPILinear cpiBondSchedule [couponRate]
+  cb <- cpiBond settlementDays faceAmount baseCPI0 obsLag idx1 CPILinear cpiBondSchedule (couponRate NE.:| [])
     dc Unadjusted (Just evalDate) cal (0, Days) cal Unadjusted False
   cbInst <- asBond cb >>= asInstrument
   setPricingEngine cbInst bondEngine
@@ -211,7 +211,7 @@ run = do
   h3 <- zeroCouponInflationSwapHelper q3 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   hiZeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc (h1 NE.:| [h3]) Linear
   hiIdx <- zeroInflationIndex' "WL CPI" reg False Monthly obsLagI gbp (Just hiZeroCurve)
-  cbHi <- cpiBond settlementDays faceAmount baseCPI0 obsLag hiIdx CPILinear cpiBondSchedule [couponRate]
+  cbHi <- cpiBond settlementDays faceAmount baseCPI0 obsLag hiIdx CPILinear cpiBondSchedule (couponRate NE.:| [])
     dc Unadjusted (Just evalDate) cal (0, Days) cal Unadjusted False
   cbHiInst <- asBond cbHi >>= asInstrument
   setPricingEngine cbHiInst bondEngine
@@ -219,15 +219,15 @@ run = do
   cbHiClean <- currentCleanPrice cbHi
 
   -- cpiLeg exercised directly via the generic Leg-based 'bond' constructor
-  cpiL <- CF.cpiLeg cpiBondSchedule idx1 baseCPI0 obsLag [faceAmount] [couponRate] dc Unadjusted cal CPILinear True
+  cpiL <- CF.cpiLeg cpiBondSchedule idx1 baseCPI0 obsLag (faceAmount NE.:| []) (couponRate NE.:| []) dc Unadjusted cal CPILinear True
   cpiLegBond <- bond settlementDays cal (Just evalDate) cpiL >>= asInstrument
   setPricingEngine cpiLegBond bondEngine
   cpiLegNpv <- npv cpiLegBond
 
   -- yoyInflationLeg exercised via the generic Leg-based 'swap'' constructor
-  yoyL <- CF.yoyInflationLeg yoySchedule cal yidx1 obsLag CPILinear [nominal] dc Unadjusted [0] [1.0] [0.0] [] []
+  yoyL <- CF.yoyInflationLeg yoySchedule cal yidx1 obsLag CPILinear (nominal NE.:| []) dc Unadjusted [0] [1.0] [0.0] [] []
   fixedIR <- interestRate flatRate dc Compounded Annual
-  fixedL <- CF.fixedRateLeg fixedSchedule [nominal] [fixedIR] Unadjusted dc cal
+  fixedL <- CF.fixedRateLeg fixedSchedule (nominal NE.:| []) (fixedIR NE.:| []) Unadjusted dc cal
   yoyLegSwap <- swap' [(fixedL, True), (yoyL, False)]
   yoyLegSwapInst <- asInstrument yoyLegSwap
   setPricingEngine yoyLegSwapInst swapEngine

@@ -99,6 +99,7 @@ import QuantLib.Internal
 {#import QuantLib.Instrument#}(AverageType, BarrierType, DoubleBarrierType, PartialBarrierRange)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
+import Data.List.NonEmpty(NonEmpty, toList)
 
 {#pointer *QlOption as Option foreign -> COption' nocode#}
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
@@ -277,15 +278,21 @@ import QuantLib.Internal.Common
 {#fun qlBasketOption as basketOption{withBasketPayoff*`BasketPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 
 -- |Himalaya option: at the end of each of a series of periods, the best-performing asset in the basket is added to the average and dropped from the basket; the payoff is the max of the strike and the final average of best performers.
-{#fun qlHimalayaOption as himalayaOption{withDayArray*`[Day]'& -- ^fixingDates
+{#fun qlHimalayaOption as qlHimalayaOption{withDayArray*`[Day]'& -- ^fixingDates
   , `Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
 
 -- |Roofed Asian option on a number of assets: pays the given fraction of the minimum of the roof and the positive portfolio performance, or nothing if the performance is negative.
-{#fun qlPagodaOption as pagodaOption{withDayArray*`[Day]'& -- ^fixingDates
+{#fun qlPagodaOption as qlPagodaOption{withDayArray*`[Day]'& -- ^fixingDates
   ,`Double' -- ^roof
   ,`Double' -- ^fraction
   ,preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}
+
+himalayaOption :: NonEmpty Day -> Double -> IO MultiAssetOption
+himalayaOption dates strike = qlHimalayaOption (toList dates) strike
+
+pagodaOption :: NonEmpty Day -> Double -> Double -> IO MultiAssetOption
+pagodaOption dates roof fraction = qlPagodaOption (toList dates) roof fraction
 
 -- |Cliquet (ratchet) option: a series of forward-starting options where each period's strike is set to a fixed percentage of the spot price at the start of that period.
 {#fun qlCliquetOption as cliquetOption{withPercentageStrikePayoff*`PercentageStrikePayoff',withEuropeanExercise*`EuropeanExercise' -- ^maturity

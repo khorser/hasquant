@@ -113,7 +113,8 @@ import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
-import Foreign.Ptr(FunPtr)
+import Foreign.Ptr(FunPtr, Ptr)
+import Foreign.C.Types(CUInt)
 import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.InterestRate#}(Compounding)
 {#import QuantLib.CashFlow#}(RateAveragingType(..))
@@ -238,7 +239,7 @@ nullableDouble = realToFrac . fromMaybeDouble
 -- schedule and coupons (unlike 'bondHelper', which takes an existing 'Bond').
 {#fun qlFixedRateBondHelper as fixedRateBondHelper{withQuote*`GenQuote q',fromIntegral`Word' -- ^settlementDays
   ,`Double' -- ^faceAmount
-  ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
+  ,withSchedule*`Schedule',withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,`Double' -- ^redemption
   ,withMaybeDay*`Maybe Day' -- ^issueDate
@@ -253,7 +254,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,withZeroInflationIndex*`ZeroInflationIndex'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
-  ,withSchedule*`Schedule',withDoubleArray*`[Double]'& -- ^coupons
+  ,withSchedule*`Schedule',withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withMaybeDay*`Maybe Day' -- ^issueDate
@@ -707,10 +708,10 @@ withCompositeZeroYieldStructure f c1 c2 comp freq k =
 -- between the given dates with the given 'Interpolation'. Remains linked to changes in
 -- 'baseCurve' or the spread quotes.
 piecewiseZeroSpreadedTermStructure :: GenYieldTermStructure y
-  -> [(Day, GenQuote q)]  -- ^spreads
+  -> NonEmpty (Day, GenQuote q)  -- ^spreads
   -> Compounding -> Frequency -> Interpolation -> IO YieldTermStructure
 piecewiseZeroSpreadedTermStructure ts qd c f i = uncurryNested (qlPiecewiseZeroSpreadedTermStructure ts qs ds c f) (qlInterpolation i)
-  where (ds, qs) = unzip qd
+  where (ds, qs) = unzip (toList qd)
 {#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Compounding',`Frequency'
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
@@ -1055,8 +1056,11 @@ interpolatedSpreadDiscountCurve ts r i = uncurryNested (qlInterpolatedSpreadDisc
 {#fun qlInterpolatedSpreadDiscountCurve{withYieldTermStructure*`GenYieldTermStructure y',withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |reference date based on current evaluation date
+withNonEmptyBondHelperArray :: NonEmpty BondHelper -> ((CUInt, Ptr (Ptr CBondHelper')) -> IO a) -> IO a
+withNonEmptyBondHelperArray = withBondHelperArray . toList
+
 {#fun qlFittedBondDiscountCurve as fittedBondDiscountCurve{fromIntegral`Word' -- ^settlementDays
-  ,withCalendar*`Calendar',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'
+  ,withCalendar*`Calendar',withNonEmptyBondHelperArray*`NonEmpty BondHelper'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,withDoubleArray*`[Double]'& -- ^guess
@@ -1064,7 +1068,7 @@ interpolatedSpreadDiscountCurve ts r i = uncurryNested (qlInterpolatedSpreadDisc
   ,preErrorCheck-`String'errorCheck*-}->`FittedBondDiscountCurve'peekFittedBondDiscountCurve*#}
 
 -- |curve reference date fixed for life of curve
-{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve'{withDay*`Day',withBondHelperArray*`[BondHelper]'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'
+{#fun qlFittedBondDiscountCurve1 as fittedBondDiscountCurve'{withDay*`Day',withNonEmptyBondHelperArray*`NonEmpty BondHelper'&,withDayCounter*`DayCounter',withFittedBondDiscountCurveFittingMethod*`FittingMethod'
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations
   ,withDoubleArray*`[Double]'& -- ^guess

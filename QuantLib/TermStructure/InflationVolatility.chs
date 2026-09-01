@@ -99,11 +99,11 @@ yoyCapFloorTermPriceSurface :: Word -- ^fixingDays
   -> [Double] -- ^cStrikes
   -> [Double] -- ^fStrikes
   -> [(Word, TimeUnit)] -- ^cfMaturities
-  -> Matrix Double -- ^cPrice
-  -> Matrix Double -- ^fPrice
+  -> RealMatrix -- ^cPrice
+  -> RealMatrix -- ^fPrice
   -> Interpolation2D -> Interpolation
   -> IO YoYCapFloorTermPriceSurface
-yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d i1d =
+yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (RealMatrix cr cc cd) (RealMatrix fr fc fd) i2d i1d =
   uncurryNested (qlYoYCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)) (qlInterpolation i1d)
   where (maturityNums, maturityUnits) = unzip cfMaturities
 {#fun qlYoYCapFloorTermPriceSurface{fromIntegral`Word' -- ^fixingDays
@@ -117,8 +117,8 @@ yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStri
   ,withDoubleArray*`[Double]'& -- ^cStrikes
   ,withDoubleArray*`[Double]'& -- ^fStrikes
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'& -- ^cfMaturities
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^cPrice
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^fPrice
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector' -- ^cPrice
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector' -- ^fPrice
   ,`Int' -- ^interpolator2D
   ,`Int',`Int',`Int' -- ^interpolator1D, approximator, approximatorArg
   ,preErrorCheck-`String'errorCheck*-}->`YoYCapFloorTermPriceSurface'peekYoYCapFloorTermPriceSurface*#}
@@ -245,11 +245,11 @@ cpiCapFloorTermPriceSurface :: Double -- ^nominal
   -> [Double] -- ^cStrikes
   -> [Double] -- ^fStrikes
   -> [(Word, TimeUnit)] -- ^cfMaturities
-  -> Matrix Double -- ^cPrice
-  -> Matrix Double -- ^fPrice
+  -> RealMatrix -- ^cPrice
+  -> RealMatrix -- ^fPrice
   -> Interpolation2D
   -> IO CPICapFloorTermPriceSurface
-cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (Matrix cr cc cd) (Matrix fr fc fd) i2d =
+cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes cfMaturities (RealMatrix cr cc cd) (RealMatrix fr fc fd) i2d =
   qlCPICapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)
   where (maturityNums, maturityUnits) = unzip cfMaturities
 {#fun qlCPICapFloorTermPriceSurface{`Double',`Double',fromEnumQuantity`(Word,TimeUnit)'&
@@ -259,8 +259,8 @@ cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrik
   ,withDoubleArray*`[Double]'& -- ^cStrikes
   ,withDoubleArray*`[Double]'& -- ^fStrikes
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'& -- ^cfMaturities
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^cPrice
-  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]' -- ^fPrice
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector' -- ^cPrice
+  ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector' -- ^fPrice
   ,`Int' -- ^interpolator2D
   ,preErrorCheck-`String'errorCheck*-}->`CPICapFloorTermPriceSurface'peekCPICapFloorTermPriceSurface*#}
 

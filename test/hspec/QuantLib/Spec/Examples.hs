@@ -6,6 +6,7 @@ import Control.Arrow((&&&))
 import Control.Monad(forM_)
 
 import Data.Time.Calendar
+import qualified Data.List.NonEmpty as NE
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar
@@ -127,7 +128,7 @@ spec = do
         forM_ (zip rates amounts) $ \(rate, expectedAmount) -> do
           sched <- B.sinkingSchedule refDate (30, Years) Monthly nullCal
           ns <- B.sinkingNotionals (30, Years) Monthly rate 100.0
-          bnd <- B.amortizingFixedRateBond 0 ns sched [rate] dc
+          bnd <- B.amortizingFixedRateBond 0 (NE.fromList ns) sched (rate NE.:| []) dc
                    Following Nothing (0, Days) nullCal Unadjusted False [100.0] 0
           cf <- B.cashFlows bnd
           flows <- CF.cashFlows cf Nothing Nothing
@@ -155,7 +156,7 @@ spec = do
               (x:_) -> x
               [] -> error "sinkingNotionals returned no notionals"
         usd3m <- I.iborIndex (I.UsdLibor (3, Months)) Nothing
-        bnd <- B.amortizingFloatingRateBond 0 ns sched usd3m dc
+        bnd <- B.amortizingFloatingRateBond 0 (NE.fromList ns) sched usd3m dc
                  B.defaultAmortizingFloatingRateBondOpts
 
         -- Bond.notionals() reports one entry per schedule date (periods+1, with an

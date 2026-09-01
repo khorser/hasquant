@@ -17,6 +17,8 @@ import Data.Time.Calendar(addDays)
 import Data.Bits(shiftR, xor)
 import Data.Word(Word64)
 import Data.List.NonEmpty(iterate, tail)
+import qualified Data.List.NonEmpty as NE
+import qualified Data.Vector.Storable as V
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date
@@ -26,7 +28,7 @@ import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Process hiding(drift)
-import QuantLib.Math(Matrix(..), realMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
+import QuantLib.Math(Matrix(..), realMatrix, realMatrixFromVector, RealMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
@@ -36,6 +38,9 @@ import QuantLib.Spec.Helpers(closePrec)
 
 matrix :: Word -> Word -> [Double] -> Matrix Double
 matrix rows columns = either error id . realMatrix rows columns
+
+realGrid :: Word -> Word -> [Double] -> RealMatrix
+realGrid rows columns = either error id . realMatrixFromVector rows columns . V.fromList
 
 dateOffset :: Day -> Double -> Day
 dateOffset d t = addDays (round (t * 360 :: Double)) d
@@ -197,7 +202,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         process1 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
         process2 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
-        procs <- stochasticProcessArray [process1, process2] (matrix 2 2 [1.0, 0.5, 0.5, 1.0])
+        procs <- stochasticProcessArray (process1 NE.:| [process2]) (matrix 2 2 [1.0, 0.5, 0.5, 1.0])
         let payoff = Max (plainVanillaPayoff (PlainVanillaPayoff Call 100.0))
             expected = 21.619
 
@@ -438,11 +443,11 @@ spec = do
             strikes = putStrikes ++ drop 1 callStrikes
             vols = putVols ++ drop 1 callVols
         cal <- calendar Null
-        volTS <- blackVarianceSurface evalDate cal [exDate] strikes (matrix (fromIntegral (length strikes)) 1 vols)
+        volTS <- blackVarianceSurface evalDate cal [exDate] strikes (realGrid (fromIntegral (length strikes)) 1 vols)
                                        dc BlackVarianceSurfaceConstantExtrapolation
                                        BlackVarianceSurfaceConstantExtrapolation Bilinear
         process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
-        eng <- replicatingVarianceSwapEngine process 5.0 callStrikes putStrikes
+        eng <- replicatingVarianceSwapEngine process 5.0 (NE.fromList callStrikes) (NE.fromList putStrikes)
         swp <- varianceSwap Long 0.04 50000 evalDate exDate
         setPricingEngine swp eng
         v <- variance swp

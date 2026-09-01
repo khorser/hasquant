@@ -85,6 +85,7 @@ module QuantLib.Process
 
 import QuantLib.Internal
 import QuantLib.Internal.Type
+import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum ProcessDiscretization{} deriving(Show,Eq, Read)#}
 {#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq, Read)#}
@@ -432,9 +433,9 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
   ,preErrorCheck-`String'errorCheck*-}->`VarianceGammaProcess'peekVarianceGammaProcess*#}
 
 -- |array of correlated 1-D stochastic processes, driven by a joint correlation matrix.
-stochasticProcessArray :: [GenStochasticProcess1D p1d] -> Matrix Double -- ^correlation
+stochasticProcessArray :: NonEmpty (GenStochasticProcess1D p1d) -> Matrix Double -- ^correlation
   -> IO StochasticProcessArray
-stochasticProcessArray a (Matrix mr mc md) = qlStochasticProcessArray a mr mc md
+stochasticProcessArray a (Matrix mr mc md) = qlStochasticProcessArray (toList a) mr mc md
 {#fun qlStochasticProcessArray{withStochasticProcess1DArray*`[GenStochasticProcess1D p1d]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',preErrorCheck-`String'errorCheck*-}->`StochasticProcessArray'peekStochasticProcessArray*#}
 
 -- |default theta calculation for Black-Scholes options

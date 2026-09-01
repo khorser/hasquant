@@ -8,6 +8,7 @@
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/CheckInterpolation.hs -o /tmp/checkinterp -outputdir /tmp/checkinterp_build && /tmp/checkinterp
 import Control.Monad
+import qualified Data.List.NonEmpty as NE
 import QuantLib.Math(Approximation(..), Interpolation(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(interpolatedZeroCurve, discount')
@@ -40,6 +41,6 @@ main = do
   let knots = [(1 `january` 2024, 0.02), (1 `january` 2025, 0.025), (1 `january` 2026, 0.03), (1 `january` 2027, 0.032)]
       queryDate = 1 `july` 2025 -- between knots -- exercises the interpolator, not just endpoints
   forM_ interpolations $ \(nm, interp) -> do
-    curve <- interpolatedZeroCurve knots dc cal [] interp
+    curve <- interpolatedZeroCurve (NE.fromList knots) dc cal [] interp
     d <- discount' curve queryDate True
     putStrLn (nm ++ ": discount(" ++ show queryDate ++ ") = " ++ show d)

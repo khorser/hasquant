@@ -11,6 +11,7 @@ import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
 import qualified Data.List.NonEmpty as NE
+import qualified Data.Vector.Storable as V
 
 import QuantLib.Time.Date
 import qualified QuantLib.Settings as Settings
@@ -169,7 +170,7 @@ spec = do
           val <- Quote.value q
           refDate <- asTermStructure ts >>= referenceDate
           let d1 = addGregorianYearsClip 10 refDate
-          spreaded <- piecewiseZeroSpreadedTermStructure ts [(refDate, q), (d1, q)] IR.Continuous NoFrequency Linear
+          spreaded <- piecewiseZeroSpreadedTermStructure ts (NE.fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency Linear
           actual360dc <- dayCounter (Actual360 False)
           let testDate = addGregorianYearsClip 5 refDate
           zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False
@@ -177,7 +178,7 @@ spec = do
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
           -- spot-check a second interpolation builds and queries without crashing
-          spreadedCubic <- piecewiseZeroSpreadedTermStructure ts [(refDate, q), (d1, q)] IR.Continuous NoFrequency (Cubic Kruger)
+          spreadedCubic <- piecewiseZeroSpreadedTermStructure ts (NE.fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency (Cubic Kruger)
           cubicZero <- IR.rate <$> zeroRate' spreadedCubic testDate actual360dc IR.Continuous NoFrequency False
           cubicZero `shouldSatisfy` (not . isNaN)
 
@@ -263,7 +264,7 @@ spec = do
           sch <- schedule (Just (2 `january` 2024)) bondMaturity (1, Years) cal Unadjusted Unadjusted
                    Backward False Nothing Nothing
           price <- Quote.simpleQuote 100.0
-          bond <- fixedRateBondHelper price 3 100.0 sch [0.04] thirty360dc Following 100.0 Nothing
+          bond <- fixedRateBondHelper price 3 100.0 sch (0.04 NE.:| []) thirty360dc Following 100.0 Nothing
                     >>= bondHelperBond
           Bond.maturityDate bond `shouldReturn` Just bondMaturity
 
@@ -287,11 +288,11 @@ spec = do
               sch <- schedule (Just (2 `january` 2024)) maturity (1, Years) cal Unadjusted Unadjusted
                        Backward False Nothing Nothing
               price <- Quote.simpleQuote 100.0
-              fixedRateBondHelper price 3 100.0 sch [coupon] thirty360dc Following 100.0 Nothing)
+              fixedRateBondHelper price 3 100.0 sch (coupon NE.:| []) thirty360dc Following 100.0 Nothing)
             [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
           curve <- do
             let optMethod = Simplex 0.1
-            fittedBondDiscountCurve 3 cal helpers thirty360dc
+            fittedBondDiscountCurve 3 cal (NE.fromList helpers) thirty360dc
               (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
               1.0e-10 10000 [] 1.0
           performGC
@@ -598,8 +599,8 @@ spec = do
             floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
               ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
             idx <- iborIndex Euribor6M (Just forecastH)
-            leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-            capfl <- cap leg [0.03]
+            leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+            capfl <- cap leg (0.03 NE.:| [])
             dc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20
             vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
@@ -638,8 +639,8 @@ spec = do
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
           idx <- iborIndex Euribor6M (Just forecastH)
-          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg [0.05]
+          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg (0.05 NE.:| [])
           dc <- dayCounter Actual365FixedStandard
 
           flatVolQ <- Quote.simpleQuote 0.18
@@ -685,7 +686,7 @@ spec = do
           length surfaceTimes `shouldBe` 10
 
           curveVolQ <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
+          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (NE.fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
           volFromCurve <- Vol.capFloorVolatilityForPeriod capVolCurve (5, Years) 0.05 False
           volFromCurve `shouldBe` 0.18
           curveDates <- Vol.capFloorTermVolCurveOptionDates capVolCurve
@@ -714,8 +715,8 @@ spec = do
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
           idx <- iborIndex Euribor6M (Just forecastH)
-          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg [0.05]
+          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg (0.05 NE.:| [])
           dc <- dayCounter Actual365FixedStandard
           let tenors = [(n, Years) | n <- [1 .. 10]]
 
@@ -723,7 +724,7 @@ spec = do
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
           capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
           curveVolQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
+          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (NE.fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
 
           stripper1 <- Vol.optionletStripper1 capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
@@ -760,7 +761,7 @@ spec = do
           dc <- dayCounter Actual365FixedStandard
           let tenors = [(n, Years) | n <- [1 .. 10]]
           qs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          curve <- Vol.abcdAtmVolCurve 0 cal tenors qs (replicate 10 True) Following dc
+          curve <- Vol.abcdAtmVolCurve 0 cal (NE.fromList $ zip3 tenors qs (replicate 10 True)) Following dc
           rmsErr <- Vol.abcdAtmVolCurveRmsError curve
           rmsErr `shouldSatisfy` (< 0.05)
           maxErr <- Vol.abcdAtmVolCurveMaxError curve
@@ -790,11 +791,11 @@ spec = do
           idx <- iborIndex Euribor6M (Just forecastH)
           let tenors = [(n, Years) | n <- [1 .. 5]]
           atmQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          atmCurve <- Vol.abcdAtmVolCurve 0 cal tenors atmQs (replicate 5 True) Following dc
+          atmCurve <- Vol.abcdAtmVolCurve 0 cal (NE.fromList $ zip3 tenors atmQs (replicate 5 True)) Following dc
           let spreads = [-0.01, 0, 0.01]
           spreadQs <- mapM (const (Quote.simpleQuote 0.02)) [1 .. (5 * 3 :: Int)]
           let volSpreads = either error id $ objectMatrix 5 3 spreadQs
-          surf <- Vol.sabrVolSurface idx atmCurve tenors spreads volSpreads
+          surf <- Vol.sabrVolSurface idx atmCurve (NE.fromList tenors) (NE.fromList spreads) volSpreads
           vs <- Vol.sabrVolSurfaceVolatilitySpreadsForPeriod surf (3, Years)
           length vs `shouldBe` 3
           vs `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
@@ -847,8 +848,8 @@ spec = do
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
           idx <- iborIndex Euribor6M (Just forecastH)
-          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg [0.03]
+          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg (0.03 NE.:| [])
           dc <- dayCounter Actual365FixedStandard
 
           normalVolQ <- Quote.simpleQuote 0.0075
@@ -961,8 +962,8 @@ spec = do
                 maturity <- advance cal settleFix tenor ModifiedFollowing True
                 baseSchedule <- schedule (Just settleFix) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
                 otherSchedule <- schedule (Just settleFix) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
-                baseLeg <- iborLeg baseSchedule euribor3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
-                otherLeg <- iborLeg otherSchedule euribor6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
+                baseLeg <- iborLeg baseSchedule euribor3m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
+                otherLeg <- iborLeg otherSchedule euribor6m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [] [] [] False False
                 sw <- swap baseLeg otherLeg
                 setPricingEngine sw eng
                 v <- npv sw
@@ -1290,7 +1291,7 @@ spec = do
                                       (European (EuropeanExercise nodeDate))
                 analyticEuropeanEngine proc Nothing >>= setPricingEngine opt
                 npv opt
-          let volMatrix = either error id $ realMatrix 3 2
+          let volMatrix = either error id $ realMatrixFromVector 3 2 $ V.fromList
                 [ 0.30, 0.28
                 , 0.20, nodeVol
                 , 0.35, 0.32
@@ -1328,7 +1329,7 @@ spec = do
           dts <- flatForward' 0 cal dtsQ dc IR.Continuous Annual
           ftsQ <- Quote.simpleQuote 0.035
           fts <- flatForward' 0 cal ftsQ dc IR.Continuous Annual
-          let vols = either error id $ realMatrix 4 3
+          let vols = either error id $ realMatrixFromVector 4 3 $ V.fromList
                 [ 0.15, 0.13, 0.135
                 , 0.14, 0.11, 0.125
                 , 0.13, 0.10, 0.12
@@ -1373,7 +1374,7 @@ spec = do
           dts <- flatForward' 0 cal dtsQ dc IR.Continuous Annual
           ftsQ <- Quote.simpleQuote 0.035
           fts <- flatForward' 0 cal ftsQ dc IR.Continuous Annual
-          let vols = either error id $ realMatrix 4 3
+          let vols = either error id $ realMatrixFromVector 4 3 $ V.fromList
                 [ 0.15, 0.13, 0.135
                 , 0.14, 0.11, 0.125
                 , 0.13, 0.10, 0.12
@@ -1406,7 +1407,7 @@ spec = do
           let strikes = [80, 100, 120]
               -- deliberately curved along both axes -- an affine surface would extrapolate
               -- identically under either scheme, which would make the check vacuous
-              localVolMatrix = either error id $ realMatrix 3 3
+              localVolMatrix = either error id $ realMatrixFromVector 3 3 $ V.fromList
                 [ 0.30, 0.26, 0.24
                 , 0.20, 0.18, 0.17
                 , 0.28, 0.25, 0.23
@@ -1462,7 +1463,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           let v = 0.20
-              shiftMatrix = either error id $ realMatrix 0 0 []
+              shiftMatrix = either error id $ realMatrixFromVector 0 0 V.empty
           volQuotes <- replicateM 4 (Quote.simpleQuote v)
           let volMatrix = either error id $ objectMatrix 2 2 volQuotes
           grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
@@ -1482,7 +1483,7 @@ spec = do
           -- rows are option tenors, columns are swap tenors, matching SwaptionVolatilityMatrix's
           -- own row/column convention (M[i][j] = i-th option date, j-th swap tenor)
           let vols = [[0.10, 0.20], [0.30, 0.40]]
-              shiftMatrix = either error id $ realMatrix 0 0 []
+              shiftMatrix = either error id $ realMatrixFromVector 0 0 V.empty
           volQuotes <- mapM Quote.simpleQuote (concat vols)
           let volMatrix = either error id $ objectMatrix 2 2 volQuotes
           grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
@@ -1557,24 +1558,24 @@ spec = do
           _ <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
           let n = fromIntegral (length optionTenors * length swapTenors)
           sparse <- Vol.sparseSabrParameters cube
-          matrixRows sparse `shouldBe` n
+          realMatrixRows sparse `shouldBe` n
           -- 2 metadata columns (swapLength, optionTime) + 4 SABR params + forward/error/maxError/endCriteria
-          matrixColumns sparse `shouldBe` 10
+          realMatrixColumns sparse `shouldBe` 10
           -- denseSabrParameters is only ever populated when the cube was built with
           -- isAtmCalibrated = True (see the ctor body: denseParameters_ is never assigned
           -- otherwise, staying at its empty default-Cube state) -- assert that documented
           -- behavior rather than a populated shape. volCubeAtmCalibrated, by contrast, is always
           -- set to a copy of marketVolCube_ regardless of isAtmCalibrated, so it's populated here.
           dense <- Vol.denseSabrParameters cube
-          matrixRows dense `shouldBe` 0
+          realMatrixRows dense `shouldBe` 0
           market <- Vol.marketVolCube cube
-          matrixRows market `shouldBe` n
-          matrixColumns market `shouldBe` (fromIntegral (length strikeSpreads) + 2)
+          realMatrixRows market `shouldBe` n
+          realMatrixColumns market `shouldBe` (fromIntegral (length strikeSpreads) + 2)
           atmCalibrated <- Vol.volCubeAtmCalibrated cube
-          matrixRows atmCalibrated `shouldBe` n
-          matrixColumns atmCalibrated `shouldBe` (fromIntegral (length strikeSpreads) + 2)
+          realMatrixRows atmCalibrated `shouldBe` n
+          realMatrixColumns atmCalibrated `shouldBe` (fromIntegral (length strikeSpreads) + 2)
           -- alpha/nu are positive, rho within [-1,1] at every calibrated node (columns 2,4,5, 0-indexed)
-          let byRow cols = [matrixData sparse !! (r * fromIntegral (matrixColumns sparse) + c) | r <- [0 .. fromIntegral n - 1], c <- cols]
+          let byRow cols = [realMatrixData sparse V.! (r * fromIntegral (realMatrixColumns sparse) + c) | r <- [0 .. fromIntegral n - 1], c <- cols]
           mapM_ (`shouldSatisfy` (> 0)) (byRow [2])
           mapM_ (`shouldSatisfy` (> 0)) (byRow [4])
           mapM_ (`shouldSatisfy` (\r -> r >= -1 && r <= 1)) (byRow [5])
@@ -1707,7 +1708,7 @@ spec = do
           v1 <- Quote.simpleQuote 0.20
           v2 <- Quote.simpleQuote 0.20
           v3 <- Quote.simpleQuote 0.20
-          interpl <- Vol.andreasenHugeVolatilityInterpl [(o1, v1), (o2, v2), (o3, v3)] spot rTS qTS
+          interpl <- Vol.andreasenHugeVolatilityInterpl ((o1, v1) NE.:| [(o2, v2), (o3, v3)]) spot rTS qTS
             Vol.AndreasenHugeInterpolationCubicSpline Vol.AndreasenHugeCalibrationAndreasenHugeCall 100
             Nothing Nothing (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
             (EndCriteria 100 20 1.0e-10 1.0e-10 1.0e-10)
@@ -1773,8 +1774,8 @@ spec = do
           floatDC <- dayCounter (Actual360 False)
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
             ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
-          leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
-          capfl <- cap leg [0.03]
+          leg <- iborLeg floatSch idx (1000000 NE.:| []) floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
+          capfl <- cap leg (0.03 NE.:| [])
           volQ <- Quote.simpleQuote 0.20
           vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           eng <- blackCapFloorEngine' discountTS vol0

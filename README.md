@@ -4,7 +4,7 @@ Supported functionality includes yield, credit, inflation, and volatility curves
 
 hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,500+ constructors and non-trivial methods—about 15% of QuantLib's surface—and deliberately excludes 1,300+ getters that only repeat constructor inputs.
 
-Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) make invalid object combinations a compile error. The C++ shim uses no runtime downcasts; bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
+Type safety is a primary API goal. Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) preserve the relevant part of QuantLib's object hierarchy in Haskell, so invalid object combinations are compile-time errors rather than failed casts at runtime. The C++ shim uses no runtime downcasts; bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
 
 hasquant does not depend on [QuantLib-SWIG](https://github.com/lballabio/QuantLib-SWIG). References to it identify prior art for API-shape decisions only.
 
@@ -19,6 +19,8 @@ Published package: https://hackage.haskell.org/package/hasquant. Current Haddock
 Build and price a five-year SOFR OIS:
 
 ``` haskell
+import Data.List.NonEmpty (NonEmpty(..))
+
 let today = 2 `january` 2024
 setEvaluationDate (Just today)
 
@@ -28,12 +30,12 @@ let maturity = addGregorianYearsClip 5 settle
 
 dc <- dayCounter (Actual360 False)
 curve <- interpolatedZeroCurve
-  [ (settle, 0.030)
-  , (addGregorianYearsClip 1 settle, 0.032)
-  , (addGregorianYearsClip 2 settle, 0.034)
-  , (addGregorianYearsClip 5 settle, 0.036)
-  , (addGregorianYearsClip 10 settle, 0.038)
-  ] dc cal [] Linear
+  ((settle, 0.030) :|
+    [ (addGregorianYearsClip 1 settle, 0.032)
+    , (addGregorianYearsClip 2 settle, 0.034)
+    , (addGregorianYearsClip 5 settle, 0.036)
+    , (addGregorianYearsClip 10 settle, 0.038)
+    ]) dc cal [] Linear
 
 sofr <- overnightIborIndex Sofr (Just curve)
 
@@ -132,7 +134,11 @@ The image persists Stack, GHCup, and Cabal caches and keeps build outputs off th
 
 # On Types
 
-Public APIs use concrete types; typeclasses are internal plumbing.
+Public APIs use concrete types; typeclasses are almost entirely internal plumbing. This is deliberate: public constraints would expose implementation details and can rule out otherwise valid callers, while concrete types and explicit upcasts keep the library type-safe without limiting the abstractions users can build above it.
+
+The practical exception is collections of related QuantLib objects. Types such as `[GenQuote q]` and `NonEmpty (GenRateHelper rh)` carry one shared phantom parameter, so every element must have the same type. Supporting an arbitrary mixture of sibling types directly would require existential wrappers or additional public constraints throughout higher-level APIs. Instead, callers explicitly upcast elements to their common parent before putting them in one list.
+
+Container types also communicate intent. Ordinary lists are used for small or genuinely optional collections; `NonEmpty` makes required schedules, helpers, notionals, and curve nodes impossible to omit accidentally. Large homogeneous numeric data—Monte Carlo paths, regression data, and volatility grids—uses storable `RealVector` and `RealMatrix` values, avoiding the allocation overhead of boxed lists while retaining explicit dimensions. These distinctions put useful invariants and performance expectations in the API instead of leaving them to documentation and runtime checks.
 
 ## How to read types
 

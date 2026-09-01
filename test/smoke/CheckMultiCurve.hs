@@ -15,6 +15,7 @@
 --   cabal exec -- ghc -ismoke -package hasquant smoke/CheckMultiCurve.hs -o /tmp/mc_smoke -outputdir /tmp/mc_smoke_build && /tmp/mc_smoke
 
 import QuantLib.CashFlow(iborLeg)
+import qualified Data.List.NonEmpty as NE
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor3M, Euribor6M))
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Swap(swap)
@@ -47,7 +48,7 @@ main = do
   -- Discount/LogLinear branch added to qlPiecewiseYieldCurveAux1.
   q <- Quote.simpleQuote 0.03
   standaloneHelpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
-  standaloneCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal standaloneHelpers euriborDC [] 1.0e-10 [] False
+  standaloneCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList standaloneHelpers) euriborDC [] 1.0e-10 [] False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
   standaloneDiscount <- discount' standaloneCurve sixM False
   checkWith "standalone GlobalBootstrap curve produces a sane discount factor"
@@ -68,8 +69,8 @@ main = do
   helpers6mSwap <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
                                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 4]
     >>= mapM asRateHelper
-  ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 [] False
-  ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 [] False
+  ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList $ helpers3mFra ++ helpers3mBasis) euriborDC [] 1.0e-10 [] False
+  ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList $ helpers6mBasis ++ helpers6mSwap) euriborDC [] 1.0e-10 [] False
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
   curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -80,8 +81,8 @@ main = do
   maturity <- advance cal settleFix (2, Years) ModifiedFollowing True
   baseSchedule <- schedule (Just settleFix) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
   otherSchedule <- schedule (Just settleFix) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
-  baseLeg <- iborLeg baseSchedule euribor3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
-  otherLeg <- iborLeg otherSchedule euribor6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
+  baseLeg <- iborLeg baseSchedule euribor3m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
+  otherLeg <- iborLeg otherSchedule euribor6m (1.0 NE.:| []) euriborDC ModifiedFollowing [] [] [] [] [] False False
   sw <- swap baseLeg otherLeg
   eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
   setPricingEngine sw eng
