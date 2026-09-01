@@ -67,69 +67,69 @@
 </span><span id="line-55"></span><span class="hs-comment">-- &gt; $(freeNth 3 'f) a1 a2 a4 a3  ==  f a1 a2 a3 a4</span><span>
 </span><span id="line-56"></span><span class="annot"><a href="QuantLib.Syntax.html#freeNth"><span class="hs-identifier hs-type">freeNth</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span>
 </span><span id="line-57"></span><span id="freeNth"><span class="annot"><span class="annottext">freeNth :: Int -&gt; Name -&gt; ExpQ
-</span><a href="QuantLib.Syntax.html#freeNth"><span class="hs-identifier hs-var hs-var">freeNth</span></a></span></span><span> </span><span id="local-6989586621680272642"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272642"><span class="hs-identifier hs-var">i</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Name -&gt; ExpQ
+</span><a href="QuantLib.Syntax.html#freeNth"><span class="hs-identifier hs-var hs-var">freeNth</span></a></span></span><span> </span><span id="local-6989586621680295085"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295085"><span class="hs-identifier hs-var">i</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Name -&gt; ExpQ
 </span><a href="QuantLib.Syntax.html#cutAt"><span class="hs-identifier hs-var">cutAt</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272642"><span class="hs-identifier hs-var">i</span></a></span><span class="hs-special">]</span><span>
+</span><a href="#local-6989586621680295085"><span class="hs-identifier hs-var">i</span></a></span><span class="hs-special">]</span><span>
 </span><span id="line-58"></span><span>
 </span><span id="line-59"></span><span class="hs-comment">-- |the general form behind 'free1st''\/'free2nd'': like 'freeNth', but with a user-supplied</span><span>
 </span><span id="line-60"></span><span class="hs-comment">-- arity instead of one discovered via 'reify', and taking the target as its first argument</span><span>
 </span><span id="line-61"></span><span class="hs-comment">-- (see 'free1st'')</span><span>
 </span><span id="line-62"></span><span class="annot"><a href="QuantLib.Syntax.html#freeNth%27"><span class="hs-identifier hs-type">freeNth'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span>
 </span><span id="line-63"></span><span id="freeNth%27"><span class="annot"><span class="annottext">freeNth' :: Int -&gt; Int -&gt; ExpQ
-</span><a href="QuantLib.Syntax.html#freeNth%27"><span class="hs-identifier hs-var hs-var">freeNth'</span></a></span></span><span> </span><span id="local-6989586621680272643"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272643"><span class="hs-identifier hs-var">i</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Int -&gt; ExpQ
+</span><a href="QuantLib.Syntax.html#freeNth%27"><span class="hs-identifier hs-var hs-var">freeNth'</span></a></span></span><span> </span><span id="local-6989586621680295086"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295086"><span class="hs-identifier hs-var">i</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Int -&gt; ExpQ
 </span><a href="QuantLib.Syntax.html#cutAt%27"><span class="hs-identifier hs-var">cutAt'</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272643"><span class="hs-identifier hs-var">i</span></a></span><span class="hs-special">]</span><span>
+</span><a href="#local-6989586621680295086"><span class="hs-identifier hs-var">i</span></a></span><span class="hs-special">]</span><span>
 </span><span id="line-64"></span><span>
 </span><span id="line-65"></span><span class="annot"><span class="hs-comment">-- |number of arguments a reified signature takes</span></span><span>
 </span><span id="line-66"></span><span class="annot"><a href="QuantLib.Syntax.html#arity"><span class="hs-identifier hs-type">arity</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Type</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Q</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
 </span><span id="line-67"></span><span id="arity"><span class="annot"><span class="annottext">arity :: Type -&gt; Q Int
-</span><a href="QuantLib.Syntax.html#arity"><span class="hs-identifier hs-var hs-var">arity</span></a></span></span><span> </span><span id="local-6989586621680272645"><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272645"><span class="hs-keyword hs-var">as</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Type -&gt; Q Int
+</span><a href="QuantLib.Syntax.html#arity"><span class="hs-identifier hs-var hs-var">arity</span></a></span></span><span> </span><span id="local-6989586621680295088"><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295088"><span class="hs-keyword hs-var">as</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Type -&gt; Q Int
 forall {f :: * -&gt; *} {b}. (Num b, MonadFail f) =&gt; Type -&gt; f b
-</span><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272645"><span class="hs-keyword hs-var">as</span></a></span><span>
+</span><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295088"><span class="hs-keyword hs-var">as</span></a></span><span>
 </span><span id="line-68"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-69"></span><span>    </span><span id="local-6989586621680272646"><span class="annot"><span class="annottext">go :: Type -&gt; f b
-</span><a href="#local-6989586621680272646"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">AppT</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">AppT</span></span><span> </span><span class="annot"><span class="annottext">Type
+</span><span id="line-69"></span><span>    </span><span id="local-6989586621680295089"><span class="annot"><span class="annottext">go :: Type -&gt; f b
+</span><a href="#local-6989586621680295089"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">AppT</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">AppT</span></span><span> </span><span class="annot"><span class="annottext">Type
 </span><span class="hs-identifier hs-var">ArrowT</span></span><span> </span><span class="annot"><span class="annottext">Type
-</span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680272675"><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272675"><span class="hs-identifier hs-var">x</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">b
+</span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621680295118"><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295118"><span class="hs-identifier hs-var">x</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">b
 </span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">b -&gt; b -&gt; b
 forall a. Num a =&gt; a -&gt; a -&gt; a
 </span><span class="hs-operator hs-var">+</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">(b -&gt; b) -&gt; f b -&gt; f b
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Type -&gt; f b
-</span><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272675"><span class="hs-identifier hs-var">x</span></a></span><span>
-</span><span id="line-70"></span><span>    </span><span class="annot"><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ForallT</span></span><span> </span><span class="annot"><span class="annottext">[TyVarBndr Specificity]
+</span><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295118"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><span id="line-70"></span><span>    </span><span class="annot"><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ForallT</span></span><span> </span><span class="annot"><span class="annottext">[TyVarBndr Specificity]
 </span><span class="hs-identifier">_</span></span><span> </span><span class="annot"><span class="annottext">Cxt
-</span><span class="hs-identifier">_</span></span><span> </span><span id="local-6989586621680272679"><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272679"><span class="hs-identifier hs-var">a</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Type -&gt; f b
-</span><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272679"><span class="hs-identifier hs-var">a</span></a></span><span>
-</span><span id="line-71"></span><span>    </span><span class="annot"><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">AppT</span></span><span> </span><span class="annot"><span class="annottext">Type
+</span><span class="hs-identifier">_</span></span><span> </span><span id="local-6989586621680295122"><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295122"><span class="hs-identifier hs-var">a</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Type -&gt; f b
+</span><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295122"><span class="hs-identifier hs-var">a</span></a></span><span>
+</span><span id="line-71"></span><span>    </span><span class="annot"><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">AppT</span></span><span> </span><span class="annot"><span class="annottext">Type
 </span><span class="hs-identifier">_</span></span><span> </span><span class="annot"><span class="annottext">Type
 </span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">b -&gt; f b
 forall a. a -&gt; f a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">b
 </span><span class="hs-number">0</span></span><span>
-</span><span id="line-72"></span><span>    </span><span class="annot"><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ConT</span></span><span> </span><span class="annot"><span class="annottext">Name
+</span><span id="line-72"></span><span>    </span><span class="annot"><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ConT</span></span><span> </span><span class="annot"><span class="annottext">Name
 </span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">b -&gt; f b
 forall a. a -&gt; f a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">b
 </span><span class="hs-number">0</span></span><span>
-</span><span id="line-73"></span><span>    </span><span class="annot"><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">VarT</span></span><span> </span><span class="annot"><span class="annottext">Name
+</span><span id="line-73"></span><span>    </span><span class="annot"><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">VarT</span></span><span> </span><span class="annot"><span class="annottext">Name
 </span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">b -&gt; f b
 forall a. a -&gt; f a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">b
 </span><span class="hs-number">0</span></span><span>
-</span><span id="line-74"></span><span>    </span><span class="annot"><a href="#local-6989586621680272646"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span id="local-6989586621680272682"><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272682"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; f b
+</span><span id="line-74"></span><span>    </span><span class="annot"><a href="#local-6989586621680295089"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span id="local-6989586621680295125"><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295125"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; f b
 forall a. String -&gt; f a
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; f b) -&gt; String -&gt; f b
@@ -140,7 +140,7 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Type -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272682"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><a href="#local-6989586621680295125"><span class="hs-identifier hs-var">x</span></a></span><span>
 </span><span id="line-75"></span><span>                  </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
 forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
@@ -149,30 +149,30 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Type -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272645"><span class="hs-keyword hs-var">as</span></a></span><span>
+</span><a href="#local-6989586621680295088"><span class="hs-keyword hs-var">as</span></a></span><span>
 </span><span id="line-76"></span><span>
 </span><span id="line-77"></span><span class="hs-comment">-- ClassOpI covers typeclass methods: their reified type carries the class context as a</span><span>
 </span><span id="line-78"></span><span class="hs-comment">-- ForallT, which 'arity' skips over, so those work just as well as plain bindings here</span><span>
 </span><span id="line-79"></span><span class="annot"><a href="QuantLib.Syntax.html#reifiedArity"><span class="hs-identifier hs-type">reifiedArity</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Q</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
 </span><span id="line-80"></span><span id="reifiedArity"><span class="annot"><span class="annottext">reifiedArity :: Name -&gt; Q Int
-</span><a href="QuantLib.Syntax.html#reifiedArity"><span class="hs-identifier hs-var hs-var">reifiedArity</span></a></span></span><span> </span><span id="local-6989586621680272685"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272685"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-81"></span><span>  </span><span id="local-6989586621680272686"><span class="annot"><a href="#local-6989586621680272686"><span class="hs-identifier hs-var">info</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Q Info
+</span><a href="QuantLib.Syntax.html#reifiedArity"><span class="hs-identifier hs-var hs-var">reifiedArity</span></a></span></span><span> </span><span id="local-6989586621680295128"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295128"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-81"></span><span>  </span><span id="local-6989586621680295129"><span class="annot"><a href="#local-6989586621680295129"><span class="hs-identifier hs-var">info</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Q Info
 </span><span class="hs-identifier hs-var">reify</span></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272685"><span class="hs-identifier hs-var">n</span></a></span><span>
-</span><span id="line-82"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><a href="#local-6989586621680272686"><span class="hs-identifier hs-type">info</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><a href="#local-6989586621680295128"><span class="hs-identifier hs-var">n</span></a></span><span>
+</span><span id="line-82"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><a href="#local-6989586621680295129"><span class="hs-identifier hs-type">info</span></a></span><span> </span><span class="hs-keyword">of</span><span>
 </span><span id="line-83"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">VarI</span></span><span> </span><span class="annot"><span class="annottext">Name
-</span><span class="hs-identifier">_</span></span><span> </span><span id="local-6989586621680272688"><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272688"><span class="hs-keyword hs-var">as</span></a></span></span><span> </span><span class="annot"><span class="annottext">Maybe Dec
+</span><span class="hs-identifier">_</span></span><span> </span><span id="local-6989586621680295131"><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295131"><span class="hs-keyword hs-var">as</span></a></span></span><span> </span><span class="annot"><span class="annottext">Maybe Dec
 </span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Type -&gt; Q Int
 </span><a href="QuantLib.Syntax.html#arity"><span class="hs-identifier hs-var">arity</span></a></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272688"><span class="hs-keyword hs-var">as</span></a></span><span>
+</span><a href="#local-6989586621680295131"><span class="hs-keyword hs-var">as</span></a></span><span>
 </span><span id="line-84"></span><span>    </span><span class="annot"><span class="hs-identifier hs-type">ClassOpI</span></span><span> </span><span class="annot"><span class="annottext">Name
-</span><span class="hs-identifier">_</span></span><span> </span><span id="local-6989586621680272690"><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272690"><span class="hs-keyword hs-var">as</span></a></span></span><span> </span><span class="annot"><span class="annottext">Name
+</span><span class="hs-identifier">_</span></span><span> </span><span id="local-6989586621680295133"><span class="annot"><span class="annottext">Type
+</span><a href="#local-6989586621680295133"><span class="hs-keyword hs-var">as</span></a></span></span><span> </span><span class="annot"><span class="annottext">Name
 </span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Type -&gt; Q Int
 </span><a href="QuantLib.Syntax.html#arity"><span class="hs-identifier hs-var">arity</span></a></span><span> </span><span class="annot"><span class="annottext">Type
-</span><a href="#local-6989586621680272690"><span class="hs-keyword hs-var">as</span></a></span><span>
+</span><a href="#local-6989586621680295133"><span class="hs-keyword hs-var">as</span></a></span><span>
 </span><span id="line-85"></span><span>    </span><span class="annot"><span class="annottext">Info
 </span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q Int
 forall a. String -&gt; Q a
@@ -185,7 +185,7 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Name -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272685"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
+</span><a href="#local-6989586621680295128"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
 forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot; is not a function binding, reified as: &quot;</span></span><span>
@@ -194,18 +194,18 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Info -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Info
-</span><a href="#local-6989586621680272686"><span class="hs-identifier hs-var">info</span></a></span><span>
+</span><a href="#local-6989586621680295129"><span class="hs-identifier hs-var">info</span></a></span><span>
 </span><span id="line-87"></span><span>
 </span><span id="line-88"></span><span class="annot"><a href="QuantLib.Syntax.html#checkIndices"><span class="hs-identifier hs-type">checkIndices</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Q</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-89"></span><span id="checkIndices"><span class="annot"><span class="annottext">checkIndices :: [Int] -&gt; Int -&gt; Q ()
-</span><a href="QuantLib.Syntax.html#checkIndices"><span class="hs-identifier hs-var hs-var">checkIndices</span></a></span></span><span> </span><span id="local-6989586621680272692"><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680272693"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272693"><span class="hs-identifier hs-var">an</span></a></span></span><span>
+</span><a href="QuantLib.Syntax.html#checkIndices"><span class="hs-identifier hs-var hs-var">checkIndices</span></a></span></span><span> </span><span id="local-6989586621680295135"><span class="annot"><span class="annottext">[Int]
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680295136"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295136"><span class="hs-identifier hs-var">an</span></a></span></span><span>
 </span><span id="line-90"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Bool
 forall a. [a] -&gt; Bool
 forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Bool
 </span><span class="hs-identifier hs-var">null</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q ()
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q ()
 forall a. String -&gt; Q a
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">String
@@ -216,13 +216,13 @@ forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Int
 </span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[Int] -&gt; [Int]
 forall a. Eq a =&gt; [a] -&gt; [a]
 </span><span class="hs-identifier hs-var">nub</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">/=</span></span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Int
 forall a. [a] -&gt; Int
 forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Int
 </span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q ()
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q ()
 forall a. String -&gt; Q a
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Q ()) -&gt; String -&gt; Q ()
@@ -233,21 +233,21 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span><span>
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span><span>
 </span><span id="line-92"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">(Int -&gt; Bool) -&gt; [Int] -&gt; Bool
 forall (t :: * -&gt; *) a. Foldable t =&gt; (a -&gt; Bool) -&gt; t a -&gt; Bool
-</span><span class="hs-identifier hs-var">any</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680272698"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272698"><span class="hs-identifier hs-var">i</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272698"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><span class="hs-identifier hs-var">any</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680295141"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295141"><span class="hs-identifier hs-var">i</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295141"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&lt;</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; Bool -&gt; Bool
 </span><span class="hs-operator hs-var">||</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272698"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680295141"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272693"><span class="hs-identifier hs-var">an</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q ()
+</span><a href="#local-6989586621680295136"><span class="hs-identifier hs-var">an</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Int]
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q ()
 forall a. String -&gt; Q a
 forall (m :: * -&gt; *) a. MonadFail m =&gt; String -&gt; m a
 </span><span class="hs-identifier hs-var">fail</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; Q ()) -&gt; String -&gt; Q ()
@@ -258,7 +258,7 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272693"><span class="hs-identifier hs-var">an</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
+</span><a href="#local-6989586621680295136"><span class="hs-identifier hs-var">an</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
 forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot;]: &quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
@@ -266,7 +266,7 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; String
 forall a. Show a =&gt; a -&gt; String
 </span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272692"><span class="hs-identifier hs-var">is</span></a></span><span>
+</span><a href="#local-6989586621680295135"><span class="hs-identifier hs-var">is</span></a></span><span>
 </span><span id="line-93"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">otherwise</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">() -&gt; Q ()
 forall a. a -&gt; Q a
@@ -275,46 +275,46 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-94"></span><span>
 </span><span id="line-95"></span><span class="annot"><a href="QuantLib.Syntax.html#genCutAt"><span class="hs-identifier hs-type">genCutAt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span>
 </span><span id="line-96"></span><span id="genCutAt"><span class="annot"><span class="annottext">genCutAt :: [Int] -&gt; Int -&gt; Name -&gt; ExpQ
-</span><a href="QuantLib.Syntax.html#genCutAt"><span class="hs-identifier hs-var hs-var">genCutAt</span></a></span></span><span> </span><span id="local-6989586621680272703"><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272703"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680272704"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272704"><span class="hs-identifier hs-var">an</span></a></span></span><span> </span><span id="local-6989586621680272705"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272705"><span class="hs-identifier hs-var">fn</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><a href="QuantLib.Syntax.html#genCutAt"><span class="hs-identifier hs-var hs-var">genCutAt</span></a></span></span><span> </span><span id="local-6989586621680295146"><span class="annot"><span class="annottext">[Int]
+</span><a href="#local-6989586621680295146"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680295147"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295147"><span class="hs-identifier hs-var">an</span></a></span></span><span> </span><span id="local-6989586621680295148"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295148"><span class="hs-identifier hs-var">fn</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
 </span><span id="line-97"></span><span>  </span><span class="annot"><span class="annottext">[Int] -&gt; Int -&gt; Q ()
 </span><a href="QuantLib.Syntax.html#checkIndices"><span class="hs-identifier hs-var">checkIndices</span></a></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272703"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272704"><span class="hs-identifier hs-var">an</span></a></span><span>
-</span><span id="line-98"></span><span>  </span><span id="local-6989586621680272706"><span class="annot"><a href="#local-6989586621680272706"><span class="hs-identifier hs-var">vars</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; Q Name -&gt; Q [Name]
+</span><a href="#local-6989586621680295146"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295147"><span class="hs-identifier hs-var">an</span></a></span><span>
+</span><span id="line-98"></span><span>  </span><span id="local-6989586621680295149"><span class="annot"><a href="#local-6989586621680295149"><span class="hs-identifier hs-var">vars</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; Q Name -&gt; Q [Name]
 forall (m :: * -&gt; *) a. Applicative m =&gt; Int -&gt; m a -&gt; m [a]
 </span><span class="hs-identifier hs-var">replicateM</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272704"><span class="hs-identifier hs-var">an</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String -&gt; Q Name
+</span><a href="#local-6989586621680295147"><span class="hs-identifier hs-var">an</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String -&gt; Q Name
 forall (m :: * -&gt; *). Quote m =&gt; String -&gt; m Name
 </span><span class="hs-identifier hs-var">newName</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot;x&quot;</span></span><span class="hs-special">)</span><span>
-</span><span id="line-99"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680272710"><span class="annot"><a href="#local-6989586621680272710"><span class="hs-identifier hs-var hs-var">idxVars</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; [Name] -&gt; [(Int, Name)]
+</span><span id="line-99"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680295153"><span class="annot"><a href="#local-6989586621680295153"><span class="hs-identifier hs-var hs-var">idxVars</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; [Name] -&gt; [(Int, Name)]
 forall a b. [a] -&gt; [b] -&gt; [(a, b)]
 </span><span class="hs-identifier hs-var">zip</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">1</span></span><span class="hs-glyph">..</span><span class="hs-special">]</span><span> </span><span class="annot"><span class="annottext">[Name]
-</span><a href="#local-6989586621680272706"><span class="hs-identifier hs-var">vars</span></a></span><span>
-</span><span id="line-100"></span><span>      </span><span id="local-6989586621680272713"><span class="annot"><a href="#local-6989586621680272713"><span class="hs-identifier hs-var hs-var">free</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272714"><span class="hs-identifier hs-var">v</span></a></span><span> </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680272715"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272715"><span class="hs-identifier hs-var">i</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680272714"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272714"><span class="hs-identifier hs-var">v</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[(Int, Name)]
-</span><a href="#local-6989586621680272710"><span class="hs-identifier hs-var">idxVars</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272715"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Int] -&gt; Bool
+</span><a href="#local-6989586621680295149"><span class="hs-identifier hs-var">vars</span></a></span><span>
+</span><span id="line-100"></span><span>      </span><span id="local-6989586621680295156"><span class="annot"><a href="#local-6989586621680295156"><span class="hs-identifier hs-var hs-var">free</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295157"><span class="hs-identifier hs-var">v</span></a></span><span> </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680295158"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295158"><span class="hs-identifier hs-var">i</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680295157"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295157"><span class="hs-identifier hs-var">v</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[(Int, Name)]
+</span><a href="#local-6989586621680295153"><span class="hs-identifier hs-var">idxVars</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295158"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Int] -&gt; Bool
 forall a. Eq a =&gt; a -&gt; [a] -&gt; Bool
 forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
 </span><span class="hs-operator hs-var">`elem`</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272703"><span class="hs-identifier hs-var">is</span></a></span><span class="hs-special">]</span><span>
-</span><span id="line-101"></span><span>      </span><span id="local-6989586621680272719"><span class="annot"><a href="#local-6989586621680272719"><span class="hs-identifier hs-var hs-var">bound</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272720"><span class="hs-identifier hs-var">v</span></a></span><span> </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680272721"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272721"><span class="hs-identifier hs-var">i</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680272720"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272720"><span class="hs-identifier hs-var">v</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[(Int, Name)]
-</span><a href="#local-6989586621680272710"><span class="hs-identifier hs-var">idxVars</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272721"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Int] -&gt; Bool
+</span><a href="#local-6989586621680295146"><span class="hs-identifier hs-var">is</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-101"></span><span>      </span><span id="local-6989586621680295162"><span class="annot"><a href="#local-6989586621680295162"><span class="hs-identifier hs-var hs-var">bound</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295163"><span class="hs-identifier hs-var">v</span></a></span><span> </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680295164"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295164"><span class="hs-identifier hs-var">i</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680295163"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295163"><span class="hs-identifier hs-var">v</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">[(Int, Name)]
+</span><a href="#local-6989586621680295153"><span class="hs-identifier hs-var">idxVars</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295164"><span class="hs-identifier hs-var">i</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; [Int] -&gt; Bool
 forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
 </span><span class="hs-operator hs-var">`notElem`</span></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272703"><span class="hs-identifier hs-var">is</span></a></span><span class="hs-special">]</span><span>
-</span><span id="line-102"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">$</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">LamE</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">map</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">VarP</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680272719"><span class="hs-identifier hs-type">bound</span></a></span><span> </span><span class="annot"><span class="hs-operator hs-type">++</span></span><span> </span><span class="annot"><a href="#local-6989586621680272713"><span class="hs-identifier hs-type">free</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">foldl</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">AppE</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">VarE</span></span><span> </span><span class="annot"><a href="#local-6989586621680272705"><span class="hs-identifier hs-type">fn</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">map</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">VarE</span></span><span> </span><span class="annot"><a href="#local-6989586621680272706"><span class="hs-identifier hs-type">vars</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680295146"><span class="hs-identifier hs-var">is</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-102"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">$</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">LamE</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">map</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">VarP</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680295162"><span class="hs-identifier hs-type">bound</span></a></span><span> </span><span class="annot"><span class="hs-operator hs-type">++</span></span><span> </span><span class="annot"><a href="#local-6989586621680295156"><span class="hs-identifier hs-type">free</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">foldl</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">AppE</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">VarE</span></span><span> </span><span class="annot"><a href="#local-6989586621680295148"><span class="hs-identifier hs-type">fn</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">map</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">VarE</span></span><span> </span><span class="annot"><a href="#local-6989586621680295149"><span class="hs-identifier hs-type">vars</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-103"></span><span>
 </span><span id="line-104"></span><span class="hs-comment">-- |generalizes 'free1st'\/'free2nd'\/'freeNth': frees an arbitrary subset of argument positions</span><span>
 </span><span id="line-105"></span><span class="hs-comment">-- (by 1-based index) instead of a single hardcoded one, moving them to the trailing position in</span><span>
@@ -324,43 +324,43 @@ forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
 </span><span id="line-109"></span><span class="hs-comment">-- &gt; $(cutAt [1,3] 'f) b d a c  ==  f a b c d</span><span>
 </span><span id="line-110"></span><span class="annot"><a href="QuantLib.Syntax.html#cutAt"><span class="hs-identifier hs-type">cutAt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span>
 </span><span id="line-111"></span><span id="cutAt"><span class="annot"><span class="annottext">cutAt :: [Int] -&gt; Name -&gt; ExpQ
-</span><a href="QuantLib.Syntax.html#cutAt"><span class="hs-identifier hs-var hs-var">cutAt</span></a></span></span><span> </span><span id="local-6989586621680272728"><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272728"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680272729"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272729"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Q Int
+</span><a href="QuantLib.Syntax.html#cutAt"><span class="hs-identifier hs-var hs-var">cutAt</span></a></span></span><span> </span><span id="local-6989586621680295171"><span class="annot"><span class="annottext">[Int]
+</span><a href="#local-6989586621680295171"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680295172"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295172"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Q Int
 </span><a href="QuantLib.Syntax.html#reifiedArity"><span class="hs-identifier hs-var">reifiedArity</span></a></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272729"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="annot"><span class="annottext">Q Int -&gt; (Int -&gt; ExpQ) -&gt; ExpQ
+</span><a href="#local-6989586621680295172"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="annot"><span class="annottext">Q Int -&gt; (Int -&gt; ExpQ) -&gt; ExpQ
 forall a b. Q a -&gt; (a -&gt; Q b) -&gt; Q b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680272730"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272730"><span class="hs-identifier hs-var">an</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Int -&gt; Name -&gt; ExpQ
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680295173"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295173"><span class="hs-identifier hs-var">an</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">[Int] -&gt; Int -&gt; Name -&gt; ExpQ
 </span><a href="QuantLib.Syntax.html#genCutAt"><span class="hs-identifier hs-var">genCutAt</span></a></span><span> </span><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272728"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272730"><span class="hs-identifier hs-var">an</span></a></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272729"><span class="hs-identifier hs-var">n</span></a></span><span>
+</span><a href="#local-6989586621680295171"><span class="hs-identifier hs-var">is</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295173"><span class="hs-identifier hs-var">an</span></a></span><span> </span><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295172"><span class="hs-identifier hs-var">n</span></a></span><span>
 </span><span id="line-112"></span><span>
 </span><span id="line-113"></span><span class="hs-comment">-- |like 'cutAt', but with a user-supplied arity instead of one discovered via 'reify', for a</span><span>
 </span><span id="line-114"></span><span class="hs-comment">-- target 'reify' can't see (same reason as 'free1st''); the target becomes the generated</span><span>
 </span><span id="line-115"></span><span class="hs-comment">-- function's first argument</span><span>
 </span><span id="line-116"></span><span class="annot"><a href="QuantLib.Syntax.html#cutAt%27"><span class="hs-identifier hs-type">cutAt'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span>
 </span><span id="line-117"></span><span id="cutAt%27"><span class="annot"><span class="annottext">cutAt' :: [Int] -&gt; Int -&gt; ExpQ
-</span><a href="QuantLib.Syntax.html#cutAt%27"><span class="hs-identifier hs-var hs-var">cutAt'</span></a></span></span><span> </span><span id="local-6989586621680272731"><span class="annot"><span class="annottext">[Int]
-</span><a href="#local-6989586621680272731"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680272732"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680272732"><span class="hs-identifier hs-var">an</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-118"></span><span>  </span><span id="local-6989586621680272733"><span class="annot"><a href="#local-6989586621680272733"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q Name
+</span><a href="QuantLib.Syntax.html#cutAt%27"><span class="hs-identifier hs-var hs-var">cutAt'</span></a></span></span><span> </span><span id="local-6989586621680295174"><span class="annot"><span class="annottext">[Int]
+</span><a href="#local-6989586621680295174"><span class="hs-identifier hs-var">is</span></a></span></span><span> </span><span id="local-6989586621680295175"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680295175"><span class="hs-identifier hs-var">an</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-118"></span><span>  </span><span id="local-6989586621680295176"><span class="annot"><a href="#local-6989586621680295176"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String -&gt; Q Name
 forall (m :: * -&gt; *). Quote m =&gt; String -&gt; m Name
 </span><span class="hs-identifier hs-var">newName</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot;f&quot;</span></span><span>
-</span><span id="line-119"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">LamE</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">VarP</span></span><span> </span><span class="annot"><a href="#local-6989586621680272733"><span class="hs-identifier hs-type">n</span></a></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-operator hs-type">&lt;$&gt;</span></span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#genCutAt"><span class="hs-identifier hs-type">genCutAt</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680272731"><span class="hs-identifier hs-type">is</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680272732"><span class="hs-identifier hs-type">an</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680272733"><span class="hs-identifier hs-type">n</span></a></span><span>
+</span><span id="line-119"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">LamE</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">VarP</span></span><span> </span><span class="annot"><a href="#local-6989586621680295176"><span class="hs-identifier hs-type">n</span></a></span><span class="hs-special">]</span><span> </span><span class="annot"><span class="hs-operator hs-type">&lt;$&gt;</span></span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#genCutAt"><span class="hs-identifier hs-type">genCutAt</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295174"><span class="hs-identifier hs-type">is</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295175"><span class="hs-identifier hs-type">an</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295176"><span class="hs-identifier hs-type">n</span></a></span><span>
 </span><span id="line-120"></span><span>
 </span><span id="line-121"></span><span class="annot"><a href="QuantLib.Syntax.html#isHole"><span class="hs-identifier hs-type">isHole</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
 </span><span id="line-122"></span><span id="isHole"><span class="annot"><span class="annottext">isHole :: Name -&gt; Bool
-</span><a href="QuantLib.Syntax.html#isHole"><span class="hs-identifier hs-var hs-var">isHole</span></a></span></span><span> </span><span id="local-6989586621680272735"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272735"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="QuantLib.Syntax.html#isHole"><span class="hs-identifier hs-var hs-var">isHole</span></a></span></span><span> </span><span id="local-6989586621680295178"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295178"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot;_&quot;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; Bool
 forall a. Eq a =&gt; [a] -&gt; [a] -&gt; Bool
 </span><span class="hs-operator hs-var">`isPrefixOf`</span></span><span> </span><span class="annot"><span class="annottext">Name -&gt; String
 </span><span class="hs-identifier hs-var">nameBase</span></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272735"><span class="hs-identifier hs-var">n</span></a></span><span>
+</span><a href="#local-6989586621680295178"><span class="hs-identifier hs-var">n</span></a></span><span>
 </span><span id="line-123"></span><span>
 </span><span id="line-124"></span><span class="hs-comment">-- the lambda parameter each hole seen so far introduced, accumulated in reverse order of first</span><span>
 </span><span id="line-125"></span><span class="hs-comment">-- occurrence (see 'cut'). An anonymous @_@ is keyed by Nothing and never shares; a named @_x@</span><span>
@@ -369,32 +369,32 @@ forall a. Eq a =&gt; [a] -&gt; [a] -&gt; Bool
 </span><span id="line-128"></span><span>
 </span><span id="line-129"></span><span class="annot"><a href="QuantLib.Syntax.html#holeParam"><span class="hs-identifier hs-type">holeParam</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#HoleQ"><span class="hs-identifier hs-type">HoleQ</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Name</span></span><span>
 </span><span id="line-130"></span><span id="holeParam"><span class="annot"><span class="annottext">holeParam :: Name -&gt; HoleQ Name
-</span><a href="QuantLib.Syntax.html#holeParam"><span class="hs-identifier hs-var hs-var">holeParam</span></a></span></span><span> </span><span id="local-6989586621680272738"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272738"><span class="hs-identifier hs-var">n</span></a></span></span><span>
+</span><a href="QuantLib.Syntax.html#holeParam"><span class="hs-identifier hs-var hs-var">holeParam</span></a></span></span><span> </span><span id="local-6989586621680295181"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295181"><span class="hs-identifier hs-var">n</span></a></span></span><span>
 </span><span id="line-131"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680272739"><span class="hs-identifier hs-var">anonymous</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe String -&gt; HoleQ Name
+</span><a href="#local-6989586621680295182"><span class="hs-identifier hs-var">anonymous</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe String -&gt; HoleQ Name
 forall {m :: * -&gt; *} {a}. Quote m =&gt; a -&gt; StateT [(a, Name)] m Name
-</span><a href="#local-6989586621680272740"><span class="hs-identifier hs-var">fresh</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621680295183"><span class="hs-identifier hs-var">fresh</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe String
 forall a. Maybe a
 </span><span class="hs-identifier hs-var">Nothing</span></span><span>
 </span><span id="line-132"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Bool
 </span><span class="hs-identifier hs-var">otherwise</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-133"></span><span>      </span><span id="local-6989586621680272741"><span class="annot"><a href="#local-6989586621680272741"><span class="hs-identifier hs-var">seen</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">StateT [(Maybe String, Name)] Q [(Maybe String, Name)]
+</span><span id="line-133"></span><span>      </span><span id="local-6989586621680295184"><span class="annot"><a href="#local-6989586621680295184"><span class="hs-identifier hs-var">seen</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">StateT [(Maybe String, Name)] Q [(Maybe String, Name)]
 forall (m :: * -&gt; *) s. Monad m =&gt; StateT s m s
 </span><span class="hs-identifier hs-var">get</span></span><span>
-</span><span id="line-134"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680272740"><span class="hs-identifier hs-type">fresh</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">nameBase</span></span><span> </span><span class="annot"><a href="#local-6989586621680272738"><span class="hs-identifier hs-type">n</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">lookup</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">nameBase</span></span><span> </span><span class="annot"><a href="#local-6989586621680272738"><span class="hs-identifier hs-type">n</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><a href="#local-6989586621680272741"><span class="hs-identifier hs-type">seen</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-134"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">maybe</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680295183"><span class="hs-identifier hs-type">fresh</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">nameBase</span></span><span> </span><span class="annot"><a href="#local-6989586621680295181"><span class="hs-identifier hs-type">n</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">lookup</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">nameBase</span></span><span> </span><span class="annot"><a href="#local-6989586621680295181"><span class="hs-identifier hs-type">n</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><a href="#local-6989586621680295184"><span class="hs-identifier hs-type">seen</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-135"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-136"></span><span>    </span><span id="local-6989586621680272739"><span class="annot"><span class="annottext">anonymous :: Bool
-</span><a href="#local-6989586621680272739"><span class="hs-identifier hs-var hs-var">anonymous</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Name -&gt; String
+</span><span id="line-136"></span><span>    </span><span id="local-6989586621680295182"><span class="annot"><span class="annottext">anonymous :: Bool
+</span><a href="#local-6989586621680295182"><span class="hs-identifier hs-var hs-var">anonymous</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Name -&gt; String
 </span><span class="hs-identifier hs-var">nameBase</span></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272738"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; Bool
+</span><a href="#local-6989586621680295181"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; Bool
 forall a. Eq a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">==</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot;_&quot;</span></span><span>
-</span><span id="line-137"></span><span>    </span><span id="local-6989586621680272740"><span class="annot"><span class="annottext">fresh :: a -&gt; StateT [(a, Name)] m Name
-</span><a href="#local-6989586621680272740"><span class="hs-identifier hs-var hs-var">fresh</span></a></span></span><span> </span><span id="local-6989586621680272765"><span class="annot"><span class="annottext">a
-</span><a href="#local-6989586621680272765"><span class="hs-identifier hs-var">k</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-138"></span><span>      </span><span id="local-6989586621680272766"><span class="annot"><a href="#local-6989586621680272766"><span class="hs-identifier hs-var">v</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Name -&gt; StateT [(a, Name)] m Name
+</span><span id="line-137"></span><span>    </span><span id="local-6989586621680295183"><span class="annot"><span class="annottext">fresh :: a -&gt; StateT [(a, Name)] m Name
+</span><a href="#local-6989586621680295183"><span class="hs-identifier hs-var hs-var">fresh</span></a></span></span><span> </span><span id="local-6989586621680295208"><span class="annot"><span class="annottext">a
+</span><a href="#local-6989586621680295208"><span class="hs-identifier hs-var">k</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-138"></span><span>      </span><span id="local-6989586621680295209"><span class="annot"><a href="#local-6989586621680295209"><span class="hs-identifier hs-var">v</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">m Name -&gt; StateT [(a, Name)] m Name
 forall (m :: * -&gt; *) a. Monad m =&gt; m a -&gt; StateT [(a, Name)] m a
 forall (t :: (* -&gt; *) -&gt; * -&gt; *) (m :: * -&gt; *) a.
 (MonadTrans t, Monad m) =&gt;
@@ -404,7 +404,7 @@ forall (m :: * -&gt; *). Quote m =&gt; String -&gt; m Name
 </span><span class="hs-identifier hs-var">newName</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><span class="hs-string">&quot;h&quot;</span></span><span class="hs-special">)</span><span>
 </span><span id="line-139"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">modify'</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">k</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">v</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-glyph">:</span></span><span class="hs-special">)</span><span>
-</span><span id="line-140"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="annot"><a href="#local-6989586621680272766"><span class="hs-identifier hs-type">v</span></a></span><span>
+</span><span id="line-140"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="annot"><a href="#local-6989586621680295209"><span class="hs-identifier hs-type">v</span></a></span><span>
 </span><span id="line-141"></span><span>
 </span><span id="line-142"></span><span class="hs-comment">-- a hole appearing inside a *nested* quotation bracket within the cut'd expression would also</span><span>
 </span><span id="line-143"></span><span class="hs-comment">-- get replaced, since this doesn't track quotation depth -- not expected to matter for any call</span><span>
@@ -412,21 +412,21 @@ forall (m :: * -&gt; *). Quote m =&gt; String -&gt; m Name
 </span><span id="line-145"></span><span class="annot"><a href="QuantLib.Syntax.html#replaceHoles"><span class="hs-identifier hs-type">replaceHoles</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#HoleQ"><span class="hs-identifier hs-type">HoleQ</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span>
 </span><span id="line-146"></span><span id="replaceHoles"><span class="annot"><span class="annottext">replaceHoles :: Exp -&gt; HoleQ Exp
 </span><a href="QuantLib.Syntax.html#replaceHoles"><span class="hs-identifier hs-var hs-var">replaceHoles</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Exp -&gt; HoleQ Exp
-</span><a href="#local-6989586621680272768"><span class="hs-identifier hs-var">go</span></a></span><span>
+</span><a href="#local-6989586621680295211"><span class="hs-identifier hs-var">go</span></a></span><span>
 </span><span id="line-147"></span><span>  </span><span class="hs-keyword">where</span><span>
-</span><span id="line-148"></span><span>    </span><span class="annot"><a href="#local-6989586621680272768"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#HoleQ"><span class="hs-identifier hs-type">HoleQ</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span>
-</span><span id="line-149"></span><span>    </span><span id="local-6989586621680272768"><span class="annot"><span class="annottext">go :: Exp -&gt; HoleQ Exp
-</span><a href="#local-6989586621680272768"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">UnboundVarE</span></span><span> </span><span id="local-6989586621680272770"><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272770"><span class="hs-identifier hs-var">n</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Bool
+</span><span id="line-148"></span><span>    </span><span class="annot"><a href="#local-6989586621680295211"><span class="hs-identifier hs-type">go</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#HoleQ"><span class="hs-identifier hs-type">HoleQ</span></a></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span>
+</span><span id="line-149"></span><span>    </span><span id="local-6989586621680295211"><span class="annot"><span class="annottext">go :: Exp -&gt; HoleQ Exp
+</span><a href="#local-6989586621680295211"><span class="hs-identifier hs-var hs-var">go</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">UnboundVarE</span></span><span> </span><span id="local-6989586621680295213"><span class="annot"><span class="annottext">Name
+</span><a href="#local-6989586621680295213"><span class="hs-identifier hs-var">n</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">|</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Bool
 </span><a href="QuantLib.Syntax.html#isHole"><span class="hs-identifier hs-var">isHole</span></a></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272770"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Exp
+</span><a href="#local-6989586621680295213"><span class="hs-identifier hs-var">n</span></a></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Name -&gt; Exp
 </span><span class="hs-identifier hs-var">VarE</span></span><span> </span><span class="annot"><span class="annottext">(Name -&gt; Exp) -&gt; HoleQ Name -&gt; HoleQ Exp
 forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">Name -&gt; HoleQ Name
 </span><a href="QuantLib.Syntax.html#holeParam"><span class="hs-identifier hs-var">holeParam</span></a></span><span> </span><span class="annot"><span class="annottext">Name
-</span><a href="#local-6989586621680272770"><span class="hs-identifier hs-var">n</span></a></span><span>
-</span><span id="line-150"></span><span>    </span><span class="annot"><a href="#local-6989586621680272768"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span id="local-6989586621680272771"><span class="annot"><span class="annottext">Exp
-</span><a href="#local-6989586621680272771"><span class="hs-identifier hs-var">e</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d)
+</span><a href="#local-6989586621680295213"><span class="hs-identifier hs-var">n</span></a></span><span>
+</span><span id="line-150"></span><span>    </span><span class="annot"><a href="#local-6989586621680295211"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span id="local-6989586621680295214"><span class="annot"><span class="annottext">Exp
+</span><a href="#local-6989586621680295214"><span class="hs-identifier hs-var">e</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d)
 -&gt; Exp -&gt; HoleQ Exp
 forall a (m :: * -&gt; *).
 (Data a, Monad m) =&gt;
@@ -436,28 +436,28 @@ Monad m =&gt;
 (forall d. Data d =&gt; d -&gt; m d) -&gt; Exp -&gt; m Exp
 </span><span class="hs-identifier hs-var">gmapM</span></span><span> </span><span class="annot"><span class="annottext">d -&gt; HoleQ d
 forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d
-</span><a href="#local-6989586621680272772"><span class="hs-identifier hs-var">step</span></a></span><span> </span><span class="annot"><span class="annottext">Exp
-</span><a href="#local-6989586621680272771"><span class="hs-identifier hs-var">e</span></a></span><span>
+</span><a href="#local-6989586621680295215"><span class="hs-identifier hs-var">step</span></a></span><span> </span><span class="annot"><span class="annottext">Exp
+</span><a href="#local-6989586621680295214"><span class="hs-identifier hs-var">e</span></a></span><span>
 </span><span id="line-151"></span><span>      </span><span class="hs-keyword">where</span><span>
-</span><span id="line-152"></span><span>        </span><span class="annot"><a href="#local-6989586621680272772"><span class="hs-identifier hs-type">step</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680272775"><span class="annot"><a href="#local-6989586621680272775"><span class="hs-identifier hs-type">d</span></a></span></span><span class="hs-operator">.</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Data</span></span><span> </span><span class="annot"><a href="#local-6989586621680272775"><span class="hs-identifier hs-type">d</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680272775"><span class="hs-identifier hs-type">d</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#HoleQ"><span class="hs-identifier hs-type">HoleQ</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680272775"><span class="hs-identifier hs-type">d</span></a></span><span>
-</span><span id="line-153"></span><span>        </span><span id="local-6989586621680272772"><span class="annot"><span class="annottext">step :: forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d
-</span><a href="#local-6989586621680272772"><span class="hs-identifier hs-var hs-var">step</span></a></span></span><span> </span><span id="local-6989586621680272789"><span class="annot"><span class="annottext">d
-</span><a href="#local-6989586621680272789"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">d -&gt; Maybe Exp
+</span><span id="line-152"></span><span>        </span><span class="annot"><a href="#local-6989586621680295215"><span class="hs-identifier hs-type">step</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-keyword">forall</span><span> </span><span id="local-6989586621680295218"><span class="annot"><a href="#local-6989586621680295218"><span class="hs-identifier hs-type">d</span></a></span></span><span class="hs-operator">.</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Data</span></span><span> </span><span class="annot"><a href="#local-6989586621680295218"><span class="hs-identifier hs-type">d</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span class="annot"><a href="#local-6989586621680295218"><span class="hs-identifier hs-type">d</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="QuantLib.Syntax.html#HoleQ"><span class="hs-identifier hs-type">HoleQ</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295218"><span class="hs-identifier hs-type">d</span></a></span><span>
+</span><span id="line-153"></span><span>        </span><span id="local-6989586621680295215"><span class="annot"><span class="annottext">step :: forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d
+</span><a href="#local-6989586621680295215"><span class="hs-identifier hs-var hs-var">step</span></a></span></span><span> </span><span id="local-6989586621680295232"><span class="annot"><span class="annottext">d
+</span><a href="#local-6989586621680295232"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">d -&gt; Maybe Exp
 forall a b. (Typeable a, Typeable b) =&gt; a -&gt; Maybe b
 </span><span class="hs-identifier hs-var">cast</span></span><span> </span><span class="annot"><span class="annottext">d
-</span><a href="#local-6989586621680272789"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-154"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680272790"><span class="annot"><span class="annottext">Exp
-</span><a href="#local-6989586621680272790"><span class="hs-identifier hs-var">ex</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-155"></span><span>            </span><span id="local-6989586621680272791"><span class="annot"><a href="#local-6989586621680272791"><span class="hs-identifier hs-var">ex'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Exp -&gt; HoleQ Exp
-</span><a href="#local-6989586621680272768"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Exp
-</span><a href="#local-6989586621680272790"><span class="hs-identifier hs-var">ex</span></a></span><span>
-</span><span id="line-156"></span><span>            </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="hs-identifier hs-type">cast</span></span><span> </span><span class="annot"><a href="#local-6989586621680272791"><span class="hs-identifier hs-type">ex'</span></a></span><span> </span><span class="hs-keyword">of</span><span>
-</span><span id="line-157"></span><span>              </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680272792"><span class="annot"><span class="annottext">d
-</span><a href="#local-6989586621680272792"><span class="hs-identifier hs-var">r</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">d -&gt; HoleQ d
+</span><a href="#local-6989586621680295232"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-154"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span class="hs-special">(</span><span id="local-6989586621680295233"><span class="annot"><span class="annottext">Exp
+</span><a href="#local-6989586621680295233"><span class="hs-identifier hs-var">ex</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Exp</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-155"></span><span>            </span><span id="local-6989586621680295234"><span class="annot"><a href="#local-6989586621680295234"><span class="hs-identifier hs-var">ex'</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Exp -&gt; HoleQ Exp
+</span><a href="#local-6989586621680295211"><span class="hs-identifier hs-var">go</span></a></span><span> </span><span class="annot"><span class="annottext">Exp
+</span><a href="#local-6989586621680295233"><span class="hs-identifier hs-var">ex</span></a></span><span>
+</span><span id="line-156"></span><span>            </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="hs-identifier hs-type">cast</span></span><span> </span><span class="annot"><a href="#local-6989586621680295234"><span class="hs-identifier hs-type">ex'</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-157"></span><span>              </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621680295235"><span class="annot"><span class="annottext">d
+</span><a href="#local-6989586621680295235"><span class="hs-identifier hs-var">r</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">d -&gt; HoleQ d
 forall a. a -&gt; StateT [(Maybe String, Name)] Q a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">d
-</span><a href="#local-6989586621680272792"><span class="hs-identifier hs-var">r</span></a></span><span>
+</span><a href="#local-6989586621680295235"><span class="hs-identifier hs-var">r</span></a></span><span>
 </span><span id="line-158"></span><span>              </span><span class="annot"><span class="annottext">Maybe d
 </span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String -&gt; HoleQ d
 forall a. String -&gt; StateT [(Maybe String, Name)] Q a
@@ -475,8 +475,8 @@ Monad m =&gt;
 (forall d. Data d =&gt; d -&gt; m d) -&gt; d -&gt; m d
 </span><span class="hs-identifier hs-var">gmapM</span></span><span> </span><span class="annot"><span class="annottext">d -&gt; HoleQ d
 forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d
-</span><a href="#local-6989586621680272772"><span class="hs-identifier hs-var">step</span></a></span><span> </span><span class="annot"><span class="annottext">d
-</span><a href="#local-6989586621680272789"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><a href="#local-6989586621680295215"><span class="hs-identifier hs-var">step</span></a></span><span> </span><span class="annot"><span class="annottext">d
+</span><a href="#local-6989586621680295232"><span class="hs-identifier hs-var">x</span></a></span><span>
 </span><span id="line-160"></span><span>
 </span><span id="line-161"></span><span class="hs-comment">-- |'cut'-style partial application via placeholders (in the spirit of SRFI's @cut@): mark the</span><span>
 </span><span id="line-162"></span><span class="hs-comment">-- argument(s) to leave free with a bare @_@ or a named hole (@_x@) -- GHC's own typed-hole</span><span>
@@ -492,12 +492,12 @@ forall d. Data d =&gt; d -&gt; StateT [(Maybe String, Name)] Q d
 </span><span id="line-172"></span><span class="hs-comment">-- &gt; $(cut [| f _x 2 _x |]) 1  ==  f 1 2 1</span><span>
 </span><span id="line-173"></span><span class="annot"><a href="QuantLib.Syntax.html#cut"><span class="hs-identifier hs-type">cut</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ExpQ</span></span><span>
 </span><span id="line-174"></span><span id="cut"><span class="annot"><span class="annottext">cut :: ExpQ -&gt; ExpQ
-</span><a href="QuantLib.Syntax.html#cut"><span class="hs-identifier hs-var hs-var">cut</span></a></span></span><span> </span><span id="local-6989586621680272795"><span class="annot"><span class="annottext">ExpQ
-</span><a href="#local-6989586621680272795"><span class="hs-identifier hs-var">eq</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-175"></span><span>  </span><span id="local-6989586621680272796"><span class="annot"><a href="#local-6989586621680272796"><span class="hs-identifier hs-var">e</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ExpQ
-</span><a href="#local-6989586621680272795"><span class="hs-identifier hs-var">eq</span></a></span><span>
-</span><span id="line-176"></span><span>  </span><span class="hs-special">(</span><span id="local-6989586621680272797"><span class="annot"><a href="#local-6989586621680272797"><span class="hs-identifier hs-var">e'</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680272798"><span class="annot"><a href="#local-6989586621680272798"><span class="hs-identifier hs-var">holes</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="hs-identifier hs-var">runStateT</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Syntax.html#replaceHoles"><span class="hs-identifier hs-type">replaceHoles</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680272796"><span class="hs-identifier hs-type">e</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
-</span><span id="line-177"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">$</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">LamE</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">VarP</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">.</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">snd</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">reverse</span></span><span> </span><span class="annot"><a href="#local-6989586621680272798"><span class="hs-identifier hs-type">holes</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><a href="#local-6989586621680272797"><span class="hs-identifier hs-type">e'</span></a></span><span>
+</span><a href="QuantLib.Syntax.html#cut"><span class="hs-identifier hs-var hs-var">cut</span></a></span></span><span> </span><span id="local-6989586621680295238"><span class="annot"><span class="annottext">ExpQ
+</span><a href="#local-6989586621680295238"><span class="hs-identifier hs-var">eq</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-175"></span><span>  </span><span id="local-6989586621680295239"><span class="annot"><a href="#local-6989586621680295239"><span class="hs-identifier hs-var">e</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ExpQ
+</span><a href="#local-6989586621680295238"><span class="hs-identifier hs-var">eq</span></a></span><span>
+</span><span id="line-176"></span><span>  </span><span class="hs-special">(</span><span id="local-6989586621680295240"><span class="annot"><a href="#local-6989586621680295240"><span class="hs-identifier hs-var">e'</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680295241"><span class="annot"><a href="#local-6989586621680295241"><span class="hs-identifier hs-var">holes</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="hs-identifier hs-var">runStateT</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Syntax.html#replaceHoles"><span class="hs-identifier hs-type">replaceHoles</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680295239"><span class="hs-identifier hs-type">e</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span>
+</span><span id="line-177"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">$</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">LamE</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">VarP</span></span><span> </span><span class="annot"><span class="hs-operator hs-type">.</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">snd</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">reverse</span></span><span> </span><span class="annot"><a href="#local-6989586621680295241"><span class="hs-identifier hs-type">holes</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><a href="#local-6989586621680295240"><span class="hs-identifier hs-type">e'</span></a></span><span>
 </span><span id="line-178"></span><span>
 </span><span id="line-179"></span><span class="hs-comment">-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:</span><span>
 </span><span id="line-180"></span></pre></body></html>
