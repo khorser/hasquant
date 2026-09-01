@@ -46,7 +46,7 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Matrix(..), Interpolation(..))
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), realMatrix, realMatrixFromVector, matrixData, realMatrixData)
 import Control.Monad(replicateM, zipWithM_)
 import QuantLib.CashFlow(cashFlows)
 import QuantLib.Instrument.CapFloor(cap)
@@ -59,6 +59,17 @@ import QuantLib.Spec.Helpers(closePrec)
 
 spec :: Spec
 spec = do
+  describe "matrix construction" $ do
+    it "accepts matching boxed and contiguous shapes, including an empty matrix" $ do
+      fmap matrixData (realMatrix 2 2 [1, 2, 3, 4]) `shouldBe` Right [1, 2, 3, 4]
+      fmap realMatrixData (realMatrixFromVector 0 0 V.empty) `shouldBe` Right V.empty
+    it "rejects mismatched and overflowed shapes" $ do
+      realMatrix 2 2 [1, 2, 3] `shouldBe` Left "Data length 3 does not match dimensions 2x2"
+      realMatrixFromVector 2 2 (V.fromList [1, 2, 3]) `shouldBe` Left "Data length 3 does not match dimensions 2x2"
+      case realMatrix (maxBound `div` 2 + 1) 2 [] of
+        Left _ -> pure ()
+        Right _ -> expectationFailure "overflowed dimensions accepted an empty matrix"
+
   describe "HestonModel (AnalyticHestonEngine vs. Black formula)" $
     -- cached reference from test-suite/hestonmodel.cpp::testAnalyticVsBlack: a near-zero
     -- vol-of-vol Heston process (sigma=1e-4) should reproduce the flat-vol Black price almost

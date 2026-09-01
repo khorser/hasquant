@@ -426,15 +426,20 @@ realMatrix = objectMatrix
 -- |Construct a row-major numeric matrix backed by contiguous storage.
 realMatrixFromVector :: Word -> Word -> RealVector -> Either String RealMatrix
 realMatrixFromVector rows cols d
-  | rows * cols == fromIntegral (V.length d) = Right $ RealMatrix rows cols d
+  | matrixDimensionsMatch rows cols (V.length d) = Right $ RealMatrix rows cols d
   | otherwise = Left $ "Data length " ++ show (V.length d)
       ++ " does not match dimensions " ++ show rows ++ "x" ++ show cols
 
 objectMatrix :: Word -> Word -> [a] -> Either String (Matrix a)
 objectMatrix rows cols d
-  | rows * cols == fromIntegral (length d) = Right $ Matrix rows cols d
+  | matrixDimensionsMatch rows cols (length d) = Right $ Matrix rows cols d
   | otherwise = Left $ "Data length " ++ show (length d)
       ++ " does not match dimensions " ++ show rows ++ "x" ++ show cols
+
+-- |Checks a matrix shape without overflowing the public 'Word' dimensions.
+matrixDimensionsMatch :: Word -> Word -> Int -> Bool
+matrixDimensionsMatch rows cols dataLength =
+  toInteger rows * toInteger cols == toInteger dataLength
 
 -- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
 fromEnumC :: (Enum a, Integral b) => a -> b

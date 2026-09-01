@@ -938,14 +938,16 @@ spec evalDate = do
           zipWith (>=) ess vars `shouldSatisfy` and
           zipWith (>=) gEss gVars `shouldSatisfy` and
 
-          Matrix cRows cCols cov <- historicalIndexAnalysisCovariance hra
-          (cRows, cCols) `shouldBe` (2, 2)
+          covariance <- historicalIndexAnalysisCovariance hra
+          (matrixRows covariance, matrixColumns covariance) `shouldBe` (2, 2)
+          let cov = matrixData covariance
           case cov of
             [c00, _, _, _] -> cov `shouldSatisfy` all (closePrec c00 1.0e-9)
             _ -> expectationFailure "covariance matrix did not have 4 entries"
 
-          Matrix rRows rCols corr <- historicalIndexAnalysisCorrelation hra
-          (rRows, rCols) `shouldBe` (2, 2)
+          correlation <- historicalIndexAnalysisCorrelation hra
+          (matrixRows correlation, matrixColumns correlation) `shouldBe` (2, 2)
+          let corr = matrixData correlation
           corr `shouldSatisfy` all (closePrec 1.0 1.0e-9)
 
           clearFixings idx
