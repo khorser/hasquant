@@ -50,7 +50,7 @@ main = do
   -- tracing; the paired API still reaches it while preventing callers from separating messages
   -- from their dates.
   checkWith "skipped-date diagnostics are paired"
-    "expected one message per skipped date" not (any (null . snd) skipped)
+    "expected one message per skipped date" (not (any (null . snd) skipped))
 
   means <- historicalIndexAnalysisMean hia
   checkWith "mean has one entry per index" "expected length 2" (length means == 2)

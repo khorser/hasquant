@@ -26,7 +26,7 @@ main = do
   cal <- calendar Null
   dc <- dayCounter (Actual360 False)
 
-  forM_ [MaturityDate, LastRelevantDate, CustomDate] $ \pillar -> do
+  forM_ ([MaturityDate, LastRelevantDate, CustomDate] :: [PillarChoice]) $ \pillar -> do
     q <- simpleQuote 0.03
     customPillarDate <- advance cal today (3, Months) ModifiedFollowing False
     h <- fraRateHelper q 1 4 2 cal ModifiedFollowing True dc pillar
@@ -37,7 +37,7 @@ main = do
     putStrLn (show pillar ++ " -> discount " ++ show d)
 
   imm <- nextIMMDate today True
-  forM_ [(IMM, imm), (ASX, 8 `march` 2024), (Custom, imm)] $ \(ty, futDate) -> do
+  forM_ ([(IMM, imm), (ASX, 8 `march` 2024), (Custom, imm)] :: [(FuturesType, Day)]) $ \(ty, futDate) -> do
     q <- simpleQuote 99.0
     h <- futuresRateHelper q futDate 3 cal ModifiedFollowing True dc Nothing ty
     curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear

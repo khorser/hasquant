@@ -1,4 +1,5 @@
--- | Golden-value tests for the exotic single-/multi-asset options bound
+{-# LANGUAGE OverloadedLists #-}
+-- Golden-value tests for the exotic single-/multi-asset options bound
 -- alongside their analytic engines: 'simpleChooserOption', 'softBarrierOption',
 -- 'twoAssetCorrelationOption' reproduce cached NPVs from QuantLib's own
 -- test-suite (chooseroption.cpp, softbarrieroption.cpp,
@@ -11,12 +12,12 @@
 -- LCG plus Box-Muller, both defined below).
 module QuantLib.Spec.Instrument.Option (spec) where
 
-import Prelude hiding(iterate, tail)
+import Prelude hiding(iterate, tail, drop)
 import Test.Hspec
 import Data.Time.Calendar(addDays)
 import Data.Bits(shiftR, xor)
 import Data.Word(Word64)
-import Data.List.NonEmpty(iterate, tail, fromList)
+import Data.List.NonEmpty(iterate, tail, fromList, drop, toList)
 import qualified Data.Vector.Storable as V
 
 import qualified QuantLib.Settings as Settings
@@ -341,7 +342,7 @@ spec = do
           setPricingEngine opt eng
           v <- npv opt
           v `shouldSatisfy` closePrec expected 2.0e-2)
-      [(26 :: Int, 1.81430536630 :: Double), (100, 1.83822402464)]
+      ([(26, 1.81430536630), (100, 1.83822402464)] :: [(Int, Double)])
 
   describe "Continuous lookback options" $ do
     -- cached references from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousFloatingLookback
@@ -358,10 +359,10 @@ spec = do
           setPricingEngine opt eng
           v <- npv opt
           v `shouldSatisfy` closePrec expected 1.0e-4)
-      [ (Call, 100.0, 120.0, 0.06, 0.10, 0.50, 0.30, 25.3533 :: Double)
+      ([ (Call, 100.0, 120.0, 0.06, 0.10, 0.50, 0.30, 25.3533)
       , (Call, 100.0, 100.0, 0.00, 0.05, 1.00, 0.30, 23.7884)
       , (Put,  100.0, 100.0, 0.00, 0.10, 0.50, 0.30, 15.3526)
-      ]
+      ] :: [(OptionType, Double, Double, Double, Double, Double, Double, Double)])
 
     -- cached references from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousFixedLookback
     -- (Haug 1998 pp.63-64).
@@ -377,10 +378,10 @@ spec = do
           setPricingEngine opt eng
           v <- npv opt
           v `shouldSatisfy` closePrec expected 1.0e-4)
-      [ (95.0 :: Double, 100.0 :: Double, 100.0 :: Double, 0.0 :: Double, 0.10 :: Double, 0.50 :: Double, 0.10 :: Double, 13.2687 :: Double)
+      ([ (95.0, 100.0, 100.0, 0.0, 0.10, 0.50, 0.10, 13.2687)
       , (100.0, 100.0, 100.0, 0.0, 0.10, 0.50, 0.20, 14.1702)
       , (105.0, 100.0, 100.0, 0.0, 0.10, 0.50, 0.30, 15.8512)
-      ]
+      ] :: [(Double, Double, Double, Double, Double, Double, Double, Double)])
 
   describe "CliquetOption" $
     -- cached reference from QuantLib test-suite/cliquetoption.cpp::testValues (Haug, p.37).
@@ -416,9 +417,7 @@ spec = do
           setPricingEngine opt eng
           nv <- npv opt
           nv `shouldSatisfy` closePrec expected 1.0e-6)
-      [ (2.0 :: Double, 0.05 :: Double, Call, 1.5 :: Double, 0.9104619 :: Double)
-      , (1.5, 0.7, Put, 1.0, 0.0466796)
-      ]
+      ([(2.0, 0.05, Call, 1.5, 0.9104619), (1.5, 0.7, Put, 1.0, 0.0466796)] :: [(Double, Double, OptionType, Double, Double)])
 
   describe "VarianceSwap (ReplicatingVarianceSwapEngine)" $
     -- cached reference from QuantLib test-suite/varianceswaps.cpp::testReplicatingVarianceSwap
@@ -435,18 +434,18 @@ spec = do
         -- upstream: "maturity t corrected from 0.25 to 0.246575, corresponding to Jan 1, 1999
         -- to Apr 1, 1999" -- i.e. exactly 90 calendar days, not a t=0.246575 day-fraction to round.
         let exDate = addDays 90 evalDate
-            putStrikes  = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 :: Double]
+            putStrikes  = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
             putVols     = [0.30, 0.29, 0.28, 0.27, 0.26, 0.25, 0.24, 0.23, 0.22, 0.21, 0.20 :: Double]
-            callStrikes = [100, 105, 110, 115, 120, 125, 130, 135 :: Double]
+            callStrikes = [100, 105, 110, 115, 120, 125, 130, 135]
             callVols    = [0.20, 0.19, 0.18, 0.17, 0.16, 0.15, 0.14, 0.13 :: Double]
-            strikes = putStrikes ++ drop 1 callStrikes
+            strikes = toList putStrikes ++ drop 1 callStrikes
             vols = putVols ++ drop 1 callVols
         cal <- calendar Null
         volTS <- blackVarianceSurface evalDate cal [exDate] strikes (realGrid (fromIntegral (length strikes)) 1 vols)
                                        dc BlackVarianceSurfaceConstantExtrapolation
                                        BlackVarianceSurfaceConstantExtrapolation Bilinear
         process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
-        eng <- replicatingVarianceSwapEngine process 5.0 (fromList callStrikes) (fromList putStrikes)
+        eng <- replicatingVarianceSwapEngine process 5.0 callStrikes putStrikes
         swp <- varianceSwap Long 0.04 50000 evalDate exDate
         setPricingEngine swp eng
         v <- variance swp

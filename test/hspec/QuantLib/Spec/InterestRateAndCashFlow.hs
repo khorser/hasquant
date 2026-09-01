@@ -1,4 +1,4 @@
-{-# LANGUAGE ScopedTypeVariables, TupleSections #-}
+{-# LANGUAGE ScopedTypeVariables, TupleSections, OverloadedLists #-}
 module QuantLib.Spec.InterestRateAndCashFlow (spec) where
 
 import Test.Hspec
@@ -9,7 +9,6 @@ import Test.QuickCheck((==>))
 import Control.Exception(bracket_)
 import Control.Monad(forM_)
 import Data.Time.Calendar
-import Data.List.NonEmpty(fromList)
 
 import QuantLib.Time.Date
 import qualified QuantLib.Time.Date as Date
@@ -191,7 +190,7 @@ spec evalDate = do
         sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
         dc <- dayCounter (Actual360 False)
         cpn <- IR.interestRate 0.03 dc IR.Simple Annual
-        l <- CF.fixedRateLeg sch (fromList [100.0]) (fromList [cpn]) Following dc cal
+        l <- CF.fixedRateLeg sch [100.0] [cpn] Following dc cal
         accP <- CF.accruedPeriod l False Nothing
         accP `shouldSatisfy` (/= 0)
         accD <- CF.accruedDays l False Nothing
@@ -311,7 +310,7 @@ spec evalDate = do
           index3m <- iborIndex (UsdLibor p) (Just ts)
           pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
           sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
-          cpns <- CF.iborLeg sch index3m (fromList [100]) dc Following [2] [] [0.000115] [] [] False False
+          cpns <- CF.iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
           CF.setCouponPricer cpns pricer
           ret <- CF.nextCashFlowAmount cpns True Nothing
           ret `shouldSatisfy` const True
@@ -334,7 +333,7 @@ spec evalDate = do
           quantoPricer <- CF.blackIborQuantoCouponPricer fxVol correlation vol
           sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
           let buildCoupon couponPricer = do
-                cpns <- CF.iborLeg sch index3m (fromList [100]) dc Following [2] [] [0.000115] [] [] False False
+                cpns <- CF.iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
                 CF.setCouponPricer cpns couponPricer
                 CF.nextCashFlowAmount cpns True Nothing
           ordinaryAmount <- buildCoupon pricer
@@ -355,7 +354,7 @@ spec evalDate = do
             sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
             dc <- dayCounter (Actual360 False)
             cpn <- IR.interestRate 0.03 dc IR.Simple Annual
-            l <- CF.fixedRateLeg sch (fromList [100.0]) (fromList [cpn]) Following dc cal
+            l <- CF.fixedRateLeg sch [100.0] [cpn] Following dc cal
             pure (l, dc, cpn)
 
           relClose :: Double -> Double -> Double -> Bool
@@ -482,7 +481,7 @@ spec evalDate = do
           cal <- calendar TARGET
           sch2 <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
           cpnAtm <- IR.interestRate atm dc IR.Simple Annual
-          lAtm <- CF.fixedRateLeg sch2 (fromList [100.0]) (fromList [cpnAtm]) Following dc cal
+          lAtm <- CF.fixedRateLeg sch2 [100.0] [cpnAtm] Following dc cal
           nAtm <- CF.npv lAtm curve False Nothing Nothing
           nAtm `shouldSatisfy` relClose 1.0e-6 n1
 
@@ -507,7 +506,7 @@ spec evalDate = do
             startDate <- addPeriod refDate (20, Years)
             endDate <- addPeriod startDate (1, Years)
             sch <- schedule (Just startDate) endDate (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
-            let mkLeg = CF.cmsLeg sch swapIdx (fromList [1.0]) dc Unadjusted [] [] [] [] [] False False
+            let mkLeg = CF.cmsLeg sch swapIdx [1.0] dc Unadjusted [] [] [] [] [] False False
             pure (cal, dc, fwdCurve, atmVol, meanRevQ, mkLeg, swapIdx, startDate, endDate)
 
       it "linearTsrPricer agrees with analyticHaganPricer(NonParallelShifts) within test-suite/cms.cpp's tolerance" $
@@ -602,7 +601,7 @@ spec evalDate = do
                 , CF.dcmlReplication = Just replication
                 }
               priceLeg legOpts = do
-                leg <- CF.digitalCmsLeg sch swapIdx (fromList [1.0]) dc Unadjusted [fixingDays] [1.0] [0.0] False legOpts
+                leg <- CF.digitalCmsLeg sch swapIdx [1.0] dc Unadjusted [fixingDays] [1.0] [0.0] False legOpts
                 CF.setCouponPricer leg pricer
                 CF.npv leg curve False Nothing Nothing
           defaultNpv <- priceLeg opts
@@ -682,11 +681,11 @@ spec evalDate = do
           sch <- schedule (Just start) maturity (1, Years) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
           let priceCmsLeg caps floors = do
-                leg <- CF.cmsLeg sch swapBase (fromList [1000000]) thirty360bb Following [2] [1.0] [0.0] caps floors False False
+                leg <- CF.cmsLeg sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] caps floors False False
                 CF.setCouponPricer leg cmsPricer
                 CF.npv leg ts False Nothing Nothing
               priceIborLeg caps floors = do
-                leg <- CF.iborLeg sch euribor6m (fromList [1000000]) thirty360bb Following [2] [1.0] [0.0] caps floors False False
+                leg <- CF.iborLeg sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] caps floors False False
                 CF.setCouponPricer leg iborPricer
                 CF.npv leg ts False Nothing Nothing
               priceCmsBond caps floors = do
@@ -707,12 +706,12 @@ spec evalDate = do
           iborCapped `shouldSatisfy` (< iborUncapped)
           iborFloored `shouldSatisfy` (> iborUncapped)
 
-          iborFull <- CF.iborLegFull sch euribor6m (fromList [1000000]) thirty360bb Following [2] [1.0] [0.0] [] [] False False
+          iborFull <- CF.iborLegFull sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
             CF.defaultIborLegOpts { CF.ilgPaymentLag = 2, CF.ilgExCouponPeriod = (2, Days) }
           CF.setCouponPricer iborFull iborPricer
           iborFullNpv <- CF.npv iborFull ts False Nothing Nothing
           iborFullNpv `shouldSatisfy` (> 0)
-          cmsFull <- CF.cmsLegFull sch swapBase (fromList [1000000]) thirty360bb Following [2] [1.0] [0.0] [] [] False False
+          cmsFull <- CF.cmsLegFull sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
             CF.defaultCmsLegOpts { CF.cmslExCouponPeriod = (2, Days) }
           CF.setCouponPricer cmsFull cmsPricer
           cmsFullNpv <- CF.npv cmsFull ts False Nothing Nothing
@@ -727,7 +726,7 @@ spec evalDate = do
           let notionals = [1000000, 500000, 250000, 100000]
               redemptions = [0, 0, 0, 100]
               priceAmortizing ns rs = do
-                bond <- Bond.amortizingCmsRateBond 2 (fromList ns) sch swapBase thirty360bb Following 2 [1.0] [0.0] [] [] False Nothing rs
+                bond <- Bond.amortizingCmsRateBond 2 ns sch swapBase thirty360bb Following 2 [1.0] [0.0] [] [] False Nothing rs
                 couponLeg <- Bond.cashFlows bond
                 CF.setCouponPricer couponLeg cmsPricer
                 couponNpv <- CF.npv couponLeg ts False Nothing Nothing
@@ -735,7 +734,7 @@ spec evalDate = do
                 redemptionNpv <- CF.npv redemptionLeg ts False Nothing Nothing
                 pure (couponNpv, redemptionNpv)
           (couponNpv, redemptionNpv) <- priceAmortizing notionals redemptions
-          (doubledCouponNpv, _) <- priceAmortizing (map (* 2) notionals) redemptions
+          (doubledCouponNpv, _) <- priceAmortizing (fmap (* 2) notionals) redemptions
           (_, doubledRedemptionNpv) <- priceAmortizing notionals (map (* 2) redemptions)
           doubledCouponNpv `shouldSatisfy` (> couponNpv)
           doubledRedemptionNpv `shouldSatisfy` (> redemptionNpv)
@@ -803,7 +802,7 @@ spec evalDate = do
       -- both directions here, since a naive Payer\/Receiver-swaps-the-'swap'-argument-order
       -- implementation (matching upstream @MakeCms@'s own @payCms_@ ternary literally) would
       -- flip which leg is CMS instead.
-      forM_ [Swap.Payer, Swap.Receiver] $ \swapType ->
+      forM_ ([Swap.Payer, Swap.Receiver] :: [Swap.SwapType]) $ \swapType ->
         it ("makeCms builds a priceable Swap from the CMS and floating legs (" ++ show swapType ++ ")") $
           Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just refDate)
@@ -902,7 +901,7 @@ spec evalDate = do
               expectedMean = sum rels / nD
               expectedStdDev = sqrt (sum [(r - expectedMean) ^ (2 :: Int) | r <- rels] / (nD - 1))
 
-          hra <- historicalRatesAnalysis startDate (last ds) (1, Months) (fromList [idx, idx])
+          hra <- historicalRatesAnalysis startDate (last ds) (1, Months) [idx, idx]
           historicalIndexAnalysisSkipped hra `shouldReturn` []
 
           means <- historicalIndexAnalysisMean hra
@@ -924,7 +923,7 @@ spec evalDate = do
           semiDevs <- historicalIndexAnalysisSemiDeviation hra
           downVars <- historicalIndexAnalysisDownsideVariance hra
           downDevs <- historicalIndexAnalysisDownsideDeviation hra
-          mapM_ (`shouldSatisfy` all (>= 0)) [semiVars, semiDevs, downVars, downDevs]
+          mapM_ (`shouldSatisfy` all (>= 0)) ([semiVars, semiDevs, downVars, downDevs] :: [[Double]])
 
           let centile = 0.9 :: Double
           vars <- historicalIndexAnalysisValueAtRisk hra centile
@@ -935,7 +934,7 @@ spec evalDate = do
           _ <- historicalIndexAnalysisGaussianPercentile hra centile
           -- VaR/expected shortfall are losses, capped at 0.0 -- expected shortfall (the
           -- average loss beyond the VaR threshold) must be at least as large as VaR itself.
-          mapM_ (`shouldSatisfy` all (>= 0)) [vars, ess, gVars, gEss]
+          mapM_ (`shouldSatisfy` all (>= 0)) ([vars, ess, gVars, gEss] :: [[Double]])
           zipWith (>=) ess vars `shouldSatisfy` and
           zipWith (>=) gEss gVars `shouldSatisfy` and
 

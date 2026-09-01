@@ -29,18 +29,18 @@ import SmokeCheck (checkWith)
 -- lists are spelled out explicitly here rather than via [minBound .. maxBound].
 main :: IO ()
 main = do
-  forM_ [AUCPI, EUHICP, EUHICPXT, FRHICP, UKHICP, UKRPI, USCPI, ZACPI] $ \ty -> do
+  forM_ ([AUCPI, EUHICP, EUHICPXT, FRHICP, UKHICP, UKRPI, USCPI, ZACPI] :: [ZeroInflationIndexType]) $ \ty -> do
     idx <- zeroInflationIndex ty
     addFixing idx (1 `january` 2020) 100.0 False
     f <- fixing idx (1 `january` 2020)
     putStrLn (show ty ++ " -> fixing " ++ show f)
-  forM_ [YYAUCPI, YYEUHICP, YYEUHICPXT, YYFRHICP, YYUKRPI, YYUSCPI, YYZACPI] $ \ty -> do
+  forM_ ([YYAUCPI, YYEUHICP, YYEUHICPXT, YYFRHICP, YYUKRPI, YYUSCPI, YYZACPI] :: [YoYInflationIndexType]) $ \ty -> do
     idx <- yoyInflationIndex ty
     addFixing idx (1 `january` 2020) 0.03 False
     f <- yoyFixing idx (1 `january` 2020)
     putStrLn (show ty ++ " -> fixing " ++ show f)
 
-  forM_ [minBound .. maxBound :: RegionType] $ \ty -> do
+  forM_ ([minBound .. maxBound] :: [RegionType]) $ \ty -> do
     r <- region ty
     putStrLn (show ty ++ " -> " ++ show r)
 
